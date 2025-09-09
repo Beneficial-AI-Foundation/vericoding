@@ -1,6 +1,8 @@
+/*
 Given N clocks where clock i completes one rotation in T_i seconds,
 find the minimum positive time when all clocks return to their starting position.
 This is equivalent to finding the LCM of all rotation periods.
+*/
 
 function gcd(a: int, b: int): int
   requires a > 0 && b >= 0
@@ -42,9 +44,16 @@ predicate CorrectResult(periods: seq<int>, result: int)
   result == lcmSeq(periods)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method FindMinimumTime(periods: seq<int>) returns (result: int)
   requires ValidInput(periods)
   ensures CorrectResult(periods, result)
+// </vc-spec>
+// <vc-code>
 {
-  result := lcmSeq(periods);
+  assume {:axiom} false;
 }
+// </vc-code>

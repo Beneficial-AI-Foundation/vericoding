@@ -1,6 +1,8 @@
+/*
 Compare two large positive integers A and B and determine their relative magnitude.
 Input consists of two positive integers on separate lines, each up to 100 digits.
 Output "GREATER" if A > B, "LESS" if A < B, or "EQUAL" if A = B.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -55,70 +57,10 @@ function ParseIntHelper(s: string, pos: nat): int
         ParseIntHelper(s, pos + 1)
 }
 
-method SplitLines(s: string) returns (lines: seq<string>)
-    ensures lines == SplitLinesSpec(s)
-{
-    if |s| == 0 {
-        lines := [];
-        return;
-    }
+// <vc-helpers>
+// </vc-helpers>
 
-    if s[0] == '\n' {
-        lines := SplitLines(s[1..]);
-        return;
-    }
-
-    var nextNewline := FindNextNewlineImpl(s, 0);
-    if nextNewline == -1 {
-        lines := [s];
-    } else {
-        assert nextNewline >= 0 && nextNewline < |s|;
-        var rest := SplitLines(s[nextNewline+1..]);
-        lines := [s[0..nextNewline]] + rest;
-    }
-}
-
-method FindNextNewlineImpl(s: string, start: nat) returns (result: int)
-    requires start <= |s|
-    ensures result == FindNextNewline(s, start)
-    ensures result == -1 || (start <= result < |s|)
-    ensures result != -1 ==> s[result] == '\n'
-    ensures result == -1 ==> forall i :: start <= i < |s| ==> s[i] != '\n'
-{
-    var i := start;
-    while i < |s|
-        invariant start <= i <= |s|
-        invariant forall j :: start <= j < i ==> s[j] != '\n'
-        decreases |s| - i
-    {
-        if s[i] == '\n' {
-            result := i;
-            return;
-        }
-        i := i + 1;
-    }
-    result := -1;
-}
-
-method ParseInt(s: string) returns (n: int)
-    requires IsValidInteger(s)
-    ensures n == ParseIntSpec(s)
-{
-    n := 0;
-    var i := |s|;
-
-    while i > 0
-        invariant 0 <= i <= |s|
-        invariant n == ParseIntHelper(s, i)
-        decreases i
-    {
-        i := i - 1;
-        if i < |s| && s[i] != '\n' && s[i] != '\r' && '0' <= s[i] <= '9' {
-            n := (s[i] as int - '0' as int) + 10 * n;
-        }
-    }
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     ensures ValidInput(input) ==>
@@ -129,24 +71,9 @@ method solve(input: string) returns (result: string)
         (result == "GREATER\n" <==> a > b) &&
         (result == "EQUAL\n" <==> a == b)
     ensures !ValidInput(input) ==> result == ""
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    if |lines| < 2 {
-        return "";
-    }
-
-    if !IsValidInteger(lines[0]) || !IsValidInteger(lines[1]) {
-        return "";
-    }
-
-    var a := ParseInt(lines[0]);
-    var b := ParseInt(lines[1]);
-
-    if a < b {
-        result := "LESS\n";
-    } else if a > b {
-        result := "GREATER\n";
-    } else {
-        result := "EQUAL\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given a tree with n vertices where each vertex i has value a_i, find the maximum length path 
 where all values on the path share a common divisor greater than 1. The path length is the 
 number of vertices on the simple path (inclusive). If no such path exists, return 0.
+*/
 
 predicate valid_input_format(stdin_input: string)
 {
@@ -87,6 +89,10 @@ function char_of_digit(d: int): char
     case 5 => '5' case 6 => '6' case 7 => '7' case 8 => '8' case 9 => '9'
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
   requires |stdin_input| > 0
   requires valid_input_format(stdin_input)
@@ -99,21 +105,9 @@ method solve(stdin_input: string) returns (result: string)
     (exists k: int :: k >= 1 && result == int_to_string(k) && k == max_common_prime_path_length(stdin_input))
   ensures forall k: int :: k >= 0 && result == int_to_string(k) ==> k >= 0
   ensures result == "0" ==> (stdin_input_sum_equals_n(stdin_input) || no_common_prime_paths(stdin_input))
+// </vc-spec>
+// <vc-code>
 {
-  if stdin_input_sum_equals_n(stdin_input) {
-    result := "0";
-    assert result == "0";
-  } else if no_common_prime_paths(stdin_input) {
-    result := "0";
-    assert result == "0";
-  } else {
-    assert has_common_prime_paths(stdin_input);
-    var max_length := max_common_prime_path_length(stdin_input);
-    assert max_length >= 1;
-    assert max_length > 0;
-    result := int_to_string(max_length);
-    assert exists k: int :: k > 0 && result == int_to_string(k) && k == max_length;
-  }
-
-  assert result == "0" || (exists k: int :: k > 0 && result == int_to_string(k));
+  assume {:axiom} false;
 }
+// </vc-code>

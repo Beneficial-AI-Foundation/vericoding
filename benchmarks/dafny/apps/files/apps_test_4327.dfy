@@ -1,5 +1,7 @@
+/*
 Given A whole apples and P apple pieces, determine the maximum number of apple pies that can be made.
 Each whole apple can be cut into 3 pieces, and each apple pie requires 2 pieces to make.
+*/
 
 predicate ValidInput(A: int, P: int)
 {
@@ -18,12 +20,18 @@ function MaxPies(A: int, P: int): int
     TotalPieces(A, P) / 2
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method CalculateMaxPies(A: int, P: int) returns (pies: int)
     requires ValidInput(A, P)
     ensures pies == MaxPies(A, P)
     ensures pies >= 0
     ensures pies == (A * 3 + P) / 2
+// </vc-spec>
+// <vc-code>
 {
-    var totalPieces := A * 3 + P;
-    pies := totalPieces / 2;
+  assume {:axiom} false;
 }
+// </vc-code>

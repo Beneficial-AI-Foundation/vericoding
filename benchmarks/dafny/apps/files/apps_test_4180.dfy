@@ -1,4 +1,6 @@
+/*
 Given a cost N yen, calculate the change received when paying with the minimum number of 1000-yen bills.
+*/
 
 predicate ValidInput(n: int)
 {
@@ -16,10 +18,17 @@ function CorrectChange(n: int): int
     (1000 - n % 1000) % 1000
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (change: int)
     requires ValidInput(n)
     ensures ValidChange(change)
     ensures change == CorrectChange(n)
+// </vc-spec>
+// <vc-code>
 {
-    change := (1000 - n % 1000) % 1000;
+  assume {:axiom} false;
 }
+// </vc-code>

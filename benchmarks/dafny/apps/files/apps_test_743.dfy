@@ -1,5 +1,7 @@
+/*
 Given n positive integers, repeatedly perform operations where you select two indices i,j
 with x_i > x_j and set x_i = x_i - x_j. Find the minimum possible sum after any number of operations.
+*/
 
 predicate ValidInput(n: int, ar: seq<int>)
 {
@@ -32,53 +34,17 @@ function MinimalSum(n: int, ar: seq<int>): int
   GCDOfSequence(ar) * n
 }
 
-lemma GCDExtensionLemma(ar: seq<int>, k: int)
-  requires |ar| >= 1
-  requires forall i :: 0 <= i < |ar| ==> ar[i] > 0
-  requires k > 0
-  ensures GCD(GCDOfSequence(ar), k) == GCDOfSequence(ar + [k])
-{
-  if |ar| == 1 {
-    calc {
-      GCDOfSequence(ar + [k]);
-      GCDOfSequence([ar[0], k]);
-      GCD(ar[0], GCDOfSequence([k]));
-      GCD(ar[0], k);
-      GCD(GCDOfSequence(ar), k);
-    }
-  } else {
-    GCDExtensionLemma(ar[1..], k);
-    calc {
-      GCDOfSequence(ar + [k]);
-      GCD(ar[0], GCDOfSequence((ar[1..]) + [k]));
-      { assert (ar[1..]) + [k] == ar[1..] + [k]; }
-      GCD(ar[0], GCD(GCDOfSequence(ar[1..]), k));
-      GCD(GCD(ar[0], GCDOfSequence(ar[1..])), k);
-      GCD(GCDOfSequence(ar), k);
-    }
-  }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, ar: seq<int>) returns (result: int)
   requires ValidInput(n, ar)
   ensures result == MinimalSum(n, ar)
   ensures result > 0
+// </vc-spec>
+// <vc-code>
 {
-  var r := ar[0];
-  var i := 1;
-  while i < n
-    invariant 1 <= i <= n
-    invariant r > 0
-    invariant r == GCDOfSequence(ar[0..i])
-  {
-    GCDExtensionLemma(ar[0..i], ar[i]);
-    assert GCD(r, ar[i]) == GCD(GCDOfSequence(ar[0..i]), ar[i]);
-    assert GCD(GCDOfSequence(ar[0..i]), ar[i]) == GCDOfSequence(ar[0..i] + [ar[i]]);
-    assert ar[0..i] + [ar[i]] == ar[0..i+1];
-    r := GCD(r, ar[i]);
-    i := i + 1;
-  }
-  assert ar[0..n] == ar;
-  assert r == GCDOfSequence(ar);
-  result := r * n;
+  assume {:axiom} false;
 }
+// </vc-code>

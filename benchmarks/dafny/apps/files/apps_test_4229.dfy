@@ -1,3 +1,4 @@
+/*
 Given a positive integer N, calculate the sum of all numbers in the first N terms of the FizzBuzz sequence.
 The FizzBuzz sequence transforms each position i (1 to N) as follows:
 - If i is divisible by both 3 and 5: term = "FizzBuzz" (skip from sum)
@@ -5,6 +6,7 @@ The FizzBuzz sequence transforms each position i (1 to N) as follows:
 - If i is divisible by 5 only: term = "Buzz" (skip from sum)
 - Otherwise: term = i (include in sum)
 Return the sum of all numeric terms only.
+*/
 
 function int_to_string(i: int): string
     requires i >= 0
@@ -39,25 +41,16 @@ function sum_of_non_fizzbuzz_numbers(n: int): int
             sum_of_non_fizzbuzz_numbers(n - 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures |result| > 0
+// </vc-spec>
+// <vc-code>
 {
-    var n := parse_int_from_string(stdin_input);
-
-    var ans := 0;
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant ans >= 0
-        invariant ans == sum_of_non_fizzbuzz_numbers(i)
-    {
-        var num := i + 1;
-        if num % 3 > 0 && num % 5 > 0 {
-            ans := ans + num;
-        }
-        i := i + 1;
-    }
-
-    result := int_to_string(ans) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

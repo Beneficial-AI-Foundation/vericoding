@@ -1,7 +1,9 @@
+/*
 Find the minimum number of splitters needed to transform 1 pipe into n pipes.
 Available splitters have 2, 3, 4, ..., k outputs respectively.
 Each splitter takes 1 input pipe and produces multiple output pipes.
 Return -1 if impossible.
+*/
 
 predicate ValidInput(n: int, k: int) {
     n >= 1 && k >= 2
@@ -27,39 +29,18 @@ predicate ValidSolution(n: int, k: int, result: int)
             result == k - x
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, k: int) returns (result: int)
     requires ValidInput(n, k)
     ensures result >= -1
     ensures (result == -1) <==> ImpossibilityCondition(n, k)
     ensures ValidSolution(n, k, result)
+// </vc-spec>
+// <vc-code>
 {
-    var m := 2 * (n - 1) - k * (k - 1);
-    if m > 0 {
-        result := -1;
-    } else {
-        var x := 0;
-
-        assert m <= 0;
-        assert x * x - x + m <= 0;
-
-        while (x + 1) * (x + 1) - (x + 1) + m <= 0
-            decreases k - x
-            invariant x >= 0
-            invariant x * x - x + m <= 0
-            invariant x <= k
-        {
-            x := x + 1;
-        }
-
-        assert x >= 0;
-        assert x * x - x + m <= 0;
-        assert (x + 1) * (x + 1) - (x + 1) + m > 0;
-
-        result := k - x;
-
-        assert x >= 0 && 
-               x * x - x + m <= 0 && 
-               (x == 0 || (x + 1) * (x + 1) - (x + 1) + m > 0) &&
-               result == k - x;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

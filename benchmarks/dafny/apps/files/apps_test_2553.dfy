@@ -1,5 +1,7 @@
+/*
 Given an array of n integers, determine if it's possible to select exactly x elements 
 such that their sum is odd. A sum is odd if and only if it contains an odd number of odd elements.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -107,6 +109,10 @@ function GetLine(s: string, line_index: nat): string
     if line_index == 0 then "No" else "" // Placeholder implementation
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (output: string)
     requires ValidInput(stdin_input)
     ensures ValidOutput(output)
@@ -114,6 +120,9 @@ method solve(stdin_input: string) returns (output: string)
     ensures CountLines(output) == ParseFirstLine(stdin_input)
     ensures forall i :: 0 <= i < CountLines(output) ==> 
         (GetLine(output, i) == "Yes" || GetLine(output, i) == "No")
+// </vc-spec>
+// <vc-code>
 {
-    output := "No\n"; // Placeholder implementation
+  assume {:axiom} false;
 }
+// </vc-code>

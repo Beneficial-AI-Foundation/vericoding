@@ -1,9 +1,11 @@
+/*
 Given an array of integers, determine if it is unimodal.
 An array is unimodal if it follows this exact pattern:
 1. An optional strictly increasing sequence at the beginning
 2. An optional constant sequence in the middle  
 3. An optional strictly decreasing sequence at the end
 All three parts are optional, but if present, they must appear in this exact order.
+*/
 
 predicate ValidInput(n: nat, arr: seq<int>)
 {
@@ -33,65 +35,17 @@ function ComputePhases(arr: seq<int>): (int, int, int)
     (incEnd, constEnd, decEnd)
 }
 
-function ComputeIncreasingEnd(arr: seq<int>, i: int, a: int): int
-    requires forall idx :: 0 <= idx < |arr| ==> arr[idx] >= 1
-    requires 0 <= i <= |arr|
-    requires a >= 0
-    ensures ComputeIncreasingEnd(arr, i, a) >= i
-    ensures ComputeIncreasingEnd(arr, i, a) <= |arr|
-    decreases |arr| - i
-{
-    if i >= |arr| || arr[i] <= a then i
-    else ComputeIncreasingEnd(arr, i + 1, arr[i])
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function ComputeConstantEnd(arr: seq<int>, i: int, a: int): int
-    requires forall idx :: 0 <= idx < |arr| ==> arr[idx] >= 1
-    requires 0 <= i <= |arr|
-    requires a >= 0
-    ensures ComputeConstantEnd(arr, i, a) >= i
-    ensures ComputeConstantEnd(arr, i, a) <= |arr|
-    decreases |arr| - i
-{
-    if i >= |arr| || arr[i] != a then i
-    else ComputeConstantEnd(arr, i + 1, a)
-}
-
-function ComputeDecreasingEnd(arr: seq<int>, i: int, a: int): int
-    requires forall idx :: 0 <= idx < |arr| ==> arr[idx] >= 1
-    requires 0 <= i <= |arr|
-    requires a >= 0
-    ensures ComputeDecreasingEnd(arr, i, a) >= i
-    ensures ComputeDecreasingEnd(arr, i, a) <= |arr|
-    decreases |arr| - i
-{
-    if i >= |arr| || arr[i] >= a then i
-    else ComputeDecreasingEnd(arr, i + 1, arr[i])
-}
-
+// <vc-spec>
 method solve(n: nat, arr: seq<int>) returns (result: string)
     requires ValidInput(n, arr)
     ensures result == "YES" || result == "NO"
     ensures result == "YES" <==> IsUnimodal(arr)
+// </vc-spec>
+// <vc-code>
 {
-    if |arr| <= 1 {
-        result := "YES";
-    } else {
-        var phases := ComputePhases(arr);
-        var incEnd := phases.0;
-        var constEnd := phases.1;
-        var decEnd := phases.2;
-
-        var isValid := decEnd == |arr| &&
-                      (forall i, j :: 0 <= i < j < incEnd ==> arr[i] < arr[j]) &&
-                      (forall i :: incEnd <= i < constEnd ==> arr[i] == (if incEnd > 0 then arr[incEnd] else arr[0])) &&
-                      (forall i, j :: constEnd <= i < j < decEnd ==> arr[i] > arr[j]) &&
-                      (incEnd > 0 && constEnd < |arr| ==> arr[incEnd-1] >= (if constEnd > incEnd then arr[incEnd] else arr[constEnd]));
-
-        if isValid {
-            result := "YES";
-        } else {
-            result := "NO";
-        }
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,5 +1,7 @@
+/*
 Given N apple trees numbered 1 to N in a row, find the minimum number of inspectors
 needed to inspect all trees. Each inspector at position i covers trees from (i-D) to (i+D).
+*/
 
 predicate ValidInput(N: int, D: int)
 {
@@ -15,3 +17,14 @@ predicate TreesCovered(N: int, D: int, inspectors: int)
 {
   inspectors >= 1 && inspectors <= N && inspectors == ((N - 1) / (2 * D + 1)) + 1
 }
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

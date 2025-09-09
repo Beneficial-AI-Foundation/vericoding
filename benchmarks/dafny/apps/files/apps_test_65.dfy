@@ -1,5 +1,7 @@
+/*
 Given an array of integers, find the minimum distance between any two occurrences 
 of the minimum value in the array. The minimum value is guaranteed to appear at least twice.
+*/
 
 function seq_min(s: seq<int>): int
     requires |s| > 0
@@ -17,70 +19,19 @@ predicate ValidInput(arr: seq<int>)
     exists i, j :: 0 <= i < j < |arr| && arr[i] == arr[j] == seq_min(arr)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(arr: seq<int>) returns (result: int)
     requires ValidInput(arr)
     ensures result > 0
     ensures result <= |arr| - 1
     ensures exists i, j :: 0 <= i < j < |arr| && arr[i] == arr[j] == seq_min(arr) && j - i == result
     ensures forall i, j :: 0 <= i < j < |arr| && arr[i] == arr[j] == seq_min(arr) ==> j - i >= result
+// </vc-spec>
+// <vc-code>
 {
-    // Find minimum value
-    var minVal := arr[0];
-    var i := 1;
-    while i < |arr|
-        invariant 1 <= i <= |arr|
-        invariant minVal in arr[0..i]
-        invariant forall k :: 0 <= k < i ==> minVal <= arr[k]
-        invariant minVal == seq_min(arr[0..i])
-    {
-        if arr[i] < minVal {
-            minVal := arr[i];
-        }
-        i := i + 1;
-    }
-    assert minVal == seq_min(arr);
-
-    // Find all indices of minimum value
-    var indices: seq<int> := [];
-    i := 0;
-    while i < |arr|
-        invariant 0 <= i <= |arr|
-        invariant forall k :: 0 <= k < |indices| ==> 0 <= indices[k] < |arr| && arr[indices[k]] == minVal
-        invariant forall k :: 0 <= k < i && arr[k] == minVal ==> k in indices
-        invariant forall k1, k2 :: 0 <= k1 < k2 < |indices| ==> indices[k1] < indices[k2]
-        invariant forall k :: 0 <= k < |indices| ==> indices[k] < i
-    {
-        if arr[i] == minVal {
-            indices := indices + [i];
-        }
-        i := i + 1;
-    }
-
-    assert forall k :: 0 <= k < |indices| ==> 0 <= indices[k] < |arr| && arr[indices[k]] == minVal;
-    assert forall k :: 0 <= k < |arr| && arr[k] == minVal ==> k in indices;
-    assert |indices| >= 2;
-
-    // Find minimum distance between consecutive occurrences
-    var minDist := indices[1] - indices[0];
-    assert minDist > 0;
-    i := 2;
-    while i < |indices|
-        invariant 2 <= i <= |indices|
-        invariant minDist > 0
-        invariant minDist <= |arr| - 1
-        invariant exists k :: 1 <= k < i && minDist == indices[k] - indices[k-1]
-        invariant forall k :: 1 <= k < i ==> indices[k] - indices[k-1] >= minDist
-    {
-        var dist := indices[i] - indices[i-1];
-        if dist < minDist {
-            minDist := dist;
-        }
-        i := i + 1;
-    }
-
-    // Establish that minDist is the minimum among all pairs
-    assert forall k1, k2 :: 0 <= k1 < k2 < |indices| ==> 
-        exists k :: 1 <= k < |indices| && indices[k2] - indices[k1] >= indices[k] - indices[k-1] >= minDist;
-
-    result := minDist;
+  assume {:axiom} false;
 }
+// </vc-code>

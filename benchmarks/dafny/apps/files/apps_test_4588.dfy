@@ -1,5 +1,7 @@
+/*
 Given two hexadecimal digits X and Y (each being one of A, B, C, D, E, or F representing values 10, 11, 12, 13, 14, 15 respectively), 
 compare their values and output the comparison result: "<" if X < Y, ">" if X > Y, "=" if X = Y.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -28,23 +30,16 @@ predicate CorrectComparison(x: char, y: char, result: string)
     ((x as int == y as int) <==> (result == "=\n"))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInputFormat(stdin_input)
     ensures CorrectComparison(stdin_input[0], stdin_input[2], result)
+// </vc-spec>
+// <vc-code>
 {
-    var x := stdin_input[0];
-    var y := stdin_input[2];
-
-    if x as int < y as int
-    {
-        result := "<\n";
-    }
-    else if x as int > y as int
-    {
-        result := ">\n";
-    }
-    else
-    {
-        result := "=\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

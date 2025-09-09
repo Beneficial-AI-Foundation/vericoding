@@ -1,7 +1,9 @@
+/*
 Given an (n-1) × (m-1) grid of junctions formed by n horizontal streets and m vertical streets,
 where each street is one-way, determine if it's possible to reach any junction from any other junction.
 Input: n, m (dimensions), string of horizontal directions ('<' or '>'), string of vertical directions ('^' or 'v').
 Output: "YES" if fully connected, "NO" otherwise.
+*/
 
 predicate ValidInput(n: int, m: int, horizontal: seq<char>, vertical: seq<char>)
 {
@@ -26,14 +28,17 @@ function {:extern} is_integer(s: seq<char>): bool
 function {:extern} parse_int(s: seq<char>): int
     requires is_integer(s)
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int, horizontal: seq<char>, vertical: seq<char>) returns (result: seq<char>)
     requires ValidInput(n, m, horizontal, vertical)
     ensures result == "YES\n" || result == "NO\n"
     ensures (result == "NO\n" <==> IsDisconnected(horizontal, vertical))
+// </vc-spec>
+// <vc-code>
 {
-    if IsDisconnected(horizontal, vertical) {
-        result := "NO\n";
-    } else {
-        result := "YES\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

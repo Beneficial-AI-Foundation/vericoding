@@ -1,5 +1,7 @@
+/*
 Given a single lowercase English letter, determine if it is a vowel (a, e, i, o, u) or consonant.
 Return "vowel" if the letter is a vowel, otherwise return "consonant".
+*/
 
 predicate ValidInput(input: string)
 {
@@ -17,15 +19,17 @@ function ExpectedOutput(input: string): string
     if IsVowel(input[0]) then "vowel" else "consonant"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures result == ExpectedOutput(input)
     ensures result == "vowel" || result == "consonant"
+// </vc-spec>
+// <vc-code>
 {
-    var c := input[0];
-    if IsVowel(c) {
-        result := "vowel";
-    } else {
-        result := "consonant";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

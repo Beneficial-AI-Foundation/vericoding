@@ -1,6 +1,8 @@
+/*
 Calculate the value of (1^n + 2^n + 3^n + 4^n) mod 5 for a given integer n.
 The input n is given as a string representation of a non-negative integer.
 The result is either 4 (when n ≡ 0 mod 4) or 0 (otherwise).
+*/
 
 function StringToNat(s: string): nat
   requires |s| > 0
@@ -22,27 +24,18 @@ predicate ValidOutput(result: string)
   result == "4\n" || result == "0\n"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: string) returns (result: string)
   requires ValidInput(n)
   ensures ValidOutput(result)
   ensures (StringToNat(n) % 4 == 0) <==> (result == "4\n")
   ensures (StringToNat(n) % 4 != 0) <==> (result == "0\n")
+// </vc-spec>
+// <vc-code>
 {
-  // To compute n mod 4, we only need to look at the last two digits
-  // since 100 ≡ 0 (mod 4)
-  var mod4 := 0;
-
-  if |n| == 1 {
-    mod4 := (n[0] as int - '0' as int) % 4;
-  } else {
-    // Take last two digits
-    var lastTwoDigits := (n[|n|-2] as int - '0' as int) * 10 + (n[|n|-1] as int - '0' as int);
-    mod4 := lastTwoDigits % 4;
-  }
-
-  if mod4 == 0 {
-    result := "4\n";
-  } else {
-    result := "0\n";
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

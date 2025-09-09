@@ -1,7 +1,9 @@
+/*
 Given N checkpoints with coordinates (x_i, y_i) and times t_i, determine if it's possible 
 to visit each checkpoint at the specified time, starting from (0,0) at time 0. 
 At each time step, you must move to an adjacent cell (up, down, left, right) and cannot 
 stay in the same position.
+*/
 
 datatype Checkpoint = Checkpoint(t: int, x: int, y: int)
 
@@ -40,51 +42,18 @@ predicate CheckpointsFeasible(checkpoints: seq<Checkpoint>, currentT: int, curre
         else CheckpointsFeasible(checkpoints[1..], cp.t, cp.x, cp.y)
 }
 
-predicate IsValidInteger(s: string)
-{
-    |s| > 0 && (s[0] == '-' || ('0' <= s[0] <= '9')) &&
-    (forall i :: 1 <= i < |s| ==> '0' <= s[i] <= '9')
-}
+// <vc-helpers>
+// </vc-helpers>
 
-predicate IsValidCheckpointLine(line: string)
-{
-    var parts := SplitWhitespace(line);
-    |parts| == 3 && IsValidInteger(parts[0]) && IsValidInteger(parts[1]) && IsValidInteger(parts[2])
-}
-
-function SplitLines(s: string): seq<string>
-{
-    []
-}
-
-function SplitWhitespace(s: string): seq<string>
-{
-    []
-}
-
-function ParseInt(s: string): int
-    requires IsValidInteger(s)
-{
-    0
-}
-
-function ParseCheckpoints(lines: seq<string>): seq<Checkpoint>
-    requires forall i :: 0 <= i < |lines| ==> IsValidCheckpointLine(lines[i])
-{
-    []
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires ValidInputFormat(stdin_input)
     ensures result == "Yes\n" || result == "No\n"
     ensures result == "Yes\n" <==> CanVisitAllCheckpoints(stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    var s := "example";
-    var i := 0;
-    while i < |s|
-    {
-        i := i + 1;
-    }
-    result := "No\n";
+  assume {:axiom} false;
 }
+// </vc-code>

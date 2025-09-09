@@ -1,6 +1,8 @@
+/*
 Given a 6-digit ticket (string of digits 0-9), find the minimum number of digit replacements needed to make it "lucky".
 A ticket is lucky when the sum of its first three digits equals the sum of its last three digits.
 Any digit can be replaced with any digit 0-9.
+*/
 
 function charToInt(c: char): int
   requires '0' <= c <= '9'
@@ -50,6 +52,10 @@ predicate canMakeLuckyWith2Changes(digits: seq<int>)
       isLucky(finalDigits)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(ticket: string) returns (result: int)
   requires ValidTicket(ticket)
   ensures 0 <= result <= 3
@@ -61,105 +67,9 @@ method solve(ticket: string) returns (result: int)
           result == 2 <==> (!canMakeLuckyWith0Changes(digits) && !canMakeLuckyWith1Change(digits) && canMakeLuckyWith2Changes(digits))
   ensures var digits := seq(6, i requires 0 <= i < 6 => charToInt(ticket[i]));
           result == 3 <==> (!canMakeLuckyWith0Changes(digits) && !canMakeLuckyWith1Change(digits) && !canMakeLuckyWith2Changes(digits))
+// </vc-spec>
+// <vc-code>
 {
-  // Convert string to sequence of integers
-  var digits := seq(6, i requires 0 <= i < 6 => charToInt(ticket[i]));
-
-  // Check if already lucky
-  if isLucky(digits) {
-    return 0;
-  }
-
-  // Try 1 replacement
-  var pos := 0;
-  var canDo1Change := false;
-  while pos < 6
-    invariant 0 <= pos <= 6
-    invariant !canDo1Change ==> forall p :: 0 <= p < pos ==> forall d :: 0 <= d <= 9 ==> 
-      var newDigits := digits[..p] + [d] + digits[p+1..];
-      !isLucky(newDigits)
-  {
-    var digit := 0;
-    while digit <= 9
-      invariant 0 <= digit <= 10
-      invariant !canDo1Change ==> forall d :: 0 <= d < digit ==> 
-        var newDigits := digits[..pos] + [d] + digits[pos+1..];
-        !isLucky(newDigits)
-    {
-      var newDigits := digits[..pos] + [digit] + digits[pos+1..];
-      if isLucky(newDigits) {
-        canDo1Change := true;
-        break;
-      }
-      digit := digit + 1;
-    }
-    if canDo1Change { break; }
-    pos := pos + 1;
-  }
-
-  if canDo1Change {
-    return 1;
-  }
-
-  // Try 2 replacements
-  var i := 0;
-  var canDo2Changes := false;
-  while i < 6
-    invariant 0 <= i <= 6
-    invariant !canDo2Changes ==> forall ii :: 0 <= ii < i ==> forall jj :: 0 <= jj < ii ==> 
-      forall kk, ll :: 0 <= kk <= 9 && 0 <= ll <= 9 ==> 
-        var newDigits := digits[..ii] + [kk] + digits[ii+1..];
-        var finalDigits := newDigits[..jj] + [ll] + newDigits[jj+1..];
-        !isLucky(finalDigits)
-  {
-    var j := 0;
-    while j < i
-      invariant 0 <= j <= i
-      invariant !canDo2Changes ==> forall jj :: 0 <= jj < j ==> 
-        forall kk, ll :: 0 <= kk <= 9 && 0 <= ll <= 9 ==> 
-          var newDigits := digits[..i] + [kk] + digits[i+1..];
-          var finalDigits := newDigits[..jj] + [ll] + newDigits[jj+1..];
-          !isLucky(finalDigits)
-    {
-      var k := 0;
-      while k <= 9
-        invariant 0 <= k <= 10
-        invariant !canDo2Changes ==> forall kk :: 0 <= kk < k ==> 
-          forall ll :: 0 <= ll <= 9 ==> 
-            var newDigits := digits[..i] + [kk] + digits[i+1..];
-            var finalDigits := newDigits[..j] + [ll] + newDigits[j+1..];
-            !isLucky(finalDigits)
-      {
-        var l := 0;
-        while l <= 9
-          invariant 0 <= l <= 10
-          invariant !canDo2Changes ==> forall ll :: 0 <= ll < l ==> 
-            var newDigits := digits[..i] + [k] + digits[i+1..];
-            var finalDigits := newDigits[..j] + [ll] + newDigits[j+1..];
-            !isLucky(finalDigits)
-        {
-          var newDigits := digits;
-          newDigits := newDigits[..i] + [k] + newDigits[i+1..];
-          newDigits := newDigits[..j] + [l] + newDigits[j+1..];
-          if isLucky(newDigits) {
-            canDo2Changes := true;
-            break;
-          }
-          l := l + 1;
-        }
-        if canDo2Changes { break; }
-        k := k + 1;
-      }
-      if canDo2Changes { break; }
-      j := j + 1;
-    }
-    if canDo2Changes { break; }
-    i := i + 1;
-  }
-
-  if canDo2Changes {
-    return 2;
-  }
-
-  return 3;
+  assume {:axiom} false;
 }
+// </vc-code>

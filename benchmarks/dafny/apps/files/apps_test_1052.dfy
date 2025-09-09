@@ -1,5 +1,7 @@
+/*
 Count the number of permutations of [1, 2, ..., n] where at least n-k positions
 have the correct value (i.e., p[i] = i for at least n-k indices i).
+*/
 
 predicate ValidInput(n: int, k: int)
 {
@@ -40,21 +42,16 @@ function sum_binomial_derangement(n: int, k: int, i: int): int
   else binomial(n, i) * derangement(n - i) + sum_binomial_derangement(n, k, i + 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, k: int) returns (result: int)
   requires ValidInput(n, k)
   ensures result == factorial(n) - sum_binomial_derangement(n, k, 0)
+// </vc-spec>
+// <vc-code>
 {
-  var ans := factorial(n);
-
-  var i := 0;
-  while i < n - k
-    invariant 0 <= i <= n - k
-    invariant ans == factorial(n) - sum_binomial_derangement(n, k, 0) + sum_binomial_derangement(n, k, i)
-  {
-    var c := binomial(n, i) * derangement(n - i);
-    ans := ans - c;
-    i := i + 1;
-  }
-
-  result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

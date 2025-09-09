@@ -1,6 +1,8 @@
+/*
 Given n groups arriving at a restaurant chronologically, where each group has 1 or 2 people,
 and the restaurant has a one-person tables and b two-person tables, determine how many people
 are denied service following specific seating rules.
+*/
 
 predicate ValidInput(n: int, a: int, b: int, groups: seq<int>)
 {
@@ -35,47 +37,17 @@ function countDeniedPeopleWithHalf(groups: seq<int>, a: int, b: int, halfOccupie
             else 1 + countDeniedPeopleWithHalf(rest, a, b, halfOccupied)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, a: int, b: int, groups: seq<int>) returns (denied: int)
     requires ValidInput(n, a, b, groups)
     ensures denied >= 0
     ensures denied == countDeniedPeople(groups, a, b)
+// </vc-spec>
+// <vc-code>
 {
-    var remainingA := a;
-    var remainingB := b;
-    var halfOccupied := 0;
-    var totalDenied := 0;
-
-    var i := 0;
-    while i < |groups|
-        invariant 0 <= i <= |groups|
-        invariant remainingA >= 0
-        invariant remainingB >= 0
-        invariant halfOccupied >= 0
-        invariant totalDenied >= 0
-        invariant totalDenied + countDeniedPeopleWithHalf(groups[i..], remainingA, remainingB, halfOccupied) == countDeniedPeople(groups, a, b)
-        decreases |groups| - i
-    {
-        if groups[i] == 2 {
-            if remainingB > 0 {
-                remainingB := remainingB - 1;
-            } else {
-                totalDenied := totalDenied + 2;
-            }
-        }
-        if groups[i] == 1 {
-            if remainingA > 0 {
-                remainingA := remainingA - 1;
-            } else if remainingB > 0 {
-                remainingB := remainingB - 1;
-                halfOccupied := halfOccupied + 1;
-            } else if halfOccupied > 0 {
-                halfOccupied := halfOccupied - 1;
-            } else {
-                totalDenied := totalDenied + 1;
-            }
-        }
-        i := i + 1;
-    }
-
-    denied := totalDenied;
+  assume {:axiom} false;
 }
+// </vc-code>

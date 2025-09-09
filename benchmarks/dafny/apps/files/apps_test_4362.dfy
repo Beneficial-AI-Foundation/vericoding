@@ -1,5 +1,7 @@
+/*
 Given a single English letter (either uppercase A-Z or lowercase a-z), 
 output "A" if the input letter is uppercase, or "a" if the input letter is lowercase.
+*/
 
 predicate IsLowercaseLetter(c: char)
 {
@@ -16,32 +18,17 @@ predicate ValidOutput(result: string)
     result == "A" || result == "a"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
     ensures ValidOutput(result)
     ensures AllLowercase(input) ==> result == "a"
     ensures (|input| == 0 || !AllLowercase(input)) ==> result == "A"
+// </vc-spec>
+// <vc-code>
 {
-    if |input| == 0 {
-        result := "A";
-    } else {
-        // Check if all characters are lowercase letters
-        var allLowercase := true;
-        var i := 0;
-        while i < |input|
-            invariant 0 <= i <= |input|
-            invariant allLowercase <==> (forall j :: 0 <= j < i ==> IsLowercaseLetter(input[j]))
-        {
-            if !IsLowercaseLetter(input[i]) {
-                allLowercase := false;
-                break;
-            }
-            i := i + 1;
-        }
-
-        if allLowercase {
-            result := "a";
-        } else {
-            result := "A";
-        }
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given an array of n integers representing animal heights, sort the array in non-decreasing order
 using a specific operation that selects a segment of even length and swaps adjacent pairs within it.
 Output the sequence of operations (at most 20,000) needed to sort the array.
+*/
 
 predicate ValidInput(n: int, arr: seq<int>)
 {
@@ -36,14 +38,10 @@ function countInversions(arr: seq<int>): nat
     |set i, j | 0 <= i < j < |arr| && arr[i] > arr[j] :: (i, j)|
 }
 
-function swapAdjacent(arr: seq<int>, left: int, right: int): seq<int>
-  requires 0 <= left < right < |arr|
-  requires right == left + 1
-  ensures multiset(swapAdjacent(arr, left, right)) == multiset(arr)
-{
-    arr[left := arr[right]][right := arr[left]]
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, arr: seq<int>) returns (operations: seq<(int, int)>)
   requires ValidInput(n, arr)
   ensures ValidOperations(operations, n)
@@ -51,51 +49,9 @@ method solve(n: int, arr: seq<int>) returns (operations: seq<(int, int)>)
   ensures multiset(arr) == multiset(applyOperations(arr, operations))
   ensures |operations| <= 20000
   ensures isSorted(arr) ==> |operations| == 0
+// </vc-spec>
+// <vc-code>
 {
-    if isSorted(arr) {
-        return [];
-    }
-
-    var y := arr;
-    var ops: seq<(int, int)> := [];
-
-    // Use a simple approach: bubble sort with operation limit
-    while |ops| < 20000
-      invariant multiset(y) == multiset(arr)
-      invariant ValidOperations(ops, n)
-      invariant y == applyOperations(arr, ops)
-      invariant |ops| <= 20000
-      decreases 20000 - |ops|
-    {
-        if isSorted(y) {
-            break;
-        }
-
-        var i := 0;
-        var foundSwap := false;
-
-        while i < n - 1 && |ops| < 20000
-          invariant multiset(y) == multiset(arr)
-          invariant 0 <= i <= n - 1
-          invariant ValidOperations(ops, n)
-          invariant y == applyOperations(arr, ops)
-          invariant |ops| <= 20000
-        {
-            if i < |y| - 1 && y[i] > y[i+1] {
-                ops := ops + [(i+1, i+2)];
-                y := applyOperations(arr, ops);
-                foundSwap := true;
-                break; // Exit inner loop after making one swap to ensure progress
-            }
-            i := i + 1;
-        }
-
-        // If no swap was found but array is not sorted, add a dummy operation to reach limit
-        if !foundSwap && !isSorted(y) && n >= 2 && |ops| < 20000 {
-            ops := ops + [(1, 2)];
-            y := applyOperations(arr, ops);
-        }
-    }
-
-    return ops;
+  assume {:axiom} false;
 }
+// </vc-code>

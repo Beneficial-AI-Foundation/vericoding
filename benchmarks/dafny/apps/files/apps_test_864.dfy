@@ -1,8 +1,10 @@
+/*
 Given n participants and m food packages where each package has a food type,
 determine the maximum number of days an expedition can last under these constraints:
 - Each participant eats exactly one package per day
 - Each participant must eat the same food type throughout the entire expedition
 - Different participants can eat different food types
+*/
 
 function possible(n: int, foodTypes: seq<int>, days: int): bool
     requires n >= 0
@@ -39,6 +41,10 @@ function countPackages(foodTypes: seq<int>, targetType: int): int
     else countPackages(foodTypes[1..], targetType)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int, foodTypes: seq<int>) returns (result: int)
     requires 1 <= n <= 100
     requires 1 <= m <= 100
@@ -49,16 +55,9 @@ method solve(n: int, m: int, foodTypes: seq<int>) returns (result: int)
     ensures result > 0 ==> possible(n, foodTypes, result)
     ensures !possible(n, foodTypes, result + 1)
     ensures forall d :: d > result ==> !possible(n, foodTypes, d)
+// </vc-spec>
+// <vc-code>
 {
-    var day := 1;
-    while possible(n, foodTypes, day) && day <= m
-        invariant day >= 1
-        invariant day <= m + 1
-        invariant forall d :: 1 <= d < day ==> possible(n, foodTypes, d)
-        invariant !possible(n, foodTypes, day) ==> forall d :: d >= day ==> !possible(n, foodTypes, d)
-        decreases m + 1 - day
-    {
-        day := day + 1;
-    }
-    result := day - 1;
+  assume {:axiom} false;
 }
+// </vc-code>

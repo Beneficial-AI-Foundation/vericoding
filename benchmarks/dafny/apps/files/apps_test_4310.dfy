@@ -1,6 +1,8 @@
+/*
 Given three tasks with integer values A1, A2, A3, find the minimum cost to complete all tasks.
 Rules: Complete any one task first at cost 0, then completing task i followed by task j costs |Aj - Ai|.
 All tasks must be completed.
+*/
 
 predicate ValidInput(A1: int, A2: int, A3: int)
 {
@@ -22,12 +24,17 @@ function MinimumCost(A1: int, A2: int, A3: int): int
     MaxOfThree(A1, A2, A3) - MinOfThree(A1, A2, A3)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(A1: int, A2: int, A3: int) returns (result: int)
     requires ValidInput(A1, A2, A3)
     ensures result >= 0
     ensures result == MinimumCost(A1, A2, A3)
+// </vc-spec>
+// <vc-code>
 {
-    var max_val := MaxOfThree(A1, A2, A3);
-    var min_val := MinOfThree(A1, A2, A3);
-    result := max_val - min_val;
+  assume {:axiom} false;
 }
+// </vc-code>

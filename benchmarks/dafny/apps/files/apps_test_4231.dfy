@@ -1,6 +1,8 @@
+/*
 Given an H×W grid of white cells, choose h rows and w columns to paint black.
 All cells that are either in a chosen row OR in a chosen column will be painted black.
 Determine how many white cells remain after painting.
+*/
 
 predicate ValidInput(H: int, W: int, h: int, w: int)
 {
@@ -13,10 +15,17 @@ function WhiteCellsRemaining(H: int, W: int, h: int, w: int): int
     (H - h) * (W - w)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(H: int, W: int, h: int, w: int) returns (result: int)
     requires ValidInput(H, W, h, w)
     ensures result == WhiteCellsRemaining(H, W, h, w)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    result := (H - h) * (W - w);
+  assume {:axiom} false;
 }
+// </vc-code>

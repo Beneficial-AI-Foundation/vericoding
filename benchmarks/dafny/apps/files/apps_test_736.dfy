@@ -1,5 +1,7 @@
+/*
 Given a staircase with n steps, find the minimum number of moves to reach the top
 where each move climbs 1 or 2 steps, and total moves must be a multiple of m.
+*/
 
 predicate ValidInput(n: int, m: int)
 {
@@ -36,26 +38,18 @@ predicate IsMinimalSolution(n: int, m: int, result: int)
   result != -1 ==> forall k :: (MinMoves(n) <= k <= n && k < result) ==> k % m != 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int) returns (result: int)
   requires ValidInput(n, m)
   ensures IsValidSolution(n, m, result)
   ensures NoSmallerSolution(n, m, result)
   ensures IsMinimalSolution(n, m, result)
+// </vc-spec>
+// <vc-code>
 {
-  var p := MinMoves(n);
-  
-  var w := p;
-  while w % m != 0 && w <= n
-    invariant p <= w <= n + 1
-    invariant forall k :: p <= k < w ==> k % m != 0
-    decreases n - w + 1
-  {
-    w := w + 1;
-  }
-
-  if w <= n {
-    result := w;
-  } else {
-    result := -1;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

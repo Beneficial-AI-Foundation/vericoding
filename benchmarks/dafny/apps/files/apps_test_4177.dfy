@@ -1,4 +1,6 @@
+/*
 Given a string S consisting of lowercase English letters, replace every character with 'x' and output the result.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -10,18 +12,16 @@ predicate ValidOutput(s: string, result: string)
     |result| == |s| && forall i :: 0 <= i < |result| ==> result[i] == 'x'
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires ValidInput(s)
     ensures ValidOutput(s, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := "";
-    var i := 0;
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant |result| == i
-        invariant forall j :: 0 <= j < i ==> result[j] == 'x'
-    {
-        result := result + "x";
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

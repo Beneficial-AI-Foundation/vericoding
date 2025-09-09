@@ -1,3 +1,4 @@
+/*
 Given an n × m grid where '.' represents empty cells and '#' represents occupied cells,
 count the number of distinct ways to create a pipe with constraints:
 1. The pipe is a width-1 polyline through empty cells only
@@ -7,6 +8,7 @@ count the number of distinct ways to create a pipe with constraints:
 5. If the pipe is a straight line, start and end must be on different edges
 6. Each non-boundary pipe cell has exactly 2 adjacent pipe cells
 7. Each boundary pipe cell has exactly 1 adjacent pipe cell
+*/
 
 predicate ValidInput(input: string)
 {
@@ -82,17 +84,16 @@ function CountValidPipes(grid: seq<seq<char>>, rows: int, cols: int): int
     0  // Simplified implementation
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method ExecutePythonLogic(input: string) returns (output: string)
     requires ValidInput(input)
     ensures ValidOutput(output)
+// </vc-spec>
+// <vc-code>
 {
-    var (grid, rows, cols) := ParseGrid(input);
-
-    if rows == 0 || cols == 0 || !IsValidGrid(grid, rows, cols) {
-        output := "0\n";
-        return;
-    }
-
-    var count := CountValidPipes(grid, rows, cols);
-    output := IntToString(count) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,5 +1,7 @@
+/*
 Given a Martian year with n days and Earth-like weeks (5 work days + 2 days off),
 determine the minimum and maximum possible number of days off in that year.
+*/
 
 predicate ValidInput(n: int)
 {
@@ -35,18 +37,16 @@ predicate ValidOutput(result: seq<int>, n: int)
   result[1] == MaxDaysOff(n)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: seq<int>)
   requires ValidInput(n)
   ensures ValidOutput(result, n)
+// </vc-spec>
+// <vc-code>
 {
-  var r := n % 7;
-  var d := n / 7;
-
-  var min_additional := if r > 5 then r - 5 else 0;
-  var max_additional := if r < 2 then r else 2;
-
-  var min_days_off := 2 * d + min_additional;
-  var max_days_off := 2 * d + max_additional;
-
-  result := [min_days_off, max_days_off];
+  assume {:axiom} false;
 }
+// </vc-code>

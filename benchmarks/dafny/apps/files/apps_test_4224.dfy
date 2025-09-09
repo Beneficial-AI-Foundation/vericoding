@@ -1,5 +1,7 @@
+/*
 Given an array of positive integers, find the maximum number of operations possible where each operation
 allows dividing elements by 2 (if even) or multiplying by 3, with at least one division by 2 required per operation.
+*/
 
 predicate ValidInput(a: seq<int>) {
   forall i :: 0 <= i < |a| ==> a[i] > 0
@@ -28,37 +30,17 @@ function MaxOperations(a: seq<int>): int
   SumFactors(a, 0)
 }
 
-function power(base: int, exp: int): int
-  requires base >= 0
-  requires exp >= 0
-{
-  if exp == 0 then 1
-  else base * power(base, exp - 1)
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(a: seq<int>) returns (result: int)
   requires ValidInput(a)
   ensures result >= 0
   ensures result == MaxOperations(a)
+// </vc-spec>
+// <vc-code>
 {
-  result := 0;
-  for i := 0 to |a|
-    invariant 0 <= i <= |a|
-    invariant result >= 0
-    invariant result == SumFactors(a, 0) - SumFactors(a, i)
-  {
-    var num := a[i];
-    var count := 0;
-    while num % 2 == 0
-      invariant num > 0
-      invariant count >= 0
-      invariant a[i] == num * power(2, count)
-      invariant CountFactorsOfTwo(a[i]) == count + CountFactorsOfTwo(num)
-      decreases num
-    {
-      num := num / 2;
-      count := count + 1;
-    }
-    result := result + count;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

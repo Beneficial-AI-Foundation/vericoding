@@ -1,6 +1,8 @@
+/*
 Given n bishops on a 1000×1000 grid, count the number of pairs that attack each other.
 Two bishops attack each other if and only if they are on the same diagonal (either main diagonal or anti-diagonal).
 Main diagonal: x - y is constant, Anti-diagonal: x + y is constant.
+*/
 
 predicate ValidInput(positions: seq<(int, int)>)
 {
@@ -24,35 +26,17 @@ predicate ValidOutput(positions: seq<(int, int)>, result: int)
     result == CountAttackingPairs(positions) && result >= 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method SolveBishops(positions: seq<(int, int)>) returns (result: int)
     requires ValidInput(positions)
     ensures ValidOutput(positions, result)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    result := 0;
-    var i := 0;
-    while i < |positions|
-        invariant 0 <= i <= |positions|
-        invariant result == |set p, q | 0 <= p < q < i && 
-                            (positions[p].0 + positions[p].1 == positions[q].0 + positions[q].1 ||
-                             positions[p].0 - positions[p].1 == positions[q].0 - positions[q].1) :: (p, q)|
-    {
-        var j := 0;
-        while j < i
-            invariant 0 <= j <= i
-            invariant result == |set p, q | 0 <= p < q < i && 
-                                (positions[p].0 + positions[p].1 == positions[q].0 + positions[q].1 ||
-                                 positions[p].0 - positions[p].1 == positions[q].0 - positions[q].1) :: (p, q)| +
-                              |set k | 0 <= k < j && 
-                                     (positions[k].0 + positions[k].1 == positions[i].0 + positions[i].1 ||
-                                      positions[k].0 - positions[k].1 == positions[i].0 - positions[i].1) :: k|
-        {
-            if (positions[j].0 + positions[j].1 == positions[i].0 + positions[i].1) ||
-               (positions[j].0 - positions[j].1 == positions[i].0 - positions[i].1) {
-                result := result + 1;
-            }
-            j := j + 1;
-        }
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given a rectangular board and two rectangular paintings, determine if both paintings 
 can be placed on the board without overlapping or extending beyond edges. Each rectangle 
 can be rotated 90 degrees.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -92,31 +94,10 @@ function ParseIntHelper(s: string, i: nat, acc: nat): nat
     else ParseIntHelper(s, i+1, acc * 10 + (s[i] as int - '0' as int))
 }
 
-method SplitLines(s: string) returns (lines: seq<string>)
-    requires |s| >= 0
-    ensures |lines| >= 0
-    ensures lines == SplitLinesFunc(s)
-{
-    lines := SplitLinesFunc(s);
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method SplitSpaces(s: string) returns (parts: seq<string>)
-    requires |s| >= 0
-    ensures |parts| >= 0
-    ensures parts == SplitSpacesFunc(s)
-{
-    parts := SplitSpacesFunc(s);
-}
-
-method ParseInt(s: string) returns (n: int)
-    requires |s| >= 0
-    requires IsValidInt(s)
-    ensures n >= 0
-    ensures n == ParseIntFunc(s)
-{
-    n := ParseIntFunc(s);
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     ensures result == "YES\n" || result == "NO\n" || result == ""
@@ -136,36 +117,9 @@ method solve(input: string) returns (result: string)
         )
     )
     ensures !ValidInput(input) ==> result == ""
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    if |lines| < 3 {
-        return "";
-    }
-
-    var boardParts := SplitSpaces(lines[0]);
-    var paint1Parts := SplitSpaces(lines[1]);
-    var paint2Parts := SplitSpaces(lines[2]);
-
-    if |boardParts| < 2 || |paint1Parts| < 2 || |paint2Parts| < 2 {
-        return "";
-    }
-
-    if !IsValidInt(boardParts[0]) || !IsValidInt(boardParts[1]) ||
-       !IsValidInt(paint1Parts[0]) || !IsValidInt(paint1Parts[1]) ||
-       !IsValidInt(paint2Parts[0]) || !IsValidInt(paint2Parts[1]) {
-        return "";
-    }
-
-    var a := ParseInt(boardParts[0]);
-    var b := ParseInt(boardParts[1]);
-    var c := ParseInt(paint1Parts[0]);
-    var d := ParseInt(paint1Parts[1]);
-    var e := ParseInt(paint2Parts[0]);
-    var f := ParseInt(paint2Parts[1]);
-
-    if CanPlaceBothPaintings(a, b, c, d, e, f) {
-        return "YES\n";
-    } else {
-        return "NO\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

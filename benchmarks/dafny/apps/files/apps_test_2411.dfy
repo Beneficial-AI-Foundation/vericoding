@@ -1,6 +1,8 @@
+/*
 Given n distinct points representing electric poles, count the number of pairs of wires that intersect.
 Every pair of poles is connected by a wire (infinite straight line). If multiple poles lie on the same line,
 they share a single wire. Return the number of intersecting wire pairs.
+*/
 
 predicate validInputFormat(input: string)
 {
@@ -57,62 +59,10 @@ function stringToInt(s: string): nat
     0
 }
 
-function splitLines(input: string): seq<string>
-{
-    ["2", "0 0", "1 1"]
-}
+// <vc-helpers>
+// </vc-helpers>
 
-predicate isValidFirstLine(line: string)
-{
-    |line| > 0 && (forall i :: 0 <= i < |line| ==> '0' <= line[i] <= '9') &&
-    var n := parseFirstLineAsNat(line);
-    2 <= n <= 1000
-}
-
-predicate isValidCoordinateLine(line: string)
-{
-    |line| > 0 && canParseTwoInts(line) &&
-    var (x, y) := parseTwoIntsFromLine(line);
-    -10000 <= x <= 10000 && -10000 <= y <= 10000
-}
-
-function parseFirstLineAsNat(line: string): nat
-  requires |line| > 0 
-  requires forall i :: 0 <= i < |line| ==> '0' <= line[i] <= '9'
-{
-    2
-}
-
-predicate canParseTwoInts(line: string)
-{
-    true
-}
-
-function parseTwoIntsFromLine(line: string): (int, int)
-  requires canParseTwoInts(line)
-{
-    (0, 0)
-}
-
-datatype LineParams = LineParams(slope: real, intercept: real)
-
-function getDistinctLines(points: seq<(int, int)>): set<LineParams>
-  requires |points| >= 2
-  requires forall i, j :: 0 <= i < j < |points| ==> points[i] != points[j]
-{
-    {}
-}
-
-function groupLinesBySlope(lines: set<LineParams>): map<real, nat>
-{
-    map[]
-}
-
-function sumOverSlopeGroups(slopeGroups: map<real, nat>, totalLines: nat): nat
-{
-    0
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
   requires |stdin_input| > 0
   requires validInputFormat(stdin_input)
@@ -124,6 +74,9 @@ method solve(stdin_input: string) returns (result: string)
           (forall i :: 0 <= i < |points| ==> validCoordinate(points[i])) &&
           (forall i, j :: 0 <= i < j < |points| ==> points[i] != points[j]) &&
           stringToInt(result) == countIntersectingLinePairs(points)
+// </vc-spec>
+// <vc-code>
 {
-    result := "0";
+  assume {:axiom} false;
 }
+// </vc-code>

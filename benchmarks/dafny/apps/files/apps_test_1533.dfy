@@ -1,5 +1,7 @@
+/*
 Given a sequence of names, for each position i, determine if that same name
 appeared at any earlier position j < i in the sequence.
+*/
 
 predicate ValidOutput(names: seq<string>, output: seq<string>)
 {
@@ -8,29 +10,15 @@ predicate ValidOutput(names: seq<string>, output: seq<string>)
         output[i] == (if exists j :: 0 <= j < i && names[j] == names[i] then "YES" else "NO")
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(names: seq<string>) returns (output: seq<string>)
     ensures ValidOutput(names, output)
+// </vc-spec>
+// <vc-code>
 {
-    var seen := {};
-    var result: seq<string> := [];
-
-    var i := 0;
-    while i < |names|
-        invariant 0 <= i <= |names|
-        invariant |result| == i
-        invariant forall k :: 0 <= k < i ==> 
-            result[k] == (if exists j :: 0 <= j < k && names[j] == names[k] then "YES" else "NO")
-        invariant seen == set k | 0 <= k < i :: names[k]
-    {
-        var name := names[i];
-        if name in seen {
-            result := result + ["YES"];
-        } else {
-            result := result + ["NO"];
-        }
-        seen := seen + {name};
-        i := i + 1;
-    }
-
-    output := result;
+  assume {:axiom} false;
 }
+// </vc-code>

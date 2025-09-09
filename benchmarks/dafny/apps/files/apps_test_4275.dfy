@@ -1,5 +1,7 @@
+/*
 Given a string of length 6 consisting of lowercase English letters, determine if it is "coffee-like".
 A string is coffee-like if characters at positions 3 and 4 are equal, AND characters at positions 5 and 6 are equal (using 1-based indexing).
+*/
 
 predicate ValidInput(s: string)
 {
@@ -12,14 +14,17 @@ requires ValidInput(s)
     s[2] == s[3] && s[4] == s[5]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
 requires ValidInput(s)
 ensures result == "Yes" || result == "No"
 ensures IsCoffeeLike(s) <==> result == "Yes"
+// </vc-spec>
+// <vc-code>
 {
-    if s[2] == s[3] && s[4] == s[5] {
-        result := "Yes";
-    } else {
-        result := "No";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

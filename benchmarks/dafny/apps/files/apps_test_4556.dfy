@@ -1,6 +1,8 @@
+/*
 Given a contest name in the format "AtCoder s Contest" where s is a string of length 1 to 100 characters 
 starting with an uppercase English letter followed by lowercase English letters, output the abbreviation "AxC" 
 where x is the first character of s.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -27,41 +29,16 @@ predicate ValidOutput(input: string, result: string)
        result[1] == input[8]  // Second char is first char of middle word
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures ValidOutput(input, result)
+// </vc-spec>
+// <vc-code>
 {
-    // Find the positions of the two spaces
-    var firstSpace := 7;  // We know from preconditions that input[7] == ' '
-    var secondSpace := -1;
-
-    var i := 8;
-    while i < |input| && secondSpace == -1
-        invariant 8 <= i <= |input|
-        invariant secondSpace == -1 ==> forall j :: 8 <= j < i ==> input[j] != ' '
-        invariant secondSpace != -1 ==> 8 <= secondSpace < |input| && input[secondSpace] == ' '
-    {
-        if input[i] == ' ' {
-            secondSpace := i;
-        }
-        i := i + 1;
-    }
-
-    // From preconditions, we know there exists such a space
-    assert exists spacePos :: 8 <= spacePos < |input| - 8 && input[spacePos] == ' ';
-    assert secondSpace != -1;
-    assert 8 <= secondSpace < |input|;
-    assert input[secondSpace] == ' ';
-
-    // Extract the middle word
-    assert firstSpace == 7;
-    assert firstSpace + 1 == 8;
-    assert 8 < secondSpace;
-    assert 8 <= secondSpace;
-    var middleWord := input[firstSpace + 1..secondSpace];
-    assert |middleWord| > 0;
-    assert middleWord == input[8..secondSpace];
-
-    // Construct the result
-    result := "A" + [middleWord[0]] + "C" + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

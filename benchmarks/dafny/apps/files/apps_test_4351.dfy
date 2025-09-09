@@ -1,5 +1,7 @@
+/*
 Given a three-digit positive integer N (100 ≤ N ≤ 999), determine if it is palindromic
 (reads the same forwards and backwards in decimal notation).
+*/
 
 predicate ValidInput(n: int)
 {
@@ -86,35 +88,19 @@ predicate ValidStringInput(stdin_input: string)
   |tokens| == 1 && CanParseAsInt(tokens[0]) && ValidInput(ParseIntValue(tokens[0]))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
   requires |stdin_input| > 0
   ensures result == "Yes\n" || result == "No\n" || result == ""
   ensures ValidStringInput(stdin_input) ==> 
     (result == "Yes\n" <==> IsPalindromic(ParseIntValue(TokenizeInput(stdin_input)[0])))
   ensures !ValidStringInput(stdin_input) ==> result == ""
+// </vc-spec>
+// <vc-code>
 {
-  var tokens := TokenizeInput(stdin_input);
-
-  if |tokens| != 1 {
-    result := "";
-    return;
-  }
-
-  if !CanParseAsInt(tokens[0]) {
-    result := "";
-    return;
-  }
-
-  var n := ParseIntValue(tokens[0]);
-  
-  if !ValidInput(n) {
-    result := "";
-    return;
-  }
-
-  if IsPalindromic(n) {
-    result := "Yes\n";
-  } else {
-    result := "No\n";
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

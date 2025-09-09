@@ -1,7 +1,9 @@
+/*
 Given ticket costs and transportation usage, find the minimum cost to buy tickets.
 There are 4 ticket types: individual ride cost, unlimited rides on one vehicle,
 unlimited rides on all buses OR all trolleys, and unlimited rides on everything.
 Input includes 4 costs and arrays of ride counts for buses and trolleys.
+*/
 
 predicate ValidCosts(c: array<int>)
   reads c
@@ -64,21 +66,10 @@ function CorrectResult(c: array<int>, a: array<int>, b: array<int>, result: int)
                  c[3])
 }
 
-function min(a: int, b: int): int
-  ensures min(a, b) <= a && min(a, b) <= b
-  ensures min(a, b) == a || min(a, b) == b
-{
-  if a <= b then a else b
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function min5(a: int, b: int, c: int, d: int, e: int): int
-  requires a >= 0 && b >= 0 && c >= 0 && d >= 0 && e >= 0
-  ensures min5(a, b, c, d, e) >= 0
-  ensures min5(a, b, c, d, e) <= a && min5(a, b, c, d, e) <= b && min5(a, b, c, d, e) <= c && min5(a, b, c, d, e) <= d && min5(a, b, c, d, e) <= e
-{
-  min(a, min(b, min(c, min(d, e))))
-}
-
+// <vc-spec>
 method solve(c: array<int>, a: array<int>, b: array<int>) returns (result: int)
   requires ValidCosts(c)
   requires ValidRides(a)
@@ -90,15 +81,9 @@ method solve(c: array<int>, a: array<int>, b: array<int>) returns (result: int)
                         sum_array(b[..]) * c[0] + c[2],
                         c[2] + c[2],
                         c[3])
+// </vc-spec>
+// <vc-code>
 {
-  var opt_a := optimized_cost(a[..], c[0], c[1]);
-  var opt_b := optimized_cost(b[..], c[0], c[1]);
-
-  var option1 := opt_a + opt_b;
-  var option2 := opt_a + c[2];
-  var option3 := opt_b + c[2];
-  var option4 := c[2] + c[2];
-  var option5 := c[3];
-
-  result := min5(option1, option2, option3, option4, option5);
+  assume {:axiom} false;
 }
+// </vc-code>

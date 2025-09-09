@@ -1,7 +1,9 @@
+/*
 Find the maximum number of models that can be selected to form a "beautiful arrangement."
 A beautiful arrangement is a subsequence of models arranged in increasing order of their indices,
 where for any two adjacent models with indices i and j (i < j), j must be divisible by i
 and the size of model i must be strictly less than the size of model j.
+*/
 
 predicate is_valid_beautiful_arrangement(arrangement: seq<int>, sizes: seq<int>)
     requires forall i :: 0 <= i < |arrangement| ==> 1 <= arrangement[i] <= |sizes|
@@ -22,59 +24,18 @@ predicate ValidInput(n: int, sizes: seq<int>)
     n >= 1 && |sizes| == n && forall i :: 0 <= i < n ==> sizes[i] >= 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, sizes: seq<int>) returns (result: int)
     requires ValidInput(n, sizes)
     ensures 1 <= result <= n
     ensures forall arrangement :: (forall i :: 0 <= i < |arrangement| ==> 1 <= arrangement[i] <= |sizes|) && is_valid_beautiful_arrangement(arrangement, sizes) ==> |arrangement| <= result
     ensures exists arrangement :: (forall i :: 0 <= i < |arrangement| ==> 1 <= arrangement[i] <= |sizes|) && is_valid_beautiful_arrangement(arrangement, sizes) && |arrangement| == result
+// </vc-spec>
+// <vc-code>
 {
-    var dp := new int[n + 1];
-
-    // Initialize dp array to all 1s
-    var k := 0;
-    while k <= n
-        invariant 0 <= k <= n + 1
-        invariant forall idx :: 0 <= idx < k ==> dp[idx] == 1
-    {
-        dp[k] := 1;
-        k := k + 1;
-    }
-
-    // Main algorithm: work backwards from n/2 to 1
-    var i := n / 2;
-    while i >= 1
-        invariant 0 <= i <= n / 2
-        invariant forall idx :: 0 <= idx <= n ==> dp[idx] >= 1
-    {
-        var j := 2 * i;
-        while j <= n
-            invariant j >= 2 * i
-            invariant j % i == 0
-            invariant forall idx :: 0 <= idx <= n ==> dp[idx] >= 1
-        {
-            if sizes[i - 1] < sizes[j - 1] {
-                if dp[j] + 1 > dp[i] {
-                    dp[i] := dp[j] + 1;
-                }
-            }
-            j := j + i;
-        }
-        i := i - 1;
-    }
-
-    // Find maximum in dp array
-    var max_val := dp[0];
-    var idx := 1;
-    while idx <= n
-        invariant 1 <= idx <= n + 1
-        invariant max_val >= 1
-        invariant forall k :: 0 <= k < idx ==> dp[k] <= max_val
-    {
-        if dp[idx] > max_val {
-            max_val := dp[idx];
-        }
-        idx := idx + 1;
-    }
-
-    result := max_val;
+  assume {:axiom} false;
 }
+// </vc-code>

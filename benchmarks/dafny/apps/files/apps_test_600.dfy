@@ -1,6 +1,8 @@
+/*
 Two friends at integer positions a and b on a number line need to meet at the same position.
 Each move costs increasing tiredness: 1st move costs 1, 2nd move costs 2, etc.
 Find the minimum total tiredness for both friends to meet.
+*/
 
 predicate ValidInput(a: int, b: int)
 {
@@ -19,24 +21,17 @@ function MinimumTotalTiredness(a: int, b: int): int
     tirednessForSteps(abs(c - a)) + tirednessForSteps(abs(b - c))
 }
 
-function abs(x: int): int
-{
-    if x >= 0 then x else -x
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function tirednessForSteps(steps: int): int
-    requires steps >= 0
-{
-    steps * (steps + 1) / 2
-}
-
+// <vc-spec>
 method solve(a: int, b: int) returns (result: int)
     requires ValidInput(a, b)
     ensures result >= 0
     ensures result == MinimumTotalTiredness(a, b)
+// </vc-spec>
+// <vc-code>
 {
-    var c := OptimalMeetingPoint(a, b);
-    var cost1 := tirednessForSteps(abs(c - a));
-    var cost2 := tirednessForSteps(abs(b - c));
-    result := cost1 + cost2;
+  assume {:axiom} false;
 }
+// </vc-code>

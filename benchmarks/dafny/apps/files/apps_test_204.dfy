@@ -1,9 +1,11 @@
+/*
 Count pairs of positive integers (w, h) such that:
 - w ≤ a (width constraint)  
 - h ≤ b (height constraint)
 - w/h = x/y (aspect ratio constraint)
 The solution reduces x/y to lowest terms and finds the maximum multiplier k
 such that valid pairs have the form (k×x', k×y') where x' = x/gcd(x,y) and y' = y/gcd(x,y)
+*/
 
 predicate ValidInput(a: int, b: int, x: int, y: int)
 {
@@ -36,21 +38,17 @@ function ExpectedResult(a: int, b: int, x: int, y: int): int
   min(a / x_reduced, b / y_reduced)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int, x: int, y: int) returns (result: int)
   requires ValidInput(a, b, x, y)
   ensures result >= 0
   ensures result == ExpectedResult(a, b, x, y)
+// </vc-spec>
+// <vc-code>
 {
-  var g := gcd(x, y);
-  var x_reduced := x / g;
-  var y_reduced := y / g;
-
-  var quota_x := a / x_reduced;
-  var quota_y := b / y_reduced;
-
-  if quota_x <= quota_y {
-    result := quota_x;
-  } else {
-    result := quota_y;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

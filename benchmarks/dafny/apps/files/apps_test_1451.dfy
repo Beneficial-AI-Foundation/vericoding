@@ -1,5 +1,7 @@
+/*
 Given n positive integers and a threshold k, count how many integers contain at most k lucky digits.
 Lucky digits are 4 and 7.
+*/
 
 predicate ValidInput(n: int, k: int, numbers: seq<int>)
 {
@@ -32,47 +34,17 @@ function countValidNumbers(numbers: seq<int>, k: int, upTo: int): int
         if countLuckyDigits(numbers[upTo - 1]) <= k then prevCount + 1 else prevCount
 }
 
-lemma countValidNumbersProperty(numbers: seq<int>, k: int, upTo: int)
-    requires 0 <= upTo <= |numbers|
-    requires k >= 0
-    requires forall i :: 0 <= i < |numbers| ==> numbers[i] >= 0
-    ensures countValidNumbers(numbers, k, upTo) == |set i | 0 <= i < upTo && countLuckyDigits(numbers[i]) <= k|
-{
-    if upTo == 0 {
-        assert (set i | 0 <= i < 0 && countLuckyDigits(numbers[i]) <= k) == {};
-    } else {
-        countValidNumbersProperty(numbers, k, upTo - 1);
-        var prevSet := set i | 0 <= i < upTo - 1 && countLuckyDigits(numbers[i]) <= k;
-        var currSet := set i | 0 <= i < upTo && countLuckyDigits(numbers[i]) <= k;
-        
-        if countLuckyDigits(numbers[upTo - 1]) <= k {
-            assert currSet == prevSet + {upTo - 1};
-            assert (upTo - 1) !in prevSet;
-        } else {
-            assert currSet == prevSet;
-        }
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, k: int, numbers: seq<int>) returns (result: int)
     requires ValidInput(n, k, numbers)
     ensures 0 <= result <= n
     ensures result == |set i | 0 <= i < |numbers| && countLuckyDigits(numbers[i]) <= k|
+// </vc-spec>
+// <vc-code>
 {
-    var count := 0;
-    var i := 0;
-    while i < |numbers|
-        invariant 0 <= i <= |numbers|
-        invariant 0 <= count <= i
-        invariant count == countValidNumbers(numbers, k, i)
-    {
-        var luckyCount := countLuckyDigits(numbers[i]);
-        if luckyCount <= k {
-            count := count + 1;
-        }
-        i := i + 1;
-    }
-    
-    countValidNumbersProperty(numbers, k, |numbers|);
-    result := count;
+  assume {:axiom} false;
 }
+// </vc-code>

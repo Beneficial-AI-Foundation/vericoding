@@ -1,6 +1,8 @@
+/*
 Given an undirected tree with n vertices, add the minimum number of edges 
 such that the shortest path from vertex 1 to any other vertex is at most 2.
 Loops and multiple edges are not allowed.
+*/
 
 predicate ValidInput(n: int, edges: seq<(int, int)>)
 {
@@ -71,89 +73,16 @@ predicate IsMinimalSolution(n: int, originalEdges: seq<(int, int)>, numEdgesToAd
     numEdgesToAdd >= 0
 }
 
-method ParseInput(input: string) returns (n: int, edges: seq<(int, int)>)
-    requires |input| > 0
-    ensures n >= 0
-    ensures |edges| >= 0
-{
-    var lines := SplitByNewline(input);
-    if |lines| == 0 {
-        n, edges := 0, [];
-        return;
-    }
-    
-    var firstLineParts := SplitBySpace(lines[0]);
-    if |firstLineParts| == 0 || !IsValidNumber(firstLineParts[0]) {
-        n, edges := 0, [];
-        return;
-    }
-    
-    n := ParseInt(firstLineParts[0]);
-    edges := [];
-    
-    var i := 1;
-    while i < |lines| && |edges| < n - 1
-        invariant |edges| <= n - 1
-        invariant i >= 1
-    {
-        var parts := SplitBySpace(lines[i]);
-        if |parts| >= 2 && IsValidNumber(parts[0]) && IsValidNumber(parts[1]) {
-            var u := ParseInt(parts[0]);
-            var v := ParseInt(parts[1]);
-            if 1 <= u <= n && 1 <= v <= n && u != v {
-                edges := edges + [(u, v)];
-            }
-        }
-        i := i + 1;
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function SplitByNewline(s: string): seq<string> { [s] }
-function SplitBySpace(s: string): seq<string> { [s] }
-function IsValidNumber(s: string): bool { |s| > 0 }
-function ParseInt(s: string): int { 1 }
-function IntToString(n: int): string 
-    requires n >= 0
-    ensures |IntToString(n)| > 0
-{ "0" }
-
-method ComputeMinimumEdges(n: int, edges: seq<(int, int)>) returns (result: int)
-    requires ValidInput(n, edges)
-    ensures result >= 0
-{
-    var adj := BuildAdjacencyList(n, edges);
-    
-    var verticesAtDistance3Plus: seq<int> := [];
-    var v := 2;
-    while v <= n
-        invariant 2 <= v <= n + 1
-    {
-        var dist := BFS(adj, n, 1, v);
-        if dist > 2 {
-            verticesAtDistance3Plus := verticesAtDistance3Plus + [v];
-        }
-        v := v + 1;
-    }
-    
-    result := |verticesAtDistance3Plus|;
-}
-
+// <vc-spec>
 method solve(input: string) returns (output: string)
     requires |input| > 0
     ensures |output| > 0
+// </vc-spec>
+// <vc-code>
 {
-    var n, edges := ParseInput(input);
-    
-    if n < 2 || |edges| != n - 1 {
-        output := "0";
-        return;
-    }
-    
-    if !ValidInput(n, edges) {
-        output := "0";
-        return;
-    }
-    
-    var result := ComputeMinimumEdges(n, edges);
-    output := IntToString(result);
+  assume {:axiom} false;
 }
+// </vc-code>

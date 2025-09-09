@@ -1,5 +1,7 @@
+/*
 Given a string of at least 3 lowercase English letters, create an abbreviation by replacing
 the middle characters with their count. Format: first_character + count_of_middle_characters + last_character.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -29,11 +31,16 @@ function IntToStringHelper(n: int): string
     else IntToStringHelper(n / 10) + [(('0' as int) + (n % 10)) as char]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires ValidInput(s)
     ensures ValidAbbreviation(s, result)
+// </vc-spec>
+// <vc-code>
 {
-    var middleLength := |s| - 2;
-    var middleLengthStr := IntToString(middleLength);
-    result := [s[0]] + middleLengthStr + [s[|s|-1]];
+  assume {:axiom} false;
 }
+// </vc-code>

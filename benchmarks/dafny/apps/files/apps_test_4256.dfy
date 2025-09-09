@@ -1,7 +1,9 @@
+/*
 Given three integers A (cost per drink), B (available money), and C (maximum drinks desired),
 determine how many drinks will be purchased. The number of drinks purchased is the minimum of:
 - How many drinks can be afforded: B // A  
 - The satisfaction limit: C
+*/
 
 predicate ValidInput(input: string)
 {
@@ -73,34 +75,10 @@ function IntToStringSpec(n: int): string
     else IntToStringSpec(n / 10) + [('0' as int + (n % 10)) as char]
 }
 
-method SplitString(s: string) returns (parts: seq<string>)
-    requires |s| >= 0
-    ensures |parts| >= 0
-    ensures forall i :: 0 <= i < |parts| ==> |parts[i]| > 0
-    ensures forall i :: 0 <= i < |parts| ==> forall j :: 0 <= j < |parts[i]| ==> parts[i][j] != ' ' && parts[i][j] != '\n' && parts[i][j] != '\t'
-    ensures parts == SplitStringSpec(s)
-{
-    parts := SplitStringSpec(s);
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method StringToInt(s: string) returns (result: int)
-    requires |s| > 0
-    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-    ensures result >= 0
-    ensures result == StringToIntSpec(s)
-{
-    result := StringToIntSpec(s);
-}
-
-method IntToString(n: int) returns (result: string)
-    requires n >= 0
-    ensures |result| > 0
-    ensures forall i :: 0 <= i < |result| ==> '0' <= result[i] <= '9'
-    ensures result == IntToStringSpec(n)
-{
-    result := IntToStringSpec(n);
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures |result| > 0
@@ -113,14 +91,9 @@ method solve(input: string) returns (result: string)
         var drinks := ComputeDrinks(A, B, C);
         result == IntToStringSpec(drinks) + "\n"
     )
+// </vc-spec>
+// <vc-code>
 {
-    var parts := SplitString(input);
-    var A := StringToInt(parts[0]);
-    var B := StringToInt(parts[1]);
-    var C := StringToInt(parts[2]);
-
-    var affordable := B / A;
-    var drinks := if affordable < C then affordable else C;
-    var drinks_str := IntToString(drinks);
-    result := drinks_str + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

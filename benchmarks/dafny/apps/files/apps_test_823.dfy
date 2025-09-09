@@ -1,7 +1,9 @@
+/*
 Given an infinite spiral starting at (0,0) that visits every integer point,
 determine the number of turns required to reach point (x,y) from origin.
 The spiral follows: (0,0) → (1,0) → (1,1) → (-1,1) → (-1,-1) → (2,-1) → ...
 A turn occurs when direction changes (right→up, up→left, left→down, down→right).
+*/
 
 predicate ValidInput(x: int, y: int) {
     -100 <= x <= 100 && -100 <= y <= 100
@@ -33,6 +35,10 @@ function ComputeTurns(x: int, y: int): int
     else -4 * y
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(x: int, y: int) returns (result: int)
     requires ValidInput(x, y)
     ensures result >= 0
@@ -42,16 +48,9 @@ method solve(x: int, y: int) returns (result: int)
     ensures IsLeftEdge(x, y) ==> result == 3 + 4 * (-x - 1)
     ensures IsTopEdge(x, y) ==> result == 2 + 4 * (y - 1)
     ensures !(IsOriginOrFirstPoint(x, y) || IsRightEdge(x, y) || IsLeftEdge(x, y) || IsTopEdge(x, y)) ==> result == -4 * y
+// </vc-spec>
+// <vc-code>
 {
-    if IsOriginOrFirstPoint(x, y) {
-        result := 0;
-    } else if IsRightEdge(x, y) {
-        result := 1 + 4 * (x - 1);
-    } else if IsLeftEdge(x, y) {
-        result := 3 + 4 * (-x - 1);
-    } else if IsTopEdge(x, y) {
-        result := 2 + 4 * (y - 1);
-    } else {
-        result := -4 * y;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

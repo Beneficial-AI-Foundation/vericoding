@@ -1,5 +1,7 @@
+/*
 Given a three-digit integer N, determine if it contains the digit 7.
 Return "Yes" if N contains the digit 7, "No" otherwise.
+*/
 
 predicate ValidInput(N: int) {
     100 <= N <= 999
@@ -15,19 +17,17 @@ predicate ValidOutput(result: string) {
     result == "Yes\n" || result == "No\n"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int) returns (result: string)
     requires ValidInput(N)
     ensures ValidOutput(result)
     ensures result == "Yes\n" <==> ContainsSeven(N)
+// </vc-spec>
+// <vc-code>
 {
-    var X := N % 10;
-    var y := N / 10;
-    var Y := y % 10;
-    var Z := N / 100;
-
-    if X == 7 || Y == 7 || Z == 7 {
-        result := "Yes\n";
-    } else {
-        result := "No\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

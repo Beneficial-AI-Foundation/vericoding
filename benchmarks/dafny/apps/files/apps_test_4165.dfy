@@ -1,6 +1,8 @@
+/*
 Given N side lengths of a polygon, determine if the polygon can be drawn in a 2D plane.
 A polygon can be drawn if and only if the longest side length is strictly less than 
 the sum of all other side lengths.
+*/
 
 predicate ValidInput(sides: seq<int>)
 {
@@ -72,32 +74,17 @@ function sumExceptLast(s: seq<int>): int
     else s[0] + sumExceptLast(s[1..])
 }
 
-lemma filterPreservesInclusion(s: seq<int>, pred: int -> bool)
-    ensures forall x :: x in multiset(s) && pred(x) ==> x in multiset(filter(s, pred))
-    decreases |s|
-{
-    if |s| == 0 {
-    } else if pred(s[0]) {
-        assert filter(s, pred) == [s[0]] + filter(s[1..], pred);
-        filterPreservesInclusion(s[1..], pred);
-    } else {
-        assert filter(s, pred) == filter(s[1..], pred);
-        filterPreservesInclusion(s[1..], pred);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(sides: seq<int>) returns (result: string)
     requires ValidInput(sides)
     ensures result == "Yes" || result == "No"
     ensures result == "Yes" <==> canFormPolygon(sides)
+// </vc-spec>
+// <vc-code>
 {
-    var sortedSides := quicksort(sides);
-    var longest := sortedSides[|sortedSides|-1];
-    var sumOfOthers := sumExceptLast(sortedSides);
-
-    if sumOfOthers > longest {
-        result := "Yes";
-    } else {
-        result := "No";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

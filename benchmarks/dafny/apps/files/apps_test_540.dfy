@@ -1,8 +1,10 @@
+/*
 Given an n×m grid representing an ice cave level, determine if you can move from starting position (r1, c1) to target position (r2, c2) and fall through the target cell.
 Grid representation: '.' = intact ice, 'X' = cracked ice
 Movement rules: Move to side-adjacent cells only, cannot move to same cell, moving to intact ice cracks it, moving to cracked ice causes fall through
 Goal: Reach (r2, c2) when it's cracked ice and fall through it
 Starting cell (r1, c1) is guaranteed to contain 'X' in the input
+*/
 
 predicate ValidInputFormat(stdin_input: string)
 {
@@ -104,95 +106,10 @@ predicate ValidGridIndex(grid: seq<seq<char>>, r: int, c: int)
     0 <= r < |grid| && 0 <= c < |grid[r]|
 }
 
-predicate GridContainsOnlyValidChars(stdin_input: string)
-    requires |stdin_input| > 0
-{
-    var grid := ParseGrid(stdin_input);
-    forall i, j :: 0 <= i < |grid| && 0 <= j < |grid[i]| ==> 
-        (grid[i][j] == '.' || grid[i][j] == 'X')
-}
+// <vc-helpers>
+// </vc-helpers>
 
-predicate CoordinatesWithinBounds(stdin_input: string)
-    requires |stdin_input| > 0
-{
-    var dims := ParseDimensions(stdin_input);
-    var coords := ParseCoordinates(stdin_input);
-    1 <= coords.0 <= dims.0 && 1 <= coords.1 <= dims.1 &&
-    1 <= coords.2 <= dims.0 && 1 <= coords.3 <= dims.1
-}
-
-predicate ContainsRequiredNewlines(s: string)
-{
-    CountNewlines(s) >= 3
-}
-
-predicate EndsWithNewlineOrCanAppend(s: string)
-{
-    |s| == 0 || s[|s|-1] == '\n' || s[|s|-1] != '\n'
-}
-
-predicate HasValidStructure(stdin_input: string)
-    requires |stdin_input| > 0
-{
-    var dims := ParseDimensions(stdin_input);
-    CountLines(stdin_input) == dims.0 + 3
-}
-
-predicate AllGridCharactersValid(stdin_input: string)
-    requires |stdin_input| > 0
-{
-    var grid := ParseGrid(stdin_input);
-    forall i, j :: 0 <= i < |grid| && 0 <= j < |grid[i]| ==> 
-        grid[i][j] == '.' || grid[i][j] == 'X'
-}
-
-predicate HasExactlyRequiredLines(stdin_input: string)
-    requires |stdin_input| > 0
-{
-    var dims := ParseDimensions(stdin_input);
-    var expectedLines := dims.0 + 3;
-    CountLines(stdin_input) == expectedLines
-}
-
-function CountNewlines(s: string): int
-    ensures CountNewlines(s) >= 0
-    ensures CountNewlines(s) <= |s|
-{
-    0
-}
-
-function CountLines(stdin_input: string): int
-    requires |stdin_input| > 0
-    ensures CountLines(stdin_input) >= 1
-{
-    1
-}
-
-function CountSurroundingIntactIce(grid: seq<seq<char>>, r: int, c: int): int
-    requires |grid| > 0
-    requires forall i :: 0 <= i < |grid| ==> |grid[i]| > 0
-    requires ValidGridIndex(grid, r, c)
-    ensures CountSurroundingIntactIce(grid, r, c) >= 0
-    ensures CountSurroundingIntactIce(grid, r, c) <= 4
-{
-    0
-}
-
-predicate CanReachTargetWithBFS(grid: seq<seq<char>>, r1: int, c1: int, r2: int, c2: int)
-    requires |grid| > 0
-    requires forall i :: 0 <= i < |grid| ==> |grid[i]| > 0
-    requires ValidGridIndex(grid, r1, c1)
-    requires ValidGridIndex(grid, r2, c2)
-{
-    true
-}
-
-predicate IsAdjacent(r1: int, c1: int, r2: int, c2: int)
-{
-    (r1 == r2 && (c1 == c2 + 1 || c1 == c2 - 1)) ||
-    (c1 == c2 && (r1 == r2 + 1 || r1 == r2 - 1))
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires ValidInputFormat(stdin_input)
@@ -203,11 +120,9 @@ method solve(stdin_input: string) returns (result: string)
     ensures result == "YES\n" || result == "NO\n"
     ensures |result| > 0
     ensures result == "YES\n" <==> CanSolveIceMaze(stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    var canReach := true;
-    if canReach {
-        result := "YES\n";
-    } else {
-        result := "NO\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,7 +1,9 @@
+/*
 Given s spaceships with attacking powers and b bases with defensive powers and gold amounts,
 determine the maximum gold each spaceship can steal. A spaceship can attack any base where 
 the spaceship's attacking power is greater than or equal to the base's defensive power.
 When attacking a base, the spaceship steals all gold from that base.
+*/
 
 predicate ValidInput(s: nat, b: nat, attacking_powers: seq<nat>, bases: seq<(nat, nat)>)
 {
@@ -22,14 +24,16 @@ predicate ValidOutput(s: nat, attacking_powers: seq<nat>, bases: seq<(nat, nat)>
     (forall i :: 0 <= i < s && i < |attacking_powers| ==> result[i] == SumGoldForSpaceship(attacking_powers[i], bases))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: nat, b: nat, attacking_powers: seq<nat>, bases: seq<(nat, nat)>) returns (result: seq<nat>)
     requires ValidInput(s, b, attacking_powers, bases)
     ensures ValidOutput(s, attacking_powers, bases, result)
+// </vc-spec>
+// <vc-code>
 {
-    if s == 0 {
-        result := [];
-        return;
-    }
-
-    result := seq(s, i requires 0 <= i < s => SumGoldForSpaceship(attacking_powers[i], bases));
+  assume {:axiom} false;
 }
+// </vc-code>

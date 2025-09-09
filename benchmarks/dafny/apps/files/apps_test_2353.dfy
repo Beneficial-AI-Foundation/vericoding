@@ -1,8 +1,10 @@
+/*
 Given four integers representing sleep requirements and alarm timing,
 simulate an alarm system where: first alarm rings after b minutes,
 if total sleep >= a then wake permanently, otherwise set alarm for c minutes later
 and spend d minutes falling asleep. If alarm rings while falling asleep (c <= d),
 reset and repeat. Find total time until permanent wake or -1 if never happens.
+*/
 
 predicate ValidInput(a: int, b: int, c: int, d: int)
 {
@@ -33,21 +35,18 @@ function CalculateWakeTime(a: int, b: int, c: int, d: int): int
     b + c * cycles
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int, c: int, d: int) returns (result: int)
     requires ValidInput(a, b, c, d)
     ensures FirstAlarmSufficient(a, b) ==> result == b
     ensures NeverWakes(a, b, c, d) ==> result == -1
     ensures EventuallyWakes(a, b, c, d) ==> result == CalculateWakeTime(a, b, c, d)
+// </vc-spec>
+// <vc-code>
 {
-    if a <= b {
-        result := b;
-    } else {
-        var remaining := a - b;
-        if c <= d {
-            result := -1;
-        } else {
-            var cycles := (remaining - 1) / (c - d) + 1;
-            result := b + c * cycles;
-        }
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

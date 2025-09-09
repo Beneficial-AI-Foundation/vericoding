@@ -1,6 +1,8 @@
+/*
 Given a sequence of n positive integers (n divisible by 3), each ≤ 7,
 partition into groups of 3 elements (a,b,c) where a < b < c and a|b, b|c.
 Return the partition or empty sequence if impossible.
+*/
 
 predicate ValidInput(n: int, numbers: seq<int>)
 {
@@ -35,103 +37,16 @@ predicate NoPartitionExists(result: seq<seq<int>>)
     |result| == 0
 }
 
-lemma FlattenPartitionSize(result: seq<seq<int>>)
-    requires forall i :: 0 <= i < |result| ==> |result[i]| == 3
-    ensures |FlattenPartition(result)| == |result| * 3
-{
-    if |result| == 0 {
-    } else {
-        FlattenPartitionSize(result[1..]);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
-lemma MultisetSliceLemma(numbers: seq<int>, i: int)
-    requires 0 <= i < |numbers|
-    ensures multiset(numbers[..i+1]) == multiset(numbers[..i]) + multiset{numbers[i]}
-{
-    assert numbers[..i+1] == numbers[..i] + [numbers[i]];
-}
-
+// <vc-spec>
 method solve(n: int, numbers: seq<int>) returns (result: seq<seq<int>>)
     requires ValidInput(n, numbers)
     ensures NoPartitionExists(result) || ValidPartition(result, numbers)
+// </vc-spec>
+// <vc-code>
 {
-    var L := new int[8];
-    L[0] := 0; L[1] := 0; L[2] := 0; L[3] := 0; 
-    L[4] := 0; L[5] := 0; L[6] := 0; L[7] := 0;
-
-    var i := 0;
-    while i < |numbers|
-        invariant 0 <= i <= |numbers|
-        invariant forall j :: 0 <= j <= 7 ==> L[j] >= 0
-        invariant forall j :: 1 <= j <= 7 ==> L[j] == multiset(numbers[..i])[j]
-        invariant L[0] == 0
-        invariant forall k :: 0 <= k < i ==> 1 <= numbers[k] <= 7
-    {
-        assert 1 <= numbers[i] <= 7;
-        MultisetSliceLemma(numbers, i);
-        L[numbers[i]] := L[numbers[i]] + 1;
-        i := i + 1;
-    }
-
-    var it := n / 3;
-    var found := true;
-    var ans: seq<seq<int>> := [];
-    var ic := 0;
-
-    while ic < it && found
-        invariant 0 <= ic <= it
-        invariant found ==> |ans| == ic
-        invariant !found ==> |ans| <= ic
-        invariant forall j :: 0 <= j < |ans| ==> ValidTriplet(ans[j])
-        invariant forall j :: 0 <= j <= 7 ==> L[j] >= 0
-        decreases it - ic
-    {
-        var triplet: seq<int> := [];
-        var el := 1;
-
-        while el < 8 && |triplet| < 3
-            invariant 1 <= el <= 8
-            invariant |triplet| <= 3
-            invariant forall j :: 0 <= j < |triplet| ==> 1 <= triplet[j] <= 7
-            invariant forall j :: 0 <= j < |triplet| - 1 ==> triplet[j] < triplet[j+1] && triplet[j+1] % triplet[j] == 0
-            invariant forall j :: 0 <= j <= 7 ==> L[j] >= 0
-            invariant |triplet| > 0 ==> triplet[|triplet| - 1] < el
-        {
-            if L[el] > 0
-            {
-                if |triplet| == 0
-                {
-                    triplet := triplet + [el];
-                    L[el] := L[el] - 1;
-                }
-                else if el % triplet[|triplet| - 1] == 0 && el > triplet[|triplet| - 1]
-                {
-                    triplet := triplet + [el];
-                    L[el] := L[el] - 1;
-                }
-            }
-            el := el + 1;
-        }
-
-        if |triplet| == 3
-        {
-            ans := ans + [triplet];
-        }
-        else
-        {
-            found := false;
-        }
-        ic := ic + 1;
-    }
-
-    if found && |ans| == n / 3
-    {
-        FlattenPartitionSize(ans);
-        result := ans;
-    }
-    else
-    {
-        result := [];
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

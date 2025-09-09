@@ -1,5 +1,7 @@
+/*
 Given n students with distinct programming skills, divide them into the minimum number of teams 
 such that no two students with skills differing by exactly 1 are on the same team.
+*/
 
 predicate ValidInput(skills: seq<int>)
 {
@@ -11,67 +13,18 @@ predicate HasAdjacentSkills(skills: seq<int>)
     exists i, j :: 0 <= i < j < |skills| && (skills[i] - skills[j] == 1 || skills[j] - skills[i] == 1)
 }
 
-method SortSeq(s: seq<int>) returns (sorted: seq<int>)
-    ensures |sorted| == |s|
-    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-    ensures multiset(s) == multiset(sorted)
-{
-    if |s| == 0 {
-        return s;
-    }
+// <vc-helpers>
+// </vc-helpers>
 
-    sorted := s;
-    for i := 0 to |sorted|
-        invariant 0 <= i <= |sorted|
-        invariant |sorted| == |s|
-        invariant multiset(s) == multiset(sorted)
-        invariant forall x, y :: 0 <= x < y < i ==> sorted[x] <= sorted[y]
-        invariant forall x, y :: 0 <= x < i && i <= y < |sorted| ==> sorted[x] <= sorted[y]
-    {
-        if i == |sorted| {
-            break;
-        }
-
-        var minIndex := i;
-        for j := i + 1 to |sorted|
-            invariant i <= minIndex < |sorted|
-            invariant i + 1 <= j <= |sorted|
-            invariant forall k :: i <= k < j ==> sorted[minIndex] <= sorted[k]
-        {
-            if j < |sorted| && sorted[j] < sorted[minIndex] {
-                minIndex := j;
-            }
-        }
-        if minIndex != i {
-            sorted := sorted[i := sorted[minIndex]][minIndex := sorted[i]];
-        }
-    }
-}
-
+// <vc-spec>
 method solve(skills: seq<int>) returns (teams: int)
     requires ValidInput(skills)
     ensures teams == 1 || teams == 2
     ensures teams == 2 <==> HasAdjacentSkills(skills)
     ensures teams == 1 <==> !HasAdjacentSkills(skills)
+// </vc-spec>
+// <vc-code>
 {
-    if |skills| <= 1 {
-        return 1;
-    }
-
-    // Check for adjacent elements in original array
-    for i := 0 to |skills| - 1
-        invariant 0 <= i <= |skills| - 1
-        invariant forall x, y :: 0 <= x < i && x < y < |skills| ==> skills[x] - skills[y] != 1 && skills[y] - skills[x] != 1
-    {
-        for j := i + 1 to |skills|
-            invariant i + 1 <= j <= |skills|
-            invariant forall y :: i + 1 <= y < j ==> skills[i] - skills[y] != 1 && skills[y] - skills[i] != 1
-        {
-            if skills[i] - skills[j] == 1 || skills[j] - skills[i] == 1 {
-                return 2;
-            }
-        }
-    }
-
-    return 1;
+  assume {:axiom} false;
 }
+// </vc-code>

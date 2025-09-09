@@ -1,6 +1,8 @@
+/*
 Count the number of ways to paint n bricks in a row using m colors such that exactly k bricks 
 have a different color than the brick immediately to their left. The first brick is not counted 
 in this comparison. Result should be modulo 998,244,353.
+*/
 
 predicate ValidInput(n: nat, m: nat, k: nat) {
     n >= 1 && m >= 1 && k >= 0 && k <= n - 1
@@ -31,41 +33,16 @@ function ExpectedResult(n: nat, m: nat, k: nat): nat
     (m * power(m - 1, k) * binomial(n - 1, k)) % 998244353
 }
 
-lemma factorial_positive(n: nat)
-    ensures factorial(n) > 0
-{
-    if n == 0 {
-    } else {
-        factorial_positive(n - 1);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: nat, m: nat, k: nat) returns (result: nat)
     requires ValidInput(n, m, k)
     ensures result < 998244353
+// </vc-spec>
+// <vc-code>
 {
-    var MOD := 998244353;
-    var out := 1;
-
-    // Multiply by (m-1)^k
-    var i := 0;
-    while i < k
-        invariant 0 <= i <= k
-        invariant out == power(m - 1, i) % MOD
-        invariant out < MOD
-    {
-        out := (out * (m - 1)) % MOD;
-        i := i + 1;
-    }
-
-    // Multiply by m
-    out := (out * m) % MOD;
-
-    // Multiply by binomial coefficient C(n-1, k)
-    factorial_positive(k);
-    factorial_positive(n - 1 - k);
-    var binom := binomial(n - 1, k);
-    out := (out * binom) % MOD;
-
-    result := out;
+  assume {:axiom} false;
 }
+// </vc-code>

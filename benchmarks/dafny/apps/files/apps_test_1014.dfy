@@ -1,6 +1,8 @@
+/*
 Given an n×n chessboard where white queen starts at (1,1), black queen at (1,n),
 and all other squares contain green pawns. Players alternate turns capturing pieces
 with standard queen movement. Determine the winner under optimal play.
+*/
 
 predicate ValidInput(n: int) {
     n >= 2
@@ -30,13 +32,16 @@ predicate ValidResult(n: int, result: string)
         result == "white\n1 2\n"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: string)
     requires ValidInput(n)
     ensures ValidResult(n, result)
+// </vc-spec>
+// <vc-code>
 {
-    if n % 2 == 1 {
-        result := "black\n";
-    } else {
-        result := "white\n1 2\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

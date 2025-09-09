@@ -1,5 +1,7 @@
+/*
 Given a positive integer a, find the maximum possible value of gcd(a ⊕ b, a & b) 
 where b is chosen from the range [1, a-1] and ⊕ denotes XOR and & denotes AND operations.
+*/
 
 function power2(k: int): int
   requires k >= 0
@@ -58,75 +60,16 @@ predicate ValidResults(queries: seq<int>, results: seq<int>)
        results[i] == (if power2(c) - 1 <= 1 then 1 else largestProperDivisor(power2(c) - 1))))
 }
 
-method precompute() returns (s: seq<int>)
-  ensures |s| == 27
-  ensures forall i :: 0 <= i < 27 ==> s[i] >= 1
-  ensures forall i :: 0 <= i < 27 ==> (power2(i) - 1 <= 1 ==> s[i] == 1)
-  ensures forall i :: 0 <= i < 27 ==> (power2(i) - 1 > 1 ==> s[i] <= power2(i) - 1)
-  ensures forall i :: 0 <= i < 27 ==> (power2(i) - 1 > 1 ==> (power2(i) - 1) % s[i] == 0)
-  ensures forall i :: 0 <= i < 27 ==> (power2(i) - 1 > 1 ==> 
-    forall d {:trigger (power2(i) - 1) % d} :: s[i] < d < power2(i) - 1 ==> (power2(i) - 1) % d != 0)
-{
-  s := [];
-  var i := 0;
-  while i < 27 
-    invariant 0 <= i <= 27
-    invariant |s| == i
-    invariant forall j :: 0 <= j < i ==> s[j] >= 1
-    invariant forall j :: 0 <= j < i ==> (power2(j) - 1 <= 1 ==> s[j] == 1)
-    invariant forall j :: 0 <= j < i ==> (power2(j) - 1 > 1 ==> s[j] <= power2(j) - 1)
-    invariant forall j :: 0 <= j < i ==> (power2(j) - 1 > 1 ==> (power2(j) - 1) % s[j] == 0)
-    invariant forall j :: 0 <= j < i ==> (power2(j) - 1 > 1 ==> 
-      forall d {:trigger (power2(j) - 1) % d} :: s[j] < d < power2(j) - 1 ==> (power2(j) - 1) % d != 0)
-  {
-    var n := power2(i) - 1;
-    var z := if n <= 1 then 1 else largestProperDivisor(n);
-    s := s + [z];
-    i := i + 1;
-  }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(queries: seq<int>) returns (results: seq<int>)
   requires ValidQueries(queries)
   ensures ValidResults(queries, results)
+// </vc-spec>
+// <vc-code>
 {
-  var najdel := precompute();
-  results := [];
-
-  var q := 0;
-  while q < |queries| 
-    invariant 0 <= q <= |queries|
-    invariant |results| == q
-    invariant forall i :: 0 <= i < q ==> results[i] >= 1
-    invariant forall i :: 0 <= i < q ==> 
-      (exists c :: 1 <= c <= 26 && power2(c) - 1 >= queries[i] && 
-       (c == 1 || power2(c-1) - 1 < queries[i]) &&
-       (power2(c) - 1 > queries[i] ==> results[i] == power2(c) - 1) &&
-       (power2(c) - 1 == queries[i] ==> 
-         results[i] == (if power2(c) - 1 <= 1 then 1 else largestProperDivisor(power2(c) - 1))))
-  {
-    var n := queries[q];
-    var z := 1;
-    var c := 1;
-    while z < n && c < 26
-      invariant z >= 1
-      invariant c >= 1
-      invariant z == power2(c) - 1
-      invariant c <= 26
-    {
-      z := 2 * z + 1;
-      c := c + 1;
-    }
-
-    var result: int;
-    if z > n {
-      result := z;
-    } else {
-      assert c <= 26;
-      assert 0 <= c < |najdel|;
-      result := najdel[c];
-    }
-    results := results + [result];
-    q := q + 1;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

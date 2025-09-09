@@ -1,5 +1,7 @@
+/*
 Given N squares with heights, determine if it's possible to make heights non-decreasing
 from left to right. For each square, you can decrease its height by 1 or leave unchanged.
+*/
 
 function maxHeightUpTo(heights: seq<int>, index: int): int
   requires |heights| > 0
@@ -23,32 +25,16 @@ predicate CanMakeNonDecreasing(heights: seq<int>)
   forall i :: 0 <= i < |heights| ==> heights[i] >= maxHeightUpTo(heights, i) - 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, heights: seq<int>) returns (result: string)
   requires ValidInput(n, heights)
   ensures result == "Yes" <==> CanMakeNonDecreasing(heights)
+// </vc-spec>
+// <vc-code>
 {
-  var hmax := heights[0];
-  var flg := true;
-
-  var i := 0;
-  while i < |heights| && flg
-    invariant 0 <= i <= |heights|
-    invariant hmax >= heights[0]
-    invariant forall j :: 0 <= j < i ==> hmax >= heights[j]
-    invariant i == 0 ==> hmax == heights[0]
-    invariant i > 0 ==> hmax == maxHeightUpTo(heights, i-1)
-    invariant flg <==> (forall j :: 0 <= j < i ==> heights[j] >= maxHeightUpTo(heights, j) - 1)
-  {
-    hmax := if hmax > heights[i] then hmax else heights[i];
-    if heights[i] < hmax - 1 {
-      flg := false;
-    }
-    i := i + 1;
-  }
-
-  if flg {
-    result := "Yes";
-  } else {
-    result := "No";
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

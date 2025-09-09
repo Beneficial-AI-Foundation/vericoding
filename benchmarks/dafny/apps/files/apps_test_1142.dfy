@@ -1,8 +1,10 @@
+/*
 Given a gun with magazine size k and n waves of monsters, find the minimum total bullets
 needed to clear all waves. Each wave i has monsters that spawn at time l_i and must be
 killed by time r_i. Shooting kills one monster instantly, reloading takes 1 time unit
 and discards remaining bullets. Waves are non-overlapping and chronological.
 Return -1 if impossible.
+*/
 
 datatype Wave = Wave(start_time: nat, end_time: nat, monsters: nat)
 
@@ -59,57 +61,19 @@ function CalculateMinimumBullets(waves: seq<Wave>, k: nat): nat
     CalculateMinimumBulletsHelper(waves, k, 0, k)
 }
 
-function CalculateMinimumBulletsHelper(waves: seq<Wave>, k: nat, waveIndex: nat, currentAmmo: nat): nat
-    requires k > 0
-    requires currentAmmo <= k
-    requires ValidWaves(waves)
-    decreases |waves| - waveIndex
-    ensures |waves| > waveIndex ==> CalculateMinimumBulletsHelper(waves, k, waveIndex, currentAmmo) > 0
-{
-    if waveIndex >= |waves| then 0
-    else
-        var wave := waves[waveIndex];
-        var monstersToKill := wave.monsters;
-        var bulletsUsed := CalculateBulletsForWave(monstersToKill, k, currentAmmo);
-        var remainingAmmo := CalculateRemainingAmmo(monstersToKill, k, currentAmmo);
-        bulletsUsed + CalculateMinimumBulletsHelper(waves, k, waveIndex + 1, remainingAmmo)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function CalculateBulletsForWave(monsters: nat, k: nat, currentAmmo: nat): nat
-    requires k > 0
-    requires currentAmmo <= k
-    ensures monsters > 0 ==> CalculateBulletsForWave(monsters, k, currentAmmo) > 0
-{
-    if monsters <= currentAmmo then monsters
-    else 
-        var additionalMonstersAfterCurrentAmmo := monsters - currentAmmo;
-        var reloadsNeeded := (additionalMonstersAfterCurrentAmmo + k - 1) / k;
-        currentAmmo + reloadsNeeded * k
-}
-
-function CalculateRemainingAmmo(monsters: nat, k: nat, currentAmmo: nat): nat
-    requires k > 0
-    requires currentAmmo <= k
-    ensures CalculateRemainingAmmo(monsters, k, currentAmmo) <= k
-{
-    if monsters <= currentAmmo then currentAmmo - monsters
-    else 
-        var additionalMonstersAfterCurrentAmmo := monsters - currentAmmo;
-        var bulletsUsedInLastMagazine := additionalMonstersAfterCurrentAmmo % k;
-        if bulletsUsedInLastMagazine == 0 then 0
-        else k - bulletsUsedInLastMagazine
-}
-
+// <vc-spec>
 method SolveMonsterWaves(waves: seq<Wave>, k: nat) returns (result: int)
     requires ValidWaves(waves)
     requires k > 0
     ensures result == -1 <==> !CanSolveAllWaves(waves, k)
     ensures result >= 0 <==> CanSolveAllWaves(waves, k)
     ensures CanSolveAllWaves(waves, k) ==> result == CalculateMinimumBullets(waves, k)
+// </vc-spec>
+// <vc-code>
 {
-    if !CanSolveAllWaves(waves, k) {
-        result := -1;
-    } else {
-        result := CalculateMinimumBullets(waves, k);
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

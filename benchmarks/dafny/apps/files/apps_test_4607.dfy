@@ -1,5 +1,7 @@
+/*
 Count the number of "Takahashi" dates from 2018-1-1 through 2018-a-b (inclusive).
 A Takahashi date is one where the month and day numbers are equal (e.g., 1-1, 2-2, 3-3, etc.).
+*/
 
 predicate ValidInput(a: int, b: int)
 {
@@ -12,15 +14,18 @@ function TakahashiCount(a: int, b: int): int
     if a > b then a - 1 else a
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int) returns (result: int)
     requires ValidInput(a, b)
     ensures result == TakahashiCount(a, b)
     ensures a > b ==> result == a - 1
     ensures a <= b ==> result == a
+// </vc-spec>
+// <vc-code>
 {
-    if a > b {
-        result := a - 1;
-    } else {
-        result := a;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

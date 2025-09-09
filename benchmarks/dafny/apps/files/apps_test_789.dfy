@@ -1,6 +1,8 @@
+/*
 Given a lucky number n (containing only digits 4 and 7), find its 1-based index
 when all lucky numbers are sorted in increasing order. Lucky numbers are positive
 integers containing only the digits 4 and 7.
+*/
 
 predicate ValidLuckyNumber(n: string)
 {
@@ -40,29 +42,16 @@ predicate ValidResult(n: string, result: int)
     result > 0 && result == 2 * (pow2(|n|-1) - 1) + binaryToInt(convertToBinary(n)) + 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: string) returns (result: int)
     requires ValidLuckyNumber(n)
     ensures ValidResult(n, result)
+// </vc-spec>
+// <vc-code>
 {
-    var x := |n|;
-    var binary_n := "";
-    var i := 0;
-    while i < |n|
-        invariant 0 <= i <= |n|
-        invariant |binary_n| == i
-        invariant forall j :: 0 <= j < i ==> (n[j] == '4' ==> binary_n[j] == '0') && (n[j] == '7' ==> binary_n[j] == '1')
-        invariant binary_n == convertToBinary(n[..i])
-    {
-        if n[i] == '4' {
-            binary_n := binary_n + "0";
-        } else {
-            binary_n := binary_n + "1";
-        }
-        i := i + 1;
-    }
-
-    assert binary_n == convertToBinary(n);
-    var tmp := 2 * (pow2(x-1) - 1);
-    var binary_value := binaryToInt(binary_n);
-    result := tmp + binary_value + 1;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,5 +1,7 @@
+/*
 Read an integer N from input. If N=1, print "Hello World". If N=2, read two additional integers A and B, then print their sum.
 Constraints: N is 1 or 2, A and B are integers between 1 and 9 (inclusive).
+*/
 
 predicate ValidInput(stdin_input: string)
 {
@@ -64,55 +66,16 @@ function IntToStringHelper(n: int): string
     else IntToStringHelper(n / 10) + [(n % 10 + '0' as int) as char]
 }
 
-method SplitLines(s: string) returns (lines: seq<string>)
-    requires |s| >= 0
-    ensures forall i :: 0 <= i < |lines| ==> '\n' !in lines[i]
-    ensures lines == SplitLinesFunc(s)
-{
-    lines := [];
-    var current := "";
-    var i := 0;
+// <vc-helpers>
+// </vc-helpers>
 
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant forall j :: 0 <= j < |lines| ==> '\n' !in lines[j]
-        invariant '\n' !in current
-        invariant SplitLinesFuncHelper(s, i, current, lines) == SplitLinesFunc(s)
-    {
-        if s[i] == '\n' {
-            lines := lines + [current];
-            current := "";
-        } else {
-            current := current + [s[i]];
-        }
-        i := i + 1;
-    }
-
-    if current != "" {
-        lines := lines + [current];
-    }
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures result == ExpectedOutput(stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(stdin_input);
-    if |lines| == 0 {
-        result := "";
-        return;
-    }
-
-    var n := StringToInt(lines[0]);
-
-    if n == 1 {
-        result := "Hello World\n";
-    } else if n != 1 && |lines| >= 3 {
-        var a := StringToInt(lines[1]);
-        var b := StringToInt(lines[2]);
-        var tmpCall1 := IntToString(a + b);
-        result := tmpCall1 + "\n";
-    } else {
-        result := "";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

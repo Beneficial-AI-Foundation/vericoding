@@ -1,7 +1,9 @@
+/*
 Given n books numbered 1 to n and a library with capacity k, over n consecutive days
 a person requests book a_i on day i. The library starts empty and each book costs 1 CHF.
 When at capacity, one existing book must be removed before adding a new one.
 Find the minimum cost to satisfy all requests using optimal cache replacement strategy.
+*/
 
 predicate ValidInput(n: int, k: int, requests: seq<int>)
 {
@@ -14,163 +16,16 @@ predicate ValidSolution(n: int, k: int, requests: seq<int>, cost: int)
     ValidInput(n, k, requests) && cost >= 0 && cost <= n
 }
 
-function SimulateOptimalCache(requests: seq<int>, k: int, library: seq<int>, pos: int, cost_so_far: int): int
-    requires k >= 1
-    requires 0 <= pos <= |requests|
-    requires |library| <= k
-    requires cost_so_far >= 0
-    decreases |requests| - pos
-{
-    if pos == |requests| then cost_so_far
-    else
-        var book := requests[pos];
-        if book in library then
-            SimulateOptimalCache(requests, k, library, pos + 1, cost_so_far)
-        else
-            var new_cost := cost_so_far + 1;
-            if |library| < k then
-                SimulateOptimalCache(requests, k, library + [book], pos + 1, new_cost)
-            else
-                var victim_idx := FindFurthestFutureBook(library, requests, pos + 1, |requests|);
-                var new_library := library[victim_idx := book];
-                SimulateOptimalCache(requests, k, new_library, pos + 1, new_cost)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function FindFurthestFutureBook(library: seq<int>, requests: seq<int>, start_pos: int, n: int): int
-    requires |library| > 0
-    requires 0 <= start_pos <= |requests|
-    requires n >= |requests|
-    ensures 0 <= FindFurthestFutureBook(library, requests, start_pos, n) < |library|
-{
-    var distances := seq(|library|, i requires 0 <= i < |library| => FindNextOccurrence(library[i], requests, start_pos, n));
-    FindMaxIndex(distances)
-}
-
-function FindNextOccurrence(book: int, requests: seq<int>, start_pos: int, n: int): int
-    requires 0 <= start_pos <= |requests|
-    requires n >= |requests|
-    ensures FindNextOccurrence(book, requests, start_pos, n) >= start_pos
-    decreases |requests| - start_pos
-{
-    if start_pos >= |requests| then n
-    else if requests[start_pos] == book then start_pos
-    else FindNextOccurrence(book, requests, start_pos + 1, n)
-}
-
-function FindMaxIndex(seq_vals: seq<int>): int
-    requires |seq_vals| > 0
-    ensures 0 <= FindMaxIndex(seq_vals) < |seq_vals|
-{
-    FindMaxIndexHelper(seq_vals, 0, 0, seq_vals[0])
-}
-
-function FindMaxIndexHelper(seq_vals: seq<int>, current_idx: int, max_idx: int, max_val: int): int
-    requires 0 <= current_idx <= |seq_vals|
-    requires 0 <= max_idx < |seq_vals|
-    requires |seq_vals| > 0
-    requires current_idx == 0 ==> max_val == seq_vals[max_idx]
-    requires current_idx > 0 ==> max_val == seq_vals[max_idx] && forall j :: 0 <= j < current_idx ==> seq_vals[j] <= max_val
-    ensures 0 <= FindMaxIndexHelper(seq_vals, current_idx, max_idx, max_val) < |seq_vals|
-    decreases |seq_vals| - current_idx
-{
-    if current_idx >= |seq_vals| then max_idx
-    else if seq_vals[current_idx] > max_val then
-        FindMaxIndexHelper(seq_vals, current_idx + 1, current_idx, seq_vals[current_idx])
-    else
-        FindMaxIndexHelper(seq_vals, current_idx + 1, max_idx, max_val)
-}
-
+// <vc-spec>
 method solve(n: int, k: int, requests: seq<int>) returns (cost: int)
     requires ValidInput(n, k, requests)
     ensures ValidSolution(n, k, requests, cost)
+// </vc-spec>
+// <vc-code>
 {
-    var library: seq<int> := [];
-    cost := 0;
-
-    var i := 0;
-    while i < |requests|
-        invariant 0 <= i <= |requests|
-        invariant 0 <= cost <= i
-        invariant |library| <= k
-        invariant cost <= n
-        invariant forall j :: 0 <= j < |library| ==> 1 <= library[j] <= n
-    {
-        var book := requests[i];
-
-        // Check if book is in library
-        var bookInLibrary := false;
-        var j := 0;
-        while j < |library|
-            invariant 0 <= j <= |library|
-            invariant bookInLibrary ==> exists idx :: 0 <= idx < j && library[idx] == book
-            invariant !bookInLibrary ==> forall idx :: 0 <= idx < j ==> library[idx] != book
-        {
-            if library[j] == book {
-                bookInLibrary := true;
-                break;
-            }
-            j := j + 1;
-        }
-
-        assert bookInLibrary <==> book in library;
-
-        if !bookInLibrary {
-            cost := cost + 1;
-
-            if |library| < k {
-                library := library + [book];
-            } else {
-                // Find which book to remove using furthest-in-future strategy
-                assert n >= 1;
-                var found := seq(|library|, _ => n);
-
-                var futureIdx := i + 1;
-                while futureIdx < |requests|
-                    invariant i + 1 <= futureIdx <= |requests|
-                    invariant |found| == |library|
-                    invariant forall idx :: 0 <= idx < |found| ==> found[idx] >= 0
-                    invariant forall idx :: 0 <= idx < |found| ==> found[idx] == n || (0 <= found[idx] < futureIdx - i)
-                {
-                    var futureBook := requests[futureIdx];
-                    var libIdx := 0;
-                    while libIdx < |library|
-                        invariant 0 <= libIdx <= |library|
-                        invariant |found| == |library|
-                        invariant forall idx :: 0 <= idx < |found| ==> found[idx] >= 0
-                        invariant forall idx :: 0 <= idx < |found| ==> found[idx] == n || (0 <= found[idx] < futureIdx - i)
-                    {
-                        if library[libIdx] == futureBook && found[libIdx] == n {
-                            assert futureIdx - i - 1 >= 0;
-                            found := found[libIdx := futureIdx - i - 1];
-                        }
-                        libIdx := libIdx + 1;
-                    }
-                    futureIdx := futureIdx + 1;
-                }
-
-                // Find the index with maximum value in found
-                assert |found| == |library| > 0;
-                var maxVal := found[0];
-                var maxIdx := 0;
-                var idx := 1;
-                while idx < |found|
-                    invariant 1 <= idx <= |found|
-                    invariant 0 <= maxIdx < |found|
-                    invariant maxVal == found[maxIdx]
-                    invariant forall j :: 0 <= j < idx ==> found[j] <= maxVal
-                {
-                    if found[idx] > maxVal {
-                        maxVal := found[idx];
-                        maxIdx := idx;
-                    }
-                    idx := idx + 1;
-                }
-
-                assert 0 <= maxIdx < |library|;
-                library := library[maxIdx := book];
-            }
-        }
-
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

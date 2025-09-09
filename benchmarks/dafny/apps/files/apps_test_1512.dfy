@@ -1,8 +1,10 @@
+/*
 Given a permutation of integers from 1 to n, determine which single element to remove
 to maximize the number of records in the remaining sequence. A record is an element
 that is greater than all elements that appear before it in the sequence. If multiple
 elements can be removed to achieve the same maximum number of records, return the
 smallest such element.
+*/
 
 predicate ValidPermutation(p: seq<int>, n: int)
 {
@@ -28,66 +30,19 @@ function countRecordsAfterRemoval(p: seq<int>, toRemove: int): int
   countRecords(filtered)
 }
 
-function countRecordsFromIndex(s: seq<int>, index: int, maxSoFar: int): int
-  requires 0 <= index <= |s|
-  ensures countRecordsFromIndex(s, index, maxSoFar) >= 0
-  decreases |s| - index
-{
-  if index >= |s| then 0
-  else if s[index] > maxSoFar then 
-    1 + countRecordsFromIndex(s, index + 1, s[index])
-  else 
-    countRecordsFromIndex(s, index + 1, maxSoFar)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function indexOf(p: seq<int>, x: int): int
-  requires x in p
-  ensures 0 <= indexOf(p, x) < |p|
-  ensures p[indexOf(p, x)] == x
-{
-  indexOfFromPos(p, x, 0)
-}
-
-function indexOfFromPos(p: seq<int>, x: int, pos: int): int
-  requires 0 <= pos <= |p|
-  requires x in p[pos..]
-  ensures pos <= indexOfFromPos(p, x, pos) < |p|
-  ensures p[indexOfFromPos(p, x, pos)] == x
-  decreases |p| - pos
-{
-  if p[pos] == x then pos
-  else indexOfFromPos(p, x, pos + 1)
-}
-
+// <vc-spec>
 method solve(n: int, p: seq<int>) returns (result: int)
   requires ValidPermutation(p, n)
   ensures 1 <= result <= n
   ensures result in p
   ensures forall x :: x in p ==> countRecordsAfterRemoval(p, result) >= countRecordsAfterRemoval(p, x)
   ensures forall x :: x in p && countRecordsAfterRemoval(p, x) == countRecordsAfterRemoval(p, result) ==> result <= x
+// </vc-spec>
+// <vc-code>
 {
-  if n == 1 {
-    return p[0];
-  }
-
-  var bestElement := p[0];
-  var bestCount := countRecordsAfterRemoval(p, p[0]);
-
-  var i := 1;
-  while i < n
-    invariant 1 <= i <= n
-    invariant bestElement in p
-    invariant bestCount == countRecordsAfterRemoval(p, bestElement)
-    invariant forall j :: 0 <= j < i ==> countRecordsAfterRemoval(p, p[j]) <= bestCount
-    invariant forall j :: 0 <= j < i && countRecordsAfterRemoval(p, p[j]) == bestCount ==> bestElement <= p[j]
-  {
-    var currentCount := countRecordsAfterRemoval(p, p[i]);
-    if currentCount > bestCount || (currentCount == bestCount && p[i] < bestElement) {
-      bestElement := p[i];
-      bestCount := currentCount;
-    }
-    i := i + 1;
-  }
-
-  return bestElement;
+  assume {:axiom} false;
 }
+// </vc-code>

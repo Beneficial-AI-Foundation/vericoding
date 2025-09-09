@@ -1,5 +1,7 @@
+/*
 Given n cola cans where each can i has remaining volume a_i and capacity b_i,
 determine if all remaining cola can be poured into exactly 2 cans.
+*/
 
 predicate ValidInput(a: seq<int>, b: seq<int>)
 {
@@ -54,57 +56,17 @@ function findMaxExcluding(s: seq<int>, exclude: int): int
     else if s[leftMax] >= s[rightMax] then leftMax else rightMax
 }
 
-method findTwoLargest(s: seq<int>) returns (sum: int)
-  requires |s| >= 2
-  ensures sum == findTwoLargestSum(s)
-{
-  var first := s[0];
-  var second := s[1];
-  var firstIdx := 0;
-  var secondIdx := 1;
+// <vc-helpers>
+// </vc-helpers>
 
-  if second > first {
-    first := s[1];
-    second := s[0];
-    firstIdx := 1;
-    secondIdx := 0;
-  }
-
-  var i := 2;
-  while i < |s|
-    invariant 2 <= i <= |s|
-    invariant 0 <= firstIdx < |s| && 0 <= secondIdx < |s| && firstIdx != secondIdx
-    invariant first == s[firstIdx] && second == s[secondIdx]
-    invariant forall k :: 0 <= k < i ==> s[k] <= first
-    invariant forall k :: 0 <= k < i && k != firstIdx ==> s[k] <= second
-    invariant firstIdx < i && secondIdx < i
-  {
-    if s[i] > first {
-      second := first;
-      secondIdx := firstIdx;
-      first := s[i];
-      firstIdx := i;
-    } else if s[i] > second {
-      second := s[i];
-      secondIdx := i;
-    }
-    i := i + 1;
-  }
-
-  sum := first + second;
-}
-
+// <vc-spec>
 method solve(a: seq<int>, b: seq<int>) returns (result: string)
   requires ValidInput(a, b)
   ensures result == "YES" || result == "NO"
   ensures result == "YES" <==> findTwoLargestSum(b) >= sumSeq(a)
+// </vc-spec>
+// <vc-code>
 {
-  var totalVolume := sumSeq(a);
-  var maxCapacities := findTwoLargest(b);
-
-  if maxCapacities >= totalVolume {
-    result := "YES";
-  } else {
-    result := "NO";
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

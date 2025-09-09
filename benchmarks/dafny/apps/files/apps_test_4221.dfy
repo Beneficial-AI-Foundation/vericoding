@@ -1,6 +1,8 @@
+/*
 Convert a singular noun string containing only lowercase English letters to plural form.
 If the string does not end with 's', append 's'.
 If the string ends with 's', append 'es'.
+*/
 
 predicate ValidInput(s: string) 
 {
@@ -15,13 +17,16 @@ predicate CorrectPlural(s: string, result: string)
         result == s + "s"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires ValidInput(s)
     ensures CorrectPlural(s, result)
+// </vc-spec>
+// <vc-code>
 {
-    if |s| > 0 && s[|s| - 1] == 's' {
-        result := s + "es";
-    } else {
-        result := s + "s";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

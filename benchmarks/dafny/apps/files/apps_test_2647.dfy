@@ -1,7 +1,9 @@
+/*
 Given an H×W grid where each cell is either black (#) or white (.), find the maximum number 
 of white cells that can be changed to black such that a path still exists from cell (1,1) to 
 cell (H,W). Movement is allowed only through white cells in 4 directions. Cells (1,1) and 
 (H,W) cannot be changed and must be white. Return -1 if no path exists initially.
+*/
 
 predicate isValidInput(input: string)
 {
@@ -66,47 +68,10 @@ function minCutSize(grid: GridData): int
     2
 }
 
-function intToString(n: int): string
-{
-    if n == 0 then "0"
-    else if n > 0 then intToStringPos(n)
-    else "-" + intToStringPos(-n)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function intToStringPos(n: int): string
-    requires n > 0
-{
-    if n < 10 then [digitToChar(n)]
-    else intToStringPos(n / 10) + [digitToChar(n % 10)]
-}
-
-function digitToChar(d: int): char
-    requires 0 <= d <= 9
-{
-    match d
-        case 0 => '0'
-        case 1 => '1'
-        case 2 => '2'
-        case 3 => '3'
-        case 4 => '4'
-        case 5 => '5'
-        case 6 => '6'
-        case 7 => '7'
-        case 8 => '8'
-        case 9 => '9'
-}
-
-predicate isAdjacentCell(i1: int, j1: int, i2: int, j2: int)
-{
-    (i1 == i2 && (j1 == j2 + 1 || j1 == j2 - 1)) ||
-    (j1 == j2 && (i1 == i2 + 1 || i1 == i2 - 1))
-}
-
-predicate inBounds(i: int, j: int, h: int, w: int)
-{
-    0 <= i < h && 0 <= j < w
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (output: string)
     requires |stdin_input| > 0
     requires isValidInput(stdin_input)
@@ -119,13 +84,9 @@ method solve(stdin_input: string) returns (output: string)
                 grid == parseInput(stdin_input) &&
                 result == maxChangeableWhiteCells(grid) &&
                 output == intToString(result) + "\n")
+// </vc-spec>
+// <vc-code>
 {
-    var grid := parseInput(stdin_input);
-
-    if pathExists(grid) {
-        var result := maxChangeableWhiteCells(grid);
-        output := intToString(result) + "\n";
-    } else {
-        output := "-1\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

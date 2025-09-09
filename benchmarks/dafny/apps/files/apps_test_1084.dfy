@@ -1,8 +1,10 @@
+/*
 Given an n×m grid that is initially all white, determine if it can be transformed into a target 
 configuration using a sequence of operations. Each operation selects a non-empty subset of rows 
 and a non-empty subset of columns, then colors all intersections black. Each row and each column 
 can be used in at most one operation across all operations. The key constraint is that if two 
 black cells share the same column, their rows must have identical patterns of black cells.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -58,84 +60,18 @@ function ParseDimensions(line: string): (int, int)
         (0, 0)
 }
 
-function SplitLinesHelper(input: string, start: int, acc: seq<string>): seq<string>
-    requires 0 <= start <= |input|
-    decreases |input| - start
-{
-    if start >= |input| then acc
-    else 
-        var nextNewline := FindNextNewline(input, start);
-        if nextNewline == -1 then
-            acc + [input[start..]]
-        else if start <= nextNewline && nextNewline + 1 <= |input| then
-            SplitLinesHelper(input, nextNewline + 1, acc + [input[start..nextNewline]])
-        else
-            acc + [input[start..]]
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function FindNextNewline(input: string, start: int): int
-    requires 0 <= start <= |input|
-    decreases |input| - start
-{
-    if start >= |input| then -1
-    else if input[start] == '\n' then start
-    else FindNextNewline(input, start + 1)
-}
-
-function SplitOnSpace(s: string): seq<string>
-{
-    SplitOnSpaceHelper(s, 0, [], "")
-}
-
-function SplitOnSpaceHelper(s: string, pos: int, acc: seq<string>, current: string): seq<string>
-    requires 0 <= pos
-    decreases |s| - pos
-{
-    if pos >= |s| then
-        if |current| > 0 then acc + [current] else acc
-    else if pos < |s| then
-        if s[pos] == ' ' then
-            if |current| > 0 then 
-                SplitOnSpaceHelper(s, pos + 1, acc + [current], "")
-            else
-                SplitOnSpaceHelper(s, pos + 1, acc, "")
-        else
-            SplitOnSpaceHelper(s, pos + 1, acc, current + [s[pos]])
-    else
-        acc
-}
-
-function StringToInt(s: string): int
-{
-    if |s| == 0 then 0
-    else if s == "1" then 1
-    else if s == "2" then 2
-    else if s == "3" then 3
-    else if s == "4" then 4
-    else if s == "5" then 5
-    else if s == "10" then 10
-    else if s == "50" then 50
-    else 0
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures result == "Yes\n" || result == "No\n"
     ensures |result| > 0
     ensures result == "Yes\n" <==> CanBeConstructedByOperations(stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    var s := "example";
-    var i := 0;
-
-    while i < |s|
-        invariant 0 <= i <= |s|
-    {
-        i := i + 1;
-    }
-
-    if CanBeConstructedByOperations(stdin_input) {
-        result := "Yes\n";
-    } else {
-        result := "No\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

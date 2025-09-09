@@ -1,6 +1,8 @@
+/*
 Given a wake-up time and sleep duration, both in "hh:mm" 24-hour format,
 calculate the bedtime by subtracting the sleep duration from the wake-up time.
 Handle day wrap-around when the bedtime falls on the previous day.
+*/
 
 predicate ValidTimeFormat(time_str: string)
 {
@@ -70,66 +72,17 @@ predicate CorrectBedtime(stdin_input: string, result: string)
     result_hour == bed_hour && result_min == bed_min
 }
 
-function FindFirstNewline(s: string): int
-    requires exists i :: 0 <= i < |s| && s[i] == '\n'
-    ensures 0 <= FindFirstNewline(s) < |s|
-    ensures s[FindFirstNewline(s)] == '\n'
-    ensures forall i :: 0 <= i < FindFirstNewline(s) ==> s[i] != '\n'
-{
-    if s[0] == '\n' then 0
-    else 1 + FindFirstNewline(s[1..])
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function FindSecondNewline(s: string, first: int): int
-    requires 0 <= first < |s|
-    requires s[first] == '\n'
-    requires exists i :: first < i < |s| && s[i] == '\n'
-    ensures first < FindSecondNewline(s, first) < |s|
-    ensures s[FindSecondNewline(s, first)] == '\n'
-    ensures forall i :: first < i < FindSecondNewline(s, first) ==> s[i] != '\n'
-    decreases |s| - first - 1
-{
-    FindSecondNewlineHelper(s, first + 1)
-}
-
-function FindSecondNewlineHelper(s: string, start: int): int
-    requires 0 <= start < |s|
-    requires exists i :: start <= i < |s| && s[i] == '\n'
-    ensures start <= FindSecondNewlineHelper(s, start) < |s|
-    ensures s[FindSecondNewlineHelper(s, start)] == '\n'
-    ensures forall i :: start <= i < FindSecondNewlineHelper(s, start) ==> s[i] != '\n'
-    decreases |s| - start
-{
-    if s[start] == '\n' then start
-    else FindSecondNewlineHelper(s, start + 1)
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures ValidOutput(result)
     ensures CorrectBedtime(stdin_input, result)
+// </vc-spec>
+// <vc-code>
 {
-    var first_nl := FindFirstNewline(stdin_input);
-    var second_nl := FindSecondNewline(stdin_input, first_nl);
-    var s := stdin_input[..first_nl];
-    var t := stdin_input[first_nl+1..second_nl];
-
-    var (wake_hour, wake_min) := ParseTime(s);
-    var (sleep_hour, sleep_min) := ParseTime(t);
-    var (bed_hour, bed_min) := CalculateBedtime(wake_hour, wake_min, sleep_hour, sleep_min);
-
-    var hour_tens := bed_hour / 10;
-    var hour_ones := bed_hour % 10;
-    var min_tens := bed_min / 10;
-    var min_ones := bed_min % 10;
-
-    assert 0 <= hour_tens <= 2;
-    assert 0 <= hour_ones <= 9;
-    assert 0 <= min_tens <= 5;
-    assert 0 <= min_ones <= 9;
-
-    var hour_str := [(hour_tens as char + '0'), (hour_ones as char + '0')];
-    var min_str := [(min_tens as char + '0'), (min_ones as char + '0')];
-
-    result := hour_str + ":" + min_str + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

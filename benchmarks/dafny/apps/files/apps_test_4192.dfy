@@ -1,5 +1,7 @@
+/*
 Determine if Takahashi can travel D meters in T minutes at a speed of S meters per minute.
 Print "Yes" if he can travel the distance in the given time, otherwise print "No".
+*/
 
 predicate ValidInput(D: int, T: int, S: int)
 {
@@ -11,14 +13,17 @@ predicate CanTravel(D: int, T: int, S: int)
     D <= T * S
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(D: int, T: int, S: int) returns (result: string)
     requires ValidInput(D, T, S)
     ensures CanTravel(D, T, S) ==> result == "Yes"
     ensures !CanTravel(D, T, S) ==> result == "No"
+// </vc-spec>
+// <vc-code>
 {
-    if D > T * S {
-        result := "No";
-    } else {
-        result := "Yes";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

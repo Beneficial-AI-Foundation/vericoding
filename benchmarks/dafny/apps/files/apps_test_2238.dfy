@@ -1,8 +1,10 @@
+/*
 Given an odd integer n (3 ≤ n ≤ 101), create an n×n matrix representing a crystal with a diamond pattern.
 Use 'D' for diamond cells and '*' for all other cells.
 The diamond pattern forms a symmetric diamond shape where the top half starts with 1 'D' and increases by 2 'D's per row
 until the middle row has n 'D's, then the bottom half decreases symmetrically.
 All 'D's in each row are centered with '*' characters filling remaining positions.
+*/
 
 predicate ValidInput(n: int)
 {
@@ -33,66 +35,17 @@ predicate CorrectDiamondPattern(result: seq<string>, n: int)
     )
 }
 
-function RepeatChar(c: char, count: int): string
-    requires count >= 0
-    ensures |RepeatChar(c, count)| == count
-{
-    if count == 0 then ""
-    else [c] + RepeatChar(c, count - 1)
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int) returns (result: seq<string>)
     requires ValidInput(n)
     ensures ValidResult(result, n)
     ensures CorrectDiamondPattern(result, n)
+// </vc-spec>
+// <vc-code>
 {
-    var magic := (n - 1) / 2;
-    var rows: seq<string> := [];
-
-    // First loop: t from magic down to 0
-    var t := magic;
-    while t >= 0
-        decreases t
-        invariant -1 <= t <= magic
-        invariant |rows| == magic - t
-        invariant forall i :: 0 <= i < |rows| ==> |rows[i]| == n
-        invariant forall i :: 0 <= i < |rows| ==> 
-            var stars := magic - i;
-            var diamonds := n - 2 * stars;
-            rows[i] == RepeatChar('*', stars) + RepeatChar('D', diamonds) + RepeatChar('*', stars)
-    {
-        var stars_left := RepeatChar('*', t);
-        var diamonds := RepeatChar('D', n - 2 * t);
-        var stars_right := RepeatChar('*', t);
-        var row := stars_left + diamonds + stars_right;
-        rows := rows + [row];
-        t := t - 1;
-    }
-
-    // Second loop: u from 1 to magic
-    var u := 1;
-    while u <= magic
-        decreases magic - u
-        invariant 1 <= u <= magic + 1
-        invariant |rows| == magic + 1 + u - 1
-        invariant forall i :: 0 <= i < |rows| ==> |rows[i]| == n
-        invariant forall i :: 0 <= i <= magic ==> 
-            var stars := magic - i;
-            var diamonds := n - 2 * stars;
-            rows[i] == RepeatChar('*', stars) + RepeatChar('D', diamonds) + RepeatChar('*', stars)
-        invariant forall i :: magic + 1 <= i < |rows| ==> 
-            var v := i - magic;
-            var stars := v;
-            var diamonds := n - 2 * stars;
-            rows[i] == RepeatChar('*', stars) + RepeatChar('D', diamonds) + RepeatChar('*', stars)
-    {
-        var stars_left := RepeatChar('*', u);
-        var diamonds := RepeatChar('D', n - 2 * u);
-        var stars_right := RepeatChar('*', u);
-        var row := stars_left + diamonds + stars_right;
-        rows := rows + [row];
-        u := u + 1;
-    }
-
-    result := rows;
+  assume {:axiom} false;
 }
+// </vc-code>

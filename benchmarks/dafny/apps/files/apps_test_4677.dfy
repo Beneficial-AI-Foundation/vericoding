@@ -1,5 +1,7 @@
+/*
 Simulate a 3-key text editor that processes keystrokes: '0' and '1' append characters,
 'B' deletes the rightmost character if the string is non-empty.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -23,39 +25,17 @@ predicate ValidOutput(result: string)
     forall i :: 0 <= i < |result| ==> result[i] in {'0', '1'}
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires ValidInput(s)
     ensures ValidOutput(result)
     ensures result == SimulateKeystrokes(s)
+// </vc-spec>
+// <vc-code>
 {
-    var ans: seq<char> := [];
-
-    for i := 0 to |s|
-        invariant forall j :: 0 <= j < |ans| ==> ans[j] in {'0', '1'}
-        invariant ans == SimulateKeystrokes(s[..i])
-    {
-        var c := s[i];
-        var prev := ans;
-
-        if c == 'B' {
-            if |ans| > 0 {
-                ans := ans[..|ans|-1];
-            }
-        } else {
-            ans := ans + [c];
-        }
-
-        assert s[..i+1] == s[..i] + [c];
-        assert SimulateKeystrokes(s[..i+1]) == 
-            (if c == 'B' then
-                (if |prev| > 0 then prev[..|prev|-1] else prev)
-            else
-                prev + [c]);
-        assert ans == SimulateKeystrokes(s[..i+1]);
-    }
-
-    assert s[..|s|] == s;
-    assert ans == SimulateKeystrokes(s);
-
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

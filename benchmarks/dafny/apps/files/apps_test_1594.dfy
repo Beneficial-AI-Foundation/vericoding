@@ -1,6 +1,8 @@
+/*
 Given a playlist of n songs where song i has duration t_i minutes and is played c_i consecutive times.
 The playlist plays songs in order: song 1 (c_1 times), then song 2 (c_2 times), etc.
 For m given time moments, determine which song number is playing at each moment.
+*/
 
 function sum_playlist_duration(songs: seq<(int, int)>, n: int): int
   requires n >= 0
@@ -20,6 +22,10 @@ function cumulative_duration_at_song(songs: seq<(int, int)>, song_idx: int): int
   else songs[song_idx].0 * songs[song_idx].1 + cumulative_duration_at_song(songs, song_idx - 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int, songs: seq<(int, int)>, queries: seq<int>) returns (result: seq<int>)
   requires n >= 0
   requires m >= 0
@@ -33,48 +39,9 @@ method solve(n: int, m: int, songs: seq<(int, int)>, queries: seq<int>) returns 
   ensures forall i :: 0 <= i < m ==> 1 <= result[i] <= n
   ensures forall i :: 0 <= i < m ==> queries[i] <= cumulative_duration_at_song(songs, result[i] - 1)
   ensures forall i :: 0 <= i < m ==> result[i] == 1 || queries[i] > cumulative_duration_at_song(songs, result[i] - 2)
+// </vc-spec>
+// <vc-code>
 {
-    var answers: seq<int> := [];
-    var req_index := 0;
-    var total_length := 0;
-
-    var i := 0;
-    while i < n && req_index < m
-      invariant 0 <= i <= n
-      invariant 0 <= req_index <= m
-      invariant |answers| == req_index
-      invariant total_length == (if i == 0 then 0 else sum_playlist_duration(songs, i))
-      invariant forall j :: 0 <= j < req_index ==> 1 <= answers[j] <= n
-      invariant forall j :: 0 <= j < req_index ==> queries[j] <= cumulative_duration_at_song(songs, answers[j] - 1)
-      invariant forall j :: 0 <= j < req_index ==> answers[j] == 1 || queries[j] > cumulative_duration_at_song(songs, answers[j] - 2)
-    {
-        total_length := total_length + songs[i].0 * songs[i].1;
-
-        while req_index < m && queries[req_index] <= total_length
-          invariant 0 <= req_index <= m
-          invariant |answers| == req_index
-          invariant total_length == sum_playlist_duration(songs, i + 1)
-          invariant forall j :: 0 <= j < req_index ==> 1 <= answers[j] <= n
-          invariant forall j :: 0 <= j < req_index ==> queries[j] <= cumulative_duration_at_song(songs, answers[j] - 1)
-          invariant forall j :: 0 <= j < req_index ==> answers[j] == 1 || queries[j] > cumulative_duration_at_song(songs, answers[j] - 2)
-        {
-            answers := answers + [i + 1];
-            req_index := req_index + 1;
-        }
-
-        i := i + 1;
-    }
-
-    while req_index < m
-      invariant 0 <= req_index <= m
-      invariant |answers| == req_index
-      invariant forall j :: 0 <= j < req_index ==> 1 <= answers[j] <= n
-      invariant forall j :: 0 <= j < req_index ==> queries[j] <= cumulative_duration_at_song(songs, answers[j] - 1)
-      invariant forall j :: 0 <= j < req_index ==> answers[j] == 1 || queries[j] > cumulative_duration_at_song(songs, answers[j] - 2)
-    {
-        answers := answers + [n];
-        req_index := req_index + 1;
-    }
-
-    return answers;
+  assume {:axiom} false;
 }
+// </vc-code>

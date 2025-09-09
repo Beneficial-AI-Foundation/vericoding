@@ -1,5 +1,7 @@
+/*
 Calculate the remaining area of a rectangular farm after placing one vertical road
 and one horizontal road, each 1 yard wide, that span the entire width/height.
+*/
 
 predicate ValidFarmDimensions(a: int, b: int)
 {
@@ -12,10 +14,17 @@ function RemainingFarmArea(a: int, b: int): int
     a * b - a - b + 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int) returns (result: int)
     requires ValidFarmDimensions(a, b)
     ensures result == RemainingFarmArea(a, b)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    result := a * b - a - b + 1;
+  assume {:axiom} false;
 }
+// </vc-code>

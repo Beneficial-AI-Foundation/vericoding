@@ -1,6 +1,8 @@
+/*
 Given a binary string s, find a binary string t of the same length such that
 for every substring s[l..r] and t[l..r], they have the same length of longest
 non-decreasing subsequence, and the number of zeros in t is maximized.
+*/
 
 predicate ValidBinaryString(s: string)
 {
@@ -53,11 +55,18 @@ predicate ValidSolution(s: string, t: string)
     |s| == |t| && SameSubsequenceLengths(s, t)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires |s| > 0
     requires ValidBinaryString(s)
     ensures ValidBinaryString(result)
     ensures ValidSolution(s, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := s;
+  assume {:axiom} false;
 }
+// </vc-code>

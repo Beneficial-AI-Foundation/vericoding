@@ -1,9 +1,11 @@
+/*
 Given n problems numbered 1 to n in ascending order of difficulty and m pairs 
 of similar problems, split the problems into two non-empty divisions such that:
 1. Each problem belongs to exactly one division
 2. All problems in division 1 are harder than all problems in division 2  
 3. Similar problems must be in different divisions
 Count the number of valid ways to make this split.
+*/
 
 predicate ValidInput(n: int, m: int, pairs: seq<(int, int)>)
 {
@@ -48,44 +50,16 @@ predicate ValidResult(n: int, pairs: seq<(int, int)>, result: int)
     result == max(computeFinalR(n, pairs) - computeFinalL(pairs), 0)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int, pairs: seq<(int, int)>) returns (result: int)
     requires ValidInput(n, m, pairs)
     ensures ValidResult(n, pairs, result)
+// </vc-spec>
+// <vc-code>
 {
-    var L := 1;
-    var R := n;
-
-    for i := 0 to |pairs|
-        invariant L == computeFinalL(pairs[..i])
-        invariant R == computeFinalR(n, pairs[..i])
-        invariant 1 <= L <= n
-        invariant 1 <= R <= n
-    {
-        var x := pairs[i].0;
-        var y := pairs[i].1;
-
-        var minVal := if x < y then x else y;
-        var maxVal := if x > y then x else y;
-
-        L := if L > minVal then L else minVal;
-        R := if R < maxVal then R else maxVal;
-
-        // Help Dafny by showing the relationship between iterative and recursive computation
-        assert pairs[..i+1][|pairs[..i+1]|-1] == pairs[i];
-        assert pairs[..i+1][..|pairs[..i+1]|-1] == pairs[..i];
-        assert computeFinalL(pairs[..i+1]) == 
-            (var restL := computeFinalL(pairs[..i]);
-             var currentMin := if pairs[i].0 < pairs[i].1 then pairs[i].0 else pairs[i].1;
-             if restL > currentMin then restL else currentMin);
-        assert computeFinalR(n, pairs[..i+1]) == 
-            (var restR := computeFinalR(n, pairs[..i]);
-             var currentMax := if pairs[i].0 > pairs[i].1 then pairs[i].0 else pairs[i].1;
-             if restR < currentMax then restR else currentMax);
-
-        assert L == computeFinalL(pairs[..i+1]);
-        assert R == computeFinalR(n, pairs[..i+1]);
-    }
-
-    assert pairs[..|pairs|] == pairs;
-    result := if R - L > 0 then R - L else 0;
+  assume {:axiom} false;
 }
+// </vc-code>

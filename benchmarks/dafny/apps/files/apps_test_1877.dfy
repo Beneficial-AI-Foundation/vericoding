@@ -1,8 +1,10 @@
+/*
 Given a sequence of moves on a 2D grid starting from position (0,0), count the number of times 
 the path crosses between two kingdoms separated by the line x = y. Kingdom 1 contains points 
 where x > y, Kingdom 2 contains points where x < y, and points where x = y are on the wall/gates.
 Moves are 'U' (up: y+1) and 'R' (right: x+1). Count transitions between kingdoms, ignoring 
 positions on the wall, with no cost for the initial move from starting position.
+*/
 
 predicate ValidInput(n: int, s: string)
 {
@@ -39,48 +41,19 @@ function CountTransitionsHelper(s: string, pos: int, x: int, y: int, pred: int):
             transition + CountTransitionsHelper(s, pos + 1, newX, newY, cur)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, s: string) returns (result: int)
     requires ValidInput(n, s)
     ensures result >= 0
     ensures result <= n
     ensures n == 0 ==> result == 0
     ensures result == CountKingdomTransitions(s)
+// </vc-spec>
+// <vc-code>
 {
-    var x := 0;
-    var y := 0;
-    var ans := 0;
-    var pred := -1;
-
-    var i := 0;
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant ans >= 0
-        invariant ans <= i
-        invariant pred == -1 || pred == 0 || pred == 1
-        invariant ans == CountTransitionsHelper(s, 0, 0, 0, -1) - CountTransitionsHelper(s, i, x, y, pred)
-    {
-        var c := s[i];
-        if c == 'U' {
-            y := y + 1;
-        } else {
-            x := x + 1;
-        }
-
-        if x != y {
-            var cur: int;
-            if x > y {
-                cur := 0;
-            } else {
-                cur := 1;
-            }
-
-            if cur != pred && pred != -1 {
-                ans := ans + 1;
-            }
-            pred := cur;
-        }
-        i := i + 1;
-    }
-
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

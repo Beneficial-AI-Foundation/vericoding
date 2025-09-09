@@ -1,5 +1,7 @@
+/*
 Calculate how many hours remain from M o'clock (24-hour format) on December 30th 
 until New Year (0 o'clock on January 1st). M is an integer between 1 and 23 inclusive.
+*/
 
 predicate ValidInput(M: int)
 {
@@ -18,9 +20,16 @@ predicate ValidOutput(M: int, result: int)
     result == HoursUntilNewYear(M) && 25 <= result <= 47
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(M: int) returns (result: int)
     requires ValidInput(M)
     ensures ValidOutput(M, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := 48 - M;
+  assume {:axiom} false;
 }
+// </vc-code>

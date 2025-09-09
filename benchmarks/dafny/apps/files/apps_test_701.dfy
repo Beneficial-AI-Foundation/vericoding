@@ -1,5 +1,7 @@
+/*
 Given two distinct strings s and t, determine if s can be transformed into t using character removal and/or character swapping operations.
 Return "array" if only swapping needed, "automaton" if only removal needed, "both" if both operations needed, or "need tree" if impossible.
+*/
 
 function ParseLines(stdin_input: string): seq<string>
     decreases |stdin_input|
@@ -65,6 +67,10 @@ function FilterChars(s: string, pivot: char, takeLess: bool, takeEqual: bool): s
         else rest
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires ValidInput(stdin_input)
@@ -78,43 +84,9 @@ method solve(stdin_input: string) returns (result: string)
              (sx != tx && IsSubsequence(t, s) && result == "automaton") ||
              (sx != tx && !IsSubsequence(t, s) && IsSubsequence(tx, sx) && result == "both") ||
              (sx != tx && !IsSubsequence(t, s) && !IsSubsequence(tx, sx) && result == "need tree"))
+// </vc-spec>
+// <vc-code>
 {
-    var lines := [];
-    var current_line := "";
-    var i := 0;
-
-    while i < |stdin_input|
-        invariant 0 <= i <= |stdin_input|
-    {
-        if stdin_input[i] == '\n' {
-            if |current_line| > 0 {
-                lines := lines + [current_line];
-                current_line := "";
-            }
-        } else {
-            current_line := current_line + [stdin_input[i]];
-        }
-        i := i + 1;
-    }
-
-    if |current_line| > 0 {
-        lines := lines + [current_line];
-    }
-
-    var parsed_lines := ParseLines(stdin_input);
-    var s := parsed_lines[0];
-    var t := parsed_lines[1];
-
-    var sx := SortString(s);
-    var tx := SortString(t);
-
-    if sx == tx {
-        result := "array";
-    } else if IsSubsequence(t, s) {
-        result := "automaton";
-    } else if IsSubsequence(tx, sx) {
-        result := "both";
-    } else {
-        result := "need tree";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given a sequence of moves 'U' (up) and 'R' (right), replace consecutive pairs "RU" or "UR" 
 with diagonal moves "D" to minimize sequence length. Input format is a number n followed by 
 newline, then a string of n characters containing only 'U' and 'R'.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -50,79 +52,17 @@ function MinimizedLength(originalLength: int, replacements: int): int
     originalLength - replacements
 }
 
-function ParseInteger(s: string): int
-    requires |s| > 0
-    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-{
-    ParseIntegerHelper(s, 0, 0)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function ParseIntegerHelper(s: string, pos: int, acc: int): int
-    requires 0 <= pos <= |s|
-    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-    requires acc >= 0
-    ensures ParseIntegerHelper(s, pos, acc) >= 0
-    decreases |s| - pos
-{
-    if pos >= |s| then acc
-    else ParseIntegerHelper(s, pos + 1, acc * 10 + (s[pos] as int - '0' as int))
-}
-
-function IntToString(n: int): string
-    requires n >= 0
-    ensures |IntToString(n)| >= 1
-{
-    if n == 0 then "0"
-    else IntToStringHelper(n, "")
-}
-
-function IntToStringHelper(n: int, acc: string): string
-    requires n >= 0
-    ensures |IntToStringHelper(n, acc)| >= |acc|
-    ensures n == 0 ==> IntToStringHelper(n, acc) == acc
-    ensures n > 0 || |acc| >= 1 ==> |IntToStringHelper(n, acc)| >= 1
-    decreases n
-{
-    if n == 0 then acc
-    else IntToStringHelper(n / 10, [((n % 10) as char + '0' as char)] + acc)
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures |result| > 0
     ensures result[|result| - 1] == '\n'
+// </vc-spec>
+// <vc-code>
 {
-    // Find the newline to separate n from the string
-    var newlinePos := 0;
-    while newlinePos < |input| && input[newlinePos] != '\n'
-        invariant 0 <= newlinePos <= |input|
-        invariant forall k :: 0 <= k < newlinePos ==> input[k] != '\n'
-    {
-        newlinePos := newlinePos + 1;
-    }
-
-    // Parse n
-    var n := 0;
-    var i := 0;
-    while i < newlinePos && i < |input|
-        invariant 0 <= i <= newlinePos
-        invariant 0 <= i <= |input|
-        invariant n >= 0
-    {
-        if '0' <= input[i] <= '9' {
-            n := n * 10 + (input[i] as int - '0' as int);
-        }
-        i := i + 1;
-    }
-
-    // Get the string part (skip the newline)
-    var stStart := newlinePos + 1;
-
-    var ans := n;
-    if n > 1 && stStart < |input| && stStart + n <= |input| {
-        var replacements := CountReplacements(input, stStart, n);
-        ans := MinimizedLength(n, replacements);
-    }
-
-    result := IntToString(ans) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

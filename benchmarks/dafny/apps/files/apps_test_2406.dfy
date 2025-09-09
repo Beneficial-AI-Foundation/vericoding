@@ -1,8 +1,10 @@
+/*
 Simulate a landslide process on an array of strictly increasing heights.
 Each minute, for every position j where h_j + 2 ≤ h_{j+1}, one unit slides 
 from position j+1 to position j. All transfers happen simultaneously.
 The process stops when no position satisfies the sliding condition.
 Return the final stable heights.
+*/
 
 predicate ValidInput(n: int, heights: seq<int>)
 {
@@ -29,120 +31,18 @@ function sum_seq(s: seq<int>): int
     if |s| == 0 then 0 else s[0] + sum_seq(s[1..])
 }
 
-lemma sum_seq_extend_lemma(s: seq<int>, x: int)
-    ensures sum_seq(s + [x]) == sum_seq(s) + x
-{
-    if |s| == 0 {
-        assert s + [x] == [x];
-        assert sum_seq([x]) == x + sum_seq([]);
-        assert sum_seq([]) == 0;
-    } else {
-        assert s + [x] == [s[0]] + s[1..] + [x];
-        assert s[1..] + [x] == (s + [x])[1..];
-        sum_seq_extend_lemma(s[1..], x);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
-lemma sum_seq_update_lemma(s: seq<int>, idx: int, newVal: int)
-    requires 0 <= idx < |s|
-    ensures sum_seq(s[idx := newVal]) == sum_seq(s) - s[idx] + newVal
-{
-    if idx == 0 {
-        assert s[idx := newVal] == [newVal] + s[1..];
-        assert sum_seq(s[idx := newVal]) == newVal + sum_seq(s[1..]);
-        assert sum_seq(s) == s[0] + sum_seq(s[1..]);
-        assert sum_seq(s[idx := newVal]) == sum_seq(s) - s[0] + newVal;
-        assert sum_seq(s[idx := newVal]) == sum_seq(s) - s[idx] + newVal;
-    } else {
-        assert s[idx := newVal] == [s[0]] + s[1..][idx-1 := newVal];
-        sum_seq_update_lemma(s[1..], idx-1, newVal);
-        assert sum_seq(s[1..][idx-1 := newVal]) == sum_seq(s[1..]) - s[1..][idx-1] + newVal;
-        assert s[1..][idx-1] == s[idx];
-        assert sum_seq(s[idx := newVal]) == s[0] + sum_seq(s[1..][idx-1 := newVal]);
-        assert sum_seq(s[idx := newVal]) == s[0] + sum_seq(s[1..]) - s[idx] + newVal;
-        assert sum_seq(s) == s[0] + sum_seq(s[1..]);
-        assert sum_seq(s[idx := newVal]) == sum_seq(s) - s[idx] + newVal;
-    }
-}
-
-lemma arithmetic_sum_lemma(n: int, base: int)
-    requires n >= 0
-    ensures sum_seq(seq(n, i => base + i)) == n * base + (n * (n - 1)) / 2
-{
-    if n == 0 {
-        assert seq(0, i => base + i) == [];
-        assert sum_seq([]) == 0;
-        assert 0 * base + (0 * (0 - 1)) / 2 == 0;
-    } else {
-        var s := seq(n, i => base + i);
-        assert s == [base] + seq(n - 1, i => base + 1 + i);
-        assert seq(n - 1, i => base + 1 + i) == seq(n - 1, i => (base + 1) + i);
-        sum_seq_extend_lemma([], base);
-        arithmetic_sum_lemma(n - 1, base + 1);
-        assert sum_seq(s) == base + sum_seq(seq(n - 1, i => (base + 1) + i));
-        assert sum_seq(seq(n - 1, i => (base + 1) + i)) == (n - 1) * (base + 1) + ((n - 1) * (n - 2)) / 2;
-        assert sum_seq(s) == base + (n - 1) * (base + 1) + ((n - 1) * (n - 2)) / 2;
-        assert sum_seq(s) == base + (n - 1) * base + (n - 1) + ((n - 1) * (n - 2)) / 2;
-        assert sum_seq(s) == n * base + (n - 1) + ((n - 1) * (n - 2)) / 2;
-        assert (n - 1) + ((n - 1) * (n - 2)) / 2 == ((n - 1) * 2 + (n - 1) * (n - 2)) / 2;
-        assert (n - 1) + ((n - 1) * (n - 2)) / 2 == ((n - 1) * (2 + n - 2)) / 2;
-        assert (n - 1) + ((n - 1) * (n - 2)) / 2 == ((n - 1) * n) / 2;
-        assert (n - 1) + ((n - 1) * (n - 2)) / 2 == (n * (n - 1)) / 2;
-    }
-}
-
+// <vc-spec>
 method solve(n: int, heights: seq<int>) returns (result: seq<int>)
     requires ValidInput(n, heights)
     ensures ValidOutput(n, result)
     ensures sum_seq(result) == sum_seq(heights)
     ensures IsStable(result)
+// </vc-spec>
+// <vc-code>
 {
-    var tot := 0;
-    var i := 0;
-    while i < |heights|
-        invariant 0 <= i <= |heights|
-        invariant tot == sum_seq(heights[..i])
-    {
-        sum_seq_extend_lemma(heights[..i], heights[i]);
-        assert heights[..i] + [heights[i]] == heights[..i+1];
-        tot := tot + heights[i];
-        i := i + 1;
-    }
-
-    assert heights[..|heights|] == heights;
-    assert tot == sum_seq(heights);
-
-    var extra := (n * (n - 1)) / 2;
-    var base_sum := tot - extra;
-    var smol := if base_sum >= 0 then base_sum / n else 0;
-
-    var tmpCall1 := seq(n, i => smol + i);
-    var out := tmpCall1;
-
-    var sum_out := sum_seq(tmpCall1);
-    arithmetic_sum_lemma(n, smol);
-    assert sum_out == n * smol + extra;
-
-    var remaining := tot - sum_out;
-    if remaining < 0 { remaining := 0; }
-
-    i := 0;
-    while i < remaining && i < n
-        invariant 0 <= i <= remaining
-        invariant 0 <= i <= n
-        invariant |out| == n
-        invariant sum_seq(out) == sum_seq(tmpCall1) + i
-        invariant forall j :: 0 <= j < n ==> out[j] >= smol + j
-        invariant forall j :: 0 <= j < i ==> out[j] == smol + j + 1
-        invariant forall j :: i <= j < n ==> out[j] == smol + j
-        invariant forall j :: 0 <= j < n ==> out[j] >= 0
-    {
-        sum_seq_update_lemma(out, i, out[i] + 1);
-        assert sum_seq(out[i := out[i] + 1]) == sum_seq(out) - out[i] + (out[i] + 1);
-        assert sum_seq(out[i := out[i] + 1]) == sum_seq(out) + 1;
-        out := out[i := out[i] + 1];
-        i := i + 1;
-    }
-
-    result := out;
+  assume {:axiom} false;
 }
+// </vc-code>

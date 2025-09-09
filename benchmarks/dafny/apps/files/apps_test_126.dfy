@@ -1,7 +1,9 @@
+/*
 Given a phone keypad layout and a phone number, determine if the finger movement 
 sequence between consecutive key presses is unique (no other number produces the same sequence).
 The keypad layout is: 1-2-3 in top row, 4-5-6 in middle row, 7-8-9 in bottom row, 
 and 0 below 8.
+*/
 
 function string_to_digits(s: string): set<int>
 {
@@ -31,16 +33,10 @@ function split_lines(s: string): seq<string>
         else [s]
 }
 
-function find_char(s: string, c: char): (result: int)
-  ensures result == -1 || (0 <= result < |s| && s[result] == c)
-{
-    if |s| == 0 then -1
-    else if s[0] == c then 0
-    else 
-        var rest := find_char(s[1..], c);
-        if rest == -1 then -1 else rest + 1
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(input: string) returns (result: string)
   requires ValidInput(input)
   ensures result == "YES\n" || result == "NO\n"
@@ -50,17 +46,9 @@ method solve(input: string) returns (result: string)
           var digits_str := lines[1];
           var digits := string_to_digits(digits_str);
           result == "YES\n" <==> HasUniqueMovementSequence(digits)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := split_lines(input);
-    if |lines| >= 2 {
-        var digits_str := lines[1];
-        var digits := string_to_digits(digits_str);
-        if HasUniqueMovementSequence(digits) {
-            result := "YES\n";
-        } else {
-            result := "NO\n";
-        }
-    } else {
-        result := "NO\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

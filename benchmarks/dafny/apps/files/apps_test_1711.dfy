@@ -1,6 +1,8 @@
+/*
 Count the number of arrays of length n where each element is from 1 to m,
 exactly one pair of elements are equal (all others distinct), and the array
 is unimodal (strictly ascending then strictly descending around a peak).
+*/
 
 predicate ValidInput(n: int, m: int) {
   n >= 2 && m >= 1 && n <= m && m <= 200000
@@ -17,63 +19,17 @@ predicate ValidOutput(result: int) {
   0 <= result < 998244353
 }
 
-function Power(base: int, exp: int, mod: int): int
-  requires mod > 0
-  requires exp >= 0
-{
-  if exp == 0 then 1
-  else if exp % 2 == 0 then
-    var half := Power(base, exp / 2, mod);
-    (half * half) % mod
-  else
-    (base * Power(base, exp - 1, mod)) % mod
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function ModInverse(a: int, mod: int): int
-  requires mod > 1
-{
-  Power(a, mod - 2, mod)
-}
-
-function Factorial(n: int, mod: int): int
-  requires n >= 0
-  requires mod > 0
-{
-  if n == 0 then 1
-  else (n * Factorial(n - 1, mod)) % mod
-}
-
-function Combination(n: int, k: int, mod: int): int
-  requires mod > 1
-  requires n >= 0
-  requires k >= 0
-{
-  if k > n then 0
-  else if k == 0 || k == n then 1
-  else
-    var num := Factorial(n, mod);
-    var den1 := Factorial(k, mod);
-    var den2 := Factorial(n - k, mod);
-    var inv1 := ModInverse(den1, mod);
-    var inv2 := ModInverse(den2, mod);
-    (((num * inv1) % mod) * inv2) % mod
-}
-
+// <vc-spec>
 method solve(n: int, m: int) returns (result: int)
   requires ValidInput(n, m)
   ensures ValidOutput(result)
   ensures result == ExpectedResult(n, m)
+// </vc-spec>
+// <vc-code>
 {
-  var MOD := 998244353;
-
-  if n == 2 {
-    result := 0;
-    return;
-  }
-
-  var comb := Combination(m, n - 1, MOD);
-  var factor1 := n - 2;
-  var factor2 := Power(2, n - 3, MOD);
-
-  result := (((comb * factor1) % MOD) * factor2) % MOD;
+  assume {:axiom} false;
 }
+// </vc-code>

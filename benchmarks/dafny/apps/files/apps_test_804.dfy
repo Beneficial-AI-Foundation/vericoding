@@ -1,6 +1,8 @@
+/*
 Given a string of lowercase Latin letters and an integer k, find the minimum number of 
 character changes needed to make the string contain at least k different letters.
 Return "impossible" if the string length is less than k.
+*/
 
 predicate ValidInput(s: string, k: int)
 {
@@ -27,24 +29,17 @@ predicate IsImpossible(s: string, k: int)
     |s| < k
 }
 
-function IntToString(n: int): string
-    requires n >= 0
-{
-    if n == 0 then "0"
-    else if n < 10 then [('0' as int + n) as char]
-    else IntToString(n / 10) + [('0' as int + (n % 10)) as char]
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(s: string, k: int) returns (result: string)
     requires ValidInput(s, k)
     ensures IsImpossible(s, k) ==> result == "impossible"
     ensures !IsImpossible(s, k) ==> result == IntToString(MinChanges(s, k))
+// </vc-spec>
+// <vc-code>
 {
-    if |s| < k {
-        result := "impossible";
-    } else {
-        var unique_chars := set c | c in s;
-        var changes := if k <= |unique_chars| then 0 else k - |unique_chars|;
-        result := IntToString(changes);
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

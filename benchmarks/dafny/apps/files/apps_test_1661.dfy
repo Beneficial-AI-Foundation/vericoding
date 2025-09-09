@@ -1,6 +1,8 @@
+/*
 Given n games with costs and m bills with values, determine how many games can be bought
 by processing games in order. For each game, use the first available bill if it has
 sufficient value to buy the game, otherwise skip the game. Return total games bought.
+*/
 
 function countBuyableGames(games: seq<int>, bills: seq<int>): int
     requires forall i :: 0 <= i < |games| ==> games[i] >= 1
@@ -20,28 +22,18 @@ predicate ValidInput(n: int, m: int, games: seq<int>, bills: seq<int>)
     (forall i :: 0 <= i < |bills| ==> 1 <= bills[i] <= 1000)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int, games: seq<int>, bills: seq<int>) returns (result: int)
     requires ValidInput(n, m, games, bills)
     ensures 0 <= result <= n
     ensures result <= m
     ensures result == countBuyableGames(games, bills)
+// </vc-spec>
+// <vc-code>
 {
-    var ans := 0;
-    var ai := 0;
-
-    for i := 0 to |games|
-        invariant 0 <= i <= |games|
-        invariant 0 <= ans <= i
-        invariant 0 <= ai <= |bills|
-        invariant ans <= ai
-        invariant countBuyableGames(games, bills) == ans + countBuyableGames(games[i..], bills[ai..])
-    {
-        var ci := games[i];
-        if ai < |bills| && bills[ai] >= ci {
-            ai := ai + 1;
-            ans := ans + 1;
-        }
-    }
-
-    return ans;
+  assume {:axiom} false;
 }
+// </vc-code>

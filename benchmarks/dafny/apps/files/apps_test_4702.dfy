@@ -1,5 +1,7 @@
+/*
 Given an integer x where 0 ≤ x ≤ 1 represented as a string, output the logical NOT of x.
 If x = 0, output 1. If x = 1, output 0.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -20,13 +22,16 @@ predicate CorrectOutput(input: string, output: string)
     output == LogicalNot(input[0])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (output: string)
     requires ValidInput(input)
     ensures CorrectOutput(input, output)
+// </vc-spec>
+// <vc-code>
 {
-    if input[0] == '0' {
-        output := "1\n";
-    } else {
-        output := "0\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

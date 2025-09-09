@@ -1,6 +1,8 @@
+/*
 Given n real numbers with sum equal to 0, construct a sequence where each element 
 is either the floor or ceiling of the corresponding input number, such that the 
 sum of the constructed sequence is also 0.
+*/
 
 predicate valid_input_format(input: string) 
 {
@@ -76,6 +78,10 @@ function floor_of(r: real): int { 0 }
 function ceiling_of(r: real): int { 0 }
 function int_value_of(r: real): int { 0 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (output: string)
     requires |stdin_input| > 0
     requires valid_input_format(stdin_input)
@@ -85,6 +91,9 @@ method solve(stdin_input: string) returns (output: string)
     ensures each_output_is_floor_or_ceiling(stdin_input, output)
     ensures output_sum_is_zero(stdin_input, output)
     ensures output_preserves_integers(stdin_input, output)
+// </vc-spec>
+// <vc-code>
 {
-    output := "0\n";
+  assume {:axiom} false;
 }
+// </vc-code>

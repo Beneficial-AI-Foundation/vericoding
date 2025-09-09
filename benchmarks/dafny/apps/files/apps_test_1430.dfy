@@ -1,6 +1,8 @@
+/*
 Given a binary string S of length N and an integer K, find the maximum length of 
 consecutive '1's achievable using at most K flip operations. Each flip operation 
 chooses a contiguous range and flips all bits in that range (0→1, 1→0).
+*/
 
 predicate ValidInput(N: int, K: int, S: string)
 {
@@ -19,53 +21,16 @@ predicate ValidResult(result: int, N: int)
     0 <= result <= N
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int, K: int, S: string) returns (result: int)
     requires ValidInput(N, K, S)
     ensures ValidResult(result, N)
+// </vc-spec>
+// <vc-code>
 {
-    var bits := StringToBits(S);
-    
-    var maxLen := 0;
-    var left := 0;
-
-    // Try each starting position
-    while left < N
-        invariant 0 <= left <= N
-        invariant ValidResult(maxLen, N)
-    {
-        var right := left;
-        var zeroSegments := 0;
-        var inZeroSegment := false;
-
-        // Expand window from left
-        while right < N && zeroSegments <= K
-            invariant left <= right <= N
-            invariant zeroSegments >= 0
-            invariant zeroSegments <= K + 1
-            invariant ValidResult(maxLen, N)
-        {
-            if bits[right] == 0 {
-                if !inZeroSegment {
-                    zeroSegments := zeroSegments + 1;
-                    inZeroSegment := true;
-                }
-            } else {
-                inZeroSegment := false;
-            }
-
-            if zeroSegments <= K {
-                var currentLen := right - left + 1;
-                if currentLen > maxLen {
-                    maxLen := currentLen;
-                }
-                right := right + 1;
-            } else {
-                break;
-            }
-        }
-
-        left := left + 1;
-    }
-
-    result := maxLen;
+  assume {:axiom} false;
 }
+// </vc-code>

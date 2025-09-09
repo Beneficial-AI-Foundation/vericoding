@@ -1,5 +1,7 @@
+/*
 Two players alternate turns removing consecutive identical letters from a string.
 The player who cannot make a move loses. Determine if the first player wins.
+*/
 
 function countMaxMoves(s: string): nat
 {
@@ -21,31 +23,18 @@ function countMaxMovesHelper(s: string, i: nat, stack: seq<char>, moves: nat): n
         countMaxMovesHelper(s, i + 1, stack + [s[i]], moves)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires |s| >= 1
     ensures result == "Yes" || result == "No"
     ensures result == "Yes" <==> countMaxMoves(s) % 2 == 1
     ensures result == "No" <==> countMaxMoves(s) % 2 == 0
+// </vc-spec>
+// <vc-code>
 {
-    var stack: seq<char> := [];
-    var moves := 0;
-
-    for i := 0 to |s|
-        invariant countMaxMovesHelper(s, i, stack, moves) == countMaxMovesHelper(s, 0, [], 0)
-    {
-        if |stack| > 0 && s[i] == stack[|stack| - 1] {
-            stack := stack[..|stack| - 1];  // pop
-            moves := moves + 1;
-        } else {
-            stack := stack + [s[i]];  // push
-        }
-    }
-
-    assert moves == countMaxMoves(s);
-
-    if moves % 2 == 0 {
-        result := "No";
-    } else {
-        result := "Yes";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

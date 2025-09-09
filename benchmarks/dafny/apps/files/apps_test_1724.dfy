@@ -1,6 +1,8 @@
+/*
 Given an array a of n non-negative integers and a binary string representing number m,
 find the maximum value of function f(x) = sum(a[i] * bit_i(x)) for all integers x in range [0, m],
 where bit_i(x) is 1 if the i-th bit of x is set, 0 otherwise.
+*/
 
 predicate ValidInput(n: int, a: seq<int>, k: string)
 {
@@ -31,39 +33,18 @@ function f(a: seq<int>, x: int, n: int): int
   else (if (x / pow(2, n-1)) % 2 == 1 then a[n-1] else 0) + f(a[..n-1], x % pow(2, n-1), n-1)
 }
 
-function pow(base: int, exp: int): int
-  requires exp >= 0
-  ensures base >= 1 ==> pow(base, exp) >= 1
-  ensures base > 0 ==> pow(base, exp) > 0
-{
-  if exp == 0 then 1 else base * pow(base, exp - 1)
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, a: seq<int>, k: string) returns (result: int)
   requires ValidInput(n, a, k)
   ensures result >= 0
   ensures exists x :: 0 <= x <= binaryStringToInt(k) && result == f(a, x, n)
   ensures forall x :: 0 <= x <= binaryStringToInt(k) ==> f(a, x, n) <= result
+// </vc-spec>
+// <vc-code>
 {
-  var maxVal := f(a, 0, n);
-  var bestX := 0;
-
-  var limit := binaryStringToInt(k);
-  var x := 1;
-
-  while x <= limit
-    invariant 1 <= x <= limit + 1
-    invariant maxVal >= 0
-    invariant exists y :: 0 <= y < x && maxVal == f(a, y, n)
-    invariant forall y :: 0 <= y < x ==> f(a, y, n) <= maxVal
-  {
-    var currentVal := f(a, x, n);
-    if currentVal > maxVal {
-      maxVal := currentVal;
-      bestX := x;
-    }
-    x := x + 1;
-  }
-
-  result := maxVal;
+  assume {:axiom} false;
 }
+// </vc-code>

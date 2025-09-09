@@ -1,6 +1,8 @@
+/*
 Given an even string S, find the length of the longest even string that can be 
 obtained by deleting one or more characters from the end of S. An even string
 is one that can be split into two identical halves.
+*/
 
 predicate IsEvenString(s: string)
 {
@@ -23,33 +25,18 @@ predicate IsMaximalSolution(S: string, result: int)
     forall k :: result < k < |S| && k % 2 == 0 ==> !IsEvenString(S[..k])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(S: string) returns (result: int)
     requires ValidInput(S)
     requires exists k :: ValidSolution(S, k)
     ensures ValidSolution(S, result)
     ensures IsMaximalSolution(S, result)
+// </vc-spec>
+// <vc-code>
 {
-    var x := |S|;
-    var i := 0;
-
-    while i < x
-        invariant 0 <= i <= x
-        invariant i % 2 == 0
-        invariant forall k :: x - 2 - i < k < |S| && k % 2 == 0 ==> !IsEvenString(S[..k])
-    {
-        var y := x - 2 - i;
-
-        if y >= 2 && y % 2 == 0 {
-            if IsEvenString(S[..y]) {
-                result := y;
-                return;
-            }
-        }
-
-        i := i + 2;
-    }
-
-    // This should never be reached due to the precondition
-    assert false;
-    result := 2;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,7 +1,9 @@
+/*
 Given n promotional codes (each exactly 6 digits), find the maximum number k such that 
 any promotional code can be uniquely identified even when typed with at most k digit errors.
 This requires finding the minimum Hamming distance between any pair of promotional codes,
 then computing k = floor((min_distance - 1) / 2).
+*/
 
 function splitLines(s: string): seq<string>
     requires |s| > 0
@@ -47,24 +49,16 @@ predicate ValidOutput(output: string, stdin_input: string)
                 parseInteger(output[0..|output|-1]) == k
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (output: string)
     requires ValidInput(stdin_input)
     ensures ValidOutput(output, stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := splitLines(stdin_input);
-    assert lines == splitLines(stdin_input);
-    assert |lines| >= 1;
-
-    var n := 6;
-    assert n >= 1 && n == 6;
-    assert |lines| >= 1;
-
-    output := "6\n";
-
-    var k := 6;
-    assert 0 <= k <= 6 && k == 6;
-    assert |output| == 2;
-    assert |output[0..|output|-1]| == 1;
-    assert |output[0..|output|-1]| > 0;
-    assert parseInteger(output[0..|output|-1]) == k;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,7 +1,9 @@
+/*
 Given n problems with initial scores and solving times, where problems are sorted by increasing
 difficulty. Two contestants (Limak and Radewoosh) solve all problems in opposite orders.
 When problem i is submitted at time x, it awards max(0, p_i - c*x) points where c is penalty rate.
 Determine who scores more total points.
+*/
 
 predicate ValidInput(n: int, c: int, P: seq<int>, T: seq<int>)
 {
@@ -49,12 +51,10 @@ function calculateRadewooshScoreHelper(remaining: int, c: int, P: seq<int>, T: s
         score + calculateRadewooshScoreHelper(remaining-1, c, P, T, cumulativeTime)
 }
 
-function sum(s: seq<int>): int
-{
-    if |s| == 0 then 0
-    else s[0] + sum(s[1..])
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, c: int, P: seq<int>, T: seq<int>) returns (result: string)
     requires ValidInput(n, c, P, T)
     ensures result == "Limak" || result == "Radewoosh" || result == "Tie"
@@ -63,15 +63,9 @@ method solve(n: int, c: int, P: seq<int>, T: seq<int>) returns (result: string)
             (result == "Limak" <==> limakScore > radewooshScore) &&
             (result == "Radewoosh" <==> limakScore < radewooshScore) &&
             (result == "Tie" <==> limakScore == radewooshScore)
+// </vc-spec>
+// <vc-code>
 {
-    var limakScore := calculateLimakScore(n, c, P, T);
-    var radewooshScore := calculateRadewooshScore(n, c, P, T);
-
-    if limakScore > radewooshScore {
-        result := "Limak";
-    } else if limakScore < radewooshScore {
-        result := "Radewoosh";
-    } else {
-        result := "Tie";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

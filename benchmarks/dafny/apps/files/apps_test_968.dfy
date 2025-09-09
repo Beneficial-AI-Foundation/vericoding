@@ -1,6 +1,8 @@
+/*
 Given n people, each with a first name and last name, determine if each person can choose 
 either their first or last name as a handle such that when the handles are sorted 
 lexicographically, they appear in the exact order specified by permutation p.
+*/
 
 predicate ValidInput(input: string)
   requires |input| > 0
@@ -75,72 +77,18 @@ predicate LexLessOrEqual(a: string, b: string)
   LexLess(a, b) || a == b
 }
 
-function CreateAllHandlePairs(names: seq<(string, string)>): seq<(string, int)>
-  requires |names| >= 0
-{
-  var first_names := seq(|names|, i requires 0 <= i < |names| => (names[i].0, i+1));
-  var last_names := seq(|names|, i requires 0 <= i < |names| => (names[i].1, i+1));
-  first_names + last_names
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function SortHandlePairs(handles: seq<(string, int)>): seq<(string, int)>
-{
-  handles
-}
-
-predicate GreedyAssignmentWorks(sorted_handles: seq<(string, int)>, perm: seq<int>, n: int)
-  requires |perm| == n
-  requires forall i :: 0 <= i < n ==> 1 <= perm[i] <= n
-  requires forall i, j :: 0 <= i < j < n ==> perm[i] != perm[j]
-{
-  GreedySimulation(sorted_handles, perm, 0, 0, n) == n
-}
-
-function GreedySimulation(sorted_handles: seq<(string, int)>, perm: seq<int>, person_idx: int, handle_idx: int, n: int): int
-  requires |perm| == n
-  requires 0 <= person_idx <= n
-  requires 0 <= handle_idx <= |sorted_handles|
-  decreases n - person_idx + |sorted_handles| - handle_idx
-{
-  if person_idx >= n then person_idx
-  else if handle_idx >= |sorted_handles| then person_idx
-  else
-    var target_person := perm[person_idx];
-    if sorted_handles[handle_idx].1 == target_person then
-      GreedySimulation(sorted_handles, perm, person_idx + 1, handle_idx + 1, n)
-    else
-      GreedySimulation(sorted_handles, perm, person_idx, handle_idx + 1, n)
-}
-
-function SplitLines(input: string): seq<string>
-{
-  []
-}
-
-function ParseInt(s: string): IntResult
-{
-  IntResult(false, 0)
-}
-
-function ParseNames(lines: seq<string>): seq<(string, string)>
-{
-  []
-}
-
-function ParseIntSequence(s: string): IntSequenceResult
-{
-  IntSequenceResult(false, [])
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
   requires |stdin_input| > 0
   requires ValidInput(stdin_input)
   ensures result == "YES" || result == "NO"
   ensures result == "YES" <==> CanAssignHandlesGreedy(stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-  if CanAssignHandlesGreedy(stdin_input) {
-    result := "YES";
-  } else {
-    result := "NO";
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

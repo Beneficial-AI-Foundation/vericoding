@@ -1,7 +1,9 @@
+/*
 Game theory problem: Two teams of 2 players each compete. Each player has defense and attack skills.
 Team 1 chooses their defense/attack assignment first, then Team 2 responds optimally.
 A team wins if their defense > opponent's attack AND their attack > opponent's defense.
 Determine which team can guarantee a win with optimal play, or if neither can.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -52,99 +54,17 @@ function ComputeResult(input: string): string
             else "Draw\n"
 }
 
-function SplitLines(s: string): seq<string>
-{
-    SplitByChar(s, '\n')
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function SplitByChar(s: string, delimiter: char): seq<string>
-{
-    if |s| == 0 then
-        [""]
-    else if s[0] == delimiter then
-        [""] + SplitByChar(s[1..], delimiter)
-    else
-        var rest := SplitByChar(s[1..], delimiter);
-        if |rest| == 0 then
-            [[s[0]]]
-        else
-            [[s[0]] + rest[0]] + rest[1..]
-}
-
-function ParseLine(line: string): seq<int>
-{
-    var parts := SplitByChar(line, ' ');
-    seq(|parts|, i requires 0 <= i < |parts| => StringToInt(parts[i]))
-}
-
-function StringToInt(s: string): int
-{
-    if |s| == 0 then 0
-    else if s[0] == '-' && |s| > 1 then
-        -StringToIntHelper(s[1..])
-    else
-        StringToIntHelper(s)
-}
-
-function StringToIntHelper(s: string): int
-{
-    if |s| == 0 then 0
-    else if '0' <= s[0] <= '9' then
-        StringToIntHelper(s[1..]) + (s[0] as int - '0' as int) * Power10(|s| - 1)
-    else 0
-}
-
-function Power10(n: int): int
-{
-    if n <= 0 then 1 else 10 * Power10(n - 1)
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures result == ComputeResult(input)
     ensures result == "Team 1\n" || result == "Team 2\n" || result == "Draw\n"
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    
-    var player1 := ParseLine(lines[0]);
-    var player2 := ParseLine(lines[1]);
-    var player3 := ParseLine(lines[2]);
-    var player4 := ParseLine(lines[3]);
-
-    var a := player1[0]; // player 1 defense
-    var b := player1[1]; // player 1 attack
-    var c := player2[0]; // player 2 defense
-    var d := player2[1]; // player 2 attack
-    var x := player3[0]; // player 3 defense
-    var y := player3[1]; // player 3 attack
-    var z := player4[0]; // player 4 defense
-    var w := player4[1]; // player 4 attack
-
-    var Team1 := false;
-    var Team2 := false;
-
-    // Team 1 can guarantee win if player 1 defense beats both team 2 attacks
-    // and player 2 attack beats both team 2 defenses
-    if a > w && a > y && d > x && d > z {
-        Team1 := true;
-    }
-
-    // Team 1 can guarantee win if player 2 defense beats both team 2 attacks
-    // and player 1 attack beats both team 2 defenses
-    if c > w && c > y && b > x && b > z {
-        Team1 := true;
-    }
-
-    // Team 2 can guarantee win if they can counter both possible Team 1 assignments
-    if ((x > b && w > c) || (z > b && y > c)) && ((x > d && w > a) || (z > d && y > a)) {
-        Team2 := true;
-    }
-
-    if Team1 {
-        return "Team 1\n";
-    } else if Team2 {
-        return "Team 2\n";
-    } else {
-        return "Draw\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

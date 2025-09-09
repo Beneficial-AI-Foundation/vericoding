@@ -1,7 +1,9 @@
+/*
 Given a recurrence relation x_{i+1} = r × x_i - D starting from year 2000, 
 calculate the values for years 2001 through 2010.
 Input: Three integers r, D, x_2000 where 2 ≤ r ≤ 5, 1 ≤ D ≤ 100, D < x_2000 ≤ 200
 Output: 10 lines containing x_{2001}, x_{2002}, ..., x_{2010} respectively
+*/
 
 predicate ValidInput(input: string)
     requires |input| > 0
@@ -36,101 +38,18 @@ function generateOutputUpToIteration(r: int, D: int, x0: int, iterations: int): 
         previousOutput + intToString(currentValue) + "\n"
 }
 
-function parseInputPure(input: string): seq<int>
-    requires |input| > 0
-{
-    parseInputHelper(input, 0, "", [])
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function parseInputHelper(input: string, pos: int, current: string, numbers: seq<int>): seq<int>
-    requires 0 <= pos <= |input|
-    decreases |input| - pos
-{
-    if pos == |input| then
-        if |current| > 0 && isValidNumber(current) then
-            numbers + [stringToIntPure(current)]
-        else numbers
-    else if input[pos] == ' ' || input[pos] == '\n' || input[pos] == '\t' then
-        var newNumbers := if |current| > 0 && isValidNumber(current) then 
-            numbers + [stringToIntPure(current)] else numbers;
-        parseInputHelper(input, pos + 1, "", newNumbers)
-    else if '0' <= input[pos] <= '9' || input[pos] == '-' then
-        parseInputHelper(input, pos + 1, current + [input[pos]], numbers)
-    else
-        parseInputHelper(input, pos + 1, current, numbers)
-}
-
-predicate isValidNumber(s: string)
-{
-    |s| > 0 && (
-        (forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9') ||
-        (s[0] == '-' && |s| > 1 && forall i :: 1 <= i < |s| ==> '0' <= s[i] <= '9')
-    )
-}
-
-function stringToIntPure(s: string): int
-    requires |s| > 0
-    requires isValidNumber(s)
-{
-    if s[0] == '-' then -stringToIntHelper(s, 1, 0)
-    else stringToIntHelper(s, 0, 0)
-}
-
-function stringToIntHelper(s: string, pos: int, acc: int): int
-    requires 0 <= pos <= |s|
-    requires |s| > 0
-    requires forall i :: pos <= i < |s| ==> '0' <= s[i] <= '9'
-    decreases |s| - pos
-{
-    if pos == |s| then acc
-    else stringToIntHelper(s, pos + 1, acc * 10 + (s[pos] as int - '0' as int))
-}
-
-function intToString(n: int): string
-{
-    if n == 0 then "0"
-    else if n < 0 then "-" + intToStringHelper(-n, "")
-    else intToStringHelper(n, "")
-}
-
-function intToStringHelper(n: int, acc: string): string
-    requires n >= 0
-    decreases n
-{
-    if n == 0 then acc
-    else intToStringHelper(n / 10, [('0' as int + n % 10) as char] + acc)
-}
-
-method parseInput(input: string) returns (tokens: seq<int>)
-    requires |input| > 0
-    ensures tokens == parseInputPure(input)
-{
-    tokens := parseInputPure(input);
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     requires ValidInput(input)
     ensures var tokens := parseInputPure(input);
             result == generateExpectedOutput(tokens[0], tokens[1], tokens[2])
+// </vc-spec>
+// <vc-code>
 {
-    var tokens := parseInput(input);
-    var r := tokens[0];
-    var D := tokens[1];
-    var x := tokens[2];
-    var x0 := tokens[2];
-
-    var output := "";
-    var i := 0;
-    while i < 10
-        invariant 0 <= i <= 10
-        invariant output == generateOutputUpToIteration(r, D, x0, i)
-        invariant x == (if i == 0 then x0 else calculateRecurrence(r, D, x0, i))
-    {
-        x := r * x - D;
-        output := output + intToString(x) + "\n";
-        i := i + 1;
-    }
-
-    return output;
+  assume {:axiom} false;
 }
+// </vc-code>

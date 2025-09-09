@@ -1,6 +1,8 @@
+/*
 Given n timezones where day has n hours, find the optimal start time for a 1-hour contest
 to maximize participants. When it's hour 1 in timezone 1, it's hour i in timezone i.
 People participate only if contest starts between hours s and f-1 in their local time.
+*/
 
 predicate ValidInput(n: int, a: seq<int>, s: int, f: int)
 {
@@ -30,12 +32,10 @@ function participantCountHelper(a: seq<int>, s: int, f: int, n: int, start: int,
     contribution + participantCountHelper(a, s, f, n, start, i + 1)
 }
 
-function sum(s: seq<int>): int
-{
-  if |s| == 0 then 0
-  else s[0] + sum(s[1..])
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, a: seq<int>, s: int, f: int) returns (result: int)
   requires ValidInput(n, a, s, f)
   ensures 1 <= result <= n
@@ -44,28 +44,9 @@ method solve(n: int, a: seq<int>, s: int, f: int) returns (result: int)
   ensures forall start :: 1 <= start <= n && 
     participantCount(a, s, f, n, start) == participantCount(a, s, f, n, result) 
     ==> result <= start
+// </vc-spec>
+// <vc-code>
 {
-  var maxCount := participantCount(a, s, f, n, 1);
-  result := 1;
-
-  var pos := 2;
-  while pos <= n
-    invariant 2 <= pos <= n + 1
-    invariant 1 <= result <= pos - 1
-    invariant maxCount == participantCount(a, s, f, n, result)
-    invariant forall start :: 1 <= start < pos ==> 
-      participantCount(a, s, f, n, result) >= participantCount(a, s, f, n, start)
-    invariant forall start :: 1 <= start < pos && 
-      participantCount(a, s, f, n, start) == participantCount(a, s, f, n, result) 
-      ==> result <= start
-  {
-    var currentCount := participantCount(a, s, f, n, pos);
-    if currentCount > maxCount {
-      maxCount := currentCount;
-      result := pos;
-    } else if currentCount == maxCount && pos < result {
-      result := pos;
-    }
-    pos := pos + 1;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

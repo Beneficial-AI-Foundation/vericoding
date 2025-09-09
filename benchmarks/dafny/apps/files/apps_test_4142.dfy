@@ -1,5 +1,7 @@
+/*
 Given a string containing only 'L', 'R', 'U', 'D' characters, determine if it is "easily playable".
 A string is easily playable if odd positions (1-indexed) contain no 'L' and even positions contain no 'R'.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -12,8 +14,17 @@ predicate EasilyPlayable(s: string)
     (forall i :: 0 <= i < |s| && i % 2 == 1 ==> s[i] != 'R')
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires ValidInput(s)
     ensures result == "Yes" <==> EasilyPlayable(s)
     ensures result in
-{"Yes", "No"}
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

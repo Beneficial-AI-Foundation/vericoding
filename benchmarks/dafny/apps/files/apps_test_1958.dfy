@@ -1,7 +1,9 @@
+/*
 Given n buyers and cost p per apple, determine total money seller should receive.
 Each buyer purchased exactly half the apples available at their turn.
 If apples were odd, buyer received additional half apple as gift.
 Seller started with some positive number of apples and ended with zero apples.
+*/
 
 predicate ValidInput(n: int, p: int, buyers: seq<string>)
 {
@@ -42,30 +44,17 @@ function computePaymentBackward(buyers: seq<string>, p: int, currentIndex: int, 
         payment + computePaymentBackward(buyers, p, currentIndex - 1, newApples)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, p: int, buyers: seq<string>) returns (result: int)
     requires ValidInput(n, p, buyers)
     ensures result >= 0
     ensures result == computeTotalPayment(buyers, p)
+// </vc-spec>
+// <vc-code>
 {
-    var num := 0;
-    var num2 := 0;
-    var i := n - 1;
-
-    while i >= 0
-        invariant -1 <= i < n
-        invariant num >= 0
-        invariant num2 >= 0
-        invariant num2 + computePaymentBackward(buyers, p, i, num) == computeTotalPayment(buyers, p)
-    {
-        if buyers[i] == "halfplus" {
-            num := num * 2 + 1;
-            num2 := num2 + (num / 2) * p;
-        } else {
-            num2 := num2 + num * p;
-            num := num * 2;
-        }
-        i := i - 1;
-    }
-
-    result := num2;
+  assume {:axiom} false;
 }
+// </vc-code>

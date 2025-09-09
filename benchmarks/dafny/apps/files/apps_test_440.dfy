@@ -1,6 +1,8 @@
+/*
 Given a string of lowercase Latin letters, repeatedly remove consecutive vowels 
 by deleting the second vowel in each consecutive pair until no consecutive vowels remain.
 Vowels are defined as: a, e, i, o, u, y. Process the string from left to right.
+*/
 
 predicate IsVowel(c: char)
 {
@@ -20,28 +22,15 @@ predicate ValidOutput(input: seq<char>, output: seq<char>)
     (|input| > 0 ==> output[0] == input[0])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: seq<char>) returns (result: seq<char>)
     ensures ValidOutput(s, result)
+// </vc-spec>
+// <vc-code>
 {
-    var t: seq<char> := [];
-
-    var i := 0;
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant |t| <= i
-        invariant |t| <= |s|
-        invariant NoConsecutiveVowels(t)
-        invariant i > 0 ==> |t| > 0
-        invariant |t| > 0 ==> t[0] == s[0]
-    {
-        var c := s[i];
-        if |t| > 0 && IsVowel(t[|t|-1]) && IsVowel(c) {
-            // Skip this character (consecutive vowels)
-        } else {
-            t := t + [c];
-        }
-        i := i + 1;
-    }
-
-    result := t;
+  assume {:axiom} false;
 }
+// </vc-code>

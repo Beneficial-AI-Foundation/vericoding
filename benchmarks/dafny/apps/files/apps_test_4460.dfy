@@ -1,6 +1,8 @@
+/*
 Given five integers representing the values of variables x₁, x₂, x₃, x₄, x₅, find which variable has the value 0.
 Initially, each variable xᵢ had value i, but exactly one variable was changed to 0.
 Input: Five space-separated integers. Output: The index i (1-indexed) of the variable xᵢ that has value 0.
+*/
 
 predicate validInput(s: string)
 {
@@ -39,78 +41,18 @@ function generateOutput(numbers: seq<int>): string
     generateOutputHelper(numbers, 0, "")
 }
 
-function parseIntsHelper(s: string, index: int, current: string, acc: seq<int>): seq<int>
-    requires 0 <= index <= |s|
-    requires validInput(s)
-    requires validNumber(current)
-    decreases |s| - index
-{
-    if index == |s| then
-        if |current| > 0 then acc + [stringToInt(current)] else acc
-    else if s[index] == ' ' || s[index] == '\n' then
-        if |current| > 0 then
-            parseIntsHelper(s, index + 1, "", acc + [stringToInt(current)])
-        else
-            parseIntsHelper(s, index + 1, "", acc)
-    else
-        if |current| == 0 || ('0' <= s[index] <= '9') then
-            parseIntsHelper(s, index + 1, current + [s[index]], acc)
-        else
-            parseIntsHelper(s, index + 1, [s[index]], acc + [stringToInt(current)])
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function stringToInt(s: string): int
-    requires |s| > 0
-    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9' || (i == 0 && s[i] == '-')
-{
-    if |s| > 0 && s[0] == '-' then
-        -stringToIntHelper(s, 1, 0)
-    else
-        stringToIntHelper(s, 0, 0)
-}
-
-function stringToIntHelper(s: string, index: int, acc: int): int
-    requires 0 <= index <= |s|
-    requires forall i :: index <= i < |s| ==> '0' <= s[i] <= '9'
-    decreases |s| - index
-{
-    if index == |s| then acc
-    else 
-        stringToIntHelper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
-}
-
-function intToString(n: int): string
-    requires n >= 0
-{
-    if n == 0 then "0"
-    else intToStringHelper(n, "")
-}
-
-function intToStringHelper(n: int, acc: string): string
-    requires n >= 0
-    decreases n
-{
-    if n == 0 then acc
-    else intToStringHelper(n / 10, [((n % 10) + ('0' as int)) as char] + acc)
-}
-
-function generateOutputHelper(numbers: seq<int>, index: int, acc: string): string
-    requires 0 <= index <= |numbers|
-    decreases |numbers| - index
-{
-    if index == |numbers| then acc
-    else if numbers[index] == 0 then
-        generateOutputHelper(numbers, index + 1, acc + intToString(index + 1) + "\n")
-    else
-        generateOutputHelper(numbers, index + 1, acc)
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires validInput(input)
     requires |input| > 0
     ensures var numbers := parseInts(input);
             result == generateOutput(numbers)
+// </vc-spec>
+// <vc-code>
 {
-    var numbers: seq<int> := parseInts(input);
-    result := generateOutput(numbers);
+  assume {:axiom} false;
 }
+// </vc-code>

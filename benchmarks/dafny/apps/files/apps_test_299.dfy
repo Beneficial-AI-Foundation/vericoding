@@ -1,9 +1,11 @@
+/*
 Given n exercises with repetition counts, determine which muscle group receives the most total repetitions.
 Exercises cycle through three types based on position (0-indexed):
 - Position 0, 3, 6, ... : chest exercises
 - Position 1, 4, 7, ... : biceps exercises  
 - Position 2, 5, 8, ... : back exercises
 Return the muscle group with the highest total repetitions.
+*/
 
 function ChestTotal(reps: seq<int>): int
 {
@@ -31,7 +33,7 @@ predicate IsWinner(muscle: string, reps: seq<int>)
     var chestTotal := ChestTotal(reps);
     var bicepsTotal := BicepsTotal(reps);
     var backTotal := BackTotal(reps);
-    
+
     match muscle
         case "chest" => chestTotal >= bicepsTotal && chestTotal >= backTotal
         case "biceps" => bicepsTotal > chestTotal && bicepsTotal >= backTotal
@@ -39,71 +41,17 @@ predicate IsWinner(muscle: string, reps: seq<int>)
         case _ => false
 }
 
-function sum(s: seq<int>): int
-{
-    if |s| == 0 then 0
-    else s[0] + sum(s[1..])
-}
+// <vc-helpers>
+// </vc-helpers>
 
-lemma SumExtensionLemma(s: seq<int>, x: int)
-    ensures sum(s + [x]) == sum(s) + x
-{
-    if |s| == 0 {
-        assert s + [x] == [x];
-        assert sum([x]) == x;
-        assert sum(s) == 0;
-    } else {
-        assert s == [s[0]] + s[1..];
-        assert s + [x] == [s[0]] + (s[1..] + [x]);
-        SumExtensionLemma(s[1..], x);
-    }
-}
-
+// <vc-spec>
 method FindStrongestMuscleGroup(reps: seq<int>) returns (result: string)
     requires ValidInput(reps)
     ensures result == "chest" || result == "biceps" || result == "back"
     ensures IsWinner(result, reps)
+// </vc-spec>
+// <vc-code>
 {
-    var chestTotal := 0;
-    var bicepsTotal := 0;
-    var backTotal := 0;
-    
-    var i := 0;
-    while i < |reps|
-        invariant 0 <= i <= |reps|
-        invariant chestTotal == sum(seq(i, j requires 0 <= j < i => if j % 3 == 0 then reps[j] else 0))
-        invariant bicepsTotal == sum(seq(i, j requires 0 <= j < i => if j % 3 == 1 then reps[j] else 0))
-        invariant backTotal == sum(seq(i, j requires 0 <= j < i => if j % 3 == 2 then reps[j] else 0))
-    {
-        assert seq(i+1, j requires 0 <= j < i+1 => if j % 3 == 0 then reps[j] else 0) == 
-               seq(i, j requires 0 <= j < i => if j % 3 == 0 then reps[j] else 0) + 
-               [if i % 3 == 0 then reps[i] else 0];
-        assert seq(i+1, j requires 0 <= j < i+1 => if j % 3 == 1 then reps[j] else 0) == 
-               seq(i, j requires 0 <= j < i => if j % 3 == 1 then reps[j] else 0) + 
-               [if i % 3 == 1 then reps[i] else 0];
-        assert seq(i+1, j requires 0 <= j < i+1 => if j % 3 == 2 then reps[j] else 0) == 
-               seq(i, j requires 0 <= j < i => if j % 3 == 2 then reps[j] else 0) + 
-               [if i % 3 == 2 then reps[i] else 0];
-
-        SumExtensionLemma(seq(i, j requires 0 <= j < i => if j % 3 == 0 then reps[j] else 0), if i % 3 == 0 then reps[i] else 0);
-        SumExtensionLemma(seq(i, j requires 0 <= j < i => if j % 3 == 1 then reps[j] else 0), if i % 3 == 1 then reps[i] else 0);
-        SumExtensionLemma(seq(i, j requires 0 <= j < i => if j % 3 == 2 then reps[j] else 0), if i % 3 == 2 then reps[i] else 0);
-
-        if i % 3 == 0 {
-            chestTotal := chestTotal + reps[i];
-        } else if i % 3 == 1 {
-            bicepsTotal := bicepsTotal + reps[i];
-        } else {
-            backTotal := backTotal + reps[i];
-        }
-        i := i + 1;
-    }
-
-    if chestTotal >= bicepsTotal && chestTotal >= backTotal {
-        result := "chest";
-    } else if bicepsTotal >= backTotal {
-        result := "biceps";
-    } else {
-        result := "back";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

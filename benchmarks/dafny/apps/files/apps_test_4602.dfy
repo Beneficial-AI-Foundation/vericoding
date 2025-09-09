@@ -1,6 +1,8 @@
+/*
 Given N balls at coordinates (x_i, i) for i = 1 to N, and 2N robots (N type-A at (0,i) and N type-B at (K,i)),
 find the minimum total distance to collect all balls. Each robot can collect the ball on its corresponding line
 and return to its starting position. Type-A robot travels 2×x_i, Type-B robot travels 2×(K-x_i).
+*/
 
 predicate ValidInput(s: string) {
     var lines := SplitByNewlines(s);
@@ -52,82 +54,10 @@ function ComputeMinDistance(x: seq<int>, k: int): int
     Sum(seq(|x|, i requires 0 <= i < |x| => 2 * Min(k - x[i], x[i])))
 }
 
-function SplitByNewlines(s: string): seq<string>
-    decreases |s|
-{
-    if |s| == 0 then []
-    else if '\n' !in s then [s]
-    else 
-        var pos := FindNewline(s, 0);
-        if pos >= 0 && pos < |s| then [s[..pos]] + SplitByNewlines(s[pos+1..])
-        else [s]
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function FindNewline(s: string, start: int): int
-    requires 0 <= start <= |s|
-    decreases |s| - start
-{
-    if start >= |s| then -1
-    else if s[start] == '\n' then start
-    else FindNewline(s, start + 1)
-}
-
-function StringToInt(s: string): int
-    requires IsNonNegativeInteger(s)
-    decreases |s|
-{
-    if |s| == 0 then 0
-    else if |s| == 1 then s[0] as int - '0' as int
-    else StringToInt(s[..|s|-1]) * 10 + (s[|s|-1] as int - '0' as int)
-}
-
-function IntToString(n: int): string
-    requires n >= 0
-    ensures IsNonNegativeInteger(IntToString(n))
-    ensures StringToInt(IntToString(n)) == n
-    decreases n
-{
-    if n < 10 then [('0' as int + n) as char]
-    else IntToString(n / 10) + [('0' as int + (n % 10)) as char]
-}
-
-function ParseIntArray(s: string): seq<int> {
-    var tokens := SplitBySpaces(s);
-    seq(|tokens|, i requires 0 <= i < |tokens| => 
-        if IsNonNegativeInteger(tokens[i]) then StringToInt(tokens[i]) else 0)
-}
-
-function SplitBySpaces(s: string): seq<string>
-    decreases |s|
-{
-    if |s| == 0 then []
-    else if ' ' !in s then [s]
-    else 
-        var pos := FindSpace(s, 0);
-        if pos >= 0 && pos < |s| then [s[..pos]] + SplitBySpaces(s[pos+1..])
-        else [s]
-}
-
-function FindSpace(s: string, start: int): int
-    requires 0 <= start <= |s|
-    decreases |s| - start
-{
-    if start >= |s| then -1
-    else if s[start] == ' ' then start
-    else FindSpace(s, start + 1)
-}
-
-function Sum(xs: seq<int>): int 
-    requires forall i :: 0 <= i < |xs| ==> xs[i] >= 0
-    ensures Sum(xs) >= 0
-    decreases |xs|
-{
-    if |xs| == 0 then 0
-    else xs[0] + Sum(xs[1..])
-}
-
-function Min(a: int, b: int): int { if a <= b then a else b }
-
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires |s| > 0
     requires ValidInput(s)
@@ -135,19 +65,9 @@ method solve(s: string) returns (result: string)
     ensures result[|result|-1] == '\n'
     ensures ValidOutput(result)
     ensures CorrectSolution(s, result)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitByNewlines(s);
-    var n := StringToInt(lines[0]);
-    var k := StringToInt(lines[1]);
-    var x := ParseIntArray(lines[2]);
-
-    var sum := ComputeMinDistance(x, k);
-    assert sum >= 0;
-    var sumStr := IntToString(sum);
-    result := sumStr + "\n";
-
-    assert result[..|result|-1] == sumStr;
-    assert StringToInt(sumStr) == sum by {
-        assert StringToInt(IntToString(sum)) == sum;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

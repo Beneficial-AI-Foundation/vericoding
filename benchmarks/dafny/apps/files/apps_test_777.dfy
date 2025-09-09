@@ -1,8 +1,10 @@
+/*
 Given a string of lowercase letters, determine how many distinct strings can be created by
 inserting exactly one additional lowercase letter (a-z) at any position in the string.
 For a string of length n, we can insert at n+1 positions with 26 character choices,
 giving 26×(n+1) total combinations. However, n duplicates occur, resulting in
 26×(n+1) - n = 25×n + 26 distinct strings.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -38,10 +40,16 @@ function char_of_digit(d: int): char
     case 5 => '5' case 6 => '6' case 7 => '7' case 8 => '8' case 9 => '9'
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires ValidInput(s)
     ensures result == int_to_string(DistinctStringsCount(s))
+// </vc-spec>
+// <vc-code>
 {
-    var computation := DistinctStringsCount(s);
-    result := int_to_string(computation);
+  assume {:axiom} false;
 }
+// </vc-code>

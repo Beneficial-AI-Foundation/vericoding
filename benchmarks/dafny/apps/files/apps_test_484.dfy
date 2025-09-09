@@ -1,7 +1,9 @@
+/*
 Given a rectangular piece of paper of dimensions a × b and n rectangular seals with dimensions x_i × y_i,
 find the maximum total area that can be covered by placing exactly two different seals on the paper.
 Each seal can be rotated 90 degrees, and the impressions must not overlap (but can touch).
 If no two seals can fit on the paper, return 0.
+*/
 
 function checkPairFunc(seal1: (int, int), seal2: (int, int), a: int, b: int): int
     requires a >= 1 && b >= 1
@@ -48,43 +50,10 @@ function max(x: int, y: int): int
     if x >= y then x else y
 }
 
-method checkPair(seal1: (int, int), seal2: (int, int), a: int, b: int) returns (maxArea: int)
-    requires a >= 1 && b >= 1
-    requires seal1.0 >= 1 && seal1.1 >= 1
-    requires seal2.0 >= 1 && seal2.1 >= 1
-    ensures maxArea >= 0
-    ensures maxArea == checkPairFunc(seal1, seal2, a, b)
-    ensures maxArea <= seal1.0 * seal1.1 + seal2.0 * seal2.1
-{
-    var tans := 0;
+// <vc-helpers>
+// </vc-helpers>
 
-    var orientations := [(seal1, seal2), (seal1, (seal2.1, seal2.0)), ((seal1.1, seal1.0), seal2), ((seal1.1, seal1.0), (seal2.1, seal2.0))];
-
-    var k := 0;
-    while k < 4
-        invariant 0 <= k <= 4
-        invariant tans >= 0
-        invariant forall idx :: 0 <= idx < k ==> (
-            canFit(orientations[idx].0, orientations[idx].1, a, b) ==> 
-            orientations[idx].0.0 * orientations[idx].0.1 + orientations[idx].1.0 * orientations[idx].1.1 <= tans
-        )
-        invariant tans == 0 || exists idx :: 0 <= idx < k && canFit(orientations[idx].0, orientations[idx].1, a, b) && orientations[idx].0.0 * orientations[idx].0.1 + orientations[idx].1.0 * orientations[idx].1.1 == tans
-    {
-        var r1 := orientations[k].0;
-        var r2 := orientations[k].1;
-
-        if canFit(r1, r2, a, b) {
-            var area := r1.0 * r1.1 + r2.0 * r2.1;
-            if area > tans {
-                tans := area;
-            }
-        }
-        k := k + 1;
-    }
-
-    maxArea := tans;
-}
-
+// <vc-spec>
 method solve(n: int, a: int, b: int, seals: seq<(int, int)>) returns (result: int)
     requires n >= 0
     requires a >= 1 && b >= 1
@@ -94,39 +63,9 @@ method solve(n: int, a: int, b: int, seals: seq<(int, int)>) returns (result: in
     ensures result == 0 ==> (forall i, j :: 0 <= i < n && i < j < n ==> checkPairFunc(seals[i], seals[j], a, b) == 0)
     ensures result > 0 ==> (exists i, j :: 0 <= i < n && i < j < n && checkPairFunc(seals[i], seals[j], a, b) == result)
     ensures forall i, j :: 0 <= i < n && i < j < n ==> checkPairFunc(seals[i], seals[j], a, b) <= result
+// </vc-spec>
+// <vc-code>
 {
-    var ans := 0;
-    var maxI, maxJ := -1, -1;
-
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant ans >= 0
-        invariant forall i', j' :: 0 <= i' < i && i' < j' < n ==> checkPairFunc(seals[i'], seals[j'], a, b) <= ans
-        invariant forall i', j' :: 0 <= i' < n && i' < j' < i ==> checkPairFunc(seals[i'], seals[j'], a, b) <= ans
-        invariant ans == 0 ==> (maxI == -1 && maxJ == -1)
-        invariant ans > 0 ==> (0 <= maxI < n && maxI < maxJ < n && checkPairFunc(seals[maxI], seals[maxJ], a, b) == ans)
-    {
-        var j := i + 1;
-        while j < n
-            invariant i < j <= n
-            invariant ans >= 0
-            invariant forall i', j' :: 0 <= i' < i && i' < j' < n ==> checkPairFunc(seals[i'], seals[j'], a, b) <= ans
-            invariant forall i', j' :: 0 <= i' < n && i' < j' < i ==> checkPairFunc(seals[i'], seals[j'], a, b) <= ans
-            invariant forall j' :: i < j' < j ==> checkPairFunc(seals[i], seals[j'], a, b) <= ans
-            invariant ans == 0 ==> (maxI == -1 && maxJ == -1)
-            invariant ans > 0 ==> (0 <= maxI < n && maxI < maxJ < n && checkPairFunc(seals[maxI], seals[maxJ], a, b) == ans)
-        {
-            var area := checkPair(seals[i], seals[j], a, b);
-            if area > ans {
-                ans := area;
-                maxI := i;
-                maxJ := j;
-            }
-            j := j + 1;
-        }
-        i := i + 1;
-    }
-
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

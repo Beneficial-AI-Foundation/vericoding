@@ -1,4 +1,6 @@
+/*
 Given a 2D binary matrix containing only "0"s and "1"s, find the area of the largest rectangle that contains only "1"s.
+*/
 
 predicate ValidMatrix(matrix: seq<seq<string>>)
 {
@@ -16,91 +18,18 @@ predicate EmptyMatrix(matrix: seq<seq<string>>)
     |matrix| == 0 || |matrix[0]| == 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method maximalRectangle(matrix: seq<seq<string>>) returns (result: int)
     requires ValidMatrix(matrix)
     ensures result >= 0
     ensures EmptyMatrix(matrix) ==> result == 0
     ensures result <= MaxPossibleArea(matrix)
+// </vc-spec>
+// <vc-code>
 {
-    if |matrix| == 0 || |matrix[0]| == 0 {
-        return 0;
-    }
-
-    var n := |matrix[0]|;
-    var height := new int[n + 1];
-
-    // Initialize height array to 0
-    var i := 0;
-    while i < n + 1
-        invariant 0 <= i <= n + 1
-        invariant forall k :: 0 <= k < i ==> height[k] == 0
-    {
-        height[i] := 0;
-        i := i + 1;
-    }
-
-    var ans := 0;
-    var rowIdx := 0;
-
-    while rowIdx < |matrix|
-        invariant 0 <= rowIdx <= |matrix|
-        invariant ans >= 0
-        invariant ans <= |matrix| * n
-        invariant forall k :: 0 <= k < n + 1 ==> height[k] >= 0
-    {
-        var row := matrix[rowIdx];
-
-        // Update heights for current row
-        i := 0;
-        while i < n
-            invariant 0 <= i <= n
-            invariant forall k :: 0 <= k < i ==> height[k] >= 0
-            invariant forall k :: i <= k < n + 1 ==> height[k] >= 0
-        {
-            if row[i] == "1" {
-                height[i] := height[i] + 1;
-            } else {
-                height[i] := 0;
-            }
-            i := i + 1;
-        }
-
-        // Find maximum rectangle in current histogram using stack
-        var stack := [-1];
-        i := 0;
-        while i < n + 1
-            invariant 0 <= i <= n + 1
-            invariant |stack| >= 1
-            invariant stack[0] == -1
-            invariant forall k :: 0 <= k < |stack| ==> -1 <= stack[k] <= n
-            invariant forall k :: 1 <= k < |stack| ==> 0 <= stack[k] <= n
-            invariant ans >= 0
-            invariant ans <= |matrix| * n
-        {
-            while |stack| > 1 && (i == n + 1 || height[i] < height[stack[|stack|-1]])
-                invariant |stack| >= 1
-                invariant stack[0] == -1
-                invariant forall k :: 0 <= k < |stack| ==> -1 <= stack[k] <= n
-                invariant forall k :: 1 <= k < |stack| ==> 0 <= stack[k] <= n
-                invariant ans >= 0
-                invariant ans <= |matrix| * n
-            {
-                var h := height[stack[|stack|-1]];
-                stack := stack[..|stack|-1]; // pop
-                var w := i - 1 - stack[|stack|-1];
-                var area := h * w;
-                if area > ans && area <= |matrix| * n {
-                    ans := area;
-                }
-            }
-            if i < n + 1 {
-                stack := stack + [i];
-            }
-            i := i + 1;
-        }
-
-        rowIdx := rowIdx + 1;
-    }
-
-    return ans;
+  assume {:axiom} false;
 }
+// </vc-code>

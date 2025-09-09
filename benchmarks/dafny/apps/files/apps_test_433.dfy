@@ -1,7 +1,9 @@
+/*
 Given a circular building with n entrances numbered 1 to n, determine the final entrance
 number after walking from entrance a by b entrances. Positive b means walking forward
 (increasing order), negative b means walking backward (decreasing order), and b=0 means
 staying at the starting entrance.
+*/
 
 predicate ValidInput(n: int, a: int, b: int) {
     n >= 1 && 1 <= a <= n && -100 <= b <= 100
@@ -17,14 +19,17 @@ predicate ValidOutput(result: int, n: int) {
     1 <= result <= n
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, a: int, b: int) returns (result: int)
     requires ValidInput(n, a, b)
     ensures ValidOutput(result, n)
     ensures result == FinalEntrance(n, a, b)
+// </vc-spec>
+// <vc-code>
 {
-    var temp := (a - 1 + b) % n;
-    if temp < 0 {
-        temp := temp + n;
-    }
-    result := temp + 1;
+  assume {:axiom} false;
 }
+// </vc-code>

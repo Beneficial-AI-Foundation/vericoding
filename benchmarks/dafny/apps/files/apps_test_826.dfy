@@ -1,6 +1,8 @@
+/*
 Find the minimum cost to obtain logs of lengths 1, 2, 3, ..., n.
 We can purchase logs of lengths 1, 2, 3, ..., n+1 (each costing 1 unit),
 cut them into smaller pieces, and discard unwanted pieces.
+*/
 
 predicate ValidInput(n: int)
 {
@@ -29,49 +31,18 @@ function OptimalCost(n: int, savings: int): int
   n - savings + 1
 }
 
-lemma MinimalSavingsUnique(n: int, s1: int, s2: int)
-  requires n >= 1
-  requires IsMinimalSavings(n, s1)
-  requires IsMinimalSavings(n, s2)
-  ensures s1 == s2
-{
-  if s1 < s2 {
-    assert (2 + s1) * (s1 + 1) / 2 <= n + 1;
-    assert false;
-  } else if s2 < s1 {
-    assert (2 + s2) * (s2 + 1) / 2 <= n + 1;
-    assert false;
-  }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int) returns (result: int)
   requires ValidInput(n)
   ensures result >= 1
   ensures result <= n
   ensures exists savings :: IsMinimalSavings(n, savings) && result == OptimalCost(n, savings)
+// </vc-spec>
+// <vc-code>
 {
-  var i := 0;
-
-  while (2 + i) * (i + 1) / 2 <= n + 1
-    decreases n + 2 - i
-    invariant i >= 0
-    invariant i <= n + 1
-    invariant forall j :: 0 <= j < i ==> (2 + j) * (j + 1) / 2 <= n + 1
-  {
-    i := i + 1;
-  }
-
-  assert (2 + i) * (i + 1) / 2 > n + 1;
-  
-  if i > 0 {
-    assert i - 1 >= 0 && i - 1 < i;
-    assert (2 + (i - 1)) * ((i - 1) + 1) / 2 <= n + 1;
-    assert (2 + (i - 1)) * i / 2 <= n + 1;
-  }
-  
-  assert forall j :: 0 <= j < i ==> (2 + j) * (j + 1) / 2 <= n + 1;
-  assert IsOptimalSavings(n, i);
-  assert IsMinimalSavings(n, i);
-
-  result := n - i + 1;
+  assume {:axiom} false;
 }
+// </vc-code>

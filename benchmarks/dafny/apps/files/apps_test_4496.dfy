@@ -1,5 +1,7 @@
+/*
 Given an integer D representing a December date (22-25), output the corresponding Christmas-related string:
 D=25: "Christmas", D=24: "Christmas Eve", D=23: "Christmas Eve Eve", D=22: "Christmas Eve Eve Eve"
+*/
 
 predicate ValidInput(d: int) {
     22 <= d <= 25
@@ -22,22 +24,16 @@ function RepeatEve(count: int): string
     else " Eve" + RepeatEve(count - 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(d: int) returns (result: string)
     requires ValidInput(d)
     ensures result == ExpectedOutput(d)
+// </vc-spec>
+// <vc-code>
 {
-    var baseString := "Christmas";
-    var eveCount := 25 - d;
-    var eveString := "";
-
-    var i := 0;
-    while i < eveCount
-        invariant 0 <= i <= eveCount
-        invariant eveString == RepeatEve(i)
-    {
-        eveString := eveString + " Eve";
-        i := i + 1;
-    }
-
-    result := baseString + eveString;
+  assume {:axiom} false;
 }
+// </vc-code>

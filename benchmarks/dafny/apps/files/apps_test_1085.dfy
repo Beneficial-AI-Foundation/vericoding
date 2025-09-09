@@ -1,6 +1,8 @@
+/*
 Given a positive integer N, find how many values of K (where 2 ≤ K ≤ N) will cause N to become 1
 through repeated operations: if K divides N, replace N with N/K; otherwise replace N with N-K;
 continue until N < K. Count the number of valid K values.
+*/
 
 predicate ValidInput(n: nat)
 {
@@ -36,39 +38,19 @@ function count_valid_k_values(n: nat): int
     count_divisors(n - 1) + count_special_divisors(n) - 1
 }
 
-method make_divisors(n: nat) returns (divisors: seq<nat>)
-  requires n > 0
-  ensures forall d :: d in divisors ==> d > 0 && n % d == 0
-  ensures forall d :: d > 0 && n % d == 0 ==> d in divisors
-  ensures |divisors| > 0
-  ensures 1 in divisors
-  ensures n in divisors
-{
-  divisors := [];
-  var i := 1;
-  while i <= n
-    invariant 1 <= i <= n + 1
-    invariant forall d :: d in divisors ==> d > 0 && n % d == 0
-    invariant forall d :: 1 <= d < i && n % d == 0 ==> d in divisors
-  {
-    if n % i == 0 {
-      divisors := divisors + [i];
-    }
-    i := i + 1;
-  }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: nat) returns (result: int)
   requires ValidInput(n)
   ensures result == count_valid_k_values(n)
   ensures n == 1 ==> result == -1
   ensures n > 1 ==> result == count_divisors(n - 1) + count_special_divisors(n) - 1
   ensures result >= -1
+// </vc-spec>
+// <vc-code>
 {
-  if n == 1 {
-    result := -1;
-    return;
-  }
-
-  result := count_divisors(n - 1) + count_special_divisors(n) - 1;
+  assume {:axiom} false;
 }
+// </vc-code>

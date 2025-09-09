@@ -1,6 +1,8 @@
+/*
 Given a monster with initial health H, find the minimum number of attacks needed to defeat it.
 Attack rules: If health is 1, monster dies. If health > 1, monster splits into two monsters
 with health floor(X/2). Goal is to make all monsters have health <= 0.
+*/
 
 predicate ValidInput(h: int) {
     h >= 1
@@ -74,51 +76,19 @@ function IntToStringHelper(n: int, acc: string): string
         IntToStringHelper(n / 10, [digitChar] + acc)
 }
 
-method ParseInt(s: string) returns (result: int)
-    requires |s| > 0
-    ensures result >= 0
-    ensures result == ParseIntFunc(s)
-{
-    result := ParseIntHelper(s, 0, 0);
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method IntToString(n: int) returns (s: string)
-    requires n >= 0
-    ensures |s| > 0
-    ensures n == 0 ==> s == "0"
-    ensures n > 0 ==> |s| > 0
-    ensures s == IntToStringFunc(n)
-{
-    s := IntToStringFunc(n);
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (output: string)
     requires |stdin_input| > 0
     ensures |output| > 0
     ensures output[|output|-1] == '\n'
     ensures var h := ParseIntFunc(stdin_input);
             ValidInput(h) ==> output == IntToStringFunc(ComputeAttacks(h)) + "\n"
+// </vc-spec>
+// <vc-code>
 {
-    var h := ParseInt(stdin_input);
-
-    var n := 0;
-    var current_h := h;
-    var ans := 0;
-
-    while current_h != 0 
-        invariant current_h >= 0
-        invariant n >= 0
-        invariant ans >= 0
-        invariant current_h == h / pow2(n)
-        invariant ans + ComputeAttacksIterative(current_h, n) == ComputeAttacks(h)
-        decreases current_h
-    {
-        var tmpCall1 := pow2(n);
-        ans := ans + tmpCall1;
-        n := n + 1;
-        current_h := current_h / 2;
-    }
-
-    var ansStr := IntToString(ans);
-    output := ansStr + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

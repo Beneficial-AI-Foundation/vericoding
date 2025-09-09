@@ -1,5 +1,7 @@
+/*
 Given current time A (0-23) and hours B until contest begins (0-23), 
 determine the contest start time in 24-hour format using modular arithmetic.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -24,106 +26,17 @@ predicate CorrectOutput(input: string, result: string)
     result == IntToString(ContestStartTime(A, B)) + "\n"
 }
 
-predicate IsValidIntString(s: string)
-{
-    |s| > 0 && forall i :: 0 <= i < |s| ==> IsDigit(s[i])
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function IsDigit(c: char): bool
-{
-    '0' <= c <= '9'
-}
-
-function CharToInt(c: char): int
-    requires IsDigit(c)
-    ensures 0 <= CharToInt(c) <= 9
-{
-    c as int - '0' as int
-}
-
-function IntToString(n: int): string
-    requires n >= 0
-    ensures |IntToString(n)| > 0
-    ensures n == 0 <==> IntToString(n) == "0"
-{
-    if n == 0 then "0"
-    else IntToStringHelper(n)
-}
-
-function IntToStringHelper(n: int): string
-    requires n > 0
-    ensures |IntToStringHelper(n)| > 0
-{
-    if n < 10 then
-        [(n + '0' as int) as char]
-    else
-        IntToStringHelper(n / 10) + [(n % 10 + '0' as int) as char]
-}
-
-method TrimNewline(s: string) returns (trimmed: string)
-    ensures |trimmed| <= |s|
-    ensures s == trimmed || (|s| > 0 && s[|s| - 1] == '\n' && s[..|s| - 1] == trimmed)
-{
-    if |s| > 0 && s[|s| - 1] == '\n' {
-        trimmed := s[..|s| - 1];
-    } else {
-        trimmed := s;
-    }
-}
-
-method SplitBySpace(s: string) returns (parts: seq<string>)
-    ensures |parts| >= 0
-{
-    parts := [];
-    var current := "";
-    var i := 0;
-
-    while i < |s|
-    {
-        if s[i] == ' ' {
-            if |current| > 0 {
-                parts := parts + [current];
-                current := "";
-            }
-        } else {
-            current := current + [s[i]];
-        }
-        i := i + 1;
-    }
-
-    if |current| > 0 {
-        parts := parts + [current];
-    }
-}
-
-method StringToInt(s: string) returns (n: int)
-    requires forall i :: 0 <= i < |s| ==> IsDigit(s[i])
-    requires |s| > 0
-    ensures n >= 0
-{
-    n := 0;
-    var i := 0;
-
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant n >= 0
-    {
-        if IsDigit(s[i]) {
-            n := n * 10 + CharToInt(s[i]);
-        }
-        i := i + 1;
-    }
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     requires ValidInput(input)
     ensures CorrectOutput(input, result)
+// </vc-spec>
+// <vc-code>
 {
-    var A, B :| 0 <= A <= 23 && 0 <= B <= 23 && 
-                (input == IntToString(A) + " " + IntToString(B) + "\n" ||
-                 input == IntToString(A) + " " + IntToString(B));
-
-    var contestTime := ContestStartTime(A, B);
-    result := IntToString(contestTime) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

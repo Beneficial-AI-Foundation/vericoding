@@ -1,5 +1,7 @@
+/*
 Given N integers in a row, find the maximum possible sum after performing operations
 where each operation chooses an index i and multiplies both A[i] and A[i+1] by -1.
+*/
 
 function sum_seq(s: seq<int>): int
 {
@@ -14,52 +16,19 @@ function min_seq(s: seq<int>): int
         if s[0] <= rest_min then s[0] else rest_min
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: seq<int>) returns (result: int)
     requires |a| >= 2
     ensures var count_neg := |set i | 0 <= i < |a| && a[i] < 0|;
             var sum_abs := sum_seq(seq(|a|, i requires 0 <= i < |a| => if a[i] < 0 then -a[i] else a[i]));
             var min_abs := min_seq(seq(|a|, i requires 0 <= i < |a| => if a[i] < 0 then -a[i] else a[i]));
             result == if count_neg % 2 == 0 then sum_abs else sum_abs - 2 * min_abs
+// </vc-spec>
+// <vc-code>
 {
-    var n := |a|;
-    var count := 0;
-    var abs_values := [];
-
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant |abs_values| == i
-        invariant count == |set j | 0 <= j < i && a[j] < 0|
-        invariant forall j :: 0 <= j < i ==> abs_values[j] == (if a[j] < 0 then -a[j] else a[j])
-    {
-        var abs_val := if a[i] < 0 then -a[i] else a[i];
-        abs_values := abs_values + [abs_val];
-
-        var old_set := set j | 0 <= j < i && a[j] < 0;
-        var new_set := set j | 0 <= j < i + 1 && a[j] < 0;
-
-        if a[i] < 0 {
-            count := count + 1;
-            assert new_set == old_set + {i};
-            assert |new_set| == |old_set| + 1;
-        } else {
-            assert new_set == old_set;
-            assert |new_set| == |old_set|;
-        }
-
-        i := i + 1;
-    }
-
-    assert |abs_values| == n >= 2 > 0;
-    assert abs_values == seq(|a|, i requires 0 <= i < |a| => if a[i] < 0 then -a[i] else a[i]);
-    assert count == |set j | 0 <= j < |a| && a[j] < 0|;
-
-    var sum_abs := sum_seq(abs_values);
-    var min_abs := min_seq(abs_values);
-
-    if count % 2 == 0 {
-        result := sum_abs;
-    } else {
-        result := sum_abs - 2 * min_abs;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

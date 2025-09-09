@@ -1,9 +1,11 @@
+/*
 Given an integer N (1 ≤ N ≤ 100), count how many divisors of N! have exactly 75 divisors.
 A number has exactly 75 divisors if and only if its prime factorization has one of these forms:
 - p^74 (where p is prime)
 - p^24 × q^2 (where p, q are distinct primes)  
 - p^14 × q^4 (where p, q are distinct primes)
 - p^4 × q^4 × r^2 (where p, q, r are distinct primes)
+*/
 
 predicate ValidInput(N: int)
 {
@@ -21,154 +23,16 @@ predicate ValidOutput(result: int)
   result >= 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int) returns (result: int)
   requires ValidInput(N)
   ensures ValidOutput(result)
+// </vc-spec>
+// <vc-code>
 {
-  // Calculate prime factorization of N!
-  var primes: seq<int> := [];
-  var primeVals: seq<int> := [];
-
-  var i := 1;
-  while i <= N
-    invariant 1 <= i <= N + 1
-    invariant |primes| == |primeVals|
-  {
-    var k := i;
-    var j := 2;
-    while j * j <= i
-      invariant 2 <= j
-      invariant k >= 1
-      invariant |primes| == |primeVals|
-    {
-      if k % j == 0 {
-        // Find if prime j already exists
-        var found := false;
-        var idx := 0;
-        while idx < |primes|
-          invariant 0 <= idx <= |primes|
-          invariant |primes| == |primeVals|
-        {
-          if primes[idx] == j {
-            found := true;
-            break;
-          }
-          idx := idx + 1;
-        }
-
-        while k % j == 0
-          invariant j >= 2
-          invariant k >= 1
-          invariant |primes| == |primeVals|
-          invariant found ==> 0 <= idx < |primes|
-          decreases k
-        {
-          if found {
-            primeVals := primeVals[idx := primeVals[idx] + 1];
-          } else {
-            primes := primes + [j];
-            primeVals := primeVals + [1];
-            found := true;
-            idx := |primes| - 1;
-          }
-          k := k / j;
-        }
-      }
-      j := j + 1;
-    }
-
-    if k > 1 {
-      // Find if prime k already exists
-      var found := false;
-      var idx := 0;
-      while idx < |primes|
-        invariant 0 <= idx <= |primes|
-        invariant |primes| == |primeVals|
-      {
-        if primes[idx] == k {
-          found := true;
-          break;
-        }
-        idx := idx + 1;
-      }
-
-      if found {
-        primeVals := primeVals[idx := primeVals[idx] + 1];
-      } else {
-        primes := primes + [k];
-        primeVals := primeVals + [1];
-      }
-    }
-    i := i + 1;
-  }
-
-  var pn := |primeVals|;
-  var ans := 0;
-
-  // Count patterns
-  var idx := 0;
-  while idx < pn
-    invariant 0 <= idx <= pn
-    invariant pn == |primeVals|
-  {
-    // Pattern: p^74
-    if primeVals[idx] >= 74 {
-      ans := ans + 1;
-    }
-
-    // Pattern: p^24 × q^2
-    if primeVals[idx] >= 24 {
-      var j := 0;
-      while j < pn
-        invariant 0 <= j <= pn
-        invariant pn == |primeVals|
-      {
-        if primeVals[j] >= 2 && j != idx {
-          ans := ans + 1;
-        }
-        j := j + 1;
-      }
-    }
-
-    // Pattern: p^14 × q^4
-    if primeVals[idx] >= 14 {
-      var j := 0;
-      while j < pn
-        invariant 0 <= j <= pn
-        invariant pn == |primeVals|
-      {
-        if primeVals[j] >= 4 && j != idx {
-          ans := ans + 1;
-        }
-        j := j + 1;
-      }
-    }
-
-    // Pattern: p^4 × q^4 × r^2
-    if primeVals[idx] >= 4 {
-      var j := idx + 1;
-      while j < pn
-        invariant idx + 1 <= j <= pn
-        invariant pn == |primeVals|
-      {
-        if primeVals[j] >= 4 {
-          var k := 0;
-          while k < pn
-            invariant 0 <= k <= pn
-            invariant pn == |primeVals|
-          {
-            if primeVals[k] >= 2 && k != idx && k != j {
-              ans := ans + 1;
-            }
-            k := k + 1;
-          }
-        }
-        j := j + 1;
-      }
-    }
-
-    idx := idx + 1;
-  }
-
-  result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

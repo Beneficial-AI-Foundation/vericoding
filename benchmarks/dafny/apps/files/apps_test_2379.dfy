@@ -1,7 +1,9 @@
+/*
 Given N days, choose exactly K days to work with constraints:
 - After working, cannot work for next C consecutive days  
 - Can only work on days where S[i] == 'o' (not 'x')
 Find all days that must be worked in every valid selection of K workdays
+*/
 
 predicate IsValidWorkSelection(N: int, K: int, C: int, S: string, selection: set<int>)
     requires |S| == N
@@ -12,6 +14,10 @@ predicate IsValidWorkSelection(N: int, K: int, C: int, S: string, selection: set
         day1 < day2 - C || day2 < day1 - C)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int, K: int, C: int, S: string) returns (result: seq<int>)
     requires N > 0
     requires K > 0
@@ -25,57 +31,9 @@ method solve(N: int, K: int, C: int, S: string) returns (result: seq<int>)
     ensures forall i :: 0 <= i < |result| ==> S[result[i] - 1] == 'o'
     ensures forall i, j :: 0 <= i < j < |result| ==> result[i] < result[j]
     ensures |result| <= K
+// </vc-spec>
+// <vc-code>
 {
-    // Build L - greedy selection from left (earliest possible)
-    var L: seq<int> := [];
-    var i := 0;
-    while i < N && |L| < K
-        invariant 0 <= i <= N
-        invariant |L| <= K
-        invariant forall idx :: idx in L ==> 0 <= idx < N && S[idx] == 'o'
-        invariant forall a, b :: 0 <= a < b < |L| ==> L[a] < L[b] && L[b] >= L[a] + C + 1
-        invariant forall pos :: 0 <= pos < |L| ==> 0 <= L[pos] < N
-    {
-        if i < N && S[i] == 'o' && (|L| == 0 || i >= L[|L| - 1] + C + 1) {
-            L := L + [i];
-        }
-        i := i + 1;
-    }
-
-    // Build R - greedy selection from right (latest possible)
-    var R: seq<int> := [];
-    var j := N - 1;
-    while j >= 0 && |R| < K
-        invariant -1 <= j <= N - 1
-        invariant |R| <= K
-        invariant forall idx :: idx in R ==> 0 <= idx < N && S[idx] == 'o'
-        invariant forall a, b :: 0 <= a < b < |R| ==> R[a] < R[b] && R[b] >= R[a] + C + 1
-        invariant forall pos :: 0 <= pos < |R| ==> 0 <= R[pos] < N
-    {
-        if j >= 0 && S[j] == 'o' && (|R| == 0 || j <= R[0] - C - 1) {
-            R := [j] + R;
-        }
-        j := j - 1;
-    }
-
-    // Find days that must be worked (appear in same relative position)
-    result := [];
-    var pos := 0;
-    while pos < K && pos < |L| && pos < |R|
-        invariant 0 <= pos <= K
-        invariant pos <= |L|
-        invariant pos <= |R|
-        invariant |result| <= pos
-        invariant forall idx :: 0 <= idx < |result| ==> 1 <= result[idx] <= N
-        invariant forall idx :: 0 <= idx < |result| ==> S[result[idx] - 1] == 'o'
-        invariant forall i, j :: 0 <= i < j < |result| ==> result[i] < result[j]
-        invariant forall idx :: 0 <= idx < |result| ==> exists k :: 0 <= k < pos && k < |L| && L[k] + 1 == result[idx]
-        invariant forall k :: 0 <= k < |L| ==> 0 <= L[k] < N
-        invariant forall k :: 0 <= k < |R| ==> 0 <= R[k] < N
-    {
-        if pos < |L| && pos < |R| && K - 1 - pos < |R| && L[pos] == R[K - 1 - pos] {
-            result := result + [L[pos] + 1];
-        }
-        pos := pos + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

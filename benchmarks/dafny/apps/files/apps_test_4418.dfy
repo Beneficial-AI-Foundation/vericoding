@@ -1,7 +1,9 @@
+/*
 Given an array of n integers where each element is one of {4, 8, 15, 16, 23, 42}, 
 find the minimum number of elements to remove to make the array "good".
 A "good" array must have length divisible by 6 and can be split into complete 
 subsequences of exactly "4, 8, 15, 16, 23, 42" (in that order).
+*/
 
 predicate ValidInput(n: int, a: seq<int>)
 {
@@ -69,24 +71,17 @@ function number_of_complete_subsequences_partial(n: int, a: seq<int>, k: seq<int
     final_s[6]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, a: seq<int>) returns (result: int)
   requires ValidInput(n, a)
   ensures 0 <= result <= n
   ensures result == n - 6 * (number_of_complete_subsequences(n, a))
+// </vc-spec>
+// <vc-code>
 {
-    var k := [4, 8, 15, 16, 23, 42];
-    var s := [n, 0, 0, 0, 0, 0, 0];
-
-    for j := 0 to |a|
-        invariant |s| == 7
-        invariant s[0] + s[1] + s[2] + s[3] + s[4] + s[5] + s[6] == n
-        invariant forall i :: 0 <= i < 7 ==> s[i] >= 0
-        invariant s[6] == number_of_complete_subsequences_partial(n, a, k, j)
-        invariant s[6] <= n
-    {
-        var ai := a[j];
-        s := update_state(s, ai, k);
-    }
-
-    result := n - 6 * s[6];
+  assume {:axiom} false;
 }
+// </vc-code>

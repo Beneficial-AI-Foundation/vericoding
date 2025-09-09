@@ -1,5 +1,7 @@
+/*
 Given integers N and K, repeatedly perform the operation N := |N - K| to find
 the minimum possible value N can achieve after zero or more operations.
+*/
 
 predicate ValidInput(n: int, k: int) {
     n >= 0 && k >= 1
@@ -21,11 +23,16 @@ predicate IsCorrectResult(n: int, k: int, result: int)
     result < k
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, k: int) returns (result: int)
     requires ValidInput(n, k)
     ensures IsCorrectResult(n, k, result)
+// </vc-spec>
+// <vc-code>
 {
-    var remainder := n % k;
-    var other := k - remainder;
-    result := if remainder <= other then remainder else other;
+  assume {:axiom} false;
 }
+// </vc-code>

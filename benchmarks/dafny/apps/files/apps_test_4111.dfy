@@ -1,6 +1,8 @@
+/*
 Given n candies with weights, determine how many candies can be given to dad
 such that when the remaining n-1 candies are eaten in numerical order (one per day),
 the sum of weights eaten on even-numbered days equals the sum on odd-numbered days.
+*/
 
 predicate ValidInput(n: int, arr: seq<int>)
 {
@@ -54,55 +56,17 @@ function count_helper(arr: seq<int>, i: int, count1: int, count2: int, temp1: in
     contribution + count_helper(arr, i + 1, count1, count2, new_temp1, new_temp2)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, arr: seq<int>) returns (result: int)
   requires ValidInput(n, arr)
   ensures 0 <= result <= n
   ensures result == count_balanced_removals(arr)
+// </vc-spec>
+// <vc-code>
 {
-  var count1 := 0;
-  var count2 := 0;
-
-  for i := 0 to n
-    invariant 0 <= i <= n
-    invariant count1 == sum_even_indices(arr, 0) - sum_even_indices(arr, i)
-    invariant count2 == sum_odd_indices(arr, 0) - sum_odd_indices(arr, i)
-  {
-    if i % 2 == 0 {
-      count1 := count1 + arr[i];
-    } else {
-      count2 := count2 + arr[i];
-    }
-  }
-
-  var ans := 0;
-  var temp1 := 0;
-  var temp2 := 0;
-
-  for i := 0 to n
-    invariant 0 <= i <= n
-    invariant 0 <= ans <= i
-    invariant temp1 == sum_even_indices(arr, 0) - sum_even_indices(arr, i)
-    invariant temp2 == sum_odd_indices(arr, 0) - sum_odd_indices(arr, i)
-    invariant count1 == sum_even_indices(arr, 0)
-    invariant count2 == sum_odd_indices(arr, 0)
-    invariant ans == count_helper(arr, 0, count1, count2, 0, 0) - count_helper(arr, i, count1, count2, temp1, temp2)
-  {
-    if i % 2 == 0 {
-      var val1 := temp1 + count2 - temp2;
-      var val2 := temp2 + count1 - temp1 - arr[i];
-      if val1 == val2 {
-        ans := ans + 1;
-      }
-      temp1 := temp1 + arr[i];
-    } else {
-      var val1 := temp1 + count2 - temp2 - arr[i];
-      var val2 := temp2 + count1 - temp1;
-      if val1 == val2 {
-        ans := ans + 1;
-      }
-      temp2 := temp2 + arr[i];
-    }
-  }
-
-  result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

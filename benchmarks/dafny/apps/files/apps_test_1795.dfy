@@ -1,6 +1,8 @@
+/*
 Given n planes numbered 1 to n, where each plane i likes exactly one other plane f_i (f_i ≠ i),
 determine if there exists a love triangle. A love triangle occurs when plane A likes plane B,
 plane B likes plane C, and plane C likes plane A.
+*/
 
 predicate ValidInput(n: int, f: seq<int>)
 {
@@ -30,36 +32,17 @@ predicate HasLoveTriangle(n: int, f: seq<int>)
     HasLoveTriangleWith(n, a)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, f: seq<int>) returns (result: string)
     requires ValidInput(n, f)
     ensures result == "YES" || result == "NO"
     ensures result == "YES" <==> HasLoveTriangle(n, f)
+// </vc-spec>
+// <vc-code>
 {
-    // Convert to 0-indexed
-    var a := ZeroIndexedArray(n, f);
-
-    var ans := false;
-
-    for i := 0 to n
-        invariant 0 <= i <= n
-        invariant ans <==> (exists k :: 0 <= k < i && 0 <= a[k] < n && 0 <= a[a[k]] < n && a[a[a[k]]] == k)
-        invariant forall k :: 0 <= k < n ==> 0 <= a[k] < n
-        invariant a == ZeroIndexedArray(n, f)
-    {
-        // Check bounds before accessing
-        if 0 <= a[i] < n && 0 <= a[a[i]] < n {
-            // Check if following the "likes" chain 3 times brings us back to i
-            if a[a[a[i]]] == i {
-                ans := true;
-                break;
-            }
-        }
-    }
-
-    // Establish postcondition
-    assert ans <==> (exists k :: 0 <= k < n && 0 <= a[k] < n && 0 <= a[a[k]] < n && a[a[a[k]]] == k);
-    assert ans <==> HasLoveTriangleWith(n, a);
-    assert HasLoveTriangle(n, f) <==> HasLoveTriangleWith(n, a);
-
-    result := if ans then "YES" else "NO";
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given n customers visiting a cafe at specific times (hours and minutes), determine the minimum number of cash registers needed.
 Each customer takes less than a minute to serve and will leave if no register is available upon arrival.
 The minimum number of registers equals the maximum number of customers arriving at the same time.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -102,10 +104,17 @@ function IntToStringHelper(n: int, acc: string): string
     else IntToStringHelper(n / 10, [digitChar] + acc)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures |result| > 0
     ensures result == IntToStringFunction(GetMaxSimultaneousArrivals(input)) + "\n"
+// </vc-spec>
+// <vc-code>
 {
-    result := IntToStringFunction(GetMaxSimultaneousArrivals(input)) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

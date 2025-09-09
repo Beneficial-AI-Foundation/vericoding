@@ -1,8 +1,10 @@
+/*
 Given a rectangular football field where Robo-Wallace is at position (x_b, y_b) with a ball of radius r,
 find a point x_w on the right wall (at y = y_w) such that kicking the ball there will cause it to bounce
 once and go through the goal. The goal is located at x = 0, between y-coordinates y_1 and y_2.
 The ball moves in straight lines and bounces elastically off walls. A goal is scored when the ball's
 center crosses the y-axis between y_1 and y_2. Output x_w if possible, otherwise -1.
+*/
 
 predicate ValidInput(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int)
 {
@@ -58,21 +60,17 @@ function ComputeSolution(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int)
     (x_b as real) * ((new_y1 + y_b - w) as real) / (new_y1 as real)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int) returns (result: real)
     requires ValidInput(y1, y2, y_w, x_b, y_b, r)
     ensures IsImpossible(y1, y2, y_w, x_b, y_b, r) ==> result == -1.0
     ensures !IsImpossible(y1, y2, y_w, x_b, y_b, r) ==> result == ComputeSolution(y1, y2, y_w, x_b, y_b, r)
+// </vc-spec>
+// <vc-code>
 {
-    var w := y_w - r;
-    var new_y1 := 2 * w - y1 - y_b - r;
-    var new_y2 := 2 * w - y2 - y_b;
-
-    var left_side := x_b * x_b * (new_y2 - new_y1) * (new_y2 - new_y1);
-    var right_side := (new_y1 * new_y1 + x_b * x_b) * r * r;
-
-    if left_side <= right_side {
-        result := -1.0;
-    } else {
-        result := (x_b as real) * ((new_y1 + y_b - w) as real) / (new_y1 as real);
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,8 +1,10 @@
+/*
 Given n points numbered 1 to n arranged clockwise on a circle's circumference 
 and m line segments connecting pairs of these points, determine if the resulting 
 image has rotational symmetry. The image has rotational symmetry if there exists 
 an integer k (1 ≤ k < n) such that rotating all segments clockwise by k units 
 around the center produces the same image.
+*/
 
 datatype InputData = InputData(n: int, m: int, segments: set<(int, int)>)
 
@@ -35,16 +37,18 @@ predicate exists_rotational_symmetry(data: InputData)
             rotate_segment(seg, k, data.n) in data.segments)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
 requires |stdin_input| > 0
 requires valid_input_format(stdin_input)
 ensures result == "Yes" || result == "No"
 ensures result == "Yes" <==> exists_rotational_symmetry(parse_input(stdin_input))
+// </vc-spec>
+// <vc-code>
 {
-    var data := parse_input(stdin_input);
-    if exists_rotational_symmetry(data) {
-        result := "Yes";
-    } else {
-        result := "No";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,8 +1,10 @@
+/*
 Given two sets of points in a 2D plane, determine if there exists a circle such that 
 all points from one set are strictly inside the circle and all points from the other 
 set are strictly outside the circle. Input consists of n and m (sizes of the sets), 
 followed by n coordinate pairs for the first set, then m coordinate pairs for the 
 second set. Output "YES" if such a separating circle exists, "NO" otherwise.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -102,29 +104,18 @@ function SolveCircleSeparation(input: string): string
     else "YES\n"
 }
 
-function SplitLines(s: string): seq<string>
-    ensures |SplitLines(s)| >= 1
-{
-    [""]
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function SplitWhitespace(s: string): seq<string>
-    ensures |SplitWhitespace(s)| >= 1
-{
-    [""]
-}
-
-function StringToInt(s: string): int
-    ensures StringToInt(s) >= 1
-{
-    1
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures ValidOutput(result)
     ensures result == SolveCircleSeparation(stdin_input)
     ensures |result| > 0
+// </vc-spec>
+// <vc-code>
 {
-    result := SolveCircleSeparation(stdin_input);
+  assume {:axiom} false;
 }
+// </vc-code>

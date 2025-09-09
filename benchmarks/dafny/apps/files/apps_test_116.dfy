@@ -1,6 +1,8 @@
+/*
 Given two time intervals [l1, r1] and [l2, r2], and a specific minute k,
 find the number of minutes in the intersection of these intervals,
 excluding minute k if it falls within the intersection.
+*/
 
 predicate ValidInput(l1: int, r1: int, l2: int, r2: int, k: int) {
     l1 <= r1 && l2 <= r2
@@ -34,16 +36,17 @@ function ExpectedResult(l1: int, r1: int, l2: int, r2: int, k: int): int {
         intersection_size
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(l1: int, r1: int, l2: int, r2: int, k: int) returns (result: int)
     requires ValidInput(l1, r1, l2, r2, k)
     ensures result == ExpectedResult(l1, r1, l2, r2, k)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    var R := IntersectionRight(r1, r2);
-    var L := IntersectionLeft(l1, l2);
-    var ans := if R - L + 1 > 0 then R - L + 1 else 0;
-    if L <= k <= R {
-        ans := if ans - 1 > 0 then ans - 1 else 0;
-    }
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

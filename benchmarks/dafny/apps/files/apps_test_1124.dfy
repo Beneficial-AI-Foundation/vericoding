@@ -1,7 +1,8 @@
+/*
 Given N positive integers, repeatedly perform the operation: find maximum X and minimum x,
 if X != x then replace all X with (X - x), until all integers are equal.
 Return the final common value.
-
+*/
 
 predicate ValidInput(values: seq<int>)
 {
@@ -45,10 +46,19 @@ function gcdOfAll(values: seq<int>): int
   gcdSeq(values, 1, values[0])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(values: seq<int>) returns (result: int)
   requires ValidInput(values)
   ensures result > 0
   ensures result == gcdOfAll(values)
   ensures forall i :: 0 <= i < |values| ==> values[i] % result == 0
   ensures forall d
-{:trigger values[0] % d}
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

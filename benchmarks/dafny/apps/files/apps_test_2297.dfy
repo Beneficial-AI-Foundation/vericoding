@@ -1,5 +1,7 @@
+/*
 Given an array where element a[i] = i * (-1)^i (so a[1] = -1, a[2] = 2, a[3] = -3, etc.),
 answer queries asking for the sum of elements from index l to r inclusive.
+*/
 
 predicate ValidQuery(query: (int, int))
 {
@@ -36,23 +38,16 @@ predicate CorrectResult(queries: seq<(int, int)>, results: seq<int>)
     forall i :: 0 <= i < |queries| ==> results[i] == PrefixSum(queries[i].1) - PrefixSum(queries[i].0 - 1)
 }
 
-function s(k: int): int
-{
-    if k % 2 == 0 then k / 2 else -(k + 1) / 2
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(queries: seq<(int, int)>) returns (results: seq<int>)
     requires ValidInput(queries)
     ensures CorrectResult(queries, results)
+// </vc-spec>
+// <vc-code>
 {
-    results := [];
-    for i := 0 to |queries|
-        invariant |results| == i
-        invariant forall j :: 0 <= j < i ==> results[j] == s(queries[j].1) - s(queries[j].0 - 1)
-    {
-        var l := queries[i].0;
-        var r := queries[i].1;
-        var answer := s(r) - s(l - 1);
-        results := results + [answer];
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

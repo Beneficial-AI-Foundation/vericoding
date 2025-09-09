@@ -1,6 +1,8 @@
+/*
 Given N blue cards and M red cards with strings, find maximum net earnings.
 When a string is announced, earn 1 yen per blue card with that string and
 lose 1 yen per red card with that string. Find the optimal string to maximize earnings.
+*/
 
 function count_occurrences(cards: seq<string>, target: string): int
     ensures count_occurrences(cards, target) >= 0
@@ -41,33 +43,16 @@ function max_net_earnings_helper(unique_blue: seq<string>, blue_cards: seq<strin
         max_net_earnings_helper(unique_blue, blue_cards, red_cards, index + 1, new_max)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(blue_cards: seq<string>, red_cards: seq<string>) returns (result: int)
     ensures result >= 0
     ensures result == max_net_earnings(blue_cards, red_cards)
+// </vc-spec>
+// <vc-code>
 {
-    var unique_blue_strings: seq<string> := get_unique_strings(blue_cards);
-
-    var max_net := 0;
-    var i := 0;
-    while i < |unique_blue_strings|
-        invariant 0 <= i <= |unique_blue_strings|
-        invariant max_net >= 0
-        invariant forall k :: 0 <= k < i ==> 
-            var s := unique_blue_strings[k];
-            var net := count_occurrences(blue_cards, s) - count_occurrences(red_cards, s);
-            max_net >= net
-        invariant max_net_earnings_helper(unique_blue_strings, blue_cards, red_cards, 0, 0) == max_net_earnings_helper(unique_blue_strings, blue_cards, red_cards, i, max_net)
-    {
-        var s := unique_blue_strings[i];
-        var blue_count := count_occurrences(blue_cards, s);
-        var red_count := count_occurrences(red_cards, s);
-        var net := blue_count - red_count;
-
-        if net > max_net {
-            max_net := net;
-        }
-        i := i + 1;
-    }
-
-    result := max_net;
+  assume {:axiom} false;
 }
+// </vc-code>

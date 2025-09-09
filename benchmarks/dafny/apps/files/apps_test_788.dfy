@@ -1,5 +1,7 @@
+/*
 Calculate a score from a string starting with 'A' followed by exactly 6 digits.
 Score formula: sum of all 6 digits + 9 * count of zero digits + 1
+*/
 
 predicate ValidInput(s: string) 
 {
@@ -23,43 +25,16 @@ function ZeroCount(s: string, start: int, end: int): int
     else (if s[start] == '0' then 1 else 0) + ZeroCount(s, start + 1, end)
 }
 
-lemma DigitSumStep(s: string, start: int, end: int)
-    requires 0 <= start < end <= |s|
-    requires forall i :: start <= i < end ==> '0' <= s[i] <= '9'
-    ensures DigitSum(s, start, end) == (s[start] as int - '0' as int) + DigitSum(s, start + 1, end)
-{
-}
+// <vc-helpers>
+// </vc-helpers>
 
-lemma ZeroCountStep(s: string, start: int, end: int)
-    requires 0 <= start < end <= |s|
-    ensures ZeroCount(s, start, end) == (if s[start] == '0' then 1 else 0) + ZeroCount(s, start + 1, end)
-{
-}
-
+// <vc-spec>
 method solve(s: string) returns (result: int)
     requires ValidInput(s)
     ensures result == DigitSum(s, 1, 7) + 9 * ZeroCount(s, 1, 7) + 1
+// </vc-spec>
+// <vc-code>
 {
-    var digitSum := 0;
-    var zeroCount := 0;
-
-    var i := 1;
-    while i < 7
-        invariant 1 <= i <= 7
-        invariant digitSum == DigitSum(s, 1, i)
-        invariant zeroCount == ZeroCount(s, 1, i)
-        invariant forall j :: 1 <= j < 7 ==> '0' <= s[j] <= '9'
-    {
-        DigitSumStep(s, i, 7);
-        ZeroCountStep(s, i, 7);
-        
-        var digit := s[i] as int - '0' as int;
-        digitSum := digitSum + digit;
-        if s[i] == '0' {
-            zeroCount := zeroCount + 1;
-        }
-        i := i + 1;
-    }
-
-    result := digitSum + 9 * zeroCount + 1;
+  assume {:axiom} false;
 }
+// </vc-code>

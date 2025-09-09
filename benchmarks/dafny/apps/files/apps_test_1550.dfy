@@ -1,7 +1,9 @@
+/*
 Given a combination lock display with n digits, find the smallest possible number 
 achievable using two operations: (1) Add 1 to all digits (9 wraps to 0), and 
 (2) Shift all digits one position right (rightmost digit becomes leftmost).
 Leading zeros are ignored when comparing numbers for size.
+*/
 
 predicate ValidInput(n: int, digits: string)
 {
@@ -73,6 +75,10 @@ function parseInt(s: string): int
     else (s[0] as int - '0' as int) + 10 * parseInt(s[1..])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires exists i :: 0 <= i < |stdin_input| && stdin_input[i] == '\n'
@@ -92,36 +98,9 @@ method solve(stdin_input: string) returns (result: string)
                     result == "\n"
             else
                 result == "\n"
+// </vc-spec>
+// <vc-code>
 {
-    var lines := parseInput(stdin_input);
-    if |lines| < 2 {
-        result := "\n";
-        return;
-    }
-
-    var n := parseInt(lines[0]);
-    var digits := lines[1];
-
-    if !ValidInput(n, digits) {
-        result := "\n";
-        return;
-    }
-
-    var minResult := modifyString(digits, 0);
-    var i := 1;
-    while i < n
-        invariant 1 <= i <= n
-        invariant |minResult| == n
-        invariant forall j :: 0 <= j < |minResult| ==> '0' <= minResult[j] <= '9'
-        invariant exists index :: 0 <= index < i && minResult == modifyString(digits, index)
-        invariant forall index :: 0 <= index < i ==> minResult <= modifyString(digits, index)
-    {
-        var modified := modifyString(digits, i);
-        if modified < minResult {
-            minResult := modified;
-        }
-        i := i + 1;
-    }
-
-    result := minResult + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

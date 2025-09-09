@@ -1,5 +1,7 @@
+/*
 Given a string of n lowercase Latin letters and k available letters on a broken keyboard,
 count how many substrings of the string can be typed using only the available letters.
+*/
 
 predicate ValidInput(n: nat, k: nat, s: string, available: seq<char>)
 {
@@ -58,44 +60,17 @@ function SumSegmentCounts(segments: seq<nat>): nat
     else segments[0] * (segments[0] + 1) / 2 + SumSegmentCounts(segments[1..])
 }
 
-function CountValidSubstringsProcessed(s: string, availableSet: set<char>, processed: nat, currentLength: nat): nat
-    requires processed <= |s|
-    requires currentLength <= processed
-{
-    var processedPart := s[..processed];
-    var totalInProcessed := CountValidSubstrings(processedPart, availableSet);
-    var currentSegment := if currentLength > 0 then processedPart[processed-currentLength..] else "";
-    var currentContribution := if currentLength > 0 then CountValidSubstrings(currentSegment, availableSet) else 0;
-    if totalInProcessed >= currentContribution then
-        totalInProcessed - currentContribution
-    else
-        0
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: nat, k: nat, s: string, available: seq<char>) returns (result: nat)
     requires ValidInput(n, k, s, available)
     ensures result <= n * (n + 1) / 2
     ensures result == CountValidSubstrings(s, set c | c in available)
+// </vc-spec>
+// <vc-code>
 {
-    var availableSet := set c | c in available;
-
-    var current := 0;
-    var ans := 0;
-
-    for i := 0 to |s|
-        invariant 0 <= current <= i
-        invariant ans >= 0
-        invariant ans + current * (current + 1) / 2 <= i * (i + 1) / 2
-        invariant ans == CountValidSubstringsProcessed(s, availableSet, i, current)
-    {
-        if s[i] in availableSet {
-            current := current + 1;
-        } else {
-            ans := ans + (current * (current + 1)) / 2;
-            current := 0;
-        }
-    }
-
-    ans := ans + (current * (current + 1)) / 2;
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

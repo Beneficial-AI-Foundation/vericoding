@@ -1,6 +1,8 @@
+/*
 Given two types of candies with different weights and joy values, find the maximum joy units
 achievable by selecting whole candies within a weight constraint. Must maximize total joy
 while staying within the weight capacity C.
+*/
 
 predicate ValidInput(C: int, Hr: int, Hb: int, Wr: int, Wb: int)
 {
@@ -17,6 +19,10 @@ function Joy(redCount: int, blueCount: int, Hr: int, Hb: int): int
   redCount * Hr + blueCount * Hb
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(C: int, Hr: int, Hb: int, Wr: int, Wb: int) returns (result: int)
   requires ValidInput(C, Hr, Hb, Wr, Wb)
   ensures result >= 0
@@ -26,31 +32,9 @@ method solve(C: int, Hr: int, Hb: int, Wr: int, Wb: int) returns (result: int)
   ensures forall redCount: int, blueCount: int ::
     ValidCandyCombination(redCount, blueCount, C, Wr, Wb) ==>
     Joy(redCount, blueCount, Hr, Hb) <= result
+// </vc-spec>
+// <vc-code>
 {
-  var maxJoy := 0;
-
-  var redCount := 0;
-  while redCount * Wr <= C
-    invariant redCount >= 0
-    invariant maxJoy >= 0
-    invariant exists r: int, b: int :: 
-      ValidCandyCombination(r, b, C, Wr, Wb) &&
-      maxJoy == Joy(r, b, Hr, Hb)
-    invariant forall r: int, b: int ::
-      (ValidCandyCombination(r, b, C, Wr, Wb) && r < redCount) ==>
-      Joy(r, b, Hr, Hb) <= maxJoy
-    decreases C / Wr - redCount
-  {
-    var remainingCapacity := C - redCount * Wr;
-    var blueCount := remainingCapacity / Wb;
-    var currentJoy := redCount * Hr + blueCount * Hb;
-
-    if currentJoy > maxJoy {
-      maxJoy := currentJoy;
-    }
-
-    redCount := redCount + 1;
-  }
-
-  result := maxJoy;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,5 +1,7 @@
+/*
 Count positive integers x ≤ n where x - (sum of digits of x) ≥ s.
 Given two integers n and s (1 ≤ n, s ≤ 10^18), return the count of numbers x ≤ n satisfying the condition.
+*/
 
 function SumOfDigits(x: int): int
   requires x >= 0
@@ -15,40 +17,18 @@ function Check(x: int, s: int): bool
   x - SumOfDigits(x) >= s
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, s: int) returns (result: int)
   requires n >= 1 && s >= 1
   ensures result >= 0
   ensures result <= n
   ensures result == |set x | 1 <= x <= n && Check(x, s)|
+// </vc-spec>
+// <vc-code>
 {
-  result := 0;
-  var i := 1;
-
-  while i <= n
-    invariant 1 <= i <= n + 1
-    invariant result >= 0
-    invariant result <= i - 1
-    invariant result == |set x | 1 <= x < i && Check(x, s)|
-  {
-    var oldResult := result;
-    var oldSet := set x | 1 <= x < i && Check(x, s);
-    var newSet := set x | 1 <= x < i + 1 && Check(x, s);
-
-    if Check(i, s) {
-      result := result + 1;
-      assert newSet == oldSet + {i};
-      assert i !in oldSet;
-      assert |newSet| == |oldSet| + 1;
-    } else {
-      assert newSet == oldSet;
-      assert |newSet| == |oldSet|;
-    }
-
-    i := i + 1;
-
-    assert result == |set x | 1 <= x < i && Check(x, s)|;
-  }
-
-  assert i == n + 1;
-  assert (set x | 1 <= x < i && Check(x, s)) == (set x | 1 <= x <= n && Check(x, s));
+  assume {:axiom} false;
 }
+// </vc-code>

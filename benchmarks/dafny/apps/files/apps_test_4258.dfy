@@ -1,6 +1,8 @@
+/*
 A machine produces B biscuits at regular intervals of A seconds, starting at time A seconds.
 Productions occur at times A, 2A, 3A, 4A, ... seconds after activation.
 Calculate the total number of biscuits produced within the first T + 0.5 seconds.
+*/
 
 predicate ValidInput(A: int, B: int, T: int)
 {
@@ -19,9 +21,16 @@ function TotalBiscuits(A: int, B: int, T: int): int
     B * ProductionCount(A, T)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(A: int, B: int, T: int) returns (result: int)
     requires ValidInput(A, B, T)
     ensures result == TotalBiscuits(A, B, T)
+// </vc-spec>
+// <vc-code>
 {
-    result := B * (T / A);
+  assume {:axiom} false;
 }
+// </vc-code>

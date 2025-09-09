@@ -1,6 +1,8 @@
+/*
 Given a string containing letters, underscores, and properly matched parentheses,
 find the length of the longest word outside parentheses and count words inside parentheses.
 Words are maximal sequences of consecutive letters separated by underscores or parentheses.
+*/
 
 function IsLetter(c: char): bool
 {
@@ -115,73 +117,10 @@ function ComputeCountInside(s: string, pos: int, balance: int, cur: int): int
         countIncrement + ComputeCountInside(s, pos + 1, newBalance, newCur)
 }
 
-lemma LongestWordOutsideNonNegative(input: string)
-    ensures LongestWordOutside(input) >= 0
-{
-    var newlinePos := FindNewline(input);
-    if newlinePos >= |input| {
-        assert LongestWordOutside(input) == 0;
-    } else {
-        var s := if newlinePos + 1 <= |input| then input[newlinePos + 1..] else "";
-        ComputeLongestOutsideNonNegative(s, 0, 0, 0, 0);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
-lemma ComputeLongestOutsideNonNegative(s: string, pos: int, balance: int, cur: int, best: int)
-    requires 0 <= pos <= |s|
-    requires balance >= 0
-    requires cur >= 0 && best >= 0
-    ensures ComputeLongestOutside(s, pos, balance, cur, best) >= 0
-    decreases |s| - pos
-{
-    if pos >= |s| {
-    } else {
-        var c := s[pos];
-        var newBalance := if c == '(' then balance + 1 
-                         else if c == ')' then (if balance > 0 then balance - 1 else 0)
-                         else balance;
-        var newCur := if IsLetter(c) then cur + 1
-                     else if cur > 0 then 0
-                     else cur;
-        var newBest := if !IsLetter(c) && cur > 0 && balance == 0 then
-                          if cur > best then cur else best
-                      else best;
-        ComputeLongestOutsideNonNegative(s, pos + 1, newBalance, newCur, newBest);
-    }
-}
-
-lemma CountWordsInsideNonNegative(input: string)
-    ensures CountWordsInside(input) >= 0
-{
-    var newlinePos := FindNewline(input);
-    if newlinePos >= |input| {
-        assert CountWordsInside(input) == 0;
-    } else {
-        var s := if newlinePos + 1 <= |input| then input[newlinePos + 1..] else "";
-        ComputeCountInsideNonNegative(s, 0, 0, 0);
-    }
-}
-
-lemma ComputeCountInsideNonNegative(s: string, pos: int, balance: int, cur: int)
-    requires 0 <= pos <= |s|
-    requires balance >= 0
-    requires cur >= 0
-    ensures ComputeCountInside(s, pos, balance, cur) >= 0
-    decreases |s| - pos
-{
-    if pos >= |s| {
-    } else {
-        var c := s[pos];
-        var newBalance := if c == '(' then balance + 1 
-                         else if c == ')' then (if balance > 0 then balance - 1 else 0)
-                         else balance;
-        var newCur := if IsLetter(c) then cur + 1
-                     else if cur > 0 then 0
-                     else cur;
-        ComputeCountInsideNonNegative(s, pos + 1, newBalance, newCur);
-    }
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: (int, int))
     requires |input| > 0
     requires exists i :: 0 <= i < |input| && input[i] == '\n'
@@ -191,21 +130,9 @@ method solve(input: string) returns (result: (int, int))
     ensures result.0 == LongestWordOutside(input)
     ensures result.1 == CountWordsInside(input)
     ensures ValidOutput(input, result.0, result.1)
+// </vc-spec>
+// <vc-code>
 {
-    var newlinePos := 0;
-    while newlinePos < |input| && input[newlinePos] != '\n'
-        invariant 0 <= newlinePos <= |input|
-    {
-        newlinePos := newlinePos + 1;
-    }
-
-    var s := if newlinePos + 1 <= |input| then input[newlinePos + 1..] else "";
-
-    var longest := LongestWordOutside(input);
-    var count := CountWordsInside(input);
-
-    assert longest >= 0 by { LongestWordOutsideNonNegative(input); }
-    assert count >= 0 by { CountWordsInsideNonNegative(input); }
-
-    result := (longest, count);
+  assume {:axiom} false;
 }
+// </vc-code>

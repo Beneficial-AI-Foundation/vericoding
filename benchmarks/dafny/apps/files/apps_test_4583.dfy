@@ -1,5 +1,7 @@
+/*
 Given a 4-digit string ABCD, find operators op1, op2, op3 (each + or -) such that
 A op1 B op2 C op3 D = 7. Return the complete equation as "A op1 B op2 C op3 D=7".
+*/
 
 predicate ValidInput(input: string)
 {
@@ -48,31 +50,17 @@ predicate ValidOutput(result: string, input: string)
     EvaluateExpression(a, b, c, d, result[1], result[3], result[5]) == 7
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     requires SolutionExists(input)
     ensures ValidOutput(result, input)
+// </vc-spec>
+// <vc-code>
 {
-    var a := CharToDigit(input[0]);
-    var b := CharToDigit(input[1]);
-    var c := CharToDigit(input[2]);
-    var d := CharToDigit(input[3]);
-
-    if a + b + c + d == 7 {
-        result := [input[0], '+', input[1], '+', input[2], '+', input[3], '=', '7', '\n'];
-    } else if a + b + c - d == 7 {
-        result := [input[0], '+', input[1], '+', input[2], '-', input[3], '=', '7', '\n'];
-    } else if a + b - c + d == 7 {
-        result := [input[0], '+', input[1], '-', input[2], '+', input[3], '=', '7', '\n'];
-    } else if a + b - c - d == 7 {
-        result := [input[0], '+', input[1], '-', input[2], '-', input[3], '=', '7', '\n'];
-    } else if a - b + c + d == 7 {
-        result := [input[0], '-', input[1], '+', input[2], '+', input[3], '=', '7', '\n'];
-    } else if a - b + c - d == 7 {
-        result := [input[0], '-', input[1], '+', input[2], '-', input[3], '=', '7', '\n'];
-    } else if a - b - c - d == 7 {
-        result := [input[0], '-', input[1], '-', input[2], '-', input[3], '=', '7', '\n'];
-    } else {
-        result := [input[0], '-', input[1], '-', input[2], '+', input[3], '=', '7', '\n'];
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

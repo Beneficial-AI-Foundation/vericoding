@@ -1,7 +1,9 @@
+/*
 Given two maps: First map N × M grid, Second map M × N grid.
 Find positions i and j such that the M × M section from the first map 
 starting at row i equals the M × M section from the second map starting at column j.
 Output the 1-indexed positions i and j.
+*/
 
 predicate validInputFormat(input: string)
 {
@@ -133,20 +135,10 @@ function intToStringFunc(n: int): string
     else "10"
 }
 
-method parseLines(input: string) returns (lines: seq<string>)
-    ensures |lines| >= 0
-    ensures parseLinesFunc(input) == lines
-{
-    lines := parseLinesFunc(input);
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method parseInts(line: string) returns (ints: seq<int>)
-    ensures |ints| >= 0
-    ensures parseIntsFunc(line) == ints
-{
-    ints := parseIntsFunc(line);
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires validInputFormat(stdin_input)
@@ -156,101 +148,9 @@ method solve(stdin_input: string) returns (result: string)
     ensures solutionExists(stdin_input) ==> solutionFound(stdin_input, result)
     ensures correctMatrixMatching(stdin_input, result)
     ensures alwaysReturnsFirstMatch(stdin_input, result)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := parseLines(stdin_input);
-
-    if |lines| < 3 {
-        result := "1 1";
-        return;
-    }
-
-    var firstLine := parseInts(lines[0]);
-    if |firstLine| < 2 {
-        result := "1 1";
-        return;
-    }
-
-    assert |firstLine| >= 2;
-    var n := firstLine[0];
-    var m := firstLine[1];
-
-    if n <= 0 || m <= 0 || m > n || |lines| < 1 + n + m {
-        result := "1 1";
-        return;
-    }
-
-    var mat1 := new string[n];
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-    {
-        if 1 + i < |lines| {
-            mat1[i] := lines[1 + i];
-        } else {
-            mat1[i] := "";
-        }
-        i := i + 1;
-    }
-
-    var mat2 := new string[m];
-    i := 0;
-    while i < m
-        invariant 0 <= i <= m
-    {
-        if 1 + n + i < |lines| {
-            mat2[i] := lines[1 + n + i];
-        } else {
-            mat2[i] := "";
-        }
-        i := i + 1;
-    }
-
-    var found := false;
-    var resultI := 1;
-    var resultJ := 1;
-
-    i := 0;
-    while i <= n - m && !found
-        invariant 0 <= i <= n - m + 1
-        invariant resultI >= 1 && resultJ >= 1
-    {
-        var j := 0;
-        while j <= n - m && !found
-            invariant 0 <= j <= n - m + 1
-            invariant resultI >= 1 && resultJ >= 1
-        {
-            var matches := true;
-            var row := 0;
-            while row < m && matches
-                invariant 0 <= row <= m
-            {
-                var col := 0;
-                while col < m && matches
-                    invariant 0 <= col <= m
-                {
-                    if i + row < n && j + col < |mat1[i + row]| && 
-                       row < m && j + col < |mat2[row]| {
-                        if mat1[i + row][j + col] != mat2[row][j + col] {
-                            matches := false;
-                        }
-                    } else {
-                        matches := false;
-                    }
-                    col := col + 1;
-                }
-                row := row + 1;
-            }
-
-            if matches {
-                found := true;
-                resultI := i + 1;
-                resultJ := j + 1;
-            }
-
-            j := j + 1;
-        }
-        i := i + 1;
-    }
-
-    result := intToStringFunc(resultI) + " " + intToStringFunc(resultJ);
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Find the minimum time needed for a kangaroo to reach position X on a number line.
 The kangaroo starts at position 0 at time 0. At each time step i (i = 1, 2, 3, ...),
 the kangaroo can stay at current position or jump exactly i units left or right.
+*/
 
 predicate ValidInput(x: int)
 {
@@ -21,30 +23,16 @@ predicate IsMinimalTime(t: int, x: int)
   (t == 1 || TriangularNumber(t - 1) < x)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(x: int) returns (result: int)
   requires ValidInput(x)
   ensures IsMinimalTime(result, x)
+// </vc-spec>
+// <vc-code>
 {
-  var ans := 0;
-  var a := 0;
-  var i := 1;
-
-  while a < x
-    invariant ans >= 0
-    invariant i == ans + 1
-    invariant a == TriangularNumber(ans)
-    invariant ans == 0 ==> a == 0
-    invariant ans > 0 ==> a > 0
-    invariant ans > 0 ==> TriangularNumber(ans - 1) < x
-  {
-    a := a + i;
-    ans := ans + 1;
-    i := i + 1;
-  }
-
-  if ans == 0 {
-    result := 1;
-  } else {
-    result := ans;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

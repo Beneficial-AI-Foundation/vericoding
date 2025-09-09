@@ -1,7 +1,9 @@
+/*
 Three players (Alice, Bob, Charlie) play a card game with decks of cards labeled 'a', 'b', or 'c'.
 Alice starts first. On each turn, if current player's deck is empty, they win the game.
 Otherwise, discard the top card; the letter determines next player ('a'→Alice, 'b'→Bob, 'c'→Charlie).
 Given initial decks as strings, determine the winner.
+*/
 
 predicate ValidDeck(deck: string)
 {
@@ -18,36 +20,16 @@ predicate ValidWinner(winner: char)
     winner == 'A' || winner == 'B' || winner == 'C'
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(A: string, B: string, C: string) returns (result: char)
     requires ValidInput(A, B, C)
     ensures ValidWinner(result)
+// </vc-spec>
+// <vc-code>
 {
-    var deckA := A;
-    var deckB := B;
-    var deckC := C;
-    var turn := 'a';
-
-    while true
-        decreases |deckA| + |deckB| + |deckC|
-    {
-        if turn == 'a' {
-            if |deckA| == 0 {
-                return 'A';
-            }
-            turn := deckA[0];
-            deckA := deckA[1..];
-        } else if turn == 'b' {
-            if |deckB| == 0 {
-                return 'B';
-            }
-            turn := deckB[0];
-            deckB := deckB[1..];
-        } else { // turn == 'c'
-            if |deckC| == 0 {
-                return 'C';
-            }
-            turn := deckC[0];
-            deckC := deckC[1..];
-        }
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

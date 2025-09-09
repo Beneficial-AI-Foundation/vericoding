@@ -1,9 +1,11 @@
+/*
 Given a rectangular sheet of paper with dimensions a × b millimeters (where a > b),
 determine how many square pieces can be cut from it using the following process:
 1. From the current rectangle, cut the largest possible square
 2. Continue with the remaining rectangular strip (if any exists)  
 3. Repeat until only a square remains
 4. Count the total number of squares cut
+*/
 
 predicate ValidInput(a: int, b: int)
 {
@@ -22,31 +24,19 @@ function countSquares(a: int, b: int): int
     else b / a + countSquares(a, b % a)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int) returns (result: int)
     requires ValidInput(a, b)
     ensures result >= 0
     ensures (a == b) ==> (result == 1)
     ensures a > b ==> result >= 1
     ensures result == countSquares(a, b)
+// </vc-spec>
+// <vc-code>
 {
-    var ans := 0;
-    var x := a;
-    var y := b;
-
-    while x != 0 && y != 0
-        invariant ans >= 0
-        invariant x >= 0 && y >= 0
-        invariant ans + countSquares(x, y) == countSquares(a, b)
-        invariant (a > b && countSquares(a, b) >= 1) ==> ans + countSquares(x, y) >= 1
-    {
-        if x > y {
-            ans := ans + x / y;
-            x := x % y;
-        } else {
-            ans := ans + y / x;
-            y := y % x;
-        }
-    }
-
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

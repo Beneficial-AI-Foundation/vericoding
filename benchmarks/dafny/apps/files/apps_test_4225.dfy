@@ -1,6 +1,8 @@
+/*
 Given A cards with value 1, B cards with value 0, and C cards with value -1,
 find the maximum possible sum when picking exactly K cards.
 The optimal strategy is to pick cards with highest values first.
+*/
 
 predicate ValidInput(A: int, B: int, C: int, K: int)
 {
@@ -84,34 +86,10 @@ function StringToIntHelper(s: string, start: int): int
         StringToIntHelper(s, start + 1)
 }
 
-method SplitString(s: string) returns (parts: seq<string>)
-    ensures |parts| >= 0
-    ensures parts == SplitStringPure(s)
-{
-    parts := SplitStringPure(s);
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method StringToInt(s: string) returns (result: int)
-    ensures result >= -2000000000 && result <= 2000000000
-{
-    var pureResult := StringToIntPure(s);
-    if pureResult < -2000000000 {
-        result := -2000000000;
-    } else if pureResult > 2000000000 {
-        result := 2000000000;
-    } else {
-        result := pureResult;
-    }
-}
-
-method IntToString(n: int) returns (result: string)
-    requires n >= -2000000000 && n <= 2000000000
-    ensures |result| > 0
-    ensures result == IntToStringPure(n)
-{
-    result := IntToStringPure(n);
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     ensures |result| > 0
@@ -122,33 +100,9 @@ method solve(input: string) returns (result: string)
          maxSum >= -2000000000 && maxSum <= 2000000000 &&
          result == IntToStringPure(maxSum) + "\n")) ||
     (forall A, B, C, K :: !ParsedValues(input, A, B, C, K) ==> result == "0\n")
+// </vc-spec>
+// <vc-code>
 {
-    var parts := SplitString(input);
-    if |parts| < 4 {
-        result := "0\n";
-        return;
-    }
-
-    var A_raw := StringToIntPure(parts[0]);
-    var B_raw := StringToIntPure(parts[1]); 
-    var C_raw := StringToIntPure(parts[2]);
-    var K_raw := StringToIntPure(parts[3]);
-
-    if A_raw < 0 || B_raw < 0 || C_raw < 0 || K_raw < 1 || K_raw > A_raw + B_raw + C_raw ||
-       A_raw < -2000000000 || A_raw > 2000000000 ||
-       B_raw < -2000000000 || B_raw > 2000000000 ||
-       C_raw < -2000000000 || C_raw > 2000000000 ||
-       K_raw < -2000000000 || K_raw > 2000000000 {
-        result := "0\n";
-        return;
-    }
-
-    var A := A_raw;
-    var B := B_raw;
-    var C := C_raw;
-    var K := K_raw;
-
-    var answer := MaxSum(A, B, C, K);
-    var answerStr := IntToString(answer);
-    result := answerStr + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

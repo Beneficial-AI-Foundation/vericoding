@@ -1,6 +1,8 @@
+/*
 Given a 90-minute game with certain interesting minutes, determine how many
 minutes are watched before turning off the TV. The TV turns off immediately
 after 15 consecutive boring minutes occur.
+*/
 
 predicate ValidInput(n: int, a: seq<int>) {
     n >= 1 && n <= 90 &&
@@ -29,30 +31,16 @@ predicate ValidOutput(result: int, n: int, a: seq<int>) {
      result == min(90, findCutoff(a, 0, 15)))
 }
 
-lemma findCutoffLowerBound(a: seq<int>, index: int, cutoff: int)
-    requires 0 <= index <= |a|
-    requires cutoff >= 1
-    requires forall i :: 0 <= i < |a| ==> a[i] >= 1
-    ensures findCutoff(a, index, cutoff) >= 1
-    decreases |a| - index
-{
-    if index >= |a| {
-    } else if a[index] > cutoff {
-    } else {
-        findCutoffLowerBound(a, index + 1, a[index] + 15);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, a: seq<int>) returns (result: int)
     requires ValidInput(n, a)
     ensures ValidOutput(result, n, a)
+// </vc-spec>
+// <vc-code>
 {
-    findCutoffLowerBound(a, 0, 15);
-    var cutoff := findCutoff(a, 0, 15);
-
-    if cutoff <= 90 {
-        result := cutoff;
-    } else {
-        result := 90;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

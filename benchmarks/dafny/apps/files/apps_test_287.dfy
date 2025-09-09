@@ -1,6 +1,8 @@
+/*
 Given n apartments numbered 1 to n arranged in a row, with exactly k apartments already inhabited,
 find the minimum and maximum possible number of "good" apartments. A good apartment is one that is
 available for sale (not inhabited) and has at least one inhabited apartment adjacent to it.
+*/
 
 predicate ValidInput(n: int, k: int)
 {
@@ -31,16 +33,18 @@ function MaxGoodApartments(n: int, k: int): int
     else k * 2
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, k: int) returns (result: seq<int>)
     requires ValidInput(n, k)
     ensures ValidOutput(result, n, k)
     ensures result[0] == MinGoodApartments(n, k)
     ensures result[1] == MaxGoodApartments(n, k)
+// </vc-spec>
+// <vc-code>
 {
-    if k == 0 || n == k {
-        result := [0, 0];
-    } else {
-        var maxGood := if n - k < k * 2 then n - k else k * 2;
-        result := [1, maxGood];
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

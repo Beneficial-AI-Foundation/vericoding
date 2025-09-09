@@ -1,6 +1,8 @@
+/*
 Given n students who perform rituals at times t_i, find the maximum number of students 
 that can be visited by a "freebie" present for exactly T consecutive seconds.
 All visited students must have ritual times within the same T-second interval.
+*/
 
 predicate ValidInput(n: int, times: seq<int>, T: int)
 {
@@ -51,25 +53,18 @@ function countStudentsInWindowHelper(times: seq<int>, start: int, T: int, index:
         if start <= times[index] <= start + T - 1 then countRest + 1 else countRest
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, times: seq<int>, T: int) returns (result: int)
     requires ValidInput(n, times, T)
     ensures result >= 0
     ensures result <= n
     ensures result == maxStudentsInWindow(times, T)
+// </vc-spec>
+// <vc-code>
 {
-    var best := 0;
-    var start := 1;
-    while start <= 1000
-        invariant 1 <= start <= 1001
-        invariant 0 <= best <= n
-        invariant best == maxStudentsInWindowUpTo(times, T, start - 1)
-    {
-        var count := countStudentsInWindow(times, start, T);
-        if count > best {
-            best := count;
-        }
-        start := start + 1;
-    }
-
-    result := best;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,7 +1,9 @@
+/*
 Given a king's position on a standard 8×8 chess board, determine the number of valid moves 
 the king can make. The position is given as a two-character string "cd" where 'c' is the 
 column ('a' to 'h') and 'd' is the row ('1' to '8'). A king can move exactly one square 
 in any direction but cannot move outside the board boundaries.
+*/
 
 predicate ValidInput(position: string)
 {
@@ -34,6 +36,10 @@ function ValidMoves(position: string): int
   else 8
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(position: string) returns (moves: int)
   requires ValidInput(position)
   ensures moves == ValidMoves(position)
@@ -41,17 +47,9 @@ method solve(position: string) returns (moves: int)
   ensures IsEdge(position) ==> moves == 5
   ensures IsInterior(position) ==> moves == 8
   ensures moves == 3 || moves == 5 || moves == 8
+// </vc-spec>
+// <vc-code>
 {
-  var col := position[0];
-  var row := position[1];
-
-  if (col == 'a' || col == 'h') && (row == '1' || row == '8') {
-    moves := 3;
-  }
-  else if (col == 'a' || col == 'h') || (row == '1' || row == '8') {
-    moves := 5;
-  }
-  else {
-    moves := 8;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,8 +1,10 @@
+/*
 Find the worst-case number of button presses needed to open a lock with n buttons.
 The lock has a specific unknown sequence. When a button is pressed:
 - If it's the next correct button, it stays pressed
 - If it's incorrect, all pressed buttons reset
 - The lock opens when all n buttons are pressed simultaneously (sequence complete)
+*/
 
 predicate ValidInput(n: int) {
     n >= 1
@@ -14,10 +16,17 @@ function WorstCasePresses(n: int): int
     n * (n * n + 5) / 6
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: int)
     requires ValidInput(n)
     ensures result == WorstCasePresses(n)
     ensures result >= 1
+// </vc-spec>
+// <vc-code>
 {
-    result := n * (n * n + 5) / 6;
+  assume {:axiom} false;
 }
+// </vc-code>

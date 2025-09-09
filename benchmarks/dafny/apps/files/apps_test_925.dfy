@@ -1,6 +1,8 @@
+/*
 Given a 2-digit number displayed on a 7-segment digital counter, count how many 
 2-digit numbers (00-99) could have been the intended display before some light 
 segments potentially broke (turned off). Segments can only break by turning OFF.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -41,23 +43,17 @@ predicate ValidOutput(result: string, expectedCount: int)
     expectedCount >= 1 && expectedCount <= 49
 }
 
-function IntToString(n: int): string
-    requires n >= 0
-    ensures |IntToString(n)| >= 1
-    ensures forall c :: c in IntToString(n) ==> '0' <= c <= '9'
-{
-    if n == 0 then "0"
-    else if n < 10 then [('0' as int + n) as char]
-    else IntToString(n / 10) + IntToString(n % 10)
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures ValidOutput(result, ComputeTotalGoodCount(input))
     ensures result == IntToString(ComputeTotalGoodCount(input)) + "\n"
+// </vc-spec>
+// <vc-code>
 {
-    var ngoods_0 := GoodDigitCount(input[0]);
-    var ngoods_1 := GoodDigitCount(input[1]);
-    var product := ngoods_0 * ngoods_1;
-    result := IntToString(product) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,3 +1,4 @@
+/*
 Find the minimum distance Winnie-the-Pooh must travel to have n meals.
 Winnie starts at Rabbit's house and has his first meal there.
 There are 3 houses: Rabbit, Owl, and Eeyore, forming a triangle.
@@ -5,6 +6,7 @@ Distances: Rabbit↔Owl = a meters, Rabbit↔Eeyore = b meters, Owl↔Eeyore = c
 After each meal, Winnie must leave the current house and go to one of the two adjacent houses.
 He needs n meals total, so he makes (n-1) moves.
 Find the minimum total distance for all moves.
+*/
 
 predicate ValidInput(n: int, a: int, b: int, c: int)
 {
@@ -30,33 +32,19 @@ function max(x: int, y: int): int
   if x >= y then x else y
 }
 
-lemma MinDistanceProperties(n: int, a: int, b: int, c: int)
-  requires ValidInput(n, a, b, c)
-  ensures MinDistance(n, a, b, c) <= (n-1) * max(a, max(b, c))
-  ensures n > 1 ==> MinDistance(n, a, b, c) > 0
-{
-  if n == 1 {
-    assert MinDistance(n, a, b, c) == 0;
-  } else {
-    assert MinDistance(n, a, b, c) == (n - 1) * min(a, b);
-    assert min(a, b) <= max(a, max(b, c));
-    assert (n - 1) * min(a, b) <= (n - 1) * max(a, max(b, c));
-  }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, a: int, b: int, c: int) returns (result: int)
   requires ValidInput(n, a, b, c)
   ensures result >= 0
   ensures n == 1 ==> result == 0
   ensures result <= (n-1) * max(a, max(b, c))
   ensures result == MinDistance(n, a, b, c)
+// </vc-spec>
+// <vc-code>
 {
-  MinDistanceProperties(n, a, b, c);
-  
-  if n == 1 {
-    result := 0;
-  } else {
-    var shortestPath := min(a, b);
-    result := (n - 1) * shortestPath;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

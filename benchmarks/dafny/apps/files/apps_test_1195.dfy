@@ -1,7 +1,9 @@
+/*
 Given a list of n integers, compute 2 + (third_element XOR smallest_element), where:
 - third_element is the element at index 2 (third position) in the original list
 - smallest_element is the minimum value in the list
 - XOR is the bitwise exclusive OR operation
+*/
 
 predicate ValidInput(lst: seq<int>) {
   5 <= |lst| <= 10 &&
@@ -28,33 +30,16 @@ function min_of_sequence(s: seq<int>): int
   else min_of_sequence(s[1..])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(lst: seq<int>) returns (result: int)
   requires ValidInput(lst)
   ensures result == 2 + int_xor(lst[2], min_of_sequence(lst))
+// </vc-spec>
+// <vc-code>
 {
-  var first_element := lst[0];
-  var second_element := lst[1];
-  var third_element := lst[2];
-
-  var min_element := lst[0];
-  var i := 1;
-  while i < |lst|
-    invariant 1 <= i <= |lst|
-    invariant 1 <= min_element <= 32
-    invariant forall j :: 0 <= j < i ==> min_element <= lst[j]
-    invariant exists j :: 0 <= j < i && lst[j] == min_element
-  {
-    if lst[i] < min_element {
-      min_element := lst[i];
-    }
-    i := i + 1;
-  }
-
-  assert forall j :: 0 <= j < |lst| ==> min_element <= lst[j];
-  assert exists j :: 0 <= j < |lst| && lst[j] == min_element;
-  assert min_element in lst;
-  assert min_element == min_of_sequence(lst);
-  assert 1 <= min_element <= 32;
-  assert 1 <= lst[2] <= 32;
-  result := 2 + int_xor(third_element, min_element);
+  assume {:axiom} false;
 }
+// </vc-code>

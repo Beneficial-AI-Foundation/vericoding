@@ -1,4 +1,6 @@
+/*
 Transform an array of integers where odd numbers remain unchanged and even numbers are decremented by 1.
+*/
 
 function TransformElement(x: int): int
 {
@@ -11,8 +13,15 @@ predicate ValidTransformation(input: seq<int>, output: seq<int>)
     forall i :: 0 <= i < |input| ==> output[i] == TransformElement(input[i])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: seq<int>) returns (result: seq<int>)
     ensures ValidTransformation(a, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := seq(|a|, i requires 0 <= i < |a| => TransformElement(a[i]));
+  assume {:axiom} false;
 }
+// </vc-code>

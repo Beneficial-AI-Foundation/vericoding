@@ -1,5 +1,7 @@
+/*
 Given n stones in a row colored R, G, or B, find the minimum number of stones
 to remove so that no two adjacent stones have the same color.
+*/
 
 predicate ValidInput(n: int, s: string)
 {
@@ -20,23 +22,18 @@ function count_adjacent_same_pairs_up_to(s: string, i: int): int
     else (if s[i-1] == s[i-2] then 1 else 0) + count_adjacent_same_pairs_up_to(s, i-1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, s: string) returns (result: int)
     requires ValidInput(n, s)
     ensures result >= 0
     ensures result <= n - 1
     ensures result == count_adjacent_same_pairs(s, n)
+// </vc-spec>
+// <vc-code>
 {
-    result := 0;
-    var i := 1;
-    while i < n
-        invariant 1 <= i <= n
-        invariant result >= 0
-        invariant result <= i - 1
-        invariant result == count_adjacent_same_pairs_up_to(s, i)
-    {
-        if s[i] == s[i - 1] {
-            result := result + 1;
-        }
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Count the number of integers in the range [a, b] that are divisible by k.
 Given three integers k, a, b where k > 0 and a <= b, return the count of
 integers x such that a <= x <= b and x % k == 0.
+*/
 
 predicate ValidInput(k: int, a: int, b: int)
 {
@@ -21,13 +23,17 @@ function CountDivisiblesInRange(k: int, a: int, b: int): int
   FloorDiv(b, k) - FloorDiv(a - 1, k)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(k: int, a: int, b: int) returns (result: int)
   requires ValidInput(k, a, b)
   ensures result >= 0
   ensures result == CountDivisiblesInRange(k, a, b)
+// </vc-spec>
+// <vc-code>
 {
-  var s1 := FloorDiv(a - 1, k);
-  var s2 := FloorDiv(b, k);
-  result := s2 - s1;
-  assert s2 >= s1;
+  assume {:axiom} false;
 }
+// </vc-code>

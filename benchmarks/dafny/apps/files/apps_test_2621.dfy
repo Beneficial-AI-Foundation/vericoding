@@ -1,6 +1,8 @@
+/*
 Given n columns with initial heights, determine if a character can move from column 1 to column n.
 Character starts at column 1 with m blocks in bag. At each column, character can remove/add blocks
 and move to next column if height difference is at most k.
+*/
 
 predicate validInput(n: int, m: int, k: int, H: seq<int>)
 {
@@ -63,32 +65,10 @@ predicate outputMatchesTestCaseCount(output: string, input: string)
     true // Simplified for compilation
 }
 
-method processAllTestCases(input: string) returns (output: string)
-    requires |input| > 0
-    requires input[|input|-1] == '\n'
-    requires validCompleteInputFormat(input)
-    ensures |output| >= 0
-    ensures forall i :: 0 <= i < |output| ==> output[i] == 'Y' || output[i] == 'E' || output[i] == 'S' || output[i] == 'N' || output[i] == 'O' || output[i] == '\n'
-    ensures output == "" || output[|output|-1] == '\n'
-    ensures validOutputFormat(output, input)
-    ensures correctGameResults(output, input)
-    ensures outputMatchesTestCaseCount(output, input)
-{
-    output := "YES\n";
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method solveSingleCase(n: int, m: int, k: int, H: seq<int>) returns (result: string)
-    requires validInput(n, m, k, H)
-    ensures result == "YES" || result == "NO"
-    ensures result == "YES" <==> canReachEnd(n, m, k, H)
-{
-    if canReachEnd(n, m, k, H) {
-        result := "YES";
-    } else {
-        result := "NO";
-    }
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires stdin_input[|stdin_input|-1] == '\n'
@@ -99,6 +79,9 @@ method solve(stdin_input: string) returns (result: string)
     ensures validOutputFormat(result, stdin_input)
     ensures correctGameResults(result, stdin_input)
     ensures outputMatchesTestCaseCount(result, stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    result := processAllTestCases(stdin_input);
+  assume {:axiom} false;
 }
+// </vc-code>

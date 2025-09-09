@@ -1,7 +1,9 @@
+/*
 Given an n×m matrix A containing only 0s and 1s, and matrix B initially all zeros.
 You can perform operations on B: choose integers x, y where 1 ≤ x < n and 1 ≤ y < m,
 then set B[x,y], B[x,y+1], B[x+1,y], and B[x+1,y+1] to 1.
 Determine if B can be made equal to A, and if so, provide a sequence of operations.
+*/
 
 predicate ValidInputFormat(input: string)
 {
@@ -57,24 +59,10 @@ function ApplyGreedyAlgorithm(n: int, m: int, A: seq<seq<int>>): (seq<seq<int>>,
   GreedyStep(A, B, ops, 0, 0, n, m)
 }
 
-function GreedyStep(A: seq<seq<int>>, B: seq<seq<int>>, ops: seq<(int,int)>, 
-                   i: int, j: int, n: int, m: int): (seq<seq<int>>, seq<(int,int)>)
-  requires 2 <= n <= 50 && 2 <= m <= 50
-  requires |A| == n && |B| == n
-  requires forall k :: 0 <= k < n ==> |A[k]| == m && |B[k]| == m
-  requires 0 <= i < n && 0 <= j < m
-  decreases n * m - (i * m + j)
-{
-  if i >= n - 1 then (B, ops)
-  else if j >= m - 1 then GreedyStep(A, B, ops, i + 1, 0, n, m)
-  else if A[i][j] == 1 && A[i+1][j] == 1 && A[i][j+1] == 1 && A[i+1][j+1] == 1 then
-    var newB := B[i := B[i][j := 1][j+1 := 1]][i+1 := B[i+1][j := 1][j+1 := 1]];
-    var newOps := ops + [(i+1, j+1)];
-    GreedyStep(A, newB, newOps, i, j + 1, n, m)
-  else
-    GreedyStep(A, B, ops, i, j + 1, n, m)
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
   requires |stdin_input| > 0
   requires ValidInputFormat(stdin_input)
@@ -104,6 +92,9 @@ method solve(stdin_input: string) returns (result: string)
        forall i :: 1 <= i <= k ==> 
          (exists x, y: int :: (1 <= x <= n-1 && 1 <= y <= m-1 && 
           lines[i] == ToString(x) + " " + ToString(y)))))
+// </vc-spec>
+// <vc-code>
 {
-  return "";
+  assume {:axiom} false;
 }
+// </vc-code>

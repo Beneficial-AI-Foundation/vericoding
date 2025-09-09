@@ -1,6 +1,8 @@
+/*
 Given an integer sequence a of length n, simulate n operations on an initially empty sequence b:
 Operation i: Append a[i] to the end of b, then reverse the entire sequence b
 Output the final sequence b after all n operations.
+*/
 
 predicate ValidInput(n: int, a: seq<int>) {
     n >= 1 && |a| == n
@@ -38,38 +40,17 @@ function reverseSeq(s: seq<int>): seq<int>
     else reverseSeq(s[1..]) + [s[0]]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, a: seq<int>) returns (result: seq<int>)
     requires ValidInput(n, a)
     ensures |result| == n
     ensures result == computeResult(a)
+// </vc-spec>
+// <vc-code>
 {
-    var o: seq<int> := [];
-    var e: seq<int> := [];
-
-    // Split into odd and even indices (0-based)
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant |o| == (i + 1) / 2
-        invariant |e| == i / 2
-        invariant forall k :: 0 <= k < |o| ==> o[k] == a[2*k]
-        invariant forall k :: 0 <= k < |e| ==> e[k] == a[2*k+1]
-    {
-        if i % 2 == 0 {
-            o := o + [a[i]];
-        } else {
-            e := e + [a[i]];
-        }
-        i := i + 1;
-    }
-
-    if n % 2 == 0 {
-        // reverse e
-        var reversed_e := reverseSeq(e);
-        result := reversed_e + o;
-    } else {
-        // reverse o
-        var reversed_o := reverseSeq(o);
-        result := reversed_o + e;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

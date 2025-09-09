@@ -1,6 +1,8 @@
+/*
 Given a rectangular park represented as an n×m grid of squares, find the minimum number 
 of lanterns needed to light up all squares. Lanterns are placed on edges between squares,
 and each lantern illuminates adjacent squares (up to 2 squares, or 1 if on boundary).
+*/
 
 predicate ValidInput(input: string)
 {
@@ -37,46 +39,13 @@ predicate ValidOutput(input: string, output: seq<int>)
         output[i] == MinLanterns(n, m)
 }
 
-function SplitLines(s: string): seq<string>
-{
-    SplitByChar(s, '\n')
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function SplitSpaces(s: string): seq<string>
+// <vc-spec>
+// </vc-spec>
+// <vc-code>
 {
-    SplitByChar(s, ' ')
+  assume {:axiom} false;
 }
-
-function SplitByChar(s: string, delimiter: char): seq<string>
-{
-    if |s| == 0 then [""]
-    else
-        var i := FindChar(s, delimiter, 0);
-        if i == -1 then [s]
-        else [s[0..i]] + SplitByChar(s[i+1..], delimiter)
-}
-
-function FindChar(s: string, c: char, start: int): int
-    requires start >= 0
-    ensures FindChar(s, c, start) == -1 || (start <= FindChar(s, c, start) < |s|)
-    decreases |s| - start
-{
-    if start >= |s| then -1
-    else if s[start] == c then start
-    else FindChar(s, c, start + 1)
-}
-
-function ParseInt(s: string): int
-{
-    if |s| == 0 then 0
-    else if s[0] == '-' && |s| > 1 then -ParseUInt(s[1..])
-    else ParseUInt(s)
-}
-
-function ParseUInt(s: string): int
-{
-    if |s| == 0 then 0
-    else if '0' <= s[0] <= '9' then
-        (s[0] as int - '0' as int) + 10 * ParseUInt(s[1..])
-    else 0
-}
+// </vc-code>

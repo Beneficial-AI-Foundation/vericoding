@@ -1,5 +1,7 @@
+/*
 Given an array of n integers representing lightsaber colors (each integer is between 1 and m),
 determine if there exists a contiguous subarray where each color i appears exactly k_i times.
+*/
 
 function count_occurrences(s: seq<nat>, value: nat): nat
 {
@@ -29,57 +31,17 @@ predicate ValidInput(n: nat, m: nat, colors: seq<nat>, desired: seq<nat>)
     sum_seq(desired) <= n
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: nat, m: nat, colors: seq<nat>, desired: seq<nat>) returns (result: string)
     requires ValidInput(n, m, colors, desired)
     ensures result == "YES" <==> exists i, j :: 0 <= i <= j < n && subarray_matches_desired(colors[i..j+1], desired, m)
     ensures result == "YES" || result == "NO"
+// </vc-spec>
+// <vc-code>
 {
-    var res := false;
-    var found_i, found_j := 0, 0;
-
-    for i := 0 to n
-        invariant 0 <= i <= n
-        invariant res ==> exists ii, jj :: 0 <= ii <= jj < n && subarray_matches_desired(colors[ii..jj+1], desired, m)
-        invariant !res ==> forall ii, jj :: 0 <= ii < i && ii <= jj < n ==> !subarray_matches_desired(colors[ii..jj+1], desired, m)
-    {
-        for j := i to n
-            invariant i <= j <= n
-            invariant res ==> exists ii, jj :: 0 <= ii <= jj < n && subarray_matches_desired(colors[ii..jj+1], desired, m)
-            invariant !res ==> forall ii, jj :: (0 <= ii < i && ii <= jj < n) || (ii == i && i <= jj < j) ==> !subarray_matches_desired(colors[ii..jj+1], desired, m)
-        {
-            var t := colors[i..j+1];
-            var matches := true;
-            for k := 1 to m+1
-                invariant 1 <= k <= m+1
-                invariant matches <==> forall color :: 1 <= color < k ==> count_occurrences(t, color) == desired[color-1]
-            {
-                var count := count_occurrences(t, k);
-                var old_matches := matches;
-                matches := matches && (count == desired[k-1]);
-
-                assert old_matches <==> forall color :: 1 <= color < k ==> count_occurrences(t, color) == desired[color-1];
-                assert matches <==> (old_matches && count_occurrences(t, k) == desired[k-1]);
-                assert matches <==> forall color :: 1 <= color <= k ==> count_occurrences(t, color) == desired[color-1];
-            }
-
-            assert matches <==> forall color :: 1 <= color <= m ==> count_occurrences(t, color) == desired[color-1];
-            assert matches <==> subarray_matches_desired(t, desired, m);
-
-            if matches {
-                res := true;
-                found_i, found_j := i, j;
-                break;
-            }
-        }
-        if res {
-            break;
-        }
-    }
-
-    if res {
-        result := "YES";
-    } else {
-        result := "NO";
-        assert forall i, j :: 0 <= i <= j < n ==> !subarray_matches_desired(colors[i..j+1], desired, m);
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

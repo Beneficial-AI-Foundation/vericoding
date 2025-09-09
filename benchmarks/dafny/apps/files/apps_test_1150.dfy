@@ -1,7 +1,9 @@
+/*
 Given n regiments, each with 4 moles. Each mole has current position (x,y) and home position (a,b).
 A move rotates a mole's current position 90° counter-clockwise around its home position.
 A regiment is compact if its 4 moles form a square with non-zero area.
 Find minimum moves needed to make each regiment compact, or -1 if impossible.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -128,29 +130,16 @@ function NatToString(n: nat): string
     else "12"
 }
 
-method SolveRegiment(moles: seq<(int, int, int, int)>) returns (result: string)
-    requires ValidRegiment(moles)
-    ensures result == "-1" || (IsAllDigits(result) && |result| > 0 && 0 <= StringToNat(result) <= 12)
-{
-    var moves := 0;
-    while moves <= 12
-        invariant 0 <= moves <= 13
-    {
-        if CanFormSquareWithMoves(moles, moves) {
-            result := NatToString(moves);
-            return;
-        }
-        moves := moves + 1;
-    }
-    result := "-1";
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(stdin_input: string) returns (output: string)
     requires ValidInput(stdin_input)
     ensures ValidOutput(output)
+// </vc-spec>
+// <vc-code>
 {
-    // Simplified implementation - return result for a test regiment
-    var testRegiment := [(0,0,0,0), (0,1,0,0), (1,0,0,0), (1,1,0,0)];
-    var result := SolveRegiment(testRegiment);
-    output := result + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,7 +1,9 @@
+/*
 Given an array of integers, count the number of local extrema.
 A local minimum is an element strictly less than both neighbors.
 A local maximum is an element strictly greater than both neighbors.
 First and last elements cannot be local extrema since they lack two neighbors.
+*/
 
 predicate ValidInput(n: int, a: seq<int>)
 {
@@ -20,44 +22,19 @@ predicate IsLocalExtremum(a: seq<int>, i: int)
     1 <= i < |a| - 1 && ((a[i] > a[i-1] && a[i] > a[i+1]) || (a[i] < a[i-1] && a[i] < a[i+1]))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, a: seq<int>) returns (result: int)
     requires ValidInput(n, a)
     ensures result >= 0
     ensures n <= 2 ==> result == 0
     ensures n > 2 ==> result <= n - 2
     ensures result == CountLocalExtrema(n, a)
+// </vc-spec>
+// <vc-code>
 {
-    var count := 0;
-
-    if n <= 2 {
-        result := 0;
-        return;
-    }
-
-    var i := 1;
-    while i < n - 1
-        invariant 1 <= i <= n - 1
-        invariant count >= 0
-        invariant count <= i - 1
-        invariant count == |set j | 1 <= j < i && ((a[j] > a[j-1] && a[j] > a[j+1]) || (a[j] < a[j-1] && a[j] < a[j+1]))|
-    {
-        var oldCount := count;
-        var condition := (a[i] > a[i-1] && a[i] > a[i+1]) || (a[i] < a[i-1] && a[i] < a[i+1]);
-
-        if condition {
-            count := count + 1;
-        }
-
-        var setBeforeIncrement := set j | 1 <= j < i && ((a[j] > a[j-1] && a[j] > a[j+1]) || (a[j] < a[j-1] && a[j] < a[j+1]));
-        var setAfterIncrement := set j | 1 <= j < i + 1 && ((a[j] > a[j-1] && a[j] > a[j+1]) || (a[j] < a[j-1] && a[j] < a[j+1]));
-
-        assert setAfterIncrement == setBeforeIncrement + (if condition then {i} else {});
-        assert |setAfterIncrement| == |setBeforeIncrement| + (if condition then 1 else 0);
-        assert count == oldCount + (if condition then 1 else 0);
-        assert count == |setAfterIncrement|;
-
-        i := i + 1;
-    }
-
-    result := count;
+  assume {:axiom} false;
 }
+// </vc-code>

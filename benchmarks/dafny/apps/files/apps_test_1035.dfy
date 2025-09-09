@@ -1,5 +1,7 @@
+/*
 Given two positive integers A and B, find the maximum number of positive common divisors 
 that can be chosen such that any two chosen divisors are coprime (share no common factors other than 1).
+*/
 
 predicate ValidInput(A: int, B: int)
 {
@@ -52,12 +54,17 @@ predicate CorrectResult(A: int, B: int, result: int)
   result == countDistinctPrimeFactors(gcd(A, B)) + 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(A: int, B: int) returns (result: int)
   requires ValidInput(A, B)
   ensures result > 0
   ensures CorrectResult(A, B, result)
+// </vc-spec>
+// <vc-code>
 {
-  var g := gcd(A, B);
-  var distinctPrimes := countDistinctPrimeFactors(g);
-  result := distinctPrimes + 1;
+  assume {:axiom} false;
 }
+// </vc-code>

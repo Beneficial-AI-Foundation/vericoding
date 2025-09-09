@@ -1,3 +1,4 @@
+/*
 Given n problems with difficulties d_i (in increasing order) and costs c_i, find the maximum profit 
 from selecting a consecutive subsegment of problems. For a subsegment [l, r]:
 - Revenue: (r - l + 1) × a burles (where a is profit per problem)
@@ -5,6 +6,7 @@ from selecting a consecutive subsegment of problems. For a subsegment [l, r]:
 - gap(l, r) = max{(d_{i+1} - d_i)² | l ≤ i < r}, or 0 if l = r
 - Profit = Revenue - Costs
 Find the maximum possible profit (can be 0 if all segments are unprofitable).
+*/
 
 predicate ValidInput(input: string)
 {
@@ -81,79 +83,10 @@ function IntToStringResult(n: int): string
     "0"
 }
 
-function MaxGapSquared(d: seq<int>, l: nat, r: nat): int
-    requires 0 <= l < r < |d|
-    requires forall i :: l <= i < r ==> d[i] < d[i+1]
-    decreases r - l
-{
-    if l + 1 == r then (d[r] - d[l]) * (d[r] - d[l])
-    else
-        var leftGap := (d[l + 1] - d[l]) * (d[l + 1] - d[l]);
-        var restGap := MaxGapSquared(d, l + 1, r);
-        if leftGap >= restGap then leftGap else restGap
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function SumRange(c: seq<int>, l: nat, r: nat): int
-    requires 0 <= l <= r < |c|
-    decreases r - l
-{
-    if l == r then c[l]
-    else c[l] + SumRange(c, l + 1, r)
-}
-
-function MaxInNestedSeq(seqs: seq<seq<int>>): int
-    decreases |seqs|
-{
-    if |seqs| == 0 then 0
-    else
-        var maxInFirst := MaxInSeq(seqs[0]);
-        var maxInRest := MaxInNestedSeq(seqs[1..]);
-        Max(maxInFirst, maxInRest)
-}
-
-function MaxInSeq(s: seq<int>): int
-    decreases |s|
-{
-    if |s| == 0 then 0
-    else if |s| == 1 then s[0]
-    else Max(s[0], MaxInSeq(s[1..]))
-}
-
-function Max(a: int, b: int): int
-{
-    if a >= b then a else b
-}
-
-method IntToString(n: int) returns (s: string)
-    ensures |s| >= 1
-    ensures n >= 0 ==> (|s| >= 1 && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9')
-    ensures s == IntToStringResult(n)
-{
-    s := "0";
-}
-
-method SplitLines(s: string) returns (lines: seq<string>)
-    requires |s| >= 0
-    ensures |lines| >= 0
-    ensures lines == SplitLinesSpec(s)
-{
-    lines := [];
-}
-
-method SplitWhitespace(s: string) returns (parts: seq<string>)
-    requires |s| >= 0
-    ensures |parts| >= 0
-    ensures parts == SplitWhitespaceSpec(s)
-{
-    parts := [];
-}
-
-method ParseInt(s: string) returns (result: int)
-    ensures result == ParseIntSpec(s)
-{
-    result := 0;
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     ensures |result| > 0
@@ -171,74 +104,9 @@ method solve(input: string) returns (result: string)
             profit >= 0 && 
             result == IntToStringResult(profit) + "\n" &&
             profit == OptimalSegmentProfit(input, n, k))
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    if |lines| == 0 { return "0\n"; }
-
-    var firstParts := SplitWhitespace(lines[0]);
-    if |firstParts| < 2 { return "0\n"; }
-
-    var n := ParseInt(firstParts[0]);
-    var k := ParseInt(firstParts[1]);
-
-    if n <= 0 || |lines| < n + 1 { return "0\n"; }
-
-    var d := new int[n];
-    var c := new int[n];
-
-    var i := 0;
-    while i < n && i + 1 < |lines|
-    {
-        var tmpCall1 := SplitWhitespace(lines[i + 1]);
-        var parts := tmpCall1;
-        if |parts| >= 2 {
-            var difficulty := ParseInt(parts[0]);
-            var cost := ParseInt(parts[1]);
-            d[i] := difficulty;
-            c[i] := cost;
-        }
-        i := i + 1;
-    }
-
-    var maxProfit := 0;
-
-    // Try all possible subsegments [l, r]
-    var l := 0;
-    while l < n
-    {
-        var r := l;
-        while r < n
-        {
-            var length := r - l + 1;
-            var revenue := length * k;
-
-            var costSum := 0;
-            var k_inner := l;
-            while k_inner <= r
-            {
-                costSum := costSum + c[k_inner];
-                k_inner := k_inner + 1;
-            }
-
-            var gap := 0;
-            if l < r {
-                var j := l;
-                while j < r
-                {
-                    var diff := d[j + 1] - d[j];
-                    gap := Max(gap, diff * diff);
-                    j := j + 1;
-                }
-            }
-
-            var profit := revenue - costSum - gap;
-            maxProfit := Max(maxProfit, profit);
-
-            r := r + 1;
-        }
-        l := l + 1;
-    }
-
-    var profitStr := IntToString(maxProfit);
-    return profitStr + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,4 +1,6 @@
+/*
 Given a string S of uppercase English letters and an integer N, shift each character in S by N positions forward in the alphabet. The alphabet wraps around (A follows Z).
+*/
 
 function split_lines(input: string): seq<string>
 requires |input| > 0
@@ -64,16 +66,19 @@ predicate ValidInput(input: string)
     (forall j :: 0 <= j < |lines[1]| ==> 'A' <= lines[1][j] <= 'Z')
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
 requires ValidInput(input)
 ensures var lines := split_lines(input);
         var n := string_to_nat(lines[0]);
         var s := lines[1];
         result == caesar_shift(s, n) + "\n"
+// </vc-spec>
+// <vc-code>
 {
-    var lines := split_lines(input);
-    var n := string_to_nat(lines[0]);
-    var s := lines[1];
-    var shifted := caesar_shift(s, n);
-    result := shifted + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

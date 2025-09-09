@@ -1,6 +1,8 @@
+/*
 Given an N×M grid of cards (all initially face up), perform one operation for each card position (i,j): 
 flip the card at position (i,j) and all cards in the 8 adjacent positions (sharing a side or corner), 
 if those positions exist in the grid. Determine how many cards face down after all N×M operations are completed.
+*/
 
 predicate ValidInput(N: int, M: int)
 {
@@ -16,18 +18,17 @@ function CountFaceDownCards(N: int, M: int): int
     else (N - 2) * (M - 2)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int, M: int) returns (result: int)
     requires ValidInput(N, M)
     ensures result == CountFaceDownCards(N, M)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    if N == 1 && M == 1 {
-        result := 1;
-    } else if N == 1 {
-        result := M - 2;
-    } else if M == 1 {
-        result := N - 2;
-    } else {
-        result := (N - 2) * (M - 2);
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

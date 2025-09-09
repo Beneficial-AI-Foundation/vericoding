@@ -1,5 +1,7 @@
+/*
 Given two positive integers a and b, find the minimum number of increments needed 
 to make a divisible by b. In each move, you can increase a by 1.
+*/
 
 predicate ValidInput(test_cases: seq<(int, int)>)
 {
@@ -22,23 +24,16 @@ predicate ValidOutput(test_cases: seq<(int, int)>, results: seq<int>)
         results[i] >= 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(test_cases: seq<(int, int)>) returns (results: seq<int>)
     requires ValidInput(test_cases)
     ensures ValidOutput(test_cases, results)
+// </vc-spec>
+// <vc-code>
 {
-    results := [];
-    var i := 0;
-    while i < |test_cases|
-        invariant 0 <= i <= |test_cases|
-        invariant |results| == i
-        invariant forall j :: 0 <= j < i ==> 
-            results[j] == MinMovesToDivisible(test_cases[j].0, test_cases[j].1)
-        invariant forall j :: 0 <= j < i ==> results[j] >= 0
-    {
-        var a := test_cases[i].0;
-        var b := test_cases[i].1;
-        var answer := MinMovesToDivisible(a, b);
-        results := results + [answer];
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,5 +1,7 @@
+/*
 Given three integers A, B, and C, find the minimum number of operations to make all three equal.
 Operations: (1) Choose any two numbers and increase both by 1, (2) Choose any one number and increase it by 2.
+*/
 
 predicate ValidInput(A: int, B: int, C: int) {
     0 <= A <= 50 && 0 <= B <= 50 && 0 <= C <= 50
@@ -34,25 +36,18 @@ predicate AllEqual(A: int, B: int, C: int) {
     A == B && B == C
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(A: int, B: int, C: int) returns (result: int)
     requires ValidInput(A, B, C)
     ensures result >= 0
     ensures AllEqual(A, B, C) ==> result == 0
     ensures result == MinOperations(A, B, C)
+// </vc-spec>
+// <vc-code>
 {
-    var a0, a1, a2 := A, B, C;
-
-    // Sort in descending order
-    if a0 < a1 { a0, a1 := a1, a0; }
-    if a1 < a2 { a1, a2 := a2, a1; }
-    if a0 < a1 { a0, a1 := a1, a0; }
-
-    var ans := 0;
-    ans := ans + (a0 - a1);
-    a1 := a1 + ans;
-    a2 := a2 + ans;
-    ans := ans + (a0 - a2) / 2;
-    ans := ans + ((a0 - a2) % 2) * 2;
-
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

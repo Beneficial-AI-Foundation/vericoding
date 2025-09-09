@@ -1,6 +1,8 @@
+/*
 Given an integer sequence, determine if it can be divided into an odd number of 
 non-empty contiguous subsegments, where each subsegment has odd length and 
 begins and ends with odd numbers.
+*/
 
 predicate ValidInput(a: seq<int>)
 {
@@ -13,14 +15,17 @@ predicate CanBeDivided(a: seq<int>)
     |a| % 2 == 1 && a[0] % 2 == 1 && a[|a|-1] % 2 == 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: seq<int>) returns (result: string)
     requires ValidInput(a)
     ensures CanBeDivided(a) ==> result == "Yes"
     ensures !CanBeDivided(a) ==> result == "No"
+// </vc-spec>
+// <vc-code>
 {
-    if CanBeDivided(a) {
-        result := "Yes";
-    } else {
-        result := "No";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

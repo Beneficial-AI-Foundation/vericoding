@@ -1,6 +1,8 @@
+/*
 Given an integer sequence A of length N, find the minimum value of:
 abs(A₁ - (b+1)) + abs(A₂ - (b+2)) + ... + abs(Aₙ - (b+N))
 where b is any integer we can choose.
+*/
 
 predicate ValidInput(n: int, a: seq<int>)
 {
@@ -50,49 +52,17 @@ function RoundToInt(x: real): int
         ((x - 0.5).Floor) as int
 }
 
-method Sort(a: seq<int>) returns (sorted: seq<int>)
-    ensures |sorted| == |a|
-    ensures multiset(sorted) == multiset(a)
-    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-{
-    sorted := a;
-    var i := 0;
-    while i < |sorted|
-        invariant 0 <= i <= |sorted|
-        invariant |sorted| == |a|
-        invariant multiset(sorted) == multiset(a)
-        invariant forall x, y :: 0 <= x < y < i ==> sorted[x] <= sorted[y]
-        invariant forall x, y :: 0 <= x < i && i <= y < |sorted| ==> sorted[x] <= sorted[y]
-    {
-        var minIndex := i;
-        var j := i + 1;
-        while j < |sorted|
-            invariant i <= minIndex < |sorted|
-            invariant i < j <= |sorted|
-            invariant |sorted| == |a|
-            invariant multiset(sorted) == multiset(a)
-            invariant forall x, y :: 0 <= x < y < i ==> sorted[x] <= sorted[y]
-            invariant forall x, y :: 0 <= x < i && i <= y < |sorted| ==> sorted[x] <= sorted[y]
-            invariant forall k :: i <= k < j ==> sorted[minIndex] <= sorted[k]
-        {
-            if sorted[j] < sorted[minIndex] {
-                minIndex := j;
-            }
-            j := j + 1;
-        }
-        if minIndex != i {
-            sorted := sorted[i := sorted[minIndex]][minIndex := sorted[i]];
-        }
-        i := i + 1;
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, a: seq<int>) returns (result: int)
     requires ValidInput(n, a)
     ensures result >= 0
     ensures result == SumAbsDiffs(Transform(a), MedianOf(Transform(a)))
+// </vc-spec>
+// <vc-code>
 {
-    var transformed := Transform(a);
-    var median := MedianOf(transformed);
-    result := SumAbsDiffs(transformed, median);
+  assume {:axiom} false;
 }
+// </vc-code>

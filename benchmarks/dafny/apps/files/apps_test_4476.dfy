@@ -1,6 +1,8 @@
+/*
 Given two positive integers a and b, find the minimum number of moves to transform 
 a into b using these operations: add any positive odd integer to a, or subtract 
 any positive even integer from a. It is guaranteed that b can always be obtained from a.
+*/
 
 predicate ValidInput(input: seq<(int, int)>)
 {
@@ -25,20 +27,16 @@ predicate ValidOutput(input: seq<(int, int)>, result: seq<int>)
     forall i :: 0 <= i < |result| ==> result[i] >= 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: seq<(int, int)>) returns (result: seq<int>)
     requires ValidInput(input)
     ensures ValidOutput(input, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := [];
-    for i := 0 to |input|
-        invariant 0 <= i <= |input|
-        invariant |result| == i
-        invariant forall j :: 0 <= j < i ==> result[j] == MinMoves(input[j].0, input[j].1)
-        invariant forall j :: 0 <= j < |result| ==> result[j] >= 0
-    {
-        var a := input[i].0;
-        var b := input[i].1;
-        var moves := MinMoves(a, b);
-        result := result + [moves];
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Count the number of palindromic numbers in the range [A, B] inclusive.
 A palindromic number is a positive integer that reads the same forwards and backwards when written in decimal notation.
 Constraints: 10000 ≤ A ≤ B ≤ 99999
+*/
 
 predicate isPalindromic(n: int)
   requires n >= 0
@@ -40,55 +42,10 @@ predicate ValidInput(stdin_input: string)
   stringToInt(parts[0]) <= stringToInt(parts[1])
 }
 
-function splitOnSpace(s: string): seq<string>
-  requires exists i :: 0 <= i < |s| && s[i] == ' '
-{
-  var spaceIndex := findSpace(s, 0);
-  if spaceIndex == -1 then []
-  else [s[..spaceIndex], trim(s[spaceIndex+1..])]
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function findSpace(s: string, start: int): int
-  requires 0 <= start <= |s|
-  ensures findSpace(s, start) == -1 || (start <= findSpace(s, start) < |s| && s[findSpace(s, start)] == ' ')
-  decreases |s| - start
-{
-  if start >= |s| then -1
-  else if s[start] == ' ' then start
-  else findSpace(s, start + 1)
-}
-
-function trim(s: string): string
-{
-  if |s| == 0 then s
-  else if s[|s|-1] == '\n' then s[..|s|-1]
-  else s
-}
-
-function stringToInt(s: string): int
-  requires isValidInteger(s)
-  ensures stringToInt(s) >= 0
-  decreases |s|
-{
-  if |s| == 0 then 0
-  else if |s| == 1 then s[0] as int - '0' as int
-  else 
-    assert isValidInteger(s[..|s|-1]);
-    stringToInt(s[..|s|-1]) * 10 + (s[|s|-1] as int - '0' as int)
-}
-
-function intToString(n: int): string
-  requires n >= 0
-  ensures |intToString(n)| > 0
-  ensures n == 0 ==> intToString(n) == "0"
-  ensures n > 0 ==> forall i :: 0 <= i < |intToString(n)| ==> '0' <= intToString(n)[i] <= '9'
-  decreases n
-{
-  if n == 0 then "0"
-  else if n < 10 then [('0' as int + n) as char]
-  else intToString(n / 10) + [('0' as int + (n % 10)) as char]
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
   requires ValidInput(stdin_input)
   ensures |result| > 0
@@ -97,10 +54,9 @@ method solve(stdin_input: string) returns (result: string)
           var a := stringToInt(parts[0]);
           var b := stringToInt(parts[1]);
           result == intToString(countPalindromicNumbers(a, b)) + "\n"
+// </vc-spec>
+// <vc-code>
 {
-  var parts := splitOnSpace(stdin_input);
-  var a := stringToInt(parts[0]);
-  var b := stringToInt(parts[1]);
-  var count := countPalindromicNumbers(a, b);
-  result := intToString(count) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,4 +1,6 @@
+/*
 Given today's weather from a 3-day repeating cycle (Sunny → Cloudy → Rainy → Sunny → ...), determine tomorrow's weather.
+*/
 
 predicate ValidWeather(weather: string)
 {
@@ -18,18 +20,19 @@ function NextWeather(weather: string): string
     else "Sunny"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
     ensures var trimmed := TrimNewline(input);
             if ValidWeather(trimmed) then 
                 result == NextWeather(trimmed) + "\n"
             else 
                 result == ""
+// </vc-spec>
+// <vc-code>
 {
-    var trimmed := TrimNewline(input);
-
-    if ValidWeather(trimmed) {
-        result := NextWeather(trimmed) + "\n";
-    } else {
-        result := "";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

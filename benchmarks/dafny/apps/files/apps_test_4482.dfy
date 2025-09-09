@@ -1,5 +1,7 @@
+/*
 Given N integers, find the minimum cost to make all integers equal by transforming some of them.
 Each integer can be transformed at most once. The cost of transforming integer x to integer y is (x-y)².
+*/
 
 function sum_squares(p: int, a: seq<int>): int
 {
@@ -20,96 +22,16 @@ predicate IsOptimalCost(result: int, a: seq<int>)
     forall p :: -100 <= p <= 100 ==> result <= sum_squares(p, a)
 }
 
-lemma sum_squares_non_negative(p: int, a: seq<int>)
-    ensures sum_squares(p, a) >= 0
-    decreases |a|
-{
-    if |a| == 0 {
-        // base case
-    } else {
-        sum_squares_non_negative(p, a[1..]);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function sum_squares_partial(p: int, a: seq<int>, i: int): int
-    requires 0 <= i <= |a|
-{
-    if i == 0 then 0
-    else (p - a[i-1]) * (p - a[i-1]) + sum_squares_partial(p, a, i-1)
-}
-
-lemma sum_squares_partial_equals_sum_squares(p: int, a: seq<int>)
-    ensures sum_squares_partial(p, a, |a|) == sum_squares(p, a)
-{
-    sum_squares_partial_equals_sum_squares_helper(p, a, |a|);
-    assert a[..|a|] == a;
-}
-
-lemma sum_squares_partial_equals_sum_squares_helper(p: int, a: seq<int>, k: int)
-    requires 0 <= k <= |a|
-    ensures sum_squares_partial(p, a, k) == sum_squares(p, a[..k])
-    decreases k
-{
-    if k == 0 {
-        assert a[..0] == [];
-        assert sum_squares(p, []) == 0;
-        assert sum_squares_partial(p, a, 0) == 0;
-    } else {
-        sum_squares_partial_equals_sum_squares_helper(p, a, k-1);
-        assert sum_squares_partial(p, a, k) == (p - a[k-1]) * (p - a[k-1]) + sum_squares_partial(p, a, k-1);
-        assert sum_squares_partial(p, a, k-1) == sum_squares(p, a[..k-1]);
-        assert sum_squares_partial(p, a, k) == (p - a[k-1]) * (p - a[k-1]) + sum_squares(p, a[..k-1]);
-
-        assert a[..k] == a[..k-1] + [a[k-1]];
-        sum_squares_append_lemma(p, a[..k-1], a[k-1]);
-        assert sum_squares(p, a[..k-1] + [a[k-1]]) == sum_squares(p, a[..k-1]) + (p - a[k-1]) * (p - a[k-1]);
-        assert sum_squares(p, a[..k]) == sum_squares(p, a[..k-1]) + (p - a[k-1]) * (p - a[k-1]);
-    }
-}
-
-lemma sum_squares_append_lemma(p: int, s: seq<int>, x: int)
-    ensures sum_squares(p, s + [x]) == sum_squares(p, s) + (p - x) * (p - x)
-{
-    if |s| == 0 {
-        assert s + [x] == [x];
-        assert sum_squares(p, [x]) == (p - x) * (p - x);
-        assert sum_squares(p, s) == 0;
-    } else {
-        assert s == [s[0]] + s[1..];
-        assert s + [x] == [s[0]] + (s[1..] + [x]);
-        sum_squares_append_lemma(p, s[1..], x);
-        assert sum_squares(p, s[1..] + [x]) == sum_squares(p, s[1..]) + (p - x) * (p - x);
-        assert sum_squares(p, s + [x]) == (p - s[0]) * (p - s[0]) + sum_squares(p, s[1..] + [x]);
-        assert sum_squares(p, s + [x]) == (p - s[0]) * (p - s[0]) + sum_squares(p, s[1..]) + (p - x) * (p - x);
-        assert sum_squares(p, s) == (p - s[0]) * (p - s[0]) + sum_squares(p, s[1..]);
-    }
-}
-
+// <vc-spec>
 method solve(n: int, a: seq<int>) returns (result: int)
     requires ValidInput(n, a)
     ensures IsOptimalCost(result, a)
+// </vc-spec>
+// <vc-code>
 {
-    sum_squares_non_negative(-100, a);
-    var ans := sum_squares(-100, a);
-    var best_p := -100;
-
-    var p := -100;
-    while p <= 100
-        invariant -100 <= p <= 101
-        invariant ans >= 0
-        invariant -100 <= best_p <= 100
-        invariant ans == sum_squares(best_p, a)
-        invariant forall q :: -100 <= q < p ==> ans <= sum_squares(q, a)
-    {
-        sum_squares_non_negative(p, a);
-        var current := sum_squares(p, a);
-
-        if current < ans {
-            ans := current;
-            best_p := p;
-        }
-        p := p + 1;
-    }
-
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

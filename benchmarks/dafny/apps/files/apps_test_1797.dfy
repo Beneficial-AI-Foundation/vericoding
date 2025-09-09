@@ -1,7 +1,9 @@
+/*
 Given n subway stations where each station i has exactly one outgoing train to station p_i,
 and the array p represents a permutation, find the maximum "convenience" after changing at 
 most 2 values in p. Convenience is defined as the number of ordered pairs (x,y) where you 
 can travel from station x to station y using the subway trains.
+*/
 
 predicate ValidInput(n: int, p: seq<int>)
 {
@@ -52,184 +54,16 @@ function get_cycles_helper(n: int, p: seq<int>, visited: seq<bool>, cycles: seq<
       cycles
 }
 
-function find_unvisited(visited: seq<bool>): int
-{
-  find_unvisited_helper(visited, 0)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function find_unvisited_helper(visited: seq<bool>, index: int): int
-  requires 0 <= index <= |visited|
-  decreases |visited| - index
-{
-  if index >= |visited| then -1
-  else if !visited[index] then index
-  else find_unvisited_helper(visited, index + 1)
-}
-
-function get_cycle_length(p: seq<int>, visited: seq<bool>, start: int): int
-  requires |p| == |visited|
-  requires 0 <= start < |p|
-  requires forall i :: 0 <= i < |p| ==> 1 <= p[i] <= |p|
-{
-  get_cycle_length_helper(p, visited, start, start, 0)
-}
-
-function get_cycle_length_helper(p: seq<int>, visited: seq<bool>, current: int, start: int, length: int): int
-  requires |p| == |visited|
-  requires 0 <= current < |p|
-  requires 0 <= start < |p|
-  requires length >= 0
-  requires forall i :: 0 <= i < |p| ==> 1 <= p[i] <= |p|
-  decreases |p| - length
-{
-  if length >= |p| then length
-  else if visited[current] then length
-  else get_cycle_length_helper(p, visited, p[current] - 1, start, length + 1)
-}
-
-function mark_cycle_visited(p: seq<int>, visited: seq<bool>, start: int): seq<bool>
-  requires |p| == |visited|
-  requires 0 <= start < |p|
-  requires forall i :: 0 <= i < |p| ==> 1 <= p[i] <= |p|
-  ensures |mark_cycle_visited(p, visited, start)| == |visited|
-{
-  mark_cycle_visited_helper(p, visited, start, start, 0)
-}
-
-function mark_cycle_visited_helper(p: seq<int>, visited: seq<bool>, current: int, start: int, steps: int): seq<bool>
-  requires |p| == |visited|
-  requires 0 <= current < |p|
-  requires 0 <= start < |p|
-  requires steps >= 0
-  requires forall i :: 0 <= i < |p| ==> 1 <= p[i] <= |p|
-  ensures |mark_cycle_visited_helper(p, visited, current, start, steps)| == |visited|
-  decreases |p| - steps
-{
-  if steps >= |p| then visited
-  else if visited[current] then visited
-  else 
-    var new_visited := visited[current := true];
-    mark_cycle_visited_helper(p, new_visited, p[current] - 1, start, steps + 1)
-}
-
-function sort_sequence(s: seq<int>): seq<int>
-  decreases |s|
-{
-  if |s| <= 1 then s
-  else 
-    var pivot := s[0];
-    var smaller := filter_leq(s[1..], pivot);
-    var larger := filter_gt(s[1..], pivot);
-    sort_sequence(smaller) + [pivot] + sort_sequence(larger)
-}
-
-function filter_leq(s: seq<int>, pivot: int): seq<int>
-  ensures |filter_leq(s, pivot)| <= |s|
-{
-  if |s| == 0 then []
-  else if s[0] <= pivot then [s[0]] + filter_leq(s[1..], pivot)
-  else filter_leq(s[1..], pivot)
-}
-
-function filter_gt(s: seq<int>, pivot: int): seq<int>
-  ensures |filter_gt(s, pivot)| <= |s|
-{
-  if |s| == 0 then []
-  else if s[0] > pivot then [s[0]] + filter_gt(s[1..], pivot)
-  else filter_gt(s[1..], pivot)
-}
-
-function merge_two_largest(s: seq<int>): seq<int>
-  requires |s| >= 2
-{
-  var sorted := sort_sequence(s);
-  if |sorted| >= 2 then
-    sorted[..|sorted|-2] + [sorted[|sorted|-2] + sorted[|sorted|-1]]
-  else
-    sorted
-}
-
+// <vc-spec>
 method solve(n: int, p: seq<int>) returns (result: int)
   requires ValidInput(n, p)
   ensures result > 0
+// </vc-spec>
+// <vc-code>
 {
-  var visited := new bool[n];
-  var i := 0;
-  while i < n
-    invariant 0 <= i <= n
-    invariant forall k :: 0 <= k < i ==> visited[k] == false
-  {
-    visited[i] := false;
-    i := i + 1;
-  }
-
-  var ls: seq<int> := [];
-  i := 0;
-
-  while i < n
-    invariant 0 <= i <= n
-    invariant forall x :: x in ls ==> x > 0
-  {
-    if !visited[i] {
-      var j := i;
-      var cnt := 0;
-      while !visited[j] && cnt < n
-        invariant 0 <= j < n
-        invariant cnt >= 0
-        invariant cnt <= n
-        decreases n - cnt
-      {
-        visited[j] := true;
-        cnt := cnt + 1;
-        j := p[j] - 1;
-      }
-      if cnt > 0 {
-        ls := ls + [cnt];
-      }
-    }
-    i := i + 1;
-  }
-
-  var sorted_ls := ls;
-  var original_length := |sorted_ls|;
-  i := 0;
-  while i < |sorted_ls|
-    invariant 0 <= i <= |sorted_ls|
-    invariant |sorted_ls| == original_length
-    decreases original_length - i
-  {
-    var j := i + 1;
-    while j < |sorted_ls|
-      invariant i < j <= |sorted_ls|
-      invariant 0 <= i < |sorted_ls|
-      invariant |sorted_ls| == original_length
-    {
-      if sorted_ls[i] > sorted_ls[j] {
-        var temp := sorted_ls[i];
-        sorted_ls := sorted_ls[..i] + [sorted_ls[j]] + sorted_ls[i+1..j] + [temp] + sorted_ls[j+1..];
-        assert |sorted_ls| == original_length;
-      }
-      j := j + 1;
-    }
-    i := i + 1;
-  }
-
-  if |sorted_ls| >= 2 {
-    var last_two_sum := sorted_ls[|sorted_ls|-2] + sorted_ls[|sorted_ls|-1];
-    sorted_ls := sorted_ls[..|sorted_ls|-2] + [last_two_sum];
-  }
-
-  result := 0;
-  i := 0;
-  while i < |sorted_ls|
-    invariant 0 <= i <= |sorted_ls|
-    invariant result >= 0
-  {
-    result := result + sorted_ls[i] * sorted_ls[i];
-    i := i + 1;
-  }
-
-  if result == 0 {
-    result := 1;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

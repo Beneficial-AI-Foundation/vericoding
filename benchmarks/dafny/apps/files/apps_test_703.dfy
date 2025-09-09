@@ -1,6 +1,8 @@
+/*
 Store `a` nuts in boxes using `b` available divisors. Each box can have at most `k` sections.
 A box with `x` divisors has `x+1` sections. Each section holds at most `v` nuts.
 Find minimum number of boxes needed.
+*/
 
 function min(x: int, y: int): int
 {
@@ -31,6 +33,10 @@ predicate IsMinimalSolution(result: int, k: int, a: int, b: int, v: int)
     (result == 1 || !CanStoreNuts(result - 1, k, a, b, v))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(k: int, a: int, b: int, v: int) returns (result: int)
     requires ValidInput(k, a, b, v)
     ensures result >= 1
@@ -38,17 +44,9 @@ method solve(k: int, a: int, b: int, v: int) returns (result: int)
     ensures IsMinimalSolution(result, k, a, b, v)
     ensures exists i :: 1 <= i <= 1009 && CanStoreNuts(i, k, a, b, v) && result == i && 
             (forall j :: 1 <= j < i ==> !CanStoreNuts(j, k, a, b, v))
+// </vc-spec>
+// <vc-code>
 {
-    for i := 1 to 1010 
-        invariant 1 <= i <= 1010
-        invariant forall j :: 1 <= j < i ==> !CanStoreNuts(j, k, a, b, v)
-    {
-        if CanStoreNuts(i, k, a, b, v) {
-            assert CanStoreNuts(i, k, a, b, v);
-            assert forall j :: 1 <= j < i ==> !CanStoreNuts(j, k, a, b, v);
-            assert i == 1 || !CanStoreNuts(i - 1, k, a, b, v);
-            return i;
-        }
-    }
-    return 1009;
+  assume {:axiom} false;
 }
+// </vc-code>

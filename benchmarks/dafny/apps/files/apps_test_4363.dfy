@@ -1,5 +1,7 @@
+/*
 Given two integers K and S, count the number of ordered triples (X, Y, Z) where
 each of X, Y, Z is an integer in the range [0, K] and X + Y + Z = S.
+*/
 
 predicate ValidInput(k: int, s: int) {
     k >= 0 && s >= 0 && s <= 3 * k
@@ -44,32 +46,17 @@ function CountValidTriplesForZHelper(k: int, s: int, z: int, y: int): int
         thisCount + CountValidTriplesForZHelper(k, s, z, y + 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method CountTriples(k: int, s: int) returns (count: int)
     requires ValidInput(k, s)
     ensures count == CountValidTriples(k, s)
     ensures count >= 0
+// </vc-spec>
+// <vc-code>
 {
-    count := 0;
-    var z := 0;
-    while z <= k
-        invariant 0 <= z <= k + 1
-        invariant count == CountValidTriplesHelper(k, s, 0) - CountValidTriplesHelper(k, s, z)
-    {
-        var y := 0;
-        var zCount := 0;
-        while y <= k
-            invariant 0 <= y <= k + 1
-            invariant zCount == CountValidTriplesForZHelper(k, s, z, 0) - CountValidTriplesForZHelper(k, s, z, y)
-        {
-            var x := s - y - z;
-            if 0 <= x <= k {
-                zCount := zCount + 1;
-            }
-            y := y + 1;
-        }
-        assert zCount == CountValidTriplesForZ(k, s, z);
-        count := count + zCount;
-        z := z + 1;
-    }
-    assert count == CountValidTriples(k, s);
+  assume {:axiom} false;
 }
+// </vc-code>

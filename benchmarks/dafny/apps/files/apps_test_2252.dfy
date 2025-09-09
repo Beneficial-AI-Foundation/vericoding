@@ -1,7 +1,9 @@
+/*
 Given a permutation P of n pages and m queries, determine for each query whether a specific element 
 remains in the same position after sorting a subsegment in ascending order. For each query with 
 parameters (l, r, x): sort the subsegment P[l...r] in ascending order, check if the element at 
 position x remains unchanged. Each query is independent (permutation resets after each query).
+*/
 
 predicate ValidInputFormat(input: string)
 {
@@ -93,6 +95,10 @@ function FindNewline(s: string, start: nat): int
     else FindNewline(s, start + 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires '\n' in stdin_input
@@ -102,11 +108,9 @@ method solve(stdin_input: string) returns (result: string)
     ensures result != "" ==> result[|result|-1] == '\n'
     ensures ValidOutputFormat(result)
     ensures OutputMatchesQueries(stdin_input, result)
+// </vc-spec>
+// <vc-code>
 {
-    var s := "example";
-    var i := 0;
-    while i < |s| {
-        i := i + 1;
-    }
-    result := "Yes\n";
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,9 +1,11 @@
+/*
 Given three integers A, B, and K, where Takahashi has A cookies and Aoki has B cookies initially.
 Takahashi performs exactly K actions, where each action follows this priority:
 1. If Takahashi has cookies, he eats one of his own cookies
 2. Otherwise, if Aoki has cookies, Takahashi eats one of Aoki's cookies  
 3. Otherwise, do nothing
 Determine how many cookies Takahashi and Aoki have after all K actions.
+*/
 
 predicate ValidInput(A: int, B: int, K: int)
 {
@@ -33,18 +35,16 @@ predicate CorrectResult(A: int, B: int, K: int, takahashi: int, aoki: int)
     takahashi >= 0 && aoki >= 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(A: int, B: int, K: int) returns (takahashi: int, aoki: int)
     requires ValidInput(A, B, K)
     ensures CorrectResult(A, B, K, takahashi, aoki)
+// </vc-spec>
+// <vc-code>
 {
-    if A >= K {
-        takahashi := A - K;
-        aoki := B;
-    } else if K - A < B {
-        takahashi := 0;
-        aoki := B - (K - A);
-    } else {
-        takahashi := 0;
-        aoki := 0;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

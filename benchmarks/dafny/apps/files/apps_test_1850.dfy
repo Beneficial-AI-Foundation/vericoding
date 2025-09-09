@@ -1,7 +1,9 @@
+/*
 Given N astronauts with current point rankings and N point awards for the next race,
 find the best possible ranking for astronaut at position D after the race.
 The target astronaut gets the maximum award, and we try to minimize awards to astronauts
 ahead of them to maximize how many can be overtaken.
+*/
 
 predicate ValidInput(n: int, d: int, currentPoints: seq<int>, awards: seq<int>)
 {
@@ -42,31 +44,17 @@ function CountOvertakenHelper(currentPoints: seq<int>, awards: seq<int>, d: int,
             CountOvertakenHelper(currentPoints, awards, d, pos+1, usedAwards)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, d: int, currentPoints: seq<int>, awards: seq<int>) returns (result: int)
     requires ValidInput(n, d, currentPoints, awards)
     ensures 1 <= result <= d
     ensures result == d - CountOvertaken(currentPoints, awards, d)
+// </vc-spec>
+// <vc-code>
 {
-    var targetFinalScore := currentPoints[d-1] + awards[0];
-    var count := 0;
-
-    for i := 0 to d-1
-        invariant 0 <= i <= d-1
-        invariant 0 <= count <= i
-        invariant count <= d-1
-        invariant count == CountOvertakenHelper(currentPoints, awards, d, 0, 0) - CountOvertakenHelper(currentPoints, awards, d, i, count)
-    {
-        var remainingAwards := |awards| - count;
-        if remainingAwards > 0 && count < |awards| {
-            var smallestAward := awards[|awards|-1-count];
-            if currentPoints[i] + smallestAward <= targetFinalScore {
-                count := count + 1;
-            }
-        }
-    }
-
-    result := d - count;
-
-    assert count == CountOvertaken(currentPoints, awards, d);
-    assert 1 <= result <= d;
+  assume {:axiom} false;
 }
+// </vc-code>

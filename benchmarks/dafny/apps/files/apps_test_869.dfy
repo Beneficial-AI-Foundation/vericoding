@@ -1,7 +1,9 @@
+/*
 Given a red socks and b blue socks, determine the maximum number of days to wear
 different colored socks (one red, one blue per day), then the number of days to
 wear same colored socks afterwards (two socks of same color per day). Each day,
 worn socks are discarded.
+*/
 
 predicate ValidInput(a: int, b: int)
 {
@@ -23,6 +25,10 @@ function SameDays(a: int, b: int): int
   RemainingAfterDifferent(a, b) / 2
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int) returns (days_different: int, days_same: int)
   requires ValidInput(a, b)
   ensures days_different == MaxDifferentDays(a, b)
@@ -30,8 +36,9 @@ method solve(a: int, b: int) returns (days_different: int, days_same: int)
   ensures days_different >= 0
   ensures days_same >= 0
   ensures days_different <= a && days_different <= b
+// </vc-spec>
+// <vc-code>
 {
-  days_different := if a < b then a else b;
-  var remaining := if a > b then a - days_different else b - days_different;
-  days_same := remaining / 2;
+  assume {:axiom} false;
 }
+// </vc-code>

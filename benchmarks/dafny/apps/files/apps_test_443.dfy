@@ -1,8 +1,10 @@
+/*
 Given n packets of balloons, divide all packets between two people such that:
 1. Each person gets at least one packet
 2. All packets are distributed 
 3. The total number of balloons each person receives is different
 Find any valid distribution or return empty sequence if impossible.
+*/
 
 predicate ValidInput(n: int, packets: seq<int>)
 {
@@ -33,39 +35,16 @@ predicate ValidSolution(n: int, packets: seq<int>, result: seq<int>)
         (forall k :: 0 <= k < minIndex ==> packets[k] > packets[minIndex])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, packets: seq<int>) returns (result: seq<int>)
     requires ValidInput(n, packets)
     ensures ValidSolution(n, packets, result)
+// </vc-spec>
+// <vc-code>
 {
-    if n < 2 {
-        result := [];
-        return;
-    }
-
-    if n == 2 && packets[0] == packets[1] {
-        result := [];
-        return;
-    }
-
-    // Find the minimum value and its index
-    var minVal := packets[0];
-    var minIndex := 0;
-    var i := 1;
-
-    while i < |packets|
-        invariant 1 <= i <= |packets|
-        invariant 0 <= minIndex < i
-        invariant minVal == packets[minIndex]
-        invariant forall j :: 0 <= j < i ==> packets[minIndex] <= packets[j]
-        invariant forall k :: 0 <= k < minIndex ==> packets[k] > packets[minIndex]
-    {
-        if packets[i] < minVal {
-            minVal := packets[i];
-            minIndex := i;
-        }
-        i := i + 1;
-    }
-
-    // Return [1, minIndex + 1] (1-indexed)
-    result := [1, minIndex + 1];
+  assume {:axiom} false;
 }
+// </vc-code>

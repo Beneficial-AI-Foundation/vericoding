@@ -1,6 +1,8 @@
+/*
 Given N strings, count the number of distinct strings.
 Input: A sequence of strings (length >= 1)
 Output: Integer representing the count of distinct strings
+*/
 
 function DistinctStrings(strings: seq<string>): set<string>
 {
@@ -12,28 +14,18 @@ predicate ValidInput(strings: seq<string>)
     |strings| >= 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(strings: seq<string>) returns (count: int)
     requires ValidInput(strings)
     ensures count >= 1
     ensures count <= |strings|
     ensures count == |DistinctStrings(strings)|
+// </vc-spec>
+// <vc-code>
 {
-    var seen: set<string> := {};
-    var i := 0;
-    while i < |strings|
-        invariant 0 <= i <= |strings|
-        invariant seen == (set j | 0 <= j < i :: strings[j])
-        invariant |seen| <= i
-    {
-        seen := seen + {strings[i]};
-        i := i + 1;
-    }
-
-    assert seen == DistinctStrings(strings);
-    assert |strings| >= 1;
-    assert strings[0] in seen;
-    assert |seen| >= 1;
-    assert |seen| <= |strings|;
-
-    count := |seen|;
+  assume {:axiom} false;
 }
+// </vc-code>

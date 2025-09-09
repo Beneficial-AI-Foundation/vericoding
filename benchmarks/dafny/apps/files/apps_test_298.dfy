@@ -1,6 +1,8 @@
+/*
 Two players take turns removing exactly k consecutive sticks from either end of a row of n sticks.
 The first player moves first. The game ends when fewer than k sticks remain.
 Determine if the first player wins by making strictly more moves than the second player.
+*/
 
 predicate ValidInput(n: int, k: int)
 {
@@ -19,15 +21,17 @@ predicate FirstPlayerWins(n: int, k: int)
     TotalMoves(n, k) % 2 == 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, k: int) returns (result: string)
     requires ValidInput(n, k)
     ensures FirstPlayerWins(n, k) ==> result == "YES"
     ensures !FirstPlayerWins(n, k) ==> result == "NO"
+// </vc-spec>
+// <vc-code>
 {
-    var total_moves := TotalMoves(n, k);
-    if total_moves % 2 == 1 {
-        result := "YES";
-    } else {
-        result := "NO";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

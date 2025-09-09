@@ -1,5 +1,7 @@
+/*
 Given a three-digit string containing only digits '1' and '9', swap each '1' with '9' 
 and each '9' with '1', then return the transformed string with a newline appended.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -30,32 +32,16 @@ predicate ValidOutput(input: string, result: string)
         (input[i] == '9' ==> result[i] == '1')
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures ValidOutput(input, result)
+// </vc-spec>
+// <vc-code>
 {
-    var s := input;
-    if |s| > 0 && s[|s|-1] == '\n' {
-        s := s[..|s|-1];
-    }
-
-    var output := "";
-    var i := 0;
-    while i < 3 && i < |s|
-        invariant 0 <= i <= 3
-        invariant i <= |s|
-        invariant |output| == i
-        invariant forall j :: 0 <= j < i ==> 
-            (s[j] == '1' ==> output[j] == '9') && 
-            (s[j] == '9' ==> output[j] == '1')
-    {
-        if s[i] == '1' {
-            output := output + "9";
-        } else {
-            output := output + "1";
-        }
-        i := i + 1;
-    }
-
-    result := output + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

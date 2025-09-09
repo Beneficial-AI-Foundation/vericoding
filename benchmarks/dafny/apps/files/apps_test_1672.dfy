@@ -1,5 +1,7 @@
+/*
 Given a sequence of magnets with orientations "01" or "10", count the number of groups formed.
 Adjacent magnets with same orientation attract (same group), different orientations repel (separate groups).
+*/
 
 predicate ValidInput(magnets: seq<string>)
 {
@@ -13,6 +15,10 @@ function CountGroups(magnets: seq<string>) : int
     else 1 + |set i | 1 <= i < |magnets| && magnets[i] != magnets[i-1]|
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(magnets: seq<string>) returns (result: int)
     requires ValidInput(magnets)
     ensures result >= 0
@@ -20,39 +26,9 @@ method solve(magnets: seq<string>) returns (result: int)
     ensures |magnets| > 0 ==> result >= 1
     ensures result <= |magnets|
     ensures result == CountGroups(magnets)
+// </vc-spec>
+// <vc-code>
 {
-    if |magnets| == 0 {
-        return 0;
-    }
-
-    var groups := 1;
-    var i := 1;
-
-    while i < |magnets|
-        invariant 1 <= i <= |magnets|
-        invariant groups >= 1
-        invariant groups <= i
-        invariant groups == 1 + |set j | 1 <= j < i && magnets[j] != magnets[j-1]|
-    {
-        var oldGroups := groups;
-        var oldSet := set j | 1 <= j < i && magnets[j] != magnets[j-1];
-        var newSet := set j | 1 <= j < i + 1 && magnets[j] != magnets[j-1];
-
-        if magnets[i] != magnets[i-1] {
-            assert i in newSet;
-            assert i !in oldSet;
-            assert newSet == oldSet + {i};
-            assert |newSet| == |oldSet| + 1;
-            groups := groups + 1;
-        } else {
-            assert i !in newSet;
-            assert newSet == oldSet;
-            assert |newSet| == |oldSet|;
-        }
-
-        assert groups == 1 + |newSet|;
-        i := i + 1;
-    }
-
-    return groups;
+  assume {:axiom} false;
 }
+// </vc-code>

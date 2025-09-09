@@ -1,5 +1,7 @@
+/*
 Given a year number, find the minimum year that is strictly greater than the given year 
 and contains only distinct digits (no repeated digits).
+*/
 
 predicate ValidInput(y: int)
 {
@@ -32,20 +34,18 @@ predicate AllDistinct(digits: seq<int>)
     forall i, j :: 0 <= i < j < |digits| ==> digits[i] != digits[j]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(y: int) returns (result: int)
 requires ValidInput(y)
 ensures result > y
 ensures HasDistinctDigits(result)
 ensures forall n :: y < n < result ==> !HasDistinctDigits(n)
+// </vc-spec>
+// <vc-code>
 {
-    var candidate := y + 1;
-    while !HasDistinctDigits(candidate)
-    invariant candidate > y
-    invariant candidate <= 98765
-    invariant forall n :: y < n < candidate ==> !HasDistinctDigits(n)
-    decreases 98765 - candidate
-    {
-        candidate := candidate + 1;
-    }
-    result := candidate;
+  assume {:axiom} false;
 }
+// </vc-code>

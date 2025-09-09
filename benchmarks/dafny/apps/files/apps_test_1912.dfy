@@ -1,7 +1,9 @@
+/*
 Given T test cases with four integers r, g, b, w representing ball counts,
 determine if balls can be arranged into a palindrome after performing operations.
 Operation: select one red, green, and blue ball and change all three to white.
 For palindromes, at most one color can have an odd count.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -56,6 +58,10 @@ predicate CanFormPalindromeAfterOperation(r: int, g: int, b: int, w: int)
   oddCount <= 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
   requires |stdin_input| > 0
   requires stdin_input[|stdin_input|-1] == '\n' || !('\n' in stdin_input[..|stdin_input|-1])
@@ -66,6 +72,9 @@ method solve(stdin_input: string) returns (result: string)
   ensures ValidOutputFormat(result)
   ensures InputOutputCorrespondence(stdin_input, result)
   ensures result == ProcessInput(stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-  result := "";
+  assume {:axiom} false;
 }
+// </vc-code>

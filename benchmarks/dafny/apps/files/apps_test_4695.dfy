@@ -1,7 +1,9 @@
+/*
 Given integers x and y where 1 ≤ x < y ≤ 12, determine if they belong to the same group 
 according to Snuke's division of integers 1 through 12 into three groups based on some criterion.
 Input: Two space-separated integers x and y
 Output: "Yes" if x and y are in the same group, "No" otherwise
+*/
 
 predicate ValidInput(input: string)
     requires |input| > 0
@@ -29,144 +31,17 @@ predicate CorrectOutput(input: string, result: string)
         result == ""
 }
 
-function SplitStringPure(s: string): seq<string>
-    requires |s| > 0
-{
-    SplitStringHelper(s, 0, "", [])
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function SplitStringHelper(s: string, index: int, current: string, acc: seq<string>): seq<string>
-    requires 0 <= index <= |s|
-    decreases |s| - index
-{
-    if index >= |s| then
-        if |current| > 0 then acc + [current] else acc
-    else if s[index] == ' ' || s[index] == '\n' then
-        if |current| > 0 then 
-            SplitStringHelper(s, index + 1, "", acc + [current])
-        else 
-            SplitStringHelper(s, index + 1, current, acc)
-    else
-        SplitStringHelper(s, index + 1, current + [s[index]], acc)
-}
-
-function IsValidInt(s: string): bool
-{
-    |s| > 0 && ((s[0] == '-' && |s| > 1 && forall i :: 1 <= i < |s| ==> '0' <= s[i] <= '9') ||
-    (s[0] != '-' && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'))
-}
-
-function StringToIntPure(s: string): int
-    requires IsValidInt(s)
-{
-    if |s| > 0 && s[0] == '-' then
-        -StringToIntHelper(s, 1, 0)
-    else
-        StringToIntHelper(s, 0, 0)
-}
-
-function StringToIntHelper(s: string, index: int, acc: int): int
-    requires 0 <= index <= |s|
-    requires forall i :: index <= i < |s| ==> '0' <= s[i] <= '9'
-    decreases |s| - index
-{
-    if index >= |s| then acc
-    else StringToIntHelper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
-}
-
-method SplitString(s: string) returns (parts: seq<string>)
-    requires |s| > 0
-    ensures |parts| >= 0
-    ensures parts == SplitStringPure(s)
-{
-    parts := [];
-    var current := "";
-    var i := 0;
-
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant SplitStringHelper(s, i, current, parts) == SplitStringPure(s)
-    {
-        if s[i] == ' ' || s[i] == '\n' {
-            if |current| > 0 {
-                parts := parts + [current];
-                current := "";
-            }
-        } else {
-            current := current + [s[i]];
-        }
-        i := i + 1;
-    }
-
-    if |current| > 0 {
-        parts := parts + [current];
-    }
-}
-
-method StringToInt(s: string) returns (result: int)
-    requires |s| > 0
-    ensures IsValidInt(s) ==> result == StringToIntPure(s)
-{
-    result := 0;
-    var i := 0;
-    var negative := false;
-
-    if |s| > 0 && s[0] == '-' {
-        negative := true;
-        i := 1;
-    }
-
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant negative <==> (|s| > 0 && s[0] == '-')
-        invariant IsValidInt(s) ==> (
-            if negative then 
-                StringToIntHelper(s, i, result) == StringToIntHelper(s, 1, 0)
-            else 
-                StringToIntHelper(s, i, result) == StringToIntHelper(s, 0, 0)
-        )
-    {
-        if '0' <= s[i] <= '9' {
-            result := result * 10 + (s[i] as int - '0' as int);
-        }
-        i := i + 1;
-    }
-
-    if negative {
-        result := -result;
-    }
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     ensures result == "Yes\n" || result == "No\n" || result == ""
     ensures CorrectOutput(input, result)
+// </vc-spec>
+// <vc-code>
 {
-    var n1 := [1, 3, 5, 7, 8, 10, 12];
-    var n2 := [4, 6, 9, 11];
-
-    var parts := SplitString(input);
-    if |parts| < 2 {
-        result := "";
-        return;
-    }
-
-    if !IsValidInt(parts[0]) || !IsValidInt(parts[1]) {
-        result := "";
-        return;
-    }
-
-    var a := StringToInt(parts[0]);
-    var b := StringToInt(parts[1]);
-
-    var aInN1 := a in n1;
-    var bInN1 := b in n1;
-    var aInN2 := a in n2;
-    var bInN2 := b in n2;
-
-    if (aInN1 && bInN1) || (aInN2 && bInN2) || (a == 2 && b == 2) {
-        result := "Yes\n";
-    } else {
-        result := "No\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

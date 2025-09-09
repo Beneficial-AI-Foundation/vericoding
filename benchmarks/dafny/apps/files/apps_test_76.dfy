@@ -1,6 +1,8 @@
+/*
 Given n commentary boxes and m delegations, make the number of boxes divisible by m at minimum cost.
 You can build a box for cost a or demolish a box for cost b.
 Find the minimum cost to make n divisible by m.
+*/
 
 predicate ValidInput(n: int, m: int, a: int, b: int)
 {
@@ -14,11 +16,17 @@ function MinCostToDivisible(n: int, m: int, a: int, b: int): int
     if k * b < (m - k) * a then k * b else (m - k) * a
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int, a: int, b: int) returns (result: int)
     requires ValidInput(n, m, a, b)
     ensures result == MinCostToDivisible(n, m, a, b)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    var k := n % m;
-    result := if k * b < (m - k) * a then k * b else (m - k) * a;
+  assume {:axiom} false;
 }
+// </vc-code>
