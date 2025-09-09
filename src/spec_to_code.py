@@ -143,6 +143,12 @@ Examples:
         type=str,
         help="Specific model to use (defaults to provider's default model)",
     )
+    parser.add_argument(
+        "--limit",
+        "-n",
+        type=int,
+        help="Process only the first N files from the dataset (default: process all files)",
+    )
 
     return parser.parse_args()
 
@@ -784,7 +790,14 @@ def main():
 
     # Find all specification files
     spec_files = find_spec_files(config)
-    print(f"Found {len(spec_files)} {config.language_config.name} files to process")
+
+    # Apply limit if specified
+    total_files = len(spec_files)
+    if args.limit and args.limit > 0:
+        spec_files = spec_files[:args.limit]
+        print(f"Found {total_files} {config.language_config.name} specification files, processing first {len(spec_files)} (limited by --limit {args.limit})")
+    else:
+        print(f"Found {len(spec_files)} {config.language_config.name} specification files to process")
     if config.language == "lean":
         print("(Only Lean files containing 'sorry' are selected)")
     print("")
