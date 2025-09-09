@@ -1,12 +1,29 @@
 vc-description: |-
-
-vc-preamble: |-
   /*predicate palindrome<T(==)> (s:seq<T>)
   {
       forall i:: 0<=i<|s| ==> s[i] == s[|s|-i-1]
   }
   */
-  // SUM OF A SEQUENCE OF INTEGERS
+  
+  // Structural Induction on Sequences
+  
+  // MAXIMUM OF A SEQUENCE
+  
+  // TODO: Hacer
+  
+  // Derivar formalmente un calculo incremental de j*j*j
+  
+  // REVERSE OF A SEQUENCE
+  
+  // REVERSE IS ITS OWN INVERSE
+  
+  // SCALAR PRODUCT OF TWO VECTORS OF INTEGER
+  
+  // MULTISETS
+  
+  // REVERSE HAS THE SAME MULTISET
+
+vc-preamble: |-
   function sum(v: seq<int>): int 
   decreases v
   {
@@ -15,14 +32,6 @@ vc-preamble: |-
       else v[0]+sum(v[1..])
   }
   
-  // Structural Induction on Sequences
-  
-  // MAXIMUM OF A SEQUENCE
-  
-  // TODO: Hacer
-  // Derivar formalmente un calculo incremental de j*j*j
-  
-  // REVERSE OF A SEQUENCE
   function reverse<T> (s:seq<T>):seq<T> 
   {
       if s==[] then []
@@ -35,23 +44,16 @@ vc-preamble: |-
       else {s[0]}+seq2set(s[1..])
   }
   
-  // REVERSE IS ITS OWN INVERSE
-  
-  // SCALAR PRODUCT OF TWO VECTORS OF INTEGER
   function scalar_product (v1:seq<int>, v2:seq<int>):int
   requires |v1| == |v2|
   {
       if v1 == [] then 0 else v1[0]*v2[0] + scalar_product(v1[1..],v2[1..])
   }
   
-  // MULTISETS
-  
   method multiplicity_examples<T> ()
   {
     assume{:axiom} false;
   }
-  
-  // REVERSE HAS THE SAME MULTISET
 
 vc-helpers: |-
 

@@ -1,6 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
   /* https://leetcode.com/problems/longest-substring-without-repeating-characters/
   Given a string s, find the length of the longest substring without repeating characters.
   
@@ -11,21 +9,19 @@ vc-preamble: |-
   */
   
   // a left-inclusive right-exclusive interval:
-  type interval = iv: (int, int) | iv.0 <= iv.1 witness (0, 0)
   
-  ghost function length(iv: interval): int {
-    iv.1 - iv.0
-  }
+  // interval is in valid range
   
-  ghost predicate valid_interval(s: string, iv: interval) {
-    && (0 <= iv.0 <= iv.1 <= |s|)                             // interval is in valid range
-    && (forall i, j | iv.0 <= i < j < iv.1 :: s[i] != s[j])   // no repeating characters in interval
-  }
+  // no repeating characters in interval
   
   // Below shows an efficient solution using standard "sliding window" technique. 
+  
   // For verification simplicity, we pretend as if:
+  
   // - `set` were Python set (or even better, a fixed-size array -- if the "alphabet" is small)
+  
   //
+  
   // `best_iv` is for verification purpose, not returned by the real program, thus `ghost`.
   
   /* Discussions
@@ -63,18 +59,34 @@ vc-preamble: |-
   */
   
   // For verification simplicity, we pretend as if:
+  
   // - `map` were Python dict (or even better, a fixed-size array -- if the "alphabet" is small)
   
   // Bonus Question:
+  
   //   "Why can we safely use (C) instead of (D) as the loop condition? Won't `hi` go out-of-bound?"
+  
   // Can you figure it out?
+  
+  /** `best_iv` is valid */
+
+vc-preamble: |-
+  type interval = iv: (int, int) | iv.0 <= iv.1 witness (0, 0)
+  
+  ghost function length(iv: interval): int {
+    iv.1 - iv.0
+  }
+  
+  ghost predicate valid_interval(s: string, iv: interval) {
+    && (0 <= iv.0 <= iv.1 <= |s|)
+    && (forall i, j | iv.0 <= i < j < iv.1 :: s[i] != s[j])
+  }
 
 vc-helpers: |-
 
 vc-spec: |-
   method lengthOfLongestSubstring(s: string) returns (n: int, ghost best_iv: interval)
-    ensures valid_interval(s, best_iv) && length(best_iv) == n    /** `best_iv` is valid */
-    ensures forall iv | valid_interval(s, iv) :: length(iv) <= n  /** `best_iv` is longest */
+    ensures valid_interval(s, best_iv) && length(best_iv) == n
 
 vc-code: |-
   {

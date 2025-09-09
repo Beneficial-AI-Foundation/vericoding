@@ -1,6 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
   /* 
   MIPS 0
   We implement the following with bitvectors in Dafny.
@@ -22,7 +20,20 @@ vc-preamble: |-
       return ys
   */
   
-  function ArrayToBv10(arr: array<bool>): bv10 // Converts boolean array to bitvector
+  // Converts boolean array to bitvector
+  
+  // Converts boolean array to boolean sequence
+  
+  // Converts bitvector to boolean sequence
+  
+  // Performs traditional bit addition
+  
+  // Generated program for bit addition
+  
+  // Verification of correctness
+
+vc-preamble: |-
+  function ArrayToBv10(arr: array<bool>): bv10
       reads arr
       requires arr.Length == 10
   {
@@ -42,7 +53,7 @@ vc-preamble: |-
           (bit << index) + ArrayToBv10Helper(arr, index - 1)
   }
   
-  method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>) // Converts boolean array to boolean sequence
+  method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>)
       ensures |res| == arr.Length
       ensures forall k :: 0 <= k < arr.Length ==> res[k] == arr[k]
   {
@@ -56,7 +67,7 @@ vc-preamble: |-
       (x & (1 << bitIndex)) != 0
   }
   
-  function Bv10ToSeq(x: bv10): seq<bool> // Converts bitvector to boolean sequence
+  function Bv10ToSeq(x: bv10): seq<bool>
       ensures |Bv10ToSeq(x)| == 10
       ensures forall i: nat :: 0 <= i < 10 ==> Bv10ToSeq(x)[i] == isBitSet(x, i)
   {
@@ -85,7 +96,7 @@ vc-preamble: |-
       (a || b) && !(a && b)
   }
   
-  function BitAddition(s: array<bool>, t: array<bool>): seq<bool> // Performs traditional bit addition
+  function BitAddition(s: array<bool>, t: array<bool>): seq<bool>
       reads s
       reads t
       requires s.Length == 10 && t.Length == 10
@@ -99,10 +110,10 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  method BinaryAddition(s: array<bool>, t: array<bool>) returns (sresult: seq<bool>) // Generated program for bit addition
+  method BinaryAddition(s: array<bool>, t: array<bool>) returns (sresult: seq<bool>)
       requires s.Length == 10 && t.Length == 10
       ensures |sresult| == 10
-      ensures BitAddition(s, t) == sresult // Verification of correctness
+      ensures BitAddition(s, t) == sresult
 
 vc-code: |-
   {

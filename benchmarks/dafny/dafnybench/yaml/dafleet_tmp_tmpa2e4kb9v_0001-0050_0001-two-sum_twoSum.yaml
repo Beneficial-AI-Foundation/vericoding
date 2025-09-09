@@ -1,6 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
   /* https://leetcode.com/problems/two-sum/
   Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
   You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -12,17 +10,14 @@ vc-preamble: |-
   Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
   */
   
-  ghost predicate correct_pair(pair: (int, int), nums: seq<int>, target: int) {
-    var (i, j) := pair;
-    && 0 <= i < |nums|
-    && 0 <= j < |nums|
-    && i != j  // "you may not use the same element twice"
-    && nums[i] + nums[j] == target
-  }
+  // "you may not use the same element twice"
   
   // We actually make a weaker pre-condition: there exists at least one solution.
+  
   // For verification simplicity, we pretend as if:
+  
   // - `seq` were Python list
+  
   // - `map` were Python dict
   
   /* Discussions
@@ -35,6 +30,15 @@ vc-preamble: |-
     (a) What elements are in the map/set (like in formula A)
     (b) What do elements in the set/map satisfy (like in formula B)
   */
+
+vc-preamble: |-
+  ghost predicate correct_pair(pair: (int, int), nums: seq<int>, target: int) {
+    var (i, j) := pair;
+    && 0 <= i < |nums|
+    && 0 <= j < |nums|
+    && i != j
+    && nums[i] + nums[j] == target
+  }
 
 vc-helpers: |-
 

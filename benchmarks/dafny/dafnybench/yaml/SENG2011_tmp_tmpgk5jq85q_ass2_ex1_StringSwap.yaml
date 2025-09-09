@@ -1,7 +1,11 @@
 vc-description: |-
+  // method verifies
+  
+  // string == seq<Char>
+  
+  //give se2011 ass2 ex1.dfy
 
 vc-preamble: |-
-  // method verifies
 
 vc-helpers: |-
 
@@ -21,6 +25,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  // string == seq<Char>
-  //give se2011 ass2 ex1.dfy
 

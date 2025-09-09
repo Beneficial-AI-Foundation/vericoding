@@ -1,6 +1,14 @@
 vc-description: |-
   function_signature: method maximum(s: seq<int>, k: int) returns (result: seq<int>)
   Process input. Requires: the size is bounded; the size is bounded; the condition holds for all values. Ensures: returns the correct size/count; the condition holds for all values; the condition holds for all values.
+  
+  // pre-conditions-start
+  
+  // pre-conditions-end
+  
+  // post-conditions-start
+  
+  // post-conditions-end
 
 vc-preamble: |-
 
@@ -8,16 +16,14 @@ vc-helpers: |-
 
 vc-spec: |-
   method maximum(s: seq<int>, k: int) returns (result: seq<int>)
-    // pre-conditions-start
+  
     requires 1 <= k <= |s|
     requires 1 <= |s| <= 1000
     requires forall x :: x in s ==> -1000 <= x <= 1000
-    // pre-conditions-end
-    // post-conditions-start
+  
     ensures |result| == k
     ensures forall i, j :: 0 <= i < j < k ==> result[i] <= result[j]
     ensures forall x :: x in result ==> x in s
-    // post-conditions-end
 
 vc-code: |-
   {

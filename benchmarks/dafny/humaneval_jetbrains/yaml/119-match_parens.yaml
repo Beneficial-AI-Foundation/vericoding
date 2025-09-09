@@ -1,6 +1,14 @@
 vc-description: |-
   function_signature: def match_parens(l : list[str]) -> str
   You are given a list of two strings, both strings consist of open parentheses '(' or close parentheses ')' only. Your job is to check if it is possible to concatenate the two strings in some order, that the resulting string will be good. A string S is considered to be good if and only if all parentheses in S are balanced. For example: the string '(())()' is good, while the string '())' is not. Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.
+  
+  // pre-conditions-start
+  
+  // pre-conditions-end
+  
+  // post-conditions-start
+  
+  // post-conditions-end
 
 vc-preamble: |-
   function CalcBal(s: seq<int>, i: int, j: int, acc: int) : int 
@@ -14,15 +22,13 @@ vc-helpers: |-
 
 vc-spec: |-
   method checkFixed(s1: seq<int>, s2: seq<int>) returns (b: bool) 
-      // pre-conditions-start
+  
       requires forall i :: 0 <= i < |s1| ==> s1[i] == 0 || s1[i] == 1
       requires forall i :: 0 <= i < |s2| ==> s2[i] == 0 || s2[i] == 1
-      // pre-conditions-end
-      // post-conditions-start
+  
       ensures b ==> forall i :: 0 <= i <= |s1| ==> CalcBal(s1, 0, i, 0) >= 0
       ensures b ==> forall i :: 0 <= i <= |s2| ==> CalcBal(s1, 0, |s1|, 0) + CalcBal(s2, 0, i, 0) >= 0
       ensures !b ==> (exists i :: 0 <= i <= |s1| && CalcBal(s1, 0, i, 0) < 0) || (exists i :: 0 <= i <= |s2| && CalcBal(s1, 0, |s1|, 0) + CalcBal(s2, 0, i, 0) < 0)
-      // post-conditions-end
 
 vc-code: |-
   {

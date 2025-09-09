@@ -8,6 +8,8 @@ vc-description: |-
   5. If the pipe is a straight line, start and end must be on different edges
   6. Each non-boundary pipe cell has exactly 2 adjacent pipe cells
   7. Each boundary pipe cell has exactly 1 adjacent pipe cell
+  
+  // Simplified implementation
 
 vc-preamble: |-
   predicate ValidInput(input: string)
@@ -81,7 +83,7 @@ vc-preamble: |-
   function CountValidPipes(grid: seq<seq<char>>, rows: int, cols: int): int
       requires IsValidGrid(grid, rows, cols)
   {
-      0  // Simplified implementation
+      0
   }
 
 vc-helpers: |-

@@ -1,4 +1,7 @@
 vc-description: |-
+  //Recursive binary search
+  
+  //Implement and verify
 
 vc-preamble: |-
   predicate sorted(s : seq<int>) {
@@ -12,8 +15,6 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
-  //Recursive binary search
 
 vc-helpers: |-
 
@@ -25,7 +26,6 @@ vc-spec: |-
    ensures b ==> p<v.Length && v[p]==elem
    ensures !b ==> (forall u::0<=u<p ==> v[u]<elem) && 
                  (forall w::p<=w<v.Length ==> v[w]>elem)
-   //Implement and verify
 
 vc-code: |-
   {

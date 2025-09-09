@@ -1,6 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
   /* 
   MIPS 0
   We implement the following with bitvectors in Dafny.
@@ -22,7 +20,12 @@ vc-preamble: |-
       return ys
   */
   
-  function ArrayToBv10(arr: array<bool>): bv10 // Converts boolean array to bitvector
+  // Converts boolean array to bitvector
+  
+  // Converts boolean array to boolean sequence
+
+vc-preamble: |-
+  function ArrayToBv10(arr: array<bool>): bv10
       reads arr
       requires arr.Length == 10
   {
@@ -60,7 +63,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>) // Converts boolean array to boolean sequence
+  method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>)
       ensures |res| == arr.Length
       ensures forall k :: 0 <= k < arr.Length ==> res[k] == arr[k]
 

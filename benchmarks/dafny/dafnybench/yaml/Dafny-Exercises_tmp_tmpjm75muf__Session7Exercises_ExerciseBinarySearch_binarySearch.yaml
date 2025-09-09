@@ -1,4 +1,5 @@
 vc-description: |-
+  //Recursive binary search
 
 vc-preamble: |-
   predicate sorted(s : seq<int>) {
@@ -19,5 +20,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  //Recursive binary search
 

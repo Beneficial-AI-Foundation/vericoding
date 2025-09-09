@@ -1,4 +1,7 @@
 vc-description: |-
+  //Implement by calling binary search function
+  
+  //Recursive binary search
 
 vc-preamble: |-
   predicate sorted(s : seq<int>) {
@@ -19,7 +22,6 @@ vc-spec: |-
   method search(v:array<int>,elem:int) returns (b:bool)
    requires sorted(v[0..v.Length])
   ensures b==(elem in v[0..v.Length])
-   //Implement by calling binary search function
 
 vc-code: |-
   {
@@ -27,5 +29,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  //Recursive binary search
 

@@ -1,6 +1,22 @@
 vc-description: |-
   function_signature: method SumElementsWithAtMostTwoDigits(arr: seq<int>, k: int) returns (s: int)
   Calculate sum. Requires: the size is bounded; the size is bounded. Ensures: selects only numbers with at most two digits.
+  
+  // pre-conditions-start
+  
+  // pre-conditions-end
+  
+  // post-conditions-start
+  
+  // post-conditions-end
+  
+  // pre-conditions-start
+  
+  // pre-conditions-end
+  
+  // post-conditions-start
+  
+  // post-conditions-end
 
 vc-preamble: |-
   function sum(s: seq<int>) : int {
@@ -14,14 +30,13 @@ vc-preamble: |-
     else select_at_most_two_digits_rec(arr[1..])
   }
   method select_at_most_two_digits(arr: seq<int>) returns (result: seq<int>)
-    // pre-conditions-start
+  
     requires |arr| > 0 && |arr| <= 100
-    // pre-conditions-end
-    // post-conditions-start
+  
     ensures forall i :: 0 <= i < |result| ==> 0 <= result[i] < 100
     ensures forall i :: 0 <= i < |result| ==> result[i] in arr
     ensures result == select_at_most_two_digits_rec(arr)
-    // post-conditions-end
+  
   {
     assume{:axiom} false;
   }
@@ -30,14 +45,12 @@ vc-helpers: |-
 
 vc-spec: |-
   method SumElementsWithAtMostTwoDigits(arr: seq<int>, k: int) returns (s: int)
-    // pre-conditions-start
+  
     requires |arr| > 0 && |arr| <= 100
     requires 1 <= k <= |arr|
-    // pre-conditions-end
-    // post-conditions-start
+  
     ensures var two_digits := select_at_most_two_digits_rec(arr[..k]);
             s == sum(two_digits)
-    // post-conditions-end
 
 vc-code: |-
   {

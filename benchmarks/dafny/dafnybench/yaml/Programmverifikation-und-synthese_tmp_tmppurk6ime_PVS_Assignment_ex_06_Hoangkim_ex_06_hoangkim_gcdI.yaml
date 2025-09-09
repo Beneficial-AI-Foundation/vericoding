@@ -1,8 +1,11 @@
 vc-description: |-
+  //Problem01
+  
+  //a)
+  
+  //b)
 
 vc-preamble: |-
-  //Problem01
-  //a)
   ghost function gcd(x: int, y: int): int
       requires x > 0 && y > 0
   {
@@ -11,7 +14,6 @@ vc-preamble: |-
       else gcd(x, y - x)
   }
   
-  //b)
   ghost function gcd'(x: int, y: int): int
       requires x > 0 && y > 0
       decreases if x > y then x else y

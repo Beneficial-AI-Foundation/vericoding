@@ -1,5 +1,9 @@
 vc-description: |-
   function_signature: def add(x: Int, y: Int) -> Int
+  
+  // post-conditions-start
+  
+  // post-conditions-end
 
 vc-preamble: |-
 
@@ -7,9 +11,8 @@ vc-helpers: |-
 
 vc-spec: |-
   method add(x: int, y: int) returns (z: int)
-    // post-conditions-start
+  
     ensures z == x + y
-    // post-conditions-end
 
 vc-code: |-
   {
