@@ -2,6 +2,7 @@
 
 from pydantic_ai import Agent
 import logfire
+import yaml
 
 from code2verus.config import system_prompt, cfg, full_cfg
 from code2verus.tools import verus_tool, dafny_tool
@@ -30,14 +31,26 @@ async def translate_code_to_verus(
     source_code: str,
     source_language: str = "dafny",
     is_yaml: bool = False,
-    max_iterations: int = None,
+    max_iterations: int | None = None,
 ) -> tuple[str, int, str]:
     """Translate source code to Verus using the agent with verification feedback"""
     # Use config value if max_iterations not provided, with fallback to 3
     if max_iterations is None:
         max_iterations = cfg.get("max_translation_iterations", 3)
-    
+
+    # Ensure max_iterations is a valid integer
+    if max_iterations is None or max_iterations <= 0:
+        max_iterations = 3
+
+    # Type assertion to help type checker
+    assert isinstance(max_iterations, int)
+
     agent = create_agent(source_language)
+
+    # Initialize variables
+    result = None
+    output_content = ""
+    rust_for_verification = ""
 
     # Get language-specific prompts from config
     if is_yaml:
@@ -86,8 +99,6 @@ Please translate the following {source_language} code to Verus:
 
             # Validate YAML syntax before proceeding
             try:
-                import yaml
-
                 yaml.safe_load(yaml_content)
                 logfire.info("YAML validation successful")
             except yaml.YAMLError as e:
