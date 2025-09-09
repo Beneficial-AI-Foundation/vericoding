@@ -270,7 +270,14 @@ def main():
 
     # Find all YAML specification files
     spec_files = find_spec_files(config)
-    print(f"Found {len(spec_files)} YAML specification files to process")
+    
+    # Apply limit if specified
+    total_files = len(spec_files)
+    if args.limit and args.limit > 0:
+        spec_files = spec_files[:args.limit]
+        print(f"Found {total_files} YAML specification files, processing first {len(spec_files)} (limited by --limit {args.limit})")
+    else:
+        print(f"Found {len(spec_files)} YAML specification files to process")
     print("")
 
     # Reset token tracking for this run

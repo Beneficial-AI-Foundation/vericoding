@@ -192,6 +192,13 @@ def parse_command_line_arguments():
         help="Mode for code generation: 'spec' includes only specification, 'vibe' includes only description, 'specvibe' includes both (default: spec)",
     )
 
+    parser.add_argument(
+        "--limit",
+        "-n",
+        type=int,
+        help="Process only the first N files from the dataset (default: process all files)",
+    )
+
     return parser.parse_args()
 
 
