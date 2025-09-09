@@ -35,7 +35,7 @@ particularly Dafny benchmarks and NumPy specifications.
 
 lean_lib Benchmarks where
   globs := #[
-    .submodules `apps_train,
+    .submodules `apps.files,
     .submodules `bignum_jk,
     .submodules `bignum_ob,
     .submodules `dafnybench,
