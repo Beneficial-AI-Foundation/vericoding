@@ -54,21 +54,15 @@ vc-preamble: |-
   // REVERSE HAS THE SAME MULTISET
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method vector_Sum(v:seq<int>) returns (x:int)
   ensures x == sum(v)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

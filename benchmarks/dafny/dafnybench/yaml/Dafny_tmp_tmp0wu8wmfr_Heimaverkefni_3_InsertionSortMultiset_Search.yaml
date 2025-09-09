@@ -10,11 +10,8 @@ vc-preamble: |-
   // Insertion sort með hjálp helmingunarleitar.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method Search( s: seq<int>, x: int ) returns ( k: int )
       // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
       requires forall p,q | 0 <= p < q < |s| :: s[p] <= s[q];
@@ -24,14 +21,11 @@ vc-spec: |-
       ensures forall z | z in s[..k] :: z <= x;
       ensures forall z | z in s[k..] :: z >= x;
       ensures s == s[..k]+s[k..];
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

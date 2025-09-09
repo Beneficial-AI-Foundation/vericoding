@@ -182,12 +182,13 @@ def process_yaml_file(file_path: Path) -> None:
         
         for key, value in spec.items():
             if isinstance(value, str):
-                spec[key] = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '-- <vc-spec>')
-                spec[key] = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '-- </vc-spec>')
-                spec[key] = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '-- <vc-helpers>')
-                spec[key] = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '-- </vc-helpers>')
-                spec[key] = check_for_tag(value, key, 'vc-code', '<vc-code>', '-- <vc-code>')
-                spec[key] = check_for_tag(value, key, 'vc-code', '</vc-code>', '-- </vc-code>')
+                value = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '// <vc-spec>')
+                value = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '// </vc-spec>')
+                value = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '// <vc-helpers>')
+                value = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '// </vc-helpers>')
+                value = check_for_tag(value, key, 'vc-code', '<vc-code>', '// <vc-code>')
+                value = check_for_tag(value, key, 'vc-code', '</vc-code>', '// </vc-code>')
+                spec[key] = value
         # Normalize all sections
         for key, value in spec.items():
             if isinstance(value, str):

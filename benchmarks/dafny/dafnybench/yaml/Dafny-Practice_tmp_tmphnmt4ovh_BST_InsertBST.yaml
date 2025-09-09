@@ -43,22 +43,16 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method InsertBST(t0: Tree, x: int) returns (t: Tree)
       requires BST(t0) && x !in NumbersInTree(t0)
       ensures BST(t) && NumbersInTree(t) == NumbersInTree(t0)+{x}
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

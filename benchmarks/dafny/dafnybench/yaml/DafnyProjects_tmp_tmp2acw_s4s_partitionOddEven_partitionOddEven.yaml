@@ -8,23 +8,17 @@ vc-preamble: |-
   predicate  even(n: nat) { n % 2 == 0 }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method partitionOddEven(a: array<nat>) 
     modifies a
     ensures multiset(a[..]) == multiset(old(a[..]))
     ensures ! exists i, j :: 0 <= i < j < a.Length && even(a[i]) && odd(a[j])
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

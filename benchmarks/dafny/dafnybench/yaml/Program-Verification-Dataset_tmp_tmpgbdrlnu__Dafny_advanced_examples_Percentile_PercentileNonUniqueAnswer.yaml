@@ -22,11 +22,8 @@ vc-preamble: |-
   // example showing that, with the original postcondition, the answer is non-unique!
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method PercentileNonUniqueAnswer() returns (p: real, A: array<real>, total: real, i1: int, i2: int)
     ensures forall i | 0 <= i < A.Length :: A[i] > 0.0
     ensures 0.0 <= p <= 100.0
@@ -42,14 +39,11 @@ vc-spec: |-
     ensures i2+1 < A.Length ==> SumUpto(A, i2+1) >= (p/100.0) * total
   
     ensures i1 != i2
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   // proof that, with the corrected postcondition, the answer is unique

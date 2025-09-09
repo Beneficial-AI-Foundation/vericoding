@@ -14,8 +14,6 @@ vc-preamble: |-
   // ======= MAIN METHOD =======
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
   method encrypt(s: string) returns (result: string)

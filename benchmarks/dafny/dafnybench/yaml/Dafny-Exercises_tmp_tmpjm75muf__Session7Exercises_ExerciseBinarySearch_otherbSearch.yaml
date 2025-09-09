@@ -16,11 +16,8 @@ vc-preamble: |-
   //Recursive binary search
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method otherbSearch(v:array<int>, elem:int) returns (b:bool,p:int)
    requires sorted(v[0..v.Length])
    ensures 0<=p<=v.Length
@@ -29,14 +26,11 @@ vc-spec: |-
    ensures !b ==> (forall u::0<=u<p ==> v[u]<elem) && 
                  (forall w::p<=w<v.Length ==> v[w]>elem)
    //Implement and verify
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

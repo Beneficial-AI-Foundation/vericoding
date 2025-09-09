@@ -32,21 +32,15 @@ vc-preamble: |-
   //you must write proof code so that Dafny can prove this
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method optimizeCorrect(e:Exp, s:map<string, int>)
   ensures eval(e,s) == eval(optimize(e), s)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

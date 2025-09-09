@@ -43,23 +43,17 @@ vc-preamble: |-
   // annotations).
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method two_way_sort(a: array<bool>)
     modifies a
     ensures forall m,n :: 0 <= m < n < a.Length ==> (!a[m] || a[n])
     ensures multiset(a[..]) == old(multiset(a[..]))
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

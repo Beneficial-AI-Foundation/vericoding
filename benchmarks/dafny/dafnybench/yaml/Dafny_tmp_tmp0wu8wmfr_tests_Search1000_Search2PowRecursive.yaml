@@ -27,11 +27,8 @@ vc-preamble: |-
   // segments of size n == 2^k-1 for some k>=0.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method Search2PowRecursive( a: array<int>, i: int, n: int, x: int ) returns ( k: int )
       decreases n;
       requires 0 <= i <= i+n <= a.Length;
@@ -40,14 +37,11 @@ vc-spec: |-
       ensures i <= k <= i+n;
       ensures forall r | i <= r < k :: a[r] < x;
       ensures forall r | k <= r < i+n :: a[r] >= x;
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

@@ -12,21 +12,15 @@ vc-preamble: |-
   //All equal to first
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method mallEqual1(v:array<int>) returns (b:bool)
   ensures b==allEqual(v[0..v.Length])
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

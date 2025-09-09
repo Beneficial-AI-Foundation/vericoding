@@ -58,22 +58,16 @@ vc-preamble: |-
   //This lemma helps dafny see that after adding the next value from c to b the prefixes are still the same subsets.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method MergeSort(a: array<int>) returns (b: array<int>)
       ensures b.Length == a.Length && Sorted(b[..]) && multiset(a[..]) == multiset(b[..])
       decreases a.Length
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

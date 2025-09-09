@@ -46,23 +46,17 @@ vc-preamble: |-
   // (Some invariants were tricky to find, but Dafny was smart enough otherwise)
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method lol_sort(a: array<int>)
     modifies a
     ensures valid_permut(a[..], old(a[..]))
     ensures sorted(a[..])
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

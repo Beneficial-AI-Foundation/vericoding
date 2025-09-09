@@ -37,23 +37,17 @@ vc-preamble: |-
   // corresponding elements in arrays a and b.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method ArraySum (a : array<int>, b : array<int>) returns (c : array<int>)
       requires a.Length == b.Length
       ensures c.Length == a.Length && 
           forall i : int :: 0 <= i < c.Length ==> c[i] == a[i] + b[i] // TODO
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   // Question 5 (10 points)
