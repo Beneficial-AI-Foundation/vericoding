@@ -28,8 +28,8 @@ vc-spec: |-
   
   //Our code from class
   method compute_power(a: int, n: int) returns (s: int)
-  /*Pre-Condition*/   requires n >= 0 && a >= 0;
-  /*Post-Condition*/  ensures s == power(a,n);
+    requires n >= 0 && a >= 0;
+    ensures s == power(a,n);
 
 vc-code: |-
   {
