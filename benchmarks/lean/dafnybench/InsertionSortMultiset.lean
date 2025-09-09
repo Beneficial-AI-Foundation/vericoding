@@ -7,7 +7,7 @@ This module contains specifications for binary search and insertion sort
 where correctness is specified using multisets.
 -/
 
-import NumpySpec.DafnyBenchmarks.Multiset
+import dafnybench.Multiset
 
 namespace DafnyBenchmarks
 

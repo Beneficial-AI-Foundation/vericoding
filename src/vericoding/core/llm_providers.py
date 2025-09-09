@@ -84,15 +84,42 @@ class ClaudeCodeProvider(LLMProvider):
         try:
             # Construct options with MCP server wired via lake env
             env = {"LEAN_PROJECT_PATH": root}
+            # External MCP via stdio (preferred)
             mcp_servers: Dict[str, Dict[str, Any]] = {
                 "lean-lsp-mcp": {
-                    "type": "stdio",
+                    # 'type' optional; default is 'stdio'
                     "command": "lake",
                     "args": ["env", "uvx", "lean-lsp-mcp"],
                     "env": env,
-                    "cwd": root,
-                }
+                },
             }
+            # Optional HTTP fallback server: try to launch one and register URL
+            http_url = None
+            try:
+                import socket, subprocess, time
+                s = socket.socket()
+                s.bind(("127.0.0.1", 0))
+                port = s.getsockname()[1]
+                s.close()
+                cmd = [
+                    "lake", "env", "uvx", "lean-lsp-mcp",
+                    "--transport", "streamable-http",
+                    "--host", "127.0.0.1",
+                    "--port", str(port),
+                ]
+                # Launch in background; let SDK connect via HTTP
+                proc = subprocess.Popen(cmd, cwd=root)
+                time.sleep(0.6)
+                if proc.poll() is None:
+                    http_url = f"http://127.0.0.1:{port}/mcp"
+                    mcp_servers["lean-lsp-mcp-http"] = {"type": "http", "url": http_url}
+            except Exception:
+                pass
+            # Create log dir and file for Claude Code stderr
+            log_dir = Path(root) / "logs"
+            log_dir.mkdir(parents=True, exist_ok=True)
+            cc_stderr = (log_dir / "claude_code_stderr.log").open("a", encoding="utf-8")
+
             options = self._Options(
                 model=self.model,
                 cwd=root,
@@ -103,32 +130,38 @@ class ClaudeCodeProvider(LLMProvider):
                     "Search",
                     "Bash",
                     "mcp__lean-lsp-mcp",
+                    "mcp__lean-lsp-mcp-http",
                 ],
                 mcp_servers=mcp_servers,
-                permission_mode="accept",
+                permission_mode="acceptEdits",
+                debug_stderr=cc_stderr,
+                system_prompt=system_prompt if system_prompt else None,
             )
 
-            # Compose messages (include system layer)
-            messages = []
-            if system_prompt:
-                messages.append({"role": "system", "content": system_prompt})
-            messages.append({"role": "user", "content": prompt})
+            import anyio
 
-            # Run query and accumulate assistant text output
             output_chunks: list[str] = []
-            for event in self._query(messages, options):  # type: ignore
-                try:
-                    t = getattr(event, "type", None)
-                    if t in ("assistant", "assistant_message"):
-                        content = getattr(event, "content", None)
-                        if isinstance(content, str):
-                            output_chunks.append(content)
-                        else:
-                            # best-effort stringify
-                            output_chunks.append(str(content))
-                except Exception:
-                    # Ignore non-text events (file writes, terminals, etc.)
-                    continue
+
+            async def _run() -> None:
+                async for event in self._query(prompt=prompt, options=options):  # type: ignore
+                    try:
+                        # AssistantMessage with blocks
+                        if hasattr(event, "content") and hasattr(event, "model"):
+                            blocks = getattr(event, "content", [])
+                            for b in blocks or []:
+                                txt = getattr(b, "text", None)
+                                if isinstance(txt, str):
+                                    output_chunks.append(txt)
+                        # ResultMessage summary
+                        elif hasattr(event, "result"):
+                            res = getattr(event, "result", None)
+                            if isinstance(res, str):
+                                output_chunks.append(res)
+                    except Exception:
+                        # Ignore non-text events (file writes, terminals, etc.)
+                        continue
+
+            anyio.run(_run)
 
             text = "\n".join([c for c in output_chunks if c])
             if not text:
