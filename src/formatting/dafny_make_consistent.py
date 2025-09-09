@@ -200,8 +200,33 @@ def process_yaml_file(file_path: Path) -> None:
         #         value = check_for_tag(value, key, None, '= MAIN METHOD =', '// ======= MAIN METHOD =======')
         #         spec[key] = value
 
-        if spec['vc-helpers'].strip():
-            raise ValueError(f"vc-helpers in {file_path} is not empty")
+        # if spec['vc-helpers'].strip():
+        #     raise ValueError(f"vc-helpers in {file_path} is not empty")
+
+        # Clear vc-helpers and vc-code
+        # spec['vc-helpers'] = ""
+        # spec['vc-code'] = '{\n  assume {:axiom} false;\n}\n'
+
+        if spec['vc-code'].strip():
+            # Validate vc-code format
+            vc_code_lines = spec['vc-code'].strip().split('\n')
+            
+            if len(vc_code_lines) != 3:
+                raise ValueError(f"vc-code in {file_path} must have exactly 3 lines, got {len(vc_code_lines)}")
+            
+            # Check first line: should be "{" after stripping
+            if vc_code_lines[0].strip() != "{":
+                raise ValueError(f"vc-code in {file_path} first line must be '{{', got: '{vc_code_lines[0]}'")
+            
+            # Check second line: should be "assume{:axiom}false" or "assumefalse" after removing all spaces
+            second_line_no_spaces = vc_code_lines[1].strip().replace(' ', '')
+            if second_line_no_spaces not in ["assume{:axiom}false;", "assumefalse;"]:
+                raise ValueError(f"vc-code in {file_path} second line must be 'assume{{:axiom}}false;' or 'assumefalse;' (ignoring spaces), got: '{vc_code_lines[1]}'")
+            
+            # Check third line: should be "}" after stripping
+            if vc_code_lines[2].strip() != "}":
+                raise ValueError(f"vc-code in {file_path} third line must be '}}', got: '{vc_code_lines[2]}'")
+
         # Normalize all sections
         for key, value in spec.items():
             if isinstance(value, str):
@@ -228,6 +253,7 @@ def main():
     
     # Loop through all immediate folders in the dafny directory
     for folder in dafny_dir.iterdir():
+    # for folder in [dafny_dir / 'apps']:
         if folder.is_dir():
             yaml_subfolder = folder / 'yaml'
             

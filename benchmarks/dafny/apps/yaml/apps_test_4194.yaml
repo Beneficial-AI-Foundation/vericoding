@@ -26,35 +26,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma sumLemma(A: seq<int>, i: int)
-      requires 0 <= i < |A|
-      ensures sum(A[..i+1]) == sum(A[..i]) + A[i]
-  {
-      if i == 0 {
-          assert A[..1] == [A[0]];
-          assert A[..0] == [];
-          assert sum(A[..1]) == sum([A[0]]) == A[0] + sum([]) == A[0] + 0 == A[0];
-          assert sum(A[..0]) == sum([]) == 0;
-      } else {
-          assert A[..i+1] == A[..i] + [A[i]];
-          sumAppendLemma(A[..i], [A[i]]);
-      }
-  }
-  
-  lemma sumAppendLemma(s1: seq<int>, s2: seq<int>)
-      ensures sum(s1 + s2) == sum(s1) + sum(s2)
-  {
-      if |s1| == 0 {
-          assert s1 + s2 == s2;
-      } else {
-          assert s1 + s2 == [s1[0]] + (s1[1..] + s2);
-          sumAppendLemma(s1[1..], s2);
-          assert sum(s1 + s2) == s1[0] + sum(s1[1..] + s2);
-          assert sum(s1[1..] + s2) == sum(s1[1..]) + sum(s2);
-          assert sum(s1 + s2) == s1[0] + sum(s1[1..]) + sum(s2);
-          assert sum(s1) == s1[0] + sum(s1[1..]);
-      }
-  }
 
 vc-spec: |-
   method solve(N: int, M: int, A: seq<int>) returns (result: int)
@@ -66,26 +37,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var remainingDays := N;
-      var i := 0;
-      while i < M
-          invariant 0 <= i <= M
-          invariant remainingDays == N - sum(A[..i])
-      {
-          sumLemma(A, i);
-          remainingDays := remainingDays - A[i];
-          i := i + 1;
-      }
-  
-      assert i == M;
-      assert A[..M] == A;
-      assert remainingDays == N - sum(A);
-  
-      if remainingDays >= 0 {
-          result := remainingDays;
-      } else {
-          result := -1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

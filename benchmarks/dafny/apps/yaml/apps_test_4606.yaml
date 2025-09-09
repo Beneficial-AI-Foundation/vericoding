@@ -34,7 +34,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := "ABC" + IntToString(n);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

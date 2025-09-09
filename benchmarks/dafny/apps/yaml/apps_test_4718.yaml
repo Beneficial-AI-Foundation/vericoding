@@ -26,11 +26,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if |dateStr| >= 4 {
-          result := "2018" + dateStr[4..];
-      } else {
-          result := dateStr;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -32,9 +32,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var remainder := n % k;
-      var other := k - remainder;
-      result := if remainder <= other then remainder else other;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

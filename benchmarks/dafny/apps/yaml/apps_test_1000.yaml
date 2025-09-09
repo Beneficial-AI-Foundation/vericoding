@@ -28,23 +28,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var req := n - 1;
-  
-      if req <= v {
-          result := req;
-      } else {
-          var total := v;
-          var remaining := req - v;
-          var x := 0;
-          while x < remaining
-              invariant 0 <= x <= remaining
-              invariant total == v + x * (x + 3) / 2
-          {
-              total := total + 2 + x;
-              x := x + 1;
-          }
-          result := total;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

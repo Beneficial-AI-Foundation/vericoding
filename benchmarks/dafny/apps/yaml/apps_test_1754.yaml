@@ -28,58 +28,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var sch := seq(m, i => 0);
-  
-    var i := 0;
-    while i < n
-      invariant 0 <= i <= n
-      invariant |sch| == m
-      invariant forall j :: 0 <= j < i ==> 
-        var school_idx := schools[j] - 1;
-        0 <= school_idx < m && powers[j] <= sch[school_idx]
-      invariant forall s :: 0 <= s < m ==> 
-        sch[s] == 0 || (exists j :: 0 <= j < i && schools[j] - 1 == s && powers[j] == sch[s])
-      invariant forall s :: 1 <= s <= m ==> 
-        (exists j :: 0 <= j < i && schools[j] == s) ==> sch[s-1] > 0
-      invariant forall s :: 1 <= s <= m && i == n ==> sch[s-1] > 0
-    {
-      var school_idx := schools[i] - 1;
-      if powers[i] > sch[school_idx] {
-        sch := sch[school_idx := powers[i]];
-      }
-      i := i + 1;
-    }
-  
-    assert forall j :: 0 <= j < n ==> 
-      var school_idx := schools[j] - 1;
-      0 <= school_idx < m && powers[j] <= sch[school_idx];
-  
-    assert forall s :: 1 <= s <= m ==> sch[s-1] > 0;
-  
-    result := 0;
-    i := 0;
-    while i < k
-      invariant 0 <= i <= k
-      invariant 0 <= result <= i
-      invariant result == |set j | 0 <= j < i && !IsStrongestInSchool(chosen[j]-1, powers, schools)|
-      invariant |sch| == m
-      invariant forall j :: 0 <= j < n ==> 
-        var school_idx := schools[j] - 1;
-        0 <= school_idx < m && powers[j] <= sch[school_idx]
-      invariant forall s :: 1 <= s <= m ==> sch[s-1] > 0
-      invariant forall j :: 0 <= j < n ==> 
-        (IsStrongestInSchool(j, powers, schools) <==> (powers[j] == sch[schools[j] - 1]))
-    {
-      var chosen_student := chosen[i] - 1;
-      var chosen_school := schools[chosen_student] - 1;
-  
-      assert IsStrongestInSchool(chosen_student, powers, schools) <==> (powers[chosen_student] == sch[chosen_school]);
-  
-      if powers[chosen_student] != sch[chosen_school] {
-        result := result + 1;
-      }
-      i := i + 1;
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

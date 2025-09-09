@@ -93,7 +93,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      output := "0\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -54,11 +54,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if CanReachOne(n) {
-          result := MinMovesToOne(n);
-      } else {
-          result := -1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

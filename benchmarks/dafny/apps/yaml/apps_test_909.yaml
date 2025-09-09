@@ -45,29 +45,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var expr1 := a * b * c;
-      var expr2 := a + b * c;
-      var expr3 := a * b + c;
-      var expr4 := a * (b + c);
-      var expr5 := (a + b) * c;
-      var expr6 := a + b + c;
-  
-      result := expr1;
-      if expr2 > result {
-          result := expr2;
-      }
-      if expr3 > result {
-          result := expr3;
-      }
-      if expr4 > result {
-          result := expr4;
-      }
-      if expr5 > result {
-          result := expr5;
-      }
-      if expr6 > result {
-          result := expr6;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

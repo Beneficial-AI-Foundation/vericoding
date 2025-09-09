@@ -24,9 +24,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var area1 := A * B;
-      var area2 := C * D;
-      result := if area1 >= area2 then area1 else area2;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

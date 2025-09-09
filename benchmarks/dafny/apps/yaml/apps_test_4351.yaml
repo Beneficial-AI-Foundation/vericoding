@@ -100,30 +100,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var tokens := TokenizeInput(stdin_input);
-  
-    if |tokens| != 1 {
-      result := "";
-      return;
-    }
-  
-    if !CanParseAsInt(tokens[0]) {
-      result := "";
-      return;
-    }
-  
-    var n := ParseIntValue(tokens[0]);
-  
-    if !ValidInput(n) {
-      result := "";
-      return;
-    }
-  
-    if IsPalindromic(n) {
-      result := "Yes\n";
-    } else {
-      result := "No\n";
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

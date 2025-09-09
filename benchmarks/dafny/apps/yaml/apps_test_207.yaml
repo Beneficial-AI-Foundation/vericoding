@@ -25,11 +25,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if CanBeDivided(a) {
-          result := "Yes";
-      } else {
-          result := "No";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

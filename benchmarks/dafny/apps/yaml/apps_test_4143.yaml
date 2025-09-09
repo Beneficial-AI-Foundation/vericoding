@@ -42,15 +42,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var mini := A;
-  
-      if B <= A && B <= C && B <= D && B <= E { mini := B; }
-      else if C <= A && C <= B && C <= D && C <= E { mini := C; }
-      else if D <= A && D <= B && D <= C && D <= E { mini := D; }
-      else if E <= A && E <= B && E <= C && E <= D { mini := E; }
-  
-      var groups := (N + mini - 1) / mini;
-      result := 4 + groups;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

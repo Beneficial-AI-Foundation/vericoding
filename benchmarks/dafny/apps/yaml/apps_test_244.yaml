@@ -39,25 +39,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  method FindInitialPosition(n: int, x: int) returns (initial: int)
-      requires n >= 1
-      requires ValidPosition(x)
-      ensures ValidPosition(initial)
-  {
-      var pos := x;
-      var moves := n;
-  
-      while moves > 0
-          invariant ValidPosition(pos)
-          invariant moves >= 0
-          decreases moves
-      {
-          pos := ReverseMove(pos, moves);
-          moves := moves - 1;
-      }
-  
-      return pos;
-  }
 
 vc-spec: |-
   method ShellGame(n: int, x: int) returns (result: int)
@@ -67,7 +48,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := FindInitialPosition(n, x);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

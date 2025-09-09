@@ -21,29 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma CountSegmentsLemma(s: string, i: int)
-      requires |s| > 0
-      requires 1 <= i < |s|
-      requires forall j :: 0 <= j < |s| ==> s[j] == 'B' || s[j] == 'W'
-      ensures CountSegments(s[..i+1]) == CountSegments(s[..i]) + (if s[i] != s[i-1] then 1 else 0)
-  {
-      var prefix := s[..i];
-      var extended := s[..i+1];
-  
-      assert extended == prefix + [s[i]];
-      assert |extended| == i + 1;
-      assert |prefix| == i;
-  
-      if i == 1 {
-          assert |extended| == 2;
-          assert CountSegments(extended) == CountSegments(extended[..1]) + (if extended[1] != extended[0] then 1 else 0);
-          assert extended[..1] == [s[0]];
-          assert CountSegments([s[0]]) == 1;
-      } else {
-          assert CountSegments(extended) == CountSegments(extended[..i]) + (if extended[i] != extended[i-1] then 1 else 0);
-          assert extended[..i] == prefix;
-      }
-  }
 
 vc-spec: |-
   method solve(s: string) returns (result: int)
@@ -54,27 +31,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var segments := 1;
-      var i := 1;
-  
-      while i < |s|
-          invariant 1 <= i <= |s|
-          invariant segments >= 1
-          invariant segments == CountSegments(s[..i])
-          invariant forall j :: 0 <= j < i ==> s[j] == 'B' || s[j] == 'W'
-      {
-          assert s[..i+1] == s[..i] + [s[i]];
-          if s[i] != s[i-1] {
-              segments := segments + 1;
-          }
-          CountSegmentsLemma(s, i);
-          i := i + 1;
-      }
-  
-      assert i == |s|;
-      assert s[..i] == s;
-      assert segments == CountSegments(s);
-      return segments - 1;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

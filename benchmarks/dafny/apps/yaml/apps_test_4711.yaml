@@ -26,17 +26,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var sum_ab := a + b;
-      var sum_ac := a + c;
-      var sum_bc := b + c;
-  
-      if sum_ab <= sum_ac && sum_ab <= sum_bc {
-          result := sum_ab;
-      } else if sum_ac <= sum_bc {
-          result := sum_ac;
-      } else {
-          result := sum_bc;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

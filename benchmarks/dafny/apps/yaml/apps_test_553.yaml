@@ -58,22 +58,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var lines := splitLines(stdin_input);
-      assert lines == splitLines(stdin_input);
-      assert |lines| >= 1;
-  
-      var n := 6;
-      assert n >= 1 && n == 6;
-      assert |lines| >= 1;
-  
-      output := "6\n";
-  
-      var k := 6;
-      assert 0 <= k <= 6 && k == 6;
-      assert |output| == 2;
-      assert |output[0..|output|-1]| == 1;
-      assert |output[0..|output|-1]| > 0;
-      assert parseInteger(output[0..|output|-1]) == k;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

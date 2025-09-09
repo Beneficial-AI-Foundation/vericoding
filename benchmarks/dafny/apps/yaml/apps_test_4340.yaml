@@ -21,7 +21,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := seq(|a|, i requires 0 <= i < |a| => TransformElement(a[i]));
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

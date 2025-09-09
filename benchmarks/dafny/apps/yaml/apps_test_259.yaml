@@ -36,28 +36,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var ii := 0;
-      var tt := getNextArrivalTime(routes[0].0, routes[0].1, t);
-  
-      for i := 0 to n
-        invariant 0 <= ii < n
-        invariant tt == getNextArrivalTime(routes[ii].0, routes[ii].1, t)
-        invariant forall j :: 0 <= j < i ==> tt <= getNextArrivalTime(routes[j].0, routes[j].1, t)
-      {
-          var fr := routes[i].0;
-          var d := routes[i].1;
-  
-          if fr < t {
-              fr := fr + (t - fr + d - 1) / d * d;
-          }
-  
-          if fr < tt {
-              tt := fr;
-              ii := i;
-          }
-      }
-  
-      result := ii + 1;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

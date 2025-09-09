@@ -35,81 +35,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function SplitLines(s: string): seq<string>
-  {
-      SplitLinesHelper(s, 0, 0, [])
-  }
-  
-  function SplitLinesHelper(s: string, i: int, start: int, acc: seq<string>): seq<string>
-      requires 0 <= start <= i <= |s|
-      decreases |s| - i
-  {
-      if i >= |s| then
-          if start < |s| then acc + [s[start..]]
-          else acc
-      else if s[i] == '\n' then
-          var line := if start < i then s[start..i] else "";
-          SplitLinesHelper(s, i + 1, i + 1, acc + [line])
-      else
-          SplitLinesHelper(s, i + 1, start, acc)
-  }
-  
-  function ParseInt(s: string): int
-  {
-      ParseIntHelper(s, 0, 0, false)
-  }
-  
-  function ParseIntHelper(s: string, i: int, acc: int, negative: bool): int
-      requires 0 <= i <= |s|
-      decreases |s| - i
-  {
-      if i >= |s| then
-          if negative then -acc else acc
-      else if i == 0 && |s| > 0 && s[0] == '-' then
-          ParseIntHelper(s, i + 1, acc, true)
-      else if '0' <= s[i] <= '9' then
-          ParseIntHelper(s, i + 1, acc * 10 + (s[i] as int - '0' as int), negative)
-      else
-          ParseIntHelper(s, i + 1, acc, negative)
-  }
-  
-  function ParseIntArray(s: string): seq<int>
-  {
-      var parts := SplitSpaces(s);
-      ParseIntArrayHelper(parts, 0, [])
-  }
-  
-  function ParseIntArrayHelper(parts: seq<string>, i: int, acc: seq<int>): seq<int>
-      requires 0 <= i <= |parts|
-      decreases |parts| - i
-  {
-      if i >= |parts| then acc
-      else ParseIntArrayHelper(parts, i + 1, acc + [ParseInt(parts[i])])
-  }
-  
-  function SplitSpaces(s: string): seq<string>
-  {
-      SplitSpacesHelper(s, 0, 0, false, [])
-  }
-  
-  function SplitSpacesHelper(s: string, i: int, start: int, inWord: bool, acc: seq<string>): seq<string>
-      requires 0 <= start <= i <= |s|
-      decreases |s| - i
-  {
-      if i >= |s| then
-          if inWord then acc + [s[start..]]
-          else acc
-      else if s[i] == ' ' || s[i] == '\t' then
-          if inWord then
-              SplitSpacesHelper(s, i + 1, i + 1, false, acc + [s[start..i]])
-          else
-              SplitSpacesHelper(s, i + 1, i + 1, false, acc)
-      else
-          if inWord then
-              SplitSpacesHelper(s, i + 1, start, true, acc)
-          else
-              SplitSpacesHelper(s, i + 1, i, true, acc)
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -120,31 +45,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var lines := SplitLines(input);
-      if |lines| < 3 {
-          return "No";
-      }
-  
-      var n := ParseInt(lines[0]);
-      if n <= 0 {
-          return "No";
-      }
-  
-      var initialNums := ParseIntArray(lines[1]);
-      var targetNums := ParseIntArray(lines[2]);
-  
-      if |initialNums| != n || |targetNums| != n {
-          return "No";
-      }
-  
-      var initialSum := Sum(initialNums);
-      var targetSum := Sum(targetNums);
-  
-      if initialSum >= targetSum {
-          result := "Yes";
-      } else {
-          result := "No";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

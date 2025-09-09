@@ -36,31 +36,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var ans := 0;
-      var s := 0;
-      var remaining := n;
-  
-      while remaining > 0
-          invariant ans >= 0
-          invariant s == ans * (ans + 1) / 2
-          invariant remaining >= 0
-          invariant remaining + ans * (ans + 1) * (ans + 2) / 6 == n
-      {
-          ans := ans + 1;
-          s := s + ans;
-          remaining := remaining - s;
-  
-          if remaining < 0 {
-              ans := ans - 1;
-              break;
-          }
-      }
-  
-      if ans == 0 {
-          ans := 1;
-      }
-  
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

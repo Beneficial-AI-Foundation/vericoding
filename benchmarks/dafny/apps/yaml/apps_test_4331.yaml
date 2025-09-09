@@ -27,16 +27,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var X := N % 10;
-      var y := N / 10;
-      var Y := y % 10;
-      var Z := N / 100;
-  
-      if X == 7 || Y == 7 || Z == 7 {
-          result := "Yes\n";
-      } else {
-          result := "No\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

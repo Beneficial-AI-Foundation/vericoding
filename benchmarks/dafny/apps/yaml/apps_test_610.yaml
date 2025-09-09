@@ -39,12 +39,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    if n < m {
-      vasyaScore := n;
-    } else {
-      vasyaScore := m;
-    }
-    petyaScore := n + m - 1 - vasyaScore;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

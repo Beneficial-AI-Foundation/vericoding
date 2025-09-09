@@ -31,41 +31,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    // Generate Fibonacci numbers up to n
-    var fibs: seq<int> := [1, 1];
-    while |fibs| >= 2 && fibs[|fibs| - 1] < n
-      invariant |fibs| >= 2
-      invariant forall k :: 0 <= k < |fibs| ==> fibs[k] >= 1
-      invariant forall k :: 2 <= k < |fibs| ==> fibs[k] == fibs[k-1] + fibs[k-2]
-      invariant fibs[0] == 1 && fibs[1] == 1
-      decreases n - fibs[|fibs| - 1]
-    {
-      var nextFib := fibs[|fibs| - 1] + fibs[|fibs| - 2];
-      fibs := fibs + [nextFib];
-    }
-  
-    // Create the result string
-    var res: string := "";
-    var i := 1;
-    while i <= n
-      invariant 1 <= i <= n + 1
-      invariant |res| == i - 1
-      invariant forall j :: 0 <= j < |res| ==> res[j] == 'O' || res[j] == 'o'
-      invariant forall j :: 1 <= j < i ==> (isFibonacci(j) <==> res[j-1] == 'O')
-      invariant forall j :: 1 <= j < i ==> (!isFibonacci(j) <==> res[j-1] == 'o')
-    {
-      if isFibonacci(i)
-      {
-        res := res + "O";
-      }
-      else
-      {
-        res := res + "o";
-      }
-      i := i + 1;
-    }
-  
-    result := res;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

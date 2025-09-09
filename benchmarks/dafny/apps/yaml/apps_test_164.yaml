@@ -70,18 +70,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var w := y_w - r;
-      var new_y1 := 2 * w - y1 - y_b - r;
-      var new_y2 := 2 * w - y2 - y_b;
-  
-      var left_side := x_b * x_b * (new_y2 - new_y1) * (new_y2 - new_y1);
-      var right_side := (new_y1 * new_y1 + x_b * x_b) * r * r;
-  
-      if left_side <= right_side {
-          result := -1.0;
-      } else {
-          result := (x_b as real) * ((new_y1 + y_b - w) as real) / (new_y1 as real);
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

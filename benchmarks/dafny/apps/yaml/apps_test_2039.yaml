@@ -34,39 +34,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var count := 0;
-  
-      if n <= 2 {
-          result := 0;
-          return;
-      }
-  
-      var i := 1;
-      while i < n - 1
-          invariant 1 <= i <= n - 1
-          invariant count >= 0
-          invariant count <= i - 1
-          invariant count == |set j | 1 <= j < i && ((a[j] > a[j-1] && a[j] > a[j+1]) || (a[j] < a[j-1] && a[j] < a[j+1]))|
-      {
-          var oldCount := count;
-          var condition := (a[i] > a[i-1] && a[i] > a[i+1]) || (a[i] < a[i-1] && a[i] < a[i+1]);
-  
-          if condition {
-              count := count + 1;
-          }
-  
-          var setBeforeIncrement := set j | 1 <= j < i && ((a[j] > a[j-1] && a[j] > a[j+1]) || (a[j] < a[j-1] && a[j] < a[j+1]));
-          var setAfterIncrement := set j | 1 <= j < i + 1 && ((a[j] > a[j-1] && a[j] > a[j+1]) || (a[j] < a[j-1] && a[j] < a[j+1]));
-  
-          assert setAfterIncrement == setBeforeIncrement + (if condition then {i} else {});
-          assert |setAfterIncrement| == |setBeforeIncrement| + (if condition then 1 else 0);
-          assert count == oldCount + (if condition then 1 else 0);
-          assert count == |setAfterIncrement|;
-  
-          i := i + 1;
-      }
-  
-      result := count;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

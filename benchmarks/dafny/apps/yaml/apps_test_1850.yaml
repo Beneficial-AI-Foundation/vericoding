@@ -54,28 +54,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var targetFinalScore := currentPoints[d-1] + awards[0];
-      var count := 0;
-  
-      for i := 0 to d-1
-          invariant 0 <= i <= d-1
-          invariant 0 <= count <= i
-          invariant count <= d-1
-          invariant count == CountOvertakenHelper(currentPoints, awards, d, 0, 0) - CountOvertakenHelper(currentPoints, awards, d, i, count)
-      {
-          var remainingAwards := |awards| - count;
-          if remainingAwards > 0 && count < |awards| {
-              var smallestAward := awards[|awards|-1-count];
-              if currentPoints[i] + smallestAward <= targetFinalScore {
-                  count := count + 1;
-              }
-          }
-      }
-  
-      result := d - count;
-  
-      assert count == CountOvertaken(currentPoints, awards, d);
-      assert 1 <= result <= d;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

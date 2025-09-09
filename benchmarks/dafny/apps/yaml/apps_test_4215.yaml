@@ -15,10 +15,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function max(x: int, y: int): int
-  {
-      if x >= y then x else y
-  }
 
 vc-spec: |-
   method solve(a: int, b: int) returns (result: int)
@@ -29,11 +25,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if a > 2 * b {
-          result := a - 2 * b;
-      } else {
-          result := 0;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

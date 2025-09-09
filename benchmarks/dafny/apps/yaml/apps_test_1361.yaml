@@ -42,24 +42,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var i := 1;
-      var newSeq := holds[..i] + holds[i+1..];
-      result := maxDiff(newSeq);
-      i := i + 1;
-  
-      while i < |holds| - 1
-          invariant 1 < i <= |holds| - 1
-          invariant result >= 0
-          invariant forall k :: 1 <= k < i ==> result <= maxDiff(holds[..k] + holds[k+1..])
-          invariant exists k :: 1 <= k < i && result == maxDiff(holds[..k] + holds[k+1..])
-      {
-          newSeq := holds[..i] + holds[i+1..];
-          var diff := maxDiff(newSeq);
-          if diff < result {
-              result := diff;
-          }
-          i := i + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

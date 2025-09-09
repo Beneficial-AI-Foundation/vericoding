@@ -33,45 +33,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // Add k wildcards represented by '*'
-      var tmpCall1 := seq(k, i => '*');
-      var extended_s := s + tmpCall1;
-  
-      var max_length := 0;
-  
-      // Try all possible starting positions
-      var i := 0;
-      while i < |extended_s|
-          invariant 0 <= i <= |extended_s|
-          invariant max_length >= 0
-          invariant max_length % 2 == 0
-          invariant max_length <= |extended_s|
-          invariant forall x, y :: 0 <= x < i && 2 <= y <= |extended_s| - x && y % 2 == 0 && 
-                    is_tandem_repeat(extended_s[x..x+y]) ==> y <= max_length
-      {
-          // Try all possible even lengths
-          var n := 2;
-          while n <= |extended_s| - i
-              invariant n % 2 == 0
-              invariant 2 <= n
-              invariant max_length >= 0
-              invariant max_length % 2 == 0
-              invariant max_length <= |extended_s|
-              invariant forall x, y :: 0 <= x < i && 2 <= y <= |extended_s| - x && y % 2 == 0 && 
-                        is_tandem_repeat(extended_s[x..x+y]) ==> y <= max_length
-              invariant forall y :: 2 <= y < n && y % 2 == 0 && 
-                        is_tandem_repeat(extended_s[i..i+y]) ==> y <= max_length
-          {
-              if is_tandem_repeat(extended_s[i..i+n])
-              {
-                  max_length := if n > max_length then n else max_length;
-              }
-              n := n + 2;
-          }
-          i := i + 1;
-      }
-  
-      result := max_length;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

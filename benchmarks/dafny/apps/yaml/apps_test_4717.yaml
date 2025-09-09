@@ -34,14 +34,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var distA := Distance(x, a);
-      var distB := Distance(x, b);
-  
-      if distA < distB {
-          result := "A";
-      } else {
-          result := "B";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

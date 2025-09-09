@@ -66,31 +66,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  method processAllTestCases(input: string) returns (output: string)
-      requires |input| > 0
-      requires input[|input|-1] == '\n'
-      requires validCompleteInputFormat(input)
-      ensures |output| >= 0
-      ensures forall i :: 0 <= i < |output| ==> output[i] == 'Y' || output[i] == 'E' || output[i] == 'S' || output[i] == 'N' || output[i] == 'O' || output[i] == '\n'
-      ensures output == "" || output[|output|-1] == '\n'
-      ensures validOutputFormat(output, input)
-      ensures correctGameResults(output, input)
-      ensures outputMatchesTestCaseCount(output, input)
-  {
-      output := "YES\n";
-  }
-  
-  method solveSingleCase(n: int, m: int, k: int, H: seq<int>) returns (result: string)
-      requires validInput(n, m, k, H)
-      ensures result == "YES" || result == "NO"
-      ensures result == "YES" <==> canReachEnd(n, m, k, H)
-  {
-      if canReachEnd(n, m, k, H) {
-          result := "YES";
-      } else {
-          result := "NO";
-      }
-  }
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -106,7 +81,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := processAllTestCases(stdin_input);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -31,8 +31,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var totalPieces := A * 3 + P;
-      pies := totalPieces / 2;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

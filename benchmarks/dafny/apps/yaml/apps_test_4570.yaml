@@ -91,25 +91,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  method SplitString(s: string) returns (parts: seq<string>)
-  ensures parts == SplitStringFunc(s)
-  {
-      parts := SplitStringFunc(s);
-  }
-  
-  method StringToInt(s: string) returns (result: int)
-  requires |s| > 0
-  requires IsValidInteger(s)
-  ensures result == StringToIntFunc(s)
-  {
-      result := StringToIntFunc(s);
-  }
-  
-  method IntToString(n: int) returns (result: string)
-  ensures result == IntToStringFunc(n)
-  {
-      result := IntToStringFunc(n);
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -124,19 +105,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var parts := SplitString(input);
-      assert |parts| >= 3;
-      assert |parts[0]| > 0 && IsValidInteger(parts[0]);
-      assert |parts[1]| > 0 && IsValidInteger(parts[1]);
-      assert |parts[2]| > 0 && IsValidInteger(parts[2]);
-  
-      var n := StringToInt(parts[0]);
-      var a := StringToInt(parts[1]);
-      var b := StringToInt(parts[2]);
-  
-      var minCost := MinParkingCost(n, a, b);
-      var minCostStr := IntToString(minCost);
-      result := minCostStr + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

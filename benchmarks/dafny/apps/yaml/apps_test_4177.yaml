@@ -21,16 +21,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := "";
-      var i := 0;
-      while i < |s|
-          invariant 0 <= i <= |s|
-          invariant |result| == i
-          invariant forall j :: 0 <= j < i ==> result[j] == 'x'
-      {
-          result := result + "x";
-          i := i + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

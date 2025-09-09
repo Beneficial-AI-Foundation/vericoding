@@ -26,11 +26,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if a == b {
-          result := a;
-      } else {
-          result := 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

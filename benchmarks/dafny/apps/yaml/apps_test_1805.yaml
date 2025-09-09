@@ -30,25 +30,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      results := [];
-      var i := 0;
-      while i < |queries|
-          invariant 0 <= i <= |queries|
-          invariant |results| == i
-          invariant forall j :: 0 <= j < i ==> results[j] == MinAdditionalMatches(queries[j])
-      {
-          var n := queries[i];
-          var result: int;
-  
-          if n >= 4 {
-              result := n % 2;
-          } else {
-              result := 4 - n;
-          }
-  
-          results := results + [result];
-          i := i + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

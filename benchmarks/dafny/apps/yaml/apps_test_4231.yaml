@@ -25,7 +25,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := (H - h) * (W - w);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

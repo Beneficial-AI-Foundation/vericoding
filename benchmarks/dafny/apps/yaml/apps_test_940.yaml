@@ -24,10 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function max(x: int, y: int): int
-  {
-      if x >= y then x else y
-  }
 
 vc-spec: |-
   method solve(a: int, b: int, c: int) returns (result: int)
@@ -38,14 +34,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var max_val := max(max(a, b), c);
-      var sum_of_other_two := a + b + c - max_val;
-  
-      if sum_of_other_two > max_val {
-          result := 0;
-      } else {
-          result := max_val - sum_of_other_two + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

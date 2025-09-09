@@ -29,11 +29,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var temp := (a - 1 + b) % n;
-      if temp < 0 {
-          temp := temp + n;
-      }
-      result := temp + 1;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

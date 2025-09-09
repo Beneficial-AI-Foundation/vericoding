@@ -14,21 +14,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma count_eligible_append_lemma(prefix: seq<int>, elem: int, k: int)
-      requires 0 <= k <= 5
-      requires forall i :: 0 <= i < |prefix| ==> 0 <= prefix[i] <= 5
-      requires 0 <= elem <= 5
-      ensures count_eligible(prefix + [elem], k) == count_eligible(prefix, k) + (if 5 - elem >= k then 1 else 0)
-  {
-      if |prefix| == 0 {
-          assert prefix + [elem] == [elem];
-          assert count_eligible([elem], k) == (if 5 - elem >= k then 1 else 0);
-      } else {
-          assert prefix == [prefix[0]] + prefix[1..];
-          assert prefix + [elem] == [prefix[0]] + (prefix[1..] + [elem]);
-          count_eligible_append_lemma(prefix[1..], elem, k);
-      }
-  }
 
 vc-spec: |-
   method solve(n: int, k: int, participations: seq<int>) returns (result: int)
@@ -40,24 +25,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var eligibleCount := 0;
-      var i := 0;
-      while i < |participations|
-          invariant 0 <= i <= |participations|
-          invariant eligibleCount == count_eligible(participations[0..i], k)
-      {
-          if 5 - participations[i] >= k {
-              eligibleCount := eligibleCount + 1;
-          }
-          i := i + 1;
-  
-          // Help Dafny prove the invariant
-          assert participations[0..i] == participations[0..i-1] + [participations[i-1]];
-          count_eligible_append_lemma(participations[0..i-1], participations[i-1], k);
-      }
-  
-      assert participations[0..|participations|] == participations;
-      result := eligibleCount / 3;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

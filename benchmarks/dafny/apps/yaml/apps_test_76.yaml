@@ -26,8 +26,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var k := n % m;
-      result := if k * b < (m - k) * a then k * b else (m - k) * a;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

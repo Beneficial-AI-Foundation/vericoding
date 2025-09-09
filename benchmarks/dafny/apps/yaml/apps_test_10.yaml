@@ -46,16 +46,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var r := n % 7;
-    var d := n / 7;
-  
-    var min_additional := if r > 5 then r - 5 else 0;
-    var max_additional := if r < 2 then r else 2;
-  
-    var min_days_off := 2 * d + min_additional;
-    var max_days_off := 2 * d + max_additional;
-  
-    result := [min_days_off, max_days_off];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

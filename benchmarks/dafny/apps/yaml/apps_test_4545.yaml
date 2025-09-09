@@ -29,7 +29,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      blackSquares := N * N - A;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

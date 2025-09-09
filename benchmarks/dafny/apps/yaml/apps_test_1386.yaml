@@ -72,6 +72,9 @@ vc-helpers: |-
 vc-spec: |-
 
 vc-code: |-
+  {
+    assume {:axiom} false;
+  }
 
 vc-postamble: |-
 

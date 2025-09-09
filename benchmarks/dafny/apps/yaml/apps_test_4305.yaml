@@ -30,7 +30,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      attacks := (H + A - 1) / A;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -34,8 +34,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var arr := FactTruthValues();
-      result := arr[n - 1];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

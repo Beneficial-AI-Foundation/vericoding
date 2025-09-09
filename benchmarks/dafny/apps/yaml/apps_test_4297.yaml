@@ -40,15 +40,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if n % 2 == 0 {
-          result := n;
-          assert forall k: int :: 1 <= k < n ==> k % n != 0;
-      } else {
-          result := n * 2;
-          assert forall k: int :: 1 <= k < n * 2 ==> (k % n == 0 ==> k == n);
-          assert n % 2 != 0;
-          assert forall k: int :: 1 <= k < n * 2 ==> !(k % 2 == 0 && k % n == 0);
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

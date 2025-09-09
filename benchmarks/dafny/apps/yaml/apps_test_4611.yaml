@@ -43,39 +43,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  predicate IsValidInteger(s: string)
-  {
-      |s| > 0 && (s[0] == '-' || ('0' <= s[0] <= '9')) &&
-      (forall i :: 1 <= i < |s| ==> '0' <= s[i] <= '9')
-  }
-  
-  predicate IsValidCheckpointLine(line: string)
-  {
-      var parts := SplitWhitespace(line);
-      |parts| == 3 && IsValidInteger(parts[0]) && IsValidInteger(parts[1]) && IsValidInteger(parts[2])
-  }
-  
-  function SplitLines(s: string): seq<string>
-  {
-      []
-  }
-  
-  function SplitWhitespace(s: string): seq<string>
-  {
-      []
-  }
-  
-  function ParseInt(s: string): int
-      requires IsValidInteger(s)
-  {
-      0
-  }
-  
-  function ParseCheckpoints(lines: seq<string>): seq<Checkpoint>
-      requires forall i :: 0 <= i < |lines| ==> IsValidCheckpointLine(lines[i])
-  {
-      []
-  }
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -86,13 +53,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var s := "example";
-      var i := 0;
-      while i < |s|
-      {
-          i := i + 1;
-      }
-      result := "No\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

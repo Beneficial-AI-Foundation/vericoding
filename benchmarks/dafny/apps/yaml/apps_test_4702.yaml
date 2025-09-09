@@ -31,11 +31,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if input[0] == '0' {
-          output := "1\n";
-      } else {
-          output := "0\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

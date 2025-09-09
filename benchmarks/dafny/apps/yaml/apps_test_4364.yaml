@@ -58,21 +58,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var s1 := GetFirstPair(stdin_input);
-      var s2 := GetSecondPair(stdin_input);
-  
-      var s1_valid := ValidMonth(s1);
-      var s2_valid := ValidMonth(s2);
-  
-      if s1_valid && s2_valid {
-          result := "AMBIGUOUS\n";
-      } else if s1_valid {
-          result := "MMYY\n";
-      } else if s2_valid {
-          result := "YYMM\n";
-      } else {
-          result := "NA\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

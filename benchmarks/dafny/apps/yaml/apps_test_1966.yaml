@@ -113,40 +113,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function split_by_newline(s: string): seq<string>
-      ensures forall line | line in split_by_newline(s) :: '\n' !in line
-  {
-      split_string_by_char(s, '\n')
-  }
-  
-  function split_string_by_char(s: string, delimiter: char): seq<string>
-      ensures forall part | part in split_string_by_char(s, delimiter) :: delimiter !in part
-  {
-      if |s| == 0 then
-          [""]
-      else if s[0] == delimiter then
-          [""] + split_string_by_char(s[1..], delimiter)
-      else
-          var rest := split_string_by_char(s[1..], delimiter);
-          if |rest| == 0 then [[s[0]]]
-          else [[s[0]] + rest[0]] + rest[1..]
-  }
-  
-  function string_to_int(s: string): int
-      requires is_valid_integer_string(s)
-      ensures string_to_int(s) >= 0
-  {
-      string_to_int_helper(s, 0)
-  }
-  
-  function string_to_int_helper(s: string, acc: int): int
-      requires forall i | 0 <= i < |s| :: '0' <= s[i] <= '9'
-      requires acc >= 0
-      ensures string_to_int_helper(s, acc) >= acc
-  {
-      if |s| == 0 then acc
-      else string_to_int_helper(s[1..], acc * 10 + (s[0] as int - '0' as int))
-  }
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -160,7 +126,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := "0";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

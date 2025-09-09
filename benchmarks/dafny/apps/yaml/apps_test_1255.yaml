@@ -114,7 +114,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := IntToStringFunction(GetMaxSimultaneousArrivals(input)) + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

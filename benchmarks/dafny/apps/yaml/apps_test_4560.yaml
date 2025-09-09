@@ -28,11 +28,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if n % 500 <= a {
-          result := "Yes";
-      } else {
-          result := "No";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

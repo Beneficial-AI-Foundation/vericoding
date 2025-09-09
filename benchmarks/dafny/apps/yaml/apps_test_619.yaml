@@ -37,21 +37,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var c := x / z + y / z;
-    var rx := x % z;
-    var ry := y % z;
-  
-    if rx + ry < z {
-      coconuts := c;
-      exchange := 0;
-    } else {
-      coconuts := c + 1;
-      if rx > ry {
-        exchange := z - rx;
-      } else {
-        exchange := z - ry;
-      }
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

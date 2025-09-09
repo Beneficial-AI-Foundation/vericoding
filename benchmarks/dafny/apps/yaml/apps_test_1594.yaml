@@ -41,49 +41,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var answers: seq<int> := [];
-      var req_index := 0;
-      var total_length := 0;
-  
-      var i := 0;
-      while i < n && req_index < m
-        invariant 0 <= i <= n
-        invariant 0 <= req_index <= m
-        invariant |answers| == req_index
-        invariant total_length == (if i == 0 then 0 else sum_playlist_duration(songs, i))
-        invariant forall j :: 0 <= j < req_index ==> 1 <= answers[j] <= n
-        invariant forall j :: 0 <= j < req_index ==> queries[j] <= cumulative_duration_at_song(songs, answers[j] - 1)
-        invariant forall j :: 0 <= j < req_index ==> answers[j] == 1 || queries[j] > cumulative_duration_at_song(songs, answers[j] - 2)
-      {
-          total_length := total_length + songs[i].0 * songs[i].1;
-  
-          while req_index < m && queries[req_index] <= total_length
-            invariant 0 <= req_index <= m
-            invariant |answers| == req_index
-            invariant total_length == sum_playlist_duration(songs, i + 1)
-            invariant forall j :: 0 <= j < req_index ==> 1 <= answers[j] <= n
-            invariant forall j :: 0 <= j < req_index ==> queries[j] <= cumulative_duration_at_song(songs, answers[j] - 1)
-            invariant forall j :: 0 <= j < req_index ==> answers[j] == 1 || queries[j] > cumulative_duration_at_song(songs, answers[j] - 2)
-          {
-              answers := answers + [i + 1];
-              req_index := req_index + 1;
-          }
-  
-          i := i + 1;
-      }
-  
-      while req_index < m
-        invariant 0 <= req_index <= m
-        invariant |answers| == req_index
-        invariant forall j :: 0 <= j < req_index ==> 1 <= answers[j] <= n
-        invariant forall j :: 0 <= j < req_index ==> queries[j] <= cumulative_duration_at_song(songs, answers[j] - 1)
-        invariant forall j :: 0 <= j < req_index ==> answers[j] == 1 || queries[j] > cumulative_duration_at_song(songs, answers[j] - 2)
-      {
-          answers := answers + [n];
-          req_index := req_index + 1;
-      }
-  
-      return answers;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -24,30 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma DistinctColorsCount(colors: seq<char>)
-      requires forall c | c in colors :: c in {'P', 'W', 'G', 'Y'}
-      requires 'P' in colors && 'W' in colors && 'G' in colors
-      ensures var distinctColors := DistinctColors(colors);
-              |distinctColors| == 3 || |distinctColors| == 4
-  {
-      var distinctColors := DistinctColors(colors);
-      var minSet := {'P', 'W', 'G'};
-      var maxSet := {'P', 'W', 'G', 'Y'};
-  
-      assert 'P' in distinctColors && 'W' in distinctColors && 'G' in distinctColors;
-      assert minSet <= distinctColors;
-      assert distinctColors <= maxSet;
-      assert |minSet| == 3;
-      assert |maxSet| == 4;
-  
-      if 'Y' in distinctColors {
-          assert distinctColors == maxSet;
-          assert |distinctColors| == 4;
-      } else {
-          assert distinctColors == minSet;
-          assert |distinctColors| == 3;
-      }
-  }
 
 vc-spec: |-
   method Solve(n: int, colors: seq<char>) returns (result: string)
@@ -61,9 +37,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      DistinctColorsCount(colors);
-      var distinctColors := DistinctColors(colors);
-      result := SolutionString(|distinctColors|);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

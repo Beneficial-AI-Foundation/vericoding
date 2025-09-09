@@ -37,14 +37,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var largest_from_A := A[k - 1];
-      var smallest_from_B := B[|B| - m];
-  
-      if largest_from_A < smallest_from_B {
-          result := "YES";
-      } else {
-          result := "NO";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -26,29 +26,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var a := a1;
-      var b := a2;
-      var ans := 0;
-  
-      while a > 0 && b > 0
-          invariant ans >= 0
-          invariant (a > 0 && b > 0) ==> ans == CountValidMinutes(a1, a2) - CountValidMinutes(a, b)
-          invariant (a <= 0 || b <= 0) ==> ans == CountValidMinutes(a1, a2)
-          decreases a + b
-      {
-          if a > 1 || b > 1 {
-              ans := ans + 1;
-          }
-          if a < b {
-              a := a + 3;
-          } else {
-              b := b + 3;
-          }
-          a := a - 2;
-          b := b - 2;
-      }
-  
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

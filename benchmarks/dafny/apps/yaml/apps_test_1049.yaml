@@ -40,98 +40,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function MaxConsecutiveWinsUpTo(lines: seq<string>, n: int, days: int): int
-      requires days >= 0
-      decreases days
-  {
-      if days == 0 then 0
-      else
-          var prevMax := MaxConsecutiveWinsUpTo(lines, n, days - 1);
-          var currentConsecutive := CurrentConsecutiveWinsAt(lines, n, days);
-          if currentConsecutive > prevMax then currentConsecutive else prevMax
-  }
-  
-  function CurrentConsecutiveWinsAt(lines: seq<string>, n: int, day: int): int
-      requires day >= 0
-      decreases day
-  {
-      if day == 0 then 0
-      else if day < |lines| && CountOnes(lines[day]) == n then 0
-      else if day < |lines| then 1 + CurrentConsecutiveWinsAt(lines, n, day - 1)
-      else 0
-  }
-  
-  function CountOnes(s: string): int
-  {
-      CountOnesHelper(s, 0)
-  }
-  
-  function CountOnesHelper(s: string, index: int): int
-      requires 0 <= index <= |s|
-      decreases |s| - index
-  {
-      if index >= |s| then 0
-      else if s[index] == '1' then 1 + CountOnesHelper(s, index + 1)
-      else CountOnesHelper(s, index + 1)
-  }
-  
-  function SplitLines(input: string): seq<string>
-  {
-      SplitString(input, '\n')
-  }
-  
-  function SplitString(input: string, delimiter: char): seq<string>
-  {
-      if |input| == 0 then [""]
-      else
-          var parts := SplitStringHelper(input, delimiter, 0, "");
-          if |parts| == 0 then [""] else parts
-  }
-  
-  function SplitStringHelper(input: string, delimiter: char, index: int, current: string): seq<string>
-      requires 0 <= index <= |input|
-      decreases |input| - index
-  {
-      if index >= |input| then
-          if |current| == 0 then [] else [current]
-      else if input[index] == delimiter then
-          [current] + SplitStringHelper(input, delimiter, index + 1, "")
-      else
-          SplitStringHelper(input, delimiter, index + 1, current + [input[index]])
-  }
-  
-  function StringToInt(s: string): int
-  {
-      StringToIntHelper(s, 0, 0)
-  }
-  
-  function StringToIntHelper(s: string, index: int, acc: int): int
-      requires 0 <= index <= |s|
-      decreases |s| - index
-  {
-      if index >= |s| then acc
-      else
-          var digit := s[index] as int - '0' as int;
-          if 0 <= digit <= 9 then
-              StringToIntHelper(s, index + 1, acc * 10 + digit)
-          else
-              acc
-  }
-  
-  function IntToString(x: int): string
-  {
-      if x == 0 then "0"
-      else if x < 0 then "-" + IntToStringHelper(-x, "")
-      else IntToStringHelper(x, "")
-  }
-  
-  function IntToStringHelper(x: int, acc: string): string
-      requires x > 0
-      decreases x
-  {
-      if x < 10 then [('0' as int + x) as char] + acc
-      else IntToStringHelper(x / 10, [('0' as int + (x % 10)) as char] + acc)
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -141,47 +49,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var lines := SplitLines(input);
-      if |lines| == 0 {
-          return "0\n";
-      }
-  
-      var firstLineParts := SplitString(lines[0], ' ');
-      if |firstLineParts| != 2 {
-          return "0\n";
-      }
-  
-      var n := StringToInt(firstLineParts[0]);
-      var d := StringToInt(firstLineParts[1]);
-  
-      var ans := 0;
-      var has := 0;
-  
-      var i := 1;
-      while i <= d && i < |lines|
-          invariant 1 <= i <= d + 1
-          invariant ans >= 0
-          invariant has >= 0
-          invariant ans == MaxConsecutiveWinsUpTo(lines, n, i - 1)
-          invariant has == CurrentConsecutiveWinsAt(lines, n, i - 1)
-      {
-          var attendance := lines[i];
-          var onesCount := CountOnes(attendance);
-  
-          if onesCount == n {
-              has := 0;
-          } else {
-              has := has + 1;
-          }
-  
-          if has > ans {
-              ans := has;
-          }
-  
-          i := i + 1;
-      }
-  
-      return IntToString(ans) + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

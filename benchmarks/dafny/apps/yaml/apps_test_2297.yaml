@@ -39,10 +39,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function s(k: int): int
-  {
-      if k % 2 == 0 then k / 2 else -(k + 1) / 2
-  }
 
 vc-spec: |-
   method solve(queries: seq<(int, int)>) returns (results: seq<int>)
@@ -51,16 +47,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      results := [];
-      for i := 0 to |queries|
-          invariant |results| == i
-          invariant forall j :: 0 <= j < i ==> results[j] == s(queries[j].1) - s(queries[j].0 - 1)
-      {
-          var l := queries[i].0;
-          var r := queries[i].1;
-          var answer := s(r) - s(l - 1);
-          results := results + [answer];
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -24,94 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function IntToString(n: int): string
-      requires n >= 0
-      ensures |IntToString(n)| > 0
-      ensures n == 0 ==> IntToString(n) == "0"
-      ensures n > 0 ==> |IntToString(n)| >= 1
-  {
-      if n == 0 then "0"
-      else if n < 10 then [('0' as int + n) as char]
-      else IntToString(n / 10) + IntToString(n % 10)
-  }
-  
-  function MaxDivisibleBy3SegmentsHelper(s: string, pos: int, current: string, count: int): int
-      requires 0 <= pos <= |s|
-      requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-      requires forall i :: 0 <= i < |current| ==> '0' <= current[i] <= '9'
-      requires count >= 0
-      requires count <= pos
-      decreases |s| - pos
-      ensures MaxDivisibleBy3SegmentsHelper(s, pos, current, count) >= count
-      ensures MaxDivisibleBy3SegmentsHelper(s, pos, current, count) <= count + (|s| - pos)
-  {
-      if pos == |s| then
-          count
-      else
-          var digit := s[pos];
-          var digitVal := CharToInt(digit);
-          if digitVal % 3 == 0 then
-              MaxDivisibleBy3SegmentsHelper(s, pos + 1, "", count + 1)
-          else
-              var newCurrent := current + [digit];
-              var suffixResult := CheckFirstDivisibleSuffix(newCurrent);
-              if suffixResult.0 then
-                  MaxDivisibleBy3SegmentsHelper(s, pos + 1, "", count + 1)
-              else
-                  MaxDivisibleBy3SegmentsHelper(s, pos + 1, newCurrent, count)
-  }
-  
-  function CheckFirstDivisibleSuffix(s: string): (bool, int)
-      requires |s| > 0
-      requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-      ensures CheckFirstDivisibleSuffix(s).0 ==> CheckFirstDivisibleSuffix(s).1 >= 0
-      ensures CheckFirstDivisibleSuffix(s).0 ==> CheckFirstDivisibleSuffix(s).1 < |s|
-  {
-      CheckFirstDivisibleSuffixHelper(s, 0)
-  }
-  
-  function CheckFirstDivisibleSuffixHelper(s: string, startPos: int): (bool, int)
-      requires 0 <= startPos <= |s|
-      requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-      ensures CheckFirstDivisibleSuffixHelper(s, startPos).0 ==> CheckFirstDivisibleSuffixHelper(s, startPos).1 >= startPos
-      ensures CheckFirstDivisibleSuffixHelper(s, startPos).0 ==> CheckFirstDivisibleSuffixHelper(s, startPos).1 < |s|
-      decreases |s| - startPos
-  {
-      if startPos >= |s| then
-          (false, 0)
-      else
-          var suffix := s[startPos..];
-          if |suffix| > 0 && IsDivisibleBy3(suffix) then
-              (true, startPos)
-          else
-              CheckFirstDivisibleSuffixHelper(s, startPos + 1)
-  }
-  
-  function IsDivisibleBy3(s: string): bool
-      requires |s| > 0
-      requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-      ensures IsDivisibleBy3(s) <==> (SumOfDigits(s) % 3 == 0)
-  {
-      SumOfDigits(s) % 3 == 0
-  }
-  
-  function SumOfDigits(s: string): int
-      requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-      ensures SumOfDigits(s) >= 0
-      ensures |s| == 0 ==> SumOfDigits(s) == 0
-      ensures |s| > 0 ==> SumOfDigits(s) >= CharToInt(s[0])
-  {
-      if |s| == 0 then 0
-      else CharToInt(s[0]) + SumOfDigits(s[1..])
-  }
-  
-  function CharToInt(c: char): int
-      requires '0' <= c <= '9'
-      ensures 0 <= CharToInt(c) <= 9
-      ensures CharToInt(c) == c as int - '0' as int
-  {
-      c as int - '0' as int
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -123,9 +35,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var digits := input[0..|input|-1];
-      var count := MaxDivisibleBy3Segments(digits);
-      result := IntToString(count) + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -22,11 +22,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if n < 1000 {
-          result := "ABC";
-      } else {
-          result := "ABD";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

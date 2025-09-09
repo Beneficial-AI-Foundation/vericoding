@@ -123,13 +123,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var i := 0;
-      while i < 10
-          decreases *
-      {
-          i := i + 1;
-      }
-      result := "0\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

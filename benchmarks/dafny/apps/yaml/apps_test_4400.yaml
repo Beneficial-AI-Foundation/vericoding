@@ -26,15 +26,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if input[0] == 'R' && input[1] == 'R' && input[2] == 'R' {
-          result := 3;
-      } else if (input[0] == 'R' && input[1] == 'R') || (input[1] == 'R' && input[2] == 'R') {
-          result := 2;
-      } else if input[0] == 'R' || input[1] == 'R' || input[2] == 'R' {
-          result := 1;
-      } else {
-          result := 0;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

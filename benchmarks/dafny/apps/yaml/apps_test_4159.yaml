@@ -44,16 +44,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if A >= K {
-          takahashi := A - K;
-          aoki := B;
-      } else if K - A < B {
-          takahashi := 0;
-          aoki := B - (K - A);
-      } else {
-          takahashi := 0;
-          aoki := 0;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

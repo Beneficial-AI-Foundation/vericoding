@@ -28,29 +28,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if |input| == 0 {
-          result := "A";
-      } else {
-          // Check if all characters are lowercase letters
-          var allLowercase := true;
-          var i := 0;
-          while i < |input|
-              invariant 0 <= i <= |input|
-              invariant allLowercase <==> (forall j :: 0 <= j < i ==> IsLowercaseLetter(input[j]))
-          {
-              if !IsLowercaseLetter(input[i]) {
-                  allLowercase := false;
-                  break;
-              }
-              i := i + 1;
-          }
-  
-          if allLowercase {
-              result := "a";
-          } else {
-              result := "A";
-          }
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

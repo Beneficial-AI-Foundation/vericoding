@@ -46,9 +46,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var sheets_per_person := SheetsPerPerson(n, s);
-    var total_sheets := TotalSheetsNeeded(k, n, s);
-    result := MinPacksNeeded(k, n, s, p);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

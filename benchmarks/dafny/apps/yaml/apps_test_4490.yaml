@@ -27,15 +27,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function find_newline(s: string): nat
-      ensures find_newline(s) <= |s|
-      ensures find_newline(s) < |s| ==> s[find_newline(s)] == '\n'
-      ensures find_newline(s) == |s| ==> (forall i :: 0 <= i < |s| ==> s[i] != '\n')
-  {
-      if |s| == 0 then 0
-      else if s[0] == '\n' then 0
-      else 1 + find_newline(s[1..])
-  }
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -50,25 +41,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var newline_pos := find_newline(stdin_input);
-      var first_line := stdin_input[..newline_pos];
-  
-      if |first_line| == 1 {
-          var base := first_line[0];
-          if base == 'A' {
-              result := "T\n";
-          } else if base == 'T' {
-              result := "A\n";
-          } else if base == 'C' {
-              result := "G\n";
-          } else if base == 'G' {
-              result := "C\n";
-          } else {
-              result := "";
-          }
-      } else {
-          result := "";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

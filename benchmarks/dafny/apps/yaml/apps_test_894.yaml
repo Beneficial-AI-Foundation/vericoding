@@ -28,23 +28,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var x1, y1, x2, y2: int;
-  
-      if x * y > 0 {
-          if x < 0 {
-              x1, y1, x2, y2 := x + y, 0, 0, x + y;
-          } else {
-              x1, y1, x2, y2 := 0, x + y, x + y, 0;
-          }
-      } else {
-          if x < 0 {
-              x1, y1, x2, y2 := x - y, 0, 0, y - x;
-          } else {
-              x1, y1, x2, y2 := 0, y - x, x - y, 0;
-          }
-      }
-  
-      result := [x1, y1, x2, y2];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

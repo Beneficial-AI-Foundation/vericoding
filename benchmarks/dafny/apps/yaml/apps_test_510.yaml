@@ -45,47 +45,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // Sort the three positions
-      var pos1, pos2, pos3: int;
-  
-      if a <= b && a <= c {
-          pos1 := a;
-          if b <= c {
-              pos2 := b;
-              pos3 := c;
-          } else {
-              pos2 := c;
-              pos3 := b;
-          }
-      } else if b <= a && b <= c {
-          pos1 := b;
-          if a <= c {
-              pos2 := a;
-              pos3 := c;
-          } else {
-              pos2 := c;
-              pos3 := a;
-          }
-      } else {
-          pos1 := c;
-          if a <= b {
-              pos2 := a;
-              pos3 := b;
-          } else {
-              pos2 := b;
-              pos3 := a;
-          }
-      }
-  
-      // Calculate gaps between adjacent positions
-      var gap1 := pos2 - pos1;
-      var gap2 := pos3 - pos2;
-  
-      // Calculate how much we need to expand each gap
-      var need1 := if d > gap1 then d - gap1 else 0;
-      var need2 := if d > gap2 then d - gap2 else 0;
-  
-      result := need1 + need2;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

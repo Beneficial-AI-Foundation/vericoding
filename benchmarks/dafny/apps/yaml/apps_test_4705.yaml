@@ -36,9 +36,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var totalCost := 800 * N;
-      var cashback := (N / 15) * 200;
-      result := totalCost - cashback;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

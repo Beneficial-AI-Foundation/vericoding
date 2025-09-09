@@ -33,47 +33,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var top := heights[0];
-    var cnt := 1;
-  
-    assert hasOceanVisibility(heights, 0);
-    assert (set j | 0 <= j < 1 && hasOceanVisibility(heights, j)) == {0};
-    assert cnt == |set j | 0 <= j < 1 && hasOceanVisibility(heights, j)|;
-  
-    var i := 1;
-    while i < N
-      invariant 1 <= i <= N
-      invariant cnt >= 1
-      invariant cnt <= i
-      invariant top == maxHeightUpTo(heights, i - 1)
-      invariant cnt == |set j | 0 <= j < i && hasOceanVisibility(heights, j)|
-      invariant hasOceanVisibility(heights, 0)
-      invariant forall j :: 1 <= j < i ==> (hasOceanVisibility(heights, j) <==> heights[j] >= maxHeightUpTo(heights, j - 1))
-    {
-      assert hasOceanVisibility(heights, i) <==> heights[i] >= maxHeightUpTo(heights, i - 1);
-      assert maxHeightUpTo(heights, i - 1) == top;
-      assert hasOceanVisibility(heights, i) <==> heights[i] >= top;
-  
-      var oldSet := set j | 0 <= j < i && hasOceanVisibility(heights, j);
-      var newSet := set j | 0 <= j < i + 1 && hasOceanVisibility(heights, j);
-  
-      if top <= heights[i] {
-        assert hasOceanVisibility(heights, i);
-        assert newSet == oldSet + {i};
-        assert |newSet| == |oldSet| + 1;
-        cnt := cnt + 1;
-        top := heights[i];
-      } else {
-        assert !hasOceanVisibility(heights, i);
-        assert newSet == oldSet;
-        assert |newSet| == |oldSet|;
-      }
-  
-      assert cnt == |newSet|;
-      i := i + 1;
-    }
-  
-    result := cnt;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

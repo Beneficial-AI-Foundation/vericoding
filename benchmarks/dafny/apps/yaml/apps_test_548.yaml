@@ -25,25 +25,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var oddCount := 0;
-      var i := 0;
-      while i < |a|
-          invariant 0 <= i <= |a|
-          invariant oddCount >= 0
-          invariant oddCount == 0 <==> (forall j :: 0 <= j < i ==> a[j] % 2 == 0)
-          invariant oddCount > 0 <==> (exists j :: 0 <= j < i && a[j] % 2 == 1)
-      {
-          if a[i] % 2 == 1 {
-              oddCount := oddCount + 1;
-          }
-          i := i + 1;
-      }
-  
-      if oddCount == 0 {
-          result := "Second";
-      } else {
-          result := "First";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

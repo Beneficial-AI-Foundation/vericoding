@@ -30,21 +30,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if n % 3 == 0 {
-          result := [n / 3, 0, 0];
-      } else if n % 3 == 1 {
-          if n < 7 {
-              result := [-1];
-          } else {
-              result := [(n - 7) / 3, 0, 1];
-          }
-      } else {
-          if n < 5 {
-              result := [-1];
-          } else {
-              result := [(n - 5) / 3, 1, 0];
-          }
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

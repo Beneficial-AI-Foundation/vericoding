@@ -20,11 +20,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if IsHardToEnter(s) {
-          result := "Bad";
-      } else {
-          result := "Good";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

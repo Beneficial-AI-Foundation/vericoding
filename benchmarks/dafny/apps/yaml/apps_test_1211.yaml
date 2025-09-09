@@ -34,27 +34,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var mx := 0;
-      var mxval := A[0] * (n / A[0]);
-  
-      for i := 1 to k
-          invariant 0 <= mx < k
-          invariant mxval >= 0
-          invariant mxval == A[mx] * (n / A[mx])
-          invariant forall j :: 0 <= j < i ==> A[mx] * (n / A[mx]) >= A[j] * (n / A[j])
-          invariant forall j :: 0 <= j < mx ==> A[j] * (n / A[j]) < A[mx] * (n / A[mx])
-      {
-          var boxes_of_type_i := n / A[i];
-          var hamsters_transported := A[i] * boxes_of_type_i;
-  
-          if hamsters_transported > mxval {
-              mxval := hamsters_transported;
-              mx := i;
-          }
-      }
-  
-      box_type := mx + 1;
-      num_boxes := n / A[mx];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

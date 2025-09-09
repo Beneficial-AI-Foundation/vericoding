@@ -31,7 +31,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    result := 6 - a - b;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

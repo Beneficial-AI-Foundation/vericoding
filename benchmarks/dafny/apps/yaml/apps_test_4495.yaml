@@ -28,11 +28,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if a == 0 {
-          count := b / x + 1;
-      } else {
-          count := b / x - (a - 1) / x;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

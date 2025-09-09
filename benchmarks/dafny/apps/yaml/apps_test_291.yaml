@@ -25,22 +25,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var limak_weight := a;
-    var bob_weight := b;
-    years := 0;
-  
-    while limak_weight <= bob_weight
-      invariant limak_weight == a * pow(3, years)
-      invariant bob_weight == b * pow(2, years)
-      invariant years >= 0
-      invariant years == 0 || a * pow(3, years - 1) <= b * pow(2, years - 1)
-      invariant years <= 10
-      decreases 10 - years
-    {
-      limak_weight := limak_weight * 3;
-      bob_weight := bob_weight * 2;
-      years := years + 1;
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

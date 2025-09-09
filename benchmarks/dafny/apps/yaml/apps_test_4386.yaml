@@ -25,55 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function StringToInt(s: string): int
-    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-    requires |s| > 0
-  {
-    if |s| == 1 then
-      (s[0] as int) - ('0' as int)
-    else
-      StringToInt(s[0..|s|-1]) * 10 + ((s[|s|-1] as int) - ('0' as int))
-  }
-  
-  function FindDigitNewline(s: string, start: int): int
-    requires 0 <= start <= |s|
-    requires exists i :: start <= i < |s| && s[i] == '\n' && (forall j :: 0 <= j < i ==> '0' <= s[j] <= '9')
-    ensures start <= FindDigitNewline(s, start) < |s|
-    ensures s[FindDigitNewline(s, start)] == '\n'
-    ensures forall j :: 0 <= j < FindDigitNewline(s, start) ==> '0' <= s[j] <= '9'
-    decreases |s| - start
-  {
-    if start >= |s| then start
-    else if s[start] == '\n' && (forall j :: 0 <= j < start ==> '0' <= s[j] <= '9') then start
-    else FindDigitNewline(s, start + 1)
-  }
-  
-  function FindNewline(s: string, start: int): int
-    requires 0 <= start <= |s|
-    ensures -1 <= FindNewline(s, start) < |s|
-    ensures FindNewline(s, start) >= -1
-    ensures FindNewline(s, start) == -1 ==> forall i :: start <= i < |s| ==> s[i] != '\n'
-    ensures FindNewline(s, start) >= 0 ==> start <= FindNewline(s, start) < |s| && s[FindNewline(s, start)] == '\n'
-    decreases |s| - start
-  {
-    if start >= |s| then -1
-    else if s[start] == '\n' then start
-    else FindNewline(s, start + 1)
-  }
-  
-  function parseInput(input: string): (int, string)
-    requires ValidInput(input)
-    ensures exists newlineIndex :: 0 < newlineIndex < |input| && input[newlineIndex] == '\n'
-  {
-    var newlineIndex := FindDigitNewline(input, 1);
-    assert newlineIndex >= 1 && newlineIndex < |input| && input[newlineIndex] == '\n';
-    assert forall j :: 0 <= j < newlineIndex ==> '0' <= input[j] <= '9';
-    var aStr := input[0..newlineIndex];
-    var remaining := input[newlineIndex+1..];
-    var secondNewline := if |remaining| > 0 then FindNewline(remaining, 0) else |remaining|;
-    var s := if secondNewline >= 0 then remaining[0..secondNewline] else remaining;
-    (StringToInt(aStr), s)
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -94,13 +45,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var (a, s) := parseInput(input);
-  
-      if a >= 3200 {
-          result := s + "\n";
-      } else {
-          result := "red\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

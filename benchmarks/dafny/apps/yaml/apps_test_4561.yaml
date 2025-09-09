@@ -34,15 +34,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var daysPastBestBy := B - A;
-  
-      if daysPastBestBy <= 0 {
-          outcome := "delicious";
-      } else if daysPastBestBy <= X {
-          outcome := "safe";
-      } else {
-          outcome := "dangerous";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

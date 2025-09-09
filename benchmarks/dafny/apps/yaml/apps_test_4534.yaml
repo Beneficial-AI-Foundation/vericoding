@@ -13,20 +13,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma binomial_positive(n: int, k: int)
-      requires 0 <= k <= n
-      ensures binomial(n, k) > 0
-  {
-      if k == 0 || k == n {
-          // binomial(n, k) == 1 > 0
-      } else if k == 1 {
-          // binomial(n, k) == n > 0 since n >= k >= 1
-      } else {
-          binomial_positive(n-1, k-1);
-          binomial_positive(n-1, k);
-          // binomial(n, k) == binomial(n-1, k-1) + binomial(n-1, k) > 0
-      }
-  }
 
 vc-spec: |-
   method getRow(k: int) returns (result: seq<int>)
@@ -37,19 +23,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := [];
-      var i := 0;
-      while i <= k
-          invariant 0 <= i <= k + 1
-          invariant |result| == i
-          invariant forall j :: 0 <= j < i ==> result[j] == binomial(k, j)
-          invariant forall j :: 0 <= j < i ==> result[j] > 0
-      {
-          var val := binomial(k, i);
-          binomial_positive(k, i);
-          result := result + [val];
-          i := i + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

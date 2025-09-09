@@ -25,25 +25,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if N % 2 != 0 {
-          result := "No";
-      } else {
-          var m := N / 2;
-          var i := 0;
-          result := "Yes";
-          while i < m
-              invariant 0 <= i <= m
-              invariant result == "Yes" || result == "No"
-              invariant result == "Yes" ==> forall j :: 0 <= j < i ==> S[j] == S[m + j]
-              invariant result == "No" ==> exists j :: 0 <= j < i && S[j] != S[m + j]
-          {
-              if S[i] != S[m + i] {
-                  result := "No";
-                  break;
-              }
-              i := i + 1;
-          }
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

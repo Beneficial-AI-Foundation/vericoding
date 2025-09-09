@@ -38,14 +38,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var ones_digit := N % 10;
-      if IsHonDigit(ones_digit) {
-          result := "hon\n";
-      } else if IsPonDigit(ones_digit) {
-          result := "pon\n";
-      } else {
-          result := "bon\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

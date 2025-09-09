@@ -35,13 +35,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if n % 2 == 1 {
-          result := 0;
-      } else if n % 4 == 2 {
-          result := n / 4;
-      } else {
-          result := n / 4 - 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

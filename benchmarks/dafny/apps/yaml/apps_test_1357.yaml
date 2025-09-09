@@ -33,41 +33,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var v := tasks;
-  
-      var i := 1;
-      while i < |v|
-          invariant 1 <= i <= |v|
-          invariant |v| == m
-          invariant m >= 1
-          invariant forall j :: 0 <= j < |v| ==> v[j] >= 1
-          invariant forall j :: 0 <= j < |v| ==> v[j] >= tasks[j]
-          invariant forall j :: 0 <= j < i ==> (j == 0 || v[j] >= v[j-1])
-          invariant forall j :: 0 <= j < i ==> v[j] <= tasks[j] + j * n
-          invariant forall j :: i <= j < |v| ==> v[j] == tasks[j]
-          decreases |v| - i
-      {
-          if v[i] < v[i-1] {
-              var newVal := v[i] + ((v[i-1] - v[i] + n - 1) / n) * n;
-              v := v[i := newVal];
-          }
-          while v[i] < v[i-1]
-              invariant 1 <= i < |v|
-              invariant |v| == m
-              invariant v[i] >= tasks[i]
-              invariant v[i] >= 1
-              invariant forall j :: 0 <= j < i ==> v[j] >= tasks[j]
-              invariant forall j :: 0 <= j < i ==> (j == 0 || v[j] >= v[j-1])
-              invariant forall j :: 0 <= j < i ==> v[j] <= tasks[j] + j * n
-              invariant forall j :: i+1 <= j < |v| ==> v[j] == tasks[j]
-              decreases v[i-1] - v[i]
-          {
-              v := v[i := v[i] + n];
-          }
-          i := i + 1;
-      }
-  
-      result := v[|v|-1] - 1;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

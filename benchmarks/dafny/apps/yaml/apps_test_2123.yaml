@@ -38,7 +38,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := MaxInSeq(heights);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

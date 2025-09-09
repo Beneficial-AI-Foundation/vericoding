@@ -53,9 +53,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var count2 := FactorsInDoubleFactorial(N, 2);
-    var count5 := FactorsInDoubleFactorial(N, 5);
-    result := if count2 < count5 then count2 else count5;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

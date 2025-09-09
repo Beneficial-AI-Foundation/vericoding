@@ -34,9 +34,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var max_val := MaxOfThree(A1, A2, A3);
-      var min_val := MinOfThree(A1, A2, A3);
-      result := max_val - min_val;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

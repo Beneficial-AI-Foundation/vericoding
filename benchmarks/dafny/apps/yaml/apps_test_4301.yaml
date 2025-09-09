@@ -31,16 +31,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := [];
-      var i := 0;
-      while i < |input|
-          invariant 0 <= i <= |input|
-          invariant |result| == i
-          invariant forall j :: 0 <= j < i ==> result[j] == max_excluding(input, j)
-      {
-          result := result + [max_excluding(input, i)];
-          i := i + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

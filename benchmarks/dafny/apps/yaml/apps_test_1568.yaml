@@ -29,28 +29,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma sum_seq_slice_lemma(s: seq<int>, i: int)
-      requires 0 <= i < |s|
-      ensures sum_seq(s[0..i+1]) == sum_seq(s[0..i]) + s[i]
-  {
-      if i == 0 {
-          assert s[0..1] == [s[0]];
-          assert sum_seq(s[0..1]) == s[0];
-          assert s[0..0] == [];
-          assert sum_seq(s[0..0]) == 0;
-      } else {
-          assert s[0..i+1] == [s[0]] + s[1..i+1];
-          assert s[0..i] == [s[0]] + s[1..i];
-          assert sum_seq(s[0..i+1]) == s[0] + sum_seq(s[1..i+1]);
-          assert sum_seq(s[0..i]) == s[0] + sum_seq(s[1..i]);
-          sum_seq_slice_lemma(s[1..], i-1);
-          assert sum_seq((s[1..])[0..i-1+1]) == sum_seq((s[1..])[0..i-1]) + (s[1..])[i-1];
-          assert (s[1..])[0..i] == s[1..i+1];
-          assert (s[1..])[0..i-1] == s[1..i];
-          assert (s[1..])[i-1] == s[i];
-          assert sum_seq(s[1..i+1]) == sum_seq(s[1..i]) + s[i];
-      }
-  }
 
 vc-spec: |-
   method solve(n: int, a: int, b: int, c: int, t: int, arrivals: seq<int>) returns (result: int)
@@ -59,26 +37,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if b > c {
-          result := n * a;
-      } else {
-          var acc := 0;
-          var i := 0;
-          while i < |arrivals|
-              invariant 0 <= i <= |arrivals|
-              invariant acc == i * t - sum_seq(arrivals[0..i])
-          {
-              sum_seq_slice_lemma(arrivals, i);
-              acc := acc + (t - arrivals[i]);
-              i := i + 1;
-          }
-          assert i == |arrivals| == n;
-          assert arrivals[0..i] == arrivals[0..n] == arrivals;
-          assert acc == n * t - sum_seq(arrivals);
-          acc := acc * (c - b);
-          acc := acc + n * a;
-          result := acc;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

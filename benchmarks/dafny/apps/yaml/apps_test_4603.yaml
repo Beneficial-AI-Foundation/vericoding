@@ -22,9 +22,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var trainMin := if A < B then A else B;
-      var busMin := if C < D then C else D;
-      result := trainMin + busMin;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

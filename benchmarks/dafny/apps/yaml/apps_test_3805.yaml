@@ -31,20 +31,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma ProcessStringLemma(prefix: string, suffix: string, initialStack: seq<char>)
-      ensures ProcessString(prefix + suffix, initialStack) == ProcessString(suffix, ProcessString(prefix, initialStack))
-  {
-      if |prefix| == 0 {
-          assert prefix + suffix == suffix;
-      } else {
-          var c := prefix[0];
-          var newStack := if |initialStack| > 0 && initialStack[|initialStack| - 1] == c 
-                         then initialStack[..|initialStack| - 1] 
-                         else initialStack + [c];
-          ProcessStringLemma(prefix[1..], suffix, newStack);
-          assert prefix + suffix == [c] + (prefix[1..] + suffix);
-      }
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -53,45 +39,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var firstLine := ExtractFirstLine(input);
-      var stack: seq<char> := [];
-      var i := 0;
-  
-      while i < |firstLine|
-          invariant 0 <= i <= |firstLine|
-          invariant stack == ProcessString(firstLine[..i], [])
-      {
-          var c := firstLine[i];
-  
-          ghost var oldStack := stack;
-          ghost var processedSoFar := firstLine[..i];
-          ghost var nextChar := firstLine[i];
-          ghost var nextProcessed := firstLine[..i+1];
-          assert nextProcessed == processedSoFar + [nextChar];
-  
-          if |stack| > 0 && stack[|stack| - 1] == c {
-              stack := stack[..|stack| - 1];
-          } else {
-              stack := stack + [c];
-          }
-  
-          ProcessStringLemma(processedSoFar, [nextChar], []);
-          assert ProcessString(nextProcessed, []) == ProcessString(processedSoFar + [nextChar], []);
-  
-          i := i + 1;
-      }
-  
-      assert i == |firstLine|;
-      assert firstLine[..i] == firstLine;
-      assert stack == ProcessString(firstLine, []);
-      assert StackAlgorithmResultsInEmptyStack(firstLine) <==> |ProcessString(firstLine, [])| == 0;
-      assert StackAlgorithmResultsInEmptyStack(firstLine) <==> |stack| == 0;
-  
-      if |stack| == 0 {
-          result := "Yes\n";
-      } else {
-          result := "No\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

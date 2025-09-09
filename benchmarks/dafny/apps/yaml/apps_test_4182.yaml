@@ -33,47 +33,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var max_x := x;
-      var i := 0;
-      while i < |xx|
-          invariant 0 <= i <= |xx|
-          invariant forall k :: 0 <= k < i ==> xx[k] <= max_x
-          invariant max_x >= x
-          invariant max_x in xx[0..i] + [x]
-      {
-          if xx[i] > max_x {
-              max_x := xx[i];
-          }
-          i := i + 1;
-      }
-  
-      var min_y := y;
-      var j := 0;
-      while j < |yy|
-          invariant 0 <= j <= |yy|
-          invariant forall k :: 0 <= k < j ==> yy[k] >= min_y
-          invariant min_y <= y
-          invariant min_y in yy[0..j] + [y]
-      {
-          if yy[j] < min_y {
-              min_y := yy[j];
-          }
-          j := j + 1;
-      }
-  
-      var combined_x := xx + [x];
-      var combined_y := yy + [y];
-  
-      assert max_x in combined_x;
-      assert forall v :: v in combined_x ==> v <= max_x;
-      assert min_y in combined_y;
-      assert forall v :: v in combined_y ==> v >= min_y;
-  
-      if max_x < min_y {
-          result := "No War";
-      } else {
-          result := "War";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

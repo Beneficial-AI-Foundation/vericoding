@@ -21,11 +21,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if x < 1200 {
-          result := "ABC\n";
-      } else {
-          result := "ARC\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

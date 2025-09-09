@@ -37,11 +37,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    if Abs(X - Y) > 1 {
-      winner := "Alice";
-    } else {
-      winner := "Brown";
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -26,20 +26,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var deposit := 100;
-      var y_later := 0;
-  
-      while deposit < X 
-          invariant deposit >= 100
-          invariant deposit == calculateDeposit(100, y_later)
-          invariant y_later >= 0
-          invariant y_later == 0 || calculateDeposit(100, y_later - 1) < X
-      {
-          y_later := y_later + 1;
-          deposit := deposit + deposit / 100;
-      }
-  
-      return y_later;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

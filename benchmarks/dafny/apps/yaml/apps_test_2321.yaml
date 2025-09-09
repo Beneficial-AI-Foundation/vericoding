@@ -85,37 +85,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  method ParseInt(s: string) returns (result: int)
-      requires IsValidIntegerString(s)
-      ensures result >= 0
-      ensures result == StringToInt(s)
-  {
-      result := 0;
-      var i := 0;
-      while i < |s|
-          invariant 0 <= i <= |s|
-          invariant result >= 0
-          invariant result == StringToIntHelper(s, i)
-      {
-          result := result * 10 + (s[i] as int - '0' as int);
-          i := i + 1;
-      }
-  }
-  
-  method SolveCase(s: string) returns (result: int)
-      requires IsValidProblemString(s)
-      ensures 0 <= result <= |s|
-      ensures result == MinDeletionsNeeded(s)
-  {
-      if |s| == 0 {
-          return 0;
-      }
-  
-      var firstGreater := FirstGreaterFromLeft(s);
-      var firstLessFromRight := FirstLessFromRight(s);
-  
-      result := min(firstGreater, firstLessFromRight);
-  }
 
 vc-spec: |-
   method solve(lines: seq<string>) returns (results: seq<int>)
@@ -132,24 +101,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var t := ParseInt(lines[0]);
-      results := [];
-      var i := 0;
-  
-      while i < t
-          invariant 0 <= i <= t
-          invariant |results| == i
-          invariant forall r :: r in results ==> r >= 0
-          invariant forall idx :: 0 <= idx < |results| ==> 
-              results[idx] == MinDeletionsNeeded(lines[2 + 2*idx])
-      {
-          var n := ParseInt(lines[1 + 2*i]);
-          var s := lines[2 + 2*i];
-  
-          var minDeletions := SolveCase(s);
-          results := results + [minDeletions];
-          i := i + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -32,7 +32,9 @@ vc-spec: |-
       ensures result in
 
 vc-code: |-
-  {"YES", "NO"}
+  {
+    assume {:axiom} false;
+  }
 
 vc-postamble: |-
 

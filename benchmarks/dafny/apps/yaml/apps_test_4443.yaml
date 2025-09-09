@@ -31,13 +31,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if |input| > 0 {
-          var c := input[0];
-          var nextChar := (c as int + 1) as char;
-          output := [nextChar, '\n'];
-      } else {
-          output := "";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

@@ -33,34 +33,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function SplitOnSpaces(s: string): seq<string>
-  {
-      if |s| == 0 then []
-      else SplitOnSpacesHelper(s, 0, [])
-  }
-  
-  function SplitOnSpacesHelper(s: string, start: int, acc: seq<string>): seq<string>
-      requires 0 <= start <= |s|
-      decreases |s| - start
-  {
-      if start >= |s| then acc
-      else 
-          var nextSpace := FindSpaceFrom(s, start);
-          if nextSpace == -1 then
-              acc + [s[start..]]
-          else
-              SplitOnSpacesHelper(s, nextSpace + 1, acc + [s[start..nextSpace]])
-  }
-  
-  function FindSpaceFrom(s: string, start: int): int
-      requires 0 <= start <= |s|
-      ensures FindSpaceFrom(s, start) == -1 || (start <= FindSpaceFrom(s, start) < |s| && s[FindSpaceFrom(s, start)] == ' ')
-      decreases |s| - start
-  {
-      if start >= |s| then -1
-      else if s[start] == ' ' then start
-      else FindSpaceFrom(s, start + 1)
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -70,18 +42,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var stripped := if |input| > 0 && input[|input|-1] == '\n' then input[0..|input|-1] else input;
-      var parts := SplitOnSpaces(stripped);
-  
-      if |parts| != 3 || |parts[0]| == 0 || |parts[1]| == 0 || |parts[2]| == 0 {
-          return "";
-      }
-  
-      if parts[0][|parts[0]|-1] == parts[1][0] && parts[1][|parts[1]|-1] == parts[2][0] {
-          return "YES\n";
-      } else {
-          return "NO\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

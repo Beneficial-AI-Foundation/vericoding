@@ -100,37 +100,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var lines := parseInput(stdin_input);
-      if |lines| < 2 {
-          result := "\n";
-          return;
-      }
-  
-      var n := parseInt(lines[0]);
-      var digits := lines[1];
-  
-      if !ValidInput(n, digits) {
-          result := "\n";
-          return;
-      }
-  
-      var minResult := modifyString(digits, 0);
-      var i := 1;
-      while i < n
-          invariant 1 <= i <= n
-          invariant |minResult| == n
-          invariant forall j :: 0 <= j < |minResult| ==> '0' <= minResult[j] <= '9'
-          invariant exists index :: 0 <= index < i && minResult == modifyString(digits, index)
-          invariant forall index :: 0 <= index < i ==> minResult <= modifyString(digits, index)
-      {
-          var modified := modifyString(digits, i);
-          if modified < minResult {
-              minResult := modified;
-          }
-          i := i + 1;
-      }
-  
-      result := minResult + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
