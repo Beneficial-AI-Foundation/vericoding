@@ -9,6 +9,7 @@ from .code_fixer import (
     extract_code,
     verify_spec_preservation,
     restore_specs,
+    apply_json_replacements,
 )
 from ..core.language_tools import verify_file
 
@@ -19,5 +20,6 @@ __all__ = [
     "extract_code",
     "verify_spec_preservation",
     "restore_specs",
+    "apply_json_replacements",
     "verify_file",
 ]

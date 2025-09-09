@@ -13,7 +13,7 @@ from ..core.language_tools import verify_file
 from ..utils.io_utils import save_iteration_code
 import wandb
 import hashlib
-from .code_fixer import extract_code, verify_spec_preservation, restore_specs
+from .code_fixer import extract_code, verify_spec_preservation, restore_specs, apply_json_replacements
 
 # Set up a basic logger
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -112,7 +112,42 @@ def process_spec_file(
             raise
 
         generated_response = call_llm_api(config, generate_prompt)
-        generated_code = extract_code(config, generated_response)
+        
+        # Apply JSON replacements to original code (new approach)
+        generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
+        
+        # If JSON parsing failed, treat it as a verification failure
+        if json_error:
+            logger.info(f"  ✗ {json_error}")
+            
+            # Log JSON parsing failure to wandb like a verification failure
+            if wandb.run:
+                file_key = Path(file_path).stem
+                wandb.log({
+                    f"json_error/{file_key}/failed": 1,
+                    f"verify/{file_key}/success": 0  # Count as verification failure
+                })
+                
+                if failure_table is not None:
+                    failure_table.add_data(
+                        file_path,
+                        0,  # iteration 0 for JSON parsing failures
+                        hashlib.md5(original_code.encode()).hexdigest()[:8],
+                        "",  # no generated code hash since parsing failed
+                        json_error,
+                        "",  # no proof state for JSON errors
+                        time.time()
+                    )
+                
+            return ProcessingResult(
+                success=False,
+                file=file_path,
+                output=None,
+                error=json_error,
+                has_bypass=False,
+                generate_prompt=generate_prompt,
+                fix_prompts=[]
+            )
 
         # Verify that all specifications are preserved
         if config.strict_spec_verification and not verify_spec_preservation(

@@ -1,67 +1,24 @@
 generate_code: |
-  The task is to generate a Dafny file that is verified and satisfies the constraints described in specifications.  
-  INPUT: a Dafny file that contain blocks of code marked //ATOM or //SPEC. The file is of the form
-         B_1 
-         ...
-         B_n
-         where each B_i is:
-         - either an ATOM of the form 
-          //ATOM
-          atom_i
-         - or a SPEC of the form 
-          //SPEC [spec name]
-         [//CONSTRAINTS: [constraint_1] ... [constraint_k]]
-          spec_i
-          {{}}
-    WHERE:
-    - each atom_i is a function, lemma, predicate, or method.
-    - each spec_i is a method, function, or lemma with requires and ensures clauses that must be satisfied:
-          method name(params) : type
-          requires [precondition_1]
-          ...
-          requires [precondition_m]
-          ensures [postcondition_1]
-          ...
-          ensures [postcondition_k]
-      OR
-          function name(params) : type
-          requires [precondition_1]
-          ...
-          requires [precondition_m]
-          ensures [postcondition_1]
-          ...
-          ensures [postcondition_k]
-      OR
-          lemma name(params)
-          requires [precondition_1]
-          ...
-          requires [precondition_m]
-          ensures [postcondition_1]
-          ...
-          ensures [postcondition_k]
-    - if //CONSTRAINTS: is present, then each constraints_i describes some behavior or type of code that is not allowed in spec_impl_i
+  The task is to generate implementations for `<vc-code>` sections in a Dafny file.
   
-    
-  OUTPUT: a verified Dafny file of the form
-        B_impl_1 
-        ...
-        B_impl_n
-  WHERE:
-    - if B_i is an ATOM, then B_impl_i is equal to B_i 
-    - if B_i is a SPEC, then B_impl_i is of the form: 
-      //IMPL [spec name]
-      [//CONSTRAINTS: [constraint_1] ... [constraint_k]]
-       spec_impl_i 
-      where spec_impl_i is an implementation of spec_i satisfying its ensures and requires clauses. 
-    
+  INPUT: a Dafny file containing `<vc-code>` tags around placeholder implementations that need to be filled in.
+  
+  OUTPUT: Return a JSON array with one replacement for each `<vc-code>` section in the file, in order from top to bottom:
+  ```json
+  ["{\n  prefixes := [];\n  // implementation here\n}", "{\n  // second implementation\n}"]
+  ```
+  
   CRITICAL RULES:
-  - spec_impl_i should have the same method/function/lemma names, parameter type, return type, ensures and requires clauses as spec_i
-  - the atoms are assumed to be true; do not attempt to prove or change them
-  - do not use assume statements in spec_impl_i
-  - do not add trivial or unnecessary annotations in spec_impl_i
-  - output valid Dafny code
+  - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
+  - Each replacement should be the exact code that will replace everything between the `<vc-code>` tags
+  - Include opening/closing braces if they were in the original `<vc-code>` content
+  - Do not use `assume` statements or `assume {:axiom} false` in replacements
+  - Use valid Dafny syntax for all implementations
+  - Satisfy all `requires` and `ensures` clauses from the method/function specifications
+  - Do not add trivial or unnecessary annotations
+  - Return ONLY a valid JSON array, no explanations or markdown
   
-  DAFNY SPECIFICATION WITH EMPTY METHOD/FUNCTION/LEMMA BODIES:
+  DAFNY FILE WITH <vc-code> SECTIONS:
   {code}
 
 fix_verification: |
