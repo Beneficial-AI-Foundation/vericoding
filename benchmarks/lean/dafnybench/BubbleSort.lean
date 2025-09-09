@@ -11,11 +11,15 @@ import Std.Tactic.Do
 
 open Std.Do
 
-/-- Predicate that checks if an array segment is sorted in ascending order -/
-def sorted (a : Array Int) (start stop : Nat) : Prop := sorry
+/-- Predicate that an array segment `a[start..stop)` is sorted in nondecreasing order. -/
+def sorted (a : Array Int) (start stop : Nat) : Prop :=
+  start ≤ stop ∧ stop ≤ a.size ∧
+  ∀ i j : Nat, start ≤ i ∧ i < j ∧ j < stop → a[i]! ≤ a[j]!
 
-/-- Predicate that helps ensure swapping is valid during sorting -/
-def pivot (a : Array Int) (stop pvt : Nat) : Prop := sorry
+/-- Predicate describing a pivot index `pvt` for the prefix `a[0..stop)`: 
+    `pvt` is in-bounds and holds a maximum element among indices `< stop`. -/
+def pivot (a : Array Int) (stop pvt : Nat) : Prop :=
+  pvt < stop ∧ stop ≤ a.size ∧ (∀ j : Nat, j < stop → a[j]! ≤ a[pvt]!)
 
 /-- Bubble sort algorithm -/
 def bubbleSort (a : Array Int) : Array Int := sorry

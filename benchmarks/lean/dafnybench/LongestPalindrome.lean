@@ -3,19 +3,12 @@ import Std.Tactic.Do
 
 open Std.Do
 
-/-- Predicate to check if substring s[i..j) is palindromic.
+/-- Predicate to check if substring `s[i..j)` is palindromic.
     
-    A string is palindromic if it reads the same forwards and backwards.
-    Base cases: empty strings and single characters are palindromic.
-    Recursive case: s[i..j) is palindromic if s[i] = s[j-1] and s[i+1..j-1) is palindromic.
--/
-def palindromic (s : String) (i j : Nat) : Prop := sorry
-termination_by j - i
-decreasing_by 
-  simp_wf
-  have h1 : i + 1 ≤ j - 1 + 1 := by sorry
-  have h2 : j - 1 - (i + 1) < j - i := by sorry
-  exact h2
+    Implemented by extracting the substring and requiring it equals its reverse. -/
+def palindromic (s : String) (i j : Nat) : Prop :=
+  let t := s.extract ⟨i⟩ ⟨j⟩
+  t.toList = t.toList.reverse
 
 /-- Lemma: If s[lo..hi) is palindromic, then any centered substring is also palindromic.
     

@@ -6,11 +6,16 @@ open Std.Do
 /-- Predicate to check if a pair of indices is correct for the two-sum problem.
     
     A correct pair (i, j) satisfies:
-    - Both indices are valid
+    - Both indices are valid for `nums`
     - i ≠ j (can't use the same element twice)
     - nums[i] + nums[j] = target
--/
-def correct_pair (pair : Nat × Nat) (nums : List Int) (target : Int) : Prop := sorry
+
+    This is expressed using dependent indexing on `List.get` to avoid partial operations. -/
+def correct_pair (pair : Nat × Nat) (nums : List Int) (target : Int) : Prop :=
+  let i := pair.1
+  let j := pair.2
+  i ≠ j ∧ ∃ hi : i < nums.length, ∃ hj : j < nums.length,
+    nums.get ⟨i, hi⟩ + nums.get ⟨j, hj⟩ = target
 
 /-- Two Sum Problem: Find two indices whose elements sum to the target.
     

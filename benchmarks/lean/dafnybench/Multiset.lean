@@ -26,14 +26,16 @@ def ofList {α : Type} (l : List α) : Multiset α := sorry
 /-- Convert an array to a multiset -/
 def ofArray {α : Type} (a : Array α) : Multiset α := sorry
 
-/-- Check if two multisets are equal (same elements with same multiplicities) -/
-def eq {α : Type} [DecidableEq α] (m1 m2 : Multiset α) : Prop := sorry
+/-- Check if two multisets are equal (same elements with same multiplicities).
+    Implemented by comparing element counts induced by the underlying lists. -/
+def eq {α : Type} [DecidableEq α] (m1 m2 : Multiset α) : Prop :=
+  ∀ x : α, (m1.data.count x) = (m2.data.count x)
 
 /-- Count occurrences of an element in a multiset -/
 def count {α : Type} [DecidableEq α] (m : Multiset α) (x : α) : Nat := sorry
 
 /-- Check if an element is in the multiset -/
-def mem {α : Type} [DecidableEq α] (x : α) (m : Multiset α) : Prop := sorry
+def mem {α : Type} [DecidableEq α] (x : α) (m : Multiset α) : Prop := x ∈ m.data
 
 /-- Size of a multiset -/
 def size {α : Type} (m : Multiset α) : Nat := sorry

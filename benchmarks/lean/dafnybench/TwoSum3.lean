@@ -4,12 +4,12 @@ import Std.Data.HashMap
 
 open Std.Do
 
-/-- Predicate to check if all elements that could form a pair with target
-    are already in the map.
-    
-    This is used as a loop invariant in the two-sum implementation.
--/
-def InMap (nums : List Int) (m : Std.HashMap Int Nat) (target : Int) : Prop := sorry
+/-- Predicate to check if, for every element `x` in the processed prefix `nums`,
+    its complement `target - x` is already present as a key in the map `m`.
+
+    Interprets the HashMap as a set of keys; values (indices) are ignored here. -/
+def InMap (nums : List Int) (m : Std.HashMap Int Nat) (target : Int) : Prop :=
+  ∀ x, x ∈ nums → m.contains (target - x) = true
 
 /-- Two Sum with detailed specification about search order.
     
