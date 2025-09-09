@@ -14,6 +14,7 @@ import threading
 import os
 import time
 import socket
+import subprocess
 from datetime import timedelta
 
 from vericoding.utils.git_utils import get_repo_root
@@ -282,4 +283,3 @@ async def _collect_context_http_once_async(file_path: str, lines: list[int]) -> 
                     pass
     _log(f"MCP: http fallback failed: {last_exc}")
     return ""
-
