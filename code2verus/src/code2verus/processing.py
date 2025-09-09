@@ -123,11 +123,13 @@ async def process_item(
     # Exponential backoff retry logic
     for attempt in range(max_retries + 1):
         try:
-            (
-                verus_code,
-                num_iterations,
-                rust_for_verification,
-            ) = await translate_code_to_verus(source_code, source_language, is_yaml)
+            translation_result = await translate_code_to_verus(
+                source_code, source_language, is_yaml
+            )
+
+            verus_code = translation_result.output_content
+            num_iterations = translation_result.num_iterations
+            rust_for_verification = translation_result.rust_for_verification
 
             logfire.info(f"Translation took {num_iterations} iterations")
 

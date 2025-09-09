@@ -1,8 +1,20 @@
-"""Agent creation and translation logic for code2verus"""
+"""Agent creation and translation logic for code2verus
+
+This module implements an iterative translation approach that reuses a single agent
+instance across multiple iterations while maintaining true conversational context
+using PydanticAI's message_history parameter.
+
+Key design decisions:
+1. Agent reuse: Create one agent instance and reuse it for all iterations
+2. True conversation context: Use message_history parameter to maintain conversation
+   state across iterations, rather than manually building context in prompts
+3. Structured message history: Track conversation using proper PydanticAI message objects
+"""
 
 from pydantic_ai import Agent
 import logfire
 import yaml
+from dataclasses import dataclass
 
 from code2verus.config import (
     system_prompt,
@@ -15,6 +27,21 @@ from code2verus.tools import verus_tool, dafny_tool
 from code2verus.utils import extract_rust_code, concatenate_yaml_fields
 
 
+@dataclass
+class TranslationResult:
+    """Result of a code translation operation
+
+    Attributes:
+        output_content: The main translated content (YAML or Rust code)
+        num_iterations: Number of iterations taken during translation
+        rust_for_verification: Rust code used for verification (may differ from output_content for YAML)
+    """
+
+    output_content: str  # The main translated content (YAML or Rust)
+    num_iterations: int  # Number of iterations taken
+    rust_for_verification: str  # Rust code used for verification
+
+
 def create_agent(source_language: str = "dafny"):
     """Create and return a configured PydanticAI agent with tools"""
     # Load language-specific system prompt
@@ -25,7 +52,7 @@ def create_agent(source_language: str = "dafny"):
     return Agent(
         cfg["model"],
         name="code2verus",
-        deps_type=str,
+        deps_type=str,  # Currently using str, could be enhanced to dict for richer context
         output_type=str,
         tools=[verus_tool, dafny_tool],
         system_prompt=language_prompt,
@@ -38,12 +65,19 @@ async def translate_code_to_verus(
     source_language: str = "dafny",
     is_yaml: bool = False,
     max_iterations: int | None = None,
-) -> tuple[str, int, str]:
-    """Translate source code to Verus using the agent with verification feedback"""
+) -> TranslationResult:
+    """Translate source code to Verus using the agent with verification feedback
+
+    Returns:
+        TranslationResult: Contains output_content, num_iterations, and rust_for_verification.
+    """
     # Use config value if max_iterations not provided
     if max_iterations is None:
         max_iterations = get_config_value("max_translation_iterations")
 
+    # Create the agent once and reuse it throughout iterations
+    # We maintain true conversational context using PydanticAI's message_history parameter
+    # This ensures the agent remembers previous exchanges and can build upon them
     agent = create_agent(source_language)
 
     # Initialize variables
@@ -51,6 +85,20 @@ async def translate_code_to_verus(
     output_content = ""
     rust_for_verification = ""
     iteration = 0
+
+    # Track conversation using proper message history for PydanticAI
+    # This will be passed to agent.run() to maintain context across iterations
+    conversation_history = []
+
+    # Track iteration context for logging and debugging
+    iteration_context = {
+        "original_source": source_code,
+        "source_language": source_language,
+        "is_yaml": is_yaml,
+        "previous_attempts": [],
+        "verification_errors": [],
+        "conversation_exchanges": [],  # Track exchanges for logging
+    }
 
     # Get language-specific prompts from config
     if is_yaml:
@@ -84,11 +132,97 @@ Please translate the following {source_language} code to Verus:
 {additional_prompt}
 """
 
+    # Log initial translation setup
+    logfire.info("Starting translation process:")
+    logfire.info(f"Source language: {source_language}")
+    logfire.info(f"Is YAML mode: {is_yaml}")
+    logfire.info(f"Max iterations: {max_iterations}")
+    logfire.info(f"Source code length: {len(source_code)} characters")
+    logfire.info(f"Additional prompt length: {len(additional_prompt)} characters")
+    logfire.debug(f"Initial user prompt:\n{user_prompt}")
+
     # Iterative improvement with verification feedback
     for iteration in range(max_iterations):
         logfire.info(f"Translation iteration {iteration + 1}/{max_iterations}")
 
-        result = await agent.run(user_prompt, deps=source_code)
+        # Update iteration context for better dependency tracking
+        iteration_context["current_iteration"] = iteration + 1
+        iteration_context["max_iterations"] = max_iterations
+
+        # For the first iteration, use the original prompt
+        if iteration == 0:
+            current_prompt = user_prompt
+        else:
+            # For subsequent iterations, provide feedback based on previous errors
+            # The conversation context will be maintained via message_history
+            if iteration_context["verification_errors"]:
+                latest_error = iteration_context["verification_errors"][-1]
+                current_prompt = get_error_template(
+                    "verification_error",
+                    verification_error=latest_error.get("error", ""),
+                    verification_output=latest_error.get("output", ""),
+                    source_language=source_language,
+                    source_language_lower=source_language.lower(),
+                    source_code=source_code,
+                    additional_prompt=additional_prompt,
+                )
+            else:
+                # Fallback to a generic improvement request
+                current_prompt = "Please improve the previous translation to fix any issues and ensure it compiles with Verus."
+
+        # Use deps to pass iteration context (for potential future tool enhancements)
+        deps_context = f"iteration_{iteration + 1}_of_{max_iterations}"
+        if iteration_context["previous_attempts"]:
+            deps_context += (
+                f"_with_{len(iteration_context['previous_attempts'])}_previous_attempts"
+            )
+
+        # Log the prompt being sent to the agent
+        logfire.info(f"Sending prompt to agent (iteration {iteration + 1}):")
+        logfire.info(f"Prompt length: {len(current_prompt)} characters")
+        logfire.debug(f"Full prompt:\n{current_prompt}")
+
+        # Run the agent with proper message history to maintain conversation context
+        # This is the key improvement: message_history maintains true conversational context
+        result = await agent.run(
+            current_prompt, message_history=conversation_history, deps=deps_context
+        )
+
+        # Log the agent's response
+        logfire.info(f"Received response from agent (iteration {iteration + 1}):")
+        logfire.info(f"Response length: {len(result.output)} characters")
+        logfire.debug(f"Full response:\n{result.output}")
+
+        # Update conversation history with this exchange
+        # PydanticAI will automatically manage the message objects in result.all_messages()
+        try:
+            new_history = result.all_messages()
+            # Type guard to ensure we have a proper list
+            if isinstance(new_history, list):
+                conversation_history = new_history
+                logfire.info(
+                    f"Updated conversation history: {len(conversation_history)} messages"
+                )
+            else:
+                logfire.warning(
+                    f"Unexpected type for conversation history: {type(new_history)}"
+                )
+        except (AttributeError, TypeError) as e:
+            logfire.warning(f"Could not update conversation history: {e}")
+
+        # Store the conversation exchange for logging
+        iteration_context["conversation_exchanges"].append(
+            {
+                "iteration": iteration + 1,
+                "prompt": current_prompt,
+                "response": result.output,
+                "prompt_length": len(current_prompt),
+                "response_length": len(result.output),
+                "message_history_length": len(conversation_history)
+                if isinstance(conversation_history, list)
+                else 0,
+            }
+        )
 
         # Handle output based on file type
         if is_yaml:
@@ -104,6 +238,15 @@ Please translate the following {source_language} code to Verus:
             except yaml.YAMLError as e:
                 logfire.warning(f"Generated YAML is malformed: {e}")
                 if iteration < max_iterations - 1:
+                    # Track YAML error for context
+                    iteration_context["verification_errors"].append(
+                        {
+                            "iteration": iteration + 1,
+                            "error": f"YAML syntax error: {str(e)}",
+                            "type": "yaml_syntax",
+                        }
+                    )
+
                     # If we have more iterations, prepare feedback to fix the YAML
                     yaml_error_feedback = get_error_template(
                         "yaml_syntax_error",
@@ -113,7 +256,15 @@ Please translate the following {source_language} code to Verus:
                         source_code=source_code,
                         additional_prompt=additional_prompt,
                     )
-                    user_prompt = yaml_error_feedback
+                    # Store this error feedback for next iteration
+                    current_prompt = yaml_error_feedback
+
+                    # Log the YAML error feedback that will be used in next iteration
+                    logfire.warning(
+                        "YAML syntax error occurred, preparing feedback for next iteration:"
+                    )
+                    logfire.debug(f"YAML error feedback prompt:\n{yaml_error_feedback}")
+
                     continue  # Skip verification and go to next iteration to fix YAML
 
             # Also generate concatenated Rust code from YAML for verification
@@ -139,13 +290,37 @@ Please translate the following {source_language} code to Verus:
                 verification_error,
             ) = await verify_verus_code(rust_for_verification, is_yaml)
 
+            # Track attempt results for context
+            attempt_result = {
+                "iteration": iteration + 1,
+                "output_content": output_content,
+                "verification_success": verification_success,
+                "verification_error": verification_error
+                if not verification_success
+                else None,
+            }
+            iteration_context["previous_attempts"].append(attempt_result)
+
             if verification_success:
                 logfire.info(f"Verification successful on iteration {iteration + 1}")
+                logfire.info(
+                    f"Successfully translated after {iteration + 1} iterations"
+                )
+                logfire.debug(f"Final successful output:\n{output_content}")
                 break
             else:
                 logfire.info(
                     f"Verification failed on iteration {iteration + 1}, trying to improve..."
                 )
+                # Track verification errors for context
+                iteration_context["verification_errors"].append(
+                    {
+                        "iteration": iteration + 1,
+                        "error": verification_error,
+                        "output": verification_output,
+                    }
+                )
+
                 # Prepare feedback for next iteration with specific error details
                 feedback_prompt = get_error_template(
                     "verification_error",
@@ -156,9 +331,59 @@ Please translate the following {source_language} code to Verus:
                     source_code=source_code,
                     additional_prompt=additional_prompt,
                 )
+                # Store this feedback for next iteration (will be enhanced with context)
+                # The context building logic above will incorporate this feedback
                 user_prompt = feedback_prompt
+
+                # Log the verification error feedback
+                logfire.warning(
+                    "Verification failed, preparing feedback for next iteration:"
+                )
+                logfire.info(f"Verification error: {verification_error}")
+                logfire.debug(f"Verification output: {verification_output}")
+                logfire.debug(f"Error feedback prompt:\n{feedback_prompt}")
 
     # Return the actual number of iterations performed
     num_iterations = iteration + 1
 
-    return output_content, num_iterations, rust_for_verification
+    # Log final summary of the translation process
+    logfire.info(f"Translation completed after {num_iterations} iterations")
+    logfire.info(f"Final output length: {len(output_content)} characters")
+    logfire.info(
+        f"Total conversation exchanges: {len(iteration_context['conversation_exchanges'])}"
+    )
+    logfire.info(
+        f"Final conversation history length: {len(conversation_history) if isinstance(conversation_history, list) else 0} messages"
+    )
+
+    # Log conversation summary
+    conversation_summary = "Conversation Summary:\n"
+    for i, exchange in enumerate(iteration_context["conversation_exchanges"]):
+        conversation_summary += (
+            f"Exchange {i + 1} (Iteration {exchange['iteration']}):\n"
+        )
+        conversation_summary += f"  - Prompt: {exchange['prompt_length']} chars\n"
+        conversation_summary += f"  - Response: {exchange['response_length']} chars\n"
+        conversation_summary += (
+            f"  - Message history: {exchange['message_history_length']} messages\n"
+        )
+
+    logfire.info(conversation_summary)
+
+    # Log verification attempts summary
+    if iteration_context["verification_errors"]:
+        logfire.info(
+            f"Verification errors encountered: {len(iteration_context['verification_errors'])}"
+        )
+        for i, error in enumerate(iteration_context["verification_errors"]):
+            logfire.debug(
+                f"Error {i + 1} (Iteration {error['iteration']}): {error['error'][:100]}..."
+            )
+
+    logfire.debug(f"Final translated output:\n{output_content}")
+
+    return TranslationResult(
+        output_content=output_content,
+        num_iterations=num_iterations,
+        rust_for_verification=rust_for_verification,
+    )
