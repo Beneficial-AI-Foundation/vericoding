@@ -1,11 +1,3 @@
-/*
-Given a non-empty string containing only characters 'v' and 'o' with length at most 10^6,
-calculate its "wow factor" - the number of subsequences that form the pattern "wow".
-Each 'w' must be represented by exactly two consecutive 'v' characters.
-A valid "wow" subsequence consists of: two consecutive 'v' characters (first 'w'),
-an 'o' character appearing later, and two consecutive 'v' characters after the 'o' (second 'w').
-*/
-
 function wowFactor(s: string): int
     requires |s| > 0
     requires forall i :: 0 <= i < |s| ==> s[i] == 'v' || s[i] == 'o'

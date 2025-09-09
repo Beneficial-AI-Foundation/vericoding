@@ -1,8 +1,3 @@
-/*
-Given a string containing comma-separated words, replace all commas with spaces.
-The input string has length 19 with format: 5 lowercase letters, comma, 7 lowercase letters, comma, 5 lowercase letters.
-*/
-
 predicate ValidInput(s: string)
 {
   |s| == 19 && 

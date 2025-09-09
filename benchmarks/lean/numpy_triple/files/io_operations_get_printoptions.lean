@@ -1,30 +1,3 @@
-/- 
-{
-  "name": "numpy.get_printoptions",
-  "category": "String formatting",
-  "description": "Return the current print options",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.get_printoptions.html",
-  "doc": "Return the current print options.\n\n    Returns\n    -------\n    print_opts : dict\n        Dictionary of current print options with keys\n\n        - precision : int\n        - threshold : int\n        - edgeitems : int\n        - linewidth : int\n        - suppress : bool\n        - nanstr : str\n        - infstr : str\n        - sign : str\n        - formatter : dict of callables\n        - floatmode : str\n        - legacy : str or False\n\n        For a full description of these options, see \`set_printoptio...",
-}
--/
-
-/-  numpy.get_printoptions: Return the current print options
-
-    Returns a structure containing the current print options that control
-    how arrays are formatted when displayed. These options include precision
-    for floating point numbers, threshold for array summarization, and
-    various string representations.
-
-    This function reads the current state of NumPy's print formatting system.
--/
-
-/-  Specification: get_printoptions returns a valid PrintOptions structure
-    with sensible default values.
-
-    Precondition: True (no special preconditions)
-    Postcondition: Result contains valid print options with proper constraints
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

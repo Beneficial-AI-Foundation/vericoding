@@ -1,8 +1,3 @@
-/*
-function_signature: def digitSum(string: str) -> Nat
-Write a function that takes a string as input and returns the sum of the upper characters only' ASCII codes.
-*/
-
 function upper_sum_rec(s: string): int
 
   ensures upper_sum_rec(s) >= 0

@@ -1,9 +1,3 @@
-/*
-Given a wake-up time and sleep duration, both in "hh:mm" 24-hour format,
-calculate the bedtime by subtracting the sleep duration from the wake-up time.
-Handle day wrap-around when the bedtime falls on the previous day.
-*/
-
 predicate ValidTimeFormat(time_str: string)
 {
     |time_str| == 5 &&

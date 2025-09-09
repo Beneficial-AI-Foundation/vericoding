@@ -1,10 +1,3 @@
-/*
-Given a positive integer n, find the minimum number of digit 1s needed to represent n 
-as a sum and/or difference of repunits (numbers containing only 1s: 1, 11, 111, 1111, ...).
-
-// simplified for larger values
-*/
-
 function pow(base: nat, exp: nat): nat
 {
     if exp == 0 then 1 else base * pow(base, exp - 1)

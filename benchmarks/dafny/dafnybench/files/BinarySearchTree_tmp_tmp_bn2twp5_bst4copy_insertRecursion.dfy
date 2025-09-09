@@ -1,6 +1,3 @@
-/*
-*/
-
 datatype Tree = Empty | Node(left: Tree, value: int, right: Tree)
 
 predicate BinarySearchTree(tree: Tree)

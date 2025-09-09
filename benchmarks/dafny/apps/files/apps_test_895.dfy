@@ -1,9 +1,3 @@
-/*
-Given n students who perform rituals at times t_i, find the maximum number of students 
-that can be visited by a "freebie" present for exactly T consecutive seconds.
-All visited students must have ritual times within the same T-second interval.
-*/
-
 predicate ValidInput(n: int, times: seq<int>, T: int)
 {
     n >= 1 && |times| == n && T >= 1 && 

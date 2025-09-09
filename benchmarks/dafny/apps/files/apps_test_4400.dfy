@@ -1,8 +1,3 @@
-/*
-Given a string S of length 3 representing weather records for 3 consecutive days
-(where 'S' means sunny and 'R' means rainy), find the maximum number of consecutive rainy days.
-*/
-
 predicate ValidInput(s: string) {
     |s| == 3 && forall i :: 0 <= i < |s| ==> s[i] == 'S' || s[i] == 'R'
 }

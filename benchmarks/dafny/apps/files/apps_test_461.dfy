@@ -1,13 +1,3 @@
-/*
-Find the minimum distance Winnie-the-Pooh must travel to have n meals.
-Winnie starts at Rabbit's house and has his first meal there.
-There are 3 houses: Rabbit, Owl, and Eeyore, forming a triangle.
-Distances: Rabbit↔Owl = a meters, Rabbit↔Eeyore = b meters, Owl↔Eeyore = c meters.
-After each meal, Winnie must leave the current house and go to one of the two adjacent houses.
-He needs n meals total, so he makes (n-1) moves.
-Find the minimum total distance for all moves.
-*/
-
 predicate ValidInput(n: int, a: int, b: int, c: int)
 {
   1 <= n <= 100 && 1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100

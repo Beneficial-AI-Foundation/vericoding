@@ -1,9 +1,3 @@
-/*
-Count the integers from 1 to N (inclusive) that have exactly K non-zero digits 
-in their decimal representation. N can be very large (up to 10^100) and K is 
-between 1 and 3.
-*/
-
 function CountNonZeroDigits(n: int): int
     requires n >= 0
     ensures CountNonZeroDigits(n) >= 0

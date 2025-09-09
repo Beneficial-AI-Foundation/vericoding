@@ -1,30 +1,3 @@
-/-  Integrate a polynomial.
-
-    Returns the polynomial coefficients integrated m times from lbnd.
-    At each iteration the resulting series is multiplied by scl and 
-    an integration constant k is added. The scaling factor is for use 
-    in a linear change of variable.
-
-    The input coefficients are ordered from low to high degree.
-    For example, [1, 2, 3] represents 1 + 2*x + 3*x².
--/
-
-/-  Specification: polyint integrates polynomial coefficients m times.
-
-    The integration process:
-    1. For each integration step i (from 0 to m-1):
-       - Multiply all coefficients by scl
-       - Integrate: coefficient at degree j becomes coefficient/(j+1) at degree j+1
-       - Add integration constant k[i] adjusted for lower bound lbnd
-    2. Result has m more coefficients than input (degree increases by m)
-
-    Properties:
-    - Integration increases polynomial degree by m
-    - Each integration step preserves the polynomial structure
-    - The derivative of the result (m times) gives back the original scaled by scl^m
-    - Integration constants k determine the value of antiderivatives at lbnd
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

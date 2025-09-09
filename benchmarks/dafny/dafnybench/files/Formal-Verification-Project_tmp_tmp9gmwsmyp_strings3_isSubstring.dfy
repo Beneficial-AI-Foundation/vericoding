@@ -1,7 +1,3 @@
-/*
-//ensures !res <==> isNotSubstringPred(sub, str) // This postcondition follows from the above lemma.
-*/
-
 predicate isPrefixPred(pre:string, str:string)
 {
     (|pre| <= |str|) && 

@@ -1,7 +1,3 @@
-/*
-//ensures sum==SumL(v[0..v.Length])
-*/
-
 function SumR(s:seq<int>):int
 decreases s
 {

@@ -1,8 +1,3 @@
-/*
-Given n cards with integers (absolute value ≤ x), find the minimum number of additional cards
-needed to make the total sum equal to zero. Additional cards can have integer values from -x to x.
-*/
-
 function sum(cards: seq<int>): int
 {
     if |cards| == 0 then 0

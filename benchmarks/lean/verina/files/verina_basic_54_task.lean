@@ -1,20 +1,3 @@
-/- 
------Description-----
-This task is about determining the minimum absolute difference between any pair of integers, where one integer is taken from the first sorted array and the other integer is taken from the second sorted array. The focus is on accurately finding the smallest absolute difference between any two elements from the arrays, independent of the specific techniques or programming language used.
-
------Input-----
-The input consists of:
-• a: An array of integers, sorted in non-decreasing order and guaranteed to be non-empty.
-• b: An array of integers, also sorted in non-decreasing order and non-empty.
-
------Output-----
-The output is a natural number (Nat) representing the minimum absolute difference between any element a[i] from the first array and b[j] from the second array.
-
------Note-----
-• It is assumed that both arrays are non-empty.
-• The arrays are assumed to be sorted in non-decreasing order.
--/
-
 @[reducible, simp]
 def CanyonSearch_precond (a : Array Int) (b : Array Int) : Prop :=
   a.size > 0 ∧ b.size > 0 ∧ List.Pairwise (· ≤ ·) a.toList ∧ List.Pairwise (· ≤ ·) b.toList

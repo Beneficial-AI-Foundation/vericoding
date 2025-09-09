@@ -1,8 +1,3 @@
-/*
-Given an integer N, determine if N is divisible by the sum of its digits (when written in base 10).
-Return "Yes" if N is divisible by the sum of its digits, otherwise return "No".
-*/
-
 function sumOfDigits(n: int): int
   requires n >= 0
   ensures n > 0 ==> sumOfDigits(n) > 0

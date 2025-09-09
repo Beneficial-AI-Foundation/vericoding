@@ -1,9 +1,3 @@
-/*
-Given a sequence of n integers, perform at most k operations where each operation
-increases or decreases any element by 1. Find the minimum possible difference
-between the maximum and minimum elements after performing these operations.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| >= 5 && hasValidFormat(input)

@@ -1,10 +1,3 @@
-/*
-Given a month number and the weekday of its first day, determine how many columns 
-are needed for a calendar table where each column represents one week (Monday through Sunday).
-The calendar places dates sequentially and a new column is needed when transitioning 
-from Sunday to Monday.
-*/
-
 predicate ValidInput(m: int, d: int)
 {
     1 <= m <= 12 && 1 <= d <= 7

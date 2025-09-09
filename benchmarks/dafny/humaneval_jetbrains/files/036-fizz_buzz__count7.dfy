@@ -1,8 +1,3 @@
-/*
-function_signature: method count7(x: nat) returns (count: nat)
-Count occurrences. Ensures: returns the correct value.
-*/
-
 function count7_r(x: nat): nat {
   var lst := if x % 10 == 7 then 1 else 0;
   if x < 10 then lst else lst + count7_r(x / 10)

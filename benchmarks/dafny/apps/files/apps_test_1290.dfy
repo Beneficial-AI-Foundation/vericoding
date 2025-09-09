@@ -1,10 +1,3 @@
-/*
-Given n columns and m squares appearing in specified columns, calculate points earned.
-Each square stacks in its column. When all columns have at least one square,
-the bottom row is removed (earning 1 point) and squares drop down.
-Return total points earned.
-*/
-
 predicate ValidInput(n: int, m: int, squares: seq<int>) {
     n >= 1 && n <= 1000 &&
     m >= 1 && m <= 1000 &&

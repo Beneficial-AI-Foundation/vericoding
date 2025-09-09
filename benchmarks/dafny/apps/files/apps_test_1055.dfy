@@ -1,9 +1,3 @@
-/*
-Given an array of integers, apply the Thanos sort algorithm to find the maximum length 
-of a sorted subarray. The algorithm works by: if the array is sorted, stop; otherwise 
-choose either the first half or second half and repeat the process.
-*/
-
 predicate ValidInput(a: seq<int>)
 {
     |a| > 0

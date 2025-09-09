@@ -1,10 +1,3 @@
-/*
-Count the number of integer right triangles (a, b, c) where:
-- a² + b² = c² (Pythagorean theorem)
-- 1 ≤ a ≤ b ≤ c ≤ n
-- All sides are positive integers
-*/
-
 predicate ValidInput(input: string)
 {
   |input| > 0

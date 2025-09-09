@@ -1,8 +1,3 @@
-/*
-function_signature: method sort_strings(list: seq<string>) returns (sorted: seq<string>)
-Sort elements. Ensures: returns the correct size/count; returns a sorted permutation of the input.
-*/
-
 function comparison(a : string, b : string, i : int): bool
     requires 0 <= i <= |a| && 0 <= i <= |b|
     decreases |a| - i

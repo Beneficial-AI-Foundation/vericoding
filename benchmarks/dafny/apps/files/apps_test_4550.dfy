@@ -1,9 +1,3 @@
-/*
-Given three candy packs with a, b, and c candies respectively, determine if it's possible 
-to distribute these packs between two students such that each receives the same total number 
-of candies. Each pack must be given entirely to one student.
-*/
-
 predicate ValidInputFormat(input: string)
 {
     |input| > 0 && 

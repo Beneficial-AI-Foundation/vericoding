@@ -1,13 +1,3 @@
-/*
-Given n castles with soldiers, two players alternate turns starting with White.
-Each turn a player attacks a castle using mixed (x damage), infantry (y damage, 
-forbidden if previous attack on same castle was infantry), or cavalry (z damage,
-forbidden if previous attack on same castle was cavalry). Player making the last
-attack wins. Find number of White's winning first moves using Grundy number theory.
-
-// Implementation uses Grundy number theory
-*/
-
 datatype TestCase = TestCase(n: nat, x: nat, y: nat, z: nat, castles: seq<nat>)
 
 predicate ValidInput(input: string)

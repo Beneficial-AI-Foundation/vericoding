@@ -1,8 +1,3 @@
-/*
-function_signature: method next_odd_collatz_iter(n: nat) returns (next: nat)
-Process input. Requires: requires n > 0. Ensures: returns the correct value; returns the correct value.
-*/
-
 function iterate_to_odd(n: nat): nat
   requires n % 2 == 0
   requires n > 0

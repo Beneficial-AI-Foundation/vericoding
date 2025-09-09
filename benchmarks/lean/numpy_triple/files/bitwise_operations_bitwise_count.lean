@@ -1,26 +1,3 @@
-/- 
-{
-  "name": "numpy.bitwise_count",
-  "category": "Bit counting",
-  "description": "Computes the number of 1-bits in the absolute value of x",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.bitwise_count.html",
-  "doc": "Computes the number of 1-bits in the absolute value of x.\n\nAnalogous to the builtin int.bit_count or popcount in C++.\n\nParameters\n----------\nx : array_like, unsigned int\n    Input array.\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored. If provided, it must have a shape that the inputs broadcast to. If not provided or None, a freshly-allocated array is returned.\nwhere : array_like, optional\n    This condition is broadcast over the input. At locations where the condition is True, the out array will be set to the ufunc result.\n\nReturns\n-------\ny : ndarray\n    The corresponding number of 1-bits in the input.\n    Returns uint8 for all integer types.\n    This is a scalar if x is a scalar.\n\nReferences\n----------\n.. [1] Wikipedia, \"Hamming weight\",\n       https://en.wikipedia.org/wiki/Hamming_weight\n.. [2] http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetParallel\n.. [3] https://aggregate.ee.engr.uky.edu/MAGIC/#Population%20Count%20(Ones%20Count)\n\nExamples\n--------\n>>> np.bitwise_count(1023)\nnp.uint8(10)\n>>> a = np.array([2**i - 1 for i in range(16)])\n>>> np.bitwise_count(a)\narray([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15],\n      dtype=uint8)",
-}
--/
-
-/-  Computes the number of 1-bits in the absolute value of each element in a vector -/
-
-/-  Specification: bitwise_count returns the count of 1-bits in the binary representation
-    of the absolute value of each element. The result satisfies several properties:
-    1. Each output element is the popcount of the corresponding input's absolute value
-    2. The popcount is bounded by the number of bits in the representation
-    3. Zero inputs produce zero outputs
-    4. Powers of 2 have exactly one bit set
-    5. Powers of 2 minus 1 have consecutive 1-bits (e.g., 2^k - 1 has k bits set)
-    6. The popcount is always non-negative and bounded by bit width
-    7. For negative inputs, uses the absolute value
-    8. The popcount operation is invariant under sign changes -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

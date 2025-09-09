@@ -1,9 +1,3 @@
-/*
-Given an array of n integers and m queries, for each query l_i, find the number of distinct elements
-in the suffix of the array starting from position l_i (1-indexed). The suffix includes all elements
-from position l_i to the end of the array.
-*/
-
 predicate ValidInput(n: int, m: int, A: seq<int>, queries: seq<int>)
 {
     |A| == n && |queries| == m && n >= 1 && m >= 1 &&

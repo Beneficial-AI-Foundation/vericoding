@@ -1,14 +1,3 @@
-/- 
-function_signature: "def sort_numbers(numbers: str) -> str"
-docstring: |
-    Input is a space-delimited string of numberals from 'zero' to 'nine'.
-    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.
-    Return the string with numbers sorted from smallest to largest
-test_cases:
-  - input: "three one five"
-    expected_output: "one three five"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

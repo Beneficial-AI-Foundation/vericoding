@@ -1,6 +1,3 @@
-/*
-*/
-
 ghost function Expt(b: int, n: nat): int
   requires n >= 0
 {

@@ -1,8 +1,3 @@
-/*
-Given a three-digit positive integer N (100 ≤ N ≤ 999), determine if it is palindromic
-(reads the same forwards and backwards in decimal notation).
-*/
-
 predicate ValidInput(n: int)
 {
   100 <= n <= 999

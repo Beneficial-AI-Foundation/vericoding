@@ -1,8 +1,3 @@
-/*
-function_signature: def x_or_y(int n, int x, int y) -> int
-A simple program which should return the value of x if n is a prime number and should return the value of y otherwise.
-*/
-
 function IsPrime(n: nat) : bool
 {
   n > 1 &&

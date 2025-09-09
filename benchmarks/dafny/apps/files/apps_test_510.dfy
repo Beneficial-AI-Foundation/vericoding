@@ -1,9 +1,3 @@
-/*
-Three ropewalkers are positioned at coordinates a, b, and c on an infinite line.
-Each second, exactly one ropewalker can move by 1 unit left or right.
-Find the minimum time needed so that the distance between every pair of ropewalkers is at least d.
-*/
-
 function pos1(a: int, b: int, c: int): int
 {
     if a <= b && a <= c then a

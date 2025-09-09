@@ -1,10 +1,3 @@
-/*
-Given n accounts with integer ratings and one infected account (Killjoy's) with rating x,
-find the minimum number of contests needed to infect all n accounts.
-Infection spreads instantly to accounts with the same rating.
-In contests, participants can change ratings (sum of changes = 0), Killjoy cannot participate.
-*/
-
 function CountOccurrences(s: seq<int>, x: int): int
     ensures CountOccurrences(s, x) >= 0
     ensures CountOccurrences(s, x) <= |s|

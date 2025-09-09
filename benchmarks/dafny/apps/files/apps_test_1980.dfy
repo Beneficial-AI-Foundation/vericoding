@@ -1,13 +1,3 @@
-/*
-Given n problems with difficulties d_i (in increasing order) and costs c_i, find the maximum profit 
-from selecting a consecutive subsegment of problems. For a subsegment [l, r]:
-- Revenue: (r - l + 1) × a burles (where a is profit per problem)
-- Costs: sum of c_i for i in [l, r] + gap(l, r)
-- gap(l, r) = max{(d_{i+1} - d_i)² | l ≤ i < r}, or 0 if l = r
-- Profit = Revenue - Costs
-Find the maximum possible profit (can be 0 if all segments are unprofitable).
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLinesSpec(input);

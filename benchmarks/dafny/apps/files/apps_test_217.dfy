@@ -1,9 +1,3 @@
-/*
-A bus travels back and forth between points x=0 and x=a, making k total journeys.
-The bus has fuel capacity b and consumes 1 unit per distance unit. There's a gas station at x=f.
-Find minimum refuels needed to complete k journeys, or return -1 if impossible.
-*/
-
 predicate ValidInput(a: int, b: int, f: int, k: int) {
   a > 0 && b > 0 && f > 0 && k > 0 && f < a
 }

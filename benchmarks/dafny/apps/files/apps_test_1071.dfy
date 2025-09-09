@@ -1,9 +1,3 @@
-/*
-Given a cupboard with n shelves, determine if all cups and medals can be placed
-following constraints: cups and medals cannot be on the same shelf, each shelf
-can hold at most 5 cups, and each shelf can hold at most 10 medals.
-*/
-
 predicate ValidInput(a: seq<int>, b: seq<int>, n: int)
 {
     |a| >= 0 && |b| >= 0 &&

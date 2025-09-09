@@ -1,13 +1,3 @@
-/*
-/**
- * Find negative numbers from an array of numbers
- **/
-
-// All numbers in the output are negative and exist in the input 
-
-// All negative numbers in the input are in the output
-*/
-
 predicate IsNegative(n: int)
 {
     n < 0

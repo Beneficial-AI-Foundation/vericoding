@@ -1,9 +1,3 @@
-/*
-Given n cards with letters/digits, determine minimum cards to flip to verify:
-"If a card has a vowel on one side, then it has an even digit on the other side."
-Input: string representing visible sides. Output: minimum flips needed.
-*/
-
 predicate IsVowel(c: char) {
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
 }

@@ -1,11 +1,3 @@
-/*
-// http://verifythus.cost-ic0701.org/common-example/arraymax-in-dafny
-
-//max is larger then anything in the array
-
-//max is an element in the array
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

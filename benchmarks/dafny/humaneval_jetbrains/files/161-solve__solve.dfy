@@ -1,8 +1,3 @@
-/*
-function_signature: method solve(s: string) returns (t: string)
-Process input. Ensures: returns the correct size/count; the condition holds for all values; there exists a value satisfying the condition.
-*/
-
 function is_alpha(c: char) : bool {
   'a' <= c <= 'z' || 'A' <= c <= 'Z'
 }

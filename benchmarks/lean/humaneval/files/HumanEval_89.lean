@@ -1,21 +1,3 @@
-/- 
-function_signature: "def encrypt(str : str) -> str"
-docstring: |
-    Create a function encrypt that takes a string as an argument and
-    returns a string encrypted with the alphabet being rotated.
-    The alphabet should be rotated in a manner such that the letters
-    shift down by two multiplied to two places.
-test_cases:
-  - input: "hi"
-    output: "lm"
-  - input: "asdfghjkl"
-    output: "ewhjklnop"
-  - input: "gf"
-    output: "kj"
-  - input: "et"
-    output: "ix"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

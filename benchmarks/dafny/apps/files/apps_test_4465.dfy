@@ -1,8 +1,3 @@
-/*
-Calculate the remaining area of a rectangular farm after placing one vertical road
-and one horizontal road, each 1 yard wide, that span the entire width/height.
-*/
-
 predicate ValidFarmDimensions(a: int, b: int)
 {
     a >= 2 && b >= 2 && a <= 100 && b <= 100

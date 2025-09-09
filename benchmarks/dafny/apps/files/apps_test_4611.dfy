@@ -1,10 +1,3 @@
-/*
-Given N checkpoints with coordinates (x_i, y_i) and times t_i, determine if it's possible 
-to visit each checkpoint at the specified time, starting from (0,0) at time 0. 
-At each time step, you must move to an adjacent cell (up, down, left, right) and cannot 
-stay in the same position.
-*/
-
 datatype Checkpoint = Checkpoint(t: int, x: int, y: int)
 
 predicate ValidInputFormat(input: string)

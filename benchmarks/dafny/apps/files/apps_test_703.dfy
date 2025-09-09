@@ -1,9 +1,3 @@
-/*
-Store `a` nuts in boxes using `b` available divisors. Each box can have at most `k` sections.
-A box with `x` divisors has `x+1` sections. Each section holds at most `v` nuts.
-Find minimum number of boxes needed.
-*/
-
 function min(x: int, y: int): int
 {
     if x <= y then x else y

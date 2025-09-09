@@ -1,9 +1,3 @@
-/*
-Given n bus routes with start times and intervals, find which route has the earliest bus
-arriving at or after target time t. Each route i has first bus at time s_i and subsequent
-buses every d_i minutes. Return the 1-indexed route number.
-*/
-
 predicate ValidInput(n: int, t: int, routes: seq<(int, int)>)
 {
   n > 0 && |routes| == n && 

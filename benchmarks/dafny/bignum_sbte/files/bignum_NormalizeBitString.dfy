@@ -1,8 +1,3 @@
-/*
-Bignum task: bignum_NormalizeBitString.
-Implement the method according to the Dafny specification.
-*/
-
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
   decreases s

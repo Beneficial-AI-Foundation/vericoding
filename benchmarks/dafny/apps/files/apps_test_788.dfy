@@ -1,8 +1,3 @@
-/*
-Calculate a score from a string starting with 'A' followed by exactly 6 digits.
-Score formula: sum of all 6 digits + 9 * count of zero digits + 1
-*/
-
 predicate ValidInput(s: string) 
 {
     |s| == 7 && s[0] == 'A' && forall i :: 1 <= i < 7 ==> '0' <= s[i] <= '9'

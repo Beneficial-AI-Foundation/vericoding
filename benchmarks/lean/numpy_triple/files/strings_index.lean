@@ -1,21 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.index",
-  "category": "String information",
-  "description": "Like find, but raises ValueError when the substring is not found",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.index.html",
-  "doc": "Like \`find\`, but raises \`ValueError\` when the substring is not found.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nsub : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nstart, end : array_like, with any integer dtype, optional\n    The range to look in, interpreted as slice notation.\n\nReturns\n-------\nout : ndarray\n    Output array of ints.\n\nRaises\n------\nValueError\n    If substring not found.",
-}
--/
-
-/-  For each element, return the lowest index in the string where substring is found.
-    Unlike find, this function requires that the substring be found in each string,
-    ensuring all results are non-negative indices. -/
-
-/-  Specification: index returns the lowest index where substring is found within range.
-    The key difference from find is that index has a stronger precondition:
-    the substring must exist in each string within the specified range. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

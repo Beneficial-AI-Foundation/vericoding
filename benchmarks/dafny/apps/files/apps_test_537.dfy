@@ -1,9 +1,3 @@
-/*
-Given n students and a ratio k, distribute awards (diplomas and certificates) to maximize 
-the number of winners while following constraints: certificates = k × diplomas, 
-total winners ≤ n/2. Output the number of diplomas, certificates, and non-winners.
-*/
-
 predicate ValidInput(n: int, k: int) {
     n >= 0 && k >= 0 && k + 1 > 0
 }

@@ -1,15 +1,3 @@
-/-  Pseudo-Vandermonde matrix of given degree based on Legendre polynomials.
-    Returns the pseudo-Vandermonde matrix of degree `deg` and sample points `x`.
-    The pseudo-Vandermonde matrix is defined by V[..., i] = L_i(x) where 0 <= i <= deg.
-    L_i represents the i-th Legendre polynomial. -/
-
-/-  Specification: legvander constructs a pseudo-Vandermonde matrix where each row 
-    corresponds to a point and each column corresponds to a Legendre polynomial evaluation.
-    The matrix satisfies basic properties of Legendre polynomials:
-    - L_0(x) = 1 (first column is all ones)
-    - L_1(x) = x (second column equals input values when deg > 0)
-    - The matrix has the correct dimensions -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

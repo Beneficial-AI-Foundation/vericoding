@@ -1,8 +1,3 @@
-/-
-Regex Failure - Bug Fixing #2
-Oh no, Timmy's received some hate mail recently but he knows better. Help Timmy fix his regex filter so he can be awesome again!
--/
-
 def filter_words (s : String) : String := sorry 
 
 theorem filter_words_output_is_string (s : String) : 

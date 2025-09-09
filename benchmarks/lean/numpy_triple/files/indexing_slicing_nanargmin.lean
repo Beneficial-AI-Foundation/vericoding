@@ -1,34 +1,3 @@
-/- 
-{
-  "name": "numpy.nanargmin",
-  "category": "Index finding",
-  "description": "Return the indices of the minimum values in the specified axis ignoring NaNs",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.nanargmin.html",
-  "doc": "Return the indices of the minimum values in the specified axis ignoring NaNs.\n\nFor all-NaN slices \`\`ValueError\`\` is raised. Warning: the results cannot be trusted if a slice contains only NaNs and Infs.\n\nParameters\n----------\na : array_like\n    Input data.\naxis : int, optional\n    Axis along which to operate. By default flattened input is used.\nout : array, optional\n    If provided, the result will be inserted into this array.\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left in the result as dimensions with size one.\n\nReturns\n-------\nindex_array : ndarray\n    An array of indices or a single index value.",
-}
--/
-
-/-  Returns the index of the minimum value in a non-empty vector, ignoring NaN values.
-
-    This function finds the index of the minimum value among all non-NaN elements in the vector.
-    Requires that at least one element is not NaN, otherwise it would raise an error.
-
-    In case of multiple occurrences of the minimum values, the indices
-    corresponding to the first occurrence are returned.
--/
-
-/-  Specification: nanargmin returns the index of the first minimum element among non-NaN values.
-
-    This comprehensive specification captures:
-    1. The returned index points to an element that is not NaN
-    2. The element at the returned index is the minimum among all non-NaN elements
-    3. The function returns the first occurrence of the minimum value (among non-NaN elements)
-    4. The returned index is valid (type-safe with Fin)
-    5. The precondition ensures at least one element is not NaN
-    6. All non-NaN elements are greater than or equal to the minimum
-    7. Among elements with the same minimum value, the first index is returned
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

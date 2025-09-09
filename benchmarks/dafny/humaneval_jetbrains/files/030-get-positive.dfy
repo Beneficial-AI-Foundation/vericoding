@@ -1,8 +1,3 @@
-/*
-function_signature: def get_positive(l: list)
-Return only positive numbers in the list.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,12 +1,3 @@
-/*
-/* 
-* Formal specification and verification of a dynamic programming algorithm for calculating C(n, k).
-* FEUP, MIEIC, MFES, 2020/21.
-*/
-
-// Initial recursive definition of C(n, k), based on the Pascal equality.
-*/
-
 function comb(n: nat, k: nat): nat 
   requires 0 <= k <= n
 {

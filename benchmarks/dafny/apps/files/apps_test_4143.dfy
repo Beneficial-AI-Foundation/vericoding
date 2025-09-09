@@ -1,9 +1,3 @@
-/*
-Given N people starting at City 1, find the minimum time for all people to reach City 6
-through a sequential 5-segment transportation system with different capacities per segment.
-Each transport departs at integer times with specified capacity. Transfer time is negligible.
-*/
-
 predicate ValidInput(N: int, A: int, B: int, C: int, D: int, E: int)
 {
     N >= 1 && A >= 1 && B >= 1 && C >= 1 && D >= 1 && E >= 1

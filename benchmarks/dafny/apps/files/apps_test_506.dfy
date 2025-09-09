@@ -1,12 +1,3 @@
-/*
-Given a rectangular sheet of paper with dimensions a × b millimeters (where a > b),
-determine how many square pieces can be cut from it using the following process:
-1. From the current rectangle, cut the largest possible square
-2. Continue with the remaining rectangular strip (if any exists)  
-3. Repeat until only a square remains
-4. Count the total number of squares cut
-*/
-
 predicate ValidInput(a: int, b: int)
 {
     a > 0 && b > 0

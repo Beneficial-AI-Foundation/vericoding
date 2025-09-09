@@ -1,24 +1,3 @@
-/- 
-{
-  "name": "numpy.nanmedian",
-  "category": "Averages and variances",
-  "description": "Compute the median along the specified axis, ignoring NaNs",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.nanmedian.html",
-  "doc": "numpy.nanmedian(a, axis=None, out=None, overwrite_input=False, keepdims=False)\n\nCompute the median along the specified axis, while ignoring NaNs.\n\nReturns the median of the array elements.\n\nParameters\n----------\na : array_like\n    Input array or object that can be converted to an array.\naxis : {int, sequence of int, None}, optional\n    Axis or axes along which the medians are computed. The default is to compute the median along a flattened version of the array.\nout : ndarray, optional\n    Alternative output array in which to place the result. It must have the same shape and buffer length as the expected output.\noverwrite_input : bool, optional\n    If True, then allow use of memory of input array a for calculations. The input array will be modified by the call to median.\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left in the result as dimensions with size one.\n\nReturns\n-------\nmedian : ndarray\n    A new array holding the result. If the input contains integers or floats smaller than float64, then the output data-type is np.float64. Otherwise, the data-type of the output is the same as that of the input.\n\nNotes\n-----\nGiven a vector V of length N, the median of V is the middle value of a sorted copy of V, V_sorted - i.e., V_sorted[(N-1)/2], when N is odd, and the average of the two middle values of V_sorted when N is even.",
-}
--/
-
-/-  Compute the median along the specified axis, ignoring NaNs.
-    Returns the median of the array elements.
-    For a vector V of length N, the median is the middle value of a sorted copy of V
-    (ignoring NaN values), when N is odd, and the average of the two middle values when N is even.
-    If all values are NaN, returns NaN. -/
-
-/-  Specification: nanmedian computes the median of non-NaN values in the array.
-    The result is NaN if all values are NaN, otherwise it's the median of the finite values.
-    The median is defined as the middle value (for odd number of elements) or the average
-    of two middle values (for even number of elements) when the non-NaN values are sorted. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

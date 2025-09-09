@@ -1,14 +1,3 @@
-/*
-Given an integer n representing a bank account balance, perform at most one operation:
-delete the last digit, delete the digit before the last digit, or do nothing.
-Find the maximum possible balance after performing the operation.
-Constraint: absolute value of n is at least 10.
-
-// delete last digit
-
-// delete digit before last
-*/
-
 predicate ValidInput(n: int)
 {
     n >= 10 || n <= -10

@@ -1,13 +1,3 @@
-/*
-// 2.
-
-// 3.
-
-// 5.
-
-// 6
-*/
-
 function fib(n : nat) : nat
 {
   if (n==0) then 1 else

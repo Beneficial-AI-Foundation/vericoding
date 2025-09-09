@@ -1,9 +1,3 @@
-/*
-Given an N×M grid of cards (all initially face up), perform one operation for each card position (i,j): 
-flip the card at position (i,j) and all cards in the 8 adjacent positions (sharing a side or corner), 
-if those positions exist in the grid. Determine how many cards face down after all N×M operations are completed.
-*/
-
 predicate ValidInput(N: int, M: int)
 {
     N >= 1 && M >= 1

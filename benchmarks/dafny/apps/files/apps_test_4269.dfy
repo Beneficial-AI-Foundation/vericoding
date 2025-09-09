@@ -1,9 +1,3 @@
-/*
-Given a 4-digit security code, determine if it is "hard to enter". A code is hard to enter
-if it contains any two consecutive digits that are the same. Output "Bad" if the code is 
-hard to enter, "Good" otherwise.
-*/
-
 predicate IsHardToEnter(s: string)
     requires |s| == 4
 {

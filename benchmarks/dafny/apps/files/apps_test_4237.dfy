@@ -1,8 +1,3 @@
-/*
-Given four integers A, B, C, and D, find the count of integers in the range [A, B] (inclusive) 
-that are divisible by neither C nor D.
-*/
-
 predicate ValidInput(A: int, B: int, C: int, D: int) {
   A >= 1 && B >= A && C >= 1 && D >= 1
 }

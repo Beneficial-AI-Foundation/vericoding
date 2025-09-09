@@ -1,26 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.chebyshev.chebweight",
-  "category": "Chebyshev polynomials",
-  "description": "The weight function of the Chebyshev polynomials.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.chebyshev.chebweight.html",
-  "doc": "The weight function of the Chebyshev polynomials.\n\n    The weight function is :math:`1/\\sqrt{1 - x^2}` and the interval of\n    integration is :math:`[-1, 1]`. The Chebyshev polynomials are\n    orthogonal, but not normalized, with respect to this weight function.\n\n    Parameters\n    ----------\n    x : array_like\n       Values at which the weight function will be computed.\n\n    Returns\n    -------\n    w : ndarray\n       The weight function at `x`.",
-}
--/
-
-/-  The weight function of the Chebyshev polynomials.
-    Computes 1/sqrt(1 - x²) for each element. -/
-
-/-  Specification: chebweight computes the Chebyshev weight function 1/sqrt(1 - x²).
-    The function is well-defined when all elements are in the open interval (-1, 1).
-
-    Mathematical properties:
-    1. The weight function equals 1/sqrt(1 - x²) for each element
-    2. The result is always positive for valid inputs
-    3. The function is symmetric: w(-x) = w(x)
-    4. The function approaches infinity as x approaches ±1
-    5. The implementation uses the factored form 1/(sqrt(1+x) * sqrt(1-x)) for numerical stability -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

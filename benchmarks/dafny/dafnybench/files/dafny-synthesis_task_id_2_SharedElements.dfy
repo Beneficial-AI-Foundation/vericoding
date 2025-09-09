@@ -1,9 +1,3 @@
-/*
-// All elements in the output are in both a and b
-
-// The elements in the output are all different
-*/
-
 predicate InArray(a: array<int>, x: int)
     reads a
 {

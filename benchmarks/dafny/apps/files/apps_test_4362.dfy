@@ -1,8 +1,3 @@
-/*
-Given a single English letter (either uppercase A-Z or lowercase a-z), 
-output "A" if the input letter is uppercase, or "a" if the input letter is lowercase.
-*/
-
 predicate IsLowercaseLetter(c: char)
 {
     'a' <= c <= 'z'

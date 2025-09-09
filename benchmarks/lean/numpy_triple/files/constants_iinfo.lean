@@ -1,22 +1,3 @@
-/- 
-{
-  "name": "numpy.iinfo",
-  "category": "Machine limits",
-  "description": "Machine limits for integer types",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.iinfo.html",
-  "doc": "Machine limits for integer types.\n\nParameters:\nint_type : integer type, dtype, or instance\n    The kind of integer data type to get information about.\n\nAttributes:\n- bits : int - The number of bits occupied by the type\n- dtype : dtype - The dtype for which iinfo returns information\n- min : int - Minimum value of given dtype\n- max : int - Maximum value of given dtype",
-}
--/
-
-/-  Machine limits for integer types - returns information about the given integer type including 
-    the number of bits, minimum value, and maximum value -/
-
-/-  Specification: iinfo returns correct machine limits for integer types.
-    The returned IntegerInfo structure contains:
-    - bits: the number of bits used by the type
-    - min: the minimum representable value (-(2^(bits-1)) for signed, 0 for unsigned)
-    - max: the maximum representable value (2^(bits-1) - 1 for signed, 2^bits - 1 for unsigned) -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

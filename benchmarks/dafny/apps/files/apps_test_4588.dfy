@@ -1,8 +1,3 @@
-/*
-Given two hexadecimal digits X and Y (each being one of A, B, C, D, E, or F representing values 10, 11, 12, 13, 14, 15 respectively), 
-compare their values and output the comparison result: "<" if X < Y, ">" if X > Y, "=" if X = Y.
-*/
-
 predicate ValidInput(input: string)
 {
     (|input| == 3 && input[1] == ' ') || 

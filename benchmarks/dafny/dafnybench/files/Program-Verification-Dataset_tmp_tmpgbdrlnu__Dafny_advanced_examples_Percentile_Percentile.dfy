@@ -1,17 +1,3 @@
-/*
-// Sum of elements of A from indices 0 to end.
-
-// end is inclusive! (not James's normal way of thinking!!)
-
-// example showing that, with the original postcondition, the answer is non-unique!
-
-// proof that, with the corrected postcondition, the answer is unique
-
-// lemma for previous proof: when an array has strictly positive elements, the
-
-// sums strictly increase left to right
-*/
-
 function SumUpto(A: array<real>, end: int): real
   requires -1 <= end < A.Length
   reads A

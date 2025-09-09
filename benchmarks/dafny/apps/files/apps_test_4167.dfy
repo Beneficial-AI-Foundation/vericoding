@@ -1,7 +1,3 @@
-/*
-Count ordered triples (a,b,c) where 1 ≤ a,b,c ≤ N and a+b, b+c, c+a are all divisible by K
-*/
-
 predicate ValidTriple(a: int, b: int, c: int, N: int, K: int)
     requires K >= 1
 {

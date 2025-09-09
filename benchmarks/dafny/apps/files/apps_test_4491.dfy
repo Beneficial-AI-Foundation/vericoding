@@ -1,9 +1,3 @@
-/*
-Given a 2×N grid where each cell contains candies, find the maximum number of candies
-that can be collected when traveling from top-left to bottom-right. You can only move
-right or down, and you collect all candies from visited cells.
-*/
-
 predicate ValidInput(n: int, a_1: seq<int>, a_2: seq<int>)
 {
     n >= 1 &&

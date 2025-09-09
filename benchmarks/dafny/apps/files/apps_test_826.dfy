@@ -1,9 +1,3 @@
-/*
-Find the minimum cost to obtain logs of lengths 1, 2, 3, ..., n.
-We can purchase logs of lengths 1, 2, 3, ..., n+1 (each costing 1 unit),
-cut them into smaller pieces, and discard unwanted pieces.
-*/
-
 predicate ValidInput(n: int)
 {
   n >= 1

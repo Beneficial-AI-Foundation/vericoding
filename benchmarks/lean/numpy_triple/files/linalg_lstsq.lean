@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.linalg.lstsq",
-  "category": "Solving equations and inverting matrices",
-  "description": "Return the least-squares solution to a linear matrix equation",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html",
-  "doc": "Return the least-squares solution to a linear matrix equation.\n\nSolves the equation a @ x = b by minimizing ||b - ax||^2.\n\nParameters:\n- a: Coefficient matrix (M, N)\n- b: Ordinate values (M,) or (M, K)\n- rcond: Cut-off ratio for small singular values\n\nReturns tuple of:\n- x: Least-squares solution\n- residuals: Sums of squared residuals\n- rank: Rank of matrix a\n- s: Singular values of a",
-}
--/
-
-/-  Return the least-squares solution to a linear matrix equation -/
-
-/-  Specification: lstsq returns the solution that minimizes ||b - a*x||^2 -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

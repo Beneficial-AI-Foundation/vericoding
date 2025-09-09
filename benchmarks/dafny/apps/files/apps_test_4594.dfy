@@ -1,9 +1,3 @@
-/*
-Given N mochi with diameters, find the maximum number of layers in a kagami mochi.
-A kagami mochi is a stack where each layer has a strictly smaller diameter than the layer below it.
-This is equivalent to counting the number of distinct diameters in the input.
-*/
-
 predicate ValidInput(diameters: seq<int>)
 {
     |diameters| > 0 && forall i :: 0 <= i < |diameters| ==> diameters[i] > 0

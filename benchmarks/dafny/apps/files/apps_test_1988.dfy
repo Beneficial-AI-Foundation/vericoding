@@ -1,9 +1,3 @@
-/*
-Given multiple test cases, each containing a string, find the lexicographically smallest
-string achievable by applying one of n possible transformations, where transformation i
-either rotates the string by i positions or rotates and reverses the prefix based on parity.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| >= 2 &&

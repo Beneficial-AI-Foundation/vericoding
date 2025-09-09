@@ -1,19 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.legendre.legcompanion",
-  "category": "Legendre polynomials",
-  "description": "Return the scaled companion matrix of c.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.legendre.legcompanion.html",
-  "doc": "Return the scaled companion matrix of c.\n\n    The basis polynomials are scaled so that the companion matrix is\n    symmetric when \`c\` is an Legendre basis polynomial. This provides\n    better eigenvalue estimates than the unscaled case and for basis\n    polynomials the eigenvalues are guaranteed to be real if\n    \`numpy.linalg.eigvalsh\` is used to obtain them.\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of Legendre series coefficients ordered from low to high\n        degree.\n\n    Returns\n    -------\n    mat : ndarray\n        Scaled companion matrix of dimensions (deg, deg).",
-}
--/
-
-/-  Return the scaled companion matrix of Legendre series coefficients.
-    The companion matrix is symmetric when c is a Legendre basis polynomial,
-    providing better eigenvalue estimates. -/
-
-/-  Specification: legcompanion returns a symmetric companion matrix of appropriate dimensions -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

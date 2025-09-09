@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.capitalize",
-  "category": "String transformation",
-  "description": "Return a copy of a with only the first character of each element capitalized",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.capitalize.html",
-  "doc": "Return a copy of \`a\` with only the first character of each element capitalized.\n\nFor byte strings, this method is locale-dependent.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n    Input array of strings\n\nReturns\n-------\nout : ndarray\n    Output array of \`StringDType\`, \`bytes_\` or \`str_\` dtype,\n    depending on input types\n\nExamples\n--------\n>>> np.strings.capitalize(['hello', 'world'])\narray(['Hello', 'World'], dtype='<U5')",
-}
--/
-
-/-  Return a copy of a with only the first character of each element capitalized -/
-
-/-  Specification: capitalize returns a vector where each string has only its first character capitalized -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

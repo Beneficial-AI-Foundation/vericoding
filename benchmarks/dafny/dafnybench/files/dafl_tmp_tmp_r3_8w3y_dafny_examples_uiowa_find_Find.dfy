@@ -1,27 +1,3 @@
-/*
-/*
-   CS:5810 Formal Methods in Software Engineering
-   Fall 2017
-   The University of Iowa
-
-   Instructor: Cesare Tinelli
-
-   Credits: Example adapted from Dafny tutorial
-*/
-
-// if i is non-negative then 
-
-// (1) i is smaller than the length of a
-
-// (2) key is at position i in a
-
-// (3) i is the smallest position where key appears
-
-// if index is negative then
-
-// a does not contain key
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,8 +1,3 @@
-/*
-Given an n × m matrix of integers and parameter d, find minimum operations to make all elements equal.
-Each operation adds or subtracts d from any element. Return -1 if impossible.
-*/
-
 predicate ValidInput(n: int, m: int, d: int, matrix: seq<seq<int>>)
 {
     n > 0 && m > 0 && d > 0 &&

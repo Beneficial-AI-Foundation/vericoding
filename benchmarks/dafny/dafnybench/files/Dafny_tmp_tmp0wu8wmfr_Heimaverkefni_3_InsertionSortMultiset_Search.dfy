@@ -1,17 +1,3 @@
-/*
-// Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
-
-// Permalink spurningar: https://rise4fun.com/Dafny/G4sc3
-
-// Höfundur lausnar:     Alexander Guðmundsson
-
-// Permalink lausnar:    https://rise4fun.com/Dafny/nujsu
-
-// Insertion sort með hjálp helmingunarleitar.
-
-// Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,8 +1,3 @@
-/*
-function_signature: method split(s : string) returns (res : seq<string>)
-Process input. Requires: the condition holds for all values. Ensures: the condition holds for all values.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

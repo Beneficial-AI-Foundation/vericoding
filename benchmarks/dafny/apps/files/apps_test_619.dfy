@@ -1,9 +1,3 @@
-/*
-Sasha has x chizhiks and Masha has y chizhiks. Coconuts cost z chizhiks each.
-Find the maximum number of coconuts they can buy together by potentially exchanging
-chizhiks, and determine the minimum number of chizhiks that must be exchanged.
-*/
-
 predicate ValidInput(x: int, y: int, z: int)
 {
   x >= 0 && y >= 0 && z > 0

@@ -1,8 +1,3 @@
-/*
-function_signature: def sum_squares(lst: List[float]) -> int
-You are given a list of numbers. You need to return the sum of squared numbers in the given list, round each element in the list to the upper int(Ceiling) first.
-*/
-
 function sum(s: seq<int>) : int
     {
         if |s| == 0 then 0 else s[0] + sum(s[1..])

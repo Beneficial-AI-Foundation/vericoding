@@ -1,9 +1,3 @@
-/*
-Given n holds at increasing heights, remove exactly one hold (not the first or last) 
-to minimize the track difficulty. The difficulty is the maximum difference between 
-consecutive hold heights.
-*/
-
 predicate ValidInput(holds: seq<int>) {
     |holds| >= 3 && forall i :: 0 <= i < |holds| - 1 ==> holds[i] < holds[i + 1]
 }

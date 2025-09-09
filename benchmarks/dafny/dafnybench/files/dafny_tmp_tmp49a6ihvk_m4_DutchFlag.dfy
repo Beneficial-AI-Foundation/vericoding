@@ -1,6 +1,3 @@
-/*
-*/
-
 datatype Color = Red | White | Blue
 
 predicate Below(c: Color, d: Color)

@@ -1,16 +1,3 @@
-/- 
-function_signature: "def max_fill_count(grid : list[list[int]], capacity : int) -> int"
-docstring: |
-    Please write a function that sorts an array of non-negative integers according to
-    number of ones in their binary representation in ascending order.
-    For similar number of ones, sort based on decimal value.
-test_cases:
-  - input: [1, 5, 2, 3, 4]
-    expected_output: [1, 2, 3, 4, 5]
-  - input: [1, 0, 2, 3, 4]
-    expected_output: [0, 1, 2, 3, 4]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

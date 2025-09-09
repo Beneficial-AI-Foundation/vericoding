@@ -1,7 +1,3 @@
-/*
-Given an integer N where 100 ≤ N ≤ 999, return the string "ABC" concatenated with the string representation of N.
-*/
-
 predicate ValidInput(n: int) {
     100 <= n <= 999
 }

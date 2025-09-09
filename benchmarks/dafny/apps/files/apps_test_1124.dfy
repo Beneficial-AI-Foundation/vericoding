@@ -1,9 +1,3 @@
-/*
-Given N positive integers, repeatedly perform the operation: find maximum X and minimum x,
-if X != x then replace all X with (X - x), until all integers are equal.
-Return the final common value.
-*/
-
 predicate ValidInput(values: seq<int>)
 {
   |values| >= 1 && forall i :: 0 <= i < |values| ==> values[i] > 0

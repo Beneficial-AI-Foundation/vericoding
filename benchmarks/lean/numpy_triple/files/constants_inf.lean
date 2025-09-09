@@ -1,22 +1,3 @@
-/- 
-{
-  "name": "numpy.inf",
-  "category": "Special float values",
-  "description": "IEEE 754 floating point representation of (positive) infinity",
-  "url": "https://numpy.org/doc/stable/reference/constants.html#numpy.inf",
-  "doc": "IEEE 754 floating point representation of (positive) infinity.\n\nUse inf because Inf, Infinity, PINF and infty are aliases for inf. For more details, see inf.\n\nSee Also:\ninf",
-}
--/
-
-/-  IEEE 754 floating point representation of (positive) infinity -/
-
-/-  Specification: inf represents positive infinity with the following properties:
-    1. inf is greater than any finite float value
-    2. inf + any finite value = inf
-    3. inf * positive finite value = inf
-    4. inf * negative finite value = -inf
-    5. inf / any finite non-zero value = inf (with appropriate sign) -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

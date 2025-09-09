@@ -1,10 +1,3 @@
-/*
-Given N balls in a row and K available colors, count the number of ways to paint 
-the balls such that no two adjacent balls have the same color. The solution is
-based on the combinatorial formula: first ball has K choices, each subsequent 
-ball has (K-1) choices, giving K * (K-1)^(N-1) total ways.
-*/
-
 function Power(base: int, exp: int): int
   requires exp >= 0
 {

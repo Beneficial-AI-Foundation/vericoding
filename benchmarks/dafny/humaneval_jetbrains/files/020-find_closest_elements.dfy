@@ -1,10 +1,3 @@
-/*
-function_signature: def find_closest_elements(numbers: List[float]) -> Tuple[float, float]
-From a supplied list of numbers (of length at least two) select and return two that are the closest to each other and return them in order (smaller number, larger number).
-
-// distinct elements
-*/
-
 function dist(a: real, b: real) : (d : real)
     ensures d >= 0.0
     ensures (d == 0.0) <==> a == b

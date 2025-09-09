@@ -1,12 +1,3 @@
-/*
-Bignum task: bignum_ModExpPow2[DivMod,Mul].
-Implement the method according to the Dafny specification.
-
-// All characters must be '0' or '1'.
-
-// sy is power of 2 or zero
-*/
-
 ghost function Exp_int(x: nat, y:nat): nat
 {
   if y == 0 then 1 else x * Exp_int(x, y - 1)

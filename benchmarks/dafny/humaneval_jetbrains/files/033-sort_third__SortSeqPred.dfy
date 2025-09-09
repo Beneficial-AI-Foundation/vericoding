@@ -1,8 +1,3 @@
-/*
-function_signature: method SortSeqPred(s: seq<int>, p: seq<bool>) returns (sorted: seq<int>)
-Sort elements. Requires: returns the correct size/count. Ensures: returns the correct size/count; the result is sorted according to the ordering relation; returns a sorted permutation of the input; the result is sorted according to the ordering relation.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,29 +1,3 @@
-/*
-/*predicate palindrome<T(==)> (s:seq<T>)
-{
-    forall i:: 0<=i<|s| ==> s[i] == s[|s|-i-1]
-}
-*/
-
-// Structural Induction on Sequences
-
-// MAXIMUM OF A SEQUENCE
-
-// TODO: Hacer
-
-// Derivar formalmente un calculo incremental de j*j*j
-
-// REVERSE OF A SEQUENCE
-
-// REVERSE IS ITS OWN INVERSE
-
-// SCALAR PRODUCT OF TWO VECTORS OF INTEGER
-
-// MULTISETS
-
-// REVERSE HAS THE SAME MULTISET
-*/
-
 function sum(v: seq<int>): int 
 decreases v
 {

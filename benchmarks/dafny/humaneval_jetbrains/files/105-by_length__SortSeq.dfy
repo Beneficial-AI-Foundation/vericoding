@@ -1,8 +1,3 @@
-/*
-function_signature: method SortSeq(s: seq<int>) returns (sorted: seq<int>)
-Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
-*/
-
 function NumberToName(n: int): string
   requires 1 <= n <= 9
 {

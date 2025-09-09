@@ -1,8 +1,3 @@
-/*
-Given an integer D representing a December date (22-25), output the corresponding Christmas-related string:
-D=25: "Christmas", D=24: "Christmas Eve", D=23: "Christmas Eve Eve", D=22: "Christmas Eve Eve Eve"
-*/
-
 predicate ValidInput(d: int) {
     22 <= d <= 25
 }

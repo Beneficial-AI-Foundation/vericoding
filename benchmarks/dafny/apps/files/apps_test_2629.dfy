@@ -1,16 +1,3 @@
-/*
-Given a positive integer n, create an n×n matrix filled with integers from 1 to n² 
-arranged in clockwise spiral order, starting from the top-left corner.
-
-// Top row of current layer
-
-// Right column of current layer
-
-// Bottom row of current layer
-
-// Left column of current layer
-*/
-
 function min(a: int, b: int): int
 {
   if a <= b then a else b

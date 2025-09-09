@@ -1,9 +1,3 @@
-/*
-Distribute n candies among m friends such that each friend receives at least one candy
-and the difference between the maximum and minimum number of candies is minimized.
-The optimal solution gives each friend either floor(n/m) or floor(n/m)+1 candies.
-*/
-
 predicate ValidInput(n: int, m: int)
 {
   n >= m > 0

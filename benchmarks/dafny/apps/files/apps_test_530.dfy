@@ -1,9 +1,3 @@
-/*
-Two players play a game with binary strings. They alternate turns choosing positions
-from strings of length 2n, collecting characters to form the largest possible binary
-numbers. Determine the winner with optimal play.
-*/
-
 predicate ValidInput(n: int, a: string, b: string)
 {
     n > 0 && |a| == 2 * n && |b| == 2 * n &&

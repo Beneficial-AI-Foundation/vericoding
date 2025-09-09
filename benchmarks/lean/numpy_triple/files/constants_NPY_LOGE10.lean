@@ -1,20 +1,3 @@
-/- 
-{
-  "name": "NPY_LOGE10",
-  "category": "C API Mathematical constants",
-  "description": "Natural logarithm of 10",
-  "doc": "ln(10) = 2.302585092994045684017991454684364208",
-}
--/
-
-/-  Natural logarithm of 10 (ln(10)) -/
-
-/-  Specification: npy_loge10 is the natural logarithm of 10 with mathematical properties:
-    1. It is approximately 2.302585092994045684017991454684364208
-    2. It satisfies the property that e^(npy_loge10) = 10
-    3. It is the inverse of log10(e), meaning npy_loge10 * log10(e) = 1
-    4. It is useful for converting between natural and base-10 logarithms -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

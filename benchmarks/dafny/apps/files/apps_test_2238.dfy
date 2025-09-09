@@ -1,15 +1,3 @@
-/*
-Given an odd integer n (3 ≤ n ≤ 101), create an n×n matrix representing a crystal with a diamond pattern.
-Use 'D' for diamond cells and '*' for all other cells.
-The diamond pattern forms a symmetric diamond shape where the top half starts with 1 'D' and increases by 2 'D's per row
-until the middle row has n 'D's, then the bottom half decreases symmetrically.
-All 'D's in each row are centered with '*' characters filling remaining positions.
-
-// First half (including middle): rows 0 to magic
-
-// Second half: rows magic+1 to n-1
-*/
-
 predicate ValidInput(n: int)
 {
     n >= 3 && n <= 101 && n % 2 == 1

@@ -1,6 +1,3 @@
-/*
-*/
-
 function sorted(a: array<int>) : bool
     reads a
 {

@@ -1,9 +1,3 @@
-/*
-Given a sequence of N integers and a positive integer S, calculate the sum of f(L,R) 
-over all pairs (L,R) where 1 ≤ L ≤ R ≤ N. For each pair (L,R), f(L,R) is the number 
-of increasing subsequences with sum equal to S within the range [L,R].
-*/
-
 predicate ValidInput(N: int, S: int, A: seq<int>)
 {
     N >= 1 && S >= 1 && |A| == N && N <= 3000 && S <= 3000 &&

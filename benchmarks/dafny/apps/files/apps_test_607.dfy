@@ -1,9 +1,3 @@
-/*
-Given integers n and m, compute the sum of happiness values for all permutations of length n, 
-modulo prime number m. A permutation's happiness is the count of its framed segments, where
-a framed segment [l,r] satisfies max{elements} - min{elements} = r - l.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && 

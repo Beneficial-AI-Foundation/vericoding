@@ -1,29 +1,3 @@
-/*
-// Noa Leron 207131871
-
-// Tsuri Farhana 315016907
-
-// string in Dafny is a sequence of characters (seq<char>) and <= on sequences is the prefix relation
-
-/*
-Goal: Verify correctness of the following code. Once done, remove the {:verify false} (or turn it into {:verify true}).
-
-Feel free to add GHOST code, including calls to lemmas. But DO NOT modify the specification or the original (executable) code.
-*/
-
-//this is our lemmas, invatiants and presicats
-
-// Second part of post condition
-
-// First part of post condition
-
-// index in range
-
-// index in range
-
-// index in range
-*/
-
 ghost predicate ExistsSubstring(str1: string, str2: string) {
 
     exists offset :: 0 <= offset <= |str1| && str2 <= str1[offset..]

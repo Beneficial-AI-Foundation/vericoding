@@ -1,8 +1,3 @@
-/*
-function_signature: method is_cube(n: nat) returns (r: bool)
-Check if condition holds. Ensures: if true, then there exists an integer r such that N = r³; if false, then no integer r satisfies N = r³.
-*/
-
 function cube(n: int): int { n * n * n }
 
 // <vc-helpers>

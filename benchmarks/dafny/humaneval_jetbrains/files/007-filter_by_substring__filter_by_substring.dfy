@@ -1,8 +1,3 @@
-/*
-function_signature: method filter_by_substring(strings: seq<string>, substring: string) returns (res : seq<string>)
-Filter elements. Ensures: the size is bounded; the condition holds for all values.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

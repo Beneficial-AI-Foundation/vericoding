@@ -1,9 +1,3 @@
-/*
-Given two rectangles with width W, where Rectangle 1 spans horizontally [a, a+W] 
-and Rectangle 2 spans horizontally [b, b+W], find the minimum horizontal distance 
-Rectangle 2 must be moved so that the two rectangles connect (overlap or touch).
-*/
-
 predicate ValidInput(W: int, a: int, b: int)
 {
     W >= 1 && a >= 1 && b >= 1

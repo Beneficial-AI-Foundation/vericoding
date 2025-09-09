@@ -1,13 +1,3 @@
-/*
-//https://stackoverflow.com/questions/69364687/how-to-prove-time-complexity-of-bubble-sort-using-dafny
-
-// sum of all integers in the range [lo, hi)
-
-// (inclusive of lo, exclusive of hi)
-
-// dafny proves this automatically by induction
-*/
-
 function NChoose2(n: int): int
 {
   n * (n - 1) / 2

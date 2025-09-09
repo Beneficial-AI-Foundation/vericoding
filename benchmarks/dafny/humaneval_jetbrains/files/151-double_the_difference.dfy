@@ -1,8 +1,3 @@
-/*
-function_signature: def double_the_difference(numbers: List[float]) -> Int
-Given a list of numbers, return the sum of squares of the numbers in the list that are odd. Ignore numbers that are negative or not integers.
-*/
-
 function sumc(s: seq<int>, p: seq<bool>) : int
     requires |s| == |p|
     {

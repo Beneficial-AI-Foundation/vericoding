@@ -1,8 +1,3 @@
-/*
-Given an integer K and a string S of lowercase English letters, output S unchanged if its length is at most K.
-Otherwise, output the first K characters of S followed by "...".
-*/
-
 predicate ValidInput(stdin_input: string)
 {
     |stdin_input| > 0 &&

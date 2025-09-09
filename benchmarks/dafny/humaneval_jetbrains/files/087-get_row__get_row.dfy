@@ -1,8 +1,3 @@
-/*
-function_signature: method get_row(lst: seq<seq<int>>, x: int) returns (pos: SortSeqState)
-Retrieve elements. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values.
-*/
-
 type SortSeqState = seq<(int, int)>
 function less(a: (int, int), b: (int, int)): bool {
   var (x, y) := a; var (u, v) := b;

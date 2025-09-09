@@ -1,10 +1,3 @@
-/*
-Given coordinates of two trees that are vertices of a square (with sides parallel to coordinate axes),
-find the coordinates of the other two vertices. Valid cases include: same x-coordinate (vertical edge),
-same y-coordinate (horizontal edge), or diagonal vertices where |x₂-x₁| = |y₂-y₁|.
-Return -1 if no valid square can be formed.
-*/
-
 predicate ValidInput(x1: int, y1: int, x2: int, y2: int)
 {
     -100 <= x1 <= 100 && -100 <= y1 <= 100 && -100 <= x2 <= 100 && -100 <= y2 <= 100

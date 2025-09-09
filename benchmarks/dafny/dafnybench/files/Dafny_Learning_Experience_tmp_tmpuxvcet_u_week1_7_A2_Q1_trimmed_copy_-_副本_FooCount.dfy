@@ -1,6 +1,3 @@
-/*
-*/
-
 ghost function Count(hi: nat, s:seq<int>): int
     requires 0 <= hi <= |s|
     decreases hi

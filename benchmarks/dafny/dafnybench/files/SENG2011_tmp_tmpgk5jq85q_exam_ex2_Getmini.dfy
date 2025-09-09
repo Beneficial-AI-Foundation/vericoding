@@ -1,14 +1,3 @@
-/*
-/*
-*/
-
-// mini is an index of a
-
-// a[mini] is the minimum value
-
-// a[mini] is the first min
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

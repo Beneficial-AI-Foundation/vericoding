@@ -1,8 +1,3 @@
-/*
-function_signature: method SortSeq(s: seq<int>) returns (sorted: seq<int>)
-Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input; the result is sorted according to the ordering relation; the result is sorted according to the ordering relation; the result is sorted according to the ordering relation; the result is sorted according to the ordering relation.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

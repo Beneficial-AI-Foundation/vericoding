@@ -1,7 +1,3 @@
-/*
-Given a monster with health H and attack damage A, find the minimum number of attacks needed to reduce the monster's health to 0 or below.
-*/
-
 predicate ValidInput(H: int, A: int)
 {
     H >= 1 && A >= 1

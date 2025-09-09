@@ -1,9 +1,3 @@
-/*
-Calculate the price of a bowl of ramen based on selected toppings.
-Base price is 700 yen, each topping ('o') adds 100 yen.
-Input is a 3-character string with 'o' (included) or 'x' (not included).
-*/
-
 predicate ValidInput(s: string) {
     |s| == 3 && forall i :: 0 <= i < |s| ==> s[i] == 'o' || s[i] == 'x'
 }

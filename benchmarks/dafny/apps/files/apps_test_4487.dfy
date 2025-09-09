@@ -1,10 +1,3 @@
-/*
-Given three strings A, B, and C, determine if they form a word chain.
-A word chain exists if the last character of A equals the first character of B
-and the last character of B equals the first character of C.
-Output "YES" if both conditions are true, "NO" otherwise.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0

@@ -1,8 +1,3 @@
-/*
-Given two integers A and B, find the maximum value among A + B, A - B, and A × B.
-Input constraints: -100 ≤ A, B ≤ 100
-*/
-
 predicate ValidInput(input: string)
 {
     |input| >= 3 &&

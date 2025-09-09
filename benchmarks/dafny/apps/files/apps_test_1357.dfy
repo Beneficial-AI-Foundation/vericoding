@@ -1,10 +1,3 @@
-/*
-Given n houses numbered 1 to n arranged in a clockwise ring with one-way clockwise traffic,
-find the minimum time to complete m tasks in sequence. Each task must be completed at a 
-specific house. Starting at house 1, moving from one house to the next adjacent house takes 
-1 time unit. Tasks must be completed in the given order.
-*/
-
 predicate ValidInput(n: int, m: int, tasks: seq<int>)
 {
     n >= 2 && m >= 1 && |tasks| == m && 

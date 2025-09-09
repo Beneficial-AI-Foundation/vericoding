@@ -1,9 +1,3 @@
-/*
-Given a sequence of moves 'U' (up) and 'R' (right), replace consecutive pairs "RU" or "UR" 
-with diagonal moves "D" to minimize sequence length. Input format is a number n followed by 
-newline, then a string of n characters containing only 'U' and 'R'.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && exists pos :: 0 <= pos < |input| && input[pos] == '\n'

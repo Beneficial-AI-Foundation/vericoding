@@ -1,9 +1,3 @@
-/*
-Given q queries with numbers n_i, find the maximum number of edges in a simple undirected graph
-with n_i vertices where at least half of the edges are bridges. A bridge is an edge whose
-removal increases the number of connected components in the graph.
-*/
-
 predicate ValidInput(n: int) {
   1 <= n <= 2000000000
 }

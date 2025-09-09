@@ -1,9 +1,3 @@
-/*
-Given a positive integer n, find the smallest positive integer x such that
-x² + s(x)·x - n = 0, where s(x) is the sum of digits of x in decimal notation.
-If no such positive integer x exists, return -1.
-*/
-
 function digitSum(n: int): int
   requires n >= 0
   decreases n

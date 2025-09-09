@@ -1,8 +1,3 @@
-/*
-function_signature: def move_one_ball(arr: List[int]) -> bool
-We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The numbers in the array will be randomly ordered. Your task is to determine if it is possible to get an array sorted in non-decreasing order by performing the following operation on the given array: You are allowed to perform right shift operation any number of times.
-*/
-
 function is_sorted(a: seq<int>) : bool {
   forall i, j :: 0 <= i < j < |a| ==> a[i] <= a[j]
 }

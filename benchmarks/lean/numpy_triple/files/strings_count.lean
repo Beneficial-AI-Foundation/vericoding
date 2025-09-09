@@ -1,36 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.count",
-  "category": "String information",
-  "description": "Returns an array with the number of non-overlapping occurrences of substring sub in the range [start, end]",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.count.html",
-  "doc": "Returns an array with the number of non-overlapping occurrences of substring \`sub\` in the range [\`start\`, \`end\`].\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nsub : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n    The substring to search for.\nstart, end : array_like, with any integer dtype, optional\n    The range to look in, interpreted as slice notation.\n\nReturns\n-------\nout : ndarray\n    Output array of ints",
-}
--/
-
-/-  numpy.strings.count: Returns an array with the number of non-overlapping occurrences 
-    of substring sub in the range [start, end] for each element.
-
-    For each string in the input array, counts how many times the substring appears
-    without overlapping matches within the specified range. The search is performed
-    within the range [start, end) where start and end are character indices.
--/
-
-/-  Specification: numpy.strings.count returns the number of non-overlapping occurrences 
-    of substring within the specified range for each element.
-
-    Preconditions:
-    - start ≤ end for all elements (valid range)
-    - start and end indices are valid (within string bounds)
-    - substring is not empty for all elements (to avoid infinite loops)
-
-    Postconditions:
-    - Result is non-negative for all elements
-    - For each element, the count represents non-overlapping occurrences of substring
-    - If substring is longer than search range, count is 0
-    - The count is maximal (greedy non-overlapping matching)
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,8 +1,3 @@
-/*
-function_signature: method generate_integers(a : int, b : int) returns (result: seq<int>)
-Generate elements. Ensures: the condition holds for all values; the condition holds for all values.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

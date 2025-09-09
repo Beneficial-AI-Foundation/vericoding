@@ -1,9 +1,3 @@
-/*
-Given n students in positions 1 to n, with two rival students initially at positions a and b,
-find the maximum distance between the rivals after performing at most x adjacent swaps.
-Distance between positions p and s is |p - s|.
-*/
-
 predicate ValidInput(n: int, x: int, a: int, b: int)
 {
     2 <= n <= 100 && 0 <= x <= 100 && 1 <= a <= n && 1 <= b <= n && a != b

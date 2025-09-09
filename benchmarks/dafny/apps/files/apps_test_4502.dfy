@@ -1,9 +1,3 @@
-/*
-Given an integer sequence a of length n, simulate n operations on an initially empty sequence b:
-Operation i: Append a[i] to the end of b, then reverse the entire sequence b
-Output the final sequence b after all n operations.
-*/
-
 predicate ValidInput(n: int, a: seq<int>) {
     n >= 1 && |a| == n
 }

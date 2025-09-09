@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.fromregex",
-  "category": "Text file I/O",
-  "description": "Construct an array from a text file using regular expression parsing",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fromregex.html",
-  "doc": "Construct an array from a text file, using regular expression parsing.\n\n    The returned array is always a structured array, and is constructed from\n    all matches of the regular expression in the file. Groups in the regular\n    expression are converted to fields of the structured array.\n\n    Parameters\n    ----------\n    file : file, str, or pathlib.Path\n        Filename or file object to read.\n\n        .. versionchanged:: 1.22.0\n            Now accepts \`os.PathLike\` implementations.\n\n    rege...",
-}
--/
-
-/-  Construct a structured array from a text file using regular expression parsing -/
-
-/-  Specification: fromregex constructs a structured array from regex matches in file content -/
-
 /-- A simple abstraction for regular expressions -/
 structure RegExp where
   /-- The regular expression pattern -/

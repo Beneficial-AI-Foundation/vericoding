@@ -1,18 +1,3 @@
-/*
-Given a text containing words separated by spaces, where some words contain hyphens
-that serve as valid line break points, format the text to fit within at most k lines
-while minimizing the maximum line width. Line breaks can occur at spaces (space stays
-on current line) or at hyphens (hyphen stays on current line, remainder goes to next line).
-
-// Potential break point
-
-// Must break line
-
-// Can continue on current line or break
-
-// Regular character - must continue on current line
-*/
-
 predicate canFormatText(s: string, k: int, maxWidth: int)
     requires k >= 1
     requires |s| >= 1

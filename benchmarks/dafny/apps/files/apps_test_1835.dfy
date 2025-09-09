@@ -1,24 +1,3 @@
-/*
-Given n binary strings, you can swap any two characters from any positions 
-(within same string or across different strings) any number of times. 
-Find the maximum number of strings that can be made palindromic simultaneously.
-A palindrome reads the same forwards and backwards.
-
-// Simplified implementation
-
-// Simplified implementation
-
-// Simplified implementation
-
-// Simplified implementation
-
-// Simplified implementation
-
-// Simplified implementation
-
-// Simplified implementation
-*/
-
 function valid_input_format(input: string): bool
 {
     true

@@ -1,8 +1,3 @@
-/*
-function_signature: def correct_bracketing(brackets: str) -> Bool
-brackets is a string of "<" and ">". return True if every opening bracket has a corresponding closing bracket, i.e., (each open bracket is properly closed)
-*/
-
 function CalcBal(s: seq<int>, i: int, j: int) : int 
     requires 0 <= i <= j <= |s|
 {

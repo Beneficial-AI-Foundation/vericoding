@@ -1,33 +1,3 @@
-/-  numpy.polynomial.hermite_e.hermegrid3d: Evaluate a 3-D HermiteE series on the Cartesian product of x, y, and z.
-
-    This function evaluates a 3-dimensional HermiteE polynomial series
-    on the Cartesian product of coordinate vectors x, y, and z.
-
-    The evaluation follows the mathematical formula:
-    p(a,b,c) = sum_{i,j,k} c[i,j,k] * He_i(a) * He_j(b) * He_k(c)
-
-    where He_i is the i-th probabilist's Hermite polynomial (HermiteE),
-    and the points (a,b,c) are formed by taking all combinations of
-    elements from x, y, and z.
-
-    The result is a 3D tensor where result[i,j,k] contains the polynomial
-    value at the point (x[i], y[j], z[k]).
--/
-
-/-  Specification: hermegrid3d evaluates a 3D HermiteE polynomial series 
-    on the Cartesian product of x, y, and z coordinates.
-
-    The function computes p(a,b,c) = sum_{i,j,k} c[i,j,k] * He_i(a) * He_j(b) * He_k(c)
-    where He_i is the i-th probabilist's Hermite polynomial.
-
-    Mathematical Properties:
-    1. The result represents evaluation at all Cartesian product points
-    2. HermiteE polynomials satisfy He_0(x) = 1, He_1(x) = x, 
-       and the recurrence He_{n+1}(x) = x * He_n(x) - n * He_{n-1}(x)
-    3. The evaluation is exact for the polynomial representation
-    4. Result shape is nx × ny × nz, matching the Cartesian product
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

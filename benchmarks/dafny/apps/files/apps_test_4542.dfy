@@ -1,10 +1,3 @@
-/*
-Given a string of stones ('B' for black, 'W' for white), find the minimum number 
-of stones to place at either end to make all stones the same color. When placing 
-a stone, all stones of opposite color between the new stone and the nearest 
-existing stone of the same color are flipped.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> s[i] == 'B' || s[i] == 'W'

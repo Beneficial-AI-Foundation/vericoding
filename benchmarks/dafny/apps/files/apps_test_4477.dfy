@@ -1,11 +1,3 @@
-/*
-Given an apartment number x consisting of the same repeated digit, calculate the total number of digits pressed when calling all "boring" apartments (apartments with all same digits) in a specific order until apartment x answers. The calling order is: All apartments with digit 1 (1, 11, 111, 1111), then digit 2 (2, 22, 222, 2222), and so on through digit 9.
-
-// Sum digits for all previous complete digit groups (1-9, 11-99, etc.)
-
-// Sum digits for current digit group up to and including x
-*/
-
 predicate IsBoringApartment(x: int)
 {
     (x >= 1 && x <= 9) ||

@@ -1,8 +1,3 @@
-/*
-Calculate total satisfaction points from eating N dishes in a specific order.
-Each dish provides base satisfaction, plus bonus points for eating consecutive dishes in sequence.
-*/
-
 predicate ValidInput(N: int, A: seq<int>, B: seq<int>, C: seq<int>)
 {
     N >= 1 &&

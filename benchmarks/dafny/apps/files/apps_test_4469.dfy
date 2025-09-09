@@ -1,11 +1,3 @@
-/*
-Given a shelf, process queries of three types:
-- L id: Add book with index id to the leftmost position
-- R id: Add book with index id to the rightmost position  
-- ? id: Find the minimum number of books to remove from either end to make book id leftmost or rightmost
-For each ? query, output the minimum number of removals needed.
-*/
-
 predicate ValidInput(queries: seq<(char, int)>)
 {
     && |queries| > 0

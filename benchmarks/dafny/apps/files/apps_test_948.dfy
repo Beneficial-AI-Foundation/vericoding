@@ -1,9 +1,3 @@
-/*
-Given an n×m grid of lowercase Latin letters, count the number of 2×2 squares 
-where the four letters can form the word "face" (i.e., the four letters are 
-exactly 'f', 'a', 'c', 'e' in any arrangement). Overlapping squares are counted separately.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0

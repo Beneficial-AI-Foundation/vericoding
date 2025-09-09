@@ -1,23 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.legendre.leggrid3d",
-  "category": "Legendre polynomials",
-  "description": "Evaluate a 3-D Legendre series on the Cartesian product of x, y, and z.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.legendre.leggrid3d.html",
-  "doc": "Evaluate a 3-D Legendre series on the Cartesian product of x, y, and z.\n\n    This function returns the values:\n\n    .. math:: p(a,b,c) = \\\\sum_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c)\n\n    where the points ``(a, b, c)`` consist of all triples formed by taking\n    `a` from `x`, `b` from `y`, and `c` from `z`. The resulting points form\n    a grid with `x` in the first dimension, `y` in the second, and `z` in\n    the third.\n\n    The parameters `x`, `y`, and `z` are converted to arrays only if they\n    are tuples or a lists, otherwise they are treated as a scalars. In\n    either case, either `x`, `y`, and `z` or their elements must support\n    multiplication and addition both with themselves and with the elements\n    of `c`.\n\n    If `c` has fewer than three dimensions, ones are implicitly appended to\n    its shape to make it 3-D. The shape of the result will be c.shape[3:] +\n    x.shape + y.shape + z.shape.\n\n    Parameters\n    ----------\n    x, y, z : array_like, compatible objects\n        The three dimensional series is evaluated at the points in the\n        Cartesian product of `x`, `y`, and `z`.  If `x`, `y`, or `z` is a\n        list or tuple, it is first converted to an ndarray, otherwise it is\n        left unchanged and, if it isn't an ndarray, it is treated as a\n        scalar.\n    c : array_like\n        Array of coefficients ordered so that the coefficients for terms of\n        degree i,j are contained in ``c[i,j]``. If `c` has dimension\n        greater than two the remaining indices enumerate multiple sets of\n        coefficients.\n\n    Returns\n    -------\n    values : ndarray, compatible object\n        The values of the two dimensional polynomial at points in the Cartesian\n        product of `x` and `y`.\n\n    See Also\n    --------\n    legval, legval2d, leggrid2d, legval3d",
-}
--/
-
-/-  Evaluate a 3-D Legendre series on the Cartesian product of x, y, and z.
-    This function computes p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c)
-    for all triples (a,b,c) from the Cartesian product of x, y, and z. -/
-
-/-  Specification: leggrid3d correctly evaluates a 3-D Legendre series
-    on the Cartesian product of input points.
-
-    The function computes the tensor product evaluation of Legendre polynomials
-    according to the mathematical formula p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c). -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

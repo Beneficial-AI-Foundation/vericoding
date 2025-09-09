@@ -1,11 +1,3 @@
-/*
-Given an n×m grid representing an ice cave level, determine if you can move from starting position (r1, c1) to target position (r2, c2) and fall through the target cell.
-Grid representation: '.' = intact ice, 'X' = cracked ice
-Movement rules: Move to side-adjacent cells only, cannot move to same cell, moving to intact ice cracks it, moving to cracked ice causes fall through
-Goal: Reach (r2, c2) when it's cracked ice and fall through it
-Starting cell (r1, c1) is guaranteed to contain 'X' in the input
-*/
-
 predicate ValidInputFormat(stdin_input: string)
 {
     |stdin_input| > 0 &&

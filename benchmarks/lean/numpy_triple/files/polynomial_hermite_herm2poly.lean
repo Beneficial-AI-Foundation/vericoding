@@ -1,33 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.hermite.herm2poly",
-  "category": "Hermite polynomials",
-  "description": "Convert a Hermite series to a polynomial.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite.herm2poly.html",
-  "doc": "Convert a Hermite series to a polynomial.\n\n    Convert an array representing the coefficients of a Hermite series,\n    ordered from lowest degree to highest, to an array of the coefficients\n    of the equivalent polynomial (relative to the \"standard\" basis) ordered\n    from lowest to highest degree.\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array containing the Hermite series coefficients, ordered\n        from lowest order term to highest.\n\n    Returns\n    -------\n    pol : ndarray\n        1-D array containing the coefficients of the equivalent polynomial\n        (relative to the \"standard\" basis) ordered from lowest order term\n        to highest.\n\n    See Also\n    --------\n    poly2herm\n\n    Notes\n    -----\n    The easy way to do conversions between polynomial basis sets\n    is to use the convert method of a class instance.\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite import herm2poly\n    >>> herm2poly([ 1.   ,  2.75 ,  0.5  ,  0.375])\n    array([0., 1., 2., 3.])",
-}
--/
-
-/-  Convert a Hermite series to a polynomial.
-    Converts coefficients of a Hermite series (ordered from lowest to highest degree)
-    to coefficients of the equivalent standard polynomial (ordered from lowest to highest degree).
-
-    The Hermite polynomials H_n(x) satisfy the recurrence relation:
-    H_{n+1}(x) = 2x * H_n(x) - 2n * H_{n-1}(x)
-    with H_0(x) = 1 and H_1(x) = 2x
-
-    This function performs the inverse transformation, converting from Hermite basis to standard basis. -/
-
-/-  Specification: herm2poly converts Hermite series coefficients to standard polynomial coefficients.
-
-    The conversion satisfies:
-    1. The output has the same length as the input
-    2. For n=1 (constant), the output equals the input
-    3. For n=2, the second coefficient is doubled (since H_1(x) = 2x)
-    4. The conversion algorithm follows the recurrence relation for Hermite polynomials
-    5. Special example: herm2poly([1, 2.75, 0.5, 0.375]) = [0, 1, 2, 3]
-    6. The conversion preserves basis transformation properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,9 +1,3 @@
-/*
-Count the number of ways to paint n bricks in a row using m colors such that exactly k bricks 
-have a different color than the brick immediately to their left. The first brick is not counted 
-in this comparison. Result should be modulo 998,244,353.
-*/
-
 predicate ValidInput(n: nat, m: nat, k: nat) {
     n >= 1 && m >= 1 && k >= 0 && k <= n - 1
 }

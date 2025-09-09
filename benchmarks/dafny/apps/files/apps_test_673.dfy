@@ -1,7 +1,3 @@
-/*
-Given two integers n and k, find the smallest integer x such that x > n and x is divisible by k.
-*/
-
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k > 0

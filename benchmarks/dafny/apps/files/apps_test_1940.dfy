@@ -1,11 +1,3 @@
-/*
-Given n types of pebbles with w_i pebbles of type i, and a person with 2 pockets 
-that can each hold at most k pebbles, find the minimum number of days needed to 
-collect all pebbles. Different pebble types cannot be mixed in the same pocket, 
-both pockets can be used simultaneously on the same day, and each pebble type 
-must be collected completely.
-*/
-
 predicate ValidInput(n: int, k: int, w: seq<int>)
 {
     k > 0 && n >= 0 && |w| == n && forall i :: 0 <= i < |w| ==> w[i] >= 0

@@ -1,8 +1,3 @@
-/*
-Given an integer sequence B of length N-1, find the maximum possible sum of an integer sequence A of length N 
-that satisfies the constraint: B_i >= max(A_i, A_{i+1}) for all valid i.
-*/
-
 predicate ValidInput(n: int, b: seq<int>)
 {
   n >= 2 && |b| == n - 1 && forall i :: 0 <= i < |b| ==> b[i] >= 0

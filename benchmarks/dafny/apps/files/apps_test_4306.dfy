@@ -1,10 +1,3 @@
-/*
-Given two time intervals [A, B) and [C, D), find the length of their intersection.
-Alice holds a button from time A to time B (exclusive).
-Bob holds a button from time C to time D (exclusive).
-Calculate how many seconds both are holding their buttons simultaneously.
-*/
-
 predicate ValidInput(a: int, b: int, c: int, d: int)
 {
     0 <= a < b <= 100 && 0 <= c < d <= 100

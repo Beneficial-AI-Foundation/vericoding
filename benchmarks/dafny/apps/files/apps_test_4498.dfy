@@ -1,9 +1,3 @@
-/*
-Given three integer positions a, b, c on a number line and an integer communication range d,
-determine if positions a and c can communicate either directly (distance ≤ d) or indirectly
-through position b (both a-b and b-c distances ≤ d).
-*/
-
 predicate ValidInput(a: int, b: int, c: int, d: int)
 {
     1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100 && 1 <= d <= 100

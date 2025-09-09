@@ -1,8 +1,3 @@
-/*
-function_signature: def right_angle_triangle(a: Nat, b: Nat, c: Nat) -> Bool
-Given the lengths of the three sides of a triangle. Return True if the three sides form a right-angled triangle, False otherwise. A right-angled triangle is a triangle in which one angle is right angle or 90 degree.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

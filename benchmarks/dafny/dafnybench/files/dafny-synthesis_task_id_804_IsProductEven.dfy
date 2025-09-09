@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate IsEven(n: int)
 {
     n % 2 == 0

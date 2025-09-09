@@ -1,11 +1,3 @@
-/*
-Vasya needs to drive to house number a on a street with n houses (n is even).
-Odd-numbered houses are on one side from beginning to end, even-numbered houses
-are on the other side from end to beginning. Distance from beginning to houses
-1 and n is 1 unit, and consecutive houses on same side are 1 unit apart.
-Find minimum time to reach house a from street beginning.
-*/
-
 predicate ValidInput(n: int, a: int)
 {
   n > 0 && n % 2 == 0 && 1 <= a <= n

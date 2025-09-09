@@ -1,9 +1,3 @@
-/*
-Given two sorted arrays A and B (non-decreasing order), determine if it's possible 
-to select k elements from A and m elements from B such that every selected element 
-from A is strictly less than every selected element from B.
-*/
-
 predicate ValidInput(n_A: int, n_B: int, k: int, m: int, A: seq<int>, B: seq<int>)
 {
     n_A >= 1 && n_B >= 1 &&

@@ -1,21 +1,3 @@
-/- 
-{
-  "name": "numpy.expand_dims",
-  "category": "Changing Dimensions",
-  "description": "Expand the shape of an array",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.expand_dims.html",
-  "doc": "Expand the shape of an array.\n\nInsert a new axis that will appear at the `axis` position in the expanded\narray shape.\n\nParameters\n----------\na : array_like\n    Input array.\naxis : int or tuple of ints\n    Position in the expanded axes where the new axis (or axes) is placed.\n\nReturns\n-------\nresult : ndarray\n    View of `a` with the number of dimensions increased.\n\nExamples\n--------\n>>> x = np.array([1, 2])\n>>> x.shape\n(2,)\n>>> y = np.expand_dims(x, axis=0)\n>>> y\narray([[1, 2]])\n>>> y.shape\n(1, 2)\n>>> y = np.expand_dims(x, axis=1)\n>>> y\narray([[1],\n       [2]])\n>>> y.shape\n(2, 1)",
-  "source_location": "numpy/lib/_shape_base_impl.py",
-  "signature": "numpy.expand_dims(a, axis)"
-}
--/
-
-/-  Expand the shape of a vector by inserting a new axis at the specified position.
-    axis=0 creates a row vector (1×n), axis=1 creates a column vector (n×1). -/
-
-/-  Specification: expand_dims preserves all elements and adds a new dimension at the specified axis.
-    The function creates a view with increased dimensions while maintaining element order and values. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

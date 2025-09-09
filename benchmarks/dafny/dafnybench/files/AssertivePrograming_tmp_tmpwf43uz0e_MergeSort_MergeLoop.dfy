@@ -1,38 +1,3 @@
-/*
-// Noa Leron 207131871
-
-// Tsuri Farhana 315016907
-
-/*
-Goal: Implement the well known merge sort algorithm in O(a.Length X log_2(a.Length)) time, recursively.
-
-- Divide the contents of the original array into two local arrays
-- After sorting the local arrays (recursively), merge the contents of the two returned arrays using the Merge method (see below)
-- DO NOT modify the specification or any other part of the method's signature
-- DO NOT introduce any further methods
-*/
-
-/*
-Goal: Implement iteratively, correctly, efficiently, clearly
-
-DO NOT modify the specification or any other part of the method's signature
-*/
-
-//This is a method that replace the loop body
-
-//Loop invariant - b is sprted so far and the next two potential values that will go into b are bigger then the biggest value in b.
-
-//Loop invariant - the multiset of the prefix of b so far is the same multiset as the prefixes of c and d so far.
-
-//This lemma helps dafny see that if the prefixs of arrays are the same multiset until the end of the arrays,
-
-//all the arrays are the same multiset.
-
-//This lemma helps dafny see that after adding the next value from c to b the prefixes are still the same subsets.
-
-//decreases ensures
-*/
-
 predicate Sorted(q: seq<int>) {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j]
 }

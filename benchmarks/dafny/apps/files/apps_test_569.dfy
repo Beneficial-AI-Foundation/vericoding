@@ -1,9 +1,3 @@
-/*
-Given a string of lowercase English letters, find the minimum number of character 
-changes needed to make all substrings distinct. If the string length exceeds 26,
-it's impossible since we only have 26 distinct lowercase letters available.
-*/
-
 predicate ValidInput(n: int, s: string) {
     n == |s| && n >= 1
 }

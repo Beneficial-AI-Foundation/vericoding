@@ -1,8 +1,3 @@
-/*
-function_signature: method uniqueSorted(s: seq<int>) returns (result: seq<int>)
-Sort elements. Requires: the condition holds for all values. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

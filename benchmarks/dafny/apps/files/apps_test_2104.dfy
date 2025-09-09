@@ -1,9 +1,3 @@
-/*
-Given integers l and r where l < r, partition all integers from l to r (inclusive) 
-into exactly (r-l+1)/2 pairs such that each pair (i,j) has gcd(i,j) = 1. 
-Each number must appear in exactly one pair.
-*/
-
 predicate ValidInput(l: int, r: int)
 {
     l < r && (r - l) % 2 == 1

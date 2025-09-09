@@ -1,33 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.replace",
-  "category": "String operations",
-  "description": "For each element in a, return a copy of the string with occurrences of substring old replaced by new",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.replace.html",
-  "doc": "For each element in `a`, return a copy of the string with occurrences of substring `old` replaced by `new`.\n\nParameters\n----------\na : array_like, with `StringDType`, `bytes_` or `str_` dtype\nold : array_like, with `StringDType`, `bytes_` or `str_` dtype\nnew : array_like, with `StringDType`, `bytes_` or `str_` dtype\ncount : array_like, with any integer dtype, optional\n    Maximum number of occurrences to replace. -1 (the default) means replace all occurrences.\n\nReturns\n-------\nout : ndarray\n    Output array of `StringDType`, `bytes_` or `str_` dtype,\n    depending on input types",
-}
--/
-
-/-  numpy.strings.replace: For each element in a, return a copy of the string with 
-    occurrences of substring old replaced by new.
-
-    Replaces occurrences of the substring 'old' with 'new' in each string element.
-    The replacement is done from left to right, and if count is specified, only
-    the first 'count' occurrences are replaced. If count is -1 or negative,
-    all occurrences are replaced.
--/
-
-/-  Specification for numpy.strings.replace: Returns a vector where each element is the
-    result of replacing occurrences of old substring with new substring.
-
-    Mathematical Properties:
-    1. Element-wise replacement: Each result element is the original string with replacements
-    2. Count limiting: If count[i] >= 0, at most count[i] replacements are made
-    3. Complete replacement: If count[i] < 0, all occurrences are replaced
-    4. Identity preservation: If old[i] doesn't occur in a[i], result[i] = a[i]
-    5. Zero count behavior: If count[i] = 0, no replacements occur
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

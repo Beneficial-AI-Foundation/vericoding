@@ -1,35 +1,3 @@
-/- 
-{
-  "name": "numpy.linalg.multi_dot",
-  "category": "Matrix and vector products",
-  "description": "Compute the dot product of two or more arrays in a single function call",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.multi_dot.html",
-  "doc": "Compute the dot product of two or more arrays in a single function call, while automatically selecting the fastest evaluation order.\n\nmulti_dot chains numpy.dot and uses optimal parenthesization of the matrices. Depending on the shapes of the matrices, this can speed up the multiplication a lot.\n\nIf the first argument is 1-D it is treated as a row vector. If the last argument is 1-D it is treated as a column vector. The other arguments must be 2-D.\n\nThink of multi_dot as: def multi_dot(arrays): return functools.reduce(np.dot, arrays)",
-}
--/
-
-/-  Multi-dot product: compute the dot product of multiple matrices in a single function call
-    with optimal parenthesization. This function performs a chain of matrix multiplications
-    A₁ × A₂ × ... × Aₙ where the parenthesization is chosen to minimize computational cost.
-
-    For three matrices A, B, C, this computes A × B × C with the optimal evaluation order.
-    The result is independent of parenthesization due to associativity of matrix multiplication. -/
-
-/-  Specification: Multi-dot performs a chain of matrix multiplications with optimal parenthesization.
-
-    Mathematical properties:
-    1. Associativity: (A × B) × C = A × (B × C) - the result is independent of parenthesization
-    2. Dimension compatibility: A is n₁×n₂, B is n₂×n₃, C is n₃×n₄, result is n₁×n₄
-    3. Element-wise computation: result[i][j] equals the triple sum over intermediate indices
-    4. Optimal evaluation order: the implementation chooses the parenthesization that minimizes 
-       the total number of scalar multiplications needed
-    5. Correctness: the result equals the sequential application of matrix multiplications
-    6. Non-empty constraint: at least two matrices are required (enforced by signature)
-
-    This specification captures the essential mathematical behavior while abstracting away 
-    the optimization details. The key insight is that matrix multiplication is associative,
-    so different parenthesizations yield the same mathematical result. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,8 +1,3 @@
-/*
-Given an array of integers, find the minimum distance between any two occurrences 
-of the minimum value in the array. The minimum value is guaranteed to appear at least twice.
-*/
-
 function seq_min(s: seq<int>): int
     requires |s| > 0
     ensures seq_min(s) in s

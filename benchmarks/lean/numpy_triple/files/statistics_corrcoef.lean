@@ -1,35 +1,3 @@
-/-  numpy.corrcoef: Return Pearson product-moment correlation coefficients.
-
-    The correlation coefficient measures the linear relationship between two variables.
-    For two vectors x and y, the correlation coefficient is computed as:
-
-    corr(x, y) = cov(x, y) / (std(x) * std(y))
-
-    Where:
-    - cov(x, y) is the covariance between x and y
-    - std(x) and std(y) are the standard deviations of x and y
-
-    This function computes the correlation coefficient between two vectors of observations.
-    The result is bounded between -1 and 1, where:
-    - 1 indicates perfect positive correlation
-    - -1 indicates perfect negative correlation  
-    - 0 indicates no linear correlation
-
-    Requires non-empty vectors and non-zero variance in both variables.
--/
-
-/-  Specification: corrcoef computes the Pearson correlation coefficient between two vectors.
-
-    The correlation coefficient satisfies several mathematical properties:
-    1. Symmetry: corr(x, y) = corr(y, x)
-    2. Bounded: -1 ≤ corr(x, y) ≤ 1
-    3. Self-correlation: corr(x, x) = 1 (if x has non-zero variance)
-    4. Scale invariance: correlation is preserved under linear transformations
-
-    Precondition: Both vectors have non-zero variance (not all elements equal)
-    Postcondition: Result is bounded between -1 and 1, and captures linear relationship
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,8 +1,3 @@
-/*
-Given a string of exactly 4 characters containing only '+' and '-',
-calculate the sum where each '+' contributes +1 and each '-' contributes -1.
-*/
-
 predicate ValidInput(s: string) {
     |s| == 4 && forall i :: 0 <= i < |s| ==> s[i] == '+' || s[i] == '-'
 }

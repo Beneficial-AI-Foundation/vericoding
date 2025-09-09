@@ -1,8 +1,3 @@
-/*
-function_signature: def minSubArraySum(nums : list[int]) -> int
-Given an array of integers nums, find the minimum sum of any non-empty sub-array of nums.
-*/
-
 function Sum(a: seq<int>, s: int, t: int): int
   requires 0 <= s <= t <= |a|
 {

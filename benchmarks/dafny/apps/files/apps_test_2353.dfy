@@ -1,11 +1,3 @@
-/*
-Given four integers representing sleep requirements and alarm timing,
-simulate an alarm system where: first alarm rings after b minutes,
-if total sleep >= a then wake permanently, otherwise set alarm for c minutes later
-and spend d minutes falling asleep. If alarm rings while falling asleep (c <= d),
-reset and repeat. Find total time until permanent wake or -1 if never happens.
-*/
-
 predicate ValidInput(a: int, b: int, c: int, d: int)
 {
     a >= 0 && b >= 0 && c >= 0 && d >= 0

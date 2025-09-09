@@ -1,8 +1,3 @@
-/*
-function_signature: def remove_vowels(string: str) -> string
-remove_vowels is a function that takes string and returns string without vowels.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

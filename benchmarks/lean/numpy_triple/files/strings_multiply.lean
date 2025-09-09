@@ -1,21 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.multiply",
-  "category": "String operations",
-  "description": "Return (a * i), that is string multiple concatenation, element-wise",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.multiply.html",
-  "doc": "Return (a * i), that is string multiple concatenation, element-wise.\n\nValues in \`i\` of less than 0 are treated as 0 (which yields an empty string).\n\nParameters\n----------\na : array_like, with \`np.bytes_\` or \`np.str_\` dtype\n    Input array of strings\ni : array_like, with any integer dtype\n    Number of times to repeat each string\n\nReturns\n-------\nout : ndarray\n    Output array of strings\n\nExamples\n--------\n>>> np.strings.multiply('Hello ', 3)\narray('Hello Hello Hello ', dtype='<U18')",
-}
--/
-
-/-  Return (a * i), that is string multiple concatenation, element-wise.
-    Values in i of less than 0 are treated as 0 (which yields an empty string). -/
-
-/-  Specification: multiply performs element-wise string repetition.
-    Each output string is the corresponding input string repeated the specified number of times.
-    Negative repetition counts produce empty strings. This comprehensive specification
-    captures the core mathematical properties of string multiplication in NumPy. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

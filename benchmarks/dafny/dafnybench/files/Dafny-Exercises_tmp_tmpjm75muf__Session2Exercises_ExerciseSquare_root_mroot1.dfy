@@ -1,7 +1,3 @@
-/*
-//Cost O(root n)
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

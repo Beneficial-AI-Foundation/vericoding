@@ -1,14 +1,3 @@
-/- 
-function_signature: "def median(numbers: List[float]) -> float"
-docstring: |
-    Return median of elements in the list l
-test_cases:
-  - input: [3, 1, 2, 4, 5]
-    output: 3
-  - input: [-10, 4, 6, 1000, 10, 20]
-    output: 15.0
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

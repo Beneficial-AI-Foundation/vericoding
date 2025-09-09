@@ -1,10 +1,3 @@
-/*
-Given n objects with sizes and m boxes of capacity k, find the maximum number of objects
-that can be packed using a greedy algorithm by potentially removing leftmost objects.
-The greedy algorithm processes objects from left to right, placing each object in the
-current box if it fits, otherwise using a new empty box.
-*/
-
 function GreedyPackFromEnd(a: seq<int>, boxes: int, capacity: int): int
     requires boxes >= 1
     requires capacity >= 1

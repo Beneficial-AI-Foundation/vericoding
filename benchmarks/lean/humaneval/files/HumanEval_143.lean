@@ -1,22 +1,3 @@
-/- 
-function_signature: "def words_in_sentence(sentence: str) -> str"
-docstring: |
-    You are given a string representing a sentence,
-    the sentence contains some words separated by a space,
-    and you have to return a string that contains the words from the original sentence,
-    whose lengths are prime numbers,
-    the order of the words in the new string should be the same as the original one.
-
-    Constraints:
-    * 1 <= len(sentence) <= 100
-    * sentence contains only letters
-test_cases:
-  - input: "This is a test"
-    expected_output: "is"
-  - input: "lets go for swimming"
-    expected_output: "go for"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

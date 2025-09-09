@@ -1,6 +1,3 @@
-/*
-*/
-
 function count(arr: seq<int>, value: int) : (c: nat)
     ensures c <= |arr|
 {

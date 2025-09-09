@@ -1,8 +1,3 @@
-/*
-Given n students with distinct programming skills, divide them into the minimum number of teams 
-such that no two students with skills differing by exactly 1 are on the same team.
-*/
-
 predicate ValidInput(skills: seq<int>)
 {
     |skills| >= 0

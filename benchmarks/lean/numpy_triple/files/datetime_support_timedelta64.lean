@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.timedelta64",
-  "category": "Datetime types",
-  "description": "A timedelta stored as a 64-bit integer",
-  "url": "https://numpy.org/doc/stable/reference/arrays.datetime.html#numpy.timedelta64",
-  "doc": "A timedelta stored as a 64-bit integer.\n\nSee :ref:\`arrays.datetime\` for more information.\n\n:Character code: \`\`'m'\`\`",
-}
--/
-
-/-  Create a timedelta64 object from a numeric value and time unit -/
-
-/-  Specification: timedelta64 creates a time duration object with given value and unit -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

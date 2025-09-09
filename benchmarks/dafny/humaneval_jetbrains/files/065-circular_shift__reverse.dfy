@@ -1,8 +1,3 @@
-/*
-function_signature: method reverse(str: string) returns (rev: string)
-Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
-*/
-
 type stringNat = s: string |
   |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
   forall i | 0 <= i < |s| :: s[i] in "0123456789"

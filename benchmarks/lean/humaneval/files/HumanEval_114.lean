@@ -1,15 +1,3 @@
-/- 
-function_signature: "def minSubArraySum(nums : list[int]) -> int"
-docstring: |
-    Given an array of integers nums, find the minimum sum of any non-empty sub-array
-    of nums.
-test_cases:
-  - input: [2, 3, 4, 1, 2, 4]
-    expected_output: 1
-  - input: [-1, -2, -3]
-    expected_output: -6
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

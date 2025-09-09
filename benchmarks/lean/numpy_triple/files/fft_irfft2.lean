@@ -1,28 +1,3 @@
-/-  numpy.fft.irfft2: Computes the inverse of rfft2.
-
-    Performs the inverse 2-dimensional discrete Fourier Transform for real input.
-    This function converts a complex frequency domain representation back to the
-    real spatial domain. It is the inverse of rfft2.
-
-    The function takes a complex-valued 2D array (represented as nested vectors)
-    and returns a real-valued 2D array. The output shape is determined by the
-    input shape and the original real signal dimensions.
-
-    This is essentially irfftn with axes=(-2, -1) as defaults.
--/
-
-/-  Specification: numpy.fft.irfft2 returns the inverse 2D real FFT.
-
-    Precondition: True (input is a well-formed 2D array)
-    Postcondition: The result is a real-valued 2D array with the same dimensions.
-
-    Key properties:
-    1. The output preserves the matrix structure and dimensions
-    2. The transformation processes all elements of the input
-    3. The inverse operation produces finite real values
-    4. Shape preservation ensures correct 2D FFT behavior
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

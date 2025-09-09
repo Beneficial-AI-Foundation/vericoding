@@ -1,18 +1,3 @@
-/*
-/*                                      Cumulative Sums over Arrays                                        */
-
-/*
-    Daniel Cavalheiro   57869
-    Pedro Nunes         57854
-*/
-
-//(a)
-
-//(b)
-
-//(c)
-*/
-
 function sum(a: array<int>, i: int, j: int): int
     reads a
     requires 0 <= i <= j <= a.Length

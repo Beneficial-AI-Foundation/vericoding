@@ -1,7 +1,3 @@
-/*
-// This allows the function to read from array 'a'
-*/
-
 function has_count(v: int, a: array<int>, n: int): int
     reads a
     requires n >= 0 && n <= a.Length

@@ -1,28 +1,3 @@
-/-  numpy.convolve: Returns the discrete, linear convolution of two one-dimensional arrays.
-
-    The discrete convolution operation is defined as:
-    (a * v)[n] = sum(a[m] * v[n - m], m = -∞ to ∞)
-
-    For finite arrays, the convolution is computed over the valid range where
-    both arrays have elements. This implementation follows the 'full' mode
-    which returns a convolution of length (M + N - 1) where M and N are
-    the lengths of the input arrays.
--/
-
-/-  Specification: numpy.convolve returns the discrete convolution of two vectors.
-
-    Precondition: Both input vectors must be non-empty (enforced by types)
-    Postcondition: The result vector contains the discrete convolution values
-
-    The convolution at position k is computed as:
-    result[k] = sum(a[i] * v[k - i] for all valid i)
-
-    Mathematical properties:
-    1. Result length is m + n - 1 (enforced by return type)
-    2. Each element follows the convolution definition
-    3. Boundary conditions: zero-padding is implicitly assumed outside array bounds
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

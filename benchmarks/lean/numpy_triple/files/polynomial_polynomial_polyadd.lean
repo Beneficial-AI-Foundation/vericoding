@@ -1,32 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.polynomial.polyadd",
-  "category": "Standard polynomials",
-  "description": "Add one polynomial to another.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polynomial.polyadd.html",
-  "doc": "Add one polynomial to another.\n\n    Returns the sum of two polynomials `c1` + `c2`.  The arguments are\n    sequences of coefficients from lowest order term to highest, i.e.,\n    [1,2,3] represents the polynomial ``1 + 2*x + 3*x**2``.\n\n    Parameters\n    ----------\n    c1, c2 : array_like\n        1-D arrays of polynomial coefficients ordered from low to high.\n\n    Returns\n    -------\n    out : ndarray\n        The coefficient array representing their sum.\n\n    See Also\n    --------\n    polysub, polymulx, polymul, polydiv, polypow\n\n    Examples\n    --------\n    >>> from numpy.polynomial import polynomial as P\n    >>> c1 = (1, 2, 3)\n    >>> c2 = (3, 2, 1)\n    >>> sum = P.polyadd(c1,c2); sum\n    array([4.,  4.,  4.])\n    >>> P.polyval(2, sum)  # 4 + 4(2) + 4(2**2)\n    28.0",
-}
--/
-
-/-  Add one polynomial to another.
-
-    Given two polynomials represented as coefficient vectors (from lowest to highest degree),
-    returns their sum. The result has length equal to the maximum of the input lengths,
-    with shorter polynomials implicitly padded with zeros. -/
-
-/-  Specification: polyadd computes c1 + c2 element-wise, padding with zeros.
-    The result has length max(n, m), and for each coefficient position i:
-    - If i < min(n, m): result[i] = c1[i] + c2[i]
-    - If min(n, m) ≤ i < n: result[i] = c1[i]
-    - If min(n, m) ≤ i < m: result[i] = c2[i]
-
-    Additionally, polyadd satisfies mathematical properties:
-    - Commutativity: polyadd c1 c2 = polyadd c2 c1
-    - Zero identity: polyadd c 0 = c and polyadd 0 c = c
-    - Associativity: polyadd (polyadd c1 c2) c3 = polyadd c1 (polyadd c2 c3)
-    - Leading coefficient preservation: if c1 and c2 have different degrees,
-      the result preserves the leading coefficient of the higher-degree polynomial -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic

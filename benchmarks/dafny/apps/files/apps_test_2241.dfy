@@ -1,10 +1,3 @@
-/*
-Given n notes where each note i has maximum playable volume a_i and required total volume b_i,
-find piano volume x_i and guitar volume y_i such that 1 ≤ x_i ≤ a_i, 1 ≤ y_i ≤ a_i, and x_i + y_i = b_i.
-For playable notes, add x_i × y_i to total joy. For unplayable notes, subtract 1.
-Return the maximum possible total joy.
-*/
-
 function sum_contributions(a: seq<int>, b: seq<int>): int
     requires |a| == |b|
 {

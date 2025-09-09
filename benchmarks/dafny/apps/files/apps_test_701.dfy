@@ -1,8 +1,3 @@
-/*
-Given two distinct strings s and t, determine if s can be transformed into t using character removal and/or character swapping operations.
-Return "array" if only swapping needed, "automaton" if only removal needed, "both" if both operations needed, or "need tree" if impossible.
-*/
-
 function ParseLines(stdin_input: string): seq<string>
     decreases |stdin_input|
 {

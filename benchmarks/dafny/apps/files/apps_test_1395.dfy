@@ -1,9 +1,3 @@
-/*
-Given a positive integer represented as a string and a divisor m, find the minimum remainder 
-when dividing any valid cyclic shift of the integer by m. A cyclic shift is valid if it 
-doesn't have leading zeros when interpreted as an integer.
-*/
-
 predicate ValidInput(stdin_input: string)
 {
   |stdin_input| > 0 && exists pos :: 0 <= pos < |stdin_input| && stdin_input[pos] == '\n'

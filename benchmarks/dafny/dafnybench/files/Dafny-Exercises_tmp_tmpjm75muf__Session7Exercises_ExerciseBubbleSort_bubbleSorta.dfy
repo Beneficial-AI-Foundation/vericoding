@@ -1,11 +1,3 @@
-/*
-//j excluded
-
-//f excluded
-
-//when c==f empty sequence
-*/
-
 predicate sorted_seg(a:array<int>, i:int, j:int)
 requires 0 <= i <= j <= a.Length
 reads a

@@ -1,8 +1,3 @@
-/*
-function_signature: def is_simple_power(x: int, n: int) -> bool
-Your task is to write a function that returns true if a number x is a simple power of n and false in other cases. x is a simple power of n if n**int=x
-*/
-
 function power(x: nat, y: nat): nat {
     if y == 0 then 1 else x * power(x, y-1)
 }

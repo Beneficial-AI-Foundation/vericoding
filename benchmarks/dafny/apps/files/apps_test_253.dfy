@@ -1,13 +1,3 @@
-/*
-Given three positive integers k₁, k₂, k₃ (each ≤ 1500), determine if there exist 
-starting times x₁, x₂, x₃ such that every integer t ≥ max(x₁, x₂, x₃) can be written 
-as xᵢ + j·kᵢ for some i ∈ {1,2,3} and non-negative integer j. In other words, 
-determine if the union of three arithmetic progressions can cover all sufficiently 
-large positive integers.
-
-// a == 2
-*/
-
 predicate ValidInput(nums: seq<int>)
 {
     |nums| == 3 &&

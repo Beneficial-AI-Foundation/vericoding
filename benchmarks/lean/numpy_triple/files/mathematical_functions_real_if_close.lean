@@ -1,23 +1,3 @@
-/- 
-{
-  "name": "numpy.real_if_close",
-  "description": "If input is complex with all imaginary parts close to zero, return real parts",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.real_if_close.html",
-  "doc": "If input is complex with all imaginary parts close to zero, return real parts.\n\n\"Close to zero\" is defined as tol * (machine epsilon of the type for a).",
-}
--/
-
-/-  If input is complex with all imaginary parts close to zero, return real parts.
-    Otherwise, return the original complex vector.
-    "Close to zero" is defined as tol * (machine epsilon of the type). -/
-
-/-  Specification: real_if_close returns real parts if all imaginary parts are within tolerance,
-    otherwise returns the original complex vector. This captures the essential behavior:
-    1. If all imaginary parts are small (≤ tol * machineEpsilon), return only real parts
-    2. Otherwise, preserve the original complex numbers
-    3. Real parts are always preserved regardless
-    4. The tolerance check is applied consistently across all elements -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

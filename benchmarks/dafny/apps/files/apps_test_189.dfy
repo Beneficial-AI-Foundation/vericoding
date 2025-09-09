@@ -1,9 +1,3 @@
-/*
-Given n sticks with positive integer lengths, find a positive integer t and modify sticks to minimize 
-total cost such that all final lengths are almost good for t (within distance 1 of t).
-Cost to change a stick's length is the absolute difference.
-*/
-
 predicate ValidInput(n: int, sticks: seq<int>)
 {
     1 <= n <= 1000 &&

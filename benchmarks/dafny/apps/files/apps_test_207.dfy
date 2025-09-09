@@ -1,9 +1,3 @@
-/*
-Given an integer sequence, determine if it can be divided into an odd number of 
-non-empty contiguous subsegments, where each subsegment has odd length and 
-begins and ends with odd numbers.
-*/
-
 predicate ValidInput(a: seq<int>)
 {
     |a| >= 1

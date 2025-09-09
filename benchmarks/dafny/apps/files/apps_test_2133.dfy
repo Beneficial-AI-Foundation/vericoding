@@ -1,9 +1,3 @@
-/*
-Given a tree with vertices colored black (1) or white (0), find the minimum number of paint operations
-to make all vertices the same color. A paint(v) operation changes the color of all vertices u such that
-all vertices on the shortest path from v to u have the same color.
-*/
-
 predicate ValidTreeInput(input: string)
 {
   var lines := SplitLines(input);

@@ -1,18 +1,3 @@
-/- 
-function_signature: "def filter_by_substring(strings: List[str], substring: str) -> List[str]"
-docstring: |
-  Filter an input list of strings only for ones that contain given substring
-test_cases:
-  - input:
-    - []
-    - "a"
-    expected_output: []
-  - input:
-    - ["abc", "bacd", "cde", "array"]
-    - "a"
-    expected_output: ["abc", "bacd", "array"]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

@@ -1,14 +1,3 @@
-/- 
------Description-----
-Write a Lean 4 function that returns the first duplicate integer found in a list. The function should return the value of the first duplicate it encounters, scanning from left to right. If no duplicates exist, return -1.
-
------Input-----
-lst: A list of integers.
-
------Output-----
-An integer representing the first duplicated value if any exists, otherwise -1.
--/
-
 @[reducible]
 def firstDuplicate_precond (lst : List Int) : Prop :=
   True

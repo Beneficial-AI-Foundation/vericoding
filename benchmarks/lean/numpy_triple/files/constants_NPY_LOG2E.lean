@@ -1,20 +1,3 @@
-/- 
-{
-  "name": "NPY_LOG2E",
-  "category": "C API Mathematical constants",
-  "description": "Base 2 logarithm of e",
-  "doc": "log2(e) = 1.442695040888963407359924681001892137",
-}
--/
-
-/-  Base 2 logarithm of e (log₂(e)) -/
-
-/-  Specification: NPY_LOG2E is the base 2 logarithm of e with mathematical properties:
-    1. It is approximately 1.442695040888963407359924681001892137
-    2. It satisfies the relationship: 2^(NPY_LOG2E) = e
-    3. It is the reciprocal of ln(2) (i.e., NPY_LOG2E = 1/ln(2))
-    4. It is used to convert natural logarithms to base 2 logarithms via: log₂(x) = ln(x) * NPY_LOG2E -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

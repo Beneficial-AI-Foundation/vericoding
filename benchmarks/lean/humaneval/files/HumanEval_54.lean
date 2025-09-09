@@ -1,13 +1,3 @@
-/- 
-function_signature: "def same_chars(s0: string, s1: string) -> Bool"
-docstring: Check if two words have the same characters.
-test_cases:
-  - input: ['eabcdzzzz', 'dddzzzzzzzddeddabc']
-    expected_output: True
-  - input: ['eabcd', 'dddddddabc']
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

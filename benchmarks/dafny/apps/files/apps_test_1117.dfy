@@ -1,9 +1,3 @@
-/*
-Given n rectangles in a fixed order, each rectangle can be rotated 90 degrees (swapping its width and height). 
-Determine if it's possible to rotate some rectangles such that the final heights form a non-ascending sequence 
-(each height ≤ previous height).
-*/
-
 function canFormNonAscendingSequence(rectangles: seq<(int, int)>): bool
 {
     if |rectangles| <= 1 then true

@@ -1,23 +1,3 @@
-/-  Evaluates a Hermite polynomial at a given point.
-    Given coefficients (c₀, c₁, ..., cₙ), evaluates ∑ᵢ cᵢ * Hᵢ(x)
-    where Hᵢ is the i-th Hermite polynomial.
-
-    The Hermite polynomials satisfy the recurrence:
-    H₀(x) = 1
-    H₁(x) = 2x
-    Hₙ₊₁(x) = 2x * Hₙ(x) - 2n * Hₙ₋₁(x)
--/
-
-/-  Specification: hermiteEval correctly evaluates the Hermite polynomial series.
-
-    Mathematical properties:
-    1. Empty coefficient vector evaluates to 0
-    2. Single coefficient [c] evaluates to c * H₀(x) = c * 1 = c
-    3. Two coefficients [a, b] evaluates to a + b * 2x
-    4. The evaluation follows the Hermite polynomial recurrence relation
-    5. Hermite polynomials form an orthogonal basis
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

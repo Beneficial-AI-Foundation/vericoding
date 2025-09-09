@@ -1,9 +1,3 @@
-/*
-//Implement by calling binary search function
-
-//Recursive binary search
-*/
-
 predicate sorted(s : seq<int>) {
     forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
 }

@@ -1,11 +1,3 @@
-/*
-Given an integer n (2 ≤ n ≤ 10^5), construct two trees with n nodes each:
-1. First tree: Where Mahmoud's algorithm produces incorrect minimum vertex cover size
-2. Second tree: Where Mahmoud's algorithm produces correct minimum vertex cover size
-Mahmoud's algorithm roots the tree at node 1, counts nodes at even/odd depths,
-and returns min(evenCnt, oddCnt) as the vertex cover size.
-*/
-
 predicate ValidOutput(n: int, result: seq<string>)
     requires n >= 2
 {

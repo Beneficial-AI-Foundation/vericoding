@@ -1,13 +1,3 @@
-/*
-Given two parking fee plans:
-- Plan 1: A yen per hour (total: A×N yen for N hours)
-- Plan 2: B yen flat rate (regardless of duration)
-Find the minimum cost to park for N hours.
-Input: Three integers N, A, B where N is parking duration in hours (1 ≤ N ≤ 20),
-A is hourly rate for Plan 1 (1 ≤ A ≤ 100), and B is flat rate for Plan 2 (1 ≤ B ≤ 2000).
-Output: The minimum parking fee (integer)
-*/
-
 predicate ValidInput(input: string)
 {
     var parts := SplitStringFunc(input);

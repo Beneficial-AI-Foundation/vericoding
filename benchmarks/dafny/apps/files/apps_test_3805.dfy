@@ -1,9 +1,3 @@
-/*
-Two wires run from left to right between a wall and device. Given a string of '+' and '-' 
-representing wire crossings, determine if wires can be untangled by free movement without
-unplugging. Uses stack algorithm where same adjacent characters cancel out.
-*/
-
 function ExtractFirstLine(input: string): string
 {
     if |input| == 0 then ""

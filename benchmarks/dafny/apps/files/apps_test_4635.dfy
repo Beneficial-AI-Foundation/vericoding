@@ -1,10 +1,3 @@
-/*
-Given two integers n and k, construct a string of length n using only the first k letters 
-of the alphabet ('a', 'b', ..., k-th letter). Each of the k letters must appear at least once.
-Maximize the minimum frequency among all letters used. The optimal strategy is to distribute
-characters as evenly as possible by cycling through the k letters repeatedly.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && 

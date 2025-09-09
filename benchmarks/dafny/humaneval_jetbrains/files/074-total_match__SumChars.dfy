@@ -1,8 +1,3 @@
-/*
-function_signature: method SumChars(list: seq<string>) returns (sum: nat)
-Calculate sum. Ensures: returns the sum of character lengths in all strings.
-*/
-
 function sum_chars_rec(list: seq<string>): nat
 {
   if |list| == 0 then 0

@@ -1,9 +1,3 @@
-/*
-Given an array of n integers (each from 0 to 9), count the number of subarrays 
-where the sum of elements equals the length of the subarray.
-A subarray from index l to r is "good" if: sum(a[l] + a[l+1] + ... + a[r]) = (r - l + 1)
-*/
-
 predicate ValidInput(digits: seq<int>)
 {
     |digits| >= 1 && forall i :: 0 <= i < |digits| ==> 0 <= digits[i] <= 9

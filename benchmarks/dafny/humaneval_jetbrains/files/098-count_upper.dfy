@@ -1,8 +1,3 @@
-/*
-function_signature: def count_upper(s : String) -> Int
-Given a string s, count the number of uppercase vowels in even indices.
-*/
-
 function is_upper_vowel(c: char) : bool {
   c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O'
 }

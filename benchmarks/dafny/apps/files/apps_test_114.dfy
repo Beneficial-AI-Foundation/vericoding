@@ -1,10 +1,3 @@
-/*
-Given an n×m matrix A containing only 0s and 1s, and matrix B initially all zeros.
-You can perform operations on B: choose integers x, y where 1 ≤ x < n and 1 ≤ y < m,
-then set B[x,y], B[x,y+1], B[x+1,y], and B[x+1,y+1] to 1.
-Determine if B can be made equal to A, and if so, provide a sequence of operations.
-*/
-
 predicate ValidInputFormat(input: string)
 {
   |input| > 0 && input[|input|-1] == '\n' &&

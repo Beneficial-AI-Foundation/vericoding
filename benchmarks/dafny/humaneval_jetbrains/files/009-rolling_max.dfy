@@ -1,8 +1,3 @@
-/*
-function_signature: def rolling_max(numbers: List[int]) -> Tuple[int, int]
-From a given list of integers, generate a list of rolling maximum element found until given moment in the sequence.
-*/
-
 datatype Option<T> = None | Some(T)
 function getVal(mx : Option<int>) : int
     requires exists i : int :: mx == Some(i)

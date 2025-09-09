@@ -1,8 +1,3 @@
-/*
-function_signature: method is_sorted(a: seq<int>) returns (f: bool)
-Sort elements. Ensures: the condition holds for all values.
-*/
-
 function count_set(a: seq<int>, x: int): int {
   |set i | 0 <= i < |a| && a[i] == x|
 }

@@ -1,9 +1,3 @@
-/*
-Given a string of movement directions ('L', 'R', 'U', 'D'), determine the minimum number 
-of character changes needed so that following the directions returns to the starting position.
-Return -1 if impossible (when string length is odd).
-*/
-
 predicate ValidInput(s: string) {
     forall i :: 0 <= i < |s| ==> s[i] == 'L' || s[i] == 'R' || s[i] == 'U' || s[i] == 'D'
 }

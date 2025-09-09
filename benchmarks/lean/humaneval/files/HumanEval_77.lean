@@ -1,23 +1,3 @@
-/- 
-function_signature: "def iscube(a: int) -> bool"
-docstring: |
-    Write a function that takes an integer a and returns True if this integer is a cube of some integer number.
-    Note: you may assume the input is always valid.
-test_cases:
-  - input: 1
-    expected_output: True
-  - input: 2
-    expected_output: False
-  - input: -1
-    expected_output: True
-  - input: 64
-    expected_output: True
-  - input: 0
-    expected_output: True
-  - input: 180
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

@@ -1,10 +1,3 @@
-/*
-Given an array of n integers (each either -1 or 1), determine for each query 
-whether the array can be rearranged so that the sum of elements in a given 
-range equals 0. A range can sum to 0 only if it has even length and we have 
-enough positive and negative values to fill half the positions each.
-*/
-
 ghost predicate ValidInput(input: string)
 {
     var lines := splitLines(input);

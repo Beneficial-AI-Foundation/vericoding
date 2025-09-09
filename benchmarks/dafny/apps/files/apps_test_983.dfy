@@ -1,8 +1,3 @@
-/*
-Given an array of n integers and coefficients p, q, r, find the maximum value of 
-p·a_i + q·a_j + r·a_k where indices i, j, k satisfy 1 ≤ i ≤ j ≤ k ≤ n.
-*/
-
 function max_prefix(s: seq<int>, i: int): int
     requires 0 <= i < |s|
 {

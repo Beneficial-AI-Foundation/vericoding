@@ -1,10 +1,3 @@
-/*
-Given an array of n integers where each element is one of {4, 8, 15, 16, 23, 42}, 
-find the minimum number of elements to remove to make the array "good".
-A "good" array must have length divisible by 6 and can be split into complete 
-subsequences of exactly "4, 8, 15, 16, 23, 42" (in that order).
-*/
-
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 0 && |a| == n && forall i :: 0 <= i < |a| ==> a[i] in {4, 8, 15, 16, 23, 42}

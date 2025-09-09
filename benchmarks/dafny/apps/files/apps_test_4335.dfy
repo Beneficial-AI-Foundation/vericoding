@@ -1,9 +1,3 @@
-/*
-Given a positive integer N and a string S of length N consisting of lowercase English letters,
-determine whether S can be expressed as the concatenation of two identical strings (S = T + T for some string T).
-Return "Yes" if S is a concatenation of two copies of some string; otherwise, return "No".
-*/
-
 predicate ValidInput(N: int, S: string)
 {
     1 <= N <= 100 && |S| == N && forall i :: 0 <= i < |S| ==> 'a' <= S[i] <= 'z'

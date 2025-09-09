@@ -1,10 +1,3 @@
-/*
-Calculate how many candies will be saved in the year 2016 based on a savings plan.
-Input format: "x of week" (x=1-7, Monday-Sunday) or "x of month" (x=1-31).
-Save one candy on the specified day each week/month.
-2016 is a leap year starting on Friday, week starts on Monday.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 &&

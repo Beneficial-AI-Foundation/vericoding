@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate IsSpaceCommaDot(c: char)
 {
     c == ' ' || c == ',' || c == '.'

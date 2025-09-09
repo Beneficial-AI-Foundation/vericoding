@@ -1,15 +1,3 @@
-/*
-// see pdf 'ex6 & 7 documentation' for excercise question
-
-//swaps two sequence indexes
-
-//idea from Rustan Leino video "Basics of specification and verification: Lecture 3, the Dutch National Flag algorithm"
-
-//modified for 4 elements
-
-//checks if a sequence is in base order
-*/
-
 datatype Bases = A | C | G | T
 
 method Exchanger(s: seq<Bases>, x:nat, y:nat) returns (t: seq<Bases>)

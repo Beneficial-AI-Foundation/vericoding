@@ -1,9 +1,3 @@
-/*
-Given N balls at coordinates (x_i, i) for i = 1 to N, and 2N robots (N type-A at (0,i) and N type-B at (K,i)),
-find the minimum total distance to collect all balls. Each robot can collect the ball on its corresponding line
-and return to its starting position. Type-A robot travels 2×x_i, Type-B robot travels 2×(K-x_i).
-*/
-
 predicate ValidInput(s: string) {
     var lines := SplitByNewlines(s);
     |lines| >= 3 &&

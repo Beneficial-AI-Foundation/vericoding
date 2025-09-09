@@ -1,7 +1,3 @@
-/*
-function_signature: def has_close_elements(numbers: List[float], threshold: float) -> bool
-*/
-
 function abs(val : real): real
 {
   if (val < 0.0) then

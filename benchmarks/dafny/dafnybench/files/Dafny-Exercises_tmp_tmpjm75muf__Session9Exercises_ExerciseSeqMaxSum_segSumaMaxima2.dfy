@@ -1,11 +1,3 @@
-/*
-//Now do the same but with a loop from right to left
-
-//maximum sum stuck to the right
-
-//Implement and verify
-*/
-
 function Sum(v:array<int>,i:int,j:int):int
 reads v
 requires 0<=i<=j<=v.Length

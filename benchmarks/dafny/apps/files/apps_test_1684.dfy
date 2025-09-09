@@ -1,11 +1,3 @@
-/*
-Given n points numbered 1 to n arranged clockwise on a circle's circumference 
-and m line segments connecting pairs of these points, determine if the resulting 
-image has rotational symmetry. The image has rotational symmetry if there exists 
-an integer k (1 ≤ k < n) such that rotating all segments clockwise by k units 
-around the center produces the same image.
-*/
-
 datatype InputData = InputData(n: int, m: int, segments: set<(int, int)>)
 
 predicate valid_input_format(stdin_input: string)

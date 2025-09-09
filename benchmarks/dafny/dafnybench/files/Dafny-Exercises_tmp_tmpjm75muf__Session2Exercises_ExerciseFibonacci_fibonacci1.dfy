@@ -1,6 +1,3 @@
-/*
-*/
-
 function fib(n: nat): nat
 decreases n
 {

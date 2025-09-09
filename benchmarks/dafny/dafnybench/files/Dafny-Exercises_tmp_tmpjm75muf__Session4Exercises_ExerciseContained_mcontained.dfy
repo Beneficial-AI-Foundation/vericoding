@@ -1,13 +1,3 @@
-/*
-//Specify and implement an O(m+n) algorithm that returns b
-
-//v and w are strictly increasing ordered arrays
-
-//b is true iff the first n elements of v are contained in the first m elements of w
-
-//exists j :: 0 <= j < m && v[k] == w[j]
-*/
-
 predicate strictSorted(s : seq<int>) {
     forall u, w :: 0 <= u < w < |s| ==> s[u] < s[w]
 }

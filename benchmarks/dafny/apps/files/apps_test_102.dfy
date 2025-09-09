@@ -1,10 +1,3 @@
-/*
-Convert an integer score (0 ≤ s ≤ 99) to its English word representation 
-using only lowercase letters and hyphens. Numbers 0-19 have unique forms,
-numbers 20-99 combine tens words with units using hyphens, multiples of 10
-from 20-90 stand alone.
-*/
-
 predicate ValidInput(s: string)
 {
     IsValidIntegerString(s) && 

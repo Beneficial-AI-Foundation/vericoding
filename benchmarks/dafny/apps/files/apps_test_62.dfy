@@ -1,10 +1,3 @@
-/*
-Two players play a game on a sequence of n non-negative integers. Each player can either
-reduce a single element by some value or globally reduce all elements by the minimum value.
-The player who cannot make a move (all elements are 0) loses. Determine the winner assuming
-both players play optimally.
-*/
-
 predicate ValidInput(stdin_input: string)
 {
     |stdin_input| > 0 &&

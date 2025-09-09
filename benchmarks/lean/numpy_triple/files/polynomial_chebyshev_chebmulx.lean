@@ -1,32 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.chebyshev.chebmulx",
-  "category": "Chebyshev polynomials",
-  "description": "Multiply a Chebyshev series by x.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.chebyshev.chebmulx.html",
-  "doc": "Multiply a Chebyshev series by x.\n\n    Multiply the polynomial \`c\` by x, where x is the independent\n    variable.\n\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of Chebyshev series coefficients ordered from low to\n        high.\n\n    Returns\n    -------\n    out : ndarray\n        Array representing the result of the multiplication.\n\n    See Also\n    --------\n    chebadd, chebsub, chebmul, chebdiv, chebpow\n\n    Examples\n    --------\n    >>> from numpy.polynomial import chebyshev as C\n    >>> C.chebmulx([1,2,3])\n    array([1. , 2.5, 1. , 1.5])",
-}
--/
-
-/-  Multiply a Chebyshev series by x.
-    This function multiplies a Chebyshev polynomial represented by its coefficients by x.
-    The operation is based on the recurrence relation:
-    - xT₀(x) = T₁(x)
-    - xTₙ(x) = (Tₙ₊₁(x) + Tₙ₋₁(x))/2 for n ≥ 1 -/
-
-/-  Specification: chebmulx correctly multiplies a Chebyshev polynomial by x.
-
-    Given coefficients c = [c₀, c₁, ..., cₙ₋₁] representing the polynomial
-    P(x) = c₀T₀(x) + c₁T₁(x) + ... + cₙ₋₁Tₙ₋₁(x),
-    this function computes coefficients for xP(x).
-
-    The implementation follows from the Chebyshev recurrence relations:
-    - xT₀(x) = T₁(x)
-    - xTₙ(x) = (Tₙ₊₁(x) + Tₙ₋₁(x))/2 for n ≥ 1
-
-    The algorithm redistributes coefficients according to these relations,
-    resulting in a polynomial with degree increased by 1. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

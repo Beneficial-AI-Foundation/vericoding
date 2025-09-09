@@ -1,9 +1,3 @@
-/*
-Given n non-intersecting integer segments, find the minimum number of moves
-to make the total count of integers covered by all segments divisible by k.
-Each move extends any segment by 1 unit either left or right.
-*/
-
 ghost predicate ValidInputFormat(s: string) {
     var lines := SplitLines(s);
     |lines| >= 1 &&

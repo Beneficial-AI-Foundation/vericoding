@@ -1,7 +1,3 @@
-/*
-Given an integer K (2 ≤ K ≤ 100), count the number of ways to choose one even number and one odd number from the integers 1 through K (inclusive). Order of selection does not matter.
-*/
-
 predicate ValidInput(K: int) {
     2 <= K <= 100
 }

@@ -1,12 +1,3 @@
-/*
-Count pairs of positive integers (w, h) such that:
-- w ≤ a (width constraint)  
-- h ≤ b (height constraint)
-- w/h = x/y (aspect ratio constraint)
-The solution reduces x/y to lowest terms and finds the maximum multiplier k
-such that valid pairs have the form (k×x', k×y') where x' = x/gcd(x,y) and y' = y/gcd(x,y)
-*/
-
 predicate ValidInput(a: int, b: int, x: int, y: int)
 {
   a > 0 && b > 0 && x > 0 && y > 0

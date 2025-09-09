@@ -1,9 +1,3 @@
-/*
-Given n games with costs and m bills with values, determine how many games can be bought
-by processing games in order. For each game, use the first available bill if it has
-sufficient value to buy the game, otherwise skip the game. Return total games bought.
-*/
-
 function countBuyableGames(games: seq<int>, bills: seq<int>): int
     requires forall i :: 0 <= i < |games| ==> games[i] >= 1
     requires forall i :: 0 <= i < |bills| ==> bills[i] >= 1

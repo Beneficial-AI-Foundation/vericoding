@@ -1,8 +1,3 @@
-/*
-function_signature: method count(a: seq<int>, x: int) returns (cnt: int)
-Count occurrences. Ensures: returns the correct count; returns the correct count.
-*/
-
 function count_rec(a: seq<int>, x: int): int {
   if |a| == 0 then 0
   else count_rec(a[1..], x) + (if a[0] == x then 1 else 0)

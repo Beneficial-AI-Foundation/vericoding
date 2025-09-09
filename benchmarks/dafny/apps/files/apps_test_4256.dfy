@@ -1,10 +1,3 @@
-/*
-Given three integers A (cost per drink), B (available money), and C (maximum drinks desired),
-determine how many drinks will be purchased. The number of drinks purchased is the minimum of:
-- How many drinks can be afforded: B // A  
-- The satisfaction limit: C
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 &&

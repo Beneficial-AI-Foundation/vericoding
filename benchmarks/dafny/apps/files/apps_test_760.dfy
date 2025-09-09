@@ -1,9 +1,3 @@
-/*
-Given a string s and integer k, find the maximum possible length of a tandem repeat substring
-that can appear after appending k characters to s. A tandem repeat of length 2n has its first
-half exactly matching its second half.
-*/
-
 function is_tandem_repeat(s: seq<char>): bool
 {
     if |s| % 2 != 0 then false

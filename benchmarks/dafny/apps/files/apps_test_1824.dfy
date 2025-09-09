@@ -1,9 +1,3 @@
-/*
-Given three lists of compilation errors (initial with n errors, second with n-1 errors, third with n-2 errors),
-find the two error values that were corrected. The compiler shows errors in different order each time,
-but the actual error values remain the same.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitByNewline(input);

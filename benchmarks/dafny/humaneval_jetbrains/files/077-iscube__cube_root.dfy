@@ -1,8 +1,3 @@
-/*
-function_signature: method cube_root(N: nat) returns (r: nat)
-Find the integer cube root. Ensures: the result r is the largest integer such that r³ ≤ N < (r+1)³; the result is at most N.
-*/
-
 function cube(n: int): int { n * n * n }
 
 // <vc-helpers>

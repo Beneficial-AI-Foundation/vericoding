@@ -1,8 +1,3 @@
-/*
-Given an integer n representing dollars, find the minimum number of bills 
-needed to represent this amount using denominations of $1, $5, $10, $20, and $100.
-*/
-
 predicate ValidInput(n: int) {
     n >= 1
 }

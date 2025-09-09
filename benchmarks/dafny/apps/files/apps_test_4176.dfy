@@ -1,11 +1,3 @@
-/*
-Given two integers A and B representing possible numbers of guests at a party,
-find the minimum number of snack pieces that can be evenly distributed among
-the guests in both scenarios (A guests or B guests). Each piece must go to
-exactly one guest, and each guest must receive the same number of pieces
-within each scenario. This is equivalent to finding the LCM of A and B.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 &&

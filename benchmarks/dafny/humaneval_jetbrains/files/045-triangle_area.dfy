@@ -1,8 +1,3 @@
-/*
-function_signature: def triangle_area(a: float, h: float) -> float
-Given length of a side and high return area for a triangle.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,9 +1,3 @@
-/*
-/**
-returns an index st new array is a permutation of the old array
-positive first and then strictnegative, i is the firs neg or len if not any */
-*/
-
 predicate strictNegative(v:array<int>,i:int,j:int)
 reads v
 requires 0<=i<=j<=v.Length

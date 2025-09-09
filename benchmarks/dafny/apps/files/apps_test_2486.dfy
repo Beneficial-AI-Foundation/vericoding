@@ -1,11 +1,3 @@
-/*
-Given N cards with positive integers, determine how many cards are "unnecessary."
-A subset of cards is "good" if the sum of its numbers is at least K.
-A card is "unnecessary" if for every good subset containing this card, 
-removing the card from that subset still results in a good subset.
-Count the number of unnecessary cards.
-*/
-
 function UnnecessaryCardsCount(sorted: seq<int>, k: int): int
   requires forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] >= sorted[j]
   requires forall i :: 0 <= i < |sorted| ==> sorted[i] >= 1

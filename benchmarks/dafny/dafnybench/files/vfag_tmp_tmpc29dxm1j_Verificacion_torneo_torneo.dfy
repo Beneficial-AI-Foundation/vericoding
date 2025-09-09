@@ -1,7 +1,3 @@
-/*
-// Q
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

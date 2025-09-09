@@ -1,24 +1,3 @@
-/- 
-{
-  "name": "numpy.around",
-  "description": "Evenly round to the given number of decimals",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.around.html",
-  "doc": "Evenly round to the given number of decimals.\n\nAlias for numpy.round.",
-}
--/
-
-/-  numpy.around: Evenly round to the given number of decimals (alias for numpy.round).
-    Uses banker's rounding (round half to even) for values exactly halfway between rounded decimal values.
-    For example: 1.5 and 2.5 both round to 2.0, -0.5 and 0.5 both round to 0.0 -/
-
-/-  Specification: around rounds each element to the given number of decimals with the following properties:
-    1. Basic rounding: rounds to nearest representable value at the specified decimal precision
-    2. Banker's rounding: for values exactly halfway between rounded decimal values, rounds to nearest even
-    3. Zero preservation: rounding zero always produces zero
-    4. Order preservation: maintains relative ordering of elements
-    5. Bounded difference: the rounded value is close to the original value
-    6. Idempotency: rounding an already-rounded value doesn't change it -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

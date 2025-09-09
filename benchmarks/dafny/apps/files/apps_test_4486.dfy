@@ -1,9 +1,3 @@
-/*
-Given a string s of lowercase English letters, extract all characters at odd-numbered positions
-(using 1-based indexing) and concatenate them into a new string. This corresponds to extracting
-characters at even indices in 0-based indexing (positions 0, 2, 4, 6, ...).
-*/
-
 predicate ValidInput(s: string)
 {
     |s| >= 1 && forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'

@@ -1,7 +1,3 @@
-/*
-// Return a minimum of a.
-*/
-
 function min(a: int, b: int): int
     ensures min(a, b) <= a && min(a, b) <= b
     ensures min(a, b) == a || min(a, b) == b

@@ -1,8 +1,3 @@
-/*
-Given a positive integer a, find the maximum possible value of gcd(a ⊕ b, a & b) 
-where b is chosen from the range [1, a-1] and ⊕ denotes XOR and & denotes AND operations.
-*/
-
 function power2(k: int): int
   requires k >= 0
 {

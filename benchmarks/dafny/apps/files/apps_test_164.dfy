@@ -1,11 +1,3 @@
-/*
-Given a rectangular football field where Robo-Wallace is at position (x_b, y_b) with a ball of radius r,
-find a point x_w on the right wall (at y = y_w) such that kicking the ball there will cause it to bounce
-once and go through the goal. The goal is located at x = 0, between y-coordinates y_1 and y_2.
-The ball moves in straight lines and bounces elastically off walls. A goal is scored when the ball's
-center crosses the y-axis between y_1 and y_2. Output x_w if possible, otherwise -1.
-*/
-
 predicate ValidInput(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int)
 {
     y1 < y2 < y_w &&

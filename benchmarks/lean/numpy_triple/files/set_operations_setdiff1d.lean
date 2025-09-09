@@ -1,19 +1,3 @@
-/- 
-{
-  "name": "numpy.setdiff1d",
-  "category": "Set operations",
-  "description": "Find the set difference of two arrays",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.setdiff1d.html",
-  "doc": "Find the set difference of two arrays.\n\nReturn the unique values in `ar1` that are not in `ar2`.\n\nParameters\n----------\nar1 : array_like\n    Input array.\nar2 : array_like\n    Input comparison array.\nassume_unique : bool\n    If True, the input arrays are both assumed to be unique, which\n    can speed up the calculation.  Default is False.\n\nReturns\n-------\nsetdiff1d : ndarray\n    1D array of values in `ar1` that are not in `ar2`. The result\n    is sorted when `assume_unique=False`, but otherwise only sorted\n    if the input is sorted.",
-}
--/
-
-/-  Find the set difference of two arrays.
-    Return the unique values in `ar1` that are not in `ar2`. -/
-
-/-  Specification: setdiff1d returns unique values from ar1 that are not in ar2.
-    The result contains no duplicates and is sorted. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

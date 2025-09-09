@@ -1,10 +1,3 @@
-/*
-Given n problems with initial scores and solving times, where problems are sorted by increasing
-difficulty. Two contestants (Limak and Radewoosh) solve all problems in opposite orders.
-When problem i is submitted at time x, it awards max(0, p_i - c*x) points where c is penalty rate.
-Determine who scores more total points.
-*/
-
 predicate ValidInput(n: int, c: int, P: seq<int>, T: seq<int>)
 {
     n > 0 && c > 0 && |P| == n && |T| == n &&

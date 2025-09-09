@@ -1,10 +1,3 @@
-/*
-Given a string of lowercase letters and a value for each letter, calculate the maximum 
-possible value of a string after inserting exactly k lowercase letters. The value of a 
-string s = s₁s₂...sₙ is defined as f(s) = Σᵢ₌₁ⁿ (wₛᵢ × i), where wₛᵢ is the value of 
-character sᵢ and i is its 1-indexed position.
-*/
-
 function stringValue(s: string, w: seq<int>): int
   requires |w| == 26
   requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'

@@ -1,10 +1,3 @@
-/*
-Given a combination lock display with n digits, find the smallest possible number 
-achievable using two operations: (1) Add 1 to all digits (9 wraps to 0), and 
-(2) Shift all digits one position right (rightmost digit becomes leftmost).
-Leading zeros are ignored when comparing numbers for size.
-*/
-
 predicate ValidInput(n: int, digits: string)
 {
     n > 0 && |digits| == n && forall i :: 0 <= i < |digits| ==> '0' <= digits[i] <= '9'

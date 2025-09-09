@@ -1,9 +1,3 @@
-/*
-Given k game levels represented as n×m grids containing candies (letters) or empty cells ('.'),
-find the minimum cost to transmit all levels. Each level can be transmitted in full (cost: n×m)
-or as differences from a previously transmitted level (cost: d×w where d is number of differing cells).
-*/
-
 function split_lines(s: string): seq<string>
 {
     []

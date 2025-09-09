@@ -1,8 +1,3 @@
-/*
-Five players each start with the same positive number of coins b. Coins are passed between players.
-Given the final coin distribution, determine the initial bet b, or -1 if no such positive b exists.
-*/
-
 predicate ValidInput(coins: seq<int>)
 {
   |coins| == 5 && forall i :: 0 <= i < |coins| ==> 0 <= coins[i] <= 100

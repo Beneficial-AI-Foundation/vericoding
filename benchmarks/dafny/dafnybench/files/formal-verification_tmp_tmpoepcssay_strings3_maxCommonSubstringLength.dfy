@@ -1,7 +1,3 @@
-/*
-// This postcondition follows from the above lemma.
-*/
-
 predicate isSubstring(sub: string, str: string)
 {
     exists i :: 0 <= i <= |str| - |sub| && str[i..i+|sub|] == sub

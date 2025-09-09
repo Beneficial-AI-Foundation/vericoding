@@ -1,18 +1,3 @@
-/- 
-function_signature: "def intersperse(numbers: List[int], delimeter: int) -> List[int]"
-docstring: |
-    Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
-test_cases:
-  - input:
-      - []
-      - 4
-    expected_output: []
-  - input:
-      - [1, 2, 3]
-      - 4
-    expected_output: [1, 4, 2, 4, 3]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

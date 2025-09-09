@@ -1,10 +1,3 @@
-/*
-Given N vacation days and M assignments where assignment i takes A_i days to complete,
-find the maximum number of days available for hanging out. Each assignment must be
-completed on consecutive days, and no hanging out is allowed on assignment days.
-If all assignments cannot be completed within the vacation period, return -1.
-*/
-
 predicate ValidInput(N: int, M: int, A: seq<int>)
 {
     N >= 0 && M >= 0 && M == |A|

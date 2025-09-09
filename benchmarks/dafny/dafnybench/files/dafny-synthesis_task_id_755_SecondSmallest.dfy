@@ -1,7 +1,3 @@
-/*
-// There must be at least 2 different values, a minimum and another one
-*/
-
 function MinPair(s: seq<int>) : (r: int)
     requires |s| == 2
     ensures s[0] <= s[1] <==> r == s[0]

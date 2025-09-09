@@ -1,9 +1,3 @@
-/*
-Calculate the minimum number of days needed to finish reading a book with c pages.
-Day 1: Read min(v_1, v_0) pages. Day n (n >= 2): Go back l pages, then read min(v_1, v_0 + (n-1) * a) pages total.
-The book is finished when the last page is read for the first time.
-*/
-
 function computePosition(days: int, v0: int, v1: int, a: int, l: int): int
     requires days >= 0
     requires v0 >= 0 && v1 >= v0 && a >= 0 && l >= 0

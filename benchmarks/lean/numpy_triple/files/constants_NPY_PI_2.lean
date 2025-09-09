@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "NPY_PI_2",
-  "category": "C API Mathematical constants",
-  "description": "Pi divided by 2",
-  "doc": "π/2 = 1.570796326794896619231321691639751442",
-}
--/
-
-/-  The mathematical constant π/2 (pi divided by 2), approximately 1.5708... -/
-
-/-  Specification: NPY_PI_2 represents π/2, which is half of pi and corresponds to 90 degrees
-    in radians. It satisfies key mathematical properties related to trigonometry and geometry -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

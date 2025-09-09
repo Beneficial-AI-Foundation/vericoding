@@ -1,9 +1,3 @@
-/*
-Given a circular cake divided into 16 equal pieces, determine if two people can take A and B pieces 
-respectively such that neither person takes two adjacent pieces. The maximum number of non-adjacent 
-pieces any person can take from 16 pieces arranged in a circle is 8.
-*/
-
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= 16 && 1 <= b <= 16 && a + b <= 16

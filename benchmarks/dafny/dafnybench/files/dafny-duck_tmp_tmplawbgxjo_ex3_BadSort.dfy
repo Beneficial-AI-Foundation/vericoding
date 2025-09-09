@@ -1,11 +1,3 @@
-/*
-// program verifies
-
-// no b's after non-b's
-
-// only non-d's before d's
-*/
-
 predicate sortedbad(s: string)
 {
 

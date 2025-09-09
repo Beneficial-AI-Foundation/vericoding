@@ -1,9 +1,3 @@
-/*
-Count how many people can ride a roller coaster given their heights and a minimum height requirement.
-Input: N (number of people), K (minimum height requirement), and N heights.
-Output: Number of people who can ride (height >= K).
-*/
-
 predicate ValidInput(n: int, k: int, heights: seq<int>)
 {
     n >= 1 && k >= 1 && |heights| == n && 

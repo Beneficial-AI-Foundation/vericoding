@@ -1,23 +1,3 @@
-/- 
-{
-  "name": "numpy.bitwise_or",
-  "category": "Elementwise bit operations",
-  "description": "Compute the bit-wise OR of two arrays element-wise",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.bitwise_or.html",
-  "doc": "Compute the bit-wise OR of two arrays element-wise.\n\nComputes the bit-wise OR of the underlying binary representation of the integers in the input arrays. This ufunc implements the C/Python operator |.\n\nParameters\n----------\nx1, x2 : array_like\n    Only integer and boolean types are handled.\n    If x1.shape != x2.shape, they must be broadcastable to a common shape.\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored.\nwhere : array_like, optional\n    This condition is broadcast over the input.\n\nReturns\n-------\nout : ndarray or scalar\n    Result.\n\nExamples\n--------\n>>> np.bitwise_or(13, 16)\n29\n>>> np.array([2, 5, 255]) | np.array([4, 4, 4])\narray([6, 5, 255])\n>>> np.bitwise_or([33, 4], 1)\narray([33, 5])\n>>> np.bitwise_or([33, 4], [1, 2])\narray([33, 6])",
-}
--/
-
-/-  Compute the bit-wise OR of two vectors element-wise -/
-
-/-  Specification: bitwise_or computes the element-wise bitwise OR of two integer vectors
-    with the following mathematical properties:
-    1. Element-wise application of Int.bitwise_or
-    2. Identity property with zero vectors
-    3. Saturation property with all-ones vectors
-    4. Commutativity at vector level
-    5. Idempotency at vector level -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

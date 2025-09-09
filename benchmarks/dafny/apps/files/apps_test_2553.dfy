@@ -1,20 +1,3 @@
-/*
-Given an array of n integers, determine if it's possible to select exactly x elements 
-such that their sum is odd. A sum is odd if and only if it contains an odd number of odd elements.
-
-// Placeholder implementation
-
-// Placeholder implementation
-
-// Placeholder implementation
-
-// Placeholder implementation
-
-// Placeholder implementation
-
-// Placeholder implementation
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n' &&

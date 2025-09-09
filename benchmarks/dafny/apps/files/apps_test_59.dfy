@@ -1,10 +1,3 @@
-/*
-Given an array of n integers where each integer from 1 to n appears exactly once,
-determine if the array can be sorted in ascending order using only allowed adjacent swaps.
-You can swap elements at positions i and i+1 only if the i-th character in a given
-binary string is '1'. You can perform any number of such swaps in any order.
-*/
-
 predicate ValidInput(n: int, a: seq<int>, p: string)
 {
     n >= 2 &&

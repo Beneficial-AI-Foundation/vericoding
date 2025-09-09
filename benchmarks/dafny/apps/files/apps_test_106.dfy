@@ -1,10 +1,3 @@
-/*
-Given a circular building with n entrances, m floors per entrance, and k apartments per floor,
-find the minimum time to travel from apartment a to apartment b. Apartments are numbered 1 to n·m·k
-sequentially. Travel costs: stairs 5s/floor, adjacent entrances 15s, elevator 10s wait + 1s/floor,
-same floor 0s. Can walk around building in either direction.
-*/
-
 predicate ValidInput(n: int, m: int, k: int, a: int, b: int) {
   n > 0 && m > 0 && k > 0 && 1 <= a <= n * m * k && 1 <= b <= n * m * k && a != b
 }

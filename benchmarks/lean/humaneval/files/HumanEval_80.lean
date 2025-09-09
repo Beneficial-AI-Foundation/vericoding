@@ -1,22 +1,3 @@
-/- 
-function_signature: "def is_happy(s: str) -> bool"
-docstring: |
-    You are given a string s.
-    Your task is to check if the string is happy or not.
-    A string is happy if its length is at least 3 and every 3 consecutive letters are distinct
-test_cases:
-  - input: "a"
-    output: False
-  - input: "aa"
-    output: False
-  - input: "abcd"
-    output: True
-  - input: "aabb"
-    output: False
-  - input: "adb"
-    output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

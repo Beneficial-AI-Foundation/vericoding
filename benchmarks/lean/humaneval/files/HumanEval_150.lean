@@ -1,15 +1,3 @@
-/- 
-function_signature: "def x_or_y(int n, int x, int y) -> int"
-docstring: |
-    A simple program which should return the value of x if n is
-    a prime number and should return the value of y otherwise.
-test_cases:
-  - input: [7, 34, 12]
-    expected_output: 34
-  - input: [15, 8, 5]
-    expected_output: 5
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

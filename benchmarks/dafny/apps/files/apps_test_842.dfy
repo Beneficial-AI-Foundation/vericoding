@@ -1,8 +1,3 @@
-/*
-Given a string input, extract the first line and create an even-length palindrome
-by concatenating the line with its reverse, followed by a newline.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| > 0

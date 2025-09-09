@@ -1,9 +1,3 @@
-/*
-A spinner has 4 positions encoded as v, >, ^, < (representing positions 0, 1, 2, 3 respectively).
-The spinner rotates by changing position every second, either clockwise or counter-clockwise.
-Given the starting position, ending position, and rotation duration n seconds, determine the rotation direction.
-*/
-
 function CharToPosSpec(c: string): int
 {
     if c == "v" then 0

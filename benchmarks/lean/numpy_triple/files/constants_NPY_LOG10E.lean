@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "NPY_LOG10E",
-  "category": "C API Mathematical constants",
-  "description": "Base 10 logarithm of e",
-  "doc": "log10(e) = 0.434294481903251827651128918916605082",
-}
--/
-
-/-  Base 10 logarithm of Euler's number e -/
-
-/-  Specification: nPY_LOG10E returns the base 10 logarithm of e with correct mathematical properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

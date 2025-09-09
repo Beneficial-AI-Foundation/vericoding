@@ -1,7 +1,3 @@
-/*
-function_signature: def same_chars(s0: string, s1: string) -> Bool
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

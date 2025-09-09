@@ -1,8 +1,3 @@
-/*
-Given n cola cans where each can i has remaining volume a_i and capacity b_i,
-determine if all remaining cola can be poured into exactly 2 cans.
-*/
-
 predicate ValidInput(a: seq<int>, b: seq<int>)
 {
   |a| == |b| && |a| >= 2 && forall i :: 0 <= i < |a| ==> 0 <= a[i] <= b[i]

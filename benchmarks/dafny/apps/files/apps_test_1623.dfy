@@ -1,9 +1,3 @@
-/*
-Given an array of n positive integers where the number of distinct elements 
-is between l and r (inclusive) and each element is either 1 or even with its 
-half also present in the array, find the minimum and maximum possible sums.
-*/
-
 predicate ValidInput(n: int, l: int, r: int)
 {
     n >= 1 && l >= 1 && r >= l && r <= n && r <= 20

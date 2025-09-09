@@ -1,9 +1,3 @@
-/*
-//ensures !res <==> isNotSubstringPred(sub, str) // This postcondition follows from the above lemma.
-
-//ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
-*/
-
 method isPrefix(pre: string, str: string) returns (res:bool)
     ensures !res <==> isNotPrefixPred(pre,str)
     ensures  res <==> isPrefixPred(pre,str)

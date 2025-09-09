@@ -1,8 +1,3 @@
-/*
-Find the minimum number of character changes needed to make a string a palindrome.
-In each operation, you can change any character to any other lowercase letter.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| >= 1

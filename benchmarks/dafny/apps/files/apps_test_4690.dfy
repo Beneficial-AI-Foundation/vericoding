@@ -1,8 +1,3 @@
-/*
-Given dimensions of two rectangles (A×B and C×D), return the area of the rectangle with the larger area.
-If both rectangles have equal areas, return that common area.
-*/
-
 predicate ValidInput(A: int, B: int, C: int, D: int)
 {
     1 <= A <= 10000 && 1 <= B <= 10000 && 1 <= C <= 10000 && 1 <= D <= 10000

@@ -1,8 +1,3 @@
-/*
-Given a single lowercase English letter, determine if it is a vowel (a, e, i, o, u) or consonant.
-Return "vowel" if the letter is a vowel, otherwise return "consonant".
-*/
-
 predicate ValidInput(input: string)
 {
     |input| == 1 && 'a' <= input[0] <= 'z'

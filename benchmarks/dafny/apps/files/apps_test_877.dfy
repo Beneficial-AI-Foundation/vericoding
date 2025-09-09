@@ -1,12 +1,3 @@
-/*
-Given n problems numbered 1 to n in ascending order of difficulty and m pairs 
-of similar problems, split the problems into two non-empty divisions such that:
-1. Each problem belongs to exactly one division
-2. All problems in division 1 are harder than all problems in division 2  
-3. Similar problems must be in different divisions
-Count the number of valid ways to make this split.
-*/
-
 predicate ValidInput(n: int, m: int, pairs: seq<(int, int)>)
 {
     n >= 2 && 

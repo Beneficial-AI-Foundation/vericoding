@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.maximum_sctype",
-  "category": "Miscellaneous Type Utilities",
-  "description": "Return the scalar type of highest precision of the same kind as the input",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.maximum_sctype.html",
-  "doc": "Return the scalar type of highest precision of the same kind as the input.\n\nParameters\n----------\nt : dtype or dtype specifier\n    The input data type. This can be a dtype object or an object that is convertible to a dtype.\n\nReturns\n-------\nout : dtype\n    The highest precision data type of the same kind as t.\n\nExamples\n--------\n>>> np.maximum_sctype(int)\n<class 'numpy.int64'>\n>>> np.maximum_sctype(np.uint8)\n<class 'numpy.uint64'>\n>>> np.maximum_sctype(complex)\n<class 'numpy.complex256'>\n>>> np.maximum_sctype(str)\n<class 'numpy.str_'>\n>>> np.maximum_sctype('i2')\n<class 'numpy.int64'>\n>>> np.maximum_sctype('f4')\n<class 'numpy.float128'>",
-}
--/
-
-/-  Return the scalar type of highest precision of the same kind as the input -/
-
-/-  Specification: maximum_sctype returns the highest precision type of the same kind -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

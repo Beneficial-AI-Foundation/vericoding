@@ -1,16 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that returns true if the input n is divisible by 8 or has 8 as one of it's digits.
-
------Input-----
-The input consists of one integer:
-n: The main integer.
-
------Output-----
-The output is an boolean:
-Returns true if the input is divisible by 8 or has 8 as one of it's digits.
--/
-
 @[reducible]
 def isItEight_precond (n : Int) : Prop :=
   True

@@ -1,8 +1,3 @@
-/*
-Given three bell prices a, b, and c (in yen), find the minimum cost to purchase exactly two bells of different types.
-Constraints: 1 ≤ a, b, c ≤ 10000 (integers)
-*/
-
 predicate ValidInput(a: int, b: int, c: int) {
     1 <= a <= 10000 && 1 <= b <= 10000 && 1 <= c <= 10000
 }

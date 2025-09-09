@@ -1,8 +1,3 @@
-/*
-/*
-*/
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,8 +1,3 @@
-/*
-Given the type of contest held last week ("ABC" or "ARC"), determine the type 
-of contest to be held this week. Contests alternate between these two types.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && 

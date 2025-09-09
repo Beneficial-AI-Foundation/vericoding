@@ -1,10 +1,3 @@
-/*
-Given a line of n cells and a grasshopper that can jump exactly k cells at a time,
-determine if the grasshopper can reach a target cell. The line contains exactly one
-grasshopper ('G'), one target ('T'), empty cells ('.'), and obstacles ('#').
-The grasshopper can only land on empty cells or the target.
-*/
-
 predicate ValidInput(n: int, k: int, s: string)
 {
     n >= 2 &&

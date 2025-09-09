@@ -1,9 +1,3 @@
-/*
-// RUN: /compile:0
-
-//requires 0<=k<=arr.Length-1
-*/
-
 predicate reversed (arr : array<char>, outarr: array<char>)
 requires arr != null && outarr != null
 requires arr.Length == outarr.Length

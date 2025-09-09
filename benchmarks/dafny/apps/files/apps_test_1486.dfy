@@ -1,9 +1,3 @@
-/*
-Given n cities located on a coordinate axis with positions in ascending order,
-calculate for each city the minimum and maximum cost to send a letter to any other city.
-The cost equals the distance between cities.
-*/
-
 predicate ValidInput(cities: seq<int>)
 {
   |cities| >= 2 &&

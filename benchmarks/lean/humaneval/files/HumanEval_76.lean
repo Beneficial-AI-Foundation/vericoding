@@ -1,23 +1,3 @@
-/- 
-function_signature: "def is_simple_power(x: int, n: int) -> bool"
-docstring: |
-    Your task is to write a function that returns true if a number x is a simple
-    power of n and false in other cases. x is a simple power of n if n**int=x
-test_cases:
-  - input: (1, 4)
-    expected_output: True
-  - input: (2, 2)
-    expected_output: True
-  - input: (8, 2)
-    expected_output: True
-  - input: (3, 2)
-    expected_output: False
-  - input: (3, 1)
-    expected_output: False
-  - input: (5, 3)
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

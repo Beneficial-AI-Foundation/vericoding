@@ -1,19 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that computes the product of the first even and the first odd number encountered in a list of integers. The method should search the list for the earliest even number and the earliest odd number, then return the product of these two numbers.
-
------Input-----
-The input consists of:
-lst: A list of integers.
-
------Output-----
-The output is an integer:
-Returns the product resulting from multiplying the first even number and the first odd number found in the list.
-
------Note-----
-The input list is assumed to contain at least one even number and one odd number.
--/
-
 @[reducible, simp]
 def findProduct_precond (lst : List Int) : Prop :=
   lst.length > 1 ∧

@@ -1,13 +1,3 @@
-/- 
-function_signature: "def remove_duplicates(numbers: List[int]) -> List[int]"
-docstring: |
-    From a list of integers, remove all elements that occur more than once.
-    Keep order of elements left the same as in the input.
-test_cases:
-  - input: [1, 2, 3, 2, 4]
-    expected_output: [1, 3, 4]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

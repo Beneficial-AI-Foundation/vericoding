@@ -1,10 +1,3 @@
-/*
-Given n points and m segments, find a "hedgehog" with maximum beauty.
-A hedgehog has a tail (path with strictly increasing point numbers) and 
-spines (all segments connected to tail's endpoint). 
-Beauty = (tail length) × (number of spines).
-*/
-
 predicate ValidInput(n: int, edges: seq<(int, int)>)
 {
     n >= 2 &&

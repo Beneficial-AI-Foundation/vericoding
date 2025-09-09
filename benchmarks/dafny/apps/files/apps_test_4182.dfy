@@ -1,11 +1,3 @@
-/*
-Two empires A and B have capitals at coordinates X and Y respectively.
-Empire A wants to control cities at coordinates x₁, x₂, ..., xₙ, and 
-Empire B wants to control cities at coordinates y₁, y₂, ..., yₘ.
-They reach agreement if there exists integer Z such that X < Z ≤ Y,
-all xᵢ < Z, and all yᵢ ≥ Z. Otherwise war breaks out.
-*/
-
 predicate ValidInput(n: int, m: int, x: int, y: int, xx: seq<int>, yy: seq<int>)
 {
     |xx| == n && |yy| == m && n >= 1 && m >= 1 && x < y

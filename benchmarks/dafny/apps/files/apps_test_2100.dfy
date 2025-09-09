@@ -1,9 +1,3 @@
-/*
-Given n cupboards with left and right doors that can be open (1) or closed (0),
-find the minimum number of operations to make all left doors have the same state
-and all right doors have the same state. Each operation changes one door's state.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := Split(input, '\n');

@@ -1,15 +1,3 @@
-/- 
-function_signature: "def all_prefixes(string: str) -> List[str]"
-docstring: |
-    Return list of all prefixes from shortest to longest of the input string
-test_cases:
-  - input: "abc"
-    expected_output:
-      - "a"
-      - "ab"
-      - "abc"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

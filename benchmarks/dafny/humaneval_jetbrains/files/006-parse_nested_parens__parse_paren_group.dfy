@@ -1,8 +1,3 @@
-/*
-function_signature: method parse_paren_group(s : string) returns (max_depth : int)
-Parse input. Requires: the condition holds for all values. Ensures: the result is at least the specified value.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

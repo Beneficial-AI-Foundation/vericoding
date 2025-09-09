@@ -1,9 +1,3 @@
-/*
-Given N colorful crackers with colors P, W, G, or Y, determine if exactly 3 or 4 distinct colors are present.
-The bag always contains at least one cracker of each color P, W, and G.
-Output "Three" if 3 distinct colors, "Four" if 4 distinct colors.
-*/
-
 predicate ValidInput(n: int, colors: seq<char>)
 {
     1 <= n <= 100 &&

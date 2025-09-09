@@ -1,17 +1,3 @@
-/-  Pseudo-Vandermonde matrix of given degrees for 3D Legendre polynomials.
-    Returns the pseudo-Vandermonde matrix of degrees `deg` and sample points `(x, y, z)`.
-    The pseudo-Vandermonde matrix is defined by 
-    V[..., (m+1)(n+1)i + (n+1)j + k] = L_i(x)*L_j(y)*L_k(z),
-    where 0 <= i <= l, 0 <= j <= m, and 0 <= k <= n for degrees [l, m, n]. -/
-
-/-  Specification: legvander3d constructs a 3D pseudo-Vandermonde matrix where each row 
-    corresponds to a point (x_i, y_i, z_i) and each column corresponds to a product of 
-    Legendre polynomials L_i(x) * L_j(y) * L_k(z).
-    The matrix satisfies basic properties:
-    - Each entry is a product of 1D Legendre polynomial evaluations
-    - The ordering follows the specified 3D indexing scheme
-    - The matrix has the correct dimensions -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

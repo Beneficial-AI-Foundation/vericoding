@@ -1,10 +1,3 @@
-/*
-Given three stick lengths, find the minimum number of operations to form a triangle
-with positive area, where each operation increases any stick's length by 1 centimeter.
-A triangle has positive area if it satisfies the triangle inequality: the sum of any
-two sides must be greater than the third side.
-*/
-
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100

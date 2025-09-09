@@ -1,8 +1,3 @@
-/*
-function_signature: def strlen(string: str) -> int
-Return length of given string
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,11 +1,3 @@
-/*
-// We spent 2h each on this assignment
-
-//ensures !res <==> isNotSubstringPred(sub, str) // This postcondition follows from the above lemma.
-
-//ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
-*/
-
 predicate isPrefixPred(pre:string, str:string)
 {
     (|pre| <= |str|) && 

@@ -1,6 +1,3 @@
-/*
-*/
-
 function countTo( a:array<bool>, n:int ) : int
   requires a != null;
   requires 0 <= n && n <= a.Length;

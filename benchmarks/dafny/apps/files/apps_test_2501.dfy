@@ -1,9 +1,3 @@
-/*
-Given N attendees numbered 1 to N with heights A_i, count the number of pairs (i,j) 
-where i ≠ j such that the absolute difference of their numbers equals the sum of their heights: 
-|i - j| = A_i + A_j.
-*/
-
 predicate ValidInput(A: array<int>)
   reads A
 {

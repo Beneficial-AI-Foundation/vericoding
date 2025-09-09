@@ -1,9 +1,3 @@
-/*
-Given a string S of length N containing only digits 0-9 and a prime number P,
-count how many contiguous substrings of S are divisible by P when interpreted
-as base-10 integers.
-*/
-
 predicate isPrime(p: int)
     requires p >= 2
 {

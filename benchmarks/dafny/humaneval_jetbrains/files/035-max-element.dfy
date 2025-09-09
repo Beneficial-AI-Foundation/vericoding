@@ -1,8 +1,3 @@
-/*
-function_signature: def max_element(l: list)
-Return maximum element in the list.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

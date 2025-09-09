@@ -1,9 +1,3 @@
-/*
-Given n strings containing only 's' and 'h' characters, arrange them in optimal order
-and concatenate to form a single string. Find the maximum possible "noise" which is
-the number of "sh" subsequences in the resulting concatenated string.
-*/
-
 predicate ValidInput(input: seq<string>)
 {
     |input| >= 1 &&

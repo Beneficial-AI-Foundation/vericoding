@@ -1,22 +1,3 @@
-/-  numpy.setxor1d: Find the set exclusive-or of two arrays.
-
-    Return the sorted, unique values that are in only one (not both) of the
-    input arrays. This is equivalent to the symmetric difference of two sets.
-
-    The result contains elements that appear in ar1 but not in ar2, or in ar2 
-    but not in ar1, sorted in ascending order.
--/
-
-/-  Specification: numpy.setxor1d returns the symmetric difference of two arrays.
-
-    Precondition: True (no special preconditions)
-    Postcondition: 
-    1. The result contains only elements that appear in exactly one of the input arrays
-    2. The result is sorted in ascending order
-    3. The result contains no duplicates
-    4. Every element in the result comes from either ar1 or ar2 (but not both)
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,9 +1,3 @@
-/*
-Given three distinct positions x, a, and b on a number line, determine whether position a or position b 
-is closer to position x. Output "A" if position a is closer, "B" if position b is closer.
-Distance between two positions s and t is |s-t|.
-*/
-
 predicate ValidInput(x: int, a: int, b: int)
 {
     1 <= x <= 1000 &&

@@ -1,8 +1,3 @@
-/*
-Given A 1-yen coins and unlimited 500-yen coins, determine if you can pay exactly N yen.
-Return "Yes" if exact payment is possible, "No" otherwise.
-*/
-
 predicate ValidInput(n: int, a: int)
 {
     1 <= n <= 10000 && 0 <= a <= 1000

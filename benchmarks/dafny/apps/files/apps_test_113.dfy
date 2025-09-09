@@ -1,9 +1,3 @@
-/*
-Find the minimum positive integer x such that x is divisible by n and x ends with k or more zeros in base 10.
-A number ends with k zeros if and only if it's divisible by 10^k = 2^k × 5^k.
-Algorithm: Factor out powers of 2 and 5 from n, then multiply n by additional factors needed to achieve k trailing zeros.
-*/
-
 function power(base: int, exp: int): int
     requires exp >= 0
     ensures exp == 0 ==> power(base, exp) == 1

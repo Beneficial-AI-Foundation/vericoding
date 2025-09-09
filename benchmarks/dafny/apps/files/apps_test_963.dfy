@@ -1,11 +1,3 @@
-/*
-Given N cells numbered 1 to N, find the number of ways to move from cell 1 to cell N.
-You have K non-intersecting integer segments [L₁,R₁], [L₂,R₂], ..., [Lₖ,Rₖ].
-Let S be the union of all integers in these segments.
-From cell i, you can move to cell i+d where d ∈ S, provided i+d ≤ N.
-Return the count modulo 998244353.
-*/
-
 predicate ValidInput(N: int, K: int, segments: seq<(int, int)>)
 {
   N >= 2 &&

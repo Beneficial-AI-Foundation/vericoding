@@ -1,14 +1,3 @@
-/*
-Bignum task: bignum_ModExp.
-Implement the method according to the Dafny specification.
-
-// All characters must be '0' or '1'.
-
-//requires y < Exp_int(2,n+1)
-
-//&& n > 0
-*/
-
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
   decreases s

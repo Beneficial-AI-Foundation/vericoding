@@ -1,23 +1,3 @@
-/- 
-{
-  "name": "numpy.nanpercentile",
-  "category": "Order statistics",
-  "description": "Compute the q-th percentile of the data along the specified axis, ignoring nan values",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.nanpercentile.html",
-  "doc": "numpy.nanpercentile(a, q, axis=None, out=None, overwrite_input=False, method='linear', keepdims=False, *, weights=None, interpolation=None)\n\nCompute the q-th percentile of the data along the specified axis, ignoring nan values.\n\nReturns the q-th percentile(s) of the array elements.\n\nParameters\n----------\na : array_like\n    Input array or object that can be converted to an array, containing nan values to be ignored.\nq : array_like of float\n    Percentile or sequence of percentiles to compute, which must be between 0 and 100 inclusive.\naxis : {int, tuple of int, None}, optional\n    Axis or axes along which the percentiles are computed.\nout : ndarray, optional\n    Alternative output array in which to place the result.\noverwrite_input : bool, optional\n    If True, then allow the input array a to be modified by intermediate calculations.\nmethod : str, optional\n    Method to use for estimating the percentile.\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left in the result as dimensions with size one.\nweights : array_like, optional\n    An array of weights associated with the values in a.\ninterpolation : str, optional\n    Deprecated name for the method keyword argument.\n\nReturns\n-------\npercentile : scalar or ndarray\n    If q is a single percentile and axis=None, then the result is a scalar. Otherwise, an array is returned.",
-}
--/
-
-/-  Compute the q-th percentile of the data along the specified axis, ignoring NaN values.
-    Returns the q-th percentile of the array elements.
-    If all values are NaN, returns NaN.
-    The percentile q must be between 0 and 100 inclusive. -/
-
-/-  Specification: nanpercentile computes the q-th percentile of non-NaN values in the array.
-    The result is NaN if all values are NaN, otherwise it's the q-th percentile of the finite values.
-    The percentile is computed by sorting the non-NaN values and finding the value at the position
-    corresponding to the percentile q (between 0 and 100). -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

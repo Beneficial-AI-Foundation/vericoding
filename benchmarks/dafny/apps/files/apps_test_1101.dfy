@@ -1,9 +1,3 @@
-/*
-Given n rooms in a row (some occupied, some free) and k cows, find k+1 free rooms to book 
-such that when one room is assigned to Farmer John and k rooms to his cows, the maximum 
-distance from Farmer John's room to any cow's room is minimized.
-*/
-
 predicate isValidPlacement(rooms: string, k: int, placement: seq<int>)
 {
     |placement| == k + 1 &&

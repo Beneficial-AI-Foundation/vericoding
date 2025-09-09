@@ -1,9 +1,3 @@
-/*
-Given n segments on a coordinate line, where each segment i is defined by [l_i, r_i], 
-find a segment that covers all other segments. A segment [a, b] covers segment [c, d] 
-if a ≤ c ≤ d ≤ b. Return the 1-indexed number of such a segment, or -1 if none exists.
-*/
-
 predicate ValidInput(n: int, segments: seq<(int, int)>)
 {
     n >= 1 && |segments| == n && 

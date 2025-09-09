@@ -1,8 +1,3 @@
-/*
-function_signature: def sum_largest_prime(lst : list[int]) -> int
-You are given a list of integers. You need to find the largest prime value and return the sum of its digits. Note(George): Modified to use List of nats because all examples are nats.
-*/
-
 function digits_sum(x: nat): nat {
   if x == 0 then 0 else x % 10 + digits_sum(x / 10)
 }

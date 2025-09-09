@@ -1,11 +1,3 @@
-/*
-Given a multiple-choice question with four options (A, B, C, D), predict a child's choice.
-Calculate the length of each option's description (excluding prefix "A.", "B.", etc.).
-A choice is "great" if its description is either at least twice shorter than all others
-OR at least twice longer than all others. If exactly one choice is great, select it.
-Otherwise, select choice C.
-*/
-
 predicate ValidResult(result: string) {
     result in ["A", "B", "C", "D"]
 }

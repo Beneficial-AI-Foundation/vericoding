@@ -1,9 +1,3 @@
-/*
-Given n real numbers with sum equal to 0, construct a sequence where each element 
-is either the floor or ceiling of the corresponding input number, such that the 
-sum of the constructed sequence is also 0.
-*/
-
 predicate valid_input_format(input: string) 
 {
     |input| > 0 && contains_newline(input) && 

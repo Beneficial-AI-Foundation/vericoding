@@ -1,11 +1,3 @@
-/*
-//Problem01
-
-//a)
-
-//b)
-*/
-
 ghost function gcd(x: int, y: int): int
     requires x > 0 && y > 0
 {

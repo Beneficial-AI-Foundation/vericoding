@@ -1,8 +1,3 @@
-/*
-function_signature: def incr_list(numbers: List[Int]) -> List[Int]
-incr_list takes a list of integers as input and returns a new list where each element is incremented by 1.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,10 +1,3 @@
-/*
-Given n candies and k people (numbered 1 to k), find the maximum number of candies person 1 can receive.
-Person 1 chooses an integer x and distributes candies cyclically: first x candies to person 1, next x to person 2, 
-..., next x to person k, then repeat the cycle. Remaining candies are discarded.
-Constraints: 1 ≤ x ≤ M, no person can receive candies more than D times.
-*/
-
 predicate ValidInput(n: int, k: int, M: int, D: int) {
     2 <= n && 2 <= k <= n && 1 <= M <= n && 1 <= D <= n && M * D * k >= n
 }

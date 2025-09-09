@@ -1,31 +1,3 @@
-/-  numpy.fft.ihfft: Compute the inverse FFT of a signal that has Hermitian symmetry.
-
-    This function computes the inverse FFT of a signal that has Hermitian symmetry,
-    which means the signal is real in the frequency domain. The input should be
-    a complex signal with Hermitian symmetry, and the output is a real signal.
-
-    The function is analogous to rfft/irfft but for signals with Hermitian symmetry.
-    According to the NumPy documentation and source code, it essentially computes 
-    the conjugate of the rfft of the input: conjugate(rfft(a, n, axis, new_norm, out))
-
-    Unlike hfft which takes a Hermitian symmetric input and produces a real output,
-    ihfft takes a general complex input and produces a complex output with the 
-    inverse Hermitian FFT properties.
--/
-
-/-  Specification: ihfft computes the inverse FFT of a signal with Hermitian symmetry.
-
-    According to NumPy documentation:
-    - ihfft is analogous to rfft/irfft but for signals with Hermitian symmetry
-    - The implementation is conjugate(rfft(a, n, axis, new_norm, out))
-
-    Key mathematical properties:
-    1. Length preservation: output has same length as input
-    2. Conjugate relationship: ihfft is related to rfft by conjugation
-    3. Linearity: ihfft preserves linear combinations
-    4. Hermitian symmetry handling: if input has Hermitian symmetry, special properties hold
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

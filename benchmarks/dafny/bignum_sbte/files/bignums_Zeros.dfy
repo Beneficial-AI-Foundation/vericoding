@@ -1,8 +1,3 @@
-/*
-Bignum task: bignums_Zeros.
-Implement the method according to the Dafny specification.
-*/
-
 predicate AllZero(s: string)
 {
   |s| == 0 || forall i | 0 <= i < |s| :: s[i] == '0'

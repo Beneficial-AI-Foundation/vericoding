@@ -1,9 +1,3 @@
-/*
-Given n piles of stones (n even), Alice and Bob alternate turns with Alice first.
-Each turn, a player chooses n/2 nonempty piles and removes positive stones from each.
-A player loses when fewer than n/2 nonempty piles remain. Determine the winner.
-*/
-
 function minimum(s: seq<int>): int
     requires |s| > 0
     ensures forall i :: 0 <= i < |s| ==> minimum(s) <= s[i]

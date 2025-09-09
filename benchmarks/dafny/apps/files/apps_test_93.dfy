@@ -1,10 +1,3 @@
-/*
-Given two 2x2 sliding puzzles with tiles A, B, C and empty cell X,
-determine if there exists a sequence of moves that can make both puzzles
-reach the same configuration. A move slides a tile adjacent to the empty
-cell into the empty cell.
-*/
-
 function countNewlines(s: string): int
 {
     if |s| == 0 then 0

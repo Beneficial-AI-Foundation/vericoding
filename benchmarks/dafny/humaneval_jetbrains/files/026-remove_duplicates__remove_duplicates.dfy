@@ -1,8 +1,3 @@
-/*
-function_signature: method remove_duplicates(a: seq<int>) returns (result: seq<int>)
-Process input. Requires: the condition holds for all values. Ensures: the condition holds for all values; the condition holds for all values.
-*/
-
 function count_rec(a: seq<int>, x: int): int {
   if |a| == 0 then 0
   else count_rec(a[1..], x) + (if a[0] == x then 1 else 0)

@@ -1,9 +1,3 @@
-/*
-Calculate the minimum number of meals Vasiliy could have missed during his sanatorium stay.
-Given counts of breakfasts (b), dinners (d), and suppers (s) he had, determine how many meals
-he definitively missed based on arrival/departure timing constraints.
-*/
-
 function Max3(a: int, b: int, c: int): int
 {
     if a >= b && a >= c then a

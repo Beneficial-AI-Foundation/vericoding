@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate positive(s:seq<int>)
 {forall u::0<=u<|s| ==> s[u]>=0}
 

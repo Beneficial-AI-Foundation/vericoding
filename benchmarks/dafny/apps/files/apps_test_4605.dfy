@@ -1,7 +1,3 @@
-/*
-Find the sum of all integers i where 1 ≤ i ≤ N and the sum of digits of i (in base 10) is between A and B inclusive.
-*/
-
 predicate ValidInput(N: int, A: int, B: int)
 {
   N >= 1 && A >= 1 && A <= B && B <= 36

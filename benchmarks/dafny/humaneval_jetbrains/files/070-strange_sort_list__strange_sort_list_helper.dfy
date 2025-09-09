@@ -1,8 +1,3 @@
-/*
-function_signature: method strange_sort_list_helper(s: seq<int>) returns (sorted: seq<int>, strange: seq<int>)
-Sort elements. Ensures: returns a sorted permutation of the input; returns the correct size/count; the result is sorted according to the ordering relation; the result is sorted according to the ordering relation.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

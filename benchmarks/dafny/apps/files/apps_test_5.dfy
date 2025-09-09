@@ -1,9 +1,3 @@
-/*
-Given n browser tabs indexed 1 to n with cursor at position pos, find minimum time to close
-all tabs except those in range [l, r]. Operations: move cursor (1 sec), close all tabs to
-left of cursor (1 sec), close all tabs to right of cursor (1 sec).
-*/
-
 predicate ValidInput(n: int, pos: int, l: int, r: int)
 {
     1 <= n <= 100 && 1 <= pos <= n && 1 <= l <= r <= n

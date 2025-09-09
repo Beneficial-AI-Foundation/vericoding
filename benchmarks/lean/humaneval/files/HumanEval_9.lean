@@ -1,13 +1,3 @@
-/- 
-function_signature: "def rolling_max(numbers: List[int]) -> Tuple[int, int]"
-docstring: |
-  From a given list of integers, generate a list of rolling maximum element found until given moment
-  in the sequence.
-test_cases:
-  - input: [1, 2, 3, 2, 3, 4, 2]
-    expected_output: [1, 2, 3, 3, 3, 4, 4]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

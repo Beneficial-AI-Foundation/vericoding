@@ -1,7 +1,3 @@
-/*
-Given a lowercase English letter (not 'z'), output the next letter in alphabetical order.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && 'a' <= input[0] <= 'y'

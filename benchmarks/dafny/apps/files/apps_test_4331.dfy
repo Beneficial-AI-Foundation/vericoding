@@ -1,8 +1,3 @@
-/*
-Given a three-digit integer N, determine if it contains the digit 7.
-Return "Yes" if N contains the digit 7, "No" otherwise.
-*/
-
 predicate ValidInput(N: int) {
     100 <= N <= 999
 }

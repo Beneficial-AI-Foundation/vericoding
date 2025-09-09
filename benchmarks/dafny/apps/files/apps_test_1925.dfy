@@ -1,12 +1,3 @@
-/*
-Given integers A, B, and N, find the maximum value of floor(A*x/B) - A*floor(x/B) 
-over all non-negative integers x where 0 ≤ x ≤ N.
-
-// B must be positive
-
-// default values with B=1 to avoid division by zero
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && 

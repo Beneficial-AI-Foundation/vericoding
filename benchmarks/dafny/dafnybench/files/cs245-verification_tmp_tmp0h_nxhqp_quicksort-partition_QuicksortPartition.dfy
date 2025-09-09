@@ -1,16 +1,3 @@
-/*
-// Quicksort Partition -- Stephanie McIntyre
-
-// Based on examples in class 
-
-// Parts have been modified cause you know, arrays are different...
-
-/* The annotations and implied proofs are left for you.
-   I might do them later on next week. */
-
-//This says the new X is a permutation of our old version of X.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

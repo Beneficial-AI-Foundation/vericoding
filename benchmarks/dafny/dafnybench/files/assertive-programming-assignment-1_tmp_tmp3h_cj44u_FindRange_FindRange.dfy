@@ -1,11 +1,3 @@
-/*
-// all the values in the range satisfy `comparer` (comparer(q[i], key) == true)
-
-// all the values in the range satisfy `!comparer` (comparer(q[i], key) == false)
-
-// comparer is '>' or '>='
-*/
-
 predicate Sorted(q: seq<int>)
 {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j] 

@@ -1,10 +1,3 @@
-/*
-Given a current HP value, determine how much to increase it (by 0, 1, or 2) to achieve the highest possible category.
-HP categories are defined by remainder when divided by 4:
-Category A: remainder 1 (highest priority), Category B: remainder 3, Category C: remainder 2, Category D: remainder 0 (lowest priority)
-Priority order: A > B > C > D
-*/
-
 function GetCategory(hp: int): char
 {
     var remainder := hp % 4;

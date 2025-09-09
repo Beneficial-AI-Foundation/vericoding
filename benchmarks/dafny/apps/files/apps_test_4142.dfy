@@ -1,8 +1,3 @@
-/*
-Given a string containing only 'L', 'R', 'U', 'D' characters, determine if it is "easily playable".
-A string is easily playable if odd positions (1-indexed) contain no 'L' and even positions contain no 'R'.
-*/
-
 predicate ValidInput(s: string)
 {
     1 <= |s| <= 100 && forall i :: 0 <= i < |s| ==> s[i] in {'L', 'R', 'U', 'D'}

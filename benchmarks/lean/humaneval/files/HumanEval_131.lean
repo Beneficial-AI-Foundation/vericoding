@@ -1,17 +1,3 @@
-/- 
-function_signature: "def digits(n: int) -> int"
-docstring: |
-    Given a positive integer n, return the product of the odd digits.
-    Return 0 if all digits are even.
-test_cases:
-  - input: 1
-    expected_output: 1
-  - input: 4
-    expected_output: 0
-  - input: 235
-    expected_output: 15
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

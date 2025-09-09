@@ -1,17 +1,3 @@
-/*
-// A8Q1 — Steph Renee McIntyre
-
-// Following the solutions from Carmen Bruni
-
-// There is no definition for power, so this function will be used for validating that our imperative program is correct. This is just for Dafny.
-
-//function for a to the power of n
-
-/* Proof of implieds can be seen on LEARN.
-    Note: If you are unconvinced, putting asserts for each condition will demonstrate the correctness of the statements. 
-*/
-*/
-
 function power(a: int, n: int): int
   requires 0 <= n;
   decreases n;

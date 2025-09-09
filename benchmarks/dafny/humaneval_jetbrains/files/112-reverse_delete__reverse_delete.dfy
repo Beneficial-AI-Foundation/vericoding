@@ -1,8 +1,3 @@
-/*
-function_signature: method reverse_delete(s: string, chars: string) returns (res: string, is_palindrome: bool)
-Reverse order. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values; the result is a palindrome.
-*/
-
 function is_palindrome_pred(s : string) : bool {
   forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
 }

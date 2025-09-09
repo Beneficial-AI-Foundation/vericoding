@@ -1,10 +1,3 @@
-/*
-Two players play a cycle-splitting game alternately. Player 1 goes first.
-Players split cycles with ≥2 vertices into two smaller cycles.
-Process n operations sequentially, each adding a cycle.
-After each operation, determine who wins if the game starts with current cycle set.
-*/
-
 predicate ValidInput(s: string)
 {
     var lines := SplitByNewlineSpec(s);

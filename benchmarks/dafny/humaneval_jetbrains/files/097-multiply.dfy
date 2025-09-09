@@ -1,8 +1,3 @@
-/*
-function_signature: def multiply(a : Int, b : Int) -> Int
-Complete the function that takes two integers and returns the product of their unit digits. Assume the input is always valid.
-*/
-
 function last_digit(n: int): int
 
   ensures n >= 0 ==> last_digit(n) == n % 10

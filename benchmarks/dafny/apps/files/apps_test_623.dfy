@@ -1,10 +1,3 @@
-/*
-Given two joysticks with initial charge levels a1 and a2 percent, determine the maximum number of minutes a game can last.
-Each minute, exactly one joystick must be connected to a charger (gains 1% charge) while the other loses 2% charge.
-Game continues while both joysticks have positive charge (> 0%). If a joystick has exactly 1% charge at the start of a minute,
-it must be charged to avoid reaching 0%. Find the maximum number of minutes before at least one joystick reaches 0% charge.
-*/
-
 function CountValidMinutes(a: int, b: int): int
     requires a >= 0 && b >= 0
     decreases a + b

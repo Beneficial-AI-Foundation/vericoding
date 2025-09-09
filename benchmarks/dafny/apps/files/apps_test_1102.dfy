@@ -1,10 +1,3 @@
-/*
-Given n cities in a row, Limak lives in city a and uses a Bear Criminal Detector (BCD) 
-that reports total criminals at each distance. He can only catch criminals where he can 
-definitively determine their presence: at distance d with 1 city and 1 criminal reported, 
-or at distance d with 2 cities and 2 criminals reported. Return total criminals caught.
-*/
-
 predicate ValidInput(n: int, a: int, x: seq<int>)
 {
     n > 0 && 1 <= a <= n && |x| == n && 

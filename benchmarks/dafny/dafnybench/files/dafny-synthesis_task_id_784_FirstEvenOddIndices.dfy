@@ -1,7 +1,3 @@
-/*
-// This is the postcondition that ensures that it's the first, not just any
-*/
-
 predicate IsEven(n: int)
 {
     n % 2 == 0

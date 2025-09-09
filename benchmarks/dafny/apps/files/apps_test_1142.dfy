@@ -1,11 +1,3 @@
-/*
-Given a gun with magazine size k and n waves of monsters, find the minimum total bullets
-needed to clear all waves. Each wave i has monsters that spawn at time l_i and must be
-killed by time r_i. Shooting kills one monster instantly, reloading takes 1 time unit
-and discards remaining bullets. Waves are non-overlapping and chronological.
-Return -1 if impossible.
-*/
-
 datatype Wave = Wave(start_time: nat, end_time: nat, monsters: nat)
 
 predicate ValidWaves(waves: seq<Wave>)

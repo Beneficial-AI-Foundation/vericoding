@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "types",
-  "description": "List of supported data type signatures",
-  "details": "Shows input->output type mappings",
-  "example": "add.types: ['??->?', 'bb->b', 'BB->B', 'hh->h', ...]"
-}
--/
-
-/-  Returns the list of supported data type signatures for a universal function -/
-
-/-  Specification: types returns formatted type signatures as strings -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

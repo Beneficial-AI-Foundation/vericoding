@@ -1,8 +1,3 @@
-/*
-function_signature: def is_multiply_prime(a: int) -> bool
-Write a function that returns true if the given number is the multiplication of 3 prime numbers and false otherwise. Knowing that (a) is less then 100.
-*/
-
 function Prime(p: nat) : bool
 {
     p > 1 &&

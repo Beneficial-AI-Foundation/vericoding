@@ -1,8 +1,3 @@
-/*
-function_signature: method sort_array(s: seq<int>) returns (sorted: seq<int>)
-Sort elements. Ensures: returns the correct size/count; returns the correct size/count; returns the correct size/count.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

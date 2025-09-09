@@ -1,8 +1,3 @@
-/*
-Given N company members with ID numbers 1 to N, where each member (except member 1) has exactly one immediate boss with a smaller ID number.
-For member i (where i > 1), their immediate boss is member A_i. Count the number of immediate subordinates for each member.
-*/
-
 predicate ValidInput(n: int, aa: seq<int>)
 {
     n >= 2 &&

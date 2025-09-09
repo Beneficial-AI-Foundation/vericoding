@@ -1,8 +1,3 @@
-/*
-function_signature: method checkSubstring(s: string, sub: string) returns (result: bool)
-Check condition.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

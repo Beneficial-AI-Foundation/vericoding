@@ -1,29 +1,3 @@
-/- 
-{
-  "name": "numpy.isposinf",
-  "category": "Array contents testing",
-  "description": "Test element-wise for positive infinity, return result as bool array",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.isposinf.html",
-  "doc": "Test element-wise for positive infinity, return result as bool array.\n\nParameters\n----------\nx : array_like\n    The input array.\nout : array_like, optional\n    A location into which the result is stored. If provided, it must have a\n    shape that the input broadcasts to. If not provided or None, a\n    freshly-allocated boolean array is returned.\n\nReturns\n-------\nout : ndarray\n    A boolean array with the same dimensions as the input.\n    If second argument is not supplied then a boolean array is returned\n    with values True where the corresponding element of the input is\n    positive infinity and values False where the element of the input\n    is not positive infinity.\n    \n    If a second argument is supplied the result is stored there. If the\n    type of that array is a numeric type the result is represented as\n    zeros and ones, if the type is boolean then as False and True.\n    The return value out is then a reference to that array.\n\nSee Also\n--------\nisinf, isneginf, isfinite, isnan\n\nNotes\n-----\nNumPy uses the IEEE Standard for Binary Floating-Point for Arithmetic\n(IEEE 754).\n\nErrors result if the second argument is also supplied when x is a\nscalar input, if first and second arguments have different shapes,\nor if the first argument has complex values\n\nExamples\n--------\n>>> np.isposinf(np.PINF)\nTrue\n>>> np.isposinf(np.inf)\nTrue\n>>> np.isposinf(np.NINF)\nFalse\n>>> np.isposinf([-np.inf, 0., np.inf])\narray([False, False,  True])\n\n>>> x = np.array([-np.inf, 0., np.inf])\n>>> y = np.array([2, 2, 2])\n>>> np.isposinf(x, y)\narray([0, 0, 1])\n>>> y\narray([0, 0, 1])",
-}
--/
-
-/-  Test element-wise for positive infinity, return result as bool array -/
-
-/-  Specification: isposinf returns True for positive infinity elements, False otherwise.
-
-    This function tests each element according to IEEE 754 floating-point standard:
-    - Returns true if the element is positive infinity (+∞)
-    - Returns false for all other values including negative infinity, NaN, finite numbers, and zero
-
-    Mathematical properties:
-    1. Positive infinity detection: result[i] = true iff x[i] is positive infinity
-    2. Distinction from negative infinity: only positive infinity returns true
-    3. Distinction from NaN: positive infinity and NaN are mutually exclusive
-    4. Result preserves shape: output vector has same length as input
-    5. Finite values: All normal, subnormal, and zero values return false
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

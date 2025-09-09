@@ -1,9 +1,3 @@
-/*
-Given three integers representing counts of red, green, and blue lamps,
-determine if it's possible to arrange all lamps in a line such that
-no two adjacent lamps have the same color.
-*/
-
 predicate ValidInput(r: int, g: int, b: int)
 {
     r >= 1 && g >= 1 && b >= 1

@@ -1,8 +1,3 @@
-/*
-function_signature: def is_nested(string: str) -> Bool
-Create a function that takes a string as input which contains only parentheses. The function should return True if and only if there is a valid subsequence of parentheses where at least one parenthesis in the subsequence is nested.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

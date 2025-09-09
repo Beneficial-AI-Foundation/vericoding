@@ -1,7 +1,3 @@
-/*
-function_signature: def below_threshold(numbers: List[Int], threshold: Int) -> bool
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

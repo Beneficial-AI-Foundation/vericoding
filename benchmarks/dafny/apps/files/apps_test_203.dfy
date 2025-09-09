@@ -1,9 +1,3 @@
-/*
-Determine the winner of an elimination-style voting game between two factions.
-Employees vote in rounds, can eliminate opponents, and play optimally.
-The faction with the last remaining employee wins.
-*/
-
 predicate ValidInput(n: int, s: string)
 {
   1 <= n <= 200000 && |s| == n && 

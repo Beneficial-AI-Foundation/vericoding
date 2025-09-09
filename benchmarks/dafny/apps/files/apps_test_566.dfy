@@ -1,8 +1,3 @@
-/*
-Given r red balloons, g green balloons, and b blue balloons, determine the maximum number of tables that can be decorated.
-Each table requires exactly 3 balloons, and no table can have all 3 balloons of the same color.
-*/
-
 predicate ValidInput(r: int, g: int, b: int) {
     r >= 0 && g >= 0 && b >= 0
 }

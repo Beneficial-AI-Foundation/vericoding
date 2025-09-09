@@ -1,19 +1,3 @@
-/*
-Given an n×m grid containing '*' and '.' characters, find a set of stars that exactly reproduces this pattern.
-A star has a center (x,y) and size s, placing '*' at the center and s positions in each cardinal direction.
-Output the number of stars and their parameters, or "-1" if impossible.
-
-// Each star is valid and within bounds
-
-// The stars exactly cover all '*' positions
-
-// center
-
-// horizontal ray
-
-// vertical ray
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := Split(input, '\n');

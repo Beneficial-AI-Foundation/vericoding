@@ -1,6 +1,3 @@
-/*
-*/
-
 function isMax(m: int, numbers: seq<int>): bool
 {
     m in numbers &&

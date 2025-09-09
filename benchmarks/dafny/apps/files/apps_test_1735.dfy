@@ -1,8 +1,3 @@
-/*
-Two players alternate turns removing consecutive identical letters from a string.
-The player who cannot make a move loses. Determine if the first player wins.
-*/
-
 function countMaxMoves(s: string): nat
 {
     if |s| == 0 then 0

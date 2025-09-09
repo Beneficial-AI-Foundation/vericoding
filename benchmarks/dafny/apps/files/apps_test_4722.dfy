@@ -1,8 +1,3 @@
-/*
-Given two integers A and B representing cookies in two tins, determine if cookies
-can be distributed equally among three goats by choosing A, B, or A+B total cookies.
-*/
-
 predicate ValidInput(A: int, B: int)
 {
     1 <= A <= 100 && 1 <= B <= 100

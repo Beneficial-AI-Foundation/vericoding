@@ -1,10 +1,3 @@
-/*
-Schedule an optimal event with singer Devu and comedian Churu within a time limit.
-Devu must sing all n songs in order with 10-minute rest periods between songs.
-Churu tells 5-minute jokes during rest periods and any remaining time.
-Find the maximum number of jokes possible, or return -1 if impossible.
-*/
-
 function SumSeq(s: seq<int>): int
 {
   if |s| == 0 then 0 else s[0] + SumSeq(s[1..])

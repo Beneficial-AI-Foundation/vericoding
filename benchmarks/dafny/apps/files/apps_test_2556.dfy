@@ -1,8 +1,3 @@
-/*
-Given n rooms, for each room i install at most c_i radiators to achieve at least sum_i total sections.
-Each radiator with k sections costs k² burles. Find the minimum cost for each room.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0

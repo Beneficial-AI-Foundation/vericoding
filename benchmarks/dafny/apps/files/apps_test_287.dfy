@@ -1,9 +1,3 @@
-/*
-Given n apartments numbered 1 to n arranged in a row, with exactly k apartments already inhabited,
-find the minimum and maximum possible number of "good" apartments. A good apartment is one that is
-available for sale (not inhabited) and has at least one inhabited apartment adjacent to it.
-*/
-
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 0 && k <= n

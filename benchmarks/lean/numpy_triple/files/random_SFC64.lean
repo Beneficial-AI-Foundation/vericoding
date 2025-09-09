@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "numpy.random.SFC64",
-  "description": "BitGenerator for the SFC64 pseudo-random number generator",
-  "url": "https://numpy.org/doc/stable/reference/random/bit_generators/sfc64.html",
-  "doc": "SFC64(seed=None)\n\nBitGenerator for the SFC64 pseudo-random number generator.\n\nSFC64 is a chaotic RNG that uses a 256-bit state. It is very fast and appears to be very robust to statistical tests.\n\nParameters:\n- seed : None, int, array_like[ints], SeedSequence, BitGenerator, Generator\n    A seed to initialize the BitGenerator",
-}
--/
-
-/-  SFC64 pseudo-random number generator with 256-bit state -/
-
-/-  Specification: SFC64 initializes a 256-bit state from seed -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

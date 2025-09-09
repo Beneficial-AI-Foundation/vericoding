@@ -1,9 +1,3 @@
-/*
-Given a prime number p, find the count of primitive roots modulo p.
-A primitive root modulo prime p is an integer x where 1 ≤ x < p such that
-x^k ≢ 1 (mod p) for all positive integers k < p-1, but x^(p-1) ≡ 1 (mod p).
-*/
-
 predicate ValidInput(p: int) {
     2 <= p < 2000
 }

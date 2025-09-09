@@ -1,8 +1,3 @@
-/*
-function_signature: method circular_shift(a: nat, shift: nat) returns (shifted: string)
-Process input. Ensures: returns the correct size/count; the condition holds for all values; returns the correct size/count.
-*/
-
 type stringNat = s: string |
   |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
   forall i | 0 <= i < |s| :: s[i] in "0123456789"

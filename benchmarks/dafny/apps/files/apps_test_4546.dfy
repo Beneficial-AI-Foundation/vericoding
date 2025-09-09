@@ -1,10 +1,3 @@
-/*
-Given three integers a, b, and c representing the heights of three poles,
-determine if they form an arithmetic sequence (i.e., b - a = c - b).
-Input is a string containing three space-separated integers.
-Output is "YES\n" if arithmetic sequence, "NO\n" otherwise.
-*/
-
 predicate ValidThreeIntegers(input: string, a: int, b: int, c: int)
 {
     var parts := SplitBySpacesFunc(input);

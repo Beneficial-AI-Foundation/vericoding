@@ -1,8 +1,3 @@
-/*
-function_signature: method reverse(s: string) returns (rev: string)
-Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
-*/
-
 function is_alpha(c: char) : bool {
   'a' <= c <= 'z' || 'A' <= c <= 'Z'
 }

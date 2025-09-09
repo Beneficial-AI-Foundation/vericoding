@@ -1,15 +1,3 @@
-/- 
------Description-----
-This task requires implementing a Lean 4 method that, given a list of intervals, returns the maximum amount that can be spanned after we removed one of the intervals
-You may assume you'll receive at least one interval
-
------Input-----
-The input consists of a list of ordered pairs of intervals.
------Output-----
-The output is an integer:
-Return the largest span that is possible after removing one of the intervals.
--/
-
 @[reducible, simp]
 def maxCoverageAfterRemovingOne_precond (intervals : List (Prod Nat Nat)) : Prop :=
   intervals.length > 0

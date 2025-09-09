@@ -1,21 +1,3 @@
-/- 
-{
-  "name": "numpy.genfromtxt",
-  "category": "Text file I/O",
-  "description": "Load data from a text file, with missing values handled as specified",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.genfromtxt.html",
-  "doc": "Load data from a text file, with missing values handled as specified",
-}
--/
-
-/-  Load data from a text file with missing value handling. This is a simplified 
-    version focusing on numeric data parsing from delimited text. -/
-
-/-  Specification: genfromtxt parses delimited text data into a matrix structure,
-    handling missing values by filling them with the specified default value.
-    The function skips the specified number of header lines and parses the
-    remaining lines into a structured matrix. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

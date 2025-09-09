@@ -1,10 +1,3 @@
-/*
-Given two lists of T-shirt sizes (previous year and current year), find the minimum number 
-of character replacements needed to transform the previous year's list into the current year's 
-list. Each replacement changes one character in one T-shirt size to any uppercase Latin letter. 
-The lists are unordered (only the frequency of each size matters).
-*/
-
 predicate validInput(stdin_input: string)
 {
     var lines := splitLines(stdin_input);

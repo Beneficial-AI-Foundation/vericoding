@@ -1,9 +1,3 @@
-/*
-Given n problems and two robots, determine the minimum possible maximum point value
-needed to ensure the first robot scores strictly more points than the second robot.
-Return -1 if the first robot cannot outperform the second robot.
-*/
-
 predicate ValidInput(n: int, r: seq<int>, b: seq<int>)
 {
     n > 0 && |r| == n && |b| == n &&

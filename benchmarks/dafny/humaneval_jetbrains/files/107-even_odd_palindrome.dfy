@@ -1,8 +1,3 @@
-/*
-function_signature: def even_odd_palindrome(n: nat) -> (nat, nat)
-Given a positive integer n, return a tuple that has the number of even and odd integer palindromes that fall within the range(1, n), inclusive.
-*/
-
 type stringNat = s: string |
 |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
 forall i | 0 <= i < |s| :: s[i] in "0123456789"

@@ -1,8 +1,3 @@
-/*
-Given n rectangles on a 100×100 grid, where each rectangle is defined by its bottom-left corner (x₁, y₁) and top-right corner (x₂, y₂), 
-calculate the sum of all cell values in the grid. Each cell's value equals the number of rectangles that contain it.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| >= 0

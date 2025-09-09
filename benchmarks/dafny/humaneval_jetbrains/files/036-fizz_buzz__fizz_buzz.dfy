@@ -1,8 +1,3 @@
-/*
-function_signature: method fizz_buzz(n: nat) returns (result: nat)
-Process input. Requires: returns the correct size/count. Ensures: returns the correct value.
-*/
-
 function count7_r(x: nat): nat {
   var lst := if x % 10 == 7 then 1 else 0;
   if x < 10 then lst else lst + count7_r(x / 10)

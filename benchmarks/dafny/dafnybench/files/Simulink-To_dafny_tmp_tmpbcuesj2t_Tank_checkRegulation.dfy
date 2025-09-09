@@ -1,19 +1,3 @@
-/*
-//outlet valve 
-
-//inlet Valve
-
-//outlet valve
-
-//flow in valve v1
-
-//flow in vave v2
-
-//flow in valve v3
-
-//requires tank.pipe.v1==OFF && tank.pipe.v2==ON && (tank.pipe.v3==OFF || tank.pipe.v2==ON)
-*/
-
 datatype Valve = ON | OFF
 
 class Pipe{

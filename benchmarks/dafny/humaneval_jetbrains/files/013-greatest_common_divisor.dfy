@@ -1,10 +1,3 @@
-/*
-function_signature: def greatest_common_divisor(a: int, b: int) -> int
-Return a greatest common divisor of two integers a and b
-
-// recursive version should be more promising
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

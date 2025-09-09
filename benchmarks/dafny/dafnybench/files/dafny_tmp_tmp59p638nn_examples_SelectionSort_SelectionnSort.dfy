@@ -1,6 +1,3 @@
-/*
-*/
-
 twostate predicate Preserved(a: array<int>, left: nat, right: nat)
     reads a
     requires left <= right <= a.Length

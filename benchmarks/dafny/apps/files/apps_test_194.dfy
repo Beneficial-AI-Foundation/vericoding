@@ -1,11 +1,3 @@
-/*
-Given n groups arriving at a restaurant chronologically, where each group has 1 or 2 people,
-and the restaurant has a one-person tables and b two-person tables, determine how many people
-are denied service following specific seating rules.
-
-// group == 1
-*/
-
 predicate ValidInput(n: int, a: int, b: int, groups: seq<int>)
 {
     n >= 1 && a >= 1 && b >= 1 && |groups| == n &&

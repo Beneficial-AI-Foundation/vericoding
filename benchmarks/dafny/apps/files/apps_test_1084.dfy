@@ -1,11 +1,3 @@
-/*
-Given an n×m grid that is initially all white, determine if it can be transformed into a target 
-configuration using a sequence of operations. Each operation selects a non-empty subset of rows 
-and a non-empty subset of columns, then colors all intersections black. Each row and each column 
-can be used in at most one operation across all operations. The key constraint is that if two 
-black cells share the same column, their rows must have identical patterns of black cells.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && '\n' in input

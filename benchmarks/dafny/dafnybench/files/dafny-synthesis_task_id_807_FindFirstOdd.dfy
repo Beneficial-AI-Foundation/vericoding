@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate IsOdd(x: int)
 {
     x % 2 != 0

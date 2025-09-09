@@ -1,8 +1,3 @@
-/*
-function_signature: method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
-Sort elements. Ensures: the size is bounded; the condition holds for all values.
-*/
-
 function NumberToName(n: int): string
   requires 1 <= n <= 9
 {

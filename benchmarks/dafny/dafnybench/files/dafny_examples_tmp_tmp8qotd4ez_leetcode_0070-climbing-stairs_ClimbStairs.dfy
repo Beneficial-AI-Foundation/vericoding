@@ -1,7 +1,3 @@
-/*
-// A simple specification
-*/
-
 function Stairs(n: nat): nat {
   if n <= 1 then 1 else Stairs(n - 2) + Stairs(n - 1)
 }

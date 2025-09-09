@@ -1,8 +1,3 @@
-/*
-function_signature: method decode_cyclic(s: seq<int>) returns (res: seq<int>)
-Decode data. Ensures: returns the correct size/count; the condition holds for all values; the condition holds for all values; the condition holds for all values.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

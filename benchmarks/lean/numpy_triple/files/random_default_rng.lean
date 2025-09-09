@@ -1,28 +1,3 @@
-/- 
-{
-  "name": "numpy.random.default_rng",
-  "description": "Construct a new Generator with the default BitGenerator (PCG64)",
-  "url": "https://numpy.org/doc/stable/reference/random/generator.html",
-  "doc": "default_rng(seed=None)\n\nConstruct a new Generator with the default BitGenerator (PCG64).\n\nParameters:\n- seed : None, int, array_like[ints], SeedSequence, BitGenerator, Generator\n    A seed to initialize the BitGenerator. If None, fresh, unpredictable entropy will be pulled from the OS.\n\nReturns:\n- Generator\n    The initialized generator object",
-}
--/
-
-/-  numpy.random.default_rng: Construct a new Generator with the default BitGenerator (PCG64).
-
-    Creates a new Generator instance using PCG64 as the underlying BitGenerator.
-    This is the recommended way to create random number generators in NumPy.
-
-    If seed is None, the generator will be initialized with fresh entropy from the OS.
-    If seed is provided, the generator will be deterministically initialized with that seed.
--/
-
-/-  Specification: default_rng returns a properly initialized Generator object.
-
-    Precondition: True (no restrictions on the seed parameter)
-    Postcondition: The returned Generator is properly initialized with the given seed
-    and uses PCG64 as the underlying BitGenerator.
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

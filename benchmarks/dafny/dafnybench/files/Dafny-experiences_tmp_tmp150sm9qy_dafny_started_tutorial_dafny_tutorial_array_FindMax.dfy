@@ -1,9 +1,3 @@
-/*
-// Annotate this method with pre- and postconditions
-
-// that ensure it behaves as described.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

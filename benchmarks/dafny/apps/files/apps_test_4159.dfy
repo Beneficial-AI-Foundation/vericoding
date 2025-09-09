@@ -1,12 +1,3 @@
-/*
-Given three integers A, B, and K, where Takahashi has A cookies and Aoki has B cookies initially.
-Takahashi performs exactly K actions, where each action follows this priority:
-1. If Takahashi has cookies, he eats one of his own cookies
-2. Otherwise, if Aoki has cookies, Takahashi eats one of Aoki's cookies  
-3. Otherwise, do nothing
-Determine how many cookies Takahashi and Aoki have after all K actions.
-*/
-
 predicate ValidInput(A: int, B: int, K: int)
 {
     A >= 0 && B >= 0 && K >= 0

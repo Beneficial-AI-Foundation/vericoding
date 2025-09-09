@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.from_dlpack",
-  "category": "From existing data",
-  "description": "Create a NumPy array from an object implementing the __dlpack__ protocol",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.from_dlpack.html",
-  "doc": "\nCreate a NumPy array from an object implementing the __dlpack__ protocol.\n\nParameters\n----------\nx : object\n    A Python object that implements the __dlpack__ and __dlpack_device__ methods.\ndevice : device, optional\n    Device on which to place the created array. Must be \"cpu\" if specified.\ncopy : bool, optional\n    If True, the array is copied. If False, the array is not copied. \n    If None (default), the array is only copied if necessary.\n\nReturns\n-------\nout : ndarray\n    Array created from the input object.\n\nNotes\n-----\nThis function allows for interoperability with other libraries that support the DLPack protocol.\n",
-  "signature": "numpy.from_dlpack(x, /, *, device=None, copy=None)"
-}
--/
-
-/-  Create a NumPy array from an object implementing the DLPack protocol -/
-
-/-  Specification: from_dlpack creates a vector from a DLPack-compatible object -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

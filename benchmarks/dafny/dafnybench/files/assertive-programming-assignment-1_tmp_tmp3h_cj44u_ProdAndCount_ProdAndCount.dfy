@@ -1,6 +1,3 @@
-/*
-*/
-
 function RecursivePositiveProduct(q: seq<int>): int
     decreases |q|
 {

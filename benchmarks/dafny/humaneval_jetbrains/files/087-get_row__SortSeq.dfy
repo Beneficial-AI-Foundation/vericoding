@@ -1,8 +1,3 @@
-/*
-function_signature: method SortSeq(s: SortSeqState) returns (sorted: SortSeqState)
-Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
-*/
-
 type SortSeqState = seq<(int, int)>
 function less(a: (int, int), b: (int, int)): bool {
   var (x, y) := a; var (u, v) := b;

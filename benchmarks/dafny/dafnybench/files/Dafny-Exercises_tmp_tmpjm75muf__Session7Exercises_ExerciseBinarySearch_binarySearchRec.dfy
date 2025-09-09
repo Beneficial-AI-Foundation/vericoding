@@ -1,9 +1,3 @@
-/*
-//Recursive binary search
-
-//0<=c<=v.Length && -1<=f<v.Length && c<=f+1
-*/
-
 predicate sorted(s : seq<int>) {
     forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
 }

@@ -1,8 +1,3 @@
-/*
-Given a list of distinct integers, generate all possible permutations of the elements.
-Each permutation should be a list containing all elements from the input in a different order.
-*/
-
 function factorial(n: nat): nat
 {
     if n == 0 then 1 else n * factorial(n - 1)

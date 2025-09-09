@@ -1,14 +1,3 @@
-/*
-Bignum task: bignum_Compare[NormalizeBitString].
-Implement the method according to the Dafny specification.
-
-// All characters must be '0' or '1'.
-
-// Remove leading zeros, except keep at least one digit
-
-// I added and proved some extra post-conditions:
-*/
-
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
   decreases s

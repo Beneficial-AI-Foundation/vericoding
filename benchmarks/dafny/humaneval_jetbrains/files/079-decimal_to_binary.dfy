@@ -1,8 +1,3 @@
-/*
-function_signature: def decimal_to_binary(decimal: nat) -> string
-You will be given a number in decimal form and your task is to convert it to binary format. The function should return a string, with each character representing a binary number. Each character in the string will be '0' or '1'.
-*/
-
 type stringBin = s: string |
   |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
   forall i | 0 <= i < |s| :: s[i] in "01"

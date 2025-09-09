@@ -1,10 +1,3 @@
-/*
-Given ticket costs and transportation usage, find the minimum cost to buy tickets.
-There are 4 ticket types: individual ride cost, unlimited rides on one vehicle,
-unlimited rides on all buses OR all trolleys, and unlimited rides on everything.
-Input includes 4 costs and arrays of ride counts for buses and trolleys.
-*/
-
 predicate ValidCosts(c: array<int>)
   reads c
 {

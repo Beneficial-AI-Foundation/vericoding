@@ -1,20 +1,3 @@
-/- 
-{
-  "name": "numpy.binary_repr",
-  "category": "Output formatting",
-  "description": "Return the binary representation of the input number as a string",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.binary_repr.html",
-  "doc": "Return the binary representation of the input number as a string.\n\nFor negative numbers, if width is not given, a minus sign is added to the front. If width is given, the two's complement of the number is returned, with respect to that width.\n\nIn a two's-complement system negative numbers are represented by the two's complement of the absolute value. This is the most common method of representing signed integers on computers. A N-bit two's-complement system can represent every integer in the range -2^(N-1) to +2^(N-1)-1.\n\nParameters\n----------\nnum : int\n    Only an integer decimal number can be used.\nwidth : int, optional\n    The length of the returned string if num is positive, or the length of the two's complement if num is negative, provided that width is at least a sufficient number of bits for num to be represented in the designated form.\n\nReturns\n-------\nbin : str\n    Binary representation of num or two's complement of num.\n\nNotes\n-----\nbinary_repr is equivalent to using base_repr with base 2, but about 25x faster.\n\nReferences\n----------\n.. [1] Wikipedia, \"Two's complement\",\n    https://en.wikipedia.org/wiki/Two's_complement\n\nExamples\n--------\n>>> np.binary_repr(3)\n'11'\n>>> np.binary_repr(-3)\n'-11'\n>>> np.binary_repr(3, width=4)\n'0011'\n\nThe two's complement is returned when the input number is negative and width is specified:\n\n>>> np.binary_repr(-3, width=3)\n'101'\n>>> np.binary_repr(-3, width=5)\n'11101'",
-}
--/
-
-/-  Return the binary representation of the input number as a string.
-    For negative numbers, if width is not given, a minus sign is added to the front.
-    If width is given, the two's complement of the number is returned. -/
-
-/-  Specification: binary_repr correctly converts integers to binary strings with proper
-    handling of negative numbers (signed representation without width, two's complement with width) -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

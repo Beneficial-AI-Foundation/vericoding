@@ -1,28 +1,3 @@
-/-
-## Story
-
-Your company migrated the last 20 years of it's *very important data* to a new platform, in multiple phases. However, something went wrong: some of the essential time-stamps were messed up! It looks like that some servers were set to use the `dd/mm/yyyy` date format, while others were using the `mm/dd/yyyy` format during the migration. Unfortunately, the original database got corrupted in the process and there are no backups available... Now it's up to you to assess the damage.
-
-## Task
-
-You will receive a list of records as strings in the form of `[start_date, end_date]` given in the ISO `yyyy-mm-dd` format, and your task is to count how many of these records are: 
-* **correct**: there can be nothing wrong with the dates, the month/day cannot be mixed up, or it would not make a valid timestamp in any other way; e.g. `["2015-04-04", "2015-05-13"]`
-* **recoverable**: invalid in its current form, but the original timestamp can be recovered, because there is only one valid combination possible; e.g. `["2011-10-08", "2011-08-14"]`
-* **uncertain**: one or both dates are ambiguous, and they may generate multiple valid timestamps, so the original cannot be retrieved; e.g. `["2002-02-07", "2002-12-10"]`
-
-**Note:** the original records always defined a *non-negative* duration
-
-Return your findings in an array: `[ correct_count, recoverable_count, uncertain_count ]`
-
-## Examples
-
----
-
-## My other katas
-
-If you enjoyed this kata then please try [my other katas](https://www.codewars.com/collections/katas-created-by-anter69)! :-)
--/
-
 def sum_list : List Nat → Nat 
   | [] => 0
   | (x::xs) => x + sum_list xs

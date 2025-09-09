@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.fill_diagonal",
-  "category": "Diagonal operations",
-  "description": "Fill the main diagonal of the given array of any dimensionality",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fill_diagonal.html",
-  "doc": "Fill the main diagonal of the given array of any dimensionality.\n\nFor an array \`a\` with \`\`a.ndim >= 2\`\`, the diagonal is the list of locations with indices \`\`a[i, ..., i]\`\` all identical. This function modifies the input array in-place, it does not return a value.\n\nParameters\n----------\na : array, at least 2-D.\n    Array whose diagonal is to be filled, it gets modified in-place.\nval : scalar or array_like\n    Value(s) to write on the diagonal. If \`val\` is scalar, the value is written along the diagonal. If array-like, the flattened \`val\` is written along the diagonal, repeating if necessary to fill all diagonal entries.\nwrap : bool\n    For tall matrices in NumPy version up to 1.6.2, the diagonal \"wrapped\" after N columns. You can have this behavior with this option. This affects only tall matrices.",
-}
--/
-
-/-  Fill the main diagonal of a 2D matrix with a specified value -/
-
-/-  Specification: fill_diagonal modifies the diagonal entries to the specified value -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

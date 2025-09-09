@@ -1,25 +1,3 @@
-/- 
-{
-  "name": "numpy.histogram2d",
-  "category": "Histograms",
-  "description": "Compute the bi-dimensional histogram of two data samples",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.histogram2d.html",
-  "doc": "numpy.histogram2d(x, y, bins=10, range=None, density=None, weights=None)\n\nCompute the bi-dimensional histogram of two data samples.\n\nParameters\n----------\nx : array_like, shape (N,)\n    An array containing the x coordinates of the points to be histogrammed.\ny : array_like, shape (N,)\n    An array containing the y coordinates of the points to be histogrammed.\nbins : int or array_like or [int, int] or [array, array], optional\n    The bin specification:\n    * If int, the number of bins for the two dimensions (nx=ny=bins).\n    * If array_like, the bin edges for the two dimensions (x_edges=y_edges=bins).\n    * If [int, int], the number of bins in each dimension (nx, ny = bins).\n    * If [array, array], the bin edges in each dimension (x_edges, y_edges = bins).\nrange : array_like, shape(2,2), optional\n    The leftmost and rightmost edges of the bins along each dimension (if not specified explicitly in the bins parameters): [[xmin, xmax], [ymin, ymax]].\ndensity : bool, optional\n    If False, the default, returns the number of samples in each bin. If True, returns the probability density function at the bin.\nweights : array_like, shape(N,), optional\n    An array of values w_i weighing each sample (x_i, y_i).\n\nReturns\n-------\nH : ndarray, shape(nx, ny)\n    The bi-dimensional histogram of samples x and y.\nxedges : ndarray, shape(nx+1,)\n    The bin edges along the first dimension.\nyedges : ndarray, shape(ny+1,)\n    The bin edges along the second dimension.",
-}
--/
-
-/-  Computes the bi-dimensional histogram of two data samples with equal number of bins -/
-
-/-  Specification: histogram2d computes a 2D histogram from two equal-length vectors.
-    Mathematical properties:
-    1. Input vectors must have the same length (enforced by type system)
-    2. The histogram matrix has dimensions (nbins, nbins) where nbins = bins
-    3. Each histogram bin counts the number of points falling within its boundaries
-    4. The bin edges define the boundaries for both x and y dimensions
-    5. The total count equals the input vector length
-    6. All histogram values are non-negative
-    7. Bin edges are monotonically increasing -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

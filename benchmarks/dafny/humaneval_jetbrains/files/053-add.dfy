@@ -1,7 +1,3 @@
-/*
-function_signature: def add(x: Int, y: Int) -> Int
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

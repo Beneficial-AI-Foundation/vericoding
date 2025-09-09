@@ -1,10 +1,3 @@
-/*
-Given N piles of stones, two players alternate removing stones from any single pile.
-The player unable to make a move loses. Before the game begins, the second player
-can move between 0 and (A_1 - 1) stones from pile 1 to pile 2. Find the minimum
-number of stones to move to guarantee the second player wins, or output -1 if impossible.
-*/
-
 predicate validInput(s: string)
 {
     var lines := splitLinesFunc(s);

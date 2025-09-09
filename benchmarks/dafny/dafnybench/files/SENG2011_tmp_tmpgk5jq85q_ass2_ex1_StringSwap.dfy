@@ -1,11 +1,3 @@
-/*
-// method verifies
-
-// string == seq<Char>
-
-//give se2011 ass2 ex1.dfy
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

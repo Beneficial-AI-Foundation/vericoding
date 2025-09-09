@@ -1,9 +1,3 @@
-/*
-Given an undirected tree with n vertices, add the minimum number of edges 
-such that the shortest path from vertex 1 to any other vertex is at most 2.
-Loops and multiple edges are not allowed.
-*/
-
 predicate ValidInput(n: int, edges: seq<(int, int)>)
 {
     n >= 2 && |edges| == n - 1 &&

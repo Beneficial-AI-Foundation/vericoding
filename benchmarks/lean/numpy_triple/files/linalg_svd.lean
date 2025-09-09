@@ -1,30 +1,3 @@
-/-  numpy.linalg.svd: Singular Value Decomposition.
-
-    Computes the singular value decomposition of a matrix, factorizing it as
-    A = U @ diag(S) @ Vh, where U and Vh are unitary matrices and S is a 
-    vector of singular values sorted in descending order.
-
-    This specification focuses on the 2D case with full_matrices=False
-    and compute_uv=True (the most common use case).
-
-    The decomposition satisfies: A = U @ diag(S) @ Vh
-    where U has orthonormal columns, Vh has orthonormal rows,
-    and S contains non-negative singular values in descending order.
--/
-
-/-  Specification: numpy.linalg.svd returns matrices U, S, Vh such that:
-
-    1. Matrix reconstruction: A = U @ diag(S) @ Vh
-    2. U has orthonormal columns (U^T @ U = I)
-    3. Vh has orthonormal rows (Vh @ Vh^T = I)  
-    4. S contains non-negative singular values in descending order
-
-    This captures the essential mathematical properties of SVD as implemented in NumPy.
-
-    Precondition: True (SVD is defined for any real matrix)
-    Postcondition: The returned decomposition satisfies all SVD properties
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

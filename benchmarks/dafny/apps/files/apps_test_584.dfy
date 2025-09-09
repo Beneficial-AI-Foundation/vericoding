@@ -1,9 +1,3 @@
-/*
-Given a string containing letters, underscores, and properly matched parentheses,
-find the length of the longest word outside parentheses and count words inside parentheses.
-Words are maximal sequences of consecutive letters separated by underscores or parentheses.
-*/
-
 function IsLetter(c: char): bool
 {
     ('a' <= c <= 'z') || ('A' <= c <= 'Z')

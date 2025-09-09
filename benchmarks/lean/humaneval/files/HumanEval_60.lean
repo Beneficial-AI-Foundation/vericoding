@@ -1,14 +1,3 @@
-/- 
-function_signature: "def sum_to_n(n: Nat) -> Nat"
-docstring: |
-    sum_to_n is a function that sums numbers from 1 to n.
-test_cases:
-  - input: 30
-    expected_output: 465
-  - input: 100
-    expected_output: 4950
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

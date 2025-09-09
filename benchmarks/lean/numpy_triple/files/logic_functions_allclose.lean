@@ -1,24 +1,3 @@
-/-  numpy.allclose: Returns True if two arrays are element-wise equal within a tolerance.
-
-    The tolerance values are positive, typically very small numbers. The
-    relative difference (rtol * abs(b)) and the absolute difference
-    atol are added together to compare against the absolute difference
-    between a and b.
-
-    For each element, the condition is:
-    absolute(a - b) <= (atol + rtol * absolute(b))
-
-    This function returns True if ALL elements satisfy this condition,
-    False otherwise.
--/
-
-/-  Specification: allclose returns true iff all elements are within tolerance.
-
-    Precondition: rtol >= 0 and atol >= 0 (tolerance values must be non-negative)
-    Postcondition: result = true iff all elements satisfy the tolerance condition
-                   abs(a[i] - b[i]) <= atol + rtol * abs(b[i]) for all i
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

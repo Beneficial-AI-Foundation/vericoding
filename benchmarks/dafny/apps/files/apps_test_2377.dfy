@@ -1,9 +1,3 @@
-/*
-Find the minimum number of attacks needed to deal at least H total damage to a monster
-using N katanas. Each katana can be wielded (deals a_i damage, repeatable) or 
-thrown (deals b_i damage, once only). Constraints: a_i <= b_i, all values positive.
-*/
-
 predicate ValidInput(N: int, H: int, A: seq<int>, B: seq<int>)
 {
     |A| == N && |B| == N && N > 0 && H > 0 &&

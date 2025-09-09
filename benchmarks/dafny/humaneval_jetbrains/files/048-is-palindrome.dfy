@@ -1,8 +1,3 @@
-/*
-function_signature: def is_palindrome(string: str) -> Bool
-Checks if given string is a palindrome
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

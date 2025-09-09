@@ -1,9 +1,3 @@
-/*
-Calculate the total cost to travel from Station A to Station C using a special discount ticket.
-Given train fare X yen (A to B) and bus fare Y yen (B to C), if you take the train first then the bus,
-the bus fare becomes half price. Find the total cost A to C.
-*/
-
 predicate ValidInput(trainFare: int, busFare: int)
 {
     1 <= trainFare <= 100 && 1 <= busFare <= 100 && busFare % 2 == 0

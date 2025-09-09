@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate IsOdd(n: int)
 {
     n % 2 == 1

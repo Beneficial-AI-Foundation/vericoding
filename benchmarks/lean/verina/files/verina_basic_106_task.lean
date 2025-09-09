@@ -1,22 +1,3 @@
-/- 
------Description-----
-The task is to compute the element-wise sum of two integer arrays. The result should be a new array where each element is the sum of the corresponding elements from the two input arrays. The problem assumes that both arrays have the same length.
-
------Input-----
-The input consists of two parameters:
-• a: An array of integers.
-• b: An array of integers.
-Note: Both arrays must have the same length.
-
------Output-----
-The output is an array of integers that:
-• Has the same size as the input arrays.
-• Contains elements where each element at index i is computed as a[i]! + b[i]! from the input arrays.
-
------Note-----
-It is assumed that the two input arrays have equal lengths.
--/
-
 @[reducible, simp]
 def arraySum_precond (a : Array Int) (b : Array Int) : Prop :=
   a.size = b.size

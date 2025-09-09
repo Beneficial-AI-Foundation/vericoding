@@ -1,9 +1,3 @@
-/*
-// definition of Fibonacci numbers
-
-// iterative calculation of Fibonacci numbers
-*/
-
 function Fibonacci(n: nat): nat {
   match n {
     case 0 => 0

@@ -1,9 +1,3 @@
-/*
-Given a functional directed graph where each vertex i has exactly one outgoing edge
-to vertex f[i] with weight w[i], find for each starting vertex the sum and minimum
-weight of all edges on a path of exactly k edges.
-*/
-
 predicate ValidGraph(n: int, f: seq<int>, w: seq<int>)
 {
   n > 0 && |f| == n && |w| == n &&

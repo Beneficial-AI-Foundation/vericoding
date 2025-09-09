@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.pi",
-  "category": "Mathematical constants",
-  "description": "Ratio of a circle's circumference to its diameter",
-  "url": "https://numpy.org/doc/stable/reference/constants.html#numpy.pi",
-  "doc": "pi = 3.1415926535897932384626433...\n\nPi is the ratio of a circle's circumference to its diameter. It is a mathematical constant that appears in many formulas in mathematics and physics.",
-}
--/
-
-/-  The mathematical constant pi (π), approximately 3.14159... -/
-
-/-  Specification: pi represents the ratio of a circle's circumference to its diameter,
-    and satisfies key mathematical properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

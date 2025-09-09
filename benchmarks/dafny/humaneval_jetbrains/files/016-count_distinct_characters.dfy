@@ -1,8 +1,3 @@
-/*
-function_signature: def count_distinct_characters(string: str) -> int
-Given a string, find out how many distinct characters (regardless of case) does it consist of
-*/
-
 function contains_char(s: string, c: char): bool
   decreases |s|
   requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z' || 'A' <= s[i] <= 'Z'

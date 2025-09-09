@@ -1,8 +1,3 @@
-/*
-Count positive integers x ≤ n where x - (sum of digits of x) ≥ s.
-Given two integers n and s (1 ≤ n, s ≤ 10^18), return the count of numbers x ≤ n satisfying the condition.
-*/
-
 function SumOfDigits(x: int): int
   requires x >= 0
   decreases x

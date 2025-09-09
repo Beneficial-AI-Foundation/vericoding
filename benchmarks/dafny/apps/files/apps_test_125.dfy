@@ -1,10 +1,3 @@
-/*
-Given a 4-way intersection with 4 road parts arranged counter-clockwise, determine if a traffic accident
-between cars and pedestrians is possible. Each road part has 4 traffic lights: left turn (l), straight (s),
-right turn (r), and pedestrian crossing (p). Each light can be red (0) or green (1). An accident is possible
-if a pedestrian crossing light is green and a car light is green that allows cars to reach that crossing.
-*/
-
 predicate ValidInputString(s: string)
 {
     |s| >= 7 &&

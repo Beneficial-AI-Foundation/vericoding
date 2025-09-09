@@ -1,19 +1,3 @@
-/*
-//lemma DivIsZero()
-
-//  ensures forall num, den : nat :: den >= 1 && num < den ==> num/den == 0
-
-// ghost function ValuesOfn(number: nat, ndigits: nat) : (r: seq<nat>)
-
-// {
-
-//   seq(ndigits+1, i requires 0 <= i <= ndigits => number / PowersOfTen[i])
-
-// }
-
-//    ensures forall p :: p in powersOfTen ==> n/p in r
-*/
-
 ghost function IntValues(n: int) : (r: seq<int>)
   requires n >= 0
   ensures 0 in r

@@ -1,10 +1,3 @@
-/*
-Given an array of integers, count the number of local extrema.
-A local minimum is an element strictly less than both neighbors.
-A local maximum is an element strictly greater than both neighbors.
-First and last elements cannot be local extrema since they lack two neighbors.
-*/
-
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 1 && |a| == n

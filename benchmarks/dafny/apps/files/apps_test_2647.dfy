@@ -1,12 +1,3 @@
-/*
-Given an H×W grid where each cell is either black (#) or white (.), find the maximum number 
-of white cells that can be changed to black such that a path still exists from cell (1,1) to 
-cell (H,W). Movement is allowed only through white cells in 4 directions. Cells (1,1) and 
-(H,W) cannot be changed and must be white. Return -1 if no path exists initially.
-
-// Simplified for placeholder
-*/
-
 predicate isValidInput(input: string)
 {
     |input| > 0 &&

@@ -1,9 +1,3 @@
-/*
-Given n manholes in a line (positions 1 to n), each initially covered by one stone with one coin underneath.
-Nastya starts at position k and can: throw stones, move to adjacent positions, or collect coins from uncovered manholes.
-Find the minimum number of moves needed to collect all n coins.
-*/
-
 predicate ValidInput(n: int, k: int)
 {
   2 <= n <= 5000 && 1 <= k <= n

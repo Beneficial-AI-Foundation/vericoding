@@ -1,8 +1,3 @@
-/*
-Given A animals that are definitely cats and B animals of unknown type (could be cats or dogs),
-determine if it's possible to have exactly X cats in total among the A + B animals.
-*/
-
 predicate ValidInput(a: int, b: int, x: int)
 {
     1 <= a <= 100 && 1 <= b <= 100 && 1 <= x <= 200

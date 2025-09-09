@@ -1,9 +1,3 @@
-/*
-//i and j included
-
-//Add and prove this
-*/
-
 predicate sorted_seg(a:array<int>, i:int, j:int)
 requires 0 <= i <= j+1 <= a.Length
 reads a

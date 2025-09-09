@@ -1,25 +1,3 @@
-/-  numpy.linalg.svdvals: Compute singular values of a matrix.
-
-    Computes the singular values of a matrix without computing the U and V matrices.
-    The singular values are the square roots of the eigenvalues of A^T @ A (or A @ A^T),
-    returned in descending order.
-
-    This is equivalent to calling numpy.linalg.svd(x, compute_uv=False).
-    For an m×n matrix, this returns min(m,n) singular values.
--/
-
-/-  Specification: svdvals returns the singular values of the input matrix.
-
-    The singular values are:
-    1. Non-negative real numbers
-    2. Sorted in descending order
-    3. Square roots of eigenvalues of x^T @ x
-    4. Measure the "magnitude" of the matrix in each singular direction
-
-    Precondition: True (singular values are defined for any matrix)
-    Postcondition: Returns singular values in descending order with mathematical properties
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

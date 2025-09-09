@@ -1,15 +1,3 @@
-/*
-Find the minimum cost for Ann to make exactly n subway rides, given two ticket options:
-single-ride tickets (cost a rubles each) and multi-ride tickets (cost b rubles, covers m rides).
-Ann can buy any combination of these tickets.
-
-// All single tickets
-
-// All multi-ride tickets (with potential waste)
-
-// Mixed: multi-ride + single for remainder
-*/
-
 predicate ValidInput(n: int, m: int, a: int, b: int)
 {
     n >= 1 && n <= 1000 &&

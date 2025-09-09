@@ -1,11 +1,3 @@
-/*
-Given a sequence of n strings where each string contains digits and question marks (?),
-restore the original strictly increasing sequence of positive integers by replacing each
-question mark with a single digit (0-9). The resulting sequence must be strictly increasing,
-all numbers must be positive integers (no leading zeros allowed), and each ? represents
-exactly one missing digit.
-*/
-
 predicate isWellFormedInput(stdin_input: string)
 {
     var lines := splitLines(stdin_input);

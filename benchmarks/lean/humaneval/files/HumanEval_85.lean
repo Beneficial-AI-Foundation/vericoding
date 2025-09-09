@@ -1,12 +1,3 @@
-/- 
-function_signature: "def solve(n: list[int]) -> int"
-docstring: |
-    Given a non-empty list of integers lst, add the even elements that are at odd indices.
-test_cases:
-  - input: [4, 2, 6, 7]
-    output: 2
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

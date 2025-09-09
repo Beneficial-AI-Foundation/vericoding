@@ -1,35 +1,3 @@
-/- 
-{
-  "name": "numpy.argwhere",
-  "category": "Boolean/mask indexing",
-  "description": "Find the indices of array elements that are non-zero, grouped by element",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.argwhere.html",
-  "doc": "Find the indices of array elements that are non-zero, grouped by element.\n\nParameters\n----------\na : array_like\n    Input data.\n\nReturns\n-------\nindex_array : (N, a.ndim) ndarray\n    Indices of elements that are non-zero. Indices are grouped by element.\n    This array will have shape \`\`(N, a.ndim)\`\` where \`\`N\`\` is the number of\n    non-zero items.\n\nNotes\n-----\n\`\`np.argwhere(a)\`\` is almost the same as \`\`np.transpose(np.nonzero(a))\`\`, but produces the correct result for a 0D array.\n\nThe output of \`\`argwhere\`\` is not suitable for indexing arrays. For this purpose use \`\`nonzero(a)\`\` instead.",
-}
--/
-
-/-  numpy.argwhere: Find the indices of array elements that are non-zero, grouped by element.
-
-    For a 1D vector, returns a list of indices where elements are non-zero.
-    Each index corresponds to a position in the original vector where the element is non-zero.
-    The returned indices are in the same order as they appear in the original vector.
-
-    This function is equivalent to finding all positions i such that a[i] ≠ 0.
-    The result is a list of indices, not suitable for direct array indexing but useful
-    for analysis and conditional processing.
--/
-
-/-  Specification: numpy.argwhere returns all indices of non-zero elements.
-
-    Precondition: True (no special requirements)
-    Postcondition: 
-    1. All returned indices correspond to non-zero elements in the input vector
-    2. All non-zero elements in the input vector have their indices in the result (completeness)
-    3. The result contains no duplicate indices
-    4. The indices are ordered according to their position in the original vector
-    5. The result is empty if and only if all elements in the input are zero
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

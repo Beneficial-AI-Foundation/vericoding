@@ -1,10 +1,3 @@
-/*
-Bignum task: bignum_Mul.
-Implement the method according to the Dafny specification.
-
-// All characters must be '0' or '1'.
-*/
-
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
   decreases s

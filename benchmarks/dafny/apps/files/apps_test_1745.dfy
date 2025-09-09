@@ -1,17 +1,3 @@
-/*
-Given an n × m grid where '.' represents empty cells and '#' represents occupied cells,
-count the number of distinct ways to create a pipe with constraints:
-1. The pipe is a width-1 polyline through empty cells only
-2. The pipe starts and ends on the grid boundary (but not corner cells)
-3. The pipe has at most 2 turns (90-degree turns)
-4. The pipe touches exactly 2 boundary cells (start and end)
-5. If the pipe is a straight line, start and end must be on different edges
-6. Each non-boundary pipe cell has exactly 2 adjacent pipe cells
-7. Each boundary pipe cell has exactly 1 adjacent pipe cell
-
-// Simplified implementation
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n'

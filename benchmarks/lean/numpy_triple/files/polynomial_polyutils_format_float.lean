@@ -1,14 +1,3 @@
-/-  Format a floating-point number into a string representation.
-    This function takes a floating-point value and converts it to a human-readable 
-    string format, handling special cases like NaN and infinity, and choosing 
-    between scientific and positional notation based on the magnitude of the number. -/
-
-/-  Specification: format_float produces a valid string representation of a float.
-    The function handles special cases (NaN, infinity) and chooses appropriate 
-    notation based on the magnitude of the input. The output string should be 
-    parseable back to a float representation and preserve the essential value 
-    characteristics. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

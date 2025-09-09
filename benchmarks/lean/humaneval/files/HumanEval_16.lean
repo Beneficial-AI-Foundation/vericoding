@@ -1,14 +1,3 @@
-/- 
-function_signature: "def count_distinct_characters(string: str) -> int"
-docstring: |
-    Given a string, find out how many distinct characters (regardless of case) does it consist of
-test_cases:
-  - input: "xyzXYZ"
-    expected_output: 3
-  - input: "Jerry"
-    expected_output: 4
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

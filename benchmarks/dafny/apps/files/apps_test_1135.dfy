@@ -1,9 +1,3 @@
-/*
-Decode a string that was encoded by repeatedly extracting median characters.
-The decoding process inserts each character from the encoded string back into
-its proper median position in the reconstructed word.
-*/
-
 predicate ValidInput(n: int, s: string)
 {
     n >= 1 && n <= 2000 && |s| == n && 

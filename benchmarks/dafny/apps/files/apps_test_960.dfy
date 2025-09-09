@@ -1,8 +1,3 @@
-/*
-Find the smallest positive integer x such that (x div k) × (x mod k) = n,
-where x div k is integer division and x mod k is the remainder.
-*/
-
 predicate ValidInput(n: int, k: int) {
   n >= 1 && k >= 2
 }

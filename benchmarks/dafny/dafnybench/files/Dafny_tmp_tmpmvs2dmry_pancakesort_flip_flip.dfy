@@ -1,9 +1,3 @@
-/*
-// flips (i.e., reverses) array elements in the range [0..num]
-
-// ensures multiset(a[..]) == old(multiset(a[..]))
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,16 +1,3 @@
-/- 
-function_signature: "def is_equal_to_sum_even(n: int) -> Bool"
-docstring: |
-    Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers
-test_cases:
-  - input: 4
-    expected_output: False
-  - input: 6
-    expected_output: False
-  - input: 8
-    expected_output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

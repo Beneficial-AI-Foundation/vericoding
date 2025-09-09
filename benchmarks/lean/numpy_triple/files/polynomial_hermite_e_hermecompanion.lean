@@ -1,19 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.hermite_e.hermecompanion",
-  "category": "HermiteE polynomials",
-  "description": "Return the scaled companion matrix of c.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite_e.hermecompanion.html",
-  "doc": "Return the scaled companion matrix of c.\n\n    The basis polynomials are scaled so that the companion matrix is\n    symmetric when \`c\` is an HermiteE basis polynomial. This provides\n    better eigenvalue estimates than the unscaled case and for basis\n    polynomials the eigenvalues are guaranteed to be real if\n    \`numpy.linalg.eigvalsh\` is used to obtain them.\n\n    Parameters\n    ----------\n    c : array_like\n        1-D array of HermiteE series coefficients ordered from low to high\n        degree.\n\n    Returns\n    -------\n    mat : ndarray\n        Scaled companion matrix of dimensions (deg, deg).",
-}
--/
-
-/-  Return the scaled companion matrix of HermiteE series coefficients.
-    The companion matrix is scaled for better eigenvalue estimates and
-    symmetry properties when used with HermiteE basis polynomials. -/
-
-/-  Specification: hermecompanion returns a scaled companion matrix with specific properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

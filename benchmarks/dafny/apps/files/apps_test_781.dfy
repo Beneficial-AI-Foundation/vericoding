@@ -1,9 +1,3 @@
-/*
-Given an 8×8 board where each cell is colored black (B) or white (W), determine if it's possible to transform it 
-into a proper chessboard using only cyclic right shifts on individual rows. A proper chessboard has no adjacent 
-cells (horizontally or vertically) with the same color and the upper-left cell is white.
-*/
-
 predicate ValidInput(input: seq<string>)
 {
     |input| == 8 &&

@@ -1,21 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that checks whether two arrays of integers have any elements in common. In other words, the method should return true if there is at least one element that appears in both arrays, and false if no such element exists.
-
------Input-----
-The input consists of:
-a: An array of integers.
-b: An array of integers.
-
------Output-----
-The output is a Boolean value:
-Returns true if there is at least one common element between the two arrays.
-Returns false if there are no common elements shared by the arrays.
-
------Note-----
-Both arrays are assumed to be non-null.
--/
-
 @[reducible, simp]
 def hasCommonElement_precond (a : Array Int) (b : Array Int) : Prop :=
   a.size > 0 ∧ b.size > 0

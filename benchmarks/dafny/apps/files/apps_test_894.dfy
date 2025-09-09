@@ -1,9 +1,3 @@
-/*
-Given a rectangle with vertices at (0,0) and (x,y), find two points A=(x₁,y₁) and C=(x₂,y₂) 
-such that triangle ABC with B=(0,0) is right-angled and isosceles at B, contains the entire 
-rectangle, has minimum area, and all coordinates are integers with x₁ < x₂.
-*/
-
 predicate ValidInput(x: int, y: int)
 {
     x != 0 && y != 0

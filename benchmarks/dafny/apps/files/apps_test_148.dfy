@@ -1,10 +1,3 @@
-/*
-Given a circular subway with n stations, determine if two trains moving in opposite directions
-will ever meet at the same station. Train 1 moves clockwise (1→2→...→n→1), Train 2 moves 
-counterclockwise (n→(n-1)→...→1→n). Daniel boards Train 1 at station a, exits at x.
-Vlad boards Train 2 at station b, exits at y. All a,x,b,y are distinct.
-*/
-
 predicate validInput(input: string)
 reads *
 requires |input| > 0

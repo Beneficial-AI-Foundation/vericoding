@@ -1,8 +1,3 @@
-/*
-function_signature: method sorted_list_sum(list: seq<string>) returns (sorted: seq<string>)
-Sort elements. Requires: requires size of listsize of  > 0. Ensures: the size is bounded; the result is sorted according to the ordering relation; the result is sorted according to the ordering relation; returns a sorted permutation of the input.
-*/
-
 function comparison(a : string, b : string, i : int): bool
     requires 0 <= i <= |a| && 0 <= i <= |b|
     decreases |a| - i

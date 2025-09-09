@@ -1,9 +1,3 @@
-/*
-Given a string representing a valid date in 2019 in format yyyy/mm/dd,
-determine if the date is on or before April 30, 2019.
-Return "Heisei" if on or before April 30, 2019, otherwise return "TBD".
-*/
-
 predicate IsValidDateString(s: string, y: int, m: int, d: int)
 {
     |s| >= 10 && 

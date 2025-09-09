@@ -1,21 +1,3 @@
-/- 
-function_signature: "def check_if_last_char_is_a_letter(txt: str) -> Bool"
-docstring: |
-    Create a function that returns True if the last character
-    of a given string is an alphabetical character and is not
-    a part of a word, and False otherwise.
-    Note: "word" is a group of characters separated by space.
-test_cases:
-  - input: "apple pie"
-    expected_output: False
-  - input: "apple pi e"
-    expected_output: True
-  - input: "apple pi e "
-    expected_output: False
-  - input: ""
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

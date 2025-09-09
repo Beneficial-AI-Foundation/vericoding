@@ -1,16 +1,3 @@
-/*
-Given n regiments, each with 4 moles. Each mole has current position (x,y) and home position (a,b).
-A move rotates a mole's current position 90° counter-clockwise around its home position.
-A regiment is compact if its 4 moles form a square with non-zero area.
-Find minimum moves needed to make each regiment compact, or -1 if impossible.
-
-// Simplified square check - just check if points form any valid square
-
-// Check if we have 4 equal sides and 2 equal diagonals
-
-// Simplified - just check if total moves is reasonable
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n'

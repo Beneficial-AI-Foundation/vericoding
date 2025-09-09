@@ -1,9 +1,3 @@
-/*
-Find the greatest common divisor of all integers in the range [a, b] inclusive,
-where 1 ≤ a ≤ b. If a = b, the GCD is a. If a < b, the GCD is 1 since
-consecutive integers are coprime.
-*/
-
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= b

@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate IsUpperCase(c: char)
 {
     65 <= c as int <= 90

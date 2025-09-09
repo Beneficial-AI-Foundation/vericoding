@@ -1,36 +1,3 @@
-/- 
-{
-  "name": "numpy.diag",
-  "category": "Building matrices",
-  "description": "Extract a diagonal or construct a diagonal array",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.diag.html",
-  "doc": "Extract a diagonal or construct a diagonal array.\n\nParameters\n----------\nv : array_like\n    If v is a 2-D array, return a copy of its k-th diagonal. If v is a 1-D array, \n    return a 2-D array with v on the k-th diagonal.\nk : int, optional\n    Diagonal in question. The default is 0. Use k>0 for diagonals above the main diagonal, \n    and k<0 for diagonals below the main diagonal.\n\nReturns\n-------\nout : ndarray\n    The extracted diagonal or constructed diagonal array.\n\nExamples\n--------\n>>> x = np.arange(9).reshape((3,3))\n>>> x\narray([[0, 1, 2],\n       [3, 4, 5],\n       [6, 7, 8]])\n>>> np.diag(x)\narray([0, 4, 8])\n>>> np.diag(x, k=1)\narray([1, 5])\n>>> np.diag(x, k=-1)\narray([3, 7])\n\n>>> np.diag(np.diag(x))\narray([[0, 0, 0],\n       [0, 4, 0],\n       [0, 0, 8]])\n",
-  "signature": "numpy.diag(v, k=0)"
-}
--/
-
-/-  Construct a diagonal matrix from a 1-D vector -/
-
-/-  Specification: diag constructs a square matrix with v on the main diagonal.
-
-    This captures the mathematical property that numpy.diag(v) creates a matrix M
-    where M[i,i] = v[i] for all i, and M[i,j] = 0 for all i ≠ j.
-
-    The result is an n×n matrix where:
-    - The main diagonal contains the elements of the input vector v
-    - All off-diagonal elements are zero
-    - This represents the canonical way to construct a diagonal matrix
-
-    Mathematical properties verified:
-    1. Diagonal elements equality: M[i,i] = v[i]
-    2. Off-diagonal zeros: M[i,j] = 0 for i ≠ j
-    3. Diagonal matrix property: non-zero elements only on diagonal
-    4. Trace property: tr(M) = sum(v)
-    5. Symmetry: M is a symmetric matrix
-    6. Idempotence property: diag(diag(M)) reconstructs M for diagonal matrices
-    7. Zero count: exactly n elements are non-zero (assuming v has no zeros)
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

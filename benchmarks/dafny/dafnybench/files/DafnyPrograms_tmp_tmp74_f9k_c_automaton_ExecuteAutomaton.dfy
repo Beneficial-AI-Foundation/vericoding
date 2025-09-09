@@ -1,33 +1,3 @@
-/*
-/**
-Consider cellular automata: a row of cells is repeatedly updated according to a rule. In this exercise I dabbled with,
-each cell has the value either false or true. Each cell's next state depends only on the immediate neighbours, in the 
-case where the cell is at the edges of the row, the inexistent neighbours are replaced by "false". The automaton table 
-will contain the initial row, plus a row for each number of steps.
- */
-
-/**
-This method computes the automaton.
-Provide the initial row: init, the rule and the desired number of steps
- */
-
-// we need the initial row to have the length bigger or equal to two
-
-// after computation the automaton is made of the initial row plus a row for each of the steps
-
-// the automaton must have the initial row at the top
-
-// all rows in the automaton must be the same length
-
-// all the middle row elements (with existing neighbours) after a step, will be equal to the rule applied on the element in the previous state
-
-// and its neigbours
-
-// the corner row elements (with non-existing neighbours) after a step, will be equal to the rule applied on the element in the previous state,
-
-// its neighbour and false
-*/
-
 }
 
 // <vc-helpers>

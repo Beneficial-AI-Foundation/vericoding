@@ -1,10 +1,3 @@
-/*
-Given n promotional codes (each exactly 6 digits), find the maximum number k such that 
-any promotional code can be uniquely identified even when typed with at most k digit errors.
-This requires finding the minimum Hamming distance between any pair of promotional codes,
-then computing k = floor((min_distance - 1) / 2).
-*/
-
 function splitLines(s: string): seq<string>
     requires |s| > 0
     ensures |splitLines(s)| >= 1

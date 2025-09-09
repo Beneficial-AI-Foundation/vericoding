@@ -1,9 +1,3 @@
-/*
-Given two people with carrying capacities p and f, and a shop containing cnt_s swords
-(each weighing s units) and cnt_w war axes (each weighing w units), find the maximum
-total number of items both people can carry. The input contains multiple test cases.
-*/
-
 predicate validInput(input: string)
 {
     |input| > 0 && 

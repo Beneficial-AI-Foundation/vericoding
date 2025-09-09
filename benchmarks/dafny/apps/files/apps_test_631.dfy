@@ -1,10 +1,3 @@
-/*
-Given an array of n integers, determine if it's possible to reorder the elements 
-to make the double sum equal a target value m. The double sum is defined as
-sum over i from 1 to n of (sum over j from i to n of a_j/j).
-No elements may be added or removed from the array.
-*/
-
 predicate valid_input_format(s: string)
 {
     |s| >= 7 && 

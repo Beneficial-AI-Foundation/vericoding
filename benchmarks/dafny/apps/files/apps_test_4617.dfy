@@ -1,9 +1,3 @@
-/*
-Given a 2×3 grid of lowercase English letters, determine if the grid remains identical after a 180-degree rotation.
-Input consists of two lines, each containing 3 characters.
-Output "YES" if unchanged after rotation, "NO" otherwise.
-*/
-
 predicate ValidInput(lines: seq<string>)
 {
     |lines| >= 2 && |lines[0]| > 0 && |lines[1]| > 0

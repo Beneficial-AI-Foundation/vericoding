@@ -1,8 +1,3 @@
-/*
-Given N integers, find the minimum cost to make all integers equal by transforming some of them.
-Each integer can be transformed at most once. The cost of transforming integer x to integer y is (x-y)².
-*/
-
 function sum_squares(p: int, a: seq<int>): int
 {
     if |a| == 0 then 0

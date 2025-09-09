@@ -1,9 +1,3 @@
-/*
-/**
-  Inverts an array of ints.
- */
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

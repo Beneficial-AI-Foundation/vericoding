@@ -1,9 +1,3 @@
-/*
-Given n commentary boxes and m delegations, make the number of boxes divisible by m at minimum cost.
-You can build a box for cost a or demolish a box for cost b.
-Find the minimum cost to make n divisible by m.
-*/
-
 predicate ValidInput(n: int, m: int, a: int, b: int)
 {
     n >= 1 && m >= 1 && a >= 1 && b >= 1

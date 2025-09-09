@@ -1,9 +1,3 @@
-/*
-Given a 2-digit number displayed on a 7-segment digital counter, count how many 
-2-digit numbers (00-99) could have been the intended display before some light 
-segments potentially broke (turned off). Segments can only break by turning OFF.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| >= 2 && 

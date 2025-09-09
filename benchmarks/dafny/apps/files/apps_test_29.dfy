@@ -1,9 +1,3 @@
-/*
-Given a 6-digit ticket (string of digits 0-9), find the minimum number of digit replacements needed to make it "lucky".
-A ticket is lucky when the sum of its first three digits equals the sum of its last three digits.
-Any digit can be replaced with any digit 0-9.
-*/
-
 function charToInt(c: char): int
   requires '0' <= c <= '9'
 {

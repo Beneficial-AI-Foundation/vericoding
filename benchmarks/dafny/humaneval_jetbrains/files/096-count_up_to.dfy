@@ -1,8 +1,3 @@
-/*
-function_signature: def count_up_to(n : int) -> list[int]
-Implement a function that takes an non-negative integer and returns an array of the first n integers that are prime numbers and less than n.
-*/
-
 function IsPrime(n: int) : bool
 {
   n > 1 && forall k :: 2 <= k < n ==> n % k != 0

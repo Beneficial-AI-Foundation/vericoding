@@ -1,25 +1,3 @@
-/-  numpy.find_common_type: Determine common type following standard coercion rules.
-
-    This function determines the common data type by following NumPy's type promotion rules.
-    It returns the maximum of array_types ignoring scalar_types, unless the maximum of 
-    scalar_types is of a different kind (dtype.kind).
-
-    Note: This function is deprecated in NumPy 1.25.0 in favor of numpy.result_type.
--/
-
-/-  Specification: find_common_type implements NumPy's type promotion rules correctly.
-
-    The function should:
-    1. Return the maximum precedence type from array_types if scalar_types is empty
-    2. Return the maximum precedence type from scalar_types if array_types is empty  
-    3. If both are non-empty, return the maximum from array_types unless the maximum
-       from scalar_types has a different kind, in which case return the scalar maximum
-    4. Handle the case where type promotion results in a valid common type
-
-    Precondition: At least one of the input vectors is non-empty
-    Postcondition: The result follows NumPy's documented type promotion rules
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

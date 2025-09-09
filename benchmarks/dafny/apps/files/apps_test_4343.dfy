@@ -1,10 +1,3 @@
-/*
-Given two strings s and t of length k consisting of lowercase Latin letters,
-where s is lexicographically less than t, find the median string in the
-lexicographically ordered list of all strings of length k that are
-lexicographically between s and t (inclusive).
-*/
-
 function median_string(s: string, t: string, k: int): string
     requires k >= 1
     requires |s| == k && |t| == k

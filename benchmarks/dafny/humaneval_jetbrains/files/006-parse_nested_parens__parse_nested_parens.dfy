@@ -1,8 +1,3 @@
-/*
-function_signature: method parse_nested_parens(paren_string: string) returns (res : seq<int>)
-Parse input. Requires: the condition holds for all values. Ensures: the condition holds for all values.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

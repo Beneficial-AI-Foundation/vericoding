@@ -1,8 +1,3 @@
-/*
-Given a string of length 6 consisting of lowercase English letters, determine if it is "coffee-like".
-A string is coffee-like if characters at positions 3 and 4 are equal, AND characters at positions 5 and 6 are equal (using 1-based indexing).
-*/
-
 predicate ValidInput(s: string)
 {
     |s| == 6 && forall i :: 0 <= i < 6 ==> 'a' <= s[i] <= 'z'

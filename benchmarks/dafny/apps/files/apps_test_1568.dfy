@@ -1,9 +1,3 @@
-/*
-Given n messages arriving at specified times, determine the maximum money achievable by time T.
-Each message has initial value A that decreases by B per minute after arrival.
-Earn C per unread message per minute. All messages must be read by time T.
-*/
-
 predicate ValidInput(n: int, a: int, b: int, c: int, t: int, arrivals: seq<int>) 
 {
     1 <= n <= 1000 &&

@@ -1,19 +1,3 @@
-/-
-Write a function that solves an algebraic expression given as a string. 
-
-* The expression can include only sums and products. 
-
-* The numbers in the expression are in standard notation (NOT scientific).
-
-* In contrast, the function should return a string with the calculated value given in scientific notation with 5 decimal digits. 
-
-# Example:
-```python
-strexpression = "5 * 4 + 6"
-sum_prod(strexpression) = "2.60000e+01"
-```
--/
-
 def isScientificNotation (s : String) : Bool := sorry
 
 def sumProd (s : String) : String := sorry

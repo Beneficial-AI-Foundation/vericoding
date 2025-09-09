@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.fromfile",
-  "category": "From existing data",
-  "description": "Construct an array from data in a text or binary file",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fromfile.html",
-  "doc": "\nConstruct an array from data in a text or binary file.\n\nParameters\n----------\nfile : file or str or Path\n    Open file object or filename.\ndtype : data-type\n    Data type of the returned array. For binary files, it is used to determine the size and byte-order \n    of the items in the file. Most builtin numeric types are supported and extension types may be supported.\ncount : int\n    Number of items to read. -1 means all items (i.e., the complete file).\nsep : str\n    Separator between items if file is a text file. Empty (\"\") separator means the file should be \n    treated as binary. Spaces (\" \") in the separator match zero or more whitespace characters.\noffset : int\n    The offset (in bytes) from the file's current position. Defaults to 0. Only permitted for binary files.\nlike : array_like, optional\n    Reference object to allow the creation of arrays which are not NumPy arrays.\n\nReturns\n-------\narr : ndarray\n    Array of data from the file.\n\nNotes\n-----\nDo not rely on the combination of tofile and fromfile for data storage, as the binary files generated \nare not platform independent. In particular, no byte-order or data-type information is saved.\n",
-  "signature": "numpy.fromfile(file, dtype=float, count=-1, sep='', offset=0, *, like=None)"
-}
--/
-
-/-  Construct a vector from data in a file -/
-
-/-  Specification: fromfile reads data from a file into a vector -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

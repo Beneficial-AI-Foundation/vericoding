@@ -1,9 +1,3 @@
-/*
-Given an n×n chessboard where white queen starts at (1,1), black queen at (1,n),
-and all other squares contain green pawns. Players alternate turns capturing pieces
-with standard queen movement. Determine the winner under optimal play.
-*/
-
 predicate ValidInput(n: int) {
     n >= 2
 }

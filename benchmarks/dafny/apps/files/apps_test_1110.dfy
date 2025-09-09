@@ -1,11 +1,3 @@
-/*
-Find the worst-case number of button presses needed to open a lock with n buttons.
-The lock has a specific unknown sequence. When a button is pressed:
-- If it's the next correct button, it stays pressed
-- If it's incorrect, all pressed buttons reset
-- The lock opens when all n buttons are pressed simultaneously (sequence complete)
-*/
-
 predicate ValidInput(n: int) {
     n >= 1
 }

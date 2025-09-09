@@ -1,29 +1,3 @@
-/- 
-{
-  "name": "numpy.modf",
-  "description": "Return the fractional and integral parts of an array, element-wise",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.modf.html",
-  "doc": "Return the fractional and integral parts of an array, element-wise.\n\nThe fractional and integral parts are negative if the given number is negative.",
-}
--/
-
-/-  numpy.modf: Return the fractional and integral parts of an array, element-wise.
-
-    Returns a tuple (fractional_parts, integral_parts) where both parts
-    have the same sign as the input. The fractional and integral parts
-    are negative if the given number is negative.
--/
-
-/-  Specification: numpy.modf returns fractional and integral parts where:
-    1. The fractional and integral parts sum to the original value
-    2. The fractional part has absolute value less than 1
-    3. Both parts have the same sign as the original number (or zero)
-    4. The integral part is the truncated integer part
-
-    Precondition: True (no special preconditions for modf)
-    Postcondition: For all indices i, the fractional and integral parts satisfy mathematical properties
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

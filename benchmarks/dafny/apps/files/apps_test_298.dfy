@@ -1,9 +1,3 @@
-/*
-Two players take turns removing exactly k consecutive sticks from either end of a row of n sticks.
-The first player moves first. The game ends when fewer than k sticks remain.
-Determine if the first player wins by making strictly more moves than the second player.
-*/
-
 predicate ValidInput(n: int, k: int)
 {
     k >= 1 && n >= 1 && k <= n

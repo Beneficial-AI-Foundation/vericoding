@@ -1,9 +1,3 @@
-/*
-Given N words announced in a shiritori game, determine if all shiritori rules were followed.
-Shiritori rules: 1) No word can be repeated, 2) For each consecutive pair of words, 
-the last character of the first word must equal the first character of the second word.
-*/
-
 predicate NoRepeats(words: seq<string>)
 {
     forall i, j :: 0 <= i < j < |words| ==> words[i] != words[j]

@@ -1,9 +1,3 @@
-/*
-// Function
-
-// TODO: modify the ensures clause so that max is indeed equal to the longest increasing subsequence
-*/
-
 function find_max(x: int, y: int): int
 {
     if x > y then x

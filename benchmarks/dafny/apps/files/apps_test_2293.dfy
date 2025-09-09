@@ -1,9 +1,3 @@
-/*
-Given n stores and m days of shopping, determine if positive integer values can be assigned 
-to stores such that Dora beats Swiper every day. Dora buys from some stores each day, 
-Swiper from remaining stores. Dora wins if LCM(her purchases) > LCM(Swiper's purchases).
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n' &&

@@ -1,6 +1,3 @@
-/*
-*/
-
 function sumInts( n: int ): int
     requires n >= 0;
 {

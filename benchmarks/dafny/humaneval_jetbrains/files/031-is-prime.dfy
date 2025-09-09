@@ -1,8 +1,3 @@
-/*
-function_signature: def is_prime(n)
-Return true if a given number is prime, and false otherwise.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

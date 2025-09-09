@@ -1,24 +1,3 @@
-/*
-// Checks if array 'a' is sorted.
-
-// Finds a value 'x' in a sorted array 'a', and returns its index,
-
-// or -1 if not found.
-
-// Simple test cases to check the post-condition.
-
-/*
-a) Identify adequate pre and post-conditions for this method, 
-and encode them as “requires” and “ensures” clauses in Dafny. 
-You can use the predicate below if needed.
-
-b) Identify an adequate loop variant and loop invariant, and encode them 
-as “decreases” and “invariant” clauses in Dafny.
-*/
-
-//forall i :: 0 <= i < a.Length ==> a[i] != x
-*/
-
 predicate isSorted(a: array<int>)
   reads a
 {

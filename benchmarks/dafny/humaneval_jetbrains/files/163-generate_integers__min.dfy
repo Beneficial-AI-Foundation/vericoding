@@ -1,8 +1,3 @@
-/*
-function_signature: method min(a : int, b : int) returns (m : int)
-Process input. Ensures: returns the correct size/count; the result is at most the specified value.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

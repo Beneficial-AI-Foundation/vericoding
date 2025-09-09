@@ -1,8 +1,3 @@
-/*
-function_signature: def monotonic(numbers: List[int]) -> Bool
-Return True if list elements are monotonically increasing or decreasing.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

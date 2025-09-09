@@ -1,6 +1,3 @@
-/*
-*/
-
 function Factorial(n: int): int
     requires n >= 0
     ensures 0 <= Factorial(n)

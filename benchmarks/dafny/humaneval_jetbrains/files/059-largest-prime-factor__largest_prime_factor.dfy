@@ -1,8 +1,3 @@
-/*
-function_signature: method largest_prime_factor(n: int) returns (largest: int)
-Process input. Requires: the result is at least the specified value. Ensures: returns the correct size/count.
-*/
-
 function is_prime_pred(k: int) : bool
 {
   forall i :: 2 <= i < k ==> k % i != 0

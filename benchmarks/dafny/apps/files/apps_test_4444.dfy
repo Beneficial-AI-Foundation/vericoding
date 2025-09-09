@@ -1,9 +1,3 @@
-/*
-Given two strings S and T as space-separated input, concatenate T and S (in that order) and output the result.
-Input format: "S T" where S and T contain only lowercase English letters.
-Output format: "TS\n" (T concatenated with S followed by newline).
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 2 &&

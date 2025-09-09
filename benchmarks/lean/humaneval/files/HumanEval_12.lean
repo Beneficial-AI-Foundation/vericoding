@@ -1,17 +1,3 @@
-/- 
-function_signature: "def longest(strings: List[str]) -> Optional[str]"
-docstring: |
-    Out of list of strings, return the longest one. Return the first one in case of multiple
-    strings of the same length. Return None in case the input list is empty.
-test_cases:
-  - input: []
-    expected_output: None
-  - input: ["a", "b", "c"]
-    expected_output: "a"
-  - input: ["a", "bb", "ccc"]
-    expected_output: "ccc"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

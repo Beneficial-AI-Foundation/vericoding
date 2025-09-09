@@ -1,9 +1,3 @@
-/*
-Given a sequence of cafe visits, find the cafe that was visited earliest among all last visits to each cafe.
-For each unique cafe, record the position of its last occurrence, then return the cafe whose last occurrence 
-has the smallest position.
-*/
-
 function LastOccurrencePosition(cafes: seq<int>, cafe: int): int
     requires cafe in cafes
     ensures 0 <= LastOccurrencePosition(cafes, cafe) < |cafes|

@@ -1,8 +1,3 @@
-/*
-Count the number of "Takahashi" dates from 2018-1-1 through 2018-a-b (inclusive).
-A Takahashi date is one where the month and day numbers are equal (e.g., 1-1, 2-2, 3-3, etc.).
-*/
-
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= 12 && 1 <= b <= 31

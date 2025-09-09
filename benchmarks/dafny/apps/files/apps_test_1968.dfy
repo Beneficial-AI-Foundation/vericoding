@@ -1,9 +1,3 @@
-/*
-Given n sellers and Valera's budget v, determine which sellers Valera can make a deal with.
-Each seller i has ki items with prices. Valera can buy from seller i if his budget v is
-strictly greater than the minimum price among seller i's items.
-*/
-
 predicate ValidInput(n: int, v: int, sellers: seq<seq<int>>) {
     n >= 0 && v >= 0 && |sellers| == n && 
     forall i :: 0 <= i < |sellers| ==> |sellers[i]| > 0

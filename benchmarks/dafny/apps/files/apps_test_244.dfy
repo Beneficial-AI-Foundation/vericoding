@@ -1,17 +1,3 @@
-/*
-Given 3 shells numbered 0, 1, 2, a ball starts under one shell. An operator makes n moves:
-odd moves swap shells 0 and 1, even moves swap shells 1 and 2. Given the final position x
-after n moves, determine the initial position of the ball.
-
-// odd move: swap 0 and 1
-
-// even move: swap 1 and 2
-
-// reverse odd move: swap 0 and 1
-
-// reverse even move: swap 1 and 2
-*/
-
 predicate ValidPosition(pos: int) {
     0 <= pos <= 2
 }

@@ -1,9 +1,3 @@
-/*
-Given n hotels at distinct integer coordinates on a number line, find the number of positions 
-where a new hotel can be built such that the minimum distance from the new hotel to any 
-existing hotel is exactly d.
-*/
-
 predicate ValidInput(n: int, d: int, hotels: seq<int>)
 {
     n > 0 && d > 0 && |hotels| == n &&

@@ -1,8 +1,3 @@
-/*
-Given `a` initial candles and the ability to create 1 new candle from `b` burnt-out candles,
-determine the maximum number of hours the room can be lit. Each candle burns for exactly 1 hour.
-*/
-
 predicate ValidInput(a: int, b: int)
 {
   a >= 1 && a <= 1000 && b >= 2 && b <= 1000

@@ -1,6 +1,3 @@
-/*
-*/
-
 function RowColumnProduct(m1: array2<int>, m2: array2<int>, row: nat, column: nat): int
     reads m1
     reads m2

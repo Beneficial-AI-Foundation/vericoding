@@ -1,9 +1,3 @@
-/*
-Compare two large positive integers A and B and determine their relative magnitude.
-Input consists of two positive integers on separate lines, each up to 100 digits.
-Output "GREATER" if A > B, "LESS" if A < B, or "EQUAL" if A = B.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLinesSpec(input);

@@ -1,17 +1,3 @@
-/- 
------Description-----
-Implement a Lean 4 function that merges two ascendingly sorted lists of integers into one single sorted list (ascending). The resulting list must contain all elements from both input lists, preserving their ascending order.
-
------Input-----
-The input consists of two lists of integers:
-arr1: A sorted list of integers (ascending)
-arr2: Another sorted list of integers (ascending)
-
------Output-----
-The output is a list of integers:
-Returns a new list containing all elements from arr1 and arr2, sorted in ascending order.
--/
-
 @[reducible]
 def mergeSortedLists_precond (arr1 : List Int) (arr2 : List Int) : Prop :=
   List.Pairwise (· ≤ ·) arr1 ∧ List.Pairwise (· ≤ ·) arr2

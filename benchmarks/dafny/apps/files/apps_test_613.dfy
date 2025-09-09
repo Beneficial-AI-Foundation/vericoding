@@ -1,10 +1,3 @@
-/*
-Find the number of polynomials P(x) with non-negative integer coefficients 
-such that P(t) = a and P(P(t)) = b, where t, a, and b are given positive integers.
-Since P(t) = a, the second condition becomes P(a) = b.
-Output "inf" if infinitely many such polynomials exist, otherwise output the count.
-*/
-
 predicate ValidInput(t: int, a: int, b: int)
 {
     t > 0 && a > 0 && b > 0

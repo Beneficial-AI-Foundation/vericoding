@@ -1,11 +1,3 @@
-/*
-Two athletes Willman and Bolt compete in a race with step lengths w and b meters respectively.
-The race distance L is chosen uniformly at random from integers 1 to t (inclusive).
-Each athlete can take at most floor(L/step_length) steps, traveling floor(L/step_length) * step_length distance.
-They tie when they travel the same total distance: floor(L/w) * w = floor(L/b) * b.
-Find the probability that they tie, expressed as an irreducible fraction.
-*/
-
 predicate ValidInput(t: int, w: int, b: int)
 {
   t > 0 && w > 0 && b > 0

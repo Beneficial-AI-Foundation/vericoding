@@ -1,9 +1,3 @@
-/*
-Given an integer n representing total windows in a building, find any valid combination
-of non-negative integers (a, b, c) representing 3-room, 5-room, and 7-room apartments
-such that 3a + 5b + 7c = n. Return -1 if no valid combination exists.
-*/
-
 predicate ValidSolution(n: int, a: int, b: int, c: int)
 {
     a >= 0 && b >= 0 && c >= 0 && 3 * a + 5 * b + 7 * c == n

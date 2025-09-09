@@ -1,19 +1,3 @@
-/*
-//Problem01
-
-//# 2 pts
-
-//Problem02
-
-//# 3 pts
-
-//Problem03
-
-//# 3 pts
-
-// # sum: 9 pts
-*/
-
 function fib(n: nat):nat
 {
     if n < 2 then n else fib(n-2)+fib(n-1)

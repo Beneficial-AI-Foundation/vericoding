@@ -1,10 +1,3 @@
-/*
-Determine if pizza requirements for n consecutive days can be fulfilled using only:
-- Discount: Buy exactly 2 pizzas on the same day
-- Coupon: Buy exactly 1 pizza on each of two consecutive days
-Cannot buy more pizzas than needed on any day, and cannot have unused coupons after the last day.
-*/
-
 predicate ValidInput(pizzas: seq<int>) {
     forall i :: 0 <= i < |pizzas| ==> pizzas[i] >= 0
 }

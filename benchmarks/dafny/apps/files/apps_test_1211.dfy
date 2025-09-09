@@ -1,9 +1,3 @@
-/*
-Given N hamsters and K types of boxes with capacities, find which single box type
-to buy (and how many boxes) to transport the maximum number of hamsters.
-Each box must be completely filled.
-*/
-
 predicate ValidInput(n: int, k: int, A: seq<int>)
 {
     k > 0 && |A| == k && (forall i :: 0 <= i < k ==> A[i] > 0) && n >= 0

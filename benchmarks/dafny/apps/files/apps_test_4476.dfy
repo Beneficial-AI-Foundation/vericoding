@@ -1,9 +1,3 @@
-/*
-Given two positive integers a and b, find the minimum number of moves to transform 
-a into b using these operations: add any positive odd integer to a, or subtract 
-any positive even integer from a. It is guaranteed that b can always be obtained from a.
-*/
-
 predicate ValidInput(input: seq<(int, int)>)
 {
     forall i :: 0 <= i < |input| ==> input[i].0 >= 1 && input[i].1 >= 1

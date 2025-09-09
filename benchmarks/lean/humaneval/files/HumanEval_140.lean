@@ -1,20 +1,3 @@
-/- 
-function_signature: "def fix_spaces(text: str) -> str"
-docstring: |
-    Given a string text, replace all spaces in it with underscores,
-    and if a string has more than 2 consecutive spaces,
-    then replace all consecutive spaces with -
-test_cases:
-  - input: "Example"
-    expected_output: "Example"
-  - input: "Example 1"
-    expected_output: "Example_1"
-  - input: " Example 2"
-    expected_output: "_Example_2"
-  - input: " Example   3"
-    expected_output: "_Example-3"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

@@ -1,8 +1,3 @@
-/*
-function_signature: method specialFilter(s: seq<int>) returns (r: seq<int>)
-Write a function that takes an array of numbers as input and returns the number of elements in the array that are greater than 10 and both first and last digits of a number are odd (1, 3, 5, 7, 9).
-*/
-
 function first_digit(n: int): int
   requires n >= 0
   ensures 0 <= first_digit(n) < 10

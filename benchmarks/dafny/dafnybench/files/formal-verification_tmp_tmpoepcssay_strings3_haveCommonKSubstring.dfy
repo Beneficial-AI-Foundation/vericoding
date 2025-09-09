@@ -1,11 +1,3 @@
-/*
-// ensures  !res ==> !isSubstringPred(sub, str)
-
-// This postcondition follows from the above lemma.
-
-// This postcondition follows from the above lemma.
-*/
-
 method isPrefix(pre: string, str: string) returns (res:bool)
     ensures !res <==> isNotPrefixPred(pre,str)
     ensures  res <==> isPrefixPred(pre,str)

@@ -1,9 +1,3 @@
-/*
-Given a seat of width X centimeters, determine the maximum number of people that can sit on it.
-Each person occupies Y centimeters, and there must be at least Z centimeters of gap between 
-any two people and between each end of the seat and the nearest person.
-*/
-
 predicate ValidInput(x: int, y: int, z: int)
 {
     x >= 1 && y >= 1 && z >= 1 && y + 2 * z <= x

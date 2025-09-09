@@ -1,10 +1,3 @@
-/*
-Count visible lanterns on a train path from point 1 to point L. 
-Lanterns are located at positions divisible by v (i.e., at positions v, 2v, 3v, ...). 
-A standing train blocks visibility at positions l through r (inclusive). 
-Determine how many lanterns are visible (not blocked by the standing train).
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);

@@ -1,9 +1,3 @@
-/*
-Given two initial weights a and b where a ≤ b, determine after how many years 
-Limak (starting weight a) becomes strictly heavier than Bob (starting weight b).
-Each year, Limak's weight triples and Bob's weight doubles.
-*/
-
 function pow(base: int, exp: int): int
   requires exp >= 0
   ensures exp == 0 ==> pow(base, exp) == 1

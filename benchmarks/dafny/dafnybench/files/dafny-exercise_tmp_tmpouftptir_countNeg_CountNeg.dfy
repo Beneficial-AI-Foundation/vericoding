@@ -1,6 +1,3 @@
-/*
-*/
-
 function verifyNeg(a: array<int>, idx: int) : nat
 reads a
 requires 0 <= idx <= a.Length

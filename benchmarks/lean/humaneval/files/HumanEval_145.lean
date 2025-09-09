@@ -1,17 +1,3 @@
-/- 
-function_signature: "def order_by_points(nums: List[int]) -> List[int]"
-docstring: |
-    Write a function which sorts the given list of integers
-    in ascending order according to the sum of their digits.
-    Note: if there are several items with similar sum of their digits,
-    order them based on their index in original list.
-test_cases:
-  - input: [1, 11, -1, -11, -12]
-    expected_output: [-1, -11, 1, -12, 11]
-  - input: []
-    expected_output: []
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

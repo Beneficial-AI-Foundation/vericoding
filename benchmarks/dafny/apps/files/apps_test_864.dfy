@@ -1,11 +1,3 @@
-/*
-Given n participants and m food packages where each package has a food type,
-determine the maximum number of days an expedition can last under these constraints:
-- Each participant eats exactly one package per day
-- Each participant must eat the same food type throughout the entire expedition
-- Different participants can eat different food types
-*/
-
 function possible(n: int, foodTypes: seq<int>, days: int): bool
     requires n >= 0
     requires days >= 0

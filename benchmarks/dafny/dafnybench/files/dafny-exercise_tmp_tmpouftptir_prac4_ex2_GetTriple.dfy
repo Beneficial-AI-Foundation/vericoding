@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate triple(a: array<int>) 
 reads a
 {

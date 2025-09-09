@@ -1,20 +1,3 @@
-/- 
-{
-  "name": "numpy.extract",
-  "category": "Searching",
-  "description": "Return the elements of an array that satisfy some condition",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.extract.html",
-  "doc": "Return the elements of an array that satisfy some condition.\n\nThis is equivalent to \`\`np.compress(ravel(condition), ravel(arr))\`\`. If\n\`condition\` is boolean \`\`np.extract\`\` is equivalent to \`\`arr[condition]\`\`.\n\nNote that \`place\` does the exact opposite of \`extract\`.\n\nParameters\n----------\ncondition : array_like\n    An array whose nonzero or True entries indicate the elements of \`arr\`\n    to extract.\narr : array_like\n    Input array of the same size as \`condition\`.\n\nReturns\n-------\nextract : ndarray\n    Rank 1 array of values from \`arr\` where \`condition\` is True.\n\nSee Also\n--------\ntake, put, copyto, compress, place",
-}
--/
-
-/-  Return the elements of an array that satisfy some condition.
-    The result size is the number of True entries in the condition array. -/
-
-/-  Specification: extract returns elements from arr where condition is True.
-    The result contains exactly those elements from arr at positions where condition is True,
-    preserving their original order. The result size m equals the number of True values in condition. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

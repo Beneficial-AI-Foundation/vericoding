@@ -1,8 +1,3 @@
-/*
-function_signature: def modp(n: Nat, p: Nat) -> Nat
-Return 2^n modulo p (be aware of numerics).
-*/
-
 function modp_rec(n: int, p: int): int
   requires p > 0
   requires n >= 0

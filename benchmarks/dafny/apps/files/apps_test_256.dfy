@@ -1,26 +1,3 @@
-/*
-Game theory problem: Two teams of 2 players each compete. Each player has defense and attack skills.
-Team 1 chooses their defense/attack assignment first, then Team 2 responds optimally.
-A team wins if their defense > opponent's attack AND their attack > opponent's defense.
-Determine which team can guarantee a win with optimal play, or if neither can.
-
-// player 1 defense
-
-// player 1 attack
-
-// player 2 defense
-
-// player 2 attack
-
-// player 3 defense
-
-// player 3 attack
-
-// player 4 defense
-
-// player 4 attack
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);

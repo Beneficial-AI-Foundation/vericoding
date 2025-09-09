@@ -1,15 +1,3 @@
-/*
-//Algorithm 1: From left to right return the first
-
-//Algorithm 2: From right to left return the last
-
-//Algorithm: from left to right
-
-//Algorithm : from left to right
-
-//Algorithm : from right to left
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

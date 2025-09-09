@@ -1,10 +1,3 @@
-/*
-Given N boxes in a row with a_i candies in the i-th box, find the minimum number of candies 
-to eat such that every pair of adjacent boxes contains at most x candies in total.
-Operation: Choose any box with at least one candy and eat one candy from it.
-Objective: For all i from 1 to N-1, ensure a_i + a_{i+1} ≤ x.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitByNewlineSpec(input);

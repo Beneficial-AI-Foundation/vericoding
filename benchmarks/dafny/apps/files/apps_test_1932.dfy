@@ -1,12 +1,3 @@
-/*
-Given a collection of regular polyhedrons, calculate the total number of faces.
-Each polyhedron type has a fixed number of faces:
-- Tetrahedron: 4 faces, Cube: 6 faces, Octahedron: 8 faces
-- Dodecahedron: 12 faces, Icosahedron: 20 faces
-Input: First line contains n (number of polyhedrons), next n lines contain polyhedron names
-Output: Total number of faces across all polyhedrons
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && 

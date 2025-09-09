@@ -1,10 +1,3 @@
-/*
-Given n subway stations where each station i has exactly one outgoing train to station p_i,
-and the array p represents a permutation, find the maximum "convenience" after changing at 
-most 2 values in p. Convenience is defined as the number of ordered pairs (x,y) where you 
-can travel from station x to station y using the subway trains.
-*/
-
 predicate ValidInput(n: int, p: seq<int>)
 {
   n > 0 && |p| == n &&

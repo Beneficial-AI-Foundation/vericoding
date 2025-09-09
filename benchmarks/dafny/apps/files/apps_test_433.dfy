@@ -1,10 +1,3 @@
-/*
-Given a circular building with n entrances numbered 1 to n, determine the final entrance
-number after walking from entrance a by b entrances. Positive b means walking forward
-(increasing order), negative b means walking backward (decreasing order), and b=0 means
-staying at the starting entrance.
-*/
-
 predicate ValidInput(n: int, a: int, b: int) {
     n >= 1 && 1 <= a <= n && -100 <= b <= 100
 }

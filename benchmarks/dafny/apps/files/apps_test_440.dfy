@@ -1,9 +1,3 @@
-/*
-Given a string of lowercase Latin letters, repeatedly remove consecutive vowels 
-by deleting the second vowel in each consecutive pair until no consecutive vowels remain.
-Vowels are defined as: a, e, i, o, u, y. Process the string from left to right.
-*/
-
 predicate IsVowel(c: char)
 {
     c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y'

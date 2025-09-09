@@ -1,9 +1,3 @@
-/*
-Calculate the net amount paid by a customer for N meals at a restaurant.
-Each meal costs 800 yen. For every 15 meals ordered, the customer receives
-200 yen cashback. Return the net amount (total cost minus cashback).
-*/
-
 predicate ValidInput(N: int)
 {
     1 <= N <= 100

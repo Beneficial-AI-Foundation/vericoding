@@ -1,27 +1,3 @@
-/-  Compute the eigenvalues and right eigenvectors of a square matrix.
-
-    For a square matrix A, this function computes vectors v and scalars λ such that:
-    A * v = λ * v
-
-    Returns a pair (eigenvalues, eigenvectors) where:
-    - eigenvalues: Vector of eigenvalues λ_i
-    - eigenvectors: Matrix where column i is the eigenvector corresponding to eigenvalue λ_i
--/
-
-/-  Specification: eig computes the eigenvalues and right eigenvectors of a square matrix.
-
-    The fundamental eigenvalue equation is: A * v = λ * v, where:
-    - A is the input matrix
-    - v is an eigenvector (non-zero vector)
-    - λ is the corresponding eigenvalue
-
-    This specification captures the mathematical properties of eigenvalues and eigenvectors:
-    1. The eigenvalue equation holds for each eigenvalue-eigenvector pair
-    2. Eigenvectors are normalized (unit length) 
-    3. For diagonal matrices, eigenvalues are the diagonal elements
-    4. Identity matrix has eigenvalue 1 with multiplicity n
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

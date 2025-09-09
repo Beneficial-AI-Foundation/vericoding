@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.legendre.legmul",
-  "category": "Legendre polynomials",
-  "description": "Multiply one Legendre series by another.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.legendre.legmul.html",
-  "doc": "Multiply one Legendre series by another.\n\n    Returns the product of two Legendre series \`c1\` * \`c2\`.  The arguments\n    are sequences of coefficients, from lowest order \"term\" to highest,\n    e.g., [1,2,3] represents the series \`\`P_0 + 2*P_1 + 3*P_2\`\`.\n\n    Parameters\n    ----------\n    c1, c2 : array_like\n        1-D arrays of Legendre series coefficients ordered from low to\n        high.\n\n    Returns\n    -------\n    out : ndarray\n        Of Legendre series coefficients representing their product.\n\n    See Also\n    --------\n    legadd, legsub, legmulx, legdiv, legpow\n\n    Notes\n    -----\n    In general, the (polynomial) product of two C-series results in terms\n    that are not in the Legendre polynomial basis set.  Thus, to express\n    the product as a Legendre series, it is necessary to \"reproject\" the\n    product onto said basis set, which may produce \"unintuitive\" (but\n    correct) results; see Examples section below.\n\n    Examples\n    --------\n    >>> from numpy.polynomial import legendre as L\n    >>> c1 = (1,2,3)\n    >>> c2 = (3,2)\n    >>> L.legmul(c1,c2) # multiplication requires \"reprojection\"\n    array([  4.33333333,  10.4       ,  11.66666667,   3.6       ]) # may vary",
-}
--/
-
-/-  Multiply one Legendre series by another, producing coefficients in Legendre basis -/
-
-/-  Specification: legmul produces the correct Legendre series coefficients for the product -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

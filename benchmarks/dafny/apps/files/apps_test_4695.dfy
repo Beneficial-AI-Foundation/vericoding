@@ -1,10 +1,3 @@
-/*
-Given integers x and y where 1 ≤ x < y ≤ 12, determine if they belong to the same group 
-according to Snuke's division of integers 1 through 12 into three groups based on some criterion.
-Input: Two space-separated integers x and y
-Output: "Yes" if x and y are in the same group, "No" otherwise
-*/
-
 predicate ValidInput(input: string)
     requires |input| > 0
 {

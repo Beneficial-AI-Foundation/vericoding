@@ -1,10 +1,3 @@
-/*
-Given a rectangular plate with dimensions w × h cells, calculate the total number of cells
-to be gilded when adding k concentric rings. Ring 1 is the border of the full w × h rectangle,
-Ring 2 is the border of the inner (w-4) × (h-4) rectangle, and so on. Each ring consists of
-all cells on the perimeter of its respective rectangle.
-*/
-
 predicate ValidInput(w: int, h: int, k: int)
 {
     w >= 3 && h >= 3 && w <= 100 && h <= 100 && 

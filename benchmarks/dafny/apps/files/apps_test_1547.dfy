@@ -1,9 +1,3 @@
-/*
-Given an n×m grid initially filled with color 0, perform k painting operations and output the final grid.
-Operations can paint entire rows or columns with specified colors.
-When a cell is painted multiple times, it takes the color of the most recent operation affecting it.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);

@@ -1,8 +1,3 @@
-/*
-function_signature: method make_palindrome(s: string) returns (result: string)
-Process input. Ensures: the size is bounded; the result is a palindrome; ensures starts_with(result, s).
-*/
-
 function is_palindrome(s : string) : bool {
     forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
 }

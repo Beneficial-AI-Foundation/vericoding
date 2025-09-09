@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "NPY_SQRT1_2",
-  "category": "C API Mathematical constants",
-  "description": "Square root of 1/2",
-  "doc": "√(1/2) = 0.707106781186547524400844362104849039",
-}
--/
-
-/-  NPY_SQRT1_2: Square root of 1/2 as a Float constant -/
-
-/-  Specification: NPY_SQRT1_2 equals the square root of 1/2 with mathematical properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

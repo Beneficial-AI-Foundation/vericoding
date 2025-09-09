@@ -1,9 +1,3 @@
-/*
-Given a string of length n containing only 'a' and 'b' characters, count the number of "good" substrings of even length and odd length.
-A substring is "good" if after merging all consecutive equal characters, the resulting string is a palindrome.
-For example: "aabba" becomes "aba" after merging, which is a palindrome, so "aabba" is good.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> s[i] == 'a' || s[i] == 'b'

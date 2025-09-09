@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "NPY_1_PI",
-  "category": "C API Mathematical constants",
-  "description": "1 divided by pi",
-  "doc": "1/π = 0.318309886183790671537767526745028724",
-}
--/
-
-/-  The mathematical constant 1/π (one divided by pi), approximately 0.31831... -/
-
-/-  Specification: NPY_1_PI represents the reciprocal of pi (1/π),
-    and satisfies key mathematical properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

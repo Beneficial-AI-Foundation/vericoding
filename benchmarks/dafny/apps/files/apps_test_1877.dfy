@@ -1,11 +1,3 @@
-/*
-Given a sequence of moves on a 2D grid starting from position (0,0), count the number of times 
-the path crosses between two kingdoms separated by the line x = y. Kingdom 1 contains points 
-where x > y, Kingdom 2 contains points where x < y, and points where x = y are on the wall/gates.
-Moves are 'U' (up: y+1) and 'R' (right: x+1). Count transitions between kingdoms, ignoring 
-positions on the wall, with no cost for the initial move from starting position.
-*/
-
 predicate ValidInput(n: int, s: string)
 {
     n >= 0 && |s| == n && forall i :: 0 <= i < |s| ==> s[i] == 'U' || s[i] == 'R'

@@ -1,23 +1,3 @@
-/*
-Given a contest name in the format "AtCoder s Contest" where s is a string of length 1 to 100 characters 
-starting with an uppercase English letter followed by lowercase English letters, output the abbreviation "AxC" 
-where x is the first character of s.
-
-// Minimum: "AtCoder X Contest\n"
-
-// Input ends with newline
-
-// Middle word is non-empty
-
-// First char is uppercase
-
-// Rest are lowercase
-
-// "AxC\n" format
-
-// Second char is first char of middle word
-*/
-
 predicate ValidInput(input: string)
 {
     && |input| >= 18

@@ -1,9 +1,3 @@
-/*
-Given n buttons and m bulbs, where each button can turn on a specific subset of bulbs,
-determine if it's possible to turn on all m bulbs by pressing some combination of buttons.
-Return "YES" if all bulbs can be turned on, "NO" otherwise.
-*/
-
 predicate ValidInput(n: nat, m: nat, buttons: seq<seq<nat>>)
 {
     |buttons| == n &&

@@ -1,10 +1,3 @@
-/*
-Given a positive integer n as a string, find the minimum number of digit deletions 
-required to transform n into a perfect square, or return -1 if impossible.
-You can delete any digit from n as long as the result remains a positive integer 
-without leading zeros. A perfect square is an integer x = y² for some positive integer y.
-*/
-
 function GenerateSquares(): seq<int>
     ensures forall i :: 0 <= i < |GenerateSquares()| ==> GenerateSquares()[i] > 0
 {

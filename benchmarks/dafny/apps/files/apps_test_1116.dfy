@@ -1,11 +1,3 @@
-/*
-Given three integers r, b, and k, determine if it's possible to paint planks on a fence
-according to specific rules without creating k consecutive planks of the same color.
-Paint plank i red if i is divisible by r, blue if divisible by b, either color if 
-divisible by both, and don't paint otherwise. Return "OBEY" if possible to avoid
-k consecutive same-color planks, "REBEL" if unavoidable.
-*/
-
 function gcd(a: int, b: int): int
   requires a > 0 && b >= 0
   decreases b

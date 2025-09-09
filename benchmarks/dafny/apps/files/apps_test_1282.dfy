@@ -1,9 +1,3 @@
-/*
-Given a string of 'M' (boys) and 'F' (girls), determine how many seconds
-it takes for all girls to move to the front of the line. Each second,
-all boys immediately in front of girls simultaneously swap positions.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| >= 1 && forall i :: 0 <= i < |input| ==> input[i] == 'M' || input[i] == 'F'

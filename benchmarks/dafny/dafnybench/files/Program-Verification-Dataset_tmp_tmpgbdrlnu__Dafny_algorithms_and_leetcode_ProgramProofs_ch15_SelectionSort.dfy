@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate SplitPoint(a: array<int>, n: int)
     reads a
     requires 0 <= n <= n

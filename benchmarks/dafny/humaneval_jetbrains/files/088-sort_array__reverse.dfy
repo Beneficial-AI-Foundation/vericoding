@@ -1,8 +1,3 @@
-/*
-function_signature: method reverse(s: seq<int>) returns (rev: seq<int>)
-Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

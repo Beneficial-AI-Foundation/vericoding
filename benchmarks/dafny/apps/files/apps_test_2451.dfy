@@ -1,9 +1,3 @@
-/*
-Given a building with n towers and h floors each, find minimum travel time between pairs of locations.
-Horizontal passages exist between adjacent towers only on floors a through b (inclusive).
-Moving between adjacent floors or towers takes exactly 1 minute.
-*/
-
 predicate ValidBuildingParams(n: int, h: int, a: int, b: int)
 {
     n >= 1 && h >= 1 && 1 <= a <= b <= h

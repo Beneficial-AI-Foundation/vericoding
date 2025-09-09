@@ -1,10 +1,3 @@
-/*
-Given a right triangle with a 90° angle at vertex B, and the lengths of all three sides AB, BC, and CA,
-calculate the area of the triangle. The area is computed as (AB * BC) / 2 where AB and BC are the two
-legs of the right triangle. Input consists of three integers representing the side lengths, and output
-is the integer area.
-*/
-
 predicate ValidInput(ab: int, bc: int, ca: int)
 {
     1 <= ab <= 100 && 1 <= bc <= 100 && 1 <= ca <= 100

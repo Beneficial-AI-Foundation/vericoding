@@ -1,8 +1,3 @@
-/*
-function_signature: def starts_one_ends(n: int) -> int
-Given a positive integer n, return the count of the numbers of n-digit positive integers that start or end with 1. Note: For reviewer, I believe this is the most straightforward spec, and I am relying on Set cardianlity not being computable in general. The point of this problem is really to privide a formula. Note: But I guess a program that goes through each number and adds 1 will be the same as a program that computes in O(1) under this view.
-*/
-
 function Pow(base: nat, exponent: nat): nat
     ensures exponent == 0 ==> Pow(base, exponent) == 1
     ensures exponent > 0 ==> Pow(base, exponent) == base * Pow(base, exponent-1)

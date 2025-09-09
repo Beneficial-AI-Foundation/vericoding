@@ -1,8 +1,3 @@
-/*
-function_signature: def unique_digits(x: List[nat]) -> List[nat]
-Given a list of positive integers x. return a sorted list of all elements that hasn't any even digit.
-*/
-
 function HasNoEvenDigit(n: int) : bool
   decreases n
 {

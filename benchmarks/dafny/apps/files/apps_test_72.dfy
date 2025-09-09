@@ -1,9 +1,3 @@
-/*
-Three players each have a ribbon (string). The beauty of a ribbon is the maximum frequency of any character.
-In n turns, each player must change exactly one character. After n turns, the player with highest beauty wins.
-Find the winner assuming optimal play, or "Draw" if tied.
-*/
-
 predicate ValidInput(input: string) {
     |input| > 0
 }

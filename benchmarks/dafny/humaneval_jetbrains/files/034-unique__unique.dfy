@@ -1,8 +1,3 @@
-/*
-function_signature: method unique(s: seq<int>) returns (result: seq<int>)
-Process input. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values.
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

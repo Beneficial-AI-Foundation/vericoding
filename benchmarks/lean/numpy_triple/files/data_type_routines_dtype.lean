@@ -1,19 +1,3 @@
-/-  numpy.dtype: Create a data type object.
-
-    A numpy array is homogeneous, and contains elements described by a dtype object. 
-    A dtype object can be constructed from different combinations of fundamental numeric types.
-
-    This specification focuses on creating basic numeric data types like int16, int32, float32, float64.
-    The function maps type specifications to their corresponding DType objects with proper
-    attributes like size, alignment, and signedness.
--/
-
-/-  Specification: numpy.dtype creates a valid data type object with consistent attributes.
-
-    Precondition: The type_spec is a valid NumPy type specification
-    Postcondition: The resulting DType has consistent attributes that match the specified type
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

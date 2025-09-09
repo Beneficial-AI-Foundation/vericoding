@@ -1,7 +1,3 @@
-/*
-//  requires a <= b
-*/
-
 method random(a: int, b: int) returns (r: int)
   ensures a <= b ==> a <= r <= b
 

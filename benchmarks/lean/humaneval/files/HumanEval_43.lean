@@ -1,20 +1,3 @@
-/- 
-function_signature: "def pairs_sum_to_zero(numbers: List[int]) -> Bool"
-docstring: |
-    pairs_sum_to_zero takes a list of integers as an input.
-    it returns True if there are two distinct elements in the list that
-    sum to zero, and False otherwise.
-test_cases:
-  - input: [1, 3, 5, 0]
-    expected_output: False
-  - input: [1, 3, -2, 1]
-    expected_output: False
-  - input: [1]
-    expected_output: False
-  - input: [2, 4, -5, 3, 5, 7]
-    expected_output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

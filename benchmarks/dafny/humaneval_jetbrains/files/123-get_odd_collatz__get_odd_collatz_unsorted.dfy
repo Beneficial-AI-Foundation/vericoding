@@ -1,8 +1,3 @@
-/*
-function_signature: method get_odd_collatz_unsorted(n: nat) returns (odd_collatz: seq<nat>)
-Sort elements. Requires: requires n > 1. Ensures: the condition holds for all values; the condition holds for all values.
-*/
-
 function iterate_to_odd(n: nat): nat
   requires n % 2 == 0
   requires n > 0

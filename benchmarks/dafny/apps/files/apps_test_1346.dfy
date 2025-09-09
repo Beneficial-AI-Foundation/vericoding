@@ -1,10 +1,3 @@
-/*
-Given two polynomials f(x) and g(x) with positive integer coefficients,
-find any coefficient in their product h(x) = f(x) · g(x) that is not
-divisible by a given prime p. The gcd constraint ensures at least one
-coefficient in each polynomial is not divisible by p.
-*/
-
 predicate ValidInput(n: int, m: int, p: int, f: seq<int>, g: seq<int>) {
     n >= 1 && m >= 1 &&
     p >= 2 &&

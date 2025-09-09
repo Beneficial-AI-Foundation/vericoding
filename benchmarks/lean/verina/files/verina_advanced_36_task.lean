@@ -1,18 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that finds the majority element in a list of natural numbers. The majority element is defined as the element that appears more than ⌊n / 2⌋ times in the list, where n is the total number of elements.
-
-You may assume that the input list always contains a majority element.
-
------Input-----
-The input consists of one list:
-xs: A list of natural numbers (List Nat), where a majority element is guaranteed to exist.
-
------Output-----
-The output is a natural number:
-Returns the element that appears more than half the time in the input list.
--/
-
 @[reducible]
 def majorityElement_precond (xs : List Nat) : Prop :=
   xs.length > 0 ∧ xs.any (fun x => xs.count x > xs.length / 2)

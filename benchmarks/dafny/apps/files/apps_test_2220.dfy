@@ -1,10 +1,3 @@
-/*
-Given n emotes with happiness values, use emotes m times total to maximize happiness.
-Cannot use the same emote more than k consecutive times.
-
-// Assumes optimal strategy using highest and second highest values
-*/
-
 predicate ValidInput(n: int, m: int, k: int, emotes: seq<int>)
 {
     n >= 2 && k >= 1 && m >= 1 && |emotes| == n &&

@@ -1,13 +1,3 @@
-/*
-// Works by dividing the input list into two parts: sorted and unsorted. At the beginning, 
-
-// the sorted part is empty and the unsorted part contains all the elements.
-
-// Ensures the final array is sorted in ascending order
-
-// Ensures that the final array has the same elements as the initial array
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

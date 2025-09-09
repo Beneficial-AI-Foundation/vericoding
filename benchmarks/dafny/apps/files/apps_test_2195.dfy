@@ -1,9 +1,3 @@
-/*
-Given two non-negative integers x and y, find the minimum cost to make both equal to zero using these operations:
-1. Pay $a to change exactly one integer by ±1
-2. Pay $b to change both integers by ±1 in the same direction
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);

@@ -1,29 +1,3 @@
-/-  numpy.isdtype: Determine if a provided dtype is of a specified data type kind.
-
-    This function checks whether a given NumPy dtype belongs to a specified
-    category of data types. It supports checking against specific dtype kinds
-    like 'bool', 'signed integer', 'unsigned integer', 'integral', 
-    'real floating', 'complex floating', and 'numeric'.
-
-    The function performs type introspection and classification of NumPy dtypes
-    according to their fundamental characteristics.
--/
-
-/-  Specification: numpy.isdtype correctly identifies dtype kinds.
-
-    Precondition: True (works for any valid dtype and kind)
-    Postcondition: Returns true iff the dtype belongs to the specified kind category.
-
-    The function implements the following classification rules:
-    - Bool: dtype is boolean
-    - SignedInteger: dtype is signed integer (int8, int16, int32, int64)
-    - UnsignedInteger: dtype is unsigned integer (uint8, uint16, uint32, uint64)
-    - Integral: dtype is any integer type (signed or unsigned)
-    - RealFloating: dtype is real floating point (float16, float32, float64)
-    - ComplexFloating: dtype is complex floating point (complex64, complex128)
-    - Numeric: dtype is any numeric type (bool, integers, floats, complex)
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

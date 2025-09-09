@@ -1,8 +1,3 @@
-/*
-Given a sequence of N integers, for each position i, find the maximum value 
-among all N-1 elements excluding the element at position i.
-*/
-
 function max_of_seq(s: seq<int>): int
     requires |s| >= 1
     ensures forall i :: 0 <= i < |s| ==> s[i] <= max_of_seq(s)

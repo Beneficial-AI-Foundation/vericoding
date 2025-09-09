@@ -1,8 +1,3 @@
-/*
-Given n stones in a row colored R, G, or B, find the minimum number of stones
-to remove so that no two adjacent stones have the same color.
-*/
-
 predicate ValidInput(n: int, s: string)
 {
     n >= 1 && |s| == n

@@ -1,8 +1,3 @@
-/*
-function_signature: method even_odd_count(n: nat) returns (even: nat, odd: nat)
-Given an integer, return a tuple that has the number of even and odd digits respectively.
-*/
-
 function odd_count(n: nat): nat {
   if n == 0 then 0
   else odd_count(n / 10) + n % 2

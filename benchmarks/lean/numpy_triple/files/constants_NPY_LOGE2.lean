@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "NPY_LOGE2",
-  "category": "C API Mathematical constants",
-  "description": "Natural logarithm of 2",
-  "doc": "ln(2) = 0.693147180559945309417232121458176568",
-}
--/
-
-/-  Natural logarithm of 2 -/
-
-/-  Specification: nPY_LOGE2 returns the natural logarithm of 2 with correct mathematical properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

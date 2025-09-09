@@ -1,8 +1,3 @@
-/*
-function_signature: def solution(lst: List[int]) -> int
-Given a non-empty list of integers, return the sum of all of the odd elements that are in even positions.
-*/
-
 function sum(s: seq<int>, p: seq<bool>) : int
   requires |s| == |p|
 {

@@ -1,10 +1,3 @@
-/*
-Given n kegs containing v_i liters of kvass each, pour exactly s liters total 
-such that the minimum amount remaining in any keg is maximized. Each keg can 
-only have kvass removed, not added. Return -1 if impossible to pour s liters,
-otherwise return the maximum possible minimum remaining amount in any keg.
-*/
-
 predicate ValidInput(n: int, s: int, v: seq<int>)
 {
     n > 0 && |v| == n && s >= 0 && forall i :: 0 <= i < |v| ==> v[i] >= 0

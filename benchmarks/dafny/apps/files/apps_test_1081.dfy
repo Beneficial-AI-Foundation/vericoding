@@ -1,8 +1,3 @@
-/*
-Given an integer a (1 ≤ a ≤ 99), determine whether it satisfies a specific condition
-and output "YES" or "NO". The condition is derived from the pattern in given examples.
-*/
-
 predicate ValidInput(n: int) {
     1 <= n <= 99
 }

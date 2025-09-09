@@ -1,9 +1,3 @@
-/*
-A machine produces B biscuits at regular intervals of A seconds, starting at time A seconds.
-Productions occur at times A, 2A, 3A, 4A, ... seconds after activation.
-Calculate the total number of biscuits produced within the first T + 0.5 seconds.
-*/
-
 predicate ValidInput(A: int, B: int, T: int)
 {
     1 <= A <= 20 && 1 <= B <= 20 && 1 <= T <= 20

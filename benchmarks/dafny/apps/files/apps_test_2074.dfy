@@ -1,10 +1,3 @@
-/*
-Two players play a sequential game on a grid of restaurant costs.
-Emma (first player) chooses a row to maximize final cost.
-Jack (second player) then chooses a column to minimize final cost.
-Both play optimally. Find the resulting cost when both play optimally.
-*/
-
 predicate ValidGrid(grid: seq<seq<int>>) {
     |grid| > 0 && forall i :: 0 <= i < |grid| ==> |grid[i]| > 0
 }

@@ -1,10 +1,3 @@
-/*
-Given 5 antennas at coordinates a, b, c, d, e (where a < b < c < d < e) and a communication range k,
-determine if there exists any pair of antennas that cannot communicate directly. Two antennas can
-communicate if the distance between them is at most k. The distance between antennas at coordinates
-p and q (where p < q) is q - p. Output "Yay!" if all pairs can communicate, ":(" otherwise.
-*/
-
 predicate ValidInput(a: int, b: int, c: int, d: int, e: int, k: int) {
     0 <= a <= 123 && 0 <= b <= 123 && 0 <= c <= 123 && 
     0 <= d <= 123 && 0 <= e <= 123 && 0 <= k <= 123 &&

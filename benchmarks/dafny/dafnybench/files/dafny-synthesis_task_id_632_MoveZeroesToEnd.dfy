@@ -1,17 +1,3 @@
-/*
-// Same size
-
-// Zeros to the right of the first zero
-
-// The final array is a permutation of the original one
-
-// Relative order of non-zero elements is preserved
-
-//ensures IsOrderPreserved(arr[..], old(arr[..]))
-
-// Number of zeros is preserved
-*/
-
 method swap(arr: array<int>, i: int, j: int)
     requires arr.Length > 0
     requires 0 <= i < arr.Length && 0 <= j < arr.Length

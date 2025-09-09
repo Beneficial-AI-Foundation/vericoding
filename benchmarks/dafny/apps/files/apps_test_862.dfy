@@ -1,10 +1,3 @@
-/*
-Allen starts at the end of queue 1 and moves cyclically through n queues.
-Each minute, one person from each non-empty queue enters the fan zone.
-If Allen is at the front of his current queue, he enters; otherwise he moves to the next queue.
-Find which entrance Allen will use to enter the fan zone.
-*/
-
 predicate ValidInput(n: int, a: seq<int>) {
   n >= 2 && |a| == n && (forall i :: 0 <= i < n ==> a[i] >= 0)
 }

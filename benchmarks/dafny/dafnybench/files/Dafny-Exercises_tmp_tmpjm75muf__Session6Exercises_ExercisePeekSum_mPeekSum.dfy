@@ -1,7 +1,3 @@
-/*
-//Implement and verify an O(v.Length) algorithm to solve this problem
-*/
-
 predicate isPeek(v:array<int>,i:int)
  reads v
  requires 0<=i<v.Length

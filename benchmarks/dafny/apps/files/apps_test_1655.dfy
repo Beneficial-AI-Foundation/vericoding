@@ -1,9 +1,3 @@
-/*
-Given n people in positions 1 to n, where person i has weapon reach L_i.
-All people simultaneously attack: person i kills person j if and only if 
-j < i and j >= i - L_i. Determine the number of survivors.
-*/
-
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 1 && |a| == n && forall i :: 0 <= i < n ==> a[i] >= 0

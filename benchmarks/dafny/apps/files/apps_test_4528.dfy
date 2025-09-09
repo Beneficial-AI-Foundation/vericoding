@@ -1,9 +1,3 @@
-/*
-Calculate the number of minutes remaining until New Year (00:00) given the current time in 24-hour format.
-Input is a sequence of (hour, minute) pairs representing current times.
-Output is the corresponding minutes remaining until midnight for each test case.
-*/
-
 predicate ValidInput(testCases: seq<(int, int)>)
 {
     forall i :: 0 <= i < |testCases| ==> 

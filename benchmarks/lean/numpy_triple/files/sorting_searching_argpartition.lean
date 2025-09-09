@@ -1,12 +1,3 @@
-/-  Perform an indirect partition along the given axis.
-    Returns an array of indices that partition the input array such that
-    the kth element is in its final sorted position and all smaller
-    elements are moved before it and all larger elements behind it. -/
-
-/-  Specification: argpartition returns indices that correctly partition the array.
-    The kth element is in its final sorted position, with all smaller elements
-    before it and all larger elements after it. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

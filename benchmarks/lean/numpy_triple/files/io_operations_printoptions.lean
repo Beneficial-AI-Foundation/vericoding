@@ -1,21 +1,3 @@
-/-  numpy.printoptions: Context manager for setting print options.
-
-    Creates a context manager that temporarily sets print options and restores
-    the original options afterward. This allows for local formatting changes
-    without affecting global state.
-
-    The context manager returns the current print options that are active
-    within the context.
--/
-
-/-  Specification: numpy.printoptions creates a context with temporary print options.
-
-    Precondition: Valid print options are provided
-    Postcondition: Returns a context that contains both old and new options,
-                   where the new options are the ones that would be active
-                   within the context
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

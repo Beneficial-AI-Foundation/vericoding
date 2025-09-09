@@ -1,17 +1,3 @@
-/*
-// 1 a)
-
-// [ai, aj[
-
-// 1 b)
-
-// 1 c)
-
-// a -> [1, 10, 3, −4, 5]
-
-// c -> [0, 1, 11, 14, 10, 15]
-*/
-
 function sum(a: array<int>, i: int, j: int) : int
   requires 0 <= i <= j <= a.Length
   reads a

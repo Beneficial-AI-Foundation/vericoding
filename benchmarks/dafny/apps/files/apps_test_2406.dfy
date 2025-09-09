@@ -1,11 +1,3 @@
-/*
-Simulate a landslide process on an array of strictly increasing heights.
-Each minute, for every position j where h_j + 2 ≤ h_{j+1}, one unit slides 
-from position j+1 to position j. All transfers happen simultaneously.
-The process stops when no position satisfies the sliding condition.
-Return the final stable heights.
-*/
-
 predicate ValidInput(n: int, heights: seq<int>)
 {
     n > 0 && |heights| == n &&

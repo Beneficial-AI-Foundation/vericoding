@@ -1,8 +1,3 @@
-/*
-function_signature: method select_at_most_two_digits(arr: seq<int>) returns (result: seq<int>)
-Select elements. Requires: the size is bounded. Ensures: the condition holds for all values; the condition holds for all values; selects only numbers with at most two digits.
-*/
-
 function sum(s: seq<int>) : int {
   if |s| == 0 then 0 else s[0] + sum(s[1..])
 }

@@ -1,10 +1,3 @@
-/*
-Bignum task: bignum_ModExp_int[ModExpPow2_int].
-Implement the method according to the Dafny specification.
-
-//&& n > 0
-*/
-
 ghost function Exp_int(x: nat, y:nat): nat
 {
   if y == 0 then 1 else x * Exp_int(x, y - 1)

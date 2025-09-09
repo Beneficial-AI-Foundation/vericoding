@@ -1,21 +1,3 @@
-/- 
-{
-  "name": "numpy.absolute",
-  "description": "Calculate the absolute value element-wise",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.absolute.html",
-  "doc": "Calculate the absolute value element-wise.\n\nSignature: numpy.absolute(x, /, out=None, *, where=True, casting='same_kind', order='K', dtype=None, subok=True)\n\nParameters:\n  x: array_like - Input array\n  out: ndarray, None, or tuple of ndarray and None, optional - A location into which the result is stored\n\nReturns:\n  absolute: ndarray - An ndarray containing the absolute value of each element in x",
-}
--/
-
-/-  Calculate the absolute value element-wise for a vector of integers -/
-
-/-  Specification: absolute computes the absolute value of each element with the following mathematical properties:
-    1. Basic definition: |x| = x if x ≥ 0, otherwise -x
-    2. Non-negativity: |x| ≥ 0 for all x
-    3. Zero preservation: |x| = 0 if and only if x = 0
-    4. Idempotence: ||x|| = |x|
-    5. Multiplicativity: |x * y| = |x| * |y| -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

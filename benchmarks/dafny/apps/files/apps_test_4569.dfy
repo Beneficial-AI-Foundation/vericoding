@@ -1,7 +1,3 @@
-/*
-Given today's weather from a 3-day repeating cycle (Sunny → Cloudy → Rainy → Sunny → ...), determine tomorrow's weather.
-*/
-
 predicate ValidWeather(weather: string)
 {
     weather == "Sunny" || weather == "Cloudy" || weather == "Rainy"

@@ -1,20 +1,3 @@
-/-  numpy.bincount: Count number of occurrences of each value in array of non-negative ints.
-
-    Count number of occurrences of each value in array of non-negative ints.
-    The number of bins (of size 1) is one larger than the largest value in x.
-    Each bin gives the number of occurrences of its index value in x.
-
-    This function takes a 1D array of non-negative integers and returns
-    an array where the i-th element is the count of how many times the
-    value i appears in the input array.
--/
-
-/-  Specification: numpy.bincount returns count of occurrences of each value.
-
-    Precondition: All values in x are non-negative and ≤ max_val
-    Postcondition: result[i] = count of occurrences of value i in x
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

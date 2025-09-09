@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.laguerre.Laguerre",
-  "category": "Laguerre polynomials",
-  "description": "A Laguerre series class.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.laguerre.Laguerre.html",
-  "doc": "A Laguerre series class.\n\n    The Laguerre class provides the standard Python numerical methods\n    '+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the\n    attributes and methods listed below.\n\n    Parameters\n    ----------\n    coef : array_like\n        Laguerre coefficients in order of increasing degree, i.e,\n        ``(1, 2, 3)`` gives ``1*L_0(x) + 2*L_1(X) + 3*L_2(x)``.\n    domain : (2,) array_like, optional\n        Domain to use. The interval ``[domain[0], domain[1]]`` is mapped\n        to the interval ``[window[0], window[1]]`` by shifting and scaling.\n        The default value is [0., 1.].\n    window : (2,) array_like, optional\n        Window, see `domain` for its use. The default value is [0., 1.].\n    symbol : str, optional\n        Symbol used to represent the independent variable in string\n        representations of the polynomial expression, e.g. for printing.\n        The symbol must be a valid Python identifier. Default value is 'x'.\n\n        .. versionadded:: 1.24",
-  "type": "class"
-}
--/
-
-/-  Constructor for Laguerre series with default domain and window -/
-
-/-  Specification for Laguerre series construction and properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

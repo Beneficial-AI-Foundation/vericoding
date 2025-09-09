@@ -1,10 +1,3 @@
-/*
-Two players (Vanya and Vova) attack monsters simultaneously with different frequencies.
-Vanya attacks at frequency a hits/second, Vova at frequency b hits/second.
-For each monster requiring mobs[i] hits, determine who makes the final hit.
-The attack pattern repeats every (a+b) hits, so we can use modular arithmetic.
-*/
-
 predicate ValidInput(n: int, a: int, b: int, mobs: seq<int>)
 {
     n >= 0 && a > 0 && b > 0 && |mobs| == n &&

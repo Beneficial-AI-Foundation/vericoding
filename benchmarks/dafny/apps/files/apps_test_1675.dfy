@@ -1,10 +1,3 @@
-/*
-Given n football teams where each team has home and away kit colors (different colors),
-calculate how many games each team plays in home kit vs away kit in a round-robin tournament.
-Kit rules: home team wears home kit, away team wears away kit unless it conflicts with 
-home team's home kit color, then away team wears home kit.
-*/
-
 predicate ValidInput(n: int, teams: seq<(int, int)>)
 {
   n >= 2 && |teams| == n &&

@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.NZERO",
-  "category": "Special float values (deprecated)",
-  "description": "IEEE 754 floating point representation of negative zero",
-  "url": "https://numpy.org/doc/stable/reference/constants.html",
-  "doc": "IEEE 754 floating point representation of negative zero.\n\nDEPRECATED: Removed from main namespace in NumPy 2.0. Use -0.0 instead.",
-}
--/
-
-/-  IEEE 754 floating point representation of negative zero -/
-
-/-  Specification: NZERO represents IEEE 754 negative zero, which equals zero 
-    but has special properties in floating point arithmetic -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

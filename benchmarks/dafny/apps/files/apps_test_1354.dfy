@@ -1,10 +1,3 @@
-/*
-Given a 1×n grid where Alice claims to have placed k ships of size a (consecutive cells)
-such that no two ships intersect or touch, and Bob makes m shots that all "miss",
-determine the first shot after which we can be certain Alice is cheating
-(i.e., it becomes impossible to place k non-intersecting, non-touching ships without hitting a shot).
-*/
-
 predicate ValidInput(n: int, k: int, a: int, m: int, shots: seq<int>)
 {
     n > 0 && k > 0 && a > 0 && m > 0 && |shots| == m &&

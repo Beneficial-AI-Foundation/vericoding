@@ -1,23 +1,3 @@
-/- 
-{
-  "name": "numpy.geomspace",
-  "category": "Numerical ranges",
-  "description": "Return numbers spaced evenly on a log scale (a geometric progression)",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.geomspace.html",
-  "doc": "\nReturn numbers spaced evenly on a log scale (a geometric progression).\n\nParameters\n----------\nstart : array_like\n    The starting value of the sequence.\nstop : array_like\n    The final value of the sequence, unless endpoint is False. In that case, num + 1 values \n    are spaced over the interval in log-space, of which all but the last (a sequence of length num) are returned.\nnum : integer, optional\n    Number of samples to generate. Default is 50.\nendpoint : boolean, optional\n    If True, stop is the last sample. Otherwise, it is not included. Default is True.\ndtype : dtype\n    The type of the output array. If dtype is not given, the data type is inferred from start and stop.\naxis : int, optional\n    The axis in the result to store the samples. Relevant only if start or stop are array-like.\n\nReturns\n-------\nsamples : ndarray\n    num samples, equally spaced on a log scale.\n\nExamples\n--------\n>>> np.geomspace(1, 1000, num=4)\narray([    1.,    10.,   100.,  1000.])\n>>> np.geomspace(1, 1000, num=3, endpoint=False)\narray([   1.,   10.,  100.])\n>>> np.geomspace(1, 1000, num=4, endpoint=False)\narray([   1.        ,    5.62341325,   31.6227766 ,  177.827941  ])\n>>> np.geomspace(1, 256, num=9)\narray([   1.,    2.,    4.,    8.,   16.,   32.,   64.,  128.,  256.])\n\nNotes\n-----\nIf the inputs or dtype are complex, the output will follow a logarithmic spiral in the complex plane.\n",
-  "signature": "numpy.geomspace(start, stop, num=50, endpoint=True, dtype=None, axis=0)"
-}
--/
-
-/-  Return numbers spaced evenly on a log scale (a geometric progression).
-    Each output sample is a constant multiple of the previous one. -/
-
-/-  Specification: geomspace returns a geometric progression from start to stop.
-    - The first element is always start
-    - If endpoint is true and n > 1, the last element is stop
-    - All elements form a geometric progression (constant ratio between consecutive elements)
-    - Neither start nor stop can be zero -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

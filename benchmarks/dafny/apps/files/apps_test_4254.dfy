@@ -1,9 +1,3 @@
-/*
-Given the number of sheep S and wolves W, determine if the situation is "safe" or "unsafe".
-Output "unsafe" if the number of wolves is greater than or equal to the number of sheep,
-otherwise output "safe". Input is a string containing two integers separated by space.
-*/
-
 predicate ValidInputFormat(input: string)
 {
     var trimmed := TrimNewlines(input);

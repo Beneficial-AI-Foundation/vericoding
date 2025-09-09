@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.array_str",
-  "category": "String formatting",
-  "description": "Return a string representation of the data in an array",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.array_str.html",
-  "doc": "Return a string representation of the data in an array.\n\n    The data in the array is returned as a single string.  This function is\n    similar to \`array_repr\`, the difference being that \`array_repr\` also\n    returns information on the kind of array and its data type.\n\n    Parameters\n    ----------\n    a : ndarray\n        Input array.\n    max_line_width : int, optional\n        Inserts newlines if text is longer than \`max_line_width\`.\n        Defaults to \`\`numpy.get_printoptions()['linewidth']\`\`...",
-}
--/
-
-/-  Return a string representation of the data in a vector -/
-
-/-  Specification: array_str returns a formatted string representation of the vector data -/
-
 -- <vc-helpers>
 -- </vc-helpers>
 

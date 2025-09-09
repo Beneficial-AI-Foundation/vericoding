@@ -1,10 +1,3 @@
-/*
-Given a tree with n nodes, determine the maximum number of edges that can be added 
-while maintaining the bipartite property and keeping the graph simple (no loops or multiple edges).
-Since any tree is bipartite, we can 2-color it into partitions of sizes a and b.
-A complete bipartite graph has a×b edges, and the tree has n-1 edges, so answer is a×b-(n-1).
-*/
-
 predicate IsConnectedTree(n: int, edges: seq<(int, int)>)
 {
     n >= 1 && |edges| == n - 1 &&

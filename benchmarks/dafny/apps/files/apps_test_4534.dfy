@@ -1,9 +1,3 @@
-/*
-Given a non-negative integer k where 0 ≤ k ≤ 33, return the kth row of Pascal's triangle 
-as a list of integers. Row indexing starts from 0. In Pascal's triangle, each element 
-equals the sum of the two elements directly above it in the previous row.
-*/
-
 function binomial(n: int, k: int): int
     requires 0 <= k <= n
 {

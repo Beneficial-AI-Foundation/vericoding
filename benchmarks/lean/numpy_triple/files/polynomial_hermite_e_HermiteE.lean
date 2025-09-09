@@ -1,26 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.hermite_e.HermiteE",
-  "category": "HermiteE polynomials",
-  "description": "An HermiteE series class.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite_e.HermiteE.html",
-  "doc": "An HermiteE series class.\n\n    The HermiteE class provides the standard Python numerical methods\n    '+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the\n    attributes and methods listed below.\n\n    Parameters\n    ----------\n    coef : array_like\n        HermiteE coefficients in order of increasing degree, i.e,\n        \`\`(1, 2, 3)\`\` gives \`\`1*He_0(x) + 2*He_1(X) + 3*He_2(x)\`\`.\n    domain : (2,) array_like, optional\n        Domain to use. The interval \`\`[domain[0], domain[1]]\`\` is mapped\n        to the interval \`\`[window[0], window[1]]\`\` by shifting and scaling.\n        The default value is [-1., 1.].\n    window : (2,) array_like, optional\n        Window, see \`domain\` for its use. The default value is [-1., 1.].\n    symbol : str, optional\n        Symbol used to represent the independent variable in string\n        representations of the polynomial expression, e.g. for printing.\n        The symbol must be a valid Python identifier. Default value is 'x'.\n\n        .. versionadded:: 1.24",
-  "type": "class"
-}
--/
-
-/-  Create a HermiteE polynomial from coefficients with default domain and window [-1, 1] -/
-
-/-  Specification: Creating a HermiteE polynomial preserves coefficients and establishes mathematical properties.
-
-    HermiteE polynomials are the "probabilists'" version of Hermite polynomials.
-    Key mathematical properties:
-    1. He₀(x) = 1, He₁(x) = x
-    2. Recurrence: Heₙ₊₁(x) = x * Heₙ(x) - n * Heₙ₋₁(x)
-    3. Parity: He_n(-x) = (-1)^n He_n(x)
-    4. Orthogonality with respect to Gaussian weight e^(-x²/2)
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,11 +1,3 @@
-/*
-Given a string containing only 'x' and 'y' characters, apply operations:
-1. Swap leftmost "yx" to "xy" 
-2. Remove leftmost "xy"
-Apply operation 1 if possible, otherwise operation 2, repeat until no operations possible.
-Return the final non-empty string.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> s[i] == 'x' || s[i] == 'y'

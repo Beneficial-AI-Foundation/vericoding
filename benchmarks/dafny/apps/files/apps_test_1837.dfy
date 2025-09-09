@@ -1,8 +1,3 @@
-/*
-Given a permutation of integers 0 to n-1, find the maximum number of fixed points
-(positions where a[i] = i) after performing at most one swap operation.
-*/
-
 predicate ValidInput(n: int, A: seq<int>)
 {
     n >= 1 &&

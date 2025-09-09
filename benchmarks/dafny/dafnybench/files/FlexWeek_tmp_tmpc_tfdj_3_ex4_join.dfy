@@ -1,7 +1,3 @@
-/*
-// Forall
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

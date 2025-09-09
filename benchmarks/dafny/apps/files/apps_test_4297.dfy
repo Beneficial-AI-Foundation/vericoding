@@ -1,8 +1,3 @@
-/*
-Given a positive integer N, find the smallest positive integer that is divisible by both 2 and N.
-This is equivalent to finding the least common multiple of 2 and N.
-*/
-
 predicate ValidInput(n: int)
 {
     n >= 1

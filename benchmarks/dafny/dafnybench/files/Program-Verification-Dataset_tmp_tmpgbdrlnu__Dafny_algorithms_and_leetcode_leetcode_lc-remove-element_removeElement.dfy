@@ -1,9 +1,3 @@
-/*
-//https://leetcode.com/problems/remove-element/
-
-///compileTarget:js
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

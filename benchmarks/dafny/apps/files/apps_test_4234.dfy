@@ -1,9 +1,3 @@
-/*
-Given a string of lowercase letters, delete the minimum number of characters to make it "good".
-A string is "good" if its length is even and each character at odd positions (1st, 3rd, 5th, ...)
-differs from the character at the next even position (2nd, 4th, 6th, ...).
-*/
-
 predicate ValidInput(n: int, s: string)
 {
     n == |s| && n >= 0

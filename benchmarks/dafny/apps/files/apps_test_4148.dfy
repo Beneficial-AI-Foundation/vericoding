@@ -1,7 +1,3 @@
-/*
-Given a string S of uppercase English letters and an integer N, shift each character in S by N positions forward in the alphabet. The alphabet wraps around (A follows Z).
-*/
-
 function split_lines(input: string): seq<string>
 requires |input| > 0
 {

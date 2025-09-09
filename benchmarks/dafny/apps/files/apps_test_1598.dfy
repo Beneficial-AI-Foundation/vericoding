@@ -1,9 +1,3 @@
-/*
-Given a binary string s, find a binary string t of the same length such that
-for every substring s[l..r] and t[l..r], they have the same length of longest
-non-decreasing subsequence, and the number of zeros in t is maximized.
-*/
-
 predicate ValidBinaryString(s: string)
 {
     forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'

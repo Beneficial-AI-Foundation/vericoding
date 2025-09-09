@@ -1,8 +1,3 @@
-/*
-function_signature: def will_it_fly(q: List[int], w: int) -> bool
-Write a function that returns True if the object q will fly, and False otherwise. The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is less than or equal the maximum possible weight w.
-*/
-
 function is_palindrome_pred(s : seq<int>) : bool {
     forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
 }

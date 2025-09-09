@@ -1,11 +1,3 @@
-/*
-Given an array of integers, find the minimum number of seconds needed to make all elements zero.
-In each second, you can add an arbitrary integer to all non-zero elements in the array.
-The key insight is that the answer equals the number of distinct non-zero values in the array.
-
-// No specific constraints on input beyond being a sequence of integers
-*/
-
 predicate ValidInput(arr: seq<int>) {
     true
 }

@@ -1,34 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.translate",
-  "category": "String transformation",
-  "description": "For each element in a, return a copy of the string where all characters occurring in the optional argument deletechars are removed, and the remaining characters have been mapped through the given translation table",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.translate.html",
-  "doc": "For each element in \`a\`, return a copy of the string where all characters occurring in the optional argument \`deletechars\` are removed, and the remaining characters have been mapped through the given translation table.\n\nParameters\n----------\na : array_like, with \`bytes_\` dtype\ntable : array_like with \`bytes_\` dtype and shape (1, 256)\n    String of 256 bytes. Characters to map to (length 256)\ndeletechars : array_like, with \`bytes_\` dtype, optional\n    Characters to delete. If not given, no deletion occurs.\n\nReturns\n-------\nout : ndarray\n    Output array of \`bytes_\` dtype",
-}
--/
-
-/-  numpy.strings.translate: For each element in a, return a copy of the string where 
-    all characters occurring in deletechars are removed, and the remaining characters 
-    have been mapped through the given translation table.
-
-    This function performs character-level transformation on byte strings by first
-    removing characters specified in deletechars, then translating each remaining
-    character using a 256-byte translation table.
--/
-
-/-  Specification for numpy.strings.translate: Returns a vector where each element is 
-    the result of character deletion followed by character translation.
-
-    Mathematical Properties:
-    1. Element-wise transformation: Each result element is derived from the corresponding input
-    2. Two-stage process: First deletion, then translation
-    3. Deletion completeness: All occurrences of characters in deletechars are removed
-    4. Translation mapping: Each remaining byte is mapped through the translation table
-    5. Order preservation: Relative order of non-deleted characters is maintained
-    6. Empty string handling: Empty strings remain empty after transformation
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,10 +1,3 @@
-/*
-Given an infinite spiral starting at (0,0) that visits every integer point,
-determine the number of turns required to reach point (x,y) from origin.
-The spiral follows: (0,0) → (1,0) → (1,1) → (-1,1) → (-1,-1) → (2,-1) → ...
-A turn occurs when direction changes (right→up, up→left, left→down, down→right).
-*/
-
 predicate ValidInput(x: int, y: int) {
     -100 <= x <= 100 && -100 <= y <= 100
 }

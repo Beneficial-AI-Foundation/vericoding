@@ -1,9 +1,3 @@
-/*
-Given N blue cards and M red cards with strings, find maximum net earnings.
-When a string is announced, earn 1 yen per blue card with that string and
-lose 1 yen per red card with that string. Find the optimal string to maximize earnings.
-*/
-
 function count_occurrences(cards: seq<string>, target: string): int
     ensures count_occurrences(cards, target) >= 0
 {

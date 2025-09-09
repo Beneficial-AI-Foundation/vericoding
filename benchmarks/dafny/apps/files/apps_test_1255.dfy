@@ -1,9 +1,3 @@
-/*
-Given n customers visiting a cafe at specific times (hours and minutes), determine the minimum number of cash registers needed.
-Each customer takes less than a minute to serve and will leave if no register is available upon arrival.
-The minimum number of registers equals the maximum number of customers arriving at the same time.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0

@@ -1,16 +1,3 @@
-/*
-Bignum task: bignum_ModExp[ModExpPow2,Add,Zeroes,DivMod,Mul].
-Implement the method according to the Dafny specification.
-
-// All characters must be '0' or '1'.
-
-// sy is power of 2 or zero
-
-//requires y < Exp_int(2,n+1)
-
-//&& n > 0
-*/
-
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
   decreases s

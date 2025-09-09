@@ -1,9 +1,3 @@
-/*
-Given n movement commands ('L' for left, 'R' for right), determine how many
-different final positions are possible when any subset of commands may be ignored.
-The answer is always n + 1, representing all positions from minimum to maximum.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && exists i :: 0 <= i < |input| && input[i] == '\n'

@@ -1,23 +1,3 @@
-/*
-//ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
-
-// Check that both strings are larger than k 
-
-// Initialize variables
-
-// Don't want to exceed the bounds of str1 when checking for the element that is k entries away
-
-// Invariant to stay within bounds
-
-// Invariant to show that when temp is true, it is a substring
-
-// Invariant to show that when temp is false, it is not a substring
-
-// Telling dafny that i is that value that is increasing
-
-// Get an index from the array position were are at to the array position that is k away and check the substring
-*/
-
 predicate isSubstring(sub: seq<char>, str: seq<char>)
 {
     exists i :: 0 <= i <= |str| - |sub| && str[i..i+|sub|] == sub

@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "numpy.signbit",
-  "description": "Returns element-wise True where signbit is set (less than zero)",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.signbit.html",
-  "doc": "Returns element-wise True where signbit is set (less than zero).",
-}
--/
-
-/-  Returns element-wise True where signbit is set (less than zero) -/
-
-/-  Specification: signbit returns True for negative numbers and False for non-negative numbers -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

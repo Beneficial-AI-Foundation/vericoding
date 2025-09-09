@@ -1,8 +1,3 @@
-/*
-function_signature: method decode_shift(s: string) returns (t: string)
-Decode data. Requires: the condition holds for all values. Ensures: returns the correct size/count; the condition holds for all values.
-*/
-
 function encode_char(c: char): char
 
   requires 'a' <= c <= 'z'

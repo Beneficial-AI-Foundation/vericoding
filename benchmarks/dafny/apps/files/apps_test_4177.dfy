@@ -1,7 +1,3 @@
-/*
-Given a string S consisting of lowercase English letters, replace every character with 'x' and output the result.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| >= 1 && |s| <= 100 && forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'

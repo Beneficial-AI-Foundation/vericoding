@@ -1,8 +1,3 @@
-/*
-function_signature: def solve(n: list[int]) -> int
-Given a non-empty list of integers lst, add the even elements that are at odd indices.
-*/
-
 function sumc(s: seq<int>, p: seq<bool>) : int
     requires |s| == |p|
     {

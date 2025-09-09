@@ -1,34 +1,3 @@
-/- 
-{
-  "name": "numpy.ceil",
-  "description": "Return the ceiling of the input, element-wise",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.ceil.html",
-  "doc": "Return the ceiling of the input, element-wise.\n\nThe ceiling of the scalar x is the smallest integer i, such that i >= x.",
-}
--/
-
-/-  numpy.ceil: Return the ceiling of the input, element-wise.
-
-    The ceiling of each element x is the smallest integer i, such that i >= x.
-    This is a fundamental mathematical operation that rounds up to the
-    nearest integer.
-
-    Returns an array of the same shape as x, containing the ceiling of each element.
--/
-
-/-  Specification: numpy.ceil returns a vector where each element is the
-    ceiling (smallest integer greater than or equal to) the corresponding element in x.
-
-    Precondition: True (ceiling is defined for all real numbers)
-    Postcondition: For all indices i, result[i] is the ceiling of x[i], meaning:
-    - result[i] is an integer value (represented as Float)
-    - result[i] ≥ x[i]
-    - result[i] < x[i] + 1
-    - There is no integer k such that x[i] ≤ k < result[i]
-    - Monotonicity: if x[i] ≤ x[j] then result[i] ≤ result[j]
-    - Relationship with floor: result[i] = -((-x[i]).floor)
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

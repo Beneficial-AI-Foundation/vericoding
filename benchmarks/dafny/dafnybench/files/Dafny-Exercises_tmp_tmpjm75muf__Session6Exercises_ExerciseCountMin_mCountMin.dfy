@@ -1,7 +1,3 @@
-/*
-//Implement and verify an O(v.Length) algorithm
-*/
-
 function min(v:array<int>,i:int):int
 decreases i
  reads v

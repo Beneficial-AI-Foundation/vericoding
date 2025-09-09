@@ -1,9 +1,3 @@
-/*
-Given a string t, find a string s such that when you create s' by removing all 'a' 
-characters from s (keeping other characters in order) and concatenate s and s' to 
-form t = s + s', output the unique string s if it exists, otherwise output ":(".
-*/
-
 function CountAs(s: string): int
     ensures 0 <= CountAs(s) <= |s|
     ensures CountAs(s) == |s| ==> (forall i :: 0 <= i < |s| ==> s[i] == 'a')

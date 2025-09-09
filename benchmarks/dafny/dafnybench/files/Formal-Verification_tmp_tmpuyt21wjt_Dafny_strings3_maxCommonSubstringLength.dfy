@@ -1,9 +1,3 @@
-/*
-// We spent 2h each on this assignment
-
-//ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
-*/
-
 predicate isSubstring(sub: seq<char>, str: seq<char>)
 {
     exists i :: 0 <= i <= |str| - |sub| && str[i..i+|sub|] == sub

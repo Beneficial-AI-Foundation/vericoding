@@ -1,21 +1,3 @@
-/*
-// Working through https://dafny.org/dafny/OnlineTutorial/guide
-
-// https://dafny.org/dafny/OnlineTutorial/ValueTypes
-
-// https://dafny.org/dafny/OnlineTutorial/Lemmas
-
-// the first link is valid, if it exists
-
-// and the rest of the sequence is a valid
-
-// path is nonempty
-
-// it starts and ends correctly
-
-// and it is a valid path
-*/
-
 function fib(n: nat): nat
 {
   if n == 0 then 0

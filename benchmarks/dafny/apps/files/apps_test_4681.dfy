@@ -1,8 +1,3 @@
-/*
-Compute the N-th Lucas number where the Lucas sequence is defined as:
-L₀ = 2, L₁ = 1, and Lᵢ = Lᵢ₋₁ + Lᵢ₋₂ for i ≥ 2
-*/
-
 function Lucas(n: int): int
     requires n >= 0
 {

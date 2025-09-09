@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "numpy.nansum",
-  "description": "Return the sum of array elements over a given axis treating Not a Numbers (NaNs) as zero",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.nansum.html",
-  "doc": "Return the sum of array elements over a given axis treating Not a Numbers (NaNs) as zero.",
-}
--/
-
-/-  Return the sum of array elements treating NaN values as zero -/
-
-/-  Specification: nansum computes the sum of array elements treating NaN values as zero -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

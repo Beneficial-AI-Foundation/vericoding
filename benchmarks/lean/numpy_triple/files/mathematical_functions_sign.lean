@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "numpy.sign",
-  "description": "Returns an element-wise indication of the sign of a number",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.sign.html",
-  "doc": "Returns an element-wise indication of the sign of a number.\n\nThe sign function returns -1 if x < 0, 0 if x==0, 1 if x > 0. nan is returned for nan inputs.",
-}
--/
-
-/-  Returns an element-wise indication of the sign of a number -/
-
-/-  Specification: sign returns -1 for negative numbers, 0 for zero, 1 for positive numbers -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

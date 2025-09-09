@@ -1,8 +1,3 @@
-/*
-Given an array of n integers representing lightsaber colors (each integer is between 1 and m),
-determine if there exists a contiguous subarray where each color i appears exactly k_i times.
-*/
-
 function count_occurrences(s: seq<nat>, value: nat): nat
 {
     if |s| == 0 then 0

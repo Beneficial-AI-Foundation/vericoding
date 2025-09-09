@@ -1,8 +1,3 @@
-/*
-function_signature: def get_closest_vowel(s : str) -> str
-You are given a word. Your task is to find the closest vowel that stands between two consonants from the right side of the word (case sensitive).
-*/
-
 function IsVowel(c: char) : bool
 {
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||

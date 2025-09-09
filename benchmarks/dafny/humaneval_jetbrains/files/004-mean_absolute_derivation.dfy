@@ -1,8 +1,3 @@
-/*
-function_signature: def mean_absolute_deviation(numbers: List[float]) -> float
-For a given list of input numbers, calculate Mean Absolute Deviation around the mean of this dataset. Mean Absolute Deviation is the average absolute difference between each element and a centerpoint (mean in this case): MAD = average | x - x_mean |
-*/
-
 function sum(s: seq<real>) : real {
   if |s| == 0 then 0.0 else s[0] + sum(s[1..])
 }

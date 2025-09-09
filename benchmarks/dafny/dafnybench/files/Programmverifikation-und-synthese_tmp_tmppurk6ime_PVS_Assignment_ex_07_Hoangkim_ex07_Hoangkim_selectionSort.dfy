@@ -1,21 +1,3 @@
-/*
-//Problem01
-
-//a)
-
-//b)
-
-//Problem04
-
-//Problem02
-
-//ensures multiset(a[..]) == multiset(old(a[..]))
-
-//ensures sorted(a[..])
-
-//Problem03
-*/
-
 method FindMin(a: array<int>, lo: nat) returns (minIdx: nat)
     requires a != null && a.Length > 0 && lo < a.Length
     ensures lo <= minIdx < a.Length

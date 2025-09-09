@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate summingPair(i: nat, j: nat, nums: seq<int>, target: int)
     requires i < |nums|
     requires j < |nums|

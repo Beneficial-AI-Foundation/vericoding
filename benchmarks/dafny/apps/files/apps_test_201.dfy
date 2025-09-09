@@ -1,9 +1,3 @@
-/*
-Given two types of candies with different weights and joy values, find the maximum joy units
-achievable by selecting whole candies within a weight constraint. Must maximize total joy
-while staying within the weight capacity C.
-*/
-
 predicate ValidInput(C: int, Hr: int, Hb: int, Wr: int, Wb: int)
 {
   C >= 0 && Hr > 0 && Hb > 0 && Wr > 0 && Wb > 0

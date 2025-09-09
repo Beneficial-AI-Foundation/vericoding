@@ -1,9 +1,3 @@
-/*
-// when you change a  , that's not the same object than b . 
-
-//requires b.Length > 0
-*/
-
 function sum(a: array<int>, i: int): int
     requires 0 <= i < a.Length
     reads a

@@ -1,10 +1,3 @@
-/*
-Given n buyers and cost p per apple, determine total money seller should receive.
-Each buyer purchased exactly half the apples available at their turn.
-If apples were odd, buyer received additional half apple as gift.
-Seller started with some positive number of apples and ended with zero apples.
-*/
-
 predicate ValidInput(n: int, p: int, buyers: seq<string>)
 {
     1 <= n <= 40 &&

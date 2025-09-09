@@ -1,9 +1,3 @@
-/*
-// sums from index 0 -> i - 1
-
-// returns sum of array
-*/
-
 function sumcheck(s: array<int>, i: int): int
 requires 0 <= i <= s.Length
 reads s

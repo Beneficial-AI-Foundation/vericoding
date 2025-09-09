@@ -1,8 +1,3 @@
-/*
-Count the number of permutations of [1, 2, ..., n] where at least n-k positions
-have the correct value (i.e., p[i] = i for at least n-k indices i).
-*/
-
 predicate ValidInput(n: int, k: int)
 {
   4 <= n <= 1000 && 1 <= k <= 4 && k < n

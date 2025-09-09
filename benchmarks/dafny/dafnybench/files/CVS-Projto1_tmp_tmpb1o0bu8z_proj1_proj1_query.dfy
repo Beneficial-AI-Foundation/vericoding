@@ -1,13 +1,3 @@
-/*
-//Exercicio 1.a)
-
-//Exercicio 1.b)
-
-//Exercicio 1.c)
-
-///Exercicio 2.
-*/
-
 function sum (a:array<int>, i:int, j:int) :int
 decreases j
 reads a

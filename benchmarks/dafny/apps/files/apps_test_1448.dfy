@@ -1,9 +1,3 @@
-/*
-Given integers n and d, determine for each grasshopper whether their position 
-is inside or on the boundary of a cornfield quadrilateral with vertices at 
-(0,d), (d,0), (n,n-d), (n-d,n). Output "YES" if inside/on boundary, "NO" otherwise.
-*/
-
 function ValidInput(input: string): bool
 {
     var lines := SplitLines(input);

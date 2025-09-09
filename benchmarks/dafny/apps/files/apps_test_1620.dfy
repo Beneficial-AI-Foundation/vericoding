@@ -1,9 +1,3 @@
-/*
-Given a positive integer n, construct a string of length n using only characters 'a', 'b', and 'c' such that:
-1. The string contains no palindromic substrings of length 3
-2. The number of 'c' characters is minimized
-*/
-
 predicate ValidInput(n: int)
 {
   n >= 1

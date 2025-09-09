@@ -1,9 +1,3 @@
-/*
-Given a tree with n vertices where each vertex i has value a_i, find the maximum length path 
-where all values on the path share a common divisor greater than 1. The path length is the 
-number of vertices on the simple path (inclusive). If no such path exists, return 0.
-*/
-
 predicate valid_input_format(stdin_input: string)
 {
   |stdin_input| > 0 && 

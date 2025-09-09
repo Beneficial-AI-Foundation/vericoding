@@ -1,8 +1,3 @@
-/*
-function_signature: def fib(n: int) -> int
-Return n-th Fibonacci number.
-*/
-
 function fib(n: nat): nat
   decreases n
 {

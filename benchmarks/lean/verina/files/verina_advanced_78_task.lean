@@ -1,16 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that solves the Two Sum problem. Given a list of integers and a target integer, the method must return a pair of indices such that the sum of the numbers at those indices equals the target. You may assume that each input has exactly one solution and that you may not use the same element twice. The answer should be returned with first index is smaller than the second.
-
------Input-----
-The input consists of:
-- nums: A list of integers.
-- target: An integer representing the target sum.
-
------Output-----
-The output is a pair (tuple) of integers representing the indices of the two numbers in the input list that add up to the target.
--/
-
 @[reducible]
 def twoSum_precond (nums : List Int) (target : Int) : Prop :=
   let pairwiseSum := List.range nums.length |>.flatMap (fun i =>

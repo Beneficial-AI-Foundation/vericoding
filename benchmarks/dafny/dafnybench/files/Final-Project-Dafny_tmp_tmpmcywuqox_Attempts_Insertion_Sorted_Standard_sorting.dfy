@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate InsertionSorted(Array: array<int>, left: int, right: int)  
   requires 0 <= left <= right <= Array.Length       
   reads Array       

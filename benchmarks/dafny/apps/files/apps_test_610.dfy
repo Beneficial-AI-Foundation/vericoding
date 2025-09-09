@@ -1,10 +1,3 @@
-/*
-Given n red cubes and m blue cubes, two players take turns placing cubes in a line.
-Petya moves first and wants to maximize same-color adjacent pairs.
-Vasya moves second and wants to maximize different-color adjacent pairs.
-Both players play optimally. Calculate final scores for both players.
-*/
-
 predicate ValidInput(n: int, m: int)
 {
   n >= 1 && m >= 1

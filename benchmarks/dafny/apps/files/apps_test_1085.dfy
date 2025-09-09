@@ -1,9 +1,3 @@
-/*
-Given a positive integer N, find how many values of K (where 2 ≤ K ≤ N) will cause N to become 1
-through repeated operations: if K divides N, replace N with N/K; otherwise replace N with N-K;
-continue until N < K. Count the number of valid K values.
-*/
-
 predicate ValidInput(n: nat)
 {
   n > 0

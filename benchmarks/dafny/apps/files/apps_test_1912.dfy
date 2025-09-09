@@ -1,10 +1,3 @@
-/*
-Given T test cases with four integers r, g, b, w representing ball counts,
-determine if balls can be arranged into a palindrome after performing operations.
-Operation: select one red, green, and blue ball and change all three to white.
-For palindromes, at most one color can have an odd count.
-*/
-
 predicate ValidInput(input: string)
 {
   |input| > 0 &&

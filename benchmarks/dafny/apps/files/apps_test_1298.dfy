@@ -1,10 +1,3 @@
-/*
-Given a binary string, repeatedly remove adjacent pairs of '0' and '1' characters.
-Find the minimum possible length after performing this operation any number of times.
-Each operation removes exactly one '0' and one '1', so the result is the absolute
-difference between the count of '0's and '1's in the original string.
-*/
-
 predicate is_binary_string(s: string)
 {
     forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'

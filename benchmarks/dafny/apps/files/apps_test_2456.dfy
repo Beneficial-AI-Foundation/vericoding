@@ -1,12 +1,3 @@
-/*
-Given integers n and r, determine the number of distinct shapes that can be formed
-by painting n consecutive days on calendars where a week can have k days (1 ≤ k ≤ r).
-Days are arranged left-to-right in rows, wrapping to the next row when reaching 
-the end of a week. All painted cells must be connected by sides. Two shapes are 
-considered the same if one can be moved to exactly overlap the other using only 
-parallel translations.
-*/
-
 predicate ValidInput(n: int, r: int)
 {
     n >= 1 && r >= 1

@@ -1,9 +1,3 @@
-/*
-Given a permutation p of integers {1, 2, ..., n}, count how many elements p_i 
-(where 1 < i < n) are the median (second smallest) value among the three 
-consecutive elements p_{i-1}, p_i, and p_{i+1}.
-*/
-
 predicate ValidInput(n: int, p: seq<int>)
 {
     |p| == n && n >= 3

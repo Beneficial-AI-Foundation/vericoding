@@ -1,17 +1,3 @@
-/*
-// verifies
-
-// all bs are before all as which are before all ds
-
-// all b's are before all a's and d's
-
-// all a's are after all b's
-
-// all a's are before all d's
-
-// all d's are after a;; b's and a's
-*/
-
 predicate sortedbad(s:string) 
 {
 

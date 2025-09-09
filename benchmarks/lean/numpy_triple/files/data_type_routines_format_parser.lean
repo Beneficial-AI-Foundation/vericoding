@@ -1,25 +1,3 @@
-/-  numpy.format_parser: Class to convert formats, names, titles description to a dtype.
-
-    This function takes format descriptions, field names, and optional titles
-    and produces a structured data type specification. It validates that the
-    formats are well-formed and that the number of names matches the number
-    of format descriptors.
-
-    The function handles common NumPy format strings like 'f8' (float64),
-    'i4' (int32), 'S5' (string of length 5), etc.
--/
-
-/-  Specification: numpy.format_parser creates a structured data type from format descriptions.
-
-    Precondition: All format strings in formats are valid NumPy format descriptors
-    Postcondition: 
-    1. The result has the same number of fields as input vectors
-    2. Each field has the correct name from the names vector
-    3. Each field has the correct format descriptor parsed from the formats vector
-    4. If titles are provided, each field has the corresponding title
-    5. The alignment setting is preserved
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

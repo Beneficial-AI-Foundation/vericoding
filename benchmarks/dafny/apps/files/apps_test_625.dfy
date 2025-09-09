@@ -1,8 +1,3 @@
-/*
-Given a positive integer n, calculate the value of the alternating sum:
-f(n) = -1 + 2 - 3 + 4 - 5 + ... + (-1)^n × n
-*/
-
 function AlternatingSum(n: int): int
     requires n > 0
 {

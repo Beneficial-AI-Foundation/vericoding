@@ -1,8 +1,3 @@
-/*
-function_signature: method count_sorted(a: seq<int>, x: int, pos: int) returns (count: int)
-Count occurrences. Requires: the condition holds for all values; the size is bounded; returns the correct value; returns the correct size/count. Ensures: returns the correct value.
-*/
-
 function count_set(a: seq<int>, x: int): int {
   |set i | 0 <= i < |a| && a[i] == x|
 }

@@ -1,9 +1,3 @@
-/*
-Given a string s of n lowercase Latin letters, find the minimum number of operations
-to construct it starting from an empty string. Operations are: (1) add one character
-to the end (unlimited use), (2) copy current string and append it to itself (at most once).
-*/
-
 predicate ValidInput(n: nat, s: string)
 {
     |s| == n

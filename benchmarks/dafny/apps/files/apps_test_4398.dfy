@@ -1,8 +1,3 @@
-/*
-Given two strings S and T of equal length N, create a new string by alternating characters 
-from S and T in the order: S[0], T[0], S[1], T[1], ..., S[N-1], T[N-1].
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);

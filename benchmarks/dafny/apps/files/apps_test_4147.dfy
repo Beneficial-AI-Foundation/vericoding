@@ -1,10 +1,3 @@
-/*
-Given N bamboos with lengths, find minimum magic points (MP) to create exactly three bamboos 
-with target lengths A, B, and C. Operations: Extension Magic (1 MP per unit), Shortening Magic 
-(1 MP per unit), Composition Magic (10 MP to combine two bamboos). Input format: first line 
-contains N A B C, followed by N lines with bamboo lengths. Output minimum MP needed.
-*/
-
 ghost predicate ValidInput(input: string)
 {
     exists lines :: (lines == split_lines(input) &&

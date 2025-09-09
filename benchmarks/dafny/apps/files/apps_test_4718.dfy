@@ -1,8 +1,3 @@
-/*
-Given a date string in format "2017/01/dd" where dd represents a day from 01 to 31,
-replace the year "2017" with "2018" and output the corrected date string.
-*/
-
 predicate ValidInput(dateStr: string) 
 {
     |dateStr| == 10 && dateStr[0..4] == "2017"

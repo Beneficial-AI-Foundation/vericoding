@@ -1,9 +1,3 @@
-/*
-Count the number of arrays of length n where each element is from 1 to m,
-exactly one pair of elements are equal (all others distinct), and the array
-is unimodal (strictly ascending then strictly descending around a peak).
-*/
-
 predicate ValidInput(n: int, m: int) {
   n >= 2 && m >= 1 && n <= m && m <= 200000
 }

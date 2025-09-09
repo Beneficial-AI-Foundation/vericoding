@@ -1,15 +1,3 @@
-/*
-Given n bus stops at positions a_i (sorted in increasing order), a bus travels back and forth 
-between stops 1 and n in order: 1→2→...→n→(n-1)→...→1→2→... repeatedly.
-Given a segment of the bus journey as a sorted list of stop numbers with their visit frequencies,
-calculate the total distance traveled during this segment, or return -1 if the distance cannot 
-be uniquely determined.
-
-// Since |visits| >= 1, there must be at least one visit
-
-// This means at least one count > 0, so if allZero then maxRounds >= 1
-*/
-
 predicate isSorted(s: seq<int>)
 {
     forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]

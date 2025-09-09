@@ -1,11 +1,3 @@
-/*
-// Bubble Sort
-
-// Predicates for Bubble Sort
-
-// TODO: modify the ensures clause so that count is indeed equal to the minimum number of intervals we need to remove to make the rest of the intervals non-overlapping.
-*/
-
 method bubble_sort(a: array2<int>)
     modifies a
     requires a.Length1 == 2

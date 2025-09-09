@@ -1,8 +1,3 @@
-/*
-function_signature: def prime_length(s: str) -> bool
-Write a function that takes a string and returns True if the string length is a prime number or False otherwise
-*/
-
 function IsPrime(n: int) : bool
 {
   n > 1 &&

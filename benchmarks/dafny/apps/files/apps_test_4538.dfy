@@ -1,8 +1,3 @@
-/*
-Given N points in a 2D plane, count how many points are within distance D from the origin (0,0).
-Distance is measured using Euclidean distance, and we check if distance <= D.
-*/
-
 predicate ValidInput(N: int, D: int, points: seq<(int, int)>)
 {
     N >= 0 && D >= 0 && |points| >= N

@@ -1,26 +1,3 @@
-/- 
-{
-  "name": "numpy.linalg.tensorinv",
-  "category": "Solving equations and inverting matrices",
-  "description": "Compute the 'inverse' of an N-dimensional array",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.tensorinv.html",
-  "doc": "Compute the 'inverse' of an N-dimensional array.\n\nThe result is an inverse for a relative to the tensordot operation tensordot(a, b, ind), i.e., up to floating-point accuracy, tensordot(tensorinv(a), a, ind) is the identity tensor.",
-}
--/
-
-/-  Compute the 'inverse' of an N-dimensional array.
-    For simplicity, we implement the case where the tensor is represented as a 2D matrix
-    (viewed as a flattened N-dimensional array) and we compute its matrix inverse.
-    The result should be the inverse for the tensordot operation. -/
-
-/-  Specification: tensorinv computes the tensor inverse such that when composed
-    with the original tensor via tensordot operation, it yields the identity tensor.
-    The key properties are:
-    1. The result has the same square dimensions as the input
-    2. The tensor inverse, when applied via tensordot, acts as a left inverse
-    3. The tensor must be 'square' (equal first and last dimensions products)
-    4. The index parameter must be positive -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

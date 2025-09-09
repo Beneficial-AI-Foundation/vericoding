@@ -1,10 +1,3 @@
-/*
-Given n companies, each with employees having specific salaries, merge all companies into one. 
-Companies can only merge if their maximum salaries are equal. You can increase salaries in any 
-company, but all employees in the same company must receive the same increase. Find the minimum 
-total salary increase needed to enable merging all companies.
-*/
-
 predicate ValidCompanyInput(input: string)
 {
     var lines := SplitLinesFunc(input);

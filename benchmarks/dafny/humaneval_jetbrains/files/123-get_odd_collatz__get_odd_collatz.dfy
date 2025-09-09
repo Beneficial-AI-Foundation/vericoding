@@ -1,8 +1,3 @@
-/*
-function_signature: method get_odd_collatz(n: nat) returns (sorted: seq<int>)
-Retrieve elements. Requires: requires n > 1. Ensures: the result is sorted according to the ordering relation; the result is sorted according to the ordering relation.
-*/
-
 function iterate_to_odd(n: nat): nat
   requires n % 2 == 0
   requires n > 0

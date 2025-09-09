@@ -1,7 +1,3 @@
-/*
-// Formula for the number of non-empty substrings of a string
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 

@@ -1,14 +1,3 @@
-/*
-/*
-    Goal: Implement correctly, clearly. No need to document the proof obligations.
-*/
-
-/*
-    Goal: Implement correctly, efficiently, clearly, documenting the proof obligations
-    as we've learned, with assertions and a lemma for each proof goal
-*/
-*/
-
 datatype Tree = Empty | Node(int,Tree,Tree)
 
 function NumbersInTree(t: Tree): set<int>
