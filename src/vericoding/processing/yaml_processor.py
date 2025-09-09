@@ -33,13 +33,13 @@ def yaml_to_code(data: dict, spec_mode: bool = True, vibe_mode: bool = False, la
     
     # Apply mode filtering
     if not vibe_mode and 'vc-description' in filtered_data:
-        del filtered_data['vc-description']
+        filtered_data['vc-description'] = ""
     
     if not spec_mode:
-        # Remove spec-related sections
+        # Set spec-related sections to empty
         for key in ['vc-spec', 'vc-definitions', 'vc-theorems']:
             if key in filtered_data:
-                del filtered_data[key]
+                filtered_data[key] = ""
     
     return spec_to_string(filtered_data, template)
 
