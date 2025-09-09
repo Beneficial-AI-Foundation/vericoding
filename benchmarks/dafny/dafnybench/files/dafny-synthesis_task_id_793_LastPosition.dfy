@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -10,6 +13,6 @@ method LastPosition(arr: array<int>, elem: int) returns (pos: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

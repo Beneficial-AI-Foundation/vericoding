@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -9,6 +12,6 @@ method Find(a: array<int>, key: int) returns (index: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

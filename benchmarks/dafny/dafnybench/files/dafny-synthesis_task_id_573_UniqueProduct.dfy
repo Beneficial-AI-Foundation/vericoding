@@ -1,3 +1,6 @@
+/*
+*/
+
 ghost function SetProduct(s : set<int>) : int
 {
     if s == {} then 1
@@ -14,6 +17,6 @@ method UniqueProduct (arr: array<int>) returns (product: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

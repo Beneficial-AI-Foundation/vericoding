@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -10,6 +13,6 @@ method RemoveElement(nums: array<int>, val: int) returns (newLength: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

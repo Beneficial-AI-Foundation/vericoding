@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate quickSorted(Seq: seq<int>)
 {
   forall idx_1, idx_2 :: 0 <= idx_1 < idx_2 < |Seq| ==> Seq[idx_1] <= Seq[idx_2]
@@ -21,6 +24,6 @@ method quickSort(Seq: seq<int>) returns (Seq': seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

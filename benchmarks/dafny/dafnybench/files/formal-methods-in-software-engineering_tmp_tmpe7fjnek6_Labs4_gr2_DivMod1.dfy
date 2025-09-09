@@ -1,4 +1,7 @@
 /*
+*/
+
+/*
 Dafny include 2 limbaje:
     * un limbaj pentru specificare 
         MSFOL (ce am discutat până acum)
@@ -8,8 +11,6 @@ Dafny include 2 limbaje:
 
 // Exemplu de program
 
-
-
 /*
     triple Hoare (| P |) S (| Q |) 
 */
@@ -17,7 +18,6 @@ Dafny include 2 limbaje:
 // varianta assume-assert
 
 // varianta requires-ensures
-
 
 /*
 regula pentru while
@@ -39,7 +39,6 @@ function SqrSumRec(n: int) : int
 */
 
 // verificarea programului pentru suma de patrate
-
 
 // SqrSumRec(n) = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
 least lemma L1(n: int)
@@ -109,6 +108,6 @@ ensures a == b*q + r && 0 <= r < b
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

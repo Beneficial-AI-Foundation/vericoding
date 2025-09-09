@@ -1,3 +1,6 @@
+/*
+*/
+
 /* 
 * Formal verification of the selection sort algorithm with Dafny.
 * FEUP, MIEIC, MFES, 2020/21.
@@ -34,6 +37,6 @@ method selectionSort(a: array<real>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

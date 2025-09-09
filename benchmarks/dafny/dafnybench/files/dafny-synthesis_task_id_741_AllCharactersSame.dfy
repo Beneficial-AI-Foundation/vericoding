@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -8,6 +11,6 @@ method AllCharactersSame(s: string) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

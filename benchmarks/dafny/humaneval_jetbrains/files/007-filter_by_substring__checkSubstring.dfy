@@ -3,10 +3,17 @@ function_signature: method checkSubstring(s: string, sub: string) returns (resul
 Check condition.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method checkSubstring(s: string, sub: string) returns (result: bool)
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method filter_by_substring(strings: seq<string>, substring: string) returns (res : seq<string>)
     // post-conditions-start

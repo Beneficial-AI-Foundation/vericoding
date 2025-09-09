@@ -1,5 +1,7 @@
+/*
 Bignum task: bignums_Zeros.
 Implement the method according to the Dafny specification.
+*/
 
 predicate AllZero(s: string)
 {
@@ -16,11 +18,18 @@ predicate ValidBitString(s: string)
   forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method Zeros(n: nat) returns (s: string)
   ensures |s| == n
   ensures ValidBitString(s)
   ensures Str2Int(s) == 0
   ensures AllZero(s)
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

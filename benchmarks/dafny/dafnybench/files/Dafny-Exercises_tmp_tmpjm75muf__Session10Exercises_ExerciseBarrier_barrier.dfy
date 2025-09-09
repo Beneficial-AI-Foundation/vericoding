@@ -1,3 +1,6 @@
+/*
+*/
+
 //Method barrier below receives an array and an integer p
 //and returns a boolean b which is true if and only if 
 //all the positions to the left of p and including also position p contain elements 
@@ -24,6 +27,6 @@ ensures b==forall k,l::0<=k<=p && p<l<v.Length ==> v[k]<v[l]
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

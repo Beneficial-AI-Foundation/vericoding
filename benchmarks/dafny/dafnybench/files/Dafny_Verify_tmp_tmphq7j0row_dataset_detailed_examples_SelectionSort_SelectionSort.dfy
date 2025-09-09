@@ -1,3 +1,6 @@
+/*
+*/
+
 // Works by dividing the input list into two parts: sorted and unsorted. At the beginning, 
 // the sorted part is empty and the unsorted part contains all the elements.
 
@@ -14,6 +17,6 @@ method SelectionSort(a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,4 +1,3 @@
-
 /*
 function_signature: method SortSeq(s: SortSeqState) returns (sorted: SortSeqState)
 Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
@@ -26,12 +25,19 @@ method get_row(lst: seq<seq<int>>, x: int) returns (pos: SortSeqState)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method SortSeq(s: SortSeqState) returns (sorted: SortSeqState)
   // post-conditions-start
   ensures forall i, j :: 0 <= i < j < |sorted| ==> less_eq(sorted[i], sorted[j])
   ensures |sorted| == |s|
   ensures multiset(s) == multiset(sorted)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

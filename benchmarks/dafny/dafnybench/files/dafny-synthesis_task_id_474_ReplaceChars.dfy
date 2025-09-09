@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -8,6 +11,6 @@ method ReplaceChars(s: string, oldChar: char, newChar: char) returns (v: string)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

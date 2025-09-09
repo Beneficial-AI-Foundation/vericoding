@@ -1,3 +1,6 @@
+/*
+*/
+
 // By `lol sort` here, I refer to a seemingly-broken sorting algorithm,
 // which actually somehow manages to work perfectly:
 //
@@ -13,8 +16,6 @@
 // Proving its correctness is tricky (interesting) though.
 
 // Successfully verified with [Dafny 3.3.0.31104] in about 5 seconds.
-
-
 
 // We define "valid permutation" using multiset:
 
@@ -41,7 +42,6 @@ predicate sorted(a: seq<int>)
   forall i, j | 0 <= i <= j < |a| :: a[i] <= a[j]
 }
 
-
 // Now, the lol sort algorithm:
 // (Some invariants were tricky to find, but Dafny was smart enough otherwise)
 
@@ -56,6 +56,6 @@ method lol_sort(a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

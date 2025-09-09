@@ -1,5 +1,7 @@
+/*
 Bignum task: bignum_ModExp[Add,Mul,Zeroes].
 Implement the method according to the Dafny specification.
+*/
 
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
@@ -46,6 +48,10 @@ method Zeros(n: nat) returns (s: string)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method ModExp(sx: string, sy: string, sz: string) returns (res: string)
   requires ValidBitString(sx) && ValidBitString(sy) &&  ValidBitString(sz)
   ensures ValidBitString(res)
@@ -53,6 +59,9 @@ method ModExp(sx: string, sy: string, sz: string) returns (res: string)
   //requires y < Exp_int(2,n+1)
   requires |sy| > 0 && Str2Int(sz) > 1 //&& n > 0
   decreases |sy|
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

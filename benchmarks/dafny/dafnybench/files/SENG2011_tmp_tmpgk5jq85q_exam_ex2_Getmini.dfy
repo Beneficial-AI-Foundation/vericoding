@@ -1,6 +1,9 @@
 /*
 */
 
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -13,6 +16,6 @@ ensures forall x :: 0 <= x < mini ==> a[mini] < a[x] // a[mini] is the first min
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

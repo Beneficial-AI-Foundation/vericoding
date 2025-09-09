@@ -1,4 +1,3 @@
-
 /*
 function_signature: method circular_shift(a: nat, shift: nat) returns (shifted: string)
 Process input. Ensures: returns the correct size/count; the condition holds for all values; returns the correct size/count.
@@ -15,15 +14,22 @@ function natToString(n: nat): stringNat {
     case _ => natToString(n / 10) + natToString(n % 10)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method circular_shift(a: nat, shift: nat) returns (shifted: string)
   // post-conditions-start
   ensures |shifted| == |natToString(a)|
   ensures var s := natToString(a); shift > |s| ==> forall i :: 0 <= i < |s| ==> shifted[i] == s[|s| - 1 - i]
   ensures var s := natToString(a); shift <= |s| ==> shifted == s[|s| - shift..] + s[..|s| - shift]
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method reverse(str: string) returns (rev: string)
     // post-conditions-start

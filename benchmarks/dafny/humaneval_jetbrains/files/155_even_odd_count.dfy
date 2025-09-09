@@ -3,6 +3,10 @@ function_signature: method even_odd_count(n: nat) returns (even: nat, odd: nat)
 Given an integer, return a tuple that has the number of even and odd digits respectively.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method even_odd_count(n: nat) returns (even: nat, odd: nat)
   // pre-conditions-start
   requires n > 0
@@ -11,9 +15,12 @@ method even_odd_count(n: nat) returns (even: nat, odd: nat)
   ensures even == even_count(n)
   ensures odd == odd_count(n)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function odd_count(n: nat): nat {
   if n == 0 then 0

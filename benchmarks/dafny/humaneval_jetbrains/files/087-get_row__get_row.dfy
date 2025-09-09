@@ -1,4 +1,3 @@
-
 /*
 function_signature: method get_row(lst: seq<seq<int>>, x: int) returns (pos: SortSeqState)
 Retrieve elements. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values.
@@ -14,6 +13,10 @@ function less_eq(a: (int, int), b: (int, int)): bool {
   (x == u && y == v) || less(a, b)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method get_row(lst: seq<seq<int>>, x: int) returns (pos: SortSeqState)
   // post-conditions-start
   ensures forall i :: 0 <= i < |pos| ==> (
@@ -23,9 +26,12 @@ method get_row(lst: seq<seq<int>>, x: int) returns (pos: SortSeqState)
   ensures forall i, j :: 0 <= i < |lst| && 0 <= j < |lst[i]| && lst[i][j] == x ==> (i, j) in pos
   ensures forall i, j :: 0 <= i < j < |pos| ==> less_eq(pos[i], pos[j])
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method SortSeq(s: SortSeqState) returns (sorted: SortSeqState)
   // post-conditions-start

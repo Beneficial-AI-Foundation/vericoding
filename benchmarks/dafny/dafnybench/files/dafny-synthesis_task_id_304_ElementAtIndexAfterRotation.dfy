@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -9,6 +12,6 @@ method ElementAtIndexAfterRotation(l: seq<int>, n: int, index: int) returns (ele
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

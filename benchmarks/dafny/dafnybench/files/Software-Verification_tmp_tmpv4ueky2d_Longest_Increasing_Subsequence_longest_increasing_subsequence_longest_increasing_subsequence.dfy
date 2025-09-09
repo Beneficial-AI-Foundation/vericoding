@@ -1,3 +1,6 @@
+/*
+*/
+
 // Function
 function find_max(x: int, y: int): int
 {
@@ -17,6 +20,6 @@ method longest_increasing_subsequence(nums: array<int>) returns (max: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

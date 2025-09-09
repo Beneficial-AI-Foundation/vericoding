@@ -1,7 +1,8 @@
+/*
+*/
+
 // Noa Leron 207131871
 // Tsuri Farhana 315016907
-
-
 
 predicate Sorted(q: seq<int>) {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j]
@@ -35,9 +36,7 @@ method Merge(b: array<int>, c: array<int>, d: array<int>)
   assume{:axiom} false;
 }
 
-
 //This is a method that replace the loop body
-
 
 //Loop invariant - b is sprted so far and the next two potential values that will go into b are bigger then the biggest value in b.
 ghost predicate InvSorted(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat){
@@ -47,7 +46,6 @@ ghost predicate InvSorted(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat)
     Sorted(b[..i+j])
     }
 
-
 //Loop invariant - the multiset of the prefix of b so far is the same multiset as the prefixes of c and d so far.
 ghost predicate InvSubSet(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat){
     i <= |c| && j <= |d| && i + j <= |b| &&
@@ -56,7 +54,6 @@ ghost predicate InvSubSet(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat)
 
 //This lemma helps dafny see that if the prefixs of arrays are the same multiset until the end of the arrays,
 //all the arrays are the same multiset.
-
 
 //This lemma helps dafny see that after adding the next value from c to b the prefixes are still the same subsets.
 
@@ -70,6 +67,6 @@ method MergeSort(a: array<int>) returns (b: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

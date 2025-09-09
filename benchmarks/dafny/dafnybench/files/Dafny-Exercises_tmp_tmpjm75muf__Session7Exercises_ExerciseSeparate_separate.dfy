@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate strictNegative(v:array<int>,i:int,j:int)
 reads v
 requires 0<=i<=j<=v.Length
@@ -25,6 +28,6 @@ ensures isPermutation(v[0..v.Length], old(v[0..v.Length]))
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

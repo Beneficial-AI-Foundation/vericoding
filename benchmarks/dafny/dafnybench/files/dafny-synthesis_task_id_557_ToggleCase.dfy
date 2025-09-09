@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsLowerCase(c : char)
 {
     97 <= c as int <= 122
@@ -38,6 +41,6 @@ method ToggleCase(s: string) returns (v: string)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

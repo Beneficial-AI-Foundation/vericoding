@@ -1,3 +1,6 @@
+/*
+*/
+
 //https://leetcode.com/problems/remove-element/
 
 // <vc-helpers>
@@ -10,7 +13,7 @@ method removeElement(nums: array<int>, val: int) returns (i: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 

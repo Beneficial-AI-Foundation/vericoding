@@ -1,4 +1,3 @@
-
 /*
 function_signature: def count_distinct_characters(string: str) -> int
 Given a string, find out how many distinct characters (regardless of case) does it consist of
@@ -16,6 +15,10 @@ function upper_char(c: char) : (C: char)
   ensures 'A' <= C <= 'Z'
 { c - 'a' + 'A' }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method count_distinct_characters(s: string) returns (count: int)
   // pre-conditions-start
   requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z' || 'A' <= s[i] <= 'Z'
@@ -23,6 +26,9 @@ method count_distinct_characters(s: string) returns (count: int)
   // post-conditions-start
   ensures count == |set c | 'a' <= c <= 'z' && contains_char(s, c)|
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

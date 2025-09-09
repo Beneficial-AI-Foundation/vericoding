@@ -1,3 +1,6 @@
+/*
+*/
+
 // RUN: %dafny /compile:0 /dprint:"%t.dprint" "%s" > "%t"
 // RUN: %diff "%s.expect" "%t"
 
@@ -16,6 +19,6 @@ method ComputeFactorial(n: int) returns (u: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

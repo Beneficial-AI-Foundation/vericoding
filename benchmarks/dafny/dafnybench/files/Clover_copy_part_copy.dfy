@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -12,6 +15,6 @@ method copy( src: array<int>, sStart: nat, dest: array<int>, dStart: nat, len: n
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

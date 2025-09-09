@@ -1,4 +1,3 @@
-
 /*
 function_signature: method strange_sort_list(s: seq<int>) returns (strange: seq<int>)
 Sort elements. Ensures: returns the correct size/count.
@@ -15,13 +14,20 @@ method strange_sort_list_helper(s: seq<int>) returns (sorted: seq<int>, strange:
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method strange_sort_list(s: seq<int>) returns (strange: seq<int>)
     // post-conditions-start
     ensures |s| == |strange|
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method SortSeq(s: seq<int>) returns (sorted: seq<int>)
   // post-conditions-start

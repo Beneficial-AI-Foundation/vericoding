@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate strictSorted(s : seq<int>) {
     forall u, w :: 0 <= u < w < |s| ==> s[u] < s[w]
 }
@@ -18,6 +21,6 @@ ensures b==forall k:: 0<= k< n ==> v[k] in w[..m]//exists j :: 0 <= j < m && v[k
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

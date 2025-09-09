@@ -1,11 +1,12 @@
+/*
+*/
+
 /*                                      Cumulative Sums over Arrays                                        */
 
 /*
     Daniel Cavalheiro   57869
     Pedro Nunes         57854
 */
-
-
 
 //(a)
 
@@ -17,8 +18,6 @@ function sum(a: array<int>, i: int, j: int): int
     if (i == j) then 0
     else a[i] + sum(a, i+1, j)
 }
-
-
 
 //(b)
 
@@ -42,6 +41,6 @@ method query(a: array<int>, i: int, j: int) returns (res:int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

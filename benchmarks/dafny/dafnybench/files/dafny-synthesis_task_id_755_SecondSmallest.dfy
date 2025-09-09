@@ -1,3 +1,6 @@
+/*
+*/
+
 function MinPair(s: seq<int>) : (r: int)
     requires |s| == 2
     ensures s[0] <= s[1] <==> r == s[0]
@@ -5,7 +8,6 @@ function MinPair(s: seq<int>) : (r: int)
 {
     if s[0] <= s[1] then s[0] else s[1]
 }
-
 
 function min(s: seq<int>) : (r: int)
     requires |s| >= 2
@@ -28,6 +30,6 @@ method SecondSmallest(s: array<int>) returns (secondSmallest: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

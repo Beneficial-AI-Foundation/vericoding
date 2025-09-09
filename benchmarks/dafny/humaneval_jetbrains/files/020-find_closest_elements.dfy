@@ -1,4 +1,3 @@
-
 /*
 function_signature: def find_closest_elements(numbers: List[float]) -> Tuple[float, float]
 From a supplied list of numbers (of length at least two) select and return two that are the closest to each other and return them in order (smaller number, larger number).
@@ -15,6 +14,10 @@ function des(s: seq<real>, a: int, b: int) : bool {
     0 <= a < |s| && 0 <= b < |s| && a != b
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method find_closest_elements(s: seq<real>) returns (l : real, h : real)
     // pre-conditions-start
     requires |s| >= 2
@@ -24,6 +27,9 @@ method find_closest_elements(s: seq<real>) returns (l : real, h : real)
     ensures forall a, b : int :: des(s, a, b) ==> dist(l, h) <= dist(s[a], s[b])
     ensures l <= h
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

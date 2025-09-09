@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -9,6 +12,6 @@ ensures forall k::0<=k<old(v.Length) && old(v[k])!=x ==> v[k]==old(v[k])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

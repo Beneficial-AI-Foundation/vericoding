@@ -1,3 +1,6 @@
+/*
+*/
+
 //predicate for primeness
 ghost predicate prime(n: nat)
 
@@ -25,7 +28,6 @@ class {:autocontracts} PrimeMap{
     database := map[];
   }
 
-
   // lookup n in the database and reply with Yes or No if it's in the database and it is or it is not prime,
   // or with Unknown when it's not in the databse
 method IsPrime?(n: nat) returns (answer: Answer) 
@@ -51,6 +53,6 @@ method testPrimeness(n: nat) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

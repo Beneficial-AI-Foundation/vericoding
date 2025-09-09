@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -9,6 +12,6 @@ method Interleave(s1: seq<int>, s2: seq<int>, s3: seq<int>) returns (r: seq<int>
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

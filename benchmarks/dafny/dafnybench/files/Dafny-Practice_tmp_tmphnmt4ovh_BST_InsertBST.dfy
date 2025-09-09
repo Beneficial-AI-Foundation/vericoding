@@ -1,6 +1,7 @@
+/*
+*/
+
 datatype Tree = Empty | Node(int,Tree,Tree)
-
-
 
 function NumbersInTree(t: Tree): set<int>
 {
@@ -51,6 +52,6 @@ method InsertBST(t0: Tree, x: int) returns (t: Tree)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

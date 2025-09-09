@@ -1,3 +1,6 @@
+/*
+*/
+
 /* https://leetcode.com/problems/longest-palindromic-substring/
 Given a string s, return the longest palindromic substring in s.
 
@@ -6,7 +9,6 @@ Input: s = "babad"
 Output: "bab"
 Explanation: "aba" is also a valid answer.
 */
-
 
 // Specifying the problem: whether `s[i..j]` is palindromic
 ghost predicate palindromic(s: string, i: int, j: int)
@@ -22,7 +24,6 @@ ghost predicate palindromic(s: string, i: int, j: int)
 
 // The main algorithm.
 // We traverse all centers from left to right, and "expand" each of them, to find the longest palindrome.
-
 
 /* Discussions
 1. Dafny is super bad at slicing (esp. nested slicing).
@@ -52,7 +53,6 @@ ghost predicate palindromic(s: string, i: int, j: int)
   which "indirectly" proves that the entire algorithm runs in `O(|s|)` time.
 */
 
-
 // A reference implementation of Manacher's algorithm:
 // (Ref. https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm) for details...
 method longestPalindrome'(s: string) returns (ans: string, lo: int, hi: int)
@@ -62,7 +62,6 @@ method longestPalindrome'(s: string) returns (ans: string, lo: int, hi: int)
 {
   assume{:axiom} false;
 }
-
 
 // Below are helper functions and lemmas we used:
 
@@ -162,6 +161,6 @@ method expand_from_center(s: string, i0: int, j0: int) returns (lo: int, hi: int
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

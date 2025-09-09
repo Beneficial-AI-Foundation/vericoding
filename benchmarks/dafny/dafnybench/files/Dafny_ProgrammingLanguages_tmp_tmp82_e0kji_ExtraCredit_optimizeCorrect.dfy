@@ -1,3 +1,6 @@
+/*
+*/
+
 datatype Exp = Const(int) | Var(string) | Plus(Exp, Exp) |  Mult(Exp, Exp)
 
 function eval(e:Exp, store:map<string, int>):int
@@ -37,6 +40,6 @@ ensures eval(e,s) == eval(optimize(e), s)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

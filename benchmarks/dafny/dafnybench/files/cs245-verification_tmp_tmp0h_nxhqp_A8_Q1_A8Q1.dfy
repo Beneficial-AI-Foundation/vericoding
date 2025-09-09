@@ -1,3 +1,6 @@
+/*
+*/
+
 // A8Q1 — Steph Renee McIntyre
 // Following the solutions from Carmen Bruni
 
@@ -23,6 +26,6 @@ ensures z==power(x,y0)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

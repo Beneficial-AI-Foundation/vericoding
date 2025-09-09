@@ -1,3 +1,6 @@
+/*
+*/
+
 // RUN: %dafny /compile:0 /dprint:"%t.dprint" "%s" > "%t"
 // RUN: %diff "%s.expect" "%t"
 
@@ -50,6 +53,6 @@ method two_way_sort(a: array<bool>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

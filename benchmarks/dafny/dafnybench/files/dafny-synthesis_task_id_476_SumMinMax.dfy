@@ -1,3 +1,6 @@
+/*
+*/
+
 // The order of the recursion in these two functions
 // must match the order of the iteration in the algorithm above
 function Min(a: seq<int>) : int
@@ -28,6 +31,6 @@ method SumMinMax(a: array<int>) returns (sum: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

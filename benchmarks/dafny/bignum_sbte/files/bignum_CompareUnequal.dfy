@@ -1,5 +1,7 @@
+/*
 Bignum task: bignum_CompareUnequal.
 Implement the method according to the Dafny specification.
+*/
 
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
@@ -13,6 +15,10 @@ predicate ValidBitString(s: string)
   forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method CompareUnequal(s1: string, s2: string) returns (res: int)
   requires ValidBitString(s1) && ValidBitString(s2)
   ensures Str2Int(s1) < Str2Int(s2) ==> res == -1
@@ -23,6 +29,9 @@ method CompareUnequal(s1: string, s2: string) returns (res: int)
   requires |s2| > 0
   requires |s2| > 1 ==> s2[0] != '0'
   requires |s1| > |s2|
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

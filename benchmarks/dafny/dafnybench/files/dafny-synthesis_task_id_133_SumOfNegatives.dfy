@@ -1,3 +1,6 @@
+/*
+*/
+
 function sumNegativesTo( a:array<int>, n:int ) : int
   requires a != null;
   requires 0 <= n && n <= a.Length;
@@ -16,6 +19,6 @@ method SumOfNegatives(a: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

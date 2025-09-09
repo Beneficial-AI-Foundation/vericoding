@@ -1,4 +1,3 @@
-
 /*
 function_signature: method largest_prime_factor(n: int) returns (largest: int)
 Process input. Requires: the result is at least the specified value. Ensures: returns the correct size/count.
@@ -20,6 +19,10 @@ function is_prime_pred(k: int) : bool
   forall i :: 2 <= i < k ==> k % i != 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method largest_prime_factor(n: int) returns (largest: int)
   // pre-conditions-start
   requires n >= 2
@@ -27,6 +30,9 @@ method largest_prime_factor(n: int) returns (largest: int)
   // post-conditions-start
   ensures 1 <= largest <= n && (largest == 1 || (largest > 1 && is_prime_pred(largest)))
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

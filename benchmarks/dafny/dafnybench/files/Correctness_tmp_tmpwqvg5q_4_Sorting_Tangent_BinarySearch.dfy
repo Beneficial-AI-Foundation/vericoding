@@ -1,3 +1,6 @@
+/*
+*/
+
 /**
   Ather, Mohammad Faiz (s4648481/3)
   CSSE3100
@@ -31,6 +34,6 @@ method BinarySearch(a: array<int>, circle: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

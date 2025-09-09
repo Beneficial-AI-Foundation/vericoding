@@ -1,3 +1,6 @@
+/*
+*/
+
 function Stairs(n: nat): nat {
   if n <= 1 then 1 else Stairs(n - 2) + Stairs(n - 1)
 }
@@ -13,6 +16,6 @@ method ClimbStairs(n: nat) returns (r: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

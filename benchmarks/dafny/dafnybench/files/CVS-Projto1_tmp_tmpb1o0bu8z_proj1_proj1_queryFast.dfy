@@ -1,3 +1,6 @@
+/*
+*/
+
 //Exercicio 1.a)
 function sum (a:array<int>, i:int, j:int) :int
 decreases j
@@ -50,6 +53,6 @@ ensures r == sum(a, i,j)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

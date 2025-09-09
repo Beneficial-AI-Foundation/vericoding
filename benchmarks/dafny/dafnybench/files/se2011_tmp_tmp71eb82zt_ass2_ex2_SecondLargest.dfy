@@ -1,3 +1,6 @@
+/*
+*/
+
 // ex2
 
 // this was me playing around to try and get an ensures for the method 
@@ -16,6 +19,6 @@ requires a.Length > 0
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

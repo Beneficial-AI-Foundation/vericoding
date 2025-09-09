@@ -1,5 +1,7 @@
+/*
 Bignum task: bignum_DivMod[Compare,Sub].
 Implement the method according to the Dafny specification.
+*/
 
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
@@ -32,12 +34,19 @@ method Compare(s1: string, s2: string) returns (res: int)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method DivMod(dividend: string, divisor: string) returns (quotient: string, remainder: string)
   requires ValidBitString(dividend) && ValidBitString(divisor)
   requires Str2Int(divisor) > 0
   ensures ValidBitString(quotient) && ValidBitString(remainder)
   ensures Str2Int(quotient) == Str2Int(dividend) / Str2Int(divisor)
   ensures Str2Int(remainder) == Str2Int(dividend) % Str2Int(divisor)
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

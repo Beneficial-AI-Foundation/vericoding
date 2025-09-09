@@ -1,3 +1,6 @@
+/*
+*/
+
 method toMultiset(s: string) returns (mset: multiset<char>)
     ensures multiset(s) == mset
 {
@@ -19,6 +22,6 @@ method isAnagram(s: string, t: string) returns (equal: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

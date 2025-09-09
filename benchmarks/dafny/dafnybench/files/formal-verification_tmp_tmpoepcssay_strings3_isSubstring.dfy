@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate isPrefixPred(pre:string, str:string)
 {
     (|pre| <= |str|) && 
@@ -50,6 +53,6 @@ method isSubstring(sub: string, str: string) returns (res:bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

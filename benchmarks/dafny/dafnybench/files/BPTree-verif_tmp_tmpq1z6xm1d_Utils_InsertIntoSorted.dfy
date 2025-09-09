@@ -1,3 +1,6 @@
+/*
+*/
+
 // method CountLessThan(numbers: set<int>, threshold: int) returns (count: int)
 // //   ensures count == |set i | i in numbers && i < threshold|
 //     ensures count == |SetLessThan(numbers, threshold)|
@@ -23,14 +26,12 @@ function SetLessThan(numbers: set<int>, threshold: int): set<int>
   set i | i in numbers && i < threshold
 }
 
-
 /*
 */
 
 function seqSet(nums: seq<int>, index: nat): set<int> {
     set x | 0 <= x < index < |nums| :: nums[x]
 }
-
 
 // lemma numElemsOfSet(a: seq<int>)
 //   requires sorted(a)
@@ -60,14 +61,11 @@ function seqSet(nums: seq<int>, index: nat): set<int> {
 //     assert |s| == |a|;
 // }
 
-
 /*
-
 
 */
 
 // TODO play with this for keys==Contents
-
 
 ghost predicate SortedSeq(a: seq<int>)
   //sequence is sorted from left to right
@@ -150,6 +148,6 @@ method InsertIntoSorted(a: array<int>, limit:int, key:int) returns (b: array<int
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

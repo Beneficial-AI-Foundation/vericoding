@@ -1,3 +1,6 @@
+/*
+*/
+
 function SumR(s:seq<int>):int
 decreases s
 {
@@ -11,7 +14,6 @@ decreases s
     if (s==[]) then 0
     else s[0]+SumL(s[1..])
 }
-
 
 function SumV(v:array<int>,c:int,f:int):int
   requires 0<=c<=f<=v.Length
@@ -28,6 +30,6 @@ ensures sum==SumR(v[0..v.Length])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

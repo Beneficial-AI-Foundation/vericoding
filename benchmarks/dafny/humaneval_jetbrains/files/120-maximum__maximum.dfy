@@ -3,6 +3,10 @@ function_signature: method maximum(s: seq<int>, k: int) returns (result: seq<int
 Process input. Requires: the size is bounded; the size is bounded; the condition holds for all values. Ensures: returns the correct size/count; the condition holds for all values; the condition holds for all values.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method maximum(s: seq<int>, k: int) returns (result: seq<int>)
   // pre-conditions-start
   requires 1 <= k <= |s|
@@ -14,9 +18,12 @@ method maximum(s: seq<int>, k: int) returns (result: seq<int>)
   ensures forall i, j :: 0 <= i < j < k ==> result[i] <= result[j]
   ensures forall x :: x in result ==> x in s
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method SortSeq(s: seq<int>) returns (sorted: seq<int>)
   ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]

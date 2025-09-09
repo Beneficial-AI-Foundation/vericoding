@@ -1,3 +1,6 @@
+/*
+*/
+
 // RUN: %dafny /compile:0 /dprint:"%t.dprint" "%s" > "%t"
 // RUN: %diff "%s.expect" "%t"
 
@@ -17,6 +20,6 @@ method MaxSegSum(a: seq<int>) returns (k: int, m: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

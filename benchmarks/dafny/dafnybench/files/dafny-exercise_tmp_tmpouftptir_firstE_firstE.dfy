@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -7,6 +10,6 @@ ensures if 'e' in a[..] then 0 <= x < a.Length && a[x] == 'e' && forall i | 0 <=
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

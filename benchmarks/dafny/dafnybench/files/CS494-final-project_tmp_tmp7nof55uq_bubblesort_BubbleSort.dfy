@@ -1,6 +1,8 @@
+/*
+*/
+
 //Bubblesort CS 494 submission
 //References: https://stackoverflow.com/questions/69364687/how-to-prove-time-complexity-of-bubble-sort-using-dafny/69365785#69365785
-
 
 // predicate checks if elements of a are in ascending order, two additional conditions are added to allow us to sort in specific range within array
 
@@ -36,6 +38,6 @@ method BubbleSort (a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 // returns an index of the largest element of array 'a' in the range [0..n)
 
 // <vc-helpers>
@@ -13,6 +16,6 @@ ensures multiset(a[..]) == multiset(old(a[..]));
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -10,6 +13,6 @@ ensures forall i :: 0 <= i < a.Length ==> b[i] == a[a.Length - i - 1]
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

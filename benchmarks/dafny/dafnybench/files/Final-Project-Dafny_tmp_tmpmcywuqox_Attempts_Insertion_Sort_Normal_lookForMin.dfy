@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate sorted (a: array<int>)
 
     reads a
@@ -25,6 +28,6 @@ method lookForMin (a: array<int>, i: int) returns (m: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

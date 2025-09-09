@@ -1,3 +1,6 @@
+/*
+*/
+
 //Algorithm 1: From left to right return the first
 
 //Algorithm 2: From right to left return the last
@@ -14,7 +17,7 @@ ensures forall l:: i<l<v.Length ==> v[i]>v[l]
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 

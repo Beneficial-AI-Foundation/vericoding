@@ -3,6 +3,10 @@ function_signature: def encode(s : str) -> str
 Write a function that takes a message, and encodes in such a way that it swaps case of all letters, replaces all vowels in the message with the letter that appears 2 places ahead of that vowel in the english alphabet. Assume only letters.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method encode(s: string) returns (t: string)
   // pre-conditions-start
   requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z' || 'A' <= s[i] <= 'Z'
@@ -12,9 +16,12 @@ method encode(s: string) returns (t: string)
   ensures forall i :: 0 <= i < |s| && is_vowel(s[i]) ==> t[i] == rot2(swap_case(s[i]))
   ensures forall i :: 0 <= i < |s| && !is_vowel(s[i]) ==> t[i] == swap_case(s[i])
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function swap_case(c: char): char
   // pre-conditions-start

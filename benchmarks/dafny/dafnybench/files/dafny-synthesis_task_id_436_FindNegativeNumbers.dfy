@@ -1,3 +1,6 @@
+/*
+*/
+
 /**
  * Find negative numbers from an array of numbers
  **/
@@ -19,6 +22,6 @@ method FindNegativeNumbers(arr: array<int>) returns (negativeList: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

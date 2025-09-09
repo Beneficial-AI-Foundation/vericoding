@@ -1,3 +1,6 @@
+/*
+*/
+
 //Exercicio 1.a)
 function sum (a:array<int>, i:int, j:int) :int
 decreases j
@@ -13,7 +16,6 @@ requires 0 <= i <= j <= a.Length
 //Exercicio 1.b)
 
 //Exercicio 1.c)
-
 
 predicate is_prefix_sum_for (a:array<int>, c:array<int>)
 reads c, a
@@ -51,6 +53,6 @@ ensures s == sum(a, i, j)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

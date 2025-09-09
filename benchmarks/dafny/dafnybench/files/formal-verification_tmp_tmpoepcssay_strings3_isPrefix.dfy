@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate isPrefixPred(pre:string, str:string)
 {
     (|pre| <= |str|) && 
@@ -20,9 +23,6 @@ predicate isNotSubstringPred(sub:string, str:string)
     (forall i :: 0 <= i <= |str| ==> isNotPrefixPred(sub,str[i..]))
 }
 
-
-
-
 predicate haveCommonKSubstringPred(k:nat, str1:string, str2:string)
 {
     exists i1, j1 :: 0 <= i1 <= |str1|- k && j1 == i1 + k && isSubstringPred(str1[i1..j1],str2)
@@ -43,6 +43,6 @@ method isPrefix(pre: string, str: string) returns (res:bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

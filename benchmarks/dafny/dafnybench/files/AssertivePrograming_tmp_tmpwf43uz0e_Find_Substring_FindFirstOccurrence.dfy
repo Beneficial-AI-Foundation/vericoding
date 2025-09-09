@@ -1,6 +1,8 @@
+/*
+*/
+
 // Noa Leron 207131871
 // Tsuri Farhana 315016907
-
 
 ghost predicate ExistsSubstring(str1: string, str2: string) {
     // string in Dafny is a sequence of characters (seq<char>) and <= on sequences is the prefix relation
@@ -19,7 +21,6 @@ Feel free to add GHOST code, including calls to lemmas. But DO NOT modify the sp
 */
 
 //this is our lemmas, invatiants and presicats
-
 
 ghost predicate Outter_Inv_correctness(str1: string, str2: string, found: bool, i : nat)
 {
@@ -51,6 +52,6 @@ method FindFirstOccurrence(str1: string, str2: string) returns (found: bool, i: 
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,4 +1,7 @@
 /*
+*/
+
+/*
    CS:5810 Formal Methods in Software Engineering
    Fall 2017
    The University of Iowa
@@ -7,7 +10,6 @@
 
    Credits: Example adapted from Dafny tutorial
 */
-
 
 //      n = 0, 1, 2, 3, 4, 5, 6,  7,  8, ...
 // fib(n) = 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
@@ -28,6 +30,6 @@ method ComputeFib(n: nat) returns (f: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

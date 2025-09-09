@@ -1,3 +1,6 @@
+/*
+*/
+
 /* 
 MIPS 0
 We implement the following with bitvectors in Dafny.
@@ -104,6 +107,6 @@ method BinaryAddition(s: array<bool>, t: array<bool>) returns (sresult: seq<bool
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

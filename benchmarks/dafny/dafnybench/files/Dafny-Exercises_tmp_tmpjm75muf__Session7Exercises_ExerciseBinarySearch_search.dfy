@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate sorted(s : seq<int>) {
     forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
 }
@@ -21,7 +24,7 @@ ensures b==(elem in v[0..v.Length])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 

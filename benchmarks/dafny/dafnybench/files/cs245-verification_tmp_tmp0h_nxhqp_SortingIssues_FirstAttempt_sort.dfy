@@ -1,3 +1,6 @@
+/*
+*/
+
 // Sorting: 
 //        Pre/Post Condition Issues - An investigation 
 //                                      -- Stephanie McIntyre
@@ -20,6 +23,6 @@ modifies A; requires n==A.Length;
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

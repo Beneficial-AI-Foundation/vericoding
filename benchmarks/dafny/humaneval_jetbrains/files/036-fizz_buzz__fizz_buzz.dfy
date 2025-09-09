@@ -3,15 +3,22 @@ function_signature: method fizz_buzz(n: nat) returns (result: nat)
 Process input. Requires: returns the correct size/count. Ensures: returns the correct value.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method fizz_buzz(n: nat) returns (result: nat)
   // post-conditions-start
   ensures result == sum(
     seq(n, i requires 0 <= i < n => (if i % 11 == 0 || i % 13 == 0 then count7_r(i) else 0))
   )
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method count7(x: nat) returns (count: nat) 
   // post-conditions-start

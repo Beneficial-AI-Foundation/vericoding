@@ -3,6 +3,10 @@ function_signature: method reverse_delete(s: string, chars: string) returns (res
 Reverse order. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values; the result is a palindrome.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method reverse_delete(s: string, chars: string) returns (res: string, is_palindrome: bool)
   // post-conditions-start
   ensures forall i :: 0 <= i < |res| ==> res[i] !in chars
@@ -10,9 +14,12 @@ method reverse_delete(s: string, chars: string) returns (res: string, is_palindr
   ensures forall i :: 0 <= i < |s| && s[i] !in chars ==> s[i] in res
   ensures is_palindrome <==> is_palindrome_pred(res)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method check_palindrome(s: string) returns (result: bool)
   // post-conditions-start

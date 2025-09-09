@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsOdd(x: int)
 {
     x % 2 != 0
@@ -14,6 +17,6 @@ method FindFirstOdd(a: array<int>) returns (found: bool, index: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

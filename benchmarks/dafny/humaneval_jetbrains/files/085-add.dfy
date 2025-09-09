@@ -1,4 +1,3 @@
-
 /*
 function_signature: def solve(n: list[int]) -> int
 Given a non-empty list of integers lst, add the even elements that are at odd indices.
@@ -15,12 +14,19 @@ function add_conditon(lst: seq<int>) : (p : seq<bool>)
         seq(|lst|, i requires 0 <= i < |lst| => i % 2 == 1 && lst[i] % 2 == 0)
     }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method add(v: seq<int>) returns (r : int)
     // post-conditions-start
     ensures r == sumc(v, add_conditon(v))
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 // pure-end

@@ -1,4 +1,3 @@
-
 /*
 function_signature: method parse_nested_parens(paren_string: string) returns (res : seq<int>)
 Parse input. Requires: the condition holds for all values. Ensures: the condition holds for all values.
@@ -25,6 +24,10 @@ method split(s : string) returns (res : seq<string>)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method parse_nested_parens(paren_string: string) returns (res : seq<int>)
     // pre-conditions-start
     requires forall i :: i >= 0 && i < |paren_string| ==> paren_string[i] == '(' || paren_string[i] == ')' || paren_string[i] == ' '
@@ -32,6 +35,9 @@ method parse_nested_parens(paren_string: string) returns (res : seq<int>)
     // post-conditions-start
     ensures forall x :: x in res ==> x >= 0
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

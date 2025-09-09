@@ -1,3 +1,6 @@
+/*
+*/
+
 datatype Valve = ON | OFF
 
 class Pipe{
@@ -38,6 +41,6 @@ modifies tank.pipe;
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

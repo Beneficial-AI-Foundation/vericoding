@@ -1,3 +1,6 @@
+/*
+*/
+
 // Author of question: Snorri Agnarsson
 // Permalink of question: https://rise4fun.com/Dafny/CGB1z
 
@@ -30,7 +33,7 @@ method SearchRecursive( a: seq<real>, i: int, j: int, x: real ) returns ( k: int
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 

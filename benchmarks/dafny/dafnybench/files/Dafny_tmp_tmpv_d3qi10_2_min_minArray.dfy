@@ -1,3 +1,6 @@
+/*
+*/
+
 function min(a: int, b: int): int
     ensures min(a, b) <= a && min(a, b) <= b
     ensures min(a, b) == a || min(a, b) == b
@@ -5,14 +8,12 @@ function min(a: int, b: int): int
     if a < b then a else b
 }
 
-
 ghost function minFunction(a: int, b: int): int
     ensures minFunction(a, b) <= a && minFunction(a, b) <= b
     ensures minFunction(a, b) == a || minFunction(a, b) == b
 {
     if a < b then a else b
 }
-
 
 // Return a minimum of a.
 
@@ -27,6 +28,6 @@ method minArray(a: array<int>) returns (m: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

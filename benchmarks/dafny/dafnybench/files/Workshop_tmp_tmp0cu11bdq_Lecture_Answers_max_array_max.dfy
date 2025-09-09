@@ -1,3 +1,6 @@
+/*
+*/
+
 // http://verifythus.cost-ic0701.org/common-example/arraymax-in-dafny
 
 // <vc-helpers>
@@ -11,6 +14,6 @@ method max(a:array<int>) returns(max:int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate isPeek(v:array<int>,i:int)
  reads v
  requires 0<=i<v.Length
@@ -24,6 +27,6 @@ method mPeekSum(v:array<int>) returns (sum:int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 function IsLetter(c: char): bool 
 {
   (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') 
@@ -44,6 +47,6 @@ method solve(s: string) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

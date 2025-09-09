@@ -1,3 +1,6 @@
+/*
+*/
+
 function isMax(m: int, numbers: seq<int>): bool
 {
     m in numbers &&
@@ -16,6 +19,6 @@ ensures forall i :: 0 < i < |result| ==> isMax(result[i], numbers[0..(i+1)])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

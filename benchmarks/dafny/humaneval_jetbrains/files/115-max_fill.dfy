@@ -3,6 +3,10 @@ function_signature: def max_fill_count(grid : list[list[int]], capacity : int) -
 You are given a rectangular grid of wells. Each row represents a single well, and each 1 in a row represents a single unit of water. Each well has a corresponding bucket that can be used to extract water from it, and all buckets have the same capacity. Your task is to use the buckets to empty the wells. Output the number of times you need to lower the buckets. Constraints: * all wells have the same length * 1 <= grid.length <= 10^2 * 1 <= grid[:,1].length <= 10^2 * grid[i][j] -> 0 | 1 * 1 <= capacity <= 10
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method max_fill(grid: seq<seq<nat>>, capacity: nat) returns (cnt: nat)
   // pre-conditions-start
   requires capacity > 0
@@ -11,9 +15,12 @@ method max_fill(grid: seq<seq<nat>>, capacity: nat) returns (cnt: nat)
   // post-conditions-start
   ensures cnt == sum(gen_seq(grid, capacity, |grid|))
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function gen_seq(grid: seq<seq<nat>>, capacity: nat, len: nat): seq<int>
   requires capacity > 0

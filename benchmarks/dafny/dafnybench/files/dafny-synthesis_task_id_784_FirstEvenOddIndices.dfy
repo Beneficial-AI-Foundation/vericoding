@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsEven(n: int)
 {
     n % 2 == 0
@@ -38,6 +41,6 @@ method FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : i
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

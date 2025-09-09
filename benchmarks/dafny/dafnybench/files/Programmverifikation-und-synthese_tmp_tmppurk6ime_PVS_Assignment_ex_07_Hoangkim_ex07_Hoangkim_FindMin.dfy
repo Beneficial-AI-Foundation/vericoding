@@ -1,3 +1,6 @@
+/*
+*/
+
 //Problem01
 //a)
 
@@ -9,8 +12,6 @@ ghost predicate sorted(a:seq<int>)
 {
     forall i | 0 < i < |a| :: a[i-1] <= a[i]     
 }
-
-
 
 //Problem03
 
@@ -25,6 +26,6 @@ method FindMin(a: array<int>, lo: nat) returns (minIdx: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,9 +1,11 @@
+/*
+*/
+
 predicate isNotPrefixPred(pre:string, str:string)
 {
     (|pre| > |str|) || 
     pre != str[..|pre|]
 }
-
 
 method isPrefix(pre: string, str: string) returns (res:bool)
     ensures !res <==> isNotPrefixPred(pre,str)
@@ -12,13 +14,10 @@ method isPrefix(pre: string, str: string) returns (res:bool)
   assume{:axiom} false;
 }
 
-
-
 predicate isPrefixPredicate(pre: string, str:string)
 {
   |str| >= |pre| && pre <= str
 }
-
 
 predicate isSubstringPredicate (sub: string, str:string)
 {
@@ -36,14 +35,12 @@ predicate haveCommonKSubstringPredicate(k: nat, str1: string, str2: string)
   |str1| >= k && |str2| >= k && (exists i :: 0 <= i <= |str1| - k && isSubstringPredicate((str1[i..])[..k], str2))
 }
 
-
 method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: bool)
   ensures |str1| < k || |str2| < k ==> !found
   ensures haveCommonKSubstringPredicate(k,str1,str2) == found
 {
   assume{:axiom} false;
 }
-
 
 predicate maxCommonSubstringPredicate(str1: string, str2: string, len:nat)
 {
@@ -61,6 +58,6 @@ ensures maxCommonSubstringPredicate(str1, str2, len)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

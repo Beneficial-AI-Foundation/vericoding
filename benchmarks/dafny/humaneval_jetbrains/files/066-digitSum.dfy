@@ -1,4 +1,3 @@
-
 /*
 function_signature: def digitSum(string: str) -> Nat
 Write a function that takes a string as input and returns the sum of the upper characters only' ASCII codes.
@@ -24,10 +23,17 @@ function to_int(c: char): int
     if 'A' <= c <= 'Z' then c as int else 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method upper_sum(s: string) returns (res: int)
     // post-conditions-start
     ensures res == upper_sum_rec(s)
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

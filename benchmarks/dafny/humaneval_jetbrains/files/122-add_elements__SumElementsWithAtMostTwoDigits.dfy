@@ -1,4 +1,3 @@
-
 /*
 function_signature: method SumElementsWithAtMostTwoDigits(arr: seq<int>, k: int) returns (s: int)
 Calculate sum. Requires: the size is bounded; the size is bounded. Ensures: selects only numbers with at most two digits.
@@ -27,6 +26,10 @@ method select_at_most_two_digits(arr: seq<int>) returns (result: seq<int>)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method SumElementsWithAtMostTwoDigits(arr: seq<int>, k: int) returns (s: int)
   // pre-conditions-start
   requires |arr| > 0 && |arr| <= 100
@@ -36,6 +39,9 @@ method SumElementsWithAtMostTwoDigits(arr: seq<int>, k: int) returns (s: int)
   ensures var two_digits := select_at_most_two_digits_rec(arr[..k]);
           s == sum(two_digits)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

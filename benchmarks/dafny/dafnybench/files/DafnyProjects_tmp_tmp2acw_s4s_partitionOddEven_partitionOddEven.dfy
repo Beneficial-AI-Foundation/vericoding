@@ -1,3 +1,6 @@
+/*
+*/
+
 // Rearranges the elements in an array 'a' of natural numbers,
 // so that all odd numbers appear before all even numbers.
 
@@ -15,6 +18,6 @@ method partitionOddEven(a: array<nat>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate sorted (a:array<int>, start:int, end:int) // all "before" end are sorted      
  requires a!=null       
  requires 0<=start<=end<=a.Length       
@@ -17,6 +20,6 @@ modifies a
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -3,6 +3,10 @@ function_signature: method sorted_even(a: seq<int>) returns (sorted: seq<int>)
 Sort elements. Requires: requires size of asize of  > 0. Ensures: returns the correct size/count; the result is sorted according to the ordering relation; the result is sorted according to the ordering relation; returns a sorted permutation of the input.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method sorted_even(a: seq<int>) returns (sorted: seq<int>)
   // pre-conditions-start
   requires |a| > 0
@@ -14,9 +18,12 @@ method sorted_even(a: seq<int>) returns (sorted: seq<int>)
       ensures forall i :: 0 <= i < |a| && i % 2 == 1 ==> sorted[i] == a[i]
       ensures multiset(a) == multiset(sorted)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method SortSeqPred(s: seq<int>, p: seq<bool>) returns (sorted: seq<int>)
   // pre-conditions-start

@@ -1,6 +1,9 @@
 /*
 */
 
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -11,6 +14,6 @@ ensures flag == false ==> exists x :: 0 <= x < a.Length && a[x] != a[a.Length - 
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

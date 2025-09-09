@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsEven(n: int)
 {
     n % 2 == 0
@@ -12,6 +15,6 @@ method IsProductEven(a: array<int>) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsDigit(c: char)
 {
     48 <= c as int <= 57
@@ -12,6 +15,6 @@ method IsInteger(s: string) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

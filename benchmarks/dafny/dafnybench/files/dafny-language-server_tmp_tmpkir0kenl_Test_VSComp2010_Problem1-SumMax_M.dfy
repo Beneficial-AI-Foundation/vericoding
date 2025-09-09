@@ -1,3 +1,6 @@
+/*
+*/
+
 // RUN: %dafny /compile:0 "%s" > "%t"
 // RUN: %diff "%s.expect" "%t"
 
@@ -20,6 +23,6 @@ method M(N: int, a: array<int>) returns (sum: int, max: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

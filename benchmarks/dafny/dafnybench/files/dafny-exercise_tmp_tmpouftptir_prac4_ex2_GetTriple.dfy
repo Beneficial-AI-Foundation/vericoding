@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate triple(a: array<int>) 
 reads a
 {
@@ -16,6 +19,6 @@ ensures 0 <= index < a.Length - 2 ==> a[index] == a[index + 1] == a[index + 2]
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

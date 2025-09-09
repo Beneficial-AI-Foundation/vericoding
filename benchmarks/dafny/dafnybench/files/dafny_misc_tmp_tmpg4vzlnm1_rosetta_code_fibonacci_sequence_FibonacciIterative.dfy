@@ -1,3 +1,6 @@
+/*
+*/
+
 // definition of Fibonacci numbers
 function Fibonacci(n: nat): nat {
   match n {
@@ -18,6 +21,6 @@ method FibonacciIterative(n: nat) returns (f: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,4 +1,7 @@
 /*
+*/
+
+/*
 Bubble Sort is the simplest sorting algorithm that works by 
 repeatedly swapping the adjacent elements if they are in wrong order.
 */
@@ -39,6 +42,6 @@ method BubbleSort(A:array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

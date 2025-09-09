@@ -1,3 +1,6 @@
+/*
+*/
+
 function fact(n: nat): nat 
     ensures fact(n) >= 1
 {
@@ -13,6 +16,6 @@ method factorial(n: nat) returns (res: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

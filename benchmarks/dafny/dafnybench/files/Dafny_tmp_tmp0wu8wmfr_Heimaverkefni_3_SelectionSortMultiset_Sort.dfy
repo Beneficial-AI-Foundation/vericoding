@@ -1,3 +1,6 @@
+/*
+*/
+
 // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
 // Permalink spurningar: https://rise4fun.com/Dafny/dtcnY
 
@@ -20,7 +23,6 @@ method MinOfMultiset( m: multiset<int> ) returns( min: int )
 
 // Ekki má breyta þessu falli.
 
-
 ///////////////////////////////////////////////////////////////
 // Hér lýkur óbreytanlega hluta skrárinnar.
 // Hér fyrir aftan er sá hluti sem þið eigið að breyta til að
@@ -41,6 +43,6 @@ method Sort( m: multiset<int> ) returns ( s: seq<int> )
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

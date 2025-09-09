@@ -1,3 +1,6 @@
+/*
+*/
+
 // Bubble Sort
 
 // Predicates for Bubble Sort
@@ -26,6 +29,6 @@ method bubble_sort(a: array2<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

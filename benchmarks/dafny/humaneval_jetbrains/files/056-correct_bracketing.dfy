@@ -1,4 +1,3 @@
-
 /*
 function_signature: def correct_bracketing(brackets: str) -> Bool
 brackets is a string of "<" and ">". return True if every opening bracket has a corresponding closing bracket, i.e., (each open bracket is properly closed)
@@ -11,6 +10,10 @@ function CalcBal(s: seq<int>, i: int, j: int) : int
     else (if s[j - 1] == 0 then 1 else -1) + CalcBal(s, i, j - 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method correct_bracketing(s: seq<int>) returns (b: bool)
     // pre-conditions-start
     requires forall i :: 0 <= i < |s| ==> s[i] == 0 || s[i] == 1
@@ -19,6 +22,9 @@ method correct_bracketing(s: seq<int>) returns (b: bool)
     ensures (forall i :: 0 <= i <= |s| ==> CalcBal(s, 0, i) >= 0) ==> b
     ensures b ==> (forall i :: 0 <= i <= |s| ==> CalcBal(s, 0, i) >= 0)
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

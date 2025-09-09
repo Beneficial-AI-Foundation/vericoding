@@ -1,4 +1,3 @@
-
 /*
 function_signature: method remove_duplicates(a: seq<int>) returns (result: seq<int>)
 Process input. Requires: the condition holds for all values. Ensures: the condition holds for all values; the condition holds for all values.
@@ -9,6 +8,10 @@ function count_rec(a: seq<int>, x: int): int {
   else count_rec(a[1..], x) + (if a[0] == x then 1 else 0)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method remove_duplicates(a: seq<int>) returns (result: seq<int>)
   // pre-conditions-start
   requires forall i :: 0 <= i < |a| ==> count_rec(a, a[i]) >= 1
@@ -17,9 +20,12 @@ method remove_duplicates(a: seq<int>) returns (result: seq<int>)
   ensures forall i :: 0 <= i < |result| ==> count_rec(a, result[i]) == 1
   ensures forall i :: 0 <= i < |a| ==> (a[i] in result <==> count_rec(a, a[i]) == 1)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method count(a: seq<int>, x: int) returns (cnt: int)
   // post-conditions-start

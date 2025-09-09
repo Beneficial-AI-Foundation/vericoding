@@ -1,5 +1,7 @@
-// see pdf 'ex6 & 7 documentation' for excercise question
+/*
+*/
 
+// see pdf 'ex6 & 7 documentation' for excercise question
 
 datatype Bases = A | C | G | T
 
@@ -35,6 +37,6 @@ ensures multiset(s) == multiset(t)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

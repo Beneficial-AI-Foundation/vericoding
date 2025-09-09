@@ -1,3 +1,6 @@
+/*
+*/
+
 datatype Color = Red | White | Blue
 
 predicate Below(c: Color, d: Color)
@@ -16,6 +19,6 @@ method DutchFlag(a: array<Color>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

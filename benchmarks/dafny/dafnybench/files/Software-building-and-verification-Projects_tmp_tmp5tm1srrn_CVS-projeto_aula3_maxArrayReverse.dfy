@@ -1,9 +1,11 @@
+/*
+*/
+
 function fib(n : nat) : nat
 {
   if (n==0) then 1 else
   if (n==1) then 1 else fib(n-1)+fib(n-2)
 }
-
 
 // 2.
 datatype List<T> = Nil | Cons(head: T, tail: List<T>)
@@ -13,7 +15,6 @@ function add(l : List<int>) : int {
   case Nil => 0
   case Cons(x,xs) => x + add(xs)
 }
-
 
 // 3.
 
@@ -36,6 +37,6 @@ method maxArrayReverse(arr : array<int>) returns (max: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

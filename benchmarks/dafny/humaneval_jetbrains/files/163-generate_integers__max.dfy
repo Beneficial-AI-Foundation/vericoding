@@ -1,4 +1,3 @@
-
 /*
 function_signature: method max(a : int, b : int) returns (m : int)
 Process input. Ensures: returns the correct size/count; the result is at least the specified value.
@@ -11,12 +10,19 @@ method min(a : int, b : int) returns (m : int)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method max(a : int, b : int) returns (m : int)
   ensures m == a || m == b
   ensures m >= a && m >= b
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method generate_integers(a : int, b : int) returns (result: seq<int>)
   // post-conditions-start

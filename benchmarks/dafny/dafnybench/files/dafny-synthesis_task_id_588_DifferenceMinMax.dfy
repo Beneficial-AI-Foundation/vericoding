@@ -1,3 +1,6 @@
+/*
+*/
+
 // The order of the recursion in these two functions
 // must match the order of the iteration in the algorithm above
 function Min(a: seq<int>) : int
@@ -28,6 +31,6 @@ method DifferenceMinMax(a: array<int>) returns (diff: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

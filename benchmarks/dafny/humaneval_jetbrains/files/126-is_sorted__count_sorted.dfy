@@ -1,4 +1,3 @@
-
 /*
 function_signature: method count_sorted(a: seq<int>, x: int, pos: int) returns (count: int)
 Count occurrences. Requires: the condition holds for all values; the size is bounded; returns the correct value; returns the correct size/count. Ensures: returns the correct value.
@@ -12,6 +11,10 @@ method is_sorted(a: seq<int>) returns (f: bool)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method count_sorted(a: seq<int>, x: int, pos: int) returns (count: int)
   // pre-conditions-start
   requires forall i, j :: 0 <= i <= j < |a| ==> a[i] <= a[j]
@@ -22,9 +25,12 @@ method count_sorted(a: seq<int>, x: int, pos: int) returns (count: int)
   // post-conditions-start
   ensures count == count_set(a, x)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function count_set(a: seq<int>, x: int): int {
   |set i | 0 <= i < |a| && a[i] == x|

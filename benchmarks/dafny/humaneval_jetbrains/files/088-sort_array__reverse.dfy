@@ -1,4 +1,3 @@
-
 /*
 function_signature: method reverse(s: seq<int>) returns (rev: seq<int>)
 Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
@@ -16,14 +15,21 @@ method sort_array(s: seq<int>) returns (sorted: seq<int>)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method reverse(s: seq<int>) returns (rev: seq<int>)
   // post-conditions-start
   ensures |rev| == |s|
   ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method SortSeq(s: seq<int>) returns (sorted: seq<int>)
   // post-conditions-start

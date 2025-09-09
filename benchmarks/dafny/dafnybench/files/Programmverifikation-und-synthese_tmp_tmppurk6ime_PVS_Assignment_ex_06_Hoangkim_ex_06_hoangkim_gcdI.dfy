@@ -1,3 +1,6 @@
+/*
+*/
+
 //Problem01
 //a)
 ghost function gcd(x: int, y: int): int
@@ -28,6 +31,6 @@ ensures d == gcd(m, n);
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

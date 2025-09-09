@@ -1,3 +1,6 @@
+/*
+*/
+
 // method verifies
 
 // <vc-helpers>
@@ -15,7 +18,7 @@ ensures |s| == 0 ==> t == s;
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 

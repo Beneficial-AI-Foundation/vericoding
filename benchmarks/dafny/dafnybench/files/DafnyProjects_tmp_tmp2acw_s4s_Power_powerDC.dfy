@@ -1,3 +1,6 @@
+/*
+*/
+
 /* 
 * Formal verification of an O(log n) algorithm to calculate the natural power of a real number (x^n), 
 * illustrating the usage of lemmas and automatic induction in Dafny.
@@ -20,11 +23,8 @@ method powerDC(x: real, n: nat) returns (p : real)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
-
-
-
 
 // A few test cases (checked statically by Dafny).

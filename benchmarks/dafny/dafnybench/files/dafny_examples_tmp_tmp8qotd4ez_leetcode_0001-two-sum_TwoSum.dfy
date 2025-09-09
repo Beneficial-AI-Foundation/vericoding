@@ -1,3 +1,6 @@
+/*
+*/
+
 // If this invariant is added explicitly to the loop then the verfication never finishes.
 // It could be {:opaque} for a more controlled verification:
 // assert InMap([], m, target) by {
@@ -19,6 +22,6 @@ method TwoSum(nums: array<int>, target: int) returns (r: (int, int))
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

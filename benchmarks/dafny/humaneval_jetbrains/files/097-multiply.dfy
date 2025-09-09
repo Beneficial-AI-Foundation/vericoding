@@ -1,4 +1,3 @@
-
 /*
 function_signature: def multiply(a : Int, b : Int) -> Int
 Complete the function that takes two integers and returns the product of their unit digits. Assume the input is always valid.
@@ -15,6 +14,10 @@ function last_digit(n: int): int
   // impl-end
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method multiply(a: int, b: int) returns (c: int)
   // pre-conditions-start
   requires a >= 0
@@ -23,6 +26,9 @@ method multiply(a: int, b: int) returns (c: int)
   // post-conditions-start
   ensures c == last_digit(a) * last_digit(b)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

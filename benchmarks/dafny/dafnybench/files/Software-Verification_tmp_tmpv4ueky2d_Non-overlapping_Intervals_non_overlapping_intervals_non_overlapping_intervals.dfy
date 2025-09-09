@@ -1,3 +1,6 @@
+/*
+*/
+
 // Bubble Sort
 method bubble_sort(a: array2<int>)
     modifies a
@@ -6,7 +9,6 @@ method bubble_sort(a: array2<int>)
 {
   assume{:axiom} false;
 }
-
 
 // Predicates for Bubble Sort
 predicate sorted(a: array2<int>, l: int, u: int)
@@ -38,6 +40,6 @@ method non_overlapping_intervals(intervals: array2<int>) returns (count: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

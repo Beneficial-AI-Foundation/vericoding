@@ -1,3 +1,5 @@
+/*
+*/
 
 function RecursivePositiveProduct(q: seq<int>): int
     decreases |q|
@@ -33,6 +35,6 @@ method ProdAndCount(q: seq<int>, key: int) returns (prod: int, count: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,5 +1,7 @@
+/*
 Bignum task: bignum_NormalizeBitString.
 Implement the method according to the Dafny specification.
+*/
 
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
@@ -12,11 +14,18 @@ predicate ValidBitString(s: string)
   forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method NormalizeBitString(s: string) returns(t: string)
   ensures ValidBitString(t)
   ensures |t| > 0
   ensures |t| > 1 ==> t[0] != '0'
   ensures ValidBitString(s) ==> Str2Int(s) == Str2Int(t)
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

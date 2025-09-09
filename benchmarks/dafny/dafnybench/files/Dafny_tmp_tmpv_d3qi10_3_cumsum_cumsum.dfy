@@ -1,3 +1,6 @@
+/*
+*/
+
 function sum(a: array<int>, i: int): int
     requires 0 <= i < a.Length
     reads a
@@ -18,6 +21,6 @@ method cumsum(a: array<int>, b: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

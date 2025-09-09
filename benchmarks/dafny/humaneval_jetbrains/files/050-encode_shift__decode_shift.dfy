@@ -1,4 +1,3 @@
-
 /*
 function_signature: method decode_shift(s: string) returns (t: string)
 Decode data. Requires: the condition holds for all values. Ensures: returns the correct size/count; the condition holds for all values.
@@ -41,6 +40,10 @@ method encode_shift(s: string) returns (t: string)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method decode_shift(s: string) returns (t: string)
   // pre-conditions-start
   requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
@@ -49,6 +52,9 @@ method decode_shift(s: string) returns (t: string)
   ensures |s| == |t|
   ensures forall i :: 0 <= i < |s| ==> t[i] == decode_char(s[i])
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

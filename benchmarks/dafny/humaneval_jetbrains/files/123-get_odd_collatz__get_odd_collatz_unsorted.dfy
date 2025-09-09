@@ -1,4 +1,3 @@
-
 /*
 function_signature: method get_odd_collatz_unsorted(n: nat) returns (odd_collatz: seq<nat>)
 Sort elements. Requires: requires n > 1. Ensures: the condition holds for all values; the condition holds for all values.
@@ -28,14 +27,21 @@ method next_odd_collatz_iter(n: nat) returns (next: nat)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method get_odd_collatz_unsorted(n: nat) returns (odd_collatz: seq<nat>)
   decreases *
   requires n > 1
   ensures forall i :: 0 <= i < |odd_collatz| ==> odd_collatz[i] % 2 == 1
   ensures forall i :: 1 <= i < |odd_collatz| ==> odd_collatz[i] == next_odd_collatz(odd_collatz[i - 1])
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method get_odd_collatz(n: nat) returns (sorted: seq<int>)
   decreases *

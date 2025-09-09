@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsUpperCase(c: char)
 {
     65 <= c as int <= 90
@@ -13,6 +16,6 @@ method CountUppercase(s: string) returns (count: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

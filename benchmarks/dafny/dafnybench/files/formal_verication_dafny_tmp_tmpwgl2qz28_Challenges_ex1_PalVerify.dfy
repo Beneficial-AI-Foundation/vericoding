@@ -1,3 +1,6 @@
+/*
+*/
+
 // ex3errors.dfy in Assignment 1
 // verify that an array of characters is a Palindrome
 /*
@@ -27,6 +30,6 @@ ensures forall j :: 0<=j<a.Length ==> a[j] == old(a[j])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

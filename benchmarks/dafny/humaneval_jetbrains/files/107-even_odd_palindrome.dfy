@@ -1,4 +1,3 @@
-
 /*
 function_signature: def even_odd_palindrome(n: nat) -> (nat, nat)
 Given a positive integer n, return a tuple that has the number of even and odd integer palindromes that fall within the range(1, n), inclusive.
@@ -9,13 +8,20 @@ function is_palindrome(n: nat) : bool {
   forall i | 0 <= i < |s| :: s[i] == s[|s|-1-i]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method even_odd_palindrome(n: nat) returns (even: nat, odd: nat)
   // post-conditions-start
   ensures even == |set i | 0 <= i <= n && i % 2 == 0 && is_palindrome(i)|
   ensures odd == |set i | 0 <= i <= n && i % 2 == 1 && is_palindrome(i)|
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 type stringNat = s: string |
 |s| > 0 && (|s| > 1 ==> s[0] != '0') &&

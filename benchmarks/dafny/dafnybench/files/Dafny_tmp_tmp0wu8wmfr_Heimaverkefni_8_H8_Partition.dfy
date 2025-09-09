@@ -1,3 +1,6 @@
+/*
+*/
+
 // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
 // Permalink spurningar: https://rise4fun.com/Dafny/GW7a
 
@@ -20,6 +23,6 @@ method Partition( m: multiset<int> )
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

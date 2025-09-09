@@ -1,4 +1,3 @@
-
 /*
 function_signature: def f(n: int) -> List[int]
 Implement the function f that takes n as a parameter, and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even or the sum of numbers from 1 to i otherwise. i starts from 1. the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).
@@ -17,6 +16,10 @@ function sum_spec(n : int) : int
   if n == 0 then 1 else n + sum_spec(n - 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method f(n : int) returns (result : seq<int>)
   // pre-conditions-start
   requires n >= 1
@@ -26,6 +29,9 @@ method f(n : int) returns (result : seq<int>)
   ensures forall i : int :: i >= 0 && i < |result| && i % 2 == 0 ==> result[i] == factorial_spec(i)
   ensures forall i : int :: i >= 0 && i < |result| && i % 2 != 0 ==> result[i] == sum_spec(i)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

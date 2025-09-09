@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate isSubstring(sub: seq<char>, str: seq<char>)
 {
     exists i :: 0 <= i <= |str| - |sub| && str[i..i+|sub|] == sub
@@ -27,7 +30,6 @@ predicate isNotSubstringPred(sub:string, str:string)
     (forall i :: 0 <= i <= |str| ==> isNotPrefixPred(sub,str[i..]))
 }
 
-
 predicate haveCommonKSubstringPred(k:nat, str1:string, str2:string)
 {
     exists i1, j1 :: 0 <= i1 <= |str1|- k && j1 == i1 + k && isSubstringPred(str1[i1..j1],str2)
@@ -56,6 +58,6 @@ method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

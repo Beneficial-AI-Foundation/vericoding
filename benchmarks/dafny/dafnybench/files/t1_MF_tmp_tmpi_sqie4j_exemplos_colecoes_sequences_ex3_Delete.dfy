@@ -1,3 +1,6 @@
+/*
+*/
+
 // line contém uma string de tamanho l
 // remover p caracteres a partir da posição at
 
@@ -14,6 +17,6 @@ method Delete(line:array<char>, l:nat, at:nat, p:nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -12,6 +15,6 @@ method IndexWiseAddition(a: seq<seq<int>>, b: seq<seq<int>>) returns (result: se
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

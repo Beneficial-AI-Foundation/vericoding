@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate SplitPoint(a: array<int>, n: int)
     reads a
     requires 0 <= n <= n
@@ -24,6 +27,6 @@ method SelectionSort(a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
