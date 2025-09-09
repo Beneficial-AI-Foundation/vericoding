@@ -412,9 +412,11 @@ def process_yaml_file(file_path: Path) -> None:
         #     ]
         #     spec['vc-description'] = remove_unnecessary_tags(spec['vc-description'], unnecessary_tags)
         
+        if spec['vc-preamble'] is None:
+            if "{:axiom}" in spec['vc-preamble']:
+                raise ValueError("axiom found in vc-preamble")
         if spec['vc-postamble'].strip():
-            spec['vc-postamble'] = ""
-            # raise ValueError("\n"+spec['vc-postamble'].strip()+"\n")
+            raise ValueError("vc-postamble is not empty")
         
         # Normalize all sections
         for key, value in spec.items():
