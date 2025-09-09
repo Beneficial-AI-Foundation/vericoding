@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from vericoding.utils.git_utils import get_git_remote_url, get_current_branch
+from vericoding.core.language_tools import find_spec_files
 import platform
 import os
 import time
@@ -403,9 +404,6 @@ def get_experiment_metadata(config: ProcessingConfig, args) -> dict:
         # Basic experiment info
         "language": config.language,
         "max_iterations": config.max_iterations,
-        "llm_provider": config.llm_provider,
-        "llm_model": config.llm_model or f"{config.llm_provider}-default",
-        "strict_spec_verification": config.strict_spec_verification,
         "max_workers": config.max_workers,
 
         # File and benchmark info
