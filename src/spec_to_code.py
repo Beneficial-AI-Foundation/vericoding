@@ -83,6 +83,40 @@ def main():
     # Print summary with reports
     print_summary(config, results, processing_time)
     
+    # Upload summary files to W&B after they're generated
+    if wandb_run:
+        try:
+            import wandb
+            from pathlib import Path
+            
+            # Upload summary.txt and results.csv as additional files
+            summary_file = Path(config.summary_file)
+            csv_file = Path(config.output_dir) / "results.csv"
+            
+            if summary_file.exists():
+                wandb.save(str(summary_file))
+                print(f"✅ Summary file uploaded to W&B: {summary_file.name}")
+            
+            if csv_file.exists():
+                wandb.save(str(csv_file))
+                print(f"✅ Results CSV uploaded to W&B: {csv_file.name}")
+                
+        except Exception as e:
+            print(f"⚠️ Error uploading summary files to W&B: {e}")
+    
+    # Delete local files after summary generation and W&B upload if requested
+    if args.delete_after_upload and wandb_run:
+        from pathlib import Path
+        import shutil
+        
+        try:
+            output_path = Path(config.output_dir)
+            if output_path.exists():
+                shutil.rmtree(output_path)
+                print(f"🗑️ Local files deleted from {output_path}")
+        except Exception as e:
+            print(f"⚠️ Error deleting local files: {e}")
+    
 
 if __name__ == "__main__":
     main()

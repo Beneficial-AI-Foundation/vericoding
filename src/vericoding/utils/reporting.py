@@ -120,7 +120,9 @@ def print_summary(config: ProcessingConfig, results: list, processing_time: floa
     summary = "\n".join(summary_lines)
 
     # Save summary to file
-    with Path(config.summary_file).open("w") as f:
+    summary_path = Path(config.summary_file)
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    with summary_path.open("w") as f:
         f.write(summary)
 
     # Print to console

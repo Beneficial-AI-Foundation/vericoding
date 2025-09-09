@@ -555,13 +555,7 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
             if csv_file.exists():
                 wandb.run.summary["results_csv_path"] = str(csv_file)
         
-        # Delete local files if requested
-        if delete_after_upload:
-            try:
-                shutil.rmtree(output_path)
-                print(f"🗑️ Local files deleted from {output_path}")
-            except Exception as e:
-                print(f"⚠️ Error deleting local files: {e}")
+        # Note: File deletion is handled after summary generation to avoid path issues
         
 
         # Finish wandb run
