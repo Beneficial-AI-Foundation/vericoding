@@ -133,7 +133,6 @@ Uses Weights & Biases (wandb) for tracking verification experiments, failure ana
 
 - Read the reference manual assiduously. Ultrathink.
 - Figure out the parser by interactively building up toy components.
-- [ ] install https://github.com/GasStationManager/LeanTool as mcp tool
 - Spam `lake build` to verify the pieces work and build up FUNCTORIALLY.
 - Use compiler tooling like extensible error messages, `simproc` (pattern guided reductions), and metaprogramming for pit of success
 - If you solve a hard problem, write a tactic or simproc to pave the way
