@@ -1,26 +1,6 @@
-/- 
-function_signature: "def digits(n: int) -> int"
-docstring: |
-    Given a positive integer n, return the product of the odd digits.
-    Return 0 if all digits are even.
-test_cases:
-  - input: 1
-    expected_output: 1
-  - input: 4
-    expected_output: 0
-  - input: 235
-    expected_output: 15
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -47,10 +27,42 @@ let spec (result: Nat) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def digits(n: int) -> int"
+docstring: |
+    Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+test_cases:
+  - input: 1
+    expected_output: 1
+  - input: 4
+    expected_output: 0
+  - input: 235
+    expected_output: 15
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
-: problem_spec implementation n := by
+: problem_spec implementation n :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 1 = 1
 -- #test implementation 4 = 0

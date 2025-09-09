@@ -1,0 +1,28 @@
+{
+  "skeleton": "\n//ATOM_PLACEHOLDER_toMultiset\n\n//ATOM_PLACEHOLDER_msetEqual\n\n//ATOM_PLACEHOLDER_isAnagram\n\n",
+  "atoms": {
+    "isAnagram": [
+      [
+        "msetEqual",
+        "toMultiset"
+      ],
+      "// SPEC \n\nmethod isAnagram(s: string, t: string) returns (equal: bool)\n    ensures (multiset(s) == multiset(t)) == equal\n{\n}\n",
+      "method"
+    ],
+    "toMultiset": [
+      [],
+      "// SPEC \n\nmethod toMultiset(s: string) returns (mset: multiset<char>)\n    ensures multiset(s) == mset\n{\n}\n",
+      "method"
+    ],
+    "msetEqual": [
+      [],
+      "// SPEC \n\nmethod msetEqual(s: multiset<char>, t: multiset<char>) returns (equal: bool)\n    ensures s == t <==> equal\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_toMultiset": "toMultiset",
+    "//ATOM_PLACEHOLDER_msetEqual": "msetEqual",
+    "//ATOM_PLACEHOLDER_isAnagram": "isAnagram"
+  }
+}

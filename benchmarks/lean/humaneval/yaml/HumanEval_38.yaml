@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def encode_cyclic(s: str) -> str"
   docstring: |
     Returns an encoded string by cycling each group of three consecutive characters.
@@ -12,22 +11,12 @@ vc-description: |-
       expected_output: "bcade"
     - input: "ab"
       expected_output: "ab"
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (s: String) : String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   (impl: String → String)
   (s: String) :=
@@ -47,14 +36,26 @@ vc-theorems: |-
   ∃ result,
     impl s = result ∧
     spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (s: String) : String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (s: String)
-  : problem_spec implementation s := by
+  : problem_spec implementation s :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation "abcdef" = "bcaefd"
   -- #test implementation "abcde" = "bcade"
   -- #test implementation "ab" = "ab"
-

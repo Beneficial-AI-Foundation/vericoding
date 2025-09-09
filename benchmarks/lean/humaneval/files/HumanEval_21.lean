@@ -1,22 +1,6 @@
-/- 
-function_signature: "def rescale_to_unit(numbers: List[float]) -> List[float]"
-docstring: |
-    Given list of numbers (of at least two elements), apply a linear transform to that list,
-    such that the smallest number will become 0 and the largest will become 1
-test_cases:
-  - input: [1.0, 2.0, 3.0, 4.0, 5.0]
-    expected_output: [0.0, 0.25, 0.5, 0.75, 1.0]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (numbers: List Rat): List Rat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -39,10 +23,38 @@ result[i]! = 0);
 ∃ result, implementation numbers = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def rescale_to_unit(numbers: List[float]) -> List[float]"
+docstring: |
+    Given list of numbers (of at least two elements), apply a linear transform to that list,
+    such that the smallest number will become 0 and the largest will become 1
+test_cases:
+  - input: [1.0, 2.0, 3.0, 4.0, 5.0]
+    expected_output: [0.0, 0.25, 0.5, 0.75, 1.0]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (numbers: List Rat): List Rat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (numbers: List Rat)
 : problem_spec implementation numbers
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [1.0, 2.0, 3.0, 4.0, 5.0] = [0.0, 0.25, 0.5, 0.75, 1.0]

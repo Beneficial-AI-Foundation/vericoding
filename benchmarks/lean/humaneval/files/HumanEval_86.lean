@@ -1,30 +1,6 @@
-/- 
-function_signature: "def anti_shuffle(s : str) -> str"
-docstring: |
-    """
-    Write a function that takes a string and returns an ordered version of it.
-    Ordered version of string, is a string where all words (separated by space)
-    are replaced by a new word where all the characters arranged in
-    ascending order based on ascii value.
-    Note: You should keep the order of words and blank spaces in the sentence.
-test_cases:
-  - input: "Hi"
-    output: "Hi"
-  - input: "hello"
-    output: "ehllo"
-  - input: "Hello World!!!"
-    output: "Hello !!!Wdlor"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s: String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -49,11 +25,47 @@ let spec (result : String) :=
   implementation s = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def anti_shuffle(s : str) -> str"
+docstring: |
+    """
+    Write a function that takes a string and returns an ordered version of it.
+    Ordered version of string, is a string where all words (separated by space)
+    are replaced by a new word where all the characters arranged in
+    ascending order based on ascii value.
+    Note: You should keep the order of words and blank spaces in the sentence.
+test_cases:
+  - input: "Hi"
+    output: "Hi"
+  - input: "hello"
+    output: "ehllo"
+  - input: "Hello World!!!"
+    output: "Hello !!!Wdlor"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s: String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "Hi" = "Hi"
 -- #test implementation "hello" = "ehllo"

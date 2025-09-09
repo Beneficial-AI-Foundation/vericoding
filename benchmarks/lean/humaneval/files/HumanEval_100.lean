@@ -1,27 +1,6 @@
-/- 
-function_signature: "def make_a_pile(n: int) -> List[int]"
-docstring: |
-    Given a positive integer n, you have to make a pile of n levels of stones.
-    The first level has n stones.
-    The number of stones in the next level is:
-      - the next odd number if n is odd.
-      - the next even number if n is even.
-    Return the number of stones in each level in a list, where element at index
-    i represents the number of stones in the level (i+1).
-test_cases:
-  - input: 3
-    expected_output: [3, 5, 7]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Int) : List Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -37,11 +16,44 @@ let spec (result: List Int) :=
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def make_a_pile(n: int) -> List[int]"
+docstring: |
+    Given a positive integer n, you have to make a pile of n levels of stones.
+    The first level has n stones.
+    The number of stones in the next level is:
+      - the next odd number if n is odd.
+      - the next even number if n is even.
+    Return the number of stones in each level in a list, where element at index
+    i represents the number of stones in the level (i+1).
+test_cases:
+  - input: 3
+    expected_output: [3, 5, 7]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Int) : List Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Int)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 3 = [3, 5, 7]
 -- #test implementation 4 = [4,6,8,10]

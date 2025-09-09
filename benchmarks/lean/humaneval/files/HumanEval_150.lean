@@ -1,24 +1,6 @@
-/- 
-function_signature: "def x_or_y(int n, int x, int y) -> int"
-docstring: |
-    A simple program which should return the value of x if n is
-    a prime number and should return the value of y otherwise.
-test_cases:
-  - input: [7, 34, 12]
-    expected_output: 34
-  - input: [15, 8, 5]
-    expected_output: 5
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n x y: Int) : Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -34,10 +16,40 @@ let spec (result: Int) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def x_or_y(int n, int x, int y) -> int"
+docstring: |
+    A simple program which should return the value of x if n is
+    a prime number and should return the value of y otherwise.
+test_cases:
+  - input: [7, 34, 12]
+    expected_output: 34
+  - input: [15, 8, 5]
+    expected_output: 5
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n x y: Int) : Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n x y: Int)
-: problem_spec implementation n x y := by
+: problem_spec implementation n x y :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 7 34 12 = 34
 -- #test implementation 15 8 5 = 5

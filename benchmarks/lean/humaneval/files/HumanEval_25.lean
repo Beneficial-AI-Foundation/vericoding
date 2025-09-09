@@ -1,27 +1,6 @@
-/- 
-function_signature: "def factorize(n: int) -> List[int]"
-docstring: |
-    Return list of prime factors of given integer in the order from smallest to largest.
-    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
-    Input number should be equal to the product of all factors
-test_cases:
-  - input: 8
-    expected_output: [2, 2, 2]
-  - input: 25
-    expected_output: [5, 5]
-  - input: 70
-    expected_output: [2, 5, 7]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : List Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -38,11 +17,44 @@ result.all (λ i => n % i = 0 ∧ Nat.Prime i));
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def factorize(n: int) -> List[int]"
+docstring: |
+    Return list of prime factors of given integer in the order from smallest to largest.
+    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
+    Input number should be equal to the product of all factors
+test_cases:
+  - input: 8
+    expected_output: [2, 2, 2]
+  - input: 25
+    expected_output: [5, 5]
+  - input: 70
+    expected_output: [2, 5, 7]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : List Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 8 = [2, 2, 2]
 -- #test implementation 25 = [5, 5]

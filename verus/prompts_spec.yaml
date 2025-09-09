@@ -1,0 +1,111 @@
+generate_code: |
+  
+  You are given a Verus file with following five consecutive blocks. 
+
+  PREAMBLE (possibly empty): auxiliary code and definitions.
+  
+  // <vc-helpers>
+  HELPERS : auxiliary code and proofs 
+  // </vc-helpers>
+  
+  // <vc-spec>
+  SPEC : specification of a method to be implemented with signature and pre/post conditions.
+  // </vc-spec>
+  
+  // <vc-code>
+  CODE : placeholder for the required implementation.
+  // </vc-code>
+  
+  POSTAMBLE (possibly empty): auxiliary code and definitions.
+
+  The task is to generate code and proofs for the CODE and HELPERS sections that will make the Verus file verified
+  while leaving the PREAMBLE, SPEC and POSTAMBLE sections unchanged. 
+  
+  OUTPUT FORMAT:
+  Return the updated sections in this exact format with explicit code blocks:
+  
+  ```vc-helpers
+  [Updated or new helper code and proofs needed for verification]
+  ```
+  
+  ```vc-code
+  {{
+  [Verified implementation of the method specified in SPEC]
+  }}
+  ```
+  
+  REQUIREMENTS:
+  - The CODE section must contain ONLY the method body implementation and proofs inside braces {{ }}
+  - The CODE section must pass verification
+  - The HELPERS section may be used to support the implementation and verification of the CODE section
+  - Preserve PREAMBLE, SPEC and POSTAMBLE unchanged; only implement CODE and HELPERS
+  - Output ONLY valid Verus/Rust code - NO conversational text, explanations, or comments outside the code
+  - Use Verus types like `nat`, `int`, `Vec<T>`, `Seq<T>`, etc.
+  - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`)
+  - Use proof {{ ... }} when necessary
+  - Do not use `assume` statements in implementations
+  - For loops, use proper invariant format as expected by Verus
+  - Use `#[trigger]` annotations appropriately in quantified expressions
+  - Use `assert()` statements for intermediate verification steps when needed
+  
+  VERUS FILE:
+  {code}
+
+
+fix_verification: |
+  
+  You are given a Verus file that failed verification. 
+  It has following five consecutive blocks: 
+
+  PREAMBLE (possibly empty): auxiliary code and definitions.
+  
+  // <vc-helpers>
+  HELPERS : auxiliary code and proofs 
+  // </vc-helpers>
+  
+  // <vc-spec>
+  SPEC : specification of a method to be implemented with signature and pre/post conditions.
+  // </vc-spec>
+  
+  // <vc-code>
+  CODE : implementation that failed verification.
+  // </vc-code>
+  
+  POSTAMBLE (possibly empty): auxiliary code and definitions.
+
+  The task is to fix the verification errors in the CODE and HELPERS sections while leaving the PREAMBLE, SPEC and POSTAMBLE sections unchanged. 
+  
+  OUTPUT FORMAT:
+  Return the updated sections in this exact format with explicit code blocks:
+  
+  ```vc-helpers
+  [Updated helper code and proofs to fix verification errors]
+  ```
+  
+  ```vc-code
+  {{
+  [Updated implementation and proofs that pass verification]
+  }}
+  ```
+  
+  REQUIREMENTS:
+  - The CODE section must contain ONLY the method body implementation and proofs inside braces {{ }}
+  - The CODE section may be updated to pass verification
+  - The HELPERS section may be updated to support the implementation and verification of the CODE section
+  - Preserve PREAMBLE, SPEC and POSTAMBLE unchanged; only implement CODE and HELPERS
+  - Output ONLY valid Verus/Rust code - NO conversational text, explanations, or comments outside the code
+  - Use Verus types like `nat`, `int`, `Vec<T>`, `Seq<T>`, etc.
+  - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`)
+  - Use proof {{ ... }} when necessary
+  - Do not use `assume` statements in implementations
+  - For loops, use proper invariant format as expected by Verus
+  - Use `#[trigger]` annotations appropriately in quantified expressions
+  - Use `assert()` statements for intermediate verification steps when needed
+
+  
+  ERROR DETAILS from Verus verification of the given code:
+  {errorDetails}
+
+  VERUS FILE:
+  {code}
+

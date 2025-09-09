@@ -1,31 +1,6 @@
-/- 
-function_signature: "def words_in_sentence(sentence: str) -> str"
-docstring: |
-    You are given a string representing a sentence,
-    the sentence contains some words separated by a space,
-    and you have to return a string that contains the words from the original sentence,
-    whose lengths are prime numbers,
-    the order of the words in the new string should be the same as the original one.
-
-    Constraints:
-    * 1 <= len(sentence) <= 100
-    * sentence contains only letters
-test_cases:
-  - input: "This is a test"
-    expected_output: "is"
-  - input: "lets go for swimming"
-    expected_output: "go for"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (sentence : String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -49,10 +24,47 @@ let result_words := result.splitOn;
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def words_in_sentence(sentence: str) -> str"
+docstring: |
+    You are given a string representing a sentence,
+    the sentence contains some words separated by a space,
+    and you have to return a string that contains the words from the original sentence,
+    whose lengths are prime numbers,
+    the order of the words in the new string should be the same as the original one.
+
+    Constraints:
+    * 1 <= len(sentence) <= 100
+    * sentence contains only letters
+test_cases:
+  - input: "This is a test"
+    expected_output: "is"
+  - input: "lets go for swimming"
+    expected_output: "go for"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (sentence : String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (sentence : String)
-: problem_spec implementation sentence := by
+: problem_spec implementation sentence :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "This is a test" = "is"
 -- #test implementation "lets go for swimming" = "go for"

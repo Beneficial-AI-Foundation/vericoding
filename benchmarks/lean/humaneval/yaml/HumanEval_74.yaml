@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def total_match(lst1: List[str], lst2: List[str]) -> List[str]"
   docstring: |
     Write a function that accepts two lists of strings and returns the list that has
@@ -16,22 +15,12 @@ vc-description: |-
       expected_output: ['hI', 'hi', 'hi']
     - input: (['4'], ['1', '2', '3', '4', '5'])
       expected_output: ['4']
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (lst1: List String) (lst2: List String) : List String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: List String → List String → List String)
@@ -51,11 +40,24 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation lst1 lst2 = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (lst1: List String) (lst2: List String) : List String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (lst1: List String) (lst2: List String)
   : problem_spec implementation lst1 lst2
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -68,4 +70,3 @@ vc-postamble: |-
   -- #test implementation ["hi", "admin"] ["hI", "hi", "hii"] = ["hi", "admin"]
   -- #test implementation [] ["this"] = []
   -- #test implementation ["this"] [] == []
-

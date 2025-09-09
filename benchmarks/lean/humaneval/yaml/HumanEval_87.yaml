@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def get_coords_sorted(lst : list(list(int)), x : int) -> list((int, int))"
   docstring: |
       You are given a 2 dimensional data, as a nested lists,
@@ -17,22 +16,12 @@ vc-description: |-
       output: []
     - input: [[[], [1], [1, 2, 3]], 3]
       output: [(2, 2)]
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (lst: List (List Int)) (x: Int) : List (Nat × Nat) :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: List (List Int) → Int → List (Nat × Nat))
@@ -56,16 +45,28 @@ vc-theorems: |-
   ∃ result,
     implementation lst x = result ∧
     spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (lst: List (List Int)) (x: Int) : List (Nat × Nat) :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (lst: List (List Int))
   (x: Int)
   : problem_spec implementation lst x
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation "Hi" = "Hi"
   -- #test implementation "hello" = "ehllo"
   -- #test implementation "Hello World!!!" = "Hello !!!Wdlor"
-

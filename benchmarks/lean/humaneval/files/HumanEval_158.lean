@@ -1,28 +1,6 @@
-/- 
-function_signature: "def find_max(words: List String) -> String"
-docstring: |
-    Write a function that accepts a list of strings.
-    The list contains different words. Return the word with maximum number
-    of unique characters. If multiple strings have maximum number of unique
-    characters, return the one which comes first in lexicographical order.
-test_cases:
-  - input: ["name", "of", "string"]
-    expected_output: "string"
-  - input: ["name", "enam", "game"]
-    expected_output: "enam"
-  - input: ["aaaaaaa", "bb", "cc"]
-    expected_output: "aaaaaaa"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (words: List String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -48,10 +26,44 @@ unique_chars result = max_unique_chars ∧
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def find_max(words: List String) -> String"
+docstring: |
+    Write a function that accepts a list of strings.
+    The list contains different words. Return the word with maximum number
+    of unique characters. If multiple strings have maximum number of unique
+    characters, return the one which comes first in lexicographical order.
+test_cases:
+  - input: ["name", "of", "string"]
+    expected_output: "string"
+  - input: ["name", "enam", "game"]
+    expected_output: "enam"
+  - input: ["aaaaaaa", "bb", "cc"]
+    expected_output: "aaaaaaa"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (words: List String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (words: List String)
-: problem_spec implementation words := by
+: problem_spec implementation words :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation ["name", "of", "string"]= "string"
 -- #test implementation ["name", "enam", "game"] = "enam"

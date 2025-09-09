@@ -1,21 +1,6 @@
-/- 
-function_signature: "def largest_divisor(n: int) -> int"
-docstring: |
-    For a given number n, find the largest number that divides n evenly, smaller than n
-test_cases:
-  - input: 15
-    expected_output: 5
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -29,10 +14,37 @@ let spec (result: Nat) :=
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def largest_divisor(n: int) -> int"
+docstring: |
+    For a given number n, find the largest number that divides n evenly, smaller than n
+test_cases:
+  - input: 15
+    expected_output: 5
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 15 = 5

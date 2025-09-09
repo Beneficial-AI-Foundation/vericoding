@@ -1,4 +1,26 @@
-/- 
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+def problem_spec
+-- function signature
+(implementation: Nat → Bool)
+-- inputs
+(n: Nat) :=
+-- spec
+let spec (result: Bool) :=
+  result ↔ ¬ (∃ k, 2 ≤ k ∧ k < n ∧ n % k = 0);
+-- program termination
+∃ result,
+  implementation n = result ∧
+  spec result
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
 function_signature: "def is_prime(n)"
 docstring: |
     Return true if a given number is prime, and false otherwise.
@@ -18,35 +40,25 @@ test_cases:
   - input: 1
     output: False
 -/
+-- </vc-description>
 
-import Mathlib
-import Mathlib.Algebra.Polynomial.Basic
-import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
+-- <vc-spec>
 def implementation (n: Nat): Bool :=
-  sorry
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
 
-def problem_spec
--- function signature
-(implementation: Nat → Bool)
--- inputs
-(n: Nat) :=
--- spec
-let spec (result: Bool) :=
-  result ↔ ¬ (∃ k, 2 ≤ k ∧ k < n ∧ n % k = 0);
--- program termination
-∃ result,
-  implementation n = result ∧
-  spec result
-
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 6 = false
 -- #test implementation 101 = true

@@ -1,25 +1,6 @@
-/- 
-function_signature: "def truncate_number(number: float) -> float"
-docstring: |
-    Given a positive floating point number, it can be decomposed into
-    and integer part (largest integer smaller than given number) and decimals
-    (leftover part always smaller than 1).
-
-    Return the decimal part of the number.
-test_cases:
-  - input: 3.5
-    expected_output: 0.5
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (number: Rat) : Rat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -37,9 +18,39 @@ number > 0 →
 -- return value satisfies spec
 spec result)
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def truncate_number(number: float) -> float"
+docstring: |
+    Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+test_cases:
+  - input: 3.5
+    expected_output: 0.5
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (number: Rat) : Rat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (number: Rat)
-: problem_spec implementation number := by
-  sorry
+: problem_spec implementation number :=
+-- </vc-theorem>
+-- <vc-proof>
+by sorry
+-- </vc-proof>
 
 -- #test implementation 3.5 = 0.5

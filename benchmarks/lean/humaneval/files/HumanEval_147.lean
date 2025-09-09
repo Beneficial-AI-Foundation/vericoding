@@ -1,24 +1,6 @@
-/- 
-function_signature: "def get_max_triples(n: int) -> int"
-docstring: |
-    You are given a positive integer n. You have to create an integer array a of length n.
-    For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
-    Return the number of triples (a[i], a[j], a[k]) of a where i < j < k,
-    and a[i] + a[j] + a[k] is a multiple of 3.
-test_cases:
-  - input: 5
-    expected_output: 1
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -41,9 +23,39 @@ let spec (result: Nat) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def get_max_triples(n: int) -> int"
+docstring: |
+    You are given a positive integer n. You have to create an integer array a of length n.
+    For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
+    Return the number of triples (a[i], a[j], a[k]) of a where i < j < k,
+    and a[i] + a[j] + a[k] is a multiple of 3.
+test_cases:
+  - input: 5
+    expected_output: 1
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
-: problem_spec implementation n := by
+: problem_spec implementation n :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 5 = 1

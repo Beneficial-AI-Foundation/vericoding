@@ -1,4 +1,31 @@
-/- 
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+def problem_spec
+-- function signature
+(impl: Nat → Nat → Nat → List Nat)
+-- inputs
+(number need remaining: Nat) :=
+-- spec
+let spec (result: List Nat) :=
+number ≤ 1000 → need ≤ 1000 → remaining ≤ 1000 →
+result.length = 2 ∧
+(need ≤ remaining → result[0]! - need = number ∧
+need = remaining - result[1]!) ∧
+(remaining < need → result[0]! - remaining = number ∧
+result[1]! = 0);
+-- program terminates
+∃ result, impl number need remaining = result ∧
+-- return value satisfies spec
+spec result
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
 function_signature: "def eat(number: Nat, need: Nat, remaining: Nat) -> List Nat"
 docstring: |
     You're a hungry rabbit, and you already have eaten a certain number of carrots,
@@ -29,39 +56,24 @@ test_cases:
   - input: [2, 11, 5]
     expected_output: [7, 0]
 -/
+-- </vc-description>
 
-import Mathlib
-import Mathlib.Algebra.Polynomial.Basic
-import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
+-- <vc-spec>
 def implementation (a b c: Nat) : List Nat :=
-  sorry
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
 
-def problem_spec
--- function signature
-(impl: Nat → Nat → Nat → List Nat)
--- inputs
-(number need remaining: Nat) :=
--- spec
-let spec (result: List Nat) :=
-number ≤ 1000 → need ≤ 1000 → remaining ≤ 1000 →
-result.length = 2 ∧
-(need ≤ remaining → result[0]! - need = number ∧
-need = remaining - result[1]!) ∧
-(remaining < need → result[0]! - remaining = number ∧
-result[1]! = 0);
--- program terminates
-∃ result, impl number need remaining = result ∧
--- return value satisfies spec
-spec result
-
+-- <vc-theorem>
 theorem correctness
 (a b c: Nat)
-: problem_spec implementation a b c := by
+: problem_spec implementation a b c :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 5 6 10 = [11, 4]
 -- #test implementation 4 8 9 = [12, 1]

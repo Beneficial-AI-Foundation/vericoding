@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def how_many_times(string: str, substring: str) -> int"
   docstring: |
     Find how many times a given substring can be found in the original string. Count overlaping cases.
@@ -16,22 +15,12 @@ vc-description: |-
         - "aaaa"
         - "aa"
       expected_output: 3
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (string: String) (substring: String) : Nat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: String → String → Nat)
@@ -52,12 +41,25 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation string substring = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (string: String) (substring: String) : Nat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (string: String)
   (substring: String)
   : problem_spec implementation string substring
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -66,4 +68,3 @@ vc-postamble: |-
   -- #test implementation "" "a" = 0
   -- #test implementation "a" "" = 1
   -- #test implementation "a" "a" = 1
-

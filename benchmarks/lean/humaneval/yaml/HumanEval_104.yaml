@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def unique_digits(x: List[nat]) -> List[nat]"
   docstring: |
       Given a list of positive integers x. return a sorted list of all
@@ -11,22 +10,12 @@ vc-description: |-
       expected_output: [1, 15, 33]
     - input: [152, 323, 1422, 10]
       expected_output: []
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (x: List Nat) : List Nat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: List Nat → List Nat)
@@ -41,11 +30,24 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation x = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (x: List Nat) : List Nat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (x: List Nat)
   : problem_spec implementation x
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -53,4 +55,3 @@ vc-postamble: |-
   -- #test implementation [152, 323, 1422, 10] = []
   -- #test implementation [12345, 2033, 111, 151] = [111, 151]
   -- #test implementation [135, 103, 31] = [31, 135]
-

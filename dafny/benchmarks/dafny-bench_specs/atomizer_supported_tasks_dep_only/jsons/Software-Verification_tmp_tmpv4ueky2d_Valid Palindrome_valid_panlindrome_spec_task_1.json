@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_isPalindrome\n\n\n\n",
+  "atoms": {
+    "isPalindrome": [
+      [],
+      "// SPEC \nmethod isPalindrome(s: array<char>) returns (result: bool)\n    requires 1<= s.Length <= 200000\n    ensures result <==> (forall i:: 0 <= i < s.Length / 2 ==> s[i] == s[s.Length - 1 - i])\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_isPalindrome": "isPalindrome"
+  }
+}

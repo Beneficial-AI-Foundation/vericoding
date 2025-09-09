@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def is_prime(n)"
   docstring: |
       Return true if a given number is prime, and false otherwise.
@@ -18,22 +17,12 @@ vc-description: |-
       output: False
     - input: 1
       output: False
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (n: Nat): Bool :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: Nat → Bool)
@@ -46,11 +35,24 @@ vc-theorems: |-
   ∃ result,
     implementation n = result ∧
     spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (n: Nat): Bool :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (n: Nat)
   : problem_spec implementation n
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -61,4 +63,3 @@ vc-postamble: |-
   -- #test implementation 61 = true
   -- #test implementation 4 = false
   -- #test implementation 1 = false
-

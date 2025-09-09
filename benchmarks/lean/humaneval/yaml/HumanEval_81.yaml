@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def numerical_letter_grade(grades: list[float]) -> list[str]"
   docstring: |
       It is the last week of the semester and the teacher has to give the grades
@@ -28,22 +27,12 @@ vc-description: |-
     - input: [4.0, 3, 1.7, 2, 3.5]
       output: ['A+', 'B', 'C-', 'C', 'A-']
   note: formalization uses a list of tuples instead of a hashmap because Hashable Float is not available in the standard library.
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (grades: List Float) : List String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: List Float → List String)
@@ -82,13 +71,25 @@ vc-theorems: |-
   ∃ result,
     implementation grades = result ∧
     spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (grades: List Float) : List String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (grades: List Float)
   : problem_spec implementation grades
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation [4.0, 3, 1.7, 2, 3.5] = ['A+', 'B', 'C-', 'C', 'A-']
-

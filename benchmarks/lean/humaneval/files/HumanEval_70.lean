@@ -1,27 +1,6 @@
-/- 
-function_signature: "def strange_sort_list(lst: List[int]) -> List[int]"
-docstring: |
-    Given list of integers, return list in strange order.
-    Strange sorting is when you start with the minimum value,
-    then the maximum of the remaining integers, then the minimum and so on.
-test_cases:
-  - input: [1, 2, 3, 4]
-    expected_output: [1, 4, 2, 3]
-  - input: [5, 5, 5, 5]
-    expected_output: [5, 5, 5, 5]
-  - input: []
-    expected_output: []
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (lst: List Int): List Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -37,11 +16,44 @@ let spec (result: List Int) :=
 -- program termination
 ∃ result, implementation lst = result ∧ spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def strange_sort_list(lst: List[int]) -> List[int]"
+docstring: |
+    Given list of integers, return list in strange order.
+    Strange sorting is when you start with the minimum value,
+    then the maximum of the remaining integers, then the minimum and so on.
+test_cases:
+  - input: [1, 2, 3, 4]
+    expected_output: [1, 4, 2, 3]
+  - input: [5, 5, 5, 5]
+    expected_output: [5, 5, 5, 5]
+  - input: []
+    expected_output: []
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (lst: List Int): List Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (lst: List Int)
 : problem_spec implementation lst
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [1, 2, 3, 4] = [1, 4, 2, 3]
 -- #test implementation [5, 6, 7, 8, 9] = [5, 9, 6, 8, 7]

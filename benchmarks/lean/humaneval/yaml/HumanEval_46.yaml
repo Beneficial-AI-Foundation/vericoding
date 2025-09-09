@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def fib4(n: int)"
   docstring: |
       The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
@@ -16,7 +15,6 @@ vc-description: |-
       output: 8
     - input: 7
       output: 14
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -41,16 +39,7 @@ vc-preamble: |-
   fibonacci_non_computable_4 (n + 2) f₃ →
   fibonacci_non_computable_4 (n + 3) f₄ →
   fibonacci_non_computable_4 (n + 4) (f₁ + f₂ + f₃ + f₄)
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (n: Nat) : Nat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: Nat → Nat)
@@ -63,15 +52,27 @@ vc-theorems: |-
   ∃ result, impl n = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (n: Nat) : Nat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (n: Nat)
   : problem_spec implementation n
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation 5 = 4
   -- #test implementation 6 = 8
   -- #test implementation 7 = 14
-

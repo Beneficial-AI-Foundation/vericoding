@@ -1,27 +1,6 @@
-/- 
-function_signature: "def encode_cyclic(s: str) -> str"
-docstring: |
-  Returns an encoded string by cycling each group of three consecutive characters.
-  Specifically, each group of exactly three characters 'abc' is transformed to 'bca'.
-  Groups of fewer than three characters at the end of the string remain unchanged.
-test_cases:
-  - input: "abcdef"
-    expected_output: "bcaefd"
-  - input: "abcde"
-    expected_output: "bcade"
-  - input: "ab"
-    expected_output: "ab"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s: String) : String :=
-  sorry
 
 def problem_spec
 (impl: String → String)
@@ -43,10 +22,43 @@ let spec (result: String) :=
   impl s = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def encode_cyclic(s: str) -> str"
+docstring: |
+  Returns an encoded string by cycling each group of three consecutive characters.
+  Specifically, each group of exactly three characters 'abc' is transformed to 'bca'.
+  Groups of fewer than three characters at the end of the string remain unchanged.
+test_cases:
+  - input: "abcdef"
+    expected_output: "bcaefd"
+  - input: "abcde"
+    expected_output: "bcade"
+  - input: "ab"
+    expected_output: "ab"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s: String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
-: problem_spec implementation s := by
+: problem_spec implementation s :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "abcdef" = "bcaefd"
 -- #test implementation "abcde" = "bcade"

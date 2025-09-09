@@ -1,27 +1,6 @@
-/- 
-function_signature: "def change_base(x: Nat, base: Nat) -> String"
-docstring: |
-    Change numerical base of input number x to base.
-    return string representation after the conversion.
-    base numbers are less than 10.
-test_cases:
-  - input: (8, 3)
-    expected_output: '22'
-  - input: (8, 2)
-    expected_output: '1000'
-  - input: (7, 2)
-    expected_output: '111'
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (x base: Nat) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -41,11 +20,44 @@ pow_sum = x);
 ∃ result, implementation x base = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def change_base(x: Nat, base: Nat) -> String"
+docstring: |
+    Change numerical base of input number x to base.
+    return string representation after the conversion.
+    base numbers are less than 10.
+test_cases:
+  - input: (8, 3)
+    expected_output: '22'
+  - input: (8, 2)
+    expected_output: '1000'
+  - input: (7, 2)
+    expected_output: '111'
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (x base: Nat) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (x base : Nat)
 : problem_spec implementation x base
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 8 3 = '22'
 -- #test implementation 8 2 = '1000'

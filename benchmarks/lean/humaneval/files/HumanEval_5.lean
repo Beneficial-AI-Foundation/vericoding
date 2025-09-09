@@ -1,27 +1,6 @@
-/- 
-function_signature: "def intersperse(numbers: List[int], delimeter: int) -> List[int]"
-docstring: |
-    Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
-test_cases:
-  - input:
-      - []
-      - 4
-    expected_output: []
-  - input:
-      - [1, 2, 3]
-      - 4
-    expected_output: [1, 4, 2, 4, 3]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (numbers: List Int) (delimeter: Int) : List Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -42,12 +21,43 @@ result[2 * i]! = numbers[i]! ∧
 ∃ result, implementation numbers delimeter = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def intersperse(numbers: List[int], delimeter: int) -> List[int]"
+docstring: |
+    Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+test_cases:
+  - input:
+      - []
+      - 4
+    expected_output: []
+  - input:
+      - [1, 2, 3]
+      - 4
+    expected_output: [1, 4, 2, 4, 3]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (numbers: List Int) (delimeter: Int) : List Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (numbers: List Int)
 (delimeter: Int)
-: problem_spec implementation numbers delimeter
-:= by
-  sorry
+: problem_spec implementation numbers delimeter :=
+-- </vc-theorem>
+-- <vc-proof>
+by sorry
+-- </vc-proof>
 
 -- #test implementation [1, 2, 3] 4 = [1, 4, 2, 4, 3]
 -- #test implementation [] 4 = []

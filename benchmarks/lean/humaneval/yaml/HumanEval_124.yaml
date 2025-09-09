@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def valid_date(date: str) -> Bool"
   docstring: |
       You have to write a function which validates a given date string and
@@ -20,22 +19,12 @@ vc-description: |-
       expected_output: True
     - input: "06/04/2020"
       expected_output: False
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (date: String) : Bool :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: String → Bool)
@@ -58,10 +47,23 @@ vc-theorems: |-
   ∃ result, impl date = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (date: String) : Bool :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (date: String)
-  : problem_spec implementation date := by
+  : problem_spec implementation date :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -70,4 +72,3 @@ vc-postamble: |-
   -- #test implementation "04-0-2040" = false
   -- #test implementation "06-04-2020" = true
   -- #test implementation "06/04/2020" = false
-

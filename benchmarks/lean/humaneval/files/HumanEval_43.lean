@@ -1,29 +1,6 @@
-/- 
-function_signature: "def pairs_sum_to_zero(numbers: List[int]) -> Bool"
-docstring: |
-    pairs_sum_to_zero takes a list of integers as an input.
-    it returns True if there are two distinct elements in the list that
-    sum to zero, and False otherwise.
-test_cases:
-  - input: [1, 3, 5, 0]
-    expected_output: False
-  - input: [1, 3, -2, 1]
-    expected_output: False
-  - input: [1]
-    expected_output: False
-  - input: [2, 4, -5, 3, 5, 7]
-    expected_output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (numbers: List Int) : Bool :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -42,11 +19,46 @@ result ↔ exists_zero
 ∃ result, implementation numbers = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def pairs_sum_to_zero(numbers: List[int]) -> Bool"
+docstring: |
+    pairs_sum_to_zero takes a list of integers as an input.
+    it returns True if there are two distinct elements in the list that
+    sum to zero, and False otherwise.
+test_cases:
+  - input: [1, 3, 5, 0]
+    expected_output: False
+  - input: [1, 3, -2, 1]
+    expected_output: False
+  - input: [1]
+    expected_output: False
+  - input: [2, 4, -5, 3, 5, 7]
+    expected_output: True
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (numbers: List Int) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (numbers : List Int)
 : problem_spec implementation numbers
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [1, 3, 5, 0] = false
 -- #test implementation [1, 3, -2, 1] = false

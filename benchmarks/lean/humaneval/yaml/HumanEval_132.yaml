@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def is_nested(string: str) -> Bool"
   docstring: |
       Create a function that takes a string as input which contains only parentheses.
@@ -18,7 +17,6 @@ vc-description: |-
       expected_output: True
     - input: '(())(('
       expected_output: True
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -131,16 +129,7 @@ vc-preamble: |-
     | _, [] => false
     | x::xs', y::ys' =>
         if x = y then is_subsequence xs' ys' else is_subsequence xs ys'
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (lst: String) : Bool :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: String → Bool)
@@ -158,10 +147,23 @@ vc-theorems: |-
   ∃ result, impl string = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (lst: String) : Bool :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (string: String)
-  : problem_spec implementation string := by
+  : problem_spec implementation string :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -171,4 +173,3 @@ vc-postamble: |-
   -- #test implementation "()" = false
   -- #test implementation "(()())" = true
   -- #test implementation "(())((" = true
-

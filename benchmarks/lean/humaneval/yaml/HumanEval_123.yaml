@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def get_odd_collatz (n: int) -> List[int]"
   docstring: |
       Given a positive integer n, return a sorted list that has the odd numbers in collatz sequence.
@@ -16,7 +15,6 @@ vc-description: |-
   test_cases:
     - input: 5
       expected_output: [1, 5]
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -32,16 +30,7 @@ vc-preamble: |-
   -/
   def collatz_reachable (n m : Nat) : Prop :=
     ∃ k, Nat.iterate (fun x => if x % 2 = 0 then x / 2 else x * 3 + 1) k n = m
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (n: Nat) : List Nat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: Nat → List Nat)
@@ -56,12 +45,24 @@ vc-theorems: |-
   ∃ result, impl n = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (n: Nat) : List Nat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (n: Nat)
-  : problem_spec implementation n := by
+  : problem_spec implementation n :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation 5 = [1, 5]
-

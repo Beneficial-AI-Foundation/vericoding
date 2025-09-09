@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def hex_key(num: string) -> int"
   docstring: |
       You have been tasked to write a function that receives
@@ -23,22 +22,12 @@ vc-description: |-
       expected_output: 6
     - input: "2020"
       expected_output: 2
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (num: String) : Int :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: String → Int)
@@ -65,11 +54,24 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation num = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (num: String) : Int :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (num: String)
   : problem_spec implementation num
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -80,4 +82,3 @@ vc-postamble: |-
   -- #test implementation "123456789ABCDEF0" = 6
   -- #test implementation "112233445566778899AABBCCDDEEFF00" = 12
   -- #test implementation "" = 0
-

@@ -1,26 +1,6 @@
-/- 
-function_signature: "def unique_digits(x: List[nat]) -> List[nat]"
-docstring: |
-    Given a list of positive integers x. return a sorted list of all
-    elements that hasn't any even digit.
-
-    Note: Returned list should be sorted in increasing order.
-test_cases:
-  - input: [15, 33, 1422, 1]
-    expected_output: [1, 15, 33]
-  - input: [152, 323, 1422, 10]
-    expected_output: []
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (x: List Nat) : List Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -37,11 +17,43 @@ let spec (result: List Nat) :=
 ∃ result, implementation x = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def unique_digits(x: List[nat]) -> List[nat]"
+docstring: |
+    Given a list of positive integers x. return a sorted list of all
+    elements that hasn't any even digit.
+
+    Note: Returned list should be sorted in increasing order.
+test_cases:
+  - input: [15, 33, 1422, 1]
+    expected_output: [1, 15, 33]
+  - input: [152, 323, 1422, 10]
+    expected_output: []
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (x: List Nat) : List Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (x: List Nat)
 : problem_spec implementation x
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [15, 33, 1422, 1] = [1, 15, 33]
 -- #test implementation [152, 323, 1422, 10] = []

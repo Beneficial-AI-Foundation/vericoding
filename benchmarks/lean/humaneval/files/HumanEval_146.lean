@@ -1,25 +1,6 @@
-/- 
-function_signature: "def specialFilter(nums: List[int]) -> int"
-docstring: |
-    Write a function that takes an array of numbers as input and returns
-    the number of elements in the array that are greater than 10 and both
-    first and last digits of a number are odd (1, 3, 5, 7, 9).
-test_cases:
-  - input: [15, -73, 14, -15]
-    expected_output: 1
-  - input: [33, -2, -3, 45, 21, 109]
-    expected_output: 2
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (nums: List Int) : Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -40,10 +21,41 @@ match nums with
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def specialFilter(nums: List[int]) -> int"
+docstring: |
+    Write a function that takes an array of numbers as input and returns
+    the number of elements in the array that are greater than 10 and both
+    first and last digits of a number are odd (1, 3, 5, 7, 9).
+test_cases:
+  - input: [15, -73, 14, -15]
+    expected_output: 1
+  - input: [33, -2, -3, 45, 21, 109]
+    expected_output: 2
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (nums: List Int) : Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (nums: List Int)
-: problem_spec implementation nums := by
+: problem_spec implementation nums :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [15, -73, 14, -15] = 1
 -- #test implementation [33, -2, -3, 45, 21, 109] = 2

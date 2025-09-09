@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_counting_bits\n\n\n\n",
+  "atoms": {
+    "counting_bits": [
+      [],
+      "// SPEC \nmethod counting_bits(n: int) returns (result: array<int>)\n    requires 0 <= n <= 100000\n    ensures result.Length == n + 1\n    ensures forall i :: 1 <= i < n + 1 ==> result[i] == result[i / 2] + i % 2\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_counting_bits": "counting_bits"
+  }
+}

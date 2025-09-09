@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def separate_paren_groups(paren_string: str) -> List[str]"
   docstring: |
       Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
@@ -12,7 +11,6 @@ vc-description: |-
         - "()"
         - "(())"
         - "(()())"
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -110,16 +108,7 @@ vc-preamble: |-
   def count_paren_groups
   (paren_string: String): Nat :=
   count_paren_groups_helper paren_string 0 0
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (paren_string: String) : List String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: String → List String)
@@ -136,12 +125,24 @@ vc-theorems: |-
   ∃ result, impl paren_string = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (paren_string: String) : List String :=
+    
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (paren_string: String)
-  : problem_spec implementation paren_string := by
-    sorry
+  : problem_spec implementation paren_string := 
+
+vc-proof: |-
+  by sorry
 
 vc-postamble: |-
   -- #test implementation "( ) (( )) (( )( ))" = ["()", "(())", "(()())"]
-

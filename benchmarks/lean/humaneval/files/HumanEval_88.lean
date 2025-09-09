@@ -1,31 +1,6 @@
-/- 
-function_signature: "def sort_array(lst : list(int)) -> list(int)"
-docstring: |
-    """
-    Given an array of non-negative integers, return a copy of the given array after sorting,
-    you will sort the given array in ascending order if the sum( first index value, last index value) is odd,
-    or sort it in descending order if the sum( first index value, last index value) is even.
-    Note(George): I have elected to ignore the copy part.
-test_cases:
-  - input: []
-    output: []
-  - input: [5]
-    output: [5]
-  - input: [2, 4, 3, 0, 1, 5]
-    output: [0, 1, 2, 3, 4, 5]
-  - input: [2, 4, 3, 0, 1, 5, 6]
-    output: [6, 5, 4, 3, 2, 1, 0]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (lst: List Nat) : List Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -49,11 +24,48 @@ let spec (result : List Nat) :=
   implementation lst = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def sort_array(lst : list(int)) -> list(int)"
+docstring: |
+    """
+    Given an array of non-negative integers, return a copy of the given array after sorting,
+    you will sort the given array in ascending order if the sum( first index value, last index value) is odd,
+    or sort it in descending order if the sum( first index value, last index value) is even.
+    Note(George): I have elected to ignore the copy part.
+test_cases:
+  - input: []
+    output: []
+  - input: [5]
+    output: [5]
+  - input: [2, 4, 3, 0, 1, 5]
+    output: [0, 1, 2, 3, 4, 5]
+  - input: [2, 4, 3, 0, 1, 5, 6]
+    output: [6, 5, 4, 3, 2, 1, 0]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (lst: List Nat) : List Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (lst: List Nat)
 : problem_spec implementation lst
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [] = []
 -- #test implementation [5] = [5]

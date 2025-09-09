@@ -1,23 +1,6 @@
-/- 
-function_signature: "def string_sequence(n: int) -> str"
-docstring: |
-    Return a string containing space-delimited numbers starting from 0 upto n inclusive.
-test_cases:
-  - input: 0
-    expected_output: "0"
-  - input: 5
-    expected_output: "0 1 2 3 4 5"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -33,11 +16,40 @@ result_nums.length = n + 1 ∧
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def string_sequence(n: int) -> str"
+docstring: |
+    Return a string containing space-delimited numbers starting from 0 upto n inclusive.
+test_cases:
+  - input: 0
+    expected_output: "0"
+  - input: 5
+    expected_output: "0 1 2 3 4 5"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 0 = "0"
 -- #test implementation 5 = "0 1 2 3 4 5"

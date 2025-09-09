@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def is_palindrome(string: str) -> Bool"
   docstring: |
       Checks if given string is a palindrome
@@ -12,7 +11,6 @@ vc-description: |-
       expected_output: "True"
     - input: "zbcd"
       expected_output: "False"
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -30,16 +28,7 @@ vc-preamble: |-
   def is_palindrome
   (s: String): Bool :=
   s = s.toList.reverse.asString
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (string: String) : Bool :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: String → Bool)
@@ -51,11 +40,24 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation string = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (string: String) : Bool :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (s: String)
   : problem_spec implementation s
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -63,4 +65,3 @@ vc-postamble: |-
   -- #test implementation "aba" = true
   -- #test implementation "aaaaa" = true
   -- #test implementation "zbcd" = false
-

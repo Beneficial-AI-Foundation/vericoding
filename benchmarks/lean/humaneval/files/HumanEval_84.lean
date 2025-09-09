@@ -1,26 +1,6 @@
-/- 
-function_signature: "def solve(n: int) -> str"
-docstring: |
-    Given a positive integer N, return the total sum of its digits in binary.
-test_cases:
-  - input: 1000
-    output: "1"
-  - input: 150
-    output: "110"
-  - input: 147
-    output: "1100"
-Note: The spec formalization takes the result, makes it a list of 0/1s and then reverse it and uses Nat.ofDigits. The reversal is because ofDigits expects little-endian order.
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -37,11 +17,43 @@ let spec (result : String) :=
   implementation n = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def solve(n: int) -> str"
+docstring: |
+    Given a positive integer N, return the total sum of its digits in binary.
+test_cases:
+  - input: 1000
+    output: "1"
+  - input: 150
+    output: "110"
+  - input: 147
+    output: "1100"
+Note: The spec formalization takes the result, makes it a list of 0/1s and then reverse it and uses Nat.ofDigits. The reversal is because ofDigits expects little-endian order.
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 1000 = "1"
 -- #test implementation 150 = "110"

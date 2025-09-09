@@ -1,32 +1,6 @@
-/- 
-function_signature: "def histogram(s : str) -> Dict[str, int]"
-docstring: |
-    Given a string representing a space separated lowercase letters, return a dictionary
-    of the letter with the most repetition and containing the corresponding count.
-    If several letters have the same occurrence, return all of them.
-    -- Note(George): I believe the equality extensionality for HashMaps makes this spec true.
-test_cases:
-  - input: 'a b c'
-    expected_output: {'a': 1, 'b': 1, 'c': 1}
-  - input: 'a b b a'
-    expected_output: {'a': 2, 'b': 2}
-  - input: 'a b c a b'
-    expected_output: {'a': 2, 'b': 2}
-  - input: 'b b b b a'
-    expected_output: {'b': 4}
-  - input: ''
-    expected_output: {}
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s: String) : Std.HashMap Char Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -49,11 +23,49 @@ let spec (result : Std.HashMap Char Nat) :=
   implementation s = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def histogram(s : str) -> Dict[str, int]"
+docstring: |
+    Given a string representing a space separated lowercase letters, return a dictionary
+    of the letter with the most repetition and containing the corresponding count.
+    If several letters have the same occurrence, return all of them.
+    -- Note(George): I believe the equality extensionality for HashMaps makes this spec true.
+test_cases:
+  - input: 'a b c'
+    expected_output: {'a': 1, 'b': 1, 'c': 1}
+  - input: 'a b b a'
+    expected_output: {'a': 2, 'b': 2}
+  - input: 'a b c a b'
+    expected_output: {'a': 2, 'b': 2}
+  - input: 'b b b b a'
+    expected_output: {'b': 4}
+  - input: ''
+    expected_output: {}
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s: String) : Std.HashMap Char Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 'a b c' = {'a': 1, 'b': 1, 'c': 1}
 -- #test implementation 'a b b a' = {'a': 2, 'b': 2}

@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def intersection(interval1: Tuple[Int, Int], interval2: Tuple[Int, Int]) -> str"
   docstring: |
       You are given two intervals,
@@ -21,22 +20,12 @@ vc-description: |-
       expected_output: "NO"
     - input: [(-3, -1), (-5, 5)]
       expected_output: "YES"
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (interval1: Int × Int) (interval2: Int × Int) : String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: Int × Int → Int × Int → String)
@@ -59,15 +48,27 @@ vc-theorems: |-
   ∃ result, impl interval1 interval2 = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (interval1: Int × Int) (interval2: Int × Int) : String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (interval1: Int × Int)
   (interval2: Int × Int)
-  : problem_spec implementation interval1 interval2 := by
+  : problem_spec implementation interval1 interval2 :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation (1, 2) (2, 3) = "NO"
   -- #test implementation (-1, 1) (0, 4) = "NO"
   -- #test implementation (-3, -1) (-5, 5) = "YES"
-

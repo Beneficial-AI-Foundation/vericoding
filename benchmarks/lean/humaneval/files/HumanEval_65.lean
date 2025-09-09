@@ -1,25 +1,6 @@
-/- 
-function_signature: "def circular_shift(x: Int, shift: Int) -> String"
-docstring: |
-    Circular shift the digits of the integer x, shift the digits right by shift
-    and return the result as a string.
-    If shift > number of digits, return digits reversed.
-test_cases:
-  - input: [12, 1]
-    expected_output: 21
-  - input: [12, 2]
-    expected_output: 12
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (x shift: Nat) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -41,11 +22,42 @@ result.length = x_str.length ∧
 ∃ result, implementation x shift = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def circular_shift(x: Int, shift: Int) -> String"
+docstring: |
+    Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+test_cases:
+  - input: [12, 1]
+    expected_output: 21
+  - input: [12, 2]
+    expected_output: 12
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (x shift: Nat) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (x shift: Nat)
 : problem_spec implementation x shift
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation (12 : Int) (1 : Int) = "21"
 -- #test implementation (12 : Int) (2 : Int) = "12"

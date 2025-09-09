@@ -1,28 +1,6 @@
-/- 
-function_signature: "def parse_music(music_string: str) -> List[int]"
-docstring: |
-    Input to this function is a string representing musical notes in a special ASCII format.
-    Your task is to parse this string and return list of integers corresponding to how many beats does each
-    not last.
-
-    Here is a legend:
-    'o' - whole note, lasts four beats
-    'o|' - half note, lasts two beats
-    '.|' - quater note, lasts one beat
-test_cases:
-  - input: "o o| .| o| o| .| .| .| .| o o"
-    expected_output: [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (string: String) : List Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -43,10 +21,44 @@ space_split.length = result.length ∧
 ∃ result, implementation string = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def parse_music(music_string: str) -> List[int]"
+docstring: |
+    Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note, lasts four beats
+    'o|' - half note, lasts two beats
+    '.|' - quater note, lasts one beat
+test_cases:
+  - input: "o o| .| o| o| .| .| .| .| o o"
+    expected_output: [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (string: String) : List Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (string: String)
 : problem_spec implementation string
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "o o| .| o| o| .| .| .| .| o o" = [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]

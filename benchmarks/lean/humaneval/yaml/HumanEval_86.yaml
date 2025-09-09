@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def anti_shuffle(s : str) -> str"
   docstring: |
       """
@@ -15,22 +14,12 @@ vc-description: |-
       output: "ehllo"
     - input: "Hello World!!!"
       output: "Hello !!!Wdlor"
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (s: String) : String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: String → String)
@@ -53,15 +42,27 @@ vc-theorems: |-
   ∃ result,
     implementation s = result ∧
     spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (s: String) : String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (s: String)
   : problem_spec implementation s
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation "Hi" = "Hi"
   -- #test implementation "hello" = "ehllo"
   -- #test implementation "Hello World!!!" = "Hello !!!Wdlor"
-

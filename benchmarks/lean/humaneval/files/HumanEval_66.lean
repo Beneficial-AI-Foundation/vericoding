@@ -1,26 +1,6 @@
-/- 
-function_signature: "def digitSum(string: str) -> Nat"
-docstring: |
-    Write a function that takes a string as input and returns the sum of the upper characters only'
-    ASCII codes.
-test_cases:
-  - input: ""
-    expected_output: 0
-  - input: "abAB"
-    expected_output: 131
-  - input: "helloE"
-    expected_output: 69
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (string: String) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -39,11 +19,43 @@ else
 ∃ result, implementation string = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def digitSum(string: str) -> Nat"
+docstring: |
+    Write a function that takes a string as input and returns the sum of the upper characters only'
+    ASCII codes.
+test_cases:
+  - input: ""
+    expected_output: 0
+  - input: "abAB"
+    expected_output: 131
+  - input: "helloE"
+    expected_output: 69
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (string: String) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "" = 0
 -- #test implementation "abAB" = 131

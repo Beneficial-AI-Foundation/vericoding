@@ -1,23 +1,6 @@
-/- 
-function_signature: "def strlen(string: str) -> int"
-docstring: |
-    Return length of given string
-test_cases:
-  - input: ""
-    expected_output: 0
-  - input: "abc"
-    expected_output: 3
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (string: String): Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -33,11 +16,40 @@ result = 0 ↔ string.isEmpty ∧
 ∃ result, implementation string = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def strlen(string: str) -> int"
+docstring: |
+    Return length of given string
+test_cases:
+  - input: ""
+    expected_output: 0
+  - input: "abc"
+    expected_output: 3
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (string: String): Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (string: String)
 : problem_spec implementation string
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "" = 0
 -- #test implementation "abc" = 3

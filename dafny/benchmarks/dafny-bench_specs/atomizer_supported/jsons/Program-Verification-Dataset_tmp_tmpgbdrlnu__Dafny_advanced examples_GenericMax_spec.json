@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_GenericMax\n\n\n\n",
+  "atoms": {
+    "GenericMax": [
+      [],
+      "// SPEC \nmethod GenericMax<A>(cmp: (A, A) -> bool, a: array<A>) returns (max: A)\n  requires a != null && a.Length > 0\n  requires forall x, y :: cmp.requires(x, y)\n  requires forall x, y :: cmp(x, y) || cmp(y, x);\n  requires forall x, y, z :: cmp(x, y) && cmp(y, z) ==> cmp(x, z);\n\n  ensures forall x :: 0 <= x < a.Length ==>\n    // uncommenting the following line causes the program to verify\n    // assume cmp.requires(a[x], max);\n    cmp(a[x], max)\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_GenericMax": "GenericMax"
+  }
+}

@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def common(l1: List[Int], l2: List[Int]) -> List[Int]"
   docstring: |
       Return sorted unique common elements for two lists.
@@ -8,22 +7,12 @@ vc-description: |-
       expected_output: [1, 5, 653]
     - input: [[5, 3, 2, 8], [3, 2]]
       expected_output: [2, 3]
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (l1 l2: List Int) : List Int :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: List Int → List Int → List Int)
@@ -43,14 +32,26 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation l1 l2 = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (l1 l2: List Int) : List Int :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (l1 l2: List Int)
   : problem_spec implementation l1 l2
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation [1, 4, 3, 34, 653, 2, 5] [5, 7, 1, 5, 9, 653, 121] = [1, 5, 653]
   -- #test implementation [5, 3, 2, 8] [3, 2] = [2, 3]
-

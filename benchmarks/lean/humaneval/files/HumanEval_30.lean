@@ -1,23 +1,6 @@
-/- 
-function_signature: "def get_positive(l: list)"
-docstring: |
-    Return only positive numbers in the list.
-test_cases:
-  - input: [-1, 2, -4, 5, 6]
-    expected_output: [2, 5, 6]
-  - input: [5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]
-    expected_output: [5, 3, 2, 3, 9, 123, 1]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (numbers: List Int): List Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -34,11 +17,40 @@ let spec (result: List Int) :=
   implementation numbers = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def get_positive(l: list)"
+docstring: |
+    Return only positive numbers in the list.
+test_cases:
+  - input: [-1, 2, -4, 5, 6]
+    expected_output: [2, 5, 6]
+  - input: [5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]
+    expected_output: [5, 3, 2, 3, 9, 123, 1]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (numbers: List Int): List Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (numbers: List Int)
 : problem_spec implementation numbers
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [(-1), 2, (-4), 5, 6] = [2, 5, 6]
 -- #test implementation [5, 3, (-5), 2, (-3), 3, 9, 0, 123, 1, (-10)] = [5, 3, 2, 3, 9, 123, 1]

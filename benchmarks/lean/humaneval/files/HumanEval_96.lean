@@ -1,4 +1,29 @@
-/- 
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+def problem_spec
+-- function signature
+(implementation: Nat → List Nat)
+-- inputs
+(n: Nat) :=
+-- spec
+let spec (result : List Nat) :=
+  match n with
+  | 0 => result = []
+  | n => n > 0 → (∀ i, i < result.length → (Nat.Prime (result[i]!)) ∧ (result[i]!) < n) ∧
+         (∀ i : Nat, i < n → Nat.Prime i → i ∈ result)
+-- program termination
+∃ result,
+  implementation n = result ∧
+  spec result
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
 function_signature: "def count_up_to(n : int) -> list[int]"
 docstring: |
     Implement a function that takes an non-negative integer and returns an array of the first n
@@ -17,38 +42,25 @@ test_cases:
   - input: 18
     expected_output: [2,3,5,7,11,13,17]
 -/
+-- </vc-description>
 
-import Mathlib
-import Mathlib.Algebra.Polynomial.Basic
-import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
+-- <vc-spec>
 def implementation (n: Nat) : List Nat :=
-  sorry
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
 
-def problem_spec
--- function signature
-(implementation: Nat → List Nat)
--- inputs
-(n: Nat) :=
--- spec
-let spec (result : List Nat) :=
-  match n with
-  | 0 => result = []
-  | n => n > 0 → (∀ i, i < result.length → (Nat.Prime (result[i]!)) ∧ (result[i]!) < n) ∧
-         (∀ i : Nat, i < n → Nat.Prime i → i ∈ result)
--- program termination
-∃ result,
-  implementation n = result ∧
-  spec result
-
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 5 = [2,3]
 -- #test implementation 11 = [2,3,5,7]

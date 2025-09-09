@@ -1,30 +1,6 @@
-/- 
-function_signature: "def encrypt(str : str) -> str"
-docstring: |
-    Create a function encrypt that takes a string as an argument and
-    returns a string encrypted with the alphabet being rotated.
-    The alphabet should be rotated in a manner such that the letters
-    shift down by two multiplied to two places.
-test_cases:
-  - input: "hi"
-    output: "lm"
-  - input: "asdfghjkl"
-    output: "ewhjklnop"
-  - input: "gf"
-    output: "kj"
-  - input: "et"
-    output: "ix"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (str: String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -44,11 +20,47 @@ let spec (result : String) :=
   implementation str = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def encrypt(str : str) -> str"
+docstring: |
+    Create a function encrypt that takes a string as an argument and
+    returns a string encrypted with the alphabet being rotated.
+    The alphabet should be rotated in a manner such that the letters
+    shift down by two multiplied to two places.
+test_cases:
+  - input: "hi"
+    output: "lm"
+  - input: "asdfghjkl"
+    output: "ewhjklnop"
+  - input: "gf"
+    output: "kj"
+  - input: "et"
+    output: "ix"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (str: String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (str: String)
 : problem_spec implementation str
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "hi" = "lm"
 -- #test implementation "asdfghjkl" = "ewhjklnop"

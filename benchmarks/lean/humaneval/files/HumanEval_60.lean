@@ -1,23 +1,6 @@
-/- 
-function_signature: "def sum_to_n(n: Nat) -> Nat"
-docstring: |
-    sum_to_n is a function that sums numbers from 1 to n.
-test_cases:
-  - input: 30
-    expected_output: 465
-  - input: 100
-    expected_output: 4950
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -33,11 +16,40 @@ let spec (result: Nat) :=
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def sum_to_n(n: Nat) -> Nat"
+docstring: |
+    sum_to_n is a function that sums numbers from 1 to n.
+test_cases:
+  - input: 30
+    expected_output: 465
+  - input: 100
+    expected_output: 4950
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 30 = 465
 -- #test implementation 100 = 5050

@@ -1,24 +1,6 @@
-/- 
-function_signature: "def even_odd_palindrome(n: nat) -> (nat, nat)"
-docstring: |
-    Given a positive integer n, return a tuple that has the number of even and odd
-    integer palindromes that fall within the range(1, n), inclusive.
-test_cases:
-  - input: 3
-    expected_output: (1, 2)
-  - input: 12
-    expected_output: (4, 6)
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : Nat × Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -46,11 +28,41 @@ let spec (result: Nat × Nat) :=
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def even_odd_palindrome(n: nat) -> (nat, nat)"
+docstring: |
+    Given a positive integer n, return a tuple that has the number of even and odd
+    integer palindromes that fall within the range(1, n), inclusive.
+test_cases:
+  - input: 3
+    expected_output: (1, 2)
+  - input: 12
+    expected_output: (4, 6)
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : Nat × Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 123 = (8, 13)
 -- #test implementation 12 = (4, 6)

@@ -1,21 +1,6 @@
-/- 
-function_signature: "def solve(n: list[int]) -> int"
-docstring: |
-    Given a non-empty list of integers lst, add the even elements that are at odd indices.
-test_cases:
-  - input: [4, 2, 6, 7]
-    output: 2
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (lst: List Int) : Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -35,10 +20,37 @@ let spec (result : Int) :=
   implementation lst = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def solve(n: list[int]) -> int"
+docstring: |
+    Given a non-empty list of integers lst, add the even elements that are at odd indices.
+test_cases:
+  - input: [4, 2, 6, 7]
+    output: 2
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (lst: List Int) : Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (lst: List Int)
 : problem_spec implementation lst
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [4, 2, 6, 7] = 2

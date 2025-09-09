@@ -1,19 +1,3 @@
-/- 
-function_signature: "def make_palindrome(string: str) -> str"
-docstring: |
-    Find the shortest palindrome that begins with a supplied string.
-    Algorithm idea is simple:
-    - Find the longest postfix of supplied string that is a palindrome.
-    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
-test_cases:
-  - input: ""
-    expected_output: ""
-  - input: "cat"
-    expected_output: "catac"
-  - input: "cata"
-    expected_output: "catac"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -29,12 +13,6 @@ problems:
 def is_palindrome
 (s: String): Bool :=
 s = s.toList.reverse.asString
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (string: String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -55,11 +33,45 @@ result.length ≤ possible_palindrome.length);
 ∃ result, implementation string = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def make_palindrome(string: str) -> str"
+docstring: |
+    Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+test_cases:
+  - input: ""
+    expected_output: ""
+  - input: "cat"
+    expected_output: "catac"
+  - input: "cata"
+    expected_output: "catac"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (string: String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "" = ""
 -- #test implementation "cat" = "catac"

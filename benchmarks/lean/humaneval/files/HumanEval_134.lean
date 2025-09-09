@@ -1,30 +1,6 @@
-/- 
-function_signature: "def check_if_last_char_is_a_letter(txt: str) -> Bool"
-docstring: |
-    Create a function that returns True if the last character
-    of a given string is an alphabetical character and is not
-    a part of a word, and False otherwise.
-    Note: "word" is a group of characters separated by space.
-test_cases:
-  - input: "apple pie"
-    expected_output: False
-  - input: "apple pi e"
-    expected_output: True
-  - input: "apple pi e "
-    expected_output: False
-  - input: ""
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (txt: String) : Bool :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -43,10 +19,46 @@ let spec (result: Bool) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def check_if_last_char_is_a_letter(txt: str) -> Bool"
+docstring: |
+    Create a function that returns True if the last character
+    of a given string is an alphabetical character and is not
+    a part of a word, and False otherwise.
+    Note: "word" is a group of characters separated by space.
+test_cases:
+  - input: "apple pie"
+    expected_output: False
+  - input: "apple pi e"
+    expected_output: True
+  - input: "apple pi e "
+    expected_output: False
+  - input: ""
+    expected_output: False
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (txt: String) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (txt: String)
-: problem_spec implementation txt := by
+: problem_spec implementation txt :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "apple pie" = false
 -- #test implementation "apple pi e" = true

@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def sort_array(lst : list(int)) -> list(int)"
   docstring: |
       """
@@ -16,22 +15,12 @@ vc-description: |-
       output: [0, 1, 2, 3, 4, 5]
     - input: [2, 4, 3, 0, 1, 5, 6]
       output: [6, 5, 4, 3, 2, 1, 0]
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (lst: List Nat) : List Nat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: List Nat → List Nat)
@@ -53,11 +42,24 @@ vc-theorems: |-
   ∃ result,
     implementation lst = result ∧
     spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (lst: List Nat) : List Nat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (lst: List Nat)
   : problem_spec implementation lst
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -65,4 +67,3 @@ vc-postamble: |-
   -- #test implementation [5] = [5]
   -- #test implementation [2, 4, 3, 0, 1, 5] = [0, 1, 2, 3, 4, 5]
   -- #test implementation [2, 4, 3, 0, 1, 5, 6] = [6, 5, 4, 3, 2, 1, 0]
-

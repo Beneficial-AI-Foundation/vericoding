@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def fib(n: int) -> int"
   docstring: |
       Return n-th Fibonacci number.
@@ -10,7 +9,6 @@ vc-description: |-
       expected_output: 1
     - input: 8
       expected_output: 21
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -32,16 +30,7 @@ vc-preamble: |-
   | step  : ∀ n f₁ f₂, fibonacci_non_computable n f₁ →
   fibonacci_non_computable (n + 1) f₂ →
   fibonacci_non_computable (n + 2) (f₁ + f₂)
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (n: Nat) : Nat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: Nat → Nat)
@@ -53,15 +42,27 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation n = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (n: Nat) : Nat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (n: Nat)
   : problem_spec implementation n
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation 10 = 55
   -- #test implementation 1 = 1
   -- #test implementation 8 = 21
-

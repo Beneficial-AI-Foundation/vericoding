@@ -1,33 +1,6 @@
-/- 
-function_signature: "def select_words(s : str, n : int) -> list[str]"
-docstring: |
-    Given a string s and a natural number n, you have been tasked to implement
-    a function that returns a list of all words from string s that contain exactly
-    n consonants, in order these words appear in the string s.
-    If the string s is empty then the function should return an empty list.
-    Note: you may assume the input string contains only letters and spaces.
-test_cases:
-  - input: ("Mary had a little lamb", 4)
-    expected_output: ["little"]
-  - input: ("Mary had a little lamb", 3)
-    expected_output: ["Mary", "lamb"]
-  - input: ("simple white space", 2)
-    expected_output: []
-  - input: ("Hello world", 4)
-    expected_output: ["world"]
-  - input: ("Uncle sam", 3)
-    expected_output: ["Uncle"]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s: String) (n: Nat) : List String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -60,12 +33,51 @@ let spec (result : List String) :=
   implementation s n = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def select_words(s : str, n : int) -> list[str]"
+docstring: |
+    Given a string s and a natural number n, you have been tasked to implement
+    a function that returns a list of all words from string s that contain exactly
+    n consonants, in order these words appear in the string s.
+    If the string s is empty then the function should return an empty list.
+    Note: you may assume the input string contains only letters and spaces.
+test_cases:
+  - input: ("Mary had a little lamb", 4)
+    expected_output: ["little"]
+  - input: ("Mary had a little lamb", 3)
+    expected_output: ["Mary", "lamb"]
+  - input: ("simple white space", 2)
+    expected_output: []
+  - input: ("Hello world", 4)
+    expected_output: ["world"]
+  - input: ("Uncle sam", 3)
+    expected_output: ["Uncle"]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s: String) (n: Nat) : List String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 (n: Nat)
 : problem_spec implementation s n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "Mary had a little lamb" 4 = ["little"]
 -- #test implementation "Mary had a little lamb" 3 = ["Mary", "lamb"]

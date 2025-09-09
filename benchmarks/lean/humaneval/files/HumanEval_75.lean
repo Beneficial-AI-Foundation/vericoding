@@ -1,22 +1,6 @@
-/- 
-function_signature: "def is_multiply_prime(a: int) -> bool"
-docstring: |
-    Write a function that returns true if the given number is the multiplication of 3 prime numbers
-    and false otherwise. Knowing that (a) is less then 100.
-test_cases:
-  - input: 30
-    expected_output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (a: Int) : Bool :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -31,11 +15,39 @@ let spec (result: Bool) :=
 ∃ result, implementation a = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def is_multiply_prime(a: int) -> bool"
+docstring: |
+    Write a function that returns true if the given number is the multiplication of 3 prime numbers
+    and false otherwise. Knowing that (a) is less then 100.
+test_cases:
+  - input: 30
+    expected_output: True
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (a: Int) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (a: Int)
 : problem_spec implementation a
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 5 = False
 -- #test implementation 30 = True

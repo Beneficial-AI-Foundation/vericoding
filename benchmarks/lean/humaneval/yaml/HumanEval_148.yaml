@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def bf(planet1: str, planet2: str) -> List[str]"
   docstring: |
       There are eight planets in our solar system: the closest to the Sun
@@ -18,22 +17,12 @@ vc-description: |-
       expected_output: ("Venus")
     - input: ("Mercury", "Uranus")
       expected_output: ("Venus", "Earth", "Mars", "Jupiter", "Saturn")
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (planet1: String) (planet2: String) : List String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: String → String → List String)
@@ -59,15 +48,27 @@ vc-theorems: |-
   ∃ result, impl planet1 planet2 = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (planet1: String) (planet2: String) : List String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (planet1: String)
   (planet2: String)
-  : problem_spec implementation planet1 planet2 := by
+  : problem_spec implementation planet1 planet2 :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation "Jupiter" "Neptune" = ["Saturn", "Uranus"]
   -- #test implementation "Earth" "Mercury" = ["Venus"]
   -- #test implementation "Mercury" "Uranus" = ["Venus", "Earth", "Mars", "Jupiter", "Saturn"]
-

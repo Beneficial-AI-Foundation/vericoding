@@ -1,25 +1,6 @@
-/- 
-function_signature: "def fizz_buzz(n: int)"
-docstring: |
-    Return the number of times the digit 7 appears in integers less than n which are divisible by 11 or 13.
-test_cases:
-  - input: 50
-    output: 0
-  - input: 78
-    output: 2
-  - input: 79
-    output: 3
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -38,11 +19,42 @@ let spec (result: Nat) :=
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def fizz_buzz(n: int)"
+docstring: |
+    Return the number of times the digit 7 appears in integers less than n which are divisible by 11 or 13.
+test_cases:
+  - input: 50
+    output: 0
+  - input: 78
+    output: 2
+  - input: 79
+    output: 3
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 50 = 0
 -- #test implementation 78 = 2

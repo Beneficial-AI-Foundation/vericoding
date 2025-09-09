@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def correct_bracketing(brackets: str) -> Bool"
   docstring: |
       brackets is a string of "<" and ">".
@@ -13,7 +12,6 @@ vc-description: |-
       expected_output: True
     - input: "><<>"
       expected_output: False
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -37,16 +35,7 @@ vc-preamble: |-
   let chars := paren_string.toList;
   (∀ (i : ℕ), i ≤ chars.length → ((chars.take i).count bracket_type_right) ≤ ((chars.take i).count bracket_type_left)) ∧
   (chars.count bracket_type_left = chars.count bracket_type_right)
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (brackets: String) : Bool :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: String → Bool)
@@ -60,10 +49,23 @@ vc-theorems: |-
   ∃ result, impl brackets = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (brackets: String) : Bool :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (brackets: String)
-  : problem_spec implementation brackets := by
+  : problem_spec implementation brackets :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -71,4 +73,3 @@ vc-postamble: |-
   -- #test implementation "<>" = true
   -- #test implementation "<<><>>" = true
   -- #test implementation "><<>" = false
-

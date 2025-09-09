@@ -1,0 +1,13 @@
+{
+  "skeleton": "//ATOM_PLACEHOLDER_FindMax\n\n\n\n",
+  "atoms": {
+    "FindMax": [
+      [],
+      "// SPEC \nmethod FindMax(a: array<int>) returns (max: int)\n   requires a != null && a.Length > 0;\n   ensures 0 <= max < a.Length;\n   ensures forall x :: 0 <= x < a.Length ==> a[max] >= a[x];\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_FindMax": "FindMax"
+  }
+}

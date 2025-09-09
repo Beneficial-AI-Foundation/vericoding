@@ -1,18 +1,3 @@
-/- 
-function_signature: "def int_to_mini_roman(num: Nat) -> String"
-docstring: |
-    Given a positive integer, obtain its roman numeral equivalent as a string,
-    and return it in lowercase.
-    Restrictions: 1 <= num <= 1000
-test_cases:
-  - input: 19
-    expected_output: xix
-  - input: 152
-    expected_output: clii
-  - input: 426
-    expected_output: cdxxvi
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -151,12 +136,6 @@ sample_problems: []
 def romanToDecimal (s : String) : Nat :=
   romanToDecimalAux s.data
 
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (num: Nat) : String :=
-  sorry
-
 def problem_spec
 -- function signature
 (impl: Nat → String)
@@ -171,10 +150,43 @@ isValidRoman result ∧ romanToDecimal result = num
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def int_to_mini_roman(num: Nat) -> String"
+docstring: |
+    Given a positive integer, obtain its roman numeral equivalent as a string,
+    and return it in lowercase.
+    Restrictions: 1 <= num <= 1000
+test_cases:
+  - input: 19
+    expected_output: xix
+  - input: 152
+    expected_output: clii
+  - input: 426
+    expected_output: cdxxvi
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (num: Nat) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (num: Nat)
-: problem_spec implementation num := by
+: problem_spec implementation num :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 19 = "xix"
 -- #test implementation 152 = "clii"

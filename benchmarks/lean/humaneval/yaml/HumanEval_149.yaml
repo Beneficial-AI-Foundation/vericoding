@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def sorted_list_sum(lst: List[str]) -> List[str]"
   docstring: |
       Write a function that accepts a list of strings as a parameter,
@@ -17,22 +16,12 @@ vc-description: |-
       output: ["aa"]
     - input: ["ab", "a", "aaa", "cd"]
       output: ["ab", "cd"]
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (lst: List String) : List String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: List String → List String)
@@ -53,13 +42,25 @@ vc-theorems: |-
   ∃ result, impl lst = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (lst: List String) : List String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (lst: List String)
-  : problem_spec implementation lst := by
+  : problem_spec implementation lst :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation ["aa", "a", "aaa"] = ["aa"]
   -- #test implementation ["ab", "a", "aaa", "cd"] = ["ab", "cd"]
-

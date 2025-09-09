@@ -1,0 +1,21 @@
+{
+  "skeleton": "// H\u00f6fundur spurningar:  Snorri Agnarsson, snorri@hi.is\n// Permalink spurningar: https://rise4fun.com/Dafny/dtcnY\n\n// H\u00f6fundur lausnar:     Alexander Gu\u00f0mundsson\n// Permalink lausnar:    https://rise4fun.com/Dafny/ybUCz\n\n///////////////////////////////////////////////////////////////\n// H\u00e9r byrjar \u00f3breytanlegi hluti skr\u00e1rinnar.\n// Fyrir aftan \u00feann hluta er s\u00e1 hluti sem \u00fei\u00f0 eigi\u00f0 a\u00f0 breyta.\n///////////////////////////////////////////////////////////////\n\n// Hj\u00e1lparfall sem finnur minnsta gildi \u00ed poka\n//ATOM_PLACEHOLDER_MinOfMultiset;\n    ensures min in m;\n    ensures forall z | z in m :: min <= z;\n{\n    min :| min in m;\n    var done := multiset{min};\n    var m' := m-done;\n    while m' != multiset{}\n    {\n        var z :| z in m';\n        done := done+multiset{z};\n        m' := m'-multiset{z};\n        if z < min { min := z; }\n    }\n}\n\n// Ekki m\u00e1 breyta \u00feessu falli.\n//ATOM_PLACEHOLDER_Test\n\n//ATOM_PLACEHOLDER_Main\n\n///////////////////////////////////////////////////////////////\n// H\u00e9r l\u00fdkur \u00f3breytanlega hluta skr\u00e1rinnar.\n// H\u00e9r fyrir aftan er s\u00e1 hluti sem \u00fei\u00f0 eigi\u00f0 a\u00f0 breyta til a\u00f0\n// \u00fatf\u00e6ra afbrig\u00f0i af selection sort.\n///////////////////////////////////////////////////////////////\n\n// Selection sort sem ra\u00f0ar poka \u00ed runu.\n// Kl\u00e1ri\u00f0 a\u00f0 forrita \u00feetta fall.\n//ATOM_PLACEHOLDER_Sort\n\n",
+  "atoms": {
+    "MinOfMultiset": [
+      [],
+      "// SPEC \n// H\u00f6fundur spurningar:  Snorri Agnarsson, snorri@hi.is\n// Permalink spurningar: https://rise4fun.com/Dafny/dtcnY\n\n// H\u00f6fundur lausnar:     Alexander Gu\u00f0mundsson\n// Permalink lausnar:    https://rise4fun.com/Dafny/ybUCz\n\n///////////////////////////////////////////////////////////////\n// H\u00e9r byrjar \u00f3breytanlegi hluti skr\u00e1rinnar.\n// Fyrir aftan \u00feann hluta er s\u00e1 hluti sem \u00fei\u00f0 eigi\u00f0 a\u00f0 breyta.\n///////////////////////////////////////////////////////////////\n\n// Hj\u00e1lparfall sem finnur minnsta gildi \u00ed poka\nmethod MinOfMultiset( m: multiset<int> ) returns( min: int )\n    requires m != multiset{\n}\n    ensures min in m;\n    ensures forall z | z in m :: min <= z;\n{\n}\n",
+      "method"
+    ],
+    "Sort": [
+      [
+        "MinOfMultiset"
+      ],
+      "// SPEC \n\n///////////////////////////////////////////////////////////////\n// H\u00e9r l\u00fdkur \u00f3breytanlega hluta skr\u00e1rinnar.\n// H\u00e9r fyrir aftan er s\u00e1 hluti sem \u00fei\u00f0 eigi\u00f0 a\u00f0 breyta til a\u00f0\n// \u00fatf\u00e6ra afbrig\u00f0i af selection sort.\n///////////////////////////////////////////////////////////////\n\n// Selection sort sem ra\u00f0ar poka \u00ed runu.\n// Kl\u00e1ri\u00f0 a\u00f0 forrita \u00feetta fall.\nmethod Sort( m: multiset<int> ) returns ( s: seq<int> )\n    // Setji\u00f0 vi\u00f0eigandi ensures klausur h\u00e9r\n    ensures multiset(s) == m;\n    ensures forall p,q | 0 <= p < q < |s| :: s[p] <= s[q];\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_MinOfMultiset": "MinOfMultiset",
+    "//ATOM_PLACEHOLDER_Sort": "Sort"
+  }
+}

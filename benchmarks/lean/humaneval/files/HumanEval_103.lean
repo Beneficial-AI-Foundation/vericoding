@@ -1,30 +1,6 @@
-/- 
-function_signature: "def rounded_avg(n: nat, m: nat) -> Option[string]"
-docstring: |
-    You are given two positive integers n and m, and your task is to compute the
-    average of the integers from n through m (including n and m).
-    Round the answer to the nearest integer and convert that to binary.
-    If n is greater than m, return none.
-test_cases:
-  - input: (1, 5)
-    expected_output: "0b11"
-  - input: (7, 5)
-    expected_output: None
-  - input: (10, 20)
-    expected_output: "0b1111"
-  - input: (20, 33)
-    expected_output: "0b11010"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) (m: Nat) : Option String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -46,11 +22,47 @@ let spec (result: Option String) :=
 ∃ result, implementation n m = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def rounded_avg(n: nat, m: nat) -> Option[string]"
+docstring: |
+    You are given two positive integers n and m, and your task is to compute the
+    average of the integers from n through m (including n and m).
+    Round the answer to the nearest integer and convert that to binary.
+    If n is greater than m, return none.
+test_cases:
+  - input: (1, 5)
+    expected_output: "0b11"
+  - input: (7, 5)
+    expected_output: None
+  - input: (10, 20)
+    expected_output: "0b1111"
+  - input: (20, 33)
+    expected_output: "0b11010"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) (m: Nat) : Option String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat) (m: Nat)
 : problem_spec implementation n m
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 1 5 = some "0b11"
 -- #test implementation 7 13 = some "0b1010"

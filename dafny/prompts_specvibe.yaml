@@ -1,0 +1,101 @@
+generate_code: |
+  
+  You are given a Dafny file with following six consecutive blocks. 
+
+  PREAMBLE (possibly empty): auxiliary code and definitions.
+  
+  // <vc-helpers>
+  HELPERS : auxiliary code and proofs 
+  // </vc-helpers>
+  
+  // <vc-description>
+  DESCRIPTION : natural language description of what the method should do.
+  // </vc-description>
+  
+  // <vc-spec>
+  SPEC : formal specification of a method to be implemented with signature and pre/post conditions.
+  // </vc-spec>
+  
+  // <vc-code>
+  CODE : placeholder for the required implementation.
+  // </vc-code>
+  
+  POSTAMBLE (possibly empty): auxiliary code and definitions.
+
+  The task is to generate code for the CODE and HELPERS sections that will make the Dafny file verified. You have both the natural language DESCRIPTION and the formal SPEC to guide your implementation.
+  
+  OUTPUT FORMAT:
+  Return the updated sections in this exact format with explicit code blocks:
+  
+  ```vc-helpers
+  [Updated or new helper code and proofs needed for verification]
+  ```
+  
+  ```vc-code
+  [ONLY the method body implementation between braces {{ }} - NO signature]
+  ```
+  
+  REQUIREMENTS:
+  - The CODE section must contain ONLY the method body implementation inside braces {{ }}
+  - Do NOT include the method signature in CODE - it's already provided in the SPEC section
+  - The implementation should satisfy both the formal SPEC and the natural language DESCRIPTION
+  - The implementation should align with the intuition provided in DESCRIPTION while meeting all formal requirements in SPEC
+  - The HELPERS section may be updated to support the verification of the new implementation
+  - Output ONLY valid Dafny code - NO conversational text, explanations, or comments outside the code
+  - Use the exact format: ```vc-helpers and ```vc-code
+
+  DAFNY FILE:
+  {code}
+
+fix_verification: |
+  
+  You are given a Dafny file that failed verification. 
+  It has following six consecutive blocks: 
+
+  PREAMBLE (possibly empty): auxiliary code and definitions.
+  
+  // <vc-helpers>
+  HELPERS : auxiliary code and proofs 
+  // </vc-helpers>
+  
+  // <vc-description>
+  DESCRIPTION : natural language description of what the method should do.
+  // </vc-description>
+  
+  // <vc-spec>
+  SPEC : formal specification of a method with signature and pre/post conditions.
+  // </vc-spec>
+  
+  // <vc-code>
+  CODE : implementation that failed verification.
+  // </vc-code>
+  
+  POSTAMBLE (possibly empty): auxiliary code and definitions.
+
+  The task is to fix the verification errors in the CODE and HELPERS sections. You have both the natural language DESCRIPTION and the formal SPEC to guide your fixes.
+  
+  OUTPUT FORMAT:
+  Return the fixed sections in this exact format with explicit code blocks:
+  
+  ```vc-helpers
+  [Updated helper code and proofs to fix verification errors]
+  ```
+  
+  ```vc-code
+  [ONLY the fixed method body implementation between braces {{ }} - NO signature]
+  ```
+  
+  REQUIREMENTS:
+  - The CODE section must contain ONLY the method body implementation inside braces {{ }}
+  - Do NOT include the method signature in CODE - it's already provided in the SPEC section
+  - The CODE section must be fixed to pass verification while satisfying both SPEC and DESCRIPTION
+  - The implementation should align with the intuition in DESCRIPTION while meeting formal requirements in SPEC
+  - The HELPERS section may be updated to support the verification of the fixed implementation
+  - Output ONLY valid Dafny code - NO conversational text, explanations, or comments outside the code
+  - Use the exact format: ```vc-helpers and ```vc-code
+
+  ERROR DETAILS from Dafny verification of the given code:
+  {errorDetails}
+
+  DAFNY FILE:
+  {code}

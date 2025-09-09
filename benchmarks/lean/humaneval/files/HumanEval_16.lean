@@ -1,23 +1,6 @@
-/- 
-function_signature: "def count_distinct_characters(string: str) -> int"
-docstring: |
-    Given a string, find out how many distinct characters (regardless of case) does it consist of
-test_cases:
-  - input: "xyzXYZ"
-    expected_output: 3
-  - input: "Jerry"
-    expected_output: 4
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (string: String) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -34,11 +17,40 @@ result = lowercase_characters.card;
 ∃ result, implementation string = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def count_distinct_characters(string: str) -> int"
+docstring: |
+    Given a string, find out how many distinct characters (regardless of case) does it consist of
+test_cases:
+  - input: "xyzXYZ"
+    expected_output: 3
+  - input: "Jerry"
+    expected_output: 4
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (string: String) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (string: String)
 : problem_spec implementation string
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "xyzXYZ" = 3
 -- #test implementation "Jerry" = 4

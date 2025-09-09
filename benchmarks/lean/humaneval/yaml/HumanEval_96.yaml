@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def count_up_to(n : int) -> list[int]"
   docstring: |
       Implement a function that takes an non-negative integer and returns an array of the first n
@@ -17,22 +16,12 @@ vc-description: |-
       expected_output: []
     - input: 18
       expected_output: [2,3,5,7,11,13,17]
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (n: Nat) : List Nat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: Nat → List Nat)
@@ -48,11 +37,24 @@ vc-theorems: |-
   ∃ result,
     implementation n = result ∧
     spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (n: Nat) : List Nat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (n: Nat)
   : problem_spec implementation n
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -62,4 +64,3 @@ vc-postamble: |-
   -- #test implementation 20 = [2,3,5,7,11,13,17,19]
   -- #test implementation 1 = []
   -- #test implementation 18 = [2,3,5,7,11,13,17]
-

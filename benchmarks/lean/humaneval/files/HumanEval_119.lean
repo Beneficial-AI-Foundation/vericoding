@@ -1,21 +1,3 @@
-/- 
-function_signature: "def match_parens(l : list[str]) -> str"
-docstring: |
-    You are given a list of two strings, both strings consist of open
-    parentheses '(' or close parentheses ')' only.
-    Your job is to check if it is possible to concatenate the two strings in
-    some order, that the resulting string will be good.
-    A string S is considered to be good if and only if all parentheses in S
-    are balanced. For example: the string '(())()' is good, while the string
-    '())' is not.
-    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.
-test_cases:
-  - input: ['()(', ')']
-    expected_output: "Yes"
-  - input: [')', ')']
-    expected_output: "No"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -39,12 +21,6 @@ let chars := paren_string.toList;
 (∀ (i : ℕ), i ≤ chars.length → ((chars.take i).count bracket_type_right) ≤ ((chars.take i).count bracket_type_left)) ∧
 (chars.count bracket_type_left = chars.count bracket_type_right)
 
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (l: List String) : String :=
-  sorry
-
 def problem_spec
 -- function signature
 (implementation: List String → String)
@@ -64,11 +40,47 @@ let spec (result : String) :=
   implementation l = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def match_parens(l : list[str]) -> str"
+docstring: |
+    You are given a list of two strings, both strings consist of open
+    parentheses '(' or close parentheses ')' only.
+    Your job is to check if it is possible to concatenate the two strings in
+    some order, that the resulting string will be good.
+    A string S is considered to be good if and only if all parentheses in S
+    are balanced. For example: the string '(())()' is good, while the string
+    '())' is not.
+    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.
+test_cases:
+  - input: ['()(', ')']
+    expected_output: "Yes"
+  - input: [')', ')']
+    expected_output: "No"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (l: List String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (l: List String)
 : problem_spec implementation l
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation ['()(', ')'] = "Yes"
 -- #test implementation [')', ')'] = "No"

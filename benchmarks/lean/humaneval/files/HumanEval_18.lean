@@ -1,31 +1,6 @@
-/- 
-function_signature: "def how_many_times(string: str, substring: str) -> int"
-docstring: |
-  Find how many times a given substring can be found in the original string. Count overlaping cases.
-test_cases:
-  - input:
-      - ""
-      - "a"
-    expected_output: 0
-  - input:
-      - "aaa"
-      - "a"
-    expected_output: 3
-  - input:
-      - "aaaa"
-      - "aa"
-    expected_output: 3
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (string: String) (substring: String) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -48,12 +23,49 @@ result = substring_occurrences.toFinset.card);
 ∃ result, implementation string substring = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def how_many_times(string: str, substring: str) -> int"
+docstring: |
+  Find how many times a given substring can be found in the original string. Count overlaping cases.
+test_cases:
+  - input:
+      - ""
+      - "a"
+    expected_output: 0
+  - input:
+      - "aaa"
+      - "a"
+    expected_output: 3
+  - input:
+      - "aaaa"
+      - "aa"
+    expected_output: 3
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (string: String) (substring: String) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (string: String)
 (substring: String)
 : problem_spec implementation string substring
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "aaa" "a" = 3
 -- #test implementation "aaaa" "aa" = 3

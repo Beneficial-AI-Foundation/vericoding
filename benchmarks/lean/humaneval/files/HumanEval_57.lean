@@ -1,25 +1,6 @@
-/- 
-function_signature: "def monotonic(numbers: List[int]) -> Bool"
-docstring: |
-    Return True if list elements are monotonically increasing or decreasing.
-test_cases:
-  - input: [1, 2, 4, 20]
-    expected_output: True
-  - input: [1, 20, 4, 10]
-    expected_output: False
-  - input: [4, 1, 0, -10]
-    expected_output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (numbers: List Int) : Bool :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -39,11 +20,42 @@ let spec (result: Bool) :=
 ∃ result, implementation numbers = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def monotonic(numbers: List[int]) -> Bool"
+docstring: |
+    Return True if list elements are monotonically increasing or decreasing.
+test_cases:
+  - input: [1, 2, 4, 20]
+    expected_output: True
+  - input: [1, 20, 4, 10]
+    expected_output: False
+  - input: [4, 1, 0, -10]
+    expected_output: True
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (numbers: List Int) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (numbers: List Int)
 : problem_spec implementation numbers
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [1, 2, 4, 20] = true
 -- #test implementation [1, 20, 4, 10] = false

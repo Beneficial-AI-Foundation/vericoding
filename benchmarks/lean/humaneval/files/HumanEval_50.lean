@@ -1,25 +1,6 @@
-/- 
-function_signature: "def encode_shift(s: String) -> String"
-docstring: |
-    returns encoded string by shifting every character by 5 in the alphabet.
-test_cases:
-  - input: abc
-    expected_output: fgh
-  - input: xyz
-    expected_output: cde
-  - input: aaa
-    expected_output: fff
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s: String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -43,11 +24,42 @@ result.length = s.length ∧
 ∃ result, implementation s = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def encode_shift(s: String) -> String"
+docstring: |
+    returns encoded string by shifting every character by 5 in the alphabet.
+test_cases:
+  - input: abc
+    expected_output: fgh
+  - input: xyz
+    expected_output: cde
+  - input: aaa
+    expected_output: fff
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s: String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "abc" = "fgh"
 -- #test implementation "xyz" = "cde"

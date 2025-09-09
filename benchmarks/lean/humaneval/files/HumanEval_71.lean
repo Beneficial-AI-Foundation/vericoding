@@ -1,25 +1,6 @@
-/- 
-function_signature: "def triangle_area(a: float, b: float, c: float) -> float"
-docstring: |
-    Given the lengths of the three sides of a triangle. Return the area of the triangle rounded to 2 decimal points
-    if the three sides form a valid triangle. Otherwise return -1. Three sides make a valid triangle when the sum of
-    any two sides is greater than the third side.
-test_cases:
-  - input: (3, 4, 5)
-    expected_output: 6
-  - input: (1, 2, 10)
-    expected_output: -1
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (a: Rat) (b: Rat) (c: Rat): Rat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -40,11 +21,42 @@ let spec (result : Rat) :=
 ∃ result, implementation a b c = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def triangle_area(a: float, b: float, c: float) -> float"
+docstring: |
+    Given the lengths of the three sides of a triangle. Return the area of the triangle rounded to 2 decimal points
+    if the three sides form a valid triangle. Otherwise return -1. Three sides make a valid triangle when the sum of
+    any two sides is greater than the third side.
+test_cases:
+  - input: (3, 4, 5)
+    expected_output: 6
+  - input: (1, 2, 10)
+    expected_output: -1
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (a: Rat) (b: Rat) (c: Rat): Rat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (a: Rat) (b: Rat) (c: Rat)
 : problem_spec implementation a b c
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 3 4 5 = 6.00
 -- #test implementation 1 2 10 = -1

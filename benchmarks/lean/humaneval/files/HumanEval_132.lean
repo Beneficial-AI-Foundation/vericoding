@@ -1,24 +1,3 @@
-/- 
-function_signature: "def is_nested(string: str) -> Bool"
-docstring: |
-    Create a function that takes a string as input which contains only parentheses.
-    The function should return True if and only if there is a valid subsequence of parentheses
-    where at least one parenthesis in the subsequence is nested.
-test_cases:
-  - input: '(())'
-    expected_output: True
-  - input: '()))))))((((()'
-    expected_output: False
-  - input: '()()'
-    expected_output: False
-  - input: '()'
-    expected_output: False
-  - input: '(()())'
-    expected_output: True
-  - input: '(())(('
-    expected_output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -130,12 +109,6 @@ def is_subsequence (xs ys : List Char) : Bool :=
   | x::xs', y::ys' =>
       if x = y then is_subsequence xs' ys' else is_subsequence xs ys'
 
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (lst: String) : Bool :=
-  sorry
-
 def problem_spec
 -- function signature
 (impl: String → Bool)
@@ -154,10 +127,49 @@ result = true ↔
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def is_nested(string: str) -> Bool"
+docstring: |
+    Create a function that takes a string as input which contains only parentheses.
+    The function should return True if and only if there is a valid subsequence of parentheses
+    where at least one parenthesis in the subsequence is nested.
+test_cases:
+  - input: '(())'
+    expected_output: True
+  - input: '()))))))((((()'
+    expected_output: False
+  - input: '()()'
+    expected_output: False
+  - input: '()'
+    expected_output: False
+  - input: '(()())'
+    expected_output: True
+  - input: '(())(('
+    expected_output: True
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (lst: String) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (string: String)
-: problem_spec implementation string := by
+: problem_spec implementation string :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "(())" = true
 -- #test implementation "()))))))((((()" = false

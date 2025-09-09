@@ -1,43 +1,6 @@
-/- 
-function_signature: "def numerical_letter_grade(grades: list[float]) -> list[str]"
-docstring: |
-    It is the last week of the semester and the teacher has to give the grades
-    to students. The teacher has been making her own algorithm for grading.
-    The only problem is, she has lost the code she used for grading.
-    She has given you a list of GPAs for some students and you have to write
-    a function that can output a list of letter grades using the following table:
-             GPA       |    Letter grade
-              4.0                A+
-            > 3.7                A
-            > 3.3                A-
-            > 3.0                B+
-            > 2.7                B
-            > 2.3                B-
-            > 2.0                C+
-            > 1.7                C
-            > 1.3                C-
-            > 1.0                D+
-            > 0.7                D
-            > 0.0                D-
-              0.0                E
-    Note: I have included a hypothesis that Float is hashable, not sure if this will mess up proving attempts but we can modify it if so. Reviewer: please think if there's a better way.
-    Example:
-    grade_equation([4.0, 3, 1.7, 2, 3.5]) ==> ['A+', 'B', 'C-', 'C', 'A-']
-test_cases:
-  - input: [4.0, 3, 1.7, 2, 3.5]
-    output: ['A+', 'B', 'C-', 'C', 'A-']
-note: formalization uses a list of tuples instead of a hashmap because Hashable Float is not available in the standard library.
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (grades: List Float) : List String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -78,10 +41,59 @@ let spec (result : List String) :=
   implementation grades = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def numerical_letter_grade(grades: list[float]) -> list[str]"
+docstring: |
+    It is the last week of the semester and the teacher has to give the grades
+    to students. The teacher has been making her own algorithm for grading.
+    The only problem is, she has lost the code she used for grading.
+    She has given you a list of GPAs for some students and you have to write
+    a function that can output a list of letter grades using the following table:
+             GPA       |    Letter grade
+              4.0                A+
+            > 3.7                A
+            > 3.3                A-
+            > 3.0                B+
+            > 2.7                B
+            > 2.3                B-
+            > 2.0                C+
+            > 1.7                C
+            > 1.3                C-
+            > 1.0                D+
+            > 0.7                D
+            > 0.0                D-
+              0.0                E
+    Note: I have included a hypothesis that Float is hashable, not sure if this will mess up proving attempts but we can modify it if so. Reviewer: please think if there's a better way.
+    Example:
+    grade_equation([4.0, 3, 1.7, 2, 3.5]) ==> ['A+', 'B', 'C-', 'C', 'A-']
+test_cases:
+  - input: [4.0, 3, 1.7, 2, 3.5]
+    output: ['A+', 'B', 'C-', 'C', 'A-']
+note: formalization uses a list of tuples instead of a hashmap because Hashable Float is not available in the standard library.
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (grades: List Float) : List String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (grades: List Float)
 : problem_spec implementation grades
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [4.0, 3, 1.7, 2, 3.5] = ['A+', 'B', 'C-', 'C', 'A-']

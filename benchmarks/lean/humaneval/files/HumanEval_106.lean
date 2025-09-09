@@ -1,25 +1,6 @@
-/- 
-function_signature: "def f(n: int) -> List[int]"
-docstring: |
-    Implement the function f that takes n as a parameter,
-    and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even
-    or the sum of numbers from 1 to i otherwise.
-    i starts from 1.
-    the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).
-test_cases:
-  - input: 5
-    expected_output: [1, 2, 6, 24, 15]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Int) : List Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -35,11 +16,42 @@ let spec (result: List Int) :=
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def f(n: int) -> List[int]"
+docstring: |
+    Implement the function f that takes n as a parameter,
+    and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even
+    or the sum of numbers from 1 to i otherwise.
+    i starts from 1.
+    the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).
+test_cases:
+  - input: 5
+    expected_output: [1, 2, 6, 24, 15]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Int) : List Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Int)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 5 = [1, 2, 6, 24, 15]
 -- #test implementation 7 = [1, 2, 6, 24, 15, 720, 28]

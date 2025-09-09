@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def check_if_last_char_is_a_letter(txt: str) -> Bool"
   docstring: |
       Create a function that returns True if the last character
@@ -15,22 +14,12 @@ vc-description: |-
       expected_output: False
     - input: ""
       expected_output: False
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (txt: String) : Bool :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: String → Bool)
@@ -47,10 +36,23 @@ vc-theorems: |-
   ∃ result, impl txt = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (txt: String) : Bool :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (txt: String)
-  : problem_spec implementation txt := by
+  : problem_spec implementation txt :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -58,4 +60,3 @@ vc-postamble: |-
   -- #test implementation "apple pi e" = true
   -- #test implementation "apple pi e " = false
   -- #test implementation "" = false
-

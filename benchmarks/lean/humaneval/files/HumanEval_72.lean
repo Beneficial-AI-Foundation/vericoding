@@ -1,29 +1,6 @@
-/- 
-function_signature: "def will_it_fly(q: List[int], w: int) -> bool"
-docstring: |
-    Write a function that returns True if the object q will fly, and False otherwise.
-    The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is
-    less than or equal the maximum possible weight w.
-test_cases:
-  - input: ([1, 2], 5)
-    expected_output: False
-  - input: ([3, 2, 3], 1)
-    expected_output: False
-  - input: ([3, 2, 3], 9)
-    expected_output: True
-  - input: ([3], 5)
-    expected_output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (q: List Int) (w: Int) : Bool :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -40,11 +17,46 @@ let spec (result : Bool) :=
 ∃ result, implementation q w = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def will_it_fly(q: List[int], w: int) -> bool"
+docstring: |
+    Write a function that returns True if the object q will fly, and False otherwise.
+    The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is
+    less than or equal the maximum possible weight w.
+test_cases:
+  - input: ([1, 2], 5)
+    expected_output: False
+  - input: ([3, 2, 3], 1)
+    expected_output: False
+  - input: ([3, 2, 3], 9)
+    expected_output: True
+  - input: ([3], 5)
+    expected_output: True
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (q: List Int) (w: Int) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (q: List Int) (w: Int)
 : problem_spec implementation q w
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [3, 2, 3] 9 = True
 -- #test implementation [1, 2] 5 = False

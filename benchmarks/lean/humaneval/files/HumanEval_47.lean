@@ -1,23 +1,6 @@
-/- 
-function_signature: "def median(numbers: List[float]) -> float"
-docstring: |
-    Return median of elements in the list l
-test_cases:
-  - input: [3, 1, 2, 4, 5]
-    output: 3
-  - input: [-10, 4, 6, 1000, 10, 20]
-    output: 15.0
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (numbers: List Rat) : Rat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -46,11 +29,40 @@ let spec (result: Rat) :=
 ∃ result, implementation numbers = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def median(numbers: List[float]) -> float"
+docstring: |
+    Return median of elements in the list l
+test_cases:
+  - input: [3, 1, 2, 4, 5]
+    output: 3
+  - input: [-10, 4, 6, 1000, 10, 20]
+    output: 15.0
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (numbers: List Rat) : Rat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (numbers: List Rat)
 : problem_spec implementation numbers
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [3, 1, 2, 4, 5] = 3
 -- #test implementation [-10, 4, 6, 1000, 10, 20] = 15.0

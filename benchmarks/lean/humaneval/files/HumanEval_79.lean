@@ -1,28 +1,6 @@
-/- 
-function_signature: "def decimal_to_binary(decimal: nat) -> string"
-docstring: |
-    You will be given a number in decimal form and your task is to convert it to
-    binary format. The function should return a string, with each character representing a binary
-    number. Each character in the string will be '0' or '1'.
-
-    There will be an extra couple of characters 'db' at the beginning and at the end of the string.
-    The extra characters are there to help with the format.
-test_cases:
-  - input: 15
-    expected_output: "db1111db"
-  - input: 32
-    expected_output: "db100000db"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (decimal: Nat) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -40,11 +18,45 @@ let spec (result: String) :=
 ∃ result, implementation decimal = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def decimal_to_binary(decimal: nat) -> string"
+docstring: |
+    You will be given a number in decimal form and your task is to convert it to
+    binary format. The function should return a string, with each character representing a binary
+    number. Each character in the string will be '0' or '1'.
+
+    There will be an extra couple of characters 'db' at the beginning and at the end of the string.
+    The extra characters are there to help with the format.
+test_cases:
+  - input: 15
+    expected_output: "db1111db"
+  - input: 32
+    expected_output: "db100000db"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (decimal: Nat) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (decimal: Nat)
 : problem_spec implementation decimal
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 0 = "db0db"
 -- #test implementation 32 = "db100000db"

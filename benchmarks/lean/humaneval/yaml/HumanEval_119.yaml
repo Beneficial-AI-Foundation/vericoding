@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def match_parens(l : list[str]) -> str"
   docstring: |
       You are given a list of two strings, both strings consist of open
@@ -15,7 +14,6 @@ vc-description: |-
       expected_output: "Yes"
     - input: [')', ')']
       expected_output: "No"
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -40,16 +38,7 @@ vc-preamble: |-
   let chars := paren_string.toList;
   (∀ (i : ℕ), i ≤ chars.length → ((chars.take i).count bracket_type_right) ≤ ((chars.take i).count bracket_type_left)) ∧
   (chars.count bracket_type_left = chars.count bracket_type_right)
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (l: List String) : String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: List String → String)
@@ -68,14 +57,26 @@ vc-theorems: |-
   ∃ result,
     implementation l = result ∧
     spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (l: List String) : String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (l: List String)
   : problem_spec implementation l
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation ['()(', ')'] = "Yes"
   -- #test implementation [')', ')'] = "No"
-

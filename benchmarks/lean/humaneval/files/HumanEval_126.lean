@@ -1,4 +1,32 @@
-/- 
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+def problem_spec
+-- function signature
+(impl: List Int → Bool)
+-- inputs
+(lst: List Int) :=
+-- spec
+let sorted_ascending := lst.Sorted (· ≤ ·);
+let ms := Multiset.ofList lst;
+let multiple_duplicates := ∃ i, i ∈ lst ∧ 2 < ms.count i;
+let spec (res: Bool) :=
+  res → sorted_ascending ∧
+  res → ¬multiple_duplicates ∧
+  multiple_duplicates → ¬res ∧
+  ¬sorted_ascending → ¬res;
+-- program terminates
+∃ result, impl lst = result ∧
+-- return value satisfies spec
+spec result
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
 function_signature: "def is_sorted(lst: List[int]) -> Bool"
 docstring: |
     Given a list of numbers, return whether or not they are sorted
@@ -22,40 +50,24 @@ test_cases:
   - input: [1, 2, 2, 2, 3, 4]
     expected_output: False
 -/
+-- </vc-description>
 
-import Mathlib
-import Mathlib.Algebra.Polynomial.Basic
-import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
+-- <vc-spec>
 def implementation (lst: List Int) : Bool :=
-  sorry
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
 
-def problem_spec
--- function signature
-(impl: List Int → Bool)
--- inputs
-(lst: List Int) :=
--- spec
-let sorted_ascending := lst.Sorted (· ≤ ·);
-let ms := Multiset.ofList lst;
-let multiple_duplicates := ∃ i, i ∈ lst ∧ 2 < ms.count i;
-let spec (res: Bool) :=
-  res → sorted_ascending ∧
-  res → ¬multiple_duplicates ∧
-  multiple_duplicates → ¬res ∧
-  ¬sorted_ascending → ¬res;
--- program terminates
-∃ result, impl lst = result ∧
--- return value satisfies spec
-spec result
-
+-- <vc-theorem>
 theorem correctness
 (lst: List Int)
-: problem_spec implementation lst := by
+: problem_spec implementation lst :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [5] = true
 -- #test implementation [1, 2, 3, 4, 5] = true

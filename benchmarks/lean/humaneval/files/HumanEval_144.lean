@@ -1,30 +1,6 @@
-/- 
-function_signature: "def simplify(x: str, n: str) -> Bool"
-docstring: |
-    Your task is to implement a function that will simplify the expression
-    x * n. The function returns True if x * n evaluates to a whole number and False
-    otherwise. Both x and n, are string representation of a fraction, and have the following format,
-    <numerator>/<denominator> where both numerator and denominator are positive whole numbers.
-
-    You can assume that x, and n are valid fractions, and do not have zero as denominator.
-test_cases:
-  - input: ["1/5", "5/1"]
-    expected_output: True
-  - input: ["1/6", "2/1"]
-    expected_output: False
-  - input: ["7/10", "10/2"]
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (x: String) (n: String) : Bool :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -48,10 +24,46 @@ q1 ≠ 0 → q2 ≠ 0 →
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def simplify(x: str, n: str) -> Bool"
+docstring: |
+    Your task is to implement a function that will simplify the expression
+    x * n. The function returns True if x * n evaluates to a whole number and False
+    otherwise. Both x and n, are string representation of a fraction, and have the following format,
+    <numerator>/<denominator> where both numerator and denominator are positive whole numbers.
+
+    You can assume that x, and n are valid fractions, and do not have zero as denominator.
+test_cases:
+  - input: ["1/5", "5/1"]
+    expected_output: True
+  - input: ["1/6", "2/1"]
+    expected_output: False
+  - input: ["7/10", "10/2"]
+    expected_output: False
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (x: String) (n: String) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (x: String) (n: String)
-: problem_spec implementation x n := by
+: problem_spec implementation x n :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "1/5" "5/1" = True
 -- #test implementation "1/6" "2/1" = False

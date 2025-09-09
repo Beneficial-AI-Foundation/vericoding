@@ -1,4 +1,25 @@
-/- 
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+def problem_spec
+-- function signature
+(implementation: Int → Int → Bool)
+-- inputs
+(x: Int) (n: Int) :=
+-- spec
+let spec (result: Bool) :=
+  result ↔ exists k: Nat, x = n^k
+-- program termination
+∃ result, implementation x n = result ∧
+spec result
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
 function_signature: "def is_simple_power(x: int, n: int) -> bool"
 docstring: |
     Your task is to write a function that returns true if a number x is a simple
@@ -17,34 +38,25 @@ test_cases:
   - input: (5, 3)
     expected_output: False
 -/
+-- </vc-description>
 
-import Mathlib
-import Mathlib.Algebra.Polynomial.Basic
-import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
+-- <vc-spec>
 def implementation (x: Int) (n: Int) : Bool :=
-  sorry
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
 
-def problem_spec
--- function signature
-(implementation: Int → Int → Bool)
--- inputs
-(x: Int) (n: Int) :=
--- spec
-let spec (result: Bool) :=
-  result ↔ exists k: Nat, x = n^k
--- program termination
-∃ result, implementation x n = result ∧
-spec result
-
+-- <vc-theorem>
 theorem correctness
 (x: Int) (n: Int)
 : problem_spec implementation x n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 16 2 = True
 -- #test implementation 143214 16 = False

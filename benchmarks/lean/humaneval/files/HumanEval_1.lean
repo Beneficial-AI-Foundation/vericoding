@@ -1,18 +1,3 @@
-/- 
-function_signature: "def separate_paren_groups(paren_string: str) -> List[str]"
-docstring: |
-    Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
-    separate those group into separate strings and return the list of those.
-    Separate groups are balanced (each open brace is properly closed) and not nested within each other
-    Ignore any spaces in the input string.
-test_cases:
-  - input: "( ) (( )) (( )( ))"
-    expected_output:
-      - "()"
-      - "(())"
-      - "(()())"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -109,12 +94,6 @@ def count_paren_groups
 (paren_string: String): Nat :=
 count_paren_groups_helper paren_string 0 0
 
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (paren_string: String) : List String :=
-  sorry
-
 def problem_spec
 -- function signature
 (impl: String → List String)
@@ -132,9 +111,41 @@ let spec (result_list: List String) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def separate_paren_groups(paren_string: str) -> List[str]"
+docstring: |
+    Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
+    separate those group into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other
+    Ignore any spaces in the input string.
+test_cases:
+  - input: "( ) (( )) (( )( ))"
+    expected_output:
+      - "()"
+      - "(())"
+      - "(()())"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (paren_string: String) : List String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (paren_string: String)
-: problem_spec implementation paren_string := by
-  sorry
+: problem_spec implementation paren_string :=
+-- </vc-theorem>
+-- <vc-proof>
+by sorry
+-- </vc-proof>
 
 -- #test implementation "( ) (( )) (( )( ))" = ["()", "(())", "(()())"]

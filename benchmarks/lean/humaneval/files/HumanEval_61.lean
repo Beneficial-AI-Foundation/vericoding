@@ -1,19 +1,3 @@
-/- 
-function_signature: "def correct_bracketing(brackets: str) -> Bool"
-docstring: |
-    brackets is a string of "(" and ")".
-    return True if every opening bracket has a corresponding closing bracket.
-test_cases:
-  - input: "("
-    expected_output: False
-  - input: "()"
-    expected_output: True
-  - input: "(()())"
-    expected_output: True
-  - input: ")(()"
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -36,12 +20,6 @@ let chars := paren_string.toList;
 (∀ (i : ℕ), i ≤ chars.length → ((chars.take i).count bracket_type_right) ≤ ((chars.take i).count bracket_type_left)) ∧
 (chars.count bracket_type_left = chars.count bracket_type_right)
 
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (paren_string: String) : Bool :=
-  sorry
-
 def problem_spec
 -- function signature
 (impl: String → Bool)
@@ -56,10 +34,44 @@ let spec (result: Bool) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def correct_bracketing(brackets: str) -> Bool"
+docstring: |
+    brackets is a string of "(" and ")".
+    return True if every opening bracket has a corresponding closing bracket.
+test_cases:
+  - input: "("
+    expected_output: False
+  - input: "()"
+    expected_output: True
+  - input: "(()())"
+    expected_output: True
+  - input: ")(()"
+    expected_output: False
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (paren_string: String) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (brackets: String)
-: problem_spec implementation brackets := by
+: problem_spec implementation brackets :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "(" = false
 -- #test implementation "()" = true

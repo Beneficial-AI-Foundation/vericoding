@@ -1,28 +1,6 @@
-/- 
-function_signature: "def largest_smallest_integers(lst: List[int]) -> Tuple[ Optional[Int], Optional[Int] ]"
-docstring: |
-    Create a function that returns a tuple (a, b), where 'a' is
-    the largest of negative integers, and 'b' is the smallest
-    of positive integers in a list.
-    If there is no negative or positive integers, return them as None.
-test_cases:
-  - input: [2, 4, 1, 3, 5, 7]
-    expected_output: (None, 1)
-  - input: []
-    expected_output: (None, None)
-  - input: [0]
-    expected_output: (None, None)
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (lst: List Int) : (Option Int × Option Int) :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -43,10 +21,44 @@ let spec (result: Option Int × Option Int) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def largest_smallest_integers(lst: List[int]) -> Tuple[ Optional[Int], Optional[Int] ]"
+docstring: |
+    Create a function that returns a tuple (a, b), where 'a' is
+    the largest of negative integers, and 'b' is the smallest
+    of positive integers in a list.
+    If there is no negative or positive integers, return them as None.
+test_cases:
+  - input: [2, 4, 1, 3, 5, 7]
+    expected_output: (None, 1)
+  - input: []
+    expected_output: (None, None)
+  - input: [0]
+    expected_output: (None, None)
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (lst: List Int) : (Option Int × Option Int) :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (lst: List Int)
-: problem_spec implementation lst := by
+: problem_spec implementation lst :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [2, 4, 1, 3, 5, 7] = (none, some 1)
 -- #test implementation [] = (none, none)

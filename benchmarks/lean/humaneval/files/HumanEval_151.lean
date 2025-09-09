@@ -1,28 +1,6 @@
-/- 
-function_signature: "def double_the_difference(numbers: List[float]) -> Int"
-docstring: |
-    Given a list of numbers, return the sum of squares of the numbers
-    in the list that are odd. Ignore numbers that are negative or not integers.
-test_cases:
-  - input: [1, 3, 2, 0]
-    expected_output: 10
-  - input: [-1. -2, 0]
-    expected_output: 0
-  - input: [9, -2]
-    expected_output: 81
-  - input: [0]
-    expected_output: 0
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (numbers: List Rat) : Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -44,10 +22,44 @@ else result = if (isEven numbers[0]! ∨ isNegative numbers[0]! ∨ isNotInteger
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def double_the_difference(numbers: List[float]) -> Int"
+docstring: |
+    Given a list of numbers, return the sum of squares of the numbers
+    in the list that are odd. Ignore numbers that are negative or not integers.
+test_cases:
+  - input: [1, 3, 2, 0]
+    expected_output: 10
+  - input: [-1. -2, 0]
+    expected_output: 0
+  - input: [9, -2]
+    expected_output: 81
+  - input: [0]
+    expected_output: 0
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (numbers: List Rat) : Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (numbers: List Rat)
-: problem_spec implementation numbers := by
+: problem_spec implementation numbers :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation ([1, 3, 2, 0]: List Rat) = (10: Int)
 -- #test implementation ([-1, -2, 0]: List Int) = (0: Int)

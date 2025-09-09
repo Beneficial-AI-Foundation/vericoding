@@ -1,4 +1,28 @@
-/- 
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+def problem_spec
+-- function signature
+(impl: List Int → Bool)
+-- inputs
+(operations: List Int) :=
+-- spec
+let below_zero_condition := ∃ i, i ≤ operations.length ∧
+(operations.take i).sum < 0;
+let spec (result: Bool) :=
+if result then below_zero_condition else ¬below_zero_condition;
+-- program terminates
+∃ result, impl operations = result ∧
+-- return value satisfies spec
+spec result
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
 function_signature: "def below_zero(operations: List[int]) -> bool"
 docstring: |
     You're given a list of deposit and withdrawal operations on a bank account that starts with
@@ -17,37 +41,23 @@ test_cases:
       - 5
     expected_output: true
 -/
+-- </vc-description>
 
-import Mathlib
-import Mathlib.Algebra.Polynomial.Basic
-import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
+-- <vc-spec>
 def implementation (operations: List Int) : Bool :=
-  sorry
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
 
-def problem_spec
--- function signature
-(impl: List Int → Bool)
--- inputs
-(operations: List Int) :=
--- spec
-let below_zero_condition := ∃ i, i ≤ operations.length ∧
-(operations.take i).sum < 0;
-let spec (result: Bool) :=
-if result then below_zero_condition else ¬below_zero_condition;
--- program terminates
-∃ result, impl operations = result ∧
--- return value satisfies spec
-spec result
-
+-- <vc-theorem>
 theorem correctness
 (operations: List Int)
-: problem_spec implementation operations
-:= by
-  sorry
+: problem_spec implementation operations :=
+-- </vc-theorem>
+-- <vc-proof>
+by sorry
+-- </vc-proof>
 
 -- #test implementation [1, 2, 3] = false
 -- #test implementation [1, 2, -4, 5] = true

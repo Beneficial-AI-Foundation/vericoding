@@ -1,4 +1,26 @@
-/- 
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+def problem_spec
+-- function signature
+(implementation: Nat → Nat)
+-- inputs
+(x : Nat) :=
+-- spec
+let spec (result: Nat) :=
+  ∃ x_list : List Nat, x_list.length = x ∧ x_list.all (fun i => i = x)
+  ∧ x_list.sum = result
+-- -- program termination
+∃ result, implementation x = result ∧
+spec result
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
 function_signature: "def car_race_collision(x: Nat) -> Nat"
 docstring: |
     Imagine a road that's a perfectly straight infinitely long line.
@@ -15,35 +37,25 @@ test_cases:
   - input: 5
     expected_output: 25
 -/
+-- </vc-description>
 
-import Mathlib
-import Mathlib.Algebra.Polynomial.Basic
-import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
+-- <vc-spec>
 def implementation (x : Nat) : Nat :=
-  sorry
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
 
-def problem_spec
--- function signature
-(implementation: Nat → Nat)
--- inputs
-(x : Nat) :=
--- spec
-let spec (result: Nat) :=
-  ∃ x_list : List Nat, x_list.length = x ∧ x_list.all (fun i => i = x)
-  ∧ x_list.sum = result
--- -- program termination
-∃ result, implementation x = result ∧
-spec result
-
+-- <vc-theorem>
 theorem correctness
 (x : Nat)
 : problem_spec implementation x
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 0 = 0
 -- #test implementation 5 = 25

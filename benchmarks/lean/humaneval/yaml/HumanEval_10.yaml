@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def make_palindrome(string: str) -> str"
   docstring: |
       Find the shortest palindrome that begins with a supplied string.
@@ -13,7 +12,6 @@ vc-description: |-
       expected_output: "catac"
     - input: "cata"
       expected_output: "catac"
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -31,16 +29,7 @@ vc-preamble: |-
   def is_palindrome
   (s: String): Bool :=
   s = s.toList.reverse.asString
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (string: String) : String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: String → String)
@@ -59,15 +48,27 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation string = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (string: String) : String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (s: String)
   : problem_spec implementation s
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation "" = ""
   -- #test implementation "cat" = "catac"
   -- #test implementation "cata" = "catac"
-

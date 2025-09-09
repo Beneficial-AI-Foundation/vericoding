@@ -1,27 +1,6 @@
-/- 
-function_signature: "def split_words(txt)"
-docstring: |
-    Given a string of words, return a list of words split on whitespace, if no whitespaces exists in the text you
-    should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the
-    alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25
-test_cases:
-  - input: "Hello world!"
-    expected_output: ["Hello", "world!"]
-  - input: "Hello,world!"
-    expected_output: ["Hello", "world!"]
-  - input: "abcdef"
-    expected_output: 3
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (text: String) : Option (List String) × Option Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -52,10 +31,43 @@ let spec (result: Option (List String) × Option Nat) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def split_words(txt)"
+docstring: |
+    Given a string of words, return a list of words split on whitespace, if no whitespaces exists in the text you
+    should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the
+    alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25
+test_cases:
+  - input: "Hello world!"
+    expected_output: ["Hello", "world!"]
+  - input: "Hello,world!"
+    expected_output: ["Hello", "world!"]
+  - input: "abcdef"
+    expected_output: 3
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (text: String) : Option (List String) × Option Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (text: String)
-: problem_spec implementation text := by
+: problem_spec implementation text :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "Hello world!" = (some ["Hello", "world!"], none)
 -- #test implementation "Hello,world!" = (some ["Hello", "world!"], none)

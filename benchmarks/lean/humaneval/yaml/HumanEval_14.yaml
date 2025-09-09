@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def all_prefixes(string: str) -> List[str]"
   docstring: |
       Return list of all prefixes from shortest to longest of the input string
@@ -9,22 +8,12 @@ vc-description: |-
         - "a"
         - "ab"
         - "abc"
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (string: String) : List String :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: String → List String)
@@ -38,13 +27,25 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation string = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (string: String) : List String :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (string: String)
   : problem_spec implementation string
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation "abc" = ["a", "ab", "abc"]
-

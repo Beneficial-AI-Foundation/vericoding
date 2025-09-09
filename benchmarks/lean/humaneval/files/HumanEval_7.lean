@@ -1,27 +1,6 @@
-/- 
-function_signature: "def filter_by_substring(strings: List[str], substring: str) -> List[str]"
-docstring: |
-  Filter an input list of strings only for ones that contain given substring
-test_cases:
-  - input:
-    - []
-    - "a"
-    expected_output: []
-  - input:
-    - ["abc", "bacd", "cde", "array"]
-    - "a"
-    expected_output: ["abc", "bacd", "array"]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (strings: List String) (substring: String): List String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -39,12 +18,45 @@ let spec (result: List String) :=
 ∃ result, implementation strings substring = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def filter_by_substring(strings: List[str], substring: str) -> List[str]"
+docstring: |
+  Filter an input list of strings only for ones that contain given substring
+test_cases:
+  - input:
+    - []
+    - "a"
+    expected_output: []
+  - input:
+    - ["abc", "bacd", "cde", "array"]
+    - "a"
+    expected_output: ["abc", "bacd", "array"]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (strings: List String) (substring: String): List String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (strings: List String)
 (substring: String)
 : problem_spec implementation strings substring
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [] "a" = []
 -- #test implementation ["abc", "bacd", "cde", "array"] "a" = ["abc", "bacd", "array"]

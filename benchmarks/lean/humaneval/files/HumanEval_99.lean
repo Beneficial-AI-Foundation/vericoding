@@ -1,26 +1,7 @@
-/- 
-function_signature: "def closest_integer(s : String) -> Option Int"
-docstring: |
-    Create a function that takes a value (string) representing a number
-    and returns the closest integer to it. If the number is equidistant
-    from two integers, round it away from zero.
-test_cases:
-  - input: "10"
-    expected_output: 10
-  - input: "15.3"
-    expected_output: 15
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
 import Std
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s: String) : Option Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -54,11 +35,42 @@ let spec (result : Option Int) := match result with
   implementation s = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def closest_integer(s : String) -> Option Int"
+docstring: |
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+test_cases:
+  - input: "10"
+    expected_output: 10
+  - input: "15.3"
+    expected_output: 15
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s: String) : Option Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "10" = some 10
 -- #test implementation "15.3" = some 15

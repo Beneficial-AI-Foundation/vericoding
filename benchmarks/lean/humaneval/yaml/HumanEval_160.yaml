@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def do_algebra(operator: List String, operand: List Nat) -> Int"
   docstring: |
       Given two lists operator, and operand. The first list has basic algebra operations, and
@@ -20,7 +19,6 @@ vc-description: |-
   test_cases:
     - input: [['+', '*', '-'], [2, 3, 4, 5]]
       expected_output: 9
-  -/
 
 vc-preamble: |-
   import Mathlib
@@ -128,16 +126,7 @@ vc-preamble: |-
   -/
   def evalArith_precedence (ts : List String) (r : Int) : Prop :=
     evalArith_add ts r
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (operator: List String) (operand : List Nat) : Int :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: List String → List Nat → Int)
@@ -153,12 +142,24 @@ vc-theorems: |-
   ∃ result, impl operator operand = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (operator: List String) (operand : List Nat) : Int :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (operator : List String) (operand : List Nat)
-  : problem_spec implementation operator operand := by
+  : problem_spec implementation operator operand :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation ['+', '*', '-'] [2,3,4,5] = 9
-

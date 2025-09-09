@@ -1,17 +1,3 @@
-/- 
-function_signature: "def order_by_points(nums: List[int]) -> List[int]"
-docstring: |
-    Write a function which sorts the given list of integers
-    in ascending order according to the sum of their digits.
-    Note: if there are several items with similar sum of their digits,
-    order them based on their index in original list.
-test_cases:
-  - input: [1, 11, -1, -11, -12]
-    expected_output: [-1, -11, 1, -12, 11]
-  - input: []
-    expected_output: []
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -32,12 +18,6 @@ def digit_sum (n : Int) : Int :=
     let tail := ds'.foldl (· + ·) 0
     if n < 0 then Int.ofNat tail - Int.ofNat d
     else Int.ofNat (d + tail)
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (nums: List Int) : List Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -61,10 +41,42 @@ match result with
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def order_by_points(nums: List[int]) -> List[int]"
+docstring: |
+    Write a function which sorts the given list of integers
+    in ascending order according to the sum of their digits.
+    Note: if there are several items with similar sum of their digits,
+    order them based on their index in original list.
+test_cases:
+  - input: [1, 11, -1, -11, -12]
+    expected_output: [-1, -11, 1, -12, 11]
+  - input: []
+    expected_output: []
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (nums: List Int) : List Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (nums: List Int)
-: problem_spec implementation nums := by
+: problem_spec implementation nums :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [1, 11, -1, -11, -12] = [-1, -11, 1, -12, 11]
 -- #test implementation [] = []

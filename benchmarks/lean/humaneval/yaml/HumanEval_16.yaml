@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def count_distinct_characters(string: str) -> int"
   docstring: |
       Given a string, find out how many distinct characters (regardless of case) does it consist of
@@ -8,22 +7,12 @@ vc-description: |-
       expected_output: 3
     - input: "Jerry"
       expected_output: 4
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (string: String) : Nat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: String → Nat)
@@ -38,14 +27,26 @@ vc-theorems: |-
   -- program termination
   ∃ result, implementation string = result ∧
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (string: String) : Nat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (string: String)
   : problem_spec implementation string
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation "xyzXYZ" = 3
   -- #test implementation "Jerry" = 4
-

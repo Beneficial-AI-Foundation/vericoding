@@ -1,27 +1,6 @@
-/- 
-function_signature: "def modp(n: Nat, p: Nat) -> Nat"
-docstring: |
-    Return 2^n modulo p (be aware of numerics).
-test_cases:
-  - input: [3, 5]
-    expected_output: 3
-  - input: [1101, 101]
-    expected_output: 2
-  - input: [0, 101]
-    expected_output: 0
-  - input: [100, 101]
-    expected_output: 1
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n p: Nat) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -37,11 +16,44 @@ result < p ∧
 ∃ result, implementation n p = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def modp(n: Nat, p: Nat) -> Nat"
+docstring: |
+    Return 2^n modulo p (be aware of numerics).
+test_cases:
+  - input: [3, 5]
+    expected_output: 3
+  - input: [1101, 101]
+    expected_output: 2
+  - input: [0, 101]
+    expected_output: 0
+  - input: [100, 101]
+    expected_output: 1
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n p: Nat) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n p: Nat)
 : problem_spec implementation n p
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 3 5 = 3
 -- #test implementation 1101 101 = 2

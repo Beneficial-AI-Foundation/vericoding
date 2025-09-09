@@ -1,26 +1,6 @@
-/- 
-function_signature: "def remove_vowels(string: str) -> Nat"
-docstring: |
-    Write a function vowels_count which takes a string representing
-    a word as input and returns the number of vowels in the string.
-    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a
-    vowel, but only when it is at the end of the given word.
-test_cases:
-  - input: "abcde"
-    expected_output: 2
-  - input: "ACEDY"
-    expected_output: 3
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (string: String) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -42,11 +22,43 @@ else
 ∃ result, implementation string = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def remove_vowels(string: str) -> Nat"
+docstring: |
+    Write a function vowels_count which takes a string representing
+    a word as input and returns the number of vowels in the string.
+    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a
+    vowel, but only when it is at the end of the given word.
+test_cases:
+  - input: "abcde"
+    expected_output: 2
+  - input: "ACEDY"
+    expected_output: 3
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (string: String) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "abcde" = 2
 -- #test implementation "ACEDY" = 3

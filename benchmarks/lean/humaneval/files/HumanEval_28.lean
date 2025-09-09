@@ -1,23 +1,6 @@
-/- 
-function_signature: "def concatenate(strings: List[str]) -> str"
-docstring: |
-    Concatenate list of strings into a single string
-test_cases:
-  - input: []
-    expected_output: ""
-  - input: ["a", "b", "c"]
-    expected_output: "abc"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (strings: List String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -38,11 +21,40 @@ corresponding_string_in_result = string_in_result);
 ∃ result, implementation strings = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def concatenate(strings: List[str]) -> str"
+docstring: |
+    Concatenate list of strings into a single string
+test_cases:
+  - input: []
+    expected_output: ""
+  - input: ["a", "b", "c"]
+    expected_output: "abc"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (strings: List String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (strings: List String)
 : problem_spec implementation strings
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [] = ""
 -- #test implementation ["a", "b", "c"] = "abc"

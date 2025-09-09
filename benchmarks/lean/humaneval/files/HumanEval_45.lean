@@ -1,23 +1,6 @@
-/- 
-function_signature: "def triangle_area(a: float, h: float) -> float"
-docstring: |
-    Given length of a side and high return area for a triangle.
-test_cases:
-  - input: (5, 3)
-    expected_output: 7.5
-  - input: (8, 2)
-    expected_output: 8.0
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (a h: Rat) : Rat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -32,11 +15,40 @@ let spec (result: Rat) :=
 ∃ result, implementation a h = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def triangle_area(a: float, h: float) -> float"
+docstring: |
+    Given length of a side and high return area for a triangle.
+test_cases:
+  - input: (5, 3)
+    expected_output: 7.5
+  - input: (8, 2)
+    expected_output: 8.0
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (a h: Rat) : Rat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (a h : Rat)
 : problem_spec implementation a h
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 5 3 = 7.5
 -- #test implementation 8 2 = 8.0

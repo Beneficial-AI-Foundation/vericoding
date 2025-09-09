@@ -1,0 +1,125 @@
+# Verus vibe mode prompts - TODO: Implement when Verus supports vc-description format
+
+generate_code: |
+  
+  You are given a Verus file with following five consecutive blocks. 
+
+  PREAMBLE (possibly empty): auxiliary code and definitions.
+  
+  // <vc-helpers>
+  HELPERS : auxiliary code and proofs 
+  // </vc-helpers>
+  
+  // <vc-description>
+  DESCRIPTION : natural language description of what the method should do.
+  // </vc-description>
+  
+  // <vc-spec>
+  SPEC : placeholder for the formal specification.
+  // </vc-spec>
+  
+  // <vc-code>
+  CODE : placeholder for the required implementation.
+  // </vc-code>
+  
+  POSTAMBLE (possibly empty): auxiliary code and definitions.
+
+  The task is to generate a formal specification in the SPEC section and a verified implementation in the CODE section based on the natural language DESCRIPTION. You may also add HELPERS as needed.
+  
+  OUTPUT FORMAT:
+  Return the updated sections in this exact format with explicit code blocks:
+  
+  ```vc-helpers
+  [Updated or new helper code and proofs needed for verification]
+  ```
+  
+  ```vc-spec
+  [ONLY the method signature with requires/ensures clauses - NO implementation body]
+  ```
+  
+  ```vc-code
+  [ONLY the method body implementation between braces {{ }} - NO signature]
+  ```
+  
+  REQUIREMENTS:
+  - The SPEC section must contain ONLY the method signature with contracts (requires/ensures), NO body
+  - The CODE section must contain ONLY the method body implementation inside braces {{ }}
+  - Do NOT duplicate the method signature in both sections
+  - The HELPERS section may contain auxiliary code and proofs needed for verification
+  - Output ONLY valid Verus/Rust code - NO conversational text, explanations, or comments outside the code
+  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
+  - Use Verus types like `nat`, `int`, `Vec<T>`, `Seq<T>`, etc.
+  - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`)
+  - Use proof blocks with `proof {{ ... }}` when necessary
+  - Do not use `assume` statements in implementations
+  - Use the exact format: ```vc-helpers, ```vc-spec, and ```vc-code
+
+  VERUS FILE:
+  {code}
+
+fix_verification: |
+  
+  You are given a Verus file that failed verification. 
+  It has following five consecutive blocks: 
+
+  PREAMBLE (possibly empty): auxiliary code and definitions.
+  
+  // <vc-helpers>
+  HELPERS : auxiliary code and proofs 
+  // </vc-helpers>
+  
+  // <vc-description>
+  DESCRIPTION : natural language description of what the method should do.
+  // </vc-description>
+  
+  // <vc-spec>
+  SPEC : formal specification that may need fixing.
+  // </vc-spec>
+  
+  // <vc-code>
+  CODE : implementation that failed verification.
+  // </vc-code>
+  
+  POSTAMBLE (possibly empty): auxiliary code and definitions.
+
+  The task is to fix the verification errors. You may need to update the SPEC, CODE, and/or HELPERS sections to make the file verify successfully.
+  
+  OUTPUT FORMAT:
+  Return the fixed sections in this exact format with explicit code blocks:
+  
+  ```vc-helpers
+  [Updated helper code and proofs to fix verification errors]
+  ```
+  
+  ```vc-spec
+  [ONLY method signature with requires/ensures clauses - NO body, fix if needed]
+  ```
+  
+  ```vc-code
+  [ONLY method body implementation between braces {{ }} - NO signature, fix if needed]
+  ```
+  
+  REQUIREMENTS:
+  - Fix the verification errors while staying true to the DESCRIPTION
+  - The SPEC section must contain ONLY the method signature with contracts, NO body
+  - The CODE section must contain ONLY the method body implementation inside braces {{ }}
+  - Do NOT duplicate the method signature in both sections
+  - The SPEC may be updated if it doesn't correctly capture the DESCRIPTION
+  - The CODE section must be fixed to pass verification and satisfy the SPEC
+  - The HELPERS section may be updated to support verification
+  - Output ONLY valid Verus/Rust code - NO conversational text, explanations, or comments outside the code
+  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
+  - Use proof blocks with `proof {{ ... }}` for complex proofs
+  - Use Verus types and operators (`nat`, `int`, `Vec<T>`, `Seq<T>`, `@`, etc.)
+  - Use `@` for sequence/vector access (e.g., `v@[i]` for indexing)
+  - Do not use `assume` statements in implementations
+  - Use the exact format: ```vc-helpers, ```vc-spec, and ```vc-code
+
+  COMMENT FORMAT: add this comment right before any code or annotation block in a function body that you add or modify
+  /* code modified by LLM (iteration {iteration}): [brief description] */
+
+  ERROR DETAILS from Verus verification of the given code:
+  {errorDetails}
+
+  VERUS FILE:
+  {code}

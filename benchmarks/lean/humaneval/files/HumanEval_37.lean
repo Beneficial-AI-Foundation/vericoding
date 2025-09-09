@@ -1,25 +1,6 @@
-/- 
-function_signature: "def sort_even(l: list)"
-docstring: |
-    This function takes a list l and returns a list l' such that
-    l' is identical to l in the odd indicies, while its values at the even indicies are equal
-    to the values of the even indicies of l, but sorted.
-test_cases:
-  - input: [1, 2, 3]
-    output: [1, 2, 3]
-  - input: [5, 6, 3, 4]
-    output: [3, 6, 5, 4]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (l: List Int) : List Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -39,11 +20,42 @@ let spec (result: List Int) :=
 ∃ result, implementation l = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def sort_even(l: list)"
+docstring: |
+    This function takes a list l and returns a list l' such that
+    l' is identical to l in the odd indicies, while its values at the even indicies are equal
+    to the values of the even indicies of l, but sorted.
+test_cases:
+  - input: [1, 2, 3]
+    output: [1, 2, 3]
+  - input: [5, 6, 3, 4]
+    output: [3, 6, 5, 4]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (l: List Int) : List Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (l: List Int)
 : problem_spec implementation l
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [1, 2, 3] = [1, 2, 3]
 -- #test implementation [5, 6, 3, 4] = [3, 6, 5, 4]

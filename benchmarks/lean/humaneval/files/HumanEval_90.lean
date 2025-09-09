@@ -1,4 +1,31 @@
-/- 
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+def problem_spec
+-- function signature
+(implementation: List Int → Option Int)
+-- inputs
+(lst: List Int) :=
+-- spec
+let spec (result : Option Int) :=
+  match result with
+  | none => ¬ (∃ i j, i < lst.length ∧ j < lst.length ∧ i ≠ j ∧ lst[i]! < lst[j]!)
+  | some result =>
+    let smaller_els := lst.filter (· < result);
+    0 < smaller_els.length ∧
+    smaller_els.all (λ x => x = smaller_els[0]!);
+-- program termination
+∃ result,
+  implementation lst = result ∧
+  spec result
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
 function_signature: "def next_smallest(lst: List[int]) -> Optional[int]"
 docstring: |
     You are given a list of integers.
@@ -20,40 +47,25 @@ test_cases:
   - input: [1, 1]
     output: None
 -/
+-- </vc-description>
 
-import Mathlib
-import Mathlib.Algebra.Polynomial.Basic
-import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
+-- <vc-spec>
 def implementation (lst: List Int) : Option Int :=
-  sorry
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
 
-def problem_spec
--- function signature
-(implementation: List Int → Option Int)
--- inputs
-(lst: List Int) :=
--- spec
-let spec (result : Option Int) :=
-  match result with
-  | none => ¬ (∃ i j, i < lst.length ∧ j < lst.length ∧ i ≠ j ∧ lst[i]! < lst[j]!)
-  | some result =>
-    let smaller_els := lst.filter (· < result);
-    0 < smaller_els.length ∧
-    smaller_els.all (λ x => x = smaller_els[0]!);
--- program termination
-∃ result,
-  implementation lst = result ∧
-  spec result
-
+-- <vc-theorem>
 theorem correctness
 (lst: List Int)
 : problem_spec implementation lst
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [1, 2, 3, 4, 5] = some 2
 -- #test implementation [5, 1, 4, 3, 2] = some 2

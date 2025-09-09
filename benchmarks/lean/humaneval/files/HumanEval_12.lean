@@ -1,26 +1,6 @@
-/- 
-function_signature: "def longest(strings: List[str]) -> Optional[str]"
-docstring: |
-    Out of list of strings, return the longest one. Return the first one in case of multiple
-    strings of the same length. Return None in case the input list is empty.
-test_cases:
-  - input: []
-    expected_output: None
-  - input: ["a", "b", "c"]
-    expected_output: "a"
-  - input: ["a", "bb", "ccc"]
-    expected_output: "ccc"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (strings: List String) : Option String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -39,11 +19,43 @@ let spec (result: Option String) :=
 ∃ result, implementation strings = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def longest(strings: List[str]) -> Optional[str]"
+docstring: |
+    Out of list of strings, return the longest one. Return the first one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+test_cases:
+  - input: []
+    expected_output: None
+  - input: ["a", "b", "c"]
+    expected_output: "a"
+  - input: ["a", "bb", "ccc"]
+    expected_output: "ccc"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (strings: List String) : Option String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (strings: List String)
 : problem_spec implementation strings
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation ["a", "b", "c"] = some "a"
 -- #test implementation ["a", "bb", "ccc"] = some "ccc"

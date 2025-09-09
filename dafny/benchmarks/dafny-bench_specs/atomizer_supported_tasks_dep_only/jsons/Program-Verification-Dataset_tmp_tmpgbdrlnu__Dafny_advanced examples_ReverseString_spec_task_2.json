@@ -1,0 +1,29 @@
+{
+  "skeleton": "// RUN: /compile:0\n\n//ATOM_PLACEHOLDER_reversed\n\n//ATOM_PLACEHOLDER_yarra\n\n//ATOM_PLACEHOLDER_Main\n\n\n\n\n\n",
+  "atoms": {
+    "reversed": [
+      [],
+      "// ATOM \n// RUN: /compile:0\n\npredicate reversed (arr : array<char>, outarr: array<char>)\nrequires arr != null && outarr != null\n//requires 0<=k<=arr.Length-1\nrequires arr.Length == outarr.Length\nreads arr, outarr\n{\n  forall k :: 0<=k<=arr.Length-1 ==> outarr[k] == arr[(arr.Length-1-k)]\n}\n",
+      "predicate"
+    ],
+    "yarra": [
+      [
+        "reversed"
+      ],
+      "// SPEC \n\nmethod yarra(arr : array<char>) returns (outarr : array<char>)\nrequires arr != null && arr.Length > 0\nensures outarr != null && arr.Length == outarr.Length && reversed(arr,outarr)\n{\n}\n",
+      "method"
+    ],
+    "Main": [
+      [
+        "yarra"
+      ],
+      "// SPEC \n\nmethod Main()\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_reversed": "reversed",
+    "//ATOM_PLACEHOLDER_yarra": "yarra",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

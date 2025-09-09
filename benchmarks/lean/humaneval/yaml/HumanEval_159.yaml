@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def eat(number: Nat, need: Nat, remaining: Nat) -> List Nat"
   docstring: |
       You're a hungry rabbit, and you already have eaten a certain number of carrots,
@@ -29,22 +28,12 @@ vc-description: |-
       expected_output: [11, 0]
     - input: [2, 11, 5]
       expected_output: [7, 0]
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (a b c: Nat) : List Nat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: Nat → Nat → Nat → List Nat)
@@ -62,10 +51,23 @@ vc-theorems: |-
   ∃ result, impl number need remaining = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (a b c: Nat) : List Nat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (a b c: Nat)
-  : problem_spec implementation a b c := by
+  : problem_spec implementation a b c :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
@@ -73,4 +75,3 @@ vc-postamble: |-
   -- #test implementation 4 8 9 = [12, 1]
   -- #test implementation 1 10 10 = [11, 0]
   -- #test implementation 2 11 5 = [7, 0]
-

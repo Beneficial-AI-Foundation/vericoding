@@ -1,26 +1,6 @@
-/- 
-function_signature: "def right_angle_triangle(a: Nat, b: Nat, c: Nat) -> Bool"
-docstring: |
-    Given the lengths of the three sides of a triangle. Return True if the three
-    sides form a right-angled triangle, False otherwise.
-    A right-angled triangle is a triangle in which one angle is right angle or
-    90 degree.
-test_cases:
-  - input: [3, 4, 5]
-    expected_output: True
-  - input: [1, 2, 3]
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (a b c: Nat) : Bool :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -39,10 +19,42 @@ result ↔
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def right_angle_triangle(a: Nat, b: Nat, c: Nat) -> Bool"
+docstring: |
+    Given the lengths of the three sides of a triangle. Return True if the three
+    sides form a right-angled triangle, False otherwise.
+    A right-angled triangle is a triangle in which one angle is right angle or
+    90 degree.
+test_cases:
+  - input: [3, 4, 5]
+    expected_output: True
+  - input: [1, 2, 3]
+    expected_output: False
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (a b c: Nat) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (a b c: Nat)
-: problem_spec implementation a b c := by
+: problem_spec implementation a b c :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation ([1, 2, 2, -4]: List Int) = (-9: Int)
 -- #test implementation ([0, 1]: List Int) = (0: Int)

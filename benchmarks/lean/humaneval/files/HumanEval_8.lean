@@ -1,24 +1,6 @@
-/- 
-function_signature: "def sum_product(numbers: List[int]) -> Tuple[int, int]"
-docstring: |
-    For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
-    Empty sum should be equal to 0 and empty product should be equal to 1.
-test_cases:
-  - input: []
-    expected_output: (0, 1)
-  - input: [1, 2, 3, 4]
-    expected_output: (10, 24)
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (numbers: List Int) : (Int × Int) :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -37,11 +19,41 @@ sum_tail * prod_tail + prod = sum * prod_tail));
 ∃ result, implementation numbers = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def sum_product(numbers: List[int]) -> Tuple[int, int]"
+docstring: |
+    For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
+    Empty sum should be equal to 0 and empty product should be equal to 1.
+test_cases:
+  - input: []
+    expected_output: (0, 1)
+  - input: [1, 2, 3, 4]
+    expected_output: (10, 24)
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (numbers: List Int) : (Int × Int) :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (numbers: List Int)
 : problem_spec implementation numbers
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [] = (0, 1)
 -- #test implementation [1, 2, 3, 4] = (10, 24)

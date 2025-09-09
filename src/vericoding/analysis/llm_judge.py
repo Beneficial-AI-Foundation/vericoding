@@ -126,7 +126,7 @@ class FailureAnalyzer:
         unique_errors = failures_df.groupby(["error_msg", "proof_state"]).size().sort_values(ascending=False)
         
         suggestions = []
-        llm = create_llm_provider(self.llm_provider)
+        llm, _ = create_llm_provider(self.llm_provider)
         
         for (error_msg, proof_state), count in unique_errors.head(max_suggestions).items():
             # Create analysis prompt

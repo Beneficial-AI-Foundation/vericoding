@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def add(x: Int, y: Int) -> Int"
   docstring: Add two numbers x and y
   test_cases:
@@ -7,22 +6,12 @@ vc-description: |-
       expected_output: 5
     - input: [5, 7]
       expected_output: 12
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (x y: Int) : Int :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (impl: Int → Int → Int)
@@ -36,13 +25,25 @@ vc-theorems: |-
   -- return value satisfies spec
   spec result
   -- if result then spec else ¬spec
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (x y: Int) : Int :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (x y: Int)
-  : problem_spec implementation x y  := by
+  : problem_spec implementation x y  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation 2 3 = 5
   -- #test implementation 5 7 = 12
-

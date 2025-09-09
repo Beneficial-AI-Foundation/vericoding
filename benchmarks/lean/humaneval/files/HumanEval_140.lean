@@ -1,29 +1,6 @@
-/- 
-function_signature: "def fix_spaces(text: str) -> str"
-docstring: |
-    Given a string text, replace all spaces in it with underscores,
-    and if a string has more than 2 consecutive spaces,
-    then replace all consecutive spaces with -
-test_cases:
-  - input: "Example"
-    expected_output: "Example"
-  - input: "Example 1"
-    expected_output: "Example_1"
-  - input: " Example 2"
-    expected_output: "_Example_2"
-  - input: " Example   3"
-    expected_output: "_Example-3"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (text: String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -49,10 +26,45 @@ let spec (result: String) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def fix_spaces(text: str) -> str"
+docstring: |
+    Given a string text, replace all spaces in it with underscores,
+    and if a string has more than 2 consecutive spaces,
+    then replace all consecutive spaces with -
+test_cases:
+  - input: "Example"
+    expected_output: "Example"
+  - input: "Example 1"
+    expected_output: "Example_1"
+  - input: " Example 2"
+    expected_output: "_Example_2"
+  - input: " Example   3"
+    expected_output: "_Example-3"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (text: String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (text: String)
-: problem_spec implementation text := by
+: problem_spec implementation text :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "Example" = "Example"
 -- #test implementation "Example 1" = "Example_1"

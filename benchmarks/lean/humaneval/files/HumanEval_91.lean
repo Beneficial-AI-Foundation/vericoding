@@ -1,25 +1,6 @@
-/- 
-function_signature: "def is_bored(s: str) -> int"
-docstring: |
-    You'll be given a string of words, and your task is to count the number
-    of boredoms. A boredom is a sentence that starts with the word "I".
-    Sentences are delimited by '.', '?' or '!'.
-test_cases:
-  - input: "Hello world"
-    expected_output: 0
-  - input: "The sky is blue. The sun is shining. I love this weather"
-    expected_output: 1
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s: String) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -42,11 +23,42 @@ let spec (result : Nat) :=
   implementation s = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def is_bored(s: str) -> int"
+docstring: |
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+test_cases:
+  - input: "Hello world"
+    expected_output: 0
+  - input: "The sky is blue. The sun is shining. I love this weather"
+    expected_output: 1
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s: String) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "Hello world" = 0
 -- #test implementation "The sky is blue. The sun is shining. I love this weather" = 1

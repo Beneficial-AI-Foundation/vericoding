@@ -1,4 +1,27 @@
-/- 
+import Mathlib
+import Mathlib.Algebra.Polynomial.Basic
+import Std.Data.HashMap
+
+def problem_spec
+-- function signature
+(impl: List Rat → Int)
+-- inputs
+(lst: List Rat) :=
+-- spec
+let spec (result: Int) :=
+  (lst = [] → result = 0) ∧
+  (lst != [] → 0 ≤ result - lst[0]!.ceil^2 ∧ (impl (lst.drop 1) = (result - lst[0]!.ceil^2)))
+-- program termination
+∃ result, impl lst = result ∧
+-- return value satisfies spec
+spec result
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
 function_signature: "def sum_squares(lst: List[float]) -> int"
 docstring: |
     You are given a list of numbers.
@@ -16,35 +39,24 @@ test_cases:
   - input: [-2.4, 1, 1]
     expected_output: 6
 -/
+-- </vc-description>
 
-import Mathlib
-import Mathlib.Algebra.Polynomial.Basic
-import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
+-- <vc-spec>
 def implementation (lst: List Rat) : Int :=
-  sorry
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
 
-def problem_spec
--- function signature
-(impl: List Rat → Int)
--- inputs
-(lst: List Rat) :=
--- spec
-let spec (result: Int) :=
-  (lst = [] → result = 0) ∧
-  (lst != [] → 0 ≤ result - lst[0]!.ceil^2 ∧ (impl (lst.drop 1) = (result - lst[0]!.ceil^2)))
--- program termination
-∃ result, impl lst = result ∧
--- return value satisfies spec
-spec result
-
+-- <vc-theorem>
 theorem correctness
 (lst: List Rat)
-: problem_spec implementation lst := by
+: problem_spec implementation lst :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [1, 2, 3] = 14
 -- #test implementation [1, 4, 9] = 98

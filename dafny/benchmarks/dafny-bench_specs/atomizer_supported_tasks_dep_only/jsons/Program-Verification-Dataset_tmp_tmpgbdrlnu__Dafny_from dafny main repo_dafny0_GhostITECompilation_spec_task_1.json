@@ -1,0 +1,42 @@
+{
+  "skeleton": "// RUN: %testDafnyForEachCompiler --refresh-exit-code=0 \"%s\" -- --function-syntax:4 --relax-definite-assignment\n\n//ATOM_PLACEHOLDER_F\n\n//ATOM_PLACEHOLDER_AboutF\n\n//ATOM_PLACEHOLDER_G\n\n// Ostensibly, the following function is tail recursive. But the ghost-ITE optimization\n// removes the tail call. This test ensures that the unused setup for the tail optimization\n// does not cause problems.\n//ATOM_PLACEHOLDER_H\n\n// Like function H, function J looks like it's tail recursive. The compiler probably will\n// emit the tail-call label, even though the tail-call is never taken.\n//ATOM_PLACEHOLDER_J\n\n// The following function would never verify, and its execution wouldn't terminate.\n// Nevertheless, we'll test here that it compiles into legal target code.\n//ATOM_PLACEHOLDER_unknown_1374 K(x: int, ghost y: nat): int {\n  K(x, y - 1)\n}\n\n//ATOM_PLACEHOLDER_Main\n\n\n\n",
+  "atoms": {
+    "Main": [
+      [
+        "G",
+        "F",
+        "J",
+        "H"
+      ],
+      "// SPEC \n\nmethod Main() {\n}\n",
+      "method"
+    ],
+    "G": [
+      [],
+      "// ATOM \n\nfunction G(x: nat, ghost y: nat): nat\n{\n  if x == 0 then\n    0\n  else if y != 0 then\n    var z := x + x;\n    var a, b, c := 100, if x < z then G(x, y - 1) else G(x, y - 1), 200;\n    b // this branch is not compiled (which even makes G auto-accumulator tail recursive)\n  else\n    G(x - 1, 60) + 13\n}\n",
+      "function"
+    ],
+    "F": [
+      [],
+      "// ATOM \n// RUN: %testDafnyForEachCompiler --refresh-exit-code=0 \"%s\" -- --function-syntax:4 --relax-definite-assignment\n\nfunction F(x: nat, ghost y: nat): nat\n{\n  if x == 0 then\n    0\n  else if y != 0 then\n    F(x, y - 1) // this branch is not compiled (which even makes F auto-accumulator tail recursive)\n  else\n    F(x - 1, 60) + 13\n}\n",
+      "function"
+    ],
+    "J": [
+      [],
+      "// ATOM \n\n// Like function H, function J looks like it's tail recursive. The compiler probably will\n// emit the tail-call label, even though the tail-call is never taken.\nfunction J(x: int): int {\n  if true then\n    x\n  else\n    J(x)\n}\n",
+      "function"
+    ],
+    "H": [
+      [],
+      "// ATOM \n\n// Ostensibly, the following function is tail recursive. But the ghost-ITE optimization\n// removes the tail call. This test ensures that the unused setup for the tail optimization\n// does not cause problems.\nfunction H(x: int, ghost y: nat): int {\n  if y == 0 then\n    x\n  else\n    H(x, y - 1)\n}\n",
+      "function"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_F": "F",
+    "//ATOM_PLACEHOLDER_G": "G",
+    "//ATOM_PLACEHOLDER_H": "H",
+    "//ATOM_PLACEHOLDER_J": "J",
+    "//ATOM_PLACEHOLDER_Main": "Main"
+  }
+}

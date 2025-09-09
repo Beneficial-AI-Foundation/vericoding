@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def closest_integer(s : String) -> Option Int"
   docstring: |
       Create a function that takes a value (string) representing a number
@@ -10,23 +9,13 @@ vc-description: |-
       expected_output: 10
     - input: "15.3"
       expected_output: 15
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
   import Std
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (s: String) : Option Int :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: String → Option Int)
@@ -58,14 +47,26 @@ vc-theorems: |-
   ∃ result,
     implementation s = result ∧
     spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (s: String) : Option Int :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (s: String)
   : problem_spec implementation s
-  := by
+  :=
+
+vc-proof: |-
+  by
     sorry
 
 vc-postamble: |-
   -- #test implementation "10" = some 10
   -- #test implementation "15.3" = some 15
-

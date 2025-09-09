@@ -1,0 +1,106 @@
+generate_code: |
+  
+  You are given a Lean file with following five consecutive blocks:
+
+  PREAMBLE (possibly empty): imports and setup definitions.
+  
+  -- <vc-helpers>
+  HELPERS: auxiliary definitions, lemmas, and proofs (may be empty)
+  -- </vc-helpers>
+  
+  -- <vc-spec>
+  SPEC: function signatures and specifications with `sorry` placeholders
+  -- </vc-spec>
+  
+  -- <vc-code>
+  CODE: implementation bodies that need to be completed (currently `sorry`)
+  -- </vc-code>
+  
+  -- <vc-theorem>
+  THEOREM: correctness theorems with `sorry` proofs
+  -- </vc-theorem>
+  
+  -- <vc-proof>
+  PROOF: proof bodies that need to be completed (currently `sorry`)
+  -- </vc-proof>
+  
+  POSTAMBLE (possibly empty): tests and auxiliary code.
+
+  The task is to generate code for the HELPERS, CODE, THEOREM, and PROOF sections that will make the Lean file verified.
+  
+  OUTPUT FORMAT:
+  Return the updated sections in this exact format with explicit code blocks:
+  
+  ```vc-helpers
+  [Updated or new helper definitions/lemmas needed for verification - tag new ones with `-- LLM HELPER`]
+  ```
+  
+  ```vc-code
+  [Complete implementation bodies replacing `sorry` - do not change function signatures]
+  ```
+  
+  ```vc-theorem
+  [Complete theorem statements replacing `sorry` - do not change theorem signatures]
+  ```
+  
+  ```vc-proof
+  [Complete proofs replacing `sorry` - use structured proof tactics]
+  ```
+
+  REQUIREMENTS:
+  - ABSOLUTELY NO `sorry` anywhere in your output sections - not even in comments or explanations.
+  - If you cannot complete a proof, use `admit` or provide a partial proof with `by sorry` replaced by actual tactics.
+  - Keep all function/theorem signatures exactly as given.
+  - Use Mathlib tactics and lemmas (simp, rfl, linarith, norm_num, cases, induction).
+  - Keep Bool vs Prop consistent: computational functions return Bool; theorems are Props.
+  - Tag any new helper definitions with `-- LLM HELPER`.
+  - Prefer structured proofs over tactic mode when possible.
+  - Ensure termination for recursive functions.
+
+  LEAN FILE:
+  {code}
+
+fix_verification: |
+  
+  You are given a Lean file that fails to build. It has the following structure:
+
+  PREAMBLE; -- <vc-helpers> ... -- </vc-helpers>; -- <vc-spec> ... -- </vc-spec>; -- <vc-code> ... -- </vc-code>; -- <vc-theorem> ... -- </vc-theorem>; -- <vc-proof> ... -- </vc-proof>; POSTAMBLE
+
+  TASK:
+  - Fix the compilation/verification errors by updating only the content inside the helper, code, theorem, and proof sections.
+  - Do not alter function/theorem signatures, imports, or section structure.
+  - You may add new helpers in the helpers section (tag with `-- LLM HELPER`).
+
+  OUTPUT FORMAT:
+  Return only the updated sections in this exact format:
+  
+  ```vc-helpers
+  [Fixed or additional helper definitions/lemmas - tag new ones with `-- LLM HELPER`]
+  ```
+  
+  ```vc-code
+  [Fixed implementation bodies - keep signatures unchanged]
+  ```
+  
+  ```vc-theorem
+  [Fixed theorem statements - keep signatures unchanged]
+  ```
+  
+  ```vc-proof
+  [Fixed proofs using proper Lean tactics]
+  ```
+
+  REQUIREMENTS:
+  - ABSOLUTELY NO `sorry` in your output - this is critical and non-negotiable.
+  - If stuck on a proof, try different tactics: simp, rfl, linarith, norm_num, cases, induction.
+  - Fix the specific errors mentioned below.
+  - Use Mathlib tactics and standard library functions.
+  - Keep Bool vs Prop consistent.
+  - Ensure termination for recursive functions.
+  - Respect Lean's type system and totality requirements.
+
+  ERROR DETAILS:
+  {errorDetails}
+
+  LEAN FILE:
+  {code}

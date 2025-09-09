@@ -1,29 +1,6 @@
-/- 
-function_signature: "def reverse_delete(s : str, c : str) -> (str, bool)"
-docstring: |
-    We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c
-    then check if the result string is palindrome.
-    A string is called palindrome if it reads the same backward as forward.
-    You should return a tuple containing the result string and True/False for the check.
-    -- Note: We assume the deletions preserve the order of the remaining characters.
-test_cases:
-  - input: ["abcde", "ae"]
-    expected_output: ("bcd", False)
-  - input: ["abcdef", "b"]
-    expected_output: ("acdef", False)
-  - input: ["abcdedcba", "ab"]
-    expected_output: ('cdedc', True)
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s: String) (c: String) : String × Bool :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -47,11 +24,46 @@ let spec (result : String × Bool) :=
   implementation s c = result ∧
   spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def reverse_delete(s : str, c : str) -> (str, bool)"
+docstring: |
+    We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c
+    then check if the result string is palindrome.
+    A string is called palindrome if it reads the same backward as forward.
+    You should return a tuple containing the result string and True/False for the check.
+    -- Note: We assume the deletions preserve the order of the remaining characters.
+test_cases:
+  - input: ["abcde", "ae"]
+    expected_output: ("bcd", False)
+  - input: ["abcdef", "b"]
+    expected_output: ("acdef", False)
+  - input: ["abcdedcba", "ab"]
+    expected_output: ('cdedc', True)
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s: String) (c: String) : String × Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s c: String)
 : problem_spec implementation s c
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "abcde" "ae" = ("bcd", False)
 -- #test implementation "abcdef" "b" = ("acdef", False)

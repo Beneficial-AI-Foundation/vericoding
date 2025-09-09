@@ -1,24 +1,6 @@
-/- 
-function_signature: "def words_string(s: string) -> List[string]"
-docstring: |
-    You will be given a string of words separated by commas or spaces. Your task is
-    to split the string into words and return an array of the words.
-test_cases:
-  - input: "Hi, my name is John"
-    expected_output: ["Hi", "my", "name", "is", "John"]
-  - input: "One, two, three, four, five, six"
-    expected_output: ["One", "two", "three", "four", "five", "six"]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s: String) : List String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -36,11 +18,41 @@ let spec (result: List String) :=
 ∃ result, implementation s = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def words_string(s: string) -> List[string]"
+docstring: |
+    You will be given a string of words separated by commas or spaces. Your task is
+    to split the string into words and return an array of the words.
+test_cases:
+  - input: "Hi, my name is John"
+    expected_output: ["Hi", "my", "name", "is", "John"]
+  - input: "One, two, three, four, five, six"
+    expected_output: ["One", "two", "three", "four", "five", "six"]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s: String) : List String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "Hi, my name is John" = ["Hi", "my", "name", "is", "John"]
 -- #test implementation "One, two, three, four, five, six" = ["One", "two", "three", "four", "five", "six"]

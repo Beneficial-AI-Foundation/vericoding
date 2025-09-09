@@ -1,29 +1,6 @@
-/- 
-function_signature: "def remove_vowels(string: str) -> string"
-docstring: |
-    remove_vowels is a function that takes string and returns string without vowels.
-test_cases:
-  - input: ""
-    expected_output: ""
-  - input: "abcdef\nghijklm"
-    expected_output: "bcdf\nghjklm"
-  - input: "abcdef"
-    expected_output: "bcdf"
-  - input: "aaaaa"
-    expected_output: ""
-  - input: "aaBAA"
-    expected_output: "B"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (string: String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -42,11 +19,46 @@ result.all (λ c => is_consonant c) ∧ result.length ≤ string.length ∧
 ∃ result, implementation string = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def remove_vowels(string: str) -> string"
+docstring: |
+    remove_vowels is a function that takes string and returns string without vowels.
+test_cases:
+  - input: ""
+    expected_output: ""
+  - input: "abcdef\nghijklm"
+    expected_output: "bcdf\nghjklm"
+  - input: "abcdef"
+    expected_output: "bcdf"
+  - input: "aaaaa"
+    expected_output: ""
+  - input: "aaBAA"
+    expected_output: "B"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (string: String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "" = ""
 -- #test implementation "cat" = "catac"

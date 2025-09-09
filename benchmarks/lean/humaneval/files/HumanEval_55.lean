@@ -1,16 +1,3 @@
-/- 
-function_signature: "def fib(n: int) -> int"
-docstring: |
-    Return n-th Fibonacci number.
-test_cases:
-  - input: 10
-    expected_output: 55
-  - input: 1
-    expected_output: 1
-  - input: 8
-    expected_output: 21
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -31,12 +18,6 @@ inductive fibonacci_non_computable : ℕ → ℕ → Prop
 fibonacci_non_computable (n + 1) f₂ →
 fibonacci_non_computable (n + 2) (f₁ + f₂)
 
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : Nat :=
-  sorry
-
 def problem_spec
 -- function signature
 (implementation: Nat → Nat)
@@ -49,11 +30,42 @@ fibonacci_non_computable n result
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def fib(n: int) -> int"
+docstring: |
+    Return n-th Fibonacci number.
+test_cases:
+  - input: 10
+    expected_output: 55
+  - input: 1
+    expected_output: 1
+  - input: 8
+    expected_output: 21
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 10 = 55
 -- #test implementation 1 = 1

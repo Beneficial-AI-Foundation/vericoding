@@ -1,0 +1,78 @@
+{
+  "skeleton": "\n\n//ATOM_PLACEHOLDER_eight\n\n//ATOM_PLACEHOLDER_isOdd\n\n//ATOM_PLACEHOLDER_isEven\n\n//ATOM_PLACEHOLDER_eightL\n\n//ATOM_PLACEHOLDER_nineteenf\n//ATOM_PLACEHOLDER_nineteens\n\n//ATOM_PLACEHOLDER_nineteenlemma\n\n//ATOM_PLACEHOLDER_relationDomain\n\n//ATOM_PLACEHOLDER_reflexive\n\n//ATOM_PLACEHOLDER_symmetric\n\n//ATOM_PLACEHOLDER_transitive\n\n//ATOM_PLACEHOLDER_equivalenceRelation\n\n//ATOM_PLACEHOLDER_relationOnASet\n\n// lemma equivUnion<T>(R_1: set<(T,T)>, S_1: set<T>, R_2: set<(T,T)>, S_2: set<T>)\n//     requires |R_1| > 0\n//     requires |R_2| > 0\n//     requires |S_1| > 0\n//     requires |S_2| > 0\n//     requires relationOnASet(R_1, S_1)\n//     requires relationOnASet(R_2, S_2)\n//     requires equivalenceRelation(R_1, S_1)\n//     requires equivalenceRelation(R_2, S_2)\n//     ensures equivalenceRelation(R_1+R_2, S_1+S_2)\n// {\n//     reflexiveUnion(R_1, S_1, R_2, S_2);\n//     symmetricUnion(R_1, S_1, R_2, S_2);\n//     transitiveUnion(R_1, S_1, R_2, S_2);\n// }\n\n//ATOM_PLACEHOLDER_reflexiveUnion\n\n//ATOM_PLACEHOLDER_symmetricUnion\n\n    \n//ATOM_PLACEHOLDER_transitiveUnion\n\n// lemma transitiveUnionContra<T>(R_1: set<(T,T)>, S_1: set<T>, R_2: set<(T,T)>, S_2: set<T>)\n//     requires |R_1| > 0\n//     requires |R_2| > 0\n//     requires |S_1| > 0\n//     requires |S_2| > 0\n//     requires relationOnASet(R_1, S_1)\n//     requires relationOnASet(R_2, S_2)\n//     requires transitive(R_1, S_1)\n//     requires transitive(R_2, S_2)\n//     ensures exists (R_1+R_2, S_1+S_2) :: !transitive(R_1+R_2, S_1+S_2) \n// {\n//     assume S_1 * S_2 != {};\n//     if transitive(R_1 + R_2, S_1+S_2) {\n//         forall a,b,c | a in S_1+S_2 && b in S_1+S_2 && c in S_1+S_2 && (a,b) in R_1+R_2 && (b,c) in R_1+R_2 \n//             ensures (a,c) in R_1+R_2 \n//         {\n//             if a in S_1 && a !in S_2 && b in S_1 && b in S_2 && c in S_2 && c !in S_1 {\n//                 assert (a,c) !in R_1;\n//                 assert (a,c) !in R_2;\n//                 assert (a,c) !in R_1+R_2;\n//                 assert false;\n//             }\n//         } \n//     }\n// }\n\n//ATOM_PLACEHOLDER_transitiveUnionContra\n\n//ATOM_PLACEHOLDER_notTrueAlways\n\n//ATOM_PLACEHOLDER_test\n\n",
+  "atoms": {
+    "symmetric": [
+      [
+        "relationOnASet"
+      ],
+      "// ATOM \n\npredicate symmetric<T>(R: set<(T,T)>, S: set<T>)\n    requires relationOnASet(R, S)\n{\n    forall x: T, y:T :: x in S && y in S && (x,y) in R ==> (y, x) in R\n}\n",
+      "predicate"
+    ],
+    "test": [
+      [
+        "isEven",
+        "equivalenceRelation",
+        "eight",
+        "reflexive",
+        "nineteenf"
+      ],
+      "// SPEC \n\nmethod test() {\n}\n",
+      "method"
+    ],
+    "equivalenceRelation": [
+      [
+        "relationOnASet",
+        "reflexive",
+        "transitive",
+        "symmetric"
+      ],
+      "// ATOM \n\npredicate equivalenceRelation<T>(R: set<(T,T)>, S: set<T>) \n    requires relationOnASet(R, S)\n{\n    reflexive(R, S) && symmetric(R, S) && transitive(R, S)\n}\n",
+      "predicate"
+    ],
+    "eight": [
+      [],
+      "// ATOM \n\n\nfunction eight(x: nat):nat {\n    9 * x + 5\n}\n",
+      "function"
+    ],
+    "relationOnASet": [
+      [],
+      "// ATOM \n\npredicate relationOnASet<T>(R: set<(T,T)>, S: set<T>) {\n    forall ts :: ts in R ==> ts.0 in S && ts.1 in S\n}\n",
+      "predicate"
+    ],
+    "nineteenf": [
+      [],
+      "// ATOM \n\nfunction nineteenf(x: nat): nat {\n    7*x+4\n}\n",
+      "function"
+    ],
+    "transitive": [
+      [
+        "relationOnASet"
+      ],
+      "// ATOM \n\npredicate transitive<T>(R: set<(T,T)>, S: set<T>) \n    requires relationOnASet(R, S)\n{\n    forall a,b,c :: a in S && b in S && c in S && (a,b) in R && (b,c) in R ==> (a,c) in R\n}\n",
+      "predicate"
+    ],
+    "reflexive": [
+      [
+        "relationOnASet"
+      ],
+      "// ATOM \n\npredicate reflexive<T>(R: set<(T,T)>, S: set<T>) \n    requires relationOnASet(R, S)\n{\n    forall s :: s in S ==> (s,s) in R\n}\n",
+      "predicate"
+    ],
+    "isEven": [
+      [],
+      "// ATOM \n\npredicate isEven(x: nat) {\n    x % 2 == 0\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_eight": "eight",
+    "//ATOM_PLACEHOLDER_isEven": "isEven",
+    "//ATOM_PLACEHOLDER_nineteenf": "nineteenf",
+    "//ATOM_PLACEHOLDER_reflexive": "reflexive",
+    "//ATOM_PLACEHOLDER_symmetric": "symmetric",
+    "//ATOM_PLACEHOLDER_transitive": "transitive",
+    "//ATOM_PLACEHOLDER_equivalenceRelation": "equivalenceRelation",
+    "//ATOM_PLACEHOLDER_relationOnASet": "relationOnASet",
+    "//ATOM_PLACEHOLDER_test": "test"
+  }
+}

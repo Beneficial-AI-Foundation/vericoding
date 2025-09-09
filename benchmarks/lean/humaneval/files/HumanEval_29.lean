@@ -1,27 +1,6 @@
-/- 
-function_signature: "def filter_by_prefix(strings: List[str], prefix: str) -> List[str]"
-docstring: |
-    Filter an input list of strings only for ones that start with a given prefix.
-test_cases:
-  - input:
-    - []
-    - "a"
-    expected_output: []
-  - input:
-    - ["abc", "bcd", "cde", "array"]
-    - "a"
-    expected_output: ["abc", "array"]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (strings: List String) (pref: String) : List String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -39,12 +18,45 @@ strings.all (λ s => s.startsWith pref → s ∈ result) ∧
 ∃ result, implementation strings pref = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def filter_by_prefix(strings: List[str], prefix: str) -> List[str]"
+docstring: |
+    Filter an input list of strings only for ones that start with a given prefix.
+test_cases:
+  - input:
+    - []
+    - "a"
+    expected_output: []
+  - input:
+    - ["abc", "bcd", "cde", "array"]
+    - "a"
+    expected_output: ["abc", "array"]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (strings: List String) (pref: String) : List String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (strings: List String)
 (pref: String)
 : problem_spec implementation strings pref
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [] "a" = []
 -- #test implementation ["abc", "bcd", "cde", "array"] "a" = ["abc", "array"]

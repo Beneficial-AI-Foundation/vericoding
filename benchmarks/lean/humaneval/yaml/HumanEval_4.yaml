@@ -1,5 +1,4 @@
 vc-description: |-
-  /- 
   function_signature: "def mean_absolute_deviation(numbers: List[float]) -> float"
   docstring: |
       For a given list of input numbers, calculate Mean Absolute Deviation
@@ -14,22 +13,12 @@ vc-description: |-
         - 3.0
         - 4.0
       expected_output: 1.0
-  -/
 
 vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
-vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
-
-vc-definitions: |-
-  def implementation (numbers: List Rat) : Rat :=
-    sorry
-
-vc-theorems: |-
+  
   def problem_spec
   -- function signature
   (implementation: List Rat → Rat)
@@ -45,13 +34,23 @@ vc-theorems: |-
   ∃ result, implementation numbers = result ∧
   -- return value satisfies spec
   spec result
+
+vc-helpers: |-
   
+
+vc-spec: |-
+  def implementation (numbers: List Rat) : Rat :=
+
+vc-code: |-
+  sorry
+
+vc-theorem: |-
   theorem correctness
   (numbers: List Rat)
-  : problem_spec implementation numbers
-  := by
-    sorry
+  : problem_spec implementation numbers := 
+
+vc-proof: |-
+  by sorry
 
 vc-postamble: |-
   -- #test implementation [1.0, 2.0, 3.0, 4.0] = 1.0
-

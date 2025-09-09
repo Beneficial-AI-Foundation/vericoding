@@ -1,22 +1,6 @@
-/- 
-function_signature: "def same_chars(s0: string, s1: string) -> Bool"
-docstring: Check if two words have the same characters.
-test_cases:
-  - input: ['eabcdzzzz', 'dddzzzzzzzddeddabc']
-    expected_output: True
-  - input: ['eabcd', 'dddddddabc']
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (s0 s1: String) : Bool :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -32,10 +16,38 @@ let spec (res: Bool) :=
 spec result
 -- if result then spec else ¬spec
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def same_chars(s0: string, s1: string) -> Bool"
+docstring: Check if two words have the same characters.
+test_cases:
+  - input: ['eabcdzzzz', 'dddzzzzzzzddeddabc']
+    expected_output: True
+  - input: ['eabcd', 'dddddddabc']
+    expected_output: False
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (s0 s1: String) : Bool :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (s0 s1: String)
-: problem_spec implementation s0 s1  := by
+: problem_spec implementation s0 s1  :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 'eabcdzzzz' 'dddzzzzzzzddeddabc' = true
 -- #test implementation 'abcd' 'dddddddabc' = true

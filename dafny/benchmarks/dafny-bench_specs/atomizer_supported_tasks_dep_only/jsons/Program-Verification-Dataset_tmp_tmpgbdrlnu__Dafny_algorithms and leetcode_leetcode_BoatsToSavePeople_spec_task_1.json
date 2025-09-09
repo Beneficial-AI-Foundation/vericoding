@@ -1,0 +1,59 @@
+{
+  "skeleton": "/*\n//ATOM_PLACEHOLDER_numRescueBoats;\nnums[k++] = i+1;\n//ATOM_PLACEHOLDER_binsort\n*/\n\n//ATOM_PLACEHOLDER_sumBoat\n\n//ATOM_PLACEHOLDER_isSafeBoat\n\n//ATOM_PLACEHOLDER_multisetAdd\n\n//ATOM_PLACEHOLDER_multisetEqual\n\n//ATOM_PLACEHOLDER_allSafe\n\n//ATOM_PLACEHOLDER_sorted\n\n//ATOM_PLACEHOLDER_numRescueBoats\n\n/*\nlimit 3\n[3,2,2,1]\nlower = 0\nupper = 3\n\nupper = 2\nlower= 0\n\nlower = 1\nupper = 1\n\nlower = 2 [..2]\nupper = 1 [2..]\n*/\n\n\n/*\nlimit 3\n[3,2,2,1]\nlower = 0\nupper = 3\n\nupper = 2\nlower= 0\n\nlower = 1\nupper = 1\n\nlower = 2 [..2]\nupper = 1 [2..]\n*/\n",
+  "atoms": {
+    "multisetEqual": [
+      [
+        "multisetAdd"
+      ],
+      "// ATOM \n\npredicate multisetEqual(ss: seq<seq<nat>>, xs: seq<nat>) {\n    multiset(xs) == multisetAdd(ss)\n}\n",
+      "predicate"
+    ],
+    "sorted": [
+      [],
+      "// ATOM \n\npredicate sorted(list: seq<int>)\n{\n    forall i,j :: 0 <= i < j < |list| ==> list[i] <= list[j]\n}\n",
+      "predicate"
+    ],
+    "isSafeBoat": [
+      [
+        "sumBoat"
+      ],
+      "// ATOM \n\npredicate isSafeBoat(boat: seq<nat>, limit: nat) {\n    1 <= |boat| <= 2 && sumBoat(boat) <= limit\n}\n",
+      "predicate"
+    ],
+    "numRescueBoats": [
+      [
+        "sorted",
+        "multisetEqual",
+        "allSafe"
+      ],
+      "// SPEC \n\nmethod numRescueBoats(people: seq<nat>, limit: nat) returns (boats: nat)\n    requires |people| >= 1\n    requires sorted(people)\n    requires forall i: nat :: i < |people| ==> 1 <= people[i] <= limit\n    ensures exists boatConfig: seq<seq<nat>> :: multisetEqual(boatConfig, people) && allSafe(boatConfig, limit) && boats == |boatConfig|// && forall boatConfigs :: multisetEqual(boatConfigs, people) && allSafe(boatConfigs, limit) ==> boats <= |boatConfigs|\n{\n}\n\n/*\nlimit 3\n[3,2,2,1]\nlower = 0\nupper = 3\n\nupper = 2\nlower= 0\n\nlower = 1\nupper = 1\n\nlower = 2 [..2]\nupper = 1 [2..]\n*/\n",
+      "method"
+    ],
+    "sumBoat": [
+      [],
+      "// ATOM \n\nfunction sumBoat(s: seq<nat>): nat \n    requires 1 <= |s| <= 2\n{\n    if |s| == 1 then s[0] else s[0] + s[1]\n}\n",
+      "function"
+    ],
+    "multisetAdd": [
+      [],
+      "// ATOM \n\nfunction multisetAdd(ss: seq<seq<nat>>): multiset<nat> {\n    if ss == [] then multiset{} else multiset(ss[0]) + multisetAdd(ss[1..])\n}\n",
+      "function"
+    ],
+    "allSafe": [
+      [
+        "isSafeBoat"
+      ],
+      "// ATOM \n\npredicate allSafe(boats: seq<seq<nat>>, limit: nat) {\n    forall boat :: boat in boats ==> isSafeBoat(boat, limit)\n}\n",
+      "predicate"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_numRescueBoats": "numRescueBoats",
+    "//ATOM_PLACEHOLDER_sumBoat": "sumBoat",
+    "//ATOM_PLACEHOLDER_isSafeBoat": "isSafeBoat",
+    "//ATOM_PLACEHOLDER_multisetAdd": "multisetAdd",
+    "//ATOM_PLACEHOLDER_multisetEqual": "multisetEqual",
+    "//ATOM_PLACEHOLDER_allSafe": "allSafe",
+    "//ATOM_PLACEHOLDER_sorted": "sorted"
+  }
+}

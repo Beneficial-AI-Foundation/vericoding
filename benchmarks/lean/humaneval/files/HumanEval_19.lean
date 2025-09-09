@@ -1,23 +1,6 @@
-/- 
-function_signature: "def sort_numbers(numbers: str) -> str"
-docstring: |
-    Input is a space-delimited string of numberals from 'zero' to 'nine'.
-    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.
-    Return the string with numbers sorted from smallest to largest
-test_cases:
-  - input: "three one five"
-    expected_output: "one three five"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (numbers: String) : String :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -62,10 +45,39 @@ is_sorted_asc result_mapped_to_numbers = true;
 ∃ result, implementation numbers = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def sort_numbers(numbers: str) -> str"
+docstring: |
+    Input is a space-delimited string of numberals from 'zero' to 'nine'.
+    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.
+    Return the string with numbers sorted from smallest to largest
+test_cases:
+  - input: "three one five"
+    expected_output: "one three five"
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (numbers: String) : String :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (numbers: String)
 : problem_spec implementation numbers
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation "three one five" = "one three five"

@@ -1,26 +1,6 @@
-/- 
-function_signature: "def generate_integers(a : Nat, b : Nat) -> List Nat"
-docstring: |
-    Given two positive integers a and b, return the even digits between a
-    and b, in ascending order.
-test_cases:
-  - input: [2, 8]
-    expected_output: [2, 4, 6, 8]
-  - input: [8, 2]
-    expected_output: [2, 4, 6, 8]
-  - input: [10, 14]
-    expected_output: [10, 12, 14]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (a b: Nat) : List Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -44,10 +24,42 @@ else ((result[0]! = if 2 ∣ min_a_b then min_a_b else (min_a_b + 1)) ∧
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def generate_integers(a : Nat, b : Nat) -> List Nat"
+docstring: |
+    Given two positive integers a and b, return the even digits between a
+    and b, in ascending order.
+test_cases:
+  - input: [2, 8]
+    expected_output: [2, 4, 6, 8]
+  - input: [8, 2]
+    expected_output: [2, 4, 6, 8]
+  - input: [10, 14]
+    expected_output: [10, 12, 14]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (a b: Nat) : List Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (a b: Nat)
-: problem_spec implementation a b := by
+: problem_spec implementation a b :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 2 8 = [2, 4, 6, 8]
 -- #test implementation 8 2 = [2, 4, 6, 8]

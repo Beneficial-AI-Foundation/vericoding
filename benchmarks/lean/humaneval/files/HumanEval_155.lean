@@ -1,23 +1,6 @@
-/- 
-function_signature: "def even_odd_count(num: int) -> Tuple[int, int]"
-docstring: |
-    Given an integer. return a tuple that has the number of even and odd digits respectively.
-test_cases:
-  - input: -12
-    expected_output: [1, 1]
-  - input: 123
-    expected_output: [1, 2]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (num: Int) : Int × Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -38,10 +21,39 @@ let spec (result: Int × Int) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def even_odd_count(num: int) -> Tuple[int, int]"
+docstring: |
+    Given an integer. return a tuple that has the number of even and odd digits respectively.
+test_cases:
+  - input: -12
+    expected_output: [1, 1]
+  - input: 123
+    expected_output: [1, 2]
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (num: Int) : Int × Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (num: Int)
-: problem_spec implementation num := by
+: problem_spec implementation num :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation -12 = (1, 1)
 -- #test implementation 123 = (1, 2)

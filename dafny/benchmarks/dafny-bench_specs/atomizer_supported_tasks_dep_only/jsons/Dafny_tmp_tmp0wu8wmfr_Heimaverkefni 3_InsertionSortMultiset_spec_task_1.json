@@ -1,0 +1,13 @@
+{
+  "skeleton": "// H\u00f6fundur spurningar:  Snorri Agnarsson, snorri@hi.is\n// Permalink spurningar: https://rise4fun.com/Dafny/G4sc3\n\n// H\u00f6fundur lausnar:     Alexander Gu\u00f0mundsson\n// Permalink lausnar:    https://rise4fun.com/Dafny/nujsu\n\n// Insertion sort me\u00f0 hj\u00e1lp helmingunarleitar.\n\n//ATOM_PLACEHOLDER_Search\n\n//ATOM_PLACEHOLDER_Sort\n\n",
+  "atoms": {
+    "Search": [
+      [],
+      "// SPEC \n// H\u00f6fundur spurningar:  Snorri Agnarsson, snorri@hi.is\n// Permalink spurningar: https://rise4fun.com/Dafny/G4sc3\n\n// H\u00f6fundur lausnar:     Alexander Gu\u00f0mundsson\n// Permalink lausnar:    https://rise4fun.com/Dafny/nujsu\n\n// Insertion sort me\u00f0 hj\u00e1lp helmingunarleitar.\n\nmethod Search( s: seq<int>, x: int ) returns ( k: int )\n    // Ekki m\u00e1 breyta forskilyr\u00f0um e\u00f0a eftirskilyr\u00f0um fallsins\n    requires forall p,q | 0 <= p < q < |s| :: s[p] <= s[q];\n    ensures 0 <= k <= |s|;\n    ensures forall i | 0 <= i < k :: s[i] <= x;\n    ensures forall i | k <= i < |s| :: s[i] >= x;\n    ensures forall z | z in s[..k] :: z <= x;\n    ensures forall z | z in s[k..] :: z >= x;\n    ensures s == s[..k]+s[k..];\n{\n}\n",
+      "method"
+    ]
+  },
+  "placeholder_mapping": {
+    "//ATOM_PLACEHOLDER_Search": "Search"
+  }
+}

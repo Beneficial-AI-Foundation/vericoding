@@ -1,26 +1,6 @@
-/- 
-function_signature: "def can_arrange(arr: List[int]) -> int"
-docstring: |
-    Create a function which returns the largest index of an element which
-    is not greater than or equal to the element immediately preceding it. If
-    no such element exists then return -1. The given array will not contain
-    duplicate values.
-test_cases:
-  - input: [1, 2, 4, 3, 5]
-    expected_output: 3
-  - input: [1, 2, 3]
-    expected_output: -1
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (arr: List Int) : Int :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -40,10 +20,42 @@ let spec (result: Int) :=
 -- return value satisfies spec
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def can_arrange(arr: List[int]) -> int"
+docstring: |
+    Create a function which returns the largest index of an element which
+    is not greater than or equal to the element immediately preceding it. If
+    no such element exists then return -1. The given array will not contain
+    duplicate values.
+test_cases:
+  - input: [1, 2, 4, 3, 5]
+    expected_output: 3
+  - input: [1, 2, 3]
+    expected_output: -1
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (arr: List Int) : Int :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (arr: List Int)
-: problem_spec implementation arr := by
+: problem_spec implementation arr :=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation [1, 2, 4, 3, 5] = 3
 -- #test implementation [1, 2, 3] = -1

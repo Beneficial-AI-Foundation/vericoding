@@ -1,30 +1,6 @@
-/- 
-function_signature: "def prime_fib(n: int)"
-docstring: |
-    prime_fib returns n-th prime Fibonacci number.
-    Note(George): A proof of this problem requires the resolution of the open conjecture: there are infinitely many prime Fibonacci numbers.
-test_cases:
-  - input: 1
-    output: 2
-  - input: 2
-    output: 3
-  - input: 3
-    output: 5
-  - input: 4
-    output: 13
-  - input: 5
-    output: 89
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
-
--- <vc-helpers>
--- </vc-helpers>
-
-def implementation (n: Nat) : Nat :=
-  sorry
 
 def problem_spec
 -- function signature
@@ -42,11 +18,47 @@ let spec (result: Nat) :=
 ∃ result, implementation n = result ∧
 spec result
 
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-description>
+/-
+function_signature: "def prime_fib(n: int)"
+docstring: |
+    prime_fib returns n-th prime Fibonacci number.
+    Note(George): A proof of this problem requires the resolution of the open conjecture: there are infinitely many prime Fibonacci numbers.
+test_cases:
+  - input: 1
+    output: 2
+  - input: 2
+    output: 3
+  - input: 3
+    output: 5
+  - input: 4
+    output: 13
+  - input: 5
+    output: 89
+-/
+-- </vc-description>
+
+-- <vc-spec>
+def implementation (n: Nat) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+sorry
+-- </vc-code>
+
+-- <vc-theorem>
 theorem correctness
 (n: Nat)
 : problem_spec implementation n
-:= by
+:=
+-- </vc-theorem>
+-- <vc-proof>
+by
   sorry
+-- </vc-proof>
 
 -- #test implementation 1 = 2
 -- #test implementation 2 = 3
