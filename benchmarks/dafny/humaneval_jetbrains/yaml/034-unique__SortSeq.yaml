@@ -3,26 +3,6 @@ vc-description: |-
   Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
 
 vc-preamble: |-
-  method uniqueSorted(s: seq<int>) returns (result: seq<int>)
-  
-      requires forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
-  
-      ensures forall i, j :: 0 <= i < j < |result| ==> result[i] < result[j]
-      ensures forall x :: x in result ==> x in s
-      ensures forall x :: x in s ==> x in result
-  
-  {
-    assume{:axiom} false;
-  }
-  method unique(s: seq<int>) returns (result: seq<int>)
-  
-      ensures forall i, j :: 0 <= i < j < |result| ==> result[i] < result[j]
-      ensures forall x :: x in result ==> x in s
-      ensures forall x :: x in s ==> x in result
-  
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 

@@ -21,21 +21,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method reverse(s: seq<int>) returns (rev: seq<int>)
-  
-    ensures |rev| == |s|
-    ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
-  
-  {
-    assume{:axiom} false;
-  }
-  method SortSeq(s: seq<int>) returns (sorted: seq<int>)
-  
-    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-    ensures |sorted| == |s|
-    ensures multiset(s) == multiset(sorted)
-  
-  {
-    assume{:axiom} false;
-  }
 

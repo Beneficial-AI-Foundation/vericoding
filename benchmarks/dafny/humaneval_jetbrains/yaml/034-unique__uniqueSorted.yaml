@@ -21,22 +21,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method unique(s: seq<int>) returns (result: seq<int>)
-  
-      ensures forall i, j :: 0 <= i < j < |result| ==> result[i] < result[j]
-      ensures forall x :: x in result ==> x in s
-      ensures forall x :: x in s ==> x in result
-  
-  {
-    assume{:axiom} false;
-  }
-  method SortSeq(s: seq<int>) returns (sorted: seq<int>)
-  
-    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-    ensures |sorted| == |s|
-    ensures multiset(s) == multiset(sorted)
-  
-  {
-    assume{:axiom} false;
-  }
 

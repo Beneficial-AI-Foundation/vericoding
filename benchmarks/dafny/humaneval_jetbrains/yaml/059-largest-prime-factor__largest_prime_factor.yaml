@@ -3,16 +3,6 @@ vc-description: |-
   Process input. Requires: the result is at least the specified value. Ensures: returns the correct size/count.
 
 vc-preamble: |-
-  method is_prime(k: int) returns (result: bool)
-  
-    requires k >= 2
-  
-    ensures result ==> forall i :: 2 <= i < k ==> k % i != 0
-    ensures !result ==> exists j :: 2 <= j < k && k % j == 0
-  
-  {
-    assume{:axiom} false;
-  }
   function is_prime_pred(k: int) : bool
   {
     forall i :: 2 <= i < k ==> k % i != 0

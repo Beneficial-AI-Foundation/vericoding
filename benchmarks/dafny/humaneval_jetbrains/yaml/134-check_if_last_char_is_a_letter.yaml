@@ -3,6 +3,9 @@ vc-description: |-
   Create a function that returns True if the last character of a given string is an alphabetical character and is not a part of a word, and False otherwise. Note: "word" is a group of characters separated by space.
 
 vc-preamble: |-
+  function is_alpha(c: char) : bool {
+    'a' <= c <= 'z' || 'A' <= c <= 'Z'
+  }
 
 vc-helpers: |-
 
@@ -17,7 +20,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  function is_alpha(c: char) : bool {
-      'a' <= c <= 'z' || 'A' <= c <= 'Z'
-  }
 

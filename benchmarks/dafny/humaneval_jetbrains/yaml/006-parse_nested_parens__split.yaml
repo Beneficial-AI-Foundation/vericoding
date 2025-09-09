@@ -3,15 +3,6 @@ vc-description: |-
   Process input. Requires: the condition holds for all values. Ensures: the condition holds for all values.
 
 vc-preamble: |-
-  method parse_paren_group(s : string) returns (max_depth : int)
-  
-      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')'
-  
-      ensures max_depth >= 0
-  
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 
@@ -28,13 +19,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method parse_nested_parens(paren_string: string) returns (res : seq<int>)
-  
-      requires forall i :: i >= 0 && i < |paren_string| ==> paren_string[i] == '(' || paren_string[i] == ')' || paren_string[i] == ' '
-  
-      ensures forall x :: x in res ==> x >= 0
-  
-  {
-    assume{:axiom} false;
-  }
 

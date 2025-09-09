@@ -26,11 +26,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method SumChars(list: seq<string>) returns (sum: nat)
-  
-    ensures sum == sum_chars_rec(list)
-  
-  {
-    assume{:axiom} false;
-  }
 

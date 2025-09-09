@@ -43,14 +43,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method decode_shift(s: string) returns (t: string)
-  
-    requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
-  
-    ensures |s| == |t|
-    ensures forall i :: 0 <= i < |s| ==> t[i] == decode_char(s[i])
-  
-  {
-    assume{:axiom} false;
-  }
 

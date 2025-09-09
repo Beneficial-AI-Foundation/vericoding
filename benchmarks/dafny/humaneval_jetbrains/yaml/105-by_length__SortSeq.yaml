@@ -3,14 +3,19 @@ vc-description: |-
   Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
 
 vc-preamble: |-
-  method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
-  
-    ensures |result| <= |arr|
-    ensures forall i :: 0 <= i < |result| ==>
-      result[i] in ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
-  
+  function NumberToName(n: int): string
+    requires 1 <= n <= 9
   {
-    assume{:axiom} false;
+    match n
+    case 1 => "One"
+    case 2 => "Two"
+    case 3 => "Three"
+    case 4 => "Four"
+    case 5 => "Five"
+    case 6 => "Six"
+    case 7 => "Seven"
+    case 8 => "Eight"
+    case 9 => "Nine"
   }
 
 vc-helpers: |-
@@ -28,26 +33,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method reverse(s: seq<int>) returns (rev: seq<int>)
-  
-    ensures |rev| == |s|
-    ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
-  
-  {
-    assume{:axiom} false;
-  }
-  function NumberToName(n: int): string
-    requires 1 <= n <= 9
-  {
-    match n
-    case 1 => "One"
-    case 2 => "Two"
-    case 3 => "Three"
-    case 4 => "Four"
-    case 5 => "Five"
-    case 6 => "Six"
-    case 7 => "Seven"
-    case 8 => "Eight"
-    case 9 => "Nine"
-  }
 

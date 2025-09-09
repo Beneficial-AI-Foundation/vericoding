@@ -3,6 +3,9 @@ vc-description: |-
   Given a string s, count the number of uppercase vowels in even indices.
 
 vc-preamble: |-
+  function is_upper_vowel(c: char) : bool {
+    c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O'
+  }
 
 vc-helpers: |-
 
@@ -17,7 +20,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  function is_upper_vowel(c: char) : bool {
-    c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O'
-  }
 

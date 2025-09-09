@@ -20,20 +20,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method strange_sort_list(s: seq<int>) returns (strange: seq<int>)
-  
-      ensures |s| == |strange|
-  
-  {
-    assume{:axiom} false;
-  }
-  method SortSeq(s: seq<int>) returns (sorted: seq<int>)
-  
-    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-    ensures |sorted| == |s|
-    ensures multiset(s) == multiset(sorted)
-  
-  {
-    assume{:axiom} false;
-  }
 

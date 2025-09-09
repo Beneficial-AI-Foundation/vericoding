@@ -29,12 +29,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method reverse(str: string) returns (rev: string)
-  
-      ensures |rev| == |str|
-      ensures forall k :: 0 <= k < |str| ==> rev[k] == str[|str| - 1 - k]
-  
-  {
-    assume{:axiom} false;
-  }
 

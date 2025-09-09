@@ -26,16 +26,6 @@ vc-preamble: |-
     ((c as int - 'a' as int - 5) % 26 + 'a' as int) as char
   
   }
-  method encode_shift(s: string) returns (t: string)
-  
-    requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
-  
-    ensures |s| == |t|
-    ensures forall i :: 0 <= i < |s| ==> t[i] == encode_char(s[i])
-  
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 

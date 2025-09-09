@@ -13,17 +13,6 @@ vc-preamble: |-
     else if 0 <= arr[0] < 100 then [arr[0]] + select_at_most_two_digits_rec(arr[1..])
     else select_at_most_two_digits_rec(arr[1..])
   }
-  method select_at_most_two_digits(arr: seq<int>) returns (result: seq<int>)
-  
-    requires |arr| > 0 && |arr| <= 100
-  
-    ensures forall i :: 0 <= i < |result| ==> 0 <= result[i] < 100
-    ensures forall i :: 0 <= i < |result| ==> result[i] in arr
-    ensures result == select_at_most_two_digits_rec(arr)
-  
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 

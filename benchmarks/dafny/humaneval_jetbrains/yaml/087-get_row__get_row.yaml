@@ -31,13 +31,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method SortSeq(s: SortSeqState) returns (sorted: SortSeqState)
-  
-    ensures forall i, j :: 0 <= i < j < |sorted| ==> less_eq(sorted[i], sorted[j])
-    ensures |sorted| == |s|
-    ensures multiset(s) == multiset(sorted)
-  
-  {
-    assume{:axiom} false;
-  }
 

@@ -22,12 +22,6 @@ vc-preamble: |-
           else
               false
   }
-  method sort_strings(list: seq<string>) returns (sorted: seq<string>)
-      ensures |sorted| == |list|
-      ensures multiset(sorted) == multiset(list)
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 
@@ -45,13 +39,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method sorted_list_sum(list: seq<string>) returns (sorted: seq<string>)
-      requires |list| > 0
-      ensures |sorted| <= |list|
-      ensures forall i : int :: 0 <= i < |sorted| ==> |sorted[i]| % 2 == 0
-      ensures forall x : int, y : int :: 0 <= x < y < |sorted| ==> |sorted[x]| <= |sorted[y]|
-      ensures multiset(sorted) <= multiset(list)
-  {
-    assume{:axiom} false;
-  }
 

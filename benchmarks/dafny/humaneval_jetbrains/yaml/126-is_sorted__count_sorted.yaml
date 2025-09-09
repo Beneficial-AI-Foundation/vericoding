@@ -3,12 +3,8 @@ vc-description: |-
   Count occurrences. Requires: the condition holds for all values; the size is bounded; returns the correct value; returns the correct size/count. Ensures: returns the correct value.
 
 vc-preamble: |-
-  method is_sorted(a: seq<int>) returns (f: bool)
-  
-    ensures f == forall i, j :: 0 <= i <= j < |a| ==> a[i] <= a[j] && forall i :: 0 <= i < |a| ==> count_set(a, a[i]) <= 2
-  
-  {
-    assume{:axiom} false;
+  function count_set(a: seq<int>, x: int): int {
+    |set i | 0 <= i < |a| && a[i] == x|
   }
 
 vc-helpers: |-
@@ -29,7 +25,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  function count_set(a: seq<int>, x: int): int {
-    |set i | 0 <= i < |a| && a[i] == x|
-  }
 

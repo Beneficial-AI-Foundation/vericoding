@@ -3,17 +3,6 @@ vc-description: |-
   Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
 
 vc-preamble: |-
-  method sort_array(s: seq<int>) returns (sorted: seq<int>)
-  
-    ensures |sorted| == |s|
-    ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 == 0 ==>
-      forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] >= sorted[j]
-    ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 != 0 ==>
-      forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-  
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 
@@ -29,13 +18,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method SortSeq(s: seq<int>) returns (sorted: seq<int>)
-  
-    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-    ensures |sorted| == |s|
-    ensures multiset(s) == multiset(sorted)
-  
-  {
-    assume{:axiom} false;
-  }
 

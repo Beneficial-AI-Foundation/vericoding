@@ -3,14 +3,7 @@ vc-description: |-
   Check if condition holds. Ensures: if true, then there exists an integer r such that N = r³; if false, then no integer r satisfies N = r³.
 
 vc-preamble: |-
-  method cube_root(N: nat) returns (r: nat)
-  
-    ensures cube(r) <= N < cube(r + 1)
-    ensures r <= N
-  
-  {
-    assume{:axiom} false;
-  }
+  function cube(n: int): int { n * n * n }
 
 vc-helpers: |-
 
@@ -26,5 +19,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  function cube(n: int): int { n * n * n }
 

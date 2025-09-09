@@ -3,24 +3,6 @@ vc-description: |-
   Parse input. Requires: the condition holds for all values. Ensures: the condition holds for all values.
 
 vc-preamble: |-
-  method parse_paren_group(s : string) returns (max_depth : int)
-  
-      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')'
-  
-      ensures max_depth >= 0
-  
-  {
-    assume{:axiom} false;
-  }
-  method split(s : string) returns (res : seq<string>)
-  
-      requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')' || s[i] == ' '
-  
-      ensures forall s1 :: s1 in res ==> (forall i :: i >= 0 && i < |s1| ==> s1[i] == '(' || s1[i] == ')') && |s1| > 0
-  
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 

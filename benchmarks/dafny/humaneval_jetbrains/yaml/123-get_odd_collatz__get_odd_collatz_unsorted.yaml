@@ -15,16 +15,6 @@ vc-preamble: |-
   {
     if n % 2 == 0 then iterate_to_odd(n) else iterate_to_odd(3 * n + 1)
   }
-  method next_odd_collatz_iter(n: nat) returns (next: nat)
-  
-    requires n > 0
-  
-    ensures next % 2 == 1
-    ensures next == next_odd_collatz(n)
-  
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 
@@ -41,12 +31,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method get_odd_collatz(n: nat) returns (sorted: seq<int>)
-    decreases *
-    requires n > 1
-    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-    ensures forall i :: 0 <= i < |sorted| ==> sorted[i] % 2 == 1
-  {
-    assume{:axiom} false;
-  }
 

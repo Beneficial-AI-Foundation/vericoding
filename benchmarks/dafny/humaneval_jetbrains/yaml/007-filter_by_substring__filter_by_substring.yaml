@@ -3,10 +3,6 @@ vc-description: |-
   Filter elements. Ensures: the size is bounded; the condition holds for all values.
 
 vc-preamble: |-
-  method checkSubstring(s: string, sub: string) returns (result: bool)
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 

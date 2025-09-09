@@ -24,13 +24,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method largest_prime_factor(n: int) returns (largest: int)
-  
-    requires n >= 2
-  
-    ensures 1 <= largest <= n && (largest == 1 || (largest > 1 && is_prime_pred(largest)))
-  
-  {
-    assume{:axiom} false;
-  }
 

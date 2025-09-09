@@ -13,15 +13,6 @@ vc-preamble: |-
       case 5 => "5" case 6 => "6" case 7 => "7" case 8 => "8" case 9 => "9"
       case _ => natToString(n / 10) + natToString(n % 10)
   }
-  method circular_shift(a: nat, shift: nat) returns (shifted: string)
-  
-    ensures |shifted| == |natToString(a)|
-    ensures var s := natToString(a); shift > |s| ==> forall i :: 0 <= i < |s| ==> shifted[i] == s[|s| - 1 - i]
-    ensures var s := natToString(a); shift <= |s| ==> shifted == s[|s| - shift..] + s[..|s| - shift]
-  
-  {
-    assume{:axiom} false;
-  }
 
 vc-helpers: |-
 

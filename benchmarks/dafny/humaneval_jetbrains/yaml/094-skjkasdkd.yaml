@@ -3,22 +3,6 @@ vc-description: |-
   You are given a list of integers. You need to find the largest prime value and return the sum of its digits. Note(George): Modified to use List of nats because all examples are nats.
 
 vc-preamble: |-
-
-vc-helpers: |-
-
-vc-spec: |-
-  method skjkasdkd(lst: seq<nat>) returns (dsum: nat)
-  
-    requires exists i :: 0 <= i < |lst| && is_prime(lst[i])
-  
-    ensures dsum == digits_sum(max_seq(filter_primes(lst)))
-
-vc-code: |-
-  {
-    assume {:axiom} false;
-  }
-
-vc-postamble: |-
   function digits_sum(x: nat): nat {
     if x == 0 then 0 else x % 10 + digits_sum(x / 10)
   }
@@ -60,4 +44,20 @@ vc-postamble: |-
   function is_prime(k: int) : bool {
     k != 1 && forall i :: 2 <= i < k ==> k % i != 0
   }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method skjkasdkd(lst: seq<nat>) returns (dsum: nat)
+  
+    requires exists i :: 0 <= i < |lst| && is_prime(lst[i])
+  
+    ensures dsum == digits_sum(max_seq(filter_primes(lst)))
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
 

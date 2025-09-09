@@ -15,12 +15,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  method filter_by_substring(strings: seq<string>, substring: string) returns (res : seq<string>)
-  
-      ensures |res| <= |strings|
-      ensures (forall s :: s in res ==> s in strings)
-  
-  {
-    assume{:axiom} false;
-  }
 
