@@ -7,7 +7,7 @@ from pydantic_ai import ModelHTTPError
 import logfire
 import yaml
 
-from code2verus.config import ARTIFACTS
+from code2verus.config import ARTIFACTS, cfg
 from code2verus.agent import translate_code_to_verus
 from code2verus.verification import verify_verus_code
 from code2verus.success_tracker import save_success_info, is_sample_already_successful
@@ -58,13 +58,17 @@ async def process_item(
     item: dict,
     source_language: str = "dafny",
     benchmark_name: str = "dafnybench",
-    max_retries: int = 32,
+    max_retries: int = None,
     base_delay: float = 5.0,
     is_flat: bool = False,
     is_yaml: bool = False,
     benchmark_path: str = "",
 ) -> dict:
     """Process a single item from the dataset with exponential backoff"""
+
+    # Use config value if max_retries not provided, with fallback to 32
+    if max_retries is None:
+        max_retries = cfg.get("max_retries", 32)
 
     suffix = ".rs" if not is_yaml else ".yaml"
 
@@ -303,7 +307,6 @@ async def main_async(
                 item,
                 source_language,
                 benchmark_name,
-                max_retries=32,
                 base_delay=5.0,
                 is_flat=is_flat,
                 is_yaml=is_yaml,
