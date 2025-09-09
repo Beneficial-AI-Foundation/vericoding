@@ -24,7 +24,7 @@ from vericoding.utils import wandb_utils
 logger = logging.getLogger(__name__)
 
 
-def validate_sections(vc_helpers: str, vc_spec: str, vc_code: str, vc_theorem: str = "", vc_proof: str = "", language: str = None) -> Optional[str]:
+def validate_sections(vc_helpers: str, vc_spec: str, vc_code: str, vc_theorem: str = "", vc_proof: str = "", language: str = None, spec_mode: bool = True) -> Optional[str]:
     """Validate the extracted sections from LLM response.
     
     Args:
@@ -34,6 +34,7 @@ def validate_sections(vc_helpers: str, vc_spec: str, vc_code: str, vc_theorem: s
         vc_theorem: The theorem section content (for Lean)
         vc_proof: The proof section content (for Lean)
         language: The target language for language-specific validation
+        spec_mode: Whether we're in spec mode (allows sorry in theorem sections)
         
     Returns:
         Error message if validation fails, None if valid
@@ -76,13 +77,16 @@ def validate_sections(vc_helpers: str, vc_spec: str, vc_code: str, vc_theorem: s
     
     # Language-specific validation
     if language == "lean":
-        return _validate_lean_sections(vc_helpers, vc_spec, vc_code, vc_theorem, vc_proof)
+        return _validate_lean_sections(vc_helpers, vc_spec, vc_code, vc_theorem, vc_proof, spec_mode)
     
     return None
 
 
-def _validate_lean_sections(vc_helpers: str, vc_spec: str, vc_code: str, vc_theorem: str, vc_proof: str) -> Optional[str]:
+def _validate_lean_sections(vc_helpers: str, vc_spec: str, vc_code: str, vc_theorem: str, vc_proof: str, spec_mode: bool = True) -> Optional[str]:
     """Validate Lean-specific sections for verification bypasses and cheating.
+    
+    Args:
+        spec_mode: If True, allows sorry in theorem sections (they are templates)
     
     Returns:
         Error message if validation fails, None if valid
@@ -92,9 +96,15 @@ def _validate_lean_sections(vc_helpers: str, vc_spec: str, vc_code: str, vc_theo
         ("vc-helpers", vc_helpers),
         ("vc-spec", vc_spec), 
         ("vc-code", vc_code),
-        ("vc-theorem", vc_theorem),
-        ("vc-proof", vc_proof)
     ]
+    
+    # Only validate theorem and proof sections if not in spec mode
+    # (in spec mode, these are templates and may contain sorry)
+    if not spec_mode:
+        all_sections.extend([
+            ("vc-theorem", vc_theorem),
+            ("vc-proof", vc_proof)
+        ])
     
     for section_name, content in all_sections:
         if not content:
@@ -312,7 +322,7 @@ def process_spec(
                 vc_helpers, vc_spec, vc_code, vc_theorem, vc_proof = extract_sections(llm_response)
 
                 # Validate the extracted sections
-                validation_error = validate_sections(vc_helpers, vc_spec, vc_code, vc_theorem, vc_proof, config.language)
+                validation_error = validate_sections(vc_helpers, vc_spec, vc_code, vc_theorem, vc_proof, config.language, spec_mode)
                 if validation_error:
                     logger.info(f"    ✗ Validation error: {validation_error}")
                     # Save reconstructed Lean file to help debugging validation errors
