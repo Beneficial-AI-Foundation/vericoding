@@ -1,9 +1,3 @@
-/*
-Given N attendees at a brain dinner (including Heidi), determine the minimum number of brains needed
-in a chest for Heidi to survive. Heidi makes the first proposal for brain distribution, which must be 
-accepted by at least half of all attendees (including herself) for her to survive.
-*/
-
 predicate IsPowerOfTwo(n: int) 
     decreases n
 {

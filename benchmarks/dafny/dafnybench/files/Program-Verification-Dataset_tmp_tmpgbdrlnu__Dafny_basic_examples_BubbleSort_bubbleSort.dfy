@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate sorted(a:array<int>, from:int, to:int)
   requires a != null;
   reads a;

@@ -1,10 +1,3 @@
-/*
-Given a list of university entrance years for groups that student Igor joined,
-determine Igor's university entrance year. Igor joins his own group and all groups
-where the entrance year differs by at most x years from his entrance year.
-The solution computes Igor's entrance year as the average of all group years.
-*/
-
 function sumRange(s: seq<int>, start: int, end: int): int
     requires 0 <= start <= end <= |s|
     decreases end - start

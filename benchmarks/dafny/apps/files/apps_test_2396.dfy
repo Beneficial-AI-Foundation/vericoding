@@ -1,8 +1,3 @@
-/*
-Given m ships, each with a destination coordinate expressed as (a+b)/c where a, b, c are positive integers,
-determine how many ships (including itself) will have the same destination coordinate for each ship.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0

@@ -1,10 +1,3 @@
-/*
-Given n fridges with weights a₁, a₂, ..., aₙ, create exactly m steel chains between fridges 
-such that all fridges are "private". A chain connecting fridges u and v costs aᵤ + aᵥ. 
-A fridge is "private" if only its owner can unlock it. Find the minimum total cost to create 
-exactly m chains making all fridges private, or determine if impossible.
-*/
-
 datatype Result = Impossible | Possible(cost: int, edges: seq<(int, int)>)
 
 function seq_sum(s: seq<int>): int {

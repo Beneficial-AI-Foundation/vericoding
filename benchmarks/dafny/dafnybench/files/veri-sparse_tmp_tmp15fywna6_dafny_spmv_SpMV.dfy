@@ -1,6 +1,3 @@
-/*
-*/
-
 function sum(X_val: array<int>, X_crd: array<nat>, v : array<int>, b : int, k : int) : (s : int)
   reads X_val, X_crd, v
   requires X_val.Length >= b >= 0
@@ -33,12 +30,3 @@ method SpMV(X_val: array<int>, X_crd: array<nat>, X_pos: array<nat>, v : array<i
   assume {:axiom} false;
 }
 // </vc-code>
-
-// 0 0 0 0 0 0 1 0
-// 0 0 0 0 0 0 0 0
-// 0 0 0 0 1 0 0 0
-// 0 0 0 0 0 0 0 0
-// 0 0 1 0 0 0 0 0
-// 0 0 0 0 0 0 0 0
-// 1 0 0 0 0 0 0 0
-// 0 0 0 0 0 0 0 0

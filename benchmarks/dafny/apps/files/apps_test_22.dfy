@@ -1,10 +1,3 @@
-/*
-Check if a string is an "s-palindrome" - meaning it is symmetric when mirrored horizontally about its center.
-Some letters are symmetric: A, H, I, M, O, o, T, U, V, v, W, w, X, x, Y
-Some letters are mirror pairs: (p,q) and (b,d)
-All other letters cannot form valid s-palindromes
-*/
-
 predicate is_s_palindrome(s: string)
 {
     var pal := "AHIMOoTUVvWwXxY";

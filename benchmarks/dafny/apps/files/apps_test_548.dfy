@@ -1,10 +1,3 @@
-/*
-Two players play a game on an array of integers, alternating turns.
-First player removes subsegments with odd sum, second player removes subsegments with even sum.
-After removal, remaining parts are concatenated. Player who cannot move loses.
-Determine the winner assuming optimal play.
-*/
-
 predicate AllEven(a: seq<int>)
 {
     forall i :: 0 <= i < |a| ==> a[i] % 2 == 0

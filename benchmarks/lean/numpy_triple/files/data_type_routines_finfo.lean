@@ -1,17 +1,3 @@
-/-  numpy.finfo: Machine limits for floating point types.
-
-    Returns machine limits for the Float type in Lean.
-    This provides information about the precision and range of Float values.
-
-    In NumPy, this would accept different dtypes, but in Lean we work with the built-in Float type.
--/
-
-/-  Specification: numpy.finfo returns floating point type information with correct properties.
-
-    Precondition: True (no special preconditions)
-    Postcondition: The returned FloatInfo has mathematically consistent properties
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

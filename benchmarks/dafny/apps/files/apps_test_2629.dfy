@@ -1,8 +1,3 @@
-/*
-Given a positive integer n, create an n×n matrix filled with integers from 1 to n² 
-arranged in clockwise spiral order, starting from the top-left corner.
-*/
-
 function min(a: int, b: int): int
 {
   if a <= b then a else b
@@ -16,16 +11,16 @@ function SpiralOrder(row: int, col: int, n: int): int
   var layerStart := 4 * layer * (n - layer - 1) + layer;
 
   if row == layer then
-    // Top row of current layer
+
     layerStart + (col - layer)
   else if col == n - 1 - layer then
-    // Right column of current layer
+
     layerStart + (n - 2 * layer - 1) + (row - layer)
   else if row == n - 1 - layer then
-    // Bottom row of current layer
+
     layerStart + 2 * (n - 2 * layer - 1) + (n - 1 - layer - col)
   else
-    // Left column of current layer
+
     layerStart + 3 * (n - 2 * layer - 1) + (n - 1 - layer - row)
 }
 

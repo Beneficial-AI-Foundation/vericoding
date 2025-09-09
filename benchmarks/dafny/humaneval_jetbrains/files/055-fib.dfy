@@ -1,8 +1,3 @@
-/*
-function_signature: def fib(n: int) -> int
-Return n-th Fibonacci number.
-*/
-
 function fib(n: nat): nat
   decreases n
 {
@@ -16,9 +11,8 @@ function fib(n: nat): nat
 
 // <vc-spec>
 method ComputeFib(n: nat) returns (result: nat)
-  // post-conditions-start
+
   ensures result == fib(n)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

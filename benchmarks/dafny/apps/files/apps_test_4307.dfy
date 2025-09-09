@@ -1,8 +1,3 @@
-/*
-Count how many odd positive integers between 1 and N (inclusive) have exactly 8 positive divisors,
-where N is between 1 and 200.
-*/
-
 predicate IsOdd(n: int) {
     n % 2 == 1
 }

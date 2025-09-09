@@ -1,34 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.hermite_e.hermevander2d",
-  "category": "HermiteE polynomials",
-  "description": "Pseudo-Vandermonde matrix of given degrees.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite_e.hermevander2d.html",
-  "doc": "Pseudo-Vandermonde matrix of given degrees.\n\n    Returns the pseudo-Vandermonde matrix of degrees \`deg\` and sample\n    points \`\`(x, y)\`\`. The pseudo-Vandermonde matrix is defined by\n\n    .. math:: V[..., (deg[1] + 1)*i + j] = He_i(x) * He_j(y),\n\n    where \`\`0 <= i <= deg[0]\`\` and \`\`0 <= j <= deg[1]\`\`. The leading indices of\n    \`V\` index the points \`\`(x, y)\`\` and the last index encodes the degrees of\n    the HermiteE polynomials.\n\n    If \`\`V = hermevander2d(x, y, [xdeg, ydeg])\`\`, then the columns of \`V\`\n    correspond to the elements of a 2-D coefficient array \`c\` of shape\n    (xdeg + 1, ydeg + 1) in the order\n\n    .. math:: c_{00}, c_{01}, c_{02} ... , c_{10}, c_{11}, c_{12} ...\n\n    and \`\`np.dot(V, c.flat)\`\` and \`\`hermeval2d(x, y, c)\`\` will be the same\n    up to roundoff. This equivalence is useful both for least squares\n    fitting and for the evaluation of a large number of 2-D HermiteE\n    series of the same degrees and sample points.\n\n    Parameters\n    ----------\n    x, y : array_like\n        Arrays of point coordinates, all of the same shape. The dtypes\n        will be converted to either float64 or complex128 depending on\n        whether any of the elements are complex. Scalars are converted to\n        1-D arrays.\n    deg : list of ints\n        List of maximum degrees of the form [x_deg, y_deg].\n\n    Returns\n    -------\n    vander2d : ndarray\n        The shape of the returned matrix is \`\`x.shape + (order,)\`\`, where\n        :math:\`order = (deg[0]+1)*(deg[1]+1)\`.  The dtype will be the same\n        as the converted \`x\` and \`y\`.\n\n    See Also\n    --------\n    hermevander, hermevander3d, hermeval2d, hermeval3d",
-}
--/
-
-/-  Pseudo-Vandermonde matrix of given degrees for 2D HermiteE polynomials.
-
-    Returns the pseudo-Vandermonde matrix of degrees (x_deg, y_deg) and sample
-    points (x, y). The matrix is defined by:
-    V[..., (y_deg + 1)*i + j] = He_i(x) * He_j(y)
-    where 0 <= i <= x_deg and 0 <= j <= y_deg.
--/
-
-/-  Specification: hermevander2d constructs a 2D pseudo-Vandermonde matrix for HermiteE polynomials.
-
-    This function creates a matrix where each row corresponds to a point (x[k], y[k]) and
-    each column corresponds to a basis function He_i(x) * He_j(y).
-
-    Mathematical properties:
-    1. Matrix structure: V[point_idx, basis_idx] = He_i(x[point_idx]) * He_j(y[point_idx])
-    2. Basis ordering: basis_idx = (y_deg + 1) * i + j for degrees (i, j)
-    3. Equivalence with hermeval2d: V · c.flat ≈ hermeval2d(x, y, c)
-    4. Orthogonality properties from HermiteE basis functions
-    5. Polynomial fitting capability: least squares via V^T V c = V^T y
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,9 +1,3 @@
-/*
-Find maximum profit from borrowing a honey barrel on day d, selling it for price x_d,
-buying a new barrel on day d+1 for price x_{d+1}, and paying rental cost c.
-Profit = x_d - x_{d+1} - c. Only execute if profitable, otherwise return 0.
-*/
-
 predicate ValidInput(n: int, c: int, prices: seq<int>) {
     n >= 2 && |prices| == n && c >= 0 &&
     (forall i :: 0 <= i < |prices| ==> prices[i] >= 0)

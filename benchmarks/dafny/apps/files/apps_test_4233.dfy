@@ -1,9 +1,3 @@
-/*
-Given an n×m grid containing '*' and '.' characters, find a set of stars that exactly reproduces this pattern.
-A star has a center (x,y) and size s, placing '*' at the center and s positions in each cardinal direction.
-Output the number of stars and their parameters, or "-1" if impossible.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := Split(input, '\n');
@@ -40,11 +34,11 @@ requires ValidInput(input)
     var firstLine := Split(lines[0], ' ');
     var n := StringToInt(firstLine[0]);
     var m := StringToInt(firstLine[1]);
-    // Each star is valid and within bounds
+
     (forall s :: s in stars ==> 
         s.0 >= 1 && s.0 <= n && s.1 >= 1 && s.1 <= m && s.2 > 0 &&
         ValidStar(n, m, s.0, s.1, s.2)) &&
-    // The stars exactly cover all '*' positions
+
     (forall i, j :: 1 <= i <= n && 1 <= j <= m ==>
         (lines[i][j-1] == '*' <==> CoveredByStars(stars, i, j)) &&
         (lines[i][j-1] == '.' <==> !CoveredByStars(stars, i, j)))
@@ -63,9 +57,9 @@ predicate CoveredByStars(stars: seq<(int, int, int)>, i: int, j: int)
 
 predicate CoveredByStar(x: int, y: int, size: int, i: int, j: int)
 {
-    (i == x && j == y) || // center
-    (i == x && 1 <= AbsInt(j - y) <= size) || // horizontal ray
-    (j == y && 1 <= AbsInt(i - x) <= size)    // vertical ray
+    (i == x && j == y) ||
+    (i == x && 1 <= AbsInt(j - y) <= size) ||
+    (j == y && 1 <= AbsInt(i - x) <= size)
 }
 
 predicate StartsWithIntAndValidFormat(s: string, k: int)

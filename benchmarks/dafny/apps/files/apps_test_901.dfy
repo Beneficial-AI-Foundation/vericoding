@@ -1,11 +1,3 @@
-/*
-Given n parallel universes and m groups, determine if there exists a scenario 
-where at least one group contains only traitors. In each universe, exactly one 
-person (Rick or Morty) is a traitor. A group is dangerous if all its members 
-could potentially be traitors in some assignment, which happens when the group 
-doesn't contain both Rick and Morty from any single universe.
-*/
-
 function SplitLines(s: string): seq<string>
     requires |s| >= 0
     ensures |SplitLines(s)| >= 0

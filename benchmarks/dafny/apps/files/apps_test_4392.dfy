@@ -1,9 +1,3 @@
-/*
-Given an array and a set of allowed swap positions, determine if the array can be sorted 
-in non-decreasing order using only adjacent swaps at the allowed positions. An allowed swap
-exchanges elements at positions i and i+1 if position i is in the allowed set.
-*/
-
 predicate ValidInput(a: array<int>, allowedPos: array<bool>)
     reads a, allowedPos
 {

@@ -1,22 +1,8 @@
 vc-description: |-
-
-vc-preamble: |-
   /*
   Bubble Sort is the simplest sorting algorithm that works by 
   repeatedly swapping the adjacent elements if they are in wrong order.
   */
-  
-  predicate sorted_between(A:array<int>, from:int, to:int)
-      reads A
-  {
-      forall i, j :: 0 <= i <= j < A.Length && from <= i <= j <= to ==> A[i] <= A[j]
-  }
-  
-  predicate sorted(A:array<int>)
-      reads A
-  {
-      sorted_between(A, 0, A.Length-1)
-  }
   
   /* Explanation:
   
@@ -30,6 +16,19 @@ vc-preamble: |-
        // Therefore, each value that the array takes for all elements from 0 to j
        // They are less than or equal to the value of the variable
   */
+
+vc-preamble: |-
+  predicate sorted_between(A:array<int>, from:int, to:int)
+      reads A
+  {
+      forall i, j :: 0 <= i <= j < A.Length && from <= i <= j <= to ==> A[i] <= A[j]
+  }
+  
+  predicate sorted(A:array<int>)
+      reads A
+  {
+      sorted_between(A, 0, A.Length-1)
+  }
 
 vc-helpers: |-
 

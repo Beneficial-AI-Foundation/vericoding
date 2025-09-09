@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.ldexp",
-  "description": "Returns x1 * 2**x2, element-wise",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.ldexp.html",
-  "doc": "Returns x1 * 2**x2, element-wise.\n\nThe mantissas x1 and twos exponents x2 are used to construct floating point numbers x1 * 2**x2.",
-}
--/
-
-/-  Returns x1 * 2**x2, element-wise.
-    The mantissas x1 and twos exponents x2 are used to construct floating point numbers x1 * 2**x2. -/
-
-/-  Specification: ldexp returns x1 * 2**x2 element-wise -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,10 +1,3 @@
-/*
-Given two football teams with a1 and a2 players respectively, where players from team 1
-are sent off after k1 yellow cards and players from team 2 are sent off after k2 yellow cards.
-A total of n yellow cards were shown during the match. Find the minimum and maximum number
-of players that could have been sent off.
-*/
-
 predicate ValidInput(a1: int, a2: int, k1: int, k2: int, n: int) {
     a1 >= 1 && a2 >= 1 && k1 >= 1 && k2 >= 1 && n >= 1
 }

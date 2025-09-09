@@ -1,9 +1,3 @@
-/*
-Given an m×n grid where 0 represents empty cell and 1 represents obstacle,
-find the number of unique paths from top-left (0,0) to bottom-right (m-1,n-1).
-Movement is restricted to right and down only, cannot pass through obstacles.
-*/
-
 predicate ValidGrid(grid: seq<seq<int>>)
 {
     |grid| > 0 && |grid[0]| > 0 &&

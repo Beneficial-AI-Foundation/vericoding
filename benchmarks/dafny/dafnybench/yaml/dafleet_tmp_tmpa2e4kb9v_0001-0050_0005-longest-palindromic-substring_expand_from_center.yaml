@@ -1,6 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
   /* https://leetcode.com/problems/longest-palindromic-substring/
   Given a string s, return the longest palindromic substring in s.
   
@@ -11,18 +9,13 @@ vc-preamble: |-
   */
   
   // Specifying the problem: whether `s[i..j]` is palindromic
-  ghost predicate palindromic(s: string, i: int, j: int)
-    requires 0 <= i <= j <= |s|
-    decreases j - i
-  {
-    j - i < 2 || (s[i] == s[j-1] && palindromic(s, i+1, j-1))
-  }
   
   // A "common sense" about palindromes:
   
   // A useful "helper function" that returns the longest palindrome at a given center (i0, j0).
   
   // The main algorithm.
+  
   // We traverse all centers from left to right, and "expand" each of them, to find the longest palindrome.
   
   /* Discussions
@@ -54,7 +47,65 @@ vc-preamble: |-
   */
   
   // A reference implementation of Manacher's algorithm:
+  
   // (Ref. https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm) for details...
+  
+  // Below are helper functions and lemmas we used:
+  
+  // Inserts bogus characters to the original string (e.g. from `abc` to `|a|b|c|`).
+  
+  // Note that this is neither efficient nor necessary in reality, but just for the ease of understanding.
+  
+  // Returns (max_index, max_value) of array `a` starting from index `start`.
+  
+  // Whether an interval at center `c` with a radius `r` is within the boundary of `s'`.
+  
+  // Whether `r` is a valid palindromic radius at center `c`.
+  
+  // Whether `r` is the maximal palindromic radius at center `c`.
+  
+  // Basically, just "rephrasing" the `lemma_palindromic_contains`,
+  
+  // talking about center and radius, instead of interval
+  
+  // When "expand from center" ends, we've find the max radius:
+  
+  // The critical insight behind Manacher's algorithm.
+  
+  //
+  
+  // Given the longest palindrome centered at `c` has length `r`, consider the interval from `c-r` to `c+r`.
+  
+  // Consider a pair of centers in the interval: `c1` (left half) and `c2` (right half), equally away from `c`.
+  
+  // Then, the length of longest palindromes at `c1` and `c2` are related as follows:
+  
+  //, where:
+  
+  // Transfering our final result on `s'` to that on `s`:
+  
+  // The following returns whether `s[lo..hi]` is the longest palindrome s.t. `lo + hi == k`:
+  
+  // Establishes the "palindromic isomorphism" between `s` and `s'`.
+  
+  // Implies that whenever `c + r` is odd, the corresponding palindrome can be "lengthened for free"
+  
+  // because its both ends are the bogus char.
+  
+  // Among all palindromes
+  
+  // sharing the same center,
+  
+  // `s[lo..hi]` is longest.
+
+vc-preamble: |-
+  ghost predicate palindromic(s: string, i: int, j: int)
+    requires 0 <= i <= j <= |s|
+    decreases j - i
+  {
+    j - i < 2 || (s[i] == s[j-1] && palindromic(s, i+1, j-1))
+  }
+  
   method longestPalindrome'(s: string) returns (ans: string, lo: int, hi: int)
     ensures 0 <= lo <= hi <= |s| && ans == s[lo..hi]
     ensures palindromic(s, lo, hi)
@@ -63,10 +114,6 @@ vc-preamble: |-
     assume{:axiom} false;
   }
   
-  // Below are helper functions and lemmas we used:
-  
-  // Inserts bogus characters to the original string (e.g. from `abc` to `|a|b|c|`).
-  // Note that this is neither efficient nor necessary in reality, but just for the ease of understanding.
   function insert_bogus_chars(s: string, bogus: char): (s': string)
     ensures |s'| == 2 * |s| + 1
     ensures forall i | 0 <= i <= |s| :: s'[i * 2] == bogus
@@ -81,7 +128,6 @@ vc-preamble: |-
       s'_new
   }
   
-  // Returns (max_index, max_value) of array `a` starting from index `start`.
   function argmax(a: array<int>, start: int): (res: (int, int))
     reads a
     requires 0 <= start < a.Length
@@ -96,20 +142,17 @@ vc-preamble: |-
       if a[start] >= v then (start, a[start]) else (i, v)
   }
   
-  // Whether an interval at center `c` with a radius `r` is within the boundary of `s'`.
   ghost predicate inbound_radius(s': string, c: int, r: int)
   {
     r >= 0 && 0 <= c-r && c+r < |s'|
   }
   
-  // Whether `r` is a valid palindromic radius at center `c`.
   ghost predicate palindromic_radius(s': string, c: int, r: int)
     requires inbound_radius(s', c, r)
   {
     palindromic(s', c-r, c+r+1)
   }
   
-  // Whether `r` is the maximal palindromic radius at center `c`.
   ghost predicate max_radius(s': string, c: int, r: int)
   {
     && inbound_radius(s', c, r)
@@ -117,35 +160,16 @@ vc-preamble: |-
     && (forall r' | r' > r && inbound_radius(s', c, r') :: !palindromic_radius(s', c, r'))
   }
   
-  // Basically, just "rephrasing" the `lemma_palindromic_contains`,
-  // talking about center and radius, instead of interval
-  
-  // When "expand from center" ends, we've find the max radius:
-  
-  // The critical insight behind Manacher's algorithm.
-  //
-  // Given the longest palindrome centered at `c` has length `r`, consider the interval from `c-r` to `c+r`.
-  // Consider a pair of centers in the interval: `c1` (left half) and `c2` (right half), equally away from `c`.
-  // Then, the length of longest palindromes at `c1` and `c2` are related as follows:
-  //, where:
   ghost function abs(x: int): int {
     if x >= 0 then x else -x
   }
   
-  // Transfering our final result on `s'` to that on `s`:
-  
-  // The following returns whether `s[lo..hi]` is the longest palindrome s.t. `lo + hi == k`:
   ghost predicate max_interval_for_same_center(s: string, k: int, lo: int, hi: int) {
     && 0 <= lo <= hi <= |s|
     && lo + hi == k
     && palindromic(s, lo, hi)
     && (forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j) && i + j == k :: j - i <= hi - lo)
   }
-  
-  // Establishes the "palindromic isomorphism" between `s` and `s'`.
-  
-  // Implies that whenever `c + r` is odd, the corresponding palindrome can be "lengthened for free"
-  // because its both ends are the bogus char.
 
 vc-helpers: |-
 
@@ -154,9 +178,9 @@ vc-spec: |-
     requires 0 <= i0 <= j0 <= |s|
     requires palindromic(s, i0, j0)
     ensures 0 <= lo <= hi <= |s| && palindromic(s, lo, hi)
-    ensures forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j)  // Among all palindromes
-      && i + j == i0 + j0                                             // sharing the same center,
-      :: j - i <= hi - lo                                             // `s[lo..hi]` is longest.
+    ensures forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j)
+      && i + j == i0 + j0
+      :: j - i <= hi - lo
 
 vc-code: |-
   {

@@ -1,10 +1,3 @@
-/*
-Given an undirected tree with n vertices rooted at vertex 1, Alice starts at vertex 1 and Bob starts at vertex x.
-Players alternate turns with Bob going first. Each turn a player can stay at current vertex or move to adjacent vertex.
-Game ends when Alice reaches Bob's vertex. Alice minimizes total moves, Bob maximizes total moves.
-Find the total number of moves in optimal play.
-*/
-
 predicate ValidInput(n: int, x: int, edges: seq<(int, int)>)
 {
   n > 0 && 1 <= x <= n && |edges| == n - 1 &&

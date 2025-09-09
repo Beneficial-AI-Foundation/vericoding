@@ -1,11 +1,3 @@
-/*
-*/
-
-// Noa Leron 207131871
-// Tsuri Farhana 315016907
-
-// definitions borrowed from Rustan Leino's Program Proofs Chapter 7
-// (https://program-proofs.com/code.html example code in Dafny; source file 7-Unary.dfy)
 datatype Unary = Zero | Suc(pred: Unary)
 
 ghost function UnaryToNat(x: Unary): nat {
@@ -45,18 +37,6 @@ function Mul(x: Unary, y: Unary): Unary {
   case Zero => Zero
   case Suc(x') => Add(Mul(x', y), y)
 }
-
-/*
-Goal: implement correcly and clearly, using iterative code (no recursion), documenting the proof obligations
-    as we've learned, with assertions and a lemma for each proof goal
-
-- DO NOT modify the specification or any of the definitions given in this file
-- Not all definitions above are relevant, some are simply included as examples
-- Feel free to use existing non-ghost functions/predicates in your code, and existing lemmas (for the proof) in your annotations
-- New functions/predicates may be added ONLY as ghost
-- If it helps you in any way, a recursive implementation + proof can be found in the book and the downloadable source file
-  [https://program-proofs.com/code.html example code in Dafny, source file 7-Unary.dfy]
-*/
 
 method IterativeDivMod'(x: Unary, y: Unary) returns (d: Unary, m: Unary)
   requires y != Zero

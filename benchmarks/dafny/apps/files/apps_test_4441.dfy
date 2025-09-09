@@ -1,8 +1,3 @@
-/*
-Read an integer N from input. If N=1, print "Hello World". If N=2, read two additional integers A and B, then print their sum.
-Constraints: N is 1 or 2, A and B are integers between 1 and 9 (inclusive).
-*/
-
 predicate ValidInput(stdin_input: string)
 {
     |stdin_input| > 0

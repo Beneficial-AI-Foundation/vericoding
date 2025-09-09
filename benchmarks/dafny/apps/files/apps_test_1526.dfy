@@ -1,8 +1,3 @@
-/*
-Given three integers A, B, and C, find the minimum number of operations to make all three equal.
-Operations: (1) Choose any two numbers and increase both by 1, (2) Choose any one number and increase it by 2.
-*/
-
 predicate ValidInput(A: int, B: int, C: int) {
     0 <= A <= 50 && 0 <= B <= 50 && 0 <= C <= 50
 }

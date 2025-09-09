@@ -1,9 +1,3 @@
-/*
-You start with r bourles and no shares. There are n buying opportunities and m selling opportunities for shares. 
-Find the maximum bourles you can have after trading. You can buy any number of shares at any buying price 
-and sell any number of shares (up to what you own) at any selling price.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && '\n' in input &&

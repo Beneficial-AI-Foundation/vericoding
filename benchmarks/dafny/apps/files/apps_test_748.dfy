@@ -1,9 +1,3 @@
-/*
-Given a sequence of n positive integers (n divisible by 3), each ≤ 7,
-partition into groups of 3 elements (a,b,c) where a < b < c and a|b, b|c.
-Return the partition or empty sequence if impossible.
-*/
-
 predicate ValidInput(n: int, numbers: seq<int>)
 {
     n >= 3 && n % 3 == 0 &&

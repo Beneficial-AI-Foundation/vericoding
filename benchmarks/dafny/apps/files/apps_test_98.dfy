@@ -1,9 +1,3 @@
-/*
-Given a rectangular board and two rectangular paintings, determine if both paintings 
-can be placed on the board without overlapping or extending beyond edges. Each rectangle 
-can be rotated 90 degrees.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLinesFunc(input);

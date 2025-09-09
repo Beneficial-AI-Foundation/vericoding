@@ -1,21 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.hermite_e.hermeder",
-  "category": "HermiteE polynomials",
-  "description": "Differentiate a Hermite_e series.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite_e.hermeder.html",
-  "doc": "Differentiate a Hermite_e series.\n\n    Returns the series coefficients \`c\` differentiated \`m\` times along\n    \`axis\`.  At each iteration the result is multiplied by \`scl\` (the\n    scaling factor is for use in a linear change of variable). The argument\n    \`c\` is an array of coefficients from low to high degree along each\n    axis, e.g., [1,2,3] represents the series \`\`1*He_0 + 2*He_1 + 3*He_2\`\`\n    while [[1,2],[1,2]] represents \`\`1*He_0(x)*He_0(y) + 1*He_1(x)*He_0(y)\n    + 2*He_0(x)*He_1(y) + 2*He_1(x)*He_1(y)\`\` if axis=0 is \`\`x\`\` and axis=1\n    is \`\`y\`\`.\n\n    Parameters\n    ----------\n    c : array_like\n        Array of Hermite_e series coefficients. If \`c\` is multidimensional\n        the different axis correspond to different variables with the\n        degree in each axis given by the corresponding index.\n    m : int, optional\n        Number of derivatives taken, must be non-negative. (Default: 1)\n    scl : scalar, optional\n        Each differentiation is multiplied by \`scl\`.  The end result is\n        multiplication by \`\`scl**m\`\`.  This is for use in a linear change of\n        variable. (Default: 1)\n    axis : int, optional\n        Axis over which the derivative is taken. (Default: 0).\n\n    Returns\n    -------\n    der : ndarray\n        Hermite series of the derivative.\n\n    See Also\n    --------\n    hermeint\n\n    Notes\n    -----\n    In general, the result of differentiating a Hermite series does not\n    resemble the same operation on a power series. Thus the result of this\n    function may be \"unintuitive,\" albeit correct; see Examples section\n    below.\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite_e import hermeder\n    >>> hermeder([ 1.,  1.,  1.,  1.])\n    array([1.,  2.,  3.])\n    >>> hermeder([-0.25,  1.,  1./2.,  1./3.,  1./4 ], m=2)\n    array([1.,  2.,  3.])",
-}
--/
-
-/-  Differentiate a Hermite_e series by taking the derivative of coefficients.
-    Takes coefficients from low to high degree and returns differentiated coefficients. -/
-
-/-  Specification: hermeder correctly differentiates Hermite_e series coefficients.
-    The result has degree reduced by 1, and each coefficient is multiplied by its index
-    and scaled by scl^m. For a single differentiation (m=1), the coefficient of degree k
-    becomes k * scl * original_coefficient. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

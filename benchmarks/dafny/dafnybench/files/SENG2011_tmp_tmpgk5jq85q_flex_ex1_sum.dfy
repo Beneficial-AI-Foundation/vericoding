@@ -1,7 +1,3 @@
-/*
-*/
-
-// sums from index 0 -> i - 1
 function sumcheck(s: array<int>, i: int): int
 requires 0 <= i <= s.Length
 reads s
@@ -9,8 +5,6 @@ reads s
     if i == 0 then 0
     else s[i - 1] + sumcheck(s, i - 1)
 }
-
-// returns sum of array
 
 // <vc-helpers>
 // </vc-helpers>

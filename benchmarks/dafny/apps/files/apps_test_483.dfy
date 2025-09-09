@@ -1,9 +1,3 @@
-/*
-Given n particles on a line at distinct even-integer positions, where each particle moves 
-left (L) or right (R) at speed 1 unit per microsecond, find the time of the first collision 
-between any two particles, or return -1 if no collision occurs.
-*/
-
 predicate ValidInput(n: int, directions: string, positions: seq<int>)
 {
     n >= 1 &&

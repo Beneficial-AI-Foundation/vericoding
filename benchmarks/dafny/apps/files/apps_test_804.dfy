@@ -1,9 +1,3 @@
-/*
-Given a string of lowercase Latin letters and an integer k, find the minimum number of 
-character changes needed to make the string contain at least k different letters.
-Return "impossible" if the string length is less than k.
-*/
-
 predicate ValidInput(s: string, k: int)
 {
     1 <= k <= 26 && 1 <= |s| <= 1000 && 

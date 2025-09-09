@@ -1,9 +1,3 @@
-/*
-Process queries on an array of 500,000 integers initially set to zero.
-Type 1 queries add a value to a specific position.
-Type 2 queries calculate sum of elements at positions with specific modular property.
-*/
-
 predicate validInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n'

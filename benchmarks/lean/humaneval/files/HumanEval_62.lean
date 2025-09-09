@@ -1,16 +1,3 @@
-/- 
-function_signature: "def derivative(xs: List Int) -> List Int"
-docstring: |
-    xs represent coefficients of a polynomial.
-    xs[0] + xs[1] * x + xs[2] * x^2 + ....
-     Return derivative of this polynomial in the same form.
-test_cases:
-  - input: [3, 1, 2, 4, 5]
-    expected_output: [1, 4, 12, 20]
-  - input: [1, 2, 3]
-    expected_output: [2, 6]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

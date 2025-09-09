@@ -1,6 +1,3 @@
-/*
-*/
-
 ghost function SetProduct(s : set<int>) : int
 {
     if s == {} then 1

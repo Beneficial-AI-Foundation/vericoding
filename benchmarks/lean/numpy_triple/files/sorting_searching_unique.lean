@@ -1,24 +1,3 @@
-/-  numpy.unique: Find the unique elements of an array.
-
-    Returns the sorted unique elements of an array. This operation removes
-    duplicate values and returns them in sorted order. The result contains
-    each unique value exactly once.
-
-    For a 1D array, this function eliminates duplicate elements and sorts
-    the remaining unique elements in ascending order.
-
-    The returned array will have size less than or equal to the input array,
-    with equality only when all elements are already unique.
--/
-
-/-  Specification: numpy.unique returns sorted unique elements without duplicates.
-
-    Precondition: True (no special preconditions)
-    Postcondition: The result contains all unique elements from the input array,
-    sorted in ascending order, with no duplicates, and every element in the 
-    result appears in the original array.
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

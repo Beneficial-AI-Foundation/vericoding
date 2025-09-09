@@ -1,25 +1,3 @@
-/- 
-{
-  "name": "numpy.heaviside",
-  "description": "Compute the Heaviside step function",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.heaviside.html",
-  "doc": "Compute the Heaviside step function.\n\nThe Heaviside step function is defined as:\n  0 if x1 < 0\n  x2 if x1 == 0\n  1 if x1 > 0",
-}
--/
-
-/-  Compute the Heaviside step function element-wise.
-    Returns 0 if x < 0, x2 if x == 0, and 1 if x > 0. -/
-
-/-  Specification: The Heaviside function returns values based on the sign of x1 elements.
-    For each element:
-    - If x1[i] < 0, result[i] = 0
-    - If x1[i] = 0, result[i] = x2[i]
-    - If x1[i] > 0, result[i] = 1
-
-    This specification captures the complete behavior of the heaviside step function
-    including the crucial property that it's completely determined by the sign of x1
-    and uses x2 as the value at the discontinuity point. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

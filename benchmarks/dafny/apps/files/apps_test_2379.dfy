@@ -1,10 +1,3 @@
-/*
-Given N days, choose exactly K days to work with constraints:
-- After working, cannot work for next C consecutive days  
-- Can only work on days where S[i] == 'o' (not 'x')
-Find all days that must be worked in every valid selection of K workdays
-*/
-
 predicate IsValidWorkSelection(N: int, K: int, C: int, S: string, selection: set<int>)
     requires |S| == N
 {

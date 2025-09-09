@@ -1,8 +1,3 @@
-/*
-Given integers N and K, repeatedly perform the operation N := |N - K| to find
-the minimum possible value N can achieve after zero or more operations.
-*/
-
 predicate ValidInput(n: int, k: int) {
     n >= 0 && k >= 1
 }

@@ -1,19 +1,3 @@
-/- 
-{
-  "name": "numpy.euler_gamma",
-  "category": "Mathematical constants",
-  "description": "Euler-Mascheroni constant γ",
-  "url": "https://numpy.org/doc/stable/reference/constants.html#numpy.euler_gamma",
-  "doc": "γ = 0.5772156649015328606065120900824024310421...\n\nThe Euler-Mascheroni constant is a mathematical constant recurring in analysis and number theory, defined as the limiting difference between the harmonic series and the natural logarithm.",
-}
--/
-
-/-  The Euler-Mascheroni constant (γ), approximately 0.577215... -/
-
-/-  Specification: euler_gamma represents the Euler-Mascheroni constant γ,
-    which is the limiting difference between the harmonic series and the natural logarithm.
-    It satisfies key mathematical properties and bounds -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

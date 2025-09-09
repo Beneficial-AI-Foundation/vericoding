@@ -1,34 +1,3 @@
-/- 
-{
-  "name": "numpy.average",
-  "category": "Averages and variances",
-  "description": "Compute the weighted average along the specified axis",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.average.html",
-  "doc": "numpy.average(a, axis=None, weights=None, returned=False, *, keepdims=<no value>)\n\nCompute the weighted average along the specified axis.\n\nParameters\n----------\na : array_like\n    Array containing data to be averaged. If a is not an array, a conversion is attempted.\naxis : None or int or tuple of ints, optional\n    Axis or axes along which to average a. The default, axis=None, will average over all of the elements of the input array.\nweights : array_like, optional\n    An array of weights associated with the values in a. Each value in a contributes to the average according to its associated weight.\nreturned : bool, optional\n    Default is False. If True, the tuple (average, sum_of_weights) is returned, otherwise only the average is returned.\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left in the result as dimensions with size one.\n\nReturns\n-------\nretval, [sum_of_weights] : array_type or double\n    Return the average along the specified axis. When returned is True, return a tuple with the average as the first element and the sum of the weights as the second element.\n\nRaises\n------\nZeroDivisionError\n    When all weights along axis are zero.\nTypeError\n    When the length of 1D weights is not the same as the shape of a along axis.",
-}
--/
-
-/-  numpy.average: Compute the weighted average along the specified axis.
-
-    Computes the weighted average of the elements in the input vector.
-    If weights are not provided, it computes the arithmetic mean.
-    If weights are provided, it computes the weighted average where each
-    element contributes according to its associated weight.
-
-    The weighted average is computed as:
-    sum(a * weights) / sum(weights)
-
-    When weights are not provided, this reduces to:
-    sum(a) / len(a)
--/
-
-/-  Specification: numpy.average computes the weighted average when weights are provided,
-    and arithmetic mean when weights are None.
-
-    Precondition: Array is non-empty and if weights are provided, their sum is non-zero
-    Postcondition: Returns the weighted average or arithmetic mean as appropriate
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

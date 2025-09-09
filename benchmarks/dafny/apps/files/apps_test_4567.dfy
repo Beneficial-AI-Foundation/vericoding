@@ -1,8 +1,3 @@
-/*
-Given N questions with scores, find the maximum possible sum of a subset 
-such that the sum is NOT a multiple of 10. If no such sum exists, return 0.
-*/
-
 predicate ValidInput(scores: seq<int>) {
     |scores| > 0 && |scores| <= 100 &&
     forall i :: 0 <= i < |scores| ==> 1 <= scores[i] <= 100

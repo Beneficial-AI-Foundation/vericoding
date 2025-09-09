@@ -1,8 +1,3 @@
-/*
-function_signature: def prod_signs(arr: List[int]) -> Optional[int]
-You are given an array arr of integers and you need to return sum of magnitudes of integers multiplied by product of all signs of each number in the array, represented by 1, -1 or 0. Note: return None for empty arr.
-*/
-
 function abs(x: int): int
   ensures abs(x) >= 0
   ensures abs(x) == x || abs(x) == -x

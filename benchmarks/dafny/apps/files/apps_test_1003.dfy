@@ -1,9 +1,3 @@
-/*
-Vasya starts with n pairs of socks. Each day he uses one pair and discards it.
-Every m-th day (days m, 2m, 3m, ...), his mother buys him one new pair in the evening.
-Find the number of days Vasya can wear socks before running out.
-*/
-
 predicate ValidInput(n: int, m: int) {
     n >= 1 && m >= 2
 }

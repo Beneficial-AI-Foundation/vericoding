@@ -1,9 +1,3 @@
-/*
-Given N clocks where clock i completes one rotation in T_i seconds,
-find the minimum positive time when all clocks return to their starting position.
-This is equivalent to finding the LCM of all rotation periods.
-*/
-
 function gcd(a: int, b: int): int
   requires a > 0 && b >= 0
   ensures gcd(a, b) > 0

@@ -1,9 +1,3 @@
-/*
-Given three integers representing colors, count the number of distinct colors.
-Input constraints: 1 ≤ a,b,c ≤ 100
-Output: number of different kinds of colors (1, 2, or 3)
-*/
-
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100

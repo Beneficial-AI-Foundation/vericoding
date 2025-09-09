@@ -1,8 +1,3 @@
-/*
-Given an array of n non-negative integers, find the maximum XOR value among all possible 
-contiguous subarrays (segments of consecutive elements).
-*/
-
 predicate ValidInput(arr: seq<bv32>)
 {
     |arr| > 0

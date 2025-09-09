@@ -1,9 +1,3 @@
-/*
-Given a positive integer n, express it as a sum of composite numbers using the maximum possible number of summands.
-A composite number is an integer greater than 1 that is not prime (has positive divisors other than 1 and itself).
-For each query, return the maximum number of composite summands, or -1 if no such splitting exists.
-*/
-
 predicate IsComposite(x: int)
 {
     x >= 4 && exists k :: 2 <= k < x && x % k == 0

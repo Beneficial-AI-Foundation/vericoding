@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "signature",
-  "description": "Core signature for generalized ufuncs",
-  "details": "Defines core dimensionality of inputs and outputs",
-  "example": "matmul.signature: '(n,k),(k,m)->(n,m)'"
-}
--/
-
-/-  Parse a ufunc signature string into a structured representation -/
-
-/-  Specification: parseSignature correctly parses ufunc signature strings -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

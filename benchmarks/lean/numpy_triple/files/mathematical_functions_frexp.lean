@@ -1,30 +1,3 @@
-/-  numpy.frexp: Decompose the elements of x into mantissa and twos exponent.
-
-    Returns (mantissa, exponent), where x = mantissa * 2**exponent.
-    The mantissa is in the range [0.5, 1) for positive numbers, (-1, -0.5] for negative numbers,
-    or 0 if x is 0. The exponent is an integer.
-
-    For special values:
-    - If x is 0, returns (0.0, 0)
-    - If x is infinity, returns (infinity, 0)
-    - If x is NaN, returns (NaN, 0)
--/
-
-/-  Specification: frexp decomposes each element into mantissa and exponent such that
-    x = mantissa * 2^exponent, where the mantissa is normalized to be in [0.5, 1) for
-    positive values or (-1, -0.5] for negative values.
-
-    Precondition: True (no special preconditions)
-    Postcondition: For all indices i:
-    - If x[i] = 0, then mantissa[i] = 0 and exponent[i] = 0
-    - If x[i] is finite and non-zero, then:
-      - x[i] = mantissa[i] * 2^exponent[i] (reconstruction property)
-      - 0.5 ≤ |mantissa[i]| < 1.0 (normalization property)
-      - mantissa[i] has same sign as x[i] (sign preservation)
-    - If x[i] is infinity or NaN, then mantissa[i] = x[i] and exponent[i] = 0
-    - Result vectors have same length as input (length preservation)
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

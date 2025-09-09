@@ -1,9 +1,3 @@
-/*
-Distribute N crackers to K users as evenly as possible and find the minimum 
-possible absolute difference between the maximum and minimum number of crackers 
-received by any user.
-*/
-
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 1 && n <= 100 && k <= 100

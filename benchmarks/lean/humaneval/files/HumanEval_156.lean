@@ -1,18 +1,3 @@
-/- 
-function_signature: "def int_to_mini_roman(num: Nat) -> String"
-docstring: |
-    Given a positive integer, obtain its roman numeral equivalent as a string,
-    and return it in lowercase.
-    Restrictions: 1 <= num <= 1000
-test_cases:
-  - input: 19
-    expected_output: xix
-  - input: 152
-    expected_output: clii
-  - input: 426
-    expected_output: cdxxvi
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

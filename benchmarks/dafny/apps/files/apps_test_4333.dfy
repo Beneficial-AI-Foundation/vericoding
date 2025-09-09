@@ -1,9 +1,3 @@
-/*
-Given two adjacent vertices of a square in counter-clockwise order, find the coordinates of the remaining two vertices.
-The input consists of four integers representing coordinates (x1,y1) and (x2,y2) of two adjacent vertices.
-The output should be four integers representing coordinates (x3,y3) and (x4,y4) of the remaining vertices in counter-clockwise order.
-*/
-
 predicate ValidInput(x1: int, y1: int, x2: int, y2: int) {
     (x1, y1) != (x2, y2) &&
     -100 <= x1 <= 100 && -100 <= y1 <= 100 &&

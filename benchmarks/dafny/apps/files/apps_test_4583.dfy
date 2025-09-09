@@ -1,8 +1,3 @@
-/*
-Given a 4-digit string ABCD, find operators op1, op2, op3 (each + or -) such that
-A op1 B op2 C op3 D = 7. Return the complete equation as "A op1 B op2 C op3 D=7".
-*/
-
 predicate ValidInput(input: string)
 {
     |input| == 5 && |input[..4]| == 4 && 

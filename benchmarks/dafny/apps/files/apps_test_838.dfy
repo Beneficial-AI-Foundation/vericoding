@@ -1,8 +1,3 @@
-/*
-Count non-empty sets of cells in a binary grid where all cells have the same color (0 or 1)
-and every pair of cells in the set shares either a row or a column.
-*/
-
 predicate ValidInput(stdin_input: string)
 {
     |stdin_input| > 0

@@ -1,10 +1,3 @@
-/*
-Given s spaceships with attacking powers and b bases with defensive powers and gold amounts,
-determine the maximum gold each spaceship can steal. A spaceship can attack any base where 
-the spaceship's attacking power is greater than or equal to the base's defensive power.
-When attacking a base, the spaceship steals all gold from that base.
-*/
-
 predicate ValidInput(s: nat, b: nat, attacking_powers: seq<nat>, bases: seq<(nat, nat)>)
 {
     |attacking_powers| == s && |bases| == b

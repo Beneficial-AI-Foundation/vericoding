@@ -1,9 +1,3 @@
-/*
-Given a pattern string containing lowercase letters and dots (representing unknown letters),
-find which of the eight Pokémon names (vaporeon, jolteon, flareon, espeon, umbreon, leafeon, glaceon, sylveon)
-matches the pattern exactly. Input consists of pattern length n and the pattern string.
-*/
-
 predicate ValidPokemonName(name: string)
 {
     name == "vaporeon" || name == "jolteon" || name == "flareon" || name == "espeon" ||

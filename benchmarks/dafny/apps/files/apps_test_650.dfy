@@ -1,9 +1,3 @@
-/*
-Given a string of uppercase letters A-Z with length 1-10, determine if all letters
-belong to the same predefined group. Group 1: A,E,F,H,I,K,L,M,N,T,V,W,X,Y,Z.
-Group 2: B,C,D,G,J,O,P,Q,R,S,U. Output "YES" if all letters in same group, "NO" otherwise.
-*/
-
 predicate ValidInput(word: string) 
 {
     1 <= |word| <= 10 && forall i :: 0 <= i < |word| ==> 'A' <= word[i] <= 'Z'

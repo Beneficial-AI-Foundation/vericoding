@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.typename",
-  "category": "Miscellaneous Type Utilities",
-  "description": "Return a description for the given data type code",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.typename.html",
-  "doc": "Return a description for the given data type code.\n\nParameters\n----------\nchar : str\n    Data type code.\n\nReturns\n-------\nout : str\n    Description of the input data type code.\n\nExamples\n--------\n>>> typechars = ['S1', '?', 'B', 'D', 'G', 'F', 'I', 'H', 'L', 'O', 'Q',\n...              'S', 'U', 'V', 'b', 'd', 'g', 'f', 'i', 'h', 'l', 'q']\n>>> for typechar in typechars:\n...     print(typechar, ' : ', np.typename(typechar))\n...\nS1  :  character\n?  :  bool\nB  :  unsigned char\nD  :  complex double precision\nG  :  complex long double precision\nF  :  complex single precision\nI  :  unsigned integer\nH  :  unsigned short\nL  :  unsigned long integer\nO  :  object\nQ  :  unsigned long long integer\nS  :  character\nU  :  unicode\nV  :  void\nb  :  signed char\nd  :  double precision\ng  :  long precision\nf  :  single precision\ni  :  integer\nh  :  short\nl  :  long integer\nq  :  long long integer",
-}
--/
-
-/-  Return a description for the given data type code -/
-
-/-  Specification: typename maps data type codes to their descriptions -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

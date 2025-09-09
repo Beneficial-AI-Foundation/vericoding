@@ -1,11 +1,3 @@
-/*
-Given n grains where each grain weighs between (a-b) and (a+b) grams inclusive,
-determine if the total weight of all n grains can fall within the range [c-d, c+d] grams inclusive.
-Input format: first line contains number of test cases t, followed by t lines each containing
-5 integers n, a, b, c, d representing the parameters for each test case.
-Output "Yes" if possible, "No" otherwise for each test case.
-*/
-
 predicate ValidInput(input: string) {
     |input| >= 0
 }

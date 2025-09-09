@@ -1,8 +1,3 @@
-/*
-Given a DNA base represented by a single letter (A, C, G, or T), find its complementary base
-according to the pairing rules: A pairs with T, T pairs with A, C pairs with G, G pairs with C
-*/
-
 predicate ValidDNABase(c: char)
 {
     c in {'A', 'T', 'C', 'G'}

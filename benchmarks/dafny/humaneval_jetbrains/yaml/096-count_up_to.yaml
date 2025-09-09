@@ -12,14 +12,12 @@ vc-helpers: |-
 
 vc-spec: |-
   method CountUpTo(n: int) returns (primes: seq<int>)
-    // pre-conditions-start
+  
     requires n >= 0
-    // pre-conditions-end
-    // post-conditions-start
+  
     ensures forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
     ensures forall i :: 0 <= i < |primes| ==> primes[i] < n
     ensures forall p :: 2 <= p < n && IsPrime(p) <==> p in primes
-    // post-conditions-end
 
 vc-code: |-
   {

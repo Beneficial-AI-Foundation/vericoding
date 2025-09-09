@@ -1,11 +1,3 @@
-/*
-There are n+1 people (Dima and n friends) standing in a circle. Each person shows 1-5 fingers.
-Starting from Dima, they count around the circle a total number equal to the sum of all fingers.
-The person where counting stops must clean the apartment.
-Given the fingers shown by Dima's n friends, determine how many different ways Dima can show
-his fingers (1-5) such that he does NOT have to clean the apartment.
-*/
-
 predicate ValidInput(n: int, friends: seq<int>)
 {
   n >= 1 && |friends| == n && forall i :: 0 <= i < |friends| ==> 1 <= friends[i] <= 5

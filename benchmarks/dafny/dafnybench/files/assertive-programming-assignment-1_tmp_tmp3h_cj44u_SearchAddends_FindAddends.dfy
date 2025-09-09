@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate Sorted(q: seq<int>)
 {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j] 

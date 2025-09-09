@@ -1,7 +1,3 @@
-/*
-*/
-
-//Exercicio 1.a)
 function sum (a:array<int>, i:int, j:int) :int
 decreases j
 reads a
@@ -13,10 +9,6 @@ requires 0 <= i <= j <= a.Length
         a[j-1] + sum(a, i, j-1)
 }
 
-//Exercicio 1.b)
-
-//Exercicio 1.c)
-
 predicate is_prefix_sum_for (a:array<int>, c:array<int>)
 reads c, a
 {
@@ -25,7 +17,6 @@ reads c, a
     && forall j :: 1 <= j <= a.Length ==> c[j] == sum(a,0,j)
 }
 
-///Exercicio 2.
 datatype List<T> = Nil | Cons(head: T, tail: List<T>)
 
 method from_array<T>(a: array<T>) returns (l: List<T>)

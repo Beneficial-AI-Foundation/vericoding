@@ -1,9 +1,3 @@
-/*
-Given a string q and an integer k, split the string into exactly k non-empty substrings
-such that the substrings concatenate to form the original string and each substring 
-starts with a different character (all first characters are distinct).
-*/
-
 function concat_seqs(seqs: seq<seq<char>>): seq<char>
 {
     if |seqs| == 0 then []

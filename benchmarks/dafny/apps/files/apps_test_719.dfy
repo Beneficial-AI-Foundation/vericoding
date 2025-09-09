@@ -1,8 +1,3 @@
-/*
-Find the k-th smallest perfect positive integer, where a perfect integer 
-is one whose digits sum to exactly 10.
-*/
-
 predicate ValidInput(stdin_input: string)
 {
     |stdin_input| > 0 &&

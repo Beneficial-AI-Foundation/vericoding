@@ -1,8 +1,3 @@
-/*
-Given a sequence of magnets with orientations "01" or "10", count the number of groups formed.
-Adjacent magnets with same orientation attract (same group), different orientations repel (separate groups).
-*/
-
 predicate ValidInput(magnets: seq<string>)
 {
     forall i :: 0 <= i < |magnets| ==> magnets[i] in {"01", "10"}

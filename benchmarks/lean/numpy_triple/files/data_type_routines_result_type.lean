@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.result_type",
-  "category": "Type Casting and Promotion",
-  "description": "Returns the type that results from applying the NumPy type promotion rules to the arguments",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.result_type.html",
-  "doc": "Returns the type that results from applying NumPy type promotion rules to the arguments.\n\nType promotion in NumPy works similarly to the rules in languages like C++, with some differences. When both scalars and arrays are used, the array's type takes precedence and the scalar's actual value is considered.\n\nParameters\n----------\n*arrays_and_dtypes : list of arrays and dtypes\n    The operands of some operation whose result type is needed.\n\nReturns\n-------\nout : dtype\n    The result type.\n\nExamples\n--------\n>>> np.result_type(3, np.arange(7, dtype='i1'))\ndtype('int8')\n>>> np.result_type('i4', 'c8')\ndtype('complex128')\n>>> np.result_type(3.0, -2)\ndtype('float64')",
-}
--/
-
-/-  Returns the data type that results from applying NumPy type promotion rules to the arguments -/
-
-/-  Specification: result_type returns the promoted type according to NumPy's hierarchy -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

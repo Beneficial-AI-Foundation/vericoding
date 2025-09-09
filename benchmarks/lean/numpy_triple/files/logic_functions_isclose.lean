@@ -1,9 +1,3 @@
-/-  Returns a boolean array where two arrays are element-wise equal within a tolerance.
-    For finite values, isclose uses the equation: absolute(a - b) <= (atol + rtol * absolute(b))
-    where `b` is treated as the reference value. -/
-
-/-  Specification: isclose returns a boolean array indicating element-wise closeness within tolerance -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

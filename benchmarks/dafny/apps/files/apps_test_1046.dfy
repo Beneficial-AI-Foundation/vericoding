@@ -1,10 +1,3 @@
-/*
-Given n secretaries, each assigned either a positive session ID if on a call or 0 if not talking.
-When two people call each other, they share the same unique session ID. Each call connects exactly 
-two people (no conferences). Determine how many pairs of secretaries are talking to each other, 
-or return -1 if the situation is impossible (any session ID appears more than twice).
-*/
-
 function CountOccurrences(s: seq<int>, x: int): int
   ensures CountOccurrences(s, x) >= 0
 {

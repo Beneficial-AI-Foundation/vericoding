@@ -1,16 +1,3 @@
-/- 
-function_signature: "def monotonic(numbers: List[int]) -> Bool"
-docstring: |
-    Return True if list elements are monotonically increasing or decreasing.
-test_cases:
-  - input: [1, 2, 4, 20]
-    expected_output: True
-  - input: [1, 20, 4, 10]
-    expected_output: False
-  - input: [4, 1, 0, -10]
-    expected_output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

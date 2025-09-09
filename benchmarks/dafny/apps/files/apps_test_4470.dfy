@@ -1,8 +1,3 @@
-/*
-Given an integer n, find the minimum number of operations to transform it to 1, or return -1 if impossible.
-Allowed operations: 1) n → n/2 if n divisible by 2, 2) n → 2n/3 if n divisible by 3, 3) n → 4n/5 if n divisible by 5.
-*/
-
 predicate ValidInput(n: nat)
 {
     n > 0

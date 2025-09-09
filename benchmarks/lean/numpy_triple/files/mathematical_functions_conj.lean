@@ -1,22 +1,3 @@
-/- 
-{
-  "name": "numpy.conj",
-  "description": "Return the complex conjugate, element-wise",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.conj.html",
-  "doc": "Return the complex conjugate, element-wise.\n\nSignature: numpy.conj(x, /, out=None, *, where=True, casting='same_kind', order='K', dtype=None, subok=True)\n\nParameters:\n  x: array_like - Input value\n  out: ndarray, None, or tuple of ndarray and None, optional - A location into which the result is stored\n\nReturns:\n  y: ndarray - Complex conjugate of x, with same dtype as x",
-}
--/
-
-/-  Return the complex conjugate of a vector of complex numbers, element-wise -/
-
-/-  Specification: conj computes the complex conjugate of each element with the following properties:
-    1. Basic definition: conj(a + bi) = a - bi for complex numbers
-    2. Real preservation: For purely real numbers, conj(x) = x
-    3. Involution property: conj(conj(x)) = x (double conjugation returns original)
-    4. Magnitude preservation: |conj(x)| = |x| (conjugate preserves magnitude)
-    5. Distributive over addition: conj(x + y) = conj(x) + conj(y)
-    6. Distributive over multiplication: conj(x * y) = conj(x) * conj(y) -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

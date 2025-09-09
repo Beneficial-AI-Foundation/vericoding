@@ -1,29 +1,3 @@
-/-  numpy.strings.ljust: Return an array with the elements left-justified in a string of length width.
-
-    Left-justifies each string in the input array by padding it with the specified
-    fill character (default is space) to reach the specified width. If the original
-    string is longer than or equal to the width, it remains unchanged.
-
-    Parameters:
-    - a: Input array of strings
-    - width: Target width for each string
-    - fillchar: Character to use for padding (must be exactly one character)
-
-    Returns:
-    - Array where each string is left-justified to the specified width
--/
-
-/-  Specification: ljust returns a vector where each string is left-justified
-    to the specified width using the given fill character.
-
-    Mathematical Properties:
-    - Length preservation: Result length is max(original_length, width)
-    - Identity: Strings already >= width remain unchanged
-    - Left-justification: Original content preserved as prefix, padding on right
-    - Minimality: No unnecessary padding beyond required width
-    - Fillchar constraint: Padding uses specified fill character
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

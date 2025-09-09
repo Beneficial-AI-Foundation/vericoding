@@ -1,22 +1,3 @@
-/-  numpy.linalg.matrix_transpose: Transposes a matrix (or a stack of matrices).
-
-    For a 2D matrix, this operation swaps the rows and columns.
-    The element at position (i, j) in the input matrix becomes the element
-    at position (j, i) in the output matrix.
-
-    Input: A matrix with rows × cols dimensions
-    Output: A matrix with cols × rows dimensions (transposed)
--/
-
-/-  Specification: numpy.linalg.matrix_transpose returns the transpose of the input matrix.
-
-    For a matrix x with dimensions rows × cols, the transpose x_T has dimensions cols × rows.
-    The element at position (i, j) in the original matrix x becomes the element at position (j, i) in x_T.
-
-    Precondition: True (no special preconditions for matrix transpose)
-    Postcondition: For all valid indices i and j, x_T[j][i] = x[i][j]
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

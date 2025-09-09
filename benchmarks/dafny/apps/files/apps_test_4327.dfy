@@ -1,8 +1,3 @@
-/*
-Given A whole apples and P apple pieces, determine the maximum number of apple pies that can be made.
-Each whole apple can be cut into 3 pieces, and each apple pie requires 2 pieces to make.
-*/
-
 predicate ValidInput(A: int, P: int)
 {
     0 <= A <= 100 && 0 <= P <= 100

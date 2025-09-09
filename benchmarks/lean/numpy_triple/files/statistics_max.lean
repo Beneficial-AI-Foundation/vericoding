@@ -1,32 +1,3 @@
-/- 
-{
-  "name": "numpy.max",
-  "category": "Order statistics",
-  "description": "Alias for numpy.amax - Return the maximum of an array or maximum along an axis",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.max.html",
-  "doc": "numpy.max is an alias for numpy.amax. See numpy.amax for full documentation.",
-}
--/
-
-/-  Returns the maximum value of all elements in a non-empty vector.
-    This is an alias for numpy.amax that returns the maximum value among all elements in the array.
-
-    Mathematical Properties:
-    - Returns an element that exists in the vector
-    - No element in the vector is greater than the returned value
-    - For constant vectors, returns the constant value
-    - Handles non-empty vectors only (n + 1 elements) -/
-
-/-  Specification: max returns the maximum value in the vector.
-    This specification delegates to amax_spec since max is an alias for amax.
-
-    Mathematical properties:
-    1. The result is an element that exists in the vector
-    2. No element in the vector is greater than the result
-    3. The result is unique (first occurrence if there are duplicates)
-    4. For constant vectors, max equals the constant value
-    5. Sanity check: the maximum exists in the vector -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

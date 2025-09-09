@@ -1,9 +1,3 @@
-/*
-Given an integer a, count the number of times the digit '1' appears in its octal (base-8) representation.
-Input: A single integer a where 0 ≤ a ≤ 1,000,000
-Output: A single integer representing the count of digit '1' in the octal representation of a
-*/
-
 function CountOnesInOctal(a: int): int
     requires a >= 0
 {

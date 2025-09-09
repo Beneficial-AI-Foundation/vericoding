@@ -1,8 +1,3 @@
-/*
-Given an integer x where 0 ≤ x ≤ 1 represented as a string, output the logical NOT of x.
-If x = 0, output 1. If x = 1, output 0.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && 

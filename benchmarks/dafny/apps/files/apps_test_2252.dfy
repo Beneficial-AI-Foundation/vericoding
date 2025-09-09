@@ -1,10 +1,3 @@
-/*
-Given a permutation P of n pages and m queries, determine for each query whether a specific element 
-remains in the same position after sorting a subsegment in ascending order. For each query with 
-parameters (l, r, x): sort the subsegment P[l...r] in ascending order, check if the element at 
-position x remains unchanged. Each query is independent (permutation resets after each query).
-*/
-
 predicate ValidInputFormat(input: string)
 {
     var lines := SplitLines(input);

@@ -1,8 +1,3 @@
-/*
-Given two positive integers A and B, find the maximum number of positive common divisors 
-that can be chosen such that any two chosen divisors are coprime (share no common factors other than 1).
-*/
-
 predicate ValidInput(A: int, B: int)
 {
   A > 0 && B > 0

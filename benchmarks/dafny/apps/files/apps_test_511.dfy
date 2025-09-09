@@ -1,9 +1,3 @@
-/*
-Given a function f(a, b) defined as f(a, 0) = 0 and f(a, b) = 1 + f(a, b - gcd(a, b)) for b > 0,
-calculate f(x, y) for given integers x and y. The input is a string containing two integers
-separated by a space, and the output is a string containing the result.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 &&

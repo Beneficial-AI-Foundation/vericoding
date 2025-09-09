@@ -1,9 +1,3 @@
-/*
-Given n candies with weights, determine how many candies can be given to dad
-such that when the remaining n-1 candies are eaten in numerical order (one per day),
-the sum of weights eaten on even-numbered days equals the sum on odd-numbered days.
-*/
-
 predicate ValidInput(n: int, arr: seq<int>)
 {
   n >= 1 && |arr| == n && forall i :: 0 <= i < n ==> arr[i] >= 1

@@ -1,7 +1,3 @@
-/*
-Given a cost N yen, calculate the change received when paying with the minimum number of 1000-yen bills.
-*/
-
 predicate ValidInput(n: int)
 {
     1 <= n <= 10000

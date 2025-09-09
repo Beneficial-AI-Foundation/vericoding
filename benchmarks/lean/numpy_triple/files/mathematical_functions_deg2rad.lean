@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.deg2rad",
-  "description": "Convert angles from degrees to radians",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.deg2rad.html",
-  "doc": "Convert angles from degrees to radians.\n\nEquivalent to numpy.radians.",
-}
--/
-
-/-  Convert angles from degrees to radians by multiplying by π/180.
-    This function performs the standard mathematical conversion from degrees to radians
-    where π radians = 180 degrees. -/
-
-/-  Specification: deg2rad converts each degree value to radians using the formula radians = degrees * π/180 -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,9 +1,15 @@
 vc-description: |-
-
-vc-preamble: |-
   //Algorithm 1: From left to right return the first
   
   //Algorithm 2: From right to left return the last
+  
+  //Algorithm: from left to right
+  
+  //Algorithm : from left to right
+  
+  //Algorithm : from right to left
+
+vc-preamble: |-
 
 vc-helpers: |-
 
@@ -13,7 +19,6 @@ vc-spec: |-
   ensures 0<=i<v.Length 
   ensures forall k:: 0<=k<v.Length ==> v[i]>=v[k]
   ensures forall l:: 0<=l<i ==> v[i]>v[l]
-  //Algorithm: from left to right
 
 vc-code: |-
   {
@@ -21,6 +26,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  //Algorithm : from left to right
-  //Algorithm : from right to left
 

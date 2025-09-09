@@ -1,9 +1,3 @@
-/*
-Given n opponents and d days, determine the maximum number of consecutive days where Arya wins fights.
-Arya wins on a day if at least one opponent is absent. Arya loses on a day if all opponents are present.
-Each day's attendance is given as a binary string of length n, where '1' means present and '0' means absent.
-*/
-
 predicate InputWellFormed(input: string)
 {
     var lines := SplitLines(input);

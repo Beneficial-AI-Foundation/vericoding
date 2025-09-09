@@ -1,16 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 function that returns the maximum element from a non-empty list of natural numbers.
-
------Input-----
-The input consists of:
-lst: a non-empty list of natural numbers.
-
------Output-----
-The output is:
-A natural number representing the largest element in the list.
--/
-
 @[reducible, simp]
 def maxOfList_precond (lst : List Nat) : Prop :=
   lst.length > 0

@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.quantile",
-  "category": "Order statistics",
-  "description": "Compute the q-th quantile of the data along the specified axis",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.quantile.html",
-  "doc": "numpy.quantile(a, q, axis=None, out=None, overwrite_input=False, method='linear', keepdims=False, *, weights=None, interpolation=None)\n\nCompute the q-th quantile of the data along the specified axis.\n\nParameters\n----------\na : array_like of real numbers\n    Input array or object that can be converted to an array.\nq : array_like of float\n    Quantile or sequence of quantiles to compute, which must be between 0 and 1 inclusive.\naxis : {int, tuple of int, None}, optional\n    Axis or axes along which the quantiles are computed.\nout : ndarray, optional\n    Alternative output array in which to place the result.\noverwrite_input : bool, optional\n    If True, then allow the input array a to be modified by intermediate calculations.\nmethod : str, optional\n    This parameter specifies the method to use for estimating the quantile.\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left in the result as dimensions with size one.\nweights : array_like, optional\n    An array of weights associated with the values in a.\ninterpolation : str, optional\n    Deprecated name for the method keyword argument.\n\nReturns\n-------\nquantile : scalar or ndarray\n    If q is a single quantile and axis=None, then the result is a scalar.",
-}
--/
-
-/-  Compute the q-th quantile of the data in a vector -/
-
-/-  Specification: quantile returns a value that has the property that 
-    approximately q proportion of the data is less than or equal to it -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

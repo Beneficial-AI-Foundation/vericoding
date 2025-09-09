@@ -1,8 +1,3 @@
-/*
-Given an integer a and a string s of lowercase English letters, 
-output s if a >= 3200, otherwise output "red".
-*/
-
 predicate ValidInput(input: string)
 {
   |input| > 0 &&

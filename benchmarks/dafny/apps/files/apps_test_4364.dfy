@@ -1,9 +1,3 @@
-/*
-Given a 4-digit string, determine which date format(s) it represents:
-YYMM (year-month), MMYY (month-year), AMBIGUOUS (both valid), or NA (neither valid).
-Valid months are 01-12, years can be any two digits 00-99.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| >= 4 && forall i :: 0 <= i < 4 ==> '0' <= s[i] <= '9'

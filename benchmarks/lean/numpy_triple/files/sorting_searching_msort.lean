@@ -1,19 +1,3 @@
-/- 
-{
-  "name": "numpy.msort",
-  "category": "Sorting",
-  "description": "Return a copy of an array sorted along the first axis",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.msort.html",
-  "doc": "Return a copy of an array sorted along the first axis.\n\n.. deprecated:: 1.24.0\n    msort is deprecated, use \`\`np.sort(a, axis=0)\`\` instead.\n\nParameters\n----------\na : array_like\n    Array to be sorted.\n\nReturns\n-------\nsorted_array : ndarray\n    Array of the same type and shape as \`a\`.\n\nSee Also\n--------\nsort\n\nNotes\n-----\n\`\`np.msort(a)\`\` is equivalent to \`\`np.sort(a, axis=0)\`\`.",
-}
--/
-
-/-  Return a copy of an array sorted along the first axis (ascending order).
-    This is equivalent to np.sort(a, axis=0) in NumPy. -/
-
-/-  Specification: msort returns a sorted copy of the input array in ascending order.
-    The result is a permutation of the input array. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

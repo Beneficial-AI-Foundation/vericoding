@@ -1,21 +1,3 @@
-/- 
-{
-  "name": "numpy.PZERO",
-  "category": "Special float values (deprecated)",
-  "description": "IEEE 754 floating point representation of positive zero",
-  "url": "https://numpy.org/doc/stable/reference/constants.html",
-  "doc": "IEEE 754 floating point representation of positive zero.\n\nDEPRECATED: Removed from main namespace in NumPy 2.0. Use 0.0 instead.",
-}
--/
-
-/-  IEEE 754 floating point representation of positive zero -/
-
-/-  Specification: PZERO represents IEEE 754 positive zero with the following properties:
-    1. It equals the standard zero value
-    2. It behaves as the additive identity
-    3. It behaves as expected in multiplication and division
-    4. It has special IEEE 754 properties (e.g., 1.0 / PZERO = +∞) -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

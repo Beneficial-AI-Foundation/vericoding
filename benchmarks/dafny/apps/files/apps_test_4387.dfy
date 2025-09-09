@@ -1,9 +1,3 @@
-/*
-Given a contestant's rating R, determine which contest they are eligible for:
-ABC for ratings less than 1200, ARC for ratings from 1200 to less than 2800,
-and AGC for ratings 2800 and above.
-*/
-
 predicate ValidRating(R: int) {
     0 <= R <= 4208
 }

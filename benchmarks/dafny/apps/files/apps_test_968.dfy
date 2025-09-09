@@ -1,9 +1,3 @@
-/*
-Given n people, each with a first name and last name, determine if each person can choose 
-either their first or last name as a handle such that when the handles are sorted 
-lexicographically, they appear in the exact order specified by permutation p.
-*/
-
 predicate ValidInput(input: string)
   requires |input| > 0
 {

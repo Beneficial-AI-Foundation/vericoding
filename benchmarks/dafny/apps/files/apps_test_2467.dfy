@@ -1,8 +1,3 @@
-/*
-Find all unique combinations of exactly k distinct numbers from the range [1, 9] that sum to n.
-Each number must be from 1 to 9, used at most once per combination, with no duplicate combinations.
-*/
-
 function sum(s: seq<int>): int
 {
     if |s| == 0 then 0

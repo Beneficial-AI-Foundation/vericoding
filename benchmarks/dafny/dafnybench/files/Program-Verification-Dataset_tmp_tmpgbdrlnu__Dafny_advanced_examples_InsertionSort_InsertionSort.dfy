@@ -1,7 +1,4 @@
-/*
-*/
-
-predicate sorted (a:array<int>, start:int, end:int) // all "before" end are sorted      
+predicate sorted (a:array<int>, start:int, end:int)
  requires a!=null       
  requires 0<=start<=end<=a.Length       
  reads a       

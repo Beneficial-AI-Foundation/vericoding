@@ -1,30 +1,3 @@
-/- 
-{
-  "name": "numpy.set_printoptions",
-  "category": "String formatting",
-  "description": "Set printing options",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.set_printoptions.html",
-  "doc": "Set printing options",
-}
--/
-
-/-  numpy.set_printoptions: Set printing options for NumPy arrays
-
-    Sets the global printing options that control how floating point numbers,
-    arrays and other NumPy objects are displayed. This function modifies the
-    global state of NumPy's print formatting system.
-
-    All parameters are optional and only modify the corresponding option if
-    provided. Options not specified retain their current values.
--/
-
-/-  Specification: set_printoptions correctly updates the global print options
-    according to the provided parameters while validating input constraints.
-
-    Precondition: All optional parameters must satisfy their validation constraints
-    Postcondition: The global print state is updated with the provided options
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

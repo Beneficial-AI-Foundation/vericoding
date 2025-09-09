@@ -1,13 +1,7 @@
-/*
-*/
-
 function getSize(i: int, j:int) : int
 {
     j - i + 1    
 }
-
-// For a given integer array, let's find the longest subesquence of 0s.
-// sz: size, pos: position.   a[pos..(pos+sz)] will be all zeros
 
 // <vc-helpers>
 // </vc-helpers>

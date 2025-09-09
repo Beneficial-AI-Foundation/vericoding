@@ -1,9 +1,3 @@
-/*
-Given a target sum n and a range of coin denominations [l, r], determine if it's possible 
-to make exactly the sum n using coins with denominations between l and r (inclusive).
-You have unlimited coins of each valid denomination.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0

@@ -1,9 +1,3 @@
-/*
-Given n monsters with health points, player and opponent take turns attacking until each monster dies.
-Player attacks first with damage a, opponent with damage b. Player gets 1 point for killing a monster.
-Player can skip opponent's turn at most k times total. Find maximum points achievable.
-*/
-
 predicate ValidInput(n: int, a: int, b: int, k: int, H: seq<int>)
 {
     n > 0 && a > 0 && b > 0 && k >= 0 && |H| == n && 

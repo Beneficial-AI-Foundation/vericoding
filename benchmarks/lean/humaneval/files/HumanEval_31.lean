@@ -1,24 +1,3 @@
-/- 
-function_signature: "def is_prime(n)"
-docstring: |
-    Return true if a given number is prime, and false otherwise.
-test_cases:
-  - input: 6
-    output: False
-  - input: 101
-    output: True
-  - input: 11
-    output: True
-  - input: 13441
-    output: True
-  - input: 61
-    output: True
-  - input: 4
-    output: False
-  - input: 1
-    output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

@@ -3,14 +3,16 @@ vc-description: |-
   Given a positive integer N, return the total sum of its digits in binary.
 
 vc-preamble: |-
+  function popcount(n: nat): nat {
+    if n == 0 then 0 else n % 2 + popcount(n / 2)
+  }
 
 vc-helpers: |-
 
 vc-spec: |-
   method solve(n: nat) returns (r: nat)
-    // post-conditions-start
+  
     ensures r == popcount(n)
-    // post-conditions-end
 
 vc-code: |-
   {
@@ -18,8 +20,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  function popcount(n: nat): nat {
-    if n == 0 then 0 else n % 2 + popcount(n / 2)
-  }
-  // pure-end
 

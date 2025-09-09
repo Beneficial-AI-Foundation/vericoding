@@ -1,6 +1,3 @@
-/*
-*/
-
 function sumTo( a:array<int>, start:int, end:int ) : int
     requires a != null;
     requires 0 <= start && start <= end && end <= a.Length;

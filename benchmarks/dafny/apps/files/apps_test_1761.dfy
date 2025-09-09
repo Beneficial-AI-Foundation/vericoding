@@ -1,10 +1,3 @@
-/*
-Given n words forming a message, determine if a received text could have been encoded by:
-1. Creating coded string with "<3" before each word and after last word
-2. Inserting additional characters anywhere in the coded string
-Check if received message contains expected coded string as subsequence.
-*/
-
 predicate ValidInput(input: seq<string>)
 {
     |input| >= 2 &&

@@ -1,9 +1,3 @@
-/*
-Given a password string, determine if it meets complexity requirements.
-A password is complex if it has at least 5 characters, contains at least
-one uppercase letter, one lowercase letter, and one digit.
-*/
-
 predicate ContainsLowercase(s: string)
 {
     exists i :: 0 <= i < |s| && 'a' <= s[i] <= 'z'

@@ -1,10 +1,3 @@
-/*
-Given two maps: First map N × M grid, Second map M × N grid.
-Find positions i and j such that the M × M section from the first map 
-starting at row i equals the M × M section from the second map starting at column j.
-Output the 1-indexed positions i and j.
-*/
-
 predicate validInputFormat(input: string)
 {
     var lines := parseLinesFunc(input);

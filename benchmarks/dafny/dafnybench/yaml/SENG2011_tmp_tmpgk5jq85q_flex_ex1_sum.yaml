@@ -1,7 +1,9 @@
 vc-description: |-
+  // sums from index 0 -> i - 1
+  
+  // returns sum of array
 
 vc-preamble: |-
-  // sums from index 0 -> i - 1
   function sumcheck(s: array<int>, i: int): int
   requires 0 <= i <= s.Length
   reads s
@@ -9,8 +11,6 @@ vc-preamble: |-
       if i == 0 then 0
       else s[i - 1] + sumcheck(s, i - 1)
   }
-  
-  // returns sum of array
 
 vc-helpers: |-
 

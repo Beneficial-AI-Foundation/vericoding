@@ -1,10 +1,3 @@
-/*
-Given a rectangular piece of paper of dimensions a × b and n rectangular seals with dimensions x_i × y_i,
-find the maximum total area that can be covered by placing exactly two different seals on the paper.
-Each seal can be rotated 90 degrees, and the impressions must not overlap (but can touch).
-If no two seals can fit on the paper, return 0.
-*/
-
 function checkPairFunc(seal1: (int, int), seal2: (int, int), a: int, b: int): int
     requires a >= 1 && b >= 1
     requires seal1.0 >= 1 && seal1.1 >= 1

@@ -1,8 +1,3 @@
-/*
-Given initial counts of yellow and blue crystals, determine the minimum additional crystals needed to produce a specified number of colored balls.
-Yellow ball requires 2 yellow crystals, green ball requires 1 yellow + 1 blue crystal, blue ball requires 3 blue crystals.
-*/
-
 function max(a: int, b: int): int
 {
     if a >= b then a else b

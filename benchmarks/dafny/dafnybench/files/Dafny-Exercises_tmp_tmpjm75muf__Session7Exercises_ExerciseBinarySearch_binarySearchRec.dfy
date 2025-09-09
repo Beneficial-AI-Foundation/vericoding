@@ -1,11 +1,6 @@
-/*
-*/
-
 predicate sorted(s : seq<int>) {
     forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
 }
-
-//Recursive binary search
 
 // <vc-helpers>
 // </vc-helpers>
@@ -13,7 +8,7 @@ predicate sorted(s : seq<int>) {
 // <vc-spec>
 method binarySearchRec(v:array<int>, elem:int, c:int, f:int) returns (p:int)
  requires sorted(v[0..v.Length])
- requires 0<=c<=f+1<=v.Length//0<=c<=v.Length && -1<=f<v.Length && c<=f+1
+ requires 0<=c<=f+1<=v.Length
  requires forall k::0<=k<c ==> v[k]<=elem
  requires forall k::f<k<v.Length ==> v[k]>elem
  decreases f-c

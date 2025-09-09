@@ -1,21 +1,3 @@
-/-  Generate a HermiteE series with given roots.
-
-    Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ₋₁)
-    in HermiteE form, where rᵢ are the roots specified in the input vector.
-
-    The output coefficients c satisfy: p(x) = c₀ + c₁ * He₁(x) + ... + cₙ * Heₙ(x)
-    where Heₙ(x) is the n-th probabilist's Hermite polynomial (HermiteE).
-
-    This function converts from the standard polynomial representation with given roots
-    to the HermiteE polynomial basis representation. -/
-
-/-  Specification: hermefromroots generates HermiteE coefficients such that:
-    1. The output has exactly n+1 coefficients where n is the number of roots
-    2. The polynomial represented by these coefficients has the given roots
-    3. When evaluated at any root rᵢ using HermiteE basis, the result is zero
-    4. The highest degree coefficient is non-zero (ensuring correct degree)
-    5. The polynomial satisfies the fundamental property p(x) = (x - r₀) * ... * (x - rₙ₋₁) -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

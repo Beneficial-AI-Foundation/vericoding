@@ -1,28 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.str_len",
-  "category": "String information",
-  "description": "Returns the length of each element",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.str_len.html",
-  "doc": "Returns the length of each element.\n\nFor byte strings, this is the number of bytes. For Unicode strings, this is the number of Unicode code points.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n\nReturns\n-------\nout : ndarray\n    Output array of ints",
-}
--/
-
-/-  Returns the length of each string element in the vector.
-    For Unicode strings, this counts the number of Unicode code points. -/
-
-/-  Specification: str_len returns the length (number of Unicode code points) of each string element.
-
-    Preconditions: None (str_len is defined for all strings)
-
-    Postconditions:
-    - The result vector has the same size as the input vector
-    - Each element in the result corresponds to the length of the corresponding input string
-    - Length is always non-negative (natural number)
-    - Empty strings have length 0
-    - Length is measured in Unicode code points for Unicode strings
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

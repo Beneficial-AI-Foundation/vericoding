@@ -1,18 +1,3 @@
-/- 
-function_signature: "def is_palindrome(string: str) -> Bool"
-docstring: |
-    Checks if given string is a palindrome
-test_cases:
-  - input: ""
-    expected_output: True
-  - input: "aba"
-    expected_output: True
-  - input: "aaaaa"
-    expected_output: "True"
-  - input: "zbcd"
-    expected_output: "False"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

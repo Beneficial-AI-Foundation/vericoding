@@ -1,19 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.polyutils.getdomain",
-  "category": "Polynomial utilities",
-  "description": "Return a domain suitable for given abscissae.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polyutils.getdomain.html",
-  "doc": "Return a domain suitable for given abscissae.\n\n    Find a domain suitable for a polynomial or Chebyshev series\n    defined at the values supplied.\n\n    Parameters\n    ----------\n    x : array_like\n        1-d array of abscissae whose domain will be determined.\n\n    Returns\n    -------\n    domain : ndarray\n        1-d array containing two values.  If the inputs are complex, then\n        the two returned points are the lower left and upper right corners\n        of the smallest rectangle (aligned with the axes) in the complex\n        plane containing the points \`x\`. If the inputs are real, then the\n        two points are the ends of the smallest interval containing the\n        points \`x\`.\n\n    See Also\n    --------\n    mapparms, mapdomain\n\n    Examples\n    --------\n    >>> import numpy as np\n    >>> from numpy.polynomial import polyutils as pu\n    >>> points = np.arange(4)**2 - 5; points\n    array([-5, -4, -1,  4])\n    >>> pu.getdomain(points)\n    array([-5.,  4.])\n    >>> c = np.exp(complex(0,1)*np.pi*np.arange(12)/6) # unit circle\n    >>> pu.getdomain(c)\n    array([-1.-1.j,  1.+1.j])",
-}
--/
-
-/-  Return a domain suitable for given abscissae (real numbers).
-    For real inputs, returns the minimum and maximum values as a 2-element vector.
-    This represents the smallest interval containing all points in the input vector. -/
-
-/-  Specification: getdomain returns the smallest interval containing all input points -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

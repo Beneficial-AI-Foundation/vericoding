@@ -1,9 +1,3 @@
-/*
-Given a playlist of n songs where song i has duration t_i minutes and is played c_i consecutive times.
-The playlist plays songs in order: song 1 (c_1 times), then song 2 (c_2 times), etc.
-For m given time moments, determine which song number is playing at each moment.
-*/
-
 function sum_playlist_duration(songs: seq<(int, int)>, n: int): int
   requires n >= 0
   requires |songs| >= n

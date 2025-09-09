@@ -1,10 +1,3 @@
-/*
-Given n books numbered 1 to n and a library with capacity k, over n consecutive days
-a person requests book a_i on day i. The library starts empty and each book costs 1 CHF.
-When at capacity, one existing book must be removed before adding a new one.
-Find the minimum cost to satisfy all requests using optimal cache replacement strategy.
-*/
-
 predicate ValidInput(n: int, k: int, requests: seq<int>)
 {
     n >= 1 && k >= 1 && |requests| == n &&

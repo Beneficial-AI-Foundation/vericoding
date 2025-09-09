@@ -1,8 +1,3 @@
-/*
-Given a string of n lowercase Latin letters and k available letters on a broken keyboard,
-count how many substrings of the string can be typed using only the available letters.
-*/
-
 predicate ValidInput(n: nat, k: nat, s: string, available: seq<char>)
 {
     n == |s| &&

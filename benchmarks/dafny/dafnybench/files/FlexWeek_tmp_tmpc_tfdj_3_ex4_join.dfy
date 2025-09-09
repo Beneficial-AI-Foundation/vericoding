@@ -1,6 +1,3 @@
-/*
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -10,8 +7,6 @@ ensures a[..] + b[..] == c[..]
 ensures multiset(a[..] + b[..]) == multiset(c[..])
 ensures multiset(a[..]) + multiset(b[..]) == multiset(c[..])
 ensures a.Length+b.Length == c.Length
-
-// Forall
 
 ensures forall i :: 0<=i<a.Length ==> c[i] == a[i]
 ensures forall i_2,j_2::

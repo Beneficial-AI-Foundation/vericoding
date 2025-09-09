@@ -1,9 +1,3 @@
-/*
-Given a 3×3 grid of lowercase English letters, extract and concatenate 
-the characters on the main diagonal (from top-left to bottom-right) 
-to form a string of length 3.
-*/
-
 predicate ValidInput(lines: seq<string>)
 {
     |lines| == 3 && forall i :: 0 <= i < 3 ==> |lines[i]| == 3

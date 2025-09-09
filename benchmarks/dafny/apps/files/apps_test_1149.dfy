@@ -1,10 +1,3 @@
-/*
-Given n levels in a game, determine if two players can together pass all levels.
-Player X can pass a specific set of levels, and Player Y can pass a specific set of levels.
-Check if the union of their passable levels covers all levels from 1 to n.
-Output "I become the guy." if they can pass all levels together, otherwise "Oh, my keyboard!".
-*/
-
 predicate ValidInput(stdin_input: string)
 {
     var lines := split_lines(stdin_input);

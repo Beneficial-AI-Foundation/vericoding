@@ -1,10 +1,3 @@
-/*
-Given an (n-1) × (m-1) grid of junctions formed by n horizontal streets and m vertical streets,
-where each street is one-way, determine if it's possible to reach any junction from any other junction.
-Input: n, m (dimensions), string of horizontal directions ('<' or '>'), string of vertical directions ('^' or 'v').
-Output: "YES" if fully connected, "NO" otherwise.
-*/
-
 predicate ValidInput(n: int, m: int, horizontal: seq<char>, vertical: seq<char>)
 {
     n >= 2 && n <= 20 && m >= 2 && m <= 20 &&

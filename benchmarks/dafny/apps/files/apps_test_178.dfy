@@ -1,10 +1,3 @@
-/*
-Given a string of n digits where n is odd and n >= 13, two players (Vasya first, then Petya) 
-take turns removing one character at a time until exactly 11 characters remain. 
-Vasya wins if the final 11-character string starts with digit 8, otherwise Petya wins.
-Determine if Vasya has a winning strategy.
-*/
-
 predicate ValidInput(n: int, s: string)
 {
     n >= 13 && n % 2 == 1 && |s| == n

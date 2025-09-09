@@ -1,8 +1,3 @@
-/*
-*/
-
-// see pdf 'ex6 & 7 documentation' for excercise question
-
 function bullspec(s:seq<nat>, u:seq<nat>): nat
 requires 0 <= |u| == |s| && nomultiples(u)
 {reccbull(s, u, 0)}

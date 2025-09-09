@@ -5,6 +5,8 @@ vc-description: |-
   - p^24 × q^2 (where p, q are distinct primes)  
   - p^14 × q^4 (where p, q are distinct primes)
   - p^4 × q^4 × r^2 (where p, q, r are distinct primes)
+  
+  // Abstract specification - represents the count of divisors of N! that have exactly 75 divisors
 
 vc-preamble: |-
   predicate ValidInput(N: int)
@@ -15,7 +17,7 @@ vc-preamble: |-
   function countDivisorsWith75Factors(N: int): int
     requires ValidInput(N)
   {
-    0 // Abstract specification - represents the count of divisors of N! that have exactly 75 divisors
+    0
   }
   
   predicate ValidOutput(result: int)

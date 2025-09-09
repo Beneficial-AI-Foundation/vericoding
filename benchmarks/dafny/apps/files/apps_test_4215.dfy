@@ -1,9 +1,3 @@
-/*
-Given a window of width A and two curtains each of horizontal length B,
-determine the minimum total horizontal length of the uncovered part when 
-the curtains are optimally positioned to minimize uncovered area.
-*/
-
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= 100 && 1 <= b <= 100

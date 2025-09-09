@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate sorted(s : seq<int>) {
     forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
 }
@@ -19,5 +16,3 @@ method binarySearch(v:array<int>, elem:int) returns (p:int)
   assume {:axiom} false;
 }
 // </vc-code>
-
-//Recursive binary search

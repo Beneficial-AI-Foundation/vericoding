@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate IsLowerCase(c : char)
 {
     97 <= c as int <= 122

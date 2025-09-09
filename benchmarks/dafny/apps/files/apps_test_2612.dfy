@@ -1,21 +1,14 @@
-/*
-Find the maximum number of models that can be selected to form a "beautiful arrangement."
-A beautiful arrangement is a subsequence of models arranged in increasing order of their indices,
-where for any two adjacent models with indices i and j (i < j), j must be divisible by i
-and the size of model i must be strictly less than the size of model j.
-*/
-
 predicate is_valid_beautiful_arrangement(arrangement: seq<int>, sizes: seq<int>)
     requires forall i :: 0 <= i < |arrangement| ==> 1 <= arrangement[i] <= |sizes|
 {
     |arrangement| >= 1 &&
-    // All indices are distinct
+
     (forall i, j :: 0 <= i < j < |arrangement| ==> arrangement[i] != arrangement[j]) &&
-    // Indices are in increasing order
+
     (forall i :: 0 <= i < |arrangement| - 1 ==> arrangement[i] < arrangement[i + 1]) &&
-    // Adjacent elements satisfy divisibility constraint
+
     (forall i :: 0 <= i < |arrangement| - 1 ==> arrangement[i + 1] % arrangement[i] == 0) &&
-    // Adjacent elements satisfy size constraint
+
     (forall i :: 0 <= i < |arrangement| - 1 ==> sizes[arrangement[i] - 1] < sizes[arrangement[i + 1] - 1])
 }
 

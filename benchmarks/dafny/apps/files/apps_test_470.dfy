@@ -1,9 +1,3 @@
-/*
-Given 5 cards with positive integers, find the minimum sum of remaining cards 
-after optionally discarding exactly 2 or 3 cards that have the same number 
-(at most one such discard operation allowed).
-*/
-
 predicate ValidInput(cards: seq<int>)
 {
     |cards| == 5 && forall i :: 0 <= i < |cards| ==> cards[i] > 0

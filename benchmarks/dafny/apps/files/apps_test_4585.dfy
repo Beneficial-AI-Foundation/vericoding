@@ -1,9 +1,3 @@
-/*
-Find the minimum time needed for a kangaroo to reach position X on a number line.
-The kangaroo starts at position 0 at time 0. At each time step i (i = 1, 2, 3, ...),
-the kangaroo can stay at current position or jump exactly i units left or right.
-*/
-
 predicate ValidInput(x: int)
 {
   x >= 1

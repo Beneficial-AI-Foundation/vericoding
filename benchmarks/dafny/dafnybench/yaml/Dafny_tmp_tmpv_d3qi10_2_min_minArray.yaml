@@ -1,4 +1,5 @@
 vc-description: |-
+  // Return a minimum of a.
 
 vc-preamble: |-
   function min(a: int, b: int): int
@@ -14,8 +15,6 @@ vc-preamble: |-
   {
       if a < b then a else b
   }
-  
-  // Return a minimum of a.
 
 vc-helpers: |-
 

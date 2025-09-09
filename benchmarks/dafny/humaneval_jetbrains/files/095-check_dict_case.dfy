@@ -1,8 +1,3 @@
-/*
-function_signature: def check_dict_case(s : dict[str, str]) -> bool
-Given a dictionary, return True if all keys are strings in lower case or all keys are strings in upper case, else return False. The function should return False is the given dictionary is empty. Note(George): Modified the problem to use strings only for both keys and values.
-*/
-
 function IsLowerCase(s: string) : bool
 {
   forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
@@ -18,11 +13,10 @@ type DictCase = map<string, string>
 
 // <vc-spec>
 method CheckDictCase(dict: DictCase) returns (result: bool)
-  // post-conditions-start
+
   ensures dict == map[] ==> !result
   ensures result ==> (forall k :: k in dict ==> IsLowerCase(k)) || (forall k :: k in dict ==> IsUpperCase(k))
   ensures !result ==> dict == map[] || ((exists k :: k in dict && !IsLowerCase(k)) && (exists k :: k in dict && !IsUpperCase(k)))
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

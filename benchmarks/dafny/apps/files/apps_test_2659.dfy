@@ -1,9 +1,3 @@
-/*
-Given S(n) as the sum of digits in decimal notation of integer n, an integer n is called a "Snuke number" 
-if for all positive integers m > n, the inequality n/S(n) ≤ m/S(m) holds.
-Given an integer K, find the K smallest Snuke numbers.
-*/
-
 function SumOfDigits(n: int): int
   requires n >= 0
 {

@@ -1,9 +1,3 @@
-/*
-Given a string input containing two lines: an integer n and a string s of length n with only 'A' and 'D' characters,
-determine which character appears more frequently. Return "Anton" if 'A' appears more, "Danik" if 'D' appears more,
-or "Friendship" if they appear equally.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && exists newlinePos :: 0 <= newlinePos < |input| && input[newlinePos] == '\n'

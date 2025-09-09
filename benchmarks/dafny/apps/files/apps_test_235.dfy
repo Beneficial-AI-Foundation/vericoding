@@ -1,9 +1,3 @@
-/*
-Given n candies, find the minimum k such that Vasya eats at least half of the original candies.
-Daily process: Vasya eats k candies in morning, Petya eats floor(remaining/10) in evening.
-Continue until no candies remain.
-*/
-
 predicate ValidInput(n: int)
 {
     n >= 1

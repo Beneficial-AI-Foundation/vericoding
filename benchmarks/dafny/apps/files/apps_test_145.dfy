@@ -1,9 +1,3 @@
-/*
-Given a username string containing only lowercase English letters, determine the user's gender
-based on the number of distinct characters: odd count means male, even count means female.
-Output "IGNORE HIM!" for male, "CHAT WITH HER!" for female.
-*/
-
 function CountDistinct(s: string): int
 {
     |set c | 0 <= c < |s| :: s[c]|

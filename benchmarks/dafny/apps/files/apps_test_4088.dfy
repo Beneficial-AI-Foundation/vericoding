@@ -1,10 +1,3 @@
-/*
-Given a string s of lowercase letters and an array b, find a string t such that:
-1. t is formed by removing some characters from s and rearranging the remaining characters
-2. For each position i in t, b[i] equals the sum of distances |i-j| to all positions j where t[j] > t[i] lexicographically
-Process multiple test cases from stdin input and return formatted results
-*/
-
 predicate ValidInputFormat(input: string)
 {
     |input| > 0 && 

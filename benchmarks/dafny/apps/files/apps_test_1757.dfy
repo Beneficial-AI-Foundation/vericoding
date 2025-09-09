@@ -1,9 +1,3 @@
-/*
-Generate a string of exactly n characters where each character is either 'O' or 'o'.
-The i-th character (1-indexed) should be 'O' if i is a Fibonacci number, 'o' otherwise.
-Fibonacci sequence: f₁ = 1, f₂ = 1, fₙ = fₙ₋₁ + fₙ₋₂ for n > 2.
-*/
-
 function isFibonacci(num: int): bool
   requires num >= 1
 {

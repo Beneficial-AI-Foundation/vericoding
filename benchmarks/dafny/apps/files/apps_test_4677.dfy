@@ -1,8 +1,3 @@
-/*
-Simulate a 3-key text editor that processes keystrokes: '0' and '1' append characters,
-'B' deletes the rightmost character if the string is non-empty.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| >= 1 && |s| <= 10 && forall i :: 0 <= i < |s| ==> s[i] in {'0', '1', 'B'}

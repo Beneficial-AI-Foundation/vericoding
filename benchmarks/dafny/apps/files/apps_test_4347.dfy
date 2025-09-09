@@ -1,10 +1,3 @@
-/*
-Given n people where n is even, find the number of ways to divide them into exactly two 
-indistinguishable round dances, each containing exactly n/2 people. A round dance is a 
-circular arrangement where rotations are considered identical, and both the rotations 
-within each dance and the two dances themselves are indistinguishable.
-*/
-
 predicate ValidInput(n: int) {
     n >= 2 && n % 2 == 0 && n <= 20
 }

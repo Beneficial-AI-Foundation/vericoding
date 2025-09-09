@@ -1,19 +1,3 @@
-/- 
-function_signature: "def correct_bracketing(brackets: str) -> Bool"
-docstring: |
-    brackets is a string of "(" and ")".
-    return True if every opening bracket has a corresponding closing bracket.
-test_cases:
-  - input: "("
-    expected_output: False
-  - input: "()"
-    expected_output: True
-  - input: "(()())"
-    expected_output: True
-  - input: ")(()"
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

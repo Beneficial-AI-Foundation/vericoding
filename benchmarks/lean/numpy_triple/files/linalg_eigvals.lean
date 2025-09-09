@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.linalg.eigvals",
-  "category": "Matrix eigenvalues",
-  "description": "Compute the eigenvalues of a general matrix",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigvals.html",
-  "doc": "Compute the eigenvalues of a general matrix.\n\nMain difference from eig: Does not compute eigenvectors.\n\nParameters:\n- a: Square array\n\nReturns:\n- w: The eigenvalues, not necessarily ordered",
-}
--/
-
-/-  Compute the eigenvalues of a general square matrix -/
-
-/-  Specification: eigvals computes eigenvalues of a square matrix -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,10 +1,3 @@
-/*
-Given n sentences from a chat record, determine the speaker of each sentence based on these patterns:
-- Freda always ends her sentences with "lala."
-- Rainbow always begins his sentences with "miao."
-For each sentence, classify it as spoken by Freda, Rainbow, or unknown if it's ambiguous or matches neither pattern.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| >= 0

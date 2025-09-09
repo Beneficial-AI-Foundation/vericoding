@@ -1,9 +1,3 @@
-/*
-Find the minimum cost for Ann to make exactly n subway rides, given two ticket options:
-single-ride tickets (cost a rubles each) and multi-ride tickets (cost b rubles, covers m rides).
-Ann can buy any combination of these tickets.
-*/
-
 predicate ValidInput(n: int, m: int, a: int, b: int)
 {
     n >= 1 && n <= 1000 &&
@@ -16,10 +10,10 @@ function OptimalCost(n: int, m: int, a: int, b: int): int
     requires ValidInput(n, m, a, b)
 {
     min(
-        n * a,  // All single tickets
+        n * a,
         min(
-            ((n + m - 1) / m) * b,  // All multi-ride tickets (with potential waste)
-            (n / m) * b + (n % m) * a  // Mixed: multi-ride + single for remainder
+            ((n + m - 1) / m) * b,
+            (n / m) * b + (n % m) * a
         )
     )
 }

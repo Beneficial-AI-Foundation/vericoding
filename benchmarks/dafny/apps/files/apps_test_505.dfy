@@ -1,10 +1,3 @@
-/*
-Given an n×m rectangular maze with a robot starting at position 'X', find the lexicographically smallest path of exactly k moves that returns the robot to its starting position.
-The maze contains '.' for empty cells, '*' for obstacles, and 'X' for the robot's starting position.
-Robot can move in 4 directions: L (left), R (right), U (up), D (down) and can only move to empty cells.
-Return the lexicographically smallest string of length k consisting of characters 'D', 'L', 'R', 'U' that returns the robot to start, or "IMPOSSIBLE".
-*/
-
 predicate ValidInput(n: int, m: int, k: int, grid: seq<string>)
 {
     n > 0 && m > 0 && k >= 0 &&

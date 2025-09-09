@@ -1,10 +1,3 @@
-/*
-Given a hash function H(x,y) = x² + 2xy + x + 1 where x and y are positive integers,
-determine if there exists a pair of positive integers (x,y) such that H(x,y) = r 
-for a given positive integer r. If such a pair exists, return the pair (x,y) with 
-the smallest possible value of x. If no such pair exists, return empty sequence.
-*/
-
 function H(x: int, y: int): int
 {
     x * x + 2 * x * y + x + 1

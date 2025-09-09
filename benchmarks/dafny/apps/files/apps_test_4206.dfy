@@ -1,10 +1,3 @@
-/*
-Given a string of digits representing a positive integer, find the maximum number of valid numbers 
-divisible by 3 that can be obtained by making vertical cuts between adjacent digits.
-Numbers cannot have leading zeros (except single digit "0"), and a number is divisible by 3 
-if the sum of its digits is divisible by 3.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 &&

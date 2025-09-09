@@ -1,9 +1,3 @@
-/*
-Given n tasks numbered 1 to n and parameter k, find the starting task that minimizes
-total "telling off power" when Dima performs tasks in circular order and Inna
-interrupts every k tasks (1st, (k+1)th, (2k+1)th, etc.).
-*/
-
 predicate ValidInput(n: int, k: int, powers: seq<int>)
 {
     n > 0 && k > 0 && k <= n && n % k == 0 && |powers| == n

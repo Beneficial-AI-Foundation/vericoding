@@ -1,9 +1,3 @@
-/*
-Given a sequence of n days where you were either in Seattle (S) or San Francisco (F),
-determine if you made more flights from Seattle to San Francisco than from San Francisco
-to Seattle during this period. You fly at night between consecutive days when you change cities.
-*/
-
 function count_sf_flights(s: string): int
 {
     if |s| <= 1 then 0

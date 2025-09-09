@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.fmod",
-  "description": "Returns the element-wise remainder of division",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fmod.html",
-  "doc": "Returns the element-wise remainder of division.\n\nThis is the NumPy implementation of the C library function fmod, the remainder has the same sign as the dividend x1.",
-}
--/
-
-/-  Returns the element-wise remainder of division where the remainder has the same sign as the dividend -/
-
-/-  Specification: fmod returns element-wise remainder with same sign as dividend,
-    handling division by zero by returning NaN -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

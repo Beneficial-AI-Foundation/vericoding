@@ -1,30 +1,3 @@
-/- 
-{
-  "name": "numpy.may_share_memory",
-  "category": "Memory and Striding",
-  "description": "Determine if two arrays might share memory",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.may_share_memory.html",
-  "doc": "Determine if two arrays might share memory.\n\nA return of True does not necessarily mean that the two arrays share any element. It just means that they might.\n\nOnly the memory bounds of a and b are checked by default.\n\nParameters\n----------\na, b : ndarray\n    Input arrays.\nmax_work : int, optional\n    Effort to spend on solving the overlap problem. See shares_memory for details. Default is MAY_SHARE_BOUNDS.\n\nReturns\n-------\nout : bool\n    True if a and b might share memory.\n\nExamples\n--------\n>>> np.may_share_memory(np.array([1,2]), np.array([5,6]))\nFalse\n>>> x = np.zeros([3, 4])\n>>> np.may_share_memory(x[:,0], x[:,1])\nTrue",
-}
--/
-
-/-  numpy.may_share_memory: Determine if two arrays might share memory.
-
-    This function conservatively checks if two arrays might share memory.
-    A return of True does not necessarily mean that the two arrays share any element.
-    It just means that they might.
-
-    Only the memory bounds of a and b are checked by default.
--/
-
-/-  Specification: may_share_memory returns a boolean indicating whether two arrays might share memory.
-
-    Precondition: True (no special preconditions needed)
-    Postcondition: The function returns a boolean value. If the arrays are identical references,
-    it must return True. For independent arrays, it may return False.
-    The function is conservative - it can return True even when arrays don't actually share memory.
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

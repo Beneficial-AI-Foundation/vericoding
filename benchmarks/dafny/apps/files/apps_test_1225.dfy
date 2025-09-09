@@ -1,9 +1,3 @@
-/*
-Given a monster with initial health H, find the minimum number of attacks needed to defeat it.
-Attack rules: If health is 1, monster dies. If health > 1, monster splits into two monsters
-with health floor(X/2). Goal is to make all monsters have health <= 0.
-*/
-
 predicate ValidInput(h: int) {
     h >= 1
 }

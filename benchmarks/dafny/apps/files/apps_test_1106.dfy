@@ -1,9 +1,3 @@
-/*
-Given a complete binary tree of depth n, find the minimum number of additional
-street lights needed so that all paths from entrance (node 1) to exits have
-the same total number of lights.
-*/
-
 predicate ValidInput(n: int, lights: seq<int>)
 {
     1 <= n <= 10 &&

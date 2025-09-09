@@ -1,9 +1,3 @@
-/*
-Given a monitor with aspect ratio a:b and a movie with aspect ratio c:d,
-fit the movie on screen while preserving its aspect ratio and maximizing area.
-Calculate the ratio of empty screen area to total screen area as an irreducible fraction.
-*/
-
 predicate ValidInput(a: int, b: int, c: int, d: int) {
     a > 0 && b > 0 && c > 0 && d > 0
 }

@@ -1,8 +1,3 @@
-/*
-Find the minimum number of bacteria to add to an initially empty box to achieve exactly x bacteria at some point in time.
-Each morning we can add bacteria, each night bacteria double.
-*/
-
 function CountOnesInBinary(n: int): int
     requires n >= 1
     ensures CountOnesInBinary(n) >= 1

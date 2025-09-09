@@ -1,8 +1,3 @@
-/*
-Given a three-digit string containing only digits '1' and '9', swap each '1' with '9' 
-and each '9' with '1', then return the transformed string with a newline appended.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| >= 3 &&

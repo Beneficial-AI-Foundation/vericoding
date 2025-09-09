@@ -1,9 +1,3 @@
-/*
-*/
-
-// Bubble Sort
-
-// Predicates for Bubble Sort
 predicate sorted(a: array2<int>, l: int, u: int)
     reads a
     requires a.Length1 == 2

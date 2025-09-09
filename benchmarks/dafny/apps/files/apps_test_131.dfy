@@ -1,9 +1,3 @@
-/*
-Given two configurations of n stone piles, determine if the first configuration
-can be transformed into the second using operations: remove one stone from any pile,
-or move one stone from one pile to another pile.
-*/
-
 predicate IsValidInput(input: string)
 {
     var lines := SplitLines(input);

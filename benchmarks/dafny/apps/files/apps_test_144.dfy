@@ -1,9 +1,3 @@
-/*
-Given a sequence of n digits, determine if it can be divided into two or more 
-non-overlapping contiguous segments such that all segments have equal digit sums.
-Each digit must belong to exactly one segment.
-*/
-
 predicate CanPartitionIntoEqualSumSegments(input: string)
     requires |input| > 0
 {

@@ -1,9 +1,3 @@
-/*
-Calculate the area of a regular dodecagon inscribed in a circle of radius r.
-The area formula is 3r². Input is an integer r (1 ≤ r ≤ 100).
-Output is the integer area.
-*/
-
 predicate ValidInput(r: int)
 {
     1 <= r <= 100

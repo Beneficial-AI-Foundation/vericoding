@@ -1,22 +1,3 @@
-/-  Divide one Hermite series by another.
-
-    Returns the quotient-with-remainder of two Hermite series
-    c1 / c2. The arguments are sequences of coefficients from lowest
-    order term to highest, e.g., [1,2,3] represents the series
-    P_0 + 2*P_1 + 3*P_2.
-
-    Parameters:
-    - c1: 1-D array of Hermite series coefficients (dividend)
-    - c2: 1-D array of Hermite series coefficients (divisor)
-
-    Returns:
-    - (quo, rem): Pair of arrays representing quotient and remainder
--/
-
-/-  Specification: hermdiv divides Hermite series c1 by c2, producing quotient and remainder
-    such that c1 = c2 * quo + rem in the Hermite polynomial basis, where the degree of rem
-    is less than the degree of c2. The divisor must have at least one non-zero coefficient. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

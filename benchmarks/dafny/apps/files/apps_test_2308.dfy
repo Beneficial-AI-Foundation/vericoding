@@ -1,9 +1,3 @@
-/*
-Given two binary strings x and y representing integers f(x) and f(y), find the non-negative integer k 
-that minimizes the lexicographic value of rev_k, where s_k = f(x) + f(y) × 2^k and rev_k is the 
-binary representation of s_k written in reverse order.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);

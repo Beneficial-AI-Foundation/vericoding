@@ -1,11 +1,3 @@
-/*
-Given a modulus m and a list of n forbidden values, construct the longest possible sequence where:
-- Each sequence element is an integer in [0, m-1]  
-- All prefix products modulo m are distinct
-- No prefix product modulo m equals any forbidden value
-- Sequence length is maximized
-*/
-
 function prefixProduct(s: seq<nat>, i: nat, mod: nat): nat
   requires mod > 0
   requires i <= |s|

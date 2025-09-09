@@ -1,8 +1,3 @@
-/*
-function_signature: method sort_lengths(list: seq<string>) returns (sorted: seq<string>)
-Sort elements. Requires: the condition holds for all values. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input; the result is sorted according to the ordering relation.
-*/
-
 function comparison(a : string, b : string, i : int): bool
     requires 0 <= i <= |a| && 0 <= i <= |b|
     decreases |a| - i
@@ -22,12 +17,6 @@ function comparison(a : string, b : string, i : int): bool
         else
             false
 }
-method sort_strings(list: seq<string>) returns (sorted: seq<string>)
-    ensures |sorted| == |list|
-    ensures multiset(sorted) == multiset(list)
-{
-  assume{:axiom} false;
-}
 
 // <vc-helpers>
 // </vc-helpers>
@@ -45,13 +34,3 @@ method sort_lengths(list: seq<string>) returns (sorted: seq<string>)
   assume {:axiom} false;
 }
 // </vc-code>
-
-method sorted_list_sum(list: seq<string>) returns (sorted: seq<string>)
-    requires |list| > 0
-    ensures |sorted| <= |list|
-    ensures forall i : int :: 0 <= i < |sorted| ==> |sorted[i]| % 2 == 0
-    ensures forall x : int, y : int :: 0 <= x < y < |sorted| ==> |sorted[x]| <= |sorted[y]|
-    ensures multiset(sorted) <= multiset(list)
-{
-  assume{:axiom} false;
-}

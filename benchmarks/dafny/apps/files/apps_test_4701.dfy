@@ -1,9 +1,3 @@
-/*
-Start with value 1 and perform exactly N operations. Each operation is either:
-Operation A: multiply current value by 2, or Operation B: add K to current value.
-Find the minimum possible final value after N operations.
-*/
-
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 1

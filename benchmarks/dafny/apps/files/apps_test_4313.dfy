@@ -1,9 +1,3 @@
-/*
-Given N gems with values and costs, select a subset to maximize total profit
-(sum of selected values minus sum of selected costs). Only gems with positive
-profit should be selected to achieve maximum profit.
-*/
-
 function SumOfPositiveProfits(values: seq<int>, costs: seq<int>, n: int): int
     requires |values| >= n
     requires |costs| >= n

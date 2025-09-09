@@ -1,9 +1,3 @@
-/*
-Given n players in a poker game with statuses "ALLIN" (A), "IN" (I), or "FOLDED" (F),
-determine how many players can show their hands. A player can show if their status
-is not "FOLDED" and all other players have status "ALLIN" or "FOLDED".
-*/
-
 predicate ValidInput(n: int, statuses: string)
 {
     n >= 2 && |statuses| == n && 

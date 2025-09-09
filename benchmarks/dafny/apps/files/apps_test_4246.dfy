@@ -1,11 +1,3 @@
-/*
-Given two strings S and T, each of length 3, representing weather forecasts and actual weather 
-respectively for 3 consecutive days, count how many days the forecast was correct.
-Each character represents weather: 'S' = sunny, 'C' = cloudy, 'R' = rainy.
-Input: Two lines with strings of length 3 containing only 'S', 'C', 'R' characters.
-Output: Integer representing the number of days where forecast matched actual weather.
-*/
-
 predicate is_valid_input(input: string)
     requires |input| > 0
 {

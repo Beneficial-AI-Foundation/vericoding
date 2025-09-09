@@ -1,9 +1,3 @@
-/*
-Given a Mancala board with 14 holes containing stones, determine the maximum score achievable in one move.
-Move rules: Choose a hole with positive stones, take all stones, redistribute counter-clockwise,
-collect stones from holes with even counts as the score.
-*/
-
 ghost predicate canParseToBoard(input: string)
     reads {}
 {

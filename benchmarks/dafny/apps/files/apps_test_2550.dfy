@@ -1,8 +1,3 @@
-/*
-Given n students with scores between 0 and m, redistribute scores to maximize student 1's score
-while preserving the total sum and keeping all scores within [0, m].
-*/
-
 predicate ValidInput(n: int, m: int, scores: seq<int>)
 {
     n >= 1 && m >= 1 && |scores| == n &&

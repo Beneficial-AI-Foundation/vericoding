@@ -1,9 +1,3 @@
-/*
-Given a lucky number n (containing only digits 4 and 7), find its 1-based index
-when all lucky numbers are sorted in increasing order. Lucky numbers are positive
-integers containing only the digits 4 and 7.
-*/
-
 predicate ValidLuckyNumber(n: string)
 {
     |n| > 0 && forall i :: 0 <= i < |n| ==> n[i] == '4' || n[i] == '7'

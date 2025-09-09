@@ -1,10 +1,3 @@
-/*
-Given a sequence of integers, partition it into two subsequences such that
-every element belongs to exactly one subsequence. Find the maximum possible
-value of B - C, where B is the sum of elements in the first subsequence
-and C is the sum of elements in the second subsequence.
-*/
-
 function sum_abs(arr: seq<int>, i: int): int
     requires 0 <= i <= |arr|
     decreases |arr| - i

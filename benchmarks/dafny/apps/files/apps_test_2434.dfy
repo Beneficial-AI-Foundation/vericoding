@@ -1,9 +1,3 @@
-/*
-Given two integers n and m where m < n, determine if it's possible to select m vertices 
-from a regular n-gon such that these m vertices form a regular m-gon with the same center.
-The solution is "YES" if n is divisible by m, "NO" otherwise.
-*/
-
 predicate ValidInputFormat(input: string)
 {
     var lines := SplitByNewline(input);

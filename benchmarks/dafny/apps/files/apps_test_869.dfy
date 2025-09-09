@@ -1,10 +1,3 @@
-/*
-Given a red socks and b blue socks, determine the maximum number of days to wear
-different colored socks (one red, one blue per day), then the number of days to
-wear same colored socks afterwards (two socks of same color per day). Each day,
-worn socks are discarded.
-*/
-
 predicate ValidInput(a: int, b: int)
 {
   a >= 1 && b >= 1

@@ -1,9 +1,3 @@
-/-  Unwrap by changing deltas between values to 2*pi complement.
-    Unwraps radian phase by changing absolute jumps greater than discont to their 2*pi complement.
-    For consecutive elements with difference > discont, adds/subtracts multiples of period to create continuity. -/
-
-/-  Specification: unwrap ensures continuity by correcting large phase jumps -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

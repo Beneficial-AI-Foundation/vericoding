@@ -1,8 +1,3 @@
-/*
-Given a 4-digit integer N, determine if it is "good". 
-A 4-digit integer is "good" if it contains three or more consecutive identical digits.
-*/
-
 predicate ValidInput(N: int) {
   1000 <= N <= 9999
 }

@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate merged(a1: seq<int>, a2: seq<int>, b: array<int>, start: int, end: int)
   reads b
   requires end - start  == |a2| + |a1|

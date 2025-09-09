@@ -1,10 +1,3 @@
-/*
-Given an n × n chessboard, find the maximum number of "Coders" that can be placed
-such that none attacks another. A Coder at position (x, y) can attack positions
-(x±1, y) and (x, y±1) (horizontally and vertically adjacent squares).
-Output the maximum count and a valid placement configuration using checkerboard pattern.
-*/
-
 predicate ValidInput(n: int) {
     n >= 1
 }

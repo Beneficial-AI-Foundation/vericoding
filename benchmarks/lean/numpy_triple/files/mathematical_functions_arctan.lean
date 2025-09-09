@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.arctan",
-  "description": "Trigonometric inverse tangent, element-wise",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.arctan.html",
-  "doc": "Trigonometric inverse tangent, element-wise.\n\nThe inverse of tan, so that if y = tan(x) then x = arctan(y).",
-}
--/
-
-/-  Computes the element-wise inverse tangent of a vector -/
-
-/-  Specification: arctan computes the inverse tangent of each element,
-    with comprehensive mathematical properties including range bounds,
-    monotonicity, and behavior at special values. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

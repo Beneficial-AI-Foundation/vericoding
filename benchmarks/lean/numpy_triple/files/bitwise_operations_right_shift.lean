@@ -1,27 +1,3 @@
-/- 
-{
-  "name": "numpy.right_shift",
-  "category": "Bit shifting",
-  "description": "Shift the bits of an integer to the right",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.right_shift.html",
-  "doc": "Shift the bits of an integer to the right.\n\nBits are shifted to the right x2. Because the internal representation of numbers is in binary format, this operation is equivalent to dividing x1 by 2**x2.\n\nParameters\n----------\nx1 : array_like, int\n    Input values.\nx2 : array_like, int\n    Number of bits to remove at the right of x1.\n    If x1.shape != x2.shape, they must be broadcastable to a common shape.\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored.\nwhere : array_like, optional\n    This condition is broadcast over the input.\n\nReturns\n-------\nout : ndarray, int\n    Return x1 with bits shifted x2 times to the right.\n    This is a scalar if both x1 and x2 are scalars.\n\nSee Also\n--------\nleft_shift : Shift the bits of an integer to the left.\nbinary_repr : Return the binary representation of the input number as a string.\n\nExamples\n--------\n>>> np.right_shift(10, 1)\n5\n>>> np.right_shift(10, [1,2,3])\narray([5, 2, 1])\n\nThe >> operator can be used as a shorthand for np.right_shift on ndarrays.\n\n>>> x1 = 10\n>>> x2 = np.array([1,2,3])\n>>> x1 >> x2\narray([5, 2, 1])",
-}
--/
-
-/-  Shift the bits of integers to the right element-wise.
-    Bits are shifted to the right by the corresponding amount in the shift array.
-    This operation is equivalent to dividing each element by 2^shift_amount (using integer division). -/
-
-/-  Specification: right_shift performs bitwise right shift operation element-wise.
-    For each element, shifting right by k bits is equivalent to integer division by 2^k.
-    The function ensures:
-    1. Non-negative shift amounts (sanity check)
-    2. Each result equals x1[i] >> x2[i], which is x1[i] / 2^x2[i] for non-negative inputs
-    3. For negative inputs, the behavior follows arithmetic right shift (sign extension)
-    4. Shifting by 0 returns the original value (identity property)
-    5. Consecutive shifts can be combined: (x >> a) >> b = x >> (a + b)
-    6. Right shift preserves sign: sign(x >> k) = sign(x) for k ≥ 0 -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

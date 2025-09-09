@@ -4,6 +4,8 @@ vc-description: |-
   as xᵢ + j·kᵢ for some i ∈ {1,2,3} and non-negative integer j. In other words, 
   determine if the union of three arithmetic progressions can cover all sufficiently 
   large positive integers.
+  
+  // a == 2
 
 vc-preamble: |-
   predicate ValidInput(nums: seq<int>)
@@ -29,7 +31,7 @@ vc-preamble: |-
               if c > 3 then "NO" else "YES"
           else "NO"
       else if a == 1 then "YES"
-      else // a == 2
+      else
           if b == 2 then "YES"
           else if b > 4 then "NO"
           else if b == 4 then

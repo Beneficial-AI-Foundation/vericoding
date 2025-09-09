@@ -1,12 +1,3 @@
-/*
-Given n threads initially ordered 1, 2, ..., n, after some messages are posted, 
-the threads are reordered such that the thread now at position i was originally 
-at position a_i. When a message is posted in a thread, that thread moves to the 
-top of the list. Find the number of threads that must have received new messages.
-A thread "surely has a new message" if there is no possible sequence of message 
-posts that could result in the given reordering without that thread receiving a message.
-*/
-
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 1 &&

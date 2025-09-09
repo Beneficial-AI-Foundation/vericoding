@@ -1,8 +1,3 @@
-/*
-*/
-
-//Problem01
-//a)
 ghost function gcd(x: int, y: int): int
     requires x > 0 && y > 0
 {
@@ -11,7 +6,6 @@ ghost function gcd(x: int, y: int): int
     else gcd(x, y - x)
 }
 
-//b)
 ghost function gcd'(x: int, y: int): int
     requires x > 0 && y > 0
     decreases if x > y then x else y

@@ -1,10 +1,3 @@
-/-  Evaluate a 3-D polynomial at points (x, y, z).
-    This function evaluates the polynomial p(x,y,z) = Σ_{i,j,k} c[i,j,k] * x^i * y^j * z^k
-    where the sum is over all valid indices of the coefficient tensor c. -/
-
-/-  Specification: polyval3d evaluates a 3-dimensional polynomial at each point (x[i], y[i], z[i]).
-    The polynomial is defined as the sum of c[i,j,k] * x^i * y^j * z^k over all coefficient indices. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

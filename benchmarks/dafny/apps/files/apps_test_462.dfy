@@ -1,8 +1,3 @@
-/*
-Given three distinct integers representing positions of three friends on a number line,
-find the minimum total distance they need to travel to meet at a single point.
-*/
-
 predicate ValidInput(x1: int, x2: int, x3: int) {
     1 <= x1 <= 100 && 1 <= x2 <= 100 && 1 <= x3 <= 100 &&
     x1 != x2 && x1 != x3 && x2 != x3

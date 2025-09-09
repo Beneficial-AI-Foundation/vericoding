@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate IsDigit(c: char)
 {
     48 <= c as int <= 57

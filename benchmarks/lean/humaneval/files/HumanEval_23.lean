@@ -1,14 +1,3 @@
-/- 
-function_signature: "def strlen(string: str) -> int"
-docstring: |
-    Return length of given string
-test_cases:
-  - input: ""
-    expected_output: 0
-  - input: "abc"
-    expected_output: 3
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

@@ -1,8 +1,3 @@
-/*
-Given three integers A, B, and C where exactly two are equal and one is different,
-find the integer that is different from the other two.
-*/
-
 predicate containsThreeSpaceSeparatedIntegers(input: string)
 {
     exists i, j, k :: (0 <= i < j < k <= |input| &&

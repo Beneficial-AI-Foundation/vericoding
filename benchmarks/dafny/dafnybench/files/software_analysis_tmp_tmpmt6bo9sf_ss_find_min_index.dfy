@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate is_sorted(ss: seq<int>)
 {
     forall i, j: int:: 0 <= i <= j < |ss| ==> ss[i] <= ss[j]
@@ -14,13 +11,6 @@ decreases |b|
     ((|a| == 0 && |b| == 0) ||  
     exists i,j : int :: 0<=i<|a| &&  0<=j<|b|  && a[i] == b[j] && is_permutation(a[0..i] + if i < |a| then a[i+1..] else [], b[0..j] + if j < |b| then  b[j+1..] else []))
 }
-
-// predicate is_permutation(a:seq<int>, b:seq<int>)
-// decreases |a|
-// decreases |b|
-// {
-//     |a| == |b|  && ((|a| == 0 && |b| == 0) ||  exists i,j : int :: 0<=i<|a| &&  0<=j<|b|  && a[i] == b[j] && is_permutation(a[0..i] + a[i+1..], b[0..j] + b[j+1..]))
-// }
 
 predicate is_permutation2(a:seq<int>, b:seq<int>)
 {

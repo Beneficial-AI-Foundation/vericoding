@@ -1,10 +1,3 @@
-/*
-Given N positive integers A₁, A₂, ..., Aₙ and a positive integer S,
-for each non-empty subset T of {1, 2, ..., N}, define f(T) as the number 
-of non-empty subsets of T whose corresponding A values sum to S.
-Find the sum of f(T) over all 2ᴺ - 1 non-empty subsets T, modulo 998244353.
-*/
-
 predicate ValidInput(n: int, s: int, a: seq<int>)
 {
     n >= 1 && n <= 3000 &&

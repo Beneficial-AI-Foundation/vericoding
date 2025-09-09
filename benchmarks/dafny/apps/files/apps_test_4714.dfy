@@ -1,9 +1,3 @@
-/*
-Count the number of palindromic numbers in the range [A, B] inclusive.
-A palindromic number is a positive integer that reads the same forwards and backwards when written in decimal notation.
-Constraints: 10000 ≤ A ≤ B ≤ 99999
-*/
-
 predicate isPalindromic(n: int)
   requires n >= 0
 {

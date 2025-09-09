@@ -1,10 +1,3 @@
-/*
-Find the minimum number of years needed for a bank balance to reach a target amount.
-Starting with 100 yen, the balance grows each year by adding 1% interest (rounded down).
-Given a target amount X, determine how many years it takes for the balance to reach X yen or above.
-The yearly calculation is: new_balance = current_balance + floor(current_balance / 100)
-*/
-
 function calculateDeposit(initial: int, years: int): int
     requires initial >= 0
     requires years >= 0

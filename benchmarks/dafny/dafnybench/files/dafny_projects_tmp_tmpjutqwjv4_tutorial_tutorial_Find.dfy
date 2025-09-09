@@ -1,8 +1,3 @@
-/*
-*/
-
-// Working through https://dafny.org/dafny/OnlineTutorial/guide
-
 function fib(n: nat): nat
 {
   if n == 0 then 0
@@ -16,16 +11,12 @@ predicate sorted(a: array<int>)
   forall n, m :: 0 <= n < m < a.Length ==> a[n] <= a[m]
 }
 
-// https://dafny.org/dafny/OnlineTutorial/ValueTypes
-
 function update(s: seq<int>, i: int, v: int): seq<int>
   requires 0 <= i < |s|
   ensures update(s, i, v) == s[i := v]
 {
   s[..i] + [v] + s[i+1..]
 }
-
-// https://dafny.org/dafny/OnlineTutorial/Lemmas
 
 function count(a: seq<bool>): nat
 {
@@ -47,16 +38,16 @@ predicate path(p: seq<Node>, graph: set<Node>)
   reads graph
 {
   p[0] in graph &&
-    (|p| > 1 ==> p[1] in p[0].next && // the first link is valid, if it exists
-     path(p[1..], graph)) // and the rest of the sequence is a valid
+    (|p| > 1 ==> p[1] in p[0].next &&
+     path(p[1..], graph))
 }
 predicate pathSpecific(p: seq<Node>, start: Node, end: Node, graph: set<Node>)
   requires closed(graph)
   reads graph
 {
-  0 < |p| && // path is nonempty
-  start == p[0] && end == p[|p|-1] && // it starts and ends correctly
-  path(p, graph) // and it is a valid path
+  0 < |p| &&
+  start == p[0] && end == p[|p|-1] &&
+  path(p, graph)
 }
 
 // <vc-helpers>

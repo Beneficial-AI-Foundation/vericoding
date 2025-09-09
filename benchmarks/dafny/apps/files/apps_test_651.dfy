@@ -1,10 +1,3 @@
-/*
-Given a 2D maze and a sequence of movement instructions (digits 0-3), determine how many ways
-the instructions can be interpreted to successfully navigate from start to exit. Each digit
-must map to a unique direction (up, down, left, right). The robot stops upon reaching the exit
-or crashes when hitting obstacles/boundaries.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);

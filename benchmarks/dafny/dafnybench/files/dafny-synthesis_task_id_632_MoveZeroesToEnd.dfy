@@ -1,6 +1,3 @@
-/*
-*/
-
 method swap(arr: array<int>, i: int, j: int)
     requires arr.Length > 0
     requires 0 <= i < arr.Length && 0 <= j < arr.Length
@@ -25,17 +22,15 @@ function count(arr: seq<int>, value: int) : (c: nat)
 method MoveZeroesToEnd(arr: array<int>)
     requires arr.Length >= 2
     modifies arr
-    // Same size
+
     ensures arr.Length == old(arr.Length)
-    // Zeros to the right of the first zero
+
     ensures forall i, j :: 0 <= i < j < arr.Length && arr[i] == 0 ==> arr[j] == 0
-    // The final array is a permutation of the original one
+
     ensures multiset(arr[..]) == multiset(old(arr[..]))
-    // Relative order of non-zero elements is preserved
-    ensures forall n, m /* on old array */:: 0 <= n < m < arr.Length && old(arr[n]) != 0 && old(arr[m]) != 0 ==> 
-            exists k, l /* on new array */:: 0 <= k < l < arr.Length && arr[k] == old(arr[n]) && arr[l] == old(arr[m])
-    //ensures IsOrderPreserved(arr[..], old(arr[..]))
-    // Number of zeros is preserved
+
+    ensures forall n, m :: 0 <= n < m < arr.Length && old(arr[n]) != 0 && old(arr[m]) != 0 ==> 
+            exists k, l :: 0 <= k < l < arr.Length && arr[k] == old(arr[n]) && arr[l] == old(arr[m])
 // </vc-spec>
 // <vc-code>
 {

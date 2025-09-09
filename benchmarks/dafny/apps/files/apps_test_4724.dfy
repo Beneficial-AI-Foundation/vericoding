@@ -1,8 +1,3 @@
-/*
-Given a current rating R and target rating G, find the required performance P
-such that the new rating equals G, where new rating = (R + P) / 2 = G.
-*/
-
 predicate ValidInput(R: int, G: int) {
     0 <= R <= 4500 && 0 <= G <= 4500
 }

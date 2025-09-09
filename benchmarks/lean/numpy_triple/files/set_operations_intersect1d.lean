@@ -1,19 +1,3 @@
-/- 
-{
-  "name": "numpy.intersect1d",
-  "category": "Set operations",
-  "description": "Find the intersection of two arrays",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.intersect1d.html",
-  "doc": "Find the intersection of two arrays.\n\nReturn the sorted, unique values that are in both of the input arrays.\n\nParameters\n----------\nar1, ar2 : array_like\n    Input arrays. Will be flattened if not already 1D.\nassume_unique : bool\n    If True, the input arrays are both assumed to be unique, which\n    can speed up the calculation.  If True but \`\`ar1\`\` or \`\`ar2\`\` are not\n    unique, incorrect results and out-of-bounds indices could result.\n    Default is False.\nreturn_indices : bool\n    If True, the indices which correspond to the intersection of the two\n    arrays are returned. The first instance of a value is used if there are\n    multiple. Default is False.\n\n    .. versionadded:: 1.15.0\n\nReturns\n-------\nintersect1d : ndarray\n    Sorted 1D array of common and unique elements.\ncomm1 : ndarray\n    The indices of the first occurrences of the common values in \`ar1\`.\n    Only provided if \`return_indices\` is True.\ncomm2 : ndarray\n    The indices of the first occurrences of the common values in \`ar2\`.\n    Only provided if \`return_indices\` is True.",
-}
--/
-
-/-  Find the intersection of two arrays.
-    Returns the sorted, unique values that are in both input arrays. -/
-
-/-  Specification: intersect1d returns a sorted array of unique values 
-    that exist in both input arrays -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

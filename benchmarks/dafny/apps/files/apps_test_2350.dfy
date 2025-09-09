@@ -1,11 +1,3 @@
-/*
-An infinite table is filled starting from cell (1,1) which contains integer 1.
-Each cell (x,y) contains the sum of the cell above it (x-1,y) and the cell to its left (x,y-1).
-For boundary cases: cell(1,y) = y and cell(x,1) = x.
-Given start coordinates (x₁, y₁) and end coordinates (x₂, y₂), find the number of
-different possible sums when traversing from start to end cell, moving only down or right.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0

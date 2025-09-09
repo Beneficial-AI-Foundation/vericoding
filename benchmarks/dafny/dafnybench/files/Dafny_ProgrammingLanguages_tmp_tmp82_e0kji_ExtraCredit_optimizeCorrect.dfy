@@ -1,6 +1,3 @@
-/*
-*/
-
 datatype Exp = Const(int) | Var(string) | Plus(Exp, Exp) |  Mult(Exp, Exp)
 
 function eval(e:Exp, store:map<string, int>):int
@@ -12,7 +9,6 @@ function eval(e:Exp, store:map<string, int>):int
         case Mult(e1, e2) => eval(e1, store) * eval(e2, store)
 }
 
-//fill this function in to make optimizeFeatures work
 function optimize(e:Exp):Exp
 {
     match e
@@ -26,10 +22,7 @@ function optimize(e:Exp):Exp
     case Plus(Const(n1), Const(n2)) => Const(n1+ n2)
     case e => e
 
-} 
-
-//as you write optimize this will become unproved
-//you must write proof code so that Dafny can prove this
+}
 
 // <vc-helpers>
 // </vc-helpers>

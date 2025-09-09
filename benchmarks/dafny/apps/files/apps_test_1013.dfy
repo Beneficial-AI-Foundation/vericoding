@@ -1,10 +1,3 @@
-/*
-Given an n×m grid where some cells are "good" (value 1) and others are not (value 0).
-Corner cells are never good. In one operation, choose a good cell and a corner cell,
-then color all cells in the rectangle formed by these two cells.
-Find the minimum number of operations to color all cells in the grid.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLinesFunc(input);

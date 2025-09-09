@@ -1,14 +1,5 @@
-/*
-*/
-
-// see pdf 'ex6 & 7 documentation' for excercise question
-
 datatype Bases = A | C | G | T
 
-//swaps two sequence indexes
-
-//idea from Rustan Leino video "Basics of specification and verification: Lecture 3, the Dutch National Flag algorithm"
-//modified for 4 elements
 predicate below(first: Bases, second: Bases)
 {
     first == second ||
@@ -18,7 +9,6 @@ predicate below(first: Bases, second: Bases)
     second == T
 }
 
-//checks if a sequence is in base order
 predicate bordered(s:seq<Bases>)
 {
     forall j, k :: 0 <= j < k < |s| ==> below(s[j], s[k])

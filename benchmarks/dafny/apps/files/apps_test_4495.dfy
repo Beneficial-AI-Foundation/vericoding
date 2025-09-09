@@ -1,8 +1,3 @@
-/*
-Given nonnegative integers a and b (where a ≤ b) and a positive integer x,
-count how many integers in the range [a, b] inclusive are divisible by x.
-*/
-
 predicate ValidInput(a: int, b: int, x: int)
 {
     a >= 0 && b >= a && x > 0

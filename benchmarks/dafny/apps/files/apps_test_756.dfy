@@ -1,9 +1,3 @@
-/*
-Given a 90-minute game with certain interesting minutes, determine how many
-minutes are watched before turning off the TV. The TV turns off immediately
-after 15 consecutive boring minutes occur.
-*/
-
 predicate ValidInput(n: int, a: seq<int>) {
     n >= 1 && n <= 90 &&
     |a| == n &&

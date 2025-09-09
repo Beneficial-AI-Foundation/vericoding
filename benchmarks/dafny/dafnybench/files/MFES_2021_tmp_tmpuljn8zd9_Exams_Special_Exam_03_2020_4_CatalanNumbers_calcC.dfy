@@ -1,6 +1,3 @@
-/*
-*/
-
 function C(n: nat): nat 
     decreases n
 {

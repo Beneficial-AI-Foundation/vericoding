@@ -1,12 +1,3 @@
-/*
-Given a credit card account starting with 0 money and n consecutive days of transactions,
-determine the minimum number of days deposits are needed to satisfy all constraints.
-Each day deposits can be made in the morning, then transactions occur in the evening.
-If any evening transaction causes the balance to exceed limit d, return -1.
-On days when evening transaction is 0 (balance check days), the balance after the
-transaction must be non-negative. Morning deposits can be any positive integer amount.
-*/
-
 predicate ValidInput(n: int, d: int, transactions: seq<int>)
 {
   n >= 1 && d >= 1 &&

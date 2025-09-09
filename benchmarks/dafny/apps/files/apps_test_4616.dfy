@@ -1,8 +1,3 @@
-/*
-Given a string of at least 3 lowercase English letters, create an abbreviation by replacing
-the middle characters with their count. Format: first_character + count_of_middle_characters + last_character.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| >= 3 && |s| <= 100 && forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'

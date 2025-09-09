@@ -1,9 +1,3 @@
-/*
-Find the minimum initial health required for a character to travel from the top-left 
-corner to the bottom-right corner of an M x N grid. The character can only move right 
-or down, and dies if health drops to 0 or below at any point.
-*/
-
 predicate ValidDungeon(dungeon: seq<seq<int>>)
 {
     |dungeon| > 0 &&

@@ -1,8 +1,3 @@
-/*
-Given a Martian year with n days and Earth-like weeks (5 work days + 2 days off),
-determine the minimum and maximum possible number of days off in that year.
-*/
-
 predicate ValidInput(n: int)
 {
   n >= 1

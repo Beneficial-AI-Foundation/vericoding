@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.mintypecode",
-  "category": "Miscellaneous Type Utilities",
-  "description": "Return the character for the minimum-size type to which given types can be safely cast",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.mintypecode.html",
-  "doc": "Return the character for the minimum-size type to which given types can be safely cast.\n\nParameters\n----------\ntypechars : list of str or array_like\n    If a list of strings, each string should represent a dtype. If array_like, the character representation of the array dtype is used.\ntypeset : str or list of str, optional\n    The set of characters that the returned character is chosen from. The default set is 'GDFgdf'.\ndefault : str, optional\n    The default character if none in typeset matches.\n\nReturns\n-------\ntypechar : str\n    The character representing the minimum-size type found.\n\nExamples\n--------\n>>> np.mintypecode(['d', 'f', 'S'])\n'd'\n>>> x = np.array([1.1, 2-3.j])\n>>> np.mintypecode(x)\n'D'\n>>> np.mintypecode('abceh', default='G')\n'G'",
-}
--/
-
-/-  Return the character for the minimum-size type to which given types can be safely cast -/
-
-/-  Specification: mintypecode returns the minimum-size type character that can handle all input types -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

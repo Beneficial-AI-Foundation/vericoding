@@ -1,10 +1,3 @@
-/*
-Given k_2 digits '2', k_3 digits '3', k_5 digits '5', and k_6 digits '6',
-form integers 32 and 256 to maximize their sum. Each digit can only be used once.
-To form 256: need one '2', one '5', one '6'
-To form 32: need one '3', one '2'
-*/
-
 predicate ValidInput(k2: int, k3: int, k5: int, k6: int)
 {
     k2 >= 0 && k3 >= 0 && k5 >= 0 && k6 >= 0 &&

@@ -1,8 +1,3 @@
-/*
-Given k jury members who sequentially add points to an initial score, determine how many
-possible initial scores could produce a given set of observed intermediate scores.
-*/
-
 function sum(s: seq<int>): int
 {
     if |s| == 0 then 0 else s[0] + sum(s[1..])

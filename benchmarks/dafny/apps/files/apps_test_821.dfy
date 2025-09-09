@@ -1,9 +1,3 @@
-/*
-Two participants compete in a typing race. Each participant has a ping delay and typing speed.
-The total time for participant i is 2*t_i + s*v_i where t_i is ping, v_i is typing speed per character, s is text length.
-Determine winner based on who completes first, or declare friendship if tied.
-*/
-
 predicate ValidInput(s: int, v1: int, v2: int, t1: int, t2: int)
 {
     1 <= s <= 1000 && 1 <= v1 <= 1000 && 1 <= v2 <= 1000 && 1 <= t1 <= 1000 && 1 <= t2 <= 1000

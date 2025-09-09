@@ -1,8 +1,3 @@
-/-  Calculate exp(x) - 1 for all elements in the vector.
-    This function provides greater precision than exp(x) - 1 for small values of x. -/
-
-/-  Specification: expm1 computes exp(x) - 1 element-wise with enhanced numerical precision -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,7 +1,4 @@
-/*
-*/
-
-predicate sorted_seg(a:array<int>, i:int, j:int) //j not included
+predicate sorted_seg(a:array<int>, i:int, j:int)
 requires 0 <= i <= j <= a.Length
 reads a
 {
@@ -12,9 +9,9 @@ reads a
 // </vc-helpers>
 
 // <vc-spec>
-method selSort (a:array<int>, c:int, f:int)//f excluded
+method selSort (a:array<int>, c:int, f:int)
 modifies a 
-requires 0 <= c <= f <= a.Length //when c==f empty sequence
+requires 0 <= c <= f <= a.Length
 ensures sorted_seg(a,c,f) 
 ensures multiset(a[c..f]) == old(multiset(a[c..f]))
 ensures a[..c]==old(a[..c]) && a[f..]==old(a[f..])

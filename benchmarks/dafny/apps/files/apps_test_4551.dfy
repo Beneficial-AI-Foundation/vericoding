@@ -1,10 +1,3 @@
-/*
-Given four integer weights A, B, C, D, determine the direction a balance scale tips when:
-- Left pan contains masses with weights A and B  
-- Right pan contains masses with weights C and D
-Compare the total weights on each side and output "Left", "Right", or "Balanced"
-*/
-
 predicate ValidParseable(input: string)
 {
     var parts := SplitStringPure(input);

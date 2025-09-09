@@ -1,29 +1,22 @@
-/*
-Given multiple binary strings, determine the minimum number of character flips needed 
-to make each string "good". A string is "good" if it contains neither "010" nor "101" 
-as a subsequence. Input format: first line contains number of test cases t, followed 
-by t binary strings. Output the minimum operations needed for each string.
-*/
-
 function split_lines(s: string): seq<string>
 {
-    [""]  // placeholder implementation
+    [""]
 }
 
 function is_valid_number(s: string): bool
 {
-    true  // placeholder implementation
+    true
 }
 
 function parse_int(s: string): int
     requires is_valid_number(s)
 {
-    0  // placeholder implementation
+    0
 }
 
 function is_binary_string(s: string): bool
 {
-    true  // placeholder implementation
+    true
 }
 
 function ends_with_newline(s: string): bool

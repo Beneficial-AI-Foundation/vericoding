@@ -1,8 +1,3 @@
-/*
-Given an m×n grid of non-negative integers, find the minimum sum path from the top-left corner 
-to the bottom-right corner. You can only move right or down.
-*/
-
 predicate ValidPath(path: seq<(int, int)>, m: int, n: int)
 {
     |path| >= 1 &&
@@ -10,8 +5,8 @@ predicate ValidPath(path: seq<(int, int)>, m: int, n: int)
     path[|path|-1] == (m-1, n-1) &&
     (forall i :: 0 <= i < |path| ==> 0 <= path[i].0 < m && 0 <= path[i].1 < n) &&
     forall i :: 0 <= i < |path|-1 ==> 
-        (path[i+1].0 == path[i].0 && path[i+1].1 == path[i].1 + 1) || // right
-        (path[i+1].0 == path[i].0 + 1 && path[i+1].1 == path[i].1)    // down
+        (path[i+1].0 == path[i].0 && path[i+1].1 == path[i].1 + 1) ||
+        (path[i+1].0 == path[i].0 + 1 && path[i+1].1 == path[i].1)
 }
 
 function PathSum(path: seq<(int, int)>, grid: array2<int>): int

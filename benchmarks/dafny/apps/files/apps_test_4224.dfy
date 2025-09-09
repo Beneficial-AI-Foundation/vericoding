@@ -1,8 +1,3 @@
-/*
-Given an array of positive integers, find the maximum number of operations possible where each operation
-allows dividing elements by 2 (if even) or multiplying by 3, with at least one division by 2 required per operation.
-*/
-
 predicate ValidInput(a: seq<int>) {
   forall i :: 0 <= i < |a| ==> a[i] > 0
 }

@@ -1,6 +1,3 @@
-/*
-*/
-
 function min(a: int, b: int): int
     ensures min(a, b) <= a && min(a, b) <= b
     ensures min(a, b) == a || min(a, b) == b
@@ -14,8 +11,6 @@ ghost function minFunction(a: int, b: int): int
 {
     if a < b then a else b
 }
-
-// Return a minimum of a.
 
 // <vc-helpers>
 // </vc-helpers>

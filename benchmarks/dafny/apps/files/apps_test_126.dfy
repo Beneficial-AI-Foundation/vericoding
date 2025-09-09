@@ -1,10 +1,3 @@
-/*
-Given a phone keypad layout and a phone number, determine if the finger movement 
-sequence between consecutive key presses is unique (no other number produces the same sequence).
-The keypad layout is: 1-2-3 in top row, 4-5-6 in middle row, 7-8-9 in bottom row, 
-and 0 below 8.
-*/
-
 function string_to_digits(s: string): set<int>
 {
     set i | 0 <= i < |s| && '0' <= s[i] <= '9' :: (s[i] as int) - ('0' as int)

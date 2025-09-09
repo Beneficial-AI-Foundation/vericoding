@@ -1,6 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
   //Problem01
   
   /*
@@ -23,7 +21,9 @@ vc-preamble: |-
   */
   
   //Problem02
+  
   //As you can see below, Dafny claims that after executing the following method
+  
   //strange() we will have that 1=2;
   
   /*(a). Do you have an explanation for this behaviour?
@@ -55,7 +55,9 @@ vc-preamble: |-
   */
   
   //Problem 3
+  
   //Use what you know about the weakest preconditions/strongest postconditions to ex-
+  
   //plain why the following code verifies:
   
   /*
@@ -76,6 +78,8 @@ vc-preamble: |-
   within the range (0, 10) since the largest possible square less than 100 is 9 * 9 = 81.
   
   */
+
+vc-preamble: |-
 
 vc-helpers: |-
 

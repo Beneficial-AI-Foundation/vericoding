@@ -1,9 +1,3 @@
-/*
-Given n matches, find the minimum number of additional matches needed to form a valid equation a + b = c 
-where a, b, c are positive integers. Each integer k uses k matches, '+' uses 1 match, '=' uses 1 match.
-Total matches needed: a + b + c + 2 = 2(a + b) + 2 since c = a + b.
-*/
-
 predicate ValidInput(queries: seq<int>) {
     forall i :: 0 <= i < |queries| ==> queries[i] >= 2
 }

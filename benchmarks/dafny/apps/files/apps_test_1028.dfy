@@ -1,9 +1,3 @@
-/*
-Given n participants split into m teams where each team has at least one participant,
-find the minimum and maximum possible number of friendship pairs that can form.
-Friendship pairs are formed between all participants within the same team.
-*/
-
 function comb2(n: int): int
   requires n >= 0
 {

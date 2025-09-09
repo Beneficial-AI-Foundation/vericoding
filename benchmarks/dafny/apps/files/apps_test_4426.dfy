@@ -1,9 +1,3 @@
-/*
-Given a day of the week as a string, determine how many days until the next Sunday.
-Input is one of "SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT".
-Output is the number of days until the next Sunday (1-7, where 7 means next Sunday is in a week).
-*/
-
 predicate ValidDay(day: string) {
     day in ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
 }

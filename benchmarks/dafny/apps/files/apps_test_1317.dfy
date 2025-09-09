@@ -1,7 +1,3 @@
-/*
-Given an n×n grid where each cell (i,j) contains (i² + j²) candies, count how many cells have a number of candies divisible by m.
-*/
-
 function CountCellsDivisibleByM(n: int, m: int): int
   requires 1 <= n
   requires 1 <= m

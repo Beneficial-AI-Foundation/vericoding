@@ -1,11 +1,3 @@
-/*
-Given a bus with n rows of seats, where each row contains 4 seats arranged as two pairs 
-separated by a walkway (format: XX|XX), find two adjacent empty seats in the same pair 
-for two passengers. Each seat is either 'O' (empty) or 'X' (occupied). If such a pair 
-exists, mark it with "++" and output "YES" with the modified configuration. Otherwise, 
-output "NO".
-*/
-
 predicate ValidInput(n: int, rows: seq<string>)
 {
     n >= 0 && |rows| == n && forall i :: 0 <= i < |rows| ==> |rows[i]| == 5

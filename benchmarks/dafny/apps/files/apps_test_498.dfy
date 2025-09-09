@@ -1,9 +1,3 @@
-/*
-Given a classroom with n lanes and m desks per lane, where each desk has 2 seats (left and right),
-find the lane, desk, and side for seat number k. Seats are numbered 1 to 2nm in order:
-by lane first, then by desk within each lane, then left seat before right seat within each desk.
-*/
-
 predicate ValidInput(n: int, m: int, k: int)
 {
     1 <= n <= 10000 && 1 <= m <= 10000 && 1 <= k <= 2 * n * m

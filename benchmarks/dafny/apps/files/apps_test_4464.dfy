@@ -1,8 +1,3 @@
-/*
-Given three integers A, B, and C, determine if it's possible to select one or more 
-positive multiples of A such that their sum is congruent to C modulo B.
-*/
-
 predicate ValidInput(A: int, B: int, C: int)
 {
   1 <= A <= 100 && 1 <= B <= 100 && 0 <= C < B

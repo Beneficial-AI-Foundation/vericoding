@@ -1,6 +1,3 @@
-/*
-*/
-
 function IsLetter(c: char): bool 
 {
   (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') 

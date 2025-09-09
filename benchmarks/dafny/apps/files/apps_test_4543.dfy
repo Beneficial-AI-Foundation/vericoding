@@ -1,9 +1,3 @@
-/*
-Given two positive integers a and b, determine whether their string concatenation 
-(a followed by b) forms a perfect square number. Return "Yes" if it's a perfect 
-square, "No" otherwise.
-*/
-
 predicate IsPerfectSquare(n: int)
   requires n >= 0
 {

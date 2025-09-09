@@ -1,7 +1,3 @@
-/-
-Implement a function which multiplies two numbers.
--/
-
 -- <vc-helpers>
 -- </vc-helpers>
 

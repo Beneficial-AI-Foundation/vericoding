@@ -1,13 +1,3 @@
-/- 
-function_signature: "def below_threshold(numbers: List[Int], threshold: Int) -> bool"
-docstring: Return True if all numbers in the list l are below threshold t, and False otherwise.
-test_cases:
-  - input: [[1, 2, 4, 10], 100]
-    expected_output: True
-  - input: [[1, 20, 4, 10], 5]
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

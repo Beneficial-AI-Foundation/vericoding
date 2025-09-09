@@ -1,21 +1,3 @@
-/- 
-{
-  "name": "numpy.linalg.det",
-  "category": "Norms and numbers",
-  "description": "Compute the determinant of an array",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.det.html",
-  "doc": "Compute the determinant of an array.\n\nParameters:\n- a: Input array, must be square\n\nReturns:\n- det: Determinant of a\n\nThe determinant is computed via LU decomposition using LAPACK routine _getrf.",
-}
--/
-
-/-  Compute the determinant of a square matrix -/
-
-/-  Specification: det computes the determinant of a square matrix.
-    The determinant satisfies fundamental mathematical properties including:
-    - Explicit formulas for small matrices
-    - Multilinear properties
-    - Behavior under elementary row operations -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

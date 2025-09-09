@@ -1,14 +1,3 @@
-/- 
-function_signature: "def concatenate(strings: List[str]) -> str"
-docstring: |
-    Concatenate list of strings into a single string
-test_cases:
-  - input: []
-    expected_output: ""
-  - input: ["a", "b", "c"]
-    expected_output: "abc"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

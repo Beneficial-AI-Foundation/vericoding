@@ -1,8 +1,3 @@
-/*
-Given a string s and an integer k, determine if s can be split into exactly k
-palindromes of equal length. Return "YES" if possible, "NO" otherwise.
-*/
-
 function isPalindrome(s: string): bool
 {
     forall i :: 0 <= i < |s| / 2 ==> s[i] == s[|s| - 1 - i]

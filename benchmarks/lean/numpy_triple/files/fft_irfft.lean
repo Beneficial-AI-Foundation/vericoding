@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "numpy.fft.irfft",
-  "description": "Computes the inverse of rfft",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fft.irfft.html",
-  "doc": "numpy.fft.irfft(a, n=None, axis=-1, norm=None, out=None)\n\nComputes the inverse of rfft. It performs the inverse of the one-dimensional discrete Fourier Transform for real input, such that irfft(rfft(a), len(a)) == a within numerical accuracy.\n\nParameters:\n- a: Input array\n- n: Optional length of transformed axis (default calculates based on input)\n- axis: Axis to compute inverse FFT (default is last axis)\n- norm: Normalization mode (\"backward\", \"ortho\", \"forward\")\n- out: Optional output array\n\nReturns:\n- Real-valued ndarray transformed along specified axis\n\nNotes:\n- Handles Hermitian-symmetric input from rfft\n- Requires specifying original data length to avoid information loss\n- Can resample a series via Fourier interpolation\n\nExample:\nnp.fft.irfft([1, -1j, -1])\n# Returns: array([0., 1., 0., 0.])",
-}
--/
-
-/-  Computes the inverse of rfft (real-valued inverse FFT) -/
-
-/-  Specification: irfft computes the inverse of rfft with proper length restoration -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

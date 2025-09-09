@@ -1,13 +1,9 @@
-/*
-*/
-
 // <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 method Mid( p: int, q: int) returns ( m: int )
-    // | ... | ??? | ... |
-    //        p m   q
+
     requires p <= q;
     ensures p<= m <= q;
     ensures m-p <= q-m;

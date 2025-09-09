@@ -1,9 +1,3 @@
-/*
-Given an n×m grid where each cell contains either 0 or 1, process q queries.
-Each query flips the value at position (i,j) from 0 to 1 or 1 to 0.
-After each query, calculate the score: the maximum length of consecutive 1s across all rows in the grid.
-*/
-
 predicate ValidGrid(grid: seq<seq<int>>, n: int, m: int)
 {
     |grid| == n && n > 0 && m > 0 &&

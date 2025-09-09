@@ -1,24 +1,3 @@
-/-  Test element-wise for NaT (not a time) and return result as a boolean array.
-
-    This function checks each element of a datetime64 array to determine if it
-    represents NaT (Not a Time), which is the datetime equivalent of NaN.
-
-    Returns true for NaT values and false for all valid datetime values.
-    The function is the datetime analog of isnan for floating point values.
--/
-
-/-  Specification: isnat returns true for NaT values and false otherwise.
-    The function correctly identifies NaT values in datetime64 arrays.
-
-    Mathematical properties:
-    1. NaT detection: result[i] = true iff x[i] is NaT
-    2. Valid datetime detection: result[i] = false iff x[i] is a valid datetime
-    3. Result preserves shape: output vector has same length as input
-    4. Exhaustive coverage: every element is either NaT or a valid datetime
-
-    This is the datetime analog of isnan for floating point NaN values.
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

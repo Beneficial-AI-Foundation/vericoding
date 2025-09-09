@@ -1,36 +1,3 @@
-/- 
-{
-  "name": "numpy.issubdtype",
-  "category": "Data Type Testing",
-  "description": "Returns True if first argument is a typecode lower/equal in type hierarchy",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.issubdtype.html",
-  "doc": "Returns True if first argument is a typecode lower/equal in type hierarchy.\n\nThis is like the builtin issubclass, but for dtypes.\n\nParameters\n----------\narg1, arg2 : dtype_like\n    dtype or object coercible to one.\n\nReturns\n-------\nout : bool\n\nExamples\n--------\n>>> ints = np.array([1, 2, 3], dtype=np.int32)\n>>> np.issubdtype(ints.dtype, np.integer)\nTrue\n>>> np.issubdtype(ints.dtype, np.floating)\nFalse\n>>> floats = np.array([1, 2, 3], dtype=np.float32)\n>>> np.issubdtype(floats.dtype, np.integer)\nFalse\n>>> np.issubdtype(floats.dtype, np.floating)\nTrue\n>>> np.issubdtype(np.float64, np.float32)\nFalse\n>>> np.issubdtype(np.float32, np.float64)\nFalse\n>>> np.issubdtype(np.float64, np.floating)\nTrue\n>>> np.issubdtype(np.float32, np.floating)\nTrue\n>>> np.issubdtype('S1', np.bytes_)\nTrue\n>>> np.issubdtype('i4', np.signedinteger)\nTrue",
-}
--/
-
-/-  numpy.issubdtype: Returns True if first argument is a typecode lower/equal in type hierarchy.
-
-    This function checks if the first data type is a subtype of the second data type
-    in the NumPy type hierarchy. It's similar to Python's built-in issubclass but
-    operates on NumPy data types.
-
-    The function implements the NumPy type hierarchy where types are organized
-    in a tree structure with 'generic' at the root.
--/
-
-/-  Specification: issubdtype returns True if arg1 is a subtype of arg2 in the NumPy type hierarchy.
-
-    Precondition: True (works with any valid NumPy data types)
-    Postcondition: The result is True if and only if arg1 is a subtype of arg2 
-    according to the NumPy type hierarchy rules.
-
-    Key properties:
-    1. Reflexivity: Every type is a subtype of itself
-    2. Transitivity: If A is subtype of B and B is subtype of C, then A is subtype of C
-    3. Hierarchy rules: Specific types are subtypes of their parent categories
-    4. Root type: All types are subtypes of 'generic'
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

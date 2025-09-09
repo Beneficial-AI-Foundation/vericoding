@@ -1,10 +1,3 @@
-/*
-Given n winter days with temperature forecasts, minimize tire changes to drive safely.
-Start with summer tires (safe when temp >= 0). Winter tires safe at any temp but 
-limited to k days total. Must drive safely every day. Can change tires at start of any day.
-Return minimum tire changes needed, or -1 if impossible.
-*/
-
 function count_negative_temp_days(temps: seq<int>): int
 {
     if |temps| == 0 then 0

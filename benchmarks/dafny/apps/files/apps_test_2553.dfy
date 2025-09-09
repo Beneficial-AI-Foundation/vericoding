@@ -1,8 +1,3 @@
-/*
-Given an array of n integers, determine if it's possible to select exactly x elements 
-such that their sum is odd. A sum is odd if and only if it contains an odd number of odd elements.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n' &&
@@ -74,39 +69,39 @@ function ParseFirstLine(input: string): nat
     requires |input| > 0
     requires CountLines(input) >= 1
 {
-    1 // Placeholder implementation
+    1
 }
 
 function GetTestCaseN(input: string, case_index: nat): nat
     requires |input| > 0
     requires CountLines(input) >= 1 + 2 * (case_index + 1)
 {
-    1 // Placeholder implementation
+    1
 }
 
 function GetTestCaseX(input: string, case_index: nat): nat
     requires |input| > 0
     requires CountLines(input) >= 1 + 2 * (case_index + 1)
 {
-    1 // Placeholder implementation
+    1
 }
 
 function GetTestCaseArray(input: string, case_index: nat): seq<int>
     requires |input| > 0
     requires CountLines(input) >= 1 + 2 * (case_index + 1)
 {
-    [1] // Placeholder implementation
+    [1]
 }
 
 function CountLines(s: string): nat
 {
-    if |s| == 0 then 0 else 1 // Placeholder implementation
+    if |s| == 0 then 0 else 1
 }
 
 function GetLine(s: string, line_index: nat): string
     requires line_index < CountLines(s)
 {
-    if line_index == 0 then "No" else "" // Placeholder implementation
+    if line_index == 0 then "No" else ""
 }
 
 // <vc-helpers>

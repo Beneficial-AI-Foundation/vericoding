@@ -1,9 +1,3 @@
-/*
-Given two strings s and t of equal length, determine the minimum number of moves needed to transform s into t.
-In each move, you can select any character from s and move it to either the beginning or end of the string.
-If transformation is impossible, return -1.
-*/
-
 function CountCharacter(s: string, c: char): int
 {
     if |s| == 0 then 0

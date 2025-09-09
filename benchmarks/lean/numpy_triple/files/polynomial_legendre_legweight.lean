@@ -1,19 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.legendre.legweight",
-  "category": "Legendre polynomials",
-  "description": "Weight function of the Legendre polynomials.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.legendre.legweight.html",
-  "doc": "Weight function of the Legendre polynomials.\n\n    The weight function is :math:`1` and the interval of integration is\n    :math:`[-1, 1]`. The Legendre polynomials are orthogonal, but not\n    normalized, with respect to this weight function.\n\n    Parameters\n    ----------\n    x : array_like\n       Values at which the weight function will be computed.\n\n    Returns\n    -------\n    w : ndarray\n       The weight function at `x`.",
-}
--/
-
-/-  Weight function of the Legendre polynomials. 
-    The weight function is constant 1 for all input values. -/
-
-/-  Specification: legweight returns a vector of all ones with the same length as input.
-    This captures the mathematical property that the Legendre weight function is constant 1. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

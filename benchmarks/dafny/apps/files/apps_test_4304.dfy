@@ -1,9 +1,3 @@
-/*
-Given uncovered heights of two adjacent towers after snowfall, find the snow depth.
-Towers have triangular number heights: 1, 3, 6, 10, ... (i-th tower height = i*(i+1)/2).
-Snow covers uniformly to same depth everywhere.
-*/
-
 predicate ValidInput(a: int, b: int)
 {
   a >= 1 && b > a && b < 499500

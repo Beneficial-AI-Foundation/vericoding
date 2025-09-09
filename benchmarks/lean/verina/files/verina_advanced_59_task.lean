@@ -1,18 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that determines if a given string is a palindrome, ignoring all
-non-alphanumeric characters and case differences. For example, the string "A man, a plan, a canal: Panama" should return
-true.
-
------Input-----
-A single string:
-s: The string to check for palindrome property.
-
------Output-----
-A boolean (Bool):
-true if s is a palindrome when ignoring non-alphanumeric characters and case. false otherwise.
--/
-
 @[reducible]
 def palindromeIgnoreNonAlnum_precond (s : String) : Prop :=
   True

@@ -1,9 +1,3 @@
-/*
-Given N test cases where M are "hard" (1900ms each, 1/2 success probability) 
-and (N-M) are "easy" (100ms each, always succeed), find the expected total 
-execution time across all submissions until one submission succeeds.
-*/
-
 predicate ValidInput(n: int, m: int) {
   1 <= n <= 100 && 1 <= m <= n && m <= 5
 }

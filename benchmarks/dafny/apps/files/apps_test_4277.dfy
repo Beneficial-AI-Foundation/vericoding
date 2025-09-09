@@ -1,9 +1,3 @@
-/*
-Given N people traveling together, determine the minimum cost between two transportation options:
-Train costs A yen per person (total: N*A), Taxi costs B yen total (fixed cost).
-Find the minimum total travel expense.
-*/
-
 predicate ValidInput(n: int, a: int, b: int)
 {
     1 <= n <= 20 && 1 <= a <= 50 && 1 <= b <= 50

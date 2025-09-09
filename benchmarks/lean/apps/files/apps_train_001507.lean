@@ -1,35 +1,3 @@
-/-
-"I'm a fan of anything that tries to replace actual human contact." - Sheldon.
-After years of hard work, Sheldon was finally able to develop a formula which would diminish the real human contact.  
-He found k$k$ integers n1,n2...nk$n_1,n_2...n_k$ . Also he found that if he could minimize the value of m$m$ such that  ∑ki=1$\sum_{i=1}^k$n$n$i$i$C$C$m$m$i$i$ is even, where m$m$ = ∑ki=1$\sum_{i=1}^k$mi$m_i$, he would finish the real human contact.  
-Since Sheldon is busy choosing between PS-4 and XBOX-ONE, he want you to help him to calculate the minimum value of m$m$. 
-
------Input:-----
-- The first line of the input contains a single integer T$T$ denoting the number of test cases. The 
-description of T$T$ test cases follows.
-- The first line of each test case contains a single integer k$k$.
-- Next line contains k space separated integers n1,n2...nk$n_1,n_2...n_k$ .
-
------Output:-----
-For each test case output the minimum value of m for which ∑ki=1$\sum_{i=1}^k$n$n$i$i$C$C$m$m$i$i$ is even, where  m$m$=m1$m_1$+m2$m_2$+. . . mk$m_k$   and  0$0$ <= mi$m_i$<= ni$n_i$ .  If no such answer exists print -1.
-
------Constraints-----
-- 1≤T≤1000$1 \leq T \leq 1000$
-- 1≤k≤1000$1 \leq k \leq 1000$
-- 1≤ni≤10$1 \leq n_i \leq 10$18$18$
-
------Sample Input:-----
-1
-1
-5
-
------Sample Output:-----
-2
-
------EXPLANATION:-----
-5$5$C$C$2$2$ = 10 which is even and m is minimum.
--/
-
 def find_min_m (n : Nat) (nums : List Nat) : Int :=
 sorry
 

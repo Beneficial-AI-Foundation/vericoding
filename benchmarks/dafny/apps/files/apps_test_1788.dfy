@@ -1,8 +1,3 @@
-/*
-Given two integers A and B where A = X + Y and B = X - Y, find the original integers X and Y.
-The inputs are constrained to be between -100 and 100, and unique integer solutions are guaranteed to exist.
-*/
-
 predicate ValidInput(a: int, b: int)
 {
     -100 <= a <= 100 && -100 <= b <= 100 && (a + b) % 2 == 0 && (a - b) % 2 == 0

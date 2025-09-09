@@ -1,6 +1,3 @@
-/*
-*/
-
 function fact(n: nat): nat 
     ensures fact(n) >= 1
 {

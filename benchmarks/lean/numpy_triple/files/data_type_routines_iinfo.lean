@@ -1,31 +1,3 @@
-/- 
-{
-  "name": "numpy.iinfo",
-  "category": "Data Type Information",
-  "description": "Machine limits for integer types",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.iinfo.html",
-  "doc": "Machine limits for integer types.\n\nParameters\n----------\nint_type : integer type, dtype, or instance\n    The kind of integer data type to get information about.\n\nAttributes\n----------\nbits : int\n    The number of bits occupied by the type.\ndtype : dtype\n    The dtype for which iinfo returns information.\nmin : int\n    The smallest integer expressible by the type.\nmax : int\n    The largest integer expressible by the type.\n\nExamples\n--------\n>>> ii16 = np.iinfo(np.int16)\n>>> ii16.min\n-32768\n>>> ii16.max\n32767\n>>> ii32 = np.iinfo(np.int32)\n>>> ii32.min\n-2147483648\n>>> ii32.max\n2147483647",
-}
--/
-
-/-  numpy.iinfo: Returns machine limits for integer types.
-
-    Takes an integer type specification and returns information about 
-    the number of bits, minimum value, and maximum value for that type.
-    This provides access to the fundamental machine limits for integer
-    representation in numerical computing.
--/
-
-/-  Specification: numpy.iinfo returns correct machine limits for integer types.
-
-    Precondition: True (no special preconditions for type information)
-    Postcondition: The returned IntInfo structure contains:
-      - Correct bit count for the specified type
-      - Correct minimum value (negative for signed types, 0 for unsigned)
-      - Correct maximum value based on the bit representation
-      - Consistency between bits and min/max values
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,9 +1,3 @@
-/*
-Given n strings of lowercase Latin letters, determine if there exists a permutation 
-of the 26 lowercase Latin letters such that the strings are in lexicographical order
-according to this custom alphabet. Output the valid alphabet permutation or "Impossible".
-*/
-
 ghost predicate validInput(stdin_input: string, n: int)
 {
     exists lines :: (parseInput(stdin_input) == lines &&

@@ -1,11 +1,3 @@
-/-
-The function is not returning the correct values. Can you figure out why?
-
-```python
-get_planet_name(3) # should return 'Earth'
-```
--/
-
 def validPlanets : Int → Option String
 | 1 => some "Mercury"
 | 2 => some "Venus"

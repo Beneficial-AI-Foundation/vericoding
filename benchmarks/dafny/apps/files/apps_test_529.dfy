@@ -1,11 +1,3 @@
-/*
-Given a string and an integer n (0 ≤ n ≤ 26), transform the string by:
-1. Converting the entire string to lowercase
-2. For each character, if it is lexicographically smaller than the nth letter 
-   of the alphabet (0-indexed), convert it to uppercase; otherwise, keep it lowercase
-3. When n = 26, use '|' as the comparison character (which comes after 'z')
-*/
-
 predicate ValidInput(s: string, n: int)
 {
   0 <= n <= 26

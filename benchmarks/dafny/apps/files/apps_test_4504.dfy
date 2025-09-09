@@ -1,9 +1,3 @@
-/*
-Given an even string S, find the length of the longest even string that can be 
-obtained by deleting one or more characters from the end of S. An even string
-is one that can be split into two identical halves.
-*/
-
 predicate IsEvenString(s: string)
 {
     |s| >= 2 && |s| % 2 == 0 && s[..|s|/2] == s[|s|/2..]

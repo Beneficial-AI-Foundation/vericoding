@@ -1,23 +1,3 @@
-/- 
-{
-  "name": "numpy.median",
-  "category": "Averages and variances",
-  "description": "Compute the median along the specified axis",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.median.html",
-  "doc": "numpy.median(a, axis=None, out=None, overwrite_input=False, keepdims=False)\n\nCompute the median along the specified axis.\n\nReturns the median of the array elements.\n\nParameters\n----------\na : array_like\n    Input array or object that can be converted to an array.\naxis : {int, sequence of int, None}, optional\n    Axis or axes along which the medians are computed. The default is to compute the median along a flattened version of the array.\nout : ndarray, optional\n    Alternative output array in which to place the result. It must have the same shape and buffer length as the expected output.\noverwrite_input : bool, optional\n    If True, then allow use of memory of input array a for calculations. The input array will be modified by the call to median.\nkeepdims : bool, optional\n    If this is set to True, the axes which are reduced are left in the result as dimensions with size one.\n\nReturns\n-------\nmedian : ndarray\n    A new array holding the result. If the input contains integers or floats smaller than float64, then the output data-type is np.float64. Otherwise, the data-type of the output is the same as that of the input.\n\nNotes\n-----\nGiven a vector V of length N, the median of V is the middle value of a sorted copy of V, V_sorted - i.e., V_sorted[(N-1)/2], when N is odd, and the average of the two middle values of V_sorted when N is even.",
-}
--/
-
-/-  Compute the median of a vector.
-    For odd-length vectors, returns the middle value of the sorted array.
-    For even-length vectors, returns the average of the two middle values. -/
-
-/-  Specification: median returns the middle value(s) of a sorted vector.
-    - For odd length (n+1), the median is the middle element when sorted
-    - For even length (n+1), the median is the average of the two middle elements when sorted
-    - The median divides the data such that approximately half the values are ≤ it,
-      and approximately half are ≥ it -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic

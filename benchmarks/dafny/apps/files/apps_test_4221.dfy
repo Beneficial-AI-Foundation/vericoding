@@ -1,9 +1,3 @@
-/*
-Convert a singular noun string containing only lowercase English letters to plural form.
-If the string does not end with 's', append 's'.
-If the string ends with 's', append 'es'.
-*/
-
 predicate ValidInput(s: string) 
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'

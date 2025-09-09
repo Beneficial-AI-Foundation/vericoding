@@ -1,9 +1,3 @@
-/*
-Given an array of n integers representing animal heights, sort the array in non-decreasing order
-using a specific operation that selects a segment of even length and swaps adjacent pairs within it.
-Output the sequence of operations (at most 20,000) needed to sort the array.
-*/
-
 predicate ValidInput(n: int, arr: seq<int>)
 {
     n >= 1 && |arr| == n && forall i :: 0 <= i < |arr| ==> arr[i] >= 1

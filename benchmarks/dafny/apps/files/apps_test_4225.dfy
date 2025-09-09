@@ -1,9 +1,3 @@
-/*
-Given A cards with value 1, B cards with value 0, and C cards with value -1,
-find the maximum possible sum when picking exactly K cards.
-The optimal strategy is to pick cards with highest values first.
-*/
-
 predicate ValidInput(A: int, B: int, C: int, K: int)
 {
     A >= 0 && B >= 0 && C >= 0 && K >= 1 && K <= A + B + C

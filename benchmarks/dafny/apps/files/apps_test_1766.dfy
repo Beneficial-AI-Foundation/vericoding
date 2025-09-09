@@ -1,10 +1,3 @@
-/*
-Two players take turns picking cards from either end of a row of n cards. Each card has a distinct
-integer value. The first player (Sereja) goes first. Both players use a greedy strategy: they always
-choose the card with the larger value between the leftmost and rightmost available cards. Determine
-the final scores of both players.
-*/
-
 predicate ValidInput(cards: seq<int>)
 {
   |cards| >= 1 &&

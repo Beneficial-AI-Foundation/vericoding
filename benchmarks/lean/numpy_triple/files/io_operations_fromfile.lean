@@ -1,32 +1,3 @@
-/- 
-{
-  "name": "numpy.fromfile",
-  "category": "Binary file I/O",
-  "description": "Construct an array from data in a text or binary file",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fromfile.html",
-  "doc": "Construct an array from data in a text or binary file. A highly efficient way of reading binary data with a known data-type, as well as parsing simply formatted text files. Data written using the tofile method can be read using this function.",
-}
--/
-
-/-  Construct a vector from data in a text or binary file
-    Parameters:
-    - file: File handle for the input file
-    - dtype: Data type of the returned array
-    - count: Number of items to read (-1 means entire file)
-    - sep: Separator between items (empty string means binary file)
-    - offset: Byte offset from file's current position (binary files only)
--/
-
-/-  Specification: fromfile reads data from a file and constructs a vector
-    Properties:
-    1. For binary files (sep = ""), reads exactly count items if count > 0
-    2. For text files (sep ≠ ""), parses items separated by sep
-    3. If count = -1, reads all available data
-    4. Binary files respect the offset parameter
-    5. The resulting vector has the correct size and data type
-    6. Data is read sequentially from the file
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

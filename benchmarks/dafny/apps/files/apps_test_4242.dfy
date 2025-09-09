@@ -1,8 +1,3 @@
-/*
-Given positive integers A and B, find the K-th largest positive integer that divides both A and B.
-The K-th largest common divisor is guaranteed to exist for the given inputs.
-*/
-
 function CommonDivisors(A: int, B: int): set<int>
   requires A > 0 && B > 0
 {

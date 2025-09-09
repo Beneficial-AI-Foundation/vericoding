@@ -1,8 +1,3 @@
-/*
-Given an n × m multiplication table where element at row i and column j equals i·j (1-indexed),
-find the k-th smallest number among all n·m elements in the table.
-*/
-
 function countLessValue(n: int, m: int, target: int): int
   requires n >= 0 && m >= 1 && target >= 1
   ensures countLessValue(n, m, target) >= 0

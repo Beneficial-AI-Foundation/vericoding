@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "NPY_SQRT2",
-  "category": "C API Mathematical constants",
-  "description": "Square root of 2",
-  "doc": "√2 = 1.414213562373095048801688724209698079",
-}
--/
-
-/-  The square root of 2 as a mathematical constant -/
-
-/-  Specification: NPY_SQRT2 represents the square root of 2 with appropriate mathematical properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

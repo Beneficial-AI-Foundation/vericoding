@@ -1,12 +1,3 @@
-/*
-Given n exercises with repetition counts, determine which muscle group receives the most total repetitions.
-Exercises cycle through three types based on position (0-indexed):
-- Position 0, 3, 6, ... : chest exercises
-- Position 1, 4, 7, ... : biceps exercises  
-- Position 2, 5, 8, ... : back exercises
-Return the muscle group with the highest total repetitions.
-*/
-
 function ChestTotal(reps: seq<int>): int
 {
     sum(seq(|reps|, i requires 0 <= i < |reps| => if i % 3 == 0 then reps[i] else 0))

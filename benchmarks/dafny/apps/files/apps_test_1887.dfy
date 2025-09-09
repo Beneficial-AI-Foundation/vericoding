@@ -1,10 +1,3 @@
-/*
-Given two rows of n students each, select a team with maximum total height
-such that selected students have strictly increasing indices, no two
-consecutive selected students are from the same row, and any number of
-students can be selected (including zero).
-*/
-
 predicate ValidInput(n: int, h1: seq<int>, h2: seq<int>)
 {
     n >= 1 && |h1| >= n && |h2| >= n &&

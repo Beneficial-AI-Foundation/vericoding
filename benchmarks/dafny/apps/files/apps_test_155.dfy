@@ -1,10 +1,3 @@
-/*
-Given an n×m matrix where n is even, determine Lara's position after exactly k moves
-following a specific path: start at (1,1), move down column 1 to (n,1), then move in
-a snake pattern through remaining columns alternating between moving right-up-left-up
-until reaching (1,2). Find coordinates after exactly k moves.
-*/
-
 predicate ValidInput(n: int, m: int, k: int) {
     n >= 2 && m >= 2 && n % 2 == 0 && k >= 0 && k < n * m
 }

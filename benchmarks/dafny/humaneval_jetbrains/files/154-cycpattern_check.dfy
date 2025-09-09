@@ -1,8 +1,3 @@
-/*
-function_signature: def cycpattern_check(String a, String b) -> Bool
-You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word, else False
-*/
-
 function IsSubstring(s: string, sub: string) : bool
 {
   |s| >= |sub| && exists i {:trigger s[i..i+|sub|]} :: 0 <= i <= |s| - |sub| && s[i..i+|sub|] == sub
@@ -18,10 +13,9 @@ function RotateString(s: string, n: nat): string
 
 // <vc-spec>
 method CycpatternCheck(word: string, pattern: string) returns (result: bool)
-  // post-conditions-start
+
   ensures result ==> exists i :: 0 <= i <= |pattern| && IsSubstring(word, RotateString(pattern, i))
   ensures !result ==> forall i :: 0 <= i <= |pattern| ==> !IsSubstring(word, RotateString(pattern, i))
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

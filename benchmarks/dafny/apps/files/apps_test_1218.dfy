@@ -1,10 +1,3 @@
-/*
-Find the minimum number of splitters needed to transform 1 pipe into n pipes.
-Available splitters have 2, 3, 4, ..., k outputs respectively.
-Each splitter takes 1 input pipe and produces multiple output pipes.
-Return -1 if impossible.
-*/
-
 predicate ValidInput(n: int, k: int) {
     n >= 1 && k >= 2
 }

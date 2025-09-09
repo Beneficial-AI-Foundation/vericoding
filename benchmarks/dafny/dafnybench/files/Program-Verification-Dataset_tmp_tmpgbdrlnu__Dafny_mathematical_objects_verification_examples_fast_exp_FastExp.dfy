@@ -1,6 +1,3 @@
-/*
-*/
-
 function sum(s: seq<int>, i: nat): int
     requires i <= |s|
 {

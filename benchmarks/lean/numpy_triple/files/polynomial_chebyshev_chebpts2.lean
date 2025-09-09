@@ -1,27 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.chebyshev.chebpts2",
-  "category": "Chebyshev polynomials",
-  "description": "Chebyshev points of the second kind.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.chebyshev.chebpts2.html",
-  "doc": "Chebyshev points of the second kind.\n\n    The Chebyshev points of the second kind are the points ``cos(x)``,\n    where ``x = [pi*k/(npts - 1) for k in range(npts)]`` sorted in ascending\n    order.\n\n    Parameters\n    ----------\n    npts : int\n        Number of sample points desired.\n\n    Returns\n    -------\n    pts : ndarray\n        The Chebyshev points of the second kind.",
-}
--/
-
-/-  Chebyshev points of the second kind.
-
-    Generates n Chebyshev points of the second kind, which are the values
-    cos(π*k/(n-1)) for k from 0 to n-1, sorted in ascending order.
-    These points are the extrema and endpoints of the Chebyshev polynomial T_{n-1}. -/
-
-/-  Specification: chebpts2 generates Chebyshev points of the second kind
-
-    The function returns n points where:
-    1. Each point is cos(π*k/(n-1)) for k from n-1 down to 0
-    2. The points are sorted in ascending order
-    3. The first point is -1 and the last point is 1
-    4. The points are symmetric around 0 for the transformation x ↦ -x -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

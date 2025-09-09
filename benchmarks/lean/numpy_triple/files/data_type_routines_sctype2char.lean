@@ -1,33 +1,3 @@
-/- 
-{
-  "name": "numpy.sctype2char",
-  "category": "Miscellaneous Type Utilities",
-  "description": "Return the string representation of a scalar dtype",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.sctype2char.html",
-  "doc": "Return the string representation of a scalar dtype.\n\nParameters\n----------\nsctype : scalar dtype or object\n    If a scalar dtype, the corresponding string character is returned. If an object, sctype2char tries to infer its scalar type and then return the corresponding string character.\n\nReturns\n-------\ntypechar : str\n    The string character corresponding to the scalar type.\n\nRaises\n------\nValueError\n    If sctype is an object for which the type cannot be inferred.\n\nExamples\n--------\n>>> for sctype in [np.int32, np.double, np.complex_, np.bytes_, np.ndarray]:\n...     print(np.sctype2char(sctype))\n...\nl\nd\nD\nS\nO\n\n>>> x = np.array([1., 2-1.j])\n>>> np.sctype2char(x)\n'D'\n>>> np.sctype2char(list)\n'O'",
-}
--/
-
-/-  numpy.sctype2char: Return the string representation of a scalar dtype
-
-    Converts a scalar data type to its corresponding single-character string representation.
-    This is used internally by numpy to represent data types in a compact form.
-
-    The mapping follows numpy's dtype.char convention:
-    - int32 → 'l'
-    - float64 (double) → 'd'  
-    - complex128 → 'D'
-    - bytes → 'S'
-    - object → 'O'
--/
-
-/-  Specification: sctype2char returns the correct character representation
-    for each scalar type.
-
-    Precondition: Valid scalar type (guaranteed by type system)
-    Postcondition: Returns the standard numpy character for the given type
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

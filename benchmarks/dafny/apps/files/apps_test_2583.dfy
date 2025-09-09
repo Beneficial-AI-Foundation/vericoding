@@ -1,11 +1,3 @@
-/*
-Two players play a game starting with integer n. Players alternate turns, with the first player moving first.
-On each turn, a player must make exactly one of these moves:
-1. Divide n by any odd divisor of n greater than 1
-2. Subtract 1 from n (only if n > 1)
-The player unable to make a move loses. Determine the winner assuming both players play optimally.
-*/
-
 function determineWinner(n: int): string
 requires n >= 1
 ensures determineWinner(n) == "FastestFinger" || determineWinner(n) == "Ashishgup"

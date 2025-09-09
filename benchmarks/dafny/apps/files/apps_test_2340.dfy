@@ -1,10 +1,3 @@
-/*
-Navigate down a cliff from height h to ground using platforms and magic crystals.
-Character starts at platform height h, can pull levers to hide current platform and toggle platform at height x-1,
-can fall safely at most 2 heights, and magic crystals can toggle any platform state (except height h).
-Find minimum number of crystals needed to reach ground safely.
-*/
-
 predicate ValidInput(h: int, n: int, platforms: seq<int>)
 {
     h >= 1 && n >= 1 && |platforms| >= n && n > 0 && platforms[0] == h

@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.isfinite",
-  "category": "Array contents testing",
-  "description": "Test element-wise for finiteness (not infinity and not Not a Number)",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.isfinite.html",
-  "doc": "Test element-wise for finiteness (not infinity or not Not a Number).\n\nThe result is returned as a boolean array.\n\nParameters\n----------\nx : array_like\n    Input values.\nout : ndarray, None, or tuple of ndarray and None, optional\n    A location into which the result is stored. If provided, it must have\n    a shape that the inputs broadcast to. If not provided or None,\n    a freshly-allocated array is returned. A tuple (possible only as a\n    keyword argument) must have length equal to the number of outputs.\nwhere : array_like, optional\n    This condition is broadcast over the input. At locations where the\n    condition is True, the out array will be set to the ufunc result.\n    Elsewhere, the out array will retain its original value.\n    Note that if an uninitialized out array is created via the default\n    out=None, locations within it where the condition is False will\n    remain uninitialized.\n**kwargs\n    For other keyword-only arguments, see the\n    ufunc docs.\n\nReturns\n-------\ny : ndarray, bool\n    True where x is not positive infinity, negative infinity,\n    or NaN; false otherwise.\n    This is a scalar if x is a scalar.\n\nSee Also\n--------\nisinf, isneginf, isposinf, isnan\n\nNotes\n-----\nNot a Number, positive infinity and negative infinity are considered\nto be non-finite.\n\nNumPy uses the IEEE Standard for Binary Floating-Point for Arithmetic\n(IEEE 754). This means that Not a Number is not equivalent to infinity.\nAlso that positive infinity is not equivalent to negative infinity. But\ninfinity is equivalent to positive infinity.  Errors result if the\nsecond argument is also supplied when x is a scalar input, or if\nfirst and second arguments have different shapes.\n\nExamples\n--------\n>>> np.isfinite(1)\nTrue\n>>> np.isfinite(0)\nTrue\n>>> np.isfinite(np.nan)\nFalse\n>>> np.isfinite(np.inf)\nFalse\n>>> np.isfinite(np.NINF)\nFalse\n>>> np.isfinite([np.log(-1.),1.,np.log(0)])\narray([False,  True, False])\n\n>>> x = np.array([-np.inf, 0., np.inf])\n>>> y = np.array([2, 2, 2])\n>>> np.isfinite(x, y)\narray([0, 1, 0])\n>>> y\narray([0, 1, 0])",
-}
--/
-
-/-  Test element-wise for finiteness (not infinity and not NaN) -/
-
-/-  Specification: isfinite returns true for finite values, false for infinity and NaN -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

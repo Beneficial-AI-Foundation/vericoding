@@ -1,24 +1,3 @@
-/-  numpy.min_scalar_type: For scalar a, returns the data type with the smallest size 
-    and smallest scalar kind which can hold its value.
-
-    This function determines the minimal NumPy data type that can represent a given scalar value.
-    The function prioritizes:
-    1. Smallest possible size (in bits)
-    2. Smallest scalar kind (unsigned int < signed int < float < complex)
-
-    For integer values, it finds the smallest integer type that can hold the value.
-    For floating point values, it finds the smallest float type that can represent it.
--/
-
-/-  Specification: min_scalar_type returns the minimal data type that can hold the given value.
-
-    Precondition: True (works for any scalar value)
-    Postcondition: The returned type is the minimal type that can hold the value, meaning:
-    1. The type can represent the given value
-    2. No type with smaller size can represent the value
-    3. Among types of the same size, it has the smallest kind order
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

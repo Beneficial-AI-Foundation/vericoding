@@ -1,38 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.decode",
-  "category": "String encoding",
-  "description": "Decode byte strings using the codec",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.decode.html",
-  "doc": "Calls \`\`bytes.decode\`\` element-wise.\n\nParameters\n----------\na : array_like, with \`bytes_\` dtype\n    Input byte array\nencoding : str, optional\n    The name of an encoding. Default is 'utf-8'\nerrors : str, optional\n    Specifies how to handle encoding errors.\n    Default is 'strict'\n\nReturns\n-------\nout : ndarray\n    Output array of \`str_\` dtype",
-}
--/
-
-/-  numpy.strings.decode: Decode byte strings using the codec
-
-    Calls bytes.decode element-wise on a vector of byte strings.
-    Converts bytes to strings using the specified encoding.
-
-    This function takes a vector of byte strings and returns a vector
-    of decoded strings. The decoding process depends on the encoding
-    parameter, with UTF-8 being the default.
--/
-
-/-  Specification: numpy.strings.decode returns a vector where each element is the decoded string
-    from the corresponding byte array in the input vector.
-
-    Mathematical Properties:
-    1. Element-wise decoding: result[i] = decode(a[i]) for all i
-    2. Deterministic behavior: same input produces same output
-    3. Empty byte arrays decode to empty strings
-    4. Identity property: decoding is consistent with the specified encoding
-    5. Length preservation: decoding preserves structural properties
-    6. Error handling: behavior depends on error mode when invalid sequences are encountered
-
-    Precondition: ByteArray elements are well-formed
-    Postcondition: Each element is the decoded string using the specified encoding with proper error handling
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

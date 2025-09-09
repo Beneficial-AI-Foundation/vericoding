@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "numpy.fabs",
-  "description": "Compute the absolute values element-wise",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fabs.html",
-  "doc": "Compute the absolute values element-wise.\n\nThis function returns the absolute values (positive magnitude) of the data in x. Complex values are not handled, use absolute to find the absolute values of complex data.",
-}
--/
-
-/-  Compute the absolute values element-wise for floating-point numbers -/
-
-/-  Specification: fabs computes the absolute value of each element -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

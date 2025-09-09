@@ -1,6 +1,3 @@
-/*
-*/
-
 method isPrefix(pre: string, str: string) returns (res:bool)
     ensures !res <==> isNotPrefixPred(pre,str)
     ensures  res <==> isPrefixPred(pre,str)
@@ -33,10 +30,10 @@ predicate isNotSubstringPred(sub:string, str:string)
 method isSubstring(sub: string, str: string) returns (res:bool)
     ensures  res <==> isSubstringPred(sub, str)
     ensures  res ==> isSubstringPred(sub, str)
-    // ensures  !res ==> !isSubstringPred(sub, str)
+
     ensures  isSubstringPred(sub, str) ==> res
     ensures  isSubstringPred(sub, str) ==> res
-    ensures !res <==> isNotSubstringPred(sub, str) // This postcondition follows from the above lemma.
+    ensures !res <==> isNotSubstringPred(sub, str)
 {
   assume{:axiom} false;
 }
@@ -57,7 +54,7 @@ predicate haveNotCommonKSubstringPred(k:nat, str1:string, str2:string)
 // <vc-spec>
 method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: bool)
     ensures found  <==>  haveCommonKSubstringPred(k,str1,str2)
-    ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2) // This postcondition follows from the above lemma.
+    ensures !found <==> haveNotCommonKSubstringPred(k,str1,str2)
 // </vc-spec>
 // <vc-code>
 {

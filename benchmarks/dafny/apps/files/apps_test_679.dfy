@@ -1,9 +1,3 @@
-/*
-Given a string representing a row of cells with flowers (A, B, C) or empty cells (.),
-determine if it's possible for at least one cell to contain all three colors after
-some flowers wither and spread petals to adjacent cells.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| >= 0 && forall i :: 0 <= i < |s| ==> s[i] in {'A', 'B', 'C', '.'}

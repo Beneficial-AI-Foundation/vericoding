@@ -1,8 +1,3 @@
-/*
-function_signature: def sum_product(numbers: List[int]) -> Tuple[int, int]
-For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list. Empty sum should be equal to 0 and empty product should be equal to 1.
-*/
-
 function sum(s: seq<int>) : int {
     if |s| == 0 then 0 else s[0] + sum(s[1..])
 }
@@ -15,10 +10,9 @@ function prod(s: seq<int>) : int {
 
 // <vc-spec>
 method sum_product(numbers: seq<int>) returns (s : int, p : int)
-    // post-condition-start
+
     ensures s == sum(numbers)
     ensures p == prod(numbers)
-    // post-condition-end
 // </vc-spec>
 // <vc-code>
 {

@@ -1,25 +1,3 @@
-/-  numpy.bitwise_or: Compute the bit-wise OR of two arrays element-wise.
-
-    Computes the bit-wise OR of the underlying binary representation of
-    the integers in the input arrays. This ufunc implements the C/Python
-    operator |.
-
-    For integer inputs, the result is the bitwise OR of the binary
-    representations. For boolean inputs, it performs logical OR.
--/
-
-/-  Specification: numpy.bitwise_or returns a vector where each element is the 
-    bitwise OR of the corresponding elements from x1 and x2.
-
-    Precondition: True (no special preconditions for bitwise OR)
-    Postcondition: For all indices i, result[i] = bitwise_or(x1[i], x2[i])
-
-    Mathematical properties:
-    - Commutative: bitwise_or(x1[i], x2[i]) = bitwise_or(x2[i], x1[i])
-    - Identity: bitwise_or(x[i], 0) = x[i]
-    - Idempotent: bitwise_or(x[i], x[i]) = x[i]
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

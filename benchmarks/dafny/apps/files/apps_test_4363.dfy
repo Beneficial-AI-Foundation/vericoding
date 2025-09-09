@@ -1,8 +1,3 @@
-/*
-Given two integers K and S, count the number of ordered triples (X, Y, Z) where
-each of X, Y, Z is an integer in the range [0, K] and X + Y + Z = S.
-*/
-
 predicate ValidInput(k: int, s: int) {
     k >= 0 && s >= 0 && s <= 3 * k
 }

@@ -1,8 +1,3 @@
-/*
-Given a positive integer N, find the minimum value of F(A,B) over all pairs of positive integers (A,B) 
-such that A × B = N, where F(A,B) is defined as the maximum of the number of digits in A and the number of digits in B.
-*/
-
 function numDigits(n: int): int
   requires n >= 1
   ensures numDigits(n) >= 1

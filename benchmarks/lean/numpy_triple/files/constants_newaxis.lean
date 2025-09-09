@@ -1,25 +1,3 @@
-/- 
-{
-  "name": "numpy.newaxis",
-  "category": "Indexing helpers",
-  "description": "A convenient alias for None, useful for indexing arrays",
-  "url": "https://numpy.org/doc/stable/reference/constants.html#numpy.newaxis",
-  "doc": "newaxis is an alias for None and is used to expand the dimensions of an array.\n\nExamples:\n>>> a = np.array([1, 2, 3])\n>>> a.shape\n(3,)\n>>> a[:, np.newaxis].shape\n(3, 1)\n>>> a[np.newaxis, :].shape\n(1, 3)",
-}
--/
-
-/-  Expands a vector to a column matrix (n × 1) using newaxis.
-    This models the behavior of a[:, np.newaxis] which converts
-    a 1D array of shape (n,) to a 2D array of shape (n, 1). -/
-
-/-  Specification: expandToColumn creates a column matrix where each element
-    is a singleton vector containing the corresponding element from the input vector.
-
-    Mathematical property:
-    - The resulting matrix has shape (n, 1)
-    - Each row contains exactly one element from the original vector
-    - result[i][0] = v[i] for all valid indices -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

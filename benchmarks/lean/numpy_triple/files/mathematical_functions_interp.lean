@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.interp",
-  "description": "One-dimensional linear interpolation for monotonically increasing sample points",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.interp.html",
-  "doc": "One-dimensional linear interpolation for monotonically increasing sample points.\n\nReturns the one-dimensional piecewise linear interpolant to a function with given discrete data points (xp, fp), evaluated at x.",
-}
--/
-
-/-  One-dimensional linear interpolation for monotonically increasing sample points.
-    Returns the one-dimensional piecewise linear interpolant to a function with given
-    discrete data points (xp, fp), evaluated at x. -/
-
-/-  Specification: interp performs linear interpolation between discrete data points -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

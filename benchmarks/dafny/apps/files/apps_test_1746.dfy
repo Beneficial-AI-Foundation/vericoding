@@ -1,9 +1,3 @@
-/*
-Determine if a rooted tree is a "spruce". A rooted tree is a spruce if every 
-non-leaf vertex has at least 3 leaf children. A leaf is a vertex with no children,
-and a non-leaf vertex has at least one child.
-*/
-
 function hasChildren(node: int, parents: seq<int>, n: int): bool
     requires 0 <= node < n
     requires n >= 3

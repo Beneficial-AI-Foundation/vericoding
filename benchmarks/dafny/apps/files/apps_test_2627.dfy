@@ -1,7 +1,3 @@
-/*
-Given a 2D binary matrix containing only "0"s and "1"s, find the area of the largest rectangle that contains only "1"s.
-*/
-
 predicate ValidMatrix(matrix: seq<seq<string>>)
 {
     (forall i :: 0 <= i < |matrix| ==> |matrix[i]| == (if |matrix| == 0 then 0 else |matrix[0]|)) &&

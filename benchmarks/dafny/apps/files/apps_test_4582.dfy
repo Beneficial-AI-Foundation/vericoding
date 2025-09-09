@@ -1,9 +1,3 @@
-/*
-Given two characters representing AtCoDeer's honesty status and claim about TopCoDeer,
-determine whether TopCoDeer is actually honest or dishonest.
-An honest player tells the truth, a dishonest player lies.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| >= 3 &&

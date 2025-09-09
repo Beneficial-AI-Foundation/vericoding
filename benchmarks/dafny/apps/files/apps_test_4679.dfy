@@ -1,10 +1,3 @@
-/*
-Three players (Alice, Bob, Charlie) play a card game with decks of cards labeled 'a', 'b', or 'c'.
-Alice starts first. On each turn, if current player's deck is empty, they win the game.
-Otherwise, discard the top card; the letter determines next player ('a'→Alice, 'b'→Bob, 'c'→Charlie).
-Given initial decks as strings, determine the winner.
-*/
-
 predicate ValidDeck(deck: string)
 {
     forall i :: 0 <= i < |deck| ==> deck[i] == 'a' || deck[i] == 'b' || deck[i] == 'c'

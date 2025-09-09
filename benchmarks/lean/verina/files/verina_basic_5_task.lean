@@ -1,17 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that multiplies two integers. The method should return the product of the two input numbers.
-
------Input-----
-The input consists of:
-a: The first integer.
-b: The second integer.
-
------Output-----
-The output is an integer:
-Returns the product of the two input integers (a * b).
--/
-
 @[reducible, simp]
 def multiply_precond (a : Int) (b : Int) : Prop :=
   True

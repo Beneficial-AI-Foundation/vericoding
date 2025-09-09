@@ -1,19 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that, given a binary string `s` and an integer `k`, finds the shortest contiguous substring that contains exactly `k` characters `'1'`.
-
-Among all substrings of `s` that contain exactly `k` occurrences of `'1'`, return the one that is shortest in length. If there are multiple such substrings with the same length, return the lexicographically smallest one.
-
-If no such substring exists, return the empty string.
-
------Input-----
-- s: A binary string (only consisting of characters `'0'` and `'1'`)
-- k: A natural number (k ≥ 0)
-
------Output-----
-A string representing the shortest substring of `s` that contains exactly `k` ones. If no such substring exists, return `""`.
--/
-
 @[reducible]
 def shortestBeautifulSubstring_precond (s : String) (k : Nat) : Prop :=
   s.toList.all (fun c => c = '0' ∨ c = '1')

@@ -1,16 +1,3 @@
-/- 
------Description-----
-Implement a Lean 4 function that, given a list of integers, removes all duplicates and returns the resulting list in ascending order.
-
------Input-----
-The input consists of a single list of integers:
-arr: A list of integers.
-
------Output-----
-The output is a list of integers:
-Returns a list containing the unique elements of the input, sorted in ascending order. The returned list must not contain any duplicates, and every element in the output must appear in the original input list.
--/
-
 @[reducible, simp]
 def uniqueSorted_precond (arr : List Int) : Prop :=
   True

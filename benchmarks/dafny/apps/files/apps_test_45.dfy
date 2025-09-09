@@ -1,9 +1,3 @@
-/*
-Given positive integers n and k, find a strictly increasing sequence of k positive integers 
-that sum to n and have the maximum possible greatest common divisor (GCD). 
-If no such sequence exists, return -1.
-*/
-
 predicate ValidInput(n: int, k: int)
 {
     n > 0 && k > 0

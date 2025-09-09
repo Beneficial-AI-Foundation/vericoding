@@ -1,10 +1,3 @@
-/*
-Given an array of n integers, for each k from 1 to n-1, construct a k-ary heap structure 
-and count the number of min-heap property violations. In a k-ary heap with 1-indexed elements,
-element at index i has parent at index ⌊(i+k-2)/k⌋ (for i > 1). A violation occurs when 
-a[child] < a[parent].
-*/
-
 predicate ValidInput(n: int, a: seq<int>)
 {
   n >= 2 && |a| == n

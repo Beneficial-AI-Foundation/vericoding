@@ -1,10 +1,3 @@
-/*
-Given 4 square pieces of size n×n (where n is odd), each containing squares colored 0 (white) or 1 (black),
-arrange them into a 2n×2n board and recolor the minimum number of squares to form a valid chessboard.
-A valid chessboard has alternating colors where each square has a different color from all its adjacent squares.
-Pieces can be rearranged but cannot be rotated or flipped.
-*/
-
 predicate contains_valid_input_format(input: string)
 {
     exists n: int :: 1 <= n <= 100 && n % 2 == 1 && 

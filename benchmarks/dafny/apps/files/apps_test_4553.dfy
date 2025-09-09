@@ -1,9 +1,3 @@
-/*
-Given integers A and B, and a string S of length A+B+1, determine if S follows 
-the postal code format where the character at position A+1 (1-indexed) is a hyphen '-'
-and all other characters are digits 0-9.
-*/
-
 predicate ValidPostalCode(A: int, B: int, S: string)
     requires A >= 1 && B >= 1 && A <= 5 && B <= 5
     requires |S| == A + B + 1

@@ -1,8 +1,3 @@
-/*
-Given a positive integer x, find the positive integer not exceeding x that has the maximum sum of digits. 
-If multiple such integers exist, return the largest one.
-*/
-
 function intToDigits(x: int): seq<int>
   requires x >= 0
 {

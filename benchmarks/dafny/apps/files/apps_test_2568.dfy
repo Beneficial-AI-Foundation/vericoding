@@ -1,9 +1,3 @@
-/*
-Given a string of '+' and '-' characters, simulate finding the minimum initial value
-needed to keep a running sum non-negative throughout the string. Count the total
-number of characters processed across all attempts until finding a successful initial value.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> s[i] == '+' || s[i] == '-'

@@ -1,9 +1,3 @@
-/*
-Given an array of n integers where initially a[x] = 1 and all other elements are 0,
-determine how many positions can contain the value 1 after performing m swap operations optimally.
-Each operation i allows swapping any two elements at positions c and d where l_i ≤ c, d ≤ r_i.
-*/
-
 predicate ValidInput(testCases: seq<(int, int, seq<(int, int)>)>)
 {
     |testCases| >= 0 &&

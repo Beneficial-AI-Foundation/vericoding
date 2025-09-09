@@ -1,16 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that returns the majority element from a list of integers.
-
-The majority element is the one that appears more than ⌊n / 2⌋ times in the list, where n is the list's length. You may assume that a majority element always exists in the input.
-
------Input-----
-- nums: A list of integers (with at least one majority element).
-
------Output-----
-Returns the majority element — the value that appears more than ⌊n / 2⌋ times.
--/
-
 @[reducible, simp]
 def majorityElement_precond (nums : List Int) : Prop :=
   True

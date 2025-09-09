@@ -1,8 +1,3 @@
-/*
-Given two positive integers a and b, find the minimum number of increments needed 
-to make a divisible by b. In each move, you can increase a by 1.
-*/
-
 predicate ValidInput(test_cases: seq<(int, int)>)
 {
     forall i :: 0 <= i < |test_cases| ==> 

@@ -3,25 +3,6 @@ vc-description: |-
   Given a positive integer n, return a tuple that has the number of even and odd integer palindromes that fall within the range(1, n), inclusive.
 
 vc-preamble: |-
-  function is_palindrome(n: nat) : bool {
-    var s := natToString(n);
-    forall i | 0 <= i < |s| :: s[i] == s[|s|-1-i]
-  }
-
-vc-helpers: |-
-
-vc-spec: |-
-  method even_odd_palindrome(n: nat) returns (even: nat, odd: nat)
-    // post-conditions-start
-    ensures even == |set i | 0 <= i <= n && i % 2 == 0 && is_palindrome(i)|
-    ensures odd == |set i | 0 <= i <= n && i % 2 == 1 && is_palindrome(i)|
-
-vc-code: |-
-  {
-    assume {:axiom} false;
-  }
-
-vc-postamble: |-
   type stringNat = s: string |
   |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
   forall i | 0 <= i < |s| :: s[i] in "0123456789"
@@ -32,7 +13,6 @@ vc-postamble: |-
   case 5 => "5" case 6 => "6" case 7 => "7" case 8 => "8" case 9 => "9"
   case _ => natToString(n / 10) + natToString(n % 10)
   }
-  // pure-end
   function stringToNat(s: stringNat): nat
   decreases |s|
   {
@@ -43,5 +23,24 @@ vc-postamble: |-
   else
       stringToNat(s[..|s|-1])*10 + stringToNat(s[|s|-1..|s|])
   }
-  // pure-end
+  
+  function is_palindrome(n: nat) : bool {
+    var s := natToString(n);
+    forall i | 0 <= i < |s| :: s[i] == s[|s|-1-i]
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method even_odd_palindrome(n: nat) returns (even: nat, odd: nat)
+  
+    ensures even == |set i | 0 <= i <= n && i % 2 == 0 && is_palindrome(i)|
+    ensures odd == |set i | 0 <= i <= n && i % 2 == 1 && is_palindrome(i)|
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
 

@@ -1,6 +1,3 @@
-/*
-*/
-
 function Power(base: int, exponent: int): int
     requires exponent >= 0
 {

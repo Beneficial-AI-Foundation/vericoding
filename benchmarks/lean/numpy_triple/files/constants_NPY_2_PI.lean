@@ -1,16 +1,3 @@
-/- 
-{
-  "name": "NPY_2_PI",
-  "category": "C API Mathematical constants",
-  "description": "2 divided by pi",
-  "doc": "2/π = 0.636619772367581343075535053490057448",
-}
--/
-
-/-  The mathematical constant 2/π, approximately 0.6366... -/
-
-/-  Specification: NPY_2_PI represents the ratio 2/π and satisfies key mathematical properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

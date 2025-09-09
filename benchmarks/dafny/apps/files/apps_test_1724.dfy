@@ -1,9 +1,3 @@
-/*
-Given an array a of n non-negative integers and a binary string representing number m,
-find the maximum value of function f(x) = sum(a[i] * bit_i(x)) for all integers x in range [0, m],
-where bit_i(x) is 1 if the i-th bit of x is set, 0 otherwise.
-*/
-
 predicate ValidInput(n: int, a: seq<int>, k: string)
 {
   n >= 1 && |a| == n && |k| == n && 

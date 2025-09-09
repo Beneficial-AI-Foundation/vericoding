@@ -1,9 +1,3 @@
-/*
-Given a w×h grid, place square tiles that are diagonally split into white and black halves.
-Each tile can be rotated in 4 orientations. Adjacent tiles must have different colors on their
-shared edge. Count the number of valid tilings modulo 998244353.
-*/
-
 predicate ValidInput(input: string)
 {
   |input| > 0 &&

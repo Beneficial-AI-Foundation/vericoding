@@ -1,10 +1,3 @@
-/*
-Fill an n×n chessboard with numbers 1 to n² using a specific pattern:
-Place first ⌈n²/2⌉ numbers in cells where (row + column) is even, filling left-to-right, top-to-bottom
-Place remaining numbers in cells where (row + column) is odd, filling left-to-right, top-to-bottom
-For given queries (xi, yi), return the number at each position
-*/
-
 predicate ValidInput(n: int, queries: seq<(int, int)>)
 {
     n > 0 && 

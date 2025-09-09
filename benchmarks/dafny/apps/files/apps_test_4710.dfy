@@ -1,8 +1,3 @@
-/*
-Given an integer rating x, classify it as "ABC" if x < 1200, otherwise "ARC".
-The input must be between 1 and 3000 inclusive.
-*/
-
 predicate ValidInput(x: int) {
     1 <= x <= 3000
 }

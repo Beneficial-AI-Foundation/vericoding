@@ -1,9 +1,3 @@
-/*
-Given n stones, find the maximum number of distributions such that no two
-consecutive distributions contain the same number of stones. Each distribution
-must contain at least 1 stone.
-*/
-
 predicate ValidInput(n: int) {
     n >= 1
 }

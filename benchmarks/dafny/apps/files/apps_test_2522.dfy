@@ -1,8 +1,3 @@
-/*
-Given two sorted sequences A and B of length N, determine if B can be reordered 
-so that A[i] ≠ B[i] for all positions i. If possible, output any valid reordering of B.
-*/
-
 predicate ValidInput(n: int, a: seq<int>, b: seq<int>)
 {
     |a| == n && |b| == n && n >= 1 &&

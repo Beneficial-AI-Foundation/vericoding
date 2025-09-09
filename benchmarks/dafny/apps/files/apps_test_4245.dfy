@@ -1,7 +1,3 @@
-/*
-Given a single socket that can be extended using power strips, find the minimum number of power strips needed to have at least B empty sockets. Each power strip has A sockets and when plugged into an empty socket, it replaces that 1 socket with A sockets (net gain of A-1 sockets).
-*/
-
 predicate ValidInput(a: int, b: int)
 {
   a > 1 && b >= 0

@@ -1,9 +1,3 @@
-/*
-Given N total test cases and M passed test cases, determine if all test cases 
-were passed. Input is a string with N and M separated by space. Output "Yes" 
-if M = N (all passed), "No" otherwise. Constraints: 1 ≤ N ≤ 100, 0 ≤ M ≤ N.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 &&

@@ -1,7 +1,3 @@
-/*
-Given an integer a (1 ≤ a ≤ 40), output the last name of the a-th President of the United States.
-*/
-
 predicate ValidInput(a: int) {
     1 <= a <= 40
 }

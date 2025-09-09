@@ -1,20 +1,3 @@
-/- 
------Description-----
-This task involves computing the integer square root of a given natural number. The goal is to determine the largest natural number r that satisfies r * r ≤ N and N < (r + 1) * (r + 1).
-
------Input-----
-The input consists of:
-• N: A natural number.
-
------Output-----
-The output is a natural number r that meets the following conditions:
-• r * r ≤ N
-• N < (r + 1) * (r + 1)
-
------Note-----
-The implementation relies on a recursive strategy to iteratively increment r until (r + 1)*(r + 1) exceeds N. Edge cases, such as N = 0, should be handled correctly.
--/
-
 @[reducible, simp]
 def SquareRoot_precond (N : Nat) : Prop :=
   True

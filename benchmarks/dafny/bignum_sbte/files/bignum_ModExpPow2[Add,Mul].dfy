@@ -1,15 +1,10 @@
-/*
-Bignum task: bignum_ModExpPow2[Add,Mul].
-Implement the method according to the Dafny specification.
-*/
-
 ghost function Exp_int(x: nat, y:nat): nat
 {
   if y == 0 then 1 else x * Exp_int(x, y - 1)
 }
 predicate ValidBitString(s: string)
 {
-  // All characters must be '0' or '1'.
+
   forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
 }
 ghost function Str2Int(s: string): nat
@@ -41,7 +36,7 @@ method Mul(s1: string, s2: string) returns (res: string)
 // <vc-spec>
 method ModExpPow2(sx: string, sy: string, n: nat, sz: string) returns (res: string)
   requires ValidBitString(sx) && ValidBitString(sy) &&  ValidBitString(sz)
-  // sy is power of 2 or zero
+
   requires Str2Int(sy) == Exp_int(2,n) || Str2Int(sy) == 0
   requires |sy| == n+1
   requires Str2Int(sz) > 1

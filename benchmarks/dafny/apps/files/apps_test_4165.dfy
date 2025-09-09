@@ -1,9 +1,3 @@
-/*
-Given N side lengths of a polygon, determine if the polygon can be drawn in a 2D plane.
-A polygon can be drawn if and only if the longest side length is strictly less than 
-the sum of all other side lengths.
-*/
-
 predicate ValidInput(sides: seq<int>)
 {
     |sides| >= 3 && forall i :: 0 <= i < |sides| ==> sides[i] > 0

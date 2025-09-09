@@ -1,8 +1,3 @@
-/*
-Bignum task: bignum_Add[NormalizeBitString].
-Implement the method according to the Dafny specification.
-*/
-
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
   decreases s
@@ -11,14 +6,14 @@ ghost function Str2Int(s: string): nat
 }
 predicate ValidBitString(s: string)
 {
-  // All characters must be '0' or '1'.
+
   forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
 }
 
 method NormalizeBitString(s: string) returns(t: string)
-  // Remove leading zeros, except keep at least one digit
+
   ensures ValidBitString(t)
-  // I added and proved some extra post-conditions:
+
   ensures |t| > 0
   ensures |t| > 1 ==> t[0] != '0'
   ensures ValidBitString(s) ==> Str2Int(s) == Str2Int(t)

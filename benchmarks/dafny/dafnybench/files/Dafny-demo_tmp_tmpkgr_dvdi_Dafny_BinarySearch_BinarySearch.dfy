@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate sorted(a: array?<int>, l: int, u: int)
     reads a
     requires a != null

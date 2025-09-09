@@ -1,9 +1,3 @@
-/*
-Given n distinct points representing electric poles, count the number of pairs of wires that intersect.
-Every pair of poles is connected by a wire (infinite straight line). If multiple poles lie on the same line,
-they share a single wire. Return the number of intersecting wire pairs.
-*/
-
 predicate validInputFormat(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n' &&

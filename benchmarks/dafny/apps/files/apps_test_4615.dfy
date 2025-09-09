@@ -1,10 +1,3 @@
-/*
-Find the sugar water mixture with maximum density given constraints on water and sugar operations.
-Operations: add 100A or 100B grams water, add C or D grams sugar.
-E grams sugar can dissolve per 100 grams water. Beaker capacity is F grams.
-Maximize density = (100 × sugar_mass) / (water_mass + sugar_mass).
-*/
-
 predicate ValidInput(a: int, b: int, c: int, d: int, e: int, f: int)
 {
     1 <= a < b <= 30 &&

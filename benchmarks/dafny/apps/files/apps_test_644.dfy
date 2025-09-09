@@ -1,9 +1,3 @@
-/*
-Execute a sequence of commands (for n, end, add) that manipulate an integer variable x starting at 0.
-Commands form valid nested loops. Check if x exceeds 2^32 - 1 at any point during execution.
-Return "OVERFLOW!!!" if overflow occurs, otherwise return the final value of x.
-*/
-
 predicate ValidInput(lines: seq<string>)
 {
     |lines| > 0

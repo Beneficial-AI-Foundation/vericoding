@@ -1,8 +1,3 @@
-/*
-function_signature: def order_by_points(nums: List[int]) -> List[int]
-Write a function which sorts the given list of integers in ascending order according to the sum of their digits. Note: if there are several items with similar sum of their digits, order them based on their index in original list.
-*/
-
 function digits_sum_pos(n: int): int
   requires n >= 0
 {
@@ -17,11 +12,10 @@ function digits_sum(n: int): int {
 
 // <vc-spec>
 method order_by_points(s: seq<int>) returns (sorted: seq<int>)
-  // post-conditions-start
+
   ensures forall i, j :: 0 <= i < j < |sorted| ==> digits_sum(sorted[i]) <= digits_sum(sorted[j])
   ensures |sorted| == |s|
   ensures multiset(s) == multiset(sorted)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

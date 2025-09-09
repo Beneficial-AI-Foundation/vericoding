@@ -1,6 +1,3 @@
-/*
-*/
-
 method Partition(a: array<int>, lo: int, hi: int) returns (p: int)
     requires 0 <= lo < hi <= a.Length
     modifies a

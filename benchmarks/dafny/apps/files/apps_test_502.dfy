@@ -1,11 +1,3 @@
-/*
-Given three distinct points a, b, and c, determine if there exists a rotation center and angle 
-such that rotating point a gives point b, and rotating point b gives point c.
-The rotation must map a → b and b → c using the same center and angle.
-For a valid rotation to exist, the distances |ab| and |bc| must be equal and 
-the three points cannot be collinear.
-*/
-
 function lengthSqr(p1: (int, int), p2: (int, int)): int
 {
     (p1.0 - p2.0) * (p1.0 - p2.0) + (p1.1 - p2.1) * (p1.1 - p2.1)

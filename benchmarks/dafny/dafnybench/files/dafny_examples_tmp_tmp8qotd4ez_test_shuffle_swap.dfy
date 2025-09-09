@@ -1,6 +1,3 @@
-/*
-*/
-
 function set_of_seq<T>(s: seq<T>): set<T>
 {
   set x: T | x in s :: x
@@ -11,7 +8,7 @@ function set_of_seq<T>(s: seq<T>): set<T>
 
 // <vc-spec>
 method swap<T>(a: array<T>, i: int, j: int)
-  // requires a != null
+
   requires 0 <= i < a.Length && 0 <= j < a.Length
   modifies a
   ensures a[i] == old(a[j])

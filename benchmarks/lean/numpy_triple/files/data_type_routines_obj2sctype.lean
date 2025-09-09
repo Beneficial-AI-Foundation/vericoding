@@ -1,26 +1,3 @@
-/-  numpy.obj2sctype: Return the scalar dtype or NumPy equivalent of Python type of an object.
-
-    Takes any object and returns its corresponding NumPy scalar data type.
-    If the object's type cannot be determined, returns the default value if provided,
-    otherwise returns none.
-
-    This function performs type introspection to determine the appropriate NumPy
-    scalar type for any given object, including arrays, scalars, and generic objects.
--/
-
-/-  Specification: obj2sctype returns the appropriate NumPy scalar type for the input object.
-
-    The function correctly identifies:
-    1. Scalar types from their corresponding objects
-    2. Array element types from array objects
-    3. Generic object types
-    4. Returns default for unrecognized types
-    5. Returns none when no default is provided for unrecognized types
-
-    Precondition: True (works with any object)
-    Postcondition: The result correctly represents the scalar type of the input object
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

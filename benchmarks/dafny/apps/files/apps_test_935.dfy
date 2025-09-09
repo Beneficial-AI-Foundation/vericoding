@@ -1,10 +1,3 @@
-/*
-Given a grid with n horizontal and m vertical sticks, two players take turns
-removing intersection points. When an intersection is removed, all sticks 
-passing through it are removed. The player who cannot make a move loses.
-Akshat goes first. Determine the winner when both players play optimally.
-*/
-
 predicate ValidInput(n: int, m: int)
 {
     1 <= n <= 100 && 1 <= m <= 100

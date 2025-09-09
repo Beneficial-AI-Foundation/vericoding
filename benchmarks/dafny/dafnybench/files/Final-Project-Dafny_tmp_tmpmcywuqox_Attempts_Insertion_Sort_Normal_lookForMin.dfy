@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate sorted (a: array<int>)
 
     reads a

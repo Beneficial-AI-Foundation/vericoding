@@ -1,18 +1,3 @@
-/-  Pseudo-Vandermonde matrix of given degrees for 2D Hermite polynomials.
-
-    Returns a matrix where each row corresponds to a sample point (x[i], y[i]),
-    and columns represent products of Hermite polynomials H_i(x) * H_j(y).
-    The column at index (ydeg + 1)*i + j contains H_i(x) * H_j(y).
-
-    This creates the design matrix for fitting 2D Hermite polynomial surfaces,
-    where coefficients are arranged in row-major order: c_00, c_01, ..., c_10, c_11, ...
--/
-
-/-  Specification: hermvander2d creates a 2D Vandermonde matrix where each element
-    V[k][(ydeg + 1)*i + j] equals H_i(x[k]) * H_j(y[k]), where H_i denotes the 
-    i-th Hermite polynomial. The Hermite polynomials follow the recurrence:
-    H_0(t) = 1, H_1(t) = 2t, H_n(t) = 2t * H_{n-1}(t) - 2(n-1) * H_{n-2}(t) -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

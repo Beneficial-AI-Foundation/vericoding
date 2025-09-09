@@ -1,9 +1,3 @@
-/*
-Given three brothers numbered 1, 2, and 3, exactly two brothers arrived on time 
-for a meeting and one brother was late. Given the numbers of the two brothers who 
-arrived on time, determine the number of the brother who was late.
-*/
-
 predicate ValidBrotherNumbers(a: int, b: int)
 {
   1 <= a <= 3 && 1 <= b <= 3 && a != b

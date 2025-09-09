@@ -1,8 +1,3 @@
-/*
-Given current time A (0-23) and hours B until contest begins (0-23), 
-determine the contest start time in 24-hour format using modular arithmetic.
-*/
-
 predicate ValidInput(input: string)
 {
     exists A, B :: 0 <= A <= 23 && 0 <= B <= 23 && 

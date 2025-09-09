@@ -1,17 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 function that converts a binary number represented as a list of digits (0 or 1) into its corresponding decimal value. The list is ordered in big-endian format, meaning the most significant digit comes first.
-The function should interpret the list as a binary number and return its decimal representation as a natural number.
-
------Input-----
-The input is a list of natural numbers:
-digits: A list of digits, each of which is either 0 or 1, representing a binary number in big-endian order.
-
------Output-----
-The output is a natural number:
-Returns the decimal value of the binary number represented by the input list.
--/
-
 @[reducible]
 def binaryToDecimal_precond (digits : List Nat) : Prop :=
   digits.all (fun d => d = 0 ∨ d = 1)

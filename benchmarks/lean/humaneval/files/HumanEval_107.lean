@@ -1,15 +1,3 @@
-/- 
-function_signature: "def even_odd_palindrome(n: nat) -> (nat, nat)"
-docstring: |
-    Given a positive integer n, return a tuple that has the number of even and odd
-    integer palindromes that fall within the range(1, n), inclusive.
-test_cases:
-  - input: 3
-    expected_output: (1, 2)
-  - input: 12
-    expected_output: (4, 6)
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

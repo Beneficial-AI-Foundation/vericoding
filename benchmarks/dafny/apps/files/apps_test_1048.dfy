@@ -1,10 +1,3 @@
-/*
-Given a sequence of movement commands for a robot on an infinite grid, find the maximum number of commands 
-that could be executed such that the robot returns to its starting position (0, 0). The robot can move 
-U (up), D (down), L (left), or R (right). To return to origin, we need equal numbers of L/R movements 
-and equal numbers of U/D movements.
-*/
-
 function count_char(s: string, c: char): int
 {
     if |s| == 0 then 0

@@ -1,10 +1,3 @@
-/*
-Given an array of length n containing only 1s and 2s, find the minimum number of elements
-to change to make the array k-periodic. An array is k-periodic if it can be represented 
-as a pattern of length k repeated exactly n/k times consecutively. The constraint is that 
-n is divisible by k.
-*/
-
 predicate ValidInput(n: int, k: int, A: seq<int>)
 {
   1 <= k <= n <= 100 &&

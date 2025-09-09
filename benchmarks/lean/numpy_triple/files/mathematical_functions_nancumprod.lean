@@ -1,23 +1,3 @@
-/- 
-{
-  "name": "numpy.nancumprod",
-  "description": "Return the cumulative product of array elements over a given axis treating Not a Numbers (NaNs) as one",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.nancumprod.html",
-  "doc": "Return the cumulative product of array elements over a given axis treating Not a Numbers (NaNs) as one.",
-}
--/
-
-/-  Return the cumulative product of array elements treating NaNs as 1.
-    The cumulative product does not change when NaNs are encountered and leading NaNs are replaced by ones. -/
-
-/-  Specification: nancumprod returns the cumulative product while treating NaN values as 1.
-    This means:
-    1. The resulting array has the same size as the input
-    2. Each element is the product of all non-NaN elements from the start up to that position
-    3. NaN values are treated as 1 in the product calculation
-    4. Leading NaNs are replaced by ones
-    5. The cumulative product property holds for non-NaN values -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

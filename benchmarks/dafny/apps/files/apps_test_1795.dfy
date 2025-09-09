@@ -1,9 +1,3 @@
-/*
-Given n planes numbered 1 to n, where each plane i likes exactly one other plane f_i (f_i ≠ i),
-determine if there exists a love triangle. A love triangle occurs when plane A likes plane B,
-plane B likes plane C, and plane C likes plane A.
-*/
-
 predicate ValidInput(n: int, f: seq<int>)
 {
     n >= 2 && n <= 5000 &&

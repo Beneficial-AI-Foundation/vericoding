@@ -1,8 +1,3 @@
-/*
-function_signature: method select_at_most_two_digits(arr: seq<int>) returns (result: seq<int>)
-Select elements. Requires: the size is bounded. Ensures: the condition holds for all values; the condition holds for all values; selects only numbers with at most two digits.
-*/
-
 function sum(s: seq<int>) : int {
   if |s| == 0 then 0 else s[0] + sum(s[1..])
 }
@@ -19,30 +14,15 @@ function select_at_most_two_digits_rec(arr: seq<int>): seq<int>
 
 // <vc-spec>
 method select_at_most_two_digits(arr: seq<int>) returns (result: seq<int>)
-  // pre-conditions-start
+
   requires |arr| > 0 && |arr| <= 100
-  // pre-conditions-end
-  // post-conditions-start
+
   ensures forall i :: 0 <= i < |result| ==> 0 <= result[i] < 100
   ensures forall i :: 0 <= i < |result| ==> result[i] in arr
   ensures result == select_at_most_two_digits_rec(arr)
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {
   assume {:axiom} false;
 }
 // </vc-code>
-
-method SumElementsWithAtMostTwoDigits(arr: seq<int>, k: int) returns (s: int)
-  // pre-conditions-start
-  requires |arr| > 0 && |arr| <= 100
-  requires 1 <= k <= |arr|
-  // pre-conditions-end
-  // post-conditions-start
-  ensures var two_digits := select_at_most_two_digits_rec(arr[..k]);
-          s == sum(two_digits)
-  // post-conditions-end
-{
-  assume{:axiom} false;
-}

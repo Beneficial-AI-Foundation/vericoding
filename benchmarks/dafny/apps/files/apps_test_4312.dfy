@@ -1,9 +1,3 @@
-/*
-Two monsters battle in turns. Takahashi's monster (health A, strength B) attacks first,
-then they alternate. Each attack reduces opponent's health by attacker's strength.
-First monster to reach 0 or below health loses. Determine if Takahashi wins.
-*/
-
 predicate ValidInput(A: int, B: int, C: int, D: int)
 {
   1 <= A <= 100 && 1 <= B <= 100 && 1 <= C <= 100 && 1 <= D <= 100

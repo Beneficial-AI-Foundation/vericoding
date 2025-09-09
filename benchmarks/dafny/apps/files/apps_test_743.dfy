@@ -1,8 +1,3 @@
-/*
-Given n positive integers, repeatedly perform operations where you select two indices i,j
-with x_i > x_j and set x_i = x_i - x_j. Find the minimum possible sum after any number of operations.
-*/
-
 predicate ValidInput(n: int, ar: seq<int>)
 {
   n >= 2 && |ar| == n && forall i :: 0 <= i < n ==> ar[i] > 0

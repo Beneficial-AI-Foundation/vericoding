@@ -1,9 +1,3 @@
-/*
-Given a 4×4 grid where each cell is either black ('#') or white ('.'), 
-determine if it's possible to create a 2×2 square of uniform color by 
-repainting at most one cell. Return "YES" if possible, "NO" otherwise.
-*/
-
 function ParseInputLines(input: string): seq<string>
 {
     SplitByNewlineSimple(input, 0, [])

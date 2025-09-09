@@ -1,18 +1,3 @@
-/- 
-function_signature: "def modp(n: Nat, p: Nat) -> Nat"
-docstring: |
-    Return 2^n modulo p (be aware of numerics).
-test_cases:
-  - input: [3, 5]
-    expected_output: 3
-  - input: [1101, 101]
-    expected_output: 2
-  - input: [0, 101]
-    expected_output: 0
-  - input: [100, 101]
-    expected_output: 1
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

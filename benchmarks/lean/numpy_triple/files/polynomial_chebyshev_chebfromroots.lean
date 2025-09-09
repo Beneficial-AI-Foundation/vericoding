@@ -1,17 +1,3 @@
-/-  Generate a Chebyshev series with given roots.
-
-    Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ)
-    in Chebyshev form, where rₙ are the roots specified in the input.
-
-    The output coefficients c satisfy: p(x) = c₀ + c₁ * T₁(x) + ... + cₙ * Tₙ(x)
-    where Tₙ(x) is the n-th Chebyshev polynomial of the first kind. -/
-
-/-  Specification: chebfromroots generates Chebyshev coefficients such that:
-    1. The output has exactly n+1 coefficients where n is the number of roots
-    2. The polynomial represented by these coefficients has the given roots
-    3. When evaluated at any root rᵢ using Chebyshev basis, the result is zero
-    4. The highest degree coefficient is non-zero (ensuring correct degree) -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

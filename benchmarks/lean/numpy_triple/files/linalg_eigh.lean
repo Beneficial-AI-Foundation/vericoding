@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.linalg.eigh",
-  "category": "Matrix eigenvalues",
-  "description": "Return the eigenvalues and eigenvectors of a complex Hermitian or symmetric matrix",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html",
-  "doc": "Return the eigenvalues and eigenvectors of a complex Hermitian (conjugate symmetric) or a real symmetric matrix.\n\nParameters:\n- a: Hermitian or symmetric matrix\n- UPLO: Whether to use upper or lower triangular part\n\nReturns namedtuple with:\n- eigenvalues: The eigenvalues in ascending order\n- eigenvectors: The normalized eigenvectors\n\nThe eigenvalues are always real.",
-}
--/
-
-/-  Compute eigenvalues and eigenvectors of a Hermitian or symmetric matrix -/
-
-/-  Specification: eigh returns eigenvalues and eigenvectors satisfying the eigenvalue equation -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

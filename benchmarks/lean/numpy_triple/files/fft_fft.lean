@@ -1,37 +1,3 @@
-/- 
-{
-  "name": "numpy.fft.fft",
-  "description": "Compute the one-dimensional discrete Fourier Transform",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fft.fft.html",
-  "doc": "numpy.fft.fft(a, n=None, axis=-1, norm=None, out=None)\n\nCompute the one-dimensional discrete Fourier Transform using the efficient Fast Fourier Transform (FFT) algorithm.\n\nParameters:\n- a: Input array (can be complex)\n- n: Optional length of transformed axis (default: input length)\n- axis: Axis to compute FFT (default: last axis)\n- norm: Normalization mode (\"backward\", \"ortho\", \"forward\")\n- out: Optional output array\n\nReturns:\n- Complex ndarray transformed along specified axis\n\nNotes:\n- Most efficient when input size is a power of 2\n- FFT calculates Discrete Fourier Transform efficiently\n- Uses symmetries to optimize calculation\n- Supports real and complex inputs\n- Handles input cropping and zero-padding\n- Provides flexible normalization options\n\nExample:\nimport numpy as np\nnp.fft.fft(np.exp(2j * np.pi * np.arange(8) / 8))",
-}
--/
-
-/-  Compute the one-dimensional discrete Fourier Transform
-
-    The FFT computes the DFT defined as:
-    X[k] = Σ(n=0 to N-1) x[n] * exp(-2πi*k*n/N)
-
-    where:
-    - x is the input vector
-    - X is the output vector
-    - N is the length of the vector
-    - i is the imaginary unit
--/
-
-/-  Specification: FFT computes the discrete Fourier transform
-
-    The FFT satisfies the DFT equation and has the following properties:
-    1. Each output element is the sum of input elements weighted by complex exponentials
-    2. The transform is linear
-    3. Parseval's theorem: energy is preserved (with proper normalization)
-    4. FFT(FFT^(-1)(x)) = x (inverse property when combined with IFFT)
-
-    The specification captures the fundamental DFT formula where each output
-    element k is computed as the sum over all input elements j, multiplied
-    by the complex exponential exp(-2πi*k*j/n).
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

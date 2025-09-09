@@ -1,18 +1,3 @@
-/- 
-function_signature: "def encode_cyclic(s: str) -> str"
-docstring: |
-  Returns an encoded string by cycling each group of three consecutive characters.
-  Specifically, each group of exactly three characters 'abc' is transformed to 'bca'.
-  Groups of fewer than three characters at the end of the string remain unchanged.
-test_cases:
-  - input: "abcdef"
-    expected_output: "bcaefd"
-  - input: "abcde"
-    expected_output: "bcade"
-  - input: "ab"
-    expected_output: "ab"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

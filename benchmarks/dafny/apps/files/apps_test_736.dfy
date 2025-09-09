@@ -1,8 +1,3 @@
-/*
-Given a staircase with n steps, find the minimum number of moves to reach the top
-where each move climbs 1 or 2 steps, and total moves must be a multiple of m.
-*/
-
 predicate ValidInput(n: int, m: int)
 {
   n > 0 && n <= 10000 && m > 1 && m <= 10

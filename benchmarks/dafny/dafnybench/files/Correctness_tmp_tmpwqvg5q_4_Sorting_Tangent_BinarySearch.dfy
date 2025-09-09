@@ -1,17 +1,3 @@
-/*
-*/
-
-/**
-  Ather, Mohammad Faiz (s4648481/3)
-  CSSE3100
-  Assignemnt 3
-  The University of Queensland
- */
-
-// Question 1
-
-// Author: Leino, Title: Program Proofs
-
 // <vc-helpers>
 // </vc-helpers>
 

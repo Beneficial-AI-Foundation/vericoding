@@ -1,9 +1,3 @@
-/*
-Given two time intervals [l1, r1] and [l2, r2], and a specific minute k,
-find the number of minutes in the intersection of these intervals,
-excluding minute k if it falls within the intersection.
-*/
-
 predicate ValidInput(l1: int, r1: int, l2: int, r2: int, k: int) {
     l1 <= r1 && l2 <= r2
 }

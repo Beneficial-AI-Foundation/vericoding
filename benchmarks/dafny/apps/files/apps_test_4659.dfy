@@ -1,8 +1,3 @@
-/*
-Generate the first numRows rows of Pascal's triangle, where each number is the sum
-of the two numbers directly above it in the previous row.
-*/
-
 predicate ValidPascalTriangle(triangle: seq<seq<int>>, numRows: int)
 {
   |triangle| == numRows &&

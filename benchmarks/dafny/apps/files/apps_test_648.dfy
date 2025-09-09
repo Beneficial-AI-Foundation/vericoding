@@ -1,11 +1,3 @@
-/*
-Given integers m and b, find the maximum sum of bananas that can be collected from an optimally placed rectangle.
-Each lattice point (x,y) where x,y >= 0 contains x+y bananas.
-A line is defined by y = -x/m + b.
-A rectangle with axis-aligned sides can be placed anywhere such that all points are on or under the line.
-The rectangle can be degenerate (a line segment or single point).
-*/
-
 predicate ValidInput(m: int, b: int)
 {
   1 <= m <= 1000 && 1 <= b <= 10000

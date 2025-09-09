@@ -1,13 +1,3 @@
-/- 
-function_signature: "def add(x: Int, y: Int) -> Int"
-docstring: Add two numbers x and y
-test_cases:
-  - input: [2, 3]
-    expected_output: 5
-  - input: [5, 7]
-    expected_output: 12
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

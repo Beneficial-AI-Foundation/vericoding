@@ -1,9 +1,3 @@
-/*
-Find minimum cost to travel from city 1 to city n on a straight line where adjacent cities are 1 km apart,
-roads are directional (can only go from lower to higher numbered cities), car has fuel tank capacity v liters
-consuming 1 liter per km, and each city i sells fuel at i dollars per liter.
-*/
-
 predicate ValidInput(n: int, v: int) {
     2 <= n <= 100 && 1 <= v <= 100
 }

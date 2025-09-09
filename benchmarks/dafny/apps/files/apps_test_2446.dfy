@@ -1,7 +1,3 @@
-/*
-Given a sequence of n integers and q queries, for each query value x, count the number of contiguous subarrays whose greatest common divisor (GCD) equals x.
-*/
-
 predicate ValidInput(input: string)
 {
   var lines := SplitLinesFunc(input);

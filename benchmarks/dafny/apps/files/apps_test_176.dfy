@@ -1,9 +1,3 @@
-/*
-Count the number of integers in the range [a, b] that are divisible by k.
-Given three integers k, a, b where k > 0 and a <= b, return the count of
-integers x such that a <= x <= b and x % k == 0.
-*/
-
 predicate ValidInput(k: int, a: int, b: int)
 {
   k > 0 && a <= b

@@ -1,10 +1,3 @@
-/*
-Given a string of lowercase Latin letters, find the minimum number of characters 
-to remove so that the resulting string does not contain "xxx" (three consecutive x's) 
-as a substring. Characters can be removed from any positions. If the string initially 
-doesn't contain "xxx", return 0.
-*/
-
 predicate ValidInput(s: string) 
 {
     |s| >= 3

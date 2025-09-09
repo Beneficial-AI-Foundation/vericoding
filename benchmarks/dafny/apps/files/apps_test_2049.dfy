@@ -1,9 +1,3 @@
-/*
-Given an array of n integers and m queries, determine for each query whether a specified subsegment forms a "ladder".
-A ladder is a sequence that first non-decreases, then non-increases. Formally, there exists a position x such that 
-elements are non-decreasing up to position x, then non-increasing from position x onward.
-*/
-
 predicate isLadder(arr: seq<int>, l: int, r: int)
   requires 0 <= l <= r < |arr|
 {

@@ -1,6 +1,3 @@
-/*
-*/
-
 function SumR(s:seq<int>):int
 decreases s
 {
@@ -27,9 +24,7 @@ function SumV(v:array<int>,c:int,f:int):int
 
 // <vc-spec>
 method sumElems(v:array<int>) returns (sum:int)
-//ensures sum==SumL(v[0..v.Length])
 ensures sum==SumR(v[..])
-//ensures sum==SumV(v,0,v.Length)
 // </vc-spec>
 // <vc-code>
 {

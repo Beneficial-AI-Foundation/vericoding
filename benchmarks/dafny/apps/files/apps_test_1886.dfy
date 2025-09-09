@@ -1,8 +1,3 @@
-/*
-Given a non-empty word consisting of lowercase and uppercase English letters,
-capitalize the first letter while keeping all other letters unchanged.
-*/
-
 predicate ValidInput(word: string)
 {
   |word| > 0 && forall i :: 0 <= i < |word| ==> ('a' <= word[i] <= 'z') || ('A' <= word[i] <= 'Z')

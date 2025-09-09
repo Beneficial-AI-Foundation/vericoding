@@ -1,8 +1,3 @@
-/*
-Given 16 facts with numerical claims, determine whether each fact is true (1) or false (0) in reality.
-Each fact is numbered from 1 to 16 based on order of appearance. Input n specifies which fact to check.
-*/
-
 predicate ValidInput(n: int)
 {
     1 <= n <= 16

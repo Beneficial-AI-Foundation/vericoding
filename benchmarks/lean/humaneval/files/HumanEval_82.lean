@@ -1,19 +1,3 @@
-/- 
-function_signature: "def prime_length(s: str) -> bool"
-docstring: |
-    Write a function that takes a string and returns True if the string
-    length is a prime number or False otherwise
-test_cases:
-  - input: "Hello"
-    output: True
-  - input: "abcdcba"
-    output: True
-  - input: "kittens"
-    output: True
-  - input: "orange"
-    output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

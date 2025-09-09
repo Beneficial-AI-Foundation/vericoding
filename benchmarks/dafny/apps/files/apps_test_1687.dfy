@@ -1,9 +1,3 @@
-/*
-Given an array of positive integers, find an element from the array such that all elements
-in the array are divisible by it. If no such element exists, return -1. If multiple valid
-elements exist, return any one of them.
-*/
-
 function min(a: seq<int>): int
     requires |a| > 0
     ensures min(a) in a

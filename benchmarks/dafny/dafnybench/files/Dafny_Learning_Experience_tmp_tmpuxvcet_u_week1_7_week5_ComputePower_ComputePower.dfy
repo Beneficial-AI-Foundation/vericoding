@@ -1,6 +1,3 @@
-/*
-*/
-
 function Power(n:nat):nat 
 {
     if n == 0 then 1 else 2 * Power(n-1)

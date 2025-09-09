@@ -1,9 +1,3 @@
-/*
-Given a rectangular park represented as an n×m grid of squares, find the minimum number 
-of lanterns needed to light up all squares. Lanterns are placed on edges between squares,
-and each lantern illuminates adjacent squares (up to 2 squares, or 1 if on boundary).
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);

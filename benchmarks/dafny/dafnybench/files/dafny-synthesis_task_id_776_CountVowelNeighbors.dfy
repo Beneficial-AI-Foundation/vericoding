@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate IsVowel(c: char)
 {
     c in {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}

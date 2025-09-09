@@ -1,8 +1,3 @@
-/*
-Given an array where element a[i] = i * (-1)^i (so a[1] = -1, a[2] = 2, a[3] = -3, etc.),
-answer queries asking for the sum of elements from index l to r inclusive.
-*/
-
 predicate ValidQuery(query: (int, int))
 {
     query.0 >= 1 && query.0 <= query.1

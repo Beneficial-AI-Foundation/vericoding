@@ -1,9 +1,3 @@
-/*
-Given n timezones where day has n hours, find the optimal start time for a 1-hour contest
-to maximize participants. When it's hour 1 in timezone 1, it's hour i in timezone i.
-People participate only if contest starts between hours s and f-1 in their local time.
-*/
-
 predicate ValidInput(n: int, a: seq<int>, s: int, f: int)
 {
   n >= 2 && |a| == n && s >= 1 && f > s && f <= n &&

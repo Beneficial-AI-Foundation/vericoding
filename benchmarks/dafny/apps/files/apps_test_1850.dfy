@@ -1,10 +1,3 @@
-/*
-Given N astronauts with current point rankings and N point awards for the next race,
-find the best possible ranking for astronaut at position D after the race.
-The target astronaut gets the maximum award, and we try to minimize awards to astronauts
-ahead of them to maximize how many can be overtaken.
-*/
-
 predicate ValidInput(n: int, d: int, currentPoints: seq<int>, awards: seq<int>)
 {
     n >= 1 && n <= 200000 &&

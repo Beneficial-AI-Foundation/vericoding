@@ -1,11 +1,3 @@
-/*
-*/
-
-//Problem 01
-
-//problem02
-//a)
-
 // <vc-helpers>
 // </vc-helpers>
 

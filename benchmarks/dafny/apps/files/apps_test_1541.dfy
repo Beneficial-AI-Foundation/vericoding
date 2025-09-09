@@ -1,11 +1,3 @@
-/*
-Given a string representing a lever with weights and a pivot, determine if the lever
-tilts left, right, or remains balanced based on torque calculations.
-The pivot is marked by '^', weights are digits 1-9, and empty positions are '='.
-Torque = weight × distance from pivot. Left weights contribute positive torque,
-right weights contribute negative torque.
-*/
-
 predicate ValidLeverInput(s: string)
 {
     |s| >= 3 &&

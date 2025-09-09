@@ -1,10 +1,3 @@
-/*
-Given a notebook with infinite pages where each page holds exactly m names,
-write names for n consecutive days. On day i, write exactly a_i names.
-Fill pages sequentially - when a page becomes full, turn to the next page.
-Determine how many times you turn pages on each day.
-*/
-
 predicate ValidInput(n: int, m: int, a: seq<int>)
 {
     n >= 1 && m >= 1 && |a| == n && 

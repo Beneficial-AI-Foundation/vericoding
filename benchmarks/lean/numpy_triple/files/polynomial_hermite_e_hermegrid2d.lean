@@ -1,26 +1,3 @@
-/-  numpy.polynomial.hermite_e.hermegrid2d: Evaluate a 2-D HermiteE series on the Cartesian product of x and y.
-
-    This function evaluates a 2-dimensional HermiteE polynomial series
-    on the Cartesian product of coordinate vectors x and y.
-
-    The evaluation follows the mathematical formula:
-    p(a,b) = sum_{i,j} c[i,j] * He_i(a) * He_j(b)
-
-    where He_i is the i-th probabilist's Hermite polynomial (HermiteE),
-    and the points (a,b) are formed by taking all combinations of
-    elements from x and y.
-
-    The result is a matrix where result[i,j] contains the polynomial
-    value at the point (x[i], y[j]).
--/
-
-/-  Specification: hermegrid2d evaluates a 2D HermiteE polynomial series 
-    on the Cartesian product of x and y coordinates.
-
-    The function computes p(a,b) = sum_{i,j} c[i,j] * He_i(a) * He_j(b)
-    where He_i is the i-th probabilist's Hermite polynomial.
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

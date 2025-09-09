@@ -1,37 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.hermite.hermint",
-  "category": "Hermite polynomials",
-  "description": "Integrate a Hermite series.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite.hermint.html",
-  "doc": "Integrate a Hermite series.\n\n    Returns the Hermite series coefficients \`c\` integrated \`m\` times from\n    \`lbnd\` along \`axis\`. At each iteration the resulting series is\n    **multiplied** by \`scl\` and an integration constant, \`k\`, is added.\n    The scaling factor is for use in a linear change of variable.  (\"Buyer\n    beware\": note that, depending on what one is doing, one may want \`scl\`\n    to be the reciprocal of what one might expect; for more information,\n    see the Notes section below.)  The argument \`c\` is an array of\n    coefficients from low to high degree along each axis, e.g., [1,2,3]\n    represents the series \`\`H_0 + 2*H_1 + 3*H_2\`\` while [[1,2],[1,2]]\n    represents \`\`1*H_0(x)*H_0(y) + 1*H_1(x)*H_0(y) + 2*H_0(x)*H_1(y) +\n    2*H_1(x)*H_1(y)\`\` if axis=0 is \`\`x\`\` and axis=1 is \`\`y\`\`.\n\n    Parameters\n    ----------\n    c : array_like\n        Array of Hermite series coefficients. If c is multidimensional the\n        different axis correspond to different variables with the degree in\n        each axis given by the corresponding index.\n    m : int, optional\n        Order of integration, must be positive. (Default: 1)\n    k : {[], list, scalar}, optional\n        Integration constant(s).  The value of the first integral at\n        \`\`lbnd\`\` is the first value in the list, the value of the second\n        integral at \`\`lbnd\`\` is the second value, etc.  If \`\`k == []\`\` (the\n        default), all constants are set to zero.  If \`\`m == 1\`\`, a single\n        scalar can be given instead of a list.\n    lbnd : scalar, optional\n        The lower bound of the integral. (Default: 0)\n    scl : scalar, optional\n        Following each integration the result is *multiplied* by \`scl\`\n        before the integration constant is added. (Default: 1)\n    axis : int, optional\n        Axis over which the integral is taken. (Default: 0).\n\n    Returns\n    -------\n    S : ndarray\n        Hermite series coefficients of the integral.\n\n    Raises\n    ------\n    ValueError\n        If \`\`m < 0\`\`, \`\`len(k) > m\`\`, \`\`np.ndim(lbnd) != 0\`\`, or\n        \`\`np.ndim(scl) != 0\`\`.\n\n    See Also\n    --------\n    hermder\n\n    Notes\n    -----\n    Note that the result of each integration is *multiplied* by \`scl\`.\n    Why is this important to note?  Say one is making a linear change of\n    variable :math:\`u = ax + b\` in an integral relative to \`x\`.  Then\n    :math:\`dx = du/a\`, so one will need to set \`scl\` equal to\n    :math:\`1/a\` - perhaps not what one would have first thought.\n\n    Also note that, in general, the result of integrating a C-series needs\n    to be \"reprojected\" onto the C-series basis set.  Thus, typically,\n    the result of this function is \"unintuitive,\" albeit correct; see\n    Examples section below.\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite import hermint\n    >>> hermint([1,2,3]) # integrate once, value 0 at 0.\n    array([1. , 0.5, 0.5, 0.5])\n    >>> hermint([1,2,3], m=2) # integrate twice, value & deriv 0 at 0\n    array([-0.5       ,  0.5       ,  0.125     ,  0.08333333,  0.0625    ]) # may vary\n    >>> hermint([1,2,3], k=1) # integrate once, value 1 at 0.\n    array([2. , 0.5, 0.5, 0.5])\n    >>> hermint([1,2,3], lbnd=-1) # integrate once, value 0 at -1\n    array([-2. ,  0.5,  0.5,  0.5])\n    >>> hermint([1,2,3], m=2, k=[1,2], lbnd=-1)\n    array([ 1.66666667, -0.5       ,  0.125     ,  0.08333333,  0.0625    ]) # may vary",
-}
--/
-
-/-  Integrate a Hermite series.
-
-Returns the Hermite series coefficients integrated `m` times from `lbnd`.
-At each iteration the resulting series is multiplied by `scl` and an
-integration constant from `k` is added. -/
-
-/-  Specification: hermint integrates Hermite series coefficients.
-
-The specification captures:
-1. The output vector has size n + m (m additional coefficients from integration)
-2. Each integration adds one coefficient to the series
-3. The integration follows Hermite polynomial integration rules
-4. Integration constants from k are applied at each integration step
-5. Results are scaled by scl at each step
-
-For Hermite polynomials, the integration rule is:
-- ∫ H_n(x) dx = H_{n+1}(x)/(2(n+1)) + constant
-
-Mathematical properties:
-- The first coefficient of the result incorporates the integration constant to ensure
-  the integral evaluates to the appropriate value at lbnd
-- For coefficient c[i] representing H_i, integration contributes c[i]/(2*(i+1)) to H_{i+1}
-- The scaling factor scl is applied after each integration step -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

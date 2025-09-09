@@ -1,8 +1,3 @@
-/*
-Given integers n and k, find the minimum number of steps to reduce n to 0 using operations:
-1. Decrease n by 1, or 2. Divide n by k (only if n is divisible by k)
-*/
-
 function minStepsToZero(n: nat, k: nat): nat
     requires k >= 2
     decreases n

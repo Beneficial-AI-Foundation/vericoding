@@ -1,8 +1,3 @@
-/*
-Given a two-digit integer N (10 ≤ N ≤ 99), determine whether the digit 9 appears 
-in the decimal representation of N. Return "Yes" if 9 appears, "No" otherwise.
-*/
-
 function clean_input(s: string): string
 {
     if |s| == 0 then s

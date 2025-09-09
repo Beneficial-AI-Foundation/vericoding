@@ -1,9 +1,3 @@
-/*
-Given an integer sequence A of length N, find the minimum value of:
-abs(A₁ - (b+1)) + abs(A₂ - (b+2)) + ... + abs(Aₙ - (b+N))
-where b is any integer we can choose.
-*/
-
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 1 && |a| == n && forall i :: 0 <= i < |a| ==> a[i] >= 1

@@ -1,7 +1,3 @@
-/*
-Given a string S of digits (1-9), find the minimum absolute difference between 753 and any 3-digit number formed by taking three consecutive digits from S.
-*/
-
 predicate ValidInput(S: string)
 {
     |S| >= 3 && forall i :: 0 <= i < |S| ==> '1' <= S[i] <= '9'

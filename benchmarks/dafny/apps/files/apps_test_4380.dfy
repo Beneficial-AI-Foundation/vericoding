@@ -1,8 +1,3 @@
-/*
-Given two integers A and B (each between 1 and 3 inclusive), determine if there exists 
-an integer C (also between 1 and 3 inclusive) such that the product A × B × C is odd.
-*/
-
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= 3 && 1 <= b <= 3

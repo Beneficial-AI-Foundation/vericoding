@@ -1,10 +1,3 @@
-/*
-Given a king's position on a standard 8×8 chess board, determine the number of valid moves 
-the king can make. The position is given as a two-character string "cd" where 'c' is the 
-column ('a' to 'h') and 'd' is the row ('1' to '8'). A king can move exactly one square 
-in any direction but cannot move outside the board boundaries.
-*/
-
 predicate ValidInput(position: string)
 {
   |position| == 2 && 'a' <= position[0] <= 'h' && '1' <= position[1] <= '8'

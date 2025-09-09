@@ -1,27 +1,3 @@
-/-  numpy.nanargmin: Return the indices of the minimum values in the specified axis ignoring NaNs.
-
-    For all-NaN slices ValueError is raised. Warning: the results cannot be trusted 
-    if a slice contains only NaNs and Infs.
-
-    This function finds the index of the minimum value in a vector, ignoring NaN values.
-    If all values are NaN, it should raise an error (represented as a precondition).
-
-    Parameters:
-    - a : Vector Float n - Input data vector
-
-    Returns:
-    - Fin n - Index of the minimum non-NaN value
--/
-
-/-  Specification: nanargmin returns the index of the minimum non-NaN value.
-
-    Precondition: At least one element in the vector is not NaN
-    Postcondition: 
-    1. The returned index points to a non-NaN value
-    2. All non-NaN values at other indices are greater than or equal to the value at the returned index
-    3. If there are ties, returns the first occurrence (smallest index)
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

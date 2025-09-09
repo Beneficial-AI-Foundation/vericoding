@@ -1,9 +1,3 @@
-/*
-Given a string of lowercase English letters containing at least one 'a',
-find the maximum length of a string obtainable by erasing some characters
-such that the resulting string has strictly more than half of its characters as 'a's.
-*/
-
 function count_a(s: string): int
     ensures count_a(s) >= 0
     ensures count_a(s) <= |s|

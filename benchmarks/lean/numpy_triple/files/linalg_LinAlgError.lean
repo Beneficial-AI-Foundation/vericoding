@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.linalg.LinAlgError",
-  "category": "Exceptions",
-  "description": "Generic Python-exception-derived object raised by linalg functions",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.LinAlgError.html",
-  "doc": "Generic Python-exception-derived object raised by linalg functions.\n\nGeneral purpose exception class, derived from Python's ValueError class, programmatically raised in linalg functions when a Linear Algebra-related condition would prevent further correct execution of the function.",
-}
--/
-
-/-  Error checking predicate for linear algebra operations -/
-
-/-  Specification: Linear algebra error detection correctly identifies error conditions -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

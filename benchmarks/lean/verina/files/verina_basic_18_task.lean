@@ -1,19 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that computes the sum of the digits of a non-negative integer. The method should process each digit of the input number and return the total sum. The output is guaranteed to be a non-negative natural number.
-
------Input-----
-The input consists of:
-n: A non-negative integer.
-
------Output-----
-The output is a natural number:
-Returns the sum of the digits of the input integer.
-
------Note-----
-The input is assumed to be a valid non-negative integer.
--/
-
 @[reducible, simp]
 def sumOfDigits_precond (n : Nat) : Prop :=
   True

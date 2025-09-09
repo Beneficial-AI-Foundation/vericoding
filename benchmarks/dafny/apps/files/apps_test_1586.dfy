@@ -1,9 +1,3 @@
-/*
-Given a non-negative integer N, compute the double factorial f(N) where f(n) = 1 if n < 2,
-and f(n) = n × f(n-2) if n ≥ 2. Find the number of trailing zeros in the decimal representation of f(N).
-Trailing zeros are produced by factors of 10, which come from pairs of prime factors 2 and 5.
-*/
-
 function ValidInput(N: int): bool
 {
   N >= 0

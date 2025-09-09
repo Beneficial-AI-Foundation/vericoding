@@ -1,38 +1,3 @@
-/- 
-{
-  "name": "numpy.fft.ifftn",
-  "description": "Compute the N-dimensional inverse discrete Fourier Transform",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fft.ifftn.html",
-  "doc": "numpy.fft.ifftn(a, s=None, axes=None, norm=None, out=None)\n\nCompute the N-dimensional inverse discrete Fourier Transform using the Fast Fourier Transform (FFT). It is the inverse of the N-dimensional FFT, such that ifftn(fftn(a)) == a within numerical accuracy.\n\nParameters:\n- a: Input array (can be complex)\n- s: Optional sequence of integers specifying output shape\n- axes: Optional sequence of axes to transform\n- norm: Optional normalization mode (\"backward\", \"ortho\", \"forward\")\n- out: Optional output array\n\nReturns:\n- Complex ndarray transformed along specified axes, potentially truncated or zero-padded\n\nExample:\nimport numpy as np\na = np.eye(4)\nnp.fft.ifftn(np.fft.fftn(a, axes=(0,)), axes=(1,))",
-}
--/
-
-/-  Compute the N-dimensional inverse discrete Fourier Transform (IFFTN).
-
-     The IFFTN extends the 1D inverse FFT to multiple dimensions, computing
-     the inverse of the N-dimensional DFT. For a 2D array, this applies the
-     inverse transform along both dimensions.
-
-     For a 2D array of size m×n, the (i,j)-th output element is computed as:
-     X[i,j] = (1/(m*n)) * Σ(k=0 to m-1) Σ(l=0 to n-1) a[k,l] * exp(2πi*(i*k/m + j*l/n))
-
-     This is the mathematical inverse of the N-dimensional FFT. -/
-
-/-  Specification: The N-dimensional inverse FFT correctly computes the inverse discrete Fourier transform.
-
-     The IFFTN satisfies the inverse N-dimensional DFT equation where each output element (i,j)
-     is computed as (1/(m*n)) times the double sum over all input elements (k,l), multiplied by
-     the complex exponential exp(2πi*(i*k/m + j*l/n)).
-
-     This is the mathematical inverse of the N-dimensional FFT operation, with positive signs
-     in the exponential and a normalization factor of 1/(m*n) for 2D case.
-
-     Key properties:
-     1. Inverse relationship: ifftn(fftn(x)) ≈ x within numerical accuracy
-     2. Linearity: ifftn(a*x + b*y) = a*ifftn(x) + b*ifftn(y) 
-     3. Parseval's theorem: energy is preserved with proper normalization
-     4. Separability: N-D transform can be computed as sequence of 1-D transforms -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

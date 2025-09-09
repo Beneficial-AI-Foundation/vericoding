@@ -1,10 +1,3 @@
-/*
-Given n east-west streets and m north-south streets in a city where all streets intersect,
-determine the number of rectangular blocks formed by the street grid.
-n east-west streets create (n-1) horizontal strips, m north-south streets create (m-1) vertical strips,
-resulting in (n-1) * (m-1) rectangular blocks.
-*/
-
 predicate ValidInput(n: int, m: int)
 {
     2 <= n <= 100 && 2 <= m <= 100

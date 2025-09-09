@@ -1,10 +1,3 @@
-/*
-Game theory problem: Two teams of 2 players each compete. Each player has defense and attack skills.
-Team 1 chooses their defense/attack assignment first, then Team 2 responds optimally.
-A team wins if their defense > opponent's attack AND their attack > opponent's defense.
-Determine which team can guarantee a win with optimal play, or if neither can.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);
@@ -37,14 +30,14 @@ function ComputeResult(input: string): string
 
         if |player1| != 2 || |player2| != 2 || |player3| != 2 || |player4| != 2 then ""
         else
-            var a := player1[0]; // player 1 defense
-            var b := player1[1]; // player 1 attack
-            var c := player2[0]; // player 2 defense
-            var d := player2[1]; // player 2 attack
-            var x := player3[0]; // player 3 defense
-            var y := player3[1]; // player 3 attack
-            var z := player4[0]; // player 4 defense
-            var w := player4[1]; // player 4 attack
+            var a := player1[0];
+            var b := player1[1];
+            var c := player2[0];
+            var d := player2[1];
+            var x := player3[0];
+            var y := player3[1];
+            var z := player4[0];
+            var w := player4[1];
 
             var Team1 := (a > w && a > y && d > x && d > z) || (c > w && c > y && b > x && b > z);
             var Team2 := ((x > b && w > c) || (z > b && y > c)) && ((x > d && w > a) || (z > d && y > a));

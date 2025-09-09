@@ -1,10 +1,3 @@
-/*
-Calculate the total cost for N nights of accommodation with tiered pricing.
-First K nights cost X yen each, remaining nights (if any) cost Y yen each.
-Input: Four integers N, K, X, Y on separate lines.
-Output: Single integer representing the total cost.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitString(input, '\n');

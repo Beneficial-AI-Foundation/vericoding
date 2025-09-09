@@ -1,10 +1,3 @@
-/*
-Given N mountains indexed from west to east with heights, count how many mountain inns 
-allow ocean visibility. Mountain 1 (westmost) always has visibility. Mountain i (i ≥ 2) 
-has visibility if and only if its height is greater than or equal to the maximum height 
-of all mountains to its west.
-*/
-
 function maxHeightUpTo(heights: seq<int>, up_to_index: int): int
   requires 0 <= up_to_index < |heights|
   decreases up_to_index

@@ -1,9 +1,3 @@
-/*
-Given a sequence A of N integers and a positive integer p, split A into exactly 2 contiguous,
-non-overlapping parts (each containing at least 1 element) to maximize the sum of their scores.
-The score of a part is the sum of its elements modulo p. Find the maximum possible sum of scores.
-*/
-
 predicate ValidInput(N: int, p: int, A: seq<int>)
 {
     N >= 2 && p >= 2 && |A| == N && forall i :: 0 <= i < N ==> A[i] >= 1

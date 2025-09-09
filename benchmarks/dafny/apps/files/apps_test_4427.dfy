@@ -1,10 +1,3 @@
-/*
-Given a recurrence relation x_{i+1} = r × x_i - D starting from year 2000, 
-calculate the values for years 2001 through 2010.
-Input: Three integers r, D, x_2000 where 2 ≤ r ≤ 5, 1 ≤ D ≤ 100, D < x_2000 ≤ 200
-Output: 10 lines containing x_{2001}, x_{2002}, ..., x_{2010} respectively
-*/
-
 predicate ValidInput(input: string)
     requires |input| > 0
 {

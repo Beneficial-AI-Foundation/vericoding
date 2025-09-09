@@ -1,25 +1,3 @@
-/- 
-{
-  "name": "numpy.correlate",
-  "category": "Correlating",
-  "description": "Cross-correlation of two 1-dimensional sequences",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.correlate.html",
-  "doc": "numpy.correlate(a, v, mode='valid')\n\nCross-correlation of two 1-dimensional sequences.\n\nThis function computes the correlation as generally defined in signal processing texts:\n\nc_k = sum_n a_{n+k} * conj(v_n)\n\nwith a and v sequences being zero-padded where necessary and conj being the complex conjugate.\n\nParameters\n----------\na, v : array_like\n    Input sequences.\nmode : {'valid', 'same', 'full'}, optional\n    Refer to the convolve docstring. Note that the default is 'valid', unlike convolve, which uses 'full'.\n\nReturns\n-------\nout : ndarray\n    Discrete cross-correlation of a and v.\n\nNotes\n-----\nThe definition of correlation above is not unique and sometimes correlation may be defined differently. Another common definition is:\n\nc'_k = sum_n a_n * conj(v_{n+k})\n\nwhich is related to c_k by c'_k = conj(c_{-k}).",
-}
--/
-
-/-  Cross-correlation of two 1-dimensional sequences in 'valid' mode.
-    Computes c_k = sum_i a_{k+i} * v_i for positions where both sequences fully overlap. -/
-
-/-  Specification: correlate computes cross-correlation with valid mode overlap.
-    Each output element is the sum of products of overlapping elements from the input sequences.
-
-    Mathematical properties:
-    1. The result has size (m + 1 - n) for valid mode
-    2. Each output element k is computed as: sum_i a[k+i] * v[i] for i in [0, n-1]
-    3. Only positions where both sequences fully overlap are computed
-    4. The correlation preserves the mathematical definition of cross-correlation -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

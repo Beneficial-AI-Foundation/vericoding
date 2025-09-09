@@ -1,8 +1,3 @@
-/*
-Given n consecutive days and a minimum requirement k, find the minimum additional walks needed
-so that for any two consecutive days, the total walks is at least k. Can only increase walks.
-*/
-
 function sum(s: seq<int>): int
 {
     if |s| == 0 then 0 else s[0] + sum(s[1..])

@@ -1,9 +1,3 @@
-/*
-Given two bottles where Bottle 1 has capacity A milliliters and currently contains B milliliters,
-and Bottle 2 currently contains C milliliters, transfer as much water as possible from Bottle 2
-to Bottle 1 and determine how much water remains in Bottle 2.
-*/
-
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= b <= a <= 20 && 1 <= c <= 20

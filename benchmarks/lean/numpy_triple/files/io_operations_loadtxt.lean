@@ -1,19 +1,3 @@
-/- 
-{
-  "name": "numpy.loadtxt",
-  "category": "Text file I/O",
-  "description": "Load data from a text file",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html",
-  "doc": "Load data from a text file.\n\n    Parameters\n    ----------\n    fname : file, str, pathlib.Path, list of str, generator\n        File, filename, list, or generator to read.  If the filename\n        extension is \`\`.gz\`\` or \`\`.bz2\`\`, the file is first decompressed. Note\n        that generators must return bytes or strings. The strings\n        in a list or produced by a generator are treated as lines.\n    dtype : data-type, optional\n        Data-type of the resulting array; default: float.  If this i...",
-}
--/
-
-/-  Load data from a text file into a 2D array.
-    For simplicity, this specification focuses on loading a rectangular matrix of floats. -/
-
-/-  Specification: loadtxt reads numeric data from a text file into a well-formed 2D array.
-    The function preserves the structure of the input data and handles parsing correctly. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

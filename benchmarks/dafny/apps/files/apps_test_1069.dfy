@@ -1,9 +1,3 @@
-/*
-Calculate the value of (1^n + 2^n + 3^n + 4^n) mod 5 for a given integer n.
-The input n is given as a string representation of a non-negative integer.
-The result is either 4 (when n ≡ 0 mod 4) or 0 (otherwise).
-*/
-
 function StringToNat(s: string): nat
   requires |s| > 0
   requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'

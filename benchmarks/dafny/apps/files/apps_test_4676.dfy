@@ -1,10 +1,3 @@
-/*
-Given two strings O and E representing characters at odd-numbered and even-numbered positions
-of a password respectively, restore the original password by interleaving the characters.
-Input format: O on first line, E on second line, separated by newline.
-Output: interleaved password where characters alternate between O and E.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := split(input, '\n');

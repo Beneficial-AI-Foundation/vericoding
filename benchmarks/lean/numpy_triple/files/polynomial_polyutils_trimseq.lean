@@ -1,21 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.polyutils.trimseq",
-  "category": "Polynomial utilities",
-  "description": "Remove small Poly series coefficients.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polyutils.trimseq.html",
-  "doc": "Remove small Poly series coefficients.\n\n    Parameters\n    ----------\n    seq : sequence\n        Sequence of Poly series coefficients.\n\n    Returns\n    -------\n    series : sequence\n        Subsequence with trailing zeros removed. If the resulting sequence\n        would be empty, return the first element. The returned sequence may\n        or may not be a view.\n\n    Notes\n    -----\n    Do not lose the type info if the sequence contains unknown objects.",
-}
--/
-
-/-  Remove trailing zeros from a sequence of polynomial coefficients.
-    Returns the sequence with trailing zeros removed. If the sequence would be empty 
-    after trimming, returns the first element. Empty sequences are handled. -/
-
-/-  Specification: trimseq removes trailing zeros while preserving at least one element.
-    For non-empty sequences, if the last element is non-zero, return the sequence unchanged.
-    If the last element is zero, trim trailing zeros but always keep at least one element. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

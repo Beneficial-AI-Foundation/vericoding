@@ -1,17 +1,3 @@
-/- 
-function_signature: "def right_angle_triangle(a: Nat, b: Nat, c: Nat) -> Bool"
-docstring: |
-    Given the lengths of the three sides of a triangle. Return True if the three
-    sides form a right-angled triangle, False otherwise.
-    A right-angled triangle is a triangle in which one angle is right angle or
-    90 degree.
-test_cases:
-  - input: [3, 4, 5]
-    expected_output: True
-  - input: [1, 2, 3]
-    expected_output: False
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

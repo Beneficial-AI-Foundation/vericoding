@@ -1,9 +1,3 @@
-/*
-Given n friends to invite and notebooks with k sheets each (one color per notebook),
-find the minimum number of notebooks needed. Each invitation requires exactly 2 red 
-sheets, 5 green sheets, and 8 blue sheets.
-*/
-
 predicate ValidInput(n: int, k: int)
 {
   n >= 1 && k >= 1

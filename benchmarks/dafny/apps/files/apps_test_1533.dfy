@@ -1,8 +1,3 @@
-/*
-Given a sequence of names, for each position i, determine if that same name
-appeared at any earlier position j < i in the sequence.
-*/
-
 predicate ValidOutput(names: seq<string>, output: seq<string>)
 {
     |output| == |names| &&

@@ -1,9 +1,3 @@
-/*
-Given n cows initially arranged in positions 1, 2, ..., n, find the maximum number of inversions
-achievable using at most k swaps. An inversion is a pair (i,j) where i < j but the cow in 
-position i has a larger label than the cow in position j.
-*/
-
 function min(a: int, b: int): int
     ensures min(a, b) == a || min(a, b) == b
     ensures min(a, b) <= a && min(a, b) <= b

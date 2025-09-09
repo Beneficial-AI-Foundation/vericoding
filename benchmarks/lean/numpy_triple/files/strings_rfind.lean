@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.rfind",
-  "category": "String information",
-  "description": "For each element, return the highest index in the string where substring sub is found, such that sub is contained within [start, end]",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.rfind.html",
-  "doc": "For each element, return the highest index in the string where substring \`sub\` is found, such that \`sub\` is contained within [\`start\`, \`end\`].\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nsub : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n    The substring to search for.\nstart, end : array_like, with any integer dtype, optional\n    The range to look in, interpreted as slice notation.\n\nReturns\n-------\nout : ndarray\n    Output array of ints. Returns -1 if \`sub\` is not found.",
-}
--/
-
-/-  For each element, return the highest index in the string where substring is found -/
-
-/-  Specification: rfind returns the highest index where substring is found within range, or -1 if not found -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

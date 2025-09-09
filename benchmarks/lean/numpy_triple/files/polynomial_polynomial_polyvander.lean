@@ -1,10 +1,3 @@
-/-  Vandermonde matrix of given degree.
-    Returns the Vandermonde matrix of degree `deg` and sample points `x`.
-    The Vandermonde matrix is defined by V[i,j] = x[i]^j for 0 <= j <= deg. -/
-
-/-  Specification: polyvander generates a Vandermonde matrix where each row corresponds to
-    powers of the corresponding element in x, from degree 0 to deg. -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

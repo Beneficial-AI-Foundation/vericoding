@@ -1,11 +1,3 @@
-/*
-Given a string of '>' and '<' characters, determine the minimum number of characters 
-to remove so that the remaining string can be reduced to exactly one character using 
-these operations: Choose '>': delete the character immediately to its right (if exists),
-Choose '<': delete the character immediately to its left (if exists).
-Process multiple test cases where each test case consists of a string length and the string.
-*/
-
 predicate IsValidString(s: string)
 {
     |s| > 0

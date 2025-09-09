@@ -1,12 +1,3 @@
-/*
-Given an array of integers, determine if it is unimodal.
-An array is unimodal if it follows this exact pattern:
-1. An optional strictly increasing sequence at the beginning
-2. An optional constant sequence in the middle  
-3. An optional strictly decreasing sequence at the end
-All three parts are optional, but if present, they must appear in this exact order.
-*/
-
 predicate ValidInput(n: nat, arr: seq<int>)
 {
     n > 0 && |arr| == n && forall i :: 0 <= i < |arr| ==> arr[i] >= 1

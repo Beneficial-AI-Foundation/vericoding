@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.expandtabs",
-  "category": "String transformation",
-  "description": "Return a copy of each string element where all tab characters are replaced by spaces",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.expandtabs.html",
-  "doc": "Return a copy of each string element where all tab characters are replaced by one or more spaces.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\n    Input array\ntabsize : array_like, with any integer dtype, optional\n    Replace tabs with \`tabsize\` number of spaces. Default is 8.\n\nReturns\n-------\nout : ndarray\n    Output array of \`StringDType\`, \`bytes_\` or \`str_\` dtype,\n    depending on input type",
-}
--/
-
-/-  Expand tabs in strings to spaces with configurable tab size -/
-
-/-  Specification: expandtabs replaces tab characters with appropriate number of spaces -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

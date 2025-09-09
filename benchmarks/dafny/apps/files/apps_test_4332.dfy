@@ -1,11 +1,3 @@
-/*
-Given an integer N, determine if the sum of its digits divides N evenly.
-Let S(N) be the sum of all digits in the decimal representation of N.
-Check if N is divisible by S(N).
-Input: A single integer N (1 ≤ N ≤ 10^9)
-Output: "Yes" if S(N) divides N, "No" otherwise
-*/
-
 predicate IsDigit(c: char)
 {
     '0' <= c <= '9'

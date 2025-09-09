@@ -1,9 +1,3 @@
-/*
-Given a string s consisting of uppercase Latin letters, determine if it contains 
-two non-overlapping substrings "AB" and "BA". Return "YES" if both substrings 
-exist without overlapping, "NO" otherwise.
-*/
-
 function CountSubstring(s: string, pattern: string): nat
 {
     if |pattern| == 0 || |s| < |pattern| then 0

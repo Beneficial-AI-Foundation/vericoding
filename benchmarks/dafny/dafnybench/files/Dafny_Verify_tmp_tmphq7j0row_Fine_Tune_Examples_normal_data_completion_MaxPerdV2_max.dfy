@@ -1,6 +1,3 @@
-/*
-*/
-
 function contains(v: int, a: array<int>, n: int): bool
 reads a
   requires n <= a.Length

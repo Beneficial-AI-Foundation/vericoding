@@ -1,8 +1,3 @@
-/-  Compute tangent element-wise. Equivalent to sin(x)/cos(x) element-wise. -/
-
-/-  Specification: tan computes the tangent of each element, equivalent to sin(x)/cos(x),
-    and is undefined when cos(x) = 0 (i.e., x = π/2 + kπ for integer k) -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

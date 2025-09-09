@@ -1,9 +1,3 @@
-/*
-Given an array of n integers, find the maximum number of elements that can be made equal
-after performing any number of operations where each operation chooses two different elements
-and simultaneously increases one by 1 and decreases the other by 1.
-*/
-
 predicate ValidInput(n: int, arr: seq<int>)
 {
   n >= 1 && |arr| == n

@@ -1,10 +1,3 @@
-/*
-Given n students across m schools, where each student has a unique power level,
-the Technogoblet selects the strongest student from each school. We want k specific 
-students (Chosen Ones) to be selected. We can create new schools and reassign students.
-Find the minimum number of new schools needed so all k Chosen Ones get selected.
-*/
-
 predicate IsStrongestInSchool(student_idx: int, powers: seq<int>, schools: seq<int>)
   requires 0 <= student_idx < |powers| && |powers| == |schools|
 {

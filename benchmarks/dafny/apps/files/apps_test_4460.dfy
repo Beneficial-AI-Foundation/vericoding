@@ -1,9 +1,3 @@
-/*
-Given five integers representing the values of variables x₁, x₂, x₃, x₄, x₅, find which variable has the value 0.
-Initially, each variable xᵢ had value i, but exactly one variable was changed to 0.
-Input: Five space-separated integers. Output: The index i (1-indexed) of the variable xᵢ that has value 0.
-*/
-
 predicate validInput(s: string)
 {
     |s| > 0 && (forall i :: 0 <= i < |s| ==> s[i] == ' ' || s[i] == '\n' || ('0' <= s[i] <= '9') || s[i] == '-')

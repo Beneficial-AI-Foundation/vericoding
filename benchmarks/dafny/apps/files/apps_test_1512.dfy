@@ -1,11 +1,3 @@
-/*
-Given a permutation of integers from 1 to n, determine which single element to remove
-to maximize the number of records in the remaining sequence. A record is an element
-that is greater than all elements that appear before it in the sequence. If multiple
-elements can be removed to achieve the same maximum number of records, return the
-smallest such element.
-*/
-
 predicate ValidPermutation(p: seq<int>, n: int)
 {
   |p| == n && n >= 1 &&

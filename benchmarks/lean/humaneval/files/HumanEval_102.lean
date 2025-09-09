@@ -1,16 +1,3 @@
-/- 
-function_signature: "def choose_num(x: int, y: int) -> int"
-docstring: |
-    This function takes two positive numbers x and y and returns the
-    biggest even integer number that is in the range [x, y] inclusive. If
-    there's no such number, then the function should return -1.
-test_cases:
-  - input: (12, 15)
-    expected_output: 14
-  - input: (13, 12)
-    expected_output: -1
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

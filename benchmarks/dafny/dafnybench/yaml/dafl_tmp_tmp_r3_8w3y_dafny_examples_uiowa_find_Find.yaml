@@ -1,6 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
   /*
      CS:5810 Formal Methods in Software Engineering
      Fall 2017
@@ -10,23 +8,37 @@ vc-preamble: |-
   
      Credits: Example adapted from Dafny tutorial
   */
+  
+  // if i is non-negative then 
+  
+  // (1) i is smaller than the length of a
+  
+  // (2) key is at position i in a
+  
+  // (3) i is the smallest position where key appears
+  
+  // if index is negative then
+  
+  // a does not contain key
+
+vc-preamble: |-
 
 vc-helpers: |-
 
 vc-spec: |-
   method Find(a: array<int>, key: int) returns (i: int)
      requires a != null;
-     // if i is non-negative then 
-     ensures 0 <= i ==> (// (1) i is smaller than the length of a
+  
+     ensures 0 <= i ==> (
                          i < a.Length && 
-                         // (2) key is at position i in a
+  
                          a[i] == key && 
-                         // (3) i is the smallest position where key appears
+  
                          forall k :: 0 <= k < i ==> a[k] != key
                         );
-     // if index is negative then
+  
      ensures i < 0 ==> 
-             // a does not contain key
+  
              forall k :: 0 <= k < a.Length ==> a[k] != key;
 
 vc-code: |-

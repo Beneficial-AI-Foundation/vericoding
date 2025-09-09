@@ -1,10 +1,3 @@
-/*
-Given n books with weights w_i, find the optimal initial stacking order to minimize total weight lifted 
-when reading books according to a given sequence. To read book x: lift all books above x, remove x from 
-stack, put lifted books back (maintaining order), then place x on top. The book being read is not counted 
-as lifted weight.
-*/
-
 function isValidInput(s: string): bool
     requires |s| > 0
 {

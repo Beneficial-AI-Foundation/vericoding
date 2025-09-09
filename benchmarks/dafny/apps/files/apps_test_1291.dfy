@@ -1,11 +1,3 @@
-/*
-Given two sets of points in a 2D plane, determine if there exists a circle such that 
-all points from one set are strictly inside the circle and all points from the other 
-set are strictly outside the circle. Input consists of n and m (sizes of the sets), 
-followed by n coordinate pairs for the first set, then m coordinate pairs for the 
-second set. Output "YES" if such a separating circle exists, "NO" otherwise.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| > 0 && 

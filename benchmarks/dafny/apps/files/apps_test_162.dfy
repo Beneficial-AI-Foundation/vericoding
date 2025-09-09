@@ -1,9 +1,3 @@
-/*
-Find the minimum number of hours to water a garden of length k using exactly one type of bucket.
-Each bucket type i can water a continuous segment of length a_i per hour.
-Must choose a bucket size that evenly divides the garden length to avoid gaps or overlaps.
-*/
-
 predicate ValidInput(n: int, k: int, a: seq<int>)
 {
     n >= 1 && k >= 1 && |a| == n &&

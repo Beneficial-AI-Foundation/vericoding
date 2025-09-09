@@ -1,12 +1,3 @@
-/- 
-function_signature: "def largest_divisor(n: int) -> int"
-docstring: |
-    For a given number n, find the largest number that divides n evenly, smaller than n
-test_cases:
-  - input: 15
-    expected_output: 5
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

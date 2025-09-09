@@ -1,8 +1,3 @@
-/*
-Given N integers in a row, find the maximum possible sum after performing operations
-where each operation chooses an index i and multiplies both A[i] and A[i+1] by -1.
-*/
-
 function sum_seq(s: seq<int>): int
 {
     if |s| == 0 then 0 else s[0] + sum_seq(s[1..])

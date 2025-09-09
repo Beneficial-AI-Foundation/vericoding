@@ -1,24 +1,3 @@
-/- 
-function_signature: "def is_nested(string: str) -> Bool"
-docstring: |
-    Create a function that takes a string as input which contains only parentheses.
-    The function should return True if and only if there is a valid subsequence of parentheses
-    where at least one parenthesis in the subsequence is nested.
-test_cases:
-  - input: '(())'
-    expected_output: True
-  - input: '()))))))((((()'
-    expected_output: False
-  - input: '()()'
-    expected_output: False
-  - input: '()'
-    expected_output: False
-  - input: '(()())'
-    expected_output: True
-  - input: '(())(('
-    expected_output: True
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

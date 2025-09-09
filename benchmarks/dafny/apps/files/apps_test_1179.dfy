@@ -1,8 +1,3 @@
-/*
-Given n robots with unique identifiers, they play a game where robot i says identifiers
-of robots 1 through i. Find the k-th identifier pronounced in the entire sequence.
-*/
-
 predicate ValidInput(n: int, k: int, L: seq<int>)
 {
   n >= 1 && k >= 1 && |L| == n && k <= n * (n + 1) / 2

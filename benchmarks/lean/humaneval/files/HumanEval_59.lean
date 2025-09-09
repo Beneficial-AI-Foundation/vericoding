@@ -1,14 +1,3 @@
-/- 
-function_signature: "def largest_prime_factor(n: Nat) -> Nat"
-docstring: |
-    Return the largest prime factor of n. Assume n > 1 and is not a prime.
-test_cases:
-  - input: 13195
-    expected_output: 29
-  - input: 2048
-    expected_output: 2
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

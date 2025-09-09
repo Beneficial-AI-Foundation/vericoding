@@ -1,8 +1,3 @@
-/*
-Given a string of length 3 representing railway companies ('A' or 'B') operating 3 stations,
-determine if any bus service will exist. Bus services connect stations operated by different companies.
-*/
-
 predicate ValidInput(input: string)
 {
     |input| == 3 && forall i :: 0 <= i < |input| ==> input[i] == 'A' || input[i] == 'B'

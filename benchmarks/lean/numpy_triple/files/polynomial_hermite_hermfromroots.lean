@@ -1,17 +1,3 @@
-/-  Generate a Hermite series with given roots.
-
-    Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ)
-    in Hermite form. If a zero has multiplicity n, it must appear n times in the roots vector.
-
-    The resulting polynomial is expressed as: p(x) = c₀ + c₁ * H₁(x) + ... + cₙ * Hₙ(x)
-    where Hᵢ(x) are Hermite polynomials. -/
-
-/-  Specification: hermfromroots generates Hermite coefficients such that:
-    1. The result has length n+1 where n is the number of roots
-    2. The polynomial has exactly the given roots (when evaluated using Hermite polynomials)
-    3. The leading coefficient is non-zero (for non-empty roots)
-    4. For repeated roots, the multiplicity is preserved -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

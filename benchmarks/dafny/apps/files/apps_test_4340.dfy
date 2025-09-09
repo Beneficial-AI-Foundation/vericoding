@@ -1,7 +1,3 @@
-/*
-Transform an array of integers where odd numbers remain unchanged and even numbers are decremented by 1.
-*/
-
 function TransformElement(x: int): int
 {
     if x % 2 == 0 then x - 1 else x

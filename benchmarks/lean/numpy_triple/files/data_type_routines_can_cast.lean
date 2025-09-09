@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.can_cast",
-  "category": "Type Casting and Promotion",
-  "description": "Returns True if cast between data types can occur according to the casting rule",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.can_cast.html",
-  "doc": "Returns whether a cast between data types can occur according to specified casting rules.\n\nParameters\n----------\nfrom_ : dtype, dtype specifier, NumPy scalar, or array\n    Data type, NumPy scalar, or array to cast from.\nto : dtype or dtype specifier\n    Data type to cast to.\ncasting : {'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional\n    Controls what kind of data casting may occur.\n    - 'no': no casting is allowed\n    - 'equiv': only byte-order changes are allowed\n    - 'safe': only casts which can preserve values are allowed\n    - 'same_kind': safe casts or casts within a kind\n    - 'unsafe': any data conversions may be done\n\nReturns\n-------\nout : bool\n    True if cast can occur according to the casting rule.\n\nExamples\n--------\n>>> np.can_cast(np.int32, np.int64)\nTrue\n>>> np.can_cast(np.float64, complex)\nTrue\n>>> np.can_cast(complex, float)\nFalse\n>>> np.can_cast('i8', 'f8')\nTrue\n>>> np.can_cast('i8', 'f4')\nFalse",
-}
--/
-
-/-  Returns True if cast between data types can occur according to the casting rule -/
-
-/-  Specification: can_cast determines type casting compatibility according to specified rules -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

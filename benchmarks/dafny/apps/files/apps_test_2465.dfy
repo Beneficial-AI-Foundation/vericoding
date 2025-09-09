@@ -1,9 +1,3 @@
-/*
-Given an angle measurement in degrees, find the minimum number of vertices n for a regular n-gon 
-that contains three vertices a, b, c such that the angle ∠abc equals the given angle. 
-If no such n-gon exists, return -1.
-*/
-
 predicate ValidInput(angles: seq<int>)
 {
   forall i :: 0 <= i < |angles| ==> 1 <= angles[i] < 180

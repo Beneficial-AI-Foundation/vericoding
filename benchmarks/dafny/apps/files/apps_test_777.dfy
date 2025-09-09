@@ -1,11 +1,3 @@
-/*
-Given a string of lowercase letters, determine how many distinct strings can be created by
-inserting exactly one additional lowercase letter (a-z) at any position in the string.
-For a string of length n, we can insert at n+1 positions with 26 character choices,
-giving 26×(n+1) total combinations. However, n duplicates occur, resulting in
-26×(n+1) - n = 25×n + 26 distinct strings.
-*/
-
 predicate ValidInput(s: string)
 {
     |s| >= 1 && |s| <= 20 && forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'

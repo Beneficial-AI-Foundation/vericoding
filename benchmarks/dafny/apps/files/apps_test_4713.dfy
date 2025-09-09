@@ -1,10 +1,3 @@
-/*
-Given a string S of length N containing only characters 'I' and 'D', simulate the following process:
-Start with x = 0. For each character in S from left to right:
-If the character is 'I', increment x by 1. If the character is 'D', decrement x by 1.
-Find the maximum value that x reaches during this entire process (including the initial value 0).
-*/
-
 function MaxValue(S: string): int
 {
     MaxValueUpToIndex(S, |S|)

@@ -1,11 +1,3 @@
-/*
-Given n packets of balloons, divide all packets between two people such that:
-1. Each person gets at least one packet
-2. All packets are distributed 
-3. The total number of balloons each person receives is different
-Find any valid distribution or return empty sequence if impossible.
-*/
-
 predicate ValidInput(n: int, packets: seq<int>)
 {
     n >= 1 && |packets| == n && forall i :: 0 <= i < |packets| ==> packets[i] >= 1

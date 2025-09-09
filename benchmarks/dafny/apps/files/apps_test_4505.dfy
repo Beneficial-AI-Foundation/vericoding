@@ -1,9 +1,3 @@
-/*
-Given a string S of length 3 containing only characters 'a', 'b', and 'c',
-determine if S is a permutation of "abc" (i.e., contains exactly one occurrence
-each of 'a', 'b', and 'c'). Return "Yes\n" if it is a permutation, "No\n" otherwise.
-*/
-
 predicate ValidInput(s: string)
 {
     (|s| == 3 || (|s| == 4 && s[3] == '\n')) &&

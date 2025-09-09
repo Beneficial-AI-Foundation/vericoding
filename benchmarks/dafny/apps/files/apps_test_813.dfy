@@ -1,8 +1,3 @@
-/*
-Given n apples numbered 1 to n, distribute all apples between two hamsters (Arthur and Alexander) 
-such that each hamster receives only apples they like. Arthur gets '1', Alexander gets '2'.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);

@@ -1,18 +1,3 @@
-/- 
-function_signature: "def filter_by_prefix(strings: List[str], prefix: str) -> List[str]"
-docstring: |
-    Filter an input list of strings only for ones that start with a given prefix.
-test_cases:
-  - input:
-    - []
-    - "a"
-    expected_output: []
-  - input:
-    - ["abc", "bcd", "cde", "array"]
-    - "a"
-    expected_output: ["abc", "array"]
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

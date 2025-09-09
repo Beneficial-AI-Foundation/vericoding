@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.fromstring",
-  "category": "From existing data",
-  "description": "A new 1-D array initialized from text data in a string",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.fromstring.html",
-  "doc": "\nA new 1-D array initialized from text data in a string.\n\nParameters\n----------\nstring : str\n    A string containing the data.\ndtype : data-type, optional\n    The data type of the array; default: float. For binary input data, the data must be in exactly \n    this format. Most builtin numeric types are supported and extension types may be supported.\ncount : int, optional\n    Read this number of dtype elements from the data. If this is negative (the default), the count \n    will be determined from the length of the data.\nsep : str, optional\n    The string separating numbers in the data; extra whitespace between elements is also ignored.\nlike : array_like, optional\n    Reference object to allow the creation of arrays which are not NumPy arrays.\n\nReturns\n-------\narr : ndarray\n    The constructed array.\n\nExamples\n--------\n>>> np.fromstring('1 2', dtype=int, sep=' ')\narray([1, 2])\n>>> np.fromstring('1, 2', dtype=int, sep=',')\narray([1, 2])\n\nRaises\n------\nValueError\n    If the string is not the correct size to satisfy the requested dtype and count.\n\nNotes\n-----\nDeprecated since version 1.14.0: If the sep argument is not provided or is None, the function \nwill continue to work as it did before, but a FutureWarning will be emitted. Use frombuffer to \nwork with binary data, or loadtxt to work with text data.\n",
-  "signature": "numpy.fromstring(string, dtype=float, count=-1, *, sep, like=None)"
-}
--/
-
-/-  A new 1-D array initialized from text data in a string -/
-
-/-  Specification: fromstring parses a string into a vector of floats using a separator -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

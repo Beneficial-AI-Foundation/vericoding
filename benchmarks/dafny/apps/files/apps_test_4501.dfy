@@ -1,8 +1,3 @@
-/*
-Given N cards with integers written on them, count the number of ways to select
-one or more cards such that the average of the selected cards equals exactly A.
-*/
-
 predicate valid_input_format(stdin_input: string)
 {
     var lines := split_lines_func(stdin_input);

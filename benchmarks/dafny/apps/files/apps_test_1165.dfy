@@ -1,9 +1,3 @@
-/*
-Given an array of n integers and m queries, for each query find any position 
-within a specified range where the array value differs from a given target value.
-Output the position (1-indexed) or -1 if no such position exists.
-*/
-
 predicate ValidInput(n: int, m: int, A: seq<int>, queries: seq<(int, int, int)>)
 {
     n > 0 && m >= 0 && |A| == n && |queries| == m &&

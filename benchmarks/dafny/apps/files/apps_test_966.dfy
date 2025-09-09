@@ -1,8 +1,3 @@
-/*
-Given a year number, find the minimum year that is strictly greater than the given year 
-and contains only distinct digits (no repeated digits).
-*/
-
 predicate ValidInput(y: int)
 {
     1000 <= y <= 9000

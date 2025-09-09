@@ -1,10 +1,3 @@
-/*
-Given a positive integer n, cut a stick of length n into exactly 4 parts with positive integer lengths.
-Count the number of ways to do this such that the parts can form a rectangle (two pairs of equal lengths)
-but cannot form a square (all four lengths equal). Two cutting methods are distinct if the number of
-parts of any given length differs between them.
-*/
-
 predicate ValidRectangleParts(a: int, b: int, n: int)
 {
     a > 0 && b > 0 && a != b && 2 * a + 2 * b == n

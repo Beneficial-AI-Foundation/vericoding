@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate isNotPrefixPred(pre:string, str:string)
 {
     (|pre| > |str|) || 

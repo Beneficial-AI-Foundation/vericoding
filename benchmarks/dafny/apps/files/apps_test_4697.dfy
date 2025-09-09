@@ -1,9 +1,3 @@
-/*
-Given N S-shaped pieces and M c-shaped pieces, find the maximum number of "Scc groups"
-that can be formed. Each Scc group requires exactly 1 S-shaped piece and 2 c-shaped pieces.
-Additionally, 2 c-shaped pieces can be combined to create 1 S-shaped piece.
-*/
-
 predicate ValidInput(n: int, m: int)
 {
     n >= 0 && m >= 0

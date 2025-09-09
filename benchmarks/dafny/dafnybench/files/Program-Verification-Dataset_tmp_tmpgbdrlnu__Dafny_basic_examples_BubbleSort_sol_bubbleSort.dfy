@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate sorted_between (a:array<int>, from:nat, to:nat)
   reads a;
   requires a != null;

@@ -1,9 +1,3 @@
-/*
-Given a binary string with no redundant leading zeros, find the minimum possible binary string 
-achievable using these operations: 1) Swap any two adjacent characters, 2) Replace "11" with "1".
-The goal is to minimize the decimal value represented by the resulting binary string.
-*/
-
 predicate ValidBinaryString(s: string)
 {
     |s| > 0 && 

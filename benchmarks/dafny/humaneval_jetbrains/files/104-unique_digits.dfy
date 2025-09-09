@@ -1,8 +1,3 @@
-/*
-function_signature: def unique_digits(x: List[nat]) -> List[nat]
-Given a list of positive integers x. return a sorted list of all elements that hasn't any even digit.
-*/
-
 function HasNoEvenDigit(n: int) : bool
   decreases n
 {
@@ -14,12 +9,11 @@ function HasNoEvenDigit(n: int) : bool
 
 // <vc-spec>
 method UniqueDigits(x: seq<int>) returns (result: seq<int>)
-  // post-conditions-start
+
   ensures forall i :: 0 <= i < |result| ==> HasNoEvenDigit(result[i])
   ensures forall i, j :: 0 <= i < j < |result| ==> result[i] <= result[j]
   ensures forall e :: e in x && HasNoEvenDigit(e) ==> e in result
   ensures forall e :: e in result ==> e in x
-  // post-conditions-end
 // </vc-spec>
 // <vc-code>
 {

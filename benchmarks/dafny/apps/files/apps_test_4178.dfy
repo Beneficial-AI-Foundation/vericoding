@@ -1,8 +1,3 @@
-/*
-Given N squares with heights, determine if it's possible to make heights non-decreasing
-from left to right. For each square, you can decrease its height by 1 or leave unchanged.
-*/
-
 function maxHeightUpTo(heights: seq<int>, index: int): int
   requires |heights| > 0
   requires -1 <= index < |heights|

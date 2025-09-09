@@ -1,27 +1,3 @@
-/- 
-{
-  "name": "numpy.s_",
-  "category": "Advanced indexing",
-  "description": "A nicer way to build up index tuples for arrays",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.s_.html",
-  "doc": "A nicer way to build up index tuples for arrays.\n\nUse one of the two predefined instances \`index_exp\` or \`s_\` rather than directly using IndexExpression.\n\nFor any index combination, including slicing and axis insertion, \`\`a[indices]\`\` is the same as \`\`a[np.index_exp[indices]]\`\` for any array \`a\`. However, \`\`np.index_exp[indices]\`\` can be used anywhere in Python code and returns a tuple of slice objects that can be used in the construction of complex index expressions.",
-}
--/
-
-/-  Index expression builder that creates slice objects for array indexing.
-    This is a simplified version of numpy.s_ that creates slice objects
-    for use in array indexing operations. -/
-
-/-  Specification: s_ creates a well-formed slice object
-    This comprehensive specification captures:
-    1. The slice object contains the provided start, stop, and step values
-    2. If step is provided, it must be positive (non-zero)
-    3. If start and stop are both provided, start should be less than or equal to stop
-    4. The resulting slice is valid for array indexing operations
-    5. The slice preserves the ordering constraints (start ≤ stop when both present)
-    6. The step value, if present, is positive for forward slicing
--/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

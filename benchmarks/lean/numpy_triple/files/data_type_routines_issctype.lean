@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.issctype",
-  "category": "Data Type Testing",
-  "description": "Determines whether the given object represents a scalar data-type",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.issctype.html",
-  "doc": "Determines whether the given object represents a scalar data-type.\n\nParameters\n----------\nrep : any\n    If rep is an instance of a scalar dtype, True is returned. If not, False is returned.\n\nReturns\n-------\nout : bool\n    Boolean result of check whether rep is a scalar dtype.\n\nExamples\n--------\n>>> np.issctype(np.int32)\nTrue\n>>> np.issctype(list)\nFalse\n>>> np.issctype(1.1)\nFalse",
-}
--/
-
-/-  Determines whether the given object represents a scalar data-type -/
-
-/-  Specification: issctype returns true if and only if the input represents a scalar data type -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

@@ -1,9 +1,3 @@
-/*
-Given three tasks with integer values A1, A2, A3, find the minimum cost to complete all tasks.
-Rules: Complete any one task first at cost 0, then completing task i followed by task j costs |Aj - Ai|.
-All tasks must be completed.
-*/
-
 predicate ValidInput(A1: int, A2: int, A3: int)
 {
     1 <= A1 <= 100 && 1 <= A2 <= 100 && 1 <= A3 <= 100

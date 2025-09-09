@@ -1,8 +1,3 @@
-/*
-Given n positive integers and a threshold k, count how many integers contain at most k lucky digits.
-Lucky digits are 4 and 7.
-*/
-
 predicate ValidInput(n: int, k: int, numbers: seq<int>)
 {
     n >= 1 && k >= 0 && |numbers| == n && forall i :: 0 <= i < |numbers| ==> numbers[i] > 0

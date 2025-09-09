@@ -1,9 +1,3 @@
-/*
-Given N participants in a D-day training camp, where participant i eats chocolate on days 1, A_i+1, 2×A_i+1, 3×A_i+1, etc. 
-(i.e., day 1 and then every A_i days thereafter). At the end of the camp, X chocolate pieces remain. 
-Find the total number of chocolate pieces prepared initially.
-*/
-
 predicate ValidInput(input: string)
 {
     var lines := Split(input, '\n');

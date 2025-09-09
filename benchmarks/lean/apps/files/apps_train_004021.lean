@@ -1,7 +1,3 @@
-/-
-Write function avg which calculates average of numbers in given list.
--/
-
 def find_average (numbers : List Float) : Float := sorry
 
 def sum (l : List Float) : Float := sorry

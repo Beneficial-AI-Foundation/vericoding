@@ -1,9 +1,3 @@
-/*
-Given a non-negative integer n, round it to the nearest integer that ends with 0.
-If n already ends with 0, return n unchanged. When there are two equally distant
-options (when the last digit is 5), use banker's rounding (round half to even).
-*/
-
 predicate ValidResult(n: int, result: int)
   requires n >= 0
 {

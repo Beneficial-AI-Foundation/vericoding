@@ -1,20 +1,3 @@
-/- 
-function_signature: "def remove_vowels(string: str) -> string"
-docstring: |
-    remove_vowels is a function that takes string and returns string without vowels.
-test_cases:
-  - input: ""
-    expected_output: ""
-  - input: "abcdef\nghijklm"
-    expected_output: "bcdf\nghjklm"
-  - input: "abcdef"
-    expected_output: "bcdf"
-  - input: "aaaaa"
-    expected_output: ""
-  - input: "aaBAA"
-    expected_output: "B"
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

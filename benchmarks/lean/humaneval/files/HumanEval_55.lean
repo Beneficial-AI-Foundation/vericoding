@@ -1,16 +1,3 @@
-/- 
-function_signature: "def fib(n: int) -> int"
-docstring: |
-    Return n-th Fibonacci number.
-test_cases:
-  - input: 10
-    expected_output: 55
-  - input: 1
-    expected_output: 1
-  - input: 8
-    expected_output: 21
--/
-
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap

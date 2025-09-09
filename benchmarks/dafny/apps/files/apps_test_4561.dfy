@@ -1,11 +1,3 @@
-/*
-Given three integers X, A, and B where X is the maximum number of days past 
-best-by date that won't cause stomachache, A is the number of days before 
-best-by date when food was bought, and B is the number of days after purchase 
-when food was eaten. Determine if eating the food results in "delicious", 
-"safe", or "dangerous" outcome.
-*/
-
 predicate ValidOutcome(outcome: string)
 {
     outcome in {"delicious", "safe", "dangerous"}

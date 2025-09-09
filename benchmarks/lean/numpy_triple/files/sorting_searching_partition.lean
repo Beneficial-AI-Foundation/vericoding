@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.partition",
-  "category": "Sorting", 
-  "description": "Return a partitioned copy of an array",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.partition.html",
-  "doc": "Return a partitioned copy of an array.\n\nCreates a copy of the array with its elements rearranged in such a way that\nthe value of the element in k-th position is in the position it would be in\na sorted array. All elements smaller than the k-th element are moved before\nthis element and all equal or greater are moved behind it. The ordering of\nthe elements in the two partitions is undefined.\n\nParameters\n----------\na : array_like\n    Array to be sorted.\nkth : int or sequence of ints\n    Element index to partition by. The k-th value of the element will be in\n    its final sorted position and all smaller elements will be moved before it\n    and all equal or greater elements behind it. The order of all elements in\n    the partitions is undefined. If provided with a sequence of k-th it will\n    partition all elements indexed by k-th of them into their sorted position\n    at once.\naxis : int or None, optional\n    Axis along which to sort. If None, the array is flattened before sorting.\n    The default is -1, which sorts along the last axis.\nkind : {'introselect'}, optional\n    Selection algorithm. Default is 'introselect'.\norder : str or list of str, optional\n    When \`a\` is an array with fields defined, this argument specifies which\n    fields to compare first, second, etc.\n\nReturns\n-------\npartitioned_array : ndarray\n    Array of the same type and shape as \`a\`.",
-}
--/
-
-/-  Return a partitioned copy of an array around the k-th element -/
-
-/-  Specification: partition rearranges elements so that the k-th element is in its sorted position,
-    with smaller elements before it and equal/greater elements after it -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

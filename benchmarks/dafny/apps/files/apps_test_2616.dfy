@@ -1,8 +1,3 @@
-/*
-Given n piles of stones, two players alternate turns removing stones from the leftmost non-empty pile.
-The player who cannot make a move loses. Determine the winner when both players play optimally.
-*/
-
 predicate ValidInput(testCases: seq<seq<int>>) {
     forall i :: 0 <= i < |testCases| ==> 
         |testCases[i]| >= 1 && 

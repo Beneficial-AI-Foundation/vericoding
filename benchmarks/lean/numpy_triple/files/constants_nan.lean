@@ -1,22 +1,3 @@
-/- 
-{
-  "name": "numpy.nan",
-  "category": "Special float values",
-  "description": "IEEE 754 floating point representation of Not a Number (NaN)",
-  "url": "https://numpy.org/doc/stable/reference/constants.html#numpy.nan",
-  "doc": "IEEE 754 floating point representation of Not a Number (NaN).\n\nNaN and NAN are aliases for nan. Please use nan instead of NAN.\n\nSee Also:\nnan",
-}
--/
-
-/-  IEEE 754 floating point representation of Not a Number (NaN) -/
-
-/-  Specification: nan represents Not a Number with the following IEEE 754 properties:
-    1. Float.isNaN returns true for NaN (primary property)
-    2. Any arithmetic operation with NaN results in NaN
-    3. NaN is not ordered (comparisons with any value are false except ≠)
-    4. NaN is not finite
-    5. Standard operations preserve NaN propagation -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

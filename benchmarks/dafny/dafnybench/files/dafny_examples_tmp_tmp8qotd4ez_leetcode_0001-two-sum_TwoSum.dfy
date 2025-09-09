@@ -1,11 +1,3 @@
-/*
-*/
-
-// If this invariant is added explicitly to the loop then the verfication never finishes.
-// It could be {:opaque} for a more controlled verification:
-// assert InMap([], m, target) by {
-//   reveal InMap();
-// }
 predicate InMap(nums: seq<int>, m: map<int, int>, t: int) {
   forall j :: 0 <= j < |nums| ==> t - nums[j] in m
 }

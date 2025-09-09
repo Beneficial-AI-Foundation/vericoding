@@ -1,6 +1,3 @@
-/*
-*/
-
 function sum(X_val : array<int>, X_crd : array<nat>,
              v_val : array<int>, v_crd : array<nat>, kX : nat, kV : nat, pX_end : nat, pV_end : nat) : (s : int) 
   reads X_val, X_crd
@@ -64,7 +61,7 @@ function index(x : nat, y: array<nat>) : (i : nat)
 method DSpMSpV(X_val : array<int>, X_crd : array<nat>, X_pos : array<nat>,
                                   X_crd1 : array<nat>, X_len: nat,
               v_val : array<int>, v_crd : array<nat>) returns (y : array<int>)
-  // X requirements 
+
   requires X_pos.Length >= 1
   requires X_val.Length == X_crd.Length
   requires forall i, j :: 0 <= i < j < X_pos.Length ==> X_pos[i] <= X_pos[j];
@@ -76,7 +73,6 @@ method DSpMSpV(X_val : array<int>, X_crd : array<nat>, X_pos : array<nat>,
   requires X_crd1.Length < X_pos.Length
   requires forall i, j :: 0 <= i < j < X_crd1.Length ==> X_crd1[i] < X_crd1[j]
 
-  // v requirements 
   requires v_val.Length == v_crd.Length
 
   ensures y.Length == X_len

@@ -1,10 +1,3 @@
-/*
-Given a list of n integers, compute 2 + (third_element XOR smallest_element), where:
-- third_element is the element at index 2 (third position) in the original list
-- smallest_element is the minimum value in the list
-- XOR is the bitwise exclusive OR operation
-*/
-
 predicate ValidInput(lst: seq<int>) {
   5 <= |lst| <= 10 &&
   forall i :: 0 <= i < |lst| ==> 1 <= lst[i] <= 32

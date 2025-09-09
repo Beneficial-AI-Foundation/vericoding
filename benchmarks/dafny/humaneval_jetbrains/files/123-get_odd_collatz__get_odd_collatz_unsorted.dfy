@@ -1,8 +1,3 @@
-/*
-function_signature: method get_odd_collatz_unsorted(n: nat) returns (odd_collatz: seq<nat>)
-Sort elements. Requires: requires n > 1. Ensures: the condition holds for all values; the condition holds for all values.
-*/
-
 function iterate_to_odd(n: nat): nat
   requires n % 2 == 0
   requires n > 0
@@ -14,17 +9,6 @@ function next_odd_collatz(n: nat): nat
   requires n > 0
 {
   if n % 2 == 0 then iterate_to_odd(n) else iterate_to_odd(3 * n + 1)
-}
-method next_odd_collatz_iter(n: nat) returns (next: nat)
-  // pre-conditions-start
-  requires n > 0
-  // pre-conditions-end
-  // post-conditions-start
-  ensures next % 2 == 1
-  ensures next == next_odd_collatz(n)
-  // post-conditions-end
-{
-  assume{:axiom} false;
 }
 
 // <vc-helpers>
@@ -42,12 +26,3 @@ method get_odd_collatz_unsorted(n: nat) returns (odd_collatz: seq<nat>)
   assume {:axiom} false;
 }
 // </vc-code>
-
-method get_odd_collatz(n: nat) returns (sorted: seq<int>)
-  decreases *
-  requires n > 1
-  ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-  ensures forall i :: 0 <= i < |sorted| ==> sorted[i] % 2 == 1
-{
-  assume{:axiom} false;
-}

@@ -1,9 +1,3 @@
-/*
-Given k people who each want to make n paper airplanes, where s airplanes can be made from one sheet of paper,
-and paper is sold in packs of p sheets each, find the minimum number of packs needed to buy so that each person
-has enough sheets to make their n airplanes.
-*/
-
 predicate ValidInput(k: int, n: int, s: int, p: int)
 {
   k >= 1 && n >= 1 && s >= 1 && p >= 1 &&

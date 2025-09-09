@@ -1,9 +1,3 @@
-/*
-Find the maximum height of a pyramid that can be built with n cubes, where
-level i requires exactly i*(i+1)/2 cubes. The pyramid is built from top to
-bottom with levels 1, 2, 3, ..., h.
-*/
-
 predicate ValidInput(n: int) {
     n >= 1
 }

@@ -1,4 +1,5 @@
 vc-description: |-
+  //ensures sum==SumL(v[0..v.Length])
 
 vc-preamble: |-
   function SumR(s:seq<int>):int
@@ -24,7 +25,6 @@ vc-helpers: |-
 
 vc-spec: |-
   method sumElemsB(v:array<int>) returns (sum:int)
-  //ensures sum==SumL(v[0..v.Length])
   ensures sum==SumR(v[0..v.Length])
 
 vc-code: |-

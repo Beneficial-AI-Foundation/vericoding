@@ -1,18 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.split",
-  "category": "String operations",
-  "description": "For each element in a, return a list of the words in the string, using sep as the delimiter string",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.split.html",
-  "doc": "For each element in \`a\`, return a list of the words in the string, using \`sep\` as the delimiter string.\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nsep : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype, optional\n    If \`sep\` is not specified or None, any whitespace string is a separator.\nmaxsplit : array_like, with any integer dtype, optional\n    If \`maxsplit\` is given, at most \`maxsplit\` splits are done.\n\nReturns\n-------\nout : ndarray\n    Output array of objects",
-}
--/
-
-/-  For each element in a vector of strings, return a list of the words in the string, using sep as the delimiter string -/
-
-/-  Specification: split returns a vector where each string is split into a list of substrings 
-    based on the separator, with proper handling of maxsplit constraints and reconstruction properties -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

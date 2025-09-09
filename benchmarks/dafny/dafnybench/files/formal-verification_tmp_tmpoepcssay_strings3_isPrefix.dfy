@@ -1,6 +1,3 @@
-/*
-*/
-
 predicate isPrefixPred(pre:string, str:string)
 {
     (|pre| <= |str|) && 

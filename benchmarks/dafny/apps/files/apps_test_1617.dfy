@@ -1,10 +1,3 @@
-/*
-Given n people sitting in a circle numbered 1 to n, person 1 starts with a ball and chooses a positive integer k ≤ n.
-The ball is passed to the k-th neighbor in clockwise direction repeatedly until it returns to person 1.
-The fun value is the sum of all unique person IDs who touched the ball during this process.
-Find all possible fun values for all valid choices of k.
-*/
-
 function f(n: int, x: int): int
   requires x > 0 && n >= x && n % x == 0
 {

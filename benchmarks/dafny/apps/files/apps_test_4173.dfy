@@ -1,9 +1,3 @@
-/*
-Find the minimum cost to purchase exactly n liters of water using 1-liter bottles 
-(costing a burles each) and 2-liter bottles (costing b burles each), with infinite 
-supply of both types available. Process multiple queries efficiently.
-*/
-
 predicate ValidQuery(query: (int, int, int))
 {
     query.0 > 0 && query.1 > 0 && query.2 > 0

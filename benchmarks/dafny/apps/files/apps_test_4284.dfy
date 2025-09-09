@@ -1,9 +1,3 @@
-/*
-Given q queries with battery charge k, n turns, and two actions with costs a and b (where b < a),
-find the maximum number of Action A turns possible while completing exactly n turns and keeping
-charge > 0 at the end, or return -1 if impossible.
-*/
-
 predicate ValidQuery(k: int, n: int, a: int, b: int)
 {
     k > 0 && n > 0 && a > 0 && b > 0 && b < a

@@ -1,9 +1,3 @@
-/*
-Given three integers A, B, and C representing syllable counts of three phrases,
-determine if these phrases can be arranged to form a Haiku. A Haiku requires
-exactly two phrases with 5 syllables and one phrase with 7 syllables.
-*/
-
 predicate ValidInput(A: int, B: int, C: int)
 {
     1 <= A <= 10 && 1 <= B <= 10 && 1 <= C <= 10

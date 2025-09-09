@@ -1,8 +1,3 @@
-/*
-*/
-
-// Author: Shaobo He
-
 predicate sqrt(x: int, r: int) {
     r*r <= x && (r+1)*(r+1) > x
 }

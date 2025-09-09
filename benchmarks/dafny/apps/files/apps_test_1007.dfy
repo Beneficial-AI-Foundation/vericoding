@@ -1,8 +1,3 @@
-/*
-Find the sum of the k smallest zcy numbers modulo p.
-A zcy number is a palindrome with even length in decimal representation.
-*/
-
 function IntToString(n: int): string
     requires n >= 0
     ensures forall i :: 0 <= i < |IntToString(n)| ==> '0' <= IntToString(n)[i] <= '9'

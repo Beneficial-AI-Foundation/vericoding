@@ -1,17 +1,3 @@
-/- 
-{
-  "name": "numpy.strings.find",
-  "category": "String information",
-  "description": "For each element, return the lowest index in the string where substring sub is found",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.strings.find.html",
-  "doc": "For each element, return the lowest index in the string where substring \`sub\` is found, such that \`sub\` is contained in the range [\`start\`, \`end\`].\n\nParameters\n----------\na : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nsub : array_like, with \`StringDType\`, \`bytes_\` or \`str_\` dtype\nstart, end : array_like, with any integer dtype, optional\n    The range to look in, interpreted as slice notation.\n\nReturns\n-------\nout : ndarray\n    Output array of ints. Returns -1 if \`sub\` is not found.",
-}
--/
-
-/-  For each element, return the lowest index in the string where substring is found -/
-
-/-  Specification: find returns the lowest index where substring is found within range, or -1 if not found -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

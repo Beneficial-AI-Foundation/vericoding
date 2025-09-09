@@ -1,8 +1,3 @@
-/*
-Given an integer N, find a permutation P₁, P₂, ..., Pₙ of numbers 1 to N
-that maximizes the sum M₁ + M₂ + ... + Mₙ, where Mᵢ is the remainder when i is divided by Pᵢ.
-*/
-
 predicate ValidInput(n: int) {
     n >= 1
 }

@@ -1,11 +1,3 @@
-/*
-Given three positive integers a, b, and c, find the maximum possible value 
-of an arithmetic expression formed by inserting operation signs ('+' or '*') 
-between the numbers and optionally adding brackets. The numbers must remain 
-in order a, b, c. All six possible expressions must be considered:
-a + b + c, a + b * c, a * b + c, a * b * c, (a + b) * c, a * (b + c)
-*/
-
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= a <= 10 && 1 <= b <= 10 && 1 <= c <= 10

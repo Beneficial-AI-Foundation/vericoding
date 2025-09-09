@@ -1,16 +1,3 @@
-/- 
------Description-----
-This task requires writing a Lean 4 method that computes the sum of the squares of the first n odd natural numbers. The result should match the formula: (n * (2 * n - 1) * (2 * n + 1)) / 3.
-
------Input-----
-The input consists of:
-n: A natural number representing the count of odd natural numbers to consider (n should be non-negative).
-
------Output-----
-The output is a natural number:
-Returns the sum of the squares of the first n odd natural numbers, as defined by the formula: (n * (2 * n - 1) * (2 * n + 1)) / 3.
--/
-
 @[reducible, simp]
 def sumOfSquaresOfFirstNOddNumbers_precond (n : Nat) : Prop :=
   True

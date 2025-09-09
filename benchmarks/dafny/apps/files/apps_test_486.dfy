@@ -1,8 +1,3 @@
-/*
-Given a positive integer n, find the maximum product of digits among all integers from 1 to n inclusive.
-The product of digits is calculated by multiplying all individual digits together.
-*/
-
 function ProductOfDigits(x: int): int
   requires x >= 0
 {

@@ -1,8 +1,3 @@
-/*
-Given two integers n and k, determine whether all remainders n mod i for i = 1, 2, ..., k are distinct.
-Specifically, check if n mod 1 = 0, n mod 2 = 1, n mod 3 = 2, ..., n mod k = k-1.
-*/
-
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 1

@@ -1,29 +1,3 @@
-/- 
-{
-  "name": "numpy.polynomial.hermite_e.hermeroots",
-  "category": "HermiteE polynomials",
-  "description": "Compute the roots of a HermiteE series.",
-  "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.hermite_e.hermeroots.html",
-  "doc": "Compute the roots of a HermiteE series.\n\n    Return the roots (a.k.a. \"zeros\") of the polynomial\n\n    .. math:: p(x) = \\\\sum_i c[i] * He_i(x).\n\n    Parameters\n    ----------\n    c : 1-D array_like\n        1-D array of coefficients.\n\n    Returns\n    -------\n    out : ndarray\n        Array of the roots of the series. If all the roots are real,\n        then \`out\` is also real, otherwise it is complex.\n\n    See Also\n    --------\n    numpy.polynomial.polynomial.polyroots\n    numpy.polynomial.legendre.legroots\n    numpy.polynomial.laguerre.lagroots\n    numpy.polynomial.hermite.hermroots\n    numpy.polynomial.chebyshev.chebroots\n\n    Notes\n    -----\n    The root estimates are obtained as the eigenvalues of the companion\n    matrix, Roots far from the origin of the complex plane may have large\n    errors due to the numerical instability of the series for such\n    values. Roots with multiplicity greater than 1 will also show larger\n    errors as the value of the series near such points is relatively\n    insensitive to errors in the roots. Isolated roots near the origin can\n    be improved by a few iterations of Newton's method.\n\n    The HermiteE series basis polynomials aren't powers of \`x\` so the\n    results of this function may seem unintuitive.\n\n    Examples\n    --------\n    >>> from numpy.polynomial.hermite_e import hermeroots, hermefromroots\n    >>> coef = hermefromroots([-1, 0, 1])\n    >>> coef\n    array([0., 2., 0., 1.])\n    >>> hermeroots(coef)\n    array([-1.,  0.,  1.]) # may vary",
-}
--/
-
-/-  Compute the roots of a HermiteE series.
-    Given HermiteE series coefficients c[0], c[1], ..., c[n-1], returns the roots of
-    p(x) = c[0]*He_0(x) + c[1]*He_1(x) + ... + c[n-1]*He_{n-1}(x)
-    where He_i(x) are the "probabilists'" or "normalized" Hermite polynomials -/
-
-/-  Specification: hermeroots returns the roots of the HermiteE series defined by coefficients.
-    For a HermiteE series with n coefficients, there are at most n-1 roots.
-    Each root r satisfies: p(r) = 0 where p(x) = Σ c[i] * He_i(x)
-
-    Mathematical properties:
-    1. The polynomial p(x) = Σ c[i] * He_i(x) where He_i are HermiteE basis polynomials
-    2. He_i(x) are the "probabilists'" Hermite polynomials related to the standard normal distribution
-    3. The roots are found via eigenvalues of the companion matrix
-    4. For degree n polynomial, there are exactly n-1 roots (counting multiplicity)
-    5. The leading coefficient must be non-zero for a well-defined polynomial -/
-
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do

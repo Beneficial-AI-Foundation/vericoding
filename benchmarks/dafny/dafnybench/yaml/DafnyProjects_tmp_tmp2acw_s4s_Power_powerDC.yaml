@@ -1,6 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
   /* 
   * Formal verification of an O(log n) algorithm to calculate the natural power of a real number (x^n), 
   * illustrating the usage of lemmas and automatic induction in Dafny.
@@ -8,11 +6,15 @@ vc-preamble: |-
   */
   
   // Recursive definition of x^n in functional style, with time and space complexity O(n).
+  
+  // Computation of x^n in time and space O(log n).
+  
+  // A few test cases (checked statically by Dafny).
+
+vc-preamble: |-
   function power(x: real, n: nat) : real {
       if n == 0 then 1.0 else x * power(x, n-1)
   }
-  
-  // Computation of x^n in time and space O(log n).
 
 vc-helpers: |-
 
@@ -26,5 +28,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  // A few test cases (checked statically by Dafny).
 

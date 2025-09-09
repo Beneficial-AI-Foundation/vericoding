@@ -1,9 +1,3 @@
-/*
-Given a string, determine how many distinct strings can be obtained by repeatedly 
-applying a cyclic shift operation. A cyclic shift moves the last character of the 
-string to the beginning.
-*/
-
 function CyclicShiftForward(s: string): string
     requires |s| > 0
 {
