@@ -7,7 +7,7 @@ vc-preamble: |-
   // anywhere in string c. Then determine if the resulting string is a palindrome 
   // (reads the same forwards and backwards). Return a tuple containing the 
   // filtered string and a boolean indicating whether it's a palindrome.
-
+  
   // ======= SPEC REQUIREMENTS =======
   function filter_chars(s: seq<char>, c: seq<char>): seq<char>
   {
@@ -15,7 +15,7 @@ vc-preamble: |-
       else if s[0] in c then filter_chars(s[1..], c)
       else [s[0]] + filter_chars(s[1..], c)
   }
-
+  
   function reverse(s: seq<char>): seq<char>
   {
       if |s| == 0 then []
@@ -71,14 +71,15 @@ vc-code: |-
           filter_chars_append_lemma(s[..i], s[i], c);
           assert filtered == filter_chars(s[..(i+1)], c);
       }
-
+  
       assert s[..|s|] == s;
       assert filtered == filter_chars(s, c);
-
+  
       // Check if palindrome
       var is_palindrome := filtered == reverse(filtered);
-
+  
       result := (filtered, is_palindrome);
   }
 
 vc-postamble: |-
+

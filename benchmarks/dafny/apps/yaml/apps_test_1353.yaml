@@ -41,8 +41,9 @@ vc-code: |-
       var allSingleCost := n * a;
       var allMultiCost := ((n + m - 1) / m) * b;
       var mixedCost := (n / m) * b + (n % m) * a;
-      
+  
       result := min(allSingleCost, min(allMultiCost, mixedCost));
   }
 
 vc-postamble: |-
+

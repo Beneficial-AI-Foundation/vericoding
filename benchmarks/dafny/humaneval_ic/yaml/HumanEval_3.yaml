@@ -26,7 +26,7 @@ vc-spec: |-
 vc-code: |-
   {
       var balance := 0;
-
+  
       for i := 0 to |operations|
         invariant balance == sum_prefix(operations, i)
         invariant forall j :: 0 < j <= i ==> sum_prefix(operations, j) >= 0
@@ -39,8 +39,9 @@ vc-code: |-
               return true;
           }
       }
-
+  
       return false;
   }
 
 vc-postamble: |-
+

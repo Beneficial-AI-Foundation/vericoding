@@ -6,7 +6,6 @@ vc-preamble: |-
       forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j] 
   }
   
-  
   // all the values in the range satisfy `comparer` (comparer(q[i], key) == true)
   predicate RangeSatisfiesComparer(q: seq<int>, key: int, lowerBound: nat, upperBound: nat, comparer: (int, int) -> bool)
       requires 0 <= lowerBound <= upperBound <= |q|

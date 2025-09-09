@@ -28,7 +28,6 @@ vc-preamble: |-
       database := map[];
     }
   
-  
     // lookup n in the database and reply with Yes or No if it's in the database and it is or it is not prime,
     // or with Unknown when it's not in the databse
   method IsPrime?(n: nat) returns (answer: Answer) 

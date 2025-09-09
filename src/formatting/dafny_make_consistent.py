@@ -34,6 +34,99 @@ def validate_spec_keys(spec: Dict[str, Any], required_keys: list, file_path: Pat
         
         raise ValueError(error_msg)
 
+def check_vc_description(content: str, file_path: Path) -> str:
+    """Check vc-description for malformed comment blocks and remove empty lines at beginning/end.
+    
+    Raises an error if:
+    - Any line starts with '/*' but is not the first line of the section
+    - Any line ends with '*/' but is not the last line of the section
+    
+    Returns the content with empty lines removed from beginning and end.
+    """
+    if not content:
+        return ""
+    
+    lines = content.split('\n')
+    
+    # Remove empty lines at the beginning
+    while lines and lines[0].strip() == '':
+        lines = lines[1:]
+    
+    # Remove empty lines at the end
+    while lines and lines[-1].strip() == '':
+        lines = lines[:-1]
+
+    # Check for lines starting with '/*' that are not the first line
+    comment_start = False
+    for i, line in enumerate(lines):
+        stripped_line = line.lstrip()
+        if stripped_line.startswith('/*'):
+            if i > 0:
+                raise ValueError(f"Line {i+1} in {file_path} starts with '/*' but is not the first line of vc-description")
+            elif not line.startswith('/*'):
+                raise ValueError(f"Line {i+1} in {file_path} starts with '/*' but there is an unexpected indent")
+            else:
+                lines[i] = line[2:].lstrip()
+                comment_start = True
+
+    # Check for lines ending with '*/' that are not the last line
+    comment_end = False
+    for i, line in enumerate(lines):
+        stripped_line = line.rstrip()
+        if stripped_line.endswith('*/'):
+            if i < len(lines) - 1:
+                raise ValueError(f"Line {i+1} in {file_path} ends with '*/' but is not the last line of vc-description")
+            else:
+                lines[i] = stripped_line[:-2].rstrip()
+                comment_end = True
+    
+    if (not comment_start and comment_end) or (comment_start and not comment_end):
+        raise ValueError(f"vc-description in {file_path} has a malformed comment block")
+    
+    return '\n'.join(lines)
+
+def check_for_tag(content: str, key: str, correct_key: str, tag: str, correct_line: str) -> str:
+    """
+    Remove lines containing the specified tag as a substring.
+    Validate that these lines have the correct format and are in the correct section before removal.
+    
+    Args:
+        content: The input string content
+        key: The current section key (e.g., "vc-preamble")
+        correct_key: The expected section key for this tag (e.g., "vc-spec")
+        tag: The tag to look for (e.g., "<vc-spec>" or "</vc-spec>")
+        correct_line: The expected line format when stripped (e.g., "-- <vc-spec>")
+        
+    Returns:
+        The content with valid tag lines removed
+        
+    Raises:
+        ValueError: If the tag is found in the wrong section or doesn't match the expected format
+    """
+    lines = content.splitlines()
+    result_lines = []
+    
+    for line in lines:
+        stripped = line.strip()
+        
+        # Check for the tag
+        if tag in line:
+            # Check if we're in the correct section
+            if key != correct_key:
+                raise ValueError(f"Tag '{tag}' found in section '{key}' but expected in section '{correct_key}'")
+            
+            # Check if the line format is correct
+            if stripped != correct_line:
+                raise ValueError(f"Invalid {tag} line format. Expected '{correct_line}', got: '{line}'")
+            
+            # Skip this line (don't add to result)
+            continue
+            
+        # Keep all other lines
+        result_lines.append(line)
+    
+    return '\n'.join(result_lines)
+
 def normalize_section_content(content: str) -> str:
     """Normalize section content by removing leading empty lines and reducing consecutive empty lines to one."""
     if not content:
@@ -79,15 +172,29 @@ def process_yaml_file(file_path: Path) -> None:
             spec = yaml_loader.load(f)
 
         # Check that spec has exactly the same keys as required keys
-        validate_spec_keys(spec, required_keys, file_path)
-            
+        # validate_spec_keys(spec, required_keys, file_path)
+        
+        # Check vc-description for malformed comment blocks and clean up empty lines
+        if 'vc-description' in spec and isinstance(spec['vc-description'], str):
+            spec['vc-description'] = check_vc_description(spec['vc-description'], file_path)
+        else:
+            raise ValueError(f"vc-description not found in {file_path}")
+        
+        for key, value in spec.items():
+            if isinstance(value, str):
+                spec[key] = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '-- <vc-spec>')
+                spec[key] = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '-- </vc-spec>')
+                spec[key] = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '-- <vc-helpers>')
+                spec[key] = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '-- </vc-helpers>')
+                spec[key] = check_for_tag(value, key, 'vc-code', '<vc-code>', '-- <vc-code>')
+                spec[key] = check_for_tag(value, key, 'vc-code', '</vc-code>', '-- </vc-code>')
         # Normalize all sections
         for key, value in spec.items():
             if isinstance(value, str):
                 spec[key] = normalize_section_content(value)
         
         # Write back to the file using spec_to_yaml to preserve structure
-        # spec_to_yaml(spec, file_path, required_keys)
+        spec_to_yaml(spec, file_path, required_keys)
         
         # print(f"Processed: {file_path}")
         
@@ -106,7 +213,7 @@ def main():
     total_files_processed = 0
     
     # Loop through all immediate folders in the dafny directory
-    for folder in [ dafny_dir / 'dafnybench' ]:
+    for folder in dafny_dir.iterdir():
         if folder.is_dir():
             yaml_subfolder = folder / 'yaml'
             

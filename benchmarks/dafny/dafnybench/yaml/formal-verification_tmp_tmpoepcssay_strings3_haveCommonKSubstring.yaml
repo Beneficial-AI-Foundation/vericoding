@@ -8,8 +8,6 @@ vc-preamble: |-
     assume{:axiom} false;
   }
   
-  
-  
   predicate isPrefixPred(pre:string, str:string)
   {
       (|pre| <= |str|) && 
@@ -42,8 +40,6 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
-  
   
   predicate haveCommonKSubstringPred(k:nat, str1:string, str2:string)
   {

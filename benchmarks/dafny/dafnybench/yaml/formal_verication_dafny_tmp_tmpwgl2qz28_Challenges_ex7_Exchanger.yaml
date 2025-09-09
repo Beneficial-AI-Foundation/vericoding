@@ -3,7 +3,6 @@ vc-description: |-
 vc-preamble: |-
   // see pdf 'ex6 & 7 documentation' for excercise question
   
-  
   datatype Bases = A | C | G | T
   
   //swaps two sequence indexes

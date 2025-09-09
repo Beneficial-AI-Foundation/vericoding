@@ -68,7 +68,7 @@ vc-helpers: |-
           var sum := 0;
           var first_digit := 0;
           var temp := abs_n;
-
+  
           // Get first digit
           while temp >= 10
               invariant temp > 0
@@ -77,7 +77,7 @@ vc-helpers: |-
               temp := temp / 10;
           }
           first_digit := temp;
-
+  
           // Sum all digits
           while abs_n > 0 
               invariant abs_n >= 0
@@ -107,10 +107,10 @@ vc-code: |-
       {
           var ds := digitSum(arr[i]);
           assert ds == digitSumFunc(arr[i]);
-
+  
           var old_set := set j | 0 <= j < i && digitSumFunc(arr[j]) > 0;
           var new_set := set j | 0 <= j < i + 1 && digitSumFunc(arr[j]) > 0;
-
+  
           if ds > 0 {
               assert digitSumFunc(arr[i]) > 0;
               assert new_set == old_set + {i};
@@ -122,9 +122,10 @@ vc-code: |-
               assert new_set == old_set;
               assert |new_set| == |old_set|;
           }
-
+  
           i := i + 1;
       }
   }
 
 vc-postamble: |-
+

@@ -50,7 +50,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method CountGoodSubarraysInArray(digits: seq<int>) returns (count: int)
@@ -76,10 +75,10 @@ vc-code: |-
           current_sum := current_sum + digits[pos];
           var current_count := pos + 1;
           var diff := current_count - current_sum;
-          
+  
           var contribution := if diff in freq_map then freq_map[diff] else 0;
           result := result + contribution;
-          
+  
           freq_map := freq_map[diff := if diff in freq_map then freq_map[diff] + 1 else 1];
           pos := pos + 1;
       }
@@ -88,3 +87,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

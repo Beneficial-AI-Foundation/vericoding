@@ -10,7 +10,6 @@ vc-preamble: |-
   Explanation: The answer is "abc", with the length of 3.
   */
   
-  
   // a left-inclusive right-exclusive interval:
   type interval = iv: (int, int) | iv.0 <= iv.1 witness (0, 0)
   
@@ -62,7 +61,6 @@ vc-preamble: |-
   
     The corresponding verification code is shown below:
   */
-  
   
   // For verification simplicity, we pretend as if:
   // - `map` were Python dict (or even better, a fixed-size array -- if the "alphabet" is small)

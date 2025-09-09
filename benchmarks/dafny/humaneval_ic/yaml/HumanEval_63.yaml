@@ -45,7 +45,7 @@ vc-code: |-
           var a := 0;  // fibfib(0)
           var b := 0;  // fibfib(1)
           var c := 1;  // fibfib(2)
-
+  
           // Compute iteratively from 3 to n
           var i := 3;
           while i <= n
@@ -60,9 +60,10 @@ vc-code: |-
               c := next_val;
               i := i + 1;
           }
-
+  
           result := c;
       }
   }
 
 vc-postamble: |-
+

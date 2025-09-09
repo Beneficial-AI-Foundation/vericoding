@@ -6,18 +6,18 @@ vc-preamble: |-
   // Given an array of integers and an integer k, return the sum of all elements 
   // that have at most two digits among the first k elements of the array.
   // An element has at most two digits if its absolute value is between 0 and 99 (inclusive).
-
+  
   // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(arr: seq<int>, k: int) {
     1 <= |arr| <= 100 && 1 <= k <= |arr|
   }
-
+  
   function sum_valid_elements(arr: seq<int>, k: int): int
     requires 0 <= k <= |arr|
   {
     sum_valid_elements_up_to(arr, k)
   }
-
+  
   function sum_valid_elements_up_to(arr: seq<int>, n: int): int
     requires 0 <= n <= |arr|
   {
@@ -52,3 +52,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

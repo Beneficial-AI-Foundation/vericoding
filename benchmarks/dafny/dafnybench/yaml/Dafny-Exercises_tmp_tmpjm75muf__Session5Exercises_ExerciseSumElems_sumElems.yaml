@@ -15,7 +15,6 @@ vc-preamble: |-
       else s[0]+SumL(s[1..])
   }
   
-  
   function SumV(v:array<int>,c:int,f:int):int
     requires 0<=c<=f<=v.Length
     reads v

@@ -10,7 +10,6 @@ vc-preamble: |-
     assume{:axiom} false;
   }
   
-  
   // Predicates for Bubble Sort
   predicate sorted(a: array2<int>, l: int, u: int)
       reads a

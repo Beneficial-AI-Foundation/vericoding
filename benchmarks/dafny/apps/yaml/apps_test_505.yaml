@@ -55,7 +55,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int, k: int, grid: seq<string>) returns (result: string)
@@ -176,3 +175,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

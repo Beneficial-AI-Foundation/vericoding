@@ -9,7 +9,6 @@ vc-preamble: |-
   
   // Insertion sort með hjálp helmingunarleitar.
   
-  
   method Search( s: seq<int>, x: int ) returns ( k: int )
       // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
       requires forall p,q | 0 <= p < q < |s| :: s[p] <= s[q];

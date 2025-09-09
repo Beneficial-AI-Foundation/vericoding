@@ -61,7 +61,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int) returns (result: real)
@@ -86,3 +85,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

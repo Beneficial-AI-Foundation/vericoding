@@ -6,19 +6,19 @@ vc-preamble: |-
   // Given a string, apply one of two transformations:
   // 1. If the string contains at least one letter: swap the case of each letter (lowercase ↔ uppercase), keep non-letters unchanged
   // 2. If the string contains no letters: reverse the entire string
-
+  
   // ======= SPEC REQUIREMENTS =======
   function hasLetter(s: string): bool
   {
       exists i :: 0 <= i < |s| && (('A' <= s[i] <= 'Z') || ('a' <= s[i] <= 'z'))
   }
-
+  
   function reverseString(s: string): string
       ensures |reverseString(s)| == |s|
   {
       if |s| == 0 then s else s[|s|-1..] + reverseString(s[..|s|-1])
   }
-
+  
   function swapCase(c: char): char
   {
       if 'A' <= c <= 'Z' then (c as int + 32) as char
@@ -44,7 +44,7 @@ vc-code: |-
       if hasLetter(s) {
           var chars := [];
           var i := 0;
-
+  
           while i < |s|
               invariant 0 <= i <= |s|
               invariant |chars| == i
@@ -69,7 +69,7 @@ vc-code: |-
               }
               i := i + 1;
           }
-
+  
           result := chars;
       } else {
           result := reverseString(s);
@@ -77,3 +77,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

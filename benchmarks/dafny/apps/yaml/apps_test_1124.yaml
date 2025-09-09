@@ -4,7 +4,6 @@ vc-description: |-
   Return the final common value.
 
 vc-preamble: |-
-  
   predicate ValidInput(values: seq<int>)
   {
     |values| >= 1 && forall i :: 0 <= i < |values| ==> values[i] > 0
@@ -48,7 +47,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(values: seq<int>) returns (result: int)
@@ -62,3 +60,4 @@ vc-code: |-
   {:trigger values[0] % d}
 
 vc-postamble: |-
+

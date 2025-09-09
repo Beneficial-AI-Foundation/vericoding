@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: bignum_Compare[NormalizeBitString].
+  Implement the method according to the Dafny specification.
+
 vc-preamble: |-
   ghost function Str2Int(s: string): nat
     requires ValidBitString(s)
@@ -10,7 +14,7 @@ vc-preamble: |-
     // All characters must be '0' or '1'.
     forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
   }
-
+  
   method NormalizeBitString(s: string) returns(t: string)
     // Remove leading zeros, except keep at least one digit
     ensures ValidBitString(t)
@@ -21,13 +25,8 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
 
 vc-helpers: |-
-
-vc-description: |-
-  Bignum task: bignum_Compare[NormalizeBitString].
-  Implement the method according to the Dafny specification.
 
 vc-spec: |-
   method Compare(s1: string, s2: string) returns (res: int)
@@ -43,3 +42,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

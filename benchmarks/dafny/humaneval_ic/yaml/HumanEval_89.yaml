@@ -34,7 +34,7 @@ vc-code: |-
   {
       var encrypted := [];
       var shift := 4;
-
+  
       for i := 0 to |s|
           invariant 0 <= i <= |s|
           invariant |encrypted| == i
@@ -48,7 +48,7 @@ vc-code: |-
           )
       {
           var c := s[i];
-
+  
           if 'a' <= c && c <= 'z' {
               var shifted_pos := (c as int - 'a' as int + shift) % 26;
               var new_char := (shifted_pos + 'a' as int) as char;
@@ -61,8 +61,9 @@ vc-code: |-
               encrypted := encrypted + [c];
           }
       }
-
+  
       result := encrypted;
   }
 
 vc-postamble: |-
+

@@ -26,7 +26,7 @@ vc-code: |-
       if |l| < 3 {
           return false;
       }
-
+  
       // Check all possible combinations of three distinct indices
       var i := 0;
       while i < |l|
@@ -55,8 +55,9 @@ vc-code: |-
           }
           i := i + 1;
       }
-
+  
       return false;
   }
 
 vc-postamble: |-
+

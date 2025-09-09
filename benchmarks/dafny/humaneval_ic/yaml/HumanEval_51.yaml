@@ -34,7 +34,7 @@ vc-code: |-
   {
       var vowels := {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
       var filtered := "";
-
+  
       var i := 0;
       while i < |text|
           invariant 0 <= i <= |text|
@@ -53,8 +53,9 @@ vc-code: |-
           }
           i := i + 1;
       }
-
+  
       result := filtered;
   }
 
 vc-postamble: |-
+

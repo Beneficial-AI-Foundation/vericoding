@@ -10,7 +10,6 @@ vc-preamble: |-
   Explanation: "aba" is also a valid answer.
   */
   
-  
   // Specifying the problem: whether `s[i..j]` is palindromic
   ghost predicate palindromic(s: string, i: int, j: int)
     requires 0 <= i <= j <= |s|
@@ -32,7 +31,6 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
   
   // The main algorithm.
   // We traverse all centers from left to right, and "expand" each of them, to find the longest palindrome.
@@ -65,10 +63,8 @@ vc-preamble: |-
     which "indirectly" proves that the entire algorithm runs in `O(|s|)` time.
   */
   
-  
   // A reference implementation of Manacher's algorithm:
   // (Ref. https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm) for details...
-  
   
   // Below are helper functions and lemmas we used:
   

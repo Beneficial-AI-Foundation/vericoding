@@ -17,8 +17,6 @@ vc-preamble: |-
   
   // Successfully verified with [Dafny 3.3.0.31104] in about 5 seconds.
   
-  
-  
   // We define "valid permutation" using multiset:
   
   predicate valid_permut(a: seq<int>, b: seq<int>)
@@ -35,7 +33,6 @@ vc-preamble: |-
   {
     forall i, j | 0 <= i <= j < |a| :: a[i] <= a[j]
   }
-  
   
   // Now, the lol sort algorithm:
   // (Some invariants were tricky to find, but Dafny was smart enough otherwise)

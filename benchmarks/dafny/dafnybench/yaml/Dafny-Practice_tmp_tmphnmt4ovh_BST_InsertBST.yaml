@@ -3,8 +3,6 @@ vc-description: |-
 vc-preamble: |-
   datatype Tree = Empty | Node(int,Tree,Tree)
   
-  
-  
   function NumbersInTree(t: Tree): set<int>
   {
       NumbersInSequence(Inorder(t))

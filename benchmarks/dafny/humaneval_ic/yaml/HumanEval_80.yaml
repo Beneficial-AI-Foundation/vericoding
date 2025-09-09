@@ -36,7 +36,7 @@ vc-code: |-
       if |s| < 3 {
           return false;
       }
-
+  
       var i := 0;
       while i <= |s| - 3 
           invariant 0 <= i <= |s| - 2
@@ -47,8 +47,9 @@ vc-code: |-
           }
           i := i + 1;
       }
-
+  
       return true;
   }
 
 vc-postamble: |-
+

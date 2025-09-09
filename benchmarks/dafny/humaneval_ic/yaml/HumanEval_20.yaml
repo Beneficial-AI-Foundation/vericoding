@@ -40,7 +40,7 @@ vc-code: |-
   {
     var min_diff := AbsDiff(numbers[0], numbers[1]);
     var closest_pair := (numbers[0], numbers[1]);
-
+  
     for i := 0 to |numbers| - 1
       invariant closest_pair.0 in numbers
       invariant closest_pair.1 in numbers
@@ -63,7 +63,7 @@ vc-code: |-
         }
       }
     }
-
+  
     if closest_pair.0 <= closest_pair.1 {
       result := closest_pair;
     } else {
@@ -72,3 +72,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -121,14 +121,14 @@ vc-spec: |-
 vc-code: |-
   {
       result := [];
-
+  
       if |paren_string| == 0 {
           return;
       }
-
+  
       var groups := SplitBySpaces(paren_string);
       assert groups == SplitBySpacesResult(paren_string);
-
+  
       var i := 0;
       while i < |groups|
           invariant 0 <= i <= |groups|
@@ -140,7 +140,7 @@ vc-code: |-
           var group := groups[i];
           var current_depth := 0;
           var max_depth := 0;
-
+  
           var j := 0;
           while j < |group|
               invariant 0 <= j <= |group|
@@ -157,7 +157,7 @@ vc-code: |-
               }
               j := j + 1;
           }
-
+  
           assert max_depth == MaxNestingDepth(group);
           result := result + [max_depth];
           i := i + 1;
@@ -165,3 +165,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

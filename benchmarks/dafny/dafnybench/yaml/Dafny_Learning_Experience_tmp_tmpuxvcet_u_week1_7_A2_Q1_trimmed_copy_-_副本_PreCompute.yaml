@@ -9,9 +9,6 @@ vc-preamble: |-
       else if s[hi-1]%2 == 0 then 1 + Count(hi-1, s) else Count(hi-1, s)
   }
   
-  
-  
-  
   method ComputeCount(CountIndex:nat, a:seq<int>,b:array<int>) returns (p:nat)
       requires  CountIndex == 0 || (|a| == b.Length && 1 <= CountIndex <= |a|)
       decreases CountIndex

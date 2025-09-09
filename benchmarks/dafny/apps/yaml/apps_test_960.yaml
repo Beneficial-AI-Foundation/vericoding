@@ -12,7 +12,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int) returns (result: int)
@@ -25,7 +24,7 @@ vc-code: |-
   {
     result := n * k + 1;
     assert (result / k) * (result % k) == n * 1 == n;
-    
+  
     var i := 1;
     while i < k
       invariant 1 <= i <= k
@@ -39,15 +38,16 @@ vc-code: |-
         assert candidate > 0;
         assert candidate / k == t && candidate % k == i;
         assert (candidate / k) * (candidate % k) == t * i == n;
-        
+  
         if candidate < result {
           result := candidate;
         }
       }
       i := i + 1;
     }
-    
+  
     assert forall r :: 0 <= r < k ==> (forall x :: x > 0 && (x / k) * (x % k) == n && x % k == r ==> result <= x);
   }
 
 vc-postamble: |-
+

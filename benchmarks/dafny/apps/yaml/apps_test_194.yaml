@@ -38,7 +38,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, a: int, b: int, groups: seq<int>) returns (denied: int)
@@ -89,3 +88,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

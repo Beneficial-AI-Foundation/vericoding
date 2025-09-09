@@ -1,6 +1,6 @@
 vc-description: |-
   This verification task implements an algorithm to find the largest prime factor of a composite integer n (where n > 1 and n is not prime). The algorithm uses trial division, first removing all factors of 2, then checking odd factors up to the square root of the remaining number.
-
+  
   The implementation must ensure that the returned result is indeed a prime number, divides n, and is the largest such prime factor among all factors of n.
 
 vc-preamble: |-
@@ -38,7 +38,7 @@ vc-code: |-
   {
       var largest_factor := 1;
       var current_n := n;
-
+  
       while current_n % 2 == 0
           invariant current_n > 0
           invariant current_n * power_of_2_factor(n, n / current_n) == n
@@ -47,7 +47,7 @@ vc-code: |-
           largest_factor := 2;
           current_n := current_n / 2;
       }
-
+  
       var factor := 3;
       while factor * factor <= current_n
           invariant factor >= 3
@@ -72,12 +72,13 @@ vc-code: |-
           }
           factor := factor + 2;
       }
-
+  
       if current_n > 1 {
           largest_factor := current_n;
       }
-
+  
       result := largest_factor;
   }
 
 vc-postamble: |-
+

@@ -3,7 +3,6 @@ vc-description: |-
   one or more cards such that the average of the selected cards equals exactly A.
 
 vc-preamble: |-
-  
   predicate valid_input_format(stdin_input: string)
   {
       var lines := split_lines_func(stdin_input);
@@ -70,7 +69,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
   predicate is_valid_integer(s: string)
   {
       |s| > 0 && 
@@ -213,3 +211,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

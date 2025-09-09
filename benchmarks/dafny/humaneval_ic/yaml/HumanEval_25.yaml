@@ -48,13 +48,13 @@ vc-spec: |-
 vc-code: |-
   {
       factors := [];
-
+  
       if n <= 1 {
           return;
       }
-
+  
       var current := n;
-
+  
       // Handle factor 2
       while current % 2 == 0
           decreases current
@@ -69,7 +69,7 @@ vc-code: |-
           factors := factors + [2];
           current := current / 2;
       }
-
+  
       // Handle odd factors starting from 3
       var factor := 3;
       while factor * factor <= current
@@ -88,7 +88,7 @@ vc-code: |-
               assert forall k :: 2 <= k < factor ==> factor % k != 0;
               assert isPrime(factor);
           }
-
+  
           while current % factor == 0
               decreases current
               invariant current >= 1
@@ -107,7 +107,7 @@ vc-code: |-
           }
           factor := factor + 2;
       }
-
+  
       // If current > 1, it's a prime factor
       if current > 1 {
           assert forall k :: 2 <= k < current ==> current % k != 0;
@@ -118,3 +118,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -49,7 +49,7 @@ vc-code: |-
   {
       var num_a := ValueToReal(a);
       var num_b := ValueToReal(b);
-
+  
       if num_a == num_b {
           result := None;
       } else if num_a > num_b {
@@ -60,3 +60,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

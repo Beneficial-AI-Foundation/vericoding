@@ -51,7 +51,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method CalculateDistances(cities: seq<int>) returns (min_distances: seq<int>, max_distances: seq<int>)
@@ -62,7 +61,7 @@ vc-code: |-
   {
     min_distances := [];
     max_distances := [];
-    
+  
     var i := 0;
     while i < |cities|
       invariant 0 <= i <= |cities|
@@ -100,3 +99,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

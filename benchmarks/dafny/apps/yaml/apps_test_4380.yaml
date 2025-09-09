@@ -74,7 +74,7 @@ vc-spec: |-
 vc-code: |-
   {
       ExistsOddProductEquivalence(a, b);
-      
+  
       if a == 2 || b == 2 {
           result := "No";
       } else {
@@ -83,3 +83,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

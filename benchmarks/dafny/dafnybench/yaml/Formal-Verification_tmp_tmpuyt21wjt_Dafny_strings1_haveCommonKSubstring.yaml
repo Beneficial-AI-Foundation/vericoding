@@ -7,7 +7,6 @@ vc-preamble: |-
       pre != str[..|pre|]
   }
   
-  
   method isPrefix(pre: string, str: string) returns (res:bool)
       ensures !res <==> isNotPrefixPred(pre,str)
       ensures  res <==> isPrefixPredicate(pre,str)
@@ -15,13 +14,10 @@ vc-preamble: |-
     assume{:axiom} false;
   }
   
-  
-  
   predicate isPrefixPredicate(pre: string, str:string)
   {
     |str| >= |pre| && pre <= str
   }
-  
   
   predicate isSubstringPredicate (sub: string, str:string)
   {

@@ -48,7 +48,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method calculateMinimumHP(dungeon: seq<seq<int>>) returns (result: int)
@@ -135,3 +134,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

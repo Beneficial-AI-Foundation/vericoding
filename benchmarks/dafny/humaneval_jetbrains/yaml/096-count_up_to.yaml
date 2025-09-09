@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: def count_up_to(n : int) -> list[int]
+  Implement a function that takes an non-negative integer and returns an array of the first n integers that are prime numbers and less than n.
+
 vc-preamble: |-
   function IsPrime(n: int) : bool
   {
@@ -5,12 +9,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: def count_up_to(n : int) -> list[int]
-  Implement a function that takes an non-negative integer and returns an array of the first n integers that are prime numbers and less than n.
-  */
 
 vc-spec: |-
   method CountUpTo(n: int) returns (primes: seq<int>)
@@ -29,5 +27,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
 

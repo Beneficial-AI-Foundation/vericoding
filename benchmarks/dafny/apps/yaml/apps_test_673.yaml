@@ -36,7 +36,7 @@ vc-code: |-
       assert result == k * (n / k + 1);
       assert n / k * k <= n < (n / k + 1) * k;
       assert result > n;
-      
+  
       // Help prove the minimality condition
       forall x | n < x < result 
           ensures x % k != 0
@@ -59,3 +59,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

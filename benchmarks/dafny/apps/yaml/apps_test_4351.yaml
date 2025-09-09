@@ -89,7 +89,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -114,7 +113,7 @@ vc-code: |-
     }
   
     var n := ParseIntValue(tokens[0]);
-    
+  
     if !ValidInput(n) {
       result := "";
       return;
@@ -128,3 +127,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

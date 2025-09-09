@@ -113,7 +113,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -154,3 +153,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

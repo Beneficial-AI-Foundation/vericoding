@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: def is_multiply_prime(a: int) -> bool
+  Write a function that returns true if the given number is the multiplication of 3 prime numbers and false otherwise. Knowing that (a) is less then 100.
+
 vc-preamble: |-
   function Prime(p: nat) : bool
   {
@@ -6,12 +10,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: def is_multiply_prime(a: int) -> bool
-  Write a function that returns true if the given number is the multiplication of 3 prime numbers and false otherwise. Knowing that (a) is less then 100.
-  */
 
 vc-spec: |-
   method is_multiply_prime(x: nat) returns (ans : bool)
@@ -28,5 +26,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
 

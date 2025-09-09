@@ -47,7 +47,7 @@ vc-code: |-
   {
       var weekDays := ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
       var index := findIndex(weekDays, day);
-      
+  
       assert day in weekDays;
       assert index >= 0 && index <= 6;
       assert day == "SUN" ==> index == 0;
@@ -57,8 +57,9 @@ vc-code: |-
       assert day == "THU" ==> index == 4;
       assert day == "FRI" ==> index == 5;
       assert day == "SAT" ==> index == 6;
-      
+  
       result := 7 - index;
   }
 
 vc-postamble: |-
+

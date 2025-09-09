@@ -36,7 +36,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, directions: string, positions: seq<int>) returns (result: int)
@@ -86,3 +85,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -111,7 +111,7 @@ vc-spec: |-
 vc-code: |-
   {
       var lines := SplitLines(input);
-      
+  
       var player1 := ParseLine(lines[0]);
       var player2 := ParseLine(lines[1]);
       var player3 := ParseLine(lines[2]);
@@ -156,3 +156,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

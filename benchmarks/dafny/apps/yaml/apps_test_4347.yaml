@@ -68,7 +68,7 @@ vc-code: |-
       var factHalfMinus1 := factorial(half - 1);
   
       BinomialPositive(n, half);
-      
+  
       // C(n, n/2) = n! / ((n/2)! * (n/2)!)
       var binomial := factN / (factHalf * factHalf);
   
@@ -77,8 +77,9 @@ vc-code: |-
   
       // Final result: C(n, n/2) * ((n/2-1)!)^2 / 2
       result := (binomial * arrangements) / 2;
-      
+  
       ResultPositive(n);
   }
 
 vc-postamble: |-
+

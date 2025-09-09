@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: bignum_DivMod[Sub].
+  Implement the method according to the Dafny specification.
+
 vc-preamble: |-
   ghost function Str2Int(s: string): nat
     requires ValidBitString(s)
@@ -10,7 +14,7 @@ vc-preamble: |-
     // All characters must be '0' or '1'.
     forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
   }
-
+  
   method Sub(s1: string, s2: string) returns (res: string)
     requires ValidBitString(s1) && ValidBitString(s2)
     requires Str2Int(s1) >= Str2Int(s2)
@@ -19,13 +23,8 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
 
 vc-helpers: |-
-
-vc-description: |-
-  Bignum task: bignum_DivMod[Sub].
-  Implement the method according to the Dafny specification.
 
 vc-spec: |-
   method DivMod(dividend: string, divisor: string) returns (quotient: string, remainder: string)
@@ -41,3 +40,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

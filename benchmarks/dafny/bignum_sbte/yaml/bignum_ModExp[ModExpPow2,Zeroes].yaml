@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: bignum_ModExp[ModExpPow2,Zeroes].
+  Implement the method according to the Dafny specification.
+
 vc-preamble: |-
   ghost function Str2Int(s: string): nat
     requires ValidBitString(s)
@@ -18,7 +22,7 @@ vc-preamble: |-
   {
     forall i | 0 <= i < |s| :: s[i] == '0'
   }
-
+  
   method ModExpPow2(sx: string, sy: string, n: nat, sz: string) returns (res: string)
     requires ValidBitString(sx) && ValidBitString(sy) &&  ValidBitString(sz)
     // sy is power of 2 or zero
@@ -40,13 +44,8 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
 
 vc-helpers: |-
-
-vc-description: |-
-  Bignum task: bignum_ModExp[ModExpPow2,Zeroes].
-  Implement the method according to the Dafny specification.
 
 vc-spec: |-
   method ModExp(sx: string, sy: string, sz: string) returns (res: string)
@@ -63,3 +62,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

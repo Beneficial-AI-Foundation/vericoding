@@ -28,7 +28,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, a: seq<int>, b: seq<int>) returns (result: (bool, seq<int>))
@@ -110,3 +109,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

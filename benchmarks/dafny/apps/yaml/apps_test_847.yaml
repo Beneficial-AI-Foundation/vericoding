@@ -20,7 +20,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(cards: seq<int>, x: int) returns (result: int)
@@ -41,3 +40,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

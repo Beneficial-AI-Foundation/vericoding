@@ -1,12 +1,10 @@
-vc-preamble: |-
-vc-helpers: |-
-
-
 vc-description: |-
-  /*
   function_signature: def is_nested(string: str) -> Bool
   Create a function that takes a string as input which contains only parentheses. The function should return True if and only if there is a valid subsequence of parentheses where at least one parenthesis in the subsequence is nested.
-  */
+
+vc-preamble: |-
+
+vc-helpers: |-
 
 vc-spec: |-
   method is_nested(s: seq<int>) returns (res: bool) 
@@ -20,5 +18,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
 

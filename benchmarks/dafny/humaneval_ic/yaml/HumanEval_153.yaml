@@ -8,20 +8,20 @@ vc-preamble: |-
   // The strength of an extension is calculated as: (number of uppercase letters) - (number of lowercase letters).
   // Choose the extension with the highest strength value. If multiple extensions have the same highest strength, 
   // choose the first one that appears in the list.
-
+  
   // ======= SPEC REQUIREMENTS =======
   function count_upper(s: string): int
   {
       if |s| == 0 then 0
       else (if 'A' <= s[0] <= 'Z' then 1 else 0) + count_upper(s[1..])
   }
-
+  
   function count_lower(s: string): int
   {
       if |s| == 0 then 0
       else (if 'a' <= s[0] <= 'z' then 1 else 0) + count_lower(s[1..])
   }
-
+  
   function strength(s: string): int
   {
       count_upper(s) - count_lower(s)
@@ -42,7 +42,7 @@ vc-code: |-
   {
       var strongest_idx := 0;
       var max_strength := strength(extensions[0]);
-
+  
       for i := 1 to |extensions| 
           invariant 0 <= strongest_idx < i <= |extensions|
           invariant max_strength == strength(extensions[strongest_idx])
@@ -55,8 +55,9 @@ vc-code: |-
               strongest_idx := i;
           }
       }
-
+  
       result := class_name + "." + extensions[strongest_idx];
   }
 
 vc-postamble: |-
+

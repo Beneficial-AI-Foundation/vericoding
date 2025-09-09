@@ -32,7 +32,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: nat, m: nat, colors: seq<nat>, desired: seq<nat>) returns (result: string)
@@ -93,3 +92,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

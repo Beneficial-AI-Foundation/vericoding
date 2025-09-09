@@ -56,7 +56,7 @@ vc-preamble: |-
   function XOR(a: bool, b: bool): bool {
       (a || b) && !(a && b)
   }
-  
+
 vc-helpers: |-
   // <vc-helpers>
   // </vc-helpers>

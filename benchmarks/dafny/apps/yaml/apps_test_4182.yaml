@@ -24,7 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int, x: int, y: int, xx: seq<int>, yy: seq<int>) returns (result: string)
@@ -78,3 +77,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -79,7 +79,6 @@ vc-preamble: |-
   function int_value_of(r: real): int { 0 }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (output: string)
@@ -98,3 +97,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

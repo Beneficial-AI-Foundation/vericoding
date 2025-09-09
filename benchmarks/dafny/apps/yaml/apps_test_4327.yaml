@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method CalculateMaxPies(A: int, P: int) returns (pies: int)
@@ -37,3 +36,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

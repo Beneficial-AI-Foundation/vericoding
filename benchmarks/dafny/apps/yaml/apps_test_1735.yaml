@@ -24,7 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(s: string) returns (result: string)
@@ -59,3 +58,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

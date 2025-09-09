@@ -58,7 +58,7 @@ vc-spec: |-
 vc-code: |-
   {
     MinDistanceProperties(n, a, b, c);
-    
+  
     if n == 1 {
       result := 0;
     } else {
@@ -68,3 +68,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

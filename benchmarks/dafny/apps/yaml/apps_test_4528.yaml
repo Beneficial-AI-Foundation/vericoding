@@ -26,7 +26,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(testCases: seq<(int, int)>) returns (results: seq<int>)
@@ -54,3 +53,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

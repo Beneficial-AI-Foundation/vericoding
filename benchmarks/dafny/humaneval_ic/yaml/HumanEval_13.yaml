@@ -1,6 +1,6 @@
 vc-description: |-
   This task involves implementing the greatest common divisor (GCD) function for two integers. The GCD is the largest positive integer that divides both numbers without remainder, with special cases for zero values.
-
+  
   The implementation should use the Euclidean algorithm, which repeatedly applies the property that GCD(a,b) = GCD(b, a mod b) until one operand becomes zero.
 
 vc-preamble: |-
@@ -35,7 +35,7 @@ vc-code: |-
   {
       var x := abs(a);
       var y := abs(b);
-
+  
       while y != 0
           decreases y
           invariant y >= 0
@@ -47,8 +47,9 @@ vc-code: |-
           y := x % y;
           x := temp;
       }
-
+  
       result := x;
   }
 
 vc-postamble: |-
+

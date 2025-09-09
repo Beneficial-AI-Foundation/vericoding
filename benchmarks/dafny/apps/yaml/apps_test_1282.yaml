@@ -14,7 +14,7 @@ vc-preamble: |-
   {
       var rev_input := reverse(input);
       var first_f := find_char(rev_input, 'F', 0);
-      
+  
       if first_f == -1 then 0
       else
           var first_m_after_f := find_char(rev_input, 'M', first_f + 1);
@@ -144,3 +144,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

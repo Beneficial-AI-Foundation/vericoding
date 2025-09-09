@@ -27,7 +27,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method SolveCookieDistribution(a: nat, b: nat, n: nat, m: nat) returns (result: bool)
@@ -48,3 +47,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

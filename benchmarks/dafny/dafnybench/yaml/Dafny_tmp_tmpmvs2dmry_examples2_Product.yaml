@@ -10,7 +10,6 @@ vc-preamble: |-
       else gcd(m, n-m)
   }
   
-  
   function exp(x: real, n: nat) :real
   decreases n;
   {

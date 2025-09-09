@@ -1,6 +1,6 @@
 vc-description: |-
   This verification task involves implementing a method to count the number of sentences that start with the word "I". Sentences are separated by '.', '?' or '!' characters. The implementation should parse the input string into sentences, trim whitespace from each sentence, extract the first word, and check if it equals "I".
-
+  
   The expected implementation should use the provided helper functions to split sentences, trim whitespace, and count sentences starting with "I", ensuring the result matches the functional specification.
 
 vc-preamble: |-
@@ -150,3 +150,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

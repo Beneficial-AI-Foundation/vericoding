@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method DetermineFoodSafety(X: int, A: int, B: int) returns (outcome: string)
@@ -36,7 +35,7 @@ vc-spec: |-
 vc-code: |-
   {
       var daysPastBestBy := B - A;
-      
+  
       if daysPastBestBy <= 0 {
           outcome := "delicious";
       } else if daysPastBestBy <= X {
@@ -47,3 +46,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -22,7 +22,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(input: seq<int>) returns (result: seq<int>)
@@ -45,3 +44,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

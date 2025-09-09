@@ -19,7 +19,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (change: int)
@@ -33,3 +32,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

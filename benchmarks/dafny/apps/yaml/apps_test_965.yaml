@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, statuses: string) returns (result: int)
@@ -49,14 +48,14 @@ vc-code: |-
           } else {
               assert (set j | 0 <= j < i+1 && statuses[j] == 'I') == (set j | 0 <= j < i && statuses[j] == 'I');
           }
-          
+  
           if statuses[i] == 'A' {
               A := A + 1;
               assert (set j | 0 <= j < i+1 && statuses[j] == 'A') == (set j | 0 <= j < i && statuses[j] == 'A') + {i};
           } else {
               assert (set j | 0 <= j < i+1 && statuses[j] == 'A') == (set j | 0 <= j < i && statuses[j] == 'A');
           }
-          
+  
           i := i + 1;
       }
   
@@ -73,3 +72,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

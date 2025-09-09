@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(input: seq<string>) returns (result: string)
@@ -36,3 +35,4 @@ vc-code: |-
   {"YES", "NO"}
 
 vc-postamble: |-
+

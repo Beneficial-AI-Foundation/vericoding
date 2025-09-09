@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: method check_palindrome(s: string) returns (result: bool)
+  Check condition. Ensures: the result is a palindrome.
+
 vc-preamble: |-
   method reverse_delete(s: string, chars: string) returns (res: string, is_palindrome: bool)
     // post-conditions-start
@@ -11,12 +15,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: method check_palindrome(s: string) returns (result: bool)
-  Check condition. Ensures: the result is a palindrome.
-  */
 
 vc-spec: |-
   method check_palindrome(s: string) returns (result: bool)

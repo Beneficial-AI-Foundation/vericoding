@@ -54,7 +54,7 @@ vc-code: |-
       if n <= 0 {
           return 1;
       }
-
+  
       result := 1;
       var i := 1;
       while i <= n
@@ -69,3 +69,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

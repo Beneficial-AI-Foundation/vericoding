@@ -27,7 +27,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method DetermineWinner(X: int, Y: int) returns (winner: string)
@@ -46,3 +45,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

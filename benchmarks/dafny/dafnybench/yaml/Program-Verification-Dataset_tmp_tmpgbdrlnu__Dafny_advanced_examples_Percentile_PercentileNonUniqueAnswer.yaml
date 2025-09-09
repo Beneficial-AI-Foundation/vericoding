@@ -19,7 +19,6 @@ vc-preamble: |-
     SumUpto(A, A.Length-1)
   }
   
-  
   // example showing that, with the original postcondition, the answer is non-unique!
 
 vc-helpers: |-

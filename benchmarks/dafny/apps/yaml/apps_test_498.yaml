@@ -51,7 +51,7 @@ vc-code: |-
   {
       LaneBounds(n, m, k);
       DeskBounds(n, m, k);
-      
+  
       lane := (k - 1) / (2 * m) + 1;
       desk := (k - 1) % (2 * m) / 2 + 1;
       if ((k - 1) % (2 * m) % 2 == 0) {
@@ -62,3 +62,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

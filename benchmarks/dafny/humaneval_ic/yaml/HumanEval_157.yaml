@@ -41,20 +41,20 @@ vc-code: |-
       if a + b <= c || a + c <= b || b + c <= a {
           return false;
       }
-
+  
       // Check if any side is non-positive
       if a <= 0.0 || b <= 0.0 || c <= 0.0 {
           return false;
       }
-
+  
       // At this point we know ValidTriangle(a, b, c) is true
       assert ValidTriangle(a, b, c);
-
+  
       // Find the longest side (hypotenuse)
       var hypotenuse: real;
       var side1: real;
       var side2: real;
-
+  
       if a >= b && a >= c {
           hypotenuse := a;
           side1 := b;
@@ -74,15 +74,16 @@ vc-code: |-
           assert hypotenuse == c && side1 == a && side2 == b;
           assert side1 * side1 + side2 * side2 == hypotenuse * hypotenuse <==> a * a + b * b == c * c;
       }
-
+  
       // Apply Pythagorean theorem: side1² + side2² = hypotenuse²
       var is_right := side1 * side1 + side2 * side2 == hypotenuse * hypotenuse;
-      
+  
       // Help Dafny understand the equivalence
       assert is_right ==> IsRightTriangle(a, b, c);
       assert !is_right ==> !IsRightTriangle(a, b, c);
-      
+  
       return is_right;
   }
 
 vc-postamble: |-
+

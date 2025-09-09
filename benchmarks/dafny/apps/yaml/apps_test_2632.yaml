@@ -30,7 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method minPathSum(grid: array2<int>) returns (result: int)
@@ -85,3 +84,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -11,8 +11,6 @@ vc-preamble: |-
   
   // Exemplu de program
   
-  
-  
   /*
       triple Hoare (| P |) S (| Q |) 
   */
@@ -41,7 +39,6 @@ vc-preamble: |-
   */
   
   // verificarea programului pentru suma de patrate
-  
   
   // SqrSumRec(n) = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
   least lemma L1(n: int)

@@ -16,7 +16,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(X: int) returns (years: int)
@@ -44,3 +43,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

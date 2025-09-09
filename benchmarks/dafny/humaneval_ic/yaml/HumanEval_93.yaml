@@ -59,7 +59,7 @@ vc-code: |-
   {
       result := "";
       var i := 0;
-
+  
       while i < |message|
           invariant 0 <= i <= |message|
           invariant |result| == i
@@ -84,3 +84,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

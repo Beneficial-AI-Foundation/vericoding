@@ -12,7 +12,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int, k: int, powers: seq<int>, schools: seq<int>, chosen: seq<int>) returns (result: int)
@@ -84,3 +83,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

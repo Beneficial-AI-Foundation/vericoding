@@ -22,7 +22,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(N: int, K: int, S: string) returns (result: int)
@@ -32,7 +31,7 @@ vc-spec: |-
 vc-code: |-
   {
       var bits := StringToBits(S);
-      
+  
       var maxLen := 0;
       var left := 0;
   
@@ -79,3 +78,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -22,7 +22,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: nat, m: nat, buttons: seq<seq<nat>>) returns (result: string)
@@ -60,3 +59,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

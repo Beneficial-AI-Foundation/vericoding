@@ -40,7 +40,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(s: string) returns (evenCount: int, oddCount: int)
@@ -107,3 +106,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -68,13 +68,13 @@ vc-code: |-
     }
   
     assert (2 + i) * (i + 1) / 2 > n + 1;
-    
+  
     if i > 0 {
       assert i - 1 >= 0 && i - 1 < i;
       assert (2 + (i - 1)) * ((i - 1) + 1) / 2 <= n + 1;
       assert (2 + (i - 1)) * i / 2 <= n + 1;
     }
-    
+  
     assert forall j :: 0 <= j < i ==> (2 + j) * (j + 1) / 2 <= n + 1;
     assert IsOptimalSavings(n, i);
     assert IsMinimalSavings(n, i);
@@ -83,3 +83,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

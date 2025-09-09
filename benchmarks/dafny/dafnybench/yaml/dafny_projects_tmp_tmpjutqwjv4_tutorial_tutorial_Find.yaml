@@ -16,8 +16,6 @@ vc-preamble: |-
     forall n, m :: 0 <= n < m < a.Length ==> a[n] <= a[m]
   }
   
-  
-  
   // https://dafny.org/dafny/OnlineTutorial/ValueTypes
   
   function update(s: seq<int>, i: int, v: int): seq<int>
@@ -27,17 +25,13 @@ vc-preamble: |-
     s[..i] + [v] + s[i+1..]
   }
   
-  
   // https://dafny.org/dafny/OnlineTutorial/Lemmas
-  
-  
   
   function count(a: seq<bool>): nat
   {
     if |a| == 0 then 0 else
     (if a[0] then 1 else 0) + count(a[1..])
   }
-  
   
   class Node
   {

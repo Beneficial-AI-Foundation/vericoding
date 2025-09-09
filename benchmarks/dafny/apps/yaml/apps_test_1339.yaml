@@ -41,7 +41,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, segments: seq<(int, int)>) returns (result: int)
@@ -101,3 +100,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

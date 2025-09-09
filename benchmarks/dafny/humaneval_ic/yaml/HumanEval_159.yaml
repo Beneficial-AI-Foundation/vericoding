@@ -7,28 +7,28 @@ vc-preamble: |-
   // and the number of carrots remaining in stock, calculate the total carrots that will be
   // eaten and how many carrots will be left. The rabbit will eat as many carrots as possible
   // from the remaining stock, up to the number needed.
-
+  
   // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(number: int, need: int, remaining: int)
   {
       0 <= number <= 1000 && 0 <= need <= 1000 && 0 <= remaining <= 1000
   }
-
+  
   function CanEat(need: int, remaining: int): int
   {
       if need <= remaining then need else remaining
   }
-
+  
   function TotalEaten(number: int, need: int, remaining: int): int
   {
       number + CanEat(need, remaining)
   }
-
+  
   function CarrotsLeft(need: int, remaining: int): int
   {
       remaining - CanEat(need, remaining)
   }
-
+  
   predicate ValidResult(result: seq<int>, number: int, need: int, remaining: int)
   {
       |result| == 2 &&
@@ -57,3 +57,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

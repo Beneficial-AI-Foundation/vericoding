@@ -5,12 +5,6 @@ vc-preamble: |-
       forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
   }
   
-  
-  
-  
-  
-  
-  
   //Recursive binary search
 
 vc-helpers: |-

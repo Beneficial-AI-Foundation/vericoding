@@ -17,8 +17,6 @@ vc-preamble: |-
   forall l,ss {:induction l}::0<=l<=i && ss==i+1==> Sum(v,l,ss)<=s
   }
   
-  
-  
   function Sum2(v:array<int>,i:int,j:int):int
   reads v
   requires 0<=i<=j<=v.Length

@@ -26,7 +26,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, teams: seq<(int, int)>) returns (result: seq<(int, int)>)
@@ -126,3 +125,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

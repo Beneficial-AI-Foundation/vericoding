@@ -7,7 +7,6 @@ vc-preamble: |-
     if (n==1) then 1 else fib(n-1)+fib(n-2)
   }
   
-  
   // 2.
   datatype List<T> = Nil | Cons(head: T, tail: List<T>)
   
@@ -16,7 +15,6 @@ vc-preamble: |-
     case Nil => 0
     case Cons(x,xs) => x + add(xs)
   }
-  
   
   // 3.
   

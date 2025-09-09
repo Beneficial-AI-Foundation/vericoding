@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: method count7(x: nat) returns (count: nat)
+  Count occurrences. Ensures: returns the correct value.
+
 vc-preamble: |-
   method fizz_buzz(n: nat) returns (result: nat)
     // post-conditions-start
@@ -10,12 +14,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: method count7(x: nat) returns (count: nat)
-  Count occurrences. Ensures: returns the correct value.
-  */
 
 vc-spec: |-
   method count7(x: nat) returns (count: nat) 

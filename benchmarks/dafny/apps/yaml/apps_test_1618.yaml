@@ -36,7 +36,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stairs_amount: int, stair_heights: seq<int>, boxes_amount: int, boxes: seq<(int, int)>) returns (result: seq<int>)
@@ -91,3 +90,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -1,6 +1,6 @@
 vc-description: |-
   This verification task implements a function to count the number of even and odd digits in the absolute value of an integer. The function should return a tuple containing the count of even digits and the count of odd digits.
-
+  
   The implementation uses helper functions to define digit counting operations and ensures correctness through loop invariants that maintain the relationship between processed and remaining digits.
 
 vc-preamble: |-
@@ -99,3 +99,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

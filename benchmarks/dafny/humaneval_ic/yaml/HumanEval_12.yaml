@@ -5,10 +5,10 @@ vc-preamble: |-
   // ======= TASK =======
   // Given a list of strings, return the longest string. If multiple strings have the same maximum length, 
   // return the first one that appears in the list. If the list is empty, return None.
-
+  
   // ======= SPEC REQUIREMENTS =======
   datatype Option<T> = Some(value: T) | None
-
+  
   predicate ValidResult(strings: seq<string>, result: Option<string>)
   {
       if |strings| == 0 then
@@ -51,3 +51,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -15,7 +15,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(strings: seq<string>) returns (count: int)
@@ -47,3 +46,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

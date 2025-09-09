@@ -45,7 +45,6 @@ vc-code: |-
 vc-postamble: |-
   // example showing that, with the original postcondition, the answer is non-unique!
   
-  
   // proof that, with the corrected postcondition, the answer is unique
   // lemma for previous proof: when an array has strictly positive elements, the
   // sums strictly increase left to right

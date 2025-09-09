@@ -12,7 +12,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int) returns (count: int)
@@ -44,3 +43,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

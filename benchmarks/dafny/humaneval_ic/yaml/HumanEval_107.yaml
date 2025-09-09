@@ -7,33 +7,33 @@ vc-preamble: |-
   // A palindromic integer reads the same forwards and backwards (e.g., 121, 7, 1331).
   // Return a tuple (even_count, odd_count) where even_count is the number of even palindromic integers
   // and odd_count is the number of odd palindromic integers in [1, n].
-
+  
   // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(n: nat)
   {
       n >= 1
   }
-
+  
   function DigitsOf(n: nat): seq<nat>
       requires n >= 0
   {
       if n < 10 then [n]
       else DigitsOf(n / 10) + [n % 10]
   }
-
+  
   function ReverseSeq<T>(s: seq<T>): seq<T>
   {
       if |s| <= 1 then s
       else ReverseSeq(s[1..]) + [s[0]]
   }
-
+  
   function IsPalindrome(n: nat): bool
       requires n >= 0
   {
       var digits := DigitsOf(n);
       digits == ReverseSeq(digits)
   }
-
+  
   function CountPalindromesInRange(start: nat, end: nat): nat
       requires start >= 1
       decreases end - start + 1
@@ -42,7 +42,7 @@ vc-preamble: |-
       else if IsPalindrome(start) then 1 + CountPalindromesInRange(start + 1, end)
       else CountPalindromesInRange(start + 1, end)
   }
-
+  
   function CountEvenPalindromesInRange(start: nat, end: nat): nat
       requires start >= 1
       decreases end - start + 1
@@ -51,7 +51,7 @@ vc-preamble: |-
       else if IsPalindrome(start) && start % 2 == 0 then 1 + CountEvenPalindromesInRange(start + 1, end)
       else CountEvenPalindromesInRange(start + 1, end)
   }
-
+  
   function CountOddPalindromesInRange(start: nat, end: nat): nat
       requires start >= 1
       decreases end - start + 1
@@ -102,3 +102,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -7,13 +7,13 @@ vc-preamble: |-
   // in non-decreasing order using only right shift operations. A right shift moves
   // all elements one position to the right, with the last element moving to the first.
   // Return True if sortable, False otherwise. Empty arrays return True.
-
+  
   // ======= SPEC REQUIREMENTS =======
   predicate is_sorted(s: seq<int>)
   {
       forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
   }
-
+  
   function rotate_right(arr: seq<int>, k: int): seq<int>
       requires 0 <= k <= |arr|
       ensures |rotate_right(arr, k)| == |arr|
@@ -22,7 +22,7 @@ vc-preamble: |-
       else if k == 0 then arr
       else arr[|arr|-k..] + arr[..|arr|-k]
   }
-
+  
   // ======= HELPERS =======
   method quicksort(s: seq<int>) returns (sorted: seq<int>)
       decreases |s|
@@ -33,7 +33,7 @@ vc-preamble: |-
           var pivot := s[0];
           var smaller := [];
           var greater := [];
-
+  
           var i := 1;
           while i < |s|
               invariant 1 <= i <= |s|
@@ -48,7 +48,7 @@ vc-preamble: |-
               }
               i := i + 1;
           }
-
+  
           var sorted_smaller := quicksort(smaller);
           var sorted_greater := quicksort(greater);
           sorted := sorted_smaller + [pivot] + sorted_greater;
@@ -73,7 +73,7 @@ vc-code: |-
           result := true;
           return;
       }
-
+  
       var rotations := 0;
       while rotations < |arr|
           invariant 0 <= rotations <= |arr|
@@ -85,8 +85,9 @@ vc-code: |-
           }
           rotations := rotations + 1;
       }
-
+  
       result := false;
   }
 
 vc-postamble: |-
+

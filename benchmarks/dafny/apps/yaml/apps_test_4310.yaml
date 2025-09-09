@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(A1: int, A2: int, A3: int) returns (result: int)
@@ -41,3 +40,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

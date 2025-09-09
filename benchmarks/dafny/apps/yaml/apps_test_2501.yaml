@@ -30,7 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(A: array<int>) returns (result: int)
@@ -93,3 +92,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

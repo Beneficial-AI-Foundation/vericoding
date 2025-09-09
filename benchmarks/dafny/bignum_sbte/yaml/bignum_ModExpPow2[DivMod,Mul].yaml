@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: bignum_ModExpPow2[DivMod,Mul].
+  Implement the method according to the Dafny specification.
+
 vc-preamble: |-
   ghost function Exp_int(x: nat, y:nat): nat
   {
@@ -14,7 +18,7 @@ vc-preamble: |-
   {
     if |s| == 0 then  0  else  (2 * Str2Int(s[0..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0))
   }
-
+  
   method DivMod(dividend: string, divisor: string) returns (quotient: string, remainder: string)
     requires ValidBitString(dividend) && ValidBitString(divisor)
     requires Str2Int(divisor) > 0
@@ -32,13 +36,8 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
 
 vc-helpers: |-
-
-vc-description: |-
-  Bignum task: bignum_ModExpPow2[DivMod,Mul].
-  Implement the method according to the Dafny specification.
 
 vc-spec: |-
   method ModExpPow2(sx: string, sy: string, n: nat, sz: string) returns (res: string)
@@ -57,3 +56,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

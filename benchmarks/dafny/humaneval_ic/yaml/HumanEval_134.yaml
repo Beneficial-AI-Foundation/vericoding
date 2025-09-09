@@ -33,23 +33,24 @@ vc-code: |-
       if |txt| == 0 {
           return false;
       }
-
+  
       // Get the last character
       var lastChar := txt[|txt| - 1];
-
+  
       // Check if last character is alphabetical
       if !IsAlpha(lastChar) {
           return false;
       }
-
+  
       // If string has only one character, it's not part of a word
       if |txt| == 1 {
           return true;
       }
-
+  
       // Check if the character before the last one is a space
       // This ensures the last character is not part of a word
       return txt[|txt| - 2] == ' ';
   }
 
 vc-postamble: |-
+

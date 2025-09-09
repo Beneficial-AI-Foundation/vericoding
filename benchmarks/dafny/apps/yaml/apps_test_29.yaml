@@ -53,7 +53,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(ticket: string) returns (result: int)
@@ -173,3 +172,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

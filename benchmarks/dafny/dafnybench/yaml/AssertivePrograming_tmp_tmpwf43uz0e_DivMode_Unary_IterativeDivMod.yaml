@@ -4,7 +4,6 @@ vc-preamble: |-
   // Noa Leron 207131871
   // Tsuri Farhana 315016907
   
-  
   // definitions borrowed from Rustan Leino's Program Proofs Chapter 7
   // (https://program-proofs.com/code.html example code in Dafny; source file 7-Unary.dfy)
   datatype Unary = Zero | Suc(pred: Unary)

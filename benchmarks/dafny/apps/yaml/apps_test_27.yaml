@@ -40,7 +40,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: nat, s: string) returns (result: nat)
@@ -82,3 +81,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

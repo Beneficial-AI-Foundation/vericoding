@@ -27,7 +27,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, t: int, routes: seq<(int, int)>) returns (result: int)
@@ -62,3 +61,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

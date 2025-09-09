@@ -11,7 +11,6 @@ vc-preamble: |-
     else min(v,i-1)
     }
   
-  
   function countMin(v:array<int>,x:int, i:int):int
   decreases i
    reads v

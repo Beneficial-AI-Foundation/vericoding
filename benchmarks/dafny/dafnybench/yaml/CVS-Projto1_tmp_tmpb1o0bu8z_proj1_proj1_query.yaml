@@ -17,7 +17,6 @@ vc-preamble: |-
   
   //Exercicio 1.c)
   
-  
   predicate is_prefix_sum_for (a:array<int>, c:array<int>)
   reads c, a
   {

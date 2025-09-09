@@ -22,7 +22,6 @@ vc-preamble: |-
   // TODO: Hacer
   // Derivar formalmente un calculo incremental de j*j*j
   
-  
   // REVERSE OF A SEQUENCE
   function reverse<T> (s:seq<T>):seq<T> 
   {
@@ -35,7 +34,6 @@ vc-preamble: |-
       if s==[] then {}
       else {s[0]}+seq2set(s[1..])
   }
-  
   
   // REVERSE IS ITS OWN INVERSE
   

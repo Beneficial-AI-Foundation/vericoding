@@ -8,8 +8,6 @@ vc-preamble: |-
       Pedro Nunes         57854
   */
   
-  
-  
   //(a)
   
   function sum(a: array<int>, i: int, j: int): int
@@ -21,12 +19,7 @@ vc-preamble: |-
       else a[i] + sum(a, i+1, j)
   }
   
-  
-  
   //(b)
-  
-  
-  
   
   //(c)
   

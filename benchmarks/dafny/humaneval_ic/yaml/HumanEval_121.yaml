@@ -5,7 +5,7 @@ vc-preamble: |-
   // ======= TASK =======
   // Given a non-empty list of integers, return the sum of all odd numbers 
   // that are located at even-indexed positions (0, 2, 4, ...).
-
+  
   // ======= SPEC REQUIREMENTS =======
   function SumOddAtEvenPositions(lst: seq<int>, pos: int): int
       requires 0 <= pos
@@ -42,3 +42,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

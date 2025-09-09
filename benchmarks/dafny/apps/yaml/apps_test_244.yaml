@@ -46,7 +46,7 @@ vc-helpers: |-
   {
       var pos := x;
       var moves := n;
-      
+  
       while moves > 0
           invariant ValidPosition(pos)
           invariant moves >= 0
@@ -55,7 +55,7 @@ vc-helpers: |-
           pos := ReverseMove(pos, moves);
           moves := moves - 1;
       }
-      
+  
       return pos;
   }
 
@@ -71,3 +71,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -46,7 +46,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, edges: seq<(int, int)>) returns (result: int)
@@ -96,7 +95,7 @@ vc-code: |-
       // Simple DFS coloring using iterations
       colors[0] := 0;
       var processed := 1;
-      
+  
       while processed < n
           invariant 1 <= processed <= n
           invariant forall j :: 0 <= j < n ==> colors[j] == -1 || colors[j] == 0 || colors[j] == 1
@@ -105,7 +104,7 @@ vc-code: |-
       {
           var found_new := false;
           var node := 0;
-          
+  
           while node < n && !found_new
               invariant 0 <= node <= n
           {
@@ -125,7 +124,7 @@ vc-code: |-
               }
               node := node + 1;
           }
-          
+  
           if !found_new {
               // Handle disconnected case by coloring remaining nodes
               break;
@@ -167,3 +166,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

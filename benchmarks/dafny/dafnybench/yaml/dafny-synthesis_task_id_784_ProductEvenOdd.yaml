@@ -25,7 +25,6 @@ vc-preamble: |-
       forall i :: 0 <= i < oddIndex ==> IsEven(lst[i])
   }
   
-  
   method FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : int)
       requires |lst| >= 2
       requires exists i :: 0 <= i < |lst| && IsEven(lst[i])

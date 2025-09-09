@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(x: int, a: int, b: int) returns (result: string)
@@ -37,7 +36,7 @@ vc-code: |-
   {
       var distA := Distance(x, a);
       var distB := Distance(x, b);
-      
+  
       if distA < distB {
           result := "A";
       } else {
@@ -46,3 +45,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

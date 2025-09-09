@@ -7,7 +7,7 @@ vc-preamble: |-
   // if it is either entirely non-decreasing (monotonically increasing) or entirely 
   // non-increasing (monotonically decreasing). Empty lists and single-element lists 
   // are considered monotonic. Lists with equal consecutive elements are allowed.
-
+  
   // ======= SPEC REQUIREMENTS =======
   function monotonic(l: seq<int>): bool
       ensures |l| <= 1 ==> monotonic(l) == true
@@ -36,10 +36,10 @@ vc-code: |-
       if |l| <= 1 {
           return true;
       }
-      
+  
       var increasing := true;
       var decreasing := true;
-      
+  
       var i := 0;
       while i < |l| - 1
           invariant 0 <= i <= |l| - 1
@@ -54,8 +54,9 @@ vc-code: |-
           }
           i := i + 1;
       }
-      
+  
       result := increasing || decreasing;
   }
 
 vc-postamble: |-
+

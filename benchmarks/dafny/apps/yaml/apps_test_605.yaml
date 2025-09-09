@@ -48,7 +48,7 @@ vc-code: |-
   {
       var misha_score := CalculateScore(a, c);
       var vasya_score := CalculateScore(b, d);
-      
+  
       if misha_score > vasya_score {
           result := "Misha";
       } else if vasya_score > misha_score {
@@ -59,3 +59,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

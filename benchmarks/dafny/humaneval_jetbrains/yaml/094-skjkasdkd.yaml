@@ -1,12 +1,10 @@
-vc-preamble: |-
-vc-helpers: |-
-
-
 vc-description: |-
-  /*
   function_signature: def sum_largest_prime(lst : list[int]) -> int
   You are given a list of integers. You need to find the largest prime value and return the sum of its digits. Note(George): Modified to use List of nats because all examples are nats.
-  */
+
+vc-preamble: |-
+
+vc-helpers: |-
 
 vc-spec: |-
   method skjkasdkd(lst: seq<nat>) returns (dsum: nat)

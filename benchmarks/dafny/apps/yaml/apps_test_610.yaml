@@ -29,7 +29,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int) returns (petyaScore: int, vasyaScore: int)
@@ -49,3 +48,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

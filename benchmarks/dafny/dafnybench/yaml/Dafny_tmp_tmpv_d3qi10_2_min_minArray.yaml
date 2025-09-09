@@ -8,14 +8,12 @@ vc-preamble: |-
       if a < b then a else b
   }
   
-  
   ghost function minFunction(a: int, b: int): int
       ensures minFunction(a, b) <= a && minFunction(a, b) <= b
       ensures minFunction(a, b) == a || minFunction(a, b) == b
   {
       if a < b then a else b
   }
-  
   
   // Return a minimum of a.
 

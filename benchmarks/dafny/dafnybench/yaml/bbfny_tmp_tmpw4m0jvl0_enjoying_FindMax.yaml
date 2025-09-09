@@ -3,9 +3,6 @@ vc-description: |-
 vc-preamble: |-
   // shenanigans going through the dafny tutorial
   
-  
-  
-  
   function max(a: int, b: int): int
   {
     if a > b then a else b
@@ -19,7 +16,6 @@ vc-preamble: |-
   {
     if x < 0 then -x else x
   }
-  
   
   function fib(n: nat): nat
   {

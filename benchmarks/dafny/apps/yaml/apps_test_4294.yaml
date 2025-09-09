@@ -13,7 +13,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method Solve(x: int, a: int) returns (result: int)
@@ -30,3 +29,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

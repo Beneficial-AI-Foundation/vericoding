@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method generate(numRows: int) returns (result: seq<seq<int>>)
@@ -71,3 +70,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

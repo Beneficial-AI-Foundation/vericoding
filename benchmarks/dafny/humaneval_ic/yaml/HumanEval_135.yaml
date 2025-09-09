@@ -41,7 +41,7 @@ vc-code: |-
       if |arr| <= 1 {
           return -1;
       }
-
+  
       var i := |arr| - 1;
       while i > 0
           invariant 0 <= i < |arr|
@@ -56,3 +56,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

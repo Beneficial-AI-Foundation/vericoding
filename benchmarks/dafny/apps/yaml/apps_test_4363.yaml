@@ -47,7 +47,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method CountTriples(k: int, s: int) returns (count: int)
@@ -83,3 +82,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -19,7 +19,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method maximalRectangle(matrix: seq<seq<string>>) returns (result: int)
@@ -114,3 +113,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

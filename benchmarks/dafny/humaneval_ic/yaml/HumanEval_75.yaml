@@ -1,18 +1,18 @@
 vc-description: |-
   This verification task implements a method to determine if a given integer (less than 100) is the product of exactly 3 prime numbers, counting repetitions. The method performs prime factorization and checks if exactly 3 prime factors (with repetitions) multiply to the original number.
-
+  
   The expected implementation uses trial division to find all prime factors, starting with factors of 2, then checking odd numbers up to the square root, and finally handling any remaining prime factor greater than the square root.
 
 vc-preamble: |-
   // ======= TASK =======
   // Given an integer a where a < 100, determine if a is the product of exactly 3 prime numbers (counting repetitions).
-
+  
   // ======= SPEC REQUIREMENTS =======
   predicate is_prime_number(n: int)
   {
     n >= 2 && forall k: int :: 2 <= k < n ==> n % k != 0
   }
-
+  
   // ======= HELPERS =======
   function seq_product(factors: seq<int>): int
     decreases |factors|
@@ -20,14 +20,14 @@ vc-preamble: |-
     if |factors| == 0 then 1
     else factors[0] * seq_product(factors[1..])
   }
-
+  
   function power(base: int, exp: nat): int
     decreases exp
   {
     if exp == 0 then 1
     else base * power(base, exp - 1)
   }
-
+  
   lemma seq_product_append_lemma(s: seq<int>, x: int)
     ensures seq_product(s + [x]) == seq_product(s) * x
   {
@@ -67,11 +67,11 @@ vc-code: |-
       result := false;
       return;
     }
-
+  
     var prime_factors: seq<int> := [];
     var temp := a;
     var original_temp := temp;
-
+  
     // Count factors of 2
     while temp % 2 == 0
       invariant temp >= 1
@@ -85,7 +85,7 @@ vc-code: |-
       prime_factors := prime_factors + [2];
       temp := temp / 2;
     }
-
+  
     // Check odd factors
     var i := 3;
     while i * i <= temp
@@ -114,7 +114,7 @@ vc-code: |-
       }
       i := i + 2;
     }
-
+  
     // If temp > 1, it's a prime factor
     if temp > 1 {
       // temp must be prime since it has no factors from 2 to sqrt(temp)
@@ -130,9 +130,9 @@ vc-code: |-
       prime_factors := prime_factors + [temp];
       temp := 1;
     }
-
+  
     result := |prime_factors| == 3;
-
+  
     if result {
       assert |prime_factors| == 3;
       assert forall x :: x in prime_factors ==> is_prime_number(x);
@@ -144,3 +144,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

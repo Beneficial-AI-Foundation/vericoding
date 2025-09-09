@@ -36,7 +36,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int) returns (result: seq<int>)
@@ -101,7 +100,7 @@ vc-code: |-
           j := j + 1;
       }
       var lastElement := n - mx * k * (k - 1) / 2;
-      
+  
       // Prove lastElement is valid
       assert mx * k * (k + 1) / 2 <= n;
       assert lastElement == n - mx * (k * (k - 1) / 2);
@@ -112,8 +111,9 @@ vc-code: |-
       assert k > 0;
       assert lastElement > mx * (k - 1);
       assert lastElement > 0;
-      
+  
       result := result + [lastElement];
   }
 
 vc-postamble: |-
+

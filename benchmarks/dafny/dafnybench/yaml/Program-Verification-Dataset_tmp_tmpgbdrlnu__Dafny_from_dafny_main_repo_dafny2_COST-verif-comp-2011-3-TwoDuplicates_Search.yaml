@@ -3,7 +3,6 @@ vc-description: |-
 vc-preamble: |-
   // RUN: %testDafnyForEachResolver "%s" -- --warn-deprecation:false
   
-  
   /*
   Rustan Leino, 5 Oct 2011
   

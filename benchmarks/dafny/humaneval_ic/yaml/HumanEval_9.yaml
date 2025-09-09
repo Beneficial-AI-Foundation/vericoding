@@ -6,7 +6,7 @@ vc-preamble: |-
   // Given a list of integers, return a list where each element represents 
   // the maximum value encountered from the beginning of the list up to and 
   // including the current position.
-
+  
   // ======= SPEC REQUIREMENTS =======
   function max_up_to(numbers: seq<int>, index: int): int
       requires 0 <= index < |numbers|
@@ -38,10 +38,10 @@ vc-code: |-
       if |numbers| == 0 {
           return [];
       }
-
+  
       result := [];
       var current_max := numbers[0];
-
+  
       for i := 0 to |numbers|
           invariant |result| == i
           invariant i > 0 ==> current_max == max_up_to(numbers, i - 1)
@@ -57,3 +57,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

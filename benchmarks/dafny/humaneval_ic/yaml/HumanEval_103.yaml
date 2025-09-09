@@ -8,14 +8,14 @@ vc-preamble: |-
   // Round the result to the nearest integer using banker's rounding (round half to even).
   // Return the binary representation as a string prefixed with "0b".
   // If n > m, return "-1".
-
+  
   // ======= SPEC REQUIREMENTS =======
   function IntToBinary(n: nat): string
   {
       if n == 0 then "0"
       else IntToBinaryHelper(n)
   }
-
+  
   function IntToBinaryHelper(n: nat): string
       requires n > 0
   {
@@ -50,13 +50,13 @@ vc-code: |-
           result := "-1";
           return;
       }
-
+  
       var count := m - n + 1;
       var total_sum := count * (n + m) / 2;
-
+  
       var quotient := total_sum / count;
       var remainder := total_sum % count;
-
+  
       var rounded: int;
       if remainder * 2 < count {
           rounded := quotient;
@@ -69,9 +69,10 @@ vc-code: |-
               rounded := quotient + 1;
           }
       }
-
+  
       var tmpCall1 := IntToBinary(rounded);
       result := "0b" + tmpCall1;
   }
 
 vc-postamble: |-
+

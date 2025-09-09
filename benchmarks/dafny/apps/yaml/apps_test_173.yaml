@@ -29,7 +29,6 @@ vc-preamble: |-
       requires is_integer(s)
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int, horizontal: seq<char>, vertical: seq<char>) returns (result: seq<char>)
@@ -47,3 +46,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

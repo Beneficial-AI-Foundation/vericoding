@@ -27,7 +27,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method SolveBishops(positions: seq<(int, int)>) returns (result: int)
@@ -66,3 +65,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

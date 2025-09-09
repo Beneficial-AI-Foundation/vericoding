@@ -153,7 +153,7 @@ vc-code: |-
       result := "";
       var t := get_test_count(stdin_input);
       var i := 0;
-      
+  
       while i < t
           invariant 0 <= i <= t
           invariant count_lines(result) == i
@@ -167,3 +167,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

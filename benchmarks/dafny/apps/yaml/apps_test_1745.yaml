@@ -85,7 +85,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method ExecutePythonLogic(input: string) returns (output: string)
@@ -106,3 +105,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

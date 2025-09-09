@@ -33,13 +33,13 @@ vc-helpers: |-
       var distinctColors := DistinctColors(colors);
       var minSet := {'P', 'W', 'G'};
       var maxSet := {'P', 'W', 'G', 'Y'};
-      
+  
       assert 'P' in distinctColors && 'W' in distinctColors && 'G' in distinctColors;
       assert minSet <= distinctColors;
       assert distinctColors <= maxSet;
       assert |minSet| == 3;
       assert |maxSet| == 4;
-      
+  
       if 'Y' in distinctColors {
           assert distinctColors == maxSet;
           assert |distinctColors| == 4;
@@ -67,3 +67,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

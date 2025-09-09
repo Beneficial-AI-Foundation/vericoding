@@ -105,16 +105,16 @@ vc-code: |-
           var tmpCall1 := int_to_string(i);
           var tmpCall2 := int_to_string(i + 1);
           var pair := tmpCall1 + " " + tmpCall2;
-          
+  
           // Help Dafny see that this pair has gcd 1
           assert pair == int_to_string(i) + " " + int_to_string(i + 1);
           assert PairHasGcdOne(pair, l, r);
-          
+  
           pairs := pairs + [pair];
           i := i + 2;
       }
       result := ["YES"] + pairs;
-      
+  
       // Help Dafny verify the postcondition
       assert result[0] == "YES";
       assert |result| == 1 + |pairs|;
@@ -124,3 +124,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -23,7 +23,7 @@ vc-code: |-
   {
       var seen: set<int> := {};
       var i := 0;
-
+  
       while i < |l|
           invariant 0 <= i <= |l|
           invariant seen == set k | 0 <= k < i :: l[k]
@@ -38,8 +38,9 @@ vc-code: |-
           seen := seen + {num};
           i := i + 1;
       }
-
+  
       return false;
   }
 
 vc-postamble: |-
+

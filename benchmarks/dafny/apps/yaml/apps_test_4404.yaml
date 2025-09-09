@@ -40,7 +40,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -52,7 +51,7 @@ vc-code: |-
   {
       var m := StringToInt(stdin_input[5..7]);
       var d := StringToInt(stdin_input[8..10]);
-      
+  
       if m < 4 || (m == 4 && d <= 30) {
           result := "Heisei";
       } else {
@@ -61,3 +60,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

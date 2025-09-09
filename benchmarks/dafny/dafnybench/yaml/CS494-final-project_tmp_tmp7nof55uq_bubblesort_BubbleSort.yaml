@@ -4,7 +4,6 @@ vc-preamble: |-
   //Bubblesort CS 494 submission
   //References: https://stackoverflow.com/questions/69364687/how-to-prove-time-complexity-of-bubble-sort-using-dafny/69365785#69365785
   
-  
   // predicate checks if elements of a are in ascending order, two additional conditions are added to allow us to sort in specific range within array
   
   predicate sorted(a:array<int>, from:int, to:int)

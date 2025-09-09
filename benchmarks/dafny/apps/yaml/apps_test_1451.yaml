@@ -47,7 +47,7 @@ vc-helpers: |-
           countValidNumbersProperty(numbers, k, upTo - 1);
           var prevSet := set i | 0 <= i < upTo - 1 && countLuckyDigits(numbers[i]) <= k;
           var currSet := set i | 0 <= i < upTo && countLuckyDigits(numbers[i]) <= k;
-          
+  
           if countLuckyDigits(numbers[upTo - 1]) <= k {
               assert currSet == prevSet + {upTo - 1};
               assert (upTo - 1) !in prevSet;
@@ -78,9 +78,10 @@ vc-code: |-
           }
           i := i + 1;
       }
-      
+  
       countValidNumbersProperty(numbers, k, |numbers|);
       result := count;
   }
 
 vc-postamble: |-
+

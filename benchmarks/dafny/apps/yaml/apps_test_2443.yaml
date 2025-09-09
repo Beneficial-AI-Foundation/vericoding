@@ -138,7 +138,7 @@ vc-code: |-
           if newProduct !in allProducts && newProduct !in forbidden {
               result := result + [multiplier];
               currentProduct := newProduct;
-              
+  
               // Establish that the new prefix product is what we expect
               prefixProductPrefix(result[..|result|-1], |result|-1, m);
               assert result[..|result|-1] == result[..|result|][..|result|-1];
@@ -151,3 +151,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

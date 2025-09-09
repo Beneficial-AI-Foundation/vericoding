@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method FindMinimumTotalDistance(x1: int, x2: int, x3: int) returns (result: int)
@@ -41,3 +40,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

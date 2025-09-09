@@ -42,7 +42,7 @@ vc-spec: |-
 vc-code: |-
   {
       letter_grades := [];
-
+  
       for i := 0 to |grades|
           invariant |letter_grades| == i
           invariant forall j :: 0 <= j < i ==> letter_grades[j] == getLetterGrade(grades[j])
@@ -50,7 +50,7 @@ vc-code: |-
       {
           var gpa := grades[i];
           var grade: string;
-
+  
           if gpa == 4.0 {
               grade := "A+";
           } else if gpa > 3.7 {
@@ -78,9 +78,10 @@ vc-code: |-
           } else {
               grade := "E";
           }
-
+  
           letter_grades := letter_grades + [grade];
       }
   }
 
 vc-postamble: |-
+

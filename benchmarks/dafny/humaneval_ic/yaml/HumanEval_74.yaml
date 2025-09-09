@@ -5,7 +5,7 @@ vc-preamble: |-
   // ======= TASK =======
   // Given two lists of strings, return the list that has the smaller total character count 
   // across all its strings. If both lists have the same total character count, return the first list.
-
+  
   // ======= SPEC REQUIREMENTS =======
   function total_chars(lst: seq<string>): nat
   {
@@ -53,7 +53,7 @@ vc-code: |-
           total_chars_lst1 := total_chars_lst1 + |lst1[i]|;
           i := i + 1;
       }
-
+  
       var total_chars_lst2 := 0;
       i := 0;
       while i < |lst2|
@@ -64,12 +64,12 @@ vc-code: |-
           total_chars_lst2 := total_chars_lst2 + |lst2[i]|;
           i := i + 1;
       }
-
+  
       assert lst1[..|lst1|] == lst1;
       assert lst2[..|lst2|] == lst2;
       assert total_chars_lst1 == total_chars(lst1);
       assert total_chars_lst2 == total_chars(lst2);
-
+  
       if total_chars_lst1 <= total_chars_lst2 {
           result := lst1;
       } else {
@@ -78,3 +78,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

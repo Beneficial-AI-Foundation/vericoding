@@ -4,13 +4,13 @@ vc-description: |-
 vc-preamble: |-
   // ======= TASK =======
   // Given a positive integer n, compute the sum of all integers from 1 to n inclusive.
-
+  
   // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(n: int)
   {
       n >= 1
   }
-
+  
   function SumFromOneToN(n: int): int
       requires n >= 1
   {
@@ -31,3 +31,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

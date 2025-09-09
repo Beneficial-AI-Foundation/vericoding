@@ -34,7 +34,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(k: int, a: int, b: int, v: int) returns (result: int)
@@ -62,3 +61,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

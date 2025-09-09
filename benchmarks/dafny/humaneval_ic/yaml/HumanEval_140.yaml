@@ -68,10 +68,10 @@ vc-code: |-
       if |text| == 0 {
           return text;
       }
-
+  
       var resultSeq: seq<char> := [];
       var i := 0;
-
+  
       while i < |text|
           invariant 0 <= i <= |text|
           invariant |resultSeq| <= i
@@ -92,7 +92,7 @@ vc-code: |-
                   spaceCount := spaceCount + 1;
                   j := j + 1;
               }
-
+  
               // Replace based on count
               if spaceCount > 2 {
                   resultSeq := resultSeq + ['-'];
@@ -111,15 +111,16 @@ vc-code: |-
                       k := k + 1;
                   }
               }
-
+  
               i := j;
           } else {
               resultSeq := resultSeq + [text[i]];
               i := i + 1;
           }
       }
-
+  
       return resultSeq;
   }
 
 vc-postamble: |-
+

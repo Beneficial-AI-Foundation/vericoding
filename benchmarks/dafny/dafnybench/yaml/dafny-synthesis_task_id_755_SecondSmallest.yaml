@@ -9,7 +9,6 @@ vc-preamble: |-
       if s[0] <= s[1] then s[0] else s[1]
   }
   
-  
   function min(s: seq<int>) : (r: int)
       requires |s| >= 2
       ensures forall i :: 0 <= i < |s| ==> r <= s[i]

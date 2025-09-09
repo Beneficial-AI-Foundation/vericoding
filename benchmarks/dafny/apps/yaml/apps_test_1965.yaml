@@ -42,7 +42,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method SolveCase(n: int, k: int, ratings: seq<int>) returns (answer: int)
@@ -74,3 +73,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method CheckLampArrangement(r: int, g: int, b: int) returns (result: bool)
@@ -40,3 +39,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

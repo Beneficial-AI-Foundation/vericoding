@@ -58,7 +58,7 @@ vc-code: |-
     {
       var oldSet := set j | 0 <= j < i && NeedsFlipping(s[j]);
       var newSet := set j | 0 <= j < i+1 && NeedsFlipping(s[j]);
-      
+  
       if NeedsFlipping(s[i]) {
         assert newSet == oldSet + {i};
         assert |newSet| == |oldSet| + 1;
@@ -74,3 +74,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

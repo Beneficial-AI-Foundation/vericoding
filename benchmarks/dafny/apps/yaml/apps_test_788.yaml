@@ -58,7 +58,7 @@ vc-code: |-
       {
           DigitSumStep(s, i, 7);
           ZeroCountStep(s, i, 7);
-          
+  
           var digit := s[i] as int - '0' as int;
           digitSum := digitSum + digit;
           if s[i] == '0' {
@@ -71,3 +71,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

@@ -1,6 +1,6 @@
 vc-description: |-
   This verification task implements a string processing function that applies rules in a specific order. Given a string, it first checks if the string contains whitespace and splits on whitespace if so. If there's no whitespace but the string contains commas, it splits on commas. Otherwise, it counts the lowercase letters that are at odd positions in the alphabet (b, d, f, h, etc.).
-
+  
   The implementation uses a datatype to represent either a sequence of strings (for splitting results) or an integer count, with helper functions for each operation and appropriate specifications ensuring correctness.
 
 vc-preamble: |-
@@ -9,15 +9,15 @@ vc-preamble: |-
   // 1. If contains whitespace, return list of words split on whitespace
   // 2. If no whitespace but contains commas, return list split on commas
   // 3. If neither, return count of lowercase letters at odd alphabet positions
-
+  
   // ======= SPEC REQUIREMENTS =======
   datatype SplitResult = StringSeq(words: seq<string>) | Count(value: int)
-
+  
   function contains_space(txt: string): bool
   {
       exists i :: 0 <= i < |txt| && txt[i] == ' '
   }
-
+  
   function contains_comma(txt: string): bool
   {
       exists i :: 0 <= i < |txt| && txt[i] == ','
@@ -35,7 +35,7 @@ vc-helpers: |-
       else
           split_on_whitespace_helper(txt, 0, [], "")
   }
-
+  
   function split_on_whitespace_helper(txt: string, i: int, result: seq<string>, current_word: string): seq<string>
       requires 0 <= i <= |txt|
       requires forall w :: w in result ==> |w| > 0
@@ -58,7 +58,7 @@ vc-helpers: |-
       else
           split_on_whitespace_helper(txt, i + 1, result, current_word + [txt[i]])
   }
-
+  
   function split_on_comma(txt: string): seq<string>
       ensures |split_on_comma(txt)| > 0
       decreases |txt|
@@ -68,7 +68,7 @@ vc-helpers: |-
       else
           split_on_comma_helper(txt, 0, [], "")
   }
-
+  
   function split_on_comma_helper(txt: string, i: int, result: seq<string>, current_word: string): seq<string>
       requires 0 <= i <= |txt|
       ensures |split_on_comma_helper(txt, i, result, current_word)| > 0
@@ -81,14 +81,14 @@ vc-helpers: |-
       else
           split_on_comma_helper(txt, i + 1, result, current_word + [txt[i]])
   }
-
+  
   function count_odd_position_lowercase(txt: string): int
       ensures count_odd_position_lowercase(txt) >= 0
       ensures count_odd_position_lowercase(txt) <= |txt|
   {
       count_odd_position_lowercase_helper(txt, 0)
   }
-
+  
   function count_odd_position_lowercase_helper(txt: string, i: int): int
       requires 0 <= i <= |txt|
       ensures count_odd_position_lowercase_helper(txt, i) >= 0
@@ -131,3 +131,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

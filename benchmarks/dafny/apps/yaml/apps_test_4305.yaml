@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(H: int, A: int) returns (attacks: int)
@@ -35,3 +34,4 @@ vc-code: |-
   }
 
 vc-postamble: |-
+

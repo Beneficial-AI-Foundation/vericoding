@@ -30,7 +30,6 @@ vc-preamble: |-
       (forall i :: 0 <= i <= |str| ==> isNotPrefixPred(sub,str[i..]))
   }
   
-  
   predicate haveCommonKSubstringPred(k:nat, str1:string, str2:string)
   {
       exists i1, j1 :: 0 <= i1 <= |str1|- k && j1 == i1 + k && isSubstringPred(str1[i1..j1],str2)
