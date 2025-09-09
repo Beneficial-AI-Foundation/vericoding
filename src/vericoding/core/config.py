@@ -196,7 +196,7 @@ def setup_configuration(args) -> ProcessingConfig:
         max_iterations=args.iterations,
         output_dir=output_dir,
         summary_file=summary_file,
-        debug_mode=args.debug,
+        debug_mode=not args.no_debug,
         max_workers=args.workers,
         api_rate_limit_delay=args.api_rate_limit_delay,
         llm=args.llm,

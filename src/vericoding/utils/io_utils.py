@@ -127,9 +127,9 @@ def parse_command_line_arguments():
     )
 
     parser.add_argument(
-        "--debug",
+        "--no-debug",
         action="store_true",
-        help="Enable debug mode (save intermediate files)",
+        help="Disable debug mode (debug mode is enabled by default)",
     )
     
     parser.add_argument(
