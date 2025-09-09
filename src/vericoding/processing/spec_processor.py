@@ -204,7 +204,7 @@ def process_spec(
                     except Exception:
                         pass
                     continue
-                vc_helpers, vc_spec, vc_code = extract_sections(llm_response)
+                vc_helpers, vc_spec, vc_code = extract_sections(llm_response, language=config.language)
 
                 # Validate the extracted sections
                 validation_error = validate_sections(vc_helpers, vc_spec, vc_code)
@@ -228,9 +228,14 @@ def process_spec(
                     if spec_mode:
                         vc_spec = original_spec
 
-                    update_sections(yaml, vc_helpers, vc_code, vc_spec)
-                    # we always include spec after the first iteration
-                    code = yaml_to_code(yaml, spec_mode=True, vibe_mode=vibe_mode, language=config.language)
+                    if config.language == "lean":
+                        # For Lean: use the complete file directly, no YAML updating needed
+                        code = vc_code  # vc_code contains the complete Lean file
+                    else:
+                        # For Dafny/Verus: update YAML sections and regenerate
+                        update_sections(yaml, vc_helpers, vc_code, vc_spec, language=config.language)
+                        # we always include spec after the first iteration
+                        code = yaml_to_code(yaml, spec_mode=True, vibe_mode=vibe_mode, language=config.language)
                     logger.info(f"    Done generating code at iteration {iteration}")
                         
                     save_iteration_code(config, None, iteration, code, "current", str(code_output_path), Path(file_path))

@@ -1,47 +1,25 @@
 generate_code: |
-  The task is to generate a Lean file that is verified from an incomplete Lean file that contains the keyword "sorry" in place of desired code and proof blocks.  
+  ⚠️  CRITICAL: DO NOT USE SORRY IN YOUR RESPONSE! You must provide actual implementations and proofs.
   
-  INPUT: a Lean file of the form
-         def def_type_1 := sorry     
-         ...
-         def def_type_n := sorry
-         theorem thm_type_1 := sorry
-         ...
-         theorem thm_type_n := sorry
-    WHERE:
-    - where each def_type_i is of the form 
-
-    name {{implicit_args}} (hypotheses) (arguments) : result
-
-    where "sorry" represents a missing implementation for a desired function.
-
-    - each theorem represents a property about one or more of the def_type_i. The theorem thype thm_type_i is of the form
-    {{implicit_arg1 : Type1}} 
-    (explicit_arg2 : Type2) 
-    (hypothesis : Prop) 
-    : Conclusion
-
-    where "Conclusion" is a formula or conjunction of formulas representing the desired properties for some of the missing implementations in def def_type_1, ..., def def_type_n
-
-  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
+  The task is to generate a COMPLETE Lean file with all implementations and proofs filled in.
   
-  The output should be a verified Lean file of the form:
-        def def_type_1 := implementation_1
-        ...
-        def def_type_n := implementation_n
-        theorem thm_type_1 := proof_1
-        ...
-        theorem thm_type_n := proof_n
-    
+  INPUT: An incomplete Lean file containing "sorry" placeholders in place of implementations and proofs.
+  
+  OUTPUT: Return the COMPLETE Lean file with ALL "sorry" replaced by actual implementations and proofs.
+  
+  IMPORTANT FORMATTING:
+  - Return ONLY the complete Lean code wrapped in ```lean code block
+  - NO explanations, reasoning, or markdown outside the code block
+  - The entire file contents should be inside the code block
+  
   CRITICAL RULES:
-  - do not change any of def_type_i or thm_type_i 
-  - do not use sorry in the output file
-  - the input file may contain additional definitions (without "sorry") that you can use in implementations if needed. 
-  - you can add helper definitions, theorems, and lemmas as needed, but the initial definitions and theorems must remain unchanged. 
-  Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
-  - Return ONLY the Lean code, no explanations or markdown
+  - ⚠️  ABSOLUTELY NO "sorry" ANYWHERE IN YOUR OUTPUT - provide real implementations and proofs
+  - Do NOT change function names, theorem names, or type signatures
+  - You can add helper definitions, theorems, and lemmas as needed
+  - For any new definition/lemma/theorem you add, put a comment "-- LLM HELPER" on the line before it
+  - Return the COMPLETE file - all imports, all definitions, all theorems, all proofs
   
-  LEAN SPECIFICATION WITH EMPTY DEFINITIONS AND PROOF BODIES:
+  LEAN SPECIFICATION FILE TO COMPLETE:
   {code}
 
 fix_verification: |
