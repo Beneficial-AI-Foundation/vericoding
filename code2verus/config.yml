@@ -48,7 +48,6 @@ system_prompts:
 
     8. **Main Function**: ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
 
-    8. **Main Function**: ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
 
     9. **Examples and Testing**: For code examples, provide both the original Dafny snippet and the translated Verus snippet, clearly delineated in code blocks.
 
@@ -482,6 +481,46 @@ yaml_instructions:
       [closing verus block and main here]
 
     IMPORTANT: In your response, include ONLY the raw YAML content. Do not include explanations or summaries - only the YAML structure with Verus code.
+
+# Error feedback templates
+error_templates:
+  yaml_syntax_error: |
+    The generated YAML has syntax errors: {error}
+
+    Please fix the YAML syntax issues and generate valid YAML. Common issues:
+    - Make sure field names end with colons (:)
+    - Check indentation (use spaces, not tabs)
+    - Ensure all string values containing special characters are properly quoted
+    - Use the |- syntax for multi-line strings
+
+    Here's the original {source_language} code again:
+
+    ```{source_language_lower}
+    {source_code}
+    ```
+
+    {additional_prompt}
+  
+  verification_error: |
+    The previous translation failed verification. Here are the specific errors:
+
+    Verification Error: {verification_error}
+
+    Verification Output: {verification_output}
+
+    Please fix the Verus code to address these verification errors. Pay special attention to:
+    - Syntax errors (missing semicolons, incorrect brackets, etc.)
+    - Type mismatches
+    - Incorrect function signatures
+    - Missing imports or module declarations
+
+    Here's the original {source_language} code again:
+
+    ```{source_language_lower}
+    {source_code}
+    ```
+
+    {additional_prompt}
 
 # Default user prompt templates
 default_prompts:
