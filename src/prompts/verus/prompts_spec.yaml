@@ -12,18 +12,51 @@ generate_code: |
     - A `fn main() {{}}` function (which should be preserved)
   - Function bodies may contain `unimplemented!()`, `return ...; // TODO: ...`, or be empty.
 
-  OUTPUT: a verified Verus file of the same structure, but with all function bodies implemented to satisfy their `requires` and `ensures` clauses.
-  - All function signatures, requirements, and ensures must be preserved.
+  OUTPUT: ONLY return the implementation sections that need to be filled in. DO NOT return the entire file.
+  
+  IMPORTANT: Look for sections marked with `// <vc-code>` in the input. Return ONLY the content that should go inside that section - typically just the function body in curly braces.
+  
+  Example:
+  Input file contains:
+  ```
+  fn binary_search(a: &[int], x: int) -> (index: i32)
+      requires sorted(a),
+      ensures ...
+  // <vc-code>
+  {{
+      assume(false);
+      -1
+  }}
+  // </vc-code>
+  ```
+  
+  Your response should contain ONLY:
+  ```vc-code
+  {{
+      let mut left: usize = 0;
+      let mut right: usize = a.len();
+      
+      while left < right
+          invariant left <= right <= a.len(),
+      {{
+          let mid = left + (right - left) / 2;
+          if a[mid] == x {{
+              return mid as i32;
+          }} else if a[mid] < x {{
+              left = mid + 1;
+          }} else {{
+              right = mid;
+          }}
+      }}
+      -1
+  }}
+  ```
+  
   - Implementations must not use `assume` statements.
-  - Do not add trivial or unnecessary annotations.
-  - Output valid Verus/Rust code, wrapped in a `verus! {{ ... }}` block if not already present.
-  - Preserve all imports, structure, and helper/spec functions.
   - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses).
-  - Replace `unimplemented!()` or TODO comments with actual implementation.
   - Use Verus types like `nat`, `int`, `Vec<T>`, `Seq<T>`, etc.
   - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`).
   - Use proof blocks with `proof {{ ... }}` when necessary.
-  - Preserve the exact structure: `fn main() {{}}` should remain if present.
 
   VERUS SPECIFICATION WITH EMPTY OR TODO METHOD/FUNCTION BODIES:
   {code}
@@ -40,21 +73,40 @@ fix_verification: |
     - A `fn main() {{}}` function (which should be preserved)
   - Function bodies may contain incomplete code, `unimplemented!()`, or TODO comments.
 
-  OUTPUT: a verified Verus file of the same structure, but with all function bodies implemented or fixed so that they verify.
-  - You may add proof annotations, helper functions, predicates, and spec functions as needed.
+  OUTPUT: ONLY return the sections that need to be fixed. DO NOT return the entire file.
+  
+  IMPORTANT: Look for sections marked with `// <vc-helpers>`, `// <vc-spec>`, or `// <vc-code>` in the input. Return ONLY the content that should replace those sections.
+  
+  Example:
+  If the input has a broken function body in the `// <vc-code>` section:
+  ```
+  // <vc-code>
+  {{
+      let x = a[0];  // broken: index out of bounds
+      x
+  }}
+  // </vc-code>
+  ```
+  
+  Your response should contain ONLY:
+  ```vc-code
+  {{
+      if a.len() > 0 {{
+          a[0]
+      }} else {{
+          -1
+      }}
+  }}
+  ```
+  
+  - You may add proof annotations, helper functions, predicates, and spec functions as needed in the appropriate sections.
   - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues.
-  - For compilation errors: focus on syntax, missing brackets, type mismatches, undefined identifiers, and termination issues.
   - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses).
   - Use proof blocks with `proof {{ ... }}` for complex proofs.
   - Use `assert()` statements within proof blocks for intermediate steps.
   - Use Verus types and operators (`nat`, `int`, `Vec<T>`, `Seq<T>`, `@`, etc.).
-  - Preserve all imports, structure, and helper/spec functions.
-  - Maintain the `verus! {{ ... }}` block structure.
   - Use `@` for sequence/vector access (e.g., `v@[i]` for indexing).
   - Do not use `assume` statements in implementations.
-  - Do not add trivial annotations (e.g., `requires true`, `invariant true`, `ensures true`).
-  - Output valid Verus/Rust code.
-  - Do not change the overall file structure (imports, main function, verus block).
 
   COMMENT FORMAT: add this comment right before any code or annotation block in a function body that you add or modify
   /* code modified by LLM (iteration {{iteration}}): [brief description] */
