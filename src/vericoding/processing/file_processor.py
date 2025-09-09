@@ -265,6 +265,7 @@ def process_spec_file(
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
                     code=current_code,
+                    original_code=original_code,
                     errorDetails=error_details,
                     iteration=iteration,
                 )
@@ -274,7 +275,27 @@ def process_spec_file(
                 
                 try:
                     fix_response = call_llm_api(config, fix_prompt)
-                    fixed_code = extract_code(config, fix_response)
+                    
+                    # Apply JSON replacements for fix to the ORIGINAL file (which has placeholders)
+                    # This ensures we're replacing sorry/vc-code tags, not broken implementations
+                    fixed_code, fix_json_error = apply_json_replacements(config, original_code, fix_response)
+                    
+                    # If JSON parsing failed during fix, treat as iteration failure
+                    if fix_json_error:
+                        logger.info(f"    ✗ Fix JSON parsing failed: {fix_json_error}")
+                        
+                        # Log fix parsing failure to wandb
+                        if wandb.run and failure_table is not None:
+                            failure_table.add_data(
+                                file_path,
+                                iteration,
+                                hashlib.md5(original_code.encode()).hexdigest()[:8],
+                                hashlib.md5(current_code.encode()).hexdigest()[:8],
+                                f"Fix JSON parsing failed: {fix_json_error}",
+                                "",
+                                time.time()
+                            )
+                        break  # Skip to next iteration
 
                     # Verify that all specifications are still preserved
                     if config.strict_spec_verification and not verify_spec_preservation(

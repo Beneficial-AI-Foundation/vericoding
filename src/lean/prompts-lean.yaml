@@ -21,48 +21,29 @@ generate_code: |
   {code}
 
 fix_verification: |
- The task is to review definitions and theorems in a Lean file that do not verify due to missing or invalid implementations or proofs. 
- INPUT: a Lean file that contains some definitions and theorems that dont verify due to missing or invalid implementations or proofs. 
- The file contains:
- - some atoms (def, lemma, theorem, ...) that have the comment -- LLM HELPER before them. These atoms you can change and remove at will. 
-
- For all the other atoms (that do not have the comment -- LLM HELPER) your are allowed to change the definition or prooof body, but you are not allowed to change the name, type, or signature of the atom.
-
-  More precisely, these atoms will be of the form:
-  def def_type_1 := implementation_1
-  ...
-  def def_type_n := implementation_n
-  theorem thm_type_1 := proof_1
-  ...
-  theorem thm_type_n := proof_n
-    
-  and you are allowed to change the implementation_i and proof_i, but you are not allowed to change def_type_i or thm_type_i. So the output file should contain:
-
-  def def_type_1 := implementation_upd_1
-  ...
-  def def_type_n := implementation_upd_n
-  theorem thm_type_1 := proof_upd_1
-  ...
-  theorem thm_type_n := proof_upd_n
-  where implementation_upd_i and proof_upd_i are the updated implementations and proofs that should verify.
-
-    
-  POSITIVE CRITICAL RULES:
-  - you can change the implementation of def_type_i and proof of thm_type_i to fix the verification errors
-  - you can add helper definitions, theorems, and lemmas as needed, but the initial definitions and theorems must remain unchanged. 
-  Moreover, for any new definition, lemma or theorem you add, add a comment of the form -- LLM HELPER on the line just before it. 
+  The task is to fix implementations and proofs that failed verification by providing replacements for any remaining "sorry" placeholders.
   
-  NEGATIVE CRITICAL RULES:
-  - you should not add trivial annotations (requires true, invariant true, ensures true, etc.)
-  - you should not add null checks on non-nullable types
-  - do not use sorry in the output file
-  - output valid Lean code
-  - Return ONLY the Lean code, no explanations or markdown
-
-  OUTPUT: Return ONLY the complete Lean code file, wrapped in a ```lean code block. Do not include any explanations, reasoning, or markdown outside the code block.
+  INPUT: a Lean file that contains "sorry" keywords in place of implementations/proofs that need to be fixed based on verification errors.
   
-  ERROR DETAILS from Lean verification of the given code:
+  OUTPUT: Return a JSON array with one fixed replacement for each "sorry" in the file, in order from top to bottom:
+  ```json
+  ["fixed_implementation", "fixed_proof", "another_fixed_implementation"]
+  ```
+  
+  CRITICAL RULES:
+  - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
+  - Each replacement should be the exact fixed code/proof that goes where "sorry" appears
+  - Do not use "sorry" in any replacement
+  - Use valid Lean syntax for all replacements
+  - You may include helper definitions, theorems, and lemmas in replacements when needed
+  - For helper definitions added within a replacement, add comment -- LLM HELPER before them
+  - Return ONLY a valid JSON array, no explanations or markdown
+  
+  ERROR DETAILS from Lean verification:
   {errorDetails}
 
-  Code Below:
+  ORIGINAL FILE (for context):
+  {original_code}
+
+  CURRENT ITERATION FILE (with failed implementations to learn from):
   {code}
