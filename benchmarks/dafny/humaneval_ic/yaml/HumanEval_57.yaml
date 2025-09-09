@@ -2,13 +2,11 @@ vc-description: |-
   This verification task implements a function to determine if a list of numbers is monotonic. A list is monotonic if it is either entirely non-decreasing (monotonically increasing) or entirely non-increasing (monotonically decreasing). Empty lists and single-element lists are considered monotonic, and lists with equal consecutive elements are allowed.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of numbers, determine if the list is monotonic. A list is monotonic 
   // if it is either entirely non-decreasing (monotonically increasing) or entirely 
   // non-increasing (monotonically decreasing). Empty lists and single-element lists 
   // are considered monotonic. Lists with equal consecutive elements are allowed.
   
-  // ======= SPEC REQUIREMENTS =======
   function monotonic(l: seq<int>): bool
       ensures |l| <= 1 ==> monotonic(l) == true
       ensures |l| > 1 ==> monotonic(l) == (
@@ -24,10 +22,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method IsMonotonic(l: seq<int>) returns (result: bool)
       ensures result == monotonic(l)
 

@@ -2,11 +2,9 @@ vc-description: |-
   This verification task involves implementing a method that finds the largest prime number in a given list of integers and returns the sum of its digits. If no prime number exists in the list, the method should return 0. The implementation requires helper functions for prime checking and digit sum calculation.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of integers, find the largest prime number in the list and return the sum of its digits.
   // If no prime exists in the list, return 0.
   
-  // ======= SPEC REQUIREMENTS =======
   function is_prime_pure(n: int): bool
   {
       n >= 2 && (forall k :: 2 <= k < n ==> n % k != 0)
@@ -19,7 +17,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   method is_prime(n: int) returns (prime: bool)
       ensures prime == is_prime_pure(n)
   {
@@ -91,7 +88,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method skjkasdkd(lst: seq<int>) returns (result: int)
       ensures result >= 0
       ensures (forall x :: x in lst ==> !is_prime_pure(x)) ==> result == 0

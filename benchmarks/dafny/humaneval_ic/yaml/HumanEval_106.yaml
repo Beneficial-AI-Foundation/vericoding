@@ -2,12 +2,10 @@ vc-description: |-
   This task requires implementing a method that generates a sequence of natural numbers based on position-dependent calculations. For each position i (0-indexed), if (i+1) is even, the element should be the factorial of (i+1); if (i+1) is odd, the element should be the sum of integers from 1 to (i+1).
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a positive integer n, return a list of length n where each element at position i (0-indexed) 
   // is calculated as follows: if (i+1) is even, use factorial of (i+1); if (i+1) is odd, use sum of 
   // integers from 1 to (i+1).
   
-  // ======= SPEC REQUIREMENTS =======
   function factorial(n: nat): nat
   {
       if n <= 1 then 1 else n * factorial(n - 1)
@@ -27,10 +25,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method f(n: nat) returns (result: seq<nat>)
       ensures ValidResult(n, result)
 

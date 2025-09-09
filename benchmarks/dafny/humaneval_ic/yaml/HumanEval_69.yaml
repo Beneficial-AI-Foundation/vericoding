@@ -4,11 +4,9 @@ vc-description: |-
   The task requires building a frequency map for all elements in the list, then identifying which elements have frequencies meeting the criteria, and finally selecting the maximum among those valid elements.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a non-empty list of positive integers, find the greatest integer whose frequency 
   // in the list is greater than or equal to its own value. If no such integer exists, return -1.
   
-  // ======= SPEC REQUIREMENTS =======
   function count(s: seq<int>, x: int): int
   {
       |set i | 0 <= i < |s| && s[i] == x|
@@ -43,7 +41,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma count_append_lemma(s: seq<int>, elem: int, x: int)
       ensures count(s + [elem], x) == count(s, x) + (if x == elem then 1 else 0)
   {
@@ -67,7 +64,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method search(lst: seq<int>) returns (result: int)
       requires ValidInput(lst)
       ensures ValidResult(lst, result)

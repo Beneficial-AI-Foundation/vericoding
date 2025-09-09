@@ -2,14 +2,12 @@ vc-description: |-
   This verification task implements a conditional sorting algorithm for arrays of non-negative integers. The sorting order is determined by the sum of the first and last elements: if the sum is odd, the array is sorted in ascending order; if the sum is even, it's sorted in descending order. The implementation must return a sorted copy without modifying the original array and preserve all elements (multiset equality).
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given an array of non-negative integers, return a sorted copy of the array.
   // The sorting order depends on the sum of the first and last elements:
   // - If the sum is odd: sort in ascending order  
   // - If the sum is even: sort in descending order
   // - Return a copy without modifying the original array
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(arr: seq<int>)
   {
       forall i :: 0 <= i < |arr| ==> arr[i] >= 0
@@ -43,7 +41,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   method SortAscending(arr: seq<int>) returns (result: seq<int>)
       ensures multiset(result) == multiset(arr)
       ensures IsAscendingSorted(result)
@@ -109,7 +106,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method sort_array(arr: seq<int>) returns (result: seq<int>)
       requires ValidInput(arr)
       ensures multiset(result) == multiset(arr)

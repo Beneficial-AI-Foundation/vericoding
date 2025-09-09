@@ -2,10 +2,8 @@ vc-description: |-
   This verification task implements the computation of the sum of all integers from 1 to n inclusive, where n is a positive integer. The expected implementation should use the well-known mathematical formula n*(n+1)/2 for efficiency.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a positive integer n, compute the sum of all integers from 1 to n inclusive.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(n: int)
   {
       n >= 1
@@ -18,7 +16,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
   method sum_to_n(n: int) returns (result: int)

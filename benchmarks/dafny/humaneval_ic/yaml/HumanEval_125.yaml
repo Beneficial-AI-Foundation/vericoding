@@ -4,13 +4,11 @@ vc-description: |-
   The implementation uses a datatype to represent either a sequence of strings (for splitting results) or an integer count, with helper functions for each operation and appropriate specifications ensuring correctness.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string, apply rules in order:
   // 1. If contains whitespace, return list of words split on whitespace
   // 2. If no whitespace but contains commas, return list split on commas
   // 3. If neither, return count of lowercase letters at odd alphabet positions
   
-  // ======= SPEC REQUIREMENTS =======
   datatype SplitResult = StringSeq(words: seq<string>) | Count(value: int)
   
   function contains_space(txt: string): bool
@@ -24,7 +22,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   function split_on_whitespace(txt: string): seq<string>
       ensures forall w :: w in split_on_whitespace(txt) ==> |w| > 0
       ensures forall w :: w in split_on_whitespace(txt) ==> forall c :: c in w ==> c != ' '
@@ -107,7 +104,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   function split_words(txt: string): SplitResult
       ensures (contains_space(txt) ==> split_words(txt).StringSeq?) &&
               (!contains_space(txt) && contains_comma(txt) ==> split_words(txt).StringSeq?) &&

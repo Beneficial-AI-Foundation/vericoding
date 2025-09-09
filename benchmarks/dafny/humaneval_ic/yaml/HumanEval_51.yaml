@@ -2,11 +2,9 @@ vc-description: |-
   This verification task involves removing all vowels (both lowercase and uppercase) from a given string and returning the resulting string. Vowels are defined as the characters: a, e, i, o, u, A, E, I, O, U. The implementation must preserve the order of non-vowel characters and ensure the result contains only characters from the original string that are not vowels.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string, remove all vowels (both lowercase and uppercase) and return the resulting string.
   // Vowels are defined as: a, e, i, o, u, A, E, I, O, U
   
-  // ======= SPEC REQUIREMENTS =======
   predicate IsVowel(c: char) {
       c in {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
   }
@@ -23,10 +21,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method remove_vowels(text: string) returns (result: string)
       ensures ValidResult(text, result)
 

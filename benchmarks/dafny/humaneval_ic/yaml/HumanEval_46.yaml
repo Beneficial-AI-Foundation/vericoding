@@ -4,13 +4,11 @@ vc-description: |-
   The implementation must be iterative and efficient, using a sliding window approach to maintain the last 4 values instead of recursion, while proving equivalence to the recursive specification.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Compute the n-th element of the Fib4 sequence, defined as:
   // fib4(0) = 0, fib4(1) = 0, fib4(2) = 2, fib4(3) = 0
   // fib4(n) = fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4) for n >= 4
   // The solution must be iterative and efficient.
   
-  // ======= SPEC REQUIREMENTS =======
   function fib4_func(n: int): int
       requires n >= 0
   {
@@ -22,10 +20,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method fib4(n: int) returns (result: int)
       requires n >= 0
       ensures result == fib4_func(n)

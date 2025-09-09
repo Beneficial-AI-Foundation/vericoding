@@ -2,13 +2,11 @@ vc-description: |-
   Given a list of exactly two strings containing only '(' and ')' characters, determine if it's possible to concatenate them in some order to create a balanced parentheses string. Return 'Yes' if either concatenation order produces a balanced string, 'No' otherwise.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of exactly two strings containing only '(' and ')' characters,
   // determine if it's possible to concatenate them in some order to create a
   // balanced parentheses string. Return 'Yes' if either concatenation order
   // produces a balanced string, 'No' otherwise.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate valid_paren_string(s: string)
   {
       forall i :: 0 <= i < |s| ==> s[i] == '(' || s[i] == ')'
@@ -42,10 +40,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method match_parens(lst: seq<string>) returns (result: string)
       requires ValidInput(lst)
       ensures CorrectOutput(lst, result)

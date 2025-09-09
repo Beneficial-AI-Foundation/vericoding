@@ -2,11 +2,9 @@ vc-description: |-
   This verification task involves implementing a function that checks if three real numbers satisfy two conditions: all three must be integers, and one of the numbers must equal the sum of the other two. The function should return true only if both conditions are met, false otherwise.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given three real numbers, return True if all three are integers and one number 
   // equals the sum of the other two. Otherwise, return False.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate IsInteger(x: real)
   {
       x == x.Floor as real
@@ -28,10 +26,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method any_int(x: real, y: real, z: real) returns (result: bool)
       ensures ValidResult(x, y, z, result)
 

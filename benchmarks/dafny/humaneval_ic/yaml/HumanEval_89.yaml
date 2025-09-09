@@ -2,16 +2,9 @@ vc-description: |-
   This verification task implements a string encryption algorithm that shifts each alphabetic character forward by 4 positions in the alphabet with wraparound. The implementation should preserve the case of letters and leave non-alphabetic characters unchanged.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Encrypts a string by shifting each alphabetic character forward by 4 positions in the alphabet.
   // The shift wraps around (after 'z' comes 'a', after 'Z' comes 'A').
   // Non-alphabetic characters remain unchanged. Case of letters is preserved.
-  
-  // ======= SPEC REQUIREMENTS =======
-  
-  // ======= HELPERS =======
-  
-  // ======= MAIN METHOD =======
 
 vc-helpers: |-
 

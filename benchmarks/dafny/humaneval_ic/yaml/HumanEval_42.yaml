@@ -2,10 +2,8 @@ vc-description: |-
   This task implements a function to increment each element in a list of integers by 1. Given a sequence of integers, the function should return a new sequence where each element is the corresponding element from the input sequence plus one.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of integers, return a new list where each element is incremented by 1.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(l: seq<int>)
   {
       true
@@ -18,10 +16,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method incr_list(l: seq<int>) returns (result: seq<int>)
       requires ValidInput(l)
       ensures CorrectOutput(l, result)

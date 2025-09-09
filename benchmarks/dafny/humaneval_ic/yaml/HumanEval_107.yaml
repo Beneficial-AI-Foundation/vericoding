@@ -2,13 +2,11 @@ vc-description: |-
   This verification task implements a function to count even and odd palindromic integers in the range [1, n] inclusive. A palindromic integer reads the same forwards and backwards (e.g., 121, 7, 1331). The function should return a tuple (even_count, odd_count) representing the counts of even and odd palindromic integers respectively.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a positive integer n, count the number of even and odd palindromic integers in the range [1, n] inclusive.
   // A palindromic integer reads the same forwards and backwards (e.g., 121, 7, 1331).
   // Return a tuple (even_count, odd_count) where even_count is the number of even palindromic integers
   // and odd_count is the number of odd palindromic integers in [1, n].
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(n: nat)
   {
       n >= 1
@@ -62,7 +60,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   function CountPalindromes(n: nat, current: nat, even_count: nat, odd_count: nat): (nat, nat)
       requires current >= 1
       requires n >= 1
@@ -86,7 +83,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   function even_odd_palindrome(n: nat): (nat, nat)
       requires ValidInput(n)
       ensures even_odd_palindrome(n).0 >= 0

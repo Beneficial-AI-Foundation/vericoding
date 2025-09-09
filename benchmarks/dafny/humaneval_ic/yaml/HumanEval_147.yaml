@@ -4,12 +4,10 @@ vc-description: |-
   The implementation uses the mathematical insight that elements can be categorized by their modulo 3 value, and valid triples must either come from all elements with the same modulo value.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a positive integer n, create an array a of length n where a[i] = i² - i + 1 
   // for each position i from 1 to n. Count the number of triples (a[i], a[j], a[k]) 
   // where i < j < k and the sum a[i] + a[j] + a[k] is divisible by 3.
   
-  // ======= SPEC REQUIREMENTS =======
   function array_element(i: int): int
     requires i >= 1
   {
@@ -65,10 +63,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method get_max_triples(n: int) returns (result: int)
     requires ValidInput(n)
     ensures result >= 0

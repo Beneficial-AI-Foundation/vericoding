@@ -2,12 +2,10 @@ vc-description: |-
   This verification task implements a function to convert an integer from base 10 to a specified base (where base < 10) and return its string representation. The implementation should correctly handle the conversion process by repeatedly dividing by the target base to extract digits, then reversing the resulting digit sequence to produce the final string representation.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Convert an integer from base 10 to a specified base and return the string representation.
   // Input: x (integer in base 10), base (target base where base < 10)
   // Output: String representation of x in the specified base
   
-  // ======= SPEC REQUIREMENTS =======
   function power_of_base(base: int, exp: int): int
     requires base >= 2
     requires exp >= 0
@@ -37,7 +35,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma digits_reversal_lemma(digits: seq<char>, reversed: seq<char>, base: int)
     requires base >= 2
     requires |digits| == |reversed| > 0
@@ -66,7 +63,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method change_base(x: int, base: int) returns (result: string)
     requires base >= 2 && base < 10
     requires x >= 0

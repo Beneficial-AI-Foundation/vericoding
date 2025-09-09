@@ -2,12 +2,10 @@ vc-description: |-
   Given a list of integers representing bank account operations (positive for deposits, negative for withdrawals), determine if the account balance ever drops below zero. The account starts with a balance of zero.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of integers representing bank account operations (positive for deposits, 
   // negative for withdrawals), determine if the account balance ever drops below zero. 
   // The account starts with a balance of zero.
   
-  // ======= SPEC REQUIREMENTS =======
   function sum_prefix(ops: seq<int>, len: nat): int
     requires len <= |ops|
   {
@@ -16,10 +14,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method below_zero(operations: seq<int>) returns (result: bool)
     ensures result <==> (exists i :: 0 < i <= |operations| && sum_prefix(operations, i) < 0)
 

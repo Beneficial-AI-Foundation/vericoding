@@ -2,11 +2,9 @@ vc-description: |-
   Convert a list of numerical GPA values to corresponding letter grades using a specified grading scale. The grading scale maps GPA ranges to letter grades from A+ (4.0) down to E (0.0).
 
 vc-preamble: |-
-  // ======= TASK =======
   // Convert a list of numerical GPA values to corresponding letter grades using a specified grading scale.
   // The grading scale maps GPA ranges to letter grades from A+ (4.0) down to E (0.0).
   
-  // ======= SPEC REQUIREMENTS =======
   function getLetterGrade(gpa: real): string
   {
       if gpa == 4.0 then "A+"
@@ -30,10 +28,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method numerical_letter_grade(grades: seq<real>) returns (letter_grades: seq<string>)
       ensures |letter_grades| == |grades|
       ensures forall i :: 0 <= i < |grades| ==> letter_grades[i] == getLetterGrade(grades[i])

@@ -2,11 +2,9 @@ vc-description: |-
   This verification task implements a method to compute both the sum and product of all integers in a given sequence. For an empty list, the method should return (0, 1) representing the empty sum and empty product respectively. The implementation uses iterative computation while maintaining loop invariants to ensure correctness.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of integers, return a tuple containing the sum and product of all integers in the list.
   // For an empty list, return (0, 1) where 0 is the empty sum and 1 is the empty product.
   
-  // ======= SPEC REQUIREMENTS =======
   function SumSeq(s: seq<int>): int
   {
       if |s| == 0 then 0
@@ -20,7 +18,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma SumSeqAppend(s: seq<int>, x: int)
       ensures SumSeq(s + [x]) == SumSeq(s) + x
   {
@@ -50,7 +47,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method sum_product(numbers: seq<int>) returns (sum: int, product: int)
       ensures sum == SumSeq(numbers)
       ensures product == ProductSeq(numbers)

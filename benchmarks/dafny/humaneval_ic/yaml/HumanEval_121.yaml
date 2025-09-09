@@ -2,11 +2,9 @@ vc-description: |-
   This task requires implementing a method that calculates the sum of all odd numbers located at even-indexed positions in a non-empty sequence of integers. The positions are 0-indexed, so we consider positions 0, 2, 4, etc.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a non-empty list of integers, return the sum of all odd numbers 
   // that are located at even-indexed positions (0, 2, 4, ...).
   
-  // ======= SPEC REQUIREMENTS =======
   function SumOddAtEvenPositions(lst: seq<int>, pos: int): int
       requires 0 <= pos
       decreases |lst| - pos
@@ -17,10 +15,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method solution(lst: seq<int>) returns (result: int)
       requires |lst| > 0
       ensures result == SumOddAtEvenPositions(lst, 0)

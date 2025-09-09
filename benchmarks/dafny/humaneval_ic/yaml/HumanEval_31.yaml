@@ -4,21 +4,17 @@ vc-description: |-
   The implementation should efficiently check for primality by testing divisibility up to the square root of the input number, with optimizations for even numbers.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a positive integer n, determine if it is a prime number. A prime number 
   // is a natural number greater than 1 that has exactly two distinct positive divisors: 1 and itself.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate is_prime_number(n: int)
   {
       n >= 2 && forall k :: 2 <= k < n ==> n % k != 0
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method is_prime(n: int) returns (result: bool)
       ensures result <==> is_prime_number(n)
 

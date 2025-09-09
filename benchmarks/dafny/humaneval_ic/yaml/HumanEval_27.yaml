@@ -2,11 +2,9 @@ vc-description: |-
   This verification task involves implementing a string case-flipping function that converts all lowercase letters to uppercase and all uppercase letters to lowercase, while leaving non-alphabetic characters unchanged. The implementation should process each character in the input string and return a new string with the appropriate case transformations.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string, convert all lowercase letters to uppercase and all uppercase letters to lowercase. 
   // Non-alphabetic characters remain unchanged.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate IsLowercase(c: char) {
       'a' <= c <= 'z'
   }
@@ -27,10 +25,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method flip_case(s: string) returns (result: string)
       ensures ValidFlipCase(s, result)
 

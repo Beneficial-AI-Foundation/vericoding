@@ -2,12 +2,10 @@ vc-description: |-
   This verification task implements a function that compares two values of different types (integers, reals, or strings representing real numbers) and returns the larger one in its original format. If the values are numerically equal, the function returns None. The challenge is handling different value types while maintaining their original representation in the result.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Create a function that compares two values and returns the larger one in its original format.
   // Values can be integers, reals, or strings representing real numbers (with '.' or ',' as decimal separators).
   // Return None if the values are numerically equal.
   
-  // ======= SPEC REQUIREMENTS =======
   datatype Value = Int(i: int) | Real(r: real) | Str(s: string)
   
   datatype Option<T> = None | Some(value: T)
@@ -34,7 +32,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
   method compare_one(a: Value, b: Value) returns (result: Option<Value>)

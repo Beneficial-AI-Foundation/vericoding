@@ -2,12 +2,10 @@ vc-description: |-
   This verification task implements a method to create a pile of stones with n levels. The first level contains n stones, and each subsequent level contains the next number with the same parity (odd/even) as n. This creates an arithmetic sequence where each level has 2 more stones than the previous level.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a positive integer n, create a pile with n levels of stones where the first level
   // contains n stones and each subsequent level contains the next number of the same parity
   // (odd/even) as n. Return a sequence representing the number of stones in each level.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(n: int)
   {
       n > 0
@@ -22,10 +20,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method make_a_pile(n: int) returns (pile: seq<int>)
       requires ValidInput(n)
       ensures ValidPile(pile, n)

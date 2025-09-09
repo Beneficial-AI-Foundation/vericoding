@@ -2,12 +2,10 @@ vc-description: |-
   Given a list of numbers with at least two elements, find the pair of numbers with the smallest absolute difference between them. Return the pair as a tuple ordered from smaller to larger value. The implementation uses nested loops to compare all pairs and track the minimum difference found.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of numbers with at least two elements, find the pair of numbers 
   // with the smallest absolute difference between them. Return the pair as a tuple 
   // ordered from smaller to larger value.
   
-  // ======= SPEC REQUIREMENTS =======
   function AbsDiff(x: real, y: real): real
   {
     if x >= y then x - y else y - x
@@ -28,10 +26,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method find_closest_elements(numbers: seq<real>) returns (result: (real, real))
     requires ValidInput(numbers)
     ensures IsOptimalPair(numbers, result)

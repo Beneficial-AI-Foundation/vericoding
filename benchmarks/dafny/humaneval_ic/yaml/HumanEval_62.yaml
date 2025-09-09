@@ -2,12 +2,10 @@ vc-description: |-
   This task involves computing the derivative of a polynomial given its coefficients. Given a sequence of coefficients where xs[i] represents the coefficient of x^i, the method should return the derivative coefficients where [a₀, a₁, a₂, ...] becomes [a₁, 2a₂, 3a₃, ...].
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of coefficients representing a polynomial where xs[i] is the coefficient of x^i,
   // compute the derivative of the polynomial and return it in the same coefficient format.
   // The derivative transforms coefficients: [a₀, a₁, a₂, ...] becomes [a₁, 2a₂, 3a₃, ...]
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(xs: seq<int>)
   {
       true  // Any sequence of coefficients is valid input
@@ -26,10 +24,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method derivative(xs: seq<int>) returns (result: seq<int>)
       requires ValidInput(xs)
       ensures CorrectDerivativeCoefficients(xs, result)

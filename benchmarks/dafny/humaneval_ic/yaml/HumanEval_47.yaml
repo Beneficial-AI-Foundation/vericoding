@@ -4,11 +4,9 @@ vc-description: |-
   The implementation uses helper functions for insertion sort and includes comprehensive specifications to ensure the sorted list preserves the original multiset and maintains proper ordering.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of numbers, return the median value. For odd-length lists, return the middle element after sorting. 
   // For even-length lists, return the average of the two middle elements after sorting.
   
-  // ======= SPEC REQUIREMENTS =======
   function InsertSorted(x: real, sorted: seq<real>): seq<real>
   {
       if |sorted| == 0 then [x]
@@ -47,7 +45,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma InsertSortedPreservesOrder(x: real, sorted: seq<real>)
       requires IsSorted(sorted)
       ensures IsSorted(InsertSorted(x, sorted))
@@ -97,7 +94,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method median(l: seq<real>) returns (result: real)
       requires ValidInput(l)
       ensures result == MedianValue(l)

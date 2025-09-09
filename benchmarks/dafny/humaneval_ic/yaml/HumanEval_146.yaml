@@ -2,13 +2,11 @@ vc-description: |-
   Count the numbers in an array that satisfy all three conditions: 1) Greater than 10, 2) First digit is odd (1, 3, 5, 7, 9), and 3) Last digit is odd (1, 3, 5, 7, 9).
 
 vc-preamble: |-
-  // ======= TASK =======
   // Count the numbers in an array that satisfy all three conditions:
   // 1. Greater than 10
   // 2. First digit is odd (1, 3, 5, 7, 9)
   // 3. Last digit is odd (1, 3, 5, 7, 9)
   
-  // ======= SPEC REQUIREMENTS =======
   function FirstDigit(n: int): int
     requires n > 0
   {
@@ -37,7 +35,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   function CountHelper(nums: seq<int>, index: int): int
     requires 0 <= index <= |nums|
     decreases |nums| - index
@@ -74,7 +71,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method SpecialFilter(nums: seq<int>) returns (count: int)
     requires ValidInput(nums)
     ensures count >= 0

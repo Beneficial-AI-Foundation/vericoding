@@ -2,12 +2,10 @@ vc-description: |-
   This verification task involves implementing a string transformation method that replaces spaces according to specific rules: individual spaces or pairs of consecutive spaces become underscores (one per space), while sequences of more than 2 consecutive spaces become a single dash. The implementation must preserve the order of non-space characters and satisfy several correctness predicates.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string, transform all spaces according to these rules:
   // - Replace each individual space or pair of consecutive spaces with underscores (one underscore per space)
   // - Replace any sequence of more than 2 consecutive spaces with a single dash "-"
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(text: string)
   {
       true
@@ -53,10 +51,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method fix_spaces(text: string) returns (result: string)
       requires ValidInput(text)
       ensures ValidResult(text, result)

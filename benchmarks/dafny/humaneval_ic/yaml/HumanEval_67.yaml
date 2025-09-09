@@ -2,11 +2,9 @@ vc-description: |-
   Given a string containing quantities of apples and oranges and the total number of fruits, calculate the number of mangoes. The basket contains only apples, oranges, and mangoes. The implementation must extract numbers from the input string, sum them up, and subtract from the total to find the number of mangoes.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string containing quantities of apples and oranges and the total number of fruits,
   // calculate the number of mangoes. The basket contains only apples, oranges, and mangoes.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(n: int) {
       n >= 0
   }
@@ -29,7 +27,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   function extract_numbers_helper(s: string, i: int, current_number: int, in_number: bool, numbers: seq<int>): seq<int>
       decreases |s| - i
       requires 0 <= i <= |s|
@@ -86,7 +83,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method fruit_distribution(s: string, n: int) returns (mangoes: int)
       requires ValidInput(n)
       ensures mangoes == n - sum_of_numbers_in_string(s)

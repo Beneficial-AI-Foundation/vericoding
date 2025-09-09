@@ -2,13 +2,11 @@ vc-description: |-
   This verification task implements a parser for nested parentheses strings. Given a string containing groups of nested parentheses separated by spaces, the goal is to find the maximum nesting depth for each group independently. The implementation must correctly split the input by spaces, calculate nesting depths, and return a sequence of maximum depths corresponding to each group.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string containing multiple groups of nested parentheses separated by spaces,
   // find the maximum nesting depth for each group. The input string contains only
   // parentheses '(', ')', and spaces ' '. Groups are separated by spaces, and each
   // group's maximum nesting depth is calculated independently.
   
-  // ======= SPEC REQUIREMENTS =======
   function SplitBySpacesResult(s: string): seq<string>
       requires forall i :: 0 <= i < |s| ==> s[i] == '(' || s[i] == ')' || s[i] == ' '
       ensures forall i :: 0 <= i < |SplitBySpacesResult(s)| ==> forall j :: 0 <= j < |SplitBySpacesResult(s)[i]| ==> SplitBySpacesResult(s)[i][j] == '(' || SplitBySpacesResult(s)[i][j] == ')'
@@ -29,7 +27,6 @@ vc-preamble: |-
       MaxNestingDepthHelper(group, 0, 0, 0)
   }
   
-  // ======= HELPERS =======
   function SplitBySpacesHelper(s: string, i: int, current_group: string, groups: seq<string>): seq<string>
       requires 0 <= i <= |s|
       requires forall k :: 0 <= k < |s| ==> s[k] == '(' || s[k] == ')' || s[k] == ' '
@@ -108,7 +105,6 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method parse_nested_parens(paren_string: string) returns (result: seq<int>)
       requires forall i :: 0 <= i < |paren_string| ==> paren_string[i] == '(' || paren_string[i] == ')' || paren_string[i] == ' '
       ensures |result| == |SplitBySpacesResult(paren_string)|

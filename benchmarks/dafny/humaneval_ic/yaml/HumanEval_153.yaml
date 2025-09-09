@@ -2,14 +2,12 @@ vc-description: |-
   Given a class name (string) and a list of extension names (strings), find the "strongest" extension and return the result in the format "ClassName.StrongestExtensionName". The strength of an extension is calculated as: (number of uppercase letters) - (number of lowercase letters). Choose the extension with the highest strength value. If multiple extensions have the same highest strength, choose the first one that appears in the list.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a class name (string) and a list of extension names (strings), find the "strongest" extension 
   // and return the result in the format "ClassName.StrongestExtensionName".
   // The strength of an extension is calculated as: (number of uppercase letters) - (number of lowercase letters).
   // Choose the extension with the highest strength value. If multiple extensions have the same highest strength, 
   // choose the first one that appears in the list.
   
-  // ======= SPEC REQUIREMENTS =======
   function count_upper(s: string): int
   {
       if |s| == 0 then 0
@@ -28,10 +26,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method Strongest_Extension(class_name: string, extensions: seq<string>) returns (result: string)
       requires |extensions| > 0
       ensures exists i :: 0 <= i < |extensions| && result == class_name + "." + extensions[i] &&

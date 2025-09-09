@@ -2,7 +2,6 @@ vc-description: |-
   Given an array of integers, count how many elements have a positive sum of digits. For digit sum calculation: positive numbers sum all digits normally, negative numbers have the first digit as negative and remaining digits as positive, and zero has digit sum 0. Return the count of numbers whose digit sum is greater than 0.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given an array of integers, count how many elements have a positive sum of digits.
   // For digit sum calculation:
   // - Positive numbers: sum all digits normally
@@ -10,7 +9,6 @@ vc-preamble: |-
   // - Zero: digit sum is 0
   // Return the count of numbers whose digit sum is greater than 0.
   
-  // ======= SPEC REQUIREMENTS =======
   function digitSumFunc(n: int): int
   {
       if n == 0 then 0
@@ -44,7 +42,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   method digitSum(n: int) returns (result: int)
       ensures result == digitSumFunc(n)
       ensures n == 0 ==> result == 0
@@ -91,7 +88,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method count_nums(arr: seq<int>) returns (count: int)
       requires ValidInput(arr)
       ensures ValidOutput(arr, count)

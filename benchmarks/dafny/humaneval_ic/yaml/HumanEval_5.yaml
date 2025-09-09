@@ -2,10 +2,8 @@ vc-description: |-
   This verification task involves implementing a method that inserts a delimiter between every two consecutive elements in a sequence of integers. The method should handle edge cases like empty sequences or single-element sequences, and for longer sequences, it should produce a result with alternating original elements and delimiters.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of integers and a delimiter integer, insert the delimiter between every two consecutive elements in the list.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(numbers: seq<int>, delimiter: int)
   {
       true // Any sequence and delimiter are valid inputs
@@ -22,10 +20,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method InsertDelimiter(numbers: seq<int>, delimiter: int) returns (result: seq<int>)
       requires ValidInput(numbers, delimiter)
       ensures ValidOutput(numbers, delimiter, result)

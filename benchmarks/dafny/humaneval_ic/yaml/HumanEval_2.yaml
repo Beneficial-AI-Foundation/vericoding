@@ -2,11 +2,9 @@ vc-description: |-
   This task implements a function to extract the decimal (fractional) part of a positive floating point number. Given a number like 3.5, it should return 0.5, and for 1.25, it should return 0.25. The implementation involves subtracting the floor (integer part) from the original number.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a positive floating point number, return its decimal part (the fractional component 
   // remaining after removing the integer part). For example, 3.5 returns 0.5, 1.25 returns 0.25.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(number: real)
   {
       number >= 0.0
@@ -17,7 +15,6 @@ vc-preamble: |-
       0.0 <= result < 1.0 && result == input - Floor(input)
   }
   
-  // ======= HELPERS =======
   function Floor(x: real): real
       ensures Floor(x) <= x < Floor(x) + 1.0
   {
@@ -64,7 +61,6 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   function truncate_number(number: real): real
       requires ValidInput(number)
       ensures ValidOutput(truncate_number(number), number)

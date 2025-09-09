@@ -2,7 +2,6 @@ vc-description: |-
   Implement a function to validate date strings according to specific formatting and validity rules. The date must be in "mm-dd-yyyy" format with exactly two hyphens as separators, contain only numeric components, have a valid month (1-12), and have a valid day for the given month (considering different month lengths including February with 29 days maximum).
 
 vc-preamble: |-
-  // ======= TASK =======
   // Validate a date string according to specific rules:
   // 1. Date string must not be empty
   // 2. Format must be exactly "mm-dd-yyyy" (using hyphens as separators)  
@@ -10,7 +9,6 @@ vc-preamble: |-
   // 4. Day must be valid for the given month (1-31 for months 1,3,5,7,8,10,12; 1-30 for months 4,6,9,11; 1-29 for month 2)
   // 5. All components (month, day, year) must be numeric
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidDateFormat(date: string)
   {
       |date| > 0 &&
@@ -27,7 +25,6 @@ vc-preamble: |-
          else 1 <= day <= 29)))
   }
   
-  // ======= HELPERS =======
   function count_char(s: string, c: char): nat
   {
       if |s| == 0 then 0
@@ -86,7 +83,6 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   function valid_date(date: string): bool
       ensures valid_date(date) == ValidDateFormat(date)
 

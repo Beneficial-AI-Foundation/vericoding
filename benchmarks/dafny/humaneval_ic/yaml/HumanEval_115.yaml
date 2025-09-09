@@ -2,12 +2,10 @@ vc-description: |-
   This verification task involves implementing a solution to determine the minimum number of bucket operations needed to empty all wells in a 2D binary grid. Each row represents a well, each 1 represents a unit of water, and each bucket has a fixed capacity. The implementation must correctly calculate the total number of bucket trips required across all wells.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a 2D binary grid where each row represents a well and each 1 represents a unit of water,
   // determine the minimum number of bucket operations needed to empty all wells.
   // Each bucket has the same capacity and can extract up to that many units of water per operation.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(grid: seq<seq<int>>, capacity: int)
   {
       capacity > 0 &&
@@ -41,7 +39,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma sum_water_slice_lemma(well: seq<int>, j: int)
       requires 0 <= j < |well|
       requires forall k :: 0 <= k < |well| ==> well[k] == 0 || well[k] == 1
@@ -110,7 +107,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method max_fill(grid: seq<seq<int>>, capacity: int) returns (result: int)
       requires ValidInput(grid, capacity)
       ensures result >= 0

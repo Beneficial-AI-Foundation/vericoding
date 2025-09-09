@@ -4,12 +4,10 @@ vc-description: |-
   The implementation should calculate the arithmetic mean, compute absolute deviations from this mean for each element, and then return the average of these absolute deviations while ensuring the result is non-negative.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of floating-point numbers, calculate the Mean Absolute Deviation (MAD) around the arithmetic mean.
   // The Mean Absolute Deviation is defined as: MAD = (1/n) × Σ|x_i - mean|
   // Where n is the number of elements, x_i is each element, and mean is the arithmetic mean of all elements.
   
-  // ======= SPEC REQUIREMENTS =======
   function sum(numbers: seq<real>): real
   {
       if |numbers| == 0 then 0.0
@@ -45,7 +43,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma sum_non_negative(numbers: seq<real>)
       requires forall i :: 0 <= i < |numbers| ==> numbers[i] >= 0.0
       ensures sum(numbers) >= 0.0
@@ -59,7 +56,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method mean_absolute_deviation(numbers: seq<real>) returns (result: real)
       requires ValidInput(numbers)
       ensures result >= 0.0

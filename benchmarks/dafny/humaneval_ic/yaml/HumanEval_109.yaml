@@ -2,13 +2,11 @@ vc-description: |-
   Given an array of unique integers, determine if it's possible to sort the array in non-decreasing order using only right shift operations. A right shift moves all elements one position to the right, with the last element moving to the first. The method should return True if the array is sortable via rotations, False otherwise, with empty arrays returning True.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given an array of unique integers, determine if it's possible to sort the array
   // in non-decreasing order using only right shift operations. A right shift moves
   // all elements one position to the right, with the last element moving to the first.
   // Return True if sortable, False otherwise. Empty arrays return True.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate is_sorted(s: seq<int>)
   {
       forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
@@ -23,7 +21,6 @@ vc-preamble: |-
       else arr[|arr|-k..] + arr[..|arr|-k]
   }
   
-  // ======= HELPERS =======
   method quicksort(s: seq<int>) returns (sorted: seq<int>)
       decreases |s|
   {
@@ -58,7 +55,6 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method move_one_ball(arr: seq<int>) returns (result: bool)
       requires forall i, j :: 0 <= i < j < |arr| ==> arr[i] != arr[j]
       ensures |arr| == 0 ==> result == true

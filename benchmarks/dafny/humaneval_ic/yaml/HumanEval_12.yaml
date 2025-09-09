@@ -2,11 +2,9 @@ vc-description: |-
   This task involves finding the longest string in a sequence of strings. If multiple strings have the same maximum length, the method should return the first one that appears in the list. If the list is empty, it should return None using an Option type.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of strings, return the longest string. If multiple strings have the same maximum length, 
   // return the first one that appears in the list. If the list is empty, return None.
   
-  // ======= SPEC REQUIREMENTS =======
   datatype Option<T> = Some(value: T) | None
   
   predicate ValidResult(strings: seq<string>, result: Option<string>)
@@ -21,10 +19,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method longest(strings: seq<string>) returns (result: Option<string>)
       ensures ValidResult(strings, result)
 

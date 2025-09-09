@@ -2,12 +2,10 @@ vc-description: |-
   This verification task involves computing the sum of all elements that have at most two digits among the first k elements of an array. An element has at most two digits if its absolute value is between 0 and 99 (inclusive).
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given an array of integers and an integer k, return the sum of all elements 
   // that have at most two digits among the first k elements of the array.
   // An element has at most two digits if its absolute value is between 0 and 99 (inclusive).
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(arr: seq<int>, k: int) {
     1 <= |arr| <= 100 && 1 <= k <= |arr|
   }
@@ -28,10 +26,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method add_elements(arr: seq<int>, k: int) returns (result: int)
     requires ValidInput(arr, k)
     ensures result == sum_valid_elements(arr, k)

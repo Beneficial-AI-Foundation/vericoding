@@ -112,7 +112,7 @@ def check_for_tag(content: str, key: str, correct_key: str, tag: str, correct_li
         # Check for the tag
         if tag in line:
             # Check if we're in the correct section
-            if key != correct_key:
+            if correct_key and key != correct_key:
                 raise ValueError(f"Tag '{tag}' found in section '{key}' but expected in section '{correct_key}'")
             
             # Check if the line format is correct
@@ -175,20 +175,31 @@ def process_yaml_file(file_path: Path) -> None:
         # validate_spec_keys(spec, required_keys, file_path)
         
         # Check vc-description for malformed comment blocks and clean up empty lines
-        if 'vc-description' in spec and isinstance(spec['vc-description'], str):
-            spec['vc-description'] = check_vc_description(spec['vc-description'], file_path)
-        else:
-            raise ValueError(f"vc-description not found in {file_path}")
+        # if 'vc-description' in spec and isinstance(spec['vc-description'], str):
+        #     spec['vc-description'] = check_vc_description(spec['vc-description'], file_path)
+        # else:
+        #     raise ValueError(f"vc-description not found in {file_path}")
         
+        # remove tags from all sections
+        # for key, value in spec.items():
+        #     if isinstance(value, str):
+        #         value = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '// <vc-spec>')
+        #         value = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '// </vc-spec>')
+        #         value = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '// <vc-helpers>')
+        #         value = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '// </vc-helpers>')
+        #         value = check_for_tag(value, key, 'vc-code', '<vc-code>', '// <vc-code>')
+        #         value = check_for_tag(value, key, 'vc-code', '</vc-code>', '// </vc-code>')
+        #         spec[key] = value
+
+        # remove HumanEval tags
         for key, value in spec.items():
             if isinstance(value, str):
-                value = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '// <vc-spec>')
-                value = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '// </vc-spec>')
-                value = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '// <vc-helpers>')
-                value = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '// </vc-helpers>')
-                value = check_for_tag(value, key, 'vc-code', '<vc-code>', '// <vc-code>')
-                value = check_for_tag(value, key, 'vc-code', '</vc-code>', '// </vc-code>')
+                value = check_for_tag(value, key, None, '= TASK =', '// ======= TASK =======')
+                value = check_for_tag(value, key, None, '= SPEC REQUIREMENTS =', '// ======= SPEC REQUIREMENTS =======')
+                value = check_for_tag(value, key, None, '= HELPERS =', '// ======= HELPERS =======')
+                value = check_for_tag(value, key, None, '= MAIN METHOD =', '// ======= MAIN METHOD =======')
                 spec[key] = value
+
         # Normalize all sections
         for key, value in spec.items():
             if isinstance(value, str):

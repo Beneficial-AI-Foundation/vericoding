@@ -4,12 +4,10 @@ vc-description: |-
   The implementation must correctly handle edge cases and maintain loop invariants to prove that the returned result satisfies all the postconditions, including finding the true minimum even value and the earliest index for that value.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given an array of non-negative integers, find the smallest even value and return it along with its index.
   // If multiple occurrences of the same smallest even value exist, return the one with the smallest index.
   // If no even values exist or the array is empty, return an empty list.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(arr: seq<int>)
   {
       forall i :: 0 <= i < |arr| ==> arr[i] >= 0
@@ -49,10 +47,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method pluck(arr: seq<int>) returns (result: seq<int>)
       requires ValidInput(arr)
       ensures |arr| == 0 ==> |result| == 0

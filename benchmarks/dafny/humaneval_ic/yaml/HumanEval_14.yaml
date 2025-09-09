@@ -2,11 +2,9 @@ vc-description: |-
   Given a string, return a list of all its prefixes ordered from shortest to longest. A prefix is a substring that starts from the beginning of the original string.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string, return a list of all its prefixes ordered from shortest to longest.
   // A prefix is a substring that starts from the beginning of the original string.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidPrefixes(s: string, result: seq<string>)
   {
       |result| == |s| &&
@@ -14,10 +12,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method all_prefixes(s: string) returns (result: seq<string>)
       ensures ValidPrefixes(s, result)
 

@@ -4,11 +4,9 @@ vc-description: |-
   The implementation uses helper functions to define digit counting operations and ensures correctness through loop invariants that maintain the relationship between processed and remaining digits.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given an integer, count the number of even digits and odd digits in its absolute value.
   // Return a tuple (even_count, odd_count).
   
-  // ======= SPEC REQUIREMENTS =======
   function abs_value(x: int): int
   {
       if x < 0 then -x else x
@@ -47,10 +45,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method even_odd_count(num: int) returns (even_count: int, odd_count: int)
       ensures even_count >= 0 && odd_count >= 0
       ensures even_count + odd_count >= 1

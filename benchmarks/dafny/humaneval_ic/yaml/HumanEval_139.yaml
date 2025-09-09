@@ -2,11 +2,9 @@ vc-description: |-
   Compute the special factorial of a positive integer n, defined as the product of all factorials from 1! to n!: special_factorial(n) = n! × (n-1)! × (n-2)! × ... × 1!. The implementation should use an iterative approach with proper loop invariants to ensure correctness.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Compute the special factorial of a positive integer n, defined as the product of all factorials from 1! to n!:
   // special_factorial(n) = n! × (n-1)! × (n-2)! × ... × 1!
   
-  // ======= SPEC REQUIREMENTS =======
   function factorial_func(num: int): int
       requires num >= 0
   {
@@ -21,7 +19,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   method factorial(num: int) returns (result: int)
       requires num >= 0
       ensures result == factorial_func(num)
@@ -43,7 +40,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method special_factorial(n: int) returns (result: int)
       requires n >= 0
       ensures result == special_factorial_func(n)

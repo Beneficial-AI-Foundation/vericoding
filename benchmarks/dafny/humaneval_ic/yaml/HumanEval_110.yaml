@@ -4,12 +4,10 @@ vc-description: |-
   The key insight is that we need at least as many even numbers across both lists as the length of the first list to make the first list contain only even numbers.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given two non-empty lists of numbers, determine if it's possible to exchange
   // elements between them such that the first list contains only even numbers.
   // Return "YES" if possible, "NO" otherwise.
   
-  // ======= SPEC REQUIREMENTS =======
   function countEven(lst: seq<int>): int
       ensures countEven(lst) >= 0
       ensures countEven(lst) <= |lst|
@@ -30,10 +28,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method exchange(lst1: seq<int>, lst2: seq<int>) returns (result: string)
       requires ValidInput(lst1, lst2)
       ensures result == "YES" || result == "NO"

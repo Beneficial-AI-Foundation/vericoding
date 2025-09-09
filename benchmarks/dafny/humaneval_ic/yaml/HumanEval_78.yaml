@@ -2,11 +2,9 @@ vc-description: |-
   This task involves counting hexadecimal digits that represent prime numbers in a given hexadecimal string. The prime hexadecimal digits are: 2, 3, 5, 7, B (decimal 11), and D (decimal 13). The implementation should iterate through the string and count occurrences of these specific characters.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a hexadecimal string, count how many hexadecimal digits represent prime numbers.
   // Prime hexadecimal digits are: 2, 3, 5, 7, B (decimal 11), D (decimal 13).
   
-  // ======= SPEC REQUIREMENTS =======
   predicate is_hex_char(c: char)
   {
       c in "0123456789ABCDEF"
@@ -29,7 +27,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma append_count_lemma(s: string, c: char)
       ensures count_prime_hex_digits(s + [c]) == count_prime_hex_digits(s) + (if is_prime_hex_digit(c) then 1 else 0)
   {
@@ -44,7 +41,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method hex_key(num: string) returns (count: int)
       requires is_valid_hex_string(num)
       ensures count >= 0

@@ -2,12 +2,10 @@ vc-description: |-
   This verification task involves finding the minimum number of elements that must be changed to make an array palindromic. A palindromic array reads the same forwards and backwards. The solution should count the number of mismatched pairs between corresponding positions from the start and end of the array.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given an array of integers, find the minimum number of elements that must be changed 
   // to make the array palindromic (reads the same forwards and backwards). You can change 
   // any element to any other integer value.
   
-  // ======= SPEC REQUIREMENTS =======
   function count_mismatched_pairs(arr: seq<int>): int
   {
       count_mismatched_pairs_up_to(arr, |arr| / 2)
@@ -28,10 +26,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method smallest_change(arr: seq<int>) returns (changes: int)
       ensures changes >= 0
       ensures changes <= |arr| / 2

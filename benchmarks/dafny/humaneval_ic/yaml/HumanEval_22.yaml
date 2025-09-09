@@ -2,11 +2,9 @@ vc-description: |-
   Given a list containing values of various types, return a new list containing only the integer values. In Python, booleans are considered integers (True=1, False=0), so they should be included in the result. The task requires implementing a function that filters a sequence of mixed-type values to extract only integers and boolean values (converted to 0/1).
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list containing values of various types, return a new list containing only the integer values.
   // In Python, booleans are considered integers (True=1, False=0), so they should be included in the result.
   
-  // ======= SPEC REQUIREMENTS =======
   datatype Value = IntVal(i: int) | BoolVal(b: bool) | StringVal(s: string) | RealVal(r: real) | OtherVal
   
   predicate ValidInput(values: seq<Value>)
@@ -30,10 +28,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   function filter_integers(values: seq<Value>) : seq<int>
       requires ValidInput(values)
       ensures ValidOutput(values, filter_integers(values))

@@ -2,13 +2,11 @@ vc-description: |-
   This verification task involves implementing a method that calculates carrot consumption for a rabbit. Given the number of carrots already eaten, the number of additional carrots needed, and the number of carrots remaining in stock, the method should return the total carrots that will be eaten and how many carrots will be left. The rabbit will eat as many carrots as possible from the remaining stock, up to the number needed.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given the number of carrots already eaten, the number of additional carrots needed,
   // and the number of carrots remaining in stock, calculate the total carrots that will be
   // eaten and how many carrots will be left. The rabbit will eat as many carrots as possible
   // from the remaining stock, up to the number needed.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(number: int, need: int, remaining: int)
   {
       0 <= number <= 1000 && 0 <= need <= 1000 && 0 <= remaining <= 1000
@@ -40,10 +38,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method eat(number: int, need: int, remaining: int) returns (result: seq<int>)
       requires ValidInput(number, need, remaining)
       ensures ValidResult(result, number, need, remaining)

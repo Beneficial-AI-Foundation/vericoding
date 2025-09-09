@@ -4,11 +4,9 @@ vc-description: |-
   The solution uses an iterative approach with loop invariants to maintain correctness while avoiding the exponential time complexity of a naive recursive implementation.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Compute the n-th Fibonacci number using 1-based indexing, where fib(1) = 1, fib(2) = 1.
   // Input: A positive integer n. Output: The n-th Fibonacci number.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(n: int) {
       n > 0
   }
@@ -22,10 +20,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method fib(n: int) returns (result: int)
       requires ValidInput(n)
       ensures result == fib_spec(n)

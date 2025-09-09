@@ -2,11 +2,9 @@ vc-description: |-
   This verification task involves implementing a method to determine if any two numbers in a given list have an absolute difference less than a specified threshold. The implementation uses nested loops to compare all pairs of elements and returns true as soon as a close pair is found, or false if no such pair exists.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of numbers and a threshold value, determine if any two numbers 
   // in the list have an absolute difference less than the threshold.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(numbers: seq<real>, threshold: real)
   {
       true
@@ -23,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
   method has_close_elements(numbers: seq<real>, threshold: real) returns (result: bool)

@@ -4,10 +4,8 @@ vc-description: |-
   The implementation must ensure that the returned result is indeed a prime number, divides n, and is the largest such prime factor among all factors of n.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a composite integer n (where n > 1 and n is not prime), find and return its largest prime factor.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate is_prime(n: int)
   {
       n > 1 && forall k :: 2 <= k < n ==> n % k != 0
@@ -22,10 +20,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method largest_prime_factor(n: int) returns (result: int)
       requires n > 1
       requires !is_prime(n)

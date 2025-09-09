@@ -4,14 +4,12 @@ vc-description: |-
   The implementation must correctly parse the fraction strings, extract numerators and denominators, perform the multiplication, and check divisibility while maintaining all verification conditions.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given two fractions represented as strings in the format "numerator/denominator",
   // determine if their product is a whole number. Input consists of two strings x and n,
   // each representing a valid fraction where both numerator and denominator are positive
   // integers and denominators are never zero. Return true if x * n equals a whole number,
   // false otherwise.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidFraction(s: string)
   {
       |s| > 0 && 
@@ -69,7 +67,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   function FindSlashHelper(s: string, pos: int): int
       requires 0 <= pos <= |s|
       requires exists i :: pos <= i < |s| && s[i] == '/'
@@ -88,7 +85,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method simplify(x: string, n: string) returns (result: bool)
       requires |x| > 0 && |n| > 0
       requires exists i :: 0 <= i < |x| && x[i] == '/'

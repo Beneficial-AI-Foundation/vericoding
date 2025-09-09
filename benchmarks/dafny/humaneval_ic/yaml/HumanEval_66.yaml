@@ -2,11 +2,9 @@ vc-description: |-
   This task involves calculating the sum of ASCII values of all uppercase letters in a string. The function should return 0 for empty strings and only consider characters from 'A' to 'Z' as uppercase. The implementation needs to be verified with an iterative method that maintains proper loop invariants.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string, calculate the sum of ASCII values of all uppercase letters in the string.
   // Empty string returns 0. Only characters from 'A' to 'Z' are considered uppercase.
   
-  // ======= SPEC REQUIREMENTS =======
   function sumOfUppercaseASCII(s: string): int
       ensures sumOfUppercaseASCII(s) >= 0
   {
@@ -19,7 +17,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma sumOfUppercaseASCII_lemma(s: string, c: char)
       ensures sumOfUppercaseASCII(s + [c]) == 
               if 'A' <= c && c <= 'Z' then sumOfUppercaseASCII(s) + (c as int)
@@ -37,7 +34,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method digitSum(s: string) returns (result: int)
       ensures result >= 0
       ensures result == sumOfUppercaseASCII(s)

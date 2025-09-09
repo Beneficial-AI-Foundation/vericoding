@@ -4,11 +4,9 @@ vc-description: |-
   The expected implementation should use the provided helper functions to split sentences, trim whitespace, and count sentences starting with "I", ensuring the result matches the functional specification.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string, count the number of sentences that start with the word "I". 
   // Sentences are separated by '.', '?' or '!'.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(s: string) { true }
   
   function starts_with_I(s: string): bool
@@ -47,7 +45,6 @@ vc-preamble: |-
       count_bored_sentences(sentences)
   }
   
-  // ======= HELPERS =======
   function get_first_word_helper(s: string, i: int): string
       requires 0 <= i <= |s|
       requires |s| > 0
@@ -133,7 +130,6 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method CountSentencesStartingWithI(S: string) returns (count: int)
       requires ValidInput(S)
       ensures count >= 0

@@ -2,20 +2,16 @@ vc-description: |-
   Given a list of integers, determine if there exist two distinct elements at different positions that sum to zero. This task requires implementing an efficient algorithm to check for the existence of such a pair.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of integers, determine if there exist two distinct elements at different positions that sum to zero.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate HasPairSumToZero(l: seq<int>)
   {
       exists i, j :: 0 <= i < j < |l| && l[i] + l[j] == 0
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method pairs_sum_to_zero(l: seq<int>) returns (result: bool)
       ensures result == HasPairSumToZero(l)
 

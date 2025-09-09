@@ -2,13 +2,11 @@ vc-description: |-
   This verification task checks if a list of non-negative integers satisfies two conditions: (1) the list is sorted in non-decreasing (ascending) order, and (2) no number appears more than twice in the list. The implementation uses helper functions to check these conditions efficiently and returns true if both are met, false otherwise.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of non-negative integers, return True if both conditions are met:
   // 1. The list is sorted in non-decreasing (ascending) order
   // 2. No number appears more than twice in the list
   // Otherwise, return False.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(lst: seq<int>)
   {
       forall i :: 0 <= i < |lst| ==> lst[i] >= 0
@@ -30,7 +28,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   function count_occurrences(lst: seq<int>, value: int): int
       ensures count_occurrences(lst, value) >= 0
       ensures count_occurrences(lst, value) <= |lst|
@@ -72,7 +69,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method CheckValidList(lst: seq<int>) returns (result: bool)
       requires ValidInput(lst)
       ensures result == ValidList(lst)

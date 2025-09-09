@@ -2,11 +2,9 @@ vc-description: |-
   This verification task implements a string to MD5 hash conversion function. The method takes a string input and returns an Option type containing either None (for empty input) or Some with a valid 32-character lowercase hexadecimal MD5 hash string.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Convert a string to its MD5 hash representation as a lowercase hexadecimal string.
   // Return None if the input string is empty, otherwise return Some(hash_string).
   
-  // ======= SPEC REQUIREMENTS =======
   datatype Option<T> = None | Some(value: T)
   
   predicate isValidMD5Hash(s: string)
@@ -15,10 +13,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method string_to_md5(text: string) returns (result: Option<string>)
       ensures text == "" ==> result == None
       ensures text != "" ==> result.Some? && isValidMD5Hash(result.value)

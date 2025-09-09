@@ -2,12 +2,10 @@ vc-description: |-
   This verification task involves implementing a method to determine if three positive numbers representing triangle side lengths form a right-angled triangle. The implementation must check both that the sides form a valid triangle (positive lengths satisfying triangle inequality) and that they satisfy the Pythagorean theorem.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given three positive numbers representing triangle side lengths, determine if they form a right-angled triangle.
   // A right-angled triangle satisfies the Pythagorean theorem: the sum of squares of the two shorter sides equals
   // the square of the longest side. All sides must be positive and satisfy the triangle inequality.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidTriangle(a: real, b: real, c: real)
   {
       a > 0.0 && b > 0.0 && c > 0.0 &&
@@ -27,10 +25,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method right_angle_triangle(a: real, b: real, c: real) returns (result: bool)
       ensures result <==> ValidRightTriangle(a, b, c)
 

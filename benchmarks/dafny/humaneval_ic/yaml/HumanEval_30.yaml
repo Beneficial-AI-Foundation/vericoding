@@ -2,11 +2,9 @@ vc-description: |-
   This task implements a function to filter positive numbers from a list of integers. The function should return a new sequence containing only the positive numbers (greater than 0) while preserving their original order from the input sequence.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of integers, return a new list containing only the positive numbers 
   // (numbers greater than 0) in their original order.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate IsPositive(x: int)
   {
       x > 0
@@ -40,10 +38,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method get_positive(l: seq<int>) returns (result: seq<int>)
       ensures AllPositive(result)
       ensures AllElementsFromOriginal(result, l)

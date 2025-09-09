@@ -2,14 +2,12 @@ vc-description: |-
   Implement a message encoding algorithm that applies two transformations to each character: first replace vowels with letters appearing 2 positions later in the alphabet, then swap the case of all letters. Spaces are preserved unchanged, and the input contains only letters and spaces.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Encode a message by applying two transformations to each character:
   // 1. Replace vowels (a, e, i, o, u) with the letter that appears 2 positions later in the alphabet
   // 2. Swap the case of all letters (uppercase ↔ lowercase)
   // Apply both transformations: first replace vowels, then swap case of the result.
   // Spaces are preserved unchanged. Assume input contains only letters and spaces.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate isVowel(c: char)
   {
       c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
@@ -43,10 +41,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method encode(message: string) returns (result: string)
       requires forall i :: 0 <= i < |message| ==> (('a' <= message[i] <= 'z') || ('A' <= message[i] <= 'Z') || message[i] == ' ')
       ensures |result| == |message|

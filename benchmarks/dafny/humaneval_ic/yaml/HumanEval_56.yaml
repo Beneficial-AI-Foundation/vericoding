@@ -2,11 +2,9 @@ vc-description: |-
   This verification task implements a bracket matching algorithm that determines if a string containing only "<" and ">" characters has properly nested brackets. Every opening bracket "<" must have a corresponding closing bracket ">" and they must be correctly nested, meaning at no point should the number of closing brackets exceed the number of opening brackets in any prefix.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a string containing only "<" and ">" characters, determine if every opening bracket "<" 
   // has a corresponding closing bracket ">" and they are properly nested.
   
-  // ======= SPEC REQUIREMENTS =======
   function count_brackets_prefix(s: string, end: int, bracket: char): int
       requires 0 <= end <= |s|
       requires bracket == '<' || bracket == '>'
@@ -32,10 +30,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method correct_bracketing(brackets: string) returns (result: bool)
       requires ValidBracketString(brackets)
       ensures result <==> ProperlyNested(brackets)

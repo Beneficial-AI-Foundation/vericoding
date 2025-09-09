@@ -2,12 +2,10 @@ vc-description: |-
   Find and return the maximum element in a given list of numbers. The list must be non-empty, and the maximum element is the largest value present in the list, which must be an actual element of the list.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Find and return the maximum element in a given list of numbers.
   // The list must be non-empty. The maximum element is the largest value
   // present in the list, and it must be an actual element of the list.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(l: seq<int>)
   {
       |l| > 0

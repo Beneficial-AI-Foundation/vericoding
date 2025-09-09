@@ -2,21 +2,17 @@ vc-description: |-
   This task implements a bitwise XOR operation on two binary strings of equal length. Given two strings containing only '0' and '1' characters, the method should return a new string where each position contains '0' if the corresponding characters in the input strings are the same, and '1' if they are different.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given two binary strings of equal length containing only '0' and '1' characters,
   // perform bitwise XOR operation on corresponding characters and return the result as a string.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate is_binary_string(s: string)
   {
       forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method string_xor(a: string, b: string) returns (result: string)
       requires |a| == |b|
       requires is_binary_string(a)

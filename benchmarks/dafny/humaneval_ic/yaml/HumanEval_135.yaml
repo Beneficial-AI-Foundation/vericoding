@@ -2,11 +2,9 @@ vc-description: |-
   The task is to find the largest index in an array of distinct integers where an element is smaller than the element immediately before it. If no such index exists (i.e., the array is non-decreasing), return -1. The implementation should scan from right to left to efficiently find the largest such index.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given an array of distinct integers, find the largest index where an element 
   // is smaller than the element immediately before it. Return -1 if no such index exists.
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(arr: seq<int>) {
       forall i, j :: 0 <= i < j < |arr| ==> arr[i] != arr[j]
   }
@@ -25,10 +23,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method can_arrange(arr: seq<int>) returns (result: int)
       requires ValidInput(arr)
       ensures result == -1 || (0 < result < |arr|)

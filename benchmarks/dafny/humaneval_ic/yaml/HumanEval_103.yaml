@@ -3,13 +3,11 @@ vc-description: |-
   Round the result to the nearest integer using banker's rounding (round half to even) and return the binary representation as a string prefixed with "0b". If n > m, return "-1".
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given two positive integers n and m, compute the average of all integers in the range [n, m] (inclusive).
   // Round the result to the nearest integer using banker's rounding (round half to even).
   // Return the binary representation as a string prefixed with "0b".
   // If n > m, return "-1".
   
-  // ======= SPEC REQUIREMENTS =======
   function IntToBinary(n: nat): string
   {
       if n == 0 then "0"
@@ -24,10 +22,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method rounded_avg(n: int, m: int) returns (result: string)
       requires n > 0 && m > 0
       ensures n > m ==> result == "-1"

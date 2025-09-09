@@ -2,11 +2,9 @@ vc-description: |-
   This task implements a string filtering function that takes a list of strings and a substring, returning a new list containing only the strings that contain the given substring. The filtering should preserve the original order of matching strings and be case-sensitive.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of strings and a substring, return a new list containing only the strings that contain the given substring.
   // The filtering should preserve the original order of matching strings and be case-sensitive.
   
-  // ======= SPEC REQUIREMENTS =======
   function contains_substring(s: string, sub: string): bool
   {
       if |sub| == 0 then true
@@ -30,10 +28,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method filter_by_substring(strings: seq<string>, substring: string) returns (result: seq<string>)
       ensures |result| <= |strings|
       ensures forall i :: 0 <= i < |result| ==> result[i] in strings

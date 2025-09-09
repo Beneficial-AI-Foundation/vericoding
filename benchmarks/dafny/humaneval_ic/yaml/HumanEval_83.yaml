@@ -2,10 +2,8 @@ vc-description: |-
   Count n-digit positive integers that start with 1 OR end with 1 using inclusion-exclusion principle. The task requires implementing a function that uses the inclusion-exclusion principle to count numbers that either start with 1, end with 1, or both, avoiding double-counting those that satisfy both conditions.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Count n-digit positive integers that start with 1 OR end with 1 using inclusion-exclusion principle
   
-  // ======= SPEC REQUIREMENTS =======
   predicate ValidInput(n: int) {
     n >= 1
   }
@@ -47,10 +45,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   function starts_one_ends(n: int): int
     requires ValidInput(n)
     ensures starts_one_ends(n) == CountStartsWith1(n) + CountEndsWith1(n) - CountStartsAndEndsWith1(n)

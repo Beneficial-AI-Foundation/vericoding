@@ -4,11 +4,9 @@ vc-description: |-
   The implementation needs to handle a mixed datatype that can represent both integers and reals, properly identify positive odd integers (including reals that represent integers), and maintain correctness through loop invariants.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of numbers, return the sum of squares of all positive odd integers in the list. 
   // Ignore negative numbers and non-integers. Return 0 for an empty list.
   
-  // ======= SPEC REQUIREMENTS =======
   datatype Number = Int(i: int) | Real(r: real)
   
   function IsInteger(r: real): bool
@@ -44,10 +42,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method double_the_difference(lst: seq<Number>) returns (result: int)
       ensures result >= 0
       ensures result == SumOfSquares(lst, |lst|)

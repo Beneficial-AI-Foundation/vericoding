@@ -2,12 +2,10 @@ vc-description: |-
   This verification task implements a rolling maximum function that takes a list of integers and returns a list where each element represents the maximum value encountered from the beginning of the list up to and including the current position.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given a list of integers, return a list where each element represents 
   // the maximum value encountered from the beginning of the list up to and 
   // including the current position.
   
-  // ======= SPEC REQUIREMENTS =======
   function max_up_to(numbers: seq<int>, index: int): int
       requires 0 <= index < |numbers|
   {
@@ -18,10 +16,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method rolling_max(numbers: seq<int>) returns (result: seq<int>)
       ensures |result| == |numbers|
       ensures |numbers| == 0 ==> |result| == 0

@@ -2,11 +2,9 @@ vc-description: |-
   This task implements a function that compares two lists of strings by their total character count. Given two lists of strings, the function should return the list that has the smaller total character count across all its strings. If both lists have the same total character count, return the first list.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given two lists of strings, return the list that has the smaller total character count 
   // across all its strings. If both lists have the same total character count, return the first list.
   
-  // ======= SPEC REQUIREMENTS =======
   function total_chars(lst: seq<string>): nat
   {
       if |lst| == 0 then 0
@@ -14,7 +12,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma total_chars_prefix(lst: seq<string>, i: nat)
       requires 0 <= i < |lst|
       ensures total_chars(lst[..i+1]) == total_chars(lst[..i]) + |lst[i]|
@@ -35,7 +32,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method total_match(lst1: seq<string>, lst2: seq<string>) returns (result: seq<string>)
       ensures result == lst1 || result == lst2
       ensures total_chars(lst1) <= total_chars(lst2) ==> result == lst1

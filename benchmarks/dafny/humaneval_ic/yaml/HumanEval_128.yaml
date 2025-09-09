@@ -2,12 +2,10 @@ vc-description: |-
   This task implements a function that calculates the sum of absolute values of all elements in an array, multiplied by the product of signs of all elements. The sign function returns 1 for positive numbers, -1 for negative numbers, and 0 for zero. If the array is empty, the function returns None; otherwise, it returns Some with the computed result.
 
 vc-preamble: |-
-  // ======= TASK =======
   // Given an array of integers, calculate the sum of absolute values of all elements
   // multiplied by the product of signs of all elements (where sign is 1 for positive,
   // -1 for negative, 0 for zero). Return None if the array is empty.
   
-  // ======= SPEC REQUIREMENTS =======
   datatype Option<T> = None | Some(value: T)
   
   function abs(x: int): int
@@ -31,7 +29,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // ======= HELPERS =======
   lemma sum_of_magnitudes_append(arr: seq<int>, i: int)
       requires 0 <= i < |arr|
       ensures sum_of_magnitudes(arr[0..i+1]) == sum_of_magnitudes(arr[0..i]) + abs(arr[i])
@@ -67,7 +64,6 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  // ======= MAIN METHOD =======
   method prod_signs(arr: seq<int>) returns (result: Option<int>)
       ensures |arr| == 0 ==> result == None
       ensures |arr| > 0 ==> result == Some(sum_of_magnitudes(arr) * product_of_signs(arr))
