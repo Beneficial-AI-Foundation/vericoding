@@ -113,6 +113,13 @@ def process_spec_file(
 
         generated_response = call_llm_api(config, generate_prompt)
         
+        # Log exact LLM output to W&B before JSON decoding
+        if wandb.run:
+            file_key = Path(file_path).stem
+            wandb.log({
+                f"llm_output/{file_key}/generate_response": generated_response
+            })
+        
         # Apply JSON replacements to original code (new approach)
         generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
         
@@ -275,6 +282,13 @@ def process_spec_file(
                 
                 try:
                     fix_response = call_llm_api(config, fix_prompt)
+                    
+                    # Log exact LLM fix response to W&B before JSON decoding
+                    if wandb.run:
+                        file_key = Path(file_path).stem
+                        wandb.log({
+                            f"llm_output/{file_key}/fix_response_iter{iteration}": fix_response
+                        })
                     
                     # Apply JSON replacements for fix to the ORIGINAL file (which has placeholders)
                     # This ensures we're replacing sorry/vc-code tags, not broken implementations

@@ -5,7 +5,7 @@ generate_code: |
   
   OUTPUT: Return a JSON array with one replacement for each `<vc-code>` section in the file, in order from top to bottom:
   ```json
-  ["{\n    let mut low = 0;\n    // implementation here\n}", "{\n    // second implementation\n}"]
+  ["{{\n    let mut low = 0;\n    // implementation here\n}}", "{{\n    // second implementation\n}}"]
   ```
   
   CRITICAL RULES:
@@ -30,7 +30,7 @@ fix_verification: |
   
   OUTPUT: Return a JSON array with one fixed replacement for each `<vc-code>` section in the file, in order from top to bottom:
   ```json
-  ["{\n    let mut low = 0;\n    // fixed implementation here\n}", "{\n    // second fixed implementation\n}"]
+  ["{{\n    let mut low = 0;\n    // fixed implementation here\n}}", "{{\n    // second fixed implementation\n}}"]
   ```
   
   CRITICAL RULES:
