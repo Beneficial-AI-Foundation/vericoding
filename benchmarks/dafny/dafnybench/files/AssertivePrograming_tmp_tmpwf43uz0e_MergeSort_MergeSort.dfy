@@ -7,6 +7,7 @@ ghost predicate Inv(a: seq<int>, a1: seq<int>, a2: seq<int>, i: nat, mid: nat){
     (a1[..i] == a[..i]) && (a2[..i] == a[mid..(i+mid)])
 }
 
+method Merge(b: array<int>, c: array<int>, d: array<int>)
     requires b != c && b != d && b.Length == c.Length + d.Length
     requires Sorted(c[..]) && Sorted(d[..])
     ensures Sorted(b[..]) && multiset(b[..]) == multiset(c[..])+multiset(d[..])
