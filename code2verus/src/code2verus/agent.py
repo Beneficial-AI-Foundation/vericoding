@@ -4,7 +4,13 @@ from pydantic_ai import Agent
 import logfire
 import yaml
 
-from code2verus.config import system_prompt, cfg, full_cfg
+from code2verus.config import (
+    system_prompt,
+    cfg,
+    full_cfg,
+    get_config_value,
+    get_error_template,
+)
 from code2verus.tools import verus_tool, dafny_tool
 from code2verus.utils import extract_rust_code, concatenate_yaml_fields
 
@@ -34,16 +40,9 @@ async def translate_code_to_verus(
     max_iterations: int | None = None,
 ) -> tuple[str, int, str]:
     """Translate source code to Verus using the agent with verification feedback"""
-    # Use config value if max_iterations not provided, with fallback to 3
+    # Use config value if max_iterations not provided
     if max_iterations is None:
-        max_iterations = cfg.get("max_translation_iterations", 3)
-
-    # Ensure max_iterations is a valid integer
-    if max_iterations is None or max_iterations <= 0:
-        max_iterations = 3
-
-    # Type assertion to help type checker
-    assert isinstance(max_iterations, int)
+        max_iterations = get_config_value("max_translation_iterations")
 
     agent = create_agent(source_language)
 
@@ -51,6 +50,7 @@ async def translate_code_to_verus(
     result = None
     output_content = ""
     rust_for_verification = ""
+    iteration = 0
 
     # Get language-specific prompts from config
     if is_yaml:
@@ -105,23 +105,14 @@ Please translate the following {source_language} code to Verus:
                 logfire.warning(f"Generated YAML is malformed: {e}")
                 if iteration < max_iterations - 1:
                     # If we have more iterations, prepare feedback to fix the YAML
-                    yaml_error_feedback = f"""
-The generated YAML has syntax errors: {e}
-
-Please fix the YAML syntax issues and generate valid YAML. Common issues:
-- Make sure field names end with colons (:)
-- Check indentation (use spaces, not tabs)
-- Ensure all string values containing special characters are properly quoted
-- Use the |- syntax for multi-line strings
-
-Here's the original {source_language} code again:
-
-```{source_language.lower()}
-{source_code}
-```
-
-{additional_prompt}
-"""
+                    yaml_error_feedback = get_error_template(
+                        "yaml_syntax_error",
+                        error=str(e),
+                        source_language=source_language,
+                        source_language_lower=source_language.lower(),
+                        source_code=source_code,
+                        additional_prompt=additional_prompt,
+                    )
                     user_prompt = yaml_error_feedback
                     continue  # Skip verification and go to next iteration to fix YAML
 
@@ -156,30 +147,18 @@ Here's the original {source_language} code again:
                     f"Verification failed on iteration {iteration + 1}, trying to improve..."
                 )
                 # Prepare feedback for next iteration with specific error details
-                feedback_prompt = f"""
-The previous translation failed verification. Here are the specific errors:
-
-Verification Error: {verification_error}
-
-Verification Output: {verification_output}
-
-Please fix the Verus code to address these verification errors. Pay special attention to:
-- Syntax errors (missing semicolons, incorrect brackets, etc.)
-- Type mismatches
-- Incorrect function signatures
-- Missing imports or module declarations
-
-Here's the original {source_language} code again:
-
-```{source_language.lower()}
-{source_code}
-```
-
-{additional_prompt}
-"""
+                feedback_prompt = get_error_template(
+                    "verification_error",
+                    verification_error=verification_error,
+                    verification_output=verification_output,
+                    source_language=source_language,
+                    source_language_lower=source_language.lower(),
+                    source_code=source_code,
+                    additional_prompt=additional_prompt,
+                )
                 user_prompt = feedback_prompt
 
-    # Calculate total iterations based on all messages exchanged
-    num_iterations = len(result.all_messages()) // 3
+    # Return the actual number of iterations performed
+    num_iterations = iteration + 1
 
     return output_content, num_iterations, rust_for_verification

@@ -60,7 +60,9 @@ def yaml_to_verus(verus_yaml: str) -> str:
 
     except yaml.YAMLError as e:
         logfire.error(f"YAML parsing failed: {e}")
-        logfire.info(f"Failed YAML content (first 500 chars): {verus_yaml[:500]}...")
+        logfire.info(
+            f"Failed YAML content (first 500 chars): {verus_yaml[: min(500, len(verus_yaml))]}..."
+        )
 
         # Try to provide more specific error information for common issues
         error_msg = str(e)
@@ -95,7 +97,9 @@ async def verify_verus_code(
         logfire.info(f"Converted YAML to Verus code ({len(src)} characters)")
     else:
         logfire.info(f"Using raw Verus code ({len(src)} characters)")
-    logfire.info(f"Verifying Verus code:\n{src[:500]}...\n")  # Log first 500 characters
+    logfire.info(
+        f"Verifying Verus code:\n{src[: min(500, len(src))]}...\n"
+    )  # Log first 500 characters
 
     # Create a temporary file for verification (don't save permanent files during verification)
     verification_file = None
@@ -108,7 +112,6 @@ async def verify_verus_code(
         # Run verus verification in a separate process
         process = await asyncio.create_subprocess_exec(
             cfg["verus_path"],
-            "--no-verify",
             verification_file,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,

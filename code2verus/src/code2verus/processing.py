@@ -7,7 +7,7 @@ from pydantic_ai import ModelHTTPError
 import logfire
 import yaml
 
-from code2verus.config import ARTIFACTS, cfg
+from code2verus.config import ARTIFACTS, get_config_value
 from code2verus.agent import translate_code_to_verus
 from code2verus.verification import verify_verus_code
 from code2verus.success_tracker import save_success_info, is_sample_already_successful
@@ -65,13 +65,9 @@ async def process_item(
 ) -> dict:
     """Process a single item from the dataset with exponential backoff"""
 
-    # Use config value if max_retries not provided, with fallback to 32
+    # Use config value if max_retries not provided
     if max_retries is None:
-        max_retries = cfg.get("max_retries", 32)
-
-    # Ensure max_retries is a valid integer
-    if max_retries is None or max_retries <= 0:
-        max_retries = 32
+        max_retries = get_config_value("max_retries")
 
     # Type assertion to help type checker
     assert isinstance(max_retries, int)
@@ -295,7 +291,9 @@ async def main_async(
     # Check for existing successful samples in parallel
     print("Checking for existing successful samples...")
     existing_success_checks = [
-        check_existing_success(idx, item, benchmark_name, is_flat, benchmark)
+        check_existing_success(
+            idx, item, benchmark_name, is_flat=is_flat, benchmark_path=benchmark
+        )
         for idx, item in enumerate(dataset)
     ]
     existing_success_results = await asyncio.gather(*existing_success_checks)
