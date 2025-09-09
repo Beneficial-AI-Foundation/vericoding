@@ -77,45 +77,11 @@ def main():
     end_time = time.time()
     processing_time = end_time - start_time
 
-    # Finalize wandb run with summary and artifacts
-    finalize_wandb_run(wandb_run, config, results, processing_time, args.delete_after_upload, resolved_model)
-
-    # Print summary with reports
+    # Print summary with reports first (so files are generated)
     print_summary(config, results, processing_time)
     
-    # Upload summary files to W&B after they're generated
-    if wandb_run:
-        try:
-            import wandb
-            from pathlib import Path
-            
-            # Upload summary.txt and results.csv as additional files
-            summary_file = Path(config.summary_file)
-            csv_file = Path(config.output_dir) / "results.csv"
-            
-            if summary_file.exists():
-                wandb.save(str(summary_file))
-                print(f"✅ Summary file uploaded to W&B: {summary_file.name}")
-            
-            if csv_file.exists():
-                wandb.save(str(csv_file))
-                print(f"✅ Results CSV uploaded to W&B: {csv_file.name}")
-                
-        except Exception as e:
-            print(f"⚠️ Error uploading summary files to W&B: {e}")
-    
-    # Delete local files after summary generation and W&B upload if requested
-    if args.delete_after_upload and wandb_run:
-        from pathlib import Path
-        import shutil
-        
-        try:
-            output_path = Path(config.output_dir)
-            if output_path.exists():
-                shutil.rmtree(output_path)
-                print(f"🗑️ Local files deleted from {output_path}")
-        except Exception as e:
-            print(f"⚠️ Error deleting local files: {e}")
+    # Finalize wandb run with summary and artifacts (now includes uploading summary files)
+    finalize_wandb_run(wandb_run, config, results, processing_time, args.delete_after_upload, resolved_model)
     
 
 if __name__ == "__main__":

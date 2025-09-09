@@ -541,22 +541,38 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
         wandb.log_artifact(summary_artifact) 
         print(f"✅ Analysis files uploaded to wandb artifact: analysis_{config.language}_{timestamp}")
         
-        # Store key files directly in wandb.summary for easy access
+        # Store key files directly in wandb.summary for easy access AND upload the files
         if output_path.exists():
             summary_file = output_path / "summary.txt"
             if summary_file.exists():
                 try:
+                    # Read content into summary
                     with open(summary_file, 'r') as f:
                         wandb.run.summary["experiment_summary"] = f.read()
+                    # Upload the file with proper base path
+                    wandb.save(str(summary_file), base_path=str(output_path))
+                    print(f"✅ Summary file uploaded to W&B: {summary_file.name}")
                 except Exception as e:
-                    print(f"Warning: Could not read summary file: {e}")
+                    print(f"Warning: Could not upload summary file: {e}")
             
             csv_file = output_path / "results.csv"
             if csv_file.exists():
-                wandb.run.summary["results_csv_path"] = str(csv_file)
+                try:
+                    wandb.run.summary["results_csv_path"] = str(csv_file)
+                    # Upload the file with proper base path
+                    wandb.save(str(csv_file), base_path=str(output_path))
+                    print(f"✅ Results CSV uploaded to W&B: {csv_file.name}")
+                except Exception as e:
+                    print(f"Warning: Could not upload CSV file: {e}")
         
-        # Note: File deletion is handled after summary generation to avoid path issues
-        
+        # Delete local files if requested (before finishing wandb)
+        if delete_after_upload:
+            try:
+                if output_path.exists():
+                    shutil.rmtree(output_path)
+                    print(f"🗑️ Local files deleted from {output_path}")
+            except Exception as e:
+                print(f"⚠️ Error deleting local files: {e}")
 
         # Finish wandb run
         wandb.finish()
