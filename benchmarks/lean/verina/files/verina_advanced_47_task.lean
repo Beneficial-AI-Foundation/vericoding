@@ -24,9 +24,7 @@ def mergeIntervals_precond (intervals : List (Prod Int Int)) : Prop :=
 -- </vc-helpers>
 
 def mergeIntervals (intervals : List (Prod Int Int)) (h_precond : mergeIntervals_precond (intervals)) : List (Prod Int Int) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def mergeIntervals_postcond (intervals : List (Prod Int Int)) (result: List (Prod Int Int)) (h_precond : mergeIntervals_precond (intervals)) : Prop :=
@@ -44,9 +42,7 @@ def mergeIntervals_postcond (intervals : List (Prod Int Int)) (result: List (Pro
 
 theorem mergeIntervals_spec_satisfied (intervals: List (Prod Int Int)) (h_precond : mergeIntervals_precond (intervals)) :
     mergeIntervals_postcond (intervals) (mergeIntervals (intervals) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

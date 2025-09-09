@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def imag {n : Nat} (val : Vector (Float × Float) n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem imag_spec {n : Nat} (val : Vector (Float × Float) n) :
     ⦃⌜True⌝⦄
@@ -44,6 +42,4 @@ theorem imag_spec {n : Nat} (val : Vector (Float × Float) n) :
                    let scaled_complex := (α * (val.get i).1, α * (val.get i).2)
                    result.get i = (val.get i).2 → 
                    α * result.get i = α * (val.get i).2)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,68 @@
+Given a lucky number n (containing only digits 4 and 7), find its 1-based index
+when all lucky numbers are sorted in increasing order. Lucky numbers are positive
+integers containing only the digits 4 and 7.
+
+predicate ValidLuckyNumber(n: string)
+{
+    |n| > 0 && forall i :: 0 <= i < |n| ==> n[i] == '4' || n[i] == '7'
+}
+
+function convertToBinary(n: string): string
+    requires forall i :: 0 <= i < |n| ==> n[i] == '4' || n[i] == '7'
+    ensures |convertToBinary(n)| == |n|
+    ensures forall i :: 0 <= i < |n| ==> (n[i] == '4' ==> convertToBinary(n)[i] == '0') && (n[i] == '7' ==> convertToBinary(n)[i] == '1')
+{
+    if |n| == 0 then ""
+    else if n[0] == '4' then "0" + convertToBinary(n[1..])
+    else "1" + convertToBinary(n[1..])
+}
+
+function pow2(n: int): int
+    requires n >= 0
+    ensures pow2(n) > 0
+{
+    if n == 0 then 1
+    else 2 * pow2(n - 1)
+}
+
+function binaryToInt(s: string): int
+    requires forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
+    ensures binaryToInt(s) >= 0
+{
+    if |s| == 0 then 0
+    else if s[0] == '1' then pow2(|s|-1) + binaryToInt(s[1..])
+    else binaryToInt(s[1..])
+}
+
+predicate ValidResult(n: string, result: int)
+    requires ValidLuckyNumber(n)
+{
+    result > 0 && result == 2 * (pow2(|n|-1) - 1) + binaryToInt(convertToBinary(n)) + 1
+}
+
+method solve(n: string) returns (result: int)
+    requires ValidLuckyNumber(n)
+    ensures ValidResult(n, result)
+{
+    var x := |n|;
+    var binary_n := "";
+    var i := 0;
+    while i < |n|
+        invariant 0 <= i <= |n|
+        invariant |binary_n| == i
+        invariant forall j :: 0 <= j < i ==> (n[j] == '4' ==> binary_n[j] == '0') && (n[j] == '7' ==> binary_n[j] == '1')
+        invariant binary_n == convertToBinary(n[..i])
+    {
+        if n[i] == '4' {
+            binary_n := binary_n + "0";
+        } else {
+            binary_n := binary_n + "1";
+        }
+        i := i + 1;
+    }
+
+    assert binary_n == convertToBinary(n);
+    var tmp := 2 * (pow2(x-1) - 1);
+    var binary_value := binaryToInt(binary_n);
+    result := tmp + binary_value + 1;
+}

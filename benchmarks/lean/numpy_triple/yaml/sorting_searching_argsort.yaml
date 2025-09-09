@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def argsort {n : Nat} (a : Vector Float n) : Id (Vector (Fin n) n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem argsort_spec {n : Nat} (a : Vector Float n) :
       ⦃⌜True⌝⦄
       argsort a
@@ -41,11 +37,7 @@ vc-condition: |-
                      (∀ i j : Fin n, i < j → a.get (indices.get i) ≤ a.get (indices.get j)) ∧
                      -- For equal elements, maintain relative order (stable sort)
                      (∀ i j : Fin n, i < j → a.get (indices.get i) = a.get (indices.get j) → indices.get i < indices.get j)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

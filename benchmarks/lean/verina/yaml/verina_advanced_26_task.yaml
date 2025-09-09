@@ -43,15 +43,11 @@ vc-helpers: |-
     | _ => []
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def letterCombinations (digits : String) (h_precond : letterCombinations_precond (digits)) : List String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def letterCombinations_postcond (digits : String) (result: List String) (h_precond : letterCombinations_precond (digits)) : Prop :=
     if digits.isEmpty then
@@ -64,11 +60,7 @@ vc-condition: |-
   
   theorem letterCombinations_spec_satisfied (digits: String) (h_precond : letterCombinations_precond (digits)) :
       letterCombinations_postcond (digits) (letterCombinations (digits) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

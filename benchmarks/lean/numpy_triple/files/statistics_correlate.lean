@@ -13,7 +13,7 @@
 
 /-  Specification: correlate computes cross-correlation with valid mode overlap.
     Each output element is the sum of products of overlapping elements from the input sequences.
-    
+
     Mathematical properties:
     1. The result has size (m + 1 - n) for valid mode
     2. Each output element k is computed as: sum_i a[k+i] * v[i] for i in [0, n-1]
@@ -28,9 +28,7 @@ open Std.Do
 -- </vc-helpers>
 
 def correlate {m n : Nat} (a : Vector Float m) (v : Vector Float n) (h : n ≤ m) (h_pos : 0 < n) : Id (Vector Float (m + 1 - n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem correlate_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n) (h : n ≤ m) (h_pos : 0 < n) :
     ⦃⌜n ≤ m ∧ 0 < n⌝⦄
@@ -48,6 +46,4 @@ theorem correlate_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n) (h 
                  -- Non-negativity when both sequences are non-negative
                  ((∀ i : Fin m, 0 ≤ a.get i) ∧ (∀ i : Fin n, 0 ≤ v.get i) →
                    ∀ k : Fin (m + 1 - n), 0 ≤ result.get k)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

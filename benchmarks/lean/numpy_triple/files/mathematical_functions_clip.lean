@@ -2,17 +2,17 @@
 
     Given an interval [min_val, max_val], values outside the interval are clipped to the interval edges.
     Values smaller than min_val become min_val, and values larger than max_val become max_val.
-    
+
     This operation is equivalent to but faster than np.minimum(max_val, np.maximum(arr, min_val)).
     The function performs element-wise clipping and preserves the shape of the input array.
-    
+
     From NumPy documentation:
     - Parameters: 
       - a (array_like) - Array containing elements to clip
       - a_min (scalar) - Minimum value threshold
       - a_max (scalar) - Maximum value threshold
     - Returns: clipped array with values limited to [a_min, a_max]
-    
+
     Special behavior:
     - If a_min > a_max, all values become a_max
     - No validation is performed to ensure a_min < a_max
@@ -30,7 +30,7 @@
     4. Idempotency: clip(clip(arr, min_val, max_val), min_val, max_val) = clip(arr, min_val, max_val)
     5. Monotonicity: If min_val ≤ max_val, then min_val ≤ result[i] ≤ max_val for all i
     6. Special case: If min_val > max_val, then result[i] = max_val for all i
-    
+
     Precondition: True (no special preconditions, handles all real number inputs)
     Postcondition: For all indices i, result[i] is the clipped value of arr[i]
 -/
@@ -43,9 +43,7 @@ open Std.Do
 -- </vc-helpers>
 
 def clip {n : Nat} (arr : Vector Float n) (min_val max_val : Float) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem clip_spec {n : Nat} (arr : Vector Float n) (min_val max_val : Float) :
     ⦃⌜True⌝⦄
@@ -57,6 +55,4 @@ theorem clip_spec {n : Nat} (arr : Vector Float n) (min_val max_val : Float) :
          else result.get i = arr.get i)
       else 
         result.get i = max_val)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

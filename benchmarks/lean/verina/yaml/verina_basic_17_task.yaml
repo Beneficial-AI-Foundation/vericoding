@@ -29,15 +29,11 @@ vc-helpers: |-
     Char.ofNat (c.toNat + 32)
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def toLowercase (s : String) (h_precond : toLowercase_precond (s)) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def toLowercase_postcond (s : String) (result: String) (h_precond : toLowercase_precond (s)) :=
     let cs := s.toList
@@ -49,11 +45,7 @@ vc-condition: |-
   
   theorem toLowercase_spec_satisfied (s: String) (h_precond : toLowercase_precond (s)) :
       toLowercase_postcond (s) (toLowercase (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

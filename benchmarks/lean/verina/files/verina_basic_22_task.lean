@@ -24,9 +24,7 @@ def inArray (a : Array Int) (x : Int) : Bool :=
 -- </vc-helpers>
 
 def dissimilarElements (a : Array Int) (b : Array Int) (h_precond : dissimilarElements_precond (a) (b)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def dissimilarElements_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : dissimilarElements_precond (a) (b)) :=
@@ -37,9 +35,7 @@ def dissimilarElements_postcond (a : Array Int) (b : Array Int) (result: Array I
 
 theorem dissimilarElements_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : dissimilarElements_precond (a) (b)) :
     dissimilarElements_postcond (a) (b) (dissimilarElements (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

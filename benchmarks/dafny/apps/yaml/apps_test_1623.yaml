@@ -1,0 +1,153 @@
+vc-description: |-
+  Given an array of n positive integers where the number of distinct elements 
+  is between l and r (inclusive) and each element is either 1 or even with its 
+  half also present in the array, find the minimum and maximum possible sums.
+
+vc-preamble: |-
+  predicate ValidInput(n: int, l: int, r: int)
+  {
+      n >= 1 && l >= 1 && r >= l && r <= n && r <= 20
+  }
+  
+  function MinSumCalculation(n: int, l: int): int
+      requires n >= 1 && l >= 1
+  {
+      var start_power := Power(2, l - 1);
+      SumWithDecreasingPowers(n, start_power)
+  }
+  
+  function MaxSumCalculation(n: int, r: int): int
+      requires n >= 1 && r >= 1
+  {
+      var max_power := Power(2, r - 1);
+      SumWithIncreasingPowers(n, max_power)
+  }
+
+vc-helpers: |-
+  function max(a: int, b: int): int
+  {
+      if a >= b then a else b
+  }
+  
+  function min(a: int, b: int): int
+  {
+      if a <= b then a else b
+  }
+  
+  function Power(base: int, exp: int): int
+      requires base >= 1 && exp >= 0
+      ensures Power(base, exp) >= 1
+  {
+      if exp == 0 then 1
+      else base * Power(base, exp - 1)
+  }
+  
+  function SumWithDecreasingPowers(n: int, start: int): int
+      requires n >= 0 && start >= 1
+      ensures n > 0 ==> SumWithDecreasingPowers(n, start) > 0
+  {
+      if n == 0 then 0
+      else 
+          var curr_power := max(1, start / Power(2, n - 1));
+          curr_power + SumWithDecreasingPowers(n - 1, start)
+  }
+  
+  function SumWithIncreasingPowers(n: int, max_power: int): int
+      requires n >= 0 && max_power >= 1
+      ensures n > 0 ==> SumWithIncreasingPowers(n, max_power) > 0
+  {
+      SumWithIncreasingPowersPartial(n, max_power)
+  }
+  
+  function SumWithDecreasingPowersPartial(k: int, start: int): int
+      requires k >= 0 && start >= 1
+  {
+      if k == 0 then 0
+      else 
+          var curr_power := max(1, start / Power(2, k - 1));
+          curr_power + SumWithDecreasingPowersPartial(k - 1, start)
+  }
+  
+  function SumWithIncreasingPowersPartial(k: int, max_power: int): int
+      requires k >= 0 && max_power >= 1
+      ensures k > 0 ==> SumWithIncreasingPowersPartial(k, max_power) > 0
+  {
+      if k == 0 then 0
+      else 
+          var power_for_this_step := min(Power(2, k - 1), max_power);
+          power_for_this_step + SumWithIncreasingPowersPartial(k - 1, max_power)
+  }
+
+vc-spec: |-
+  method solve(n: int, l: int, r: int) returns (min_sum: int, max_sum: int)
+      requires ValidInput(n, l, r)
+      ensures min_sum > 0
+      ensures max_sum > 0
+      ensures min_sum <= max_sum
+      ensures min_sum == MinSumCalculation(n, l)
+      ensures max_sum == MaxSumCalculation(n, r)
+
+vc-code: |-
+  {
+      // Calculate minimum sum
+      var mi := 0;
+      var curr := 1;
+      var i := 0;
+      while i < l - 1
+          invariant 0 <= i <= l - 1
+          invariant curr == Power(2, i)
+      {
+          curr := curr * 2;
+          i := i + 1;
+      }
+  
+      assert curr == Power(2, l - 1);
+      assert curr >= 1;
+  
+      i := 0;
+      while i < n
+          invariant 0 <= i <= n
+          invariant mi >= 0
+          invariant curr >= 1
+          invariant mi == SumWithDecreasingPowersPartial(i, Power(2, l - 1))
+          invariant curr == max(1, Power(2, l - 1) / Power(2, i))
+      {
+          mi := mi + curr;
+          if curr != 1 {
+              curr := curr / 2;
+          }
+          i := i + 1;
+      }
+  
+      // Calculate maximum sum
+      var ma := 0;
+      curr := 1;
+      i := 0;
+      var max_power := Power(2, r - 1);
+  
+      while i < n
+          invariant 0 <= i <= n
+          invariant ma >= 0
+          invariant curr >= 1
+          invariant curr <= max_power
+          invariant ma == SumWithIncreasingPowersPartial(i, max_power)
+          invariant curr == min(Power(2, i), max_power)
+      {
+          ma := ma + curr;
+          if curr < max_power {
+              curr := curr * 2;
+          }
+          i := i + 1;
+      }
+  
+      min_sum := mi;
+      max_sum := ma;
+  
+      assert min_sum == MinSumCalculation(n, l);
+      assert max_sum == MaxSumCalculation(n, r);
+      assert min_sum > 0;
+      assert max_sum > 0;
+      assert min_sum <= max_sum;
+  }
+
+vc-postamble: |-

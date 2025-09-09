@@ -23,9 +23,7 @@ open Std.Do
 -- </vc-helpers>
 
 def NPY_LOG2E : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem NPY_LOG2E_spec :
     ⦃⌜True⌝⦄
@@ -44,6 +42,4 @@ theorem NPY_LOG2E_spec :
       -- Mathematical property: NPY_LOG2E * ln(2) = 1 (within floating point precision)
       Float.abs (result * 0.693147180559945309417232121458176568 - 1.0) < 1e-14
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

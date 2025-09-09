@@ -1,0 +1,58 @@
+/-
+# How much is the fish! (- Scooter )
+The ocean is full of colorful fishes. We as programmers want to know the hexadecimal value of these fishes.
+
+## Task
+Take all hexadecimal valid characters (a,b,c,d,e,f) of the given name and XOR them. Return the result as an integer.
+
+## Input
+The input is always a string, which can contain spaces, upper and lower case letters but no digits. 
+
+## Example
+
+`fisHex("redlionfish") -> e,d,f -> XOR -> 12`
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def fisHex (s : String) : Nat :=
+  sorry
+
+theorem fisHex_empty :
+  fisHex "" = 0 :=
+sorry
+
+theorem fisHex_valid_chars_only {s : String} :
+  let validChars := s.data.filter (fun c => c ∈ ['a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F'])
+  fisHex s = fisHex (String.mk validChars) :=
+sorry
+
+theorem fisHex_concat {s₁ s₂ : String} :
+  fisHex (s₁ ++ s₂) = fisHex s₁ ^^^ fisHex s₂ :=
+sorry
+
+theorem fisHex_case_insensitive {s : String} :
+  fisHex s.toLower = fisHex s.toUpper :=
+sorry
+
+/-
+info: 12
+-/
+-- #guard_msgs in
+-- #eval fisHex "redlionfish"
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval fisHex "Aeneus corydoras"
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval fisHex "blowfish"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

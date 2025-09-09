@@ -26,9 +26,7 @@ def absDiff (a b : Float) : Float :=
 -- </vc-helpers>
 
 def has_close_elements (numbers : List Float) (threshold : Float) (h_precond : has_close_elements_precond (numbers) (threshold)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def has_close_elements_postcond (numbers : List Float) (threshold : Float) (result: Bool) (h_precond : has_close_elements_precond (numbers) (threshold)) :=
@@ -36,9 +34,7 @@ def has_close_elements_postcond (numbers : List Float) (threshold : Float) (resu
 
 theorem has_close_elements_spec_satisfied (numbers: List Float) (threshold: Float) (h_precond : has_close_elements_precond (numbers) (threshold)) :
     has_close_elements_postcond (numbers) (threshold) (has_close_elements (numbers) (threshold) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

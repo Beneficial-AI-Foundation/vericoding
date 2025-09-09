@@ -13,7 +13,7 @@
 
     Precondition: All elements must be positive (x[i] > 0)
     Postcondition: For all indices i, result[i] = Float.log10 x[i]
-    
+
     Mathematical properties:
     1. log10(10^a) = a for positive a
     2. log10(a * b) = log10(a) + log10(b) for positive a, b  
@@ -30,14 +30,10 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_log10 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_log10_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜∀ i : Fin n, x.get i > 0⌝⦄
     numpy_log10 x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = Float.log10 (x.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

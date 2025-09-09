@@ -1,13 +1,13 @@
 /-  numpy.copysign: Change the sign of x1 to that of x2, element-wise.
-    
+
     Returns an array where each element has the magnitude of x1 but the sign of x2.
     This function is useful for combining the absolute value of one array with 
     the sign pattern of another.
-    
+
     For each element:
     - If x2 >= 0, returns |x1|
     - If x2 < 0, returns -|x1|
-    
+
     Special cases:
     - copysign(x, 0) returns |x| (positive sign)
     - copysign(0, y) returns 0 with the sign of y
@@ -16,12 +16,12 @@
 /-  Specification: numpy.copysign returns a vector where each element has
     the magnitude of the corresponding element in x1 but the sign of the
     corresponding element in x2.
-    
+
     Precondition: True (no special preconditions for copysign)
     Postcondition: For all indices i:
       - If x2[i] >= 0, then result[i] = |x1[i]|
       - If x2[i] < 0, then result[i] = -|x1[i]|
-    
+
     Mathematical properties:
       1. result[i] = |x1[i]| * sign(x2[i]) where sign(x) = 1 if x >= 0, -1 if x < 0
       2. |result[i]| = |x1[i]| (magnitude preservation)
@@ -37,9 +37,7 @@ open Std.Do
 -- </vc-helpers>
 
 def copysign {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem copysign_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -52,6 +50,4 @@ theorem copysign_spec {n : Nat} (x1 x2 : Vector Float n) :
       Float.abs (result.get i) = Float.abs (x1.get i) ∧
       -- Sign copying property: result has same sign as x2
       ((x2.get i ≥ 0 → result.get i ≥ 0) ∧ (x2.get i < 0 → result.get i < 0))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

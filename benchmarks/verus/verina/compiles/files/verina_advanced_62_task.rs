@@ -1,0 +1,28 @@
+/* This task requires writing a Verus method that calculates how much rainwater would be trapped by a terrain represented as an array of heights. Imagine rainwater falls onto a terrain with varying elevation levels. The water can only be trapped between higher elevation points.
+
+Given an array of non-negative integers representing the elevation map where the width of each bar is 1 unit, calculate how much water can be trapped after it rains.
+
+Input:
+The input consists of one array:
+heights: An array of non-negative integers representing elevation levels.
+
+Output:
+The output is an integer:
+Returns the total amount of rainwater that can be trapped. */
+
+use vstd::prelude::*;
+
+verus! {
+fn rain(heights: &Vec<i32>) -> (result: i32)
+    requires forall|i: int| 0 <= i < heights.len() ==> heights[i] >= 0,
+    ensures 
+        result >= 0,
+        heights.len() < 3 ==> result == 0,
+{
+    // impl-start
+    assume(false);
+    0
+    // impl-end
+}
+}
+fn main() {}

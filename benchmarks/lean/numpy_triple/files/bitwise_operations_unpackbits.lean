@@ -9,17 +9,17 @@
 -/
 
 /-  numpy.unpackbits: Unpacks elements of a uint8 array into a binary-valued output array.
-    
+
     Each element of the input array represents a bit-field that is unpacked into
     a binary-valued output array. By default, each uint8 value is unpacked into
     8 binary values (0 or 1) using big-endian bit order.
-    
+
     This specification covers the basic 1D case with default parameters.
     For simplicity, we use Nat instead of UInt8, with the constraint that input values < 256.
 -/
 
 /-  Specification: numpy.unpackbits unpacks each uint8 element into 8 binary values.
-    
+
     Precondition: All input elements must be valid uint8 values (< 256)
     Postcondition: Each input element a[i] is unpacked into 8 bits in big-endian order,
                    where bit j of element i is stored at position i*8 + j in the result.
@@ -34,9 +34,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_unpackbits {n : Nat} (a : Vector Nat n) : Id (Vector Nat (n * 8)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_unpackbits_spec {n : Nat} (a : Vector Nat n) 
     (h_uint8 : ∀ i : Fin n, a.get i < 256) :
@@ -45,6 +43,4 @@ theorem numpy_unpackbits_spec {n : Nat} (a : Vector Nat n)
     ⦃⇓result => ⌜∀ i : Fin n, ∀ j : Fin 8,
                   result.get ⟨i.val * 8 + j.val, sorry⟩ = 
                   (a.get i / (2 ^ (7 - j.val))) % 2⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

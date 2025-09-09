@@ -21,9 +21,7 @@ open Std.Do
 -- </vc-helpers>
 
 def deg2rad {n : Nat} (degrees : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem deg2rad_spec {n : Nat} (degrees : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -41,6 +39,4 @@ theorem deg2rad_spec {n : Nat} (degrees : Vector Float n) :
                   -- Periodicity property: adding 360 degrees = adding 2π radians
                   ((degrees.get i + 360.0) * (3.14159265358979323846 / 180.0) = 
                    radians.get i + 2.0 * 3.14159265358979323846)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -42,15 +42,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def PCG64DXSM {n : Nat} (seed : UInt64) : Id (Vector UInt64 n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem PCG64DXSM_spec {n : Nat} (seed : UInt64) :
       ⦃⌜True⌝⦄
       PCG64DXSM seed
@@ -66,11 +62,7 @@ vc-condition: |-
           let other := (PCG64DXSM seed' : Id (Vector UInt64 n))
           n > 0 → ∃ (i : Fin n), result.get i ≠ other.get i)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

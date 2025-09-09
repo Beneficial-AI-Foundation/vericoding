@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def capitalize {n : Nat} (a : Vector String n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem capitalize_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -42,6 +40,4 @@ theorem capitalize_spec {n : Nat} (a : Vector String n) :
       (original = "" → result = "") ∧
       -- Mathematical property: the operation is deterministic
       (result = original.capitalize)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

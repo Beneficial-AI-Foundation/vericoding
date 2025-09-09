@@ -52,9 +52,7 @@ open Std.Do
 -- </vc-helpers>
 
 def upper {n : Nat} (a : Vector String n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem upper_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -85,6 +83,4 @@ theorem upper_spec {n : Nat} (a : Vector String n) :
         ∃ origChar : Char, 
           original.get? ⟨j⟩ = some origChar ∧ 
           (origChar.isLower → result.get? ⟨j⟩ = some origChar.toUpper))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

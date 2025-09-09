@@ -1,0 +1,74 @@
+Given a string S of length 3 containing only characters 'a', 'b', and 'c',
+determine if S is a permutation of "abc" (i.e., contains exactly one occurrence
+each of 'a', 'b', and 'c'). Return "Yes\n" if it is a permutation, "No\n" otherwise.
+
+predicate ValidInput(s: string)
+{
+    (|s| == 3 || (|s| == 4 && s[3] == '\n')) &&
+    forall i :: 0 <= i < (if |s| == 4 then 3 else |s|) ==> (s[i] == 'a' || s[i] == 'b' || s[i] == 'c')
+}
+
+function GetInputChars(s: string): string
+    requires ValidInput(s)
+{
+    if |s| == 4 then s[..3] else s
+}
+
+predicate IsPermutationOfABC(input_chars: string)
+    requires |input_chars| == 3
+    requires forall i :: 0 <= i < |input_chars| ==> (input_chars[i] == 'a' || input_chars[i] == 'b' || input_chars[i] == 'c')
+{
+    input_chars[0] != input_chars[1] && 
+    input_chars[1] != input_chars[2] && 
+    input_chars[0] != input_chars[2]
+}
+
+method solve(s: string) returns (result: string)
+    requires |s| >= 3
+    requires ValidInput(s)
+    ensures result == "Yes\n" || result == "No\n"
+    ensures result == "Yes\n" <==> IsPermutationOfABC(GetInputChars(s))
+{
+    var input_chars := GetInputChars(s);
+
+    // Count occurrences of each character
+    var a_count := 0;
+    var b_count := 0;
+    var c_count := 0;
+
+    var i := 0;
+    while i < |input_chars|
+        invariant 0 <= i <= |input_chars|
+        invariant a_count + b_count + c_count == i
+        invariant a_count == (if i > 0 && input_chars[0] == 'a' then 1 else 0) + 
+                            (if i > 1 && input_chars[1] == 'a' then 1 else 0) + 
+                            (if i > 2 && input_chars[2] == 'a' then 1 else 0)
+        invariant b_count == (if i > 0 && input_chars[0] == 'b' then 1 else 0) + 
+                            (if i > 1 && input_chars[1] == 'b' then 1 else 0) + 
+                            (if i > 2 && input_chars[2] == 'b' then 1 else 0)
+        invariant c_count == (if i > 0 && input_chars[0] == 'c' then 1 else 0) + 
+                            (if i > 1 && input_chars[1] == 'c' then 1 else 0) + 
+                            (if i > 2 && input_chars[2] == 'c' then 1 else 0)
+    {
+        if input_chars[i] == 'a' {
+            a_count := a_count + 1;
+        } else if input_chars[i] == 'b' {
+            b_count := b_count + 1;
+        } else if input_chars[i] == 'c' {
+            c_count := c_count + 1;
+        }
+        i := i + 1;
+    }
+
+    assert a_count + b_count + c_count == |input_chars|;
+    assert |input_chars| == 3;
+    assert a_count + b_count + c_count == 3;
+
+    // Check if we have exactly one of each character
+    if a_count == 1 && b_count == 1 && c_count == 1 {
+        assert input_chars[0] != input_chars[1] && input_chars[1] != input_chars[2] && input_chars[0] != input_chars[2];
+        result := "Yes\n";
+    } else {
+        result := "No\n";
+    }
+}

@@ -1,0 +1,118 @@
+vc-description: |-
+  /-
+  Once upon a time, a CodeWarrior, after reading a [discussion on what can be the plural](http://www.codewars.com/kata/plural/discuss/javascript), took a look at [this page](http://en.wikipedia.org/wiki/Grammatical_number#Types_of_number
+  ) and discovered that **more than 1** "kind of plural" may exist. 
+  
+  For example [Sursurunga Language](http://en.wikipedia.org/wiki/Sursurunga_language) distinguishes 5 types of numbers: **singular** (1 thing), **dual** (2 things), '**trial**' or '**lesser paucal**' (3 or 4), '**greater paucal**' (more than 4) and **plural** (many).
+  
+  In this kata, you'll have to handle only four types of numbers:
+  
+  - **singular**: 0 or 1 thing
+  - **dual**: 2 things
+  - **paucal**: 3 to 9 things
+  - **plural**: more than 9 things
+  
+  To add some flavor the **number-marker** will not be added in same places:
+  
+  - **singular**, no marker : `1 cat`
+  - **dual**, prefixed "`bu`" : `2 cats -> 2 bucat`
+  - **paucal**, suffixed "`zo`" : `4 cats -> 4 catzo`
+  - **plural**, "circumfixed `ga`" : `100 cats -> 100 gacatga`
+  
+  As you all ("hawk eyes") have seen, the final `s` of english plural **disappears**.
+  
+  ( btw these markers, of course, have absolutely nothing to do with true sursurunga language, we're just talking about "**pig**-sursurunga" with **pig** as **pig** in "**pig latin**" )
+  
+  ## Your Job . . .
+  . . . if you accept it, will be to write a `sursurungal` function which get a `string` as argument and returns this string with words in it eventually converted to their "pig-sursurunga number type".
+  
+  If a `number` ( *ie* 1 or more digit ) + a `space` + a `word` ( letters ) are found then the word should be converted.
+  
+  **Each** group of `number+space+word` found in the string should be evaluated.
+  
+  ### Examples :
+  
+  You may assume at least 1 `number+space+word` group will be provided.
+  
+  **Beware** `s` of english plural should be removed, not ending `s` of some singular words ( *eg* "kiss" )
+  
+  Good luck!
+  -/
+
+vc-preamble: |-
+  def sursurungal (s : String) : String := sorry
+  def containsDigit (s : String) (d : Nat) : Prop := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def containsWordAfterNumber (s : String) (n : Nat) (w : String) : Prop := sorry
+  
+  -- Numbers remain unchanged in output
+
+vc-theorems: |-
+  theorem sursurungal_preserves_numbers {s : String} :
+    ∀ n : Nat, containsDigit s n → containsDigit (sursurungal s) n :=
+  sorry
+  
+  -- Word transformation rules for different numbers
+  
+  theorem word_transformation_rules {s : String} (n : Nat) (w : String) :
+    containsWordAfterNumber (sursurungal s) n w →
+    match n with
+    | 1 => ¬(w.startsWith "bu") ∧ ¬(w.startsWith "ga") ∧ ¬(w.endsWith "zo") 
+    | 2 => w.startsWith "bu" ∧ ¬(w.startsWith "ga") ∧ ¬(w.endsWith "zo")
+    | n => if n ≤ 9 
+          then ¬(w.startsWith "bu") ∧ ¬(w.startsWith "ga") ∧ w.endsWith "zo"
+          else w.startsWith "ga" ∧ w.endsWith "ga" ∧ ¬(w.endsWith "zo") :=
+  sorry
+  
+  -- Text without number-word pairs remains unchanged  
+  
+  theorem unchanged_text_without_numbers (s : String) :
+    (∀ n : Nat, ¬containsDigit s n) →
+    sursurungal s = s :=
+  sorry
+  
+  /-
+  info: '1 tomato'
+  -/
+  -- #guard_msgs in
+  -- #eval sursurungal "1 tomato"
+  
+  /-
+  info: '2 bubanana'
+  -/
+  -- #guard_msgs in
+  -- #eval sursurungal "2 bananas"
+  
+  /-
+  info: '3 bananazo'
+  -/
+  -- #guard_msgs in
+  -- #eval sursurungal "3 bananas"
+  
+  /-
+  info: '10 gabananaga'
+  -/
+  -- #guard_msgs in
+  -- #eval sursurungal "10 bananas"
+  
+  /-
+  info: '6 birdzo with 2 buwing each'
+  -/
+  -- #guard_msgs in
+  -- #eval sursurungal "6 birds with 2 wings each"
+  
+  /-
+  info: '\n3 pigzo\nmet 1 wolf\n2 buday ago'
+  -/
+  -- #guard_msgs in
+  -- #eval sursurungal "\n3 pigs\nmet 1 wolf\n2 days ago"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

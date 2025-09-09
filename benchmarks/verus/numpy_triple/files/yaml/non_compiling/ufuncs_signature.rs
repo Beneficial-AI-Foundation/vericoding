@@ -1,0 +1,44 @@
+/* Core signature for generalized ufuncs
+Defines core dimensionality of inputs and outputs
+Example: matmul.signature: '(n,k),(k,m)->(n,m)'
+Parse a ufunc signature string into a structured representation
+Specification: parseSignature correctly parses ufunc signature strings */
+
+use vstd::prelude::*;
+
+verus! {
+struct UfuncSignature {
+    /* Input dimension patterns as list of dimension lists */
+    inputs: Vec<Vec<String>>,
+    /* Output dimension patterns as list of dimension lists */
+    outputs: Vec<Vec<String>>,
+    /* All unique dimension names used in the signature */
+    dimension_names: Vec<String>,
+}
+fn parse_signature(sig: Vec<String>) -> (result: UfuncSignature)
+    requires sig.len() > 0,
+    ensures
+        (result.inputs.len() > 0 || result.outputs.len() > 0) &&
+        (forall|i: int| 0 <= i < result.inputs.len() ==>
+            forall|j: int| 0 <= j < result.inputs[i].len() ==>
+                exists|k: int| 0 <= k < result.dimension_names.len() &&
+                    result.dimension_names[k] == result.inputs[i][j]) &&
+        (forall|i: int| 0 <= i < result.outputs.len() ==>
+            forall|j: int| 0 <= j < result.outputs[i].len() ==>
+                exists|k: int| 0 <= k < result.dimension_names.len() &&
+                    result.dimension_names[k] == result.outputs[i][j]) &&
+        (forall|i: int| 0 <= i < result.dimension_names.len() ==>
+            result.dimension_names[i].len() > 0) &&
+        (result.inputs.len() + result.outputs.len() > 0)
+{
+    // impl-start
+    assume(false);
+    UfuncSignature {
+        inputs: Vec::new(),
+        outputs: Vec::new(),
+        dimension_names: Vec::new(),
+    }
+    // impl-end
+}
+}
+fn main() {}

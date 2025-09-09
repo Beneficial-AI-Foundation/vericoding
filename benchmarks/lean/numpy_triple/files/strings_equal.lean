@@ -12,7 +12,7 @@
 
     Performs element-wise string comparison between two vectors of strings.
     Returns a boolean vector indicating whether corresponding strings are equal.
-    
+
     This function compares strings lexicographically and returns True for each
     position where the strings are identical, False otherwise.
 -/
@@ -21,7 +21,7 @@
 
     Precondition: True (no special preconditions for string equality)
     Postcondition: For all indices i, result[i] = (x1[i] == x2[i])
-    
+
     Mathematical Properties:
     - Core property: Each element of result is the boolean comparison of corresponding strings
     - Equivalence: result[i] is true if and only if x1[i] equals x2[i]
@@ -37,9 +37,7 @@ open Std.Do
 -- </vc-helpers>
 
 def equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem equal_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
@@ -50,6 +48,4 @@ theorem equal_spec {n : Nat} (x1 x2 : Vector String n) :
                  (∀ i : Fin n, (result.get i = true ↔ x1.get i = x2.get i)) ∧
                  -- Reflexivity: if inputs are the same, result is all true
                  (x1 = x2 → ∀ i : Fin n, result.get i = true)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

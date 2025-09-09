@@ -62,9 +62,7 @@ inductive FileMode
 
 def memmap {n : Nat} (filename : String) (mode : FileMode) (offset : Nat) : 
     Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem memmap_spec {n : Nat} (filename : String) (mode : FileMode) (offset : Nat)
     (h_valid_file : filename.length > 0)
@@ -81,6 +79,4 @@ theorem memmap_spec {n : Nat} (filename : String) (mode : FileMode) (offset : Na
       (∀ i : Fin n, result.get i = result.get i) ∧
       -- Boundary safety: all indices are valid
       (∀ i : Fin n, i.val < n)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -11,16 +11,16 @@
 
     The hyperbolic cosine function is defined as:
     cosh(x) = (e^x + e^(-x)) / 2
-    
+
     It represents the x-coordinate of a point on the unit hyperbola,
     analogous to how cosine represents the x-coordinate on the unit circle.
-    
+
     Returns an array of the same shape as x, containing the hyperbolic cosine of each element.
 -/
 
 /-  Specification: numpy.cosh returns a vector where each element is the hyperbolic cosine
     of the corresponding element in x.
-    
+
     Precondition: True (no special preconditions for hyperbolic cosine)
     Postcondition: 
     1. For all indices i, result[i] = (e^x[i] + e^(-x[i])) / 2
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_cosh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_cosh_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -59,6 +57,4 @@ theorem numpy_cosh_spec {n : Nat} (x : Vector Float n) :
         result.get i = (Float.exp (Float.abs (x.get i)) + Float.exp (-(Float.abs (x.get i)))) / 2 ∧
         -- Identity property: cosh(0) = 1
         (x.get i = 0 → result.get i = 1)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

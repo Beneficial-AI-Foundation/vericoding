@@ -23,7 +23,7 @@
 
     Precondition: True (no special preconditions for basic transpose)
     Postcondition: For all valid indices (i,j), result[j][i] = a[i][j]
-    
+
     Mathematical properties:
     - Transpose is an involution: (A^T)^T = A
     - For square matrices: trace(A^T) = trace(A)
@@ -39,15 +39,11 @@ open Std.Do
 
 def numpy_transpose {rows cols : Nat} (a : Vector (Vector Float cols) rows) : 
     Id (Vector (Vector Float rows) cols) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_transpose_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows) :
     ⦃⌜True⌝⦄
     numpy_transpose a
     ⦃⇓result => ⌜∀ (i : Fin rows) (j : Fin cols), 
                   (result.get j).get i = (a.get i).get j⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

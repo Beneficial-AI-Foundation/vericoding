@@ -1,0 +1,59 @@
+/-
+The most basic encryption method is to map a char to another char by a certain math rule.
+Because every char has an ASCII value, we can manipulate this value with a simple math expression. 
+For example 'a' + 1 would give us 'b', because 'a' value is 97 and 'b' value is 98.
+
+You will need to write a method which does exactly that - 
+
+get a string as text and an int as the rule of manipulation, and should return encrypted text.
+for example:
+
+encrypt("a",1) = "b"
+
+ *Full ascii table is used on our question (256 chars) - so 0-255 are the valid values.*
+
+Good luck.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def encrypt (text : String) (rule : Int) : String :=
+  sorry
+
+theorem encrypt_preserves_length (text : String) (rule : Int) :
+  (encrypt text rule).length = text.length :=
+sorry
+
+theorem encrypt_periodic_rule (text : String) (rule : Int) :
+  encrypt text rule = encrypt text (rule % 256) :=
+sorry
+
+theorem encrypt_identity_rule (text : String) :
+  encrypt text 0 = text :=
+sorry
+
+theorem encrypt_inverse_rules (text : String) (rule : Int) :
+  encrypt (encrypt text rule) (-rule) = text :=
+sorry
+
+/-
+info: ''
+-/
+-- #guard_msgs in
+-- #eval encrypt "" 1
+
+/-
+info: 'b'
+-/
+-- #guard_msgs in
+-- #eval encrypt "a" 1
+
+/-
+info: 'rngcug"gpet{rv"og'
+-/
+-- #guard_msgs in
+-- #eval encrypt "please encrypt me" 2
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

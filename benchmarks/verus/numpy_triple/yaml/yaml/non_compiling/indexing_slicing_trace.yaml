@@ -1,0 +1,72 @@
+vc-description: |-
+  /*
+  numpy.trace: Return the sum along diagonals of the array.
+      
+  For a 2D matrix, computes the sum of elements along the diagonal
+  with an optional offset. For offset=0, it computes the sum of 
+  elements a[i,i] for all valid i. For positive offset, it sums
+  a[i,i+offset], and for negative offset, it sums a[i-offset,i].
+      
+  This implementation focuses on the 2D case as the core functionality.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn diagonal_sum_pos(a: Seq<Seq<f32>>, offset: int) -> f32
+      decreases a.len()
+  {
+      if a.len() == 0 {
+          0.0
+      } else {
+          let first_row = a[0];
+          if offset >= first_row.len() as int {
+              diagonal_sum_pos(a.subrange(1, a.len() as int), offset)
+          } else {
+              let first_elem = if offset < 0 { 0.0 } else { first_row[offset as int] };
+              first_elem + diagonal_sum_pos(a.subrange(1, a.len() as int), offset)
+          }
+      }
+  }
+
+  spec fn diagonal_sum_neg(a: Seq<Seq<f32>>, offset: int) -> f32
+      decreases a.len()
+  {
+      if a.len() == 0 || offset >= a.len() as int {
+          0.0
+      } else {
+          let row_idx = offset as int;
+          if row_idx >= 0 && row_idx < a.len() as int {
+              let row = a[row_idx];
+              let first_elem = if row.len() > 0 { row[0] } else { 0.0 };
+              first_elem + diagonal_sum_neg(a, offset + 1)
+          } else {
+              0.0
+          }
+      }
+  }
+
+  fn trace(a: Vec<Vec<f32>>, offset: i32) -> (result: f32)
+      requires 
+          a.len() > 0,
+          forall|i: int| 0 <= i < a.len() ==> a[i].len() > 0,
+      ensures
+          if offset >= 0 {
+              result == diagonal_sum_pos(a@.map(|row: Vec<f32>| (row@)), offset as int)
+          } else {
+              result == diagonal_sum_neg(a@.map(|row: Vec<f32>| (row@)), (-offset) as int)
+          }
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0.0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

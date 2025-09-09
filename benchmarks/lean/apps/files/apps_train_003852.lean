@@ -1,0 +1,48 @@
+/-
+An element in an array is dominant if it is greater than all elements to its right. You will be given an array and your task will be to return a list of all dominant elements. For example:
+```Haskell
+solve([1,21,4,7,5]) = [21,7,5] because 21, 7 and 5 are greater than elments to their right. 
+solve([5,4,3,2,1]) = [5,4,3,2,1]
+
+Notice that the last element is always included.
+```
+
+More examples in the test cases.
+
+Good luck!
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def solve (arr : List Int) : List Int :=
+  sorry
+
+theorem last_element_always_included {arr : List Int} (h : arr ≠ []) :
+  (solve arr).getLast? = arr.getLast? :=
+  sorry
+
+theorem result_subset_of_input {arr : List Int} (h : arr ≠ []) :
+  ∀ x : Int, x ∈ solve arr → x ∈ arr :=
+  sorry
+
+/-
+info: [21, 7, 5]
+-/
+-- #guard_msgs in
+-- #eval solve [1, 21, 4, 7, 5]
+
+/-
+info: [5, 4, 3, 2, 1]
+-/
+-- #guard_msgs in
+-- #eval solve [5, 4, 3, 2, 1]
+
+/-
+info: [17, 14, 5, 2]
+-/
+-- #guard_msgs in
+-- #eval solve [16, 17, 14, 3, 14, 5, 2]
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

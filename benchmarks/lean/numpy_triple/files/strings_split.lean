@@ -21,9 +21,7 @@ open Std.Do
 -- </vc-helpers>
 
 def split {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Option Nat) : Id (Vector (List String) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem split_spec {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Option Nat) 
     (h_sep_nonempty : sep ≠ "") :
@@ -55,6 +53,4 @@ theorem split_spec {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Op
              -- When maxsplit is reached, last part contains remaining string
              parts.length = limit + 1 ∧ 
              String.intercalate sep (parts.take limit) ++ sep ++ (parts.get ⟨limit, by sorry⟩) = original)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

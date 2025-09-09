@@ -19,9 +19,7 @@ def majorityElement_precond (nums : List Int) : Prop :=
 -- </vc-helpers>
 
 def majorityElement (nums : List Int) (h_precond : majorityElement_precond (nums)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def majorityElement_postcond (nums : List Int) (result: Int) (h_precond : majorityElement_precond (nums)) : Prop :=
@@ -31,9 +29,7 @@ def majorityElement_postcond (nums : List Int) (result: Int) (h_precond : majori
 
 theorem majorityElement_spec_satisfied (nums: List Int) (h_precond : majorityElement_precond (nums)) :
     majorityElement_postcond (nums) (majorityElement (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

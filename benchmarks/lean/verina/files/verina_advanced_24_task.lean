@@ -24,9 +24,7 @@ def lengthOfLIS_precond (nums : List Int) : Prop :=
 -- </vc-helpers>
 
 def lengthOfLIS (nums : List Int) (h_precond : lengthOfLIS_precond (nums)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def lengthOfLIS_postcond (nums : List Int) (result: Int) (h_precond : lengthOfLIS_precond (nums)) : Prop :=
@@ -51,9 +49,7 @@ def lengthOfLIS_postcond (nums : List Int) (result: Int) (h_precond : lengthOfLI
 
 theorem lengthOfLIS_spec_satisfied (nums: List Int) (h_precond : lengthOfLIS_precond (nums)) :
     lengthOfLIS_postcond (nums) (lengthOfLIS (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

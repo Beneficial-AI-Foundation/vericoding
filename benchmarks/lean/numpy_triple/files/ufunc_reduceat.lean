@@ -71,9 +71,7 @@ open Std.Do
 
 def reduceat {n m : Nat} (op : Float → Float → Float) (arr : Vector Float n) 
     (indices : Vector (Fin n) m) : Id (Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem reduceat_spec {n m : Nat} (op : Float → Float → Float) (arr : Vector Float n) 
     (indices : Vector (Fin n) m) (h_arr_nonempty : n > 0) (h_indices_nonempty : m > 0) :
@@ -125,6 +123,4 @@ theorem reduceat_spec {n m : Nat} (op : Float → Float → Float) (arr : Vector
         -- Result elements are well-defined
         ∃ (reduction_result : Float), result.get i = reduction_result)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

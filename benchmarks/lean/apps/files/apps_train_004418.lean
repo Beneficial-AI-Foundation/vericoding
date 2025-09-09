@@ -1,0 +1,54 @@
+/-
+Note: This kata is inspired by [Convert a Number to a String!](http://www.codewars.com/kata/convert-a-number-to-a-string/). Try that one too.
+
+## Description
+
+We need a function that can transform a string into a number. What ways of achieving this do you know?
+
+Note: Don't worry, all inputs will be strings, and every string is a perfectly valid representation of an integral number.
+
+## Examples
+
+```python
+stringToNumber("1234") == 1234
+stringToNumber("605" ) == 605
+stringToNumber("1405") == 1405
+stringToNumber("-7"  ) == -7
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def string_to_number (s : String) : Int := sorry
+
+theorem string_to_number_roundtrip (n : Int) : 
+  string_to_number (toString n) = n := sorry
+
+theorem string_to_number_invalid_empty :
+  ∀ s : String, s = "" → string_to_number s = 0 := sorry
+
+theorem string_to_number_invalid_nondigit (s : String)
+  (h: ∃ c ∈ s.data, c < '0' ∨ c > '9') :
+  string_to_number s = 0 := sorry
+
+/-
+info: 1234
+-/
+-- #guard_msgs in
+-- #eval string_to_number "1234"
+
+/-
+info: -7
+-/
+-- #guard_msgs in
+-- #eval string_to_number "-7"
+
+/-
+info: 605
+-/
+-- #guard_msgs in
+-- #eval string_to_number "605"
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

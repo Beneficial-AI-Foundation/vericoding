@@ -48,15 +48,11 @@ structure PrintOptionsContext where
 -- </vc-helpers>
 
 def numpy_printoptions (new_opts : PrintOptions) : Id PrintOptionsContext :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_printoptions_spec (new_opts : PrintOptions) :
     ⦃⌜True⌝⦄
     numpy_printoptions new_opts
     ⦃⇓context => ⌜context.new_options = new_opts ∧ 
                    context.old_options ≠ context.new_options⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,73 @@
+vc-description: |-
+  /-
+  Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+  
+  Note: For the purpose of this problem, we define empty string as valid palindrome.
+  
+  Example 1:
+  
+  Input: "A man, a plan, a canal: Panama"
+  Output: true
+  
+  Example 2:
+  
+  Input: "race a car"
+  Output: false
+  -/
+
+vc-preamble: |-
+  def is_palindrome (s : String) : Bool :=
+    sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def reverseString (s : String) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem empty_string_is_palindrome :
+    is_palindrome "" = true :=
+  sorry
+  
+  theorem string_plus_reverse_is_palindrome {s : String} :
+    is_palindrome (s ++ reverseString s) = true :=
+  sorry
+  
+  theorem case_insensitive {s : String} :
+    is_palindrome s = is_palindrome (s.toUpper) ∧
+    is_palindrome s = is_palindrome (s.toLower) :=
+  sorry
+  
+  theorem punctuation_invariant {s p c : Char} :
+    is_palindrome (String.mk [c]) = is_palindrome (String.mk [c, p]) :=
+  sorry
+  
+  theorem single_char_is_palindrome {c : Char} :
+    is_palindrome (String.mk [c]) = true :=
+  sorry
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval is_palindrome "A man, a plan, a canal: Panama"
+  
+  /-
+  info: False
+  -/
+  -- #guard_msgs in
+  -- #eval is_palindrome "race a car"
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval is_palindrome ""
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

@@ -1,0 +1,102 @@
+vc-description: |-
+  /-
+  Zonal Computing Olympiad 2013, 10 Nov 2012
+  N teams participate in a league cricket tournament on Mars, where each pair of distinct teams plays each other exactly once. Thus, there are a total of (N × (N-1))/2 matches. An expert has assigned a strength to each team, a positive integer. Strangely, the Martian crowds love one-sided matches and the advertising revenue earned from a match is the absolute value of the difference between the strengths of the two matches. Given the strengths of the N teams, find the total advertising revenue earned from all the matches.
+  
+  For example, suppose N is 4 and the team strengths for teams 1, 2, 3, and 4 are 3, 10, 3, and 5 respectively. Then the advertising revenues from the 6 matches are as follows:
+  
+  Match Team A Team B Ad revenue 1 1 2 7  2 1 3 0  3 1 4 2  4 2 3 7  5 2 4 5  6 3 4 2 
+  
+  Thus the total advertising revenue is 23.
+  
+  -----Input format-----
+  Line 1 : A single integer, N.
+  Line 2 : N space-separated integers, the strengths of the N teams.
+  
+  -----Output format-----
+  A single integer, the total advertising revenue from the tournament.
+  
+  -----Sample input-----
+  4
+  3 10 3 5
+  
+  -----Sample output-----
+  23
+  
+  -----Test data-----
+  In all subtasks, the strength of each team is an integer between 1 and 1,000 inclusive.
+  - Subtask 1 (30 marks) : 2 ≤ N ≤ 1,000.
+  - Subtask 2 (70 marks) : 2 ≤ N ≤ 200,000.
+  
+  -----Live evaluation data-----
+  - Subtask 1: Testcases 0,1,2.
+  - Subtask 2: Testcases 3,4,5.
+  
+  -----Note-----
+  The answer might not fit in a variable of type int. We recommend that type long long be used for computing all advertising revenues. If you use printf and scanf, you can use %lld for long long.
+  -/
+
+vc-preamble: |-
+  def calculate_ad_revenue (n: Nat) (team_strengths: List Nat) : Nat := sorry
+  
+  def getPairs (l: List Nat) : List (Nat × Nat) := 
+    match l with
+    | [] => []
+    | x :: xs => (xs.map (fun y => (x, y))) ++ getPairs xs
+  
+  def abs (n: Nat) (m: Nat) : Nat :=
+    if n ≥ m then n - m else m - n
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def pairSum (pairs: List (Nat × Nat)) : Nat :=
+    match pairs with 
+    | [] => 0
+    | (x, y) :: rest => abs x y + pairSum rest
+
+vc-theorems: |-
+  theorem revenue_nonnegative (n: Nat) (team_strengths: List Nat) 
+    (h1: n ≥ 2) (h2: team_strengths.length = n) :
+    calculate_ad_revenue n team_strengths ≥ 0 := sorry
+  
+  theorem revenue_matches_manual_calc (n: Nat) (team_strengths: List Nat)
+    (h1: n ≥ 2) (h2: team_strengths.length = n) :
+    calculate_ad_revenue n team_strengths = pairSum (getPairs team_strengths) := sorry
+  
+  theorem revenue_pair_count (n: Nat) (team_strengths: List Nat)
+    (h1: n ≥ 2) (h2: team_strengths.length = n) :  
+    (getPairs team_strengths).length = n * (n-1) / 2 := sorry
+  
+  theorem identical_strengths_zero_revenue (n: Nat) (x: Nat) 
+    (h1: n ≥ 2) :
+    calculate_ad_revenue n (List.replicate n x) = 0 := sorry
+  
+  theorem minimal_cases :
+    calculate_ad_revenue 2 [0, 0] = 0 ∧ 
+    calculate_ad_revenue 2 [0, 1] = 1 := sorry
+  
+  /-
+  info: 23
+  -/
+  -- #guard_msgs in
+  -- #eval calculate_ad_revenue 4 [3, 10, 3, 5]
+  
+  /-
+  info: 4
+  -/
+  -- #guard_msgs in
+  -- #eval calculate_ad_revenue 2 [1, 5]
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval calculate_ad_revenue 3 [10, 10, 10]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

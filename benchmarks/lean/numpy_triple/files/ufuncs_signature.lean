@@ -29,9 +29,7 @@ deriving Repr
 -- </vc-helpers>
 
 def parseSignature {n : Nat} (sig : Vector String n) : Id UfuncSignature :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem parseSignature_spec {n : Nat} (sig : Vector String n) 
     (h_valid : n > 0) :
@@ -53,6 +51,4 @@ theorem parseSignature_spec {n : Nat} (sig : Vector String n)
         dim_name.length > 0) ∧
       -- Result is well-formed (has inputs or outputs)
       (result.inputs.length + result.outputs.length > 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,43 @@
+vc-description: |-
+  /*
+  Generalized function class that converts a Python function into a vectorized function
+  
+  Vectorizes a scalar function to operate element-wise on vectors.
+  Takes a function f and applies it element-wise to input vectors,
+  producing a new vector with the same size.
+  
+  Specification: vectorize applies the given function element-wise to the input vector.
+  The result vector has the same size and each element is the function applied to 
+  the corresponding element of the input vector.
+  
+  Properties verified:
+  1. Element-wise application: each output element equals f applied to corresponding input
+  2. Size preservation: output vector has same size as input vector
+  3. Order preservation: relative positions of elements are maintained
+  4. Functional purity: result depends only on function f and input vector
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn vectorize<A, B>(f: spec_fn(A) -> B, arr: Vec<A>) -> (result: Vec<B>)
+      ensures
+          result.len() == arr.len(),
+          forall|i: int| 0 <= i < arr.len() ==> result[i] == f(arr[i])
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

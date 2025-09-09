@@ -35,15 +35,11 @@ vc-helpers: |-
     (r, q)
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def DivisionFunction (x : Nat) (y : Nat) (h_precond : DivisionFunction_precond (x) (y)) : Int × Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def DivisionFunction_postcond (x : Nat) (y : Nat) (result: Int × Int) (h_precond : DivisionFunction_precond (x) (y)) :=
     let (r, q) := result;
@@ -52,11 +48,7 @@ vc-condition: |-
   
   theorem DivisionFunction_spec_satisfied (x: Nat) (y: Nat) (h_precond : DivisionFunction_precond (x) (y)) :
       DivisionFunction_postcond (x) (y) (DivisionFunction (x) (y) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

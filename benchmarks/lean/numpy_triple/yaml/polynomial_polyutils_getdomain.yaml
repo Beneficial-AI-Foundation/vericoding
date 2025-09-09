@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def getdomain {n : Nat} (x : Vector Float (n + 1)) : Id (Vector Float 2) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem getdomain_spec {n : Nat} (x : Vector Float (n + 1)) :
       ⦃⌜True⌝⦄
       getdomain x
@@ -45,11 +41,7 @@ vc-condition: |-
         (∃ i : Fin (n + 1), x[i] = result[0]) ∧
         (∃ j : Fin (n + 1), x[j] = result[1])
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

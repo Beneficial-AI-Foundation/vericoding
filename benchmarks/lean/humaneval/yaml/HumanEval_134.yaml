@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (txt: String) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: String → Bool)
@@ -54,12 +50,8 @@ vc-condition: |-
   
   theorem correctness
   (txt: String)
-  : problem_spec implementation txt :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation txt := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "apple pie" = false

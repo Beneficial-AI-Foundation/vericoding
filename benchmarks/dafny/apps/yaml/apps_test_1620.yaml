@@ -1,0 +1,99 @@
+vc-description: |-
+  Given a positive integer n, construct a string of length n using only characters 'a', 'b', and 'c' such that:
+  1. The string contains no palindromic substrings of length 3
+  2. The number of 'c' characters is minimized
+
+vc-preamble: |-
+  predicate ValidInput(n: int)
+  {
+    n >= 1
+  }
+  
+  predicate ValidOutput(s: string, n: int)
+  {
+    |s| == n &&
+    (forall i :: 0 <= i < |s| ==> s[i] == 'a' || s[i] == 'b' || s[i] == 'c') &&
+    (forall i :: 0 <= i <= |s| - 3 ==> !(s[i] == s[i+2]))
+  }
+  
+  predicate MinimalCUsage(s: string)
+  {
+    forall i :: 0 <= i < |s| ==> s[i] == 'a' || s[i] == 'b'
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(n: int) returns (result: string)
+    requires ValidInput(n)
+    ensures ValidOutput(result, n)
+    ensures MinimalCUsage(result)
+
+vc-code: |-
+  {
+    var pattern := "aabb";
+    var repeats := (n + 3) / 4;  // Ensure we have enough characters
+    var s := "";
+  
+    var i := 0;
+    while i < repeats
+      invariant 0 <= i <= repeats
+      invariant |s| == i * 4
+      invariant forall j :: 0 <= j < |s| ==> s[j] == 'a' || s[j] == 'b'
+      invariant forall j :: 0 <= j <= |s| - 3 ==> !(s[j] == s[j+2])
+      invariant forall k :: 0 <= k < i ==> |s| >= 4*k + 4 && s[4*k] == 'a' && s[4*k+1] == 'a' && s[4*k+2] == 'b' && s[4*k+3] == 'b'
+    {
+      var old_s := s;
+      s := s + pattern;
+  
+      // Help Dafny prove the invariant is maintained
+      assert |s| == |old_s| + 4;
+      assert forall j :: 0 <= j < |old_s| ==> s[j] == old_s[j];
+      assert forall j :: |old_s| <= j < |s| ==> s[j] == pattern[j - |old_s|];
+  
+      // Pattern property: "aabb" satisfies the no-same-at-distance-2 property
+      assert pattern[0] != pattern[2]; // 'a' != 'b'
+      assert pattern[1] != pattern[3]; // 'a' != 'b'
+  
+      // Prove the invariant for the new part of the string
+      assert forall j :: |old_s| <= j <= |s| - 3 ==> !(s[j] == s[j+2]);
+  
+      // Cross-boundary properties - prove explicitly
+      if |old_s| >= 2 {
+        // From the pattern invariant, old_s ends with "bb"
+        assert |old_s| == i * 4;
+        assert i > 0;
+        // The last complete pattern is at positions 4*(i-1) through 4*(i-1)+3
+        assert 4*(i-1) + 3 == i*4 - 1 == |old_s| - 1;
+        assert 4*(i-1) + 2 == i*4 - 2 == |old_s| - 2;
+        // Apply the pattern invariant for k = i-1
+        assert old_s[4*(i-1)+2] == 'b';
+        assert old_s[4*(i-1)+3] == 'b';
+        assert old_s[|old_s| - 2] == 'b';
+        assert old_s[|old_s| - 1] == 'b';
+        // new pattern starts with "aa"
+        assert s[|old_s|] == 'a';
+        assert s[|old_s| + 1] == 'a';
+        // Cross-boundary checks
+        assert s[|old_s| - 2] != s[|old_s|]; // 'b' != 'a'
+        assert s[|old_s| - 1] != s[|old_s| + 1]; // 'b' != 'a'
+      }
+  
+      // Prove the invariant holds for all positions
+      assert forall j :: 0 <= j <= |s| - 3 ==> !(s[j] == s[j+2]);
+  
+      i := i + 1;
+    }
+  
+    assert |s| >= n;
+    result := s[..n];
+  
+    // Help Dafny prove the postconditions
+    assert |result| == n;
+    assert forall i :: 0 <= i < |result| ==> result[i] == s[i];
+    assert forall i :: 0 <= i < |result| ==> result[i] == 'a' || result[i] == 'b';
+    assert forall i :: 0 <= i <= |result| - 3 ==> !(result[i] == result[i+2]);
+  }
+
+vc-postamble: |-

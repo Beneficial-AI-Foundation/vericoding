@@ -2,11 +2,11 @@
 
     Performs element-wise inequality comparison of two arrays and returns a boolean array
     of the same shape indicating where the corresponding elements are not equal.
-    
+
     For scalar inputs, returns a single boolean value. For array inputs of the
     same shape, returns an array of booleans. This function is the basis for
     the != operator when used with numpy arrays.
-    
+
     This is the logical negation of numpy.equal.
 -/
 
@@ -15,10 +15,10 @@
 
     Precondition: True (arrays have the same shape by the type system)
     Postcondition: For all indices i, result[i] = (x1[i] != x2[i])
-    
+
     This specification captures both the element-wise behavior and the mathematical
     property that inequality comparison is performed at each position.
-    
+
     Key Properties:
     1. Element-wise comparison: Each position is compared independently
     2. Boolean result: Returns true/false for each position 
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_not_equal {T : Type} [BEq T] {n : Nat} (x1 x2 : Vector T n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_not_equal_spec {T : Type} [BEq T] {n : Nat} (x1 x2 : Vector T n) :
     ⦃⌜True⌝⦄
@@ -50,6 +48,4 @@ theorem numpy_not_equal_spec {T : Type} [BEq T] {n : Nat} (x1 x2 : Vector T n) :
                   (∀ i : Fin n, result.get i = !(x2.get i == x1.get i)) ∧
                   -- Boolean result: each element is either true or false
                   (∀ i : Fin n, result.get i = true ∨ result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

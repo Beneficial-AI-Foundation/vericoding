@@ -24,16 +24,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lagder {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float := 1.0) : 
       Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lagder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) :
       ⦃⌜True⌝⦄
       lagder c m scl
@@ -43,11 +39,7 @@ vc-condition: |-
                    (m = 0 → ∀ i : Fin n, result.get i = c.get i) ∧
                    -- For large m, result becomes zero or minimal
                    (m ≥ n ∧ n > 0 → ∀ i : Fin n, result.get i = 0)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

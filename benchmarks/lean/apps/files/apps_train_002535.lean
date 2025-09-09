@@ -1,0 +1,58 @@
+/-
+Kevin is noticing his space run out! Write a function that removes the spaces from the values and returns an array showing the space decreasing.
+For example, running this function on the array ['i', 'have','no','space'] would produce ['i','ihave','ihaveno','ihavenospace'].
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def spacey (words : List String) : List String := sorry
+
+theorem length_matches_input (words : List String) 
+  (h : words ≠ []) :
+  (spacey words).length = words.length := sorry
+
+theorem contains_all_previous_words (words : List String) 
+  (h : words ≠ []) 
+  (i : Nat)
+  (hlt : i < (spacey words).length) :
+  ((spacey words)[i]'hlt) = String.join (words.take (i+1)) := sorry
+
+theorem lengths_monotonic (words : List String)
+  (h : words ≠ [])
+  (i : Nat)
+  (hlt : i+1 < (spacey words).length) 
+  (hlt2 : i < (spacey words).length) :
+  ((spacey words)[i]'hlt2).length ≤ ((spacey words)[i+1]'hlt).length := sorry
+
+theorem first_elem_matches (words : List String)
+  (h : words ≠ []) 
+  (h1 : 0 < (spacey words).length)
+  (h2 : 0 < words.length) :
+  ((spacey words)[0]'h1) = (words[0]'h2) := sorry
+
+theorem last_elem_contains_all (words : List String)
+  (h : words ≠ []) 
+  (h1 : spacey words ≠ []) :
+  (spacey words).getLast h1 = String.join words := sorry
+
+/-
+info: expected1
+-/
+-- #guard_msgs in
+-- #eval spacey ["kevin", "has", "no", "space"]
+
+/-
+info: expected2
+-/
+-- #guard_msgs in
+-- #eval spacey ["this", "cheese", "has", "no", "holes"]
+
+/-
+info: expected3
+-/
+-- #guard_msgs in
+-- #eval spacey ["i", "have", "no", "space"]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

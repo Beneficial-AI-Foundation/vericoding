@@ -49,9 +49,7 @@ termination_by s.size - i
 -- </vc-helpers>
 
 def secondSmallest (s : Array Int) (h_precond : secondSmallest_precond (s)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def secondSmallest_postcond (s : Array Int) (result: Int) (h_precond : secondSmallest_precond (s)) :=
@@ -61,9 +59,7 @@ def secondSmallest_postcond (s : Array Int) (result: Int) (h_precond : secondSma
 
 theorem secondSmallest_spec_satisfied (s: Array Int) (h_precond : secondSmallest_precond (s)) :
     secondSmallest_postcond (s) (secondSmallest (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

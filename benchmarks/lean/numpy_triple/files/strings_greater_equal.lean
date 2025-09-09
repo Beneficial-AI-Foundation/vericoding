@@ -13,7 +13,7 @@
     Performs element-wise string comparison between two vectors of strings.
     Returns a boolean vector indicating whether each string in x1 is greater than or equal 
     to the corresponding string in x2 using lexicographic ordering.
-    
+
     This function compares strings lexicographically and returns True for each
     position where x1[i] >= x2[i], False otherwise.
 
@@ -26,14 +26,14 @@
 /-  Specification: numpy.strings.greater_equal returns element-wise greater-than-or-equal comparison.
 
     This specification captures the mathematical properties of lexicographic string comparison:
-    
+
     1. Core Property: Each position compares strings lexicographically
     2. Reflexive Property: Every string is >= itself
     3. Antisymmetric Property: If s1 >= s2 and s2 >= s1, then s1 = s2
     4. Transitive Property: If s1 >= s2 and s2 >= s3, then s1 >= s3
     5. Total Ordering: For any two strings, either s1 >= s2 or s2 >= s1 (or both)
     6. Consistency: Result is deterministic for same inputs
-    
+
     Precondition: True (no special preconditions for string comparison)
     Postcondition: Element-wise lexicographic greater-than-or-equal comparison
 -/
@@ -46,9 +46,7 @@ open Std.Do
 -- </vc-helpers>
 
 def greater_equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem greater_equal_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
@@ -64,6 +62,4 @@ theorem greater_equal_spec {n : Nat} (x1 x2 : Vector String n) :
                  -- Empty string properties
                  (∀ i : Fin n, x1.get i = "" → x2.get i = "" → result.get i = true) ∧
                  (∀ i : Fin n, x1.get i ≠ "" → x2.get i = "" → result.get i = true)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -33,9 +33,7 @@ def loop (a b : Array Int) (len : Nat) : Nat → Array Int → Array Int
 -- </vc-helpers>
 
 def arrayProduct (a : Array Int) (b : Array Int) (h_precond : arrayProduct_precond (a) (b)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def arrayProduct_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h_precond : arrayProduct_precond (a) (b)) :=
@@ -43,9 +41,7 @@ def arrayProduct_postcond (a : Array Int) (b : Array Int) (result: Array Int) (h
 
 theorem arrayProduct_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : arrayProduct_precond (a) (b)) :
     arrayProduct_postcond (a) (b) (arrayProduct (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

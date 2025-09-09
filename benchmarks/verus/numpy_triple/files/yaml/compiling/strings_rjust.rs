@@ -1,0 +1,48 @@
+/* Return an array with the elements of a right-justified in a string of length width.
+
+Right-justifies each string in the input array by padding it with the specified
+fill character (default is space) to reach the specified width. If the original
+string is longer than or equal to the width, it remains unchanged.
+
+Parameters:
+- a: Input array of strings
+- width: Target width for each string
+- fillchar: Character to use for padding (must be exactly one character)
+
+Returns:
+- Array where each string is right-justified to the specified width
+
+Mathematical Properties:
+1. Length preservation: If original.length >= width, return original unchanged
+2. Right-justification: If original.length < width, pad on the left with fillchar
+3. Padding placement: Original string appears as suffix in the result
+4. Character preservation: Original string appears as contiguous substring
+5. Width compliance: Result length equals max(original.length, width) */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn max_nat(a: nat, b: nat) -> nat {
+    if a >= b { a } else { b }
+}
+
+spec fn is_suffix_of<T>(suffix: Seq<T>, full: Seq<T>) -> bool {
+    suffix.len() <= full.len() && 
+    full.subrange(full.len() - suffix.len(), full.len() as int) == suffix
+}
+fn rjust(orig: Vec<char>, width: nat, fillchar: char) -> (res: Vec<char>)
+    ensures
+        res.len() == max_nat(orig.len() as nat, width),
+        (orig.len() >= width ==> res@ == orig@) &&
+        (orig.len() < width ==> res.len() == width && is_suffix_of(orig@, res@)) &&
+        (orig.len() >= width ==> res.len() == orig.len()) &&
+        (orig.len() < width ==> res.len() == width) &&
+        (orig.len() == 0 ==> res.len() == width)
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

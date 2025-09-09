@@ -2,7 +2,7 @@
 
     Computes the negative of each element in the input array.
     This is equivalent to -x in terms of array operations.
-    
+
     Returns an array of the same shape as x, containing the negated values.
 -/
 
@@ -11,7 +11,7 @@
 
     Precondition: True (no special preconditions for negation)
     Postcondition: For all indices i, result[i] = -x[i]
-    
+
     Mathematical Properties:
     - Involution: -(-x) = x
     - Additive inverse: x + (-x) = 0
@@ -26,14 +26,10 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_negative {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_negative_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_negative x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = -(x.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

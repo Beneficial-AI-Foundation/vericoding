@@ -19,7 +19,7 @@
     2. If all values are NaN, result is NaN
     3. If ddof >= valid_count, result is NaN
     4. Result is always non-negative when valid
-    
+
     The variance is computed as:
     1. Filter out NaN values to get valid values
     2. Calculate the mean of valid values
@@ -35,9 +35,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanvar {n : Nat} (a : Vector Float n) (ddof : Nat := 0) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanvar_spec {n : Nat} (a : Vector Float n) (ddof : Nat) :
     ⦃⌜True⌝⦄
@@ -58,6 +56,4 @@ theorem nanvar_spec {n : Nat} (a : Vector Float n) (ddof : Nat) :
                  -- Case 2: All values are NaN or ddof >= valid_count
                  else
                    result.isNaN⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -2,10 +2,11 @@ use vstd::prelude::*;
 
 verus! {
 
-// <vc-helpers>
 spec fn array_index(v: Seq<i32>, i: int) -> i32 {
     v[i]
 }
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -25,9 +25,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (lst1: List String) (lst2: List String) : List String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -52,10 +50,8 @@ spec result
 theorem correctness
 (lst1: List String) (lst2: List String)
 : problem_spec implementation lst1 lst2
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation [] [] = []
 -- #test implementation ["hi", "admin"] ["hi", "hi"] = ["hi", "hi"]

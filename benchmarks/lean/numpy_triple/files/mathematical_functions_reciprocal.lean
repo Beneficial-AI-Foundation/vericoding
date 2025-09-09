@@ -11,10 +11,10 @@
 
     Calculates 1/x for each element in the input array.
     This is equivalent to raising each element to the power of -1.
-    
+
     The function requires that all elements are non-zero to avoid division by zero.
     For floating-point inputs, the reciprocal of zero would be infinity.
-    
+
     Returns an array of the same shape as x, containing the reciprocals.
 -/
 
@@ -23,13 +23,13 @@
 
     Precondition: All elements in x must be non-zero to avoid division by zero
     Postcondition: For all indices i, result[i] = 1 / x[i]
-    
+
     Mathematical properties captured in the specification:
     - Basic reciprocal property: result[i] = 1 / x[i]
     - Domain restriction: x[i] ≠ 0 for all i
     - Sign preservation: sign(result[i]) = sign(x[i])
     - Magnitude inversion: |result[i]| = 1 / |x[i]|
-    
+
     Additional mathematical properties (provable from the spec):
     - reciprocal(reciprocal(x)) = x for all non-zero x
     - reciprocal(x * y) = reciprocal(x) * reciprocal(y) for non-zero x, y
@@ -47,9 +47,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_reciprocal {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_reciprocal_spec {n : Nat} (x : Vector Float n) 
     (h_nonzero : ∀ i : Fin n, x.get i ≠ 0) :
@@ -59,6 +57,4 @@ theorem numpy_reciprocal_spec {n : Nat} (x : Vector Float n)
                  result.get i ≠ 0 ∧
                  (x.get i > 0 → result.get i > 0) ∧
                  (x.get i < 0 → result.get i < 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

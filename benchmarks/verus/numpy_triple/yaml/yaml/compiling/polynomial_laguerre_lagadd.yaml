@@ -1,0 +1,55 @@
+vc-description: |-
+  /*
+  Add one Laguerre series to another.
+  Returns the sum of two Laguerre series c1 + c2. The arguments
+  are sequences of coefficients ordered from lowest order term to highest.
+  
+  Specification: lagadd performs component-wise addition of two Laguerre series coefficients.
+  The result length is the maximum of the input lengths, with shorter arrays padded with zeros.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn evaluate_laguerre_polynomial(coeffs: Seq<f32>, x: f32) -> f32
+  {
+      arbitrary()
+  }
+
+  spec fn f32_add(a: f32, b: f32) -> f32
+  {
+      arbitrary()
+  }
+
+  spec fn max_usize(a: usize, b: usize) -> usize
+  {
+      if a >= b { a } else { b }
+  }
+
+  fn lagadd(c1: Vec<f32>, c2: Vec<f32>) -> (result: Vec<f32>)
+      ensures
+          result.len() == max_usize(c1.len(), c2.len()),
+          forall|i: int| 0 <= i < result.len() ==> {
+              #[trigger] result[i] == f32_add(
+                  if i < c1.len() { c1[i] } else { 0.0f32 },
+                  if i < c2.len() { c2[i] } else { 0.0f32 }
+              )
+          },
+          (c1.len() > 0 || c2.len() > 0) ==> result.len() > 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

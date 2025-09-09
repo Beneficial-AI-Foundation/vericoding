@@ -113,9 +113,7 @@ count_paren_groups_helper paren_string 0 0
 -- </vc-helpers>
 
 def implementation (paren_string: String) : List String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -136,9 +134,7 @@ spec result
 
 theorem correctness
 (paren_string: String)
-: problem_spec implementation paren_string :=
--- <vc-proof>
+: problem_spec implementation paren_string := by
   sorry
--- </vc-proof>
 
 -- #test implementation "( ) (( )) (( )( ))" = ["()", "(())", "(()())"]

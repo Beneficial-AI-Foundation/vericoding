@@ -1,0 +1,77 @@
+vc-description: |-
+  Find the minimum number of bacteria to add to an initially empty box to achieve exactly x bacteria at some point in time.
+  Each morning we can add bacteria, each night bacteria double.
+
+vc-preamble: |-
+  function CountOnesInBinary(n: int): int
+      requires n >= 1
+      ensures CountOnesInBinary(n) >= 1
+      decreases n
+  {
+      if n == 1 then 1
+      else if n % 2 == 1 then 1 + CountOnesInBinary(n / 2)
+      else CountOnesInBinary(n / 2)
+  }
+  
+  predicate ValidInput(x: int) {
+      x >= 1
+  }
+  
+  predicate ValidOutput(x: int, result: int) {
+      ValidInput(x) && result == CountOnesInBinary(x)
+  }
+
+vc-helpers: |-
+  lemma CountOnesEquivalence(n: int)
+      requires n >= 1
+      ensures CountOnesInBinary(n) == CountOnesInBinaryReduction(n)
+      decreases n
+  {
+      if n == 1 {
+          // Base case
+      } else if n % 2 == 1 {
+          CountOnesEquivalence(n / 2);
+          CountOnesEquivalence(n - 1);
+      } else {
+          CountOnesEquivalence(n / 2);
+      }
+  }
+  
+  function CountOnesInBinaryReduction(n: int): int
+      requires n >= 1
+      ensures CountOnesInBinaryReduction(n) >= 1
+      decreases n
+  {
+      if n == 1 then 1
+      else if n % 2 == 1 then 1 + CountOnesInBinaryReduction(n - 1)
+      else CountOnesInBinaryReduction(n / 2)
+  }
+
+vc-spec: |-
+  method MinBacteria(x: int) returns (result: int)
+      requires ValidInput(x)
+      ensures ValidOutput(x, result)
+
+vc-code: |-
+  {
+      var n := x;
+      var ans := 1;
+  
+      while n != 1 
+          invariant n >= 1
+          invariant ans >= 1
+          invariant ans == CountOnesInBinary(x) - CountOnesInBinary(n) + 1
+          decreases n
+      {
+          if n % 2 == 1 {
+              ans := ans + 1;
+              n := n - 1;
+          } else {
+              n := n / 2;
+          }
+      }
+  
+      result := ans;
+  }
+
+vc-postamble: |-

@@ -21,9 +21,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (numbers: List Int) (delimeter: Int) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -48,10 +46,8 @@ theorem correctness
 (numbers: List Int)
 (delimeter: Int)
 : problem_spec implementation numbers delimeter
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation [1, 2, 3] 4 = [1, 4, 2, 4, 3]
 -- #test implementation [] 4 = []

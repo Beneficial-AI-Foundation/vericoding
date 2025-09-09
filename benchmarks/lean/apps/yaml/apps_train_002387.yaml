@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  Given a group of two strings, you need to find the longest uncommon subsequence of this group of two strings.
+  The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be any subsequence of the other strings.
+  
+  A subsequence is a sequence that can be derived from one sequence by deleting some characters without changing the order of the remaining elements. Trivially, any string is a subsequence of itself and an empty string is a subsequence of any string.
+  
+  The input will be two strings, and the output needs to be the length of the longest uncommon subsequence. If the longest uncommon subsequence doesn't exist, return -1.
+  
+  Example 1:
+  
+  Input: "aba", "cdc"
+  Output: 3
+  Explanation: The longest uncommon subsequence is "aba" (or "cdc"), because "aba" is a subsequence of "aba", but not a subsequence of any other strings in the group of two strings. 
+  
+  Note:
+  
+  Both strings' lengths will not exceed 100.
+  Only letters from a ~ z will appear in input strings.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_longest_uncommon_subsequence (s1 s2 : String) : Int := sorry
+  
+  theorem identical_strings_property (s1 s2 : String) (h1 : s1.length > 0) (h2 : s2.length > 0) :
+    (s1 = s2 → find_longest_uncommon_subsequence s1 s2 = -1) ∧ 
+    (s1 ≠ s2 → find_longest_uncommon_subsequence s1 s2 = max s1.length s2.length) := sorry
+
+vc-theorems: |-
+  theorem symmetry_property (s1 s2 : String) (h1 : s1.length > 0) (h2 : s2.length > 0) :
+    find_longest_uncommon_subsequence s1 s2 = find_longest_uncommon_subsequence s2 s1 := sorry
+  
+  theorem same_string_property (s : String) (h : s.length > 0) :
+    find_longest_uncommon_subsequence s s = -1 := sorry
+  
+  theorem return_value_bounds (s1 s2 : String) (h1 : s1.length > 0) (h2 : s2.length > 0) :
+    let result := find_longest_uncommon_subsequence s1 s2
+    result = -1 ∨ result ≥ max s1.length s2.length := sorry
+  
+  /-
+  info: 3
+  -/
+  -- #guard_msgs in
+  -- #eval find_longest_uncommon_subsequence "aba" "cdc"
+  
+  /-
+  info: -1
+  -/
+  -- #guard_msgs in
+  -- #eval find_longest_uncommon_subsequence "aaa" "aaa"
+  
+  /-
+  info: -1
+  -/
+  -- #guard_msgs in
+  -- #eval find_longest_uncommon_subsequence "aefawf" "aefawf"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

@@ -9,35 +9,35 @@
 -/
 
 /-  Convert a polynomial to a Chebyshev series.
-    
+
     This function converts coefficients of a polynomial in the standard monomial basis
     (1, x, x², x³, ...) to coefficients in the Chebyshev polynomial basis
     (T₀(x), T₁(x), T₂(x), T₃(x), ...).
-    
+
     The input polynomial coefficients are ordered from lowest degree to highest:
     pol = [a₀, a₁, a₂, ..., aₙ] represents the polynomial a₀ + a₁x + a₂x² + ... + aₙxⁿ
-    
+
     The output Chebyshev coefficients are also ordered from lowest to highest degree:
     result = [c₀, c₁, c₂, ..., cₙ] represents c₀T₀(x) + c₁T₁(x) + c₂T₂(x) + ... + cₙTₙ(x) -/
 
 /-  Specification: poly2cheb correctly converts polynomial coefficients to Chebyshev series coefficients.
-    
+
     The conversion preserves the polynomial function - that is, the polynomial represented
     in the standard basis and the polynomial represented in the Chebyshev basis evaluate
     to the same value for all x in the domain [-1, 1].
-    
+
     Mathematical Properties:
     1. The conversion is linear: poly2cheb(αp + βq) = α·poly2cheb(p) + β·poly2cheb(q)
     2. The conversion preserves polynomial degree
     3. For the monomial xⁿ, the conversion yields specific Chebyshev coefficients
        based on the expansion of xⁿ in terms of Chebyshev polynomials
-    
+
     Implementation follows Horner's method in reverse:
     - Start with the highest degree coefficient
     - Multiply the accumulator by x (using chebmulx)
     - Add the next coefficient (using chebadd)
     - Repeat until all coefficients are processed
-    
+
     Example conversions:
     - [1, 0, 0, 0] (constant 1) → [1, 0, 0, 0] (T₀(x) = 1)
     - [0, 1, 0, 0] (x) → [0, 1, 0, 0] (T₁(x) = x)
@@ -52,9 +52,7 @@ open Std.Do
 -- </vc-helpers>
 
 def poly2cheb {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem poly2cheb_spec {n : Nat} (pol : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -87,6 +85,4 @@ theorem poly2cheb_spec {n : Nat} (pol : Vector Float n) :
          pol.get ⟨2, sorry⟩ = 0 ∧ pol.get ⟨3, sorry⟩ = 1 →
           result.get ⟨0, sorry⟩ = 0 ∧ result.get ⟨1, sorry⟩ = 0.75 ∧ 
           result.get ⟨2, sorry⟩ = 0 ∧ result.get ⟨3, sorry⟩ = 0.25))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

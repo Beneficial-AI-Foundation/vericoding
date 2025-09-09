@@ -20,9 +20,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (arr: List Int) (k: Nat) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -46,9 +44,7 @@ spec result
 theorem correctness
 (arr: List Int)
 (k: Nat)
-: problem_spec implementation arr k :=
--- <vc-proof>
+: problem_spec implementation arr k := by
   sorry
--- </vc-proof>
 
 -- #test implementation ([111, 21, 3, 4000, 5, 6, 7, 8, 9]: List Int) 4 = 24

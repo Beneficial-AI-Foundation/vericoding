@@ -12,7 +12,7 @@
 /-  Create a HermiteE polynomial from coefficients with default domain and window [-1, 1] -/
 
 /-  Specification: Creating a HermiteE polynomial preserves coefficients and establishes mathematical properties.
-    
+
     HermiteE polynomials are the "probabilists'" version of Hermite polynomials.
     Key mathematical properties:
     1. He₀(x) = 1, He₁(x) = x
@@ -31,7 +31,7 @@ open Std.Do
     He₀(x) = 1
     He₁(x) = x  
     Heₙ₊₁(x) = x * Heₙ(x) - n * Heₙ₋₁(x)
-    
+
     The coefficients represent the expansion: ∑ᵢ cᵢ * Heᵢ(x)
 -/
 structure HermiteEPoly (n : Nat) where
@@ -50,9 +50,7 @@ structure HermiteEPoly (n : Nat) where
 -- </vc-helpers>
 
 def hermiteE {n : Nat} (coef : Vector Float n) : Id (HermiteEPoly n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermiteE_spec {n : Nat} (coef : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -79,6 +77,4 @@ theorem hermiteE_spec {n : Nat} (coef : Vector Float n) :
                    -- Parity property: He_n(-x) = (-1)^n He_n(x)
                    (∀ k : Nat, k < n → ∀ x : Float,
                      hermite_basis k (-x) = (if k % 2 = 0 then 1 else -1) * hermite_basis k x))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

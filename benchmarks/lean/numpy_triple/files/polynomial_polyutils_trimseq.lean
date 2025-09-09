@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def trimseq {n : Nat} (seq : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem trimseq_spec {n : Nat} (seq : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -46,6 +44,4 @@ theorem trimseq_spec {n : Nat} (seq : Vector Float n) :
                     (∀ i : Fin n, i.val > k.val → result.get i = 0) ∧
                     -- Element at k is non-zero unless k = 0 (all zeros case)
                     (k.val > 0 → seq.get k ≠ 0)))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

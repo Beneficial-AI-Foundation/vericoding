@@ -9,16 +9,16 @@
 -/
 
 /-  Convert an array of datetime64 values to an array of strings.
-    
+
     Converts each datetime64 value in the input vector to its string representation.
     The format depends on the timezone option: 'naive' produces no suffix,
     'UTC' adds 'Z' suffix, and 'local' would add timezone offset.
-    
+
     For simplicity, we focus on the core conversion from datetime64 to ISO format strings.
 -/
 
 /-  Specification: datetime_as_string converts each datetime64 to its string representation.
-    
+
     Precondition: True (no special preconditions)
     Postcondition: Each datetime64 is converted to a properly formatted ISO 8601 string
 -/
@@ -68,9 +68,7 @@ inductive TimezoneOption : Type where
 -- </vc-helpers>
 
 def datetime_as_string {n : Nat} (arr : Vector DateTime64 n) (timezone : TimezoneOption := TimezoneOption.naive) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem datetime_as_string_spec {n : Nat} (arr : Vector DateTime64 n) (timezone : TimezoneOption := TimezoneOption.naive) :
     ⦃⌜True⌝⦄
@@ -96,6 +94,4 @@ theorem datetime_as_string_spec {n : Nat} (arr : Vector DateTime64 n) (timezone 
        | TimeUnit.microseconds => result[i].length ≥ 26 -- Include microseconds
        | TimeUnit.nanoseconds => result[i].length ≥ 29) -- Include nanoseconds
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,128 @@
+vc-description: |-
+  /*
+  This task requires writing a Verus method that multiplies two integers. The method should return the product of the two input numbers.
+  
+  -----Input-----
+  The input consists of:
+  a: The first integer.
+  b: The second integer.
+  
+  -----Output-----
+  The output is an integer:
+  Returns the product of the two input integers (a * b).
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn multiply(a: i32, b: i32) -> (result: i32)
+      ensures result == a * b,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      /*
+      -- Invalid Inputs
+      []
+      -- Tests
+      [
+          {
+              "input": {
+                  "a": 3,
+                  "b": 4
+              },
+              "expected": 12,
+              "unexpected": [
+                  0,
+                  11,
+                  15
+              ]
+          },
+          {
+              "input": {
+                  "a": 3,
+                  "b": -4
+              },
+              "expected": -12,
+              "unexpected": [
+                  0,
+                  -11,
+                  12
+              ]
+          },
+          {
+              "input": {
+                  "a": -3,
+                  "b": 4
+              },
+              "expected": -12,
+              "unexpected": [
+                  0,
+                  -11,
+                  12
+              ]
+          },
+          {
+              "input": {
+                  "a": -3,
+                  "b": -4
+              },
+              "expected": 12,
+              "unexpected": [
+                  0,
+                  11,
+                  -12
+              ]
+          },
+          {
+              "input": {
+                  "a": 0,
+                  "b": 5
+              },
+              "expected": 0,
+              "unexpected": [
+                  1,
+                  -1,
+                  5
+              ]
+          },
+          {
+              "input": {
+                  "a": 5,
+                  "b": 0
+              },
+              "expected": 0,
+              "unexpected": [
+                  1,
+                  -1,
+                  5
+              ]
+          },
+          {
+              "input": {
+                  "a": 0,
+                  "b": 0
+              },
+              "expected": 0,
+              "unexpected": [
+                  1,
+                  -1,
+                  5
+              ]
+          }
+      ]
+      */
+  }

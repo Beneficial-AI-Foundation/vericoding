@@ -1,0 +1,57 @@
+vc-description: |-
+  /*
+  Compute the determinant of a square matrix.
+  
+  The determinant satisfies fundamental mathematical properties including:
+  - Explicit formulas for small matrices
+  - Multilinear properties
+  - Behavior under elementary row operations
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn det(a: Vec<Vec<f32>>) -> (result: f32)
+      requires 
+          a.len() > 0,
+          forall|i: int| 0 <= i < a.len() ==> a[i].len() == a.len(),
+      ensures
+          /* The determinant of the identity matrix is 1 */
+          (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> 
+              a[i][j] == (if i == j { 1.0 } else { 0.0 })) ==> result == 1.0,
+          
+          /* If a row is all zeros, the determinant is 0 */
+          (exists|i: int| 0 <= i < a.len() && 
+              forall|j: int| 0 <= j < a.len() ==> a[i][j] == 0.0) ==> result == 0.0,
+          
+          /* If two rows are equal, the determinant is 0 */
+          (exists|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() && i != j &&
+              forall|k: int| 0 <= k < a.len() ==> a[i][k] == a[j][k]) ==> result == 0.0,
+          
+          /* For 1x1 matrices, the determinant is the single element */
+          (a.len() == 1) ==> result == a[0][0],
+          
+          /* For 2x2 matrices, the determinant is ad - bc */
+          (a.len() == 2) ==> result == a[0][0] * a[1][1] - a[0][1] * a[1][0],
+          
+          /* If a column is all zeros, the determinant is 0 */
+          (exists|j: int| 0 <= j < a.len() && 
+              forall|i: int| 0 <= i < a.len() ==> a[i][j] == 0.0) ==> result == 0.0,
+          
+          /* If two columns are equal, the determinant is 0 */
+          (exists|j: int, k: int| 0 <= j < a.len() && 0 <= k < a.len() && j != k &&
+              forall|i: int| 0 <= i < a.len() ==> a[i][j] == a[i][k]) ==> result == 0.0,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0.0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

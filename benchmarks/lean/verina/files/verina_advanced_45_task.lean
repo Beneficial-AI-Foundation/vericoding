@@ -22,9 +22,7 @@ def maxSubarraySum_precond (xs : List Int) : Prop :=
 -- </vc-helpers>
 
 def maxSubarraySum (xs : List Int) (h_precond : maxSubarraySum_precond (xs)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def maxSubarraySum_postcond (xs : List Int) (result: Int) (h_precond : maxSubarraySum_precond (xs)) : Prop :=
@@ -46,9 +44,7 @@ def maxSubarraySum_postcond (xs : List Int) (result: Int) (h_precond : maxSubarr
 
 theorem maxSubarraySum_spec_satisfied (xs: List Int) (h_precond : maxSubarraySum_precond (xs)) :
     maxSubarraySum_postcond (xs) (maxSubarraySum (xs) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

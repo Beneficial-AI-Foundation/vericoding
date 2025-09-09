@@ -24,9 +24,7 @@ def Match_precond (s : String) (p : String) : Prop :=
 -- </vc-helpers>
 
 def Match (s : String) (p : String) (h_precond : Match_precond (s) (p)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def Match_postcond (s : String) (p : String) (result: Bool) (h_precond : Match_precond (s) (p)) :=
@@ -34,9 +32,7 @@ def Match_postcond (s : String) (p : String) (result: Bool) (h_precond : Match_p
 
 theorem Match_spec_satisfied (s: String) (p: String) (h_precond : Match_precond (s) (p)) :
     Match_postcond (s) (p) (Match (s) (p) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

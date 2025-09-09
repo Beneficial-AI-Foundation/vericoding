@@ -28,15 +28,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def NINF : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem NINF_spec :
       ⦃⌜True⌝⦄
       NINF
@@ -62,11 +58,7 @@ vc-condition: |-
         -- Property 9: Absolute value of NINF is positive infinity
         Float.abs result = -result
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

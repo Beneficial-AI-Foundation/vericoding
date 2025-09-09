@@ -88,26 +88,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def maximum_sctype (t : NumericType) : Id NumericType :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem maximum_sctype_spec (t : NumericType) :
       ⦃⌜True⌝⦄
       maximum_sctype t
       ⦃⇓result => ⌜result.kind = t.kind ∧ 
                    result.precision = maxPrecisionFor t.kind ∧
                    precisionLE t.precision result.precision⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

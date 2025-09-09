@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (n: Int) : List Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: Int → List Int)
@@ -47,12 +43,8 @@ vc-condition: |-
   theorem correctness
   (n: Int)
   : problem_spec implementation n
-  :=
-
-vc-proof: |-
-  -- <vc-proof>
+  := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 5 = [1, 2, 6, 24, 15]

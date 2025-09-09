@@ -1,0 +1,26 @@
+/* Euler's constant (e), the base of natural logarithms
+
+Euler's constant, base of natural logarithms, Napier's constant
+e = 2.71828182845904523536028747135266249775724709369995...
+
+Euler's number is the base of the natural logarithm. It is the unique number whose natural logarithm is equal to one.
+
+Specification: e is Euler's constant with mathematical properties:
+1. It is approximately 2.718281828459045
+2. It is the unique positive real number such that ln(e) = 1
+3. It is the limit of (1 + 1/n)^n as n approaches infinity
+4. It satisfies the property that the derivative of e^x equals e^x
+5. It is the sum of the infinite series 1/0! + 1/1! + 1/2! + ... */
+
+use vstd::prelude::*;
+
+verus! {
+fn e() -> (result: f64)
+{
+    // impl-start
+    assume(false);
+    2.718281828459045f64
+    // impl-end
+}
+}
+fn main() {}

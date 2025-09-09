@@ -23,9 +23,7 @@ def intMax (x y : Int) : Int :=
 -- </vc-helpers>
 
 def LongestIncreasingSubsequence (a : Array Int) (h_precond : LongestIncreasingSubsequence_precond (a)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def LongestIncreasingSubsequence_postcond (a : Array Int) (result: Int) (h_precond : LongestIncreasingSubsequence_precond (a)) : Prop :=
@@ -35,9 +33,7 @@ def LongestIncreasingSubsequence_postcond (a : Array Int) (result: Int) (h_preco
 
 theorem LongestIncreasingSubsequence_spec_satisfied (a: Array Int) (h_precond : LongestIncreasingSubsequence_precond (a)) :
     LongestIncreasingSubsequence_postcond (a) (LongestIncreasingSubsequence (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanmedian {n : Nat} (a : Vector Float n) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanmedian_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -59,6 +57,4 @@ theorem nanmedian_spec {n : Nat} (a : Vector Float n) :
               result = (sorted_vals.get ⟨sorted_vals.length / 2 - 1, sorry⟩ + 
                        sorted_vals.get ⟨sorted_vals.length / 2, sorry⟩) / 2)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

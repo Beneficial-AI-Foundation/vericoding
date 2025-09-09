@@ -16,7 +16,7 @@
 /-  Specification: chebcompanion returns a scaled companion matrix with specific structure.
 
     Precondition: The input vector has at least 2 elements (enforced by type)
-    
+
     Postcondition: The result is an (n+1) × (n+1) matrix where:
     1. The superdiagonal and subdiagonal have specific values (0.5 for most entries, sqrt(0.5) for the first)
     2. The last column is adjusted by scaled coefficients
@@ -31,9 +31,7 @@ open Std.Do
 -- </vc-helpers>
 
 def chebcompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebcompanion_spec {n : Nat} (c : Vector Float (n + 2)) :
     ⦃⌜True⌝⦄
@@ -55,6 +53,4 @@ theorem chebcompanion_spec {n : Nat} (c : Vector Float (n + 2)) :
                   (if h : i.val < n then
                      (if i = 0 then -Float.sqrt 0.5 else -0.5) - adjustment
                    else -adjustment))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

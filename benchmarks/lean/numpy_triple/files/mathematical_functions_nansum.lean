@@ -19,9 +19,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nansum {n : Nat} (a : Vector Float n) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nansum_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem nansum_spec {n : Nat} (a : Vector Float n) :
       -- If vector is empty, result is 0
       (n = 0 → result = 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

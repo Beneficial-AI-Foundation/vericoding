@@ -1,0 +1,59 @@
+/* numpy.trim_zeros: Trim the leading and/or trailing zeros from a 1-D array.
+
+Removes zeros from the beginning and/or end of a vector based on the trim mode.
+- Front: removes leading zeros only
+- Back: removes trailing zeros only
+- Both: removes both leading and trailing zeros (default)
+
+The function preserves all non-zero elements and internal zeros.
+
+Specification: trim_zeros removes leading and/or trailing zeros while preserving order.
+
+The function guarantees:
+1. All non-zero elements from the original array are preserved in order
+2. Internal zeros (zeros between non-zero elements) are preserved
+3. Only leading/trailing zeros are removed based on the mode
+4. If the array contains only zeros, returns an empty vector */
+
+use vstd::prelude::*;
+
+verus! {
+
+/* Represents the trim mode for trim_zeros function */
+pub enum TrimMode {
+    /* Trim zeros from the front of the array only (corresponds to 'f') */
+    Front,
+    /* Trim zeros from the back of the array only (corresponds to 'b') */
+    Back,
+    /* Trim zeros from both front and back of the array (corresponds to 'fb', default) */
+    Both,
+}
+fn trim_zeros(arr: Vec<f64>, mode: TrimMode) -> (result: Vec<f64>)
+    ensures
+        exists|start: int, finish: int|
+            0 <= start <= arr.len() &&
+            0 <= finish <= arr.len() &&
+            start <= finish &&
+            result.len() == (finish - start) &&
+            /* Elements before start are zeros (if trimming front) */
+            (matches!(mode, TrimMode::Front | TrimMode::Both) ==> 
+                forall|i: int| 0 <= i < start ==> arr[i] == 0.0) &&
+            /* Elements after finish are zeros (if trimming back) */
+            (matches!(mode, TrimMode::Back | TrimMode::Both) ==> 
+                forall|i: int| finish <= i < arr.len() ==> arr[i] == 0.0) &&
+            /* The preserved elements match exactly */
+            (forall|i: int| 0 <= i < result.len() ==> result[i] == arr[start + i]) &&
+            /* If trimming front, start is the first non-zero or arr.len() */
+            (matches!(mode, TrimMode::Front | TrimMode::Both) ==> 
+                (start == arr.len() || arr[start] != 0.0)) &&
+            /* If trimming back, finish is past the last non-zero or 0 */
+            (matches!(mode, TrimMode::Back | TrimMode::Both) ==> 
+                (finish == 0 || (finish > 0 && arr[finish - 1] != 0.0)))
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

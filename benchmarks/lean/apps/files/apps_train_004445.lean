@@ -1,0 +1,68 @@
+/-
+Imagine two rings with numbers on them. The inner ring spins clockwise (decreasing by 1 each spin) and the outer ring spins counter clockwise (increasing by 1 each spin). We start with both rings aligned on 0 at the top, and on each move we spin each ring one increment. How many moves will it take before both rings show the same number at the top again?
+
+The inner ring has integers from 0 to innerMax and the outer ring has integers from 0 to outerMax, where innerMax and outerMax are integers >= 1.
+
+```
+e.g. if innerMax is 2 and outerMax is 3 then after
+1 move: inner = 2, outer = 1
+2 moves: inner = 1, outer = 2
+3 moves: inner = 0, outer = 3
+4 moves: inner = 2, outer = 0
+5 moves: inner = 1, outer = 1
+Therefore it takes 5 moves for the two rings to reach the same number
+Therefore spinningRings(2, 3) = 5
+```
+```
+e.g. if innerMax is 3 and outerMax is 2 then after
+1 move: inner = 3, outer = 1
+2 moves: inner = 2, outer = 2
+Therefore it takes 2 moves for the two rings to reach the same number
+spinningRings(3, 2) = 2
+```
+
+---
+
+for a bigger challenge, check out the [Performance Version](https://www.codewars.com/kata/59b0b7cd2a00d219ab0000c5) of this kata by @Voile
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def spinning_rings (inner_max outer_max : Nat) : Nat :=
+  sorry
+
+theorem spinning_rings_always_positive (inner_max outer_max : Nat) 
+  (h1 : inner_max > 0) (h2 : outer_max > 0) :
+  spinning_rings inner_max outer_max > 0 :=
+sorry
+
+theorem spinning_rings_same_size_bound (n : Nat) (h : n > 0) :
+  spinning_rings n n ≤ n + 1 :=
+sorry
+
+theorem spinning_rings_edge_cases :
+  spinning_rings 1 1 = 1 ∧
+  (spinning_rings 1 2 = 1 ∨ spinning_rings 1 2 = 2 ∨ spinning_rings 1 2 = 3) :=
+sorry
+
+/-
+info: 5
+-/
+-- #guard_msgs in
+-- #eval spinning_rings 2 3
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval spinning_rings 3 2
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval spinning_rings 1 1
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

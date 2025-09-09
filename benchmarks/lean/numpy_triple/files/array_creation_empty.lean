@@ -14,7 +14,7 @@
     Creates a new vector of the specified length containing uninitialized (arbitrary) values.
     This is a low-level function that allocates memory without setting initial values,
     making it potentially faster than other array creation functions.
-    
+
     For 1D arrays, this takes a size parameter n and returns a Vector Float n
     with arbitrary values.
 -/
@@ -26,12 +26,12 @@
     2. Each element in the vector is a valid Float value
     3. The vector is well-formed - all indices are accessible
     4. No guarantees are made about the actual values - they are arbitrary/uninitialized
-    
+
     Mathematical properties:
     - Size property: The length of the result is exactly n
     - Accessibility property: All elements from index 0 to n-1 are accessible via get
     - Value existence: Each position contains some Float value (but we don't specify which)
-    
+
     This specification captures the key behavior of numpy.empty: it returns a properly
     sized array but makes no promises about the contents, which distinguishes it from
     functions like zeros() or ones() that guarantee specific initial values.
@@ -45,14 +45,10 @@ open Std.Do
 -- </vc-helpers>
 
 def empty (n : Nat) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem empty_spec (n : Nat) :
     ⦃⌜True⌝⦄
     empty n
     ⦃⇓result => ⌜∀ i : Fin n, ∃ v : Float, result.get i = v⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

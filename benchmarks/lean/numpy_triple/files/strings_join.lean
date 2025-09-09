@@ -48,7 +48,7 @@
        original_length + (original_length - 1) * separator_length
     7. Preservation of empty inputs: Empty strings remain empty regardless of separator
     8. Character order preservation: Characters appear in the same order as in input
-    
+
     Sanity checks:
     - Result vector has same length as input vectors
     - Empty sequences produce empty results
@@ -56,7 +56,7 @@
     - Multiple character sequences are properly separated
     - Each result character is either from the original string or the separator
     - No characters are lost or duplicated (except separators)
-    
+
     Precondition: True (no special preconditions for string joining)
     Postcondition: Each result element is the join of characters from the corresponding
                    sequence element using the corresponding separator, with proper
@@ -71,9 +71,7 @@ open Std.Do
 -- </vc-helpers>
 
 def join {n : Nat} (sep seq : Vector String n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem join_spec {n : Nat} (sep seq : Vector String n) :
     ⦃⌜True⌝⦄
@@ -93,6 +91,4 @@ theorem join_spec {n : Nat} (sep seq : Vector String n) :
       (s.length = 1 → result.get i = s) ∧
       -- Non-empty result for non-empty input
       (s.length > 0 → (result.get i).length > 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,245 @@
+vc-description: |-
+  Given n sentences from a chat record, determine the speaker of each sentence based on these patterns:
+  - Freda always ends her sentences with "lala."
+  - Rainbow always begins his sentences with "miao."
+  For each sentence, classify it as spoken by Freda, Rainbow, or unknown if it's ambiguous or matches neither pattern.
+
+vc-preamble: |-
+  predicate ValidInput(input: string)
+  {
+      |input| >= 0
+  }
+  
+  function SplitLines_func(input: string): seq<string>
+      requires |input| >= 0
+  {
+      if |input| == 0 then []
+      else SplitLines_helper(input, 0, "", [])
+  }
+  
+  function SplitLines_helper(input: string, i: int, current: string, acc: seq<string>): seq<string>
+      requires 0 <= i <= |input|
+      requires forall j :: 0 <= j < |current| ==> current[j] != '\n'
+      decreases |input| - i
+  {
+      if i == |input| then
+          if |current| > 0 then acc + [current] else acc
+      else if input[i] == '\n' then
+          SplitLines_helper(input, i + 1, "", acc + [current])
+      else
+          SplitLines_helper(input, i + 1, current + [input[i]], acc)
+  }
+  
+  function ParseInt_func(s: string): int
+      requires |s| >= 0
+      ensures ParseInt_func(s) >= 0
+  {
+      if |s| == 0 then 0
+      else ParseInt_helper(s, 0, 0)
+  }
+  
+  function ParseInt_helper(s: string, i: int, acc: int): int
+      requires 0 <= i <= |s|
+      requires acc >= 0
+      ensures ParseInt_helper(s, i, acc) >= 0
+      decreases |s| - i
+  {
+      if i == |s| || !('0' <= s[i] <= '9') then acc
+      else ParseInt_helper(s, i + 1, acc * 10 + (s[i] as int - '0' as int))
+  }
+  
+  function BuildOutput_func(lines: seq<string>, n: int): string
+      requires |lines| > 0
+      requires n >= 0
+      requires n <= |lines| - 1
+  {
+      if n == 0 then ""
+      else if n == 1 then ClassifySentence_func(lines[1])
+      else BuildOutput_func(lines, n-1) + "\n" + ClassifySentence_func(lines[n])
+  }
+  
+  function ClassifySentence_func(sentence: string): string
+  {
+      if EndsWith_func(sentence, "lala.") && !StartsWith_func(sentence, "miao.") then "Freda's"
+      else if StartsWith_func(sentence, "miao.") && !EndsWith_func(sentence, "lala.") then "Rainbow's" 
+      else "OMG>.< I don't know!"
+  }
+  
+  function StartsWith_func(s: string, prefix: string): bool
+      requires |prefix| >= 0
+  {
+      |prefix| <= |s| && (forall i :: 0 <= i < |prefix| ==> s[i] == prefix[i])
+  }
+  
+  function EndsWith_func(s: string, suffix: string): bool
+      requires |suffix| >= 0
+  {
+      |suffix| <= |s| && (forall i :: 0 <= i < |suffix| ==> s[|s| - |suffix| + i] == suffix[i])
+  }
+  
+  function min(a: int, b: int): int
+  {
+      if a <= b then a else b
+  }
+
+vc-helpers: |-
+  method SplitLines(input: string) returns (lines: seq<string>)
+      requires |input| >= 0
+      ensures |lines| >= 0
+      ensures forall i :: 0 <= i < |lines| ==> forall j :: 0 <= j < |lines[i]| ==> lines[i][j] != '\n'
+      ensures lines == SplitLines_func(input)
+  {
+      var result := [];
+      var current := "";
+      var i := 0;
+  
+      while i < |input|
+          invariant 0 <= i <= |input|
+          invariant forall j :: 0 <= j < |current| ==> current[j] != '\n'
+          invariant forall k :: 0 <= k < |result| ==> forall j :: 0 <= j < |result[k]| ==> result[k][j] != '\n'
+          invariant SplitLines_helper(input, i, current, result) == SplitLines_func(input)
+      {
+          if input[i] == '\n' {
+              result := result + [current];
+              current := "";
+          } else {
+              current := current + [input[i]];
+          }
+          i := i + 1;
+      }
+  
+      if |current| > 0 {
+          result := result + [current];
+      }
+  
+      return result;
+  }
+  
+  method ParseInt(s: string) returns (value: int)
+      requires |s| >= 0
+      ensures value >= 0
+      ensures value == ParseInt_func(s)
+  {
+      var result := 0;
+      var i := 0;
+  
+      while i < |s| && '0' <= s[i] <= '9'
+          invariant 0 <= i <= |s|
+          invariant result >= 0
+          invariant ParseInt_helper(s, i, result) == ParseInt_func(s)
+      {
+          result := result * 10 + (s[i] as int - '0' as int);
+          i := i + 1;
+      }
+  
+      return result;
+  }
+  
+  method StartsWith(s: string, prefix: string) returns (result: bool)
+      requires |prefix| >= 0
+      ensures result <==> StartsWith_func(s, prefix)
+  {
+      if |prefix| > |s| {
+          return false;
+      }
+  
+      var i := 0;
+      while i < |prefix|
+          invariant 0 <= i <= |prefix|
+          invariant forall j :: 0 <= j < i ==> s[j] == prefix[j]
+      {
+          if s[i] != prefix[i] {
+              return false;
+          }
+          i := i + 1;
+      }
+  
+      return true;
+  }
+  
+  method EndsWith(s: string, suffix: string) returns (result: bool)
+      requires |suffix| >= 0
+      ensures result <==> EndsWith_func(s, suffix)
+  {
+      if |suffix| > |s| {
+          return false;
+      }
+  
+      var start := |s| - |suffix|;
+      var i := 0;
+      while i < |suffix|
+          invariant 0 <= i <= |suffix|
+          invariant forall j :: 0 <= j < i ==> s[start + j] == suffix[j]
+      {
+          if s[start + i] != suffix[i] {
+              return false;
+          }
+          i := i + 1;
+      }
+  
+      return true;
+  }
+  
+  method ClassifySentence(sentence: string) returns (classification: string)
+      ensures classification == "Freda's" || classification == "Rainbow's" || classification == "OMG>.< I don't know!"
+      ensures classification == "Freda's" <==> (EndsWith_func(sentence, "lala.") && !StartsWith_func(sentence, "miao."))
+      ensures classification == "Rainbow's" <==> (StartsWith_func(sentence, "miao.") && !EndsWith_func(sentence, "lala."))
+      ensures classification == "OMG>.< I don't know!" <==> !(EndsWith_func(sentence, "lala.") && !StartsWith_func(sentence, "miao.")) && !(StartsWith_func(sentence, "miao.") && !EndsWith_func(sentence, "lala."))
+      ensures classification == ClassifySentence_func(sentence)
+  {
+      var endsWithLala := EndsWith(sentence, "lala.");
+      var startsWithMiao := StartsWith(sentence, "miao.");
+  
+      if endsWithLala && !startsWithMiao {
+          return "Freda's";
+      } else if startsWithMiao && !endsWithLala {
+          return "Rainbow's";
+      } else {
+          return "OMG>.< I don't know!";
+      }
+  }
+
+vc-spec: |-
+  method solve(input: string) returns (result: string)
+      requires ValidInput(input)
+      ensures |result| >= 0
+      ensures var lines := SplitLines_func(input); 
+              if |lines| == 0 then result == ""
+              else (var n := ParseInt_func(lines[0]);
+                    result == BuildOutput_func(lines, min(n, |lines| - 1)))
+
+vc-code: |-
+  {
+      var lines := SplitLines(input);
+      if |lines| == 0 {
+          return "";
+      }
+  
+      var n := ParseInt(lines[0]);
+      var limit := min(n, |lines| - 1);
+      var output := "";
+  
+      var i := 1;
+      while i <= limit
+          invariant 1 <= i <= limit + 1
+          invariant i <= |lines|
+          invariant |lines| > 0
+          invariant limit >= 0
+          invariant limit <= |lines| - 1
+          invariant i - 1 >= 0
+          invariant i - 1 <= |lines| - 1
+          invariant output == BuildOutput_func(lines, i - 1)
+      {
+          var sentence := lines[i];
+          var classification := ClassifySentence(sentence);
+          if i > 1 {
+              output := output + "\n";
+          }
+          output := output + classification;
+          i := i + 1;
+      }
+  
+      return output;
+  }
+
+vc-postamble: |-

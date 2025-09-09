@@ -30,7 +30,7 @@
 /-  Specification: vectorize applies the given function element-wise to the input vector.
     The result vector has the same size and each element is the function applied to 
     the corresponding element of the input vector.
-    
+
     Properties verified:
     1. Element-wise application: each output element equals f applied to corresponding input
     2. Size preservation: output vector has same size as input vector
@@ -46,14 +46,10 @@ open Std.Do
 -- </vc-helpers>
 
 def vectorize {n : Nat} {α β : Type} (f : α → β) (arr : Vector α n) : Id (Vector β n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem vectorize_spec {n : Nat} {α β : Type} (f : α → β) (arr : Vector α n) :
     ⦃⌜True⌝⦄
     vectorize f arr
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = f (arr.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

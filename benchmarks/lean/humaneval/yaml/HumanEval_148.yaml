@@ -29,15 +29,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (planet1: String) (planet2: String) : List String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: String → String → List String)
@@ -67,12 +63,8 @@ vc-condition: |-
   theorem correctness
   (planet1: String)
   (planet2: String)
-  : problem_spec implementation planet1 planet2 :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation planet1 planet2 := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "Jupiter" "Neptune" = ["Saturn", "Uranus"]

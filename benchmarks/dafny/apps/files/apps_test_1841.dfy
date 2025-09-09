@@ -1,0 +1,61 @@
+Given an array of n integers and m queries, for each query l_i, find the number of distinct elements
+in the suffix of the array starting from position l_i (1-indexed). The suffix includes all elements
+from position l_i to the end of the array.
+
+predicate ValidInput(n: int, m: int, A: seq<int>, queries: seq<int>)
+{
+    |A| == n && |queries| == m && n >= 1 && m >= 1 &&
+    forall i :: 0 <= i < m ==> 1 <= queries[i] <= n
+}
+
+function DistinctCount(A: seq<int>, start: int): int
+    requires 0 <= start < |A|
+{
+    |set j | start <= j < |A| :: A[j]|
+}
+
+method solve(n: int, m: int, A: seq<int>, queries: seq<int>) returns (result: seq<int>)
+    requires ValidInput(n, m, A, queries)
+    ensures |result| == m
+    ensures forall i :: 0 <= i < m ==> 
+        result[i] == DistinctCount(A, queries[i] - 1)
+{
+    var Ans: seq<int> := [1];
+    var E: set<int> := {A[n-1]};
+
+    var i := n - 2;
+    while i >= 0 
+        invariant i >= -1
+        invariant i < n - 1
+        invariant |Ans| == n - 1 - i
+        invariant |E| == Ans[|Ans|-1]
+        invariant E == set j | n - 1 - (|Ans| - 1) <= j < n :: A[j]
+        invariant forall k :: 0 <= k < |Ans| ==> 
+            Ans[k] == |set j | n - 1 - k <= j < n :: A[j]|
+    {
+        if A[i] in E {
+            Ans := Ans + [Ans[|Ans|-1]];
+        } else {
+            E := E + {A[i]};
+            Ans := Ans + [Ans[|Ans|-1] + 1];
+        }
+        i := i - 1;
+    }
+
+    result := [];
+    var j := 0;
+    while j < m 
+        invariant 0 <= j <= m
+        invariant |result| == j
+        invariant forall k :: 0 <= k < j ==> 
+            result[k] == DistinctCount(A, queries[k] - 1)
+        invariant |Ans| == n
+        invariant forall k :: 0 <= k < |Ans| ==> 
+            Ans[k] == |set l | n - 1 - k <= l < n :: A[l]|
+    {
+        var x := queries[j] - 1;  // Convert to 0-based
+        x := n - 1 - x;          // Index in Ans
+        result := result + [Ans[x]];
+        j := j + 1;
+    }
+}

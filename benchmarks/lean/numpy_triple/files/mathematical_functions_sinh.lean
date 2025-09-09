@@ -11,17 +11,17 @@
 
     The hyperbolic sine function is defined as:
     sinh(x) = (e^x - e^(-x)) / 2
-    
+
     It represents the y-coordinate of a point on the unit hyperbola,
     analogous to how sine represents the y-coordinate on the unit circle.
     Unlike the regular sine function, sinh is unbounded and monotonic.
-    
+
     Returns an array of the same shape as x, containing the hyperbolic sine of each element.
 -/
 
 /-  Specification: numpy.sinh returns a vector where each element is the hyperbolic sine
     of the corresponding element in x.
-    
+
     Precondition: True (no special preconditions for hyperbolic sine)
     Postcondition: 
     1. For all indices i, result[i] = (e^x[i] - e^(-x[i])) / 2
@@ -41,9 +41,7 @@ open Std.Do
 -- </vc-helpers>
 
 def sinh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem sinh_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -60,6 +58,4 @@ theorem sinh_spec {n : Nat} (x : Vector Float n) :
         (x.get i < 0 → result.get i < 0) ∧
         -- Monotonicity property: for any two indices, if x[i] < x[j], then sinh(x[i]) < sinh(x[j])
         (∀ j : Fin n, x.get i < x.get j → result.get i < result.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -13,7 +13,7 @@
     For a 1D vector, returns a list of indices where elements are non-zero.
     Each index corresponds to a position in the original vector where the element is non-zero.
     The returned indices are in the same order as they appear in the original vector.
-    
+
     This function is equivalent to finding all positions i such that a[i] ≠ 0.
     The result is a list of indices, not suitable for direct array indexing but useful
     for analysis and conditional processing.
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def argwhere {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem argwhere_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -53,6 +51,4 @@ theorem argwhere_spec {n : Nat} (a : Vector Float n) :
         indices.idxOf i < indices.idxOf j) ∧
       (indices = [] ↔ ∀ i : Fin n, a.get i = 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

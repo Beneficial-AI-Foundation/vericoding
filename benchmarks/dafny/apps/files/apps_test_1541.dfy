@@ -1,0 +1,134 @@
+Given a string representing a lever with weights and a pivot, determine if the lever
+tilts left, right, or remains balanced based on torque calculations.
+The pivot is marked by '^', weights are digits 1-9, and empty positions are '='.
+Torque = weight × distance from pivot. Left weights contribute positive torque,
+right weights contribute negative torque.
+
+predicate ValidLeverInput(s: string)
+{
+    |s| >= 3 &&
+    (exists i :: 0 <= i < |s| && s[i] == '^') &&
+    (forall i :: 0 <= i < |s| ==> (s[i] == '^' || s[i] == '=' || ('1' <= s[i] <= '9'))) &&
+    (forall i, j :: 0 <= i < j < |s| && s[i] == '^' ==> s[j] != '^') &&
+    (forall i :: 0 <= i < |s| && s[i] == '^' ==> (i != 0 && i != |s| - 1))
+}
+
+function FindPivot(s: string): int
+    requires exists i :: 0 <= i < |s| && s[i] == '^'
+    requires forall i, j :: 0 <= i < j < |s| && s[i] == '^' ==> s[j] != '^'
+    ensures 0 <= FindPivot(s) < |s|
+    ensures s[FindPivot(s)] == '^'
+    ensures forall j :: 0 <= j < FindPivot(s) ==> s[j] != '^'
+{
+    FindPivotHelper(s, 0)
+}
+
+function FindPivotHelper(s: string, index: int): int
+    requires 0 <= index <= |s|
+    requires exists i :: index <= i < |s| && s[i] == '^'
+    ensures index <= FindPivotHelper(s, index) < |s|
+    ensures s[FindPivotHelper(s, index)] == '^'
+    ensures forall j :: index <= j < FindPivotHelper(s, index) ==> s[j] != '^'
+    decreases |s| - index
+{
+    if index >= |s| then 0
+    else if s[index] == '^' then index
+    else FindPivotHelper(s, index + 1)
+}
+
+function CalculateTorque(s: string, pivotPos: int): int
+    requires 0 <= pivotPos < |s|
+{
+    CalculateTorqueHelper(s, pivotPos, 0)
+}
+
+function CalculateTorqueHelper(s: string, pivotPos: int, index: int): int
+    requires 0 <= pivotPos < |s|
+    requires 0 <= index <= |s|
+    decreases |s| - index
+{
+    if index >= |s| then 0
+    else if '1' <= s[index] <= '9' then
+        var weight := (s[index] as int) - ('0' as int);
+        (pivotPos - index) * weight + CalculateTorqueHelper(s, pivotPos, index + 1)
+    else
+        CalculateTorqueHelper(s, pivotPos, index + 1)
+}
+
+function CalculateTorquePartial(s: string, pivotPos: int, upTo: int): int
+    requires 0 <= pivotPos < |s|
+    requires 0 <= upTo <= |s|
+{
+    CalculateTorqueHelper(s, pivotPos, 0) - CalculateTorqueHelper(s, pivotPos, upTo)
+}
+
+lemma TorqueEquivalenceLemma(s: string, pivotPos: int, upTo: int)
+    requires 0 <= pivotPos < |s|
+    requires 0 <= upTo <= |s|
+    ensures CalculateTorquePartial(s, pivotPos, upTo) == CalculateTorqueHelper(s, pivotPos, 0) - CalculateTorqueHelper(s, pivotPos, upTo)
+    decreases upTo
+{
+    if upTo == 0 {
+        // Base case
+    } else {
+        TorqueEquivalenceLemma(s, pivotPos, upTo - 1);
+        if '1' <= s[upTo - 1] <= '9' {
+            var weight := (s[upTo - 1] as int) - ('0' as int);
+            // The recursive case
+        }
+    }
+}
+
+method solve(s: string) returns (result: string)
+    requires ValidLeverInput(s)
+    ensures result == "left" || result == "right" || result == "balance"
+    ensures var pivotPos := FindPivot(s);
+            var torque := CalculateTorque(s, pivotPos);
+            (torque > 0 ==> result == "left") &&
+            (torque < 0 ==> result == "right") &&
+            (torque == 0 ==> result == "balance")
+{
+    var pivotPos := 0;
+    var i := 0;
+
+    // Find pivot position
+    while i < |s|
+        invariant 0 <= i <= |s|
+        invariant forall j :: 0 <= j < i ==> s[j] != '^'
+    {
+        if s[i] == '^' {
+            pivotPos := i;
+            break;
+        }
+        i := i + 1;
+    }
+
+    assert pivotPos == FindPivot(s);
+
+    var totalTorque := 0;
+    i := 0;
+
+    // Calculate total torque
+    while i < |s|
+        invariant 0 <= i <= |s|
+        invariant totalTorque == CalculateTorquePartial(s, pivotPos, i)
+    {
+        var c := s[i];
+        if '1' <= c <= '9' {
+            var weight := (c as int) - ('0' as int);
+            totalTorque := totalTorque + (pivotPos - i) * weight;
+        }
+        i := i + 1;
+    }
+
+    TorqueEquivalenceLemma(s, pivotPos, |s|);
+    assert totalTorque == CalculateTorque(s, pivotPos);
+
+    if totalTorque < 0 {
+        result := "right";
+    } else if totalTorque > 0 {
+        result := "left";
+    } else {
+        result := "balance";
+    }
+}

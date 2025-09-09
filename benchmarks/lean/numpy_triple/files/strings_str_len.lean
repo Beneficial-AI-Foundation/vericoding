@@ -12,9 +12,9 @@
     For Unicode strings, this counts the number of Unicode code points. -/
 
 /-  Specification: str_len returns the length (number of Unicode code points) of each string element.
-    
+
     Preconditions: None (str_len is defined for all strings)
-    
+
     Postconditions:
     - The result vector has the same size as the input vector
     - Each element in the result corresponds to the length of the corresponding input string
@@ -31,9 +31,7 @@ open Std.Do
 -- </vc-helpers>
 
 def str_len {n : Nat} (a : Vector String n) : Id (Vector Nat n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem str_len_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -55,6 +53,4 @@ theorem str_len_spec {n : Nat} (a : Vector String n) :
       -- Concatenation property: length is additive for concatenation
       (∀ s1 s2 : String, a.get i = s1 ++ s2 → 
         result.get i = s1.length + s2.length)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

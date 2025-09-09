@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nan_to_num {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nan_to_num_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -40,6 +38,4 @@ theorem nan_to_num_spec {n : Nat} (x : Vector Float n) :
       (xi = -Float.inf → ri < 0 ∧ ri.isFinite) ∧
       (xi.isFinite → ri = xi)) ∧
     (∀ i : Fin n, (result.get i).isFinite)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

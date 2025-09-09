@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (a b: Int) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: Int → Int → Int)
@@ -51,12 +47,8 @@ vc-condition: |-
   theorem correctness
   (a b: Int)
   : problem_spec implementation a b
-  :=
-
-vc-proof: |-
-  -- <vc-proof>
+  := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 25 15 = 5

@@ -31,9 +31,7 @@ def isHermitianSymmetric {n : Nat} (a : Vector Complex n) : Prop :=
 -- </vc-helpers>
 
 def irfft {k : Nat} (a : Vector Complex k) (n : Nat) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem irfft_spec {k : Nat} (a : Vector Complex k) (n : Nat) 
     (h_length : n = 2 * (k - 1)) 
@@ -55,6 +53,4 @@ theorem irfft_spec {k : Nat} (a : Vector Complex k) (n : Nat)
       -- Length relationship: output length is twice the input length minus 2
       (n = 2 * (k - 1))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

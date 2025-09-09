@@ -9,7 +9,7 @@
 -/
 
 /-  Pseudo-Vandermonde matrix of given degrees for 2D HermiteE polynomials.
-    
+
     Returns the pseudo-Vandermonde matrix of degrees (x_deg, y_deg) and sample
     points (x, y). The matrix is defined by:
     V[..., (y_deg + 1)*i + j] = He_i(x) * He_j(y)
@@ -17,10 +17,10 @@
 -/
 
 /-  Specification: hermevander2d constructs a 2D pseudo-Vandermonde matrix for HermiteE polynomials.
-    
+
     This function creates a matrix where each row corresponds to a point (x[k], y[k]) and
     each column corresponds to a basis function He_i(x) * He_j(y).
-    
+
     Mathematical properties:
     1. Matrix structure: V[point_idx, basis_idx] = He_i(x[point_idx]) * He_j(y[point_idx])
     2. Basis ordering: basis_idx = (y_deg + 1) * i + j for degrees (i, j)
@@ -38,9 +38,7 @@ open Std.Do
 
 def hermevander2d {n : Nat} (x y : Vector Float n) (x_deg y_deg : Nat) : 
     Id (Vector (Vector Float ((x_deg + 1) * (y_deg + 1))) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermevander2d_spec {n : Nat} (x y : Vector Float n) (x_deg y_deg : Nat) :
     ⦃⌜True⌝⦄
@@ -103,6 +101,4 @@ theorem hermevander2d_spec {n : Nat} (x y : Vector Float n) (x_deg y_deg : Nat) 
                  (∀ i1 j1 i2 j2 : Nat, i1 ≤ x_deg → j1 ≤ y_deg → i2 ≤ x_deg → j2 ≤ y_deg →
                    -- HermiteE polynomials are orthogonal with Gaussian weight
                    (i1 ≠ i2 ∨ j1 ≠ j2) → True)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

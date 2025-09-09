@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def ogrid {n : Nat} (start stop : Float) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ogrid_spec {n : Nat} (start stop : Float) (h : n > 0) :
     ⦃⌜n > 0⌝⦄
@@ -40,6 +38,4 @@ theorem ogrid_spec {n : Nat} (start stop : Float) (h : n > 0) :
                 -- Boundary conditions
                 (n > 1 → result.get ⟨0, h⟩ = start ∧ 
                          result.get ⟨n - 1, Nat.sub_lt h (Nat.zero_lt_one)⟩ = stop)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

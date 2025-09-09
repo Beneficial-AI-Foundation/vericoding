@@ -1,0 +1,46 @@
+/* Upper triangle of a matrix. Returns a copy of the matrix with elements below the k-th diagonal zeroed.
+
+Given a matrix m and an integer k, this function returns a new matrix where:
+- Elements at position (i,j) where i+k <= j are preserved (upper triangle including k-th diagonal)
+- Elements at position (i,j) where i+k > j are set to zero (below k-th diagonal)
+
+The diagonal offset k works as follows:
+- k = 0: main diagonal (default)
+- k > 0: diagonal above the main diagonal
+- k < 0: diagonal below the main diagonal
+
+Specification: triu returns the upper triangle of a matrix with elements below the k-th diagonal set to zero.
+
+Mathematical properties:
+1. Elements on and above the k-th diagonal are preserved: if i+k <= j, then result[i][j] = m[i][j]
+2. Elements below the k-th diagonal are zeroed: if i+k > j, then result[i][j] = 0
+3. The result matrix has the same dimensions as the input matrix
+
+The k-th diagonal is defined as positions (i,j) where i+k = j:
+- When k=0: main diagonal (i=j)
+- When k>0: diagonal above main diagonal 
+- When k<0: diagonal below main diagonal
+
+This captures the essential behavior of numpy.triu which extracts the upper triangular part
+of a matrix relative to the k-th diagonal. */
+
+use vstd::prelude::*;
+
+verus! {
+fn triu(m: Vec<Vec<f64>>, k: i32) -> (result: Vec<Vec<f64>>)
+    requires 
+        m.len() > 0,
+        forall|i: int| 0 <= i < m.len() ==> #[trigger] m[i].len() == m[0].len(),
+    ensures
+        result.len() == m.len(),
+        forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i].len() == m[0].len(),
+        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() && (i as i32) + k <= (j as i32) ==> #[trigger] result[i][j] == m[i][j],
+        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() && (i as i32) + k > (j as i32) ==> #[trigger] result[i][j] == 0.0,
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

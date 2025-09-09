@@ -24,9 +24,7 @@ def SwapBitvectors_precond (X : UInt8) (Y : UInt8) : Prop :=
 -- </vc-helpers>
 
 def SwapBitvectors (X : UInt8) (Y : UInt8) (h_precond : SwapBitvectors_precond (X) (Y)) : UInt8 × UInt8 :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def SwapBitvectors_postcond (X : UInt8) (Y : UInt8) (result: UInt8 × UInt8) (h_precond : SwapBitvectors_precond (X) (Y)) :=
@@ -35,9 +33,7 @@ def SwapBitvectors_postcond (X : UInt8) (Y : UInt8) (result: UInt8 × UInt8) (h_
 
 theorem SwapBitvectors_spec_satisfied (X: UInt8) (Y: UInt8) (h_precond : SwapBitvectors_precond (X) (Y)) :
     SwapBitvectors_postcond (X) (Y) (SwapBitvectors (X) (Y) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

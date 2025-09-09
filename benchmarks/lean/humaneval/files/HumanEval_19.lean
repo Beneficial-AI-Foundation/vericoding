@@ -17,9 +17,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (numbers: String) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -67,9 +65,7 @@ spec result
 theorem correctness
 (numbers: String)
 : problem_spec implementation numbers
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation "three one five" = "one three five"

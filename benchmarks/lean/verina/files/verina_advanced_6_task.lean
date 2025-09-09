@@ -29,9 +29,7 @@ def normalize_str (s : String) : List Char :=
 -- </vc-helpers>
 
 def allVowels (s : String) (h_precond : allVowels_precond (s)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def allVowels_postcond (s : String) (result: Bool) (h_precond : allVowels_precond (s)) : Prop :=
@@ -40,9 +38,7 @@ def allVowels_postcond (s : String) (result: Bool) (h_precond : allVowels_precon
 
 theorem allVowels_spec_satisfied (s: String) (h_precond : allVowels_precond (s)) :
     allVowels_postcond (s) (allVowels (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

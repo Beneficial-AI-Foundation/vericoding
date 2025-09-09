@@ -28,9 +28,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (s: String) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -65,10 +63,8 @@ let spec (result : String) :=
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation "yogurt" = "u"
 -- #test implementation "FULL" = "U"

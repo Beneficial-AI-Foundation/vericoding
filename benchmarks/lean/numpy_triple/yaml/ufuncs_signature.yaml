@@ -31,15 +31,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def parseSignature {n : Nat} (sig : Vector String n) : Id UfuncSignature :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem parseSignature_spec {n : Nat} (sig : Vector String n) 
       (h_valid : n > 0) :
       ⦃⌜n > 0⌝⦄
@@ -60,11 +56,7 @@ vc-condition: |-
           dim_name.length > 0) ∧
         -- Result is well-formed (has inputs or outputs)
         (result.inputs.length + result.outputs.length > 0)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

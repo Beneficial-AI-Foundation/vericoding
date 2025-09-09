@@ -1,0 +1,108 @@
+vc-description: |-
+  /*
+  Solve a linear matrix equation ax = b, where a is an n×n matrix and b is a vector.
+  Returns the solution vector x such that ax = b.
+  For non-empty matrices (n > 0), the solution exists and is unique when a is invertible.
+  
+  Specification: solve returns a vector x such that ax = b when a is invertible.
+  This specification captures the mathematical properties of linear system solving:
+  
+  1. **Correctness**: The solution satisfies the matrix equation ax = b
+  2. **Invertibility requirement**: Matrix a must be invertible (non-singular)
+  3. **Uniqueness**: The solution is unique when it exists
+  4. **Mathematical consistency**: The solution preserves linear algebra properties
+  
+  The specification handles the general case where:
+  - a is an n×n square matrix (represented as Vector of Vector Float)
+  - b is an n-dimensional vector
+  - The solution x is unique when a is invertible
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn matrix_mult_element(a: Seq<Vec<f32>>, b: Seq<Vec<f32>>, i: int, j: int) -> f32 {
+      if a.len() == 0 || b.len() == 0 || i < 0 || j < 0 || i >= a.len() || j >= b.len() {
+          0.0
+      } else if a[i].len() == 0 || b[j].len() == 0 {
+          0.0
+      } else {
+          seq_sum_matrix(a, b, i, j, 0)
+      }
+  }
+
+  spec fn seq_sum_matrix(a: Seq<Vec<f32>>, b: Seq<Vec<f32>>, i: int, j: int, k: int) -> f32
+      decreases if a.len() > 0 && i >= 0 && i < a.len() { a[i].len() - k } else { 0 }
+  {
+      if k >= a[i].len() || k >= b.len() || k < 0 {
+          0.0
+      } else {
+          a[i]@[k as int] + seq_sum_matrix(a, b, i, j, k + 1)
+      }
+  }
+
+  spec fn matrix_vector_mult_element(a: Seq<Vec<f32>>, x: Seq<f32>, i: int) -> f32 {
+      if a.len() == 0 || x.len() == 0 || i < 0 || i >= a.len() {
+          0.0
+      } else if a[i].len() == 0 {
+          0.0
+      } else {
+          seq_sum_vector(a, x, i, 0)
+      }
+  }
+
+  spec fn seq_sum_vector(a: Seq<Vec<f32>>, x: Seq<f32>, i: int, j: int) -> f32
+      decreases if x.len() >= 0 { x.len() - j } else { 0 }
+  {
+      if j >= x.len() || j >= a[i].len() || j < 0 {
+          0.0
+      } else {
+          a[i]@[j as int] + seq_sum_vector(a, x, i, j + 1)
+      }
+  }
+
+  fn solve(a: Vec<Vec<f32>>, b: Vec<f32>) -> (result: Vec<f32>)
+      requires
+          a.len() > 0,
+          a.len() == b.len(),
+          forall|i: int| 0 <= i < a.len() ==> a[i]@.len() == a.len(),
+          exists|a_inv: Seq<Vec<f32>>| 
+              a_inv.len() == a.len() &&
+              (forall|k: int| 0 <= k < a_inv.len() ==> a_inv[k].len() == a.len()) &&
+              (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> 
+                  matrix_mult_element(a@, a_inv, i, j) == (if i == j { 1.0 } else { 0.0 })) &&
+              (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> 
+                  matrix_mult_element(a_inv, a@, i, j) == (if i == j { 1.0 } else { 0.0 })),
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < result.len() ==> 
+              matrix_vector_mult_element(a@, result@, i) == b[i],
+          forall|y: Seq<f32>| (y.len() == a.len() && 
+               forall|i: int| 0 <= i < y.len() ==> 
+                   matrix_vector_mult_element(a@, y, i) == b[i]) ==> 
+              result@ == y,
+          forall|a_inv: Seq<Vec<f32>>| (
+              a_inv.len() == a.len() &&
+              (forall|k: int| 0 <= k < a_inv.len() ==> a_inv[k].len() == a.len()) &&
+              (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> 
+                   matrix_mult_element(a@, a_inv, i, j) == (if i == j { 1.0 } else { 0.0 }))) ==>
+              (forall|i: int| 0 <= i < result.len() ==> 
+                  result[i] == seq_sum_vector(a_inv, b@, i, 0))
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

@@ -17,9 +17,7 @@ def trapRainWater_precond (height : List Nat) : Prop :=
 -- </vc-helpers>
 
 def trapRainWater (height : List Nat) (h_precond : trapRainWater_precond (height)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def trapRainWater_postcond (height : List Nat) (result: Nat) (h_precond : trapRainWater_precond (height)) : Prop :=
@@ -32,9 +30,7 @@ def trapRainWater_postcond (height : List Nat) (result: Nat) (h_precond : trapRa
 
 theorem trapRainWater_spec_satisfied (height: List Nat) (h_precond : trapRainWater_precond (height)) :
     trapRainWater_postcond (height) (trapRainWater (height) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -1,0 +1,54 @@
+/-
+Write a function which reduces fractions to their simplest form! Fractions will be presented as an array/tuple (depending on the language), and the reduced fraction must be returned as an array/tuple:
+
+```
+input:   [numerator, denominator]
+output:  [newNumerator, newDenominator]
+example: [45, 120] --> [3, 8]
+```
+
+All numerators and denominators will be positive integers.
+
+Note: This is an introductory Kata for a series... coming soon!
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def reduce_fraction (p : Int × Int) : Int × Int := sorry
+
+theorem reduce_fraction_result_is_int (p : Int × Int) (h : p.2 ≠ 0) : 
+  ∃ (a b : Int), reduce_fraction p = (a, b) := sorry
+
+theorem reduce_fraction_denominator_positive (p : Int × Int) (h : p.2 ≠ 0) :
+  (reduce_fraction p).2 > 0 := sorry
+
+theorem reduce_fraction_preserves_value (p : Int × Int) (h : p.2 ≠ 0) :
+  p.1 * (reduce_fraction p).2 = p.2 * (reduce_fraction p).1 := sorry 
+
+theorem reduce_fraction_is_lowest_terms (p : Int × Int) (h : p.2 ≠ 0) :
+  Nat.gcd ((Int.natAbs (reduce_fraction p).1)) (Int.natAbs (reduce_fraction p).2) = 1 := sorry
+
+theorem reduce_fraction_zero (n : Int) (h : n ≠ 0) :
+  reduce_fraction (0, n) = (0, 1) := sorry
+
+/-
+info: [3, 1]
+-/
+-- #guard_msgs in
+-- #eval reduce_fraction [60, 20]
+
+/-
+info: [2, 3]
+-/
+-- #guard_msgs in
+-- #eval reduce_fraction [80, 120]
+
+/-
+info: [3, 8]
+-/
+-- #guard_msgs in
+-- #eval reduce_fraction [45, 120]
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

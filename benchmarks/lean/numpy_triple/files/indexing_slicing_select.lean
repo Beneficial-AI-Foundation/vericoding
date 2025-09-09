@@ -9,16 +9,16 @@
 -/
 
 /-  numpy.select: Return an array drawn from elements in choicelist, depending on conditions.
-    
+
     For each element position, returns the element from the first choice array
     where the corresponding condition is True. If no conditions are True,
     returns the default value.
-    
+
     This function enables multi-way conditional selection between arrays.
 -/
 
 /-  Specification: numpy.select performs element-wise multi-conditional selection.
-    
+
     Precondition: condlist and choicelist have the same length
     Postcondition: Each element is selected from the first matching choice array,
                    or default if no conditions match
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def select {n : Nat} {k : Nat} (condlist : Vector (Vector Bool n) k) (choicelist : Vector (Vector Float n) k) (default : Float) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem select_spec {n : Nat} {k : Nat} (condlist : Vector (Vector Bool n) k) (choicelist : Vector (Vector Float n) k) (default : Float) :
     ⦃⌜True⌝⦄
@@ -44,6 +42,4 @@ theorem select_spec {n : Nat} {k : Nat} (condlist : Vector (Vector Bool n) k) (c
         result.get i = (choicelist.get j).get i ∧
         (∀ j' : Fin k, j' < j → (condlist.get j').get i = false)) ∨
       (∀ j : Fin k, (condlist.get j).get i = false ∧ result.get i = default)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

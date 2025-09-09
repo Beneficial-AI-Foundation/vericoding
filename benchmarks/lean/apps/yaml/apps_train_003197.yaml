@@ -1,0 +1,61 @@
+vc-description: |-
+  /-
+  You have a collection of lovely poems. Unfortuantely they aren't formatted very well. They're all on one line, like this:
+  
+  ```
+  Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Complex is better than complicated.
+  ```
+  What you want is to present each sentence on a new line, so that it looks like this:
+  ```
+  Beautiful is better than ugly.
+  Explicit is better than implicit.
+  Simple is better than complex.
+  Complex is better than complicated.
+  ```
+  Write a function, `format_poem()` that takes a string like the one line example as an argument and returns a new string that is formatted across multiple lines with each new sentence starting on a new line when you print it out.
+  
+  Try to solve this challenge with the [str.split()](https://docs.python.org/3/library/stdtypes.html#str.split) and the [str.join()](https://docs.python.org/3/library/stdtypes.html#str.join) string methods.
+  
+  Every sentence will end with a period, and every new sentence will have one space before the previous period. Be careful about trailing whitespace in your solution.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def format_poem (s : String) : String := sorry
+  
+  theorem format_poem_single_sentence (text : String) 
+    (h : ¬ (text.contains '.' )) : 
+    format_poem text = text ++ "." := sorry
+
+vc-theorems: |-
+  theorem format_poem_basic_sentences :
+    format_poem "First sentence. Second sentence. Third sentence" = 
+    "First sentence.\nSecond sentence.\nThird sentence." := sorry
+  
+  /-
+  info: expected1
+  -/
+  -- #guard_msgs in
+  -- #eval format_poem "Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Complex is better than complicated."
+  
+  /-
+  info: expected2
+  -/
+  -- #guard_msgs in
+  -- #eval format_poem "Flat is better than nested. Sparse is better than dense. Readability counts. Special cases aren"t special enough to break the rules."
+  
+  /-
+  info: expected3
+  -/
+  -- #guard_msgs in
+  -- #eval format_poem "If the implementation is hard to explain, it"s a bad idea. If the implementation is easy to explain, it may be a good idea."
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

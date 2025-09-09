@@ -1,0 +1,26 @@
+/* Subtract one Hermite series from another.
+    
+    Returns the difference of two Hermite series c1 - c2. The sequences of coefficients 
+    are from lowest order term to highest. The subtraction is component-wise, with 
+    missing coefficients treated as zero. */
+
+use vstd::prelude::*;
+
+verus! {
+fn hermsub(c1: Vec<f32>, c2: Vec<f32>) -> (result: Vec<f32>)
+    ensures
+        result.len() == std::cmp::max(c1.len(), c2.len()),
+        /* For indices within both arrays, result is the difference */
+        forall|i: int| 0 <= i < c1.len() && i < c2.len() ==> result[i] == c1[i] - c2[i],
+        /* For indices beyond c2's length (when c1.len() > c2.len()), result equals c1 */
+        c1.len() > c2.len() ==> forall|i: int| c2.len() <= i < c1.len() ==> result[i] == c1[i],
+        /* For indices beyond c1's length (when c2.len() > c1.len()), result equals negation of c2 */
+        c2.len() > c1.len() ==> forall|i: int| c1.len() <= i < c2.len() ==> result[i] == -c2[i],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_trunc {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_trunc_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -57,6 +55,4 @@ theorem numpy_trunc_spec {n : Nat} (x : Vector Float n) :
       (∃ k : Int, x.get i = Float.ofInt k → result.get i = x.get i) ∧
       -- Bounded property: result is between 0 and x
       ((x.get i ≥ 0 → result.get i ≤ x.get i) ∧ (x.get i ≤ 0 → result.get i ≥ x.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

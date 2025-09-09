@@ -1,8 +1,8 @@
 /-  Generate a Chebyshev series with given roots.
-    
+
     Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ)
     in Chebyshev form, where rₙ are the roots specified in the input.
-    
+
     The output coefficients c satisfy: p(x) = c₀ + c₁ * T₁(x) + ... + cₙ * Tₙ(x)
     where Tₙ(x) is the n-th Chebyshev polynomial of the first kind. -/
 
@@ -35,9 +35,7 @@ def evalChebyshevPoly {n : Nat} (coeffs : Vector Float n) (x : Float) : Float :=
 -- </vc-helpers>
 
 def chebfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebfromroots_spec {n : Nat} (roots : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -56,6 +54,4 @@ theorem chebfromroots_spec {n : Nat} (roots : Vector Float n) :
         -- but in Chebyshev basis it's 2^(1-n) for n > 0
         coeffs.get ⟨n, by omega⟩ = Float.pow 2 (Float.ofNat (1 - n)))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

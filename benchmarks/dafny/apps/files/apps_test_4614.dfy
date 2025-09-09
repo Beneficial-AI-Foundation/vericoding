@@ -1,0 +1,205 @@
+Given three integers A, B, and C where exactly two are equal and one is different,
+find the integer that is different from the other two.
+
+predicate containsThreeSpaceSeparatedIntegers(input: string)
+{
+    exists i, j, k :: (0 <= i < j < k <= |input| &&
+    isValidIntegerSubstring(input, 0, i) &&
+    input[i] == ' ' &&
+    isValidIntegerSubstring(input, i+1, j) &&
+    input[j] == ' ' &&
+    isValidIntegerSubstring(input, j+1, k) &&
+    (k == |input| || input[k] == '\n'))
+}
+
+predicate exactlyTwoAreEqual(input: string)
+    requires containsThreeSpaceSeparatedIntegers(input)
+{
+    var nums := parseThreeNumbers(input);
+    (nums.0 == nums.1 && nums.0 != nums.2) ||
+    (nums.0 == nums.2 && nums.0 != nums.1) ||
+    (nums.1 == nums.2 && nums.1 != nums.0)
+}
+
+predicate isValidIntegerString(s: string)
+{
+    if |s| == 0 then false
+    else if s == "0" then true
+    else if |s| > 0 && s[0] == '-' then 
+        |s| > 1 && isDigitSequence(s[1..]) && s[1] != '0'
+    else isDigitSequence(s) && s[0] != '0'
+}
+
+predicate isDigitSequence(s: string)
+{
+    forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+}
+
+predicate isValidIntegerSubstring(s: string, start: int, end: int)
+    requires 0 <= start <= end <= |s|
+{
+    if start == end then false
+    else
+        var substr := s[start..end];
+        isValidIntegerString(substr)
+}
+
+function findDifferentNumber(input: string): string
+    requires containsThreeSpaceSeparatedIntegers(input)
+    requires exactlyTwoAreEqual(input)
+{
+    var nums := parseThreeNumbers(input);
+    var different := if nums.0 == nums.1 then nums.2
+                    else if nums.0 == nums.2 then nums.1
+                    else nums.0;
+    intToStringPure(different)
+}
+
+function parseThreeNumbers(input: string): (int, int, int)
+    requires containsThreeSpaceSeparatedIntegers(input)
+{
+    var i := skipSpaces(input, 0);
+    var (num1, next1) := parseIntegerPure(input, i);
+    var j := skipSpaces(input, next1);
+    var (num2, next2) := parseIntegerPure(input, j);
+    var k := skipSpaces(input, next2);
+    var (num3, next3) := parseIntegerPure(input, k);
+    (num1, num2, num3)
+}
+
+function skipSpaces(s: string, start: int): int
+    requires 0 <= start <= |s|
+    ensures start <= skipSpaces(s, start) <= |s|
+    decreases |s| - start
+{
+    if start >= |s| || s[start] != ' ' then start
+    else skipSpaces(s, start + 1)
+}
+
+function parseIntegerPure(s: string, start: int): (int, int)
+    requires 0 <= start <= |s|
+    decreases |s| - start
+{
+    if start >= |s| then (0, start)
+    else
+        var end := findEndOfInteger(s, start);
+        if end == start then (0, start)
+        else (parseIntegerFromSubstring(s[start..end]), end)
+}
+
+function findEndOfInteger(s: string, start: int): int
+    requires 0 <= start <= |s|
+    ensures start <= findEndOfInteger(s, start) <= |s|
+    decreases |s| - start
+{
+    if start >= |s| || s[start] == ' ' || s[start] == '\n' then start
+    else findEndOfInteger(s, start + 1)
+}
+
+function parseIntegerFromSubstring(s: string): int
+    requires |s| > 0
+{
+    if |s| == 1 && s == "0" then 0
+    else if |s| > 0 && s[0] == '-' then 
+        if |s| > 1 then -parsePositiveInteger(s[1..]) else 0
+    else if |s| > 0 then parsePositiveInteger(s)
+    else 0
+}
+
+function parsePositiveInteger(s: string): int
+    requires |s| > 0
+    decreases |s|
+{
+    if |s| == 1 && '0' <= s[0] <= '9' then s[0] as int - '0' as int
+    else if |s| > 1 && '0' <= s[0] <= '9' then 
+        parsePositiveInteger(s[..|s|-1]) * 10 + (s[|s|-1] as int - '0' as int)
+    else 0
+}
+
+function intToStringPure(n: int): string
+    ensures |intToStringPure(n)| > 0
+    ensures isValidIntegerString(intToStringPure(n))
+{
+    if n == 0 then "0"
+    else if n > 0 then positiveIntToString(n)
+    else "-" + positiveIntToString(-n)
+}
+
+function positiveIntToString(n: int): string
+    requires n > 0
+    ensures |positiveIntToString(n)| > 0
+    ensures isDigitSequence(positiveIntToString(n))
+    ensures positiveIntToString(n)[0] != '0'
+    decreases n
+{
+    if n < 10 then [((n % 10) as int + ('0' as int)) as char]
+    else positiveIntToString(n / 10) + [((n % 10) as int + ('0' as int)) as char]
+}
+
+method parseInteger(s: string) returns (result: int)
+    requires |s| > 0
+    requires isValidIntegerString(s)
+{
+    var i := 0;
+    var negative := false;
+    result := 0;
+
+    if i < |s| && s[i] == '-' {
+        negative := true;
+        i := i + 1;
+    }
+
+    while i < |s| && '0' <= s[i] <= '9' {
+        result := result * 10 + (s[i] as int - '0' as int);
+        i := i + 1;
+    }
+
+    if negative {
+        result := -result;
+    }
+}
+
+method intToString(n: int) returns (result: string)
+    ensures |result| > 0
+    ensures isValidIntegerString(result)
+    ensures result == intToStringPure(n)
+{
+    result := intToStringPure(n);
+}
+
+method solve(input: string) returns (result: string)
+    requires |input| > 0
+    requires containsThreeSpaceSeparatedIntegers(input)
+    requires exactlyTwoAreEqual(input)
+    ensures |result| > 0
+    ensures isValidIntegerString(result)
+    ensures result == findDifferentNumber(input)
+{
+    var i := 0;
+
+    while i < |input| && input[i] == ' ' {
+        i := i + 1;
+    }
+    var start := i;
+    while i < |input| && input[i] != ' ' && input[i] != '\n' {
+        i := i + 1;
+    }
+
+    assert start <= i;
+
+    var nums := parseThreeNumbers(input);
+    var num1 := nums.0;
+    var num2 := nums.1;
+    var num3 := nums.2;
+
+    var different: int;
+    if num1 == num2 {
+        different := num3;
+    } else if num1 == num3 {
+        different := num2;
+    } else {
+        different := num1;
+    }
+
+    result := intToString(different);
+}

@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def nansum {n : Nat} (a : Vector Float n) : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem nansum_spec {n : Nat} (a : Vector Float n) :
       ⦃⌜True⌝⦄
       nansum a
@@ -61,11 +57,7 @@ vc-condition: |-
         -- If vector is empty, result is 0
         (n = 0 → result = 0)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

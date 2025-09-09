@@ -15,12 +15,12 @@
     identity operation with matrix type semantics. -/
 
 /-  Specification: asmatrix interprets input data as a matrix without copying.
-    
+
     The function preserves the original data structure and values while
     providing matrix semantics. For our Vector-based implementation, this
     means the output vector has the same length and contains the same elements
     as the input vector.
-    
+
     Key properties:
     1. No copying occurs - the result has the same elements as input
     2. The length is preserved  
@@ -35,14 +35,10 @@ open Std.Do
 -- </vc-helpers>
 
 def asmatrix {n : Nat} (data : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem asmatrix_spec {n : Nat} (data : Vector Float n) :
     ⦃⌜True⌝⦄
     asmatrix data
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = data.get i⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -22,9 +22,7 @@ open Std.Do
 
 def interp {n m : Nat} (x : Vector Float n) (xp : Vector Float (m + 1)) (fp : Vector Float (m + 1)) 
     (h_increasing : ∀ i j : Fin (m + 1), i < j → xp.get i < xp.get j) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem interp_spec {n m : Nat} (x : Vector Float n) (xp : Vector Float (m + 1)) (fp : Vector Float (m + 1)) 
     (h_increasing : ∀ i j : Fin (m + 1), i < j → xp.get i < xp.get j) :
@@ -45,6 +43,4 @@ theorem interp_spec {n m : Nat} (x : Vector Float n) (xp : Vector Float (m + 1))
           ∃ t : Float, 0 ≤ t ∧ t ≤ 1 ∧ 
           result.get k = fp.get ⟨i.val, sorry⟩ + t * (fp.get ⟨i.val + 1, sorry⟩ - fp.get ⟨i.val, sorry⟩))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

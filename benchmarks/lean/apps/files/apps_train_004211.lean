@@ -1,0 +1,56 @@
+/-
+Your task is very simple. Given an input string s, case\_sensitive(s), check whether all letters are lowercase or not. Return True/False and a list of all the entries that are not lowercase in order of their appearance in s.
+
+For example, case\_sensitive('codewars') returns [True, []], but case\_sensitive('codeWaRs') returns [False, ['W', 'R']].
+
+Goodluck :)
+
+Have a look at my other katas!
+
+Alphabetically ordered 
+Find Nearest square number 
+Not prime numbers
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def case_sensitive (s : String) : Bool × List String := sorry
+
+theorem case_sensitive_returns_valid_output (s : String) : 
+  let res := case_sensitive s
+  (res.1 = true ∨ res.1 = false) ∧
+  (∀ x ∈ res.2, String.length x = 1) := sorry
+
+theorem case_sensitive_lowercase_only (s : String) :
+  (∀ c ∈ s.data, 'a' ≤ c ∧ c ≤ 'z') →
+  case_sensitive s = (true, []) := sorry
+
+theorem case_sensitive_uppercase_only (s : String) :
+  s ≠ "" →
+  (∀ c ∈ s.data, 'A' ≤ c ∧ c ≤ 'Z') →
+  let res := case_sensitive s
+  res.1 = false ∧ 
+  (∀ c ∈ s.data, (c.toString) ∈ res.2) ∧
+  (∀ x ∈ res.2, ∃ c ∈ s.data, x = c.toString) := sorry
+
+/-
+info: [True, []]
+-/
+-- #guard_msgs in
+-- #eval case_sensitive "codewars"
+
+/-
+info: [False, ['W', 'R']]
+-/
+-- #guard_msgs in
+-- #eval case_sensitive "codeWaRs"
+
+/-
+info: [True, []]
+-/
+-- #guard_msgs in
+-- #eval case_sensitive ""
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

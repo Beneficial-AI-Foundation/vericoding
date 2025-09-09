@@ -9,18 +9,18 @@
 -/
 
 /-  Multiply one Chebyshev series by another.
-    
+
     Returns the product of two Chebyshev series c1 * c2. The arguments
     are sequences of coefficients, from lowest order term to highest,
     e.g., [1,2,3] represents the series T_0 + 2*T_1 + 3*T_2.
-    
+
     The result length is m + n - 1 where m and n are the lengths of c1 and c2. -/
 
 /-  Specification: chebmul computes the product of two Chebyshev series.
-    
+
     The multiplication of Chebyshev polynomials follows the recurrence relation:
     T_m * T_n = (T_{m+n} + T_{|m-n|}) / 2
-    
+
     This specification captures:
     1. The result has the correct length (m + n - 1)
     2. Mathematical properties of the resulting coefficients
@@ -37,9 +37,7 @@ open Std.Do
 
 def chebmul {m n : Nat} (c1 : Vector Float m) (c2 : Vector Float n) 
     (hm : m > 0) (hn : n > 0) : Id (Vector Float (m + n - 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebmul_spec {m n : Nat} (c1 : Vector Float m) (c2 : Vector Float n) 
     (hm : m > 0) (hn : n > 0) :
@@ -72,6 +70,4 @@ theorem chebmul_spec {m n : Nat} (c1 : Vector Float m) (c2 : Vector Float n)
                   result.get ⟨2, sorry⟩ = 12 ∧
                   result.get ⟨3, sorry⟩ = 4 ∧
                   result.get ⟨4, sorry⟩ = 1.5)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

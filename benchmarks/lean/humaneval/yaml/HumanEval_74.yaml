@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (lst1: List String) (lst2: List String) : List String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: List String → List String → List String)
@@ -59,12 +55,8 @@ vc-condition: |-
   theorem correctness
   (lst1: List String) (lst2: List String)
   : problem_spec implementation lst1 lst2
-  :=
-
-vc-proof: |-
-  -- <vc-proof>
+  := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [] [] = []

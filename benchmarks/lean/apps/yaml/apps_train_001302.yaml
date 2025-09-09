@@ -1,0 +1,65 @@
+vc-description: |-
+  /-
+  Chef has a number N, Cheffina challenges the chef to check the divisibility of all the permutation of N by 3. If any of the permutations is divisible by 3 then print 1 else print 0.
+  
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, two integers $N$. 
+  
+  -----Output:-----
+  For each test case, output in a single line answer 1 or 0.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 10^6$
+  - $1 \leq N \leq 10^6$
+  
+  -----Sample Input:-----
+  2
+  18
+  308
+  
+  -----Sample Output:-----
+  1
+  0
+  -/
+
+vc-preamble: |-
+  def check_permutation_divisible_by_3 (n : Nat) : Nat := sorry
+  
+  def sum_digits (n : Nat) : Nat := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def get_digits (n : Nat) : List Nat := sorry
+  
+  def sort_digits (n : Nat) : Nat := sorry
+
+vc-theorems: |-
+  theorem check_permutation_returns_binary (n : Nat) :
+    check_permutation_divisible_by_3 n = 0 ∨ check_permutation_divisible_by_3 n = 1 := sorry
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval check_permutation_divisible_by_3 18
+  
+  /-
+  info: 0
+  -/
+  -- #guard_msgs in
+  -- #eval check_permutation_divisible_by_3 308
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval check_permutation_divisible_by_3 123
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

@@ -1,0 +1,46 @@
+/-
+Consider the number `1176` and its square (`1176 * 1176) = 1382976`. Notice that:
+
+* the first two digits of `1176` form a prime.
+* the first two digits of the square `1382976` also form a prime.
+* the last two digits of `1176` and `1382976` are the same. 
+
+Given two numbers representing a range (`a, b`), how many numbers satisfy this property within that range? (`a <= n < b`)
+
+## Example
+
+`solve(2, 1200) = 1`, because only `1176` satisfies this property within the range `2 <= n < 1200`. See test cases for more examples. The upper bound for the range will not exceed `1,000,000`. 
+
+Good luck!
+
+If you like this Kata, please try:
+
+[Simple Prime Streaming](https://www.codewars.com/kata/5a908da30025e995880000e3)
+
+[Alphabet symmetry](https://www.codewars.com/kata/59d9ff9f7905dfeed50000b0)
+
+[Upside down numbers](https://www.codewars.com/kata/59f7597716049833200001eb)
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def solve (a b : Nat) : Nat := sorry
+
+theorem solve_non_negative (a b : Nat) : 
+  solve a b ≥ 0 := sorry
+
+theorem solve_empty_range (n : Nat) :
+  solve n n = 0 := sorry 
+
+theorem solve_consistent (a b : Nat) :
+  solve (min a b) (max a b) = solve (min a b) (max a b) := sorry
+
+theorem solve_subsegment (a b c : Nat) (h1: a ≤ b) (h2: b ≤ c) :
+  solve a c ≥ solve a b + solve b c - 1 := sorry
+
+theorem solve_monotonic_range (s e ext : Nat) (h: s ≤ e) :
+  solve s e ≤ solve s (e + ext) := sorry
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

@@ -4,7 +4,7 @@
 
 /-  Specification: ones_like returns a vector where every element is 1,
     with the same length as the input vector.
-    
+
     Mathematical properties:
     1. The result has the same length as the input (enforced by type system)
     2. Every element in the result is exactly 1
@@ -18,14 +18,10 @@ open Std.Do
 -- </vc-helpers>
 
 def ones_like {n : Nat} {T : Type} [OfNat T 1] (a : Vector T n) : Id (Vector T n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ones_like_spec {n : Nat} {T : Type} [OfNat T 1] (a : Vector T n) :
     ⦃⌜True⌝⦄
     ones_like a
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = 1⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

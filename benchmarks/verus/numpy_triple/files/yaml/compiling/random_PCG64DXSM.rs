@@ -1,0 +1,47 @@
+/* BitGenerator for the PCG-64 DXSM pseudo-random number generator
+
+PCG-64 DXSM is a 128-bit implementation of O'Neill's permutation congruential generator
+with the DXSM output mixer. It has better statistical properties in parallel contexts
+than the standard PCG-64.
+
+The generator uses a linear congruential generator (LCG) to advance the state,
+with a fixed odd increment. It uses a 64-bit "cheap multiplier" in the LCG.
+The generator has a period of 2^128 and supports advancing an arbitrary number
+of steps as well as 2^127 streams.
+
+This function generates a sequence of random 64-bit unsigned integers given
+a seed value.
+
+Specification: PCG64DXSM generates a sequence of pseudo-random numbers with specific mathematical properties.
+
+The PCG64DXSM generator satisfies the following properties:
+1. Deterministic: Same seed produces same sequence
+2. Uniform distribution: All 64-bit values are equally likely over the full period
+3. Full period: The generator has period 2^128
+4. Statistical independence: Generated values appear statistically independent
+5. Non-predictability: Knowledge of some outputs doesn't easily predict others */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn pcg64_dxsm_spec(seed: u64, n: nat) -> Seq<u64>
+{
+    arbitrary()
+}
+
+fn pcg64_dxsm(seed: u64, n: usize) -> (result: Vec<u64>)
+    ensures
+        result.len() == n,
+        seed == seed ==> result@ == pcg64_dxsm_spec(seed, n as nat),
+        n > 0 ==> (exists|i: int| 0 <= i < n && #[trigger] result[i] >= 0),
+        n > 1 ==> true,
+        forall|seed_prime: u64| seed != seed_prime ==> 
+            pcg64_dxsm_spec(seed, n as nat) != pcg64_dxsm_spec(seed_prime, n as nat)
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

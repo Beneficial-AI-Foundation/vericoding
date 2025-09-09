@@ -23,9 +23,7 @@ def swapFirstAndLast_precond (a : Array Int) : Prop :=
 -- </vc-helpers>
 
 def swapFirstAndLast (a : Array Int) (h_precond: swapFirstAndLast_precond a) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 -- Theorem: The last element of the input array should be the first element of the modified array; The first element of the input array should be the last element of the modified array; All other elements remain unchanged
 @[reducible, simp]
@@ -37,9 +35,7 @@ def swapFirstAndLast_postcond (a : Array Int) (result : Array Int) (h_precond: s
 
 theorem swapFirstAndLast_spec_satisfied (a : Array Int) (h_precond: swapFirstAndLast_precond a) :
     swapFirstAndLast_postcond a (swapFirstAndLast a h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

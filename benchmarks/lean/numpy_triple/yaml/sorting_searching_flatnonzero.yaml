@@ -28,15 +28,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def flatnonzero {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem flatnonzero_spec {n : Nat} (a : Vector Float n) :
       ⦃⌜True⌝⦄
       flatnonzero a
@@ -51,11 +47,7 @@ vc-condition: |-
         (∀ i j : Fin n, i ∈ result → j ∈ result → i < j → 
           result.idxOf i < result.idxOf j)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -22,9 +22,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (string: String) : List Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -48,9 +46,7 @@ spec result
 theorem correctness
 (string: String)
 : problem_spec implementation string
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation "o o| .| o| o| .| .| .| .| o o" = [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]

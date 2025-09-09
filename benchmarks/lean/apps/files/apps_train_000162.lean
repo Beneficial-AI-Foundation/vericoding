@@ -1,0 +1,75 @@
+/-
+Given a string and a string dictionary, find the longest string in the dictionary that can be formed by deleting some characters of the given string. If there are more than one possible results, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.
+
+Example 1:
+
+Input:
+s = "abpcplea", d = ["ale","apple","monkey","plea"]
+
+Output: 
+"apple"
+
+Example 2:
+
+Input:
+s = "abpcplea", d = ["a","b","c"]
+
+Output: 
+"a"
+
+Note:
+
+All the strings in the input will only contain lower-case letters.
+The size of the dictionary won't exceed 1,000.
+The length of all the strings in the input won't exceed 1,000.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def isSubsequence (sub word : String) : Bool := sorry
+
+def find_longest_word (s : String) (dict : List String) : String := sorry
+
+theorem empty_string_result {dict : List String} : 
+  find_longest_word "" dict = "" := sorry
+
+theorem empty_dict_result {s : String} :
+  find_longest_word s [] = "" := sorry
+
+theorem result_in_dict {s : String} {dict : List String} :
+  let result := find_longest_word s dict
+  result ≠ "" → result ∈ dict := sorry
+
+theorem result_is_subsequence {s : String} {dict : List String} :
+  let result := find_longest_word s dict
+  result ≠ "" → isSubsequence result s = true := sorry
+
+theorem no_longer_valid_word {s : String} {dict : List String} :
+  let result := find_longest_word s dict
+  ∀ w ∈ dict, w.length > result.length → isSubsequence w s = false := sorry
+
+theorem no_lexically_smaller_valid_word {s : String} {dict : List String} :
+  let result := find_longest_word s dict
+  ∀ w ∈ dict, w.length = result.length ∧ w < result → isSubsequence w s = false := sorry
+
+/-
+info: 'apple'
+-/
+-- #guard_msgs in
+-- #eval find_longest_word "abpcplea" ["ale", "apple", "monkey", "plea"]
+
+/-
+info: 'a'
+-/
+-- #guard_msgs in
+-- #eval find_longest_word "abpcplea" ["a", "b", "c"]
+
+/-
+info: 'aaa'
+-/
+-- #guard_msgs in
+-- #eval find_longest_word "aaa" ["aaa", "aa", "a"]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

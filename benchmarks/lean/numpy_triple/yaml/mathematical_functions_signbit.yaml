@@ -21,24 +21,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def signbit {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem signbit_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       signbit x
       ⦃⇓result => ⌜∀ i : Fin n, result.get i = (x.get i < 0)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -9,13 +9,13 @@
 -/
 
 /-  Chebyshev points of the second kind.
-    
+
     Generates n Chebyshev points of the second kind, which are the values
     cos(π*k/(n-1)) for k from 0 to n-1, sorted in ascending order.
     These points are the extrema and endpoints of the Chebyshev polynomial T_{n-1}. -/
 
 /-  Specification: chebpts2 generates Chebyshev points of the second kind
-    
+
     The function returns n points where:
     1. Each point is cos(π*k/(n-1)) for k from n-1 down to 0
     2. The points are sorted in ascending order
@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def chebpts2 (n : Nat) (h : n ≥ 2) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebpts2_spec (n : Nat) (h : n ≥ 2) :
     ⦃⌜n ≥ 2⌝⦄
@@ -51,6 +49,4 @@ theorem chebpts2_spec (n : Nat) (h : n ≥ 2) :
               (n = 2 → pts.get ⟨0, sorry⟩ = -1 ∧ pts.get ⟨1, sorry⟩ = 1) ∧
               -- For n = 3, the middle point is 0
               (n = 3 → pts.get ⟨1, sorry⟩ = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

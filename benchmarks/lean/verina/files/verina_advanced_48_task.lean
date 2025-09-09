@@ -27,9 +27,7 @@ def mergeSort_precond (list : List Int) : Prop :=
 -- </vc-helpers>
 
 def mergeSort (list : List Int) (h_precond : mergeSort_precond (list)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def mergeSort_postcond (list : List Int) (result: List Int) (h_precond : mergeSort_precond (list)) : Prop :=
@@ -37,9 +35,7 @@ def mergeSort_postcond (list : List Int) (result: List Int) (h_precond : mergeSo
 
 theorem mergeSort_spec_satisfied (list: List Int) (h_precond : mergeSort_precond (list)) :
     mergeSort_postcond (list) (mergeSort (list) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

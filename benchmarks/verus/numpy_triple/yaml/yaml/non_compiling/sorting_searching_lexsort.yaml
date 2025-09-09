@@ -1,0 +1,50 @@
+vc-description: |-
+  /*
+  Perform an indirect stable sort using a sequence of keys.
+  Given multiple sorting keys, lexsort returns an array of integer indices that 
+  describes the sort order by multiple columns. The last key in the sequence is used
+  for the primary sort order, ties are broken by the second-to-last key, and so on.
+  
+  Specification: lexsort returns indices that lexicographically sort the keys.
+  The result is a permutation of indices where for any two positions i, j:
+  - If primary key differs, sort by primary key
+  - If primary key is equal, sort by second-to-last key, etc.
+  - The sort is stable (preserves relative order of equal elements)
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn lexsort(keys: Vec<Vec<f32>>) -> (indices: Vec<usize>)
+      requires 
+          keys.len() > 0,
+          keys.len() > 0 ==> forall|i: int| 0 <= i < keys.len() ==> keys[i].len() == keys[0].len(),
+          keys[0].len() > 0,
+      ensures 
+          /* indices is a permutation of 0..n-1 */
+          indices.len() == keys[0].len(),
+          forall|i: int| 0 <= i < keys[0].len() ==> exists|j: int| 0 <= j < indices.len() && indices[j] == i,
+          forall|i: int, j: int| 0 <= i < indices.len() && 0 <= j < indices.len() && indices[i] == indices[j] ==> i == j,
+          /* lexicographic ordering property */
+          forall|i: int, j: int| 0 <= i < j < indices.len() ==> 
+              exists|key_idx: int| 0 <= key_idx < keys.len() && 
+                  (forall|l: int| key_idx < l < keys.len() ==> 
+                      keys[l][indices[i]] == keys[l][indices[j]]) &&
+                  keys[key_idx][indices[i]] <= keys[key_idx][indices[j]],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

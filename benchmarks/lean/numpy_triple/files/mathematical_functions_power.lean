@@ -2,9 +2,9 @@
 
     Raise each base in x1 to the positionally-corresponding power in x2.
     This is equivalent to x1 ** x2 in terms of array broadcasting.
-    
+
     The function computes x1[i] raised to the power x2[i] for each index i.
-    
+
     Mathematical properties:
     - x^0 = 1 for any non-zero x
     - x^1 = x for any x
@@ -18,9 +18,9 @@
     Precondition: For mathematical validity, we require:
     - If x1[i] = 0, then x2[i] ≥ 0 (0^negative is undefined)
     - If x1[i] < 0, then x2[i] should be an integer (for real results, checked by floor = value)
-    
+
     Postcondition: For all indices i, result[i] = x1[i] ^ x2[i]
-    
+
     Key mathematical properties ensured:
     1. Identity: If x2[i] = 0 and x1[i] ≠ 0, then result[i] = 1
     2. Base case: If x2[i] = 1, then result[i] = x1[i]
@@ -35,9 +35,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_power {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_power_spec {n : Nat} (x1 x2 : Vector Float n) 
     (h_valid : ∀ i : Fin n, (x1.get i = 0 → x2.get i ≥ 0) ∧ 
@@ -49,6 +47,4 @@ theorem numpy_power_spec {n : Nat} (x1 x2 : Vector Float n)
                                (x2.get i = 0 ∧ x1.get i ≠ 0 → result.get i = 1) ∧
                                (x2.get i = 1 → result.get i = x1.get i) ∧
                                (x1.get i > 1 ∧ x2.get i > 0 → result.get i > x1.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -22,7 +22,7 @@
     - For j ≥ 2: der[j] = 2*(j+1)*c[j+1], and c[j-2] += j*c[j]/(j-2)
     - For j = 1: der[1] = 4*c[2]
     - For j = 0: der[0] = c[1]
-    
+
     All results are then multiplied by the scaling factor.
 
     Mathematical property: If p(x) = Σ c[i]*T_i(x), then 
@@ -45,9 +45,7 @@ open Std.Do
 
 def chebder {n : Nat} (c : Vector Float (n + 1)) (scl : Float := 1) :
     Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebder_spec {n : Nat} (c : Vector Float (n + 1)) (scl : Float := 1) :
     ⦃⌜True⌝⦄
@@ -64,6 +62,4 @@ theorem chebder_spec {n : Nat} (c : Vector Float (n + 1)) (scl : Float := 1) :
               -- a vector to represent a Chebyshev series and its derivative
               -- This is captured by the recurrence relations above
               True⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

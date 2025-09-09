@@ -26,15 +26,11 @@ vc-helpers: |-
     lst.foldl (fun acc x => if x = n then acc + 1 else acc) 0
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def findMajorityElement (lst : List Int) (h_precond : findMajorityElement_precond (lst)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def findMajorityElement_postcond (lst : List Int) (result: Int) (h_precond : findMajorityElement_precond (lst)) : Prop :=
     let count := fun x => (lst.filter (fun y => y = x)).length
@@ -45,11 +41,7 @@ vc-condition: |-
   
   theorem findMajorityElement_spec_satisfied (lst: List Int) (h_precond : findMajorityElement_precond (lst)) :
       findMajorityElement_postcond (lst) (findMajorityElement (lst) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -9,12 +9,12 @@
 -/
 
 /-  numpy.polynomial.chebyshev.chebinterpolate: Interpolate a function at the Chebyshev points of the first kind.
-    
+
     Returns the Chebyshev series coefficients that interpolate the given function
     at the Chebyshev points of the first kind in the interval [-1, 1]. The resulting
     coefficients represent a polynomial of degree deg that interpolates the function
     at deg+1 Chebyshev points.
-    
+
     The Chebyshev interpolation provides near-optimal polynomial approximation
     for continuous functions on [-1, 1], minimizing the Runge phenomenon and
     providing good convergence properties.
@@ -27,14 +27,14 @@
     3. The interpolation is exact at the Chebyshev points: for each Chebyshev
        point x_k = cos(π * k / deg) where k ∈ {0, ..., deg}, the Chebyshev
        polynomial with coefficients c evaluates to func(x_k)
-    
+
     Mathematical properties:
     - The Chebyshev points of the first kind are x_k = cos(π * k / deg) for k = 0, ..., deg
     - The interpolation minimizes the maximum error among all polynomial interpolations
     - For continuous functions, the interpolation converges uniformly as deg increases
     - The coefficients are computed using the discrete cosine transform of the
       function values at the Chebyshev points
-    
+
     Precondition: True (the function can be any Float → Float function)
     Postcondition: The returned coefficients satisfy the interpolation property
                    at all Chebyshev points of the first kind
@@ -49,9 +49,7 @@ open Std.Do
 -- </vc-helpers>
 
 def chebinterpolate (deg : Nat) (func : Float → Float) : Id (Vector Float (deg + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebinterpolate_spec (deg : Nat) (func : Float → Float) :
     ⦃⌜True⌝⦄
@@ -72,6 +70,4 @@ theorem chebinterpolate_spec (deg : Nat) (func : Float → Float) :
                 ∀ k : Fin (deg + 1), 
                   ∃ interpolated_value : Float,
                     Float.abs (interpolated_value - func (cheb_points.get k)) < 1e-10⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -31,26 +31,18 @@ vc-helpers: |-
       currentMin
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def minArray (a : Array Int) (h_precond : minArray_precond (a)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def minArray_postcond (a : Array Int) (result: Int) (h_precond : minArray_precond (a)) :=
     (∀ i : Nat, i < a.size → result <= a[i]!) ∧ (∃ i : Nat, i < a.size ∧ result = a[i]!)
   
   theorem minArray_spec_satisfied (a: Array Int) (h_precond : minArray_precond (a)) :
       minArray_postcond (a) (minArray (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -35,9 +35,7 @@ structure Complex where
 -- </vc-helpers>
 
 def iscomplex {n : Nat} (x : Vector Complex n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem iscomplex_spec {n : Nat} (x : Vector Complex n) :
     ⦃⌜True⌝⦄
@@ -47,6 +45,4 @@ theorem iscomplex_spec {n : Nat} (x : Vector Complex n) :
                  (∀ i : Fin n, (x.get i).imag ≠ 0.0 → result.get i = true) ∧
                  (∀ i : Fin n, result.get i = true → (x.get i).imag ≠ 0.0) ∧
                  (∀ i : Fin n, result.get i = false → (x.get i).imag = 0.0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

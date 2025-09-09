@@ -27,9 +27,7 @@ axiom evaluateLaguerrePolynomial {k : Nat} : Vector Float k → Float → Float
 
 def lagadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
     Id (Vector Float (max n m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -43,6 +41,4 @@ theorem lagadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
       -- Basic sanity: non-empty inputs produce non-empty output  
       (n > 0 ∨ m > 0 → max n m > 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,26 @@
+/* This task requires determining the smaller of two integers. Given two input numbers, the goal is to compare them and return the one that is less than or equal to the other.
+
+-----Input-----
+The input consists of two integers:
+• x: The first integer.
+• y: The second integer.
+
+-----Output-----
+The output is an integer representing the minimum of the two input integers:
+• Returns x if x is less than or equal to y.
+• Returns y if x is greater than y. */
+
+use vstd::prelude::*;
+
+verus! {
+fn my_min(x: i32, y: i32) -> (result: i32)
+    ensures
+        (x <= y ==> result == x) && (x > y ==> result == y),
+{
+    // impl-start
+    assume(false);
+    0
+    // impl-end
+}
+}
+fn main() {}

@@ -1,0 +1,68 @@
+/-
+Create an identity matrix of the specified size( >= 0).
+
+Some examples:
+
+```
+(1)  =>  [[1]]
+
+(2) => [ [1,0],
+         [0,1] ]
+
+       [ [1,0,0,0,0],
+         [0,1,0,0,0],
+(5) =>   [0,0,1,0,0],
+         [0,0,0,1,0],
+         [0,0,0,0,1] ]   
+
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def get_matrix (n : Nat) : List (List Nat) := sorry
+
+theorem matrix_size_matches_input (n : Nat) (h : n ≤ 100) :
+  let matrix := get_matrix n
+  (matrix.length = n) ∧ 
+  (n > 0 → ∀ row ∈ matrix, row.length = n) := sorry
+
+theorem matrix_has_ones_on_diagonal (n : Nat) (h : n ≤ 100) :
+  let matrix := get_matrix n
+  n > 0 → ∀ i < n, (matrix.get! i).get! i = 1 := sorry
+
+theorem matrix_has_zeros_off_diagonal (n : Nat) (h : n ≤ 100) :
+  let matrix := get_matrix n
+  n > 0 → ∀ i j, i < n → j < n → i ≠ j →
+  (matrix.get! i).get! j = 0 := sorry
+
+theorem empty_matrix :
+  get_matrix 0 = [] := sorry
+
+/-
+info: []
+-/
+-- #guard_msgs in
+-- #eval get_matrix 0
+
+/-
+info: [[1]]
+-/
+-- #guard_msgs in
+-- #eval get_matrix 1
+
+/-
+info: [[1, 0], [0, 1]]
+-/
+-- #guard_msgs in
+-- #eval get_matrix 2
+
+/-
+info: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+-/
+-- #guard_msgs in
+-- #eval get_matrix 3
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

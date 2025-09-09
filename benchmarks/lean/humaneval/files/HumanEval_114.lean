@@ -18,9 +18,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (nums: List Int) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -43,10 +41,8 @@ let spec (result : Int) :=
 theorem correctness
 (nums: List Int)
 : problem_spec implementation nums
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation [2, 3, 4, 1, 2, 4] = 1
 -- #test implementation [-1, -2, -3] = -6

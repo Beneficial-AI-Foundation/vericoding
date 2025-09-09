@@ -1,0 +1,72 @@
+/-
+Firdavs is living on planet F. There are $N$ cities (numbered $1$ through $N$) on this planet; let's denote the value of city $i$ by $v_i$. Firdavs can travel directly from each city to any other city. When he travels directly from city $x$ to city $y$, he needs to pay $f(x, y) = |v_y-v_x|+y-x$ coins (this number can be negative, in which case he receives $-f(x, y)$ coins).
+Let's define a simple path from city $x$ to city $y$ with length $k \ge 1$ as a sequence of cities $a_1, a_2, \ldots, a_k$ such that all cities in this sequence are different, $a_1 = x$ and $a_k = y$. The cost of such a path is $\sum_{i=1}^{k-1} f(a_i, a_{i+1})$.
+You need to answer some queries for Firdavs. In each query, you are given two cities $x$ and $y$, and you need to find the minimum cost of a simple path from city $x$ to city $y$. Then, you need to find the length of the longest simple path from $x$ to $y$ with this cost.
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first line of each test case contains two space-separated integers $N$ and $Q$.
+- The second line contains $N$ space-separated integers $v_1, v_2, \ldots, v_N$.
+- The following $Q$ lines describe queries. Each of these lines contains two space-separated integers $x$ and $y$.
+
+-----Output-----
+For each query, print a single line containing two space-separated integers ― the minimum cost and the maximum length.
+
+-----Constraints-----
+- $1 \le T \le 100$
+- $1 \le N, Q \le 2 \cdot 10^5$
+- $0 \le v_i \le 10^9$ for each valid $i$
+- $1 \le x, y \le N$
+- the sum of $N$ in all test cases does not exceed $5 \cdot 10^5$
+- the sum of $Q$ in all test cases does not exceed $5 \cdot 10^5$
+
+-----Subtasks-----
+Subtask #1 (30 points):
+- $1 \le N, Q \le 1,000$
+- $v_1 < v_2 < \ldots < v_N$
+- the sum of $N$ in all test cases does not exceed $5,000$
+- the sum of $Q$ in all test cases does not exceed $5,000$
+Subtask #2 (70 points): original constraints
+
+-----Example Input-----
+2
+4 2
+4 2 5 7
+2 3
+3 4
+2 1
+1 1
+2 1
+
+-----Example Output-----
+4 3
+3 2
+-1 2
+
+-----Explanation-----
+Example case 1: For the first query, there are two paths with cost $4$ from city $2$ to city $3$:
+- $2 \rightarrow 1 \rightarrow 3$: cost $(|4-2|+1-2)+(|5-4|+3-1) = 4$, length $3$
+- $2 \rightarrow 3$: cost $|5-2|+3-2 = 4$, length $2$
+All other paths have greater costs, so the minimum cost is $4$. Among these two paths, we want the one with greater length, which is $3$.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def solve_city_paths (N : Nat) (Q : Nat) (values : List Nat) (queries : List (List Nat)) : List (List Nat) := sorry
+
+theorem identical_values_path_length
+  {N : Nat} {values : List Nat}
+  (h1 : N ≥ 2)
+  (h2 : N ≤ 10)
+  (h3 : values.length = N)
+  (h4 : ∀ x ∈ values, x = 1)
+  : let Q := 1
+    let queries := [[1, N]]
+    let results := solve_city_paths N Q values queries
+    results.length > 0 ∧ 
+    results[0]!.length > 1 ∧ 
+    results[0]![1]! = N := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

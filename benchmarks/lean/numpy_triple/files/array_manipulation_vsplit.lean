@@ -25,9 +25,7 @@ open Std.Do
 
 def vsplit {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
     (h_div : k > 0 ∧ rows % k = 0) : Id (Vector (Vector (Vector Float cols) (rows / k)) k) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem vsplit_spec {rows cols k : Nat} (mat : Vector (Vector Float cols) rows) 
     (h_div : k > 0 ∧ rows % k = 0) :
@@ -46,6 +44,4 @@ theorem vsplit_spec {rows cols k : Nat} (mat : Vector (Vector Float cols) rows)
                  -- Additional property: the splits partition the original matrix
                  (∀ orig_row : Fin rows, ∃ split_idx : Fin k, ∃ row_idx : Fin (rows / k),
                    orig_row.val = split_idx.val * (rows / k) + row_idx.val)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

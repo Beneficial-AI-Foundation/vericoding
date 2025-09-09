@@ -21,9 +21,7 @@ def longestIncreasingStreak_precond (nums : List Int) : Prop :=
 -- </vc-helpers>
 
 def longestIncreasingStreak (nums : List Int) (h_precond : longestIncreasingStreak_precond (nums)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def longestIncreasingStreak_postcond (nums : List Int) (result: Nat) (h_precond : longestIncreasingStreak_precond (nums)) : Prop :=
@@ -50,9 +48,7 @@ def longestIncreasingStreak_postcond (nums : List Int) (result: Nat) (h_precond 
 
 theorem longestIncreasingStreak_spec_satisfied (nums: List Int) (h_precond : longestIncreasingStreak_precond (nums)) :
     longestIncreasingStreak_postcond (nums) (longestIncreasingStreak (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

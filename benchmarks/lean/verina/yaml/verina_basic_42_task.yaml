@@ -26,15 +26,11 @@ vc-helpers: |-
     '0' ≤ c ∧ c ≤ '9'
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def countDigits (s : String) (h_precond : countDigits_precond (s)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def countDigits_postcond (s : String) (result: Nat) (h_precond : countDigits_precond (s)) :=
     result - List.length (List.filter isDigit s.toList) = 0 ∧
@@ -42,11 +38,7 @@ vc-condition: |-
   
   theorem countDigits_spec_satisfied (s: String) (h_precond : countDigits_precond (s)) :
       countDigits_postcond (s) (countDigits (s) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

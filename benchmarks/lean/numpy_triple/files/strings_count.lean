@@ -18,12 +18,12 @@
 
 /-  Specification: numpy.strings.count returns the number of non-overlapping occurrences 
     of substring within the specified range for each element.
-    
+
     Preconditions:
     - start ≤ end for all elements (valid range)
     - start and end indices are valid (within string bounds)
     - substring is not empty for all elements (to avoid infinite loops)
-    
+
     Postconditions:
     - Result is non-negative for all elements
     - For each element, the count represents non-overlapping occurrences of substring
@@ -39,9 +39,7 @@ open Std.Do
 -- </vc-helpers>
 
 def count {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem count_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n)
     (h_range : ∀ i : Fin n, start.get i ≤ endPos.get i) 
@@ -86,6 +84,4 @@ theorem count_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (star
             other_positions[j]! + (sub.get i).length ≤ other_positions[k]!) →
           other_positions.length ≤ positions.length))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,52 @@
+vc-description: |-
+  /*
+  Build a matrix from a 2x2 block structure using 4 input vectors.
+  This represents a simplified version of numpy.bmat for 2x2 block matrices.
+  The result is a flattened vector representing the block matrix in row-major order.
+  
+  Mathematically, this constructs a 2x2 block matrix where each block is a 1×n vector:
+  [ topLeft    | topRight    ]
+  [ bottomLeft | bottomRight ]
+  
+  The result is flattened as [topLeft | topRight | bottomLeft | bottomRight].
+  
+  Specification: bmat constructs a 2x2 block matrix from four equal-sized vectors.
+  The result is a flattened vector where blocks are arranged as:
+  [topLeft | topRight | bottomLeft | bottomRight]
+  This captures the essential behavior of numpy.bmat for block matrix construction.
+  
+  Precondition: True (no special preconditions for basic block matrix construction)
+  Postcondition: Each block is correctly placed in the flattened result
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn bmat(top_left: Vec<f32>, top_right: Vec<f32>, bottom_left: Vec<f32>, bottom_right: Vec<f32>) -> (result: Vec<f32>)
+      requires 
+          top_left.len() == top_right.len(),
+          top_left.len() == bottom_left.len(),
+          top_left.len() == bottom_right.len(),
+      ensures
+          result.len() == 4 * top_left.len(),
+          forall|i: int| 0 <= i < top_left.len() ==> result[i] == top_left[i],
+          forall|i: int| 0 <= i < top_right.len() ==> result[i + top_left.len()] == top_right[i],
+          forall|i: int| 0 <= i < bottom_left.len() ==> result[i + 2 * top_left.len()] == bottom_left[i],
+          forall|i: int| 0 <= i < bottom_right.len() ==> result[i + 3 * top_left.len()] == bottom_right[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

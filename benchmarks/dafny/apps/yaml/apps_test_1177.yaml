@@ -1,0 +1,144 @@
+vc-description: |-
+  Given a sequence of N integers and a positive integer S, calculate the sum of f(L,R) 
+  over all pairs (L,R) where 1 ≤ L ≤ R ≤ N. For each pair (L,R), f(L,R) is the number 
+  of increasing subsequences with sum equal to S within the range [L,R].
+
+vc-preamble: |-
+  predicate ValidInput(N: int, S: int, A: seq<int>)
+  {
+      N >= 1 && S >= 1 && |A| == N && N <= 3000 && S <= 3000 &&
+      forall i :: 0 <= i < N ==> A[i] >= 1 && A[i] <= 3000
+  }
+  
+  predicate ValidResult(result: int)
+  {
+      result >= 0 && result < 998244353
+  }
+  
+  predicate AllElementsGreaterThanS(A: seq<int>, S: int)
+  {
+      forall i :: 0 <= i < |A| ==> A[i] > S
+  }
+  
+  function SingleElementCase(N: int, S: int, A: seq<int>): int
+      requires N == 1 && |A| == 1
+  {
+      if S == A[0] then 1 else 0
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(N: int, S: int, A: seq<int>) returns (result: int)
+      requires ValidInput(N, S, A)
+      ensures ValidResult(result)
+      ensures result % 998244353 == result
+      ensures (N == 1 && S == A[0]) ==> result == SingleElementCase(N, S, A)
+      ensures (N == 1 && S != A[0]) ==> result == SingleElementCase(N, S, A)
+      ensures AllElementsGreaterThanS(A, S) ==> result == 0
+
+vc-code: |-
+  {
+      var MOD := 998244353;
+      var maxVal := S;
+      for i := 0 to N
+          invariant maxVal >= S
+      {
+          if A[i] > maxVal {
+              maxVal := A[i];
+          }
+      }
+      assert maxVal >= S >= 1;
+  
+      // Handle simple case
+      if N == 1 {
+          if S == A[0] {
+              result := 1;
+              return;
+          } else {
+              result := 0;
+              return;
+          }
+      }
+  
+      // Check if all elements are greater than S
+      var allGreater := true;
+      for i := 0 to N
+          invariant allGreater ==> (forall j :: 0 <= j < i ==> A[j] > S)
+      {
+          if A[i] <= S {
+              allGreater := false;
+              break;
+          }
+      }
+      if allGreater {
+          assert forall i :: 0 <= i < N ==> A[i] > S;
+          result := 0;
+          return;
+      }
+  
+      // dp[i][s] = sum of left indices for subsequences ending at i with sum s
+      var dp := new int[N, maxVal + 1];
+      var cs := new int[maxVal + 1]; // cumulative sum array
+  
+      // Initialize arrays to 0
+      for i := 0 to N {
+          for j := 0 to maxVal + 1 {
+              dp[i, j] := 0;
+          }
+      }
+      for j := 0 to maxVal + 1 {
+          cs[j] := 0;
+      }
+  
+      var ans := 0;
+  
+      for i := 0 to N {
+          var a := A[i];
+          if a <= maxVal {
+              dp[i, a] := i + 1; // 1-based indexing for left boundary
+  
+              // Fill dp[i][s] for s > a
+              if a + 1 <= S {
+                  for s := a + 1 to S + 1 {
+                      if s - a <= maxVal && s <= maxVal {
+                          var temp := cs[s - a] % MOD;
+                          if temp < 0 {
+                              temp := temp + MOD;
+                          }
+                          dp[i, s] := temp;
+                      }
+                  }
+              }
+  
+              // Update cumulative sum
+              for j := 0 to maxVal + 1 {
+                  var temp := (cs[j] + dp[i, j]) % MOD;
+                  if temp < 0 {
+                      temp := temp + MOD;
+                  }
+                  cs[j] := temp;
+                  assert cs[j] >= 0 && cs[j] < MOD;
+              }
+  
+              // Add contribution to answer
+              if S <= maxVal {
+                  var contribution := ((N - i) * dp[i, S]) % MOD;
+                  if contribution < 0 {
+                      contribution := contribution + MOD;
+                  }
+                  ans := (ans + contribution) % MOD;
+                  if ans < 0 {
+                      ans := ans + MOD;
+                  }
+                  assert ans >= 0 && ans < MOD;
+              }
+          }
+      }
+  
+      result := ans;
+      assert result >= 0 && result < MOD;
+  }
+
+vc-postamble: |-

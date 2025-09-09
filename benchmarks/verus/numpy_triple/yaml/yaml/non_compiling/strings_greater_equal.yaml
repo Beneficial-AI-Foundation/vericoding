@@ -1,0 +1,49 @@
+vc-description: |-
+  /*
+  numpy.strings.greater_equal: Return the truth value of (x1 >= x2) element-wise for string arrays.
+  
+  Performs element-wise string comparison between two vectors of strings.
+  Returns a boolean vector indicating whether each string in x1 is greater than or equal 
+  to the corresponding string in x2 using lexicographic ordering.
+  
+  This function compares strings lexicographically and returns True for each
+  position where x1[i] >= x2[i], False otherwise.
+  
+  Examples:
+  - greater_equal ["apple", "banana"] ["apple", "banana"] = [true, true]
+  - greater_equal ["zebra", "apple"] ["apple", "banana"] = [true, false]
+  - greater_equal ["a", "bb"] ["aa", "b"] = [false, true]
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn greater_equal(x1: Vec<String>, x2: Vec<String>) -> (result: Vec<bool>)
+      requires x1.len() == x2.len(),
+      ensures 
+          result.len() == x1.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i] == (x1[i]@ >= x2[i]@),
+          /* Reflexive property: every string is >= itself */
+          forall|i: int| 0 <= i < result.len() && x1[i]@ == x2[i]@ ==> result[i] == true,
+          /* Antisymmetric property captured through string equality */
+          forall|i: int| 0 <= i < result.len() && x1[i]@ >= x2[i]@ && x2[i]@ >= x1[i]@ ==> x1[i]@ == x2[i]@,
+          /* Empty string properties */
+          forall|i: int| 0 <= i < result.len() && x1[i]@ == "" && x2[i]@ == "" ==> result[i] == true,
+          forall|i: int| 0 <= i < result.len() && x1[i]@ != "" && x2[i]@ == "" ==> result[i] == true
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

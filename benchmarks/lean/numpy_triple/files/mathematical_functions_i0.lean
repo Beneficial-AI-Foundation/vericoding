@@ -41,9 +41,7 @@ open Std.Do
 -- </vc-helpers>
 
 def i0 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem i0_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -58,6 +56,4 @@ theorem i0_spec {n : Nat} (x : Vector Float n) :
         (∀ j : Fin n, x.get j = -x.get i → result.get j = result.get i) ∧
         -- Monotonicity for non-negative values
         (∀ j : Fin n, x.get i ≥ 0 → x.get j ≥ 0 → x.get i ≤ x.get j → result.get i ≤ result.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

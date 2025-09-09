@@ -62,16 +62,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def outer {m n : Nat} (op : Float → Float → Float) (a : Vector Float m) (b : Vector Float n) : 
       Id (Vector (Vector Float n) m) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem outer_spec {m n : Nat} (op : Float → Float → Float) (a : Vector Float m) (b : Vector Float n) :
       ⦃⌜True⌝⦄
       outer op a b
@@ -85,11 +81,7 @@ vc-condition: |-
         -- Structural property: result represents all pairs from Cartesian product
         (∀ i : Fin m, ∀ j : Fin n, ∃ ai bj, ai = a.get i ∧ bj = b.get j ∧ (result.get i).get j = op ai bj)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

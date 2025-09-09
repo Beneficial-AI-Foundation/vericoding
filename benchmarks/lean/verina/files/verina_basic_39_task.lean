@@ -24,9 +24,7 @@ def rotateRight_precond (l : List Int) (n : Nat) : Prop :=
 -- </vc-helpers>
 
 def rotateRight (l : List Int) (n : Nat) (h_precond : rotateRight_precond (l) (n)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def rotateRight_postcond (l : List Int) (n : Nat) (result: List Int) (h_precond : rotateRight_precond (l) (n)) :=
@@ -38,9 +36,7 @@ def rotateRight_postcond (l : List Int) (n : Nat) (result: List Int) (h_precond 
 
 theorem rotateRight_spec_satisfied (l: List Int) (n: Nat) (h_precond : rotateRight_precond (l) (n)) :
     rotateRight_postcond (l) (n) (rotateRight (l) (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

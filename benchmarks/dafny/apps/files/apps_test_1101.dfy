@@ -1,0 +1,118 @@
+Given n rooms in a row (some occupied, some free) and k cows, find k+1 free rooms to book 
+such that when one room is assigned to Farmer John and k rooms to his cows, the maximum 
+distance from Farmer John's room to any cow's room is minimized.
+
+predicate isValidPlacement(rooms: string, k: int, placement: seq<int>)
+{
+    |placement| == k + 1 &&
+    (forall i :: 0 <= i < |placement| ==> 0 <= placement[i] < |rooms|) &&
+    (forall i :: 0 <= i < |placement| ==> rooms[placement[i]] == '0') &&
+    (forall i, j :: 0 <= i < j < |placement| ==> placement[i] != placement[j]) &&
+    (forall i :: 0 <= i < |placement| - 1 ==> placement[i] < placement[i+1])
+}
+
+function abs(x: int): int
+    ensures abs(x) >= 0
+    ensures abs(x) == x || abs(x) == -x
+{
+    if x >= 0 then x else -x
+}
+
+function maxDistanceHelper(placement: seq<int>, farmerIndex: int, currentIndex: int, currentMax: int): int
+    requires |placement| >= 1
+    requires 0 <= farmerIndex < |placement|
+    requires 0 <= currentIndex <= |placement|
+    requires currentMax >= 0
+    ensures maxDistanceHelper(placement, farmerIndex, currentIndex, currentMax) >= 0
+    decreases |placement| - currentIndex
+{
+    if currentIndex >= |placement| then currentMax
+    else if currentIndex == farmerIndex then 
+        maxDistanceHelper(placement, farmerIndex, currentIndex + 1, currentMax)
+    else
+        var dist := abs(placement[currentIndex] - placement[farmerIndex]);
+        var newMax := if dist > currentMax then dist else currentMax;
+        maxDistanceHelper(placement, farmerIndex, currentIndex + 1, newMax)
+}
+
+function maxDistanceFromFarmer(placement: seq<int>, farmerIndex: int): int
+    requires |placement| >= 1
+    requires 0 <= farmerIndex < |placement|
+    ensures maxDistanceFromFarmer(placement, farmerIndex) >= 0
+{
+    maxDistanceHelper(placement, farmerIndex, 0, 0)
+}
+
+function minOverAllFarmerPositions(placement: seq<int>, currentFarmerIndex: int, maxIndex: int): int
+    requires |placement| >= 1
+    requires 0 <= currentFarmerIndex <= maxIndex <= |placement|
+    requires maxIndex >= 1
+    ensures minOverAllFarmerPositions(placement, currentFarmerIndex, maxIndex) >= 0
+    decreases maxIndex - currentFarmerIndex
+{
+    if currentFarmerIndex >= maxIndex then |placement| * |placement|
+    else 
+        var currentMaxDist := maxDistanceFromFarmer(placement, currentFarmerIndex);
+        var restMinDist := minOverAllFarmerPositions(placement, currentFarmerIndex + 1, maxIndex);
+        if currentMaxDist <= restMinDist then currentMaxDist else restMinDist
+}
+
+function optimalMaxDistance(placement: seq<int>): int
+    requires |placement| >= 1
+    ensures optimalMaxDistance(placement) >= 0
+{
+    if |placement| == 1 then 0
+    else minOverAllFarmerPositions(placement, 0, |placement|)
+}
+
+method solve(n: int, k: int, rooms: string) returns (result: int)
+    requires n > 0
+    requires k > 0 
+    requires k < n
+    requires |rooms| == n
+    requires forall i :: 0 <= i < n ==> rooms[i] == '0' || rooms[i] == '1'
+    requires |set i | 0 <= i < n && rooms[i] == '0'| >= k + 1
+    ensures result >= 0
+    ensures exists placement :: isValidPlacement(rooms, k, placement) && optimalMaxDistance(placement) == result
+{
+    var placement := [];
+    var count := 0;
+    var idx := 0;
+
+    ghost var availableFromIdx := set i | 0 <= i < n && rooms[i] == '0';
+
+    while idx < n && count < k + 1
+        invariant 0 <= idx <= n
+        invariant 0 <= count <= k + 1
+        invariant |placement| == count
+        invariant forall j :: 0 <= j < |placement| ==> 0 <= placement[j] < n
+        invariant forall j :: 0 <= j < |placement| ==> rooms[placement[j]] == '0'
+        invariant forall j :: 0 <= j < |placement| ==> placement[j] < idx
+        invariant forall i, j :: 0 <= i < j < |placement| ==> placement[i] < placement[j]
+        invariant availableFromIdx == set i | idx <= i < n && rooms[i] == '0'
+        invariant count + |availableFromIdx| >= k + 1
+    {
+        ghost var oldAvailableFromIdx := availableFromIdx;
+
+        if rooms[idx] == '0' {
+            placement := placement + [idx];
+            count := count + 1;
+        }
+
+        availableFromIdx := set i | idx + 1 <= i < n && rooms[i] == '0';
+        idx := idx + 1;
+
+        if rooms[idx-1] == '0' {
+            assert oldAvailableFromIdx == availableFromIdx + {idx-1};
+            assert |oldAvailableFromIdx| == |availableFromIdx| + 1;
+        } else {
+            assert oldAvailableFromIdx == availableFromIdx;
+        }
+    }
+
+    assert count == k + 1;
+    assert |placement| == k + 1;
+    assert isValidPlacement(rooms, k, placement);
+
+    result := optimalMaxDistance(placement);
+}

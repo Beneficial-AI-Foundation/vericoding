@@ -1,0 +1,38 @@
+Good, now I'll provide the corrected YAML:
+
+vc-description: |-
+  /*
+  This task requires writing a Verus method that finds the first missing natural number in an increasingly sorted list. The method should return the smallest natural number that is not in the list, ensuring that all natural numbers that are smaller is inside the list.
+  
+  -----Input-----
+  The input consists of a list of natural numbers sorted in increasing order:
+  l: The sorted list
+  
+  -----Output-----
+  The output is a natural number:
+  Returns the smallest natural number that is not in the list, which means all natural numbers that are smaller than the returned value should be inside the input list.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn smallest_missing(l: Seq<nat>) -> nat;
+
+vc-code: |-
+  proof fn smallest_missing_spec_satisfied(l: Seq<nat>)
+      requires forall|i: int, j: int| 0 <= i < j < l.len() ==> l[i] < l[j],
+      ensures
+          !l.contains(smallest_missing(l)),
+          forall|candidate: nat| candidate < smallest_missing(l) ==> l.contains(candidate),
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

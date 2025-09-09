@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lagval {n m : Nat} (x : Vector Float m) (c : Vector Float (n + 1)) : Id (Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagval_spec {n m : Nat} (x : Vector Float m) (c : Vector Float (n + 1)) 
     (h : n + 1 > 0) :
@@ -44,6 +42,4 @@ theorem lagval_spec {n m : Nat} (x : Vector Float m) (c : Vector Float (n + 1))
       -- Sanity check: result preserves input shape
       result.size = x.size
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

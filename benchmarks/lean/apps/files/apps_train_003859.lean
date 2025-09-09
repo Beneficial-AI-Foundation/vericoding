@@ -1,0 +1,71 @@
+/-
+The magic sum of 3s is calculated on an array by summing up odd numbers which include the digit `3`. Write a function `magic_sum` which accepts an array of integers and returns the sum.
+
+*Example:* `[3, 12, 5, 8, 30, 13]` results in `16` (`3` + `13`)
+
+If the sum cannot be calculated, `0` should be returned.
+-/
+
+def containsThree (n : Int) : Bool := 
+  sorry
+
+def magicSum (nums : List Int) : Int := 
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def sumList (nums : List Int) : Int :=
+  sorry
+
+theorem magic_sum_filtering_contributing (nums : List Int) :
+  let contributing := nums.filter (fun x => x % 2 = 1 ∧ containsThree x)
+  contributing ≠ [] → magicSum nums = magicSum contributing := by
+  sorry
+
+theorem magic_sum_filtering_non_contributing (nums : List Int) :
+  let non_contributing := nums.filter (fun x => x % 2 = 0 ∨ ¬containsThree x) 
+  magicSum non_contributing = 0 := by
+  sorry
+
+theorem magic_sum_order_invariant (nums : List Int) :
+  magicSum nums = magicSum nums.reverse := by
+  sorry
+
+theorem magic_sum_duplicates (nums : List Int) :
+  magicSum (nums ++ nums) = 2 * magicSum nums := by
+  sorry
+
+theorem magic_sum_empty :
+  magicSum [] = 0 := by
+  sorry
+
+theorem magic_sum_valid_sum (nums : List Int) :
+  let valid := nums.filter (fun x => x % 2 = 1 ∧ containsThree x)
+  valid ≠ [] → magicSum nums = sumList valid := by
+  sorry
+
+theorem magic_sum_all_invalid (nums : List Int) :
+  (∀ x ∈ nums, x % 2 = 0 ∨ ¬containsThree x) → magicSum nums = 0 := by
+  sorry
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval magic_sum [3]
+
+/-
+info: 16
+-/
+-- #guard_msgs in
+-- #eval magic_sum [3, 13]
+
+/-
+info: 16
+-/
+-- #guard_msgs in
+-- #eval magic_sum [3, 12, 5, 8, 30, 13]
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

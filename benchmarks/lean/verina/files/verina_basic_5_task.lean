@@ -20,9 +20,7 @@ def multiply_precond (a : Int) (b : Int) : Prop :=
 -- </vc-helpers>
 
 def multiply (a : Int) (b : Int) (h_precond : multiply_precond (a) (b)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def multiply_postcond (a : Int) (b : Int) (result: Int) (h_precond : multiply_precond (a) (b)) :=
@@ -30,9 +28,7 @@ def multiply_postcond (a : Int) (b : Int) (result: Int) (h_precond : multiply_pr
 
 theorem multiply_spec_satisfied (a: Int) (b: Int) (h_precond : multiply_precond (a) (b)) :
     multiply_postcond (a) (b) (multiply (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

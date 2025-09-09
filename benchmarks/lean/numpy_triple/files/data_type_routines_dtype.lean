@@ -2,7 +2,7 @@
 
     A numpy array is homogeneous, and contains elements described by a dtype object. 
     A dtype object can be constructed from different combinations of fundamental numeric types.
-    
+
     This specification focuses on creating basic numeric data types like int16, int32, float32, float64.
     The function maps type specifications to their corresponding DType objects with proper
     attributes like size, alignment, and signedness.
@@ -35,9 +35,7 @@ structure DType where
 -- </vc-helpers>
 
 def numpy_dtype (type_spec : String) : Id DType :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_dtype_spec (type_spec : String) 
     (h_valid : type_spec ∈ ["int8", "int16", "int32", "int64", "float32", "float64", "bool"]) :
@@ -61,6 +59,4 @@ theorem numpy_dtype_spec (type_spec : String)
        (type_spec = "float64" → dt.itemsize = 8 ∧ dt.kind = "f") ∧
        (type_spec = "bool" → dt.itemsize = 1 ∧ dt.kind = "b"))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

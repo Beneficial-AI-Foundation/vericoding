@@ -1,0 +1,60 @@
+vc-description: |-
+  /*
+  Format a floating-point number into a string representation.
+  This function takes a floating-point value and converts it to a human-readable 
+  string format, handling special cases like NaN and infinity, and choosing 
+  between scientific and positional notation based on the magnitude of the number.
+  
+  Specification: format_float produces a valid string representation of a float.
+  The function handles special cases (NaN, infinity) and chooses appropriate 
+  notation based on the magnitude of the input. The output string should be 
+  parseable back to a float representation and preserve the essential value 
+  characteristics.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn format_float(x: f64, parens: bool) -> (result: String)
+      ensures
+          /* The result is a non-empty string */
+          result@.len() > 0,
+          /* If x is NaN, result represents NaN (case insensitive) */
+          x.is_nan() ==> (result@ == "nan"@ || result@ == "NaN"@),
+          /* If x is positive infinity, result represents positive infinity */
+          (x.is_infinite() && x > 0.0) ==> (result@ == "inf"@ || result@ == "Inf"@),
+          /* If x is negative infinity, result represents negative infinity */
+          (x.is_infinite() && x < 0.0) ==> (result@ == "-inf"@ || result@ == "-Inf"@),
+          /* If x is zero, result represents zero appropriately */
+          (x == 0.0) ==> (result@ == "0."@ || result@ == "0.0"@ || result@ == "0"@),
+          /* For finite non-zero numbers, result contains digits */
+          (x.is_finite() && x != 0.0) ==> 
+              exists|i: int| 0 <= i < result@.len() && result@[i].is_ascii_digit(),
+          /* For negative finite numbers, result starts with minus sign */
+          (x.is_finite() && x < 0.0) ==> (result@.len() > 0 && result@[0] == '-'),
+          /* If parens is true and the result looks like scientific notation, wrap in parentheses */
+          (parens && (exists|i: int| 0 <= i < result@.len() && (result@[i] == 'e' || result@[i] == 'E'))) ==> 
+              (result@.len() > 0 && result@[0] == '(' && result@[result@.len() - 1] == ')'),
+          /* Result contains only valid float representation characters */
+          forall|i: int| 0 <= i < result@.len() ==> {
+              let c = result@[i];
+              c.is_ascii_digit() || c == '.' || c == '-' || c == '+' || c == 'e' || c == 'E' || 
+              c == '(' || c == ')' || c == 'n' || c == 'a' || c == 'i' || c == 'f' || c == 'I' || c == 'N'
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      String::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

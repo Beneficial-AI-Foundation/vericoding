@@ -1,0 +1,46 @@
+/* Raise a Chebyshev series to a power.
+    
+Returns the Chebyshev series c raised to the power pow. The
+argument c is a sequence of coefficients ordered from low to high,
+i.e., [1,2,3] represents the series T_0 + 2*T_1 + 3*T_2.
+    
+The power must be a non-negative integer. Special cases:
+- pow = 0 returns [1] (the constant polynomial 1)
+- pow = 1 returns the input series unchanged
+- pow > 1 returns the series multiplied by itself pow times
+    
+The result length grows as: 1 + (n - 1) * pow, where n is the input length. */
+
+use vstd::prelude::*;
+
+verus! {
+fn chebpow(c: Vec<f32>, pow: usize, maxpower: usize) -> (result: Vec<f32>)
+    requires 
+        c.len() > 0,
+        pow <= maxpower,
+    ensures
+        /* Special case: pow = 0 returns a vector containing only 1.0 */
+        pow == 0 ==> result.len() == 1 && result[0] == 1.0,
+        /* Special case: pow = 1 returns the input unchanged */
+        pow == 1 ==> result.len() == c.len() && forall|i: int| 0 <= i < c.len() ==> result[i] == c[i],
+        /* Result length is correct */
+        result.len() == if pow == 0 { 1 } else { 1 + (c.len() - 1) * pow },
+        /* General mathematical property for pow > 1 */
+        pow > 1 ==> (
+            /* First coefficient (constant term) exists and is non-zero for non-trivial cases */
+            c.len() >= 1 ==> exists|v: f32| result[0] == v,
+            /* All coefficients are finite */
+            forall|i: int| 0 <= i < result.len() ==> result[i].is_finite()
+        ),
+        /* Additional property: non-triviality for pow >= 2 */
+        (pow >= 2 && c.len() >= 2) ==> (
+            exists|k: int| k >= 2 && k < result.len() && result[k] != 0.0
+        ),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

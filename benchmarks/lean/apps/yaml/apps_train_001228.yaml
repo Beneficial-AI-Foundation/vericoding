@@ -1,0 +1,91 @@
+vc-description: |-
+  /-
+  You are given a set $S$ and $Q$ queries. Initially, $S$ is empty. In each query:
+  - You are given a positive integer $X$.
+  - You should insert $X$ into $S$.
+  - For each $y \in S$ before this query such that $y \neq X$, you should also insert $y \oplus X$ into $S$ ($\oplus$ denotes the XOR operation).
+  - Then, you should find two values $E$ and $O$: the number of elements of $S$ with an even number of $1$-s and with an odd number of $1$-s in the binary representation, respectively.
+  Note that a set cannot have duplicate elements, so if you try to insert into $S$ an element that is already present in $S$, then nothing happens.
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $Q$.
+  - Each of the next $Q$ lines contains a single integer $X$ describing a query.
+  
+  -----Output-----
+  For each query, print a single line containing two space-separated integers $E$ and $O$.
+  
+  -----Constraints-----
+  - $1 \le T \le 5$
+  - $1 \le Q, X \le 10^5$
+  
+  -----Subtasks-----
+  Subtask #1 (30 points):
+  - $1 \le Q \le 1,000$
+  - $1 \le X \le 128$
+  Subtask #2 (70 points): original constraints
+  
+  -----Example Input-----
+  1
+  3
+  4
+  2
+  7
+  
+  -----Example Output-----
+  0 1
+  1 2
+  3 4
+  
+  -----Explanation-----
+  Example case 1:
+  - Initially, the set is empty: $S = \{\}$.
+  - After the first query, $S = \{4\}$, so there is only one element with an odd number of $1$-s in the binary representation ("100").
+  - After the second query, $S = \{4,2,6\}$, there is one element with an even number of $1$-s in the binary representation ($6$ is "110") and the other two elements have an odd number of $1$-s.
+  - After the third query, $S = \{4,2,6,7,3,5,1\}$.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve_binary_set (nums : List Nat) : List (Nat × Nat) := sorry
+  
+  theorem single_number_output (x : Nat) :
+    let result := solve_binary_set [x]
+    List.length result = 1 ∧ 
+    result.all (fun p => p.1 ≥ 0 ∧ p.2 ≥ 0) ∧
+    match result.head? with
+    | some (e, o) => e + o = 1
+    | none => False
+    := sorry
+
+vc-theorems: |-
+  theorem sequence_properties {nums : List Nat} (h : nums.length > 0) :
+    let result := solve_binary_set nums
+    List.length result = nums.length ∧
+    result.all (fun p => p.1 ≥ 0 ∧ p.2 ≥ 0) ∧
+    ∀ i, i < result.length → 
+      match result.get? i with
+      | some (e, o) => 
+        let set_size := e + o
+        set_size > 0
+      | none => False
+    := sorry
+  
+  theorem monotonic_counts {nums : List Nat} (h : nums.length > 0) :
+    let result := solve_binary_set nums
+    let totals := result.map (fun p => p.1 + p.2)
+    ∀ i, i < totals.length - 1 →
+      match totals.get? i, totals.get? (i+1) with
+      | some t1, some t2 => t1 ≤ t2
+      | _, _ => True
+    := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+

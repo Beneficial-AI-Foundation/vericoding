@@ -1,0 +1,64 @@
+vc-description: |-
+  /-
+  ## Problem
+  
+  Determine whether a positive integer number is **colorful** or not.
+  
+  `263` is a colorful number because `[2, 6, 3, 2*6, 6*3, 2*6*3]` are all different; whereas `236` is not colorful, because `[2, 3, 6, 2*3, 3*6, 2*3*6]` have `6` twice.
+  
+  So take all consecutive subsets of digits, take their product and ensure all the products are different.
+  
+  ## Examples
+  ```pyhton
+  263  -->  true
+  236  -->  false
+  ```
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def colorful (n : Nat) : Bool := sorry
+  
+  def getSubsequenceProducts (n : Nat) : List Nat := sorry
+
+vc-theorems: |-
+  theorem single_digit_colorful (n : Nat) (h : n ≤ 9) : 
+    colorful n = true := sorry
+  
+  theorem zero_digit_not_colorful (n : Nat) (h : n ≥ 10) (h2 : ∃ d ∈ getSubsequenceProducts n, d = 0) :
+    colorful n = false := sorry
+  
+  theorem colorful_iff_unique_products (n : Nat) (h : n > 0) (h2 : n < 10000) :
+    colorful n = (getSubsequenceProducts n).Nodup := sorry
+  
+  theorem repeated_digits_not_colorful (n : Nat) (h : n > 0) (h2 : n < 10000)
+    (h3 : (toString n).data.length > ((toString n).data.eraseDups).length) :
+    colorful n = false := sorry
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval colorful 5
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval colorful 263
+  
+  /-
+  info: False
+  -/
+  -- #guard_msgs in
+  -- #eval colorful 236
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

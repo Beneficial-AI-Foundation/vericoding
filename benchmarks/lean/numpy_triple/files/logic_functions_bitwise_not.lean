@@ -27,10 +27,10 @@
 
     Precondition: True (no special preconditions for bitwise NOT)
     Postcondition: For all indices i, result[i] = -(x[i] + 1)
-    
+
     This specification captures the mathematical property that bitwise NOT
     of an integer x in two's complement representation equals -(x + 1).
-    
+
     Key properties:
     - Bitwise NOT is its own inverse: ~~x = x
     - For any integer x: ~x = -(x + 1)
@@ -45,14 +45,10 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_bitwise_not {n : Nat} (x : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_bitwise_not_spec {n : Nat} (x : Vector Int n) :
     ⦃⌜True⌝⦄
     numpy_bitwise_not x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = -(x.get i + 1)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -16,9 +16,7 @@
 -- </vc-helpers>
 
 def array_str {n : Nat} (a : Vector Float n) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem array_str_spec {n : Nat} (a : Vector Float n) :
     -- The result is a non-empty string (always at least "[]")
@@ -33,6 +31,4 @@ theorem array_str_spec {n : Nat} (a : Vector Float n) :
         pos_i < pos_j ∧ 
         pos_i < (array_str a).length ∧ 
         pos_j < (array_str a).length) := by
--- <vc-proof>
   sorry
--- </vc-proof>

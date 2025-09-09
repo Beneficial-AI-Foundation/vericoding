@@ -25,9 +25,7 @@ open Std.Do
 -- </vc-helpers>
 
 def amax {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem amax_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -46,6 +44,4 @@ theorem amax_spec {n : Nat} (a : Vector Float (n + 1)) :
                    result = a.get ⟨0, Nat.zero_lt_succ n⟩) ∧
                  -- Sanity check: the maximum exists in the vector
                  (∃ witness : Fin (n + 1), result = a.get witness)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

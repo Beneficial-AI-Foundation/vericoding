@@ -32,9 +32,7 @@ open Std.Do
 
 def histogram_bin_edges {n : Nat} (data : Vector Float (n + 1)) (num_bins : Nat) 
     (h_bins : num_bins > 0) : Id (Vector Float (num_bins + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem histogram_bin_edges_spec {n : Nat} (data : Vector Float (n + 1)) (num_bins : Nat)
     (h_bins : num_bins > 0) :
@@ -67,6 +65,4 @@ theorem histogram_bin_edges_spec {n : Nat} (data : Vector Float (n + 1)) (num_bi
                  let last_edge := edges.get ⟨num_bins, Nat.lt_succ_self _⟩
                  ∀ i : Fin (n + 1), 
                    first_edge ≤ data.get i ∧ data.get i ≤ last_edge)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

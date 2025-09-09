@@ -24,14 +24,10 @@ open Std.Do
 -- </vc-helpers>
 
 def poly2leg {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem poly2leg_spec {n : Nat} (pol : Vector Float n) :
     ⦃⌜True⌝⦄
     poly2leg pol
     ⦃⇓result => ⌜∀ i : Fin n, ∃ c : Float, result.get i = c⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

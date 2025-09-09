@@ -12,9 +12,7 @@ open Std.Do
 -- </vc-helpers>
 
 def unwrap {n : Nat} (p : Vector Float n) (discont : Float := 3.141592653589793) (period : Float := 2 * 3.141592653589793) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem unwrap_spec {n : Nat} (p : Vector Float n) (discont : Float := 3.141592653589793) (period : Float := 2 * 3.141592653589793) 
     (h_pos_discont : discont > 0) (h_pos_period : period > 0) :
@@ -30,6 +28,4 @@ theorem unwrap_spec {n : Nat} (p : Vector Float n) (discont : Float := 3.1415926
       -- Result differs from input by multiples of period
       (∀ i : Fin n, ∃ k : Float, result.get i = p.get i + k * period)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

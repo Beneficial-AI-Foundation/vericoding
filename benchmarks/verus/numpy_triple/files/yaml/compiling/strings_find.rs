@@ -1,0 +1,49 @@
+/* For each element, return the lowest index in the string where substring sub is found, such that sub is contained in the range [start, end]. Returns -1 if sub is not found. */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn find_substring_at(haystack: Seq<char>, needle: Seq<char>, pos: int) -> bool {
+    pos >= 0 && pos + needle.len() <= haystack.len() &&
+    haystack.subrange(pos, pos + needle.len()) == needle
+}
+
+fn find(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) -> (result: Vec<i32>)
+    requires 
+        a.len() == sub.len() && 
+        sub.len() == start.len() && 
+        start.len() == end_pos.len(),
+        forall|i: int| 0 <= i < a.len() ==> 
+            0 <= start[i] && 
+            start[i] <= end_pos[i] && 
+            end_pos[i] < a[i]@.len(),
+    ensures 
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < result.len() ==> {
+            // Case 1: substring not found (returns -1)
+            (result[i] == -1 <==> 
+                forall|pos: int| start[i] <= pos && pos <= end_pos[i] && pos + sub[i]@.len() <= a[i]@.len() ==>
+                    !find_substring_at(a[i]@, sub[i]@, pos)) &&
+            // Case 2: substring found (returns non-negative index)
+            (result[i] >= 0 ==> 
+                start[i] <= result[i] && 
+                result[i] <= end_pos[i] &&
+                result[i] + sub[i]@.len() <= a[i]@.len() &&
+                find_substring_at(a[i]@, sub[i]@, result[i] as int) &&
+                forall|pos: int| start[i] <= pos && pos < result[i] ==> 
+                    !find_substring_at(a[i]@, sub[i]@, pos)) &&
+            // Empty substring found at start position
+            (sub[i]@.len() == 0 ==> result[i] == start[i]) &&
+            // Substring longer than remaining string cannot be found
+            (start[i] + sub[i]@.len() > a[i]@.len() ==> result[i] == -1) &&
+            // If start > end, no substring can be found
+            (start[i] > end_pos[i] ==> result[i] == -1)
+        }
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

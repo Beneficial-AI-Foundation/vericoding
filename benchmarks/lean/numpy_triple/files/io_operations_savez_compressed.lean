@@ -9,14 +9,14 @@
 -/
 
 /-  Save several arrays into a single file in compressed .npz format.
-    
+
     This function saves multiple arrays to a compressed archive file.
     Arrays are stored with either provided names or automatic names (arr_0, arr_1, etc.).
     The resulting file can be loaded back using numpy.load.
 -/
 
 /-  Specification: savez_compressed saves arrays to a compressed archive file.
-    
+
     The function should:
     1. Create a compressed .npz file at the specified path
     2. Store each array in the archive with proper naming
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def savez_compressed {n : Nat} (filename : String) (arrays : Vector (Vector Float n) n) : Id Unit :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem savez_compressed_spec {n : Nat} (filename : String) (arrays : Vector (Vector Float n) n) 
     (h_valid_path : filename ≠ "") :
@@ -51,6 +49,4 @@ theorem savez_compressed_spec {n : Nat} (filename : String) (arrays : Vector (Ve
                  (∃ final_filename : String, 
                    final_filename = filename ++ ".npz" ∨ 
                    (filename.endsWith ".npz" ∧ final_filename = filename))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

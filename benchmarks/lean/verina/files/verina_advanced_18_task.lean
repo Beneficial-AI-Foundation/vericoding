@@ -32,9 +32,7 @@ def sumPowers (n : Nat) (k : Nat) : Nat :=
 -- </vc-helpers>
 
 def isArmstrong (n : Nat) (h_precond : isArmstrong_precond (n)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def isArmstrong_postcond (n : Nat) (result: Bool) (h_precond : isArmstrong_precond (n)) : Prop :=
@@ -44,9 +42,7 @@ def isArmstrong_postcond (n : Nat) (result: Bool) (h_precond : isArmstrong_preco
 
 theorem isArmstrong_spec_satisfied (n: Nat) (h_precond : isArmstrong_precond (n)) :
     isArmstrong_postcond (n) (isArmstrong (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

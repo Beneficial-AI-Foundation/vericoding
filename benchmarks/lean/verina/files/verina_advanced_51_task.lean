@@ -30,9 +30,7 @@ def mergeSortedAux : List Int → List Int → List Int
 -- </vc-helpers>
 
 def mergeSorted (a : List Int) (b : List Int) (h_precond : mergeSorted_precond (a) (b)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def mergeSorted_postcond (a : List Int) (b : List Int) (result: List Int) (h_precond : mergeSorted_precond (a) (b)) : Prop :=
@@ -41,9 +39,7 @@ def mergeSorted_postcond (a : List Int) (b : List Int) (result: List Int) (h_pre
 
 theorem mergeSorted_spec_satisfied (a: List Int) (b: List Int) (h_precond : mergeSorted_precond (a) (b)) :
     mergeSorted_postcond (a) (b) (mergeSorted (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

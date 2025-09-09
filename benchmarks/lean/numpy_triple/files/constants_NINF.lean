@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def NINF : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem NINF_spec :
     ⦃⌜True⌝⦄
@@ -55,6 +53,4 @@ theorem NINF_spec :
       -- Property 9: Absolute value of NINF is positive infinity
       Float.abs result = -result
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

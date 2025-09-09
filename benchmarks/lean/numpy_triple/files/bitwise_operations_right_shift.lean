@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def right_shift {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem right_shift_spec {n : Nat} (x1 x2 : Vector Int n) 
     (h_shift_nonneg : ∀ i : Fin n, x2.get i ≥ 0) :
@@ -52,6 +50,4 @@ theorem right_shift_spec {n : Nat} (x1 x2 : Vector Int n)
          (x1.get i = 0 → result.get i = 0)) ∧
         -- Bounded result: |result| ≤ |input| for any non-negative shift
         (Int.natAbs (result.get i) ≤ Int.natAbs (x1.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

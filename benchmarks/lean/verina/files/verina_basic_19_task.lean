@@ -23,9 +23,7 @@ def isSorted_precond (a : Array Int) : Prop :=
 -- </vc-helpers>
 
 def isSorted (a : Array Int) (h_precond : isSorted_precond (a)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def isSorted_postcond (a : Array Int) (result: Bool) (h_precond : isSorted_precond (a)) :=
@@ -33,9 +31,7 @@ def isSorted_postcond (a : Array Int) (result: Bool) (h_precond : isSorted_preco
 
 theorem isSorted_spec_satisfied (a: Array Int) (h_precond : isSorted_precond (a)) :
     isSorted_postcond (a) (isSorted (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

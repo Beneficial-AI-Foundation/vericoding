@@ -31,9 +31,7 @@ structure StructuredElement where
 -- </vc-helpers>
 
 def fromregex {n : Nat} (file_content : String) (regexp : RegExp) (dtype : StructuredDataType) : Id (Vector StructuredElement n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fromregex_spec {n : Nat} (file_content : String) (regexp : RegExp) (dtype : StructuredDataType) 
     (h_valid_dtype : dtype.fields.length > 0) :
@@ -57,6 +55,4 @@ theorem fromregex_spec {n : Nat} (file_content : String) (regexp : RegExp) (dtyp
       substring.length > 0 ∧ 
       -- This represents that the regex pattern matches some substring
       True) := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,88 @@
+/-
+Cherry has a binary matrix $A$ consisting of $N$ rows and $M$ columns. The rows are numbered from $1$ to $N$, columns are numbered from $1$ to $M$. Element at row $i$ ($1$ ≤ $i$ ≤ $N$) and column $j$ ($1$ ≤ $j$ ≤ $M$) is denoted as $A_{ij}$. All elements of $A$ are either $0$ or $1$.
+He performs $Q$ queries on matrix. Each query is provided by four integers $x_{1}$, $y_{1}$, $x_{2}$, $y_{2}$ which define the rectangle, where ($x_{1}$, $y_{1}$) stands for the coordinates of the top left cell of the rectangle, while ($x_{2}$, $y_{2}$) stands for the coordinates of the bottom right cell. You need to flip all the bits i.e. ($0$ to $1$, $1$ to $0$) that are located fully inside the query rectangle.
+Finally, print the matrix after performing all the queries.
+Note: $x_{1}$ represents the row number while $y_{1}$ represents the column number.
+
+-----Input:-----
+- The first line of the input contains two integers $N$ and $M$ — the number of rows and the number of columns in the matrix.
+- Each of the next $N$ lines contains a string of length $M$, where the $j^{th}$ character of $i^{th}$ line denotes the value of $A_{i,j}$. 
+- Next line contains an integer $Q$ — the number of queries.
+- Then follow $Q$ lines with queries descriptions. Each of them contains four space-seperated integers $x_{1}$, $y_{1}$, $x_{2}$, $y_{2}$ — coordinates of the up left and bottom right cells of the query rectangle.
+
+-----Output:-----
+Print the matrix, in the form of $N$ strings, after performing all the queries.
+
+-----Constraints-----
+- $1 \leq N,M \leq 1000$
+- $0 \leq  A_{ij}  \leq 1$
+- $1 \leq Q \leq 10^6$
+- $1 \leq x_{1} \leq x_{2} \leq N$
+- $1 \leq y_{1} \leq y_{2} \leq M$
+
+-----Sample Input:-----
+2 2
+00
+00
+3
+1 1 1 1
+2 2 2 2
+1 1 2 2 
+
+-----Sample Output:-----
+01
+10
+
+-----Explanation:-----
+Example case 1:
+After processing the 1st query 1 1 1 1, matrix becomes:
+[1000][1000]\begin{bmatrix} 10 \\ 00  \end{bmatrix}
+After processing the 2nd query 2 2 2 2, the matrix becomes:
+[1001][1001]\begin{bmatrix} 10 \\ 01  \end{bmatrix}
+After processing the 3rd query 1 1 2 2, matrix becomes:
+[0110][0110]\begin{bmatrix} 01 \\ 10  \end{bmatrix}
+We need to output the matrix after processing all queries.
+-/
+
+def String.replicate (n : Nat) (c : Char) : String :=
+  sorry
+
+/- Helper for String operations -/
+
+def List.modifyNth {α : Type} (idx : Nat) (f : α → α) (xs : List α) : List α :=
+  sorry
+
+def process_matrix_queries (n m : Nat) (matrix : List String) (queries : List (List Nat)) : List String :=
+  sorry
+
+def make_zero_matrix (n m : Nat) : List String :=
+  List.replicate n (String.mk (List.replicate m '0'))
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def make_one_matrix (n m : Nat) : List String :=
+  List.replicate n (String.mk (List.replicate m '1'))
+
+theorem empty_queries_preserves_matrix (n m : Nat) (matrix : List String)
+    (h1 : n > 0) (h2 : m > 0) (h3 : n ≤ 10) (h4 : m ≤ 10)
+    (h5 : matrix = make_zero_matrix n m) :
+    process_matrix_queries n m matrix [] = matrix := sorry
+
+theorem single_element_query_sets_one (n m : Nat) (matrix : List String)
+    (h1 : n > 0) (h2 : m > 0) (h3 : n ≤ 5) (h4 : m ≤ 5)
+    (h5 : matrix = make_zero_matrix n m)
+    (i j : Nat) (h6 : i ≤ n) (h7 : j ≤ m) :
+    process_matrix_queries n m matrix [[i, j, i, j]] = 
+    List.modifyNth (i - 1) 
+      (fun s => s.take (j - 1) ++ "1" ++ s.drop j) 
+      matrix := sorry
+
+theorem full_matrix_query_sets_all_ones (n m : Nat) (matrix : List String)
+    (h1 : n > 0) (h2 : m > 0) (h3 : n ≤ 5) (h4 : m ≤ 5)
+    (h5 : matrix = make_zero_matrix n m) :
+    process_matrix_queries n m matrix [[1, 1, n, m]] = 
+    make_one_matrix n m := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: guarded

@@ -32,15 +32,11 @@ vc-helpers: |-
       y :: merged
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def mergeSorted (a : List Int) (b : List Int) (h_precond : mergeSorted_precond (a) (b)) : List Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def mergeSorted_postcond (a : List Int) (b : List Int) (result: List Int) (h_precond : mergeSorted_precond (a) (b)) : Prop :=
     List.Pairwise (· ≤ ·) result ∧
@@ -48,11 +44,7 @@ vc-condition: |-
   
   theorem mergeSorted_spec_satisfied (a: List Int) (b: List Int) (h_precond : mergeSorted_precond (a) (b)) :
       mergeSorted_postcond (a) (b) (mergeSorted (a) (b) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

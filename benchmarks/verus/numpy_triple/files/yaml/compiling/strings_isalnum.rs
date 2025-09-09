@@ -1,0 +1,40 @@
+/* Returns true for each element if all characters in the string are alphanumeric and there is at least one character, false otherwise.
+
+For each string in the input vector, this function checks if:
+1. The string is non-empty (has at least one character)
+2. All characters in the string are alphanumeric (letters or digits)
+
+Returns a boolean vector where True indicates the string meets both criteria,
+and False indicates the string is either empty or contains non-alphanumeric characters.
+
+This follows the Python str.isalnum() behavior which returns False for empty strings
+and True only if all characters are alphanumeric. */
+
+use vstd::prelude::*;
+
+verus! {
+spec fn is_alphanumeric_char(c: char) -> bool;
+
+spec fn all_chars_alphanumeric(s: Seq<char>) -> bool
+    decreases s.len()
+{
+    if s.len() == 0 {
+        true
+    } else {
+        is_alphanumeric_char(s[0]) && all_chars_alphanumeric(s.skip(1))
+    }
+}
+
+fn isalnum(a: Vec<String>) -> (result: Vec<bool>)
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < a.len() ==> 
+            result[i] == (a[i]@.len() > 0 && all_chars_alphanumeric(a[i]@))
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

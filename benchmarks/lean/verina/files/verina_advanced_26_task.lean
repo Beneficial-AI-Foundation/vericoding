@@ -41,9 +41,7 @@ def digitToLetters (c : Char) : List Char :=
 -- </vc-helpers>
 
 def letterCombinations (digits : String) (h_precond : letterCombinations_precond (digits)) : List String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def letterCombinations_postcond (digits : String) (result: List String) (h_precond : letterCombinations_precond (digits)) : Prop :=
@@ -57,9 +55,7 @@ def letterCombinations_postcond (digits : String) (result: List String) (h_preco
 
 theorem letterCombinations_spec_satisfied (digits: String) (h_precond : letterCombinations_precond (digits)) :
     letterCombinations_postcond (digits) (letterCombinations (digits) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

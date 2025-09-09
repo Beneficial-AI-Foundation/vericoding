@@ -1,0 +1,86 @@
+/-
+Akshay is interested in mathematics, one day he came across a problem of modulus operator.He has  a list of M integers say arr[M] and has to find all integers K such that :
+- K > 1
+- arr[1]%K = arr[2]%K = arr[3]%K = … = arr[M]%K where '%' is a modulus operator.
+Help Akshay to find all such K's.
+
+-----Input:-----
+- First line of input contains an integer M. Then M lines follow each containing one integer of the list. Input data is such that at least one integer K will always exist.
+
+-----Output:-----
+- Output all possible integers K separated by space in increasing order.
+
+-----Constraints-----
+- 2<= M <=100
+- 1< value of each integer <109
+- All integers will be distinct
+
+-----Sample Input:-----
+3
+38
+6
+34
+
+-----Sample Output:-----
+2 4
+-/
+
+def List.minimum (l : List Nat) : Nat := 
+  sorry
+
+def List.sort (l: List Nat) : List Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_common_divisors (nums: List Nat) : List Nat :=
+  sorry
+
+theorem find_common_divisors_contains_prime_factors {nums: List Nat} 
+  (h1: nums.length ≥ 2)
+  (h2: ∀ n ∈ nums, n ≥ 1 ∧ n ≤ 100) :
+  ∀ i: Nat, 2 ≤ i ∧ i ≤ List.minimum nums → 
+  (∀ n ∈ nums, n % i = 0) →
+  (∀ j, 2 ≤ j ∧ j < i → i % j ≠ 0) →
+  i ∈ find_common_divisors nums :=
+sorry
+
+theorem find_common_divisors_sorted {nums: List Nat}
+  (h1: nums.length ≥ 2)
+  (h2: ∀ n ∈ nums, n ≥ 2 ∧ n ≤ 1000) :
+  find_common_divisors nums = List.sort (find_common_divisors nums) :=
+sorry
+
+theorem find_common_divisors_greater_than_one {nums: List Nat}
+  (h1: nums.length ≥ 2)
+  (h2: ∀ n ∈ nums, n ≥ 2 ∧ n ≤ 1000) :
+  ∀ x ∈ find_common_divisors nums, x > 1 :=
+sorry
+
+theorem find_common_divisors_bounded_by_min {nums: List Nat}
+  (h1: nums.length ≥ 2)
+  (h2: ∀ n ∈ nums, n ≥ 2 ∧ n ≤ 1000) :
+  ∀ x ∈ find_common_divisors nums, x ≤ List.minimum nums :=
+sorry
+
+/-
+info: [2, 4]
+-/
+-- #guard_msgs in
+-- #eval find_common_divisors [38, 6, 34]
+
+/-
+info: [2, 3, 6]
+-/
+-- #guard_msgs in
+-- #eval find_common_divisors [12, 18, 24]
+
+/-
+info: [5]
+-/
+-- #guard_msgs in
+-- #eval find_common_divisors [10, 15, 20]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

@@ -33,14 +33,10 @@ open Std.Do
 -- </vc-helpers>
 
 def ufunc_call {n : Nat} (op : Float → Float → Float) (a b : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ufunc_call_spec {n : Nat} (op : Float → Float → Float) (a b : Vector Float n) :
     ⦃⌜True⌝⦄
     ufunc_call op a b
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = op (a.get i) (b.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

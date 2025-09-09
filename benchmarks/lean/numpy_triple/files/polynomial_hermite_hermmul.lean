@@ -38,9 +38,7 @@ open Std.Do
 
 def hermmul (m n : Nat) (c1 : Vector Float m) (c2 : Vector Float n) : 
     Id (Vector Float (if m = 0 ∨ n = 0 then 1 else m + n - 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermmul_spec (m n : Nat) (c1 : Vector Float m) (c2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -59,6 +57,4 @@ theorem hermmul_spec (m n : Nat) (c1 : Vector Float m) (c2 : Vector Float n) :
       ((∀ i : Fin m, c1.get i = 0) ∨ (∀ j : Fin n, c2.get j = 0) → 
         ∀ k : Fin result.size, result.get k = 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

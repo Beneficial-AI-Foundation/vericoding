@@ -32,26 +32,18 @@ vc-helpers: |-
     else true
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def IsPalindrome (x : List Char) (h_precond : IsPalindrome_precond (x)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def IsPalindrome_postcond (x : List Char) (result: Bool) (h_precond : IsPalindrome_precond (x)) :=
     result ↔ ∀ i : Nat, i < x.length → (x[i]! = x[x.length - i - 1]!)
   
   theorem IsPalindrome_spec_satisfied (x: List Char) (h_precond : IsPalindrome_precond (x)) :
       IsPalindrome_postcond (x) (IsPalindrome (x) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

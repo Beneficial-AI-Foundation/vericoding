@@ -33,26 +33,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def expand_dims {n : Nat} (a : Vector T n) (axis : Nat) : Id (ExpandedVector T n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem expand_dims_spec {n : Nat} (a : Vector T n) (axis : Nat) (h_axis : axis ≤ 1) :
       ⦃⌜axis ≤ 1⌝⦄
       expand_dims a axis
       ⦃⇓result => ⌜match result with
                   | ExpandedVector.rowVector v => axis = 0 ∧ v = a
                   | ExpandedVector.columnVector v => axis = 1 ∧ v = a⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

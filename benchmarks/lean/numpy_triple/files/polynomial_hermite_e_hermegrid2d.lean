@@ -2,14 +2,14 @@
 
     This function evaluates a 2-dimensional HermiteE polynomial series
     on the Cartesian product of coordinate vectors x and y.
-    
+
     The evaluation follows the mathematical formula:
     p(a,b) = sum_{i,j} c[i,j] * He_i(a) * He_j(b)
-    
+
     where He_i is the i-th probabilist's Hermite polynomial (HermiteE),
     and the points (a,b) are formed by taking all combinations of
     elements from x and y.
-    
+
     The result is a matrix where result[i,j] contains the polynomial
     value at the point (x[i], y[j]).
 -/
@@ -32,9 +32,7 @@ def hermegrid2d {nx ny : Nat} {deg_x deg_y : Nat}
     (x : Vector Float nx) (y : Vector Float ny) 
     (c : Vector (Vector Float deg_y) deg_x) : 
     Id (Vector (Vector Float ny) nx) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermegrid2d_spec {nx ny : Nat} {deg_x deg_y : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) 
@@ -63,6 +61,4 @@ theorem hermegrid2d_spec {nx ny : Nat} {deg_x deg_y : Nat}
               ) 0
             ) 0))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

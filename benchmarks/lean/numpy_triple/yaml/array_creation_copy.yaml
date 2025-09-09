@@ -27,24 +27,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def copy {n : Nat} (a : Vector α n) : Id (Vector α n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem copy_spec {n : Nat} (a : Vector α n) :
       ⦃⌜True⌝⦄
       copy a
       ⦃⇓result => ⌜∀ i : Fin n, result[i] = a[i]⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

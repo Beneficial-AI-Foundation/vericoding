@@ -34,9 +34,7 @@ termination_by a.size + b.size - m - n
 -- </vc-helpers>
 
 def CanyonSearch (a : Array Int) (b : Array Int) (h_precond : CanyonSearch_precond (a) (b)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def CanyonSearch_postcond (a : Array Int) (b : Array Int) (result: Nat) (h_precond : CanyonSearch_precond (a) (b)) :=
@@ -45,9 +43,7 @@ def CanyonSearch_postcond (a : Array Int) (b : Array Int) (result: Nat) (h_preco
 
 theorem CanyonSearch_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : CanyonSearch_precond (a) (b)) :
     CanyonSearch_postcond (a) (b) (CanyonSearch (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

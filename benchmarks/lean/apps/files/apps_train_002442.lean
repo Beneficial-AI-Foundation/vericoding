@@ -1,0 +1,106 @@
+/-
+=====Function Descriptions=====
+collections.Counter()
+A counter is a container that stores elements as dictionary keys, and their counts are stored as dictionary values.
+
+Sample Code
+>>> from collections import Counter
+>>> 
+>>> myList = [1,1,2,3,4,5,3,2,3,4,2,1,2,3]
+>>> print Counter(myList)
+Counter({2: 4, 3: 4, 1: 3, 4: 2, 5: 1})
+>>>
+>>> print Counter(myList).items()
+[(1, 3), (2, 4), (3, 4), (4, 2), (5, 1)]
+>>> 
+>>> print Counter(myList).keys()
+[1, 2, 3, 4, 5]
+>>> 
+>>> print Counter(myList).values()
+[3, 4, 4, 2, 1]
+
+=====Problem Statement=====
+Raghu is a shoe shop owner. His shop has X number of shoes.
+He has a list containing the size of each shoe he has in his shop.
+There are N number of customers who are willing to pay x_i amount of money only if they get the shoe of their desired size. Your task is to compute how much money Raghu earned.
+
+=====Input Format=====
+The first line contains X, the number of shoes.
+The second line contains the space separated list of all the shoe sizes in the shop.
+The third line contains N, the number of customers.
+The next N lines contain the space separated values of the shoe size desired by the customer and x_i, the price of the shoe.
+
+=====Constraints=====
+0<X<10^3
+0<N≤10^3
+0<x_i<100
+2<shoe size<20
+
+=====Output Format=====
+Print the amount of money earned by Raghu.
+-/
+
+def calculate_shoe_shop_earnings (num_shoes : Nat) (shoe_sizes : List Nat) 
+    (customer_requests : List (Nat × Nat)) : Nat :=
+  sorry
+
+def count_successful_sales (shoe_sizes : List Nat) (customer_requests : List (Nat × Nat)) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def sum_request_prices (requests : List (Nat × Nat)) : Nat :=
+  sorry
+
+-- Earnings cannot be negative (this is implied by Nat return type)
+
+theorem earnings_nonnegative
+    (num_shoes : Nat) (shoe_sizes : List Nat) (customer_requests : List (Nat × Nat)) :
+    calculate_shoe_shop_earnings num_shoes shoe_sizes customer_requests ≥ 0 := sorry
+
+-- Earnings cannot exceed sum of requested prices
+
+theorem earnings_upper_bound
+    (num_shoes : Nat) (shoe_sizes : List Nat) (customer_requests : List (Nat × Nat)) :
+    calculate_shoe_shop_earnings num_shoes shoe_sizes customer_requests ≤ 
+    sum_request_prices customer_requests := sorry
+
+-- Cannot sell more shoes than inventory
+
+theorem sales_limited_by_inventory
+    (num_shoes : Nat) (shoe_sizes : List Nat) (customer_requests : List (Nat × Nat)) :
+    count_successful_sales shoe_sizes customer_requests ≤ shoe_sizes.length := sorry
+
+-- Empty inventory yields zero earnings
+
+theorem empty_inventory_zero_earnings (requests : List (Nat × Nat)) :
+    calculate_shoe_shop_earnings 0 [] requests = 0 := sorry
+
+-- Order of inventory doesn't affect earnings
+
+theorem inventory_order_invariant
+    (num_shoes : Nat) (shoe_sizes : List Nat) (requests : List (Nat × Nat)) :
+    calculate_shoe_shop_earnings num_shoes shoe_sizes requests = 
+    calculate_shoe_shop_earnings num_shoes shoe_sizes.reverse requests := sorry
+
+/-
+info: 200
+-/
+-- #guard_msgs in
+-- #eval calculate_shoe_shop_earnings 10 [2, 3, 4, 5, 6, 8, 7, 6, 5, 18] [(6, 55), (6, 45), (6, 55), (4, 40), (18, 60), (10, 50)]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval calculate_shoe_shop_earnings 0 [] [(6, 55)]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval calculate_shoe_shop_earnings 1 [2] [(3, 50)]
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

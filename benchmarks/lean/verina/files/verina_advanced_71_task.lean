@@ -34,9 +34,7 @@ def allSubstrings (s : List Char) : List (List Char) :=
 -- </vc-helpers>
 
 def shortestBeautifulSubstring (s : String) (k : Nat) (h_precond : shortestBeautifulSubstring_precond (s) (k)) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def shortestBeautifulSubstring_postcond (s : String) (k : Nat) (result: String) (h_precond : shortestBeautifulSubstring_precond (s) (k)) : Prop :=
@@ -53,9 +51,7 @@ def shortestBeautifulSubstring_postcond (s : String) (k : Nat) (result: String) 
 
 theorem shortestBeautifulSubstring_spec_satisfied (s: String) (k: Nat) (h_precond : shortestBeautifulSubstring_precond (s) (k)) :
     shortestBeautifulSubstring_postcond (s) (k) (shortestBeautifulSubstring (s) (k) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

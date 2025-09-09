@@ -25,9 +25,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (string: String) (n: Nat) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -46,10 +44,8 @@ spec result
 theorem correctness
 (s: String) (n : Nat)
 : problem_spec implementation s n
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation "5 apples and 6 oranges" 19 = 8
 -- #test implementation "0 apples and 1 oranges" 3 = 2

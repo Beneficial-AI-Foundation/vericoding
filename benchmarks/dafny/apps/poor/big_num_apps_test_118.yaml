@@ -1,0 +1,45 @@
+vc-description: |-
+  A pineapple barks at time t, then every s seconds it barks twice consecutively
+  (with 1 second between the two barks). Given t, s, and query time x, determine
+  if the pineapple barks at time x.
+
+vc-preamble: |-
+  predicate ValidInput(t: int, s: int, x: int)
+  {
+      0 <= t <= 1000000000 && 2 <= s <= 1000000000 && 0 <= x <= 1000000000
+  }
+  
+  predicate BarksAtTime(t: int, s: int, x: int)
+      requires s > 0
+  {
+      (x >= t && (x - t) % s == 0) || (x - 1 > t && (x - 1 - t) % s == 0)
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(t: int, s: int, x: int) returns (result: string)
+      requires ValidInput(t, s, x)
+      ensures result == "YES" <==> BarksAtTime(t, s, x)
+
+vc-code: |-
+  {
+      var f := false;
+  
+      if x - 1 > t && (x - 1 - t) % s == 0 {
+          f := true;
+      }
+  
+      if x >= t && (x - t) % s == 0 {
+          f := true;
+      }
+  
+      if f {
+          result := "YES";
+      } else {
+          result := "NO";
+      }
+  }
+
+vc-postamble: |-

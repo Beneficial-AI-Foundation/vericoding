@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isupper {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isupper_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -39,6 +37,4 @@ theorem isupper_spec {n : Nat} (a : Vector String n) :
                    result.get i = (chars.length > 0 ∧ 
                                   (∃ c ∈ chars, c.isAlpha) ∧
                                   (∀ c ∈ chars, c.isAlpha → c.isUpper))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

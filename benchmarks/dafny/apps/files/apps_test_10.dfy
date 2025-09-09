@@ -1,0 +1,52 @@
+Given a Martian year with n days and Earth-like weeks (5 work days + 2 days off),
+determine the minimum and maximum possible number of days off in that year.
+
+predicate ValidInput(n: int)
+{
+  n >= 1
+}
+
+function MinDaysOff(n: int): int
+  requires ValidInput(n)
+{
+  var completeWeeks := n / 7;
+  var remainingDays := n % 7;
+  var minAdditional := if remainingDays > 5 then remainingDays - 5 else 0;
+  2 * completeWeeks + minAdditional
+}
+
+function MaxDaysOff(n: int): int
+  requires ValidInput(n)
+{
+  var completeWeeks := n / 7;
+  var remainingDays := n % 7;
+  var maxAdditional := if remainingDays < 2 then remainingDays else 2;
+  2 * completeWeeks + maxAdditional
+}
+
+predicate ValidOutput(result: seq<int>, n: int)
+  requires ValidInput(n)
+{
+  |result| == 2 &&
+  result[0] >= 0 && result[1] >= 0 &&
+  result[0] <= result[1] &&
+  result[0] <= n && result[1] <= n &&
+  result[0] == MinDaysOff(n) &&
+  result[1] == MaxDaysOff(n)
+}
+
+method solve(n: int) returns (result: seq<int>)
+  requires ValidInput(n)
+  ensures ValidOutput(result, n)
+{
+  var r := n % 7;
+  var d := n / 7;
+
+  var min_additional := if r > 5 then r - 5 else 0;
+  var max_additional := if r < 2 then r else 2;
+
+  var min_days_off := 2 * d + min_additional;
+  var max_days_off := 2 * d + max_additional;
+
+  result := [min_days_off, max_days_off];
+}

@@ -10,7 +10,7 @@
 -/
 
 /-  Upper triangle of a matrix.
-    
+
     Returns a copy of a matrix with the elements below the k-th diagonal zeroed.
     - k = 0: main diagonal (default)
     - k < 0: include |k| diagonals below the main diagonal
@@ -18,11 +18,11 @@
 -/
 
 /-  Specification: triu returns an upper triangular matrix with specific properties.
-    
+
     Core behavior:
     - Elements below the k-th diagonal are zeroed
     - Elements on and above the k-th diagonal are preserved
-    
+
     Mathematical properties:
     1. Element-wise specification: result[i][j] = if i > j - k then 0 else m[i][j]
     2. Preservation of dimensions: result has same shape as input
@@ -44,9 +44,7 @@ open Std.Do
 
 def triu {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int := 0) : 
     Id (Vector (Vector Float cols) rows) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem triu_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int) :
     ⦃⌜True⌝⦄
@@ -61,6 +59,4 @@ theorem triu_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : I
                   (∀ (i : Fin rows) (j : Fin cols),
                    (i.val : Int) > (j.val : Int) - k → 
                    (result.get i).get j = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

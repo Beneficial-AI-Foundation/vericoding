@@ -15,15 +15,15 @@
     - xTₙ(x) = (Tₙ₊₁(x) + Tₙ₋₁(x))/2 for n ≥ 1 -/
 
 /-  Specification: chebmulx correctly multiplies a Chebyshev polynomial by x.
-    
+
     Given coefficients c = [c₀, c₁, ..., cₙ₋₁] representing the polynomial
     P(x) = c₀T₀(x) + c₁T₁(x) + ... + cₙ₋₁Tₙ₋₁(x),
     this function computes coefficients for xP(x).
-    
+
     The implementation follows from the Chebyshev recurrence relations:
     - xT₀(x) = T₁(x)
     - xTₙ(x) = (Tₙ₊₁(x) + Tₙ₋₁(x))/2 for n ≥ 1
-    
+
     The algorithm redistributes coefficients according to these relations,
     resulting in a polynomial with degree increased by 1. -/
 
@@ -35,9 +35,7 @@ open Std.Do
 -- </vc-helpers>
 
 def chebmulx {n : Nat} (c : Vector Float n) : Id (Vector Float (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebmulx_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -63,6 +61,4 @@ theorem chebmulx_spec {n : Nat} (c : Vector Float n) :
         ∀ j : Fin (n + 1), 
           result_comb.get j = α * result1.get j + β * result2.get j)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -31,9 +31,7 @@ inductive ExpandedVector (T : Type) (n : Nat) where
 -- </vc-helpers>
 
 def expand_dims {n : Nat} (a : Vector T n) (axis : Nat) : Id (ExpandedVector T n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem expand_dims_spec {n : Nat} (a : Vector T n) (axis : Nat) (h_axis : axis ≤ 1) :
     ⦃⌜axis ≤ 1⌝⦄
@@ -41,6 +39,4 @@ theorem expand_dims_spec {n : Nat} (a : Vector T n) (axis : Nat) (h_axis : axis 
     ⦃⇓result => ⌜match result with
                 | ExpandedVector.rowVector v => axis = 0 ∧ v = a
                 | ExpandedVector.columnVector v => axis = 1 ∧ v = a⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

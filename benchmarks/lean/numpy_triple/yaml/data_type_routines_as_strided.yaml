@@ -10,22 +10,22 @@ vc-description: |-
   -/
   
   /-  numpy.as_strided: Create a view into the array with the given shape and strides.
-      
+  
       Creates a new view of an array with specified shape and strides.
       This is a simplified version that focuses on the core mathematical
       property: creating a view with a different shape but accessing
       elements from the original array based on stride patterns.
-      
+  
       For safety, we restrict to cases where the new shape is smaller
       than or equal to the original array size.
   -/
   
   /-  Specification: numpy.as_strided creates a view with specified strides.
-      
+  
       Precondition: The strided access must be valid (m * stride ≤ n)
       Postcondition: Each element in the result is taken from the original
       array at positions determined by the stride pattern.
-      
+  
       For element i in the result, it equals x[i * stride].
   -/
 
@@ -38,16 +38,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def numpy_as_strided {n m : Nat} (x : Vector Float n) (stride : Nat) 
       (h_valid : m * stride ≤ n) (h_stride_pos : stride > 0) : Id (Vector Float m) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem numpy_as_strided_spec {n m : Nat} (x : Vector Float n) (stride : Nat) 
       (h_valid : m * stride ≤ n) (h_stride_pos : stride > 0) :
       ⦃⌜m * stride ≤ n ∧ stride > 0⌝⦄
@@ -55,13 +51,9 @@ vc-condition: |-
       ⦃⇓result => ⌜∀ i : Fin m, result.get i = x.get ⟨i.val * stride, 
                      by have h1 : i.val < m := i.isLt
                         have h2 : i.val * stride < m * stride := by
-
-vc-proof: |-
-  -- <vc-proof>
                           apply Nat.mul_lt_mul_of_pos_right h1 h_stride_pos
                         exact Nat.lt_of_lt_of_le h2 h_valid⟩⌝⦄ := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

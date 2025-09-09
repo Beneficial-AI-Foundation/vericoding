@@ -1,9 +1,9 @@
 /-  numpy.frexp: Decompose the elements of x into mantissa and twos exponent.
-    
+
     Returns (mantissa, exponent), where x = mantissa * 2**exponent.
     The mantissa is in the range [0.5, 1) for positive numbers, (-1, -0.5] for negative numbers,
     or 0 if x is 0. The exponent is an integer.
-    
+
     For special values:
     - If x is 0, returns (0.0, 0)
     - If x is infinity, returns (infinity, 0)
@@ -13,7 +13,7 @@
 /-  Specification: frexp decomposes each element into mantissa and exponent such that
     x = mantissa * 2^exponent, where the mantissa is normalized to be in [0.5, 1) for
     positive values or (-1, -0.5] for negative values.
-    
+
     Precondition: True (no special preconditions)
     Postcondition: For all indices i:
     - If x[i] = 0, then mantissa[i] = 0 and exponent[i] = 0
@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def frexp {n : Nat} (x : Vector Float n) : Id (Vector Float n × Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem frexp_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -58,6 +56,4 @@ theorem frexp_spec {n : Nat} (x : Vector Float n) :
                    -- Special values case
                    ((Float.isInf (x.get i) ∨ Float.isNaN (x.get i)) → 
                      mantissa.get i = x.get i ∧ exponent.get i = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

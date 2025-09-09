@@ -15,7 +15,7 @@
 
     Precondition: True (input is a well-formed 2D array)
     Postcondition: The result is a real-valued 2D array with the same dimensions.
-    
+
     Key properties:
     1. The output preserves the matrix structure and dimensions
     2. The transformation processes all elements of the input
@@ -31,9 +31,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_irfft2 {rows cols : Nat} (a : Vector (Vector Float cols) rows) : Id (Vector (Vector Float cols) rows) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_irfft2_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows) :
     ⦃⌜True⌝⦄
@@ -49,6 +47,4 @@ theorem numpy_irfft2_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows
       (∀ i : Fin rows, ∀ j : Fin cols,
         (a.get i).get j ≠ 0 → 
         ∃ (k : Fin rows) (l : Fin cols), (result.get k).get l ≠ 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

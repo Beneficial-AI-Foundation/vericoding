@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def nPY_LOG10E : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem nPY_LOG10E_spec :
       ⦃⌜True⌝⦄
       nPY_LOG10E
@@ -45,11 +41,7 @@ vc-condition: |-
         -- The value is less than 1 (since e < 10)
         result < 1.0
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -1,0 +1,65 @@
+vc-description: |-
+  /-
+  # It's too hot, and they can't even…
+  
+  One hot summer day Pete and his friend Billy decided to buy watermelons. They chose the biggest crate. They rushed home, dying of thirst, and decided to divide their loot, however they faced a hard problem.
+  
+  Pete and Billy are great fans of even numbers, that's why they want to divide the number of watermelons in such a way that each of the two parts consists of an even number of watermelons. However, it is not obligatory that the parts are equal. 
+  
+  Example: the boys can divide a stack of 8 watermelons into 2+6 melons, or 4+4 melons.
+  
+  The boys are extremely tired and want to start their meal as soon as possible, that's why you should help them and find out, whether they can divide the fruits in the way they want. For sure, each of them should get a part of positive weight.
+  
+  # Task
+  Given an integral number of watermelons `w` (`1 ≤ w ≤ 100`; `1 ≤ w` in Haskell), check whether Pete and Billy can divide the melons so that each of them gets an even amount.
+  
+  ## Examples
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def divide (weight : Int) : Bool := sorry
+  
+  theorem divide_is_bool (weight : Int) :
+    divide weight = true ∨ divide weight = false := sorry
+
+vc-theorems: |-
+  theorem divide_true_implies_conditions (weight : Int) :
+    divide weight = true → weight > 2 ∧ weight % 2 = 0 := sorry
+  
+  theorem divide_false_implies_conditions (weight : Int) : 
+    divide weight = false → weight ≤ 2 ∨ weight % 2 ≠ 0 := sorry
+  
+  theorem divide_positive_cases (weight : Int) (h1 : weight > 2) (h2 : weight % 2 = 0) :
+    divide weight = true := sorry
+  
+  theorem divide_negative_cases (weight : Int) (h : weight ≤ 2 ∨ weight % 2 ≠ 0) :
+    divide weight = false := sorry
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval divide 4
+  
+  /-
+  info: False
+  -/
+  -- #guard_msgs in
+  -- #eval divide 2
+  
+  /-
+  info: False
+  -/
+  -- #guard_msgs in
+  -- #eval divide 5
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

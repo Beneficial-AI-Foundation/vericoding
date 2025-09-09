@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def msort {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem msort_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -35,6 +33,4 @@ theorem msort_spec {n : Nat} (a : Vector Float n) :
       -- The result is a permutation of the input (same multiset of elements)
       (∀ x : Float, (a.toList.count x) = (result.toList.count x))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

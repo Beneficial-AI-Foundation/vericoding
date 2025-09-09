@@ -22,9 +22,7 @@ open Std.Do
 -- </vc-helpers>
 
 def setdiff1d {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) : Id (Vector Int k) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem setdiff1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) :
     ⦃⌜True⌝⦄
@@ -39,6 +37,4 @@ theorem setdiff1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) :
                  -- All unique values from ar1 not in ar2 are included
                  (∀ val : Int, (∃ i : Fin n, ar1.get i = val ∧ ∀ j : Fin m, ar2.get j ≠ val) →
                   ∃ i : Fin k, result.get i = val)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

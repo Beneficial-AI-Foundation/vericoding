@@ -22,9 +22,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (s: String) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -44,10 +42,8 @@ let is_prime (n: Nat) : Prop :=
 theorem correctness
 (s: String)
 : problem_spec implementation s
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation "Hello" = True
 -- #test implementation "abcdcba" = True

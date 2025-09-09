@@ -1,0 +1,67 @@
+/-
+As lockdown is going on so no is allowed to go outside , so Chef has come with an innovative idea for food home delivery using drone.  But there is an issue with it , the drone can move forward or backward a fix number of steps $x$ . 
+All the houses and chef restaurant are all in a straight line . Homes which need delivery are located at $H[i]$ and chef is located at $y$ coordinate . 
+If Drone is at a location $R$, then it can move to $R-x$ or $R+x$ . 
+Help chef find maximum value of $x$ to complete all the deliveries as he is busy managing the orders.
+
+-----Input:-----
+- First line will contain $n$ and $R$, number of houses that need delivery and the correct coordinate of chef (Drone).
+- Second line contains $n$ integers , the coordinate of all homes that need delivery. 
+
+-----Output:-----
+- The maximum value of $x$ , so that drone delivers to all houses.
+
+-----Constraints-----
+- $1 \leq n \leq 1000$
+- $1 \leq R \leq 10^9$
+- $1 \leq hi \leq 10^9$
+- $1 \leq x  \leq 10^9$
+
+-----Sample Input:-----
+3 1
+3 5 11
+
+-----Sample Output:-----
+2
+
+-----EXPLANATION:-----
+Chef's drone is at 1 initially and he needs to visit 3,5,11 , so optimal solution will be (maximum value of x ) equal to 2.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def max_drone_step (n : Nat) (R : Int) (H : List Int) : Nat :=
+  sorry
+
+variable (n : Nat) (R : Int) (H : List Int)
+
+theorem max_drone_step_positive :
+  n > 0 → H.length = n → max_drone_step n R H > 0 :=
+  sorry
+
+theorem max_drone_step_divides_distances : 
+  n > 0 → H.length = n →
+  ∀ h, h ∈ H → (h - R).natAbs % (max_drone_step n R H) = 0 :=
+  sorry
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval max_drone_step 3 1 [3, 5, 11]
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval max_drone_step 2 4 [2, 8]
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval max_drone_step 4 5 [1, 3, 7, 9]
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

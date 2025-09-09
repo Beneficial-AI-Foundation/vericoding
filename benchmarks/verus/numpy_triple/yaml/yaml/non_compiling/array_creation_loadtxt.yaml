@@ -1,0 +1,48 @@
+vc-description: |-
+  /*
+  Load data from a text file containing numeric values.
+  This simplified version assumes:
+  - The file contains floating-point numbers (one per line or whitespace-separated)
+  - Comments starting with '#' are ignored
+  - The skiprows parameter allows skipping initial lines
+  Returns a vector of parsed float values.
+  
+  Specification: loadtxt reads numeric data from a text file and returns a vector of floats.
+  The preconditions ensure:
+  - The file path is valid (non-empty string)
+  - After skipping skiprows lines and removing comments, there are exactly n valid float values
+  
+  The postcondition guarantees:
+  - The result vector contains the float values parsed from the file
+  - Values appear in the same order as in the file (after skipping and comment removal)
+  - The size of the result matches the type-level size n
+  
+  Mathematical properties:
+  - Deterministic: same file and parameters always produce the same result
+  - Order-preserving: maintains the sequential order of values in the file
+  - Comment-aware: lines starting with '#' are ignored
+  - Skip-aware: first skiprows lines are ignored
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn loadtxt(fname: &str, skiprows: usize) -> (result: Vec<f64>)
+      requires fname.len() > 0 && skiprows >= 0,
+      ensures 
+          result.len() >= 0,
+          forall|i: int| 0 <= i < result.len() ==> exists|v: f64| result[i] == v,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

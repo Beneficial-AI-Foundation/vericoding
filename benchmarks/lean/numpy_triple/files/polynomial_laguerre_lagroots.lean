@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lagroots {n : Nat} (c : Vector Float (n + 1)) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagroots_spec {n : Nat} (c : Vector Float (n + 1)) 
     (h_nonzero : c.get ⟨n, Nat.lt_succ_self n⟩ ≠ 0) :
@@ -40,6 +38,4 @@ theorem lagroots_spec {n : Nat} (c : Vector Float (n + 1))
       -- Each root should make the Laguerre polynomial evaluate to zero
       True -- Placeholder for more complex root verification properties
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

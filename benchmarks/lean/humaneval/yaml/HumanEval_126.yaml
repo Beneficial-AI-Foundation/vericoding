@@ -33,15 +33,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (lst: List Int) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: List Int → Bool)
@@ -63,12 +59,8 @@ vc-condition: |-
   
   theorem correctness
   (lst: List Int)
-  : problem_spec implementation lst :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation lst := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [5] = true

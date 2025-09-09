@@ -1,0 +1,60 @@
+/-
+Given a string of words (x), you need to return an array of the words, sorted alphabetically by the final character in each.
+
+If two words have the same last letter, they returned array should show them in the order they appeared in the given string.
+
+All inputs will be valid.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def last (s : String) : List String := sorry
+
+def isWordChar (c : Char) : Bool := 32 ≤ c.val ∧ c.val ≤ 126
+
+-- All words from input are present in output with same frequency
+
+theorem last_maintains_words (s : String) 
+  (h : ∀ c ∈ s.data, isWordChar c) :
+  ∀ w ∈ s.split (· = ' '), 
+    (s.split (· = ' ')).count w = (last s).count w := sorry
+
+-- Words are sorted by their last character
+
+theorem last_sorted_by_last_char (s : String)
+  (h : ∀ c ∈ s.data, isWordChar c) :
+  ∀ i < (last s).length - 1,
+    let w1 := (last s)[i]!
+    let w2 := (last s)[i+1]!
+    match w1.data.getLast?, w2.data.getLast? with
+    | some c1, some c2 => c1 ≤ c2
+    | _, _ => True := sorry
+
+-- Duplicate words in input remain in output  
+
+theorem last_preserves_duplicates (s : String)
+  (h : ∀ c ∈ s.data, isWordChar c) :
+  ∀ w ∈ s.split (· = ' '),
+    (s.split (· = ' ')).count w = (last s).count w := sorry
+
+/-
+info: ['a', 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']
+-/
+-- #guard_msgs in
+-- #eval last "man i need a taxi up to ubud"
+
+/-
+info: ['take', 'me', 'semynak', 'to']
+-/
+-- #guard_msgs in
+-- #eval last "take me to semynak"
+
+/-
+info: ['massage', 'massage', 'massage', 'yes', 'yes']
+-/
+-- #guard_msgs in
+-- #eval last "massage yes massage yes massage"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

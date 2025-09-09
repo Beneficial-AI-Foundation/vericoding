@@ -8,18 +8,18 @@
 -/
 
 /-  NPY_PI_4: Mathematical constant representing π/4.
-    
+
     This constant provides the value of pi divided by 4, which is commonly used in
     trigonometric calculations, particularly for 45-degree angle computations.
-    
+
     Value: π/4 ≈ 0.785398163397448309615660845819875721
 -/
 
 /-  Specification: NPY_PI_4 returns the mathematical constant π/4.
-    
+
     Precondition: True (no preconditions for accessing a constant)
     Postcondition: The result equals π/4, which is approximately 0.7853981633974483
-    
+
     Mathematical properties:
     - NPY_PI_4 = π/4
     - NPY_PI_4 = arctan(1)  
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def NPY_PI_4 : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem NPY_PI_4_spec :
     ⦃⌜True⌝⦄
@@ -46,6 +44,4 @@ theorem NPY_PI_4_spec :
     ⦃⇓result => ⌜result = 0.785398163397448309615660845819875721 ∧
                   result > 0.785 ∧ result < 0.786 ∧
                   result * 4 > 3.141 ∧ result * 4 < 3.142⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

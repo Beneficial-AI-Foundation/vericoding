@@ -1,0 +1,87 @@
+/-
+A tree is an undirected connected graph without cycles.
+
+Let's consider a rooted undirected tree with n vertices, numbered 1 through n. There are many ways to represent such a tree. One way is to create an array with n integers p_1, p_2, ..., p_{n}, where p_{i} denotes a parent of vertex i (here, for convenience a root is considered its own parent). [Image] For this rooted tree the array p is [2, 3, 3, 2]. 
+
+Given a sequence p_1, p_2, ..., p_{n}, one is able to restore a tree:  There must be exactly one index r that p_{r} = r. A vertex r is a root of the tree.  For all other n - 1 vertices i, there is an edge between vertex i and vertex p_{i}. 
+
+A sequence p_1, p_2, ..., p_{n} is called valid if the described procedure generates some (any) rooted tree. For example, for n = 3 sequences (1,2,2), (2,3,1) and (2,1,3) are not valid.
+
+You are given a sequence a_1, a_2, ..., a_{n}, not necessarily valid. Your task is to change the minimum number of elements, in order to get a valid sequence. Print the minimum number of changes and an example of a valid sequence after that number of changes. If there are many valid sequences achievable in the minimum number of changes, print any of them.
+
+-----Input-----
+
+The first line of the input contains an integer n (2 ≤ n ≤ 200 000) — the number of vertices in the tree.
+
+The second line contains n integers a_1, a_2, ..., a_{n} (1 ≤ a_{i} ≤ n).
+
+-----Output-----
+
+In the first line print the minimum number of elements to change, in order to get a valid sequence.
+
+In the second line, print any valid sequence possible to get from (a_1, a_2, ..., a_{n}) in the minimum number of changes. If there are many such sequences, any of them will be accepted.
+
+-----Examples-----
+Input
+4
+2 3 3 4
+
+Output
+1
+2 3 4 4 
+
+Input
+5
+3 2 2 5 3
+
+Output
+0
+3 2 2 5 3 
+
+Input
+8
+2 3 5 4 1 6 6 7
+
+Output
+2
+2 3 7 8 1 6 6 7
+
+-----Note-----
+
+In the first sample, it's enough to change one element. In the provided output, a sequence represents a tree rooted in a vertex 4 (because p_4 = 4), which you can see on the left drawing below. One of other correct solutions would be a sequence 2 3 3 2, representing a tree rooted in vertex 3 (right drawing below). On both drawings, roots are painted red. [Image] 
+
+In the second sample, the given sequence is already valid.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def fix_tree_sequence (n : Nat) (A : List Nat) : Nat × List Nat := sorry
+
+def is_valid_tree (A : List Nat) : Bool := sorry
+
+theorem fix_tree_sequence_properties 
+  (n : Nat) 
+  (A : List Nat)
+  (h : A.length = n) :
+  let (changes, result) := fix_tree_sequence n A
+  -- Result has same length
+  result.length = A.length ∧ 
+  -- Changes non-negative (implicit for Nat)
+  -- Result is valid tree
+  is_valid_tree result = true ∧
+  -- Original array unchanged
+  A = A ∧
+  -- Changes matches actual differences
+  changes = (List.zip A result).foldl (fun acc p => if p.1 = p.2 then acc else acc + 1) 0
+  := sorry
+
+theorem already_valid_tree
+  (A : List Nat)
+  (h : is_valid_tree A = true) :
+  let (changes, result) := fix_tree_sequence A.length A
+  changes = 0 ∧ result = A
+  := sorry
+
+-- Apps difficulty: competition
+-- Assurance level: guarded

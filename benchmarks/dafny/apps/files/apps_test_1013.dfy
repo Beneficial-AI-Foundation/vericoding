@@ -1,0 +1,209 @@
+Given an n×m grid where some cells are "good" (value 1) and others are not (value 0).
+Corner cells are never good. In one operation, choose a good cell and a corner cell,
+then color all cells in the rectangle formed by these two cells.
+Find the minimum number of operations to color all cells in the grid.
+
+predicate ValidInput(input: string)
+{
+    var lines := SplitLinesFunc(input);
+    |lines| >= 2 &&
+    var firstLine := lines[0];
+    var nmParts := SplitWhitespaceFunc(firstLine);
+    |nmParts| >= 2 &&
+    var n := StringToIntFunc(nmParts[0]);
+    var m := StringToIntFunc(nmParts[1]);
+    n >= 3 && m >= 3 &&
+    |lines| >= n + 1 &&
+    (forall i :: 1 <= i <= n ==> 
+        var rowParts := SplitWhitespaceFunc(lines[i]);
+        |rowParts| >= m &&
+        (forall j :: 0 <= j < m ==> rowParts[j] == "0" || rowParts[j] == "1")) &&
+    (exists i, j :: 0 <= i < n && 0 <= j < m && GetGridCellHelper(lines, i, j) == "1") &&
+    GetGridCellHelper(lines, 0, 0) == "0" &&
+    GetGridCellHelper(lines, 0, m-1) == "0" &&
+    GetGridCellHelper(lines, n-1, 0) == "0" &&
+    GetGridCellHelper(lines, n-1, m-1) == "0"
+}
+
+function GetGridCellHelper(lines: seq<string>, i: int, j: int): string
+    requires |lines| >= 2
+    requires i >= 0 && j >= 0
+    requires i + 1 < |lines|
+{
+    var line := lines[i + 1];
+    var parts := SplitWhitespaceFunc(line);
+    if j < |parts| then parts[j] else "0"
+}
+
+function GetN(input: string): int
+    requires |input| > 0
+    requires ValidInput(input)
+    ensures GetN(input) >= 3
+{
+    var lines := SplitLinesFunc(input);
+    var firstLine := lines[0];
+    var parts := SplitWhitespaceFunc(firstLine);
+    StringToIntFunc(parts[0])
+}
+
+function GetM(input: string): int
+    requires |input| > 0
+    requires ValidInput(input)
+    ensures GetM(input) >= 3
+{
+    var lines := SplitLinesFunc(input);
+    var firstLine := lines[0];
+    var parts := SplitWhitespaceFunc(firstLine);
+    StringToIntFunc(parts[1])
+}
+
+function GetGridCell(input: string, i: int, j: int): string
+    requires |input| > 0
+    requires ValidInput(input)
+    requires 0 <= i < GetN(input)
+    requires 0 <= j < GetM(input)
+    ensures GetGridCell(input, i, j) == "0" || GetGridCell(input, i, j) == "1"
+{
+    var lines := SplitLinesFunc(input);
+    var line := lines[i + 1];
+    var parts := SplitWhitespaceFunc(line);
+    parts[j]
+}
+
+function SplitLinesFunc(s: string): seq<string>
+{
+    SplitLinesFuncRec(s, 0, 0, [])
+}
+
+function SplitLinesFuncRec(s: string, start: int, i: int, acc: seq<string>): seq<string>
+    requires 0 <= start <= i <= |s|
+    decreases |s| - i
+{
+    if i >= |s| then
+        if start < |s| then acc + [s[start..]] else acc
+    else if s[i] == '\n' then
+        var newAcc := if start < i then acc + [s[start..i]] else acc;
+        SplitLinesFuncRec(s, i + 1, i + 1, newAcc)
+    else
+        SplitLinesFuncRec(s, start, i + 1, acc)
+}
+
+function SplitWhitespaceFunc(s: string): seq<string>
+{
+    SplitWhitespaceFuncRec(s, -1, 0, [])
+}
+
+function SplitWhitespaceFuncRec(s: string, start: int, i: int, acc: seq<string>): seq<string>
+    requires -1 <= start <= i <= |s|
+    requires start < |s|
+    requires 0 <= i <= |s|
+    decreases |s| - i
+{
+    if i >= |s| then
+        if start >= 0 then acc + [s[start..]] else acc
+    else if s[i] == ' ' || s[i] == '\t' then
+        var newAcc := if start >= 0 && start < i then acc + [s[start..i]] else acc;
+        SplitWhitespaceFuncRec(s, -1, i + 1, newAcc)
+    else
+        var newStart := if start == -1 then i else start;
+        SplitWhitespaceFuncRec(s, newStart, i + 1, acc)
+}
+
+function StringToIntFunc(s: string): int
+{
+    StringToIntFuncRec(s, 0, 0)
+}
+
+function StringToIntFuncRec(s: string, i: int, acc: int): int
+    requires 0 <= i <= |s|
+    decreases |s| - i
+{
+    if i >= |s| then acc
+    else if '0' <= s[i] <= '9' then
+        StringToIntFuncRec(s, i + 1, acc * 10 + (s[i] as int - '0' as int))
+    else
+        StringToIntFuncRec(s, i + 1, acc)
+}
+
+method SplitLines(s: string) returns (lines: seq<string>)
+    ensures lines == SplitLinesFunc(s)
+{
+    lines := SplitLinesFunc(s);
+}
+
+method SplitWhitespace(s: string) returns (parts: seq<string>)
+    ensures parts == SplitWhitespaceFunc(s)
+{
+    parts := SplitWhitespaceFunc(s);
+}
+
+method StringToInt(s: string) returns (n: int)
+    ensures n == StringToIntFunc(s)
+{
+    n := StringToIntFunc(s);
+}
+
+method solve(input: string) returns (result: string)
+    requires |input| > 0
+    requires ValidInput(input)
+    ensures result == "2\n" || result == "4\n"
+    ensures result == "2\n" <==> (exists i, j :: 0 <= i < GetN(input) && 0 <= j < GetM(input) && 
+                                 GetGridCell(input, i, j) == "1" && 
+                                 (i == 0 || j == 0 || i == GetN(input) - 1 || j == GetM(input) - 1))
+{
+    var lines := SplitLines(input);
+    var firstLine := lines[0];
+    var nmParts := SplitWhitespace(firstLine);
+    var n := StringToInt(nmParts[0]);
+    var m := StringToInt(nmParts[1]);
+
+    var grid := new string[n, m];
+    var i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant forall ii, jj :: 0 <= ii < i && 0 <= jj < m ==> grid[ii, jj] == GetGridCell(input, ii, jj)
+    {
+        var line := lines[i + 1];
+        var rowParts := SplitWhitespace(line);
+        var j := 0;
+        while j < m
+            invariant 0 <= j <= m
+            invariant forall jj :: 0 <= jj < j ==> grid[i, jj] == GetGridCell(input, i, jj)
+            invariant forall ii, jj :: 0 <= ii < i && 0 <= jj < m ==> grid[ii, jj] == GetGridCell(input, ii, jj)
+        {
+            grid[i, j] := rowParts[j];
+            j := j + 1;
+        }
+        i := i + 1;
+    }
+
+    var hasBorderGood := false;
+    i := 0;
+    while i < n && !hasBorderGood
+        invariant 0 <= i <= n
+        invariant forall ii, jj :: 0 <= ii < n && 0 <= jj < m ==> grid[ii, jj] == GetGridCell(input, ii, jj)
+        invariant !hasBorderGood ==> forall ii, jj :: 0 <= ii < i && 0 <= jj < m && (ii == 0 || jj == 0 || ii == n - 1 || jj == m - 1) ==> GetGridCell(input, ii, jj) != "1"
+        invariant hasBorderGood ==> exists ii, jj :: 0 <= ii < n && 0 <= jj < m && GetGridCell(input, ii, jj) == "1" && (ii == 0 || jj == 0 || ii == n - 1 || jj == m - 1)
+    {
+        var j := 0;
+        while j < m && !hasBorderGood
+            invariant 0 <= j <= m
+            invariant forall ii, jj :: 0 <= ii < n && 0 <= jj < m ==> grid[ii, jj] == GetGridCell(input, ii, jj)
+            invariant !hasBorderGood ==> forall ii, jj :: 0 <= ii < i && 0 <= jj < m && (ii == 0 || jj == 0 || ii == n - 1 || jj == m - 1) ==> GetGridCell(input, ii, jj) != "1"
+            invariant !hasBorderGood ==> forall jj :: 0 <= jj < j && (i == 0 || jj == 0 || i == n - 1 || jj == m - 1) ==> GetGridCell(input, i, jj) != "1"
+            invariant hasBorderGood ==> exists ii, jj :: 0 <= ii < n && 0 <= jj < m && GetGridCell(input, ii, jj) == "1" && (ii == 0 || jj == 0 || ii == n - 1 || jj == m - 1)
+        {
+            if grid[i, j] == "1" && (i == 0 || j == 0 || i == n - 1 || j == m - 1) {
+                hasBorderGood := true;
+            }
+            j := j + 1;
+        }
+        i := i + 1;
+    }
+
+    if hasBorderGood {
+        result := "2\n";
+    } else {
+        result := "4\n";
+    }
+}

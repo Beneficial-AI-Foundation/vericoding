@@ -1,0 +1,89 @@
+/-
+Ho ho! So you think you know integers, do you? Well then, young wizard, tell us what the Nth digit of the [Champernowne constant](https://en.wikipedia.org/wiki/Champernowne_constant) is!
+
+The constant proceeds like this: `0.12345678910111213141516...`
+
+I hope you see the pattern!
+
+Conjure a function that will accept an integer, `n`, and return the (one-indexed) `n`th digit of Champernowne's constant. Can you get it to run in _constant_ time?
+
+For example:
+
+`n = 1` should return `0` (the very first digit)
+
+`n = 2` should return `1` (we ignore the period character since it's not a digit!)
+
+`n = 20` should return `4` (that's the `4` in the number `14`, 20th in sequence)
+
+For any invalid values, such as `0` and below, or non-integers, return... `NaN`!
+
+I hope (for your sake) that you've been practicing your mathemagical spells, because a naïve solution will _not_ be fast enough to compete in this championship!
+
+Invoke with _precision_, and be wary of rounding errors in the realms of enormity!
+
+May the best integer win!
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def champernowne_digit (n: Int) : Option Int := 
+sorry
+
+theorem non_positive_inputs {n: Int} (hn: n ≤ 0) :
+  champernowne_digit n = none := by sorry
+
+theorem digit_in_range {n: Int} (hn: n > 0) :
+  let result := champernowne_digit n
+  ∀ d, result = some d → 0 ≤ d ∧ d ≤ 9 := by sorry 
+
+theorem first_ten_digits :
+  champernowne_digit 1 = some 0 ∧
+  champernowne_digit 2 = some 1 ∧ 
+  champernowne_digit 3 = some 2 ∧
+  champernowne_digit 4 = some 3 ∧
+  champernowne_digit 5 = some 4 ∧
+  champernowne_digit 6 = some 5 ∧
+  champernowne_digit 7 = some 6 ∧
+  champernowne_digit 8 = some 7 ∧
+  champernowne_digit 9 = some 8 ∧
+  champernowne_digit 10 = some 9 := by sorry
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval champernowne_digit 1
+
+/-
+info: 1
+-/
+-- #guard_msgs in
+-- #eval champernowne_digit 2
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval champernowne_digit 20
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval champernowne_digit 3678608
+
+/-
+info: 'nan'
+-/
+-- #guard_msgs in
+-- #eval str champernowne_digit(0)
+
+/-
+info: 'nan'
+-/
+-- #guard_msgs in
+-- #eval str champernowne_digit(-1)
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

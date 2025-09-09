@@ -25,9 +25,7 @@ def findFirstRepeatedChar_precond (s : String) : Prop :=
 -- </vc-helpers>
 
 def findFirstRepeatedChar (s : String) (h_precond : findFirstRepeatedChar_precond (s)) : Option Char :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def findFirstRepeatedChar_postcond (s : String) (result: Option Char) (h_precond : findFirstRepeatedChar_precond (s)) :=
@@ -45,9 +43,7 @@ def findFirstRepeatedChar_postcond (s : String) (result: Option Char) (h_precond
 
 theorem findFirstRepeatedChar_spec_satisfied (s: String) (h_precond : findFirstRepeatedChar_precond (s)) :
     findFirstRepeatedChar_postcond (s) (findFirstRepeatedChar (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

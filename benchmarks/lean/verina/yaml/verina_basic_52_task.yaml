@@ -44,26 +44,18 @@ vc-helpers: |-
       a
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def BubbleSort (a : Array Int) (h_precond : BubbleSort_precond (a)) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def BubbleSort_postcond (a : Array Int) (result: Array Int) (h_precond : BubbleSort_precond (a)) :=
     List.Pairwise (· ≤ ·) result.toList ∧ List.isPerm result.toList a.toList
   
   theorem BubbleSort_spec_satisfied (a: Array Int) (h_precond : BubbleSort_precond (a)) :
       BubbleSort_postcond (a) (BubbleSort (a) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -29,15 +29,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def nanmedian {n : Nat} (a : Vector Float n) : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem nanmedian_spec {n : Nat} (a : Vector Float n) :
       ⦃⌜True⌝⦄
       nanmedian a
@@ -66,11 +62,7 @@ vc-condition: |-
                 result = (sorted_vals.get ⟨sorted_vals.length / 2 - 1, sorry⟩ + 
                          sorted_vals.get ⟨sorted_vals.length / 2, sorry⟩) / 2)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

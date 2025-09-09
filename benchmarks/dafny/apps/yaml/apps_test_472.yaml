@@ -1,0 +1,108 @@
+vc-description: |-
+  Given a positive integer n, find the smallest positive integer x such that
+  x² + s(x)·x - n = 0, where s(x) is the sum of digits of x in decimal notation.
+  If no such positive integer x exists, return -1.
+
+vc-preamble: |-
+  function digitSum(n: int): int
+    requires n >= 0
+    decreases n
+  {
+    if n == 0 then 0
+    else (n % 10) + digitSum(n / 10)
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(n: int) returns (result: int)
+    requires n >= 1
+    ensures n == 1 ==> result == -1
+    ensures n > 1 && result > 0 ==> result * result + digitSum(result) * result == n
+    ensures n > 1 && result > 0 ==> forall y :: y > 0 && y < result ==> y * y + digitSum(y) * y != n
+    ensures n > 1 && result == -1 ==> forall x :: x > 0 ==> x * x + digitSum(x) * x != n
+    ensures result == -1 || result > 0
+
+vc-code: |-
+  {
+    if n == 1 {
+      return -1;
+    }
+  
+    var maxDigitSum := 18 * 9; // 162
+    var xL := 0;
+    var xR := n;
+  
+    while xL + maxDigitSum < xR 
+      invariant 0 <= xL <= xR <= n
+      invariant forall y :: 0 < y <= xL ==> y * y + digitSum(y) * y != n
+      invariant forall y :: y > xR ==> y * y + digitSum(y) * y > n
+    {
+      var xM := (xL + xR) / 2;
+      assert xM >= 0;
+      var tmpCall1 := digitSum(xM);
+      var fM := xM * xM + tmpCall1 * xM;
+  
+      if fM < n {
+        // Check range around xM going backwards
+        var start := xM - 1;
+        var end := if xL > xM - maxDigitSum then xL else xM - maxDigitSum;
+        var x := start;
+        while x >= end
+          invariant end <= x <= start
+          invariant forall y :: x < y <= start ==> y * y + digitSum(y) * y != n
+        {
+          assert x >= 0;
+          var tmpCall2 := digitSum(x);
+          var fx := x * x + tmpCall2 * x;
+          if fx == n {
+            assert forall y :: 0 < y < x ==> y * y + digitSum(y) * y != n;
+            return x;
+          }
+          x := x - 1;
+        }
+        xL := xM;
+      } else {
+        // Check range around xM going forwards
+        var start := xM + 1;
+        var end := if xR < xM + maxDigitSum then xR else xM + maxDigitSum;
+        var x := start;
+        while x <= end
+          invariant start <= x <= end + 1
+          invariant forall y :: start <= y < x ==> y * y + digitSum(y) * y != n
+        {
+          assert x >= 0;
+          var tmpCall3 := digitSum(x);
+          var fx := x * x + tmpCall3 * x;
+          if fx == n {
+            assert forall y :: 0 < y < x ==> y * y + digitSum(y) * y != n;
+            return x;
+          }
+          x := x + 1;
+        }
+        xR := xM;
+      }
+    }
+  
+    // Final linear search in remaining range
+    var x := xL + 1;
+    while x <= xR
+      invariant xL + 1 <= x <= xR + 1
+      invariant forall y :: 0 < y < x ==> y * y + digitSum(y) * y != n
+      invariant forall y :: y > xR ==> y * y + digitSum(y) * y > n
+    {
+      assert x >= 0;
+      var tmpCall4 := digitSum(x);
+      var fx := x * x + tmpCall4 * x;
+      if fx == n {
+        assert forall y :: 0 < y < x ==> y * y + digitSum(y) * y != n;
+        return x;
+      }
+      x := x + 1;
+    }
+  
+    return -1;
+  }
+
+vc-postamble: |-

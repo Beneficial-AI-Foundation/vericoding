@@ -1,0 +1,84 @@
+/-
+# Task
+ Let's say that number a feels comfortable with number b if a ≠ b and b lies in the segment` [a - s(a), a + s(a)]`, where `s(x)` is the sum of x's digits.
+
+ How many pairs (a, b) are there, such that a < b, both a and b lie on the segment `[L, R]`, and each number feels comfortable with the other?
+
+# Example
+
+ For `L = 10 and R = 12`, the output should be `2`
+
+ Here are all values of s(x) to consider:
+```
+s(10) = 1, so 10 is comfortable with 9 and 11;
+s(11) = 2, so 11 is comfortable with 9, 10, 12 and 13;
+s(12) = 3, so 12 is comfortable with 9, 10, 11, 13, 14 and 15.
+Thus, there are 2 pairs of numbers comfortable 
+with each other within the segment [10; 12]: 
+(10, 11) and (11, 12).
+```
+# Input/Output
+
+ - `[input]` integer `L`
+
+    Constraints: `1 ≤ L ≤ R ≤ 1000`
+
+ - `[input]` integer `R`
+
+    Constraints: `1 ≤ L ≤ R ≤ 1000`
+
+ - `[output]` an integer
+
+    The number of pairs satisfying all the above conditions.
+-/
+
+def digitSum (n : Nat) : Nat :=
+  sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def countComfortablePairs (l r : Nat) : Nat :=
+  sorry
+
+theorem window_size (start : Nat) (window : Nat) 
+  (h1 : start ≥ 1) (h2 : start ≤ 100) (h3 : window ≥ 0) (h4 : window ≤ 10) :
+  let result := countComfortablePairs start (start + window)
+  result ≥ 0 ∧ result ≤ (window + 1) * window / 2 :=
+  sorry
+
+theorem single_number (n : Nat) (h1 : n ≥ 1) (h2 : n ≤ 1000) :
+  countComfortablePairs n n = 0 :=
+  sorry
+
+theorem pairs_symmetry (n : Nat) (h1 : n ≥ 1) (h2 : n ≤ 100) :
+  let allPairs := countComfortablePairs 1 n
+  allPairs ≥ 0 ∧ allPairs ≤ n * 2 :=
+  sorry
+
+theorem small_ranges :
+  countComfortablePairs 1 1 = 0 ∧
+  countComfortablePairs 1 2 ≥ 0 ∧
+  countComfortablePairs 9 10 ≥ 0 :=
+  sorry
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval count_comfortable_pairs 10 12
+
+/-
+info: 20
+-/
+-- #guard_msgs in
+-- #eval count_comfortable_pairs 1 9
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval count_comfortable_pairs 13 13
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

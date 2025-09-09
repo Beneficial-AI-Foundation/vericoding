@@ -22,9 +22,7 @@ def cubeElements_precond (a : Array Int) : Prop :=
 -- </vc-helpers>
 
 def cubeElements (a : Array Int) (h_precond : cubeElements_precond (a)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def cubeElements_postcond (a : Array Int) (result: Array Int) (h_precond : cubeElements_precond (a)) :=
@@ -33,9 +31,7 @@ def cubeElements_postcond (a : Array Int) (result: Array Int) (h_precond : cubeE
 
 theorem cubeElements_spec_satisfied (a: Array Int) (h_precond : cubeElements_precond (a)) :
     cubeElements_postcond (a) (cubeElements (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

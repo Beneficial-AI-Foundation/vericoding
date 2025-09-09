@@ -36,15 +36,11 @@ vc-helpers: |-
     else a.size - 1
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def onlineMax (a : Array Int) (x : Nat) (h_precond : onlineMax_precond (a) (x)) : Int × Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def onlineMax_postcond (a : Array Int) (x : Nat) (result: Int × Nat) (h_precond : onlineMax_precond (a) (x)) :=
     let (m, p) := result;
@@ -56,11 +52,7 @@ vc-condition: |-
   
   theorem onlineMax_spec_satisfied (a: Array Int) (x: Nat) (h_precond : onlineMax_precond (a) (x)) :
       onlineMax_postcond (a) (x) (onlineMax (a) (x) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

@@ -9,17 +9,17 @@
 -/
 
 /-  numpy.place: Change elements of an array based on conditional and input values.
-    
+
     Modifies elements of an array where the corresponding mask is True, using values 
     from the vals array. The function uses the first N elements of vals, where N is 
     the number of True values in mask. If vals is smaller than N, it will be repeated.
-    
+
     The parameter `k` must equal the number of True elements in the mask array.
     The parameter `v` is the size of the vals array, which must be non-empty.
 -/
 
 /-  Specification: numpy.place modifies elements where mask is True using vals.
-    
+
     Precondition: k equals the count of True elements in mask, and vals is non-empty
     Postcondition: Elements in arr where mask is True are replaced with values from vals,
                   with vals repeating if necessary. Elements where mask is False remain unchanged.
@@ -34,9 +34,7 @@ open Std.Do
 
 def place {n k v : Nat} (arr : Vector Float n) (mask : Vector Bool n) (vals : Vector Float (v + 1))
     (h : k = (mask.toArray.toList.count true)) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem place_spec {n k v : Nat} (arr : Vector Float n) (mask : Vector Bool n) (vals : Vector Float (v + 1))
     (h : k = (mask.toArray.toList.count true)) :
@@ -52,6 +50,4 @@ theorem place_spec {n k v : Nat} (arr : Vector Float n) (mask : Vector Bool n) (
            val_idx.val = pos % (v + 1) ∧
            result.get i = vals.get val_idx)⌝
     ⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

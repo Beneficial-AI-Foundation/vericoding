@@ -15,7 +15,7 @@
 
     Precondition: True (exponential function is defined for all real numbers)
     Postcondition: For all indices i, result[i] = e^(x[i])
-    
+
     Mathematical properties:
     - exp(0) = 1 for any zero elements
     - exp(x) > 0 for all x (exponential is always positive)
@@ -31,9 +31,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_exp {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_exp_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -42,6 +40,4 @@ theorem numpy_exp_spec {n : Nat} (x : Vector Float n) :
                    result.get i > 0 ∧
                    (x.get i = 0 → result.get i = 1) ∧
                    (∀ j : Fin n, x.get i ≤ x.get j → result.get i ≤ result.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

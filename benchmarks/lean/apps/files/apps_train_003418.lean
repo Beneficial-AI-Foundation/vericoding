@@ -1,0 +1,87 @@
+/-
+This kata is based on a [variation](https://www.codewars.com/kata/happy-numbers-5) of *Happy Numbers* by TySlothrop. It is advisable to complete it first to grasp the idea and then move on to this one.
+
+___
+
+Hello, my dear friend, and welcome to another *Happy Numbers* kata! What? You're not interested in them anymore? They are all the same? But what if I say that this one is a *performance version*...  
+
+___
+
+# Your task:
+
+Write a function `performant_numbers` which takes a number `n` as an argument and returns a list of all *happy numbers* from `1` to `n` inclusive. For example:
+
+```
+performant_numbers(10)   =>  [1, 7, 10]
+performant_numbers(50)   =>  [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49]
+performant_numbers(100)  =>  [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100]
+```
+
+# Test suite:
+
+* `5000` tests with number `n` being up to `300000`
+* The reference solution takes around `4.9` seconds to calculate the result
+* you are not allowed to hardcode the sequence: you'll have to compute it (max length of the code: 1700 characters)
+
+___
+
+Will you take up the challenge?
+-/
+
+def sum_dig (n: Nat) : Nat := sorry
+def is_happy (n: Nat) : Bool := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def performant_numbers (n: Nat) : List Nat := sorry
+
+theorem sum_dig_nonnegative (n: Nat) : 
+  sum_dig n ≥ 0 := sorry
+
+theorem sum_dig_upper_bound (n: Nat) (k: Nat) :
+  sum_dig n ≤ k * 81 := sorry
+
+theorem is_happy_bool_result (n: Nat) :
+  is_happy n = true ∨ is_happy n = false := sorry
+
+theorem known_happy_numbers (n: Nat) :
+  n = 1 ∨ n = 7 ∨ n = 10 ∨ n = 13 ∨ n = 19 ∨ n = 23 ∨ n = 28 ∨ n = 31 →
+  is_happy n = true := sorry
+
+theorem known_unhappy_numbers (n: Nat) :
+  n = 2 ∨ n = 3 ∨ n = 4 ∨ n = 5 ∨ n = 6 ∨ n = 8 ∨ n = 9 →
+  is_happy n = false := sorry
+
+theorem performant_numbers_sorted (n: Nat) :
+  let result := performant_numbers n
+  ∀ i < result.length - 1, 
+    result[i]! ≤ result[i+1]! := sorry
+
+theorem performant_numbers_bounded (n: Nat) :
+  ∀ x ∈ performant_numbers n, x ≤ n := sorry
+
+theorem performant_numbers_contains_happy (n: Nat) :
+  ∀ x ∈ [1, 7, 10, 13, 19, 23, 28, 31],
+    x ≤ n → x ∈ performant_numbers n := sorry
+
+/-
+info: [1, 7, 10]
+-/
+-- #guard_msgs in
+-- #eval performant_numbers 10
+
+/-
+info: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49]
+-/
+-- #guard_msgs in
+-- #eval performant_numbers 50
+
+/-
+info: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100]
+-/
+-- #guard_msgs in
+-- #eval performant_numbers 100
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

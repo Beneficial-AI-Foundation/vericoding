@@ -9,17 +9,17 @@
 -/
 
 /-  Evaluate a 2-D Hermite series at points (x, y).
-    
+
     Given a 2D coefficient matrix c where c[i,j] is the coefficient for H_i(x) * H_j(y),
     evaluates the sum: ∑_{i,j} c_{i,j} * H_i(x) * H_j(y)
     where H_i and H_j are Hermite polynomials.
-    
+
     The x and y vectors must have the same length, and the function evaluates
     the 2D polynomial at each pair of corresponding points (x[k], y[k]).
 -/
 
 /-  Specification: hermval2d correctly evaluates a 2D Hermite polynomial series.
-    
+
     Mathematical properties:
     1. The result at each point (x[k], y[k]) is the sum ∑_{i,j} c_{i,j} * H_i(x[k]) * H_j(y[k])
     2. Empty coefficient matrix (rows = 0 or cols = 0) evaluates to zero vector
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermval2d {n rows cols : Nat} (x y : Vector Float n) (c : Vector (Vector Float cols) rows) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermval2d_spec {n rows cols : Nat} (x y : Vector Float n) (c : Vector (Vector Float cols) rows) :
     ⦃⌜True⌝⦄
@@ -103,6 +101,4 @@ theorem hermval2d_spec {n rows cols : Nat} (x y : Vector Float n) (c : Vector (V
                        result.get k = List.sum (List.map 
                          (fun i : Fin rows => (c.get i).get ⟨0, sorry⟩ * H_x i.val) 
                          (List.finRange rows)))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

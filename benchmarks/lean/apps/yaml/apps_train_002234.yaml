@@ -1,0 +1,113 @@
+vc-description: |-
+  /-
+  Let $a$ and $b$ be two arrays of lengths $n$ and $m$, respectively, with no elements in common. We can define a new array $\mathrm{merge}(a,b)$ of length $n+m$ recursively as follows:  If one of the arrays is empty, the result is the other array. That is, $\mathrm{merge}(\emptyset,b)=b$ and $\mathrm{merge}(a,\emptyset)=a$. In particular, $\mathrm{merge}(\emptyset,\emptyset)=\emptyset$.  If both arrays are non-empty, and $a_1<b_1$, then $\mathrm{merge}(a,b)=[a_1]+\mathrm{merge}([a_2,\ldots,a_n],b)$. That is, we delete the first element $a_1$ of $a$, merge the remaining arrays, then add $a_1$ to the beginning of the result.  If both arrays are non-empty, and $a_1>b_1$, then $\mathrm{merge}(a,b)=[b_1]+\mathrm{merge}(a,[b_2,\ldots,b_m])$. That is, we delete the first element $b_1$ of $b$, merge the remaining arrays, then add $b_1$ to the beginning of the result. 
+  
+  This algorithm has the nice property that if $a$ and $b$ are sorted, then $\mathrm{merge}(a,b)$ will also be sorted. For example, it is used as a subroutine in merge-sort. For this problem, however, we will consider the same procedure acting on non-sorted arrays as well. For example, if $a=[3,1]$ and $b=[2,4]$, then $\mathrm{merge}(a,b)=[2,3,1,4]$.
+  
+  A permutation is an array consisting of $n$ distinct integers from $1$ to $n$ in arbitrary order. For example, $[2,3,1,5,4]$ is a permutation, but $[1,2,2]$ is not a permutation ($2$ appears twice in the array) and $[1,3,4]$ is also not a permutation ($n=3$ but there is $4$ in the array).
+  
+  There is a permutation $p$ of length $2n$. Determine if there exist two arrays $a$ and $b$, each of length $n$ and with no elements in common, so that $p=\mathrm{merge}(a,b)$.
+  
+  -----Input-----
+  
+  The first line contains a single integer $t$ ($1\le t\le 1000$)  — the number of test cases. Next $2t$ lines contain descriptions of test cases. 
+  
+  The first line of each test case contains a single integer $n$ ($1\le n\le 2000$).
+  
+  The second line of each test case contains $2n$ integers $p_1,\ldots,p_{2n}$ ($1\le p_i\le 2n$). It is guaranteed that $p$ is a permutation.
+  
+  It is guaranteed that the sum of $n$ across all test cases does not exceed $2000$.
+  
+  -----Output-----
+  
+  For each test case, output "YES" if there exist arrays $a$, $b$, each of length $n$ and with no common elements, so that $p=\mathrm{merge}(a,b)$. Otherwise, output "NO".
+  
+  -----Example-----
+  Input
+  6
+  2
+  2 3 1 4
+  2
+  3 1 2 4
+  4
+  3 2 6 1 5 7 8 4
+  3
+  1 2 3 4 5 6
+  4
+  6 1 3 7 4 5 8 2
+  6
+  4 3 2 5 1 11 9 12 8 6 10 7
+  
+  Output
+  YES
+  NO
+  YES
+  YES
+  NO
+  NO
+  
+  -----Note-----
+  
+  In the first test case, $[2,3,1,4]=\mathrm{merge}([3,1],[2,4])$.
+  
+  In the second test case, we can show that $[3,1,2,4]$ is not the merge of two arrays of length $2$.
+  
+  In the third test case, $[3,2,6,1,5,7,8,4]=\mathrm{merge}([3,2,8,4],[6,1,5,7])$.
+  
+  In the fourth test case, $[1,2,3,4,5,6]=\mathrm{merge}([1,3,6],[2,4,5])$, for example.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def canMergeForPermutation (p : List Nat) : String :=
+    sorry
+  
+  structure Permutation (n : Nat) where
+    perm : List Nat
+    size : perm.length = n
+
+vc-theorems: |-
+  theorem permutation_properties {n : Nat} (p : List Nat) 
+    (h1 : p.length = 2*n) (h2 : n > 0) (h3 : n ≤ 5) :
+    (canMergeForPermutation p = "YES" ∨ canMergeForPermutation p = "NO") ∧
+    p.length % 2 = 0 :=
+  sorry
+  
+  theorem result_consistency {n : Nat} (p : List Nat)
+    (h1 : p.length = 2*n) (h2 : n > 0) (h3 : n ≤ 5) :
+    canMergeForPermutation p = canMergeForPermutation p :=
+  sorry
+  
+  theorem known_cases :
+    canMergeForPermutation [2, 3, 1, 4] = "YES" ∧ 
+    canMergeForPermutation [3, 1, 2, 4] = "NO" ∧
+    canMergeForPermutation [3, 2, 6, 1, 5, 7, 8, 4] = "YES" :=
+  sorry
+  
+  /-
+  info: 'YES'
+  -/
+  -- #guard_msgs in
+  -- #eval can_merge_for_permutation [2, 3, 1, 4]
+  
+  /-
+  info: 'NO'
+  -/
+  -- #guard_msgs in
+  -- #eval can_merge_for_permutation [3, 1, 2, 4]
+  
+  /-
+  info: 'YES'
+  -/
+  -- #guard_msgs in
+  -- #eval can_merge_for_permutation [3, 2, 6, 1, 5, 7, 8, 4]
+
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded
+

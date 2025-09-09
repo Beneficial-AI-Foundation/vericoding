@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def sign {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem sign_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       sign x
@@ -37,11 +33,7 @@ vc-condition: |-
         (x.get i < 0 → result.get i = -1) ∧
         (x.get i = 0 → result.get i = 0) ∧
         (x.get i > 0 → result.get i = 1)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -42,9 +42,7 @@ def allImaginaryPartsCloseToZero {n : Nat} (arr : Vector Complex n) (tol : Float
 -- </vc-helpers>
 
 def real_if_close {n : Nat} (arr : Vector Complex n) (tol : Float := 100.0) : Id (Vector Complex n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem real_if_close_spec {n : Nat} (arr : Vector Complex n) (tol : Float := 100.0) 
     (h_tol_pos : tol > 0) :
@@ -65,6 +63,4 @@ theorem real_if_close_spec {n : Nat} (arr : Vector Complex n) (tol : Float := 10
       ((∀ i : Fin n, (arr.get i).im = 0) → 
         ∀ i : Fin n, result.get i = arr.get i)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

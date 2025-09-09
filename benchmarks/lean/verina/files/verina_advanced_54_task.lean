@@ -19,9 +19,7 @@ def missingNumber_precond (nums : List Nat) : Prop :=
 -- </vc-helpers>
 
 def missingNumber (nums : List Nat) (h_precond : missingNumber_precond (nums)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def missingNumber_postcond (nums : List Nat) (result: Nat) (h_precond : missingNumber_precond (nums)) : Prop :=
@@ -32,9 +30,7 @@ def missingNumber_postcond (nums : List Nat) (result: Nat) (h_precond : missingN
 
 theorem missingNumber_spec_satisfied (nums: List Nat) (h_precond : missingNumber_precond (nums)) :
     missingNumber_postcond (nums) (missingNumber (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

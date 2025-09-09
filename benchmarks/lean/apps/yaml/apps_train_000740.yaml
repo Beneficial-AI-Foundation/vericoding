@@ -1,0 +1,82 @@
+vc-description: |-
+  /-
+  Tara was completing an Algorithms assignment and got stuck on a question. She thought of who can help her, and got reminded of Kabir who has good problem solving skills. The question is:
+  Given N$N$ the number of elements in the sequence A1$A_1$,A2$A_2$ … An$A_n$. Find out the prime factor which occurred maximum number of times among the largest prime factor corresponding to each element. if there are more than one such prime factors print the largest one.
+  You are friends with Kabir, help him to solve the problem for Tara.
+  
+  -----Input:-----
+  - The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T test cases follows. 
+  - First line of each test case contains N$N$, the number of elements in the sequence.
+  - Second line contains N space separated elements A1$A_1$,A2$A_2$ … An$A_n$.
+  
+  -----Output:-----
+  - For each test case, print a single line, the number which occurs maximum number of times from the largest prime factor corresponding to each element.
+  
+  -----Constraints-----
+  - 1≤T≤10$1 \leq T \leq 10$
+  - 1≤N≤105$1 \leq N \leq 10^5$
+  - 2≤A[i]≤105$2 \leq A[i] \leq 10^5$
+  
+  -----Sample Input:-----
+  1
+  7
+  
+  3 2 15 6 8 5 10
+  
+  -----Sample Output:-----
+  5
+  
+  -----EXPLANATION:-----
+  The largest prime factors of numbers are:
+  3 2  5  3  2  5  5 , of which 5 is most frequent.
+  -/
+
+vc-preamble: |-
+  def is_prime (n : Nat) : Bool := sorry
+  
+  def find_max_prime_factor (nums : List Nat) : Nat := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def get_prime_factors_count (nums : List Nat) : List (Nat × Nat) := sorry
+  
+  theorem result_is_prime_factor 
+    (nums : List Nat) 
+    (h1 : ∀ x ∈ nums, x ≥ 2 ∧ x ≤ 10000) 
+    (h2 : nums.length > 0) :
+    let result := find_max_prime_factor nums
+    let factors := get_prime_factors_count nums
+    ∃ freq, (result, freq) ∈ factors := sorry
+
+vc-theorems: |-
+  theorem all_same_prime
+    (nums : List Nat)
+    (h : ∀ x ∈ nums, x = 2)
+    (h2 : nums.length > 0) :
+    find_max_prime_factor nums = 2 := sorry
+  
+  /-
+  info: 5
+  -/
+  -- #guard_msgs in
+  -- #eval find_max_prime_factor [3, 2, 15, 6, 8, 5, 10]
+  
+  /-
+  info: 2
+  -/
+  -- #guard_msgs in
+  -- #eval find_max_prime_factor [4, 8, 12, 15]
+  
+  /-
+  info: 11
+  -/
+  -- #guard_msgs in
+  -- #eval find_max_prime_factor [3, 5, 7, 11]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

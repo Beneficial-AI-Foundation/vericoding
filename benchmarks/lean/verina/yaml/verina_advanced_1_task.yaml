@@ -29,15 +29,11 @@ vc-helpers: |-
     aux nums
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def FindSingleNumber (nums : List Int) (h_precond : FindSingleNumber_precond (nums)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def FindSingleNumber_postcond (nums : List Int) (result: Int) (h_precond : FindSingleNumber_precond (nums)) : Prop :=
     (nums.length > 0)
@@ -50,11 +46,7 @@ vc-condition: |-
   
   theorem FindSingleNumber_spec_satisfied (nums: List Int) (h_precond : FindSingleNumber_precond (nums)) :
       FindSingleNumber_postcond (nums) (FindSingleNumber (nums) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

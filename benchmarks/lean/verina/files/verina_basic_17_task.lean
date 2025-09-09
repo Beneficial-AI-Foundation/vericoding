@@ -27,9 +27,7 @@ def shift32 (c : Char) : Char :=
 -- </vc-helpers>
 
 def toLowercase (s : String) (h_precond : toLowercase_precond (s)) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def toLowercase_postcond (s : String) (result: String) (h_precond : toLowercase_precond (s)) :=
@@ -42,9 +40,7 @@ def toLowercase_postcond (s : String) (result: String) (h_precond : toLowercase_
 
 theorem toLowercase_spec_satisfied (s: String) (h_precond : toLowercase_precond (s)) :
     toLowercase_postcond (s) (toLowercase (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

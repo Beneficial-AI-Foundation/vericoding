@@ -29,9 +29,7 @@ def isSpaceCommaDot (c : Char) : Bool :=
 -- </vc-helpers>
 
 def replaceWithColon (s : String) (h_precond : replaceWithColon_precond (s)) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def replaceWithColon_postcond (s : String) (result: String) (h_precond : replaceWithColon_precond (s)) :=
@@ -44,9 +42,7 @@ def replaceWithColon_postcond (s : String) (result: String) (h_precond : replace
 
 theorem replaceWithColon_spec_satisfied (s: String) (h_precond : replaceWithColon_precond (s)) :
     replaceWithColon_postcond (s) (replaceWithColon (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

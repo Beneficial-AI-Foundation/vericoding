@@ -22,14 +22,10 @@ open Std.Do
 -- </vc-helpers>
 
 def legweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legweight_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     legweight x
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = 1.0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

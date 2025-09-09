@@ -24,9 +24,7 @@ def topKFrequent_precond (nums : List Int) (k : Nat) : Prop :=
 -- </vc-helpers>
 
 def topKFrequent (nums : List Int) (k : Nat) (h_precond : topKFrequent_precond (nums) (k)) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def topKFrequent_postcond (nums : List Int) (k : Nat) (result: List Int) (h_precond : topKFrequent_precond (nums) (k)) : Prop :=
@@ -56,9 +54,7 @@ def topKFrequent_postcond (nums : List Int) (k : Nat) (result: List Int) (h_prec
 
 theorem topKFrequent_spec_satisfied (nums: List Int) (k: Nat) (h_precond : topKFrequent_precond (nums) (k)) :
     topKFrequent_postcond (nums) (k) (topKFrequent (nums) (k) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

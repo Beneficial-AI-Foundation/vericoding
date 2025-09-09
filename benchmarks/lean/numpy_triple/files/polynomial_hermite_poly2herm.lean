@@ -14,13 +14,13 @@
 -/
 
 /-  Specification: poly2herm converts polynomial coefficients to Hermite series coefficients
-    
+
     The specification ensures:
     1. The output has the same dimension as the input
     2. The conversion preserves the polynomial function when evaluated using respective bases
     3. For the zero polynomial (all coefficients zero), the result is also zero
     4. The conversion is linear: poly2herm(a*p + b*q) = a*poly2herm(p) + b*poly2herm(q)
-    
+
     Additionally, for specific test cases:
     - Converting [0, 1, 2, 3] should yield [1, 2.75, 0.5, 0.375]
     - Converting a constant polynomial [c] should yield [c]
@@ -35,9 +35,7 @@ open Std.Do
 -- </vc-helpers>
 
 def poly2herm {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem poly2herm_spec {n : Nat} (pol : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem poly2herm_spec {n : Nat} (pol : Vector Float n) :
                   pol.get ⟨2, sorry⟩ = 2 ∧ pol.get ⟨3, sorry⟩ = 3) →
                  (result.get ⟨0, sorry⟩ = 1 ∧ result.get ⟨1, sorry⟩ = 2.75 ∧ 
                   result.get ⟨2, sorry⟩ = 0.5 ∧ result.get ⟨3, sorry⟩ = 0.375)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

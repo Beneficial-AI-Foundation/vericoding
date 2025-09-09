@@ -27,9 +27,7 @@ def isEven (n : Int) : Bool :=
 -- </vc-helpers>
 
 def findEvenNumbers (arr : Array Int) (h_precond : findEvenNumbers_precond (arr)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def findEvenNumbers_postcond (arr : Array Int) (result: Array Int) (h_precond : findEvenNumbers_precond (arr)) :=
@@ -42,9 +40,7 @@ def findEvenNumbers_postcond (arr : Array Int) (result: Array Int) (h_precond : 
 
 theorem findEvenNumbers_spec_satisfied (arr: Array Int) (h_precond : findEvenNumbers_precond (arr)) :
     findEvenNumbers_postcond (arr) (findEvenNumbers (arr) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -1,0 +1,61 @@
+/* numpy.dtype: Create a data type object.
+
+A numpy array is homogeneous, and contains elements described by a dtype object. 
+A dtype object can be constructed from different combinations of fundamental numeric types.
+
+This specification focuses on creating basic numeric data types like int16, int32, float32, float64.
+The function maps type specifications to their corresponding DType objects with proper
+attributes like size, alignment, and signedness.
+
+Specification: numpy.dtype creates a valid data type object with consistent attributes.
+
+Precondition: The type_spec is a valid NumPy type specification
+Postcondition: The resulting DType has consistent attributes that match the specified type */
+
+use vstd::prelude::*;
+
+verus! {
+
+/* Represents a NumPy data type object with its essential attributes */
+struct DType {
+    /* The fundamental numeric type category */
+    kind: String,
+    /* The element size in bytes */
+    itemsize: nat,
+    /* The alignment requirement in bytes */
+    alignment: nat,
+    /* A descriptive name for the data type */
+    name: String,
+    /* Whether the data type is signed (for numeric types) */
+    signed: bool,
+}
+fn numpy_dtype(type_spec: &str) -> (dt: DType)
+    requires type_spec == "int8" || type_spec == "int16" || type_spec == "int32" || 
+             type_spec == "int64" || type_spec == "float32" || type_spec == "float64" || 
+             type_spec == "bool",
+    ensures 
+        dt.kind == "i" || dt.kind == "f" || dt.kind == "b",
+        dt.itemsize > 0,
+        dt.alignment > 0 && dt.alignment <= dt.itemsize,
+        dt.name.len() > 0,
+        (type_spec == "int8" ==> dt.itemsize == 1 && dt.signed == true && dt.kind == "i"),
+        (type_spec == "int16" ==> dt.itemsize == 2 && dt.signed == true && dt.kind == "i"),
+        (type_spec == "int32" ==> dt.itemsize == 4 && dt.signed == true && dt.kind == "i"),
+        (type_spec == "int64" ==> dt.itemsize == 8 && dt.signed == true && dt.kind == "i"),
+        (type_spec == "float32" ==> dt.itemsize == 4 && dt.kind == "f"),
+        (type_spec == "float64" ==> dt.itemsize == 8 && dt.kind == "f"),
+        (type_spec == "bool" ==> dt.itemsize == 1 && dt.kind == "b")
+{
+    // impl-start
+    assume(false);
+    DType {
+        kind: String::new(),
+        itemsize: 0,
+        alignment: 0,
+        name: String::new(),
+        signed: false,
+    }
+    // impl-end
+}
+}
+fn main() {}

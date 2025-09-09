@@ -24,24 +24,16 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def size {n : Nat} (a : Vector Float n) : Id Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem size_spec {n : Nat} (a : Vector Float n) :
       ⦃⌜True⌝⦄
       size a
       ⦃⇓result => ⌜result = n⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

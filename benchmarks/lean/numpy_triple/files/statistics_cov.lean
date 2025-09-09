@@ -39,9 +39,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_cov {vars obs : Nat} (m : Vector (Vector Float obs) vars) (h : obs > 0) : Id (Vector (Vector Float vars) vars) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_cov_spec {vars obs : Nat} (m : Vector (Vector Float obs) vars) (h : obs > 0) :
     ⦃⌜obs > 0⌝⦄
@@ -62,6 +60,4 @@ theorem numpy_cov_spec {vars obs : Nat} (m : Vector (Vector Float obs) vars) (h 
           (List.sum (List.map (fun k : Fin obs => 
             (var_i.get k - mean_i) * (var_j.get k - mean_j)
           ) (List.finRange obs))) / (obs.toFloat - 1))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

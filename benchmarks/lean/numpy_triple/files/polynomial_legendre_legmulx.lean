@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def legmulx {n : Nat} (c : Vector Float (n + 1)) : Id (Vector Float (n + 2)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legmulx_spec {n : Nat} (c : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -38,6 +36,4 @@ theorem legmulx_spec {n : Nat} (c : Vector Float (n + 1)) :
        -- Higher order terms follow the recurrence relation
        (∀ i : Fin (n + 2), ∃ coeff : Float, result.get i = coeff)
        ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

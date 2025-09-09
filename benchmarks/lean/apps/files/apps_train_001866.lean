@@ -1,0 +1,96 @@
+/-
+In a gold mine grid of size m * n, each cell in this mine has an integer representing the amount of gold in that cell, 0 if it is empty.
+Return the maximum amount of gold you can collect under the conditions:
+
+Every time you are located in a cell you will collect all the gold in that cell.
+From your position you can walk one step to the left, right, up or down.
+You can't visit the same cell more than once.
+Never visit a cell with 0 gold.
+You can start and stop collecting gold from any position in the grid that has some gold.
+
+Example 1:
+Input: grid = [[0,6,0],[5,8,7],[0,9,0]]
+Output: 24
+Explanation:
+[[0,6,0],
+ [5,8,7],
+ [0,9,0]]
+Path to get the maximum gold, 9 -> 8 -> 7.
+
+Example 2:
+Input: grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]]
+Output: 28
+Explanation:
+[[1,0,7],
+ [2,0,6],
+ [3,4,5],
+ [0,3,0],
+ [9,0,20]]
+Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
+
+Constraints:
+
+1 <= grid.length, grid[i].length <= 15
+0 <= grid[i][j] <= 100
+There are at most 25 cells containing gold.
+-/
+
+def sum (xs : List Nat) : Nat := 
+  match xs with
+  | [] => 0
+  | h :: t => h + sum t
+
+def sumOfLists (xss : List (List Nat)) : Nat :=
+  sum (xss.map sum)
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def get_maximum_gold (grid : List (List Nat)) : Nat := sorry 
+
+theorem result_less_than_total (grid : List (List Nat)) :
+  get_maximum_gold grid ≤ sumOfLists grid := sorry
+
+theorem empty_grid_is_zero {w h : Nat} (grid : List (List Nat)) 
+  (h1 : grid.length = h)
+  (h2 : ∀ row ∈ grid, row.length = w ∧ ∀ x ∈ row, x = 0) :
+  get_maximum_gold grid = 0 := sorry
+
+theorem result_is_non_negative (grid : List (List Nat)) :
+  get_maximum_gold grid ≥ 0 := sorry
+
+theorem grid_unchanged (grid original : List (List Nat)) :
+  original = grid →
+  get_maximum_gold grid = get_maximum_gold grid ∧ grid = original := sorry
+
+theorem single_value {w h val : Nat} (grid : List (List Nat))
+  (h1 : grid.length = h)
+  (h2 : ∀ row ∈ grid, row.length = w)
+  (h3 : grid.head!.head! = val)
+  (h4 : ∀ (i j : Nat), (i,j) ≠ (0,0) → 
+    i < h → j < w → (grid.get! i).get! j = 0) :
+  get_maximum_gold grid = val := sorry
+
+theorem max_path_viable (grid : List (List Nat)) :
+  get_maximum_gold grid ≤ sumOfLists grid := sorry
+
+/-
+info: 24
+-/
+-- #guard_msgs in
+-- #eval get_maximum_gold [[0, 6, 0], [5, 8, 7], [0, 9, 0]]
+
+/-
+info: 28
+-/
+-- #guard_msgs in
+-- #eval get_maximum_gold [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
+
+/-
+info: 4
+-/
+-- #guard_msgs in
+-- #eval get_maximum_gold [[1, 1], [1, 1]]
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

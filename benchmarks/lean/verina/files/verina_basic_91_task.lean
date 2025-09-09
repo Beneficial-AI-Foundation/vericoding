@@ -24,9 +24,7 @@ def Swap_precond (X : Int) (Y : Int) : Prop :=
 -- </vc-helpers>
 
 def Swap (X : Int) (Y : Int) (h_precond : Swap_precond (X) (Y)) : Int × Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def Swap_postcond (X : Int) (Y : Int) (result: Int × Int) (h_precond : Swap_precond (X) (Y)) :=
@@ -35,9 +33,7 @@ def Swap_postcond (X : Int) (Y : Int) (result: Int × Int) (h_precond : Swap_pre
 
 theorem Swap_spec_satisfied (X: Int) (Y: Int) (h_precond : Swap_precond (X) (Y)) :
     Swap_postcond (X) (Y) (Swap (X) (Y) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

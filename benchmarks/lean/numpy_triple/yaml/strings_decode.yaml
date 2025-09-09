@@ -43,15 +43,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def decode {n : Nat} (a : Vector ByteArray n) (encoding : String := "utf-8") (errors : String := "strict") : Id (Vector String n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem decode_spec {n : Nat} (a : Vector ByteArray n) (encoding : String := "utf-8") (errors : String := "strict") :
       ⦃⌜∀ i : Fin n, (a.get i).size ≥ 0⌝⦄
       decode a encoding errors
@@ -82,11 +78,7 @@ vc-condition: |-
                     (∀ enc1 enc2 : String, enc1 ≠ enc2 →
                       decode a enc1 errors ≠ decode a enc2 errors ∨
                       (∀ j : Fin n, (a.get j).size = 0))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

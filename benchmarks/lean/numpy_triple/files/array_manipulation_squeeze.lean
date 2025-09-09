@@ -14,12 +14,12 @@
     This is a simplified 1D version of numpy.squeeze for vectors of size 1. -/
 
 /-  Specification: squeeze extracts the single element from a size-1 vector.
-    
+
     Mathematical properties:
     1. The result equals the first (and only) element of the input vector
     2. For any function f, squeeze preserves function application: f(squeeze(a)) = f(a[0])
     3. squeeze is the inverse of creating a single-element vector
-    
+
     Sanity checks:
     - The input must be a vector of exactly size 1
     - The output type changes from Vector to the element type
@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def squeeze {α : Type} (a : Vector α 1) : Id α :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem squeeze_spec {α : Type} (a : Vector α 1) :
     ⦃⌜True⌝⦄
@@ -47,6 +45,4 @@ theorem squeeze_spec {α : Type} (a : Vector α 1) :
                  (∀ (β : Type) (f : α → β), f result = f (a.get ⟨0, by decide⟩)) ∧
                  -- Sanity check: result is the unique element in the vector
                  (∀ i : Fin 1, a.get i = result)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

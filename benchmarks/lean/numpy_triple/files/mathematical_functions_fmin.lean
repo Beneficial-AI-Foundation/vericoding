@@ -27,9 +27,7 @@ open Std.Do
 -- </vc-helpers>
 
 def fmin {n : Nat} (x y : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem fmin_spec {n : Nat} (x y : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -49,6 +47,4 @@ theorem fmin_spec {n : Nat} (x y : Vector Float n) :
         result.get i ≤ x.get i ∧ result.get i ≤ y.get i) ∧
       (¬(result.get i).isNaN → 
         (result.get i = x.get i ∨ result.get i = y.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

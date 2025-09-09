@@ -1,0 +1,56 @@
+```yaml
+vc-description: |-
+  numpy.bincount: Count number of occurrences of each value in array of non-negative ints.
+
+  Count number of occurrences of each value in array of non-negative ints.
+  The number of bins (of size 1) is one larger than the largest value in x.
+  Each bin gives the number of occurrences of its index value in x.
+  
+  This function takes a 1D array of non-negative integers and returns
+  an array where the i-th element is the count of how many times the
+  value i appears in the input array.
+
+  Specification: numpy.bincount returns count of occurrences of each value.
+
+  Precondition: All values in x are non-negative and ≤ max_val
+  Postcondition: result[i] = count of occurrences of value i in x
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_occurrences(x: Seq<nat>, val: nat) -> nat
+      decreases x.len()
+  {
+      if x.len() == 0 {
+          0nat
+      } else {
+          (if x[0] == val { 1nat } else { 0nat }) + count_occurrences(x.skip(1), val)
+      }
+  }
+
+  fn numpy_bincount(x: Vec<nat>, max_val: nat) -> (result: Vec<nat>)
+      requires 
+          forall|i: int| 0 <= i < x.len() ==> x[i] <= max_val,
+      ensures
+          result.len() == max_val + 1,
+          forall|val: nat| val <= max_val ==> result[val as int] == count_occurrences(x@, val),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}
+```

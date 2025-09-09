@@ -8,19 +8,19 @@
 -/
 
 /-  numpy.round: Evenly round to the given number of decimals.
-    
+
     Rounds each element of the input array to the given number of decimal places.
     Uses "banker's rounding" (round half to even) for ties.
-    
+
     For decimals=0: rounds to nearest integer
     For decimals>0: rounds to that many decimal places
     For decimals<0: rounds to nearest 10^(-decimals)
-    
+
     Returns an array of the same shape as input, containing the rounded values.
 -/
 
 /-  Specification: numpy.round rounds each element to the specified number of decimal places.
-    
+
     Precondition: True (rounding is defined for all real numbers and decimal places)
     Postcondition: For all indices i, result[i] is the rounded value of a[i] to 'decimals' places:
     - For decimals = 0: result[i] is the nearest integer to a[i]
@@ -40,9 +40,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_round {n : Nat} (a : Vector Float n) (decimals : Int) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_round_spec {n : Nat} (a : Vector Float n) (decimals : Int) :
     ⦃⌜True⌝⦄
@@ -59,6 +57,4 @@ theorem numpy_round_spec {n : Nat} (a : Vector Float n) (decimals : Int) :
       (decimals = 0 → ∃ k : Int, result.get i = Float.ofInt k → result.get i = result.get i) ∧
       -- Basic sanity: result has the same vector shape as input
       (result.get i = result.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

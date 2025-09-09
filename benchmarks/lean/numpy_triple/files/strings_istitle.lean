@@ -15,7 +15,7 @@
     2. Each word starts with an uppercase letter followed by lowercase letters
     3. Words are separated by non-alphabetic characters
     4. There is at least one cased character in the string
-    
+
     Examples:
     - "Title Case" → True
     - "Numpy Is Great" → True  
@@ -27,7 +27,7 @@
 
 /-  Specification: numpy.strings.istitle returns a vector where each element indicates
     whether the corresponding string element is titlecased.
-    
+
     Mathematical properties:
     1. Empty strings return False
     2. Strings with no alphabetic characters return False
@@ -66,14 +66,10 @@ def isTitlecased (s : String) : Bool :=
 -- </vc-helpers>
 
 def istitle {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem istitle_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     istitle a
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = isTitlecased (a.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

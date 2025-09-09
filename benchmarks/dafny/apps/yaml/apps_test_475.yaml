@@ -1,0 +1,79 @@
+vc-description: |-
+  Count the number of ways to paint n bricks in a row using m colors such that exactly k bricks 
+  have a different color than the brick immediately to their left. The first brick is not counted 
+  in this comparison. Result should be modulo 998,244,353.
+
+vc-preamble: |-
+  predicate ValidInput(n: nat, m: nat, k: nat) {
+      n >= 1 && m >= 1 && k >= 0 && k <= n - 1
+  }
+  
+  function factorial(n: nat): nat
+  {
+      if n == 0 then 1
+      else n * factorial(n - 1)
+  }
+  
+  function binomial(n: nat, k: nat): nat
+      requires k <= n
+  {
+      if factorial(k) == 0 || factorial(n - k) == 0 then 0
+      else factorial(n) / (factorial(k) * factorial(n - k))
+  }
+  
+  function power(base: nat, exp: nat): nat
+  {
+      if exp == 0 then 1
+      else base * power(base, exp - 1)
+  }
+  
+  function ExpectedResult(n: nat, m: nat, k: nat): nat
+      requires ValidInput(n, m, k)
+  {
+      (m * power(m - 1, k) * binomial(n - 1, k)) % 998244353
+  }
+
+vc-helpers: |-
+  lemma factorial_positive(n: nat)
+      ensures factorial(n) > 0
+  {
+      if n == 0 {
+      } else {
+          factorial_positive(n - 1);
+      }
+  }
+
+vc-spec: |-
+  method solve(n: nat, m: nat, k: nat) returns (result: nat)
+      requires ValidInput(n, m, k)
+      ensures result < 998244353
+
+vc-code: |-
+  {
+      var MOD := 998244353;
+      var out := 1;
+  
+      // Multiply by (m-1)^k
+      var i := 0;
+      while i < k
+          invariant 0 <= i <= k
+          invariant out == power(m - 1, i) % MOD
+          invariant out < MOD
+      {
+          out := (out * (m - 1)) % MOD;
+          i := i + 1;
+      }
+  
+      // Multiply by m
+      out := (out * m) % MOD;
+  
+      // Multiply by binomial coefficient C(n-1, k)
+      factorial_positive(k);
+      factorial_positive(n - 1 - k);
+      var binom := binomial(n - 1, k);
+      out := (out * binom) % MOD;
+  
+      result := out;
+  }
+
+vc-postamble: |-

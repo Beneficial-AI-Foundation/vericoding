@@ -20,12 +20,12 @@
     The preconditions ensure:
     - The file path is valid (non-empty string)
     - After skipping skiprows lines and removing comments, there are exactly n valid float values
-    
+
     The postcondition guarantees:
     - The result vector contains the float values parsed from the file
     - Values appear in the same order as in the file (after skipping and comment removal)
     - The size of the result matches the type-level size n
-    
+
     Mathematical properties:
     - Deterministic: same file and parameters always produce the same result
     - Order-preserving: maintains the sequential order of values in the file
@@ -40,9 +40,7 @@ open Std.Do
 -- </vc-helpers>
 
 def loadtxt {n : Nat} (fname : String) (skiprows : Nat := 0) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem loadtxt_spec {n : Nat} (fname : String) (skiprows : Nat) 
     (h_fname_valid : fname.length > 0) :
@@ -52,6 +50,4 @@ theorem loadtxt_spec {n : Nat} (fname : String) (skiprows : Nat)
                  (∀ i : Fin n, ∃ v : Float, result.get i = v ∧ 
                   -- The value is a properly parsed float from the file
                   True)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

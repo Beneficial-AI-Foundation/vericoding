@@ -46,16 +46,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lagint {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
       (lbnd : Float) (scl : Float) : Id (Vector Float (n + m)) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lagint_spec {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
       (lbnd : Float) (scl : Float) :
       ⦃⌜True⌝⦄
@@ -75,11 +71,7 @@ vc-condition: |-
         (∀ i : Fin m, ∃ influence : Float, 
           influence = k.get i)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

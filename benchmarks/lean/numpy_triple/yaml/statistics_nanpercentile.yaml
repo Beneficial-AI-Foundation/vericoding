@@ -28,15 +28,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def nanpercentile {n : Nat} (a : Vector Float n) (q : Float) (h : 0 ≤ q ∧ q ≤ 100) : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem nanpercentile_spec {n : Nat} (a : Vector Float n) (q : Float) (h : 0 ≤ q ∧ q ≤ 100) :
       ⦃⌜0 ≤ q ∧ q ≤ 100⌝⦄
       nanpercentile a q h
@@ -79,11 +75,7 @@ vc-condition: |-
                 sorted_vals.get ⟨0, sorry⟩ ≤ result ∧ 
                 result ≤ sorted_vals.get ⟨sorted_vals.length - 1, sorry⟩)
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

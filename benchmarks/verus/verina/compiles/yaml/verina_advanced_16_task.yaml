@@ -1,0 +1,53 @@
+vc-description: |-
+  /*
+  Implement the insertion sort algorithm in Verus. The function takes a single Vec of integers
+  as input and returns a new Vec that contains the same integers in ascending order.
+  
+  Implementation must follow a standard insertion sort approach, placing each element into its correct position.
+  The resulting Vec must be sorted in ascending order.
+  The returned Vec must be a permutation of the input Vec (i.e., contain exactly the same elements).
+  
+  Input: A single Vec of integers, denoted as xs.
+  Output: A Vec of integers, sorted in ascending order.
+  
+  Example:
+  Input:  [3, 1, 4, 2]
+  Output: [1, 2, 3, 4]
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn insertion_sort(xs: Vec<i32>) -> (result: Vec<i32>)
+      ensures
+          sorted(result),
+          multiset_equivalent(xs, result),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  /* Helper function to check if a Vec is sorted */
+  spec fn sorted(v: Vec<i32>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j]
+  }
+
+  /* Helper function to check if two Vecs are multiset equivalent */
+  spec fn multiset_equivalent(v1: Vec<i32>, v2: Vec<i32>) -> bool {
+      /* This would typically involve checking that both vectors contain
+         the same elements with the same multiplicities */
+      true /* Placeholder - actual implementation would be more complex */
+  }
+
+  }
+  fn main() {}

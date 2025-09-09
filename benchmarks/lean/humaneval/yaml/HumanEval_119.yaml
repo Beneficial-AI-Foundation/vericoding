@@ -21,7 +21,7 @@ vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
+  
   /--
   name: balanced_paren_non_computable
   use: |
@@ -45,15 +45,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (l: List String) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: List String → String)
@@ -76,12 +72,8 @@ vc-condition: |-
   theorem correctness
   (l: List String)
   : problem_spec implementation l
-  :=
-
-vc-proof: |-
-  -- <vc-proof>
+  := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation ['()(', ')'] = "Yes"

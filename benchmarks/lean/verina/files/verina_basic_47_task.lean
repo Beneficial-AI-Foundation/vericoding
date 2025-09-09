@@ -24,9 +24,7 @@ theorem eq_of_sub_zero_and_ge (a b : Int) : a = b → a - b = 0 ∧ a ≥ b := b
 -- </vc-helpers>
 
 def arraySum (a : Array Int) (h_precond : arraySum_precond (a)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def sumTo (a : Array Int) (n : Nat) : Int :=
   if n = 0 then 0
@@ -38,9 +36,7 @@ def arraySum_postcond (a : Array Int) (result: Int) (h_precond : arraySum_precon
 
 theorem arraySum_spec_satisfied (a: Array Int) (h_precond : arraySum_precond (a)) :
     arraySum_postcond (a) (arraySum (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

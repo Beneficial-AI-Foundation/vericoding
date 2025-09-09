@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def absolute {n : Nat} (x : Vector Int n) : Id (Vector Int n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem absolute_spec {n : Nat} (x : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -37,6 +35,4 @@ theorem absolute_spec {n : Nat} (x : Vector Int n) :
                  (∀ i : Fin n, ∀ (y : Int), 
                     (if (x.get i * y) ≥ 0 then (x.get i * y) else -(x.get i * y)) = 
                     result.get i * (if y ≥ 0 then y else -y))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

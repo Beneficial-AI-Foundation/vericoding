@@ -1,0 +1,76 @@
+/-
+Your aged grandfather is tragically optimistic about Team GB's chances in the upcoming World Cup, and has enlisted you to help him make [Union Jack](https://en.wikipedia.org/wiki/Union_Jack) flags to decorate his house with. 
+
+## Instructions
+* Write a function which takes as a parameter a number which represents the dimensions of the flag. The flags will always be square, so the number 9 means you should make a flag measuring 9x9.
+* It should return a *string* of the flag, with _'X' for the red/white lines and '-' for the blue background_. It should include newline characters so that it's not all on one line.
+* For the sake of symmetry, treat odd and even numbers differently: odd number flags should have a central cross that is *only one 'X' thick*. Even number flags should have a central cross that is *two 'X's thick* (see examples below).
+
+## Other points
+* The smallest flag you can make without it looking silly is 7x7. If you get a number smaller than 7, simply _make the flag 7x7_.
+* If you get a decimal, round it _UP to the next whole number_, e.g. 12.45 would mean making a flag that is 13x13.
+* If you get something that's not a number at all, *return false*.
+
+Translations and comments (and upvotes) welcome! 
+
+![alt](http://i.imgur.com/1612YR3.jpg?1)
+
+## Examples:
+```python
+union_jack(9) # (9 is odd, so the central cross is 1'X' thick)
+"X---X---X
+-X--X--X-
+--X-X-X--
+---XXX---
+XXXXXXXXX
+---XXX---
+--X-X-X--
+-X--X--X-
+X---X---X"
+
+union_jack(10) # (10 is even, so the central cross is 2 'X's thick)
+'X---XX---X
+-X--XX--X-
+--X-XX-X--
+---XXXX---
+XXXXXXXXXX
+XXXXXXXXXX
+---XXXX---
+--X-XX-X--
+-X--XX--X-
+X---XX---X
+
+union_jack(1) # (the smallest possible flag is 7x7)
+"X--X--X
+-X-X-X-
+--XXX--
+XXXXXXX
+--XXX--
+-X-X-X-
+X--X--X"
+
+union_jack('string') #return false.
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def union_jack (n : α) : String := sorry
+
+theorem size_properties {n : Nat} (h : n ≥ 7) :
+  let result := union_jack n
+  let lines := result.splitOn "\n"
+  (lines.length = max 7 n) ∧ 
+  (∀ line ∈ lines, line.length = max 7 n) ∧
+  (∀ line ∈ lines, ∀ c ∈ line.data, c = 'X' ∨ c = '-') := sorry
+
+theorem symmetry_properties {n : Nat} (h : n = 7 ∨ n = 8) :
+  let result := union_jack n
+  let lines := result.splitOn "\n"
+  (∀ i < lines.length,
+    lines[i]! = String.mk (List.reverse lines[i]!.data) ∧ 
+    lines[i]! = lines[lines.length - 1 - i]!) := sorry
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

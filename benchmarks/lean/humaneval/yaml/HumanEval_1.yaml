@@ -18,7 +18,7 @@ vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
+  
   /--
   name: string_eq_iff_data_eq
   use: |
@@ -39,7 +39,7 @@ vc-preamble: |-
     intro h
     apply String.data_eq_of_eq
     exact h
-
+  
   /--
   name: balanced_paren_non_computable
   use: |
@@ -57,7 +57,7 @@ vc-preamble: |-
   let chars := paren_string.toList;
   (∀ (i : ℕ), i ≤ chars.length → ((chars.take i).count bracket_type_right) ≤ ((chars.take i).count bracket_type_left)) ∧
   (chars.count bracket_type_left = chars.count bracket_type_right)
-
+  
   /--
   name: count_paren_groups_helper
   use: |
@@ -99,7 +99,7 @@ vc-preamble: |-
       have h_temp : paren_string.length > 0 := by linarith
       assumption
     }
-
+  
   /--
   name: count_paren_groups
   use: |
@@ -115,15 +115,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (paren_string: String) : List String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: String → List String)
@@ -143,12 +139,8 @@ vc-condition: |-
   
   theorem correctness
   (paren_string: String)
-  : problem_spec implementation paren_string :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation paren_string := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation "( ) (( )) (( )( ))" = ["()", "(())", "(()())"]

@@ -1,0 +1,74 @@
+/-
+Say you have an array for which the ith element is the price of a given stock on day i.
+
+If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+
+Note that you cannot sell a stock before you buy one.
+
+Example 1:
+
+Input: [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+             Not 7-1 = 6, as selling price needs to be larger than buying price.
+
+Example 2:
+
+Input: [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def max_profit (prices : List Nat) : Nat := sorry
+
+theorem max_profit_nonnegative (prices : List Nat) :
+  max_profit prices ≥ 0 := sorry
+
+theorem max_profit_empty_or_singleton {prices : List Nat} :
+  prices.length ≤ 1 → max_profit prices = 0 := sorry 
+
+theorem max_profit_bounded_by_extremes {prices : List Nat} {i j : Nat} 
+  (h₁ : i < prices.length) (h₂ : j < prices.length) :
+  max_profit prices ≤ prices[j]'h₂ - prices[i]'h₁ := sorry
+
+theorem max_profit_optimal_for_each_buy_day {prices : List Nat} {i : Nat} 
+  (h₁ : i < prices.length) (j : Nat) (h₂ : i + 1 + j < prices.length) :
+  max_profit prices ≥ prices[i + 1 + j]'h₂ - prices[i]'h₁ := sorry
+
+theorem max_profit_decreasing {prices : List Nat} {i j : Nat} 
+  (h₁ : i < prices.length) (h₂ : j < prices.length)
+  (h_len : prices.length > 1)
+  (h_sorted : i < j → prices[i]'h₁ ≥ prices[j]'h₂) :
+  max_profit prices = 0 := sorry
+
+theorem max_profit_increasing {prices : List Nat} {i j : Nat}
+  (h₁ : i < prices.length) (h₂ : j < prices.length)
+  (h_len : prices.length > 1)
+  (h_sorted : i < j → prices[i]'h₁ ≤ prices[j]'h₂)
+  (h_last : prices.length - 1 < prices.length)
+  (h_zero : 0 < prices.length) :
+  max_profit prices = prices[prices.length-1]'h_last - prices[0]'h_zero := sorry
+
+/-
+info: 5
+-/
+-- #guard_msgs in
+-- #eval max_profit [7, 1, 5, 3, 6, 4]
+
+/-
+info: 0
+-/
+-- #guard_msgs in
+-- #eval max_profit [7, 6, 4, 3, 1]
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval max_profit [2, 4, 1]
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded

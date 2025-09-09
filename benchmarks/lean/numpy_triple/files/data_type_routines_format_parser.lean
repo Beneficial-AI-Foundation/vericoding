@@ -1,16 +1,16 @@
 /-  numpy.format_parser: Class to convert formats, names, titles description to a dtype.
-    
+
     This function takes format descriptions, field names, and optional titles
     and produces a structured data type specification. It validates that the
     formats are well-formed and that the number of names matches the number
     of format descriptors.
-    
+
     The function handles common NumPy format strings like 'f8' (float64),
     'i4' (int32), 'S5' (string of length 5), etc.
 -/
 
 /-  Specification: numpy.format_parser creates a structured data type from format descriptions.
-    
+
     Precondition: All format strings in formats are valid NumPy format descriptors
     Postcondition: 
     1. The result has the same number of fields as input vectors
@@ -64,9 +64,7 @@ def numpy_format_parser {n : Nat}
     (names : Vector String n) 
     (titles : Option (Vector String n) := none)
     (aligned : Bool := false) : Id (DType n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_format_parser_spec {n : Nat} 
     (formats : Vector String n) 
@@ -95,6 +93,4 @@ theorem numpy_format_parser_spec {n : Nat}
       -- The alignment setting is preserved
       (dtype.aligned = aligned)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

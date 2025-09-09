@@ -24,15 +24,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def msort {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem msort_spec {n : Nat} (a : Vector Float n) :
       ⦃⌜True⌝⦄
       msort a
@@ -42,11 +38,7 @@ vc-condition: |-
         -- The result is a permutation of the input (same multiset of elements)
         (∀ x : Float, (a.toList.count x) = (result.toList.count x))
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

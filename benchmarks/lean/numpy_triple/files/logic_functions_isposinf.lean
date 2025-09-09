@@ -11,11 +11,11 @@
 /-  Test element-wise for positive infinity, return result as bool array -/
 
 /-  Specification: isposinf returns True for positive infinity elements, False otherwise.
-    
+
     This function tests each element according to IEEE 754 floating-point standard:
     - Returns true if the element is positive infinity (+∞)
     - Returns false for all other values including negative infinity, NaN, finite numbers, and zero
-    
+
     Mathematical properties:
     1. Positive infinity detection: result[i] = true iff x[i] is positive infinity
     2. Distinction from negative infinity: only positive infinity returns true
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isposinf {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isposinf_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -54,6 +52,4 @@ theorem isposinf_spec {n : Nat} (x : Vector Float n) :
       (result.get i = true → (x.get i).isInf ∧ (x.get i) > 0) ∧
       -- Exclusivity: cannot be both positive infinity and NaN
       (result.get i = true → ¬(x.get i).isNaN)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

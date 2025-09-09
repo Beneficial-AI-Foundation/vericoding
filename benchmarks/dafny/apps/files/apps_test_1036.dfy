@@ -1,0 +1,58 @@
+Given integers n and k, simulate a Rock-Paper-Scissors tournament among 2^k players.
+Each player i has favorite hand from string s at position ((i mod n) + 1).
+Tournament uses recursive bracket structure where Rock beats Scissors, 
+Paper beats Rock, Scissors beats Paper, and ties go to the first player.
+Return the favorite hand of the tournament winner.
+
+function winner(a: char, b: char): char
+{
+    if (a, b) == ('R', 'P') || (a, b) == ('P', 'S') || (a, b) == ('S', 'R') then b else a
+}
+
+predicate validRPSChar(c: char)
+{
+    c == 'R' || c == 'P' || c == 'S'
+}
+
+predicate validRPSString(s: string)
+{
+    forall i :: 0 <= i < |s| ==> validRPSChar(s[i])
+}
+
+predicate ValidInput(n: int, k: int, s: string)
+{
+    n > 0 && k >= 0 && |s| == n && validRPSString(s)
+}
+
+method solve(n: int, k: int, s: string) returns (result: char)
+    requires ValidInput(n, k, s)
+    ensures validRPSChar(result)
+{
+    var S: seq<char> := s;
+
+    var i := 0;
+    while i < k 
+        invariant 0 <= i <= k
+        invariant |S| == n
+        invariant validRPSString(S)
+    {
+        var T: seq<char> := S + S;
+        var newS: seq<char> := [];
+
+        var j := 0;
+        while j < n 
+            invariant 0 <= j <= n
+            invariant |newS| == j
+            invariant validRPSString(newS)
+        {
+            var tmpCall1 := winner(T[2*j], T[2*j+1]);
+            var w := tmpCall1;
+            newS := newS + [w];
+            j := j + 1;
+        }
+        S := newS;
+        i := i + 1;
+    }
+
+    result := S[0];
+}

@@ -24,9 +24,7 @@ def isDigit (c : Char) : Bool :=
 -- </vc-helpers>
 
 def countDigits (s : String) (h_precond : countDigits_precond (s)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def countDigits_postcond (s : String) (result: Nat) (h_precond : countDigits_precond (s)) :=
@@ -35,9 +33,7 @@ def countDigits_postcond (s : String) (result: Nat) (h_precond : countDigits_pre
 
 theorem countDigits_spec_satisfied (s: String) (h_precond : countDigits_precond (s)) :
     countDigits_postcond (s) (countDigits (s) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

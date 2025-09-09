@@ -12,21 +12,21 @@
     Given a source array 'arr' and a vector of indices 'indices',
     returns a new array containing the elements from 'arr' at the positions
     specified by 'indices'. The indices must be valid positions in the source array.
-    
+
     This is a simplified 1D version of numpy.take with 'raise' mode,
     where all indices must be valid (in range [0, n-1]). -/
 
 /-  Specification: take extracts elements from a source array at specified indices.
-    
+
     Mathematical properties:
     1. The result has the same length as the indices array
     2. For each position i in the result, result[i] = arr[indices[i]]
     3. All indices must be valid (enforced by Fin type)
     4. The order of elements in the result follows the order of indices
     5. The same index can appear multiple times, resulting in duplicated elements
-    
+
     The function implements: result[i] = arr.get (indices.get i)
-    
+
     This captures the core behavior of numpy.take in 'raise' mode where indices
     must be in valid range. The use of Fin type ensures type safety and eliminates
     the need for runtime bounds checking. The result preserves the element type
@@ -40,14 +40,10 @@ open Std.Do
 -- </vc-helpers>
 
 def take {n m : Nat} (arr : Vector Float n) (indices : Vector (Fin n) m) : Id (Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem take_spec {n m : Nat} (arr : Vector Float n) (indices : Vector (Fin n) m) :
     ⦃⌜True⌝⦄
     take arr indices
     ⦃⇓result => ⌜∀ i : Fin m, result.get i = arr.get (indices.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

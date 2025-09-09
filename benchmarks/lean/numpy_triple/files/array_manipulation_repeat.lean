@@ -15,11 +15,11 @@
 
 /-  Specification: repeat creates a vector where each element from the input 
     appears consecutively 'repeats' times. The resulting vector has size n * repeats.
-    
+
     For a vector [a₀, a₁, ..., aₙ₋₁] and repeats = r, the result is:
     [a₀, a₀, ..., a₀, a₁, a₁, ..., a₁, ..., aₙ₋₁, aₙ₋₁, ..., aₙ₋₁]
      \___r times___/  \___r times___/       \______r times______/
-     
+
     Mathematical properties:
     1. Each element appears exactly 'repeats' times consecutively
     2. The total size is n * repeats
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def «repeat» {α : Type} {n : Nat} (a : Vector α n) (repeats : Nat) : Id (Vector α (n * repeats)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem repeat_spec {α : Type} {n : Nat} (a : Vector α n) (repeats : Nat) (h_pos : repeats > 0) :
     ⦃⌜repeats > 0⌝⦄
@@ -51,6 +49,4 @@ theorem repeat_spec {α : Type} {n : Nat} (a : Vector α n) (repeats : Nat) (h_p
                    ∃ (idx : Fin (n * repeats)),
                      idx.val = k.val * repeats + j.val ∧
                      result.get idx = a.get k)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

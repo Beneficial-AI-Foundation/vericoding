@@ -14,7 +14,7 @@ vc-description: |-
       and properly formatted element values. -/
   
   /-  Specification: array_repr returns a well-formatted string representation of the vector.
-      
+  
       The specification captures:
       1. Basic format: the string starts with "array(" and ends with ")"
       2. Element representation: each element is formatted as a string
@@ -36,16 +36,12 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def array_repr {n : Nat} (arr : Vector Float n) (max_line_width : Nat := 75) 
       (precision : Nat := 8) (suppress_small : Bool := false) : Id String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem array_repr_spec {n : Nat} (arr : Vector Float n) (max_line_width : Nat := 75) 
       (precision : Nat := 8) (suppress_small : Bool := false) :
       ⦃⌜precision > 0 ∧ max_line_width > 0⌝⦄
@@ -67,11 +63,7 @@ vc-condition: |-
                    -- Format correctness: contains proper brackets
                    (result.contains '(' ∧ result.contains ')') ∧
                    (result.contains '[' ∧ result.contains ']')⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

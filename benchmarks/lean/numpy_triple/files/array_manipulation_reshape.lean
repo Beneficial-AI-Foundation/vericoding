@@ -11,27 +11,27 @@
 -/
 
 /-  Gives a new shape to an array without changing its data.
-    
+
     This implementation focuses on the most common case: reshaping a 1D array
     to another 1D array with the same total number of elements. The elements
     are preserved in the same linear order (C-order).
-    
+
     For simplicity, this specification handles only 1D to 1D reshaping where
     the sizes are explicitly equal. More complex reshaping operations (like
     multidimensional arrays or -1 inference) would require additional machinery.
 -/
 
 /-  Specification: reshape preserves all elements in their linear order.
-    
+
     The reshape operation creates a new vector with a different size parameter
     but maintains the same elements in the same order. This is the fundamental
     property of reshape - it's purely a "view" operation that doesn't modify data.
-    
+
     Mathematical properties:
     1. Size preservation: The total number of elements remains constant
     2. Order preservation: Elements appear in the same linear sequence
     3. Value preservation: Each element value is unchanged
-    
+
     Precondition: The new shape must have the same total size as the original
     Postcondition: Each element at index i in the result equals the element
                    at the corresponding index in the original array
@@ -45,14 +45,10 @@ open Std.Do
 -- </vc-helpers>
 
 def reshape {n m : Nat} (a : Vector Float n) (h_size : n = m) : Id (Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem reshape_spec {n m : Nat} (a : Vector Float n) (h_size : n = m) :
     ⦃⌜n = m⌝⦄
     reshape a h_size
     ⦃⇓result => ⌜∀ i : Fin m, result.get i = a.get (i.cast h_size.symm)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

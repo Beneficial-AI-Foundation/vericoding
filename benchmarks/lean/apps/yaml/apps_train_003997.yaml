@@ -1,0 +1,82 @@
+vc-description: |-
+  /-
+  Create a method (**JS**: function) `every` which returns every nth element of an array.
+  
+  ### Usage
+  
+  With no arguments, `array.every` it returns every element of the array.  
+  With one argument, `array.every(interval)` it returns every `interval`th element.  
+  With two arguments, `array.every(interval, start_index)` it returns every `interval`th element starting at index `start_index` 
+  
+  **Note**: due to fact JS translation ask for a function instead of an Array method the above uses will be :
+  ```
+  javascript:                          ruby:
+  every(array)                         array.every
+  every(array, interval)               array.every(interval)
+  every(array, interval, start_index)  array.every(interval, start_index)
+  
+  ```
+  
+  ### Examples
+  
+  ### Notes
+  Test cases:  
+  
+  `interval` will always be a positive integer (but may be larger than the size of the array).  
+  `start_index` will always be within the bounds of the array.  
+  
+  Once you have completed this kata, try the **advanced version** (http://www.codewars.com/kata/every-nth-array-element-advanced) which allows negative intervals and unbounded start\_indexes 
+  
+  ### Translator notes
+  Ruby is the original language for this kata.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def every (lst: List α) (n: Nat := 1) (start: Nat := 0) : List α := sorry
+  
+  theorem every_is_subset {α : Type} (lst : List α) (n: Nat) (start: Nat) 
+    (h: start < lst.length) :
+    ∀ x ∈ every lst n start, x ∈ lst := sorry
+
+vc-theorems: |-
+  theorem every_indices_pattern {α : Type} (lst : List α) (n: Nat) (start: Nat)
+    (h: start < lst.length) (x : α) (i : Nat) (hi: i < lst.length) :
+    x ∈ every lst n start → 
+    lst.get ⟨i, hi⟩ = x →
+    (i - start) % n = 0 := sorry
+  
+  theorem every_default_start {α : Type} (lst : List α) (n: Nat) :
+    every lst n = every lst n 0 := sorry
+  
+  theorem every_one_full_slice {α : Type} (lst : List α) (start: Nat)
+    (h: 0 < lst.length) :
+    every lst 1 start = lst.drop start := sorry
+  
+  /-
+  info: [1, 3, 5]
+  -/
+  -- #guard_msgs in
+  -- #eval every [1, 2, 3, 4, 5] 2
+  
+  /-
+  info: [2, 4]
+  -/
+  -- #guard_msgs in
+  -- #eval every [1, 2, 3, 4, 5] 2 1
+  
+  /-
+  info: [1, 2, 3]
+  -/
+  -- #guard_msgs in
+  -- #eval every [1, 2, 3]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

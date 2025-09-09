@@ -1,0 +1,36 @@
+Given an array of integers, find the minimum number of seconds needed to make all elements zero.
+In each second, you can add an arbitrary integer to all non-zero elements in the array.
+The key insight is that the answer equals the number of distinct non-zero values in the array.
+
+predicate ValidInput(arr: seq<int>) {
+    true // No specific constraints on input beyond being a sequence of integers
+}
+
+function DistinctNonZeroCount(arr: seq<int>): int {
+    |set x | x in arr && x != 0|
+}
+
+method solve(arr: seq<int>) returns (result: int)
+    requires ValidInput(arr)
+    ensures result >= 0
+    ensures result <= |arr|
+    ensures result == DistinctNonZeroCount(arr)
+{
+    var distinct_nonzero := {};
+    var i := 0;
+    while i < |arr|
+        invariant 0 <= i <= |arr|
+        invariant forall x :: x in distinct_nonzero ==> x != 0
+        invariant distinct_nonzero == set x | x in arr[..i] && x != 0
+        invariant |distinct_nonzero| <= i
+    {
+        if arr[i] != 0 {
+            distinct_nonzero := distinct_nonzero + {arr[i]};
+        }
+        i := i + 1;
+    }
+
+    assert arr[..i] == arr;
+    assert distinct_nonzero == set x | x in arr && x != 0;
+    result := |distinct_nonzero|;
+}

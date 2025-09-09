@@ -26,9 +26,7 @@ open Std.Do
 
 def lagval2d {nx ny m : Nat} (x : Vector Float m) (y : Vector Float m) 
     (c : Vector (Vector Float (ny + 1)) (nx + 1)) : Id (Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lagval2d_spec {nx ny m : Nat} (x : Vector Float m) (y : Vector Float m) 
     (c : Vector (Vector Float (ny + 1)) (nx + 1)) :
@@ -45,6 +43,4 @@ theorem lagval2d_spec {nx ny m : Nat} (x : Vector Float m) (y : Vector Float m)
       -- Sanity check: result preserves input shape
       result.size = x.size ∧ result.size = y.size
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

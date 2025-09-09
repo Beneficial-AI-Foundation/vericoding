@@ -1,0 +1,42 @@
+Given `a` initial candles and the ability to create 1 new candle from `b` burnt-out candles,
+determine the maximum number of hours the room can be lit. Each candle burns for exactly 1 hour.
+
+predicate ValidInput(a: int, b: int)
+{
+  a >= 1 && a <= 1000 && b >= 2 && b <= 1000
+}
+
+function TotalBurningHours(a: int, b: int): int
+  requires a >= 0 && b >= 2
+  ensures TotalBurningHours(a, b) >= a
+  decreases a
+{
+  if a == 0 then 0
+  else if a < b then a
+  else a + TotalBurningHours(a / b, b)
+}
+
+method solve(a: int, b: int) returns (result: int)
+  requires ValidInput(a, b)
+  ensures result >= a
+  ensures result == TotalBurningHours(a, b)
+{
+  var remaining := a;
+  var total := 0;
+
+  while remaining > 0
+    invariant remaining >= 0
+    invariant total + TotalBurningHours(remaining, b) == TotalBurningHours(a, b)
+    decreases remaining
+  {
+    if remaining < b {
+      total := total + remaining;
+      remaining := 0;
+    } else {
+      total := total + remaining;
+      remaining := remaining / b;
+    }
+  }
+
+  result := total;
+}

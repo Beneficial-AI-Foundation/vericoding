@@ -44,15 +44,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def iinfo (intType : IntegerType) : Id IntegerInfo :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem iinfo_spec (intType : IntegerType) :
       ⦃⌜True⌝⦄
       iinfo intType
@@ -73,11 +69,7 @@ vc-condition: |-
             info.bits = 32 ∧ info.min = 0 ∧ info.max = 4294967295
         | IntegerType.UInt64 => 
             info.bits = 64 ∧ info.min = 0 ∧ info.max = 18446744073709551615⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

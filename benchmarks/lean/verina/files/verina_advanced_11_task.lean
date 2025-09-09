@@ -24,9 +24,7 @@ def countOccurrences (n : Int) (lst : List Int) : Nat :=
 -- </vc-helpers>
 
 def findMajorityElement (lst : List Int) (h_precond : findMajorityElement_precond (lst)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def findMajorityElement_postcond (lst : List Int) (result: Int) (h_precond : findMajorityElement_precond (lst)) : Prop :=
@@ -38,9 +36,7 @@ def findMajorityElement_postcond (lst : List Int) (result: Int) (h_precond : fin
 
 theorem findMajorityElement_spec_satisfied (lst: List Int) (h_precond : findMajorityElement_precond (lst)) :
     findMajorityElement_postcond (lst) (findMajorityElement (lst) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

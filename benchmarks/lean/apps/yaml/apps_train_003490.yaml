@@ -1,0 +1,71 @@
+vc-description: |-
+  /-
+  Challenge:
+  
+  Given a two-dimensional array, return a new array which carries over only those arrays from the original, which were not empty and whose items are all of the same type (i.e. homogenous). For simplicity, the arrays inside the array will only contain characters and integers.
+  
+  Example:
+  
+  Given [[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]], your function should return [[1, 5, 4], ['b']].
+  
+  Addendum:
+  
+  Please keep in mind that for this kata, we assume that empty arrays are not homogenous.
+  
+  The resultant arrays should be in the order they were originally in and should not have its values changed.
+  
+  No implicit type casting is allowed. A subarray [1, '2'] would be considered illegal and should be filtered out.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def filter_homogenous {α} (arrays : List (List α)) : List (List α) := sorry
+  
+  theorem filter_homogenous_subset {α} (arrays : List (List α)) :
+    ∀ x, x ∈ filter_homogenous arrays → x ∈ arrays := sorry
+
+vc-theorems: |-
+  theorem filter_homogenous_nonempty {α} (arrays : List (List α)) :
+    ∀ x, x ∈ filter_homogenous arrays → x ≠ [] := sorry
+  
+  -- Note: Since Lean's type system is much stronger than Python's runtime type checking,
+  -- we can't directly translate the type checking properties. Instead we'll focus on the
+  -- structural properties we can express:
+  
+  theorem filter_homogenous_subset_and_nonempty {α} (arrays : List (List α)) :
+    let result := filter_homogenous arrays
+    (∀ x, x ∈ result → x ∈ arrays) ∧
+    (∀ x, x ∈ result → x ≠ []) := sorry
+  
+  theorem filter_homogenous_int_arrays (arrays : List (List Int)) :
+    let result := filter_homogenous arrays
+    (∀ arr, arr ∈ result → arr ≠ []) ∧
+    (∀ arr, arr ∈ result → arr ∈ arrays) := sorry
+  
+  /-
+  info: expected1
+  -/
+  -- #guard_msgs in
+  -- #eval filter_homogenous [[1, 5, 4], ["a", 3, 5], ["b"], [], ["1", 2, 3]]
+  
+  /-
+  info: expected2
+  -/
+  -- #guard_msgs in
+  -- #eval filter_homogenous [[123, 234, 432], ["", "abc"], [""], ["", 1], ["", "1"], []]
+  
+  /-
+  info: expected3
+  -/
+  -- #guard_msgs in
+  -- #eval filter_homogenous [[1, 2, 3], ["1", "2", "3"], ["1", 2, 3]]
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

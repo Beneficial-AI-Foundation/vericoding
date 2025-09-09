@@ -1,0 +1,51 @@
+vc-description: |-
+  /*
+  Compute the bit-wise XOR of two arrays element-wise.
+  
+  Computes the bit-wise XOR (exclusive OR) of the underlying binary representation 
+  of the integers in the input arrays. This ufunc implements the C/Python 
+  operator ^.
+  
+  For each pair of corresponding elements in x1 and x2, the result contains
+  the bitwise XOR of their binary representations. Each bit position in the
+  result is 1 if and only if exactly one of the corresponding bits in x1 and x2 is 1.
+  
+  Examples:
+  - 13 ^ 17 = 28 (binary: 01101 ^ 10001 = 11100)
+  - 31 ^ 5 = 26 (binary: 11111 ^ 00101 = 11010)
+  - 31 ^ 3 = 28 (binary: 11111 ^ 00011 = 11100)
+  
+  Note: This specification currently handles only non-negative integers.
+  For negative integers, NumPy uses two's complement representation,
+  which requires a more complex formalization.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn bitwise_xor(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
+      requires 
+          x1.len() == x2.len(),
+          forall|i: int| 0 <= i < x1.len() ==> x1[i] >= 0,
+          forall|i: int| 0 <= i < x2.len() ==> x2[i] >= 0,
+      ensures
+          result.len() == x1.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i] == (x1[i] ^ x2[i]),
+          forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
+          forall|i: int| 0 <= i < result.len() && x1[i] == 0 ==> result[i] == x2[i],
+          forall|i: int| 0 <= i < result.len() && x2[i] == 0 ==> result[i] == x1[i],
+          forall|i: int| 0 <= i < result.len() && x1[i] == x2[i] ==> result[i] == 0,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

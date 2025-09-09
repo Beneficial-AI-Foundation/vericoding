@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  ## Task:
+  You have to create a function `isPronic` to check whether the argument passed is a Pronic Number and return true if it is & false otherwise.
+  
+  ### Description:
+  
+  `Pronic Number` -A pronic number, oblong number, rectangular number or heteromecic number, is a number which is the product of two consecutive integers, that is, n(n + 1).
+  
+  > The first few Pronic Numbers are - 0, 2, 6, 12, 20, 30, 42...
+  
+  ### Explanation:
+  
+        0 = 0 × 1   // ∴  0 is a Pronic Number
+        2 = 1 × 2   // ∴  2 is a Pronic Number
+        6 = 2 × 3   // ∴  6 is a Pronic Number
+       12 = 3 × 4   // ∴ 12 is a Pronic Number
+       20 = 4 × 5   // ∴ 20 is a Pronic Number
+       30 = 5 × 6   // ∴ 30 is a Pronic Number
+       42 = 6 × 7   // ∴ 42 is a Pronic Number
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def is_pronic (n : Int) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem pronic_exists_k {n : Int} (h : is_pronic n) : 
+    ∃ k : Int, k * (k + 1) = n :=
+    sorry
+  
+  theorem negative_not_pronic {n : Int} (h : n < 0) :
+    ¬ is_pronic n :=
+    sorry
+  
+  theorem consecutive_product_is_pronic (n : Int) (h : n ≥ 0) :
+    is_pronic (n * (n + 1)) :=
+    sorry
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval is_pronic 2
+  
+  /-
+  info: False
+  -/
+  -- #guard_msgs in
+  -- #eval is_pronic 3
+  
+  /-
+  info: False
+  -/
+  -- #guard_msgs in
+  -- #eval is_pronic -3
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

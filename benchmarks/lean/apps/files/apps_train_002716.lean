@@ -1,0 +1,93 @@
+/-
+### Happy Holidays fellow Code Warriors!
+
+Now, Dasher! Now, Dancer! Now, Prancer, and Vixen! On, Comet! On, Cupid! On, Donder and Blitzen! That's the order Santa wanted his reindeer...right? What do you mean he wants them in order by their last names!? Looks like we need your help Code Warrior!
+
+### Sort Santa's Reindeer
+
+Write a function that accepts a sequence of Reindeer names, and returns a sequence with the Reindeer names sorted by their last names.
+
+### Notes:
+
+* It's guaranteed that each string is composed of two words
+* In case of two identical last names, keep the original order
+
+### Examples
+
+For this input:
+
+```
+[
+  "Dasher Tonoyan", 
+  "Dancer Moore", 
+  "Prancer Chua", 
+  "Vixen Hall", 
+  "Comet Karavani",        
+  "Cupid Foroutan", 
+  "Donder Jonker", 
+  "Blitzen Claus"
+]
+```
+
+You should return this output:
+
+```
+[
+  "Prancer Chua",
+  "Blitzen Claus",
+  "Cupid Foroutan", 
+  "Vixen Hall", 
+  "Donder Jonker", 
+  "Comet Karavani",
+  "Dancer Moore", 
+  "Dasher Tonoyan",
+]
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def split (s: String) (sep: String) : List String := sorry
+
+def sort_reindeer (names: List String) : List String := sorry
+
+theorem sort_reindeer_length_preservation (names: List String) :
+  (sort_reindeer names).length = names.length := sorry
+
+theorem sort_reindeer_elements_preserved (names: List String) :
+  ∀ x, x ∈ names ↔ x ∈ sort_reindeer names := sorry
+
+theorem sort_reindeer_sorted_by_last_name (names: List String) :
+  let result := sort_reindeer names
+  ∀ i, i < result.length - 1 →
+    let curr_last := (split (result[i]!) " ")[1]!
+    let next_last := (split (result[i+1]!) " ")[1]!
+    curr_last ≤ next_last := sorry
+
+theorem sort_reindeer_idempotent (names: List String) :
+  sort_reindeer (sort_reindeer names) = sort_reindeer names := sorry
+
+theorem sort_reindeer_empty : 
+  sort_reindeer [] = [] := sorry
+
+/-
+info: expected1
+-/
+-- #guard_msgs in
+-- #eval sort_reindeer ["Dasher Tonoyan", "Dancer Moore", "Prancer Chua"]
+
+/-
+info: expected2
+-/
+-- #guard_msgs in
+-- #eval sort_reindeer []
+
+/-
+info: expected3
+-/
+-- #guard_msgs in
+-- #eval sort_reindeer ["Kenjiro Mori", "Susumu Mori", "Akira Mori"]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

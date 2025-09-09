@@ -21,9 +21,7 @@ def maxOfThree_precond (a : Int) (b : Int) (c : Int) : Prop :=
 -- </vc-helpers>
 
 def maxOfThree (a : Int) (b : Int) (c : Int) (h_precond : maxOfThree_precond (a) (b) (c)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def maxOfThree_postcond (a : Int) (b : Int) (c : Int) (result: Int) (h_precond : maxOfThree_precond (a) (b) (c)) : Prop :=
@@ -31,9 +29,7 @@ def maxOfThree_postcond (a : Int) (b : Int) (c : Int) (result: Int) (h_precond :
 
 theorem maxOfThree_spec_satisfied (a: Int) (b: Int) (c: Int) (h_precond : maxOfThree_precond (a) (b) (c)) :
     maxOfThree_postcond (a) (b) (c) (maxOfThree (a) (b) (c) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

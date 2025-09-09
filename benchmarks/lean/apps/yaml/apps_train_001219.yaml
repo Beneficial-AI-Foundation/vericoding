@@ -1,0 +1,103 @@
+vc-description: |-
+  /-
+  An area named Renus, is divided into $(N \times M)$ cells. According to archaeological survey the area contains huge amount of treasure. Some cells out of $(N \times M)$ cells contain treasure. But problem is, you can't go to every cell as some of the cells are blocked.  
+  For every $a_{ij}$ cell($1 \leq i \leq N$,$1 \leq j \leq M$), your task is to find the distance of the nearest cell having treasure. 
+  Note:
+  - You can only traverse up, down, left and right from a given cell.
+  - Diagonal movements are not allowed.
+  - Cells having treasure can't be blocked, only empty cells ( cells without treasure) can be blocked.  
+  
+  -----Input Format:------
+  - First line contains $T$, the number of test cases.
+  - Second line contains two space-separated integers $N\ and\ M$.
+  - Third line contains a single integer $X$ denoting number of cells having treasures, followed by $X$ lines containing two space-separated integers $x_i$ and $y_i$ denoting  position of row and column of $i^{th}$ treasure, for every $1\leq i \leq X$
+  - The next line contains a single integer $Y$ denoting the number of cells that are blocked, and it is followed by subsequent $Y$ lines containing  two space-separated integers $u_i$ and $v_i$ denoting position of row and column of blocked cells , for every $1\leq i \leq Y$
+  
+  -----Constraints:------
+  - $1\le T \le 100$
+  - $1 \le N, M \le 200$
+  - $1 \le X < N*M$
+  - $0 \le Y <(N*M) - X$
+  - $1 \le x_i,u_j \le N, for\ every\ 1 \le i \le X\ and\ 1 \le j \le Y$
+  - $1 \le y_i,v_j \le M, for\ every\ 1 \le i \le X\ and\ 1 \le j \le Y$
+  
+  -----Output Format:------
+  For each test case print a $N \times M$ matrix where each cell consists of distance of nearest treasure. Cells that are blocked will show "$X$" (without quotes). Also cells that doesn't have access to any treasure will show "$-1$" (without quotes).
+  Note: Co-ordinate of top left cell is $(1,1)$.
+  
+  -----Sample Input-----
+  1
+  3 3
+  2
+  1 1
+  1 3
+  2
+  2 1
+  2 2
+  
+  -----Sample Output-----
+  0 1 0 
+  X X 1
+  4 3 2
+  
+  -----Explanation:-----
+  - Coordinates  (1,1) and (1,3)  shows "0" because they contain treasure and nearest distance is 0.
+  - Coordinates (2,1) and (2,2) shows "X" as they are blocked.
+  - Rest shows distance of nearest cell having treasure.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def find_treasure_distances (n m : Nat) (treasures blocked : List (Nat × Nat)) : List String :=
+    sorry
+
+vc-theorems: |-
+  theorem dimensions_correct (n m : Nat) (h1 : n ≥ 2) (h2 : m ≥ 2) :
+    let treasures := [(1,1)]
+    let blocked := []
+    let result := find_treasure_distances n m treasures blocked
+    List.length result = n ∧ 
+    ∀ row ∈ result, List.length (String.split row (· = ' ')) = m :=
+  sorry
+  
+  theorem treasure_is_zero (n m : Nat) (h1 : n ≥ 2) (h2 : m ≥ 2) :
+    let treasures := [(1,1)]
+    let blocked := []
+    let result := find_treasure_distances n m treasures blocked
+    List.head! (String.split (List.head! result) (· = ' ')) = "0" :=
+  sorry
+  
+  theorem no_X_when_unblocked (n m : Nat) (h1 : n ≥ 2) (h2 : m ≥ 2) :
+    let treasures := [(1,1)]
+    let blocked := []
+    let result := find_treasure_distances n m treasures blocked
+    ∀ row ∈ result, ¬String.contains row 'X' := 
+  sorry
+  
+  theorem adjacent_differ_by_one (n m : Nat) (h1 : n ≥ 2) (h2 : m ≥ 2) :
+    let treasures := [(1,1)]
+    let blocked := []
+    let result := find_treasure_distances n m treasures blocked
+    ∀ row ∈ result, ∀ j, j + 1 < m → 
+      let vals := List.map String.toNat! (String.split row (· = ' '))
+      max (vals[j]! - vals[j+1]!) (vals[j+1]! - vals[j]!) ≤ 1 :=
+  sorry
+  
+  theorem blocked_cells_marked (n m : Nat) (h1 : n ≥ 2) (h2 : m ≥ 2) :
+    let treasures := [(1,1)]
+    let blocked := [(1,2), (2,1)]
+    let result := find_treasure_distances n m treasures blocked
+    List.head! (String.split (List.head! result) (· = ' ')) = "0" ∧
+    List.get! (String.split (List.head! result) (· = ' ')) 1 = "X" ∧ 
+    List.head! (String.split (List.get! result 1) (· = ' ')) = "X" :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

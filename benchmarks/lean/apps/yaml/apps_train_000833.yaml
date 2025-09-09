@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  Accepts a string from the user and print the reverse string as the output without using any built-in function.
+  
+  -----Input:-----
+  Each testcase contains of a single line of input, a string.
+  
+  -----Output:-----
+  For each testcase, output in a single line answer, the reverse string.
+  
+  -----Sample Input:-----
+  1
+  Tracy
+  
+  -----Sample Output:-----
+  ycarT
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def reverseString (s : String) : String := sorry
+  
+  theorem reverse_twice_is_original (s : String) :
+    reverseString (reverseString s) = s := sorry
+
+vc-theorems: |-
+  theorem reverse_preserves_length (s : String) :
+    (reverseString s).length = s.length := sorry
+  
+  theorem first_last_swap (s : String) (h : s.length > 0) :
+    (reverseString s).front = s.back ∧ 
+    (reverseString s).back = s.front := sorry
+  
+  -- Note: The sorted property is harder to express in Lean's type system
+  -- as it requires defining what "sorted" means for strings and proving
+  -- permutation properties. A simplified version could be:
+  
+  theorem reverse_preserves_chars (s : String) (c : Char) :
+    s.contains c ↔ (reverseString s).contains c := sorry
+  
+  /-
+  info: 'ycarT'
+  -/
+  -- #guard_msgs in
+  -- #eval reverse_string "Tracy"
+  
+  /-
+  info: 'olleH'
+  -/
+  -- #guard_msgs in
+  -- #eval reverse_string "Hello"
+  
+  /-
+  info: 'nohtyP'
+  -/
+  -- #guard_msgs in
+  -- #eval reverse_string "Python"
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

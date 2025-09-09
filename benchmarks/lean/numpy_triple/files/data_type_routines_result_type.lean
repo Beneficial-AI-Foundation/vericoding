@@ -68,9 +68,7 @@ def promoteTypes (t1 t2 : NumpyDType) : NumpyDType :=
 -- </vc-helpers>
 
 def result_type (operands : List NumpyOperand) : Id NumpyDType :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem result_type_spec (operands : List NumpyOperand) (h_nonempty : operands.length > 0) :
     ⦃⌜operands.length > 0⌝⦄
@@ -92,6 +90,4 @@ theorem result_type_spec (operands : List NumpyOperand) (h_nonempty : operands.l
         (∃ op2, op2 ∈ operands ∧ operandType op2 = t2) →
         typeRank result ≥ max (typeRank t1) (typeRank t2))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

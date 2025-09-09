@@ -23,9 +23,7 @@ def DoubleQuadruple_precond (x : Int) : Prop :=
 -- </vc-helpers>
 
 def DoubleQuadruple (x : Int) (h_precond : DoubleQuadruple_precond (x)) : (Int × Int) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def DoubleQuadruple_postcond (x : Int) (result: (Int × Int)) (h_precond : DoubleQuadruple_precond (x)) :=
@@ -33,9 +31,7 @@ def DoubleQuadruple_postcond (x : Int) (result: (Int × Int)) (h_precond : Doubl
 
 theorem DoubleQuadruple_spec_satisfied (x: Int) (h_precond : DoubleQuadruple_precond (x)) :
     DoubleQuadruple_postcond (x) (DoubleQuadruple (x) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

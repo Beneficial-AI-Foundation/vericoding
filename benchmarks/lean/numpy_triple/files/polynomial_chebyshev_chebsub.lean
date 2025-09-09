@@ -13,7 +13,7 @@
     ordered from lowest to highest degree term. -/
 
 /-  Specification: chebsub performs component-wise subtraction of two Chebyshev series.
-    
+
     The specification includes:
     1. The basic property that each coefficient in the result is the difference
        of the corresponding coefficients in c1 and c2
@@ -29,9 +29,7 @@ open Std.Do
 -- </vc-helpers>
 
 def chebsub {n : Nat} (c1 c2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem chebsub_spec {n : Nat} (c1 c2 : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -39,6 +37,4 @@ theorem chebsub_spec {n : Nat} (c1 c2 : Vector Float n) :
     ⦃⇓result => ⌜(∀ i : Fin n, result.get i = c1.get i - c2.get i) ∧
                  (∀ i : Fin n, (chebsub c2 c1).get i = -(result.get i)) ∧
                  (∀ i : Fin n, (chebsub c1 c1).get i = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

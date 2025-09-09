@@ -14,7 +14,7 @@
 
 /-  Specification: legint correctly integrates Legendre series coefficients
     according to the mathematical properties of Legendre polynomial integration.
-    
+
     Integration increases the degree of the polynomial by 1, and the resulting 
     coefficients satisfy the Legendre integration recurrence relations. -/
 
@@ -27,9 +27,7 @@ open Std.Do
 
 def legint {n : Nat} (c : Vector Float n) (k : Float) (lbnd : Float) (scl : Float) 
     : Id (Vector Float (n + 1)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem legint_spec {n : Nat} (c : Vector Float n) (k : Float) (lbnd : Float) (scl : Float) 
     (h_scl_nonzero : scl ≠ 0) :
@@ -49,6 +47,4 @@ theorem legint_spec {n : Nat} (c : Vector Float n) (k : Float) (lbnd : Float) (s
       (k ≠ 0 → result.get ⟨0, Nat.zero_lt_succ n⟩ = 
         result.get ⟨0, Nat.zero_lt_succ n⟩ + k)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

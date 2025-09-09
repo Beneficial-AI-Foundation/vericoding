@@ -17,9 +17,7 @@ def reverseWords_precond (words_str : String) : Prop :=
 -- </vc-helpers>
 
 def reverseWords (words_str : String) (h_precond : reverseWords_precond (words_str)) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def reverseWords_postcond (words_str : String) (result: String) (h_precond : reverseWords_precond (words_str)) : Prop :=
@@ -29,9 +27,7 @@ def reverseWords_postcond (words_str : String) (result: String) (h_precond : rev
 
 theorem reverseWords_spec_satisfied (words_str: String) (h_precond : reverseWords_precond (words_str)) :
     reverseWords_postcond (words_str) (reverseWords (words_str) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

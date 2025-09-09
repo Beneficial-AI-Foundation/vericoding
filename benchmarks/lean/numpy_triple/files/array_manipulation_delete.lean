@@ -10,24 +10,24 @@
 
 /-  Specification: numpy.delete removes the element at the specified index and returns
     a new vector containing all other elements in their original order.
-    
+
     The specification ensures:
     1. The result has size n (one less than the input)
     2. Elements before the deleted index maintain their positions
     3. Elements after the deleted index are shifted left by one position
-    
+
     Mathematical properties:
     - Order preservation: Elements maintain their relative order
     - Deletion correctness: The element at the specified index is removed
     - Shift property: Elements after the deleted index have their indices decreased by 1
-    
+
     Sanity checks:
     - The result size is exactly one less than the input size
     - No elements are duplicated or lost (except the deleted one)
     - The deleted element does not appear in the result
-    
+
     Precondition: The array must have at least one element (enforced by type)
-    
+
     Postcondition:
     - For indices i < index: result[i] = arr[i]
     - For indices i ≥ index: result[i] = arr[i+1]
@@ -43,9 +43,7 @@ open Std.Do
 
 def delete {n : Nat} (arr : Vector Float (n + 1)) (index : Fin (n + 1)) : 
     Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem delete_spec {n : Nat} (arr : Vector Float (n + 1)) (index : Fin (n + 1)) :
     ⦃⌜True⌝⦄
@@ -57,6 +55,4 @@ theorem delete_spec {n : Nat} (arr : Vector Float (n + 1)) (index : Fin (n + 1))
                      result.get i = arr.get ⟨i.val + 1, by sorry⟩) ∧
                  (∀ i : Fin (n + 1), i ≠ index → 
                    ∃ j : Fin n, result.get j = arr.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,56 @@
+/-
+Once upon a time, a king and a few of his soldiers were  caught by an enemy king in a war. 
+
+He puts them in a circle. The first man in the circle has to kill the second man, the third man has to kill the fourth, fifth man to kill the sixth and so on. When the circle is completed, the remaining people have to form a circle and the process has to repeat. The last man standing will be set free.
+
+If the king has to be set free, which position must he take? For any given N number of people, write a program to find the position that the king has to take.
+
+-----Input-----
+Any positive integer in the range 1 to 10000.
+
+-----Output-----
+A positive integer indicating safest position
+
+-----Example-----
+Input:
+9
+
+Output:
+3
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_safest_position (n : Nat) : Nat :=
+  sorry
+
+theorem safest_position_in_range (n : Nat) (h : n > 0) :
+  let pos := find_safest_position n
+  1 ≤ pos ∧ pos ≤ n :=
+sorry
+
+theorem safest_position_consistent (n : Nat) :
+  find_safest_position n = find_safest_position n :=
+sorry
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval find_safest_position 9
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval find_safest_position 5
+
+/-
+info: 7
+-/
+-- #guard_msgs in
+-- #eval find_safest_position 7
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

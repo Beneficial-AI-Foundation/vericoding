@@ -1,0 +1,55 @@
+vc-description: |-
+  /-
+  You have a sequence $a$ with length $N$ created by removing some elements (possibly zero) from a permutation of numbers $(1, 2, \dots, N)$. When an element is removed, the length of the sequence doesn't change, but there is an empty spot left where the removed element was. You also have an integer $K$.
+  Let's call a permutation $p_1, p_2, \dots, p_N$ good if:
+  - it is possible replace empty spots in $a$ by numbers in such a way that we obtain the permutation $p$
+  - the number of positions $i$ ($1 < i \le N$) such that $p_i > p_{i-1}$ is equal to $K$
+  Your task is to find the number of good permutations.
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains two space-separated integers $N$ and $K$.
+  - The second line contains $N$ space-separated integers $a_1, a_2, \dots, a_N$. Each element of this sequence is either $0$ (indicating an empty spot previously occupied by a removed element) or an integer between $1$ and $N$ inclusive.
+  
+  -----Output-----
+  For each test case, print a single line containing one integer — the number of good permutations.
+  
+  -----Constraints-----
+  - $1 \le T \le 300$
+  - $0 \le K < N \le 8$
+  - each integer between $1$ and $N$ inclusive appears in $a$ at most once
+  
+  -----Example Input-----
+  1
+  3 1
+  2 0 0
+  
+  -----Example Output-----
+  2
+  
+  -----Explanation-----
+  Example case 1: The two possible good permutations are $(2,3,1)$ and $(2,1,3)$.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def solve (N K : Nat) (arr : List Nat) : Nat := sorry
+  
+  theorem solve_result_in_range (N K : Nat) (arr : List Nat) :
+    1 ≤ (solve N K arr) ∧ (solve N K arr) ≤ N := by sorry
+
+vc-theorems: |-
+  theorem solve_all_ones (n K : Nat) :
+    K = 0 → 
+    let arr := List.replicate n 1
+    solve n K arr = 1 := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+

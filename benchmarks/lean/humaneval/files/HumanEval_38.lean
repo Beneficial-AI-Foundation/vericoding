@@ -21,9 +21,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (s: String) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 (impl: String → String)
@@ -47,10 +45,8 @@ let spec (result: String) :=
 
 theorem correctness
 (s: String)
-: problem_spec implementation s :=
--- <vc-proof>
+: problem_spec implementation s := by
   sorry
--- </vc-proof>
 
 -- #test implementation "abcdef" = "bcaefd"
 -- #test implementation "abcde" = "bcade"

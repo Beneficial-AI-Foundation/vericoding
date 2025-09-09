@@ -25,9 +25,7 @@ def LinearSearch3_precond (a : Array Int) (P : Int -> Bool) : Prop :=
 -- </vc-helpers>
 
 def LinearSearch3 (a : Array Int) (P : Int -> Bool) (h_precond : LinearSearch3_precond (a) (P)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def LinearSearch3_postcond (a : Array Int) (P : Int -> Bool) (result: Nat) (h_precond : LinearSearch3_precond (a) (P)) :=
@@ -35,9 +33,7 @@ def LinearSearch3_postcond (a : Array Int) (P : Int -> Bool) (result: Nat) (h_pr
 
 theorem LinearSearch3_spec_satisfied (a: Array Int) (P: Int -> Bool) (h_precond : LinearSearch3_precond (a) (P)) :
     LinearSearch3_postcond (a) (P) (LinearSearch3 (a) (P) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

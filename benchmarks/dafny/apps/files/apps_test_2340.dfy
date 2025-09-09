@@ -1,0 +1,277 @@
+Navigate down a cliff from height h to ground using platforms and magic crystals.
+Character starts at platform height h, can pull levers to hide current platform and toggle platform at height x-1,
+can fall safely at most 2 heights, and magic crystals can toggle any platform state (except height h).
+Find minimum number of crystals needed to reach ground safely.
+
+predicate ValidInput(h: int, n: int, platforms: seq<int>)
+{
+    h >= 1 && n >= 1 && |platforms| >= n && n > 0 && platforms[0] == h
+}
+
+predicate ValidCrystalCount(crystals: int, n: int)
+{
+    crystals >= 0 && crystals <= n - 1
+}
+
+function CountCrystalsNeeded(h: int, platforms: seq<int>): int
+  requires |platforms| >= 1
+  requires platforms[0] == h
+  requires h >= 1
+{
+    if |platforms| == 1 then 0
+    else CountCrystalsNeededUpTo(h, platforms + [0], |platforms| - 1)
+}
+
+function CountCrystalsNeededUpTo(h: int, arr: seq<int>, upTo: int): int
+  requires |arr| >= 1
+  requires 0 <= upTo < |arr|
+  requires arr[0] == h
+  requires h >= 1
+  decreases upTo
+{
+    if upTo == 0 then 0
+    else
+        var curPos := SimulatePositionUpTo(h, arr, upTo - 1);
+        var prevCrystals := CountCrystalsNeededUpTo(h, arr, upTo - 1);
+        if curPos == arr[upTo] then prevCrystals
+        else if upTo + 1 < |arr| && arr[upTo + 1] == arr[upTo] - 1 then prevCrystals
+        else prevCrystals + 1
+}
+
+function SimulatePositionUpTo(h: int, arr: seq<int>, upTo: int): int
+  requires |arr| >= 1
+  requires 0 <= upTo < |arr|
+  requires arr[0] == h
+  requires h >= 1
+  decreases upTo
+{
+    if upTo == 0 then h
+    else
+        var prevPos := SimulatePositionUpTo(h, arr, upTo - 1);
+        if prevPos == arr[upTo] then prevPos
+        else if upTo + 1 < |arr| && arr[upTo + 1] == arr[upTo] - 1 then arr[upTo] - 1
+        else prevPos
+}
+
+method SplitLines(s: string) returns (lines: seq<string>)
+  requires |s| >= 0
+  ensures |lines| >= 0
+{
+    lines := [];
+    var current := "";
+    var i := 0;
+    while i < |s| {
+        if s[i] == '\n' {
+            if |current| > 0 {
+                lines := lines + [current];
+            }
+            current := "";
+        } else {
+            current := current + [s[i]];
+        }
+        i := i + 1;
+    }
+    if |current| > 0 {
+        lines := lines + [current];
+    }
+}
+
+method ParseInt(s: string) returns (result: int)
+  requires |s| > 0
+  ensures result >= 0
+{
+    result := 0;
+    var i := 0;
+    while i < |s| && s[i] != ' ' && s[i] != '\n' 
+      invariant 0 <= i <= |s|
+      invariant result >= 0
+    {
+        if '0' <= s[i] <= '9' {
+            result := result * 10 + (s[i] as int - '0' as int);
+        }
+        i := i + 1;
+    }
+}
+
+method ParseTwoInts(s: string) returns (result: (int, int))
+  requires |s| > 0
+  ensures result.0 >= 0 && result.1 >= 0
+{
+    var parts := SplitBySpace(s);
+    if |parts| >= 2 && |parts[0]| > 0 && |parts[1]| > 0 {
+        var first := ParseInt(parts[0]);
+        var second := ParseInt(parts[1]);
+        result := (first, second);
+    } else {
+        result := (0, 0);
+    }
+}
+
+method ParseInts(s: string) returns (result: seq<int>)
+  requires |s| >= 0
+  ensures |result| >= 0
+  ensures forall i :: 0 <= i < |result| ==> result[i] >= 0
+{
+    var parts := SplitBySpace(s);
+    result := [];
+    var i := 0;
+    while i < |parts| 
+      invariant 0 <= i <= |parts|
+      invariant |result| == i
+      invariant forall j :: 0 <= j < |result| ==> result[j] >= 0
+    {
+        if |parts[i]| > 0 {
+            var num := ParseInt(parts[i]);
+            result := result + [num];
+        } else {
+            result := result + [0];
+        }
+        i := i + 1;
+    }
+}
+
+method SplitBySpace(s: string) returns (parts: seq<string>)
+  requires |s| >= 0
+  ensures |parts| >= 0
+{
+    parts := [];
+    var current := "";
+    var i := 0;
+    while i < |s| {
+        if s[i] == ' ' {
+            if |current| > 0 {
+                parts := parts + [current];
+                current := "";
+            }
+        } else {
+            current := current + [s[i]];
+        }
+        i := i + 1;
+    }
+    if |current| > 0 {
+        parts := parts + [current];
+    }
+}
+
+method IntToString(n: int) returns (result: string)
+  requires n >= 0
+  ensures |result| > 0
+  ensures n == 0 ==> result == "0"
+{
+    if n == 0 {
+        result := "0";
+        return;
+    }
+
+    var digits := [];
+    var num := n;
+
+    while num > 0 
+      invariant num >= 0
+      invariant num < n ==> |digits| > 0
+    {
+        var digit := (num % 10) as char + '0' as char;
+        digits := [digit] + digits;
+        num := num / 10;
+    }
+
+    result := "";
+    var i := 0;
+    while i < |digits| 
+      invariant 0 <= i <= |digits|
+      invariant |result| == i
+    {
+        result := result + [digits[i]];
+        i := i + 1;
+    }
+}
+
+method SolveSingle(h: int, n: int, platforms: seq<int>) returns (crystals: int)
+  requires ValidInput(h, n, platforms)
+  ensures ValidCrystalCount(crystals, n)
+  ensures n == 1 ==> crystals == 0
+{
+    if n == 1 {
+        return 0;
+    }
+
+    var arr := platforms + [0];
+
+    crystals := 0;
+    var cur := h;
+
+    var i := 1;
+    while i < n
+      invariant 1 <= i <= n
+      invariant crystals >= 0
+      invariant crystals <= i - 1
+    {
+        if cur == arr[i] {
+            // continue - already at this platform
+        } else {
+            if i + 1 < |arr| && arr[i + 1] == arr[i] - 1 {
+                cur := arr[i] - 1;  // Can safely move down using lever mechanism
+            } else {
+                crystals := crystals + 1;  // Need crystal to create safe path
+                cur := arr[i]; // Update position after using crystal
+            }
+        }
+        i := i + 1;
+    }
+}
+
+method solve(input: string) returns (result: string)
+  requires |input| > 0
+  ensures |result| >= 0
+{
+    var lines := SplitLines(input);
+    if |lines| == 0 {
+        result := "";
+        return;
+    }
+
+    if |lines[0]| == 0 {
+        result := "";
+        return;
+    }
+
+    var testCases := ParseInt(lines[0]);
+
+    var output := "";
+    var lineIdx := 1;
+
+    var t := 0;
+    while t < testCases && lineIdx + 1 < |lines|
+      invariant 0 <= t <= testCases
+      invariant 1 <= lineIdx <= |lines|
+    {
+        if |lines[lineIdx]| == 0 {
+            lineIdx := lineIdx + 1;
+            t := t + 1;
+            continue;
+        }
+
+        var hAndN := ParseTwoInts(lines[lineIdx]);
+        var h := hAndN.0;
+        var n := hAndN.1;
+        lineIdx := lineIdx + 1;
+
+        if lineIdx < |lines| && h >= 1 && n >= 1 {
+            var platforms := ParseInts(lines[lineIdx]);
+            lineIdx := lineIdx + 1;
+
+            if |platforms| >= n && ValidInput(h, n, platforms) {
+                var crystals := SolveSingle(h, n, platforms);
+                var tmpCall1 := IntToString(crystals);
+                output := output + tmpCall1;
+                if t < testCases - 1 {
+                    output := output + "\n";
+                }
+            }
+        }
+
+        t := t + 1;
+    }
+
+    result := output;
+}

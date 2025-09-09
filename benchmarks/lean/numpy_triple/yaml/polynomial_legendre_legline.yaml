@@ -22,26 +22,18 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def legline (off scl : Float) : Id (Vector Float 2) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem legline_spec (off scl : Float) :
       ⦃⌜True⌝⦄
       legline off scl
       ⦃⇓result => 
         ⌜result.get 0 = off ∧ 
          result.get 1 = scl⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -6,7 +6,6 @@ The strength of a group is defined as the product of the selected student scores
 
 You can choose any non-empty subset of students. The goal is to compute the maximum product of any such subset.
 
-
 ----Input---
 nums: An non-empty list of integers.
 
@@ -25,9 +24,7 @@ def maxStrength_precond (nums : List Int) : Prop :=
 -- </vc-helpers>
 
 def maxStrength (nums : List Int) (h_precond : maxStrength_precond (nums)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def maxStrength_postcond (nums : List Int) (result: Int) (h_precond : maxStrength_precond (nums)) : Prop :=
@@ -37,9 +34,7 @@ def maxStrength_postcond (nums : List Int) (result: Int) (h_precond : maxStrengt
 
 theorem maxStrength_spec_satisfied (nums: List Int) (h_precond : maxStrength_precond (nums)) :
     maxStrength_postcond (nums) (maxStrength (nums) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

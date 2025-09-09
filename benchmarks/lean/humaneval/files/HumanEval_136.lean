@@ -22,9 +22,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (lst: List Int) : (Option Int × Option Int) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -47,10 +45,8 @@ spec result
 
 theorem correctness
 (lst: List Int)
-: problem_spec implementation lst :=
--- <vc-proof>
+: problem_spec implementation lst := by
   sorry
--- </vc-proof>
 
 -- #test implementation [2, 4, 1, 3, 5, 7] = (none, some 1)
 -- #test implementation [] = (none, none)

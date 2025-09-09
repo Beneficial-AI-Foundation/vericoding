@@ -1,21 +1,21 @@
 /-  numpy.issubclass_: Determine if a class is a subclass of a second class.
-    
+
     This function is equivalent to the Python built-in issubclass, except that it returns 
     False instead of raising a TypeError if one of the arguments is not a class.
-    
+
     In the context of NumPy, this tests relationships between NumPy data type classes
     such as whether int32 is a subclass of integer, or whether float64 is a subclass of float.
 -/
 
 /-  Specification: issubclass_ correctly determines class hierarchy relationships.
-    
+
     This function tests whether arg1 is a subclass of arg2 according to NumPy's type
     hierarchy. The specification ensures that:
     1. The function respects the established type hierarchy (e.g., int32 ⊆ integer ⊆ number ⊆ scalar)
     2. It handles reflexivity correctly (every class is a subclass of itself)
     3. It returns False for unrelated classes
     4. It never raises exceptions (returns False instead of error for invalid inputs)
-    
+
     Precondition: True (no special preconditions, handles all inputs gracefully)
     Postcondition: Returns True if arg1 is a subclass of arg2, False otherwise
 -/
@@ -110,9 +110,7 @@ def NumpyTypeClass.isSubclass : NumpyTypeClass → NumpyTypeClass → Bool
 -- </vc-helpers>
 
 def issubclass_ (arg1 arg2 : NumpyTypeClass) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem issubclass_spec (arg1 arg2 : NumpyTypeClass) :
     ⦃⌜True⌝⦄
@@ -135,6 +133,4 @@ theorem issubclass_spec (arg1 arg2 : NumpyTypeClass) :
       (arg1 = NumpyTypeClass.FloatingType ∧ arg2 = NumpyTypeClass.ScalarType → result = true) ∧
       (arg1 = NumpyTypeClass.ComplexType ∧ arg2 = NumpyTypeClass.ScalarType → result = true)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -12,7 +12,7 @@
 
     Calls str.encode element-wise on a vector of strings.
     Converts strings to byte arrays using the specified encoding.
-    
+
     This function takes a vector of strings and returns a vector
     of encoded byte arrays. The encoding process depends on the encoding
     parameter, with UTF-8 being the default.
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def encode {n : Nat} (a : Vector String n) (encoding : String := "utf-8") (errors : String := "strict") : Id (Vector ByteArray n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem encode_spec {n : Nat} (a : Vector String n) (encoding : String := "utf-8") (errors : String := "strict") :
     ⦃⌜True⌝⦄
@@ -56,6 +54,4 @@ theorem encode_spec {n : Nat} (a : Vector String n) (encoding : String := "utf-8
                       (result.get i).size = (a.get i).length) ∧
                   -- Encoding size relationship: encoded size is at least the string length
                   (encoding = "utf-8" → (result.get i).size ≥ (a.get i).length)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

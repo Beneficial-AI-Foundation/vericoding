@@ -28,15 +28,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def canCompleteCircuit (gas : List Int) (cost : List Int) (h_precond : canCompleteCircuit_precond (gas) (cost)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def canCompleteCircuit_postcond (gas : List Int) (cost : List Int) (result: Int) (h_precond : canCompleteCircuit_precond (gas) (cost)) : Prop :=
     let valid (start : Nat) := List.range gas.length |>.all (fun i =>
@@ -53,11 +49,7 @@ vc-condition: |-
   
   theorem canCompleteCircuit_spec_satisfied (gas: List Int) (cost: List Int) (h_precond : canCompleteCircuit_precond (gas) (cost)) :
       canCompleteCircuit_postcond (gas) (cost) (canCompleteCircuit (gas) (cost) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

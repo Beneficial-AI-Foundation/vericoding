@@ -1,0 +1,76 @@
+vc-description: |-
+  /-
+  # Task
+   The number is considered to be `unlucky` if it does not have digits `4` and `7` and is divisible by `13`. Please count all unlucky numbers not greater than `n`.
+  
+  # Example
+  
+   For `n = 20`, the result should be `2` (numbers `0 and 13`).
+  
+   For `n = 100`, the result should be `7` (numbers `0, 13, 26, 39, 52, 65, and 91`)
+  
+  # Input/Output
+  
+   - `[input]` integer `n`
+  
+   `1 ≤ n ≤ 10^8(10^6 in Python)`
+  
+   - `[output]` an integer
+  -/
+
+vc-preamble: |-
+  def unlucky_number (n : Nat) : Nat :=
+    sorry
+  
+  def containsChar (s : String) (c : Char) : Bool :=
+    s.any (fun x => x == c)
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def isDivisibleBy13AndNoUnluckyDigits (i : Nat) : Bool :=
+    i % 13 == 0 && 
+    !containsChar (toString i) '4' && 
+    !containsChar (toString i) '7'
+
+vc-theorems: |-
+  theorem unlucky_number_non_negative (n : Nat) :
+    unlucky_number n ≥ 0 :=
+    sorry
+  
+  theorem unlucky_number_zero :
+    unlucky_number 0 = 1 :=
+    sorry
+  
+  theorem unlucky_number_twelve :
+    unlucky_number 12 = 1 :=
+    sorry
+  
+  theorem unlucky_number_thirteen :
+    unlucky_number 13 = 2 :=
+    sorry
+  
+  /-
+  info: 2
+  -/
+  -- #guard_msgs in
+  -- #eval unlucky_number 20
+  
+  /-
+  info: 7
+  -/
+  -- #guard_msgs in
+  -- #eval unlucky_number 100
+  
+  /-
+  info: 40
+  -/
+  -- #guard_msgs in
+  -- #eval unlucky_number 1000
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

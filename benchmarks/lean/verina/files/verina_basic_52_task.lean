@@ -42,9 +42,7 @@ def bubbleOuter (i : Nat) (a : Array Int) : Array Int :=
 -- </vc-helpers>
 
 def BubbleSort (a : Array Int) (h_precond : BubbleSort_precond (a)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def BubbleSort_postcond (a : Array Int) (result: Array Int) (h_precond : BubbleSort_precond (a)) :=
@@ -52,9 +50,7 @@ def BubbleSort_postcond (a : Array Int) (result: Array Int) (h_precond : BubbleS
 
 theorem BubbleSort_spec_satisfied (a: Array Int) (h_precond : BubbleSort_precond (a)) :
     BubbleSort_postcond (a) (BubbleSort (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

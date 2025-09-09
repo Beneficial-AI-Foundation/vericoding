@@ -21,9 +21,7 @@ def rain_precond (heights : List (Int)) : Prop :=
 -- </vc-helpers>
 
 def rain (heights : List (Int)) (h_precond : rain_precond (heights)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def rain_postcond (heights : List (Int)) (result: Int) (h_precond : rain_precond (heights)) : Prop :=
@@ -60,9 +58,7 @@ def rain_postcond (heights : List (Int)) (result: Int) (h_precond : rain_precond
 
 theorem rain_spec_satisfied (heights: List (Int)) (h_precond : rain_precond (heights)) :
     rain_postcond (heights) (rain (heights) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -1,0 +1,46 @@
+vc-description: |-
+  Find the minimum number of years needed for a bank balance to reach a target amount.
+  Starting with 100 yen, the balance grows each year by adding 1% interest (rounded down).
+  Given a target amount X, determine how many years it takes for the balance to reach X yen or above.
+  The yearly calculation is: new_balance = current_balance + floor(current_balance / 100)
+
+vc-preamble: |-
+  function calculateDeposit(initial: int, years: int): int
+      requires initial >= 0
+      requires years >= 0
+  {
+      if years == 0 then initial
+      else 
+          var prevDeposit := calculateDeposit(initial, years - 1);
+          prevDeposit + prevDeposit / 100
+  }
+
+vc-helpers: |-
+  
+
+vc-spec: |-
+  method solve(X: int) returns (years: int)
+      requires X >= 101
+      ensures years >= 0
+      ensures var finalDeposit := calculateDeposit(100, years); finalDeposit >= X
+      ensures years == 0 || calculateDeposit(100, years - 1) < X
+
+vc-code: |-
+  {
+      var deposit := 100;
+      var y_later := 0;
+  
+      while deposit < X 
+          invariant deposit >= 100
+          invariant deposit == calculateDeposit(100, y_later)
+          invariant y_later >= 0
+          invariant y_later == 0 || calculateDeposit(100, y_later - 1) < X
+      {
+          y_later := y_later + 1;
+          deposit := deposit + deposit / 100;
+      }
+  
+      return y_later;
+  }
+
+vc-postamble: |-

@@ -1,0 +1,68 @@
+/-
+Once, a genius guy Cristo visited NASA where he met many scientists. A young intern Mark at NASA asked Cristo to observe the strange behaviour of two
+
+independent particles (say Alpha and Beta) moving in the free space.Cristo was astonished to see the movement of Alpha and Beta. However, he formulated a procedure
+
+to evaluate the distance covered by the particles in given time.
+The procedure calculates the distance covered by Alpha and Beta for a given time. Mark, however struggles
+
+to evaluate the procedure manually and asks you to help him. 
+Cristo's Procedure :- 
+alpha = 0
+beta = 0
+Procedure CristoSutra( Ti ) :
+if Ti <= 0 :
+alpha = alpha + 1 
+else if Ti == 1 :
+	beta = beta + 1
+else :
+CristoSutra(Ti-1)
+	         CristoSutra(Ti-2)
+	         CristoSutra(Ti-3)
+end procedure
+Note: Print the answer by taking mod from 109+7 .
+
+-----Constraints:-----
+- 1<=T<=105
+- 1<=Ti<=105
+
+-----Input Format:-----
+First line consists an integer t, number of Test cases.For each test case, there is an integer denoting time Ti.
+
+-----Output Format:-----
+For each test case, a single output line contains two space seperated numbers ,distance covered by alpha and beta in the given time.
+
+-----Subtasks:-----
+Subtask 1 (30 points)
+- 1<=T<=10
+- 1<=Ti<=1000
+Subtask 2 (70 points)
+original contraints
+Sample Input:
+2
+1
+2
+Sample Output:
+0 1
+2 1
+-/
+
+def cristo_sutra (input : List Nat) : List String := sorry
+
+def MOD := 1000000007
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def parseResults (strs : List String) : List (Nat × Nat) := sorry
+
+theorem cristo_sutra_length (input : List Nat) :
+  input.length > 0 → (cristo_sutra input).length = input.length := sorry
+
+theorem cristo_sutra_base_cases :
+  cristo_sutra [1] = ["0 1"] ∧
+  cristo_sutra [2] = ["2 1"] ∧ 
+  cristo_sutra [3] = ["3 2"] := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

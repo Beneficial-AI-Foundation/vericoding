@@ -13,7 +13,7 @@
     Performs element-wise string comparison between two vectors of strings.
     Returns a boolean vector indicating whether corresponding strings from x1 
     are lexicographically less than corresponding strings from x2.
-    
+
     This function compares strings lexicographically and returns True for each
     position where x1[i] < x2[i] in lexicographic ordering, False otherwise.
 -/
@@ -24,10 +24,10 @@
     of strings, returning a boolean vector where each element indicates whether
     the corresponding element in x1 is lexicographically less than the corresponding
     element in x2.
-    
+
     Precondition: True (no special preconditions for string comparison)
     Postcondition: For all indices i, result[i] = (x1[i] < x2[i])
-    
+
     Mathematical Properties:
     - Asymmetric: if less x1 x2 is True at position i, then less x2 x1 is False at position i
     - Transitive: if less x1 x2 and less x2 x3 are both True at position i, then less x1 x3 is True at position i
@@ -35,7 +35,7 @@
     - Trichotomous: for any two strings s1 and s2, exactly one of s1 < s2, s1 = s2, or s1 > s2 holds
     - Decidable: String comparison is decidable for all strings
     - Type-safe: Result vector has same length as input vectors
-    
+
     String Comparison Properties:
     - Empty string is less than any non-empty string
     - Lexicographic ordering follows dictionary order (case-sensitive)
@@ -51,9 +51,7 @@ open Std.Do
 -- </vc-helpers>
 
 def less {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem less_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
@@ -82,6 +80,4 @@ theorem less_spec {n : Nat} (x1 x2 : Vector String n) :
                  (∀ i : Fin n, result.get i = true → x1.get i ≠ x2.get i) ∧
                  -- Totality of comparison: for any two strings, exactly one of <, =, > holds
                  (∀ i : Fin n, result.get i = true ∨ x1.get i = x2.get i ∨ x2.get i < x1.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

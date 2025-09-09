@@ -1,0 +1,71 @@
+vc-description: |-
+  /-
+  Given a string of words and numbers. Extract the expression including: 
+  1. the operator: either addition or subtraction
+  2. the two numbers that we are operating on
+  
+  Return the result of the calculation.
+  
+  Example:
+  
+  "Panda has 48 apples and loses 4" returns 44
+  
+  "Jerry has 34 apples and gains 6" returns 40
+  
+  "loses" and "gains" are the only two words describing operators.
+  
+  Should be a nice little kata for you :)
+  
+  Note:
+  No fruit debts nor bitten apples = The numbers are integers and no negatives
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def calculate (s : String) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem gains_adds (n1 n2 : Nat) :
+    calculate s!"Someone has {n1} items and gains {n2}" = n1 + n2 := by
+    sorry
+  
+  theorem loses_subtracts (n1 n2 : Nat) :
+    calculate s!"Someone has {n1} items and loses {n2}" = n1 - n2 := by
+    sorry
+  
+  theorem calculate_properties (n1 n2 : Nat) (op : String) 
+    (h : op = "gains" ∨ op = "loses") :
+    calculate s!"Someone has {n1} items and {op} {n2}" = 
+      if op = "gains" 
+      then n1 + n2
+      else n1 - n2 := by
+    sorry
+  
+  /-
+  info: 44
+  -/
+  -- #guard_msgs in
+  -- #eval calculate "Panda has 48 apples and loses 4"
+  
+  /-
+  info: 40
+  -/
+  -- #guard_msgs in
+  -- #eval calculate "Jerry has 34 apples and gains 6"
+  
+  /-
+  info: 35
+  -/
+  -- #guard_msgs in
+  -- #eval calculate "Tom has 20 apples and gains 15"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

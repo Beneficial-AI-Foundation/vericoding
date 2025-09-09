@@ -19,15 +19,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def array_str {n : Nat} (a : Vector Float n) : String :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem array_str_spec {n : Nat} (a : Vector Float n) :
       -- The result is a non-empty string (always at least "[]")
       (array_str a).length > 0 ∧
@@ -41,11 +37,7 @@ vc-condition: |-
           pos_i < pos_j ∧ 
           pos_i < (array_str a).length ∧ 
           pos_j < (array_str a).length) := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

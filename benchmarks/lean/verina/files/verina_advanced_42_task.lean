@@ -33,9 +33,7 @@ def maxProfitAux (prices : List Nat) (minSoFar : Nat) (maxProfit : Nat) : Nat :=
 -- </vc-helpers>
 
 def maxProfit (prices : List Nat) (h_precond : maxProfit_precond (prices)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def maxProfit_postcond (prices : List Nat) (result: Nat) (h_precond : maxProfit_precond (prices)) : Prop :=
@@ -52,9 +50,7 @@ def maxProfit_postcond (prices : List Nat) (result: Nat) (h_precond : maxProfit_
 
 theorem maxProfit_spec_satisfied (prices: List Nat) (h_precond : maxProfit_precond (prices)) :
     maxProfit_postcond (prices) (maxProfit (prices) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

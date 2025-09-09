@@ -29,25 +29,17 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def vander {n m : Nat} (x : Vector Float n) : Id (Vector (Vector Float m) n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem vander_spec {n m : Nat} (x : Vector Float n) (h_m_pos : m > 0) :
       ⦃⌜m > 0⌝⦄
       vander x
       ⦃⇓result => ⌜∀ (i : Fin n) (j : Fin m), 
                     (result.get i).get j = (x.get i) ^ ((m - 1 - j.val).toFloat)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

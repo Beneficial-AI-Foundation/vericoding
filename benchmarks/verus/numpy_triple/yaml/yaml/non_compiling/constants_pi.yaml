@@ -1,0 +1,33 @@
+vc-description: |-
+  /*
+  The mathematical constant pi (π), approximately 3.14159...
+  
+  Specification: pi represents the ratio of a circle's circumference to its diameter,
+  and satisfies key mathematical properties
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn pi() -> (result: f32)
+      ensures
+          3.14159f32 < result && result < 3.14160f32,
+          3f32 < result && result < 4f32,
+          9.869f32 < result * result && result * result < 9.870f32,
+          6.283f32 < 2f32 * result && 2f32 * result < 6.284f32,
+          1.570f32 < result / 2f32 && result / 2f32 < 1.571f32,
+          0.785f32 < result / 4f32 && result / 4f32 < 0.786f32
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      3.14159f32
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

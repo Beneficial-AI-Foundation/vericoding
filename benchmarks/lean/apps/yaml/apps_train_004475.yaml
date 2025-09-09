@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  If we write out the digits of "60" as English words we get "sixzero"; the number of letters in "sixzero" is seven. The number of letters in "seven" is five. The number of letters in "five" is four. The number of letters in "four" is four: we have reached a stable equilibrium.
+  
+  Note: for integers larger than 9, write out the names of each digit in a single word (instead of the proper name of the number in English). For example, write 12 as "onetwo" (instead of twelve), and 999 as "nineninenine" (instead of nine hundred and ninety-nine).
+  
+  For any integer between 0 and 999, return an array showing the path from that integer to a stable equilibrium:
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def convert_digit_to_word (n : Nat) : String := sorry
+  
+  def numbers_of_letters (n : Nat) : List String := sorry
+
+vc-theorems: |-
+  theorem convert_digit_to_word_returns_valid_word 
+    (n : Nat) (h : n ≤ 9) : 
+    convert_digit_to_word n ∈ ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"] := sorry
+  
+  -- Removed the string type check since it's implicit in Lean's type system
+  
+  theorem numbers_of_letters_returns_nonempty
+    (n : Nat) (h : n ≤ 999) : 
+    numbers_of_letters n ≠ [] := sorry
+  
+  theorem numbers_of_letters_ends_with_four
+    (n : Nat) (h : n ≤ 999) :
+    numbers_of_letters n ≠ [] → 
+    List.getLast (numbers_of_letters n) (by exact numbers_of_letters_returns_nonempty n h) = "four" := sorry
+  
+  theorem numbers_of_letters_length_bounded
+    (n : Nat) (h : n ≤ 999) :
+    (numbers_of_letters n).length ≤ 10 := sorry
+  
+  theorem numbers_of_letters_first_element
+    (n : Nat) (h : n ≤ 999) :
+    numbers_of_letters n ≠ [] → 
+    (numbers_of_letters n).head! = convert_digit_to_word n := sorry
+  
+  /-
+  info: ['one', 'three', 'five', 'four']
+  -/
+  -- #guard_msgs in
+  -- #eval numbers_of_letters 1
+  
+  /-
+  info: ['onetwo', 'six', 'three', 'five', 'four']
+  -/
+  -- #guard_msgs in
+  -- #eval numbers_of_letters 12
+  
+  /-
+  info: ['nineninenine', 'onetwo', 'six', 'three', 'five', 'four']
+  -/
+  -- #guard_msgs in
+  -- #eval numbers_of_letters 999
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

@@ -1,0 +1,48 @@
+/-
+Given an array of numbers (in string format), you must return a string. The numbers correspond to the letters of the alphabet in reverse order: a=26, z=1 etc. You should also account for `'!'`, `'?'` and `' '` that are represented by '27', '28' and '29' respectively.
+
+All inputs will be valid.
+-/
+
+def switcher (arr : List Nat) : String := sorry
+
+def is_valid_input (arr : List Nat) : Bool := sorry
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def is_valid_output (s : String) : Bool := sorry
+
+def expected_map (n : Nat) : String := sorry
+
+theorem switcher_properties (arr : List Nat) : 
+  is_valid_input arr → 
+  let result := switcher arr
+  (is_valid_output result) ∧ 
+  (result.length = (arr.filter (· ≠ 0)).length) ∧
+  (result = String.join (arr.map expected_map)) := sorry
+
+theorem switcher_all_zeros (arr : List Nat) :
+  arr.all (· = 0) →
+  switcher arr = "" := sorry
+
+/-
+info: 'codewars'
+-/
+-- #guard_msgs in
+-- #eval switcher ["24", "12", "23", "22", "4", "26", "9", "8"]
+
+/-
+info: 'btswmdsbd kkw'
+-/
+-- #guard_msgs in
+-- #eval switcher ["25", "7", "8", "4", "14", "23", "8", "25", "23", "29", "16", "16", "4"]
+
+/-
+info: 'o?bfbtpel'
+-/
+-- #guard_msgs in
+-- #eval switcher ["12", "28", "25", "21", "25", "7", "11", "22", "15"]
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

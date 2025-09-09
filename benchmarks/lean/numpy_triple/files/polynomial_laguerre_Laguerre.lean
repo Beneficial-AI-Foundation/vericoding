@@ -40,9 +40,7 @@ structure Laguerre (n : Nat) where
 -- </vc-helpers>
 
 def makeLaguerre {n : Nat} (coefficients : Vector Float n) : Id (Laguerre n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem makeLaguerre_spec {n : Nat} (coefficients : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -67,6 +65,4 @@ theorem makeLaguerre_spec {n : Nat} (coefficients : Vector Float n) :
       -- Basic sanity check for coefficient preservation
       (∀ i : Fin n, result.coef.get i = coefficients.get i)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

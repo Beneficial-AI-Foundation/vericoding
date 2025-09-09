@@ -1,0 +1,69 @@
+/-
+# Task
+ Your task is to find the smallest number which is evenly divided by all numbers between `m` and `n` (both inclusive).
+
+# Example
+
+ For `m = 1, n = 2`, the output should be `2`.
+
+ For `m = 2, n = 3`, the output should be `6`.
+
+ For `m = 3, n = 2`, the output should be `6` too.
+
+ For `m = 1, n = 10`, the output should be `2520`.
+
+# Input/Output
+
+ - `[input]` integer `m`
+
+  `1 ≤ m ≤ 25`
+
+ - `[input]` integer `n`
+
+  `1 ≤ n ≤ 25`
+
+ - `[output]` an integer
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def lcm (a b : Nat) : Nat := sorry
+def mn_lcm (m n : Nat) : Nat := sorry
+
+theorem lcm_properties {a b : Nat} (h1 : a > 0) (h2 : b > 0) :
+  let result := lcm a b
+  (result % a = 0) ∧ (result % b = 0) ∧ (result ≥ max a b) ∧ (result ≥ 0) := sorry
+
+theorem mn_lcm_properties {m n : Nat} (h1 : m > 0) (h2 : n > 0) :
+  let result := mn_lcm m n
+  let lower := min m n
+  let upper := max m n
+  (∀ i, lower ≤ i → i ≤ upper → result % i = 0) ∧ (result ≥ upper) := sorry
+
+theorem lcm_known_values :
+  lcm 2 3 = 6 ∧ lcm 6 8 = 24 := sorry
+
+theorem mn_lcm_order_invariant {m n : Nat} :
+  mn_lcm m n = mn_lcm n m := sorry
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval mn_lcm 1 2
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval mn_lcm 2 3
+
+/-
+info: 2520
+-/
+-- #guard_msgs in
+-- #eval mn_lcm 1 10
+
+-- Apps difficulty: introductory
+-- Assurance level: guarded_and_plausible

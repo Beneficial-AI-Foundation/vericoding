@@ -1,0 +1,129 @@
+Given a fence with n planks of heights, find k consecutive planks with the minimum sum of heights.
+Return the 1-indexed starting position of such a sequence. If multiple solutions exist, return any valid one.
+
+function sum_window(heights: seq<int>, start: int, k: int): int
+  requires 0 <= start
+  requires start + k <= |heights|
+  requires k > 0
+  decreases k
+{
+  if k == 1 then heights[start]
+  else heights[start] + sum_window(heights, start + 1, k - 1)
+}
+
+predicate ValidInput(n: int, k: int, heights: seq<int>)
+{
+  1 <= k <= n && |heights| == n && forall i :: 0 <= i < n ==> 1 <= heights[i] <= 100
+}
+
+predicate ValidResult(result: int, n: int, k: int, heights: seq<int>)
+  requires ValidInput(n, k, heights)
+{
+  1 <= result <= n-k+1 &&
+  forall start :: 0 <= start <= n-k ==> 
+    sum_window(heights, result-1, k) <= sum_window(heights, start, k) &&
+  forall start :: 0 <= start < result-1 ==>
+    sum_window(heights, start, k) > sum_window(heights, result-1, k)
+}
+
+function sum_window_partial(heights: seq<int>, start: int, len: int): int
+  requires 0 <= start
+  requires 0 <= len
+  requires start + len <= |heights|
+  decreases len
+{
+  if len == 0 then 0
+  else heights[start] + sum_window_partial(heights, start + 1, len - 1)
+}
+
+lemma sum_window_partial_extend_lemma(heights: seq<int>, start: int, len: int)
+  requires 0 <= start
+  requires 0 <= len
+  requires start + len < |heights|
+  ensures sum_window_partial(heights, start, len) + heights[start + len] == sum_window_partial(heights, start, len + 1)
+  decreases len
+{
+  if len == 0 {
+    // Base case
+  } else {
+    sum_window_partial_extend_lemma(heights, start + 1, len - 1);
+  }
+}
+
+lemma sum_window_partial_complete(heights: seq<int>, start: int, k: int)
+  requires 0 <= start
+  requires k > 0
+  requires start + k <= |heights|
+  ensures sum_window_partial(heights, start, k) == sum_window(heights, start, k)
+  decreases k
+{
+  if k == 1 {
+    // Base case
+  } else {
+    sum_window_partial_complete(heights, start + 1, k - 1);
+  }
+}
+
+lemma sliding_window_lemma(heights: seq<int>, start: int, k: int)
+  requires 0 <= start
+  requires k > 0
+  requires start + k + 1 <= |heights|
+  ensures sum_window(heights, start + 1, k) == sum_window(heights, start, k) - heights[start] + heights[start + k]
+  decreases k
+{
+  if k == 1 {
+    // Base case
+  } else {
+    sliding_window_lemma(heights, start + 1, k - 1);
+  }
+}
+
+method solve(n: int, k: int, heights: seq<int>) returns (result: int)
+  requires ValidInput(n, k, heights)
+  ensures ValidResult(result, n, k, heights)
+{
+  var a := new int[n-k+1];
+
+  // Calculate first window sum
+  var sum := 0;
+  for i := 0 to k
+    invariant 0 <= i <= k
+    invariant sum == sum_window_partial(heights, 0, i)
+  {
+    sum_window_partial_extend_lemma(heights, 0, i);
+    sum := sum + heights[i];
+  }
+  sum_window_partial_complete(heights, 0, k);
+  assert sum == sum_window(heights, 0, k);
+  a[0] := sum;
+
+  // Calculate remaining window sums using sliding window
+  for i := 1 to n-k+1
+    invariant 1 <= i <= n-k+1
+    invariant a[0] == sum_window(heights, 0, k)
+    invariant forall j :: 1 <= j < i ==> a[j] == sum_window(heights, j, k)
+  {
+    assert a[i-1] == sum_window(heights, i-1, k);
+    sliding_window_lemma(heights, i-1, k);
+    a[i] := a[i-1] + heights[i+k-1] - heights[i-1];
+    assert a[i] == sum_window(heights, i, k);
+  }
+
+  // Find minimum and its index
+  var min_val := a[0];
+  var min_idx := 0;
+  for i := 1 to n-k+1
+    invariant 1 <= i <= n-k+1
+    invariant 0 <= min_idx < i
+    invariant min_val == a[min_idx]
+    invariant forall j :: 0 <= j < i ==> a[min_idx] <= a[j]
+    invariant forall j :: 0 <= j < min_idx ==> a[j] > a[min_idx]
+  {
+    if a[i] < min_val {
+      min_val := a[i];
+      min_idx := i;
+    }
+  }
+
+  result := min_idx + 1; // Convert to 1-indexed
+}

@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def typename (char : String) : Id String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem typename_spec (char : String) :
     ⦃⌜True⌝⦄
@@ -56,6 +54,4 @@ theorem typename_spec (char : String) :
                "S", "U", "V", "b", "d", "g", "f", "i", "h", "l", "q"] → 
        result = "unknown type" ∨ result = char)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

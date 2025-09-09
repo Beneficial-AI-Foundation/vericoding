@@ -7,10 +7,10 @@ spec fn sorted(s: Seq<i32>) -> bool {
 }
 
 fn binary_search(v: &Vec<i32>, elem: i32) -> (p: i32)
-    requires sorted(v@)
-    ensures -1 <= p < v.len()
-    ensures forall|u: int| 0 <= u <= p ==> v[u] <= elem
-    ensures forall|w: int| p < w < v.len() ==> v[w] > elem
+    requires sorted(v@),
+    ensures -1 <= p < v.len(),
+            (forall|u: int| 0 <= u <= p ==> v[u] <= elem),
+            (forall|w: int| p < w < v.len() ==> v[w] > elem),
 {
     assume(false);
     -1
@@ -29,11 +29,12 @@ fn binary_search(v: &Vec<i32>, elem: i32) -> (p: i32)
 // <vc-spec>
 fn other_b_search(v: &Vec<i32>, elem: i32) -> (res: (bool, usize))
     requires sorted(v@)
-    ensures 0 <= res.1 <= v.len()
-    ensures res.0 == v@.contains(elem)
-    ensures res.0 ==> res.1 < v.len() && v[res.1 as int] == elem
-    ensures !res.0 ==> forall|u: int| 0 <= u < res.1 ==> v[u] < elem
-    ensures !res.0 ==> forall|w: int| res.1 <= w < v.len() ==> v[w] > elem
+    ensures 
+        0 <= res.1 <= v.len(),
+        res.0 == v@.contains(elem),
+        res.0 ==> res.1 < v.len() && v[res.1 as int] == elem,
+        !res.0 ==> forall|u: int| 0 <= u < res.1 ==> v[u] < elem,
+        !res.0 ==> forall|w: int| res.1 <= w < v.len() ==> v[w] > elem
 // Implement and verify
 // </vc-spec>
 // <vc-code>

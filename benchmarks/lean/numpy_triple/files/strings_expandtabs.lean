@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def expandtabs {n : Nat} (a : Vector String n) (tabsize : Vector Nat n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem expandtabs_spec {n : Nat} (a : Vector String n) (tabsize : Vector Nat n) 
     (h_positive : ∀ i : Fin n, tabsize.get i > 0) :
@@ -49,6 +47,4 @@ theorem expandtabs_spec {n : Nat} (a : Vector String n) (tabsize : Vector Nat n)
         (∀ j k : Nat, j < k → k < orig_str.length → 
           orig_str.toList[j]! ≠ '\t' → orig_str.toList[k]! ≠ '\t' → 
           mapping j < mapping k))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

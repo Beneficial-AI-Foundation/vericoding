@@ -23,7 +23,7 @@
 
     Precondition: True (no special preconditions)
     Postcondition: For all indices i, result[i] = m[n-1-i]
-    
+
     This specification captures both the sanity check (result has same size)
     and the mathematical property (elements are reversed).
 -/
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def flipud {n : Nat} (m : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem flipud_spec {n : Nat} (m : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -46,6 +44,4 @@ theorem flipud_spec {n : Nat} (m : Vector Float n) :
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = m.get ⟨n - 1 - i.val, by 
                    have h : i.val < n := i.isLt
                    omega⟩⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

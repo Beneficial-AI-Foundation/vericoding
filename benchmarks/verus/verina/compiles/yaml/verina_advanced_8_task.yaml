@@ -1,0 +1,67 @@
+vc-description: |-
+  /*
+  This task requires writing a Verus method that determines whether it is possible to complete a circular journey around a set of gas stations. Each gas station provides a certain amount of gas, and traveling from one station to the next consumes a certain amount of gas.
+  
+  You start the journey at one of the gas stations with an empty tank. The goal is to find the starting station's index that allows completing the entire circuit once in the clockwise direction without running out of gas. If such a station exists, return its index. Otherwise, return -1.
+  
+  If multiple solutions exist, return the one with the smallest starting gas station index.
+  
+  Input:
+  The input consists of two arrays:
+  
+  gas: An array of integers where gas[i] represents the amount of gas available at the ith station.
+  
+  cost: An array of integers where cost[i] is the amount of gas required to travel from station i to station i + 1.
+  
+  Output:
+  The output is an integer:
+  Returns the index of the starting gas station that allows a complete trip around the circuit. If it is not possible to complete the circuit, return -1.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn can_complete_circuit(gas: &Vec<i32>, cost: &Vec<i32>) -> (result: i32)
+      requires 
+          gas.len() == cost.len(),
+          gas.len() > 0,
+      ensures
+          (result == -1) ==> (forall|start: int| 0 <= start < gas.len() ==> !valid_starting_point(gas, cost, start)),
+          (result >= 0) ==> (
+              0 <= result < gas.len() &&
+              valid_starting_point(gas, cost, result as int) &&
+              (forall|start: int| 0 <= start < result ==> !valid_starting_point(gas, cost, start))
+          ),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+  spec fn valid_starting_point(gas: &Vec<i32>, cost: &Vec<i32>, start: int) -> bool {
+      0 <= start < gas.len() && 
+      forall|i: int| 0 <= i < gas.len() ==> {
+          #[trigger] calculate_acc(gas, cost, start, i + 1) >= 0
+      }
+  }
+
+  spec fn calculate_acc(gas: &Vec<i32>, cost: &Vec<i32>, start: int, steps: int) -> int
+      decreases steps
+  {
+      if steps <= 0 {
+          0
+      } else {
+          let prev_acc = calculate_acc(gas, cost, start, steps - 1);
+          let jdx = ((start + (steps - 1)) % (gas.len() as int)) as nat % (gas.len() as nat);
+          prev_acc + gas[jdx as int] - cost[jdx as int]
+      }
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

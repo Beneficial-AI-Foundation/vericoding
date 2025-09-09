@@ -35,15 +35,11 @@ open Std.Do
 -- </vc-helpers>
 
 def conditionNumber {n : Nat} (x : Vector (Vector Float n) n) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem conditionNumber_spec {n : Nat} (x : Vector (Vector Float n) n) 
     (h_nonempty : n > 0) :
     ⦃⌜n > 0⌝⦄
     conditionNumber x
     ⦃⇓result => ⌜result ≥ 0 ∧ result ≥ 1⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

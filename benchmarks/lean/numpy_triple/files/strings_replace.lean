@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def replace {n : Nat} (a : Vector String n) (old : Vector String n) (new : Vector String n) (count : Vector Int n) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem replace_spec {n : Nat} (a : Vector String n) (old : Vector String n) (new : Vector String n) (count : Vector Int n) :
     ⦃⌜∀ i : Fin n, count.get i = 0 ∨ old.get i ≠ ""⌝⦄
@@ -79,6 +77,4 @@ theorem replace_spec {n : Nat} (a : Vector String n) (old : Vector String n) (ne
               (∀ j k : Nat, j < k → j < positions.length → k < positions.length →
                 positions[j]! + (old.get i).length ≤ positions[k]!))))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

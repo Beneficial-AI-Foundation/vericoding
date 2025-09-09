@@ -22,7 +22,7 @@ vc-preamble: |-
   import Mathlib
   import Mathlib.Algebra.Polynomial.Basic
   import Std.Data.HashMap
-
+  
   /--
   name: collatz_reachable
   use: |
@@ -37,15 +37,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (n: Nat) : List Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (impl: Nat → List Nat)
@@ -63,12 +59,8 @@ vc-condition: |-
   
   theorem correctness
   (n: Nat)
-  : problem_spec implementation n :=
-
-vc-proof: |-
-  -- <vc-proof>
+  : problem_spec implementation n := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation 5 = [1, 5]

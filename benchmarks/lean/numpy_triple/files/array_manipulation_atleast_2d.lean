@@ -11,22 +11,22 @@
 -/
 
 /-  numpy.atleast_2d: View inputs as arrays with at least two dimensions.
-    
+
     For a 1D vector input, this function converts it to a 2D array (matrix)
     with shape (1, n), where the input becomes the single row of the matrix.
-    
+
     This specification focuses on the 1D to 2D case, which is the most common
     use case for ensuring arrays have at least 2 dimensions.
 -/
 
 /-  Specification: atleast_2d converts a 1D vector to a 2D matrix with one row.
-    
+
     This specification includes:
     1. Sanity check: The result has exactly 1 row
     2. Shape property: The result's shape is (1, n) where n is the input length
     3. Value preservation: All elements from the input are preserved in order
     4. Mathematical property: The operation is essentially a row vector representation
-    
+
     Precondition: True (no special preconditions)
     Postcondition: 
     - The result is a matrix with 1 row and n columns
@@ -42,9 +42,7 @@ open Std.Do
 -- </vc-helpers>
 
 def atleast_2d {n : Nat} (arr : Vector Float n) : Id (Vector (Vector Float n) 1) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem atleast_2d_spec {n : Nat} (arr : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -59,6 +57,4 @@ theorem atleast_2d_spec {n : Nat} (arr : Vector Float n) :
                   -- Mathematical property: this is equivalent to creating a 1×n matrix
                   -- where the input vector forms the single row
                   result.get ⟨0, by simp⟩ = row⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,0 +1,60 @@
+/-
+~~~if-not:ruby,python
+Return `1` when *any* odd bit of `x` equals 1; `0` otherwise.
+~~~
+~~~if:ruby,python
+Return `true` when *any* odd bit of `x` equals 1; `false` otherwise.
+~~~
+
+Assume that:
+* `x` is an unsigned, 32-bit integer;
+* the bits are zero-indexed (the least significant bit is position 0)
+
+## Examples
+
+```
+  2  -->  1 (true) because at least one odd bit is 1 (2 = 0b10)
+  5  -->  0 (false) because none of the odd bits are 1 (5 = 0b101)
+170  -->  1 (true) because all of the odd bits are 1 (170 = 0b10101010)
+```
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def any_odd (n : Nat) : Bool := sorry
+
+def pattern := 0xAAAAAAAAAAAAAAAA
+
+theorem any_odd_manual_calc {x : Nat} : 
+  any_odd x = true ↔ ∃ i, x >>> (2*i + 1) &&& 1 = 1 := sorry 
+
+theorem any_odd_pattern {x : Nat} :
+  any_odd x = true ↔ (x &&& pattern) ≠ 0 := sorry
+
+theorem any_odd_zero :
+  any_odd 0 = false := sorry
+
+theorem any_odd_agreement {x : Nat} :
+  any_odd x = (x &&& pattern ≠ 0) := sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval any_odd 2
+
+/-
+info: False
+-/
+-- #guard_msgs in
+-- #eval any_odd 5
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval any_odd 170
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

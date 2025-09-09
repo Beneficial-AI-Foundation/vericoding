@@ -1,0 +1,25 @@
+/* NumPy's boolean False value, used in comparison operations and boolean arrays.
+
+Specification: False_ represents the boolean false value with properties:
+1. It equals false
+2. It is the identity for logical OR
+3. It is the absorbing element for logical AND
+4. It is the negation of True_ */
+
+use vstd::prelude::*;
+
+verus! {
+fn false_() -> (result: bool)
+    ensures 
+        result == false,
+        forall|b: bool| (result || b) == b,
+        forall|b: bool| (result && b) == false,
+        result == !true
+{
+    // impl-start
+    assume(false);
+    false
+    // impl-end
+}
+}
+fn main() {}

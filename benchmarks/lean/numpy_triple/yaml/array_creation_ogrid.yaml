@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def ogrid {n : Nat} (start stop : Float) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem ogrid_spec {n : Nat} (start stop : Float) (h : n > 0) :
       ⦃⌜n > 0⌝⦄
       ogrid start stop
@@ -47,11 +43,7 @@ vc-condition: |-
                   -- Boundary conditions
                   (n > 1 → result.get ⟨0, h⟩ = start ∧ 
                            result.get ⟨n - 1, Nat.sub_lt h (Nat.zero_lt_one)⟩ = stop)⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

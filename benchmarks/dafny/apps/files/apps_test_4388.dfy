@@ -1,0 +1,61 @@
+Given a three-digit string containing only digits '1' and '9', swap each '1' with '9' 
+and each '9' with '1', then return the transformed string with a newline appended.
+
+predicate ValidInput(input: string)
+{
+    |input| >= 3 &&
+    forall i :: 0 <= i < 3 ==> (input[i] == '1' || input[i] == '9')
+}
+
+function SwapDigit(c: char): char
+    requires c == '1' || c == '9'
+{
+    if c == '1' then '9' else '1'
+}
+
+function TransformString(s: string): string
+    requires |s| >= 3
+    requires forall i :: 0 <= i < 3 ==> (s[i] == '1' || s[i] == '9')
+{
+    [SwapDigit(s[0]), SwapDigit(s[1]), SwapDigit(s[2])]
+}
+
+predicate ValidOutput(input: string, result: string)
+    requires ValidInput(input)
+{
+    |result| == 4 &&
+    result[3] == '\n' &&
+    forall i :: 0 <= i < 3 ==> 
+        (input[i] == '1' ==> result[i] == '9') && 
+        (input[i] == '9' ==> result[i] == '1')
+}
+
+method solve(input: string) returns (result: string)
+    requires ValidInput(input)
+    ensures ValidOutput(input, result)
+{
+    var s := input;
+    if |s| > 0 && s[|s|-1] == '\n' {
+        s := s[..|s|-1];
+    }
+
+    var output := "";
+    var i := 0;
+    while i < 3 && i < |s|
+        invariant 0 <= i <= 3
+        invariant i <= |s|
+        invariant |output| == i
+        invariant forall j :: 0 <= j < i ==> 
+            (s[j] == '1' ==> output[j] == '9') && 
+            (s[j] == '9' ==> output[j] == '1')
+    {
+        if s[i] == '1' {
+            output := output + "9";
+        } else {
+            output := output + "1";
+        }
+        i := i + 1;
+    }
+
+    result := output + "\n";
+}

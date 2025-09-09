@@ -22,9 +22,7 @@ def twoSum_precond (nums : List Int) (target : Int) : Prop :=
 -- </vc-helpers>
 
 def twoSum (nums : List Int) (target : Int) (h_precond : twoSum_precond (nums) (target)) : Option (Nat × Nat) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def twoSum_postcond (nums : List Int) (target : Int) (result: Option (Nat × Nat)) (h_precond : twoSum_precond (nums) (target)) : Prop :=
@@ -42,9 +40,7 @@ def twoSum_postcond (nums : List Int) (target : Int) (result: Option (Nat × Nat
 
 theorem twoSum_spec_satisfied (nums: List Int) (target: Int) (h_precond : twoSum_precond (nums) (target)) :
     twoSum_postcond (nums) (target) (twoSum (nums) (target) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

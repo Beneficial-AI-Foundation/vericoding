@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  Consider an array that has no prime numbers, and none of its elements has any prime digit. It would start with: `[1,4,6,8,9,10,14,16,18,..]`. 
+  
+  `12` and `15` are not in the list because `2` and `5` are primes.
+  
+  You will be given an integer `n` and your task will be return the number at that index in the array. 
+  For example:
+  ```
+  solve(0) = 1
+  solve(2) = 6
+  ``` 
+  
+  More examples in the test cases.
+  
+  Good luck!
+  
+  If you like Prime Katas, you will enjoy this Kata: [Simple Prime Streaming](https://www.codewars.com/kata/5a908da30025e995880000e3)
+  -/
+
+vc-preamble: |-
+  def solve (n : Nat) : Nat := sorry
+  
+  def is_composite (n : Nat) : Bool := sorry
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def isDigitIn (d : Char) (n : Nat) : Bool := sorry
+  
+  theorem solve_positive (n : Nat) : 
+    solve n > 0 := sorry
+
+vc-theorems: |-
+  theorem solve_monotonic {n : Nat} (h : n > 0) :
+    solve n > solve (n-1) := sorry
+  
+  theorem solve_deterministic (n : Nat) :
+    solve n = solve n := sorry
+  
+  theorem solve_zero :
+    solve 0 = 1 := sorry
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval solve 0
+  
+  /-
+  info: 6
+  -/
+  -- #guard_msgs in
+  -- #eval solve 2
+  
+  /-
+  info: 44
+  -/
+  -- #guard_msgs in
+  -- #eval solve 10
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

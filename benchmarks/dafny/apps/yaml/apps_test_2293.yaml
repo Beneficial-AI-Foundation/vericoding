@@ -1,0 +1,167 @@
+vc-description: |-
+  Given n stores and m days of shopping, determine if positive integer values can be assigned 
+  to stores such that Dora beats Swiper every day. Dora buys from some stores each day, 
+  Swiper from remaining stores. Dora wins if LCM(her purchases) > LCM(Swiper's purchases).
+
+vc-preamble: |-
+  predicate ValidInput(input: string)
+  {
+      |input| > 0 && input[|input|-1] == '\n' &&
+      var lines := SplitByNewlines(input);
+      |lines| >= 2 && 
+      var firstLineParts := SplitBySpaces(lines[0]);
+      |firstLineParts| >= 2 &&
+      var m := StringToInt(firstLineParts[0]);
+      var n := StringToInt(firstLineParts[1]);
+      m >= 1 && n >= 1 && m + 1 < |lines| &&
+      forall dayIdx :: 1 <= dayIdx <= m ==> 
+          var dayLine := SplitBySpaces(lines[dayIdx]);
+          |dayLine| >= 1 &&
+          var s := StringToInt(dayLine[0]);
+          s >= 1 && s < n && s + 1 <= |dayLine| &&
+          forall storeIdx :: 1 <= storeIdx <= s ==> 
+              var store := StringToInt(dayLine[storeIdx]);
+              1 <= store <= n
+  }
+  
+  function ExtractDoraSet(input: string, dayIndex: int, n: int): set<int>
+      requires |input| > 0
+      requires dayIndex >= 0
+      requires n >= 1
+  {
+      var lines := SplitByNewlines(input);
+      if dayIndex + 1 >= |lines| then {}
+      else
+          var dayLine := SplitBySpaces(lines[dayIndex + 1]);
+          if |dayLine| <= 1 then {}
+          else
+              var s := StringToInt(dayLine[0]);
+              if s + 1 > |dayLine| then {}
+              else
+                  set storeIdx | 1 <= storeIdx <= s && storeIdx < |dayLine| :: StringToInt(dayLine[storeIdx])
+  }
+  
+  function ExtractSwiperSet(input: string, dayIndex: int, n: int): set<int>
+      requires |input| > 0
+      requires dayIndex >= 0
+      requires n >= 1
+  {
+      var allStores := set i {:trigger} | 1 <= i <= n :: i;
+      var doraSet := ExtractDoraSet(input, dayIndex, n);
+      allStores - doraSet
+  }
+  
+  predicate SolutionExists(input: string)
+      requires ValidInput(input)
+  {
+      var lines := SplitByNewlines(input);
+      var firstLineParts := SplitBySpaces(lines[0]);
+      var m := StringToInt(firstLineParts[0]);
+      var n := StringToInt(firstLineParts[1]);
+      forall i, j :: 0 <= i < m && 0 <= j < m ==> 
+          !(ExtractDoraSet(input, i, n) <= ExtractSwiperSet(input, j, n))
+  }
+
+vc-helpers: |-
+  function SplitByNewlines(s: string): seq<string>
+  {
+      if |s| == 0 then []
+      else 
+          var newlinePos := FindChar(s, '\n');
+          if newlinePos == -1 then [s]
+          else if newlinePos >= 0 && newlinePos < |s| then
+              [s[..newlinePos]] + SplitByNewlines(s[newlinePos+1..])
+          else []
+  }
+  
+  function SplitBySpaces(s: string): seq<string>
+  {
+      if |s| == 0 then []
+      else 
+          var spacePos := FindChar(s, ' ');
+          if spacePos == -1 then [s]
+          else if spacePos >= 0 && spacePos < |s| then
+              [s[..spacePos]] + SplitBySpaces(s[spacePos+1..])
+          else []
+  }
+  
+  function FindChar(s: string, c: char): int
+      ensures -1 <= FindChar(s, c) < |s|
+      ensures FindChar(s, c) >= 0 ==> s[FindChar(s, c)] == c
+  {
+      if |s| == 0 then -1
+      else if s[0] == c then 0
+      else 
+          var rest := FindChar(s[1..], c);
+          if rest == -1 then -1 else rest + 1
+  }
+  
+  function StringToInt(s: string): int
+  {
+      if |s| == 0 then 0
+      else if |s| == 1 then (s[0] as int) - ('0' as int)
+      else StringToInt(s[..|s|-1]) * 10 + ((s[|s|-1] as int) - ('0' as int))
+  }
+
+vc-spec: |-
+  method solve(input: string) returns (result: string)
+      requires ValidInput(input)
+      ensures result == "possible" || result == "impossible"
+      ensures result == "possible" <==> SolutionExists(input)
+
+vc-code: |-
+  {
+      var lines := SplitByNewlines(input);
+      var firstLineParts := SplitBySpaces(lines[0]);
+      var m := StringToInt(firstLineParts[0]);
+      var n := StringToInt(firstLineParts[1]);
+  
+      var Dora := new set<int>[m];
+      var Swiper := new set<int>[m];
+      var allStores := set i {:trigger} | 1 <= i <= n :: i;
+  
+      for dayIdx := 0 to m
+          invariant dayIdx <= m
+          invariant forall k :: 0 <= k < dayIdx ==> Dora[k] == ExtractDoraSet(input, k, n)
+          invariant forall k :: 0 <= k < dayIdx ==> Swiper[k] == ExtractSwiperSet(input, k, n)
+      {
+          var tmpCall1 := SplitBySpaces(lines[dayIdx + 1]);
+          var dayLine := tmpCall1;
+          var s := StringToInt(dayLine[0]);
+          var doraStores: set<int> := {};
+  
+          for storeIdx := 1 to s + 1
+              invariant storeIdx <= s + 1
+              invariant storeIdx <= |dayLine|
+              invariant doraStores == set k | 1 <= k < storeIdx && k < |dayLine| :: StringToInt(dayLine[k])
+          {
+              var tmpCall2 := StringToInt(dayLine[storeIdx]);
+              doraStores := doraStores + {tmpCall2};
+          }
+  
+          Dora[dayIdx] := doraStores;
+          Swiper[dayIdx] := allStores - doraStores;
+      }
+  
+      var isPossible := true;
+      for i := 0 to m
+          invariant i <= m
+          invariant isPossible <==> forall ii, jj :: 0 <= ii < i && 0 <= jj < m ==> !(Dora[ii] <= Swiper[jj])
+      {
+          for j := 0 to m
+              invariant j <= m
+              invariant isPossible <==> (forall ii, jj :: 0 <= ii < i && 0 <= jj < m ==> !(Dora[ii] <= Swiper[jj])) &&
+                                      (forall jj :: 0 <= jj < j ==> !(Dora[i] <= Swiper[jj]))
+          {
+              if Dora[i] <= Swiper[j] {
+                  isPossible := false;
+                  break;
+              }
+          }
+          if !isPossible { break; }
+      }
+  
+      result := if isPossible then "possible" else "impossible";
+  }
+
+vc-postamble: |-

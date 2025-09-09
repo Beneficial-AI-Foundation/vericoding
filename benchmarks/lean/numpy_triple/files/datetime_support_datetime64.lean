@@ -51,9 +51,7 @@ structure DateTime64 where
 -- </vc-helpers>
 
 def datetime64 (offset : Int) (unit : TimeUnit) : Id DateTime64 :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem datetime64_spec (offset : Int) (unit : TimeUnit) :
     ⦃⌜True⌝⦄
@@ -72,6 +70,4 @@ theorem datetime64_spec (offset : Int) (unit : TimeUnit) :
                  | TimeUnit.microseconds => True  -- Microseconds can use full Int range
                  | TimeUnit.nanoseconds => True)  -- Nanoseconds can use full Int range
                 ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

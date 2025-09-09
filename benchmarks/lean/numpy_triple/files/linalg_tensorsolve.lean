@@ -46,9 +46,7 @@ open Std.Do
 
 def tensorsolve {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n) : 
     Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem tensorsolve_spec {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n)
     (h_invertible : ∃ a_inv : Vector (Vector Float n) n,
@@ -87,6 +85,4 @@ theorem tensorsolve_spec {n : Nat} (a : Vector (Vector Float n) n) (b : Vector F
               (∀ i : Fin n,
                 x.get i = List.sum (List.ofFn fun j : Fin n => 
                   (a_inv.get i).get j * b.get j)))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

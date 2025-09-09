@@ -1,0 +1,87 @@
+/* Computes the inverse of rfftn. This function performs the inverse N-dimensional discrete Fourier Transform for real input using the Fast Fourier Transform (FFT). For simplicity, we model this as a 1D version of irfftn, taking complex frequency domain input and producing real time-domain output. The function computes the inverse of rfftn, transforming N-dimensional frequency domain data back to real-valued time domain. */
+
+use vstd::prelude::*;
+
+verus! {
+
+/* Complex number type for FFT operations */
+struct Complex {
+    /* Real part */
+    re: f32,
+    /* Imaginary part */  
+    im: f32,
+}
+
+impl Complex {
+    spec fn mul(self, other: Complex) -> Complex {
+        Complex {
+            re: self.re * other.re - self.im * other.im,
+            im: self.re * other.im + self.im * other.re,
+        }
+    }
+
+    spec fn add(self, other: Complex) -> Complex {
+        Complex {
+            re: self.re + other.re,
+            im: self.im + other.im,
+        }
+    }
+
+    spec fn scale(self, s: f32) -> Complex {
+        Complex {
+            re: s * self.re,
+            im: s * self.im,
+        }
+    }
+}
+
+spec fn zero_complex() -> Complex {
+    Complex { re: 0.0, im: 0.0 }
+}
+
+/* Complex exponential function e^(iθ) */
+spec fn cexp(theta: f32) -> Complex {
+    Complex { re: theta.cos(), im: theta.sin() }
+}
+
+/* Convert f32 to Complex */
+spec fn to_complex(x: f32) -> Complex {
+    Complex { re: x, im: 0.0 }
+}
+
+/* Sum of complex numbers over finite indices */
+spec fn complex_sum(n: nat, f: spec_fn(nat) -> Complex) -> Complex 
+    decreases n
+{
+    if n == 0 {
+        zero_complex()
+    } else {
+        f(n - 1).add(complex_sum(n - 1, f))
+    }
+}
+fn irfftn(a: Vec<Complex>, n: usize) -> (result: Vec<f32>)
+    requires 
+        a.len() > 0,
+        n > 0,
+        a[0].im == 0.0,
+    ensures
+        result.len() == n,
+        forall|j: int| 0 <= j < n ==> {
+            let sum = complex_sum(a.len() as nat, |i: nat| 
+                if i < a.len() {
+                    a[i as int].mul(cexp(2.0 * 3.14159265358979323846 * (i as f32) * (j as f32) / (n as f32)))
+                } else {
+                    zero_complex()
+                }
+            );
+            result[j] == (sum.scale(1.0 / (n as f32))).re
+        },
+        (forall|j: int| 0 <= j < n ==> result[j] == a[0].re / (n as f32)),
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

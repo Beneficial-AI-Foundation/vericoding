@@ -24,9 +24,7 @@ def ToArray_precond (xs : List Int) : Prop :=
 -- </vc-helpers>
 
 def ToArray (xs : List Int) (h_precond : ToArray_precond (xs)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def ToArray_postcond (xs : List Int) (result: Array Int) (h_precond : ToArray_precond (xs)) :=
@@ -34,9 +32,7 @@ def ToArray_postcond (xs : List Int) (result: Array Int) (h_precond : ToArray_pr
 
 theorem ToArray_spec_satisfied (xs: List Int) (h_precond : ToArray_precond (xs)) :
     ToArray_postcond (xs) (ToArray (xs) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

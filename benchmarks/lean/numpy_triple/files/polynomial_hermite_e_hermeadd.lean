@@ -13,10 +13,10 @@
 /-  Specification: hermeadd performs component-wise addition of Hermite polynomial coefficients.
     The result has the length of the longer input vector. Elements are added where both vectors
     have coefficients, and remaining coefficients from the longer vector are preserved.
-    
+
     This models the mathematical property that polynomial addition is component-wise:
     (a₀ + a₁x + a₂x² + ...) + (b₀ + b₁x + b₂x² + ...) = (a₀+b₀) + (a₁+b₁)x + (a₂+b₂)x² + ...
-    
+
     Additional mathematical properties:
     - Commutativity: hermeadd c1 c2 = hermeadd c2 c1
     - Associativity: hermeadd (hermeadd c1 c2) c3 = hermeadd c1 (hermeadd c2 c3)
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def hermeadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermeadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -58,6 +56,4 @@ theorem hermeadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
                     let coeff1 := if h1 : i.val < n then c1.get ⟨i.val, h1⟩ else 0
                     let coeff2 := if h2 : i.val < m then c2.get ⟨i.val, h2⟩ else 0
                     result.get i = coeff1 + coeff2 ∧ coeff1 + coeff2 = coeff2 + coeff1)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

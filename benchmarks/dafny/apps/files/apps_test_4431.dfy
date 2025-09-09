@@ -1,0 +1,101 @@
+Given a string of n lowercase Latin letters and k available letters on a broken keyboard,
+count how many substrings of the string can be typed using only the available letters.
+
+predicate ValidInput(n: nat, k: nat, s: string, available: seq<char>)
+{
+    n == |s| &&
+    k == |available| &&
+    forall i, j :: 0 <= i < j < |available| ==> available[i] != available[j]
+}
+
+function CountValidSubstrings(s: string, availableSet: set<char>): nat
+{
+    if |s| == 0 then 0
+    else
+        var segments := GetMaximalValidSegments(s, availableSet, 0);
+        SumSegmentCounts(segments)
+}
+
+function GetMaximalValidSegments(s: string, availableSet: set<char>, startIdx: nat): seq<nat>
+    requires startIdx <= |s|
+    decreases |s| - startIdx
+{
+    if startIdx >= |s| then []
+    else
+        var segmentLength := GetNextSegmentLength(s, availableSet, startIdx);
+        if segmentLength == 0 then
+            GetMaximalValidSegments(s, availableSet, startIdx + 1)
+        else
+            var skipLength := SkipInvalidChars(s, availableSet, startIdx + segmentLength);
+            var nextIdx := startIdx + segmentLength + skipLength;
+            if nextIdx <= |s| then
+                [segmentLength] + GetMaximalValidSegments(s, availableSet, nextIdx)
+            else
+                [segmentLength]
+}
+
+function GetNextSegmentLength(s: string, availableSet: set<char>, startIdx: nat): nat
+    requires startIdx <= |s|
+    ensures GetNextSegmentLength(s, availableSet, startIdx) <= |s| - startIdx
+    decreases |s| - startIdx
+{
+    if startIdx >= |s| || s[startIdx] !in availableSet then 0
+    else 1 + GetNextSegmentLength(s, availableSet, startIdx + 1)
+}
+
+function SkipInvalidChars(s: string, availableSet: set<char>, startIdx: nat): nat
+    requires startIdx <= |s|
+    ensures SkipInvalidChars(s, availableSet, startIdx) <= |s| - startIdx
+    decreases |s| - startIdx
+{
+    if startIdx >= |s| || s[startIdx] in availableSet then 0
+    else 1 + SkipInvalidChars(s, availableSet, startIdx + 1)
+}
+
+function SumSegmentCounts(segments: seq<nat>): nat
+{
+    if |segments| == 0 then 0
+    else segments[0] * (segments[0] + 1) / 2 + SumSegmentCounts(segments[1..])
+}
+
+function CountValidSubstringsProcessed(s: string, availableSet: set<char>, processed: nat, currentLength: nat): nat
+    requires processed <= |s|
+    requires currentLength <= processed
+{
+    var processedPart := s[..processed];
+    var totalInProcessed := CountValidSubstrings(processedPart, availableSet);
+    var currentSegment := if currentLength > 0 then processedPart[processed-currentLength..] else "";
+    var currentContribution := if currentLength > 0 then CountValidSubstrings(currentSegment, availableSet) else 0;
+    if totalInProcessed >= currentContribution then
+        totalInProcessed - currentContribution
+    else
+        0
+}
+
+method solve(n: nat, k: nat, s: string, available: seq<char>) returns (result: nat)
+    requires ValidInput(n, k, s, available)
+    ensures result <= n * (n + 1) / 2
+    ensures result == CountValidSubstrings(s, set c | c in available)
+{
+    var availableSet := set c | c in available;
+
+    var current := 0;
+    var ans := 0;
+
+    for i := 0 to |s|
+        invariant 0 <= current <= i
+        invariant ans >= 0
+        invariant ans + current * (current + 1) / 2 <= i * (i + 1) / 2
+        invariant ans == CountValidSubstringsProcessed(s, availableSet, i, current)
+    {
+        if s[i] in availableSet {
+            current := current + 1;
+        } else {
+            ans := ans + (current * (current + 1)) / 2;
+            current := 0;
+        }
+    }
+
+    ans := ans + (current * (current + 1)) / 2;
+    result := ans;
+}

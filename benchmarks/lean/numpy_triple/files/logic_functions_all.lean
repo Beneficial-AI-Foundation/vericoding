@@ -17,18 +17,18 @@
     - NaN evaluates to True (it is not equal to zero)
     - Positive and negative infinity evaluate to True (they are not equal to zero)
     - Only 0.0 and -0.0 evaluate to False
-    
+
     Mathematical properties:
     - Empty vector returns True (vacuous truth)
     - all is monotonic: if all(a) is True and b has same non-zero elements, then all(b) is True
     - all(a) = not(any(map(λx. x = 0, a))) - equivalent to checking no element is zero
-    
+
     Sanity checks:
     - For empty vector (n = 0), the result is True by vacuous truth
     - For single element [x], result is True iff x ≠ 0
     - For vector with all non-zero elements, result is True
     - For vector with at least one zero element, result is False
-    
+
     Additional properties:
     - Idempotent: all(all(a)) = all(a) (when treating Bool as numeric)
     - Distributive over logical AND: all(a) ∧ all(b) → all(pointwise_and(a, b))
@@ -42,9 +42,7 @@ open Std.Do
 -- </vc-helpers>
 
 def all {n : Nat} (a : Vector Float n) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem all_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -53,6 +51,4 @@ theorem all_spec {n : Nat} (a : Vector Float n) :
                   (n = 0 → result = true) ∧
                   ((∃ i : Fin n, a.get i = 0) → result = false) ∧
                   (∀ i : Fin n, a.get i ≠ 0 → result = true)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

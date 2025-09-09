@@ -12,7 +12,7 @@
 
 /-  Specification: vecdot computes the mathematical dot product as the sum of element-wise products.
     This captures the mathematical definition: a · b = Σ(i=0 to n-1) a_i * b_i.
-    
+
     Key properties:
     - Commutativity: vecdot(x1, x2) = vecdot(x2, x1)
     - Linearity: vecdot(c*x1, x2) = c * vecdot(x1, x2)
@@ -28,15 +28,11 @@ open Std.Do
 -- </vc-helpers>
 
 def vecdot {n : Nat} (x1 x2 : Vector Float n) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem vecdot_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
     vecdot x1 x2
     ⦃⇓result => ⌜result = List.sum (List.zipWith (· * ·) x1.toList x2.toList) ∧
                  result = List.sum (List.zipWith (· * ·) x2.toList x1.toList)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

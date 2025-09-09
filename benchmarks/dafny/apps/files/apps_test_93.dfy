@@ -1,0 +1,130 @@
+Given two 2x2 sliding puzzles with tiles A, B, C and empty cell X,
+determine if there exists a sequence of moves that can make both puzzles
+reach the same configuration. A move slides a tile adjacent to the empty
+cell into the empty cell.
+
+function countNewlines(s: string): int
+{
+    if |s| == 0 then 0
+    else (if s[0] == '\n' then 1 else 0) + countNewlines(s[1..])
+}
+
+predicate ValidInput(input: string)
+{
+    |input| > 0 && '\n' in input && countNewlines(input) >= 3
+}
+
+function extractAndNormalizePuzzle1(input: string): string
+    requires ValidInput(input)
+{
+    var lines := splitLines(input);
+    if |lines| >= 2 then
+        var line1 := lines[0];
+        var line2 := reverse(lines[1]);
+        var combined := line1 + line2;
+        removeFirstX(combined)
+    else
+        ""
+}
+
+function extractAndNormalizePuzzle2(input: string): string
+    requires ValidInput(input)
+{
+    var lines := splitLines(input);
+    if |lines| >= 4 then
+        var line3 := lines[2];
+        var line4 := reverse(lines[3]);
+        var combined := line3 + line4;
+        removeFirstX(combined)
+    else
+        ""
+}
+
+predicate CanReachSameConfig(input: string)
+    requires ValidInput(input)
+{
+    exists rotation :: 0 <= rotation < 4 && 
+        extractAndNormalizePuzzle1(input) == rotatePuzzleLeft(extractAndNormalizePuzzle2(input), rotation)
+}
+
+function splitLines(s: string): seq<string>
+    ensures |splitLines(s)| >= countNewlines(s)
+{
+    splitLinesHelper(s, "", [])
+}
+
+function splitLinesHelper(s: string, current: string, acc: seq<string>): seq<string>
+    ensures |splitLinesHelper(s, current, acc)| >= |acc| + countNewlines(s)
+{
+    if |s| == 0 then 
+        if |current| > 0 then acc + [current] else acc
+    else if s[0] == '\n' then
+        splitLinesHelper(s[1..], "", acc + [current])
+    else
+        splitLinesHelper(s[1..], current + [s[0]], acc)
+}
+
+function reverse(s: string): string
+{
+    if |s| <= 1 then s
+    else reverse(s[1..]) + [s[0]]
+}
+
+function removeFirstX(s: string): string
+{
+    removeFirstXInRange(s, 0, if |s| < 4 then |s| else 4)
+}
+
+function removeFirstXInRange(s: string, index: int, maxIndex: int): string
+    requires 0 <= index <= |s|
+    requires maxIndex <= |s|
+    decreases maxIndex - index
+{
+    if index >= maxIndex || index >= |s| then s
+    else if s[index] == 'X' then s[..index] + s[index+1..]
+    else removeFirstXInRange(s, index + 1, maxIndex)
+}
+
+function rotatePuzzleLeft(puzzle: string, rotation: int): string
+    requires 0 <= rotation < 4
+    decreases rotation
+{
+    if rotation == 0 then puzzle
+    else rotatePuzzleLeft(rotateLeftOnce(puzzle), rotation - 1)
+}
+
+function rotateLeftOnce(puzzle: string): string
+{
+    if |puzzle| == 0 then puzzle
+    else puzzle[1..] + [puzzle[0]]
+}
+
+method solve(input: string) returns (result: string)
+    requires ValidInput(input)
+    ensures result == "YES\n" || result == "NO\n"
+    ensures result == "YES\n" <==> CanReachSameConfig(input)
+{
+    var puzzle1 := extractAndNormalizePuzzle1(input);
+    var puzzle2 := extractAndNormalizePuzzle2(input);
+
+    var rotation := 0;
+    var found := false;
+
+    while rotation < 4 && !found
+        invariant 0 <= rotation <= 4
+        invariant found ==> (exists r :: 0 <= r < rotation && puzzle1 == rotatePuzzleLeft(puzzle2, r))
+        invariant !found ==> (forall r :: 0 <= r < rotation ==> puzzle1 != rotatePuzzleLeft(puzzle2, r))
+        decreases 4 - rotation
+    {
+        if puzzle1 == rotatePuzzleLeft(puzzle2, rotation) {
+            found := true;
+        }
+        rotation := rotation + 1;
+    }
+
+    if found {
+        result := "YES\n";
+    } else {
+        result := "NO\n";
+    }
+}

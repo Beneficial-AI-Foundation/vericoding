@@ -1,0 +1,51 @@
+/-
+When provided with a letter, return its position in the alphabet.
+
+Input :: "a"
+
+Ouput :: "Position of alphabet: 1"
+
+`This kata is meant for beginners. Rank and upvote to bring it out of beta`
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def position (c : Char) : String := sorry
+
+theorem position_uppercase_valid (c : Char) 
+  (h : 'A' ≤ c ∧ c ≤ 'Z') : 
+  let pos := (c.toLower.toNat - 'a'.toNat + 1)
+  1 ≤ pos ∧ pos ≤ 26 := sorry
+
+theorem position_lowercase_valid (c : Char)
+  (h : 'a' ≤ c ∧ c ≤ 'z') :
+  let pos := (c.toNat - 'a'.toNat + 1)
+  1 ≤ pos ∧ pos ≤ 26 := sorry
+
+theorem position_result_format (c : Char)
+  (h : 'A' ≤ c ∧ c ≤ 'Z') :
+  (position c).startsWith "Position of alphabet: " ∧
+  (let num := (position c).dropWhile (· ≠ ':')
+   num.all Char.isDigit) := sorry
+
+/-
+info: 'Position of alphabet: 1'
+-/
+-- #guard_msgs in
+-- #eval position "a"
+
+/-
+info: 'Position of alphabet: 26'
+-/
+-- #guard_msgs in
+-- #eval position "z"
+
+/-
+info: 'Position of alphabet: 5'
+-/
+-- #guard_msgs in
+-- #eval position "E"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def mean {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem mean_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -43,6 +41,4 @@ theorem mean_spec {n : Nat} (a : Vector Float (n + 1)) :
                  -- For constant vectors, mean equals the constant
                  ((∀ i j : Fin (n + 1), a.get i = a.get j) → 
                    result = a.get ⟨0, Nat.zero_lt_succ n⟩)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

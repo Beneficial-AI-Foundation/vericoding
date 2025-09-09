@@ -22,9 +22,7 @@ def lastDigit_precond (n : Nat) : Prop :=
 -- </vc-helpers>
 
 def lastDigit (n : Nat) (h_precond : lastDigit_precond (n)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def lastDigit_postcond (n : Nat) (result: Nat) (h_precond : lastDigit_precond (n)) :=
@@ -33,9 +31,7 @@ def lastDigit_postcond (n : Nat) (result: Nat) (h_precond : lastDigit_precond (n
 
 theorem lastDigit_spec_satisfied (n: Nat) (h_precond : lastDigit_precond (n)) :
     lastDigit_postcond (n) (lastDigit (n) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

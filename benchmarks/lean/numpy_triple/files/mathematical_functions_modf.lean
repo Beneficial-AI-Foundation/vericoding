@@ -8,7 +8,7 @@
 -/
 
 /-  numpy.modf: Return the fractional and integral parts of an array, element-wise.
-    
+
     Returns a tuple (fractional_parts, integral_parts) where both parts
     have the same sign as the input. The fractional and integral parts
     are negative if the given number is negative.
@@ -19,7 +19,7 @@
     2. The fractional part has absolute value less than 1
     3. Both parts have the same sign as the original number (or zero)
     4. The integral part is the truncated integer part
-    
+
     Precondition: True (no special preconditions for modf)
     Postcondition: For all indices i, the fractional and integral parts satisfy mathematical properties
 -/
@@ -32,9 +32,7 @@ open Std.Do
 -- </vc-helpers>
 
 def numpy_modf {n : Nat} (x : Vector Float n) : Id (Vector Float n × Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem numpy_modf_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -52,6 +50,4 @@ theorem numpy_modf_spec {n : Nat} (x : Vector Float n) :
       -- Integral part is truncated towards zero (floor for positive, ceiling for negative)
       (orig ≥ 0 → int = Float.floor orig) ∧
       (orig < 0 → int = -Float.floor (-orig))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

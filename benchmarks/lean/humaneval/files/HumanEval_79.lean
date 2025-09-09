@@ -22,9 +22,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (decimal: Nat) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -45,10 +43,8 @@ spec result
 theorem correctness
 (decimal: Nat)
 : problem_spec implementation decimal
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation 0 = "db0db"
 -- #test implementation 32 = "db100000db"

@@ -1,0 +1,56 @@
+/-
+Third day at your new cryptoanalyst job and you come across your toughest assignment yet. Your job is to implement a simple keyword cipher. A keyword cipher is a type of monoalphabetic substitution where two parameters are provided as such (string, keyword). The string is encrypted by taking the keyword, dropping any letters that appear more than once. The rest of the letters of the alphabet that aren't used are then appended to the end of the keyword.
+
+For example, if your string was "hello" and your keyword was "wednesday", your encryption key would be 'wednsaybcfghijklmopqrtuvxz'.
+
+To encrypt 'hello' you'd substitute as follows,
+```
+              abcdefghijklmnopqrstuvwxyz
+  hello ==>   |||||||||||||||||||||||||| ==> bshhk
+              wednsaybcfghijklmopqrtuvxz
+
+```             
+
+hello encrypts into bshhk with the keyword wednesday. This cipher also uses lower case letters only.
+
+Good Luck.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def keyword_cipher (text : String) (keyword : String) : String := sorry
+
+theorem keyword_cipher_identity (text : String) :
+  keyword_cipher text "abcdefghijklmnopqrstuvwxyz" = text.toLower := sorry
+
+theorem keyword_cipher_length (text : String) (keyword : String) :
+  (keyword_cipher text keyword).length = text.length := sorry
+
+theorem keyword_cipher_lowercase (text : String) (keyword : String) :
+  (keyword_cipher text keyword).toLower = keyword_cipher text keyword := sorry
+
+theorem keyword_cipher_preserves_spaces (text : String) (keyword : String) (i : String.Pos) :
+  text.get i = ' ' →
+  (keyword_cipher text keyword).get i = ' ' := sorry
+
+/-
+info: 'bshhk'
+-/
+-- #guard_msgs in
+-- #eval keyword_cipher "hello" "wednesday"
+
+/-
+info: 'wticljt dljt'
+-/
+-- #guard_msgs in
+-- #eval keyword_cipher "Welcome home" "secret"
+
+/-
+info: 'bshhk'
+-/
+-- #guard_msgs in
+-- #eval keyword_cipher "HELLO" "wednesday"
+
+-- Apps difficulty: introductory
+-- Assurance level: unguarded

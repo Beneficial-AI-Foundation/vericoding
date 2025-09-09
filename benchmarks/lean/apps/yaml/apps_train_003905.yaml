@@ -1,0 +1,75 @@
+vc-description: |-
+  /-
+  The characters of Chima need your help. Their weapons got mixed up! They need you to write a program that accepts the name of a character in Chima then tells which weapon he/she owns.
+  
+  For example: for the character `"Laval"` your program should return the solution `"Laval-Shado Valious"`
+  
+  You must complete the following character-weapon pairs:
+  
+  * Laval-Shado Valious, 
+  * Cragger-Vengdualize, 
+  * Lagravis-Blazeprowlor, 
+  * Crominus-Grandorius, 
+  * Tormak-Tygafyre, 
+  * LiElla-Roarburn. 
+  
+  Return `"Not a character"` for invalid inputs.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def identify_weapon (character : String) : String := sorry
+  
+  theorem identify_weapon_valid_character (character : String) 
+    (h : character = "Laval" ∨ 
+         character = "Cragger" ∨ 
+         character = "Lagravis" ∨
+         character = "Crominus" ∨
+         character = "Tormak" ∨ 
+         character = "LiElla") :
+    identify_weapon character = match character with
+      | "Laval" => "Laval-Shado Valious"
+      | "Cragger" => "Cragger-Vengdualize" 
+      | "Lagravis" => "Lagravis-Blazeprowlor"
+      | "Crominus" => "Crominus-Grandorius"
+      | "Tormak" => "Tormak-Tygafyre"
+      | "LiElla" => "LiElla-Roarburn"
+      | _ => "Not a character" := sorry
+
+vc-theorems: |-
+  theorem identify_weapon_invalid_character (character : String)
+    (h : character ≠ "Laval" ∧
+         character ≠ "Cragger" ∧
+         character ≠ "Lagravis" ∧
+         character ≠ "Crominus" ∧
+         character ≠ "Tormak" ∧
+         character ≠ "LiElla") :
+    identify_weapon character = "Not a character" := sorry
+  
+  /-
+  info: 'Laval-Shado Valious'
+  -/
+  -- #guard_msgs in
+  -- #eval identify_weapon "Laval"
+  
+  /-
+  info: 'Crominus-Grandorius'
+  -/
+  -- #guard_msgs in
+  -- #eval identify_weapon "Crominus"
+  
+  /-
+  info: 'Not a character'
+  -/
+  -- #guard_msgs in
+  -- #eval identify_weapon "G"loona"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

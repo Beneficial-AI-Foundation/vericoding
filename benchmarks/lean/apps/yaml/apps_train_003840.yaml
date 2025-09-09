@@ -1,0 +1,118 @@
+vc-description: |-
+  /-
+  ```if-not:rust
+  Your task is to write a function `toLeetSpeak` that converts a regular english sentence to Leetspeak.
+  ```
+  ```if:rust
+  Your task is to write a function `to_leet_speak` that converts a regular english sentence to Leetspeak.
+  ```
+  
+  More about LeetSpeak You can read at wiki -> https://en.wikipedia.org/wiki/Leet
+  
+  Consider only uppercase letters (no lowercase letters, no numbers) and spaces.
+  
+  For example:
+  
+  ```if-not:rust
+  ~~~
+  toLeetSpeak("LEET") returns "1337"
+  ~~~
+  ```
+  ```if:rust
+  ~~~
+  to_leet_speak("LEET") returns "1337"
+  ~~~
+  ```
+  
+  In this kata we use a simple LeetSpeak dialect. Use this alphabet:
+  
+  ```
+  {
+    A : '@',
+    B : '8',
+    C : '(',
+    D : 'D',
+    E : '3',
+    F : 'F',
+    G : '6',
+    H : '#',
+    I : '!',
+    J : 'J',
+    K : 'K',
+    L : '1',
+    M : 'M',
+    N : 'N',
+    O : '0',
+    P : 'P',
+    Q : 'Q',
+    R : 'R',
+    S : '$',
+    T : '7',
+    U : 'U',
+    V : 'V',
+    W : 'W',
+    X : 'X',
+    Y : 'Y',
+    Z : '2'
+  }
+  ```
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def toLeetSpeak (s : String) : String := sorry
+  
+  theorem toLeetSpeak_preserves_length_uppercase (s : String)
+    (h : ∀ c ∈ s.data, c.isUpper) :
+    (toLeetSpeak s).length = s.length := sorry
+
+vc-theorems: |-
+  theorem toLeetSpeak_result_is_string (s : String)
+    (h : ∀ c ∈ s.data, c.isUpper) :
+    ∃ _r : String, toLeetSpeak s = _r := sorry
+  
+  theorem toLeetSpeak_valid_chars (s : String)
+    (h : ∀ c ∈ s.data, c.isUpper ∨ c = ' ') :
+    ∀ c ∈ (toLeetSpeak s).data,
+      (c.isUpper ∨ 
+       c ∈ ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', 
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ']) := sorry
+  
+  theorem toLeetSpeak_empty :
+    toLeetSpeak "" = "" := sorry
+  
+  theorem toLeetSpeak_known_mappings :
+    toLeetSpeak "A" = "@" ∧
+    toLeetSpeak "E" = "3" ∧
+    toLeetSpeak "I" = "!" ∧
+    toLeetSpeak "O" = "0" ∧
+    toLeetSpeak "S" = "$" ∧
+    toLeetSpeak "T" = "7" := sorry
+  
+  /-
+  info: '1337'
+  -/
+  -- #guard_msgs in
+  -- #eval to_leet_speak "LEET"
+  
+  /-
+  info: '(0D3W@R$'
+  -/
+  -- #guard_msgs in
+  -- #eval to_leet_speak "CODEWARS"
+  
+  /-
+  info: '#3110 W0R1D'
+  -/
+  -- #guard_msgs in
+  -- #eval to_leet_speak "HELLO WORLD"
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

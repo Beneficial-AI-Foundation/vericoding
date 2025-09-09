@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def ix_ {m n : Nat} (seq1 : Vector Int m) (seq2 : Vector Int n) : Id (Vector (Vector Int 1) m × Vector (Vector Int n) 1) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ix_spec {m n : Nat} (seq1 : Vector Int m) (seq2 : Vector Int n) :
     ⦃⌜True⌝⦄
@@ -53,6 +51,4 @@ theorem ix_spec {m n : Nat} (seq1 : Vector Int m) (seq2 : Vector Int n) :
                    (∀ i : Fin m, ∀ j : Fin n, 
                      (result.1.get i).get ⟨0, Nat.zero_lt_one⟩ = seq1.get i ∧
                      (result.2.get ⟨0, Nat.zero_lt_one⟩).get j = seq2.get j)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -35,15 +35,11 @@ vc-helpers: |-
       lo
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def BinarySearch (a : Array Int) (key : Int) (h_precond : BinarySearch_precond (a) (key)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def BinarySearch_postcond (a : Array Int) (key : Int) (result: Nat) (h_precond : BinarySearch_precond (a) (key)) :=
     result ≤ a.size ∧
@@ -52,11 +48,7 @@ vc-condition: |-
   
   theorem BinarySearch_spec_satisfied (a: Array Int) (key: Int) (h_precond : BinarySearch_precond (a) (key)) :
       BinarySearch_postcond (a) (key) (BinarySearch (a) (key) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

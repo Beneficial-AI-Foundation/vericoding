@@ -19,9 +19,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nPY_LOG10E : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nPY_LOG10E_spec :
     ⦃⌜True⌝⦄
@@ -38,6 +36,4 @@ theorem nPY_LOG10E_spec :
       -- The value is less than 1 (since e < 10)
       result < 1.0
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

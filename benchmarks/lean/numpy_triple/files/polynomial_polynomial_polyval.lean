@@ -14,7 +14,7 @@
 
 /-  Specification: polyval evaluates a polynomial with coefficients c at points x.
     The result at each point xᵢ is the polynomial value p(xᵢ) = c₀ + c₁·xᵢ + c₂·xᵢ² + ... + cₙ·xᵢⁿ
-    
+
     Mathematical properties:
     - For coefficient vector c = [c₀, c₁, ..., cₙ], evaluates polynomial p(x) = Σⱼ cⱼ·xʲ
     - Uses Horner's method for numerical stability: p(x) = c₀ + x·(c₁ + x·(c₂ + x·(...)))
@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def polyval {m n : Nat} (x : Vector Float m) (c : Vector Float (n + 1)) : Id (Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem polyval_spec {m n : Nat} (x : Vector Float m) (c : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
@@ -40,6 +38,4 @@ theorem polyval_spec {m n : Nat} (x : Vector Float m) (c : Vector Float (n + 1))
     ⦃⇓result => ⌜∀ i : Fin m, ∃ (poly_val : Float), result.get i = poly_val ∧
                   (n = 0 → poly_val = c.get ⟨0, Nat.zero_lt_succ _⟩) ∧
                   (∀ j : Fin (n + 1), c.get j = 0 → poly_val = 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

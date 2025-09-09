@@ -27,15 +27,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lagsub {n : Nat} (c1 c2 : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lagsub_spec {n : Nat} (c1 c2 : Vector Float n) :
       ⦃⌜True⌝⦄
       lagsub c1 c2
@@ -48,11 +44,7 @@ vc-condition: |-
         -- then result represents polynomial (p - q)(x) in the Laguerre basis
         True -- Placeholder for more complex Laguerre polynomial properties
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -1,0 +1,113 @@
+There are n+1 people (Dima and n friends) standing in a circle. Each person shows 1-5 fingers.
+Starting from Dima, they count around the circle a total number equal to the sum of all fingers.
+The person where counting stops must clean the apartment.
+Given the fingers shown by Dima's n friends, determine how many different ways Dima can show
+his fingers (1-5) such that he does NOT have to clean the apartment.
+
+predicate ValidInput(n: int, friends: seq<int>)
+{
+  n >= 1 && |friends| == n && forall i :: 0 <= i < |friends| ==> 1 <= friends[i] <= 5
+}
+
+function sum_sequence(s: seq<int>): int
+{
+  if |s| == 0 then 0 else s[0] + sum_sequence(s[1..])
+}
+
+predicate DimaCleans(n: int, friends: seq<int>, dima_fingers: int)
+  requires ValidInput(n, friends)
+  requires 1 <= dima_fingers <= 5
+{
+  var total_sum := sum_sequence(friends) + dima_fingers;
+  var total_people := n + 1;
+  total_sum % total_people == 1
+}
+
+function CountValidChoices(n: int, friends: seq<int>): int
+  requires ValidInput(n, friends)
+{
+  CountValidChoicesHelper(n, friends, 1)
+}
+
+function CountValidChoicesHelper(n: int, friends: seq<int>, finger_count: int): int
+  requires ValidInput(n, friends)
+  requires 1 <= finger_count <= 6
+  decreases 6 - finger_count
+{
+  if finger_count > 5 then
+    0
+  else if !DimaCleans(n, friends, finger_count) then
+    1 + CountValidChoicesHelper(n, friends, finger_count + 1)
+  else
+    CountValidChoicesHelper(n, friends, finger_count + 1)
+}
+
+lemma sum_sequence_append(s: seq<int>, x: int)
+  ensures sum_sequence(s + [x]) == sum_sequence(s) + x
+{
+  if |s| == 0 {
+    assert s + [x] == [x];
+    assert sum_sequence([x]) == x + sum_sequence([]) == x + 0 == x;
+    assert sum_sequence(s) + x == 0 + x == x;
+  } else {
+    assert s == [s[0]] + s[1..];
+    assert s + [x] == [s[0]] + (s[1..] + [x]);
+    sum_sequence_append(s[1..], x);
+    assert sum_sequence(s[1..] + [x]) == sum_sequence(s[1..]) + x;
+    assert sum_sequence(s + [x]) == s[0] + sum_sequence(s[1..] + [x]) == s[0] + sum_sequence(s[1..]) + x == sum_sequence(s) + x;
+  }
+}
+
+lemma CountValidChoicesHelper_bounded(n: int, friends: seq<int>, finger_count: int)
+  requires ValidInput(n, friends)
+  requires 1 <= finger_count <= 6
+  ensures 0 <= CountValidChoicesHelper(n, friends, finger_count) <= 6 - finger_count
+  decreases 6 - finger_count
+{
+  if finger_count > 5 {
+    // base case
+  } else {
+    CountValidChoicesHelper_bounded(n, friends, finger_count + 1);
+  }
+}
+
+method solve(n: int, friends: seq<int>) returns (result: int)
+  requires ValidInput(n, friends)
+  ensures 0 <= result <= 5
+  ensures result == CountValidChoices(n, friends)
+{
+  var total_people := n + 1;
+  var friends_sum := 0;
+
+  // Calculate sum of friends' fingers
+  var i := 0;
+  while i < |friends|
+    invariant 0 <= i <= |friends|
+    invariant friends_sum == sum_sequence(friends[..i])
+  {
+    assert friends[..i+1] == friends[..i] + [friends[i]];
+    sum_sequence_append(friends[..i], friends[i]);
+    assert sum_sequence(friends[..i+1]) == sum_sequence(friends[..i]) + friends[i];
+    friends_sum := friends_sum + friends[i];
+    i := i + 1;
+  }
+
+  var valid_choices := 0;
+  var dima_fingers := 1;
+  while dima_fingers <= 5
+    invariant 1 <= dima_fingers <= 6
+    invariant 0 <= valid_choices <= 6 - dima_fingers
+    invariant valid_choices + CountValidChoicesHelper(n, friends, dima_fingers) == CountValidChoices(n, friends)
+    invariant friends_sum == sum_sequence(friends)
+  {
+    CountValidChoicesHelper_bounded(n, friends, dima_fingers);
+    var total_sum := friends_sum + dima_fingers;
+    if total_sum % total_people != 1 {
+      valid_choices := valid_choices + 1;
+    }
+    dima_fingers := dima_fingers + 1;
+  }
+
+  CountValidChoicesHelper_bounded(n, friends, 1);
+  result := valid_choices;
+}

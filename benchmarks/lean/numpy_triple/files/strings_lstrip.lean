@@ -14,7 +14,7 @@
     depends on the chars parameter:
     - If chars is None, whitespace characters are removed from the beginning
     - If chars is provided, any combination of those characters is removed from the beginning
-    
+
     The function preserves the shape of the input array and handles empty strings
     appropriately by returning them unchanged.
 
@@ -56,9 +56,7 @@ open Std.Do
 -- </vc-helpers>
 
 def lstrip {n : Nat} (a : Vector String n) (chars : Option String) : Id (Vector String n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem lstrip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
     ⦃⌜True⌝⦄
@@ -91,6 +89,4 @@ theorem lstrip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
       -- Idempotent-like property: applying lstrip to result with same chars removes nothing
       (chars.isSome → 
         ∀ c : Char, result.get? ⟨0⟩ = some c → c ∉ chars.get!.toList)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

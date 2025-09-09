@@ -38,15 +38,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def pinv {m n : Nat} (a : Vector (Vector Float n) m) : Id (Vector (Vector Float m) n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem pinv_spec {m n : Nat} (a : Vector (Vector Float n) m) :
       ⦃⌜True⌝⦄
       pinv a
@@ -59,11 +55,7 @@ vc-condition: |-
         ((∀ i : Fin m, ∀ j : Fin n, (a.get i).get j = 0.0) → 
          (∀ i : Fin n, ∀ j : Fin m, (a_pinv.get i).get j = 0.0))
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

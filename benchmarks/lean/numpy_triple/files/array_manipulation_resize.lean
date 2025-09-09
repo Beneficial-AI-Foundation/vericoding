@@ -17,7 +17,7 @@
 /-  Specification: resize creates a new vector of the specified size by either:
     1. Taking the first `new_size` elements if `new_size ≤ n`
     2. Repeating the original elements cyclically if `new_size > n` and `n > 0`
-    
+
     The function handles three cases:
     - Shrinking: new_size < n → takes first new_size elements
     - Same size: new_size = n → returns identical vector
@@ -31,9 +31,7 @@ open Std.Do
 -- </vc-helpers>
 
 def resize {n : Nat} {α : Type} (a : Vector α n) (new_size : Nat) : Id (Vector α new_size) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem resize_spec {n : Nat} {α : Type} (a : Vector α n) (new_size : Nat) :
     ⦃⌜True⌝⦄
@@ -45,6 +43,4 @@ theorem resize_spec {n : Nat} {α : Type} (a : Vector α n) (new_size : Nat) :
           result.get i = a.get ⟨i.val % n, Nat.mod_lt i.val hn⟩
         else
           True)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

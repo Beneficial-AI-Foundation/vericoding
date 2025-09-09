@@ -1,0 +1,129 @@
+Given two lists of T-shirt sizes (previous year and current year), find the minimum number 
+of character replacements needed to transform the previous year's list into the current year's 
+list. Each replacement changes one character in one T-shirt size to any uppercase Latin letter. 
+The lists are unordered (only the frequency of each size matters).
+
+predicate validInput(stdin_input: string)
+{
+    var lines := splitLines(stdin_input);
+    |lines| >= 1 && 
+    (var n := parseInteger(lines[0]);
+     n >= 0 && |lines| >= 2*n + 1 && 
+     (forall i :: 1 <= i <= 2*n ==> i < |lines| && |lines[i]| > 0))
+}
+
+function computeMismatches(stdin_input: string): nat
+    requires validInput(stdin_input)
+    ensures computeMismatches(stdin_input) <= parseInteger(splitLines(stdin_input)[0])
+{
+    var lines := splitLines(stdin_input);
+    var n := parseInteger(lines[0]);
+    if n == 0 then 0
+    else
+        var prevSizes := countSizes(lines[1..n+1]);
+        var currentSizes := lines[n+1..2*n+1];
+        countUnmatchedSizes(prevSizes, currentSizes)
+}
+
+function countSizes(sizes: seq<string>): map<string, nat>
+    ensures forall size :: size in countSizes(sizes) ==> countSizes(sizes)[size] > 0
+    ensures forall size :: size !in countSizes(sizes) <==> (forall i :: 0 <= i < |sizes| ==> sizes[i] != size)
+    decreases |sizes|
+{
+    if |sizes| == 0 then map[]
+    else 
+        var rest := countSizes(sizes[1..]);
+        var first := sizes[0];
+        if first in rest then rest[first := rest[first] + 1]
+        else rest[first := 1]
+}
+
+function countUnmatchedSizes(prevSizes: map<string, nat>, currentSizes: seq<string>): nat
+    ensures countUnmatchedSizes(prevSizes, currentSizes) <= |currentSizes|
+{
+    countUnmatchedSizesHelper(prevSizes, currentSizes, 0)
+}
+
+function countUnmatchedSizesHelper(prevSizes: map<string, nat>, currentSizes: seq<string>, index: nat): nat
+    requires index <= |currentSizes|
+    ensures countUnmatchedSizesHelper(prevSizes, currentSizes, index) <= |currentSizes| - index
+    decreases |currentSizes| - index
+{
+    if index == |currentSizes| then 0
+    else
+        var size := currentSizes[index];
+        var newPrevSizes := if size in prevSizes && prevSizes[size] > 0
+                           then prevSizes[size := prevSizes[size] - 1]
+                           else prevSizes;
+        var mismatch := if size in prevSizes && prevSizes[size] > 0 then 0 else 1;
+        mismatch + countUnmatchedSizesHelper(newPrevSizes, currentSizes, index + 1)
+}
+
+function splitLines(s: string): seq<string>
+    ensures |splitLines(s)| >= 1
+{
+    if |s| == 0 then [""]
+    else splitLinesHelper(s, 0, [""])
+}
+
+function splitLinesHelper(s: string, index: nat, acc: seq<string>): seq<string>
+    requires index <= |s|
+    requires |acc| >= 1
+    ensures |splitLinesHelper(s, index, acc)| >= |acc|
+    decreases |s| - index
+{
+    if index == |s| then acc
+    else if s[index] == '\n' then
+        splitLinesHelper(s, index + 1, acc + [""])
+    else
+        var lastIndex := |acc| - 1;
+        var newAcc := acc[lastIndex := acc[lastIndex] + [s[index]]];
+        splitLinesHelper(s, index + 1, newAcc)
+}
+
+function parseInteger(s: string): int
+{
+    parseIntegerHelper(s, 0, 0)
+}
+
+function parseIntegerHelper(s: string, index: nat, acc: int): int
+    requires index <= |s|
+    decreases |s| - index
+{
+    if index == |s| then acc
+    else if '0' <= s[index] <= '9' then
+        parseIntegerHelper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
+    else acc
+}
+
+function intToString(i: int): string
+{
+    if i == 0 then "0"
+    else if i > 0 then intToStringHelper(i, "")
+    else "-" + intToStringHelper(-i, "")
+}
+
+function intToStringHelper(i: int, acc: string): string
+    requires i >= 0
+    decreases i
+{
+    if i == 0 then acc
+    else intToStringHelper(i / 10, [('0' as int + i % 10) as char] + acc)
+}
+
+method solve(stdin_input: string) returns (result: string)
+    requires |stdin_input| > 0
+    requires validInput(stdin_input)
+    ensures |result| > 0
+    ensures result[|result|-1] == '\n' || (|result| > 1 && result[|result|-2..] == "\r\n")
+    ensures exists mismatches: nat :: result == intToString(mismatches) + "\n" && 
+            mismatches == computeMismatches(stdin_input)
+    ensures (var lines := splitLines(stdin_input);
+             var n := parseInteger(lines[0]);
+             n >= 0 ==> (var mismatches := computeMismatches(stdin_input);
+                        mismatches <= n &&
+                        result == intToString(mismatches) + "\n"))
+{
+    var mismatches := computeMismatches(stdin_input);
+    result := intToString(mismatches) + "\n";
+}

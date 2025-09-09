@@ -24,9 +24,7 @@ open Std.Do
 -- </vc-helpers>
 
 def False_ : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem False__spec :
     ⦃⌜True⌝⦄
@@ -35,6 +33,4 @@ theorem False__spec :
                  (∀ b : Bool, result || b = b) ∧
                  (∀ b : Bool, result && b = false) ∧
                  result = !true⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

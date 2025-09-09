@@ -24,9 +24,7 @@ def hasCommonElement_precond (a : Array Int) (b : Array Int) : Prop :=
 -- </vc-helpers>
 
 def hasCommonElement (a : Array Int) (b : Array Int) (h_precond : hasCommonElement_precond (a) (b)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def hasCommonElement_postcond (a : Array Int) (b : Array Int) (result: Bool) (h_precond : hasCommonElement_precond (a) (b)) :=
@@ -34,9 +32,7 @@ def hasCommonElement_postcond (a : Array Int) (b : Array Int) (result: Bool) (h_
 
 theorem hasCommonElement_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : hasCommonElement_precond (a) (b)) :
     hasCommonElement_postcond (a) (b) (hasCommonElement (a) (b) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

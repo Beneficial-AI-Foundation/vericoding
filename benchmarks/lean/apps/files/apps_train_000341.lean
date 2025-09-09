@@ -1,0 +1,78 @@
+/-
+Given an array A of positive integers, call a (contiguous, not necessarily distinct) subarray of A good if the number of different integers in that subarray is exactly K.
+(For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.)
+Return the number of good subarrays of A.
+
+Example 1:
+Input: A = [1,2,1,2,3], K = 2
+Output: 7
+Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2].
+
+Example 2:
+Input: A = [1,2,1,3,4], K = 3
+Output: 3
+Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].
+
+Note:
+
+1 <= A.length <= 20000
+1 <= A[i] <= A.length
+1 <= K <= A.length
+-/
+
+def List.unique {α} [BEq α] : List α → List α 
+  | [] => []
+  | h::t => if t.contains h then unique t else h :: unique t
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def subarraysWithKDistinct (A : List Nat) (K : Nat) : Nat :=
+  sorry
+
+theorem k_validity {A : List Nat} {K : Nat}
+  (hA : A.length > 0)
+  (hAelems : ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100)
+  (hK : 1 ≤ K ∧ K ≤ 50)
+  (hKvalid : K ≤ (A.unique).length) :
+  0 ≤ subarraysWithKDistinct A K :=
+  sorry
+
+theorem k_one {A : List Nat}
+  (hA : A.length > 0) 
+  (hAelems : ∀ x ∈ A, 1 ≤ x ∧ x ≤ 10) :
+  subarraysWithKDistinct A 1 ≥ A.length :=
+  sorry
+
+theorem k_equals_distinct {A : List Nat}
+  (hA : A.length > 0)
+  (hAelems : ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100) :
+  subarraysWithKDistinct A (A.unique).length ≥ 1 :=
+  sorry
+
+theorem edge_cases :
+  subarraysWithKDistinct [1] 1 = 1 ∧ 
+  subarraysWithKDistinct [1, 1] 1 = 3 ∧
+  subarraysWithKDistinct [1, 2, 3] 3 = 1 :=
+  sorry
+
+/-
+info: 7
+-/
+-- #guard_msgs in
+-- #eval subarraysWithKDistinct [1, 2, 1, 2, 3] 2
+
+/-
+info: 3
+-/
+-- #guard_msgs in
+-- #eval subarraysWithKDistinct [1, 2, 1, 3, 4] 3
+
+/-
+info: 2
+-/
+-- #guard_msgs in
+-- #eval subarraysWithKDistinct [1, 2, 3] 2
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

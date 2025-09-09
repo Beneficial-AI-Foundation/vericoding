@@ -1,0 +1,90 @@
+vc-description: |-
+  Given a bus with n rows of seats, where each row contains 4 seats arranged as two pairs 
+  separated by a walkway (format: XX|XX), find two adjacent empty seats in the same pair 
+  for two passengers. Each seat is either 'O' (empty) or 'X' (occupied). If such a pair 
+  exists, mark it with "++" and output "YES" with the modified configuration. Otherwise, 
+  output "NO".
+
+vc-preamble: |-
+  predicate ValidInput(n: int, rows: seq<string>)
+  {
+      n >= 0 && |rows| == n && forall i :: 0 <= i < |rows| ==> |rows[i]| == 5
+  }
+  
+  predicate HasAdjacentEmptySeats(rows: seq<string>)
+  {
+      exists i :: 0 <= i < |rows| && 
+          ((|rows[i]| >= 2 && rows[i][0] == 'O' && rows[i][1] == 'O') ||
+           (|rows[i]| >= 5 && rows[i][3] == 'O' && rows[i][4] == 'O'))
+  }
+  
+  predicate NoAdjacentEmptySeats(rows: seq<string>)
+  {
+      forall i :: 0 <= i < |rows| ==> 
+          !((|rows[i]| >= 2 && rows[i][0] == 'O' && rows[i][1] == 'O') ||
+            (|rows[i]| >= 5 && rows[i][3] == 'O' && rows[i][4] == 'O'))
+  }
+  
+  predicate ValidSolution(result: string, rows: seq<string>)
+  {
+      result != "NO" ==> |result| >= 4
+  }
+
+vc-helpers: |-
+  function string_join(strings: seq<string>, separator: string): string
+      decreases |strings|
+  {
+      if |strings| == 0 then ""
+      else if |strings| == 1 then strings[0]
+      else strings[0] + separator + string_join(strings[1..], separator)
+  }
+
+vc-spec: |-
+  method solve(n: int, rows: seq<string>) returns (result: string)
+      requires ValidInput(n, rows)
+      ensures result == "NO" || |result| >= 4
+      ensures result == "NO" ==> NoAdjacentEmptySeats(rows)
+      ensures result != "NO" ==> HasAdjacentEmptySeats(rows)
+      ensures ValidSolution(result, rows)
+
+vc-code: |-
+  {
+      var modifiedRows := rows;
+      var found := false;
+      var foundIndex := 0;
+      var i := 0;
+  
+      while i < n && !found
+          invariant 0 <= i <= n
+          invariant |modifiedRows| == |rows|
+          invariant !found ==> (forall j :: 0 <= j < i ==> 
+              !((|rows[j]| >= 2 && rows[j][0] == 'O' && rows[j][1] == 'O') ||
+                (|rows[j]| >= 5 && rows[j][3] == 'O' && rows[j][4] == 'O')))
+          invariant found ==> HasAdjacentEmptySeats(rows)
+      {
+          if i < |rows| {
+              var row := rows[i];
+              if |row| >= 2 && row[0] == 'O' && row[1] == 'O' {
+                  var newRow := "++" + row[2..];
+                  modifiedRows := modifiedRows[i := newRow];
+                  found := true;
+                  foundIndex := i;
+              }
+              else if |row| >= 5 && row[3] == 'O' && row[4] == 'O' {
+                  var newRow := row[..3] + "++";
+                  modifiedRows := modifiedRows[i := newRow];
+                  found := true;
+                  foundIndex := i;
+              }
+          }
+          i := i + 1;
+      }
+  
+      if found {
+          result := "YES\n" + string_join(modifiedRows, "\n");
+      } else {
+          result := "NO";
+      }
+  }
+
+vc-postamble: |-

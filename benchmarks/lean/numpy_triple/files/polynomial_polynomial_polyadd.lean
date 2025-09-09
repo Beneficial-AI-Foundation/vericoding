@@ -9,7 +9,7 @@
 -/
 
 /-  Add one polynomial to another.
-    
+
     Given two polynomials represented as coefficient vectors (from lowest to highest degree),
     returns their sum. The result has length equal to the maximum of the input lengths,
     with shorter polynomials implicitly padded with zeros. -/
@@ -19,7 +19,7 @@
     - If i < min(n, m): result[i] = c1[i] + c2[i]
     - If min(n, m) ≤ i < n: result[i] = c1[i]
     - If min(n, m) ≤ i < m: result[i] = c2[i]
-    
+
     Additionally, polyadd satisfies mathematical properties:
     - Commutativity: polyadd c1 c2 = polyadd c2 c1
     - Zero identity: polyadd c 0 = c and polyadd 0 c = c
@@ -36,9 +36,7 @@ open Std.Do
 -- </vc-helpers>
 
 def polyadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem polyadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -53,6 +51,4 @@ theorem polyadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
             c2.get ⟨i.val, h3.2⟩
           else
             0⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -48,9 +48,7 @@ def getFirstWithFreq (xs : List Int) (candidates : List Int) : Int :=
 -- </vc-helpers>
 
 def mostFrequent (xs : List Int) (h_precond : mostFrequent_precond (xs)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def mostFrequent_postcond (xs : List Int) (result: Int) (h_precond : mostFrequent_precond (xs)) : Prop :=
@@ -61,9 +59,7 @@ def mostFrequent_postcond (xs : List Int) (result: Int) (h_precond : mostFrequen
 
 theorem mostFrequent_spec_satisfied (xs: List Int) (h_precond : mostFrequent_precond (xs)) :
     mostFrequent_postcond (xs) (mostFrequent (xs) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def matrixTranspose {m n : Nat} (mat : Vector (Vector Float n) m) : Id (Vector (Vector Float m) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem matrixTranspose_spec {m n : Nat} (mat : Vector (Vector Float n) m) :
     ⦃⌜True⌝⦄
@@ -45,6 +43,4 @@ theorem matrixTranspose_spec {m n : Nat} (mat : Vector (Vector Float n) m) :
                  (∀ mat2 : Vector (Vector Float n) m,
                    (∀ i : Fin m, ∀ j : Fin n, (mat.get i).get j = (mat2.get i).get j) →
                    (∀ i : Fin n, ∀ j : Fin m, (result.get i).get j = ((matrixTranspose mat2).get i).get j))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

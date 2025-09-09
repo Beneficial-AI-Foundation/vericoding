@@ -15,9 +15,7 @@ open Std.Do
 -- </vc-helpers>
 
 def argpartition {n : Nat} (a : Vector Float n) (kth : Fin n) : Id (Vector (Fin n) n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem argpartition_spec {n : Nat} (a : Vector Float n) (kth : Fin n) :
     ⦃⌜True⌝⦄
@@ -31,6 +29,4 @@ theorem argpartition_spec {n : Nat} (a : Vector Float n) (kth : Fin n) :
       -- Partition property: all elements after kth position are ≥ kth element
       (∀ i : Fin n, kth < i → a.get (indices.get kth) ≤ a.get (indices.get i))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -1,8 +1,8 @@
 /-  numpy.promote_types: Returns the data type with the smallest size and smallest scalar kind
     to which both type1 and type2 may be safely cast.
-    
+
     This function is symmetric but rarely associative. It returns a "canonical" dtype.
-    
+
     Examples from NumPy documentation:
     - promote_types('f4', 'f8') = 'f8' (float64)
     - promote_types('i8', 'f4') = 'f8' (float64)
@@ -10,7 +10,7 @@
 -/
 
 /-  Specification: promote_types returns the smallest safe common type for two dtypes.
-    
+
     Key properties based on NumPy's type promotion rules:
     1. Symmetry: promote_types(a, b) = promote_types(b, a)
     2. Safety: Both input types can be safely cast to the result type
@@ -104,9 +104,7 @@ def is_complex (dt : NumpyDType) : Bool :=
 -- </vc-helpers>
 
 def promote_types (type1 type2 : NumpyDType) : Id NumpyDType :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem promote_types_spec (type1 type2 : NumpyDType) :
     ⦃⌜True⌝⦄
@@ -114,54 +112,52 @@ theorem promote_types_spec (type1 type2 : NumpyDType) :
     ⦃⇓result => ⌜
       -- Symmetry property - function is commutative
       (promote_types type1 type2 = promote_types type2 type1) ∧
-      
+
       -- Type promotion hierarchy rules
       -- If either input is complex, result must be complex
       (is_complex type1 ∨ is_complex type2) → is_complex result ∧
-      
+
       -- If either input is float (and not complex), result is float or complex
       (is_float type1 ∨ is_float type2) → (is_float result ∨ is_complex result) ∧
-      
+
       -- Size constraint: result size >= max of input sizes
       (dtype_size result ≥ max (dtype_size type1) (dtype_size type2)) ∧
-      
+
       -- Promotion hierarchy: result rank >= max of input ranks
       (promotion_hierarchy result ≥ max (promotion_hierarchy type1) (promotion_hierarchy type2)) ∧
-      
+
       -- Safety constraints: both input types can be safely cast to result
       -- Complex types can hold any numeric value
       (is_complex result →
         (is_complex type1 ∨ is_float type1 ∨ is_signed_integer type1 ∨ is_unsigned_integer type1) ∧
         (is_complex type2 ∨ is_float type2 ∨ is_signed_integer type2 ∨ is_unsigned_integer type2)) ∧
-      
+
       -- Float types can hold integers and smaller floats
       (is_float result ∧ ¬is_complex result →
         (¬is_complex type1 ∧ ¬is_complex type2) ∧
         (dtype_size result ≥ dtype_size type1 ∨ ¬is_float type1) ∧
         (dtype_size result ≥ dtype_size type2 ∨ ¬is_float type2)) ∧
-      
+
       -- Specific promotion rules for common cases from NumPy documentation
       -- Integer + Float → Float with sufficient precision (like 'i8' + 'f4' → 'f8')
       ((is_signed_integer type1 ∨ is_unsigned_integer type1) ∧ is_float type2 →
         is_float result ∧ dtype_size result ≥ dtype_size type2) ∧
-      
+
       -- Float + Integer → Float with sufficient precision  
       (is_float type1 ∧ (is_signed_integer type2 ∨ is_unsigned_integer type2) →
         is_float result ∧ dtype_size result ≥ dtype_size type1) ∧
-        
+
       -- Complex + any non-complex → Complex with sufficient precision
       (is_complex type1 ∧ ¬is_complex type2 →
         is_complex result ∧ dtype_size result ≥ dtype_size type1) ∧
       (is_complex type2 ∧ ¬is_complex type1 →
         is_complex result ∧ dtype_size result ≥ dtype_size type2) ∧
-        
+
       -- Same types promote to themselves (reflexivity)
       (type1 = type2 → result = type1) ∧
-      
+
       -- Float precision promotion (like 'f4' + 'f8' → 'f8')
       (is_float type1 ∧ is_float type2 →
         is_float result ∧ dtype_size result ≥ max (dtype_size type1) (dtype_size type2))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

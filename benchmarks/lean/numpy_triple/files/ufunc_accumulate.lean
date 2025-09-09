@@ -61,9 +61,7 @@ open Std.Do
 -- </vc-helpers>
 
 def accumulate {n : Nat} (op : Float → Float → Float) (a : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem accumulate_spec {n : Nat} (op : Float → Float → Float) (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -79,6 +77,4 @@ theorem accumulate_spec {n : Nat} (op : Float → Float → Float) (a : Vector F
       -- Cumulative accumulation property: each element is the left-associative fold of all previous elements
       (n > 0 → ∀ i : Fin n, result.get i = (a.toList.take (i.val + 1)).tail.foldl op (a.get ⟨0, sorry⟩))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

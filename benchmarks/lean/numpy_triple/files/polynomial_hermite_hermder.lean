@@ -17,9 +17,7 @@ open Std.Do
 
 def hermder {n : Nat} (c : Vector Float n) (m : Nat := 1) (scl : Float := 1.0) : 
     Id (Vector Float (n - min m n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem hermder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) :
     ⦃⌜True⌝⦄
@@ -48,6 +46,4 @@ theorem hermder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) :
             scl * scl * (2.0 * (i.val + 2 : Nat).toFloat) * (2.0 * (i.val + 1 : Nat).toFloat) * 
             c.get ⟨i.val + 2, sorry⟩)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

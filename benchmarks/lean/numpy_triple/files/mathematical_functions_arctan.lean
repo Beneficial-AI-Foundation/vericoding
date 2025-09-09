@@ -21,9 +21,7 @@ open Std.Do
 -- </vc-helpers>
 
 def arctan {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem arctan_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -49,6 +47,4 @@ theorem arctan_spec {n : Nat} (x : Vector Float n) :
                   (Float.abs (x.get i - 1.0) < 1e-10 → Float.abs (result.get i - 0.7854) < 1e-6) ∧
                   (Float.abs (x.get i - (-1.0)) < 1e-10 → Float.abs (result.get i - (-0.7854)) < 1e-6)
                   ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

@@ -37,9 +37,7 @@ structure Complex where
 -- </vc-helpers>
 
 def isreal {n : Nat} (x : Vector Complex n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isreal_spec {n : Nat} (x : Vector Complex n) :
     ⦃⌜True⌝⦄
@@ -55,6 +53,4 @@ theorem isreal_spec {n : Nat} (x : Vector Complex n) :
                  (∀ i : Fin n, result.get i = ¬((x.get i).imag ≠ 0.0)) ∧
                  -- Consistency with mathematical definition of real numbers
                  (∀ i : Fin n, result.get i = true ↔ (x.get i).imag = 0.0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

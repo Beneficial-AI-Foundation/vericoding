@@ -30,14 +30,10 @@ open Std.Do
 -- </vc-helpers>
 
 def array2string {n : Nat} (arr : Vector Float n) (separator : String := " ") : Id String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem array2string_spec {n : Nat} (arr : Vector Float n) (separator : String) :
     ⦃⌜True⌝⦄
     array2string arr separator
     ⦃⇓result => ⌜result ≠ "" ∧ result.startsWith "[" ∧ result.endsWith "]"⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

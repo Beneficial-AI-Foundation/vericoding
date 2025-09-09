@@ -37,9 +37,7 @@ def digit_sum (n : Int) : Int :=
 -- </vc-helpers>
 
 def implementation (nums: List Int) : List Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -65,10 +63,8 @@ spec result
 
 theorem correctness
 (nums: List Int)
-: problem_spec implementation nums :=
--- <vc-proof>
+: problem_spec implementation nums := by
   sorry
--- </vc-proof>
 
 -- #test implementation [1, 11, -1, -11, -12] = [-1, -11, 1, -12, 11]
 -- #test implementation [] = []

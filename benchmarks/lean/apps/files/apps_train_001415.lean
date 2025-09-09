@@ -1,0 +1,68 @@
+/-
+Vietnamese and Bengali as well.
+An $N$-bonacci sequence is an infinite sequence $F_1, F_2, \ldots$ such that for each integer $i > N$, $F_i$ is calculated as $f(F_{i-1}, F_{i-2}, \ldots, F_{i-N})$, where $f$ is some function. A XOR $N$-bonacci sequence is an $N$-bonacci sequence for which $f(F_{i-1}, F_{i-2}, \ldots, F_{i-N}) = F_{i-1} \oplus F_{i−2} \oplus \ldots \oplus F_{i−N}$, where $\oplus$ denotes the bitwise XOR operation.
+Recently, Chef has found an interesting sequence $S_1, S_2, \ldots$, which is obtained from prefix XORs of a XOR $N$-bonacci sequence $F_1, F_2, \ldots$. Formally, for each positive integer $i$, $S_i = F_1 \oplus F_2 \oplus \ldots \oplus F_i$. You are given the first $N$ elements of the sequence $F$, which uniquely determine the entire sequence $S$.
+You should answer $Q$ queries. In each query, you are given an index $k$ and you should calculate $S_k$. It is guaranteed that in each query, $S_k$ does not exceed $10^{50}$.
+
+-----Input-----
+- The first line of the input contains two space-separated integers $N$ and $Q$.
+- The second line contains $N$ space-separated integers $F_1, F_2, \ldots, F_N$.
+- The following $Q$ lines describe queries. Each of these lines contains a single integer $k$.
+
+-----Output-----
+For each query, print a single line containing one integer $S_k$.
+
+-----Constraints-----
+- $1 \le N, Q \le 10^5$
+- $0 \le F_i \le 10^9$ for each $i$ such that $1 \le i \le N$
+- $1 \le k \le 10^9$
+
+-----Example Input-----
+3 4
+0 1 2
+7
+2
+5
+1000000000
+
+-----Example Output-----
+3
+1
+0
+0
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def find_divisible_numbers (start final divisor : Int) : Int × Int :=
+  sorry
+
+theorem find_divisible_numbers_properties
+  (start length divisor : Int)
+  (h1 : start ≥ -1000) (h2 : start ≤ 1000)
+  (h3 : length ≥ 0) (h4 : length ≤ 1000) 
+  (h5 : divisor > 0) (h6 : divisor ≤ 100) : 
+  let final := start + length;
+  let result := find_divisible_numbers start final divisor;
+  let count := result.1;
+  let last := result.2;
+  count ≥ 0 ∧
+  (count > 0 → 
+    last % divisor = 0 ∧ 
+    start ≤ last ∧ 
+    last ≤ final) ∧
+  (count = 0 → last = 0) ∧
+  count = ((List.range (Int.toNat (final - start + 1))).map Int.ofNat |>.filter (fun x => (x + start) % divisor = 0)).length ∧
+  (count > 0 → ∀ x, last < x → x ≤ final → x % divisor ≠ 0) :=
+  sorry
+
+theorem empty_range_properties
+  (start divisor : Int)
+  (h1 : start ≥ -100) (h2 : start ≤ 100)
+  (h3 : divisor > 0) (h4 : divisor ≤ 10) :
+  find_divisible_numbers start (start - 1) divisor = (0, 0) :=
+  sorry
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

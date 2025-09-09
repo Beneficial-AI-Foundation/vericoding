@@ -20,9 +20,7 @@ open Std.Do
 -- </vc-helpers>
 
 def leg2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem leg2poly_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -37,6 +35,4 @@ theorem leg2poly_spec {n : Nat} (c : Vector Float n) :
       -- The transformation is well-defined and preserves polynomial degree
       (n > 0 → ∃ lead : Float, result.get ⟨n-1, sorry⟩ = lead)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

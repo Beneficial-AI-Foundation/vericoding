@@ -1,0 +1,95 @@
+/-
+In a regular table tennis match, the player who serves changes every time after 2 points are scored, regardless of which players scored them.
+Chef and Cook are playing a different match — they decided that the player who serves would change every time after $K$ points are scored instead (again regardless of which players scored them). When the game starts, it's Chef's turn to serve.
+You are given the current number of points scored by Chef and Cook ($P_1$ and $P_2$ respectively). Find out whether Chef or Cook has to serve next.
+
+-----Input-----
+- The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+- The first and only line of each test case contains three space-separated integers $P_1$, $P_2$ and $K$.
+
+-----Output-----
+For each test case, print a single line containing the string "CHEF" if it is Chef's turn or "COOK" if it is Cook's turn.
+
+-----Constraints-----
+- $1 \le T \le 10^5$
+- $1 \le K \le 10^{9}$
+- $0 \le P_1, P_2 \le 10^{9}$ 
+
+-----Subtasks-----
+Subtask #1 (100 points): original constraints
+
+-----Example Input-----
+3
+1 3 2
+0 3 2
+34 55 2
+
+-----Example Output-----
+CHEF
+COOK
+CHEF
+
+-----Explanation-----
+Example case 1: Chef serves for the first two points, Cook serves for the next two, so Chef has to serve again now.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def determine_server (p1 : Nat) (p2 : Nat) (k : Nat) : String :=
+  sorry
+
+-- Only two possible results
+
+theorem determine_server_two_values (p1 p2 k : Nat) (h : k > 0) :
+  determine_server p1 p2 k = "CHEF" ∨ determine_server p1 p2 k = "COOK" :=
+  sorry
+
+-- Result only depends on total modulo 2k
+
+theorem determine_server_cycle (p1 p2 k : Nat) (h : k > 0) :
+  determine_server (p1 + p2 + 2*k) 0 k = determine_server p1 p2 k :=
+  sorry
+
+-- CHEF serves first k points in cycle
+
+theorem determine_server_chef (p1 p2 k : Nat) (h : k > 0) :
+  (p1 + p2) % (2*k) < k → determine_server p1 p2 k = "CHEF" :=
+  sorry
+
+-- COOK serves second k points in cycle  
+
+theorem determine_server_cook (p1 p2 k : Nat) (h : k > 0) :
+  (p1 + p2) % (2*k) ≥ k → determine_server p1 p2 k = "COOK" :=
+  sorry
+
+-- Result is independent of point distribution
+
+theorem determine_server_point_split (total k : Nat) (h : k > 0) :
+  determine_server total 0 k = determine_server 0 total k :=
+  sorry
+
+theorem determine_server_point_split_one (total k : Nat) (h : k > 0) (h2 : total > 0) :
+  determine_server total 0 k = determine_server (total-1) 1 k :=
+  sorry
+
+/-
+info: 'CHEF'
+-/
+-- #guard_msgs in
+-- #eval determine_server 1 3 2
+
+/-
+info: 'COOK'
+-/
+-- #guard_msgs in
+-- #eval determine_server 0 3 2
+
+/-
+info: 'CHEF'
+-/
+-- #guard_msgs in
+-- #eval determine_server 34 55 2
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

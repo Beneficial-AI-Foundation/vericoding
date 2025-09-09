@@ -1,0 +1,26 @@
+Given r red balloons, g green balloons, and b blue balloons, determine the maximum number of tables that can be decorated.
+Each table requires exactly 3 balloons, and no table can have all 3 balloons of the same color.
+
+predicate ValidInput(r: int, g: int, b: int) {
+    r >= 0 && g >= 0 && b >= 0
+}
+
+function MaxTables(r: int, g: int, b: int): int
+    requires ValidInput(r, g, b)
+{
+    min(min(min((r + g + b) / 3, r + g), r + b), g + b)
+}
+
+function min(a: int, b: int): int {
+    if a <= b then a else b
+}
+
+method solve(r: int, g: int, b: int) returns (result: int)
+    requires ValidInput(r, g, b)
+    ensures result == MaxTables(r, g, b)
+    ensures result >= 0
+{
+    var maxi := (r + g + b) / 3;
+    var tmpCall1 := min(maxi, r + g);
+    result := min(min(tmpCall1, r + b), g + b);
+}

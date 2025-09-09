@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def diagflat {n : Nat} (v : Vector Float n) : Id (Vector Float (n * n)) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem diagflat_spec {n : Nat} (v : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -39,6 +37,4 @@ theorem diagflat_spec {n : Nat} (v : Vector Float n) :
       -- All other elements are zero
       (∀ i j : Fin n, i ≠ j → result.get ⟨i.val * n + j.val, sorry⟩ = 0)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

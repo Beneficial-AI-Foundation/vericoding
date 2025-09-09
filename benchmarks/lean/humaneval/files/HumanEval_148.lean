@@ -27,9 +27,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (planet1: String) (planet2: String) : List String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -60,10 +58,8 @@ spec result
 theorem correctness
 (planet1: String)
 (planet2: String)
-: problem_spec implementation planet1 planet2 :=
--- <vc-proof>
+: problem_spec implementation planet1 planet2 := by
   sorry
--- </vc-proof>
 
 -- #test implementation "Jupiter" "Neptune" = ["Saturn", "Uranus"]
 -- #test implementation "Earth" "Mercury" = ["Venus"]

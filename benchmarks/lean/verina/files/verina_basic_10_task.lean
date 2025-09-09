@@ -24,9 +24,7 @@ def isGreater_precond (n : Int) (a : Array Int) : Prop :=
 -- </vc-helpers>
 
 def isGreater (n : Int) (a : Array Int) (h_precond : isGreater_precond (n) (a)) : Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def isGreater_postcond (n : Int) (a : Array Int) (result: Bool) (h_precond : isGreater_precond (n) (a)) :=
@@ -34,9 +32,7 @@ def isGreater_postcond (n : Int) (a : Array Int) (result: Bool) (h_precond : isG
 
 theorem isGreater_spec_satisfied (n: Int) (a: Array Int) (h_precond : isGreater_precond (n) (a)) :
     isGreater_postcond (n) (a) (isGreater (n) (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

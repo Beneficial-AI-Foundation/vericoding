@@ -15,7 +15,7 @@
 
 /-  Specification: zeros_like returns a vector where every element is 0,
     with the same length as the input vector.
-    
+
     Mathematical properties:
     1. The result has the same length as the input (enforced by type system)
     2. Every element in the result is exactly 0
@@ -31,9 +31,7 @@ open Std.Do
 -- </vc-helpers>
 
 def zeros_like {n : Nat} {T : Type} [Zero T] (a : Vector T n) : Id (Vector T n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem zeros_like_spec {n : Nat} {T : Type} [Zero T] [Add T] (a : Vector T n) :
     ⦃⌜True⌝⦄
@@ -42,6 +40,4 @@ theorem zeros_like_spec {n : Nat} {T : Type} [Zero T] [Add T] (a : Vector T n) :
                  (∀ v : Vector T n, ∀ i : Fin n, 
                    (result.get i + v.get i = v.get i) ∧ 
                    (v.get i + result.get i = v.get i))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

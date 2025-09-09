@@ -21,15 +21,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def fabs {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem fabs_spec {n : Nat} (x : Vector Float n) :
       ⦃⌜True⌝⦄
       fabs x
@@ -42,11 +38,7 @@ vc-condition: |-
                     Float.abs (result.get i) = result.get i ∧
                     -- Symmetry: abs(x) = abs(-x)
                     result.get i = Float.abs (-(x.get i))⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

@@ -25,9 +25,7 @@ open Std.Do
 
 def as_series {m n : Nat} (arr : Vector (Vector Float n) m) (trim : Bool) : 
     Id (Vector (Vector Float n) m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem as_series_spec {m n : Nat} (arr : Vector (Vector Float n) m) (trim : Bool) :
     ⦃⌜True⌝⦄
@@ -37,6 +35,4 @@ theorem as_series_spec {m n : Nat} (arr : Vector (Vector Float n) m) (trim : Boo
                   (trim → (∀ j : Fin n, (result.get i).get j = (arr.get i).get j ∨ 
                            (result.get i).get j = 0) ∧
                           (∃ k : Fin n, ∀ l : Fin n, l > k → (arr.get i).get l = 0))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

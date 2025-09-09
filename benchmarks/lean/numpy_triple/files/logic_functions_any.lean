@@ -9,22 +9,22 @@
 -/
 
 /-  Test whether any element in a vector evaluates to True.
-    
+
     For numeric types, returns true if any element is non-zero.
     Special values like NaN, positive/negative infinity are considered True.
     This follows NumPy's convention where non-zero values are truthy.
-    
+
     This is a reduction operation that performs logical OR across all elements,
     treating non-zero values as True and zero as False. -/
 
 /-  Specification: `any` returns true if and only if at least one element in the vector is non-zero.
-    
+
     The specification captures comprehensive mathematical properties:
     1. Logical equivalence: result is true iff there exists a non-zero element
     2. Completeness: result is false iff all elements are zero
     3. Empty vector behavior: returns false for empty vectors
     4. Monotonicity: adding more elements can only increase the chance of being true
-    
+
     This matches NumPy's behavior where:
     - Non-zero values (including NaN, ±∞) evaluate to True
     - Only zero evaluates to False
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def any {n : Nat} (v : Vector Float n) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem any_spec {n : Nat} (v : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -56,6 +54,4 @@ theorem any_spec {n : Nat} (v : Vector Float n) :
                  -- Logical consistency
                  (result = true ∨ result = false) ∧
                  ¬(result = true ∧ result = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

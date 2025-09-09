@@ -1,0 +1,21 @@
+/* Construct a vector by executing a function over each coordinate index.
+For 1D case, this creates a vector of length n where element i is f(i).
+
+Specification: fromfunction creates a vector where each element is the result
+of applying the function to its index position. */
+
+use vstd::prelude::*;
+
+verus! {
+fn fromfunction(n: usize, f: spec_fn(usize) -> f32) -> (result: Vec<f32>)
+    ensures
+        result.len() == n,
+        forall|i: int| 0 <= i < n ==> result[i] == f(i as usize)
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

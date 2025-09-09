@@ -36,9 +36,7 @@ def firstEvenOddIndices (lst : List Int) : Option (Nat × Nat) :=
 -- </vc-helpers>
 
 def findProduct (lst : List Int) (h_precond : findProduct_precond (lst)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def findProduct_postcond (lst : List Int) (result: Int) (h_precond : findProduct_precond (lst)) :=
@@ -48,9 +46,7 @@ def findProduct_postcond (lst : List Int) (result: Int) (h_precond : findProduct
 
 theorem findProduct_spec_satisfied (lst: List Int) (h_precond : findProduct_precond (lst)) :
     findProduct_postcond (lst) (findProduct (lst) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

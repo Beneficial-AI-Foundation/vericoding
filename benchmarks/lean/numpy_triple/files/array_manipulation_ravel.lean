@@ -14,7 +14,7 @@
 
     For 1D arrays, ravel returns the input array unchanged since it's already
     flat. This reflects numpy's behavior where raveling a 1D array has no effect.
-    
+
     For multi-dimensional arrays (not covered here), ravel would flatten them
     into a 1D array following the specified order ('C' for row-major, 'F' for
     column-major, etc.).
@@ -35,14 +35,10 @@ open Std.Do
 -- </vc-helpers>
 
 def ravel {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem ravel_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     ravel a
     ⦃⇓result => ⌜result = a⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

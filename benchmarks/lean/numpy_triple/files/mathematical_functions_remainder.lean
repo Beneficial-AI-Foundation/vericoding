@@ -2,11 +2,11 @@
 
     Computes the remainder complementary to the floor_divide function.
     This is equivalent to x1 % x2 in terms of array broadcasting.
-    
+
     The result has the same sign as the divisor x2.
     For floating point inputs, the result is mathematically defined as:
     x1 - floor(x1/x2) * x2
-    
+
     From NumPy documentation:
     - Parameters: x1, x2 (array_like) - The dividend and divisor arrays
     - Returns: remainder (ndarray) - The element-wise remainder of x1 divided by x2
@@ -38,9 +38,7 @@ open Std.Do
 -- </vc-helpers>
 
 def remainder {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem remainder_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜∀ i : Fin n, x2.get i ≠ 0⌝⦄
@@ -56,6 +54,4 @@ theorem remainder_spec {n : Nat} (x1 x2 : Vector Float n) :
       (b < 0 → r ≤ 0 ∧ r > b) ∧
       -- Magnitude bound
       Float.abs r < Float.abs b⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

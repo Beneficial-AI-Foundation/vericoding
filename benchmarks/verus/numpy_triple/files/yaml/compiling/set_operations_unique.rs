@@ -1,0 +1,25 @@
+/* Find the unique elements of a vector and return them in sorted order.
+
+Specification: unique returns sorted unique elements from the input vector. */
+
+use vstd::prelude::*;
+
+verus! {
+fn unique(arr: Vec<i32>) -> (result: Vec<i32>)
+    ensures
+        /* Result is sorted */
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j],
+        /* All elements in result come from input array */
+        forall|i: int| 0 <= i < result.len() ==> exists|j: int| 0 <= j < arr.len() && result[i] == arr[j],
+        /* All elements in result are unique */
+        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> result[i] != result[j],
+        /* All elements from input appear in result */
+        forall|i: int| 0 <= i < arr.len() ==> exists|j: int| 0 <= j < result.len() && arr[i] == result[j],
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

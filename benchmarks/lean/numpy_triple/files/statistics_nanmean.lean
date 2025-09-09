@@ -13,7 +13,7 @@
     If all values are NaN, returns NaN. -/
 
 /-  Specification: nanmean computes the arithmetic mean while ignoring NaN values.
-    
+
     Mathematical properties:
     1. If vector contains valid (non-NaN) values, result is their arithmetic mean
     2. If all values are NaN, result is NaN
@@ -30,9 +30,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanmean {n : Nat} (a : Vector Float n) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanmean_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
@@ -62,6 +60,4 @@ theorem nanmean_spec {n : Nat} (a : Vector Float n) :
                      (∀ j : Fin n, ¬(a.get j).isNaN → a.get min_idx ≤ a.get j) ∧
                      (∀ j : Fin n, ¬(a.get j).isNaN → a.get j ≤ a.get max_idx) ∧
                      a.get min_idx ≤ result ∧ result ≤ a.get max_idx))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

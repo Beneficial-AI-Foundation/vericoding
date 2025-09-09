@@ -1,0 +1,78 @@
+/-
+Given a string containing only three types of characters: '(', ')' and '*', write a function to check whether this string is valid. We define the validity of a string by these rules:
+
+Any left parenthesis '(' must have a corresponding right parenthesis ')'.
+Any right parenthesis ')' must have a corresponding left parenthesis '('.
+Left parenthesis '(' must go before the corresponding right parenthesis ')'.
+'*' could be treated as a single right parenthesis ')' or a single left parenthesis '(' or an empty string.
+An empty string is also valid.
+
+Example 1:
+
+Input: "()"
+Output: True
+
+Example 2:
+
+Input: "(*)"
+Output: True
+
+Example 3:
+
+Input: "(*))"
+Output: True
+
+Note:
+
+The string size will be in the range [1, 100].
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def checkValidString (s : String) : Bool := sorry
+
+def isBalancedWithoutStars (s : String) : Bool := sorry
+
+theorem check_matches_simple_validation (s : String) :
+  (∀ c : Char, c ∈ s.data → (c = '(' ∨ c = ')')) →
+  checkValidString s = isBalancedWithoutStars s := sorry
+
+theorem empty_string_valid :
+  checkValidString "" = true := sorry
+
+theorem single_star_valid : 
+  checkValidString "*" = true := sorry
+
+theorem stars_to_empty_preserves_validity (s : String) :
+  (checkValidString (s.replace "*" "") = true) → 
+  checkValidString s = true := sorry
+
+theorem close_exceeds_open_invalid (s : String) :
+  (s.data.countP (· = ')')) > (s.data.countP (· = '(') + s.data.countP (· = '*')) →
+  checkValidString s = false := sorry
+
+theorem valid_parts_concat_with_stars_valid (parts : List String) :
+  (∀ p ∈ parts, checkValidString p = true) →
+  checkValidString (String.intercalate "*" parts) = true := sorry
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval check_valid_string "()"
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval check_valid_string "(*)"
+
+/-
+info: True
+-/
+-- #guard_msgs in
+-- #eval check_valid_string "(*))"
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

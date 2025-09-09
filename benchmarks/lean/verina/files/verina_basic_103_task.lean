@@ -24,9 +24,7 @@ def UpdateElements_precond (a : Array Int) : Prop :=
 -- </vc-helpers>
 
 def UpdateElements (a : Array Int) (h_precond : UpdateElements_precond (a)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def UpdateElements_postcond (a : Array Int) (result: Array Int) (h_precond : UpdateElements_precond (a)) :=
@@ -36,9 +34,7 @@ def UpdateElements_postcond (a : Array Int) (result: Array Int) (h_precond : Upd
 
 theorem UpdateElements_spec_satisfied (a: Array Int) (h_precond : UpdateElements_precond (a)) :
     UpdateElements_postcond (a) (UpdateElements (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

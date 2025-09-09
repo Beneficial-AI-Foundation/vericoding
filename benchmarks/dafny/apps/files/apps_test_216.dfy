@@ -1,0 +1,33 @@
+Given a sequence of integers, partition it into two subsequences such that
+every element belongs to exactly one subsequence. Find the maximum possible
+value of B - C, where B is the sum of elements in the first subsequence
+and C is the sum of elements in the second subsequence.
+
+function sum_abs(arr: seq<int>, i: int): int
+    requires 0 <= i <= |arr|
+    decreases |arr| - i
+{
+    if i == |arr| then 0
+    else (if arr[i] >= 0 then arr[i] else -arr[i]) + sum_abs(arr, i + 1)
+}
+
+predicate ValidInput(n: int, arr: seq<int>)
+{
+    0 <= n == |arr|
+}
+
+method solve(n: int, arr: seq<int>) returns (result: int)
+    requires ValidInput(n, arr)
+    ensures result == sum_abs(arr, 0)
+{
+    var s := 0;
+    var i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant s + sum_abs(arr, i) == sum_abs(arr, 0)
+    {
+        s := s + (if arr[i] >= 0 then arr[i] else -arr[i]);
+        i := i + 1;
+    }
+    result := s;
+}

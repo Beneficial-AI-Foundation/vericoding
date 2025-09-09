@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def trace {n : Nat} (x : Vector (Vector Float n) n) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem trace_spec {n : Nat} (x : Vector (Vector Float n) n) :
     ⦃⌜True⌝⦄
@@ -39,6 +37,4 @@ theorem trace_spec {n : Nat} (x : Vector (Vector Float n) n) :
       else acc
     ) 0 ∧ 
     (∀ i : Fin n, (x.get i).get i ≠ 0 → result ≠ 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

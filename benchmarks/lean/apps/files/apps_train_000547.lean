@@ -1,0 +1,79 @@
+/-
+Chef loves to play chess, so he bought a new chessboard with width M$M$ and height N$N$ recently.
+Chef considers a chessboard correct if its width (number of columns) is equal to its height (number of rows) and each cell has no side-adjacent cell of the same color (this is the so-called "chess order" which you can see in real-world chessboards). Chef's chessboard does not have to be a correct chessboard (in particular, it may have N≠M$N \neq M$).
+A sub-board of Chef's chessboard is a rectangular piece of this board with an arbitrarily chosen top left and bottom right cell (possibly equal to the original chessboard). Every sub-board is also a chessboard.
+Chef can invert some cells; inverting a cell means changing its color from white to black or from black to white. After inverting those cells, he wants to cut the maximum correct sub-board out of the original chessboard.
+Chef has not yet decided how many cells he would like to invert. Now he wonders about the answers to Q$Q$ question. In the i$i$-th question (1≤i≤Q$1 \le i \le Q$), he is allowed to invert at most ci$c_i$ cells (possibly zero); he would like to know the side length of the largest possible correct sub-board of his chessboard. Help Chef answer these questions.
+
+-----Input-----
+- The first line of the input contains two space-separated integers N$N$ and M$M$.
+- N$N$ lines follow. For each valid i$i$, the i$i$-th of these lines contains a string with length M$M$ describing the i$i$-th row of Chef's chessboard. Each character of this string is either '0', representing a black cell, or '1', representing a white cell.
+- The next line contains a single integer Q$Q$.
+- The last line contains Q$Q$ space-separated integers c1,c2,…,cQ$c_1, c_2, \dots, c_Q$.
+
+-----Output-----
+For each question, print a single line containing one integer — the maximum size of a correct sub-board.
+
+-----Constraints-----
+- 1≤N,M≤200$1 \le N, M \le 200$
+- 1≤Q≤105$1 \le Q \le 10^5$
+- 0≤ci≤109$0 \le c_i \le 10^9$ for each valid i$i$
+
+-----Subtasks-----
+Subtask #1 (20 points):
+- 1≤N,M≤20$1 \le N, M \le 20$
+- 1≤Q≤100$1 \le Q \le 100$
+Subtask #2 (30 points): 1≤N,M≤20$1 \le N, M \le 20$
+Subtask #3 (50 points): original constraints
+
+-----Example Input-----
+8 8
+00101010
+00010101
+10101010
+01010101
+10101010
+01010101
+10101010
+01010101
+4
+1 2 0 1001
+
+-----Example Output-----
+7
+8
+6
+8
+
+-----Explanation-----
+If we don't change the board, the best answer here is the 6x6 bottom right sub-board. We can invert cells (2,2)$(2, 2)$ and (1,1)$(1, 1)$ to get a better answer.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def max_chess_subboard (n m : Nat) (board : List String) (queries : List Nat) : List Nat := sorry 
+
+theorem max_chess_subboard_result_length {n m : Nat} {board : List String} {queries : List Nat} :
+  (List.length (max_chess_subboard n m board queries)) = (List.length queries) := sorry
+
+theorem max_chess_subboard_bounds {n m : Nat} {board : List String} {queries : List Nat} (result : List Nat) :
+  result = max_chess_subboard n m board queries →
+  ∀ x ∈ result, 1 ≤ x ∧ x ≤ min n m := sorry
+
+theorem max_chess_subboard_monotonic {n m : Nat} {board : List String} (queries : List Nat) :
+  let result := max_chess_subboard n m board queries
+  ∀ i j : Nat, i < j → i < result.length → j < result.length → 
+    result[i]! ≤ result[j]! := sorry
+
+theorem max_chess_subboard_dimension_bound {n m : Nat} {board : List String} {queries : List Nat} (result : List Nat) : 
+  result = max_chess_subboard n m board queries →
+  ∀ x ∈ result, x ≤ min n m := sorry
+
+theorem perfect_board_max_size {n m : Nat} (h1 : n > 0) (h2 : m > 0) :
+  let board := List.range n |>.map (fun i => 
+    String.mk (List.range m |>.map (fun j => if (i + j) % 2 = 0 then '0' else '1')))
+  (max_chess_subboard n m board [0]).head! = min n m := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

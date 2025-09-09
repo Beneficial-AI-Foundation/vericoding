@@ -29,9 +29,7 @@ def isOdd (n : Int) : Bool :=
 -- </vc-helpers>
 
 def firstEvenOddDifference (a : Array Int) (h_precond : firstEvenOddDifference_precond (a)) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def firstEvenOddDifference_postcond (a : Array Int) (result: Int) (h_precond : firstEvenOddDifference_precond (a)) :=
@@ -41,9 +39,7 @@ def firstEvenOddDifference_postcond (a : Array Int) (result: Int) (h_precond : f
 
 theorem firstEvenOddDifference_spec_satisfied (a: Array Int) (h_precond : firstEvenOddDifference_precond (a)) :
     firstEvenOddDifference_postcond (a) (firstEvenOddDifference (a) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

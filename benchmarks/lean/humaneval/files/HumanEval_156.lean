@@ -155,9 +155,7 @@ def romanToDecimal (s : String) : Nat :=
 -- </vc-helpers>
 
 def implementation (num: Nat) : String :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -175,10 +173,8 @@ spec result
 
 theorem correctness
 (num: Nat)
-: problem_spec implementation num :=
--- <vc-proof>
+: problem_spec implementation num := by
   sorry
--- </vc-proof>
 
 -- #test implementation 19 = "xix"
 -- #test implementation 152 = "clii"

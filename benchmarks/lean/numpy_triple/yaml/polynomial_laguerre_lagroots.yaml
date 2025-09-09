@@ -26,15 +26,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def lagroots {n : Nat} (c : Vector Float (n + 1)) : Id (Vector Float n) :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem lagroots_spec {n : Nat} (c : Vector Float (n + 1)) 
       (h_nonzero : c.get ⟨n, Nat.lt_succ_self n⟩ ≠ 0) :
       ⦃⌜c.get ⟨n, Nat.lt_succ_self n⟩ ≠ 0⌝⦄
@@ -47,11 +43,7 @@ vc-condition: |-
         -- Each root should make the Laguerre polynomial evaluate to zero
         True -- Placeholder for more complex root verification properties
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

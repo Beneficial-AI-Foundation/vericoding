@@ -1,0 +1,121 @@
+vc-description: |-
+  Given an n × n chessboard, find the maximum number of "Coders" that can be placed
+  such that none attacks another. A Coder at position (x, y) can attack positions
+  (x±1, y) and (x, y±1) (horizontally and vertically adjacent squares).
+  Output the maximum count and a valid placement configuration using checkerboard pattern.
+
+vc-preamble: |-
+  predicate ValidInput(n: int) {
+      n >= 1
+  }
+  
+  function MaxCoders(n: int): int
+      requires n >= 1
+  {
+      n * n / 2 + n * n % 2
+  }
+  
+  predicate ValidOutputFormat(result: seq<string>, n: int) 
+      requires n >= 1
+  {
+      |result| == n + 1 &&
+      result[0] == IntToString(MaxCoders(n)) &&
+      (forall i :: 1 <= i <= n ==> |result[i]| == n)
+  }
+  
+  predicate ValidCheckerboardPlacement(result: seq<string>, n: int)
+      requires n >= 1
+      requires ValidOutputFormat(result, n)
+  {
+      forall i :: 1 <= i <= n ==> forall j :: 0 <= j < n ==>
+          (result[i][j] == 'C' <==> 
+              (if (i - 1) % 2 == 0 then j % 2 == 0 else j % 2 == 1))
+  }
+
+vc-helpers: |-
+  function IntToString(n: int): string {
+      if n == 0 then "0"
+      else if n < 0 then "-" + NatToString(-n)
+      else NatToString(n)
+  }
+  
+  function NatToString(n: nat): string {
+      if n < 10 then
+          match n
+          case 0 => "0" case 1 => "1" case 2 => "2" case 3 => "3" case 4 => "4"
+          case 5 => "5" case 6 => "6" case 7 => "7" case 8 => "8" case 9 => "9"
+      else
+          NatToString(n / 10) + NatToString(n % 10)
+  }
+
+vc-spec: |-
+  method solve(n: int) returns (result: seq<string>)
+      requires ValidInput(n)
+      ensures ValidOutputFormat(result, n)
+      ensures ValidCheckerboardPlacement(result, n)
+
+vc-code: |-
+  {
+      // Calculate maximum number of coders
+      var maxCoders := n * n / 2 + n * n % 2;
+  
+      // Build the result sequence
+      var lines: seq<string> := [];
+  
+      // Add the count as first line
+      var tmpCall1 := IntToString(maxCoders);
+      lines := lines + [tmpCall1];
+  
+      // Generate the grid pattern
+      var i := 0;
+      while i < n
+          invariant 0 <= i <= n
+          invariant |lines| == i + 1
+          invariant lines[0] == IntToString(maxCoders)
+          invariant forall k :: 1 <= k <= i ==> |lines[k]| == n
+          invariant forall k :: 1 <= k <= i ==> forall j :: 0 <= j < n ==>
+              (lines[k][j] == 'C' <==> 
+                  (if (k - 1) % 2 == 0 then j % 2 == 0 else j % 2 == 1))
+      {
+          var row := "";
+          if i % 2 == 0 {
+              // Even row: start with 'C', alternate with '.'
+              var j := 0;
+              while j < n
+                  invariant 0 <= j <= n
+                  invariant |row| == j
+                  invariant forall k :: 0 <= k < j ==>
+                      (row[k] == 'C' <==> k % 2 == 0)
+              {
+                  if j % 2 == 0 {
+                      row := row + "C";
+                  } else {
+                      row := row + ".";
+                  }
+                  j := j + 1;
+              }
+          } else {
+              // Odd row: start with '.', alternate with 'C'
+              var j := 0;
+              while j < n
+                  invariant 0 <= j <= n
+                  invariant |row| == j
+                  invariant forall k :: 0 <= k < j ==>
+                      (row[k] == 'C' <==> k % 2 == 1)
+              {
+                  if j % 2 == 0 {
+                      row := row + ".";
+                  } else {
+                      row := row + "C";
+                  }
+                  j := j + 1;
+              }
+          }
+          lines := lines + [row];
+          i := i + 1;
+      }
+  
+      result := lines;
+  }
+
+vc-postamble: |-

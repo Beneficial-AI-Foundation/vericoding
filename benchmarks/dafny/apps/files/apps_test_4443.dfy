@@ -1,0 +1,34 @@
+Given a lowercase English letter (not 'z'), output the next letter in alphabetical order.
+
+predicate ValidInput(input: string)
+{
+    |input| > 0 && 'a' <= input[0] <= 'y'
+}
+
+function NextChar(c: char): char
+    requires 'a' <= c <= 'y'
+{
+    (c as int + 1) as char
+}
+
+predicate ValidOutput(input: string, output: string)
+    requires ValidInput(input)
+{
+    |output| == 2 &&
+    output[0] == NextChar(input[0]) &&
+    output[1] == '\n' &&
+    'b' <= output[0] <= 'z'
+}
+
+method solve(input: string) returns (output: string)
+    requires ValidInput(input)
+    ensures ValidOutput(input, output)
+{
+    if |input| > 0 {
+        var c := input[0];
+        var nextChar := (c as int + 1) as char;
+        output := [nextChar, '\n'];
+    } else {
+        output := "";
+    }
+}

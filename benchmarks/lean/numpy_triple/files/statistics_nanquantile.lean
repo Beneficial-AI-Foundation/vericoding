@@ -10,7 +10,7 @@
 
 /-  Compute the q-th quantile of the data in a vector, ignoring NaN values.
     When all elements are NaN, returns NaN.
-    
+
     Mathematical Properties:
     - Ignores NaN values in the computation
     - Returns the q-th quantile of all non-NaN elements 
@@ -21,7 +21,7 @@
     - For vectors with no NaN values, behaves identically to regular quantile -/
 
 /-  Specification: nanquantile returns the q-th quantile of non-NaN values in the vector.
-    
+
     Mathematical properties:
     1. The quantile parameter q must be between 0 and 1 inclusive
     2. If there exists at least one non-NaN element, the result is the q-th quantile among non-NaN elements
@@ -40,9 +40,7 @@ open Std.Do
 -- </vc-helpers>
 
 def nanquantile {n : Nat} (a : Vector Float (n + 1)) (q : Float) : Id Float :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem nanquantile_spec {n : Nat} (a : Vector Float (n + 1)) (q : Float) 
     (h_q_valid : 0 ≤ q ∧ q ≤ 1) :
@@ -78,6 +76,4 @@ theorem nanquantile_spec {n : Nat} (a : Vector Float (n + 1)) (q : Float)
          (¬result.isNaN ∧
           (∃ lower_idx upper_idx : Fin (n + 1),
             a.get lower_idx ≤ result ∧ result ≤ a.get upper_idx)))⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

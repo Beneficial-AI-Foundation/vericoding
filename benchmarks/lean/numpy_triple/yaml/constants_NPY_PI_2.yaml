@@ -22,15 +22,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def NPY_PI_2 : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem NPY_PI_2_spec :
       ⦃⌜True⌝⦄
       NPY_PI_2
@@ -50,11 +46,7 @@ vc-condition: |-
         -- 4*(π/2) = 2π is approximately 6.2832... (full circle)
         6.283 < 4 * result ∧ 4 * result < 6.284
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

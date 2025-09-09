@@ -1,0 +1,99 @@
+vc-description: |-
+  /-
+  Mishka wants to buy some food in the nearby shop. Initially, he has $s$ burles on his card. 
+  
+  Mishka can perform the following operation any number of times (possibly, zero): choose some positive integer number $1 \le x \le s$, buy food that costs exactly $x$ burles and obtain $\lfloor\frac{x}{10}\rfloor$ burles as a cashback (in other words, Mishka spends $x$ burles and obtains $\lfloor\frac{x}{10}\rfloor$ back). The operation $\lfloor\frac{a}{b}\rfloor$ means $a$ divided by $b$ rounded down.
+  
+  It is guaranteed that you can always buy some food that costs $x$ for any possible value of $x$.
+  
+  Your task is to say the maximum number of burles Mishka can spend if he buys food optimally.
+  
+  For example, if Mishka has $s=19$ burles then the maximum number of burles he can spend is $21$. Firstly, he can spend $x=10$ burles, obtain $1$ burle as a cashback. Now he has $s=10$ burles, so can spend $x=10$ burles, obtain $1$ burle as a cashback and spend it too.
+  
+  You have to answer $t$ independent test cases.
+  
+  -----Input-----
+  
+  The first line of the input contains one integer $t$ ($1 \le t \le 10^4$) — the number of test cases.
+  
+  The next $t$ lines describe test cases. Each test case is given on a separate line and consists of one integer $s$ ($1 \le s \le 10^9$) — the number of burles Mishka initially has.
+  
+  -----Output-----
+  
+  For each test case print the answer on it — the maximum number of burles Mishka can spend if he buys food optimally.
+  
+  -----Example-----
+  Input
+  6
+  1
+  10
+  19
+  9876
+  12345
+  1000000000
+  
+  Output
+  1
+  11
+  21
+  10973
+  13716
+  1111111111
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def max_spending (initial_burles : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem max_spending_ge_input (initial_burles : Nat) :
+    max_spending initial_burles ≥ initial_burles := by
+    sorry
+  
+  theorem max_spending_eq_input_when_small (initial_burles : Nat) 
+    (h : initial_burles < 10) :
+    max_spending initial_burles = initial_burles := by
+    sorry
+  
+  theorem max_spending_nat_valued (initial_burles : Nat) :
+    max_spending initial_burles ≥ 0 := by
+    sorry
+  
+  theorem max_spending_growth (initial_burles : Nat)
+    (h : initial_burles ≥ 10) :
+    max_spending (initial_burles + 10) ≥ max_spending initial_burles + 11 := by
+    sorry
+  
+  theorem max_spending_upper_bound (initial_burles : Nat)
+    (h : initial_burles > 0) :
+    max_spending initial_burles ≤ initial_burles * 10 / 9 + 10 := by
+    sorry
+  
+  /-
+  info: 1
+  -/
+  -- #guard_msgs in
+  -- #eval max_spending 1
+  
+  /-
+  info: 11
+  -/
+  -- #guard_msgs in
+  -- #eval max_spending 10
+  
+  /-
+  info: 21
+  -/
+  -- #guard_msgs in
+  -- #eval max_spending 19
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

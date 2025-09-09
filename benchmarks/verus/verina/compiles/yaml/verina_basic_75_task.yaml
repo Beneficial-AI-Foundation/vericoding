@@ -1,0 +1,48 @@
+vc-description: |-
+  /*
+  This task involves finding the minimum element in a non-empty array of integers. The goal is to identify and return the smallest number present in the array.
+  
+  -----Input-----
+  The input consists of:
+  • a: An array of integers (the array is assumed to be non-empty).
+  
+  -----Output-----
+  The output is an integer that:
+  • Is the smallest element from the input array.
+  • Satisfies the property that it is less than or equal to every element in the array and is exactly equal to at least one element of the array.
+  
+  -----Note-----
+  It is assumed that the input array contains at least one element. The implementation uses a helper function (loop) to recursively compare elements and determine the minimum value.
+  */
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+  spec fn loop_spec(a: &Vec<i32>, i: int, current_min: i32) -> i32
+      decreases a.len() - i
+  {
+      if i < a.len() {
+          let new_min = if current_min > a[i] { a[i] } else { current_min };
+          loop_spec(a, i + 1, new_min)
+      } else {
+          current_min
+      }
+  }
+vc-spec: |-
+  fn min_array(a: &Vec<i32>) -> (result: i32)
+      requires a.len() > 0,
+      ensures
+          forall|i: int| 0 <= i < a.len() ==> result <= a[i],
+          exists|i: int| 0 <= i < a.len() && result == a[i],
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

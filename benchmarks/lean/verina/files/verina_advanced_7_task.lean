@@ -20,9 +20,7 @@ def binaryToDecimal_precond (digits : List Nat) : Prop :=
 -- </vc-helpers>
 
 def binaryToDecimal (digits : List Nat) (h_precond : binaryToDecimal_precond (digits)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible]
 def binaryToDecimal_postcond (digits : List Nat) (result: Nat) (h_precond : binaryToDecimal_precond (digits)) : Prop :=
@@ -31,9 +29,7 @@ def binaryToDecimal_postcond (digits : List Nat) (result: Nat) (h_precond : bina
 
 theorem binaryToDecimal_spec_satisfied (digits: List Nat) (h_precond : binaryToDecimal_precond (digits)) :
     binaryToDecimal_postcond (digits) (binaryToDecimal (digits) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

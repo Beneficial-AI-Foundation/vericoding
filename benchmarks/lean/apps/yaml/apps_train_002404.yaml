@@ -1,0 +1,85 @@
+vc-description: |-
+  /-
+  Given a 32-bit signed integer, reverse digits of an integer.
+  
+  Example 1:
+  
+  Input: 123
+  Output: 321
+  
+  Example 2:
+  
+  Input: -123
+  Output: -321
+  
+  Example 3:
+  
+  Input: 120
+  Output: 21
+  
+  Note:
+  Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
+  -/
+
+vc-preamble: |-
+  def reverse_integer (x : Int) : Int := sorry
+  
+  -- 32-bit integer bounds
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def INT32_MAX : Int := 2^31 - 1
+  def INT32_MIN : Int := -(2^31)
+
+vc-theorems: |-
+  theorem reverse_integer_sign (x : Int) :
+    let result := reverse_integer x
+    (result = 0) ∨ (result > 0 ∧ x > 0) ∨ (result < 0 ∧ x < 0) := sorry
+  
+  theorem reverse_integer_bounds (x : Int) :
+    let result := reverse_integer x
+    INT32_MIN ≤ result ∧ result ≤ INT32_MAX := sorry
+  
+  theorem single_digit_numbers (x : Int) :
+    0 ≤ x ∧ x ≤ 9 →
+    reverse_integer x = x := sorry
+  
+  theorem trailing_zeros (x : Int) :
+    x > 0 →
+    x % 10 = 0 →
+    reverse_integer x < x := sorry
+  
+  theorem int32_bounds (x : Int) :
+    INT32_MIN ≤ x ∧ x ≤ INT32_MAX →
+    let result := reverse_integer x
+    INT32_MIN ≤ result ∧ result ≤ INT32_MAX := sorry
+  
+  theorem overflow_cases : 
+    reverse_integer 1534236469 = 0 ∧
+    reverse_integer (-2147483648) = 0 := sorry
+  
+  /-
+  info: 321
+  -/
+  -- #guard_msgs in
+  -- #eval reverse_integer 123
+  
+  /-
+  info: -321
+  -/
+  -- #guard_msgs in
+  -- #eval reverse_integer -123
+  
+  /-
+  info: 21
+  -/
+  -- #guard_msgs in
+  -- #eval reverse_integer 120
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+

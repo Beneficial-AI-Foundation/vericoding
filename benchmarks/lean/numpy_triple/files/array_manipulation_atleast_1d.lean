@@ -11,21 +11,21 @@
 -/
 
 /-  numpy.atleast_1d: Convert inputs to arrays with at least one dimension.
-    
+
     This function ensures that the input has at least one dimension.
     - Scalar inputs are converted to 1-dimensional arrays with a single element
     - Higher-dimensional inputs (vectors) are preserved unchanged
-    
+
     For the Vector-based implementation, we provide a version that takes
     a vector and returns it unchanged, since Vectors already have at least
     one dimension by construction.
 -/
 
 /-  Specification: atleast_1d returns the input vector unchanged.
-    
+
     Since Vectors in Lean already have at least one dimension by their type,
     this function acts as an identity function for vectors.
-    
+
     Precondition: True (no special preconditions)
     Postcondition: The result is identical to the input vector
 -/
@@ -38,14 +38,10 @@ open Std.Do
 -- </vc-helpers>
 
 def atleast_1d {n : Nat} (arr : Vector Float n) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem atleast_1d_spec {n : Nat} (arr : Vector Float n) :
     ⦃⌜True⌝⦄
     atleast_1d arr
     ⦃⇓result => ⌜result = arr ∧ (∀ i : Fin n, result.get i = arr.get i)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

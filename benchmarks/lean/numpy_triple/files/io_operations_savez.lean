@@ -13,16 +13,16 @@
     Saves multiple Vector arrays to a single .npz archive file. This operation
     serializes multiple arrays into a single compressed archive, where each array
     is stored as a separate .npy file within the archive.
-    
+
     Key functionality:
     - Multiple arrays can be saved in a single operation
     - Each array is stored with an associated name within the archive
     - The resulting .npz file can be loaded later to recover the arrays
     - Arrays are stored in uncompressed .npy format within the archive
-    
+
     The function takes a file path and multiple arrays to save. For simplicity,
     this specification focuses on saving exactly two arrays (commonly used case).
-    
+
     Security considerations:
     - Pickle support is controlled by allow_pickle parameter
     - Invalid file paths or write permissions can cause failures
@@ -32,23 +32,23 @@
 /-  Specification: numpy.savez creates a .npz archive containing multiple arrays.
 
     This specification captures the essential properties of the savez operation:
-    
+
     1. Data Persistence: Arrays are written to disk in a retrievable format
     2. Archive Structure: Multiple arrays are bundled into a single .npz file
     3. Data Integrity: Saved arrays can be loaded with identical values
     4. Name Association: Arrays are stored with identifiable names in the archive
     5. Format Compliance: Output follows .npz format specification
-    
+
     Mathematical Properties:
     - Bijection: There exists a one-to-one correspondence between saved and loaded arrays
     - Preservation: All array values are preserved exactly in the archive
     - Atomicity: Either all arrays are saved successfully or none are saved
     - Idempotence: Saving the same arrays multiple times produces identical files
-    
+
     Security Properties:
     - Pickle safety: Object arrays are only saved when explicitly allowed
     - File system safety: Operation respects file system permissions
-    
+
     Precondition: File path is writable and arrays are valid
     Postcondition: Archive file exists and contains both arrays with recoverable data
 -/
@@ -62,9 +62,7 @@ open Std.Do
 
 def savez {n m : Nat} (file : String) (arr1 : Vector Float n) (arr2 : Vector Float m) 
     (allow_pickle : Bool := true) : Id Unit :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem savez_spec {n m : Nat} (file : String) (arr1 : Vector Float n) (arr2 : Vector Float m) 
     (allow_pickle : Bool := true) 
@@ -78,6 +76,4 @@ theorem savez_spec {n m : Nat} (file : String) (arr1 : Vector Float n) (arr2 : V
                   (∃ (recoverable_arr2 : Vector Float m), 
                     (∀ i : Fin m, recoverable_arr2.get i = arr2.get i)) ∧
                   (∃ (file_size : Nat), file_size > 0)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

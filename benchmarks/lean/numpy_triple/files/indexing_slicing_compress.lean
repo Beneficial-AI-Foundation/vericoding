@@ -14,13 +14,13 @@
 
 /-  Specification: compress returns a new vector containing only the elements 
     from the input vector where the corresponding condition element is true.
-    
+
     Mathematical properties:
     1. The result size equals the number of true values in the condition
     2. The result preserves the order of elements from the original vector
     3. Each element in the result corresponds to a true condition at the same index
     4. The result is empty if and only if all condition elements are false
-    
+
     This function implements array compression/masking, a fundamental operation
     in array programming that allows selective extraction of elements based on
     a boolean mask. It's equivalent to boolean indexing in NumPy. -/
@@ -35,9 +35,7 @@ open Std.Do
 def compress {n : Nat} (condition : Vector Bool n) (a : Vector Float n) 
     (m : Nat) (h : m = (condition.toList.filter (· = true)).length) : 
     Id (Vector Float m) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem compress_spec {n : Nat} (condition : Vector Bool n) (a : Vector Float n) 
     (m : Nat) (h : m = (condition.toList.filter (· = true)).length) :
@@ -52,6 +50,4 @@ theorem compress_spec {n : Nat} (condition : Vector Bool n) (a : Vector Float n)
                  (m = 0 ↔ ∀ i : Fin n, condition.get i = false) ∧
                  -- Full result iff all conditions are true
                  (m = n ↔ ∀ i : Fin n, condition.get i = true)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

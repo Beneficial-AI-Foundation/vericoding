@@ -33,9 +33,7 @@ def replace_loop (oldArr : Array Int) (k : Int) : Nat → Array Int → Array In
 -- </vc-helpers>
 
 def replace (arr : Array Int) (k : Int) (h_precond : replace_precond (arr) (k)) : Array Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def replace_postcond (arr : Array Int) (k : Int) (result: Array Int) (h_precond : replace_precond (arr) (k)) :=
@@ -44,9 +42,7 @@ def replace_postcond (arr : Array Int) (k : Int) (result: Array Int) (h_precond 
 
 theorem replace_spec_satisfied (arr: Array Int) (k: Int) (h_precond : replace_precond (arr) (k)) :
     replace_postcond (arr) (k) (replace (arr) (k) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

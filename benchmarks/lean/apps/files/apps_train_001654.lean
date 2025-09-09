@@ -1,0 +1,77 @@
+/-
+## Task
+
+Create a RomanNumerals class that can convert a roman numeral to and from an integer value.  It should follow the API demonstrated in the examples below. Multiple roman numeral values will be tested for each helper method. 
+
+Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.
+
+## Examples
+
+```python
+RomanNumerals.to_roman(1000) # should return 'M'
+RomanNumerals.from_roman('M') # should return 1000
+```
+
+## Help
+
+| Symbol | Value |
+|----------------|
+| I          | 1     |
+| V          | 5     |
+| X          | 10    |
+| L          | 50    |
+| C          | 100   |
+| D          | 500   |
+| M          | 1000  |
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def to_roman (n : Nat) : String := sorry
+def from_roman (s : String) : Nat := sorry
+
+theorem roundtrip_roman_numerals (n : Nat) 
+  (h : 1 ≤ n ∧ n ≤ 3999) : 
+  from_roman (to_roman n) = n := sorry
+
+theorem valid_roman_characters (n : Nat)
+  (h : 1 ≤ n ∧ n ≤ 3999) :
+  ∀ c, String.contains (to_roman n) c → 
+    c = 'I' ∨ c = 'V' ∨ c = 'X' ∨ c = 'L' ∨ c = 'C' ∨ c = 'D' ∨ c = 'M' := sorry
+
+theorem no_invalid_subtractions (n : Nat)
+  (h : 1 ≤ n ∧ n ≤ 3999) :
+  ¬ String.endsWith (to_roman n) "IL" ∧
+  ¬ String.endsWith (to_roman n) "IC" ∧
+  ¬ String.endsWith (to_roman n) "ID" ∧
+  ¬ String.endsWith (to_roman n) "IM" ∧
+  ¬ String.endsWith (to_roman n) "XD" ∧
+  ¬ String.endsWith (to_roman n) "XM" ∧
+  ¬ String.endsWith (to_roman n) "VX" ∧
+  ¬ String.endsWith (to_roman n) "VL" ∧
+  ¬ String.endsWith (to_roman n) "VC" ∧
+  ¬ String.endsWith (to_roman n) "VD" ∧
+  ¬ String.endsWith (to_roman n) "VM" ∧
+  ¬ String.endsWith (to_roman n) "LC" ∧
+  ¬ String.endsWith (to_roman n) "LD" ∧
+  ¬ String.endsWith (to_roman n) "LM" ∧
+  ¬ String.endsWith (to_roman n) "DM" := sorry
+
+theorem max_consecutive_chars (n : Nat)
+  (h : 1 ≤ n ∧ n ≤ 3999) :
+  ¬ String.endsWith (to_roman n) "IIII" ∧
+  ¬ String.endsWith (to_roman n) "VVVV" ∧
+  ¬ String.endsWith (to_roman n) "XXXX" ∧
+  ¬ String.endsWith (to_roman n) "LLLL" ∧
+  ¬ String.endsWith (to_roman n) "CCCC" ∧
+  ¬ String.endsWith (to_roman n) "DDDD" ∧
+  ¬ String.endsWith (to_roman n) "MMMM" := sorry
+
+theorem from_roman_valid_output (s : String)
+  (h : ∀ c, String.contains s c → 
+    c = 'I' ∨ c = 'V' ∨ c = 'X' ∨ c = 'L' ∨ c = 'C' ∨ c = 'D' ∨ c = 'M') :
+  1 ≤ from_roman s ∧ from_roman s ≤ 3999 := sorry
+
+-- Apps difficulty: interview
+-- Assurance level: unguarded

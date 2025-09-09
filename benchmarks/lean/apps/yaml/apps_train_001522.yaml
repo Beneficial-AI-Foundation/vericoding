@@ -1,0 +1,94 @@
+vc-description: |-
+  /-
+  You are given an integer sequence $A_1, A_2, \ldots, A_N$. For any pair of integers $(l, r)$ such that $1 \le l \le r \le N$, let's define $\mathrm{OR}(l, r)$ as $A_l \lor A_{l+1} \lor \ldots \lor A_r$. Here, $\lor$ is the bitwise OR operator.
+  In total, there are $\frac{N(N+1)}{2}$ possible pairs $(l, r)$, i.e. $\frac{N(N+1)}{2}$ possible values of $\mathrm{OR}(l, r)$. Determine if all these values are pairwise distinct.
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $N$.
+  - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+  
+  -----Output-----
+  For each test case, print a single line containing the string "YES" if all values of $\mathrm{OR}(l, r)$ are pairwise distinct or "NO" otherwise (without quotes).
+  
+  -----Constraints-----
+  - $1 \le T \le 300$
+  - $1 \le N \le 10^5$
+  - $0 \le A_i \le 10^{18}$ for each valid $i$
+  - the sum of $N$ over all test cases does not exceed $3 \cdot 10^5$
+  
+  -----Example Input-----
+  4
+  3
+  1 2 7
+  2
+  1 2
+  3
+  6 5 8
+  5
+  12 32 45 23 47
+  
+  -----Example Output-----
+  NO
+  YES
+  YES
+  NO
+  
+  -----Explanation-----
+  Example case 1: The values of $\mathrm{OR}(l, r)$ are $1, 2, 7, 3, 7, 7$ (corresponding to the contiguous subsequences $[1], [2], [7], [1,2], [2,7], [1,2,7]$ respectively). We can see that these values are not pairwise distinct.
+  Example case 2: The values of $\mathrm{OR}(l, r)$ are $1, 2, 3$ (corresponding to the contiguous subsequences $[1], [2], [1, 2]$ respectively) and they are pairwise distinct.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def check_unique_or_pairs (arr : List Nat) : String := sorry
+  
+  theorem check_unique_or_pairs_returns_valid_response {arr : List Nat} :
+    check_unique_or_pairs arr = "YES" ∨ check_unique_or_pairs arr = "NO" := sorry
+
+vc-theorems: |-
+  theorem long_arrays_return_no {arr : List Nat} :
+    arr.length > 62 → check_unique_or_pairs arr = "NO" := sorry
+  
+  theorem yes_result_implies_unique_ors {arr : List Nat} {i j k l : Nat} : 
+    arr.length ≤ 62 →
+    check_unique_or_pairs arr = "YES" →
+    i ≤ j → j < arr.length →
+    k ≤ l → l < arr.length →
+    (i,j) ≠ (k,l) →
+    (List.range (j - i + 1)).foldl (λ acc idx ↦ acc ||| arr[i + idx]!) 0 ≠
+    (List.range (l - k + 1)).foldl (λ acc idx ↦ acc ||| arr[k + idx]!) 0 := sorry
+  
+  theorem check_unique_or_pairs_deterministic {arr : List Nat} :
+    check_unique_or_pairs arr = check_unique_or_pairs arr := sorry
+  
+  theorem check_unique_or_pairs_order_invariant {arr : List Nat} :
+    check_unique_or_pairs arr = check_unique_or_pairs arr.reverse := sorry
+  
+  /-
+  info: 'NO'
+  -/
+  -- #guard_msgs in
+  -- #eval check_unique_or_pairs [1, 2, 7]
+  
+  /-
+  info: 'YES'
+  -/
+  -- #guard_msgs in
+  -- #eval check_unique_or_pairs [1, 2]
+  
+  /-
+  info: 'YES'
+  -/
+  -- #guard_msgs in
+  -- #eval check_unique_or_pairs [6, 5, 8]
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

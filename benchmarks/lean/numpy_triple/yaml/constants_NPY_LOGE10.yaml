@@ -25,15 +25,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def npy_loge10 : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem npy_loge10_spec :
       ⦃⌜True⌝⦄
       npy_loge10
@@ -55,11 +51,7 @@ vc-condition: |-
         -- Mathematical property: More precise bounds
         2.30258 < result ∧ result < 2.30259
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

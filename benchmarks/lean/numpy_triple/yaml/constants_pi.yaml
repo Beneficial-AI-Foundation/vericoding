@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def pi : Id Float :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   theorem pi_spec :
       ⦃⌜True⌝⦄
       pi
@@ -49,11 +45,7 @@ vc-condition: |-
         -- pi/4 is approximately 0.7854... (useful for eighth circle calculations)
         0.785 < result / 4 ∧ result / 4 < 0.786
       ⌝⦄ := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
 

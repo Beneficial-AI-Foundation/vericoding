@@ -1,0 +1,79 @@
+vc-description: |-
+  /-
+  Given an array of integers, find out whether there are two distinct indices i and j in the array such that the absolute difference between nums[i] and nums[j] is at most t and the absolute difference between i and j is at most k.
+  
+  Example 1:
+  
+  Input: nums = [1,2,3,1], k = 3, t = 0
+  Output: true
+  
+  Example 2:
+  
+  Input: nums = [1,0,1,1], k = 1, t = 2
+  Output: true
+  
+  Example 3:
+  
+  Input: nums = [1,5,9,1,5,9], k = 2, t = 3
+  Output: false
+  -/
+
+vc-preamble: |-
+  def abs (i : Int) : Int :=
+    if i ≥ 0 then i else -i
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  def containsNearbyAlmostDuplicate (nums : List Int) (k : Int) (t : Int) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem invalid_inputs_property (nums : List Int) (k : Int) (t : Int) :
+    k ≤ 0 → t < 0 → ¬containsNearbyAlmostDuplicate nums k t :=
+    sorry
+  
+  theorem sliding_window_symmetry (nums : List Int) (k : Int) (t : Int) :
+    k > 0 → t ≥ 0 → nums.length ≥ 2 → nums.length ≤ 100 →
+    containsNearbyAlmostDuplicate nums k t = containsNearbyAlmostDuplicate nums.reverse k t :=
+    sorry
+  
+  theorem zero_threshold_property (nums : List Int) (k : Int) :
+    k > 0 → nums.length ≥ 2 → nums.length ≤ 100 →
+    containsNearbyAlmostDuplicate nums k 0 = 
+      (∃ i j, 0 ≤ i ∧ i < nums.length ∧ 
+              0 ≤ j ∧ j < nums.length ∧
+              i ≠ j ∧ abs (i - j) ≤ k ∧
+              nums[i]! = nums[j]!) :=
+    sorry
+  
+  theorem scaling_invariance (nums : List Int) (k t scale : Int) :
+    k > 0 → t ≥ 0 → scale > 0 → nums.length ≥ 2 → nums.length ≤ 100 →
+    containsNearbyAlmostDuplicate nums k t = 
+    containsNearbyAlmostDuplicate (nums.map (· * scale)) k (t * scale) :=
+    sorry
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval contains_nearby_almost_duplicate [1, 2, 3, 1] 3 0
+  
+  /-
+  info: True
+  -/
+  -- #guard_msgs in
+  -- #eval contains_nearby_almost_duplicate [1, 0, 1, 1] 1 2
+  
+  /-
+  info: False
+  -/
+  -- #guard_msgs in
+  -- #eval contains_nearby_almost_duplicate [1, 5, 9, 1, 5, 9] 2 3
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+

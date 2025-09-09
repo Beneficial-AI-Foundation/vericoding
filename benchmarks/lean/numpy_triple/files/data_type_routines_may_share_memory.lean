@@ -33,9 +33,7 @@ open Std.Do
 -- </vc-helpers>
 
 def may_share_memory {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id Bool :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem may_share_memory_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
     ⦃⌜True⌝⦄
@@ -51,6 +49,4 @@ theorem may_share_memory_spec {n m : Nat} (a : Vector Float n) (b : Vector Float
       -- Reflexive property: an array compared with itself in the same-size case
       (n = m ∧ a.toList = b.toList → result = true ∨ result = false)
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

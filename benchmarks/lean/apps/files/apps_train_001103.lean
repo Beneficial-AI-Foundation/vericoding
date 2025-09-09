@@ -1,0 +1,110 @@
+/-
+Consider the following algorithm
+order(arr, i) {
+if length(arr) <= 1 {
+return arr
+}
+l = []  
+r = []
+n = length(arr) - 1
+for j in 0, 1, ..., n {
+if ( (arr[j] modulo power(2,i+1))  < power(2,i) ) {
+append arr[j] to l
+}else{
+append arr[j] to r
+}
+}
+l = order(l, i + 1)
+r = order(r, i + 1)
+c = concatenate(l, r)
+return c
+}
+
+Note that $concatenate(l, r)$ returns an array which is the array $l$, followed by the array $r$. Similarly $power(x,y)$ returns $x^y$.
+Let $a$ be the array $a_0,a_1,a_2,a_3, \ldots,a_n$ where $a_j = j$ for each index $j$ and the last index $n = (2^p-1)$ for a fixed integer parameter $p$.  Given an integer $p$ and an index $idx$, your task is calculate the element at index $idx$ in the array returned by executing $order(a, 0)$.
+For example, suppose $ p = 3$ and $idx = 3$.
+- The initial array is $a = [0, 1, 2, 3, 4, 5, 6, 7]$.
+- Executing $order(a, 0)$ first creates two new arrays $l == [0, 2, 4, 6]$ and $r == [1, 3, 5, 7]$.
+- Next, $order(l, 1)$ and $order(r, 1)$ are executed.
+- $order(l, 1)$, in turn, executes $order([0, 4], 2)$ and $order([2, 6], 2)$ which return $[0, 4]$ and $[2, 6]$, respectively. These are then concatenated, so $order(l, 1)$ returns $[0, 4, 2, 6]$.
+- Similarly, $order(r, 1)$ returns $[1, 5, 3, 7]$.
+- These two are concatenated as the final result, so the array returned by $order(a, 0)$ is $[0, 4, 2, 6, 1, 5, 3, 7]$.
+So, if the input is $p = 3$, and $idx = 3$, the answer is $6$. If $p = 3$ and $idx = 7$, the answer should be $7$.
+
+-----Input Format:-----
+- The first line contains a single integer, $T$, which is the number of testcases. The description of each testcase follows.
+- Each testcase is described by a single line with two integers: $p$ and $idx$, where $p$ is the parameter that determines the length of the array $a$ and $idx$ is the index at which you have to report the value in the output of $order(a, 0)$.
+
+-----Output Format:-----
+- You should print the answer in a new line for each testcase, which should be a single integer, the element at index $idx$ after executing $order(a, 0)$ for the array $a$ defined by the parameter $p$.
+
+-----Constraints:-----
+- $1 \leq T \leq 10$ 
+- $1 \leq p \leq 50$
+- $0 \leq idx \leq 2^p-1$
+
+-----SUBTASKS:-----
+- Subtask 1: 20% points : $1 \leq p \leq 20$
+- Subtask 2: 80% points: Original constraints
+
+-----Sample Input:-----
+2
+3 3
+3 7
+
+-----Sample Output:-----
+6
+7
+
+-----Explanation:-----
+Both the testcases have been explained in the problem statement.
+-/
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+def solve_order (p : Nat) (idx : Nat) : Nat := sorry
+
+-- Result is within bounds for p bits
+
+theorem solve_order_bounds (p : Nat) (idx : Nat) (h : idx < 2^p) : 
+  solve_order p idx < 2^p := sorry
+
+-- Result is involutive 
+
+theorem solve_order_involution (p : Nat) (idx : Nat) (h : idx < 2^p) :
+  solve_order p (solve_order p idx) = idx := sorry
+
+-- Identity cases preserve 0 and max value
+
+theorem solve_order_zero (p : Nat) :
+  solve_order p 0 = 0 := sorry
+
+theorem solve_order_max (p : Nat) :
+  solve_order p (2^p - 1) = 2^p - 1 := sorry
+
+-- Bits preservation
+
+theorem solve_order_bits_preservation (p : Nat) (idx : Nat) (h : idx < 2^p) :
+  ∃ k, solve_order p idx < 2^k ∧ k ≤ p := sorry
+
+/-
+info: 6
+-/
+-- #guard_msgs in
+-- #eval solve_order 3 3
+
+/-
+info: 7
+-/
+-- #guard_msgs in
+-- #eval solve_order 3 7
+
+/-
+info: 5
+-/
+-- #guard_msgs in
+-- #eval solve_order 4 10
+
+-- Apps difficulty: interview
+-- Assurance level: guarded_and_plausible

@@ -23,15 +23,11 @@ vc-helpers: |-
   -- <vc-helpers>
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def implementation (numbers: List Int) (delimeter: Int) : List Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   def problem_spec
   -- function signature
   (implementation: List Int → Int → List Int)
@@ -55,12 +51,8 @@ vc-condition: |-
   (numbers: List Int)
   (delimeter: Int)
   : problem_spec implementation numbers delimeter
-  :=
-
-vc-proof: |-
-  -- <vc-proof>
+  := by
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   -- #test implementation [1, 2, 3] 4 = [1, 4, 2, 4, 3]

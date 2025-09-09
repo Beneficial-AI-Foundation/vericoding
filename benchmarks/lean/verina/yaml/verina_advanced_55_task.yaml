@@ -50,15 +50,11 @@ vc-helpers: |-
     | none => 0
   -- </vc-helpers>
 
-vc-signature: |-
+vc-definitions: |-
   def mostFrequent (xs : List Int) (h_precond : mostFrequent_precond (xs)) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible]
   def mostFrequent_postcond (xs : List Int) (result: Int) (h_precond : mostFrequent_precond (xs)) : Prop :=
     let count := fun x => xs.countP (fun y => y = x)
@@ -68,11 +64,7 @@ vc-condition: |-
   
   theorem mostFrequent_spec_satisfied (xs: List Int) (h_precond : mostFrequent_precond (xs)) :
       mostFrequent_postcond (xs) (mostFrequent (xs) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-

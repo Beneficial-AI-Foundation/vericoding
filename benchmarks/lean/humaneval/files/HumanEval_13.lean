@@ -21,9 +21,7 @@ import Std.Data.HashMap
 -- </vc-helpers>
 
 def implementation (a b: Int) : Int :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 def problem_spec
 -- function signature
@@ -44,10 +42,8 @@ spec result
 theorem correctness
 (a b: Int)
 : problem_spec implementation a b
-:=
--- <vc-proof>
+:= by
   sorry
--- </vc-proof>
 
 -- #test implementation 25 15 = 5
 -- #test implementation 3 5 = 1

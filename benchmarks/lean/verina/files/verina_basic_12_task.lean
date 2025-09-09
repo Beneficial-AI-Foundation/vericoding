@@ -19,9 +19,7 @@ def cubeSurfaceArea_precond (size : Nat) : Prop :=
 -- </vc-helpers>
 
 def cubeSurfaceArea (size : Nat) (h_precond : cubeSurfaceArea_precond (size)) : Nat :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 @[reducible, simp]
 def cubeSurfaceArea_postcond (size : Nat) (result: Nat) (h_precond : cubeSurfaceArea_precond (size)) :=
@@ -29,9 +27,7 @@ def cubeSurfaceArea_postcond (size : Nat) (result: Nat) (h_precond : cubeSurface
 
 theorem cubeSurfaceArea_spec_satisfied (size: Nat) (h_precond : cubeSurfaceArea_precond (size)) :
     cubeSurfaceArea_postcond (size) (cubeSurfaceArea (size) h_precond) h_precond := by
--- <vc-proof>
   sorry
--- </vc-proof>
 
 /-
 -- Invalid Inputs

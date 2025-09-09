@@ -37,9 +37,7 @@ open Std.Do
 -- </vc-helpers>
 
 def isdecimal {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem isdecimal_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
@@ -50,6 +48,4 @@ theorem isdecimal_spec {n : Nat} (a : Vector String n) :
              ∀ c : Char, c ∈ (a.get i).toList → c.isDigit = true)) ∧
         -- Empty string property: empty strings always return false
         (a.get i = "" → result.get i = false)⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>

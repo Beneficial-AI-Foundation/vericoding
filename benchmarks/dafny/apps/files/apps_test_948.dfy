@@ -1,0 +1,159 @@
+Given an n×m grid of lowercase Latin letters, count the number of 2×2 squares 
+where the four letters can form the word "face" (i.e., the four letters are 
+exactly 'f', 'a', 'c', 'e' in any arrangement). Overlapping squares are counted separately.
+
+predicate ValidInput(input: string)
+{
+    |input| > 0
+}
+
+predicate ValidGrid(grid: seq<string>, n: int, m: int)
+{
+    n >= 1 && m >= 1 && |grid| == n &&
+    forall i :: 0 <= i < |grid| ==> |grid[i]| == m
+}
+
+function CountFaceSquares(input: string): int
+    requires |input| > 0
+    ensures CountFaceSquares(input) >= 0
+{
+    var lines := SplitLinesFunc(input);
+    if |lines| == 0 then 0
+    else
+        var firstLine := lines[0];
+        var nm := SplitSpacesFunc(firstLine);
+        if |nm| < 2 then 0
+        else
+            var n := StringToIntFunc(nm[0]);
+            var m := StringToIntFunc(nm[1]);
+            if n < 1 || m < 1 || |lines| < n + 1 then 0
+            else
+                var grid := lines[1..n+1];
+                CountValidSquares(grid, n, m)
+}
+
+function CountFaceSquaresAsString(input: string): string
+    requires |input| > 0
+    ensures |CountFaceSquaresAsString(input)| > 0
+{
+    var count := CountFaceSquares(input);
+    IntToStringFunc(count) + "\n"
+}
+
+function CountValidSquares(grid: seq<string>, n: int, m: int): int
+    requires n >= 1 && m >= 1
+    requires |grid| == n
+    ensures CountValidSquares(grid, n, m) >= 0
+{
+    if n <= 1 || m <= 1 then 0
+    else
+        var count := 0;
+        count + SumSquares(grid, 0, 0, n-1, m-1)
+}
+
+function SumSquares(grid: seq<string>, i: int, j: int, maxI: int, maxJ: int): int
+    requires 0 <= i <= maxI
+    requires 0 <= j <= maxJ
+    ensures SumSquares(grid, i, j, maxI, maxJ) >= 0
+    decreases maxI - i, maxJ - j
+{
+    if i >= maxI then 0
+    else if j >= maxJ then SumSquares(grid, i+1, 0, maxI, maxJ)
+    else
+        var current := if IsValidSquare(grid, i, j) then 1 else 0;
+        current + SumSquares(grid, i, j+1, maxI, maxJ)
+}
+
+function IsValidSquare(grid: seq<string>, i: int, j: int): bool
+    requires i >= 0 && j >= 0
+{
+    if i >= |grid| || i + 1 >= |grid| then false
+    else if j >= |grid[i]| || j + 1 >= |grid[i]| || j >= |grid[i+1]| || j + 1 >= |grid[i+1]| then false
+    else
+        var chars := {grid[i][j], grid[i+1][j+1], grid[i+1][j], grid[i][j+1]};
+        chars == {'f', 'a', 'c', 'e'}
+}
+
+function SplitLinesFunc(s: string): seq<string>
+{
+    if |s| == 0 then []
+    else SplitLinesHelper(s, 0, "", [])
+}
+
+function SplitLinesHelper(s: string, i: int, current: string, acc: seq<string>): seq<string>
+    requires 0 <= i <= |s|
+    decreases |s| - i
+{
+    if i == |s| then
+        if |current| > 0 then acc + [current] else acc
+    else if s[i] == '\n' then
+        if |current| > 0 then SplitLinesHelper(s, i+1, "", acc + [current])
+        else SplitLinesHelper(s, i+1, "", acc)
+    else
+        SplitLinesHelper(s, i+1, current + [s[i]], acc)
+}
+
+function SplitSpacesFunc(s: string): seq<string>
+{
+    if |s| == 0 then []
+    else SplitSpacesHelper(s, 0, "", [])
+}
+
+function SplitSpacesHelper(s: string, i: int, current: string, acc: seq<string>): seq<string>
+    requires 0 <= i <= |s|
+    decreases |s| - i
+{
+    if i == |s| then
+        if |current| > 0 then acc + [current] else acc
+    else if s[i] == ' ' then
+        if |current| > 0 then SplitSpacesHelper(s, i+1, "", acc + [current])
+        else SplitSpacesHelper(s, i+1, "", acc)
+    else
+        SplitSpacesHelper(s, i+1, current + [s[i]], acc)
+}
+
+function StringToIntFunc(s: string): int
+    ensures StringToIntFunc(s) >= 0
+{
+    StringToIntHelper(s, 0, 0)
+}
+
+function StringToIntHelper(s: string, i: int, acc: int): int
+    requires 0 <= i <= |s|
+    requires acc >= 0
+    ensures StringToIntHelper(s, i, acc) >= 0
+    decreases |s| - i
+{
+    if i == |s| then acc
+    else if '0' <= s[i] <= '9' then
+        StringToIntHelper(s, i+1, acc * 10 + (s[i] as int - '0' as int))
+    else
+        StringToIntHelper(s, i+1, acc)
+}
+
+function IntToStringFunc(n: int): string
+    requires n >= 0
+    ensures |IntToStringFunc(n)| > 0
+{
+    if n == 0 then "0"
+    else IntToStringHelper(n, "")
+}
+
+function IntToStringHelper(n: int, acc: string): string
+    requires n > 0
+    ensures |IntToStringHelper(n, acc)| > |acc|
+    decreases n
+{
+    var digit := (n % 10) as char + ('0' as int) as char;
+    var newAcc := [digit] + acc;
+    if n / 10 == 0 then newAcc
+    else IntToStringHelper(n / 10, newAcc)
+}
+
+method solve(input: string) returns (result: string)
+    requires ValidInput(input)
+    ensures |result| > 0
+    ensures result == CountFaceSquaresAsString(input)
+{
+    result := CountFaceSquaresAsString(input);
+}

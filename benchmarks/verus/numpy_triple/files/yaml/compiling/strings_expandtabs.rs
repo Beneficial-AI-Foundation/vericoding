@@ -1,0 +1,36 @@
+/* Return a copy of each string element where all tab characters are replaced by spaces
+
+Expand tabs in strings to spaces with configurable tab size
+
+Specification: expandtabs replaces tab characters with appropriate number of spaces */
+
+use vstd::prelude::*;
+
+verus! {
+fn expandtabs(a: Vec<String>, tabsize: Vec<usize>) -> (result: Vec<String>)
+    requires 
+        a.len() == tabsize.len(),
+        forall|i: int| 0 <= i < tabsize.len() ==> tabsize[i] > 0,
+    ensures
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < result.len() ==> {
+            let orig_str = &a[i];
+            let result_str = &result[i];
+            let tab_sz = tabsize[i];
+            /* Core property: result contains no tab characters */
+            (forall|c: char| result_str@.contains(c) ==> c != '\t') &&
+            /* Identity property: strings without tabs remain unchanged */
+            (!orig_str@.contains('\t') ==> result_str@ == orig_str@) &&
+            /* Length property: result is at least as long as original */
+            (result_str@.len() >= orig_str@.len()) &&
+            /* Tab expansion property: tabs are replaced by 1 to tab_sz spaces */
+            (orig_str@.contains('\t') ==> result_str@.len() > orig_str@.len())
+        }
+{
+    // impl-start
+    assume(false);
+    Vec::new()
+    // impl-end
+}
+}
+fn main() {}

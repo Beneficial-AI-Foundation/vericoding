@@ -26,9 +26,7 @@ open Std.Do
 -- </vc-helpers>
 
 def geomspace {n : Nat} (start stop : Float) (endpoint : Bool := true) : Id (Vector Float n) :=
--- <vc-implementation>
   sorry
--- </vc-implementation>
 
 theorem geomspace_spec {n : Nat} (start stop : Float) (endpoint : Bool)
     (h_start_nonzero : start ≠ 0) (h_stop_nonzero : stop ≠ 0) (h_n_pos : n > 0) :
@@ -49,6 +47,4 @@ theorem geomspace_spec {n : Nat} (start stop : Float) (endpoint : Bool)
         ∀ i : Fin n,
           result.get i = start * (ratio ^ i.val.toFloat))
     ⌝⦄ := by
--- <vc-proof>
   sorry
--- </vc-proof>
