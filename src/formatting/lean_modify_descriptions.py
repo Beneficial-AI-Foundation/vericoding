@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Script to remove 'import Imports.AllImports' lines from vc-preamble sections
-in all YAML files in the apps_train directory.
+Normalize Lean YAML: wrap vc-description in a doc comment and
+tidy whitespace/markers across sections.
 """
 
 import os

@@ -92,8 +92,8 @@ def convert_sample_to_yaml(sample: Dict[str, Any]) -> str:
     spec = sample.get("spec", "")
     preceding_defs, last_def, spec_theorems = parse_lean_spec(spec)
 
-    # Build vc-preamble: default import + preceding defs
-    preamble_parts = ["import Imports.AllImports"]
+    # Build vc-preamble from preceding defs only
+    preamble_parts = []
     if preceding_defs:
         preamble_parts.extend(preceding_defs)
     preamble = "\n\n".join(preamble_parts)

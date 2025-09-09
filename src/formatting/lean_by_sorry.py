@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Script to remove 'import Imports.AllImports' lines from vc-preamble sections
-in all YAML files in the apps_train directory.
+Fix theorem blocks so a trailing 'sorry' is preceded by 'by',
+and normalize whitespace across sections.
 """
 
 import os
@@ -41,7 +41,7 @@ def normalize_section_content(content: str) -> str:
     return '\n'.join(normalized_lines).rstrip()
 
 def process_yaml_file(file_path: Path) -> None:
-    """Process a single YAML file to remove 'import Imports.AllImports' lines and normalize sections."""
+    """Process a single YAML file: ensure theorems have 'by' before a lone 'sorry', and normalize sections."""
     try:
         # Import ruamel.yaml here to avoid circular imports
         from ruamel.yaml import YAML
