@@ -31,7 +31,7 @@ ARTIFACTS.mkdir(parents=True, exist_ok=True)
 
 def get_config_value(
     key: str, default: int | None = None, required: bool = True
-) -> int:
+) -> int | None:
     """Get a configuration value with validation.
 
     Args:
@@ -40,7 +40,7 @@ def get_config_value(
         required: Whether the configuration key is required
 
     Returns:
-        The configuration value as an integer
+        The configuration value as an integer, or None if not required and default is None
 
     Raises:
         ValueError: If the key is required but not found, or if the value is not a positive integer
@@ -50,7 +50,10 @@ def get_config_value(
     if value is None:
         if required:
             raise ValueError(f"{key} must be configured in config.yml")
-        # This should never happen if default is provided and required=False
+        # If not required and default was explicitly None, this is valid
+        if default is None:
+            return None
+        # This should never happen if a non-None default is provided and required=False
         raise ValueError(
             f"Invalid configuration: {key} is None and no valid default provided"
         )

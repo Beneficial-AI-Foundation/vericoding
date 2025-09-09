@@ -42,6 +42,29 @@ class TranslationResult:
     rust_for_verification: str  # Rust code used for verification
 
 
+def _update_conversation_history(result, current_history: list) -> list:
+    """Update conversation history with new messages from agent result
+
+    Args:
+        result: Agent result containing new messages
+        current_history: Current conversation history list
+
+    Returns:
+        Updated conversation history list
+    """
+    try:
+        new_history = result.all_messages()
+        if new_history and isinstance(new_history, list):
+            logfire.info(f"Updated conversation history: {len(new_history)} messages")
+            return new_history
+        else:
+            logfire.warning(f"Invalid conversation history format: {type(new_history)}")
+            return current_history
+    except (AttributeError, TypeError) as e:
+        logfire.warning(f"Could not update conversation history: {e}")
+        return current_history
+
+
 def create_agent(source_language: str = "dafny"):
     """Create and return a configured PydanticAI agent with tools"""
     # Load language-specific system prompt
@@ -194,21 +217,10 @@ Please translate the following {source_language} code to Verus:
         logfire.debug(f"Full response:\n{result.output}")
 
         # Update conversation history with this exchange
-        # PydanticAI will automatically manage the message objects in result.all_messages()
-        try:
-            new_history = result.all_messages()
-            # Type guard to ensure we have a proper list
-            if isinstance(new_history, list):
-                conversation_history = new_history
-                logfire.info(
-                    f"Updated conversation history: {len(conversation_history)} messages"
-                )
-            else:
-                logfire.warning(
-                    f"Unexpected type for conversation history: {type(new_history)}"
-                )
-        except (AttributeError, TypeError) as e:
-            logfire.warning(f"Could not update conversation history: {e}")
+        # Use the extracted method for better testability and error handling
+        conversation_history = _update_conversation_history(
+            result, conversation_history
+        )
 
         # Store the conversation exchange for logging
         iteration_context["conversation_exchanges"].append(
