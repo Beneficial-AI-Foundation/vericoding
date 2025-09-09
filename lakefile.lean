@@ -33,6 +33,11 @@ particularly Dafny benchmarks and NumPy specifications.
 -- lean_lib DafnyBenchSpecs where
 --   globs := #[.andSubmodules `DafnyBenchSpecs]
 
+-- spec_to_code.py puts files here
+lean_lib Generated where
+  globs := #[.andSubmodules `Generated]
+  srcDir := "lean"
+
 lean_lib Benchmarks where
   globs := #[
     .submodules `apps.files,
