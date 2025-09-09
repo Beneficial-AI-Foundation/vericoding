@@ -107,7 +107,11 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                 for part in config.language_config.compile_check_command
             ]
             try:
-                _cwd = get_repo_root() if config.language == "lean" else None
+                _cwd = (
+                    get_repo_root(Path(config.files_dir))
+                    if config.language == "lean"
+                    else None
+                )
                 logger.info(
                     f"    ▶ compile_check cmd: (cwd={_cwd or os.getcwd()}) $ {shlex.join(cmd)}"
                 )
@@ -156,7 +160,11 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
         timeout_value = getattr(
             config.language_config, "timeout", 120
         )  # Default to 120 seconds if not specified
-        _cwd = get_repo_root() if config.language == "lean" else None
+        _cwd = (
+            get_repo_root(Path(config.files_dir))
+            if config.language == "lean"
+            else None
+        )
         logger.info(
             f"    ▶ verify cmd: (cwd={_cwd or os.getcwd()}) $ {shlex.join(cmd)} [timeout={timeout_value}s]"
         )

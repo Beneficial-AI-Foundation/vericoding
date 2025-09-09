@@ -264,9 +264,14 @@ def setup_configuration(args) -> ProcessingConfig:
         try:
             from vericoding.utils import get_repo_root  # type: ignore
         except Exception:
-            get_repo_root = lambda: Path.cwd()
-        repo_root = Path(get_repo_root())
-        output_dir = str(repo_root / "benchmarks/lean/dafnybench_gen" / f"Run_{timestamp}")
+            # Fallback if utility is unavailable
+            def get_repo_root(start=None):
+                return Path.cwd()
+        # Anchor repo detection to the provided input folder to avoid CWD issues
+        repo_root = Path(get_repo_root(input_path))
+        output_dir = str(
+            repo_root / "benchmarks/lean/dafnybench_gen" / f"Run_{timestamp}"
+        )
     else:
         output_dir = str(
             src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part

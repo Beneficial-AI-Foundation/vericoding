@@ -1,6 +1,7 @@
 """Git operations and URL generation utilities."""
 
 from pathlib import Path
+from typing import Optional
 from urllib.parse import quote
 
 import git
@@ -58,16 +59,24 @@ def get_github_url(file_path: Path, repo_url: str, branch: str = "main") -> str:
     return github_url
 
 
-def get_repo_root() -> Path:
-    """Find the repository root by looking for .git directory."""
+def get_repo_root(start: Optional[Path] = None) -> Path:
+    """Find the repository root.
+
+    - If ``start`` is provided, search from that path upward for a Git repo.
+    - Otherwise, search from the current working directory.
+    - Falls back to scanning for a ``.git`` directory upward.
+    """
+    base = start if start is not None else Path.cwd()
     try:
-        repo = git.Repo(search_parent_directories=True)
+        # GitPython can search from an explicit path
+        repo = git.Repo(base, search_parent_directories=True)
         return Path(repo.working_dir)
     except InvalidGitRepositoryError:
-        # Fallback to manual search if not in a git repository
-        current = Path.cwd()
+        # Fallback to manual search upward from the provided base
+        current = base
         while current != current.parent:
             if (current / ".git").exists():
                 return current
             current = current.parent
-        return Path.cwd()  # Fallback to current directory
+        # Last resort: return the current working directory
+        return Path.cwd()
