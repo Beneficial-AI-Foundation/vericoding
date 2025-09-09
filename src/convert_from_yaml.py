@@ -5,6 +5,18 @@ import json
 from pathlib import Path
 from ruamel.yaml import YAML
 
+def _sanitize_lean_description(text: str) -> str:
+    """Sanitize description text before embedding in a Lean block comment.
+
+    - Replace "+/-" with the single character "±" to avoid accidental
+      opening of nested block comments ("/-") inside a "/* */"-style doc.
+    - Leave structural "-/" endings and leading "/-" markers intact.
+    """
+    if not isinstance(text, str) or not text:
+        return text
+    # Only a minimal, targeted replacement to avoid touching markup.
+    return text.replace("+/-", "±")
+
 def spec_to_string(spec: dict, template: list[str]) -> str:
     """Convert YAML spec dict to string by concatenating sections."""
     parts = []
@@ -55,6 +67,11 @@ def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = Fal
                 template.append('\n')
     else:
         template = get_template(output_path.suffix[1:])
+
+    # Defensive sanitization for Lean descriptions to avoid unterminated comments
+    if output_path.suffix == '.lean' and 'vc-description' in spec:
+        spec = dict(spec)  # shallow copy to avoid mutating caller's dict
+        spec['vc-description'] = _sanitize_lean_description(spec['vc-description'])
     
     content = spec_to_string(spec, template)
     
