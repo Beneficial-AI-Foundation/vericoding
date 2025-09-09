@@ -311,16 +311,22 @@ def _create_failure_analysis_table(failed_results):
 
 
 def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after_upload: bool = False, resolved_model: str = None):
-    """Finalize wandb run with summary metrics and artifact upload."""
+    """Finalize wandb run with comprehensive summary metrics, tables, and artifact upload."""
     if not wandb_run:
         return
         
     try:
+        import wandb
         from vericoding.core.llm_providers import get_global_token_stats
+        from pathlib import Path
+        import shutil
+        from datetime import datetime
         
-        # Calculate basic statistics
+        # Calculate comprehensive statistics
         successful = [r for r in results if r.success]
-        failed = [r for r in results if not r.success]
+        failed = [r for r in results if not r.success and not getattr(r, 'has_bypass', False)]
+        bypassed = [r for r in results if getattr(r, 'has_bypass', False)]
+        success_percentage = (len(successful) / len(results)) * 100 if results else 0
         
         # Calculate iteration statistics
         all_iterations = []
@@ -337,33 +343,225 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
         # Get token usage statistics
         token_stats = get_global_token_stats()
         
-        log_experiment_results_to_wandb(config, results, processing_time, success_percentage, args)
-
-        wandb.run.summary["total_files"] = len(results)
-        wandb.run.summary["successful_files"] = len(successful)
-        wandb.run.summary["failed_files"] = len(failed)
-        wandb.run.summary["success_rate"] = len(successful) / len(results) if results else 0
+        # Log comprehensive summary metrics (organized by category)
+        summary_metrics = {
+            # Core results
+            "results/total_files": len(results),
+            "results/successful_files": len(successful), 
+            "results/failed_files": len(failed),
+            "results/bypassed_files": len(bypassed),
+            "results/success_rate_percent": success_percentage,
+            
+            # Timing information
+            "performance/duration_seconds": processing_time,
+            "performance/avg_time_per_file": avg_time_per_file,
+            "performance/throughput_files_per_minute": (len(results) / processing_time) * 60 if processing_time > 0 else 0,
+            
+            # Resource usage
+            "resources/parallel_workers": config.max_workers,
+            "resources/api_rate_limit_delay": config.api_rate_limit_delay,
+            
+            # Token usage
+            "tokens/total_input_tokens": token_stats["input_tokens"],
+            "tokens/total_output_tokens": token_stats["output_tokens"],
+            "tokens/total_tokens": token_stats["input_tokens"] + token_stats["output_tokens"],
+            
+            # LLM calls and iterations
+            "iterations/total_llm_calls": total_llm_calls,
+            "iterations/avg_iterations": sum(all_iterations) / len(all_iterations) if all_iterations else 0,
+            "iterations/min_iterations": min(all_iterations) if all_iterations else 0,
+            "iterations/max_iterations": max(all_iterations) if all_iterations else 0,
+            
+            # Configuration
+            "config/llm_model": resolved_model or config.llm,
+            "config/max_iterations": config.max_iterations,
+            "config/language": config.language,
+        }
         
-        # Timing metrics
-        wandb.run.summary["duration_seconds"] = processing_time
-        wandb.run.summary["avg_time_per_file"] = avg_time_per_file
+        # Set all summary metrics
+        for key, value in summary_metrics.items():
+            wandb.run.summary[key] = value
         
-        # Iteration statistics
-        if all_iterations:
-            wandb.run.summary["avg_iterations"] = sum(all_iterations) / len(all_iterations)
-            wandb.run.summary["min_iterations"] = min(all_iterations)
-            wandb.run.summary["max_iterations"] = max(all_iterations)
-            wandb.run.summary["total_llm_calls"] = total_llm_calls
+        # Create comprehensive results table with file contents and debug files
+        results_table = wandb.Table(columns=[
+            "file_name", "subfolder", "success", "output_file", "error_message",
+            "has_bypass", "file_path", "original_spec", "final_output", "debug_files",
+            "generate_prompt", "fix_prompts"
+        ])
         
-        # Token usage metrics
-        wandb.run.summary["total_input_tokens"] = token_stats["input_tokens"]
-        wandb.run.summary["total_output_tokens"] = token_stats["output_tokens"]
+        for result in results:
+            file_path = Path(result.spec_yaml_file) if hasattr(result, 'spec_yaml_file') else Path(result.file)
+            subfolder = file_path.parts[0] if len(file_path.parts) > 1 else "root"
+            output_name = Path(result.code_file).name if hasattr(result, 'code_file') and result.code_file else ""
+            error_preview = result.error or ""
+            
+            # Read original specification file
+            original_spec = ""
+            try:
+                if file_path.exists():
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        original_spec = f.read()
+            except Exception as e:
+                original_spec = f"Error reading original file: {str(e)}"
+            
+            # Read final output file
+            final_output = ""
+            if hasattr(result, 'code_file') and result.code_file:
+                try:
+                    with open(result.code_file, 'r', encoding='utf-8') as f:
+                        final_output = f.read()
+                except Exception as e:
+                    final_output = f"Error reading output file: {str(e)}"
+            
+            # Collect debug files content
+            debug_files_content = {}
+            if hasattr(config, 'debug_mode') and config.debug_mode:
+                # Look for debug files for this specific file
+                relative_path = file_path.relative_to(Path(config.files_dir)) if hasattr(config, 'files_dir') else file_path
+                debug_dir = Path(config.output_dir) / "debug" / relative_path.parent if relative_path.parent != Path(".") else Path(config.output_dir) / "debug"
+                
+                if debug_dir.exists():
+                    file_stem = file_path.stem
+                    for debug_file in debug_dir.glob(f"*{file_stem}*"):
+                        try:
+                            with open(debug_file, 'r', encoding='utf-8') as f:
+                                content = f.read()
+                                debug_files_content[debug_file.name] = content
+                        except Exception as e:
+                            debug_files_content[debug_file.name] = f"Error reading: {str(e)}"
+            
+            # Format debug files as readable text
+            debug_files_text = ""
+            if debug_files_content:
+                debug_files_text = "\n\n".join([
+                    f"=== {filename} ===\n{content}" 
+                    for filename, content in debug_files_content.items()
+                ])
+            
+            results_table.add_data(
+                file_path.name,
+                subfolder, 
+                result.success,
+                output_name,
+                error_preview,
+                getattr(result, 'has_bypass', False),
+                str(file_path),
+                original_spec,
+                final_output,
+                debug_files_text or "No debug files",
+                getattr(result, 'generate_prompt', ""),
+                "\n\n---\n\n".join(getattr(result, 'fix_prompts', []))
+            )
         
-        # LLM configuration context  
-        wandb.run.summary["llm_model"] = resolved_model or config.llm
+        wandb.log({"detailed_results": results_table})
         
         # Create enhanced failure analysis table
         _create_failure_analysis_table(failed)
+        
+        # Upload comprehensive artifacts with better organization
+        print("\n📤 Uploading experiment artifacts to wandb...")
+        
+        # Create unique artifact names using run timestamp
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        
+        # 1. Generated code artifact
+        code_artifact = wandb.Artifact(
+            name=f"generated_code_{config.language}_{timestamp}",
+            type="generated-code",
+            description=f"Generated {config.language} code from specifications",
+            metadata={
+                "language": config.language,
+                "success_rate": success_percentage,
+                "total_files": len(results),
+                "llm_model": resolved_model or config.llm,
+                "timestamp": timestamp,
+            }
+        )
+        
+        # 2. Debug files artifact (if debug mode enabled)
+        debug_artifact = None
+        if hasattr(config, 'debug_mode') and config.debug_mode:
+            debug_artifact = wandb.Artifact(
+                name=f"debug_files_{config.language}_{timestamp}",
+                type="debug-files", 
+                description=f"Debug and intermediate files from {config.language} processing",
+                metadata={
+                    "language": config.language,
+                    "debug_mode": True,
+                    "iterations": config.max_iterations,
+                    "timestamp": timestamp,
+                }
+            )
+        
+        # 3. Summary and analysis artifact
+        summary_artifact = wandb.Artifact(
+            name=f"analysis_{config.language}_{timestamp}",
+            type="analysis",
+            description=f"Summary reports and CSV analysis for {config.language} experiment",
+            metadata={
+                "language": config.language,
+                "total_files": len(results),
+                "success_rate": success_percentage,
+                "timestamp": timestamp,
+            }
+        )
+        
+        # Add files to artifacts
+        output_path = Path(config.output_dir)
+        if output_path.exists():
+            for file_path in output_path.rglob("*"):
+                if file_path.is_file():
+                    relative_path = file_path.relative_to(output_path)
+                    
+                    # Categorize files into appropriate artifacts
+                    file_ext = file_path.suffix.lower()
+                    file_name = file_path.name
+                    
+                    if file_ext in ['.rs', '.dfy', '.lean'] and not any(keyword in file_name for keyword in ['iter_', 'debug']):
+                        # Final implementation files go to code artifact
+                        code_artifact.add_file(str(file_path), name=str(relative_path))
+                    elif debug_artifact and ('debug' in str(relative_path) or 'iter_' in file_name or 'error.log' in file_name):
+                        # Debug/intermediate files and error logs go to debug artifact
+                        debug_artifact.add_file(str(file_path), name=str(relative_path))
+                    elif file_ext in ['.txt', '.csv']:
+                        # Summary and analysis files go to analysis artifact
+                        summary_artifact.add_file(str(file_path), name=str(relative_path))
+                    else:
+                        # Fallback to code artifact for other files
+                        code_artifact.add_file(str(file_path), name=str(relative_path))
+        
+        # Log all artifacts
+        wandb.log_artifact(code_artifact)
+        print(f"✅ Generated code uploaded to wandb artifact: generated_code_{config.language}_{timestamp}")
+        
+        if debug_artifact and hasattr(config, 'debug_mode') and config.debug_mode:
+            wandb.log_artifact(debug_artifact)
+            print(f"✅ Debug files uploaded to wandb artifact: debug_files_{config.language}_{timestamp}")
+        
+        wandb.log_artifact(summary_artifact) 
+        print(f"✅ Analysis files uploaded to wandb artifact: analysis_{config.language}_{timestamp}")
+        
+        # Store key files directly in wandb.summary for easy access
+        if output_path.exists():
+            summary_file = output_path / "summary.txt"
+            if summary_file.exists():
+                try:
+                    with open(summary_file, 'r') as f:
+                        wandb.run.summary["experiment_summary"] = f.read()
+                except Exception as e:
+                    print(f"Warning: Could not read summary file: {e}")
+            
+            csv_file = output_path / "results.csv"
+            if csv_file.exists():
+                wandb.run.summary["results_csv_path"] = str(csv_file)
+        
+        # Delete local files if requested
+        if delete_after_upload:
+            try:
+                shutil.rmtree(output_path)
+                print(f"🗑️ Local files deleted from {output_path}")
+            except Exception as e:
+                print(f"⚠️ Error deleting local files: {e}")
         
 
         # Finish wandb run
