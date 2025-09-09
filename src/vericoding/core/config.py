@@ -182,7 +182,23 @@ def setup_configuration(args) -> ProcessingConfig:
 
     
     # Create output directory structure
-    output_dir = str(base_dir / f"vericoder_{args.llm}_{timestamp}" / args.language)
+    # For Lean, put files under lean/Generated/ directory so lake can find them
+    if args.language == "lean":
+        # Find project root (look for lakefile.lean)
+        current_dir = Path.cwd()
+        project_root = current_dir
+        while project_root != project_root.parent:
+            if (project_root / "lakefile.lean").exists():
+                break
+            project_root = project_root.parent
+        else:
+            # Fallback if no lakefile.lean found
+            project_root = current_dir
+            
+        output_dir = str(project_root / "lean" / "Generated" / f"Run_{timestamp}")
+    else:
+        output_dir = str(base_dir / f"vericoder_{args.llm}_{timestamp}" / args.language)
+    
     summary_file = str(Path(output_dir) / "summary.txt")
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
