@@ -335,7 +335,7 @@ async def main_async(
 
     # Calculate statistics
     total_successful = sum(res["success"] for res in results)
-    percentage_successful = total_successful / len(results) if len(results) > 0 else 0.0
+    percentage_successful = total_successful / max(len(results), 1)
 
     print("Results:")
     print(f"  Successful files: {total_successful}")
