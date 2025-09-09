@@ -11,6 +11,24 @@ from code2verus.config import cfg
 
 
 def yaml_to_verus(verus_yaml: str) -> str:
+    """Convert YAML format to Verus code by extracting and concatenating sections.
+
+    Extracts valid sections from YAML (vc-description, vc-preamble, vc-helpers,
+    vc-spec, vc-code, vc-postamble) and concatenates them with newlines.
+
+    Args:
+        verus_yaml: YAML string containing Verus code sections
+
+    Returns:
+        Concatenated Verus code from all non-empty sections
+
+    Raises:
+        ValueError: If YAML doesn't parse to a dictionary, contains forbidden fields,
+                   or all sections are empty/missing
+
+    Note:
+        If YAML parsing fails, the original string is returned as-is.
+    """
     try:
         # First, try to parse the YAML as-is
         as_yaml = yaml.safe_load(verus_yaml)
@@ -55,6 +73,15 @@ def yaml_to_verus(verus_yaml: str) -> str:
 
         if "vc-postamble" in as_yaml and as_yaml["vc-postamble"]:
             parts.append(as_yaml["vc-postamble"])
+
+        # Check if no valid content was found
+        if not parts:
+            logfire.warning(
+                "No valid Verus content found in YAML - all sections are empty"
+            )
+            raise ValueError(
+                "No valid Verus content found: all YAML sections (vc-description, vc-preamble, vc-helpers, vc-spec, vc-code, vc-postamble) are empty or missing"
+            )
 
         return "\n".join(parts)
 
