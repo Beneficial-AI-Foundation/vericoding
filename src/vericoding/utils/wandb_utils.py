@@ -433,8 +433,8 @@ def finalize_wandb_run(wandb_run, config, results, processing_time, delete_after
             # Format debug files as readable text
             debug_files_text = ""
             if debug_files_content:
-                debug_files_text = "\n\n".join([
-                    f"=== {filename} ===\n{content}" 
+                debug_files_text = "\n".join([
+                    f"-----------------------------\nSTART OF FILE {filename}\n-----------------------------\n{content}\n-----------------------------\nEND OF FILE {filename}\n-----------------------------" 
                     for filename, content in debug_files_content.items()
                 ])
             
