@@ -1,3 +1,6 @@
+/*
+*/
+
 /* 
 HumanEvalX 3
 You're given a list of deposit and withdrawal operations on a bank account that starts with zero balance. 
@@ -23,6 +26,6 @@ method BelowZero(ops: seq<int>) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

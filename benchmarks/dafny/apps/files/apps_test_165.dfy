@@ -1,6 +1,8 @@
+/*
 Calculate the minimum number of meals Vasiliy could have missed during his sanatorium stay.
 Given counts of breakfasts (b), dinners (d), and suppers (s) he had, determine how many meals
 he definitively missed based on arrival/departure timing constraints.
+*/
 
 function Max3(a: int, b: int, c: int): int
 {
@@ -29,88 +31,16 @@ predicate ValidInput(input: string)
     |input| > 0
 }
 
-function TrimNewline(s: string): string
-{
-    if |s| > 0 && s[|s|-1] == '\n' then s[..|s|-1] else s
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function SplitSpaces(s: string): seq<string>
-{
-    if |s| == 0 then []
-    else
-        var parts: seq<string> := [];
-        var current := "";
-        var i := 0;
-        SplitSpacesHelper(s, 0, current, parts)
-}
-
-function SplitSpacesHelper(s: string, i: nat, current: string, parts: seq<string>): seq<string>
-decreases |s| - i
-{
-    if i >= |s| then
-        if |current| > 0 then parts + [current] else parts
-    else if s[i] == ' ' then
-        if |current| > 0 then SplitSpacesHelper(s, i+1, "", parts + [current])
-        else SplitSpacesHelper(s, i+1, current, parts)
-    else
-        SplitSpacesHelper(s, i+1, current + [s[i]], parts)
-}
-
-function StringToInt(s: string): int
-{
-    if |s| == 0 then 0
-    else if s[0] == '-' && |s| > 1 then -(StringToNat(s[1..]) as int)
-    else StringToNat(s) as int
-}
-
-function StringToNat(s: string): nat
-{
-    if |s| == 0 then 0
-    else if |s| == 1 then
-        if '0' <= s[0] <= '9' then s[0] as int - '0' as int else 0
-    else
-        var lastDigit := if '0' <= s[|s|-1] <= '9' then s[|s|-1] as int - '0' as int else 0;
-        StringToNat(s[..|s|-1]) * 10 + lastDigit
-}
-
-function IntToString(n: int): string
-{
-    if n == 0 then "0"
-    else if n < 0 then "-" + NatToString(-n)
-    else NatToString(n)
-}
-
-function NatToString(n: nat): string
-{
-    if n == 0 then ""
-    else NatToString(n / 10) + [(n % 10) as char + '0' as char]
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
 requires ValidInput(input)
 ensures result == IntToString(CalculateMissedMeals(input))
+// </vc-spec>
+// <vc-code>
 {
-    var parts := SplitSpaces(TrimNewline(input));
-    if |parts| >= 3 {
-        var a := StringToInt(parts[0]);
-        var b := StringToInt(parts[1]);
-        var c := StringToInt(parts[2]);
-        var maxVal := Max3(a, b, c);
-        var threshold := maxVal - 1;
-
-        var ans := 0;
-        if a < threshold {
-            ans := ans + (threshold - a);
-        }
-        if b < threshold {
-            ans := ans + (threshold - b);
-        }
-        if c < threshold {
-            ans := ans + (threshold - c);
-        }
-
-        result := IntToString(ans);
-    } else {
-        result := "0";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

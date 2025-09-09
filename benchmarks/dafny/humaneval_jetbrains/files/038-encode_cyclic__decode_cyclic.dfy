@@ -1,4 +1,3 @@
-
 /*
 function_signature: method decode_cyclic(s: seq<int>) returns (res: seq<int>)
 Decode data. Ensures: returns the correct size/count; the condition holds for all values; the condition holds for all values; the condition holds for all values.
@@ -16,6 +15,10 @@ method encode_cyclic(s: seq<int>) returns (res: seq<int>)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method decode_cyclic(s: seq<int>) returns (res: seq<int>)
     // post-conditions-start
     ensures |s| == |res|
@@ -23,6 +26,9 @@ method decode_cyclic(s: seq<int>) returns (res: seq<int>)
     ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 0 ==> res[i] == s[i + 2])
     ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 1 ==> res[i] == s[i - 1])
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

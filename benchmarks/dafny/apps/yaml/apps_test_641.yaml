@@ -28,27 +28,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function SplitOnSpace(s: string): seq<string>
-      ensures |SplitOnSpace(s)| >= 1
-  {
-      if |s| == 0 then [""]
-      else 
-          var parts := SplitOnSpaceHelper(s, 0, "");
-          if |parts| == 0 then [""] else parts
-  }
-  
-  function SplitOnSpaceHelper(s: string, index: nat, current: string): seq<string>
-      requires index <= |s|
-      decreases |s| - index
-  {
-      if index == |s| then
-          if |current| > 0 then [current] else []
-      else if s[index] == ' ' then
-          if |current| > 0 then [current] + SplitOnSpaceHelper(s, index + 1, "")
-          else SplitOnSpaceHelper(s, index + 1, "")
-      else
-          SplitOnSpaceHelper(s, index + 1, current + [s[index]])
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -57,23 +36,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var trimmed := if |input| > 0 && input[|input|-1] == '\n' then input[..|input|-1] else input;
-      var parts := SplitOnSpace(trimmed);
-      if |parts| >= 1 && parts[|parts|-1] == "month" {
-          if parts[0] == "31" {
-              result := "7\n";
-          } else if parts[0] == "30" {
-              result := "11\n";
-          } else {
-              result := "12\n";
-          }
-      } else {
-          if parts[0] == "5" || parts[0] == "6" {
-              result := "53\n";
-          } else {
-              result := "52\n";
-          }
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

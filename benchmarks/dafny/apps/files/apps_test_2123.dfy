@@ -1,7 +1,9 @@
+/*
 Given n+1 pylons numbered 0 to n, where pylon 0 has height 0 and pylons 1 to n have heights h₁, h₂, ..., hₙ.
 A player starts at pylon 0 with 0 energy and wants to reach pylon n by jumping from pylon k to pylon k+1.
 Each jump from pylon k to k+1 changes energy by (hₖ - hₖ₊₁). Energy must remain non-negative at all times.
 The player can pay $1 to increase any pylon's height by 1. Find the minimum cost to make the journey possible.
+*/
 
 predicate ValidInput(n: int, heights: seq<int>)
 {
@@ -27,9 +29,16 @@ predicate ValidResult(n: int, heights: seq<int>, result: int)
     exists i :: 0 <= i < |heights| && heights[i] == result
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, heights: seq<int>) returns (result: int)
     requires ValidInput(n, heights)
     ensures ValidResult(n, heights, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := MaxInSeq(heights);
+  assume {:axiom} false;
 }
+// </vc-code>

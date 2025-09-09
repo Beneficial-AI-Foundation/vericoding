@@ -1,3 +1,6 @@
+/*
+*/
+
 // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
 // Permalink spurningar: https://rise4fun.com/Dafny/G4sc3
 
@@ -22,6 +25,6 @@ method Search( s: seq<int>, x: int ) returns ( k: int )
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

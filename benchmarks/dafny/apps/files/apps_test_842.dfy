@@ -1,5 +1,7 @@
+/*
 Given a string input, extract the first line and create an even-length palindrome
 by concatenating the line with its reverse, followed by a newline.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -44,11 +46,16 @@ predicate ValidOutput(result: string, input: string)
         result == n + ReverseString(n) + "\n"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures ValidOutput(result, stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    var n := ExtractFirstLine(stdin_input);
-    var reversed := ReverseString(n);
-    result := n + reversed + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

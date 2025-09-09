@@ -1,6 +1,8 @@
+/*
 Given an array of n integers (each from 0 to 9), count the number of subarrays 
 where the sum of elements equals the length of the subarray.
 A subarray from index l to r is "good" if: sum(a[l] + a[l+1] + ... + a[r]) = (r - l + 1)
+*/
 
 predicate ValidInput(digits: seq<int>)
 {
@@ -47,34 +49,17 @@ function CountGoodSubarraysHelper(digits: seq<int>, pos: int, freq_map: map<int,
         contribution + CountGoodSubarraysHelper(digits, pos + 1, new_freq_map, new_sum, new_count)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method CountGoodSubarraysInArray(digits: seq<int>) returns (count: int)
     requires ValidInput(digits)
     ensures count >= 0
     ensures count == CountGoodSubarrays(digits)
+// </vc-spec>
+// <vc-code>
 {
-    var pos := 0;
-    var freq_map := map[0 := 1];
-    var current_sum := 0;
-    var result := 0;
-
-    while pos < |digits|
-        invariant 0 <= pos <= |digits|
-        invariant current_sum >= 0
-        invariant forall k :: k in freq_map ==> freq_map[k] >= 0
-        invariant 0 in freq_map ==> freq_map[0] >= 1
-        invariant result >= 0
-        invariant result + CountGoodSubarraysHelper(digits, pos, freq_map, current_sum, pos) == CountGoodSubarrays(digits)
-    {
-        current_sum := current_sum + digits[pos];
-        var current_count := pos + 1;
-        var diff := current_count - current_sum;
-        
-        var contribution := if diff in freq_map then freq_map[diff] else 0;
-        result := result + contribution;
-        
-        freq_map := freq_map[diff := if diff in freq_map then freq_map[diff] + 1 else 1];
-        pos := pos + 1;
-    }
-
-    count := result;
+  assume {:axiom} false;
 }
+// </vc-code>

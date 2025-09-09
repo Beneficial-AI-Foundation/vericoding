@@ -1,3 +1,6 @@
+/*
+*/
+
 function count(arr: seq<int>, value: int) : (c: nat)
     ensures c <= |arr|
 {
@@ -18,6 +21,6 @@ method swap(arr: array<int>, i: int, j: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

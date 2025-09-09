@@ -1,3 +1,6 @@
+/*
+*/
+
 // recursive definition of factorial
 function Factorial(n: nat): nat {
   if n == 0 then 1 else n * Factorial(n - 1)
@@ -14,6 +17,6 @@ method IterativeFactorial(n: nat) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

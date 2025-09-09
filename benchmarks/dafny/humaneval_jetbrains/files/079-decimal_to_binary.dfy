@@ -1,4 +1,3 @@
-
 /*
 function_signature: def decimal_to_binary(decimal: nat) -> string
 You will be given a number in decimal form and your task is to convert it to binary format. The function should return a string, with each character representing a binary number. Each character in the string will be '0' or '1'.
@@ -9,6 +8,10 @@ type stringBin = s: string |
   forall i | 0 <= i < |s| :: s[i] in "01"
   witness "1"
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method decimal_to_binary(n: nat) returns (s: string)
   // post-conditions-start
   ensures |s| == |decimal_to_binary_helper(n)| + 4
@@ -16,9 +19,12 @@ method decimal_to_binary(n: nat) returns (s: string)
   ensures s[|s| - 2..] == "db"
   ensures s[2..|s| - 2] == decimal_to_binary_helper(n)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function decimal_to_binary_helper(n: nat): stringBin 
   // post-conditions-start

@@ -24,26 +24,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method gcdI(m: int, n: int) returns (g: int)
       requires  m > 0 && n > 0 
       ensures g == gcd(m, n);
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   //# 3 pts
-  
   
   // # sum: 9 pts
 

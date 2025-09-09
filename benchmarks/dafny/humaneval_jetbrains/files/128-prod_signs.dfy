@@ -1,4 +1,3 @@
-
 /*
 function_signature: def prod_signs(arr: List[int]) -> Optional[int]
 You are given an array arr of integers and you need to return sum of magnitudes of integers multiplied by product of all signs of each number in the array, represented by 1, -1 or 0. Note: return None for empty arr.
@@ -18,10 +17,17 @@ function sum_abs(s: seq<int>) : int
   if |s| == 0 then 0 else abs(s[0]) + sum_abs(s[1..])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method prod_signs(numbers: seq<int>) returns (s: int)
   ensures abs(s) == sum_abs(numbers)
   ensures |set i | 0 <= i < |numbers| && numbers[i] < 0| % 2 == 1 ==> s <= 0
   ensures |set i | 0 <= i < |numbers| && numbers[i] < 0| % 2 == 0 ==> s >= 0
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

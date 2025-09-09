@@ -1,3 +1,6 @@
+/*
+*/
+
 function sum(s: seq<int>, i: nat): int
     requires i <= |s|
 {
@@ -30,6 +33,6 @@ method FastExp(b: nat, n: nat) returns (r: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given n matches, find the minimum number of additional matches needed to form a valid equation a + b = c 
 where a, b, c are positive integers. Each integer k uses k matches, '+' uses 1 match, '=' uses 1 match.
 Total matches needed: a + b + c + 2 = 2(a + b) + 2 since c = a + b.
+*/
 
 predicate ValidInput(queries: seq<int>) {
     forall i :: 0 <= i < |queries| ==> queries[i] >= 2
@@ -19,27 +21,16 @@ predicate ValidResult(queries: seq<int>, results: seq<int>)
     forall i :: 0 <= i < |queries| ==> results[i] == MinAdditionalMatches(queries[i])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(queries: seq<int>) returns (results: seq<int>)
     requires ValidInput(queries)
     ensures ValidResult(queries, results)
+// </vc-spec>
+// <vc-code>
 {
-    results := [];
-    var i := 0;
-    while i < |queries|
-        invariant 0 <= i <= |queries|
-        invariant |results| == i
-        invariant forall j :: 0 <= j < i ==> results[j] == MinAdditionalMatches(queries[j])
-    {
-        var n := queries[i];
-        var result: int;
-
-        if n >= 4 {
-            result := n % 2;
-        } else {
-            result := 4 - n;
-        }
-
-        results := results + [result];
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

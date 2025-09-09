@@ -1,6 +1,8 @@
+/*
 A bus travels back and forth between points x=0 and x=a, making k total journeys.
 The bus has fuel capacity b and consumes 1 unit per distance unit. There's a gas station at x=f.
 Find minimum refuels needed to complete k journeys, or return -1 if impossible.
+*/
 
 predicate ValidInput(a: int, b: int, f: int, k: int) {
   a > 0 && b > 0 && f > 0 && k > 0 && f < a
@@ -33,6 +35,10 @@ predicate MultiJourneyFeasibility(a: int, b: int, f: int, k: int, result: int) {
   )
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int, f: int, k: int) returns (result: int)
   requires ValidInput(a, b, f, k)
   ensures result >= -1
@@ -41,75 +47,9 @@ method solve(a: int, b: int, f: int, k: int) returns (result: int)
   ensures result >= 0 ==> FeasibilityConditions(a, b, f, k)
   ensures SingleJourneyResult(a, b, f, k, result)
   ensures MultiJourneyFeasibility(a, b, f, k, result)
+// </vc-spec>
+// <vc-code>
 {
-  // Early impossibility checks
-  if b < f || b < a - f || (k > 1 && b < 2 * a - f) || (k == 1 && b < a && b < f) {
-    return -1;
-  }
-
-  // Handle single journey case specially
-  if k == 1 {
-    if b >= a {
-      return 0;  // Can complete without refuel
-    } else {
-      return 1;  // Must refuel once (we know b >= f from checks above)
-    }
-  }
-
-  var tot := a * k;
-  var s := 2 * a - f;
-  var cur := 0;
-  var cnt := b;
-  var go := 0;
-  var ans := 0;
-
-  while cur < tot 
-    invariant 0 <= cur <= tot
-    invariant cur % a == 0
-    invariant 0 <= ans <= k
-    invariant cnt >= 0
-    invariant go == 0 || go == 1
-    invariant cur == 0 ==> go == 0
-    invariant ans <= cur / a
-    invariant b >= f && b >= a - f && b >= 2 * a - f
-    invariant k > 1
-  {
-    go := 1 - go;
-
-    if go == 1 {
-      // Journey from 0 to a
-      if cnt < s && cnt < tot - cur {
-        // Need to refuel
-        if ans >= k {
-          return -1;
-        }
-        cnt := b;
-        ans := ans + 1;
-        cnt := cnt - (a - f);
-      } else {
-        cnt := cnt - a;
-      }
-    } else {
-      // Journey from a to 0  
-      if cnt < a + f && cnt < tot - cur {
-        // Need to refuel
-        if ans >= k {
-          return -1;
-        }
-        cnt := b;
-        ans := ans + 1;
-        cnt := cnt - f;
-      } else {
-        cnt := cnt - a;
-      }
-    }
-
-    cur := cur + a;
-
-    if cnt < 0 {
-      return -1;
-    }
-  }
-
-  return ans;
+  assume {:axiom} false;
 }
+// </vc-code>

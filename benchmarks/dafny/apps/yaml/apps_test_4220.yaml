@@ -89,7 +89,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -98,23 +97,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var newline_pos := find_newline(stdin_input, 0);
-      var K_str := stdin_input[0..newline_pos];
-      var rest := stdin_input[newline_pos+1..];
-  
-      // Remove trailing newline from S if it exists
-      var S := rest;
-      if |S| > 0 && S[|S|-1] == '\n' {
-          S := S[0..|S|-1];
-      }
-  
-      var K := string_to_int(K_str);
-  
-      if |S| <= K {
-          result := S + "\n";
-      } else {
-          result := S[0..K] + "..." + "\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

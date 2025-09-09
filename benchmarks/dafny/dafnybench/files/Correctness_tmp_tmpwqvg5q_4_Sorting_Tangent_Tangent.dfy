@@ -1,3 +1,6 @@
+/*
+*/
+
 /**
   Ather, Mohammad Faiz (s4648481/3)
   CSSE3100
@@ -51,6 +54,6 @@ method Tangent(r: array<int>, x: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

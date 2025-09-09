@@ -1,6 +1,8 @@
+/*
 Three ropewalkers are positioned at coordinates a, b, and c on an infinite line.
 Each second, exactly one ropewalker can move by 1 unit left or right.
 Find the minimum time needed so that the distance between every pair of ropewalkers is at least d.
+*/
 
 function pos1(a: int, b: int, c: int): int
 {
@@ -29,6 +31,10 @@ function pos3(a: int, b: int, c: int): int
         if a <= b then b else a
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int, c: int, d: int) returns (result: int)
     requires 1 <= a <= 1_000_000_000
     requires 1 <= b <= 1_000_000_000
@@ -37,46 +43,9 @@ method solve(a: int, b: int, c: int, d: int) returns (result: int)
     ensures result >= 0
     ensures result == (if d > (pos2(a, b, c) - pos1(a, b, c)) then d - (pos2(a, b, c) - pos1(a, b, c)) else 0) +
                      (if d > (pos3(a, b, c) - pos2(a, b, c)) then d - (pos3(a, b, c) - pos2(a, b, c)) else 0)
+// </vc-spec>
+// <vc-code>
 {
-    // Sort the three positions
-    var pos1, pos2, pos3: int;
-
-    if a <= b && a <= c {
-        pos1 := a;
-        if b <= c {
-            pos2 := b;
-            pos3 := c;
-        } else {
-            pos2 := c;
-            pos3 := b;
-        }
-    } else if b <= a && b <= c {
-        pos1 := b;
-        if a <= c {
-            pos2 := a;
-            pos3 := c;
-        } else {
-            pos2 := c;
-            pos3 := a;
-        }
-    } else {
-        pos1 := c;
-        if a <= b {
-            pos2 := a;
-            pos3 := b;
-        } else {
-            pos2 := b;
-            pos3 := a;
-        }
-    }
-
-    // Calculate gaps between adjacent positions
-    var gap1 := pos2 - pos1;
-    var gap2 := pos3 - pos2;
-
-    // Calculate how much we need to expand each gap
-    var need1 := if d > gap1 then d - gap1 else 0;
-    var need2 := if d > gap2 then d - gap2 else 0;
-
-    result := need1 + need2;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 // Checks if array 'a' is sorted.
 predicate isSorted(a: array<int>)
   reads a
@@ -31,6 +34,6 @@ method binarySearch(a: array<int>, x: int) returns (index: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

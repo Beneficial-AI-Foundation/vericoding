@@ -1,4 +1,6 @@
+/*
 Given two integers n and k, find the smallest integer x such that x > n and x is divisible by k.
+*/
 
 predicate ValidInput(n: int, k: int)
 {
@@ -11,43 +13,16 @@ predicate IsCorrectResult(n: int, k: int, result: int)
     result > n && result % k == 0 && forall x :: n < x < result ==> x % k != 0
 }
 
-lemma DivisionProperty(n: int, k: int)
-    requires k > 0
-    ensures n / k * k <= n < (n / k + 1) * k
-{
-    // Dafny can prove this automatically
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, k: int) returns (result: int)
     requires ValidInput(n, k)
     ensures IsCorrectResult(n, k, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := k * (n / k + 1);
-
-    // Help Dafny prove the postconditions
-    DivisionProperty(n, k);
-    assert result % k == 0; // result is a multiple of k
-    assert result == k * (n / k + 1);
-    assert n / k * k <= n < (n / k + 1) * k;
-    assert result > n;
-    
-    // Help prove the minimality condition
-    forall x | n < x < result 
-        ensures x % k != 0
-    {
-        assert x < k * (n / k + 1);
-        assert x <= k * (n / k + 1) - 1;
-        assert x < k * (n / k) + k;
-        assert x - k * (n / k) < k;
-        if x % k == 0 {
-            assert exists m :: x == k * m;
-            var m :| x == k * m;
-            assert k * m < k * (n / k + 1);
-            assert m < n / k + 1;
-            assert m <= n / k;
-            assert x <= k * (n / k);
-            assert x <= n;
-            assert false;
-        }
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

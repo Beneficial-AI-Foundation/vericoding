@@ -1,3 +1,6 @@
+/*
+*/
+
 //lemma DivIsZero()
 //  ensures forall num, den : nat :: den >= 1 && num < den ==> num/den == 0
 
@@ -71,6 +74,6 @@ method SumOfDigits(number: nat) returns (sum: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,12 +1,10 @@
-vc-preamble: |-
-vc-helpers: |-
-
-
 vc-description: |-
-  /*
   function_signature: def is_prime(n)
   Return true if a given number is prime, and false otherwise.
-  */
+
+vc-preamble: |-
+
+vc-helpers: |-
 
 vc-spec: |-
   method is_prime(k: int) returns (result: bool)
@@ -20,9 +18,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
-
 

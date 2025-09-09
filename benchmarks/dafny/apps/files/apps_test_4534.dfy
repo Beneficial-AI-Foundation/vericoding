@@ -1,6 +1,8 @@
+/*
 Given a non-negative integer k where 0 ≤ k ≤ 33, return the kth row of Pascal's triangle 
 as a list of integers. Row indexing starts from 0. In Pascal's triangle, each element 
 equals the sum of the two elements directly above it in the previous row.
+*/
 
 function binomial(n: int, k: int): int
     requires 0 <= k <= n
@@ -10,38 +12,18 @@ function binomial(n: int, k: int): int
     else binomial(n-1, k-1) + binomial(n-1, k)
 }
 
-lemma binomial_positive(n: int, k: int)
-    requires 0 <= k <= n
-    ensures binomial(n, k) > 0
-{
-    if k == 0 || k == n {
-        // binomial(n, k) == 1 > 0
-    } else if k == 1 {
-        // binomial(n, k) == n > 0 since n >= k >= 1
-    } else {
-        binomial_positive(n-1, k-1);
-        binomial_positive(n-1, k);
-        // binomial(n, k) == binomial(n-1, k-1) + binomial(n-1, k) > 0
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method getRow(k: int) returns (result: seq<int>)
     requires 0 <= k <= 33
     ensures |result| == k + 1
     ensures forall i :: 0 <= i < |result| ==> result[i] == binomial(k, i)
     ensures forall i :: 0 <= i < |result| ==> result[i] > 0
+// </vc-spec>
+// <vc-code>
 {
-    result := [];
-    var i := 0;
-    while i <= k
-        invariant 0 <= i <= k + 1
-        invariant |result| == i
-        invariant forall j :: 0 <= j < i ==> result[j] == binomial(k, j)
-        invariant forall j :: 0 <= j < i ==> result[j] > 0
-    {
-        var val := binomial(k, i);
-        binomial_positive(k, i);
-        result := result + [val];
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

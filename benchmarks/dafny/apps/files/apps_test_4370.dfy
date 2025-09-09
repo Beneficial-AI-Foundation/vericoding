@@ -1,6 +1,8 @@
+/*
 Given a circular cake divided into 16 equal pieces, determine if two people can take A and B pieces 
 respectively such that neither person takes two adjacent pieces. The maximum number of non-adjacent 
 pieces any person can take from 16 pieces arranged in a circle is 8.
+*/
 
 predicate ValidInput(a: int, b: int)
 {
@@ -17,15 +19,18 @@ predicate BothCanTake(a: int, b: int)
     CanTakeNonAdjacent(a, 16) && CanTakeNonAdjacent(b, 16)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method SolveCakeProblem(a: int, b: int) returns (result: string)
     requires ValidInput(a, b)
     ensures BothCanTake(a, b) <==> result == "Yay!"
     ensures !BothCanTake(a, b) <==> result == ":("
     ensures result == "Yay!" || result == ":("
+// </vc-spec>
+// <vc-code>
 {
-    if a <= 8 && b <= 8 {
-        result := "Yay!";
-    } else {
-        result := ":(";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

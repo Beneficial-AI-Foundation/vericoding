@@ -1,6 +1,8 @@
+/*
 Given a 3×3 grid of lowercase English letters, extract and concatenate 
 the characters on the main diagonal (from top-left to bottom-right) 
 to form a string of length 3.
+*/
 
 predicate ValidInput(lines: seq<string>)
 {
@@ -13,6 +15,10 @@ function ExtractDiagonal(lines: seq<string>): string
     [lines[0][0], lines[1][1], lines[2][2]]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(lines: seq<string>) returns (result: string)
     requires ValidInput(lines)
     ensures |result| == 4
@@ -21,6 +27,9 @@ method solve(lines: seq<string>) returns (result: string)
     ensures result[2] == lines[2][2]
     ensures result[3] == '\n'
     ensures result == ExtractDiagonal(lines) + ['\n']
+// </vc-spec>
+// <vc-code>
 {
-    result := ExtractDiagonal(lines) + ['\n'];
+  assume {:axiom} false;
 }
+// </vc-code>

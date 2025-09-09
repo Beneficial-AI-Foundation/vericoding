@@ -1,7 +1,9 @@
+/*
 Given a string of lowercase letters and a value for each letter, calculate the maximum 
 possible value of a string after inserting exactly k lowercase letters. The value of a 
 string s = s₁s₂...sₙ is defined as f(s) = Σᵢ₌₁ⁿ (wₛᵢ × i), where wₛᵢ is the value of 
 character sᵢ and i is its 1-indexed position.
+*/
 
 function stringValue(s: string, w: seq<int>): int
   requires |w| == 26
@@ -41,50 +43,16 @@ predicate ValidInput(s: string, k: int, w: seq<int>)
   (forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z')
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string, k: int, w: seq<int>) returns (result: int)
   requires ValidInput(s, k, w)
   ensures result == stringValue(s, w) + appendValue(|s|, k, maxValue(w))
+// </vc-spec>
+// <vc-code>
 {
-  var f := 0;
-
-  // Find max value among all letters
-  var m := w[0];
-  for i := 1 to |w|
-    invariant 1 <= i <= |w|
-    invariant forall j :: 0 <= j < i ==> w[j] <= m
-    invariant exists j :: 0 <= j < i && m == w[j]
-  {
-    if w[i] > m {
-      m := w[i];
-    }
-  }
-  assert m == maxValue(w);
-
-  // Calculate current string value
-  for i := 0 to |s|
-    invariant 0 <= i <= |s|
-    invariant f == stringValue(s[..i], w)
-  {
-    var charIndex := (s[i] as int) - ('a' as int);
-    assert 0 <= charIndex < 26;
-    assert s[..i+1] == s[..i] + [s[i]];
-    assert |s[..i+1]| == i + 1;
-    assert s[..i+1][i] == s[i];
-    f := f + (i + 1) * w[charIndex];
-  }
-  assert s[..|s|] == s;
-  assert f == stringValue(s, w);
-
-  // Add k letters with max value at the end
-  var oldF := f;
-  for i := |s| to |s| + k
-    invariant |s| <= i <= |s| + k
-    invariant f == oldF + appendValue(|s|, i - |s|, m)
-    invariant m == maxValue(w)
-  {
-    f := f + (i + 1) * m;
-  }
-  assert f == stringValue(s, w) + appendValue(|s|, k, maxValue(w));
-
-  result := f;
+  assume {:axiom} false;
 }
+// </vc-code>

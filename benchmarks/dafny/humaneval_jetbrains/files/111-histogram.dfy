@@ -1,4 +1,3 @@
-
 /*
 function_signature: def histogram(s : str) -> Dict[str, int]
 Given a string representing a space separated lowercase letters, return a dictionary of the letter with the most repetition and containing the corresponding count. If several letters have the same occurrence, return all of them.
@@ -6,6 +5,10 @@ Given a string representing a space separated lowercase letters, return a dictio
 
 type BiggestMap = map<int, int>
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method count(a: seq<int>) returns (biggest: BiggestMap)
   // post-conditions-start
   ensures forall i :: 0 <= i < |a| && a[i] in biggest ==>
@@ -15,6 +18,9 @@ method count(a: seq<int>) returns (biggest: BiggestMap)
   ensures forall i, j :: 0 <= i < |a| && 0 <= j < |a| && a[i] in biggest && a[j] in biggest ==>
     biggest[a[i]] == biggest[a[j]]
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

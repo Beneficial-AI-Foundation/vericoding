@@ -1,5 +1,7 @@
+/*
 Given n cards with integers (absolute value ≤ x), find the minimum number of additional cards
 needed to make the total sum equal to zero. Additional cards can have integer values from -x to x.
+*/
 
 function sum(cards: seq<int>): int
 {
@@ -17,17 +19,17 @@ predicate ValidInput(cards: seq<int>, x: int)
     x > 0 && |cards| >= 1 && forall i :: 0 <= i < |cards| ==> -x <= cards[i] <= x
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(cards: seq<int>, x: int) returns (result: int)
     requires ValidInput(cards, x)
     ensures result >= 0
     ensures result == if sum(cards) == 0 then 0 else (abs(sum(cards)) + x - 1) / x
+// </vc-spec>
+// <vc-code>
 {
-    var s := sum(cards);
-    var abs_s := if s >= 0 then s else -s;
-
-    if abs_s == 0 {
-        result := 0;
-    } else {
-        result := (abs_s + x - 1) / x;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

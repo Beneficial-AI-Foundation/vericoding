@@ -1,7 +1,9 @@
+/*
 Given a sequence of movement commands for a robot on an infinite grid, find the maximum number of commands 
 that could be executed such that the robot returns to its starting position (0, 0). The robot can move 
 U (up), D (down), L (left), or R (right). To return to origin, we need equal numbers of L/R movements 
 and equal numbers of U/D movements.
+*/
 
 function count_char(s: string, c: char): int
 {
@@ -19,17 +21,10 @@ predicate ValidCommands(commands: string)
     forall i :: 0 <= i < |commands| ==> commands[i] in {'L', 'R', 'U', 'D'}
 }
 
-lemma count_char_append_lemma(s: string, c: char, target: char)
-    ensures count_char(s + [c], target) == count_char(s, target) + (if c == target then 1 else 0)
-{
-    if |s| == 0 {
-        assert s + [c] == [c];
-    } else {
-        assert s + [c] == [s[0]] + (s[1..] + [c]);
-        count_char_append_lemma(s[1..], c, target);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, commands: string) returns (result: int)
     requires n >= 0
     requires |commands| == n
@@ -39,63 +34,9 @@ method solve(n: int, commands: string) returns (result: int)
     ensures result % 2 == 0
     ensures result == 2 * min(count_char(commands, 'L'), count_char(commands, 'R')) + 
                      2 * min(count_char(commands, 'U'), count_char(commands, 'D'))
+// </vc-spec>
+// <vc-code>
 {
-    var l_count := 0;
-    var r_count := 0;
-    var u_count := 0;
-    var d_count := 0;
-
-    var i := 0;
-    while i < |commands|
-        invariant 0 <= i <= |commands|
-        invariant l_count >= 0 && r_count >= 0 && u_count >= 0 && d_count >= 0
-        invariant l_count + r_count + u_count + d_count == i
-        invariant l_count == count_char(commands[..i], 'L')
-        invariant r_count == count_char(commands[..i], 'R')
-        invariant u_count == count_char(commands[..i], 'U')
-        invariant d_count == count_char(commands[..i], 'D')
-    {
-        assert commands[..i+1] == commands[..i] + [commands[i]];
-
-        if commands[i] == 'L' {
-            l_count := l_count + 1;
-            count_char_append_lemma(commands[..i], commands[i], 'L');
-            count_char_append_lemma(commands[..i], commands[i], 'R');
-            count_char_append_lemma(commands[..i], commands[i], 'U');
-            count_char_append_lemma(commands[..i], commands[i], 'D');
-        } else if commands[i] == 'R' {
-            r_count := r_count + 1;
-            count_char_append_lemma(commands[..i], commands[i], 'L');
-            count_char_append_lemma(commands[..i], commands[i], 'R');
-            count_char_append_lemma(commands[..i], commands[i], 'U');
-            count_char_append_lemma(commands[..i], commands[i], 'D');
-        } else if commands[i] == 'U' {
-            u_count := u_count + 1;
-            count_char_append_lemma(commands[..i], commands[i], 'L');
-            count_char_append_lemma(commands[..i], commands[i], 'R');
-            count_char_append_lemma(commands[..i], commands[i], 'U');
-            count_char_append_lemma(commands[..i], commands[i], 'D');
-        } else if commands[i] == 'D' {
-            d_count := d_count + 1;
-            count_char_append_lemma(commands[..i], commands[i], 'L');
-            count_char_append_lemma(commands[..i], commands[i], 'R');
-            count_char_append_lemma(commands[..i], commands[i], 'U');
-            count_char_append_lemma(commands[..i], commands[i], 'D');
-        }
-        i := i + 1;
-    }
-
-    assert commands[..i] == commands;
-    assert l_count == count_char(commands, 'L');
-    assert r_count == count_char(commands, 'R');
-    assert u_count == count_char(commands, 'U');
-    assert d_count == count_char(commands, 'D');
-
-    var h := if l_count < r_count then l_count else r_count;
-    var v := if u_count < d_count then u_count else d_count;
-
-    assert h == min(l_count, r_count);
-    assert v == min(u_count, d_count);
-
-    result := 2 * h + 2 * v;
+  assume {:axiom} false;
 }
+// </vc-code>

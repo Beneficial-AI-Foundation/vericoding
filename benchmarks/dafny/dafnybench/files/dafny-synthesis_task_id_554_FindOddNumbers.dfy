@@ -1,3 +1,6 @@
+/*
+*/
+
 /**
  * Find odd numbers from an array of numbers
  **/
@@ -19,6 +22,6 @@ method FindOddNumbers(arr: array<int>) returns (oddList: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

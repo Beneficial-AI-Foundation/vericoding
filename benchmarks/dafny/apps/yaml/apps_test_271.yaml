@@ -18,7 +18,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (result: int)
@@ -27,21 +26,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var quotient := n / 10;
-    var remainder := n % 10;
-  
-    if remainder < 5 {
-      result := quotient * 10;
-    } else if remainder > 5 {
-      result := (quotient + 1) * 10;
-    } else {
-      // remainder == 5, use banker's rounding (round half to even)
-      if quotient % 2 == 0 {
-        result := quotient * 10;
-      } else {
-        result := (quotient + 1) * 10;
-      }
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

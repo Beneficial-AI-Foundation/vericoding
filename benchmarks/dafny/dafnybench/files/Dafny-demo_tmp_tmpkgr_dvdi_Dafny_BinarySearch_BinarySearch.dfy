@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate sorted(a: array?<int>, l: int, u: int)
     reads a
     requires a != null
@@ -17,6 +20,6 @@ method BinarySearch(a: array?<int>, key: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -24,11 +24,8 @@ vc-preamble: |-
   // segments of size n == 2^k-1 for some k>=0.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method Search2PowLoop( a: array<int>, i: int, n: int, x: int ) returns ( k: int )
       requires 0 <= i <= i+n <= a.Length;
       requires forall p,q | i <= p < q < i+n :: a[p] <= a[q];
@@ -36,14 +33,11 @@ vc-spec: |-
       ensures i <= k <= i+n;
       ensures forall r | i <= r < k :: a[r] < x;
       ensures forall r | k <= r < i+n :: a[r] >= x;
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
   // This method is a binary search that only works for array

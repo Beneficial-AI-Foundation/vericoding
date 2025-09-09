@@ -1,3 +1,6 @@
+/*
+*/
+
 // Sum of elements of A from indices 0 to end.
 // end is inclusive! (not James's normal way of thinking!!)
 function SumUpto(A: array<real>, end: int): real
@@ -15,7 +18,6 @@ function Sum(A: array<real>): real
 {
   SumUpto(A, A.Length-1)
 }
-
 
 // example showing that, with the original postcondition, the answer is non-unique!
 
@@ -41,7 +43,7 @@ method PercentileNonUniqueAnswer() returns (p: real, A: array<real>, total: real
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 

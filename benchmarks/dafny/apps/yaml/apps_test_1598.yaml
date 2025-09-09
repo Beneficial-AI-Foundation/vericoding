@@ -56,7 +56,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(s: string) returns (result: string)
@@ -67,7 +66,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := s;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

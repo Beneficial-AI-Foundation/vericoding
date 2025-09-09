@@ -1,5 +1,7 @@
+/*
 Find the k-th smallest perfect positive integer, where a perfect integer 
 is one whose digits sum to exactly 10.
+*/
 
 predicate ValidInput(stdin_input: string)
 {
@@ -28,39 +30,19 @@ function kth_perfect_number(k: int): int
     else 10 * (k - 9) + 99
 }
 
-function digit_sum(n: int): int
-    requires n >= 0
-    ensures digit_sum(n) >= 0
-{
-    if n < 10 then n
-    else (n % 10) + digit_sum(n / 10)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function int_to_string(n: int): string
-    requires n >= 0
-{
-    if n == 0 then "0"
-    else if n == 1 then "1"
-    else if n == 2 then "2"
-    else if n == 3 then "3"
-    else if n == 4 then "4"
-    else if n == 5 then "5"
-    else if n == 6 then "6"
-    else if n == 7 then "7"
-    else if n == 8 then "8"
-    else if n == 9 then "9"
-    else if n == 10 then "10"
-    else "placeholder"
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures exists k: int :: k >= 1 && k <= 10000 && 
         stdin_input == int_to_string(k) + "\n" &&
         result == int_to_string(kth_perfect_number(k)) + "\n"
     ensures |result| > 0
+// </vc-spec>
+// <vc-code>
 {
-    var k :| k >= 1 && k <= 10000 && stdin_input == int_to_string(k) + "\n";
-    var perfect_num := kth_perfect_number(k);
-    result := int_to_string(perfect_num) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

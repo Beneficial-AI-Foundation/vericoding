@@ -1,3 +1,6 @@
+/*
+*/
+
 //https://stackoverflow.com/questions/69364687/how-to-prove-time-complexity-of-bubble-sort-using-dafny
 function NChoose2(n: int): int
 {
@@ -25,6 +28,6 @@ method BubbleSort(a: array<int>) returns (n: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate distinct(nums: seq<int>) {
     forall i, j :: 0 <= i < j < |nums| ==> nums[i] != nums[j]
 }
@@ -13,6 +16,6 @@ method contains_duplicate(nums: seq<int>) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

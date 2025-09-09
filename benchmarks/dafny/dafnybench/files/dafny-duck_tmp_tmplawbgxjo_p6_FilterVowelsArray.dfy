@@ -1,3 +1,6 @@
+/*
+*/
+
 //Given an array of characters, it filters all the vowels. [‘d’,’e’,’l’,’i’,’g’,’h’,’t’]-> [’e’,’i’]
 const vowels: set<char> := {'a', 'e', 'i', 'o', 'u'}
 
@@ -18,6 +21,6 @@ method FilterVowelsArray(xs: array<char>) returns (ys: array<char>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

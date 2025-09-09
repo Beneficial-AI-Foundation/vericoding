@@ -1,6 +1,8 @@
+/*
 Determine the winner of an elimination-style voting game between two factions.
 Employees vote in rounds, can eliminate opponents, and play optimally.
 The faction with the last remaining employee wins.
+*/
 
 predicate ValidInput(n: int, s: string)
 {
@@ -45,6 +47,10 @@ function OptimalEliminationGameWinner(s: string): string
   else "R"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, s: string) returns (result: string)
   requires ValidInput(n, s)
   ensures result == "D" || result == "R"
@@ -55,19 +61,9 @@ method solve(n: int, s: string) returns (result: string)
   ensures (forall i :: 0 <= i < |s| ==> s[i] == 'D') ==> result == "D"
   ensures (forall i :: 0 <= i < |s| ==> s[i] == 'R') ==> result == "R"
   ensures result == OptimalEliminationGameWinner(s)
+// </vc-spec>
+// <vc-code>
 {
-  var countr := CountR(s);
-  var countd := CountD(s);
-
-  if countd == 0 {
-    result := "R";
-  } else if countr == 0 {
-    result := "D";
-  } else {
-    if countd >= countr {
-      result := "D";
-    } else {
-      result := "R";
-    }
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

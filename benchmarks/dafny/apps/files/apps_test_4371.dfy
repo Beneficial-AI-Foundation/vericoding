@@ -1,4 +1,6 @@
+/*
 Given a string S of digits (1-9), find the minimum absolute difference between 753 and any 3-digit number formed by taking three consecutive digits from S.
+*/
 
 predicate ValidInput(S: string)
 {
@@ -31,31 +33,16 @@ predicate IsMinimumDifference(S: string, result: int)
     (forall i :: 0 <= i <= |S| - 3 ==> result <= abs(753 - StringToInt(S[i..i+3])))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(S: string) returns (result: int)
     requires ValidInput(S)
     ensures IsMinimumDifference(S, result)
+// </vc-spec>
+// <vc-code>
 {
-    var minDiff := abs(753 - StringToInt(S[0..3]));
-    var minIndex := 0;
-
-    var i := 1;
-    while i <= |S| - 3
-        invariant 1 <= i <= |S| - 2
-        invariant minDiff >= 0
-        invariant 0 <= minIndex <= |S| - 3
-        invariant minIndex < i
-        invariant minDiff == abs(753 - StringToInt(S[minIndex..minIndex+3]))
-        invariant forall j :: 0 <= j < i ==> minDiff <= abs(753 - StringToInt(S[j..j+3]))
-    {
-        var substring := S[i..i+3];
-        var num := StringToInt(substring);
-        var diff := abs(753 - num);
-        if diff < minDiff {
-            minDiff := diff;
-            minIndex := i;
-        }
-        i := i + 1;
-    }
-
-    result := minDiff;
+  assume {:axiom} false;
 }
+// </vc-code>

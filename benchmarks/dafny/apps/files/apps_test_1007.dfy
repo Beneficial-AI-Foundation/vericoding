@@ -1,5 +1,7 @@
+/*
 Find the sum of the k smallest zcy numbers modulo p.
 A zcy number is a palindrome with even length in decimal representation.
+*/
 
 function IntToString(n: int): string
     requires n >= 0
@@ -47,22 +49,17 @@ predicate ValidInput(k: int, p: int)
     k >= 1 && p >= 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(k: int, p: int) returns (result: int)
     requires ValidInput(k, p)
     ensures 0 <= result < p
     ensures result == (SumOfPalindromes(k) % p)
+// </vc-spec>
+// <vc-code>
 {
-    var sum := 0;
-    for i := 1 to k 
-        invariant 0 <= sum
-        invariant sum == (SumOfPalindromes(i-1) % p)
-    {
-        var s := IntToString(i);
-        var reversed := ReverseString(s);
-        var palindrome := s + reversed;
-        var num := StringToInt(palindrome);
-        sum := sum + num;
-        sum := sum % p;
-    }
-    result := sum;
+  assume {:axiom} false;
 }
+// </vc-code>

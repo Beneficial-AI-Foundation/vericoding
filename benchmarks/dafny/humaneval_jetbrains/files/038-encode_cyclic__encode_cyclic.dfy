@@ -3,6 +3,10 @@ function_signature: method encode_cyclic(s: seq<int>) returns (res: seq<int>)
 Encode data. Ensures: returns the correct size/count; the condition holds for all values; the condition holds for all values; the condition holds for all values; the condition holds for all values.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method encode_cyclic(s: seq<int>) returns (res: seq<int>) 
     // post-conditions-start
     ensures |s| == |res|
@@ -11,9 +15,12 @@ method encode_cyclic(s: seq<int>) returns (res: seq<int>)
     ensures forall i :: 0 <= i < |s| - |s| % 3 ==> (i % 3 == 2 ==> res[i] == s[i - 2])
     ensures forall i :: |s| - |s| % 3 <= i < |s| ==> (res[i] == s[i])
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method decode_cyclic(s: seq<int>) returns (res: seq<int>)
     // post-conditions-start

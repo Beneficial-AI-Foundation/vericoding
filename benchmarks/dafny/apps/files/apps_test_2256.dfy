@@ -1,6 +1,8 @@
+/*
 Given n students in positions 1 to n, with two rival students initially at positions a and b,
 find the maximum distance between the rivals after performing at most x adjacent swaps.
 Distance between positions p and s is |p - s|.
+*/
 
 predicate ValidInput(n: int, x: int, a: int, b: int)
 {
@@ -22,22 +24,17 @@ predicate ValidResult(n: int, x: int, a: int, b: int, result: int)
     result == MaxDistance(n, x, a, b) && 0 <= result <= n - 1
 }
 
-function Abs(x: int): int
-{
-    if x >= 0 then x else -x
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function Min(a: int, b: int): int
-{
-    if a <= b then a else b
-}
-
+// <vc-spec>
 method SolveRivalDistance(n: int, x: int, a: int, b: int) returns (result: int)
     requires ValidInput(n, x, a, b)
     ensures ValidResult(n, x, a, b, result)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    var initialDistance := Abs(a - b);
-    var maxPossibleDistance := initialDistance + x;
-    result := Min(maxPossibleDistance, n - 1);
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -19,7 +19,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(queries: seq<(int, int, int)>) returns (results: seq<int>)
@@ -36,35 +35,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      results := [];
-      for i := 0 to |queries|
-          invariant |results| == i
-          invariant forall j | 0 <= j < i :: 
-              var n := queries[j].0;
-              var a := queries[j].1;
-              var b := queries[j].2;
-              results[j] == (if n % 2 == 0 then
-                  if n * a <= (n / 2) * b then n * a else (n / 2) * b
-              else
-                  if n * a <= (n / 2) * b + a then n * a else (n / 2) * b + a)
-      {
-          var n := queries[i].0;
-          var a := queries[i].1; 
-          var b := queries[i].2;
-  
-          var cost: int;
-          if n % 2 == 0 {
-              var allOneLiter := n * a;
-              var allTwoLiter := (n / 2) * b;
-              cost := if allOneLiter <= allTwoLiter then allOneLiter else allTwoLiter;
-          } else {
-              var allOneLiter := n * a;
-              var mixedBottles := (n / 2) * b + a;
-              cost := if allOneLiter <= mixedBottles then allOneLiter else mixedBottles;
-          }
-  
-          results := results + [cost];
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

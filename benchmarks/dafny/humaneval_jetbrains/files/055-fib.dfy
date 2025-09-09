@@ -1,4 +1,3 @@
-
 /*
 function_signature: def fib(n: int) -> int
 Return n-th Fibonacci number.
@@ -12,10 +11,17 @@ function fib(n: nat): nat
   else fib(n - 1) + fib(n - 2)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method ComputeFib(n: nat) returns (result: nat)
   // post-conditions-start
   ensures result == fib(n)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

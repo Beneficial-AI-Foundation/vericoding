@@ -1,3 +1,6 @@
+/*
+*/
+
 //Problem01
 
 /*
@@ -18,7 +21,6 @@ Simplified VC for square0
 3. true, ¬(i < n) ∧ i ≤ n ∧ sqn = i * i ⇒ sqn = n * n since ¬(i < n) ∧ i ≤ n imply i = n
 
 */
-
 
 //Problem02
 //As you can see below, Dafny claims that after executing the following method
@@ -53,8 +55,6 @@ ensures x < z*z < y
 
     as we know the statment {1 = 2} is always false. true => false is always false     
 
-
-
 */
 
 //Problem 3
@@ -78,7 +78,6 @@ The "assume" statement introduces a precondition.
 It assumes that the square of x is less than 100. In other words, it assumes that x is 
 within the range (0, 10) since the largest possible square less than 100 is 9 * 9 = 81.
 
-
 */
 
 // <vc-helpers>
@@ -90,6 +89,6 @@ ensures 1==2
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

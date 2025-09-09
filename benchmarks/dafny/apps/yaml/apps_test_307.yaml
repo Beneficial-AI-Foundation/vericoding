@@ -21,10 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function min(a: int, b: int): int
-  {
-      if a <= b then a else b
-  }
 
 vc-spec: |-
   method solve(k2: int, k3: int, k5: int, k6: int) returns (result: int)
@@ -34,12 +30,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var c := min(min(k2, k5), k6);
-      var remaining_k2 := k2 - c;
-      var ans := 256 * c;
-      var tmpCall1 := min(k3, remaining_k2);
-      ans := ans + 32 * tmpCall1;
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

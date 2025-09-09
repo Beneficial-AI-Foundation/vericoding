@@ -1,5 +1,7 @@
+/*
 Given an integer N, determine if N is divisible by the sum of its digits (when written in base 10).
 Return "Yes" if N is divisible by the sum of its digits, otherwise return "No".
+*/
 
 function sumOfDigits(n: int): int
   requires n >= 0
@@ -21,15 +23,17 @@ predicate IsDivisibleByDigitSum(N: int)
   N % sumOfDigits(N) == 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int) returns (result: string)
   requires ValidInput(N)
   ensures result == "Yes" || result == "No"
   ensures result == "Yes" <==> IsDivisibleByDigitSum(N)
+// </vc-spec>
+// <vc-code>
 {
-  var digitSum := sumOfDigits(N);
-  if N % digitSum == 0 {
-    result := "Yes";
-  } else {
-    result := "No";
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

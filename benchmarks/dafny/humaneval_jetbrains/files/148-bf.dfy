@@ -1,4 +1,3 @@
-
 /*
 function_signature: def bf(planet1: str, planet2: str) -> List[str]
 There are eight planets in our solar system: the closest to the Sun is Mercury, the next one is Venus, then Earth, Mars, Jupiter, Saturn, Uranus, Neptune. Write a function that takes two planet names as strings planet1 and planet2. The function should return a tuple containing all planets whose orbits are located between the orbit of planet1 and the orbit of planet2, sorted by the proximity to the sun. The function should return an empty tuple if planet1 or planet2 are not correct planet names.
@@ -78,6 +77,10 @@ function GetPlanetsBetweenIndices(start: int, end: int): seq<string>
   // impl-end
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method bf(start: int, end: int) returns (planets: seq<string>)
     // pre-conditions-start
     requires 0 <= start <= 7 && 0 <= end <= 7
@@ -85,6 +88,9 @@ method bf(start: int, end: int) returns (planets: seq<string>)
     // post-conditions-start
     ensures |planets| <= (if start <= end then end - start + 1 else 0)
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

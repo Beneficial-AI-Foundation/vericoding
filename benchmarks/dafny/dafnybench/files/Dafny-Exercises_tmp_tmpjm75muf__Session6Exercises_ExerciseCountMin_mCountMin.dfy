@@ -1,3 +1,6 @@
+/*
+*/
+
 function min(v:array<int>,i:int):int
 decreases i
  reads v
@@ -7,7 +10,6 @@ decreases i
   else if (v[i-1]<=min(v,i-1)) then v[i-1]
   else min(v,i-1)
   }
-
 
 function countMin(v:array<int>,x:int, i:int):int
 decreases i
@@ -32,6 +34,6 @@ ensures c==countMin(v,min(v,v.Length),v.Length)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

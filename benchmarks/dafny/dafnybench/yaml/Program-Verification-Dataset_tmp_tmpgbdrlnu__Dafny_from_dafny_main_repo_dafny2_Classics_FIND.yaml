@@ -3,7 +3,6 @@ vc-description: |-
 vc-preamble: |-
   // RUN: %testDafnyForEachResolver "%s" -- --warn-deprecation:false
   
-  
   // A version of Turing's additive factorial program [Dr. A. Turing, "Checking a large routine",
   // In "Report of a Conference of High Speed Automatic Calculating Machines", pp. 67-69, 1949].
   
@@ -11,7 +10,6 @@ vc-preamble: |-
   {
     if n == 0 then 1 else n * Factorial(n-1)
   }
-  
   
   // Hoare's FIND program [C.A.R. Hoare, "Proof of a program: FIND", CACM 14(1): 39-45, 1971].
   // The proof annotations here are not the same as in Hoare's article.
@@ -27,24 +25,18 @@ vc-preamble: |-
   //     forall p,q :: 0 <= p <= f <= q < N ==> A[p] <= A[f] <= A[q]).
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method FIND(A: array<int>, N: int, f: int)
     requires A.Length == N;
     requires 0 <= f < N;
     modifies A;
     ensures forall p,q :: 0 <= p <= f <= q < N ==> A[p] <= A[q];
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

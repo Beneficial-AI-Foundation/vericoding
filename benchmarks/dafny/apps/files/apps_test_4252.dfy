@@ -1,7 +1,9 @@
+/*
 Given a string of lowercase Latin letters, find the minimum number of characters 
 to remove so that the resulting string does not contain "xxx" (three consecutive x's) 
 as a substring. Characters can be removed from any positions. If the string initially 
 doesn't contain "xxx", return 0.
+*/
 
 predicate ValidInput(s: string) 
 {
@@ -33,29 +35,18 @@ function ConsecutiveXCount(s: string, pos: int): int
     else 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: int)
     requires ValidInput(s)
     ensures result >= 0
     ensures result <= |s|
     ensures result == CountExcessivePositions(s)
+// </vc-spec>
+// <vc-code>
 {
-    result := 0;
-    var x_count := 0;
-
-    for i := 0 to |s|
-        invariant 0 <= result <= i
-        invariant x_count >= 0
-        invariant result == CountExcessivePositionsHelper(s, 0, 0) - CountExcessivePositionsHelper(s, i, x_count)
-        invariant x_count == ConsecutiveXCount(s, i)
-    {
-        if s[i] == 'x' {
-            x_count := x_count + 1;
-        } else {
-            x_count := 0;
-        }
-
-        if x_count > 2 {
-            result := result + 1;
-        }
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given an array and a set of allowed swap positions, determine if the array can be sorted 
 in non-decreasing order using only adjacent swaps at the allowed positions. An allowed swap
 exchanges elements at positions i and i+1 if position i is in the allowed set.
+*/
 
 predicate ValidInput(a: array<int>, allowedPos: array<bool>)
     reads a, allowedPos
@@ -61,38 +63,18 @@ function BubblePassHelper(s: seq<int>, pos: nat): seq<int>
         BubblePassHelper(s, pos + 1)
 }
 
-method BubbleSortWithConstraints(a: array<int>, allowedPos: array<bool>)
-    requires ValidInput(a, allowedPos)
-    modifies a
-    ensures multiset(a[..]) == multiset(old(a[..]))
-{
-    var i := 0;
-    while i < a.Length
-        invariant 0 <= i <= a.Length
-        invariant multiset(a[..]) == multiset(old(a[..]))
-    {
-        var j := 0;
-        while j < a.Length - 1
-            invariant 0 <= j <= a.Length - 1
-            invariant multiset(a[..]) == multiset(old(a[..]))
-        {
-            if a[j] > a[j + 1] && allowedPos[j] {
-                var temp := a[j];
-                a[j] := a[j + 1];
-                a[j + 1] := temp;
-            }
-            j := j + 1;
-        }
-        i := i + 1;
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method CanSort(a: array<int>, allowedPos: array<bool>) returns (result: bool)
     requires ValidInput(a, allowedPos)
     modifies a
     ensures multiset(a[..]) == multiset(old(a[..]))
     ensures result == IsSorted(a)
+// </vc-spec>
+// <vc-code>
 {
-    BubbleSortWithConstraints(a, allowedPos);
-    result := IsSorted(a);
+  assume {:axiom} false;
 }
+// </vc-code>

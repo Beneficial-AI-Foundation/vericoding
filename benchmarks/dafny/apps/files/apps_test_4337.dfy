@@ -1,6 +1,8 @@
+/*
 Given N colorful crackers with colors P, W, G, or Y, determine if exactly 3 or 4 distinct colors are present.
 The bag always contains at least one cracker of each color P, W, and G.
 Output "Three" if 3 distinct colors, "Four" if 4 distinct colors.
+*/
 
 predicate ValidInput(n: int, colors: seq<char>)
 {
@@ -21,31 +23,10 @@ function SolutionString(distinctCount: int): string
     if distinctCount == 3 then "Three" else "Four"
 }
 
-lemma DistinctColorsCount(colors: seq<char>)
-    requires forall c | c in colors :: c in {'P', 'W', 'G', 'Y'}
-    requires 'P' in colors && 'W' in colors && 'G' in colors
-    ensures var distinctColors := DistinctColors(colors);
-            |distinctColors| == 3 || |distinctColors| == 4
-{
-    var distinctColors := DistinctColors(colors);
-    var minSet := {'P', 'W', 'G'};
-    var maxSet := {'P', 'W', 'G', 'Y'};
-    
-    assert 'P' in distinctColors && 'W' in distinctColors && 'G' in distinctColors;
-    assert minSet <= distinctColors;
-    assert distinctColors <= maxSet;
-    assert |minSet| == 3;
-    assert |maxSet| == 4;
-    
-    if 'Y' in distinctColors {
-        assert distinctColors == maxSet;
-        assert |distinctColors| == 4;
-    } else {
-        assert distinctColors == minSet;
-        assert |distinctColors| == 3;
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method Solve(n: int, colors: seq<char>) returns (result: string)
     requires ValidInput(n, colors)
     ensures var distinctColors := DistinctColors(colors);
@@ -54,8 +35,9 @@ method Solve(n: int, colors: seq<char>) returns (result: string)
             (|distinctColors| == 3 ==> result == "Three") &&
             (|distinctColors| == 4 ==> result == "Four")
     ensures result == "Three" || result == "Four"
+// </vc-spec>
+// <vc-code>
 {
-    DistinctColorsCount(colors);
-    var distinctColors := DistinctColors(colors);
-    result := SolutionString(|distinctColors|);
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -51,33 +51,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function split_lines(s: string): seq<string>
-  {
-      [""]
-  }
-  
-  function parse_int(s: string): int
-  {
-      0
-  }
-  
-  function reverse_string(s: string): string
-  {
-      if |s| <= 1 then s
-      else reverse_string(s[1..]) + [s[0]]
-  }
-  
-  function int_to_string(n: int): string
-  {
-      "1"
-  }
-  
-  function count_newlines(s: string): int
-  {
-      if |s| == 0 then 0
-      else if s[0] == '\n' then 1 + count_newlines(s[1..])
-      else count_newlines(s[1..])
-  }
 
 vc-spec: |-
   method solve(s: string) returns (result: string)
@@ -86,71 +59,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var lines := split_lines(s);
-      if |lines| < 1 {
-          result := "";
-          return;
-      }
-  
-      var t_str := lines[0];
-      var t := parse_int(t_str);
-      result := "";
-  
-      var line_idx := 1;
-      var test_case := 0;
-  
-      while test_case < t && line_idx + 1 < |lines|
-        invariant 0 <= test_case <= t
-        invariant 1 <= line_idx <= |lines|
-        invariant |result| >= 0
-        invariant line_idx == 1 + 2*test_case
-      {
-          var n_str := lines[line_idx];
-          var n := parse_int(n_str);
-          var input_string := lines[line_idx + 1];
-  
-          var words: seq<(string, int)> := [];
-          var i := 0;
-  
-          while i < n
-            invariant 0 <= i <= n
-            invariant |words| == i
-          {
-              var rotation: string;
-              if (n - i) % 2 == 0 {
-                  rotation := input_string[i..] + input_string[..i];
-              } else {
-                  var prefix := input_string[..i];
-                  var reversed_prefix := reverse_string(prefix);
-                  rotation := input_string[i..] + reversed_prefix;
-              }
-              words := words + [(rotation, i + 1)];
-              i := i + 1;
-          }
-  
-          if |words| > 0 {
-              var min_word := words[0].0;
-              var min_k := words[0].1;
-              var j := 1;
-  
-              while j < |words|
-                invariant 1 <= j <= |words|
-                invariant exists idx :: 0 <= idx < j && min_word == words[idx].0 && min_k == words[idx].1
-                invariant forall k :: 0 <= k < j ==> min_word <= words[k].0
-              {
-                  if words[j].0 < min_word {
-                      min_word := words[j].0;
-                      min_k := words[j].1;
-                  }
-                  j := j + 1;
-              }
-  
-              result := result + min_word + "\n" + int_to_string(min_k) + "\n";
-          }
-  
-          line_idx := line_idx + 2;
-          test_case := test_case + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -1,6 +1,8 @@
+/*
 Given N S-shaped pieces and M c-shaped pieces, find the maximum number of "Scc groups"
 that can be formed. Each Scc group requires exactly 1 S-shaped piece and 2 c-shaped pieces.
 Additionally, 2 c-shaped pieces can be combined to create 1 S-shaped piece.
+*/
 
 predicate ValidInput(n: int, m: int)
 {
@@ -16,12 +18,17 @@ function MaxSccGroups(n: int, m: int): int
     directGroups + additionalGroups
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int) returns (result: int)
   requires ValidInput(n, m)
   ensures result >= 0
   ensures result == MaxSccGroups(n, m)
+// </vc-spec>
+// <vc-code>
 {
-    var ans := if n < m / 2 then n else m / 2;
-    ans := ans + (m - ans * 2) / 4;
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

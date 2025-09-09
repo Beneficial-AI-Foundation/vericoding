@@ -1,6 +1,8 @@
+/*
 Given two strings s and t of equal length, determine the minimum number of moves needed to transform s into t.
 In each move, you can select any character from s and move it to either the beginning or end of the string.
 If transformation is impossible, return -1.
+*/
 
 function CountCharacter(s: string, c: char): int
 {
@@ -70,15 +72,10 @@ function MaxLongestSubsequence(s: string, t: string): int
     else MaxPreservableLength(s, t, 0, 0, 0)
 }
 
-lemma EmptyStringsHaveSameCharacterCounts()
-    ensures HasSameCharacterCounts("", "")
-{
-    assert |""| == |""|;
-    forall c ensures CountCharacter("", c) == CountCharacter("", c) {
-        assert CountCharacter("", c) == 0;
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(s: string, t: string) returns (result: int)
     requires |s| == |t|
     requires |s| >= 0
@@ -88,23 +85,9 @@ method solve(s: string, t: string) returns (result: int)
     ensures result != -1 ==> HasSameCharacterCounts(s, t)
     ensures result != -1 ==> result == |s| - MaxLongestSubsequence(s, t)
     ensures |s| == 0 ==> result == 0
+// </vc-spec>
+// <vc-code>
 {
-    if |s| == 0 {
-        EmptyStringsHaveSameCharacterCounts();
-        assert HasSameCharacterCounts(s, t);
-        result := 0;
-        return;
-    }
-
-    if !HasSameCharacterCounts(s, t) {
-        result := -1;
-        return;
-    }
-
-    var maxSubseq := MaxLongestSubsequence(s, t);
-    assert maxSubseq >= 0;
-    assert maxSubseq <= |s|;
-    result := |s| - maxSubseq;
-    assert result >= 0;
-    assert result <= |s|;
+  assume {:axiom} false;
 }
+// </vc-code>

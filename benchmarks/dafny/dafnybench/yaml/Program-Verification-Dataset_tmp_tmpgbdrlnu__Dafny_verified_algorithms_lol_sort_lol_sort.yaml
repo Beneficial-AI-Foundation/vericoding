@@ -17,8 +17,6 @@ vc-preamble: |-
   
   // Successfully verified with [Dafny 3.3.0.31104] in about 5 seconds.
   
-  
-  
   // We define "valid permutation" using multiset:
   
   predicate valid_permut(a: seq<int>, b: seq<int>)
@@ -44,28 +42,21 @@ vc-preamble: |-
     forall i, j | 0 <= i <= j < |a| :: a[i] <= a[j]
   }
   
-  
   // Now, the lol sort algorithm:
   // (Some invariants were tricky to find, but Dafny was smart enough otherwise)
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method lol_sort(a: array<int>)
     modifies a
     ensures valid_permut(a[..], old(a[..]))
     ensures sorted(a[..])
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

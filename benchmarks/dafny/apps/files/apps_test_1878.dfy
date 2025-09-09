@@ -1,5 +1,7 @@
+/*
 Given n rectangles on a 100×100 grid, where each rectangle is defined by its bottom-left corner (x₁, y₁) and top-right corner (x₂, y₂), 
 calculate the sum of all cell values in the grid. Each cell's value equals the number of rectangles that contain it.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -120,37 +122,10 @@ function ComputeTotalAreaPartial(rectangle_lines: seq<string>, n: int): int
         area + ComputeTotalAreaPartial(rectangle_lines[1..], n - 1)
 }
 
-method IntToString(n: int) returns (s: string)
-    ensures |s| >= 1
-    ensures s == IntToStringFunc(n)
-{
-    s := IntToStringFunc(n);
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method SplitLines(s: string) returns (lines: seq<string>)
-    requires |s| >= 0
-    ensures |lines| >= 0
-    ensures forall i :: 0 <= i < |lines| ==> '\n' !in lines[i]
-    ensures lines == SplitLinesFunc(s)
-{
-    lines := SplitLinesFunc(s);
-}
-
-method ParseInt(s: string) returns (result: int)
-    requires |s| >= 0
-    ensures result == ParseIntFunc(s)
-{
-    result := ParseIntFunc(s);
-}
-
-method ParseInts(s: string) returns (result: seq<int>)
-    requires |s| >= 0
-    ensures |result| >= 0
-    ensures result == ParseIntsFunc(s)
-{
-    result := ParseIntsFunc(s);
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures |result| >= 1
@@ -167,33 +142,9 @@ method solve(input: string) returns (result: string)
             total_area == ComputeTotalArea(lines[1..n+1])
           else
             total_area == ComputeTotalAreaPartial(lines[1..], n)))
+// </vc-spec>
+// <vc-code>
 {
-    var processed_input := input;
-    if |input| == 0 || input[|input|-1] != '\n' {
-        processed_input := input + "\n";
-    }
-
-    var lines := SplitLines(processed_input);
-    if |lines| == 0 { 
-        result := "0\n";
-        assert result == IntToStringFunc(0) + "\n";
-        return; 
-    }
-
-    var n := ParseInt(lines[0]);
-    var total := 0;
-
-    if n < 0 {
-        total := ComputeTotalAreaPartial(lines[1..], n);
-        result := IntToStringFunc(total) + "\n";
-        return;
-    }
-
-    if n + 1 <= |lines| {
-        total := ComputeTotalArea(lines[1..n+1]);
-    } else {
-        total := ComputeTotalAreaPartial(lines[1..], n);
-    }
-
-    result := IntToStringFunc(total) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

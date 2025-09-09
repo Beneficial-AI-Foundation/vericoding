@@ -55,7 +55,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -66,57 +65,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var lines := SplitLines(stdin_input);
-      if |lines| == 0 {
-          result := "NO\n";
-          return;
-      }
-  
-      var first_line := SplitInts(lines[0]);
-      if |first_line| < 2 {
-          result := "NO\n";
-          return;
-      }
-  
-      var n := first_line[0];
-      var m := first_line[1];
-  
-      if m <= 0 || n <= 0 {
-          result := "NO\n";
-          return;
-      }
-  
-      var i := 1;
-      while i <= m && i < |lines|
-          invariant 1 <= i <= m + 1
-          invariant i <= |lines| + 1
-      {
-          var group_data := SplitInts(lines[i]);
-          if |group_data| > 0 {
-              var group_members := group_data[1..];
-              var member_set := SeqToSet(group_members);
-  
-              var has_rick_morty_pair := false;
-              var j := 0;
-              while j < |group_members| && !has_rick_morty_pair
-                  invariant 0 <= j <= |group_members|
-              {
-                  var member := group_members[j];
-                  if -member in member_set {
-                      has_rick_morty_pair := true;
-                  }
-                  j := j + 1;
-              }
-  
-              if !has_rick_morty_pair {
-                  result := "YES\n";
-                  return;
-              }
-          }
-          i := i + 1;
-      }
-  
-      result := "NO\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

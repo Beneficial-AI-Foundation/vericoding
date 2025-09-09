@@ -1,6 +1,8 @@
+/*
 Given a cupboard with n shelves, determine if all cups and medals can be placed
 following constraints: cups and medals cannot be on the same shelf, each shelf
 can hold at most 5 cups, and each shelf can hold at most 10 medals.
+*/
 
 predicate ValidInput(a: seq<int>, b: seq<int>, n: int)
 {
@@ -32,82 +34,16 @@ predicate CanPlaceAll(a: seq<int>, b: seq<int>, n: int)
     shelves_for_cups + shelves_for_medals <= n
 }
 
-lemma sum_seq_extend_lemma(s: seq<int>, x: int)
-    requires forall i :: 0 <= i < |s| ==> s[i] >= 0
-    requires x >= 0
-    ensures sum_seq(s + [x]) == sum_seq(s) + x
-{
-    if |s| == 0 {
-        assert s + [x] == [x];
-        assert sum_seq([x]) == x;
-        assert sum_seq(s) == 0;
-    } else {
-        assert s + [x] == [s[0]] + (s[1..] + [x]);
-        sum_seq_extend_lemma(s[1..], x);
-        assert sum_seq(s + [x]) == s[0] + sum_seq(s[1..] + [x]);
-        assert sum_seq(s + [x]) == s[0] + sum_seq(s[1..]) + x;
-        assert sum_seq(s + [x]) == sum_seq(s) + x;
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(a: seq<int>, b: seq<int>, n: int) returns (result: string)
     requires ValidInput(a, b, n)
     ensures result == (if CanPlaceAll(a, b, n) then "YES" else "NO")
+// </vc-spec>
+// <vc-code>
 {
-    var sum_a := 0;
-    var i := 0;
-    while i < |a|
-        invariant 0 <= i <= |a|
-        invariant sum_a == sum_seq(a[..i])
-        invariant forall k :: 0 <= k < i ==> a[k] >= 0
-        invariant forall k :: 0 <= k < |a[..i]| ==> a[..i][k] >= 0
-    {
-        assert i < |a|;
-        assert a[i] >= 0;
-        assert forall k :: 0 <= k < |a[..i]| ==> a[..i][k] >= 0;
-        sum_seq_extend_lemma(a[..i], a[i]);
-        assert a[..i] + [a[i]] == a[..(i+1)];
-        assert sum_seq(a[..i] + [a[i]]) == sum_seq(a[..i]) + a[i];
-        assert sum_seq(a[..(i+1)]) == sum_seq(a[..i]) + a[i];
-        sum_a := sum_a + a[i];
-        i := i + 1;
-        assert sum_a == sum_seq(a[..i]);
-    }
-
-    assert i == |a|;
-    assert a[..|a|] == a;
-    assert sum_a == sum_seq(a);
-
-    var sum_b := 0;
-    var j := 0;
-    while j < |b|
-        invariant 0 <= j <= |b|
-        invariant sum_b == sum_seq(b[..j])
-        invariant forall k :: 0 <= k < j ==> b[k] >= 0
-        invariant forall k :: 0 <= k < |b[..j]| ==> b[..j][k] >= 0
-    {
-        assert j < |b|;
-        assert b[j] >= 0;
-        assert forall k :: 0 <= k < |b[..j]| ==> b[..j][k] >= 0;
-        sum_seq_extend_lemma(b[..j], b[j]);
-        assert b[..j] + [b[j]] == b[..(j+1)];
-        assert sum_seq(b[..j] + [b[j]]) == sum_seq(b[..j]) + b[j];
-        assert sum_seq(b[..(j+1)]) == sum_seq(b[..j]) + b[j];
-        sum_b := sum_b + b[j];
-        j := j + 1;
-        assert sum_b == sum_seq(b[..j]);
-    }
-
-    assert j == |b|;
-    assert b[..|b|] == b;
-    assert sum_b == sum_seq(b);
-
-    var n1 := ShelvesNeeded(sum_a, 5);
-    var n2 := ShelvesNeeded(sum_b, 10);
-
-    if n1 + n2 <= n {
-        result := "YES";
-    } else {
-        result := "NO";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

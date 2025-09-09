@@ -28,7 +28,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(pizzas: seq<int>) returns (result: string)
@@ -38,35 +37,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var p := 0;
-      var d := true;
-      var i := 0;
-  
-      while i < |pizzas|
-          invariant 0 <= i <= |pizzas|
-          invariant p == 0 || p == 1
-          invariant validatePizzaSolution(pizzas, i, d, p) == CanFulfillRequirements(pizzas)
-      {
-          var requirement := pizzas[i];
-  
-          if requirement % 2 == 0 {
-              if p == 1 {
-                  if requirement == 0 {
-                      d := false;
-                  }
-              }
-          } else {
-              p := 1 - p;
-          }
-  
-          i := i + 1;
-      }
-  
-      if d && p == 0 {
-          result := "YES";
-      } else {
-          result := "NO";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

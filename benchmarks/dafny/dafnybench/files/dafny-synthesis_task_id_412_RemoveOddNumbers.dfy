@@ -1,3 +1,6 @@
+/*
+*/
+
 /**
  * Remove odd numbers from an array of numbers
  **/
@@ -19,6 +22,6 @@ method RemoveOddNumbers(arr: array<int>) returns (evenList: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

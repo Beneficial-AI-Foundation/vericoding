@@ -68,7 +68,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(k: int, n: int, a: seq<int>, b: seq<int>) returns (result: int)
@@ -79,70 +78,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var res := {};
-  
-      var i := 0;
-      while i < k
-          invariant 0 <= i <= k
-          invariant res == set pos | 0 <= pos < i && isValidInitialScore(pos, k, a, b) :: computeInitialScore(pos, a, b)
-          invariant |res| <= i
-      {
-          var our := {};
-          var curr := b[0];
-  
-          var j := i;
-          while j >= 0
-              invariant -1 <= j <= i
-              invariant our == set idx | j < idx <= i :: (b[0] - sum(a[j+1..idx+1]))
-              invariant curr == b[0] - sum(a[j+1..i+1])
-          {
-              our := our + {curr};
-              curr := curr - a[j];
-              j := j - 1;
-          }
-          var first := curr;
-          assert first == computeInitialScore(i, a, b);
-  
-          var good := true;
-          curr := b[0];
-  
-          j := i + 1;
-          while j < k
-              invariant i + 1 <= j <= k
-              invariant our == computeBackwardScores(i, b[0], a) + set idx | i < idx < j :: (b[0] + sum(a[i+1..idx+1]))
-              invariant curr == b[0] + sum(a[i+1..j])
-          {
-              curr := curr + a[j];
-              our := our + {curr};
-              j := j + 1;
-          }
-  
-          assert our == computeScores(i, b[0], a);
-  
-          good := true;
-          var idx := 0;
-          while idx < n && good
-              invariant 0 <= idx <= n
-              invariant good == (forall l :: 0 <= l < idx ==> b[l] in our)
-          {
-              if b[idx] !in our {
-                  good := false;
-              }
-              idx := idx + 1;
-          }
-  
-          assert good == (forall l :: 0 <= l < n ==> b[l] in our);
-          assert good == isValidInitialScore(i, k, a, b);
-  
-          if good {
-              res := res + {first};
-          }
-  
-          i := i + 1;
-      }
-  
-      assert res == validInitialScores(k, a, b);
-      result := |res|;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

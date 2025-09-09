@@ -1,9 +1,11 @@
+/*
 Given a collection of regular polyhedrons, calculate the total number of faces.
 Each polyhedron type has a fixed number of faces:
 - Tetrahedron: 4 faces, Cube: 6 faces, Octahedron: 8 faces
 - Dodecahedron: 12 faces, Icosahedron: 20 faces
 Input: First line contains n (number of polyhedrons), next n lines contain polyhedron names
 Output: Total number of faces across all polyhedrons
+*/
 
 predicate ValidInput(input: string)
 {
@@ -135,28 +137,10 @@ function ComputeTotalUpTo(lines: seq<string>, count: int): int
     else GetFaces(TrimFunc(lines[count])) + ComputeTotalUpTo(lines, count - 1)
 }
 
-method SplitLines(s: string) returns (lines: seq<string>)
-    requires |s| > 0
-    ensures |lines| >= 0
-    ensures lines == SplitLinesFunc(s)
-{
-    lines := SplitLinesFunc(s);
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method StringToInt(s: string) returns (result: int)
-    ensures result >= 0
-    ensures result == StringToIntFunc(s)
-{
-    result := StringToIntFunc(s);
-}
-
-method Trim(s: string) returns (result: string)
-    ensures |result| <= |s|
-    ensures result == TrimFunc(s)
-{
-    result := TrimFunc(s);
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures |result| > 0
@@ -167,23 +151,9 @@ method solve(input: string) returns (result: string)
          var n := StringToIntFunc(lines[0]);
          var expectedTotal := ComputeTotalUpTo(lines, n);
          result == IntToStringFunc(expectedTotal) + "\n")
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    var n := StringToInt(lines[0]);
-    var totalFaces := 0;
-
-    var i := 1;
-    while i <= n && i < |lines|
-        invariant 0 <= i <= n + 1
-        invariant i <= |lines|
-        invariant totalFaces >= 0
-        invariant totalFaces == ComputeTotalUpTo(SplitLinesFunc(input), i - 1)
-    {
-        var polyhedron := Trim(lines[i]);
-        var faces := GetFaces(polyhedron);
-        totalFaces := totalFaces + faces;
-        i := i + 1;
-    }
-
-    return IntToStringFunc(totalFaces) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

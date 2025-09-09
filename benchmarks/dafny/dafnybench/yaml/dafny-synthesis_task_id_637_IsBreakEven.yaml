@@ -3,22 +3,16 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method IsBreakEven(costPrice: int, sellingPrice: int) returns (result: bool)
       requires costPrice >= 0 && sellingPrice >= 0
       ensures result <==> costPrice == sellingPrice
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

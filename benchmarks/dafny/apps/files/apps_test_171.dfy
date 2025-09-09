@@ -1,6 +1,8 @@
+/*
 Given a password string, determine if it meets complexity requirements.
 A password is complex if it has at least 5 characters, contains at least
 one uppercase letter, one lowercase letter, and one digit.
+*/
 
 predicate ContainsLowercase(s: string)
 {
@@ -38,6 +40,10 @@ function StripWhitespace(s: string): string
     else s
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (output: string)
     requires |input| > 0
     ensures var processedInput := TrimNewline(input);
@@ -46,12 +52,9 @@ method solve(input: string) returns (output: string)
                 output == "Correct\n"
             else
                 output == "Too weak\n"
+// </vc-spec>
+// <vc-code>
 {
-    var processedInput := TrimNewline(input);
-    var stripped := StripWhitespace(processedInput);
-    if IsValidPassword(stripped) {
-        output := "Correct\n";
-    } else {
-        output := "Too weak\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

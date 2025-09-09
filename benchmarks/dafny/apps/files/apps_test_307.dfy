@@ -1,7 +1,9 @@
+/*
 Given k_2 digits '2', k_3 digits '3', k_5 digits '5', and k_6 digits '6',
 form integers 32 and 256 to maximize their sum. Each digit can only be used once.
 To form 256: need one '2', one '5', one '6'
 To form 32: need one '3', one '2'
+*/
 
 predicate ValidInput(k2: int, k3: int, k5: int, k6: int)
 {
@@ -18,20 +20,17 @@ function OptimalSum(k2: int, k3: int, k5: int, k6: int): int
     256 * count256 + 32 * count32
 }
 
-function min(a: int, b: int): int
-{
-    if a <= b then a else b
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(k2: int, k3: int, k5: int, k6: int) returns (result: int)
     requires ValidInput(k2, k3, k5, k6)
     ensures result >= 0
     ensures result == OptimalSum(k2, k3, k5, k6)
+// </vc-spec>
+// <vc-code>
 {
-    var c := min(min(k2, k5), k6);
-    var remaining_k2 := k2 - c;
-    var ans := 256 * c;
-    var tmpCall1 := min(k3, remaining_k2);
-    ans := ans + 32 * tmpCall1;
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

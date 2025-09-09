@@ -1,7 +1,9 @@
+/*
 Given n objects with sizes and m boxes of capacity k, find the maximum number of objects
 that can be packed using a greedy algorithm by potentially removing leftmost objects.
 The greedy algorithm processes objects from left to right, placing each object in the
 current box if it fits, otherwise using a new empty box.
+*/
 
 function GreedyPackFromEnd(a: seq<int>, boxes: int, capacity: int): int
     requires boxes >= 1
@@ -29,6 +31,10 @@ function GreedyPackFromEndHelper(a: seq<int>, pos: int, boxes_left: int, capacit
         0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int, k: int, a: seq<int>) returns (result: int)
     requires n >= 0
     requires m >= 1
@@ -37,37 +43,9 @@ method solve(n: int, m: int, k: int, a: seq<int>) returns (result: int)
     requires forall i :: 0 <= i < |a| ==> 1 <= a[i] <= k
     ensures 0 <= result <= n
     ensures result == GreedyPackFromEnd(a, m, k)
+// </vc-spec>
+// <vc-code>
 {
-    var b := k;
-    var count := 0;
-    var boxes_left := m;
-
-    var i := n - 1;
-    while i >= 0
-        invariant -1 <= i <= n - 1
-        invariant 0 <= count <= n - 1 - i
-        invariant boxes_left >= 1
-        invariant 0 <= b <= k
-        invariant count == GreedyPackFromEnd(a, m, k) - GreedyPackFromEndHelper(a, i, boxes_left, k, b)
-    {
-        var obj := a[i];
-        if obj > k {
-            break;
-        }
-        if obj > b {
-            if boxes_left > 1 {
-                boxes_left := boxes_left - 1;
-                b := k - obj;
-                count := count + 1;
-            } else {
-                break;
-            }
-        } else {
-            b := b - obj;
-            count := count + 1;
-        }
-        i := i - 1;
-    }
-
-    result := count;
+  assume {:axiom} false;
 }
+// </vc-code>

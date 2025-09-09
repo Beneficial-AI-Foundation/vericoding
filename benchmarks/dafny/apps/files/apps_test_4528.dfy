@@ -1,6 +1,8 @@
+/*
 Calculate the number of minutes remaining until New Year (00:00) given the current time in 24-hour format.
 Input is a sequence of (hour, minute) pairs representing current times.
 Output is the corresponding minutes remaining until midnight for each test case.
+*/
 
 predicate ValidInput(testCases: seq<(int, int)>)
 {
@@ -23,24 +25,18 @@ predicate ValidOutput(results: seq<int>)
     forall i :: 0 <= i < |results| ==> 1 <= results[i] <= 1439
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(testCases: seq<(int, int)>) returns (results: seq<int>)
     requires ValidInput(testCases)
     ensures |results| == |testCases|
     ensures forall i :: 0 <= i < |results| ==> results[i] == MinutesUntilMidnight(testCases[i].0, testCases[i].1)
     ensures ValidOutput(results)
+// </vc-spec>
+// <vc-code>
 {
-    results := [];
-    var i := 0;
-    while i < |testCases|
-        invariant 0 <= i <= |testCases|
-        invariant |results| == i
-        invariant forall j :: 0 <= j < i ==> results[j] == MinutesUntilMidnight(testCases[j].0, testCases[j].1)
-        invariant forall j :: 0 <= j < i ==> 1 <= results[j] <= 1439
-    {
-        var h := testCases[i].0;
-        var m := testCases[i].1;
-        var minutesUntilMidnight := MinutesUntilMidnight(h, m);
-        results := results + [minutesUntilMidnight];
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

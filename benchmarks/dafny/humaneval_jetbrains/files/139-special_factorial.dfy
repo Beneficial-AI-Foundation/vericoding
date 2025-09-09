@@ -1,4 +1,3 @@
-
 /*
 function_signature: def special_factorial(n: int) -> int
 The Brazilian factorial is defined as: brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1! where n > 0. Please write a function that computes the Brazilian factorial.
@@ -15,6 +14,10 @@ function special_factorial_rec(n: nat): nat
   if n == 0 then 1 else factorial(n) * special_factorial_rec(n - 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method special_factorial(n: nat) returns (result: nat)
   // pre-conditions-start
   requires n > 0
@@ -22,6 +25,9 @@ method special_factorial(n: nat) returns (result: nat)
   // post-conditions-start
   ensures result == special_factorial_rec(n)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

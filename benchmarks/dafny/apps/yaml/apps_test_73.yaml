@@ -18,7 +18,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(c: int, v0: int, v1: int, a: int, l: int) returns (result: int)
@@ -31,22 +30,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var cur := 0;
-      var cnt := 0;
-  
-      while cur < c
-          invariant cnt >= 0
-          invariant cur >= 0
-          invariant cur == computePosition(cnt, v0, v1, a, l)
-          invariant forall days :: 1 <= days < cnt ==> computePosition(days, v0, v1, a, l) < c
-          decreases c - cur + 1
-      {
-          cur := if cur - l > 0 then cur - l else 0;
-          cur := cur + (if v1 < v0 + a * cnt then v1 else v0 + a * cnt);
-          cnt := cnt + 1;
-      }
-  
-      result := cnt;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

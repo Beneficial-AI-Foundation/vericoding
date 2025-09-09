@@ -1,6 +1,8 @@
+/*
 Given a tree with vertices colored black (1) or white (0), find the minimum number of paint operations
 to make all vertices the same color. A paint(v) operation changes the color of all vertices u such that
 all vertices on the shortest path from v to u have the same color.
+*/
 
 predicate ValidTreeInput(input: string)
 {
@@ -99,55 +101,10 @@ function ComputeMinPaintOps(n: int, colors: seq<int>, edges: seq<(int, int)>): i
     (TreeDiameter(componentGraph) + 1) / 2
 }
 
-function SplitLines(input: string): seq<string>
-{
-  [input]
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function ParseInt(s: string): int
-{
-  0
-}
-
-function ParseIntSeq(s: string): seq<int>
-{
-  [0]
-}
-
-function TrimWhitespace(s: string): string
-{
-  s
-}
-
-function BuildSameColorComponents(colors: seq<int>, edges: seq<(int, int)>): seq<seq<int>>
-{
-  [[]]
-}
-
-function BuildComponentGraph(components: seq<seq<int>>, colors: seq<int>, edges: seq<(int, int)>): seq<seq<int>>
-{
-  [[]]
-}
-
-function TreeDiameter(graph: seq<seq<int>>): int
-{
-  0
-}
-
-function find(x: int, p: seq<int>): (int, seq<int>)
-  requires x >= 0
-  requires forall i :: 0 <= i < |p| ==> p[i] >= 0
-  ensures find(x, p).0 >= 0
-  ensures |find(x, p).1| <= |p|
-{
-  if |p| == 0 then
-    (x, [])
-  else if p[0] == x then
-    (x, p)
-  else
-    find(x, p[1..])
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (output: string)
   requires |stdin_input| > 0
   requires ValidTreeInput(stdin_input)
@@ -167,6 +124,9 @@ method solve(stdin_input: string) returns (output: string)
   ensures var (n, colors, edges) := ParseInput(stdin_input);
           var result := ParseOutput(output);
           result == ComputeMinPaintOps(n, colors, edges)
+// </vc-spec>
+// <vc-code>
 {
-  output := "0";
+  assume {:axiom} false;
 }
+// </vc-code>

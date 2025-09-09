@@ -3,6 +3,10 @@ function_signature: method uniqueSorted(s: seq<int>) returns (result: seq<int>)
 Sort elements. Requires: the condition holds for all values. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method uniqueSorted(s: seq<int>) returns (result: seq<int>)
     // pre-conditions-start
     requires forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
@@ -12,9 +16,12 @@ method uniqueSorted(s: seq<int>) returns (result: seq<int>)
     ensures forall x :: x in result ==> x in s
     ensures forall x :: x in s ==> x in result
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method unique(s: seq<int>) returns (result: seq<int>)
     // post-conditions-start

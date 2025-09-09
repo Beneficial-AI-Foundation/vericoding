@@ -1,8 +1,10 @@
+/*
 Given a non-empty string containing only characters 'v' and 'o' with length at most 10^6,
 calculate its "wow factor" - the number of subsequences that form the pattern "wow".
 Each 'w' must be represented by exactly two consecutive 'v' characters.
 A valid "wow" subsequence consists of: two consecutive 'v' characters (first 'w'),
 an 'o' character appearing later, and two consecutive 'v' characters after the 'o' (second 'w').
+*/
 
 function wowFactor(s: string): int
     requires |s| > 0
@@ -52,55 +54,18 @@ function wowFactorSum(s: string, pos: int): int
         current + wowFactorSum(s, pos + 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: int)
     requires |s| > 0
     requires forall i :: 0 <= i < |s| ==> s[i] == 'v' || s[i] == 'o'
     ensures result >= 0
     ensures result == wowFactor(s)
+// </vc-spec>
+// <vc-code>
 {
-    var n := |s|;
-    if n < 4 {
-        return 0;
-    }
-
-    var p := new int[n+1];
-    p[0] := 0;
-    p[1] := 0;
-
-    var x := 1;
-    while x < n
-        invariant 1 <= x <= n
-        invariant p.Length == n + 1
-        invariant forall i :: 0 <= i <= x ==> p[i] >= 0
-        invariant forall i :: 0 <= i <= x ==> p[i] == countVVPairsBefore(s, i)
-    {
-        var y := 0;
-        if s[x] == 'v' && s[x-1] == 'v' {
-            y := 1;
-        }
-        p[x+1] := p[x] + y;
-        x := x + 1;
-    }
-
-    var q := countVVPairsAfter(s, n - 2);
-    var sol := wowFactorSum(s, n - 2);
-    x := n - 3;
-
-    while x >= 0
-        invariant -1 <= x <= n - 3
-        invariant q >= 0
-        invariant sol >= 0
-        invariant q == countVVPairsAfter(s, x + 1)
-        invariant sol == wowFactorSum(s, x + 1)
-    {
-        if x + 1 < n && s[x] == 'v' && s[x+1] == 'v' {
-            q := q + 1;
-        }
-        if s[x] == 'o' {
-            sol := sol + q * p[x];
-        }
-        x := x - 1;
-    }
-
-    return sol;
+  assume {:axiom} false;
 }
+// </vc-code>

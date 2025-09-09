@@ -10,7 +10,6 @@ vc-preamble: |-
   Explanation: "aba" is also a valid answer.
   */
   
-  
   // Specifying the problem: whether `s[i..j]` is palindromic
   ghost predicate palindromic(s: string, i: int, j: int)
     requires 0 <= i <= j <= |s|
@@ -25,7 +24,6 @@ vc-preamble: |-
   
   // The main algorithm.
   // We traverse all centers from left to right, and "expand" each of them, to find the longest palindrome.
-  
   
   /* Discussions
   1. Dafny is super bad at slicing (esp. nested slicing).
@@ -55,7 +53,6 @@ vc-preamble: |-
     which "indirectly" proves that the entire algorithm runs in `O(|s|)` time.
   */
   
-  
   // A reference implementation of Manacher's algorithm:
   // (Ref. https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm) for details...
   method longestPalindrome'(s: string) returns (ans: string, lo: int, hi: int)
@@ -65,7 +62,6 @@ vc-preamble: |-
   {
     assume{:axiom} false;
   }
-  
   
   // Below are helper functions and lemmas we used:
   
@@ -152,11 +148,8 @@ vc-preamble: |-
   // because its both ends are the bogus char.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method expand_from_center(s: string, i0: int, j0: int) returns (lo: int, hi: int)
     requires 0 <= i0 <= j0 <= |s|
     requires palindromic(s, i0, j0)
@@ -164,14 +157,11 @@ vc-spec: |-
     ensures forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j)  // Among all palindromes
       && i + j == i0 + j0                                             // sharing the same center,
       :: j - i <= hi - lo                                             // `s[lo..hi]` is longest.
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

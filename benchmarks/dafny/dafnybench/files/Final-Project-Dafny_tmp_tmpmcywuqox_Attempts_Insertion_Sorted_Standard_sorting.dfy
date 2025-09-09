@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate InsertionSorted(Array: array<int>, left: int, right: int)  
   requires 0 <= left <= right <= Array.Length       
   reads Array       
@@ -16,6 +19,6 @@ method sorting(Array: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

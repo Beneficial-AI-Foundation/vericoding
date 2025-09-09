@@ -34,7 +34,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, parents: seq<int>) returns (result: string)
@@ -44,63 +43,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // Build children list for each node (0-indexed)
-      var children: seq<seq<int>> := seq(n, i => []);
-  
-      var i := 0;
-      while i < n - 1
-          invariant 0 <= i <= n - 1
-          invariant |children| == n
-          invariant forall k :: 0 <= k < n ==> forall c :: c in children[k] ==> 0 <= c < n
-          invariant forall k :: 0 <= k < n ==> forall c :: c in children[k] ==> exists j :: 0 <= j < i && parents[j] - 1 == k && j + 1 == c
-          invariant forall j :: 0 <= j < i ==> 0 <= parents[j] - 1 < |children| && (j + 1) in children[parents[j] - 1]
-          invariant forall node :: 0 <= node < n ==> 
-              ((exists j :: 0 <= j < i && parents[j] - 1 == node) <==> |children[node]| > 0)
-          invariant forall node :: 0 <= node < n ==> 
-              (exists j :: 0 <= j < i && parents[j] - 1 == node) ==> 
-              |set c | c in children[node] && 0 <= c < n && !(exists k :: 0 <= k < i && parents[k] - 1 == c)| == 
-              |set j | 0 <= j < i && parents[j] - 1 == node && !(exists k :: 0 <= k < i && parents[k] - 1 == j + 1)|
-      {
-          var parent := parents[i] - 1; // Convert to 0-based indexing
-          var child := i + 1; // Child vertex is i+2 in 1-based, i+1 in 0-based
-          children := children[parent := children[parent] + [child]];
-          i := i + 1;
-      }
-  
-      // Check spruce condition: every non-leaf vertex must have at least 3 leaf children
-      var isSpruce := true;
-      i := 0;
-      while i < n && isSpruce
-          invariant 0 <= i <= n
-          invariant isSpruce ==> (forall node :: 0 <= node < i && hasChildren(node, parents, n) ==> 
-              countLeafChildren(node, parents, n) >= 3)
-          invariant forall k :: 0 <= k < n ==> forall c :: c in children[k] ==> 0 <= c < n
-          invariant forall node :: 0 <= node < n ==> (hasChildren(node, parents, n) <==> |children[node]| > 0)
-          invariant forall node :: 0 <= node < n ==> hasChildren(node, parents, n) ==> 
-              countLeafChildren(node, parents, n) == |set c | c in children[node] && 0 <= c < n && !hasChildren(c, parents, n)|
-      {
-          if |children[i]| > 0 { // Non-leaf node
-              var leafChildren := 0;
-              var j := 0;
-              while j < |children[i]|
-                  invariant 0 <= j <= |children[i]|
-                  invariant forall k :: k in children[i] ==> 0 <= k < n
-                  invariant leafChildren == |set k | k in children[i][..j] && 0 <= k < n && !hasChildren(k, parents, n)|
-              {
-                  var childIdx := children[i][j];
-                  if 0 <= childIdx < n && |children[childIdx]| == 0 { // Child is a leaf
-                      leafChildren := leafChildren + 1;
-                  }
-                  j := j + 1;
-              }
-              if leafChildren < 3 {
-                  isSpruce := false;
-              }
-          }
-          i := i + 1;
-      }
-  
-      result := if isSpruce then "Yes" else "No";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

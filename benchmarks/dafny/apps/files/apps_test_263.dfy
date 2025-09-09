@@ -1,8 +1,10 @@
+/*
 Given n benches with initial occupancies and m additional people to seat,
 find the minimum and maximum possible values of k, where k is the maximum
 occupancy of any single bench after all m people are seated.
 For minimum k: distribute people as evenly as possible.
 For maximum k: add all m people to the bench with current maximum occupancy.
+*/
 
 predicate ValidInput(n: nat, m: nat, benches: seq<nat>)
 {
@@ -23,6 +25,10 @@ function sum_seq(s: seq<nat>): nat
     else s[0] + sum_seq(s[1..])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: nat, m: nat, benches: seq<nat>) returns (minimum: nat, maximum: nat)
     requires ValidInput(n, m, benches)
     ensures maximum == max_seq(benches) + m
@@ -30,15 +36,9 @@ method solve(n: nat, m: nat, benches: seq<nat>) returns (minimum: nat, maximum: 
             var current_max := max_seq(benches);
             if total <= current_max * n then minimum == current_max
             else minimum == (total + n - 1) / n
+// </vc-spec>
+// <vc-code>
 {
-    var current_max := max_seq(benches);
-    var total := sum_seq(benches) + m;
-
-    maximum := current_max + m;
-
-    if total <= current_max * n {
-        minimum := current_max;
-    } else {
-        minimum := (total + n - 1) / n;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

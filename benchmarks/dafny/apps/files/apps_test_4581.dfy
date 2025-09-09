@@ -1,6 +1,8 @@
+/*
 Calculate the price of a bowl of ramen based on selected toppings.
 Base price is 700 yen, each topping ('o') adds 100 yen.
 Input is a 3-character string with 'o' (included) or 'x' (not included).
+*/
 
 predicate ValidInput(s: string) {
     |s| == 3 && forall i :: 0 <= i < |s| ==> s[i] == 'o' || s[i] == 'x'
@@ -37,39 +39,17 @@ function IntToStringHelper(n: int, acc: string) : string
     else IntToStringHelper(n / 10, [((n % 10) + 48) as char] + acc)
 }
 
-lemma countOLemma(prefix: string, suffix: string)
-    ensures countO(prefix + suffix) == countO(prefix) + countO(suffix)
-{
-    if |prefix| == 0 {
-        assert prefix + suffix == suffix;
-    } else {
-        assert prefix == [prefix[0]] + prefix[1..];
-        assert prefix + suffix == [prefix[0]] + (prefix[1..] + suffix);
-        countOLemma(prefix[1..], suffix);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires ValidInput(s)
     ensures result == IntToString(CalculatePrice(s)) + "\n"
     ensures CalculatePrice(s) >= 700
+// </vc-spec>
+// <vc-code>
 {
-    var count := 0;
-    var i := 0;
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant count == countO(s[..i])
-    {
-        assert s[..i+1] == s[..i] + [s[i]];
-        countOLemma(s[..i], [s[i]]);
-        assert countO(s[..i+1]) == countO(s[..i]) + (if s[i] == 'o' then 1 else 0);
-        if s[i] == 'o' {
-            count := count + 1;
-        }
-        i := i + 1;
-    }
-    assert s[..|s|] == s;
-    assert count == countO(s);
-    var value := count * 100 + 700;
-    result := IntToString(value) + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given a sequence of n integers, perform at most k operations where each operation
 increases or decreases any element by 1. Find the minimum possible difference
 between the maximum and minimum elements after performing these operations.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -56,46 +58,17 @@ function intToString(n: int): string
     else "-" + intToStringHelper(-n)
 }
 
-function intToStringHelper(n: int): string
-    requires n > 0
-{
-    if n < 10 then [digitToChar(n)]
-    else intToStringHelper(n / 10) + [digitToChar(n % 10)]
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function digitToChar(d: int): char
-    requires 0 <= d <= 9
-{
-    match d
-        case 0 => '0' case 1 => '1' case 2 => '2' case 3 => '3' case 4 => '4'
-        case 5 => '5' case 6 => '6' case 7 => '7' case 8 => '8' case 9 => '9'
-}
-
-method minimizeRange(a: seq<int>, k: nat) returns (minDiff: nat)
-    requires |a| >= 2
-    requires k >= 1
-    requires forall i :: 0 <= i < |a| ==> a[i] >= 1 && a[i] <= 1_000_000_000
-    ensures minDiff >= 0
-{
-    if forall i :: 0 <= i < |a| ==> a[i] == a[0] {
-        minDiff := 0;
-    } else if k == 0 {
-        var maxVal := max(a);
-        var minVal := min(a);
-        if maxVal >= minVal {
-            minDiff := (maxVal - minVal) as nat;
-        } else {
-            minDiff := 0;
-        }
-    } else {
-        minDiff := 0;
-    }
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures IsValidResultString(result)
     ensures RepresentsMinimumDifference(stdin_input, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := "0";
+  assume {:axiom} false;
 }
+// </vc-code>

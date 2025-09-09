@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: def string_xor(a: str, b: str) -> str
+  Input are two strings a and b consisting only of 1s and 0s. Perform binary XOR on these inputs and return result also as a string.
+
 vc-preamble: |-
   function represents_byte(a: char) : bool
   {
@@ -14,12 +18,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: def string_xor(a: str, b: str) -> str
-  Input are two strings a and b consisting only of 1s and 0s. Perform binary XOR on these inputs and return result also as a string.
-  */
 
 vc-spec: |-
   method string_xor(a: string, b: string) returns (result: string)
@@ -36,9 +34,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
-
 

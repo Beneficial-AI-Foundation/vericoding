@@ -1,4 +1,3 @@
-
 /*
 function_signature: def rescale_to_unit(numbers: List[float]) -> List[float]
 Given list of numbers (of at least two elements), apply a linear transform to that list, such that the smallest number will become 0 and the largest will become 1
@@ -16,6 +15,10 @@ function affine_seq(s: seq<real>, r: seq<real>, shift: real, scale: real) : bool
   forall i :: 0 <= i < |s| ==> r[i] == affine(s[i], shift, scale)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method rescale_to_unit(s: seq<real>) returns (r : seq<real>)
   // pre-conditions-start
   requires |s| >= 2
@@ -28,6 +31,9 @@ method rescale_to_unit(s: seq<real>) returns (r : seq<real>)
   ensures exists i : int :: 0 <= i < |s| && r[i] == 1.0
   ensures exists shift, scale :: scale > 0.0 && affine_seq(s, r, shift, scale)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

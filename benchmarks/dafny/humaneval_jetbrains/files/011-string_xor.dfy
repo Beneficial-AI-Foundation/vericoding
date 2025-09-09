@@ -1,4 +1,3 @@
-
 /*
 function_signature: def string_xor(a: str, b: str) -> str
 Input are two strings a and b consisting only of 1s and 0s. Perform binary XOR on these inputs and return result also as a string.
@@ -18,6 +17,10 @@ function char_xor(a: char, b: char): char
         '1'
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method string_xor(a: string, b: string) returns (result: string)
     // pre-conditions-start
     requires |a| == |b|
@@ -29,6 +32,9 @@ method string_xor(a: string, b: string) returns (result: string)
     ensures forall i :: 0 <= i < |result| ==> represents_byte(result[i])
     ensures forall i :: 0 <= i < |result| ==> result[i] == char_xor(a[i], b[i])
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

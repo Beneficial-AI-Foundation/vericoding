@@ -39,7 +39,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int) returns (result: int)
@@ -50,22 +49,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var p := MinMoves(n);
-    
-    var w := p;
-    while w % m != 0 && w <= n
-      invariant p <= w <= n + 1
-      invariant forall k :: p <= k < w ==> k % m != 0
-      decreases n - w + 1
-    {
-      w := w + 1;
-    }
-  
-    if w <= n {
-      result := w;
-    } else {
-      result := -1;
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

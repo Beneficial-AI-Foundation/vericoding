@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: def max_fill_count(grid : list[list[int]], capacity : int) -> int
+  Please write a function that sorts an array of non-negative integers according to number of ones in their binary representation in ascending order. For similar number of ones, sort based on decimal value.
+
 vc-preamble: |-
   function popcount(n: nat): nat {
     if n == 0 then 0
@@ -5,12 +9,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: def max_fill_count(grid : list[list[int]], capacity : int) -> int
-  Please write a function that sorts an array of non-negative integers according to number of ones in their binary representation in ascending order. For similar number of ones, sort based on decimal value.
-  */
 
 vc-spec: |-
   method sort_array(s: seq<nat>) returns (sorted: seq<nat>)
@@ -22,9 +20,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
-
 

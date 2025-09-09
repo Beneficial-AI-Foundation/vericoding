@@ -42,7 +42,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -51,23 +50,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var n := parse_int_from_string(stdin_input);
-  
-      var ans := 0;
-      var i := 0;
-      while i < n
-          invariant 0 <= i <= n
-          invariant ans >= 0
-          invariant ans == sum_of_non_fizzbuzz_numbers(i)
-      {
-          var num := i + 1;
-          if num % 3 > 0 && num % 5 > 0 {
-              ans := ans + num;
-          }
-          i := i + 1;
-      }
-  
-      result := int_to_string(ans) + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

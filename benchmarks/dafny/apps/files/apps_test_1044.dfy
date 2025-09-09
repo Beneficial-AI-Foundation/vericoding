@@ -1,7 +1,9 @@
+/*
 Two players play a cycle-splitting game alternately. Player 1 goes first.
 Players split cycles with ≥2 vertices into two smaller cycles.
 Process n operations sequentially, each adding a cycle.
 After each operation, determine who wins if the game starts with current cycle set.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -121,26 +123,10 @@ predicate PartialSimulation(numbers: seq<string>, output: string, processed: int
         (partialComputed[i] == 2 ==> outputLines[i] == "2")
 }
 
-method SplitByNewline(s: string) returns (lines: seq<string>)
-    ensures lines == SplitByNewlineSpec(s)
-{
-    lines := ["", ""];
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method SplitBySpace(s: string) returns (parts: seq<string>)
-    ensures parts == SplitBySpaceSpec(s)
-{
-    parts := [""];
-}
-
-method ParseInt(s: string) returns (n: int)
-    requires IsValidInteger(s)
-    ensures n >= 0
-    ensures n == ParseIntSpec(s)
-{
-    n := 0;
-}
-
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires |s| > 0
     requires exists i :: 0 <= i < |s| && s[i] == '\n'
@@ -161,50 +147,9 @@ method solve(s: string) returns (result: string)
         var numbers := SplitBySpaceSpec(lines[1]);
         StartsWithPlayer2AndTogglesOnEven(numbers, result)
     ensures AlternatesCorrectly(s, result)
+// </vc-spec>
+// <vc-code>
 {
-    if |s| == 0 {
-        result := "";
-        return;
-    }
-
-    var lines := SplitByNewline(s);
-    if |lines| < 2 {
-        result := "";
-        return;
-    }
-
-    var nStr := lines[0];
-    var numbersStr := lines[1];
-    var n := ParseInt(nStr);
-    var numbers := SplitBySpace(numbersStr);
-
-    var now := 2;
-    var output := "";
-    var i := 0;
-
-    while i < |numbers|
-        invariant 0 <= i <= |numbers|
-        invariant now == 1 || now == 2
-        invariant |output| == i * 2
-        invariant forall j :: 0 <= j < |output| ==> output[j] == '1' || output[j] == '2' || output[j] == '\n'
-        invariant i > 0 ==> output[|output|-1] == '\n'
-        invariant PartialSimulation(numbers, output, i, now)
-    {
-        var numStr := numbers[i];
-        var num := ParseInt(numStr);
-
-        if num % 2 == 0 {
-            now := 3 - now;
-        }
-
-        if now == 1 {
-            output := output + "1\n";
-        } else {
-            output := output + "2\n";
-        }
-
-        i := i + 1;
-    }
-
-    result := output;
+  assume {:axiom} false;
 }
+// </vc-code>

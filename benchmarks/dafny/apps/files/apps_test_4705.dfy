@@ -1,6 +1,8 @@
+/*
 Calculate the net amount paid by a customer for N meals at a restaurant.
 Each meal costs 800 yen. For every 15 meals ordered, the customer receives
 200 yen cashback. Return the net amount (total cost minus cashback).
+*/
 
 predicate ValidInput(N: int)
 {
@@ -25,11 +27,16 @@ function NetAmount(N: int): int
     TotalCost(N) - Cashback(N)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int) returns (result: int)
     requires ValidInput(N)
     ensures result == NetAmount(N)
+// </vc-spec>
+// <vc-code>
 {
-    var totalCost := 800 * N;
-    var cashback := (N / 15) * 200;
-    result := totalCost - cashback;
+  assume {:axiom} false;
 }
+// </vc-code>

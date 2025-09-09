@@ -1,6 +1,8 @@
+/*
 Given two integers A and B, compute f(A, B) which is the exclusive OR (XOR) of all integers 
 in the range [A, B] inclusive. The XOR operation combines all bits where the result bit is 1 
 if an odd number of input integers have 1 in that bit position, and 0 if an even number do.
+*/
 
 predicate ValidInput(a: int, b: int) {
     0 <= a <= b
@@ -30,10 +32,17 @@ function XorRange(a: int, b: int): int
     else XorInt(a, XorRange(a + 1, b))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int) returns (result: int)
     requires ValidInput(a, b)
     ensures result == XorRange(a, b)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    result := XorRange(a, b);
+  assume {:axiom} false;
 }
+// </vc-code>

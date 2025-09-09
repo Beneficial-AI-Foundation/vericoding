@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate sorted_seg(a:array<int>, i:int, j:int) //j not included
 requires 0 <= i <= j <= a.Length
 reads a
@@ -18,6 +21,6 @@ ensures a[..c]==old(a[..c]) && a[f..]==old(a[f..])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

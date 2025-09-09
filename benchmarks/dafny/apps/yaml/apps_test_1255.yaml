@@ -105,7 +105,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -115,7 +114,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := IntToStringFunction(GetMaxSimultaneousArrivals(input)) + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

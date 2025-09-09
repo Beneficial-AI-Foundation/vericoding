@@ -20,7 +20,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method SolveCakeProblem(a: int, b: int) returns (result: string)
@@ -31,11 +30,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if a <= 8 && b <= 8 {
-          result := "Yay!";
-      } else {
-          result := ":(";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

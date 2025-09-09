@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: def mean_absolute_deviation(numbers: List[float]) -> float
+  For a given list of input numbers, calculate Mean Absolute Deviation around the mean of this dataset. Mean Absolute Deviation is the average absolute difference between each element and a centerpoint (mean in this case): MAD = average | x - x_mean |
+
 vc-preamble: |-
   function sum(s: seq<real>) : real {
     if |s| == 0 then 0.0 else s[0] + sum(s[1..])
@@ -14,12 +18,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: def mean_absolute_deviation(numbers: List[float]) -> float
-  For a given list of input numbers, calculate Mean Absolute Deviation around the mean of this dataset. Mean Absolute Deviation is the average absolute difference between each element and a centerpoint (mean in this case): MAD = average | x - x_mean |
-  */
 
 vc-spec: |-
   method mean_absolute_derivation(numbers: seq<real>) returns (derivation: real)
@@ -33,9 +31,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
-
 

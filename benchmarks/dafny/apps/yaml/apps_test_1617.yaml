@@ -28,11 +28,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function GetDivisors(n: int): set<int>
-    requires n > 0
-  {
-    set d | 1 <= d <= n && IsDivisor(d, n)
-  }
 
 vc-spec: |-
   method solve(n: int) returns (result: seq<int>)
@@ -44,90 +39,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var values: seq<int> := [];
-  
-    var i := 1;
-    while i * i <= n
-      invariant 1 <= i
-      invariant forall v :: v in values ==> exists d :: IsDivisor(d, n) && v == f(n, d)
-      invariant forall d :: IsDivisor(d, n) && d < i ==> f(n, d) in values
-      invariant forall d :: IsDivisor(d, n) && d > n / i ==> f(n, d) in values
-    {
-      if n % i == 0 {
-        var val1 := f(n, i);
-        values := values + [val1];
-  
-        if i != n / i {
-          var val2 := f(n, n / i);
-          values := values + [val2];
-        }
-      }
-      i := i + 1;
-    }
-  
-    // Remove duplicates
-    var unique: seq<int> := [];
-    var idx := 0;
-    while idx < |values|
-      invariant 0 <= idx <= |values|
-      invariant NoDuplicates(unique)
-      invariant forall v :: v in unique ==> v in values
-      invariant forall v :: v in values ==> exists d :: IsDivisor(d, n) && v == f(n, d)
-      invariant forall k :: 0 <= k < idx ==> (values[k] in unique <==> (forall j :: 0 <= j < k ==> values[j] != values[k]))
-      invariant forall v :: v in unique ==> exists k :: 0 <= k < idx && values[k] == v && (forall j :: 0 <= j < k ==> values[j] != v)
-    {
-      var found := false;
-      var j := 0;
-      while j < |unique|
-        invariant 0 <= j <= |unique|
-        invariant found <==> values[idx] in unique[..j]
-      {
-        if unique[j] == values[idx] {
-          found := true;
-          break;
-        }
-        j := j + 1;
-      }
-      if !found {
-        unique := unique + [values[idx]];
-      }
-      idx := idx + 1;
-    }
-  
-    // Simple bubble sort
-    result := unique;
-    var len := |result|;
-    var outer := 0;
-    while outer < len
-      invariant 0 <= outer <= len
-      invariant len == |result|
-      invariant NoDuplicates(result)
-      invariant multiset(result) == multiset(unique)
-      invariant forall v :: v in result ==> exists d :: IsDivisor(d, n) && v == f(n, d)
-      invariant forall i :: 0 <= i < outer ==> forall j :: outer <= j < |result| ==> result[i] <= result[j]
-      invariant forall i, j :: 0 <= i < j < outer ==> result[i] <= result[j]
-    {
-      var inner := 0;
-      while inner < len - 1 - outer
-        invariant 0 <= inner <= len - 1 - outer
-        invariant len == |result|
-        invariant NoDuplicates(result)
-        invariant multiset(result) == multiset(unique)
-        invariant forall v :: v in result ==> exists d :: IsDivisor(d, n) && v == f(n, d)
-        invariant forall i :: 0 <= i < outer ==> forall j :: outer <= j < |result| ==> result[i] <= result[j]
-        invariant forall i, j :: 0 <= i < j < outer ==> result[i] <= result[j]
-        invariant forall k :: outer + inner + 1 <= k < |result| ==> result[outer + inner] <= result[k]
-      {
-        if result[outer + inner] > result[outer + inner + 1] {
-          var temp := result[outer + inner];
-          result := result[..outer + inner] + [result[outer + inner + 1]] + [temp] + result[outer + inner + 2..];
-        }
-        inner := inner + 1;
-      }
-      outer := outer + 1;
-    }
-  
-    assert forall d :: IsDivisor(d, n) ==> f(n, d) in result;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

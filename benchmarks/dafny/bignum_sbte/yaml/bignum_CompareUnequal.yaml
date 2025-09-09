@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: bignum_CompareUnequal.
+  Implement the method according to the Dafny specification.
+
 vc-preamble: |-
   ghost function Str2Int(s: string): nat
     requires ValidBitString(s)
@@ -13,10 +17,6 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-description: |-
-  Bignum task: bignum_CompareUnequal.
-  Implement the method according to the Dafny specification.
-
 vc-spec: |-
   method CompareUnequal(s1: string, s2: string) returns (res: int)
     requires ValidBitString(s1) && ValidBitString(s2)
@@ -31,7 +31,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

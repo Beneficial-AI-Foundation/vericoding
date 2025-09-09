@@ -1,6 +1,8 @@
+/*
 Given n cows initially arranged in positions 1, 2, ..., n, find the maximum number of inversions
 achievable using at most k swaps. An inversion is a pair (i,j) where i < j but the cow in 
 position i has a larger label than the cow in position j.
+*/
 
 function min(a: int, b: int): int
     ensures min(a, b) == a || min(a, b) == b
@@ -37,30 +39,10 @@ function sumOfConsecutivePairs(n: int, k: int): int
     else sumInversionsFormula(n, iterations)
 }
 
-lemma completeReversalLemma(n: int)
-    requires n >= 1
-    ensures sumInversionsFormula(n, n / 2) == n * (n - 1) / 2
-{
-    if n / 2 == 0 {
-        // Base case
-    } else {
-        var half := n / 2;
-        sumInversionsFormulaExpansion(n, half);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
-lemma sumInversionsFormulaExpansion(n: int, iterations: int)
-    requires n >= 1 && iterations >= 0 && iterations <= n / 2
-    ensures sumInversionsFormula(n, iterations) == iterations * (2 * n - 2 * iterations - 1)
-{
-    if iterations == 0 {
-        // Base case
-    } else {
-        sumInversionsFormulaExpansion(n, iterations - 1);
-        // Inductive step follows from the recursive definition
-    }
-}
-
+// <vc-spec>
 method solve(n: int, k: int) returns (result: int)
     requires n >= 1 && k >= 0
     ensures result >= 0
@@ -68,24 +50,9 @@ method solve(n: int, k: int) returns (result: int)
     ensures result == sumInversionsFormula(n, min(k, n / 2))
     ensures k >= n / 2 ==> result == n * (n - 1) / 2
     ensures k < n / 2 ==> result == sumOfConsecutivePairs(n, k)
+// </vc-spec>
+// <vc-code>
 {
-    var r := 0;
-    var i := 0;
-    var limit := min(k, n / 2);
-
-    while i < limit
-        invariant 0 <= i <= limit
-        invariant r >= 0
-        invariant r == computeInversions(n, k, i)
-        invariant r == sumInversionsFormula(n, i)
-    {
-        r := r + (n - 2*i - 1) + (n - 2*i - 2);
-        i := i + 1;
-    }
-
-    if k >= n / 2 {
-        completeReversalLemma(n);
-    }
-
-    result := r;
+  assume {:axiom} false;
 }
+// </vc-code>

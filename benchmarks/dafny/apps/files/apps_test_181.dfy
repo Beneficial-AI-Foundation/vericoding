@@ -1,6 +1,8 @@
+/*
 Given a camera rotation angle in degrees, determine the minimum number of 90-degree 
 clockwise rotations needed to minimize the image's deviation from vertical orientation.
 When a camera rotates by x degrees, the image appears rotated by -x degrees.
+*/
 
 function NormalizeAngle(angle: int): int
 {
@@ -35,37 +37,16 @@ predicate IsOptimalRotations(cameraAngle: int, result: int)
         result_deviation < k_deviation || (result_deviation == k_deviation && result <= k)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(x: int) returns (result: int)
     ensures 0 <= result <= 3
     ensures IsOptimalRotations(x, result)
+// </vc-spec>
+// <vc-code>
 {
-    var n := NormalizeAngle(-x);
-
-    var ret := 0;
-    var initial_angle := n % 360;
-    var opt := DeviationFromVertical(initial_angle);
-
-    var i := 1;
-    while i < 4
-        invariant 1 <= i <= 4
-        invariant 0 <= n < 360
-        invariant 0 <= ret < i
-        invariant 0 <= opt <= 180
-        invariant opt == ImageDeviationAfterRotations(x, ret)
-        invariant forall j :: 0 <= j < i ==> 
-            var deviation_j := ImageDeviationAfterRotations(x, j);
-            opt < deviation_j || (opt == deviation_j && ret <= j)
-    {
-        var angle := (n + 90 * i) % 360;
-        var deviation := DeviationFromVertical(angle);
-
-        if deviation < opt || (deviation == opt && i < ret) {
-            opt := deviation;
-            ret := i;
-        }
-
-        i := i + 1;
-    }
-
-    result := ret;
+  assume {:axiom} false;
 }
+// </vc-code>

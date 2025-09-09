@@ -1,3 +1,6 @@
+/*
+*/
+
 // Quicksort Partition -- Stephanie McIntyre
 // Based on examples in class 
 // Parts have been modified cause you know, arrays are different...
@@ -19,6 +22,6 @@ modifies X;
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

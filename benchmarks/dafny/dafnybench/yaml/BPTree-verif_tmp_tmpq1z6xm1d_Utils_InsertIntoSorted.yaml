@@ -26,14 +26,12 @@ vc-preamble: |-
     set i | i in numbers && i < threshold
   }
   
-  
   /*
   */
   
   function seqSet(nums: seq<int>, index: nat): set<int> {
       set x | 0 <= x < index < |nums| :: nums[x]
   }
-  
   
   // lemma numElemsOfSet(a: seq<int>)
   //   requires sorted(a)
@@ -63,14 +61,11 @@ vc-preamble: |-
   //     assert |s| == |a|;
   // }
   
-  
   /*
-  
   
   */
   
   // TODO play with this for keys==Contents
-  
   
   ghost predicate SortedSeq(a: seq<int>)
     //sequence is sorted from left to right
@@ -135,11 +130,8 @@ vc-preamble: |-
   // verifies in more than 45 seconds, but less than 100 seconds
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method InsertIntoSorted(a: array<int>, limit:int, key:int) returns (b: array<int>)
       requires key > 0
       requires key !in a[..]
@@ -152,14 +144,11 @@ vc-spec: |-
       ensures forall i :: limit + 1 <= i < b.Length ==> b[i] == 0  
       ensures forall i :: 0 <= i < limit ==> a[i] in b[..]
       ensures forall i :: 0 <= i < limit + 1 ==> b[i] > 0
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

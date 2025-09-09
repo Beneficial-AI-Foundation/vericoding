@@ -14,7 +14,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: seq<int>) returns (result: seq<int>)
@@ -22,7 +21,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := seq(|a|, i requires 0 <= i < |a| => TransformElement(a[i]));
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

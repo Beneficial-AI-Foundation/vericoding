@@ -1,3 +1,6 @@
+/*
+*/
+
 //Problem01
 function fib(n: nat):nat
 {
@@ -30,11 +33,10 @@ method gcdI(m: int, n: int) returns (g: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 
 //# 3 pts
-
 
 // # sum: 9 pts

@@ -1,5 +1,7 @@
+/*
 Given a date string in format "2017/01/dd" where dd represents a day from 01 to 31,
 replace the year "2017" with "2018" and output the corrected date string.
+*/
 
 predicate ValidInput(dateStr: string) 
 {
@@ -15,13 +17,16 @@ predicate ValidOutput(input: string, output: string)
     output[4..] == input[4..]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(dateStr: string) returns (result: string)
     requires ValidInput(dateStr)
     ensures ValidOutput(dateStr, result)
+// </vc-spec>
+// <vc-code>
 {
-    if |dateStr| >= 4 {
-        result := "2018" + dateStr[4..];
-    } else {
-        result := dateStr;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

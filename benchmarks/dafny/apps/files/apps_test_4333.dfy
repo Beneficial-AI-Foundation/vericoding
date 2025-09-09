@@ -1,6 +1,8 @@
+/*
 Given two adjacent vertices of a square in counter-clockwise order, find the coordinates of the remaining two vertices.
 The input consists of four integers representing coordinates (x1,y1) and (x2,y2) of two adjacent vertices.
 The output should be four integers representing coordinates (x3,y3) and (x4,y4) of the remaining vertices in counter-clockwise order.
+*/
 
 predicate ValidInput(x1: int, y1: int, x2: int, y2: int) {
     (x1, y1) != (x2, y2) &&
@@ -24,14 +26,16 @@ predicate ValidOutput(x1: int, y1: int, x2: int, y2: int, result: seq<int>) {
     result[3] == ComputeFourthVertex(x1, y1, x2, y2).1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(x1: int, y1: int, x2: int, y2: int) returns (result: seq<int>)
     requires ValidInput(x1, y1, x2, y2)
     ensures ValidOutput(x1, y1, x2, y2, result)
+// </vc-spec>
+// <vc-code>
 {
-    var x3 := x2 - (y2 - y1);
-    var y3 := y2 + (x2 - x1);
-    var x4 := x1 - (y2 - y1);
-    var y4 := y1 + (x2 - x1);
-
-    result := [x3, y3, x4, y4];
+  assume {:axiom} false;
 }
+// </vc-code>

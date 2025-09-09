@@ -1,6 +1,8 @@
+/*
 Given n strings of lowercase Latin letters, determine if there exists a permutation 
 of the 26 lowercase Latin letters such that the strings are in lexicographical order
 according to this custom alphabet. Output the valid alphabet permutation or "Impossible".
+*/
 
 ghost predicate validInput(stdin_input: string, n: int)
 {
@@ -57,62 +59,19 @@ ghost function parseInput(input: string): seq<string>
 
 ghost function parseInt(s: string): int
 
-ghost predicate hasConstraintViolation(stdin_input: string)
-{
-    exists lines, n :: (parseInput(stdin_input) == lines &&
-    |lines| >= 1 &&
-    |lines| == n + 1 &&
-    parseInt(lines[0]) == n &&
-    (exists i :: 1 <= i < n && hasImpossiblePrefixRelation(lines[i], lines[i+1]))) ||
-    hasOrderingCycle(stdin_input)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-ghost predicate hasImpossiblePrefixRelation(s1: string, s2: string)
-{
-    |s2| < |s1| && s2 == s1[..|s2|]
-}
-
-ghost predicate hasOrderingCycle(stdin_input: string)
-{
-    exists lines, n :: (parseInput(stdin_input) == lines &&
-    |lines| >= 1 &&
-    |lines| == n + 1 &&
-    parseInt(lines[0]) == n &&
-    existsCharacterOrderingCycle(lines))
-}
-
-ghost predicate existsCharacterOrderingCycle(lines: seq<string>)
-{
-    exists c1, c2 :: ('a' <= c1 <= 'z' && 'a' <= c2 <= 'z' &&
-    requiresOrdering(lines, c1, c2) && requiresOrdering(lines, c2, c1))
-}
-
-ghost predicate requiresOrdering(lines: seq<string>, c1: char, c2: char)
-{
-    exists i :: 1 <= i < |lines| && requiresOrderingBetween(lines[i-1], lines[i], c1, c2)
-}
-
-ghost predicate requiresOrderingBetween(s1: string, s2: string, c1: char, c2: char)
-{
-    s1 != s2 &&
-    !isProperPrefix(s1, s2) &&
-    !isProperPrefix(s2, s1) &&
-    exists pos :: (0 <= pos < |s1| && pos < |s2| &&
-    (forall j :: 0 <= j < pos ==> s1[j] == s2[j]) &&
-    s1[pos] == c1 && s2[pos] == c2)
-}
-
-ghost predicate isProperPrefix(s1: string, s2: string)
-{
-    |s1| < |s2| && s1 == s2[..|s1|]
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires exists n :: n >= 1 && validInput(stdin_input, n)
     ensures result == "Impossible" || (|result| == 26 && forall i :: 0 <= i < |result| ==> 'a' <= result[i] <= 'z')
     ensures result != "Impossible" ==> (forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j])
     ensures result != "Impossible" ==> validAlphabetOrdering(stdin_input, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := "Impossible";
+  assume {:axiom} false;
 }
+// </vc-code>

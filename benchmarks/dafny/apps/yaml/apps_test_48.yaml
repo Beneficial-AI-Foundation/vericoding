@@ -32,46 +32,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  method countLess(n: int, m: int, target: int) returns (count: int)
-    requires n >= 1 && m >= 1 && target >= 1
-    ensures count >= 0
-    ensures count <= n * m
-    ensures count == countLessValue(n, m, target)
-  {
-    count := 0;
-    var i := 1;
-  
-    while i <= n
-      invariant 1 <= i <= n + 1
-      invariant count >= 0
-      invariant count <= (i - 1) * m
-      invariant count == countLessValue(i - 1, m, target)
-    {
-      var maxJ := (target - 1) / i;
-      if maxJ > m {
-        maxJ := m;
-      }
-      if maxJ >= 1 {
-        count := count + maxJ;
-      }
-      i := i + 1;
-    }
-  }
-  
-  method countLessOrEqual(n: int, m: int, target: int) returns (count: int)
-    requires n >= 1 && m >= 1 && target >= 0
-    ensures count >= 0
-    ensures count <= n * m
-    ensures count == countLessOrEqualValue(n, m, target)
-  {
-    if target <= 0 {
-      count := 0;
-    } else if target >= n * m {
-      count := n * m;
-    } else {
-      count := countLess(n, m, target + 1);
-    }
-  }
 
 vc-spec: |-
   method solve(n: int, m: int, k: int) returns (result: int)
@@ -82,25 +42,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var lo := 0;
-    var hi := n * m + 1;
-  
-    while lo + 1 < hi
-      invariant 0 <= lo < hi <= n * m + 1
-      invariant countLessOrEqualValue(n, m, lo) < k
-      invariant countLessOrEqualValue(n, m, hi) >= k
-    {
-      var mid := (lo + hi) / 2;
-      var count := countLessOrEqual(n, m, mid);
-  
-      if count < k {
-        lo := mid;
-      } else {
-        hi := mid;
-      }
-    }
-  
-    result := hi;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

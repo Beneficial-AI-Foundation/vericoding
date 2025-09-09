@@ -1,6 +1,8 @@
+/*
 Given n non-intersecting integer segments, find the minimum number of moves
 to make the total count of integers covered by all segments divisible by k.
 Each move extends any segment by 1 unit either left or right.
+*/
 
 ghost predicate ValidInputFormat(s: string) {
     var lines := SplitLines(s);
@@ -47,80 +49,10 @@ function SegmentLength(segment: (int, int)): nat
     if maxVal >= minVal then (maxVal - minVal + 1) as nat else 1
 }
 
-ghost predicate ParsesAsIntegers(line: string, a: int, b: int) {
-    var parts := SplitWhitespace(line);
-    |parts| >= 2 && StringToInt(parts[0]) == a && StringToInt(parts[1]) == b
-}
+// <vc-helpers>
+// </vc-helpers>
 
-predicate ContainsNewline(s: string) {
-    exists i :: 0 <= i < |s| && s[i] == '\n'
-}
-
-predicate IsNumericOutput(s: string) {
-    |s| > 0 && (forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9')
-}
-
-function MaxInt(a: int, b: int): int {
-    if a >= b then a else b
-}
-
-function MinInt(a: int, b: int): int {
-    if a <= b then a else b
-}
-
-function SplitLines(s: string): seq<string> {
-    SplitByChar(s, '\n')
-}
-
-function SplitWhitespace(s: string): seq<string> {
-    SplitByChar(s, ' ')
-}
-
-function SplitByChar(s: string, delimiter: char): seq<string> {
-    if |s| == 0 then [""]
-    else if s[0] == delimiter then
-        [""] + SplitByChar(s[1..], delimiter)
-    else
-        var rest := SplitByChar(s[1..], delimiter);
-        if |rest| == 0 then [s[0..1]]
-        else [s[0..1] + rest[0]] + rest[1..]
-}
-
-function StringToInt(s: string): int {
-    if |s| == 0 then 0
-    else if s[0] == '-' && |s| > 1 then -(StringToNat(s[1..]) as int)
-    else StringToNat(s) as int
-}
-
-function StringToNat(s: string): nat {
-    if |s| == 0 then 0
-    else if |s| == 1 && '0' <= s[0] <= '9' then (s[0] as int) - ('0' as int)
-    else if |s| > 1 && '0' <= s[0] <= '9' then
-        ((s[0] as int) - ('0' as int)) * Pow10(|s| - 1) + StringToNat(s[1..])
-    else 0
-}
-
-function Pow10(n: nat): nat {
-    if n == 0 then 1 else 10 * Pow10(n - 1)
-}
-
-function IntToString(n: int): string
-    requires n >= 0
-    ensures |IntToString(n)| > 0
-    ensures IsNumericOutput(IntToString(n))
-{
-    NatToString(n as nat)
-}
-
-function NatToString(n: nat): string
-    ensures |NatToString(n)| > 0
-    ensures IsNumericOutput(NatToString(n))
-{
-    if n == 0 then "0"
-    else if n < 10 then [('0' as int + n) as char]
-    else NatToString(n / 10) + NatToString(n % 10)
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires stdin_input[|stdin_input| - 1] == '\n' || !ContainsNewline(stdin_input)
@@ -133,56 +65,9 @@ method solve(stdin_input: string) returns (result: string)
     ensures ValidInputFormat(stdin_input) ==> IsValidOutput(result)
     ensures !ValidInputFormat(stdin_input) ==> 
         (result == "" || (|result| > 0 && result[|result| - 1] == '\n'))
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(stdin_input);
-    if |lines| == 0 {
-        result := "";
-        return;
-    }
-
-    var firstLine := SplitWhitespace(lines[0]);
-    if |firstLine| < 2 {
-        result := "";
-        return;
-    }
-
-    var N := StringToInt(firstLine[0]);
-    var k := StringToInt(firstLine[1]);
-
-    if N <= 0 || k <= 0 || |lines| < N + 1 {
-        result := "";
-        return;
-    }
-
-    var segments: seq<(int, int)> := [];
-    var i := 1;
-
-    while i <= N && i < |lines|
-        decreases N - i
-        invariant 1 <= i <= N + 1
-        invariant |segments| == i - 1
-        invariant i <= |lines|
-        invariant forall j :: 0 <= j < |segments| ==> 
-            j + 1 < |lines| && ParsesAsIntegers(lines[j + 1], segments[j].0, segments[j].1)
-    {
-        var segmentLine := SplitWhitespace(lines[i]);
-        if |segmentLine| >= 2 {
-            var A := StringToInt(segmentLine[0]);
-            var B := StringToInt(segmentLine[1]);
-            segments := segments + [(A, B)];
-        } else {
-            result := "";
-            return;
-        }
-        i := i + 1;
-    }
-
-    var answer := MinMovesToDivisible(segments, k as nat);
-    result := IntToString(answer) + "\n";
-
-    if ValidInputFormat(stdin_input) {
-        assert N > 0 && k > 0;
-        assert |segments| == N;
-        assert ParsedCorrectly(stdin_input, N as nat, k as nat, segments);
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

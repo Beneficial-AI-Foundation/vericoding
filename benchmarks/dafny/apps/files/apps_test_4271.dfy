@@ -1,5 +1,7 @@
+/*
 Calculate total satisfaction points from eating N dishes in a specific order.
 Each dish provides base satisfaction, plus bonus points for eating consecutive dishes in sequence.
+*/
 
 predicate ValidInput(N: int, A: seq<int>, B: seq<int>, C: seq<int>)
 {
@@ -35,19 +37,16 @@ function SumSatisfactionUpTo(A: seq<int>, B: seq<int>, C: seq<int>, k: int): int
         prevSum + baseContrib + bonusContrib
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int, A: seq<int>, B: seq<int>, C: seq<int>) returns (result: int)
     requires ValidInput(N, A, B, C)
     ensures result == SumSatisfaction(A, B, C, N)
+// </vc-spec>
+// <vc-code>
 {
-    var ans := 0;
-    for i := 0 to N
-        invariant 0 <= i <= N
-        invariant ans == SumSatisfactionUpTo(A, B, C, i)
-    {
-        ans := ans + B[A[i] - 1];
-        if i != 0 && A[i] == A[i-1] + 1 {
-            ans := ans + C[A[i] - 2];
-        }
-    }
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

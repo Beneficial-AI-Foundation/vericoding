@@ -53,81 +53,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function InitializePath(grid: seq<seq<int>>): seq<seq<int>>
-      requires ValidGrid(grid)
-      requires grid[0][0] == 0 && grid[|grid|-1][|grid[0]|-1] == 0
-      ensures |InitializePath(grid)| == |grid|
-      ensures forall i :: 0 <= i < |grid| ==> |InitializePath(grid)[i]| == |grid[0]|
-      ensures forall i, j :: 0 <= i < |grid| && 0 <= j < |grid[0]| ==> InitializePath(grid)[i][j] >= 0
-  {
-      var m := |grid|;
-      var n := |grid[0]|;
-      var path := seq(m, i => seq(n, j => 0));
-      var pathWithCol := InitializeColumn(grid, path, 0, m);
-      InitializeRow(grid, pathWithCol, 1, n)
-  }
-  
-  function InitializeColumn(grid: seq<seq<int>>, path: seq<seq<int>>, i: int, m: int): seq<seq<int>>
-      requires ValidGrid(grid) && m == |grid|
-      requires |path| == m && forall k :: 0 <= k < m ==> |path[k]| == |grid[0]|
-      requires forall k, j :: 0 <= k < m && 0 <= j < |grid[0]| ==> path[k][j] >= 0
-      requires 0 <= i <= m
-      ensures |InitializeColumn(grid, path, i, m)| == m
-      ensures forall k :: 0 <= k < m ==> |InitializeColumn(grid, path, i, m)[k]| == |grid[0]|
-      ensures forall k, j :: 0 <= k < m && 0 <= j < |grid[0]| ==> InitializeColumn(grid, path, i, m)[k][j] >= 0
-      decreases m - i
-  {
-      if i >= m then path
-      else if grid[i][0] == 1 then path
-      else 
-          var newPath := path[i := path[i][0 := 1]];
-          InitializeColumn(grid, newPath, i + 1, m)
-  }
-  
-  function InitializeRow(grid: seq<seq<int>>, path: seq<seq<int>>, j: int, n: int): seq<seq<int>>
-      requires ValidGrid(grid) && n == |grid[0]|
-      requires |path| == |grid| && forall k :: 0 <= k < |grid| ==> |path[k]| == n
-      requires forall k, l :: 0 <= k < |grid| && 0 <= l < n ==> path[k][l] >= 0
-      requires 1 <= j <= n
-      ensures |InitializeRow(grid, path, j, n)| == |grid|
-      ensures forall k :: 0 <= k < |grid| ==> |InitializeRow(grid, path, j, n)[k]| == n
-      ensures forall k, l :: 0 <= k < |grid| && 0 <= l < n ==> InitializeRow(grid, path, j, n)[k][l] >= 0
-      decreases n - j
-  {
-      if j >= n then path
-      else if grid[0][j] == 1 then path
-      else 
-          var newPath := path[0 := path[0][j := 1]];
-          InitializeRow(grid, newPath, j + 1, n)
-  }
-  
-  function ComputePaths(grid: seq<seq<int>>, path: seq<seq<int>>, m: int, n: int): int
-      requires ValidGrid(grid) && m == |grid| && n == |grid[0]|
-      requires |path| == m && forall i :: 0 <= i < m ==> |path[i]| == n
-      requires forall i, j :: 0 <= i < m && 0 <= j < n ==> path[i][j] >= 0
-      ensures ComputePaths(grid, path, m, n) >= 0
-  {
-      var finalPath := FillDPTable(grid, path, 1, 1, m, n);
-      finalPath[m-1][n-1]
-  }
-  
-  function FillDPTable(grid: seq<seq<int>>, path: seq<seq<int>>, i: int, j: int, m: int, n: int): seq<seq<int>>
-      requires ValidGrid(grid) && m == |grid| && n == |grid[0]|
-      requires |path| == m && forall k :: 0 <= k < m ==> |path[k]| == n
-      requires forall k, l :: 0 <= k < m && 0 <= l < n ==> path[k][l] >= 0
-      requires 1 <= i <= m && 1 <= j <= n
-      ensures |FillDPTable(grid, path, i, j, m, n)| == m
-      ensures forall k :: 0 <= k < m ==> |FillDPTable(grid, path, i, j, m, n)[k]| == n
-      ensures forall k, l :: 0 <= k < m && 0 <= l < n ==> FillDPTable(grid, path, i, j, m, n)[k][l] >= 0
-      decreases m - i, n - j
-  {
-      if i >= m then path
-      else if j >= n then FillDPTable(grid, path, i + 1, 1, m, n)
-      else
-          var newValue := if grid[i][j] != 1 then path[i-1][j] + path[i][j-1] else 0;
-          var newPath := path[i := path[i][j := newValue]];
-          FillDPTable(grid, newPath, i, j + 1, m, n)
-  }
 
 vc-spec: |-
   method uniquePathsWithObstacles(obstacleGrid: seq<seq<int>>) returns (result: int)
@@ -147,7 +72,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := DPPathCount(obstacleGrid);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -3,6 +3,10 @@ function_signature: def sum_largest_prime(lst : list[int]) -> int
 You are given a list of integers. You need to find the largest prime value and return the sum of its digits. Note(George): Modified to use List of nats because all examples are nats.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method skjkasdkd(lst: seq<nat>) returns (dsum: nat)
   // pre-conditions-start
   requires exists i :: 0 <= i < |lst| && is_prime(lst[i])
@@ -10,9 +14,12 @@ method skjkasdkd(lst: seq<nat>) returns (dsum: nat)
   // post-conditions-start
   ensures dsum == digits_sum(max_seq(filter_primes(lst)))
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function digits_sum(x: nat): nat {
   if x == 0 then 0 else x % 10 + digits_sum(x / 10)

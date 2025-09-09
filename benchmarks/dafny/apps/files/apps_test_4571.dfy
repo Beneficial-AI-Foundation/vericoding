@@ -1,6 +1,8 @@
+/*
 Given N test cases where M are "hard" (1900ms each, 1/2 success probability) 
 and (N-M) are "easy" (100ms each, always succeed), find the expected total 
 execution time across all submissions until one submission succeeds.
+*/
 
 predicate ValidInput(n: int, m: int) {
   1 <= n <= 100 && 1 <= m <= n && m <= 5
@@ -19,18 +21,16 @@ function ExpectedTime(n: int, m: int): int
   (1900 * m + 100 * (n - m)) * power(2, m)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int) returns (result: int)
   requires ValidInput(n, m)
   ensures result == ExpectedTime(n, m)
+// </vc-spec>
+// <vc-code>
 {
-  var power_of_2 := 1;
-  var i := 0;
-  while i < m 
-    invariant 0 <= i <= m
-    invariant power_of_2 == power(2, i)
-  {
-    power_of_2 := power_of_2 * 2;
-    i := i + 1;
-  }
-  result := (1900 * m + 100 * (n - m)) * power_of_2;
+  assume {:axiom} false;
 }
+// </vc-code>

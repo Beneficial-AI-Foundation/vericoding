@@ -1,8 +1,10 @@
+/*
 Given an integer N, determine if the sum of its digits divides N evenly.
 Let S(N) be the sum of all digits in the decimal representation of N.
 Check if N is divisible by S(N).
 Input: A single integer N (1 ≤ N ≤ 10^9)
 Output: "Yes" if S(N) divides N, "No" otherwise
+*/
 
 predicate IsDigit(c: char)
 {
@@ -54,34 +56,10 @@ predicate ValidInput(input: string)
     ValidPositiveIntegerString(CleanInput(input))
 }
 
-lemma SumOfDigitsNonNegative(s: string)
-    ensures SumOfDigits(s) >= 0
-{
-    if |s| == 0 {
-    } else {
-        SumOfDigitsNonNegative(s[1..]);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
-lemma SumOfDigitsPositive(s: string)
-    requires ValidPositiveIntegerString(s)
-    ensures SumOfDigits(s) > 0
-{
-    if |s| == 1 {
-        assert IsDigit(s[0]);
-        assert StringToInt(s) == DigitValue(s[0]);
-        assert DigitValue(s[0]) > 0;
-    } else {
-        assert s[0] != '0';
-        assert IsDigit(s[0]);
-        assert DigitValue(s[0]) > 0;
-        SumOfDigitsNonNegative(s[1..]);
-        assert SumOfDigits(s[1..]) >= 0;
-        assert SumOfDigits(s) == DigitValue(s[0]) + SumOfDigits(s[1..]);
-        assert SumOfDigits(s) > 0;
-    }
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures result == "Yes" || result == "No"
@@ -94,16 +72,9 @@ method solve(input: string) returns (result: string)
     ensures var cleaned := CleanInput(input);
             var n := StringToInt(cleaned);
             n >= 1
+// </vc-spec>
+// <vc-code>
 {
-    var cleaned := CleanInput(input);
-    var n := StringToInt(cleaned);
-    var digit_sum := SumOfDigits(cleaned);
-
-    SumOfDigitsPositive(cleaned);
-
-    if digit_sum > 0 && n % digit_sum == 0 {
-        result := "Yes";
-    } else {
-        result := "No";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

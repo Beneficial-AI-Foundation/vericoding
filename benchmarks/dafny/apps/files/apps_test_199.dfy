@@ -1,7 +1,9 @@
+/*
 Given n kegs containing v_i liters of kvass each, pour exactly s liters total 
 such that the minimum amount remaining in any keg is maximized. Each keg can 
 only have kvass removed, not added. Return -1 if impossible to pour s liters,
 otherwise return the maximum possible minimum remaining amount in any keg.
+*/
 
 predicate ValidInput(n: int, s: int, v: seq<int>)
 {
@@ -28,18 +30,18 @@ function min(a: int, b: int): int
     if a <= b then a else b
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, s: int, v: seq<int>) returns (result: int)
     requires ValidInput(n, s, v)
     ensures sum(v) < s ==> result == -1
     ensures sum(v) >= s ==> result == min((sum(v) - s) / n, minSeq(v))
     ensures result == -1 || result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    var S := sum(v);
-    var newS := S - s;
-    if newS < 0 {
-        result := -1;
-    } else {
-        assert minSeq(v) >= 0;
-        result := min(newS / n, minSeq(v));
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

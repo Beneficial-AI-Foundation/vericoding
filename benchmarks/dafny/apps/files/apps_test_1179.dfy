@@ -1,5 +1,7 @@
+/*
 Given n robots with unique identifiers, they play a game where robot i says identifiers
 of robots 1 through i. Find the k-th identifier pronounced in the entire sequence.
+*/
 
 predicate ValidInput(n: int, k: int, L: seq<int>)
 {
@@ -20,26 +22,16 @@ predicate CorrectResult(n: int, k: int, L: seq<int>, result: int)
     result == L[k - TotalIdentifiersAfterRobot(i - 1) - 1]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, k: int, L: seq<int>) returns (result: int)
   requires ValidInput(n, k, L)
   ensures CorrectResult(n, k, L, result)
+// </vc-spec>
+// <vc-code>
 {
-  var i := 1;
-  var remaining_k := k;
-
-  while remaining_k > i
-    decreases remaining_k
-    invariant i >= 1
-    invariant remaining_k >= 1
-    invariant remaining_k + TotalIdentifiersAfterRobot(i - 1) == k
-    invariant i <= n
-  {
-    remaining_k := remaining_k - i;
-    i := i + 1;
-  }
-
-  result := L[k - TotalIdentifiersAfterRobot(i - 1) - 1];
-
-  assert TotalIdentifiersAfterRobot(i - 1) < k <= TotalIdentifiersAfterRobot(i);
-  assert result == L[k - TotalIdentifiersAfterRobot(i - 1) - 1];
+  assume {:axiom} false;
 }
+// </vc-code>

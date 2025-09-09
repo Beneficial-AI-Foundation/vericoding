@@ -1,3 +1,6 @@
+/*
+*/
+
 function sum(s: seq<int>, n: nat): int
     requires n <= |s|
 {
@@ -16,6 +19,6 @@ method below_zero(ops: seq<int>) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

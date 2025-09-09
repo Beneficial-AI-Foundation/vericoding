@@ -13,7 +13,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(arr: seq<int>) returns (result: int)
@@ -24,23 +23,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var distinct_nonzero := {};
-      var i := 0;
-      while i < |arr|
-          invariant 0 <= i <= |arr|
-          invariant forall x :: x in distinct_nonzero ==> x != 0
-          invariant distinct_nonzero == set x | x in arr[..i] && x != 0
-          invariant |distinct_nonzero| <= i
-      {
-          if arr[i] != 0 {
-              distinct_nonzero := distinct_nonzero + {arr[i]};
-          }
-          i := i + 1;
-      }
-  
-      assert arr[..i] == arr;
-      assert distinct_nonzero == set x | x in arr && x != 0;
-      result := |distinct_nonzero|;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

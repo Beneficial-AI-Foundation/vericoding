@@ -1,5 +1,7 @@
+/*
 Given 16 facts with numerical claims, determine whether each fact is true (1) or false (0) in reality.
 Each fact is numbered from 1 to 16 based on order of appearance. Input n specifies which fact to check.
+*/
 
 predicate ValidInput(n: int)
 {
@@ -22,11 +24,17 @@ function ExpectedOutput(n: int): int
     FactTruthValues()[n - 1]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: int)
     requires ValidInput(n)
     ensures ValidOutput(result)
     ensures result == ExpectedOutput(n)
+// </vc-spec>
+// <vc-code>
 {
-    var arr := FactTruthValues();
-    result := arr[n - 1];
+  assume {:axiom} false;
 }
+// </vc-code>

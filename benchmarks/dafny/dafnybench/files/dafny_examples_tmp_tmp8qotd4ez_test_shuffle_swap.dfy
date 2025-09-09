@@ -1,3 +1,5 @@
+/*
+*/
 
 function set_of_seq<T>(s: seq<T>): set<T>
 {
@@ -19,6 +21,6 @@ method swap<T>(a: array<T>, i: int, j: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

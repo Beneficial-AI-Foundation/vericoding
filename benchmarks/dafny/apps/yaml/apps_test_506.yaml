@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int, b: int) returns (result: int)
@@ -37,26 +36,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var ans := 0;
-      var x := a;
-      var y := b;
-  
-      while x != 0 && y != 0
-          invariant ans >= 0
-          invariant x >= 0 && y >= 0
-          invariant ans + countSquares(x, y) == countSquares(a, b)
-          invariant (a > b && countSquares(a, b) >= 1) ==> ans + countSquares(x, y) >= 1
-      {
-          if x > y {
-              ans := ans + x / y;
-              x := x % y;
-          } else {
-              ans := ans + y / x;
-              y := y % x;
-          }
-      }
-  
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

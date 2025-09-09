@@ -1,5 +1,7 @@
+/*
 Given a positive integer n, find the maximum product of digits among all integers from 1 to n inclusive.
 The product of digits is calculated by multiplying all individual digits together.
+*/
 
 function ProductOfDigits(x: int): int
   requires x >= 0
@@ -19,30 +21,19 @@ function MaxProductOfDigitsInRange(n: int): int
     if current > rest then current else rest
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: int)
   requires n >= 1
   ensures result == MaxProductOfDigitsInRange(n)
   ensures result >= 1
   ensures forall k :: 1 <= k <= n ==> ProductOfDigits(k) <= result
   ensures exists k :: 1 <= k <= n && ProductOfDigits(k) == result
+// </vc-spec>
+// <vc-code>
 {
-  result := ProductOfDigits(1);
-  var maxIndex := 1;
-  var i := 2;
-
-  while i <= n
-    invariant 2 <= i <= n + 1
-    invariant result >= 1
-    invariant 1 <= maxIndex <= i - 1
-    invariant ProductOfDigits(maxIndex) == result
-    invariant forall k :: 1 <= k <= i - 1 ==> ProductOfDigits(k) <= result
-    invariant result == MaxProductOfDigitsInRange(i - 1)
-  {
-    var current := ProductOfDigits(i);
-    if current > result {
-      result := current;
-      maxIndex := i;
-    }
-    i := i + 1;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,7 +1,9 @@
+/*
 Given a string s of lowercase letters and an array b, find a string t such that:
 1. t is formed by removing some characters from s and rearranging the remaining characters
 2. For each position i in t, b[i] equals the sum of distances |i-j| to all positions j where t[j] > t[i] lexicographically
 Process multiple test cases from stdin input and return formatted results
+*/
 
 predicate ValidInputFormat(input: string)
 {
@@ -90,68 +92,10 @@ function AbsDiff(i: int, j: int): int
     if i >= j then i - j else j - i
 }
 
-function SumDistancesToGreaterCharsHelper(t: string, j: int, k: int): int
-    requires 0 <= j < |t|
-    requires 0 <= k <= |t|
-    decreases |t| - k
-{
-    if k == |t| then 0
-    else if t[k] > t[j] then AbsDiff(j, k) + SumDistancesToGreaterCharsHelper(t, j, k+1)
-    else SumDistancesToGreaterCharsHelper(t, j, k+1)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function ProcessTestCases(input: string): string
-    requires |input| > 0
-    requires ValidInputFormat(input)
-    ensures ValidOutputFormat(ProcessTestCases(input), input)
-    ensures OutputSatisfiesConstraints(ProcessTestCases(input), input)
-    ensures PreservesCharacterUsage(ProcessTestCases(input), input)
-    ensures ProcessTestCases(input) != "" ==> ContainsNewlineTerminatedResults(ProcessTestCases(input))
-{
-    ""
-}
-
-function SplitLines(s: string): seq<string>
-{
-    []
-}
-
-function StringToInt(s: string): int
-{
-    0
-}
-
-function IsValidInteger(s: string): bool
-{
-    true
-}
-
-function IsValidString(s: string): bool
-{
-    true
-}
-
-function IsValidIntegerArray(s: string): bool
-{
-    true
-}
-
-function ParseIntegerArray(s: string): seq<int>
-{
-    []
-}
-
-function GetTestCases(input: string): seq<(string, int, seq<int>)>
-    requires ValidInputFormat(input)
-{
-    []
-}
-
-function CountChar(s: string, c: char): int
-{
-    0
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires ValidInputFormat(stdin_input)
@@ -159,6 +103,9 @@ method solve(stdin_input: string) returns (result: string)
     ensures OutputSatisfiesConstraints(result, stdin_input)
     ensures PreservesCharacterUsage(result, stdin_input)
     ensures result != "" ==> ContainsNewlineTerminatedResults(result)
+// </vc-spec>
+// <vc-code>
 {
-    result := ProcessTestCases(stdin_input);
+  assume {:axiom} false;
 }
+// </vc-code>

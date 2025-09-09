@@ -1,8 +1,10 @@
+/*
 Given two integers A and B representing possible numbers of guests at a party,
 find the minimum number of snack pieces that can be evenly distributed among
 the guests in both scenarios (A guests or B guests). Each piece must go to
 exactly one guest, and each guest must receive the same number of pieces
 within each scenario. This is equivalent to finding the LCM of A and B.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -44,68 +46,10 @@ predicate ValidOutput(output: string)
     forall i :: 0 <= i < |output| ==> ('0' <= output[i] <= '9')
 }
 
-function gcd(x: int, y: int): int
-    requires x > 0 && y > 0
-    decreases y
-    ensures gcd(x, y) > 0
-    ensures x % gcd(x, y) == 0 && y % gcd(x, y) == 0
-    ensures forall d :: d > 0 && x % d == 0 && y % d == 0 ==> d <= gcd(x, y)
-{
-    if y == 0 then x
-    else if x % y == 0 then y
-    else gcd(y, x % y)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function FindSpace(s: string, start: int): int
-    requires 0 <= start
-    decreases |s| - start
-    ensures FindSpace(s, start) == -1 || (start <= FindSpace(s, start) < |s| && s[FindSpace(s, start)] == ' ')
-{
-    if start >= |s| then -1
-    else if s[start] == ' ' then start
-    else FindSpace(s, start + 1)
-}
-
-function StringToInt(s: string): int
-    requires |s| > 0
-    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-    ensures StringToInt(s) >= 0
-{
-    StringToIntHelper(s, 0, 0)
-}
-
-function StringToIntHelper(s: string, index: int, acc: int): int
-    requires 0 <= index <= |s|
-    requires acc >= 0
-    requires forall i :: 0 <= i < index ==> '0' <= s[i] <= '9'
-    decreases |s| - index
-    ensures StringToIntHelper(s, index, acc) >= 0
-{
-    if index >= |s| then acc
-    else if '0' <= s[index] <= '9' then
-        StringToIntHelper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
-    else acc
-}
-
-function IntToString(n: int): string
-    requires n > 0
-    ensures |IntToString(n)| > 0
-    ensures forall i :: 0 <= i < |IntToString(n)| ==> ('0' <= IntToString(n)[i] <= '9')
-{
-    if n < 10 then [(n + '0' as int) as char]
-    else IntToStringPos(n)
-}
-
-function IntToStringPos(n: int): string
-    requires n > 0
-    decreases n
-    ensures |IntToStringPos(n)| > 0
-    ensures forall i :: 0 <= i < |IntToStringPos(n)| ==> ('0' <= IntToStringPos(n)[i] <= '9')
-{
-    if n < 10 then [(n + '0' as int) as char]
-    else IntToStringPos(n / 10) + [(n % 10 + '0' as int) as char]
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures var nums := ParseTwoInts(input); 
@@ -113,13 +57,9 @@ method solve(input: string) returns (result: string)
             var b := nums.1;
             result == IntToString(LCM(a, b))
     ensures ValidOutput(result)
+// </vc-spec>
+// <vc-code>
 {
-    var nums := ParseTwoInts(input);
-    var a := nums.0;
-    var b := nums.1;
-
-    var gcd_val := gcd(a, b);
-    var lcm_val := (a * b) / gcd_val;
-
-    result := IntToString(lcm_val);
+  assume {:axiom} false;
 }
+// </vc-code>

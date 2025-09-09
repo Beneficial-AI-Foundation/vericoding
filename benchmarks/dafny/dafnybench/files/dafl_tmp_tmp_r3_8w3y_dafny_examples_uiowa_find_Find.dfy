@@ -1,4 +1,7 @@
 /*
+*/
+
+/*
    CS:5810 Formal Methods in Software Engineering
    Fall 2017
    The University of Iowa
@@ -29,6 +32,6 @@ method Find(a: array<int>, key: int) returns (i: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

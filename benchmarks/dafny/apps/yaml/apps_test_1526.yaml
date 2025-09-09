@@ -37,7 +37,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(A: int, B: int, C: int) returns (result: int)
@@ -48,21 +47,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var a0, a1, a2 := A, B, C;
-  
-      // Sort in descending order
-      if a0 < a1 { a0, a1 := a1, a0; }
-      if a1 < a2 { a1, a2 := a2, a1; }
-      if a0 < a1 { a0, a1 := a1, a0; }
-  
-      var ans := 0;
-      ans := ans + (a0 - a1);
-      a1 := a1 + ans;
-      a2 := a2 + ans;
-      ans := ans + (a0 - a2) / 2;
-      ans := ans + ((a0 - a2) % 2) * 2;
-  
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -1,6 +1,8 @@
+/*
 Given a complete binary tree of depth n, find the minimum number of additional
 street lights needed so that all paths from entrance (node 1) to exits have
 the same total number of lights.
+*/
 
 predicate ValidInput(n: int, lights: seq<int>)
 {
@@ -38,49 +40,17 @@ ghost function dfs_result(i: int, n: int, a: seq<int>): (int, int)
             (x1 + x2 + m1 + a[i * 2] - m2 - a[i * 2 + 1], m1 + a[i * 2])
 }
 
-method dfs(i: int, n: int, a: seq<int>) returns (res: (int, int))
-    requires 1 <= n <= 10
-    requires 1 <= i
-    requires |a| == power2(n+1)
-    requires forall j :: 2 <= j < |a| ==> 1 <= a[j] <= 100
-    requires a[0] == 0 && a[1] == 0
-    requires i < power2(n+1)
-    ensures res.0 >= 0 && res.1 >= 0
-    ensures i >= power2(n) ==> res == (0, 0)
-    ensures i < power2(n) ==> res.1 > 0
-    ensures res == dfs_result(i, n, a)
-    decreases power2(n+1) - i
-{
-    if i >= power2(n) {
-        res := (0, 0);
-        return;
-    }
+// <vc-helpers>
+// </vc-helpers>
 
-    var left := dfs(i * 2, n, a);
-    var right := dfs(i * 2 + 1, n, a);
-
-    var x1 := left.0;
-    var m1 := left.1;
-    var x2 := right.0;
-    var m2 := right.1;
-
-    if m1 + a[i * 2] < m2 + a[i * 2 + 1] {
-        var cost := x1 + x2 + m2 + a[i * 2 + 1] - m1 - a[i * 2];
-        var maxPath := m2 + a[i * 2 + 1];
-        res := (cost, maxPath);
-    } else {
-        var cost := x1 + x2 + m1 + a[i * 2] - m2 - a[i * 2 + 1];
-        var maxPath := m1 + a[i * 2];
-        res := (cost, maxPath);
-    }
-}
-
+// <vc-spec>
 method solve(n: int, lights: seq<int>) returns (result: int)
     requires ValidInput(n, lights)
     ensures result >= 0
     ensures result == dfs_result(1, n, [0, 0] + lights).0
+// </vc-spec>
+// <vc-code>
 {
-    var a := [0, 0] + lights;
-    var res := dfs(1, n, a);
-    result := res.0;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given n cowbells with integer sizes s₁ ≤ s₂ ≤ ... ≤ sₙ and k boxes, find the minimum box size s 
 such that all cowbells can be packed into the k boxes, where each box can hold at most 2 cowbells,
 the sum of cowbell sizes in each box cannot exceed the box size s, and all boxes have the same size s.
+*/
 
 predicate ValidInput(n: int, k: int, L: seq<int>)
 {
@@ -30,87 +32,16 @@ function max(s: seq<int>): int
     else max(s[1..])
 }
 
-function ZigzagDistribution(L: seq<int>, k: int): seq<int>
-    requires k >= 1
-    requires |L| >= 0
-{
-    if |L| == 0 then seq(k, i => 0)
-    else ZigzagDistributionHelper(L, k, 0, 0, 1, seq(k, i => 0))
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function ZigzagDistributionHelper(L: seq<int>, k: int, i: int, p: int, z: int, R: seq<int>): seq<int>
-    requires k >= 1 && |R| == k
-    requires 0 <= i <= |L|
-    requires 0 <= p < k
-    requires z == 1 || z == -1
-    decreases |L| - i
-{
-    if i >= |L| then R
-    else
-        var newR := R[p := R[p] + L[|L|-1-i]];
-        var newP := p + z;
-        var newI := i + 1;
-        if newP == k || newP == -1 then
-            var newZ := z * (-1);
-            var adjustedP := if newP == k then newP - 1 else newP + 1;
-            ZigzagDistributionHelper(L, k, newI, adjustedP, newZ, newR)
-        else
-            ZigzagDistributionHelper(L, k, newI, newP, z, newR)
-}
-
+// <vc-spec>
 method solve(n: int, k: int, L: seq<int>) returns (result: int)
     requires ValidInput(n, k, L)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    var i := 0;
-    var p := 0;
-    var z := 1;
-    var R := new int[k];
-
-    // Initialize R to all zeros
-    var idx := 0;
-    while idx < k
-        invariant 0 <= idx <= k
-        invariant forall j :: 0 <= j < idx ==> R[j] == 0
-    {
-        R[idx] := 0;
-        idx := idx + 1;
-    }
-
-    while i < n
-        invariant 0 <= i <= n
-        invariant 0 <= p < k
-        invariant z == 1 || z == -1
-        invariant forall j :: 0 <= j < k ==> R[j] >= 0
-    {
-        R[p] := R[p] + L[n-1-i];
-        p := p + z;
-        i := i + 1;
-
-        if p == k || p == -1 {
-            z := z * (-1);
-            if p == k {
-                p := p - 1;
-            } else {
-                p := p + 1;
-            }
-        }
-    }
-
-    // Find maximum in R
-    var maxVal := R[0];
-    var j := 1;
-    while j < k
-        invariant 1 <= j <= k
-        invariant maxVal >= R[0]
-        invariant forall x :: 0 <= x < j ==> maxVal >= R[x]
-        invariant maxVal >= 0
-    {
-        if R[j] > maxVal {
-            maxVal := R[j];
-        }
-        j := j + 1;
-    }
-
-    result := maxVal;
+  assume {:axiom} false;
 }
+// </vc-code>

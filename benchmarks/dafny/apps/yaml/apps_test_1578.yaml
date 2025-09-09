@@ -14,7 +14,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (result: int)
@@ -23,7 +22,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := n * (n - 1) / 2;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

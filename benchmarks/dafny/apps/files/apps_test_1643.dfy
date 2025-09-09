@@ -1,7 +1,9 @@
+/*
 Given a binary string s, find a binary string t of the same length such that:
 1. For every substring s[l..r], the longest non-decreasing subsequence length in s[l..r] 
    equals the longest non-decreasing subsequence length in t[l..r]
 2. The number of zeros in t is maximized
+*/
 
 predicate ValidBinaryString(s: string)
 {
@@ -58,91 +60,16 @@ predicate BasicValidSolution(s: string, t: string)
     && (forall i :: 0 <= i < |s| ==> t[i] == '1' ==> s[i] == '1')
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires ValidBinaryString(s)
     ensures BasicValidSolution(s, result)
+// </vc-spec>
+// <vc-code>
 {
-    var n := |s|;
-    if n == 0 {
-        return "";
-    }
-
-    var dp := new int[n + 2];
-    var ons := new int[n + 2];
-    var zs := new int[n + 2];
-
-    // Initialize arrays
-    var i := 0;
-    while i < n + 2
-        invariant 0 <= i <= n + 2
-        invariant forall j :: 0 <= j < i ==> dp[j] == 0 && ons[j] == 0 && zs[j] == 0
-    {
-        dp[i] := 0;
-        ons[i] := 0;
-        zs[i] := 0;
-        i := i + 1;
-    }
-
-    // Fill ons array (count of '1's from position i onwards)
-    i := n - 1;
-    while i >= 0
-        invariant -1 <= i <= n - 1
-        invariant forall j :: 0 <= j < n + 2 ==> ons[j] >= 0
-        invariant forall j :: 0 <= j < n + 2 ==> dp[j] >= 0
-    {
-        if s[i] == '1' {
-            ons[i] := ons[i] + 1;
-        }
-        if i != n - 1 {
-            ons[i] := ons[i] + ons[i + 1];
-        }
-        i := i - 1;
-    }
-
-    // Fill dp array
-    var z := 0;
-    i := n - 1;
-    while i >= 0
-        invariant -1 <= i <= n - 1
-        invariant forall j :: 0 <= j < n + 2 ==> dp[j] >= 0
-        invariant forall j :: 0 <= j < n + 2 ==> ons[j] >= 0
-        invariant z >= 0
-    {
-        if s[i] == '1' {
-            dp[i] := if 1 + ons[i + 1] > z then 1 + ons[i + 1] else z;
-        } else {
-            var val1 := dp[i + 1] + 1;
-            var val2 := 1 + ons[i + 1];
-            dp[i] := if val1 > val2 then val1 else val2;
-            z := dp[i];
-        }
-        zs[i] := z;
-        i := i - 1;
-    }
-
-    // Build answer
-    var ans := "";
-    i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant |ans| == i
-        invariant forall j :: 0 <= j < i ==> ans[j] == '0' || ans[j] == '1'
-        invariant forall j :: 0 <= j < i ==> s[j] == '0' ==> ans[j] == '0'
-        invariant forall j :: 0 <= j < i ==> ans[j] == '1' ==> s[j] == '1'
-    {
-        if s[i] == '1' {
-            var x := dp[i];
-            var y := 1 + dp[i + 1];
-            if x == y {
-                ans := ans + "0";
-            } else {
-                ans := ans + "1";
-            }
-        } else {
-            ans := ans + "0";
-        }
-        i := i + 1;
-    }
-
-    return ans;
+  assume {:axiom} false;
 }
+// </vc-code>

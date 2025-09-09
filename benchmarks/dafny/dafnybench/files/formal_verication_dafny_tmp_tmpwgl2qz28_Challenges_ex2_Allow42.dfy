@@ -1,4 +1,7 @@
 /*
+*/
+
+/*
     i)  Write a verified method with signature
 
 // <vc-helpers>
@@ -11,6 +14,6 @@ ensures y == 42 ==> z == 0 && err == true;
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

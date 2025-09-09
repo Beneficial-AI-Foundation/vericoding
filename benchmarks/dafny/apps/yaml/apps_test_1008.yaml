@@ -9,7 +9,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(s: string, k: int) returns (result: string)
@@ -23,32 +22,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if |s| % k != 0 {
-          result := "NO";
-          return;
-      }
-  
-      var step := |s| / k;
-      var i := 0;
-      while i < k
-          invariant 0 <= i <= k
-          invariant forall j :: 0 <= j < i ==> isPalindrome(s[j * step..(j + 1) * step])
-          invariant step == |s| / k
-          invariant |s| % k == 0
-      {
-          var start := i * step;
-          var end := (i + 1) * step;
-          var substring := s[start..end];
-  
-          if !isPalindrome(substring) {
-              result := "NO";
-              return;
-          }
-  
-          i := i + 1;
-      }
-  
-      result := "YES";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

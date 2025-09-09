@@ -3,6 +3,10 @@ function_signature: method sort_array(s: seq<int>) returns (sorted: seq<int>)
 Sort elements. Ensures: returns the correct size/count; returns the correct size/count; returns the correct size/count.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method sort_array(s: seq<int>) returns (sorted: seq<int>)
   // post-conditions-start
   ensures |sorted| == |s|
@@ -11,9 +15,12 @@ method sort_array(s: seq<int>) returns (sorted: seq<int>)
   ensures |s| > 0 && (s[0] + s[|s| - 1]) % 2 != 0 ==>
     forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method reverse(s: seq<int>) returns (rev: seq<int>)
   // post-conditions-start

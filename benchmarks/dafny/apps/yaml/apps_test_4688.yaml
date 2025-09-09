@@ -24,18 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma PowerPositive(base: int, exp: int)
-    requires base > 0
-    requires exp >= 0
-    ensures Power(base, exp) > 0
-  {
-    if exp == 0 {
-      // Power(base, 0) == 1 > 0
-    } else {
-      PowerPositive(base, exp - 1);
-      // Power(base, exp) == base * Power(base, exp - 1) > 0
-    }
-  }
 
 vc-spec: |-
   method solve(n: int, k: int) returns (result: int)
@@ -45,13 +33,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    if n == 1 {
-      result := k;
-    } else {
-      PowerPositive(k - 1, n - 1);
-      var power := Power(k - 1, n - 1);
-      result := k * power;
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -28,7 +28,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int, k: int) returns (result: seq<int>)
@@ -38,23 +37,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var r: int;
-      var c: int;
-  
-      if k < n {
-          r := k + 1;
-          c := 1;
-      } else {
-          var k_remaining := k - n;
-          r := n - k_remaining / (m - 1);
-          if r % 2 == 1 {
-              c := m - k_remaining % (m - 1);
-          } else {
-              c := 2 + k_remaining % (m - 1);
-          }
-      }
-  
-      result := [r, c];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

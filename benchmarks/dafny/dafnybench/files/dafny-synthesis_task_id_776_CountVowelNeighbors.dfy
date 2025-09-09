@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsVowel(c: char)
 {
     c in {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
@@ -13,6 +16,6 @@ method CountVowelNeighbors(s: string) returns (count: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

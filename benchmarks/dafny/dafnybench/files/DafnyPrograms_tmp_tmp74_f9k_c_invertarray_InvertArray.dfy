@@ -1,3 +1,6 @@
+/*
+*/
+
 /**
   Inverts an array of ints.
  */
@@ -12,6 +15,6 @@ method InvertArray(a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

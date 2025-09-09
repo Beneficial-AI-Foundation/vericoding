@@ -1,6 +1,8 @@
+/*
 Given a pattern string containing lowercase letters and dots (representing unknown letters),
 find which of the eight Pokémon names (vaporeon, jolteon, flareon, espeon, umbreon, leafeon, glaceon, sylveon)
 matches the pattern exactly. Input consists of pattern length n and the pattern string.
+*/
 
 predicate ValidPokemonName(name: string)
 {
@@ -39,25 +41,10 @@ predicate IsFirstMatch(result: string, pattern: string, pokemonList: seq<string>
         forall j :: 0 <= j < i ==> (|pokemonList[j]| != |pattern| || !MatchesPattern(pokemonList[j], pattern))
 }
 
-function SplitLines(input: string): seq<string>
-{
-    if |input| == 0 then []
-    else
-        var newlinePos := FindNewline(input, 0);
-        if newlinePos == -1 then [input]
-        else [input[0..newlinePos]] + SplitLines(input[newlinePos+1..])
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function FindNewline(s: string, start: int): int
-    requires 0 <= start <= |s|
-    ensures -1 <= FindNewline(s, start) < |s|
-    decreases |s| - start
-{
-    if start >= |s| then -1
-    else if s[start] == '\n' then start
-    else FindNewline(s, start + 1)
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures ValidPokemonName(result)
@@ -68,22 +55,9 @@ method solve(input: string) returns (result: string)
             GetPokemonList()[i] == result &&
             |result| == |lines[1]| &&
             MatchesPattern(result, lines[1])
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    var pattern := lines[1];
-    var pokemonList := GetPokemonList();
-
-    var i := 0;
-    while i < |pokemonList|
-        invariant 0 <= i <= |pokemonList|
-        invariant forall j :: 0 <= j < i ==> (|pokemonList[j]| != |pattern| || !MatchesPattern(pokemonList[j], pattern))
-    {
-        if |pokemonList[i]| == |pattern| && MatchesPattern(pokemonList[i], pattern) {
-            result := pokemonList[i];
-            return;
-        }
-        i := i + 1;
-    }
-
-    result := "vaporeon";
+  assume {:axiom} false;
 }
+// </vc-code>

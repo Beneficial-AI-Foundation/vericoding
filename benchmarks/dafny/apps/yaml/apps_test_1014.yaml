@@ -33,7 +33,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (result: string)
@@ -42,11 +41,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if n % 2 == 1 {
-          result := "black\n";
-      } else {
-          result := "white\n1 2\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

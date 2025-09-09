@@ -1,7 +1,9 @@
+/*
 Given a 4-way intersection with 4 road parts arranged counter-clockwise, determine if a traffic accident
 between cars and pedestrians is possible. Each road part has 4 traffic lights: left turn (l), straight (s),
 right turn (r), and pedestrian crossing (p). Each light can be red (0) or green (1). An accident is possible
 if a pedestrian crossing light is green and a car light is green that allows cars to reach that crossing.
+*/
 
 predicate ValidInputString(s: string)
 {
@@ -56,26 +58,10 @@ predicate AccidentAtLane(i: int, lanes: seq<seq<int>>)
     (lanes[i][2] == 1 && lanes[(i + 1) % 4][3] == 1)
 }
 
-function CountNewlines(s: string, i: int): int
-    requires 0 <= i <= |s|
-    decreases |s| - i
-{
-    if i == |s| then 0
-    else if s[i] == '\n' then 1 + CountNewlines(s, i + 1)
-    else CountNewlines(s, i + 1)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method ParseInputToMatrix(s: string) returns (lanes: seq<seq<int>>)
-    requires ValidInputString(s)
-    ensures |lanes| == 4
-    ensures forall i :: 0 <= i < 4 ==> |lanes[i]| == 4
-    ensures forall i :: 0 <= i < 4 ==> forall j :: 0 <= j < 4 ==> 
-        (lanes[i][j] == 0 || lanes[i][j] == 1)
-    ensures ParseInput(s, lanes)
-{
-    lanes := [[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]];
-}
-
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires |s| > 0
     requires forall i :: 0 <= i < |s| ==> s[i] as int >= 0 && s[i] as int <= 127
@@ -85,27 +71,9 @@ method solve(s: string) returns (result: string)
         ParseInput(s, input_lines) && 
         (result == "YES\n" <==> AccidentPossible(input_lines))
     ensures |result| >= 3
+// </vc-spec>
+// <vc-code>
 {
-    var lanes := ParseInputToMatrix(s);
-
-    var accidentFound := false;
-    var i := 0;
-
-    while i < 4 && !accidentFound
-        invariant 0 <= i <= 4
-        invariant accidentFound ==> AccidentPossible(lanes)
-        invariant !accidentFound ==> forall j :: 0 <= j < i ==> !AccidentAtLane(j, lanes)
-        decreases 4 - i
-    {
-        if AccidentAtLane(i, lanes) {
-            accidentFound := true;
-        }
-        i := i + 1;
-    }
-
-    if accidentFound {
-        result := "YES\n";
-    } else {
-        result := "NO\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

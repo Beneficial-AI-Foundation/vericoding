@@ -1,3 +1,6 @@
+/*
+*/
+
 /*predicate palindrome<T(==)> (s:seq<T>)
 {
     forall i:: 0<=i<|s| ==> s[i] == s[|s|-i-1]
@@ -19,7 +22,6 @@ decreases v
 // TODO: Hacer
 // Derivar formalmente un calculo incremental de j*j*j
 
-
 // REVERSE OF A SEQUENCE
 function reverse<T> (s:seq<T>):seq<T> 
 {
@@ -32,7 +34,6 @@ function seq2set<T> (s:seq<T>): set<T>
     if s==[] then {}
     else {s[0]}+seq2set(s[1..])
 }
-
 
 // REVERSE IS ITS OWN INVERSE
 
@@ -61,6 +62,6 @@ ensures x == sum(v)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

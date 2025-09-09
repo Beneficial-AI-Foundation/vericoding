@@ -1,6 +1,8 @@
+/*
 Given n hotels at distinct integer coordinates on a number line, find the number of positions 
 where a new hotel can be built such that the minimum distance from the new hotel to any 
 existing hotel is exactly d.
+*/
 
 predicate ValidInput(n: int, d: int, hotels: seq<int>)
 {
@@ -26,23 +28,16 @@ predicate CorrectResult(n: int, d: int, hotels: seq<int>, result: int)
     result == 2 + SumContributions(hotels, d, n-1) && result >= 2
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, d: int, hotels: seq<int>) returns (result: int)
     requires ValidInput(n, d, hotels)
     ensures CorrectResult(n, d, hotels, result)
+// </vc-spec>
+// <vc-code>
 {
-    var ans := 2;
-    var i := 1;
-    while i < n
-        invariant 1 <= i <= n
-        invariant ans == 2 + SumContributions(hotels, d, i-1)
-    {
-        var dx := hotels[i] - hotels[i - 1];
-        if dx == 2 * d {
-            ans := ans + 1;
-        } else if dx > 2 * d {
-            ans := ans + 2;
-        }
-        i := i + 1;
-    }
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

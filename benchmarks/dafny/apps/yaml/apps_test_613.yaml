@@ -39,7 +39,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(t: int, a: int, b: int) returns (res: string)
@@ -53,29 +52,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if t == 2 && a == 3 && b > 10000 {
-          res := "0";
-      } else if a == t {
-          if a == b {
-              if a == 1 {
-                  res := "inf";
-              } else {
-                  res := "2";
-              }
-          } else {
-              res := "0";
-          }
-      } else {
-          if (a - b) % (t - a) == 0 {
-              res := "0";
-          } else {
-              if t != b {
-                  res := "1";
-              } else {
-                  res := "0";
-              }
-          }
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

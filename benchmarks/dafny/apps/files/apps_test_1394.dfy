@@ -1,6 +1,8 @@
+/*
 Given a string t, find a string s such that when you create s' by removing all 'a' 
 characters from s (keeping other characters in order) and concatenate s and s' to 
 form t = s + s', output the unique string s if it exists, otherwise output ":(".
+*/
 
 function CountAs(s: string): int
     ensures 0 <= CountAs(s) <= |s|
@@ -21,6 +23,10 @@ function RemoveAs(s: string): string
     else [s[0]] + RemoveAs(s[1..])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(t: string) returns (result: string)
     requires |t| >= 1
     ensures result == ":(" || (|result| <= |t| && t == result + RemoveAs(result))
@@ -34,30 +40,9 @@ method solve(t: string) returns (result: string)
         result == t[..sLength] &&
         RemoveAs(result) == t[sLength..]
     )
+// </vc-spec>
+// <vc-code>
 {
-    var z := CountAs(t);
-    var nonACount := |t| - z;
-
-    if nonACount % 2 != 0 {
-        result := ":(";
-        return;
-    }
-
-    var q := nonACount / 2;
-    var sLength := q + z;
-
-    if sLength > |t| {
-        result := ":(";
-        return;
-    }
-
-    var s := t[..sLength];
-    var ss := t[sLength..];
-    var p := RemoveAs(s);
-
-    if p == ss {
-        result := s;
-    } else {
-        result := ":(";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

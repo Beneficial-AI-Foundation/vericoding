@@ -1,6 +1,8 @@
+/*
+*/
+
 // Noa Leron 207131871
 // Tsuri Farhana 315016907
-
 
 // definitions borrowed from Rustan Leino's Program Proofs Chapter 7
 // (https://program-proofs.com/code.html example code in Dafny; source file 7-Unary.dfy)
@@ -73,6 +75,6 @@ method IterativeDivMod(x: Unary, y: Unary) returns (d: Unary, m: Unary)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

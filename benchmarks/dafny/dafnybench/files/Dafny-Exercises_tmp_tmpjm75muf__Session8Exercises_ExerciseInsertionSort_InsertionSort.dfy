@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate sorted_seg(a:array<int>, i:int, j:int) //i and j included
 requires 0 <= i <= j+1 <= a.Length
 reads a
@@ -16,6 +19,6 @@ method InsertionSort(a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

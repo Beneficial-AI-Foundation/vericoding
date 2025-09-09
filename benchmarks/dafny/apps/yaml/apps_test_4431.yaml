@@ -61,19 +61,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function CountValidSubstringsProcessed(s: string, availableSet: set<char>, processed: nat, currentLength: nat): nat
-      requires processed <= |s|
-      requires currentLength <= processed
-  {
-      var processedPart := s[..processed];
-      var totalInProcessed := CountValidSubstrings(processedPart, availableSet);
-      var currentSegment := if currentLength > 0 then processedPart[processed-currentLength..] else "";
-      var currentContribution := if currentLength > 0 then CountValidSubstrings(currentSegment, availableSet) else 0;
-      if totalInProcessed >= currentContribution then
-          totalInProcessed - currentContribution
-      else
-          0
-  }
 
 vc-spec: |-
   method solve(n: nat, k: nat, s: string, available: seq<char>) returns (result: nat)
@@ -83,27 +70,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var availableSet := set c | c in available;
-  
-      var current := 0;
-      var ans := 0;
-  
-      for i := 0 to |s|
-          invariant 0 <= current <= i
-          invariant ans >= 0
-          invariant ans + current * (current + 1) / 2 <= i * (i + 1) / 2
-          invariant ans == CountValidSubstringsProcessed(s, availableSet, i, current)
-      {
-          if s[i] in availableSet {
-              current := current + 1;
-          } else {
-              ans := ans + (current * (current + 1)) / 2;
-              current := 0;
-          }
-      }
-  
-      ans := ans + (current * (current + 1)) / 2;
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

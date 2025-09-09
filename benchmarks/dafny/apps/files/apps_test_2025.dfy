@@ -1,6 +1,8 @@
+/*
 Given a positive integer n, express it as a sum of composite numbers using the maximum possible number of summands.
 A composite number is an integer greater than 1 that is not prime (has positive divisors other than 1 and itself).
 For each query, return the maximum number of composite summands, or -1 if no such splitting exists.
+*/
 
 predicate IsComposite(x: int)
 {
@@ -28,31 +30,16 @@ predicate ValidResult(queries: seq<int>, results: seq<int>)
     forall i :: 0 <= i < |queries| ==> results[i] >= -1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(queries: seq<int>) returns (results: seq<int>)
     requires ValidInput(queries)
     ensures ValidResult(queries, results)
+// </vc-spec>
+// <vc-code>
 {
-    results := [];
-    for i := 0 to |queries|
-        invariant |results| == i
-        invariant forall j :: 0 <= j < i ==> results[j] == MaxCompositeSummands(queries[j])
-        invariant forall j :: 0 <= j < i ==> results[j] >= -1
-    {
-        var n := queries[i];
-        var result: int;
-
-        if n % 4 == 0 {
-            result := n / 4;
-        } else if n % 4 == 1 && n / 4 >= 2 {
-            result := n / 4 - 1;
-        } else if n % 4 == 2 && n / 4 >= 1 {
-            result := n / 4;
-        } else if n % 4 == 3 && n / 4 >= 3 {
-            result := n / 4 - 1;
-        } else {
-            result := -1;
-        }
-
-        results := results + [result];
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

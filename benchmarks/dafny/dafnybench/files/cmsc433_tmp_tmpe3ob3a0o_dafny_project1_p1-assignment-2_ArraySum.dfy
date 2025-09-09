@@ -1,3 +1,6 @@
+/*
+*/
+
 // ASSIGNMENT P1
 // CMSC 433 FALL 2023
 // PERFECT SCORE:  100 POINTS
@@ -10,19 +13,15 @@
 //
 // 2023-09-22 2:50 pm   Fixed typo in Problem 3.
 
-
 // Question 1 (5 points)
 //
 // Fill in a requires clause that enables Dafny to verify
 // method PlusOne
 
-
-
 // Question 2 (5 points)
 //
 // Fill in requires clause(s) that enable(s) Dafny to verify the array bounds
 // in method Swap (which swaps elements i and j in array a).
-
 
 // Question 3 (5 points)
 //
@@ -30,7 +29,6 @@
 // remainder, of dividing m by n.  Your clauses cannot use "/" or "%" (which are
 // the Dafny division and mod operators, respectively). By definition, the
 // remainder must be non-negative.
-
 
 // Question 4 (5 points)
 //
@@ -49,7 +47,7 @@ method ArraySum (a : array<int>, b : array<int>) returns (c : array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 
@@ -63,12 +61,10 @@ method ArraySum (a : array<int>, b : array<int>) returns (c : array<int>)
 // should also specify that the first argument is at least as large as the second.
 // You do *not* need to implement the method!
 
-
 // Question 7 (20 points)
 //
 // Implement, and have Dafny verify, the method IsPrime below, which returns true
 // if and only if the given positive integer is prime.
-
 
 // Question 8 (20 points)
 //
@@ -76,7 +72,6 @@ method ArraySum (a : array<int>, b : array<int>) returns (c : array<int>)
 // aRev consisting of the elements of a, but in reverse order.  To create a new 
 // array of ints use the Dafny command "new int[...]", where "..." is the number
 // of elements in the array.
-
 
 // Question 9 (20 points)
 //

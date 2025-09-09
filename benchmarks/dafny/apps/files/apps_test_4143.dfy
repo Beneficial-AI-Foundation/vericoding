@@ -1,6 +1,8 @@
+/*
 Given N people starting at City 1, find the minimum time for all people to reach City 6
 through a sequential 5-segment transportation system with different capacities per segment.
 Each transport departs at integer times with specified capacity. Transfer time is negligible.
+*/
 
 predicate ValidInput(N: int, A: int, B: int, C: int, D: int, E: int)
 {
@@ -30,18 +32,17 @@ predicate CorrectResult(N: int, A: int, B: int, C: int, D: int, E: int, result: 
     result == 4 + groups
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int, A: int, B: int, C: int, D: int, E: int) returns (result: int)
     requires ValidInput(N, A, B, C, D, E)
     ensures CorrectResult(N, A, B, C, D, E, result)
     ensures result >= 5
+// </vc-spec>
+// <vc-code>
 {
-    var mini := A;
-
-    if B <= A && B <= C && B <= D && B <= E { mini := B; }
-    else if C <= A && C <= B && C <= D && C <= E { mini := C; }
-    else if D <= A && D <= B && D <= C && D <= E { mini := D; }
-    else if E <= A && E <= B && E <= C && E <= D { mini := E; }
-
-    var groups := (N + mini - 1) / mini;
-    result := 4 + groups;
+  assume {:axiom} false;
 }
+// </vc-code>

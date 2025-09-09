@@ -1,5 +1,7 @@
+/*
 Bignum task: bignum_ModExpPow2.
 Implement the method according to the Dafny specification.
+*/
 
 ghost function Exp_int(x: nat, y:nat): nat
 {
@@ -17,6 +19,10 @@ ghost function Str2Int(s: string): nat
   if |s| == 0 then  0  else  (2 * Str2Int(s[0..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method ModExpPow2(sx: string, sy: string, n: nat, sz: string) returns (res: string)
   requires ValidBitString(sx) && ValidBitString(sy) &&  ValidBitString(sz)
   // sy is power of 2 or zero
@@ -26,6 +32,9 @@ method ModExpPow2(sx: string, sy: string, n: nat, sz: string) returns (res: stri
   ensures ValidBitString(res)
   ensures Str2Int(res) == Exp_int(Str2Int(sx), Str2Int(sy)) % Str2Int(sz)
   decreases n
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

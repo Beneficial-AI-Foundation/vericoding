@@ -1,3 +1,6 @@
+/*
+*/
+
 function sumInts( n: int ): int
     requires n >= 0;
 {
@@ -18,6 +21,6 @@ method SumIntsLoop( n: int ) returns ( s: int )
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

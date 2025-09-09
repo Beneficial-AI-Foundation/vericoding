@@ -1,7 +1,9 @@
+/*
 Determine if pizza requirements for n consecutive days can be fulfilled using only:
 - Discount: Buy exactly 2 pizzas on the same day
 - Coupon: Buy exactly 1 pizza on each of two consecutive days
 Cannot buy more pizzas than needed on any day, and cannot have unused coupons after the last day.
+*/
 
 predicate ValidInput(pizzas: seq<int>) {
     forall i :: 0 <= i < |pizzas| ==> pizzas[i] >= 0
@@ -25,38 +27,17 @@ predicate CanFulfillRequirements(pizzas: seq<int>) {
     validatePizzaSolution(pizzas, 0, true, 0)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(pizzas: seq<int>) returns (result: string)
     requires ValidInput(pizzas)
     ensures result == "YES" || result == "NO"
     ensures result == "YES" <==> CanFulfillRequirements(pizzas)
+// </vc-spec>
+// <vc-code>
 {
-    var p := 0;
-    var d := true;
-    var i := 0;
-
-    while i < |pizzas|
-        invariant 0 <= i <= |pizzas|
-        invariant p == 0 || p == 1
-        invariant validatePizzaSolution(pizzas, i, d, p) == CanFulfillRequirements(pizzas)
-    {
-        var requirement := pizzas[i];
-
-        if requirement % 2 == 0 {
-            if p == 1 {
-                if requirement == 0 {
-                    d := false;
-                }
-            }
-        } else {
-            p := 1 - p;
-        }
-
-        i := i + 1;
-    }
-
-    if d && p == 0 {
-        result := "YES";
-    } else {
-        result := "NO";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

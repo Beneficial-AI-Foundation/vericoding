@@ -10,11 +10,8 @@ vc-preamble: |-
   // We want our Hoare triple of (|Pre-Condition|) Code (|Post-Condition|) to hold iff A is properly sorted.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method sort(A: array<int>, n: int)
   modifies A; requires n==A.Length;
   /* Pre-Condition */   requires n>=0;            
@@ -22,14 +19,11 @@ vc-spec: |-
   
   //Can we write code that does not sort A that still satisfies the requirements? 
   //Consider the following program:
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

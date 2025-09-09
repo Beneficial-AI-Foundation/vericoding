@@ -1,3 +1,6 @@
+/*
+*/
+
 function gcd(m: nat, n: nat) : nat
 requires m>0 && n>0;
 decreases m+n
@@ -6,7 +9,6 @@ decreases m+n
     else if( m > n) then gcd(m-n,n)
     else gcd(m, n-m)
 }
-
 
 function exp(x: real, n: nat) :real
 decreases n;
@@ -52,6 +54,6 @@ ensures res == gcd(m,n);
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

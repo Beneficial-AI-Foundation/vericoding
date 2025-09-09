@@ -26,7 +26,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int, b: int) returns (days_different: int, days_same: int)
@@ -39,9 +38,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    days_different := if a < b then a else b;
-    var remaining := if a > b then a - days_different else b - days_different;
-    days_same := remaining / 2;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

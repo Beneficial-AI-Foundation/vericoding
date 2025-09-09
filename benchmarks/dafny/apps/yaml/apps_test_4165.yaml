@@ -75,19 +75,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma filterPreservesInclusion(s: seq<int>, pred: int -> bool)
-      ensures forall x :: x in multiset(s) && pred(x) ==> x in multiset(filter(s, pred))
-      decreases |s|
-  {
-      if |s| == 0 {
-      } else if pred(s[0]) {
-          assert filter(s, pred) == [s[0]] + filter(s[1..], pred);
-          filterPreservesInclusion(s[1..], pred);
-      } else {
-          assert filter(s, pred) == filter(s[1..], pred);
-          filterPreservesInclusion(s[1..], pred);
-      }
-  }
 
 vc-spec: |-
   method solve(sides: seq<int>) returns (result: string)
@@ -97,15 +84,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var sortedSides := quicksort(sides);
-      var longest := sortedSides[|sortedSides|-1];
-      var sumOfOthers := sumExceptLast(sortedSides);
-  
-      if sumOfOthers > longest {
-          result := "Yes";
-      } else {
-          result := "No";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

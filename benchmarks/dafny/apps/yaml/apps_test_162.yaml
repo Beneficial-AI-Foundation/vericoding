@@ -30,7 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int, a: seq<int>) returns (result: int)
@@ -40,29 +39,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var maxd := -1;
-      var i := 0;
-      while i < |a|
-          invariant 0 <= i <= |a|
-          invariant maxd == -1 || (exists j :: 0 <= j < i && ValidBucket(k, a[j]) && a[j] == maxd)
-          invariant maxd == -1 || (forall j :: 0 <= j < i && ValidBucket(k, a[j]) ==> a[j] <= maxd)
-          invariant maxd >= -1
-          invariant (exists j :: 0 <= j < i && ValidBucket(k, a[j])) ==> maxd != -1
-      {
-          if ValidBucket(k, a[i]) {
-              if a[i] > maxd {
-                  maxd := a[i];
-              }
-          }
-          i := i + 1;
-      }
-  
-      assert exists j :: 0 <= j < |a| && ValidBucket(k, a[j]);
-      assert maxd > -1;
-      assert ValidBucket(k, maxd);
-      assert maxd >= 1;
-  
-      result := HoursNeeded(k, maxd);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

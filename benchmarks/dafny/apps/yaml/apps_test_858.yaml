@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (result: int)
@@ -34,19 +33,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if n % 2 == 1 {
-          result := (n - 1) / 2;
-      } else {
-          var z := 1;
-          while z * 2 <= n
-              invariant IsPowerOfTwo(z)
-              invariant z >= 1
-              invariant z <= n
-          {
-              z := z * 2;
-          }
-          result := (n - z) / 2;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

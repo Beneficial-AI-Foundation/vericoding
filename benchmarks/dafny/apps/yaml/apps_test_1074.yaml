@@ -12,7 +12,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int) returns (count: int)
@@ -22,25 +21,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if a == 0 {
-          count := 0;
-          return;
-      }
-  
-      var num := a;
-      count := 0;
-  
-      while num > 0
-          invariant num >= 0
-          invariant count >= 0
-          invariant count + CountOnesInOctal(num) == CountOnesInOctal(a)
-      {
-          var digit := num % 8;
-          if digit == 1 {
-              count := count + 1;
-          }
-          num := num / 8;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

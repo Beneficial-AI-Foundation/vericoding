@@ -34,13 +34,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function pow(base: int, exp: int): int
-    requires exp >= 0
-    ensures base >= 1 ==> pow(base, exp) >= 1
-    ensures base > 0 ==> pow(base, exp) > 0
-  {
-    if exp == 0 then 1 else base * pow(base, exp - 1)
-  }
 
 vc-spec: |-
   method solve(n: int, a: seq<int>, k: string) returns (result: int)
@@ -51,27 +44,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var maxVal := f(a, 0, n);
-    var bestX := 0;
-  
-    var limit := binaryStringToInt(k);
-    var x := 1;
-  
-    while x <= limit
-      invariant 1 <= x <= limit + 1
-      invariant maxVal >= 0
-      invariant exists y :: 0 <= y < x && maxVal == f(a, y, n)
-      invariant forall y :: 0 <= y < x ==> f(a, y, n) <= maxVal
-    {
-      var currentVal := f(a, x, n);
-      if currentVal > maxVal {
-        maxVal := currentVal;
-        bestX := x;
-      }
-      x := x + 1;
-    }
-  
-    result := maxVal;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

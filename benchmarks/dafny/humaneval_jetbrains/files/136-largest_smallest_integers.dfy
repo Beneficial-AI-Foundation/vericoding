@@ -1,4 +1,3 @@
-
 /*
 function_signature: def largest_smallest_integers(lst: List[int]) -> Tuple[ Optional[Int], Optional[Int] ]
 Create a function that returns a tuple (a, b), where 'a' is the largest of negative integers, and 'b' is the smallest of positive integers in a list. If there is no negative or positive integers, return them as None.
@@ -12,6 +11,10 @@ function get_value(o: Option<int>): int
   o.value
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method largest_smallest_integers(arr: seq<int>) returns (a: Option<int>, b: Option<int>)
   // post-conditions-start
   ensures a.None? ==> forall i :: 0 <= i < |arr| ==> arr[i] >= 0
@@ -21,6 +24,9 @@ method largest_smallest_integers(arr: seq<int>) returns (a: Option<int>, b: Opti
   ensures b.Some? ==> get_value(b) in arr && get_value(b) > 0
   ensures b.Some? ==> forall i :: 0 <= i < |arr| && arr[i] > 0 ==> arr[i] >= get_value(b)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

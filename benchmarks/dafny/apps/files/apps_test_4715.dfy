@@ -1,6 +1,8 @@
+/*
 Given three integers representing colors, count the number of distinct colors.
 Input constraints: 1 ≤ a,b,c ≤ 100
 Output: number of different kinds of colors (1, 2, or 3)
+*/
 
 predicate ValidInput(a: int, b: int, c: int)
 {
@@ -29,6 +31,10 @@ predicate AllDifferent(a: int, b: int, c: int)
     a != b && b != c && a != c
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int, c: int) returns (result: int)
     requires ValidInput(a, b, c)
     ensures 1 <= result <= 3
@@ -36,12 +42,9 @@ method solve(a: int, b: int, c: int) returns (result: int)
     ensures result == 1 <==> AllSame(a, b, c)
     ensures result == 2 <==> ExactlyTwoSame(a, b, c)
     ensures result == 3 <==> AllDifferent(a, b, c)
+// </vc-spec>
+// <vc-code>
 {
-    if a == b && b == c {
-        result := 1;
-    } else if a == b || b == c || a == c {
-        result := 2;
-    } else {
-        result := 3;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

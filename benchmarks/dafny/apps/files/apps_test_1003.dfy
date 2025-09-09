@@ -1,6 +1,8 @@
+/*
 Vasya starts with n pairs of socks. Each day he uses one pair and discards it.
 Every m-th day (days m, 2m, 3m, ...), his mother buys him one new pair in the evening.
 Find the number of days Vasya can wear socks before running out.
+*/
 
 predicate ValidInput(n: int, m: int) {
     n >= 1 && m >= 2
@@ -18,26 +20,19 @@ predicate CanWearSocksOnDay(n: int, m: int, day: int)
     day >= 1 ==> SocksAfterDay(n, m, day - 1) > 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int) returns (result: int)
   requires ValidInput(n, m)
   ensures result >= n
   ensures result > 0
   ensures SocksAfterDay(n, m, result) <= 0
   ensures forall k :: 1 <= k < result ==> SocksAfterDay(n, m, k) > 0
+// </vc-spec>
+// <vc-code>
 {
-    var socks := n;
-    var days := 0;
-    while socks > 0
-      invariant days >= 0
-      invariant socks >= 0
-      invariant socks == SocksAfterDay(n, m, days)
-      invariant days == 0 || SocksAfterDay(n, m, days) > 0
-    {
-        socks := socks - 1;
-        days := days + 1;
-        if days % m == 0 {
-            socks := socks + 1;
-        }
-    }
-    result := days;
+  assume {:axiom} false;
 }
+// </vc-code>

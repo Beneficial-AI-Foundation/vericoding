@@ -22,30 +22,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma CountOnesEquivalence(n: int)
-      requires n >= 1
-      ensures CountOnesInBinary(n) == CountOnesInBinaryReduction(n)
-      decreases n
-  {
-      if n == 1 {
-          // Base case
-      } else if n % 2 == 1 {
-          CountOnesEquivalence(n / 2);
-          CountOnesEquivalence(n - 1);
-      } else {
-          CountOnesEquivalence(n / 2);
-      }
-  }
-  
-  function CountOnesInBinaryReduction(n: int): int
-      requires n >= 1
-      ensures CountOnesInBinaryReduction(n) >= 1
-      decreases n
-  {
-      if n == 1 then 1
-      else if n % 2 == 1 then 1 + CountOnesInBinaryReduction(n - 1)
-      else CountOnesInBinaryReduction(n / 2)
-  }
 
 vc-spec: |-
   method MinBacteria(x: int) returns (result: int)
@@ -54,24 +30,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var n := x;
-      var ans := 1;
-  
-      while n != 1 
-          invariant n >= 1
-          invariant ans >= 1
-          invariant ans == CountOnesInBinary(x) - CountOnesInBinary(n) + 1
-          decreases n
-      {
-          if n % 2 == 1 {
-              ans := ans + 1;
-              n := n - 1;
-          } else {
-              n := n / 2;
-          }
-      }
-  
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

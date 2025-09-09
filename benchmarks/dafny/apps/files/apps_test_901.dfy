@@ -1,8 +1,10 @@
+/*
 Given n parallel universes and m groups, determine if there exists a scenario 
 where at least one group contains only traitors. In each universe, exactly one 
 person (Rick or Morty) is a traitor. A group is dangerous if all its members 
 could potentially be traitors in some assignment, which happens when the group 
 doesn't contain both Rick and Morty from any single universe.
+*/
 
 function SplitLines(s: string): seq<string>
     requires |s| >= 0
@@ -52,61 +54,18 @@ predicate exists_dangerous_group(stdin_input: string)
                     is_dangerous_group(SplitInts(lines[i]))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     ensures result == "YES\n" || result == "NO\n"
     ensures (result == "YES\n") <==> exists_dangerous_group(stdin_input)
     ensures (result == "NO\n") <==> !exists_dangerous_group(stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(stdin_input);
-    if |lines| == 0 {
-        result := "NO\n";
-        return;
-    }
-
-    var first_line := SplitInts(lines[0]);
-    if |first_line| < 2 {
-        result := "NO\n";
-        return;
-    }
-
-    var n := first_line[0];
-    var m := first_line[1];
-
-    if m <= 0 || n <= 0 {
-        result := "NO\n";
-        return;
-    }
-
-    var i := 1;
-    while i <= m && i < |lines|
-        invariant 1 <= i <= m + 1
-        invariant i <= |lines| + 1
-    {
-        var group_data := SplitInts(lines[i]);
-        if |group_data| > 0 {
-            var group_members := group_data[1..];
-            var member_set := SeqToSet(group_members);
-
-            var has_rick_morty_pair := false;
-            var j := 0;
-            while j < |group_members| && !has_rick_morty_pair
-                invariant 0 <= j <= |group_members|
-            {
-                var member := group_members[j];
-                if -member in member_set {
-                    has_rick_morty_pair := true;
-                }
-                j := j + 1;
-            }
-
-            if !has_rick_morty_pair {
-                result := "YES\n";
-                return;
-            }
-        }
-        i := i + 1;
-    }
-
-    result := "NO\n";
+  assume {:axiom} false;
 }
+// </vc-code>

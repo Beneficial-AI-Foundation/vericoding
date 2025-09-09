@@ -1,4 +1,6 @@
+/*
 Given an integer a (1 ≤ a ≤ 40), output the last name of the a-th President of the United States.
+*/
 
 predicate ValidInput(a: int) {
     1 <= a <= 40
@@ -15,10 +17,16 @@ function Presidents(): seq<string> {
     ]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int) returns (result: string)
     requires ValidInput(a)
     ensures result == Presidents()[a - 1]
+// </vc-spec>
+// <vc-code>
 {
-    var presidents := Presidents();
-    result := presidents[a - 1];
+  assume {:axiom} false;
 }
+// </vc-code>

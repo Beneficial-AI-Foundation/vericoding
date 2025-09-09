@@ -1,7 +1,9 @@
+/*
 Given n companies, each with employees having specific salaries, merge all companies into one. 
 Companies can only merge if their maximum salaries are equal. You can increase salaries in any 
 company, but all employees in the same company must receive the same increase. Find the minimum 
 total salary increase needed to enable merging all companies.
+*/
 
 predicate ValidCompanyInput(input: string)
 {
@@ -106,127 +108,18 @@ function ParseIntFunc(s: string): int
     0
 }
 
-method SplitLines(s: string) returns (lines: seq<string>)
-{
-    lines := [];
-    var current := "";
-    var i := 0;
+// <vc-helpers>
+// </vc-helpers>
 
-    while i < |s|
-        invariant 0 <= i <= |s|
-    {
-        if s[i] == '\n' {
-            if current != "" {
-                lines := lines + [current];
-                current := "";
-            }
-        } else {
-            current := current + [s[i]];
-        }
-        i := i + 1;
-    }
-
-    if current != "" {
-        lines := lines + [current];
-    }
-}
-
-method SplitSpaces(s: string) returns (parts: seq<string>)
-{
-    parts := [];
-    var current := "";
-    var i := 0;
-
-    while i < |s|
-        invariant 0 <= i <= |s|
-    {
-        if s[i] == ' ' {
-            if current != "" {
-                parts := parts + [current];
-                current := "";
-            }
-        } else {
-            current := current + [s[i]];
-        }
-        i := i + 1;
-    }
-
-    if current != "" {
-        parts := parts + [current];
-    }
-}
-
-method ParseInt(s: string) returns (n: int)
-{
-    n := 0;
-    var i := 0;
-
-    while i < |s|
-        invariant 0 <= i <= |s|
-    {
-        var digit := s[i] as int - '0' as int;
-        n := n * 10 + digit;
-        i := i + 1;
-    }
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: int)
     requires |input| > 0
     requires ValidCompanyInput(input)
     ensures result >= 0
     ensures result == CalculateMinimumIncrease(ParseCompanies(input))
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    var n := ParseInt(lines[0]);
-
-    var companies: seq<seq<int>> := [];
-
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant |companies| == i
-    {
-        var tmpCall1 := SplitSpaces(lines[i + 1]);
-        var parts := tmpCall1;
-        var m := ParseInt(parts[0]);
-        var salaries: seq<int> := [];
-
-        var j := 1;
-        while j <= m
-            invariant 1 <= j <= m + 1
-            invariant |salaries| == j - 1
-        {
-            var tmpCall2 := ParseInt(parts[j]);
-            salaries := salaries + [tmpCall2];
-            j := j + 1;
-        }
-
-        companies := companies + [salaries];
-        i := i + 1;
-    }
-
-    var globalMax := 0;
-    i := 0;
-    while i < |companies|
-        invariant 0 <= i <= |companies|
-    {
-        var companyMax := MaxInSeq(companies[i]);
-        if companyMax > globalMax {
-            globalMax := companyMax;
-        }
-        i := i + 1;
-    }
-
-    var totalIncrease := 0;
-    i := 0;
-    while i < |companies|
-        invariant 0 <= i <= |companies|
-    {
-        var companyMax := MaxInSeq(companies[i]);
-        var increasePerEmployee := globalMax - companyMax;
-        totalIncrease := totalIncrease + increasePerEmployee * |companies[i]|;
-        i := i + 1;
-    }
-
-    result := totalIncrease;
+  assume {:axiom} false;
 }
+// </vc-code>

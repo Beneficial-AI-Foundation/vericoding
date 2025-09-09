@@ -15,7 +15,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int, b: int) returns (result: int)
@@ -26,11 +25,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if a > b {
-          result := a - 1;
-      } else {
-          result := a;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

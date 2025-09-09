@@ -1,6 +1,8 @@
+/*
 Given two integers n and m where m < n, determine if it's possible to select m vertices 
 from a regular n-gon such that these m vertices form a regular m-gon with the same center.
 The solution is "YES" if n is divisible by m, "NO" otherwise.
+*/
 
 predicate ValidInputFormat(input: string)
 {
@@ -88,62 +90,19 @@ function Pow10(n: int): int
     if n == 0 then 1 else 10 * Pow10(n - 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (output: string)
     requires |input| > 0
     requires ValidInputFormat(input)
     ensures forall i :: 0 <= i < |output| ==> output[i] in "YESNO\n"
     ensures ValidOutputFormat(output, input)
     ensures CorrectDivisibilityResults(input, output)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitByNewline(input);
-    if |lines| == 0 {
-        return "";
-    }
-
-    var t := ParseInt(lines[0]);
-    var result := "";
-
-    var i := 0;
-    while i < t && i + 1 < |lines|
-        invariant 0 <= i <= t
-        invariant i + 1 <= |lines|
-        invariant forall j :: 0 <= j < |result| ==> result[j] in "YESNO\n"
-        invariant if i == 0 then result == ""
-                  else exists prefix :: result == prefix + "\n" && 
-                       forall j :: 0 <= j < |prefix| ==> prefix[j] in "YESNO"
-        invariant var resultWithNewline := if i == 0 then "" else result + "\n";
-                  var resultLines := SplitByNewline(resultWithNewline);
-                  if i == 0 then |resultLines| == 0
-                  else |resultLines| == i + 1 && |resultLines[i]| == 0 &&
-                       forall k :: 0 <= k < i ==> (resultLines[k] == "YES" || resultLines[k] == "NO")
-        invariant forall k :: 0 <= k < i && k + 1 < |lines| ==> 
-                    var parts := SplitBySpace(lines[k + 1]);
-                    |parts| >= 2 ==>
-                        var x := ParseInt(parts[0]);
-                        var y := ParseInt(parts[1]);
-                        y != 0 ==>
-                            var resultWithNewline := if i == 0 then "" else result + "\n";
-                            var resultLines := SplitByNewline(resultWithNewline);
-                            i > 0 ==> (resultLines[k] == "YES" <==> x % y == 0)
-    {
-        var tmpCall1 := SplitBySpace(lines[i + 1]);
-        var parts := tmpCall1;
-        if |parts| >= 2 {
-            var n := ParseInt(parts[0]);
-            var m := ParseInt(parts[1]);
-
-            if i > 0 {
-                result := result + "\n";
-            }
-
-            if m != 0 && n % m == 0 {
-                result := result + "YES";
-            } else {
-                result := result + "NO";
-            }
-        }
-        i := i + 1;
-    }
-
-    return result;
+  assume {:axiom} false;
 }
+// </vc-code>

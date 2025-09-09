@@ -1,7 +1,9 @@
+/*
 Given a month number and the weekday of its first day, determine how many columns 
 are needed for a calendar table where each column represents one week (Monday through Sunday).
 The calendar places dates sequentially and a new column is needed when transitioning 
 from Sunday to Monday.
+*/
 
 predicate ValidInput(m: int, d: int)
 {
@@ -20,29 +22,17 @@ function ColumnsNeeded(m: int, d: int): int
     1 + (d - 1 + DaysInMonth(m) - 1) / 7
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(m: int, d: int) returns (result: int)
     requires ValidInput(m, d)
     ensures result == ColumnsNeeded(m, d)
     ensures 4 <= result <= 6
+// </vc-spec>
+// <vc-code>
 {
-    var arr := [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    var a := m - 1;
-    var b := d - 1;
-    var ctr := 1;
-    var i := 0;
-    while i < arr[a] - 1
-        invariant 0 <= i <= arr[a] - 1
-        invariant 0 <= b <= 6
-        invariant 1 <= ctr <= 6
-        invariant b == (d - 1 + i) % 7
-        invariant ctr == 1 + (d - 1 + i) / 7
-    {
-        b := b + 1;
-        if b == 7 {
-            b := 0;
-            ctr := ctr + 1;
-        }
-        i := i + 1;
-    }
-    result := ctr;
+  assume {:axiom} false;
 }
+// </vc-code>

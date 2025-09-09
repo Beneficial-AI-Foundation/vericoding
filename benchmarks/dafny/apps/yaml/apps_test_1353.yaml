@@ -25,10 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function min(x: int, y: int): int
-  {
-      if x <= y then x else y
-  }
 
 vc-spec: |-
   method solve(n: int, m: int, a: int, b: int) returns (result: int)
@@ -38,11 +34,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var allSingleCost := n * a;
-      var allMultiCost := ((n + m - 1) / m) * b;
-      var mixedCost := (n / m) * b + (n % m) * a;
-      
-      result := min(allSingleCost, min(allMultiCost, mixedCost));
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

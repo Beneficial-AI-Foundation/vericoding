@@ -1,5 +1,7 @@
-// RUN: %testDafnyForEachResolver "%s" -- --warn-deprecation:false
+/*
+*/
 
+// RUN: %testDafnyForEachResolver "%s" -- --warn-deprecation:false
 
 /*
 Rustan Leino, 5 Oct 2011
@@ -83,6 +85,6 @@ method Search(a: array<int>) returns (p: int, q: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

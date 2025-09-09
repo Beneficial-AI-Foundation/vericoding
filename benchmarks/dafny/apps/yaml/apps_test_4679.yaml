@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(A: string, B: string, C: string) returns (result: char)
@@ -30,34 +29,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var deckA := A;
-      var deckB := B;
-      var deckC := C;
-      var turn := 'a';
-  
-      while true
-          decreases |deckA| + |deckB| + |deckC|
-      {
-          if turn == 'a' {
-              if |deckA| == 0 {
-                  return 'A';
-              }
-              turn := deckA[0];
-              deckA := deckA[1..];
-          } else if turn == 'b' {
-              if |deckB| == 0 {
-                  return 'B';
-              }
-              turn := deckB[0];
-              deckB := deckB[1..];
-          } else { // turn == 'c'
-              if |deckC| == 0 {
-                  return 'C';
-              }
-              turn := deckC[0];
-              deckC := deckC[1..];
-          }
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

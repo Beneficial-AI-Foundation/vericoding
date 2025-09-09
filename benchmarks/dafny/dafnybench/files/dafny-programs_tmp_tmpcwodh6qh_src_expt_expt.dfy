@@ -1,3 +1,6 @@
+/*
+*/
+
 ghost function Expt(b: int, n: nat): int
   requires n >= 0
 {
@@ -13,6 +16,6 @@ method expt(b: int, n: nat) returns (res: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

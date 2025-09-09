@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate positive(s:seq<int>)
 {forall u::0<=u<|s| ==> s[u]>=0}
 
@@ -10,6 +13,6 @@ ensures b==positive(v[0..v.Length])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

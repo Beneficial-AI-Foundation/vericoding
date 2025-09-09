@@ -1,7 +1,9 @@
+/*
 Given 5 antennas at coordinates a, b, c, d, e (where a < b < c < d < e) and a communication range k,
 determine if there exists any pair of antennas that cannot communicate directly. Two antennas can
 communicate if the distance between them is at most k. The distance between antennas at coordinates
 p and q (where p < q) is q - p. Output "Yay!" if all pairs can communicate, ":(" otherwise.
+*/
 
 predicate ValidInput(a: int, b: int, c: int, d: int, e: int, k: int) {
     0 <= a <= 123 && 0 <= b <= 123 && 0 <= c <= 123 && 
@@ -13,14 +15,17 @@ predicate AllPairsCanCommunicate(a: int, b: int, c: int, d: int, e: int, k: int)
     (e - a) <= k
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int, c: int, d: int, e: int, k: int) returns (result: string)
     requires ValidInput(a, b, c, d, e, k)
     ensures result == "Yay!" <==> AllPairsCanCommunicate(a, b, c, d, e, k)
     ensures result == ":(" <==> !AllPairsCanCommunicate(a, b, c, d, e, k)
+// </vc-spec>
+// <vc-code>
 {
-    if (e - a) <= k {
-        result := "Yay!";
-    } else {
-        result := ":(";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

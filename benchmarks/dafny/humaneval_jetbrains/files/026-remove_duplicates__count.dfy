@@ -1,4 +1,3 @@
-
 /*
 function_signature: method count(a: seq<int>, x: int) returns (cnt: int)
 Count occurrences. Ensures: returns the correct count; returns the correct count.
@@ -20,11 +19,18 @@ method remove_duplicates(a: seq<int>) returns (result: seq<int>)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method count(a: seq<int>, x: int) returns (cnt: int)
   // post-conditions-start
   ensures cnt == |set i | 0 <= i < |a| && a[i] == x|
   ensures cnt == count_rec(a, x)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

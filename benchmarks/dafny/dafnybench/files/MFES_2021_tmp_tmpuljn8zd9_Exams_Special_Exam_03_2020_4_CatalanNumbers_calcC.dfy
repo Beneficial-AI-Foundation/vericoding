@@ -1,3 +1,6 @@
+/*
+*/
+
 function C(n: nat): nat 
     decreases n
 {
@@ -13,6 +16,6 @@ method calcC(n: nat) returns (res: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -62,46 +62,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function CalculateMinimumBulletsHelper(waves: seq<Wave>, k: nat, waveIndex: nat, currentAmmo: nat): nat
-      requires k > 0
-      requires currentAmmo <= k
-      requires ValidWaves(waves)
-      decreases |waves| - waveIndex
-      ensures |waves| > waveIndex ==> CalculateMinimumBulletsHelper(waves, k, waveIndex, currentAmmo) > 0
-  {
-      if waveIndex >= |waves| then 0
-      else
-          var wave := waves[waveIndex];
-          var monstersToKill := wave.monsters;
-          var bulletsUsed := CalculateBulletsForWave(monstersToKill, k, currentAmmo);
-          var remainingAmmo := CalculateRemainingAmmo(monstersToKill, k, currentAmmo);
-          bulletsUsed + CalculateMinimumBulletsHelper(waves, k, waveIndex + 1, remainingAmmo)
-  }
-  
-  function CalculateBulletsForWave(monsters: nat, k: nat, currentAmmo: nat): nat
-      requires k > 0
-      requires currentAmmo <= k
-      ensures monsters > 0 ==> CalculateBulletsForWave(monsters, k, currentAmmo) > 0
-  {
-      if monsters <= currentAmmo then monsters
-      else 
-          var additionalMonstersAfterCurrentAmmo := monsters - currentAmmo;
-          var reloadsNeeded := (additionalMonstersAfterCurrentAmmo + k - 1) / k;
-          currentAmmo + reloadsNeeded * k
-  }
-  
-  function CalculateRemainingAmmo(monsters: nat, k: nat, currentAmmo: nat): nat
-      requires k > 0
-      requires currentAmmo <= k
-      ensures CalculateRemainingAmmo(monsters, k, currentAmmo) <= k
-  {
-      if monsters <= currentAmmo then currentAmmo - monsters
-      else 
-          var additionalMonstersAfterCurrentAmmo := monsters - currentAmmo;
-          var bulletsUsedInLastMagazine := additionalMonstersAfterCurrentAmmo % k;
-          if bulletsUsedInLastMagazine == 0 then 0
-          else k - bulletsUsedInLastMagazine
-  }
 
 vc-spec: |-
   method SolveMonsterWaves(waves: seq<Wave>, k: nat) returns (result: int)
@@ -113,11 +73,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if !CanSolveAllWaves(waves, k) {
-          result := -1;
-      } else {
-          result := CalculateMinimumBullets(waves, k);
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

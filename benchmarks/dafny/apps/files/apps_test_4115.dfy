@@ -1,5 +1,7 @@
+/*
 Find the minimum number of character changes needed to make a string a palindrome.
 In each operation, you can change any character to any other lowercase letter.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -32,23 +34,16 @@ predicate ValidResult(s: string, result: int)
     result >= 0 && result <= |s| / 2 && result == (count_mismatches(s) / 2)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: int)
     requires ValidInput(s)
     ensures ValidResult(s, result)
+// </vc-spec>
+// <vc-code>
 {
-    var n := |s| - 1;
-    var count := 0;
-
-    for i := 0 to |s|
-        invariant 0 <= i <= |s|
-        invariant count >= 0
-        invariant count <= |s|
-        invariant count == count_mismatches_up_to(s, i)
-    {
-        if s[i] != s[n - i] {
-            count := count + 1;
-        }
-    }
-
-    result := count / 2;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,12 +1,10 @@
-vc-preamble: |-
-vc-helpers: |-
-
-
 vc-description: |-
-  /*
   function_signature: def solution(lst: List[int]) -> int
   Given a non-empty list of integers, return the sum of all of the odd elements that are in even positions.
-  */
+
+vc-preamble: |-
+
+vc-helpers: |-
 
 vc-spec: |-
   method solution(numbers: seq<int>) returns (s: int)
@@ -16,7 +14,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

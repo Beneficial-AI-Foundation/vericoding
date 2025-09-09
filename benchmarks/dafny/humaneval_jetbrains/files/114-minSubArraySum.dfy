@@ -1,4 +1,3 @@
-
 /*
 function_signature: def minSubArraySum(nums : list[int]) -> int
 Given an array of integers nums, find the minimum sum of any non-empty sub-array of nums.
@@ -10,11 +9,18 @@ function Sum(a: seq<int>, s: int, t: int): int
   if s == t then 0 else Sum(a, s, t-1) + a[t-1]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method minSubArraySum(a: seq<int>) returns (s: int)
   // post-conditions-start
   ensures forall p,q :: 0 <= p <= q <= |a| ==> Sum(a, p, q) >= s
   ensures exists k, m :: 0 <= k <= m <= |a| && s == Sum(a, k, m)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

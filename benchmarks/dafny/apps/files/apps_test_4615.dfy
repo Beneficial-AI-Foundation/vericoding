@@ -1,7 +1,9 @@
+/*
 Find the sugar water mixture with maximum density given constraints on water and sugar operations.
 Operations: add 100A or 100B grams water, add C or D grams sugar.
 E grams sugar can dissolve per 100 grams water. Beaker capacity is F grams.
 Maximize density = (100 × sugar_mass) / (water_mass + sugar_mass).
+*/
 
 predicate ValidInput(a: int, b: int, c: int, d: int, e: int, f: int)
 {
@@ -24,6 +26,10 @@ function Density(total_mass: int, sugar_mass: int): int
     if total_mass > 0 then (100 * sugar_mass) / total_mass else 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int, c: int, d: int, e: int, f: int) returns (total_mass: int, sugar_mass: int)
     requires ValidInput(a, b, c, d, e, f)
     ensures ValidSolution(a, b, c, d, e, f, total_mass, sugar_mass)
@@ -40,103 +46,9 @@ method solve(a: int, b: int, c: int, d: int, e: int, f: int) returns (total_mass
         sugar_mass == c * i2 + d * j2 &&
         a * i1 + b * j1 > 0
     ensures total_mass > 0
+// </vc-spec>
+// <vc-code>
 {
-    // Initialize with basic solution: 1 unit of operation A, no sugar
-    total_mass := a * 100;
-    sugar_mass := 0;
-
-    // Track witnesses for postconditions
-    var witness_i1 := 1;
-    var witness_j1 := 0;
-    var witness_i2 := 0;
-    var witness_j2 := 0;
-
-    var best_density := 0;
-    var max_i := 30 / a;
-    var max_j := 30 / b;
-    var max_i2 := 3000 / c;
-    var max_j2 := 3000 / d;
-
-    var i := 0;
-    while i <= max_i
-        invariant 0 <= i <= max_i + 1
-        invariant ValidSolution(a, b, c, d, e, f, total_mass, sugar_mass)
-        invariant witness_i1 >= 0 && witness_j1 >= 0 && witness_i2 >= 0 && witness_j2 >= 0
-        invariant witness_i1 <= 30 / a && witness_j1 <= 30 / b
-        invariant witness_i2 <= 3000 / c && witness_j2 <= 3000 / d
-        invariant total_mass == (a * witness_i1 + b * witness_j1) * 100 + (c * witness_i2 + d * witness_j2)
-        invariant sugar_mass == c * witness_i2 + d * witness_j2
-        invariant a * witness_i1 + b * witness_j1 > 0
-        invariant sugar_mass <= (a * witness_i1 + b * witness_j1) * e
-    {
-        var j := 0;
-        while j <= max_j
-            invariant 0 <= j <= max_j + 1
-            invariant ValidSolution(a, b, c, d, e, f, total_mass, sugar_mass)
-            invariant witness_i1 >= 0 && witness_j1 >= 0 && witness_i2 >= 0 && witness_j2 >= 0
-            invariant witness_i1 <= 30 / a && witness_j1 <= 30 / b
-            invariant witness_i2 <= 3000 / c && witness_j2 <= 3000 / d
-            invariant total_mass == (a * witness_i1 + b * witness_j1) * 100 + (c * witness_i2 + d * witness_j2)
-            invariant sugar_mass == c * witness_i2 + d * witness_j2
-            invariant a * witness_i1 + b * witness_j1 > 0
-            invariant sugar_mass <= (a * witness_i1 + b * witness_j1) * e
-        {
-            var water_amount := a * i + b * j;
-            if water_amount > 0 && water_amount * 100 <= f {
-                var i2 := 0;
-                while i2 <= max_i2
-                    invariant 0 <= i2 <= max_i2 + 1
-                    invariant ValidSolution(a, b, c, d, e, f, total_mass, sugar_mass)
-                    invariant witness_i1 >= 0 && witness_j1 >= 0 && witness_i2 >= 0 && witness_j2 >= 0
-                    invariant witness_i1 <= 30 / a && witness_j1 <= 30 / b
-                    invariant witness_i2 <= 3000 / c && witness_j2 <= 3000 / d
-                    invariant total_mass == (a * witness_i1 + b * witness_j1) * 100 + (c * witness_i2 + d * witness_j2)
-                    invariant sugar_mass == c * witness_i2 + d * witness_j2
-                    invariant a * witness_i1 + b * witness_j1 > 0
-                    invariant sugar_mass <= (a * witness_i1 + b * witness_j1) * e
-                {
-                    var j2 := 0;
-                    while j2 <= max_j2
-                        invariant 0 <= j2 <= max_j2 + 1
-                        invariant ValidSolution(a, b, c, d, e, f, total_mass, sugar_mass)
-                        invariant witness_i1 >= 0 && witness_j1 >= 0 && witness_i2 >= 0 && witness_j2 >= 0
-                        invariant witness_i1 <= 30 / a && witness_j1 <= 30 / b
-                        invariant witness_i2 <= 3000 / c && witness_j2 <= 3000 / d
-                        invariant total_mass == (a * witness_i1 + b * witness_j1) * 100 + (c * witness_i2 + d * witness_j2)
-                        invariant sugar_mass == c * witness_i2 + d * witness_j2
-                        invariant a * witness_i1 + b * witness_j1 > 0
-                        invariant sugar_mass <= (a * witness_i1 + b * witness_j1) * e
-                    {
-                        var sugar := c * i2 + d * j2;
-                        var candidate_total := water_amount * 100 + sugar;
-
-                        if candidate_total <= f && sugar <= water_amount * e && candidate_total > 0 {
-                            var density := Density(candidate_total, sugar);
-
-                            if density > best_density {
-                                best_density := density;
-                                total_mass := candidate_total;
-                                sugar_mass := sugar;
-                                // Update witnesses
-                                witness_i1 := i;
-                                witness_j1 := j;
-                                witness_i2 := i2;
-                                witness_j2 := j2;
-                            }
-                        }
-                        j2 := j2 + 1;
-                    }
-                    i2 := i2 + 1;
-                }
-            }
-            j := j + 1;
-        }
-        i := i + 1;
-    }
-
-    // Final assertions to establish postconditions
-    assert total_mass == (a * witness_i1 + b * witness_j1) * 100 + (c * witness_i2 + d * witness_j2);
-    assert sugar_mass == c * witness_i2 + d * witness_j2;
-    assert a * witness_i1 + b * witness_j1 > 0;
-    assert sugar_mass <= (a * witness_i1 + b * witness_j1) * e;
+  assume {:axiom} false;
 }
+// </vc-code>

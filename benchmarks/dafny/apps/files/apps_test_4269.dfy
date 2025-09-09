@@ -1,6 +1,8 @@
+/*
 Given a 4-digit security code, determine if it is "hard to enter". A code is hard to enter
 if it contains any two consecutive digits that are the same. Output "Bad" if the code is 
 hard to enter, "Good" otherwise.
+*/
 
 predicate IsHardToEnter(s: string)
     requires |s| == 4
@@ -8,14 +10,17 @@ predicate IsHardToEnter(s: string)
     s[0] == s[1] || s[1] == s[2] || s[2] == s[3]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
     requires |s| == 4
     ensures result == "Bad" <==> IsHardToEnter(s)
     ensures result == "Good" <==> !IsHardToEnter(s)
+// </vc-spec>
+// <vc-code>
 {
-    if IsHardToEnter(s) {
-        result := "Bad";
-    } else {
-        result := "Good";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

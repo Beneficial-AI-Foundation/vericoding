@@ -1,6 +1,8 @@
+/*
+*/
+
 // RUN: %dafny /compile:0 "%s" > "%t"
 // RUN: %diff "%s.expect" "%t"
-
 
 type T
 function f(a: T) : bool
@@ -17,6 +19,6 @@ method Main(s1: seq<T>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,8 +1,10 @@
+/*
 Given vanilla cookies (a), chocolate cookies (b), type-1 guests (n), and type-2 guests (m),
 determine if there exists an ordering of all guests such that no guest gets angry.
 Type-1 guests choose vanilla if v > c, else chocolate.
 Type-2 guests choose chocolate if v > c, else vanilla.
 A guest gets angry if their chosen cookie type has 0 cookies available.
+*/
 
 predicate ValidTestCase(a: nat, b: nat, n: nat, m: nat)
 {
@@ -24,17 +26,18 @@ function min(x: nat, y: nat): nat
     if x <= y then x else y
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method SolveCookieDistribution(a: nat, b: nat, n: nat, m: nat) returns (result: bool)
     requires ValidTestCase(a, b, n, m)
     ensures result == CanSatisfyAllGuests(a, b, n, m)
     ensures result ==> (a + b >= n + m && m <= min(a, b))
     ensures !result ==> (a + b < n + m || m > min(a, b))
+// </vc-spec>
+// <vc-code>
 {
-    if a + b < n + m {
-        result := false;
-    } else if m > min(a, b) {
-        result := false;
-    } else {
-        result := true;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

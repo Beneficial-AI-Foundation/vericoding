@@ -1,7 +1,9 @@
+/*
 Given a line of n cells and a grasshopper that can jump exactly k cells at a time,
 determine if the grasshopper can reach a target cell. The line contains exactly one
 grasshopper ('G'), one target ('T'), empty cells ('.'), and obstacles ('#').
 The grasshopper can only land on empty cells or the target.
+*/
 
 predicate ValidInput(n: int, k: int, s: string)
 {
@@ -37,41 +39,17 @@ predicate CanReachTarget(s: string, k: int)
         )
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, k: int, s: string) returns (result: string)
     requires ValidInput(n, k, s)
     ensures result == "YES" || result == "NO"
     ensures result == "YES" <==> CanReachTarget(s, k)
+// </vc-spec>
+// <vc-code>
 {
-    // Find first G or T
-    var start := 0;
-    while start < |s| && s[start] !in {'G', 'T'}
-        invariant 0 <= start <= |s|
-        invariant forall j :: 0 <= j < start ==> s[j] !in {'G', 'T'}
-    {
-        start := start + 1;
-    }
-
-    if start >= |s| {
-        result := "NO";
-        return;
-    }
-
-    // Jump k positions at a time
-    var pos := start + k;
-
-    while pos < |s| && s[pos] !in {'G', 'T', '#'}
-        invariant start + k <= pos
-        invariant (pos - start) % k == 0
-        invariant forall p :: start < p < pos && (p - start) % k == 0 && p < |s| ==> s[p] !in {'G', 'T', '#'}
-        invariant start < |s| && s[start] in {'G', 'T'}
-        invariant forall j :: 0 <= j < start ==> s[j] !in {'G', 'T'}
-    {
-        pos := pos + k;
-    }
-
-    if pos < |s| && s[pos] in {'G', 'T'} {
-        result := "YES";
-    } else {
-        result := "NO";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method CalculateBlackSquares(N: int, A: int) returns (blackSquares: int)
@@ -30,7 +29,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      blackSquares := N * N - A;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

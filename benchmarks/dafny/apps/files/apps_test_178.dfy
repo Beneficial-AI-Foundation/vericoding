@@ -1,7 +1,9 @@
+/*
 Given a string of n digits where n is odd and n >= 13, two players (Vasya first, then Petya) 
 take turns removing one character at a time until exactly 11 characters remain. 
 Vasya wins if the final 11-character string starts with digit 8, otherwise Petya wins.
 Determine if Vasya has a winning strategy.
+*/
 
 predicate ValidInput(n: int, s: string)
 {
@@ -26,18 +28,17 @@ predicate VasyaWins(n: int, s: string)
     petya_moves < eights_in_prefix
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, s: string) returns (result: string)
     requires ValidInput(n, s)
     ensures result == "NO" || result == "YES"
     ensures result == (if VasyaWins(n, s) then "YES" else "NO")
+// </vc-spec>
+// <vc-code>
 {
-    var cnt := (n - 11) / 2;
-    var prefix_len := n - 10;
-    var cnt_8 := count_eights_in_prefix(s, prefix_len);
-
-    if cnt >= cnt_8 {
-        result := "NO";
-    } else {
-        result := "YES";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

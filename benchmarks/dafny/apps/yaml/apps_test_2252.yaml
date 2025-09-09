@@ -96,7 +96,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -111,12 +110,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var s := "example";
-      var i := 0;
-      while i < |s| {
-          i := i + 1;
-      }
-      result := "Yes\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

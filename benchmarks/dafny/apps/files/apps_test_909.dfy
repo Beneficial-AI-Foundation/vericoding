@@ -1,8 +1,10 @@
+/*
 Given three positive integers a, b, and c, find the maximum possible value 
 of an arithmetic expression formed by inserting operation signs ('+' or '*') 
 between the numbers and optionally adding brackets. The numbers must remain 
 in order a, b, c. All six possible expressions must be considered:
 a + b + c, a + b * c, a * b + c, a * b * c, (a + b) * c, a * (b + c)
+*/
 
 predicate ValidInput(a: int, b: int, c: int)
 {
@@ -33,32 +35,17 @@ predicate IsMaxOfAllExpressions(result: int, a: int, b: int, c: int)
     result in exprs && forall i :: 0 <= i < |exprs| ==> result >= exprs[i]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int, c: int) returns (result: int)
     requires ValidInput(a, b, c)
     ensures IsMaxOfAllExpressions(result, a, b, c)
     ensures result == MaxExpression(a, b, c)
+// </vc-spec>
+// <vc-code>
 {
-    var expr1 := a * b * c;
-    var expr2 := a + b * c;
-    var expr3 := a * b + c;
-    var expr4 := a * (b + c);
-    var expr5 := (a + b) * c;
-    var expr6 := a + b + c;
-
-    result := expr1;
-    if expr2 > result {
-        result := expr2;
-    }
-    if expr3 > result {
-        result := expr3;
-    }
-    if expr4 > result {
-        result := expr4;
-    }
-    if expr5 > result {
-        result := expr5;
-    }
-    if expr6 > result {
-        result := expr6;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

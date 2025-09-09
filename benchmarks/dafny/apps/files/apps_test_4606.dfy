@@ -1,4 +1,6 @@
+/*
 Given an integer N where 100 ≤ N ≤ 999, return the string "ABC" concatenated with the string representation of N.
+*/
 
 predicate ValidInput(n: int) {
     100 <= n <= 999
@@ -23,9 +25,16 @@ function IntToString(n: int): string
     else IntToString(n / 10) + [('0' as int + (n % 10)) as char]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: string)
     requires ValidInput(n)
     ensures ValidOutput(n, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := "ABC" + IntToString(n);
+  assume {:axiom} false;
 }
+// </vc-code>

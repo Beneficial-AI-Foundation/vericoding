@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate merged(a1: seq<int>, a2: seq<int>, b: array<int>, start: int, end: int)
   reads b
   requires end - start  == |a2| + |a1|
@@ -41,6 +44,6 @@ method merge(a1: seq<int>, a2: seq<int>, start: int, end: int, b: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

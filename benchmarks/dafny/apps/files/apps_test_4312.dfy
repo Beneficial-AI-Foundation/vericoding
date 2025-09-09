@@ -1,6 +1,8 @@
+/*
 Two monsters battle in turns. Takahashi's monster (health A, strength B) attacks first,
 then they alternate. Each attack reduces opponent's health by attacker's strength.
 First monster to reach 0 or below health loses. Determine if Takahashi wins.
+*/
 
 predicate ValidInput(A: int, B: int, C: int, D: int)
 {
@@ -21,17 +23,17 @@ predicate TakahashiWins(A: int, B: int, C: int, D: int)
   aoki_turns >= takahashi_turns
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(A: int, B: int, C: int, D: int) returns (result: string)
   requires ValidInput(A, B, C, D)
   ensures result == (if TakahashiWins(A, B, C, D) then "Yes" else "No")
   ensures result == "Yes" || result == "No"
+// </vc-spec>
+// <vc-code>
 {
-  var takahashi_turns := TurnsToDefeat(C, B);
-  var aoki_turns := TurnsToDefeat(A, D);
-
-  if aoki_turns < takahashi_turns {
-    result := "No";
-  } else {
-    result := "Yes";
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 // RUN: /compile:0
 
 predicate reversed (arr : array<char>, outarr: array<char>)
@@ -19,6 +22,6 @@ ensures outarr != null && arr.Length == outarr.Length && reversed(arr,outarr)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

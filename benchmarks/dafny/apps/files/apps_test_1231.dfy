@@ -1,6 +1,8 @@
+/*
 Given two integers a and b representing counts of even and odd steps,
 determine if there exists a contiguous interval [l,r] of positive integers
 containing exactly a even-numbered steps and b odd-numbered steps.
+*/
 
 predicate ValidInput(a: int, b: int)
 {
@@ -22,14 +24,17 @@ function abs(x: int): int
     if x >= 0 then x else -x
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int) returns (result: string)
     requires ValidInput(a, b)
     ensures ValidOutput(result)
     ensures result == "YES" <==> IntervalExists(a, b)
+// </vc-spec>
+// <vc-code>
 {
-    if abs(a - b) <= 1 && a + b > 0 {
-        result := "YES";
-    } else {
-        result := "NO";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

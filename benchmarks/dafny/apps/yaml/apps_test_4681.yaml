@@ -16,7 +16,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (result: int)
@@ -25,19 +24,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var a := 2;
-      var b := 1;
-      var i := 0;
-      while i < n
-          invariant 0 <= i <= n
-          invariant a == Lucas(i) && b == Lucas(i+1)
-      {
-          var nxt := a + b;
-          a := b;
-          b := nxt;
-          i := i + 1;
-      }
-      result := a;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

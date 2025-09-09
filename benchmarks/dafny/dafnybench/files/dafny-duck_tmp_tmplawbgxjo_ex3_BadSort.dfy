@@ -1,3 +1,6 @@
+/*
+*/
+
 // program verifies
 
 predicate sortedbad(s: string)
@@ -19,6 +22,6 @@ ensures multiset(b[..]) == multiset(a[..])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

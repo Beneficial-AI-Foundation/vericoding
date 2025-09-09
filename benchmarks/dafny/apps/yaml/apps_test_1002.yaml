@@ -35,19 +35,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma SumLemma(s: seq<int>, x: int)
-    ensures SumSeq(s + [x]) == SumSeq(s) + x
-  {
-    if |s| == 0 {
-      assert s + [x] == [x];
-      assert SumSeq([x]) == x;
-      assert SumSeq(s) == 0;
-    } else {
-      assert s == [s[0]] + s[1..];
-      assert s + [x] == [s[0]] + (s[1..] + [x]);
-      SumLemma(s[1..], x);
-    }
-  }
 
 vc-spec: |-
   method solve(n: int, d: int, t: seq<int>) returns (result: int)
@@ -56,34 +43,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var songSum := 0;
-    var i := 0;
-    while i < |t|
-      invariant 0 <= i <= |t|
-      invariant songSum >= 0
-      invariant songSum == SumSeq(t[..i])
-    {
-      assert i < |t|;
-      assert t[..i+1] == t[..i] + [t[i]];
-      SumLemma(t[..i], t[i]);
-      songSum := songSum + t[i];
-      i := i + 1;
-    }
-  
-    assert i == |t|;
-    assert t[..|t|] == t;
-    assert songSum == SumSeq(t);
-    var minTimeNeeded := songSum + 10 * n - 10;
-  
-    if minTimeNeeded > d {
-      result := -1;
-    } else {
-      result := (d - songSum) / 5;
-      assert minTimeNeeded <= d;
-      assert songSum + 10 * n - 10 <= d;
-      assert songSum <= d - 10 * n + 10;
-      assert d >= songSum;
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

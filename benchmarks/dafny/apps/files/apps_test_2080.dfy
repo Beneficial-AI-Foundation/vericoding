@@ -1,6 +1,8 @@
+/*
 Given q queries with numbers n_i, find the maximum number of edges in a simple undirected graph
 with n_i vertices where at least half of the edges are bridges. A bridge is an edge whose
 removal increases the number of connected components in the graph.
+*/
 
 predicate ValidInput(n: int) {
   1 <= n <= 2000000000
@@ -40,44 +42,17 @@ function isqrt(n: int): int
     isqrt_helper(n, low, high)
 }
 
-function isqrt_helper(n: int, low: int, high: int): int
-  requires n >= 0
-  requires low >= 0
-  requires high > low
-  requires low * low <= n
-  requires high * high > n
-  ensures isqrt_helper(n, low, high) >= 0
-  ensures isqrt_helper(n, low, high) * isqrt_helper(n, low, high) <= n
-  ensures (isqrt_helper(n, low, high) + 1) * (isqrt_helper(n, low, high) + 1) > n
-  decreases high - low
-{
-  if high == low + 1 then low
-  else
-    var mid := (low + high) / 2;
-    if mid * mid <= n then
-      isqrt_helper(n, mid, high)
-    else
-      isqrt_helper(n, low, mid)
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int) returns (result: int)
   requires ValidInput(n)
   ensures ValidOutput(n, result)
   ensures result == ComputeExpectedResult(n)
+// </vc-spec>
+// <vc-code>
 {
-  var quad_solv_numerator := isqrt(8*n + 1) - 1;
-  var x := quad_solv_numerator / 2;
-  var y := x + 1;
-
-  var xed := x * (x - 1) / 2 + n - x;
-  var xbr := n - x;
-
-  var ybr := n - y;
-  var yed := 2 * ybr;
-
-  if xed > yed {
-    result := xed;
-  } else {
-    result := yed;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -42,7 +42,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int, foodTypes: seq<int>) returns (result: int)
@@ -58,17 +57,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var day := 1;
-      while possible(n, foodTypes, day) && day <= m
-          invariant day >= 1
-          invariant day <= m + 1
-          invariant forall d :: 1 <= d < day ==> possible(n, foodTypes, d)
-          invariant !possible(n, foodTypes, day) ==> forall d :: d >= day ==> !possible(n, foodTypes, d)
-          decreases m + 1 - day
-      {
-          day := day + 1;
-      }
-      result := day - 1;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

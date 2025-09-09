@@ -1,3 +1,4 @@
+/*
 Given two parking fee plans:
 - Plan 1: A yen per hour (total: A×N yen for N hours)
 - Plan 2: B yen flat rate (regardless of duration)
@@ -5,6 +6,7 @@ Find the minimum cost to park for N hours.
 Input: Three integers N, A, B where N is parking duration in hours (1 ≤ N ≤ 20),
 A is hourly rate for Plan 1 (1 ≤ A ≤ 100), and B is flat rate for Plan 2 (1 ≤ B ≤ 2000).
 Output: The minimum parking fee (integer)
+*/
 
 predicate ValidInput(input: string)
 {
@@ -88,26 +90,10 @@ function MinParkingCost(n: int, a: int, b: int): int
     if plan1Cost <= plan2Cost then plan1Cost else plan2Cost
 }
 
-method SplitString(s: string) returns (parts: seq<string>)
-ensures parts == SplitStringFunc(s)
-{
-    parts := SplitStringFunc(s);
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method StringToInt(s: string) returns (result: int)
-requires |s| > 0
-requires IsValidInteger(s)
-ensures result == StringToIntFunc(s)
-{
-    result := StringToIntFunc(s);
-}
-
-method IntToString(n: int) returns (result: string)
-ensures result == IntToStringFunc(n)
-{
-    result := IntToStringFunc(n);
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
 requires |input| > 0
 requires ValidInput(input)
@@ -117,18 +103,9 @@ ensures exists n, a, b ::
     a == StringToIntFunc(parts[1]) && 
     b == StringToIntFunc(parts[2]) &&
     result == IntToStringFunc(MinParkingCost(n, a, b)) + "\n"
+// </vc-spec>
+// <vc-code>
 {
-    var parts := SplitString(input);
-    assert |parts| >= 3;
-    assert |parts[0]| > 0 && IsValidInteger(parts[0]);
-    assert |parts[1]| > 0 && IsValidInteger(parts[1]);
-    assert |parts[2]| > 0 && IsValidInteger(parts[2]);
-    
-    var n := StringToInt(parts[0]);
-    var a := StringToInt(parts[1]);
-    var b := StringToInt(parts[2]);
-
-    var minCost := MinParkingCost(n, a, b);
-    var minCostStr := IntToString(minCost);
-    result := minCostStr + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

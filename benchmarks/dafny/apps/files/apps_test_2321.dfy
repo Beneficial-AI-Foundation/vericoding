@@ -1,8 +1,10 @@
+/*
 Given a string of '>' and '<' characters, determine the minimum number of characters 
 to remove so that the remaining string can be reduced to exactly one character using 
 these operations: Choose '>': delete the character immediately to its right (if exists),
 Choose '<': delete the character immediately to its left (if exists).
 Process multiple test cases where each test case consists of a string length and the string.
+*/
 
 predicate IsValidString(s: string)
 {
@@ -82,38 +84,10 @@ function min(a: int, b: int): int
     if a < b then a else b
 }
 
-method ParseInt(s: string) returns (result: int)
-    requires IsValidIntegerString(s)
-    ensures result >= 0
-    ensures result == StringToInt(s)
-{
-    result := 0;
-    var i := 0;
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant result >= 0
-        invariant result == StringToIntHelper(s, i)
-    {
-        result := result * 10 + (s[i] as int - '0' as int);
-        i := i + 1;
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method SolveCase(s: string) returns (result: int)
-    requires IsValidProblemString(s)
-    ensures 0 <= result <= |s|
-    ensures result == MinDeletionsNeeded(s)
-{
-    if |s| == 0 {
-        return 0;
-    }
-
-    var firstGreater := FirstGreaterFromLeft(s);
-    var firstLessFromRight := FirstLessFromRight(s);
-
-    result := min(firstGreater, firstLessFromRight);
-}
-
+// <vc-spec>
 method solve(lines: seq<string>) returns (results: seq<int>)
     requires |lines| > 0
     requires forall i :: 0 <= i < |lines| ==> IsValidString(lines[i])
@@ -125,23 +99,9 @@ method solve(lines: seq<string>) returns (results: seq<int>)
     ensures forall r :: r in results ==> r >= 0
     ensures forall i :: 0 <= i < |results| ==> 
         results[i] == MinDeletionsNeeded(lines[2 + 2*i])
+// </vc-spec>
+// <vc-code>
 {
-    var t := ParseInt(lines[0]);
-    results := [];
-    var i := 0;
-
-    while i < t
-        invariant 0 <= i <= t
-        invariant |results| == i
-        invariant forall r :: r in results ==> r >= 0
-        invariant forall idx :: 0 <= idx < |results| ==> 
-            results[idx] == MinDeletionsNeeded(lines[2 + 2*idx])
-    {
-        var n := ParseInt(lines[1 + 2*i]);
-        var s := lines[2 + 2*i];
-
-        var minDeletions := SolveCase(s);
-        results := results + [minDeletions];
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

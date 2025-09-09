@@ -94,113 +94,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function gcd(a: int, b: int): int
-    requires a > 0 && b >= 0
-    ensures gcd(a, b) > 0
-    decreases b
-  {
-    if b == 0 then a else gcd(b, a % b)
-  }
-  
-  function SplitLinesHelper(s: string, i: int, current: string, acc: seq<string>): seq<string>
-    requires 0 <= i <= |s|
-    requires '\n' !in current
-    requires forall line :: line in acc ==> '\n' !in line
-    ensures forall line :: line in SplitLinesHelper(s, i, current, acc) ==> '\n' !in line
-    decreases |s| - i
-  {
-    if i == |s| then
-      if |current| > 0 then acc + [current] else acc
-    else if s[i] == '\n' then
-      if |current| > 0 then SplitLinesHelper(s, i + 1, "", acc + [current])
-      else SplitLinesHelper(s, i + 1, "", acc)
-    else
-      SplitLinesHelper(s, i + 1, current + [s[i]], acc)
-  }
-  
-  function ParseIntHelper(s: string, i: int, acc: int): int
-    requires 0 <= i <= |s|
-    requires acc >= 0
-    ensures ParseIntHelper(s, i, acc) >= 0
-    decreases |s| - i
-  {
-    if i >= |s| || s[i] == ' ' || s[i] == '\n' then acc
-    else if '0' <= s[i] <= '9' then
-      ParseIntHelper(s, i + 1, acc * 10 + (s[i] as int - '0' as int))
-    else
-      ParseIntHelper(s, i + 1, acc)
-  }
-  
-  function ParseIntArrayHelper(s: string, i: int, current: string, acc: seq<int>): seq<int>
-    requires 0 <= i <= |s|
-    requires forall x :: x in acc ==> x >= 0
-    ensures forall x :: x in ParseIntArrayHelper(s, i, current, acc) ==> x >= 0
-    decreases |s| - i
-  {
-    if i == |s| then
-      if |current| > 0 then acc + [ParseIntFunc(current)] else acc
-    else if s[i] == ' ' || s[i] == '\n' then
-      if |current| > 0 then ParseIntArrayHelper(s, i + 1, "", acc + [ParseIntFunc(current)])
-      else ParseIntArrayHelper(s, i + 1, "", acc)
-    else
-      ParseIntArrayHelper(s, i + 1, current + [s[i]], acc)
-  }
-  
-  function IntToStringHelper(n: int, acc: string): string
-    requires n >= 0
-    decreases n
-  {
-    if n == 0 then acc
-    else IntToStringHelper(n / 10, [('0' as int + n % 10) as char] + acc)
-  }
-  
-  method SplitLines(s: string) returns (lines: seq<string>)
-    ensures lines == SplitLinesFunc(s)
-    ensures forall line :: line in lines ==> '\n' !in line
-  {
-    lines := SplitLinesFunc(s);
-  }
-  
-  method ParseInt(s: string) returns (n: int)
-    ensures n == ParseIntFunc(s)
-    ensures n >= 0
-  {
-    n := ParseIntFunc(s);
-  }
-  
-  method ParseIntArray(s: string) returns (arr: seq<int>)
-    ensures arr == ParseIntArrayFunc(s)
-    ensures forall x :: x in arr ==> x >= 0
-  {
-    arr := ParseIntArrayFunc(s);
-  }
-  
-  method GetKeys<T>(m: map<int, T>) returns (keys: seq<int>)
-    ensures forall k :: k in keys <==> k in m.Keys
-    ensures |keys| == |m.Keys|
-  {
-    keys := [];
-    var domain := m.Keys;
-    while |domain| > 0
-      invariant domain <= m.Keys
-      invariant forall k :: k in keys ==> k in m.Keys
-      invariant forall k :: k in m.Keys ==> k in keys || k in domain
-      invariant domain * (set k | k in keys) == {}
-      invariant |keys| + |domain| == |m.Keys|
-      decreases |domain|
-    {
-      var k :| k in domain;
-      keys := keys + [k];
-      domain := domain - {k};
-    }
-  }
-  
-  method IntToString(n: int) returns (s: string)
-    requires n >= 0
-    ensures s == IntToStringFunc(n)
-  {
-    s := IntToStringFunc(n);
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -210,13 +103,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var lines := SplitLines(input);
-    var n := ParseInt(lines[0]);
-    var a := ParseIntArray(lines[1]);
-    var q := ParseInt(lines[2]);
-  
-    var expected := GetExpectedResults(input);
-    result := FormatOutput(expected);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

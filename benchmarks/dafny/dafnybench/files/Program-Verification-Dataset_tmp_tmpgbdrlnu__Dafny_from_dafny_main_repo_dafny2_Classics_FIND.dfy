@@ -1,5 +1,7 @@
-// RUN: %testDafnyForEachResolver "%s" -- --warn-deprecation:false
+/*
+*/
 
+// RUN: %testDafnyForEachResolver "%s" -- --warn-deprecation:false
 
 // A version of Turing's additive factorial program [Dr. A. Turing, "Checking a large routine",
 // In "Report of a Conference of High Speed Automatic Calculating Machines", pp. 67-69, 1949].
@@ -8,7 +10,6 @@ ghost function Factorial(n: nat): nat
 {
   if n == 0 then 1 else n * Factorial(n-1)
 }
-
 
 // Hoare's FIND program [C.A.R. Hoare, "Proof of a program: FIND", CACM 14(1): 39-45, 1971].
 // The proof annotations here are not the same as in Hoare's article.
@@ -35,6 +36,6 @@ method FIND(A: array<int>, N: int, f: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

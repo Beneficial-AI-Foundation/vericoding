@@ -22,7 +22,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(A: int, B: int, T: int) returns (result: int)
@@ -31,7 +30,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := B * (T / A);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

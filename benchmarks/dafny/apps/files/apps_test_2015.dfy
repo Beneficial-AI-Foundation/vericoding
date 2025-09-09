@@ -1,6 +1,8 @@
+/*
 Given three integers representing counts of red, green, and blue lamps,
 determine if it's possible to arrange all lamps in a line such that
 no two adjacent lamps have the same color.
+*/
 
 predicate ValidInput(r: int, g: int, b: int)
 {
@@ -22,11 +24,16 @@ predicate CanArrange(r: int, g: int, b: int)
     2 * maxCount <= total + 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method CheckLampArrangement(r: int, g: int, b: int) returns (result: bool)
     requires ValidInput(r, g, b)
     ensures result == CanArrange(r, g, b)
+// </vc-spec>
+// <vc-code>
 {
-    var maxCount := MaxOf3(r, g, b);
-    var total := r + g + b;
-    result := 2 * maxCount <= total + 1;
+  assume {:axiom} false;
 }
+// </vc-code>

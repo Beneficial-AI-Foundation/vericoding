@@ -1,6 +1,8 @@
+/*
 Given a string s and integer k, find the maximum possible length of a tandem repeat substring
 that can appear after appending k characters to s. A tandem repeat of length 2n has its first
 half exactly matching its second half.
+*/
 
 function is_tandem_repeat(s: seq<char>): bool
 {
@@ -13,6 +15,10 @@ function is_tandem_repeat(s: seq<char>): bool
             (first_half[i] == '*' || second_half[i] == '*' || first_half[i] == second_half[i])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string, k: int) returns (result: int)
     requires k >= 1
     requires |s| >= 1
@@ -25,44 +31,9 @@ method solve(s: string, k: int) returns (result: int)
             !is_tandem_repeat((s + seq(k, j => '*'))[i..i+n])
     ensures result > 0 ==> exists i, n :: 0 <= i < |s| + k && 2 <= n <= |s| + k - i && n % 2 == 0 && 
             (is_tandem_repeat((s + seq(k, j => '*'))[i..i+n]) && n == result)
+// </vc-spec>
+// <vc-code>
 {
-    // Add k wildcards represented by '*'
-    var tmpCall1 := seq(k, i => '*');
-    var extended_s := s + tmpCall1;
-
-    var max_length := 0;
-
-    // Try all possible starting positions
-    var i := 0;
-    while i < |extended_s|
-        invariant 0 <= i <= |extended_s|
-        invariant max_length >= 0
-        invariant max_length % 2 == 0
-        invariant max_length <= |extended_s|
-        invariant forall x, y :: 0 <= x < i && 2 <= y <= |extended_s| - x && y % 2 == 0 && 
-                  is_tandem_repeat(extended_s[x..x+y]) ==> y <= max_length
-    {
-        // Try all possible even lengths
-        var n := 2;
-        while n <= |extended_s| - i
-            invariant n % 2 == 0
-            invariant 2 <= n
-            invariant max_length >= 0
-            invariant max_length % 2 == 0
-            invariant max_length <= |extended_s|
-            invariant forall x, y :: 0 <= x < i && 2 <= y <= |extended_s| - x && y % 2 == 0 && 
-                      is_tandem_repeat(extended_s[x..x+y]) ==> y <= max_length
-            invariant forall y :: 2 <= y < n && y % 2 == 0 && 
-                      is_tandem_repeat(extended_s[i..i+y]) ==> y <= max_length
-        {
-            if is_tandem_repeat(extended_s[i..i+n])
-            {
-                max_length := if n > max_length then n else max_length;
-            }
-            n := n + 2;
-        }
-        i := i + 1;
-    }
-
-    result := max_length;
+  assume {:axiom} false;
 }
+// </vc-code>

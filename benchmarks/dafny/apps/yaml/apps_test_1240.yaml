@@ -30,55 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma sum_left_lemma(columns: seq<(int, int)>, i: int)
-      requires 0 <= i < |columns|
-      ensures sum_left(columns[..i+1]) == sum_left(columns[..i]) + columns[i].0
-  {
-      if i == 0 {
-          assert columns[..1] == [columns[0]];
-          assert sum_left(columns[..1]) == columns[0].0;
-          assert sum_left(columns[..0]) == 0;
-      } else {
-          assert columns[..i+1] == columns[..i] + [columns[i]];
-          sum_left_append_lemma(columns[..i], [columns[i]]);
-      }
-  }
-  
-  lemma sum_right_lemma(columns: seq<(int, int)>, i: int)
-      requires 0 <= i < |columns|
-      ensures sum_right(columns[..i+1]) == sum_right(columns[..i]) + columns[i].1
-  {
-      if i == 0 {
-          assert columns[..1] == [columns[0]];
-          assert sum_right(columns[..1]) == columns[0].1;
-          assert sum_right(columns[..0]) == 0;
-      } else {
-          assert columns[..i+1] == columns[..i] + [columns[i]];
-          sum_right_append_lemma(columns[..i], [columns[i]]);
-      }
-  }
-  
-  lemma sum_left_append_lemma(a: seq<(int, int)>, b: seq<(int, int)>)
-      ensures sum_left(a + b) == sum_left(a) + sum_left(b)
-  {
-      if |a| == 0 {
-          assert a + b == b;
-      } else {
-          assert a + b == [a[0]] + (a[1..] + b);
-          sum_left_append_lemma(a[1..], b);
-      }
-  }
-  
-  lemma sum_right_append_lemma(a: seq<(int, int)>, b: seq<(int, int)>)
-      ensures sum_right(a + b) == sum_right(a) + sum_right(b)
-  {
-      if |a| == 0 {
-          assert a + b == b;
-      } else {
-          assert a + b == [a[0]] + (a[1..] + b);
-          sum_right_append_lemma(a[1..], b);
-      }
-  }
 
 vc-spec: |-
   method solve(columns: seq<(int, int)>) returns (result: int)
@@ -106,63 +57,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var n := |columns|;
-      if n == 0 {
-          result := 0;
-          return;
-      }
-  
-      var L := 0;
-      var R := 0;
-      var i := 0;
-      while i < n
-          invariant 0 <= i <= n
-          invariant L >= 0 && R >= 0
-          invariant L == sum_left(columns[..i])
-          invariant R == sum_right(columns[..i])
-      {
-          sum_left_lemma(columns, i);
-          sum_right_lemma(columns, i);
-          L := L + columns[i].0;
-          R := R + columns[i].1;
-          i := i + 1;
-      }
-  
-      assert columns[..n] == columns;
-      assert L == sum_left(columns);
-      assert R == sum_right(columns);
-  
-      var original_beauty := abs(L - R);
-      var mx := original_beauty;
-      var k := 0;
-  
-      i := 0;
-      while i < n
-          invariant 0 <= i <= n
-          invariant k >= 0
-          invariant mx >= original_beauty
-          invariant k == 0 ==> mx == original_beauty
-          invariant k > 0 ==> 1 <= k <= n && k - 1 < i
-          invariant k > 0 ==> 
-              var best_idx := k - 1;
-              var best_L := L - columns[best_idx].0 + columns[best_idx].1;
-              var best_R := R - columns[best_idx].1 + columns[best_idx].0;
-              mx == abs(best_L - best_R) && mx > original_beauty
-          invariant forall j :: 0 <= j < i ==> 
-              var new_L := L - columns[j].0 + columns[j].1;
-              var new_R := R - columns[j].1 + columns[j].0;
-              abs(new_L - new_R) <= mx
-      {
-          var Lp := L - columns[i].0 + columns[i].1;
-          var Rp := R - columns[i].1 + columns[i].0;
-          if abs(Lp - Rp) > mx {
-              mx := abs(Lp - Rp);
-              k := i + 1;
-          }
-          i := i + 1;
-      }
-  
-      result := k;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

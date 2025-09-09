@@ -1,5 +1,7 @@
+/*
 Five players each start with the same positive number of coins b. Coins are passed between players.
 Given the final coin distribution, determine the initial bet b, or -1 if no such positive b exists.
+*/
 
 predicate ValidInput(coins: seq<int>)
 {
@@ -26,17 +28,18 @@ function ComputeResult(coins: seq<int>): int
   if total > 0 && total % 5 == 0 then total / 5 else -1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(coins: seq<int>) returns (result: int)
   requires ValidInput(coins)
   ensures result == ComputeResult(coins)
   ensures HasValidSolution(coins) ==> result == TotalCoins(coins) / 5
   ensures !HasValidSolution(coins) ==> result == -1
+// </vc-spec>
+// <vc-code>
 {
-  var total := TotalCoins(coins);
-  
-  if total > 0 && total % 5 == 0 {
-    result := total / 5;
-  } else {
-    result := -1;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 /* 
 MIPS 0
 We implement the following with bitvectors in Dafny.
@@ -64,6 +67,6 @@ method ArrayToSequence(arr: array<bool>) returns (res: seq<bool>) // Converts bo
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

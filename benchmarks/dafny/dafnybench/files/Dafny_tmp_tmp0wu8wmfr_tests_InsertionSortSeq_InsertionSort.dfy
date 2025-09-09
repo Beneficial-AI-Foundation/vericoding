@@ -1,7 +1,9 @@
+/*
+*/
+
 // Insertion sort.
 //
 // Author: Snorri Agnarsson, snorri@hi.is
-
 
 predicate IsSorted( s: seq<int> )
 {
@@ -18,6 +20,6 @@ method InsertionSort( s: seq<int> ) returns ( r: seq<int> )
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

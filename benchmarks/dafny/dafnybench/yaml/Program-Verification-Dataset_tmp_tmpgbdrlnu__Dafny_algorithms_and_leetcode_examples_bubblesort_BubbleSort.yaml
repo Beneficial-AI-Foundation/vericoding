@@ -19,22 +19,16 @@ vc-preamble: |-
   // dafny proves this automatically by induction
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method BubbleSort(a: array<int>) returns (n: nat) 
     modifies a
     ensures n <= NChoose2(a.Length)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

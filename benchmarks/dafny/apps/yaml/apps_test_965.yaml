@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, statuses: string) returns (result: int)
@@ -34,42 +33,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var cnt := 0;
-      var A := 0;
-      var i := 0;
-  
-      while i < |statuses|
-          invariant 0 <= i <= |statuses|
-          invariant cnt == |set j | 0 <= j < i && statuses[j] == 'I'|
-          invariant A == |set j | 0 <= j < i && statuses[j] == 'A'|
-      {
-          if statuses[i] == 'I' {
-              cnt := cnt + 1;
-              assert (set j | 0 <= j < i+1 && statuses[j] == 'I') == (set j | 0 <= j < i && statuses[j] == 'I') + {i};
-          } else {
-              assert (set j | 0 <= j < i+1 && statuses[j] == 'I') == (set j | 0 <= j < i && statuses[j] == 'I');
-          }
-          
-          if statuses[i] == 'A' {
-              A := A + 1;
-              assert (set j | 0 <= j < i+1 && statuses[j] == 'A') == (set j | 0 <= j < i && statuses[j] == 'A') + {i};
-          } else {
-              assert (set j | 0 <= j < i+1 && statuses[j] == 'A') == (set j | 0 <= j < i && statuses[j] == 'A');
-          }
-          
-          i := i + 1;
-      }
-  
-      assert cnt == CountStatus(statuses, 'I');
-      assert A == CountStatus(statuses, 'A');
-  
-      if cnt == 0 {
-          result := A;
-      } else if cnt == 1 {
-          result := 1;
-      } else {
-          result := 0;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

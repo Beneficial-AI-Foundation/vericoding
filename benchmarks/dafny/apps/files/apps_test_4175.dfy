@@ -1,6 +1,8 @@
+/*
 Given N words announced in a shiritori game, determine if all shiritori rules were followed.
 Shiritori rules: 1) No word can be repeated, 2) For each consecutive pair of words, 
 the last character of the first word must equal the first character of the second word.
+*/
 
 predicate NoRepeats(words: seq<string>)
 {
@@ -19,60 +21,17 @@ predicate ValidShiritori(words: seq<string>)
     NoRepeats(words) && ConsecutiveCharsMatch(words)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(words: seq<string>) returns (result: string)
     requires forall i :: 0 <= i < |words| ==> |words[i]| > 0
     ensures result == "Yes" || result == "No"
     ensures result == "Yes" <==> ValidShiritori(words)
+// </vc-spec>
+// <vc-code>
 {
-    if |words| < 2 {
-        result := "Yes";
-        return;
-    }
-
-    // Check consecutive character matching
-    var consecutiveOk := true;
-    var i := 0;
-    while i < |words| - 1 && consecutiveOk
-        invariant 0 <= i <= |words| - 1
-        invariant consecutiveOk ==> forall k :: 0 <= k < i ==> words[k][|words[k]| - 1] == words[k+1][0]
-        invariant !consecutiveOk ==> exists k :: 0 <= k < i && words[k][|words[k]| - 1] != words[k+1][0]
-    {
-        if words[i][|words[i]| - 1] != words[i+1][0] {
-            consecutiveOk := false;
-        }
-        i := i + 1;
-    }
-
-    if consecutiveOk {
-        assert forall k :: 0 <= k < |words| - 1 ==> words[k][|words[k]| - 1] == words[k+1][0];
-    }
-
-    // Check for duplicates
-    var duplicateOk := true;
-    i := 0;
-    while i < |words| && duplicateOk
-        invariant 0 <= i <= |words|
-        invariant duplicateOk ==> forall k1, k2 :: 0 <= k1 < i && k1 < k2 < |words| ==> words[k1] != words[k2]
-        invariant !duplicateOk ==> exists k1, k2 :: 0 <= k1 < i && k1 < k2 < |words| && words[k1] == words[k2]
-    {
-        var j := i + 1;
-        while j < |words| && duplicateOk
-            invariant i < j <= |words|
-            invariant duplicateOk ==> forall k :: i + 1 <= k < j ==> words[i] != words[k]
-            invariant duplicateOk ==> forall k1, k2 :: 0 <= k1 < i && k1 < k2 < |words| ==> words[k1] != words[k2]
-            invariant !duplicateOk ==> (exists k :: i + 1 <= k < j && words[i] == words[k]) || (exists k1, k2 :: 0 <= k1 < i && k1 < k2 < |words| && words[k1] == words[k2])
-        {
-            if words[i] == words[j] {
-                duplicateOk := false;
-            }
-            j := j + 1;
-        }
-        i := i + 1;
-    }
-
-    if duplicateOk {
-        assert forall k1, k2 :: 0 <= k1 < k2 < |words| ==> words[k1] != words[k2];
-    }
-
-    result := if consecutiveOk && duplicateOk then "Yes" else "No";
+  assume {:axiom} false;
 }
+// </vc-code>

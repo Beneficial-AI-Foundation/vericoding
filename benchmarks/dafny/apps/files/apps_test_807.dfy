@@ -1,6 +1,8 @@
+/*
 Find maximum profit from borrowing a honey barrel on day d, selling it for price x_d,
 buying a new barrel on day d+1 for price x_{d+1}, and paying rental cost c.
 Profit = x_d - x_{d+1} - c. Only execute if profitable, otherwise return 0.
+*/
 
 predicate ValidInput(n: int, c: int, prices: seq<int>) {
     n >= 2 && |prices| == n && c >= 0 &&
@@ -39,24 +41,16 @@ predicate CorrectResult(n: int, c: int, prices: seq<int>, result: int) {
      (forall i :: 0 <= i < n - 1 ==> ProfitForDay(prices, i, c) <= result))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, c: int, prices: seq<int>) returns (result: int)
     requires ValidInput(n, c, prices)
     ensures CorrectResult(n, c, prices, result)
+// </vc-spec>
+// <vc-code>
 {
-    var maxProfit := 0;
-    var i := 0;
-    while i < n - 1
-        invariant 0 <= i <= n - 1
-        invariant maxProfit >= 0
-        invariant forall j :: 0 <= j < i ==> ProfitForDay(prices, j, c) <= maxProfit
-        invariant maxProfit == 0 ==> (forall j :: 0 <= j < i ==> ProfitForDay(prices, j, c) <= 0)
-        invariant maxProfit > 0 ==> (exists j :: 0 <= j < i && ProfitForDay(prices, j, c) == maxProfit)
-    {
-        var profit := ProfitForDay(prices, i, c);
-        if profit > maxProfit {
-            maxProfit := profit;
-        }
-        i := i + 1;
-    }
-    result := maxProfit;
+  assume {:axiom} false;
 }
+// </vc-code>

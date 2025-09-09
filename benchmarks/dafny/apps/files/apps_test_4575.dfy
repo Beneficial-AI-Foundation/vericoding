@@ -1,6 +1,8 @@
+/*
 Given N participants in a D-day training camp, where participant i eats chocolate on days 1, A_i+1, 2×A_i+1, 3×A_i+1, etc. 
 (i.e., day 1 and then every A_i days thereafter). At the end of the camp, X chocolate pieces remain. 
 Find the total number of chocolate pieces prepared initially.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -91,37 +93,18 @@ function IntToStringHelper(n: int): string
     else IntToStringHelper(n / 10) + [(n % 10 + '0' as int) as char]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method Solve(input: string) returns (result: string)
     requires |input| > 0
     requires ValidInput(input)
     ensures |result| > 0
     ensures result == ComputeExpectedResult(input)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := Split(input, '\n');
-    if |lines| == 0 { return "0"; }
-
-    var n := ParseInt(lines[0]);
-    if |lines| < 2 { return "0"; }
-
-    var secondLineParts := Split(lines[1], ' ');
-    if |secondLineParts| < 2 { return "0"; }
-
-    var d := ParseInt(secondLineParts[0]);
-    var x := ParseInt(secondLineParts[1]);
-
-    var totalEaten := 0;
-    var i := 0;
-    while i < n && (2 + i) < |lines|
-        invariant 0 <= i <= n
-        invariant totalEaten == SumEatenForParticipants(lines, d, i)
-    {
-        var tmpCall1 := ParseInt(lines[2 + i]);
-        var a := tmpCall1;
-        var eaten := (d + a - 1) / a;
-        totalEaten := totalEaten + eaten;
-        i := i + 1;
-    }
-
-    var finalResult := x + totalEaten;
-    result := IntToString(finalResult);
+  assume {:axiom} false;
 }
+// </vc-code>

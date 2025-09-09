@@ -131,22 +131,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  method SolveRegiment(moles: seq<(int, int, int, int)>) returns (result: string)
-      requires ValidRegiment(moles)
-      ensures result == "-1" || (IsAllDigits(result) && |result| > 0 && 0 <= StringToNat(result) <= 12)
-  {
-      var moves := 0;
-      while moves <= 12
-          invariant 0 <= moves <= 13
-      {
-          if CanFormSquareWithMoves(moles, moves) {
-              result := NatToString(moves);
-              return;
-          }
-          moves := moves + 1;
-      }
-      result := "-1";
-  }
 
 vc-spec: |-
   method solve(stdin_input: string) returns (output: string)
@@ -155,10 +139,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // Simplified implementation - return result for a test regiment
-      var testRegiment := [(0,0,0,0), (0,1,0,0), (1,0,0,0), (1,1,0,0)];
-      var result := SolveRegiment(testRegiment);
-      output := result + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -1,8 +1,10 @@
+/*
 Simulate pouring champagne into a pyramid of glasses for t seconds.
 The pyramid has n levels where level i has i glasses (1-indexed).
 Each second, 1 unit is poured into the top glass. Each glass has capacity 1.
 When a glass overflows, excess champagne splits equally to the two glasses below.
 Count the number of completely full glasses after t seconds.
+*/
 
 predicate ValidInput(n: int, t: int) {
   1 <= n <= 10 && 0 <= t <= 10000
@@ -23,117 +25,17 @@ predicate CorrectForEdgeCases(result: int, n: int, t: int) {
   (t >= 1 && n > 1 ==> result >= 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, t: int) returns (result: int)
   requires ValidInput(n, t)
   ensures ValidResult(result, n, t)
   ensures CorrectForEdgeCases(result, n, t)
+// </vc-spec>
+// <vc-code>
 {
-  // Create pyramid - level i has i+1 glasses (0-indexed)
-  var g := new real[n, n];
-
-  // Initialize all glasses to 0
-  var i := 0;
-  while i < n
-    invariant 0 <= i <= n
-    invariant forall row, col :: 0 <= row < i && 0 <= col < n ==> g[row, col] == 0.0
-  {
-    var j := 0;
-    while j < n
-      invariant 0 <= j <= n
-      invariant forall col :: 0 <= col < j ==> g[i, col] == 0.0
-      invariant forall row, col :: 0 <= row < i && 0 <= col < n ==> g[row, col] == 0.0
-    {
-      g[i, j] := 0.0;
-      j := j + 1;
-    }
-    i := i + 1;
-  }
-
-  // Pour for t seconds
-  var seconds := 0;
-  var shouldStop := false;
-  while seconds < t && !shouldStop
-    invariant 0 <= seconds <= t
-    invariant forall row, col :: 0 <= row < n && 0 <= col < n ==> g[row, col] >= 0.0
-    invariant seconds > 0 ==> g[0, 0] >= 1.0
-    invariant seconds == 0 ==> forall row, col :: 0 <= row < n && 0 <= col < n ==> g[row, col] == 0.0
-  {
-    // Pour 1 unit into top glass
-    g[0, 0] := g[0, 0] + 1.0;
-
-    // Process overflow for each level
-    i := 0;
-    while i < n
-      invariant 0 <= i <= n
-      invariant forall row, col :: 0 <= row < n && 0 <= col < n ==> g[row, col] >= 0.0
-      invariant g[0, 0] >= 1.0
-    {
-      var j := 0;
-      while j <= i && j < n // level i has i+1 glasses (0 to i inclusive)
-        invariant 0 <= j <= i + 1
-        invariant j <= n
-        invariant forall row, col :: 0 <= row < n && 0 <= col < n ==> g[row, col] >= 0.0
-        invariant g[0, 0] >= 1.0
-      {
-        var spill := if g[i, j] > 1.0 then g[i, j] - 1.0 else 0.0;
-        g[i, j] := g[i, j] - spill;
-
-        // Pour spill to glasses below if they exist
-        if i < n - 1 && j < n && j + 1 < n {
-          g[i + 1, j] := g[i + 1, j] + spill / 2.0;
-          g[i + 1, j + 1] := g[i + 1, j + 1] + spill / 2.0;
-        }
-
-        j := j + 1;
-      }
-      i := i + 1;
-    }
-
-    // Early break optimization - if bottom left glass is full, we can stop
-    if n > 1 && g[n-1, 0] >= 1.0 {
-      shouldStop := true;
-    }
-
-    seconds := seconds + 1;
-  }
-
-  // Assert postcondition of pouring phase to help verifier
-  assert t == 0 ==> forall row, col :: 0 <= row < n && 0 <= col < n ==> g[row, col] == 0.0;
-  assert t > 0 ==> seconds > 0;
-  assert seconds > 0 ==> g[0, 0] >= 1.0;
-  assert t > 0 ==> g[0, 0] >= 1.0;
-
-  // Count completely full glasses
-  var cnt := 0;
-  i := 0;
-  while i < n
-    invariant 0 <= i <= n
-    invariant 0 <= cnt <= TotalGlasses(n)
-    invariant cnt <= i * (i + 1) / 2  // At most glasses in processed levels
-    invariant t > 0 ==> g[0, 0] >= 1.0
-    invariant t == 0 ==> forall row, col :: 0 <= row < n && 0 <= col < n ==> g[row, col] == 0.0
-    invariant t == 0 ==> cnt == 0
-    invariant (t > 0 && i > 0) ==> cnt >= 1
-  {
-    var j := 0;
-    while j <= i && j < n
-      invariant 0 <= j <= i + 1
-      invariant j <= n
-      invariant 0 <= cnt <= TotalGlasses(n)
-      invariant cnt <= i * (i + 1) / 2 + j
-      invariant t > 0 ==> g[0, 0] >= 1.0
-      invariant t == 0 ==> forall row, col :: 0 <= row < n && 0 <= col < n ==> g[row, col] == 0.0
-      invariant t == 0 ==> cnt == 0
-      invariant (t > 0 && i == 0 && j > 0) ==> cnt >= 1
-      invariant (t > 0 && i > 0) ==> cnt >= 1
-    {
-      if g[i, j] >= 1.0 {
-        cnt := cnt + 1;
-      }
-      j := j + 1;
-    }
-    i := i + 1;
-  }
-
-  result := cnt;
+  assume {:axiom} false;
 }
+// </vc-code>

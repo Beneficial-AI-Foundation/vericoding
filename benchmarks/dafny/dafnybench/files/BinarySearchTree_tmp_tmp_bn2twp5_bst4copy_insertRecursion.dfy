@@ -1,3 +1,6 @@
+/*
+*/
+
 datatype Tree = Empty | Node(left: Tree, value: int, right: Tree)
 
 predicate BinarySearchTree(tree: Tree)
@@ -41,6 +44,6 @@ method insertRecursion(tree: Tree, value: int) returns (res: Tree)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

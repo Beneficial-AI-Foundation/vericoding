@@ -1,5 +1,7 @@
+/*
 Given a string containing comma-separated words, replace all commas with spaces.
 The input string has length 19 with format: 5 lowercase letters, comma, 7 lowercase letters, comma, 5 lowercase letters.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -24,25 +26,16 @@ predicate CorrectOutput(s: string, result: string)
     (s[i] != ',' ==> result[i] == s[i])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: string)
   requires ValidInput(s)
   ensures CorrectOutput(s, result)
+// </vc-spec>
+// <vc-code>
 {
-  var chars: seq<char> := [];
-  var i := 0;
-  while i < |s|
-    invariant 0 <= i <= |s|
-    invariant |chars| == i
-    invariant forall j :: 0 <= j < i ==> 
-      (s[j] == ',' ==> chars[j] == ' ') &&
-      (s[j] != ',' ==> chars[j] == s[j])
-  {
-    if s[i] == ',' {
-      chars := chars + [' '];
-    } else {
-      chars := chars + [s[i]];
-    }
-    i := i + 1;
-  }
-  result := chars + ['\n'];
+  assume {:axiom} false;
 }
+// </vc-code>

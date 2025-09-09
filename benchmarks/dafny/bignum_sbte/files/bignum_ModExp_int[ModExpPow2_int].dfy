@@ -1,5 +1,7 @@
+/*
 Bignum task: bignum_ModExp_int[ModExpPow2_int].
 Implement the method according to the Dafny specification.
+*/
 
 ghost function Exp_int(x: nat, y:nat): nat
 {
@@ -15,11 +17,18 @@ method ModExpPow2_int(x: nat, y:nat, n:nat, z: nat) returns (res:nat)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method ModExp_int(x: nat, y:nat, n:nat, z: nat) returns (res:nat)
   requires y < Exp_int(2,n+1)
   requires z > 1 //&& n > 0
   ensures res == Exp_int(x,y) % z
   decreases n
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

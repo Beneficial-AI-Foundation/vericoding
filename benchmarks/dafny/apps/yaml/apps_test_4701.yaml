@@ -21,19 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function MinOperations(start: int, steps: int, k: int): int
-      requires k >= 1
-      requires start >= 1
-      requires steps >= 0
-      ensures MinOperations(start, steps, k) >= start
-      decreases steps
-  {
-      if steps == 0 then start
-      else 
-          var double := MinOperations(start * 2, steps - 1, k);
-          var add := MinOperations(start + k, steps - 1, k);
-          if double <= add then double else add
-  }
 
 vc-spec: |-
   method solve(n: int, k: int) returns (result: int)
@@ -42,7 +29,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := MinOperations(1, n, k);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -23,7 +23,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int, L: seq<int>) returns (result: int)
@@ -32,24 +31,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var i := 1;
-    var remaining_k := k;
-  
-    while remaining_k > i
-      decreases remaining_k
-      invariant i >= 1
-      invariant remaining_k >= 1
-      invariant remaining_k + TotalIdentifiersAfterRobot(i - 1) == k
-      invariant i <= n
-    {
-      remaining_k := remaining_k - i;
-      i := i + 1;
-    }
-  
-    result := L[k - TotalIdentifiersAfterRobot(i - 1) - 1];
-  
-    assert TotalIdentifiersAfterRobot(i - 1) < k <= TotalIdentifiersAfterRobot(i);
-    assert result == L[k - TotalIdentifiersAfterRobot(i - 1) - 1];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

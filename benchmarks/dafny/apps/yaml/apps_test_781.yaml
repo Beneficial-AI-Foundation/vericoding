@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(input: seq<string>) returns (result: string)
@@ -33,6 +32,9 @@ vc-spec: |-
       ensures result in
 
 vc-code: |-
-  {"YES", "NO"}
+  {
+    assume {:axiom} false;
+  }
 
 vc-postamble: |-
+

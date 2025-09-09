@@ -1,5 +1,7 @@
+/*
 Given an array of n integers and coefficients p, q, r, find the maximum value of 
 p·a_i + q·a_j + r·a_k where indices i, j, k satisfy 1 ≤ i ≤ j ≤ k ≤ n.
+*/
 
 function max_prefix(s: seq<int>, i: int): int
     requires 0 <= i < |s|
@@ -32,72 +34,16 @@ predicate ValidInput(n: int, a: seq<int>)
     n > 0 && |a| == n
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, p: int, q: int, r: int, a: seq<int>) returns (result: int)
     requires ValidInput(n, a)
     ensures result == max_expression(n, p, q, r, a)
+// </vc-spec>
+// <vc-code>
 {
-    var s1 := new int[n];
-    var s2 := new int[n];
-    var s3 := new int[n];
-
-    // s1[i] = a[i] * p
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant forall k :: 0 <= k < i ==> s1[k] == a[k] * p
-    {
-        s1[i] := a[i] * p;
-        i := i + 1;
-    }
-
-    // s2[i] = max(s1[0..i]) + a[i] * q
-    var maxS1 := s1[0];
-    i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant i > 0 ==> maxS1 == max_prefix(s1[..], i-1)
-        invariant i == 0 ==> maxS1 == s1[0]
-        invariant forall k :: 0 <= k < i ==> s2[k] == max_prefix(s1[..], k) + a[k] * q
-    {
-        if i > 0 && s1[i] > maxS1 {
-            maxS1 := s1[i];
-        }
-        s2[i] := maxS1 + a[i] * q;
-        if i == 0 {
-            maxS1 := s1[0];
-        }
-        i := i + 1;
-    }
-
-    // s3[i] = max(s2[0..i]) + a[i] * r
-    var maxS2 := s2[0];
-    i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant i > 0 ==> maxS2 == max_prefix(s2[..], i-1)
-        invariant i == 0 ==> maxS2 == s2[0]
-        invariant forall k :: 0 <= k < i ==> s3[k] == max_prefix(s2[..], k) + a[k] * r
-    {
-        if i > 0 && s2[i] > maxS2 {
-            maxS2 := s2[i];
-        }
-        s3[i] := maxS2 + a[i] * r;
-        if i == 0 {
-            maxS2 := s2[0];
-        }
-        i := i + 1;
-    }
-
-    // return max(s3)
-    result := s3[0];
-    i := 1;
-    while i < n
-        invariant 1 <= i <= n
-        invariant result == max_seq(s3[..i])
-    {
-        if s3[i] > result {
-            result := s3[i];
-        }
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

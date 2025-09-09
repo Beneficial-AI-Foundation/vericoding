@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: method encode_shift(s: string) returns (t: string)
+  Encode data. Requires: the condition holds for all values. Ensures: returns the correct size/count; the condition holds for all values.
+
 vc-preamble: |-
   function encode_char(c: char): char
     // pre-conditions-start
@@ -26,12 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: method encode_shift(s: string) returns (t: string)
-  Encode data. Requires: the condition holds for all values. Ensures: returns the correct size/count; the condition holds for all values.
-  */
 
 vc-spec: |-
   method encode_shift(s: string) returns (t: string)
@@ -45,7 +43,7 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-

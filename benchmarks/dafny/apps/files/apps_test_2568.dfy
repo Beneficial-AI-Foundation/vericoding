@@ -1,6 +1,8 @@
+/*
 Given a string of '+' and '-' characters, simulate finding the minimum initial value
 needed to keep a running sum non-negative throughout the string. Count the total
 number of characters processed across all attempts until finding a successful initial value.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -31,34 +33,17 @@ function computeResultHelper(s: string, i: int, cur: int, pm: int, ans: int): in
             computeResultHelper(s, i + 1, newCur, pm, ans)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(s: string) returns (result: int)
     requires ValidInput(s)
     ensures result >= |s|
     ensures result == computeResult(s)
+// </vc-spec>
+// <vc-code>
 {
-    var pm := 0;
-    var cur := 0;
-    var ans := |s|;
-    var i := 0;
-
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant pm <= 0
-        invariant pm <= cur
-        invariant ans >= |s|
-        invariant computeResultHelper(s, i, cur, pm, ans) == computeResult(s)
-    {
-        if s[i] == '+' {
-            cur := cur + 1;
-        } else {
-            cur := cur - 1;
-            if cur < pm {
-                pm := cur;
-                ans := ans + i + 1;
-            }
-        }
-        i := i + 1;
-    }
-
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

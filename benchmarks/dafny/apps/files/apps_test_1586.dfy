@@ -1,6 +1,8 @@
+/*
 Given a non-negative integer N, compute the double factorial f(N) where f(n) = 1 if n < 2,
 and f(n) = n × f(n-2) if n ≥ 2. Find the number of trailing zeros in the decimal representation of f(N).
 Trailing zeros are produced by factors of 10, which come from pairs of prime factors 2 and 5.
+*/
 
 function ValidInput(N: int): bool
 {
@@ -42,11 +44,16 @@ predicate ValidResult(N: int, result: int)
   result == (if FactorsInDoubleFactorial(N, 2) < FactorsInDoubleFactorial(N, 5) then FactorsInDoubleFactorial(N, 2) else FactorsInDoubleFactorial(N, 5))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(N: int) returns (result: int)
   requires ValidInput(N)
   ensures ValidResult(N, result)
+// </vc-spec>
+// <vc-code>
 {
-  var count2 := FactorsInDoubleFactorial(N, 2);
-  var count5 := FactorsInDoubleFactorial(N, 5);
-  result := if count2 < count5 then count2 else count5;
+  assume {:axiom} false;
 }
+// </vc-code>

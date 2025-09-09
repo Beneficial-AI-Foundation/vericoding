@@ -1,5 +1,7 @@
+/*
 Find the minimum number of steps to move from position 0 to position x on a number line,
 where each step can move forward by 1, 2, 3, 4, or 5 positions.
+*/
 
 predicate ValidInput(x: int)
 {
@@ -13,3 +15,14 @@ predicate IsMinimalSteps(x: int, steps: int)
   steps * 5 >= x &&
   (steps - 1) * 5 < x
 }
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

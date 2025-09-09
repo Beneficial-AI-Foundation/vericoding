@@ -23,7 +23,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, scores: seq<int>) returns (result: int)
@@ -32,22 +31,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var uniqueNonZeroScores: set<int> := {};
-  
-      var i := 0;
-      while i < |scores|
-          invariant 0 <= i <= |scores|
-          invariant uniqueNonZeroScores == set j | 0 <= j < i && scores[j] != 0 :: scores[j]
-          invariant (exists j :: 0 <= j < i && scores[j] != 0) ==> |uniqueNonZeroScores| >= 1
-          invariant |uniqueNonZeroScores| <= i
-      {
-          if scores[i] != 0 {
-              uniqueNonZeroScores := uniqueNonZeroScores + {scores[i]};
-          }
-          i := i + 1;
-      }
-  
-      result := |uniqueNonZeroScores|;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

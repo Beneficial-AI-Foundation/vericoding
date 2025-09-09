@@ -1,5 +1,7 @@
+/*
 Given a current rating R and target rating G, find the required performance P
 such that the new rating equals G, where new rating = (R + P) / 2 = G.
+*/
 
 predicate ValidInput(R: int, G: int) {
     0 <= R <= 4500 && 0 <= G <= 4500
@@ -13,10 +15,17 @@ predicate CorrectResult(R: int, G: int, P: int) {
     (R + P) == 2 * G
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(R: int, G: int) returns (result: int)
     requires ValidInput(R, G)
     ensures result == RequiredPerformance(R, G)
     ensures CorrectResult(R, G, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := (G * 2) - R;
+  assume {:axiom} false;
 }
+// </vc-code>

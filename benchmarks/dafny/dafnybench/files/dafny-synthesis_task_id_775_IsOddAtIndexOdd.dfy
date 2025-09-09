@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsOdd(n: int)
 {
     n % 2 == 1
@@ -12,6 +15,6 @@ method IsOddAtIndexOdd(a: array<int>) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

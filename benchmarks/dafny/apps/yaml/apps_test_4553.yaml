@@ -13,7 +13,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(A: int, B: int, S: string) returns (result: string)
@@ -26,29 +25,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var ans := "Yes";
-      var i := 0;
-      while i < A + B + 1 
-          invariant 0 <= i <= A + B + 1
-          invariant ans == "Yes" || ans == "No"
-          invariant ans == "Yes" ==> (forall j :: 0 <= j < i && j != A ==> S[j] != '-')
-          invariant ans == "Yes" ==> (i > A ==> S[A] == '-')
-          invariant ans == "No" ==> (exists j :: 0 <= j < i && ((j == A && S[j] != '-') || (j != A && S[j] == '-')))
-      {
-          if i == A {
-              if S[i] != '-' {
-                  ans := "No";
-                  break;
-              }
-          } else {
-              if S[i] == '-' {
-                  ans := "No";
-                  break;
-              }
-          }
-          i := i + 1;
-      }
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

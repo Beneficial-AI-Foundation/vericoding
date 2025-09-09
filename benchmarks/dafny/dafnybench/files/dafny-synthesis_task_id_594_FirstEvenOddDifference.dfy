@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsEven(n: int)
 {
     n % 2 == 0
@@ -21,6 +24,6 @@ method FirstEvenOddDifference(a: array<int>) returns (diff: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

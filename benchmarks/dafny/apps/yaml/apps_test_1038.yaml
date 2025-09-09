@@ -33,7 +33,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int, b: int) returns (result: int)
@@ -43,7 +42,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := XorRange(a, b);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

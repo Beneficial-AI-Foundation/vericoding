@@ -1,6 +1,8 @@
+/*
 Given a string input containing two lines: an integer n and a string s of length n with only 'A' and 'D' characters,
 determine which character appears more frequently. Return "Anton" if 'A' appears more, "Danik" if 'D' appears more,
 or "Friendship" if they appear equally.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -38,40 +40,10 @@ function DetermineWinner(countA: int, countD: int): string
     else "Friendship"
 }
 
-function SplitLines(s: string): seq<string>
-{
-    if |s| == 0 then []
-    else
-        var newlineIndex := FindNewline(s, 0);
-        if newlineIndex == -1 then [s]
-        else if 0 <= newlineIndex < |s| && newlineIndex + 1 <= |s| then 
-            [s[0..newlineIndex]] + SplitLines(s[newlineIndex+1..])
-        else [s]
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function FindNewline(s: string, start: int): int
-    decreases |s| - start
-{
-    if start >= |s| then -1
-    else if start >= 0 && start < |s| && s[start] == '\n' then start
-    else FindNewline(s, start + 1)
-}
-
-function StringToInt(s: string): int
-{
-    if |s| == 0 then 0
-    else StringToIntHelper(s, 0, 0)
-}
-
-function StringToIntHelper(s: string, index: int, acc: int): int
-    decreases |s| - index
-{
-    if index >= |s| then acc
-    else if index >= 0 && index < |s| && s[index] >= '0' && s[index] <= '9' then
-        StringToIntHelper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
-    else acc
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     requires ValidParsedInput(SplitLines(input))
@@ -81,17 +53,9 @@ method solve(input: string) returns (result: string)
             var countA := CountChar(s, 'A');
             var countD := CountChar(s, 'D');
             result == DetermineWinner(countA, countD)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    if |lines| < 2 {
-        return "Friendship";
-    }
-
-    var n := StringToInt(lines[0]);
-    var s := lines[1];
-
-    var countA := CountChar(s, 'A');
-    var countD := CountChar(s, 'D');
-
-    result := DetermineWinner(countA, countD);
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,7 +1,9 @@
+/*
 Given coordinates of two trees that are vertices of a square (with sides parallel to coordinate axes),
 find the coordinates of the other two vertices. Valid cases include: same x-coordinate (vertical edge),
 same y-coordinate (horizontal edge), or diagonal vertices where |x₂-x₁| = |y₂-y₁|.
 Return -1 if no valid square can be formed.
+*/
 
 predicate ValidInput(x1: int, y1: int, x2: int, y2: int)
 {
@@ -49,11 +51,10 @@ predicate ValidOutput(result: seq<int>)
     (|result| == 4 && (forall i :: 0 <= i < 4 ==> -1000 <= result[i] <= 1000))
 }
 
-function abs(x: int): int
-{
-    if x >= 0 then x else -x
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(x1: int, y1: int, x2: int, y2: int) returns (result: seq<int>)
     requires ValidInput(x1, y1, x2, y2)
     ensures ValidOutput(result)
@@ -61,26 +62,9 @@ method solve(x1: int, y1: int, x2: int, y2: int) returns (result: seq<int>)
     ensures IsDiagonalCase(x1, y1, x2, y2) ==> result == ExpectedDiagonalResult(x1, y1, x2, y2)
     ensures IsVerticalEdgeCase(x1, y1, x2, y2) ==> result == ExpectedVerticalResult(x1, y1, x2, y2)
     ensures IsHorizontalEdgeCase(x1, y1, x2, y2) ==> result == ExpectedHorizontalResult(x1, y1, x2, y2)
+// </vc-spec>
+// <vc-code>
 {
-    // diagonal case
-    if x1 != x2 && y1 != y2 {
-        if abs(x1 - x2) == abs(y1 - y2) {
-            result := [x1, y2, x2, y1];
-        } else {
-            result := [-1];
-        }
-    }
-    // same x coordinate (vertical edge)
-    else if x1 == x2 {
-        var aux := abs(y2 - y1);
-        result := [x1 + aux, y1, x1 + aux, y2];
-    }
-    // same y coordinate (horizontal edge)
-    else if y1 == y2 {
-        var aux := abs(x2 - x1);
-        result := [x1, y1 + aux, x2, y1 + aux];
-    }
-    else {
-        result := [-1];
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

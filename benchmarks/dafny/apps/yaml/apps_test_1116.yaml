@@ -34,7 +34,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(r: int, b: int, k: int) returns (result: string)
@@ -43,17 +42,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var a := if r <= b then r else b;
-    var b_val := if r <= b then b else r;
-  
-    var n := gcd(a, b_val);
-    var cnt := -((n - b_val) / a);
-  
-    if cnt >= k {
-      result := "REBEL";
-    } else {
-      result := "OBEY";
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

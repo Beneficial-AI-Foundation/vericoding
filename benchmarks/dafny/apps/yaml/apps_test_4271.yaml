@@ -38,7 +38,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(N: int, A: seq<int>, B: seq<int>, C: seq<int>) returns (result: int)
@@ -47,17 +46,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var ans := 0;
-      for i := 0 to N
-          invariant 0 <= i <= N
-          invariant ans == SumSatisfactionUpTo(A, B, C, i)
-      {
-          ans := ans + B[A[i] - 1];
-          if i != 0 && A[i] == A[i-1] + 1 {
-              ans := ans + C[A[i] - 2];
-          }
-      }
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

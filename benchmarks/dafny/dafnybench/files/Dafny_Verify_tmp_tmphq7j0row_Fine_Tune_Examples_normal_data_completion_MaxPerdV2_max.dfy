@@ -1,3 +1,6 @@
+/*
+*/
+
 function contains(v: int, a: array<int>, n: int): bool
 reads a
   requires n <= a.Length
@@ -29,6 +32,6 @@ method max(a: array<int>, n: int) returns (max: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 ghost function Count(hi: nat, s:seq<int>): int
     requires 0 <= hi <= |s|
     decreases hi
@@ -18,6 +21,6 @@ method FooCount(CountIndex:nat, a:seq<int>,b:array<int>) returns (p:nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

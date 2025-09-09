@@ -1,5 +1,7 @@
+/*
 Given a positive integer n, find the minimum number of digit 1s needed to represent n 
 as a sum and/or difference of repunits (numbers containing only 1s: 1, 11, 111, 1111, ...).
+*/
 
 function pow(base: nat, exp: nat): nat
 {
@@ -31,17 +33,13 @@ predicate ValidOutput(n: nat, result: nat)
     (n > 0 ==> result > 0)
 }
 
-function findLargestRepunit(n: nat, l: nat, bound: nat): nat
-    requires n >= 0 && l >= 0 && bound >= l
-    ensures findLargestRepunit(n, l, bound) >= 0
-    ensures findLargestRepunit(n, l, bound) <= bound
-    decreases bound - l
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// </vc-spec>
+// <vc-code>
 {
-    if n == 0 then 0
-    else if l >= bound then 
-        if bound == 0 then 0 else bound - 1
-    else if repunit(l) >= n then 
-        if l == 0 then 0 else l - 1 
-    else if l + 1 <= bound then findLargestRepunit(n, l + 1, bound)
-    else l
+  assume {:axiom} false;
 }
+// </vc-code>

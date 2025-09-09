@@ -1,3 +1,6 @@
+/*
+*/
+
 method swap(arr: array<int>, i: int, j: int)
     requires arr.Length > 0
     requires 0 <= i < arr.Length && 0 <= j < arr.Length
@@ -36,6 +39,6 @@ method MoveZeroesToEnd(arr: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

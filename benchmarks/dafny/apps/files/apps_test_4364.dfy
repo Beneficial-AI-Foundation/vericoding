@@ -1,6 +1,8 @@
+/*
 Given a 4-digit string, determine which date format(s) it represents:
 YYMM (year-month), MMYY (month-year), AMBIGUOUS (both valid), or NA (neither valid).
 Valid months are 01-12, years can be any two digits 00-99.
+*/
 
 predicate ValidInput(s: string)
 {
@@ -46,24 +48,17 @@ predicate CorrectResult(s: string, result: string)
     (!s1_valid && !s2_valid ==> result == "NA\n")
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures result in ["AMBIGUOUS\n", "MMYY\n", "YYMM\n", "NA\n"]
     ensures CorrectResult(stdin_input, result)
+// </vc-spec>
+// <vc-code>
 {
-    var s1 := GetFirstPair(stdin_input);
-    var s2 := GetSecondPair(stdin_input);
-
-    var s1_valid := ValidMonth(s1);
-    var s2_valid := ValidMonth(s2);
-
-    if s1_valid && s2_valid {
-        result := "AMBIGUOUS\n";
-    } else if s1_valid {
-        result := "MMYY\n";
-    } else if s2_valid {
-        result := "YYMM\n";
-    } else {
-        result := "NA\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

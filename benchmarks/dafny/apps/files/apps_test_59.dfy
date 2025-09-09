@@ -1,7 +1,9 @@
+/*
 Given an array of n integers where each integer from 1 to n appears exactly once,
 determine if the array can be sorted in ascending order using only allowed adjacent swaps.
 You can swap elements at positions i and i+1 only if the i-th character in a given
 binary string is '1'. You can perform any number of such swaps in any order.
+*/
 
 predicate ValidInput(n: int, a: seq<int>, p: string)
 {
@@ -29,37 +31,17 @@ predicate CanSort(n: int, a: seq<int>, p: string)
         (p[i] == '0' ==> max_up_to(a, i) <= i + 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, a: seq<int>, p: string) returns (result: string)
     requires ValidInput(n, a, p)
     ensures result == "YES" || result == "NO"
     ensures result == "YES" <==> CanSort(n, a, p)
+// </vc-spec>
+// <vc-code>
 {
-    var m := 0;
-    var suc := true;
-    var i := 0;
-
-    while i < n - 1
-        invariant 0 <= i <= n - 1
-        invariant i == 0 ==> m == 0
-        invariant i > 0 ==> m == max_up_to(a, i-1)
-        invariant suc <==> (forall k :: 0 <= k < i ==> 
-            (p[k] == '0' ==> max_up_to(a, k) <= k + 1))
-    {
-        if a[i] > m {
-            m := a[i];
-        }
-
-        if p[i] == '0' && m > (i + 1) {
-            suc := false;
-            break;
-        }
-
-        i := i + 1;
-    }
-
-    if suc {
-        result := "YES";
-    } else {
-        result := "NO";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

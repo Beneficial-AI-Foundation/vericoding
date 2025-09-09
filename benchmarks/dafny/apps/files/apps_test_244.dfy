@@ -1,6 +1,8 @@
+/*
 Given 3 shells numbered 0, 1, 2, a ball starts under one shell. An operator makes n moves:
 odd moves swap shells 0 and 1, even moves swap shells 1 and 2. Given the final position x
 after n moves, determine the initial position of the ball.
+*/
 
 predicate ValidPosition(pos: int) {
     0 <= pos <= 2
@@ -36,30 +38,17 @@ function ReverseMove(pos: int, moveNum: int): int
         else 0
 }
 
-method FindInitialPosition(n: int, x: int) returns (initial: int)
-    requires n >= 1
-    requires ValidPosition(x)
-    ensures ValidPosition(initial)
-{
-    var pos := x;
-    var moves := n;
-    
-    while moves > 0
-        invariant ValidPosition(pos)
-        invariant moves >= 0
-        decreases moves
-    {
-        pos := ReverseMove(pos, moves);
-        moves := moves - 1;
-    }
-    
-    return pos;
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method ShellGame(n: int, x: int) returns (result: int)
     requires n >= 1 && n <= 2000000000
     requires ValidPosition(x)
     ensures ValidPosition(result)
+// </vc-spec>
+// <vc-code>
 {
-    result := FindInitialPosition(n, x);
+  assume {:axiom} false;
 }
+// </vc-code>

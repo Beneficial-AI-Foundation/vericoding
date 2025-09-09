@@ -14,7 +14,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(A: int, B: int, C: int, D: int) returns (result: int)
@@ -23,9 +22,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var trainMin := if A < B then A else B;
-      var busMin := if C < D then C else D;
-      result := trainMin + busMin;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

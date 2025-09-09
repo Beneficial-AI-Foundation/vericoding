@@ -30,7 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(s: string) returns (result: int)
@@ -40,30 +39,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var seen: set<string> := {};
-      var current := s;
-      var i := 0;
-  
-      while i < |s|
-          invariant 0 <= i <= |s|
-          invariant |current| == |s|
-          invariant current == ApplyShifts(s, i)
-          invariant seen == set j | 0 <= j < i :: ApplyShifts(s, j)
-          invariant |seen| <= i
-          invariant i > 0 ==> s in seen
-          invariant |seen| >= 1 || i == 0
-      {
-          seen := seen + {current};
-          if |current| > 0 {
-              current := current[1..] + [current[0]];
-          }
-          i := i + 1;
-      }
-  
-      assert seen == set j | 0 <= j < |s| :: ApplyShifts(s, j);
-      assert seen == AllDistinctCyclicShifts(s);
-      assert |seen| >= 1;
-      result := |seen|;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

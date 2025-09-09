@@ -1,7 +1,9 @@
+/*
 Given n football teams where each team has home and away kit colors (different colors),
 calculate how many games each team plays in home kit vs away kit in a round-robin tournament.
 Kit rules: home team wears home kit, away team wears away kit unless it conflicts with 
 home team's home kit color, then away team wears home kit.
+*/
 
 predicate ValidInput(n: int, teams: seq<(int, int)>)
 {
@@ -23,96 +25,16 @@ predicate ValidOutput(n: int, teams: seq<(int, int)>, result: seq<(int, int)>)
     result[i].1 == (n - 1) - homeCount)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, teams: seq<(int, int)>) returns (result: seq<(int, int)>)
   requires ValidInput(n, teams)
   ensures ValidOutput(n, teams, result)
+// </vc-spec>
+// <vc-code>
 {
-  // Count how many teams have each color as home kit
-  var home := map[];
-  var i := 0;
-  while i < n
-    invariant 0 <= i <= n
-    invariant forall color :: color in home ==> home[color] == |set j | 0 <= j < i && teams[j].0 == color|
-    invariant forall color :: color !in home ==> |set j | 0 <= j < i && teams[j].0 == color| == 0
-    invariant forall color :: color in home ==> home[color] >= 1
-  {
-    var homeColor := teams[i].0;
-    var oldCount := if homeColor in home then home[homeColor] else 0;
-
-    // Key insight: oldCount equals the actual count for indices 0..i-1
-    assert oldCount == |set j | 0 <= j < i && teams[j].0 == homeColor|;
-
-    // The set for 0..i is the set for 0..i-1 plus potentially teams[i]
-    assert (set j | 0 <= j < i+1 && teams[j].0 == homeColor) == 
-           ((set j | 0 <= j < i && teams[j].0 == homeColor) + {i});
-    assert |set j | 0 <= j < i+1 && teams[j].0 == homeColor| == oldCount + 1;
-
-    var newHome := if homeColor in home then
-      home[homeColor := home[homeColor] + 1]
-    else
-      home[homeColor := 1];
-
-    // Prove the new map satisfies the invariants
-    assert newHome[homeColor] == oldCount + 1;
-    assert newHome[homeColor] == |set j | 0 <= j < i+1 && teams[j].0 == homeColor|;
-
-    // For other colors, counts are preserved
-    forall color | color != homeColor && color in home
-      ensures color in newHome && newHome[color] == home[color]
-      ensures newHome[color] == |set j | 0 <= j < i+1 && teams[j].0 == color|
-    {
-      assert (set j | 0 <= j < i+1 && teams[j].0 == color) == 
-             (set j | 0 <= j < i && teams[j].0 == color);
-      assert |set j | 0 <= j < i+1 && teams[j].0 == color| == 
-             |set j | 0 <= j < i && teams[j].0 == color|;
-    }
-
-    // For colors not in the original map and not homeColor
-    forall color | color !in home && color != homeColor
-      ensures color !in newHome || newHome[color] == 0
-      ensures |set j | 0 <= j < i+1 && teams[j].0 == color| == 0
-    {
-      assert |set j | 0 <= j < i && teams[j].0 == color| == 0;
-      assert teams[i].0 != color;
-      assert (set j | 0 <= j < i+1 && teams[j].0 == color) == 
-             (set j | 0 <= j < i && teams[j].0 == color);
-    }
-
-    home := newHome;
-    i := i + 1;
-  }
-
-  // Calculate result for each team
-  result := [];
-  i := 0;
-  while i < n
-    invariant 0 <= i <= n
-    invariant |result| == i
-    invariant forall color :: color in home ==> home[color] == |set j | 0 <= j < n && teams[j].0 == color|
-    invariant forall color :: color !in home ==> |set j | 0 <= j < n && teams[j].0 == color| == 0
-    invariant forall k :: 0 <= k < i ==> 
-      var homeCount := if teams[k].1 in home then home[teams[k].1] else 0;
-      result[k].0 == (n - 1) + homeCount &&
-      result[k].1 == (n - 1) - homeCount
-    invariant forall k :: 0 <= k < i ==> result[k].0 + result[k].1 == 2 * (n - 1)
-    invariant forall k :: 0 <= k < i ==> result[k].0 >= n - 1
-    invariant forall k :: 0 <= k < i ==> result[k].1 >= 0
-  {
-    var awayColor := teams[i].1;
-    var homeGames := (n - 1);
-    var awayGames := (n - 1);
-
-    if awayColor in home {
-      homeGames := homeGames + home[awayColor];
-      awayGames := awayGames - home[awayColor];
-    }
-
-    var homeCount := |set j | 0 <= j < n && teams[j].0 == teams[i].1|;
-    assert homeCount == (if awayColor in home then home[awayColor] else 0);
-    assert homeGames == (n - 1) + homeCount;
-    assert awayGames == (n - 1) - homeCount;
-
-    result := result + [(homeGames, awayGames)];
-    i := i + 1;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

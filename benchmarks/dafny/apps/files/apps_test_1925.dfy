@@ -1,5 +1,7 @@
+/*
 Given integers A, B, and N, find the maximum value of floor(A*x/B) - A*floor(x/B) 
 over all non-negative integers x where 0 ≤ x ≤ N.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -61,22 +63,10 @@ function ComputeMaxValue(a: int, b: int, n: int): int
     (a * minVal) / b
 }
 
-method ParseThreeInts(s: string) returns (result: (int, int, int))
-    requires |s| > 0
-    ensures result.1 > 0
-    ensures result == ParseThreeIntsFunc(s)
-{
-    result := ParseThreeIntsFunc(s);
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method IntToString(n: int) returns (s: string)
-    ensures n >= 0 ==> |s| > 0
-    ensures n == 0 ==> s == "0"
-    ensures s == IntToStringFunc(n)
-{
-    s := IntToStringFunc(n);
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     requires ValidInput(input)
@@ -87,13 +77,9 @@ method solve(input: string) returns (result: string)
         var n := parts.2;
         b > 0 &&
         result == IntToStringFunc(ComputeMaxValue(a, b, n)) + "\n"
+// </vc-spec>
+// <vc-code>
 {
-    var parts := ParseThreeInts(input);
-    var a := parts.0;
-    var b := parts.1;  
-    var n := parts.2;
-
-    var computed := ComputeMaxValue(a, b, n);
-    var computedStr := IntToString(computed);
-    result := computedStr + "\n";
+  assume {:axiom} false;
 }
+// </vc-code>

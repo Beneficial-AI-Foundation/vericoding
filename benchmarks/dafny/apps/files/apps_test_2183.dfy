@@ -1,6 +1,8 @@
+/*
 Given three brothers numbered 1, 2, and 3, exactly two brothers arrived on time 
 for a meeting and one brother was late. Given the numbers of the two brothers who 
 arrived on time, determine the number of the brother who was late.
+*/
 
 predicate ValidBrotherNumbers(a: int, b: int)
 {
@@ -19,10 +21,17 @@ predicate IsValidResult(a: int, b: int, result: int)
     (1 <= result <= 3 && result != a && result != b)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(a: int, b: int) returns (result: int)
   requires ValidBrotherNumbers(a, b)
   ensures IsValidResult(a, b, result)
   ensures result == LateBrother(a, b)
+// </vc-spec>
+// <vc-code>
 {
-  result := 6 - a - b;
+  assume {:axiom} false;
 }
+// </vc-code>

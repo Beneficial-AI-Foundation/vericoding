@@ -1,5 +1,7 @@
+/*
 Given the type of contest held last week ("ABC" or "ARC"), determine the type 
 of contest to be held this week. Contests alternate between these two types.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -21,15 +23,16 @@ function ExpectedOutput(input: string): string
     if s == "ABC" then "ARC\n" else "ABC\n"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures result == ExpectedOutput(input)
+// </vc-spec>
+// <vc-code>
 {
-    var s := NormalizeInput(input);
-    
-    if s == "ABC" {
-        result := "ARC\n";
-    } else {
-        result := "ABC\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

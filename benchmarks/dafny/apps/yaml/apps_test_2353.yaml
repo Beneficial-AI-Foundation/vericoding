@@ -36,7 +36,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int, b: int, c: int, d: int) returns (result: int)
@@ -47,17 +46,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if a <= b {
-          result := b;
-      } else {
-          var remaining := a - b;
-          if c <= d {
-              result := -1;
-          } else {
-              var cycles := (remaining - 1) / (c - d) + 1;
-              result := b + c * cycles;
-          }
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

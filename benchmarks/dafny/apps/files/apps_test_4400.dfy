@@ -1,5 +1,7 @@
+/*
 Given a string S of length 3 representing weather records for 3 consecutive days
 (where 'S' means sunny and 'R' means rainy), find the maximum number of consecutive rainy days.
+*/
 
 predicate ValidInput(s: string) {
     |s| == 3 && forall i :: 0 <= i < |s| ==> s[i] == 'S' || s[i] == 'R'
@@ -14,18 +16,17 @@ function MaxConsecutiveRainyDays(s: string): int
     else 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: int)
     requires ValidInput(input)
     ensures result == MaxConsecutiveRainyDays(input)
     ensures 0 <= result <= 3
+// </vc-spec>
+// <vc-code>
 {
-    if input[0] == 'R' && input[1] == 'R' && input[2] == 'R' {
-        result := 3;
-    } else if (input[0] == 'R' && input[1] == 'R') || (input[1] == 'R' && input[2] == 'R') {
-        result := 2;
-    } else if input[0] == 'R' || input[1] == 'R' || input[2] == 'R' {
-        result := 1;
-    } else {
-        result := 0;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

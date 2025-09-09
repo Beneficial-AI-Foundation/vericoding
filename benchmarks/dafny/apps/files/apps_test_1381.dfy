@@ -1,6 +1,8 @@
+/*
 Given k people who each want to make n paper airplanes, where s airplanes can be made from one sheet of paper,
 and paper is sold in packs of p sheets each, find the minimum number of packs needed to buy so that each person
 has enough sheets to make their n airplanes.
+*/
 
 predicate ValidInput(k: int, n: int, s: int, p: int)
 {
@@ -34,12 +36,17 @@ predicate CorrectResult(result: int, k: int, n: int, s: int, p: int)
   (result - 1) * p < TotalSheetsNeeded(k, n, s)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(k: int, n: int, s: int, p: int) returns (result: int)
   requires ValidInput(k, n, s, p)
   ensures result >= 1
   ensures CorrectResult(result, k, n, s, p)
+// </vc-spec>
+// <vc-code>
 {
-  var sheets_per_person := SheetsPerPerson(n, s);
-  var total_sheets := TotalSheetsNeeded(k, n, s);
-  result := MinPacksNeeded(k, n, s, p);
+  assume {:axiom} false;
 }
+// </vc-code>

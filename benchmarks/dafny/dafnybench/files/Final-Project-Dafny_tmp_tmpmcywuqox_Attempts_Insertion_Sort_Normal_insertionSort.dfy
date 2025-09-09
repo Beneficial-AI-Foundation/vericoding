@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate sorted (a: array<int>)
 
     reads a
@@ -33,6 +36,6 @@ method insertionSort (a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

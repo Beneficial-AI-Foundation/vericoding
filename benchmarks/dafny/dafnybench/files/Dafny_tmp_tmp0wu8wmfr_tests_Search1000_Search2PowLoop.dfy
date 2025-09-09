@@ -1,3 +1,6 @@
+/*
+*/
+
 // Author: Snorri Agnarsson, snorri@hi.is
 
 // Search1000 is a Dafny version of a function shown
@@ -34,7 +37,7 @@ method Search2PowLoop( a: array<int>, i: int, n: int, x: int ) returns ( k: int 
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 

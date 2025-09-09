@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsEven(n: int)
 {
     n % 2 == 0
@@ -21,7 +24,6 @@ predicate IsFirstOdd(oddIndex: int, lst: seq<int>)
 {
     forall i :: 0 <= i < oddIndex ==> IsEven(lst[i])
 }
-
 
 method FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : int)
     requires |lst| >= 2
@@ -49,6 +51,6 @@ method ProductEvenOdd(lst: seq<int>) returns (product : int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

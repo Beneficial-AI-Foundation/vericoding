@@ -1,8 +1,10 @@
+/*
 Given three distinct points a, b, and c, determine if there exists a rotation center and angle 
 such that rotating point a gives point b, and rotating point b gives point c.
 The rotation must map a → b and b → c using the same center and angle.
 For a valid rotation to exist, the distances |ab| and |bc| must be equal and 
 the three points cannot be collinear.
+*/
 
 function lengthSqr(p1: (int, int), p2: (int, int)): int
 {
@@ -74,38 +76,10 @@ function charToDigit(c: char): int
     (c as int) - ('0' as int)
 }
 
-method parseInput(input: string) returns (result: seq<int>)
-    requires |input| > 0
-    ensures |result| >= 0
-    ensures result == parseInputFunc(input)
-{
-    result := [];
-    var current := "";
-    var i := 0;
+// <vc-helpers>
+// </vc-helpers>
 
-    while i < |input|
-        invariant 0 <= i <= |input|
-        invariant parseInputHelper(input, i, result, current) == parseInputFunc(input)
-    {
-        var ch := input[i];
-        if ch == ' ' || ch == '\n' || ch == '\t' {
-            if |current| > 0 {
-                var num := stringToInt(current);
-                result := result + [num];
-                current := "";
-            }
-        } else if '0' <= ch <= '9' || ch == '-' {
-            current := current + [ch];
-        }
-        i := i + 1;
-    }
-
-    if |current| > 0 {
-        var num := stringToInt(current);
-        result := result + [num];
-    }
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     ensures result == "Yes" || result == "No" || result == ""
@@ -118,19 +92,9 @@ method solve(input: string) returns (result: string)
                 var c := (coords[4], coords[5]);
                 (ValidRotationExists(a, b, c) ==> result == "Yes") &&
                 (!ValidRotationExists(a, b, c) ==> result == "No")
+// </vc-spec>
+// <vc-code>
 {
-    var coords := parseInput(input);
-    if |coords| != 6 {
-        return "";
-    }
-
-    var a := (coords[0], coords[1]);
-    var b := (coords[2], coords[3]);
-    var c := (coords[4], coords[5]);
-
-    if ValidRotationExists(a, b, c) {
-        return "Yes";
-    } else {
-        return "No";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,4 +1,6 @@
+/*
 Given a monster with health H and attack damage A, find the minimum number of attacks needed to reduce the monster's health to 0 or below.
+*/
 
 predicate ValidInput(H: int, A: int)
 {
@@ -18,10 +20,17 @@ function CeilDiv(H: int, A: int): int
     (H + A - 1) / A
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(H: int, A: int) returns (attacks: int)
     requires ValidInput(H, A)
     ensures IsMinimumAttacks(attacks, H, A)
     ensures attacks == CeilDiv(H, A)
+// </vc-spec>
+// <vc-code>
 {
-    attacks := (H + A - 1) / A;
+  assume {:axiom} false;
 }
+// </vc-code>

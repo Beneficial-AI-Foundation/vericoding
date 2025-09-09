@@ -22,14 +22,18 @@ def spec_to_string(spec: dict, template: list[str]) -> str:
     parts = []
     
     # Add sections in order, following the reconstruction logic
-    for section in template:
+    for (section, start_pad, end_pad) in template:
         if section == '\n': # empty line
+            if start_pad: raise ValueError(f"start_pad is not None for empty line")
+            if end_pad: raise ValueError(f"end_pad is not None for empty line")
             # if tail of parts is non-empty, add an empty line
             if parts and parts[-1].strip():
                 parts.append('')
         elif section in spec:
+            if start_pad: parts.append(start_pad)
             if spec[section].rstrip(): # non-empty line
                 parts.append(spec[section].rstrip())
+            if end_pad: parts.append(end_pad)
         else: # section not in spec
             print(f"Warning: Section {section} not found in spec")
     
@@ -39,11 +43,14 @@ def spec_to_string(spec: dict, template: list[str]) -> str:
 def get_template(suffix: str) -> list[str]:
     """Get template for the output file."""
     if suffix == 'lean':
-        return ['vc-description', '\n', 'vc-preamble', '\n', 'vc-helpers', '\n', 
-                'vc-definitions', '\n', 'vc-theorems', '\n', 'vc-postamble']
-    elif suffix == 'dfy' or suffix == 'rs':
-        return ['vc-description', '\n', 'vc-preamble', '\n', 'vc-helpers', '\n', 
-                'vc-spec', 'vc-code', '\n', 'vc-postamble']
+        return [('vc-description',None,None), ('\n',None,None), ('vc-preamble',None,None), ('\n',None,None), ('vc-helpers',None,None), ('\n',None,None), 
+                ('vc-definitions',None,None), ('\n',None,None), ('vc-theorems',None,None), ('\n',None,None), ('vc-postamble',None,None)]
+    elif suffix == 'dfy':
+        return [('vc-description','/*','*/'), ('\n',None,None), ('vc-preamble',None,None), ('\n',None,None), ('vc-helpers','// <vc-helpers>','// </vc-helpers>'), ('\n',None,None), 
+                ('vc-spec',"// <vc-spec>","// </vc-spec>"), ('vc-code',"// <vc-code>","// </vc-code>"), ('\n',None,None), ('vc-postamble',None,None)]
+    elif suffix == 'rs':
+        return [('vc-description',None,None), ('\n',None,None), ('vc-preamble',None,None), ('\n',None,None), ('vc-helpers',None,None), ('\n',None,None), 
+                ('vc-spec',None,None), ('vc-code',None,None), ('\n',None,None), ('vc-postamble',None,None)]
     else:
         raise ValueError(f"Unsupported suffix: {suffix}")
 
@@ -62,9 +69,9 @@ def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = Fal
         keys = [key for key in spec.keys() if key != 'id']
         template = []
         for i, key in enumerate(keys):
-            template.append(key)
+            template.append((key, None, None))
             if i < len(keys) - 1:  # Add newline between keys, but not after the last one
-                template.append('\n')
+                template.append(('\n', None, None))
     else:
         template = get_template(output_path.suffix[1:])
 

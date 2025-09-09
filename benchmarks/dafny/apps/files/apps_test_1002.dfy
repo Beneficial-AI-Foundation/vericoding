@@ -1,7 +1,9 @@
+/*
 Schedule an optimal event with singer Devu and comedian Churu within a time limit.
 Devu must sing all n songs in order with 10-minute rest periods between songs.
 Churu tells 5-minute jokes during rest periods and any remaining time.
 Find the maximum number of jokes possible, or return -1 if impossible.
+*/
 
 function SumSeq(s: seq<int>): int
 {
@@ -32,50 +34,16 @@ predicate ValidResult(n: int, d: int, t: seq<int>, result: int)
     result == (d - songSum) / 5 && result >= 0
 }
 
-lemma SumLemma(s: seq<int>, x: int)
-  ensures SumSeq(s + [x]) == SumSeq(s) + x
-{
-  if |s| == 0 {
-    assert s + [x] == [x];
-    assert SumSeq([x]) == x;
-    assert SumSeq(s) == 0;
-  } else {
-    assert s == [s[0]] + s[1..];
-    assert s + [x] == [s[0]] + (s[1..] + [x]);
-    SumLemma(s[1..], x);
-  }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, d: int, t: seq<int>) returns (result: int)
   requires ValidInput(n, d, t)
   ensures ValidResult(n, d, t, result)
+// </vc-spec>
+// <vc-code>
 {
-  var songSum := 0;
-  var i := 0;
-  while i < |t|
-    invariant 0 <= i <= |t|
-    invariant songSum >= 0
-    invariant songSum == SumSeq(t[..i])
-  {
-    assert i < |t|;
-    assert t[..i+1] == t[..i] + [t[i]];
-    SumLemma(t[..i], t[i]);
-    songSum := songSum + t[i];
-    i := i + 1;
-  }
-
-  assert i == |t|;
-  assert t[..|t|] == t;
-  assert songSum == SumSeq(t);
-  var minTimeNeeded := songSum + 10 * n - 10;
-
-  if minTimeNeeded > d {
-    result := -1;
-  } else {
-    result := (d - songSum) / 5;
-    assert minTimeNeeded <= d;
-    assert songSum + 10 * n - 10 <= d;
-    assert songSum <= d - 10 * n + 10;
-    assert d >= songSum;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

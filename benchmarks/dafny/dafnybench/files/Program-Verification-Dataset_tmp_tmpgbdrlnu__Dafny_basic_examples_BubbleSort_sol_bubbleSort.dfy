@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate sorted_between (a:array<int>, from:nat, to:nat)
   reads a;
   requires a != null;
@@ -27,6 +30,6 @@ method bubbleSort (a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

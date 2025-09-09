@@ -3,15 +3,22 @@ function_signature: method SortReverseAndName(arr: seq<int>) returns (result: se
 Sort elements. Ensures: the size is bounded; the condition holds for all values.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method SortReverseAndName(arr: seq<int>) returns (result: seq<string>)
   // post-conditions-start
   ensures |result| <= |arr|
   ensures forall i :: 0 <= i < |result| ==>
     result[i] in ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method SortSeq(s: seq<int>) returns (sorted: seq<int>)
   // post-conditions-start

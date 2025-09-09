@@ -1,6 +1,8 @@
+/*
 A spinner has 4 positions encoded as v, >, ^, < (representing positions 0, 1, 2, 3 respectively).
 The spinner rotates by changing position every second, either clockwise or counter-clockwise.
 Given the starting position, ending position, and rotation duration n seconds, determine the rotation direction.
+*/
 
 function CharToPosSpec(c: string): int
 {
@@ -75,29 +77,10 @@ predicate ValidOutput(result: string)
     result == "cw" || result == "ccw" || result == "undefined"
 }
 
-function CharToPos(c: string): int
-{
-    CharToPosSpec(c)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method SplitLines(s: string) returns (lines: seq<string>)
-    ensures lines == SplitLinesSpec(s)
-{
-    lines := SplitLinesSpec(s);
-}
-
-method SplitBySpace(s: string) returns (parts: seq<string>)
-    ensures parts == SplitBySpaceSpec(s)
-{
-    parts := SplitBySpaceSpec(s);
-}
-
-method StringToInt(s: string) returns (n: int)
-    ensures n == StringToIntSpec(s)
-{
-    n := StringToIntHelper(s, 0, 0, false);
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures ValidOutput(result)
@@ -119,32 +102,9 @@ method solve(input: string) returns (result: string)
             )
         )
     )
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    if |lines| < 2 {
-        return "undefined";
-    }
-
-    var positions := SplitBySpace(lines[0]);
-    if |positions| < 2 {
-        return "undefined";
-    }
-
-    var startChar := positions[0];
-    var endChar := positions[1];
-    var n := StringToInt(lines[1]);
-
-    var startPos := CharToPos(startChar);
-    var endPos := CharToPos(endChar);
-
-    var ccw := (startPos + n) % 4 == endPos;
-    var cw := (startPos - n) % 4 == endPos;
-
-    if cw && !ccw {
-        result := "cw";
-    } else if ccw && !cw {
-        result := "ccw";
-    } else {
-        result := "undefined";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

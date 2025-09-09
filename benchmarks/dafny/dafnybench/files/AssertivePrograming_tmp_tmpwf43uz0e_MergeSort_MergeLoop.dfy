@@ -1,8 +1,8 @@
+/*
+*/
+
 // Noa Leron 207131871
 // Tsuri Farhana 315016907
-
-
-
 
 predicate Sorted(q: seq<int>) {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j]
@@ -22,13 +22,11 @@ ghost predicate Inv(a: seq<int>, a1: seq<int>, a2: seq<int>, i: nat, mid: nat){
     (a1[..i] == a[..i]) && (a2[..i] == a[mid..(i+mid)])
 }
 
-
 /*
 Goal: Implement iteratively, correctly, efficiently, clearly
 
 DO NOT modify the specification or any other part of the method's signature
 */
-
 
 //This is a method that replace the loop body
 
@@ -40,7 +38,6 @@ ghost predicate InvSorted(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat)
     Sorted(b[..i+j])
     }
 
-
 //Loop invariant - the multiset of the prefix of b so far is the same multiset as the prefixes of c and d so far.
 ghost predicate InvSubSet(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat){
     i <= |c| && j <= |d| && i + j <= |b| &&
@@ -49,7 +46,6 @@ ghost predicate InvSubSet(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat)
 
 //This lemma helps dafny see that if the prefixs of arrays are the same multiset until the end of the arrays,
 //all the arrays are the same multiset.
-
 
 //This lemma helps dafny see that after adding the next value from c to b the prefixes are still the same subsets.
 
@@ -75,6 +71,6 @@ method MergeLoop(b: array<int>, c: array<int>, d: array<int>,i0: nat , j0: nat) 
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

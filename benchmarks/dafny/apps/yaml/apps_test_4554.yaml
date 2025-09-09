@@ -29,7 +29,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(W: int, a: int, b: int) returns (result: int)
@@ -40,13 +39,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var distance := AbsDiff(a, b);
-  
-      if distance <= W {
-          result := 0;
-      } else {
-          result := distance - W;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

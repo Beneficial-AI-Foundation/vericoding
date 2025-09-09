@@ -20,7 +20,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(N: int, D: int, points: seq<(int, int)>) returns (result: int)
@@ -30,35 +29,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var count := 0;
-      var i := 0;
-  
-      while i < N
-          invariant 0 <= i <= N
-          invariant count == |set j | 0 <= j < i && WithinDistance(points[j], D)|
-          invariant 0 <= count <= i
-      {
-          var X := points[i].0;
-          var Y := points[i].1;
-  
-          ghost var oldSet := set j | 0 <= j < i && WithinDistance(points[j], D);
-          ghost var newSet := set j | 0 <= j < i + 1 && WithinDistance(points[j], D);
-  
-          if WithinDistance(points[i], D) {
-              count := count + 1;
-              assert newSet == oldSet + {i};
-              assert |newSet| == |oldSet| + 1;
-          } else {
-              assert newSet == oldSet;
-              assert |newSet| == |oldSet|;
-          }
-  
-          i := i + 1;
-  
-          assert count == |newSet|;
-      }
-  
-      return count;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

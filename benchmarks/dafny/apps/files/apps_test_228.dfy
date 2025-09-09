@@ -1,6 +1,8 @@
+/*
 Given n piles of stones (n even), Alice and Bob alternate turns with Alice first.
 Each turn, a player chooses n/2 nonempty piles and removes positive stones from each.
 A player loses when fewer than n/2 nonempty piles remain. Determine the winner.
+*/
 
 function minimum(s: seq<int>): int
     requires |s| > 0
@@ -25,28 +27,10 @@ predicate ValidInput(n: int, piles: seq<int>)
     n >= 2 && n % 2 == 0 && |piles| == n && forall i :: 0 <= i < |piles| ==> piles[i] >= 1
 }
 
-lemma countOccurrencesLemma(s: seq<int>, i: int, val: int)
-    requires 0 <= i < |s|
-    ensures countOccurrences(s[..(i+1)], val) == 
-            countOccurrences(s[..i], val) + (if s[i] == val then 1 else 0)
-{
-    if i == 0 {
-        assert s[..0] == [];
-        assert s[..1] == [s[0]];
-        assert countOccurrences([], val) == 0;
-        assert countOccurrences([s[0]], val) == (if s[0] == val then 1 else 0);
-    } else {
-        countOccurrencesLemma(s[1..], i-1, val);
-        assert countOccurrences((s[1..])[..i], val) == 
-               countOccurrences((s[1..])[..(i-1)], val) + (if (s[1..])[i-1] == val then 1 else 0);
-        assert (s[1..])[..i] == s[1..(i+1)];
-        assert (s[1..])[..(i-1)] == s[1..i];
-        assert (s[1..])[i-1] == s[i];
-        assert countOccurrences(s[1..(i+1)], val) == 
-               countOccurrences(s[1..i], val) + (if s[i] == val then 1 else 0);
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, piles: seq<int>) returns (result: string)
     requires ValidInput(n, piles)
     ensures result == "Alice" || result == "Bob"
@@ -55,49 +39,9 @@ method solve(n: int, piles: seq<int>) returns (result: string)
          var count := countOccurrences(piles, minVal);
          result == (if count > n / 2 then "Bob" else "Alice"))
     ensures |piles| == 0 ==> result == "Alice"
+// </vc-spec>
+// <vc-code>
 {
-    if |piles| == 0 {
-        return "Alice";
-    }
-
-    var minVal := piles[0];
-    var i := 1;
-    while i < |piles|
-        invariant 1 <= i <= |piles|
-        invariant forall j :: 0 <= j < i ==> minVal <= piles[j]
-        invariant exists j :: 0 <= j < i && piles[j] == minVal
-    {
-        if piles[i] < minVal {
-            minVal := piles[i];
-        }
-        i := i + 1;
-    }
-
-    assert forall j :: 0 <= j < |piles| ==> minVal <= piles[j];
-    assert exists j :: 0 <= j < |piles| && piles[j] == minVal;
-    assert minVal == minimum(piles);
-
-    var count := 0;
-    i := 0;
-    while i < |piles|
-        invariant 0 <= i <= |piles|
-        invariant count == countOccurrences(piles[..i], minVal)
-        invariant count <= i
-    {
-        countOccurrencesLemma(piles, i, minVal);
-
-        if piles[i] == minVal {
-            count := count + 1;
-        }
-        i := i + 1;
-    }
-
-    assert piles[..|piles|] == piles;
-    assert count == countOccurrences(piles, minVal);
-
-    if count > n / 2 {
-        result := "Bob";
-    } else {
-        result := "Alice";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

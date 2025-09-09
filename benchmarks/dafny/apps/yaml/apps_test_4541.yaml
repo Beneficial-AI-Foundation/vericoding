@@ -20,7 +20,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -30,12 +29,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var c := input[0];
-      if IsVowel(c) {
-          result := "vowel";
-      } else {
-          result := "consonant";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

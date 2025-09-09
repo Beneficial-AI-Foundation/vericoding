@@ -1,3 +1,6 @@
+/*
+*/
+
 // Helper predicate
 predicate is_sorted(nums: seq<int>)
 {
@@ -22,6 +25,6 @@ method remove_duplicates_from_sorted_array(nums: seq<int>) returns (result: seq<
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,6 +1,8 @@
+/*
 Find the minimum number of hours to water a garden of length k using exactly one type of bucket.
 Each bucket type i can water a continuous segment of length a_i per hour.
 Must choose a bucket size that evenly divides the garden length to avoid gaps or overlaps.
+*/
 
 predicate ValidInput(n: int, k: int, a: seq<int>)
 {
@@ -27,32 +29,17 @@ predicate IsOptimalChoice(k: int, a: seq<int>, chosenBucket: int)
     (forall i :: 0 <= i < |a| && ValidBucket(k, a[i]) ==> a[i] <= a[chosenBucket])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, k: int, a: seq<int>) returns (result: int)
     requires ValidInput(n, k, a)
     ensures result >= 1
     ensures exists i :: IsOptimalChoice(k, a, i) && result == HoursNeeded(k, a[i])
+// </vc-spec>
+// <vc-code>
 {
-    var maxd := -1;
-    var i := 0;
-    while i < |a|
-        invariant 0 <= i <= |a|
-        invariant maxd == -1 || (exists j :: 0 <= j < i && ValidBucket(k, a[j]) && a[j] == maxd)
-        invariant maxd == -1 || (forall j :: 0 <= j < i && ValidBucket(k, a[j]) ==> a[j] <= maxd)
-        invariant maxd >= -1
-        invariant (exists j :: 0 <= j < i && ValidBucket(k, a[j])) ==> maxd != -1
-    {
-        if ValidBucket(k, a[i]) {
-            if a[i] > maxd {
-                maxd := a[i];
-            }
-        }
-        i := i + 1;
-    }
-
-    assert exists j :: 0 <= j < |a| && ValidBucket(k, a[j]);
-    assert maxd > -1;
-    assert ValidBucket(k, maxd);
-    assert maxd >= 1;
-
-    result := HoursNeeded(k, maxd);
+  assume {:axiom} false;
 }
+// </vc-code>

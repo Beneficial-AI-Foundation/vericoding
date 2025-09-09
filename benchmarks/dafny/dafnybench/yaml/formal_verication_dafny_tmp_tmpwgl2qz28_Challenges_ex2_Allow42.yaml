@@ -5,22 +5,16 @@ vc-preamble: |-
       i)  Write a verified method with signature
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method Allow42(x:int, y:int) returns (z: int, err:bool) 
   ensures y != 42 ==> z == x/(42-y) && err == false;
   ensures y == 42 ==> z == 0 && err == true;
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

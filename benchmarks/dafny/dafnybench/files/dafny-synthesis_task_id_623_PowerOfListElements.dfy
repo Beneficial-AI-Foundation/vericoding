@@ -1,3 +1,6 @@
+/*
+*/
+
 function Power(base: int, exponent: int): int
     requires exponent >= 0
 {
@@ -16,6 +19,6 @@ method PowerOfListElements(l: seq<int>, n: int) returns (result: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

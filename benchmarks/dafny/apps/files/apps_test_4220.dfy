@@ -1,5 +1,7 @@
+/*
 Given an integer K and a string S of lowercase English letters, output S unchanged if its length is at most K.
 Otherwise, output the first K characters of S followed by "...".
+*/
 
 predicate ValidInput(stdin_input: string)
 {
@@ -86,25 +88,16 @@ function string_to_int_helper(s: string, pos: nat, acc: int): int
         if acc == 0 then 1 else acc
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures CorrectOutput(stdin_input, result)
+// </vc-spec>
+// <vc-code>
 {
-    var newline_pos := find_newline(stdin_input, 0);
-    var K_str := stdin_input[0..newline_pos];
-    var rest := stdin_input[newline_pos+1..];
-
-    // Remove trailing newline from S if it exists
-    var S := rest;
-    if |S| > 0 && S[|S|-1] == '\n' {
-        S := S[0..|S|-1];
-    }
-
-    var K := string_to_int(K_str);
-
-    if |S| <= K {
-        result := S + "\n";
-    } else {
-        result := S[0..K] + "..." + "\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -43,7 +43,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int) returns (result: int)
@@ -52,19 +51,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var ans := factorial(n);
-  
-    var i := 0;
-    while i < n - k
-      invariant 0 <= i <= n - k
-      invariant ans == factorial(n) - sum_binomial_derangement(n, k, 0) + sum_binomial_derangement(n, k, i)
-    {
-      var c := binomial(n, i) * derangement(n - i);
-      ans := ans - c;
-      i := i + 1;
-    }
-  
-    result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -1,3 +1,6 @@
+/*
+*/
+
 // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
 // Permalink spurningar: https://rise4fun.com/Dafny/G4sc3
 
@@ -5,7 +8,6 @@
 // Permalink lausnar:    https://rise4fun.com/Dafny/nujsu
 
 // Insertion sort með hjálp helmingunarleitar.
-
 
 method Search( s: seq<int>, x: int ) returns ( k: int )
     // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
@@ -30,6 +32,6 @@ method Sort( m: multiset<int> ) returns ( r: seq<int> )
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

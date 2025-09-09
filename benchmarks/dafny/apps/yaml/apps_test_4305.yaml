@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(H: int, A: int) returns (attacks: int)
@@ -31,7 +30,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      attacks := (H + A - 1) / A;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

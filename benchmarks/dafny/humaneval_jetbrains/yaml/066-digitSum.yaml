@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: def digitSum(string: str) -> Nat
+  Write a function that takes a string as input and returns the sum of the upper characters only' ASCII codes.
+
 vc-preamble: |-
   function upper_sum_rec(s: string): int
     // post-conditions-start
@@ -20,12 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: def digitSum(string: str) -> Nat
-  Write a function that takes a string as input and returns the sum of the upper characters only' ASCII codes.
-  */
 
 vc-spec: |-
   method upper_sum(s: string) returns (res: int)
@@ -35,9 +33,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
-
 

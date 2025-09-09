@@ -1,5 +1,7 @@
+/*
 Given an m×n grid of non-negative integers, find the minimum sum path from the top-left corner 
 to the bottom-right corner. You can only move right or down.
+*/
 
 predicate ValidPath(path: seq<(int, int)>, m: int, n: int)
 {
@@ -27,51 +29,17 @@ predicate ValidInput(grid: array2<int>)
     forall i, j :: 0 <= i < grid.Length0 && 0 <= j < grid.Length1 ==> grid[i, j] >= 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method minPathSum(grid: array2<int>) returns (result: int)
     requires ValidInput(grid)
     ensures result >= 0
     ensures grid.Length0 == 1 && grid.Length1 == 1 ==> result == grid[0, 0]
+// </vc-spec>
+// <vc-code>
 {
-    var m := grid.Length0;
-    var n := grid.Length1;
-
-    // Initialize dp array
-    var dp := new int[n];
-
-    // Handle first row
-    dp[0] := grid[0, 0];
-    var j := 1;
-    while j < n
-        invariant 1 <= j <= n
-        invariant dp[0] == grid[0, 0]
-        invariant forall k :: 1 <= k < j ==> dp[k] >= 0
-    {
-        dp[j] := dp[j-1] + grid[0, j];
-        j := j + 1;
-    }
-
-    // Process remaining rows
-    var i := 1;
-    while i < m
-        invariant 1 <= i <= m
-        invariant forall k :: 0 <= k < n ==> dp[k] >= 0
-        invariant m == 1 ==> dp[0] == grid[0, 0]
-    {
-        dp[0] := dp[0] + grid[i, 0];
-        j := 1;
-        while j < n
-            invariant 1 <= j <= n
-            invariant forall k :: 0 <= k < n ==> dp[k] >= 0
-        {
-            var fromAbove := dp[j];
-            var fromLeft := dp[j-1];
-            var minPrev := if fromAbove < fromLeft then fromAbove else fromLeft;
-            dp[j] := minPrev + grid[i, j];
-            j := j + 1;
-        }
-        i := i + 1;
-    }
-
-    assert m == 1 && n == 1 ==> dp[0] == grid[0, 0];
-    result := dp[n-1];
+  assume {:axiom} false;
 }
+// </vc-code>

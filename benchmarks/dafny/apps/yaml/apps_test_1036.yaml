@@ -27,7 +27,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int, s: string) returns (result: char)
@@ -36,33 +35,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var S: seq<char> := s;
-  
-      var i := 0;
-      while i < k 
-          invariant 0 <= i <= k
-          invariant |S| == n
-          invariant validRPSString(S)
-      {
-          var T: seq<char> := S + S;
-          var newS: seq<char> := [];
-  
-          var j := 0;
-          while j < n 
-              invariant 0 <= j <= n
-              invariant |newS| == j
-              invariant validRPSString(newS)
-          {
-              var tmpCall1 := winner(T[2*j], T[2*j+1]);
-              var w := tmpCall1;
-              newS := newS + [w];
-              j := j + 1;
-          }
-          S := newS;
-          i := i + 1;
-      }
-  
-      result := S[0];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

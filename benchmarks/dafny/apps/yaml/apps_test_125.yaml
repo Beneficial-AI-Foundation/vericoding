@@ -59,25 +59,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function CountNewlines(s: string, i: int): int
-      requires 0 <= i <= |s|
-      decreases |s| - i
-  {
-      if i == |s| then 0
-      else if s[i] == '\n' then 1 + CountNewlines(s, i + 1)
-      else CountNewlines(s, i + 1)
-  }
-  
-  method ParseInputToMatrix(s: string) returns (lanes: seq<seq<int>>)
-      requires ValidInputString(s)
-      ensures |lanes| == 4
-      ensures forall i :: 0 <= i < 4 ==> |lanes[i]| == 4
-      ensures forall i :: 0 <= i < 4 ==> forall j :: 0 <= j < 4 ==> 
-          (lanes[i][j] == 0 || lanes[i][j] == 1)
-      ensures ParseInput(s, lanes)
-  {
-      lanes := [[0,0,0,0], [0,0,0,0], [0,0,0,0], [0,0,0,0]];
-  }
 
 vc-spec: |-
   method solve(s: string) returns (result: string)
@@ -92,28 +73,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var lanes := ParseInputToMatrix(s);
-  
-      var accidentFound := false;
-      var i := 0;
-  
-      while i < 4 && !accidentFound
-          invariant 0 <= i <= 4
-          invariant accidentFound ==> AccidentPossible(lanes)
-          invariant !accidentFound ==> forall j :: 0 <= j < i ==> !AccidentAtLane(j, lanes)
-          decreases 4 - i
-      {
-          if AccidentAtLane(i, lanes) {
-              accidentFound := true;
-          }
-          i := i + 1;
-      }
-  
-      if accidentFound {
-          result := "YES\n";
-      } else {
-          result := "NO\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

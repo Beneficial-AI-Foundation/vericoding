@@ -30,7 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, a: seq<int>) returns (result: int)
@@ -41,29 +40,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var alive := 0;
-      var left := n;
-      var i := n - 1;
-  
-      while i >= 0
-          invariant i >= -1
-          invariant i < n
-          invariant alive >= 0
-          invariant alive <= n - (i + 1)
-          invariant left <= n
-          invariant alive + CountSurvivorsFrom(n, a, n - (i + 1), left) == CountSurvivors(n, a)
-      {
-          if i < left {
-              alive := alive + 1;
-          }
-          var newLeft := i - a[i];
-          if newLeft < left {
-              left := newLeft;
-          }
-          i := i - 1;
-      }
-  
-      result := alive;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

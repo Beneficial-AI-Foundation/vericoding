@@ -1,5 +1,7 @@
+/*
 Given n emotes with happiness values, use emotes m times total to maximize happiness.
 Cannot use the same emote more than k consecutive times.
+*/
 
 predicate ValidInput(n: int, m: int, k: int, emotes: seq<int>)
 {
@@ -49,59 +51,16 @@ function FilterOut(s: seq<int>, val: int, count: int): seq<int>
     else [s[0]] + FilterOut(s[1..], val, count)
 }
 
-method SortSeq(s: seq<int>) returns (sorted: seq<int>)
-    requires |s| >= 1
-    requires forall i :: 0 <= i < |s| ==> s[i] >= 1
-    ensures |sorted| == |s|
-    ensures multiset(sorted) == multiset(s)
-    ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
-    ensures forall i :: 0 <= i < |sorted| ==> sorted[i] >= 1
-{
-    sorted := s;
-    var i := 0;
-    while i < |sorted|
-        invariant 0 <= i <= |sorted|
-        invariant |sorted| == |s|
-        invariant multiset(sorted) == multiset(s)
-        invariant forall x, y :: 0 <= x < i && x <= y < |sorted| ==> sorted[x] <= sorted[y]
-        invariant forall j :: 0 <= j < |sorted| ==> sorted[j] >= 1
-    {
-        var j := i + 1;
-        while j < |sorted|
-            invariant i < j <= |sorted|
-            invariant |sorted| == |s|
-            invariant multiset(sorted) == multiset(s)
-            invariant forall x, y :: 0 <= x < i && x <= y < |sorted| ==> sorted[x] <= sorted[y]
-            invariant forall y :: i <= y < j ==> sorted[i] <= sorted[y]
-            invariant forall k :: 0 <= k < |sorted| ==> sorted[k] >= 1
-        {
-            if sorted[i] > sorted[j] {
-                var temp := sorted[i];
-                sorted := sorted[i := sorted[j]];
-                sorted := sorted[j := temp];
-            }
-            j := j + 1;
-        }
-        i := i + 1;
-    }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, m: int, k: int, emotes: seq<int>) returns (result: int)
     requires ValidInput(n, m, k, emotes)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    var sorted_emotes := SortSeq(emotes);
-    var b1 := sorted_emotes[n-1]; // highest happiness value
-    var b2 := sorted_emotes[n-2]; // second highest happiness value
-
-    var k_plus_1 := k + 1;
-    var total := m / k_plus_1;
-    var remainder := m % k_plus_1;
-
-    var score := 0;
-    score := score + remainder * b1;
-    score := score + b1 * (total * k);
-    score := score + b2 * total;
-
-    result := score;
+  assume {:axiom} false;
 }
+// </vc-code>

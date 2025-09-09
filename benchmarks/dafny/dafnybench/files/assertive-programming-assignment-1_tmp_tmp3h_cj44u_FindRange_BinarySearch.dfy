@@ -1,8 +1,10 @@
+/*
+*/
+
 predicate Sorted(q: seq<int>)
 {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j] 
 }
-
 
 // all the values in the range satisfy `comparer` (comparer(q[i], key) == true)
 predicate RangeSatisfiesComparer(q: seq<int>, key: int, lowerBound: nat, upperBound: nat, comparer: (int, int) -> bool)
@@ -38,6 +40,6 @@ method BinarySearch(q: seq<int>, key: int, lowerBound: nat, upperBound: nat, com
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

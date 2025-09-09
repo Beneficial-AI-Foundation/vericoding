@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate sorted(a:array<int>, from:int, to:int)
   requires a != null;
   reads a;
@@ -26,6 +29,6 @@ method bubbleSort (a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

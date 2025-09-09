@@ -1,7 +1,9 @@
+/*
 Given a regular convex polygon with n vertices, draw rays from each vertex to all others.
 Rays stop when hitting vertices or intersecting previously drawn rays, creating regions.
 A squirrel starts outside and jumps between adjacent regions to collect all walnuts.
 Find the minimum number of jumps needed.
+*/
 
 predicate ValidInput(n: int)
 {
@@ -14,9 +16,16 @@ function MinJumps(n: int): int
     (n - 2) * (n - 2)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: int)
     requires ValidInput(n)
     ensures result == MinJumps(n)
+// </vc-spec>
+// <vc-code>
 {
-    result := (n - 2) * (n - 2);
+  assume {:axiom} false;
 }
+// </vc-code>

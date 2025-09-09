@@ -34,7 +34,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (a: int, b: char)
@@ -45,20 +44,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var remainder := n % 4;
-      if remainder == 1 {
-          a := 0;
-          b := 'A';
-      } else if remainder == 2 {
-          a := 1;
-          b := 'B';
-      } else if remainder == 3 {
-          a := 2;
-          b := 'A';
-      } else { // remainder == 0
-          a := 1;
-          b := 'A';
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

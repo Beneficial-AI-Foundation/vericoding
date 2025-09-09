@@ -1,6 +1,8 @@
+/*
 Given n people in positions 1 to n, where person i has weapon reach L_i.
 All people simultaneously attack: person i kills person j if and only if 
 j < i and j >= i - L_i. Determine the number of survivors.
+*/
 
 predicate ValidInput(n: int, a: seq<int>)
 {
@@ -27,33 +29,18 @@ function CountSurvivorsFrom(n: int, a: seq<int>, start: int, left: int): int
         survives + CountSurvivorsFrom(n, a, start + 1, newLeft)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, a: seq<int>) returns (result: int)
     requires ValidInput(n, a)
     ensures result >= 0
     ensures result <= n
     ensures result == CountSurvivors(n, a)
+// </vc-spec>
+// <vc-code>
 {
-    var alive := 0;
-    var left := n;
-    var i := n - 1;
-
-    while i >= 0
-        invariant i >= -1
-        invariant i < n
-        invariant alive >= 0
-        invariant alive <= n - (i + 1)
-        invariant left <= n
-        invariant alive + CountSurvivorsFrom(n, a, n - (i + 1), left) == CountSurvivors(n, a)
-    {
-        if i < left {
-            alive := alive + 1;
-        }
-        var newLeft := i - a[i];
-        if newLeft < left {
-            left := newLeft;
-        }
-        i := i - 1;
-    }
-
-    result := alive;
+  assume {:axiom} false;
 }
+// </vc-code>

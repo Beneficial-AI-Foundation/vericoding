@@ -24,7 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(A: int, B: int, C: int, D: int) returns (result: string)
@@ -34,14 +33,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var takahashi_turns := TurnsToDefeat(C, B);
-    var aoki_turns := TurnsToDefeat(A, D);
-  
-    if aoki_turns < takahashi_turns {
-      result := "No";
-    } else {
-      result := "Yes";
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

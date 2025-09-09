@@ -94,7 +94,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method Solve(input: string) returns (result: string)
@@ -105,33 +104,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var lines := Split(input, '\n');
-      if |lines| == 0 { return "0"; }
-  
-      var n := ParseInt(lines[0]);
-      if |lines| < 2 { return "0"; }
-  
-      var secondLineParts := Split(lines[1], ' ');
-      if |secondLineParts| < 2 { return "0"; }
-  
-      var d := ParseInt(secondLineParts[0]);
-      var x := ParseInt(secondLineParts[1]);
-  
-      var totalEaten := 0;
-      var i := 0;
-      while i < n && (2 + i) < |lines|
-          invariant 0 <= i <= n
-          invariant totalEaten == SumEatenForParticipants(lines, d, i)
-      {
-          var tmpCall1 := ParseInt(lines[2 + i]);
-          var a := tmpCall1;
-          var eaten := (d + a - 1) / a;
-          totalEaten := totalEaten + eaten;
-          i := i + 1;
-      }
-  
-      var finalResult := x + totalEaten;
-      result := IntToString(finalResult);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

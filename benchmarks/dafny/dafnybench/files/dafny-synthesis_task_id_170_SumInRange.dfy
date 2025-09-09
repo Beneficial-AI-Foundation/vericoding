@@ -1,3 +1,6 @@
+/*
+*/
+
 function sumTo( a:array<int>, start:int, end:int ) : int
     requires a != null;
     requires 0 <= start && start <= end && end <= a.Length;
@@ -18,6 +21,6 @@ method SumInRange(a: array<int>, start: int, end: int) returns (sum: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

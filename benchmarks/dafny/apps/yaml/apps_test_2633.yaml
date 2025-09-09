@@ -48,7 +48,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method calculateMinimumHP(dungeon: seq<seq<int>>) returns (result: int)
@@ -57,81 +56,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var row := |dungeon|;
-      var col := |dungeon[0]|;
-  
-      // Initialize dp array
-      var dp := new int[row, col];
-  
-      // Initialize bottom-right corner
-      if dungeon[row-1][col-1] <= 0 {
-          dp[row-1, col-1] := -dungeon[row-1][col-1] + 1;
-      } else {
-          dp[row-1, col-1] := 1;
-      }
-      assert dp[row-1, col-1] >= 1;
-  
-      // Fill rightmost column
-      var r := row - 2;
-      while r >= 0
-          invariant -1 <= r < row - 1
-          invariant forall i :: r + 1 <= i < row ==> dp[i, col-1] >= 1
-      {
-          dp[r, col-1] := dp[r+1, col-1] - dungeon[r][col-1];
-          if dp[r, col-1] <= 0 {
-              dp[r, col-1] := 1;
-          }
-          assert dp[r, col-1] >= 1;
-          r := r - 1;
-      }
-  
-      // Assert that all rightmost column entries are >= 1
-      assert forall i :: 0 <= i < row ==> dp[i, col-1] >= 1;
-  
-      // Fill bottom row
-      var c := col - 2;
-      while c >= 0
-          invariant -1 <= c < col - 1
-          invariant forall j :: c + 1 <= j < col ==> dp[row-1, j] >= 1
-          invariant forall i :: 0 <= i < row ==> dp[i, col-1] >= 1
-      {
-          dp[row-1, c] := dp[row-1, c+1] - dungeon[row-1][c];
-          if dp[row-1, c] <= 0 {
-              dp[row-1, c] := 1;
-          }
-          assert dp[row-1, c] >= 1;
-          c := c - 1;
-      }
-  
-      // Fill the rest of the dp table
-      r := row - 2;
-      while r >= 0
-          invariant -1 <= r < row - 1
-          invariant forall i :: r + 1 <= i < row ==> forall j :: 0 <= j < col ==> dp[i, j] >= 1
-          invariant forall j :: 0 <= j < col ==> dp[row-1, j] >= 1
-          invariant forall i :: 0 <= i < row ==> dp[i, col-1] >= 1
-      {
-          c := col - 2;
-          while c >= 0
-              invariant -1 <= c < col - 1
-              invariant forall j :: c + 1 <= j < col ==> dp[r, j] >= 1
-              invariant forall i :: r + 1 <= i < row ==> forall j :: 0 <= j < col ==> dp[i, j] >= 1
-              invariant forall j :: 0 <= j < col ==> dp[row-1, j] >= 1
-              invariant forall i :: 0 <= i < row ==> dp[i, col-1] >= 1
-          {
-              var minNext := if dp[r+1, c] < dp[r, c+1] then dp[r+1, c] else dp[r, c+1];
-              dp[r, c] := minNext - dungeon[r][c];
-              if dp[r, c] <= 0 {
-                  dp[r, c] := 1;
-              }
-              assert dp[r, c] >= 1;
-              c := c - 1;
-          }
-          r := r - 1;
-      }
-  
-      result := dp[0, 0];
-      assert result >= 1;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -1,7 +1,6 @@
 vc-description: |-
 
 vc-preamble: |-
-  
   function RecursivePositiveProduct(q: seq<int>): int
       decreases |q|
   {
@@ -27,22 +26,16 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method ProdAndCount(q: seq<int>, key: int) returns (prod: int, count: nat)
       ensures prod == RecursivePositiveProduct(q)
       ensures count == RecursiveCount(key, q)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

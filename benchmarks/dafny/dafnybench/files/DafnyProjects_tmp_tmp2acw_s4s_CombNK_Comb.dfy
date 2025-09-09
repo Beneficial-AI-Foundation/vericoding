@@ -1,3 +1,6 @@
+/*
+*/
+
 /* 
 * Formal specification and verification of a dynamic programming algorithm for calculating C(n, k).
 * FEUP, MIEIC, MFES, 2020/21.
@@ -20,6 +23,6 @@ method Comb(n: nat, k: nat) returns (res: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

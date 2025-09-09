@@ -1,3 +1,6 @@
+/*
+*/
+
 // RUN: %dafny /compile:3 /spillTargetCode:2 /compileTarget:cs "%s" > "%t"
 // RUN: %dafny /compile:3 /spillTargetCode:2 /compileTarget:js "%s" >> "%t"
 // RUN: %dafny /compile:3 /spillTargetCode:2 /compileTarget:go "%s" >> "%t"
@@ -9,10 +12,7 @@ method PrintArray<A>(a: array?<A>)
   assume{:axiom} false;
 }
 
-
 type lowercase = ch | 'a' <= ch <= 'z' witness 'd'
-
-
 
 method DiagMatrix<A>(rows: int, cols: int, zero: A, one: A)
     returns (a: array2<A>)
@@ -36,6 +36,6 @@ method LinearSearch(a: array<int>, key: int) returns (n: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

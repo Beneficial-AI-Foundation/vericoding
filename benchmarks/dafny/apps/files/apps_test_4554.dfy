@@ -1,6 +1,8 @@
+/*
 Given two rectangles with width W, where Rectangle 1 spans horizontally [a, a+W] 
 and Rectangle 2 spans horizontally [b, b+W], find the minimum horizontal distance 
 Rectangle 2 must be moved so that the two rectangles connect (overlap or touch).
+*/
 
 predicate ValidInput(W: int, a: int, b: int)
 {
@@ -26,17 +28,18 @@ predicate RectanglesConnect(W: int, a: int, b: int)
     AbsDiff(a, b) <= W
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(W: int, a: int, b: int) returns (result: int)
     requires ValidInput(W, a, b)
     ensures result == MinMoveDistance(W, a, b)
     ensures result >= 0
     ensures RectanglesConnect(W, a, b) <==> result == 0
+// </vc-spec>
+// <vc-code>
 {
-    var distance := AbsDiff(a, b);
-
-    if distance <= W {
-        result := 0;
-    } else {
-        result := distance - W;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

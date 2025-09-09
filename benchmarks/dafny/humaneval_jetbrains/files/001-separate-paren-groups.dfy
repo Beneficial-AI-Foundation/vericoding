@@ -1,4 +1,3 @@
-
 /*
 function_signature: def separate_paren_groups(paren_string: str) -> List[str]
 Input to this function is a string containing multiple groups of nested parentheses. Your goal is to separate those group into separate strings and return the list of those. Separate groups are balanced (each open brace is properly closed) and not nested within each other Ignore any spaces in the input string.
@@ -26,6 +25,10 @@ function InnerDepthsNonnegative(s: string) : bool
     forall i :: 0 < i < |s| ==> ParenthesesDepth(s, 0, i) >= 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method separate_paren_groups(paren_string: string) returns (res : seq<string>)
     // pre-conditions-start
     requires ParenthesesDepth(paren_string, 0, |paren_string|) == 0
@@ -35,6 +38,9 @@ method separate_paren_groups(paren_string: string) returns (res : seq<string>)
     ensures forall k :: 0 <= k < |res| ==> ParenthesesDepth(res[k], 0, |res[k]|) == 0
     ensures forall k :: 0 <= k < |res| ==> InnerDepthsPositive(res[k])
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -46,18 +46,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function isLimitedPrimeHelper(p: int, divisor: int): bool
-  requires p >= 3 && p % 2 != 0
-  requires divisor >= 3 && divisor % 2 != 0
-  ensures divisor >= 40000 ==> isLimitedPrimeHelper(p, divisor)
-  ensures divisor >= p ==> isLimitedPrimeHelper(p, divisor)
-  ensures divisor < 40000 && divisor < p && p % divisor == 0 ==> !isLimitedPrimeHelper(p, divisor)
-  decreases 40000 - divisor
-  {
-      if divisor >= 40000 || divisor >= p then true
-      else if p % divisor == 0 then false
-      else isLimitedPrimeHelper(p, divisor + 2)
-  }
 
 vc-spec: |-
   method solve(input: seq<int>) returns (result: seq<string>)
@@ -71,19 +59,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var t := input[0];
-      result := [];
-  
-      for i := 1 to t + 1
-          invariant 1 <= i <= t + 1
-          invariant |result| == i - 1
-          invariant forall j :: 0 <= j < |result| ==> result[j] == "FastestFinger" || result[j] == "Ashishgup"
-          invariant forall j :: 1 <= j < i ==> result[j-1] == determineWinner(input[j])
-      {
-          var n := input[i];
-          var winner := determineWinner(n);
-          result := result + [winner];
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

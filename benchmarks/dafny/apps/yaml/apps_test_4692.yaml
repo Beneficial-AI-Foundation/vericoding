@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(M: int) returns (result: int)
@@ -30,7 +29,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := 48 - M;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

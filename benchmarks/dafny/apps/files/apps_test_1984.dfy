@@ -1,6 +1,8 @@
+/*
 Given k game levels represented as n×m grids containing candies (letters) or empty cells ('.'),
 find the minimum cost to transmit all levels. Each level can be transmitted in full (cost: n×m)
 or as differences from a previously transmitted level (cost: d×w where d is number of differing cells).
+*/
 
 function split_lines(s: string): seq<string>
 {
@@ -59,13 +61,13 @@ predicate ValidOutput(result: string, stdin_input: string)
         |input_levels| == k &&
         (forall i :: 0 <= i < k ==> |input_levels[i]| == n) &&
         (forall i :: 0 <= i < k ==> forall j :: 0 <= j < n ==> |input_levels[i][j]| == m) &&
-        
+
         |result_lines| == k + 1 &&
-        
+
         exists total_cost: nat :: (
             result_lines[0] == int_to_string(total_cost) &&
             total_cost == calculate_mst_cost(n, m, k, w, input_levels) &&
-            
+
             (forall i :: 1 <= i <= k ==> 
                 exists level, parent: nat :: (
                     parse_dependency_line(result_lines[i]) == (level, parent) &&
@@ -73,14 +75,14 @@ predicate ValidOutput(result: string, stdin_input: string)
                     0 <= parent <= k &&
                     level != parent
                 )) &&
-            
+
             (forall level :: 1 <= level <= k ==> 
                 exists i {:trigger parse_dependency_line(result_lines[i]).0} :: 
                     1 <= i <= k && 
                     parse_dependency_line(result_lines[i]).0 == level &&
                     (forall j :: 1 <= j <= k && j != i ==> 
                         parse_dependency_line(result_lines[j]).0 != level)) &&
-            
+
             is_valid_spanning_tree(result_lines, k)
         )
     )
@@ -101,9 +103,16 @@ function count_differences(level1: seq<string>, level2: seq<string>, n: nat, m: 
     0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures ValidOutput(result, stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    result := "0\n1 0\n";
+  assume {:axiom} false;
 }
+// </vc-code>

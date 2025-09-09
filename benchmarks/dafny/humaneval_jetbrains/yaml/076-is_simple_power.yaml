@@ -1,15 +1,13 @@
+vc-description: |-
+  function_signature: def is_simple_power(x: int, n: int) -> bool
+  Your task is to write a function that returns true if a number x is a simple power of n and false in other cases. x is a simple power of n if n**int=x
+
 vc-preamble: |-
   function power(x: nat, y: nat): nat {
       if y == 0 then 1 else x * power(x, y-1)
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: def is_simple_power(x: int, n: int) -> bool
-  Your task is to write a function that returns true if a number x is a simple power of n and false in other cases. x is a simple power of n if n**int=x
-  */
 
 vc-spec: |-
   method is_simple_power(x: nat, n: int) returns (ans : bool)
@@ -22,9 +20,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
-
 

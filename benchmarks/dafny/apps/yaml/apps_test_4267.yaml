@@ -19,7 +19,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(X: int) returns (result: string)
@@ -28,11 +27,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if X >= 30 {
-          result := "Yes\n";
-      } else {
-          result := "No\n";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

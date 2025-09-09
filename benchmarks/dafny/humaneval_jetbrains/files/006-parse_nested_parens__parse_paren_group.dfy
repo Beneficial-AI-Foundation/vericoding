@@ -3,6 +3,10 @@ function_signature: method parse_paren_group(s : string) returns (max_depth : in
 Parse input. Requires: the condition holds for all values. Ensures: the result is at least the specified value.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method parse_paren_group(s : string) returns (max_depth : int)
     // pre-conditions-start
     requires forall i :: i >= 0 && i < |s| ==> s[i] == '(' || s[i] == ')'
@@ -10,9 +14,12 @@ method parse_paren_group(s : string) returns (max_depth : int)
     // post-conditions-start
     ensures max_depth >= 0
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method split(s : string) returns (res : seq<string>)
     // pre-conditions-start

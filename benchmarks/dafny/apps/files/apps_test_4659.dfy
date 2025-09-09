@@ -1,5 +1,7 @@
+/*
 Generate the first numRows rows of Pascal's triangle, where each number is the sum
 of the two numbers directly above it in the previous row.
+*/
 
 predicate ValidPascalTriangle(triangle: seq<seq<int>>, numRows: int)
 {
@@ -18,46 +20,16 @@ predicate ValidPascalTriangle(triangle: seq<seq<int>>, numRows: int)
   ))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method generate(numRows: int) returns (result: seq<seq<int>>)
   requires numRows >= 0
   ensures ValidPascalTriangle(result, numRows)
+// </vc-spec>
+// <vc-code>
 {
-  if numRows == 0 {
-    return [];
-  }
-
-  var res := [[1]];
-
-  var i := 1;
-  while i < numRows
-    invariant 1 <= i <= numRows
-    invariant |res| == i
-    invariant |res| > 0
-    invariant forall k :: 0 <= k < |res| ==> |res[k]| == k + 1
-    invariant forall k :: 0 <= k < |res| ==> res[k][0] == 1 && res[k][|res[k]| - 1] == 1
-    invariant forall k :: 1 <= k < |res| ==> 
-      forall l :: 1 <= l < |res[k]| - 1 ==> 
-        res[k][l] == res[k-1][l-1] + res[k-1][l]
-  {
-    var prevRow := res[|res| - 1];
-    var leftPadded := [0] + prevRow;
-    var rightPadded := prevRow + [0];
-
-    var newRow: seq<int> := [];
-    var j := 0;
-    while j < |leftPadded|
-      invariant 0 <= j <= |leftPadded|
-      invariant |newRow| == j
-      invariant |leftPadded| == |rightPadded| == i + 1
-      invariant forall l :: 0 <= l < j ==> newRow[l] == leftPadded[l] + rightPadded[l]
-    {
-      newRow := newRow + [leftPadded[j] + rightPadded[j]];
-      j := j + 1;
-    }
-
-    res := res + [newRow];
-    i := i + 1;
-  }
-
-  return res;
+  assume {:axiom} false;
 }
+// </vc-code>

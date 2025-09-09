@@ -1,5 +1,7 @@
+/*
 Given three distinct integers representing positions of three friends on a number line,
 find the minimum total distance they need to travel to meet at a single point.
+*/
 
 predicate ValidInput(x1: int, x2: int, x3: int) {
     1 <= x1 <= 100 && 1 <= x2 <= 100 && 1 <= x3 <= 100 &&
@@ -18,16 +20,17 @@ function MinTotalDistance(x1: int, x2: int, x3: int): int
     max_pos - min_pos
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method FindMinimumTotalDistance(x1: int, x2: int, x3: int) returns (result: int)
     requires ValidInput(x1, x2, x3)
     ensures result == MinTotalDistance(x1, x2, x3)
     ensures result >= 1 && result <= 99
+// </vc-spec>
+// <vc-code>
 {
-    var max_pos := if x1 >= x2 && x1 >= x3 then x1
-                  else if x2 >= x1 && x2 >= x3 then x2
-                  else x3;
-    var min_pos := if x1 <= x2 && x1 <= x3 then x1
-                  else if x2 <= x1 && x2 <= x3 then x2
-                  else x3;
-    result := max_pos - min_pos;
+  assume {:axiom} false;
 }
+// </vc-code>

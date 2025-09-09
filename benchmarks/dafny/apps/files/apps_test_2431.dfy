@@ -1,8 +1,10 @@
+/*
 Given n castles with soldiers, two players alternate turns starting with White.
 Each turn a player attacks a castle using mixed (x damage), infantry (y damage, 
 forbidden if previous attack on same castle was infantry), or cavalry (z damage,
 forbidden if previous attack on same castle was cavalry). Player making the last
 attack wins. Find number of White's winning first moves using Grundy number theory.
+*/
 
 datatype TestCase = TestCase(n: nat, x: nat, y: nat, z: nat, castles: seq<nat>)
 
@@ -71,71 +73,10 @@ function count_winning_first_moves(tc: TestCase): nat
     0 // Implementation uses Grundy number theory
 }
 
-function split_by_newline(s: string): seq<string>
-    ensures forall line :: line in split_by_newline(s) ==> '\n' !in line
-    ensures |split_by_newline(s)| >= 1
-{
-    [""] // placeholder implementation
-}
+// <vc-helpers>
+// </vc-helpers>
 
-predicate is_non_negative_integer_string(s: string)
-{
-    |s| > 0 && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-}
-
-predicate is_valid_test_case_params(line: string)
-{
-    |line| > 0 // should validate "n x y z" format
-}
-
-predicate is_valid_castles_line(line: string, n: nat)
-{
-    |line| > 0 // should validate n space-separated integers
-}
-
-function get_n_from_params(line: string): nat
-{
-    1 // placeholder - parse first integer
-}
-
-function get_x_from_params(line: string): nat
-{
-    1 // placeholder - parse second integer  
-}
-
-function get_y_from_params(line: string): nat
-{
-    1 // placeholder - parse third integer
-}
-
-function get_z_from_params(line: string): nat
-{
-    1 // placeholder - parse fourth integer
-}
-
-function parse_integer(s: string): nat
-    requires is_non_negative_integer_string(s)
-{
-    0 // placeholder implementation
-}
-
-function parse_castle_array(line: string): seq<nat>
-{
-    [1] // placeholder - parse space-separated integers
-}
-
-function count_lines(s: string): nat
-    ensures count_lines(s) >= 1
-{
-    1 // placeholder implementation
-}
-
-function get_line(s: string, i: nat): string
-    requires i < count_lines(s)
-{
-    s // placeholder implementation
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures ValidOutput(stdin_input, result)
@@ -143,19 +84,9 @@ method solve(stdin_input: string) returns (result: string)
         var output_val := parse_integer(get_line(result, i));
         var test_case := get_test_case(stdin_input, i);
         output_val == count_winning_first_moves(test_case)
+// </vc-spec>
+// <vc-code>
 {
-    result := "";
-    var t := get_test_count(stdin_input);
-    var i := 0;
-    
-    while i < t
-        invariant 0 <= i <= t
-        invariant count_lines(result) == i
-    {
-        var test_case := get_test_case(stdin_input, i);
-        var winning_moves := count_winning_first_moves(test_case);
-        var line := int_to_string(winning_moves) + "\n";
-        result := result + line;
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

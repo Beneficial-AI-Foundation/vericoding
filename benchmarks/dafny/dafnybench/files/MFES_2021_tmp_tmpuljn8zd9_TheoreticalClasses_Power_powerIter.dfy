@@ -1,3 +1,6 @@
+/*
+*/
+
 /* 
 * Formal verification of O(n) and O(log n) algorithms to calculate the natural
 * power of a real number (x^n), illustrating the usage of lemmas.
@@ -23,7 +26,7 @@ method powerIter(x: real, n: nat) returns (p : real)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 

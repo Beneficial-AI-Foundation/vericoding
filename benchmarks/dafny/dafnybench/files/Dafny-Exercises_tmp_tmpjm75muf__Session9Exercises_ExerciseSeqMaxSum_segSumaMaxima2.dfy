@@ -1,3 +1,6 @@
+/*
+*/
+
 function Sum(v:array<int>,i:int,j:int):int
 reads v
 requires 0<=i<=j<=v.Length
@@ -13,8 +16,6 @@ requires 0<=i<v.Length
 {
 forall l,ss {:induction l}::0<=l<=i && ss==i+1==> Sum(v,l,ss)<=s
 }
-
-
 
 function Sum2(v:array<int>,i:int,j:int):int
 reads v
@@ -42,6 +43,6 @@ ensures 0<=k<=i && s==Sum2(v,k,i+1) &&  SumMaxToRight2(v,0,i,s)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

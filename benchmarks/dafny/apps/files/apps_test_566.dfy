@@ -1,5 +1,7 @@
+/*
 Given r red balloons, g green balloons, and b blue balloons, determine the maximum number of tables that can be decorated.
 Each table requires exactly 3 balloons, and no table can have all 3 balloons of the same color.
+*/
 
 predicate ValidInput(r: int, g: int, b: int) {
     r >= 0 && g >= 0 && b >= 0
@@ -15,12 +17,17 @@ function min(a: int, b: int): int {
     if a <= b then a else b
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(r: int, g: int, b: int) returns (result: int)
     requires ValidInput(r, g, b)
     ensures result == MaxTables(r, g, b)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    var maxi := (r + g + b) / 3;
-    var tmpCall1 := min(maxi, r + g);
-    result := min(min(tmpCall1, r + b), g + b);
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -33,11 +33,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function sum(s: seq<int>): int
-  {
-    if |s| == 0 then 0
-    else s[0] + sum(s[1..])
-  }
 
 vc-spec: |-
   method solve(n: int, a: seq<int>, s: int, f: int) returns (result: int)
@@ -51,29 +46,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var maxCount := participantCount(a, s, f, n, 1);
-    result := 1;
-  
-    var pos := 2;
-    while pos <= n
-      invariant 2 <= pos <= n + 1
-      invariant 1 <= result <= pos - 1
-      invariant maxCount == participantCount(a, s, f, n, result)
-      invariant forall start :: 1 <= start < pos ==> 
-        participantCount(a, s, f, n, result) >= participantCount(a, s, f, n, start)
-      invariant forall start :: 1 <= start < pos && 
-        participantCount(a, s, f, n, start) == participantCount(a, s, f, n, result) 
-        ==> result <= start
-    {
-      var currentCount := participantCount(a, s, f, n, pos);
-      if currentCount > maxCount {
-        maxCount := currentCount;
-        result := pos;
-      } else if currentCount == maxCount && pos < result {
-        result := pos;
-      }
-      pos := pos + 1;
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

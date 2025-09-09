@@ -1,3 +1,6 @@
+/*
+*/
+
 function abs(x: real): real
 {
   if x < 0.0 then -x else x
@@ -17,6 +20,6 @@ method has_close_elements(numbers: seq<real>, threshold: real) returns (result: 
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 function countTo( a:array<bool>, n:int ) : int
   requires a != null;
   requires 0 <= n && n <= a.Length;
@@ -17,6 +20,6 @@ method CountTrue(a: array<bool>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,4 +1,3 @@
-
 /*
 function_signature: method sorted_list_sum(list: seq<string>) returns (sorted: seq<string>)
 Sort elements. Requires: requires size of listsize of  > 0. Ensures: the size is bounded; the result is sorted according to the ordering relation; the result is sorted according to the ordering relation; returns a sorted permutation of the input.
@@ -39,12 +38,19 @@ method sort_lengths(list: seq<string>) returns (sorted: seq<string>)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method sorted_list_sum(list: seq<string>) returns (sorted: seq<string>)
     requires |list| > 0
     ensures |sorted| <= |list|
     ensures forall i : int :: 0 <= i < |sorted| ==> |sorted[i]| % 2 == 0
     ensures forall x : int, y : int :: 0 <= x < y < |sorted| ==> |sorted[x]| <= |sorted[y]|
     ensures multiset(sorted) <= multiset(list)
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

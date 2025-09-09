@@ -1,3 +1,6 @@
+/*
+*/
+
 // Author: Shaobo He
 
 predicate sqrt(x: int, r: int) {
@@ -14,6 +17,6 @@ ensures sqrt(x, res);
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

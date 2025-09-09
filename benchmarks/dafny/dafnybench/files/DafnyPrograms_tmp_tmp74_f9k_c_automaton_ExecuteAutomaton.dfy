@@ -1,3 +1,6 @@
+/*
+*/
+
 /**
 Consider cellular automata: a row of cells is repeatedly updated according to a rule. In this exercise I dabbled with,
 each cell has the value either false or true. Each cell's next state depends only on the immediate neighbours, in the 
@@ -38,6 +41,6 @@ method ExecuteAutomaton(init: seq<bool>, rule: (bool, bool, bool) -> bool, steps
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

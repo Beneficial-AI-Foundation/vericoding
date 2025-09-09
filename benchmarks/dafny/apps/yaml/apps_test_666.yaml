@@ -22,7 +22,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (result: int)
@@ -31,24 +30,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var l: int := 0;
-      var r: int := n;
-  
-      while r - l > 1 
-          invariant 0 <= l < r <= n
-          invariant TriangularNumber(l) < n
-          invariant TriangularNumber(r) >= n
-          decreases r - l
-      {
-          var m: int := (r + l) / 2;
-          if TriangularNumber(m) >= n {
-              r := m;
-          } else {
-              l := m;
-          }
-      }
-  
-      result := n - TriangularNumber(l);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

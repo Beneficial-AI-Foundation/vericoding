@@ -1,3 +1,6 @@
+/*
+*/
+
 // verifies
 // all bs are before all as which are before all ds
 
@@ -25,6 +28,6 @@ ensures |a| == |b|;
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

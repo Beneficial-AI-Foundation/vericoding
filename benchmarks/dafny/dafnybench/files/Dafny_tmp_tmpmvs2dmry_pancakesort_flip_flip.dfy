@@ -1,3 +1,6 @@
+/*
+*/
+
 // flips (i.e., reverses) array elements in the range [0..num]
 
 // <vc-helpers>
@@ -14,6 +17,6 @@ ensures forall k :: num < k < a.Length ==> a[k] == old(a[k])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

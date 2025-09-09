@@ -33,10 +33,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function MaxReal(x: real, y: real): real
-  {
-      if x >= y then x else y
-  }
 
 vc-spec: |-
   method DetermineWinner(a: int, b: int, c: int, d: int) returns (result: string)
@@ -46,16 +42,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var misha_score := CalculateScore(a, c);
-      var vasya_score := CalculateScore(b, d);
-      
-      if misha_score > vasya_score {
-          result := "Misha";
-      } else if vasya_score > misha_score {
-          result := "Vasya";
-      } else {
-          result := "Tie";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

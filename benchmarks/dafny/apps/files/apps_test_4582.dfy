@@ -1,6 +1,8 @@
+/*
 Given two characters representing AtCoDeer's honesty status and claim about TopCoDeer,
 determine whether TopCoDeer is actually honest or dishonest.
 An honest player tells the truth, a dishonest player lies.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -19,17 +21,17 @@ function CorrectOutput(input: string): string
     else "D\n"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures result == CorrectOutput(input)
     ensures result == "H\n" || result == "D\n"
+// </vc-spec>
+// <vc-code>
 {
-    var a := input[0];
-    var b := input[2];
-
-    if (a == 'H' && b == 'H') || (a == 'D' && b == 'D') {
-        result := "H\n";
-    } else {
-        result := "D\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

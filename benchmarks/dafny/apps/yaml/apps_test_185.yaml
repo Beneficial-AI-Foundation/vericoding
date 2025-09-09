@@ -19,23 +19,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function min(a: int, b: int): int
-  {
-    if a <= b then a else b
-  }
-  
-  function solve(n: int, k: int): int
-    requires ValidInput(n, k)
-    ensures solve(n, k) > 0
-    ensures (k == 1 || k == n) ==> solve(n, k) == 3 * n
-    ensures (k != 1 && k != n) ==> solve(n, k) == 3 * n + min(k - 1, n - k)
-    ensures solve(n, k) == OptimalMoves(n, k)
-  {
-    if k == 1 || k == n then
-      3 * n
-    else
-      3 * n + min(k - 1, n - k)
-  }
 
 vc-spec: |-
   method MinimumMoves(n: int, k: int) returns (result: int)
@@ -45,7 +28,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    result := solve(n, k);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

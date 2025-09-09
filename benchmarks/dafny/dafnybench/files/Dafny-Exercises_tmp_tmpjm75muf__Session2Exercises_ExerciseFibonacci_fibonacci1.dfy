@@ -1,3 +1,6 @@
+/*
+*/
+
 function fib(n: nat): nat
 decreases n
 {
@@ -15,6 +18,6 @@ ensures f==fib(n)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

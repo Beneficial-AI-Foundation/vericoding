@@ -1,6 +1,8 @@
+/*
 Given N attendees at a brain dinner (including Heidi), determine the minimum number of brains needed
 in a chest for Heidi to survive. Heidi makes the first proposal for brain distribution, which must be 
 accepted by at least half of all attendees (including herself) for her to survive.
+*/
 
 predicate IsPowerOfTwo(n: int) 
     decreases n
@@ -22,21 +24,16 @@ predicate CorrectResult(n: int, result: int) {
         exists z :: 1 <= z <= n && IsPowerOfTwo(z) && z <= n && z * 2 > n && result == (n - z) / 2
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: int)
     requires ValidInput(n)
     ensures CorrectResult(n, result)
+// </vc-spec>
+// <vc-code>
 {
-    if n % 2 == 1 {
-        result := (n - 1) / 2;
-    } else {
-        var z := 1;
-        while z * 2 <= n
-            invariant IsPowerOfTwo(z)
-            invariant z >= 1
-            invariant z <= n
-        {
-            z := z * 2;
-        }
-        result := (n - z) / 2;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

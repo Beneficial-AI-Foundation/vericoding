@@ -1,7 +1,9 @@
+/*
 Given N bamboos with lengths, find minimum magic points (MP) to create exactly three bamboos 
 with target lengths A, B, and C. Operations: Extension Magic (1 MP per unit), Shortening Magic 
 (1 MP per unit), Composition Magic (10 MP to combine two bamboos). Input format: first line 
 contains N A B C, followed by N lines with bamboo lengths. Output minimum MP needed.
+*/
 
 ghost predicate ValidInput(input: string)
 {
@@ -105,6 +107,10 @@ ghost function string_to_int(s: string): nat
     0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires stdin_input[|stdin_input|-1] == '\n' || exists i :: 0 <= i < |stdin_input| && stdin_input[i] == '\n'
@@ -115,12 +121,9 @@ method solve(stdin_input: string) returns (result: string)
     ensures forall assignment :: ValidAssignment(stdin_input + (if stdin_input[|stdin_input|-1] == '\n' then "" else "\n"), assignment) ==>
         string_to_int(result[..|result|-1]) <= CalculateAssignmentCost(stdin_input + (if stdin_input[|stdin_input|-1] == '\n' then "" else "\n"), assignment)
     decreases *
+// </vc-spec>
+// <vc-code>
 {
-    var i := 0;
-    while i < 10
-        decreases *
-    {
-        i := i + 1;
-    }
-    result := "0\n";
+  assume {:axiom} false;
 }
+// </vc-code>

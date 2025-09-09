@@ -1,8 +1,10 @@
+/*
 Given n bus stops at positions a_i (sorted in increasing order), a bus travels back and forth 
 between stops 1 and n in order: 1→2→...→n→(n-1)→...→1→2→... repeatedly.
 Given a segment of the bus journey as a sorted list of stop numbers with their visit frequencies,
 calculate the total distance traveled during this segment, or return -1 if the distance cannot 
 be uniquely determined.
+*/
 
 predicate isSorted(s: seq<int>)
 {
@@ -80,31 +82,10 @@ function calculateTotalDistance(n: int, positions: seq<int>, visits: seq<int>): 
         edgeDistance + maxRounds * 2 * totalEdgeLength
 }
 
-function countVisits(visits: seq<int>, stop: int): int
-{
-    if |visits| == 0 then 0
-    else (if visits[0] == stop then 1 else 0) + countVisits(visits[1..], stop)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function maxVal(s: seq<int>): int
-    requires |s| > 0
-{
-    if |s| == 1 then s[0]
-    else if s[0] >= maxVal(s[1..]) then s[0]
-    else maxVal(s[1..])
-}
-
-function min(a: int, b: int): int
-{
-    if a <= b then a else b
-}
-
-function sum(s: seq<int>): int
-{
-    if |s| == 0 then 0
-    else s[0] + sum(s[1..])
-}
-
+// <vc-spec>
 method solve(n: int, positions: seq<int>, m: int, visits: seq<int>) returns (result: int)
     requires n >= 2
     requires |positions| == n
@@ -118,10 +99,9 @@ method solve(n: int, positions: seq<int>, m: int, visits: seq<int>) returns (res
     ensures result == -1 <==> hasAmbiguousPath(n, positions, visits)
     ensures result >= 0 ==> result == calculateTotalDistance(n, positions, visits)
     ensures result >= 0 ==> (forall i :: 0 <= i < n-1 ==> positions[i+1] - positions[i] > 0)
+// </vc-spec>
+// <vc-code>
 {
-    if hasAmbiguousPath(n, positions, visits) {
-        result := -1;
-    } else {
-        result := calculateTotalDistance(n, positions, visits);
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

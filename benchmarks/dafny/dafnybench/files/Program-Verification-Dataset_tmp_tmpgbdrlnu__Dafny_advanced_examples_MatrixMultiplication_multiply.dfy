@@ -1,3 +1,6 @@
+/*
+*/
+
 function RowColumnProduct(m1: array2<int>, m2: array2<int>, row: nat, column: nat): int
     reads m1
     reads m2
@@ -33,6 +36,6 @@ method multiply(m1: array2<int>, m2: array2<int>) returns (m3: array2<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

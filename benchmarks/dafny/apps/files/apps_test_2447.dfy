@@ -1,7 +1,9 @@
+/*
 Given multiple binary strings, determine the minimum number of character flips needed 
 to make each string "good". A string is "good" if it contains neither "010" nor "101" 
 as a subsequence. Input format: first line contains number of test cases t, followed 
 by t binary strings. Output the minimum operations needed for each string.
+*/
 
 function split_lines(s: string): seq<string>
 {
@@ -78,39 +80,17 @@ function min_operations_to_make_good(s: string): int
     else min_ops_helper(s, 0, |s|)
 }
 
-function count_char(s: string, c: char): int
-    ensures count_char(s, c) >= 0
-    ensures count_char(s, c) <= |s|
-{
-    if |s| == 0 then 0
-    else if s[0] == c then 1 + count_char(s[1..], c)
-    else count_char(s[1..], c)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function min_ops_helper(s: string, split_pos: int, best_so_far: int): int
-    requires is_binary_string(s)
-    requires 0 <= split_pos <= |s|
-    requires best_so_far >= 0
-    requires best_so_far <= |s|
-    ensures min_ops_helper(s, split_pos, best_so_far) >= 0
-    ensures min_ops_helper(s, split_pos, best_so_far) <= |s|
-    decreases |s| - split_pos
-{
-    if split_pos >= |s| then best_so_far
-    else
-        var prefix := s[..split_pos];
-        var suffix := s[split_pos..];
-        var cost1 := count_char(prefix, '0') + count_char(suffix, '1');
-        var cost2 := count_char(prefix, '1') + count_char(suffix, '0');
-        var min_cost := if cost1 <= cost2 then cost1 else cost2;
-        var new_best := if min_cost < best_so_far then min_cost else best_so_far;
-        min_ops_helper(s, split_pos + 1, new_best)
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures ValidOutput(result)
     ensures CorrectResult(input, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := "";
+  assume {:axiom} false;
 }
+// </vc-code>

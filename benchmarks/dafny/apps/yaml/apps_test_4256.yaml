@@ -76,33 +76,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  method SplitString(s: string) returns (parts: seq<string>)
-      requires |s| >= 0
-      ensures |parts| >= 0
-      ensures forall i :: 0 <= i < |parts| ==> |parts[i]| > 0
-      ensures forall i :: 0 <= i < |parts| ==> forall j :: 0 <= j < |parts[i]| ==> parts[i][j] != ' ' && parts[i][j] != '\n' && parts[i][j] != '\t'
-      ensures parts == SplitStringSpec(s)
-  {
-      parts := SplitStringSpec(s);
-  }
-  
-  method StringToInt(s: string) returns (result: int)
-      requires |s| > 0
-      requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-      ensures result >= 0
-      ensures result == StringToIntSpec(s)
-  {
-      result := StringToIntSpec(s);
-  }
-  
-  method IntToString(n: int) returns (result: string)
-      requires n >= 0
-      ensures |result| > 0
-      ensures forall i :: 0 <= i < |result| ==> '0' <= result[i] <= '9'
-      ensures result == IntToStringSpec(n)
-  {
-      result := IntToStringSpec(n);
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -120,15 +93,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var parts := SplitString(input);
-      var A := StringToInt(parts[0]);
-      var B := StringToInt(parts[1]);
-      var C := StringToInt(parts[2]);
-  
-      var affordable := B / A;
-      var drinks := if affordable < C then affordable else C;
-      var drinks_str := IntToString(drinks);
-      result := drinks_str + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -1,6 +1,8 @@
+/*
 Given N gems with values and costs, select a subset to maximize total profit
 (sum of selected values minus sum of selected costs). Only gems with positive
 profit should be selected to achieve maximum profit.
+*/
 
 function SumOfPositiveProfits(values: seq<int>, costs: seq<int>, n: int): int
     requires |values| >= n
@@ -18,22 +20,17 @@ predicate ValidInput(n: int, values: seq<int>, costs: seq<int>)
     |values| == n && |costs| == n && n >= 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, values: seq<int>, costs: seq<int>) returns (result: int)
     requires ValidInput(n, values, costs)
     ensures result >= 0
     ensures result == SumOfPositiveProfits(values, costs, n)
+// </vc-spec>
+// <vc-code>
 {
-    result := 0;
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant result >= 0
-        invariant result == SumOfPositiveProfits(values, costs, i)
-    {
-        var profit := values[i] - costs[i];
-        if profit > 0 {
-            result := result + profit;
-        }
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

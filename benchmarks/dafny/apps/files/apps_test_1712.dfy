@@ -1,7 +1,9 @@
+/*
 Two players (Vanya and Vova) attack monsters simultaneously with different frequencies.
 Vanya attacks at frequency a hits/second, Vova at frequency b hits/second.
 For each monster requiring mobs[i] hits, determine who makes the final hit.
 The attack pattern repeats every (a+b) hits, so we can use modular arithmetic.
+*/
 
 predicate ValidInput(n: int, a: int, b: int, mobs: seq<int>)
 {
@@ -27,82 +29,16 @@ predicate CorrectResult(result: seq<string>, n: int, a: int, b: int, mobs: seq<i
         (result[i] == "Both" <==> determineWinner(k, a, b) == 2)
 }
 
-function determineWinner(k: int, a: int, b: int): int
-    requires a > 0 && b > 0
-    requires 0 <= k <= a + b
-    ensures determineWinner(k, a, b) in [0, 1, 2]
-{
-    computeWinnerState(k, 0, 0, 1, a, b, a + b)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function computeWinnerState(target: int, aa: int, bb: int, i: int, a: int, b: int, total: int): int
-    requires a > 0 && b > 0
-    requires 0 <= target <= total
-    requires i >= 1
-    requires aa >= 0 && bb >= 0
-    requires total == a + b
-    ensures computeWinnerState(target, aa, bb, i, a, b, total) in [0, 1, 2]
-    decreases total + 1 - i
-{
-    if target == 0 then 2
-    else if i > target || i > total then 2
-    else
-        var t1 := aa + b;
-        var t2 := bb + a;
-
-        if i == target then
-            if t1 == t2 then 2
-            else if t1 < t2 then 0
-            else 1
-        else
-            if t1 == t2 then
-                if i + 1 == target then 2
-                else if i + 1 <= total then
-                    computeWinnerState(target, aa + b, bb + a, i + 2, a, b, total)
-                else
-                    computeWinnerState(target, aa + b, bb + a, i + 1, a, b, total)
-            else if t1 < t2 then
-                computeWinnerState(target, t1, bb, i + 1, a, b, total)
-            else
-                computeWinnerState(target, aa, t2, i + 1, a, b, total)
-}
-
+// <vc-spec>
 method solve(n: int, a: int, b: int, mobs: seq<int>) returns (result: seq<string>)
     requires ValidInput(n, a, b, mobs)
     ensures CorrectResult(result, n, a, b, mobs)
+// </vc-spec>
+// <vc-code>
 {
-    var total := a + b;
-    var ans := new int[total + 1];
-
-    // Initialize ans array using the determineWinner function
-    for i := 0 to total + 1
-        invariant forall k :: 0 <= k < i ==> ans[k] == determineWinner(k, a, b)
-        invariant forall k :: 0 <= k < i ==> ans[k] in [0, 1, 2]
-    {
-        ans[i] := determineWinner(i, a, b);
-    }
-
-    // Build result array
-    result := [];
-
-    for j := 0 to n
-        invariant |result| == j
-        invariant forall idx :: 0 <= idx < j ==> result[idx] in ["Vanya", "Vova", "Both"]
-        invariant forall idx :: 0 <= idx < j ==> 
-            var k := if mobs[idx] == 0 then 0 else mobs[idx] % total;
-            (result[idx] == "Vanya" <==> ans[k] == 0) &&
-            (result[idx] == "Vova" <==> ans[k] == 1) &&
-            (result[idx] == "Both" <==> ans[k] == 2)
-    {
-        var m := mobs[j];
-        var k := if m == 0 then 0 else m % total;
-
-        if ans[k] == 0 {
-            result := result + ["Vanya"];
-        } else if ans[k] == 1 {
-            result := result + ["Vova"];
-        } else {
-            result := result + ["Both"];
-        }
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

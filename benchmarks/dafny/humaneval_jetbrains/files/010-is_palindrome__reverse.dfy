@@ -1,4 +1,3 @@
-
 /*
 function_signature: method reverse(str: string) returns (rev: string)
 Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
@@ -20,11 +19,18 @@ method make_palindrome(s: string) returns (result: string)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method reverse(str: string) returns (rev: string)
     // post-conditions-start
     ensures |rev| == |str|
     ensures forall k :: 0 <= k < |str| ==> rev[k] == str[|str| - 1 - k]
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

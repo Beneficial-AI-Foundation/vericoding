@@ -1,6 +1,8 @@
+/*
 Given three integers A, B, and C representing syllable counts of three phrases,
 determine if these phrases can be arranged to form a Haiku. A Haiku requires
 exactly two phrases with 5 syllables and one phrase with 7 syllables.
+*/
 
 predicate ValidInput(A: int, B: int, C: int)
 {
@@ -19,24 +21,17 @@ predicate ValidOutput(result: string)
     result in {"YES", "NO"}
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(A: int, B: int, C: int) returns (result: string)
     requires ValidInput(A, B, C)
     ensures ValidOutput(result)
     ensures result == "YES" <==> CanFormHaiku(A, B, C)
+// </vc-spec>
+// <vc-code>
 {
-    var count5 := 0;
-    var count7 := 0;
-
-    if A == 5 { count5 := count5 + 1; }
-    if A == 7 { count7 := count7 + 1; }
-    if B == 5 { count5 := count5 + 1; }
-    if B == 7 { count7 := count7 + 1; }
-    if C == 5 { count5 := count5 + 1; }
-    if C == 7 { count7 := count7 + 1; }
-
-    if count5 == 2 && count7 == 1 {
-        result := "YES";
-    } else {
-        result := "NO";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

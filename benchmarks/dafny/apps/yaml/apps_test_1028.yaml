@@ -30,7 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int) returns (min_pairs: int, max_pairs: int)
@@ -43,19 +42,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var k := n / m;
-    var p := n % m;
-  
-    // Minimum: distribute as evenly as possible
-    // p teams get k+1 participants, (m-p) teams get k participants
-    var tmpCall1 := comb2(k + 1);
-    var tmpCall2 := comb2(k);
-    min_pairs := p * tmpCall1 + (m - p) * tmpCall2;
-  
-    // Maximum: put as many as possible in one team
-    // One team gets (n-m+1) participants, others get 1 each
-    var tmpCall3 := comb2(n - m + 1);
-    max_pairs := tmpCall3;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

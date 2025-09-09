@@ -1,4 +1,3 @@
-
 /*
 function_signature: method reverse(s: string) returns (rev: string)
 Reverse order. Ensures: returns the correct size/count; the condition holds for all values.
@@ -15,14 +14,21 @@ method solve(s: string) returns (t: string)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method reverse(s: string) returns (rev: string)
   // pre-conditions-start
   ensures |rev| == |s|
   ensures forall k :: 0 <= k < |s| ==> rev[k] == s[|s| - 1 - k]
   // pre-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function is_alpha(c: char) : bool {
   'a' <= c <= 'z' || 'A' <= c <= 'Z'

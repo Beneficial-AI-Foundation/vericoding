@@ -1,4 +1,3 @@
-
 /*
 function_signature: method unique(s: seq<int>) returns (result: seq<int>)
 Process input. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values.
@@ -17,15 +16,22 @@ method uniqueSorted(s: seq<int>) returns (result: seq<int>)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method unique(s: seq<int>) returns (result: seq<int>)
     // post-conditions-start
     ensures forall i, j :: 0 <= i < j < |result| ==> result[i] < result[j]
     ensures forall x :: x in result ==> x in s
     ensures forall x :: x in s ==> x in result
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 method SortSeq(s: seq<int>) returns (sorted: seq<int>)
   // post-conditions-start

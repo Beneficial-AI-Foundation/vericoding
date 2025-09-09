@@ -1,3 +1,6 @@
+/*
+*/
+
 function sorted(a: array<int>) : bool
     reads a
 {
@@ -15,6 +18,6 @@ method BinarySearch(a: array<int>, x: int) returns (index: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

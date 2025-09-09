@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsSpaceCommaDot(c: char)
 {
     c == ' ' || c == ',' || c == '.'
@@ -13,6 +16,6 @@ method ReplaceWithColon(s: string) returns (v: string)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

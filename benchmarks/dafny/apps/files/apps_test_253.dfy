@@ -1,8 +1,10 @@
+/*
 Given three positive integers k₁, k₂, k₃ (each ≤ 1500), determine if there exist 
 starting times x₁, x₂, x₃ such that every integer t ≥ max(x₁, x₂, x₃) can be written 
 as xᵢ + j·kᵢ for some i ∈ {1,2,3} and non-negative integer j. In other words, 
 determine if the union of three arithmetic progressions can cover all sufficiently 
 large positive integers.
+*/
 
 predicate ValidInput(nums: seq<int>)
 {
@@ -35,72 +37,17 @@ function computeResult(x: int, y: int, z: int): string
         else "NO"
 }
 
-function sortThree(x: int, y: int, z: int): (int, int, int)
-    ensures sortThree(x, y, z).0 <= sortThree(x, y, z).1 <= sortThree(x, y, z).2
-    ensures multiset{x, y, z} == multiset{sortThree(x, y, z).0, sortThree(x, y, z).1, sortThree(x, y, z).2}
-{
-    if x <= y && y <= z then (x, y, z)
-    else if x <= z && z <= y then (x, z, y)
-    else if y <= x && x <= z then (y, x, z)
-    else if y <= z && z <= x then (y, z, x)
-    else if z <= x && x <= y then (z, x, y)
-    else (z, y, x)
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(nums: seq<int>) returns (result: string)
     requires ValidInput(nums)
     ensures result == "YES" || result == "NO"
     ensures result == computeResult(nums[0], nums[1], nums[2])
+// </vc-spec>
+// <vc-code>
 {
-    var temp := nums;
-
-    // Sort the array
-    if temp[0] > temp[1] {
-        temp := temp[0 := temp[1]][1 := temp[0]];
-    }
-
-    if temp[1] > temp[2] {
-        temp := temp[1 := temp[2]][2 := temp[1]];
-    }
-
-    if temp[0] > temp[1] {
-        temp := temp[0 := temp[1]][1 := temp[0]];
-    }
-
-    var a := temp[0];
-    var b := temp[1];
-    var c := temp[2];
-
-    // Implement the logic from the Python function
-    if a > 3 {
-        result := "NO";
-    } else if a == 3 {
-        if b > 3 {
-            result := "NO";
-        } else if b == 3 {
-            if c > 3 {
-                result := "NO";
-            } else {
-                result := "YES";
-            }
-        } else {
-            result := "NO";
-        }
-    } else if a == 1 {
-        result := "YES";
-    } else { // a == 2
-        if b == 2 {
-            result := "YES";
-        } else if b > 4 {
-            result := "NO";
-        } else if b == 4 {
-            if c == 4 {
-                result := "YES";
-            } else {
-                result := "NO";
-            }
-        } else {
-            result := "NO";
-        }
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

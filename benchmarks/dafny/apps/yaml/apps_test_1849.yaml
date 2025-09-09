@@ -31,19 +31,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function pow(base: int, exp: int, mod: int): int
-    requires mod > 0
-    requires exp >= 0
-    decreases exp
-  {
-    if exp == 0 then 1 % mod
-    else if exp == 1 then base % mod
-    else if exp % 2 == 0 then 
-      var half := pow(base, exp / 2, mod);
-      (half * half) % mod
-    else
-      (base * pow(base, exp - 1, mod)) % mod
-  }
 
 vc-spec: |-
   method solve(n: int) returns (result: seq<int>)
@@ -52,31 +39,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var out: seq<int> := [];
-  
-    var i := 1;
-    while i <= n
-      invariant 1 <= i <= n + 1
-      invariant |out| == i - 1
-      invariant forall k :: 0 <= k < |out| ==> 0 <= out[k] < MOD
-      invariant i == n + 1 ==> |out| == n && out[n-1] == 10
-      invariant forall j :: 0 <= j < |out| && j < n-1 ==> 
-        out[j] == BlockCountFormula(n, j+1)
-    {
-      if i == n {
-        out := out + [10];
-      } else {
-        var nex := (2 * 9 * pow(10, n - i - 1, MOD) * 10) % MOD;
-        if i < n - 1 {
-          var additional := ((n - 1 - i) * 9 * 9 * pow(10, n - i - 2, MOD) * 10) % MOD;
-          nex := (nex + additional) % MOD;
-        }
-        out := out + [nex];
-      }
-      i := i + 1;
-    }
-  
-    result := out;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

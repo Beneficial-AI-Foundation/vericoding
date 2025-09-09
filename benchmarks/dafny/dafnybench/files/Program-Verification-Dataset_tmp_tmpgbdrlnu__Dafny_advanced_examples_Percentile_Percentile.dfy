@@ -1,3 +1,6 @@
+/*
+*/
+
 // Sum of elements of A from indices 0 to end.
 // end is inclusive! (not James's normal way of thinking!!)
 function SumUpto(A: array<real>, end: int): real
@@ -31,12 +34,11 @@ method Percentile(p: real, A: array<real>, total: real) returns (i: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 
 // example showing that, with the original postcondition, the answer is non-unique!
-
 
 // proof that, with the corrected postcondition, the answer is unique
 // lemma for previous proof: when an array has strictly positive elements, the

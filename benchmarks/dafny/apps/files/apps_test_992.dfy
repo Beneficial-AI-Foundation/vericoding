@@ -1,7 +1,9 @@
+/*
 Given N positive integers A₁, A₂, ..., Aₙ and a positive integer S,
 for each non-empty subset T of {1, 2, ..., N}, define f(T) as the number 
 of non-empty subsets of T whose corresponding A values sum to S.
 Find the sum of f(T) over all 2ᴺ - 1 non-empty subsets T, modulo 998244353.
+*/
 
 predicate ValidInput(n: int, s: int, a: seq<int>)
 {
@@ -98,8 +100,10 @@ predicate ValidParsedInputExists(input: string)
                 ai >= 1 && ai <= 3000
 }
 
-// No additional helper methods needed
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method Solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     ensures |result| > 0
@@ -111,68 +115,9 @@ method Solve(stdin_input: string) returns (result: string)
                 StringToInt(result[..|result|-1]) == ComputeSubsetSumWays(n, s, a) % 998244353
         else
             result == "0\n"
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(stdin_input);
-    if |lines| < 2 {
-        result := "0\n";
-        return;
-    }
-
-    var first_line := SplitWhitespace(lines[0]);
-    var second_line := SplitWhitespace(lines[1]);
-
-    if |first_line| < 2 || |second_line| == 0 {
-        result := "0\n";
-        return;
-    }
-
-    var n := StringToInt(first_line[0]);
-    var s := StringToInt(first_line[1]);
-
-    if n <= 0 || s <= 0 || |second_line| != n {
-        result := "0\n";
-        return;
-    }
-
-    var a := seq(n, i requires 0 <= i < n => StringToInt(second_line[i]));
-
-    if !ValidInput(n, s, a) {
-        result := "0\n";
-        return;
-    }
-
-    var mod := 998244353;
-    var dp := seq(n+1, i => seq(s+1, j => 0));
-    dp := dp[0 := dp[0][0 := 1]];
-
-    var i := 1;
-    while i <= n
-        invariant 1 <= i <= n + 1
-        invariant |dp| == n + 1
-        invariant forall k :: 0 <= k < |dp| ==> |dp[k]| == s + 1
-    {
-        var new_row := seq(s+1, k => (dp[i-1][k] * 2) % mod);
-
-        if 0 <= i-1 < n && 0 < a[i-1] <= s {
-            var j := a[i-1];
-            while j <= s
-                invariant a[i-1] <= j <= s + 1
-                invariant |new_row| == s + 1
-            {
-                if j - a[i-1] >= 0 && j - a[i-1] < s+1 {
-                    new_row := new_row[j := (new_row[j] + dp[i-1][j - a[i-1]]) % mod];
-                }
-                j := j + 1;
-            }
-        }
-
-        dp := dp[i := new_row];
-        i := i + 1;
-    }
-
-    if s < |dp[n]| {
-        result := IntToString(dp[n][s]) + "\n";
-    } else {
-        result := "0\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

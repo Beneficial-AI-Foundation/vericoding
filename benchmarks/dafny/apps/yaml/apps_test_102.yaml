@@ -80,19 +80,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function UnitWord(digit: int): string
-      requires 1 <= digit <= 9
-  {
-      if digit == 1 then "one"
-      else if digit == 2 then "two"
-      else if digit == 3 then "three"
-      else if digit == 4 then "four"
-      else if digit == 5 then "five"
-      else if digit == 6 then "six"
-      else if digit == 7 then "seven"
-      else if digit == 8 then "eight"
-      else "nine"
-  }
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -105,44 +92,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var n := ParseInteger(stdin_input);
-  
-      if n == 0 { result := "zero\n"; }
-      else if n == 1 { result := "one\n"; }
-      else if n == 2 { result := "two\n"; }
-      else if n == 3 { result := "three\n"; }
-      else if n == 4 { result := "four\n"; }
-      else if n == 5 { result := "five\n"; }
-      else if n == 6 { result := "six\n"; }
-      else if n == 7 { result := "seven\n"; }
-      else if n == 8 { result := "eight\n"; }
-      else if n == 9 { result := "nine\n"; }
-      else if n == 10 { result := "ten\n"; }
-      else if n == 11 { result := "eleven\n"; }
-      else if n == 12 { result := "twelve\n"; }
-      else if n == 13 { result := "thirteen\n"; }
-      else if n == 14 { result := "fourteen\n"; }
-      else if n == 15 { result := "fifteen\n"; }
-      else if n == 16 { result := "sixteen\n"; }
-      else if n == 17 { result := "seventeen\n"; }
-      else if n == 18 { result := "eighteen\n"; }
-      else if n == 19 { result := "nineteen\n"; }
-      else if n == 20 { result := "twenty\n"; }
-      else if n == 30 { result := "thirty\n"; }
-      else if n == 40 { result := "forty\n"; }
-      else if n == 50 { result := "fifty\n"; }
-      else if n == 60 { result := "sixty\n"; }
-      else if n == 70 { result := "seventy\n"; }
-      else if n == 80 { result := "eighty\n"; }
-      else if n == 90 { result := "ninety\n"; }
-      else if 21 <= n <= 29 { result := "twenty-" + UnitWord(n % 10) + "\n"; }
-      else if 31 <= n <= 39 { result := "thirty-" + UnitWord(n % 10) + "\n"; }
-      else if 41 <= n <= 49 { result := "forty-" + UnitWord(n % 10) + "\n"; }
-      else if 51 <= n <= 59 { result := "fifty-" + UnitWord(n % 10) + "\n"; }
-      else if 61 <= n <= 69 { result := "sixty-" + UnitWord(n % 10) + "\n"; }
-      else if 71 <= n <= 79 { result := "seventy-" + UnitWord(n % 10) + "\n"; }
-      else if 81 <= n <= 89 { result := "eighty-" + UnitWord(n % 10) + "\n"; }
-      else { result := "ninety-" + UnitWord(n % 10) + "\n"; }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

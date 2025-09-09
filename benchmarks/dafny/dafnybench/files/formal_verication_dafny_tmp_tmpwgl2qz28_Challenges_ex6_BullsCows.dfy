@@ -1,3 +1,6 @@
+/*
+*/
+
 // see pdf 'ex6 & 7 documentation' for excercise question
 
 function bullspec(s:seq<nat>, u:seq<nat>): nat
@@ -42,6 +45,6 @@ ensures c == cowspec(s, u)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

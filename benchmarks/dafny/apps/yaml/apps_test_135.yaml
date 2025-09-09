@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int) returns (result: string)
@@ -31,17 +30,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var i := 1;
-      while i <= k
-          invariant 1 <= i <= k + 1
-          invariant forall j :: 1 <= j < i ==> n % j == (j - 1)
-      {
-          if (n % i != (i - 1)) {
-              return "No\n";
-          }
-          i := i + 1;
-      }
-      return "Yes\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -102,54 +102,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function SplitLines(input: string): seq<string>
-  {
-    [input]
-  }
-  
-  function ParseInt(s: string): int
-  {
-    0
-  }
-  
-  function ParseIntSeq(s: string): seq<int>
-  {
-    [0]
-  }
-  
-  function TrimWhitespace(s: string): string
-  {
-    s
-  }
-  
-  function BuildSameColorComponents(colors: seq<int>, edges: seq<(int, int)>): seq<seq<int>>
-  {
-    [[]]
-  }
-  
-  function BuildComponentGraph(components: seq<seq<int>>, colors: seq<int>, edges: seq<(int, int)>): seq<seq<int>>
-  {
-    [[]]
-  }
-  
-  function TreeDiameter(graph: seq<seq<int>>): int
-  {
-    0
-  }
-  
-  function find(x: int, p: seq<int>): (int, seq<int>)
-    requires x >= 0
-    requires forall i :: 0 <= i < |p| ==> p[i] >= 0
-    ensures find(x, p).0 >= 0
-    ensures |find(x, p).1| <= |p|
-  {
-    if |p| == 0 then
-      (x, [])
-    else if p[0] == x then
-      (x, p)
-    else
-      find(x, p[1..])
-  }
 
 vc-spec: |-
   method solve(stdin_input: string) returns (output: string)
@@ -174,7 +126,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    output := "0";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

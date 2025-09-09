@@ -22,18 +22,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma MultisetSliceLemma(s: string, pos: int)
-      requires 0 <= pos <= |s|
-      ensures multiset(s) == multiset(s[..pos]) + multiset(s[pos..])
-  {
-      if pos == 0 {
-          assert s == s[pos..];
-      } else if pos == |s| {
-          assert s == s[..pos];
-      } else {
-          assert s == s[..pos] + s[pos..];
-      }
-  }
 
 vc-spec: |-
   method solve(n: int, s: string) returns (result: string)
@@ -43,40 +31,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := "";
-      var i := n - 1;
-      var m := 0;
-  
-      while i >= 0
-          invariant 0 <= i + 1 <= n
-          invariant m == n - 1 - i
-          invariant |result| == m
-          invariant forall j :: 0 <= j < |result| ==> 'a' <= result[j] <= 'z'
-          invariant forall j :: 0 <= j < |result| ==> result[j] in s
-          invariant multiset(result) == multiset(s[i+1..])
-          invariant forall k :: i + 1 <= k < n ==> s[k] in result
-      {
-          var c := s[i];
-          assert 'a' <= c <= 'z';
-          var pos := m / 2;
-          var old_result := result;
-          result := result[..pos] + [c] + result[pos..];
-  
-          MultisetSliceLemma(old_result, pos);
-          assert multiset(old_result) == multiset(old_result[..pos]) + multiset(old_result[pos..]);
-          assert multiset(result) == multiset(old_result[..pos]) + multiset([c]) + multiset(old_result[pos..]);
-          assert multiset(result) == multiset(old_result) + multiset([c]);
-          assert multiset(old_result) == multiset(s[i+1..]);
-          assert c == s[i];
-          assert s[i..] == [s[i]] + s[i+1..];
-          assert multiset(s[i..]) == multiset([s[i]]) + multiset(s[i+1..]);
-          assert multiset(result) == multiset(s[i..]);
-  
-          i := i - 1;
-          m := m + 1;
-  
-          assert multiset(result) == multiset(s[i+1..]);
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

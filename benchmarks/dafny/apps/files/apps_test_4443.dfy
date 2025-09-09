@@ -1,4 +1,6 @@
+/*
 Given a lowercase English letter (not 'z'), output the next letter in alphabetical order.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -20,15 +22,16 @@ predicate ValidOutput(input: string, output: string)
     'b' <= output[0] <= 'z'
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (output: string)
     requires ValidInput(input)
     ensures ValidOutput(input, output)
+// </vc-spec>
+// <vc-code>
 {
-    if |input| > 0 {
-        var c := input[0];
-        var nextChar := (c as int + 1) as char;
-        output := [nextChar, '\n'];
-    } else {
-        output := "";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

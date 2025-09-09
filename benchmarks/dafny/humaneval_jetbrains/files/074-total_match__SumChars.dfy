@@ -1,4 +1,3 @@
-
 /*
 function_signature: method SumChars(list: seq<string>) returns (sum: nat)
 Calculate sum. Ensures: returns the sum of character lengths in all strings.
@@ -21,10 +20,17 @@ method TotalMatch(list1: seq<string>, list2: seq<string>) returns (result: seq<s
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method SumChars(list: seq<string>) returns (sum: nat)
   // post-conditions-start
   ensures sum == sum_chars_rec(list)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

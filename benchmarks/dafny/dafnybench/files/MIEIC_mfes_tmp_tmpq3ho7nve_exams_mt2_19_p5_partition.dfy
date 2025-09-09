@@ -1,3 +1,6 @@
+/*
+*/
+
 type T = int // example
 
  // Partitions a nonempty array 'a', by reordering the elements in the array,
@@ -19,6 +22,6 @@ method partition(a: array<T>) returns(pivotPos: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 // 1 a)
 
 // [ai, aj[
@@ -33,6 +36,6 @@ method queryFast(a: array<int>, c: array<int>, i: int, j: int) returns (r: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

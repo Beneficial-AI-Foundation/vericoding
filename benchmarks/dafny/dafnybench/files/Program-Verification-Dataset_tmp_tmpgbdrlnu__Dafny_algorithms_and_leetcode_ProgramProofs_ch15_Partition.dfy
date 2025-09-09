@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate SplitPoint(a: array<int>, n: int)
     reads a
     requires 0 <= n <= n
@@ -5,8 +8,6 @@ predicate SplitPoint(a: array<int>, n: int)
 {
     forall i,j :: 0 <= i < n <= j < a.Length ==> a[i] <= a[j]
 }
-
-
 
 twostate predicate SwapFrame(a: array<int>, lo: int, hi: int)
     requires 0 <= lo <= hi <= a.Length
@@ -31,6 +32,6 @@ method Partition(a: array<int>, lo: int, hi: int) returns (p: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

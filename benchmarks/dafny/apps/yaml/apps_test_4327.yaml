@@ -21,7 +21,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method CalculateMaxPies(A: int, P: int) returns (pies: int)
@@ -32,8 +31,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var totalPieces := A * 3 + P;
-      pies := totalPieces / 2;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

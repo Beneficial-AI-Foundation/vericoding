@@ -1,3 +1,6 @@
+/*
+*/
+
 // sums from index 0 -> i - 1
 function sumcheck(s: array<int>, i: int): int
 requires 0 <= i <= s.Length
@@ -19,6 +22,6 @@ ensures sumcheck(s, s.Length) == a
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

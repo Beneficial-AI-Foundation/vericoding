@@ -3,6 +3,10 @@ function_signature: method can_arrange(arr: seq<int>) returns (pos: int)
 Create a function which returns the largest index of an element which is not greater than or equal to the element immediately preceding it. If no such element exists then return -1.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method can_arrange(arr: seq<int>) returns (pos: int)
   // pre-conditions-start
   requires |arr| > 0
@@ -13,6 +17,9 @@ method can_arrange(arr: seq<int>) returns (pos: int)
   ensures pos >= 0 ==> 1 <= pos < |arr| && arr[pos] < arr[pos - 1]
   ensures pos >= 0 ==> forall i :: pos < i < |arr| ==> arr[i] >= arr[i - 1]
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

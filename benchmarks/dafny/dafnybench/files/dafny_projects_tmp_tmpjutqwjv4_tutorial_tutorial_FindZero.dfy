@@ -1,3 +1,6 @@
+/*
+*/
+
 // Working through https://dafny.org/dafny/OnlineTutorial/guide
 
 function fib(n: nat): nat
@@ -7,14 +10,11 @@ function fib(n: nat): nat
   else fib(n - 1) + fib(n - 2)
 }
 
-
 predicate sorted(a: array<int>)
   reads a
 {
   forall n, m :: 0 <= n < m < a.Length ==> a[n] <= a[m]
 }
-
-
 
 // https://dafny.org/dafny/OnlineTutorial/ValueTypes
 
@@ -25,7 +25,6 @@ function update(s: seq<int>, i: int, v: int): seq<int>
   s[..i] + [v] + s[i+1..]
 }
 
-
 // https://dafny.org/dafny/OnlineTutorial/Lemmas
 
 function count(a: seq<bool>): nat
@@ -33,7 +32,6 @@ function count(a: seq<bool>): nat
   if |a| == 0 then 0 else
   (if a[0] then 1 else 0) + count(a[1..])
 }
-
 
 class Node
 {
@@ -73,6 +71,6 @@ method FindZero(a: array<int>) returns (index: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

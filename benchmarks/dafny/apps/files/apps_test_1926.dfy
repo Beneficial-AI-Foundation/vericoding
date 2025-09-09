@@ -1,7 +1,9 @@
+/*
 Given an array of n integers, for each k from 1 to n-1, construct a k-ary heap structure 
 and count the number of min-heap property violations. In a k-ary heap with 1-indexed elements,
 element at index i has parent at index ⌊(i+k-2)/k⌋ (for i > 1). A violation occurs when 
 a[child] < a[parent].
+*/
 
 predicate ValidInput(n: int, a: seq<int>)
 {
@@ -24,32 +26,16 @@ predicate ValidOutput(result: seq<int>, n: int, a: seq<int>)
   (forall k :: 1 <= k <= n - 1 ==> result[k-1] == CountViolationsForK(a, n, k))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, a: seq<int>) returns (result: seq<int>)
   requires ValidInput(n, a)
   ensures ValidOutput(result, n, a)
+// </vc-spec>
+// <vc-code>
 {
-  result := [];
-
-  for k := 1 to n - 1
-    invariant |result| == k - 1
-    invariant forall j :: 1 <= j < k ==> result[j-1] >= 0
-    invariant forall j :: 1 <= j < k ==> 
-      result[j-1] == CountViolationsForK(a, n, j)
-  {
-    var violations := 0;
-
-    for i := 2 to n
-      invariant violations >= 0
-      invariant violations == |set idx | 2 <= idx < i && 
-        var parent_idx := (idx + k - 2) / k;
-        parent_idx >= 1 && a[idx-1] < a[parent_idx-1]|
-    {
-      var parent_idx := (i + k - 2) / k;
-      if parent_idx >= 1 && a[i-1] < a[parent_idx-1] {
-        violations := violations + 1;
-      }
-    }
-
-    result := result + [violations];
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

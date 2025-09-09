@@ -1,9 +1,11 @@
+/*
+*/
+
 predicate isNotPrefixPred(pre:string, str:string)
 {
     (|pre| > |str|) || 
     pre != str[..|pre|]
 }
-
 
 method isPrefix(pre: string, str: string) returns (res:bool)
     ensures !res <==> isNotPrefixPred(pre,str)
@@ -12,13 +14,10 @@ method isPrefix(pre: string, str: string) returns (res:bool)
   assume{:axiom} false;
 }
 
-
-
 predicate isPrefixPredicate(pre: string, str:string)
 {
   |str| >= |pre| && pre <= str
 }
-
 
 predicate isSubstringPredicate (sub: string, str:string)
 {
@@ -51,6 +50,6 @@ method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: 
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

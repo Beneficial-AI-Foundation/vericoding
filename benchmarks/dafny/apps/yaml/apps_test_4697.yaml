@@ -19,7 +19,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int) returns (result: int)
@@ -29,9 +28,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var ans := if n < m / 2 then n else m / 2;
-      ans := ans + (m - ans * 2) / 4;
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

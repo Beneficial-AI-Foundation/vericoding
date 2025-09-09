@@ -1,3 +1,6 @@
+/*
+*/
+
 ghost function power(n: real, alpha: real): real
     requires n > 0.0 && alpha > 0.0
     ensures power(n, alpha) > 0.0
@@ -17,6 +20,6 @@ method pow(n: nat, alpha: real) returns (product: real)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

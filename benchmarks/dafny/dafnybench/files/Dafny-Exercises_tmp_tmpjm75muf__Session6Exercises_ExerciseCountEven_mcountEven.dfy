@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate positive(s:seq<int>)
 {
   forall u::0<=u<|s| ==> s[u]>=0
@@ -29,6 +32,6 @@ ensures  n==CountEven(v[..])
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

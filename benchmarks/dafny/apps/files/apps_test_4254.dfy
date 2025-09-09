@@ -1,6 +1,8 @@
+/*
 Given the number of sheep S and wolves W, determine if the situation is "safe" or "unsafe".
 Output "unsafe" if the number of wolves is greater than or equal to the number of sheep,
 otherwise output "safe". Input is a string containing two integers separated by space.
+*/
 
 predicate ValidInputFormat(input: string)
 {
@@ -51,26 +53,10 @@ function StringToInt(s: string): int
         StringToIntHelper(s, 0, 0)
 }
 
-function FindSpaceHelper(s: string, index: int): int
-    requires 0 <= index <= |s|
-    decreases |s| - index
-{
-    if index >= |s| then -1
-    else if s[index] == ' ' then index
-    else FindSpaceHelper(s, index + 1)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function StringToIntHelper(s: string, index: int, acc: int): int
-    requires 0 <= index <= |s|
-    requires acc >= 0
-    decreases |s| - index
-{
-    if index >= |s| then acc
-    else if '0' <= s[index] <= '9' then 
-        StringToIntHelper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
-    else acc
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     ensures result == "safe\n" || result == "unsafe\n" || result == ""
@@ -81,27 +67,9 @@ method solve(input: string) returns (result: string)
         var W := StringToInt(trimmed[spaceIndex+1..]);
         (W < S ==> result == "safe\n") && (W >= S ==> result == "unsafe\n")
     ensures !ValidInputFormat(input) ==> result == ""
+// </vc-spec>
+// <vc-code>
 {
-    var trimmed := TrimNewlines(input);
-    var spaceIndex := FindSpace(trimmed);
-
-    if spaceIndex >= 0 && spaceIndex < |trimmed| - 1 {
-        var sStr := trimmed[..spaceIndex];
-        var wStr := trimmed[spaceIndex+1..];
-
-        if IsValidInteger(sStr) && IsValidInteger(wStr) {
-            var S := StringToInt(sStr);
-            var W := StringToInt(wStr);
-
-            if W < S {
-                result := "safe\n";
-            } else {
-                result := "unsafe\n";
-            }
-        } else {
-            result := "";
-        }
-    } else {
-        result := "";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

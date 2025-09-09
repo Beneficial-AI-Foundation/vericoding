@@ -1,6 +1,8 @@
+/*
 Find the maximum height of a pyramid that can be built with n cubes, where
 level i requires exactly i*(i+1)/2 cubes. The pyramid is built from top to
 bottom with levels 1, 2, 3, ..., h.
+*/
 
 predicate ValidInput(n: int) {
     n >= 1
@@ -24,34 +26,17 @@ predicate ValidPyramidHeight(n: int, h: int) {
     TotalCubesForHeight(h + 1) > n
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: int)
     requires ValidInput(n)
     ensures result >= 1
     ensures ValidPyramidHeight(n, result)
+// </vc-spec>
+// <vc-code>
 {
-    var ans := 0;
-    var s := 0;
-    var remaining := n;
-
-    while remaining > 0
-        invariant ans >= 0
-        invariant s == ans * (ans + 1) / 2
-        invariant remaining >= 0
-        invariant remaining + ans * (ans + 1) * (ans + 2) / 6 == n
-    {
-        ans := ans + 1;
-        s := s + ans;
-        remaining := remaining - s;
-
-        if remaining < 0 {
-            ans := ans - 1;
-            break;
-        }
-    }
-
-    if ans == 0 {
-        ans := 1;
-    }
-
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

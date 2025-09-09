@@ -1,5 +1,7 @@
+/*
 Given nonnegative integers a and b (where a ≤ b) and a positive integer x,
 count how many integers in the range [a, b] inclusive are divisible by x.
+*/
 
 predicate ValidInput(a: int, b: int, x: int)
 {
@@ -16,14 +18,17 @@ function CountDivisibleInRange(a: int, b: int, x: int): int
         b / x - (a - 1) / x
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method CountDivisible(a: int, b: int, x: int) returns (count: int)
     requires ValidInput(a, b, x)
     ensures count == CountDivisibleInRange(a, b, x)
     ensures count >= 0
+// </vc-spec>
+// <vc-code>
 {
-    if a == 0 {
-        count := b / x + 1;
-    } else {
-        count := b / x - (a - 1) / x;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

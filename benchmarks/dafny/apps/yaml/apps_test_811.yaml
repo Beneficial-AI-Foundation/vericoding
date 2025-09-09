@@ -19,7 +19,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int, b: int) returns (result: int)
@@ -29,24 +28,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var remaining := a;
-    var total := 0;
-  
-    while remaining > 0
-      invariant remaining >= 0
-      invariant total + TotalBurningHours(remaining, b) == TotalBurningHours(a, b)
-      decreases remaining
-    {
-      if remaining < b {
-        total := total + remaining;
-        remaining := 0;
-      } else {
-        total := total + remaining;
-        remaining := remaining / b;
-      }
-    }
-  
-    result := total;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -30,7 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(m: int, b: int) returns (result: int)
@@ -41,27 +40,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var ans := f(0, b);
-    var k := 1;
-  
-    while k <= b + 2
-      invariant 1 <= k <= b + 3
-      invariant ans >= RectangleValue(0, m, b)
-      invariant forall j :: 0 <= j < k && ValidRectangleCorner(j, m, b) ==> ans >= RectangleValue(j, m, b)
-      invariant exists j :: 0 <= j < k && ValidRectangleCorner(j, m, b) && ans == RectangleValue(j, m, b)
-    {
-      var x := k * m;
-      var y := b - k;
-      if y >= 0 {
-        var value := f(x, y);
-        if value > ans {
-          ans := value;
-        }
-      }
-      k := k + 1;
-    }
-  
-    result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

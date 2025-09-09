@@ -8,8 +8,6 @@ vc-preamble: |-
       Pedro Nunes         57854
   */
   
-  
-  
   //(a)
   
   function sum(a: array<int>, i: int, j: int): int
@@ -20,8 +18,6 @@ vc-preamble: |-
       if (i == j) then 0
       else a[i] + sum(a, i+1, j)
   }
-  
-  
   
   //(b)
   
@@ -36,22 +32,16 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   method query(a: array<int>, i: int, j: int) returns (res:int)
       requires 0 <= i <= j <= a.Length
       ensures res == sum(a, i, j)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume false;
+    assume {:axiom} false;
   }
-  // </vc-code>
 
 vc-postamble: |-
 

@@ -26,7 +26,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(queries: seq<(int, int, int, int)>) returns (results: seq<int>)
@@ -44,33 +43,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var output: seq<int> := [];
-  
-      for i := 0 to |queries| 
-          invariant 0 <= i <= |queries|
-          invariant |output| == i
-          invariant forall j :: 0 <= j < i ==> 
-              var (k, n, a, b) := queries[j];
-              output[j] == MaxActionATurns(k, n, a, b)
-          invariant forall j :: 0 <= j < i ==> 
-              var (k, n, a, b) := queries[j];
-              ValidResult(output[j], k, n, a, b)
-      {
-          var query := queries[i];
-          var k := query.0;
-          var n := query.1;
-          var a := query.2;
-          var b := query.3;
-  
-          if n * b > k {
-              output := output + [-1];
-          } else {
-              var maxActionA := if n < (k - n * b - 1) / (a - b) then n else (k - n * b - 1) / (a - b);
-              output := output + [maxActionA];
-          }
-      }
-  
-      results := output;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

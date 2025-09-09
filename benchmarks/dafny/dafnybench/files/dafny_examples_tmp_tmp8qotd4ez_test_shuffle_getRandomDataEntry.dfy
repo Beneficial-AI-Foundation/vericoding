@@ -1,3 +1,6 @@
+/*
+*/
+
 method random(a: int, b: int) returns (r: int)
 //  requires a <= b
   ensures a <= b ==> a <= r <= b
@@ -18,6 +21,6 @@ method getRandomDataEntry<T(==)>(m_workList: array<T>, avoidSet: seq<T>) returns
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

@@ -1,9 +1,11 @@
+/*
 Given a credit card account starting with 0 money and n consecutive days of transactions,
 determine the minimum number of days deposits are needed to satisfy all constraints.
 Each day deposits can be made in the morning, then transactions occur in the evening.
 If any evening transaction causes the balance to exceed limit d, return -1.
 On days when evening transaction is 0 (balance check days), the balance after the
 transaction must be non-negative. Morning deposits can be any positive integer amount.
+*/
 
 predicate ValidInput(n: int, d: int, transactions: seq<int>)
 {
@@ -55,74 +57,16 @@ function filter_positive(deposits: seq<int>): seq<int>
   else filter_positive(deposits[1..])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, d: int, transactions: seq<int>) returns (result: int)
   requires ValidInput(n, d, transactions)
   ensures result == -1 || result >= 0
+// </vc-spec>
+// <vc-code>
 {
-  // Compute prefix sums
-  var pref := new int[n];
-  var maxx := 0;
-  for i := 0 to n {
-    if i == 0 {
-      pref[i] := transactions[i];
-    } else {
-      pref[i] := pref[i-1] + transactions[i];
-    }
-    if pref[i] > maxx {
-      maxx := pref[i];
-    }
-  }
-
-  // Compute max suffix sums
-  var maxr := new int[n];
-  for i := n-1 downto 0 {
-    if i == n-1 {
-      maxr[i] := pref[i];
-    } else {
-      if maxr[i+1] > pref[i] {
-        maxr[i] := maxr[i+1];
-      } else {
-        maxr[i] := pref[i];
-      }
-    }
-  }
-
-  var sm := 0;
-  var bon := 0;
-  var ans := 0;
-  var b := true;
-
-  if maxx > d {
-    b := false;
-  }
-
-  for i := 0 to n {
-    var elem := transactions[i];
-    sm := sm + elem;
-
-    if elem == 0 {
-      if sm + bon < 0 {
-        ans := ans + 1;
-        var deposit_limit := d - (maxr[i] + bon);
-        if deposit_limit > 0 {
-          bon := bon + deposit_limit;
-        }
-      }
-      if sm + bon < 0 {
-        b := false;
-        break;
-      }
-    }
-
-    if sm + bon > d {
-      b := false;
-      break;
-    }
-  }
-
-  if b == false {
-    result := -1;
-  } else {
-    result := ans;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

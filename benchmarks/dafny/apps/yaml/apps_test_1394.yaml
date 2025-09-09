@@ -24,7 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(t: string) returns (result: string)
@@ -43,31 +42,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var z := CountAs(t);
-      var nonACount := |t| - z;
-  
-      if nonACount % 2 != 0 {
-          result := ":(";
-          return;
-      }
-  
-      var q := nonACount / 2;
-      var sLength := q + z;
-  
-      if sLength > |t| {
-          result := ":(";
-          return;
-      }
-  
-      var s := t[..sLength];
-      var ss := t[sLength..];
-      var p := RemoveAs(s);
-  
-      if p == ss {
-          result := s;
-      } else {
-          result := ":(";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

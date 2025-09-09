@@ -1,4 +1,3 @@
-
 /*
 function_signature: method get_odd_collatz(n: nat) returns (sorted: seq<int>)
 Retrieve elements. Requires: requires n > 1. Ensures: the result is sorted according to the ordering relation; the result is sorted according to the ordering relation.
@@ -36,11 +35,18 @@ method get_odd_collatz_unsorted(n: nat) returns (odd_collatz: seq<nat>)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method get_odd_collatz(n: nat) returns (sorted: seq<int>)
   decreases *
   requires n > 1
   ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
   ensures forall i :: 0 <= i < |sorted| ==> sorted[i] % 2 == 1
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

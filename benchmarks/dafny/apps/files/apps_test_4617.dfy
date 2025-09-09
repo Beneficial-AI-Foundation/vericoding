@@ -1,6 +1,8 @@
+/*
 Given a 2×3 grid of lowercase English letters, determine if the grid remains identical after a 180-degree rotation.
 Input consists of two lines, each containing 3 characters.
 Output "YES" if unchanged after rotation, "NO" otherwise.
+*/
 
 predicate ValidInput(lines: seq<string>)
 {
@@ -28,6 +30,10 @@ function reverse(s: string): string
     else reverse(s[1..]) + [s[0]]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     ensures result == "YES\n" || result == "NO\n"
@@ -37,18 +43,9 @@ method solve(stdin_input: string) returns (result: string)
     ensures var normalized_input := stdin_input + if stdin_input[|stdin_input|-1] == '\n' then "" else "\n";
             var lines := split_lines(normalized_input);
             !ValidInput(lines) ==> result == "NO\n"
+// </vc-spec>
+// <vc-code>
 {
-    var normalized_input := stdin_input + if stdin_input[|stdin_input|-1] == '\n' then "" else "\n";
-    var lines := split_lines(normalized_input);
-    if ValidInput(lines) {
-        var a := lines[0];
-        var b := lines[1];
-        if IsSymmetric(a, b) {
-            result := "YES\n";
-        } else {
-            result := "NO\n";
-        }
-    } else {
-        result := "NO\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

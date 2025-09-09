@@ -1,7 +1,9 @@
+/*
+*/
+
 ///////////////////
 // Binary search
 ///////////////////
-
 
 predicate isSorted(a:array<int>)
   reads a
@@ -9,11 +11,9 @@ predicate isSorted(a:array<int>)
   forall i:nat, j:nat :: i <= j < a.Length ==> a[i] <= a[j]
 }
 
-
 // a[lo] <= a[lo+1] <= ... <= a[hi-2] <= a[hi-1]
 
 /* Note: the following definition of isSorted:
-
 
 although equivalent to the one above is not enough for Dafny to be able 
 to prove the invariants for the loop in binSearch.
@@ -36,6 +36,6 @@ method binSearch(a:array<int>, K:int) returns (b:bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

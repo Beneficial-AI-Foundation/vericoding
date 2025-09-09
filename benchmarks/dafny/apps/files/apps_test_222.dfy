@@ -1,7 +1,9 @@
+/*
 Given a positive integer n as a string, find the minimum number of digit deletions 
 required to transform n into a perfect square, or return -1 if impossible.
 You can delete any digit from n as long as the result remains a positive integer 
 without leading zeros. A perfect square is an integer x = y² for some positive integer y.
+*/
 
 function GenerateSquares(): seq<int>
     ensures forall i :: 0 <= i < |GenerateSquares()| ==> GenerateSquares()[i] > 0
@@ -21,38 +23,10 @@ function IntToString(n: int): string
     else IntToStringHelper(n)
 }
 
-function GenerateSquaresHelper(start: int, end: int): seq<int>
-    requires start >= 1
-    requires end >= start - 1
-    ensures forall i :: 0 <= i < |GenerateSquaresHelper(start, end)| ==> GenerateSquaresHelper(start, end)[i] > 0
-    decreases end - start + 1
-{
-    if start > end then []
-    else [start * start] + GenerateSquaresHelper(start + 1, end)
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function IsSubsequenceHelper(pattern: string, text: string, pIndex: int, tIndex: int): bool
-    requires 0 <= pIndex <= |pattern|
-    requires 0 <= tIndex <= |text|
-    decreases |text| - tIndex
-{
-    if pIndex == |pattern| then true
-    else if tIndex == |text| then false
-    else if pattern[pIndex] == text[tIndex] then
-        IsSubsequenceHelper(pattern, text, pIndex + 1, tIndex + 1)
-    else
-        IsSubsequenceHelper(pattern, text, pIndex, tIndex + 1)
-}
-
-function IntToStringHelper(n: int): string
-    requires n > 0
-{
-    if n < 10 then
-        [('0' as int + n) as char]
-    else
-        IntToStringHelper(n / 10) + [('0' as int + (n % 10)) as char]
-}
-
+// <vc-spec>
 method solve(s: string) returns (result: int)
     requires |s| > 0
     requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
@@ -61,62 +35,9 @@ method solve(s: string) returns (result: int)
     ensures result == -1 ==> forall sq :: sq in GenerateSquares() ==> !IsSubsequence(IntToString(sq), s)
     ensures result >= 0 ==> exists sq :: sq in GenerateSquares() && IsSubsequence(IntToString(sq), s) && result == |s| - |IntToString(sq)|
     ensures result >= 0 ==> forall sq :: sq in GenerateSquares() && IsSubsequence(IntToString(sq), s) ==> |s| - |IntToString(sq)| >= result
+// </vc-spec>
+// <vc-code>
 {
-    var squares: seq<int> := GenerateSquares();
-    assert forall i :: 0 <= i < |squares| ==> squares[i] > 0;
-
-    var ans := |s|;
-    var found := false;
-
-    for j := 0 to |squares|
-        invariant 0 <= j <= |squares|
-        invariant forall i :: 0 <= i < j ==> squares[i] > 0
-        invariant ans <= |s|
-        invariant found ==> ans < |s|
-        invariant found ==> exists sq :: sq in squares[..j] && IsSubsequence(IntToString(sq), s) && ans == |s| - |IntToString(sq)|
-        invariant forall sq :: sq in squares[..j] && IsSubsequence(IntToString(sq), s) ==> |s| - |IntToString(sq)| >= ans
-    {
-        var square := squares[j];
-        assert square > 0;
-        var s2 := IntToString(square);
-        var pos := 0;
-
-        for k := 0 to |s|
-            invariant 0 <= k <= |s|
-            invariant 0 <= pos <= |s2|
-            invariant pos <= k
-            invariant forall i :: 0 <= i < pos ==> exists j :: 0 <= j < k && s[j] == s2[i]
-            invariant IsSubsequenceHelper(s2, s, pos, k) == IsSubsequence(s2, s)
-        {
-            if pos < |s2| && s[k] == s2[pos]
-            {
-                pos := pos + 1;
-            }
-        }
-
-        if pos == |s2|
-        {
-            assert IsSubsequence(s2, s);
-            var deletions := |s| - pos;
-            if deletions < ans
-            {
-                ans := deletions;
-                found := true;
-            }
-        }
-    }
-
-    if ans == |s|
-    {
-        result := -1;
-        assert forall sq :: sq in squares ==> !IsSubsequence(IntToString(sq), s);
-        assert forall sq :: sq in GenerateSquares() ==> !IsSubsequence(IntToString(sq), s);
-    }
-    else
-    {
-        result := ans;
-        assert found;
-        assert exists sq :: sq in squares && IsSubsequence(IntToString(sq), s) && result == |s| - |IntToString(sq)|;
-        assert exists sq :: sq in GenerateSquares() && IsSubsequence(IntToString(sq), s) && result == |s| - |IntToString(sq)|;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

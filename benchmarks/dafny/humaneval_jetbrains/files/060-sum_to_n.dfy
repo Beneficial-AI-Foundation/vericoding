@@ -3,10 +3,17 @@ function_signature: def sum_to_n(n: Nat) -> Nat
 sum_to_n is a function that sums numbers from 1 to n.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method sum_to_n(n: int) returns (r : int)
   // post-conditions-start
   ensures r == n * (n + 1) / 2
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,5 +1,7 @@
+/*
 Given an N×N grid with N² total squares where A squares are painted white,
 determine how many squares are painted black (N² - A).
+*/
 
 predicate ValidInput(N: int, A: int)
 {
@@ -18,9 +20,16 @@ predicate ValidOutput(N: int, A: int, result: int)
     result == BlackSquares(N, A) && result >= 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method CalculateBlackSquares(N: int, A: int) returns (blackSquares: int)
     requires ValidInput(N, A)
     ensures ValidOutput(N, A, blackSquares)
+// </vc-spec>
+// <vc-code>
 {
-    blackSquares := N * N - A;
+  assume {:axiom} false;
 }
+// </vc-code>

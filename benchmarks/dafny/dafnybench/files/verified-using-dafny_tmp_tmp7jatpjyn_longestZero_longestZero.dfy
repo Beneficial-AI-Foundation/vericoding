@@ -1,3 +1,6 @@
+/*
+*/
+
 function getSize(i: int, j:int) : int
 {
     j - i + 1    
@@ -20,6 +23,6 @@ method longestZero(a: array<int>) returns (sz:int, pos:int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

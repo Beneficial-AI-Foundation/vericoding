@@ -1,7 +1,9 @@
+/*
 Given three integers a, b, and c representing the heights of three poles,
 determine if they form an arithmetic sequence (i.e., b - a = c - b).
 Input is a string containing three space-separated integers.
 Output is "YES\n" if arithmetic sequence, "NO\n" otherwise.
+*/
 
 predicate ValidThreeIntegers(input: string, a: int, b: int, c: int)
 {
@@ -61,91 +63,10 @@ function ParseUnsignedInt(s: string): int
     else ParseUnsignedInt(s[..|s|-1]) * 10 + (s[|s|-1] as int - '0' as int)
 }
 
-method SplitBySpaces(s: string) returns (parts: seq<string>)
-    ensures forall i :: 0 <= i < |parts| ==> |parts[i]| > 0
-    ensures parts == SplitBySpacesFunc(s)
-{
-    parts := [];
-    var current := "";
-    var i := 0;
+// <vc-helpers>
+// </vc-helpers>
 
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant SplitBySpacesHelper(s, i, current, parts) == SplitBySpacesFunc(s)
-        invariant forall j :: 0 <= j < |parts| ==> |parts[j]| > 0
-    {
-        if s[i] == ' ' || s[i] == '\n' || s[i] == '\t' {
-            if |current| > 0 {
-                parts := parts + [current];
-                current := "";
-            }
-        } else {
-            current := current + [s[i]];
-        }
-        i := i + 1;
-    }
-
-    if |current| > 0 {
-        parts := parts + [current];
-    }
-}
-
-method ParseInt(s: string) returns (result: int)
-    requires |s| > 0
-    requires IsValidInteger(s)
-    ensures result == ParseIntFunc(s)
-{
-    result := 0;
-    var i := 0;
-    var negative := false;
-
-    if |s| > 0 && s[0] == '-' {
-        negative := true;
-        i := 1;
-    }
-
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant negative ==> (|s| > 0 && s[0] == '-')
-        invariant !negative ==> (|s| == 0 || s[0] != '-')
-        invariant negative ==> i >= 1
-        invariant negative ==> result == ParseUnsignedInt(s[1..i])
-        invariant !negative ==> result == ParseUnsignedInt(s[0..i])
-        invariant forall j :: (if negative then 1 else 0) <= j < i ==> '0' <= s[j] <= '9'
-        invariant forall j :: i <= j < |s| ==> '0' <= s[j] <= '9'
-    {
-        assert s[i] in s[(if negative then 1 else 0)..];
-        assert '0' <= s[i] <= '9';
-
-        if negative {
-            assert s[1..i+1] == s[1..i] + [s[i]];
-            assert ParseUnsignedInt(s[1..i+1]) == ParseUnsignedInt(s[1..i]) * 10 + (s[i] as int - '0' as int);
-        } else {
-            assert s[0..i+1] == s[0..i] + [s[i]];
-            assert ParseUnsignedInt(s[0..i+1]) == ParseUnsignedInt(s[0..i]) * 10 + (s[i] as int - '0' as int);
-        }
-
-        result := result * 10 + (s[i] as int - '0' as int);
-        i := i + 1;
-    }
-
-    if negative {
-        assert i == |s|;
-        assert s[1..i] == s[1..];
-        assert result == ParseUnsignedInt(s[1..]);
-        result := -result;
-        assert result == -ParseUnsignedInt(s[1..]);
-        assert result == ParseIntFunc(s);
-    } else {
-        assert i == |s|;
-        assert s[0..i] == s[0..];
-        assert result == ParseUnsignedInt(s[0..]);
-        assert s[0..] == s;
-        assert result == ParseUnsignedInt(s);
-        assert result == ParseIntFunc(s);
-    }
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     ensures (exists a: int, b: int, c: int :: ValidThreeIntegers(input, a, b, c)) ==> 
@@ -158,28 +79,9 @@ method solve(input: string) returns (result: string)
     ensures (forall a1: int, b1: int, c1: int, a2: int, b2: int, c2: int ::
         ValidThreeIntegers(input, a1, b1, c1) && ValidThreeIntegers(input, a2, b2, c2) ==>
         a1 == a2 && b1 == b2 && c1 == c2)
+// </vc-spec>
+// <vc-code>
 {
-    var parts := SplitBySpaces(input);
-    if |parts| != 3 {
-        assert !(exists a: int, b: int, c: int :: ValidThreeIntegers(input, a, b, c));
-        return "";
-    }
-
-    if !IsValidInteger(parts[0]) || !IsValidInteger(parts[1]) || !IsValidInteger(parts[2]) {
-        assert !(exists a: int, b: int, c: int :: ValidThreeIntegers(input, a, b, c));
-        return "";
-    }
-
-    var a := ParseInt(parts[0]);
-    var b := ParseInt(parts[1]);
-    var c := ParseInt(parts[2]);
-
-    assert ValidThreeIntegers(input, a, b, c);
-    assert exists a': int, b': int, c': int :: ValidThreeIntegers(input, a', b', c');
-
-    if b - a == c - b {
-        return "YES\n";
-    } else {
-        return "NO\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

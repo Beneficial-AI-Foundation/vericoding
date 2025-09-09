@@ -26,7 +26,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n_A: int, n_B: int, k: int, m: int, A: seq<int>, B: seq<int>) returns (result: string)
@@ -38,14 +37,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var largest_from_A := A[k - 1];
-      var smallest_from_B := B[|B| - m];
-  
-      if largest_from_A < smallest_from_B {
-          result := "YES";
-      } else {
-          result := "NO";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

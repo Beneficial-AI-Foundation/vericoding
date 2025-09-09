@@ -16,7 +16,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int, heights: seq<int>) returns (count: int)
@@ -26,24 +25,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      count := 0;
-      var i := 0;
-      while i < |heights|
-          invariant 0 <= i <= |heights|
-          invariant 0 <= count <= i
-          invariant count == |set j | 0 <= j < i && heights[j] >= k :: j|
-      {
-          if heights[i] >= k {
-              assert i in (set j | 0 <= j < i + 1 && heights[j] >= k :: j);
-              assert i !in (set j | 0 <= j < i && heights[j] >= k :: j);
-              assert (set j | 0 <= j < i + 1 && heights[j] >= k :: j) == (set j | 0 <= j < i && heights[j] >= k :: j) + {i};
-              count := count + 1;
-          } else {
-              assert i !in (set j | 0 <= j < i + 1 && heights[j] >= k :: j);
-              assert (set j | 0 <= j < i + 1 && heights[j] >= k :: j) == (set j | 0 <= j < i && heights[j] >= k :: j);
-          }
-          i := i + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

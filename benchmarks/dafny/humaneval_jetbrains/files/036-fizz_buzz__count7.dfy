@@ -1,4 +1,3 @@
-
 /*
 function_signature: method count7(x: nat) returns (count: nat)
 Count occurrences. Ensures: returns the correct value.
@@ -14,13 +13,20 @@ method fizz_buzz(n: nat) returns (result: nat)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method count7(x: nat) returns (count: nat) 
   // post-conditions-start
   ensures count == count7_r(x)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function count7_r(x: nat): nat {
   var lst := if x % 10 == 7 then 1 else 0;

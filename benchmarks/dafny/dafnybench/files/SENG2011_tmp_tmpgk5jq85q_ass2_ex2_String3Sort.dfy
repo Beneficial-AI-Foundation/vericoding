@@ -1,3 +1,6 @@
+/*
+*/
+
 // verifies
 // check that string between indexes low and high-1 are sorted
 predicate Sorted(a: string, low:int, high:int)
@@ -18,6 +21,6 @@ ensures multiset{b[0], b[1], b[2]} == multiset{a[0], a[1], a[2]};
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

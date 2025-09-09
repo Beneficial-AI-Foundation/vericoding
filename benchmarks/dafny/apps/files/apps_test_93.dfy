@@ -1,7 +1,9 @@
+/*
 Given two 2x2 sliding puzzles with tiles A, B, C and empty cell X,
 determine if there exists a sequence of moves that can make both puzzles
 reach the same configuration. A move slides a tile adjacent to the empty
 cell into the empty cell.
+*/
 
 function countNewlines(s: string): int
 {
@@ -47,84 +49,17 @@ predicate CanReachSameConfig(input: string)
         extractAndNormalizePuzzle1(input) == rotatePuzzleLeft(extractAndNormalizePuzzle2(input), rotation)
 }
 
-function splitLines(s: string): seq<string>
-    ensures |splitLines(s)| >= countNewlines(s)
-{
-    splitLinesHelper(s, "", [])
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function splitLinesHelper(s: string, current: string, acc: seq<string>): seq<string>
-    ensures |splitLinesHelper(s, current, acc)| >= |acc| + countNewlines(s)
-{
-    if |s| == 0 then 
-        if |current| > 0 then acc + [current] else acc
-    else if s[0] == '\n' then
-        splitLinesHelper(s[1..], "", acc + [current])
-    else
-        splitLinesHelper(s[1..], current + [s[0]], acc)
-}
-
-function reverse(s: string): string
-{
-    if |s| <= 1 then s
-    else reverse(s[1..]) + [s[0]]
-}
-
-function removeFirstX(s: string): string
-{
-    removeFirstXInRange(s, 0, if |s| < 4 then |s| else 4)
-}
-
-function removeFirstXInRange(s: string, index: int, maxIndex: int): string
-    requires 0 <= index <= |s|
-    requires maxIndex <= |s|
-    decreases maxIndex - index
-{
-    if index >= maxIndex || index >= |s| then s
-    else if s[index] == 'X' then s[..index] + s[index+1..]
-    else removeFirstXInRange(s, index + 1, maxIndex)
-}
-
-function rotatePuzzleLeft(puzzle: string, rotation: int): string
-    requires 0 <= rotation < 4
-    decreases rotation
-{
-    if rotation == 0 then puzzle
-    else rotatePuzzleLeft(rotateLeftOnce(puzzle), rotation - 1)
-}
-
-function rotateLeftOnce(puzzle: string): string
-{
-    if |puzzle| == 0 then puzzle
-    else puzzle[1..] + [puzzle[0]]
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures result == "YES\n" || result == "NO\n"
     ensures result == "YES\n" <==> CanReachSameConfig(input)
+// </vc-spec>
+// <vc-code>
 {
-    var puzzle1 := extractAndNormalizePuzzle1(input);
-    var puzzle2 := extractAndNormalizePuzzle2(input);
-
-    var rotation := 0;
-    var found := false;
-
-    while rotation < 4 && !found
-        invariant 0 <= rotation <= 4
-        invariant found ==> (exists r :: 0 <= r < rotation && puzzle1 == rotatePuzzleLeft(puzzle2, r))
-        invariant !found ==> (forall r :: 0 <= r < rotation ==> puzzle1 != rotatePuzzleLeft(puzzle2, r))
-        decreases 4 - rotation
-    {
-        if puzzle1 == rotatePuzzleLeft(puzzle2, rotation) {
-            found := true;
-        }
-        rotation := rotation + 1;
-    }
-
-    if found {
-        result := "YES\n";
-    } else {
-        result := "NO\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -120,22 +120,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma SumSequenceAddLemma(prefix: seq<string>, elem: string)
-      requires forall j :: 0 <= j < |prefix| ==> IsValidInteger(prefix[j])
-      requires IsValidInteger(elem)
-      ensures SumSequence(prefix + [elem]) == SumSequence(prefix) + StringToInt(elem)
-  {
-      if |prefix| == 0 {
-          assert prefix + [elem] == [elem];
-          assert SumSequence([elem]) == StringToInt(elem) + SumSequence([]);
-          assert SumSequence([]) == 0;
-      } else {
-          assert prefix == [prefix[0]] + prefix[1..];
-          assert prefix + [elem] == [prefix[0]] + (prefix[1..] + [elem]);
-          SumSequenceAddLemma(prefix[1..], elem);
-          assert SumSequence(prefix[1..] + [elem]) == SumSequence(prefix[1..]) + StringToInt(elem);
-      }
-  }
 
 vc-spec: |-
   method solve(input: string) returns (result: string)
@@ -145,75 +129,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var lines := SplitByNewline(input);
-      var n := StringToInt(lines[0]);
-  
-      var firstLine := SplitBySpace(lines[1]);
-      var secondLine := SplitBySpace(lines[2]);
-      var thirdLine := SplitBySpace(lines[3]);
-  
-      var sum1 := 0;
-      var sum2 := 0;
-      var sum3 := 0;
-  
-      var i := 0;
-      while i < |firstLine|
-          invariant 0 <= i <= |firstLine|
-          invariant forall j :: 0 <= j < |firstLine| ==> IsValidInteger(firstLine[j])
-          invariant sum1 == SumSequence(firstLine[0..i])
-      {
-          SumSequenceAddLemma(firstLine[0..i], firstLine[i]);
-          assert firstLine[0..i] + [firstLine[i]] == firstLine[0..i+1];
-          var tmpCall1 := StringToInt(firstLine[i]);
-          sum1 := sum1 + tmpCall1;
-          assert sum1 == SumSequence(firstLine[0..i]) + StringToInt(firstLine[i]);
-          assert sum1 == SumSequence(firstLine[0..i] + [firstLine[i]]);
-          assert sum1 == SumSequence(firstLine[0..i+1]);
-          i := i + 1;
-      }
-      assert firstLine[0..i] == firstLine;
-      assert sum1 == SumSequence(firstLine);
-  
-      i := 0;
-      while i < |secondLine|
-          invariant 0 <= i <= |secondLine|
-          invariant forall j :: 0 <= j < |secondLine| ==> IsValidInteger(secondLine[j])
-          invariant sum2 == SumSequence(secondLine[0..i])
-      {
-          SumSequenceAddLemma(secondLine[0..i], secondLine[i]);
-          assert secondLine[0..i] + [secondLine[i]] == secondLine[0..i+1];
-          var tmpCall2 := StringToInt(secondLine[i]);
-          sum2 := sum2 + tmpCall2;
-          assert sum2 == SumSequence(secondLine[0..i]) + StringToInt(secondLine[i]);
-          assert sum2 == SumSequence(secondLine[0..i] + [secondLine[i]]);
-          assert sum2 == SumSequence(secondLine[0..i+1]);
-          i := i + 1;
-      }
-      assert secondLine[0..i] == secondLine;
-      assert sum2 == SumSequence(secondLine);
-  
-      i := 0;
-      while i < |thirdLine|
-          invariant 0 <= i <= |thirdLine|
-          invariant forall j :: 0 <= j < |thirdLine| ==> IsValidInteger(thirdLine[j])
-          invariant sum3 == SumSequence(thirdLine[0..i])
-      {
-          SumSequenceAddLemma(thirdLine[0..i], thirdLine[i]);
-          assert thirdLine[0..i] + [thirdLine[i]] == thirdLine[0..i+1];
-          var tmpCall3 := StringToInt(thirdLine[i]);
-          sum3 := sum3 + tmpCall3;
-          assert sum3 == SumSequence(thirdLine[0..i]) + StringToInt(thirdLine[i]);
-          assert sum3 == SumSequence(thirdLine[0..i] + [thirdLine[i]]);
-          assert sum3 == SumSequence(thirdLine[0..i+1]);
-          i := i + 1;
-      }
-      assert thirdLine[0..i] == thirdLine;
-      assert sum3 == SumSequence(thirdLine);
-  
-      var firstCorrected := sum1 - sum2;
-      var secondCorrected := sum2 - sum3;
-  
-      result := IntToString(firstCorrected) + "\n" + IntToString(secondCorrected) + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

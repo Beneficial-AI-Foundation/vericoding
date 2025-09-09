@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: method generate_integers(a : int, b : int) returns (result: seq<int>)
+  Generate elements. Ensures: the condition holds for all values; the condition holds for all values.
+
 vc-preamble: |-
   method min(a : int, b : int) returns (m : int)
     ensures m == a || m == b
@@ -13,12 +17,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: method generate_integers(a : int, b : int) returns (result: seq<int>)
-  Generate elements. Ensures: the condition holds for all values; the condition holds for all values.
-  */
 
 vc-spec: |-
   method generate_integers(a : int, b : int) returns (result: seq<int>)
@@ -29,9 +27,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
-
 

@@ -1,7 +1,9 @@
+/*
 Given n levels in a game, determine if two players can together pass all levels.
 Player X can pass a specific set of levels, and Player Y can pass a specific set of levels.
 Check if the union of their passable levels covers all levels from 1 to n.
 Output "I become the guy." if they can pass all levels together, otherwise "Oh, my keyboard!".
+*/
 
 predicate ValidInput(stdin_input: string)
 {
@@ -110,37 +112,16 @@ function split_by_char(s: string, delimiter: char): seq<string>
         else [s]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires ValidInput(stdin_input)
     ensures result == GetExpectedOutput(stdin_input)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := split_lines(stdin_input);
-    var n := parse_int(lines[0]);
-    var x_line := parse_int_list(lines[1]);
-    var y_line := parse_int_list(lines[2]);
-
-    var p := x_line[0];
-    var q := y_line[0];
-
-    var x_levels := set_from_seq(x_line[1..1+p]);
-    var y_levels := set_from_seq(y_line[1..1+q]);
-    var all_levels := x_levels + y_levels;
-
-    var can_pass_all := true;
-    var level := 1;
-    while level <= n
-        invariant 1 <= level <= n + 1
-        invariant can_pass_all <==> (forall i :: 1 <= i < level ==> i in all_levels)
-    {
-        if level !in all_levels {
-            can_pass_all := false;
-        }
-        level := level + 1;
-    }
-
-    if can_pass_all {
-        result := "I become the guy.";
-    } else {
-        result := "Oh, my keyboard!";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

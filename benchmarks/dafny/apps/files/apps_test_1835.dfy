@@ -1,7 +1,9 @@
+/*
 Given n binary strings, you can swap any two characters from any positions 
 (within same string or across different strings) any number of times. 
 Find the maximum number of strings that can be made palindromic simultaneously.
 A palindrome reads the same forwards and backwards.
+*/
 
 function valid_input_format(input: string): bool
 {
@@ -65,28 +67,10 @@ function palindromic_strings_achievable(strings: seq<string>, k: nat): bool
     k <= greedy_palindrome_count(strings)
 }
 
-function contains_char(s: string, c: char): bool
-{
-    exists i :: 0 <= i < |s| && s[i] == c
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function split_lines(s: string): seq<string>
-{
-    [""] // Simplified implementation
-}
-
-function int_to_string(n: int): string
-{
-    "0" // Simplified implementation
-}
-
-function greedy_palindrome_count(strings: seq<string>): nat
-    requires forall s :: s in strings ==> is_binary_string(s)
-    ensures greedy_palindrome_count(strings) <= |strings|
-{
-    |strings| // Simplified implementation - would need actual greedy algorithm
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires |input| > 0
     requires input[|input|-1] == '\n'
@@ -102,6 +86,9 @@ method solve(input: string) returns (result: string)
         string_to_int(get_line(result, i)) == compute_max_palindromes(get_test_case_strings(input, i))
     ensures forall i :: 0 <= i < count_test_cases(input) ==> 
         palindromic_strings_achievable(get_test_case_strings(input, i), string_to_int(get_line(result, i)))
+// </vc-spec>
+// <vc-code>
 {
-    result := "1\n";
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate Sorted(q: seq<int>)
 {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j] 
@@ -47,6 +50,6 @@ method FindAddends(q: seq<int>, x: int) returns (i: nat, j: nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

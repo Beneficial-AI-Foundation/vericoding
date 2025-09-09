@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(d: int) returns (result: string)
@@ -34,20 +33,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var baseString := "Christmas";
-      var eveCount := 25 - d;
-      var eveString := "";
-  
-      var i := 0;
-      while i < eveCount
-          invariant 0 <= i <= eveCount
-          invariant eveString == RepeatEve(i)
-      {
-          eveString := eveString + " Eve";
-          i := i + 1;
-      }
-  
-      result := baseString + eveString;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

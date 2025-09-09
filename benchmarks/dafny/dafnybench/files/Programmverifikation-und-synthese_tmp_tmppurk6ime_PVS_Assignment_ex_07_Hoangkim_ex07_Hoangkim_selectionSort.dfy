@@ -1,3 +1,6 @@
+/*
+*/
+
 //Problem01
 //a)
 
@@ -29,7 +32,7 @@ method selectionSort(a: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>
 

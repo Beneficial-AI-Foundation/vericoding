@@ -29,7 +29,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, m: int) returns (petyaScore: int, vasyaScore: int)
@@ -40,12 +39,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    if n < m {
-      vasyaScore := n;
-    } else {
-      vasyaScore := m;
-    }
-    petyaScore := n + m - 1 - vasyaScore;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

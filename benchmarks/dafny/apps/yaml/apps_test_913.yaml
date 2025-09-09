@@ -37,7 +37,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, r: seq<int>, b: seq<int>) returns (result: int)
@@ -46,40 +45,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var a := 0;
-      var bb := 0;
-      var i := 0;
-      while i < n
-          invariant 0 <= i <= n
-          invariant a == |set j | 0 <= j < i && r[j] == 1 && b[j] == 0|
-          invariant bb == |set j | 0 <= j < i && r[j] == 0 && b[j] == 1|
-      {
-          var old_a := a;
-          var old_bb := bb;
-  
-          if r[i] == 1 && b[i] == 0 {
-              a := a + 1;
-          }
-          if r[i] == 0 && b[i] == 1 {
-              bb := bb + 1;
-          }
-  
-          ghost var set_a_old := set j | 0 <= j < i && r[j] == 1 && b[j] == 0;
-          ghost var set_a_new := set j | 0 <= j < i + 1 && r[j] == 1 && b[j] == 0;
-          ghost var set_bb_old := set j | 0 <= j < i && r[j] == 0 && b[j] == 1;
-          ghost var set_bb_new := set j | 0 <= j < i + 1 && r[j] == 0 && b[j] == 1;
-  
-          assert set_a_new == set_a_old + (if r[i] == 1 && b[i] == 0 then {i} else {});
-          assert set_bb_new == set_bb_old + (if r[i] == 0 && b[i] == 1 then {i} else {});
-  
-          i := i + 1;
-      }
-  
-      if a == 0 {
-          result := -1;
-      } else {
-          result := bb / a + 1;
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

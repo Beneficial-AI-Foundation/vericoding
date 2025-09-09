@@ -1,6 +1,8 @@
+/*
 Given two non-negative integers x and y, find the minimum cost to make both equal to zero using these operations:
 1. Pay $a to change exactly one integer by ±1
 2. Pay $b to change both integers by ±1 in the same direction
+*/
 
 predicate ValidInput(input: string)
 {
@@ -122,76 +124,18 @@ function IntToStringHelper(n: int): string
     else IntToStringHelper(n / 10) + [((n % 10) as char + '0' as char) as char]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (output: string)
     requires |input| > 0
     requires ValidInput(input)
     ensures ValidOutput(output, input)
     ensures CorrectComputation(input, output)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := SplitLines(input);
-    var lineIndex := 0;
-
-    if lineIndex >= |lines| { output := ""; return; }
-    var t := StringToInt(lines[lineIndex]);
-    lineIndex := lineIndex + 1;
-
-    var result := "";
-    var i := 0;
-
-    while i < t && lineIndex + 1 < |lines|
-        invariant 0 <= i <= t
-        invariant lineIndex == 1 + 2 * i
-        invariant i < t ==> lineIndex + 1 < |lines|
-        invariant var outputLines := if result == "" then [] else SplitLines(result);
-                  |outputLines| == i
-        invariant var outputLines := if result == "" then [] else SplitLines(result);
-                  forall j :: 0 <= j < |outputLines| ==> IsValidInteger(outputLines[j])
-        invariant var outputLines := if result == "" then [] else SplitLines(result);
-                  forall j :: 0 <= j < i && 1 + 2*j + 1 < |lines| ==>
-                    var xyLine := SplitWhitespace(lines[1 + 2*j]);
-                    var abLine := SplitWhitespace(lines[1 + 2*j + 1]);
-                    (|xyLine| >= 2 && |abLine| >= 2) ==>
-                        var x := StringToInt(xyLine[0]);
-                        var y := StringToInt(xyLine[1]);
-                        var a := StringToInt(abLine[0]);
-                        var b := StringToInt(abLine[1]);
-                        var expectedResult := if b <= 2 * a then
-                            b * (if x <= y then x else y) + (if x >= y then x else y - if x <= y then x else y) * a
-                        else
-                            a * (x + y);
-                        j < |outputLines| && StringToInt(outputLines[j]) == expectedResult
-        decreases t - i
-    {
-        var xyLine := SplitWhitespace(lines[lineIndex]);
-        var tmpCall1 := SplitWhitespace(lines[lineIndex + 1]);
-        var abLine := tmpCall1;
-        lineIndex := lineIndex + 2;
-
-        if |xyLine| >= 2 && |abLine| >= 2 {
-            var x := StringToInt(xyLine[0]);
-            var y := StringToInt(xyLine[1]);
-            var a := StringToInt(abLine[0]);
-            var b := StringToInt(abLine[1]);
-
-            var wynik: int;
-            if b <= 2 * a {
-                var c := if x <= y then x else y;
-                var maxXY := if x >= y then x else y;
-                wynik := b * c + (maxXY - c) * a;
-            } else {
-                wynik := a * (x + y);
-            }
-
-            var tmpCall2 := IntToString(wynik);
-            if i == 0 {
-                result := tmpCall2;
-            } else {
-                result := result + "\n" + tmpCall2;
-            }
-        }
-
-        i := i + 1;
-    }
-
-    output := result;
+  assume {:axiom} false;
 }
+// </vc-code>

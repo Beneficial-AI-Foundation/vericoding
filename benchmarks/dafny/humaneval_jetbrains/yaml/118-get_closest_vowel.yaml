@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: def get_closest_vowel(s : str) -> str
+  You are given a word. Your task is to find the closest vowel that stands between two consonants from the right side of the word (case sensitive).
+
 vc-preamble: |-
   function IsVowel(c: char) : bool
   {
@@ -10,12 +14,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: def get_closest_vowel(s : str) -> str
-  You are given a word. Your task is to find the closest vowel that stands between two consonants from the right side of the word (case sensitive).
-  */
 
 vc-spec: |-
   method get_closest_vowel(word: string) returns (result: string)
@@ -33,9 +31,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
-
 

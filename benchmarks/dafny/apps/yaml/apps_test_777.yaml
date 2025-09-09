@@ -41,7 +41,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(s: string) returns (result: string)
@@ -50,8 +49,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var computation := DistinctStringsCount(s);
-      result := int_to_string(computation);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

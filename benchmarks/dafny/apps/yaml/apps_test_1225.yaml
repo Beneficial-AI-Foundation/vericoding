@@ -77,23 +77,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  method ParseInt(s: string) returns (result: int)
-      requires |s| > 0
-      ensures result >= 0
-      ensures result == ParseIntFunc(s)
-  {
-      result := ParseIntHelper(s, 0, 0);
-  }
-  
-  method IntToString(n: int) returns (s: string)
-      requires n >= 0
-      ensures |s| > 0
-      ensures n == 0 ==> s == "0"
-      ensures n > 0 ==> |s| > 0
-      ensures s == IntToStringFunc(n)
-  {
-      s := IntToStringFunc(n);
-  }
 
 vc-spec: |-
   method solve(stdin_input: string) returns (output: string)
@@ -105,28 +88,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var h := ParseInt(stdin_input);
-  
-      var n := 0;
-      var current_h := h;
-      var ans := 0;
-  
-      while current_h != 0 
-          invariant current_h >= 0
-          invariant n >= 0
-          invariant ans >= 0
-          invariant current_h == h / pow2(n)
-          invariant ans + ComputeAttacksIterative(current_h, n) == ComputeAttacks(h)
-          decreases current_h
-      {
-          var tmpCall1 := pow2(n);
-          ans := ans + tmpCall1;
-          n := n + 1;
-          current_h := current_h / 2;
-      }
-  
-      var ansStr := IntToString(ans);
-      output := ansStr + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate IsEven(n: int)
 {
     n % 2 == 0
@@ -15,6 +18,6 @@ method FindEvenNumbers(arr: array<int>) returns (evenList: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

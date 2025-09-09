@@ -1,7 +1,7 @@
+/*
+*/
+
 // shenanigans going through the dafny tutorial
-
-
-
 
 function max(a: int, b: int): int
 {
@@ -16,7 +16,6 @@ function abs(x: int): int
 {
   if x < 0 then -x else x
 }
-
 
 function fib(n: nat): nat
 {
@@ -42,6 +41,6 @@ method FindMax(a: array<int>) returns (i: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

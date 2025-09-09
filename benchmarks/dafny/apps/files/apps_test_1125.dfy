@@ -1,7 +1,9 @@
+/*
 Given N piles of stones, two players alternate removing stones from any single pile.
 The player unable to make a move loses. Before the game begins, the second player
 can move between 0 and (A_1 - 1) stones from pile 1 to pile 2. Find the minimum
 number of stones to move to guarantee the second player wins, or output -1 if impossible.
+*/
 
 predicate validInput(s: string)
 {
@@ -152,26 +154,10 @@ function intToStringFunc(n: int): string
     "0"
 }
 
-method splitLines(s: string) returns (lines: seq<string>)
-{
-    lines := [s];
-}
+// <vc-helpers>
+// </vc-helpers>
 
-method parseInt(s: string) returns (n: int)
-{
-    n := 0;
-}
-
-method parseIntArray(s: string) returns (arr: seq<int>)
-{
-    arr := [];
-}
-
-method intToString(n: int) returns (s: string)
-{
-    s := "0";
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
   requires |stdin_input| > 0
   requires validInput(stdin_input)
@@ -179,71 +165,9 @@ method solve(stdin_input: string) returns (result: string)
   ensures isValidOutput(result)
   ensures result == "-1" || (parseIntFunc(result) >= 0)
   ensures correctSolution(stdin_input, result)
+// </vc-spec>
+// <vc-code>
 {
-    var lines := splitLines(stdin_input);
-    if |lines| < 2 {
-        result := "-1";
-        return;
-    }
-
-    var n := parseInt(lines[0]);
-    if n < 2 {
-        result := "-1";
-        return;
-    }
-
-    var a := parseIntArray(lines[1]);
-    if |a| != n {
-        result := "-1";
-        return;
-    }
-
-    if n == 2 {
-        if a[0] >= a[1] && (a[0] - a[1]) % 2 == 0 {
-            result := intToString((a[0] - a[1]) / 2);
-        } else {
-            result := "-1";
-        }
-        return;
-    }
-
-    var num := 0;
-    var i := 2;
-    while i < n
-        invariant 2 <= i <= n
-    {
-        num := xorOp(num, a[i]);
-        i := i + 1;
-    }
-
-    var and_val := a[0] + a[1] - num;
-    if and_val % 2 != 0 || a[0] < and_val / 2 || andOp(and_val / 2, num) != 0 {
-        result := "-1";
-        return;
-    }
-
-    and_val := and_val / 2;
-
-    var max_2 := 1;
-    while max_2 <= num
-        invariant max_2 >= 1
-    {
-        max_2 := max_2 * 2;
-    }
-
-    var a0 := and_val;
-    while max_2 >= 1
-        invariant max_2 >= 0
-    {
-        if andOp(num, max_2) != 0 && a0 + max_2 <= a[0] {
-            a0 := a0 + max_2;
-        }
-        max_2 := max_2 / 2;
-    }
-
-    if a0 != 0 {
-        result := intToString(a[0] - a0);
-    } else {
-        result := "-1";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

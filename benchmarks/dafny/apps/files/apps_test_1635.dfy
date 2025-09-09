@@ -1,6 +1,8 @@
+/*
 Given a sequence of cafe visits, find the cafe that was visited earliest among all last visits to each cafe.
 For each unique cafe, record the position of its last occurrence, then return the cafe whose last occurrence 
 has the smallest position.
+*/
 
 function LastOccurrencePosition(cafes: seq<int>, cafe: int): int
     requires cafe in cafes
@@ -11,42 +13,17 @@ function LastOccurrencePosition(cafes: seq<int>, cafe: int): int
     LastOccurrenceHelper(cafes, cafe, |cafes| - 1)
 }
 
-function LastOccurrenceHelper(cafes: seq<int>, cafe: int, index: int): int
-    requires 0 <= index < |cafes|
-    requires exists k :: 0 <= k <= index && cafes[k] == cafe
-    ensures 0 <= LastOccurrenceHelper(cafes, cafe, index) <= index
-    ensures cafes[LastOccurrenceHelper(cafes, cafe, index)] == cafe
-    ensures forall j :: LastOccurrenceHelper(cafes, cafe, index) < j <= index ==> cafes[j] != cafe
-    decreases index
-{
-    if cafes[index] == cafe then
-        index
-    else
-        LastOccurrenceHelper(cafes, cafe, index - 1)
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(cafes: seq<int>) returns (mini: int)
     requires |cafes| > 0
     ensures mini in cafes
     ensures forall cafe :: cafe in cafes ==> LastOccurrencePosition(cafes, mini) <= LastOccurrencePosition(cafes, cafe)
+// </vc-spec>
+// <vc-code>
 {
-    mini := cafes[0];
-    var minPos := LastOccurrencePosition(cafes, mini);
-
-    var i := 1;
-    while i < |cafes|
-        invariant 1 <= i <= |cafes|
-        invariant mini in cafes[..i]
-        invariant minPos == LastOccurrencePosition(cafes, mini)
-        invariant forall cafe :: cafe in cafes[..i] ==> minPos <= LastOccurrencePosition(cafes, cafe)
-    {
-        var currentCafe := cafes[i];
-        var currentPos := LastOccurrencePosition(cafes, currentCafe);
-
-        if currentPos < minPos {
-            mini := currentCafe;
-            minPos := currentPos;
-        }
-        i := i + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

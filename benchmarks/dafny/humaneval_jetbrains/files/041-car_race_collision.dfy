@@ -3,6 +3,10 @@ function_signature: def car_race_collision(x: Nat) -> Nat
 Imagine a road that's a perfectly straight infinitely long line. n cars are driving left to right;  simultaneously, a different set of n cars are driving right to left.   The two sets of cars start out being very far from each other.  All cars move in the same speed.  Two cars are said to collide when a car that's moving left to right hits a car that's moving right to left. However, the cars are infinitely sturdy and strong; as a result, they continue moving in their trajectory as if they did not collide. This function outputs the number of such collisions.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method car_race_collision(n: int) returns (cnt: int)
   // pre-conditions-start
   requires n >= 0
@@ -10,6 +14,9 @@ method car_race_collision(n: int) returns (cnt: int)
   // post-conditions-start
   ensures cnt == n * n
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

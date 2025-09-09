@@ -110,7 +110,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (output: string)
@@ -123,7 +122,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      output := "No\n"; // Placeholder implementation
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

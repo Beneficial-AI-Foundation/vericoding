@@ -1,7 +1,9 @@
+/*
 Given a circular building with n entrances, m floors per entrance, and k apartments per floor,
 find the minimum time to travel from apartment a to apartment b. Apartments are numbered 1 to n·m·k
 sequentially. Travel costs: stairs 5s/floor, adjacent entrances 15s, elevator 10s wait + 1s/floor,
 same floor 0s. Can walk around building in either direction.
+*/
 
 predicate ValidInput(n: int, m: int, k: int, a: int, b: int) {
   n > 0 && m > 0 && k > 0 && 1 <= a <= n * m * k && 1 <= b <= n * m * k && a != b
@@ -37,6 +39,10 @@ function MinEntranceDistance(entrance_a: int, entrance_b: int, n: int): int
   if clockwise <= counterclockwise then clockwise else counterclockwise
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, m: int, k: int, a: int, b: int) returns (result: int)
   requires ValidInput(n, m, k, a, b)
   ensures result >= 0
@@ -48,17 +54,9 @@ method solve(n: int, m: int, k: int, a: int, b: int) returns (result: int)
     result == MinTravelTime(GetFloor(a, m, k)) + 
               15 * MinEntranceDistance(GetEntrance(a, m, k), GetEntrance(b, m, k), n) + 
               MinTravelTime(GetFloor(b, m, k))
+// </vc-spec>
+// <vc-code>
 {
-  var entrance_a := GetEntrance(a, m, k);
-  var entrance_b := GetEntrance(b, m, k);
-  var floor_a := GetFloor(a, m, k);
-  var floor_b := GetFloor(b, m, k);
-
-  if entrance_a == entrance_b {
-    var floor_diff := if floor_a >= floor_b then floor_a - floor_b else floor_b - floor_a;
-    result := MinTravelTime(floor_diff);
-  } else {
-    var entrance_travel_time := 15 * MinEntranceDistance(entrance_a, entrance_b, n);
-    result := MinTravelTime(floor_a) + entrance_travel_time + MinTravelTime(floor_b);
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

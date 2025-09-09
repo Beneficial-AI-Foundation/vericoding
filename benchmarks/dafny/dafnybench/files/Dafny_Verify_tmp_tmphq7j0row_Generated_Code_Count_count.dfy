@@ -1,3 +1,6 @@
+/*
+*/
+
 function has_count(v: int, a: array<int>, n: int): int
     reads a  // This allows the function to read from array 'a'
     requires n >= 0 && n <= a.Length
@@ -16,6 +19,6 @@ method count (v: int, a: array<int>, n: int) returns (r: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

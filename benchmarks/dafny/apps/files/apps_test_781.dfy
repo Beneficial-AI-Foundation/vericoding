@@ -1,6 +1,8 @@
+/*
 Given an 8×8 board where each cell is colored black (B) or white (W), determine if it's possible to transform it 
 into a proper chessboard using only cyclic right shifts on individual rows. A proper chessboard has no adjacent 
 cells (horizontally or vertically) with the same color and the upper-left cell is white.
+*/
 
 predicate ValidInput(input: seq<string>)
 {
@@ -22,7 +24,16 @@ predicate AllRowsHaveAlternatingPattern(input: seq<string>)
     forall i :: 0 <= i < 8 ==> HasAlternatingRow(input[i])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: seq<string>) returns (result: string)
     requires ValidInput(input)
     ensures result in
-{"YES", "NO"}
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given n movement commands ('L' for left, 'R' for right), determine how many
 different final positions are possible when any subset of commands may be ignored.
 The answer is always n + 1, representing all positions from minimum to maximum.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -26,83 +28,17 @@ predicate CorrectOutput(input: string, result: string)
         result == intToString(ExtractN(input) + 1) + "\n"
 }
 
-function isValidInteger(s: string): bool
-{
-    |s| > 0 && 
-    (s[0] == '-' ==> |s| > 1 && isValidNat(s[1..])) &&
-    (s[0] != '-' ==> isValidNat(s))
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function isValidNat(s: string): bool
-{
-    |s| > 0 && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-}
-
-function parseInteger(s: string): int
-    requires isValidInteger(s)
-{
-    if |s| == 0 then 0
-    else if s[0] == '-' then -parseNat(s[1..])
-    else parseNat(s)
-}
-
-function parseNat(s: string): int
-    requires isValidNat(s)
-{
-    if |s| == 0 then 0
-    else if |s| == 1 then charToDigit(s[0])
-    else parseNat(s[..|s|-1]) * 10 + charToDigit(s[|s|-1])
-}
-
-function charToDigit(c: char): int
-    requires '0' <= c <= '9'
-{
-    (c as int) - ('0' as int)
-}
-
-function intToString(n: int): string
-{
-    if n == 0 then "0"
-    else if n < 0 then "-" + natToString(-n)
-    else natToString(n)
-}
-
-function natToString(n: int): string
-    requires n >= 0
-{
-    if n < 10 then [('0' as int + n) as char]
-    else natToString(n / 10) + [('0' as int + n % 10) as char]
-}
-
-function split(s: string, delimiter: char): seq<string>
-{
-    if |s| == 0 then [""]
-    else splitHelper(s, delimiter, 0, "")
-}
-
-function splitHelper(s: string, delimiter: char, index: int, current: string): seq<string>
-    requires 0 <= index
-    decreases |s| - index
-{
-    if index >= |s| then
-        if current == "" then []
-        else [current]
-    else if s[index] == delimiter then
-        [current] + splitHelper(s, delimiter, index + 1, "")
-    else
-        splitHelper(s, delimiter, index + 1, current + [s[index]])
-}
-
+// <vc-spec>
 method solve(input: string) returns (result: string)
     requires ValidInput(input)
     ensures CorrectOutput(input, result)
     ensures !ValidCommandInput(input) ==> result == ""
+// </vc-spec>
+// <vc-code>
 {
-    var lines := split(input, '\n');
-    if |lines| >= 2 && lines[0] != "" && isValidInteger(lines[0]) {
-        var n := parseInteger(lines[0]);
-        result := intToString(n + 1) + "\n";
-    } else {
-        result := "";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

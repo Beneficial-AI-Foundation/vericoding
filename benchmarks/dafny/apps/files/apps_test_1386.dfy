@@ -1,6 +1,8 @@
+/*
 Given a w×h grid, place square tiles that are diagonally split into white and black halves.
 Each tile can be rotated in 4 orientations. Adjacent tiles must have different colors on their
 shared edge. Count the number of valid tilings modulo 998244353.
+*/
 
 predicate ValidInput(input: string)
 {
@@ -64,3 +66,14 @@ function ModPow(base: int, exp: int, mod: int): int
   else
     (base * ModPow(base, exp - 1, mod)) % mod
 }
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

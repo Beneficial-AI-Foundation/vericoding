@@ -14,7 +14,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (result: int)
@@ -24,29 +23,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var remaining := n;
-      var ans := 0;
-  
-      // $100 bills
-      ans := ans + remaining / 100;
-      remaining := remaining % 100;
-  
-      // $20 bills  
-      ans := ans + remaining / 20;
-      remaining := remaining % 20;
-  
-      // $10 bills
-      ans := ans + remaining / 10;
-      remaining := remaining % 10;
-  
-      // $5 bills
-      ans := ans + remaining / 5;
-      remaining := remaining % 5;
-  
-      // $1 bills
-      ans := ans + remaining;
-  
-      result := ans;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

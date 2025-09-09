@@ -25,7 +25,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int, b: int) returns (result: string)
@@ -35,11 +34,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      if abs(a - b) <= 1 && a + b > 0 {
-          result := "YES";
-      } else {
-          result := "NO";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

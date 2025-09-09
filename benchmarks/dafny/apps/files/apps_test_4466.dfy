@@ -1,6 +1,8 @@
+/*
 Given a seat of width X centimeters, determine the maximum number of people that can sit on it.
 Each person occupies Y centimeters, and there must be at least Z centimeters of gap between 
 any two people and between each end of the seat and the nearest person.
+*/
 
 predicate ValidInput(x: int, y: int, z: int)
 {
@@ -21,9 +23,16 @@ predicate ValidSolution(x: int, y: int, z: int, result: int)
     result * (y + z) <= x - z < (result + 1) * (y + z)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(x: int, y: int, z: int) returns (result: int)
     requires ValidInput(x, y, z)
     ensures ValidSolution(x, y, z, result)
+// </vc-spec>
+// <vc-code>
 {
-    result := (x - z) / (y + z);
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -23,7 +23,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int) returns (result: seq<int>)
@@ -33,10 +32,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var p := (n / 2) / (k + 1);
-      var g := p * k;
-      var o := n - p - g;
-      result := [p, g, o];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

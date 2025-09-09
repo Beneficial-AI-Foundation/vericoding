@@ -1,4 +1,3 @@
-
 /*
 function_signature: method SortSeq(s: seq<int>) returns (sorted: seq<int>)
 Sort elements. Ensures: the result is sorted according to the ordering relation; returns the correct size/count; returns a sorted permutation of the input.
@@ -26,12 +25,19 @@ method unique(s: seq<int>) returns (result: seq<int>)
   assume{:axiom} false;
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method SortSeq(s: seq<int>) returns (sorted: seq<int>)
   // post-conditions-start
   ensures forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] <= sorted[j]
   ensures |sorted| == |s|
   ensures multiset(s) == multiset(sorted)
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Given n strings containing only 's' and 'h' characters, arrange them in optimal order
 and concatenate to form a single string. Find the maximum possible "noise" which is
 the number of "sh" subsequences in the resulting concatenated string.
+*/
 
 predicate ValidInput(input: seq<string>)
 {
@@ -72,85 +74,16 @@ predicate IsValidArrangement(original: seq<string>, arranged: seq<string>)
     |arranged| == |original| && multiset(arranged) == multiset(original)
 }
 
-method SortByRatio(strings: seq<string>) returns (sorted: seq<string>)
-    requires forall i :: 0 <= i < |strings| ==> |strings[i]| > 0
-    requires forall i :: 0 <= i < |strings| ==> forall j :: 0 <= j < |strings[i]| ==> strings[i][j] == 's' || strings[i][j] == 'h'
-    ensures |sorted| == |strings|
-    ensures forall i :: 0 <= i < |sorted| ==> |sorted[i]| > 0
-    ensures multiset(sorted) == multiset(strings)
-    ensures forall i :: 0 <= i < |sorted| ==> forall j :: 0 <= j < |sorted[i]| ==> sorted[i][j] == 's' || sorted[i][j] == 'h'
-    ensures IsSortedByRatio(sorted)
-    ensures IsValidArrangement(strings, sorted)
-{
-    sorted := strings;
-    var i := 0;
-    while i < |sorted|
-        invariant 0 <= i <= |sorted|
-        invariant |sorted| == |strings|
-        invariant multiset(sorted) == multiset(strings)
-        invariant forall k :: 0 <= k < |sorted| ==> |sorted[k]| > 0
-        invariant forall k :: 0 <= k < |sorted| ==> forall j :: 0 <= j < |sorted[k]| ==> sorted[k][j] == 's' || sorted[k][j] == 'h'
-        invariant forall k, l :: 0 <= k < l < i ==> StringRatio(sorted[k]) <= StringRatio(sorted[l])
-        invariant forall k, l :: 0 <= k < i && i <= l < |sorted| ==> StringRatio(sorted[k]) <= StringRatio(sorted[l])
-    {
-        var j := i + 1;
-        var min_index := i;
-        while j < |sorted|
-            invariant i < j <= |sorted|
-            invariant i <= min_index < |sorted|
-            invariant |sorted| == |strings|
-            invariant multiset(sorted) == multiset(strings)
-            invariant forall k :: 0 <= k < |sorted| ==> |sorted[k]| > 0
-            invariant forall k :: 0 <= k < |sorted| ==> forall l :: 0 <= l < |sorted[k]| ==> sorted[k][l] == 's' || sorted[k][l] == 'h'
-            invariant forall k :: i <= k < j ==> StringRatio(sorted[min_index]) <= StringRatio(sorted[k])
-        {
-            if StringRatio(sorted[j]) < StringRatio(sorted[min_index]) {
-                min_index := j;
-            }
-            j := j + 1;
-        }
+// <vc-helpers>
+// </vc-helpers>
 
-        if min_index != i {
-            var temp := sorted[i];
-            sorted := sorted[i := sorted[min_index]][min_index := temp];
-        }
-        i := i + 1;
-    }
-}
-
+// <vc-spec>
 method solve(input: seq<string>) returns (result: int)
     requires ValidInput(input)
     ensures result >= 0
+// </vc-spec>
+// <vc-code>
 {
-    var n := StringToInt(input[0]);
-    var strings := input[1..n+1];
-
-    var sorted_strings := SortByRatio(strings);
-
-    var concatenated := "";
-    var i := 0;
-    while i < |sorted_strings|
-        invariant 0 <= i <= |sorted_strings|
-    {
-        concatenated := concatenated + sorted_strings[i];
-        i := i + 1;
-    }
-
-    var s_count := 0;
-    var total := 0;
-    var j := 0;
-    while j < |concatenated|
-        invariant 0 <= j <= |concatenated|
-        invariant s_count >= 0
-        invariant total >= 0
-    {
-        if concatenated[j] == 's' {
-            s_count := s_count + 1;
-        } else if concatenated[j] == 'h' {
-            total := total + s_count;
-        }
-        j := j + 1;
-    }
-
-    result := total;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -16,7 +16,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int, k: int) returns (result: int)
@@ -28,45 +27,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var num_2 := 0;
-      var num_5 := 0;
-      var x := n;
-  
-      // Count factors of 2
-      while x % 2 == 0
-          invariant x > 0
-          invariant x <= n
-          invariant n == x * power(2, num_2)
-          decreases x
-      {
-          num_2 := num_2 + 1;
-          x := x / 2;
-      }
-  
-      // Reset x and count factors of 5
-      x := n;
-      while x % 5 == 0
-          invariant x > 0
-          invariant x <= n
-          invariant n == x * power(5, num_5)
-          decreases x
-      {
-          num_5 := num_5 + 1;
-          x := x / 5;
-      }
-  
-      // Calculate additional factors needed
-      var add_2 := if k > num_2 then k - num_2 else 0;
-      var add_5 := if k > num_5 then k - num_5 else 0;
-  
-      // Calculate result
-      result := n * power(2, add_2) * power(5, add_5);
-  
-      // Help verifier prove postconditions
-      assert power(2, add_2) > 0;
-      assert power(5, add_5) > 0;
-      assert power(10, k) > 0;
-      assert add_2 + num_2 >= k && add_5 + num_5 >= k;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

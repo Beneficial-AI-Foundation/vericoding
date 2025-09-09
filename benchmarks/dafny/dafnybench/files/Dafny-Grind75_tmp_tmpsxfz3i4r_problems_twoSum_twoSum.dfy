@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate summingPair(i: nat, j: nat, nums: seq<int>, target: int)
     requires i < |nums|
     requires j < |nums|
@@ -15,6 +18,6 @@ method twoSum(nums: seq<int>, target: int) returns (pair: (nat, nat))
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

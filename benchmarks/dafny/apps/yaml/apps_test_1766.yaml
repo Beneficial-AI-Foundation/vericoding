@@ -41,80 +41,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  lemma prove_sereja_score_nonnegative(cards: seq<int>, left: int, right: int, sereja_turn: bool)
-    requires 0 <= left <= right < |cards|
-    requires forall i :: 0 <= i < |cards| ==> cards[i] > 0
-    ensures sereja_optimal_score(cards, left, right, sereja_turn) >= 0
-    decreases right - left + 1
-  {
-    if left == right {
-      // Base case: single card
-    } else if cards[left] > cards[right] {
-      prove_sereja_score_nonnegative(cards, left+1, right, !sereja_turn);
-    } else {
-      prove_sereja_score_nonnegative(cards, left, right-1, !sereja_turn);
-    }
-  }
-  
-  lemma prove_sereja_score_bounded(cards: seq<int>, left: int, right: int, sereja_turn: bool)
-    requires 0 <= left <= right < |cards|
-    requires forall i :: 0 <= i < |cards| ==> cards[i] > 0
-    ensures sereja_optimal_score(cards, left, right, sereja_turn) <= sum(cards[left..right+1])
-    decreases right - left + 1
-  {
-    if left == right {
-      // Base case
-    } else if cards[left] > cards[right] {
-      prove_sereja_score_bounded(cards, left+1, right, !sereja_turn);
-      prove_sum_split_left(cards, left, right);
-    } else {
-      prove_sereja_score_bounded(cards, left, right-1, !sereja_turn);
-      prove_sum_split_right(cards, left, right);
-    }
-  }
-  
-  lemma prove_sum_slice_equivalence(cards: seq<int>)
-    requires |cards| >= 1
-    ensures sum(cards[0..|cards|]) == sum(cards)
-  {
-    assert cards[0..|cards|] == cards;
-  }
-  
-  lemma prove_sum_split_left(cards: seq<int>, left: int, right: int)
-    requires 0 <= left <= right < |cards|
-    ensures sum(cards[left..right+1]) == cards[left] + sum(cards[left+1..right+1])
-  {
-    if left == right {
-      assert cards[left..right+1] == [cards[left]];
-      assert cards[left+1..right+1] == [];
-    } else {
-      assert cards[left..right+1] == [cards[left]] + cards[left+1..right+1];
-    }
-  }
-  
-  lemma prove_sum_split_right(cards: seq<int>, left: int, right: int)
-    requires 0 <= left <= right < |cards|
-    ensures sum(cards[left..right+1]) == sum(cards[left..right]) + cards[right]
-  {
-    if left == right {
-      assert cards[left..right] == [];
-      assert cards[left..right+1] == [cards[right]];
-    } else {
-      assert cards[left..right+1] == cards[left..right] + [cards[right]];
-      prove_sum_append(cards[left..right], cards[right]);
-    }
-  }
-  
-  lemma prove_sum_append(s: seq<int>, x: int)
-    ensures sum(s + [x]) == sum(s) + x
-  {
-    if |s| == 0 {
-      assert s + [x] == [x];
-    } else {
-      assert s + [x] == [s[0]] + (s[1..] + [x]);
-      prove_sum_append(s[1..], x);
-    }
-  }
 
 vc-spec: |-
   method solve(cards: seq<int>) returns (scores: seq<int>)
@@ -123,16 +49,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var sereja_score := sereja_optimal_score(cards, 0, |cards|-1, true);
-    var dima_score := sum(cards) - sereja_score;
-  
-    assert sereja_score >= 0 by { prove_sereja_score_nonnegative(cards, 0, |cards|-1, true); }
-    prove_sereja_score_bounded(cards, 0, |cards|-1, true);
-    prove_sum_slice_equivalence(cards);
-    assert sereja_score <= sum(cards);
-    assert dima_score >= 0;
-  
-    scores := [sereja_score, dima_score];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

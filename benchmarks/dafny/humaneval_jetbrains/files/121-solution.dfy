@@ -3,13 +3,20 @@ function_signature: def solution(lst: List[int]) -> int
 Given a non-empty list of integers, return the sum of all of the odd elements that are in even positions.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solution(numbers: seq<int>) returns (s: int)
   // post-conditions-start
   ensures s == sum(numbers, seq(|numbers|, i requires 0 <= i < |numbers| => i % 2 == 0 && numbers[i] % 2 == 1))
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function sum(s: seq<int>, p: seq<bool>) : int
   requires |s| == |p|

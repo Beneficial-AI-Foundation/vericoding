@@ -1,7 +1,9 @@
+/*
 Given N balls in a row and K available colors, count the number of ways to paint 
 the balls such that no two adjacent balls have the same color. The solution is
 based on the combinatorial formula: first ball has K choices, each subsequent 
 ball has (K-1) choices, giving K * (K-1)^(N-1) total ways.
+*/
 
 function Power(base: int, exp: int): int
   requires exp >= 0
@@ -21,29 +23,17 @@ function PaintingWays(n: int, k: int): int
   k * Power(k - 1, n - 1)
 }
 
-lemma PowerPositive(base: int, exp: int)
-  requires base > 0
-  requires exp >= 0
-  ensures Power(base, exp) > 0
-{
-  if exp == 0 {
-    // Power(base, 0) == 1 > 0
-  } else {
-    PowerPositive(base, exp - 1);
-    // Power(base, exp) == base * Power(base, exp - 1) > 0
-  }
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, k: int) returns (result: int)
   requires ValidInput(n, k)
   ensures result == PaintingWays(n, k)
   ensures result > 0
+// </vc-spec>
+// <vc-code>
 {
-  if n == 1 {
-    result := k;
-  } else {
-    PowerPositive(k - 1, n - 1);
-    var power := Power(k - 1, n - 1);
-    result := k * power;
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

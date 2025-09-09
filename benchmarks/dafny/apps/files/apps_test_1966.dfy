@@ -1,7 +1,9 @@
+/*
 Given 4 square pieces of size n×n (where n is odd), each containing squares colored 0 (white) or 1 (black),
 arrange them into a 2n×2n board and recolor the minimum number of squares to form a valid chessboard.
 A valid chessboard has alternating colors where each square has a different color from all its adjacent squares.
 Pieces can be rearranged but cannot be rotated or flipped.
+*/
 
 predicate contains_valid_input_format(input: string)
 {
@@ -110,41 +112,10 @@ function minimum_recoloring_for_pieces(pieces: seq<seq<string>>, n: int): int
     0
 }
 
-function split_by_newline(s: string): seq<string>
-    ensures forall line | line in split_by_newline(s) :: '\n' !in line
-{
-    split_string_by_char(s, '\n')
-}
+// <vc-helpers>
+// </vc-helpers>
 
-function split_string_by_char(s: string, delimiter: char): seq<string>
-    ensures forall part | part in split_string_by_char(s, delimiter) :: delimiter !in part
-{
-    if |s| == 0 then
-        [""]
-    else if s[0] == delimiter then
-        [""] + split_string_by_char(s[1..], delimiter)
-    else
-        var rest := split_string_by_char(s[1..], delimiter);
-        if |rest| == 0 then [[s[0]]]
-        else [[s[0]] + rest[0]] + rest[1..]
-}
-
-function string_to_int(s: string): int
-    requires is_valid_integer_string(s)
-    ensures string_to_int(s) >= 0
-{
-    string_to_int_helper(s, 0)
-}
-
-function string_to_int_helper(s: string, acc: int): int
-    requires forall i | 0 <= i < |s| :: '0' <= s[i] <= '9'
-    requires acc >= 0
-    ensures string_to_int_helper(s, acc) >= acc
-{
-    if |s| == 0 then acc
-    else string_to_int_helper(s[1..], acc * 10 + (s[0] as int - '0' as int))
-}
-
+// <vc-spec>
 method solve(stdin_input: string) returns (result: string)
     requires |stdin_input| > 0
     requires contains_valid_input_format(stdin_input)
@@ -153,6 +124,9 @@ method solve(stdin_input: string) returns (result: string)
     ensures represents_minimum_recoloring_count(stdin_input, result)
     ensures var n := extract_n_from_input(stdin_input);
             string_to_int(result) >= 0 && string_to_int(result) <= 2*n*n
+// </vc-spec>
+// <vc-code>
 {
-    result := "0";
+  assume {:axiom} false;
 }
+// </vc-code>

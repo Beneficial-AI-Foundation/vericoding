@@ -1,4 +1,3 @@
-
 /*
 function_signature: def sum_squares(lst: List[float]) -> int
 You are given a list of numbers. You need to return the sum of squared numbers in the given list, round each element in the list to the upper int(Ceiling) first.
@@ -18,10 +17,17 @@ function square_seq(lst: seq<real>) : (sq : seq<int>)
         seq(|lst|, i requires 0 <= i < |lst| => ceil(lst[i]) * ceil(lst[i]))
     }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method sum_squares(lst: seq<real>) returns (r : int)
     // post-conditions-start
     ensures r == sum(square_seq(lst))
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

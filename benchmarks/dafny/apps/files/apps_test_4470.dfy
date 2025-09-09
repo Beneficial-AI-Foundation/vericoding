@@ -1,5 +1,7 @@
+/*
 Given an integer n, find the minimum number of operations to transform it to 1, or return -1 if impossible.
 Allowed operations: 1) n → n/2 if n divisible by 2, 2) n → 2n/3 if n divisible by 3, 3) n → 4n/5 if n divisible by 5.
+*/
 
 predicate ValidInput(n: nat)
 {
@@ -41,15 +43,18 @@ function MinMovesToOne(n: nat): nat
     else 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method Solve(n: nat) returns (result: int)
     requires ValidInput(n)
     ensures result >= -1
     ensures result == -1 <==> !CanReachOne(n)
     ensures result >= 0 ==> CanReachOne(n) && result == MinMovesToOne(n)
+// </vc-spec>
+// <vc-code>
 {
-    if CanReachOne(n) {
-        result := MinMovesToOne(n);
-    } else {
-        result := -1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

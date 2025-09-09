@@ -1,4 +1,3 @@
-
 /*
 function_signature: def flip_case(string: str) -> str
 For a given string, flip lowercase characters to uppercase and uppercase to lowercase.
@@ -24,12 +23,19 @@ function flip_char(c: char) : (C: char)
         if upper(c) then c + 'a' - 'A' else c
     }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method flip_case(s: string) returns (S: string)
     // post-conditions-start
     ensures |S| == |s|
     ensures forall i :: 0 <= i < |s| ==> (lower(s[i]) <==> upper(S[i]))
     ensures forall i :: 0 <= i < |s| ==> (upper(s[i]) <==> lower(S[i]))
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -26,7 +26,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(n: int) returns (result: string)
@@ -35,7 +34,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      result := "ABC" + IntToString(n);
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -23,41 +23,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  function gcd(a: int, b: int): int
-    requires a >= 0 && b >= 0
-    requires a > 0 || b > 0
-    ensures gcd(a, b) > 0
-    ensures gcd(a, b) <= a || a == 0
-    ensures gcd(a, b) <= b || b == 0
-    ensures a % gcd(a, b) == 0
-    ensures b % gcd(a, b) == 0
-    decreases b
-  {
-    if b == 0 then a else gcd(b, a % b)
-  }
-  
-  function lcm(a: int, b: int): int
-    requires a > 0 && b > 0
-    ensures lcm(a, b) > 0
-  {
-    assert gcd(a, b) > 0;
-    assert a % gcd(a, b) == 0;
-    assert b % gcd(a, b) == 0;
-    assert a * b >= 0;
-    assert gcd(a, b) <= a && gcd(a, b) <= b;
-    (a * b) / gcd(a, b)
-  }
-  
-  function countTies(t: int, w: int, b: int): int
-    requires t > 0 && w > 0 && b > 0
-    ensures countTies(t, w, b) >= 0
-  {
-    var lc := lcm(w, b);
-    var mn := if w > b then b else w;
-    var ans := mn * (t / lc + 1) - 1;
-    var val := (t / lc) * lc + mn - 1;
-    if t - val < 0 then ans + (t - val) else ans
-  }
 
 vc-spec: |-
   method solve(t: int, w: int, b: int) returns (numerator: int, denominator: int)
@@ -67,28 +32,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var lc := lcm(w, b);
-    var mn := if w > b then b else w;
-  
-    var ans := mn * (t / lc + 1) - 1;
-    var val := (t / lc) * lc + mn - 1;
-  
-    if t - val < 0 {
-      ans := ans + (t - val);
-    }
-  
-    // Ensure ans is non-negative for gcd precondition
-    if ans < 0 {
-      ans := 0;
-    }
-  
-    var g := gcd(ans, t);
-    assert g > 0;
-    assert t % g == 0;
-    assert ans % g == 0;
-    numerator := ans / g;
-    denominator := t / g;
-    assert denominator > 0;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -1,3 +1,6 @@
+/*
+*/
+
 function Sum(v:array<int>,i:int,j:int):int
 reads v
 requires 0<=i<=j<=v.Length
@@ -39,6 +42,6 @@ ensures 0<=k<=i && s==Sum(v,k,i+1) &&  SumMaxToRight(v,i,s)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

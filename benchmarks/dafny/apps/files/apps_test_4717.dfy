@@ -1,6 +1,8 @@
+/*
 Given three distinct positions x, a, and b on a number line, determine whether position a or position b 
 is closer to position x. Output "A" if position a is closer, "B" if position b is closer.
 Distance between two positions s and t is |s-t|.
+*/
 
 predicate ValidInput(x: int, a: int, b: int)
 {
@@ -22,17 +24,17 @@ predicate CorrectResult(x: int, a: int, b: int, result: string)
     (result == "B" <==> Distance(x, b) < Distance(x, a))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(x: int, a: int, b: int) returns (result: string)
 requires ValidInput(x, a, b)
 ensures result == "A" || result == "B"
 ensures CorrectResult(x, a, b, result)
+// </vc-spec>
+// <vc-code>
 {
-    var distA := Distance(x, a);
-    var distB := Distance(x, b);
-    
-    if distA < distB {
-        result := "A";
-    } else {
-        result := "B";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

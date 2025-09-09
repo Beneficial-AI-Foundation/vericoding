@@ -1,6 +1,8 @@
+/*
 Given n monsters with health points, player and opponent take turns attacking until each monster dies.
 Player attacks first with damage a, opponent with damage b. Player gets 1 point for killing a monster.
 Player can skip opponent's turn at most k times total. Find maximum points achievable.
+*/
 
 predicate ValidInput(n: int, a: int, b: int, k: int, H: seq<int>)
 {
@@ -55,88 +57,16 @@ function CountKillableHelper(sorted_health: seq<int>, a: int, remaining_k: int, 
                 CountKillableHelper(sorted_health, a, remaining_k, index + 1, acc)
 }
 
-method SortSequence(arr: seq<int>) returns (sorted_arr: seq<int>)
-    requires |arr| >= 0
-    ensures |sorted_arr| == |arr|
-    ensures multiset(sorted_arr) == multiset(arr)
-    ensures forall i, j :: 0 <= i < j < |sorted_arr| ==> sorted_arr[i] <= sorted_arr[j]
-{
-    if |arr| == 0 {
-        sorted_arr := [];
-        return;
-    }
+// <vc-helpers>
+// </vc-helpers>
 
-    sorted_arr := arr;
-    var n := |arr|;
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant |sorted_arr| == n
-        invariant multiset(sorted_arr) == multiset(arr)
-        invariant forall x, y :: 0 <= x < y < i ==> sorted_arr[x] <= sorted_arr[y]
-        invariant forall x, y :: 0 <= x < i && i <= y < n ==> sorted_arr[x] <= sorted_arr[y]
-    {
-        var j := i + 1;
-        while j < n
-            invariant i + 1 <= j <= n
-            invariant |sorted_arr| == n
-            invariant multiset(sorted_arr) == multiset(arr)
-            invariant forall x, y :: 0 <= x < y < i ==> sorted_arr[x] <= sorted_arr[y]
-            invariant forall x, y :: 0 <= x < i && i <= y < n ==> sorted_arr[x] <= sorted_arr[y]
-            invariant forall y :: i + 1 <= y < j ==> sorted_arr[i] <= sorted_arr[y]
-        {
-            if sorted_arr[i] > sorted_arr[j] {
-                var temp := sorted_arr[i];
-                sorted_arr := sorted_arr[i := sorted_arr[j]][j := temp];
-            }
-            j := j + 1;
-        }
-        i := i + 1;
-    }
-}
-
+// <vc-spec>
 method SolveCore(n: int, a: int, b: int, k: int, H: seq<int>) returns (result: int)
     requires ValidInput(n, a, b, k, H)
     ensures 0 <= result <= n
+// </vc-spec>
+// <vc-code>
 {
-    var processed := [];
-    var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-        invariant |processed| == i
-        invariant forall j :: 0 <= j < i ==> 
-            var h_mod := H[j] % (a + b);
-            processed[j] == (if h_mod == 0 then a + b else h_mod)
-        invariant forall j :: 0 <= j < |processed| ==> 1 <= processed[j] <= a + b
-    {
-        var h_mod := H[i] % (a + b);
-        var h_final := if h_mod == 0 then a + b else h_mod;
-        processed := processed + [h_final];
-        i := i + 1;
-    }
-
-    var sorted_health := SortSequence(processed);
-    var ans := 0;
-    var remaining_k := k;
-    i := 0;
-
-    while i < |sorted_health|
-        invariant 0 <= i <= |sorted_health|
-        invariant 0 <= ans <= i
-        invariant remaining_k >= 0
-    {
-        var x := sorted_health[i];
-        if x <= a {
-            ans := ans + 1;
-        } else {
-            var needed_skips := (x + a - 1) / a - 1;
-            if remaining_k >= needed_skips {
-                remaining_k := remaining_k - needed_skips;
-                ans := ans + 1;
-            }
-        }
-        i := i + 1;
-    }
-
-    result := ans;
+  assume {:axiom} false;
 }
+// </vc-code>

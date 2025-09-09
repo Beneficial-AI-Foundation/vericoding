@@ -1,4 +1,3 @@
-
 /*
 function_signature: def get_closest_vowel(s : str) -> str
 You are given a word. Your task is to find the closest vowel that stands between two consonants from the right side of the word (case sensitive).
@@ -14,6 +13,10 @@ function IsConsonant(c: char) : bool
   ('A' <= c <= 'Z' || 'a' <= c <= 'z') && !IsVowel(c)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method get_closest_vowel(word: string) returns (result: string)
   // pre-conditions-start
   requires forall i :: 0 <= i < |word| ==> ('A' <= word[i] <= 'Z' || 'a' <= word[i] <= 'z')
@@ -26,6 +29,9 @@ method get_closest_vowel(word: string) returns (result: string)
             && IsVowel(word[i]) && IsConsonant(word[i - 1]) && IsConsonant(word[i + 1])
             && (forall j :: i < j < |word| - 1 ==> !IsVowel(word[j]) || !IsConsonant(word[j - 1]) || !IsConsonant(word[j + 1]))
   // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>

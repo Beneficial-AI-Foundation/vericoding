@@ -1,7 +1,9 @@
+/*
 Given n cities in a row, Limak lives in city a and uses a Bear Criminal Detector (BCD) 
 that reports total criminals at each distance. He can only catch criminals where he can 
 definitively determine their presence: at distance d with 1 city and 1 criminal reported, 
 or at distance d with 2 cities and 2 criminals reported. Return total criminals caught.
+*/
 
 predicate ValidInput(n: int, a: int, x: seq<int>)
 {
@@ -40,50 +42,17 @@ function TotalCriminalsCaught(n: int, a: int, x: seq<int>): int
     x[a-1] + SumCriminalsCaught(n, a-1, x, 1)
 }
 
-function SumArray(x: seq<int>): int
-    requires forall i :: 0 <= i < |x| ==> (x[i] == 0 || x[i] == 1)
-    ensures SumArray(x) >= 0
-    ensures SumArray(x) <= |x|
-{
-    if |x| == 0 then 0
-    else x[0] + SumArray(x[1..])
-}
+// <vc-helpers>
+// </vc-helpers>
 
+// <vc-spec>
 method solve(n: int, a: int, x: seq<int>) returns (result: int)
     requires ValidInput(n, a, x)
     ensures result >= 0
     ensures result == TotalCriminalsCaught(n, a, x)
+// </vc-spec>
+// <vc-code>
 {
-    var a_idx := a - 1; // Convert to 0-indexed
-    result := x[a_idx]; // Start with criminal at Limak's city
-
-    var distance := 1;
-    while distance <= n 
-        invariant 1 <= distance <= n + 1
-        invariant result >= 0
-        invariant result <= x[a_idx] + SumCriminalsCaught(n, a_idx, x, 1)
-        invariant result == x[a_idx] + SumCriminalsCaught(n, a_idx, x, 1) - SumCriminalsCaught(n, a_idx, x, distance)
-    {
-        var le := a_idx - distance;
-        var rg := a_idx + distance;
-
-        var le_valid := le >= 0 && le < n;
-        var rg_valid := rg >= 0 && rg < n;
-
-        if !le_valid && !rg_valid {
-            break;
-        }
-
-        if le_valid && !rg_valid {
-            result := result + x[le];
-        } else if !le_valid && rg_valid {
-            result := result + x[rg];
-        } else if le_valid && rg_valid {
-            if x[le] == 1 && x[rg] == 1 {
-                result := result + 2;
-            }
-        }
-
-        distance := distance + 1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

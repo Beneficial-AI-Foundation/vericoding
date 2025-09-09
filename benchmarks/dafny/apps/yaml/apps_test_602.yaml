@@ -18,7 +18,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int) returns (result: string)
@@ -27,8 +26,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var presidents := Presidents();
-      result := presidents[a - 1];
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

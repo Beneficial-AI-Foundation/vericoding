@@ -1,6 +1,8 @@
+/*
 Given two strings S and T as space-separated input, concatenate T and S (in that order) and output the result.
 Input format: "S T" where S and T contain only lowercase English letters.
 Output format: "TS\n" (T concatenated with S followed by newline).
+*/
 
 predicate ValidInput(input: string)
 {
@@ -37,41 +39,17 @@ predicate CorrectConcatenation(input: string, output: string)
     output == t + s + "\n"
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(input: string) returns (output: string)
     requires ValidInput(input)
     ensures ValidOutput(output)
     ensures CorrectConcatenation(input, output)
+// </vc-spec>
+// <vc-code>
 {
-    var spacePos := -1;
-    var i := 1;
-    while i < |input| && spacePos == -1
-        invariant 1 <= i <= |input|
-        invariant spacePos == -1 ==> forall j :: 1 <= j < i ==> input[j] != ' '
-        invariant spacePos != -1 ==> 0 < spacePos < |input| && input[spacePos] == ' ' &&
-                  (forall j :: 0 <= j < spacePos ==> input[j] != ' ') &&
-                  (forall j :: spacePos+1 <= j < |input| ==> input[j] != ' ' && input[j] != '\n')
-    {
-        if input[i] == ' ' &&
-           (forall j :: 0 <= j < i ==> input[j] != ' ') &&
-           (forall j :: i+1 <= j < |input| ==> input[j] != ' ' && input[j] != '\n') {
-            spacePos := i;
-        }
-        i := i + 1;
-    }
-
-    assert spacePos != -1;
-    assert 0 < spacePos < |input|;
-    assert input[spacePos] == ' ';
-    assert forall j :: 0 <= j < spacePos ==> input[j] != ' ';
-    assert forall j :: spacePos+1 <= j < |input| ==> input[j] != ' ' && input[j] != '\n';
-
-    if input[|input|-1] == '\n' {
-        assert forall j :: spacePos+1 <= j < |input|-1 ==> ('a' <= input[j] <= 'z');
-        assert forall j :: 0 <= j < spacePos ==> ('a' <= input[j] <= 'z');
-        output := input[spacePos+1..|input|-1] + input[..spacePos] + "\n";
-    } else {
-        assert forall j :: spacePos+1 <= j < |input| ==> ('a' <= input[j] <= 'z');
-        assert forall j :: 0 <= j < spacePos ==> ('a' <= input[j] <= 'z');
-        output := input[spacePos+1..] + input[..spacePos] + "\n";
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

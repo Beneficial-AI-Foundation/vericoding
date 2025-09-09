@@ -28,7 +28,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(word: string) returns (result: string)
@@ -38,62 +37,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var group1 := Group1();
-      var group2 := Group2();
-  
-      var hasGroup1 := false;
-      var hasGroup2 := false;
-  
-      var i := 0;
-      while i < |word|
-          invariant 0 <= i <= |word|
-          invariant hasGroup1 <==> exists k :: 0 <= k < i && word[k] in group1
-          invariant hasGroup2 <==> exists k :: 0 <= k < i && word[k] in group2
-          invariant forall k :: 0 <= k < i ==> (word[k] in group1 <==> word[k] !in group2)
-          invariant forall k :: 0 <= k < i ==> (word[k] in group1 || word[k] in group2)
-      {
-          var c := word[i];
-          var inGroup1 := false;
-  
-          var j := 0;
-          while j < |group1|
-              invariant 0 <= j <= |group1|
-              invariant inGroup1 <==> exists k :: 0 <= k < j && group1[k] == c
-          {
-              if group1[j] == c {
-                  inGroup1 := true;
-                  break;
-              }
-              j := j + 1;
-          }
-  
-          assert inGroup1 <==> c in group1;
-          assert c in group1 <==> c !in group2;
-  
-          if inGroup1 {
-              hasGroup1 := true;
-          } else {
-              hasGroup2 := true;
-          }
-  
-          i := i + 1;
-      }
-  
-      assert hasGroup1 <==> exists k :: 0 <= k < |word| && word[k] in group1;
-      assert hasGroup2 <==> exists k :: 0 <= k < |word| && word[k] in group2;
-      assert forall k :: 0 <= k < |word| ==> (word[k] in group1 || word[k] in group2);
-  
-      var allInGroup1 := forall k :: 0 <= k < |word| ==> word[k] in group1;
-      var allInGroup2 := forall k :: 0 <= k < |word| ==> word[k] in group2;
-  
-      assert allInGroup1 <==> !hasGroup2;
-      assert allInGroup2 <==> !hasGroup1;
-  
-      if !hasGroup1 || !hasGroup2 {
-          result := "YES";
-      } else {
-          result := "NO";
-      }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

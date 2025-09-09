@@ -39,7 +39,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(a: int, b: int, x: int, y: int) returns (result: int)
@@ -49,18 +48,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    var g := gcd(x, y);
-    var x_reduced := x / g;
-    var y_reduced := y / g;
-  
-    var quota_x := a / x_reduced;
-    var quota_y := b / y_reduced;
-  
-    if quota_x <= quota_y {
-      result := quota_x;
-    } else {
-      result := quota_y;
-    }
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

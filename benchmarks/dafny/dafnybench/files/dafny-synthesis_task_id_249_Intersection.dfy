@@ -1,3 +1,6 @@
+/*
+*/
+
 predicate InArray(a: array<int>, x: int)
     reads a
 {
@@ -16,6 +19,6 @@ method Intersection(a: array<int>, b: array<int>) returns (result: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

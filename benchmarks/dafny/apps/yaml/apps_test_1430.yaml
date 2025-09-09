@@ -22,7 +22,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(N: int, K: int, S: string) returns (result: int)
@@ -31,51 +30,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var bits := StringToBits(S);
-      
-      var maxLen := 0;
-      var left := 0;
-  
-      // Try each starting position
-      while left < N
-          invariant 0 <= left <= N
-          invariant ValidResult(maxLen, N)
-      {
-          var right := left;
-          var zeroSegments := 0;
-          var inZeroSegment := false;
-  
-          // Expand window from left
-          while right < N && zeroSegments <= K
-              invariant left <= right <= N
-              invariant zeroSegments >= 0
-              invariant zeroSegments <= K + 1
-              invariant ValidResult(maxLen, N)
-          {
-              if bits[right] == 0 {
-                  if !inZeroSegment {
-                      zeroSegments := zeroSegments + 1;
-                      inZeroSegment := true;
-                  }
-              } else {
-                  inZeroSegment := false;
-              }
-  
-              if zeroSegments <= K {
-                  var currentLen := right - left + 1;
-                  if currentLen > maxLen {
-                      maxLen := currentLen;
-                  }
-                  right := right + 1;
-              } else {
-                  break;
-              }
-          }
-  
-          left := left + 1;
-      }
-  
-      result := maxLen;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -1,5 +1,7 @@
+/*
 Given an integer N, find a permutation P₁, P₂, ..., Pₙ of numbers 1 to N
 that maximizes the sum M₁ + M₂ + ... + Mₙ, where Mᵢ is the remainder when i is divided by Pᵢ.
+*/
 
 predicate ValidInput(n: int) {
     n >= 1
@@ -11,9 +13,16 @@ function MaxSum(n: int): int
     n * (n - 1) / 2
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int) returns (result: int)
     requires ValidInput(n)
     ensures result == MaxSum(n)
+// </vc-spec>
+// <vc-code>
 {
-    result := n * (n - 1) / 2;
+  assume {:axiom} false;
 }
+// </vc-code>

@@ -1,6 +1,8 @@
+/*
 Sasha has x chizhiks and Masha has y chizhiks. Coconuts cost z chizhiks each.
 Find the maximum number of coconuts they can buy together by potentially exchanging
 chizhiks, and determine the minimum number of chizhiks that must be exchanged.
+*/
 
 predicate ValidInput(x: int, y: int, z: int)
 {
@@ -22,6 +24,10 @@ function MinExchange(x: int, y: int, z: int): int
   else z - if rx > ry then rx else ry
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(x: int, y: int, z: int) returns (coconuts: int, exchange: int)
   requires ValidInput(x, y, z)
   ensures coconuts == MaxCoconuts(x, y, z)
@@ -29,20 +35,9 @@ method solve(x: int, y: int, z: int) returns (coconuts: int, exchange: int)
   ensures coconuts >= x / z + y / z
   ensures coconuts <= x / z + y / z + 1
   ensures exchange >= 0 && exchange < z
+// </vc-spec>
+// <vc-code>
 {
-  var c := x / z + y / z;
-  var rx := x % z;
-  var ry := y % z;
-
-  if rx + ry < z {
-    coconuts := c;
-    exchange := 0;
-  } else {
-    coconuts := c + 1;
-    if rx > ry {
-      exchange := z - rx;
-    } else {
-      exchange := z - ry;
-    }
-  }
+  assume {:axiom} false;
 }
+// </vc-code>

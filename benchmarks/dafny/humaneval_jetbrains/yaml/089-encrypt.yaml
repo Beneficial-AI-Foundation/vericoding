@@ -1,3 +1,7 @@
+vc-description: |-
+  function_signature: def encrypt(str : str) -> str
+  Create a function encrypt that takes a string as an argument and returns a string encrypted with the alphabet being rotated. The alphabet should be rotated in a manner such that the letters shift down by two multiplied to two places.
+
 vc-preamble: |-
   function rot_sym(c: char): char
     // pre-conditions-start
@@ -14,12 +18,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-vc-description: |-
-
-  /*
-  function_signature: def encrypt(str : str) -> str
-  Create a function encrypt that takes a string as an argument and returns a string encrypted with the alphabet being rotated. The alphabet should be rotated in a manner such that the letters shift down by two multiplied to two places.
-  */
 
 vc-spec: |-
   method encrypt(s: string) returns (r: string)
@@ -33,9 +31,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume false;
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
-
 

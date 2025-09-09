@@ -1,3 +1,6 @@
+/*
+*/
+
 //power -- Stephanie Renee McIntyre
 //Based on the code used in the course overheads for Fall 2018
 
@@ -31,6 +34,6 @@ method compute_power(a: int, n: int) returns (s: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
 // </vc-code>

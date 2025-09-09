@@ -1,6 +1,8 @@
+/*
 Given n particles on a line at distinct even-integer positions, where each particle moves 
 left (L) or right (R) at speed 1 unit per microsecond, find the time of the first collision 
 between any two particles, or return -1 if no collision occurs.
+*/
 
 predicate ValidInput(n: int, directions: string, positions: seq<int>)
 {
@@ -33,46 +35,19 @@ predicate IsMinimalCollisionTime(result: int, directions: string, positions: seq
         CollisionTime(i, positions) == result)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method solve(n: int, directions: string, positions: seq<int>) returns (result: int)
     requires ValidInput(n, directions, positions)
     ensures result == -1 || result >= 0
     ensures result != -1 ==> HasCollision(directions, positions)
     ensures result == -1 ==> !HasCollision(directions, positions)
     ensures result != -1 ==> IsMinimalCollisionTime(result, directions, positions)
+// </vc-spec>
+// <vc-code>
 {
-    var best := 0;
-    var found_collision := false;
-    var i := 0;
-    while i < |directions| - 1
-        invariant 0 <= i <= |directions| - 1
-        invariant found_collision ==> exists j :: 0 <= j < i && directions[j] == 'R' && directions[j+1] == 'L'
-        invariant !found_collision ==> forall j :: 0 <= j < i ==> !(directions[j] == 'R' && directions[j+1] == 'L')
-        invariant found_collision ==> forall j :: 0 <= j < i && directions[j] == 'R' && directions[j+1] == 'L' ==> CollisionTime(j, positions) >= best
-        invariant found_collision ==> exists j :: 0 <= j < i && directions[j] == 'R' && directions[j+1] == 'L' && CollisionTime(j, positions) == best
-        invariant best >= 0
-    {
-        if directions[i] == 'R' && directions[i+1] == 'L'
-        {
-            var collision_time := CollisionTime(i, positions);
-            if !found_collision
-            {
-                found_collision := true;
-                best := collision_time;
-            }
-            else if collision_time < best
-            {
-                best := collision_time;
-            }
-        }
-        i := i + 1;
-    }
-
-    if found_collision
-    {
-        result := best;
-    }
-    else
-    {
-        result := -1;
-    }
+  assume {:axiom} false;
 }
+// </vc-code>

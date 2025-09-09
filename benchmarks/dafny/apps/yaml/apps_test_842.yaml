@@ -47,7 +47,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  
 
 vc-spec: |-
   method solve(stdin_input: string) returns (result: string)
@@ -56,9 +55,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      var n := ExtractFirstLine(stdin_input);
-      var reversed := ReverseString(n);
-      result := n + reversed + "\n";
+    assume {:axiom} false;
   }
 
 vc-postamble: |-
+

@@ -3,6 +3,10 @@ function_signature: def will_it_fly(q: List[int], w: int) -> bool
 Write a function that returns True if the object q will fly, and False otherwise. The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is less than or equal the maximum possible weight w.
 */
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 method will_it_fly(s: seq<int>, w: int) returns (result: bool)
     // pre-conditions-start
     requires |s| > 0
@@ -10,9 +14,12 @@ method will_it_fly(s: seq<int>, w: int) returns (result: bool)
     // post-conditions-start
     ensures result <==> is_palindrome_pred(s) && sum(s) <= w
     // post-conditions-end
+// </vc-spec>
+// <vc-code>
 {
-  assume false;
+  assume {:axiom} false;
 }
+// </vc-code>
 
 function is_palindrome_pred(s : seq<int>) : bool {
     forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
