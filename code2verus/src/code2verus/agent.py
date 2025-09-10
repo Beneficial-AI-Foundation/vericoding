@@ -24,9 +24,9 @@ from code2verus.config import (
     get_config_value,
     get_error_template,
 )
-from code2verus.tools import verus_tool, dafny_tool
+from code2verus.tools import verus_tool, dafny_tool, lean_tool, lean_tool
 from code2verus.utils import extract_rust_code, concatenate_yaml_fields
-from code2verus.verification import verify_verus_code
+from code2verus.verification import verify_code
 from code2verus.models import (
     TranslationDebugContext,
     ConversationExchange,
@@ -78,19 +78,33 @@ def _update_conversation_history(result, current_history: list) -> list:
         return current_history
 
 
-def create_agent(source_language: str = "dafny"):
+def create_agent(source_language: str = "dafny", target_language: str = "verus"):
     """Create and return a configured PydanticAI agent with tools"""
-    # Load language-specific system prompt
+    # Load language-specific system prompt based on source language
+    # The source language determines which translation rules to use
     language_prompt = full_cfg.get("system_prompts", {}).get(
         source_language.lower(), system_prompt
     )
 
+    # Select appropriate verification tools based on target language
+    tools = []
+    if target_language.lower() == "verus":
+        tools.append(verus_tool)
+    if target_language.lower() == "dafny" or source_language.lower() == "dafny":
+        tools.append(dafny_tool)
+    if target_language.lower() == "lean" or source_language.lower() == "lean":
+        tools.append(lean_tool)
+    
+    # If no specific tools, include all for backward compatibility
+    if not tools:
+        tools = [verus_tool, dafny_tool, lean_tool]
+
     return Agent(
         cfg["model"],
-        name="code2verus",
+        name=f"code_{source_language}2{target_language}",
         deps_type=str,  # Currently using str, could be enhanced to dict for richer context
         output_type=str,
-        tools=[verus_tool, dafny_tool],
+        tools=tools,
         system_prompt=language_prompt,
         retries=10,
     )
@@ -99,10 +113,11 @@ def create_agent(source_language: str = "dafny"):
 async def translate_code_to_verus(
     source_code: str,
     source_language: str = "dafny",
+    target_language: str = "verus",
     is_yaml: bool = False,
     max_iterations: int | None = None,
 ) -> TranslationResult:
-    """Translate source code to Verus using the agent with verification feedback
+    """Translate source code to target language using the agent with verification feedback
 
     Returns:
         TranslationResult: Contains output_content, num_iterations, and rust_for_verification.
@@ -117,7 +132,7 @@ async def translate_code_to_verus(
     # Create the agent once and reuse it throughout iterations
     # We maintain true conversational context using PydanticAI's message_history parameter
     # This ensures the agent remembers previous exchanges and can build upon them
-    agent = create_agent(source_language)
+    agent = create_agent(source_language, target_language)
 
     # Initialize variables with default values to ensure they're always defined
     result = None
@@ -133,6 +148,7 @@ async def translate_code_to_verus(
     debug_context = TranslationDebugContext(
         original_source=source_code,
         source_language=source_language,
+        target_language=target_language,
         is_yaml=is_yaml,
         max_iterations=max_iterations,
     )
@@ -165,7 +181,7 @@ async def translate_code_to_verus(
         )
 
     user_prompt = f"""
-Please translate the following {source_language} code to Verus:
+Please translate the following {source_language} code to {target_language}:
 
 ```{source_language.lower()}
 {source_code}
@@ -313,7 +329,7 @@ Please translate the following {source_language} code to Verus:
                 verification_success,
                 verification_output,
                 verification_error,
-            ) = await verify_verus_code(rust_for_verification, is_yaml)
+            ) = await verify_code(rust_for_verification, target_language, is_yaml)
 
             # Track attempt results using structured data
             attempt_result = AttemptResult(

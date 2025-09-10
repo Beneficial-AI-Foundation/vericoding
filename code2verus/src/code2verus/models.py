@@ -47,6 +47,7 @@ class TranslationDebugContext(BaseModel):
     # Immutable context
     original_source: str
     source_language: str
+    target_language: str = "verus"  # Default to verus for backward compatibility
     is_yaml: bool
     max_iterations: int
     session_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
@@ -160,6 +161,12 @@ class VerusToolResult(BaseModel):
 
 
 class DafnyToolResult(BaseModel):
+    success: bool
+    output: str
+    error: str = ""
+
+
+class LeanToolResult(BaseModel):
     success: bool
     output: str
     error: str = ""

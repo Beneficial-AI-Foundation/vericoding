@@ -1,12 +1,20 @@
 # Code2Verus
 
-An extension of [Quinn's tool](https://github.com/Beneficial-AI-Foundation/dafny2verus) to translate code from various verification languages (Dafny, Lean) to [Verus](https://verus-lang.github.io/verus/guide/overview.html) using AI models.
+A generalized verification language translator that supports bidirectional translation between verification languages using AI models. Originally extended from [Quinn's tool](https://github.com/Beneficial-AI-Foundation/dafny2verus), now supports multiple translation directions including the new capability to translate from [Verus](https://verus-lang.github.io/verus/guide/overview.html) back to other verification languages.
 
 ## Overview
 
-Code2Verus uses large language models to automatically translate verification code from languages like Dafny and Lean to Verus, a verification-aware Rust framework. The tool supports both Hugging Face datasets and local folders as input sources.
+Code2Verus uses large language models to automatically translate verification code between languages like Dafny, Lean, and Verus. The tool supports both Hugging Face datasets and local folders as input sources, with intelligent bidirectional translation capabilities.
 
 ## Features 
+
+### Core Translation Capabilities
+
+- **Bidirectional Translation**: Translate between verification languages in multiple directions:
+  - **Dafny ↔ Verus** (both directions supported)
+  - **Lean → Verus** 
+  - **Verus → Dafny** (NEW!)
+  - Framework ready for additional combinations (Lean ↔ Dafny, Verus ↔ Lean)
 
 ### Features inherited from Quinn's dafny2verus
 
@@ -16,16 +24,18 @@ Code2Verus uses large language models to automatically translate verification co
 - **Iterative improvement**: Uses AI tools to refine translations until they verify
 - **Modular architecture**: Well-organized codebase for easy maintenance and extension
 
-### New features
+### Enhanced features
 
-- **Multi-language support**: Translate from Dafny or Lean to Verus
+- **Multi-language support**: Flexible source and target language selection
+- **Dynamic verification**: Automatically uses appropriate verification tools for target language
 - **Flexible input sources**: 
   - Hugging Face datasets (e.g., `wendy-sun/DafnyBench`, `sunblaze-ucb/verina`)
   - Local folders with code files
+- **Intelligent tool selection**: Automatically selects verification tools based on translation direction
 
 ## How It Works
 
-Code2Verus leverages AI models (currently Gemini) with a sophisticated iterative translation process:
+Code2Verus leverages AI models with a sophisticated iterative translation process:
 
 1. **Input Processing**: The tool accepts input from either:
    - Hugging Face datasets (automatically downloads and parses)
@@ -33,14 +43,15 @@ Code2Verus leverages AI models (currently Gemini) with a sophisticated iterative
 
 2. **Translation Pipeline**:
    - Extracts source code from the input
+   - Determines appropriate translation direction (source → target language)
    - Sends code to the AI model with language-specific prompts
-   - The AI agent has access to specialized tools:
+   - The AI agent has access to specialized verification tools:
      - `verus_tool`: Compiles and verifies Verus code
      - `dafny_tool`: Validates Dafny syntax and semantics
-   - Iteratively refines the translation based on verification feedback
+     - `lean_tool`: Checks Lean code syntax and types
 
 3. **Verification Loop**:
-   - Each translation attempt is verified using the actual Verus compiler
+   - Each translation attempt is verified using the appropriate compiler/checker
    - If verification fails, the error messages are fed back to the AI
    - The AI uses this feedback to fix issues and improve the translation
    - This continues for up to `max_translation_iterations` (configurable in `config.yml`) or until verification succeeds
@@ -57,16 +68,68 @@ Code2Verus leverages AI models (currently Gemini) with a sophisticated iterative
 
 The tool's modular architecture separates concerns:
 - **Agent module**: Manages AI model interaction
-- **Verification module**: Handles Verus compilation and verification
+- **Verification module**: Handles multiple verification tools (Verus, Dafny, Lean)
 - **Processing module**: Orchestrates the async translation pipeline
 - **Success tracking module**: Persists translation results
+
+## Translation Capabilities
+
+### Bidirectional Translation Support
+
+Code2Verus now supports **bidirectional translation** between verification languages, making it a versatile tool for cross-language verification work:
+
+#### Currently Supported Directions ✅
+- **Dafny → Verus**: Translate Dafny specifications to Verus (original functionality)
+- **Lean → Verus**: Convert Lean 4 theorems and proofs to Verus (original functionality)  
+- **Verus → Dafny**: **NEW!** Reverse-translate Verus code back to Dafny
+
+#### Framework Ready for Extensions 🚧
+The system architecture supports easy addition of:
+- **Verus → Lean**: Verus to Lean 4 translation
+- **Dafny ↔ Lean**: Direct translation between Dafny and Lean
+- **Additional Languages**: Framework ready for Coq, Isabelle/HOL, etc.
+
+### Key Translation Features
+
+#### Language-Specific Intelligence
+- **Smart Prompt Selection**: Uses different AI prompts optimized for each translation direction
+- **Semantic Preservation**: Maintains formal verification semantics across language boundaries
+- **Contract Translation**: Properly maps `requires`/`ensures`/`invariant` clauses between languages
+- **Type System Adaptation**: Handles differences in type systems and verification approaches
+
+#### YAML Structure Handling
+- **Structured Translations**: Supports YAML-format input/output for complex verification projects
+- **Field Mapping**: Automatically transforms YAML field structures between language conventions
+- **Specification Extraction**: Intelligently separates contracts, implementations, and proofs
+
+#### Verification Integration
+- **Multi-Tool Support**: Automatically selects appropriate verification tools (Verus, Dafny, Lean)
+- **Iterative Refinement**: Uses verification feedback to improve translations
+- **Error-Driven Learning**: AI learns from compiler/checker errors to fix translation issues
+
+### Example Translation Flows
+
+```bash
+# Traditional: Other languages to Verus
+dafny_spec.dfy → (AI + Verus verification) → verus_spec.rs
+lean_theorem.lean → (AI + Verus verification) → verus_proof.rs
+
+# NEW: Verus back to other languages  
+verus_impl.rs → (AI + Dafny verification) → dafny_method.dfy
+
+# Future possibilities:
+dafny_spec.dfy → (AI + Lean verification) → lean_theorem.lean
+```
 
 ## Installation
 
 ### Prerequisites
 
 1. **Python 3.12+**
-2. **Verus**: Install from [https://github.com/verus-lang/verus](https://github.com/verus-lang/verus)
+2. **Verification Tools** (install based on your translation needs):
+   - **Verus**: Required for any Verus translation - [https://github.com/verus-lang/verus](https://github.com/verus-lang/verus)
+   - **Dafny**: Required for Dafny translations - [https://github.com/dafny-lang/dafny](https://github.com/dafny-lang/dafny)
+   - **Lean 4**: Required for Lean translations - [https://leanprover.github.io/lean4/doc/quickstart.html](https://leanprover.github.io/lean4/doc/quickstart.html)
 3. **API Keys**: Set up environment variables for AI model access (see Configuration)
 
 ### Install with uv (recommended)
@@ -135,65 +198,103 @@ These files are part of the AI-assisted development workflow and help maintain c
 
 ## Usage
 
-### Basic Usage
+### Basic Translation Examples
 
 ```bash
-# Use default DafnyBench dataset
+# Default behavior: Dafny to Verus using DafnyBench dataset
 code2verus
 
-# Translate from a specific Hugging Face dataset
-code2verus --benchmark wendy-sun/DafnyBench --language dafny
+# Explicit source and target languages (recommended)
+code2verus --source-language dafny --target-language verus
 
-# Translate Lean code from Verina dataset
-code2verus --benchmark sunblaze-ucb/verina --language lean --split train
+# NEW: Reverse translation - Verus to Dafny
+code2verus --source-language verus --target-language dafny --benchmark ./my_verus_code
 
-# Translate from a local folder
-code2verus --benchmark ./benches/bignum_specs --language dafny
+# Lean to Verus translation
+code2verus --source-language lean --target-language verus --benchmark sunblaze-ucb/verina
 
-# Use custom file pattern for local folders
-code2verus --benchmark ./my_code --file-pattern "*.dfy"
+# Translate from local folders
+code2verus --source-language dafny --target-language verus --benchmark ./benches/dafny_specs
+code2verus --source-language verus --target-language dafny --benchmark ./benches/verus_examples
 
-# Increase concurrent translations
-code2verus --max-concurrent 5
+# Use specific Hugging Face datasets
+code2verus --source-language dafny --target-language verus --benchmark wendy-sun/DafnyBench
+code2verus --source-language lean --target-language verus --benchmark sunblaze-ucb/verina --split train
+```
 
-# Process only the first 10 files
-code2verus --limit 10
+### Advanced Usage
+
+```bash
+# Custom file patterns for different source languages
+code2verus --source-language dafny --target-language verus --benchmark ./my_code --file-pattern "*.dfy"
+code2verus --source-language verus --target-language dafny --benchmark ./my_code --file-pattern "*.rs"
+code2verus --source-language lean --target-language verus --benchmark ./my_code --file-pattern "*.lean"
+
+# Performance and concurrency control
+code2verus --source-language verus --target-language dafny --max-concurrent 5
+code2verus --source-language dafny --target-language verus --limit 10
+
+# Processing specific dataset splits
+code2verus --source-language lean --target-language verus --benchmark sunblaze-ucb/verina --split train
+```
+
+### Legacy Usage (Deprecated)
+
+```bash
+# These still work but show deprecation warnings
+code2verus --language dafny    # Same as --source-language dafny --target-language verus
+code2verus --language lean     # Same as --source-language lean --target-language verus
 ```
 
 ### Debug and Analysis Usage
 
 ```bash
 # Save debug contexts for later analysis
-code2verus --save-debug
+code2verus --source-language verus --target-language dafny --save-debug
 
 # Generate debug reports after each translation
-code2verus --debug-report
+code2verus --source-language dafny --target-language verus --debug-report
 
 # Print overall debug summary at the end
-code2verus --debug-summary
+code2verus --source-language verus --target-language dafny --debug-summary
 
 # Save debug sessions to a custom directory
-code2verus --save-debug --debug-dir ./my_debug_sessions
+code2verus --source-language dafny --target-language verus --save-debug --debug-dir ./my_debug_sessions
 
 # Comprehensive debugging with all options
-code2verus --save-debug --debug-report --debug-summary --include-debug-in-result
+code2verus --source-language verus --target-language dafny --save-debug --debug-report --debug-summary --include-debug-in-result
 
 # Debug a specific local benchmark
-code2verus --benchmark ./test_cases --debug-report --debug-summary
-
-# Monitor performance during production runs
-code2verus --save-debug --debug-dir ./production_logs --debug-summary
+code2verus --source-language verus --target-language dafny --benchmark ./test_cases --debug-report --debug-summary
 ```
+
+### Supported Translation Combinations
+
+Currently implemented:
+- **dafny → verus** ✅ (original functionality)  
+- **lean → verus** ✅ (original functionality)
+- **verus → dafny** ✅ (NEW bidirectional capability)
+
+Framework ready for future extensions:
+- **verus → lean** (infrastructure in place)
+- **dafny → lean** (infrastructure in place)  
+- **lean → dafny** (infrastructure in place)
 
 ### Command Line Options
 
-#### Basic Options
+#### Translation Control
+- `--source-language {dafny,lean,verus}`: Source language to translate from (default: `dafny`)
+- `--target-language {dafny,lean,verus}`: Target language to translate to (default: `verus`)
+- `--language`: **[DEPRECATED]** Legacy parameter for source language (use `--source-language` instead)
+
+#### Input/Output Options
 - `--benchmark`: Hugging Face dataset path or local folder path (default: `wendy-sun/DafnyBench`)
 - `--split`: Dataset split to use for Hugging Face datasets (default: `test`)
-- `--language`: Source language to translate from (`dafny` or `lean`, default: `dafny`)
-- `--max-concurrent`: Maximum number of concurrent translations (default: 3)
-- `--file-pattern`: File pattern(s) to match when loading from local folder (default: `*.dfy`)
+- `--file-pattern`: File pattern(s) to match when loading from local folder (auto-detected based on source language)
 - `--limit`: Maximum number of files to process (default: process all files)
+
+#### Performance Options  
+- `--max-concurrent`: Maximum number of concurrent translations (default: 3)
 
 #### Debug Options
 - `--save-debug`: Save detailed debug contexts to JSON files for later analysis
@@ -227,18 +328,64 @@ code2verus/
 
 ## Output
 
-Translated files are saved in the `artifacts/` directory, organized by benchmark name:
+Translated files are saved in the `artifacts/` directory, with organization depending on the target language and benchmark structure:
+
+### Output Structure for Different Target Languages
 
 ```
 artifacts/
-├── dafnybench/
+├── dafny_to_verus/         # Dafny → Verus translations
 │   ├── example1.rs
 │   ├── example2.rs
-│   └── success.yml    # Tracks successful translations
-└── bignum_specs/
-    ├── spec1.rs
-    ├── spec2.rs
-    └── success.json   # For flat folder structures
+│   └── success.yml
+├── verus_to_dafny/         # Verus → Dafny translations (NEW!)
+│   ├── example1.dfy
+│   ├── example2.dfy  
+│   └── success.yml
+├── lean_to_verus/          # Lean → Verus translations  
+│   ├── example1.rs
+│   ├── example2.rs
+│   └── success.yml
+└── benchmark_results.yml   # Overall results tracking
+```
+
+### File Extensions by Target Language
+
+- **Target: Verus** → `.rs` files (Rust/Verus code)
+- **Target: Dafny** → `.dfy` files (Dafny code)  
+- **Target: Lean** → `.lean` files (Lean code)
+- **YAML mode** → `.yaml` files (structured YAML with code sections)
+
+### Example Output Structures
+
+**Dafny to Verus (default):**
+```
+artifacts/
+├── dafnybench/
+│   ├── algorithms/
+│   │   ├── sort.rs
+│   │   └── search.rs
+│   └── success.yml
+```
+
+**Verus to Dafny (reverse translation):**
+```
+artifacts/  
+├── verus_examples/
+│   ├── verification/
+│   │   ├── invariants.dfy
+│   │   └── contracts.dfy
+│   └── success.yml
+```
+
+**Lean to Verus:**
+```
+artifacts/
+├── verina_dataset/
+│   ├── basic/
+│   │   ├── types.rs
+│   │   └── functions.rs
+│   └── success.yml
 ```
 
 ## Success Tracking
@@ -268,8 +415,9 @@ Code2verus includes comprehensive debugging capabilities to help understand and 
 
 ```
 debug_sessions/
-├── debug_session_uuid1_20250909_172500.json
-├── debug_session_uuid2_20250909_172501.json
+├── debug_session_dafny_to_verus_success_iter3_20250910_175002_38bd434b.json
+├── debug_session_verus_to_dafny_failed_iter1_20250910_174659_67d45538.json
+├── debug_session_lean_to_verus_success_iter2_20250910_180125_02acdd35.json
 └── ...
 ```
 
@@ -346,18 +494,66 @@ python test_filename_logic.py
 
 ## Troubleshooting
 
-### Verus Not Found
+### Verification Tool Issues
+
+#### Verus Not Found
 If you get "Verus is not installed or not in PATH":
 1. Ensure Verus is installed: [https://github.com/verus-lang/verus](https://github.com/verus-lang/verus)
 2. Add Verus to your PATH or update `verus_path` in `config.yml`
 
-### API Rate Limits
+#### Dafny Not Found  
+If you get "Dafny is not installed or not in PATH" when using `--target-language dafny`:
+1. Ensure Dafny is installed: [https://github.com/dafny-lang/dafny](https://github.com/dafny-lang/dafny)
+2. Add Dafny to your PATH or update `dafny_path` in `config.yml`
+3. Verify installation: `dafny --version`
+
+#### Lean Not Found
+If you get "Lean is not installed or not in PATH" when using `--source-language lean` or `--target-language lean`:
+1. Ensure Lean 4 is installed: [https://leanprover.github.io/lean4/doc/quickstart.html](https://leanprover.github.io/lean4/doc/quickstart.html)
+2. Add Lean to your PATH or update `lean_path` in `config.yml`
+3. Verify installation: `lean --version`
+
+### Translation Issues
+
+#### Unsupported Language Combinations
+If you get "Translation from X to Y is not yet supported":
+- Check the currently supported combinations in the help: `code2verus --help`
+- Currently supported: `dafny→verus`, `lean→verus`, `verus→dafny`
+- Additional combinations can be added by extending the system prompts in `config.yml`
+
+#### File Pattern Mismatches
+If no files are found in local directories:
+- Check that `--file-pattern` matches your source files
+- Auto-detection: `.dfy` for Dafny, `.lean` for Lean, `.rs` for Verus
+- Use explicit patterns: `--file-pattern "*.rs"` for Verus files
+
+### Performance Issues
+
+#### API Rate Limits
 If you encounter rate limits:
 - Reduce `--max-concurrent` to limit parallel requests
 - The tool automatically retries with exponential backoff
 
-### Missing API Keys
-Ensure all required API keys are set in your `.env` file
+#### Memory Usage
+For large datasets:
+- Avoid `--include-debug-in-result` unless needed for analysis
+- Use `--limit` to process smaller batches
+- Monitor memory usage with `--debug-summary`
+
+### Configuration Issues
+
+#### Missing API Keys
+Ensure all required API keys are set in your `.env` file:
+```bash
+ANTHROPIC_API_KEY=your_key_here
+# Add other API keys as needed
+```
+
+#### Configuration File Issues
+If you get configuration errors:
+- Verify `config.yml` syntax is valid YAML
+- Check that all required paths are correctly specified
+- Use absolute paths if relative paths cause issues
 
 ## Lean YAML Translation
 

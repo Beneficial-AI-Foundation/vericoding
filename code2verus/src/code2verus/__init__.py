@@ -51,18 +51,27 @@ def main() -> None:
         sys.exit(1)
 
     parser = argparse.ArgumentParser(
-        description="Translate code to Verus",
+        description="Translate code between verification languages",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  code2verus                                            # Use default DafnyBench (test split, dafny)
-  code2verus --benchmark wendy-sun/DafnyBench --language dafny  # Specify language explicitly  
-  code2verus --benchmark sunblaze-ucb/verina --language lean --split train  # Use Verina benchmark with Lean
-  code2verus --benchmark other-user/CustomBench --language dafny --split test # Use different benchmark
-  code2verus --benchmark benches/bignum_specs --language dafny  # Use local folder
-  code2verus --benchmark ./benches/numpy_specs --language dafny  # Use local folder with explicit path
+  code2verus                                                    # Use default DafnyBench (dafny->verus)
+  code2verus --source-language dafny --target-language verus   # Dafny to Verus (explicit)
+  code2verus --source-language verus --target-language dafny   # Verus to Dafny (reverse)
+  code2verus --source-language lean --target-language verus    # Lean to Verus
+  code2verus --benchmark wendy-sun/DafnyBench --source-language dafny --target-language verus
+  code2verus --benchmark sunblaze-ucb/verina --source-language lean --target-language verus
+  code2verus --benchmark ./benches/verus_examples --source-language verus --target-language dafny
   code2verus --max-concurrent 5                        # Allow 5 concurrent translations
   code2verus --limit 10                                 # Process only the first 10 files
+
+Supported Translation Combinations:
+  - dafny -> verus
+  - lean -> verus  
+  - verus -> dafny
+
+Legacy Examples (deprecated --language flag):
+  code2verus --language dafny                          # Same as --source-language dafny --target-language verus
 
 Debug Examples:
   code2verus --save-debug                               # Save debug contexts to JSON files
@@ -81,10 +90,20 @@ Debug Examples:
         "--split", default="test", help="Dataset split to use (default: test)"
     )
     parser.add_argument(
-        "--language",
+        "--source-language",
         default="dafny",
-        choices=["dafny", "lean"],
+        choices=["dafny", "lean", "verus"],
         help="Source language to translate from (default: dafny)",
+    )
+    parser.add_argument(
+        "--target-language", 
+        default="verus",
+        choices=["dafny", "lean", "verus"],
+        help="Target language to translate to (default: verus)",
+    )
+    parser.add_argument(
+        "--language",
+        help="Legacy parameter for source language (use --source-language instead). Will be deprecated.",
     )
     parser.add_argument(
         "--max-concurrent",
@@ -134,16 +153,42 @@ Debug Examples:
 
     args = parser.parse_args()
 
-    # Auto-determine file pattern based on language if using default and local folder
+    # Handle backward compatibility with --language flag
+    if args.language is not None:
+        print("Warning: --language flag is deprecated. Use --source-language instead.")
+        args.source_language = args.language
+
+    # Validate language combination
+    if args.source_language == args.target_language:
+        print(f"Error: Source and target languages cannot be the same ({args.source_language})")
+        sys.exit(1)
+
+    # For now, only support certain combinations
+    supported_combinations = [
+        ("dafny", "verus"),
+        ("lean", "verus"), 
+        ("verus", "dafny")
+    ]
+    
+    if (args.source_language, args.target_language) not in supported_combinations:
+        print(f"Error: Translation from {args.source_language} to {args.target_language} is not yet supported.")
+        print("Supported combinations:")
+        for src, tgt in supported_combinations:
+            print(f"  - {src} -> {tgt}")
+        sys.exit(1)
+
+    # Auto-determine file pattern based on source language if using default and local folder
     file_pattern = args.file_pattern
     if args.file_pattern == "*.dfy" and Path(args.benchmark).exists():
-        if args.language == "lean":
+        if args.source_language == "lean":
             file_pattern = "*.lean"
-        elif args.language == "dafny":
+        elif args.source_language == "dafny":
             file_pattern = "*.dfy"
+        elif args.source_language == "verus":
+            file_pattern = "*.rs"
 
     print(f"Using benchmark: {args.benchmark} (split: {args.split})")
-    print(f"Source language: {args.language}")
+    print(f"Translation: {args.source_language} -> {args.target_language}")
     print(f"Max concurrent translations: {args.max_concurrent}")
     if args.limit:
         print(f"File limit: {args.limit}")
@@ -167,7 +212,8 @@ Debug Examples:
         main_async(
             benchmark=args.benchmark,
             split=args.split,
-            source_language=args.language,
+            source_language=args.source_language,
+            target_language=args.target_language,
             max_concurrent=args.max_concurrent,
             file_pattern=file_pattern,
             limit=args.limit,
