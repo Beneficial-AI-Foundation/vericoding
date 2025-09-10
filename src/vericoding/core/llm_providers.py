@@ -1,6 +1,7 @@
 """LLM provider abstractions and implementations."""
 
 import os
+import threading
 from abc import ABC, abstractmethod
 from time import time, sleep
 from dataclasses import dataclass
@@ -391,22 +392,25 @@ def create_llm_provider(llm_name: str) -> tuple[LLMProvider, str]:
     return provider, selected_model
 
 
-# Global token counter for tracking across all calls
+# Global token counter for tracking across all calls (thread-safe)
 _global_token_stats = {
     "input_tokens": 0,
     "output_tokens": 0,
     "total_calls": 0
 }
+_token_stats_lock = threading.Lock()
 
 def get_global_token_stats() -> dict:
     """Get the current global token usage statistics."""
-    return _global_token_stats.copy()
+    with _token_stats_lock:
+        return _global_token_stats.copy()
 
 def reset_global_token_stats():
     """Reset the global token usage statistics."""
-    _global_token_stats["input_tokens"] = 0
-    _global_token_stats["output_tokens"] = 0
-    _global_token_stats["total_calls"] = 0
+    with _token_stats_lock:
+        _global_token_stats["input_tokens"] = 0
+        _global_token_stats["output_tokens"] = 0
+        _global_token_stats["total_calls"] = 0
 
 def call_llm(provider: LLMProvider, config: ProcessingConfig, prompt: str, wandb=None) -> str:
     """Call LLM with rate limiting and optional wandb logging."""
@@ -416,10 +420,11 @@ def call_llm(provider: LLMProvider, config: ProcessingConfig, prompt: str, wandb
     llm_response = provider.call_api(prompt)
     latency_ms = (time() - start) * 1000
     
-    # Update global token statistics
-    _global_token_stats["input_tokens"] += llm_response.input_tokens
-    _global_token_stats["output_tokens"] += llm_response.output_tokens
-    _global_token_stats["total_calls"] += 1
+    # Update global token statistics (thread-safe)
+    with _token_stats_lock:
+        _global_token_stats["input_tokens"] += llm_response.input_tokens
+        _global_token_stats["output_tokens"] += llm_response.output_tokens
+        _global_token_stats["total_calls"] += 1
     
     if wandb and hasattr(wandb, "log"):
         # Use multiple fallbacks to ensure we always have a model name
