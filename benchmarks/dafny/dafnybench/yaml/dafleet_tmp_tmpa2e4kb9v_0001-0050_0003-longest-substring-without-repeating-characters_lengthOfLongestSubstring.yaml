@@ -69,6 +69,8 @@ vc-description: |-
   // Can you figure it out?
   
   /** `best_iv` is valid */
+  
+  /** `best_iv` is longest */
 
 vc-preamble: |-
   type interval = iv: (int, int) | iv.0 <= iv.1 witness (0, 0)
@@ -87,6 +89,7 @@ vc-helpers: |-
 vc-spec: |-
   method lengthOfLongestSubstring(s: string) returns (n: int, ghost best_iv: interval)
     ensures valid_interval(s, best_iv) && length(best_iv) == n
+    ensures forall iv | valid_interval(s, iv) :: length(iv) <= n
 
 vc-code: |-
   {
