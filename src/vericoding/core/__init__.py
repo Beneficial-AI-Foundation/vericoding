@@ -9,6 +9,7 @@ from .config import (
 )
 from .llm_providers import (
     LLMProvider,
+    ClaudeCodeProvider,
     AnthropicProvider,
     OpenAIProvider,
     DeepSeekProvider,
@@ -23,6 +24,7 @@ __all__ = [
     "load_environment",
     "load_language_config",
     "LLMProvider",
+    "ClaudeCodeProvider",
     "AnthropicProvider",
     "OpenAIProvider",
     "DeepSeekProvider",
