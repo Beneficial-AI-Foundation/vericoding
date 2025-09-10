@@ -17,23 +17,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  // pure-end
-  
-  proof fn sum_bound(numbers: Seq<u32>)
-      // post-conditions-start
-      ensures
-          sum(numbers) <= numbers.len() * u32::MAX,
-      decreases numbers.len(),
-      // post-conditions-end
-  {
-      // impl-start
-      if numbers.len() == 0 {
-      } else {
-          sum_bound(numbers.drop_last());
-      }
-      // impl-end
-  }
-  // pure-end
 
 vc-spec: |-
   fn sum_product(numbers: Vec<u32>) -> (result: (u64, Option<u32>))

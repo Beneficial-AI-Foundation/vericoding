@@ -21,8 +21,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Evaluate the k-th probabilist's Hermite polynomial (HermiteE) at x */
   spec fn eval_hermite_e(k: nat, x: int) -> int 
       decreases k
@@ -57,6 +56,8 @@ vc-helpers: |-
           product_form(roots, x, (i - 1) as nat) * (x - roots[(i - 1) as int])
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn hermefromroots(roots: Vec<f64>) -> (coeffs: Vec<f64>)

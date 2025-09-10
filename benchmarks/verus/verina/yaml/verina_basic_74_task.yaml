@@ -23,17 +23,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  fn max_array_aux(a: &Vec<i32>, index: usize, current: i32) -> (result: i32)
-      requires index <= a.len(),
-      decreases a.len() - index,
-  {
-      if index < a.len() {
-          let new_current = if current > a[index] { current } else { a[index] };
-          max_array_aux(a, index + 1, new_current)
-      } else {
-          current
-      }
-  }
 
 vc-spec: |-
   fn max_array(a: &Vec<i32>) -> (result: i32)

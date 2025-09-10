@@ -11,14 +11,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  fn is_digit(c: char) -> (res: bool)
-      // post-conditions-start
-      ensures
-          res == is_digit_sepc(c),
-      // post-conditions-end
-  {
-      (c as u32) >= 48 && (c as u32) <= 57
-  }
 
 vc-spec: |-
   fn is_integer(text: &Vec<char>) -> (result: bool)

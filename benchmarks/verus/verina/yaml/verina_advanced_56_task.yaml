@@ -15,8 +15,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Count how many times a specific value appears in the sequence */
   spec fn count_val(val: i32, xs: Seq<i32>) -> nat 
       decreases xs.len()
@@ -45,6 +44,8 @@ vc-helpers: |-
           }
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn move_zeroes(xs: Vec<i32>) -> (result: Vec<i32>)

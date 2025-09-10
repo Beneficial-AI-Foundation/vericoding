@@ -9,12 +9,13 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Helper function to count occurrences of a target value in a sequence */
   spec fn count_occurrences(xs: Seq<i32>, target: i32) -> nat {
       xs.filter(|x: i32| x == target).len()
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn most_frequent(xs: Vec<i32>) -> (result: i32)

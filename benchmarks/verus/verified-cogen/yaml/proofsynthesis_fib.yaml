@@ -20,29 +20,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  // pure-end
-  
-  proof fn fibo_is_monotonic(i: int, j: int)
-      // pre-conditions-start
-      requires
-          i <= j,
-      // pre-conditions-end
-      // post-conditions-start
-      ensures
-          fibo(i) <= fibo(j),
-      decreases j - i
-      // post-conditions-end
-  {
-      // impl-start
-      if i <= 0 {
-      }
-      else if  i < j {
-          fibo_is_monotonic(i, j-1);
-          assert(fibo(j) == fibo(j-1)+fibo(j-2));
-      }
-      // impl-end
-  }
-  // pure-end
 
 vc-spec: |-
   fn fibonacci(n: usize) -> (ret: Vec<i32>)

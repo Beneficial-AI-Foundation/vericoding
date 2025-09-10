@@ -16,8 +16,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Helper function to recursively count elements less than threshold */
   spec fn count_less_than_spec(numbers: Seq<i32>, threshold: i32) -> nat
       decreases numbers.len()
@@ -34,6 +33,8 @@ vc-helpers: |-
           }
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn count_less_than(numbers: &Vec<i32>, threshold: i32) -> (result: usize)

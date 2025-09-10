@@ -363,8 +363,17 @@ def process_yaml_file(file_path: Path) -> None:
         #         value = check_for_tag(value, key, None, '= MAIN METHOD =', '// ======= MAIN METHOD =======')
         #         spec[key] = value
 
+        if spec['vc-helpers'].strip():
+            # spec['vc-helpers'] = ""
+            raise ValueError(f"vc-helpers is not empty")
+
+        # files_with_used_helpers = ["verina_advanced_11_task.yaml", "verina_advanced_13_task.yaml", "verina_advanced_18_task.yaml", "verina_advanced_19_task.yaml", "verina_advanced_1_task.yaml", "verina_advanced_31_task.yaml", "verina_advanced_36_task.yaml", "verina_advanced_45_task.yaml", "verina_advanced_55_task.yaml", "verina_advanced_56_task.yaml", "verina_advanced_59_task.yaml", "verina_advanced_5_task.yaml", "verina_advanced_61_task.yaml", "verina_advanced_67_task.yaml", "verina_advanced_6_task.yaml", "verina_advanced_75_task.yaml", "verina_basic_17_task.yaml", "verina_basic_21_task.yaml", "verina_basic_27_task.yaml", "verina_basic_31_task.yaml", "verina_basic_34_task.yaml", "verina_basic_36_task.yaml", "verina_basic_44_task.yaml", "verina_basic_45_task.yaml", "verina_basic_49_task.yaml", "verina_basic_57_task.yaml", "verina_basic_60_task.yaml", "verina_basic_63_task.yaml", "verina_basic_80_task.yaml"]
         # if spec['vc-helpers'].strip():
-        #     raise ValueError(f"vc-helpers in {file_path} is not empty")
+        #     if file_path.name in files_with_used_helpers:
+        #         spec['vc-preamble'] = spec['vc-preamble']+"\n\n"+spec['vc-helpers']+"\n\n"
+        #         print(f"vc-helpers moved to vc-preamble in {file_path.name}")
+        #     spec['vc-helpers'] = ""
+        #     # raise ValueError(f"vc-helpers is not empty")
 
         # # Clear vc-helpers and vc-code
         # spec['vc-helpers'] = ""
@@ -412,11 +421,11 @@ def process_yaml_file(file_path: Path) -> None:
         #     ]
         #     spec['vc-description'] = remove_unnecessary_tags(spec['vc-description'], unnecessary_tags)
         
-        if spec['vc-preamble'] is None:
-            if "{:axiom}" in spec['vc-preamble']:
-                raise ValueError("axiom found in vc-preamble")
-        if spec['vc-postamble'].strip():
-            raise ValueError("vc-postamble is not empty")
+        # if spec['vc-preamble'] is None:
+        #     if "{:axiom}" in spec['vc-preamble']:
+        #         raise ValueError("axiom found in vc-preamble")
+        # if spec['vc-postamble'].strip():
+        #     raise ValueError("vc-postamble is not empty")
         
         # Normalize all sections
         for key, value in spec.items():
@@ -444,7 +453,7 @@ def main():
     
     # Loop through all immediate folders in the verus directory
     for folder in verus_dir.iterdir():
-    # for folder in [verus_dir / 'apps']:
+    # for folder in [verus_dir / 'verina']:
         if folder.is_dir():
             yaml_subfolder = folder / 'yaml'
             

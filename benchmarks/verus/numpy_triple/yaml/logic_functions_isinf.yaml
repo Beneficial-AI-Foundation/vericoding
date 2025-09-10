@@ -23,10 +23,11 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Ghost specification function to represent IEEE 754 infinity test */
   spec fn is_infinite(x: f64) -> bool;
+
+vc-helpers: |-
 
 vc-spec: |-
   fn isinf(x: Vec<f64>) -> (result: Vec<bool>)

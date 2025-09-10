@@ -11,10 +11,11 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn f32_is_nan(x: f32) -> bool;
   spec fn f32_le(a: f32, b: f32) -> bool;
+
+vc-helpers: |-
 
 vc-spec: |-
   fn nanargmin(a: Vec<f32>) -> (result: usize)

@@ -26,8 +26,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* File handle abstraction for I/O operations */
   struct FileHandle {
       /* Path to the file */
@@ -62,6 +61,8 @@ vc-helpers: |-
           DType::UInt8 => 1,
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn fromfile(file: FileHandle, dtype: DType, count: i32, sep: &str, offset: nat) -> (result: Vec<i32>)

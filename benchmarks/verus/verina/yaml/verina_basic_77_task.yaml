@@ -23,14 +23,6 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  fn update_inner(a: Vec<nat>, idx: usize, val: nat) -> (result: Vec<nat>)
-      requires idx < a.len(),
-      ensures result.len() == a.len(),
-  {
-      let mut result = a;
-      result.set(idx, val);
-      result
-  }
 
 vc-spec: |-
   fn modify_array_element(arr: Vec<Vec<nat>>, index1: usize, index2: usize, val: nat) -> (result: Vec<Vec<nat>>)

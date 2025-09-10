@@ -10,8 +10,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Helper function to convert a natural number to its binary string representation */
   spec fn nat_to_binary_string(n: nat) -> Seq<char>
       decreases n
@@ -37,6 +36,8 @@ vc-helpers: |-
           is_valid_binary(s)
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn binary_repr(num: i32, width: Option<usize>) -> (result: Vec<char>)

@@ -24,8 +24,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn max_nat(a: nat, b: nat) -> nat {
       if a >= b { a } else { b }
   }
@@ -34,6 +33,8 @@ vc-helpers: |-
       suffix.len() <= full.len() && 
       full.subrange(full.len() - suffix.len(), full.len() as int) == suffix
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn rjust(orig: Vec<char>, width: nat, fillchar: char) -> (res: Vec<char>)

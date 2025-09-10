@@ -6,21 +6,6 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  #[verifier::external_body]
-  fn add_one(n: i32) -> (result: i32)
-      ensures
-          result == n + 1,
-  {
-      n + 1
-  }
-  
-  #[verifier::external_body]
-  fn square(n: i32) -> (result: i32)
-      ensures
-          n * n == result,
-  {
-      n * n
-  }
 
 vc-spec: |-
   fn integer_square_root(n: i32) -> (result: i32)

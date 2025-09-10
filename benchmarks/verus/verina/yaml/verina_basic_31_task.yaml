@@ -16,8 +16,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn is_lower_case(c: char) -> bool
   {
       'a' <= c && c <= 'z'
@@ -27,6 +26,8 @@ vc-helpers: |-
   {
       arbitrary()
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn to_uppercase(s: &str) -> (result: String)

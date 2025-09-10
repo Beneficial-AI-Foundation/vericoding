@@ -22,11 +22,12 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn int_abs(x: int) -> int {
       if x >= 0 { x } else { -x }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn allclose(a: Vec<i32>, b: Vec<i32>, rtol: i32, atol: i32) -> (result: bool)

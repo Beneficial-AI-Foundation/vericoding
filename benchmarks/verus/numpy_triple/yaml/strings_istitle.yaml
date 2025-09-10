@@ -19,10 +19,11 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Helper function to check if a string is titlecased according to Python's str.istitle() logic */
   spec fn is_titlecased(s: Seq<char>) -> bool;
+
+vc-helpers: |-
 
 vc-spec: |-
   fn istitle(a: Vec<String>) -> (result: Vec<bool>)

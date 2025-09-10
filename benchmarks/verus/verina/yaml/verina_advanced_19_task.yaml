@@ -13,8 +13,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   // Check if a character is an uppercase alphabet letter
   spec fn is_upper_alpha(c: char) -> bool {
       'A' <= c && c <= 'Z'
@@ -58,6 +57,8 @@ vc-helpers: |-
           }
       )
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn is_clean_palindrome(s: &str) -> (result: bool)

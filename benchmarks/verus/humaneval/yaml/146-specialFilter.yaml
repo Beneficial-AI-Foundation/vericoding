@@ -47,43 +47,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  fn extract_first_digit(n: u32) -> (res: u32)
-      // post-conditions-start
-      ensures
-          res == extract_first_digit_spec(n as int),
-      // post-conditions-end
-  {
-      // impl-start
-      if n < 10 {
-          n
-      } else {
-          extract_first_digit(n / 10)
-      }
-      // impl-end
-  }
-  
-  fn extract_last_digit(n: u32) -> (res: u32)
-      // post-conditions-start
-      ensures
-          res == extract_last_digit_spec(n as int),
-      // post-conditions-end
-  {
-      // impl-start
-      n % 10
-      // impl-end
-  }
-  
-  fn is_valid_element(n: i32) -> (res: bool)
-      // post-conditions-start
-      ensures
-          res == is_valid_element_spec(n as int),
-      // post-conditions-end
-  {
-      // impl-start
-      ((n > 10) && (extract_first_digit(n as u32) % 2 != 0) && (extract_last_digit(n as u32) % 2
-          != 0))
-      // impl-end
-  }
 
 vc-spec: |-
   fn special_filter(numbers: &Vec<i32>) -> (count: usize)

@@ -16,11 +16,12 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn count_occurrences(x: i32, lst: Seq<i32>) -> nat {
       lst.filter(|y: i32| y == x).len()
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn find_majority_element(lst: &Vec<i32>) -> (result: i32)

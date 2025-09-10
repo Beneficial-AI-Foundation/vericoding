@@ -21,41 +21,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  fn count_frequency(elements: &Vec<i64>, key: i64) -> (frequency: usize)
-      // post-conditions-start
-      ensures
-          count_frequency_spec(elements@, key) == frequency,
-      // post-conditions-end
-  {
-      // impl-start
-      let ghost elements_length = elements.len();
-      let mut counter = 0;
-      let mut index = 0;
-      while index < elements.len()
-          // invariants-start
-          invariant
-              0 <= index <= elements.len(),
-              0 <= counter <= index,
-              count_frequency_spec(elements@.subrange(0, index as int), key) == counter,
-          // invariants-end
-      {
-          if (elements[index] == key) {
-              counter += 1;
-          }
-          index += 1;
-          // assert-start
-          assert(elements@.subrange(0, index - 1 as int) == elements@.subrange(
-              0,
-              index as int,
-          ).drop_last());
-          // assert-end
-      }
-      // assert-start
-      assert(elements@ == elements@.subrange(0, elements_length as int));
-      // assert-end
-      counter
-      // impl-end
-  }
 
 vc-spec: |-
   fn remove_duplicates(numbers: &Vec<i64>) -> (unique_numbers: Vec<i64>)

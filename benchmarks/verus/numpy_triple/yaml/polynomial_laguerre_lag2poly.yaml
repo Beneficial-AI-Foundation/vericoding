@@ -11,13 +11,14 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Helper function to evaluate a Laguerre polynomial at a given point */
   spec fn evaluate_laguerre_polynomial(c: Seq<f32>, x: f32) -> f32;
   
   /* Helper function to evaluate a standard polynomial at a given point */
   spec fn evaluate_polynomial(coeffs: Seq<f32>, x: f32) -> f32;
+
+vc-helpers: |-
 
 vc-spec: |-
   fn lag2poly(c: Vec<f32>) -> (result: Vec<f32>)

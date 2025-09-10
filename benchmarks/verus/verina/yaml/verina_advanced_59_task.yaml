@@ -15,8 +15,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn is_alphanumeric(c: char) -> bool {
       ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') || ('0' <= c && c <= '9')
   }
@@ -28,6 +27,8 @@ vc-helpers: |-
           c
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn palindrome_ignore_non_alnum(s: &str) -> (result: bool)

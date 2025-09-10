@@ -19,8 +19,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn spec_subarray_sum(sequence: Seq<i32>, start: int, end: int) -> int
       decreases end - start
   {
@@ -32,6 +31,8 @@ vc-helpers: |-
           sequence[start] as int + spec_subarray_sum(sequence, start + 1, end)
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn task_code(sequence: Vec<i32>) -> (result: i32)

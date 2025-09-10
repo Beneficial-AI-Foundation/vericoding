@@ -43,16 +43,11 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   #[verifier::external_body]
   spec fn logaddexp_value(x1: f64, x2: f64) -> f64;
-  
-  #[verifier::external_body]  
-  spec fn max_f64(x: f64, y: f64) -> f64;
-  
-  #[verifier::external_body]
-  spec fn ln_2() -> f64;
+
+vc-helpers: |-
 
 vc-spec: |-
   fn logaddexp(x1: Vec<f64>, x2: Vec<f64>) -> (result: Vec<f64>)

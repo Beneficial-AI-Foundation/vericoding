@@ -9,8 +9,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   // Helper function to count occurrences of an element in a sequence
   spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat {
       nums.filter(|elem: i32| elem == x).len()
@@ -20,6 +19,8 @@ vc-helpers: |-
   spec fn filter_equal(nums: Seq<i32>, x: i32) -> Seq<i32> {
       nums.filter(|elem: i32| elem == x)
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn find_single_number(nums: &Vec<i32>) -> (result: i32)

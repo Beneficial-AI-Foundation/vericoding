@@ -33,37 +33,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  fn count_frequency(arr: &Vec<char>, key: char) -> (frequency: usize)
-      // post-conditions-start
-      ensures
-          count_frequency_rcr(arr@, key) == frequency,
-      // post-conditions-end
-  {
-      // impl-start
-      let mut index = 0;
-      let mut counter = 0;
-      while index < arr.len()
-          // invariants-start
-          invariant
-              0 <= index <= arr.len(),
-              0 <= counter <= index,
-              count_frequency_rcr(arr@.subrange(0, index as int), key) == counter,
-          // invariants-end
-      {
-          if (arr[index] == key) {
-              counter += 1;
-          }
-          index += 1;
-          // assert-start
-          assert(arr@.subrange(0, index - 1 as int) == arr@.subrange(0, index as int).drop_last());
-          // assert-end
-      }
-      // assert-start
-      assert(arr@ == arr@.subrange(0, index as int));
-      // assert-end
-      counter
-      // impl-end
-  }
 
 vc-spec: |-
   fn first_repeated_char(str1: &Vec<char>) -> (repeated_char: Option<(usize, char)>)

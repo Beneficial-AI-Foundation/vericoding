@@ -29,30 +29,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  // pure-end
-  
-  proof fn lemma_sum_equals_sum_other_way(s: Seq<int>)
-      // post-conditions-start
-      ensures
-          sum(s) == sum_other_way(s),
-      decreases s.len(),
-      // post-conditions-end
-  {
-      // impl-start
-      if s.len() == 1 {
-          assert(sum(s.skip(1)) == 0);
-          assert(sum_other_way(s.take(s.len() - 1)) == 0);
-      } else if s.len() > 1 {
-          let ss = s.skip(1);
-          lemma_sum_equals_sum_other_way(ss);
-          assert(sum_other_way(ss) == ss[ss.len() - 1] + sum_other_way(ss.take(ss.len() - 1)));
-          lemma_sum_equals_sum_other_way(ss.take(ss.len() - 1));
-          assert(ss.take(ss.len() - 1) == s.take(s.len() - 1).skip(1));
-          lemma_sum_equals_sum_other_way(s.take(s.len() - 1));
-      }
-      // impl-end
-  }
-  // pure-end
 
 vc-spec: |-
   fn below_zero(operations: Vec<i32>) -> (result: bool)

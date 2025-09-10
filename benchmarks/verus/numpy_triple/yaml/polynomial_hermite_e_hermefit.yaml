@@ -7,8 +7,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn hermite_e(n: nat, x: int) -> int
       decreases n
   {
@@ -56,6 +55,8 @@ vc-helpers: |-
           }
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn hermefit(x: Vec<i32>, y: Vec<i32>, deg: usize) -> (result: Vec<i32>)

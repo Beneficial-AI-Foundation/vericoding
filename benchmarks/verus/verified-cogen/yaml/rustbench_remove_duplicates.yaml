@@ -10,23 +10,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  fn in_array_exec(a: &Vec<i32>, x: i32) -> (result: bool) 
-      ensures 
-          result == in_array(a@, x),
-  {
-      let mut i = 0;
-      while i < a.len()
-          invariant 
-              0 <= i <= a.len(),
-              forall|k: int| 0 <= k < i ==> a[k] != x,
-      {
-          if a[i] == x {
-              return true;
-          }
-          i = i + 1;
-      }
-      false
-  }
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

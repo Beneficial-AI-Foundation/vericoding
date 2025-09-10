@@ -22,9 +22,10 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
+  
+  spec fn square_f64(x: f64) -> f64;
 
 vc-helpers: |-
-  spec fn square_f64(x: f64) -> f64;
 
 vc-spec: |-
   fn numpy_square(x: Vec<f64>) -> (result: Vec<f64>)

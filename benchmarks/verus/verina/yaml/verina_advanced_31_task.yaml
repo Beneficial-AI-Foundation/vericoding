@@ -13,8 +13,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Helper functions for generating subsequences and checking increasing property */
   spec fn is_subsequence_of(subseq: Seq<i32>, seq: Seq<i32>) -> bool {
       exists|indices: Seq<int>| 
@@ -28,6 +27,8 @@ vc-helpers: |-
   spec fn is_strictly_increasing(seq: Seq<i32>) -> bool {
       forall|i: int| 0 <= i < seq.len() - 1 ==> #[trigger] seq[i] < seq[i + 1]
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn longest_increasing_subseq_length(xs: &Vec<i32>) -> (result: usize)

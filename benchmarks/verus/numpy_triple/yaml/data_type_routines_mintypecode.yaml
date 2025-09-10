@@ -5,8 +5,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* NumPy type character to precedence mapping based on the default typeset 'GDFgdf'
      Lower values indicate higher precedence (smaller/more restrictive types) */
   spec fn typechar_precedence(c: char) -> nat {
@@ -49,6 +48,8 @@ vc-helpers: |-
           }
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn mintypecode(typechars: Vec<char>, typeset: Vec<char>, default: char) -> (result: char)

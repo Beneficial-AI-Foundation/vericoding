@@ -26,8 +26,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Structure representing a broadcast object for two vectors.
   
      A broadcast object encapsulates the result of broadcasting two vectors
@@ -57,6 +56,8 @@ vc-helpers: |-
           (self.x_data[i], self.y_data[j])
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn broadcast(x: Vec<f32>, y: Vec<f32>) -> (result: BroadcastObject)

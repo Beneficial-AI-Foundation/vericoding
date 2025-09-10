@@ -15,8 +15,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Structure representing a complex number with float components */
   struct Complex {
       /* The real part of the complex number */
@@ -24,6 +23,8 @@ vc-helpers: |-
       /* The imaginary part of the complex number */
       imag: f64,
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn is_complex(x: &Vec<Complex>) -> (result: Vec<bool>)

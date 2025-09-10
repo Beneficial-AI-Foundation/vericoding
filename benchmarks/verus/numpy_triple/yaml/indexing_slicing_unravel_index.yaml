@@ -9,8 +9,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn vec_product(shape: Seq<usize>) -> nat
       decreases shape.len()
   {
@@ -20,6 +19,8 @@ vc-helpers: |-
           (shape[0] as nat) * vec_product(shape.skip(1))
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn unravel_index(indices: Vec<usize>, shape: Vec<usize>) -> (result: Vec<Vec<usize>>)

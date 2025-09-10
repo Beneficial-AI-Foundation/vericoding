@@ -50,8 +50,7 @@ vc-preamble: |-
       StringVal(String),
       BoolVal(bool),
   }
-
-vc-helpers: |-
+  
   /* Helper predicate: Check if object matches given scalar type */
   pub open spec fn matches_scalar_type(obj: NumpyObject, dtype: NumpyScalarType) -> bool {
       match (obj, dtype) {
@@ -80,6 +79,8 @@ vc-helpers: |-
           _ => false,
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn obj2sctype(rep: NumpyObject, default: Option<NumpyScalarType>) -> (result: Option<NumpyScalarType>)

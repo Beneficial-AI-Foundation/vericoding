@@ -18,9 +18,6 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  spec fn is_digit(c: char) -> bool {
-      '0' <= c && c <= '9'
-  }
 
 vc-spec: |-
   fn count_digits(s: &str) -> (result: usize)

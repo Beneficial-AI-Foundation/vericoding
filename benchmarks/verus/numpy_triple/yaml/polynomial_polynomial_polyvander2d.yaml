@@ -12,8 +12,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn pow_spec(base: int, exp: nat) -> int
       decreases exp
   {
@@ -23,6 +22,8 @@ vc-helpers: |-
           base * pow_spec(base, (exp - 1) as nat)
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn polyvander2d(x: Vec<f64>, y: Vec<f64>, x_deg: usize, y_deg: usize) -> (result: Vec<Vec<f64>>)

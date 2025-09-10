@@ -17,34 +17,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  fn is_prime(num: u32) -> (result: bool)
-      // pre-conditions-start
-      requires
-          num >= 2,
-      // pre-conditions-end
-      // post-conditions-start
-      ensures
-          result <==> spec_prime(num as int),
-      // post-conditions-end
-  {
-      // impl-start
-      let mut i = 2;
-      let mut result = true;
-      while i < num
-          // invariants-start
-          invariant
-              2 <= i <= num,
-              result <==> spec_prime_helper(num as int, i as int),
-          // invariants-end
-      {
-          if num % i == 0 {
-              result = false;
-          }
-          i += 1;
-      }
-      result
-      // impl-end
-  }
 
 vc-spec: |-
   fn largest_prime_factor(n: u32) -> (largest: u32)

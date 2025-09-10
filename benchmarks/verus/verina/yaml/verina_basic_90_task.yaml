@@ -27,9 +27,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  spec fn get2d(a: &Vec<Vec<i32>>, i: i32, j: i32) -> i32 {
-      a[i as int][j as int]
-  }
 
 vc-spec: |-
   fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (i32, i32))

@@ -18,8 +18,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn hermite_e_basis(n: nat, x: int) -> int
       decreases n
   {
@@ -31,6 +30,8 @@ vc-helpers: |-
           x * hermite_e_basis((n-1) as nat, x) - (n-1) as int * hermite_e_basis((n-2) as nat, x)
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn hermeval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)

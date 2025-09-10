@@ -17,26 +17,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  // pure-end
-  
-  proof fn triangle_is_monotonic(i: nat, j: nat)
-      // pre-conditions-start
-      requires
-          i <= j,
-      // pre-conditions-end
-      // post-conditions-start
-      ensures
-          triangle(i) <= triangle(j),
-      decreases j
-      // post-conditions-end
-  {
-      // impl-start
-      if i < j {
-          triangle_is_monotonic(i, (j - 1) as nat);
-      }
-      // impl-end
-  }
-  // pure-end
 
 vc-spec: |-
   fn tail_triangle(n: u32, idx: u32, sum: &mut u32)

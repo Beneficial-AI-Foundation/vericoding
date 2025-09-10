@@ -18,13 +18,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  #[verifier::external_body]
-  fn add(a: i64, b: i32) -> (result: i64)
-      ensures
-          result == a + b,
-  {
-      a + b as i64
-  }
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

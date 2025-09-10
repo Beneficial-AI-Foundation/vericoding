@@ -24,13 +24,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  fn merge_sorted_aux(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
-  {
-      // impl-start
-      assume(false);
-      Vec::new()
-      // impl-end
-  }
 
 vc-spec: |-
   fn merge_sorted(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)

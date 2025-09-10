@@ -10,29 +10,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  #[verifier::loop_isolation(false)]
-  fn is_prime(n: u32) -> (result: bool)
-      requires
-          n >= 2,
-      ensures
-          result ==> (forall|k: int| 2 <= k < n ==> #[trigger] (n as int % k) != 0),
-          !result ==> exists|k: int| 2 <= k < n && #[trigger] (n as int % k) == 0,
-  {
-      let mut i = 2;
-      let mut result = true;
-      while i < n
-          invariant
-              2 <= i <= n,
-              result ==> forall|k: int| 2 <= k < i ==> #[trigger] (n as int % k) != 0,
-              !result ==> exists|k: int| 2 <= k < i && #[trigger] (n as int % k) == 0,
-      {
-          if n % i == 0 {
-              result = false;
-          }
-          i = i + 1;
-      }
-      result
-  }
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

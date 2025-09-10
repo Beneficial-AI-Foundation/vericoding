@@ -16,8 +16,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn spec_sum(xs: &Vec<i32>, start: int, len: int) -> int 
       decreases len
   {
@@ -27,6 +26,8 @@ vc-helpers: |-
           xs[start] + spec_sum(xs, start + 1, len - 1)
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn max_subarray_sum(xs: &Vec<i32>) -> (result: i32)

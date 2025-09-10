@@ -17,8 +17,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn list_to_nat(l: Seq<u32>) -> nat
       decreases l.len(),
   {
@@ -28,6 +27,8 @@ vc-helpers: |-
           l[0] as nat + 10nat * list_to_nat(l.subrange(1, l.len() as int))
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn add_two_numbers(l1: &Vec<u32>, l2: &Vec<u32>) -> (result: Vec<u32>)

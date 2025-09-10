@@ -10,15 +10,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  fn abs(i: i32) -> (res: i32)
-      requires
-          i != i32::MIN,
-      ensures
-          i < 0 ==> res == -i,
-          i >= 0 ==> res == i
-  {
-      if i < 0 { -i } else { i }
-  }
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

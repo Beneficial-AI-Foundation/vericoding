@@ -5,8 +5,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Abstract type representing a DLPack-compatible object */
   pub struct DLPackObject<T> {
       pub data: Vec<T>,
@@ -14,6 +13,8 @@ vc-helpers: |-
       pub has_dlpack_device: bool,
       pub device: String,
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn from_dlpack<T>(x: &DLPackObject<T>, device: Option<&str>, copy: Option<bool>) -> (result: Vec<T>)

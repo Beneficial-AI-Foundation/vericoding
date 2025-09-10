@@ -16,8 +16,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Helper function to check if a character is uppercase */
   spec fn is_uppercase(c: char) -> bool {
       'A' <= c && c <= 'Z'
@@ -27,6 +26,8 @@ vc-helpers: |-
   spec fn shift32(c: char) -> char {
       ((c as int) + 32) as char
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn to_lowercase(s: &Vec<char>) -> (result: Vec<char>)

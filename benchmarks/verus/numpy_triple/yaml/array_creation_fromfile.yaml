@@ -19,13 +19,14 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Abstract file representation for specification purposes */
   pub struct FileData {
       pub content: Seq<f64>,
       pub valid: bool,
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn fromfile(n: usize, file: &FileData, count: i32, offset: usize) -> (result: Vec<f64>)

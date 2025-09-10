@@ -11,8 +11,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn count_digits(n: nat) -> nat
       decreases n
   {
@@ -34,6 +33,8 @@ vc-helpers: |-
   {
       if n == 0 { 0 } else { pow_nat(n % 10, k) + sum_powers(n / 10, k) }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn is_armstrong(n: u32) -> (result: bool)

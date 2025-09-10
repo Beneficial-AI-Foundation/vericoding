@@ -8,8 +8,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Data type character codes used in NumPy ufunc type signatures */
   #[derive(PartialEq, Eq, Structural)]
   enum TypeCode {
@@ -68,6 +67,8 @@ vc-helpers: |-
       let input_chars = sig.input_types@.map(|i, tc: TypeCode| type_code_to_char(tc));
       input_chars + seq!['-', '>'] + seq![type_code_to_char(sig.output_type)]
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn types(ufunc_signatures: Vec<TypeSignature>) -> (result: Vec<String>)

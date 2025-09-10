@@ -18,11 +18,12 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn count_occurrences(a: Seq<i32>, key: i32) -> nat {
       a.filter(|x: i32| x == key).len()
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn only_once(a: &Vec<i32>, key: i32) -> (result: bool)

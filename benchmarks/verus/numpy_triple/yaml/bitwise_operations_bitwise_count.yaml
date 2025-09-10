@@ -16,8 +16,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn abs_spec(x: i32) -> nat {
       if x >= 0 { x as nat } else { (-x) as nat }
   }
@@ -32,6 +31,8 @@ vc-helpers: |-
           (n % 2) + popcount(n / 2)
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn bitwise_count(x: Vec<i32>) -> (result: Vec<nat>)

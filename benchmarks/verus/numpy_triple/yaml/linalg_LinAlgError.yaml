@@ -7,8 +7,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   /* Linear algebra error type representing conditions that prevent correct execution of linalg functions */
   pub enum LinAlgError {
       /* Error when numerical algorithm fails to converge */
@@ -26,6 +25,8 @@ vc-helpers: |-
       /* Generic error for other linear algebra failures */
       Other(String),
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn check_lin_alg_error(condition: bool, error_type: spec_fn(String) -> LinAlgError, message: String) -> (result: Option<LinAlgError>)

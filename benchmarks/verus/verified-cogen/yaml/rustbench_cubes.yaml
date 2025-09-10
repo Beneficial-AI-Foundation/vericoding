@@ -6,13 +6,6 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  #[verifier::external_body]
-  fn add(a: i32, b: i32) -> (result: i32)
-      ensures
-          result == a + b,
-  {
-      a + b
-  }
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

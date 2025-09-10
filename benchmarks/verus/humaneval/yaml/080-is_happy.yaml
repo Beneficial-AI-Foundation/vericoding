@@ -18,20 +18,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  fn three_distinct(s: &Vec<char>, i: usize) -> (is: bool)
-      // pre-conditions-start
-      requires
-          0 < i && i + 1 < s.len(),
-      // pre-conditions-end
-      // post-conditions-start
-      ensures
-          is <==> three_distinct_spec(s@, i as int),
-      // post-conditions-end
-  {
-      // impl-start
-      (s[i - 1] != s[i]) && (s[i] != s[i + 1]) && (s[i] != s[i + 1])
-      // impl-end
-  }
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

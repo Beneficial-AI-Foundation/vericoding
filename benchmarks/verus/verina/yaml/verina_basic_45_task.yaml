@@ -22,8 +22,7 @@ vc-preamble: |-
       (exists|x: i32| lst.contains(x) && is_even(x)) &&
       (exists|x: i32| lst.contains(x) && is_odd(x))
   }
-
-vc-helpers: |-
+  
   spec fn is_even(n: i32) -> bool {
       n % 2 == 0
   }
@@ -42,6 +41,8 @@ vc-helpers: |-
           None
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn find_product(lst: &Vec<i32>) -> (result: i32)

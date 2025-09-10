@@ -17,21 +17,6 @@ vc-preamble: |-
   // pure-end
 
 vc-helpers: |-
-  fn modmul(a: u32, b: u32, p: u32) -> (mul: u32)
-      by (nonlinear_arith)
-      // pre-conditions-start
-      requires
-          p > 0,
-      // pre-conditions-end
-      // post-conditions-start
-      ensures
-          mul == ((a as int) * (b as int)) % (p as int),
-      // post-conditions-end
-  {
-      // impl-start
-      (((a as u64) * (b as u64)) % (p as u64)) as u32
-      // impl-end
-  }
 
 vc-spec: |-
   #[verifier::loop_isolation(false)]

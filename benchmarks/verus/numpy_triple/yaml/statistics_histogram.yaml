@@ -29,8 +29,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
-vc-helpers: |-
+  
   spec fn sum_seq(s: Seq<usize>) -> nat 
       decreases s.len()
   {
@@ -40,6 +39,8 @@ vc-helpers: |-
           (s[0] as nat) + sum_seq(s.drop_first())
       }
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn histogram(data: Vec<i32>, n_bins: usize, min_val: i32, max_val: i32) -> (result: (Vec<usize>, Vec<i32>))
