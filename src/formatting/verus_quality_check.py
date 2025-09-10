@@ -302,7 +302,7 @@ def move_comments_to_description(spec: Dict[str, Any], multiline_delimiters: Lis
     if multiline_delimiters is None:
         multiline_delimiters = [('/*', '*/')]
     if monoline_delimiters is None:
-        monoline_delimiters = ['//']
+        monoline_delimiters = ['//', '///', '//!']
     
     # Collect all comments from non-description fields
     all_comments = []
@@ -452,10 +452,10 @@ def process_yaml_file(file_path: Path) -> None:
         #     raise ValueError(f"vc-postamble has unexpected value: '{spec['vc-postamble']}'")
         
         # Make vc-postamble standard
-        if spec['vc-postamble'].strip():
-            spec['vc-postamble'] = '}\nfn main() {}\n'
-        else:
-            raise ValueError(f"vc-postamble is empty")
+        # if spec['vc-postamble'].strip():
+        #     spec['vc-postamble'] = '}\nfn main() {}\n'
+        # else:
+        #     raise ValueError(f"vc-postamble is empty")
 
         # Normalize all sections
         for key, value in spec.items():
