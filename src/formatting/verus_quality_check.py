@@ -180,25 +180,25 @@ def process_yaml_file(file_path: Path) -> None:
         # else:
         #     raise ValueError(f"vc-description not found in {file_path}")
         
-        # remove tags from all sections
-        for key, value in spec.items():
-            if isinstance(value, str):
-                value = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '// <vc-spec>')
-                value = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '// </vc-spec>')
-                value = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '// <vc-helpers>')
-                value = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '// </vc-helpers>')
-                value = check_for_tag(value, key, 'vc-code', '<vc-code>', '// <vc-code>')
-                value = check_for_tag(value, key, 'vc-code', '</vc-code>', '// </vc-code>')
-                spec[key] = value
-
-        # remove HumanEval tags
+        # # remove tags from all sections
         # for key, value in spec.items():
         #     if isinstance(value, str):
-        #         value = check_for_tag(value, key, None, '= TASK =', '// ======= TASK =======')
-        #         value = check_for_tag(value, key, None, '= SPEC REQUIREMENTS =', '// ======= SPEC REQUIREMENTS =======')
-        #         value = check_for_tag(value, key, None, '= HELPERS =', '// ======= HELPERS =======')
-        #         value = check_for_tag(value, key, None, '= MAIN METHOD =', '// ======= MAIN METHOD =======')
+        #         value = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '// <vc-spec>')
+        #         value = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '// </vc-spec>')
+        #         value = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '// <vc-helpers>')
+        #         value = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '// </vc-helpers>')
+        #         value = check_for_tag(value, key, 'vc-code', '<vc-code>', '// <vc-code>')
+        #         value = check_for_tag(value, key, 'vc-code', '</vc-code>', '// </vc-code>')
         #         spec[key] = value
+
+        # remove HumanEval tags
+        for key, value in spec.items():
+            if isinstance(value, str):
+                value = check_for_tag(value, key, None, '= TASK =', '// ======= TASK =======')
+                value = check_for_tag(value, key, None, '= SPEC REQUIREMENTS =', '// ======= SPEC REQUIREMENTS =======')
+                value = check_for_tag(value, key, None, '= HELPERS =', '// ======= HELPERS =======')
+                value = check_for_tag(value, key, None, '= MAIN METHOD =', '// ======= MAIN METHOD =======')
+                spec[key] = value
 
         # if spec['vc-helpers'].strip():
         #     raise ValueError(f"vc-helpers in {file_path} is not empty")

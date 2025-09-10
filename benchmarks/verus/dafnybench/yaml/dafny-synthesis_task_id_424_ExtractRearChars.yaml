@@ -13,9 +13,9 @@ vc-spec: |-
       ensures 
           r.len() == l.len()
           && forall|i: int| 0 <= i < l.len() ==> r[i] == l[i][l[i].len() - 1]
-  {
 
 vc-code: |-
+  {
       assume(false);
       Vec::new()
   }

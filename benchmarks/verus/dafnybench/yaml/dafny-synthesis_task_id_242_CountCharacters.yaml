@@ -12,16 +12,14 @@ vc-spec: |-
       ensures 
           count >= 0,
           count == s.len(),
-  {
 
 vc-code: |-
+  {
       assume(false);
       0
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

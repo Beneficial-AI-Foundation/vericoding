@@ -12,9 +12,9 @@ vc-spec: |-
       ensures 
           count >= 0,
           count == lists.len(),
-  {
 
 vc-code: |-
+  {
       assume(false);
       0
   }

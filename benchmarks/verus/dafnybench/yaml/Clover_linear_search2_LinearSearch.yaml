@@ -15,9 +15,9 @@ vc-spec: |-
           &&& a[n as int] == e
           &&& forall|k: int| 0 <= k < n as int ==> a[k] != e
       }),
-  {
 
 vc-code: |-
+  {
       assume(false);
       0
   }
