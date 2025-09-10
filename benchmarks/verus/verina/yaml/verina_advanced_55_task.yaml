@@ -1,5 +1,3 @@
-Great! The code now verifies successfully. Now I'll provide the complete YAML translation:
-
 vc-description: |-
   /*
   This task requires writing a Verus method that returns the integer that appears most frequently in the input list. If multiple integers have the same maximum frequency, return the one that appears first in the original list. You should implement a frequency counter using a fold over the list, extract the maximum frequency, and return the first element in the list that matches it.

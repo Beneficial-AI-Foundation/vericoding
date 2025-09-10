@@ -1,5 +1,3 @@
-Good, that works. Let me now build the YAML output with proper floating-point handling, avoiding the spec comparison methods that don't exist for f32:
-
 vc-description: |-
   /*
   Inverse hyperbolic cosine, element-wise. 

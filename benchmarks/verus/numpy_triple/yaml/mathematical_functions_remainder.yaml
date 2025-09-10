@@ -1,5 +1,3 @@
-Good, the basic structure works. Now I'll provide the YAML output with simpler specifications that avoid the floating-point operations that aren't supported in Verus:
-
 vc-description: |-
   /*
   numpy.remainder: Returns the element-wise remainder of division.
