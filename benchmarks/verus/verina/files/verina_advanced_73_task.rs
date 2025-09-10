@@ -9,7 +9,7 @@ fn smallest_missing(l: Seq<nat>) -> result: nat;
         forall|candidate: nat| candidate < result ==> l.contains(candidate),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

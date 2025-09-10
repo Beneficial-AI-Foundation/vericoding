@@ -9,7 +9,7 @@ fn not_equal(x1: Vec<String>, x2: Vec<String>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == (x1[i] != x2[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

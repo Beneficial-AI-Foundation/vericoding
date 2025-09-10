@@ -10,7 +10,7 @@ fn square_pyramid_surface_area(base_edge: i32, height: i32) -> (area: i32)
         area == base_edge * base_edge + 2 * base_edge * height,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -34,7 +34,7 @@ fn factorize(n: u8) -> (factorization: Vec<u8>)
         is_prime_factorization(n as nat, factorization@.map(|_idx, j: u8| j as nat)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

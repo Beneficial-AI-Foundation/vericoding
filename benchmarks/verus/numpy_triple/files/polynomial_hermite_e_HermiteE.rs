@@ -28,7 +28,7 @@ fn hermite_e(coef: Vec<f32>) -> (result: HermiteEPoly)
         result.window_max == 1.0f32,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

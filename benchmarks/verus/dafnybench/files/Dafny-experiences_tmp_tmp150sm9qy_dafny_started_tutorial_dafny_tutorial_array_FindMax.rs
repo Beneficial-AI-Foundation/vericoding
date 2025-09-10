@@ -11,7 +11,7 @@ fn find_max(a: &[i32]) -> (i: usize)
         forall|k: int| 0 <= k < a.len() ==> a[k] <= a[i as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

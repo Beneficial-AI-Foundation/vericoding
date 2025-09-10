@@ -8,7 +8,7 @@ fn count_lists(lists: &Vec<Vec<int>>) -> (count: usize)
         count == lists.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

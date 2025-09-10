@@ -15,7 +15,7 @@ fn expand_to_column<T>(v: Vec<T>, axis: NewAxis) -> (result: Vec<Vec<T>>)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

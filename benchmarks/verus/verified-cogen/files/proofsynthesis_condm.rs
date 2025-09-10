@@ -12,7 +12,7 @@ fn myfun(a: &mut Vec<i32>, N: u32)
 			forall |k:int| 0 <= k < N ==> a[k] % 2 == N % 2,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

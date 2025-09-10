@@ -28,7 +28,7 @@ fn gcd_iterative(m: u32, n: u32) -> (g: u32)
     ensures g == gcd(m as nat, n as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -21,7 +21,7 @@ exec fn sort(m: Multiset<int>) -> (s: Vec<int>)
         forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

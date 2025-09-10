@@ -18,7 +18,7 @@ fn most_frequent(xs: Vec<i32>) -> (result: i32)
             forall|i: int| 0 <= i < first_idx ==> count_occurrences(xs@, xs[i]) < count_occurrences(xs@, result),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

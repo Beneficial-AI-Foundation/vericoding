@@ -10,7 +10,7 @@ fn all_digits(s: &str) -> (result: bool)
     })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

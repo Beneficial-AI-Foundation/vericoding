@@ -9,7 +9,7 @@ fn chebcompanion(c: Vec<f32>) -> (result: Vec<Vec<f32>>)
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == c.len() - 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

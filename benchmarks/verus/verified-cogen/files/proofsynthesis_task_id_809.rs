@@ -11,7 +11,7 @@ fn is_smaller(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: bool)
         result == (forall|i: int| 0 <= i < arr1.len() ==> arr1[i] > arr2[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

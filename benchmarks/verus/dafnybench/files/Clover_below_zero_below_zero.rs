@@ -11,7 +11,7 @@ fn below_zero(operations: Vec<i32>) -> (result: (Vec<i32>, bool))
         result.1 == false ==> forall|i: int| 0 <= i < result.0.len() as int ==> result.0[i] >= 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

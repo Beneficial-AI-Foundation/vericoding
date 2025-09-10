@@ -8,7 +8,7 @@ fn reverse(a: &Vec<i32>) -> (a_rev: Vec<i32>)
         forall|i: int| 0 <= i < a.len() ==> a[i] == a_rev[a_rev.len() - i - 1]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

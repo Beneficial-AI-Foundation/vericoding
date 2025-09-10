@@ -10,7 +10,7 @@ proof fn element_at_index_after_rotation(l: Seq<int>, n: int, index: int) -> (el
         element == l[((index - n + l.len() as int) % l.len() as int) as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

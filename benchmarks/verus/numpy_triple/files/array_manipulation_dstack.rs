@@ -16,7 +16,7 @@ fn numpy_dstack(arrays: Vec<Vec<f32>>) -> (result: Vec<Vec<Vec<f32>>>)
             result[0][i][j] == arrays[j][i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

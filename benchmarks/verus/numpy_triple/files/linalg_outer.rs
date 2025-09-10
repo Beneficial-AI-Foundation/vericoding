@@ -10,7 +10,7 @@ fn outer_i32(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<Vec<i32>>)
             result[i][j] == a[i] * b[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

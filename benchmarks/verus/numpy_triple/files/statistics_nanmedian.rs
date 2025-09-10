@@ -16,7 +16,7 @@ fn nanmedian(a: Vec<f32>) -> (result: f32)
         (has_finite_value(a@) ==> (result == result))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

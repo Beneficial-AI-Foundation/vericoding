@@ -12,7 +12,7 @@ fn top_k_frequent(nums: &Vec<i32>, k: usize) -> (result: Vec<i32>)
         result@.no_duplicates(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

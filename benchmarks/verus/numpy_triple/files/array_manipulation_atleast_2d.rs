@@ -10,7 +10,7 @@ fn atleast_2d(arr: Vec<f32>) -> (result: Vec<Vec<f32>>)
         forall|i: int| 0 <= i < arr.len() ==> row[i] == arr[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

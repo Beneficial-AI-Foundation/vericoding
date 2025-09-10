@@ -9,7 +9,7 @@ fn has_only_one_distinct_element(a: &Vec<i32>) -> (result: bool)
         !result ==> (exists|i: int| 0 <= i < a.len() && #[trigger] a[i] != a[0]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

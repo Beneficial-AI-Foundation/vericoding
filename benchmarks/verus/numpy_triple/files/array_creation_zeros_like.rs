@@ -12,7 +12,7 @@ fn zeros_like(a: &Vec<i32>) -> (result: Vec<i32>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

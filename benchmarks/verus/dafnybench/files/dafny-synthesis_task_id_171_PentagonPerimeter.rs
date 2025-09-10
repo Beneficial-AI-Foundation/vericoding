@@ -7,7 +7,7 @@ fn pentagon_perimeter(side: i32) -> (perimeter: i32)
     ensures perimeter == 5 * side
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

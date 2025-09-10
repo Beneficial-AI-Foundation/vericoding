@@ -12,7 +12,7 @@ fn smallest_num(nums: &Vec<i32>) -> (min: i32)
         exists|i: int| 0 <= i < nums.len() && min == nums[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

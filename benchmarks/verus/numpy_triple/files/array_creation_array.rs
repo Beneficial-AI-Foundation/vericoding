@@ -8,7 +8,7 @@ fn array(data: Vec<f64>) -> (result: Vec<f64>)
         forall|i: int| 0 <= i < data.len() ==> result[i] == data[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

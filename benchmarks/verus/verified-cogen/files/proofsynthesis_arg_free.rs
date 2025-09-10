@@ -5,7 +5,7 @@ verus!{
 fn choose_odd()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -28,7 +28,7 @@ fn lengthOfLongestSubstring(s: Seq<char>) -> (result: (usize, Ghost<Interval>))
         (forall|iv: Interval| valid_interval(s, iv) ==> length(iv) <= result.0 as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

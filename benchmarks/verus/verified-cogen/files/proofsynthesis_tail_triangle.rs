@@ -23,7 +23,7 @@ fn tail_triangle(n: u32, idx: u32, sum: &mut u32)
         *sum == triangle(n as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

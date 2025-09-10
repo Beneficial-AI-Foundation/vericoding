@@ -14,7 +14,7 @@ fn less_equal(x1: Vec<String>, x2: Vec<String>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < result.len() ==> (string_le(x1[i], x2[i]) && string_le(x2[i], x1[i])) ==> x1[i] == x2[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

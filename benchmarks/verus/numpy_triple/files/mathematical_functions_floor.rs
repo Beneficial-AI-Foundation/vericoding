@@ -12,7 +12,7 @@ fn numpy_floor(x: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == x[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

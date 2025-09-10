@@ -10,7 +10,7 @@ fn contains_consecutive_numbers(a: &Vec<i32>) -> (result: bool)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -31,7 +31,7 @@ fn count_uppercase(text: &Vec<char>) -> (count: u64)
         count_uppercase_recursively(text@) == count,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

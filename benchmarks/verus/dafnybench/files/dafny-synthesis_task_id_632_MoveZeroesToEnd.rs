@@ -50,7 +50,7 @@ fn move_zeros_to_end(arr: &mut Vec<i32>)
             exists|k: int, l: int| 0 <= k < l < arr.len() && arr[k] == old(arr)[n] && arr[l] == old(arr)[m],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

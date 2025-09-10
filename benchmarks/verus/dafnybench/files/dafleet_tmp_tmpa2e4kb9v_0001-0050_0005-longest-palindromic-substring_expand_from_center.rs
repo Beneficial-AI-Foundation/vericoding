@@ -79,7 +79,7 @@ fn expand_from_center(s: Seq<char>, i0: usize, j0: usize) -> (result: (usize, us
         })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

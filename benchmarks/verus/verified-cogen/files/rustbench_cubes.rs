@@ -9,7 +9,7 @@ fn cubes(len: usize) -> (result: Vec<i32>) by (nonlinear_arith)
         forall|i: int| 0 <= i && i < len ==> result[i] == i * i * i
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

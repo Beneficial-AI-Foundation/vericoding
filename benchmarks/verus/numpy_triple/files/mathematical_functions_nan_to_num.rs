@@ -7,7 +7,7 @@ fn nan_to_num(x: Vec<f64>) -> (result: Vec<f64>)
         result.len() == x.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

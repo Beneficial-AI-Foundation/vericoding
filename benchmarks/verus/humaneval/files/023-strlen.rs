@@ -8,7 +8,7 @@ fn strlen(string: &Vec<char>) -> (length: usize)
         length == string.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

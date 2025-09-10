@@ -10,7 +10,7 @@ fn nonzero(a: Vec<f32>) -> (indices: Vec<usize>)
         forall|i: int, j: int| 0 <= i < j < indices.len() ==> indices[i] != indices[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

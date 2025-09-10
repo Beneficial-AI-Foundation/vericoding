@@ -8,7 +8,7 @@ fn chebmulx(c: Vec<f64>) -> (result: Vec<f64>)
         result.len() == c.len() + 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

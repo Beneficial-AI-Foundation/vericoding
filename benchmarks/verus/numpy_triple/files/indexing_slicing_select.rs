@@ -19,7 +19,7 @@ fn select(condlist: Vec<Vec<bool>>, choicelist: Vec<Vec<f32>>, default: f32) -> 
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

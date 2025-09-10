@@ -14,7 +14,7 @@ fn laggrid2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<Vec<f32
             exists|val: f32| result[i][j] == val,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

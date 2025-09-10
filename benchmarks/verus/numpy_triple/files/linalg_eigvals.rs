@@ -20,7 +20,7 @@ fn eigvals(a: Vec<Vec<f32>>) -> (result: Vec<Complex>)
                 result[j].re == a[i][i] && result[j].im == 0.0f32),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

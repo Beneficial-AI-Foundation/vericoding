@@ -20,7 +20,7 @@ fn transpose(matrix: Vec<Vec<i32>>) -> (result: Vec<Vec<i32>>)
             0 <= i < result.len() && 0 <= j < result[i].len() ==> result[i][j] == matrix[j][i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

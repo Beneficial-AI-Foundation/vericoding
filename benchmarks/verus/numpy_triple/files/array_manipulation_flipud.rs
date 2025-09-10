@@ -8,7 +8,7 @@ fn flipud(m: Vec<f32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < m.len() ==> result[i] == m[m.len() - 1 - i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -26,7 +26,7 @@ fn DivMod1(a: u32, b: u32) -> (result: (u32, u32))
     ensures a == b * result.0 + result.1 && 0 <= result.1 < b
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

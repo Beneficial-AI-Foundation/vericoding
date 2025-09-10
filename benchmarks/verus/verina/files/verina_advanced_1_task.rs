@@ -20,7 +20,7 @@ fn find_single_number(nums: &Vec<i32>) -> (result: i32)
         forall|x: i32| nums@.contains(x) ==> (x == result || count_occurrences(nums@, x) == 2),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -9,7 +9,7 @@ fn swap_simultaneous(x: i32, y: i32) -> (result: (i32, i32))
         x != y ==> result.0 != x && result.1 != y,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

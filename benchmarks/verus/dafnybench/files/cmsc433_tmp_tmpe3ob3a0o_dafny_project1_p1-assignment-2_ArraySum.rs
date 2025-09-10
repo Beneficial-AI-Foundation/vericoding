@@ -9,7 +9,7 @@ fn array_sum(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
         forall |i: int| 0 <= i < c.len() ==> c[i] == a[i] + b[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

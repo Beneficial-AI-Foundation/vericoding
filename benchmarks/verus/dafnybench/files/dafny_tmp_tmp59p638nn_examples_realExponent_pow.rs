@@ -11,7 +11,7 @@ fn pow(n: u32, alpha: i32) -> (product: i32)
     ensures product == power(n as int, alpha as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

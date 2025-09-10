@@ -10,7 +10,7 @@ fn legvander2d(x: Vec<f64>, y: Vec<f64>, deg_x: usize, deg_y: usize) -> (result:
         forall|i: int| 0 <= i < result.len() && result[i].len() > 0 ==> result[i][0] == 1.0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

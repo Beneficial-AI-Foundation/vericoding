@@ -15,7 +15,7 @@ fn mod_fn(n: u64) -> (a: u64)
     ensures a as nat == f(n as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

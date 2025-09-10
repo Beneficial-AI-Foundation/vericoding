@@ -11,7 +11,7 @@ fn smallest_list_length(lists: Vec<Vec<i32>>) -> (result: usize)
         forall|i: int| #![auto] 0 <= i < lists.len() ==> result <= lists[i].len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

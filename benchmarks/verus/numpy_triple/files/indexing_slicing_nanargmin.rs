@@ -16,7 +16,7 @@ fn nanargmin(a: Vec<f32>) -> (result: usize)
         forall|j: int| 0 <= j < a.len() && !f32_is_nan(a[j]) && f32_le(a[j], a[result as int]) && f32_le(a[result as int], a[j]) ==> result as int <= j,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

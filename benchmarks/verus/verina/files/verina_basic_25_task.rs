@@ -9,7 +9,7 @@ fn sum_and_average(n: u32) -> (result: (u32, f64))
         n > 0 ==> result.0 == (n * (n + 1)) / 2,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

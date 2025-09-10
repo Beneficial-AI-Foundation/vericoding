@@ -9,7 +9,7 @@ fn is_palindrome(text: &str) -> (result: bool)
             0 <= i < text@.len() ==> #[trigger] text@[i] == text@[text@.len() - 1 - i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

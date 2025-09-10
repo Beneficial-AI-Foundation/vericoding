@@ -15,7 +15,7 @@ fn matrix_transpose(mat: &Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
             result[i][j] == mat[j][i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

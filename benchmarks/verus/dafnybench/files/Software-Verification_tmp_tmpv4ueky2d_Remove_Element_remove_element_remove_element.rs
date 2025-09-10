@@ -11,7 +11,7 @@ fn remove_element(nums: &mut Vec<i32>, val: i32) -> (i: usize)
         forall|j: int| 0 < j < i < nums.len() ==> #[trigger] nums[j] != val,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

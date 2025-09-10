@@ -7,7 +7,7 @@ fn nancumprod(arr: Vec<f32>) -> (result: Vec<f32>)
         result.len() == arr.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -19,7 +19,7 @@ fn look_for_min(a: &[int], i: usize) -> (m: usize)
         forall|k: int| #![trigger a[k]] i <= k < a.len() ==> a[k] >= a[m as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -12,7 +12,7 @@ fn argwhere(a: &Vec<f64>) -> (indices: Vec<usize>)
         (indices.len() == 0) == (forall|i: int| 0 <= i < a.len() ==> a[i] == 0.0),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

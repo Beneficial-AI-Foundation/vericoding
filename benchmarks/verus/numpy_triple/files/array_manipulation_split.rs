@@ -16,7 +16,7 @@ fn split(arr: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
             },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

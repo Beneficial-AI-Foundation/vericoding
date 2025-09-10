@@ -12,7 +12,7 @@ fn tensorinv(a: Vec<Vec<f32>>, ind: usize) -> (result: Vec<Vec<f32>>)
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == a.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

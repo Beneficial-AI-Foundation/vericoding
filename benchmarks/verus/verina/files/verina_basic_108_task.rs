@@ -10,7 +10,7 @@ fn below_zero(operations: &Vec<i32>) -> (result: (Vec<i32>, bool))
         result.1 == (exists|i: int| 1 <= i < result.0.len() && result.0[i] < 0),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

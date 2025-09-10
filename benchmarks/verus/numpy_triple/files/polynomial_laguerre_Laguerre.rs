@@ -34,7 +34,7 @@ fn make_laguerre<const N: usize>(coefficients: [f64; N]) -> (result: Laguerre<N>
         forall|i: int| 0 <= i < N ==> result.coef[i] == coefficients[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

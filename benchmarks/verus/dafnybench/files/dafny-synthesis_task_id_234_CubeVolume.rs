@@ -7,7 +7,7 @@ fn cube_volume(size: i32) -> (volume: i32)
     ensures volume == size * size * size
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

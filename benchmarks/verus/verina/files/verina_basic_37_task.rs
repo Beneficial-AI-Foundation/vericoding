@@ -16,7 +16,7 @@ fn find_first_occurrence(arr: &Vec<i32>, target: i32) -> (result: i32)
         }),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

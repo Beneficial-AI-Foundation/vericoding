@@ -18,7 +18,7 @@ fn two_sum(nums: &[i32], target: i32) -> (result: (usize, usize))
         ({ let (i, j) = result; nums[i as int] + nums[j as int] == target })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

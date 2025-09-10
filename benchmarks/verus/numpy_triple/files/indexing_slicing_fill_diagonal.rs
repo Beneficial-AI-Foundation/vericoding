@@ -19,7 +19,7 @@ fn fill_diagonal<T: Copy>(mat: Vec<Vec<T>>, val: T) -> (result: Vec<Vec<T>>)
             ==> result[i][j] == mat[i][j]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

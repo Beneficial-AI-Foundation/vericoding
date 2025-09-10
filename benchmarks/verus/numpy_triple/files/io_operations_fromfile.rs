@@ -52,7 +52,7 @@ fn fromfile(file: FileHandle, dtype: DType, count: i32, sep: &str, offset: nat) 
         true,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

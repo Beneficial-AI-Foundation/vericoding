@@ -22,7 +22,7 @@ fn to_lowercase(s: &Vec<char>) -> (result: Vec<char>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

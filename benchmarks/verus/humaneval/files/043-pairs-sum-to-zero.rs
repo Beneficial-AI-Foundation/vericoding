@@ -15,7 +15,7 @@ fn pairs_sum_to_zero(nums: &[i32], target: i32) -> (found: bool)
         found <==> exists|i: int, j: int| 0 <= i < j < nums.len() && nums[i] + nums[j] == target,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

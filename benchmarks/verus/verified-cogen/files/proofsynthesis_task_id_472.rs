@@ -13,7 +13,7 @@ fn contains_consecutive_numbers(arr: &Vec<i32>) -> (is_consecutive: bool)
             0 <= i < j < arr.len() && j == i + 1 ==> (arr[i] + 1 == arr[j])),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

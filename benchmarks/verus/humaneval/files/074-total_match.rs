@@ -24,7 +24,7 @@ fn total_match<'a>(lst1: Vec<&'a str>, lst2: Vec<&'a str>) -> (ret: Option<Vec<&
         inner_expr_total_match(lst1, lst2, ret),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -8,7 +8,7 @@ fn square_root(n: usize) -> (result: usize)
         n < (result + 1) * (result + 1),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

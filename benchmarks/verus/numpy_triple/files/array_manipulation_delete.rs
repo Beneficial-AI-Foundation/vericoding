@@ -14,7 +14,7 @@ fn delete(arr: Vec<f32>, index: usize) -> (result: Vec<f32>)
             exists|j: int| 0 <= j < result.len() && result[j] == arr[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

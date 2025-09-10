@@ -13,7 +13,7 @@ fn lagpow(c: Vec<f32>, pow: usize, maxpower: usize) -> (result: Vec<f32>)
         pow == 1 ==> (forall|i: int| 0 <= i < result.len() ==> result[i] == c[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

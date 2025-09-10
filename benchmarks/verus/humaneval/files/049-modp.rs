@@ -23,7 +23,7 @@ fn modp(n: u32, p: u32) -> (r: u32)
         r == modp_rec(n as nat, p as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

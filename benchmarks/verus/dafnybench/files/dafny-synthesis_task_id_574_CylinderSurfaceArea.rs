@@ -7,7 +7,7 @@ fn cylinder_surface_area(radius: u64, height: u64) -> (area: u64)
     ensures area == 2 * radius * (radius + height)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

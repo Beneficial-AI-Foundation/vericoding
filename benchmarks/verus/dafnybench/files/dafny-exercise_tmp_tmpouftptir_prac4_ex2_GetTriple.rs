@@ -14,7 +14,7 @@ ensures
     (0 <= index < a.len() - 1) ==> a[index as int] == a[index as int + 1] && a[index as int + 1] == a[index as int + 2]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

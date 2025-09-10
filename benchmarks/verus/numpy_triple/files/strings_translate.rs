@@ -49,7 +49,7 @@ fn translate(a: Vec<Vec<u8>>, table: Vec<u8>, deletechars: Vec<u8>) -> (result: 
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

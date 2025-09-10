@@ -70,7 +70,7 @@ fn result_type(operands: Vec<NumpyOperand>) -> (result: NumpyDType)
             type_rank(result) >= type_rank(promote_types(operand_type(operands[i]), operand_type(operands[j]))),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

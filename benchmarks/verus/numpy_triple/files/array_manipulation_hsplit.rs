@@ -19,7 +19,7 @@ fn hsplit(arr: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
                 arr[i] == result[p][e]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -11,7 +11,7 @@ fn tile(a: Vec<i32>, reps: usize) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == a[i % (a.len() as int)],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -8,7 +8,7 @@ fn count_non_empty_substrings(s: Seq<char>) -> (count: usize)
         count == (s.len() * (s.len() + 1)) / 2,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -13,7 +13,7 @@ fn binary_search(v: &Vec<u64>, k: u64) -> (result:usize)
         k == v[result as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

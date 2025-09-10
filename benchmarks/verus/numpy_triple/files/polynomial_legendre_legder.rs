@@ -10,7 +10,7 @@ fn legder(c: Vec<f64>, m: usize, scl: f64) -> (result: Vec<f64>)
         m >= c.len() ==> result.len() == 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -10,7 +10,7 @@ fn nditer(arr: Vec<f32>) -> (iter: (usize, Vec<f32>))
         forall|i: int| 0 <= i < arr.len() ==> iter.1[i] == arr[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

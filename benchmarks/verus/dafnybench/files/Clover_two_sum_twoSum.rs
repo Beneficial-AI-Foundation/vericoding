@@ -12,7 +12,7 @@ fn twoSum(nums: &[i32], target: i32) -> (result: (usize, usize))
         && forall|jj: int| #![trigger nums[jj]] result.0 < jj < result.1 ==> nums[result.0 as int] + nums[jj] != target,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -7,7 +7,7 @@ fn sum(n: u32) -> (s: u32)
     ensures s == n * (n + 1) / 2
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

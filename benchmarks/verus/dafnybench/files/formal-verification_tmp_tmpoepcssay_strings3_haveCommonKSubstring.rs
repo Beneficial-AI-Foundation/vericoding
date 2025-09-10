@@ -56,7 +56,7 @@ fn haveCommonKSubstring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: boo
         !found <==> haveNotCommonKSubstringPred(k, str1, str2),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

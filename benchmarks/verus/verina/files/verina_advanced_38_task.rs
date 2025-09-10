@@ -8,7 +8,7 @@ fn max_coverage_after_removing_one(intervals: &Vec<(usize, usize)>) -> (result: 
         result <= intervals.len() * 1000,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

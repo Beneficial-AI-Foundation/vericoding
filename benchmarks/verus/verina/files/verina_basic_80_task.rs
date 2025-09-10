@@ -11,7 +11,7 @@ fn only_once(a: &Vec<i32>, key: i32) -> (result: bool)
         result <==> count_occurrences(a@, key) == 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

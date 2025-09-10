@@ -14,7 +14,7 @@ fn put(a: Vec<f64>, ind: Vec<usize>, v: Vec<f64>) -> (result: Vec<f64>)
         ind.len() == 0 ==> result@ == a@,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

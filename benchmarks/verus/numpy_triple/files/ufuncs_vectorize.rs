@@ -8,7 +8,7 @@ fn vectorize<A, B>(f: spec_fn(A) -> B, arr: Vec<A>) -> (result: Vec<B>)
         forall|i: int| 0 <= i < arr.len() ==> result[i] == f(arr[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

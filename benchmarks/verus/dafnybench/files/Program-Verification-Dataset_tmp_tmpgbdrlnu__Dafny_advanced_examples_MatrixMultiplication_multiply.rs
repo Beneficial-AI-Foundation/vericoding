@@ -53,7 +53,7 @@ fn multiply(m1: &Vec<Vec<int>>, m2: &Vec<Vec<int>>) -> (m3: Vec<Vec<int>>)
             #[trigger] m3[i][j] == row_column_product(m1, m2, i, j),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

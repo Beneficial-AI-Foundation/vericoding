@@ -26,7 +26,7 @@ fn tangent(r: &[int], x: &[int]) -> (found: bool)
             0 <= i < r.len() && 0 <= j < x.len() && #[trigger] r[i] == #[trigger] x[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -8,7 +8,7 @@ fn unique_product(arr: &Vec<i32>) -> (result: i32)
         true,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

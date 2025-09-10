@@ -12,7 +12,7 @@ fn binary_search(a: &[i32], circle: i32) -> (n: usize)
         forall|i: int| #![trigger a[i]] n <= i < a.len() ==> circle <= a[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

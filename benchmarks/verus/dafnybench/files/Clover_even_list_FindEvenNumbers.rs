@@ -13,7 +13,7 @@ fn find_even_numbers(arr: &[i32]) -> (even_numbers: Vec<i32>)
             #[trigger] even_numbers@[l] == #[trigger] arr@[m])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -13,7 +13,7 @@ fn array_sum(a: &[i32]) -> (result: i32)
     ensures result == sum_to(a, a.len() as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

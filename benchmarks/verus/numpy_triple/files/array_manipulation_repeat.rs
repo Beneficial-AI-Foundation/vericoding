@@ -16,7 +16,7 @@ fn repeat<T: Copy>(a: Vec<T>, repeats: usize) -> (result: Vec<T>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

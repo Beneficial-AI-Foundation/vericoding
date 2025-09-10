@@ -9,7 +9,7 @@ fn append_array_to_seq(s: Seq<i32>, a: &Vec<i32>) -> (r: Seq<i32>)
         forall|i: int| 0 <= i < a.len() ==> r[s.len() + i] == a[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

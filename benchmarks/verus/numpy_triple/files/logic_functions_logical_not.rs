@@ -8,7 +8,7 @@ fn logical_not(x: Vec<f64>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == (x[i] == 0.0)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

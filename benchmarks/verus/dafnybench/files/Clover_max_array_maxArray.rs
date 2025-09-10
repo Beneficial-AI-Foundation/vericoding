@@ -9,7 +9,7 @@ fn maxArray(a: &[int]) -> (m: int)
         exists|k: int| 0 <= k < a.len() && m == a@[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

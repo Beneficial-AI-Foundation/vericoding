@@ -40,7 +40,7 @@ fn find(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) ->
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -24,7 +24,7 @@ fn search_1000(a: &[i32], x: i32) -> (k: usize)
         forall|r: int| k <= r < 1000 ==> a[r] >= x,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

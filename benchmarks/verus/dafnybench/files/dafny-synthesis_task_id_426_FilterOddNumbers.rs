@@ -14,7 +14,7 @@ fn filter_odd_numbers(arr: &[int]) -> (odd_list: Vec<int>)
         forall|i: int| 0 <= i < arr.len() && is_odd(arr[i]) ==> odd_list@.contains(arr[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

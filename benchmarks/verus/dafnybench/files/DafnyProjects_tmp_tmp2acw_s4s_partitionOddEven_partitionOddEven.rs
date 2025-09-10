@@ -11,7 +11,7 @@ fn partitionOddEven(a: &mut Vec<nat>)
         !(exists|i: int, j: int| 0 <= i < j < a@.len() && even(a@[i]) && odd(a@[j])),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

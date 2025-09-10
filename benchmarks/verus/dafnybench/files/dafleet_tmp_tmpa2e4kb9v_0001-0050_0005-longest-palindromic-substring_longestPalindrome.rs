@@ -87,7 +87,7 @@ fn longestPalindrome(s: Vec<char>) -> (ans: (Vec<char>, usize, usize))
         forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s@, i, j) ==> j - i <= ans.2 - ans.1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

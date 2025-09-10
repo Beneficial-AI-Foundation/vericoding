@@ -17,7 +17,7 @@ fn polydiv(c1: Vec<f32>, c2: Vec<f32>) -> (result: (Vec<f32>, Vec<f32>))
     })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

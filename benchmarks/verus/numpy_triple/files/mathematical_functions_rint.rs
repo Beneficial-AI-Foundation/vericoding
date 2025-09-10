@@ -7,7 +7,7 @@ fn numpy_rint(x: Vec<f32>) -> (result: Vec<f32>)
         result.len() == x.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

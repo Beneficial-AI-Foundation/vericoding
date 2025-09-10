@@ -14,7 +14,7 @@ fn factorial_of_last_digit(n: u64) -> (fact: u64)
     ensures fact == factorial((n % 10) as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

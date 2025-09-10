@@ -21,7 +21,7 @@ fn majority_element(xs: &Vec<u64>) -> (result: u64)
         count_matches(xs@, result) > xs.len() / 2,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

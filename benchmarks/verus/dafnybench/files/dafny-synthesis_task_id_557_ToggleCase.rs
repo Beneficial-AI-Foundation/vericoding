@@ -42,7 +42,7 @@ fn toggle_case(s: Vec<char>) -> (v: Vec<char>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

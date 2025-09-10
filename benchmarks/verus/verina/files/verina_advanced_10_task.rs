@@ -28,7 +28,7 @@ fn find_exponents(n: nat, primes: Vec<nat>) -> (result: Vec<(nat, nat)>)
             exists|j: int| 0 <= j < result.len() && result[j].0 == p,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

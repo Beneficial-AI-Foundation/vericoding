@@ -15,7 +15,7 @@ fn numpy_transpose(a: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
             result[j][i] == a[i][j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

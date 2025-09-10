@@ -44,7 +44,7 @@ fn sorter(bases: Seq<Bases>) -> (sobases: Seq<Bases>)
         bases.to_multiset() == sobases.to_multiset()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

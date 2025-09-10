@@ -9,7 +9,7 @@ fn array_append(a: Vec<i32>, b: i32) -> (result: Vec<i32>)
         forall|i: int| #![auto] 0 <= i && i < result.len() ==> result[i] == (if i < a.len() { a[i] } else { b }),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

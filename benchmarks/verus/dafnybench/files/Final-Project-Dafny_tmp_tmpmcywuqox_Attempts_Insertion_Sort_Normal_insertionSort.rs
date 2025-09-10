@@ -25,7 +25,7 @@ fn insertion_sort(a: &mut Vec<i32>)
     ensures sorted(a)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -11,7 +11,7 @@ fn element_wise_division(a: Seq<int>, b: Seq<int>) -> (result: Seq<int>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] / b[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

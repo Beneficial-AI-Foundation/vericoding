@@ -10,7 +10,7 @@ fn insert_before_each(arr: &Vec<i32>, elem: i32) -> (result: Vec<i32>)
         forall|k: int| 0 <= k < arr.len() ==> #[trigger] result[2 * k + 1] == arr[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

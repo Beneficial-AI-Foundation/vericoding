@@ -34,7 +34,7 @@ fn exchanger(s: Seq<Bases>, x: nat, y: nat) -> (t: Seq<Bases>)
         s.to_multiset() == t.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

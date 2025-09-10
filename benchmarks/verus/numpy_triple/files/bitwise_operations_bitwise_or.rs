@@ -27,7 +27,7 @@ fn bitwise_or_fn(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         result@ == bitwise_or_vec(x1@, x2@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

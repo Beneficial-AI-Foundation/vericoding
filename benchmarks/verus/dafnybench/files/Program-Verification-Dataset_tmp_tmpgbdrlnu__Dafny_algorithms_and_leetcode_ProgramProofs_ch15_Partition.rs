@@ -28,7 +28,7 @@ fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
         swap_frame(old(a)@, a@, lo as int, hi as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

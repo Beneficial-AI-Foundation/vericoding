@@ -26,7 +26,7 @@ fn cheb2poly(c: Vec<f64>) -> (p: Vec<f64>)
             d.len() == c.len() ==> true)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

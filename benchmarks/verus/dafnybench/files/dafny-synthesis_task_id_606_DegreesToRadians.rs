@@ -9,7 +9,7 @@ fn degrees_to_radians(degrees: i64) -> (radians: i64)
     ensures radians as int == (degrees as int * pi_approx()) / scale_factor() / 180
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

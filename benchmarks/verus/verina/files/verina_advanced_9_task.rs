@@ -8,7 +8,7 @@ fn count_sum_divisible_by(n: usize, d: usize) -> (result: usize)
         result <= n,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -8,7 +8,7 @@ fn NINF() -> (result: f64)
         true
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

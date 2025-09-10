@@ -14,7 +14,7 @@ fn flatten(mat: Vec<Vec<f32>>) -> (result: Vec<f32>)
             result[r * mat[0].len() + c] == mat[r][c]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

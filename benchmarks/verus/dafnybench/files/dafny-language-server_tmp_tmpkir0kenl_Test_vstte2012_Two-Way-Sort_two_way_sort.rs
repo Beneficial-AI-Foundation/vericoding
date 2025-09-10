@@ -31,7 +31,7 @@ fn two_way_sort(a: &mut Vec<bool>)
         multisets(a@) == multisets(old(a)@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -27,7 +27,7 @@ fn queryFast(a: &[i32], c: &[i32], i: i32, j: i32) -> (r: i32)
     ensures r as int == sum(a@.map(|_i, x| x as int), i as int, j as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

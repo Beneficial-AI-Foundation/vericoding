@@ -14,7 +14,7 @@ fn flatnonzero(a: Vec<f64>) -> (result: Vec<usize>)
         forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

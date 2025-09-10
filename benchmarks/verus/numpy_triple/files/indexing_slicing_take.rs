@@ -10,7 +10,7 @@ fn take(arr: Vec<f32>, indices: Vec<usize>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < indices.len() ==> result[i] == arr[indices[i] as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

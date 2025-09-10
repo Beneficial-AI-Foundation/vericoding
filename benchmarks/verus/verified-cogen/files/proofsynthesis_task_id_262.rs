@@ -13,7 +13,7 @@ fn split_array(list: &Vec<i32>, l: usize) -> (new_list: (Vec<i32>, Vec<i32>))
         new_list.1@ == list@.subrange(l as int, list.len() as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -34,7 +34,7 @@ fn binary_search(q: Seq<int>, key: int, lower_bound: usize, upper_bound: usize, 
         range_satisfies_comparer(q, key, index as nat, q.len() as nat, comparer),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

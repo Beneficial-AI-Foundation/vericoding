@@ -14,7 +14,7 @@ fn outer(op_id: int, a: Vec<f64>, b: Vec<f64>) -> (result: Vec<Vec<f64>>)
             exists|ai: f64, bj: f64| ai == a[i] && bj == b[j] && result[i][j] == apply_binary_op(op_id, ai, bj)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

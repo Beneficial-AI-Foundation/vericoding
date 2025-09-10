@@ -18,7 +18,7 @@ fn lag2poly(c: Vec<f32>) -> (result: Vec<f32>)
         c.len() > 0 ==> evaluate_polynomial(result@, 0.0) == evaluate_laguerre_polynomial(c@, 0.0),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

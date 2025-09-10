@@ -19,7 +19,7 @@ fn twoSum(nums: Seq<i32>, target: i32) -> (pair: (usize, usize))
     ensures correct_pair((pair.0 as int, pair.1 as int), seq_i32_to_int(nums), target as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

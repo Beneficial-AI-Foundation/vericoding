@@ -12,7 +12,7 @@ fn matrix_power(a: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==> exists|val: f32| result[i][j] == val,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

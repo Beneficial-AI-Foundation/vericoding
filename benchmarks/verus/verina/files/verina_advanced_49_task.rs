@@ -11,7 +11,7 @@ fn merge_sorted_lists(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
         result.len() == arr1.len() + arr2.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

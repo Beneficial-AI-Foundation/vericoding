@@ -13,7 +13,7 @@ fn bit_wise_xor(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
             0 <= i < result.len() ==> result[i] == #[trigger] arr1[i] ^ #[trigger] arr2[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

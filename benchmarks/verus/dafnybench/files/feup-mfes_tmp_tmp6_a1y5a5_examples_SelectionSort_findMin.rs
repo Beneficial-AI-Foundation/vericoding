@@ -15,7 +15,7 @@ fn find_min(a: &mut [i32], from: usize, to: usize) -> (index: usize)
         forall|k: int| from <= k < to ==> old(a)[k] >= old(a)[index as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

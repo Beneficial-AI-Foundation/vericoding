@@ -9,7 +9,7 @@ fn rain(heights: &Vec<i32>) -> (result: i32)
         heights.len() < 3 ==> result == 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

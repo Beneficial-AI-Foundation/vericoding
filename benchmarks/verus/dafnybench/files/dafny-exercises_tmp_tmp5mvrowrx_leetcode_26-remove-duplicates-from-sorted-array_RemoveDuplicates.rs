@@ -13,7 +13,7 @@ fn remove_duplicates(nums: &mut Vec<i32>) -> (num_length: usize)
         forall|i: int| 0 <= i < old(nums).len() ==> nums@.subrange(0, num_length as int).contains(old(nums)[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

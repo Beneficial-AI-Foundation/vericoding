@@ -7,7 +7,7 @@ fn count_digits(s: &str) -> (result: usize)
         result >= 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

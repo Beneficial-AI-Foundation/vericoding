@@ -22,7 +22,7 @@ fn bubbleSort(a: &mut Vec<i32>)
         old(a)@ == a@,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

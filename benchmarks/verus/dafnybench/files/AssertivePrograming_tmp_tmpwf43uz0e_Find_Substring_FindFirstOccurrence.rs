@@ -43,7 +43,7 @@ fn find_first_occurrence(str1: Seq<char>, str2: Seq<char>) -> (result: (bool, us
     ensures post(str1, str2, result.0, result.1 as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

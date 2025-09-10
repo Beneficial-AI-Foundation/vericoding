@@ -12,7 +12,7 @@ fn c_(arr1: Vec<f32>, arr2: Vec<f32>) -> (result: Vec<Vec<f32>>)
             result[i][1] == arr2[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

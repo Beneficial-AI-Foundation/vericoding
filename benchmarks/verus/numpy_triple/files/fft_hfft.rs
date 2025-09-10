@@ -16,7 +16,7 @@ fn hfft(a: Vec<Complex>, m: usize) -> (result: Vec<f32>)
         result.len() == 2 * m,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

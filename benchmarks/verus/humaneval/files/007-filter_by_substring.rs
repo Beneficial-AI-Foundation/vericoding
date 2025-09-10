@@ -13,7 +13,7 @@ fn filter_by_substring<'a>(strings: &Vec<&'a str>, substring: &str) -> (res: Vec
                 ) == substring@) ==> res@.contains(#[trigger] (strings[i])),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

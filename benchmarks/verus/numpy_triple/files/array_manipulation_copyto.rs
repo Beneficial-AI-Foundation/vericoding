@@ -12,7 +12,7 @@ fn copyto<T: Copy>(dst: Vec<T>, src: Vec<T>, mask: Vec<bool>) -> (result: Vec<T>
             result[i] == if mask[i] { src[i] } else { dst[i] }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

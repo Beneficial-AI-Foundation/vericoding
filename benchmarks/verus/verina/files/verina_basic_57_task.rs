@@ -23,7 +23,7 @@ fn count_less_than(numbers: &Vec<i32>, threshold: i32) -> (result: usize)
         result == count_less_than_spec(numbers@, threshold),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

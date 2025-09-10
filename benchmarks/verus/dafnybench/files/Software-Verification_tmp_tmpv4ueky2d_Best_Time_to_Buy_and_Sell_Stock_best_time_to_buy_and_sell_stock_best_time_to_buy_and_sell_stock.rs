@@ -10,7 +10,7 @@ fn best_time_to_buy_and_sell_stock(prices: &[i32]) -> (max_profit: i32)
         forall|i: int, j: int| 0 <= i < j < prices.len() ==> max_profit >= #[trigger] prices[j] - #[trigger] prices[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

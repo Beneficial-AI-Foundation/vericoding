@@ -22,7 +22,7 @@ fn laggrid3d(
             ==> exists|val: f32| result[i][j][k] == val,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

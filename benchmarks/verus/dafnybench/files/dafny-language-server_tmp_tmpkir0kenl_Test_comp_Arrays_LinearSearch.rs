@@ -25,7 +25,7 @@ fn linear_search(a: &[int], key: int) -> (n: usize)
         n == a.len() || a[n as int] == key,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -10,7 +10,7 @@ fn indices(n: usize) -> (grid: Vec<Vec<usize>>)
         forall|i: int, j: int| 0 <= i < j < n ==> grid[0][i] < grid[0][j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

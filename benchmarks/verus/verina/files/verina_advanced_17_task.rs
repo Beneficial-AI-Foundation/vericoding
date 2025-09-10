@@ -10,7 +10,7 @@ fn insertion_sort(l: Vec<i32>) -> (result: Vec<i32>)
         result@.to_multiset() == l@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

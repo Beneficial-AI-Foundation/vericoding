@@ -51,7 +51,7 @@ fn checkRegulation(tank: &mut Tank)
         || ((tank.pipe.in_flowv3 > 5 || tank.pipe.in_flowv1 > 5) && tank.pipe.v2 == Valve::OFF && tank.pipe.v3 == old(tank).pipe.v3 && tank.pipe.v1 == old(tank).pipe.v1)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

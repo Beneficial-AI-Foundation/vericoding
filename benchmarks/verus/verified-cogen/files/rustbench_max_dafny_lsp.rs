@@ -11,7 +11,7 @@ fn max_dafny_lsp(a: &[i32]) -> (x: usize)
         forall|k: int| 0 <= k < a.len() ==> a[k] <= a[x as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

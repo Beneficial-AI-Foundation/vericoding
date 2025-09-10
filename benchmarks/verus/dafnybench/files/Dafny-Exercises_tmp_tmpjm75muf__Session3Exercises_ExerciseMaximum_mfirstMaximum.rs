@@ -10,7 +10,7 @@ fn mfirstMaximum(v: &Vec<i32>) -> (i: usize)
         (forall|l: int| 0 <= l < i ==> v[i as int] > v[l]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

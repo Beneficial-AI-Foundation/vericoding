@@ -51,7 +51,7 @@ fn optimize_correct(e: Exp, s: Map<String, int>)
     ensures eval(e, s) == eval(optimize(e), s)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

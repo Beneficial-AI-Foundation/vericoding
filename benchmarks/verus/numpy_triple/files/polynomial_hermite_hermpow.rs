@@ -26,7 +26,7 @@ fn hermpow(c: Vec<f64>, pow: usize, maxpower: usize) -> (result: Vec<f64>)
             exists|j: int| 0 <= j < result.len() && result[j] != 0.0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

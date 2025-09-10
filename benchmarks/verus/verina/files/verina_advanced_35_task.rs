@@ -27,7 +27,7 @@ fn majority_element(nums: Seq<i32>) -> (result: i32)
         forall|x: i32| x != result ==> count_occurrences(nums, x) <= nums.len() / 2,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

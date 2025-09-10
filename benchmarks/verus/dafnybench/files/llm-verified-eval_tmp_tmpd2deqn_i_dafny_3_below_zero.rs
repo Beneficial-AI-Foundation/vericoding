@@ -17,7 +17,7 @@ fn below_zero(ops: Seq<int>) -> (result: bool)
     ensures result <==> exists|n: nat| n <= ops.len() && sum(ops, n) < 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

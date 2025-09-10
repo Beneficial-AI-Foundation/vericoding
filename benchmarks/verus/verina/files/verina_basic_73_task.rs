@@ -9,7 +9,7 @@ fn match_strings(s: &str, p: &str) -> (result: bool)
             (s@.index(n) == p@.index(n) || p@.index(n) == '?' as u8)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

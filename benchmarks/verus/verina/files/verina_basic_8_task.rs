@@ -8,7 +8,7 @@ fn my_min(a: i32, b: i32) -> (result: i32)
         result == a || result == b,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

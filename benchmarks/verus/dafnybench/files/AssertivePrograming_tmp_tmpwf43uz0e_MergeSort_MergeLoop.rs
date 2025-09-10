@@ -45,7 +45,7 @@ fn merge_loop(b: &mut Vec<int>, c: &Vec<int>, d: &Vec<int>, i0: usize, j0: usize
             0 <= c.len() - r.0 < c.len() - i0 || (c.len() - r.0 == c.len() - i0 && 0 <= d.len() - r.1 < d.len() - j0)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

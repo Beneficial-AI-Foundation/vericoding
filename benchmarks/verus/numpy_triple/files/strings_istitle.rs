@@ -10,7 +10,7 @@ fn istitle(a: Vec<String>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < a.len() ==> result[i] == is_titlecased(a[i]@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

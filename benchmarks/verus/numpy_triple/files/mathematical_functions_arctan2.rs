@@ -7,7 +7,7 @@ fn numpy_arctan2(x1: &Vec<f64>, x2: &Vec<f64>) -> (result: Vec<f64>)
     ensures result.len() == x1.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

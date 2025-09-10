@@ -29,7 +29,7 @@ fn mk_legendre(
         window[0] == -1.0 && window[1] == 1.0 ==> result.window[0] == -1.0 && result.window[1] == 1.0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

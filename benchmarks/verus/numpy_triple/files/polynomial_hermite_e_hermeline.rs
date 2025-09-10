@@ -10,7 +10,7 @@ fn hermeline(off: f64, scl: f64) -> (coeffs: Vec<f64>)
         (scl != 0.0 ==> coeffs[1] == scl)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

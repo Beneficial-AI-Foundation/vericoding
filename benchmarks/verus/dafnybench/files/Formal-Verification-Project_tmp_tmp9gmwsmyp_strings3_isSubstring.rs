@@ -41,7 +41,7 @@ fn is_substring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
     ensures res <==> is_substring_pred(sub, str)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

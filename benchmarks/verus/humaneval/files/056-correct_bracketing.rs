@@ -32,7 +32,7 @@ fn correct_bracketing(brackets: &str) -> (ret: bool)
         ret <==> spec_bracketing(brackets@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

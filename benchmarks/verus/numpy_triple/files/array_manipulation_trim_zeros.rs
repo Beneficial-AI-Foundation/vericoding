@@ -34,7 +34,7 @@ fn trim_zeros(arr: Vec<f64>, mode: TrimMode) -> (result: Vec<f64>)
                 (finish == 0 || (finish > 0 && arr[finish - 1] != 0.0)))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

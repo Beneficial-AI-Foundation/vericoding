@@ -10,7 +10,7 @@ fn isnan(x: Vec<f64>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < x.len() ==> (x[i] == x[i] ==> result[i] == false),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -24,7 +24,7 @@ fn fibonacci(n: usize) -> (ret: Vec<i32>)
         ret@.len() == n,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

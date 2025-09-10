@@ -10,7 +10,7 @@ proof fn quotient(x: nat, y: nat) -> (result: (int, int))
     })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

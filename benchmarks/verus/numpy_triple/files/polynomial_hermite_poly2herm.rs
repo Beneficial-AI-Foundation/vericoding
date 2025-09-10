@@ -19,7 +19,7 @@ fn poly2herm(pol: Vec<f64>) -> (result: Vec<f64>)
              result[2] == 0.5 && result[3] == 0.375)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

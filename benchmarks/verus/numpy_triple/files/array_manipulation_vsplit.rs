@@ -23,7 +23,7 @@ fn vsplit(mat: Vec<Vec<f32>>, k: usize) -> (result: Vec<Vec<Vec<f32>>>)
                 orig_row == split_idx * (mat.len() / k) + row_idx,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

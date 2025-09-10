@@ -10,7 +10,7 @@ fn zap_negatives(a: &mut Vec<i32>)
             else { a[i] == old(a)[i] }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

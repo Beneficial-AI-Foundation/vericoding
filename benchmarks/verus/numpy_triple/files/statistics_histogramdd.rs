@@ -20,7 +20,7 @@ fn histogramdd(sample: Vec<(i32, i32)>, bins_x: usize, bins_y: usize) -> (result
         })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

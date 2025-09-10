@@ -60,7 +60,7 @@ fn BullsCows(s: Vec<u32>, u: Vec<u32>) -> (ret: (u32, u32))
         ret.1 as nat == cowspec(s@.map(|i, x: u32| x as nat), u@.map(|i, x: u32| x as nat))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

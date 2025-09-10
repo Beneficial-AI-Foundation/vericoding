@@ -11,7 +11,7 @@ fn myfun4(x: &Vec<u64>, y: &mut Vec<u64>)
         y@ == x@.filter(|k:u64| k%3 == 0),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

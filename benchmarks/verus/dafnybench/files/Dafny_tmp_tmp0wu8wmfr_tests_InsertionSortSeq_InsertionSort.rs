@@ -12,7 +12,7 @@ fn insertion_sort(s: Seq<int>) -> (r: Seq<int>)
         is_sorted(r),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

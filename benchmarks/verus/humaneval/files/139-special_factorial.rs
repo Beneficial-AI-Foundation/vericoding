@@ -32,7 +32,7 @@ fn brazilian_factorial_impl(n: u64) -> (ret: Option<u64>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

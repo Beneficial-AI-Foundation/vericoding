@@ -45,7 +45,7 @@ fn is_clean_palindrome(s: &str) -> (result: bool)
         result == (normalize_string(s) == normalize_string(s).reverse()),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

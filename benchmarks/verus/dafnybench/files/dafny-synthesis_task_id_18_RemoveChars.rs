@@ -9,7 +9,7 @@ fn remove_chars(s1: Seq<char>, s2: Seq<char>) -> (v: Seq<char>)
         forall|i: int| 0 <= i < s1.len() ==> s2.contains(s1[i]) || v.contains(s1[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

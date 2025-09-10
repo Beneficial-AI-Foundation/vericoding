@@ -12,7 +12,7 @@ fn binary_search(a: &[i32], key: i32) -> (n: usize)
         forall|i: int| n <= i < a.len() ==> a[i] >= key
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

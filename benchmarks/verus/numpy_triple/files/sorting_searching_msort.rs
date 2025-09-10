@@ -9,7 +9,7 @@ fn msort(a: Vec<i32>) -> (result: Vec<i32>)
         result@.to_multiset() =~= a@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

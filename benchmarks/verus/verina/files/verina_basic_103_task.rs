@@ -11,7 +11,7 @@ fn update_elements(a: &Vec<i32>) -> (result: Vec<i32>)
         result.len() == a.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

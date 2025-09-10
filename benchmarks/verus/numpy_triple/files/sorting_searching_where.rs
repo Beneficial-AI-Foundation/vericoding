@@ -13,7 +13,7 @@ fn numpy_where(condition: Vec<bool>, x: Vec<f32>, y: Vec<f32>) -> (result: Vec<f
             (!condition[i] ==> result[i] == y[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

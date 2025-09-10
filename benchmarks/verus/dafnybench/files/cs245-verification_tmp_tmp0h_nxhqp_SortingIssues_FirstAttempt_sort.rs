@@ -10,7 +10,7 @@ fn sort(A: &mut Vec<i32>, n: usize)
         forall|i: int, j: int| 0 <= i <= j < n ==> A[i] <= A[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

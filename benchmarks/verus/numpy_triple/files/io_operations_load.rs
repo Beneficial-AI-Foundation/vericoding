@@ -12,7 +12,7 @@ fn load(file: String, allow_pickle: bool, n: usize) -> (result: Vec<f64>)
             forall|i: int| 0 <= i < n ==> result[i] == second_load[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

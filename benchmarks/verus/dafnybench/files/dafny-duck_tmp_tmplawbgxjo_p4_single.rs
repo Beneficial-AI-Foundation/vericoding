@@ -11,7 +11,7 @@ fn single(x: &[i32], y: &[i32]) -> (b: Vec<i32>)
         b@ == x@ + y@,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

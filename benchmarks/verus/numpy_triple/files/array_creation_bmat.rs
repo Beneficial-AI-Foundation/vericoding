@@ -15,7 +15,7 @@ fn bmat(top_left: Vec<f32>, top_right: Vec<f32>, bottom_left: Vec<f32>, bottom_r
         forall|i: int| 0 <= i < bottom_right.len() ==> result[i + 3 * top_left.len()] == bottom_right[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

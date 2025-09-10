@@ -16,7 +16,7 @@ fn count_neg(a: &[int]) -> (cnt: usize)
     ensures cnt == verify_neg(a, a.len() as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

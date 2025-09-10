@@ -12,7 +12,7 @@ fn where_fn(condition: Vec<bool>, x: Vec<f32>, y: Vec<f32>) -> (result: Vec<f32>
             result[i] == if condition[i] { x[i] } else { y[i] }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

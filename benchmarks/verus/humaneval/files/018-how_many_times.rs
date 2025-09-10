@@ -30,7 +30,7 @@ fn how_many_times_impl(string: Vec<char>, substring: Vec<char>) -> (opt_k: Optio
         inner_expr_how_many_times_impl(opt_k, string, substring),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -16,7 +16,7 @@ fn numpy_greater_equal(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < result.len() ==> (result[i] == true || result[i] == false),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -14,7 +14,7 @@ fn ComputeFib(n: usize) -> (f: usize)
     ensures f == fib(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

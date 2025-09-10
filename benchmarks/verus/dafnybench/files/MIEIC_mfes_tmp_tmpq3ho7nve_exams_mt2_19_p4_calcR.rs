@@ -18,7 +18,7 @@ fn calcR(n: u64) -> (r: u64)
     ensures r == R(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

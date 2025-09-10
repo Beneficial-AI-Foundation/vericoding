@@ -15,7 +15,7 @@ fn linear_search(nums: Vec<i32>, target: i32) -> (ret: i32)
         ret < 0 ==> forall |i: int| 0 <= i < nums@.len() as int ==> #[trigger]nums@[i] != target,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

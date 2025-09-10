@@ -10,7 +10,7 @@ fn array_concat(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i && i < b.len() ==> result[i + a.len()] == b[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

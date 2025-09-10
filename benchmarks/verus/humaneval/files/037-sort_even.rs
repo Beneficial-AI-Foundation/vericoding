@@ -42,7 +42,7 @@ fn sort_even(l: Vec<i32>) -> (result: Vec<i32>)
             0 <= i < j < l.len() && i % 2 == 0 && j % 2 == 0 ==> result[i] <= result[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

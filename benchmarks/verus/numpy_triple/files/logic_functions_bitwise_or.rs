@@ -32,7 +32,7 @@ fn numpy_bitwise_or(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> bitwise_or(x1[i], x1[i]) == x1[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

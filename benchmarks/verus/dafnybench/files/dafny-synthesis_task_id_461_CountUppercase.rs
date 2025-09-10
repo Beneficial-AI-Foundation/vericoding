@@ -12,7 +12,7 @@ fn count_uppercase(s: &str) -> (count: usize)
         count as int == s@.filter(|c: char| is_upper_case(c)).len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -32,7 +32,7 @@ fn pre_compute(a: &Vec<i32>, b: &mut Vec<i32>) -> (p: usize)
         p == count(b.len() as nat, a@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

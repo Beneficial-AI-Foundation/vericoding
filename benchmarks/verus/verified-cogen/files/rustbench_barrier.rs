@@ -11,7 +11,7 @@ fn barrier(arr: &[i32], p: usize) -> (result: bool)
         result == forall|k: int, l: int| 0 <= k <= p && p < l < arr.len() ==> arr[k] < arr[l],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

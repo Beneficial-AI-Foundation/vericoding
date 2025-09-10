@@ -20,7 +20,7 @@ fn insertion_sort(xs: Vec<i32>) -> (result: Vec<i32>)
         multiset_equivalent(xs, result),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

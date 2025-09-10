@@ -7,7 +7,7 @@ fn remove_duplicates(nums: &Vec<i32>) -> (result: usize)
     ensures result <= nums.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

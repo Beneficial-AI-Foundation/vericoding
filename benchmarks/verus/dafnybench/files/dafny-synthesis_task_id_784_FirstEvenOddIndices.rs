@@ -33,7 +33,7 @@ fn first_even_odd_indices(lst: Vec<i32>) -> (result: (usize, usize))
             is_odd(lst[result.1 as int] as int) && is_first_odd(result.1 as int, lst@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

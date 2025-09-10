@@ -21,7 +21,7 @@ fn logical_or(x1: Vec<bool>, x2: Vec<bool>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < result.len() ==> (x1[i] == false && x2[i] == false) ==> result[i] == false,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

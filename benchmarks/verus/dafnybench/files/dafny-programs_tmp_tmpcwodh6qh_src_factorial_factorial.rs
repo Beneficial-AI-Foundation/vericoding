@@ -13,7 +13,7 @@ fn factorial(n: u32) -> (res: u32)
     ensures res == fact(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -48,7 +48,7 @@ fn binary_repr(num: i32, width: Option<usize>) -> (result: Vec<char>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

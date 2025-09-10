@@ -11,7 +11,7 @@ fn mapdomain(x: Vec<f32>, old: Vec<f32>, new: Vec<f32>) -> (result: Vec<f32>)
         result.len() == x.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

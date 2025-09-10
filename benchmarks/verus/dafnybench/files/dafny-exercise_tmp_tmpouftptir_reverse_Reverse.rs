@@ -10,7 +10,7 @@ fn reverse(a: &Vec<char>) -> (b: Vec<char>)
         forall|i: int| 0 <= i < a.len() ==> b[i] == a[a.len() - i - 1],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

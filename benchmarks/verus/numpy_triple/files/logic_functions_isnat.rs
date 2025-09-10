@@ -17,7 +17,7 @@ fn isnat(x: Vec<DateTime64>) -> (result: Vec<bool>)
             (result@.index(i) == false <==> exists|val: i64| x@.index(i) == DateTime64::Valid(val)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

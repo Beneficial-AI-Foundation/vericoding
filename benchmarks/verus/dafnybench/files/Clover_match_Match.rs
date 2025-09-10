@@ -7,7 +7,7 @@ fn match_strings(s: Seq<char>, p: Seq<char>) -> (b: bool)
   ensures b == (forall|n: int| 0 <= n < s.len() ==> s[n] == p[n] || p[n] == '?')
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

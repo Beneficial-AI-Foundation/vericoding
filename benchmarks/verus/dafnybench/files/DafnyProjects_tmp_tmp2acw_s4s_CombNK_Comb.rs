@@ -19,7 +19,7 @@ fn Comb(n: u64, k: u64) -> (res: u64)
     ensures res == comb(n as nat, k as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

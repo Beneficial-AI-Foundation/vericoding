@@ -5,7 +5,7 @@ verus! {
 fn inf() -> (result: f32)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

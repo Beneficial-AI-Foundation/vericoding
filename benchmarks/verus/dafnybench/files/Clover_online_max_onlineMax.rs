@@ -14,7 +14,7 @@ fn online_max(a: &[i32], x: usize) -> (result: (Ghost<i32>, usize))
         (forall|i: int| x <= i < a.len() && #[trigger] a[i] <= result.0@) ==> result.1 == a.len() - 1
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

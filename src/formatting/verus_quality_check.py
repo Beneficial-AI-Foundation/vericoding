@@ -412,8 +412,8 @@ def process_yaml_file(file_path: Path) -> None:
         #     if vc_code_lines[-1].strip() != "}":
         #         raise ValueError(f"vc-code in {file_path} last line must be '}}', got: '{vc_code_lines[-1]}'")
 
-        # if spec['vc-code'].strip():
-        #     spec['vc-code'] = '{\n    assume(false);\n    unreached();\n}\n'
+        if spec['vc-code'].strip():
+            spec['vc-code'] = '{\n    assume(false);\n    unreached()\n}\n'
             # raise ValueError(f"vc-code is not empty")
 
         # # Move comments from other fields to vc-description

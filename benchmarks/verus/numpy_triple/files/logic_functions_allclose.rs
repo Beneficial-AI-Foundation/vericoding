@@ -16,7 +16,7 @@ fn allclose(a: Vec<i32>, b: Vec<i32>, rtol: i32, atol: i32) -> (result: bool)
             int_abs((a[i] - b[i]) as int) <= (atol + rtol * int_abs(b[i] as int)) as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

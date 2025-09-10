@@ -11,7 +11,7 @@ fn linspace(start: f32, stop: f32, num: usize) -> (result: Vec<f32>)
         (num > 1 ==> result[num - 1] == stop)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

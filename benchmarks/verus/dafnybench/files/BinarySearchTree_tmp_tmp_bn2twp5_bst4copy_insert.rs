@@ -75,7 +75,7 @@ fn insert(tree: Tree, value: int) -> (res: Tree)
     decreases tree,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

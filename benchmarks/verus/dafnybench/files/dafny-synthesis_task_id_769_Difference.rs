@@ -8,7 +8,7 @@ fn difference(a: Seq<int>, b: Seq<int>) -> (diff: Seq<int>)
         forall|i: int, j: int| 0 <= i < j < diff.len() ==> diff.index(i) != diff.index(j),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

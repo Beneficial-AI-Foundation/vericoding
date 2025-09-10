@@ -9,7 +9,7 @@ fn abs_it(s: &mut Vec<i32>)
             if old(s)[i] < 0 { s[i] == -old(s)[i] } else { s[i] == old(s)[i] }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

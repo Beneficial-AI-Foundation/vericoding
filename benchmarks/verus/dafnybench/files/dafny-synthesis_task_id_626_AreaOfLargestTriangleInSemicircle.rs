@@ -7,7 +7,7 @@ fn area_of_largest_triangle_in_semicircle(radius: i32) -> (area: i32)
     ensures area == radius * radius
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -15,7 +15,7 @@ fn matmul(A: Vec<Vec<f32>>, B: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
         forall|i: int| 0 <= i < result.len() ==> #[trigger] result@[i].len() == B@[0].len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

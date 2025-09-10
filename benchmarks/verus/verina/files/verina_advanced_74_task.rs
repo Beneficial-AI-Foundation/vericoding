@@ -10,7 +10,7 @@ fn solution(nums: Vec<u32>) -> (result: u32)
         result >= 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

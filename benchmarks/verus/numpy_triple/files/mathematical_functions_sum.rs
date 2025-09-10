@@ -11,7 +11,7 @@ fn sum(a: Vec<f32>) -> (result: f32)
         (forall|i: int| 0 <= i < a.len() ==> a[i] == 0.0f32) ==> result == 0.0f32,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -18,7 +18,7 @@ fn binary_search_rec(v: &Vec<i32>, elem: i32, c: usize, f: usize) -> (p: i32)
     decreases f - c
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -8,7 +8,7 @@ fn chebline(off: f32, scl: f32) -> (result: [f32; 2])
         result[1] == scl
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

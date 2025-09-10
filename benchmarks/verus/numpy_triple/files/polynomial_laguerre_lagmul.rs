@@ -16,7 +16,7 @@ fn lagmul(c1: Vec<f64>, c2: Vec<f64>) -> (result: Vec<f64>)
                     c2[k] != 0.0)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

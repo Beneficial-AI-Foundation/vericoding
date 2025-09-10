@@ -22,7 +22,7 @@ fn remove_duplicates(arr: &Vec<i32>) -> (unique_arr: Vec<i32>)
         unique_arr@ == arr@.filter(|x: i32| count_frequency_rcr(arr@, x) == 1),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

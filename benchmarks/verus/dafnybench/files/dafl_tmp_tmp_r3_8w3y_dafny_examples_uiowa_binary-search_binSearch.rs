@@ -11,7 +11,7 @@ fn bin_search(a: &[int], k: int) -> (b: bool)
     ensures b == exists|i: int| 0 <= i < a.len() && a[i] == k
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -25,7 +25,7 @@ fn to_uppercase(s: Seq<char>) -> (v: Seq<char>)
             }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

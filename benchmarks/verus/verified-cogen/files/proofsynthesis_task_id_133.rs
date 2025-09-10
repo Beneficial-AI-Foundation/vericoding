@@ -22,7 +22,7 @@ fn sum_negatives(arr: &Vec<i64>) -> (sum_neg: i128)
         sum_negative_to(arr@) == sum_neg,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

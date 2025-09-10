@@ -13,7 +13,7 @@ fn lagval(x: Vec<f64>, c: Vec<f64>) -> (result: Vec<f64>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

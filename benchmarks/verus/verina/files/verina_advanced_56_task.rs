@@ -42,7 +42,7 @@ fn move_zeroes(xs: Vec<i32>) -> (result: Vec<i32>)
         count_val(0, xs@) == count_val(0, result@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

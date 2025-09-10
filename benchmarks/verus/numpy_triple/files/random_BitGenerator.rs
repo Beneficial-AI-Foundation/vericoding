@@ -16,7 +16,7 @@ fn numpy_random_bit_generator(seed: Option<u64>) -> (result: BitGeneratorState)
         seed.is_None() ==> result.internal_state == 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

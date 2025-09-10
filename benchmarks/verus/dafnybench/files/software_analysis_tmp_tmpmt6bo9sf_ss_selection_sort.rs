@@ -46,7 +46,7 @@ fn selection_sort(ns: &mut Vec<i32>)
         is_permutation2(old(ns)@, ns@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

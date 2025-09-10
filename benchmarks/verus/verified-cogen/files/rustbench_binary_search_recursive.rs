@@ -16,7 +16,7 @@ fn binary_search_recursive(v: &[i32], elem: i32, c: isize, f: isize) -> (p: isiz
     decreases f - c + 1
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -14,7 +14,7 @@ fn remove_odd_numbers(arr: &[i32]) -> (even_list: Vec<i32>)
         forall|i: int| 0 <= i < arr.len() && is_even(arr[i] as int) ==> even_list@.contains(arr[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

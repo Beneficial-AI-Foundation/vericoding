@@ -24,7 +24,7 @@ fn bitwise_count(x: Vec<i32>) -> (result: Vec<nat>)
         forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

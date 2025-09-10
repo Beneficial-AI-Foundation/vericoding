@@ -10,7 +10,7 @@ fn hermemulx(c: Vec<f64>) -> (result: Vec<f64>)
         forall|i: int| 1 <= i < c.len() ==> result[i + 1] == c[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

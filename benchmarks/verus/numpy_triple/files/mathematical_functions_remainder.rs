@@ -10,7 +10,7 @@ fn remainder(x1: Vec<f64>, x2: Vec<f64>) -> (result: Vec<f64>)
         result.len() == x1.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

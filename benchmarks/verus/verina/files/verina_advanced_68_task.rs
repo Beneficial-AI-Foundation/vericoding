@@ -18,7 +18,7 @@ proof fn run_length_encoder_property(input: String, result: String)
         )),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

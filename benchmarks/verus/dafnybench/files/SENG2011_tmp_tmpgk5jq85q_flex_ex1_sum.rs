@@ -16,7 +16,7 @@ fn sum(s: &[int]) -> (a: int)
     ensures sumcheck(s, s.len() as int) == a
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

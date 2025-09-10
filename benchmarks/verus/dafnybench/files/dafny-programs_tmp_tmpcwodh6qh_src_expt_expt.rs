@@ -12,7 +12,7 @@ fn expt_method(b: i32, n: u32) -> (res: i32)
     ensures res == expt(b as int, n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

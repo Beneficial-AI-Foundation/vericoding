@@ -13,7 +13,7 @@ fn square_nums(nums: &Vec<i32>) -> (squared: Vec<i32>)
         forall|k: int| 0 <= k < nums.len() ==> (#[trigger] squared[k] == nums[k] * nums[k]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

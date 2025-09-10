@@ -83,7 +83,7 @@ fn insert_into_sorted(a: &[int], limit: usize, key: int) -> (b: Vec<int>)
         forall|i: int| 0 <= i < limit + 1 ==> b[i] > 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

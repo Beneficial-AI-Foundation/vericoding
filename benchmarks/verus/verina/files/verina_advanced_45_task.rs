@@ -28,7 +28,7 @@ fn max_subarray_sum(xs: &Vec<i32>) -> (result: i32)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

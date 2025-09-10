@@ -12,7 +12,7 @@ fn power_iter(x: i64, n: u64) -> (p: i64)
     ensures p == power(x as int, n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -15,7 +15,7 @@ fn binary_search(v: &Vec<i32>, elem: i32) -> (p: i32)
     }),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

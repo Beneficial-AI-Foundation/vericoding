@@ -12,7 +12,7 @@ fn yarra(arr: &Vec<char>) -> (outarr: Vec<char>)
     ensures outarr.len() == arr.len() && reversed(arr@, outarr@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

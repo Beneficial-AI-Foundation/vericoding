@@ -6,7 +6,7 @@ fn nan() -> (result: f64)
     ensures result != result,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

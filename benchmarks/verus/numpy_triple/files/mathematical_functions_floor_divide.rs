@@ -18,7 +18,7 @@ fn numpy_floor_divide(x1: Vec<f64>, x2: Vec<f64>) -> (result: Vec<f64>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

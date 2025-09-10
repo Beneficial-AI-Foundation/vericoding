@@ -11,7 +11,7 @@ fn barrier(v: &[i32], p: usize) -> (b: bool)
             k <= p && p < l && l < v.len() ==> v[k as int] < v[l as int]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

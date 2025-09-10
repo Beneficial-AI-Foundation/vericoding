@@ -22,7 +22,7 @@ fn longest(strings: &Vec<Vec<u8>>) -> (result: Option<&Vec<u8>>)
         expr_inner_longest(strings, result),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

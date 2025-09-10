@@ -15,7 +15,7 @@ fn sinh(x: Vec<f64>) -> (result: Vec<f64>)
         forall|i: int| 0 <= i < x.len() ==> sinh_property(x[i], result[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

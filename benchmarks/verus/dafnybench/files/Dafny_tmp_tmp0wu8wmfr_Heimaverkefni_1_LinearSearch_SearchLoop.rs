@@ -12,7 +12,7 @@ fn search_loop(a: &Vec<i32>, i: usize, j: usize, x: i32) -> (k: i32)
         k == -1 ==> forall|r: int| (i as int) <= r < (j as int) && 0 <= r < a.len() ==> a[r] != x,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

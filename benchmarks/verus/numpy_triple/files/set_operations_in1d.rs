@@ -9,7 +9,7 @@ fn in1d<T: PartialEq>(ar1: Vec<T>, ar2: Vec<T>) -> (result: Vec<bool>)
             result[i] == exists|j: int| 0 <= j < ar2.len() && ar1[i] == ar2[j]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

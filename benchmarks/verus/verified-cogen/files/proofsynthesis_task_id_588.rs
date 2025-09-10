@@ -34,7 +34,7 @@ fn difference_max_min(arr: &Vec<i32>) -> (diff: i32)
         diff == max_rcur(arr@) - min_rcur(arr@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

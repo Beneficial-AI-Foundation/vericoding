@@ -8,7 +8,7 @@ fn all_elements_equal(a: &[i32], n: i32) -> (result: bool)
         !result ==> exists|i: int| 0 <= i < a.len() && a[i] != n,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

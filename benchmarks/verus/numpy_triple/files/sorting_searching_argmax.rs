@@ -10,7 +10,7 @@ fn argmax(a: Vec<i32>) -> (result: usize)
         forall|j: int| 0 <= j < a.len() && a[j] == a[result as int] ==> result <= j as usize,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

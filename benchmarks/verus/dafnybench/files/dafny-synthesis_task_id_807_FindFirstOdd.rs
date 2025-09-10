@@ -14,7 +14,7 @@ fn find_first_odd(a: &[i32]) -> (result: (bool, usize))
                       (forall|i: int| 0 <= i < result.1 ==> !is_odd(a[i] as int))))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

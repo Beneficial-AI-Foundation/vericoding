@@ -10,7 +10,7 @@ fn longest_common_prefix(str1: Seq<char>, str2: Seq<char>) -> (prefix: Seq<char>
         (str1[prefix.len() as int] != str2[prefix.len() as int])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

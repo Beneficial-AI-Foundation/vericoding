@@ -14,7 +14,7 @@ fn full<T>(n: usize, fill_value: T) -> (result: Vec<T>)
         n > 0 ==> result[(n-1) as int] == fill_value,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -15,7 +15,7 @@ fn myfun(a: &mut Vec<i32>, b: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32)
 		forall |k:int| 0 <= k < N ==> b[k] == N + 2,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

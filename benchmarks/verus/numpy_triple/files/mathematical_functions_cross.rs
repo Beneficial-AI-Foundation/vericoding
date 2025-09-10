@@ -10,7 +10,7 @@ fn cross(a: Vec<f32>, b: Vec<f32>) -> (result: Vec<f32>)
         result.len() == 3,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

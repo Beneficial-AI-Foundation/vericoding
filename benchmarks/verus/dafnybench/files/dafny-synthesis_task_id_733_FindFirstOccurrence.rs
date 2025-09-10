@@ -10,7 +10,7 @@ fn find_first_occurrence(arr: &[i32], target: i32) -> (result: i32)
         (result == -1 ==> forall|i: int| 0 <= i < arr.len() ==> arr[i] != target)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -18,7 +18,7 @@ fn typecodes(category: &str) -> (result: Option<&str>)
          category != "AllFloat" && category != "Datetime" && category != "All") ==> (result == None::<&str>)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

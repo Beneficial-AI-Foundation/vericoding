@@ -10,7 +10,7 @@ fn log(x: Vec<i32>) -> (result: Vec<i32>)
         result.len() == x.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

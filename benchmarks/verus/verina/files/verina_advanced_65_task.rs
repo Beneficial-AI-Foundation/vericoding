@@ -8,7 +8,7 @@ fn reverse_string(s: &Vec<char>) -> (result: Vec<char>)
         forall|i: int| 0 <= i < s@.len() ==> result@[i] == s@[s@.len() - 1 - i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

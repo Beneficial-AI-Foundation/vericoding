@@ -13,7 +13,7 @@ fn max_array(a: &Vec<i32>) -> (result: i32)
         exists|k: int| 0 <= k < a.len() && result == a[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

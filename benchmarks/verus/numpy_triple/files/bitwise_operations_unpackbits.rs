@@ -11,7 +11,7 @@ fn numpy_unpackbits(a: Vec<u8>) -> (result: Vec<u8>)
             #[trigger] result[i * 8 + j] == ((a[i] as int) / pow(2, (7 - j) as nat)) % 2
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

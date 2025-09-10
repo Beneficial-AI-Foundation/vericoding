@@ -7,7 +7,7 @@ fn fmod(x1: &Vec<f32>, x2: &Vec<f32>) -> (result: Vec<f32>)
     ensures result.len() == x1.len()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

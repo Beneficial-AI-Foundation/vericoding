@@ -19,7 +19,7 @@ fn ndindex(shape: (usize, usize)) -> (indices: Vec<(usize, usize)>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

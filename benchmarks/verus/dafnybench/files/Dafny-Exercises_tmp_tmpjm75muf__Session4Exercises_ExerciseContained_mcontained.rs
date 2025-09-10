@@ -18,7 +18,7 @@ fn mcontained(v: &[i32], w: &[i32], n: usize, m: usize) -> (b: bool)
         b == forall|k: int| 0 <= k < n ==> w@.subrange(0, m as int).contains(v@[k])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

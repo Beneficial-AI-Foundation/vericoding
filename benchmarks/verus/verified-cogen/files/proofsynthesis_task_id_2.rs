@@ -12,7 +12,7 @@ fn shared_elements(list1: &Vec<i32>, list2: &Vec<i32>) -> (shared: Vec<i32>)
         forall|i: int, j: int| 0 <= i < j < shared.len() ==> shared[i] != shared[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

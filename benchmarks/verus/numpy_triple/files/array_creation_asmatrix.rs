@@ -8,7 +8,7 @@ fn asmatrix(data: Vec<f32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < data.len() ==> result[i] == data[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

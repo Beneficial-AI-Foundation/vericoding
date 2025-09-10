@@ -22,7 +22,7 @@ fn bad_sort(a: Vec<char>) -> (b: Vec<char>)
         a.len() == b.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

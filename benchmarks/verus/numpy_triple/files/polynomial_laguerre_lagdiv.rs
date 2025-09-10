@@ -16,7 +16,7 @@ fn lagdiv(c1: Vec<f64>, c2: Vec<f64>) -> (result: (Vec<f64>, Vec<f64>))
             c2[highest_nonzero] != 0.0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

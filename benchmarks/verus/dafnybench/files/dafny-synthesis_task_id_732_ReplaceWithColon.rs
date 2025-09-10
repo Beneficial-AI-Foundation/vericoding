@@ -18,7 +18,7 @@ fn replace_with_colon(s: &str) -> (v: String)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

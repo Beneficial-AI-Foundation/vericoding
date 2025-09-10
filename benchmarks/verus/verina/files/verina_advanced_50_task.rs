@@ -15,7 +15,7 @@ fn merge_sorted(a1: &Vec<nat>, a2: &Vec<nat>) -> (result: Vec<nat>)
         result@.to_multiset() == a1@.to_multiset().add(a2@.to_multiset()),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -15,7 +15,7 @@ fn insertion_sort(a: &mut Vec<i32>)
         a.len() == old(a).len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

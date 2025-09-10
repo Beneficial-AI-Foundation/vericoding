@@ -18,7 +18,7 @@ fn max_seg_sum(a: &Vec<int>) -> (result: (usize, usize))
     })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

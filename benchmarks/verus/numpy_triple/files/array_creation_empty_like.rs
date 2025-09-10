@@ -8,7 +8,7 @@ fn numpy_empty_like(prototype: &Vec<f32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < prototype.len() ==> 0 <= i < result.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

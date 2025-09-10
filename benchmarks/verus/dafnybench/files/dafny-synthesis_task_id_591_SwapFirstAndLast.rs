@@ -12,7 +12,7 @@ fn swap_first_and_last(a: &mut Vec<i32>)
         forall|k: int| 1 <= k < a.len() - 1 ==> a[k] == old(a)[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

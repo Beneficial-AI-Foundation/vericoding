@@ -21,7 +21,7 @@ fn isalnum(a: Vec<String>) -> (result: Vec<bool>)
             result[i] == (a[i]@.len() > 0 && all_chars_alphanumeric(a[i]@))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

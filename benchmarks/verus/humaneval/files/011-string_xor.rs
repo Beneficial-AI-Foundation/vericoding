@@ -32,7 +32,7 @@ fn string_xor(a: &[char], b: &[char]) -> (result: Vec<char>)
             0 <= i < result.len() as int ==> #[trigger] result[i] == xor_char(a[i], b[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

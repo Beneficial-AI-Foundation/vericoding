@@ -14,7 +14,7 @@ fn bubble_sort(a: &mut Vec<(i32, i32)>)
     ensures sorted(a, 0, a.len() as int - 1)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

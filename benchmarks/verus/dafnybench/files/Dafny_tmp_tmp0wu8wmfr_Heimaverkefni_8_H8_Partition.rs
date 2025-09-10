@@ -15,7 +15,7 @@ fn partition(Ghost(m): Ghost<Multiset<int>>) -> (res: (Ghost<Multiset<int>>, Gho
         })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

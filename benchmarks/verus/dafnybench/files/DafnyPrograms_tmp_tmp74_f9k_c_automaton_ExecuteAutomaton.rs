@@ -19,7 +19,7 @@ fn execute_automaton(init: Seq<bool>, rule: spec_fn(bool, bool, bool) -> bool, s
         forall|i: int| 0 <= i < table.len() ==> #[trigger] table[i].len() == init.len()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

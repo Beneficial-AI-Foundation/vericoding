@@ -15,7 +15,7 @@ fn percentile(arr: Vec<i32>, q: i32) -> (result: i32)
         (q == 100 ==> forall|i: int| 0 <= i < arr.len() ==> arr[i] <= result)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

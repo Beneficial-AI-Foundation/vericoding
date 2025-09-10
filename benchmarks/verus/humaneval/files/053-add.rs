@@ -8,7 +8,7 @@ fn add(x: i32, y: i32) -> (res: Option<i32>)
         res.is_some() ==> res.unwrap() == x + y,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

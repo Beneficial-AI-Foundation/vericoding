@@ -12,7 +12,7 @@ fn split_and_append(list: &Vec<i32>, n: usize) -> (new_list: Vec<i32>)
         new_list@ == list@.subrange(n as int, list@.len() as int).add(list@.subrange(0, n as int)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

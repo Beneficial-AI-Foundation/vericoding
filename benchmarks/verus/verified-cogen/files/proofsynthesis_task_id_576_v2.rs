@@ -13,7 +13,7 @@ fn is_sub_array(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)
             0 <= k <= (main.len() - sub.len()) && is_subrange_at(main@, sub@, k)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

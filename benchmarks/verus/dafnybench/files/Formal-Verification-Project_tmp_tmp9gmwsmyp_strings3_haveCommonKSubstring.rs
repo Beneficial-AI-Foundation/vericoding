@@ -57,7 +57,7 @@ fn have_common_k_substring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: 
         found <==> have_common_k_substring_pred(k, str1, str2),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

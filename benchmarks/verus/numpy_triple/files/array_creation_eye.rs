@@ -18,7 +18,7 @@ fn eye(n: usize) -> (result: Vec<Vec<f32>>)
             result[i][j] == 0.0f32,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

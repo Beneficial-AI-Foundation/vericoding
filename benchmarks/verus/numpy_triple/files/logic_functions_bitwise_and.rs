@@ -18,7 +18,7 @@ fn bitwise_and(x1: &Vec<u32>, x2: &Vec<u32>) -> (result: Vec<u32>)
             result[i] <= x1[i] && result[i] <= x2[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

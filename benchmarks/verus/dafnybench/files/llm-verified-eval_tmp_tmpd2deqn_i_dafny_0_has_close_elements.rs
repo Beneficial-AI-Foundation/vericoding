@@ -16,7 +16,7 @@ fn has_close_elements(numbers: Seq<int>, threshold: int) -> (result: bool)
         result ==> numbers.len() > 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -19,7 +19,7 @@ fn hermmul(c1: Vec<i32>, c2: Vec<i32>) -> (result: Vec<i32>)
             forall|k: int| 0 <= k < result.len() ==> result[k] == 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

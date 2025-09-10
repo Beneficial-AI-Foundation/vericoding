@@ -10,7 +10,7 @@ fn min_length_sublist(s: Seq<Seq<int>>) -> (min_sublist: Seq<int>)
         forall |sublist: Seq<int>| s.contains(sublist) ==> min_sublist.len() <= sublist.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

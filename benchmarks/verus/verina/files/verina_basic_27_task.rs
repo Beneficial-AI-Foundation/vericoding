@@ -48,7 +48,7 @@ fn find_first_repeated_char(s: &Vec<char>) -> (result: Option<char>)
     }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -32,7 +32,7 @@ fn search_2_pow_recursive(a: &[i32], i: usize, n: usize, x: i32) -> (k: usize)
     decreases n
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

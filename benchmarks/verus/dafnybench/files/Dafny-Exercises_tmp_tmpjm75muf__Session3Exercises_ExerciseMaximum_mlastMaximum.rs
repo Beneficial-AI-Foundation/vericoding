@@ -10,7 +10,7 @@ fn mlast_maximum(v: &[i32]) -> (i: usize)
         forall|l: int| i < l < v.len() ==> v[i as int] > v[l],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

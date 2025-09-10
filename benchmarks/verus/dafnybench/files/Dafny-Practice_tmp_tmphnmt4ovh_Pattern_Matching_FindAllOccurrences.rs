@@ -9,7 +9,7 @@ fn find_all_occurrences(text: &str, pattern: &str) -> (offsets: Ghost<Set<nat>>)
                       ==> (text@.subrange(i as int, (i + pattern@.len()) as int) == pattern@) == offsets@.contains(i)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

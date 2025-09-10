@@ -13,7 +13,7 @@ fn row_stack(arrays: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
                 result[i][j] == arrays[i][j]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

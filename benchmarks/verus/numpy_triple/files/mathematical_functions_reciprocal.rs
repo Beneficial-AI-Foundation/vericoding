@@ -10,7 +10,7 @@ fn numpy_reciprocal(x: Vec<f32>) -> (result: Vec<f32>)
         result.len() == x.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

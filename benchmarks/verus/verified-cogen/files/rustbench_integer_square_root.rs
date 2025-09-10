@@ -11,7 +11,7 @@ fn integer_square_root(n: i32) -> (result: i32)
         n < (result + 1) * (result + 1)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

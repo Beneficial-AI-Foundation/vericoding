@@ -13,7 +13,7 @@ fn frexp(x: Vec<f32>) -> (result: (Vec<f32>, Vec<i32>))
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

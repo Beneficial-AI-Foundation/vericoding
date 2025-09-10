@@ -22,7 +22,7 @@ fn quick_sort(seq: Seq<int>) -> (res: Seq<int>)
     decreases seq.len()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

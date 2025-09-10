@@ -9,7 +9,7 @@ fn list_deep_clone(arr: &Vec<u64>) -> (copied: Vec<u64>)
         forall|i: int| (0 <= i < arr.len()) ==> arr[i] == copied[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

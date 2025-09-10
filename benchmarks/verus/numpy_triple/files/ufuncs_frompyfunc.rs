@@ -8,7 +8,7 @@ fn numpy_frompyfunc<A, B>(func: spec_fn(A) -> B, input: Vec<A>) -> (result: Vec<
         forall|i: int| 0 <= i < input.len() ==> result[i] == func(input[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

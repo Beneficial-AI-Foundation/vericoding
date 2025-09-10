@@ -26,7 +26,7 @@ fn other_b_search(v: &Vec<i32>, elem: i32) -> (res: (bool, usize))
         !res.0 ==> forall|w: int| res.1 <= w < v.len() ==> v[w] > elem
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

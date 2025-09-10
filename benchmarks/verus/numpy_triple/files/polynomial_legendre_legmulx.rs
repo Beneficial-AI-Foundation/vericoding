@@ -11,7 +11,7 @@ fn legmulx(c: Vec<f32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < result.len() ==> exists|coeff: f32| result[i] == coeff,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

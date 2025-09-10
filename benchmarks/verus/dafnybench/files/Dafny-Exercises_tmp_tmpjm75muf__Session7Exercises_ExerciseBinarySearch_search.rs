@@ -22,7 +22,7 @@ fn search(v: &[int], elem: int) -> (b: bool)
     ensures b == v@.contains(elem)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -27,7 +27,7 @@ fn compress(condition: Vec<bool>, a: Vec<f32>) -> (result: Vec<f32>)
                 mapping[i] < mapping[j]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

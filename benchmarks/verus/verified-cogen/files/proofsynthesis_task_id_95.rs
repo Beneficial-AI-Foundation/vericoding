@@ -13,7 +13,7 @@ fn smallest_list_length(list: &Vec<Vec<i32>>) -> (min: usize)
         exists|i: int| 0 <= i < list.len() && min == #[trigger] list[i].len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

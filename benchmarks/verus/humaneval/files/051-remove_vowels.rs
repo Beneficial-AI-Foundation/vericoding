@@ -13,7 +13,7 @@ fn remove_vowels(str: &[char]) -> (str_without_vowels: Vec<char>)
         str_without_vowels@ == str@.filter(|x: char| !is_vowel_spec(x)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

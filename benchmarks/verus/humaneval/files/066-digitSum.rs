@@ -26,7 +26,7 @@ fn digit_sum(text: &[char]) -> (sum: u128)
         count_uppercase_sum(text@) == sum,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

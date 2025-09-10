@@ -17,7 +17,7 @@ fn element_wise_division(arr1: &Vec<u32>, arr2: &Vec<u32>) -> (result: Vec<u32>)
             0 <= i < result.len() ==> #[trigger] result[i] == #[trigger] (arr1[i] / arr2[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

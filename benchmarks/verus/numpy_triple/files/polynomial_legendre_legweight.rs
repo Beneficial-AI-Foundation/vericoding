@@ -8,7 +8,7 @@ fn legweight(x: Vec<f32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == 1.0f32
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

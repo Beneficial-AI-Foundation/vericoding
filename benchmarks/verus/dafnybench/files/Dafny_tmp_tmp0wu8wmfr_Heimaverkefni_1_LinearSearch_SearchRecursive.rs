@@ -14,7 +14,7 @@ fn search_recursive(a: Seq<int>, i: usize, j: usize, x: int) -> (result: isize)
     decreases j - i,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

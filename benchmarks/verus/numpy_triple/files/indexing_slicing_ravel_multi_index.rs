@@ -14,7 +14,7 @@ fn ravel_multi_index(row_indices: &Vec<usize>, col_indices: &Vec<usize>, rows: u
             result[i] < rows * cols,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

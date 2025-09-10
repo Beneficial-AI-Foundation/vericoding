@@ -20,7 +20,7 @@ fn longest_zero(a: &[i32]) -> (result: (usize, usize))
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

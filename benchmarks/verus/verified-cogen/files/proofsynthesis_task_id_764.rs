@@ -27,7 +27,7 @@ fn count_digits(text: &Vec<char>) -> (count: usize)
         count_digits_recursively(text@) == count,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

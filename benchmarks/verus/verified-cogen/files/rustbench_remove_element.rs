@@ -12,7 +12,7 @@ fn remove_element(a: &[i32], pos: usize) -> (result: Vec<i32>)
         forall|i: int| pos <= i < result.len() ==> result[i] == a[i + 1],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

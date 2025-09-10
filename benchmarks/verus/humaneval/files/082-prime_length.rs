@@ -20,7 +20,7 @@ fn prime_length(str: &[char]) -> (result: bool)
         result == is_prime(str.len() as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

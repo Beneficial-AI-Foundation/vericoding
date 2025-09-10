@@ -7,7 +7,7 @@ fn is_armstrong(n: int) -> (result: bool)
     ensures result <==> (n == ((n / 100) * (n / 100) * (n / 100) + ((n / 10) % 10) * ((n / 10) % 10) * ((n / 10) % 10) + (n % 10) * (n % 10) * (n % 10)))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

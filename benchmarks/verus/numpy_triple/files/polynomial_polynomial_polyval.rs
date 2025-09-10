@@ -14,7 +14,7 @@ fn polyval(x: Vec<f64>, c: Vec<f64>) -> (result: Vec<f64>)
             (forall|j: int| 0 <= j < c.len() && c[j] == 0.0 ==> poly_val == 0.0)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

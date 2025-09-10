@@ -10,7 +10,7 @@ fn search_insert(xs: &Vec<i32>, target: i32) -> (result: usize)
         result < xs.len() ==> target <= xs[result as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

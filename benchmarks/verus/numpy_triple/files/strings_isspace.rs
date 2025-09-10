@@ -25,7 +25,7 @@ fn isspace(a: Vec<String>) -> (result: Vec<bool>)
             (a[i]@.len() == 0 ==> result[i] == false),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

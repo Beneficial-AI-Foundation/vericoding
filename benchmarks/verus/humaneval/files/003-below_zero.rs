@@ -35,7 +35,7 @@ fn below_zero(operations: Vec<i32>) -> (result: bool)
                 < 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

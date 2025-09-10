@@ -19,7 +19,7 @@ fn get_element_check_property(arr: Vec<u64>, i: usize) -> (ret: u64)
         ret == arr@[i as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

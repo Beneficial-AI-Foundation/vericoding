@@ -37,7 +37,7 @@ fn maxArrayReverse(arr: &[i32]) -> (max: i32)
         exists|x: int| 0 <= x < arr.len() && arr[x] == max
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

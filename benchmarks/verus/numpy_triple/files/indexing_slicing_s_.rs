@@ -23,7 +23,7 @@ fn s_(start: Option<usize>, stop: Option<usize>, step: Option<usize>) -> (slice:
         (slice.start.is_some() && slice.stop.is_some()) ==> slice.start.unwrap() <= slice.stop.unwrap(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

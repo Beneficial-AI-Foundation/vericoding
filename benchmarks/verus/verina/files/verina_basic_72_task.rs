@@ -9,7 +9,7 @@ fn append(a: &Vec<i32>, b: i32) -> (result: Vec<i32>)
         result[a.len() as int] == b,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

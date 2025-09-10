@@ -12,7 +12,7 @@ fn is_product_even(arr: &Vec<u32>) -> (result: bool)
         result <==> (exists|k: int| 0 <= k < arr.len() && is_even(#[trigger] arr[k])),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

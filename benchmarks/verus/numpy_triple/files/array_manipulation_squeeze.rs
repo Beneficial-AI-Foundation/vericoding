@@ -17,7 +17,7 @@ fn squeeze_exec<T: Copy>(a: Vec<T>) -> (result: T)
         forall|i: int| 0 <= i < a.len() ==> a[i] == result,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

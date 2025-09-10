@@ -17,7 +17,7 @@ fn minimum_right_shifts(nums: Vec<i32>) -> (result: i32)
         }),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

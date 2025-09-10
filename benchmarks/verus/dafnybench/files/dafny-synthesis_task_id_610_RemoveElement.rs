@@ -11,7 +11,7 @@ fn remove_element(s: &Vec<i32>, k: usize) -> (v: Vec<i32>)
         forall|i: int| k <= i < v.len() ==> v[i] == s[(i + 1) as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

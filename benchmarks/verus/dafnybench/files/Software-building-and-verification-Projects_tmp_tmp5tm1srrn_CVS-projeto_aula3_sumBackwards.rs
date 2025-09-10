@@ -42,7 +42,7 @@ fn sum_backwards(n: u32) -> (r: u32)
     ensures r == sum(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

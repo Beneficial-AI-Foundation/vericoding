@@ -73,7 +73,7 @@ fn obj2sctype(rep: NumpyObject, default: Option<NumpyScalarType>) -> (result: Op
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

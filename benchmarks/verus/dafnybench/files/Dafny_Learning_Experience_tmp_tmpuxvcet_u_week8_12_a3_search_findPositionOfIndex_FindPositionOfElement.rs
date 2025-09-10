@@ -11,7 +11,7 @@ fn find_position_of_element(a: &[i32], element: usize, n1: usize, s1: Seq<i32>) 
         s1.len() != 0 && result.0 >= 1 ==> exists|i: int| 0 <= i < s1.len() && s1[i] == element,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

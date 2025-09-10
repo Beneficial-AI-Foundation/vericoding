@@ -7,7 +7,7 @@ fn trap_rain_water(height: &Vec<usize>) -> (result: usize)
     ensures result >= 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

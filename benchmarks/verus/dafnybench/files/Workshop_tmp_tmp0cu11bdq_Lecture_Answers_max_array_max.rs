@@ -7,7 +7,7 @@ fn max(a: &[i32]) -> (max: i32)
     ensures forall|j: int| 0 <= j < a.len() ==> max >= a[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

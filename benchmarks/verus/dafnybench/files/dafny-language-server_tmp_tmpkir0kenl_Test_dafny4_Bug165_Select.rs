@@ -10,7 +10,7 @@ fn select<T>(s1: Seq<T>) -> (r: Seq<T>)
         forall|e: T| !f(e) ==> r.to_multiset().count(e) == 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

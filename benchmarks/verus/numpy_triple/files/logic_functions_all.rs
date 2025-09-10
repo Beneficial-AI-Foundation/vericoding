@@ -10,7 +10,7 @@ fn all(a: Vec<f32>) -> (result: bool)
         ((forall|i: int| 0 <= i < a.len() ==> a[i] != 0.0f32) ==> result == true),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -10,7 +10,7 @@ fn array_split(a: Vec<i32>) -> (ret: (Vec<i32>, Vec<i32>))
         a.len() > 1 ==> a.len() > ret.1.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

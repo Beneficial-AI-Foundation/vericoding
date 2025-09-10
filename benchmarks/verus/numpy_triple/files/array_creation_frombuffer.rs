@@ -11,7 +11,7 @@ fn frombuffer(buffer: &Vec<u8>, count: usize, offset: usize) -> (result: Vec<u8>
         forall|i: int| 0 <= i < count ==> result[i] == buffer[offset + i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

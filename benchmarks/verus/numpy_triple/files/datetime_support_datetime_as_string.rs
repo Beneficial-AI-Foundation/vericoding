@@ -49,7 +49,7 @@ fn datetime_as_string(arr: Vec<DateTime64>, timezone: TimezoneOption) -> (result
         forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i]@.len() > 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

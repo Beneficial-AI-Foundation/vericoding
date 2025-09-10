@@ -13,7 +13,7 @@ fn two_sum(nums: &Vec<i32>, target: i32) -> (result: (usize, usize))
         nums[result.0 as int] + nums[result.1 as int] == target,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

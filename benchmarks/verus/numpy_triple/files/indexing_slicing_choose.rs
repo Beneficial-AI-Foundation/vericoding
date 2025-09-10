@@ -13,7 +13,7 @@ fn choose(indices: Vec<usize>, choices: Vec<Vec<f64>>) -> (result: Vec<f64>)
         forall|i: int| 0 <= i < indices.len() ==> result[i] == choices[indices[i] as int][i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

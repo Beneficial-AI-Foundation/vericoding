@@ -11,7 +11,7 @@ fn last_position(arr: &Vec<i32>, elem: i32) -> (pos: i32)
             (pos >= arr.len() - 1 || arr[(pos + 1) as int] > elem)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

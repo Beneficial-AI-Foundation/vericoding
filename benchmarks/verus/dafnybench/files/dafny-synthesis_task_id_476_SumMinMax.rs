@@ -43,7 +43,7 @@ fn sum_min_max(a: &[i32]) -> (sum: i32)
     ensures sum == max_seq(a@.map(|i: int, x: i32| x as int)) + min_seq(a@.map(|i: int, x: i32| x as int))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

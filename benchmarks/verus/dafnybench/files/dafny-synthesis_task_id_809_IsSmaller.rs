@@ -10,7 +10,7 @@ fn is_smaller(a: Seq<int>, b: Seq<int>) -> (result: bool)
         !result <==> exists|i: int| 0 <= i < a.len() && a[i] <= b[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

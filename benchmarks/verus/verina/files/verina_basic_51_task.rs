@@ -14,7 +14,7 @@ fn binary_search(a: &Vec<i32>, key: i32) -> (result: usize)
         forall|i: int| result <= i < a.len() ==> a[i] >= key,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

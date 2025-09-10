@@ -22,7 +22,7 @@ fn canyon_search(a: &[i32], b: &[i32]) -> (d: u32)
           }),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

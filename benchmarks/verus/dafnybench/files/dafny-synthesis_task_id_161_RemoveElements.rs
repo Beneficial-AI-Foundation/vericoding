@@ -14,7 +14,7 @@ fn remove_elements(a: &[i32], b: &[i32]) -> (result: Vec<i32>)
         forall|i: int, j: int| 0 <= i < j < result.len() ==> result@.index(i) != result@.index(j)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

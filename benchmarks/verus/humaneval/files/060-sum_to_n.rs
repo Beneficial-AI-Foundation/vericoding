@@ -18,7 +18,7 @@ fn sum_to_n(n: u32) -> (sum: Option<u32>)
         sum.is_some() ==> sum.unwrap() == spec_sum_to_n(n as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -39,7 +39,7 @@ fn non_overlapping_intervals(intervals: &mut Vec<Vec<i32>>) -> (count: i32)
         count >= 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

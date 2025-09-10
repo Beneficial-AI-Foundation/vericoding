@@ -17,7 +17,7 @@ fn difference(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
             0 <= i < j < result.len() ==> #[trigger] result[i] != #[trigger] result[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

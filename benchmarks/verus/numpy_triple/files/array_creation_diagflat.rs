@@ -9,7 +9,7 @@ fn diagflat(v: Vec<f32>) -> (result: Vec<f32>)
         forall|i: int, j: int| 0 <= i < v.len() && 0 <= j < v.len() && i != j ==> result[i * v.len() + j] == 0.0f32
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

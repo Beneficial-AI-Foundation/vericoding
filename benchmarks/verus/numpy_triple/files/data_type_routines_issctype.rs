@@ -42,7 +42,7 @@ fn issctype(rep: DataType) -> (result: bool)
                       rep == DataType::ScalarString)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

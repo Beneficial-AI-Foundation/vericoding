@@ -50,7 +50,7 @@ fn nanmean(a: Vec<f32>) -> (result: f32)
         (!contains_nan(a@) && a.len() > 0 ==> !is_nan_f32(result))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

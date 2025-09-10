@@ -52,7 +52,7 @@ fn string_sequence_impl(n: u8) -> (string_seq: Vec<char>)
         string_seq@ == string_sequence(n as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

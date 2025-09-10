@@ -22,7 +22,7 @@ fn extract(condition: Vec<bool>, arr: Vec<f32>) -> (result: Vec<f32>)
             #[trigger] result[i] == arr[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

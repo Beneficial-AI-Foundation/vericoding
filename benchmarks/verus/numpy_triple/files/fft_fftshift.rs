@@ -15,7 +15,7 @@ fn fftshift(x: Vec<f32>) -> (result: Vec<f32>)
             (exists|k: int| 0 <= k < result.len() && result[k] == val)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

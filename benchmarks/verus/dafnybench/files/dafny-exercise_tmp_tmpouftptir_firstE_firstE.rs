@@ -12,7 +12,7 @@ fn firstE(a: &[char]) -> (x: i32)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

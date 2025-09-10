@@ -10,7 +10,7 @@ fn numpy_square(x: Vec<f64>) -> (result: Vec<f64>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == square_f64(x[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

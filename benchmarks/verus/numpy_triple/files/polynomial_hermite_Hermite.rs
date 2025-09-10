@@ -9,7 +9,7 @@ fn hermite_eval(coef: Vec<f32>, x: f32) -> (result: f32)
         coef.len() >= 2 ==> true,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

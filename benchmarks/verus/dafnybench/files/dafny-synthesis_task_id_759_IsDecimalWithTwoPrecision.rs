@@ -8,7 +8,7 @@ fn is_decimal_with_two_precision(s: &str) -> (result: bool)
         !result ==> !exists|i: int| 0 <= i < s@.len() && s@[i] == '.' && s@.len() - i - 1 == 2,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

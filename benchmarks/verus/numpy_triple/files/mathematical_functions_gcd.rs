@@ -23,7 +23,7 @@ fn numpy_gcd(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> gcd(x2[i] as int, x1[i] as int) == gcd(x1[i] as int, x2[i] as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

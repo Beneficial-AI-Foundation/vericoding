@@ -9,7 +9,7 @@ fn find(a: &[i32], key: i32) -> (index: i32)
         index == -1 ==> (forall|i: int| 0 <= i < a.len() ==> a[i] != key),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -11,7 +11,7 @@ fn hermint(c: Vec<f32>, m: u32, k: Vec<f32>, lbnd: f32, scl: f32) -> (result: Ve
         result.len() == c.len() + m,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

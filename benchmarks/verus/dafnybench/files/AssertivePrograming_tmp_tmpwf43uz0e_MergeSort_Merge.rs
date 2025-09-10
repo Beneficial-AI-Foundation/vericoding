@@ -63,7 +63,7 @@ fn merge(b: &mut Vec<i32>, c: &Vec<i32>, d: &Vec<i32>)
         b@.to_multiset() == c@.to_multiset().add(d@.to_multiset()),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

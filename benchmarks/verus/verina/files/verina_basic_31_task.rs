@@ -26,7 +26,7 @@ fn to_uppercase(s: &str) -> (result: String)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

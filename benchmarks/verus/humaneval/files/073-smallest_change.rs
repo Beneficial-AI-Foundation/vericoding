@@ -27,7 +27,7 @@ fn smallest_change(v: Vec<i32>) -> (change: usize)
         change == diff(zip_halves(v@)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

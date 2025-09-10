@@ -16,7 +16,7 @@ fn find_first_odd(a: &Vec<i32>) -> (result: Option<usize>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -13,7 +13,7 @@ fn dsplit(arr: Vec<f32>, sections: usize) -> (result: Vec<Vec<f32>>)
             result[i][j] == arr[i * (arr.len() / sections) + j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

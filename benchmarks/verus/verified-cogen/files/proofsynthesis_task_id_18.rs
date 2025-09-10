@@ -15,7 +15,7 @@ fn remove_chars(str1: &Vec<char>, str2: &Vec<char>) -> (result: Vec<char>)
             )),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

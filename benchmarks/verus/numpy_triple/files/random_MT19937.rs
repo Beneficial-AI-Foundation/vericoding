@@ -26,7 +26,7 @@ fn mt19937(seed: u32) -> (state: Vec<u32>)
             forall|j: int| 0 <= j < 624 ==> state[j] == state2[j]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

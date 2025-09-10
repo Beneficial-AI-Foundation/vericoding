@@ -17,7 +17,7 @@ fn numpy_arcsin(x: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < x.len() && x[i] <= x[j] ==> result[i] <= result[j]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

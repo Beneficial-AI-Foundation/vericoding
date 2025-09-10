@@ -9,7 +9,7 @@ fn poly2lag(pol: Vec<f32>) -> (result: Vec<f32>)
         true,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -8,7 +8,7 @@ fn is_greater(arr: &Vec<i32>, number: i32) -> (result: bool)
         result == (forall|i: int| 0 <= i < arr.len() ==> number > arr[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

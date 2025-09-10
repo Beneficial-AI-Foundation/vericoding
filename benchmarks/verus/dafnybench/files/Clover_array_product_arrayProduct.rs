@@ -10,7 +10,7 @@ fn array_product(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
         forall|i: int| 0 <= i < a.len() ==> a[i] * b[i] == c[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

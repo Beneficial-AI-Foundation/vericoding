@@ -11,7 +11,7 @@ fn max(a: &[i32], b: &[i32], i: usize, j: usize) -> (m: i32)
         a[i as int] <= b[j as int] ==> m == b[j as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

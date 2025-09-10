@@ -44,7 +44,7 @@ fn max_common_substring_length(str1: &Vec<char>, str2: &Vec<char>) -> (len: usiz
         have_common_k_substring_pred(len as nat, str1@, str2@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

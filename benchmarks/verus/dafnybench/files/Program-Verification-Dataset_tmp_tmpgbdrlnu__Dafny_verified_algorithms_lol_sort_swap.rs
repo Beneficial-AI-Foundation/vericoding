@@ -23,7 +23,7 @@ fn swap(a: &mut Vec<int>, i: usize, j: usize)
         valid_permut(a@, old(a)@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

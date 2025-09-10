@@ -7,7 +7,7 @@ fn nth_nonagonal_number(n: int) -> (number: int)
     ensures number == n * (7 * n - 5) / 2
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

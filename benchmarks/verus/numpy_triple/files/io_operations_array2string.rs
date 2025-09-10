@@ -9,7 +9,7 @@ fn array2string(arr: Vec<f32>, separator: &str) -> (result: Vec<char>)
         result@[result@.len() - 1] == ']'
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

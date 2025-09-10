@@ -9,7 +9,7 @@ fn numpy_append(arr: Vec<f32>, values: Vec<f32>) -> (result: Vec<f32>)
         forall|j: int| 0 <= j < values.len() ==> result[arr.len() + j] == values[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

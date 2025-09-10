@@ -9,7 +9,7 @@ fn is_prime(n: nat) -> (result: bool)
         !result ==> exists|k: nat| 2 <= k < n && #[trigger] (n % k) == 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

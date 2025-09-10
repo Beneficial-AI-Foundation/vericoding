@@ -15,7 +15,7 @@ fn remove_elements(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
             )),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

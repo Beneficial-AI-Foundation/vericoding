@@ -8,7 +8,7 @@ fn longest_increasing_subsequence(nums: &Vec<i32>) -> (result: i32)
         result <= nums.len() as i32,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -10,7 +10,7 @@ fn intersperse(numbers: &[i32], delim: i32) -> (res: Vec<i32>)
         forall|i: int| 0 <= i && i < res.len() && i % 2 == 1 ==> res[i] == delim
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

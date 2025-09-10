@@ -7,7 +7,7 @@ fn numpy_tofile(arr: Vec<f32>, filename: String) -> (result: ())
     ensures result == ()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

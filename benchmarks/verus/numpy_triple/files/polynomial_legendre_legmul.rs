@@ -10,7 +10,7 @@ fn legmul(c1: Vec<f32>, c2: Vec<f32>) -> (result: Vec<f32>)
         result.len() == c1.len() + c2.len() - 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

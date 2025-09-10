@@ -19,7 +19,7 @@ fn torneo(valores: &Vec<int>, i: usize, j: usize, k: usize) -> (res: (usize, usi
             res.1 == q,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

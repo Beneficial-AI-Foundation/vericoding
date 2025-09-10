@@ -14,7 +14,7 @@ fn smallest_missing_number(s: &[i32]) -> (v: i32)
         forall|k: int| 0 <= k < v && s[k] != v ==> exists|j: int| 0 <= j < s.len() && s[j] == k,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -12,7 +12,7 @@ fn hermfit(x: Vec<f64>, y: Vec<f64>, deg: usize) -> (result: Vec<f64>)
         deg + 1 > 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -29,7 +29,7 @@ fn lagadd(c1: Vec<f32>, c2: Vec<f32>) -> (result: Vec<f32>)
         (c1.len() > 0 || c2.len() > 0) ==> result.len() > 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

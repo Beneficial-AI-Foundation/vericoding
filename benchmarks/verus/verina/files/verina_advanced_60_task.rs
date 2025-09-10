@@ -13,7 +13,7 @@ fn partition_evens_odds(nums: &Vec<nat>) -> (result: (Vec<nat>, Vec<nat>))
     }),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

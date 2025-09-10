@@ -23,7 +23,7 @@ fn default_rng(seed: Option<u64>) -> (result: Generator)
         seed.is_some() ==> result.bit_generator.state != 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

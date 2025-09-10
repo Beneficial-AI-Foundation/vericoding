@@ -9,7 +9,7 @@ fn linear_search(a: &[i32], e: i32) -> (n: usize)
         forall|i: int| 0 <= i < n ==> e != a[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

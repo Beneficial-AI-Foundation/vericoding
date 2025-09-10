@@ -8,7 +8,7 @@ fn fromiter<T: Copy>(n: usize, iter: spec_fn(usize) -> T) -> (result: Vec<T>)
         forall|i: int| 0 <= i < n ==> result[i] == iter(i as usize)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

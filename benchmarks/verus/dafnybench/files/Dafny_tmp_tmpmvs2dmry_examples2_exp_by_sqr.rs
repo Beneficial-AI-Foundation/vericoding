@@ -36,7 +36,7 @@ fn exp_by_sqr(x0: u32, n0: u32) -> (r: u32)
     ensures r == exp(x0 as int, n0 as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

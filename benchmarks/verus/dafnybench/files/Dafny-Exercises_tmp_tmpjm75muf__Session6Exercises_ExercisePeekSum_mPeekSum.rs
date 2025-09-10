@@ -28,7 +28,7 @@ fn m_peek_sum(v: &Vec<i32>) -> (sum: i32)
     ensures sum == peek_sum(v, v.len() as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

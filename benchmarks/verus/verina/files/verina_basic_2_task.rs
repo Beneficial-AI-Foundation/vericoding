@@ -12,7 +12,7 @@ fn find_smallest(s: &Vec<nat>) -> (result: Option<nat>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

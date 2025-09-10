@@ -18,7 +18,7 @@ fn replace_chars(str1: &Vec<char>, old_char: char, new_char: char) -> (result: V
             0 <= i < str1.len() ==> result[i] == inner_epxr_replace_chars(str1, old_char, new_char, i),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

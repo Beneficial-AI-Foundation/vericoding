@@ -43,7 +43,7 @@ fn insert_bst(t0: Tree, x: int) -> (t: Tree)
         bst(t) && numbers_in_tree(t) =~= numbers_in_tree(t0).insert(x)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

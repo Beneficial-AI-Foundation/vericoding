@@ -19,7 +19,7 @@ fn compute_power(n: u32) -> (p: u32)
     ensures p == power(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

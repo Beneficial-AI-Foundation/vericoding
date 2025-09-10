@@ -42,7 +42,7 @@ fn block(
             result[top_left.len() + i][top_left[0].len() + j] == bottom_right[i][j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

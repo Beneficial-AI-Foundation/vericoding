@@ -20,7 +20,7 @@ fn from_dlpack<T>(x: &DLPackObject<T>, device: Option<&str>, copy: Option<bool>)
         copy == Some(false) ==> result@ == x.data@,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

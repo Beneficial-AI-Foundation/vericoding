@@ -15,7 +15,7 @@ fn prime_num(n: u64) -> (result: bool)
         result == (forall|k: int| 2 <= k < n ==> !is_divisible(n as int, k)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

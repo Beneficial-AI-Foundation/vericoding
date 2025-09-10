@@ -8,7 +8,7 @@ fn allow_42(x: i32, y: i32) -> (ret: (i32, bool))
         (y == 42 ==> ret.0 == 0 && ret.1 == true)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

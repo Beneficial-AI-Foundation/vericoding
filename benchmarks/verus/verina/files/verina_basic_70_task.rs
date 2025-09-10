@@ -11,7 +11,7 @@ fn linear_search3(a: &Vec<i32>, p: spec_fn(i32) -> bool) -> (result: usize)
         forall|k: int| 0 <= k < result ==> !p(a[k]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

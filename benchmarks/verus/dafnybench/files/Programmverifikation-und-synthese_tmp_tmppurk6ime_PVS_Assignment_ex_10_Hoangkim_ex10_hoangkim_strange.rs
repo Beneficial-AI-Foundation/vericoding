@@ -14,7 +14,7 @@ fn strange()
     ensures 1==2
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

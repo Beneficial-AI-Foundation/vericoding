@@ -34,7 +34,7 @@ fn percentile_non_unique_answer() -> (result: (int, Vec<int>, int, int, int))
         result.3 != result.4
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

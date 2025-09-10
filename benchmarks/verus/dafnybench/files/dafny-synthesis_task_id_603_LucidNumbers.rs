@@ -11,7 +11,7 @@ fn lucid_numbers(n: i32) -> (lucid: Vec<i32>)
         forall|i: int, j: int| 0 <= i < j < lucid.len() ==> lucid[i] < lucid[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

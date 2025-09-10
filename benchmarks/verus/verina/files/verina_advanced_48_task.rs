@@ -9,7 +9,7 @@ fn merge_sort(list: Vec<i32>) -> (result: Vec<i32>)
         result@ =~= list@,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

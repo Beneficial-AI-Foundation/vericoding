@@ -9,7 +9,7 @@ fn rotate_right(l: Seq<int>, n: int) -> (r: Seq<int>)
         forall|i: int| 0 <= i < l.len() ==> r.index(i) == l.index((i - n + l.len() as int) % l.len() as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

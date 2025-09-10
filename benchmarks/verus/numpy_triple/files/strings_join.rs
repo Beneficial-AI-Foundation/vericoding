@@ -41,7 +41,7 @@ fn join(sep: Vec<String>, seq: Vec<String>) -> (result: Vec<String>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

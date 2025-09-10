@@ -21,7 +21,7 @@ fn find_even_numbers(arr: &[int]) -> (even_numbers: Vec<int>)
                 #[trigger] even_numbers[l] == arr[m]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

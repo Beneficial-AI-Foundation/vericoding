@@ -13,7 +13,7 @@ fn two_sum(nums: &Vec<i32>, target: i32) -> (result: (usize, usize))
         forall|i: int, j: int| 0 <= i < j < nums.len() && i < result.0 as int ==> nums[i] + nums[j] != target,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

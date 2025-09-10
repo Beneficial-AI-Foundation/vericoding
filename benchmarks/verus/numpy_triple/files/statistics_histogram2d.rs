@@ -16,7 +16,7 @@ fn histogram2d(x: &Vec<i32>, y: &Vec<i32>, bins: usize) -> (result: (Vec<Vec<usi
         forall|i: int| 0 <= i < bins ==> #[trigger] result.2[i] <= result.2[i + 1],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

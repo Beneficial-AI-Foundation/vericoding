@@ -29,7 +29,7 @@ fn vowels_count(s: &str) -> (ret: u32)
         inner_expr_vowels_count(s, ret),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -8,7 +8,7 @@ fn arithmetic_weird() -> (result: i32)
         result < 10
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

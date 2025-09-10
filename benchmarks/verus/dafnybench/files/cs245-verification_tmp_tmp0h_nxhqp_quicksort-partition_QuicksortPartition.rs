@@ -11,7 +11,7 @@ fn quicksort_partition(x: &mut Vec<i32>, n: usize, p: i32) -> (result: (usize, u
         x@.to_multiset() == old(x)@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

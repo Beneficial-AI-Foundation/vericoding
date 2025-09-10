@@ -15,7 +15,7 @@ fn binary_search(a: &[int], key: int) -> (index: i32)
         index < 0 ==> forall|k: int| 0 <= k < a.len() ==> a[k] != key,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -13,7 +13,7 @@ fn legcompanion(c: Vec<f64>) -> (result: Vec<Vec<f64>>)
             result[i][j] == result[j][i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

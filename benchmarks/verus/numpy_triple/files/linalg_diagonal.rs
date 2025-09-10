@@ -22,7 +22,7 @@ fn numpy_diagonal(x: Vec<Vec<f32>>, offset: i32) -> (result: Vec<f32>)
                 result[i] == x[r][c],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

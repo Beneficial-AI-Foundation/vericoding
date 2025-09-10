@@ -23,7 +23,7 @@ fn tensordot(a: Vec<i32>, b: Vec<i32>, axes: usize) -> (result: i32)
     ensures result == dot_product(a@, b@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

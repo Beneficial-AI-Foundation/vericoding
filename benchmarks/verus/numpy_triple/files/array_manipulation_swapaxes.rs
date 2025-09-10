@@ -18,7 +18,7 @@ fn swapaxes(mat: Vec<Vec<f32>>, axis1: usize, axis2: usize) -> (result: Vec<Vec<
             ==> mat[i][j] == result[j][i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

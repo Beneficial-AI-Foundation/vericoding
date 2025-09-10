@@ -19,7 +19,7 @@ fn max(a: &[i32], n: usize) -> (max: i32)
     ensures is_max(max, a@, n as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

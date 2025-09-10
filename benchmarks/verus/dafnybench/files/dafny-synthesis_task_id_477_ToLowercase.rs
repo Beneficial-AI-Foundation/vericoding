@@ -28,7 +28,7 @@ fn to_lowercase(s: &str) -> (v: String)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

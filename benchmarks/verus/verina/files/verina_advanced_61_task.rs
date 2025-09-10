@@ -15,7 +15,7 @@ fn product_except_self(nums: &Vec<i32>) -> (result: Vec<i32>)
             result[i] as int == list_product(nums@.subrange(0, i)) * list_product(nums@.subrange(i + 1, nums.len() as int)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

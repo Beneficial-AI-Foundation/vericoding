@@ -43,7 +43,7 @@ fn special_filter(numbers: &Vec<i32>) -> (count: usize)
         count == special_filter_spec(numbers@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

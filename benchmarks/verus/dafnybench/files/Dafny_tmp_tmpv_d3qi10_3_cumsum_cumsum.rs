@@ -22,7 +22,7 @@ fn cumsum(a: &[i32], b: &mut [i32])
         forall|i: int| 0 <= i < a.len() ==> b[i] as int == sum(a@, i),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

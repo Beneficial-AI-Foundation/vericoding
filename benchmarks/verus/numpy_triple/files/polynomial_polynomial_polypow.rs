@@ -8,7 +8,7 @@ fn polypow(c: Vec<f32>, pow: nat) -> (result: Vec<f32>)
         pow == 1 ==> result.len() == c.len() && (forall|i: int| 0 <= i < c.len() ==> result[i] == c[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -12,7 +12,7 @@ fn get_first_elements(arr: &Vec<Vec<i32>>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < arr.len() ==> #[trigger] result[i] == #[trigger] arr[i][0],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

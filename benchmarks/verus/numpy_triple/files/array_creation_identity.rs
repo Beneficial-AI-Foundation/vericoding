@@ -10,7 +10,7 @@ fn identity(n: usize) -> (result: Vec<Vec<f64>>)
             result[i][j] == if i == j { 1.0 } else { 0.0 }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

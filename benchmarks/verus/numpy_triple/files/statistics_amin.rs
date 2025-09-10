@@ -11,7 +11,7 @@ fn amin(a: Vec<f32>) -> (result: f32)
     ensures in_array(result, a@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

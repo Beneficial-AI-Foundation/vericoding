@@ -8,7 +8,7 @@ fn empty(n: usize) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < n ==> exists|v: f32| result[i] == v
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

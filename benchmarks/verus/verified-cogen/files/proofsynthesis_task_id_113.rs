@@ -12,7 +12,7 @@ fn is_integer(text: &Vec<char>) -> (result: bool)
         result == (forall|i: int| 0 <= i < text.len() ==> (#[trigger] is_digit_sepc(text[i]))),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

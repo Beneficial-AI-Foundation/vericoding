@@ -20,7 +20,7 @@ fn rolling_max(numbers: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < numbers.len() ==> result[i] == seq_max(numbers@.take(i + 1)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

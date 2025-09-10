@@ -10,7 +10,7 @@ fn true_() -> (result: bool)
         !result == false
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

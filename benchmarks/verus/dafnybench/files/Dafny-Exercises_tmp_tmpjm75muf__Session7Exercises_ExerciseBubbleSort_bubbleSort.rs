@@ -18,7 +18,7 @@ fn bubble_sort(a: &mut Vec<int>, c: usize, f: usize)
         a@.subrange(f as int, a@.len() as int) == old(a)@.subrange(f as int, old(a)@.len() as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -19,7 +19,7 @@ fn extract(condition: Vec<bool>, arr: Vec<i32>) -> (result: Vec<i32>)
             exists|k: int| 0 <= k < result.len() && result[k] == arr[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

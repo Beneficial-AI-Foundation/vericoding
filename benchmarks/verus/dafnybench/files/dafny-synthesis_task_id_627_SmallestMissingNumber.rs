@@ -12,7 +12,7 @@ fn smallest_missing_number(s: Seq<int>) -> v: int
         (forall|k: int| 0 <= k < v ==> s.contains(k)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

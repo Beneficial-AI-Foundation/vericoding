@@ -21,7 +21,7 @@ spec fn sorted(a: Seq<i32>) -> bool {
 fn selection_sort(a: &mut [i32])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

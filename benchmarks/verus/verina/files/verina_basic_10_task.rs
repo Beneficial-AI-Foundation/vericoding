@@ -7,7 +7,7 @@ fn is_greater(n: i32, a: &Vec<i32>) -> (result: bool)
     ensures result == (forall|i: int| 0 <= i < a.len() ==> n > a[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

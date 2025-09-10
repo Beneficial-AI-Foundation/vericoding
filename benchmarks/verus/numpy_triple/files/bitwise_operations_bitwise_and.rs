@@ -17,7 +17,7 @@ fn bitwise_and(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> (x1[i] == x2[i] ==> result[i] == x1[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

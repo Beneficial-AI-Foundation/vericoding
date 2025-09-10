@@ -29,7 +29,7 @@ fn is_armstrong(n: u32) -> (result: bool)
         result == (n as nat == sum_powers(n as nat, count_digits(n as nat))),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

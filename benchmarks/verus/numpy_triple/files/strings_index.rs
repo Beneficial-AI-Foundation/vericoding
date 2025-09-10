@@ -20,7 +20,7 @@ fn index(a: Vec<Seq<char>>, sub: Vec<Seq<char>>, start: Vec<int>, end_pos: Vec<i
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

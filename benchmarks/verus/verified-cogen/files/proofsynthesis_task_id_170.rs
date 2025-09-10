@@ -22,7 +22,7 @@ fn sum_range_list(arr: &Vec<i64>, start: usize, end: usize) -> (sum: i128)
         sum_to(arr@.subrange(start as int, end + 1 as int)) == sum,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

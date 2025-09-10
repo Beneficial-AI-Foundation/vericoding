@@ -34,7 +34,7 @@ fn is_prefix(pre: Seq<char>, str: Seq<char>) -> (res: bool)
         res <==> is_prefix_pred(pre, str),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

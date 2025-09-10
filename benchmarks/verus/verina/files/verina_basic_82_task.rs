@@ -10,7 +10,7 @@ fn remove_front(a: &Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == a[i + 1],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

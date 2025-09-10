@@ -19,7 +19,7 @@ fn largest_smallest_integers(arr: &Vec<i32>) -> (res: (Option<i32>, Option<i32>)
         }),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

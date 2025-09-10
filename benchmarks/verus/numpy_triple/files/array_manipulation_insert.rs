@@ -18,7 +18,7 @@ fn numpy_insert<T>(arr: Vec<T>, idx: usize, value: T) -> (result: Vec<T>)
             (j >= idx && result[j + 1] == arr[j])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

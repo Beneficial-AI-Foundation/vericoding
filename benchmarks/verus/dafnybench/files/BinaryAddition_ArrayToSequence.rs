@@ -62,7 +62,7 @@ fn array_to_sequence(arr: &[bool; 10]) -> (res: Vec<bool>)
         forall|k: int| 0 <= k < 10 ==> res[k] == arr[k]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

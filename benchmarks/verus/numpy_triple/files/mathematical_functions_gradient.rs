@@ -9,7 +9,7 @@ fn numpy_gradient(f: Vec<f64>) -> (grad: Vec<f64>)
         f.len() == 1 ==> grad[0] == 0.0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

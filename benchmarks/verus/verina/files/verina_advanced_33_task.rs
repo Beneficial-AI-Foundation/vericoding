@@ -8,7 +8,7 @@ fn longest_increasing_subsequence(nums: Vec<i32>) -> (result: usize)
         nums.len() == 0 ==> result == 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -29,7 +29,7 @@ fn find_pivot_index(nums: &Vec<i32>) -> (index: i32)
         0 <= index < nums.len() ==> sum(nums@.map_values(|v: i32| v as int).subrange(0, index as int)) == sum(nums@.map_values(|v: i32| v as int).subrange((index + 1) as int, nums@.len() as int))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

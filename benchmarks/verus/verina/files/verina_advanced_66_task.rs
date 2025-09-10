@@ -5,7 +5,7 @@ verus! {
 fn reverse_words(words_str: &str) -> (result: String)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

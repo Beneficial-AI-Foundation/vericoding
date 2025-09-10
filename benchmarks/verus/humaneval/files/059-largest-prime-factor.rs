@@ -20,7 +20,7 @@ fn largest_prime_factor(n: u32) -> (largest: u32)
         spec_prime(largest as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

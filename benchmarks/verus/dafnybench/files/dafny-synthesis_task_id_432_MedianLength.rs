@@ -7,7 +7,7 @@ fn median_length(a: int, b: int) -> (median: int)
     ensures median == (a + b) / 2
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

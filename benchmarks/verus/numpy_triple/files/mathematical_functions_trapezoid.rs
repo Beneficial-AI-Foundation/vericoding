@@ -12,7 +12,7 @@ fn trapezoid(y: Vec<i32>, dx: i32) -> (result: i32)
         (forall|i: int| 0 <= i < y.len() ==> #[trigger] y[i] >= 0) ==> result >= 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

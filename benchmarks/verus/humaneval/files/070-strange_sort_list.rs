@@ -10,7 +10,7 @@ fn strange_sort_list(s: &Vec<i32>) -> (ret: Vec<i32>)
         s@.len() == ret@.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

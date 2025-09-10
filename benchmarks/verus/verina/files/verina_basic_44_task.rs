@@ -11,7 +11,7 @@ fn is_odd_at_index_odd(a: &Vec<i32>) -> (result: bool)
         result <==> (forall|i: int| 0 <= i < a.len() && i % 2 == 1 ==> is_odd(a[i as int])),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

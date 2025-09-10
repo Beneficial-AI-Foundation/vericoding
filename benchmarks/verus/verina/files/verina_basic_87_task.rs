@@ -9,7 +9,7 @@ fn selection_sort(a: &Vec<i32>) -> (result: Vec<i32>)
         result@ =~= a@,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -8,7 +8,7 @@ fn numpy_std(a: Vec<f32>, ddof: usize) -> (result: f32)
         ddof < a.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

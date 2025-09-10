@@ -40,7 +40,7 @@ fn prod_and_count(q: &[i32], key: i32) -> (result: (i32, u32))
         result.1 == recursive_count(key as int, q@.map(|_i, x: i32| x as int)) as u32
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

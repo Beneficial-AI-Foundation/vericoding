@@ -19,7 +19,7 @@ fn intersect1d(ar1: Vec<i32>, ar2: Vec<i32>) -> (result: Vec<i32>)
             (exists|l: int| 0 <= l < result.len() && result[l] == val)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

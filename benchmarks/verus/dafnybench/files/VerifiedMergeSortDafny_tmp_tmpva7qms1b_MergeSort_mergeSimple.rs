@@ -31,7 +31,7 @@ fn mergeSimple(a1: Seq<i32>, a2: Seq<i32>, start: usize, end: usize, b: &mut Vec
         sorted_slice(b, start as int, end as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -7,7 +7,7 @@ fn arccosh(x: Vec<f32>) -> (result: Vec<f32>)
         x.len() > 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

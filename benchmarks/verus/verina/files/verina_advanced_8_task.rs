@@ -35,7 +35,7 @@ fn can_complete_circuit(gas: &Vec<i32>, cost: &Vec<i32>) -> (result: i32)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

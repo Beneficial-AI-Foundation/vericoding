@@ -27,7 +27,7 @@ fn decode_shift(s: &Vec<u8>) -> (t: Vec<u8>)
         forall|i: int| #![auto] 0 <= i < t.len() ==> encode_char_spec(t[i] as int) == s[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

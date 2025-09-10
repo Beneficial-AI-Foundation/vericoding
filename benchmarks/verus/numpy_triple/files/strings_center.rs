@@ -16,7 +16,7 @@ fn center(a: Vec<String>, width: Vec<usize>, fillchar: char) -> (result: Vec<Str
             }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

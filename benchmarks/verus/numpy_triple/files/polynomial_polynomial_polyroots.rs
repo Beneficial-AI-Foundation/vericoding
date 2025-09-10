@@ -11,7 +11,7 @@ fn polyroots(c: Vec<f64>) -> (roots: Vec<f64>)
         forall|i: int| 0 <= i < c.len() ==> exists|j: int| 0 <= j < c.len() && c[j] != 0.0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

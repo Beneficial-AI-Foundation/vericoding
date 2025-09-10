@@ -10,7 +10,7 @@ fn smallest_list_length(s: Seq<Seq<int>>) -> (v: int)
         exists|i: int| 0 <= i < s.len() && v == #[trigger] s[i].len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

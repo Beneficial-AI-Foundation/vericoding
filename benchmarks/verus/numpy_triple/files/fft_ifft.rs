@@ -56,7 +56,7 @@ fn ifft(a: Vec<Complex>) -> (result: Vec<Complex>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

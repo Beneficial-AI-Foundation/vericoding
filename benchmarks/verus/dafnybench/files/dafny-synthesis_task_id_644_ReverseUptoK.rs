@@ -16,7 +16,7 @@ fn reverse_upto_k(s: &mut Vec<i32>, k: usize)
         forall|i: int| k <= i < s.len() ==> array_index(s@, i) == array_index(old(s)@, i),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -14,7 +14,7 @@ pub fn myfun(a: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32)
 		sum[0] == 3 * N,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

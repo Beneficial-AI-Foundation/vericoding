@@ -13,7 +13,7 @@ fn any(v: Vec<f32>) -> (result: bool)
         !(result == true && result == false)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -24,7 +24,7 @@ fn separate(v: &mut Vec<i32>) -> (i: usize)
         is_permutation(v@, old(v)@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -18,7 +18,7 @@ fn sum_ints_loop(n: u32) -> (s: u32)
         s == n * (n + 1) / 2
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

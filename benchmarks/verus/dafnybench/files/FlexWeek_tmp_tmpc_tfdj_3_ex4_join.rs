@@ -16,7 +16,7 @@ fn join(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
             i - j == a.len() ==> c[i] == b[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

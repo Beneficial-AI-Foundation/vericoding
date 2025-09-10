@@ -13,7 +13,7 @@ fn binary_search(arr: &[i32], target: i32) -> (result: Option<usize>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

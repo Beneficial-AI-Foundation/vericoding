@@ -12,7 +12,7 @@ fn loadtxt(filename: Seq<char>, delimiter: Seq<char>, skiprows: usize, rows: usi
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == cols,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

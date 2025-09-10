@@ -8,7 +8,7 @@ fn hermweight(x: Vec<f32>) -> (w: Vec<f32>)
         w.len() == x.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

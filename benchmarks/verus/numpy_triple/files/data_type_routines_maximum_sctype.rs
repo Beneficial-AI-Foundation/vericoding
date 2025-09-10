@@ -78,7 +78,7 @@ fn maximum_sctype(t: NumericType) -> (result: NumericType)
         precision_le(t.precision, result.precision)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

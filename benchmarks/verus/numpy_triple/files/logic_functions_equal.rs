@@ -12,7 +12,7 @@ fn numpy_equal<T>(x1: Vec<T>, x2: Vec<T>) -> (result: Vec<bool>)
         x1@ == x2@ ==> forall|i: int| 0 <= i < result.len() ==> result[i] == true
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -19,7 +19,7 @@ fn dutch_flag(a: &mut Vec<Color>)
         a@.to_multiset() == old(a)@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

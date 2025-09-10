@@ -14,7 +14,7 @@ fn insert(oline: &Vec<char>, l: usize, nl: &Vec<char>, p: usize, at_pos: usize) 
         forall|i: int| 0 <= i < (l - at_pos) ==> #[trigger] result[at_pos + p + i] == oline[at_pos + i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

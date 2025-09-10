@@ -10,7 +10,7 @@ fn imag(val: Vec<(f64, f64)>) -> (result: Vec<f64>)
         forall|i: int| 0 <= i < val.len() ==> (val[i].0 != 0.0 || val[i].1 != 0.0 ==> result[i] == val[i].1),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -71,7 +71,7 @@ fn can_cast(from_dtype: DType, to_dtype: DType, casting: CastingRule) -> (result
         (casting == CastingRule::Equiv ==> (result == true <==> from_dtype == to_dtype))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

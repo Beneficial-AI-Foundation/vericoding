@@ -7,7 +7,7 @@ fn semi_ordered_permutation(nums: &Vec<i32>) -> (result: i32)
         result >= 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

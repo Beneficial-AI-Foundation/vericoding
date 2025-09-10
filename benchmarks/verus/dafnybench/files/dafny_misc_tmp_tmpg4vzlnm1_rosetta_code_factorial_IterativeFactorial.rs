@@ -13,7 +13,7 @@ fn iterative_factorial(n: u32) -> (result: u32)
     ensures result == factorial(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

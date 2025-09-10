@@ -9,7 +9,7 @@ fn find_first_repeated_char(s: &str) -> (result: (bool, char))
         (!result.0 ==> (forall|i: int, j: int| 0 <= i < j < s@.len() ==> s@[i] != s@[j]))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

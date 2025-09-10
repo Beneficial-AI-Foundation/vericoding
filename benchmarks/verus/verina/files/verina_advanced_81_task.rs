@@ -9,7 +9,7 @@ fn unique_sorted(arr: &Vec<i32>) -> (result: Vec<i32>)
         forall|x: i32| arr@.contains(x) <==> result@.contains(x),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

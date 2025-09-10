@@ -12,7 +12,7 @@ fn flip(a: &mut Vec<i32>, num: usize)
         a.len() == old(a).len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

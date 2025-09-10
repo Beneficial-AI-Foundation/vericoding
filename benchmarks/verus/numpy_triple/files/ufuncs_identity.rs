@@ -10,7 +10,7 @@ fn ufunc_identity(op: spec_fn(f64, f64) -> f64) -> (result: Option<f64>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

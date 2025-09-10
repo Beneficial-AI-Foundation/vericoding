@@ -35,7 +35,7 @@ fn var(a: Vec<i32>, ddof: usize) -> (result: i32)
         result >= 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

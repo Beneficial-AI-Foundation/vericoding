@@ -20,7 +20,7 @@ fn ix_(seq1: Vec<i32>, seq2: Vec<i32>) -> (result: (Vec<Vec<i32>>, Vec<Vec<i32>>
             result.0[i][0] == seq1[i] && result.1[0][j] == seq2[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

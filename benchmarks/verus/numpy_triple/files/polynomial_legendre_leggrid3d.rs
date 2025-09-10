@@ -29,7 +29,7 @@ fn leggrid3d(x: Vec<f64>, y: Vec<f64>, z: Vec<f64>, c: Vec<Vec<Vec<f64>>>) -> (r
               (x[i1] == x[i2] && y[j1] == y[j2] && z[k1] == z[k2])))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

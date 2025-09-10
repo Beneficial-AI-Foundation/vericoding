@@ -12,7 +12,7 @@ fn stack(arrays: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==> #[trigger] result[i][j] == #[trigger] arrays[i][j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

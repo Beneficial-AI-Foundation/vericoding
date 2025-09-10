@@ -16,7 +16,7 @@ fn sum_array(xs: &[i32]) -> (s: i32)
     ensures s as int == sum(xs@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

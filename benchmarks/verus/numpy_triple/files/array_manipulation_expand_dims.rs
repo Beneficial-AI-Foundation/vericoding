@@ -15,7 +15,7 @@ fn expand_dims<T>(a: Vec<T>, axis: usize) -> (result: ExpandedVector<T>)
     }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

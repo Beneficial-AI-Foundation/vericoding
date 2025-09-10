@@ -8,7 +8,7 @@ fn last_digit(n: nat) -> result: nat
         result == n % 10,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

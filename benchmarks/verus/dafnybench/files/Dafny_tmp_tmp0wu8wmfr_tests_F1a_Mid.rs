@@ -12,7 +12,7 @@ fn mid(p: int, q: int) -> (m: int)
         0 <= (q - m) - (m - p) <= 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

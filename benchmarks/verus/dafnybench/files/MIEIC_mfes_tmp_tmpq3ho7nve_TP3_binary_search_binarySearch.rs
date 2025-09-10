@@ -13,7 +13,7 @@ fn binary_search(a: &[i32], x: i32) -> (index: i32)
             (index == -1 ==> !a@.contains(x))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

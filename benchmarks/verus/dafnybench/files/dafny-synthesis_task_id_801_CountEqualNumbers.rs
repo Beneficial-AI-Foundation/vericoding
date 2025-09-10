@@ -10,7 +10,7 @@ fn count_equal_numbers(a: i32, b: i32, c: i32) -> (count: i32)
         (count == 1) <==> (a != b && b != c && a != c),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

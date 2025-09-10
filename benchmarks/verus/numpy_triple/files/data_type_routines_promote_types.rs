@@ -106,7 +106,7 @@ fn promote_types(type1: NumpyDType, type2: NumpyDType) -> (result: NumpyDType)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

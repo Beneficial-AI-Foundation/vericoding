@@ -18,7 +18,7 @@ fn divmod(x1: Vec<i32>, x2: Vec<i32>) -> (result: (Vec<i32>, Vec<i32>))
     })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

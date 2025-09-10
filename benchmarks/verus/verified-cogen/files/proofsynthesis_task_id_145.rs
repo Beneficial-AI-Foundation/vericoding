@@ -12,7 +12,7 @@ fn max_difference(arr: &Vec<i32>) -> (diff: i32)
         forall|i: int, j: int| 0 <= i < arr.len() && 0 <= j < arr.len() ==> arr[i] - arr[j] <= diff,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

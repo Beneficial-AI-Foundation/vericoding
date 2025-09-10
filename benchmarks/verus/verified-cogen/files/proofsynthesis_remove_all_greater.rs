@@ -12,7 +12,7 @@ fn remove_all_greater(v: Vec<i32>, e: i32) -> (result: Vec<i32>)
         forall |k:int| 0 <= k < v.len() && v[k] <= e ==> result@.contains(v[k]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

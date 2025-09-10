@@ -16,7 +16,7 @@ fn count_true(a: &[bool]) -> (result: usize)
     ensures result == count_to(a, a.len() as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

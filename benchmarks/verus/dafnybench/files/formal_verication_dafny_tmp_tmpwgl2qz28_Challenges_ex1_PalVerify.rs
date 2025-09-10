@@ -7,7 +7,7 @@ fn pal_verify(a: &Vec<char>) -> (yn: bool)
             yn == false ==> (exists|i: int| #![trigger a[i], a[a.len() - i - 1]] 0 <= i < a.len()/2 && a[i] != a[a.len() - i - 1])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

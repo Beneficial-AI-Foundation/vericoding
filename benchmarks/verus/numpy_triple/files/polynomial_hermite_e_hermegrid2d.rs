@@ -11,7 +11,7 @@ fn hermegrid2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<Vec<f
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

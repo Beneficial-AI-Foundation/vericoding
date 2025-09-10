@@ -13,7 +13,7 @@ fn copy(src: &Vec<i32>, s_start: usize, dest: &Vec<i32>, d_start: usize, len: us
         forall|i: int| 0 <= i < len ==> #[trigger] result[d_start + i] == #[trigger] src[s_start + i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -25,7 +25,7 @@ fn palindrome_ignore_non_alnum(s: &str) -> (result: bool)
         })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

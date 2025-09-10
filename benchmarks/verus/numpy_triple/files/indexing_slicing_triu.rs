@@ -13,7 +13,7 @@ fn triu(m: Vec<Vec<f64>>, k: i32) -> (result: Vec<Vec<f64>>)
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() && (i as i32) + k > (j as i32) ==> #[trigger] result[i][j] == 0.0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

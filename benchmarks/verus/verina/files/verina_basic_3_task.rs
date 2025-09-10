@@ -7,7 +7,7 @@ fn is_divisible_by_11(n: i32) -> (result: bool)
         result <==> (exists|k: int| #[trigger] (k * 11) == n),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

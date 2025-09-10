@@ -24,7 +24,7 @@ fn hermevander2d(x: Vec<i32>, y: Vec<i32>, x_deg: usize, y_deg: usize) -> (resul
             result[point_idx].len() == (x_deg + 1) * (y_deg + 1),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

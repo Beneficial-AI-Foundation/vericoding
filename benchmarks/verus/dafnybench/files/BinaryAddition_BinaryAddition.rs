@@ -67,7 +67,7 @@ fn binary_addition(s: &[bool; 10], t: &[bool; 10]) -> (sresult: Vec<bool>)
             bit_addition(s, t) == sresult@,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

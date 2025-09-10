@@ -8,7 +8,7 @@ fn below_threshold(l: &[i32], t: i32) -> (result: bool)
         result == forall|i: int| 0 <= i < l.len() ==> l[i] < t,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

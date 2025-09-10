@@ -11,7 +11,7 @@ fn test_array_elements(a: &mut Vec<i32>, j: usize)
         forall|k: int| 0 <= k < a.len() && k != j ==> a[k] == old(a)[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

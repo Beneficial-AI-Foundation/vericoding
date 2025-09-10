@@ -17,7 +17,7 @@ fn suma_componentes(V: &[i32]) -> (suma: i32)
     ensures suma == suma_aux(V, 0)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

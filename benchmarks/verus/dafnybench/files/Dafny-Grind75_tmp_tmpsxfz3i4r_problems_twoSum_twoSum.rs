@@ -18,7 +18,7 @@ fn two_sum(nums: Seq<int>, target: int) -> (pair: (usize, usize))
         summing_pair(pair.0 as nat, pair.1 as nat, nums, target)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

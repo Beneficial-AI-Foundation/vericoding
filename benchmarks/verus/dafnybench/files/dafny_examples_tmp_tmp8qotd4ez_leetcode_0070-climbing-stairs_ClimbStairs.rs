@@ -13,7 +13,7 @@ fn climb_stairs(n: u32) -> (r: u32)
     ensures r == stairs(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

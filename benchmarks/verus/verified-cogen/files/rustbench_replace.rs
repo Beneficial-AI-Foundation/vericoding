@@ -10,7 +10,7 @@ fn replace(a: &mut Vec<i32>, x: i32, y: i32)
         forall|k: int| 0 <= k < old(a).len() && old(a)[k] != x ==> a[k] == old(a)[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

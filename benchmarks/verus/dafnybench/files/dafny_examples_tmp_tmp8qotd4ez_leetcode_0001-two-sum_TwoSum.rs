@@ -14,7 +14,7 @@ fn two_sum(nums: &[i32], target: i32) -> (r: (i32, i32))
         r.0 == -1 <==> forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums.view()[i] + nums.view()[j] != target,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

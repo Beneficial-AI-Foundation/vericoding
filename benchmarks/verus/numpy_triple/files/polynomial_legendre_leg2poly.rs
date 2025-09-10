@@ -13,7 +13,7 @@ fn leg2poly(c: Vec<f32>) -> (result: Vec<f32>)
         c.len() > 0 ==> exists|lead: f32| result[c.len() - 1] == lead,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

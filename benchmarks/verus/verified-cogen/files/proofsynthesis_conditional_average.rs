@@ -21,7 +21,7 @@ fn conditional_average(vals_1: &Vec<u64>, vals_2: &Vec<u64>, conds_1: &Vec<bool>
         )
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

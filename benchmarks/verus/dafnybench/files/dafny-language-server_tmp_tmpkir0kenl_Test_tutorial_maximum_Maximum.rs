@@ -10,7 +10,7 @@ fn maximum(values: Seq<int>) -> (max: int)
         forall|i: int| 0 <= i < values.len() ==> values[i] <= max,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

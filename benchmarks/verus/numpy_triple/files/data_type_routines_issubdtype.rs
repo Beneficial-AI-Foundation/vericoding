@@ -103,7 +103,7 @@ fn issubdtype(arg1: NumpyDType, arg2: NumpyDType) -> (result: bool)
         (arg1 == NumpyDType::Int32 && matches!(arg2, NumpyDType::Floating(_)) ==> result == false)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

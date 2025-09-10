@@ -18,7 +18,7 @@ fn eigh(a: Vec<Vec<f32>>) -> (result: EighResult)
         forall|i: int| 0 <= i < result.eigenvectors.len() ==> result.eigenvectors[i]@.len() == a.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -18,7 +18,7 @@ fn rotate_right(list: &Vec<u32>, n: usize) -> (new_list: Vec<u32>)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

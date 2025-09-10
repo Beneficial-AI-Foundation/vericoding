@@ -15,7 +15,7 @@ fn count_vowel_neighbors(s: &str) -> (count: usize)
                           is_vowel(s@[i+1])).len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

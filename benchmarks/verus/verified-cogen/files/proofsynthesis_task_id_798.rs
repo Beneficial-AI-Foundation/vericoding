@@ -18,7 +18,7 @@ fn sum(arr: &Vec<i64>) -> (sum: i128)
         sum_to(arr@) == sum,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

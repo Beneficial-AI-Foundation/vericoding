@@ -33,7 +33,7 @@ fn first_repeated_char(str1: &Vec<char>) -> (repeated_char: Option<(usize, char)
         check_first_repeated_char(str1, repeated_char),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

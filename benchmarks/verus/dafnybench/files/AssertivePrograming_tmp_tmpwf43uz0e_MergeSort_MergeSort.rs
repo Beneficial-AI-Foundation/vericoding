@@ -45,7 +45,7 @@ fn merge_sort(a: Vec<int>) -> (b: Vec<int>)
     decreases a.len()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

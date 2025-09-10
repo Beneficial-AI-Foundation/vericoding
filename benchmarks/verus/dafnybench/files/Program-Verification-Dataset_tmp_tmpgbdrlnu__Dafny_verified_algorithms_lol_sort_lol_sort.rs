@@ -31,7 +31,7 @@ fn lol_sort(a: &mut Vec<int>)
         sorted(a@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

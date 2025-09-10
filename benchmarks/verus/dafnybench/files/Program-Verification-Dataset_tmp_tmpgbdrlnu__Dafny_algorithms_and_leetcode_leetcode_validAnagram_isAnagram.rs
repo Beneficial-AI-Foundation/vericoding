@@ -21,7 +21,7 @@ fn is_anagram(s: &str, t: &str) -> (equal: bool)
     ensures (s@.to_multiset() == t@.to_multiset()) == equal
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

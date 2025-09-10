@@ -21,7 +21,7 @@ fn matrix_rank(A: Vec<Vec<f32>>) -> (result: usize)
         (A.len() == 1 && A[0].len() == 1) ==> ((result == 1) <==> (A[0][0] != 0.0f32)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

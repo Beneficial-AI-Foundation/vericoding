@@ -48,7 +48,7 @@ fn timedelta64(value: i64, unit: TimeUnit) -> (result: TimeDelta64)
         result.value <= 9223372036854775807i64,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

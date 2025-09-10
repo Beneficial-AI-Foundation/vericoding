@@ -11,7 +11,7 @@ fn add_small_numbers(a: &[i32], n: usize, max: i32) -> (r: i32)
         r <= max * (n as i32),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

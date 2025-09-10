@@ -22,7 +22,7 @@ fn lagval3d(x: Vec<f32>, y: Vec<f32>, z: Vec<f32>, c: Vec<Vec<Vec<f32>>>) -> (re
             exists|val: f32| result[i] == val,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

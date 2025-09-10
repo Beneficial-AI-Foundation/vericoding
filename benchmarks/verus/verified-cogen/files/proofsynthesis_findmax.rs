@@ -13,7 +13,7 @@ fn find_max(nums: Vec<i32>) -> (ret:i32)
         exists |i: int| 0 <= i < nums@.len() ==> nums@[i] == ret,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

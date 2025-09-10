@@ -26,7 +26,7 @@ fn to_uppercase(str1: &Vec<char>) -> (result: Vec<char>)
             0 <= i < str1.len() ==> (result[i] == (inner_expr_to_uppercase(str1, i))),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -10,7 +10,7 @@ fn fromstring(input: Vec<char>, sep: Vec<char>) -> (result: Vec<f32>)
         result.len() > 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

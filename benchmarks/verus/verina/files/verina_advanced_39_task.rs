@@ -9,7 +9,7 @@ fn max_of_list(lst: &Vec<usize>) -> (result: usize)
         forall|i: int| 0 <= i < lst.len() ==> lst[i] <= result,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

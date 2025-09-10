@@ -29,7 +29,7 @@ fn hermeval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
                 hermite_basis(i + 2, t) == t * hermite_basis(i + 1, t) - (i as int + 1) * hermite_basis(i, t)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

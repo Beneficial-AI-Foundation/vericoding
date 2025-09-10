@@ -12,7 +12,7 @@ fn count_nonzero(a: Vec<i32>) -> (count: usize)
         (exists|i: int| 0 <= i < a.len() && a[i] == 0) ==> count < a.len()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

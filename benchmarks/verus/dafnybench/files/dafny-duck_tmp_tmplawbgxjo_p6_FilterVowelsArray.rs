@@ -22,7 +22,7 @@ fn filter_vowels_array(xs: &[char]) -> (ys: Vec<char>)
     ensures filter_vowels(xs@) == ys@
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

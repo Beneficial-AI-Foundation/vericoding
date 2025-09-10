@@ -11,7 +11,7 @@ fn ogrid(start: f32, stop: f32, n: usize) -> (result: Vec<f32>)
         (n > 1 ==> result[n - 1] == stop),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

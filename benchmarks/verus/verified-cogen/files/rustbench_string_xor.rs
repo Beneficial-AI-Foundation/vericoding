@@ -14,7 +14,7 @@ fn string_xor(a: &[char], b: &[char]) -> (result: Vec<char>)
         forall|i: int| 0 <= i && i < result.len() ==> result[i] == (if a[i] == b[i] { '0' } else { '1' })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

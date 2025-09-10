@@ -21,7 +21,7 @@ fn trimseq(seq: Vec<f32>) -> (result: Vec<f32>)
                 (k > 0 ==> seq[k] != 0.0f32)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

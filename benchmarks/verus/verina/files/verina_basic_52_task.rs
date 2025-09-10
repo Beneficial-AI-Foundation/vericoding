@@ -9,7 +9,7 @@ fn bubble_sort(a: &Vec<i32>) -> (result: Vec<i32>)
         a@.to_multiset() == result@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

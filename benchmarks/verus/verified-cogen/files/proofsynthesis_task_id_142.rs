@@ -27,7 +27,7 @@ fn count_identical_position(arr1: &Vec<i32>, arr2: &Vec<i32>, arr3: &Vec<i32>) -
         count_identical(arr1@, arr2@, arr3@) == count,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

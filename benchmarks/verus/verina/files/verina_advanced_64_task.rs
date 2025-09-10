@@ -12,7 +12,7 @@ fn remove_element(lst: &Vec<nat>, target: nat) -> (result: Vec<nat>)
             result[k1] == lst[i] && result[k2] == lst[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

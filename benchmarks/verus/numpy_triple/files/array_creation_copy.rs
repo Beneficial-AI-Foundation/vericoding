@@ -8,7 +8,7 @@ fn copy<T: Copy>(a: &Vec<T>) -> (result: Vec<T>)
         forall|i: int| 0 <= i < a.len() ==> result[i] == a[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

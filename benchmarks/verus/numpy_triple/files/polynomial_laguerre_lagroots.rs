@@ -11,7 +11,7 @@ fn lagroots(c: Vec<i32>) -> (roots: Vec<i32>)
         c.len() == 2 ==> roots@[0] == 1 + c@[0] / c@[1],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

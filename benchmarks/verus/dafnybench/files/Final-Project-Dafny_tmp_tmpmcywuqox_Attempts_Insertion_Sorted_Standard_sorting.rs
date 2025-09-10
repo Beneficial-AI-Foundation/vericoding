@@ -13,7 +13,7 @@ fn sorting(array: &mut Vec<int>)
     ensures insertion_sorted(array@, 0, array@.len() as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

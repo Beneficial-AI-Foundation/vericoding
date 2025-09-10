@@ -15,7 +15,7 @@ fn replace_with_colon(s: &str) -> (result: String)
             if is_space_comma_dot(#[trigger] s@.index(i)) { ':' } else { s@.index(i) },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

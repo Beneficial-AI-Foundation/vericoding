@@ -11,7 +11,7 @@ fn array_equal<T>(a1: &Vec<T>, a2: &Vec<T>) -> (result: bool)
         (exists|i: int| 0 <= i < a1.len() && !(a1[i] == a2[i]) ==> result == false)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

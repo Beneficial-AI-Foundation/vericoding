@@ -9,7 +9,7 @@ fn longest_prefix(a: &[i32], b: &[i32]) -> (i: usize)
         i < a.len() && i < b.len() ==> a[i as int] != b[i as int]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -26,7 +26,7 @@ fn add_two_numbers(l1: &Vec<u32>, l2: &Vec<u32>) -> (result: Vec<u32>)
         result[result.len() - 1] != 0 || (l1@ == seq![0u32] && l2@ == seq![0u32] && result@ == seq![0u32]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

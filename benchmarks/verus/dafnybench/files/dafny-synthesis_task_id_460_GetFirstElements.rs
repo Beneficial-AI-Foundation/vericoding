@@ -9,7 +9,7 @@ fn get_first_elements(lst: Vec<Vec<i32>>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == lst[i][0],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

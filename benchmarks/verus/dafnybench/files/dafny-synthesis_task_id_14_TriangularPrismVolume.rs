@@ -10,7 +10,7 @@ fn triangular_prism_volume(base: u32, height: u32, length: u32) -> (volume: u32)
     ensures volume == (base * height * length) / 2,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

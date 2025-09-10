@@ -22,7 +22,7 @@ fn sum_in_range(a: &[i32], start: usize, end: usize) -> (sum: i32)
         sum == sum_to(a@.map(|i, v| v as int), start as int, end as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

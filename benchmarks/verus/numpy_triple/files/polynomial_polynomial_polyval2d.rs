@@ -23,7 +23,7 @@ fn polyval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
             result[k] == c[0][0],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

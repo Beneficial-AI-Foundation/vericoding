@@ -11,7 +11,7 @@ fn convert_map_key(inputs: Map<nat, bool>, f: spec_fn(nat) -> nat) -> (r: Map<na
         forall|k: nat| inputs.contains_key(k) ==> r[f(k)] == inputs[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -18,7 +18,7 @@ fn count(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) -
             (sub[i]@.len() > (end_pos[i] - start[i]) ==> result[i] == 0)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

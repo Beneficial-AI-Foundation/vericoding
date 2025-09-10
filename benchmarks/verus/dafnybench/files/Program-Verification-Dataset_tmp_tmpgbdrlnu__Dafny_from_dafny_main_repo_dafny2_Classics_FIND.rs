@@ -16,7 +16,7 @@ fn find(A: &mut Vec<i32>, N: usize, f: usize)
         forall|p: int, q: int| 0 <= p <= f as int <= q < N as int ==> A@[p] <= A@[q],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

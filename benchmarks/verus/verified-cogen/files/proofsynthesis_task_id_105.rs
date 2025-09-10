@@ -23,7 +23,7 @@ fn count_true(arr: &Vec<bool>) -> (count: u64)
         count_boolean(arr@) == count,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

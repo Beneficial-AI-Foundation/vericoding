@@ -44,7 +44,7 @@ fn find_addends(q: Seq<int>, x: int) -> (result: (usize, usize))
     })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -47,7 +47,7 @@ fn product_even_odd(lst: Seq<int>) -> (product: i32)
                                    0 <= j < lst.len() && is_odd(lst[j])  && is_first_odd(j, lst) && product as int == lst[i] * lst[j]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

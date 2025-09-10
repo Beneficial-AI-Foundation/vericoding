@@ -37,7 +37,7 @@ fn intersperse(numbers: Vec<u64>, delimiter: u64) -> (result: Vec<u64>)
         result@ == intersperse_spec(numbers@, delimiter),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

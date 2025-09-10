@@ -24,7 +24,7 @@ fn first_even_odd_difference(a: &Vec<i32>) -> (result: i32)
             (forall|k: int| 0 <= k < j ==> is_even(a[k as int]))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

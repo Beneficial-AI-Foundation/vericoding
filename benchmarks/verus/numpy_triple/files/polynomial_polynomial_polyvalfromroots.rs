@@ -18,7 +18,7 @@ fn polyvalfromroots(x: Vec<i32>, r: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == poly_eval_at_point(x[i] as int, r@.map_values(|v: i32| v as int)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

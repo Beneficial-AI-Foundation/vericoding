@@ -21,7 +21,7 @@ fn max_segment_sum(a: &Vec<i32>, s: usize, t: usize) -> (p: (usize, usize)) by (
         ({ let (i, j) = p; forall|k: int, l: int| 0 <= k <= l <= a.len() ==> sum(a@, k, l) <= sum(a@, i as int, j as int) })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

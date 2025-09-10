@@ -18,7 +18,7 @@ fn broadcast_to(v: Vec<f32>, m: usize) -> (result: Vec<Vec<f32>>)
         forall|i1: int, i2: int| 0 <= i1 < m && 0 <= i2 < m ==> result[i1]@ == result[i2]@
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -17,7 +17,7 @@ fn savez(file: String, arr1: Vec<f32>, arr2: Vec<f32>, allow_pickle: bool) -> (r
         exists|file_size: nat| file_size > 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

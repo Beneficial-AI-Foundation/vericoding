@@ -8,7 +8,7 @@ fn contains_consecutive_numbers(a: &[i32]) -> (result: bool)
         0 <= i < (a.len() as int) - 1 && a[i] + 1 == a[i + 1]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -13,7 +13,7 @@ fn isinf(x: Vec<f64>) -> (result: Vec<bool>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

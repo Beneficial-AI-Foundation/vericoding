@@ -13,7 +13,7 @@ fn last_position(a: &[i32], elem: i32) -> (result: usize)
         a[result as int] == elem,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

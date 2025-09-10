@@ -34,7 +34,7 @@ fn sum_min_max(arr: &Vec<i32>) -> (sum: i32)
         sum == max_rcur(arr@) + min_rcur(arr@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

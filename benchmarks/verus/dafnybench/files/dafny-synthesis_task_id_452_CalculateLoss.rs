@@ -7,7 +7,7 @@ fn calculate_loss(cost_price: i32, selling_price: i32) -> (loss: i32)
     ensures (cost_price > selling_price ==> loss == cost_price - selling_price) && (cost_price <= selling_price ==> loss == 0),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -12,7 +12,7 @@ fn str_len(a: Vec<String>) -> (result: Vec<nat>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

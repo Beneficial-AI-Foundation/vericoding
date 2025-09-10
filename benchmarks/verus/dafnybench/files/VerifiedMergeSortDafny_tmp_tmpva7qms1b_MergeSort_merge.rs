@@ -34,7 +34,7 @@ fn merge(a1: Seq<int>, a2: Seq<int>, start: int, end: int, b: &mut Vec<int>)
         merged(a1, a2, b, start, end),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

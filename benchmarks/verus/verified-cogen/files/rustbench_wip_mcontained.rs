@@ -23,7 +23,7 @@ fn mcontained(v: &[i32], w: &[i32], n: usize, m: usize) -> (b: bool)
             ))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -25,7 +25,7 @@ proof fn sort(m: Multiset<i32>) -> (r: Seq<i32>)
         && forall|p: int, q: int| 0 <= p < q < r.len() ==> r[p] <= r[q],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

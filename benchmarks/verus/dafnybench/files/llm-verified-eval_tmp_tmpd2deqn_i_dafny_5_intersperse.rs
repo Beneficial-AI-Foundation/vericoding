@@ -11,7 +11,7 @@ proof fn intersperse(numbers: Seq<int>, delimiter: int) -> (interspersed: Seq<in
             interspersed[i] == delimiter,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

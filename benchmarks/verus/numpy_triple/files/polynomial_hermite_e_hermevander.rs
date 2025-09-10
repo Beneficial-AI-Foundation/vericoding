@@ -11,7 +11,7 @@ fn hermevander(x: Vec<f64>, deg: usize) -> (result: Vec<Vec<f64>>)
         deg > 0 ==> forall|i: int| 0 <= i < result.len() ==> result[i][1] == x[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

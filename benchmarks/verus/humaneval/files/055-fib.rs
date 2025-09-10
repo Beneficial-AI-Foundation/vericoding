@@ -28,7 +28,7 @@ fn fib(n: u32) -> (ret: Option<u32>)
         inner_expr_fib(n, ret),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

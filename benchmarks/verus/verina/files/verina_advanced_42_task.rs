@@ -9,7 +9,7 @@ fn max_profit(prices: Seq<usize>) -> (result: usize)
         (forall|i: int, j: int| 0 <= i < j < prices.len() ==> prices[j] < prices[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

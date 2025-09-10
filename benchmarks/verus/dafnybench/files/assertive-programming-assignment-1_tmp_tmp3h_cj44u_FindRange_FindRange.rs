@@ -45,7 +45,7 @@ fn find_range(q: Seq<int>, key: int) -> (res: (usize, usize))
         forall |i: int| res.1 <= i < q.len() ==> q[i] > key
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

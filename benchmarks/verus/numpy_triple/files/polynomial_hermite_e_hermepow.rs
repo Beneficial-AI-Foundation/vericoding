@@ -20,7 +20,7 @@ fn hermepow(c: Vec<f64>, pow: usize, maxpower: usize) -> (result: Vec<f64>)
             result[result.len() - 1] == highest_coeff,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

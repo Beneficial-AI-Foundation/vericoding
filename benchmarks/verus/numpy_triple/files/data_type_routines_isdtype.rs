@@ -82,7 +82,7 @@ fn numpy_isdtype(dtype: NumpyDType, kind: DTypeKind) -> (result: bool)
     ensures result == is_of_kind(dtype, kind)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

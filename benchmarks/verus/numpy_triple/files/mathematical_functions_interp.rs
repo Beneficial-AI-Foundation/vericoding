@@ -16,7 +16,7 @@ fn interp(x: Vec<i32>, xp: Vec<i32>, fp: Vec<i32>) -> (result: Vec<i32>)
         )
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

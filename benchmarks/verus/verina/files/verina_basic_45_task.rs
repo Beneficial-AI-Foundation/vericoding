@@ -39,7 +39,7 @@ fn find_product(lst: &Vec<i32>) -> (result: i32)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

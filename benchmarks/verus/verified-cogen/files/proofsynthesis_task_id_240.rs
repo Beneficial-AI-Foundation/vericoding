@@ -11,7 +11,7 @@ fn replace_last_element(first: &Vec<i32>, second: &Vec<i32>) -> (replaced_list: 
         replaced_list@ == first@.subrange(0, first.len() - 1).add(second@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

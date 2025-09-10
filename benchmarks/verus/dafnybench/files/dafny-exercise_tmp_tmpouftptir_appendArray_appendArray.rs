@@ -9,7 +9,7 @@ fn append_array(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
         forall|i: int| 0 <= i < b.len() ==> b[i] == c[a.len() + i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

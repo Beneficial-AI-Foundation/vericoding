@@ -15,7 +15,7 @@ fn multi_dot(A: Vec<Vec<f64>>, B: Vec<Vec<f64>>, C: Vec<Vec<f64>>) -> (result: V
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == C[0].len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

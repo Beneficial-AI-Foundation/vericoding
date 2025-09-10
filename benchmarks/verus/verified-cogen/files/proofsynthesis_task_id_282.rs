@@ -15,7 +15,7 @@ fn element_wise_subtract(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
             0 <= i < result.len() ==> #[trigger] result[i] == #[trigger] (arr1[i] - arr2[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

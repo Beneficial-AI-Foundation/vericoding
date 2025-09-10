@@ -12,7 +12,7 @@ fn mySqrt(x: int) -> (res: int)
     ensures sqrt(x, res),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

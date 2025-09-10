@@ -8,7 +8,7 @@ fn multiple_returns(x: int, y: int) -> (result: (int, int))
         result.1 == x - y,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

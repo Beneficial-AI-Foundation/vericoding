@@ -11,7 +11,7 @@ fn diag(matrix: Vec<f32>, n: usize) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < n ==> result[i] == matrix[i * n + i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -67,7 +67,7 @@ fn types(ufunc_signatures: Vec<TypeSignature>) -> (result: Vec<String>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

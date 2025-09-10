@@ -16,7 +16,7 @@ fn argsort(a: Vec<i32>) -> (result: Vec<usize>)
             result[i] < result[j]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

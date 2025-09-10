@@ -9,7 +9,7 @@ fn ntypes(ufunc_type_combinations: Vec<String>) -> (result: usize)
         result > 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

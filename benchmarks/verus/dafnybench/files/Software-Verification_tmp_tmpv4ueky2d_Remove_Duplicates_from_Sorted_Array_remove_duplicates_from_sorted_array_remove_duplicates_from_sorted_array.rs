@@ -20,7 +20,7 @@ fn remove_duplicates_from_sorted_array(nums: Seq<int>) -> (result: Seq<int>)
         forall|i: int| #![trigger nums.contains(i)] nums.contains(i) <==> result.contains(i),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

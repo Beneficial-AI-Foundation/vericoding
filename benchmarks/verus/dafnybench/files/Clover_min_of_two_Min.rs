@@ -8,7 +8,7 @@ fn min(x: int, y: int) -> (z: int)
         x > y ==> z == y,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -82,7 +82,7 @@ fn get_insert_index(a: &Vec<int>, limit: usize, x: int) -> (idx: usize)
         idx < limit ==> x < a@[idx as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -14,7 +14,7 @@ fn simple_nested(a: &mut Vec<i32>, b: &Vec<i32>, N: i32) -> (sum: i32)
         N <= sum <= 2*N,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

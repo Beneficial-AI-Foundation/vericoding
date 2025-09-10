@@ -8,7 +8,7 @@ fn numpy_modf(x: Vec<f32>) -> (result: (Vec<f32>, Vec<f32>))
         result.1.len() == x.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

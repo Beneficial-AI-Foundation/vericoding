@@ -47,7 +47,7 @@ exec fn query(a: &[i32], i: usize, j: usize) -> (s: i32)
     ensures s == sum(a@.map(|k, x| x as int), i as int, j as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

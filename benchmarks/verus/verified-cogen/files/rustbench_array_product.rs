@@ -11,7 +11,7 @@ fn array_product(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i64>) by (nonlinear_a
         forall|i: int| #![auto] 0 <= i && i < a.len() ==> result[i] == (a[i] as i64) * (b[i] as i64),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

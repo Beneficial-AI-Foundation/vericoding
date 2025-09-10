@@ -13,7 +13,7 @@ fn bitwise_xor(x1: Vec<u32>, x2: Vec<u32>) -> (result: Vec<u32>)
         forall|i: int| 0 <= i < result.len() && x1[i] == x2[i] ==> result[i] == 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

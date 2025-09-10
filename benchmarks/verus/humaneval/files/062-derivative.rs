@@ -9,7 +9,7 @@ fn derivative(xs: &Vec<usize>) -> (ret: Option<Vec<usize>>)
             =~= ret.unwrap()@.map_values(|x| x as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

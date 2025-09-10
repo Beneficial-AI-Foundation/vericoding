@@ -14,7 +14,7 @@ fn contains_duplicate(nums: Seq<int>) -> (result: bool)
         result <==> distinct(nums),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

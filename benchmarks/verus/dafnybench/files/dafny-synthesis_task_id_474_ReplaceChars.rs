@@ -10,7 +10,7 @@ fn replace_chars(s: Seq<char>, old_char: char, new_char: char) -> (v: Seq<char>)
             (s[i] != old_char ==> v[i] == s[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

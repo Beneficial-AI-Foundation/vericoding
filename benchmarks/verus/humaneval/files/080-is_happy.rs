@@ -19,7 +19,7 @@ fn is_happy(s: &Vec<char>) -> (happy: bool)
         happy <==> happy_spec(s@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

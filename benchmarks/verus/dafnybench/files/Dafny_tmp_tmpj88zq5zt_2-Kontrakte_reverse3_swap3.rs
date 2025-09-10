@@ -16,7 +16,7 @@ fn swap3(a: &mut Vec<i32>, h: usize, i: usize, j: usize)
         a.len() == old(a).len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -12,7 +12,7 @@ fn element_wise_modulo(a: &Vec<i32>, b: &Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] % b[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

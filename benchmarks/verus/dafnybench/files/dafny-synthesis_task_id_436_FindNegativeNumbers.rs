@@ -16,7 +16,7 @@ fn find_negative_numbers(arr: &[int]) -> (negative_list: Vec<int>)
             exists|j: int| 0 <= j < negative_list.len() && negative_list[j] == arr[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

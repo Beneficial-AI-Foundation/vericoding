@@ -10,7 +10,7 @@ proof fn int_div(n: int, d: int) -> (result: (int, int))
     })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -10,7 +10,7 @@ fn mall_equal1(v: &[i32]) -> (b: bool)
     ensures b == all_equal(v@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

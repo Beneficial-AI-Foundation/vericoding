@@ -22,7 +22,7 @@ fn replace_with_colon(str1: &Vec<char>) -> (result: Vec<char>)
             0 <= k < result.len() ==> #[trigger] result[k] == inner_expr_replace_with_colon(str1, k),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

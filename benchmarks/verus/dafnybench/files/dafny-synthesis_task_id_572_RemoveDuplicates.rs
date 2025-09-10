@@ -8,7 +8,7 @@ fn remove_duplicates(a: &[i32]) -> (result: Vec<i32>)
         forall|i: int, j: int| 0 <= i < j < result.len() ==> result@[i] != result@[j]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -13,7 +13,7 @@ fn genfromtxt(input: Vec<String>, delimiter: String, fill_value: f32, skip_heade
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

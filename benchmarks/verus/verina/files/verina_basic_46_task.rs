@@ -12,7 +12,7 @@ fn last_position(arr: &Vec<i32>, elem: i32) -> (result: i32)
         (result == -1 ==> forall|k: int| 0 <= k < arr.len() ==> arr[k] != elem),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -10,7 +10,7 @@ fn mpositive(v: &[int]) -> (b: bool)
     ensures b == positive(v@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

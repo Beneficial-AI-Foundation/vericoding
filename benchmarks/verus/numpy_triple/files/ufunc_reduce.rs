@@ -20,7 +20,7 @@ fn reduce(arr: Vec<f64>) -> (result: f64)
         arr.len() > 1 ==> result == fold_left(arr@, (arr.len() - 1) as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

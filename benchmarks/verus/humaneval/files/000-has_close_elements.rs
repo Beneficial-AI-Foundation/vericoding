@@ -11,7 +11,7 @@ fn has_close_elements(numbers: &[i64], threshold: i64) -> (result: bool)
             0 <= i < j < numbers@.len() && abs(numbers[i] - numbers[j]) < threshold,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -44,7 +44,7 @@ fn seg_max_sum(v: &[i32], i: usize) -> (result: (i32, usize))
         sum_max_to_right(v@.map_values(|x: i32| x as int), i as int, result.0 as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

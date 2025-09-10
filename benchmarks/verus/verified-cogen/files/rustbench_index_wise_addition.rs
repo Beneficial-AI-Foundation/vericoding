@@ -21,7 +21,7 @@ fn index_wise_addition(a: &Vec<Vec<i32>>, b: &Vec<Vec<i32>>) -> (c: Vec<Vec<i32>
                 ==> forall|j: int| #![auto] 0 <= j < c[i].len() ==> c[i][j] == a[i][j] + b[i][j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

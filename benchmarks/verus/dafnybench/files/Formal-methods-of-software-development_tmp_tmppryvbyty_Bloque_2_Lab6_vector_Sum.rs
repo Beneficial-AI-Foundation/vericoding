@@ -53,7 +53,7 @@ fn vector_Sum(v: Seq<int>) -> (x: i32)
     ensures x == sum(v)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

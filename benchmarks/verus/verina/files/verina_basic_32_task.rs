@@ -11,7 +11,7 @@ fn swap_first_and_last(a: &Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 1 <= i < result.len() - 1 ==> result[i] == a[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

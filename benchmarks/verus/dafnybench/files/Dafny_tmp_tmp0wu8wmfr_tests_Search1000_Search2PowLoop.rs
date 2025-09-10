@@ -26,7 +26,7 @@ fn search_2_pow_loop(a: &[i32], i: usize, n: usize, x: i32) -> (k: usize)
         forall|r: int| k <= r < (i + n) && 0 <= r < a.len() ==> a@[r] >= x,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -12,7 +12,7 @@ fn mfirstNegative(v: &[int]) -> (result: (bool, usize))
         (result.0 ==> (result.1 < v.len() && v[result.1 as int] < 0 && positive(v@.subrange(0, result.1 as int))))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

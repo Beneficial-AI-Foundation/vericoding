@@ -39,7 +39,7 @@ fn fast_exp(b: u32, n: u32) -> (r: u32)
     ensures r == exp(b as nat, n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

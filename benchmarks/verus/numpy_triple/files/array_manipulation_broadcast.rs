@@ -39,7 +39,7 @@ fn broadcast(x: Vec<f32>, y: Vec<f32>) -> (result: BroadcastObject)
             result.get_element(i, j) == (x[i], y[j])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

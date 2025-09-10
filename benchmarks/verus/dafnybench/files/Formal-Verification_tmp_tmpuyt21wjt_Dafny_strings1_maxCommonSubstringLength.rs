@@ -56,7 +56,7 @@ fn max_common_substring_length(str1: Seq<char>, str2: Seq<char>) -> (len: usize)
         max_common_substring_predicate(str1, str2, len as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

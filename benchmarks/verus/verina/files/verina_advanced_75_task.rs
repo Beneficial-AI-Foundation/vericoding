@@ -24,7 +24,7 @@ fn task_code(sequence: Vec<i32>) -> (result: i32)
                 spec_subarray_sum(sequence@, s, e) <= result as int,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

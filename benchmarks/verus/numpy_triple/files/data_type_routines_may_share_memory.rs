@@ -14,7 +14,7 @@ fn may_share_memory(a: &Vec<f32>, b: &Vec<f32>) -> (result: bool)
         true
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

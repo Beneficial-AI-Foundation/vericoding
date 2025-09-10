@@ -10,7 +10,7 @@ fn split_and_append(l: Seq<int>, n: int) -> (r: Seq<int>)
         forall|i: int| 0 <= i < l.len() ==> r[i] == l[((i + n) as nat % l.len()) as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

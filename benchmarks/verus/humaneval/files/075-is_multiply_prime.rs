@@ -17,7 +17,7 @@ fn is_multiply_prime(x: u32) -> (ans: bool)
             spec_prime(a) && spec_prime(b) && spec_prime(c) && x == a * b * c,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

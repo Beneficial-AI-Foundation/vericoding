@@ -8,7 +8,7 @@ fn split_string_into_chars(s: Vec<char>) -> (v: Vec<char>)
         forall|i: int| 0 <= i < s.len() ==> v[i] == s[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

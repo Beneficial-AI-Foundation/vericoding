@@ -7,7 +7,7 @@ fn no_dups(a: &Vec<i32>) -> (no_dups: bool)
     ensures no_dups <==> forall|j: int| 1 <= j < a.len() ==> a[j-1] != a[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -9,7 +9,7 @@ fn all_characters_same(s: Seq<char>) -> (result: bool)
         !result ==> (s.len() > 0 && exists|i: int| 0 <= i < s.len() && #[trigger] s[i] != s[0]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

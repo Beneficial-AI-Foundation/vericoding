@@ -11,7 +11,7 @@ fn unique(ar: Vec<i32>) -> (result: (usize, Vec<i32>))
         forall|i: int, j: int| 0 <= i < result.1.len() && 0 <= j < result.1.len() && i != j ==> result.1[i as int] != result.1[j as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

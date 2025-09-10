@@ -14,7 +14,7 @@ fn has_close_elements(numbers: &Vec<i32>, threshold: i32) -> (result: bool)
             abs_diff(numbers[i] as int, numbers[j] as int) >= threshold as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

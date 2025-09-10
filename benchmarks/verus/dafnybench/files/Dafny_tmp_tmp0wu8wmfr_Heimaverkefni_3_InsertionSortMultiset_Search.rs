@@ -15,7 +15,7 @@ fn search(s: Seq<int>, x: int) -> (k: usize)
         s == s.subrange(0, k as int).add(s.subrange(k as int, s.len() as int)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

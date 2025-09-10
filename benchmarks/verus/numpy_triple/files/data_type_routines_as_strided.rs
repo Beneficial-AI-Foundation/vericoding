@@ -11,7 +11,7 @@ fn numpy_as_strided(x: &Vec<f32>, stride: usize, m: usize) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < m ==> result[i] == x[i * stride],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

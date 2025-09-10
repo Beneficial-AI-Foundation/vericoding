@@ -14,7 +14,7 @@ fn tril(m: Vec<Vec<f64>>, k: i32) -> (result: Vec<Vec<f64>>)
             #[trigger] result[i][j] == if i >= j - k { m[i][j] } else { 0.0 },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

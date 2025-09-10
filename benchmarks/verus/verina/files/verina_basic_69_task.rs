@@ -10,7 +10,7 @@ fn linear_search(a: &Vec<i32>, e: i32) -> (result: usize)
         forall|k: int| 0 <= k < result ==> a[k] != e,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -11,7 +11,7 @@ fn hermeder(c: Vec<f64>, m: usize, scl: f64) -> (result: Vec<f64>)
         result.len() == c.len() - 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

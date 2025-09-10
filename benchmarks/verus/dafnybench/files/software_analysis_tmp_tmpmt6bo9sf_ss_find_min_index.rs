@@ -35,7 +35,7 @@ fn find_min_index(a: &[int], s: usize, e: usize) -> (min_i: usize)
         forall|k: int| s <= k < e ==> a[min_i as int] <= a[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

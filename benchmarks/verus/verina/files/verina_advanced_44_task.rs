@@ -7,7 +7,7 @@ fn max_subarray_sum_divisible_by_k(arr: &Vec<i32>, k: i32) -> (result: i32)
     ensures true,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

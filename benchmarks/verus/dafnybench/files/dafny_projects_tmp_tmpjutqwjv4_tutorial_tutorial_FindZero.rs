@@ -62,7 +62,7 @@ fn find_zero(a: &[int]) -> (index: i32)
         0 <= index ==> index < a.len() && a[index as int] == 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

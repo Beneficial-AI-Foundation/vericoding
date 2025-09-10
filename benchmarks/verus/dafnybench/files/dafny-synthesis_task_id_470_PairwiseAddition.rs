@@ -10,7 +10,7 @@ fn pairwise_addition(a: &[i32]) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> result[i as int] == a[2*i] + a[2*i + 1],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

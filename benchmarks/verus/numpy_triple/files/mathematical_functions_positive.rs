@@ -8,7 +8,7 @@ fn positive(x: Vec<f32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == x[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -11,7 +11,7 @@ fn abs_impl(x: i32) -> (result: i32)
         (x >= 0 ==> result == x) && (x < 0 ==> x + result == 0),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

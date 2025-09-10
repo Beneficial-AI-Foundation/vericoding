@@ -22,7 +22,7 @@ fn remove_duplicates(numbers: &Vec<i64>) -> (unique_numbers: Vec<i64>)
         unique_numbers@ == numbers@.filter(|x: i64| count_frequency_spec(numbers@, x) == 1),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

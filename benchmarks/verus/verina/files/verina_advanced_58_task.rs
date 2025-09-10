@@ -11,7 +11,7 @@ fn nth_ugly_number(n: u32) -> (result: u32)
     ensures result > 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

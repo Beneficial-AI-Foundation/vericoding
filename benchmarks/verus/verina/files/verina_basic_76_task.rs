@@ -7,7 +7,7 @@ fn my_min(x: i32, y: i32) -> (result: i32)
         (x <= y ==> result == x) && (x > y ==> result == y),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

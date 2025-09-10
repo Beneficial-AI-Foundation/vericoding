@@ -24,7 +24,7 @@ fn selection_sort(a: &mut Vec<i32>)
     ensures sorted(old(a)@, a@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -15,7 +15,7 @@ fn longest_increasing_subsequence(nums: &Vec<i32>) -> (max: i32)
         max >= 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

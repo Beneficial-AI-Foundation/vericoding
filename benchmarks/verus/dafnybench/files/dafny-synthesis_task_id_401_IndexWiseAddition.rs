@@ -14,7 +14,7 @@ fn index_wise_addition(a: Seq<Seq<int>>, b: Seq<Seq<int>>) -> (result: Seq<Seq<i
             result[i][j] == a[i][j] + b[i][j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

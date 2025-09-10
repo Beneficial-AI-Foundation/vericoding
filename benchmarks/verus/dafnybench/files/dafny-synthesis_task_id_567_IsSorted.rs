@@ -10,7 +10,7 @@ fn is_sorted(a: &[i32]) -> (sorted: bool)
         !sorted ==> exists|i: int, j: int| 0 <= i < j < a.len() && a[i] > a[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

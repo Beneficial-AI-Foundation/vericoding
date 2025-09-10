@@ -13,7 +13,7 @@ fn swap(arr: &Vec<i32>, i: usize, j: usize) -> (result: Vec<i32>)
         forall|k: int| 0 <= k < arr.len() && k != i && k != j ==> result[k] == arr[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

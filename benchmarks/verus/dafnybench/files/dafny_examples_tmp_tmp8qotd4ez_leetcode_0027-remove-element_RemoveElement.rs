@@ -10,7 +10,7 @@ fn remove_element(nums: &mut Vec<i32>, val: i32) -> (newLength: usize)
             old(nums)@.to_multiset().remove(val),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

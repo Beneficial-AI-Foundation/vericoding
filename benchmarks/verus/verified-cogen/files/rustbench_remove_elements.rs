@@ -13,7 +13,7 @@ fn remove_elements(a: &Vec<i32>, b: &Vec<i32>) -> (c: Vec<i32>)
         forall|i: int, j: int| 0 <= i < j < c.len() ==> c[i] != c[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

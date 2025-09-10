@@ -11,7 +11,7 @@ fn average(a: Vec<f32>, weights: Option<Vec<f32>>) -> (result: f32)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

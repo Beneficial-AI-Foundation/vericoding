@@ -10,7 +10,7 @@ fn tri(n: usize, m: usize, k: i32) -> (result: Vec<Vec<f64>>)
             result[i][j] == if j <= i + k { 1.0 } else { 0.0 }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

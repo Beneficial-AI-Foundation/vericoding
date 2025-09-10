@@ -7,7 +7,7 @@ fn difference_sum_cubes_and_sum_numbers(n: u32) -> (diff: u32)
     ensures diff == (n * n * (n + 1) * (n + 1)) / 4 - (n * (n + 1)) / 2
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

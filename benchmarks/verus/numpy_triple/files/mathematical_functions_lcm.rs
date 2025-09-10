@@ -22,7 +22,7 @@ fn lcm(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
             (x1[i] != 0 && x2[i] != 0) ==> result[i] > 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

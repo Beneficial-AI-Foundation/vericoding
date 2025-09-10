@@ -19,7 +19,7 @@ fn second_smallest(s: &[i32]) -> (second_smallest: i32)
         forall|k: int| 0 <= k < s.len() && s[k] != min(s@) ==> s[k] >= second_smallest
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

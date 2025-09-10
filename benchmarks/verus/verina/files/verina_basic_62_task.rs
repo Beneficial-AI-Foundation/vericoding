@@ -9,7 +9,7 @@ fn find(a: &Vec<i32>, key: i32) -> (result: i32)
         result == -1 ==> forall|i: int| 0 <= i < a.len() ==> a[i] != key,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

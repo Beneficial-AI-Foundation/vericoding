@@ -19,7 +19,7 @@ fn fibonacci_iterative(n: u64) -> (f: u64)
     ensures f == fibonacci(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

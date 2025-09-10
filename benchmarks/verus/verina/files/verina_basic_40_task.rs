@@ -17,7 +17,7 @@ fn second_smallest(s: &Vec<i32>) -> result: i32
     ensures second_smallest_postcond(s, result)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

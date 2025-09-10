@@ -20,7 +20,7 @@ fn sum_product(numbers: Vec<u32>) -> (result: (u64, Option<u32>))
         result.1 matches Some(v) ==> v == product(numbers@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

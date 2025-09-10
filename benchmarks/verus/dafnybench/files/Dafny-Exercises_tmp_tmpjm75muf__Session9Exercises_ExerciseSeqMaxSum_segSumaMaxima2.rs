@@ -44,7 +44,7 @@ fn seg_suma_maxima2(v: &[i32], i: usize) -> (result: (i32, usize))
         sum_max_to_right2(v@, 0, i as int, result.0 as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

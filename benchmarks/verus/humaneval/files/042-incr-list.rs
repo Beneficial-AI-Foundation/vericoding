@@ -12,7 +12,7 @@ fn incr_list(l: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < l.len() ==> #[trigger] result[i] == l[i] + 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

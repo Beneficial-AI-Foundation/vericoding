@@ -14,7 +14,7 @@ fn search(a: &[i32]) -> (ret: (i32, i32))
     ensures ret.0 != ret.1 && is_duplicate(a@.map(|i, x| x as int), ret.0 as int) && is_duplicate(a@.map(|i, x| x as int), ret.1 as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

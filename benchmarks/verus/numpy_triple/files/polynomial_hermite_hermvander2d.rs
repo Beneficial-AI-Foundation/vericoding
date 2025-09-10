@@ -22,7 +22,7 @@ fn hermvander2d(x: Vec<i32>, y: Vec<i32>, xdeg: usize, ydeg: usize) -> (result: 
         forall|k: int| 0 <= k < result.len() ==> #[trigger] result[k][0] == 1
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

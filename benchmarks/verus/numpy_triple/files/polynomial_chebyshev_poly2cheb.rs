@@ -17,7 +17,7 @@ fn poly2cheb(pol: Vec<f64>) -> (result: Vec<f64>)
             (result[0] == 0.0 && result[1] == 0.75 && result[2] == 0.0 && result[3] == 0.25)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

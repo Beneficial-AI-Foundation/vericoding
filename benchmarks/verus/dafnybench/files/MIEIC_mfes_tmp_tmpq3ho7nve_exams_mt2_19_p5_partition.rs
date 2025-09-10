@@ -14,7 +14,7 @@ fn partition(a: &mut Vec<T>) -> (pivotPos: usize)
         a@.to_multiset() == old(a)@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

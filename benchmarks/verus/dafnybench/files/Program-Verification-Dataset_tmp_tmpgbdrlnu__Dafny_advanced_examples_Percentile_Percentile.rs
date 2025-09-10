@@ -30,7 +30,7 @@ fn percentile(p: int, a: &[int], total: int) -> (i: i32)
         i as int + 1 < a.len() ==> sum_upto(a@, i as int + 1) > (p * total) / 100,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

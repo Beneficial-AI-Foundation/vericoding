@@ -8,7 +8,7 @@ fn invert_array(a: &mut Vec<i32>)
         forall|i: int| 0 <= i < a.len() ==> a[i] == old(a)[a.len() - 1 - i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

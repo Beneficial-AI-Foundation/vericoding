@@ -12,7 +12,7 @@ fn myfun1(x: &Vec<i32>) -> (max_index: usize)
         max_index < x.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

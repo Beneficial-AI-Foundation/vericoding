@@ -7,7 +7,7 @@ fn NPY_LOG2E() -> (result: f64)
         result == 1.442695040888963407359924681001892137,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

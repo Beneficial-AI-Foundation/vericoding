@@ -19,7 +19,7 @@ fn Product(m: u64, n: u64) -> (res: u64)
 ensures res == m * n
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

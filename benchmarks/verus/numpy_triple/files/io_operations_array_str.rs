@@ -9,7 +9,7 @@ fn array_str(a: Vec<f32>) -> (result: String)
         a.len() > 0 ==> result@[0] == '[' && result@[(result@.len() - 1) as int] == ']',
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

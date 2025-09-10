@@ -20,7 +20,7 @@ fn lagval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
         result.len() == x.len() && result.len() == y.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

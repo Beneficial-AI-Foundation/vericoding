@@ -17,7 +17,7 @@ fn find_first_odd(arr: &Vec<u32>) -> (index: Option<usize>)
     ensures check_find_first_odd(arr, index),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

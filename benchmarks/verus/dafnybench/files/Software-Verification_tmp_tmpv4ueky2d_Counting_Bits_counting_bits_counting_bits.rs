@@ -9,7 +9,7 @@ fn counting_bits(n: usize) -> (result: Vec<usize>)
                 #[trigger] result[i as int] == result[(i / 2) as int] + (i % 2) as usize)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

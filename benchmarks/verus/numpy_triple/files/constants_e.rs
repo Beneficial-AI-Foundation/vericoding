@@ -5,7 +5,7 @@ verus! {
 fn e() -> (result: f64)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

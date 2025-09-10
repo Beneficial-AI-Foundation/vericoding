@@ -43,7 +43,7 @@ fn hermefromroots(roots: Vec<f64>) -> (coeffs: Vec<f64>)
         (roots.len() > 0 ==> coeffs.len() == roots.len() + 1),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

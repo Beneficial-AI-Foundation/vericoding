@@ -10,7 +10,7 @@ fn delete(line: &mut Vec<char>, l: usize, at: usize, p: usize)
         line@ == old(line)@.subrange(0, at as int) + old(line)@.subrange((at + p) as int, l as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

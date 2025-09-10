@@ -16,7 +16,7 @@ fn resize<T>(a: Vec<T>, new_size: usize) -> (result: Vec<T>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

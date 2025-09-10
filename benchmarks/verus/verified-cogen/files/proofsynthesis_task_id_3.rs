@@ -15,7 +15,7 @@ fn is_non_prime(n: u64) -> (result: bool)
         result == (exists|k: int| 2 <= k < n && is_divisible(n as int, k)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

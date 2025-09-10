@@ -13,7 +13,7 @@ fn isneginf(x: Vec<f32>) -> (result: Vec<bool>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

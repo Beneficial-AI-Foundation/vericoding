@@ -13,7 +13,7 @@ fn column_stack(arrays: Vec<Vec<f32>>) -> (result: Vec<f32>)
             result[j * arrays[0].len() + i] == arrays[j][i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

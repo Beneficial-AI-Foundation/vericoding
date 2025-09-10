@@ -11,7 +11,7 @@ fn is_sorted(lst: &[i32]) -> (result: bool)
         !result ==> exists|i: int, j: int| 0 <= i && i < j && j < lst.len() && lst[i] > lst[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

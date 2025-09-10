@@ -36,7 +36,7 @@ fn to_toggle_case(str1: &Vec<char>) -> (toggle_case: Vec<char>)
             0 <= i < str1.len() ==> toggle_case[i] == to_toggle_case_spec(#[trigger] str1[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

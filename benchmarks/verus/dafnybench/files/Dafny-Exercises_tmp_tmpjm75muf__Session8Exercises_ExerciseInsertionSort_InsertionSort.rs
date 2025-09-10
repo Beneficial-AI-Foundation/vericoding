@@ -14,7 +14,7 @@ fn insertion_sort(a: &mut Vec<i32>)
         a@.to_multiset() == old(a)@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -9,7 +9,7 @@ fn extract_rear_chars(l: &Vec<Vec<char>>) -> (r: Vec<char>)
         && forall|i: int| 0 <= i < l.len() ==> r[i] == l[i][l[i].len() - 1]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

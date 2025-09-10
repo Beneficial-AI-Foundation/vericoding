@@ -11,7 +11,7 @@ fn rot90(m: Vec<Vec<f32>>, k: i32) -> (result: Vec<Vec<f32>>)
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == m.len()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -17,7 +17,7 @@ fn string3_sort(a: Seq<char>) -> (b: Seq<char>)
         seq![b[0], b[1], b[2]].to_multiset() == seq![a[0], a[1], a[2]].to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

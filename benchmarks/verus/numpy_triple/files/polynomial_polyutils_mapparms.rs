@@ -15,7 +15,7 @@ fn mapparms(old: [i32; 2], new: [i32; 2]) -> (result: (i32, i32))
     })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

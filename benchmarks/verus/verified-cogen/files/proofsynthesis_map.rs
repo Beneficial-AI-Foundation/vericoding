@@ -12,7 +12,7 @@ fn myfun2(x: &mut Vec<i32>)
         forall |k:int| 0 <= k < x.len() ==> #[trigger] x@[k] == old(x)@[k] + 4,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

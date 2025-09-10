@@ -10,7 +10,7 @@ fn get_mini(a: &[i32]) -> (mini: usize)
         forall|x: usize| 0 <= x < mini ==> a[mini as int] < a[x as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -23,7 +23,7 @@ fn foo_count(count_index: usize, a: &Vec<int>, b: &mut Vec<int>) -> (p: usize)
     decreases count_index
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

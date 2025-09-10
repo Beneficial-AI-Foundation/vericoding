@@ -22,7 +22,7 @@ fn get_random_data_entry<T: PartialEq + Clone>(m_work_list: &Vec<T>, avoid_set: 
         avoid_set@ != m_work_list@ ==> m_work_list@.contains(e)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

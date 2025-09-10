@@ -9,7 +9,7 @@ fn splitlines(a: Vec<String>, keepends: bool) -> (result: Vec<Vec<String>>)
         forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i].len() >= 1
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

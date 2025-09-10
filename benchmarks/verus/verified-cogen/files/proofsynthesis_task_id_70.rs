@@ -13,7 +13,7 @@ fn all_sequence_equal_length(seq: &Vec<Vec<i32>>) -> (result: bool)
                 == #[trigger] seq[j].len())),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -17,7 +17,7 @@ fn around(a: Vec<i32>, decimals: i32) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < a.len() && a[i] >= 0 ==> result[i] >= 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

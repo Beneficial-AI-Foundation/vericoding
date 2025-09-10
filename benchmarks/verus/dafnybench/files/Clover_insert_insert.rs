@@ -13,7 +13,7 @@ fn insert(line: &mut Vec<char>, l: int, nl: &Vec<char>, p: int, at: int)
         forall|i: int| (at + p <= i < l + p) ==> line[i] == old(line)[i - p],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

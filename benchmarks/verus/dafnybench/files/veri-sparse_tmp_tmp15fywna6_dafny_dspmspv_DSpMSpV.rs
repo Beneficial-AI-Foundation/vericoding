@@ -70,7 +70,7 @@ fn DSpMSpV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], X_crd1: &[nat], X_len: n
         }})
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

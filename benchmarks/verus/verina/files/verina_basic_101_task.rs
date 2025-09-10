@@ -8,7 +8,7 @@ fn triple(x: i32) -> (result: i32)
         result / 3 * 3 == result,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

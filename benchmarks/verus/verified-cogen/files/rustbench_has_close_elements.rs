@@ -15,7 +15,7 @@ fn has_close_elements(numbers: &[i32], threshold: i32) -> (flag: bool)
         flag == exists|i: int, j: int| 0 <= i && 0 <= j && i < numbers.len() && j < numbers.len() && i != j && abs_spec(numbers[i] - numbers[j]) < threshold
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -22,7 +22,7 @@ fn fibfib(x: u32) -> (ret: Option<u32>)
         ret.is_some() ==> spec_fibfib(x as nat) == ret.unwrap(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

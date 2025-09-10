@@ -14,7 +14,7 @@ fn string_swap(s: Seq<char>, i: nat, j: nat) -> (t: Seq<char>)
         s.len() == 0 ==> t == s,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

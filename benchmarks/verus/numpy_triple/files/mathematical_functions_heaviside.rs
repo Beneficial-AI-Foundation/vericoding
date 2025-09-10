@@ -26,7 +26,7 @@ fn heaviside(x1: Vec<f32>, x2: Vec<f32>) -> (result: Vec<f32>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -20,7 +20,7 @@ fn eig(a: Vec<Vec<f32>>) -> (result: (Vec<f32>, Vec<Vec<f32>>))
             exists|row: int| 0 <= row < a.len() && result.1[row][col] != 0.0f32,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

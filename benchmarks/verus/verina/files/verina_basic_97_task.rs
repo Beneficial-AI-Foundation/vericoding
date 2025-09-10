@@ -10,7 +10,7 @@ fn test_array_elements(a: &Vec<i32>, j: usize) -> (result: Vec<i32>)
         forall|k: int| 0 <= k < a.len() && k != j ==> result[k] == a[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

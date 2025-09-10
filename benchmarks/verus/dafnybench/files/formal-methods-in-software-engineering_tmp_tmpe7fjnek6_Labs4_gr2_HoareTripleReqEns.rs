@@ -39,7 +39,7 @@ proof fn HoareTripleReqEns_correctness(i: int, k: int)
 }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

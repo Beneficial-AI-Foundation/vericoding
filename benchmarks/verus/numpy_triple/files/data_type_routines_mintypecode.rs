@@ -62,7 +62,7 @@ fn mintypecode(typechars: Vec<char>, typeset: Vec<char>, default: char) -> (resu
     })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

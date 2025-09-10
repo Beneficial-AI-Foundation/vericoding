@@ -12,7 +12,7 @@ fn increasing_triplet(nums: &Vec<i32>) -> (result: bool)
             !(nums[i] < nums[j] && nums[j] < nums[k]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

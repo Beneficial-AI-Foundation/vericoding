@@ -12,7 +12,7 @@ fn hermfromroots(roots: Vec<f64>) -> (coef: Vec<f64>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

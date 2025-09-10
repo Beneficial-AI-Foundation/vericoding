@@ -15,7 +15,7 @@ fn interleave(s1: &Vec<i32>, s2: &Vec<i32>, s3: &Vec<i32>) -> (res: Vec<i32>)
                 == s3[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

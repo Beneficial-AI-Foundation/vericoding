@@ -8,7 +8,7 @@ fn is_greater(n: i32, a: &[i32]) -> (result: bool)
         !result ==> exists|i: int| 0 <= i < a.len() && n <= a[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

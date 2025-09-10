@@ -8,7 +8,7 @@ fn mod_func(a: Vec<String>, values: Vec<String>) -> (result: Vec<String>)
         result.len() == a.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -7,7 +7,7 @@ fn contains_z(s: &str) -> (result: bool)
         result <==> exists|i: int| 0 <= i < s@.len() && (s@[i] == 'z' || s@[i] == 'Z'),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

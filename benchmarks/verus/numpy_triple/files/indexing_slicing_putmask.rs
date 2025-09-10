@@ -19,7 +19,7 @@ fn putmask(a: Vec<f32>, mask: Vec<bool>, values: Vec<f32>) -> (result: Vec<f32>)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

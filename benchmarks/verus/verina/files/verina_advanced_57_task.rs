@@ -10,7 +10,7 @@ fn next_greater_element(nums1: &Vec<i32>, nums2: &Vec<i32>) -> (result: Vec<i32>
         result.len() == nums1.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

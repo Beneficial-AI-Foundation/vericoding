@@ -20,7 +20,7 @@ fn greater(x1: &Vec<String>, x2: &Vec<String>) -> (result: Vec<bool>)
             (x1[i]@ == x2[i]@) ==> (result[i] == false),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -11,7 +11,7 @@ fn longest_common_prefix(str1: &Vec<char>, str2: &Vec<char>) -> (result: Vec<cha
             (result.len() < str1.len() && result.len() < str2.len() && str1[result.len() as int] != str2[result.len() as int]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

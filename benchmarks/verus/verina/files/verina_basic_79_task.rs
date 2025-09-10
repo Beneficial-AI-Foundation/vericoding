@@ -17,7 +17,7 @@ fn online_max(a: &Vec<i32>, x: usize) -> (result: (i32, usize))
         })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

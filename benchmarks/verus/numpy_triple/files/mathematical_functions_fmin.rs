@@ -9,7 +9,7 @@ fn fmin(x: Vec<f32>, y: Vec<f32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < x.len() ==> #[trigger] result[i] == x[i] || #[trigger] result[i] == y[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

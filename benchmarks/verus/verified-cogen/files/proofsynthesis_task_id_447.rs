@@ -18,7 +18,7 @@ fn cube_element(nums: &Vec<i32>) -> (cubed: Vec<i32>)
                 * #[trigger] nums[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

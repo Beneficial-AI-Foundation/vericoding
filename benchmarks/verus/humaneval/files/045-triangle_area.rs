@@ -14,7 +14,7 @@ fn triangle_area(a: u64, h: u64) -> (area: u64)
         area == a * h / 2,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

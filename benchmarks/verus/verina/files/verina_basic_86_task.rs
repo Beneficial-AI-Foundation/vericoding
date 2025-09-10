@@ -12,7 +12,7 @@ fn rotate(a: &Vec<i32>, offset: int) -> (result: Vec<i32>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

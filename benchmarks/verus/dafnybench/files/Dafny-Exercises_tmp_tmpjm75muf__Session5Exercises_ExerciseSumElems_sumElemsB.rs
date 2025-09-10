@@ -35,7 +35,7 @@ fn sum_elems_b(v: &[i32]) -> (sum: i32)
 ensures sum as int == sum_r(v@.map(|i, x| x as int))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -14,7 +14,7 @@ fn A8Q1(y0: int, x: int) -> (z: int)
     ensures z == power(x, y0)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

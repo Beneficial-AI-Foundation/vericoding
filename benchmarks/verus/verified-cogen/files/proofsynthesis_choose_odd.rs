@@ -11,7 +11,7 @@ fn choose_odd(v: &Vec<u64>) -> (odd_index: usize)
         odd_index < v.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

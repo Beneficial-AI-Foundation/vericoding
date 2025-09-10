@@ -29,7 +29,7 @@ fn add(lst: Vec<u32>) -> (sum: u64)
         sum == add_odd_evens(lst@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

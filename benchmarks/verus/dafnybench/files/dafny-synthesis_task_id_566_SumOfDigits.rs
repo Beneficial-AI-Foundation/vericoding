@@ -38,7 +38,7 @@ fn sum_of_digits(number: u64) -> (sum: u64)
         sum == sum_digits(number as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -13,7 +13,7 @@ fn myfun(a: &mut Vec<usize>, sum: &mut Vec<usize>, N: usize)
 		sum[0] <= N,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -10,7 +10,7 @@ fn partition(a: &mut Vec<i32>) -> (lo: usize, hi: usize)
         forall|x: int| hi <= x < a.len() ==> a[x as int] > 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

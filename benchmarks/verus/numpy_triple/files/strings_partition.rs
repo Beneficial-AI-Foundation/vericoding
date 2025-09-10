@@ -21,7 +21,7 @@ fn partition(a: Vec<String>, sep: String) -> (result: (Vec<String>, Vec<String>,
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

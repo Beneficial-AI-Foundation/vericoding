@@ -23,7 +23,7 @@ fn expandtabs(a: Vec<String>, tabsize: Vec<usize>) -> (result: Vec<String>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

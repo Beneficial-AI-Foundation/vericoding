@@ -8,7 +8,7 @@ fn numpy_round(a: Vec<f64>, decimals: i32) -> (result: Vec<f64>)
         result.len() == a.len()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

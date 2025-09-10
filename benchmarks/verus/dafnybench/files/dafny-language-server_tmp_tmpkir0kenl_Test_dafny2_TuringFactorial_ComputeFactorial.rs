@@ -13,7 +13,7 @@ fn compute_factorial(n: i32) -> (u: i32)
     ensures u == factorial(n as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

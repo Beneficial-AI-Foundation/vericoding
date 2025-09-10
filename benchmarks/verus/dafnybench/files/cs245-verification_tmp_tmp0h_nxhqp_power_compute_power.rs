@@ -14,7 +14,7 @@ fn compute_power(a: u64, n: u64) -> (s: u64)
     ensures s as int == power(a as int, n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

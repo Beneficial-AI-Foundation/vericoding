@@ -10,7 +10,7 @@ fn abs(x: i32) -> (result: i32)
         result == x || result == -x,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

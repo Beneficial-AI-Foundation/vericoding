@@ -15,7 +15,7 @@ fn fibonacci1(n: u64) -> (f: u64)
     ensures f == fib(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -19,7 +19,7 @@ fn min_array(a: &Vec<i32>) -> (m: i32)
         exists|k: int| 0 <= k < a.len() && m == a[k]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

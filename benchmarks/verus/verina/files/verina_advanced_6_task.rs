@@ -25,7 +25,7 @@ fn all_vowels(s: &str) -> (result: bool)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

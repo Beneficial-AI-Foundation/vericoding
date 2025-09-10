@@ -21,7 +21,7 @@ fn polyvander2d(x: Vec<f64>, y: Vec<f64>, x_deg: usize, y_deg: usize) -> (result
         forall|k: int| 0 <= k < result.len() ==> #[trigger] result[k].len() == (x_deg + 1) * (y_deg + 1),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

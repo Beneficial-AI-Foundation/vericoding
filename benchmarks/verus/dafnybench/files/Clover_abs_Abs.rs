@@ -8,7 +8,7 @@ proof fn abs(x: int) -> (y: int)
         x < 0 ==> x + y == 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

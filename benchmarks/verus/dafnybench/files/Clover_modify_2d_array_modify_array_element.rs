@@ -19,7 +19,7 @@ fn modify_array_element(arr: &mut Vec<Vec<nat>>, index1: usize, index2: usize, v
       arr[index1 as int][index2 as int] == val,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

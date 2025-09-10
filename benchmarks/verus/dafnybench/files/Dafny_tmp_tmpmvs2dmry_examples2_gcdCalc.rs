@@ -33,7 +33,7 @@ fn gcd_calc(m: u32, n: u32) -> (res: u32)
     ensures res == gcd(m as nat, n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

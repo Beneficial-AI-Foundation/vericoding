@@ -27,7 +27,7 @@ fn histogram(data: Vec<i32>, n_bins: usize, min_val: i32, max_val: i32) -> (resu
         sum_seq(result.0@) == data@.filter(|x: i32| min_val <= x && x <= max_val).len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -28,7 +28,7 @@ fn longest_increasing_subseq_length(xs: &Vec<i32>) -> (result: usize)
             ==> subseq.len() <= result,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

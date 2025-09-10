@@ -15,7 +15,7 @@ fn rolling_max(numbers: Vec<int>) -> (result: Vec<int>)
         forall|i: int| 0 < i < result.len() ==> isMax(result[i], numbers@.subrange(0, i + 1)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

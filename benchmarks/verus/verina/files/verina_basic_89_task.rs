@@ -14,7 +14,7 @@ fn set_to_seq(s: &Vec<i32>) -> (result: Vec<i32>)
             exists|j: int| 0 <= j < result.len() && result[j] == #[trigger] s[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

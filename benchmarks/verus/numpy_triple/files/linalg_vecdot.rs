@@ -19,7 +19,7 @@ fn vecdot(x1: Vec<i32>, x2: Vec<i32>) -> (result: i32)
         result as int == dot_product_spec(x2@, x1@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

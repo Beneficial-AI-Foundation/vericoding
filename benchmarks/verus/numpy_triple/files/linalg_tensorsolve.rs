@@ -26,7 +26,7 @@ fn tensorsolve(a: Vec<Vec<f64>>, b: Vec<f64>) -> (result: Vec<f64>)
         forall|i: int| 0 <= i < a.len() ==> #[trigger] b[i] == b[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

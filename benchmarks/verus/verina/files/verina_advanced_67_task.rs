@@ -13,7 +13,7 @@ fn run_length_encode(s: &Vec<char>) -> (result: Vec<(char, usize)>)
         decode_rle(result) == s@,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

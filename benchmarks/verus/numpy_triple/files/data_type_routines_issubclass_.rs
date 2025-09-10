@@ -108,7 +108,7 @@ fn issubclass_(arg1: NumpyTypeClass, arg2: NumpyTypeClass) -> (result: bool)
         (arg1 == NumpyTypeClass::ComplexType && arg2 == NumpyTypeClass::ScalarType) ==> (result == true)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

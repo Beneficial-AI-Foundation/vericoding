@@ -29,7 +29,7 @@ fn swap(arr: &mut Vec<int>, i: usize, j: usize)
         arr@.to_multiset() == old(arr)@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

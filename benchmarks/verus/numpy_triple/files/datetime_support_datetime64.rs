@@ -48,7 +48,7 @@ fn datetime64(offset: i64, unit: TimeUnit) -> (result: DateTime64)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

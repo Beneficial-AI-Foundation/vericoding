@@ -22,7 +22,7 @@ fn pluck_smallest_even(nodes: &Vec<u32>) -> (result: Vec<u32>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

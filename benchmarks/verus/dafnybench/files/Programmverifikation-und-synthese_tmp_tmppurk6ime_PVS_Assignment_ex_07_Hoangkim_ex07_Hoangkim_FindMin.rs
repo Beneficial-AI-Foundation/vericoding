@@ -15,7 +15,7 @@ fn find_min(a: &[int], lo: usize) -> (minIdx: usize)
         forall|x: int| lo <= x < a.len() ==> a[minIdx as int] <= a[x],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

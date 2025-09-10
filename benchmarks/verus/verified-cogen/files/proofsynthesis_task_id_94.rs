@@ -14,7 +14,7 @@ fn min_second_value_first(arr: &Vec<Vec<i32>>) -> (first_of_min_second: i32)
                 0 <= j < arr.len() ==> (arr[i][1] <= #[trigger] arr[j][1])),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

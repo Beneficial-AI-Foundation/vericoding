@@ -8,7 +8,7 @@ fn iter_copy(s: &Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < s.len() ==> s[i] == result[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -17,7 +17,7 @@ fn swap<T>(a: &mut Vec<T>, i: usize, j: usize)
         a@.to_multiset() == old(a)@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

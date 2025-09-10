@@ -8,7 +8,7 @@ fn count_arrays(arrays: &Vec<Vec<i32>>) -> (count: usize)
         count == arrays.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

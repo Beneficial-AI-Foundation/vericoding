@@ -13,7 +13,7 @@ fn strip(a: Vec<String>, chars: Option<String>) -> (result: Vec<String>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

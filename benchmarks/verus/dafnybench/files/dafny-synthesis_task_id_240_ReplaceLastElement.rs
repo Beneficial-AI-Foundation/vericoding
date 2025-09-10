@@ -11,7 +11,7 @@ fn replace_last_element(first: &Vec<i32>, second: &Vec<i32>) -> (result: Vec<i32
         forall|i: int| first.len() - 1 <= i < result.len() ==> result[i] == second[i - first.len() + 1],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

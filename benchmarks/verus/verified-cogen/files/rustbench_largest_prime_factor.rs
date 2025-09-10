@@ -15,7 +15,7 @@ fn largest_prime_factor(n: u32) -> (result: u32)
         result == 1 || (result > 1 && is_prime_pred(result))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

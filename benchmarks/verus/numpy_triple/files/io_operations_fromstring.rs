@@ -9,7 +9,7 @@ fn fromstring(input: &str, sep: &str, n: usize) -> (result: Vec<f64>)
         forall|i: int| 0 <= i < result.len() ==> true,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -16,7 +16,7 @@ fn replace(a: Vec<String>, old: Vec<String>, new: Vec<String>, count: Vec<i32>) 
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

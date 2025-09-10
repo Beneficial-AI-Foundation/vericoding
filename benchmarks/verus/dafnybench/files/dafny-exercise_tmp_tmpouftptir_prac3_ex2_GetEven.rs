@@ -14,7 +14,7 @@ fn get_even(s: &mut Vec<nat>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

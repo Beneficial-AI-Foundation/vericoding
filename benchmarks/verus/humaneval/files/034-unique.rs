@@ -13,7 +13,7 @@ fn unique(s: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| #![trigger s[i]] 0 <= i < s.len() ==> result@.contains(s[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

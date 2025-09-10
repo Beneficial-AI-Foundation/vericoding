@@ -11,7 +11,7 @@ fn ldexp(x1: Vec<f32>, x2: Vec<i32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == ldexp_value(x1[i], x2[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

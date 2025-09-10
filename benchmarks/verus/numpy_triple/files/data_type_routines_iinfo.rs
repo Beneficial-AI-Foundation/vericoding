@@ -44,7 +44,7 @@ fn iinfo(int_type: IntType) -> (info: IntInfo)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

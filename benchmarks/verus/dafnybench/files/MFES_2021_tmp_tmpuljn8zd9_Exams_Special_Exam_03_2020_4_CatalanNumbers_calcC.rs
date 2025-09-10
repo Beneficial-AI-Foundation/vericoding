@@ -16,7 +16,7 @@ fn calcC(n: u64) -> (res: u64)
     ensures res == C(n as nat),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

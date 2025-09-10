@@ -9,7 +9,7 @@ fn all_prefixes(s: &Vec<u8>) -> (prefixes: Vec<Vec<u8>>)
         forall|i: int| #![auto] 0 <= i < s.len() ==> prefixes[i]@ == s@.subrange(0, i + 1),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

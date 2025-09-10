@@ -12,7 +12,7 @@ fn myfun(a: &mut Vec<u32>, N: u32) -> (sum: u32)
         sum <= 2*N,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

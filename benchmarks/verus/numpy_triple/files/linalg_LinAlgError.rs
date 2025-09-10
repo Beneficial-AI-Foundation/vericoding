@@ -25,7 +25,7 @@ fn check_lin_alg_error(condition: bool, error_type: spec_fn(String) -> LinAlgErr
         condition == false ==> result == None::<LinAlgError>,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -25,7 +25,7 @@ fn gcd_i(m: int, n: int) -> (d: int)
     ensures d == gcd(m, n)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

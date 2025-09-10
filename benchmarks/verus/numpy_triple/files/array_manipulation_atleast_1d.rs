@@ -8,7 +8,7 @@ fn atleast_1d(arr: Vec<f64>) -> (result: Vec<f64>)
         forall|i: int| 0 <= i < arr.len() ==> result[i] == arr[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

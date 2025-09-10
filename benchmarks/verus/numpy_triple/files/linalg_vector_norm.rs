@@ -10,7 +10,7 @@ fn vector_norm(x: Vec<i32>, p: i32) -> (result: i32)
         result >= 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

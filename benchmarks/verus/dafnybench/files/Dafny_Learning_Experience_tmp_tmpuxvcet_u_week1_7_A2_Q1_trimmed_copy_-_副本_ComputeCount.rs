@@ -20,7 +20,7 @@ fn compute_count(count_index: usize, a: Seq<int>, b: &mut Vec<int>) -> (p: usize
     ensures p == count(count_index as nat, a)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

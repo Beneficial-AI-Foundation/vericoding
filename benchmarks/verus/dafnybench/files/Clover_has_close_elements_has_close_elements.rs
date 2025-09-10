@@ -15,7 +15,7 @@ fn has_close_elements(numbers: Seq<int>, threshold: int) -> (res: bool)
             abs_diff(numbers[i], numbers[j]) >= threshold),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

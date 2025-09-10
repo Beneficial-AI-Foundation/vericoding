@@ -36,7 +36,7 @@ fn second_smallest(numbers: &Vec<i32>) -> (indices: (usize, usize))
                 == numbers[indices.1 as int]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

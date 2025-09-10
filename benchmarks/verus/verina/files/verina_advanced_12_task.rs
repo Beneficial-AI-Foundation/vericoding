@@ -13,7 +13,7 @@ fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

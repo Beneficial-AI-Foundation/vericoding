@@ -48,7 +48,7 @@ fn solve(s: Vec<char>) -> (result: Vec<char>)
         no_letters(s@, s@.len() as nat) ==> is_reverse(result@, s@)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

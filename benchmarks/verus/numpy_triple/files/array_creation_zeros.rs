@@ -16,7 +16,7 @@ fn zeros(n: usize) -> (result: Vec<i32>)
         n > 0 ==> result[0] == 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

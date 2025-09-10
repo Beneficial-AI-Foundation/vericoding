@@ -23,7 +23,7 @@ proof fn queryFast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
     ensures r == sum(a, i, j)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

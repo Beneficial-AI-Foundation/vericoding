@@ -11,7 +11,7 @@ fn min_second_value_first(s: &Vec<Vec<i32>>) -> (first_of_min_second: i32)
             (forall|j: int| 0 <= j < s.len() ==> s@[i]@[1] <= s@[j]@[1]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

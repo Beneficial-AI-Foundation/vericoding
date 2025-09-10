@@ -12,7 +12,7 @@ fn chebpts2(n: usize) -> (result: Vec<f32>)
         result[(n-1) as int] == 1.0f32,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

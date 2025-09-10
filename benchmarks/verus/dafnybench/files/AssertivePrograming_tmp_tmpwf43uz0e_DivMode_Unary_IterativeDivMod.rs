@@ -97,7 +97,7 @@ fn iterative_div_mod(x: Unary, y: Unary) -> (res: (Unary, Unary))
     ensures add(mul(res.0, y), res.1) == x && less(res.1, y)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

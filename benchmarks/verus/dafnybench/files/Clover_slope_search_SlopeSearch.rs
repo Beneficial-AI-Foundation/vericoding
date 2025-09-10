@@ -25,7 +25,7 @@ fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (usize, usize))
       a@[result.0 as int]@[result.1 as int] == key
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

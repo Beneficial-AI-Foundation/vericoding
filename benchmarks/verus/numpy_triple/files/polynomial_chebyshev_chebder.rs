@@ -12,7 +12,7 @@ fn chebder(c: Vec<i32>, scl: i32) -> (result: Vec<i32>)
             result[j] == scl * (2 * ((j + 1) as i32)) * c[j + 1],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -13,7 +13,7 @@ fn mod2(n: u32) -> (a: u32)
     ensures a == f2(n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

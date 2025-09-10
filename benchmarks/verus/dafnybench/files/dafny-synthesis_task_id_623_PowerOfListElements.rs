@@ -15,7 +15,7 @@ fn power_of_list_elements(l: Vec<i32>, n: u32) -> (result: Vec<i32>)
         forall|i: int| #![auto] 0 <= i < l.len() ==> result[i] == power(l[i] as int, n as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

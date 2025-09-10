@@ -12,7 +12,7 @@ fn rotate_right(l: &Vec<i32>, n: usize) -> (result: Vec<i32>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

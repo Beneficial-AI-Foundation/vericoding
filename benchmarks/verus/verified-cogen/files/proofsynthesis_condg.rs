@@ -13,7 +13,7 @@ fn myfun(a: &mut Vec<i32>, sum: &mut Vec<i32>, N: i32)
 		forall |k:int| 0 <= k < N ==> a[k] == 0,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

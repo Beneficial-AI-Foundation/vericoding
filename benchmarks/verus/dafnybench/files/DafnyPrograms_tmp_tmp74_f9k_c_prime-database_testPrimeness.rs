@@ -51,7 +51,7 @@ fn test_primeness(n: nat) -> (result: bool)
       ensures result <==> prime(n),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

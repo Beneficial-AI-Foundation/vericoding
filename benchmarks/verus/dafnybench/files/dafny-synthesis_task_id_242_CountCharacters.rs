@@ -8,7 +8,7 @@ fn count_characters(s: Seq<char>) -> (count: usize)
         count == s.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

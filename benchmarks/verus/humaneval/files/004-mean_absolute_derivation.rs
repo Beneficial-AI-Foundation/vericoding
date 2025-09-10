@@ -65,7 +65,7 @@ fn mean_absolute_deviation(numbers: &[i32]) -> (result: u32)
         result == spec_mean_absolute_deviation(numbers@.map(|_index, n: i32| n as int)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

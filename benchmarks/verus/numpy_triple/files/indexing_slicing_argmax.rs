@@ -11,7 +11,7 @@ fn argmax(arr: &Vec<i32>) -> (result: usize)
         forall|i: int| (result as int) < i && i < arr.len() ==> arr@[i] <= arr@[result as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

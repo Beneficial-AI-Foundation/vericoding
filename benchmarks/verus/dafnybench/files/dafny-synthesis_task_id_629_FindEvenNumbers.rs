@@ -14,7 +14,7 @@ fn find_even_numbers(arr: &[i32]) -> (even_list: Vec<i32>)
         forall|i: int| 0 <= i < arr.len() && is_even(arr[i] as int) ==> exists|j: int| 0 <= j < even_list.len() && even_list[j] == arr[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

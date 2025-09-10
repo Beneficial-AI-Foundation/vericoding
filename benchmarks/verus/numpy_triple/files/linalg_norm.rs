@@ -7,7 +7,7 @@ fn norm(x: Vec<f32>) -> (result: f32)
     ensures true,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

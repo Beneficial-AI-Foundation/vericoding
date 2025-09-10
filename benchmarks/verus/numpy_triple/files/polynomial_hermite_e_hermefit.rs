@@ -59,7 +59,7 @@ fn hermefit(x: Vec<i32>, y: Vec<i32>, deg: usize) -> (result: Vec<i32>)
         result.len() == deg + 1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

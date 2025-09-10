@@ -9,7 +9,7 @@ fn legline(off: f32, scl: f32) -> (result: Vec<f32>)
         result[1] == scl
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

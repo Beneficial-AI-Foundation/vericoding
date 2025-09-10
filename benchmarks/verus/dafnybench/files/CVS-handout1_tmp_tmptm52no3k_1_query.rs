@@ -22,7 +22,7 @@ fn query(a: &[int], i: usize, j: usize) -> (res: i64)
     ensures res == sum(a, i as int, j as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

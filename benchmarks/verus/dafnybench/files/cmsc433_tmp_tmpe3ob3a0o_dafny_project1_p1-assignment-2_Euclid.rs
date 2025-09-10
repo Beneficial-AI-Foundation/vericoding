@@ -7,7 +7,7 @@ fn euclid(m: int, n: int) -> (gcd: int)
     ensures gcd > 0 && gcd <= n && gcd <= m && m % gcd == 0 && n % gcd == 0
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

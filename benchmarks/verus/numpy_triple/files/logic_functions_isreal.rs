@@ -22,7 +22,7 @@ fn isreal(x: &Vec<Complex>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < x.len() ==> (result[i] == true <==> x[i].imag == 0.0),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

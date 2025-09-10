@@ -21,7 +21,7 @@ fn count(v: i32, a: &[i32], n: usize) -> (r: i32)
     ensures n <= a.len() ==> has_count(v as int, a@.map_values(|x: i32| x as int), n as nat) == r as int
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

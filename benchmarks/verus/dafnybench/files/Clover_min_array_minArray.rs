@@ -7,7 +7,7 @@ fn min_array(a: &[i32]) -> (r: i32)
     ensures forall|i: int| 0 <= i < a.len() ==> r <= a[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

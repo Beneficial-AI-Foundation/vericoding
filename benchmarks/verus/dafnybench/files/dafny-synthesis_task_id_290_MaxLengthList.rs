@@ -8,7 +8,7 @@ fn max_length_list(lists: &Vec<Vec<int>>) -> (max_list: Vec<int>)
             exists|i: int| 0 <= i < lists.len() && max_list@ == lists[i]@
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

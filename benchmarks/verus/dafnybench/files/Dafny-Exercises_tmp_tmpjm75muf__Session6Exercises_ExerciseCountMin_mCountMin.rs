@@ -61,7 +61,7 @@ fn m_count_min(v: &Vec<i32>) -> (c: i32)
                           v.len() as int)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

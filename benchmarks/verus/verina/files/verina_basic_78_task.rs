@@ -8,7 +8,7 @@ fn multiple_returns(x: i32, y: i32) -> (result: (i32, i32))
         result.1 + y == x,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

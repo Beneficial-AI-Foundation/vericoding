@@ -12,7 +12,7 @@ fn polyvander3d(x: Vec<f64>, y: Vec<f64>, z: Vec<f64>, x_deg: usize, y_deg: usiz
         forall|p: int| 0 <= p < result.len() ==> result[p].len() == (x_deg + 1) * (y_deg + 1) * (z_deg + 1)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

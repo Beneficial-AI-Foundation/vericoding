@@ -10,7 +10,7 @@ fn last_digit(n: i32) -> (result: i32)
         n % 10 == result
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -17,7 +17,7 @@ fn pcg64_dxsm(seed: u64, n: usize) -> (result: Vec<u64>)
             pcg64_dxsm_spec(seed, n as nat) != pcg64_dxsm_spec(seed_prime, n as nat)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -39,7 +39,7 @@ fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
     decreases hi - lo
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

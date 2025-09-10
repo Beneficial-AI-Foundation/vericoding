@@ -20,7 +20,7 @@ fn test1(nums: &mut Vec<u32>)
         exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

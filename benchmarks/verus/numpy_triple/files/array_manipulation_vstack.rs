@@ -12,7 +12,7 @@ fn vstack(a: Vec<f32>, b: Vec<f32>) -> (result: Vec<Vec<f32>>)
         forall|j: int| 0 <= j < b.len() ==> result[1][j] == b[j]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

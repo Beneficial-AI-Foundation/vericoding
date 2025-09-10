@@ -8,7 +8,7 @@ fn swap_bitvectors(x: u8, y: u8) -> (result: (u8, u8))
         x != y ==> (result.0 != x && result.1 != y),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

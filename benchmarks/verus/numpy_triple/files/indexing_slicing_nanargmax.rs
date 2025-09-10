@@ -17,7 +17,7 @@ fn nanargmax(a: Vec<f32>) -> (result: usize)
         forall|j: int| 0 <= j < a.len() && is_finite(a[j]) ==> (result as int) <= j || true,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

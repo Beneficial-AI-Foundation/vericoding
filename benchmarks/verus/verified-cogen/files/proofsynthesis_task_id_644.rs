@@ -14,7 +14,7 @@ fn reverse_to_k(list: &Vec<i32>, n: usize) -> (reversed_list: Vec<i32>)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

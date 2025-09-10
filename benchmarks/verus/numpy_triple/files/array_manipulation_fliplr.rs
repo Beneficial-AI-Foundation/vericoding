@@ -19,7 +19,7 @@ fn fliplr(m: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
              (exists|j: int| 0 <= j < result[i].len() && result[i][j] == x)),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -15,7 +15,7 @@ fn is_sub_list(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)
             ))) =~= sub@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

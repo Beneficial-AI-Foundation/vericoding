@@ -13,7 +13,7 @@ fn geomspace(start: f64, stop: f64, n: usize, endpoint: bool) -> (result: Vec<f6
         (endpoint && n > 1) ==> result[(n - 1) as int] == stop,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

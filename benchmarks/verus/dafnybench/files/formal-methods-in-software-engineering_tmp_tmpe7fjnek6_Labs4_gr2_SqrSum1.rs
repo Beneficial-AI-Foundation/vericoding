@@ -22,7 +22,7 @@ fn sqr_sum1(n: int) -> (s: int)
     ensures s == sqr_sum_rec(n)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -20,7 +20,7 @@ fn selection_sort(a: &mut Vec<int>)
         a@.to_multiset() == old(a)@.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

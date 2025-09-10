@@ -16,7 +16,7 @@ fn find_median(a: &[i32], b: &[i32]) -> (median: i32)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

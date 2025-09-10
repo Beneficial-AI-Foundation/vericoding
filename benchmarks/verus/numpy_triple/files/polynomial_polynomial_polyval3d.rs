@@ -22,7 +22,7 @@ fn polyval3d(
              val == c[0][0][0])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

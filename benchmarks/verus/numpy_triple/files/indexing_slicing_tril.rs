@@ -14,7 +14,7 @@ fn tril(matrix: Vec<f32>, n: usize) -> (result: Vec<f32>)
             i < n && j < n && i < j,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

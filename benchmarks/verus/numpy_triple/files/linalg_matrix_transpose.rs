@@ -13,7 +13,7 @@ fn numpy_matrix_transpose(x: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
         forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < x[0].len() ==> result[j][i] == x[i][j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

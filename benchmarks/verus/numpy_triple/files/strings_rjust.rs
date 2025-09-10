@@ -21,7 +21,7 @@ fn rjust(orig: Vec<char>, width: nat, fillchar: char) -> (res: Vec<char>)
         (orig.len() == 0 ==> res.len() == width)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

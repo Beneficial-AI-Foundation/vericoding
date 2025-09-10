@@ -16,7 +16,7 @@ fn bad_sort(a: Seq<char>) -> (b: Seq<char>)
         sortedbad(b) && b.to_multiset() == a.to_multiset(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

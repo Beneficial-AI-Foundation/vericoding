@@ -19,7 +19,7 @@ fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (i32, i32))
         })
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

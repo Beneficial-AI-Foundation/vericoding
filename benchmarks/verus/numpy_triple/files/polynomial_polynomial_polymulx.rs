@@ -9,7 +9,7 @@ fn polymulx(c: Vec<f32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < c.len() ==> result[i + 1] == c[i],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

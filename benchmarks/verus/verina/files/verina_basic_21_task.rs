@@ -12,7 +12,7 @@ fn is_sublist(sub: &Vec<i32>, main: &Vec<i32>) -> (result: bool)
         result <==> exists|i: int| is_subseq_at(*sub, *main, i),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

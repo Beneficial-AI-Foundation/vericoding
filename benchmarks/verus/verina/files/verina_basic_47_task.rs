@@ -14,7 +14,7 @@ fn array_sum(a: &Vec<i32>) -> (result: i32)
         result == sum_to(a, a.len() as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -14,7 +14,7 @@ fn unique(a: &[i32]) -> (result: Vec<i32>)
             0 <= i && i < j && j < result.len() ==> result[i] < result[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

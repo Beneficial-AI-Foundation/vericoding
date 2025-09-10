@@ -7,7 +7,7 @@ fn is_prime(n: int) -> (result: bool)
     ensures result <==> (forall|k: int| 2 <= k < n ==> #[trigger] (n % k) != 0)
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -28,7 +28,7 @@ fn mcount_even(v: &Vec<i32>) -> (n: i32)
     ensures n as int == count_even(v@.map(|i: int, x: i32| x as int))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

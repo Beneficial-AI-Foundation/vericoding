@@ -34,7 +34,7 @@ fn packbits(a: Vec<bool>, bitorder: BitOrder) -> (result: Vec<u8>)
         }
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -19,7 +19,7 @@ fn fromfile(n: usize, file: &FileData, count: i32, offset: usize) -> (result: Ve
         n <= file.content.len() - offset,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

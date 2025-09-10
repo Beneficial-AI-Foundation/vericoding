@@ -14,7 +14,7 @@ fn threshold(thres: int, seq: Seq<int>) -> (ret: (Seq<int>, Seq<int>))
         ret.0.to_multiset().add(ret.1.to_multiset()) == seq.to_multiset()
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

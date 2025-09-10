@@ -8,7 +8,7 @@ fn numpy_ceil(x: Vec<f64>) -> (result: Vec<f64>)
         result.len() == x.len(),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

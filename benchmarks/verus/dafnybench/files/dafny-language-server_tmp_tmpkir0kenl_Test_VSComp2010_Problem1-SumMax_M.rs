@@ -11,7 +11,7 @@ fn M(N: i32, a: &[i32]) -> (result: (i32, i32))
         result.0 <= N * result.1,
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

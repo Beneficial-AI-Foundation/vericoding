@@ -15,7 +15,7 @@ fn mgrid(rows: usize, cols: usize, start_r: f32, stop_r: f32, start_c: f32, stop
             result.1[i][j] == result.1[k][j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

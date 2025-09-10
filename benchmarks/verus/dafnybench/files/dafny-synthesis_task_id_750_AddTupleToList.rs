@@ -9,7 +9,7 @@ proof fn add_tuple_to_list(l: Seq<(int, int)>, t: (int, int)) -> (r: Seq<(int, i
         forall|i: int| 0 <= i < l.len() ==> r[i] == l[i]
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -22,7 +22,7 @@ fn swapcase(a: Vec<String>) -> (result: Vec<String>)
             #[trigger] result[i]@[j] == char_swapcase(a[i]@[j])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -30,7 +30,7 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
             #[trigger] chord_intersects(&chords[i], &chords[j]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -14,7 +14,7 @@ fn dissimilar_elements(a: &Vec<int>, b: &Vec<int>) -> (result: Vec<int>)
         forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] != result[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

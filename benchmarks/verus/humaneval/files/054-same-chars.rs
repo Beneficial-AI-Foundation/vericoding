@@ -15,7 +15,7 @@ fn same_chars(s0: &Vec<u8>, s1: &Vec<u8>) -> (same: bool)
             0 <= i < s1.len() ==> s0@.contains(s1[i])),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

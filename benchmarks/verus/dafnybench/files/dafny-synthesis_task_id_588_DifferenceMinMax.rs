@@ -41,7 +41,7 @@ fn difference_min_max(a: &[i32]) -> (diff: i32)
     ensures diff == max(a@.map(|i, x| x as int)) - min(a@.map(|i, x| x as int))
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

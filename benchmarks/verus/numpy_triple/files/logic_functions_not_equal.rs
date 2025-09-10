@@ -13,7 +13,7 @@ fn numpy_not_equal<T: PartialEq>(x1: Vec<T>, x2: Vec<T>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == (x2[i] != x1[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

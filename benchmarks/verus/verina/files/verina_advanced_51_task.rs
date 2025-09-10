@@ -19,7 +19,7 @@ fn merge_sorted(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
         multiset_equiv(result@, a@ + b@),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

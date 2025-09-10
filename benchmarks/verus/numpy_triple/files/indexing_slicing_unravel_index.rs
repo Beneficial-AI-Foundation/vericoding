@@ -26,7 +26,7 @@ fn unravel_index(indices: Vec<usize>, shape: Vec<usize>) -> (result: Vec<Vec<usi
             (indices[i] != indices[j] ==> result[i] != result[j])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

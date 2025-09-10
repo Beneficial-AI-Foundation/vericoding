@@ -9,7 +9,7 @@ fn numpy_logical_xor(x1: Vec<bool>, x2: Vec<bool>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == (x1[i] != x2[i])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

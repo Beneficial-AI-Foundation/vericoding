@@ -18,7 +18,7 @@ fn numpy_argwhere(a: Vec<f64>) -> (indices: Vec<usize>)
             indices[i] < indices[j],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -9,7 +9,7 @@ fn concat(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
         forall|k: int| 0 <= k < b.len() ==> c[k + a.len()] == b[k],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

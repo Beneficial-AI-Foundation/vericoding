@@ -27,7 +27,7 @@ fn diagonal(a: Vec<Vec<f64>>, offset: i32) -> (result: Vec<f64>)
         },
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

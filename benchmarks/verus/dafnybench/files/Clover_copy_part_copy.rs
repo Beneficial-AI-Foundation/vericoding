@@ -13,7 +13,7 @@ fn copy(src: &[i32], s_start: usize, dest: &[i32], d_start: usize, len: usize) -
         r@.subrange(d_start as int, (len + d_start) as int) =~= src@.subrange(s_start as int, (len + s_start) as int),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

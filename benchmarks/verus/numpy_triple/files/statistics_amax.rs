@@ -17,7 +17,7 @@ fn amax(a: Vec<i32>) -> (result: i32)
         (exists|witness: int| 0 <= witness < a.len() && result == a@[witness])
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

@@ -17,7 +17,7 @@ fn hermder(c: Vec<i32>, m: usize, scl: i32) -> (result: Vec<i32>)
         ),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

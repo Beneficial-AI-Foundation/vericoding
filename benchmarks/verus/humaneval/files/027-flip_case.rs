@@ -35,7 +35,7 @@ fn flip_case(str: &[char]) -> (flipped_case: Vec<char>)
         forall|i: int| 0 <= i < str.len() ==> flipped_case[i] == flip_case_spec(#[trigger] str[i]),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

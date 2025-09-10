@@ -21,7 +21,7 @@ fn setdiff1d(ar1: Vec<i32>, ar2: Vec<i32>) -> (result: Vec<i32>)
             exists|i: int| 0 <= i < result.len() && result[i] == val
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

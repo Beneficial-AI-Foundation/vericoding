@@ -10,7 +10,7 @@ fn max_array(nums: &[i32]) -> (idx: usize)
         forall|i: int| 0 <= i && i < nums.len() ==> nums[i] <= nums[idx as int],
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }

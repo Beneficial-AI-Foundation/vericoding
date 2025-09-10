@@ -7,7 +7,7 @@ exec fn is_break_even(cost_price: int, selling_price: int) -> (result: bool)
     ensures result <==> (cost_price == selling_price),
 {
     assume(false);
-    unreached();
+    unreached()
 }
 
 }
