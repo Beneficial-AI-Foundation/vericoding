@@ -222,20 +222,41 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 modified_code = modified_code[:target_pos] + replacement + modified_code[target_pos + 5:]
                 
         else:
-            # Replace <vc-code> sections in reverse order to preserve positions
-            for i in range(len(vc_code_matches) - 1, -1, -1):
-                replacement = replacements[i]
+            # Use line-based replacement for Dafny/Verus to preserve comment structure
+            lines = modified_code.split('\n')
+            
+            # Find all vc-code sections and replace in reverse order (last first) to preserve line numbers
+            vc_sections = []
+            for i, line in enumerate(lines):
+                if '<vc-code>' in line:
+                    # Find the corresponding closing tag
+                    for j in range(i + 1, len(lines)):
+                        if '</vc-code>' in lines[j]:
+                            vc_sections.append((i, j))
+                            break
+            
+            if len(vc_sections) != len(replacements):
+                error = f"JSON replacement failed: Found {len(vc_sections)} <vc-code> sections but got {len(replacements)} replacements"
+                logger.error(error)
+                return original_code, error
+            
+            # Apply replacements in reverse order to preserve line indices
+            for section_idx in range(len(vc_sections) - 1, -1, -1):
+                replacement = replacements[section_idx]
                 if not isinstance(replacement, str):
-                    error = f"JSON parsing failed: Replacement {i} must be a string, got {type(replacement)}"
+                    error = f"JSON parsing failed: Replacement {section_idx} must be a string, got {type(replacement)}"
                     logger.error(error)
                     return original_code, error
                 
-                match = vc_code_matches[i]
-                start_tag_end = match.start() + 9  # length of "<vc-code>"
-                end_tag_start = match.end() - 10   # length of "</vc-code>"
+                start_line, end_line = vc_sections[section_idx]
                 
-                # Replace only the content between tags, not the tags themselves
-                modified_code = modified_code[:start_tag_end] + replacement + modified_code[end_tag_start:]
+                # Split replacement into lines
+                replacement_lines = replacement.split('\n')
+                
+                # Replace lines between start_line and end_line (exclusive) with replacement
+                lines[start_line+1:end_line] = replacement_lines
+            
+            modified_code = '\n'.join(lines)
         
         # Final verification - ensure no placeholders remain
         if config.language == "lean":
