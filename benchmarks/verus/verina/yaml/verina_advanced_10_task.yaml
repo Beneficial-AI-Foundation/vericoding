@@ -21,7 +21,7 @@ vc-preamble: |-
   spec fn is_prime(n: nat) -> bool {
       arbitrary()
   }
-
+  
   spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
       decreases pairs.len()
   {
@@ -47,10 +47,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
-      Vec::new()
-      // impl-end
+      unreached();
   }
 
 vc-postamble: |-

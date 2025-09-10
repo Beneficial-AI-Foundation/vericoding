@@ -96,7 +96,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      NumericType { kind: t.kind, precision: Precision::P8 }
+      unreached();
   }
 
 vc-postamble: |-

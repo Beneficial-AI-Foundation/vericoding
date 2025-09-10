@@ -169,8 +169,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      let result_vec = Vec::<char>::new();
-      (result_vec, 0, 0)
+      unreached();
   }
 
 vc-postamble: |-

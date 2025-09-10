@@ -93,7 +93,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      (0, Ghost(Interval { start: 0, end: 0 }))
+      unreached();
   }
 
 vc-postamble: |-

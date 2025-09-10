@@ -20,7 +20,7 @@ vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-
+  
   spec fn valid_starting_point(gas: &Vec<i32>, cost: &Vec<i32>, start: int) -> bool 
   {
       0 <= start < gas.len() && 
@@ -41,7 +41,6 @@ vc-preamble: |-
       }
   }
 
-
 vc-helpers: |-
 
 vc-spec: |-
@@ -59,12 +58,10 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
-      0
-      // impl-end
+      unreached();
   }
-  
+
 vc-postamble: |-
   }
   fn main() {}

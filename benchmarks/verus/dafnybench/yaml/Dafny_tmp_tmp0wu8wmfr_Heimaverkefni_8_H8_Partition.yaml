@@ -30,7 +30,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      (Ghost(Multiset::empty()), Ghost(0), Ghost(Multiset::empty()))
+      unreached();
   }
 
 vc-postamble: |-

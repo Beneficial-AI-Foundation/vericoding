@@ -43,10 +43,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      BitGeneratorState {
-          seed: None,
-          internal_state: 0,
-      }
+      unreached();
   }
 
 vc-postamble: |-

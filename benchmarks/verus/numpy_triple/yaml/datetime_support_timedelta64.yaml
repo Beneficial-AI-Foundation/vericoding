@@ -67,7 +67,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      TimeDelta64 { value: 0, unit: TimeUnit::Second }
+      unreached();
   }
 
 vc-postamble: |-

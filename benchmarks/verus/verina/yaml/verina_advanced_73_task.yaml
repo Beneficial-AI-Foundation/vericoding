@@ -25,7 +25,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      assume(false); // TODO: Remove this line and implement the proof
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

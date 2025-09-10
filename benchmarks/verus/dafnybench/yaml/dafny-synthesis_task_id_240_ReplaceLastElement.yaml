@@ -19,8 +19,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      let mut result = Vec::new();
-      result
+      unreached();
   }
 
 vc-postamble: |-

@@ -19,7 +19,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      0  // Need to return a value
+      unreached();
   }
 
 vc-postamble: |-

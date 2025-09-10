@@ -23,8 +23,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume(false);
-    1 // unreachable but needed for return type
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

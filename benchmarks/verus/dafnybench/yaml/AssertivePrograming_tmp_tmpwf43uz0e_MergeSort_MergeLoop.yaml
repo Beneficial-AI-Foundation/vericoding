@@ -79,8 +79,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume(false);
-    (0, 0) // dummy return
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

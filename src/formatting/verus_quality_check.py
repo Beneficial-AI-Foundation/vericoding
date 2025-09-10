@@ -375,39 +375,39 @@ def process_yaml_file(file_path: Path) -> None:
         #     spec['vc-helpers'] = ""
         #     # raise ValueError(f"vc-helpers is not empty")
 
-        # if spec['vc-code'].strip():
-        #     # spec['vc-helpers'] = ""
-        #     raise ValueError(f"vc-code is not empty")
+        # # Remove unnecessary tags from vc-code    
+        # if 'vc-code' in spec and isinstance(spec['vc-code'], str):
+        #     unnecessary_tags = [
+        #         '// impl-start',
+        #         '// impl-end',
+        #         '/* impl-start */',
+        #         '/* impl-end */',
+        #     ]
+        #     spec['vc-code'] = remove_unnecessary_tags(spec['vc-code'], unnecessary_tags)
 
-        # Remove unnecessary tags from vc-code    
-        if 'vc-code' in spec and isinstance(spec['vc-code'], str):
-            unnecessary_tags = [
-                '// impl-start',
-                '// impl-end',
-                '/* impl-start */',
-                '/* impl-end */',
-            ]
-            spec['vc-code'] = remove_unnecessary_tags(spec['vc-code'], unnecessary_tags)
+        # if spec['vc-code'].strip():
+        #     # Validate vc-code format
+        #     vc_code_lines = spec['vc-code'].strip().split('\n')
+            
+        #     if len(vc_code_lines) not in [3, 4]:
+        #         raise ValueError(f"vc-code in {file_path} must have exactly 3 or 4 lines, got {len(vc_code_lines)} \n\n {spec['vc-code']}")
+            
+        #     # Check first line: should be "{" after stripping
+        #     if vc_code_lines[0].strip() != "{":
+        #         raise ValueError(f"vc-code in {file_path} first line must be '{{', got: '{vc_code_lines[0]}'")
+            
+        #     # Check second line: should be "assume{:axiom}false" or "assumefalse" after removing all spaces
+        #     second_line_no_spaces = vc_code_lines[1].strip().replace(' ', '')
+        #     if second_line_no_spaces not in ["assume(false);"]:
+        #         raise ValueError(f"vc-code in {file_path} second line must be 'assume(false);' (ignoring spaces), got: '{vc_code_lines[1]}'")
+            
+        #     # Check third line: should be "}" after stripping
+        #     if vc_code_lines[-1].strip() != "}":
+        #         raise ValueError(f"vc-code in {file_path} last line must be '}}', got: '{vc_code_lines[-1]}'")
 
         if spec['vc-code'].strip():
-            # Validate vc-code format
-            vc_code_lines = spec['vc-code'].strip().split('\n')
-            
-            if len(vc_code_lines) not in [3, 4]:
-                raise ValueError(f"vc-code in {file_path} must have exactly 3 or 4 lines, got {len(vc_code_lines)} \n\n {spec['vc-code']}")
-            
-            # Check first line: should be "{" after stripping
-            if vc_code_lines[0].strip() != "{":
-                raise ValueError(f"vc-code in {file_path} first line must be '{{', got: '{vc_code_lines[0]}'")
-            
-            # Check second line: should be "assume{:axiom}false" or "assumefalse" after removing all spaces
-            second_line_no_spaces = vc_code_lines[1].strip().replace(' ', '')
-            if second_line_no_spaces not in ["assume(false);"]:
-                raise ValueError(f"vc-code in {file_path} second line must be 'assume(false);' (ignoring spaces), got: '{vc_code_lines[1]}'")
-            
-            # Check third line: should be "}" after stripping
-            if vc_code_lines[-1].strip() != "}":
-                raise ValueError(f"vc-code in {file_path} last line must be '}}', got: '{vc_code_lines[-1]}'")
+            spec['vc-code'] = '{\n    assume(false);\n    unreached();\n}\n'
+            # raise ValueError(f"vc-code is not empty")
 
         # # Move comments from other fields to vc-description
         # move_comments_to_description(spec)

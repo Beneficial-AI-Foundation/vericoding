@@ -14,7 +14,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      b  // This won't be reached due to assume(false), but satisfies the type checker
+      unreached();
   }
 
 vc-postamble: |-

@@ -30,7 +30,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      m_work_list[0].clone()
+      unreached();
   }
 
 vc-postamble: |-

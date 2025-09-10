@@ -17,8 +17,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume(false);
-    Vec::new()
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

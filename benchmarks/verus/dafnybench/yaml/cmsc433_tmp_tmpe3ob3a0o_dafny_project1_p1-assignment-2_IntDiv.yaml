@@ -43,8 +43,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume(false);
-    (0 as i32, 0 as i32)
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

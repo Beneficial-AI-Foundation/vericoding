@@ -37,7 +37,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      vec![]
+      unreached();
   }
 
 vc-postamble: |-

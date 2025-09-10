@@ -49,7 +49,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      (Vec::new(), Vec::new())
+      unreached();
   }
 
 vc-postamble: |-

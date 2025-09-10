@@ -60,11 +60,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      let mut result = Vec::new();
-      proof {
-          assume(false);
-      }
-      result
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

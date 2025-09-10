@@ -18,8 +18,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      proof { assume(false); }
-      unreached()
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

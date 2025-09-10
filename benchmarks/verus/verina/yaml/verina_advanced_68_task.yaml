@@ -33,9 +33,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
-      assume(false); // TODO: Remove this line and implement the proof
-      // impl-end
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

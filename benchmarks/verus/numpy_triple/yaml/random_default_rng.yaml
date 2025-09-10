@@ -46,13 +46,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      Generator {
-          bit_generator: BitGenerator {
-              state: 0,
-              seed: None,
-          },
-          initialized: false,
-      }
+      unreached();
   }
 
 vc-postamble: |-

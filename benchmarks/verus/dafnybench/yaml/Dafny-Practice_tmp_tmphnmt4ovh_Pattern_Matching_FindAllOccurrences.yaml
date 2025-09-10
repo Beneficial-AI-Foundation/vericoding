@@ -16,10 +16,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      proof {
-          assume(false);
-      }
-      Ghost(Set::empty())
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

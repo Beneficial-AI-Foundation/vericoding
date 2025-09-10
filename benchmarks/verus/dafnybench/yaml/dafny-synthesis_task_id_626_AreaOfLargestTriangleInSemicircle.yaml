@@ -14,8 +14,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume(false);
-    radius * radius
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

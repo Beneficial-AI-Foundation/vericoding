@@ -69,11 +69,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      IntInfo {
-          bits: 0,
-          min: 0,
-          max: 0,
-      }
+      unreached();
   }
 
 vc-postamble: |-

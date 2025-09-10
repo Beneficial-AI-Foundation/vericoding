@@ -16,7 +16,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      (0, 0) // dummy return to satisfy type system
+      unreached();
   }
 
 vc-postamble: |-

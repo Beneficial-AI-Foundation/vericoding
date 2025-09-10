@@ -27,11 +27,10 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
-      0
-      // impl-end
+      assume(false);
+      unreached();
   }
-  
+
 vc-postamble: |-
   }
   fn main() {}

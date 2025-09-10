@@ -63,12 +63,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      Legendre {
-          coef: Vec::new(),
-          domain: [-1.0, 1.0],
-          window: [-1.0, 1.0],
-          symbol: "x".to_string(),
-      }
+      unreached();
   }
 
 vc-postamble: |-

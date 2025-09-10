@@ -79,13 +79,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      HermiteEPoly {
-          coef: Vec::new(),
-          domain_min: -1.0f32,
-          domain_max: 1.0f32,
-          window_min: -1.0f32,
-          window_max: 1.0f32,
-      }
+      unreached();
   }
 
 vc-postamble: |-

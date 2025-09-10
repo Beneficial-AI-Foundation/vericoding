@@ -16,7 +16,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      k // Placeholder - would be k - 1/(4*a) in mathematical terms  
+      unreached();
   }
 
 vc-postamble: |-

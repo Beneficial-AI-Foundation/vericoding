@@ -45,7 +45,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      Slice { start, stop, step }
+      unreached();
   }
 
 vc-postamble: |-

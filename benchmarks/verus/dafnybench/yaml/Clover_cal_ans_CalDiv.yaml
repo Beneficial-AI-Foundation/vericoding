@@ -13,8 +13,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume(false);
-    (0i32, 0i32)
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

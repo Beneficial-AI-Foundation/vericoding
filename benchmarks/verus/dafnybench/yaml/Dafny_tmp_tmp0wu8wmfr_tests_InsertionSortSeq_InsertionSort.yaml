@@ -24,7 +24,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      s
+      unreached();
   }
 
 vc-postamble: |-

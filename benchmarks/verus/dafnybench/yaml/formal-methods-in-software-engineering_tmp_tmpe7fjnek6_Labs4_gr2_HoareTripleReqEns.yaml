@@ -103,7 +103,10 @@ vc-spec: |-
   }
 
 vc-code: |-
-  // Implementation would go here if this were an exec function
+  {
+      assume(false);
+      unreached();
+  }
 
 vc-postamble: |-
   fn main() {}

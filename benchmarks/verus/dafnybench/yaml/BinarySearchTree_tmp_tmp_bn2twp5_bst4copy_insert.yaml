@@ -83,7 +83,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      Tree::Empty
+      unreached();
   }
 
 vc-postamble: |-

@@ -20,8 +20,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume(false);
-    0  // dummy return to satisfy type checker
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

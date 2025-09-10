@@ -14,13 +14,11 @@ vc-spec: |-
           forall|x: int| 0 <= x < lo ==> a[x as int] < 0,
           forall|x: int| lo <= x < hi ==> a[x as int] == 0,
           forall|x: int| hi <= x < a.len() ==> a[x as int] > 0,
-  
+
 vc-code: |-
   {
-    assume(false);
-    let lo: usize = 0;
-    let hi: usize = 0;
-    (lo, hi)
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

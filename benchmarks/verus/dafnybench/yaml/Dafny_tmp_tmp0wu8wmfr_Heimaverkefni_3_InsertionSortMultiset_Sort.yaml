@@ -40,8 +40,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-    assume(false);
-    seq![]
+      assume(false);
+      unreached();
   }
 
 vc-postamble: |-

@@ -88,7 +88,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      NumpyDType::Bool
+      unreached();
   }
 
 vc-postamble: |-

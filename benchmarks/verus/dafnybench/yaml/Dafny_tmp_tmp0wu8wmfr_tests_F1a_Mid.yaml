@@ -21,10 +21,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      proof {
-          assert(false);
-      }
-      p // unreachable
+      unreached();
   }
 
 vc-postamble: |-

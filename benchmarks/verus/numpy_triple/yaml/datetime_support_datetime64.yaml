@@ -74,11 +74,7 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      DateTime64 {
-          offset: 0,
-          unit: TimeUnit::Seconds,
-          is_utc: true,
-      }
+      unreached();
   }
 
 vc-postamble: |-
