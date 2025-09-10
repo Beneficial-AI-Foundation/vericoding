@@ -90,14 +90,12 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
         if json_match:
             # Found JSON in code block - use group(1) for the content inside
             json_str = json_match.group(1)
-            logger.info(f"DEBUG: Using JSON from code block, length: {len(json_str)}")
         else:
             # Try to find JSON array without code block (use greedy matching to get the full array)
             json_match = re.search(r'\[.*\]', llm_response, re.DOTALL)
             if json_match:
                 # Found plain JSON array - use group(0) for the whole match
                 json_str = json_match.group(0)
-                logger.info(f"DEBUG: Using plain JSON array, length: {len(json_str)}, first 100 chars: {repr(json_str[:100])}")
             else:
                 error = "JSON parsing failed: No JSON array found in LLM response"
                 logger.error(error)
