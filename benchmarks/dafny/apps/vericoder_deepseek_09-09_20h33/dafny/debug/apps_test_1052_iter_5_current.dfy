@@ -1,0 +1,96 @@
+predicate ValidInput(n: int, k: int)
+{
+  4 <= n <= 1000 && 1 <= k <= 4 && k < n
+}
+
+function factorial(n: int): int
+  requires n >= 0
+  ensures factorial(n) > 0
+{
+  if n <= 1 then 1 else n * factorial(n - 1)
+}
+
+function derangement(n: int): int
+  requires n >= 0
+  ensures derangement(n) >= 0
+{
+  if n <= 1 then 0
+  else if n == 2 then 1
+  else (n - 1) * (derangement(n - 1) + derangement(n - 2))
+}
+
+function binomial(n: int, k: int): int
+  requires n >= 0 && k >= 0
+  ensures binomial(n, k) >= 0
+{
+  if k > n then 0
+  else if k == 0 || k == n then 1
+  else factorial(n) / (factorial(k) * factorial(n - k))
+}
+
+function sum_binomial_derangement(n: int, k: int, i: int): int
+  requires n >= 0 && k >= 0 && i >= 0
+  ensures sum_binomial_derangement(n, k, i) >= 0
+  decreases n - k - i
+{
+  if i >= n - k then 0
+  else binomial(n, i) * derangement(n - i) + sum_binomial_derangement(n, k, i + 1)
+}
+
+// <vc-helpers>
+lemma binomial_derangement_sum_identity(n: int, k: int)
+  requires n >= 0 && k >= 0 && k <= n
+  ensures factorial(n) == sum_binomial_derangement(n, k, 0) + sum_binomial_derangement(n, k, n - k)
+  decreases n
+{
+  if n == 0 {
+    assert sum_binomial_derangement(0, k, 0) == 0;
+    assert sum_binomial_derangement(0, k, 0 - k) == 0;
+  } else if n == 1 {
+    if k == 0 {
+      assert sum_binomial_derangement(1, 0, 0) == binomial(1, 0) * derangement(1) + sum_binomial_derangement(1, 0, 1);
+      assert binomial(1, 0) == 1;
+      assert derangement(1) == 0;
+      assert sum_binomial_derangement(1, 0, 1) == 0;
+      assert sum_binomial_derangement(1, 0, 1) == 0;
+      assert factorial(1) == 1;
+    } else if k == 1 {
+      assert sum_binomial_derangement(1, 1, 0) == binomial(1, 0) * derangement(1) + sum_binomial_derangement(1, 1, 1);
+      assert binomial(1, 0) == 1;
+      assert derangement(1) == 0;
+      assert sum_binomial_derangement(1, 1, 1) == 0;
+      assert sum_binomial_derangement(1, 1, 0) == 0;
+      assert factorial(1) == 1;
+    }
+  } else {
+    if k <= n - 1 {
+      binomial_derangement_sum_identity(n - 1, k);
+    }
+  }
+}
+
+lemma sum_binomial_derangement_properties(n: int, k: int)
+  requires n >= 0 && k >= 0 && k <= n
+  ensures sum_binomial_derangement(n, k, 0) >= 0
+  ensures sum_binomial_derangement(n, k, n - k) >= 0
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, k: int) returns (result: int)
+  requires ValidInput(n, k)
+  ensures result == factorial(n) - sum_binomial_derangement(n, k, 0)
+// </vc-spec>
+// <vc-code>
+{
+  var total := factorial(n);
+  sum_binomial_derangement_properties(n, k);
+  if k <= n {
+    binomial_derangement_sum_identity(n, k);
+  }
+  var sum := sum_binomial_derangement(n, k, 0);
+  result := total - sum;
+}
+// </vc-code>
+

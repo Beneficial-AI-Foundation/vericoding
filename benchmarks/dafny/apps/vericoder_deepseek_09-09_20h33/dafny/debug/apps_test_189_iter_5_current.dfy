@@ -1,0 +1,131 @@
+predicate ValidInput(n: int, sticks: seq<int>)
+{
+    1 <= n <= 1000 &&
+    |sticks| == n &&
+    (forall i :: 0 <= i < |sticks| ==> 1 <= sticks[i] <= 100)
+}
+
+function CostForT(sticks: seq<int>, t: int): int
+    requires forall i :: 0 <= i < |sticks| ==> 1 <= sticks[i] <= 100
+    requires 1 <= t <= 99
+    ensures CostForT(sticks, t) >= 0
+{
+    SumCosts(sticks, t, 0)
+}
+
+function SumCosts(sticks: seq<int>, t: int, index: int): int
+    requires forall i :: 0 <= i < |sticks| ==> 1 <= sticks[i] <= 100
+    requires 1 <= t <= 99
+    requires 0 <= index <= |sticks|
+    ensures SumCosts(sticks, t, index) >= 0
+    decreases |sticks| - index
+{
+    if index == |sticks| then 0
+    else Max(0, Abs(t - sticks[index]) - 1) + SumCosts(sticks, t, index + 1)
+}
+
+function Abs(x: int): int
+    ensures Abs(x) >= 0
+{
+    if x >= 0 then x else -x
+}
+
+function Max(a: int, b: int): int
+    ensures Max(a, b) >= a && Max(a, b) >= b
+{
+    if a >= b then a else b
+}
+
+predicate IsOptimalT(sticks: seq<int>, t: int)
+    requires forall i :: 0 <= i < |sticks| ==> 1 <= sticks[i] <= 100
+    requires 1 <= t <= 99
+{
+    forall other_t :: 1 <= other_t <= 99 ==> 
+        CostForT(sticks, t) <= CostForT(sticks, other_t)
+}
+
+// <vc-helpers>
+lemma Lemma_CostForT_Min(sticks: seq<int>, t: int, min_cost: int)
+    requires forall i :: 0 <= i < |sticks| ==> 1 <= sticks[i] <= 100
+    requires 1 <= t <= 99
+    requires min_cost >= 0
+    requires min_cost == CostForT(sticks, t)
+    requires forall other_t :: 1 <= other_t <= 99 ==> min_cost <= CostForT(sticks, other_t)
+    ensures IsOptimalT(sticks, t)
+{
+}
+
+lemma Lemma_CostForT_Range(sticks: seq<int>, t: int)
+    requires forall i :: 0 <= i < |sticks| ==> 1 <= sticks[i] <= 100
+    requires 1 <= t <= 99
+    ensures CostForT(sticks, t) >= 0
+{
+}
+
+lemma Lemma_StrengthInvariant(sticks: seq<int>, t0: int, min_cost0: int, i: int)
+    requires forall i :: 0 <= i < |sticks| ==> 1 <= sticks[i] <= 100
+    requires 1 <= i <= 100
+    requires 1 <= t0 <= 99
+    requires min_cost0 >= 0
+    requires min_cost0 == CostForT(sticks, t0)
+    requires forall j :: 1 <= j < i ==> min_cost0 <= CostForT(sticks, j)
+    ensures forall j :: 1 <= j < i ==> min_cost0 <= CostForT(sticks, j)
+{
+}
+
+lemma Lemma_EstablishInvariant(sticks: seq<int>)
+    requires forall i :: 0 <= i < |sticks| ==> 1 <= sticks[i] <= 100
+    ensures exists k :: 1 <= k < 100 && (forall j :: 1 <= j < 100 ==> CostForT(sticks, k) <= CostForT(sticks, j))
+{
+    var best_t := 1;
+    var best_cost := CostForT(sticks, 1);
+    var i := 2;
+    while i < 100
+        invariant 2 <= i <= 100
+        invariant exists k :: 1 <= k < i && best_cost == CostForT(sticks, k)
+        invariant forall j :: 1 <= j < i ==> best_cost <= CostForT(sticks, j)
+    {
+        var cost := CostForT(sticks, i);
+        if cost < best_cost {
+            best_cost := cost;
+            best_t := i;
+        }
+        i := i + 1;
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method FindOptimalT(n: int, sticks: seq<int>) returns (t: int, min_cost: int)
+    requires ValidInput(n, sticks)
+    ensures 1 <= t <= 99
+    ensures min_cost >= 0
+    ensures min_cost == CostForT(sticks, t)
+    ensures IsOptimalT(sticks, t)
+// </vc-spec>
+// <vc-code>
+{
+    var cost: int;
+    min_cost := CostForT(sticks, 1);
+    t := 1;
+    var i := 2;
+    while i < 100
+        invariant 2 <= i <= 100
+        invariant 1 <= t <= 99
+        invariant min_cost >= 0
+        invariant min_cost == CostForT(sticks, t)
+        invariant forall j :: 1 <= j < i ==> min_cost <= CostForT(sticks, j)
+    {
+        cost := CostForT(sticks, i);
+        Lemma_CostForT_Range(sticks, i);
+        if cost < min_cost {
+            min_cost := cost;
+            t := i;
+        }
+        i := i + 1;
+    }
+    Lemma_EstablishInvariant(sticks);
+    Lemma_CostForT_Min(sticks, t, min_cost);
+}
+// </vc-code>
+

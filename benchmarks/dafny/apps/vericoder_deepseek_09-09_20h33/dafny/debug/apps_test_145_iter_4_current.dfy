@@ -1,0 +1,68 @@
+function CountDistinct(s: string): int
+{
+    |set c | 0 <= c < |s| :: s[c]|
+}
+
+predicate ValidInput(input: string)
+{
+    |input| > 0 &&
+    input[|input|-1] == '\n' &&
+    |input| >= 2 &&
+    forall i :: 0 <= i < |input|-1 ==> 'a' <= input[i] <= 'z'
+}
+
+predicate CorrectOutput(username: string, output: string)
+{
+    var distinctCount := CountDistinct(username);
+    (distinctCount % 2 == 1 ==> output == "IGNORE HIM!\n") &&
+    (distinctCount % 2 == 0 ==> output == "CHAT WITH HER!\n")
+}
+
+// <vc-helpers>
+lemma CountDistinctLemma(s: string, i: int, j: int)
+    requires 0 <= i <= j <= |s|
+    ensures CountDistinct(s[i..j]) <= CountDistinct(s)
+{
+}
+
+lemma CountDistinctSlice(s: string, i: int)
+    requires 0 <= i <= |s|
+    ensures CountDistinct(s[..i]) <= CountDistinct(s)
+{
+    CountDistinctLemma(s, 0, i);
+}
+
+lemma CountDistinctMod2(s: string)
+    ensures CountDistinct(s) % 2 == 0 || CountDistinct(s) % 2 == 1
+{
+}
+
+lemma CountDistinctSubset(s1: string, s2: string)
+    requires s1 in s2
+    ensures CountDistinct(s1) <= CountDistinct(s2)
+{
+}
+// </vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method solve(input: string) returns (output: string)
+    requires ValidInput(input)
+    ensures var username := input[..|input|-1];
+            CorrectOutput(username, output)
+// </vc-spec>
+// <vc-code>
+{
+    var username := input[..|input|-1];
+    var distinctCount := CountDistinct(username);
+    CountDistinctMod2(username);
+    assert username in input;
+    CountDistinctSubset(username, input);
+    if distinctCount % 2 == 1 {
+        output := "IGNORE HIM!\n";
+    } else {
+        output := "CHAT WITH HER!\n";
+    }
+}
+// </vc-code>
+

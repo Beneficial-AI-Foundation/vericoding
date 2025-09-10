@@ -1,0 +1,118 @@
+function count_sf_flights(s: string): int
+{
+    if |s| <= 1 then 0
+    else (if s[|s|-1] == 'F' && s[|s|-2] != 'F' then 1 else 0) + count_sf_flights(s[..|s|-1])
+}
+
+function count_fs_flights(s: string): int
+{
+    if |s| <= 1 then 0
+    else (if s[|s|-1] == 'S' && s[|s|-2] != 'S' then 1 else 0) + count_fs_flights(s[..|s|-1])
+}
+
+// <vc-helpers>
+lemma count_sf_cons(s: string, i: int)
+  requires 1 <= i < |s|
+  ensures count_sf_flights(s[..i+1]) == count_sf_flights(s[..i]) + (if s[i] == 'F' && s[i-1] != 'F' then 1 else 0)
+{
+  var t := s[..i+1];
+  // relationships between t and s
+  assert |t| == i+1;
+  assert t[|t|-1] == s[i];
+  assert t[|t|-2] == s[i-1];
+  assert t[..|t|-1] == s[..i];
+  // unfold the definition of count_sf_flights on t
+  assert count_sf_flights(t) == (if t[|t|-1] == 'F' && t[|t|-2] != 'F' then 1 else 0) + count_sf_flights(t[..|t|-1]);
+  // substitute back to s
+  assert (if t[|t|-1] == 'F' && t[|t|-2] != 'F' then 1 else 0) + count_sf_flights(t[..|t|-1])
+         == (if s[i] == 'F' && s[i-1] != 'F' then 1 else 0) + count_sf_flights(s[..i]);
+  // conclude
+  assert count_sf_flights(s[..i+1]) == count_sf_flights(s[..i]) + (if s[i] == 'F' && s[i-1] != 'F' then 1 else 0);
+}
+
+lemma count_fs_cons(s: string, i: int)
+  requires 1 <= i < |s|
+  ensures count_fs_flights(s[..i+1]) == count_fs_flights(s[..i]) + (if s[i] == 'S' && s[i-1] != 'S' then 1 else 0)
+{
+  var t := s[..i+1];
+  assert |t| == i+1;
+  assert t[|t|-1] == s[i];
+  assert t[|t|-2] == s[i-1];
+  assert t[..|t|-1] == s[..i];
+  assert count_fs_flights(t) == (if t[|t|-1] == 'S' && t[|t|-2] != 'S' then 1 else 0) + count_fs_flights(t[..|t|-1]);
+  assert (if t[|t|-1] == 'S' && t[|t|-2] != 'S' then 1 else 0) + count_fs_flights(t[..|t|-1])
+         == (if s[i] == 'S' && s[i-1] != 'S' then 1 else 0) + count_fs_flights(s[..i]);
+  assert count_fs_flights(s[..i+1]) == count_fs_flights(s[..i]) + (if s[i] == 'S' && s[i-1] != 'S' then 1 else 0);
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, s: string) returns (result: string)
+    requires n >= 2
+    requires |s| == n
+    requires forall i :: 0 <= i < |s| ==> s[i] == 'S' || s[i] == 'F'
+    ensures result == "YES" || result == "NO"
+    ensures result == "YES" <==> count_sf_flights(s) > count_fs_flights(s)
+// </vc-spec>
+// <vc-code>
+{
+  var sf := 0;
+  var fs := 0;
+  var i := 0;
+  while i < n
+    invariant 0 <= i <= n
+    invariant sf == count_sf_flights(s[..i])
+    invariant fs == count_fs_flights(s[..i])
+  {
+    if i == 0 {
+      i := i + 1;
+      continue;
+    }
+    // i >= 1 and i < n here
+    if s[i] == 'F' && s[i-1] != 'F' {
+      sf := sf + 1;
+    }
+    if s[i] == 'S' && s[i-1] != 'S' {
+      fs := fs + 1;
+    }
+    // update invariants using the lemmas
+    if 1 <= i < n {
+      // establish next-step invariants: relate counts on s[..i+1] to s[..i]
+      calc {
+        sf;
+        == {
+        }
+        count_sf_flights(s[..i]) + (if s[i] == 'F' && s[i-1] != 'F' then 1 else 0);
+        == {
+          // by lemma
+        }
+        count_sf_flights(s[..i+1]);
+      }
+      calc {
+        fs;
+        == {
+        }
+        count_fs_flights(s[..i]) + (if s[i] == 'S' && s[i-1] != 'S' then 1 else 0);
+        == {
+        }
+        count_fs_flights(s[..i+1]);
+      }
+    }
+    i := i + 1;
+  }
+  // now i == n and invariants give sf and fs equal to counts on full string
+  if sf > fs {
+    result := "YES";
+  } else {
+    result := "NO";
+  }
+  assert sf == count_sf_flights(s);
+  assert fs == count_fs_flights(s);
+  if sf > fs {
+    assert result == "YES";
+  } else {
+    assert result == "NO";
+  }
+}
+// </vc-code>
+

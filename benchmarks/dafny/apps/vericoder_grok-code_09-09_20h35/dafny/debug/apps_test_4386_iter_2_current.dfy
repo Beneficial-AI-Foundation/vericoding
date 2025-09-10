@@ -1,0 +1,103 @@
+predicate ValidInput(input: string)
+{
+  |input| > 0 &&
+  (exists i :: 0 < i < |input| && input[i] == '\n') &&
+  (forall i :: 0 <= i < |input| ==> input[i] == '\n' || ('0' <= input[i] <= '9') || ('a' <= input[i] <= 'z')) &&
+  (exists i :: 0 < i < |input| && input[i] == '\n' && (forall j :: 0 <= j < i ==> '0' <= input[j] <= '9'))
+}
+
+predicate ValidParsedInput(a: int, s: string)
+{
+  2800 <= a < 5000 &&
+  1 <= |s| <= 10 &&
+  (forall j :: 0 <= j < |s| ==> 'a' <= s[j] <= 'z')
+}
+
+predicate CorrectOutput(a: int, s: string, result: string)
+{
+  (a >= 3200 ==> result == s + "\n") &&
+  (a < 3200 ==> result == "red\n")
+}
+
+// <vc-helpers>
+function parseInput(input: string): (int, string)
+  requires ValidInput(input)
+  ensures var (a, s) := parseInput(input);
+    ValidParsedInput(a, s) &&
+    var d := |a.ConvertIntToString()|; 
+    |input| == d + 1 + |s| &&
+    input[0..d] == a.ConvertIntToString() && 
+    input[d] == '\n' && 
+    input[d + 1..] == s
+{
+  var i := 0;
+  var num := 0;
+  while i < |input| && input[i] != '\n'
+    invariant 0 <= i <= |input|
+    invariant num >= 0
+    invariant num == 0 || (num < 10000 && num >= 2800) || (i > 0)
+    invariant forall j :: 0 <= j < i ==> '0' <= input[j] <= '9'
+  {
+    num := num * 10 + (input[i] as int - '0' as int);
+    i := i + 1;
+  }
+  assert i < |input| && input[i] == '\n';
+  var s := input[i + 1 ..];
+  if |s| == 0 || |s| > 10 {
+    // This shouldn't happen, but for verification
+    assert false;
+  }
+  assert ValidParsedInput(num, s);
+  return (num, s);
+}
+
+predicate ValidInput(input: string)
+{
+  |input| > 0 &&
+  (exists i :: 0 < i < |input| && input[i] == '\n') &&
+  (forall i :: 0 <= i < |input| ==> input[i] == '\n' || ('0' <= input[i] <= '9') || ('a' <= input[i] <= 'z')) &&
+  (exists i :: 0 < i < |input| && input[i] == '\n' && (forall j :: 0 <= j < i ==> '0' <= input[j] <= '9'))
+}
+
+predicate ValidParsedInput(a: int, s: string)
+{
+  2800 <= a < 5000 &&
+  1 <= |s| <= 10 &&
+  (forall j :: 0 <= j < |s| ==> 'a' <= s[j] <= 'z')
+}
+
+predicate CorrectOutput(a: int, s: string, result: string)
+{
+  (a >= 3200 ==> result == s + "\n") &&
+  (a < 3200 ==> result == "red\n")
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(input: string) returns (result: string)
+  requires ValidInput(input)
+  requires exists a: int, s: string :: 
+    parseInput(input) == (a, s) && ValidParsedInput(a, s)
+  ensures exists a: int, s: string :: 
+    parseInput(input) == (a, s) && 
+    ValidParsedInput(a, s) &&
+    CorrectOutput(a, s, result)
+  ensures |result| > 0
+  ensures result[|result|-1] == '\n'
+  ensures (exists a: int, s: string :: 
+    parseInput(input) == (a, s) && a >= 3200) ==> 
+    (exists s: string :: result == s + "\n" && 1 <= |s| <= 10 && (forall j :: 0 <= j < |s| ==> 'a' <= s[j] <= 'z'))
+  ensures (exists a: int, s: string :: 
+    parseInput(input) == (a, s) && a < 3200) ==> result == "red\n"
+// </vc-spec>
+// <vc-code>
+{
+  var a, s := parseInput(input);
+  if a >= 3200 {
+    result := s + "\n";
+  } else {
+    result := "red\n";
+  }
+}
+// </vc-code>
+

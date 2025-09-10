@@ -1,0 +1,80 @@
+predicate ValidInput(n: int, a: seq<int>)
+{
+    n >= 1 && |a| == n && forall i :: 0 <= i < n ==> a[i] >= 0
+}
+
+function CountSurvivors(n: int, a: seq<int>): int
+    requires ValidInput(n, a)
+{
+    CountSurvivorsFrom(n, a, 0, n)
+}
+
+function CountSurvivorsFrom(n: int, a: seq<int>, start: int, left: int): int
+    requires ValidInput(n, a)
+    requires 0 <= start <= n
+    requires left <= n
+    decreases n - start
+{
+    if start >= n then 0
+    else
+        var i := n - 1 - start;
+        var survives := if i < left then 1 else 0;
+        var newLeft := if i - a[i] < left then i - a[i] else left;
+        survives + CountSurvivorsFrom(n, a, start + 1, newLeft)
+}
+
+// <vc-helpers>
+lemma LemmaCountSurvivorsFromDecreases(n: int, a: seq<int>, start: int, left: int)
+    requires ValidInput(n, a)
+    requires 0 <= start <= n
+    requires left <= n
+    decreases n - start
+{
+    if start < n {
+        LemmaCountSurvivorsFromDecreases(n, a, start + 1, if n - 1 - start - a[n - 1 - start] < left then n - 1 - start - a[n - 1 - start] else left);
+    }
+}
+
+lemma LemmaCountSurvivorsFromRange(n: int, a: seq<int>, start: int, left: int)
+    requires ValidInput(n, a)
+    requires 0 <= start <= n
+    requires left <= n
+    ensures 0 <= CountSurvivorsFrom(n, a, start, left) <= n - start
+    decreases n - start
+{
+    if start < n {
+        var i := n - 1 - start;
+        var survives := if i < left then 1 else 0;
+        var newLeft := if i - a[i] < left then i - a[i] else left;
+
+        assert 0 <= start+1 <= n;
+        assert newLeft <= n;
+
+        LemmaCountSurvivorsFromRange(n, a, start+1, newLeft);
+
+        var next := CountSurvivorsFrom(n, a, start+1, newLeft);
+        if survives == 0 {
+            assert 0 <= next <= n - start - 1;
+            assert 0 <= next + 0 <= n - start;
+        } else {
+            assert 0 <= next <= n - start - 1;
+            assert 0 <= 1 + next <= n - start;
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, a: seq<int>) returns (result: int)
+    requires ValidInput(n, a)
+    ensures result >= 0
+    ensures result <= n
+    ensures result == CountSurvivors(n, a)
+// </vc-spec>
+// <vc-code>
+{
+    LemmaCountSurvivorsFromRange(n, a, 0, n);
+    result := CountSurvivorsFrom(n, a, 0, n);
+}
+// </vc-code>
+

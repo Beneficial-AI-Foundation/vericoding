@@ -1,0 +1,74 @@
+predicate ValidInput(input: string)
+{
+    |input| > 0
+}
+
+predicate ValidParsedInput(parts: seq<string>)
+{
+    |parts| == 3 && |parts[0]| > 0 && |parts[1]| > 0 && |parts[2]| > 0
+}
+
+predicate IsWordChain(a: string, b: string, c: string)
+    requires |a| > 0 && |b| > 0 && |c| > 0
+{
+    a[|a|-1] == b[0] && b[|b|-1] == c[0]
+}
+
+function ExpectedResult(input: string): string
+    requires ValidInput(input)
+{
+    var stripped := if |input| > 0 && input[|input|-1] == '\n' then input[0..|input|-1] else input;
+    var parts := SplitOnSpaces(stripped);
+    if ValidParsedInput(parts) then
+        if IsWordChain(parts[0], parts[1], parts[2]) then "YES\n" else "NO\n"
+    else
+        ""
+}
+
+// <vc-helpers>
+lemma SplitOnSpacesPreservesLength(s: string)
+    ensures |SplitOnSpaces(s)| >= 0
+
+lemma SplitOnSpacesNonEmptyParts(s: string)
+    requires |s| > 0 && s != " "
+    ensures |SplitOnSpaces(s)| > 0 ==> (forall i :: 0 <= i < |SplitOnSpaces(s)| ==> |SplitOnSpaces(s)[i]| > 0)
+
+function SplitOnSpaces(s: string): seq<string>
+{
+    if |s| == 0 then []
+    else if s[0] == ' ' then SplitOnSpaces(s[1..])
+    else
+        var firstWordEnd: int := 0;
+        while firstWordEnd < |s| && s[firstWordEnd] != ' '
+            invariant 0 <= firstWordEnd <= |s|
+        {
+            firstWordEnd := firstWordEnd + 1;
+        }
+        var firstWord := s[0..firstWordEnd];
+        var rest := if firstWordEnd < |s| then s[firstWordEnd+1..] else "";
+        [firstWord] + SplitOnSpaces(rest)
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(input: string) returns (result: string)
+    requires ValidInput(input)
+    ensures result == ExpectedResult(input)
+    ensures result == "YES\n" || result == "NO\n" || result == ""
+// </vc-spec>
+// <vc-code>
+{
+    var stripped := if |input| > 0 && input[|input|-1] == '\n' then input[0..|input|-1] else input;
+    var parts := SplitOnSpaces(stripped);
+    if |parts| == 3 && |parts[0]| > 0 && |parts[1]| > 0 && |parts[2]| > 0 {
+        if parts[0][|parts[0]|-1] == parts[1][0] && parts[1][|parts[1]|-1] == parts[2][0] {
+            result := "YES\n";
+        } else {
+            result := "NO\n";
+        }
+    } else {
+        result := "";
+    }
+}
+// </vc-code>
+

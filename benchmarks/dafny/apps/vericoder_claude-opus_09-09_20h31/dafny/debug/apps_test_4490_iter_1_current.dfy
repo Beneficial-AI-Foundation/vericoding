@@ -1,0 +1,83 @@
+predicate ValidDNABase(c: char)
+{
+    c in {'A', 'T', 'C', 'G'}
+}
+
+function DNAComplement(c: char): char
+    requires ValidDNABase(c)
+{
+    match c
+        case 'A' => 'T'
+        case 'T' => 'A'
+        case 'C' => 'G'
+        case 'G' => 'C'
+}
+
+predicate ValidInput(input: string)
+{
+    var input_line := if exists i :: 0 <= i < |input| && input[i] == '\n'
+                      then input[..find_newline(input)]
+                      else input;
+    |input_line| == 1 && ValidDNABase(input_line[0])
+}
+
+// <vc-helpers>
+function find_newline(s: string): nat
+    requires exists i :: 0 <= i < |s| && s[i] == '\n'
+    ensures 0 <= find_newline(s) < |s|
+    ensures s[find_newline(s)] == '\n'
+    ensures forall i :: 0 <= i < find_newline(s) ==> s[i] != '\n'
+{
+    var i :| 0 <= i < |s| && s[i] == '\n' && (forall j :: 0 <= j < i ==> s[j] != '\n');
+    i
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(stdin_input: string) returns (result: string)
+    requires |stdin_input| > 0
+    ensures var input_line := if exists i :: 0 <= i < |stdin_input| && stdin_input[i] == '\n'
+                              then stdin_input[..find_newline(stdin_input)]
+                              else stdin_input;
+            if ValidInput(stdin_input) then
+                result == [DNAComplement(input_line[0])] + "\n"
+            else
+                result == ""
+// </vc-spec>
+// <vc-code>
+{
+    var input_line: string;
+    
+    // Find newline position if it exists
+    var newline_pos := -1;
+    var i := 0;
+    while i < |stdin_input|
+        invariant 0 <= i <= |stdin_input|
+        invariant newline_pos == -1 ==> forall j :: 0 <= j < i ==> stdin_input[j] != '\n'
+        invariant newline_pos >= 0 ==> 0 <= newline_pos < i && stdin_input[newline_pos] == '\n'
+        invariant newline_pos >= 0 ==> forall j :: 0 <= j < newline_pos ==> stdin_input[j] != '\n'
+    {
+        if stdin_input[i] == '\n' && newline_pos == -1 {
+            newline_pos := i;
+            break;
+        }
+        i := i + 1;
+    }
+    
+    // Extract input_line based on whether newline was found
+    if newline_pos >= 0 {
+        input_line := stdin_input[..newline_pos];
+    } else {
+        input_line := stdin_input;
+    }
+    
+    // Check validity and compute result
+    if |input_line| == 1 && ValidDNABase(input_line[0]) {
+        var complement := DNAComplement(input_line[0]);
+        result := [complement] + "\n";
+    } else {
+        result := "";
+    }
+}
+// </vc-code>
+

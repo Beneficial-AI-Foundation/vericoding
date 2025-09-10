@@ -1,0 +1,44 @@
+/*
+Given a red socks and b blue socks, determine the maximum number of days to wear
+different colored socks (one red, one blue per day), then the number of days to
+wear same colored socks afterwards (two socks of same color per day). Each day,
+worn socks are discarded.
+*/
+
+predicate ValidInput(a: int, b: int)
+{
+  a >= 1 && b >= 1
+}
+
+function MaxDifferentDays(a: int, b: int): int
+{
+  if a < b then a else b
+}
+
+function RemainingAfterDifferent(a: int, b: int): int
+{
+  if a > b then a - MaxDifferentDays(a, b) else b - MaxDifferentDays(a, b)
+}
+
+function SameDays(a: int, b: int): int
+{
+  RemainingAfterDifferent(a, b) / 2
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method solve(a: int, b: int) returns (days_different: int, days_same: int)
+  requires ValidInput(a, b)
+  ensures days_different == MaxDifferentDays(a, b)
+  ensures days_same == SameDays(a, b)
+  ensures days_different >= 0
+  ensures days_same >= 0
+  ensures days_different <= a && days_different <= b
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

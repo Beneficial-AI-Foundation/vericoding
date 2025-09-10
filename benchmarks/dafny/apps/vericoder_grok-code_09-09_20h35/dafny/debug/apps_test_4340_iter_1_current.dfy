@@ -1,0 +1,32 @@
+function TransformElement(x: int): int
+{
+    if x % 2 == 0 then x - 1 else x
+}
+
+predicate ValidTransformation(input: seq<int>, output: seq<int>)
+{
+    |output| == |input| &&
+    forall i :: 0 <= i < |input| ==> output[i] == TransformElement(input[i])
+}
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method solve(a: seq<int>) returns (result: seq<int>)
+    ensures ValidTransformation(a, result)
+// </vc-spec>
+// <vc-code>
+{
+  var res := [];
+  for i := 0 to |a| - 1
+    invariant |res| == i
+    invariant forall j :: 0 <= j < i ==> res[j] == TransformElement(a[j])
+  {
+    res := res + [TransformElement(a[i])];
+  }
+  result := res;
+}
+// </vc-code>
+

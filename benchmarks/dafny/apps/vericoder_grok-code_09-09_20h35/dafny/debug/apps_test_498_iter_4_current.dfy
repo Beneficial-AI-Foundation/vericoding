@@ -1,0 +1,46 @@
+predicate ValidInput(n: int, m: int, k: int)
+{
+    1 <= n <= 10000 && 1 <= m <= 10000 && 1 <= k <= 2 * n * m
+}
+
+predicate ValidOutput(n: int, m: int, lane: int, desk: int, side: string)
+{
+    1 <= lane <= n && 1 <= desk <= m && (side == "L" || side == "R")
+}
+
+predicate CorrectSolution(n: int, m: int, k: int, lane: int, desk: int, side: string)
+    requires ValidInput(n, m, k)
+{
+    lane == (k - 1) / (2 * m) + 1 &&
+    desk == (k - 1) % (2 * m) / 2 + 1 &&
+    (side == "L" <==> (k - 1) % (2 * m) % 2 == 0)
+}
+
+// <vc-helpers>
+// No changes needed - fixed elsewhere
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, m: int, k: int) returns (lane: int, desk: int, side: string)
+    requires ValidInput(n, m, k)
+    ensures ValidOutput(n, m, lane, desk, side)
+    ensures CorrectSolution(n, m, k, lane, desk, side)
+// </vc-spec>
+// <vc-code>
+{
+  ghost var temp_g := k - 1;
+  ghost var lane_exp := temp_g / (2 * m) + 1;
+  ghost var desk_exp := temp_g % (2 * m) / 2 + 1;
+  ghost var side_exp := if temp_g % (2 * m) % 2 == 0 then "L" else "R";
+  assert 1 <= lane_exp <= n;
+  assert 1 <= desk_exp <= m;
+  var temp := k - 1;
+  lane := temp / (2 * m) + 1;
+  desk := temp % (2 * m) / 2 + 1;
+  side := if temp % (2 * m) % 2 == 0 then "L" else "R";
+  assert lane == lane_exp;
+  assert desk == desk_exp;
+  assert (side == "L") <==> (side_exp == "L");
+}
+// </vc-code>
+

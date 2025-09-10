@@ -1,0 +1,52 @@
+predicate NoRepeats(words: seq<string>)
+{
+    forall i, j :: 0 <= i < j < |words| ==> words[i] != words[j]
+}
+
+predicate ConsecutiveCharsMatch(words: seq<string>)
+    requires forall i :: 0 <= i < |words| ==> |words[i]| > 0
+{
+    forall i :: 0 <= i < |words| - 1 ==> words[i][|words[i]| - 1] == words[i+1][0]
+}
+
+predicate ValidShiritori(words: seq<string>)
+    requires forall i :: 0 <= i < |words| ==> |words[i]| > 0
+{
+    NoRepeats(words) && ConsecutiveCharsMatch(words)
+}
+
+// <vc-helpers>
+predicate NoRepeats(words: seq<string>)
+{
+    forall i, j :: 0 <= i < j < |words| ==> words[i] != words[j]
+}
+
+predicate ConsecutiveCharsMatch(words: seq<string>)
+    requires forall i :: 0 <= i < |words| ==> |words[i]| > 0
+{
+    forall i :: 0 <= i < |words| - 1 ==> words[i][|words[i]| - 1] == words[i+1][0]
+}
+
+predicate ValidShiritori(words: seq<string>)
+    requires forall i :: 0 <= i < |words| ==> |words[i]| > 0
+{
+    NoRepeats(words) && ConsecutiveCharsMatch(words)
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(words: seq<string>) returns (result: string)
+    requires forall i :: 0 <= i < |words| ==> |words[i]| > 0
+    ensures result == "Yes" || result == "No"
+    ensures result == "Yes" <==> ValidShiritori(words)
+// </vc-spec>
+// <vc-code>
+{
+    if ValidShiritori(words) then
+        result := "Yes";
+    else
+        result := "No";
+    Dafny.h.assert ValidShiritori(words) == (result == "Yes"); // This assertion helps prove the postcondition
+}
+// </vc-code>
+

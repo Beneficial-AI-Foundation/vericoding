@@ -1,0 +1,36 @@
+vc-description: |-
+  Start with value 1 and perform exactly N operations. Each operation is either:
+  Operation A: multiply current value by 2, or Operation B: add K to current value.
+  Find the minimum possible final value after N operations.
+
+vc-preamble: |-
+  predicate ValidInput(n: int, k: int)
+  {
+      n >= 1 && k >= 1
+  }
+  
+  function ApplyOperations(start: int, operations: seq<bool>, k: int): int
+      requires k >= 1
+      requires start >= 1
+      ensures ApplyOperations(start, operations, k) >= start
+      decreases |operations|
+  {
+      if |operations| == 0 then start
+      else if operations[0] then ApplyOperations(start * 2, operations[1..], k)
+      else ApplyOperations(start + k, operations[1..], k)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(n: int, k: int) returns (result: int)
+      requires ValidInput(n, k)
+      ensures result >= 1
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

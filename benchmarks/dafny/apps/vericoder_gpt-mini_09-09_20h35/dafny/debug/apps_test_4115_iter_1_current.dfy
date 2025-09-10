@@ -1,0 +1,58 @@
+predicate ValidInput(s: string)
+{
+    |s| >= 1
+}
+
+function count_mismatches_up_to(s: string, limit: int): int
+    requires |s| >= 1
+    requires 0 <= limit <= |s|
+    ensures count_mismatches_up_to(s, limit) >= 0
+    ensures count_mismatches_up_to(s, limit) <= limit
+{
+    if limit == 0 then 0
+    else 
+        var n := |s| - 1;
+        var mismatch := if s[limit-1] != s[n - (limit-1)] then 1 else 0;
+        count_mismatches_up_to(s, limit-1) + mismatch
+}
+
+function count_mismatches(s: string): int
+    requires |s| >= 1
+    ensures count_mismatches(s) >= 0
+{
+    count_mismatches_up_to(s, |s|)
+}
+
+predicate ValidResult(s: string, result: int)
+    requires ValidInput(s)
+{
+    result >= 0 && result <= |s| / 2 && result == (count_mismatches(s) / 2)
+}
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method solve(s: string) returns (result: int)
+    requires ValidInput(s)
+    ensures ValidResult(s, result)
+// </vc-spec>
+// <vc-code>
+{
+  var n := |s|;
+  var m := 0;
+  var i := 0;
+  while i < n
+    invariant 0 <= i <= n
+    invariant 0 <= m <= i
+    invariant m == count_mismatches_up_to(s, i)
+  {
+    var add := if s[i] != s[n - 1 - i] then 1 else 0;
+    m := m + add;
+    i := i + 1;
+  }
+  result := m / 2;
+}
+// </vc-code>
+

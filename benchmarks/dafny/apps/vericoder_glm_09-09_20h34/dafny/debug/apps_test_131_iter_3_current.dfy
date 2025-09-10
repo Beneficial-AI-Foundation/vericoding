@@ -1,0 +1,85 @@
+predicate IsValidInput(input: string)
+{
+    var lines := SplitLines(input);
+    |lines| >= 3 && 
+    ParseInt(lines[0]) > 0 &&
+    |ParseIntArray(lines[1])| == ParseInt(lines[0]) &&
+    |ParseIntArray(lines[2])| == ParseInt(lines[0])
+}
+
+function GetInitialSum(input: string): int
+    requires IsValidInput(input)
+{
+    var lines := SplitLines(input);
+    Sum(ParseIntArray(lines[1]))
+}
+
+function GetTargetSum(input: string): int
+    requires IsValidInput(input)
+{
+    var lines := SplitLines(input);
+    Sum(ParseIntArray(lines[2]))
+}
+
+function Sum(nums: seq<int>): int
+    decreases |nums|
+{
+    if |nums| == 0 then 0
+    else nums[0] + Sum(nums[1..])
+}
+
+// <vc-helpers>
+function SplitLines(s: string): seq<string>
+{
+    if s == "" then []
+    else if s[0] == '\n' then [""] + SplitLines(s[1:])
+    else [s[0] + SplitLines(s[1..])[0]] + SplitLines(s[1..])[1:]
+}
+
+function ParseInt(s: string): int
+    requires s != "" && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+{
+    if |s| == 1 then s[0] - '0'
+    else 10 * ParseInt(s[..|s|-1]) + (s[|s|-1] - '0')
+}
+
+function ParseIntArray(s: string): seq<int>
+    requires s != ""
+{
+    if s == "" then []
+    else 
+        var next := FindNextInt(s);
+        [ParseInt(s[..next])] + ParseIntArray(s[next+1..])
+}
+
+function FindNextInt(s: string): nat
+    requires s != ""
+{
+    if |s| == 0 then 0
+    else if s[0] == ' ' then 0
+    else 1 + FindNextInt(s[1..])
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(input: string) returns (result: string)
+    ensures result == "Yes" || result == "No"
+    ensures IsValidInput(input) ==> 
+        (result == "Yes" <==> GetInitialSum(input) >= GetTargetSum(input))
+    ensures !IsValidInput(input) ==> result == "No"
+// </vc-spec>
+// <vc-code>
+{
+    if !IsValidInput(input) {
+        return "No";
+    }
+    var initial := GetInitialSum(input);
+    var target := GetTargetSum(input);
+    if initial >= target {
+        return "Yes";
+    } else {
+        return "No";
+    }
+}
+// </vc-code>
+

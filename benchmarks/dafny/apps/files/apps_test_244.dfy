@@ -1,0 +1,54 @@
+/*
+Given 3 shells numbered 0, 1, 2, a ball starts under one shell. An operator makes n moves:
+odd moves swap shells 0 and 1, even moves swap shells 1 and 2. Given the final position x
+after n moves, determine the initial position of the ball.
+*/
+
+predicate ValidPosition(pos: int) {
+    0 <= pos <= 2
+}
+
+function SwapMove(pos: int, moveNum: int): int
+    requires ValidPosition(pos)
+    requires moveNum >= 1
+    ensures ValidPosition(SwapMove(pos, moveNum))
+{
+    if moveNum % 2 == 1 then // odd move: swap 0 and 1
+        if pos == 0 then 1
+        else if pos == 1 then 0
+        else 2
+    else // even move: swap 1 and 2
+        if pos == 1 then 2
+        else if pos == 2 then 1
+        else 0
+}
+
+function ReverseMove(pos: int, moveNum: int): int
+    requires ValidPosition(pos)
+    requires moveNum >= 1
+    ensures ValidPosition(ReverseMove(pos, moveNum))
+{
+    if moveNum % 2 == 1 then // reverse odd move: swap 0 and 1
+        if pos == 0 then 1
+        else if pos == 1 then 0
+        else 2
+    else // reverse even move: swap 1 and 2
+        if pos == 1 then 2
+        else if pos == 2 then 1
+        else 0
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method ShellGame(n: int, x: int) returns (result: int)
+    requires n >= 1 && n <= 2000000000
+    requires ValidPosition(x)
+    ensures ValidPosition(result)
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

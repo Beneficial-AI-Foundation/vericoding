@@ -1,0 +1,47 @@
+vc-description: |-
+  Given integers m and b, find the maximum sum of bananas that can be collected from an optimally placed rectangle.
+  Each lattice point (x,y) where x,y >= 0 contains x+y bananas.
+  A line is defined by y = -x/m + b.
+  A rectangle with axis-aligned sides can be placed anywhere such that all points are on or under the line.
+  The rectangle can be degenerate (a line segment or single point).
+
+vc-preamble: |-
+  predicate ValidInput(m: int, b: int)
+  {
+    1 <= m <= 1000 && 1 <= b <= 10000
+  }
+  
+  function f(x: int, y: int): int
+    requires x >= 0 && y >= 0
+  {
+    (x * (x + 1) * (y + 1) + y * (y + 1) * (x + 1)) / 2
+  }
+  
+  predicate ValidRectangleCorner(k: int, m: int, b: int)
+  {
+    0 <= k && b - k >= 0
+  }
+  
+  function RectangleValue(k: int, m: int, b: int): int
+    requires ValidRectangleCorner(k, m, b)
+    requires m >= 1
+  {
+    f(k * m, b - k)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(m: int, b: int) returns (result: int)
+    requires ValidInput(m, b)
+    ensures result >= -1
+    ensures forall k :: ValidRectangleCorner(k, m, b) ==> result >= RectangleValue(k, m, b)
+    ensures exists k :: ValidRectangleCorner(k, m, b) && result == RectangleValue(k, m, b)
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

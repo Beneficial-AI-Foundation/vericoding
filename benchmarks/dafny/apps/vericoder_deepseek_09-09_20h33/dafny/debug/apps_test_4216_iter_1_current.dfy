@@ -1,0 +1,106 @@
+function numDigits(n: int): int
+  requires n >= 1
+  ensures numDigits(n) >= 1
+  decreases n
+{
+  if n < 10 then 1
+  else 1 + numDigits(n / 10)
+}
+
+predicate ValidInput(N: int) {
+  N >= 1
+}
+
+function F(a: int, b: int): int
+  requires a >= 1 && b >= 1
+{
+  var digitsA := numDigits(a);
+  var digitsB := numDigits(b);
+  if digitsA > digitsB then digitsA else digitsB
+}
+
+predicate IsFactorPair(a: int, b: int, N: int) {
+  a >= 1 && b >= 1 && a * b == N
+}
+
+// <vc-helpers>
+lemma numDigits_pos(n: int)
+  requires n >= 1
+  ensures numDigits(n) >= 1
+{
+  // This is already ensured by the function postcondition
+}
+
+lemma numDigits_monotone(n: int, m: int)
+  requires 1 <= n <= m
+  ensures numDigits(n) <= numDigits(m)
+{
+  if n < 10 {
+    if m < 10 {
+      // Both single digit
+    } else {
+      assert numDigits(m) >= 2 > 1 == numDigits(n);
+    }
+  } else {
+    assert m >= n >= 10;
+    assert numDigits(n) == 1 + numDigits(n / 10);
+    assert numDigits(m) == 1 + numDigits(m / 10);
+    assert n / 10 <= m / 10;
+    numDigits_monotone(n / 10, m / 10);
+  }
+}
+
+lemma factor_pair_exists(N: int)
+  requires N >= 1
+  ensures exists a, b :: IsFactorPair(a, b, N)
+{
+  // Trivial factor pair: 1 and N
+}
+
+lemma F_symmetric(a: int, b: int)
+  requires a >= 1 && b >= 1
+  ensures F(a, b) == F(b, a)
+{
+}
+
+lemma F_at_least_1(a: int, b: int)
+  requires a >= 1 && b >= 1
+  ensures F(a, b) >= 1
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(N: int) returns (result: int)
+  requires ValidInput(N)
+  ensures result >= 1
+  ensures exists a, b :: IsFactorPair(a, b, N) && result == F(a, b)
+  ensures forall a, b :: IsFactorPair(a, b, N) ==> result <= F(a, b)
+// </vc-spec>
+// <vc-code>
+{
+  var best := numDigits(N); // For factor pair (1, N)
+  var a := 1;
+  
+  while (a * a <= N)
+    invariant 1 <= a <= N + 1
+    invariant exists b :: IsFactorPair(a, b, N) ==> best <= F(a, b)
+    invariant exists a', b' :: IsFactorPair(a', b', N) && best == F(a', b')
+    decreases N - a
+  {
+    if N % a == 0 {
+      var b := N / a;
+      if b >= 1 {
+        var current := F(a, b);
+        if current < best {
+          best := current;
+        }
+      }
+    }
+    a := a + 1;
+  }
+  
+  result := best;
+}
+// </vc-code>
+

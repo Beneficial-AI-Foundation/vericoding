@@ -1,0 +1,34 @@
+/*
+Given A 1-yen coins and unlimited 500-yen coins, determine if you can pay exactly N yen.
+Return "Yes" if exact payment is possible, "No" otherwise.
+*/
+
+predicate ValidInput(n: int, a: int)
+{
+    1 <= n <= 10000 && 0 <= a <= 1000
+}
+
+predicate CanPayExactly(n: int, a: int)
+{
+    n % 500 <= a
+}
+
+predicate ValidOutput(result: string)
+{
+    result == "Yes" || result == "No"
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, a: int) returns (result: string)
+    requires ValidInput(n, a)
+    ensures ValidOutput(result)
+    ensures result == "Yes" <==> CanPayExactly(n, a)
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

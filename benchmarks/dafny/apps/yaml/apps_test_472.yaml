@@ -1,0 +1,32 @@
+vc-description: |-
+  Given a positive integer n, find the smallest positive integer x such that
+  x² + s(x)·x - n = 0, where s(x) is the sum of digits of x in decimal notation.
+  If no such positive integer x exists, return -1.
+
+vc-preamble: |-
+  function digitSum(n: int): int
+    requires n >= 0
+    decreases n
+  {
+    if n == 0 then 0
+    else (n % 10) + digitSum(n / 10)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(n: int) returns (result: int)
+    requires n >= 1
+    ensures n == 1 ==> result == -1
+    ensures n > 1 && result > 0 ==> result * result + digitSum(result) * result == n
+    ensures n > 1 && result > 0 ==> forall y :: y > 0 && y < result ==> y * y + digitSum(y) * y != n
+    ensures n > 1 && result == -1 ==> forall x :: x > 0 ==> x * x + digitSum(x) * x != n
+    ensures result == -1 || result > 0
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

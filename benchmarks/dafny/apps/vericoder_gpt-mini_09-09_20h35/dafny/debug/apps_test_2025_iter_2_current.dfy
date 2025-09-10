@@ -1,0 +1,82 @@
+predicate IsComposite(x: int)
+{
+    x >= 4 && exists k :: 2 <= k < x && x % k == 0
+}
+
+predicate ValidInput(queries: seq<int>)
+{
+    forall i :: 0 <= i < |queries| ==> queries[i] >= 1
+}
+
+function MaxCompositeSummands(n: int): int
+{
+    if n % 4 == 0 then n / 4
+    else if n % 4 == 1 && n / 4 >= 2 then n / 4 - 1
+    else if n % 4 == 2 && n / 4 >= 1 then n / 4
+    else if n % 4 == 3 && n / 4 >= 3 then n / 4 - 1
+    else -1
+}
+
+predicate ValidResult(queries: seq<int>, results: seq<int>)
+{
+    |results| == |queries| &&
+    forall i :: 0 <= i < |queries| ==> results[i] == MaxCompositeSummands(queries[i]) &&
+    forall i :: 0 <= i < |queries| ==> results[i] >= -1
+}
+
+// <vc-helpers>
+lemma MaxCompositeSummands_ge_minus1(n: int)
+  requires n >= 1
+  ensures MaxCompositeSummands(n) >= -1
+{
+  if n % 4 == 0 {
+    assert MaxCompositeSummands(n) == n / 4;
+    assert n / 4 >= 0;
+    assert MaxCompositeSummands(n) >= -1;
+  } else if n % 4 == 1 && n / 4 >= 2 {
+    assert MaxCompositeSummands(n) == n / 4 - 1;
+    assert n / 4 >= 2;
+    assert n / 4 - 1 >= -1;
+    assert MaxCompositeSummands(n) >= -1;
+  } else if n % 4 == 2 && n / 4 >= 1 {
+    assert MaxCompositeSummands(n) == n / 4;
+    assert n / 4 >= 0;
+    assert MaxCompositeSummands(n) >= -1;
+  } else if n % 4 == 3 && n / 4 >= 3 {
+    assert MaxCompositeSummands(n) == n / 4 - 1;
+    assert n / 4 >= 3;
+    assert n / 4 - 1 >= -1;
+    assert MaxCompositeSummands(n) >= -1;
+  } else {
+    assert MaxCompositeSummands(n) == -1;
+    assert MaxCompositeSummands(n) >= -1;
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(queries: seq<int>) returns (results: seq<int>)
+    requires ValidInput(queries)
+    ensures ValidResult(queries, results)
+// </vc-spec>
+// <vc-code>
+{
+  var n := |queries|;
+  results := [];
+  var i := 0;
+  while i < n
+    invariant 0 <= i <= n
+    invariant |results| == i
+    invariant forall j :: 0 <= j < i ==> results[j] == MaxCompositeSummands(queries[j])
+    invariant forall j :: 0 <= j < i ==> results[j] >= -1
+  {
+    var v := MaxCompositeSummands(queries[i]);
+    MaxCompositeSummands_ge_minus1(queries[i]);
+    results := results + [v];
+    assert results[i] == v;
+    assert results[i] >= -1;
+    i := i + 1;
+  }
+}
+// </vc-code>
+

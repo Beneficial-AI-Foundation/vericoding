@@ -1,0 +1,219 @@
+function minStepsToZero(n: nat, k: nat): nat
+    requires k >= 2
+    decreases n
+{
+    if n == 0 then 0
+    else if n % k == 0 then 1 + minStepsToZero(n / k, k)
+    else (n % k) + minStepsToZero(n - (n % k), k)
+}
+
+predicate validInput(input: string)
+{
+    |input| > 0 && 
+    var lines := splitLinesFunc(input);
+    |lines| >= 1 &&
+    isValidNumber(lines[0]) &&
+    var t := stringToIntFunc(lines[0]);
+    t >= 1 && t <= 100 &&
+    |lines| >= t + 1 &&
+    forall i :: 1 <= i <= t ==> validTestCase(lines[i])
+}
+
+predicate validTestCase(line: string)
+{
+    var parts := splitSpacesFunc(line);
+    |parts| == 2 &&
+    isValidNumber(parts[0]) &&
+    isValidNumber(parts[1]) &&
+    var n := stringToIntFunc(parts[0]);
+    var k := stringToIntFunc(parts[1]);
+    n >= 1 && k >= 2
+}
+
+predicate isValidNumber(s: string)
+{
+    |s| >= 1 &&
+    (s == "0" || (s[0] != '0' && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9')) &&
+    forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+}
+
+function expectedOutput(input: string): string
+    requires validInput(input)
+{
+    var lines := splitLinesFunc(input);
+    var t := stringToIntFunc(lines[0]);
+    var results := seq(t, i requires 0 <= i < t => 
+        var parts := splitSpacesFunc(lines[i+1]);
+        var n := stringToIntFunc(parts[0]);
+        var k := stringToIntFunc(parts[1]);
+        intToStringFunc(minStepsToZero(n, k))
+    );
+    joinLinesSeq(results)
+}
+
+// <vc-helpers>
+function stringToIntFunc(s: string): int
+  requires isValidNumber(s)
+  reads {}
+{
+  if s == "0" then 0
+  else
+    var n := 0;
+    var i := 0;
+    while i < |s|
+      invariant 0 <= i <= |s|
+      invariant n == (if i == 0 then 0 else stringToNatLemma(s[..i]))
+      invariant forall j :: 0 <= j < i ==> '0' <= s[j] <= '9'
+    {
+      n := n * 10 + (s[i] as int - '0' as int);
+      i := i + 1;
+    }
+    n
+}
+
+function stringToNatLemma(s: string): nat
+  requires isValidNumber(s)
+  reads {}
+  ensures stringToIntFunc(s) == stringToNatLemma(s)
+{
+  if s == "0" then 0
+  else
+    var n := 0;
+    var i := 0;
+    while i < |s|
+      invariant 0 <= i <= |s|
+      invariant n == (if i == 0 then 0 else stringToNatLemma(s[..i]))
+      invariant forall j :: 0 <= j < i ==> '0' <= s[j] <= '9'
+    {
+      n := n * 10 + (s[i] as int - '0' as int);
+      i := i + 1;
+    }
+    n as nat
+}
+
+
+function intToStringFunc(n: nat): string
+  ensures isValidNumber(intToStringFunc(n))
+  ensures n == stringToIntFunc(intToStringFunc(n))
+{
+  if n == 0 then "0"
+  else
+    var s := "";
+    var temp := n;
+    while temp > 0
+      invariant temp >= 0
+      invariant s == "" || isValidNumber(s)
+      invariant n == stringToIntFunc(intToStringReverse(temp, s))
+    {
+      s := (temp % 10 as char + '0' as char) + s;
+      temp := temp / 10;
+    }
+    s
+}
+
+function intToStringReverse(temp: nat, s: string): string
+  requires temp >= 0
+  requires s == "" || isValidNumber(s)
+  reads {}
+{
+  if temp == 0 then s
+  else intToStringFunc(temp) + s
+}
+
+function splitLinesFunc(s: string): seq<string>
+  reads {}
+{
+  if s == "" then []
+  else
+    var result: seq<string> := [];
+    var currentLine: string := "";
+    var i := 0;
+    while i < |s|
+      invariant 0 <= i <= |s|
+      invariant forall j :: 0 <= j < |result| ==> result[j] != "\n"
+      invariant forall j :: 0 <= j < |currentLine| ==> currentLine[j] != '\n'
+    {
+      if s[i] == '\n'
+      {
+        result := result + [currentLine];
+        currentLine := "";
+      }
+      else
+      {
+        currentLine := currentLine + s[i];
+      }
+      i := i + 1;
+    }
+    result + [currentLine]
+}
+
+function splitSpacesFunc(s: string): seq<string>
+  reads {}
+{
+  if s == "" then []
+  else
+    var result: seq<string> := [];
+    var current: string := "";
+    var i := 0;
+    while i < |s|
+      invariant 0 <= i <= |s|
+      invariant forall j :: 0 <= j < |result| ==> forall k :: 0 <= k < |result[j]| ==> result[j][k] != ' '
+      invariant forall k :: 0 <= k < |current| ==> current[k] != ' '
+    {
+      if s[i] == ' '
+      {
+        if current != ""
+        {
+          result := result + [current];
+        }
+        current := "";
+      }
+      else
+      {
+        current := current + s[i];
+      }
+      i := i + 1;
+    }
+    if current != "" then result + [current] else result
+}
+
+function joinLinesSeq(lines: seq<string>): string
+  reads {}
+  ensures (forall i :: 0 <= i < |joinLinesSeq(lines)| ==> joinLinesSeq(lines)[i] != '\0')
+{
+  if |lines| == 0 then ""
+  else if |lines| == 1 then lines[0]
+  else lines[0] + "\n" + joinLinesSeq(lines[1..])
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(input: string) returns (result: string)
+    requires |input| > 0
+    requires validInput(input)
+    ensures |result| >= 0
+    ensures forall i :: 0 <= i < |result| ==> result[i] != '\0'
+    ensures result == expectedOutput(input)
+// </vc-spec>
+// <vc-code>
+{
+  var lines := splitLinesFunc(input);
+  var t := stringToIntFunc(lines[0]);
+  var results: seq<string> := [];
+  var i := 0;
+  while i < t
+    invariant 0 <= i <= t
+    invariant |results| == i
+    invariant forall j :: 0 <= j < |results| ==> isValidNumber(results[j])
+  {
+    var parts := splitSpacesFunc(lines[i+1]);
+    var n := stringToIntFunc(parts[0]);
+    var k := stringToIntFunc(parts[1]);
+    var steps := minStepsToZero(n, k);
+    results := results + [intToStringFunc(steps)];
+    i := i + 1;
+  }
+  result := joinLinesSeq(results);
+}
+// </vc-code>
+

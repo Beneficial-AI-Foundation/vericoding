@@ -1,0 +1,291 @@
+predicate containsThreeSpaceSeparatedIntegers(input: string)
+{
+    exists i, j, k :: (0 <= i < j < k <= |input| &&
+    isValidIntegerSubstring(input, 0, i) &&
+    input[i] == ' ' &&
+    isValidIntegerSubstring(input, i+1, j) &&
+    input[j] == ' ' &&
+    isValidIntegerSubstring(input, j+1, k) &&
+    (k == |input| || input[k] == '\n'))
+}
+
+predicate exactlyTwoAreEqual(input: string)
+    requires containsThreeSpaceSeparatedIntegers(input)
+{
+    var nums := parseThreeNumbers(input);
+    (nums.0 == nums.1 && nums.0 != nums.2) ||
+    (nums.0 == nums.2 && nums.0 != nums.1) ||
+    (nums.1 == nums.2 && nums.1 != nums.0)
+}
+
+predicate isValidIntegerString(s: string)
+{
+    if |s| == 0 then false
+    else if s == "0" then true
+    else if |s| > 0 && s[0] == '-' then 
+        |s| > 1 && isDigitSequence(s[1..]) && s[1] != '0'
+    else isDigitSequence(s) && s[0] != '0'
+}
+
+predicate isDigitSequence(s: string)
+{
+    forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+}
+
+predicate isValidIntegerSubstring(s: string, start: int, end: int)
+    requires 0 <= start <= end <= |s|
+{
+    if start == end then false
+    else
+        var substr := s[start..end];
+        isValidIntegerString(substr)
+}
+
+function findDifferentNumber(input: string): string
+    requires containsThreeSpaceSeparatedIntegers(input)
+    requires exactlyTwoAreEqual(input)
+{
+    var nums := parseThreeNumbers(input);
+    var different := if nums.0 == nums.1 then nums.2
+                    else if nums.0 == nums.2 then nums.1
+                    else nums.0;
+    intToStringPure(different)
+}
+
+// <vc-helpers>
+function charToDigit(c: char): int
+  requires '0' <= c <= '9'
+{
+  if c == '0' then 0
+  else if c == '1' then 1
+  else if c == '2' then 2
+  else if c == '3' then 3
+  else if c == '4' then 4
+  else if c == '5' then 5
+  else if c == '6' then 6
+  else if c == '7' then 7
+  else if c == '8' then 8
+  else 9
+}
+
+function digitToString(d: int): string
+  requires 0 <= d < 10
+{
+  if d == 0 then "0"
+  else if d == 1 then "1"
+  else if d == 2 then "2"
+  else if d == 3 then "3"
+  else if d == 4 then "4"
+  else if d == 5 then "5"
+  else if d == 6 then "6"
+  else if d == 7 then "7"
+  else if d == 8 then "8"
+  else "9"
+}
+
+function pow10(n: int): int
+  requires n >= 0
+  decreases n
+{
+  if n == 0 then 1 else 10 * pow10(n - 1)
+}
+
+function stringToNat(s: string): int
+  requires |s| > 0
+  requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+  decreases |s|
+{
+  if |s| == 1 then charToDigit(s[0])
+  else charToDigit(s[0]) * pow10(|s| - 1) + stringToNat(s[1..])
+}
+
+function substringToInt(s: string, start: int, end: int): int
+  requires 0 <= start < end <= |s|
+  requires isValidIntegerSubstring(s, start, end)
+  decreases end - start
+{
+  var substr := s[start..end];
+  if substr[0] == '-' then -stringToNat(substr[1..]) else stringToNat(substr)
+}
+
+function natToString(n: int): string
+  requires n >= 0
+  decreases n
+{
+  if n < 10 then digitToString(n)
+  else natToString(n / 10) + digitToString(n % 10)
+}
+
+function intToStringPure(x: int): string
+{
+  if x == 0 then "0"
+  else if x < 0 then "-" + natToString(-x)
+  else natToString(x)
+}
+
+// Deterministic parsing helpers to avoid non-unique let-such-that
+function firstI(input: string, pos: int): int
+  requires containsThreeSpaceSeparatedIntegers(input)
+  requires 1 <= pos <= |input|
+  decreases |input| - pos
+{
+  if pos < |input| && input[pos] == ' ' && isValidIntegerSubstring(input, 0, pos) then pos
+  else if pos < |input| then firstI(input, pos + 1)
+  else pos
+}
+
+function firstJ(input: string, pos: int, i: int): int
+  requires containsThreeSpaceSeparatedIntegers(input)
+  requires  i + 1 <= pos <= |input|
+  decreases |input| - pos
+{
+  if pos < |input| && input[pos] == ' ' && isValidIntegerSubstring(input, i + 1, pos) then pos
+  else if pos < |input| then firstJ(input, pos + 1, i)
+  else pos
+}
+
+function firstK(input: string, pos: int, j: int): int
+  requires containsThreeSpaceSeparatedIntegers(input)
+  requires j + 1 <= pos <= |input|
+  decreases |input| - pos
+{
+  if (j + 1 <= pos <= |input|) && isValidIntegerSubstring(input, j + 1, pos) && (pos == |input| || (pos < |input| && input[pos] == '\n')) then pos
+  else if pos < |input| then firstK(input, pos + 1, j)
+  else pos
+}
+
+function parseThreeNumbers(input: string): (int, int, int)
+  requires containsThreeSpaceSeparatedIntegers(input)
+{
+  var i := firstI(input, 1);
+  var j := firstJ(input, i + 1, i);
+  var k := firstK(input, j + 1, j);
+  (substringToInt(input, 0, i), substringToInt(input, i + 1, j), substringToInt(input, j + 1, k))
+}
+
+// Lemmas proving that natToString and intToStringPure produce valid strings
+lemma NatToStringProps(n: int)
+  requires n >= 0
+  ensures |natToString(n)| > 0
+  ensures forall i :: 0 <= i < |natToString(n)| ==> '0' <= natToString(n)[i] <= '9'
+  ensures n == 0 ==> natToString(n) == "0"
+  ensures n > 0 ==> natToString(n)[0] != '0'
+  decreases n
+{
+  if n < 10 {
+    // natToString(n) == digitToString(n)
+    assert |natToString(n)| == 1;
+    // single char is a digit
+    assert forall i :: 0 <= i < |natToString(n)| ==> '0' <= natToString(n)[i] <= '9';
+    if n == 0 {
+      assert natToString(n) == "0";
+    } else {
+      assert natToString(n)[0] != '0';
+    }
+  } else {
+    var q := n / 10;
+    var r := n % 10;
+    // q >= 1 because n >= 10
+    assert q > 0;
+    NatToStringProps(q);
+    // natToString(n) == natToString(q) + digitToString(r)
+    // length positive
+    assert |natToString(n)| == |natToString(q)| + |digitToString(r)| by {
+      calc {
+        |natToString(q) + digitToString(r)|;
+        == { }
+        |natToString(q)| + |digitToString(r)|;
+      }
+    }
+    assert |natToString(n)| > 0;
+    // characters in natToString(q) are digits by induction
+    assert forall i :: 0 <= i < |natToString(q)| ==> '0' <= natToString(q)[i] <= '9';
+    // prove digitToString(r) produces a single digit char
+    assert |digitToString(r)| == 1;
+    if r == 0 {
+      assert digitToString(r) == "0";
+    } else if r == 1 {
+      assert digitToString(r) == "1";
+    } else if r == 2 {
+      assert digitToString(r) == "2";
+    } else if r == 3 {
+      assert digitToString(r) == "3";
+    } else if r == 4 {
+      assert digitToString(r) == "4";
+    } else if r == 5 {
+      assert digitToString(r) == "5";
+    } else if r == 6 {
+      assert digitToString(r) == "6";
+    } else if r == 7 {
+      assert digitToString(r) == "7";
+    } else if r == 8 {
+      assert digitToString(r) == "8";
+    } else {
+      assert digitToString(r) == "9";
+    }
+    // combine properties: every index in concatenation is a digit
+    assert forall i ::
+      0 <= i < |natToString(n)|
+      ==>
+      '0' <= natToString(n)[i] <= '9'
+    by {
+      // If i < |natToString(q)| then follows from induction; else from digitToString(r)
+      reveal natToString;
+      var lenq := |natToString(q)|;
+      if i < lenq {
+        assert natToString(n)[i] == natToString(q)[i];
+        assert '0' <= natToString(q)[i] <= '9';
+      } else {
+        var j := i - lenq;
+        assert j == 0;
+        assert natToString(n)[i] == digitToString(r)[j];
+        assert '0' <= natToString(n)[i] <= '9';
+      }
+    }
+    // first char not '0' because q > 0 and natToString(q)[0] != '0'
+    assert natToString(n)[0] == natToString(q)[0];
+    assert natToString(q)[0] != '0';
+    assert natToString(n)[0] != '0';
+  }
+}
+
+lemma IntToStringProps(x: int)
+  ensures isValidIntegerString(intToStringPure(x))
+{
+  if x == 0 {
+    assert intToStringPure(x) == "0";
+    // "0" is valid
+  } else if x < 0 {
+    var m := -x;
+    NatToStringProps(m);
+    // intToStringPure(x) == "-" + natToString(m)
+    assert |natToString(m)| > 0;
+    // ensure it's not "0" as natToString(m) when m>0 doesn't start with '0'
+    assert natToString(m)[0] != '0';
+    // conclude valid negative integer string: '-' + digits and first digit != '0'
+  } else {
+    // x > 0
+    NatToStringProps(x);
+    // natToString(x) is digits and first char != '0'
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(input: string) returns (result: string)
+    requires |input| > 0
+    requires containsThreeSpaceSeparatedIntegers(input)
+    requires exactlyTwoAreEqual(input)
+    ensures |result| > 0
+    ensures isValidIntegerString(result)
+    ensures result == findDifferentNumber(input)
+// </vc-spec>
+// <vc-code>
+{
+  var nums := parseThreeNumbers(input);
+  var different := if nums.0 == nums.1 then nums.2 else if nums.0 == nums.2 then nums.1 else nums.0;
+  IntToStringProps(different);
+  result := intToStringPure(different);
+}
+// </vc-code>
+

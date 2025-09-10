@@ -1,0 +1,30 @@
+/*
+Given n students with distinct programming skills, divide them into the minimum number of teams 
+such that no two students with skills differing by exactly 1 are on the same team.
+*/
+
+predicate ValidInput(skills: seq<int>)
+{
+    |skills| >= 0
+}
+
+predicate HasAdjacentSkills(skills: seq<int>)
+{
+    exists i, j :: 0 <= i < j < |skills| && (skills[i] - skills[j] == 1 || skills[j] - skills[i] == 1)
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method solve(skills: seq<int>) returns (teams: int)
+    requires ValidInput(skills)
+    ensures teams == 1 || teams == 2
+    ensures teams == 2 <==> HasAdjacentSkills(skills)
+    ensures teams == 1 <==> !HasAdjacentSkills(skills)
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

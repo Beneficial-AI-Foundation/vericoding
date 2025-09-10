@@ -1,0 +1,69 @@
+predicate ValidInput(n: int, a: seq<int>) {
+  n >= 2 && |a| == n && (forall i :: 0 <= i < n ==> a[i] >= 0)
+}
+
+function ComputeB(a: seq<int>, i: int): int
+  requires 0 <= i < |a|
+{
+  a[i] - i
+}
+
+function ComputeC(n: int, b: int): int
+  requires n >= 2
+{
+  if b < 0 then b / n else (b + n - 1) / n
+}
+
+function ComputeCC(n: int, a: seq<int>, i: int): int
+  requires ValidInput(n, a) && 0 <= i < n
+{
+  var b := ComputeB(a, i);
+  var c := ComputeC(n, b);
+  n * c
+}
+
+predicate IsOptimalEntrance(n: int, a: seq<int>, entrance: int)
+  requires ValidInput(n, a) && 1 <= entrance <= n
+{
+  var i := entrance - 1;
+  forall j :: 0 <= j < n ==> 
+    (var cci := ComputeCC(n, a, i);
+     var ccj := ComputeCC(n, a, j);
+     cci <= ccj && (cci < ccj || i <= j))
+}
+
+// <vc-helpers>
+// No helpers required.
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, a: seq<int>) returns (result: int)
+  requires ValidInput(n, a)
+  ensures 1 <= result <= n
+  ensures IsOptimalEntrance(n, a, result)
+// </vc-spec>
+// <vc-code>
+{
+  var besti := 0;
+  var bestcc := ComputeCC(n, a, 0);
+  var i := 1;
+  while i < n
+    invariant 0 <= i <= n
+    invariant 0 <= besti < n
+    invariant bestcc == ComputeCC(n, a, besti)
+    invariant forall j :: 0 <= j < i ==>
+      (var b := ComputeCC(n, a, besti);
+       var cj := ComputeCC(n, a, j);
+       b <= cj && (b < cj || besti <= j))
+  {
+    var cc := ComputeCC(n, a, i);
+    if cc < bestcc {
+      besti := i;
+      bestcc := cc;
+    }
+    i := i + 1;
+  }
+  result := besti + 1;
+}
+// </vc-code>
+

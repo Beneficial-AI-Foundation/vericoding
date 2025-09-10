@@ -1,0 +1,160 @@
+predicate ValidInput(n: int, digits: string)
+{
+    n > 0 && |digits| == n && forall i :: 0 <= i < |digits| ==> '0' <= digits[i] <= '9'
+}
+
+function modifyString(s: string, index: int): string
+    requires 0 <= index < |s|
+    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+    ensures |modifyString(s, index)| == |s|
+    ensures forall i :: 0 <= i < |modifyString(s, index)| ==> '0' <= modifyString(s, index)[i] <= '9'
+{
+    var key := if s[index] == '0' then 0 else 10 - (s[index] as int - '0' as int);
+    var transformed := transformDigits(s, key);
+    rotateString(transformed, index)
+}
+
+function transformDigits(s: string, key: int): string
+    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+    requires 0 <= key <= 9
+    ensures |transformDigits(s, key)| == |s|
+    ensures forall i :: 0 <= i < |transformDigits(s, key)| ==> '0' <= transformDigits(s, key)[i] <= '9'
+    decreases |s|
+{
+    if |s| == 0 then ""
+    else 
+        var digit := (s[0] as int - '0' as int + key) % 10;
+        [('0' as int + digit) as char] + transformDigits(s[1..], key)
+}
+
+function rotateString(s: string, index: int): string
+    requires 0 <= index < |s|
+    ensures |rotateString(s, index)| == |s|
+{
+    if |s| == 0 then ""
+    else s[index..] + s[..index]
+}
+
+predicate isAllDigits(s: string)
+{
+    forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+}
+
+function parseInput(input: string): seq<string>
+    ensures |parseInput(input)| >= 0
+    decreases |input|
+{
+    parseInputHelper(input, 0, "", [])
+}
+
+function parseInputHelper(input: string, i: int, currentLine: string, lines: seq<string>): seq<string>
+    requires 0 <= i <= |input|
+    ensures |parseInputHelper(input, i, currentLine, lines)| >= |lines|
+    decreases |input| - i
+{
+    if i >= |input| then
+        if |currentLine| > 0 then lines + [currentLine] else lines
+    else if input[i] == '\n' then
+        parseInputHelper(input, i + 1, "", lines + [currentLine])
+    else
+        parseInputHelper(input, i + 1, currentLine + [input[i]], lines)
+}
+
+function parseInt(s: string): int
+    ensures parseInt(s) >= 0
+{
+    if |s| == 0 then 0
+    else if !('0' <= s[0] <= '9') then 0
+    else (s[0] as int - '0' as int) + 10 * parseInt(s[1..])
+}
+
+// <vc-helpers>
+lemma LtImplLeString(a: string, b: string)
+  requires a < b
+  ensures a <= b
+{}
+
+lemma LeTransString(a: string, b: string, c: string)
+  requires a <= b
+  requires b <= c
+  ensures a <= c
+{}
+
+lemma NotLtImplLeString(a: string, b: string)
+  requires !(a < b)
+  ensures b <= a
+{}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(stdin_input: string) returns (result: string)
+    requires |stdin_input| > 0
+    requires exists i :: 0 <= i < |stdin_input| && stdin_input[i] == '\n'
+    ensures |result| > 0
+    ensures result[|result| - 1] == '\n'
+    ensures var lines := parseInput(stdin_input);
+            if |lines| >= 2 then
+                var n := parseInt(lines[0]);
+                var digits := lines[1];
+                if ValidInput(n, digits) then
+                    var minResult := result[..|result|-1];
+                    |minResult| == n &&
+                    (forall i :: 0 <= i < |minResult| ==> '0' <= minResult[i] <= '9') &&
+                    (exists index :: 0 <= index < n && minResult == modifyString(digits, index)) &&
+                    (forall index :: 0 <= index < n ==> minResult <= modifyString(digits, index))
+                else
+                    result == "\n"
+            else
+                result == "\n"
+// </vc-spec>
+// <vc-code>
+{
+    var lines := parseInput(stdin_input);
+    if |lines| >= 2 {
+        var n := parseInt(lines[0]);
+        var digits := lines[1];
+        if ValidInput(n, digits) {
+            assert |digits| == n;
+            var best := modifyString(digits, 0);
+            var bestIndex := 0;
+            var i := 1;
+            while i < n
+                invariant 1 <= i <= n
+                invariant 0 <= bestIndex < i
+                invariant best == modifyString(digits, bestIndex)
+                invariant |best| == n
+                invariant forall j :: 0 <= j < i ==> best <= modifyString(digits, j)
+            {
+                ghost var oldI := i;
+                var idx := i;
+                assert 0 <= idx < |digits|;
+                var candidate := modifyString(digits, idx);
+                i := i + 1;
+                if candidate < best {
+                    // Show new best is a lower bound for previously seen candidates
+                    assert forall j :: 0 <= j < oldI ==> candidate <= modifyString(digits, j)
+                    {
+                        assert best <= modifyString(digits, j);
+                        LtImplLeString(candidate, best);
+                        LeTransString(candidate, best, modifyString(digits, j));
+                    }
+                    assert |candidate| == |digits|;
+                    assert |digits| == n;
+                    best := candidate;
+                    bestIndex := idx;
+                } else {
+                    // Ensure lower bound holds for the newly added index
+                    NotLtImplLeString(candidate, best);
+                    assert best <= candidate;
+                }
+            }
+            result := best + "\n";
+        } else {
+            result := "\n";
+        }
+    } else {
+        result := "\n";
+    }
+}
+// </vc-code>
+

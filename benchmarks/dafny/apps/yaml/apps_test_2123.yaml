@@ -1,0 +1,45 @@
+vc-description: |-
+  Given n+1 pylons numbered 0 to n, where pylon 0 has height 0 and pylons 1 to n have heights h₁, h₂, ..., hₙ.
+  A player starts at pylon 0 with 0 energy and wants to reach pylon n by jumping from pylon k to pylon k+1.
+  Each jump from pylon k to k+1 changes energy by (hₖ - hₖ₊₁). Energy must remain non-negative at all times.
+  The player can pay $1 to increase any pylon's height by 1. Find the minimum cost to make the journey possible.
+
+vc-preamble: |-
+  predicate ValidInput(n: int, heights: seq<int>)
+  {
+      n > 0 && |heights| == n
+  }
+  
+  function MaxInSeq(s: seq<int>): int
+      requires |s| > 0
+      ensures MaxInSeq(s) in s
+      ensures forall i :: 0 <= i < |s| ==> s[i] <= MaxInSeq(s)
+  {
+      if |s| == 1 then s[0]
+      else
+          var tailMax := MaxInSeq(s[1..]);
+          if s[0] >= tailMax then s[0] else tailMax
+  }
+  
+  predicate ValidResult(n: int, heights: seq<int>, result: int)
+      requires ValidInput(n, heights)
+  {
+      result == MaxInSeq(heights) &&
+      forall i :: 0 <= i < |heights| ==> heights[i] <= result &&
+      exists i :: 0 <= i < |heights| && heights[i] == result
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(n: int, heights: seq<int>) returns (result: int)
+      requires ValidInput(n, heights)
+      ensures ValidResult(n, heights, result)
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

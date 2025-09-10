@@ -1,0 +1,48 @@
+vc-description: |-
+  Given n grains where each grain weighs between (a-b) and (a+b) grams inclusive,
+  determine if the total weight of all n grains can fall within the range [c-d, c+d] grams inclusive.
+  Input format: first line contains number of test cases t, followed by t lines each containing
+  5 integers n, a, b, c, d representing the parameters for each test case.
+  Output "Yes" if possible, "No" otherwise for each test case.
+
+vc-preamble: |-
+  predicate ValidInput(input: string) {
+      |input| >= 0
+  }
+  
+  predicate ValidTestCase(n: int, a: int, b: int, c: int, d: int) {
+      n >= 1 && n <= 1000 &&
+      a >= 0 && a <= 1000 &&
+      b >= 0 && b < a &&
+      c >= 0 && c <= 1000 &&
+      d >= 0 && d < c
+  }
+  
+  function CanAchieveWeight(n: int, a: int, b: int, c: int, d: int): bool {
+      var minWeight := (a - b) * n;
+      var maxWeight := (a + b) * n;
+      var targetMin := c - d;
+      var targetMax := c + d;
+      !(minWeight > targetMax || maxWeight < targetMin)
+  }
+  
+  predicate ValidOutput(output: string) {
+      forall i :: 0 <= i < |output| ==> output[i] in "YesNo\n"
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(input: string) returns (result: string)
+      requires ValidInput(input)
+      ensures ValidOutput(result)
+      ensures (input == "" || input == "\n") ==> result == ""
+      ensures input != "" && input != "\n" ==> (|result| > 0 ==> result[|result|-1] == '\n' || (|result| > 3 && result[|result|-4..] in ["Yes\n", "No\n"]))
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

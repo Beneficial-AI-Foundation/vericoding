@@ -1,0 +1,63 @@
+function countMaxMoves(s: string): nat
+{
+    if |s| == 0 then 0
+    else 
+        var stack := [];
+        var moves := 0;
+        countMaxMovesHelper(s, 0, stack, moves)
+}
+
+function countMaxMovesHelper(s: string, i: nat, stack: seq<char>, moves: nat): nat
+    requires i <= |s|
+    decreases |s| - i
+{
+    if i == |s| then moves
+    else if |stack| > 0 && s[i] == stack[|stack| - 1] then
+        countMaxMovesHelper(s, i + 1, stack[..|stack| - 1], moves + 1)
+    else
+        countMaxMovesHelper(s, i + 1, stack + [s[i]], moves)
+}
+
+// <vc-helpers>
+lemma countMaxMovesHelperParity(s: string, i: nat, stack: seq<char>, moves: nat)
+    requires i <= |s|
+    decreases |s| - i
+    ensures countMaxMovesHelper(s, i, stack, moves) % 2 == (moves + |s| - i - 2 * (|stack|)) % 2
+{
+    if i < |s| {
+        if |stack| > 0 && s[i] == stack[|stack| - 1] {
+            countMaxMovesHelperParity(s, i + 1, stack[..|stack| - 1], moves + 1);
+        } else {
+            countMaxMovesHelperParity(s, i + 1, stack + [s[i]], moves);
+        }
+    }
+}
+
+lemma countMaxMovesParity(s: string)
+    ensures countMaxMoves(s) % 2 == (|s|) % 2
+{
+    if |s| == 0 {
+    } else {
+        countMaxMovesHelperParity(s, 0, [], 0);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(s: string) returns (result: string)
+    requires |s| >= 1
+    ensures result == "Yes" || result == "No"
+    ensures result == "Yes" <==> countMaxMoves(s) % 2 == 1
+    ensures result == "No" <==> countMaxMoves(s) % 2 == 0
+// </vc-spec>
+// <vc-code>
+{
+    countMaxMovesParity(s);
+    if |s| % 2 == 1 {
+        result := "Yes";
+    } else {
+        result := "No";
+    }
+}
+// </vc-code>
+

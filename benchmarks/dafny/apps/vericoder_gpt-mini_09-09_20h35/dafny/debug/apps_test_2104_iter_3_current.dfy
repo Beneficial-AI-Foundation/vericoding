@@ -1,0 +1,123 @@
+predicate ValidInput(l: int, r: int)
+{
+    l < r && (r - l) % 2 == 1
+}
+
+function gcd(a: int, b: int): int
+    requires a != 0 || b != 0
+    decreases if a >= 0 then a else -a
+{
+    if a == 0 then if b >= 0 then b else -b
+    else gcd(b % a, a)
+}
+
+predicate PairHasGcdOne(pair: string, l: int, r: int)
+{
+    exists i, j :: l <= i <= r && l <= j <= r && i != j &&
+        pair == int_to_string(i) + " " + int_to_string(j) &&
+        (i != 0 || j != 0) && gcd(i, j) == 1
+}
+
+predicate ValidSolution(result: seq<string>, l: int, r: int)
+{
+    |result| >= 1 &&
+    result[0] == "YES" &&
+    |result| == 1 + (r - l + 1) / 2 &&
+    (forall i :: 1 <= i < |result| ==> PairHasGcdOne(result[i], l, r))
+}
+
+// <vc-helpers>
+lemma PosModFacts(k: int)
+  ensures k > 0 ==> (k + 1) % k == 1
+  ensures true ==> k % 1 == 0
+{
+  if k > 0 {
+    assert (k + 1) % k == 1;
+  }
+  assert k % 1 == 0;
+}
+
+lemma GcdConsecutive(k: int)
+  ensures gcd(k, k + 1) == 1
+{
+  if k == 0 {
+    assert gcd(0, 1) == 1;
+  } else if k > 0 {
+    PosModFacts(k);
+    assert gcd(k, k + 1) == gcd((k + 1) % k, k);
+    assert (k + 1) % k == 1;
+    assert gcd((k + 1) % k, k) == gcd(1, k);
+    assert gcd(1, k) == gcd(k % 1, 1);
+    assert k % 1 == 0;
+    assert gcd(0, 1) == 1;
+  } else {
+    var t := -k - 1;
+    assert t >= 0;
+    assert k == -t - 1;
+    assert k + 1 == -t;
+    assert gcd(k, k + 1) == gcd(-t - 1, -t);
+    if t == 0 {
+      assert gcd(-1, 0) == 1;
+    } else {
+      assert gcd(-t - 1, -t) == gcd((-t) % (-t - 1), -t - 1);
+      // Mirror of positive case: (-t) % (-t-1) == 1
+      assert (-t) % (-t - 1) == 1;
+      assert gcd((-t) % (-t - 1), -t - 1) == gcd(1, -t - 1);
+      assert gcd(1, -t - 1) == gcd((-t - 1) % 1, 1);
+      assert (-t - 1) % 1 == 0;
+      assert gcd(0, 1) == 1;
+    }
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(l: int, r: int) returns (result: seq<string>)
+    requires ValidInput(l, r)
+    ensures ValidSolution(result, l, r)
+    ensures |result| >= 1
+    ensures result[0] == "YES"
+    ensures |result| == 1 + (r - l + 1) / 2
+    ensures forall i :: 1 <= i < |result| ==> 
+        (exists j :: l <= j <= r - 1 && j % 2 == l % 2 && 
+         result[i] == int_to_string(j) + " " + int_to_string(j + 1))
+// </vc-spec>
+// <vc-code>
+{
+  // Build the result sequence: "YES" followed by consecutive pairs (l, l+1), (l+2, l+3), ...
+  result := [];
+  result := result + ["YES"];
+  var j := l;
+  var cnt := 0;
+  // Invariants:
+  // - j == l + 2*cnt
+  // - 0 <= cnt <= (r - l + 1)/2
+  // - |result| == 1 + cnt
+  // - for all k < cnt, result[1+k] == int_to_string(l+2*k) + " " + int_to_string(l+2*k+1)
+  // - for all k < cnt, gcd(l+2*k, l+2*k+1) == 1
+  while j <= r
+    invariant j == l + 2*cnt
+    invariant 0 <= cnt <= (r - l + 1) / 2
+    invariant |result| == 1 + cnt
+    invariant forall k :: 0 <= k < cnt ==>
+        result[1 + k] == int_to_string(l + 2*k) + " " + int_to_string(l + 2*k + 1)
+    invariant forall k :: 0 <= k < cnt ==> gcd(l + 2*k, l + 2*k + 1) == 1
+  {
+    var pair := int_to_string(j) + " " + int_to_string(j + 1);
+    // Prove gcd(j, j+1) == 1 for this pair
+    GcdConsecutive(j);
+    result := result + [pair];
+    cnt := cnt + 1;
+    j := j + 2;
+  }
+  // After loop, show final size equals required number of pairs
+  // From invariant j == l + 2*cnt and j > r, we get 2*cnt >= r - l + 1 => cnt >= (r - l + 1)/2
+  // Together with invariant cnt <= (r - l + 1)/2 we obtain equality.
+  assert cnt == (r - l + 1) / 2;
+  assert |result| == 1 + (r - l + 1) / 2;
+  // Verify every appended pair satisfies the specification: exists j in range with correct parity
+  // This follows from the maintained mapping invariant and gcd facts.
+  return;
+}
+// </vc-code>
+

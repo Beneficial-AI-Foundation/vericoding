@@ -1,0 +1,29 @@
+vc-description: |-
+  Find the minimum number of steps to move from position 0 to position x on a number line,
+  where each step can move forward by 1, 2, 3, 4, or 5 positions.
+
+vc-preamble: |-
+  predicate ValidInput(x: int)
+  {
+    x >= 1
+  }
+  
+  predicate IsMinimalSteps(x: int, steps: int)
+    requires x >= 1
+  {
+    steps >= 1 &&
+    steps * 5 >= x &&
+    (steps - 1) * 5 < x
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

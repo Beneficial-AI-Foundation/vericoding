@@ -1,0 +1,35 @@
+vc-description: |-
+  Given n rooms in a row (some occupied, some free) and k cows, find k+1 free rooms to book 
+  such that when one room is assigned to Farmer John and k rooms to his cows, the maximum 
+  distance from Farmer John's room to any cow's room is minimized.
+
+vc-preamble: |-
+  predicate isValidPlacement(rooms: string, k: int, placement: seq<int>)
+  {
+      |placement| == k + 1 &&
+      (forall i :: 0 <= i < |placement| ==> 0 <= placement[i] < |rooms|) &&
+      (forall i :: 0 <= i < |placement| ==> rooms[placement[i]] == '0') &&
+      (forall i, j :: 0 <= i < j < |placement| ==> placement[i] != placement[j]) &&
+      (forall i :: 0 <= i < |placement| - 1 ==> placement[i] < placement[i+1])
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(n: int, k: int, rooms: string) returns (result: int)
+      requires n > 0
+      requires k > 0 
+      requires k < n
+      requires |rooms| == n
+      requires forall i :: 0 <= i < n ==> rooms[i] == '0' || rooms[i] == '1'
+      requires |set i | 0 <= i < n && rooms[i] == '0'| >= k + 1
+      ensures result >= 0
+      ensures exists placement :: isValidPlacement(rooms, k, placement) && optimalMaxDistance(placement) == result
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

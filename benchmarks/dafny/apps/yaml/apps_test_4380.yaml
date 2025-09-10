@@ -1,0 +1,41 @@
+vc-description: |-
+  Given two integers A and B (each between 1 and 3 inclusive), determine if there exists 
+  an integer C (also between 1 and 3 inclusive) such that the product A × B × C is odd.
+
+vc-preamble: |-
+  predicate ValidInput(a: int, b: int)
+  {
+      1 <= a <= 3 && 1 <= b <= 3
+  }
+  
+  predicate IsOdd(n: int)
+  {
+      n % 2 == 1
+  }
+  
+  predicate ExistsOddProduct(a: int, b: int)
+    requires ValidInput(a, b)
+  {
+      exists c :: 1 <= c <= 3 && IsOdd(a * b * c)
+  }
+  
+  function ShouldAnswerYes(a: int, b: int): bool
+    requires ValidInput(a, b)
+  {
+      a != 2 && b != 2
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(a: int, b: int) returns (result: string)
+    requires ValidInput(a, b)
+    ensures result == (if ShouldAnswerYes(a, b) then "Yes" else "No")
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

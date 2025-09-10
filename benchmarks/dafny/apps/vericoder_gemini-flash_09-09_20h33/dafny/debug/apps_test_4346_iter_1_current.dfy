@@ -1,0 +1,250 @@
+predicate ValidInput(input: string)
+{
+    var lines := SplitLines(input);
+    |lines| > 0 &&
+    IsValidInteger(lines[0]) &&
+    var t := ParseInt(lines[0]);
+    t >= 0 && |lines| >= t + 1 &&
+    (forall i :: 1 <= i <= t ==> (
+        |SplitSpaces(lines[i])| >= 4 &&
+        (forall j :: 0 <= j < 4 ==> IsValidInteger(SplitSpaces(lines[i])[j])) &&
+        var parts := SplitSpaces(lines[i]);
+        var L := ParseInt(parts[0]);
+        var v := ParseInt(parts[1]);
+        var l := ParseInt(parts[2]);
+        var r := ParseInt(parts[3]);
+        L >= 1 && v >= 1 && l >= 1 && r >= l && r <= L
+    ))
+}
+
+predicate ValidOutput(output: string, input: string)
+{
+    forall c :: c in output ==> (c >= '0' && c <= '9') || c == '-' || c == '\n'
+}
+
+predicate OutputMatchesAlgorithm(output: string, input: string)
+    requires ValidInput(input)
+{
+    var lines := SplitLines(input);
+    var t := ParseInt(lines[0]);
+    t >= 0 &&
+    var expectedLines := seq(t, i requires 0 <= i < t => 
+        if i + 1 < |lines| && |SplitSpaces(lines[i + 1])| >= 4 then
+            var parts := SplitSpaces(lines[i + 1]);
+            var L := ParseInt(parts[0]);
+            var v := ParseInt(parts[1]);
+            var l := ParseInt(parts[2]);
+            var r := ParseInt(parts[3]);
+            var totalLanterns := L / v;
+            var blockedLanterns := r / v - (l - 1) / v;
+            var visibleLanterns := totalLanterns - blockedLanterns;
+            IntToString(visibleLanterns)
+        else
+            "0"
+    );
+    output == JoinLines(expectedLines)
+}
+
+predicate IsValidInteger(s: string)
+{
+    |s| > 0 && (
+        (s[0] == '-' && |s| > 1 && forall i :: 1 <= i < |s| ==> s[i] >= '0' && s[i] <= '9') ||
+        (s[0] != '-' && forall i :: 0 <= i < |s| ==> s[i] >= '0' && s[i] <= '9')
+    )
+}
+
+// <vc-helpers>
+function SplitLines(s: string): seq<string>
+{
+    if s == "" then
+        []
+    else
+        var lines := new seq<string>(0);
+        var i := 0;
+        var start := 0;
+        while i < |s|
+            invariant 0 <= i <= |s|
+            invariant 0 <= start <= i
+            invariant forall k :: 0 <= k < |lines| ==> lines[k] == s[SplitLinesAux(s, k)..SplitLinesAux(s, k+1)]
+            invariant forall k :: 0 < k < |lines| ==> s[SplitLinesAux(s, k)-1] == '\n'
+        {
+            if s[i] == '\n' {
+                lines := lines + [s[start..i]];
+                start := i + 1;
+            }
+            i := i + 1;
+        }
+        lines + [s[start..|s|]]
+}
+
+function SplitLinesAux(s: string, k: int): int
+    requires k >= 0
+    reads s
+{
+    if k == 0 then
+        0
+    else if k > 0 && exists i :: 0 <= i < |s| && s[i] == '\n' then
+        var count := 0;
+        var index := 0;
+        while index < |s| && count < k
+            invariant 0 <= index <= |s|
+            invariant 0 <= count <= k
+            invariant forall j :: 0 <= j < index ==> s[j] != '\n' || count > 0 // This is not very precise
+        {
+            if s[index] == '\n' {
+                count := count + 1;
+            }
+            index := index + 1;
+        }
+        if count == k then index else |s|
+    else
+        |s|
+}
+
+function SplitSpaces(s: string): seq<string>
+{
+    var parts := new seq<string>(0);
+    var i := 0;
+    var start := 0;
+    while i < |s|
+        invariant 0 <= i <= |s|
+        invariant 0 <= start <= i
+        invariant forall k :: 0 <= k < |parts| ==> NoSpacesInside(parts[k])
+    {
+        if s[i] == ' ' {
+            if i > start {
+                parts := parts + [s[start..i]];
+            }
+            start := i + 1;
+        }
+        i := i + 1;
+    }
+    if i > start {
+        parts := parts + [s[start..i]];
+    }
+    parts
+}
+
+predicate NoSpacesInside(s: string)
+{
+    forall i :: 0 <= i < |s| ==> s[i] != ' '
+}
+
+function ParseInt(s: string): int
+    requires IsValidInteger(s)
+{
+    if s[0] == '-' then
+        ParseIntPositive(s[1..|s|]) * -1
+    else
+        ParseIntPositive(s)
+}
+
+function ParseIntPositive(s: string): int
+    requires forall i :: 0 <= i < |s| ==> s[i] >= '0' && s[i] <= '9'
+    requires |s| > 0
+{
+    var res := 0;
+    var i := 0;
+    while i < |s|
+        invariant 0 <= i <= |s|
+        invariant res == (if i == 0 then 0 else StringToPartialInt(s[0..i]))
+    {
+        res := res * 10 + (s[i] - '0');
+        i := i + 1;
+    }
+    res
+}
+
+function StringToPartialInt(s: string): int
+    requires forall i :: 0 <= i < |s| ==> s[i] >= '0' && s[i] <= '9'
+    requires |s| > 0
+{
+    if |s| == 1 then
+        s[0] - '0'
+    else
+        StringToPartialInt(s[0..|s|-1]) * 10 + (s[|s|-1] - '0')
+}
+
+function IntToString(n: int): string
+    ensures IsValidInteger(IntToString(n))
+{
+    if n == 0 then
+        "0"
+    else if n < 0 then
+        "-" + IntToStringPositive(-n)
+    else
+        IntToStringPositive(n)
+}
+
+function IntToStringPositive(n: int): string
+    requires n > 0
+    ensures forall i :: 0 <= i < |IntToStringPositive(n)| ==> IntToStringPositive(n)[i] >= '0' && IntToStringPositive(n)[i] <= '9'
+{
+    if n == 0 then
+        ""
+    else
+        IntToStringPositive(n / 10) + ((n % 10) + '0')
+}
+
+function JoinLines(lines: seq<string>): string
+{
+    if |lines| == 0 then
+        ""
+    else if |lines| == 1 then
+        lines[0]
+    else
+        lines[0] + "\n" + JoinLines(lines[1..])
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(input: string) returns (output: string)
+    requires |input| > 0
+    requires ValidInput(input)
+    ensures ValidOutput(output, input)
+    ensures OutputMatchesAlgorithm(output, input)
+// </vc-spec>
+// <vc-code>
+{
+    var lines := SplitLines(input);
+    var t := ParseInt(lines[0]);
+    var results := new seq<string>(0);
+
+    var i := 0;
+    while i < t
+        invariant 0 <= i <= t
+        invariant |lines| >= t + 1
+        invariant IsValidInteger(lines[0])
+        invariant (forall k :: 0 <= k < i ==> 
+            results[k] == IntToString(
+                var parts := SplitSpaces(lines[k+1]);
+                var L := ParseInt(parts[0]);
+                var v := ParseInt(parts[1]);
+                var l := ParseInt(parts[2]);
+                var r := ParseInt(parts[3]);
+                var totalLanterns := L / v;
+                var blockedLanterns := r / v - (l - 1) / v;
+                totalLanterns - blockedLanterns
+            )
+        )
+    {
+        var currentProblem := lines[i + 1];
+        var parts := SplitSpaces(currentProblem);
+        var L := ParseInt(parts[0]);
+        var v := ParseInt(parts[1]);
+        var l := ParseInt(parts[2]);
+        var r := ParseInt(parts[3]);
+
+        var totalLanterns := L / v;
+        var blockedLanterns := r / v - (l - 1) / v;
+        var visibleLanterns := totalLanterns - blockedLanterns;
+
+        results := results + [IntToString(visibleLanterns)];
+        i := i + 1;
+    }
+
+    output := JoinLines(results);
+    return output;
+}
+// </vc-code>
+

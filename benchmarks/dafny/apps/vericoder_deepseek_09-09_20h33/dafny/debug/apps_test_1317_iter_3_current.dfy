@@ -1,0 +1,114 @@
+function CountCellsDivisibleByM(n: int, m: int): int
+  requires 1 <= n
+  requires 1 <= m
+{
+  |set i, j | 1 <= i <= n && 1 <= j <= n && (i * i + j * j) % m == 0 :: (i, j)|
+}
+
+predicate ValidInput(n: int, m: int) {
+  1 <= n && 1 <= m <= 1000
+}
+
+// <vc-helpers>
+lemma CountDivisible(n: int, m: int, k: int, count: int)
+  requires 1 <= n && 1 <= m <= 1000
+  requires 0 <= k <= n
+  requires count == (|set i, j | 1 <= i <= k && 1 <= j <= n && (i * i + j * j) % m == 0 :: (i, j)|)
+  ensures count <= CountCellsDivisibleByM(n, m)
+{
+  if k < n {
+    var next := k + 1;
+    var additional := (|set j | 1 <= j <= n && (next * next + j * j) % m == 0 :: j|);
+    CountDivisible(n, m, next, count + additional);
+  }
+}
+
+lemma SquaredModProperties(i: int, j: int, m: int)
+  requires 1 <= m <= 1000
+  ensures (i * i + j * j) % m == ((i % m) * (i % m) + (j % m) * (j % m)) % m
+{
+  var a := i % m;
+  var b := j % m;
+  assert (i * i) % m == (a * a) % m by {
+    calc {
+      (i * i) % m;
+      == { assert m != 0; }
+      ((i % m) * (i % m)) % m;
+      == { }
+      (a * a) % m;
+    }
+  }
+  assert (j * j) % m == (b * b) % m by {
+    calc {
+      (j * j) % m;
+      == { assert m != 0; }
+      ((j % m) * (j % m)) % m;
+      == { }
+      (b * b) % m;
+    }
+  }
+  calc {
+    (i * i + j * j) % m;
+    == { assert m != 0; }
+    ((i * i) % m + (j * j) % m) % m;
+    == { }
+    ((a * a) % m + (b * b) % m) % m;
+    == { assert m != 0; }
+    (a * a + b * b) % m;
+    == { }
+    ((i % m) * (i % m) + (j % m) * (j % m)) % m;
+  }
+}
+
+lemma ModProduct(a: int, b: int, m: int)
+  requires m != 0
+  ensures (a * b) % m == ((a % m) * (b % m)) % m
+{
+  // Identity holds by definition of modulo arithmetic
+}
+
+lemma ModSum(a: int, b: int, m: int)
+  requires m != 0
+  ensures (a + b) % m == ((a % m) + (b % m)) % m
+{
+  // Identity holds by definition of modulo arithmetic
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, m: int) returns (result: int)
+  requires ValidInput(n, m)
+  ensures result >= 0
+  ensures result == CountCellsDivisibleByM(n, m)
+// </vc-spec>
+// <vc-code>
+{
+  result := 0;
+  var i := 1;
+  while i <= n
+    invariant 1 <= i <= n + 1
+    invariant result == (|set x, y | 1 <= x < i && 1 <= y <= n && (x * x + y * y) % m == 0 :: (x, y)|)
+    decreases n + 1 - i
+  {
+    var row_count := 0;
+    var j := 1;
+    while j <= n
+      invariant 1 <= j <= n + 1
+      invariant row_count == (|set y | 1 <= y < j && (i * i + y * y) % m == 0 :: y|)
+      decreases n + 1 - j
+    {
+      if (i * i + j * j) % m == 0 {
+        row_count := row_count + 1;
+      }
+      j := j + 1;
+    }
+    result := result + row_count;
+    i := i + 1;
+  }
+  assert i == n + 1;
+  assert result == (|set x, y | 1 <= x < n + 1 && 1 <= y <= n && (x * x + y * y) % m == 0 :: (x, y)|);
+  assert CountCellsDivisibleByM(n, m) == (|set x, y | 1 <= x <= n && 1 <= y <= n && (x * x + y * y) % m == 0 :: (x, y)|);
+  CountDivisible(n, m, n, result);
+}
+// </vc-code>
+

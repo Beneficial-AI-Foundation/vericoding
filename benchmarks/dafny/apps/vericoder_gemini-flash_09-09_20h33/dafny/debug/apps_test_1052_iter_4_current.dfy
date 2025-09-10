@@ -1,0 +1,107 @@
+predicate ValidInput(n: int, k: int)
+{
+  4 <= n <= 1000 && 1 <= k <= 4 && k < n
+}
+
+function factorial(n: int): int
+  requires n >= 0
+  ensures factorial(n) > 0
+{
+  if n <= 1 then 1 else n * factorial(n - 1)
+}
+
+function derangement(n: int): int
+  requires n >= 0
+  ensures derangement(n) >= 0
+{
+  if n <= 1 then 0
+  else if n == 2 then 1
+  else (n - 1) * (derangement(n - 1) + derangement(n - 2))
+}
+
+function binomial(n: int, k: int): int
+  requires n >= 0 && k >= 0
+  ensures binomial(n, k) >= 0
+{
+  if k > n then 0
+  else if k == 0 || k == n then 1
+  else factorial(n) / (factorial(k) * factorial(n - k))
+}
+
+function sum_binomial_derangement(n: int, k: int, i: int): int
+  requires n >= 0 && k >= 0 && i >= 0
+  ensures sum_binomial_derangement(n, k, i) >= 0
+  decreases n - k - i
+{
+  if i >= n - k then 0
+  else binomial(n, i) * derangement(n - i) + sum_binomial_derangement(n, k, i + 1)
+}
+
+// <vc-helpers>
+function sum_binomial_derangement_k_limited(n: int, k: int, i: int): int
+  requires n >= 0 && k >= 0 && i >= 0
+  ensures sum_binomial_derangement_k_limited(n, k, i) >= 0
+  decreases k - i
+{
+  if i > k then 0
+  else if i > n then 0 // Added this condition to handle cases where i > n, making derangement(n-i) invalid
+  else binomial(n, i) * derangement(n - i) + sum_binomial_derangement_k_limited(n, k, i + 1)
+}
+
+
+lemma lemma_sum_binomial_derangement_equality(n: int, k : int)
+    requires n > k >= 0
+    ensures sum_binomial_derangement(n, k, 0) == sum_binomial_derangement_k_limited(n, k, 0)
+    decreases k
+{
+    if k == 0 {
+        // Base case: sum_binomial_derangement(n, 0, 0) == binomial(n,0)*derangement(n) + sum_binomial_derangement(n,0,1)
+        // Base case: sum_binomial_derangement_k_limited(n, 0, 0) == binomial(n,0)*derangement(n) + sum_binomial_derangement_k_limited(n,0,1)
+        calc {
+            sum_binomial_derangement_k_limited(n, 0, 0);
+            binomial(n, 0) * derangement(n - 0) + sum_binomial_derangement_k_limited(n, 0, 1);
+            binomial(n, 0) * derangement(n);
+            binomial(n, 0) * derangement(n) + sum_binomial_derangement(n, 0, 1);
+            sum_binomial_derangement(n, 0, 0);
+        }
+    } else {
+        calc {
+            sum_binomial_derangement_k_limited(n, k, 0);
+            binomial(n, 0) * derangement(n - 0) + sum_binomial_derangement_k_limited(n, k, 1);
+            {
+                lemma_sum_binomial_derangement_equality(n, k - 1);
+            }
+            binomial(n, 0) * derangement(n) + (sum_binomial_derangement(n, k - 1, 0) - binomial(n,0)*derangement(n));
+            binomial(n, 0) * derangement(n) + (\sum x :: 1 <= x && x <= k-1 ? binomial(n,x)*derangement(n-x)); // expanded from sum_binomial_derangement
+            sum_binomial_derangement(n, k, 0);
+
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, k: int) returns (result: int)
+  requires ValidInput(n, k)
+  ensures result == factorial(n) - sum_binomial_derangement(n, k, 0)
+// </vc-spec>
+// <vc-code>
+{
+    var sum_val := 0;
+    var i := 0;
+    while i <= k
+      invariant 0 <= i <= k + 1
+      invariant sum_val == sum_binomial_derangement_k_limited(n, i - 1, 0)
+      invariant k < n
+      invariant forall j :: 0 <= j <= i-1 ==> n - j >= 0 // added to ensure derangement argument is non-negative
+    {
+      if n - i >= 0 { // Explicit check to ensure derangement argument is non-negative
+        sum_val := sum_val + binomial(n, i) * derangement(n - i);
+      }
+      i := i + 1;
+    }
+    lemma_sum_binomial_derangement_equality(n, k);
+    result := factorial(n) - sum_val;
+}
+// </vc-code>
+

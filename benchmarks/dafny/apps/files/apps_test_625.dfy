@@ -1,0 +1,31 @@
+/*
+Given a positive integer n, calculate the value of the alternating sum:
+f(n) = -1 + 2 - 3 + 4 - 5 + ... + (-1)^n × n
+*/
+
+function AlternatingSum(n: int): int
+    requires n > 0
+{
+    if n == 1 then -1
+    else AlternatingSum(n-1) + (if n % 2 == 0 then n else -n)
+}
+
+predicate ValidInput(n: int) {
+    n > 0
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int) returns (result: int)
+    requires ValidInput(n)
+    ensures result == AlternatingSum(n)
+    ensures n % 2 == 0 ==> result == n / 2
+    ensures n % 2 != 0 ==> result == n / 2 - n
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

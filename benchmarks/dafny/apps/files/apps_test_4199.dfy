@@ -1,0 +1,31 @@
+/*
+Count how many people can ride a roller coaster given their heights and a minimum height requirement.
+Input: N (number of people), K (minimum height requirement), and N heights.
+Output: Number of people who can ride (height >= K).
+*/
+
+predicate ValidInput(n: int, k: int, heights: seq<int>)
+{
+    n >= 1 && k >= 1 && |heights| == n && 
+    forall i :: 0 <= i < |heights| ==> heights[i] >= 1
+}
+
+function CountEligible(heights: seq<int>, k: int): int
+{
+    |set i | 0 <= i < |heights| && heights[i] >= k :: i|
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, k: int, heights: seq<int>) returns (count: int)
+    requires ValidInput(n, k, heights)
+    ensures 0 <= count <= |heights|
+    ensures count == CountEligible(heights, k)
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

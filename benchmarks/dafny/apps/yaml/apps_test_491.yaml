@@ -1,0 +1,37 @@
+vc-description: |-
+  Given an integer n representing a bank account balance, perform at most one operation:
+  delete the last digit, delete the digit before the last digit, or do nothing.
+  Find the maximum possible balance after performing the operation.
+  Constraint: absolute value of n is at least 10.
+
+vc-preamble: |-
+  predicate ValidInput(n: int)
+  {
+      n >= 10 || n <= -10
+  }
+  
+  function MaxBalanceAfterOperation(n: int): int
+      requires ValidInput(n)
+  {
+      if n >= 0 then n
+      else 
+          var s := IntToString(n);
+          var option1 := StringToInt(s[..|s|-1]);  // delete last digit
+          var option2 := StringToInt(s[..|s|-2] + s[|s|-1..]);  // delete digit before last
+          if option1 > option2 then option1 else option2
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(n: int) returns (result: int)
+      requires ValidInput(n)
+      ensures result == MaxBalanceAfterOperation(n)
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

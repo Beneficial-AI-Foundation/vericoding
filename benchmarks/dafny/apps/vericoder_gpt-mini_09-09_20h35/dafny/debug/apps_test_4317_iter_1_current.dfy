@@ -1,0 +1,129 @@
+predicate ValidInput(input: string)
+{
+    |input| >= 3 &&
+    exists spacePos :: 0 < spacePos < |input| - 1 && input[spacePos] == ' ' &&
+    (forall i :: 0 <= i < spacePos ==> input[i] != ' ') &&
+    (forall i :: spacePos + 1 <= i < |input| ==> input[i] != ' ' || input[i] == '\n') &&
+    isValidInteger(getAString(input)) && isValidInteger(getBString(input)) &&
+    -100 <= getA(input) <= 100 && -100 <= getB(input) <= 100
+}
+
+function getA(input: string): int
+    requires |input| >= 3
+    requires exists spacePos :: 0 < spacePos < |input| - 1 && input[spacePos] == ' '
+    requires isValidInteger(getAString(input))
+{
+    var trimmed := if |input| > 0 && input[|input|-1] == '\n' then input[..|input|-1] else input;
+    var spaceIndex := findSpace(trimmed);
+    parseInt(trimmed[..spaceIndex])
+}
+
+function getB(input: string): int
+    requires |input| >= 3
+    requires exists spacePos :: 0 < spacePos < |input| - 1 && input[spacePos] == ' '
+    requires isValidInteger(getBString(input))
+{
+    var trimmed := if |input| > 0 && input[|input|-1] == '\n' then input[..|input|-1] else input;
+    var spaceIndex := findSpace(trimmed);
+    parseInt(trimmed[spaceIndex+1..])
+}
+
+function getAString(input: string): string
+    requires |input| >= 3
+    requires exists spacePos :: 0 < spacePos < |input| - 1 && input[spacePos] == ' '
+{
+    var trimmed := if |input| > 0 && input[|input|-1] == '\n' then input[..|input|-1] else input;
+    var spaceIndex := findSpace(trimmed);
+    trimmed[..spaceIndex]
+}
+
+function getBString(input: string): string
+    requires |input| >= 3
+    requires exists spacePos :: 0 < spacePos < |input| - 1 && input[spacePos] == ' '
+{
+    var trimmed := if |input| > 0 && input[|input|-1] == '\n' then input[..|input|-1] else input;
+    var spaceIndex := findSpace(trimmed);
+    trimmed[spaceIndex+1..]
+}
+
+function max3(a: int, b: int, c: int): int
+    ensures max3(a, b, c) >= a && max3(a, b, c) >= b && max3(a, b, c) >= c
+    ensures max3(a, b, c) == a || max3(a, b, c) == b || max3(a, b, c) == c
+{
+    if a >= b && a >= c then a
+    else if b >= c then b
+    else c
+}
+
+// <vc-helpers>
+lemma Max3Bound(a:int, b:int)
+    requires -100 <= a <= 100 && -100 <= b <= 100
+    ensures -10000 <= max3(a + b, a - b, a * b) <= 10000
+{
+    var m := max3(a + b, a - b, a * b);
+    if m == a * b {
+        var aa := if a >= 0 then a else -a;
+        var bb := if b >= 0 then b else -b;
+        assert 0 <= aa <= 100;
+        assert 0 <= bb <= 100;
+        if a >= 0 {
+            if b >= 0 {
+                // a >= 0, b >= 0
+                assert aa == a && bb == b;
+                assert 0 <= a * b <= aa * bb;
+                assert aa * bb <= 10000;
+                assert 0 <= m <= 10000;
+            } else {
+                // a >= 0, b < 0
+                assert aa == a && bb == -b;
+                assert a * b <= 0;
+                assert -aa * bb <= a * b <= 0;
+                assert aa * bb <= 10000;
+                assert -10000 <= m <= 10000;
+            }
+        } else {
+            if b >= 0 {
+                // a < 0, b >= 0
+                assert aa == -a && bb == b;
+                assert a * b <= 0;
+                assert -aa * bb <= a * b <= 0;
+                assert aa * bb <= 10000;
+                assert -10000 <= m <= 10000;
+            } else {
+                // a < 0, b < 0
+                assert aa == -a && bb == -b;
+                assert 0 <= a * b <= aa * bb;
+                assert aa * bb <= 10000;
+                assert 0 <= m <= 10000;
+            }
+        }
+    } else if m == a + b {
+        // a + b in [-200,200]
+        assert -200 <= a + b <= 200;
+        assert -10000 <= m <= 10000;
+    } else {
+        // m == a - b, a - b in [-200,200]
+        assert -200 <= a - b <= 200;
+        assert -10000 <= m <= 10000;
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(input: string) returns (result: string)
+    requires ValidInput(input)
+    ensures var maxVal := max3(getA(input) + getB(input), getA(input) - getB(input), getA(input) * getB(input));
+            result == intToString(maxVal) + "\n"
+    ensures var maxVal := max3(getA(input) + getB(input), getA(input) - getB(input), getA(input) * getB(input));
+            -10000 <= maxVal <= 10000
+// </vc-spec>
+// <vc-code>
+{
+  var a := getA(input);
+  var b := getB(input);
+  var m := max3(a + b, a - b, a * b);
+  Max3Bound(a, b);
+  result := intToString(m) + "\n";
+}
+// </vc-code>
+

@@ -1,0 +1,44 @@
+predicate ValidInput(a: int, b: int)
+{
+  a >= 1 && a <= 1000 && b >= 2 && b <= 1000
+}
+
+function TotalBurningHours(a: int, b: int): int
+  requires a >= 0 && b >= 2
+  ensures TotalBurningHours(a, b) >= a
+  decreases a
+{
+  if a == 0 then 0
+  else if a < b then a
+  else a + TotalBurningHours(a / b, b)
+}
+
+// <vc-helpers>
+// <vc-helpers>
+
+// </vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method solve(a: int, b: int) returns (result: int)
+  requires ValidInput(a, b)
+  ensures result >= a
+  ensures result == TotalBurningHours(a, b)
+// </vc-spec>
+// <vc-code>
+{
+  var result: int := 0;
+  var current: int := a;
+  while current > 0
+  {
+    if current < b {
+      result := result + current;
+      current := 0;
+    } else {
+      result := result + current;
+      current := current / b;
+    }
+  }
+}
+// </vc-code>
+

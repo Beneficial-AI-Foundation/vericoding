@@ -1,0 +1,121 @@
+predicate ValidInput(n: int, m: int, k: int, emotes: seq<int>)
+{
+    n >= 2 && k >= 1 && m >= 1 && |emotes| == n &&
+    forall i :: 0 <= i < |emotes| ==> emotes[i] >= 1
+}
+
+function MaxHappiness(n: int, m: int, k: int, emotes: seq<int>): int
+    requires ValidInput(n, m, k, emotes)
+{
+    var k_plus_1 := k + 1;
+    var total := m / k_plus_1;
+    var remainder := m % k_plus_1;
+    // Assumes optimal strategy using highest and second highest values
+    var max_val := MaxValue(emotes);
+    var second_max_val := SecondMaxValue(emotes);
+    remainder * max_val + max_val * (total * k) + second_max_val * total
+}
+
+function MaxValue(s: seq<int>): int
+    requires |s| >= 1
+    requires forall i :: 0 <= i < |s| ==> s[i] >= 1
+    ensures MaxValue(s) >= 1
+    ensures exists i :: 0 <= i < |s| && s[i] == MaxValue(s)
+{
+    if |s| == 1 then s[0]
+    else if s[0] >= MaxValue(s[1..]) then s[0]
+    else MaxValue(s[1..])
+}
+
+function SecondMaxValue(s: seq<int>): int
+    requires |s| >= 2
+    requires forall i :: 0 <= i < |s| ==> s[i] >= 1
+{
+    var max_val := MaxValue(s);
+    var filtered := FilterOut(s, max_val, 1);
+    if |filtered| > 0 then MaxValue(filtered) else 1
+}
+
+function FilterOut(s: seq<int>, val: int, count: int): seq<int>
+    requires count >= 0
+    requires forall i :: 0 <= i < |s| ==> s[i] >= 1
+    ensures forall i :: 0 <= i < |FilterOut(s, val, count)| ==> FilterOut(s, val, count)[i] >= 1
+{
+    if |s| == 0 || count == 0 then s
+    else if s[0] == val then FilterOut(s[1..], val, count - 1)
+    else [s[0]] + FilterOut(s[1..], val, count)
+}
+
+// <vc-helpers>
+function MaxValueIndex(s: seq<int>): int
+    requires |s| >= 1
+    requires forall i :: 0 <= i < |s| ==> s[i] >= 1
+    ensures 0 <= MaxValueIndex(s) < |s|
+    ensures s[MaxValueIndex(s)] == MaxValue(s)
+{
+    if |s| == 1 then 0
+    else var res_rest := MaxValueIndex(s[1..]);
+         if s[0] >= s[res_rest + 1] then 0
+         else res_rest + 1
+}
+
+function SortedSeq(s: seq<int>): seq<int>
+    requires forall i :: 0 <= i < |s| ==> s[i] >= 1
+    ensures |SortedSeq(s)| == |s|
+    ensures forall i :: 0 <= i < |SortedSeq(s)| ==> SortedSeq(s)[i] >= 1
+    ensures forall i, j :: 0 <= i < j < |SortedSeq(s)| ==> SortedSeq(s)[i] >= SortedSeq(s)[j]
+    decreases |s|
+{
+    if |s| <= 1 then s
+    else
+        var max_val_index := MaxValueIndex(s);
+        var max_val := s[max_val_index];
+        var rest_seq_left := s[..max_val_index];
+        var rest_seq_right := s[max_val_index+1 ..];
+        var rest_seq := rest_seq_left + rest_seq_right;
+        // This ensures the property of rest_seq values being >= 1
+        // and also that its length is |s| - 1.
+        // It provides the necessary invariant for the recursive call.
+        assert forall i :: 0 <= i < |rest_seq| ==> rest_seq[i] >= 1;
+        // The original postcondition uses >= for comparison, meaning descending order.
+        // The current logic creates an ascendingly sorted sequence because the max_val is prepended.
+        // To match the postcondition an ascending sort or adjust
+        // the postcondition is needed. Given the original postcondition stated
+        // `SortedSeq(s)[i] >= SortedSeq(s)[j]` this means sorting in descending order.
+        // To achieve this simply append the max_val
+        var sorted_rest := SortedSeq(rest_seq);
+        [max_val] + sorted_rest
+}
+
+function GetNthLargest(s: seq<int>, n: int): int
+    requires |s| >= n
+    requires n >= 1
+    requires forall i :: 0 <= i < |s| ==> s[i] >= 1
+    ensures GetNthLargest(s, n) >= 1
+{
+    SortedSeq(s)[n-1]
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, m: int, k: int, emotes: seq<int>) returns (result: int)
+    requires ValidInput(n, m, k, emotes)
+    ensures result >= 0
+// </vc-spec>
+// <vc-code>
+{
+    var k_plus_1 := k + 1;
+    var total_blocks := m / k_plus_1;
+    var remainder_clicks := m % k_plus_1;
+
+    var sorted_emotes := SortedSeq(emotes);
+    // Since SortedSeq is fixed to create a descending sequence,
+    // the max_val is at sorted_emotes[0] and second_max_val is at sorted_emotes[1]
+    var max_val := sorted_emotes[0];
+    var second_max_val := sorted_emotes[1];
+
+    var result_val := remainder_clicks * max_val + (total_blocks * k) * max_val + total_blocks * second_max_val;
+    return result_val;
+}
+// </vc-code>
+

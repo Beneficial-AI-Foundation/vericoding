@@ -1,0 +1,144 @@
+predicate is_binary_string(s: string)
+{
+    forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
+}
+
+predicate is_valid_integer(s: string)
+{
+    |s| > 0 && (s[0] != '0' || |s| == 1) && forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
+}
+
+function count_char(s: string, c: char): int
+{
+    if |s| == 0 then 0
+    else (if s[0] == c then 1 else 0) + count_char(s[1..], c)
+}
+
+function abs_diff_count(s: string): int
+    requires is_binary_string(s)
+{
+    var count0 := count_char(s, '0');
+    var count1 := count_char(s, '1');
+    if count1 >= count0 then count1 - count0 else count0 - count1
+}
+
+function int_to_string(n: int): string
+    requires n >= 0
+{
+    if n == 0 then "0"
+    else if n < 10 then [char_of_digit(n)]
+    else int_to_string(n / 10) + [char_of_digit(n % 10)]
+}
+
+function char_of_digit(d: int): char
+    requires 0 <= d <= 9
+{
+    match d
+        case 0 => '0'
+        case 1 => '1' 
+        case 2 => '2'
+        case 3 => '3'
+        case 4 => '4'
+        case 5 => '5'
+        case 6 => '6'
+        case 7 => '7'
+        case 8 => '8'
+        case 9 => '9'
+}
+
+function string_to_int(s: string): int
+    requires is_valid_integer(s)
+{
+    if |s| == 0 then 0
+    else if |s| == 1 then (s[0] as int) - ('0' as int)
+    else string_to_int(s[0..|s|-1]) * 10 + ((s[|s|-1] as int) - ('0' as int))
+}
+
+// <vc-helpers>
+lemma lemma_concat_nonempty_suffix(s: string, t: string)
+  requires |t| > 0
+  ensures |s + t| > 0
+{
+  assert |s + t| == |s| + |t|;
+}
+
+lemma lemma_last_of_concat_is_last_of_suffix(s: string, t: string)
+  requires |t| > 0
+  ensures (s + t)[|s + t| - 1] == t[|t| - 1]
+{
+  assert |s + t| == |s| + |t|;
+  assert |s + t| > 0;
+  var i := |s + t| - 1;
+  assert 0 <= i < |s + t|;
+  assert i >= |s|;
+  assert i - |s| == |t| - 1;
+  assert 0 <= i - |s|;
+  assert i - |s| < |t|;
+  assert (s + t)[i] == t[i - |s|];
+}
+
+lemma newline_concat_properties(s: string)
+  ensures |s + "\n"| > 0
+  ensures (s + "\n")[|s + "\n"|-1] == '\n'
+{
+  lemma_concat_nonempty_suffix(s, "\n");
+  lemma_last_of_concat_is_last_of_suffix(s, "\n");
+  assert |"\n"| == 1;
+  assert "\n"[|"\n"| - 1] == '\n';
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(stdin_input: string) returns (result: string)
+    requires |stdin_input| > 0
+    requires exists i :: 0 <= i < |stdin_input| && stdin_input[i] == '\n'
+    requires exists newline_pos :: 0 <= newline_pos < |stdin_input| && stdin_input[newline_pos] == '\n' &&
+             newline_pos + 1 < |stdin_input| &&
+             exists binary_end :: newline_pos + 1 <= binary_end <= |stdin_input| &&
+             (binary_end == |stdin_input| || stdin_input[binary_end] == '\n') &&
+             is_valid_integer(stdin_input[0..newline_pos]) &&
+             is_binary_string(stdin_input[newline_pos + 1..binary_end])
+    ensures |result| > 0
+    ensures result[|result|-1] == '\n'
+    ensures exists newline_pos :: 0 <= newline_pos < |stdin_input| && stdin_input[newline_pos] == '\n' &&
+            newline_pos + 1 < |stdin_input| &&
+            exists binary_end :: newline_pos + 1 <= binary_end <= |stdin_input| &&
+            (binary_end == |stdin_input| || stdin_input[binary_end] == '\n') &&
+            is_binary_string(stdin_input[newline_pos + 1..binary_end]) &&
+            result == int_to_string(abs_diff_count(stdin_input[newline_pos + 1..binary_end])) + "\n"
+// </vc-spec>
+// <vc-code>
+{
+  var newline_pos: int, binary_end: int :| 
+    0 <= newline_pos < |stdin_input| &&
+    stdin_input[newline_pos] == '\n' &&
+    newline_pos + 1 < |stdin_input| &&
+    newline_pos + 1 <= binary_end <= |stdin_input| &&
+    (binary_end == |stdin_input| || stdin_input[binary_end] == '\n') &&
+    is_valid_integer(stdin_input[0..newline_pos]) &&
+    is_binary_string(stdin_input[newline_pos + 1..binary_end]);
+
+  var s := stdin_input[newline_pos + 1..binary_end];
+  var d := abs_diff_count(s);
+
+  var c0 := count_char(s, '0');
+  var c1 := count_char(s, '1');
+  if c1 >= c0 {
+    assert d == c1 - c0;
+    assert d >= 0;
+  } else {
+    assert d == c0 - c1;
+    assert d >= 0;
+  }
+
+  result := int_to_string(d) + "\n";
+
+  newline_concat_properties(int_to_string(d));
+  assert |result| > 0;
+  assert result[|result|-1] == '\n';
+
+  assert s == stdin_input[newline_pos + 1..binary_end];
+  assert result == int_to_string(abs_diff_count(stdin_input[newline_pos + 1..binary_end])) + "\n";
+}
+// </vc-code>
+

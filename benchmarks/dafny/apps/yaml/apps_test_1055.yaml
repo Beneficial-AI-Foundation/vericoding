@@ -1,0 +1,48 @@
+vc-description: |-
+  Given an array of integers, apply the Thanos sort algorithm to find the maximum length 
+  of a sorted subarray. The algorithm works by: if the array is sorted, stop; otherwise 
+  choose either the first half or second half and repeat the process.
+
+vc-preamble: |-
+  predicate ValidInput(a: seq<int>)
+  {
+      |a| > 0
+  }
+  
+  predicate isSorted(x: seq<int>)
+  {
+      forall i, j :: 0 <= i < j < |x| ==> x[i] <= x[j]
+  }
+  
+  function thanosSort(x: seq<int>): int
+      requires |x| > 0
+      ensures thanosSort(x) >= 1
+      ensures thanosSort(x) <= |x|
+      ensures isSorted(x) ==> thanosSort(x) == |x|
+  {
+      var len := |x|;
+      if isSorted(x) then
+          len
+      else
+          var firstHalf := x[..len/2];
+          var secondHalf := x[len/2..];
+          var leftResult := thanosSort(firstHalf);
+          var rightResult := thanosSort(secondHalf);
+          if leftResult > rightResult then leftResult else rightResult
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(a: seq<int>) returns (result: int)
+      requires ValidInput(a)
+      ensures result == thanosSort(a)
+      ensures 1 <= result <= |a|
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

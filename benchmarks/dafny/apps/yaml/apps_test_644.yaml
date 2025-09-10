@@ -1,0 +1,32 @@
+vc-description: |-
+  Execute a sequence of commands (for n, end, add) that manipulate an integer variable x starting at 0.
+  Commands form valid nested loops. Check if x exceeds 2^32 - 1 at any point during execution.
+  Return "OVERFLOW!!!" if overflow occurs, otherwise return the final value of x.
+
+vc-preamble: |-
+  predicate ValidInput(lines: seq<string>)
+  {
+      |lines| > 0
+  }
+  
+  function MAX_VALUE(): int { 4294967295 }
+  
+  predicate IsOverflow(x: int)
+  {
+      x > MAX_VALUE()
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(input: string) returns (result: string)
+      requires ValidInput([input])
+      ensures result == "OVERFLOW!!!" || result != "OVERFLOW!!!"
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

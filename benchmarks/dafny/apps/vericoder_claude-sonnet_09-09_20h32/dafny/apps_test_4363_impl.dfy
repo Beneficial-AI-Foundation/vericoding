@@ -1,0 +1,127 @@
+predicate ValidInput(k: int, s: int) {
+    k >= 0 && s >= 0 && s <= 3 * k
+}
+
+predicate IsValidTriple(k: int, s: int, x: int, y: int, z: int) {
+    0 <= x <= k && 0 <= y <= k && 0 <= z <= k && x + y + z == s
+}
+
+function CountValidTriples(k: int, s: int): int
+    requires k >= 0
+{
+    CountValidTriplesHelper(k, s, 0)
+}
+
+function CountValidTriplesHelper(k: int, s: int, z: int): int
+    requires k >= 0
+    requires z >= 0
+    decreases if k >= z then k + 1 - z else 0
+{
+    if z > k then 0
+    else CountValidTriplesForZ(k, s, z) + CountValidTriplesHelper(k, s, z + 1)
+}
+
+function CountValidTriplesForZ(k: int, s: int, z: int): int
+    requires k >= 0
+    requires z >= 0
+{
+    CountValidTriplesForZHelper(k, s, z, 0)
+}
+
+function CountValidTriplesForZHelper(k: int, s: int, z: int, y: int): int
+    requires k >= 0
+    requires z >= 0
+    requires y >= 0
+    decreases if k >= y then k + 1 - y else 0
+{
+    if y > k then 0
+    else 
+        var x := s - y - z;
+        var thisCount := if 0 <= x <= k then 1 else 0;
+        thisCount + CountValidTriplesForZHelper(k, s, z, y + 1)
+}
+
+// <vc-helpers>
+lemma CountValidTriplesNonNegative(k: int, s: int)
+    requires k >= 0
+    ensures CountValidTriples(k, s) >= 0
+{
+    CountValidTriplesHelperNonNegative(k, s, 0);
+}
+
+lemma CountValidTriplesHelperNonNegative(k: int, s: int, z: int)
+    requires k >= 0
+    requires z >= 0
+    ensures CountValidTriplesHelper(k, s, z) >= 0
+    decreases if k >= z then k + 1 - z else 0
+{
+    if z > k {
+    } else {
+        CountValidTriplesForZNonNegative(k, s, z);
+        CountValidTriplesHelperNonNegative(k, s, z + 1);
+    }
+}
+
+lemma CountValidTriplesForZNonNegative(k: int, s: int, z: int)
+    requires k >= 0
+    requires z >= 0
+    ensures CountValidTriplesForZ(k, s, z) >= 0
+{
+    CountValidTriplesForZHelperNonNegative(k, s, z, 0);
+}
+
+lemma CountValidTriplesForZHelperNonNegative(k: int, s: int, z: int, y: int)
+    requires k >= 0
+    requires z >= 0
+    requires y >= 0
+    ensures CountValidTriplesForZHelper(k, s, z, y) >= 0
+    decreases if k >= y then k + 1 - y else 0
+{
+    if y > k {
+    } else {
+        CountValidTriplesForZHelperNonNegative(k, s, z, y + 1);
+    }
+}
+
+lemma CountValidTriplesForZHelperCorrect(k: int, s: int, z: int, y: int)
+    requires k >= 0
+    requires z >= 0
+    requires y >= 0
+    requires y <= k + 1
+    ensures CountValidTriplesForZHelper(k, s, z, y) == CountValidTriplesForZ(k, s, z) - CountValidTriplesForZHelper(k, s, z, 0) + CountValidTriplesForZHelper(k, s, z, y)
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method CountTriples(k: int, s: int) returns (count: int)
+    requires ValidInput(k, s)
+    ensures count == CountValidTriples(k, s)
+    ensures count >= 0
+// </vc-spec>
+// <vc-code>
+{
+    count := 0;
+    var z := 0;
+    
+    while z <= k
+        invariant 0 <= z <= k + 1
+        invariant count == CountValidTriples(k, s) - CountValidTriplesHelper(k, s, z)
+    {
+        var y := 0;
+        var zStartCount := count;
+        while y <= k
+            invariant 0 <= y <= k + 1
+            invariant count == zStartCount + CountValidTriplesForZ(k, s, z) - CountValidTriplesForZHelper(k, s, z, y)
+        {
+            var x := s - y - z;
+            if 0 <= x <= k {
+                count := count + 1;
+            }
+            y := y + 1;
+        }
+        z := z + 1;
+    }
+}
+// </vc-code>
+

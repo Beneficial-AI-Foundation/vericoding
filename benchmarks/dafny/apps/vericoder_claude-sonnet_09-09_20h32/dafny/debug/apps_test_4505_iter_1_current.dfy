@@ -1,0 +1,68 @@
+predicate ValidInput(s: string)
+{
+    (|s| == 3 || (|s| == 4 && s[3] == '\n')) &&
+    forall i :: 0 <= i < (if |s| == 4 then 3 else |s|) ==> (s[i] == 'a' || s[i] == 'b' || s[i] == 'c')
+}
+
+function GetInputChars(s: string): string
+    requires ValidInput(s)
+{
+    if |s| == 4 then s[..3] else s
+}
+
+predicate IsPermutationOfABC(input_chars: string)
+    requires |input_chars| == 3
+    requires forall i :: 0 <= i < |input_chars| ==> (input_chars[i] == 'a' || input_chars[i] == 'b' || input_chars[i] == 'c')
+{
+    input_chars[0] != input_chars[1] && 
+    input_chars[1] != input_chars[2] && 
+    input_chars[0] != input_chars[2]
+}
+
+// <vc-helpers>
+lemma ValidInputImpliesCorrectChars(s: string)
+    requires ValidInput(s)
+    ensures var chars := GetInputChars(s); forall i :: 0 <= i < |chars| ==> (chars[i] == 'a' || chars[i] == 'b' || chars[i] == 'c')
+{
+    var chars := GetInputChars(s);
+    if |s| == 4 {
+        assert chars == s[..3];
+        forall i | 0 <= i < |chars|
+            ensures chars[i] == 'a' || chars[i] == 'b' || chars[i] == 'c'
+        {
+            assert chars[i] == s[i];
+        }
+    } else {
+        assert chars == s;
+    }
+}
+
+lemma ValidInputImpliesLength3(s: string)
+    requires ValidInput(s)
+    ensures |GetInputChars(s)| == 3
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(s: string) returns (result: string)
+    requires |s| >= 3
+    requires ValidInput(s)
+    ensures result == "Yes\n" || result == "No\n"
+    ensures result == "Yes\n" <==> IsPermutationOfABC(GetInputChars(s))
+// </vc-spec>
+// <vc-code>
+{
+    ValidInputImpliesCorrectChars(s);
+    ValidInputImpliesLength3(s);
+    
+    var input_chars := GetInputChars(s);
+    
+    if IsPermutationOfABC(input_chars) {
+        result := "Yes\n";
+    } else {
+        result := "No\n";
+    }
+}
+// </vc-code>
+

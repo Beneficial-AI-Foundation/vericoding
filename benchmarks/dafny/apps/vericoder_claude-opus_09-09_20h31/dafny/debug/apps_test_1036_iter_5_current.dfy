@@ -1,0 +1,254 @@
+function winner(a: char, b: char): char
+{
+    if (a, b) == ('R', 'P') || (a, b) == ('P', 'S') || (a, b) == ('S', 'R') then b else a
+}
+
+predicate validRPSChar(c: char)
+{
+    c == 'R' || c == 'P' || c == 'S'
+}
+
+predicate validRPSString(s: string)
+{
+    forall i :: 0 <= i < |s| ==> validRPSChar(s[i])
+}
+
+predicate ValidInput(n: int, k: int, s: string)
+{
+    n > 0 && k >= 0 && |s| == n && validRPSString(s)
+}
+
+// <vc-helpers>
+function simulateRound(s: string): string
+    requires |s| > 0
+    requires validRPSString(s)
+    ensures |simulateRound(s)| == (|s| + 1) / 2
+    ensures validRPSString(simulateRound(s))
+{
+    if |s| == 1 then s
+    else if |s| == 2 then [winner(s[0], s[1])]
+    else [winner(s[0], s[1])] + simulateRound(s[2..])
+}
+
+function simulateKRounds(s: string, k: nat): string
+    requires |s| > 0
+    requires validRPSString(s)
+    ensures |simulateKRounds(s, k)| > 0
+    ensures validRPSString(simulateKRounds(s, k))
+    decreases k
+{
+    if k == 0 || |s| == 1 then s
+    else simulateKRounds(simulateRound(s), k - 1)
+}
+
+lemma SimulateKRoundsProperties(s: string, k: nat)
+    requires |s| > 0
+    requires validRPSString(s)
+    ensures |simulateKRounds(s, k)| >= 1
+    ensures validRPSString(simulateKRounds(s, k))
+    decreases k
+{
+    // Proof by induction on k
+    if k == 0 || |s| == 1 {
+        // Base case: trivial
+    } else {
+        var nextRound := simulateRound(s);
+        assert |nextRound| == (|s| + 1) / 2;
+        assert |nextRound| > 0;
+        assert validRPSString(nextRound);
+        SimulateKRoundsProperties(nextRound, k - 1);
+    }
+}
+
+lemma SimulateRoundEquivalence(s: string, next: string)
+    requires |s| > 0
+    requires validRPSString(s)
+    requires |next| == (|s| + 1) / 2
+    requires validRPSString(next)
+    requires forall j :: 0 <= j < (|s| / 2) ==> next[j] == winner(s[2*j], s[2*j+1])
+    requires |s| % 2 == 1 ==> next[|next| - 1] == s[|s| - 1]
+    ensures next == simulateRound(s)
+{
+    if |s| == 1 {
+        assert next == s;
+    } else if |s| == 2 {
+        assert next == [winner(s[0], s[1])];
+    } else {
+        var expected := simulateRound(s);
+        assert expected[0] == winner(s[0], s[1]);
+        assert next[0] == winner(s[0], s[1]);
+        
+        var restNext := next[1..];
+        var restS := s[2..];
+        
+        assert |restNext| == (|restS| + 1) / 2;
+        assert validRPSString(restNext);
+        assert forall j :: 0 <= j < (|restS| / 2) ==> restNext[j] == winner(restS[2*j], restS[2*j+1]);
+        assert |restS| % 2 == 1 ==> restNext[|restNext| - 1] == restS[|restS| - 1];
+        
+        SimulateRoundEquivalence(restS, restNext);
+        assert restNext == simulateRound(restS);
+        assert next == [winner(s[0], s[1])] + restNext;
+        assert expected == [winner(s[0], s[1])] + simulateRound(s[2..]);
+    }
+}
+
+lemma SimulateOneRound(s: string)
+    requires |s| > 0
+    requires validRPSString(s)
+    ensures |s| == 1 ==> simulateKRounds(s, 1) == s
+    ensures |s| > 1 ==> simulateKRounds(s, 1) == simulateRound(s)
+{
+    if |s| == 1 {
+        assert simulateKRounds(s, 1) == s;
+    } else {
+        assert simulateKRounds(s, 1) == simulateKRounds(simulateRound(s), 0) == simulateRound(s);
+    }
+}
+
+lemma SimulateKRoundsComposition(s: string, k1: nat, k2: nat)
+    requires |s| > 0
+    requires validRPSString(s)
+    ensures simulateKRounds(simulateKRounds(s, k1), k2) == simulateKRounds(s, k1 + k2)
+    decreases k1 + k2, k2
+{
+    if k2 == 0 {
+        assert simulateKRounds(simulateKRounds(s, k1), 0) == simulateKRounds(s, k1);
+        assert simulateKRounds(s, k1 + 0) == simulateKRounds(s, k1);
+    } else {
+        var intermediate := simulateKRounds(s, k1);
+        SimulateKRoundsProperties(s, k1);
+        assert |intermediate| > 0;
+        assert validRPSString(intermediate);
+        
+        if |intermediate| == 1 {
+            assert simulateKRounds(intermediate, k2) == intermediate;
+            if k1 == 0 || |s| == 1 {
+                assert intermediate == s;
+                assert simulateKRounds(s, k1 + k2) == s;
+            } else {
+                assert simulateKRounds(s, k1 + k2) == intermediate;
+            }
+        } else {
+            assert simulateKRounds(intermediate, k2) == simulateKRounds(simulateRound(intermediate), k2 - 1);
+            
+            if k1 == 0 || |s| == 1 {
+                assert intermediate == s;
+                assert simulateKRounds(s, k1 + k2) == simulateKRounds(simulateRound(s), k1 + k2 - 1);
+                assert simulateRound(intermediate) == simulateRound(s);
+                assert k1 + (k2 - 1) < k1 + k2;
+                SimulateKRoundsComposition(simulateRound(s), k1, k2 - 1);
+                assert simulateKRounds(simulateRound(intermediate), k2 - 1) == simulateKRounds(simulateRound(s), k2 - 1);
+                assert simulateKRounds(simulateRound(s), k2 - 1) == simulateKRounds(s, k1 + k2);
+            } else {
+                assert simulateKRounds(s, k1 + k2) == simulateKRounds(simulateRound(s), k1 + k2 - 1);
+                assert intermediate == simulateKRounds(simulateRound(s), k1 - 1);
+                assert (k1 - 1) + 1 < k1 + k2;
+                SimulateKRoundsComposition(simulateRound(s), k1 - 1, 1);
+                assert simulateRound(intermediate) == simulateKRounds(simulateRound(s), k1);
+                assert k1 + (k2 - 1) < k1 + k2;
+                SimulateKRoundsComposition(simulateRound(s), k1, k2 - 1);
+                assert simulateKRounds(simulateRound(intermediate), k2 - 1) == simulateKRounds(simulateKRounds(simulateRound(s), k1), k2 - 1);
+                assert simulateKRounds(simulateKRounds(simulateRound(s), k1), k2 - 1) == simulateKRounds(simulateRound(s), k1 + k2 - 1);
+                assert simulateKRounds(simulateRound(s), k1 + k2 - 1) == simulateKRounds(s, k1 + k2);
+            }
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, k: int, s: string) returns (result: char)
+    requires ValidInput(n, k, s)
+    ensures validRPSChar(result)
+// </vc-spec>
+// <vc-code>
+{
+    var roundsLeft := k;
+    var current := s;
+    
+    while roundsLeft > 0 && |current| > 1
+        invariant 0 < |current| <= |s|
+        invariant validRPSString(current)
+        invariant 0 <= roundsLeft <= k
+        invariant current == simulateKRounds(s, k - roundsLeft)
+        decreases roundsLeft, |current|
+    {
+        var next := "";
+        var i := 0;
+        
+        while i < |current| - 1
+            invariant 0 <= i <= |current|
+            invariant i % 2 == 0
+            invariant |next| == i / 2
+            invariant validRPSString(next)
+            invariant forall j :: 0 <= j < |next| ==> next[j] == winner(current[2*j], current[2*j+1])
+            decreases |current| - i
+        {
+            next := next + [winner(current[i], current[i+1])];
+            i := i + 2;
+        }
+        
+        if i < |current| {
+            next := next + [current[i]];
+        }
+        
+        assert |next| == (|current| + 1) / 2;
+        assert forall j :: 0 <= j < (|current| / 2) ==> next[j] == winner(current[2*j], current[2*j+1]);
+        assert |current| % 2 == 1 ==> next[|next| - 1] == current[|current| - 1];
+        
+        SimulateRoundEquivalence(current, next);
+        assert next == simulateRound(current);
+        
+        current := next;
+        roundsLeft := roundsLeft - 1;
+        
+        assert current == simulateRound(simulateKRounds(s, k - roundsLeft - 1));
+        
+        var rounds_done := k - roundsLeft - 1;
+        if rounds_done == 0 || |s| == 1 {
+            assert simulateKRounds(s, rounds_done) == s;
+            assert current == simulateRound(s);
+            SimulateOneRound(s);
+            if |s| == 1 {
+                assert current == s;
+                assert simulateKRounds(s, 1) == s;
+            } else {
+                assert simulateKRounds(s, 1) == simulateRound(s);
+            }
+            assert current == simulateKRounds(s, k - roundsLeft);
+        } else {
+            SimulateOneRound(simulateKRounds(s, rounds_done));
+            var prev := simulateKRounds(s, rounds_done);
+            if |prev| == 1 {
+                assert current == prev;
+                assert simulateKRounds(s, rounds_done + 1) == prev;
+            } else {
+                assert current == simulateRound(prev);
+                assert simulateKRounds(s, rounds_done + 1) == simulateKRounds(prev, 1);
+                assert simulateKRounds(prev, 1) == simulateRound(prev);
+            }
+            assert current == simulateKRounds(s, k - roundsLeft);
+        }
+    }
+    
+    assert current == simulateKRounds(s, k - roundsLeft);
+    
+    if roundsLeft == 0 {
+        assert current == simulateKRounds(s, k);
+    } else {
+        assert |current| == 1;
+        assert simulateKRounds(current, roundsLeft) == current;
+        SimulateKRoundsComposition(s, k - roundsLeft, roundsLeft);
+        assert simulateKRounds(current, roundsLeft) == simulateKRounds(simulateKRounds(s, k - roundsLeft), roundsLeft);
+        assert simulateKRounds(simulateKRounds(s, k - roundsLeft), roundsLeft) == simulateKRounds(s, k);
+        assert current == simulateKRounds(s, k);
+    }
+    
+    SimulateKRoundsProperties(s, k);
+    assert |current| >= 1;
+    
+    result := current[0];
+}
+// </vc-code>
+

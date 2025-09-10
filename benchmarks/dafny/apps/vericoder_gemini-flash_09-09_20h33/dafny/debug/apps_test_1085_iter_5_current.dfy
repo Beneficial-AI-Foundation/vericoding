@@ -1,0 +1,93 @@
+predicate ValidInput(n: nat)
+{
+  n > 0
+}
+
+function reduce_by_divisor(n: nat, d: nat): nat
+  requires n > 0 && d > 1
+  decreases n
+{
+  if n % d == 0 && n >= d then 
+    reduce_by_divisor(n / d, d)
+  else n
+}
+
+function count_divisors(n: nat): nat
+  requires n > 0
+{
+  |set d | 1 <= d <= n && n % d == 0|
+}
+
+function count_special_divisors(n: nat): nat
+  requires n > 0
+{
+  |set d | 2 <= d <= n && n % d == 0 && (reduce_by_divisor(n, d) - 1) % d == 0|
+}
+
+function count_valid_k_values(n: nat): int
+  requires n > 0
+{
+  if n == 1 then -1
+  else 
+    count_divisors(n - 1) + count_special_divisors(n) - 1
+}
+
+// <vc-helpers>
+function reduce_by_divisor_iter(n: nat, d: nat): nat
+  requires n > 0 && d > 1
+  decreases n
+{
+  if n % d == 0 && n >= d then
+    reduce_by_divisor_iter(n / d, d)
+  else n
+}
+
+lemma lemma_reduce_by_divisor_iter_eq_reduce_by_divisor(n: nat, d: nat)
+  requires n > 0 && d > 1
+  ensures reduce_by_divisor_iter(n, d) == reduce_by_divisor(n, d)
+{
+  // The two functions are structurally identical by construction,
+  // hence their equivalence is trivial. No special proof steps needed.
+  // The decrease clause was the original problem, which is now fixed to match the original.
+}
+
+lemma lemma_count_divisors_spec(n: nat)
+  requires n > 0
+  ensures count_divisors(n) == |set d | 1 <= d <= n && n % d == 0|
+{
+  // This is a direct consequence of the function definition.
+}
+
+lemma lemma_count_special_divisors_spec(n: nat)
+  requires n > 0
+  ensures count_special_divisors(n) == |set d | 2 <= d <= n && n % d == 0 && (reduce_by_divisor(n, d) - 1) % d == 0|
+{
+  // This is a direct consequence of the function definition.
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: nat) returns (result: int)
+  requires ValidInput(n)
+  ensures result == count_valid_k_values(n)
+  ensures n == 1 ==> result == -1
+  ensures n > 1 ==> result == count_divisors(n - 1) + count_special_divisors(n) - 1
+  ensures result >= -1
+// </vc-spec>
+// <vc-code>
+{
+  if n == 1 {
+    return -1;
+  } else {
+    var num_divisors_n_minus_1 := count_divisors(n - 1);
+    var num_special_divisors_n := count_special_divisors(n);
+    // The previous check `num_divisors_n_minus_1 + num_special_divisors_n == 0`
+    // was not aligned with the specification `count_valid_k_values(n)`.
+    // The `count_valid_k_values` function directly returns 
+    // `count_divisors(n - 1) + count_special_divisors(n) - 1` when `n > 1`.
+    // Therefore, no additional conditional return is needed here.
+    return num_divisors_n_minus_1 + num_special_divisors_n - 1;
+  }
+}
+// </vc-code>
+

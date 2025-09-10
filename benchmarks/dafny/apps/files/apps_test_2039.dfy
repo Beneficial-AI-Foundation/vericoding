@@ -1,0 +1,40 @@
+/*
+Given an array of integers, count the number of local extrema.
+A local minimum is an element strictly less than both neighbors.
+A local maximum is an element strictly greater than both neighbors.
+First and last elements cannot be local extrema since they lack two neighbors.
+*/
+
+predicate ValidInput(n: int, a: seq<int>)
+{
+    n >= 1 && |a| == n
+}
+
+function CountLocalExtrema(n: int, a: seq<int>): int
+    requires ValidInput(n, a)
+{
+    |set i | 1 <= i < n - 1 && ((a[i] > a[i-1] && a[i] > a[i+1]) || (a[i] < a[i-1] && a[i] < a[i+1]))|
+}
+
+predicate IsLocalExtremum(a: seq<int>, i: int)
+    requires 0 <= i < |a|
+{
+    1 <= i < |a| - 1 && ((a[i] > a[i-1] && a[i] > a[i+1]) || (a[i] < a[i-1] && a[i] < a[i+1]))
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, a: seq<int>) returns (result: int)
+    requires ValidInput(n, a)
+    ensures result >= 0
+    ensures n <= 2 ==> result == 0
+    ensures n > 2 ==> result <= n - 2
+    ensures result == CountLocalExtrema(n, a)
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

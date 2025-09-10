@@ -1,0 +1,138 @@
+predicate ValidInput(n: nat, arr: seq<int>)
+{
+    n > 0 && |arr| == n && forall i :: 0 <= i < |arr| ==> arr[i] >= 1
+}
+
+predicate IsUnimodal(arr: seq<int>)
+    requires forall i :: 0 <= i < |arr| ==> arr[i] >= 1
+{
+    if |arr| <= 1 then true
+    else
+        var phases := ComputePhases(arr);
+        phases.0 <= phases.1 <= phases.2 == |arr| &&
+        (forall i, j :: 0 <= i < j < phases.0 ==> arr[i] < arr[j]) &&
+        (forall i :: phases.0 <= i < phases.1 ==> arr[i] == (if phases.0 > 0 then arr[phases.0] else arr[0])) &&
+        (forall i, j :: phases.1 <= i < j < phases.2 ==> arr[i] > arr[j]) &&
+        (phases.0 > 0 && phases.1 < |arr| ==> arr[phases.0-1] >= (if phases.1 > phases.0 then arr[phases.0] else arr[phases.1]))
+}
+
+function ComputePhases(arr: seq<int>): (int, int, int)
+    requires forall i :: 0 <= i < |arr| ==> arr[i] >= 1
+    ensures var (incEnd, constEnd, decEnd) := ComputePhases(arr); 0 <= incEnd <= constEnd <= decEnd <= |arr|
+{
+    var incEnd := ComputeIncreasingEnd(arr, 0, 0);
+    var constEnd := ComputeConstantEnd(arr, incEnd, if incEnd > 0 then arr[incEnd-1] else 0);
+    var decEnd := ComputeDecreasingEnd(arr, constEnd, if constEnd > incEnd then arr[incEnd] else if incEnd > 0 then arr[incEnd-1] else 0);
+    (incEnd, constEnd, decEnd)
+}
+
+// <vc-helpers>
+function ComputeIncreasingEnd(arr: seq<int>, start: int, prevVal: int): int
+    requires forall i :: 0 <= i < |arr| ==> arr[i] >= 1
+    requires 0 <= start <= |arr|
+    requires prevVal >= 0
+    ensures 0 <= ComputeIncreasingEnd(arr, start, prevVal) <= |arr|
+    ensures var end := ComputeIncreasingEnd(arr, start, prevVal);
+            forall i, j :: start <= i < j < end ==> arr[i] < arr[j]
+    ensures var end := ComputeIncreasingEnd(arr, start, prevVal);
+            end < |arr| && start < end ==> arr[end-1] >= arr[end] || (start == 0 && end == 0)
+    decreases |arr| - start
+{
+    if start >= |arr| then start
+    else if start == 0 || arr[start] > prevVal then
+        ComputeIncreasingEnd(arr, start + 1, arr[start])
+    else start
+}
+
+function ComputeConstantEnd(arr: seq<int>, start: int, val: int): int
+    requires forall i :: 0 <= i < |arr| ==> arr[i] >= 1
+    requires 0 <= start <= |arr|
+    requires val >= 0
+    ensures start <= ComputeConstantEnd(arr, start, val) <= |arr|
+    ensures var end := ComputeConstantEnd(arr, start, val);
+            forall i :: start <= i < end && start < |arr| ==> arr[i] == arr[start]
+    ensures var end := ComputeConstantEnd(arr, start, val);
+            end < |arr| && start < end ==> arr[end] != arr[start]
+    decreases |arr| - start
+{
+    if start >= |arr| then start
+    else if val == 0 || arr[start] == val then
+        ComputeConstantEnd(arr, start + 1, arr[start])
+    else start
+}
+
+function ComputeDecreasingEnd(arr: seq<int>, start: int, prevVal: int): int
+    requires forall i :: 0 <= i < |arr| ==> arr[i] >= 1
+    requires 0 <= start <= |arr|
+    requires prevVal >= 0
+    ensures start <= ComputeDecreasingEnd(arr, start, prevVal) <= |arr|
+    ensures var end := ComputeDecreasingEnd(arr, start, prevVal);
+            forall i, j :: start <= i < j < end ==> arr[i] > arr[j]
+    ensures var end := ComputeDecreasingEnd(arr, start, prevVal);
+            end < |arr| && start < end ==> arr[end-1] <= arr[end]
+    decreases |arr| - start
+{
+    if start >= |arr| then start
+    else if prevVal == 0 || arr[start] < prevVal then
+        ComputeDecreasingEnd(arr, start + 1, arr[start])
+    else start
+}
+
+method CheckUnimodal(n: nat, arr: seq<int>) returns (isUnimodal: bool)
+    requires ValidInput(n, arr)
+    ensures isUnimodal <==> IsUnimodal(arr)
+{
+    if n <= 1 {
+        return true;
+    }
+    
+    var i := 0;
+    
+    // Find end of increasing phase
+    while i < n - 1 && arr[i] < arr[i + 1]
+        invariant 0 <= i < n
+        invariant forall j, k :: 0 <= j < k <= i ==> arr[j] < arr[k]
+    {
+        i := i + 1;
+    }
+    var incEnd := i;
+    
+    // Find end of constant phase
+    while i < n - 1 && arr[i] == arr[i + 1]
+        invariant incEnd <= i < n
+        invariant forall j :: incEnd <= j <= i ==> arr[j] == arr[incEnd]
+    {
+        i := i + 1;
+    }
+    var constEnd := i;
+    
+    // Find end of decreasing phase
+    while i < n - 1 && arr[i] > arr[i + 1]
+        invariant constEnd <= i < n
+        invariant forall j, k :: constEnd <= j < k <= i ==> arr[j] > arr[k]
+    {
+        i := i + 1;
+    }
+    
+    // Check if we've reached the end
+    isUnimodal := (i == n - 1);
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: nat, arr: seq<int>) returns (result: string)
+    requires ValidInput(n, arr)
+    ensures result == "YES" || result == "NO"
+    ensures result == "YES" <==> IsUnimodal(arr)
+// </vc-spec>
+// <vc-code>
+{
+    var isUnimodal := CheckUnimodal(n, arr);
+    if isUnimodal {
+        result := "YES";
+    } else {
+        result := "NO";
+    }
+}
+// </vc-code>
+

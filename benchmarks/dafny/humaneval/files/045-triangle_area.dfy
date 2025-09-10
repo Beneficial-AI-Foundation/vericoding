@@ -1,0 +1,24 @@
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def triangle_area(a: float, h: float) -> float
+Given length of a side and high return area for a triangle.
+*/
+// </vc-description>
+
+// <vc-spec>
+method CalculateTriangleArea(a: real, h: real) returns (area: real)
+  // pre-conditions-start
+  requires h >= 0.0 && a >= 0.0
+  // pre-conditions-end
+  // post-conditions-start
+  ensures area == (h * a) / 2.0
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>

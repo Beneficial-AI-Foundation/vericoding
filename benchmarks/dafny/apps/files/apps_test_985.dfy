@@ -1,0 +1,42 @@
+/*
+Given n bishops on a 1000×1000 grid, count the number of pairs that attack each other.
+Two bishops attack each other if and only if they are on the same diagonal (either main diagonal or anti-diagonal).
+Main diagonal: x - y is constant, Anti-diagonal: x + y is constant.
+*/
+
+predicate ValidInput(positions: seq<(int, int)>)
+{
+    |positions| >= 1 && |positions| <= 200000 &&
+    (forall i :: 0 <= i < |positions| ==> 
+        1 <= positions[i].0 <= 1000 && 1 <= positions[i].1 <= 1000) &&
+    (forall i, j :: 0 <= i < j < |positions| ==> positions[i] != positions[j])
+}
+
+function CountAttackingPairs(positions: seq<(int, int)>): int
+    requires ValidInput(positions)
+{
+    |set i, j | 0 <= i < j < |positions| && 
+               (positions[i].0 + positions[i].1 == positions[j].0 + positions[j].1 ||
+                positions[i].0 - positions[i].1 == positions[j].0 - positions[j].1) :: (i, j)|
+}
+
+predicate ValidOutput(positions: seq<(int, int)>, result: int)
+    requires ValidInput(positions)
+{
+    result == CountAttackingPairs(positions) && result >= 0
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method SolveBishops(positions: seq<(int, int)>) returns (result: int)
+    requires ValidInput(positions)
+    ensures ValidOutput(positions, result)
+    ensures result >= 0
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>

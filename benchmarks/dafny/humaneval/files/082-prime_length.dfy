@@ -1,0 +1,27 @@
+function IsPrime(n: int) : bool
+{
+  n > 1 &&
+  forall k :: 2 <= k < n ==> n % k != 0
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def prime_length(s: str) -> bool
+Write a function that takes a string and returns True if the string length is a prime number or False otherwise
+*/
+// </vc-description>
+
+// <vc-spec>
+method PrimeLength(s: string) returns (p : bool)
+  // post-conditions-start
+  ensures p <==> IsPrime(|s|)
+  // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>

@@ -1,0 +1,94 @@
+predicate ValidGraph(n: int, f: seq<int>, w: seq<int>)
+{
+  n > 0 && |f| == n && |w| == n &&
+  (forall i :: 0 <= i < n ==> 0 <= f[i] < n) &&
+  (forall i :: 0 <= i < n ==> w[i] >= 0)
+}
+
+predicate ValidResult(n: int, sums: seq<int>, mins: seq<int>)
+{
+  |sums| == n && |mins| == n &&
+  forall i :: 0 <= i < n ==> sums[i] >= 0 && mins[i] >= 0
+}
+
+function PathSum(start: int, k: int, f: seq<int>, w: seq<int>): int
+  requires |f| == |w| && |f| > 0
+  requires 0 <= start < |f|
+  requires k >= 0
+  requires forall i :: 0 <= i < |f| ==> 0 <= f[i] < |f|
+  requires forall i :: 0 <= i < |w| ==> w[i] >= 0
+  decreases k
+{
+  if k == 0 then 0
+  else w[start] + PathSum(f[start], k - 1, f, w)
+}
+
+function PathMin(start: int, k: int, f: seq<int>, w: seq<int>): int
+  requires |f| == |w| && |f| > 0
+  requires 0 <= start < |f|
+  requires k > 0
+  requires forall i :: 0 <= i < |f| ==> 0 <= f[i] < |f|
+  requires forall i :: 0 <= i < |w| ==> w[i] >= 0
+  decreases k
+{
+  if k == 1 then w[start]
+  else
+    var nextMin := PathMin(f[start], k - 1, f, w);
+    if w[start] <= nextMin then w[start] else nextMin
+}
+
+// <vc-helpers>
+lemma PathMinNonNegative(start: int, k: int, f: seq<int>, w: seq<int>)
+  requires |f| == |w| && |f| > 0
+  requires 0 <= start < |f|
+  requires k > 0
+  requires forall i :: 0 <= i < |f| ==> 0 <= f[i] < |f|
+  requires forall i :: 0 <= i < |w| ==> w[i] >= 0
+  ensures PathMin(start, k, f, w) >= 0
+  decreases k
+{
+  if k == 1 {
+    // Base case: w[start] >= 0 by precondition
+  } else {
+    PathMinNonNegative(f[start], k - 1, f, w);
+  }
+}
+
+lemma PathSumNonNegative(start: int, k: int, f: seq<int>, w: seq<int>)
+  requires |f| == |w| && |f| > 0
+  requires 0 <= start < |f|
+  requires k >= 0
+  requires forall i :: 0 <= i < |f| ==> 0 <= f[i] < |f|
+  requires forall i :: 0 <= i < |w| ==> w[i] >= 0
+  ensures PathSum(start, k, f, w) >= 0
+  decreases k
+{
+  if k > 0 {
+    PathSumNonNegative(f[start], k - 1, f, w);
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method SolveGraph(n: int, k: int, f: seq<int>, w: seq<int>) returns (sums: seq<int>, mins: seq<int>)
+  requires ValidGraph(n, f, w)
+  requires k > 0
+  ensures ValidResult(n, sums, mins)
+// </vc-spec>
+// <vc-code>
+{
+  sums := Seq(n, i => PathSum(i, k, f, w));
+  mins := Seq(n, i => if k > 0 then PathMin(i, k, f, w) else 0);
+  
+  // Prove ValidResult postcondition
+  forall i | 0 <= i < n
+    ensures sums[i] >= 0 && mins[i] >= 0
+  {
+    if k > 0 {
+      PathMinNonNegative(i, k, f, w);
+    }
+    PathSumNonNegative(i, k, f, w);
+  }
+}
+// </vc-code>
+

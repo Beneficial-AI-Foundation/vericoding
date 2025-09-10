@@ -1,0 +1,41 @@
+predicate ValidInput(a: int, b: int, x: int)
+{
+    a >= 0 && b >= a && x > 0
+}
+
+function CountDivisibleInRange(a: int, b: int, x: int): int
+    requires ValidInput(a, b, x)
+    ensures CountDivisibleInRange(a, b, x) >= 0
+{
+    if a == 0 then
+        b / x + 1
+    else
+        b / x - (a - 1) / x
+}
+
+// <vc-helpers>
+lemma DivisionMonotonicity(a: int, b: int, x: int)
+    requires a >= 0 && b >= a && x > 0
+    ensures b / x >= a / x
+{
+    // Dafny can prove this automatically
+}
+// </vc-helpers>
+
+// <vc-spec>
+method CountDivisible(a: int, b: int, x: int) returns (count: int)
+    requires ValidInput(a, b, x)
+    ensures count == CountDivisibleInRange(a, b, x)
+    ensures count >= 0
+// </vc-spec>
+// <vc-code>
+{
+    if a == 0 {
+        count := b / x + 1;
+    } else {
+        DivisionMonotonicity(a - 1, b, x);
+        count := b / x - (a - 1) / x;
+    }
+}
+// </vc-code>
+

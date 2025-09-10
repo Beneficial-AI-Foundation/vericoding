@@ -1,0 +1,218 @@
+predicate contains_valid_input_format(input: string)
+{
+    exists n: int :: 1 <= n <= 100 && n % 2 == 1 && 
+        input_has_correct_structure_for_n(input, n) &&
+        input_contains_exactly_four_pieces_of_size_n(input, n) &&
+        all_pieces_contain_only_binary_chars(input, n)
+}
+
+predicate input_has_correct_structure_for_n(input: string, n: int)
+    requires 1 <= n <= 100 && n % 2 == 1
+{
+    var lines := split_by_newline(input);
+    |lines| >= 4*n + 4 &&
+    is_valid_integer_string(lines[0]) &&
+    string_to_int(lines[0]) == n &&
+    (|lines| > n+1 ==> lines[n+1] == "") && 
+    (|lines| > 2*n+2 ==> lines[2*n+2] == "") && 
+    (|lines| > 3*n+3 ==> lines[3*n+3] == "")
+}
+
+predicate input_contains_exactly_four_pieces_of_size_n(input: string, n: int)
+    requires 1 <= n <= 100 && n % 2 == 1
+{
+    var lines := split_by_newline(input);
+    |lines| >= 4*n + 4 &&
+    (forall i | 1 <= i <= n && i < |lines| :: |lines[i]| == n) &&
+    (forall i | n+2 <= i <= 2*n+1 && i < |lines| :: |lines[i]| == n) &&
+    (forall i | 2*n+3 <= i <= 3*n+2 && i < |lines| :: |lines[i]| == n) &&
+    (forall i | 3*n+4 <= i <= 4*n+3 && i < |lines| :: |lines[i]| == n)
+}
+
+predicate all_pieces_contain_only_binary_chars(input: string, n: int)
+    requires 1 <= n <= 100 && n % 2 == 1
+{
+    var lines := split_by_newline(input);
+    |lines| >= 4*n + 4 &&
+    (forall i | 1 <= i <= n && i < |lines| :: 
+        forall j | 0 <= j < |lines[i]| :: lines[i][j] == '0' || lines[i][j] == '1') &&
+    (forall i | n+2 <= i <= 2*n+1 && i < |lines| :: 
+        forall j | 0 <= j < |lines[i]| :: lines[i][j] == '0' || lines[i][j] == '1') &&
+    (forall i | 2*n+3 <= i <= 3*n+2 && i < |lines| :: 
+        forall j | 0 <= j < |lines[i]| :: lines[i][j] == '0' || lines[i][j] == '1') &&
+    (forall i | 3*n+4 <= i <= 4*n+3 && i < |lines| :: 
+        forall j | 0 <= j < |lines[i]| :: lines[i][j] == '0' || lines[i][j] == '1')
+}
+
+predicate is_valid_integer_string(s: string)
+{
+    |s| > 0 && 
+    (s[0] != '0' || |s| == 1) &&
+    forall i | 0 <= i < |s| :: '0' <= s[i] <= '9'
+}
+
+predicate represents_minimum_recoloring_count(input: string, output: string)
+{
+    is_valid_integer_string(output) &&
+    contains_valid_input_format(input) &&
+    var n := extract_n_from_input(input);
+    var pieces := extract_pieces_from_input(input);
+    |pieces| == 4 &&
+    (forall piece | piece in pieces :: 
+        |piece| == n && 
+        (forall row | row in piece :: 
+            |row| == n &&
+            (forall i | 0 <= i < |row| :: row[i] == '0' || row[i] == '1'))) &&
+    string_to_int(output) == minimum_recoloring_for_pieces(pieces, n)
+}
+
+function extract_n_from_input(input: string): int
+    requires contains_valid_input_format(input)
+    ensures 1 <= extract_n_from_input(input) <= 100
+    ensures extract_n_from_input(input) % 2 == 1
+{
+    var lines := split_by_newline(input);
+    if |lines| > 0 && is_valid_integer_string(lines[0]) then
+        string_to_int(lines[0])
+    else
+        1
+}
+
+function extract_pieces_from_input(input: string): seq<seq<string>>
+    requires contains_valid_input_format(input)
+    ensures |extract_pieces_from_input(input)| == 4
+{
+    var lines := split_by_newline(input);
+    var n := extract_n_from_input(input);
+    [
+        lines[1..n+1],
+        lines[n+2..2*n+2], 
+        lines[2*n+3..3*n+3],
+        lines[3*n+4..4*n+4]
+    ]
+}
+
+function minimum_recoloring_for_pieces(pieces: seq<seq<string>>, n: int): int
+    requires |pieces| == 4
+    requires n >= 1 && n % 2 == 1
+    requires forall piece | piece in pieces :: 
+             |piece| == n && 
+             (forall row | row in piece :: 
+                 |row| == n &&
+                 (forall i | 0 <= i < |row| :: row[i] == '0' || row[i] == '1'))
+    ensures 0 <= minimum_recoloring_for_pieces(pieces, n) <= 2*n*n
+{
+    0
+}
+
+// <vc-helpers>
+function split_by_newline(s: string): seq<string>
+{
+    if |s| == 0 then []
+    else split_by_newline_helper(s, 0, 0, [])
+}
+
+function split_by_newline_helper(s: string, start: int, i: int, acc: seq<string>): seq<string>
+    requires 0 <= start <= i <= |s|
+    decreases |s| - i
+{
+    if i == |s| then
+        acc + [s[start..i]]
+    else if s[i] == '\n' then
+        split_by_newline_helper(s, i+1, i+1, acc + [s[start..i]])
+    else
+        split_by_newline_helper(s, start, i+1, acc)
+}
+
+function string_to_int(s: string): int
+    requires is_valid_integer_string(s)
+{
+    if |s| == 1 then
+        (s[0] - '0') as int
+    else
+        string_to_int_helper(s, 0, 0)
+}
+
+function string_to_int_helper(s: string, i: int, acc: int): int
+    requires is_valid_integer_string(s)
+    requires 0 <= i <= |s|
+    decreases |s| - i
+{
+    if i == |s| then
+        acc
+    else
+        string_to_int_helper(s, i+1, acc * 10 + (s[i] - '0') as int)
+}
+
+lemma string_to_int_inverse_lemma(n: int, acc: string)
+    requires n >= 0
+    requires |acc| > 0 ==> forall i | 0 <= i < |acc| :: '0' <= acc[i] <= '9'
+    requires |acc| > 0 ==> acc[0] != '0'
+    ensures n == 0 && |acc| == 0 ==> string_to_int(int_to_string_helper(n, acc)) == n
+    ensures n == 0 && |acc| > 0 ==> is_valid_integer_string(int_to_string_helper(n, acc))
+    ensures n > 0 ==> is_valid_integer_string(int_to_string_helper(n, acc))
+    ensures is_valid_integer_string(int_to_string_helper(n, acc)) ==> 
+            string_to_int(int_to_string_helper(n, acc)) == n + string_to_int_acc(acc)
+    decreases n
+
+function string_to_int_acc(acc: string): int
+    requires |acc| == 0 || (forall i | 0 <= i < |acc| :: '0' <= acc[i] <= '9')
+{
+    if |acc| == 0 then 0
+    else if |acc| == 1 then (acc[0] - '0') as int
+    else string_to_int_helper(acc, 0, 0)
+}
+
+function int_to_string(n: int): string
+    requires n >= 0
+    ensures is_valid_integer_string(int_to_string(n))
+    ensures string_to_int(int_to_string(n)) == n
+{
+    if n == 0 then "0"
+    else int_to_string_helper(n, "")
+}
+
+function int_to_string_helper(n: int, acc: string): string
+    requires n >= 0
+    requires |acc| > 0 ==> forall i | 0 <= i < |acc| :: '0' <= acc[i] <= '9'
+    requires |acc| > 0 ==> acc[0] != '0'
+    ensures n == 0 && |acc| == 0 ==> int_to_string_helper(n, acc) == "0"
+    ensures n == 0 && |acc| > 0 ==> int_to_string_helper(n, acc) == acc
+    ensures n > 0 || |acc| > 0 ==> |int_to_string_helper(n, acc)| > 0
+    ensures n > 0 || |acc| > 0 ==> forall i | 0 <= i < |int_to_string_helper(n, acc)| :: '0' <= int_to_string_helper(n, acc)[i] <= '9'
+    ensures n == 0 && |acc| > 0 ==> int_to_string_helper(n, acc)[0] != '0' || |int_to_string_helper(n, acc)| == 1
+    ensures n > 0 ==> int_to_string_helper(n, acc)[0] != '0'
+    ensures n > 0 ==> is_valid_integer_string(int_to_string_helper(n, acc))
+    ensures n == 0 && |acc| > 0 ==> is_valid_integer_string(int_to_string_helper(n, acc))
+    decreases n
+{
+    if n == 0 then
+        if |acc| == 0 then "0" else acc
+    else
+        var digit := (n % 10) as char + '0';
+        var new_acc := [digit] + acc;
+        assert n / 10 == 0 ==> n < 10 && n > 0 ==> digit != '0';
+        assert n / 10 > 0 || (n / 10 == 0 && |new_acc| > 0 && new_acc[0] == digit && digit != '0');
+        int_to_string_helper(n / 10, new_acc)
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(stdin_input: string) returns (result: string)
+    requires |stdin_input| > 0
+    requires contains_valid_input_format(stdin_input)
+    ensures is_valid_integer_string(result)
+    ensures result != ""
+    ensures represents_minimum_recoloring_count(stdin_input, result)
+    ensures var n := extract_n_from_input(stdin_input);
+            string_to_int(result) >= 0 && string_to_int(result) <= 2*n*n
+// </vc-spec>
+// <vc-code>
+{
+    var n := extract_n_from_input(stdin_input);
+    var pieces := extract_pieces_from_input(stdin_input);
+    var min_recoloring := minimum_recoloring_for_pieces(pieces, n);
+    result := int_to_string(min_recoloring);
+}
+// </vc-code>
+

@@ -1,0 +1,35 @@
+function abs(x: int): int
+  ensures abs(x) >= 0
+  ensures abs(x) == x || abs(x) == -x
+  ensures x >= 0 ==> abs(x) == x
+  ensures x < 0 ==> abs(x) == -x
+{
+  if x >= 0 then x else -x
+}
+function sum_abs(s: seq<int>) : int
+  ensures sum_abs(s) >= 0
+{
+  if |s| == 0 then 0 else abs(s[0]) + sum_abs(s[1..])
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-description>
+/*
+function_signature: def prod_signs(arr: List[int]) -> Optional[int]
+You are given an array arr of integers and you need to return sum of magnitudes of integers multiplied by product of all signs of each number in the array, represented by 1, -1 or 0. Note: return None for empty arr.
+*/
+// </vc-description>
+
+// <vc-spec>
+method prod_signs(numbers: seq<int>) returns (s: int)
+  ensures abs(s) == sum_abs(numbers)
+  ensures |set i | 0 <= i < |numbers| && numbers[i] < 0| % 2 == 1 ==> s <= 0
+  ensures |set i | 0 <= i < |numbers| && numbers[i] < 0| % 2 == 0 ==> s >= 0
+// </vc-spec>
+// <vc-code>
+{
+  assume false;
+}
+// </vc-code>

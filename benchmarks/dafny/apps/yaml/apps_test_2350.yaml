@@ -1,0 +1,38 @@
+vc-description: |-
+  An infinite table is filled starting from cell (1,1) which contains integer 1.
+  Each cell (x,y) contains the sum of the cell above it (x-1,y) and the cell to its left (x,y-1).
+  For boundary cases: cell(1,y) = y and cell(x,1) = x.
+  Given start coordinates (x₁, y₁) and end coordinates (x₂, y₂), find the number of
+  different possible sums when traversing from start to end cell, moving only down or right.
+
+vc-preamble: |-
+  predicate ValidInput(input: string)
+  {
+      |input| > 0
+  }
+  
+  predicate ValidTestCase(x1: int, y1: int, x2: int, y2: int)
+  {
+      1 <= x1 <= x2 && 1 <= y1 <= y2
+  }
+  
+  function CountDifferentSums(x1: int, y1: int, x2: int, y2: int): int
+      requires ValidTestCase(x1, y1, x2, y2)
+  {
+      (x2 - x1) * (y2 - y1) + 1
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(input: string) returns (output: string)
+      requires ValidInput(input)
+      ensures |output| >= 0
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

@@ -1,0 +1,25 @@
+/*
+Decrypt a string that was encrypted using the Right-Left cipher.
+The Right-Left cipher encrypts by starting with the first character,
+then alternating between appending to the right (even positions) and
+prepending to the left (odd positions) for subsequent characters.
+*/
+
+predicate ValidInput(t: string)
+{
+    |t| >= 1
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method solve(t: string) returns (result: string)
+    requires ValidInput(t)
+    ensures |result| == |t|
+// </vc-spec>
+// <vc-code>
+{
+  assume {:axiom} false;
+}
+// </vc-code>
