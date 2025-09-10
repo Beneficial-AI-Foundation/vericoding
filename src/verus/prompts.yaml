@@ -1,66 +1,57 @@
 generate_code: |
-  The task is to generate a Verus (Rust with verification) file that is verified and satisfies the constraints described in the specifications.
+  The task is to generate implementations for `<vc-code>` sections in a Verus file.
   
-  INPUT: a Verus file containing one or more function definitions (including spec functions, helper functions, and main), possibly with empty bodies or bodies containing TODO comments (e.g., `return 0;  // TODO: Remove this line and implement the function body`).
-  - The file may include:
-    - Standard Rust/Verus imports (e.g., `use vstd::prelude::*;`)
-    - A `verus! {{ ... }}` block wrapping the code
-    - Function definitions with `requires` and `ensures` clauses
-    - `spec fn`, `fn`, and possibly proof blocks
-    - Attributes such as `#[verifier::loop_isolation(false)]`
-    - Helper/spec functions that may be used in ensures/requirements
-    - A `fn main() {{}}` function (which should be preserved)
-  - Function bodies may contain `unimplemented!()`, `return ...; // TODO: ...`, or be empty.
-
-  OUTPUT: a verified Verus file of the same structure, but with all function bodies implemented to satisfy their `requires` and `ensures` clauses.
-  - All function signatures, requirements, and ensures must be preserved.
-  - Implementations must not use `assume` statements.
-  - Do not add trivial or unnecessary annotations.
-  - Output valid Verus/Rust code, wrapped in a `verus! {{ ... }}` block if not already present.
-  - Preserve all imports, structure, and helper/spec functions.
-  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses).
-  - Replace `unimplemented!()` or TODO comments with actual implementation.
+  INPUT: a Verus file containing `<vc-code>` tags around placeholder implementations that need to be filled in.
+  
+  OUTPUT: Return a JSON array with one replacement for each `<vc-code>` section in the file, in order from top to bottom:
+  ```json
+  ["{{\n    let mut low = 0;\n    // implementation here\n}}", "{{\n    // second implementation\n}}"]
+  ```
+  
+  CRITICAL RULES:
+  - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
+  - Each replacement should be the exact code that will replace everything between the `<vc-code>` tags
+  - Include opening/closing braces if they were in the original `<vc-code>` content
+  - Do not use `assume` statements or `unimplemented!()` in replacements
+  - Use valid Verus/Rust syntax for all implementations
+  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
   - Use Verus types like `nat`, `int`, `Vec<T>`, `Seq<T>`, etc.
-  - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`).
-  - Use proof blocks with `proof {{ ... }}` when necessary.
-  - Preserve the exact structure: `fn main() {{}}` should remain if present.
-
-  VERUS SPECIFICATION WITH EMPTY OR TODO METHOD/FUNCTION BODIES:
+  - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`)
+  - Use proof blocks with `proof {{ ... }}` when necessary
+  - Return ONLY a valid JSON array, no explanations or markdown
+  
+  VERUS FILE WITH <vc-code> SECTIONS:
   {code}
 
 fix_verification: |
-  INPUT: a Verus file containing one or more function definitions (including spec functions, helper functions, and main), possibly with incomplete or incorrect implementations that do not verify.
-  - The file may include:
-    - Standard Rust/Verus imports (e.g., `use vstd::prelude::*;`)
-    - A `verus! {{ ... }}` block wrapping the code
-    - Function definitions with `requires` and `ensures` clauses
-    - `spec fn`, `fn`, and possibly proof blocks
-    - Attributes such as `#[verifier::loop_isolation(false)]`
-    - Helper/spec functions that may be used in ensures/requirements
-    - A `fn main() {{}}` function (which should be preserved)
-  - Function bodies may contain incomplete code, `unimplemented!()`, or TODO comments.
-
-  OUTPUT: a verified Verus file of the same structure, but with all function bodies implemented or fixed so that they verify.
-  - You may add proof annotations, helper functions, predicates, and spec functions as needed.
-  - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues.
-  - For compilation errors: focus on syntax, missing brackets, type mismatches, undefined identifiers, and termination issues.
-  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses).
-  - Use proof blocks with `proof {{ ... }}` for complex proofs.
-  - Use `assert()` statements within proof blocks for intermediate steps.
-  - Use Verus types and operators (`nat`, `int`, `Vec<T>`, `Seq<T>`, `@`, etc.).
-  - Preserve all imports, structure, and helper/spec functions.
-  - Maintain the `verus! {{ ... }}` block structure.
-  - Use `@` for sequence/vector access (e.g., `v@[i]` for indexing).
-  - Do not use `assume` statements in implementations.
-  - Do not add trivial annotations (e.g., `requires true`, `invariant true`, `ensures true`).
-  - Output valid Verus/Rust code.
-  - Do not change the overall file structure (imports, main function, verus block).
-
-  COMMENT FORMAT: add this comment right before any code or annotation block in a function body that you add or modify
-  /* code modified by LLM (iteration {{iteration}}): [brief description] */
+  The task is to fix implementations in `<vc-code>` sections that failed verification.
   
-  ERROR DETAILS from Verus verification of the given code:
+  INPUT: a Verus file with `<vc-code>` sections that contain implementations with verification errors.
+  
+  OUTPUT: Return a JSON array with one fixed replacement for each `<vc-code>` section in the file, in order from top to bottom:
+  ```json
+  ["{{\n    let mut low = 0;\n    // fixed implementation here\n}}", "{{\n    // second fixed implementation\n}}"]
+  ```
+  
+  CRITICAL RULES:
+  - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
+  - Each replacement should be the exact fixed code that will replace everything between the `<vc-code>` tags
+  - Include opening/closing braces if they were in the original `<vc-code>` content
+  - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues
+  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
+  - Use proof blocks with `proof {{ ... }}` for complex proofs
+  - Use `assert()` statements within proof blocks for intermediate steps
+  - Use Verus types and operators (`nat`, `int`, `Vec<T>`, `Seq<T>`, `@`, etc.)
+  - Do not use `assume` statements or `unimplemented!()`
+  - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`)
+  - Add comment `/* code modified by LLM (iteration {iteration}): [brief description] */` before modified code
+  - Return ONLY a valid JSON array, no explanations or markdown
+  
+  ERROR DETAILS from Verus verification:
   {errorDetails}
 
-  Code Below:
+  ORIGINAL FILE (for context):
+  {original_code}
+
+  CURRENT ITERATION FILE (with failed implementations to learn from):
   {code}
