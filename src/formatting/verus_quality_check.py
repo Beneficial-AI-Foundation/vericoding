@@ -6,17 +6,17 @@ in all YAML files in the apps_train directory.
 
 import os
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List, Tuple
 import sys
 
 # Add src directory to path to import convert_from_yaml
 sys.path.append(str(Path(__file__).parent.parent))
 from convert_from_yaml import spec_to_yaml
 
-def validate_spec_keys(spec: Dict[str, Any], required_keys: list, file_path: Path) -> None:
+def validate_spec_keys(spec: Dict[str, Any], required_keys: list) -> None:
     """Validate that spec has exactly the same keys as required keys."""
     if spec is None:
-        print(f"Warning: {file_path} is empty or invalid YAML")
+        print("Warning: file is empty or invalid YAML")
         return
 
     spec_keys = set(spec.keys())
@@ -26,7 +26,7 @@ def validate_spec_keys(spec: Dict[str, Any], required_keys: list, file_path: Pat
         missing_keys = required_keys_set - spec_keys
         extra_keys = spec_keys - required_keys_set
         
-        error_msg = f"Key mismatch in {file_path}:"
+        error_msg = "Key mismatch:"
         if missing_keys:
             error_msg += f" Missing keys: {sorted(missing_keys)}"
         if extra_keys:
@@ -34,7 +34,7 @@ def validate_spec_keys(spec: Dict[str, Any], required_keys: list, file_path: Pat
         
         raise ValueError(error_msg)
 
-def check_vc_description(content: str, file_path: Path) -> str:
+def check_vc_description(content: str) -> str:
     """Check vc-description for malformed comment blocks and remove empty lines at beginning/end.
     
     Raises an error if:
@@ -62,9 +62,9 @@ def check_vc_description(content: str, file_path: Path) -> str:
         stripped_line = line.lstrip()
         if stripped_line.startswith('/*'):
             if i > 0:
-                raise ValueError(f"Line {i+1} in {file_path} starts with '/*' but is not the first line of vc-description")
+                raise ValueError(f"Line {i+1} starts with '/*' but is not the first line of vc-description")
             elif not line.startswith('/*'):
-                raise ValueError(f"Line {i+1} in {file_path} starts with '/*' but there is an unexpected indent")
+                raise ValueError(f"Line {i+1} starts with '/*' but there is an unexpected indent")
             else:
                 lines[i] = line[2:].lstrip()
                 comment_start = True
@@ -75,13 +75,13 @@ def check_vc_description(content: str, file_path: Path) -> str:
         stripped_line = line.rstrip()
         if stripped_line.endswith('*/'):
             if i < len(lines) - 1:
-                raise ValueError(f"Line {i+1} in {file_path} ends with '*/' but is not the last line of vc-description")
+                raise ValueError(f"Line {i+1} ends with '*/' but is not the last line of vc-description")
             else:
                 lines[i] = stripped_line[:-2].rstrip()
                 comment_end = True
     
     if (not comment_start and comment_end) or (comment_start and not comment_end):
-        raise ValueError(f"vc-description in {file_path} has a malformed comment block")
+        raise ValueError("vc-description has a malformed comment block")
     
     return '\n'.join(lines)
 
@@ -154,6 +154,169 @@ def normalize_section_content(content: str) -> str:
     # Join and apply rstrip
     return '\n'.join(normalized_lines).rstrip()
 
+def extract_comments_from_content(content: str, multiline_delimiters: List[Tuple[str, str]], monoline_delimiters: List[str]) -> Tuple[str, List[str]]:
+    """
+    Extract comments from content and return the content without comments plus the extracted comments.
+    
+    Args:
+        content: The input content to process
+        multiline_delimiters: List of (start_tag, end_tag) pairs for multiline comments
+        monoline_delimiters: List of start_tags for single line comments
+    Returns:
+        Tuple of (content_without_comments, list_of_extracted_comments)
+    """
+    if not content:
+        return "", []
+    
+    lines = content.split('\n')
+    result_lines = []
+    extracted_comments = []
+    
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        stripped_line = line.lstrip()
+        
+        # Check for multiline comment start
+        multiline_comment_found = False
+        for start_tag, end_tag in multiline_delimiters:
+            if start_tag in line:
+                # Found start of multiline comment (can be in middle of line)
+                start_pos = line.find(start_tag)
+                
+                # Add the part before the start_tag to result_lines
+                if start_pos > 0:
+                    result_lines.append(line[:start_pos].rstrip())
+                
+                # Start collecting comment lines with the part including and after start_tag
+                current_line = line[start_pos:]
+                comment_lines = []
+                first_line = True
+                
+                # Collect all lines until we find the end tag
+                while i < len(lines):
+                    current_stripped = current_line.rstrip()
+                    if not first_line and start_tag in current_stripped:
+                        raise ValueError(f"Nested multiline comment. Found start tag '{start_tag}' in line {i+1}")
+
+                    comment_lines.append(current_line)             
+                    i += 1
+                    first_line = False
+
+                    if end_tag in current_stripped:
+                        if current_stripped.endswith(end_tag):
+                            # Found end of multiline comment
+                            break
+                        else:
+                            raise ValueError(f"Malformed multiline comment. Found end tag '{end_tag}' in line {i+1} but it is not at the end of the line")
+
+                    current_line = lines[i]
+
+                else:
+                    # Reached end of content without finding end tag
+                    raise ValueError(f"Malformed multiline comment. Reached end of content without finding end tag")
+                
+                # Join the comment lines and add to extracted comments
+                comment_content = '\n'.join(comment_lines).strip()
+                if comment_content:
+                    extracted_comments.append(comment_content)
+                
+                multiline_comment_found = True
+                break
+        
+        if not multiline_comment_found:
+            # Check for single line comment
+            monoline_comment_found = False
+            for start_tag in monoline_delimiters:
+                if start_tag in line:
+                    # Found single line comment
+                    start_pos = line.find(start_tag)
+                    if start_pos > 0:
+                        result_lines.append(line[:start_pos].rstrip())
+                    extracted_comments.append(line[start_pos:])
+                    monoline_comment_found = True
+                    break
+            
+            if not monoline_comment_found:
+                # Not a comment line, keep it
+                result_lines.append(line)
+        
+        i += 1
+    
+    return '\n'.join(result_lines), extracted_comments
+
+def remove_unnecessary_tags(content: str, unnecessary_tags: List[str]) -> str:
+    """
+    Remove unnecessary tags from content.
+    
+    Args:
+        content: The input content to process
+        unnecessary_tags: List of tag strings to remove (e.g., ['// post-conditions-start', '// post-conditions-end'])
+        
+    Returns:
+        The content with unnecessary tags removed
+    """
+    if not content or not unnecessary_tags:
+        return content
+    
+    lines = content.split('\n')
+    result_lines = []
+    
+    for line in lines:
+        stripped_line = line.strip()
+        
+        # Check if this line contains any of the unnecessary tags
+        should_remove = False
+        for tag in unnecessary_tags:
+            if tag in line:
+                if tag == stripped_line:
+                    should_remove = True
+                    break
+                else:
+                    raise ValueError(f"Unnecessary tag '{tag}' found but it is not the whole line")
+        
+        if not should_remove:
+            if stripped_line.startswith("//") and (stripped_line.endswith("start") or stripped_line.endswith("end")):
+                raise ValueError(f"New unrecognized tag '{stripped_line}' found")
+            else:
+                result_lines.append(line)
+            
+    return '\n'.join(result_lines)
+
+def move_comments_to_description(spec: Dict[str, Any], multiline_delimiters: List[Tuple[str, str]] = None, monoline_delimiters: List[str] = None) -> None:
+    """
+    Move comments from all fields to the vc-description field.
+    
+    Args:
+        spec: The YAML spec dictionary to modify
+        multiline_delimiters: List of (start_tag, end_tag) pairs for multiline comments
+        monoline_delimiters: List of start_tags for single line comments
+    """
+    if multiline_delimiters is None:
+        multiline_delimiters = [('/*', '*/')]
+    if monoline_delimiters is None:
+        monoline_delimiters = ['//']
+    
+    # Collect all comments from non-description fields
+    all_comments = []
+    
+    for key, value in spec.items():
+        if key != 'vc-description' and isinstance(value, str):
+            content_without_comments, extracted_comments = extract_comments_from_content(
+                value, multiline_delimiters, monoline_delimiters
+            )
+            spec[key] = content_without_comments
+            all_comments.extend(extracted_comments)
+    
+    # Append comments to vc-description
+    if all_comments: 
+        if 'vc-description' in spec and spec['vc-description']:
+            # Add empty line separator if description already has content
+            spec['vc-description'] = spec['vc-description'].rstrip() + '\n\n' + '\n\n'.join(all_comments)
+        else:
+            # Description is empty or doesn't exist, just add comments
+            spec['vc-description'] = '\n\n'.join(all_comments)
+
 def process_yaml_file(file_path: Path) -> None:
     """Process a single YAML file to remove 'import Imports.AllImports' lines and normalize sections."""
 
@@ -172,11 +335,11 @@ def process_yaml_file(file_path: Path) -> None:
             spec = yaml_loader.load(f)
 
         # # Check that spec has exactly the same keys as required keys
-        # validate_spec_keys(spec, required_keys, file_path)
+        # validate_spec_keys(spec, required_keys)
         
         # # Check vc-description for malformed comment blocks and clean up empty lines
         # if 'vc-description' in spec and isinstance(spec['vc-description'], str):
-        #     spec['vc-description'] = check_vc_description(spec['vc-description'], file_path)
+        #     spec['vc-description'] = check_vc_description(spec['vc-description'])
         # else:
         #     raise ValueError(f"vc-description not found in {file_path}")
         
@@ -191,19 +354,19 @@ def process_yaml_file(file_path: Path) -> None:
         #         value = check_for_tag(value, key, 'vc-code', '</vc-code>', '// </vc-code>')
         #         spec[key] = value
 
-        # remove HumanEval tags
-        for key, value in spec.items():
-            if isinstance(value, str):
-                value = check_for_tag(value, key, None, '= TASK =', '// ======= TASK =======')
-                value = check_for_tag(value, key, None, '= SPEC REQUIREMENTS =', '// ======= SPEC REQUIREMENTS =======')
-                value = check_for_tag(value, key, None, '= HELPERS =', '// ======= HELPERS =======')
-                value = check_for_tag(value, key, None, '= MAIN METHOD =', '// ======= MAIN METHOD =======')
-                spec[key] = value
+        # # remove HumanEval tags
+        # for key, value in spec.items():
+        #     if isinstance(value, str):
+        #         value = check_for_tag(value, key, None, '= TASK =', '// ======= TASK =======')
+        #         value = check_for_tag(value, key, None, '= SPEC REQUIREMENTS =', '// ======= SPEC REQUIREMENTS =======')
+        #         value = check_for_tag(value, key, None, '= HELPERS =', '// ======= HELPERS =======')
+        #         value = check_for_tag(value, key, None, '= MAIN METHOD =', '// ======= MAIN METHOD =======')
+        #         spec[key] = value
 
         # if spec['vc-helpers'].strip():
         #     raise ValueError(f"vc-helpers in {file_path} is not empty")
 
-        # Clear vc-helpers and vc-code
+        # # Clear vc-helpers and vc-code
         # spec['vc-helpers'] = ""
         # spec['vc-code'] = '{\n  assume {:axiom} false;\n}\n'
 
@@ -227,7 +390,35 @@ def process_yaml_file(file_path: Path) -> None:
         #     if vc_code_lines[2].strip() != "}":
         #         raise ValueError(f"vc-code in {file_path} third line must be '}}', got: '{vc_code_lines[2]}'")
 
-        # # Normalize all sections
+        # # Move comments from other fields to vc-description
+        # move_comments_to_description(spec)
+        
+        # # Remove unnecessary tags from vc-description
+        # if 'vc-description' in spec and isinstance(spec['vc-description'], str):
+        #     unnecessary_tags = [
+        #         '// post-conditions-start',
+        #         '// post-conditions-end',
+        #         '// pre-conditions-start', 
+        #         '// pre-conditions-end',
+        #         '// post-condition-start',
+        #         '// post-condition-end',
+        #         '// pre-condition-start', 
+        #         '// pre-condition-end',
+        #         '// impl-start',
+        #         '// impl-end',
+        #         '// pure-end',
+        #         '// invariants-start',
+        #         '// invariants-end'
+        #     ]
+        #     spec['vc-description'] = remove_unnecessary_tags(spec['vc-description'], unnecessary_tags)
+        
+        if spec['vc-preamble'] is None:
+            if "{:axiom}" in spec['vc-preamble']:
+                raise ValueError("axiom found in vc-preamble")
+        if spec['vc-postamble'].strip():
+            raise ValueError("vc-postamble is not empty")
+        
+        # Normalize all sections
         for key, value in spec.items():
             if isinstance(value, str):
                 spec[key] = normalize_section_content(value)
@@ -272,7 +463,7 @@ def main():
                 
                 # Process each file
                 count = 0
-                for yaml_file in yaml_files:
+                for yaml_file in sorted(yaml_files):
                     count += 1
                     if count % 100 == 0:
                         print(f"  Processing {count} of {len(yaml_files)}")
