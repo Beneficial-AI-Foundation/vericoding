@@ -23,6 +23,12 @@ vc-description: |-
     - mantissa[i] has same sign as x[i] (sign preservation)
   - If x[i] is infinity or NaN, then mantissa[i] = x[i] and exponent[i] = 0
   - Result vectors have same length as input (length preservation)
+  
+  /* Zero case: if input is zero, mantissa is zero and exponent is zero */
+  
+  /* Note: More complex properties like reconstruction (x = mantissa * 2^exponent),
+                 normalization bounds, and sign preservation would require additional
+                 floating-point operations that are not readily available in Verus specs */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -37,11 +43,9 @@ vc-spec: |-
           result.0.len() == x.len(),
           result.1.len() == x.len(),
           forall|i: int| 0 <= i < x.len() ==> {
-              /* Zero case: if input is zero, mantissa is zero and exponent is zero */
+  
               x[i] == 0.0f32 ==> result.0[i] == 0.0f32 && result.1[i] == 0
-              /* Note: More complex properties like reconstruction (x = mantissa * 2^exponent),
-                 normalization bounds, and sign preservation would require additional
-                 floating-point operations that are not readily available in Verus specs */
+  
           }
 
 vc-code: |-

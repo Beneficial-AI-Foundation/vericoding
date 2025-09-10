@@ -8,49 +8,81 @@ vc-description: |-
   Create a timedelta64 object from a numeric value and time unit
   
   Specification: timedelta64 creates a time duration object with given value and unit
+  
+  /* Time unit codes for timedelta64 */
+  
+  /* Year unit ('Y') */
+  
+  /* Month unit ('M') */
+  
+  /* Week unit ('W') */
+  
+  /* Day unit ('D') */
+  
+  /* Hour unit ('h') */
+  
+  /* Minute unit ('m') */
+  
+  /* Second unit ('s') */
+  
+  /* Millisecond unit ('ms') */
+  
+  /* Microsecond unit ('us') */
+  
+  /* Nanosecond unit ('ns') */
+  
+  /* Picosecond unit ('ps') */
+  
+  /* Femtosecond unit ('fs') */
+  
+  /* Attosecond unit ('as') */
+  
+  /* Represents a time duration value */
+  
+  /* The numeric value of the time duration */
+  
+  /* The time unit for the duration */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Time unit codes for timedelta64 */
   #[derive(PartialEq, Eq, Structural)]
   pub enum TimeUnit {
-      /* Year unit ('Y') */
+  
       Year,
-      /* Month unit ('M') */
+  
       Month,
-      /* Week unit ('W') */
+  
       Week,
-      /* Day unit ('D') */
+  
       Day,
-      /* Hour unit ('h') */
+  
       Hour,
-      /* Minute unit ('m') */
+  
       Minute,
-      /* Second unit ('s') */
+  
       Second,
-      /* Millisecond unit ('ms') */
+  
       Millisecond,
-      /* Microsecond unit ('us') */
+  
       Microsecond,
-      /* Nanosecond unit ('ns') */
+  
       Nanosecond,
-      /* Picosecond unit ('ps') */
+  
       Picosecond,
-      /* Femtosecond unit ('fs') */
+  
       Femtosecond,
-      /* Attosecond unit ('as') */
+  
       Attosecond,
   }
   
-  /* Represents a time duration value */
   #[derive(PartialEq, Eq, Structural)]
   pub struct TimeDelta64 {
-      /* The numeric value of the time duration */
+  
       pub value: i64,
-      /* The time unit for the duration */
+  
       pub unit: TimeUnit,
   }
 

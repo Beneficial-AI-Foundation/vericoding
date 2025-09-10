@@ -12,6 +12,14 @@ vc-description: |-
   - lcm(a, b) ≥ 0 (non-negativity)
   - |a| divides lcm(a, b) and |b| divides lcm(a, b) (divisibility)
   - lcm(a, b) is minimal among all positive integers divisible by both |a| and |b|
+  
+  /* Basic correctness: each element is the LCM of corresponding elements */
+  
+  /* Non-negativity: LCM is always non-negative */
+  
+  /* Zero property: LCM with zero is zero */
+  
+  /* Special case: when both are non-zero, LCM is positive */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -29,14 +37,14 @@ vc-spec: |-
       requires x1.len() == x2.len(),
       ensures 
           result.len() == x1.len(),
-          /* Basic correctness: each element is the LCM of corresponding elements */
+  
           forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
-          /* Non-negativity: LCM is always non-negative */
+  
           forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
-          /* Zero property: LCM with zero is zero */
+  
           forall|i: int| 0 <= i < result.len() ==> 
               (x1[i] == 0 || x2[i] == 0) ==> result[i] == 0,
-          /* Special case: when both are non-zero, LCM is positive */
+  
           forall|i: int| 0 <= i < result.len() ==> 
               (x1[i] != 0 && x2[i] != 0) ==> result[i] > 0
 

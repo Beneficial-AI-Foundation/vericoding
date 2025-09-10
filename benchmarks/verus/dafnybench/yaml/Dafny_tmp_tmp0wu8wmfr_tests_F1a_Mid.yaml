@@ -1,4 +1,7 @@
 vc-description: |-
+  // | ... | ??? | ... |
+  
+  //        p m   q
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -9,8 +12,7 @@ vc-helpers: |-
 
 vc-spec: |-
   fn mid(p: int, q: int) -> (m: int)
-      // | ... | ??? | ... |
-      //        p m   q
+  
       requires 
           p <= q,
       ensures 
@@ -25,8 +27,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

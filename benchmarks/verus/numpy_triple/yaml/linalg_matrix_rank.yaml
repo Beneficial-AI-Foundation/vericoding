@@ -26,6 +26,12 @@ vc-description: |-
   
   The threshold behavior ensures numerical stability but is not explicitly
   specified here for simplicity.
+  
+  /* Zero matrix has rank 0 */
+  
+  /* Identity matrix has full rank */
+  
+  /* For 1x1 matrices */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -46,11 +52,11 @@ vc-spec: |-
           forall|i: int| 0 <= i < A.len() ==> #[trigger] A[i].len() == A[0].len(),
       ensures
           result <= min_usize(A.len(), A[0].len()),
-          /* Zero matrix has rank 0 */
+  
           (forall|i: int, j: int| 0 <= i < A.len() && 0 <= j < A[0].len() ==> #[trigger] A[i][j] == 0.0f32) ==> result == 0,
-          /* Identity matrix has full rank */
+  
           (A.len() == A[0].len() && forall|i: int, j: int| 0 <= i < A.len() && 0 <= j < A[0].len() ==> #[trigger] A[i][j] == (if i == j { 1.0f32 } else { 0.0f32 })) ==> result == A.len(),
-          /* For 1x1 matrices */
+  
           (A.len() == 1 && A[0].len() == 1) ==> ((result == 1) <==> (A[0][0] != 0.0f32)),
 
 vc-code: |-

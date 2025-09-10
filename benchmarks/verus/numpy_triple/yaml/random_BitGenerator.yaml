@@ -16,18 +16,23 @@ vc-description: |-
   Precondition: True (any seed value is valid, including None)
   Postcondition: The returned state has the provided seed (or maintains None if no seed given)
               and has a valid internal state representation.
+  
+  /* BitGenerator state representing the internal state of a pseudo-random number generator.
+     This is an abstract representation that can be seeded and used to generate random values. */
+  
+  /* The seed value used to initialize the generator, or None if no seed was provided */
+  
+  /* The internal state of the generator used for random number generation */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* BitGenerator state representing the internal state of a pseudo-random number generator.
-     This is an abstract representation that can be seeded and used to generate random values. */
   pub struct BitGeneratorState {
-      /* The seed value used to initialize the generator, or None if no seed was provided */
+  
       pub seed: Option<u64>,
-      /* The internal state of the generator used for random number generation */
+  
       pub internal_state: u64,
   }
 

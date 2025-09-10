@@ -18,13 +18,14 @@ vc-description: |-
       3. Result preserves shape: output vector has same length as input
       4. Finite values: All normal, subnormal, and zero values return false
       5. Specific infinities: Both positive and negative infinity are correctly identified
+  
+  /* Ghost specification function to represent IEEE 754 infinity test */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Ghost specification function to represent IEEE 754 infinity test */
   spec fn is_infinite(x: f64) -> bool;
 
 vc-helpers: |-

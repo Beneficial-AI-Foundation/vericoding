@@ -17,8 +17,6 @@ vc-preamble: |-
           spec_fib((n - 1) as nat) + spec_fib((n - 2) as nat)
       }
   }
-  // pure-end
-  // pure-end
   
   spec fn inner_expr_fib(n: u32, ret: Option<u32>) -> (result:bool) {
       match ret {
@@ -26,16 +24,14 @@ vc-preamble: |-
           Some(f) => f == spec_fib(n as nat),
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn fib(n: u32) -> (ret: Option<u32>)
-      // post-conditions-start
+  
       ensures
           inner_expr_fib(n, ret),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -44,6 +40,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
+  }
   fn main() {}
 

@@ -4,6 +4,10 @@ vc-description: |-
   
   Specification: reduce applies a binary operation repeatedly to reduce an array to a single value.
   The operation is applied left-associatively: ((a[0] op a[1]) op a[2]) op ... op a[n-1]
+  
+  /* Represents left-associative folding result at position index */
+  
+  /* Placeholder - actual implementation would apply operation */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -19,8 +23,8 @@ vc-spec: |-
       if index == 0 {
           arr[0 as int]
       } else {
-          /* Represents left-associative folding result at position index */
-          arr[index as int] /* Placeholder - actual implementation would apply operation */
+  
+          arr[index as int]
       }
   }
   

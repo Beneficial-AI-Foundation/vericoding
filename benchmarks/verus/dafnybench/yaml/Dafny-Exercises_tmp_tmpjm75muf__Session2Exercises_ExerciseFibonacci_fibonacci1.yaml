@@ -1,4 +1,5 @@
 vc-description: |-
+  // practical bound to prevent overflow
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -17,7 +18,7 @@ vc-helpers: |-
 
 vc-spec: |-
   fn fibonacci1(n: u64) -> (f: u64)
-      requires n < 100, // practical bound to prevent overflow
+      requires n < 100,
       ensures f == fib(n as nat)
 
 vc-code: |-
@@ -27,7 +28,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

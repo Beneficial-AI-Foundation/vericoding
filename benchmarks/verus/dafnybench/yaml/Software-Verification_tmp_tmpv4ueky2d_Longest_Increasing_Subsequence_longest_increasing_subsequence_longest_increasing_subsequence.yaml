@@ -1,11 +1,13 @@
 vc-description: |-
+  // Function
+  
+  // TODO: modify the ensures clause so that max is indeed equal to the longest increasing subsequence
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // Function
   spec fn find_max(x: int, y: int) -> int {
       if x > y { x } else { y }
   }
@@ -17,7 +19,7 @@ vc-spec: |-
       requires 
           1 <= nums.len() <= 2500,
           forall|i: int| 0 <= i < nums.len() ==> #[trigger] nums[i] >= -10000 && #[trigger] nums[i] <= 10000,
-      // TODO: modify the ensures clause so that max is indeed equal to the longest increasing subsequence
+  
       ensures 
           max >= 1,
 
@@ -28,8 +30,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

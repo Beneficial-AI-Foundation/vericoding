@@ -8,6 +8,20 @@ vc-description: |-
   • A permutation of the input, meaning it contains exactly the same elements (with the same multiplicities) as the original array.
   
   Note: It is assumed that the input array is valid and that the swap operations, along with the helper functions, correctly implement the selection sort algorithm.
+  
+  // Invalid Inputs: []
+  
+  // Tests:
+  
+  // Test 1: input a = vec![3, 1, 2], expected vec![1, 2, 3]
+  
+  // Test 2: input a = vec![0], expected vec![0] 
+  
+  // Test 3: input a = vec![5, 4, 3, 2, 1], expected vec![1, 2, 3, 4, 5]
+  
+  // Test 4: input a = vec![2, 2, 1, 4], expected vec![1, 2, 2, 4]
+  
+  // Test 5: input a = vec![10, -5, 0, 3], expected vec![-5, 0, 3, 10]
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -31,13 +45,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  fn main() {
-      // Invalid Inputs: []
-      // Tests:
-      // Test 1: input a = vec![3, 1, 2], expected vec![1, 2, 3]
-      // Test 2: input a = vec![0], expected vec![0] 
-      // Test 3: input a = vec![5, 4, 3, 2, 1], expected vec![1, 2, 3, 4, 5]
-      // Test 4: input a = vec![2, 2, 1, 4], expected vec![1, 2, 2, 4]
-      // Test 5: input a = vec![10, -5, 0, 3], expected vec![-5, 0, 3, 10]
-  }
+  fn main() {}
 

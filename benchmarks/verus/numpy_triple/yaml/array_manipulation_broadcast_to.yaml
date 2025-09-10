@@ -29,6 +29,16 @@ vc-description: |-
   Mathematical formulation:
   - For input vector v ∈ ℝⁿ and target shape (m, n)
   - Output matrix M ∈ ℝᵐˣⁿ where M[i,j] = v[j] for all i ∈ {0,...,m-1}, j ∈ {0,...,n-1}
+  
+  /* Primary property: each element (i,j) equals v[j] */
+  
+  /* Row identity: each row is exactly the input vector */
+  
+  /* Column uniformity: each column contains a single repeated value */
+  
+  /* Value preservation: no new values are introduced */
+  
+  /* Broadcast invariant: the operation is idempotent on rows */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -42,15 +52,15 @@ vc-spec: |-
       requires v.len() > 0,
       ensures
           result.len() == m,
-          /* Primary property: each element (i,j) equals v[j] */
+  
           forall|i: int, j: int| 0 <= i < m && 0 <= j < v.len() ==> result[i][j] == v[j],
-          /* Row identity: each row is exactly the input vector */
+  
           forall|i: int| 0 <= i < m ==> result[i]@ == v@,
-          /* Column uniformity: each column contains a single repeated value */
+  
           forall|j: int, i1: int, i2: int| 0 <= j < v.len() && 0 <= i1 < m && 0 <= i2 < m ==> result[i1][j] == result[i2][j],
-          /* Value preservation: no new values are introduced */
+  
           forall|i: int, j: int| 0 <= i < m && 0 <= j < v.len() ==> exists|k: int| 0 <= k < v.len() && result[i][j] == v[k] && k == j,
-          /* Broadcast invariant: the operation is idempotent on rows */
+  
           forall|i1: int, i2: int| 0 <= i1 < m && 0 <= i2 < m ==> result[i1]@ == result[i2]@
 
 vc-code: |-

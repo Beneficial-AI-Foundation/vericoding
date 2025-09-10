@@ -12,6 +12,14 @@ vc-description: |-
   - Absorption with zero: a & 0 = 0
   - Idempotent: a & a = a
   - Monotonicity: if a ≤ b, then a & c ≤ b & c
+  
+  /* Commutativity property */
+  
+  /* Absorption with zero */
+  
+  /* Idempotent property */
+  
+  /* Result is bounded by both operands */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -27,13 +35,13 @@ vc-spec: |-
           result.len() == x1.len(),
           forall|i: int| 0 <= i < result.len() ==> 
               result[i] == (x1[i] & x2[i]) &&
-              /* Commutativity property */
+  
               (x1[i] & x2[i]) == (x2[i] & x1[i]) &&
-              /* Absorption with zero */
+  
               (x1[i] & 0) == 0 &&
-              /* Idempotent property */
+  
               (x1[i] & x1[i]) == x1[i] &&
-              /* Result is bounded by both operands */
+  
               result[i] <= x1[i] && result[i] <= x2[i]
 
 vc-code: |-

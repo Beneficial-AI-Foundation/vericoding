@@ -8,14 +8,10 @@ vc-preamble: |-
   spec fn is_lower_case(c: char) -> (result: bool) {
       (c as u32) >= 97 && (c as u32) <= 122
   }
-  // pure-end
-  // pure-end
   
   spec fn is_upper_case(c: char) -> (result: bool) {
       (c as u32) >= 65 && (c as u32) <= 90
   }
-  // pure-end
-  // pure-end
   
   spec fn count_uppercase_recursively(seq: Seq<char>) -> (result: int)
       decreases seq.len(),
@@ -30,17 +26,15 @@ vc-preamble: |-
           }
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn count_uppercase(text: &Vec<char>) -> (count: u64)
-      // post-conditions-start
+  
       ensures
           0 <= count <= text.len(),
           count_uppercase_recursively(text@) == count,
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -49,7 +43,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

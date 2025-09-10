@@ -33,6 +33,14 @@ vc-description: |-
   - The operation is deterministic (same inputs produce same output)
   - The operation preserves the relative order of existing elements
   - No elements from the original array are lost or duplicated
+  
+  /* Elements before insertion point are preserved */
+  
+  /* The new value is at the specified index */
+  
+  /* Elements after insertion point are shifted */
+  
+  /* Sanity check: all original elements are preserved */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -46,13 +54,13 @@ vc-spec: |-
       requires idx <= arr.len(),
       ensures 
           result.len() == arr.len() + 1,
-          /* Elements before insertion point are preserved */
+  
           forall|i: int| 0 <= i < idx ==> result[i] == arr[i],
-          /* The new value is at the specified index */
+  
           result[idx as int] == value,
-          /* Elements after insertion point are shifted */
+  
           forall|i: int| (idx as int) < i < result.len() ==> result[i] == arr[i - 1],
-          /* Sanity check: all original elements are preserved */
+  
           forall|j: int| 0 <= j < arr.len() ==> 
               (j < idx && result[j] == arr[j]) || 
               (j >= idx && result[j + 1] == arr[j])

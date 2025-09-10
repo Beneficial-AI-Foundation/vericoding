@@ -14,13 +14,14 @@ vc-description: |-
   - like: Reference object for array creation
   
   Returns an array of data from the file. Note that binary files generated are not platform independent.
+  
+  /* Abstract file representation for specification purposes */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Abstract file representation for specification purposes */
   pub struct FileData {
       pub content: Seq<f64>,
       pub valid: bool,
@@ -48,6 +49,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

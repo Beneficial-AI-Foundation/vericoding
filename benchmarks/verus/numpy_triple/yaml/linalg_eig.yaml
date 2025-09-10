@@ -20,6 +20,14 @@ vc-description: |-
   2. Eigenvectors are normalized (unit length) 
   3. For diagonal matrices, eigenvalues are the diagonal elements
   4. Identity matrix has eigenvalue 1 with multiplicity n
+  
+  /* Main eigenvalue equation: A * v = λ * v (simplified specification) */
+  
+  /* Placeholder for eigenvalue equation */
+  
+  /* For diagonal matrices, eigenvalues are diagonal elements */
+  
+  /* Eigenvectors are non-zero */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -36,13 +44,13 @@ vc-spec: |-
       ensures
           result.0.len() == a.len() && result.1.len() == a.len(),
           forall|i: int| 0 <= i < result.1.len() ==> result.1[i].len() == a.len(),
-          /* Main eigenvalue equation: A * v = λ * v (simplified specification) */
-          true, /* Placeholder for eigenvalue equation */
-          /* For diagonal matrices, eigenvalues are diagonal elements */
+  
+          true,
+  
           (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() && i != j ==> a[i][j] == 0.0f32) ==> 
           (forall|i: int| #![trigger a[i]] 0 <= i < a.len() ==> 
               exists|j: int| 0 <= j < result.0.len() && result.0[j] == a[i][i]),
-          /* Eigenvectors are non-zero */
+  
           forall|col: int| #![trigger result.1[col]] 0 <= col < a.len() ==> 
               exists|row: int| 0 <= row < a.len() && result.1[row][col] != 0.0f32,
 
@@ -54,6 +62,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

@@ -8,17 +8,15 @@ vc-preamble: |-
   spec fn is_subrange_at(main: Seq<i32>, sub: Seq<i32>, i: int) -> (result: bool) {
       sub =~= main.subrange(i, i+sub.len())
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn is_sub_array(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)
-      // post-conditions-start
+  
       ensures
           result == (exists|k: int|
               0 <= k <= (main.len() - sub.len()) && is_subrange_at(main@, sub@, k)),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -27,7 +25,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
-  fn main() { }
+  }
+  fn main() {}
 

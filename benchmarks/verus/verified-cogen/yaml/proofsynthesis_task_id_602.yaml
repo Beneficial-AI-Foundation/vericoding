@@ -18,7 +18,6 @@ vc-preamble: |-
           }
       }
   }
-  // pure-end
   spec fn check_first_repeated_char(str1: &Vec<char>, repeated_char: Option<(usize, char)>) -> (res: bool) {
       if let Some((idx, rp_char)) = repeated_char {
           &&& str1@.take(idx as int) =~= str1@.take(idx as int).filter(
@@ -30,16 +29,14 @@ vc-preamble: |-
               0 <= k < str1.len() ==> count_frequency_rcr(str1@, #[trigger] str1[k]) <= 1
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn first_repeated_char(str1: &Vec<char>) -> (repeated_char: Option<(usize, char)>)
-      // post-conditions-start
+  
       ensures
           check_first_repeated_char(str1, repeated_char),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -48,7 +45,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

@@ -16,13 +16,22 @@ vc-description: |-
   3. When evaluated at any root rᵢ using HermiteE basis, the result is zero
   4. The highest degree coefficient is non-zero (ensuring correct degree)
   5. The polynomial satisfies the fundamental property p(x) = (x - r₀) * ... * (x - rₙ₋₁)
+  
+  /* Evaluate the k-th probabilist's Hermite polynomial (HermiteE) at x */
+  
+  /* Evaluate a polynomial in HermiteE basis at point x given coefficients */
+  
+  /* Product form helper: (x - r₀) * (x - r₁) * ... * (x - rᵢ₋₁) */
+  
+  /* Empty roots give the constant polynomial 1 */
+  
+  /* The polynomial degree matches the number of roots (leading coefficient is non-zero) */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Evaluate the k-th probabilist's Hermite polynomial (HermiteE) at x */
   spec fn eval_hermite_e(k: nat, x: int) -> int 
       decreases k
   {
@@ -35,7 +44,6 @@ vc-preamble: |-
       }
   }
   
-  /* Evaluate a polynomial in HermiteE basis at point x given coefficients */
   spec fn eval_hermite_e_poly(coeffs: Seq<int>, x: int) -> int 
       decreases coeffs.len()
   {
@@ -46,7 +54,6 @@ vc-preamble: |-
       }
   }
   
-  /* Product form helper: (x - r₀) * (x - r₁) * ... * (x - rᵢ₋₁) */
   spec fn product_form(roots: Seq<int>, x: int, i: nat) -> int 
       decreases i
   {
@@ -63,9 +70,9 @@ vc-spec: |-
   fn hermefromroots(roots: Vec<f64>) -> (coeffs: Vec<f64>)
       ensures
           coeffs.len() == roots.len() + 1,
-          /* Empty roots give the constant polynomial 1 */
+  
           (roots.len() == 0 ==> coeffs.len() == 1),
-          /* The polynomial degree matches the number of roots (leading coefficient is non-zero) */
+  
           (roots.len() > 0 ==> coeffs.len() == roots.len() + 1),
 
 vc-code: |-
@@ -76,6 +83,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

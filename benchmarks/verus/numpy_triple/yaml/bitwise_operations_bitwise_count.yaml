@@ -11,6 +11,8 @@ vc-description: |-
   6. The popcount is always non-negative and bounded by bit width
   7. For negative inputs, uses the absolute value
   8. The popcount operation is invariant under sign changes
+  
+  /* Helper function to count the number of 1-bits in a natural number */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -21,7 +23,6 @@ vc-preamble: |-
       if x >= 0 { x as nat } else { (-x) as nat }
   }
   
-  /* Helper function to count the number of 1-bits in a natural number */
   spec fn popcount(n: nat) -> nat 
       decreases n
   {

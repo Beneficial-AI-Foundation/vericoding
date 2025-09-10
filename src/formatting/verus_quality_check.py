@@ -195,14 +195,19 @@ def extract_comments_from_content(content: str, multiline_delimiters: List[Tuple
                 
                 # Collect all lines until we find the end tag
                 while i < len(lines):
-                    current_stripped = current_line.rstrip()
-                    if not first_line and start_tag in current_stripped:
+                    if not first_line:
+                        current_line = lines[i]
+                    current_stripped = current_line.strip() 
+
+                    # check for nested multiline comment
+                    search_start = len(start_tag) if first_line else 0
+                    if start_tag in current_stripped[search_start:]:
                         raise ValueError(f"Nested multiline comment. Found start tag '{start_tag}' in line {i+1}")
 
+                    # add current line to comment lines
                     comment_lines.append(current_line)             
-                    i += 1
-                    first_line = False
 
+                    # check for end of multiline comment
                     if end_tag in current_stripped:
                         if current_stripped.endswith(end_tag):
                             # Found end of multiline comment
@@ -210,7 +215,9 @@ def extract_comments_from_content(content: str, multiline_delimiters: List[Tuple
                         else:
                             raise ValueError(f"Malformed multiline comment. Found end tag '{end_tag}' in line {i+1} but it is not at the end of the line")
 
-                    current_line = lines[i]
+                    # advance to next line
+                    first_line = False
+                    i += 1
 
                 else:
                     # Reached end of content without finding end tag
@@ -409,8 +416,8 @@ def process_yaml_file(file_path: Path) -> None:
         #     spec['vc-code'] = '{\n    assume(false);\n    unreached();\n}\n'
             # raise ValueError(f"vc-code is not empty")
 
-        # Move comments from other fields to vc-description
-        move_comments_to_description(spec)
+        # # Move comments from other fields to vc-description
+        # move_comments_to_description(spec)
         
         # # Remove unnecessary tags from vc-description
         # if 'vc-description' in spec and isinstance(spec['vc-description'], str):
@@ -427,7 +434,8 @@ def process_yaml_file(file_path: Path) -> None:
         #         '// impl-end',
         #         '// pure-end',
         #         '// invariants-start',
-        #         '// invariants-end'
+        #         '// invariants-end',
+        #         '// verus!'
         #     ]
         #     spec['vc-description'] = remove_unnecessary_tags(spec['vc-description'], unnecessary_tags)
         
@@ -436,10 +444,19 @@ def process_yaml_file(file_path: Path) -> None:
         #         raise ValueError("assume(false) found in vc-preamble")
         # if spec['vc-spec'] is None:
         #     if "assume(false)" in spec['vc-spec']:
-        #         raise ValueError("assume(false) found in vc-preamble")
-        # if spec['vc-postamble'].strip():
-        #     raise ValueError("vc-postamble is not empty")
+        #         raise ValueError("assume(false) found in vc-spec")
+
+        # # Strip all whitespace from vc-postamble and validate
+        # stripped_postamble = ''.join(spec['vc-postamble'].split())
+        # if stripped_postamble not in ['fnmain(){}}', '}fnmain(){}']:
+        #     raise ValueError(f"vc-postamble has unexpected value: '{spec['vc-postamble']}'")
         
+        # Make vc-postamble standard
+        if spec['vc-postamble'].strip():
+            spec['vc-postamble'] = '}\nfn main() {}\n'
+        else:
+            raise ValueError(f"vc-postamble is empty")
+
         # Normalize all sections
         for key, value in spec.items():
             if isinstance(value, str):

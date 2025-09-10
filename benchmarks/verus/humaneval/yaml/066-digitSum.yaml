@@ -8,8 +8,6 @@ vc-preamble: |-
   spec fn is_upper_case(c: char) -> (ret:bool) {
       c >= 'A' && c <= 'Z'
   }
-  // pure-end
-  // pure-end
   
   spec fn count_uppercase_sum(seq: Seq<char>) -> (ret:int)
       decreases seq.len(),
@@ -24,16 +22,14 @@ vc-preamble: |-
           }
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn digit_sum(text: &[char]) -> (sum: u128)
-      // post-conditions-start
+  
       ensures
           count_uppercase_sum(text@) == sum,
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -42,6 +38,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
+  }
   fn main() {}
 

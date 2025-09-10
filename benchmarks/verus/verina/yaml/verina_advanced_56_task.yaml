@@ -10,13 +10,24 @@ vc-description: |-
   -----Output-----
   The output is a vector of integers:
   Returns a vector (type: Vec<i32>) with the same elements as the input, where all zeroes appear at the end, and the non-zero elements maintain their original relative order.
+  
+  /* Count how many times a specific value appears in the sequence */
+  
+  /* Check whether one sequence is a subsequence of another (preserving relative order) */
+  
+  /* All non-zero elements must maintain their relative order */
+  
+  /* All zeroes must be located at the end of the output vector */
+  
+  /* The output must contain the same number of elements */
+  
+  /* The number of zeroes must remain unchanged */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Count how many times a specific value appears in the sequence */
   spec fn count_val(val: i32, xs: Seq<i32>) -> nat 
       decreases xs.len()
   {
@@ -28,7 +39,6 @@ vc-preamble: |-
       }
   }
   
-  /* Check whether one sequence is a subsequence of another (preserving relative order) */
   spec fn is_subsequence(xs: Seq<i32>, ys: Seq<i32>) -> bool 
       decreases xs.len() + ys.len()
   {
@@ -50,14 +60,14 @@ vc-helpers: |-
 vc-spec: |-
   fn move_zeroes(xs: Vec<i32>) -> (result: Vec<i32>)
       ensures
-          /* All non-zero elements must maintain their relative order */
+  
           is_subsequence(xs@.filter(|x: i32| x != 0), result@),
-          /* All zeroes must be located at the end of the output vector */
+  
           forall|i: int| 0 <= i < result.len() && result[i] != 0 ==> 
               forall|j: int| i < j < result.len() ==> result[j] != 0,
-          /* The output must contain the same number of elements */
+  
           xs.len() == result.len(),
-          /* The number of zeroes must remain unchanged */
+  
           count_val(0, xs@) == count_val(0, result@),
 
 vc-code: |-

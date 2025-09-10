@@ -4,31 +4,8 @@ vc-description: |-
   Input: The input consists of lst: a non-empty list of natural numbers.
   
   Output: The output is a natural number representing the largest element in the list.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn max_of_list(lst: &Vec<usize>) -> (result: usize)
-      requires lst.len() > 0,
-      ensures
-          exists|i: int| 0 <= i < lst.len() && lst[i] == result,
-          forall|i: int| 0 <= i < lst.len() ==> lst[i] <= result,
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /* 
+  /* 
       -- Invalid Inputs
       [
           {
@@ -91,5 +68,28 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn max_of_list(lst: &Vec<usize>) -> (result: usize)
+      requires lst.len() > 0,
+      ensures
+          exists|i: int| 0 <= i < lst.len() && lst[i] == result,
+          forall|i: int| 0 <= i < lst.len() ==> lst[i] <= result,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

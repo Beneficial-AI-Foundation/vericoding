@@ -14,22 +14,19 @@ vc-preamble: |-
           n + triangle((n - 1) as nat)
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn tail_triangle(n: u32, idx: u32, sum: &mut u32)
-      // pre-conditions-start
+  
       requires
           idx <= n,
           *old(sum) == triangle(idx as nat),
           triangle(n as nat) < 0x1_0000_0000,
-      // pre-conditions-end
-      // post-conditions-start
+  
       ensures
           *sum == triangle(n as nat),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -39,6 +36,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

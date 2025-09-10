@@ -25,6 +25,16 @@ vc-description: |-
   3. The first element of the state equals the seed
   4. The generator produces deterministic values based on the seed
   5. All state values are 32-bit unsigned integers
+  
+  /* The state vector has the correct size (624 elements) */
+  
+  /* The first element equals the seed */
+  
+  /* All elements are valid 32-bit values (guaranteed by type) */
+  
+  /* State initialization follows MT19937 recurrence relation */
+  
+  /* Deterministic: same seed produces same initial state */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -36,13 +46,13 @@ vc-helpers: |-
 vc-spec: |-
   fn mt19937(seed: u32) -> (state: Vec<u32>)
       ensures 
-          /* The state vector has the correct size (624 elements) */
+  
           state.len() == 624,
-          /* The first element equals the seed */
+  
           state[0] == seed,
-          /* All elements are valid 32-bit values (guaranteed by type) */
+  
           true,
-          /* State initialization follows MT19937 recurrence relation */
+  
           forall|i: int| 0 <= i < 623 ==> {
               let k = i + 1;
               let prev_state = state[i];
@@ -52,7 +62,7 @@ vc-spec: |-
               let next_val = mult_result + (k as u32);
               state[k] == next_val
           },
-          /* Deterministic: same seed produces same initial state */
+  
           forall|seed2: u32, state2: Vec<u32>| 
               seed == seed2 && state2.len() == 624 && state2[0] == seed2 ==>
               forall|j: int| 0 <= j < 624 ==> state[j] == state2[j]

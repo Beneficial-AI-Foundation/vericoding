@@ -1,11 +1,13 @@
 vc-description: |-
+  // sums from index 0 -> i - 1
+  
+  // returns sum of array
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // sums from index 0 -> i - 1
   spec fn sumcheck(s: &[int], i: int) -> int
       recommends 0 <= i <= s.len()
       decreases i when 0 <= i <= s.len()
@@ -13,8 +15,6 @@ vc-preamble: |-
       if i == 0 { 0 }
       else { s[i as nat - 1] + sumcheck(s, i - 1) }
   }
-  
-  // returns sum of array
 
 vc-helpers: |-
 
@@ -31,8 +31,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

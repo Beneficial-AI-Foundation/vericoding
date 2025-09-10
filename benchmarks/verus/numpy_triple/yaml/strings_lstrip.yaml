@@ -20,6 +20,12 @@ vc-description: |-
   3. Prefix removal: result[i] is a suffix of a[i] for all i
   4. Character set removal: only characters in chars are removed from the beginning
   5. Preserves vector length: result.size = a.size
+  
+  /* Length preservation or reduction */
+  
+  /* Suffix property: result is a suffix of original */
+  
+  /* Empty string case: if original is empty, result is empty */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -35,12 +41,12 @@ vc-spec: |-
           forall|i: int| 0 <= i < result.len() ==> {
               let original = #[trigger] a[i];
               let result_str = #[trigger] result[i];
-              /* Length preservation or reduction */
+  
               result_str@.len() <= original@.len() &&
-              /* Suffix property: result is a suffix of original */
+  
               (exists|k: int| 0 <= k <= original@.len() && 
                result_str@ == original@.subrange(k, original@.len() as int)) &&
-              /* Empty string case: if original is empty, result is empty */
+  
               (original@.len() == 0 ==> result_str@.len() == 0)
           }
 

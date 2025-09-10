@@ -14,15 +14,13 @@ vc-preamble: |-
           forall|k: int| 0 <= k < arr.len() ==> (arr[k] % 2 == 0)
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn find_first_odd(arr: &Vec<u32>) -> (index: Option<usize>)
-      // post-conditions-start
+  
       ensures check_find_first_odd(arr, index),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -31,7 +29,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

@@ -2,27 +2,42 @@ vc-description: |-
   Generic Python-exception-derived object raised by linalg functions.
   Error checking predicate for linear algebra operations.
   Specification: Linear algebra error detection correctly identifies error conditions.
+  
+  /* Linear algebra error type representing conditions that prevent correct execution of linalg functions */
+  
+  /* Error when numerical algorithm fails to converge */
+  
+  /* Error when matrix is singular (non-invertible) */
+  
+  /* Error when operation requires square matrix but input is not square */
+  
+  /* Error when matrix dimensions are incompatible for the operation */
+  
+  /* Error when input parameters are invalid */
+  
+  /* Error when numerical computation becomes unstable */
+  
+  /* Generic error for other linear algebra failures */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Linear algebra error type representing conditions that prevent correct execution of linalg functions */
   pub enum LinAlgError {
-      /* Error when numerical algorithm fails to converge */
+  
       NonConvergence(String),
-      /* Error when matrix is singular (non-invertible) */
+  
       SingularMatrix(String),
-      /* Error when operation requires square matrix but input is not square */
+  
       NonSquareMatrix(String),
-      /* Error when matrix dimensions are incompatible for the operation */
+  
       IncompatibleDimensions(String),
-      /* Error when input parameters are invalid */
+  
       InvalidInput(String),
-      /* Error when numerical computation becomes unstable */
+  
       NumericalInstability(String),
-      /* Generic error for other linear algebra failures */
+  
       Other(String),
   }
 

@@ -40,6 +40,16 @@ vc-description: |-
   - When m = 0, the function should return the input unchanged
   - Integration constants k affect only the constant term of each integration
   - The scaling factor scl is applied before adding integration constants
+  
+  /* For m=1 case, the function performs Chebyshev integration according to:
+             - T₀ integrates to T₁  
+             - T₁ integrates to T₂/4
+             - Tₙ (n≥2) integrates to [Tₙ₊₁/(2(n+1)) - Tₙ₋₁/(2(n-1))]
+             - The constant term is adjusted for boundary conditions at lbnd
+             - Integration constants from k are added appropriately
+  
+             Note: Complex floating-point arithmetic specifications are simplified
+             due to Verus limitations with f32 operations in spec contexts */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -56,15 +66,7 @@ vc-spec: |-
           k.len() == m,
       ensures
           result.len() == c.len() + (m as usize),
-          /* For m=1 case, the function performs Chebyshev integration according to:
-             - T₀ integrates to T₁  
-             - T₁ integrates to T₂/4
-             - Tₙ (n≥2) integrates to [Tₙ₊₁/(2(n+1)) - Tₙ₋₁/(2(n-1))]
-             - The constant term is adjusted for boundary conditions at lbnd
-             - Integration constants from k are added appropriately
   
-             Note: Complex floating-point arithmetic specifications are simplified
-             due to Verus limitations with f32 operations in spec contexts */
           result.len() >= c.len(),
           m == 1 ==> result.len() == c.len() + 1,
 

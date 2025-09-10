@@ -15,20 +15,14 @@ vc-preamble: |-
           intersperse_spec(numbers.drop_last(), delimiter) + seq![delimiter, numbers.last()]
       }
   }
-  // pure-end
-  // pure-end
   
   spec fn even(i: int) -> (result:int) {
       2 * i
   }
-  // pure-end
-  // pure-end
   
   spec fn odd(i: int) -> (result:int) {
       2 * i + 1
   }
-  // pure-end
-  // pure-end
   
   spec fn intersperse_quantified(numbers: Seq<u64>, delimiter: u64, interspersed: Seq<u64>) -> (result:bool) {
       (if numbers.len() == 0 {
@@ -39,16 +33,14 @@ vc-preamble: |-
           && (forall|i: int|
           0 <= i < numbers.len() - 1 ==> #[trigger] interspersed[odd(i)] == delimiter)
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn intersperse(numbers: Vec<u64>, delimiter: u64) -> (result: Vec<u64>)
-      // post-conditions-start
+  
       ensures
           result@ == intersperse_spec(numbers@, delimiter),
-      // post-conditions-end
 
 vc-code: |-
   {

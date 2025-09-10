@@ -9,6 +9,8 @@ vc-description: |-
   3. NaN is not ordered (comparisons with any value are false except ≠)
   4. NaN is not finite
   5. Standard operations preserve NaN propagation
+  
+  // NaN is not equal to itself
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -19,7 +21,7 @@ vc-helpers: |-
 
 vc-spec: |-
   fn nan() -> (result: f64)
-      ensures result != result,  // NaN is not equal to itself
+      ensures result != result,
 
 vc-code: |-
   {

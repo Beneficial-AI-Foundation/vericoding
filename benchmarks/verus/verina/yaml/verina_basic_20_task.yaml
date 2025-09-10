@@ -11,6 +11,10 @@ vc-description: |-
   
   -----Note-----
   The order in which the unique integers are multiplied does not affect the final product.
+  
+  /* Product of all unique integers in the array */
+  
+  /* Placeholder for actual postcondition */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -22,8 +26,8 @@ vc-helpers: |-
 vc-spec: |-
   fn unique_product(arr: &Vec<i32>) -> (result: i32)
       ensures
-          /* Product of all unique integers in the array */
-          true, /* Placeholder for actual postcondition */
+  
+          true,
 
 vc-code: |-
   {

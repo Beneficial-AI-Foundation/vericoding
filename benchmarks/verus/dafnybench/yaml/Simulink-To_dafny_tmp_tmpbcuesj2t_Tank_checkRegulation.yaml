@@ -1,4 +1,15 @@
 vc-description: |-
+  // outlet valve 
+  
+  // inlet Valve
+  
+  // outlet valve
+  
+  // flow in valve v1
+  
+  // flow in valve v2
+  
+  // flow in valve v3
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -12,12 +23,12 @@ vc-preamble: |-
   }
   
   struct Pipe {
-      v1: Valve, // outlet valve 
-      v2: Valve, // inlet Valve
-      v3: Valve, // outlet valve
-      in_flowv1: int, // flow in valve v1
-      in_flowv2: int, // flow in valve v2
-      in_flowv3: int, // flow in valve v3
+      v1: Valve,
+      v2: Valve,
+      v3: Valve,
+      in_flowv1: int,
+      in_flowv2: int,
+      in_flowv3: int,
   }
   
   impl Pipe {
@@ -63,8 +74,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

@@ -10,17 +10,22 @@ vc-description: |-
   3. Complex number detection: numbers with non-zero imaginary part return true
   4. Idempotent on boolean interpretation: the mathematical meaning is preserved
   5. Element-wise operation: each element is tested independently
+  
+  /* Structure representing a complex number with float components */
+  
+  /* The real part of the complex number */
+  
+  /* The imaginary part of the complex number */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Structure representing a complex number with float components */
   struct Complex {
-      /* The real part of the complex number */
+  
       real: f64,
-      /* The imaginary part of the complex number */
+  
       imag: f64,
   }
 

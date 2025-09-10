@@ -17,6 +17,12 @@ vc-description: |-
   
   The algorithm redistributes coefficients according to these relations,
   resulting in a polynomial with degree increased by 1.
+  
+  // Linearity property: chebmulx is a linear operation
+  
+  // For any scalars alpha, beta and vectors c1, c2 of same length:
+  
+  // chebmulx(alpha*c1 + beta*c2) = alpha*chebmulx(c1) + beta*chebmulx(c2)
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -30,9 +36,6 @@ vc-spec: |-
       requires c.len() > 0,
       ensures
           result.len() == c.len() + 1,
-          // Linearity property: chebmulx is a linear operation
-          // For any scalars alpha, beta and vectors c1, c2 of same length:
-          // chebmulx(alpha*c1 + beta*c2) = alpha*chebmulx(c1) + beta*chebmulx(c2)
 
 vc-code: |-
   {

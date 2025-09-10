@@ -7,6 +7,8 @@ vc-description: |-
   3. inf * positive finite value = inf
   4. inf * negative finite value = -inf
   5. inf / any finite non-zero value = inf (with appropriate sign)
+  
+  /* IEEE 754 floating point representation of (positive) infinity */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -16,7 +18,6 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  /* IEEE 754 floating point representation of (positive) infinity */
   fn inf() -> (result: f32)
 
 vc-code: |-
@@ -27,6 +28,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

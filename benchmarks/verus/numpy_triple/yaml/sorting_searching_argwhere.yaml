@@ -13,6 +13,14 @@ vc-description: |-
   2. All non-zero elements in the input vector have their indices in the result
   3. The result contains no duplicate indices
   4. The indices are ordered according to their position in the original vector
+  
+  /* All returned indices correspond to non-zero elements */
+  
+  /* All non-zero elements have their indices in the result */
+  
+  /* No duplicate indices */
+  
+  /* Indices are ordered by position */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -24,16 +32,16 @@ vc-helpers: |-
 vc-spec: |-
   fn numpy_argwhere(a: Vec<f64>) -> (indices: Vec<usize>)
       ensures
-          /* All returned indices correspond to non-zero elements */
+  
           forall|i: int| 0 <= i < indices.len() ==> 
               indices[i] < a.len() && a[indices[i] as int] != 0.0,
-          /* All non-zero elements have their indices in the result */
+  
           forall|i: int| 0 <= i < a.len() && a[i] != 0.0 ==> 
               indices@.contains(i as usize),
-          /* No duplicate indices */
+  
           forall|i: int, j: int| 0 <= i < j < indices.len() ==> 
               indices[i] != indices[j],
-          /* Indices are ordered by position */
+  
           forall|i: int, j: int| 0 <= i < j < indices.len() ==> 
               indices[i] < indices[j],
 

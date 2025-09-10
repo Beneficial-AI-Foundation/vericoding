@@ -1,4 +1,9 @@
 vc-description: |-
+  // ensures  !res ==> !isSubstringPred(sub, str)
+  
+  // This postcondition follows from the above lemma.
+  
+  // This postcondition follows from the above lemma.
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -36,10 +41,10 @@ vc-preamble: |-
       ensures
           res <==> isSubstringPred(sub, str),
           res ==> isSubstringPred(sub, str),
-          // ensures  !res ==> !isSubstringPred(sub, str)
+  
           isSubstringPred(sub, str) ==> res,
           isSubstringPred(sub, str) ==> res,
-          !res <==> isNotSubstringPred(sub, str), // This postcondition follows from the above lemma.
+          !res <==> isNotSubstringPred(sub, str),
   {
       assume(false);
       true
@@ -59,7 +64,7 @@ vc-spec: |-
   fn haveCommonKSubstring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
       ensures
           found <==> haveCommonKSubstringPred(k, str1, str2),
-          !found <==> haveNotCommonKSubstringPred(k, str1, str2), // This postcondition follows from the above lemma.
+          !found <==> haveNotCommonKSubstringPred(k, str1, str2),
 
 vc-code: |-
   {
@@ -68,7 +73,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

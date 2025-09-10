@@ -1,11 +1,10 @@
 vc-description: |-
+  //https://leetcode.com/problems/remove-element/
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  //https://leetcode.com/problems/remove-element/
 
 vc-helpers: |-
 
@@ -20,7 +19,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

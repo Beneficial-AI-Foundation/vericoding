@@ -14,13 +14,14 @@ vc-description: |-
   - "NUMPY IS GREAT" → False
   - "" → False
   - "123" → False
+  
+  /* Helper function to check if a string is titlecased according to Python's str.istitle() logic */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Helper function to check if a string is titlecased according to Python's str.istitle() logic */
   spec fn is_titlecased(s: Seq<char>) -> bool;
 
 vc-helpers: |-

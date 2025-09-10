@@ -16,8 +16,6 @@ vc-preamble: |-
           how_many_times(string.skip(1), substring)
       }
   }
-  // pure-end
-  // pure-end
   
   spec fn inner_expr_how_many_times_impl(opt_k: Option<u32>, string: Vec<char>, substring: Vec<char>) -> (result:bool) {
       match opt_k {
@@ -25,20 +23,17 @@ vc-preamble: |-
           None => how_many_times(string@, substring@) > u32::MAX,
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn how_many_times_impl(string: Vec<char>, substring: Vec<char>) -> (opt_k: Option<u32>)
-      // pre-conditions-start
+  
       requires
           substring.len() >= 1,
-      // pre-conditions-end
-      // post-conditions-start
+  
       ensures
           inner_expr_how_many_times_impl(opt_k, string, substring),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -47,6 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
+  }
   fn main() {}
 

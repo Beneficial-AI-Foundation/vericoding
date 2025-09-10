@@ -8,6 +8,8 @@ vc-description: |-
   analogous to how cosine represents the x-coordinate on the unit circle.
   
   Returns an array of the same shape as x, containing the hyperbolic cosine of each element.
+  
+  /* Core mathematical definition placeholder */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -22,7 +24,7 @@ vc-spec: |-
       ensures
           result.len() == x.len(),
           forall|i: int| 0 <= i < result.len() ==> {
-              result[i] == result[i]  /* Core mathematical definition placeholder */
+              result[i] == result[i]
           }
 
 vc-code: |-

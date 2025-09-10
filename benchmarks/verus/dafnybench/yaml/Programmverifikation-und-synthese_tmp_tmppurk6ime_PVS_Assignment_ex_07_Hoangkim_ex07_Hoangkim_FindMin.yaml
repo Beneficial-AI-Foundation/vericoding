@@ -1,22 +1,24 @@
 vc-description: |-
+  //Problem01
+  
+  //a)
+  
+  //b)
+  
+  //Problem04
+  
+  //Problem02
+  
+  //Problem03
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  //Problem01
-  //a)
-  
-  //b)
-  //Problem04
-  
-  //Problem02
   spec fn sorted(a: Seq<int>) -> bool {
       forall|i: int| 1 <= i < a.len() ==> #[trigger] a[i] >= a[i-1]
   }
-  
-  //Problem03
 
 vc-helpers: |-
 
@@ -36,7 +38,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

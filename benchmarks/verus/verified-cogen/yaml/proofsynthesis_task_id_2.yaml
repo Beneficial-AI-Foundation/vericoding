@@ -9,14 +9,13 @@ vc-helpers: |-
 
 vc-spec: |-
   fn shared_elements(list1: &Vec<i32>, list2: &Vec<i32>) -> (shared: Vec<i32>)
-      // post-conditions-start
+  
       ensures
           forall|i: int|
               0 <= i < shared.len() ==> (list1@.contains(#[trigger] shared[i]) && list2@.contains(
                   #[trigger] shared[i],
               )),
           forall|i: int, j: int| 0 <= i < j < shared.len() ==> shared[i] != shared[j],
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -25,7 +24,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

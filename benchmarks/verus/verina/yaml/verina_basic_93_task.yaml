@@ -13,30 +13,8 @@ vc-description: |-
   
   Note:
   There are no additional preconditions; the function is meant to work correctly for any pair of u8 values by leveraging bitwise xor operations.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn swap_bitvectors(x: u8, y: u8) -> (result: (u8, u8))
-      ensures
-          result.0 == y && result.1 == x,
-          x != y ==> (result.0 != x && result.1 != y),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /* 
+  /* 
       -- Invalid Inputs
       []
       -- Tests
@@ -102,5 +80,27 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn swap_bitvectors(x: u8, y: u8) -> (result: (u8, u8))
+      ensures
+          result.0 == y && result.1 == x,
+          x != y ==> (result.0 != x && result.1 != y),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

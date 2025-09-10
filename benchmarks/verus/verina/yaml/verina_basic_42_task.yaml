@@ -11,29 +11,8 @@ vc-description: |-
   
   Note:
   There are no additional preconditions; the method works for any provided string.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn count_digits(s: &str) -> (result: usize)
-      ensures
-          result >= 0,
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /* 
+  /* 
       -- Invalid Inputs
       []
       -- Tests
@@ -117,5 +96,26 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn count_digits(s: &str) -> (result: usize)
+      ensures
+          result >= 0,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

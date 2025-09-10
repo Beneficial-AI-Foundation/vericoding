@@ -17,6 +17,10 @@ vc-description: |-
   Postcondition: The result contains all unique elements from the input array,
   sorted in ascending order, with no duplicates, and every element in the 
   result appears in the original array.
+  
+  // The result is sorted in ascending order
+  
+  // No duplicates in the result
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -29,9 +33,9 @@ vc-spec: |-
   fn unique(ar: Vec<i32>) -> (result: (usize, Vec<i32>))
       ensures
           result.1.len() <= ar.len(),
-          // The result is sorted in ascending order
+  
           forall|i: int, j: int| 0 <= i < j < result.1.len() ==> result.1[i as int] <= result.1[j as int],
-          // No duplicates in the result  
+  
           forall|i: int, j: int| 0 <= i < result.1.len() && 0 <= j < result.1.len() && i != j ==> result.1[i as int] != result.1[j as int],
 
 vc-code: |-

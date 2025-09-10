@@ -14,21 +14,18 @@ vc-preamble: |-
           sum_to(arr.drop_last()) + arr.last()
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn sum_range_list(arr: &Vec<i64>, start: usize, end: usize) -> (sum: i128)
-      // pre-conditions-start
+  
       requires
           0 <= start <= end,
           start <= end < arr.len(),
-      // pre-conditions-end
-      // post-conditions-start
+  
       ensures
           sum_to(arr@.subrange(start as int, end + 1 as int)) == sum,
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -37,7 +34,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

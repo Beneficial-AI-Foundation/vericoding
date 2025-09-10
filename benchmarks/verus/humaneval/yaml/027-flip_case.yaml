@@ -8,26 +8,18 @@ vc-preamble: |-
   spec fn is_upper_case(c: char) -> (result:bool) {
       c >= 'A' && c <= 'Z'
   }
-  // pure-end
-  // pure-end
   
   spec fn is_lower_case(c: char) -> (result:bool) {
       c >= 'a' && c <= 'z'
   }
-  // pure-end
-  // pure-end
   
   spec fn shift_plus_32_spec(c: char) -> (result:char) {
       ((c as u8) + 32) as char
   }
-  // pure-end
-  // pure-end
   
   spec fn shift_minus_32_spec(c: char) -> (result:char) {
       ((c as u8) - 32) as char
   }
-  // pure-end
-  // pure-end
   
   spec fn flip_case_spec(c: char) -> (result:char) {
       if is_lower_case(c) {
@@ -38,17 +30,15 @@ vc-preamble: |-
           c
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn flip_case(str: &[char]) -> (flipped_case: Vec<char>)
-      // post-conditions-start
+  
       ensures
           str@.len() == flipped_case@.len(),
           forall|i: int| 0 <= i < str.len() ==> flipped_case[i] == flip_case_spec(#[trigger] str[i]),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -57,6 +47,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
+  }
   fn main() {}
 

@@ -45,6 +45,16 @@ vc-description: |-
   Convert a Legendre series to a polynomial (monomial basis)
   
   Specification: leg2poly converts Legendre series coefficients to polynomial coefficients
+  
+  /* For small cases (n < 3), the conversion is identity */
+  
+  /* The conversion transforms Legendre basis to monomial basis */
+  
+  /* The mathematical property is that ∑ cᵢ Pᵢ(x) = ∑ result[i] xⁱ */
+  
+  /* where Pᵢ are the Legendre polynomials */
+  
+  /* The transformation is well-defined and preserves polynomial degree */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -57,13 +67,11 @@ vc-spec: |-
   fn leg2poly(c: Vec<f32>) -> (result: Vec<f32>)
       ensures
           result.len() == c.len(),
-          /* For small cases (n < 3), the conversion is identity */
+  
           c.len() < 3 ==> forall|i: int| 0 <= i < c.len() ==> result[i] == c[i],
-          /* The conversion transforms Legendre basis to monomial basis */
-          /* The mathematical property is that ∑ cᵢ Pᵢ(x) = ∑ result[i] xⁱ */
-          /* where Pᵢ are the Legendre polynomials */
+  
           forall|i: int| 0 <= i < result.len() ==> exists|val: f32| result[i] == val,
-          /* The transformation is well-defined and preserves polynomial degree */
+  
           c.len() > 0 ==> exists|lead: f32| result[c.len() - 1] == lead,
 
 vc-code: |-

@@ -1,8 +1,7 @@
 vc-description: |-
+  // RUN: %verus "%s"
 
 vc-preamble: |-
-  // RUN: %verus "%s"
-  
   use vstd::prelude::*;
   
   verus! {
@@ -32,7 +31,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

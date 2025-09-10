@@ -1,13 +1,13 @@
 vc-description: |-
-
-vc-preamble: |-
   // RUN: /compile:0
   
+  // Predicate to check if outarr is the reverse of arr
+
+vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // Predicate to check if outarr is the reverse of arr
   spec fn reversed(arr: Seq<char>, outarr: Seq<char>) -> bool {
       arr.len() == outarr.len() &&
       forall|k: int| 0 <= k < arr.len() ==> outarr[k] == arr[arr.len() - 1 - k]
@@ -27,8 +27,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

@@ -13,6 +13,16 @@ vc-description: |-
   Postcondition: The function returns a boolean value. If the arrays are identical references,
   it must return True. For independent arrays, it may return False.
   The function is conservative - it can return True even when arrays don't actually share memory.
+  
+  /* Basic sanity check: result is a boolean */
+  
+  /* Conservative property: function is sound - may return True even when arrays don't share memory */
+  
+  /* but will detect potential memory overlap based on bounds analysis */
+  
+  /* Deterministic property: same inputs always produce same output */
+  
+  /* Reflexive property: an array compared with itself would return consistent result */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -24,14 +34,13 @@ vc-helpers: |-
 vc-spec: |-
   fn may_share_memory(a: &Vec<f32>, b: &Vec<f32>) -> (result: bool)
       ensures
-          /* Basic sanity check: result is a boolean */
+  
           (result == true || result == false) &&
-          /* Conservative property: function is sound - may return True even when arrays don't share memory */
-          /* but will detect potential memory overlap based on bounds analysis */
+  
           (result == true ==> true) &&
-          /* Deterministic property: same inputs always produce same output */
+  
           true &&
-          /* Reflexive property: an array compared with itself would return consistent result */
+  
           true
 
 vc-code: |-

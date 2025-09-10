@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /*
   https://leetcode.com/problems/find-pivot-index/description/
   Given an array of integers nums, calculate the pivot index of this array.
@@ -54,6 +48,15 @@ vc-preamble: |-
   ```
   */
   
+  // By Divyanshu Ranjan
+  
+  // By Divyanshu Ranjan
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
   spec fn sum(nums: Seq<int>) -> int
       decreases nums.len()
   {
@@ -73,10 +76,6 @@ vc-preamble: |-
           nums[0] + sum_up(nums.subrange(1, nums.len() as int))
       }
   }
-  
-  // By Divyanshu Ranjan
-  
-  // By Divyanshu Ranjan
 
 vc-helpers: |-
 
@@ -94,8 +93,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

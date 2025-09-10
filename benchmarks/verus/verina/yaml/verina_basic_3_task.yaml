@@ -9,29 +9,8 @@ vc-description: |-
   The output is a Boolean value:
   Returns true if the input number is divisible by 11.
   Returns false if the input number is not divisible by 11.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn is_divisible_by_11(n: i32) -> (result: bool)
-      ensures
-          result <==> (exists|k: int| #[trigger] (k * 11) == n),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      // /* 
+  /* 
       // -- Invalid Inputs
       // []
       // -- Tests
@@ -146,5 +125,28 @@ vc-postamble: |-
       //     }
       // ]
       // */
+  
+  //
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_divisible_by_11(n: i32) -> (result: bool)
+      ensures
+          result <==> (exists|k: int| #[trigger] (k * 11) == n),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

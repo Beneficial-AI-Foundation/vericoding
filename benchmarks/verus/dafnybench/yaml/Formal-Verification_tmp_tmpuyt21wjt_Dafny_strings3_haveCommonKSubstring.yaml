@@ -1,11 +1,14 @@
 vc-description: |-
+  // We spent 2h each on this assignment
+  
+  //ensures !res <==> is_not_substring_pred(sub@, s@) // This postcondition follows from the above lemma.
+  
+  //ensures !found <==> have_not_common_k_substring_pred(k, str1@, str2@) // This postcondition follows from the above lemma.
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // We spent 2h each on this assignment
   
   spec fn is_prefix_pred(pre: Seq<char>, s: Seq<char>) -> bool {
       pre.len() <= s.len() && 
@@ -36,7 +39,7 @@ vc-preamble: |-
   
   fn is_substring(sub: &str, s: &str) -> (res: bool)
       ensures res <==> is_substring_pred(sub@, s@)
-      //ensures !res <==> is_not_substring_pred(sub@, s@) // This postcondition follows from the above lemma.
+  
   {
       assume(false);
       true
@@ -61,7 +64,6 @@ vc-helpers: |-
 vc-spec: |-
   fn have_common_k_substring(k: nat, str1: &str, str2: &str) -> (found: bool)
       ensures found <==> have_common_k_substring_pred(k, str1@, str2@)
-      //ensures !found <==> have_not_common_k_substring_pred(k, str1@, str2@) // This postcondition follows from the above lemma.
 
 vc-code: |-
   {
@@ -70,8 +72,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

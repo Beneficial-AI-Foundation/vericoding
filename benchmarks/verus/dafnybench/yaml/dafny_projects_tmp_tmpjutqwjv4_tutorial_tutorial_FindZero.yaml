@@ -1,11 +1,24 @@
 vc-description: |-
+  // Working through https://dafny.org/dafny/OnlineTutorial/guide
+  
+  // https://dafny.org/dafny/OnlineTutorial/ValueTypes
+  
+  // https://dafny.org/dafny/OnlineTutorial/Lemmas
+  
+  // Using int IDs instead of references for simplicity
+  
+  // Simplified for translation
+  
+  // path is nonempty
+  
+  // it starts and ends correctly
+  
+  // and it is a valid path
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // Working through https://dafny.org/dafny/OnlineTutorial/guide
   
   spec fn fib(n: nat) -> nat 
       decreases n
@@ -19,14 +32,10 @@ vc-preamble: |-
       forall|n: int, m: int| 0 <= n < m < a.len() ==> a[n] <= a[m]
   }
   
-  // https://dafny.org/dafny/OnlineTutorial/ValueTypes
-  
   spec fn update(s: Seq<int>, i: int, v: int) -> Seq<int>
   {
       s.subrange(0, i).add(seq![v]).add(s.subrange(i + 1, s.len() as int))
   }
-  
-  // https://dafny.org/dafny/OnlineTutorial/Lemmas
   
   spec fn count(a: Seq<bool>) -> nat
       decreases a.len()
@@ -39,11 +48,11 @@ vc-preamble: |-
   }
   
   struct Node {
-      next: Seq<int>, // Using int IDs instead of references for simplicity
+      next: Seq<int>,
   }
   
   spec fn closed(graph: Set<int>) -> bool {
-      true // Simplified for translation
+      true
   }
   
   spec fn path(p: Seq<int>, graph: Set<int>) -> bool 
@@ -57,9 +66,9 @@ vc-preamble: |-
   
   spec fn path_specific(p: Seq<int>, start: int, end: int, graph: Set<int>) -> bool {
       closed(graph) &&
-      0 < p.len() && // path is nonempty
-      start == p[0] && end == p[p.len() - 1] && // it starts and ends correctly
-      path(p, graph) // and it is a valid path
+      0 < p.len() &&
+      start == p[0] && end == p[p.len() - 1] &&
+      path(p, graph)
   }
 
 vc-helpers: |-
@@ -80,8 +89,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

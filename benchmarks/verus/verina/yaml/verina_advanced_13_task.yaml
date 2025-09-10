@@ -19,6 +19,8 @@ vc-description: |-
   The output is a boolean value:
   - Returns true if there exists at least one pair of intersecting chords.
   - Returns false if no chords intersect.
+  
+  /* All endpoints are distinct */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -45,7 +47,7 @@ vc-spec: |-
               chords[i][0] >= 1 && chords[i][0] <= 2 * n &&
               chords[i][1] >= 1 && chords[i][1] <= 2 * n
           ),
-          /* All endpoints are distinct */
+  
           forall|i: int, j: int, k: int, l: int| 
               0 <= i < chords.len() && 0 <= j < chords.len() && 
               0 <= k < 2 && 0 <= l < 2 && 

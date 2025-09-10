@@ -1,11 +1,10 @@
 vc-description: |-
+  // returns an index of the largest element of array 'a' in the range [0..n)
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // returns an index of the largest element of array 'a' in the range [0..n)
 
 vc-helpers: |-
 
@@ -25,7 +24,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

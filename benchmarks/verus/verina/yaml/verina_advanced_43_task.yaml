@@ -11,32 +11,11 @@ vc-description: |-
   -----Output-----
   
   An integer representing the maximum strength.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn max_strength(nums: &Vec<i32>) -> (result: i32)
-      requires nums.len() > 0,
-      ensures
-          /* The result represents the maximum product of any non-empty subset of nums.
+  /* The result represents the maximum product of any non-empty subset of nums.
              For simplicity, we ensure that the result is at least as large as one of the elements. */
-          exists|i: int| 0 <= i < nums.len() && result >= nums[i],
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /* 
+  
+  /* 
       // Invalid Inputs
       [
           {
@@ -101,5 +80,28 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn max_strength(nums: &Vec<i32>) -> (result: i32)
+      requires nums.len() > 0,
+      ensures
+  
+          exists|i: int| 0 <= i < nums.len() && result >= nums[i],
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

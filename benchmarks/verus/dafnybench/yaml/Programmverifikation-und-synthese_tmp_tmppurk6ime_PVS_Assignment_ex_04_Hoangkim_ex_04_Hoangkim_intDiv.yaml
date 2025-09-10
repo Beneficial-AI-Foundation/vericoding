@@ -1,14 +1,14 @@
 vc-description: |-
+  //Problem 01
+  
+  //problem02
+  
+  //a)
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  //Problem 01
-  
-  //problem02
-  //a)
 
 vc-helpers: |-
 
@@ -27,8 +27,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

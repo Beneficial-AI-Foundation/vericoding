@@ -14,33 +14,8 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the array contains at least one element that satisfies P. In cases where this precondition does not hold, the behavior of the function is not guaranteed by the specification.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn linear_search3(a: &Vec<i32>, p: spec_fn(i32) -> bool) -> (result: usize)
-      requires 
-          exists|i: int| 0 <= i < a.len() && p(a[i]),
-      ensures 
-          result < a.len(),
-          p(a[result as int]),
-          forall|k: int| 0 <= k < result ==> !p(a[k]),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /*
+  /*
       -- Invalid Inputs
       [
           {
@@ -114,5 +89,30 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn linear_search3(a: &Vec<i32>, p: spec_fn(i32) -> bool) -> (result: usize)
+      requires 
+          exists|i: int| 0 <= i < a.len() && p(a[i]),
+      ensures 
+          result < a.len(),
+          p(a[result as int]),
+          forall|k: int| 0 <= k < result ==> !p(a[k]),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

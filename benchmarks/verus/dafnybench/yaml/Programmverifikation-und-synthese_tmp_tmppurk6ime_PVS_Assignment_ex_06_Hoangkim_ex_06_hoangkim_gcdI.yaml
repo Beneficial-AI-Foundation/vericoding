@@ -1,12 +1,15 @@
 vc-description: |-
+  //Problem01
+  
+  //a)
+  
+  //b)
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  //Problem01
-  //a)
   spec fn gcd(x: int, y: int) -> int
       recommends x > 0 && y > 0
       decreases x + y when x > 0 && y > 0
@@ -16,7 +19,6 @@ vc-preamble: |-
       else { gcd(x, y - x) }
   }
   
-  //b)
   spec fn gcd_prime(x: int, y: int) -> int
       recommends x > 0 && y > 0
       decreases if x > y { x } else { y }, x + y when x > 0 && y > 0
@@ -40,8 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

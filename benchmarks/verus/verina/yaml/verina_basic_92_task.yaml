@@ -13,31 +13,8 @@ vc-description: |-
   
   -----Note-----
   There are no restrictions on the input values. The function must correctly swap the inputs regardless of whether they are positive, negative, or zero.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn swap_arithmetic(x: i32, y: i32) -> (result: (i32, i32))
-      ensures
-          result.0 == y,
-          result.1 == x,
-          x != y ==> (result.0 != x && result.1 != y),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      // /* Invalid Inputs
+  /* Invalid Inputs
       // []
       // Tests
       // [
@@ -102,5 +79,30 @@ vc-postamble: |-
       //         ]
       //     }
       // ] */
+  
+  //
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn swap_arithmetic(x: i32, y: i32) -> (result: (i32, i32))
+      ensures
+          result.0 == y,
+          result.1 == x,
+          x != y ==> (result.0 != x && result.1 != y),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

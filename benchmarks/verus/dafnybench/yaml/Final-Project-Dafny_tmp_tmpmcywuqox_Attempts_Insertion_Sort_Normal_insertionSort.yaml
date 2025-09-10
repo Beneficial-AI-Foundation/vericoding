@@ -1,4 +1,5 @@
 vc-description: |-
+  // placeholder return
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -21,7 +22,7 @@ vc-preamble: |-
           forall|k: int| i <= k < a.len() ==> a[k as int] >= a[m as int]
   {
       assume(false);
-      i // placeholder return
+      i
   }
 
 vc-helpers: |-
@@ -37,8 +38,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

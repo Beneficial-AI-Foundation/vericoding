@@ -1,4 +1,7 @@
 vc-description: |-
+  // Annotate this method with pre- and postconditions
+  
+  // that ensure it behaves as described.
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -9,8 +12,7 @@ vc-helpers: |-
 
 vc-spec: |-
   fn find_max(a: &[i32]) -> (i: usize)
-      // Annotate this method with pre- and postconditions
-      // that ensure it behaves as described.
+  
       requires 
           a.len() > 0,
       ensures
@@ -24,7 +26,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

@@ -9,28 +9,8 @@ vc-description: |-
   -----Output-----
   The output is an integer:
   Returns the product of the two input integers (a * b).
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn multiply(a: i32, b: i32) -> (result: i32)
-      ensures result == a * b,
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /*
+  /*
       -- Invalid Inputs
       []
       -- Tests
@@ -121,5 +101,25 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn multiply(a: i32, b: i32) -> (result: i32)
+      ensures result == a * b,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

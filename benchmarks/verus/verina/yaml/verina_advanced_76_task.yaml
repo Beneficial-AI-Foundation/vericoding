@@ -10,34 +10,8 @@ vc-description: |-
   The output is a list of integers:
   Returns exactly k integers representing the elements that appear most frequently in the input list in the order from the higher frequency to lower frequency.
   If two numbers have the same frequency, use the order of the first occurrence in nums.
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  use vstd::seq_lib::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn top_k_frequent(nums: &Vec<i32>, k: usize) -> (result: Vec<i32>)
-      requires 
-          k <= nums@.to_set().len(),
-      ensures
-          result.len() == k,
-          forall|x: i32| result@.contains(x) ==> nums@.contains(x),
-          result@.no_duplicates(),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /*
+  /*
       -- Invalid Inputs
       [
           {
@@ -103,5 +77,31 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::seq_lib::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn top_k_frequent(nums: &Vec<i32>, k: usize) -> (result: Vec<i32>)
+      requires 
+          k <= nums@.to_set().len(),
+      ensures
+          result.len() == k,
+          forall|x: i32| result@.contains(x) ==> nums@.contains(x),
+          result@.no_duplicates(),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

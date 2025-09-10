@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /*
   Verus includes 2 languages:
       * a language for specification 
@@ -28,18 +22,14 @@ vc-preamble: |-
   */
   
   // assert variant
+  
   /*
   */
   
   // invariant variant
   
   //specification of sum of squares
-  spec fn sqr_sum_rec(n: int) -> int
-      recommends n >= 0
-      decreases n
-  {
-      if n == 0 { 0 } else { n*n + sqr_sum_rec(n-1) }
-  }
+  
   /*
   
   */
@@ -47,13 +37,8 @@ vc-preamble: |-
   // verification of the program for sum of squares
   
   // SqrSumRec(n) = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
-  proof fn l1(n: int)
-      requires n >= 0
-      ensures sqr_sum_rec(n) == n*(n+1)*(2*n + 1)/6
-      decreases n
-  {
-      //OK
-  }
+  
+  //OK
   
   /*
   spec fn sqr_sum_by_6(n: int) -> int
@@ -113,13 +98,35 @@ vc-preamble: |-
   }
   
   */
+  
+  // s = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sqr_sum_rec(n: int) -> int
+      recommends n >= 0
+      decreases n
+  {
+      if n == 0 { 0 } else { n*n + sqr_sum_rec(n-1) }
+  }
+  
+  proof fn l1(n: int)
+      requires n >= 0
+      ensures sqr_sum_rec(n) == n*(n+1)*(2*n + 1)/6
+      decreases n
+  {
+  
+  }
 
 vc-helpers: |-
 
 vc-spec: |-
   fn sqr_sum1(n: int) -> (s: int)
       requires n >= 0
-      ensures s == sqr_sum_rec(n)  // s = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
+      ensures s == sqr_sum_rec(n)
 
 vc-code: |-
   {
@@ -128,8 +135,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

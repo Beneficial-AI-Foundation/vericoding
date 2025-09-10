@@ -32,6 +32,8 @@ vc-description: |-
   Specification: hermevander3d returns a 3D pseudo-Vandermonde matrix where each row
   corresponds to a point (x[i], y[i], z[i]), and each column corresponds to a product
   of HermiteE polynomials He_i(x)*He_j(y)*He_k(z) for various degrees.
+  
+  // Just return 1.0 as a placeholder to avoid floating point ops
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -49,7 +51,7 @@ vc-spec: |-
       } else if k == 1 {
           t
       } else {
-          // Just return 1.0 as a placeholder to avoid floating point ops
+  
           1.0
       }
   }

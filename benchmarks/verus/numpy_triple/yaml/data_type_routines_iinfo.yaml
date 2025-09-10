@@ -14,6 +14,32 @@ vc-description: |-
     - Correct minimum value (negative for signed types, 0 for unsigned)
     - Correct maximum value based on the bit representation
     - Consistency between bits and min/max values
+  
+  /* Integer type information structure containing machine limits for integer types */
+  
+  /* Number of bits occupied by the type */
+  
+  /* Smallest integer expressible by the type */
+  
+  /* Largest integer expressible by the type */
+  
+  /* Enumeration of supported integer types */
+  
+  /* 8-bit signed integer type */
+  
+  /* 16-bit signed integer type */
+  
+  /* 32-bit signed integer type */
+  
+  /* 64-bit signed integer type */
+  
+  /* 8-bit unsigned integer type */
+  
+  /* 16-bit unsigned integer type */
+  
+  /* 32-bit unsigned integer type */
+  
+  /* 64-bit unsigned integer type */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -23,33 +49,31 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  /* Integer type information structure containing machine limits for integer types */
   struct IntInfo {
-      /* Number of bits occupied by the type */
+  
       bits: u32,
-      /* Smallest integer expressible by the type */
+  
       min: i64,
-      /* Largest integer expressible by the type */
+  
       max: i64,
   }
   
-  /* Enumeration of supported integer types */
   enum IntType {
-      /* 8-bit signed integer type */
+  
       Int8,
-      /* 16-bit signed integer type */
+  
       Int16,
-      /* 32-bit signed integer type */
+  
       Int32,
-      /* 64-bit signed integer type */
+  
       Int64,
-      /* 8-bit unsigned integer type */
+  
       UInt8,
-      /* 16-bit unsigned integer type */
+  
       UInt16,
-      /* 32-bit unsigned integer type */
+  
       UInt32,
-      /* 64-bit unsigned integer type */
+  
       UInt64,
   }
   

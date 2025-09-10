@@ -24,6 +24,12 @@ vc-description: |-
   
   Precondition: Number of bins > 0 and min_val < max_val
   Postcondition: The result satisfies the histogram mathematical properties
+  
+  // Boundary conditions: first edge is min_val, last edge is max_val
+  
+  // Result histogram has correct length
+  
+  // Conservation: total count equals number of data points in range
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -48,13 +54,13 @@ vc-spec: |-
           n_bins > 0,
           min_val < max_val,
       ensures
-          // Boundary conditions: first edge is min_val, last edge is max_val
+  
           result.1.len() == n_bins + 1,
           result.1[0] == min_val,
           result.1[(n_bins as int)] == max_val,
-          // Result histogram has correct length
+  
           result.0.len() == n_bins,
-          // Conservation: total count equals number of data points in range
+  
           sum_seq(result.0@) == data@.filter(|x: i32| min_val <= x && x <= max_val).len(),
 
 vc-code: |-

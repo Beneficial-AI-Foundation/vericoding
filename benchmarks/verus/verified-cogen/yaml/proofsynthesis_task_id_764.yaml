@@ -8,8 +8,6 @@ vc-preamble: |-
   spec fn is_digit(c: char) -> (result: bool) {
       (c as u8) >= 48 && (c as u8) <= 57
   }
-  // pure-end
-  // pure-end
   
   spec fn count_digits_recursively(seq: Seq<char>) -> (result: int)
       decreases seq.len(),
@@ -24,17 +22,15 @@ vc-preamble: |-
           }
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn count_digits(text: &Vec<char>) -> (count: usize)
-      // pre-conditions-start
+  
       ensures
           0 <= count <= text.len(),
           count_digits_recursively(text@) == count,
-      // pre-conditions-end
 
 vc-code: |-
   {
@@ -43,7 +39,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

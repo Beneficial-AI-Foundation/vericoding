@@ -1,12 +1,12 @@
 vc-description: |-
+  // Rearranges the elements in an array 'a' of natural numbers,
+  
+  // so that all odd numbers appear before all even numbers.
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // Rearranges the elements in an array 'a' of natural numbers,
-  // so that all odd numbers appear before all even numbers.
   
   spec fn odd(n: nat) -> bool { n % 2 == 1 }
   spec fn even(n: nat) -> bool { n % 2 == 0 }
@@ -26,7 +26,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

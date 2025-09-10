@@ -41,6 +41,8 @@ vc-description: |-
   
   Precondition: File path is writable and arrays are valid
   Postcondition: Archive file exists and contains both arrays with recoverable data
+  
+  /* h_writable and h_valid_path assumptions */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -52,7 +54,7 @@ vc-helpers: |-
 vc-spec: |-
   fn savez(file: String, arr1: Vec<f32>, arr2: Vec<f32>, allow_pickle: bool) -> (result: ())
       requires 
-          true, /* h_writable and h_valid_path assumptions */
+          true,
       ensures 
           result == (),
           exists|archive_exists: bool| archive_exists == true,

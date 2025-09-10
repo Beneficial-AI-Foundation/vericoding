@@ -1,4 +1,11 @@
 vc-description: |-
+  // 2.
+  
+  // 3.
+  
+  // 5.
+  
+  // 6
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -13,7 +20,6 @@ vc-preamble: |-
       else { fib((n - 1) as nat) + fib((n - 2) as nat) }
   }
   
-  // 2.
   pub enum List<T> {
       Nil,
       Cons(T, Box<List<T>>),
@@ -28,11 +34,6 @@ vc-preamble: |-
       }
   }
   
-  // 3.
-  
-  // 5.
-  
-  // 6
   spec fn sum(n: nat) -> nat
       decreases n
   {
@@ -55,8 +56,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

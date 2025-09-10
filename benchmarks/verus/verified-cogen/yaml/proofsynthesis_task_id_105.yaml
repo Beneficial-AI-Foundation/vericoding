@@ -18,17 +18,15 @@ vc-preamble: |-
           }
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn count_true(arr: &Vec<bool>) -> (count: u64)
-      // pre-conditions-start
+  
       ensures
           0 <= count <= arr.len(),
           count_boolean(arr@) == count,
-      // pre-conditions-end
 
 vc-code: |-
   {
@@ -37,7 +35,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

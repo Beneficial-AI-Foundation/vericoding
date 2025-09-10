@@ -1,4 +1,5 @@
 vc-description: |-
+  // A simple specification
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -10,8 +11,6 @@ vc-preamble: |-
   {
       if n <= 1 { 1 } else { stairs((n - 2) as nat) + stairs((n - 1) as nat) }
   }
-  
-  // A simple specification
 
 vc-helpers: |-
 
@@ -27,8 +26,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

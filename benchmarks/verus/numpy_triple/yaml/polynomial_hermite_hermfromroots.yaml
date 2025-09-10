@@ -6,6 +6,11 @@ vc-description: |-
   
   The resulting polynomial is expressed as: p(x) = c₀ + c₁ * H₁(x) + ... + cₙ * Hₙ(x)
   where Hᵢ(x) are Hermite polynomials.
+  
+  /* Abstract property: the Hermite polynomial with these coefficients
+                 evaluates to zero at each root */
+  
+  /* Placeholder for: hermval(roots[i], coef) = 0.0 */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -20,9 +25,8 @@ vc-spec: |-
           coef.len() == roots.len() + 1,
           roots.len() > 0 ==> coef[roots.len() as int] != 0.0,
           forall|i: int| 0 <= i < roots.len() ==> {
-              /* Abstract property: the Hermite polynomial with these coefficients
-                 evaluates to zero at each root */
-              true  /* Placeholder for: hermval(roots[i], coef) = 0.0 */
+  
+              true
           }
 
 vc-code: |-

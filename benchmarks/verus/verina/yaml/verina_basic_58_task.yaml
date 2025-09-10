@@ -10,30 +10,8 @@ vc-description: |-
   
   -----Note-----
   The implementation makes use of a recursive helper function to update the array in place. It is assumed that the input array is valid and that the doubling operation does not lead to any overflow issues.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn double_array_elements(s: &Vec<i32>) -> (result: Vec<i32>)
-      ensures
-          result.len() == s.len(),
-          forall|i: int| 0 <= i < s.len() ==> #[trigger] result[i] == 2 * s[i],
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /*
+  /*
       -- Invalid Inputs
       []
       -- Tests
@@ -95,5 +73,27 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn double_array_elements(s: &Vec<i32>) -> (result: Vec<i32>)
+      ensures
+          result.len() == s.len(),
+          forall|i: int| 0 <= i < s.len() ==> #[trigger] result[i] == 2 * s[i],
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

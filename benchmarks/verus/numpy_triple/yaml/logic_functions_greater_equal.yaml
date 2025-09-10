@@ -22,6 +22,12 @@ vc-description: |-
   - Transitivity: If greater_equal(x1, x2)[i] = true and greater_equal(x2, x3)[i] = true,
                   then greater_equal(x1, x3)[i] = true
   - For NaN values: comparison with NaN always returns false
+  
+  /* Reflexivity: comparing vector with itself yields all true */
+  
+  /* Antisymmetry with equality */
+  
+  /* Boolean result: each element is either true or false */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -36,12 +42,12 @@ vc-spec: |-
       ensures 
           result.len() == x1.len(),
           forall|i: int| 0 <= i < result.len() ==> (result[i] <==> x1@[i] >= x2@[i]),
-          /* Reflexivity: comparing vector with itself yields all true */
+  
           x1@ == x2@ ==> forall|i: int| 0 <= i < result.len() ==> result[i] == true,
-          /* Antisymmetry with equality */
+  
           forall|i: int| 0 <= i < result.len() ==> 
               (result[i] == true && x2@[i] >= x1@[i]) ==> x1@[i] == x2@[i],
-          /* Boolean result: each element is either true or false */
+  
           forall|i: int| 0 <= i < result.len() ==> (result[i] == true || result[i] == false),
 
 vc-code: |-

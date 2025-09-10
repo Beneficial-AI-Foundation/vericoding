@@ -12,6 +12,10 @@ vc-description: |-
   2. The points are sorted in ascending order
   3. The first point is -1 and the last point is 1
   4. The points are symmetric around 0 for the transformation x ↦ -x
+  
+  // First point is -1 
+  
+  // Last point is 1
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -25,9 +29,9 @@ vc-spec: |-
       requires n >= 2,
       ensures
           result.len() == n,
-          // First point is -1 
+  
           result[0] == -1.0f32,
-          // Last point is 1
+  
           result[(n-1) as int] == 1.0f32,
 
 vc-code: |-

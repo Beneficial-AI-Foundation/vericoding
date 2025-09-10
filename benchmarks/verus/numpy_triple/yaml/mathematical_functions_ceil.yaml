@@ -18,6 +18,12 @@ vc-description: |-
   - There is no integer k such that x[i] ≤ k < result[i]
   - Monotonicity: if x[i] ≤ x[j] then result[i] ≤ result[j]
   - Relationship with floor: result[i] = -((-x[i]).floor)
+  
+  /* Each element in result is the ceiling of corresponding element in x */
+  
+  /* Ceiling properties: integer value, >= x[i], < x[i] + 1, minimal such integer */
+  
+  /* Monotonicity: if x[i] <= x[j] then result[i] <= result[j] */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -31,9 +37,6 @@ vc-spec: |-
       requires x.len() > 0,
       ensures
           result.len() == x.len(),
-          /* Each element in result is the ceiling of corresponding element in x */
-          /* Ceiling properties: integer value, >= x[i], < x[i] + 1, minimal such integer */
-          /* Monotonicity: if x[i] <= x[j] then result[i] <= result[j] */
 
 vc-code: |-
   {
@@ -43,6 +46,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

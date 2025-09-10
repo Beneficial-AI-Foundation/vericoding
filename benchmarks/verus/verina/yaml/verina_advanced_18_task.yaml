@@ -6,6 +6,22 @@ vc-description: |-
   
   Output: The output is a boolean value:
   - `bool`: Return `true` if `n` is an Armstrong number, otherwise return `false`.
+  
+  // let n = 153;
+  
+  // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
+  
+  // 
+  
+  // let n = 9474;
+  
+  // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
+  
+  // 
+  
+  // let n = 9475;
+  
+  // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -49,14 +65,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  fn main() {
-      // let n = 153;
-      // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
-      // 
-      // let n = 9474;
-      // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
-      // 
-      // let n = 9475;
-      // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
-  }
+  fn main() {}
 

@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /* 
   MIPS 0
   We implement the following with bitvectors in Verus.
@@ -25,6 +19,11 @@ vc-preamble: |-
           ys.append(y)
       return ys
   */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
   
   spec fn array_to_bv10(arr: Seq<bool>) -> int
       recommends arr.len() == 10
@@ -95,8 +94,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

@@ -11,6 +11,9 @@ vc-description: |-
   3. NaN values are treated as 1 in the product calculation
   4. Leading NaNs are replaced by ones
   5. The cumulative product property holds for non-NaN values
+  
+  /* Complex mathematical properties involving cumulative products and NaN handling
+             would require additional specification functions for float arithmetic */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -23,8 +26,6 @@ vc-spec: |-
   fn nancumprod(arr: Vec<f32>) -> (result: Vec<f32>)
       ensures 
           result.len() == arr.len(),
-          /* Complex mathematical properties involving cumulative products and NaN handling
-             would require additional specification functions for float arithmetic */
 
 vc-code: |-
   {

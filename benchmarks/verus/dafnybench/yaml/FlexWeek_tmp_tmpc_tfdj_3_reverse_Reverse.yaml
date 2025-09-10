@@ -1,27 +1,34 @@
 vc-description: |-
+  // Write an *iterative* Verus method reverse with signature:
+  
+  //          fn reverse(a: &Vec<char>) -> Vec<char>
+  
+  // which takes an input vector of characters 'a' and outputs vector 'b' consisting of
+  
+  // the elements of the input vector in reverse order. The following conditions apply:
+  
+  //  - the input vector cannot be empty
+  
+  //  - the input vector is not modified
+  
+  //  - you must use iteration
+  
+  //  - not permitted is an *executable* (parallel) forall statement
+  
+  //  - not permitted are any other predicates, functions or methods
+  
+  // For the purposes of this practice exercise, I'll include a test method.
+  
+  // Notice it compiles and the executable generates output (just to see the vectors printed in reverse).
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // Write an *iterative* Verus method reverse with signature:
 
 vc-helpers: |-
 
 vc-spec: |-
-  //          fn reverse(a: &Vec<char>) -> Vec<char>
-  
-  // which takes an input vector of characters 'a' and outputs vector 'b' consisting of
-  // the elements of the input vector in reverse order. The following conditions apply:
-  //  - the input vector cannot be empty
-  //  - the input vector is not modified
-  //  - you must use iteration
-  //  - not permitted is an *executable* (parallel) forall statement
-  //  - not permitted are any other predicates, functions or methods
-  
-  // For the purposes of this practice exercise, I'll include a test method.
-  
   fn reverse(a: &Vec<char>) -> (b: Vec<char>)
       requires a.len() > 0
       ensures 
@@ -35,11 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  // Notice it compiles and the executable generates output (just to see the vectors printed in reverse).
-  
-  fn main() {
-  
   }
-  
-  }
+  fn main() {}
 

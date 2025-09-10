@@ -4,6 +4,8 @@ vc-description: |-
   Specification: euler_gamma represents the Euler-Mascheroni constant γ,
   which is the limiting difference between the harmonic series and the natural logarithm.
   It satisfies key mathematical properties and bounds
+  
+  /* The Euler-Mascheroni constant (γ), approximately 0.577215... */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -13,7 +15,6 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  /* The Euler-Mascheroni constant (γ), approximately 0.577215... */
   fn euler_gamma() -> (result: f64)
 
 vc-code: |-

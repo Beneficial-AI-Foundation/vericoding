@@ -10,36 +10,14 @@ vc-description: |-
   
   -----Note-----
   No additional preconditions are required. The method should correctly handle any list, including an empty list.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn set_to_seq(s: &Vec<i32>) -> (result: Vec<i32>)
-      ensures
-          // All elements are unique in the result  
-          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] != result[j],
-          // Every element in result is in s
-          forall|i: int| 0 <= i < result.len() ==> 
-              exists|j: int| 0 <= j < s.len() && s[j] == #[trigger] result[i],
-          // Every element in s is in result
-          forall|i: int| 0 <= i < s.len() ==> 
-              exists|j: int| 0 <= j < result.len() && result[j] == #[trigger] s[i],
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /*
+  // All elements are unique in the result  
+  
+  // Every element in result is in s
+  
+  // Every element in s is in result
+  
+  /*
       -- Invalid Inputs
       []
       -- Tests
@@ -101,5 +79,33 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn set_to_seq(s: &Vec<i32>) -> (result: Vec<i32>)
+      ensures
+  
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] != result[j],
+  
+          forall|i: int| 0 <= i < result.len() ==> 
+              exists|j: int| 0 <= j < s.len() && s[j] == #[trigger] result[i],
+  
+          forall|i: int| 0 <= i < s.len() ==> 
+              exists|j: int| 0 <= j < result.len() && result[j] == #[trigger] s[i],
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

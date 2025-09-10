@@ -1,4 +1,7 @@
 vc-description: |-
+  // Note: Verus currently has syntax limitations with exists quantifiers in postconditions
+  
+  // The second ensures clause from Dafny cannot be directly translated
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -11,8 +14,6 @@ vc-spec: |-
   fn min_array(a: &[i32]) -> (r: i32)
       requires a.len() > 0,
       ensures forall|i: int| 0 <= i < a.len() ==> r <= a[i],
-      // Note: Verus currently has syntax limitations with exists quantifiers in postconditions
-      // The second ensures clause from Dafny cannot be directly translated
 
 vc-code: |-
   {
@@ -21,7 +22,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

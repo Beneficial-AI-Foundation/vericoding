@@ -1,12 +1,13 @@
 vc-description: |-
+  // verifies
+  
+  // check that string between indexes low and high-1 are sorted
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // verifies
-  // check that string between indexes low and high-1 are sorted
   spec fn sorted(a: Seq<char>, low: int, high: int) -> bool
       recommends 0 <= low <= high <= a.len()
   { 
@@ -31,8 +32,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

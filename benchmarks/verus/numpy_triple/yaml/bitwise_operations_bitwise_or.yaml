@@ -1,5 +1,9 @@
 vc-description: |-
   Compute the bit-wise OR of two vectors element-wise
+  
+  // placeholder implementation
+  
+  // placeholder implementation
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -10,11 +14,11 @@ vc-helpers: |-
 
 vc-spec: |-
   spec fn bitwise_or_int(x: i32, y: i32) -> i32 {
-      x // placeholder implementation
+      x
   }
   
   spec fn bitwise_and_int(x: i32, y: i32) -> i32 {
-      x // placeholder implementation
+      x
   }
   
   spec fn bitwise_or_vec(x: Seq<i32>, y: Seq<i32>) -> Seq<i32>

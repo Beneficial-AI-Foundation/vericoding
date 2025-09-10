@@ -11,20 +11,27 @@ vc-description: |-
   4. The resulting slice is valid for array indexing operations
   5. The slice preserves the ordering constraints (start ≤ stop when both present)
   6. The step value, if present, is positive for forward slicing
+  
+  /* A slice object representing a range of indices for array slicing.
+     Contains start, stop, and step parameters for creating slices. */
+  
+  /* The starting index of the slice (inclusive). If None, starts from the beginning. */
+  
+  /* The stopping index of the slice (exclusive). If None, goes to the end. */
+  
+  /* The step size for the slice. If None, defaults to 1. */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* A slice object representing a range of indices for array slicing.
-     Contains start, stop, and step parameters for creating slices. */
   pub struct Slice {
-      /* The starting index of the slice (inclusive). If None, starts from the beginning. */
+  
       pub start: Option<usize>,
-      /* The stopping index of the slice (exclusive). If None, goes to the end. */
+  
       pub stop: Option<usize>,
-      /* The step size for the slice. If None, defaults to 1. */
+  
       pub step: Option<usize>,
   }
 

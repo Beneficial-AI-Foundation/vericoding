@@ -15,19 +15,36 @@ vc-description: |-
   2. Internal zeros (zeros between non-zero elements) are preserved
   3. Only leading/trailing zeros are removed based on the mode
   4. If the array contains only zeros, returns an empty vector
+  
+  /* Represents the trim mode for trim_zeros function */
+  
+  /* Trim zeros from the front of the array only (corresponds to 'f') */
+  
+  /* Trim zeros from the back of the array only (corresponds to 'b') */
+  
+  /* Trim zeros from both front and back of the array (corresponds to 'fb', default) */
+  
+  /* Elements before start are zeros (if trimming front) */
+  
+  /* Elements after finish are zeros (if trimming back) */
+  
+  /* The preserved elements match exactly */
+  
+  /* If trimming front, start is the first non-zero or arr.len() */
+  
+  /* If trimming back, finish is past the last non-zero or 0 */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Represents the trim mode for trim_zeros function */
   pub enum TrimMode {
-      /* Trim zeros from the front of the array only (corresponds to 'f') */
+  
       Front,
-      /* Trim zeros from the back of the array only (corresponds to 'b') */
+  
       Back,
-      /* Trim zeros from both front and back of the array (corresponds to 'fb', default) */
+  
       Both,
   }
 
@@ -41,18 +58,18 @@ vc-spec: |-
               0 <= finish <= arr.len() &&
               start <= finish &&
               result.len() == (finish - start) &&
-              /* Elements before start are zeros (if trimming front) */
+  
               (matches!(mode, TrimMode::Front | TrimMode::Both) ==> 
                   forall|i: int| 0 <= i < start ==> arr[i] == 0.0) &&
-              /* Elements after finish are zeros (if trimming back) */
+  
               (matches!(mode, TrimMode::Back | TrimMode::Both) ==> 
                   forall|i: int| finish <= i < arr.len() ==> arr[i] == 0.0) &&
-              /* The preserved elements match exactly */
+  
               (forall|i: int| 0 <= i < result.len() ==> result[i] == arr[start + i]) &&
-              /* If trimming front, start is the first non-zero or arr.len() */
+  
               (matches!(mode, TrimMode::Front | TrimMode::Both) ==> 
                   (start == arr.len() || arr[start] != 0.0)) &&
-              /* If trimming back, finish is past the last non-zero or 0 */
+  
               (matches!(mode, TrimMode::Back | TrimMode::Both) ==> 
                   (finish == 0 || (finish > 0 && arr[finish - 1] != 0.0)))
 

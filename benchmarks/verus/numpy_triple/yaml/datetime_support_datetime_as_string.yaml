@@ -11,52 +11,83 @@ vc-description: |-
   
   Precondition: True (no special preconditions)
   Postcondition: Each datetime64 is converted to a properly formatted ISO 8601 string
+  
+  /* Time unit for datetime64 */
+  
+  /* Years unit ('Y') */
+  
+  /* Days unit ('D') */
+  
+  /* Hours unit ('h') */
+  
+  /* Minutes unit ('m') */
+  
+  /* Seconds unit ('s') */
+  
+  /* Milliseconds unit ('ms') */
+  
+  /* Microseconds unit ('us') */
+  
+  /* Nanoseconds unit ('ns') */
+  
+  /* DateTime64 structure representing offset from Unix epoch */
+  
+  /* Offset value from 1970-01-01T00:00:00 */
+  
+  /* Time unit of the offset */
+  
+  /* Always UTC with +0000 offset */
+  
+  /* Timezone formatting options */
+  
+  /* No timezone suffix */
+  
+  /* Add 'Z' suffix for UTC */
+  
+  /* Add local timezone offset */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Time unit for datetime64 */
   #[derive(PartialEq, Eq)]
   enum TimeUnit {
-      /* Years unit ('Y') */
+  
       Years,
-      /* Days unit ('D') */
+  
       Days,
-      /* Hours unit ('h') */
+  
       Hours,
-      /* Minutes unit ('m') */
+  
       Minutes,
-      /* Seconds unit ('s') */
+  
       Seconds,
-      /* Milliseconds unit ('ms') */
+  
       Milliseconds,
-      /* Microseconds unit ('us') */
+  
       Microseconds,
-      /* Nanoseconds unit ('ns') */
+  
       Nanoseconds,
   }
   
-  /* DateTime64 structure representing offset from Unix epoch */
   #[derive(PartialEq, Eq)]
   struct DateTime64 {
-      /* Offset value from 1970-01-01T00:00:00 */
+  
       offset: i64,
-      /* Time unit of the offset */
+  
       unit: TimeUnit,
-      /* Always UTC with +0000 offset */
+  
       is_utc: bool,
   }
   
-  /* Timezone formatting options */
   #[derive(PartialEq, Eq)]
   enum TimezoneOption {
-      /* No timezone suffix */
+  
       Naive,
-      /* Add 'Z' suffix for UTC */
+  
       UTC,
-      /* Add local timezone offset */
+  
       Local,
   }
 
@@ -77,6 +108,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

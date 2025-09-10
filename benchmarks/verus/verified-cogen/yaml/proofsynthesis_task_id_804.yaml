@@ -8,16 +8,14 @@ vc-preamble: |-
   spec fn is_even(n: u32) -> (result: bool) {
       (n % 2) == 0
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn is_product_even(arr: &Vec<u32>) -> (result: bool)
-      // post-conditions-start
+  
       ensures
           result <==> (exists|k: int| 0 <= k < arr.len() && is_even(#[trigger] arr[k])),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -26,7 +24,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

@@ -22,6 +22,12 @@ vc-description: |-
   5. Range property: sinh(x) ∈ (-∞, ∞) for all x ∈ ℝ
   6. Sign property: sinh(x) has the same sign as x
   7. Symmetry property: sinh(-x) = -sinh(x)
+  
+  // Simplified specification without direct floating point arithmetic in spec
+  
+  // Placeholder for mathematical properties
+  
+  /* Simplified properties without floating point spec operations */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -32,15 +38,15 @@ vc-helpers: |-
 
 vc-spec: |-
   spec fn sinh_property(x: f64, result: f64) -> bool {
-      // Simplified specification without direct floating point arithmetic in spec
-      true  // Placeholder for mathematical properties
+  
+      true
   }
   
   fn sinh(x: Vec<f64>) -> (result: Vec<f64>)
       requires x.len() > 0,
       ensures 
           result.len() == x.len(),
-          /* Simplified properties without floating point spec operations */
+  
           forall|i: int| 0 <= i < x.len() ==> sinh_property(x[i], result[i])
 
 vc-code: |-

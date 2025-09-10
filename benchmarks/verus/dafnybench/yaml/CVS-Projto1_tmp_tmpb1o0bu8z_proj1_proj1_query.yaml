@@ -1,11 +1,17 @@
 vc-description: |-
+  //Exercicio 1.a)
+  
+  //Exercicio 1.b)
+  
+  //Exercicio 1.c)
+  
+  ///Exercicio 2.
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  //Exercicio 1.a)
   spec fn sum(a: Seq<int>, i: int, j: int) -> int
       recommends 0 <= i <= j <= a.len()
       decreases j when 0 <= i <= j <= a.len()
@@ -17,17 +23,12 @@ vc-preamble: |-
       }
   }
   
-  //Exercicio 1.b)
-  
-  //Exercicio 1.c)
-  
   spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool {
       a.len() + 1 == c.len()
       && c[0] == 0
       && forall|j: int| 1 <= j <= a.len() ==> c[j] == sum(a, 0, j)
   }
   
-  ///Exercicio 2.
   #[derive(PartialEq, Eq)]
   enum List<T> {
       Nil,
@@ -65,7 +66,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

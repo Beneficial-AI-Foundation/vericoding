@@ -18,6 +18,12 @@ vc-description: |-
   This specification captures the complete behavior of the heaviside step function
   including the crucial property that it's completely determined by the sign of x1
   and uses x2 as the value at the discontinuity point.
+  
+  // uninterpreted function representing x == 0.0
+  
+  // uninterpreted function representing x > 0.0
+  
+  // uninterpreted function representing x < 0.0
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -28,15 +34,15 @@ vc-helpers: |-
 
 vc-spec: |-
   spec fn is_zero(x: f32) -> bool {
-      true  // uninterpreted function representing x == 0.0
+      true
   }
   
   spec fn is_positive(x: f32) -> bool {
-      true  // uninterpreted function representing x > 0.0
+      true
   }
   
   spec fn is_negative(x: f32) -> bool {
-      true  // uninterpreted function representing x < 0.0
+      true
   }
   
   fn heaviside(x1: Vec<f32>, x2: Vec<f32>) -> (result: Vec<f32>)

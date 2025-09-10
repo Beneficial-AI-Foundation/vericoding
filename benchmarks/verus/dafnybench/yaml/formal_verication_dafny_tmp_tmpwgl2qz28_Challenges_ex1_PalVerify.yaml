@@ -1,12 +1,8 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   // ex3errors.dfy in Assignment 1
+  
   // verify that an array of characters is a Palindrome
+  
   /*
   A Palindrome is a word that is the same when written forwards and when written backwards. 
   For example, the word "refer" is a Palindrome.
@@ -23,6 +19,11 @@ vc-preamble: |-
         The tester should not generate any output.
   */
 
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -37,8 +38,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

@@ -20,6 +20,12 @@ vc-description: |-
   9. Each element of the second array's single row equals the corresponding seq2 element
   10. The mesh property: for any indices (i,j), the pair (first[i][0], second[0][j]) 
       represents a coordinate in the mesh grid
+  
+  /* First array has correct shape and values */
+  
+  /* Second array has correct shape and values */
+  
+  /* Mesh property: coordinates are preserved */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -34,15 +40,15 @@ vc-spec: |-
           seq1.len() > 0,
           seq2.len() > 0,
       ensures 
-          /* First array has correct shape and values */
+  
           result.0.len() == seq1.len(),
           forall|i: int| 0 <= i < seq1.len() ==> result.0[i].len() == 1,
           forall|i: int| 0 <= i < seq1.len() ==> result.0[i][0] == seq1[i],
-          /* Second array has correct shape and values */
+  
           result.1.len() == 1,
           result.1[0].len() == seq2.len(),
           forall|j: int| 0 <= j < seq2.len() ==> result.1[0][j] == seq2[j],
-          /* Mesh property: coordinates are preserved */
+  
           forall|i: int, j: int| 0 <= i < seq1.len() && 0 <= j < seq2.len() ==> 
               result.0[i][0] == seq1[i] && result.1[0][j] == seq2[j],
 

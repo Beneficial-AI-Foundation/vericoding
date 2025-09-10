@@ -12,8 +12,6 @@ vc-preamble: |-
   spec fn is_prime(n: nat) -> (result:bool) {
       forall|i: nat| 1 < i < n ==> #[trigger] (n % i) != 0
   }
-  // pure-end
-  // pure-end
   
   spec fn is_prime_factorization(n: nat, factorization: Seq<nat>) -> (result:bool) {
   
@@ -29,20 +27,17 @@ vc-preamble: |-
           (1 < i <= j < factorization.len()) ==> (#[trigger] factorization[i as int]
               <= #[trigger] factorization[j as int])
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn factorize(n: u8) -> (factorization: Vec<u8>)
-      // pre-conditions-start
+  
       requires
           1 <= n <= u8::MAX,
-      // pre-conditions-end
-      // post-conditions-start
+  
       ensures
           is_prime_factorization(n as nat, factorization@.map(|_idx, j: u8| j as nat)),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -51,6 +46,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  fn main() { }
+  }
+  fn main() {}
 

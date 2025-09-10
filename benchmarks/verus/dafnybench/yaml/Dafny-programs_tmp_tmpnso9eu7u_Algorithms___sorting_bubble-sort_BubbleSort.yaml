@@ -1,22 +1,8 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /*
   Bubble Sort is the simplest sorting algorithm that works by 
   repeatedly swapping the adjacent elements if they are in wrong order.
   */
-  
-  spec fn sorted_between(a: Seq<int>, from: int, to: int) -> bool {
-      forall|i: int, j: int| 0 <= i <= j < a.len() && from <= i <= j <= to ==> a[i] <= a[j]
-  }
-  
-  spec fn sorted(a: Seq<int>) -> bool {
-      sorted_between(a, 0, (a.len() - 1) as int)
-  }
   
   /* Explanation:
   
@@ -30,6 +16,19 @@ vc-preamble: |-
        // Therefore, each value that the array takes for all elements from 0 to j
        // They are less than or equal to the value of the variable
   */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sorted_between(a: Seq<int>, from: int, to: int) -> bool {
+      forall|i: int, j: int| 0 <= i <= j < a.len() && from <= i <= j <= to ==> a[i] <= a[j]
+  }
+  
+  spec fn sorted(a: Seq<int>) -> bool {
+      sorted_between(a, 0, (a.len() - 1) as int)
+  }
 
 vc-helpers: |-
 
@@ -46,7 +45,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

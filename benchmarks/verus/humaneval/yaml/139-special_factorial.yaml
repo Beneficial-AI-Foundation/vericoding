@@ -15,8 +15,6 @@ vc-preamble: |-
           n * factorial((n - 1) as nat)
       }
   }
-  // pure-end
-  // pure-end
   
   spec fn brazilian_factorial(n: nat) -> (ret:nat)
       decreases n,
@@ -27,19 +25,17 @@ vc-preamble: |-
           factorial(n) * brazilian_factorial((n - 1) as nat)
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn brazilian_factorial_impl(n: u64) -> (ret: Option<u64>)
-      // post-conditions-start
+  
       ensures
           match ret {
               None => brazilian_factorial(n as nat) > u64::MAX,
               Some(bf) => bf == brazilian_factorial(n as nat),
           },
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -48,6 +44,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
+  }
   fn main() {}
 

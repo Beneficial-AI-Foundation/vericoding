@@ -18,6 +18,12 @@ vc-description: |-
   2. For all indices i, result[i] is the largest integer ≤ x1[i] / x2[i]
   3. The fundamental floor division property: result[i] ≤ x1[i] / x2[i] < result[i] + 1
   4. This pairs with modulo such that: x1[i] = x2[i] * result[i] + remainder
+  
+  /* Floor division properties:
+               * 1. result[i] is the floor of x1[i] / x2[i]
+               * 2. result[i] <= x1[i] / x2[i] 
+               * 3. x1[i] / x2[i] < result[i] + 1.0
+               */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -38,11 +44,7 @@ vc-spec: |-
       ensures
           result.len() == x1.len(),
           forall|i: int| 0 <= i < result.len() ==> {
-              /* Floor division properties:
-               * 1. result[i] is the floor of x1[i] / x2[i]
-               * 2. result[i] <= x1[i] / x2[i] 
-               * 3. x1[i] / x2[i] < result[i] + 1.0
-               */
+  
               floor_div_prop(x1[i], x2[i])
           },
 

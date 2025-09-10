@@ -18,8 +18,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  } // verus!
+  fn main() {}
 

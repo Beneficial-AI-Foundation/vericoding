@@ -1,12 +1,12 @@
 vc-description: |-
+  /*
+      i)  Write a verified method with signature
+  */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  /*
-      i)  Write a verified method with signature
-  */
 
 vc-helpers: |-
 
@@ -23,7 +23,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

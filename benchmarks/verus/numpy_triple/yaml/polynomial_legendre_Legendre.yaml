@@ -24,6 +24,16 @@ vc-description: |-
   Create a Legendre series from coefficients
   
   Specification: mkLegendre creates a valid Legendre series representation
+  
+  /* A Legendre series representation with coefficients, domain, and window */
+  
+  /* Legendre coefficients in order of increasing degree */
+  
+  /* Domain interval for polynomial evaluation */
+  
+  /* Window interval for domain mapping */
+  
+  /* Symbol name for variable representation */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -33,15 +43,14 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  /* A Legendre series representation with coefficients, domain, and window */
   struct Legendre {
-      /* Legendre coefficients in order of increasing degree */
+  
       coef: Vec<f64>,
-      /* Domain interval for polynomial evaluation */
+  
       domain: [f64; 2],
-      /* Window interval for domain mapping */
+  
       window: [f64; 2],
-      /* Symbol name for variable representation */
+  
       symbol: String,
   }
   

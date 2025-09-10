@@ -1,11 +1,10 @@
 vc-description: |-
+  // see pdf 'ex6 & 7 documentation' for excercise question
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // see pdf 'ex6 & 7 documentation' for excercise question
   
   spec fn bullspec(s: Seq<nat>, u: Seq<nat>) -> nat {
       if !(0 <= u.len() == s.len() && nomultiples(u)) {
@@ -74,7 +73,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

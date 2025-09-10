@@ -34,6 +34,12 @@ vc-description: |-
      - If two vectors are created with full using the same fill_value and size,
        they are element-wise equal
      - full preserves the fill_value exactly (no transformation or casting)
+  
+  /* Core property: every element equals fill_value */
+  
+  /* Uniformity property: all elements are equal to each other */
+  
+  /* First and last element property (when n > 0) */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -46,11 +52,11 @@ vc-spec: |-
   fn full<T>(n: usize, fill_value: T) -> (result: Vec<T>)
       ensures 
           result.len() == n,
-          /* Core property: every element equals fill_value */
+  
           forall|i: int| 0 <= i < n ==> result[i] == fill_value,
-          /* Uniformity property: all elements are equal to each other */
+  
           forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> result[i] == result[j],
-          /* First and last element property (when n > 0) */
+  
           n > 0 ==> result[0] == fill_value,
           n > 0 ==> result[(n-1) as int] == fill_value,
 

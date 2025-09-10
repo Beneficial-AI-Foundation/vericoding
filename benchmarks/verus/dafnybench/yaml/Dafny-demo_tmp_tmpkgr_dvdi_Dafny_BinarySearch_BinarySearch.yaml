@@ -1,11 +1,11 @@
 vc-description: |-
+  // Predicate to check if array slice is sorted
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // Predicate to check if array slice is sorted
   spec fn sorted(a: &[int], l: int, u: int) -> bool {
       forall|i: int, j: int| 0 <= l <= i <= j <= u < a.len() ==> a[i] <= a[j]
   }
@@ -28,8 +28,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

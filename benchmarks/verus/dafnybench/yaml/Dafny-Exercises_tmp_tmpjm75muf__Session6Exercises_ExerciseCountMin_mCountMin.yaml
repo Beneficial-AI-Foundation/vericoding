@@ -1,4 +1,9 @@
 vc-description: |-
+  // dummy value for invalid inputs
+  
+  // dummy value for invalid inputs
+  
+  //Implement and verify an O(v.len()) algorithm
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -17,7 +22,7 @@ vc-preamble: |-
               min(v, i-1)
           }
       } else {
-          0  // dummy value for invalid inputs
+          0
       }
   }
   
@@ -43,7 +48,7 @@ vc-preamble: |-
               count_min(v, x, i-1)
           }
       } else {
-          0  // dummy value for invalid inputs
+          0
       }
   }
   
@@ -65,7 +70,6 @@ vc-spec: |-
       ensures c == count_min(v@.map_values(|x: i32| x as int), 
                             min(v@.map_values(|x: i32| x as int), v.len() as int), 
                             v.len() as int)
-      //Implement and verify an O(v.len()) algorithm
 
 vc-code: |-
   {
@@ -74,8 +78,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

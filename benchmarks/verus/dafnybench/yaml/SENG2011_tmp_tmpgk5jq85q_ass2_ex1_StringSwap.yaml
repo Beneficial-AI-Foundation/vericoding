@@ -1,4 +1,7 @@
 vc-description: |-
+  // string == Seq<char>
+  
+  //give se2011 ass2 ex1.dfy
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -26,10 +29,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  // string == Seq<char>
-  //give se2011 ass2 ex1.dfy
-  
-  fn main() {}
-  
   }
+  fn main() {}
 

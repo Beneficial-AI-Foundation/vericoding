@@ -1,4 +1,5 @@
 vc-description: |-
+  // This is the postcondition that ensures that it's the first, not just any
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -34,7 +35,7 @@ vc-spec: |-
                exists|i: int| 0 <= i < lst.len() && is_odd(lst[i] as int)
       ensures 0 <= result.0 < lst.len(),
               0 <= result.1 < lst.len(),
-              // This is the postcondition that ensures that it's the first, not just any
+  
               is_even(lst[result.0 as int] as int) && is_first_even(result.0 as int, lst@),
               is_odd(lst[result.1 as int] as int) && is_first_odd(result.1 as int, lst@)
 
@@ -45,7 +46,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

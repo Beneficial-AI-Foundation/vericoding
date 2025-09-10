@@ -16,6 +16,8 @@ vc-description: |-
   3. Two coefficients [a, b] evaluates to a + b * 2x
   4. The evaluation follows the Hermite polynomial recurrence relation
   5. Hermite polynomials form an orthogonal basis
+  
+  /* Complex Hermite polynomial properties */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -29,7 +31,7 @@ vc-spec: |-
       requires coef.len() > 0,
       ensures 
           coef.len() == 1 ==> result == coef[0],
-          coef.len() >= 2 ==> true, /* Complex Hermite polynomial properties */
+          coef.len() >= 2 ==> true,
 
 vc-code: |-
   {

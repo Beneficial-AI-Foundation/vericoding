@@ -8,34 +8,8 @@ vc-description: |-
   -----Output-----
   The output is a boolean:
   Returns true if there exists a triplet (i, j, k) where i < j < k and nums[i] < nums[j] < nums[k]; otherwise, returns false.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn increasing_triplet(nums: &Vec<i32>) -> (result: bool)
-      ensures
-          result ==> exists|i: int, j: int, k: int| 
-              0 <= i < j && j < k < nums.len() && 
-              nums[i] < nums[j] && nums[j] < nums[k],
-          !result ==> forall|i: int, j: int, k: int| 
-              0 <= i < j && j < k < nums.len() ==> 
-              !(nums[i] < nums[j] && nums[j] < nums[k]),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /*
+  /*
       -- Invalid Inputs
       []
       -- Tests
@@ -96,5 +70,31 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn increasing_triplet(nums: &Vec<i32>) -> (result: bool)
+      ensures
+          result ==> exists|i: int, j: int, k: int| 
+              0 <= i < j && j < k < nums.len() && 
+              nums[i] < nums[j] && nums[j] < nums[k],
+          !result ==> forall|i: int, j: int, k: int| 
+              0 <= i < j && j < k < nums.len() ==> 
+              !(nums[i] < nums[j] && nums[j] < nums[k]),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

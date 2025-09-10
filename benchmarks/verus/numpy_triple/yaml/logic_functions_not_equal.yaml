@@ -26,6 +26,10 @@ vc-description: |-
   4. Symmetry: not_equal(x, y) = not_equal(y, x)
   5. Logical negation of equality: not_equal(x, y) = ¬equal(x, y)
   6. Result shape matches input shape
+  
+  /* Irreflexivity: comparing vector with itself yields all false */
+  
+  /* Symmetry: inequality comparison is commutative */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -40,9 +44,9 @@ vc-spec: |-
       ensures
           result.len() == x1.len(),
           forall|i: int| 0 <= i < result.len() ==> result[i] == (x1[i] != x2[i]),
-          /* Irreflexivity: comparing vector with itself yields all false */
+  
           (x1@ == x2@) ==> (forall|i: int| 0 <= i < result.len() ==> result[i] == false),
-          /* Symmetry: inequality comparison is commutative */
+  
           forall|i: int| 0 <= i < result.len() ==> result[i] == (x2[i] != x1[i]),
 
 vc-code: |-

@@ -1,4 +1,7 @@
 vc-description: |-
+  // Simplified to avoid termination proof complexity
+  
+  // Simplified to avoid termination proof complexity
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -12,10 +15,10 @@ vc-preamble: |-
       if m == n { 
           n 
       } else if m > n { 
-          // Simplified to avoid termination proof complexity
+  
           if m > n { gcd(1, n) } else { n }
       } else { 
-          // Simplified to avoid termination proof complexity  
+  
           if n > m { gcd(m, 1) } else { m }
       }
   }
@@ -48,8 +51,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

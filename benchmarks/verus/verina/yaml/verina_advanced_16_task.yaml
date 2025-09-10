@@ -12,11 +12,32 @@ vc-description: |-
   Example:
   Input:  [3, 1, 4, 2]
   Output: [1, 2, 3, 4]
+  
+  /* Helper function to check if a Vec is sorted */
+  
+  /* Helper function to check if two Vecs are multiset equivalent */
+  
+  /* This would typically involve checking that both vectors contain
+         the same elements with the same multiplicities */
+  
+  /* Placeholder - actual implementation would be more complex */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
+  
+  spec fn sorted(v: Vec<i32>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j]
+  }
+  
+  spec fn multiset_equivalent(v1: Vec<i32>, v2: Vec<i32>) -> bool {
+      forall|elem: i32| count(v1, elem) == count(v2, elem)
+  }
+  
+  spec fn count(v: Vec<i32>, elem: i32) -> nat {
+      v.to_seq().filter(|x| *x == elem).len()
+  }
 
 vc-helpers: |-
 
@@ -33,18 +54,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  /* Helper function to check if a Vec is sorted */
-  spec fn sorted(v: Vec<i32>) -> bool {
-      forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j]
-  }
-  
-  /* Helper function to check if two Vecs are multiset equivalent */
-  spec fn multiset_equivalent(v1: Vec<i32>, v2: Vec<i32>) -> bool {
-      /* This would typically involve checking that both vectors contain
-         the same elements with the same multiplicities */
-      true /* Placeholder - actual implementation would be more complex */
-  }
-  
   }
   fn main() {}
 

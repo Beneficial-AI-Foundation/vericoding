@@ -18,16 +18,14 @@ vc-preamble: |-
           },
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn longest(strings: &Vec<Vec<u8>>) -> (result: Option<&Vec<u8>>)
-      // post-conditions-start
+  
       ensures
           expr_inner_longest(strings, result),
-      // post-conditions-end
 
 vc-code: |-
   {

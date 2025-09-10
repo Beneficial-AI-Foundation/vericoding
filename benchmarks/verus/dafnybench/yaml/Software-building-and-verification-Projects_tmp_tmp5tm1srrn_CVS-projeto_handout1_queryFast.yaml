@@ -1,13 +1,21 @@
 vc-description: |-
+  // 1 a)
+  
+  // [ai, aj[
+  
+  // 1 b)
+  
+  // 1 c)
+  
+  // a -> [1, 10, 3, −4, 5]
+  
+  // c -> [0, 1, 11, 14, 10, 15]
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // 1 a)
-  
-  // [ai, aj[
   spec fn sum(a: Seq<int>, i: int, j: int) -> int
       recommends 0 <= i <= j <= a.len()
       decreases j - i
@@ -16,12 +24,6 @@ vc-preamble: |-
       if i == j { 0 }
       else { a[j-1] + sum(a, i, j-1) }
   }
-  
-  // 1 b)
-  
-  // 1 c)
-  // a -> [1, 10, 3, −4, 5]
-  // c -> [0, 1, 11, 14, 10, 15]
   
   spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool
   {
@@ -44,8 +46,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

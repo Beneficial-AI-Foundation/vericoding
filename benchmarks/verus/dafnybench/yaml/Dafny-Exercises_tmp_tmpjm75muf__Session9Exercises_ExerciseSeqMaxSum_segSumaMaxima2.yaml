@@ -1,4 +1,9 @@
 vc-description: |-
+  //Now do the same but with a loop from right to left
+  
+  //maximum sum stuck to the right
+  
+  //Implement and verify
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -33,8 +38,7 @@ vc-preamble: |-
       }
   }
   
-  //Now do the same but with a loop from right to left
-  spec fn sum_max_to_right2(v: Seq<i32>, j: int, i: int, s: int) -> bool //maximum sum stuck to the right
+  spec fn sum_max_to_right2(v: Seq<i32>, j: int, i: int, s: int) -> bool
       recommends 0 <= j <= i < v.len()
   {
       forall|l: int, ss: int| j <= l <= i && ss == i + 1 ==> sum2(v, l, ss) <= s
@@ -49,7 +53,6 @@ vc-spec: |-
           0 <= result.1 <= i && 
           result.0 as int == sum2(v@, result.1 as int, (i + 1) as int) && 
           sum_max_to_right2(v@, 0, i as int, result.0 as int)
-  //Implement and verify
 
 vc-code: |-
   {
@@ -58,7 +61,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

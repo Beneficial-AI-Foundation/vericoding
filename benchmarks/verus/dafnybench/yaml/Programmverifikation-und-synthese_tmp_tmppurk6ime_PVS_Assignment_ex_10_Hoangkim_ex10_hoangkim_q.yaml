@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   //Problem01
   
   /*
@@ -27,7 +21,9 @@ vc-preamble: |-
   */
   
   //Problem02
+  
   //As you can see below, Verus claims that after executing the following function
+  
   //strange() we will have that 1=2;
   
   /*(a). Do you have an explanation for this behaviour?
@@ -59,7 +55,9 @@ vc-preamble: |-
   */
   
   //Problem 3
+  
   //Use what you know about the weakest preconditions/strongest postconditions to ex-
+  
   //plain why the following code verifies:
   
   /*
@@ -81,6 +79,11 @@ vc-preamble: |-
   
   */
 
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -95,7 +98,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

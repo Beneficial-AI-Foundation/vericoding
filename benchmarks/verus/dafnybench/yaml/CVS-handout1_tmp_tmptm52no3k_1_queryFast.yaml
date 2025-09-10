@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /*                                      Cumulative Sums over Arrays                                        */
   
   /*
@@ -13,6 +7,15 @@ vc-preamble: |-
   */
   
   //(a)
+  
+  //(b)
+  
+  //(c)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
   
   spec fn sum(a: Seq<int>, i: int, j: int) -> int
       decreases j - i
@@ -23,10 +26,6 @@ vc-preamble: |-
           a[i] + sum(a, i + 1, j) 
       }
   }
-  
-  //(b)
-  
-  //(c)
   
   spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool
   {
@@ -52,7 +51,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

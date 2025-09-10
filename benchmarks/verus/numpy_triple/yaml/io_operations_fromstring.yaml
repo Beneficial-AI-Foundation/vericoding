@@ -5,6 +5,8 @@ vc-description: |-
   Specification: fromstring creates a vector by parsing numeric values from a string.
   The function parses the input string using the given separator and converts
   the resulting substrings to floating-point numbers.
+  
+  /* All parsed elements are valid */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -18,7 +20,7 @@ vc-spec: |-
       requires n > 0,
       ensures 
           result.len() <= n,
-          forall|i: int| 0 <= i < result.len() ==> true, /* All parsed elements are valid */
+          forall|i: int| 0 <= i < result.len() ==> true,
 
 vc-code: |-
   {

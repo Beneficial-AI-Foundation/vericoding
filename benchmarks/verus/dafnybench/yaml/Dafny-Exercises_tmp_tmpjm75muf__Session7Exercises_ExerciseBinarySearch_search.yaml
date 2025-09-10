@@ -1,4 +1,7 @@
 vc-description: |-
+  //Implement by calling binary search function
+  
+  //Recursive binary search
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -26,7 +29,6 @@ vc-spec: |-
   fn search(v: &[int], elem: int) -> (b: bool)
       requires sorted(v@)
       ensures b == v@.contains(elem)
-      //Implement by calling binary search function
 
 vc-code: |-
   {
@@ -35,9 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
-      //Recursive binary search
   }
-  
-  }
+  fn main() {}
 

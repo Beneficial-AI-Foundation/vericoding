@@ -17,6 +17,12 @@ vc-description: |-
   This implements the mathematical operation (P(x))^pow where P(x) is the Hermite polynomial
   represented by the input coefficients, and the result gives the coefficients of the
   polynomial raised to the given power in the Hermite basis.
+  
+  /* Base cases for polynomial exponentiation */
+  
+  /* General case: polynomial raised to power follows degree multiplication */
+  
+  /* For non-empty input, the result maintains polynomial structure */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -32,14 +38,14 @@ vc-spec: |-
           maxpower <= 16,
           c.len() > 0,
       ensures
-          /* Base cases for polynomial exponentiation */
+  
           pow == 0 ==> result.len() == 1 && result[0] == 1.0 && 
               (forall|i: int| 1 <= i < result.len() ==> result[i] == 0.0),
           pow == 1 ==> result.len() == c.len() &&
               (forall|i: int| 0 <= i < c.len() ==> result[i] == c[i]),
-          /* General case: polynomial raised to power follows degree multiplication */
+  
           pow >= 1 ==> result.len() == 1 + (c.len() - 1) * pow,
-          /* For non-empty input, the result maintains polynomial structure */
+  
           pow >= 1 && c.len() > 0 ==> exists|highest_coeff: f64| 
               result[result.len() - 1] == highest_coeff,
 

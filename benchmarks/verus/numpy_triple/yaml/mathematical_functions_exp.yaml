@@ -21,6 +21,10 @@ vc-description: |-
   - exp(x) > 0 for all x (exponential is always positive)
   - exp is monotonically increasing
   - exp(x + y) = exp(x) * exp(y) (for addition in the input)
+  
+  /* Mathematical specification: For all indices i, result[i] = exp(x[i])
+             Note: Verus doesn't have built-in exp function for f32,
+             so we provide a simplified specification that maintains array length */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -33,9 +37,6 @@ vc-spec: |-
   fn numpy_exp(x: Vec<f32>) -> (result: Vec<f32>)
       ensures
           result.len() == x.len(),
-          /* Mathematical specification: For all indices i, result[i] = exp(x[i])
-             Note: Verus doesn't have built-in exp function for f32,
-             so we provide a simplified specification that maintains array length */
 
 vc-code: |-
   {

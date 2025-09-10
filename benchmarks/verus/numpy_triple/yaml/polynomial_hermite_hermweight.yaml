@@ -15,6 +15,14 @@ vc-description: |-
   -------
   w : ndarray
      The weight function at x.
+  
+  /* Each output element equals exp(-x²) of the corresponding input */
+  
+  /* All output values are positive (since exp is always positive) */
+  
+  /* The weight function achieves its maximum value of 1 at x=0 */
+  
+  /* The function decreases as |x| increases */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -28,10 +36,6 @@ vc-spec: |-
       requires x.len() > 0,
       ensures
           w.len() == x.len(),
-          /* Each output element equals exp(-x²) of the corresponding input */
-          /* All output values are positive (since exp is always positive) */
-          /* The weight function achieves its maximum value of 1 at x=0 */
-          /* The function decreases as |x| increases */
 
 vc-code: |-
   {

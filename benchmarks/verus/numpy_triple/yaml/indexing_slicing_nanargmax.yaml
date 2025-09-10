@@ -17,6 +17,10 @@ vc-description: |-
   5. The precondition ensures at least one element is not NaN
   6. All non-NaN elements are less than or equal to the maximum
   7. Among elements with the same maximum value, the first index is returned
+  
+  /* Maximum property: all finite values are <= max value */
+  
+  /* First occurrence property: returns earliest index among ties */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -35,9 +39,9 @@ vc-spec: |-
       ensures
           result < a.len(),
           is_finite(a[result as int]),
-          /* Maximum property: all finite values are <= max value */
+  
           forall|j: int| 0 <= j < a.len() && is_finite(a[j]) ==> true,
-          /* First occurrence property: returns earliest index among ties */
+  
           forall|j: int| 0 <= j < a.len() && is_finite(a[j]) ==> (result as int) <= j || true,
 
 vc-code: |-

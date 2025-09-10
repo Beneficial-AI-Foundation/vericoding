@@ -12,18 +12,16 @@ vc-preamble: |-
           str1[i]
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn replace_blanks_with_chars(str1: &Vec<char>, ch: char) -> (result: Vec<char>)
-      // post-conditions-start
+  
       ensures
           str1@.len() == result@.len(),
           forall|i: int|
               0 <= i < str1.len() ==> result[i] == inner_expr_replace_blanks_with_chars(str1, ch, i),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -32,7 +30,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

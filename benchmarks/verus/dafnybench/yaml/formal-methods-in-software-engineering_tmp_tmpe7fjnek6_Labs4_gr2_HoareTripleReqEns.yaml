@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /*
   Verus include 2 limbaje:
       * un limbaj pentru specificare 
@@ -28,36 +22,24 @@ vc-preamble: |-
   */
   
   // varianta cu assert
+  
   /*
   */
   
   // varianta cu invariant
   
   //specificarea sumei de patrate
-  spec fn SqrSumRec(n: int) -> int
-      recommends n >= 0
-      decreases n
-  {
-      if n == 0 { 0 } else { n*n + SqrSumRec(n-1) }
-  }
+  
   /*
   */
   
   // verificarea programului pentru suma de patrate
   
   // SqrSumRec(n) = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
-  proof fn L1(n: int)
-      requires n >= 0
-      ensures SqrSumRec(n) == n*(n+1)*(2*n + 1)/6
-      decreases n
-  {
-      if n == 0 {
-          // Base case
-      } else {
-          L1(n-1);
-          // Additional proof steps would be needed here
-      }
-  }
+  
+  // Base case
+  
+  // Additional proof steps would be needed here
   
   /*
   spec fn SqrSumBy6(n: int) -> int
@@ -82,12 +64,41 @@ vc-preamble: |-
       }
   }
   */
+  
+  // (| k == i*i |) k := k + 2 * i +1; (| k = (i+1)*(i+1) |)
+  
+  // Proof by algebraic expansion: k + 2*i + 1 = i*i + 2*i + 1 = (i+1)*(i+1)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn SqrSumRec(n: int) -> int
+      recommends n >= 0
+      decreases n
+  {
+      if n == 0 { 0 } else { n*n + SqrSumRec(n-1) }
+  }
+  
+  proof fn L1(n: int)
+      requires n >= 0
+      ensures SqrSumRec(n) == n*(n+1)*(2*n + 1)/6
+      decreases n
+  {
+      if n == 0 {
+  
+      } else {
+          L1(n-1);
+  
+      }
+  }
 
 vc-helpers: |-
 
 vc-spec: |-
   spec fn HoareTripleReqEns(i: int, k: int) -> int
-      // (| k == i*i |) k := k + 2 * i +1; (| k = (i+1)*(i+1) |)
+  
       recommends k == i*i
   {
       k + 2 * i + 1
@@ -97,7 +108,7 @@ vc-spec: |-
       requires k == i*i
       ensures HoareTripleReqEns(i, k) == (i+1)*(i+1)
   {
-      // Proof by algebraic expansion: k + 2*i + 1 = i*i + 2*i + 1 = (i+1)*(i+1)
+  
       assert(k + 2 * i + 1 == i*i + 2*i + 1);
       assert(i*i + 2*i + 1 == (i+1)*(i+1));
   }
@@ -109,7 +120,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

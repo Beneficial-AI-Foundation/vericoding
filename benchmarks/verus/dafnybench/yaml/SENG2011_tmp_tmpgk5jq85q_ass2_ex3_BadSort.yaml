@@ -1,21 +1,29 @@
 vc-description: |-
+  // verifies
+  
+  // all bs are before all as which are before all ds
+  
+  // all b's are before all a's and d's
+  
+  // all a's are after all b's
+  
+  // all a's are before all d's
+  
+  // all d's are after all b's and a's
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // verifies
-  // all bs are before all as which are before all ds
-  
   spec fn sortedbad(s: Seq<char>) -> bool {
-      // all b's are before all a's and d's
+  
       (forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && s[i] == 'b' && (s[j] == 'a' || s[j] == 'd') ==> i < j) &&
-      // all a's are after all b's
+  
       (forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && s[i] == 'a' && s[j] == 'b' ==> i > j) &&
-      // all a's are before all d's
+  
       (forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && s[i] == 'a' && s[j] == 'd' ==> i < j) &&
-      // all d's are after all b's and a's
+  
       (forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && s[i] == 'd' && (s[j] == 'a' || s[j] == 'b') ==> i > j)
   }
 
@@ -37,7 +45,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

@@ -1,11 +1,11 @@
 vc-description: |-
+  // Helper predicate
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // Helper predicate
   spec fn is_sorted(nums: Seq<int>) -> bool {
       forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] <= nums[j]
   }
@@ -33,7 +33,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

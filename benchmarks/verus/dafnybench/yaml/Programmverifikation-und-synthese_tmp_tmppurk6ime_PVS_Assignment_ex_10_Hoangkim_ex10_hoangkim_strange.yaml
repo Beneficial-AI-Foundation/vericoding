@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   //Problem01
   
   /*
@@ -27,15 +21,10 @@ vc-preamble: |-
   */
   
   //Problem02
+  
   //As you can see below, Verus claims that after executing the following method
+  
   //strange() we will have that 1=2;
-  fn q(x: u32, y: u32) -> (z: u32)
-      requires y > x + 2
-      ensures x < z*z && z*z < y
-  {
-      assume(false);
-      0
-  }
   
   /*(a). Do you have an explanation for this behaviour?
       Answer: 
@@ -66,7 +55,9 @@ vc-preamble: |-
   */
   
   //Problem 3
+  
   //Use what you know about the weakest preconditions/strongest postconditions to ex-
+  
   //plain why the following code verifies:
   
   /*
@@ -88,6 +79,19 @@ vc-preamble: |-
   
   */
 
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  fn q(x: u32, y: u32) -> (z: u32)
+      requires y > x + 2
+      ensures x < z*z && z*z < y
+  {
+      assume(false);
+      0
+  }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -101,7 +105,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

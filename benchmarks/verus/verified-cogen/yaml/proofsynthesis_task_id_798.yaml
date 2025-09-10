@@ -14,16 +14,14 @@ vc-preamble: |-
           sum_to(arr.drop_last()) + arr.last()
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn sum(arr: &Vec<i64>) -> (sum: i128)
-      // post-conditions-start
+  
       ensures
           sum_to(arr@) == sum,
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -32,7 +30,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

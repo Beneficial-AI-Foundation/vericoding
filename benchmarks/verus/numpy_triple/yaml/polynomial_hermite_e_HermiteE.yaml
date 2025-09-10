@@ -33,11 +33,6 @@ vc-description: |-
   2. Recurrence: Heₙ₊₁(x) = x * Heₙ(x) - n * Heₙ₋₁(x)
   3. Parity: He_n(-x) = (-1)^n He_n(x)
   4. Orthogonality with respect to Gaussian weight e^(-x²/2)
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
   
   /* Structure representing a HermiteE polynomial with coefficients and domain/window mapping.
      HermiteE polynomials are the "probabilists'" version of Hermite polynomials.
@@ -48,16 +43,38 @@ vc-preamble: |-
   
      The coefficients represent the expansion: ∑ᵢ cᵢ * Heᵢ(x)
   */
+  
+  /* Coefficients of the HermiteE polynomial in increasing degree order */
+  
+  /* Domain interval [domain_min, domain_max] */
+  
+  /* Domain interval upper bound */
+  
+  /* Window interval [window_min, window_max] */
+  
+  /* Window interval upper bound */
+  
+  /* Coefficients are preserved exactly */
+  
+  /* Default domain is [-1, 1] */
+  
+  /* Default window is [-1, 1] */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
   struct HermiteEPoly {
-      /* Coefficients of the HermiteE polynomial in increasing degree order */
+  
       coef: Vec<f32>,
-      /* Domain interval [domain_min, domain_max] */
+  
       domain_min: f32,
-      /* Domain interval upper bound */
+  
       domain_max: f32,
-      /* Window interval [window_min, window_max] */
+  
       window_min: f32,
-      /* Window interval upper bound */
+  
       window_max: f32,
   }
 
@@ -66,13 +83,13 @@ vc-helpers: |-
 vc-spec: |-
   fn hermite_e(coef: Vec<f32>) -> (result: HermiteEPoly)
       ensures
-          /* Coefficients are preserved exactly */
+  
           result.coef.len() == coef.len(),
           forall|i: int| 0 <= i < coef.len() ==> result.coef[i] == coef[i],
-          /* Default domain is [-1, 1] */
+  
           result.domain_min == -1.0f32,
           result.domain_max == 1.0f32,
-          /* Default window is [-1, 1] */
+  
           result.window_min == -1.0f32,
           result.window_max == 1.0f32,
 

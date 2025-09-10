@@ -21,6 +21,16 @@ vc-description: |-
   3. Empty separator handling: join('', s) = s (no separation)
   4. Empty sequence handling: join(sep, '') = '' (empty result)
   5. Single character sequences: join(sep, 'a') = 'a' (no separator needed)
+  
+  /* Core correctness property */
+  
+  /* Length property for non-trivial cases */
+  
+  /* Empty string preservation */
+  
+  /* Single character preservation */
+  
+  /* Non-empty result for non-empty input */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -55,16 +65,16 @@ vc-spec: |-
           forall|i: int| 0 <= i < result.len() ==> {
               let s = seq[i]@;
               let separator = sep[i]@;
-              /* Core correctness property */
+  
               (s.len() <= 1 ==> result[i]@ == s) &&
               (s.len() > 1 ==> result[i]@ == join_chars(separator, s)) &&
-              /* Length property for non-trivial cases */
+  
               (s.len() > 1 ==> result[i]@.len() == s.len() + (s.len() - 1) * separator.len()) &&
-              /* Empty string preservation */
+  
               (s.len() == 0 ==> result[i]@.len() == 0) &&
-              /* Single character preservation */
+  
               (s.len() == 1 ==> result[i]@ == s) &&
-              /* Non-empty result for non-empty input */
+  
               (s.len() > 0 ==> result[i]@.len() > 0)
           }
 
@@ -76,6 +86,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

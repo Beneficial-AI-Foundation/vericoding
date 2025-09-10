@@ -1,12 +1,12 @@
 vc-description: |-
+  // line contém uma string de tamanho l
+  
+  // remover p caracteres a partir da posição at
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // line contém uma string de tamanho l
-  // remover p caracteres a partir da posição at
 
 vc-helpers: |-
 
@@ -25,8 +25,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

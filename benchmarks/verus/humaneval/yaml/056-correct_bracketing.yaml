@@ -19,28 +19,23 @@ vc-preamble: |-
               },
       )
   }
-  // pure-end
-  // pure-end
   
   spec fn spec_bracketing(brackets: Seq<char>) -> (result:bool) {
       let p = spec_bracketing_helper(brackets);
       p.1 && p.0 == 0
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn correct_bracketing(brackets: &str) -> (ret: bool)
-      // pre-conditions-start
+  
       requires
           brackets@.len() <= i32::MAX,
           -brackets@.len() >= i32::MIN,
-      // pre-conditions-end
-      // post-conditions-start
+  
       ensures
           ret <==> spec_bracketing(brackets@),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -49,6 +44,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
+  }
   fn main() {}
 

@@ -9,14 +9,12 @@ vc-helpers: |-
 
 vc-spec: |-
   fn replace_last_element(first: &Vec<i32>, second: &Vec<i32>) -> (replaced_list: Vec<i32>)
-      // pre-conditions-start
+  
       requires
           first.len() > 0,
-      // pre-conditions-end
-      // post-conditions-start
+  
       ensures
           replaced_list@ == first@.subrange(0, first.len() - 1).add(second@),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -25,7 +23,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

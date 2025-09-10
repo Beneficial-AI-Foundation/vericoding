@@ -9,18 +9,16 @@ vc-helpers: |-
 
 vc-spec: |-
   fn is_sub_array(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)
-      // pre-conditions-start
+  
       requires
           sub.len() <= main.len(),
-      // pre-conditions-end
-      // post-conditions-start
+  
       ensures
           result == (exists|k: int, l: int|
               0 <= k <= (main.len() - sub.len()) && l == k + sub.len() && (#[trigger] (main@.subrange(
                   k,
                   l,
               ))) =~= sub@),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -29,7 +27,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

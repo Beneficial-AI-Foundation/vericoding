@@ -16,6 +16,10 @@ vc-description: |-
   3. Complete replacement: If count[i] < 0, all occurrences are replaced
   4. Identity preservation: If old[i] doesn't occur in a[i], result[i] = a[i]
   5. Zero count behavior: If count[i] = 0, no replacements occur
+  
+  /* Zero count behavior: if count is 0, no replacements occur */
+  
+  /* Identity property: if old doesn't occur in string, result equals original */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -32,9 +36,9 @@ vc-spec: |-
       ensures
           result.len() == a.len(),
           forall|i: int| 0 <= i < result.len() ==> {
-              /* Zero count behavior: if count is 0, no replacements occur */
+  
               (count[i] == 0 ==> result[i] == a[i]) &&
-              /* Identity property: if old doesn't occur in string, result equals original */
+  
               (old[i]@.len() == 0 ==> result[i] == a[i])
           },
 
@@ -46,6 +50,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

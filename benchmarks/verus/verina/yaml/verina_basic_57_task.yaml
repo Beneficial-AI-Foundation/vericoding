@@ -11,13 +11,14 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions; the function should work correctly for any array of integers and any integer threshold.
+  
+  /* Helper function to recursively count elements less than threshold */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Helper function to recursively count elements less than threshold */
   spec fn count_less_than_spec(numbers: Seq<i32>, threshold: i32) -> nat
       decreases numbers.len()
   {

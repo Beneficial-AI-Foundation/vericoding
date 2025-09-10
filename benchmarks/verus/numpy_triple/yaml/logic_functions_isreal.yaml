@@ -12,17 +12,22 @@ vc-description: |-
   5. Element-wise operation: each element is tested independently
   6. Mathematical property: real numbers form a subset of complex numbers
   7. Consistency: if real, then can be represented as a + 0i
+  
+  /* Structure representing a complex number with float components */
+  
+  /* The real part of the complex number */
+  
+  /* The imaginary part of the complex number */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* Structure representing a complex number with float components */
   struct Complex {
-      /* The real part of the complex number */
+  
       real: f64,
-      /* The imaginary part of the complex number */
+  
       imag: f64,
   }
 

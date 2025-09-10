@@ -9,32 +9,8 @@ vc-description: |-
   The output is a Boolean value:
   Returns true if there exists an integer such that its square equals the input n.
   Returns false if no integer squared equals the input n.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-  
-  spec fn is_perfect_square(n: nat) -> bool {
-      exists|i: nat| #[trigger] (i * i) == n
-  }
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn is_perfect_square_fn(n: u64) -> (result: bool)
-      ensures result <==> is_perfect_square(n as nat),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /* 
+  /* 
       Invalid Inputs
       []
       Tests
@@ -131,5 +107,29 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_perfect_square(n: nat) -> bool {
+      exists|i: nat| #[trigger] (i * i) == n
   }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_perfect_square_fn(n: u64) -> (result: bool)
+      ensures result <==> is_perfect_square(n as nat),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

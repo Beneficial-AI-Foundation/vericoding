@@ -1,12 +1,16 @@
 vc-description: |-
+  // Algorithm 1: From left to right return the first
+  
+  // Algorithm 2: From right to left return the last
+  
+  // Algorithm : from left to right
+  
+  // Algorithm : from right to left
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // Algorithm 1: From left to right return the first
-  // Algorithm 2: From right to left return the last
 
 vc-helpers: |-
 
@@ -25,10 +29,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
-  
-  // Algorithm : from left to right
-  // Algorithm : from right to left
+  fn main() {}
 

@@ -1,12 +1,13 @@
 vc-description: |-
+  // The order of the recursion in these two functions
+  
+  // must match the order of the iteration in the algorithm above
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // The order of the recursion in these two functions
-  // must match the order of the iteration in the algorithm above
   spec fn min(a: Seq<int>) -> int
       recommends a.len() > 0
       decreases a.len() when a.len() > 0
@@ -55,7 +56,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

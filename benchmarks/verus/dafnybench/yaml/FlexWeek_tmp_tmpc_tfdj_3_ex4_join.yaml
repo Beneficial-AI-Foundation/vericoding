@@ -1,4 +1,5 @@
 vc-description: |-
+  // Forall
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -14,7 +15,7 @@ vc-spec: |-
           (a@ + b@).to_multiset() == c@.to_multiset(),
           a@.to_multiset().add(b@.to_multiset()) == c@.to_multiset(),
           a.len() + b.len() == c.len(),
-          // Forall
+  
           forall|i: int| 0 <= i < a.len() ==> c[i] == a[i],
           forall|i: int, j: int| 
               a.len() <= i < c.len() && 
@@ -28,7 +29,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

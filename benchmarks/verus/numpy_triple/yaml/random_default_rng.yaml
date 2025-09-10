@@ -12,25 +12,35 @@ vc-description: |-
   Precondition: True (no restrictions on the seed parameter)
   Postcondition: The returned Generator is properly initialized with the given seed
   and uses PCG64 as the underlying BitGenerator.
+  
+  /* BitGenerator represents the underlying random number generator engine */
+  
+  /* Internal state of the generator */
+  
+  /* Seed used to initialize the generator */
+  
+  /* Generator provides high-level random number generation methods */
+  
+  /* The underlying BitGenerator (PCG64 by default) */
+  
+  /* Whether the generator has been properly initialized */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* BitGenerator represents the underlying random number generator engine */
   struct BitGenerator {
-      /* Internal state of the generator */
+  
       state: u64,
-      /* Seed used to initialize the generator */
+  
       seed: Option<u64>,
   }
   
-  /* Generator provides high-level random number generation methods */
   struct Generator {
-      /* The underlying BitGenerator (PCG64 by default) */
+  
       bit_generator: BitGenerator,
-      /* Whether the generator has been properly initialized */
+  
       initialized: bool,
   }
 

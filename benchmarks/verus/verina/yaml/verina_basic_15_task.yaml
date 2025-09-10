@@ -12,32 +12,8 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions; the method will function correctly regardless of the array's size.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn contains_consecutive_numbers(a: &Vec<i32>) -> (result: bool)
-      ensures
-          result <==> exists|i: int| {
-              &&& 0 <= i < a.len() - 1
-              &&& #[trigger] a[i] + 1 == a[(i + 1) as int]
-          },
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /* 
+  /* 
       -- Invalid Inputs
       []
       -- Tests
@@ -116,5 +92,29 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn contains_consecutive_numbers(a: &Vec<i32>) -> (result: bool)
+      ensures
+          result <==> exists|i: int| {
+              &&& 0 <= i < a.len() - 1
+              &&& #[trigger] a[i] + 1 == a[(i + 1) as int]
+          },
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

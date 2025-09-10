@@ -20,6 +20,12 @@ vc-description: |-
   - Trichotomous: for any two strings s1 and s2, exactly one of s1 < s2, s1 = s2, or s1 > s2 holds
   - Decidable: String comparison is decidable for all strings
   - Type-safe: Result vector has same length as input vectors
+  
+  /* Core property: result[i] = (x1[i] > x2[i]) for all indices */
+  
+  /* Asymmetry: if x1[i] > x2[i], then NOT (x2[i] > x1[i]) */
+  
+  /* Irreflexivity: no string is greater than itself */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -36,13 +42,13 @@ vc-spec: |-
       requires x1.len() == x2.len(),
       ensures 
           result.len() == x1.len(),
-          /* Core property: result[i] = (x1[i] > x2[i]) for all indices */
+  
           forall|i: int| 0 <= i < result.len() ==> 
               result[i] == string_compare_gt(x1[i]@, x2[i]@),
-          /* Asymmetry: if x1[i] > x2[i], then NOT (x2[i] > x1[i]) */
+  
           forall|i: int| 0 <= i < result.len() ==> 
               result[i] ==> !string_compare_gt(x2[i]@, x1[i]@),
-          /* Irreflexivity: no string is greater than itself */
+  
           forall|i: int| 0 <= i < result.len() ==> 
               (x1[i]@ == x2[i]@) ==> (result[i] == false),
 

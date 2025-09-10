@@ -9,10 +9,9 @@ vc-helpers: |-
 
 vc-spec: |-
   fn contains_k(arr: &Vec<i32>, k: i32) -> (result: bool)
-      // post-conditions-start
+  
       ensures
           result == (exists|i: int| 0 <= i < arr.len() && (arr[i] == k)),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -21,7 +20,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

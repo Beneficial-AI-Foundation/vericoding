@@ -7,6 +7,10 @@ vc-description: |-
   1. Alternate between characters and digits (e.g., "a3b2").
   2. Reconstruct to the original input when decoded.
   3. Be non-empty if and only if the input is non-empty.
+  
+  // Non-empty check: input is empty iff result is empty
+  
+  // Format validation: result alternates between characters and digits
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -22,9 +26,9 @@ vc-spec: |-
   
   proof fn run_length_encoder_property(input: String, result: String)
       requires
-          // Non-empty check: input is empty iff result is empty
+  
           input@ == Seq::<char>::empty() <==> result@ == Seq::<char>::empty(),
-          // Format validation: result alternates between characters and digits
+  
           (result@.len() > 0 ==> (
               forall|i: int| 0 <= i < result@.len() ==> 
                   (i % 2 == 0 ==> !is_digit(result@[i])) &&

@@ -1,4 +1,5 @@
 vc-description: |-
+  // practical bound to prevent overflow
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -15,7 +16,7 @@ vc-helpers: |-
 
 vc-spec: |-
   fn compute_power(n: u32) -> (p: u32)
-      requires n < 32, // practical bound to prevent overflow
+      requires n < 32,
       ensures p == power(n as nat),
 
 vc-code: |-
@@ -25,8 +26,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

@@ -19,13 +19,22 @@ vc-description: |-
   
   Precondition: True (works with any object)
   Postcondition: The result correctly represents the scalar type of the input object
+  
+  /* NumPy scalar data types represented as an enum */
+  
+  /* Object representation for type introspection */
+  
+  /* Helper predicate: Check if object matches given scalar type */
+  
+  /* Helper predicate: Check if object is an array with given element type */
+  
+  /* Helper predicate: Check if object is a generic object */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  /* NumPy scalar data types represented as an enum */
   #[derive(PartialEq, Eq)]
   pub enum NumpyScalarType {
       Int32,
@@ -39,7 +48,6 @@ vc-preamble: |-
       Bool,
   }
   
-  /* Object representation for type introspection */
   pub enum NumpyObject {
       IntVal(i64),
       FloatVal(f64),
@@ -51,7 +59,6 @@ vc-preamble: |-
       BoolVal(bool),
   }
   
-  /* Helper predicate: Check if object matches given scalar type */
   pub open spec fn matches_scalar_type(obj: NumpyObject, dtype: NumpyScalarType) -> bool {
       match (obj, dtype) {
           (NumpyObject::IntVal(_), NumpyScalarType::Int64) => true,
@@ -62,7 +69,6 @@ vc-preamble: |-
       }
   }
   
-  /* Helper predicate: Check if object is an array with given element type */
   pub open spec fn is_array_with_element_type(obj: NumpyObject, dtype: NumpyScalarType) -> bool {
       match (obj, dtype) {
           (NumpyObject::ArrayInt(_), NumpyScalarType::Int64) => true,
@@ -72,7 +78,6 @@ vc-preamble: |-
       }
   }
   
-  /* Helper predicate: Check if object is a generic object */
   pub open spec fn is_generic_object(obj: NumpyObject) -> bool {
       match obj {
           NumpyObject::GenericObj => true,

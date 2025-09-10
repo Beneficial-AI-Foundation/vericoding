@@ -1,4 +1,5 @@
 vc-description: |-
+  // Q
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -22,7 +23,7 @@ vc-spec: |-
               valores[p as int] >= valores[q as int] && 
               valores[q as int] >= valores[r as int] &&
               res.0 == p && 
-              res.1 == q, // Q
+              res.1 == q,
 
 vc-code: |-
   {
@@ -31,7 +32,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

@@ -15,6 +15,8 @@ vc-description: |-
   
   This is the mathematical inverse of the FFT operation, with a positive sign 
   in the exponential and a normalization factor of 1/n.
+  
+  /* Simplified for spec purposes */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -48,7 +50,7 @@ vc-spec: |-
   }
   
   pub open spec fn cexp(theta: int) -> Complex {
-      Complex { re: 1, im: 0 } /* Simplified for spec purposes */
+      Complex { re: 1, im: 0 }
   }
   
   pub open spec fn complex_sum(n: nat, f: spec_fn(nat) -> Complex) -> Complex
@@ -85,6 +87,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

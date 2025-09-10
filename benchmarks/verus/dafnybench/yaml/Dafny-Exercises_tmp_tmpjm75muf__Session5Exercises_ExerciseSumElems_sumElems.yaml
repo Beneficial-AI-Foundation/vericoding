@@ -1,4 +1,7 @@
 vc-description: |-
+  //ensures sum as int == sum_l(v@.map(|i, x| x as int))
+  
+  //ensures sum as int == sum_v(v@.map(|i, x| x as int), 0, v@.len())
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -37,9 +40,7 @@ vc-helpers: |-
 
 vc-spec: |-
   fn sum_elems(v: &[i32]) -> (sum: i32)
-  //ensures sum as int == sum_l(v@.map(|i, x| x as int))
   ensures sum as int == sum_r(v@.map(|i, x| x as int))
-  //ensures sum as int == sum_v(v@.map(|i, x| x as int), 0, v@.len())
 
 vc-code: |-
   {
@@ -48,7 +49,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

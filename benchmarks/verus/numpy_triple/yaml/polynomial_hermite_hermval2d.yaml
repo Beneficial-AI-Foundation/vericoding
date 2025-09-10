@@ -7,6 +7,8 @@ vc-description: |-
   
   The x and y vectors must have the same length, and the function evaluates
   the 2D polynomial at each pair of corresponding points (x[k], y[k]).
+  
+  /* Empty coefficient cases evaluate to zero */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -21,7 +23,7 @@ vc-spec: |-
           x.len() == y.len(),
       ensures 
           result.len() == x.len(),
-          /* Empty coefficient cases evaluate to zero */
+  
           c.len() == 0 ==> forall|k: int| 0 <= k < result.len() ==> result[k] == 0.0f32,
           c.len() > 0 && c[0].len() == 0 ==> forall|k: int| 0 <= k < result.len() ==> result[k] == 0.0f32,
 
@@ -33,6 +35,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

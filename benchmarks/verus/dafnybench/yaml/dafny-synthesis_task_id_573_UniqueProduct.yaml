@@ -1,4 +1,5 @@
 vc-description: |-
+  // This represents the nondeterministic choice like |:| in Dafny
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -11,7 +12,7 @@ vc-preamble: |-
       if s.is_empty() {
           1
       } else {
-          arbitrary()  // This represents the nondeterministic choice like |:| in Dafny
+          arbitrary()
       }
   }
 
@@ -28,7 +29,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

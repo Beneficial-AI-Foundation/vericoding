@@ -1,11 +1,10 @@
 vc-description: |-
+  // shenanigans going through the dafny tutorial
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // shenanigans going through the dafny tutorial
   
   spec fn max(a: int, b: int) -> int {
       if a > b { a } else { b }
@@ -46,7 +45,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

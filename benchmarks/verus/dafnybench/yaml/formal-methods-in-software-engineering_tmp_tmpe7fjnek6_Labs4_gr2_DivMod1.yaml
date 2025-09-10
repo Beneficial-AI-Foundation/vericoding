@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /*
   Verus include 2 limbaje:
       * un limbaj pentru specificare 
@@ -28,35 +22,24 @@ vc-preamble: |-
   */
   
   // varianta cu assert
+  
   /*
   */
   
   // varianta cu invariant
   
   //specificarea sumei de patrate
-  spec fn SqrSumRec(n: int) -> int
-      decreases n when n >= 0
-  {
-      if n <= 0 { 0 } else { n*n + SqrSumRec(n-1) }
-  }
+  
   /*
   */
   
   // verificarea programului pentru suma de patrate
   
   // SqrSumRec(n) = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
-  proof fn L1(n: int)
-      requires n >= 0
-      ensures SqrSumRec(n) == n*(n+1)*(2*n + 1)/6
-      decreases n
-  {
-      if n == 0 {
-          // Base case holds automatically
-      } else {
-          L1(n-1);
-          // Inductive step would require additional arithmetic reasoning
-      }
-  }
+  
+  // Base case holds automatically
+  
+  // Inductive step would require additional arithmetic reasoning
   
   /*
   spec fn SqrSumBy6(n: int) -> int
@@ -90,6 +73,30 @@ vc-preamble: |-
   
   */
 
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn SqrSumRec(n: int) -> int
+      decreases n when n >= 0
+  {
+      if n <= 0 { 0 } else { n*n + SqrSumRec(n-1) }
+  }
+  
+  proof fn L1(n: int)
+      requires n >= 0
+      ensures SqrSumRec(n) == n*(n+1)*(2*n + 1)/6
+      decreases n
+  {
+      if n == 0 {
+  
+      } else {
+          L1(n-1);
+  
+      }
+  }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -104,8 +111,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

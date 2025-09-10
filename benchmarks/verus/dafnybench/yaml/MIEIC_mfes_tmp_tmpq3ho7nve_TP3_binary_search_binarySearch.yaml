@@ -1,16 +1,8 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   // Checks if array 'a' is sorted.
-  spec fn is_sorted(a: &[i32]) -> bool {
-      forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j]
-  }
   
   // Finds a value 'x' in a sorted array 'a', and returns its index,
+  
   // or -1 if not found.
   
   // Simple test cases to check the post-condition.
@@ -23,6 +15,15 @@ vc-preamble: |-
   b) Identify an adequate loop variant and loop invariant, and encode them 
   as "decreases" and "invariant" clauses in Verus.
   */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_sorted(a: &[i32]) -> bool {
+      forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j]
+  }
 
 vc-helpers: |-
 
@@ -40,8 +41,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

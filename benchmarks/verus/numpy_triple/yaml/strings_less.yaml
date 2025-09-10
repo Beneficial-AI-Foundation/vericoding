@@ -31,6 +31,18 @@ vc-description: |-
   - Lexicographic ordering follows dictionary order (case-sensitive)
   - Comparison is based on Unicode code point values
   - Preserves strict ordering properties of the underlying string type
+  
+  /* Core property: result[i] = (x1[i] < x2[i]) for all indices */
+  
+  /* Asymmetry: if x1[i] < x2[i], then NOT (x2[i] < x1[i]) */
+  
+  /* Irreflexivity: no string is less than itself */
+  
+  /* Decidability: result is always boolean (true or false) */
+  
+  /* Strict ordering: if result[i] is true, then x1[i] and x2[i] are different */
+  
+  /* Totality of comparison: for any two strings, exactly one of <, =, > holds */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -47,17 +59,17 @@ vc-spec: |-
       requires x1.len() == x2.len(),
       ensures 
           result.len() == x1.len(),
-          /* Core property: result[i] = (x1[i] < x2[i]) for all indices */
+  
           forall|i: int| 0 <= i < result.len() ==> result[i] == str_less_than(x1[i], x2[i]),
-          /* Asymmetry: if x1[i] < x2[i], then NOT (x2[i] < x1[i]) */
+  
           forall|i: int| 0 <= i < result.len() && result[i] == true ==> !str_less_than(x2[i], x1[i]),
-          /* Irreflexivity: no string is less than itself */
+  
           forall|i: int| 0 <= i < result.len() && x1[i] == x2[i] ==> result[i] == false,
-          /* Decidability: result is always boolean (true or false) */
+  
           forall|i: int| 0 <= i < result.len() ==> result[i] == true || result[i] == false,
-          /* Strict ordering: if result[i] is true, then x1[i] and x2[i] are different */
+  
           forall|i: int| 0 <= i < result.len() && result[i] == true ==> x1[i] != x2[i],
-          /* Totality of comparison: for any two strings, exactly one of <, =, > holds */
+  
           forall|i: int| 0 <= i < result.len() ==> result[i] == true || x1[i] == x2[i] || str_less_than(x2[i], x1[i])
 
 vc-code: |-

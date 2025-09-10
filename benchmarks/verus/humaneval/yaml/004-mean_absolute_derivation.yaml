@@ -16,8 +16,6 @@ vc-preamble: |-
   spec fn sum(numbers: Seq<int>) -> (result:int) {
       numbers.fold_left(0, |acc: int, x| acc + x)
   }
-  // pure-end
-  // pure-end
   
   spec fn mean(values: Seq<int>) -> (result:int)
       recommends
@@ -25,8 +23,6 @@ vc-preamble: |-
   {
       sum(values) / (values.len() as int)
   }
-  // pure-end
-  // pure-end
   
   spec fn abs(n: int) -> (result:int) {
       if n >= 0 {
@@ -35,8 +31,6 @@ vc-preamble: |-
           -n
       }
   }
-  // pure-end
-  // pure-end
   
   spec fn spec_mean_absolute_deviation(numbers: Seq<int>) -> (result:int)
       recommends
@@ -45,8 +39,6 @@ vc-preamble: |-
       let avg = mean(numbers);
       sum(numbers.map(|_index, n: int| abs(n - avg))) / (numbers.len() as int)
   }
-  // pure-end
-  // pure-end
   
   spec fn if_inner_lemma_how_to_add_then_divide(x : int, y : int, d : int) -> (result: bool) {
       if (x % d) + (y % d) >= d {
@@ -57,32 +49,26 @@ vc-preamble: |-
           &&& (x + y) % d == (x % d) + (y % d)
       }
   }
-  // pure-end
-  // pure-end
   
   spec fn expr_inner_divide_i32_by_u32(qr : (i32, u32), x: i32, d: u32) -> (result:bool) {
       let (q, r) = qr;
       q == x as int / d as int && r == x as int % d as int
   }
-  // pure-end
   spec fn expr_inner_divide_i32_by_usize(qr : (i32, usize), x: i32, d: usize) -> (result:bool) {
       let (q, r) = qr;
       q == x as int / d as int && r == x as int % d as int
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn mean_absolute_deviation(numbers: &[i32]) -> (result: u32)
-      // pre-conditions-start
+  
       requires
           numbers.len() > 0,
-      // pre-conditions-end
-      // post-conditions-start
+  
       ensures
           result == spec_mean_absolute_deviation(numbers@.map(|_index, n: i32| n as int)),
-      // post-conditions-end
 
 vc-code: |-
   {

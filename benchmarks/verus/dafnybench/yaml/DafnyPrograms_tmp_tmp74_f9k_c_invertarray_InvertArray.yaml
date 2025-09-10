@@ -1,13 +1,12 @@
 vc-description: |-
+  /**
+    Inverts an array of ints.
+   */
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  /**
-    Inverts an array of ints.
-   */
 
 vc-helpers: |-
 
@@ -24,8 +23,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

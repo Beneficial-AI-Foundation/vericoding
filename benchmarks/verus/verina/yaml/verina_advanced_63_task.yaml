@@ -8,29 +8,8 @@ vc-description: |-
   -----Output-----
   The output is a single integer:
   Returns the number of unique elements (k).
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn remove_duplicates(nums: &Vec<i32>) -> (result: usize)
-      requires forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] <= nums[j],
-      ensures result <= nums.len(),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  fn main() {
-      /* 
+  /* 
       -- Invalid Inputs
       [
           {
@@ -150,5 +129,26 @@ vc-postamble: |-
           }
       ]
       */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn remove_duplicates(nums: &Vec<i32>) -> (result: usize)
+      requires forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] <= nums[j],
+      ensures result <= nums.len(),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

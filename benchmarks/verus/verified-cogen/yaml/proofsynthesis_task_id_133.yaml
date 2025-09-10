@@ -18,16 +18,14 @@ vc-preamble: |-
           }
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn sum_negatives(arr: &Vec<i64>) -> (sum_neg: i128)
-      // post-conditions-start
+  
       ensures
           sum_negative_to(arr@) == sum_neg,
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -36,7 +34,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
-  
+  }
   fn main() {}
 

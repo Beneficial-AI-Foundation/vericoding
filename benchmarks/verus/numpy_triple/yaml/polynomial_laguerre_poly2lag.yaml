@@ -29,6 +29,13 @@ vc-description: |-
   Precondition: True (no special preconditions for basis conversion)
   Postcondition: The result represents the same polynomial as input but in
                  Laguerre basis, and has the same length as input
+  
+  /* The coefficients form a valid Laguerre series representation
+             of the same polynomial as the input standard polynomial.
+             Mathematical property: polynomial evaluation equivalence
+             Standard polynomial: Σ(i=0 to n-1) pol[i] * x^i
+             Laguerre polynomial: Σ(i=0 to n-1) result[i] * L_i(x)
+             where L_i(x) is the i-th Laguerre polynomial */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -41,12 +48,7 @@ vc-spec: |-
   fn poly2lag(pol: Vec<f32>) -> (result: Vec<f32>)
       ensures
           result.len() == pol.len(),
-          /* The coefficients form a valid Laguerre series representation
-             of the same polynomial as the input standard polynomial.
-             Mathematical property: polynomial evaluation equivalence
-             Standard polynomial: Σ(i=0 to n-1) pol[i] * x^i
-             Laguerre polynomial: Σ(i=0 to n-1) result[i] * L_i(x)
-             where L_i(x) is the i-th Laguerre polynomial */
+  
           true,
 
 vc-code: |-

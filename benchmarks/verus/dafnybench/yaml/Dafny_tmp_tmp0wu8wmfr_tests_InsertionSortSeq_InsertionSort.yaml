@@ -1,13 +1,14 @@
 vc-description: |-
+  // Insertion sort.
+  
+  //
+  
+  // Author: Snorri Agnarsson, snorri@hi.is
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
-  
-  // Insertion sort.
-  //
-  // Author: Snorri Agnarsson, snorri@hi.is
   
   spec fn is_sorted(s: Seq<int>) -> bool {
       forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q]
@@ -28,7 +29,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

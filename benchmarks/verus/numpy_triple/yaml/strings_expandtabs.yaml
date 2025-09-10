@@ -4,6 +4,14 @@ vc-description: |-
   Expand tabs in strings to spaces with configurable tab size
   
   Specification: expandtabs replaces tab characters with appropriate number of spaces
+  
+  /* Core property: result contains no tab characters */
+  
+  /* Identity property: strings without tabs remain unchanged */
+  
+  /* Length property: result is at least as long as original */
+  
+  /* Tab expansion property: tabs are replaced by 1 to tab_sz spaces */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -23,13 +31,13 @@ vc-spec: |-
               let orig_str = &a[i];
               let result_str = &result[i];
               let tab_sz = tabsize[i];
-              /* Core property: result contains no tab characters */
+  
               (forall|c: char| result_str@.contains(c) ==> c != '\t') &&
-              /* Identity property: strings without tabs remain unchanged */
+  
               (!orig_str@.contains('\t') ==> result_str@ == orig_str@) &&
-              /* Length property: result is at least as long as original */
+  
               (result_str@.len() >= orig_str@.len()) &&
-              /* Tab expansion property: tabs are replaced by 1 to tab_sz spaces */
+  
               (orig_str@.contains('\t') ==> result_str@.len() > orig_str@.len())
           }
 

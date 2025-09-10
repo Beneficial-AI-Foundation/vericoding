@@ -8,31 +8,8 @@ vc-description: |-
   -----Output-----
   The output is an integer:
   Returns the length of the longest increasing subsequence, assuring that it is a subsequence of the input sequence and that every element in it is strictly less than the latter one.
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn longest_increasing_subsequence(a: &Vec<i32>) -> (result: i32)
-      ensures
-          result >= 0,
-          result <= a.len(),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached();
-  }
-
-vc-postamble: |-
-  }
-  
-  fn main() {
-      // /*
+  /*
       // -- Invalid Inputs
       // []
       // -- Tests
@@ -100,5 +77,29 @@ vc-postamble: |-
       //     }
       // ]
       // */
+  
+  //
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn longest_increasing_subsequence(a: &Vec<i32>) -> (result: i32)
+      ensures
+          result >= 0,
+          result <= a.len(),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached();
   }
+
+vc-postamble: |-
+  }
+  fn main() {}
 

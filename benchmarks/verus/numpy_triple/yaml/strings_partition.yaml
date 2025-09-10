@@ -37,6 +37,14 @@ vc-description: |-
   
   Precondition: True (no special preconditions for string partitioning)
   Postcondition: For all indices i, the partition satisfies the partition semantics
+  
+  /* Fundamental partition property: parts reconstruct original string */
+  
+  /* Separator correctness: either the separator or empty string */
+  
+  /* Case 2: Separator not found - before contains whole string, others empty */
+  
+  /* Length preservation: total length is preserved */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -54,13 +62,13 @@ vc-spec: |-
               let before_i = result.0[i]@;
               let sep_i = result.1[i]@;
               let after_i = result.2[i]@;
-              /* Fundamental partition property: parts reconstruct original string */
+  
               before_i + sep_i + after_i == original &&
-              /* Separator correctness: either the separator or empty string */
+  
               (sep_i == sep@ || sep_i.len() == 0) &&
-              /* Case 2: Separator not found - before contains whole string, others empty */
+  
               (sep_i.len() == 0 ==> after_i.len() == 0 && before_i == original) &&
-              /* Length preservation: total length is preserved */
+  
               original.len() == before_i.len() + sep_i.len() + after_i.len()
           }
 

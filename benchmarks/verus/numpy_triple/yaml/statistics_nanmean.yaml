@@ -12,6 +12,14 @@ vc-description: |-
   4. NaN values are completely ignored in the computation
   5. For vectors without NaN values, behaves identically to regular mean
   6. The result is bounded by the minimum and maximum of non-NaN elements
+  
+  /* Case 1: If there exists at least one non-NaN element, result is their arithmetic mean */
+  
+  /* Case 2: If all elements are NaN, result is NaN */
+  
+  /* Case 3: NaN values are ignored (result is mean of non-NaN elements) */
+  
+  /* Case 4: For vectors without NaN, behaves like regular mean */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -59,13 +67,13 @@ vc-spec: |-
   
   fn nanmean(a: Vec<f32>) -> (result: f32)
       ensures 
-          /* Case 1: If there exists at least one non-NaN element, result is their arithmetic mean */
+  
           (has_valid_element(a@) ==> !is_nan_f32(result)) &&
-          /* Case 2: If all elements are NaN, result is NaN */
+  
           (all_nan(a@) ==> is_nan_f32(result)) &&
-          /* Case 3: NaN values are ignored (result is mean of non-NaN elements) */
+  
           (!is_nan_f32(result) ==> has_valid_element(a@)) &&
-          /* Case 4: For vectors without NaN, behaves like regular mean */
+  
           (!contains_nan(a@) && a.len() > 0 ==> !is_nan_f32(result))
 
 vc-code: |-

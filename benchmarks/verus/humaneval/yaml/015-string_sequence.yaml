@@ -28,8 +28,6 @@ vc-preamble: |-
           '9'
       }
   }
-  // pure-end
-  // pure-end
   
   spec fn number_to_char(n: nat) -> (result:Seq<char>)
       decreases n,
@@ -40,8 +38,6 @@ vc-preamble: |-
           number_to_char(n / 10).add(seq![single_digit_number_to_char(n % 10)])
       }
   }
-  // pure-end
-  // pure-end
   
   spec fn string_sequence(n: nat) -> (result:Seq<char>)
       decreases n,
@@ -52,16 +48,14 @@ vc-preamble: |-
           string_sequence((n - 1) as nat).add(seq![' '].add(number_to_char(n)))
       }
   }
-  // pure-end
 
 vc-helpers: |-
 
 vc-spec: |-
   fn string_sequence_impl(n: u8) -> (string_seq: Vec<char>)
-      // post-conditions-start
+  
       ensures
           string_seq@ == string_sequence(n as nat),
-      // post-conditions-end
 
 vc-code: |-
   {
@@ -70,6 +64,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  } // verus!
+  }
   fn main() {}
 

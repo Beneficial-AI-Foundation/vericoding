@@ -17,6 +17,20 @@ vc-description: |-
   If the arrays are identical references, it must return True.
   If the arrays are independent (non-overlapping memory), it must return False.
   The function is precise - it returns True if and only if the arrays share memory.
+  
+  // Basic sanity check: result is a boolean - always true
+  
+  // Reflexive property: an array shares memory with itself when identical
+  
+  // Independence property: different arrays with different contents don't share memory
+  
+  // Precision property: the function provides definitive answers about memory sharing
+  
+  // Basic sanity check: result is a boolean
+  
+  // Reflexive property: an array shares memory with itself when identical
+  
+  // Precision property: the function provides definitive answers about memory sharing
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -28,23 +42,23 @@ vc-helpers: |-
 vc-spec: |-
   spec fn shares_memory(a: Vec<f32>, b: Vec<f32>) -> bool
   {
-      // Basic sanity check: result is a boolean - always true
+  
       true &&
-      // Reflexive property: an array shares memory with itself when identical
+  
       (a.len() == b.len() && a@ == b@) &&
-      // Independence property: different arrays with different contents don't share memory
+  
       true &&
-      // Precision property: the function provides definitive answers about memory sharing
+  
       true
   }
   
   fn shares_memory_fn(a: Vec<f32>, b: Vec<f32>) -> (result: bool)
       ensures
-          // Basic sanity check: result is a boolean
+  
           (result == true || result == false) &&
-          // Reflexive property: an array shares memory with itself when identical
+  
           (a.len() == b.len() && a@ == b@ ==> result == true) &&
-          // Precision property: the function provides definitive answers about memory sharing
+  
           true
 
 vc-code: |-

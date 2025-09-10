@@ -1,11 +1,11 @@
 vc-description: |-
+  // Using generic type parameter with uninterpreted body
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // Using generic type parameter with uninterpreted body
   uninterp spec fn f<T>(a: T) -> bool;
 
 vc-helpers: |-
@@ -23,8 +23,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

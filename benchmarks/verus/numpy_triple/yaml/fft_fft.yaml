@@ -21,6 +21,18 @@ vc-description: |-
   The specification captures the fundamental DFT formula where each output
   element k is computed as the sum over all input elements j, multiplied
   by the complex exponential exp(-2πi*k*j/n).
+  
+  /* placeholder for cos(theta) */
+  
+  /* placeholder for sin(theta) */
+  
+  /* placeholder for complex multiplication real part */
+  
+  /* placeholder for complex multiplication imaginary part */
+  
+  /* placeholder for complex addition real part */
+  
+  /* placeholder for complex addition imaginary part */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -34,22 +46,22 @@ vc-preamble: |-
   
   pub open spec fn cexp(theta: f64) -> Complex {
       Complex {
-          re: 1.0, /* placeholder for cos(theta) */
-          im: 0.0, /* placeholder for sin(theta) */
+          re: 1.0,
+          im: 0.0,
       }
   }
   
   pub open spec fn complex_mul(z: Complex, w: Complex) -> Complex {
       Complex {
-          re: 0.0, /* placeholder for complex multiplication real part */
-          im: 0.0, /* placeholder for complex multiplication imaginary part */
+          re: 0.0,
+          im: 0.0,
       }
   }
   
   pub open spec fn complex_add(z: Complex, w: Complex) -> Complex {
       Complex {
-          re: 0.0, /* placeholder for complex addition real part */
-          im: 0.0, /* placeholder for complex addition imaginary part */
+          re: 0.0,
+          im: 0.0,
       }
   }
   
@@ -98,6 +110,5 @@ vc-code: |-
 
 vc-postamble: |-
   }
-  
   fn main() {}
 

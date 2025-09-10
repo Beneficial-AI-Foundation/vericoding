@@ -7,6 +7,10 @@ vc-description: |-
   The result has the same shape as the input x, y, and z vectors.
   The function evaluates a trivariate Laguerre polynomial series
   using the tensor product of 1-D Laguerre polynomials.
+  
+  /* Base case: single coefficient returns constant */
+  
+  /* General case: evaluates 3D Laguerre series */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -28,10 +32,10 @@ vc-spec: |-
           result.len() == x.len(),
           result.len() == y.len(), 
           result.len() == z.len(),
-          /* Base case: single coefficient returns constant */
+  
           (c.len() == 1 && c[0].len() == 1 && c[0][0].len() == 1) ==> 
               forall|i: int| 0 <= i < result.len() ==> result[i] == c[0][0][0],
-          /* General case: evaluates 3D Laguerre series */
+  
           forall|i: int| 0 <= i < result.len() ==> 
               exists|val: f32| result[i] == val,
 

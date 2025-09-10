@@ -24,15 +24,7 @@ vc-description: |-
   - For zero x[i]: result[i] = 0
   - Monotonicity: if x[i] ≤ x[j] then result[i] ≤ result[j]
   - Truncation property: result[i] truncates towards zero
-
-vc-preamble: |-
-  use vstd::prelude::*;
   
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
   /* Round to nearest integer towards zero, element-wise.
   
      The fix (truncation) of each element x is the integer part of x,
@@ -44,7 +36,15 @@ vc-spec: |-
   
      Returns an array of the same shape as x, containing the fix of each element.
   */
+
+vc-preamble: |-
+  use vstd::prelude::*;
   
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
   fn numpy_fix(x: Vec<f64>) -> (result: Vec<f64>)
       ensures result.len() == x.len()
 

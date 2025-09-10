@@ -16,6 +16,14 @@ vc-description: |-
   2. All non-zero elements in the original array have their indices in the result
   3. The result contains no duplicate indices
   4. The result indices are sorted in ascending order
+  
+  /* All indices in result point to non-zero elements */
+  
+  /* All non-zero elements have their indices in result */
+  
+  /* Result contains no duplicate indices */
+  
+  /* Result indices are sorted in ascending order */
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -27,13 +35,13 @@ vc-helpers: |-
 vc-spec: |-
   fn flatnonzero(a: Vec<f64>) -> (result: Vec<usize>)
       ensures
-          /* All indices in result point to non-zero elements */
+  
           forall|i: int| 0 <= i < result.len() ==> a[result[i] as int] != 0.0,
-          /* All non-zero elements have their indices in result */
+  
           forall|j: int| 0 <= j < a.len() && a[j] != 0.0 ==> exists|k: int| 0 <= k < result.len() && result[k] == j,
-          /* Result contains no duplicate indices */
+  
           forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> result[i] != result[j],
-          /* Result indices are sorted in ascending order */
+  
           forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j],
 
 vc-code: |-
