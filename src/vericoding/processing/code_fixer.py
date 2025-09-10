@@ -245,9 +245,10 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 logger.error(error)
                 return original_code, error
         else:
-            remaining_sections = len(re.findall(r'<vc-code>.*?</vc-code>', modified_code, re.DOTALL))
-            if remaining_sections > 0:
-                error = f"JSON replacement failed: {remaining_sections} <vc-code> sections still contain placeholder content"
+            # Verify that we have the expected number of <vc-code> sections after replacement
+            remaining_vc_sections = len(re.findall(r'<vc-code>.*?</vc-code>', modified_code, re.DOTALL))
+            if remaining_vc_sections != len(replacements):
+                error = f"JSON replacement failed: Expected {len(replacements)} <vc-code> sections after replacement, but found {remaining_vc_sections}"
                 logger.error(error)
                 return original_code, error
                     
