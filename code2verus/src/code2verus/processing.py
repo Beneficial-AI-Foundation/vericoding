@@ -9,7 +9,7 @@ import yaml
 
 from code2verus.config import ARTIFACTS, get_config_value
 from code2verus.agent import translate_code_to_verus
-from code2verus.verification import verify_verus_code
+from code2verus.verification import verify_verus_code, verify_code
 from code2verus.success_tracker import save_success_info, is_sample_already_successful
 from code2verus.debug_utils import save_debug_context, generate_debug_report
 from code2verus.models import TranslationDebugContext
@@ -58,6 +58,7 @@ async def process_item(
     idx: int,
     item: dict,
     source_language: str = "dafny",
+    target_language: str = "verus",
     benchmark_name: str = "dafnybench",
     max_retries: int | None = None,
     base_delay: float = 5.0,
@@ -79,7 +80,17 @@ async def process_item(
     # Type assertion to help type checker
     assert isinstance(max_retries, int)
 
-    suffix = ".rs" if not is_yaml else ".yaml"
+    # Determine file suffix based on target language
+    if is_yaml:
+        suffix = ".yaml"
+    elif target_language == "verus":
+        suffix = ".rs"
+    elif target_language == "dafny":
+        suffix = ".dfy"
+    elif target_language == "lean":
+        suffix = ".lean"
+    else:
+        suffix = ".txt"  # fallback
 
     # Handle different dataset structures
     if "ground_truth" in item:
@@ -124,6 +135,16 @@ async def process_item(
         return {"path": artifact_path, "success": True}
 
     logfire.info(f"Processing item {idx + 1}: {source_filename} ({source_language})")
+    
+    # Log input file path if available
+    if "source_path" in item:
+        logfire.info(f"Input file path: {item['source_path']}")
+    elif "test_file" in item:
+        # For benchmarks that use test_file, construct the full path
+        full_input_path = Path(benchmark_path) / item["test_file"]
+        logfire.info(f"Input file path: {full_input_path}")
+    else:
+        logfire.info(f"Input file: {source_filename} (generated filename)")
 
     artifact_path.mkdir(parents=True, exist_ok=True)
 
@@ -131,7 +152,7 @@ async def process_item(
     for attempt in range(max_retries + 1):
         try:
             translation_result = await translate_code_to_verus(
-                source_code, source_language, is_yaml
+                source_code, source_language, target_language, is_yaml
             )
 
             verus_code = translation_result.output_content
@@ -171,8 +192,9 @@ async def process_item(
                 verification_success,
                 verification_output,
                 verification_error,
-            ) = await verify_verus_code(
+            ) = await verify_code(
                 rust_for_verification,
+                target_language,
                 is_yaml,
                 output_filename,
                 benchmark_name,
@@ -190,7 +212,7 @@ async def process_item(
             verus_output_path = status_artifact_path / output_filename
             with open(verus_output_path, "w") as verus_file:
                 verus_file.write(verus_code)
-            logfire.info(f"Generated Verus code saved to: {verus_output_path}")
+            logfire.info(f"Generated {target_language} code saved to: {verus_output_path}")
 
             # For YAML files, also save the Rust code in the files folder for verification
             if is_yaml:
@@ -303,6 +325,7 @@ async def main_async(
     benchmark: str = "wendy-sun/DafnyBench",
     split: str = "test",
     source_language: str = "dafny",
+    target_language: str = "verus",
     max_concurrent: int = 3,
     file_pattern: str = "*.dfy",
     limit: int | None = None,
@@ -385,6 +408,7 @@ async def main_async(
                 idx,
                 item,
                 source_language,
+                target_language,
                 benchmark_name,
                 base_delay=5.0,
                 is_flat=is_flat,

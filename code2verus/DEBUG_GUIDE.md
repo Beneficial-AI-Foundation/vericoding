@@ -29,9 +29,9 @@ code2verus --save-debug --debug-dir ./my_debug_sessions
 ```
 
 **What it creates:**
-- JSON files with unique session IDs and timestamps
+- JSON files with descriptive names including language, status, and timestamps
 - Complete conversation history, errors, and performance metrics
-- Default location: `debug_sessions/debug_session_{session_id}_{timestamp}.json`
+- Default location: `debug_sessions/debug_session_{source_lang}_to_{target_lang}_{status}_{timestamp}_{short_id}.json`
 
 ### `--debug-report`
 Generates detailed debug reports after each translation.
@@ -287,10 +287,28 @@ print(f"Overall success rate: {success_rate:.2%}")
 ### Debug Session Files
 ```
 debug_sessions/
-├── debug_session_02acdd35-300c-41b4-a5f2-ac5a90755643_20250909_172500.json
-├── debug_session_67d45538-aa67-42ae-9beb-60f6ed4ad1ac_20250909_174659.json
+├── debug_session_dafny_to_verus_success_iter3_20250910_175002_38bd434b.json
+├── debug_session_verus_to_dafny_failed_iter1_20250910_174659_67d45538.json
+├── debug_session_lean_to_verus_success_iter2_20250910_180125_02acdd35.json
 └── ...
 ```
+
+**Filename Format:**
+`debug_session_{source_lang}_to_{target_lang}_{status}_iter{n}_{timestamp}_{short_id}.json`
+
+Where:
+- `{source_lang}`: Source language (e.g., `dafny`, `verus`, `lean`)
+- `{target_lang}`: Target language (e.g., `verus`, `dafny`)
+- `{status}`: Final session status (`success`, `failed`, `timeout`, etc.)
+- `iter{n}`: Number of iterations completed (omitted if 0)
+- `{timestamp}`: Creation timestamp in `YYYYMMDD_HHMMSS` format
+- `{short_id}`: First 8 characters of UUID for uniqueness
+
+This naming scheme makes it easy to:
+- **Sort by time**: Timestamps ensure chronological ordering
+- **Filter by language**: Quick identification of source/target languages
+- **Identify outcomes**: Success/failure status immediately visible
+- **Track complexity**: Iteration count indicates translation difficulty
 
 ### Translation Results
 ```
