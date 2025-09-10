@@ -8,7 +8,7 @@ which partitions an array of colors (Red, White, Blue) such that
 all reds come before whites, and all whites come before blues.
 -/
 
-import NumpySpec.DafnyBenchmarks.Multiset
+import dafnybench.Multiset
 
 namespace DafnyBenchmarks
 

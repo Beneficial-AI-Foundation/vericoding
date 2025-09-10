@@ -7,7 +7,7 @@ This module contains specifications for finding minimum in a multiset
 and selection sort where correctness is specified using multisets.
 -/
 
-import NumpySpec.DafnyBenchmarks.Multiset
+import dafnybench.Multiset
 
 namespace DafnyBenchmarks
 
