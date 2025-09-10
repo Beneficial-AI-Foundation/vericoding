@@ -110,6 +110,9 @@ async def translate_code_to_verus(
     if max_iterations is None:
         max_iterations = get_config_value("max_translation_iterations")
 
+    # Type assertion to help type checker
+    assert isinstance(max_iterations, int)
+
     # Create the agent once and reuse it throughout iterations
     # We maintain true conversational context using PydanticAI's message_history parameter
     # This ensures the agent remembers previous exchanges and can build upon them

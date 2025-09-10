@@ -62,6 +62,7 @@ Examples:
   code2verus --benchmark benches/bignum_specs --language dafny  # Use local folder
   code2verus --benchmark ./benches/numpy_specs --language dafny  # Use local folder with explicit path
   code2verus --max-concurrent 5                        # Allow 5 concurrent translations
+  code2verus --limit 10                                 # Process only the first 10 files
 
 Debug Examples:
   code2verus --save-debug                               # Save debug contexts to JSON files
@@ -95,6 +96,11 @@ Debug Examples:
         "--file-pattern",
         default="*.dfy",
         help="File pattern to match when loading from local folder (default: *.dfy)",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        help="Maximum number of files to process (default: process all files)",
     )
 
     # Debug options
@@ -139,6 +145,8 @@ Debug Examples:
     print(f"Using benchmark: {args.benchmark} (split: {args.split})")
     print(f"Source language: {args.language}")
     print(f"Max concurrent translations: {args.max_concurrent}")
+    if args.limit:
+        print(f"File limit: {args.limit}")
     if Path(args.benchmark).exists():
         print(f"File pattern: {file_pattern}")
 
@@ -162,6 +170,7 @@ Debug Examples:
             source_language=args.language,
             max_concurrent=args.max_concurrent,
             file_pattern=file_pattern,
+            limit=args.limit,
             # Debug options
             save_debug=args.save_debug,
             debug_dir=args.debug_dir,
