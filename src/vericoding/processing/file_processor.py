@@ -13,7 +13,7 @@ from ..core.language_tools import verify_file
 from ..utils.io_utils import save_iteration_code
 import wandb
 import hashlib
-from .code_fixer import extract_code, verify_spec_preservation, restore_specs, apply_json_replacements
+from .code_fixer import extract_code, apply_json_replacements
 
 # Set up a basic logger
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -194,14 +194,6 @@ def process_spec_file(
                 llm_responses=llm_responses if wandb.run and llm_responses else None
             )
 
-        # Verify that all specifications are preserved
-        if config.strict_spec_verification and not verify_spec_preservation(
-            config, original_code, generated_code
-        ):
-            logger.info(
-                "  ⚠️  Warning: Specifications were modified. Restoring original specifications..."
-            )
-            generated_code = restore_specs(config, original_code, generated_code)
 
         # Save initial generated code
         save_iteration_code(config, relative_path, 1, generated_code, "generated")
@@ -373,14 +365,6 @@ def process_spec_file(
                             )
                         break  # Skip to next iteration
 
-                    # Verify that all specifications are still preserved
-                    if config.strict_spec_verification and not verify_spec_preservation(
-                        config, original_code, fixed_code
-                    ):
-                        logger.info(
-                            "    ⚠️  Warning: Specifications were modified during fix. Restoring original specifications..."
-                        )
-                        fixed_code = restore_specs(config, original_code, fixed_code)
 
                     current_code = fixed_code
                     logger.info(f"    Generated fix for iteration {iteration}")

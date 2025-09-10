@@ -72,58 +72,6 @@ def extract_code(config: ProcessingConfig, output: str) -> str:
 
 
 
-def verify_spec_preservation(
-    config: ProcessingConfig, original_code: str, generated_code: str
-) -> bool:
-    """Verify that all specifications from the original code are preserved in the generated code."""
-    if not config.strict_spec_verification:
-        return True
-
-    for pattern in config.language_config.spec_patterns:
-        original_specs = re.findall(pattern, original_code, re.DOTALL)
-
-        for spec in original_specs:
-            spec_content = spec.strip()
-
-            # Normalize whitespace for comparison
-            normalized_spec = re.sub(r"\s+", " ", spec_content)
-            normalized_generated = re.sub(r"\s+", " ", generated_code)
-
-            # Check if the normalized content is present
-            if normalized_spec not in normalized_generated:
-                logger.warning(
-                    "Specification missing or modified: %s...", spec_content[:100]
-                )
-                return False
-
-    return True
-
-
-def restore_specs(
-    config: ProcessingConfig, original_code: str, generated_code: str
-) -> str:
-    """Restore original specifications in the generated code."""
-    # This is a simplified version - you may need to customize for each language
-    # For now, we'll just prepend the original specs
-    result = []
-
-    # Extract all specs from original
-    all_specs = []
-    for pattern in config.language_config.spec_patterns:
-        specs = re.findall(f"({pattern})", original_code, re.DOTALL)
-        all_specs.extend(specs)
-
-    if all_specs:
-        # Add original specs at the beginning
-        for spec in all_specs:
-            result.append(spec[0].strip())
-            result.append("")
-
-        # Add generated code
-        result.append(generated_code)
-        return "\n".join(result)
-
-    return generated_code
 
 
 def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_response: str) -> tuple[str, str | None]:
