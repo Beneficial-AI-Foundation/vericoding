@@ -126,6 +126,25 @@ def process_spec_file(
 
         generated_response = call_llm_api(config, generate_prompt)
         
+        # IMMEDIATELY save raw response to debug folder before any parsing
+        if config.debug_mode:
+            relative_path = Path(file_path).relative_to(Path(config.files_dir))
+            base_file_name = Path(file_path).stem
+            debug_dir = (
+                Path(config.output_dir) / "debug" / relative_path.parent
+                if str(relative_path.parent) != "."
+                else Path(config.output_dir) / "debug"
+            )
+            debug_dir.mkdir(parents=True, exist_ok=True)
+            
+            raw_response_file = debug_dir / f"{base_file_name}_raw_generate_response.txt"
+            with raw_response_file.open("w") as f:
+                f.write(f"=== Raw LLM Generate Response ===\n")
+                f.write(f"Length: {len(generated_response)} characters\n")
+                f.write("-" * 80 + "\n")
+                f.write(generated_response)
+                f.write("\n" + "-" * 80 + "\n")
+        
         # Apply JSON replacements to original code (new approach)
         generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
         
@@ -301,6 +320,25 @@ def process_spec_file(
                 
                 try:
                     fix_response = call_llm_api(config, fix_prompt)
+                    
+                    # IMMEDIATELY save raw response to debug folder before any parsing
+                    if config.debug_mode:
+                        relative_path = Path(file_path).relative_to(Path(config.files_dir))
+                        base_file_name = Path(file_path).stem
+                        debug_dir = (
+                            Path(config.output_dir) / "debug" / relative_path.parent
+                            if str(relative_path.parent) != "."
+                            else Path(config.output_dir) / "debug"
+                        )
+                        debug_dir.mkdir(parents=True, exist_ok=True)
+                        
+                        raw_response_file = debug_dir / f"{base_file_name}_raw_fix_response_iter{iteration}.txt"
+                        with raw_response_file.open("w") as f:
+                            f.write(f"=== Raw LLM Fix Response - Iteration {iteration} ===\n")
+                            f.write(f"Length: {len(fix_response)} characters\n")
+                            f.write("-" * 80 + "\n")
+                            f.write(fix_response)
+                            f.write("\n" + "-" * 80 + "\n")
                     
                     # Apply JSON replacements for fix to the ORIGINAL file (which has placeholders)
                     # This ensures we're replacing sorry/vc-code tags, not broken implementations
