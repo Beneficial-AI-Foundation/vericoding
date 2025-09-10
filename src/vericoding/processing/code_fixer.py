@@ -139,16 +139,19 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
     try:
         # Extract JSON array from response
         json_match = re.search(r'```json\s*(.*?)\s*```', llm_response, re.DOTALL | re.IGNORECASE)
-        if not json_match:
+        if json_match:
+            # Found JSON in code block - use group(1) for the content inside
+            json_str = json_match.group(1)
+        else:
             # Try to find JSON array without code block
             json_match = re.search(r'\[.*?\]', llm_response, re.DOTALL)
-        
-        if not json_match:
-            error = "JSON parsing failed: No JSON array found in LLM response"
-            logger.error(error)
-            return original_code, error
-            
-        json_str = json_match.group(1) if json_match.group(1) else json_match.group(0)
+            if json_match:
+                # Found plain JSON array - use group(0) for the whole match
+                json_str = json_match.group(0)
+            else:
+                error = "JSON parsing failed: No JSON array found in LLM response"
+                logger.error(error)
+                return original_code, error
         replacements = json.loads(json_str)
         
         if not isinstance(replacements, list):
