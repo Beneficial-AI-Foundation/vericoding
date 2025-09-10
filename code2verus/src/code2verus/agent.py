@@ -99,8 +99,50 @@ def create_agent(source_language: str = "dafny", target_language: str = "verus")
     if not tools:
         tools = [verus_tool, dafny_tool, lean_tool]
 
+    # Handle different model formats
+    model_config = cfg["model"]
+    
+    # Check if this is an OpenRouter model configuration
+    if model_config.startswith("openrouter:"):
+        import os
+        try:
+            from openai import OpenAI
+        except ImportError:
+            raise ImportError(
+                "OpenAI package is required for OpenRouter models. "
+                "Install it with: pip install openai"
+            )
+        
+        # Extract the actual model name (e.g., "anthropic/claude-sonnet-4" from "openrouter:anthropic/claude-sonnet-4")
+        openrouter_model = model_config[len("openrouter:"):]
+        
+        # Get OpenRouter API key
+        api_key = os.getenv("OPENROUTER_API_KEY")
+        if not api_key:
+            raise ValueError(
+                "OPENROUTER_API_KEY environment variable is required for OpenRouter models.\n"
+                "You can set it by:\n"
+                "1. Creating a .env file with: OPENROUTER_API_KEY=your-api-key\n"
+                "2. Setting environment variable: export OPENROUTER_API_KEY=your-api-key\n"
+                "\nGet your API key from: https://openrouter.ai/keys"
+            )
+        
+        # Create OpenAI client configured for OpenRouter
+        client = OpenAI(
+            api_key=api_key,
+            base_url="https://openrouter.ai/api/v1",
+        )
+        
+        # Use OpenAI format with custom client for PydanticAI
+        model_config = ("openai", openrouter_model, client)
+        
+        print(f"✓ Using OpenRouter model: {openrouter_model}")
+        print(f"   Base URL: https://openrouter.ai/api/v1")
+    else:
+        print(f"✓ Using model: {model_config}")
+
     return Agent(
-        cfg["model"],
+        model_config,
         name=f"code_{source_language}2{target_language}",
         deps_type=str,  # Currently using str, could be enhanced to dict for richer context
         output_type=str,

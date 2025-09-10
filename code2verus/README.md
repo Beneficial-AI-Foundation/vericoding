@@ -27,6 +27,9 @@ Code2Verus uses large language models to automatically translate verification co
 ### Enhanced features
 
 - **Multi-language support**: Flexible source and target language selection
+- **Multiple LLM Providers**: Choose from different AI models and providers:
+  - **Direct APIs**: Anthropic Claude, OpenAI GPT, xAI Grok
+  - **OpenRouter**: Access to 50+ models through a single API key including Claude, GPT, Gemini, DeepSeek, and more
 - **Dynamic verification**: Automatically uses appropriate verification tools for target language
 - **Flexible input sources**: 
   - Hugging Face datasets (e.g., `wendy-sun/DafnyBench`, `sunblaze-ucb/verina`)
@@ -173,19 +176,71 @@ pip install -e .
 Create a `.env` file in the project root:
 
 ```bash
+# For direct Anthropic Claude API (default)
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
-# Add other API keys as needed
+
+# OR for OpenRouter (supports multiple models)
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+
+# Add other API keys as needed for direct providers
+# OPENAI_API_KEY=your_openai_api_key_here
+# XAI_API_KEY=your_xai_api_key_here
 ```
+
+### Model Configuration
+
+Code2Verus supports multiple LLM providers:
+
+#### Direct Provider APIs (Default)
+```yaml
+# Direct Anthropic Claude (requires ANTHROPIC_API_KEY)
+model: "anthropic:claude-sonnet-4-20250514"
+```
+
+#### OpenRouter Support (NEW!)
+OpenRouter provides access to multiple models through a single API key. To use OpenRouter models:
+
+1. **Set up OpenRouter API key**:
+   ```bash
+   export OPENROUTER_API_KEY=your_openrouter_api_key_here
+   ```
+
+2. **Configure an OpenRouter model** in `config.yml`:
+   ```yaml
+   # OpenRouter Claude models
+   model: "openrouter:anthropic/claude-sonnet-4"
+   model: "openrouter:anthropic/claude-opus-4.1"
+   
+   # OpenRouter GPT models  
+   model: "openrouter:openai/gpt-5"
+   model: "openrouter:openai/gpt-5-mini"
+   model: "openrouter:openai/o1-preview"
+   
+   # OpenRouter other models
+   model: "openrouter:deepseek/deepseek-chat-v3.1"
+   model: "openrouter:google/gemini-2.5-pro" 
+   model: "openrouter:google/gemini-2.5-flash"
+   model: "openrouter:x-ai/grok-4"
+   model: "openrouter:mistralai/mistral-medium-3.1"
+   model: "openrouter:qwen/qwen3-coder-30b-a3b-instruct"
+   ```
+
+**Benefits of OpenRouter**:
+- Access to models from multiple providers with one API key
+- Often better pricing and rate limits
+- Access to latest models from various providers
+- Unified billing across different model providers
 
 ### Config File
 
 The `config.yml` file contains:
-- Model configurations
-- System prompts for different languages
-- Tool configurations
-- Verus path settings
-- `max_translation_iterations`: Maximum number of verification attempts per file (default: 3)
-- `max_retries`: Maximum number of API retry attempts with exponential backoff (default: 16)
+- **Model configurations**: Specify which LLM to use (direct providers or OpenRouter)
+- **System prompts**: Language-specific translation instructions for different source languages
+- **Tool configurations**: Paths to verification tools (Verus, Dafny, Lean)
+- **Verus path settings**: Location of Verus binary
+- **Translation parameters**:
+  - `max_translation_iterations`: Maximum number of verification attempts per file (default: 3)
+  - `max_retries`: Maximum number of API retry attempts with exponential backoff (default: 16)
 
 ### Claude AI Guidance Files
 
