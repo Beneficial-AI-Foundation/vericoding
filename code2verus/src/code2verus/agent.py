@@ -26,6 +26,7 @@ from code2verus.config import (
 )
 from code2verus.tools import verus_tool, dafny_tool
 from code2verus.utils import extract_rust_code, concatenate_yaml_fields
+from code2verus.verification import verify_verus_code
 from code2verus.models import (
     TranslationDebugContext,
     ConversationExchange,
@@ -118,10 +119,10 @@ async def translate_code_to_verus(
     # This ensures the agent remembers previous exchanges and can build upon them
     agent = create_agent(source_language)
 
-    # Initialize variables
+    # Initialize variables with default values to ensure they're always defined
     result = None
-    output_content = ""
-    rust_for_verification = ""
+    output_content = ""  # Will contain the final translated content
+    rust_for_verification = ""  # Will contain Rust code for verification
     iteration = 0
 
     # Track conversation using proper message history for PydanticAI
@@ -308,9 +309,6 @@ Please translate the following {source_language} code to Verus:
 
         # Verify the generated code (except on the last iteration if we want to return regardless)
         if iteration < max_iterations - 1:
-            # Import here to avoid circular imports
-            from code2verus.verification import verify_verus_code
-
             (
                 verification_success,
                 verification_output,
@@ -375,6 +373,14 @@ Please translate the following {source_language} code to Verus:
 
     # Return the actual number of iterations performed
     num_iterations = iteration + 1
+
+    # Handle edge case where no iterations were performed
+    if max_iterations == 0:
+        logfire.warning("No iterations performed due to max_iterations=0")
+        # Provide minimal fallback content
+        output_content = f"# No translation performed (max_iterations=0)\n# Original {source_language} code:\n{source_code}"
+        rust_for_verification = "// No verification possible - no iterations performed"
+        num_iterations = 0
 
     # Mark debug session as completed
     debug_context.mark_completed()

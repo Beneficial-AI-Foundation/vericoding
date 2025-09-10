@@ -106,7 +106,7 @@ class TranslationDebugContext(BaseModel):
         return {
             "start_time": self.start_time.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3],
             "end_time": self.end_time.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
-            if self.end_time
+            if self.end_time is not None
             else "ongoing",
             "last_activity": self.last_activity.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3],
             "duration": f"{self.get_duration():.3f} seconds",

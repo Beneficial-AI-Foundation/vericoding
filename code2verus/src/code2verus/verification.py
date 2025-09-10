@@ -3,119 +3,12 @@
 import asyncio
 import os
 import tempfile
-import yaml
 import logfire
+from typing import Tuple
 
 
 from code2verus.config import cfg
-
-
-def yaml_to_verus(verus_yaml: str) -> str:
-    """Convert YAML format to Verus code by extracting and concatenating sections.
-
-    Extracts valid sections from YAML (vc-description, vc-preamble, vc-helpers,
-    vc-spec, vc-code, vc-postamble) and concatenates them with newlines.
-
-    Args:
-        verus_yaml: YAML string containing Verus code sections
-
-    Returns:
-        Concatenated Verus code from all non-empty sections
-
-    Raises:
-        ValueError: If YAML doesn't parse to a dictionary, contains forbidden fields,
-                   or all sections are empty/missing
-
-    Note:
-        If YAML parsing fails, the original string is returned as-is.
-    """
-    try:
-        # First, try to parse the YAML as-is
-        as_yaml = yaml.safe_load(verus_yaml)
-
-        # Ensure the parsed YAML is a dictionary before processing
-        if not isinstance(as_yaml, dict):
-            logfire.error(
-                f"YAML did not parse to a dictionary, got {type(as_yaml)}: {as_yaml}"
-            )
-            raise ValueError(f"Expected YAML to be a dictionary, got {type(as_yaml)}")
-
-        # Check for forbidden fields and raise an error if found
-        forbidden_fields = cfg.get(
-            "forbidden_yaml_fields",
-            [
-                "vc-implementation",
-                "vc-signature",
-                "vc-condition",
-                "vc-proof",
-            ],
-        )
-        found_forbidden = [field for field in forbidden_fields if field in as_yaml]
-
-        if found_forbidden:
-            error_msg = (
-                f"Error: Found forbidden fields in YAML: {', '.join(found_forbidden)}"
-            )
-            logfire.error(error_msg)
-            raise ValueError(error_msg)
-
-        # Handle the actual YAML structure from the verina benchmark
-        parts = []
-
-        # Add each section if it exists
-        if "vc-description" in as_yaml and as_yaml["vc-description"]:
-            parts.append(as_yaml["vc-description"])
-
-        if "vc-preamble" in as_yaml and as_yaml["vc-preamble"]:
-            parts.append(as_yaml["vc-preamble"])
-
-        if "vc-helpers" in as_yaml and as_yaml["vc-helpers"]:
-            parts.append(as_yaml["vc-helpers"])
-
-        if "vc-spec" in as_yaml and as_yaml["vc-spec"]:
-            parts.append(as_yaml["vc-spec"])
-
-        if "vc-code" in as_yaml and as_yaml["vc-code"]:
-            parts.append(as_yaml["vc-code"])
-
-        if "vc-postamble" in as_yaml and as_yaml["vc-postamble"]:
-            parts.append(as_yaml["vc-postamble"])
-
-        # Check if no valid content was found
-        if not parts:
-            logfire.warning(
-                "No valid Verus content found in YAML - all sections are empty"
-            )
-            raise ValueError(
-                "No valid Verus content found: all YAML sections (vc-description, vc-preamble, vc-helpers, vc-spec, vc-code, vc-postamble) are empty or missing"
-            )
-
-        return "\n".join(parts)
-
-    except yaml.YAMLError as e:
-        logfire.error(f"YAML parsing failed: {e}")
-        logfire.info(
-            f"Failed YAML content (first 500 chars): {verus_yaml[: min(500, len(verus_yaml))]}..."
-        )
-
-        # Try to provide more specific error information for common issues
-        error_msg = str(e)
-        if "mapping values are not allowed here" in error_msg:
-            logfire.error(
-                "YAML Error: Likely indentation or syntax issue. Common causes:"
-            )
-            logfire.error("- Missing colons after field names")
-            logfire.error("- Incorrect indentation")
-            logfire.error("- Special characters not properly quoted")
-
-        # Fall back to using the content as-is
-        logfire.info("Using YAML content as-is despite parsing error")
-        return verus_yaml
-
-    except Exception as e:
-        logfire.error(f"Unexpected error during YAML processing: {e}")
-        logfire.info(f"Failed to parse YAML, using as-is: {e}")
-        return verus_yaml
+from code2verus.utils import yaml_to_verus
 
 
 async def verify_verus_code(
@@ -124,7 +17,7 @@ async def verify_verus_code(
     original_filename: str | None = None,
     benchmark_name: str | None = None,
     benchmark_path: str = "",
-) -> tuple[bool, str, str]:
+) -> Tuple[bool, str, str]:
     """Async function to verify Verus code"""
     src = yaml_to_verus(verus_code) if is_yaml else verus_code
     if is_yaml:
