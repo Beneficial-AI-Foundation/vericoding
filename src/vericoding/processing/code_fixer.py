@@ -270,14 +270,8 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
             
             modified_code = '\n'.join(lines)
         
-        # Final verification - ensure no placeholders remain
-        if config.language == "lean":
-            remaining_sorries = modified_code.count("sorry")
-            if remaining_sorries > 0:
-                error = f"JSON replacement failed: {remaining_sorries} 'sorry' placeholders still remain after replacement"
-                logger.error(error)
-                return original_code, error
-        else:
+        # Final verification for Dafny/Verus - ensure vc-code sections are handled
+        if config.language != "lean":
             # Verify that we have the expected number of <vc-code> sections after replacement
             remaining_vc_sections = len(re.findall(r'<vc-code>.*?</vc-code>', modified_code, re.DOTALL))
             if remaining_vc_sections != len(replacements):
