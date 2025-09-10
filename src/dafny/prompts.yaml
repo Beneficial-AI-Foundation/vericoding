@@ -12,7 +12,7 @@ generate_code: |
   - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact code that will replace everything between the `<vc-code>` tags
   - Include opening/closing braces if they were in the original `<vc-code>` content
-  - Do not use `assume` statements or `assume {:axiom} false` in replacements
+  - Do not use `assume` statements or `assume {{:axiom}} false` in replacements
   - Use valid Dafny syntax for all implementations
   - Satisfy all `requires` and `ensures` clauses from the method/function specifications
   - Do not add trivial or unnecessary annotations
@@ -36,7 +36,7 @@ fix_verification: |
   - Each replacement should be the exact fixed code that will replace everything between the `<vc-code>` tags
   - Include opening/closing braces if they were in the original `<vc-code>` content
   - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues
-  - Do not use `assume` statements or `assume {:axiom} false` in replacements
+  - Do not use `assume` statements or `assume {{:axiom}} false` in replacements
   - Use valid Dafny syntax for all implementations
   - Satisfy all `requires` and `ensures` clauses from the method/function specifications
   - Do not add trivial or unnecessary annotations
