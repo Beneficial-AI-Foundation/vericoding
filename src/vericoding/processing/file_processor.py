@@ -21,6 +21,17 @@ logger = logging.getLogger(__name__)
 
 
 @dataclass
+class LLMResponse:
+    """Individual LLM response data."""
+    file: str
+    response_type: str  # "generate_code" or "fix_verification"
+    iteration: int
+    prompt_hash: str
+    response_content: str
+    json_parsed_successfully: bool
+    timestamp: float
+
+@dataclass
 class ProcessingResult:
     """Result of processing a specification file."""
 
@@ -31,6 +42,7 @@ class ProcessingResult:
     has_bypass: bool
     generate_prompt: str | None = None
     fix_prompts: list[str] | None = None
+    llm_responses: list[LLMResponse] | None = None
 
 
 def call_llm_api(config: ProcessingConfig, prompt: str) -> str:
@@ -64,17 +76,13 @@ def process_spec_file(
     config: ProcessingConfig, prompt_loader: PromptLoader, file_path: str
 ) -> ProcessingResult:
     """Process a single specification file."""
-    # Initialize tracking tables if wandb is active
+    # Initialize tracking tables and response collection
     failure_table = None
-    llm_responses_table = None
+    llm_responses = []
     if wandb.run:
         failure_table = wandb.Table(columns=[
             "file", "iteration", "spec_hash", "code_hash",
             "error_msg", "proof_state", "timestamp"
-        ])
-        llm_responses_table = wandb.Table(columns=[
-            "file", "response_type", "iteration", "prompt_hash", 
-            "response_content", "json_parsed_successfully", "timestamp"
         ])
     
     try:
@@ -121,17 +129,17 @@ def process_spec_file(
         # Apply JSON replacements to original code (new approach)
         generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
         
-        # Log LLM response to W&B table
-        if wandb.run and llm_responses_table is not None:
-            llm_responses_table.add_data(
-                file_path,
-                "generate_code",
-                0,  # iteration 0 for initial generation
-                hashlib.md5(generate_prompt.encode()).hexdigest()[:8],
-                generated_response,
-                json_error is None,  # True if JSON parsed successfully
-                time.time()
-            )
+        # Collect LLM response data
+        if wandb.run:
+            llm_responses.append(LLMResponse(
+                file=file_path,
+                response_type="generate_code",
+                iteration=0,  # iteration 0 for initial generation
+                prompt_hash=hashlib.md5(generate_prompt.encode()).hexdigest()[:8],
+                response_content=generated_response,
+                json_parsed_successfully=json_error is None,
+                timestamp=time.time()
+            ))
         
         # If JSON parsing failed, treat it as a verification failure
         if json_error:
@@ -163,7 +171,8 @@ def process_spec_file(
                 error=json_error,
                 has_bypass=False,
                 generate_prompt=generate_prompt,
-                fix_prompts=[]
+                fix_prompts=[],
+                llm_responses=llm_responses if wandb.run and llm_responses else None
             )
 
         # Verify that all specifications are preserved
@@ -297,17 +306,17 @@ def process_spec_file(
                     # This ensures we're replacing sorry/vc-code tags, not broken implementations
                     fixed_code, fix_json_error = apply_json_replacements(config, original_code, fix_response)
                     
-                    # Log LLM fix response to W&B table
-                    if wandb.run and llm_responses_table is not None:
-                        llm_responses_table.add_data(
-                            file_path,
-                            "fix_verification",
-                            iteration,
-                            hashlib.md5(fix_prompt.encode()).hexdigest()[:8],
-                            fix_response,
-                            fix_json_error is None,  # True if JSON parsed successfully
-                            time.time()
-                        )
+                    # Collect LLM fix response data
+                    if wandb.run:
+                        llm_responses.append(LLMResponse(
+                            file=file_path,
+                            response_type="fix_verification",
+                            iteration=iteration,
+                            prompt_hash=hashlib.md5(fix_prompt.encode()).hexdigest()[:8],
+                            response_content=fix_response,
+                            json_parsed_successfully=fix_json_error is None,
+                            timestamp=time.time()
+                        ))
                     
                     # If JSON parsing failed during fix, treat as iteration failure
                     if fix_json_error:
@@ -363,6 +372,7 @@ def process_spec_file(
                 has_bypass=False,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
+                llm_responses=llm_responses if wandb.run and llm_responses else None
             )
         else:
             error_msg = (
@@ -403,6 +413,7 @@ def process_spec_file(
                 has_bypass=False,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
+                llm_responses=llm_responses if wandb.run and llm_responses else None
             )
 
     except Exception as e:
@@ -426,14 +437,37 @@ def process_spec_file(
             has_bypass=False,
             generate_prompt=generate_prompt if "generate_prompt" in locals() else None,
             fix_prompts=all_fix_prompts if "all_fix_prompts" in locals() and all_fix_prompts else None,
+            llm_responses=llm_responses if wandb.run and "llm_responses" in locals() and llm_responses else None
         )
     finally:
-        # Log tables to W&B
+        # Log failure table to W&B and save LLM responses to debug folder
         if wandb.run:
             if failure_table is not None and len(failure_table.data) > 0:
                 wandb.log({"verification_failures": failure_table})
-            if llm_responses_table is not None and len(llm_responses_table.data) > 0:
-                wandb.log({"llm_responses": llm_responses_table})
+                
+            # Save LLM responses to debug folder
+            if config.debug_mode and llm_responses:
+                relative_path = Path(file_path).relative_to(Path(config.files_dir))
+                base_file_name = Path(file_path).stem
+                debug_dir = (
+                    Path(config.output_dir) / "debug" / relative_path.parent
+                    if str(relative_path.parent) != "."
+                    else Path(config.output_dir) / "debug"
+                )
+                debug_dir.mkdir(parents=True, exist_ok=True)
+                
+                for i, response in enumerate(llm_responses):
+                    response_file = debug_dir / f"{base_file_name}_llm_response_{response.response_type}_iter{response.iteration}.txt"
+                    with response_file.open("w") as f:
+                        f.write(f"=== LLM Response - {response.response_type} - Iteration {response.iteration} ===\n")
+                        f.write(f"File: {response.file}\n")
+                        f.write(f"Prompt Hash: {response.prompt_hash}\n")
+                        f.write(f"JSON Parsed Successfully: {response.json_parsed_successfully}\n")
+                        f.write(f"Timestamp: {response.timestamp}\n")
+                        f.write(f"Content Length: {len(response.response_content)} chars\n")
+                        f.write("-" * 80 + "\n")
+                        f.write(response.response_content)
+                        f.write("\n" + "-" * 80 + "\n")
 
 
 def process_files_parallel(
@@ -489,5 +523,32 @@ def process_files_parallel(
                 logger.info(
                     f"[{completed_count}/{total_files}] ✗ {Path(file_path).name} - Unexpected error: {str(e)}"
                 )
+
+    # Create consolidated LLM responses table
+    if wandb.run:
+        all_llm_responses = []
+        for result in results:
+            if result.llm_responses:
+                all_llm_responses.extend(result.llm_responses)
+        
+        if all_llm_responses:
+            llm_responses_table = wandb.Table(columns=[
+                "file", "response_type", "iteration", "prompt_hash", 
+                "response_content", "json_parsed_successfully", "timestamp"
+            ])
+            
+            for response in all_llm_responses:
+                llm_responses_table.add_data(
+                    response.file,
+                    response.response_type,
+                    response.iteration,
+                    response.prompt_hash,
+                    response.response_content,
+                    response.json_parsed_successfully,
+                    response.timestamp
+                )
+            
+            wandb.log({"llm_responses": llm_responses_table})
+            logger.info(f"  📊 Logged {len(all_llm_responses)} LLM responses to W&B table")
 
     return results
