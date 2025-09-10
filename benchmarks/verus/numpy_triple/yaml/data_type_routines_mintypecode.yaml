@@ -75,10 +75,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       default
-      // impl-end
   }
 
 vc-postamble: |-

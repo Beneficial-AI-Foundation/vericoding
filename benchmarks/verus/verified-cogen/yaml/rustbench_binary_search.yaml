@@ -20,10 +20,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       None
-      // impl-end
   }
 
 vc-postamble: |-

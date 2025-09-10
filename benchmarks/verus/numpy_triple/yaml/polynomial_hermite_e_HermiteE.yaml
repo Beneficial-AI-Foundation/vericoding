@@ -78,7 +78,6 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       HermiteEPoly {
           coef: Vec::new(),
@@ -87,7 +86,6 @@ vc-code: |-
           window_min: -1.0f32,
           window_max: 1.0f32,
       }
-      // impl-end
   }
 
 vc-postamble: |-

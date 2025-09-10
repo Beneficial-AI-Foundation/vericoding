@@ -30,13 +30,11 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       EighResult {
           eigenvalues: Vec::new(),
           eigenvectors: Vec::new(),
       }
-      // impl-end
   }
 
 vc-postamble: |-

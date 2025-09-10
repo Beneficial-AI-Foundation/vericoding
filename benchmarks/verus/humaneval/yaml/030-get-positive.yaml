@@ -16,10 +16,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       vec![]
-      // impl-end
   }
 
 vc-postamble: |-

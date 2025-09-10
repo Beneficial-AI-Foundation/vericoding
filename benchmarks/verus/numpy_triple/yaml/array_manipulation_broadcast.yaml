@@ -73,14 +73,12 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       BroadcastObject {
           x_data: Vec::new(),
           y_data: Vec::new(), 
           shape: (0, 0),
       }
-      // impl-end
   }
 
 vc-postamble: |-

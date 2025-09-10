@@ -68,14 +68,12 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       IntInfo {
           bits: 0,
           min: 0,
           max: 0,
       }
-      // impl-end
   }
 
 vc-postamble: |-

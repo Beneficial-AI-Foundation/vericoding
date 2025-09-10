@@ -48,10 +48,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       (Vec::new(), Vec::new())
-      // impl-end
   }
 
 vc-postamble: |-

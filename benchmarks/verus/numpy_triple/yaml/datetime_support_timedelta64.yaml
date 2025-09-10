@@ -66,10 +66,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       TimeDelta64 { value: 0, unit: TimeUnit::Second }
-      // impl-end
   }
 
 vc-postamble: |-

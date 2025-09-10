@@ -58,14 +58,12 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       Laguerre {
           coef: coefficients,
           domain: [0.0, 1.0],
           window: [0.0, 1.0],
       }
-      // impl-end
   }
 
 vc-postamble: |-

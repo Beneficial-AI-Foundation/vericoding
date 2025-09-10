@@ -42,13 +42,11 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       BitGeneratorState {
           seed: None,
           internal_state: 0,
       }
-      // impl-end
   }
 
 vc-postamble: |-

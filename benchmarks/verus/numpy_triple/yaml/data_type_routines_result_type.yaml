@@ -87,10 +87,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       NumpyDType::Bool
-      // impl-end
   }
 
 vc-postamble: |-

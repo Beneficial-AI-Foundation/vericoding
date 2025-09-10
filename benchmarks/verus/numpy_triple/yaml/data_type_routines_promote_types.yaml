@@ -121,10 +121,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       NumpyDType::UInt8
-      // impl-end
   }
 
 vc-postamble: |-

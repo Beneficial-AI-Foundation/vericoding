@@ -35,10 +35,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       (0, Vec::new())
-      // impl-end
   }
 
 vc-postamble: |-

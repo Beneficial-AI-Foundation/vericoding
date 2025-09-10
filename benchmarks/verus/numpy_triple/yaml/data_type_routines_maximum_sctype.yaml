@@ -95,10 +95,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       NumericType { kind: t.kind, precision: Precision::P8 }
-      // impl-end
   }
 
 vc-postamble: |-

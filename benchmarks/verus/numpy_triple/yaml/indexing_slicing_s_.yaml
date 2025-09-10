@@ -44,10 +44,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       Slice { start, stop, step }
-      // impl-end
   }
 
 vc-postamble: |-

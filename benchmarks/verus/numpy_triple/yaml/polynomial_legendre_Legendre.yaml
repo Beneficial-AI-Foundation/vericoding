@@ -62,7 +62,6 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       Legendre {
           coef: Vec::new(),
@@ -70,7 +69,6 @@ vc-code: |-
           window: [-1.0, 1.0],
           symbol: "x".to_string(),
       }
-      // impl-end
   }
 
 vc-postamble: |-

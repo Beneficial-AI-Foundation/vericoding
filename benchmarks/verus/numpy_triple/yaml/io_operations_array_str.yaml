@@ -19,10 +19,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       "[]".to_string()
-      // impl-end
   }
 
 vc-postamble: |-

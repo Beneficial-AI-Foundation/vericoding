@@ -29,10 +29,8 @@ vc-spec: |-
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       1.442695040888963407359924681001892137
-      // impl-end
   }
 
 vc-postamble: |-
