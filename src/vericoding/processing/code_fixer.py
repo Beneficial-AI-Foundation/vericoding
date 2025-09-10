@@ -144,8 +144,8 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
             json_str = json_match.group(1)
             logger.info(f"DEBUG: Using JSON from code block, length: {len(json_str)}")
         else:
-            # Try to find JSON array without code block
-            json_match = re.search(r'\[.*?\]', llm_response, re.DOTALL)
+            # Try to find JSON array without code block (use greedy matching to get the full array)
+            json_match = re.search(r'\[.*\]', llm_response, re.DOTALL)
             if json_match:
                 # Found plain JSON array - use group(0) for the whole match
                 json_str = json_match.group(0)
