@@ -85,9 +85,9 @@ Examples:
     )
 
     parser.add_argument(
-        "--debug",
+        "--no-debug",
         action="store_true",
-        help="Enable debug mode (save intermediate files)",
+        help="Disable debug mode (debug mode is enabled by default)",
     )
 
     parser.add_argument(
@@ -257,7 +257,7 @@ def setup_configuration(args) -> ProcessingConfig:
         max_iterations=args.iterations,
         output_dir=output_dir,
         summary_file=summary_file,
-        debug_mode=args.debug,
+        debug_mode=not args.no_debug,
         strict_spec_verification=args.strict_specs,
         max_workers=args.workers,
         api_rate_limit_delay=args.api_rate_limit_delay,
