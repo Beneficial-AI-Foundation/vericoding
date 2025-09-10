@@ -4,7 +4,7 @@ This directory contains Lean 4 translations of Dafny specifications, organized i
 
 ## Structure
 
-- **Root directory**: Contains the first 70 files that have been manually fixed and verified
+- **files/**: Contains the first 70 files that have been manually fixed and verified
 - **`remaining/`**: Contains the remaining files that still need attention
 
 ## File Organization
