@@ -8,6 +8,7 @@ from typing import Optional
 from .config import ProcessingConfig
 
 import anthropic
+import openai
 
 
 @dataclass
@@ -88,14 +89,7 @@ class OpenAIProvider(LLMProvider):
 
     def __init__(self, api_key: str, model: str = "gpt-4o", **kwargs):
         super().__init__(api_key, model, **kwargs)
-        try:
-            import openai
-
-            self.client = openai.OpenAI(api_key=api_key)
-        except ImportError:
-            raise ImportError(
-                "OpenAI package not installed. Install with: pip install openai"
-            )
+        self.client = openai.OpenAI(api_key=api_key)
 
     def call_api(self, prompt: str) -> LLMResponse:
         try:
@@ -135,16 +129,9 @@ class DeepSeekProvider(LLMProvider):
 
     def __init__(self, api_key: str, model: str = "deepseek-chat", **kwargs):
         super().__init__(api_key, model, **kwargs)
-        try:
-            import openai  # DeepSeek uses OpenAI-compatible API
-
-            self.client = openai.OpenAI(
-                api_key=api_key, base_url="https://api.deepseek.com"
-            )
-        except ImportError:
-            raise ImportError(
-                "OpenAI package not installed. Install with: pip install openai"
-            )
+        self.client = openai.OpenAI(
+            api_key=api_key, base_url="https://api.deepseek.com"
+        )
 
     def call_api(self, prompt: str) -> LLMResponse:
         try:
@@ -184,16 +171,9 @@ class GrokProvider(LLMProvider):
 
     def __init__(self, api_key: str, model: str = "grok-4", **kwargs):
         super().__init__(api_key, model, **kwargs)
-        try:
-            import openai  # Grok uses OpenAI-compatible API
-
-            self.client = openai.OpenAI(
-                api_key=api_key, base_url="https://api.x.ai/v1"
-            )
-        except ImportError:
-            raise ImportError(
-                "OpenAI package not installed. Install with: pip install openai"
-            )
+        self.client = openai.OpenAI(
+            api_key=api_key, base_url="https://api.x.ai/v1"
+        )
 
     def call_api(self, prompt: str) -> LLMResponse:
         try:
@@ -233,16 +213,9 @@ class OpenRouterProvider(LLMProvider):
 
     def __init__(self, api_key: str, model: str = "openai/gpt-4o", **kwargs):
         super().__init__(api_key, model, **kwargs)
-        try:
-            import openai  # OpenRouter uses OpenAI-compatible API
-
-            self.client = openai.OpenAI(
-                api_key=api_key, base_url="https://openrouter.ai/api/v1"
-            )
-        except ImportError:
-            raise ImportError(
-                "OpenAI package not installed. Install with: pip install openai"
-            )
+        self.client = openai.OpenAI(
+            api_key=api_key, base_url="https://openrouter.ai/api/v1"
+        )
 
     def call_api(self, prompt: str) -> LLMResponse:
         try:
