@@ -305,6 +305,7 @@ async def main_async(
     source_language: str = "dafny",
     max_concurrent: int = 3,
     file_pattern: str = "*.dfy",
+    limit: int | None = None,
     # Debug options
     save_debug: bool = False,
     debug_dir: Path = Path("debug_sessions"),
@@ -319,6 +320,34 @@ async def main_async(
 
     # Load the dataset
     dataset = load_benchmark(benchmark, split, file_pattern)
+
+    # Apply limit if specified
+    if limit is not None and limit > 0:
+        # Convert dataset to list for uniform handling
+        if isinstance(dataset, list):
+            dataset_list: list | None = dataset
+        else:
+            # Handle Hugging Face datasets and other iterable types
+            try:
+                dataset_list = list(dataset)
+            except Exception as e:
+                logfire.warning(f"Could not convert dataset to list: {e}")
+                # If conversion fails, skip limiting and use original dataset
+                dataset_list = None
+
+        if dataset_list is not None:
+            original_length = len(dataset_list)
+
+            if limit >= original_length:
+                print(
+                    f"Limit ({limit}) is greater than or equal to available files ({original_length}), processing all files"
+                )
+                dataset = dataset_list
+            else:
+                dataset = dataset_list[:limit]
+                print(f"Limited dataset from {original_length} to {len(dataset)} files")
+        else:
+            print("Could not apply limit - using original dataset")
 
     # Extract benchmark name for artifact path
     # Handle both Hugging Face format (user/dataset) and local paths
