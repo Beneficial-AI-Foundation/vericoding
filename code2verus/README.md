@@ -155,6 +155,9 @@ code2verus --benchmark ./my_code --file-pattern "*.dfy"
 
 # Increase concurrent translations
 code2verus --max-concurrent 5
+
+# Process only the first 10 files
+code2verus --limit 10
 ```
 
 ### Debug and Analysis Usage
@@ -190,6 +193,7 @@ code2verus --save-debug --debug-dir ./production_logs --debug-summary
 - `--language`: Source language to translate from (`dafny` or `lean`, default: `dafny`)
 - `--max-concurrent`: Maximum number of concurrent translations (default: 3)
 - `--file-pattern`: File pattern(s) to match when loading from local folder (default: `*.dfy`)
+- `--limit`: Maximum number of files to process (default: process all files)
 
 #### Debug Options
 - `--save-debug`: Save detailed debug contexts to JSON files for later analysis
