@@ -405,12 +405,12 @@ def process_yaml_file(file_path: Path) -> None:
         #     if vc_code_lines[-1].strip() != "}":
         #         raise ValueError(f"vc-code in {file_path} last line must be '}}', got: '{vc_code_lines[-1]}'")
 
-        if spec['vc-code'].strip():
-            spec['vc-code'] = '{\n    assume(false);\n    unreached();\n}\n'
+        # if spec['vc-code'].strip():
+        #     spec['vc-code'] = '{\n    assume(false);\n    unreached();\n}\n'
             # raise ValueError(f"vc-code is not empty")
 
-        # # Move comments from other fields to vc-description
-        # move_comments_to_description(spec)
+        # Move comments from other fields to vc-description
+        move_comments_to_description(spec)
         
         # # Remove unnecessary tags from vc-description
         # if 'vc-description' in spec and isinstance(spec['vc-description'], str):
@@ -432,8 +432,11 @@ def process_yaml_file(file_path: Path) -> None:
         #     spec['vc-description'] = remove_unnecessary_tags(spec['vc-description'], unnecessary_tags)
         
         # if spec['vc-preamble'] is None:
-        #     if "{:axiom}" in spec['vc-preamble']:
-        #         raise ValueError("axiom found in vc-preamble")
+        #     if "assume(false)" in spec['vc-preamble']:
+        #         raise ValueError("assume(false) found in vc-preamble")
+        # if spec['vc-spec'] is None:
+        #     if "assume(false)" in spec['vc-spec']:
+        #         raise ValueError("assume(false) found in vc-preamble")
         # if spec['vc-postamble'].strip():
         #     raise ValueError("vc-postamble is not empty")
         

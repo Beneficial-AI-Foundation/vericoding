@@ -35,8 +35,8 @@ vc-spec: |-
   
   //Our code from class
   fn compute_power(a: u64, n: u64) -> (s: u64)
-      /*Pre-Condition*/   requires n >= 0 && a >= 0
-      /*Post-Condition*/  ensures s as int == power(a as int, n as nat)
+      requires n >= 0 && a >= 0
+      ensures s as int == power(a as int, n as nat)
 
 vc-code: |-
   {
