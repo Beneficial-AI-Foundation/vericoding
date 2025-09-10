@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Construct an array from an index array and a set of arrays to choose from.
   Given an index vector 'indices' and a vector of choice vectors 'choices',
   constructs a result vector where each element is selected from the corresponding
@@ -9,11 +8,12 @@ vc-description: |-
   
   This is a simplified version focusing on the core functionality with 'raise' mode,
   where all indices must be valid (in range [0, num_choices-1]).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -26,6 +26,7 @@ vc-spec: |-
       ensures 
           result.len() == indices.len(),
           forall|i: int| 0 <= i < indices.len() ==> result[i] == choices[indices[i] as int][i],
+
 vc-code: |-
   {
       // impl-start
@@ -33,7 +34,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

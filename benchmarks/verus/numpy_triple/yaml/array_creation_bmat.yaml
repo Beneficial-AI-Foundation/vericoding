@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Build a matrix from a 2x2 block structure using 4 input vectors.
   This represents a simplified version of numpy.bmat for 2x2 block matrices.
   The result is a flattened vector representing the block matrix in row-major order.
@@ -17,10 +16,10 @@ vc-description: |-
   
   Precondition: True (no special preconditions for basic block matrix construction)
   Postcondition: Each block is correctly placed in the flattened result
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -47,6 +46,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that returns the k most frequent elements from a list of integers. The method should count the frequency of each distinct element in the list and return the k elements with the highest frequency.
   
   -----Input-----
@@ -11,12 +10,13 @@ vc-description: |-
   The output is a list of integers:
   Returns exactly k integers representing the elements that appear most frequently in the input list in the order from the higher frequency to lower frequency.
   If two numbers have the same frequency, use the order of the first occurrence in nums.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
   use vstd::seq_lib::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -27,6 +27,7 @@ vc-spec: |-
           result.len() == k,
           forall|x: i32| result@.contains(x) ==> nums@.contains(x),
           result@.no_duplicates(),
+
 vc-code: |-
   {
       // impl-start
@@ -34,8 +35,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       /*
@@ -105,3 +106,4 @@ vc-postamble: |-
       ]
       */
   }
+

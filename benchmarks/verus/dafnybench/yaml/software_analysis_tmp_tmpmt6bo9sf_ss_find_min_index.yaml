@@ -22,7 +22,6 @@ vc-preamble: |-
           ))
   }
   
-  
   // spec fn is_permutation(a: Seq<int>, b: Seq<int>) -> bool
   //     decreases a.len(), b.len()
   // {
@@ -34,11 +33,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn find_min_index(a: &[int], s: usize, e: usize) -> (min_i: usize)
       requires
           a.len() > 0,
@@ -49,15 +45,12 @@ vc-spec: |-
           min_i >= s,
           min_i < e,
           forall|k: int| s <= k < e ==> a[min_i as int] <= a[k],
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.bitwise_or: Compute the bit-wise OR of two arrays element-wise.
   
   Computes the bit-wise OR of the underlying binary representation of
@@ -19,10 +18,10 @@ vc-description: |-
   - Commutative: bitwise_or(x1[i], x2[i]) = bitwise_or(x2[i], x1[i])
   - Identity: bitwise_or(x[i], 0) = x[i]
   - Idempotent: bitwise_or(x[i], x[i]) = x[i]
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -30,28 +29,28 @@ vc-helpers: |-
 vc-spec: |-
   /* Axiomatically define bitwise OR operation for integers */
   spec fn bitwise_or(x: i32, y: i32) -> i32;
-
+  
   /* Bitwise OR is commutative */
   proof fn bitwise_or_comm(x: i32, y: i32)
       ensures bitwise_or(x, y) == bitwise_or(y, x)
   {
       assume(false);
   }
-
+  
   /* Bitwise OR with zero is identity */
   proof fn bitwise_or_zero(x: i32)
       ensures bitwise_or(x, 0) == x
   {
       assume(false);
   }
-
+  
   /* Bitwise OR is idempotent */
   proof fn bitwise_or_idempotent(x: i32)
       ensures bitwise_or(x, x) == x
   {
       assume(false);
   }
-
+  
   fn numpy_bitwise_or(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
       requires x1.len() == x2.len(),
       ensures
@@ -70,6 +69,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

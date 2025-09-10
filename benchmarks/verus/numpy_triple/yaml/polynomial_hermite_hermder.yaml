@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Differentiate a Hermite series.
   Returns the Hermite series coefficients differentiated `m` times.
   At each iteration the result is multiplied by `scl` (scaling factor).
@@ -9,11 +8,12 @@ vc-description: |-
   the Hermite polynomial derivative rule: d/dx H_n(x) = 2n * H_{n-1}(x).
   The result has degree reduced by m (or becomes zero if m >= n).
   Each differentiation multiplies by the scaling factor scl.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -30,6 +30,7 @@ vc-spec: |-
               forall|i: int| 0 <= i < result.len() ==>
                   result[i] == scl * scl * (2 * ((i + 2) as i32)) * (2 * ((i + 1) as i32)) * c[i + 2]
           ),
+
 vc-code: |-
   {
       // impl-start
@@ -37,7 +38,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

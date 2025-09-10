@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Compute the arithmetic mean along the specified axis, ignoring NaNs.
   Returns the average of the array elements, ignoring NaN values.
   If all values are NaN, returns NaN.
@@ -13,16 +12,17 @@ vc-description: |-
   4. NaN values are completely ignored in the computation
   5. For vectors without NaN values, behaves identically to regular mean
   6. The result is bounded by the minimum and maximum of non-NaN elements
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   spec fn is_nan_f32(x: f32) -> bool;
-
+  
   spec fn valid_indices_count(a: Seq<f32>) -> nat
       decreases a.len()
   {
@@ -36,17 +36,17 @@ vc-spec: |-
           }
       }
   }
-
+  
   spec fn has_valid_element(a: Seq<f32>) -> bool 
   {
       valid_indices_count(a) > 0
   }
-
+  
   spec fn all_nan(a: Seq<f32>) -> bool 
   {
       valid_indices_count(a) == 0
   }
-
+  
   spec fn contains_nan(a: Seq<f32>) -> bool
       decreases a.len()
   {
@@ -56,7 +56,7 @@ vc-spec: |-
           is_nan_f32(a[0]) || contains_nan(a.skip(1))
       }
   }
-
+  
   fn nanmean(a: Vec<f32>) -> (result: f32)
       ensures 
           /* Case 1: If there exists at least one non-NaN element, result is their arithmetic mean */
@@ -67,6 +67,7 @@ vc-spec: |-
           (!is_nan_f32(result) ==> has_valid_element(a@)) &&
           /* Case 4: For vectors without NaN, behaves like regular mean */
           (!contains_nan(a@) && a.len() > 0 ==> !is_nan_f32(result))
+
 vc-code: |-
   {
       // impl-start
@@ -74,7 +75,8 @@ vc-code: |-
       0.0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Compute the vector dot product of two vectors
   
   Specification: vecdot computes the mathematical dot product as the sum of element-wise products.
@@ -10,10 +9,10 @@ vc-description: |-
   - Linearity: vecdot(c*x1, x2) = c * vecdot(x1, x2)
   - Zero vector: vecdot(0, x) = 0
   - Self-dot gives sum of squares: vecdot(x, x) = Σ(x_i²)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -28,7 +27,7 @@ vc-spec: |-
           x1[0] * x2[0] + dot_product_spec(x1.skip(1), x2.skip(1))
       }
   }
-
+  
   fn vecdot(x1: Vec<i32>, x2: Vec<i32>) -> (result: i32)
       requires x1.len() == x2.len(),
       ensures 
@@ -44,6 +43,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

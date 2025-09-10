@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Euler's constant (e), the base of natural logarithms
   
   Euler's constant, base of natural logarithms, Napier's constant
@@ -13,10 +12,10 @@ vc-description: |-
   3. It is the limit of (1 + 1/n)^n as n approaches infinity
   4. It satisfies the property that the derivative of e^x equals e^x
   5. It is the sum of the infinite series 1/0! + 1/1! + 1/2! + ...
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -33,6 +32,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

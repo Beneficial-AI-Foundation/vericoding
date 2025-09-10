@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.polyutils.mapdomain: Apply linear map to input points.
   
   The linear map `offset + scale*x` that maps the domain `old` to
@@ -30,10 +29,10 @@ vc-description: |-
   
   Precondition: The old domain must be non-degenerate (old[1] ≠ old[0])
   Postcondition: Each result point follows the linear transformation formula
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -56,7 +55,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

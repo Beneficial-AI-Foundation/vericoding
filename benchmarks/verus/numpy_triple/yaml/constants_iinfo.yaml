@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Machine limits for integer types - returns information about the given integer type including 
   the number of bits, minimum value, and maximum value.
   
@@ -8,10 +7,10 @@ vc-description: |-
   - bits: the number of bits used by the type
   - min: the minimum representable value (-(2^(bits-1)) for signed, 0 for unsigned)
   - max: the maximum representable value (2^(bits-1) - 1 for signed, 2^bits - 1 for unsigned)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -28,13 +27,13 @@ vc-spec: |-
       UInt32,
       UInt64,
   }
-
+  
   pub struct IntegerInfo {
       pub bits: u32,
       pub min: i64,
       pub max: i64,
   }
-
+  
   fn iinfo(int_type: IntegerType) -> (result: IntegerInfo)
       ensures match int_type {
           IntegerType::Int8 => 
@@ -68,6 +67,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

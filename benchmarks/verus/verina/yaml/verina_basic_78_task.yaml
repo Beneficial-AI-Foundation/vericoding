@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Given two integers, the task is to compute two output values: one being the sum of the integers and the other being their difference.
   
   -----Input-----
@@ -14,10 +13,10 @@ vc-description: |-
   
   -----Note-----
   It is assumed that x and y are valid integers. There are no additional constraints on the inputs.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -37,7 +36,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       // /*
@@ -108,3 +106,4 @@ vc-postamble: |-
       // ]
       // */
   }
+

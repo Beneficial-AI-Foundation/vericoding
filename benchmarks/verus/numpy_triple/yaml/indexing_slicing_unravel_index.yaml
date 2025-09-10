@@ -1,15 +1,15 @@
 vc-description: |-
-  /*
   Converts a flat index or array of flat indices into a tuple of coordinate arrays.
   This is the inverse operation of ravel_multi_index.
   Specification: unravel_index converts flat indices to multi-dimensional coordinates
   such that the coordinates are valid for the given shape and represent the correct
   positions in the multi-dimensional array.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   spec fn vec_product(shape: Seq<usize>) -> nat
       decreases shape.len()
@@ -20,6 +20,7 @@ vc-helpers: |-
           (shape[0] as nat) * vec_product(shape.skip(1))
       }
   }
+
 vc-spec: |-
   fn unravel_index(indices: Vec<usize>, shape: Vec<usize>) -> (result: Vec<Vec<usize>>)
       requires 
@@ -33,6 +34,7 @@ vc-spec: |-
               #[trigger] result[i][j] < shape[j],
           forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> 
               (indices[i] != indices[j] ==> result[i] != result[j])
+
 vc-code: |-
   {
       // impl-start
@@ -40,7 +42,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

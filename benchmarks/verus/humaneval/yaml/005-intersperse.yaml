@@ -3,9 +3,9 @@ vc-description: |-
 vc-preamble: |-
   use vstd::assert_seqs_equal;
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn intersperse_spec(numbers: Seq<u64>, delimiter: u64) -> (result:Seq<u64>)
       decreases numbers.len(),
   {
@@ -17,19 +17,19 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn even(i: int) -> (result:int) {
       2 * i
   }
   // pure-end
   // pure-end
-
+  
   spec fn odd(i: int) -> (result:int) {
       2 * i + 1
   }
   // pure-end
   // pure-end
-
+  
   spec fn intersperse_quantified(numbers: Seq<u64>, delimiter: u64, interspersed: Seq<u64>) -> (result:bool) {
       (if numbers.len() == 0 {
           interspersed.len() == 0
@@ -43,7 +43,7 @@ vc-preamble: |-
 
 vc-helpers: |-
   // pure-end
-
+  
   proof fn intersperse_spec_len(numbers: Seq<u64>, delimiter: u64)
       // post-conditions-start
       ensures
@@ -58,9 +58,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn intersperse_quantified_is_spec(numbers: Seq<u64>, delimiter: u64, interspersed: Seq<u64>)
       // pre-conditions-start
       requires
@@ -120,6 +120,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

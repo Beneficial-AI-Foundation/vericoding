@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.hermite.hermmul: Multiply one Hermite series by another.
   
   Returns the product of two Hermite series c1 * c2. The arguments
@@ -28,10 +27,10 @@ vc-description: |-
   
   Precondition: True (works for all valid inputs)
   Postcondition: Captures empty input behavior, constant multiplication, and size properties
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -62,6 +61,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -17,11 +17,8 @@ vc-preamble: |-
   // Author: Leino, Title: Program Proofs
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn binary_search(a: &[i32], circle: i32) -> (n: usize)
       requires 
           forall|i: int| #![trigger a[i]] 1 <= i < a.len() ==> a[i-1] < a[i],
@@ -30,15 +27,12 @@ vc-spec: |-
           n <= a.len(),
           forall|i: int| #![trigger a[i]] 0 <= i < n ==> a[i] < circle,
           forall|i: int| #![trigger a[i]] n <= i < a.len() ==> circle <= a[i],
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

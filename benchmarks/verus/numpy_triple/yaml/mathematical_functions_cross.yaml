@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.cross: Return the cross product of two (arrays of) vectors.
   
   The cross product of a and b in R^3 is a vector perpendicular to both a and b.
@@ -19,11 +18,12 @@ vc-description: |-
   3. Anti-commutativity: a × b = -(b × a)
   4. Bilinearity properties
   5. Zero property: if a and b are parallel, then a × b = 0
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -33,6 +33,7 @@ vc-spec: |-
           b.len() == 3,
       ensures 
           result.len() == 3,
+
 vc-code: |-
   {
       // impl-start
@@ -40,7 +41,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

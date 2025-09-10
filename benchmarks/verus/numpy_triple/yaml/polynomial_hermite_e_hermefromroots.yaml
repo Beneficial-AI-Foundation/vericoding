@@ -1,7 +1,6 @@
 vc-description: |-
-  /*
   Generate a HermiteE series with given roots.
-      
+  
   Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ₋₁)
   in HermiteE form, where rᵢ are the roots specified in the input vector.
   
@@ -17,10 +16,10 @@ vc-description: |-
   3. When evaluated at any root rᵢ using HermiteE basis, the result is zero
   4. The highest degree coefficient is non-zero (ensuring correct degree)
   5. The polynomial satisfies the fundamental property p(x) = (x - r₀) * ... * (x - rₙ₋₁)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -36,7 +35,7 @@ vc-helpers: |-
           x * eval_hermite_e((k - 1) as nat, x) - (k - 1) as int * eval_hermite_e((k - 2) as nat, x)
       }
   }
-
+  
   /* Evaluate a polynomial in HermiteE basis at point x given coefficients */
   spec fn eval_hermite_e_poly(coeffs: Seq<int>, x: int) -> int 
       decreases coeffs.len()
@@ -47,7 +46,7 @@ vc-helpers: |-
           coeffs[0] * eval_hermite_e(0, x) + eval_hermite_e_poly(coeffs.skip(1), x)
       }
   }
-
+  
   /* Product form helper: (x - r₀) * (x - r₁) * ... * (x - rᵢ₋₁) */
   spec fn product_form(roots: Seq<int>, x: int, i: nat) -> int 
       decreases i
@@ -77,7 +76,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

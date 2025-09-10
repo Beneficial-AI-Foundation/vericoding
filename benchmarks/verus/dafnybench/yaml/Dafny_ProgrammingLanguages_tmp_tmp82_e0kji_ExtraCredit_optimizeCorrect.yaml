@@ -55,21 +55,15 @@ vc-preamble: |-
   //you must write proof code so that Verus can prove this
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn optimize_correct(e: Exp, s: Map<String, int>)
       ensures eval(e, s) == eval(optimize(e), s)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

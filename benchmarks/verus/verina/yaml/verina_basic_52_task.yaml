@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires developing a solution that sorts an array of integers in non-decreasing order. The solution must return an array that is a rearrangement of the input, containing exactly the same elements but ordered from smallest to largest.
   
   -----Input-----
@@ -14,10 +13,10 @@ vc-description: |-
   
   -----Note-----
   The implementation uses helper functions for swapping elements and performing inner and outer loops of the bubble sort algorithm. No additional preconditions are required as the function should correctly handle empty and non-empty arrays.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,6 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

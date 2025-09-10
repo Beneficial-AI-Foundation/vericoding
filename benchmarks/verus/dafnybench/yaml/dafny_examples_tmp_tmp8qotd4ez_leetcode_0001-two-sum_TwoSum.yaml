@@ -15,26 +15,20 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn two_sum(nums: &[i32], target: i32) -> (r: (i32, i32))
       ensures 
           0 <= r.0 ==> 0 <= r.0 < r.1 < nums.len() && 
                        nums.view()[r.0 as int] + nums.view()[r.1 as int] == target &&
                        forall|i: int, j: int| 0 <= i < j < r.1 ==> nums.view()[i] + nums.view()[j] != target,
           r.0 == -1 <==> forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums.view()[i] + nums.view()[j] != target,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       (-1, -1)
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

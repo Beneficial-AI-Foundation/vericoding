@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that finds the difference between the first even number and the first odd number in an array of integers. The method should process the array sequentially until it identifies the first even number and the first odd number, and then return the difference calculated as (first even number) minus (first odd number).
   
   -----Input-----
@@ -12,19 +11,20 @@ vc-description: |-
   
   -----Note-----
   The input array is assumed to be non-empty and to contain at least one even number and one odd number.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn is_even(n: i32) -> bool {
       n % 2 == 0
   }
-
+  
   spec fn is_odd(n: i32) -> bool {
       n % 2 != 0
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -40,6 +40,7 @@ vc-spec: |-
               result == a[i as int] - a[j as int] &&
               (forall|k: int| 0 <= k < i ==> is_odd(a[k as int])) &&
               (forall|k: int| 0 <= k < j ==> is_even(a[k as int]))
+
 vc-code: |-
   {
       // impl-start
@@ -47,8 +48,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       /*
@@ -120,3 +121,4 @@ vc-postamble: |-
       ]
       */
   }
+

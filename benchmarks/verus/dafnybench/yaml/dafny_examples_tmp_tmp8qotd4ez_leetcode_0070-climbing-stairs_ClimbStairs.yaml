@@ -14,23 +14,17 @@ vc-preamble: |-
   // A simple specification
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn climb_stairs(n: u32) -> (r: u32)
       requires n >= 0
       ensures r == stairs(n as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

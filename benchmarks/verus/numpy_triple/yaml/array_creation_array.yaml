@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Create an array from existing data. This is the primary array creation function.
   Takes a list of Float elements and creates a Vector of the same length.
   
@@ -8,10 +7,10 @@ vc-description: |-
   all elements at their corresponding indices. This captures the fundamental property
   of numpy.array - converting sequence-like data into array format while preserving
   element values and order.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -31,6 +30,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,11 +1,10 @@
 vc-description: |-
 
 vc-preamble: |-
-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn single_digit_number_to_char(n: nat) -> (result:char) {
       if n == 0 {
           '0'
@@ -31,7 +30,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn number_to_char(n: nat) -> (result:Seq<char>)
       decreases n,
   {
@@ -43,7 +42,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn string_sequence(n: nat) -> (result:Seq<char>)
       decreases n,
   {
@@ -90,7 +89,7 @@ vc-helpers: |-
       }
       // impl-end
   }
-
+  
   fn number_to_char_impl(n: u8) -> (char_vec: Vec<char>)
       // post-conditions-start
       ensures
@@ -100,7 +99,7 @@ vc-helpers: |-
       // impl-start
       let mut i = n;
       let mut output = vec![];
-
+  
       while (i > 0)
           // invariants-start
           invariant
@@ -111,7 +110,7 @@ vc-helpers: |-
           let current = single_digit_number_to_char_impl(m);
           output.insert(0, current);
           i = i / 10;
-
+  
           // assert-start
           assert(number_to_char(n as nat) == number_to_char(i as nat).add(output@));
           // assert-end
@@ -119,9 +118,9 @@ vc-helpers: |-
       return output;
       // impl-end
   }
-
+  
   // pure-end
-
+  
   proof fn sanity_check() {
       // impl-start
       assert(string_sequence(1) == seq!['0', ' ', '1']) by (compute);
@@ -177,6 +176,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
   fn main() {}
+

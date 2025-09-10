@@ -12,23 +12,17 @@ vc-preamble: |-
   spec fn even(n: nat) -> bool { n % 2 == 0 }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn partitionOddEven(a: &mut Vec<nat>)
       ensures 
           a@.to_multiset() == old(a)@.to_multiset(),
           !(exists|i: int, j: int| 0 <= i < j < a@.len() && even(a@[i]) && odd(a@[j])),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

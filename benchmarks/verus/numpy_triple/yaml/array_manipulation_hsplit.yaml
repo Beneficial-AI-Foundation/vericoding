@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Split an array into multiple sub-arrays horizontally (column-wise).
   
   Split a 1D array into multiple sub-arrays horizontally.
@@ -14,10 +13,10 @@ vc-description: |-
   1. The concatenation of all sub-arrays equals the original array
   2. Each sub-array has exactly n/k elements
   3. Elements are distributed in order without overlapping
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -48,6 +47,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

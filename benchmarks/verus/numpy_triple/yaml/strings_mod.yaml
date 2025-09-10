@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.mod: Return (a % i), that is pre-Python 2.6 string formatting 
   (interpolation), element-wise for a pair of array_likes of string objects.
   
@@ -45,10 +44,10 @@ vc-description: |-
   Postcondition: For all indices i, result[i] represents the formatted string
                 where format string a[i] is applied to value values[i], satisfying
                 the mathematical properties of string formatting operations
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -68,6 +67,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

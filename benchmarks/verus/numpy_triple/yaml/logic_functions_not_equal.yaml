@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.not_equal: Return (x1 != x2) element-wise.
   
   Performs element-wise inequality comparison of two arrays and returns a boolean array
@@ -27,10 +26,10 @@ vc-description: |-
   4. Symmetry: not_equal(x, y) = not_equal(y, x)
   5. Logical negation of equality: not_equal(x, y) = ¬equal(x, y)
   6. Result shape matches input shape
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -55,6 +54,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

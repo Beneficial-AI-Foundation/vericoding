@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.bitwise_and: Compute the bit-wise AND of two arrays element-wise.
   
   Computes the bit-wise AND of the underlying binary representation of 
@@ -34,10 +33,10 @@ vc-description: |-
      - Idempotence: x & x = x
   3. The result is always less than or equal to both inputs (for non-negative integers)
   4. Each bit in the result is 1 iff both corresponding bits in the inputs are 1
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -66,6 +65,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

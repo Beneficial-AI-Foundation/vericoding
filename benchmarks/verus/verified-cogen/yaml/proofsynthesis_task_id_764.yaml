@@ -2,16 +2,15 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
-
+  
   verus! {
-
+  
   spec fn is_digit(c: char) -> (result: bool) {
       (c as u8) >= 48 && (c as u8) <= 57
   }
   // pure-end
   // pure-end
-
+  
   spec fn count_digits_recursively(seq: Seq<char>) -> (result: int)
       decreases seq.len(),
   {
@@ -46,7 +45,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

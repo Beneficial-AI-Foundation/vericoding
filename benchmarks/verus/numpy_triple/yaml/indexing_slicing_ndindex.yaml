@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Generate N-dimensional indices for an array with given shape.
   Returns a vector of index tuples, where each tuple represents a valid
   N-dimensional index for an array with the specified dimensions.
@@ -8,10 +7,10 @@ vc-description: |-
   (i, j) where 0 ≤ i < m and 0 ≤ j < n, in C-order (row-major).
   
   Example: For shape (2, 3), generates [(0,0), (0,1), (0,2), (1,0), (1,1), (1,2)]
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -42,6 +41,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

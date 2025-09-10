@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Shift the bits of integers to the left element-wise.
   This operation is equivalent to multiplying each element by 2^shift_amount.
   
@@ -12,11 +11,11 @@ vc-description: |-
   3. Zero preservation: Shifting zero always yields zero
   4. Monotonicity: For positive values, left shifting increases magnitude
   5. Composition property: left_shift(x, a) then left_shift(result, b) = left_shift(x, a+b)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
   use vstd::arithmetic::power::pow;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -43,6 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

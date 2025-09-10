@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus function that finds the next greater element for a given array of numbers. The next greater element for an element x is defined as the first element greater than x that appears to the right of x in the array.
   
   Given two distinct 0-indexed integer arrays `nums1` and `nums2`, where `nums1` is a subset of `nums2`, the function should determine the next greater element for each value in `nums1` as it appears in `nums2`.
@@ -16,10 +15,10 @@ vc-description: |-
   - For each element nums1[i], the corresponding output element is:
     - The next greater element of nums1[i] in nums2 if one exists
     - -1 if there is no next greater element
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -41,6 +40,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

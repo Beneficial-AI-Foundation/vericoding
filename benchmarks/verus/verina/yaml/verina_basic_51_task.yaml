@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires creating a function that determines the correct insertion index for a given integer in a sorted array. The goal is to identify an index where every number before it is less than the specified value, and every number from that index onward is greater than or equal to the value. If the given integer is larger than all elements in the array, the function should return the array's size.
   
   -----Input-----
@@ -16,15 +15,16 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the input array is sorted in non-decreasing order. The function returns the first index where the key could be inserted while maintaining the sorted order.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn binary_search_precond(a: &Vec<i32>, key: i32) -> bool {
       forall|i: int, j: int| 0 <= i <= j < a.len() ==> a[i] <= a[j]
   }
+
 vc-helpers: |-
   fn binary_search_loop(a: &Vec<i32>, key: i32, lo: usize, hi: usize) -> (result: usize)
       requires
@@ -48,6 +48,7 @@ vc-helpers: |-
           lo
       }
   }
+
 vc-spec: |-
   fn binary_search(a: &Vec<i32>, key: i32) -> (result: usize)
       requires binary_search_precond(a, key),
@@ -55,6 +56,7 @@ vc-spec: |-
           result <= a.len(),
           forall|i: int| 0 <= i < result ==> a[i] < key,
           forall|i: int| result <= i < a.len() ==> a[i] >= key,
+
 vc-code: |-
   {
       // impl-start
@@ -62,7 +64,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

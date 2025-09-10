@@ -14,11 +14,8 @@ vc-preamble: |-
   // We want our Hoare triple of (|Pre-Condition|) Code (|Post-Condition|) to hold iff A is properly sorted.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn sort(A: &mut Vec<i32>, n: usize)
       requires 
           n == old(A).len(),
@@ -28,14 +25,11 @@ vc-spec: |-
   
   //Can we write code that does not sort A that still satisfies the requirements? 
   //Consider the following program:
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

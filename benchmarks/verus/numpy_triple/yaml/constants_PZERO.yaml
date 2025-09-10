@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   IEEE 754 floating point representation of positive zero.
   
   DEPRECATED: Removed from main namespace in NumPy 2.0. Use 0.0 instead.
@@ -11,16 +10,18 @@ vc-description: |-
   2. It behaves as the additive identity
   3. It behaves as expected in multiplication and division
   4. It has special IEEE 754 properties (e.g., 1.0 / PZERO = +∞)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   fn pzero() -> (result: f64)
       ensures result == 0.0
+
 vc-code: |-
   {
       // impl-start
@@ -28,7 +29,8 @@ vc-code: |-
       0.0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

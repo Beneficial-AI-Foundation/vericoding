@@ -17,11 +17,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn get_random_data_entry<T: PartialEq + Clone>(m_work_list: &Vec<T>, avoid_set: &Vec<T>) -> (e: T)
       requires m_work_list.len() > 0
       ensures 
@@ -29,18 +26,14 @@ vc-spec: |-
           set_of_seq(avoid_set@) != set_of_seq(m_work_list@) ==> !avoid_set@.contains(e),
           (forall |x: T| avoid_set@.contains(x) ==> m_work_list@.contains(x)) && 
           avoid_set@ != m_work_list@ ==> m_work_list@.contains(e)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       m_work_list[0].clone()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

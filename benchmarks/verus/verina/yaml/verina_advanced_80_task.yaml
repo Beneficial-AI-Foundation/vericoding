@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that finds the indices of two numbers in an array that add up to a target value. Given an array of integers and a target integer, the function should return the indices of the two numbers such that they add up to the target.
   
   You may assume that each input has exactly one solution, and you may not use the same element twice.
@@ -12,10 +11,10 @@ vc-description: |-
   -----Output-----
   The output is an array of two integers:
   Returns the indices of the two numbers in the array that add up to the target. The indices should be sorted.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -45,6 +44,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

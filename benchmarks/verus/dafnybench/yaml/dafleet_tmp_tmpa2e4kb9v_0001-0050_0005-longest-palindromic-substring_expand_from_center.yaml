@@ -14,7 +14,6 @@ vc-preamble: |-
   Explanation: "aba" is also a valid answer.
   */
   
-  
   // Specifying the problem: whether `s[i..j]` is palindromic
   spec fn palindromic(s: Seq<char>, i: int, j: int) -> bool
       recommends 0 <= i <= j <= s.len()
@@ -29,7 +28,6 @@ vc-preamble: |-
   
   // The main algorithm.
   // We traverse all centers from left to right, and "expand" each of them, to find the longest palindrome.
-  
   
   /* Discussions
   1. Dafny is super bad at slicing (esp. nested slicing).
@@ -58,7 +56,6 @@ vc-preamble: |-
     Also, I will verify that "every loop is entered for only `O(|s|)` times",
     which "indirectly" proves that the entire algorithm runs in `O(|s|)` time.
   */
-  
   
   // Below are helper functions and lemmas we used:
   
@@ -144,11 +141,8 @@ vc-preamble: |-
   // because its both ends are the bogus char.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn expand_from_center(s: Seq<char>, i0: usize, j0: usize) -> (result: (usize, usize))
       requires 0 <= i0 <= j0 <= s.len(),
                palindromic(s, i0 as int, j0 as int)
@@ -161,18 +155,14 @@ vc-spec: |-
                 && i + j == i0 + j0                                             // sharing the same center,
                 ==> j - i <= hi - lo                                             // `s[lo..hi]` is longest.
           })
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       (0, 0)
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

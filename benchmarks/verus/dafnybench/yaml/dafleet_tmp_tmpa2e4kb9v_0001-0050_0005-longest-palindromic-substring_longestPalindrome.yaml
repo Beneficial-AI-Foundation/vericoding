@@ -14,7 +14,6 @@ vc-preamble: |-
   Explanation: "aba" is also a valid answer.
   */
   
-  
   // Specifying the problem: whether `s[i..j]` is palindromic
   spec fn palindromic(s: Seq<char>, i: int, j: int) -> bool
       recommends 0 <= i <= j <= s.len()
@@ -39,7 +38,6 @@ vc-preamble: |-
       assume(false);
       (0, 0)
   }
-  
   
   // The main algorithm.
   // We traverse all centers from left to right, and "expand" each of them, to find the longest palindrome.
@@ -72,10 +70,8 @@ vc-preamble: |-
     which "indirectly" proves that the entire algorithm runs in `O(|s|)` time.
   */
   
-  
   // A reference implementation of Manacher's algorithm:
   // (Ref. https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm) for details...
-  
   
   // Below are helper functions and lemmas we used:
   
@@ -161,30 +157,23 @@ vc-preamble: |-
   // because its both ends are the bogus char.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn longestPalindrome(s: Vec<char>) -> (ans: (Vec<char>, usize, usize))
       ensures 
           0 <= ans.1 <= ans.2 <= s.len(),
           ans.0@ == s@.subrange(ans.1 as int, ans.2 as int),  // `ans` is indeed a substring in `s`
           palindromic(s@, ans.1 as int, ans.2 as int),  // `ans` is palindromic
           forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s@, i, j) ==> j - i <= ans.2 - ans.1,  // `ans` is longest
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       let result_vec = Vec::<char>::new();
       (result_vec, 0, 0)
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

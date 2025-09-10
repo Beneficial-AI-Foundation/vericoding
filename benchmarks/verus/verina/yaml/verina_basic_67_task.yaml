@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires determining whether a given list of characters is a palindrome; that is, whether the sequence reads the same forward and backward.
   
   -----Input-----
@@ -13,17 +12,19 @@ vc-description: |-
   
   -----Note-----
   An empty list is considered a palindrome. The function does not impose any additional preconditions.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   fn is_palindrome(x: Seq<char>) -> (result: bool)
       ensures
           result <==> (forall|i: int| 0 <= i < x.len() ==> #[trigger] x[i] == x[x.len() - 1 - i]),
+
 vc-code: |-
   {
       // impl-start
@@ -31,7 +32,8 @@ vc-code: |-
       false
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

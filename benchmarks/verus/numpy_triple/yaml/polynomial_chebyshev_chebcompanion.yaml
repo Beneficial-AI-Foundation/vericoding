@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.chebyshev.chebcompanion: Return the scaled companion matrix of c.
   
   The basis polynomials are scaled so that the companion matrix is
@@ -22,10 +21,10 @@ vc-description: |-
   1. The superdiagonal and subdiagonal have specific values (0.5 for most entries, sqrt(0.5) for the first)
   2. The last column is adjusted by scaled coefficients
   3. The matrix structure ensures symmetry for Chebyshev basis polynomials
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -46,6 +45,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

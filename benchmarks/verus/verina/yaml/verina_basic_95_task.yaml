@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This problem involves swapping two elements in an array of integers at specified positions. Given an array and two indices, the task is to exchange these elements so that the element from the first index moves to the second index and vice versa, while all other elements remain unchanged.
   
   -----Input-----
@@ -16,10 +15,10 @@ vc-description: |-
   
   -----Note-----
   It is assumed that both indices i and j are non-negative and within the bounds of the array (i.e., i and j are less than arr.len()).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -44,7 +43,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       // /*
@@ -123,3 +121,4 @@ vc-postamble: |-
       // ]
       // */
   }
+

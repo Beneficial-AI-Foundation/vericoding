@@ -12,8 +12,6 @@ vc-preamble: |-
       Pedro Nunes         57854
   */
   
-  
-  
   //(a)
   
   spec fn sum(a: &[int], i: int, j: int) -> int
@@ -23,8 +21,6 @@ vc-preamble: |-
       if i == j { 0 }
       else { a[i] + sum(a, i + 1, j) }
   }
-  
-  
   
   //(b)
   
@@ -38,26 +34,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn query(a: &[int], i: usize, j: usize) -> (res: i64)
       requires 0 <= i <= j <= a.len()
       ensures res == sum(a, i as int, j as int)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     0i64
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

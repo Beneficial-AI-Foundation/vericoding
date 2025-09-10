@@ -4,12 +4,12 @@ vc-preamble: |-
   use vstd::hash_set::HashSetWithView;
   use vstd::prelude::*;
   use vstd::std_specs::hash::axiom_u8_obeys_hash_table_key_model;
-
+  
   verus! {
 
 vc-helpers: |-
   broadcast use axiom_u8_obeys_hash_table_key_model;
-
+  
   fn hash_set_from(s: &Vec<u8>) -> (res: HashSetWithView<u8>)
       // post-conditions-start
       ensures
@@ -34,7 +34,7 @@ vc-helpers: |-
       res
       // impl-end
   }
-
+  
   proof fn implies_contains(s0: Seq<u8>, s1: Seq<u8>, hs1: Set<u8>)
       // pre-conditions-start
       requires
@@ -83,6 +83,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

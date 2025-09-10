@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   #[verifier::memoize]
   spec fn spec_fib(n: nat) -> (ret:nat)
       decreases n,
@@ -19,7 +19,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn inner_expr_fib(n: u32, ret: Option<u32>) -> (result:bool) {
       match ret {
           None => spec_fib(n as nat) > u32::MAX,
@@ -30,7 +30,7 @@ vc-preamble: |-
 
 vc-helpers: |-
   // pure-end
-
+  
   proof fn lemma_fib_monotonic(i: nat, j: nat)
       // pre-conditions-start
       requires
@@ -71,6 +71,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.logical_xor: Compute the truth value of x1 XOR x2 element-wise.
   
   Computes the logical XOR of two boolean arrays element-wise.
@@ -27,10 +26,10 @@ vc-description: |-
   - Self-inverse: logical_xor(x, x) = false_vector
   - Double negation: logical_xor(logical_xor(x, y), y) = x
   - Relationship to other operations: logical_xor(x, y) = logical_and(logical_or(x, y), logical_not(logical_and(x, y)))
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -51,6 +50,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

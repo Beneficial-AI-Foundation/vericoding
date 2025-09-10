@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn modify_array_element(arr: &mut Vec<Vec<nat>>, index1: usize, index2: usize, val: nat)
     requires
         index1 < old(arr).len(),
@@ -26,14 +23,11 @@ vc-spec: |-
             (i != index1 || j != index2) ==> 
             arr[i][j] == old(arr)[i][j],
         arr[index1 as int][index2 as int] == val,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

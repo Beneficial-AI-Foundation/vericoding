@@ -2,10 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
-
+  
   verus! {
-
+  
   spec fn sum_negative_to(seq: Seq<i64>) -> (res: int)
       decreases seq.len(),
   {
@@ -39,7 +38,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

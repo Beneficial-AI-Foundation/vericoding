@@ -2,10 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
-
+  
   verus! {
-
+  
   spec fn is_divisible(n: int, divisor: int) -> bool {
       (n % divisor) == 0
   }
@@ -33,7 +32,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.less: Return the truth value of (x1 < x2) element-wise for string arrays.
   
   Performs element-wise string comparison between two vectors of strings.
@@ -32,18 +31,18 @@ vc-description: |-
   - Lexicographic ordering follows dictionary order (case-sensitive)
   - Comparison is based on Unicode code point values
   - Preserves strict ordering properties of the underlying string type
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
   use vstd::string::*;
-
+  
   verus! {
 
 vc-helpers: |-
 
 vc-spec: |-
   spec fn str_less_than(s1: String, s2: String) -> bool;
-
+  
   fn less(x1: Vec<String>, x2: Vec<String>) -> (result: Vec<bool>)
       requires x1.len() == x2.len(),
       ensures 
@@ -70,6 +69,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

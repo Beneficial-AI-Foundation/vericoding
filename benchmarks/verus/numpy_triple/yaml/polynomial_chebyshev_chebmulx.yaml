@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Multiply a Chebyshev series by x.
   This function multiplies a Chebyshev polynomial represented by its coefficients by x.
   The operation is based on the recurrence relation:
@@ -18,11 +17,12 @@ vc-description: |-
   
   The algorithm redistributes coefficients according to these relations,
   resulting in a polynomial with degree increased by 1.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -33,6 +33,7 @@ vc-spec: |-
           // Linearity property: chebmulx is a linear operation
           // For any scalars alpha, beta and vectors c1, c2 of same length:
           // chebmulx(alpha*c1 + beta*c2) = alpha*chebmulx(c1) + beta*chebmulx(c2)
+
 vc-code: |-
   {
       // impl-start
@@ -40,7 +41,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

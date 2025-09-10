@@ -30,7 +30,6 @@ vc-preamble: |-
   // TODO: Hacer
   // Derivar formalmente un calculo incremental de j*j*j
   
-  
   // REVERSE OF A SEQUENCE
   spec fn reverse<T>(s: Seq<T>) -> Seq<T> 
       decreases s.len()
@@ -51,7 +50,6 @@ vc-preamble: |-
           set!{s[0]}.union(seq2set(s.subrange(1, s.len() as int)))
       }
   }
-  
   
   // REVERSE IS ITS OWN INVERSE
   
@@ -76,22 +74,16 @@ vc-preamble: |-
   // REVERSE HAS THE SAME MULTISET
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn vector_Sum(v: Seq<int>) -> (x: i32)
       ensures x == sum(v)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

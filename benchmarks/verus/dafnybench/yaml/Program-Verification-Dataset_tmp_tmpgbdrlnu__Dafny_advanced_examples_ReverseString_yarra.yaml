@@ -14,23 +14,17 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn yarra(arr: &Vec<char>) -> (outarr: Vec<char>)
       requires arr.len() > 0
       ensures outarr.len() == arr.len() && reversed(arr@, outarr@)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       Vec::new()
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

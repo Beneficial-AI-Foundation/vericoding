@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Evaluate a 3-D Legendre series on the Cartesian product of x, y, and z.
   This function computes p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c)
   for all triples (a,b,c) from the Cartesian product of x, y, and z.
@@ -9,11 +8,12 @@ vc-description: |-
   
   The function computes the tensor product evaluation of Legendre polynomials
   according to the mathematical formula p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -42,6 +42,7 @@ vc-spec: |-
               ((i1 != i2 || j1 != j2 || k1 != k2) ==> 
                (result[i1][j1][k1] != result[i2][j2][k2] || 
                 (x[i1] == x[i2] && y[j1] == y[j2] && z[k1] == z[k2])))
+
 vc-code: |-
   {
       // impl-start
@@ -49,7 +50,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -16,16 +16,11 @@ vc-preamble: |-
       forall|i: int| 1 <= i < a.len() ==> #[trigger] a[i] >= a[i-1]
   }
   
-  
-  
   //Problem03
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn find_min(a: &[int], lo: usize) -> (minIdx: usize)
       requires 
           a.len() > 0,
@@ -33,18 +28,14 @@ vc-spec: |-
       ensures 
           lo <= minIdx < a.len(),
           forall|x: int| lo <= x < a.len() ==> a[minIdx as int] <= a[x],
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       lo // unreachable but needed for type checking
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

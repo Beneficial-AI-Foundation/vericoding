@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that determines whether one list is a sublist of another. In other words, the method should check if the first list appears as a contiguous sequence within the second list and return true if it does, and false otherwise.
   
   -----Input-----
@@ -14,20 +13,23 @@ vc-description: |-
   
   -----Note-----
   There are no preconditions for this method; the sequences are always non-null.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   spec fn is_subseq_at(sub: Vec<i32>, main: Vec<i32>, i: int) -> bool {
       0 <= i && i + sub.len() <= main.len() && 
       (forall|j: int| 0 <= j < sub.len() ==> sub[j] == main[i + j])
   }
+
 vc-spec: |-
   fn is_sublist(sub: &Vec<i32>, main: &Vec<i32>) -> (result: bool)
       ensures
           result <==> exists|i: int| is_subseq_at(*sub, *main, i),
+
 vc-code: |-
   {
       // impl-start
@@ -35,7 +37,8 @@ vc-code: |-
       false
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

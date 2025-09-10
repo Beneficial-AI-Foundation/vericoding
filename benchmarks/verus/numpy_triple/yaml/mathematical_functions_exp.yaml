@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.exp: Calculate the exponential of all elements in the input array.
   
   Computes the exponential function (e^x) element-wise. This is the inverse
@@ -22,10 +21,10 @@ vc-description: |-
   - exp(x) > 0 for all x (exponential is always positive)
   - exp is monotonically increasing
   - exp(x + y) = exp(x) * exp(y) (for addition in the input)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -47,6 +46,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

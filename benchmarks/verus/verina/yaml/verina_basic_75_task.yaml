@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task involves finding the minimum element in a non-empty array of integers. The goal is to identify and return the smallest number present in the array.
   
   -----Input-----
@@ -13,11 +12,12 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the input array contains at least one element. The implementation uses a helper function (loop) to recursively compare elements and determine the minimum value.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   spec fn loop_spec(a: &Vec<i32>, i: int, current_min: i32) -> i32
       decreases a.len() - i
@@ -29,12 +29,14 @@ vc-helpers: |-
           current_min
       }
   }
+
 vc-spec: |-
   fn min_array(a: &Vec<i32>) -> (result: i32)
       requires a.len() > 0,
       ensures
           forall|i: int| 0 <= i < a.len() ==> result <= a[i],
           exists|i: int| 0 <= i < a.len() && result == a[i],
+
 vc-code: |-
   {
       // impl-start
@@ -42,7 +44,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

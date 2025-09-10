@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn torneo(valores: &Vec<int>, i: usize, j: usize, k: usize) -> (res: (usize, usize))
       requires 
           valores.len() >= 20 && valores.len() < 50,
@@ -26,18 +23,14 @@ vc-spec: |-
               valores[q as int] >= valores[r as int] &&
               res.0 == p && 
               res.1 == q, // Q
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       (0, 0)
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

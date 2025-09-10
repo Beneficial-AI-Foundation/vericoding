@@ -32,11 +32,8 @@ vc-preamble: |-
   // segments of size n == 2^k-1 for some k>=0.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn search_2_pow_recursive(a: &[i32], i: usize, n: usize, x: i32) -> (k: usize)
       requires
           i + n <= a.len(),
@@ -53,18 +50,14 @@ vc-spec: |-
               0 <= r && k as int <= r < (i + n) as int ==> 
               a[r] >= x)}),
       decreases n
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     0
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

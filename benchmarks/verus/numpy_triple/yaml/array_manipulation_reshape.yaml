@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Gives a new shape to an array without changing its data.
   
   This implementation focuses on the most common case: reshaping a 1D array
@@ -24,11 +23,12 @@ vc-description: |-
   Precondition: The new shape must have the same total size as the original
   Postcondition: Each element at index i in the result equals the element
                at the corresponding index in the original array
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -37,6 +37,7 @@ vc-spec: |-
       ensures 
           result.len() == a.len(),
           forall|i: int| 0 <= i < result.len() ==> result[i] == a[i]
+
 vc-code: |-
   {
       // impl-start
@@ -44,7 +45,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.ndim: Return the number of dimensions of an array.
   
   In our Vector-based framework, vectors are always 1-dimensional.
@@ -8,16 +7,18 @@ vc-description: |-
   
   Note: In NumPy, scalars are 0-dimensional, but in our framework,
   we represent them as Vector T 1, so this always returns 1.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   fn ndim<T>(a: &Vec<T>) -> (result: usize)
       ensures result == 1
+
 vc-code: |-
   {
       // impl-start
@@ -25,7 +26,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

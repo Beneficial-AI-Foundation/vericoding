@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Returns a bool array, where True if input element is complex.
   Returns a bool array, where True if input element has non-zero imaginary part.
   For complex numbers, checks if imaginary part is non-zero.
@@ -11,11 +10,12 @@ vc-description: |-
   3. Complex number detection: numbers with non-zero imaginary part return true
   4. Idempotent on boolean interpretation: the mathematical meaning is preserved
   5. Element-wise operation: each element is tested independently
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   /* Structure representing a complex number with float components */
   struct Complex {
@@ -24,6 +24,7 @@ vc-helpers: |-
       /* The imaginary part of the complex number */
       imag: f64,
   }
+
 vc-spec: |-
   fn is_complex(x: &Vec<Complex>) -> (result: Vec<bool>)
       ensures
@@ -33,6 +34,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < x.len() ==> (x[i].imag != 0.0 ==> result[i] == true),
           forall|i: int| 0 <= i < x.len() ==> (result[i] == true ==> x[i].imag != 0.0),
           forall|i: int| 0 <= i < x.len() ==> (result[i] == false ==> x[i].imag == 0.0)
+
 vc-code: |-
   {
       // impl-start
@@ -40,7 +42,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

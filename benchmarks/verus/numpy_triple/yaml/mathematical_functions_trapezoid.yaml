@@ -1,11 +1,11 @@
 vc-description: |-
-  /*
   Integrate along the given axis using the composite trapezoidal rule. The composite trapezoidal rule approximates definite integrals using trapezoidal approximations between sample points.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -17,6 +17,7 @@ vc-spec: |-
           (forall|i: int| 0 <= i < y.len() ==> #[trigger] y[i] == y[0]) ==> 
               result == dx * (y.len() - 1) as i32 * y[0],
           (forall|i: int| 0 <= i < y.len() ==> #[trigger] y[i] >= 0) ==> result >= 0,
+
 vc-code: |-
   {
       // impl-start
@@ -24,7 +25,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

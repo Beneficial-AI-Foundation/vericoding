@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Test element-wise for NaT (not a time) and return result as a boolean array.
   
   This function checks each element of a datetime64 array to determine if it
@@ -18,12 +17,12 @@ vc-description: |-
   4. Exhaustive coverage: every element is either NaT or a valid datetime
   
   This is the datetime analog of isnan for floating point NaN values.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   #[derive(PartialEq, Eq, Clone, Copy)]
   pub enum DateTime64 {
       Valid(i64),
@@ -31,7 +30,6 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-
 
 vc-spec: |-
   fn isnat(x: Vec<DateTime64>) -> (result: Vec<bool>)
@@ -51,6 +49,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

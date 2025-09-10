@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.lstrip: For each element in a vector, return a copy with the leading characters removed.
   
   Removes leading characters from each string element in the input vector. The behavior
@@ -21,11 +20,12 @@ vc-description: |-
   3. Prefix removal: result[i] is a suffix of a[i] for all i
   4. Character set removal: only characters in chars are removed from the beginning
   5. Preserves vector length: result.size = a.size
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -43,6 +43,7 @@ vc-spec: |-
               /* Empty string case: if original is empty, result is empty */
               (original@.len() == 0 ==> result_str@.len() == 0)
           }
+
 vc-code: |-
   {
       // impl-start
@@ -50,7 +51,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

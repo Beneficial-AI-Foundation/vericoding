@@ -1,12 +1,11 @@
 vc-description: |-
 
 vc-preamble: |-
-
   use vstd::arithmetic::mul::*;
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn factorial(n: nat) -> (ret:nat)
       decreases n,
   {
@@ -18,7 +17,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn brazilian_factorial(n: nat) -> (ret:nat)
       decreases n,
   {
@@ -32,7 +31,7 @@ vc-preamble: |-
 
 vc-helpers: |-
   // pure-end
-
+  
   proof fn lemma_factorial_positive(n: nat)
       // post-conditions-start
       ensures
@@ -46,15 +45,15 @@ vc-helpers: |-
           lemma_factorial_positive((n - 1) as nat);
           assert(factorial(n) >= 1) by {
               broadcast use lemma_mul_strictly_positive;
-
+  
           };
       }
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_brazilian_factorial_positive(n: nat)
       // post-conditions-start
       ensures
@@ -77,9 +76,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_brazilian_fib_monotonic(i: nat, j: nat)
       // pre-conditions-start
       requires
@@ -97,7 +96,7 @@ vc-helpers: |-
           assert(factorial(j) >= 1) by { lemma_factorial_positive(j) };
           assert(brazilian_factorial(j) >= brazilian_factorial(i)) by {
               broadcast use lemma_mul_increases;
-
+  
           };
       } else {
           lemma_brazilian_fib_monotonic(i, (j - 1) as nat);
@@ -126,6 +125,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
   fn main() {}
+

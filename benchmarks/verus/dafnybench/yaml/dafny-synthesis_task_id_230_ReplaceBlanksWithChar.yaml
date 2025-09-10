@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn replace_blanks_with_char(s: Seq<char>, ch: char) -> (v: Seq<char>)
       ensures 
           v.len() == s.len(),
@@ -18,15 +15,12 @@ vc-spec: |-
               (s[i] == ' ' ==> v[i] == ch) &&
               (s[i] != ' ' ==> v[i] == s[i])
           }
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       s
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

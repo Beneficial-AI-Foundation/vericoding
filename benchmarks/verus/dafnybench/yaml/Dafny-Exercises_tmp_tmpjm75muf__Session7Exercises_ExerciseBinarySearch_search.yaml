@@ -21,24 +21,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn search(v: &[int], elem: int) -> (b: bool)
       requires sorted(v@)
       ensures b == v@.contains(elem)
       //Implement by calling binary search function
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       false
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

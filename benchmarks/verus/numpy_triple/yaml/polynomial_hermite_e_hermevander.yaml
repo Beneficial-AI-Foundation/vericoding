@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.hermite_e.hermevander: Pseudo-Vandermonde matrix of given degree.
   
   Returns the pseudo-Vandermonde matrix of degree `deg` and sample points
@@ -50,10 +49,10 @@ vc-description: |-
   3. First column is all ones (He_0(x) = 1)
   4. Second column equals x (He_1(x) = x) when deg > 0
   5. Subsequent columns follow the HermiteE recurrence relation
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -76,6 +75,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

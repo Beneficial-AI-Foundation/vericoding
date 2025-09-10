@@ -1,11 +1,11 @@
 vc-description: |-
-  /*
   For each element, return the lowest index in the string where substring sub is found, such that sub is contained in the range [start, end]. Returns -1 if sub is not found.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -13,7 +13,7 @@ vc-spec: |-
       pos >= 0 && pos + needle.len() <= haystack.len() &&
       haystack.subrange(pos, pos + needle.len()) == needle
   }
-
+  
   fn find(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) -> (result: Vec<i32>)
       requires 
           a.len() == sub.len() && 
@@ -45,6 +45,7 @@ vc-spec: |-
               // If start > end, no substring can be found
               (start[i] > end_pos[i] ==> result[i] == -1)
           }
+
 vc-code: |-
   {
       // impl-start
@@ -52,7 +53,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

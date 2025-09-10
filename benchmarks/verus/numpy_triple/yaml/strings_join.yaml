@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Return a string which is the concatenation of the strings in the sequence seq.
   
   numpy.strings.join: Return a string which is the concatenation of the strings in the sequence seq.
@@ -22,10 +21,10 @@ vc-description: |-
   3. Empty separator handling: join('', s) = s (no separation)
   4. Empty sequence handling: join(sep, '') = '' (empty result)
   5. Single character sequences: join(sep, 'a') = 'a' (no separator needed)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -40,15 +39,15 @@ vc-spec: |-
           chars.take(1) + separator + join_chars(separator, chars.skip(1))
       }
   }
-
+  
   spec fn string_to_chars(s: Seq<char>) -> Seq<char> {
       s
   }
-
+  
   spec fn chars_to_string_len(chars: Seq<char>) -> nat {
       chars.len()
   }
-
+  
   fn join(sep: Vec<String>, seq: Vec<String>) -> (result: Vec<String>)
       requires sep.len() == seq.len(),
       ensures
@@ -78,7 +77,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

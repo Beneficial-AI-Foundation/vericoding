@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Compute the one-dimensional inverse discrete Fourier Transform (IFFT).
   
   The IFFT transforms frequency domain data back to the time domain,
@@ -16,11 +15,12 @@ vc-description: |-
   
   This is the mathematical inverse of the FFT operation, with a positive sign 
   in the exponential and a normalization factor of 1/n.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -29,28 +29,28 @@ vc-spec: |-
       pub re: int,
       pub im: int,
   }
-
+  
   impl Complex {
       pub open spec fn add(self, other: Complex) -> Complex {
           Complex { re: self.re + other.re, im: self.im + other.im }
       }
-
+  
       pub open spec fn mul(self, other: Complex) -> Complex {
           Complex { 
               re: self.re * other.re - self.im * other.im, 
               im: self.re * other.im + self.im * other.re 
           }
       }
-
+  
       pub open spec fn scalar_mul(self, s: int) -> Complex {
           Complex { re: s * self.re, im: s * self.im }
       }
   }
-
+  
   pub open spec fn cexp(theta: int) -> Complex {
       Complex { re: 1, im: 0 } /* Simplified for spec purposes */
   }
-
+  
   pub open spec fn complex_sum(n: nat, f: spec_fn(nat) -> Complex) -> Complex
       decreases n
   {
@@ -60,7 +60,7 @@ vc-spec: |-
           f((n - 1) as nat).add(complex_sum((n - 1) as nat, f))
       }
   }
-
+  
   fn ifft(a: Vec<Complex>) -> (result: Vec<Complex>)
       requires a.len() > 0,
       ensures
@@ -76,6 +76,7 @@ vc-spec: |-
               }).scalar_mul(1);
               result[k] == expected
           }
+
 vc-code: |-
   {
       // impl-start
@@ -83,8 +84,9 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
+
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

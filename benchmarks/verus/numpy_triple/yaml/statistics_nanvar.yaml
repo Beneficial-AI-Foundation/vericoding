@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Compute the variance along the specified axis, while ignoring NaNs.
   Uses the formula: sum((x - mean)²) / (n - ddof) for non-NaN elements.
   Returns NaN if all elements are NaN or if degrees of freedom <= 0.
@@ -18,15 +17,17 @@ vc-description: |-
   3. Calculate squared deviations from the mean for valid values
   4. Sum the squared deviations
   5. Divide by (valid_count - ddof)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   fn nanvar(a: Vec<f32>, ddof: usize) -> (result: f32)
+
 vc-code: |-
   {
       // impl-start
@@ -34,7 +35,8 @@ vc-code: |-
       0.0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

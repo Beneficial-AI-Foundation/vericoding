@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn inner_expr_replace_blanks_with_chars(str1: &Vec<char>, ch: char, i: int) -> (result: char) {
       if str1[i] == 32 {
           ch
@@ -34,7 +34,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

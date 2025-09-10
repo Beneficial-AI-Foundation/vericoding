@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.logaddexp: Logarithm of the sum of exponentiations of the inputs.
   
   Calculates log(exp(x1) + exp(x2)) element-wise. This function is useful 
@@ -39,20 +38,19 @@ vc-description: |-
   Precondition: True (logaddexp is defined for all real numbers)
   Postcondition: For all indices i, result[i] = log(exp(x1[i]) + exp(x2[i]))
                  and result[i] ≥ max(x1[i], x2[i])
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
-
   #[verifier::external_body]
   spec fn logaddexp_value(x1: f64, x2: f64) -> f64;
-
+  
   #[verifier::external_body]  
   spec fn max_f64(x: f64, y: f64) -> f64;
-
+  
   #[verifier::external_body]
   spec fn ln_2() -> f64;
 
@@ -74,6 +72,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

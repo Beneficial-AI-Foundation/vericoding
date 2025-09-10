@@ -50,23 +50,17 @@ vc-preamble: |-
   // annotations).
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn two_way_sort(a: &mut Vec<bool>)
       ensures 
           forall|m: int, n: int| 0 <= m < n < a.len() ==> (!a[m] || a[n]),
           multisets(a@) == multisets(old(a)@),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

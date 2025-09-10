@@ -14,11 +14,8 @@ vc-preamble: |-
   // Insertion sort með hjálp helmingunarleitar.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn search(s: Seq<int>, x: int) -> (k: usize)
       // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
       requires 
@@ -30,15 +27,12 @@ vc-spec: |-
           forall|z: int| s.subrange(0, k as int).contains(z) ==> z <= x,
           forall|z: int| s.subrange(k as int, s.len() as int).contains(z) ==> z >= x,
           s == s.subrange(0, k as int).add(s.subrange(k as int, s.len() as int)),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

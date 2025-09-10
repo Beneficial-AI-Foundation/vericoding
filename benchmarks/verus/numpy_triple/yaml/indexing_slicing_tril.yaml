@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.tril: Lower triangle of an array.
   
   Return a copy of an array with elements above the k-th diagonal zeroed.
@@ -26,10 +25,10 @@ vc-description: |-
   
   This specification provides a foundation for formal verification of
   triangular matrix operations in numerical computing.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -55,6 +54,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

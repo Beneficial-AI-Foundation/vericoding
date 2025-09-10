@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Given a sequence of n integers, your task is to find the largest sum obtainable by choosing a contiguous subarray of the sequence. At least one number must be selected.
   
   The algorithm uses dynamic programming (Kadane's Algorithm) to solve the problem:
@@ -15,10 +14,10 @@ vc-description: |-
   
   Output:
   The output is a single integer representing the maximum subarray sum.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -53,7 +52,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       /* 
@@ -119,3 +117,4 @@ vc-postamble: |-
       ]
       */
   }
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.argwhere: Find the indices of array elements that are non-zero, grouped by element.
   
   For a 1D vector, returns a list of indices where elements are non-zero.
@@ -14,11 +13,12 @@ vc-description: |-
   2. All non-zero elements in the input vector have their indices in the result
   3. The result contains no duplicate indices
   4. The indices are ordered according to their position in the original vector
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -36,6 +36,7 @@ vc-spec: |-
           /* Indices are ordered by position */
           forall|i: int, j: int| 0 <= i < j < indices.len() ==> 
               indices[i] < indices[j],
+
 vc-code: |-
   {
       // impl-start
@@ -43,7 +44,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

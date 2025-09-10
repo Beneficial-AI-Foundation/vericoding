@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires computing three times the given integer. The goal is to determine the product of the input integer and 3.
   
   The input consists of:
@@ -8,10 +7,10 @@ vc-description: |-
   The output is an integer that represents three times the input value.
   
   The implementation uses two different branches based on the value of x (i.e., x < 18 or x ≥ 18), but both branches guarantee that the result equals 3*x.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -31,6 +30,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -24,11 +24,8 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   spec fn power(a: int, n: nat) -> int //function for a to the power of n
       recommends 0 <= a
       decreases n
@@ -40,18 +37,14 @@ vc-spec: |-
   fn compute_power(a: u64, n: u64) -> (s: u64)
       /*Pre-Condition*/   requires n >= 0 && a >= 0
       /*Post-Condition*/  ensures s as int == power(a as int, n as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

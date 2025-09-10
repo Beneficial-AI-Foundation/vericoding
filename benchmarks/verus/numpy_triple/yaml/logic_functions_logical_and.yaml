@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.logical_and: Compute the truth value of x1 AND x2 element-wise.
   
   Computes the logical AND of two boolean arrays element-wise.
@@ -25,10 +24,10 @@ vc-description: |-
   - Identity: logical_and(x, true_vector) = x
   - Zero: logical_and(x, false_vector) = false_vector
   - Idempotent: logical_and(x, x) = x
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -49,6 +48,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

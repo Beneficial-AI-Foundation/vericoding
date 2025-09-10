@@ -2,10 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
-
+  
   verus!{
-
+  
   spec fn triangle(n: nat) -> (result: nat)
       decreases n
   {
@@ -19,7 +18,7 @@ vc-preamble: |-
 
 vc-helpers: |-
   // pure-end
-
+  
   proof fn triangle_is_monotonic(i: nat, j: nat)
       // pre-conditions-start
       requires
@@ -61,7 +60,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

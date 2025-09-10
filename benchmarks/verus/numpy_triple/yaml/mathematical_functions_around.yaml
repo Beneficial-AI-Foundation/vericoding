@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.around: Evenly round to the given number of decimals (alias for numpy.round).
   Uses banker's rounding (round half to even) for values exactly halfway between rounded decimal values.
   For example: 1.5 and 2.5 both round to 2.0, -0.5 and 0.5 both round to 0.0
@@ -11,11 +10,12 @@ vc-description: |-
   4. Order preservation: maintains relative ordering of elements
   5. Bounded difference: the rounded value is close to the original value
   6. Idempotency: rounding an already-rounded value doesn't change it
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -32,6 +32,7 @@ vc-spec: |-
               result[i] - 1 <= a[i] && a[i] <= result[i] + 1,
           /* Symmetry: rounding non-negative values gives non-negative results */
           forall|i: int| 0 <= i < a.len() && a[i] >= 0 ==> result[i] >= 0,
+
 vc-code: |-
   {
       // impl-start
@@ -39,7 +40,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

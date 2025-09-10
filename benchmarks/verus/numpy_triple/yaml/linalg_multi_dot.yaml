@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Multi-dot product: compute the dot product of multiple matrices in a single function call
   with optimal parenthesization. This function performs a chain of matrix multiplications
   A₁ × A₂ × ... × Aₙ where the parenthesization is chosen to minimize computational cost.
@@ -21,11 +20,12 @@ vc-description: |-
   This specification captures the essential mathematical behavior while abstracting away 
   the optimization details. The key insight is that matrix multiplication is associative,
   so different parenthesizations yield the same mathematical result.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -40,6 +40,7 @@ vc-spec: |-
       ensures
           result.len() == A.len(),
           forall|i: int| 0 <= i < result.len() ==> result[i].len() == C[0].len(),
+
 vc-code: |-
   {
       // impl-start  
@@ -47,7 +48,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

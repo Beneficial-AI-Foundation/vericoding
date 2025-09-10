@@ -1,11 +1,10 @@
 vc-description: |-
 
 vc-preamble: |-
-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn sum(s: Seq<int>) -> (result:int)
       decreases s.len(),
   {
@@ -17,7 +16,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn sum_other_way(s: Seq<int>) -> (result:int)
       decreases s.len(),
   {
@@ -31,7 +30,7 @@ vc-preamble: |-
 
 vc-helpers: |-
   // pure-end
-
+  
   proof fn lemma_sum_equals_sum_other_way(s: Seq<int>)
       // post-conditions-start
       ensures
@@ -79,6 +78,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

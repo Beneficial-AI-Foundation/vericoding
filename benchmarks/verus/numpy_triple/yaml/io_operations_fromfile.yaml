@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Construct an array from data in a text or binary file
   
   This function provides a highly efficient way of reading binary data with a known data-type, 
@@ -22,10 +21,10 @@ vc-description: |-
   4. Binary files respect the offset parameter
   5. The resulting vector has the correct size and data type
   6. Data is read sequentially from the file
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,7 +37,7 @@ vc-helpers: |-
       /* Current position in the file (in bytes) */
       position: nat,
   }
-
+  
   /* Represents different data types that can be read from files */
   enum DType {
       /* 32-bit floating point */
@@ -52,7 +51,7 @@ vc-helpers: |-
       /* 8-bit unsigned integer */
       UInt8,
   }
-
+  
   /* Get the size in bytes for each data type */
   spec fn dtype_size_bytes(dtype: DType) -> nat {
       match dtype {
@@ -91,7 +90,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

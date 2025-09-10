@@ -1,12 +1,11 @@
 vc-description: |-
-  /*
   Hermite series whose graph is a straight line.
   Returns the Hermite series coefficients representing the linear function off + scl*x.
   For non-zero scale, returns [off, scl]. For zero scale, returns [off].
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -28,6 +27,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

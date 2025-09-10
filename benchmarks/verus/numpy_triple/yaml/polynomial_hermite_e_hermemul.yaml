@@ -1,12 +1,11 @@
 vc-description: |-
-  /*
   Multiply one Hermite series by another. Returns the product of two Hermite polynomials 
   represented as coefficient vectors. The multiplication involves reprojection onto 
   the Hermite polynomial basis set.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -31,6 +30,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

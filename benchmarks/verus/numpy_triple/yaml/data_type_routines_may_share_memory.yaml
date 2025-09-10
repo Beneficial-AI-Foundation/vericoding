@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.may_share_memory: Determine if two arrays might share memory.
   
   This function conservatively checks if two arrays might share memory.
@@ -14,11 +13,12 @@ vc-description: |-
   Postcondition: The function returns a boolean value. If the arrays are identical references,
   it must return True. For independent arrays, it may return False.
   The function is conservative - it can return True even when arrays don't actually share memory.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -33,6 +33,7 @@ vc-spec: |-
           true &&
           /* Reflexive property: an array compared with itself would return consistent result */
           true
+
 vc-code: |-
   {
       // impl-start
@@ -40,7 +41,8 @@ vc-code: |-
       false
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

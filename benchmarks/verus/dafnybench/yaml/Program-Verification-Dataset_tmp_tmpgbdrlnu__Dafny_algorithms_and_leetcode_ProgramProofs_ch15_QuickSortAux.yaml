@@ -32,11 +32,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
       requires 
           0 <= lo <= hi <= old(a).len(),
@@ -46,14 +43,11 @@ vc-spec: |-
           swap_frame(old(a)@, a@, lo as int, hi as int),
           split_point(a@, lo as int) && split_point(a@, hi as int),
       decreases hi - lo
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

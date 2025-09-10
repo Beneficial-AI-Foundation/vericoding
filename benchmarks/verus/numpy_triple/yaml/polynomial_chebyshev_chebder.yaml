@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.chebyshev.chebder: Differentiate a Chebyshev series.
   
   Returns the Chebyshev series coefficients differentiated once.
@@ -34,11 +33,12 @@ vc-description: |-
   - The result has size n
   - The coefficients follow the Chebyshev derivative recurrence relations
   - The result represents scl times the derivative of the input series
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -50,6 +50,7 @@ vc-spec: |-
           c.len() > 2 ==> result[1] == scl * 4 * c[2],
           forall|j: int| 2 <= j < result.len() ==>
               result[j] == scl * (2 * ((j + 1) as i32)) * c[j + 1],
+
 vc-code: |-
   {
       // impl-start
@@ -57,7 +58,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

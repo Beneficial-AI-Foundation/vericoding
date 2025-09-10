@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.flatiter: Flat iterator object to iterate over arrays.
   
   A flatiter iterator provides a flattened view of an array for iteration purposes.
@@ -14,11 +13,12 @@ vc-description: |-
   Precondition: True (no special preconditions for creating a flat iterator)
   Postcondition: The result preserves all elements in row-major order,
                  providing sequential access to the flattened array elements
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -26,6 +26,7 @@ vc-spec: |-
       ensures
           result.len() == a.len(),
           forall|i: int| 0 <= i < result.len() ==> result[i] == a[i],
+
 vc-code: |-
   {
       // impl-start
@@ -33,7 +34,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

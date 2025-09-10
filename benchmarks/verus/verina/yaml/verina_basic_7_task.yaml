@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that computes the sum of the squares of the first n odd natural numbers. The result should match the formula: (n * (2 * n - 1) * (2 * n + 1)) / 3.
   
   -----Input-----
@@ -9,11 +8,12 @@ vc-description: |-
   -----Output-----
   The output is a natural number:
   Returns the sum of the squares of the first n odd natural numbers, as defined by the formula: (n * (2 * n - 1) * (2 * n + 1)) / 3.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -21,6 +21,7 @@ vc-spec: |-
       requires n >= 0,
       ensures
           result as int == (n as int * (2 * n as int - 1) * (2 * n as int + 1)) / 3,
+
 vc-code: |-
   {
       // impl-start
@@ -28,7 +29,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

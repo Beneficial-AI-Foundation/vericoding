@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Find the indices of array elements that are non-zero, grouped by element.
   
   For a 1D vector, returns a list of indices where elements are non-zero.
@@ -9,10 +8,10 @@ vc-description: |-
   This function is equivalent to finding all positions i such that a[i] ≠ 0.
   The result is a list of indices, not suitable for direct array indexing but useful
   for analysis and conditional processing.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -36,6 +35,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

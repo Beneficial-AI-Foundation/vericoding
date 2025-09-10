@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that checks whether two arrays of integers have any elements in common. In other words, the method should return true if there is at least one element that appears in both arrays, and false if no such element exists.
   
   -----Input-----
@@ -14,10 +13,10 @@ vc-description: |-
   
   -----Note-----
   Both arrays are assumed to be non-null.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -39,6 +38,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

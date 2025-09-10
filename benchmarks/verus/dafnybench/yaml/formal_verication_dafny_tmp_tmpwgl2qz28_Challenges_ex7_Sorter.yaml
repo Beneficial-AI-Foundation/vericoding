@@ -7,7 +7,6 @@ vc-preamble: |-
   
   // see pdf 'ex6 & 7 documentation' for excercise question
   
-  
   #[derive(PartialEq, Eq, Debug, Clone, Copy)]
   enum Bases {
       A,
@@ -46,11 +45,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn sorter(bases: Seq<Bases>) -> (sobases: Seq<Bases>)
       requires 
           0 < bases.len()
@@ -58,15 +54,12 @@ vc-spec: |-
           sobases.len() == bases.len(),
           bordered(sobases),
           bases.to_multiset() == sobases.to_multiset()
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       bases
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

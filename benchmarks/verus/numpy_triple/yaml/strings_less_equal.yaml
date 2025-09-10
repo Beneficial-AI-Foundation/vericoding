@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.less_equal: Return the truth value of (x1 <= x2) element-wise for string arrays.
   
   Performs element-wise string comparison between two vectors of strings.
@@ -8,17 +7,17 @@ vc-description: |-
   
   This function compares strings lexicographically and returns True for each
   position where x1[i] <= x2[i], False otherwise.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
 
 vc-spec: |-
   spec fn string_le(s1: String, s2: String) -> bool;
-
+  
   fn less_equal(x1: Vec<String>, x2: Vec<String>) -> (result: Vec<bool>)
       requires x1.len() == x2.len(),
       ensures 
@@ -37,6 +36,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

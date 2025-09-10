@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Returns true for each element if all characters in the string are digits, and there is at least one character, false otherwise
   
   numpy.strings.isdigit: Returns true for each element if all characters in the string are digits, and there is at least one character, false otherwise.
@@ -29,17 +28,17 @@ vc-description: |-
   - Strings with only numeric characters (0-9) return True
   - Strings with any non-numeric characters return False
   - Single digit characters return True
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
 
 vc-spec: |-
   spec fn all_chars_digit(s: Seq<char>) -> bool;
-
+  
   fn isdigit(a: Vec<String>) -> (result: Vec<bool>)
       ensures
           result.len() == a.len(),
@@ -54,6 +53,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

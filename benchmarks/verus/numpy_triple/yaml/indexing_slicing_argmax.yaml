@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Returns the index of the maximum value in a non-empty vector (first occurrence)
   
   Specification: argmax returns the index of the first maximum element
@@ -10,11 +9,12 @@ vc-description: |-
   4. The function returns the first occurrence of the maximum value
   5. The returned index is valid (type-safe with Fin)
   6. The result is deterministic for the same input
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -25,6 +25,7 @@ vc-spec: |-
           forall|i: int| 0 <= i && i < arr.len() ==> arr@[i] <= arr@[result as int],
           forall|i: int| 0 <= i && i < result as int ==> arr@[i] < arr@[result as int],
           forall|i: int| (result as int) < i && i < arr.len() ==> arr@[i] <= arr@[result as int],
+
 vc-code: |-
   {
       // impl-start
@@ -32,7 +33,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

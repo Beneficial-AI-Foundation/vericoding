@@ -171,25 +171,25 @@ def process_yaml_file(file_path: Path) -> None:
         with open(file_path, 'r', encoding='utf-8') as f:
             spec = yaml_loader.load(f)
 
-        # Check that spec has exactly the same keys as required keys
-        validate_spec_keys(spec, required_keys, file_path)
+        # # Check that spec has exactly the same keys as required keys
+        # validate_spec_keys(spec, required_keys, file_path)
         
-        # Check vc-description for malformed comment blocks and clean up empty lines
+        # # Check vc-description for malformed comment blocks and clean up empty lines
         # if 'vc-description' in spec and isinstance(spec['vc-description'], str):
         #     spec['vc-description'] = check_vc_description(spec['vc-description'], file_path)
         # else:
         #     raise ValueError(f"vc-description not found in {file_path}")
         
         # remove tags from all sections
-        # for key, value in spec.items():
-        #     if isinstance(value, str):
-        #         value = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '// <vc-spec>')
-        #         value = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '// </vc-spec>')
-        #         value = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '// <vc-helpers>')
-        #         value = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '// </vc-helpers>')
-        #         value = check_for_tag(value, key, 'vc-code', '<vc-code>', '// <vc-code>')
-        #         value = check_for_tag(value, key, 'vc-code', '</vc-code>', '// </vc-code>')
-        #         spec[key] = value
+        for key, value in spec.items():
+            if isinstance(value, str):
+                value = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '// <vc-spec>')
+                value = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '// </vc-spec>')
+                value = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '// <vc-helpers>')
+                value = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '// </vc-helpers>')
+                value = check_for_tag(value, key, 'vc-code', '<vc-code>', '// <vc-code>')
+                value = check_for_tag(value, key, 'vc-code', '</vc-code>', '// </vc-code>')
+                spec[key] = value
 
         # remove HumanEval tags
         # for key, value in spec.items():
@@ -228,12 +228,12 @@ def process_yaml_file(file_path: Path) -> None:
         #         raise ValueError(f"vc-code in {file_path} third line must be '}}', got: '{vc_code_lines[2]}'")
 
         # # Normalize all sections
-        # for key, value in spec.items():
-        #     if isinstance(value, str):
-        #         spec[key] = normalize_section_content(value)
+        for key, value in spec.items():
+            if isinstance(value, str):
+                spec[key] = normalize_section_content(value)
         
-        # # Write back to the file using spec_to_yaml to preserve structure
-        # spec_to_yaml(spec, file_path, required_keys)
+        # Write back to the file using spec_to_yaml to preserve structure
+        spec_to_yaml(spec, file_path, required_keys)
         
         # print(f"Processed: {file_path}")
         

@@ -8,9 +8,6 @@ vc-preamble: |-
   // Noa Leron 207131871
   // Tsuri Farhana 315016907
   
-  
-  
-  
   spec fn sorted(q: Seq<int>) -> bool {
       forall|i: int, j: int| 0 <= i <= j < q.len() ==> q[i] <= q[j]
   }
@@ -30,13 +27,11 @@ vc-preamble: |-
       (a2.subrange(0, i as int) =~= a.subrange(mid as int, (i + mid) as int))
   }
   
-  
   /*
   Goal: Implement iteratively, correctly, efficiently, clearly
   
   DO NOT modify the specification or any other part of the method's signature
   */
-  
   
   //This is a method that replace the loop body
   
@@ -48,7 +43,6 @@ vc-preamble: |-
       sorted(b.subrange(0, (i + j) as int))
       }
   
-  
   //Loop invariant - the multiset of the prefix of b so far is the same multiset as the prefixes of c and d so far.
   spec fn inv_sub_set(b: Seq<int>, c: Seq<int>, d: Seq<int>, i: nat, j: nat) -> bool {
       i <= c.len() && j <= d.len() && i + j <= b.len() &&
@@ -59,15 +53,11 @@ vc-preamble: |-
   //This lemma helps dafny see that if the prefixs of arrays are the same multiset until the end of the arrays,
   //all the arrays are the same multiset.
   
-  
   //This lemma helps dafny see that after adding the next value from c to b the prefixes are still the same subsets.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn merge_loop(b: &mut Vec<int>, c: &Vec<int>, d: &Vec<int>, i0: usize, j0: usize) -> (r: (usize, usize))
           requires
               old(b).len() == c.len() + d.len(),
@@ -86,18 +76,14 @@ vc-spec: |-
               inv_sorted(b@, c@, d@, r.0 as nat, r.1 as nat),
               //decreases ensures
               0 <= c.len() - r.0 < c.len() - i0 || (c.len() - r.0 == c.len() - i0 && 0 <= d.len() - r.1 < d.len() - j0)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     (0, 0) // dummy return
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

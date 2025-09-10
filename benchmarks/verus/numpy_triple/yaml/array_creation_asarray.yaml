@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.asarray: Convert the input to an array.
   
   Converts various input types (lists, tuples, existing arrays, etc.) to an array.
@@ -18,10 +17,10 @@ vc-description: |-
   1. The result vector has the same length as the input list
   2. Each element in the result vector equals the corresponding element in the input list
   3. The ordering of elements is preserved
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -42,6 +41,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

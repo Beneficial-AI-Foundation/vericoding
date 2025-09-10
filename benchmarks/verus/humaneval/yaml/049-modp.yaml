@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn modp_rec(n: nat, p: nat) -> (result:nat)
       decreases n,
   {
@@ -55,6 +55,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

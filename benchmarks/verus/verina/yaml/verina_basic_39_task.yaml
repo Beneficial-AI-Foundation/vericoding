@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that rotates a list of integers to the right by a specified number of positions. The method should produce a new list where each element is shifted to the right while preserving the original list's length.
   
   -----Input-----
@@ -14,11 +13,12 @@ vc-description: |-
   -----Note-----
   • The precondition requires that n is non-negative.
   • If the input list is empty, it should be returned unchanged.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -30,6 +30,7 @@ vc-spec: |-
               let rotated_index = ((i - n as int + len) % len) as int;
               #[trigger] result[i] == l[rotated_index]
           },
+
 vc-code: |-
   {
       // impl-start
@@ -37,7 +38,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

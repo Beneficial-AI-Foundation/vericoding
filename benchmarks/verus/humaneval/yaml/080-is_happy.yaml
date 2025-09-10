@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn three_distinct_spec(s: Seq<char>, i: int) -> (ret:bool)
       recommends
           0 < i && i + 1 < s.len(),
@@ -50,6 +50,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

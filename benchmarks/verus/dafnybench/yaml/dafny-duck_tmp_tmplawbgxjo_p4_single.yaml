@@ -9,11 +9,8 @@ vc-preamble: |-
   // [1,5,2,3],[4,3,5]->[1,5,2,3,4,3,5]
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn single(x: &[i32], y: &[i32]) -> (b: Vec<i32>)
       requires 
           x.len() > 0,
@@ -21,18 +18,14 @@ vc-spec: |-
       ensures 
           b@.len() == x@.len() + y@.len(),
           b@ == x@ + y@,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       Vec::new()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

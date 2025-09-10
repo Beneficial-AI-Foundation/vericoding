@@ -13,7 +13,6 @@ vc-preamble: |-
       else { fib((n - 1) as nat) + fib((n - 2) as nat) }
   }
   
-  
   // 2.
   pub enum List<T> {
       Nil,
@@ -29,7 +28,6 @@ vc-preamble: |-
       }
   }
   
-  
   // 3.
   
   // 5.
@@ -42,25 +40,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn maxArrayReverse(arr: &[i32]) -> (max: i32)
       requires arr.len() > 0
       ensures 
           forall|i: int| 0 <= i < arr.len() ==> arr[i] <= max,
           exists|x: int| 0 <= x < arr.len() && arr[x] == max
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

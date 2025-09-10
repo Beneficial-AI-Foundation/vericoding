@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Split a vector into k equal parts. Requires that the vector length is divisible by k.
   
   Specification: split divides a vector into k equal-sized sub-vectors 
@@ -10,11 +9,12 @@ vc-description: |-
   2. Each sub-vector has size n/k 
   3. Element j of sub-vector i corresponds to element (i * (n/k) + j) of the original vector
   4. All elements from the original vector are preserved in the split
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -30,6 +30,7 @@ vc-spec: |-
                   let idx = i * (arr.len() / k) as int + j;
                   0 <= idx < arr.len() as int && #[trigger] result[i][j] == arr[idx]
               },
+
 vc-code: |-
   {
       // impl-start
@@ -37,7 +38,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

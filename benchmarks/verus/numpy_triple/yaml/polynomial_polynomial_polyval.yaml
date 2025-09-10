@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Evaluate a polynomial at points x using Horner's method.
   Given coefficients c = [c₀, c₁, ..., cₙ] and evaluation points x,
   computes p(x) = c₀ + c₁·x + c₂·x² + ... + cₙ·xⁿ for each x
@@ -13,10 +12,10 @@ vc-description: |-
   - Linear in coefficients: p(x, αc₁ + βc₂) = α·p(x, c₁) + β·p(x, c₂)
   - Polynomial evaluation at zero gives constant term: p(0) = c₀
   - For degree-0 polynomial [c₀], result is constant c₀ for all x
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -42,6 +41,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

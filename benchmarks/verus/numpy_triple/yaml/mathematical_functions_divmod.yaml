@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.divmod: Return element-wise quotient and remainder simultaneously.
   
   Performs element-wise division returning both the quotient and remainder.
@@ -32,10 +31,10 @@ vc-description: |-
   
   Precondition: All elements in x2 must be non-zero
   Postcondition: Returns (quotient, remainder) where the mathematical properties hold
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -65,6 +64,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

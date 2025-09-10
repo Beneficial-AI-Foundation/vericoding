@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.sum: Sum of array elements over a given axis.
   
   Computes the sum of all elements in the vector. For empty vectors,
@@ -34,17 +33,17 @@ vc-description: |-
   
   Precondition: True (works for any vector, including empty)
   Postcondition: Result equals the sum of all elements using fold operation
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
 
 vc-spec: |-
   spec fn vec_sum(a: Seq<f32>) -> f32;
-
+  
   fn sum(a: Vec<f32>) -> (result: f32)
       ensures 
           result == vec_sum(a@),
@@ -60,6 +59,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

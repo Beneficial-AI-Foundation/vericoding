@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Convert a polynomial to a Chebyshev series.
   
   Convert coefficients of a polynomial in the standard monomial basis
@@ -11,11 +10,12 @@ vc-description: |-
   
   The output Chebyshev coefficients are also ordered from lowest to highest degree:
   result = [c₀, c₁, c₂, ..., cₙ] represents c₀T₀(x) + c₁T₁(x) + c₂T₂(x) + ... + cₙTₙ(x)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -32,6 +32,7 @@ vc-spec: |-
           /* Cubic polynomial x³: [0, 0, 0, 1] → [0, 0.75, 0, 0.25] */
           (pol.len() == 4 && pol[0] == 0.0 && pol[1] == 0.0 && pol[2] == 0.0 && pol[3] == 1.0) ==>
               (result[0] == 0.0 && result[1] == 0.75 && result[2] == 0.0 && result[3] == 0.25)
+
 vc-code: |-
   {
       // impl-start
@@ -39,7 +40,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

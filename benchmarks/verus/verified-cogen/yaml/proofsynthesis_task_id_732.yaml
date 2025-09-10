@@ -2,15 +2,15 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn is_space_comma_dot_spec(c: char) -> (result: bool) {
       (c == ' ') || (c == ',') || (c == '.')
   }
   // pure-end
   // pure-end
-
+  
   spec fn inner_expr_replace_with_colon(str1: &Vec<char>, k: int) -> (result: char) {
       if is_space_comma_dot_spec(str1[k]) {
           ':'
@@ -40,7 +40,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

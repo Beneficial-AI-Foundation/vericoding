@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Remove small Poly series coefficients.
   
   Remove trailing zeros from a sequence of polynomial coefficients.
@@ -9,10 +8,10 @@ vc-description: |-
   Specification: trimseq removes trailing zeros while preserving at least one element.
   For non-empty sequences, if the last element is non-zero, return the sequence unchanged.
   If the last element is zero, trim trailing zeros but always keep at least one element.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -45,6 +44,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

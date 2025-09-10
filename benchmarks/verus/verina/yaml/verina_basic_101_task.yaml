@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This problem involves computing the triple of a given integer. The goal is to produce an output that is exactly three times the input value.
   
   -----Input-----
@@ -11,10 +10,10 @@ vc-description: |-
   
   -----Note-----
   The implementation uses a local variable to first compute double the input and then adds the original input to get the final result. The accompanying theorem asserts that the function satisfies the specification of computing 3 * x.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -34,6 +33,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

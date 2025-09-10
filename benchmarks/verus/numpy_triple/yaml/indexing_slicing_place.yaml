@@ -1,18 +1,18 @@
 vc-description: |-
-  /*
   numpy.place: Change elements of an array based on conditional and input values.
-      
+  
   Modifies elements of an array where the corresponding mask is True, using values 
   from the vals array. The function uses the first N elements of vals, where N is 
   the number of True values in mask. If vals is smaller than N, it will be repeated.
-      
+  
   The parameter `k` must equal the number of True elements in the mask array.
   The parameter `v` is the size of the vals array, which must be non-empty.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -25,7 +25,7 @@ vc-spec: |-
           (if mask[0] { 1nat } else { 0nat }) + count_true(mask.skip(1))
       }
   }
-
+  
   fn place(arr: Vec<f32>, mask: Vec<bool>, vals: Vec<f32>) -> (result: Vec<f32>)
       requires 
           arr.len() == mask.len(),
@@ -33,6 +33,7 @@ vc-spec: |-
       ensures 
           result.len() == arr.len(),
           forall|i: int| 0 <= i < arr.len() ==> !mask[i] ==> result[i] == arr[i],
+
 vc-code: |-
   {
       // impl-start
@@ -40,7 +41,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

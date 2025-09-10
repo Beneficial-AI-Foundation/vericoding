@@ -24,23 +24,17 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn Comb(n: u64, k: u64) -> (res: u64)
       requires 0 <= k <= n
       ensures res == comb(n as nat, k as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

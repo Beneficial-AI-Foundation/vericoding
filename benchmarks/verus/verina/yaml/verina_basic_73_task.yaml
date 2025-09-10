@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Determine whether two strings match based on a specific pattern: for each position in the strings, either the characters are the same, or the character in p is a wildcard represented by a question mark '?' that may match any character.
   
   -----Input-----
@@ -14,10 +13,10 @@ vc-description: |-
   
   -----Note-----
   It is assumed that both strings provided have the same length.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,6 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

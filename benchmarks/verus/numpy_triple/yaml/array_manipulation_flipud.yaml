@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.flipud: Reverse the order of elements along axis 0 (up/down).
   
   For a 1D array, this reverses the entire array.
@@ -15,10 +14,10 @@ vc-description: |-
   
   This specification captures both the sanity check (result has same size)
   and the mathematical property (elements are reversed).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,6 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

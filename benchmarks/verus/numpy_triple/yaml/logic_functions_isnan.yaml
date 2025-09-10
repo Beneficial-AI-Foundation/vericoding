@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Test element-wise for NaN and return result as a boolean array.
   
   Specification: isnan returns true for NaN values and false otherwise.
@@ -11,11 +10,12 @@ vc-description: |-
   3. Result preserves shape: output vector has same length as input
   4. Non-NaN values: For all finite values, the result is false
   5. Complement property: isnan is the complement of (isfinite ∨ isinfinite)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -25,6 +25,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < x.len() ==> (result[i] == true <==> x[i] != x[i]),
           forall|i: int| 0 <= i < x.len() ==> (result[i] == true ==> x[i] != x[i]),
           forall|i: int| 0 <= i < x.len() ==> (x[i] == x[i] ==> result[i] == false),
+
 vc-code: |-
   {
       // impl-start
@@ -32,7 +33,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

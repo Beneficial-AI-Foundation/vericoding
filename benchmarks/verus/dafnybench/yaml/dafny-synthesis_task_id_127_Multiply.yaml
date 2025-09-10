@@ -6,22 +6,16 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn multiply(a: int, b: int) -> (result: int)
       ensures result == a * b
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       a * b  // This won't be reached due to assume(false)
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

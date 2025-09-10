@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Chebyshev series whose graph is a straight line.
   Returns coefficients for the Chebyshev series representing off + scl*x.
   For simplicity, we always return a 2-element vector where the second element
@@ -17,10 +16,10 @@ vc-description: |-
   2. The second coefficient equals the scale parameter
   3. When evaluated as a Chebyshev series, this produces the line off + scl*x
   4. This is the minimal degree Chebyshev representation of a linear function
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -40,6 +39,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

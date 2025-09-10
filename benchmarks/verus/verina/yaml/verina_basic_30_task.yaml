@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that computes the element-wise modulo between two arrays of integers. The method should produce a new array where each element is the remainder after dividing the corresponding element from the first array by the element from the second array.
   
   Input:
@@ -20,10 +19,10 @@ vc-description: |-
   Postconditions:
   - The length of the resulting array is the same as the length of the input arrays.
   - Each element in the resulting array is the modulo of the corresponding elements in the input arrays.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -47,7 +46,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       // Invalid Inputs
@@ -97,3 +95,4 @@ vc-postamble: |-
       //     }
       // ]
   }
+

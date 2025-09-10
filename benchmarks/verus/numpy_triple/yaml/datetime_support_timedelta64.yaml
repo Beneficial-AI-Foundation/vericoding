@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   A timedelta stored as a 64-bit integer.
   
   See arrays.datetime for more information.
@@ -9,12 +8,12 @@ vc-description: |-
   Create a timedelta64 object from a numeric value and time unit
   
   Specification: timedelta64 creates a time duration object with given value and unit
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* Time unit codes for timedelta64 */
   #[derive(PartialEq, Eq, Structural)]
   pub enum TimeUnit {
@@ -45,7 +44,7 @@ vc-preamble: |-
       /* Attosecond unit ('as') */
       Attosecond,
   }
-
+  
   /* Represents a time duration value */
   #[derive(PartialEq, Eq, Structural)]
   pub struct TimeDelta64 {
@@ -54,6 +53,7 @@ vc-preamble: |-
       /* The time unit for the duration */
       pub unit: TimeUnit,
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -63,6 +63,7 @@ vc-spec: |-
           result.unit == unit,
           result.value >= -9223372036854775808i64,
           result.value <= 9223372036854775807i64,
+
 vc-code: |-
   {
       // impl-start
@@ -70,7 +71,8 @@ vc-code: |-
       TimeDelta64 { value: 0, unit: TimeUnit::Second }
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

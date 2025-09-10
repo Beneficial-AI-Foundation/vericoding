@@ -13,11 +13,8 @@ vc-preamble: |-
   // the pivot. Returns the pivot position.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn partition(a: &mut Vec<T>) -> (pivotPos: usize)
       requires 
           old(a).len() > 0,
@@ -26,15 +23,12 @@ vc-spec: |-
           forall|i: int| 0 <= i < pivotPos ==> a[i] < a[pivotPos as int],
           forall|i: int| pivotPos < i < a.len() ==> a[i] >= a[pivotPos as int],
           a@.to_multiset() == old(a)@.to_multiset(),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Multiply one Laguerre series by another.
   
   This function multiplies two Laguerre series represented as coefficient arrays.
@@ -12,10 +11,10 @@ vc-description: |-
   
   Returns:
   - out: Array of Laguerre series coefficients representing their product.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -43,6 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

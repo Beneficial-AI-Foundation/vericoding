@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.replace: For each element in a, return a copy of the string with 
   occurrences of substring old replaced by new.
   
@@ -17,10 +16,10 @@ vc-description: |-
   3. Complete replacement: If count[i] < 0, all occurrences are replaced
   4. Identity preservation: If old[i] doesn't occur in a[i], result[i] = a[i]
   5. Zero count behavior: If count[i] = 0, no replacements occur
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -48,7 +47,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

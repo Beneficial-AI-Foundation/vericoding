@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.ndarray.tofile: Write array to a file as text or binary data.
   
   Writes the array data to a file in 'C' order (row-major), independent of the
@@ -20,10 +19,10 @@ vc-description: |-
   
   This ensures the fundamental property that tofile and fromfile are inverses
   when used with the same data format.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -42,6 +41,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

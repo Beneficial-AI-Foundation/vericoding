@@ -2,7 +2,7 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -28,7 +28,7 @@ vc-helpers: |-
       false
       // impl-end
   }
-
+  
   proof fn lemma_vec_push<T>(vec: Seq<T>, i: T, l: usize)
       // pre-conditions-start
       requires
@@ -68,7 +68,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

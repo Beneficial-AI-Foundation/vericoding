@@ -2,21 +2,21 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn is_lower_case(c: char) -> (result: bool) {
       c >= 'a' && c <= 'z'
   }
   // pure-end
   // pure-end
-
+  
   spec fn shift_minus_32_spec(c: char) -> (result: char) {
       ((c as u8) - 32) as char
   }
   // pure-end
   // pure-end
-
+  
   spec fn inner_expr_to_uppercase(str1: &Vec<char>, i: int) -> (result:char) {
       if is_lower_case(#[trigger] str1[i]) {
           shift_minus_32_spec(str1[i])
@@ -45,7 +45,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

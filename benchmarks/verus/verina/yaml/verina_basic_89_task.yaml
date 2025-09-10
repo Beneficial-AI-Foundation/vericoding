@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This problem asks you to design a solution that transforms a list with possible duplicate entries into a new list where each element appears only once, maintaining the order of its first occurrence.
   
   -----Input-----
@@ -11,11 +10,12 @@ vc-description: |-
   
   -----Note-----
   No additional preconditions are required. The method should correctly handle any list, including an empty list.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -29,6 +29,7 @@ vc-spec: |-
           // Every element in s is in result
           forall|i: int| 0 <= i < s.len() ==> 
               exists|j: int| 0 <= j < result.len() && result[j] == #[trigger] s[i],
+
 vc-code: |-
   {
       // impl-start
@@ -36,8 +37,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       /*
@@ -103,3 +104,4 @@ vc-postamble: |-
       ]
       */
   }
+

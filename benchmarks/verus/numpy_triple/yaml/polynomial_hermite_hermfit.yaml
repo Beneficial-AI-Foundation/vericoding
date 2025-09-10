@@ -1,10 +1,9 @@
 vc-description: |-
-  /*
   Least squares fit of Hermite series to data. Returns coefficients of a Hermite polynomial that best fits the given data points (x, y) with degree deg.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -28,6 +27,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

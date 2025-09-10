@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Return a new vector of given size, filled with zeros
   
   Specification: zeros returns a vector where all elements are zero
@@ -11,11 +10,12 @@ vc-description: |-
   5. The dot product with any vector is zero
   6. The norm/magnitude is zero (for types with norm)
   7. Element-wise operations preserve zero structure
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -31,6 +31,7 @@ vc-spec: |-
           forall|v: Vec<i32>, i: int| 
               v.len() == n && 0 <= i < n ==> result[i] * v[i] == 0,
           n > 0 ==> result[0] == 0
+
 vc-code: |-
   {
       // impl-start
@@ -38,7 +39,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.obj2sctype: Return the scalar dtype or NumPy equivalent of Python type of an object.
   
   Takes any object and returns its corresponding NumPy scalar data type.
@@ -20,12 +19,12 @@ vc-description: |-
   
   Precondition: True (works with any object)
   Postcondition: The result correctly represents the scalar type of the input object
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* NumPy scalar data types represented as an enum */
   #[derive(PartialEq, Eq)]
   pub enum NumpyScalarType {
@@ -39,7 +38,7 @@ vc-preamble: |-
       String,
       Bool,
   }
-
+  
   /* Object representation for type introspection */
   pub enum NumpyObject {
       IntVal(i64),
@@ -63,7 +62,7 @@ vc-helpers: |-
           _ => false,
       }
   }
-
+  
   /* Helper predicate: Check if object is an array with given element type */
   pub open spec fn is_array_with_element_type(obj: NumpyObject, dtype: NumpyScalarType) -> bool {
       match (obj, dtype) {
@@ -73,7 +72,7 @@ vc-helpers: |-
           _ => false,
       }
   }
-
+  
   /* Helper predicate: Check if object is a generic object */
   pub open spec fn is_generic_object(obj: NumpyObject) -> bool {
       match obj {
@@ -112,6 +111,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

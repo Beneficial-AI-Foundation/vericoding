@@ -21,25 +21,18 @@ vc-preamble: |-
   // Computation of x^n in time and space O(log n).
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn power_dc(x: i64, n: u64) -> (p: i64)
       ensures p == power(x as int, n as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       1
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
       // A few test cases would go here
   }

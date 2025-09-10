@@ -22,22 +22,16 @@ vc-preamble: |-
   // Iterative version, imperative, with time complexity O(n) and space complexity O(1).
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn power_iter(x: i64, n: u64) -> (p: i64)
       ensures p == power(x as int, n as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       1
   }
-  // </vc-code>
 
 vc-postamble: |-
   // Recursive version, imperative, with time and space complexity O(log n).

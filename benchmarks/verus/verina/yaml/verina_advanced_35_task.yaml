@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus function that finds the majority element in a sequence of integers. The majority element is the element that appears more than ⌊n/2⌋ times, where n is the sequence's length. You may assume that a majority element always exists in the input.
   
   -----Input-----
@@ -7,12 +6,12 @@ vc-description: |-
   
   -----Output-----
   - An integer: the element that appears more than ⌊n/2⌋ times.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat 
       decreases nums.len()
   {
@@ -28,6 +27,7 @@ vc-preamble: |-
           }
       }
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -38,6 +38,7 @@ vc-spec: |-
       ensures 
           count_occurrences(nums, result) > nums.len() / 2,
           forall|x: i32| x != result ==> count_occurrences(nums, x) <= nums.len() / 2,
+
 vc-code: |-
   {
       // impl-start
@@ -45,7 +46,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

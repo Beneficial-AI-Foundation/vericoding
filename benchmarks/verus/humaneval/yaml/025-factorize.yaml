@@ -6,26 +6,25 @@ vc-preamble: |-
   use vstd::assert_by_contradiction;
   use vstd::calc;
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn is_prime(n: nat) -> (result:bool) {
       forall|i: nat| 1 < i < n ==> #[trigger] (n % i) != 0
   }
   // pure-end
   // pure-end
-
-
+  
   spec fn is_prime_factorization(n: nat, factorization: Seq<nat>) -> (result:bool) {
-
+  
       &&& forall|i: int|
           0 <= i < factorization.len() ==> #[trigger] is_prime(
               factorization[i] as nat,
           )
-
+  
       &&& factorization.fold_right(|x: nat, acc: nat| (acc * x as nat), 1nat)
           == n
-
+  
       &&& forall|i: nat, j: nat|
           (1 < i <= j < factorization.len()) ==> (#[trigger] factorization[i as int]
               <= #[trigger] factorization[j as int])
@@ -34,8 +33,7 @@ vc-preamble: |-
 
 vc-helpers: |-
   // pure-end
-
-
+  
   proof fn lemma_fold_right_pull_out_nat(seq: Seq<nat>, k: nat)
       // post-conditions-start
       ensures
@@ -74,9 +72,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_fold_right_pull_out_hybrid(seq: Seq<u8>, k: nat)
       // post-conditions-start
       ensures
@@ -116,9 +114,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_unfold_right_fold(factors: Seq<u8>, old_factors: Seq<u8>, k: u8, m: u8)
       // pre-conditions-start
       requires
@@ -140,9 +138,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_unfold_right_fold_new(factors: Seq<u8>, old_factors: Seq<u8>, m: u8)
       // pre-conditions-start
       requires
@@ -166,9 +164,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_multiple_mod_is_zero(m: int, n: int, k: int)
       // pre-conditions-start
       requires
@@ -185,18 +183,18 @@ vc-helpers: |-
       // impl-start
       assert(k == (k / m) * m) by { lemma_fundamental_div_mod(k, m) };
       assert(n == (n / k) * k) by { lemma_fundamental_div_mod(n, k) };
-
+  
       assert(n == ((n / k) * m) * (k / m)) by {
           broadcast use group_mul_properties;
-
+  
       };
       assert(n % (k / m) == 0) by { lemma_mod_multiples_basic((n / k) * m, k / m) };
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_multiple_mod_is_zero_new(m: int, n: int, k: int)
       // pre-conditions-start
       requires
@@ -214,19 +212,19 @@ vc-helpers: |-
       // impl-start
       assert(k == (k / m) * m) by { lemma_fundamental_div_mod(k, m) };
       let a = choose|a: int| (#[trigger] (a * m) == k && (a == k / m));
-
+  
       assert(n == (n / k) * k) by { lemma_fundamental_div_mod(n, k) };
       let b = choose|b: int| (#[trigger] (b * k) == n && b == n / k);
-
+  
       assert((a * m) * b == n) by { lemma_mul_is_commutative(b, a * m) }
       assert(a * (m * b) == n) by { lemma_mul_is_associative(a, m, b) };
       assert((m * b) == n / a) by { lemma_div_multiples_vanish(m * b, a) };
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_factor_mod_is_zero(k: int, m: int, j: int)
       // pre-conditions-start
       requires
@@ -244,10 +242,10 @@ vc-helpers: |-
           {
               assert (k == (k/m) * m) by {lemma_fundamental_div_mod(k, m)};
               let a = choose|a:int| (#[trigger] (a * m) == k);
-
+  
               assert ((k/m) == ((k/m)/j) * j) by {lemma_fundamental_div_mod(k/m, j)};
               let b = choose|b:int| (#[trigger] (b * j) == k/m);
-
+  
               calc! {
                   (==)
                   k % j; {broadcast use group_mul_properties;}
@@ -258,9 +256,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_mod_zero_twice(k: int, m: int, i: int)
       // pre-conditions-start
       requires
@@ -277,19 +275,19 @@ vc-helpers: |-
       // impl-start
       assert(k == (k / m) * m) by { lemma_fundamental_div_mod(k as int, m as int) };
       let a = choose|a: int| (#[trigger] (a * m) == k);
-
+  
       assert(m == (m / i) * i) by { lemma_fundamental_div_mod(m as int, i as int) };
       let b = choose|b: int| (#[trigger] (b * i) == m);
-
+  
       assert(k == (a * b) * i) by { lemma_mul_is_associative(a, b, i) };
       assert(k % i == 0) by { lemma_mod_multiples_vanish(a * b, 0, i) };
       // impl-end
-
+  
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_first_divisor_is_prime(k: nat, m: nat)
       // pre-conditions-start
       requires
@@ -311,9 +309,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_drop_last_map_commute(seq: Seq<u8>)
       // pre-conditions-start
       requires
@@ -331,9 +329,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_fold_right_equivalent_for_nat_u8(factorization: Seq<u8>)
       // pre-conditions-start
       requires
@@ -353,7 +351,7 @@ vc-helpers: |-
       } else {
           let factorization_ = factorization.drop_last();
           let last = factorization.last();
-
+  
           calc! {
               (==)
               factorization.map(|_idx, j: u8| j as nat).fold_right(|x, acc: nat| acc * x, 1nat); {
@@ -411,6 +409,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
   fn main() { }
+

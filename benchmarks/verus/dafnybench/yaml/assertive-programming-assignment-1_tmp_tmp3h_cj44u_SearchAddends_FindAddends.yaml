@@ -40,29 +40,22 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn find_addends(q: Seq<int>, x: int) -> (result: (usize, usize))
       requires sorted(q) && has_addends(q, x)
       ensures ({
           let (i, j) = result;
           i < j < q.len() && q[i as int] + q[j as int] == x
       })
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     (0, 1)
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

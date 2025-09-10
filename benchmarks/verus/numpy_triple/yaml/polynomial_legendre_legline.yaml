@@ -1,10 +1,9 @@
 vc-description: |-
-  /*
   Creates a Legendre series representation of a straight line `off + scl*x`. This function generates the correct Legendre series coefficients for a linear function.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -25,6 +24,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

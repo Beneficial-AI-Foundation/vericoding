@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Compute the bit-wise XOR of two arrays element-wise.
   
   Computes the bit-wise XOR (exclusive OR) of the underlying binary representation 
@@ -18,11 +17,12 @@ vc-description: |-
   Note: This specification currently handles only non-negative integers.
   For negative integers, NumPy uses two's complement representation,
   which requires a more complex formalization.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -38,6 +38,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < result.len() && x1[i] == 0 ==> result[i] == x2[i],
           forall|i: int| 0 <= i < result.len() && x2[i] == 0 ==> result[i] == x1[i],
           forall|i: int| 0 <= i < result.len() && x1[i] == x2[i] ==> result[i] == 0,
+
 vc-code: |-
   {
       // impl-start
@@ -45,7 +46,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

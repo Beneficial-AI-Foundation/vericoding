@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This problem requires sorting an array of integers into non-decreasing order, ensuring that the output contains exactly the same elements as the input (i.e., it is a permutation of the original array).
   
   Input: The input consists of an array of integers (Vec<i32>).
@@ -9,10 +8,10 @@ vc-description: |-
   • A permutation of the input, meaning it contains exactly the same elements (with the same multiplicities) as the original array.
   
   Note: It is assumed that the input array is valid and that the swap operations, along with the helper functions, correctly implement the selection sort algorithm.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -29,7 +28,7 @@ vc-helpers: |-
       start
       // impl-end
   }
-
+  
   fn swap(a: &mut Vec<i32>, i: usize, j: usize)
       requires
           old(a).len() > 0,
@@ -62,7 +61,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       // Invalid Inputs: []
@@ -73,3 +71,4 @@ vc-postamble: |-
       // Test 4: input a = vec![2, 2, 1, 4], expected vec![1, 2, 2, 4]
       // Test 5: input a = vec![10, -5, 0, 3], expected vec![-5, 0, 3, 10]
   }
+

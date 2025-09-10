@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.eye: Return a 2-D array with ones on the diagonal and zeros elsewhere.
   
   Returns the identity matrix of size n x n. For simplicity, we implement 
@@ -7,11 +6,12 @@ vc-description: |-
   
   This function creates an n x n matrix where all elements are zero except
   for the main diagonal, which contains ones.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -29,6 +29,7 @@ vc-spec: |-
               result[i][j] == 1.0f32 && forall|k: int| 0 <= k < n && result[k][j] == 1.0f32 ==> k == i,
           forall|i: int, j: int| 0 <= i < n && 0 <= j < n && i != j ==> 
               result[i][j] == 0.0f32,
+
 vc-code: |-
   {
       // impl-start
@@ -36,7 +37,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

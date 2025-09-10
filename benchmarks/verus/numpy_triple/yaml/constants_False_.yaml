@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   NumPy's boolean False value, used in comparison operations and boolean arrays.
   
   Specification: False_ represents the boolean false value with properties:
@@ -7,10 +6,10 @@ vc-description: |-
   2. It is the identity for logical OR
   3. It is the absorbing element for logical AND
   4. It is the negation of True_
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -32,6 +31,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

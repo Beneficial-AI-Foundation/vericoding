@@ -1,13 +1,13 @@
 vc-description: |-
-  /*
   Differentiate a Legendre series.
   Returns the Legendre series coefficients c differentiated m times.
   Each differentiation is multiplied by scl (scaling factor).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -17,6 +17,7 @@ vc-spec: |-
           result.len() == if c.len() > m { c.len() - m } else { 1 },
           m == 0 ==> (result.len() == c.len() && forall|i: int| 0 <= i < c.len() ==> result[i] == c[i]),
           m >= c.len() ==> result.len() == 1,
+
 vc-code: |-
   {
       // impl-start
@@ -24,7 +25,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

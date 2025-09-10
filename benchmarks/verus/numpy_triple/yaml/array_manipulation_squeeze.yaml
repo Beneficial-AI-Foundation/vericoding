@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Squeeze a single-element vector to extract its value.
   This is a simplified 1D version of numpy.squeeze for vectors of size 1.
   
@@ -14,11 +13,12 @@ vc-description: |-
   - The input must be a vector of exactly size 1
   - The output type changes from Vector to the element type
   - This models numpy's behavior where squeeze([x]) returns x as a 0D array
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -27,7 +27,7 @@ vc-spec: |-
   {
       a[0]
   }
-
+  
   fn squeeze_exec<T: Copy>(a: Vec<T>) -> (result: T)
       requires a.len() == 1,
       ensures 
@@ -35,6 +35,7 @@ vc-spec: |-
           result == a[0],
           forall|b: Vec<T>| b.len() == 1 && squeeze(a) == squeeze(b) ==> a[0] == b[0],
           forall|i: int| 0 <= i < a.len() ==> a[i] == result,
+
 vc-code: |-
   {
       // impl-start
@@ -42,7 +43,8 @@ vc-code: |-
       a[0]
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

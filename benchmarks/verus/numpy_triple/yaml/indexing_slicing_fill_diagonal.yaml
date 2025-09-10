@@ -1,11 +1,11 @@
 vc-description: |-
-  /*
   Fill the main diagonal of a 2D matrix with a specified value
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -24,6 +24,7 @@ vc-spec: |-
           forall|i: int, j: int| 
               0 <= i < result.len() && 0 <= j < result[i].len() && i != j 
               ==> result[i][j] == mat[i][j]
+
 vc-code: |-
   {
       // impl-start
@@ -31,7 +32,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

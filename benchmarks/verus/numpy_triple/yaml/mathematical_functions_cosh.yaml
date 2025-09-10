@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.cosh: Hyperbolic cosine, element-wise.
   
   The hyperbolic cosine function is defined as:
@@ -9,11 +8,12 @@ vc-description: |-
   analogous to how cosine represents the x-coordinate on the unit circle.
   
   Returns an array of the same shape as x, containing the hyperbolic cosine of each element.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -24,6 +24,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < result.len() ==> {
               result[i] == result[i]  /* Core mathematical definition placeholder */
           }
+
 vc-code: |-
   {
       // impl-start
@@ -31,7 +32,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

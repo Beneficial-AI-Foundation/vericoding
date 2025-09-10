@@ -2,7 +2,7 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus!{
 
 vc-helpers: |-
@@ -21,9 +21,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_seq_take_all<T>(v: Seq<T>)
       // post-conditions-start
       ensures
@@ -56,7 +56,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

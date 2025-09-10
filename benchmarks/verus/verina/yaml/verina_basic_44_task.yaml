@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that verifies if every odd index in an array of integers holds an odd number. In other words, for each index in the array that is odd, the number located at that index must also be odd. The method should return true if this condition is satisfied for every odd index; otherwise, it should return false.
   
   -----Input-----
@@ -13,10 +12,10 @@ vc-description: |-
   
   -----Note-----
   There are no preconditions; the method will work for any array of integers.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,6 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

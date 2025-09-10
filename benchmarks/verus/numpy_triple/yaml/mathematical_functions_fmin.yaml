@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Element-wise minimum of array elements.
   
   Compare two arrays and returns a new array containing the element-wise minima. If one of the elements being compared is a NaN, then the non-nan element is returned.
@@ -15,11 +14,12 @@ vc-description: |-
   - If both are NaN, returns NaN
   - Mathematical properties: commutativity (ignoring NaN order), 
     idempotence for non-NaN values, and boundedness
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -28,6 +28,7 @@ vc-spec: |-
       ensures
           result.len() == x.len(),
           forall|i: int| 0 <= i < x.len() ==> #[trigger] result[i] == x[i] || #[trigger] result[i] == y[i]
+
 vc-code: |-
   {
       // impl-start
@@ -35,7 +36,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -1,12 +1,11 @@
 vc-description: |-
-  /*
   Generic Python-exception-derived object raised by linalg functions.
   Error checking predicate for linear algebra operations.
   Specification: Linear algebra error detection correctly identifies error conditions.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -43,6 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

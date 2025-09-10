@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.trim_zeros: Trim the leading and/or trailing zeros from a 1-D array.
   
   Removes zeros from the beginning and/or end of a vector based on the trim mode.
@@ -16,12 +15,12 @@ vc-description: |-
   2. Internal zeros (zeros between non-zero elements) are preserved
   3. Only leading/trailing zeros are removed based on the mode
   4. If the array contains only zeros, returns an empty vector
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* Represents the trim mode for trim_zeros function */
   pub enum TrimMode {
       /* Trim zeros from the front of the array only (corresponds to 'f') */
@@ -31,6 +30,7 @@ vc-preamble: |-
       /* Trim zeros from both front and back of the array (corresponds to 'fb', default) */
       Both,
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -55,6 +55,7 @@ vc-spec: |-
               /* If trimming back, finish is past the last non-zero or 0 */
               (matches!(mode, TrimMode::Back | TrimMode::Both) ==> 
                   (finish == 0 || (finish > 0 && arr[finish - 1] != 0.0)))
+
 vc-code: |-
   {
       // impl-start
@@ -62,7 +63,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

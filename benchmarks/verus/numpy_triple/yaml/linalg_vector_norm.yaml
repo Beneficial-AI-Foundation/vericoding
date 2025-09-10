@@ -1,7 +1,6 @@
 vc-description: |-
-  /*
   numpy.linalg.vector_norm: Compute the p-norm of a vector for a given order p.
-      
+  
   This function computes vector norms of different orders (p-norms).
   For a vector x and order p, the p-norm is defined as:
   ||x||_p = (sum(|x[i]|^p))^(1/p) for p ≥ 1
@@ -37,11 +36,12 @@ vc-description: |-
   - p must be a non-negative real number
   - For p = 0, it counts non-zero elements (special case)
   - For p ≥ 1, it computes the standard p-norm
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -51,6 +51,7 @@ vc-spec: |-
           result >= 0,
           x@.len() == 0 ==> result == 0,
           result >= 0
+
 vc-code: |-
   {
       // impl-start
@@ -58,7 +59,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

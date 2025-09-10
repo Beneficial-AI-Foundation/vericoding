@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires swapping two 8-bit unsigned integers. Given two unsigned integer inputs, the goal is to produce an output pair where the first element is the original second input and the second element is the original first input. The problem focuses solely on exchanging the values without specifying any particular method to achieve the swap.
   
   Input:
@@ -14,10 +13,10 @@ vc-description: |-
   
   Note:
   There are no additional preconditions; the function is meant to work correctly for any pair of u8 values by leveraging bitwise xor operations.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -37,7 +36,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       /* 
@@ -107,3 +105,4 @@ vc-postamble: |-
       ]
       */
   }
+

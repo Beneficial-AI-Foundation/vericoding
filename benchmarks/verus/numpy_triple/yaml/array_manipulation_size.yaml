@@ -1,12 +1,11 @@
 vc-description: |-
-  /*
   Returns the number of elements in a vector
   
   Specification: size returns the length of the vector, which is its type parameter n
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -24,6 +23,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

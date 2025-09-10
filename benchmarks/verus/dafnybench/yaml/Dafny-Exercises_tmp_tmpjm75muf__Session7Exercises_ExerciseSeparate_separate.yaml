@@ -24,29 +24,22 @@ vc-preamble: |-
   positive first and then strictnegative, i is the firs neg or len if not any */
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn separate(v: &mut Vec<i32>) -> (i: usize)
       ensures
           0 <= i <= v.len(),
           positive(v@.subrange(0, i as int)),
           strict_negative(v, i, v.len()),
           is_permutation(v@, old(v)@),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

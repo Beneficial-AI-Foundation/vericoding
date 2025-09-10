@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that computes the product of the first even and the first odd number encountered in a list of integers. The method should search the list for the earliest even number and the earliest odd number, then return the product of these two numbers.
   
   Input:
@@ -12,12 +11,12 @@ vc-description: |-
   
   Note:
   The input list is assumed to contain at least one even number and one odd number.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn find_product_precond(lst: Seq<i32>) -> bool {
       lst.len() > 1 &&
       (exists|x: i32| lst.contains(x) && is_even(x)) &&
@@ -65,6 +64,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

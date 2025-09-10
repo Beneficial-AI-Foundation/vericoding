@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.empty: Return a new array of given shape and type, without initializing entries.
   
   Creates a new vector of the specified length containing uninitialized (arbitrary) values.
@@ -25,10 +24,10 @@ vc-description: |-
   This specification captures the key behavior of numpy.empty: it returns a properly
   sized array but makes no promises about the contents, which distinguishes it from
   functions like zeros() or ones() that guarantee specific initial values.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -48,6 +47,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn odd_or_zero(x: u32) -> (ret:u32) {
       if x % 2 == 0 {
           x
@@ -14,7 +14,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn add_odd_evens(lst: Seq<u32>) -> (ret:int)
       decreases lst.len(),
   {
@@ -48,6 +48,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
   fn main() {}
+

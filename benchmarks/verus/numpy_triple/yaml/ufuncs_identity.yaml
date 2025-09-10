@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   ufunc.identity: Get the identity element for a ufunc operation.
   
   Returns the identity element for a given binary operation, which is the value
@@ -17,10 +16,10 @@ vc-description: |-
   Precondition: The operation is a valid binary function
   Postcondition: If an identity element exists, applying the operation with
                  that element leaves any other element unchanged
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -42,6 +41,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

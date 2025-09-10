@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Return the floor of the input, element-wise.
   
   The floor of each element x is the largest integer i, such that i <= x.
@@ -21,10 +20,10 @@ vc-description: |-
   - Idempotence: floor(floor(x)) = floor(x)
   - Relationship with ceiling: result[i] = -((-x[i]).ceil) when x[i] is not an integer
   - Integer preservation: if x[i] is an integer, then result[i] = x[i]
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -48,7 +47,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

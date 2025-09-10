@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.full_like: Return a full array with the same shape and type as a given array.
   
   Creates a new array with the same shape as the input array `a`, where all
@@ -15,10 +14,10 @@ vc-description: |-
   
   Precondition: True (no special preconditions needed)
   Postcondition: The result has the same length as `a` and all elements equal `fill_value`
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,6 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

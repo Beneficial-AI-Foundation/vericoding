@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn how_many_times(string: Seq<char>, substring: Seq<char>) -> (result:nat)
       decreases string.len(),
   {
@@ -18,7 +18,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn inner_expr_how_many_times_impl(opt_k: Option<u32>, string: Vec<char>, substring: Vec<char>) -> (result:bool) {
       match opt_k {
           Some(k) => k as nat == how_many_times(string@, substring@),
@@ -37,7 +37,7 @@ vc-helpers: |-
       // impl-start
       let mut current_substring = substring.clone();
       let mut current_string = string.clone();
-
+  
       if substring.len() > string.len() {
           return false
       }
@@ -56,7 +56,7 @@ vc-helpers: |-
           }
           let old_substring = current_substring.clone();
           let old_string = current_string.clone();
-
+  
           let substring_first = current_substring.remove(0);
           let string_first = current_string.remove(0);
           // assert-start
@@ -71,9 +71,9 @@ vc-helpers: |-
       return true;
       // impl-end
   }
-
+  
   // pure-end
-
+  
   proof fn lemma_step_subrange(substring: Seq<char>, string: Seq<char>)
       // pre-conditions-start
       requires
@@ -106,7 +106,7 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   proof fn lemma_how_many_times_zero(string: Seq<char>, substring: Seq<char>)
       // pre-conditions-start
       requires
@@ -147,6 +147,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
   fn main() {}
+

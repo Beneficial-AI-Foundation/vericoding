@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that converts a given string to uppercase. The method should replace every lowercase letter in the input string with its corresponding uppercase character while leaving all other characters unchanged. The output string must have the same length as the input string.
   
   Input:
@@ -12,21 +11,23 @@ vc-description: |-
   
   Note:
   There are no preconditions since the method assumes that the input string is always valid (i.e., non-null).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   spec fn is_lower_case(c: char) -> bool
   {
       'a' <= c && c <= 'z'
   }
-
+  
   spec fn shift_minus_32(c: char) -> char
   {
       arbitrary()
   }
+
 vc-spec: |-
   fn to_uppercase(s: &str) -> (result: String)
       ensures
@@ -40,6 +41,7 @@ vc-spec: |-
                   r == c
               }
           },
+
 vc-code: |-
   {
       // impl-start
@@ -47,7 +49,8 @@ vc-code: |-
       "".to_string()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

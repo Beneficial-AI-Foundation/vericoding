@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Raise a Hermite series to a power. Computes the Hermite polynomial coefficients
   for the series c raised to the given power, using repeated multiplication.
   
@@ -18,11 +17,12 @@ vc-description: |-
   This implements the mathematical operation (P(x))^pow where P(x) is the Hermite polynomial
   represented by the input coefficients, and the result gives the coefficients of the
   polynomial raised to the given power in the Hermite basis.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -42,6 +42,7 @@ vc-spec: |-
           /* For non-empty input, the result maintains polynomial structure */
           pow >= 1 && c.len() > 0 ==> exists|highest_coeff: f64| 
               result[result.len() - 1] == highest_coeff,
+
 vc-code: |-
   {
       // impl-start
@@ -49,7 +50,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -82,11 +82,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn insert_into_sorted(a: &[int], limit: usize, key: int) -> (b: Vec<int>)
       requires 
           key > 0,
@@ -101,15 +98,12 @@ vc-spec: |-
           forall|i: int| limit + 1 <= i < b.len() ==> b[i] == 0,
           forall|i: int| 0 <= i < limit ==> a@.contains(b[i]),
           forall|i: int| 0 <= i < limit + 1 ==> b[i] > 0,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       Vec::new()
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

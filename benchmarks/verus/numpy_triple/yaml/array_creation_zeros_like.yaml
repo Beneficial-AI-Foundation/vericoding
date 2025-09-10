@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Return a vector of zeros with the same length as the input vector.
   This is the 1D version of numpy.zeros_like which creates a new vector
   filled with zeros, having the same size as the input vector.
@@ -13,11 +12,12 @@ vc-description: |-
   3. The result is independent of the input values (only depends on shape)
   4. The result is the additive identity for vector addition
   5. For numeric types, the sum of all elements is zero
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -29,6 +29,7 @@ vc-spec: |-
               forall|i: int| 0 <= i < result.len() ==> 
                   result[i] + v[i] == v[i] && v[i] + result[i] == v[i]
           }
+
 vc-code: |-
   {
       // impl-start
@@ -36,7 +37,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

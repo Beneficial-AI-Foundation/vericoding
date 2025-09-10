@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.divide: Divide arguments element-wise.
   
   Divides two vectors element-wise. If the vectors have the same shape,
@@ -19,10 +18,10 @@ vc-description: |-
   - When x2[i] ≠ 0, result[i] * x2[i] = x1[i] (within floating point precision)
   - When x2[i] = 0 and x1[i] ≠ 0, result[i] is infinite
   - When x2[i] = 0 and x1[i] = 0, result[i] is NaN
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -44,6 +43,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

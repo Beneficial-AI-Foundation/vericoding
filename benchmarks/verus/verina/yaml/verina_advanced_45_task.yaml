@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus function that finds the maximum subarray sum from a given list of integers.
   A subarray is a contiguous sequence of elements within the list.
   The function should return the maximum sum that can be obtained from any subarray.
@@ -12,10 +11,10 @@ vc-description: |-
   The output is an integer:
   Returns the maximum sum among all contiguous subarrays of xs.
   If the vector is empty, the result should be 0.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -54,6 +53,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.not_equal: Return (x1 != x2) element-wise for string arrays.
   
   Performs element-wise string inequality comparison between two vectors of strings.
@@ -20,10 +19,10 @@ vc-description: |-
   - Decidable: String inequality is decidable for all strings
   - Type-safe: Result vector has same length as input vectors
   - Complementary: for any two strings s1 and s2, exactly one of (s1 = s2) or (s1 ≠ s2) holds
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -44,6 +43,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

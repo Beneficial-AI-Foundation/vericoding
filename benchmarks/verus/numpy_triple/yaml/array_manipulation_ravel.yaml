@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.ravel: Return a contiguous flattened array.
   
   For 1D arrays, ravel returns the input array unchanged since it's already
@@ -14,10 +13,10 @@ vc-description: |-
   Precondition: True (no special preconditions for 1D ravel)
   Postcondition: The result is identical to the input vector, maintaining
                  all elements in their original order
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -35,6 +34,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

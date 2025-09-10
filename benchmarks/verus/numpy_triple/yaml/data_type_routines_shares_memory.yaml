@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Determine if two arrays share memory.
   
   This function determines if two arrays share memory by checking
@@ -18,10 +17,10 @@ vc-description: |-
   If the arrays are identical references, it must return True.
   If the arrays are independent (non-overlapping memory), it must return False.
   The function is precise - it returns True if and only if the arrays share memory.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,7 +37,7 @@ vc-spec: |-
       // Precision property: the function provides definitive answers about memory sharing
       true
   }
-
+  
   fn shares_memory_fn(a: Vec<f32>, b: Vec<f32>) -> (result: bool)
       ensures
           // Basic sanity check: result is a boolean
@@ -57,6 +56,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

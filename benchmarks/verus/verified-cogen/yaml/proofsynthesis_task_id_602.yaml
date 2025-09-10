@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn count_frequency_rcr(seq: Seq<char>, key: char) -> (result: int)
       decreases seq.len(),
   {
@@ -81,7 +81,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

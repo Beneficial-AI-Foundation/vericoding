@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that determines whether a given string contains the character 'z' or 'Z'. The method should return true if the string includes either the lowercase or uppercase letter 'z', and false otherwise.
   
   -----Input-----
@@ -13,17 +12,19 @@ vc-description: |-
   
   -----Note-----
   There are no preconditions; the method will always work as strings and sequences are considered non-null.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   fn contains_z(s: &str) -> (result: bool)
       ensures
           result <==> exists|i: int| 0 <= i < s@.len() && (s@[i] == 'z' || s@[i] == 'Z'),
+
 vc-code: |-
   {
       // impl-start
@@ -31,7 +32,8 @@ vc-code: |-
       false
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

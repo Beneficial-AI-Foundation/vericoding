@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that calculates the sum of all the elements in an array of integers. The method should process the entire array and return the total sum of its elements.
   
   -----Input-----
@@ -12,17 +11,18 @@ vc-description: |-
   
   -----Note-----
   - The input array is assumed not to be null.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn sum_to(a: &Vec<i32>, n: int) -> int
       decreases n
   {
       if n <= 0 { 0 } else { sum_to(a, n - 1) + a[n - 1] }
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -30,6 +30,7 @@ vc-spec: |-
       requires a.len() > 0,
       ensures
           result == sum_to(a, a.len() as int),
+
 vc-code: |-
   {
       // impl-start
@@ -37,8 +38,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       /*
@@ -99,3 +100,4 @@ vc-postamble: |-
       ]
       */
   }
+

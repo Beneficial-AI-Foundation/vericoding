@@ -1,16 +1,15 @@
 vc-description: |-
-  /*
   Returns the data type that results from applying NumPy type promotion rules to the arguments. 
   
   Type promotion in NumPy works similarly to the rules in languages like C++, with some differences. When both scalars and arrays are used, the array's type takes precedence and the scalar's actual value is considered.
   
   The function takes operands of some operation and returns the result type according to NumPy's type promotion hierarchy.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* Define NumPy data types for type promotion */
   #[derive(PartialEq, Eq, Structural)]
   pub enum NumpyDType {
@@ -33,7 +32,7 @@ vc-preamble: |-
       /* Boolean type */
       Bool,
   }
-
+  
   /* Define type promotion hierarchy (higher number = higher precedence) */
   spec fn type_rank(dtype: NumpyDType) -> nat {
       match dtype {
@@ -48,7 +47,7 @@ vc-preamble: |-
           NumpyDType::Complex128 => 8,
       }
   }
-
+  
   /* Define operand types (either scalar or array) */
   pub enum NumpyOperand {
       /* Scalar value with data type */
@@ -56,7 +55,7 @@ vc-preamble: |-
       /* Array with data type and vector of values */
       Array(NumpyDType, Vec<i32>),
   }
-
+  
   /* Extract the data type from an operand */
   spec fn operand_type(operand: NumpyOperand) -> NumpyDType {
       match operand {
@@ -64,7 +63,7 @@ vc-preamble: |-
           NumpyOperand::Array(dtype, _) => dtype,
       }
   }
-
+  
   /* Type promotion function for two types */
   spec fn promote_types(t1: NumpyDType, t2: NumpyDType) -> NumpyDType {
       if type_rank(t1) >= type_rank(t2) { t1 } else { t2 }
@@ -95,6 +94,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

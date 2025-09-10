@@ -115,26 +115,19 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn sqr_sum1(n: int) -> (s: int)
       requires n >= 0
       ensures s == sqr_sum_rec(n)  // s = 0^2 + 1^2 + 2^2 + ... + n^2 == n(n+1)(2n+1)/6
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       n  // This is unreachable due to assume(false)
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

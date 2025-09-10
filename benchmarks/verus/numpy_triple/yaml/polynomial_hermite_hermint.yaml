@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Integrate a Hermite series.
   
   Returns the Hermite series coefficients integrated `m` times from `lbnd`.
@@ -23,10 +22,10 @@ vc-description: |-
     the integral evaluates to the appropriate value at lbnd
   - For coefficient c[i] representing H_i, integration contributes c[i]/(2*(i+1)) to H_{i+1}
   - The scaling factor scl is applied after each integration step
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -49,7 +48,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

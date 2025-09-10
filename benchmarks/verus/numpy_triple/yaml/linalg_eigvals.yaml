@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Compute the eigenvalues of a general matrix
   
   Compute the eigenvalues of a general matrix.
@@ -15,17 +14,19 @@ vc-description: |-
   Compute the eigenvalues of a general square matrix
   
   Specification: eigvals computes eigenvalues of a square matrix
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   /* Complex number type for eigenvalues */
   struct Complex {
       re: f32,
       im: f32,
   }
+
 vc-spec: |-
   fn eigvals(a: Vec<Vec<f32>>) -> (result: Vec<Complex>)
       requires 
@@ -39,6 +40,7 @@ vc-spec: |-
           (forall|i: int| #![auto] 0 <= i < a.len() ==> 
               exists|j: int| 0 <= j < result.len() && 
                   result[j].re == a[i][i] && result[j].im == 0.0f32),
+
 vc-code: |-
   {
       // impl-start
@@ -46,8 +48,9 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
+
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

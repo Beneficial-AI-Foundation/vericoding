@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that inserts a subarray of characters into another array of characters at a specified index. The method takes the original array (oline) and, given the effective length l to consider, inserts another array of characters (nl) of effective length p starting at the index atPos. The resulting array is of length l + p and is constructed as follows:
   • All characters before the insertion position (atPos) remain unchanged.
   • The new characters from nl are inserted starting at index atPos.
@@ -24,10 +23,10 @@ vc-description: |-
   • atPos is within the range [0, l].
   • l does not exceed the size of oline.
   • p does not exceed the size of nl.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -53,6 +52,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

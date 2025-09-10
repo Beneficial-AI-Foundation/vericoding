@@ -1,10 +1,9 @@
 vc-description: |-
-  /*
   Evaluate a 2-D HermiteE series at points (x, y).
-      
+  
   This function computes the bivariate HermiteE polynomial:
   p(x,y) = ∑_{i,j} c_{i,j} * He_i(x) * He_j(y)
-      
+  
   where He_i and He_j are the HermiteE basis polynomials.
   
   This function implements the mathematical formula:
@@ -14,10 +13,10 @@ vc-description: |-
   1. Bivariate polynomial evaluation using HermiteE basis
   2. Mathematical correctness and linearity properties
   3. Point-wise evaluation for corresponding (x,y) pairs
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -57,6 +56,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

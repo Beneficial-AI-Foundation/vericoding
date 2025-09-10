@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Upper triangle of a matrix. Returns a copy of the matrix with elements below the k-th diagonal zeroed.
   
   Given a matrix m and an integer k, this function returns a new matrix where:
@@ -25,11 +24,12 @@ vc-description: |-
   
   This captures the essential behavior of numpy.triu which extracts the upper triangular part
   of a matrix relative to the k-th diagonal.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -42,6 +42,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i].len() == m[0].len(),
           forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() && (i as i32) + k <= (j as i32) ==> #[trigger] result[i][j] == m[i][j],
           forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() && (i as i32) + k > (j as i32) ==> #[trigger] result[i][j] == 0.0,
+
 vc-code: |-
   {
       // impl-start
@@ -49,7 +50,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

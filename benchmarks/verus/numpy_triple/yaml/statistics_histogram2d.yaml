@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Computes the bi-dimensional histogram of two data samples with equal number of bins.
   
   Specification: histogram2d computes a 2D histogram from two equal-length vectors.
@@ -11,14 +10,13 @@ vc-description: |-
   5. The total count equals the input vector length
   6. All histogram values are non-negative
   7. Bin edges are monotonically increasing
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
-
 
 vc-spec: |-
   fn histogram2d(x: &Vec<i32>, y: &Vec<i32>, bins: usize) -> (result: (Vec<Vec<usize>>, Vec<i32>, Vec<i32>))
@@ -43,6 +41,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

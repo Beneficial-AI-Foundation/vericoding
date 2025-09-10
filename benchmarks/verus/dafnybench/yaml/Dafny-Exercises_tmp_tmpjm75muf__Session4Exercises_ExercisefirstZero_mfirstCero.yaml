@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn mfirst_cero(v: &[i32]) -> (i: usize)
       ensures
           i <= v.len(),
@@ -20,11 +17,8 @@ vc-spec: |-
       assume(false);
       0
   }
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

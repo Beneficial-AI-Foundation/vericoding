@@ -2,10 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
-
+  
   verus! {
-
+  
   spec fn check_find_first_odd(arr: &Vec<u32>, index: Option<usize>) -> (result: bool)
   {
       if let Some(idx) = index {
@@ -34,7 +33,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

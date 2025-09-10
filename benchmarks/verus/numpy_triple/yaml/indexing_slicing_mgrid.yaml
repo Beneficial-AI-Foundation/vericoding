@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.mgrid: Dense multi-dimensional "meshgrid" creation for 2D case.
   
   Creates a dense mesh-grid from two 1D coordinate arrays, returning a pair of 2D arrays
@@ -13,16 +12,17 @@ vc-description: |-
   For 2D case with rows and cols dimensions, this returns a tuple of two matrices:
   - First matrix: row coordinates repeated across columns
   - Second matrix: column coordinates repeated across rows
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   type Matrix = Vec<Vec<f32>>;
-
+  
   fn mgrid(rows: usize, cols: usize, start_r: f32, stop_r: f32, start_c: f32, stop_c: f32) -> (result: (Matrix, Matrix))
       requires rows > 0 && cols > 0,
       ensures 
@@ -32,6 +32,7 @@ vc-spec: |-
               result.0[i][j] == result.0[i][k],
           forall|j: int, i: int, k: int| 0 <= j < cols && 0 <= i < rows && 0 <= k < rows ==> 
               result.1[i][j] == result.1[k][j],
+
 vc-code: |-
   {
       // impl-start
@@ -39,7 +40,8 @@ vc-code: |-
       (Vec::new(), Vec::new())
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

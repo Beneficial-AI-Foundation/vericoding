@@ -10,11 +10,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn has_close_elements(numbers: Seq<int>, threshold: int) -> (result: bool)
       ensures
           result <==> exists|i: int, j: int|
@@ -23,15 +20,12 @@ vc-spec: |-
               i != j &&
               abs(numbers[i] - numbers[j]) < threshold,
           result ==> numbers.len() > 1,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       false
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

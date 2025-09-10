@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task involves determining the first index in an array where a given condition holds true. The goal is to identify the position of the first element that meets a specified criterion, ensuring that no preceding element does.
   
   -----Input-----
@@ -15,14 +14,13 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the array contains at least one element that satisfies P. In cases where this precondition does not hold, the behavior of the function is not guaranteed by the specification.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
-
 
 vc-spec: |-
   fn linear_search3(a: &Vec<i32>, p: spec_fn(i32) -> bool) -> (result: usize)
@@ -42,7 +40,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       /*
@@ -120,3 +117,4 @@ vc-postamble: |-
       ]
       */
   }
+

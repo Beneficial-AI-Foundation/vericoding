@@ -17,19 +17,15 @@ vc-preamble: |-
   //
   // 2023-09-22 2:50 pm   Fixed typo in Problem 3.
   
-  
   // Question 1 (5 points)
   //
   // Fill in a requires clause that enables Verus to verify
   // method PlusOne
   
-  
-  
   // Question 2 (5 points)
   //
   // Fill in requires clause(s) that enable(s) Verus to verify the array bounds
   // in method Swap (which swaps elements i and j in array a).
-  
   
   // Question 3 (5 points)
   //
@@ -38,13 +34,11 @@ vc-preamble: |-
   // the Verus division and mod operators, respectively). By definition, the
   // remainder must be non-negative.
   
-  
   // Question 4 (5 points)
   //
   // Give ensures clause(s) asserting that the return value has the same
   // length as array a and contains as its elements the sum of the
   // corresponding elements in arrays a and b.
-  
   
   // Question 5 (10 points)
   
@@ -56,31 +50,24 @@ vc-preamble: |-
   // should also specify that the first argument is at least as large as the second.
   // You do *not* need to implement the method!
   
-  
   // Question 7 (20 points)
   //
   // Implement, and have Verus verify, the method IsPrime below, which returns true
   // if and only if the given positive integer is prime.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn is_prime(m: i32) -> (is_prime: bool)
       requires m > 0, // m must be greater than 0
       ensures is_prime <==> (m > 1 && forall|j: int| 2 <= j < m ==> #[trigger] (m % j as i32) != 0),
       // ensures states that "is_prime is true iff m > 1 && not divisible by [2, m-1)"
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     false
   }
-  // </vc-code>
 
 vc-postamble: |-
   // Question 8 (20 points)
@@ -89,7 +76,6 @@ vc-postamble: |-
   // aRev consisting of the elements of a, but in reverse order.  To create a new 
   // array of ints use the Verus command "Vec::new()", where the vector can be built
   // with the appropriate number of elements.
-  
   
   // Question 9 (20 points)
   //

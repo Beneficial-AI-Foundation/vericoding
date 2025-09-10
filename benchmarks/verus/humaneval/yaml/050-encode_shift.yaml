@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn encode_char_spec(c: int) -> (result:int)
       recommends
           65 <= c <= 90,
@@ -34,7 +34,7 @@ vc-helpers: |-
   {
       (c - 65 + 5) % 26 + 65
   }
-
+  
   fn decode_char(c: u8) -> (r: u8)
       // pre-conditions-start
       requires
@@ -50,7 +50,7 @@ vc-helpers: |-
       (c - 65 + 26 - 5) % 26 + 65
       // impl-end
   }
-
+  
   #[verifier::loop_isolation(false)]
   fn encode_shift(s: &Vec<u8>) -> (t: Vec<u8>)
       // pre-conditions-start
@@ -84,7 +84,7 @@ vc-helpers: |-
       t
       // impl-end
   }
-
+  
   proof fn opposite_encode_decode(c: int)
       // pre-conditions-start
       requires
@@ -122,6 +122,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

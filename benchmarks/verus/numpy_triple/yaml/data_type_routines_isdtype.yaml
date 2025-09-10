@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.isdtype: Determine if a provided dtype is of a specified data type kind.
   
   This function checks whether a given NumPy dtype belongs to a specified
@@ -23,12 +22,12 @@ vc-description: |-
   - RealFloating: dtype is real floating point (float16, float32, float64)
   - ComplexFloating: dtype is complex floating point (complex64, complex128)
   - Numeric: dtype is any numeric type (bool, integers, floats, complex)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* NumPy data type representation */
   #[derive(PartialEq, Eq)]
   pub enum NumpyDType {
@@ -61,7 +60,7 @@ vc-preamble: |-
       /* 128-bit complex number */
       Complex128,
   }
-
+  
   /* NumPy data type kind categories */
   #[derive(PartialEq, Eq)]
   pub enum DTypeKind {
@@ -80,7 +79,7 @@ vc-preamble: |-
       /* Any numeric kind */
       Numeric,
   }
-
+  
   /* Get the fundamental kind of a NumPy dtype */
   spec fn get_dtype_kind(dtype: NumpyDType) -> DTypeKind {
       match dtype {
@@ -91,7 +90,7 @@ vc-preamble: |-
           NumpyDType::Complex64 | NumpyDType::Complex128 => DTypeKind::ComplexFloating,
       }
   }
-
+  
   /* Check if a NumPy dtype belongs to a specific kind category */
   spec fn is_of_kind(dtype: NumpyDType, kind: DTypeKind) -> bool {
       match kind {
@@ -124,6 +123,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

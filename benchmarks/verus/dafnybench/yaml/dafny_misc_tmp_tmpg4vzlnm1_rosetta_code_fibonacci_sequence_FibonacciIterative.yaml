@@ -21,23 +21,17 @@ vc-preamble: |-
   // iterative calculation of Fibonacci numbers
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn fibonacci_iterative(n: u64) -> (f: u64)
       requires n < 100  // practical bound to prevent overflow
       ensures f == fibonacci(n as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

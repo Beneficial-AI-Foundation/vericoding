@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.isin: Element-wise test for membership in another array.
   
   Calculates `element in test_elements`, broadcasting over `element` only.
@@ -15,10 +14,10 @@ vc-description: |-
   
   Precondition: True (no special preconditions needed)
   Postcondition: For all indices i, result[i] = true iff element[i] is in test_elements
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -39,6 +38,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

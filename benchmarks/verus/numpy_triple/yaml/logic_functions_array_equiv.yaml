@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.array_equiv: Returns True if input arrays are shape consistent and all elements equal.
   
   Shape consistent means they are either the same shape, or one input array
@@ -19,10 +18,10 @@ vc-description: |-
   - Element-wise equality: result = true iff ∀ i, a1[i] = a2[i]
   - Empty array handling: for n=0, the result is vacuously true
   - Finite precision: uses Float equality (may have precision limitations)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -41,6 +40,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

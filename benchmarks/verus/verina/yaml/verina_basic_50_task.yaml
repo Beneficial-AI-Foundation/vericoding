@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task is about calculating the absolute value of an integer. The goal is to determine the non-negative value of a given integer: if the integer is non-negative, it remains unchanged; if it is negative, its positive counterpart is returned.
   
   -----Input-----
@@ -13,21 +12,23 @@ vc-description: |-
   
   -----Note-----
   This function should correctly handle zero, positive, and negative integers.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn abs(x: int) -> int {
       if x >= 0 { x } else { -x }
   }
+
 vc-helpers: |-
 
 vc-spec: |-
   fn abs_impl(x: i32) -> (result: i32)
       ensures
           (x >= 0 ==> result == x) && (x < 0 ==> x + result == 0),
+
 vc-code: |-
   {
       // impl-start
@@ -35,7 +36,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

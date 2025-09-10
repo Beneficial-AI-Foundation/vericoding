@@ -21,11 +21,8 @@ vc-preamble: |-
   // this file.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn search_recursive(a: Seq<int>, i: usize, j: usize, x: int) -> (result: isize)
       requires 
           i <= j,
@@ -36,18 +33,14 @@ vc-spec: |-
           result != -1 ==> forall|r: int| result < r && r < j as int ==> a[r] != x,
           result == -1 ==> forall|r: int| i as int <= r && r < j as int ==> a[r] != x,
       decreases j - i,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       -1
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

@@ -1,13 +1,12 @@
 vc-description: |-
-  /*
   List of supported data type signatures
   Shows input->output type mappings
   Returns the list of supported data type signatures for a universal function
   Specification: types returns formatted type signatures as strings
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -33,13 +32,13 @@ vc-helpers: |-
       CLongDouble,  /* 'G' */
       Object,       /* 'O' */
   }
-
+  
   /* Type signature representing input->output mapping for ufuncs */
   struct TypeSignature {
       input_types: Vec<TypeCode>,
       output_type: TypeCode,
   }
-
+  
   /* Convert TypeCode to character representation */
   spec fn type_code_to_char(tc: TypeCode) -> char {
       match tc {
@@ -63,7 +62,7 @@ vc-helpers: |-
           TypeCode::Object => 'O',
       }
   }
-
+  
   /* Format a type signature as a string (input1input2...->output) */
   spec fn format_type_signature(sig: TypeSignature) -> Seq<char> {
       let input_chars = sig.input_types@.map(|i, tc: TypeCode| type_code_to_char(tc));
@@ -91,3 +90,4 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
+

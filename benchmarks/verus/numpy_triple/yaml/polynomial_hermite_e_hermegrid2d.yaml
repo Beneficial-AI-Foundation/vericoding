@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.hermite_e.hermegrid2d: Evaluate a 2-D HermiteE series on the Cartesian product of x and y.
   
   This function evaluates a 2-dimensional HermiteE polynomial series
@@ -20,10 +19,10 @@ vc-description: |-
   
   The function computes p(a,b) = sum_{i,j} c[i,j] * He_i(a) * He_j(b)
   where He_i is the i-th probabilist's Hermite polynomial.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -46,6 +45,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

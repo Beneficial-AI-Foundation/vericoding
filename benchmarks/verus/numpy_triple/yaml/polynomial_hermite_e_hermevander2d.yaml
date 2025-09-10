@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Pseudo-Vandermonde matrix of given degrees for 2D HermiteE polynomials.
   
   Returns the pseudo-Vandermonde matrix of degrees (x_deg, y_deg) and sample
@@ -13,10 +12,10 @@ vc-description: |-
   Mathematical properties include matrix structure, basis ordering, equivalence with
   polynomial evaluation, orthogonality properties from HermiteE basis functions,
   and polynomial fitting capability for least squares.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -33,7 +32,7 @@ vc-spec: |-
           t * hermite_basis((k - 1) as nat, t) - (k - 1) as int * hermite_basis((k - 2) as nat, t)
       }
   }
-
+  
   fn hermevander2d(x: Vec<i32>, y: Vec<i32>, x_deg: usize, y_deg: usize) -> (result: Vec<Vec<i32>>)
       requires 
           x.len() == y.len(),
@@ -52,6 +51,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Return numbers spaced evenly on a log scale (a geometric progression).
   Each output sample is a constant multiple of the previous one.
   
@@ -8,10 +7,10 @@ vc-description: |-
   - If endpoint is true and n > 1, the last element is stop
   - All elements form a geometric progression (constant ratio between consecutive elements)
   - Neither start nor stop can be zero
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -36,7 +35,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

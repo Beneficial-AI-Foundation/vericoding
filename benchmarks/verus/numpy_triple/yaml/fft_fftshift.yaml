@@ -1,7 +1,6 @@
 vc-description: |-
-  /*
   Shift the zero-frequency component to the center of the spectrum.
-      
+  
   This function rearranges the FFT output such that the zero-frequency 
   component is moved from the beginning to the center of the array.
   For even-length arrays, it performs a circular shift by n/2.
@@ -20,10 +19,10 @@ vc-description: |-
   2. Circular shift property: implements a specific permutation
   3. Involution property: for even n, fftshift(fftshift(x)) = x
   4. Sum preservation: the sum of all elements remains unchanged
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -50,6 +49,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

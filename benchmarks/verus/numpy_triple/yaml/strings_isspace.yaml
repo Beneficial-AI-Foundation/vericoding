@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Returns true for each element if there are only whitespace characters in the string and there is at least one character, false otherwise
   
   numpy.strings.isspace: Returns true for each element if there are only whitespace characters in the string and there is at least one character, false otherwise.
@@ -37,10 +36,10 @@ vc-description: |-
   Postcondition: For all indices i, result[i] = true if and only if:
   1. The string a[i] is non-empty
   2. All characters in a[i] are whitespace characters
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -49,7 +48,7 @@ vc-spec: |-
   spec fn is_whitespace_char(c: char) -> bool {
       c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\x0c'
   }
-
+  
   spec fn all_chars_whitespace(s: Seq<char>) -> bool 
       decreases s.len()
   {
@@ -59,7 +58,7 @@ vc-spec: |-
           is_whitespace_char(s[0]) && all_chars_whitespace(s.skip(1))
       }
   }
-
+  
   fn isspace(a: Vec<String>) -> (result: Vec<bool>)
       ensures 
           result.len() == a.len(),
@@ -77,6 +76,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

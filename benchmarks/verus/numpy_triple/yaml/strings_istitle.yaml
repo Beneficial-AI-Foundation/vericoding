@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.istitle: Returns true for each element if the element is a titlecased string and there is at least one character, false otherwise.
   
   A string is considered titlecased if:
@@ -15,10 +14,10 @@ vc-description: |-
   - "NUMPY IS GREAT" → False
   - "" → False
   - "123" → False
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -40,6 +39,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

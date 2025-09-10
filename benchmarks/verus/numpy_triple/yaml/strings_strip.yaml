@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.strip: For each element in a vector, return a copy with the leading and trailing characters removed.
   
   Removes both leading and trailing characters from each string element in the input vector.
@@ -22,10 +21,10 @@ vc-description: |-
   4. Character set removal: only characters in chars are removed from both ends
   5. Preserves vector length: result.size = a.size
   6. Combination of lstrip and rstrip: strip(s) = rstrip(lstrip(s))
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -50,6 +49,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

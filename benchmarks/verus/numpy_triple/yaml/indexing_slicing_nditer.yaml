@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.nditer: Creates an iterator for a vector that provides position and element access.
   
   This is a simplified 1D version of numpy's nditer functionality.
@@ -18,10 +17,10 @@ vc-description: |-
   4. The iterator provides access to all elements of the original vector
   5. The iterator follows numpy's iteration semantics
   6. The iterator state is consistent and predictable
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -43,6 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

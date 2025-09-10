@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.gcd: Returns the greatest common divisor of |x1| and |x2|, element-wise.
   
   The GCD is computed on the absolute values of the inputs. For two integers a and b,
@@ -23,21 +22,21 @@ vc-description: |-
   5. Divisibility: gcd(a,b) divides both a and b
   6. Greatest property: any common divisor of a and b also divides gcd(a,b)
   7. Commutativity: gcd(a,b) = gcd(b,a)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
 
 vc-spec: |-
   spec fn gcd(a: int, b: int) -> int;
-
+  
   spec fn int_abs(x: int) -> int {
       if x >= 0 { x } else { -x }
   }
-
+  
   fn numpy_gcd(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
       requires x1.len() == x2.len(),
       ensures
@@ -61,6 +60,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

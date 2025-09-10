@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that calculates the product of all distinct integers in an array. The method should consider each unique integer only once when computing the product and return the resulting value. If the array is empty, the method should return 1.
   
   -----Input-----
@@ -12,11 +11,12 @@ vc-description: |-
   
   -----Note-----
   The order in which the unique integers are multiplied does not affect the final product.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -24,6 +24,7 @@ vc-spec: |-
       ensures
           /* Product of all unique integers in the array */
           true, /* Placeholder for actual postcondition */
+
 vc-code: |-
   {
       // impl-start
@@ -31,7 +32,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

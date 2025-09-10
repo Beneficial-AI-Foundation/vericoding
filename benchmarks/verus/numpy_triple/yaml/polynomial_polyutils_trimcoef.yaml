@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Remove "small" "trailing" coefficients from a polynomial.
   Small means small in absolute value controlled by tolerance parameter.
   Trailing means highest order coefficients.
@@ -7,11 +6,12 @@ vc-description: |-
   Specification: trimcoef removes trailing coefficients with absolute value ≤ tol.
   If all coefficients are small, returns a single zero.
   The tolerance must be non-negative.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -19,6 +19,7 @@ vc-spec: |-
       ensures
           result.len() >= 1,
           result.len() <= c.len(),
+
 vc-code: |-
   {
       // impl-start
@@ -26,7 +27,8 @@ vc-code: |-
       vec![0.0]
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

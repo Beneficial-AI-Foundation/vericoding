@@ -15,26 +15,20 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn look_for_min(a: &[int], i: usize) -> (m: usize)
       requires 
           0 <= i < a.len(),
       ensures
           i <= m < a.len(),
           forall|k: int| #![trigger a[k]] i <= k < a.len() ==> a[k] >= a[m as int],
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     i
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

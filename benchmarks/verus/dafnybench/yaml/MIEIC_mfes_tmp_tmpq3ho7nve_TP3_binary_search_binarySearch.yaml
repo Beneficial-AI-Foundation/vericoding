@@ -25,28 +25,21 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn binary_search(a: &[i32], x: i32) -> (index: i32)
       requires is_sorted(a)
       ensures -1 <= index < a.len() && 
               (index != -1 ==> a[index as int] == x) &&
               (index == -1 ==> !a@.contains(x))
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

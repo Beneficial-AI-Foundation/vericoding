@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Solve the tensor equation a x = b for x.
   
   This function solves for x in the tensor equation a x = b, where:
@@ -23,10 +22,10 @@ vc-description: |-
   - a is an n×n coefficient matrix (representing a reshaped tensor)
   - b is an n-dimensional right-hand vector
   - x is the n-dimensional solution vector
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -35,7 +34,7 @@ vc-spec: |-
   spec fn is_square_matrix(a: Seq<Seq<f64>>) -> bool {
       a.len() > 0 && forall|i: int| 0 <= i < a.len() ==> a[i].len() == a.len()
   }
-
+  
   spec fn is_invertible_matrix(a: Seq<Seq<f64>>) -> bool {
       is_square_matrix(a) &&
       exists|a_inv: Seq<Seq<f64>>| 
@@ -43,7 +42,7 @@ vc-spec: |-
           a_inv.len() == a.len() &&
           forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> #[trigger] a[i][j] == a[i][j]
   }
-
+  
   fn tensorsolve(a: Vec<Vec<f64>>, b: Vec<f64>) -> (result: Vec<f64>)
       requires
           a.len() > 0,
@@ -64,6 +63,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

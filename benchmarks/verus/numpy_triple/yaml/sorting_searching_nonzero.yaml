@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.nonzero: Return the indices of the elements that are non-zero.
   
   Returns a vector of indices where the corresponding elements in the input
@@ -20,10 +19,10 @@ vc-description: |-
   2. Every non-zero element in the input has its index in the result (completeness)
   3. The indices are in ascending order (preserving array order)
   4. No duplicates in the result
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -45,6 +44,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

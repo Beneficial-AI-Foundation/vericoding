@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.gradient: Return the gradient of an N-dimensional array.
   
   The gradient is computed using second order accurate central differences 
@@ -33,10 +32,10 @@ vc-description: |-
   
   Precondition: True (non-empty constraint is in the type Vector Float (n + 1))
   Postcondition: The gradient is computed using appropriate finite difference formulas
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -57,6 +56,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

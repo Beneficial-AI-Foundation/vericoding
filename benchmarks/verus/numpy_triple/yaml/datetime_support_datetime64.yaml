@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Create a datetime64 object representing an offset from 1970-01-01T00:00:00
   
   {
@@ -16,12 +15,12 @@ vc-description: |-
   The datetime64 object represents a specific moment in time as an offset from the Unix epoch
   (1970-01-01T00:00:00 UTC) in the specified time unit. The function preserves the input
   parameters and ensures the result is always in UTC timezone.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* Time unit for datetime64 */
   pub enum TimeUnit {
       /* Years unit ('Y') */
@@ -41,7 +40,7 @@ vc-preamble: |-
       /* Nanoseconds unit ('ns') */
       Nanoseconds,
   }
-
+  
   /* DateTime64 structure representing offset from Unix epoch */
   pub struct DateTime64 {
       /* Offset value from 1970-01-01T00:00:00 */
@@ -85,6 +84,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

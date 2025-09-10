@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn linear_search(a: &[i32], e: i32) -> (n: usize)
       requires exists|i: int| 0 <= i < a.len() && a[i] == e,
       ensures ({
@@ -19,14 +16,11 @@ vc-spec: |-
           &&& forall|k: int| 0 <= k < n as int ==> a[k] != e
       }),
   {
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that returns the majority element from a list of integers.
   
   The majority element is the one that appears more than ⌊n / 2⌋ times in the list, where n is the list's length. You may assume that a majority element always exists in the input.
@@ -7,15 +6,16 @@ vc-description: |-
   Input: nums: A list of integers (with at least one majority element).
   
   Output: Returns the majority element — the value that appears more than ⌊n / 2⌋ times.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn count_occurrences(nums: Seq<i32>, value: i32) -> nat {
       nums.filter(|x: i32| x == value).len()
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -27,6 +27,7 @@ vc-spec: |-
           count_occurrences(nums_seq, result) > n / 2 &&
           forall|x: i32| x == result || count_occurrences(nums_seq, x) <= n / 2
       }),
+
 vc-code: |-
   {
       // impl-start
@@ -34,8 +35,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       /*
@@ -142,3 +143,4 @@ vc-postamble: |-
       ]
       */
   }
+

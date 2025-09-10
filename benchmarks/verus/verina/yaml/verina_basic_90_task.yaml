@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   The task is to search for a specific integer in a 2D array where the rows and columns are sorted in non-decreasing order. The goal is to locate the key and return its position as row and column indices, or return (-1, -1) if the algorithm fails to find the key.
   
   -----Input-----
@@ -14,22 +13,24 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the input 2D array is sorted by rows and columns.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn slope_search_precond(a: &Vec<Vec<i32>>, key: i32) -> bool {
       a.len() > 0 &&
       (forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i].len() == a[0].len()) &&
       (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a[i].len() - 1 ==> #[trigger] a[i][j] <= a[i][j + 1]) &&
       (forall|j: int, i: int| 0 <= j < a[0].len() && 0 <= i < a.len() - 1 ==> #[trigger] a[i][j] <= a[i + 1][j])
   }
+
 vc-helpers: |-
   spec fn get2d(a: &Vec<Vec<i32>>, i: i32, j: i32) -> i32 {
       a[i as int][j as int]
   }
+
 vc-spec: |-
   fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (i32, i32))
       requires slope_search_precond(a, key),
@@ -39,6 +40,7 @@ vc-spec: |-
               ((m >= 0 && m < a.len() && n >= 0 && n < a[0].len() && a[m as int][n as int] == key) ||
                (m == -1 && n == -1 && forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a[i].len() ==> #[trigger] a[i][j] != key))
           })
+
 vc-code: |-
   {
       // impl-start
@@ -46,6 +48,7 @@ vc-code: |-
       (-1, -1)
       // impl-end
   }
+
 vc-postamble: |-
   }
   fn main() {
@@ -118,3 +121,4 @@ vc-postamble: |-
           }
       ] */
   }
+

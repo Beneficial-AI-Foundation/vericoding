@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Return the cube-root of an array, element-wise
   
   numpy.cbrt: Return the cube-root of an array, element-wise.
@@ -23,11 +22,12 @@ vc-description: |-
   - cbrt(1) = 1
   - cbrt(8) = 2
   - cbrt(-8) = -2
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -35,6 +35,7 @@ vc-spec: |-
       requires x.len() > 0,
       ensures 
           result.len() == x.len(),
+
 vc-code: |-
   {
       // impl-start
@@ -42,7 +43,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Weight function of the Hermite polynomials.
   Computes exp(-x²) for each element in the input vector.
   
@@ -16,10 +15,10 @@ vc-description: |-
   -------
   w : ndarray
      The weight function at x.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -43,6 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

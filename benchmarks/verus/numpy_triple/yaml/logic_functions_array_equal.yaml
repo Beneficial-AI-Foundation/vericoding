@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.array_equal: True if two arrays have the same shape and elements, False otherwise.
   
   Compares two arrays element-wise and returns a single boolean value indicating
@@ -32,10 +31,10 @@ vc-description: |-
   - For identical vectors, result is True
   - For vectors differing in any element, result is False
   - arrayEqual is the logical AND of all element-wise comparisons
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -58,6 +57,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

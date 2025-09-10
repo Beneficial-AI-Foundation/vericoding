@@ -1,14 +1,13 @@
 vc-description: |-
-  /*
   Find the set difference of two arrays.
   Return the unique values in ar1 that are not in ar2.
   
   Specification: setdiff1d returns unique values from ar1 that are not in ar2.
   The result contains no duplicates and is sorted.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -41,6 +40,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task involves taking an array as input and producing a new array that has the same size and identical elements in the same order as the input.
   
   -----Input-----
@@ -13,10 +12,10 @@ vc-description: |-
   
   -----Note-----
   There are no special preconditions for the input array (it can be empty or non-empty); the function simply performs a straightforward copy operation on the array.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -36,6 +35,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

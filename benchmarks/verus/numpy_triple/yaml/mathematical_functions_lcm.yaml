@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Returns the lowest common multiple of |x1| and |x2| element-wise.
   
   Computes the lowest common multiple (LCM) of the absolute values of 
@@ -13,19 +12,19 @@ vc-description: |-
   - lcm(a, b) ≥ 0 (non-negativity)
   - |a| divides lcm(a, b) and |b| divides lcm(a, b) (divisibility)
   - lcm(a, b) is minimal among all positive integers divisible by both |a| and |b|
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
 
 vc-spec: |-
   spec fn gcd_spec(a: int, b: int) -> nat;
-
+  
   spec fn lcm_spec(a: int, b: int) -> nat;
-
+  
   fn lcm(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
       requires x1.len() == x2.len(),
       ensures 
@@ -50,6 +49,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

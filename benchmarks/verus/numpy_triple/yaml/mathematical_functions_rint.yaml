@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.rint: Round elements of the array to the nearest integer.
   
   Rounds each element in the input array to the nearest integer using
@@ -21,10 +20,10 @@ vc-description: |-
     - result[i] is a floating-point representation of the integer
     - |result[i] - x[i]| ≤ 0.5 for all i
     - if x[i] is already an integer, result[i] = x[i]
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -43,6 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

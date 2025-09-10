@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Evaluate a 3-D Laguerre series on the Cartesian product of x, y, and z.
   
   This function computes the values p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c)
@@ -23,10 +22,10 @@ vc-description: |-
   2. Each element result[i][j][k] is the sum over all coefficient terms c[l][m][n] * L_l(x[i]) * L_m(y[j]) * L_n(z[k])
   3. For constant coefficients (c[0][0][0] only), the result should be constant
   4. The function is linear in the coefficients
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -60,6 +59,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

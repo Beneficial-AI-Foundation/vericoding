@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.hstack: Stack arrays in sequence horizontally (column wise).
   
   For 1D arrays, hstack stacks arrays horizontally by concatenating them
@@ -23,10 +22,10 @@ vc-description: |-
   - First n elements come from array a
   - Next m elements come from array b
   - The order of elements is preserved from both input arrays
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -47,6 +46,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

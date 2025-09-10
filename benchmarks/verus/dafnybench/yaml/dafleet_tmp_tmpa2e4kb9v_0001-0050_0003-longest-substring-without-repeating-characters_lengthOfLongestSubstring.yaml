@@ -14,7 +14,6 @@ vc-preamble: |-
   Explanation: The answer is "abc", with the length of 3.
   */
   
-  
   // a left-inclusive right-exclusive interval:
   pub struct Interval {
       pub start: int,
@@ -76,7 +75,6 @@ vc-preamble: |-
     The corresponding verification code is shown below:
   */
   
-  
   // For verification simplicity, we pretend as if:
   // - `map` were Python dict (or even better, a fixed-size array -- if the "alphabet" is small)
   
@@ -85,27 +83,20 @@ vc-preamble: |-
   // Can you figure it out?
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn lengthOfLongestSubstring(s: Seq<char>) -> (result: (usize, Ghost<Interval>))
       ensures 
           (valid_interval(s, result.1@) && length(result.1@) == result.0 as int),    // `result.1@` is valid 
-          (forall|iv: Interval| valid_interval(s, iv) ==> length(iv) <= result.0 as int),  // `result.1@` is longest 
-  // </vc-spec>
+          (forall|iv: Interval| valid_interval(s, iv) ==> length(iv) <= result.0 as int),  // `result.1@` is longest
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       (0, Ghost(Interval { start: 0, end: 0 }))
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

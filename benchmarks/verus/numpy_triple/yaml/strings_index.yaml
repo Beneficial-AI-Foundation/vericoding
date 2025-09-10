@@ -1,11 +1,11 @@
 vc-description: |-
-  /*
   Like find, but raises ValueError when the substring is not found. For each element, return the lowest index in the string where substring is found. Unlike find, this function requires that the substring be found in each string, ensuring all results are non-negative indices. Specification: index returns the lowest index where substring is found within range. The key difference from find is that index has a stronger precondition: the substring must exist in each string within the specified range.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -25,6 +25,7 @@ vc-spec: |-
               &&& start[i] <= result[i] <= end_pos[i]
               &&& result[i] + sub[i].len() as int <= a[i].len() as int
           }
+
 vc-code: |-
   {
       // impl-start
@@ -32,7 +33,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

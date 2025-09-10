@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires implementing the "Longest Increasing Subsequence" problem in Verus.
   Given a list of integers, the function should compute the length of the longest strictly increasing
   subsequence. A subsequence is formed by deleting zero or more elements without changing the order.
@@ -11,11 +10,12 @@ vc-description: |-
   -----Output-----
   - A natural number representing the length of the longest strictly increasing subsequence.
   - If there is no increasing subsequence, return 0.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -23,6 +23,7 @@ vc-spec: |-
       ensures
           result >= 0,
           nums.len() == 0 ==> result == 0,
+
 vc-code: |-
   {
       // impl-start
@@ -30,8 +31,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       /* 
@@ -90,3 +91,4 @@ vc-postamble: |-
       ]
       */
   }
+

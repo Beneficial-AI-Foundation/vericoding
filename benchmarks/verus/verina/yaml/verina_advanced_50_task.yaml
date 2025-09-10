@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task involves merging two sorted arrays of natural numbers (it is ill defined if inputs aren't sorted.)
   The input consists of two arrays:
   a1: A sorted array of natural numbers
@@ -7,12 +6,12 @@ vc-description: |-
   The output is an array:
   Returns a new array with all elements from both input arrays (included once and only once)
   The resulting array is sorted itself
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn is_sorted(v: Seq<nat>) -> bool {
       forall|i: int, j: int| 0 <= i < j < v.len() ==> #[trigger] v[i] <= #[trigger] v[j]
   }
@@ -37,7 +36,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       /*
@@ -139,3 +137,4 @@ vc-postamble: |-
       ]
       */
   }
+

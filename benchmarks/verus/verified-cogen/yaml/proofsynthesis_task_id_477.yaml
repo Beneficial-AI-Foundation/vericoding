@@ -2,15 +2,15 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn is_upper_case(c: char) -> (result:bool) {
       c >= 'A' && c <= 'Z'
   }
   // pure-end
   // pure-end
-
+  
   spec fn shift32_spec(c: char) -> (result:char) {
       ((c as u8) + 32) as char
   }
@@ -40,7 +40,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Compute the variance of the elements in a vector with specified delta degrees of freedom.
   The variance is the average of the squared deviations from the mean.
   
@@ -21,10 +20,10 @@ vc-description: |-
   This specification captures both the mathematical definition of variance
   and its key properties. When ddof=0, this gives the population variance;
   when ddof=1, this gives the sample variance (unbiased estimator).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -39,12 +38,12 @@ vc-spec: |-
           a[0] + vec_sum(a.skip(1))
       }
   }
-
+  
   spec fn vec_mean(a: Seq<int>) -> int 
   {
       vec_sum(a) / (a.len() as int)
   }
-
+  
   spec fn squared_deviations_sum(a: Seq<int>, mean: int) -> int 
       decreases a.len()
   {
@@ -54,7 +53,7 @@ vc-spec: |-
           (a[0] - mean) * (a[0] - mean) + squared_deviations_sum(a.skip(1), mean)
       }
   }
-
+  
   fn var(a: Vec<i32>, ddof: usize) -> (result: i32)
       requires 
           a.len() > 0,
@@ -71,7 +70,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

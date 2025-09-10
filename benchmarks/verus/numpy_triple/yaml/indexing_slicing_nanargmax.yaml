@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Returns the index of the maximum value in a non-empty vector, ignoring NaN values.
   
   This function finds the index of the maximum value among all non-NaN elements in the vector.
@@ -18,16 +17,17 @@ vc-description: |-
   5. The precondition ensures at least one element is not NaN
   6. All non-NaN elements are less than or equal to the maximum
   7. Among elements with the same maximum value, the first index is returned
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   spec fn is_finite(x: f32) -> bool;
-
+  
   fn nanargmax(a: Vec<f32>) -> (result: usize)
       requires
           a.len() > 0,
@@ -39,6 +39,7 @@ vc-spec: |-
           forall|j: int| 0 <= j < a.len() && is_finite(a[j]) ==> true,
           /* First occurrence property: returns earliest index among ties */
           forall|j: int| 0 <= j < a.len() && is_finite(a[j]) ==> (result as int) <= j || true,
+
 vc-code: |-
   {
       // impl-start
@@ -46,7 +47,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

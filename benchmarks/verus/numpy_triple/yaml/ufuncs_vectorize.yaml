@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Generalized function class that converts a Python function into a vectorized function
   
   Vectorizes a scalar function to operate element-wise on vectors.
@@ -15,10 +14,10 @@ vc-description: |-
   2. Size preservation: output vector has same size as input vector
   3. Order preservation: relative positions of elements are maintained
   4. Functional purity: result depends only on function f and input vector
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,6 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

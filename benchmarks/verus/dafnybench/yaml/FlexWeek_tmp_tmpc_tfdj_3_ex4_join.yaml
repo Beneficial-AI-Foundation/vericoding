@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn join(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
       ensures
           a@ + b@ == c@,
@@ -23,15 +20,12 @@ vc-spec: |-
               a.len() <= i < c.len() && 
               0 <= j < b.len() && 
               i - j == a.len() ==> c[i] == b[j],
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       Vec::new()
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

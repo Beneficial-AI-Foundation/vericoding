@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.tril: Lower triangle of a matrix.
   
   Returns a copy of the input matrix with elements above the k-th diagonal zeroed.
@@ -32,10 +31,10 @@ vc-description: |-
   Special cases:
   - k ≥ cols: All elements are preserved (entire matrix is "lower triangular")
   - k ≤ -rows: All elements are zeroed (no elements are "on or below" such a diagonal)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -61,6 +60,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

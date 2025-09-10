@@ -1,16 +1,15 @@
 vc-description: |-
-  /*
   Expand the shape of a vector by inserting a new axis at the specified position.
   axis=0 creates a row vector (1×n), axis=1 creates a column vector (n×1).
   
   Specification: expand_dims preserves all elements and adds a new dimension at the specified axis.
   The function creates a view with increased dimensions while maintaining element order and values.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* Represents the result of expanding dimensions of a vector.
      For axis=0, we get a 1×n matrix (row vector).
      For axis=1, we get an n×1 matrix (column vector). */
@@ -18,6 +17,7 @@ vc-preamble: |-
       RowVector(Vec<T>),      // axis=0: shape (1, n)
       ColumnVector(Vec<T>),   // axis=1: shape (n, 1)
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -27,6 +27,7 @@ vc-spec: |-
           ExpandedVector::RowVector(v) => axis == 0 && v@ == a@,
           ExpandedVector::ColumnVector(v) => axis == 1 && v@ == a@,
       }
+
 vc-code: |-
   {
       // impl-start
@@ -34,7 +35,8 @@ vc-code: |-
       ExpandedVector::RowVector(Vec::new())
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

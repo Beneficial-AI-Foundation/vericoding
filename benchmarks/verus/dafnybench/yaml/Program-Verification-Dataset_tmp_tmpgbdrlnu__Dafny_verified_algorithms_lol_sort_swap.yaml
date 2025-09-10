@@ -21,8 +21,6 @@ vc-preamble: |-
   
   // Successfully verified with Verus
   
-  
-  
   // We define "valid permutation" using multiset:
   
   spec fn valid_permut(a: Seq<int>, b: Seq<int>) -> bool
@@ -40,16 +38,12 @@ vc-preamble: |-
       forall|i: int, j: int| 0 <= i <= j < a.len() ==> a[i] <= a[j]
   }
   
-  
   // Now, the lol sort algorithm:
   // (Some invariants were tricky to find, but Verus was smart enough otherwise)
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn swap(a: &mut Vec<int>, i: usize, j: usize)
       requires 
           i < old(a).len(),
@@ -58,17 +52,13 @@ vc-spec: |-
           a.len() == old(a).len(),
           a@ == old(a)@.update(i as int, old(a)@[j as int]).update(j as int, old(a)@[i as int]),
           valid_permut(a@, old(a)@),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

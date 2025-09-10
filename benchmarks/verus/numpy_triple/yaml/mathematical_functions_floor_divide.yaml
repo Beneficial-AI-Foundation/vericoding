@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.floor_divide: Return the largest integer smaller or equal to the division of the inputs.
   
   Performs element-wise floor division of two vectors. For each pair of elements,
@@ -19,18 +18,19 @@ vc-description: |-
   2. For all indices i, result[i] is the largest integer ≤ x1[i] / x2[i]
   3. The fundamental floor division property: result[i] ≤ x1[i] / x2[i] < result[i] + 1
   4. This pairs with modulo such that: x1[i] = x2[i] * result[i] + remainder
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   spec fn floor_div_prop(x: f64, y: f64) -> bool {
       y != 0.0
   }
-
+  
   fn numpy_floor_divide(x1: Vec<f64>, x2: Vec<f64>) -> (result: Vec<f64>)
       requires 
           x1.len() == x2.len(),
@@ -45,6 +45,7 @@ vc-spec: |-
                */
               floor_div_prop(x1[i], x2[i])
           },
+
 vc-code: |-
   {
       // impl-start
@@ -52,7 +53,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

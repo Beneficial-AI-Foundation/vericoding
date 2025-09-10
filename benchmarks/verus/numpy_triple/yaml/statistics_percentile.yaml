@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Compute the q-th percentile of the data in a vector.
   For a sorted vector, the q-th percentile is the value below which q percent of the data falls.
   This implementation focuses on the fundamental mathematical definition of percentiles.
@@ -12,11 +11,12 @@ vc-description: |-
   1. The percentile value must be within the range of the data (or interpolated between values)
   2. Special cases: q=0 gives minimum, q=100 gives maximum
   3. The result is bounded by the minimum and maximum values in the array
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -31,6 +31,7 @@ vc-spec: |-
               exists|j: int| 0 <= j < arr.len() && arr[j] <= result) &&
           (q == 0 ==> forall|i: int| 0 <= i < arr.len() ==> result <= arr[i]) &&
           (q == 100 ==> forall|i: int| 0 <= i < arr.len() ==> arr[i] <= result)
+
 vc-code: |-
   {
       // impl-start
@@ -38,7 +39,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

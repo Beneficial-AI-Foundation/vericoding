@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn extract_first_digit_spec(n: int) -> (ret:int)
       decreases n,
   {
@@ -24,8 +24,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
-
+  
   spec fn is_valid_element_spec(n: int) -> (ret:bool) {
       &&& (n > 10)
       &&& is_odd(extract_first_digit_spec(n))
@@ -62,7 +61,7 @@ vc-helpers: |-
       }
       // impl-end
   }
-
+  
   fn extract_last_digit(n: u32) -> (res: u32)
       // post-conditions-start
       ensures
@@ -73,7 +72,7 @@ vc-helpers: |-
       n % 10
       // impl-end
   }
-
+  
   fn is_valid_element(n: i32) -> (res: bool)
       // post-conditions-start
       ensures
@@ -102,6 +101,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
   fn main() {}
+

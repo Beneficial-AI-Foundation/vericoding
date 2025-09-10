@@ -57,26 +57,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn have_common_k_substring(k: nat, str1: &str, str2: &str) -> (found: bool)
       ensures found <==> have_common_k_substring_pred(k, str1@, str2@)
       //ensures !found <==> have_not_common_k_substring_pred(k, str1@, str2@) // This postcondition follows from the above lemma.
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       true
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

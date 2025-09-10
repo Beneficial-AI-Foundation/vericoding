@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Construct a vector from data in a file. 
   
   Specification: fromfile reads data from a file into a vector
@@ -15,10 +14,10 @@ vc-description: |-
   - like: Reference object for array creation
   
   Returns an array of data from the file. Note that binary files generated are not platform independent.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -49,7 +48,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

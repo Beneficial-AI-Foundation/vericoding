@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Multiply a polynomial by x.
   Multiplies polynomial c by x, where x is the independent variable.
   For polynomial p(x) = c[0] + c[1]*x + ... + c[n-1]*x^(n-1),
@@ -10,10 +9,10 @@ vc-description: |-
   The first coefficient is always 0, and subsequent coefficients
   are the original coefficients shifted by one position.
   This represents multiplying p(x) by x to get x*p(x).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -34,6 +33,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

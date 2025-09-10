@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.square: Return the element-wise square of the input.
   
   Computes x^2 element-wise. This is equivalent to x * x but may be
@@ -18,10 +17,10 @@ vc-description: |-
   - Result is always non-negative: ∀ i, result[i] ≥ 0
   - Preserves zeros: x[i] = 0 → result[i] = 0
   - Monotonic for non-negative inputs: 0 ≤ x[i] ≤ x[j] → result[i] ≤ result[j]
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -42,6 +41,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

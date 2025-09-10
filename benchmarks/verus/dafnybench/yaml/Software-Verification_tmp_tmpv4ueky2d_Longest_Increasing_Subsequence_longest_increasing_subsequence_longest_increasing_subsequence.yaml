@@ -11,11 +11,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn longest_increasing_subsequence(nums: &Vec<i32>) -> (max: i32)
       requires 
           1 <= nums.len() <= 2500,
@@ -23,15 +20,12 @@ vc-spec: |-
       // TODO: modify the ensures clause so that max is indeed equal to the longest increasing subsequence
       ensures 
           max >= 1,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     1 // unreachable but needed for return type
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

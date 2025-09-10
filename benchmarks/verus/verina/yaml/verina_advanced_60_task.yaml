@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that takes a list of natural numbers and partitions it into two separate lists: one containing all the even numbers and the other containing all the odd numbers. The order of elements in each sublist should match their appearance in the original list. Assume there are no duplicates in the input.
   
   Input:
@@ -10,11 +9,12 @@ vc-description: |-
   The output is a tuple of two lists:
   - The first list contains all even numbers from the input list, in order.
   - The second list contains all odd numbers from the input list, in order.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -27,6 +27,7 @@ vc-spec: |-
           &&& forall|i: int| 0 <= i < evens.len() ==> evens[i] % 2 == 0
           &&& forall|i: int| 0 <= i < odds.len() ==> odds[i] % 2 == 1
       }),
+
 vc-code: |-
   {
       // impl-start
@@ -34,7 +35,8 @@ vc-code: |-
       (Vec::new(), Vec::new())
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.laguerre.poly2lag: Convert a polynomial to a Laguerre series.
   
   Convert an array representing the coefficients of a polynomial (relative
@@ -30,10 +29,10 @@ vc-description: |-
   Precondition: True (no special preconditions for basis conversion)
   Postcondition: The result represents the same polynomial as input but in
                  Laguerre basis, and has the same length as input
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -59,6 +58,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

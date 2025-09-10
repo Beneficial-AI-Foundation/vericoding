@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that extracts the last digit of a given non-negative integer. The method should return the last digit, which is obtained by computing the remainder when the number is divided by 10. The result must always be between 0 and 9.
   
   -----Input-----
@@ -12,10 +11,10 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the input number n is non-negative.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -30,7 +29,7 @@ vc-code: |-
       n % 10
       // impl-end
   }
-
+  
   proof fn last_digit_correct(n: nat)
       ensures
           last_digit(n) < 10,
@@ -42,6 +41,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

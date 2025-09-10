@@ -2,21 +2,21 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn is_lower_case(c: char) -> (result: bool) {
       (c as u32) >= 97 && (c as u32) <= 122
   }
   // pure-end
   // pure-end
-
+  
   spec fn is_upper_case(c: char) -> (result: bool) {
       (c as u32) >= 65 && (c as u32) <= 90
   }
   // pure-end
   // pure-end
-
+  
   spec fn count_uppercase_recursively(seq: Seq<char>) -> (result: int)
       decreases seq.len(),
   {
@@ -51,7 +51,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

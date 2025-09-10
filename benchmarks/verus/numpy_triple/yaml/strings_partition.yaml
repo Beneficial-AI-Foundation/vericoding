@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.partition: Partition each element in a around sep.
   
   Partitions each string in the input vector at the first occurrence of the separator.
@@ -38,10 +37,10 @@ vc-description: |-
   
   Precondition: True (no special preconditions for string partitioning)
   Postcondition: For all indices i, the partition satisfies the partition semantics
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -74,6 +73,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

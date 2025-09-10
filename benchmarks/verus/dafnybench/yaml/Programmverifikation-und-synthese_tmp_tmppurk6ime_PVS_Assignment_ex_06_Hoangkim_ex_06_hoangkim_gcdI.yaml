@@ -27,26 +27,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn gcd_i(m: int, n: int) -> (d: int)
       requires m > 0 && n > 0
       ensures d == gcd(m, n)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       m
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

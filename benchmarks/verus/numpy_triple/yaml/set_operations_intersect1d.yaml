@@ -1,14 +1,14 @@
 vc-description: |-
-  /*
   Find the intersection of two arrays.
   Returns the sorted, unique values that are in both input arrays.
   Specification: intersect1d returns a sorted array of unique values 
   that exist in both input arrays
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -27,6 +27,7 @@ vc-spec: |-
               (exists|i: int| 0 <= i < ar1.len() && ar1[i] == val) && 
               (exists|j: int| 0 <= j < ar2.len() && ar2[j] == val) ==>
               (exists|l: int| 0 <= l < result.len() && result[l] == val)
+
 vc-code: |-
   {
       // impl-start
@@ -34,7 +35,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This problem involves determining the longest common prefix shared by two lists of characters. Given two sequences, the goal is to identify and return the maximal contiguous sequence of characters from the beginning of both lists that are identical.
   
   -----Input-----
@@ -15,10 +14,10 @@ vc-description: |-
   
   -----Note-----
   It is assumed that both inputs are provided as valid lists of characters. The function always returns the correct longest common prefix based on the inputs.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -41,6 +40,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.sin: Trigonometric sine, element-wise.
   
   Computes the sine of each element in the input vector, where each element 
@@ -25,17 +24,19 @@ vc-description: |-
      - sin(2π) = 0 (approximately, within floating-point precision)
   4. Periodicity: sin(x + 2π) = sin(x)
   5. Odd function property: sin(-x) = -sin(x)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   fn sin(x: Vec<f32>) -> (result: Vec<f32>)
       requires x.len() > 0,
       ensures result.len() == x.len()
+
 vc-code: |-
   {
       // impl-start
@@ -43,8 +44,9 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
+
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

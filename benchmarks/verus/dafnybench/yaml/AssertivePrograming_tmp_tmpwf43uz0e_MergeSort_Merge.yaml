@@ -8,9 +8,6 @@ vc-preamble: |-
   // Noa Leron 207131871
   // Tsuri Farhana 315016907
   
-  
-  
-  
   spec fn sorted(q: Seq<i32>) -> bool {
       forall|i: int, j: int| 0 <= i <= j < q.len() ==> q[i] <= q[j]
   }
@@ -29,7 +26,6 @@ vc-preamble: |-
       (a1.subrange(0, i as int) == a.subrange(0, i as int)) && 
       (a2.subrange(0, i as int) == a.subrange(mid as int, (i + mid) as int))
   }
-  
   
   /*
   Goal: Implement iteratively, correctly, efficiently, clearly
@@ -66,7 +62,6 @@ vc-preamble: |-
       (i, j)
   }
   
-  
   //Loop invariant - b is sorted so far and the next two potential values that will go into b are bigger than the biggest value in b.
   spec fn inv_sorted(b: Seq<i32>, c: Seq<i32>, d: Seq<i32>, i: usize, j: usize) -> bool {
       i <= c.len() && j <= d.len() && i + j <= b.len() &&
@@ -74,7 +69,6 @@ vc-preamble: |-
       ((i + j > 0 && j < d.len()) ==> (b[j + i - 1] <= d[j as int])) &&
       sorted(b.subrange(0, (i + j) as int))
   }
-  
   
   //Loop invariant - the multiset of the prefix of b so far is the same multiset as the prefixes of c and d so far.
   spec fn inv_sub_set(b: Seq<i32>, c: Seq<i32>, d: Seq<i32>, i: usize, j: usize) -> bool {
@@ -86,15 +80,11 @@ vc-preamble: |-
   //This lemma helps Verus see that if the prefixes of arrays are the same multiset until the end of the arrays,
   //all the arrays are the same multiset.
   
-  
   //This lemma helps Verus see that after adding the next value from c to b the prefixes are still the same subsets.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn merge(b: &mut Vec<i32>, c: &Vec<i32>, d: &Vec<i32>)
       requires
           old(b).len() == c.len() + d.len(),
@@ -103,14 +93,11 @@ vc-spec: |-
       ensures
           sorted(b@),
           b@.to_multiset() == c@.to_multiset().add(d@.to_multiset()),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

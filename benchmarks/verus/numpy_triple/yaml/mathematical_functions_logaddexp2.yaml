@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.logaddexp2: Logarithm of the sum of exponentiations of the inputs in base-2.
   
   Calculates log2(2^x1 + 2^x2) element-wise. This function is mathematically equivalent to
@@ -22,10 +21,10 @@ vc-description: |-
   - Commutativity: logaddexp2(x1, x2) = logaddexp2(x2, x1)
   - Monotonicity: If x1 ≤ y1 and x2 ≤ y2, then logaddexp2(x1, x2) ≤ logaddexp2(y1, y2)
   - Bounds: max(x1, x2) ≤ logaddexp2(x1, x2) ≤ max(x1, x2) + 1
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -44,6 +43,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Assemble a 2D matrix from a 2x2 block structure.
   This is a simplified version focusing on the common case of assembling 
   a matrix from four blocks arranged in a 2x2 pattern.
@@ -10,10 +9,10 @@ vc-description: |-
   - Top-right block occupies rows [0, r1) and columns [c1, c1 + c2)
   - Bottom-left block occupies rows [r1, r1 + r2) and columns [0, c1)
   - Bottom-right block occupies rows [r1, r1 + r2) and columns [c1, c1 + c2)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -67,6 +66,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

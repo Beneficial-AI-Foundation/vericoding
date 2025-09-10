@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.greater: Return the truth value of (x1 > x2) element-wise for string arrays.
   
   Performs element-wise string comparison between two vectors of strings.
@@ -21,18 +20,18 @@ vc-description: |-
   - Trichotomous: for any two strings s1 and s2, exactly one of s1 < s2, s1 = s2, or s1 > s2 holds
   - Decidable: String comparison is decidable for all strings
   - Type-safe: Result vector has same length as input vectors
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
   use vstd::string::*;
-
+  
   verus! {
 
 vc-helpers: |-
 
 vc-spec: |-
   spec fn string_compare_gt(s1: Seq<char>, s2: Seq<char>) -> bool;
-
+  
   fn greater(x1: &Vec<String>, x2: &Vec<String>) -> (result: Vec<bool>)
       requires x1.len() == x2.len(),
       ensures 
@@ -56,6 +55,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Computes the number of 1-bits in the absolute value of each element in a vector
   
   Specification: bitwise_count returns the count of 1-bits in the binary representation
@@ -12,16 +11,17 @@ vc-description: |-
   6. The popcount is always non-negative and bounded by bit width
   7. For negative inputs, uses the absolute value
   8. The popcount operation is invariant under sign changes
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   spec fn abs_spec(x: i32) -> nat {
       if x >= 0 { x as nat } else { (-x) as nat }
   }
-
+  
   /* Helper function to count the number of 1-bits in a natural number */
   spec fn popcount(n: nat) -> nat 
       decreases n
@@ -32,6 +32,7 @@ vc-helpers: |-
           (n % 2) + popcount(n / 2)
       }
   }
+
 vc-spec: |-
   fn bitwise_count(x: Vec<i32>) -> (result: Vec<nat>)
       ensures
@@ -39,6 +40,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < result.len() ==> result[i] == popcount(abs_spec(x[i])),
           forall|i: int| 0 <= i < result.len() ==> x[i] == 0 ==> result[i] == 0,
           forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
+
 vc-code: |-
   {
       // impl-start
@@ -46,7 +48,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

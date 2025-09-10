@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Implement a Verus function that, given a list of integers, removes all duplicates and returns the resulting list in ascending order.
   
   Input:
@@ -9,10 +8,10 @@ vc-description: |-
   Output:
   The output is a list of integers:
   Returns a list containing the unique elements of the input, sorted in ascending order. The returned list must not contain any duplicates, and every element in the output must appear in the original input list.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -33,6 +32,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

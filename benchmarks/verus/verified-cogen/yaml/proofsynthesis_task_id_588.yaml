@@ -4,9 +4,9 @@ vc-preamble: |-
   #![verifier::loop_isolation(false)]
   use vstd::math::*;
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn max_rcur(seq: Seq<i32>) -> (result: int)
       decreases seq.len(),
   {
@@ -18,7 +18,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn min_rcur(seq: Seq<i32>) -> (result: int)
       decreases seq.len(),
   {
@@ -53,7 +53,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   } // verus!
-
+  
   fn main() {}
+

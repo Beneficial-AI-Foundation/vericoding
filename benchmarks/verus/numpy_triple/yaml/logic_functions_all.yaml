@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Test whether all array elements evaluate to True.
   Elements are considered True if they are non-zero.
   NaN, positive infinity and negative infinity evaluate to True.
@@ -25,10 +24,10 @@ vc-description: |-
   - Idempotent: all(all(a)) = all(a) (when treating Bool as numeric)
   - Distributive over logical AND: all(a) ∧ all(b) → all(pointwise_and(a, b))
   - Relationship to logical AND reduction: all(a) = fold(∧, true, map(≠ 0, a))
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -50,6 +49,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

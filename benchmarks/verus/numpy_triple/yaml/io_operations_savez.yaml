@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.savez: Save several arrays into a single file in uncompressed .npz format.
   
   Saves multiple Vector arrays to a single .npz archive file. This operation
@@ -42,10 +41,10 @@ vc-description: |-
   
   Precondition: File path is writable and arrays are valid
   Postcondition: Archive file exists and contains both arrays with recoverable data
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -74,6 +73,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

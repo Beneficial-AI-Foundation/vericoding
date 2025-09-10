@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   {
     "name": "numpy.polynomial.laguerre.Laguerre",
     "category": "Laguerre polynomials",
@@ -12,12 +11,12 @@ vc-description: |-
   Constructor for Laguerre series with default domain and window
   
   Specification for Laguerre series construction and properties
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* Helper function to evaluate a Laguerre polynomial at a given point */
   spec fn evaluate_laguerre_polynomial<const N: usize>(coef: [f64; N], x: f64) -> f64;
   
@@ -37,6 +36,7 @@ vc-preamble: |-
       /* Window interval [window[0], window[1]] for mapping */
       window: [f64; 2],
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -55,6 +55,7 @@ vc-spec: |-
           },
           /* Basic sanity check for coefficient preservation */
           forall|i: int| 0 <= i < N ==> result.coef[i] == coefficients[i],
+
 vc-code: |-
   {
       // impl-start
@@ -66,7 +67,8 @@ vc-code: |-
       }
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

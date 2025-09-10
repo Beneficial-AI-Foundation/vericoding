@@ -1,13 +1,13 @@
 vc-description: |-
-  /*
   Multiply a Hermite series by x using the recursion relationship for Hermite polynomials.
   The result has one more coefficient than the input, implementing the transformation
   based on the Hermite polynomial recursion: xP_i(x) = (P_{i + 1}(x) + iP_{i - 1}(x))
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -17,6 +17,7 @@ vc-spec: |-
           result.len() == c.len() + 1,
           result[0] == 0.0,
           forall|i: int| 1 <= i < c.len() ==> result[i + 1] == c[i],
+
 vc-code: |-
   {
       // impl-start
@@ -24,7 +25,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

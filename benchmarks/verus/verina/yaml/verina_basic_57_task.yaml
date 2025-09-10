@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task involves determining how many numbers within an array are less than a specified threshold. The problem is focused on identifying and counting such numbers based purely on their value in relation to the threshold.
   
   -----Input-----
@@ -12,10 +11,10 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions; the function should work correctly for any array of integers and any integer threshold.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -50,6 +49,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

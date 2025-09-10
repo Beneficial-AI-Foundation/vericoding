@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.argmax: Returns the index of the maximum value in a vector.
   
   Returns the index of the maximum value among all elements in the array.
@@ -15,11 +14,12 @@ vc-description: |-
   Precondition: True (non-empty constraint is in the type)
   Postcondition: The element at the returned index is the maximum value,
   and it is the first occurrence of such maximum value.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -29,6 +29,7 @@ vc-spec: |-
           result < a.len(),
           forall|j: int| 0 <= j < a.len() ==> a[j] <= a[result as int],
           forall|j: int| 0 <= j < a.len() && a[j] == a[result as int] ==> result <= j as usize,
+
 vc-code: |-
   {
       // impl-start
@@ -36,7 +37,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

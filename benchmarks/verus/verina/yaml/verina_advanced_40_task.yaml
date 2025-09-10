@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus function that returns the maximum element from a non-empty list of natural numbers.
   
   -----Input-----
@@ -9,11 +8,12 @@ vc-description: |-
   -----Output-----
   The output is:
   A natural number representing the largest element in the list.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -22,6 +22,7 @@ vc-spec: |-
       ensures
           exists|i: int| 0 <= i < lst.len() && lst[i] == result,
           forall|i: int| 0 <= i < lst.len() ==> lst[i] <= result,
+
 vc-code: |-
   {
       // impl-start
@@ -29,8 +30,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       // /*
@@ -97,3 +98,4 @@ vc-postamble: |-
       // ]
       // */
   }
+

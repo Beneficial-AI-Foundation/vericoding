@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.ceil: Return the ceiling of the input, element-wise.
   
   The ceiling of each element x is the smallest integer i, such that i >= x.
@@ -19,11 +18,12 @@ vc-description: |-
   - There is no integer k such that x[i] ≤ k < result[i]
   - Monotonicity: if x[i] ≤ x[j] then result[i] ≤ result[j]
   - Relationship with floor: result[i] = -((-x[i]).floor)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -34,6 +34,7 @@ vc-spec: |-
           /* Each element in result is the ceiling of corresponding element in x */
           /* Ceiling properties: integer value, >= x[i], < x[i] + 1, minimal such integer */
           /* Monotonicity: if x[i] <= x[j] then result[i] <= result[j] */
+
 vc-code: |-
   {
       // impl-start
@@ -41,8 +42,9 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
+
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

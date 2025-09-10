@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Interpret a buffer as a 1-dimensional array.
   Takes a buffer (represented as a Vector of bytes), the count of elements to read,
   and an offset (starting position in bytes) to create a Vector of the specified type.
@@ -14,10 +13,10 @@ vc-description: |-
   3. Elements are read sequentially from the buffer starting at offset
   4. The result preserves the sequential order of elements in the buffer
   5. Each output element corresponds to exactly one input buffer byte
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -40,6 +39,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

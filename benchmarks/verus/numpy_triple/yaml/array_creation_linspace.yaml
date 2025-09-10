@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.linspace: Return evenly spaced numbers over a specified interval.
   
   Returns num evenly spaced samples, calculated over the interval [start, stop]
@@ -28,10 +27,10 @@ vc-description: |-
   - When start = stop, all elements equal start
   - The function is symmetric: reversing start and stop reverses the sequence
   - Consecutive differences are constant for num > 2
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -54,7 +53,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

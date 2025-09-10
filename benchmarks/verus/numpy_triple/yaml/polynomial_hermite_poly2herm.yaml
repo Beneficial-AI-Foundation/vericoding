@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.hermite.poly2herm: Convert a polynomial to a Hermite series.
   
   Convert an array representing the coefficients of a polynomial (relative
@@ -25,10 +24,10 @@ vc-description: |-
   Additionally, for specific test cases:
   - Converting [0, 1, 2, 3] should yield [1, 2.75, 0.5, 0.375]
   - Converting a constant polynomial [c] should yield [c]
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -59,6 +58,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

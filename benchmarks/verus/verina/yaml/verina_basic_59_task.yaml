@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Given an integer x, determine a pair (a, b) where the first element is twice the value of x and the second element is four times the value of x.
   
   -----Input-----
@@ -13,10 +12,10 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions; the method is defined for all integers.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -36,6 +35,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.transpose: Returns a matrix with rows and columns swapped.
   
   For 2D arrays (matrices), transpose swaps the rows and columns.
@@ -17,10 +16,10 @@ vc-description: |-
   - Transpose is an involution: (A^T)^T = A
   - For square matrices: trace(A^T) = trace(A)
   - (A^T)[j,i] = A[i,j] for all valid indices
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -47,6 +46,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

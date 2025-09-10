@@ -1,7 +1,6 @@
 vc-description: |-
-  /*
   Pseudo-Vandermonde matrix of Chebyshev polynomials of given degree.
-      
+  
   Given a vector of sample points `x` and a degree `deg`, returns a matrix
   where each row corresponds to a sample point and each column contains
   the values of Chebyshev polynomials T_0, T_1, ..., T_deg evaluated at
@@ -10,10 +9,10 @@ vc-description: |-
   Specification: chebvander produces a matrix where entry (i,j) is the j-th Chebyshev 
   polynomial T_j evaluated at x[i], following the recurrence relation:
   T_0(x) = 1, T_1(x) = x, T_{k+1}(x) = 2x*T_k(x) - T_{k-1}(x)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,6 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

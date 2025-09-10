@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.hermite_e.hermevander3d: Pseudo-Vandermonde matrix of given degrees.
   
   Returns the pseudo-Vandermonde matrix of degrees `deg` and sample
@@ -33,10 +32,10 @@ vc-description: |-
   Specification: hermevander3d returns a 3D pseudo-Vandermonde matrix where each row
   corresponds to a point (x[i], y[i], z[i]), and each column corresponds to a product
   of HermiteE polynomials He_i(x)*He_j(y)*He_k(z) for various degrees.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -54,7 +53,7 @@ vc-spec: |-
           1.0
       }
   }
-
+  
   fn hermevander3d(x: Vec<f64>, y: Vec<f64>, z: Vec<f64>, deg: Vec<int>) -> (result: Vec<Vec<f64>>)
       requires 
           x.len() == y.len(),
@@ -71,6 +70,7 @@ vc-spec: |-
               &&& #[trigger] result[p].len() == order
               &&& (order > 0 ==> result[p][0] == 1.0)
           }
+
 vc-code: |-
   {
       // impl-start
@@ -78,7 +78,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

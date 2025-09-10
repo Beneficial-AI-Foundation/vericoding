@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Lean 4 function that finds the length of the longest strictly increasing subsequence in a list of integers. A subsequence is any sequence that can be derived from the list by deleting zero or more elements without changing the order of the remaining elements. The function must return the length of the longest possible such sequence.
   
   -----Input-----
@@ -9,11 +8,12 @@ vc-description: |-
   -----Output-----
   The output is a natural number:
   Returns the length of the longest strictly increasing subsequence found in the list.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   /* Helper functions for generating subsequences and checking increasing property */
   spec fn is_subsequence_of(subseq: Seq<i32>, seq: Seq<i32>) -> bool {
@@ -24,10 +24,11 @@ vc-helpers: |-
           (forall|i: int| 0 <= i < indices.len() - 1 ==> #[trigger] indices[i] < indices[i + 1]) &&
           (forall|i: int| 0 <= i < subseq.len() ==> #[trigger] subseq[i] == seq[indices[i]])
   }
-
+  
   spec fn is_strictly_increasing(seq: Seq<i32>) -> bool {
       forall|i: int| 0 <= i < seq.len() - 1 ==> #[trigger] seq[i] < seq[i + 1]
   }
+
 vc-spec: |-
   fn longest_increasing_subseq_length(xs: &Vec<i32>) -> (result: usize)
       ensures
@@ -40,6 +41,7 @@ vc-spec: |-
           forall|subseq: Seq<i32>| 
               (is_subsequence_of(subseq, xs@) && is_strictly_increasing(subseq)) 
               ==> subseq.len() <= result,
+
 vc-code: |-
   {
       // impl-start
@@ -47,7 +49,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

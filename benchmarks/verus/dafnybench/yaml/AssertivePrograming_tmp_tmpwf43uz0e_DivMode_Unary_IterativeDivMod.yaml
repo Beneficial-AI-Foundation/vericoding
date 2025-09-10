@@ -8,7 +8,6 @@ vc-preamble: |-
   // Noa Leron 207131871  
   // Tsuri Farhana 315016907
   
-  
   // definitions borrowed from Rustan Leino's Program Proofs Chapter 7
   // (https://program-proofs.com/code.html example code in Dafny; source file 7-Unary.dfy)
   pub enum Unary {
@@ -114,23 +113,17 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn iterative_div_mod(x: Unary, y: Unary) -> (res: (Unary, Unary))
       requires y != Unary::Zero
       ensures add(mul(res.0, y), res.1) == x && less(res.1, y)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       (Unary::Zero, Unary::Zero)
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

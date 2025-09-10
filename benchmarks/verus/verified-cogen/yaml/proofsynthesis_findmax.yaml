@@ -3,7 +3,7 @@ vc-description: |-
 vc-preamble: |-
   #[allow(unused_imports)]
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -29,7 +29,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

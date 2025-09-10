@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This problem focuses on reversing an array of integers. The goal is to take an input array and produce a new array with the elements arranged in the reverse order.
   
   -----Input-----
@@ -14,10 +13,10 @@ vc-description: |-
   
   -----Note-----
   There are no specific preconditions; the method should correctly handle any array of integers.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -37,6 +36,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

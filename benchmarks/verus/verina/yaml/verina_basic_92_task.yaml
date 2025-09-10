@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This problem involves swapping the values of two integers. Given two integers as inputs, the objective is to return the two numbers in reversed order.
   
   -----Input-----
@@ -14,10 +13,10 @@ vc-description: |-
   
   -----Note-----
   There are no restrictions on the input values. The function must correctly swap the inputs regardless of whether they are positive, negative, or zero.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,7 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       // /* Invalid Inputs
@@ -107,3 +105,4 @@ vc-postamble: |-
       //     }
       // ] */
   }
+

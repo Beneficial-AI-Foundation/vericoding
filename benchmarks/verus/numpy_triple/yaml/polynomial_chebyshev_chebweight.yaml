@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   The weight function of the Chebyshev polynomials.
   Computes 1/sqrt(1 - x²) for each element.
   
@@ -12,10 +11,10 @@ vc-description: |-
   3. The function is symmetric: w(-x) = w(x)
   4. The function approaches infinity as x approaches ±1
   5. The implementation uses the factored form 1/(sqrt(1+x) * sqrt(1-x)) for numerical stability
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -34,6 +33,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

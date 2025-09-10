@@ -1,12 +1,12 @@
 vc-description: |-
-  /*
   Compute the multidimensional histogram of some data.
   For simplicity, we focus on 2D histograms with fixed dimensions.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -26,6 +26,7 @@ vc-spec: |-
               (forall|i: int, j: int| 0 <= i < bins_y && 0 <= j < bins_x ==> #[trigger] hist[i][j] >= 0) &&
               true
           })
+
 vc-code: |-
   {
       // impl-start
@@ -33,7 +34,8 @@ vc-code: |-
       (Vec::new(), Vec::new(), Vec::new())
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

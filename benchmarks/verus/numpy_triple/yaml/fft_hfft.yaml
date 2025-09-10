@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.fft.hfft: Compute the FFT of a signal that has Hermitian symmetry.
   
   The Hermitian FFT assumes that the input signal has Hermitian symmetry,
@@ -23,12 +22,12 @@ vc-description: |-
   2. The length relationship: if input has m+1 elements, output has 2*m elements
   3. Hermitian symmetry properties are preserved in the transform
   4. The conjugate relationship: this is effectively the inverse of an rfft operation
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   #[derive(PartialEq)]
   pub struct Complex {
       pub real: f32,
@@ -54,7 +53,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Create a 1D open grid from start to stop with n evenly spaced points.
   This is a simplified version of ogrid that handles the common case of
   creating a single evenly-spaced vector (like ogrid[start:stop:nj]).
@@ -7,11 +6,12 @@ vc-description: |-
   Specification: ogrid creates n evenly spaced points from start to stop (inclusive).
   When n > 1, the spacing between consecutive points is (stop - start) / (n - 1).
   For n = 1, the single point is at start.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -22,6 +22,7 @@ vc-spec: |-
           (n == 1 ==> result[0] == start),
           (n > 1 ==> result[0] == start),
           (n > 1 ==> result[n - 1] == stop),
+
 vc-code: |-
   {
       // impl-start
@@ -29,7 +30,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

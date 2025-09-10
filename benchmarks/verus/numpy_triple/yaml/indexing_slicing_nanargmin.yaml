@@ -1,16 +1,15 @@
 vc-description: |-
-  /*
   Returns the index of the minimum value in a non-empty vector, ignoring NaN values.
-      
+  
   This function finds the index of the minimum value among all non-NaN elements in the vector.
   Requires that at least one element is not NaN, otherwise it would raise an error.
   
   In case of multiple occurrences of the minimum values, the indices
   corresponding to the first occurrence are returned.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -37,6 +36,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

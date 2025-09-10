@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.save: Save an array to a binary file in NumPy .npy format.
   
   Saves Vector data to a binary file in NumPy .npy format. This operation serializes 
@@ -32,10 +31,10 @@ vc-description: |-
   
   Precondition: The file path is valid and writable
   Postcondition: The file exists and contains the serialized vector data
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -53,6 +52,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

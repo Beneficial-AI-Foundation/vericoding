@@ -18,7 +18,6 @@ vc-preamble: |-
       assume(false);
   }
   
-  
   // Predicates for Bubble Sort
   spec fn sorted(a: &Vec<Vec<i32>>, l: int, u: int) -> bool
       recommends
@@ -35,11 +34,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn non_overlapping_intervals(intervals: &mut Vec<Vec<i32>>) -> (count: i32)
       requires
           1 <= old(intervals).len() <= 100000,
@@ -49,18 +45,14 @@ vc-spec: |-
       // TODO: modify the ensures clause so that count is indeed equal to the minimum number of intervals we need to remove to make the rest of the intervals non-overlapping.
       ensures
           count >= 0,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

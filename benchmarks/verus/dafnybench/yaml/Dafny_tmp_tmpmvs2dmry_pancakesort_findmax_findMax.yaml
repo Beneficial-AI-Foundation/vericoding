@@ -8,11 +8,8 @@ vc-preamble: |-
   // returns an index of the largest element of array 'a' in the range [0..n)
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn findMax(a: &[i32], n: usize) -> (r: usize)
       requires
           a.len() > 0,
@@ -20,15 +17,12 @@ vc-spec: |-
       ensures
           0 <= r < n <= a.len(),
           forall|k: usize| 0 <= k < n <= a.len() ==> a[r as int] >= a[k as int],
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

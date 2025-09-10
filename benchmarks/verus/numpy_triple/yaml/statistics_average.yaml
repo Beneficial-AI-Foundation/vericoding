@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Computes the weighted average along the specified axis.
   
   Computes the weighted average of the elements in the input vector.
@@ -12,10 +11,10 @@ vc-description: |-
   
   When weights are not provided, this reduces to:
   sum(a) / len(a)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,7 +37,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

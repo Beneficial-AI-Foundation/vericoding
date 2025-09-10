@@ -23,22 +23,16 @@ vc-preamble: |-
   // dafny proves this automatically by induction
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn bubble_sort(a: &mut Vec<i32>) -> (n: usize) 
       ensures n <= n_choose_2(a.len() as int) as usize
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

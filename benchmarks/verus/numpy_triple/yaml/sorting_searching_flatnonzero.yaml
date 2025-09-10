@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.flatnonzero: Return indices that are non-zero in the flattened version of a.
   
   This function returns the indices of all non-zero elements in the array.
@@ -17,10 +16,10 @@ vc-description: |-
   2. All non-zero elements in the original array have their indices in the result
   3. The result contains no duplicate indices
   4. The result indices are sorted in ascending order
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -46,6 +45,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

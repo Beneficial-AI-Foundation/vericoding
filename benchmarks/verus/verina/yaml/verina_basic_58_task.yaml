@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task involves transforming an array of integers by doubling each element.
   
   -----Input-----
@@ -11,11 +10,12 @@ vc-description: |-
   
   -----Note-----
   The implementation makes use of a recursive helper function to update the array in place. It is assumed that the input array is valid and that the doubling operation does not lead to any overflow issues.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -23,6 +23,7 @@ vc-spec: |-
       ensures
           result.len() == s.len(),
           forall|i: int| 0 <= i < s.len() ==> #[trigger] result[i] == 2 * s[i],
+
 vc-code: |-
   {
       // impl-start
@@ -30,8 +31,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       /*
@@ -97,3 +98,4 @@ vc-postamble: |-
       ]
       */
   }
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that swaps the first and last elements of an array of integers. The method should produce a new array where the first element of the output is the last element of the input, the last element of the output is the first element of the input, and all other elements remain in their original positions.
   
   Input:
@@ -12,10 +11,10 @@ vc-description: |-
   - The former last element becomes the first element.
   - The former first element becomes the last element.
   - All other elements remain unchanged.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,7 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       /* 
@@ -99,3 +97,4 @@ vc-postamble: |-
       ]
       */
   }
+

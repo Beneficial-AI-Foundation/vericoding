@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Differentiate a Hermite_e series by taking the derivative of coefficients.
   Takes coefficients from low to high degree and returns differentiated coefficients.
   
@@ -7,10 +6,10 @@ vc-description: |-
   The result has degree reduced by 1, and each coefficient is multiplied by its index
   and scaled by scl^m. For a single differentiation (m=1), the coefficient of degree k
   becomes k * scl * original_coefficient.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -33,7 +32,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

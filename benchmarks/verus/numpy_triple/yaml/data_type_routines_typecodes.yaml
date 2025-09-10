@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Dictionary mapping strings to corresponding type character codes
   
   A dictionary with string keys that represent NumPy dtype categories and string values that contain type codes for the NumPy data types in each category.
@@ -16,10 +15,10 @@ vc-description: |-
   - 'All': '?bhilqnpBHILQNPfdgFDGSUVOMm'
   
   This is useful for iterating over all dtypes of a certain kind.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -49,6 +48,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

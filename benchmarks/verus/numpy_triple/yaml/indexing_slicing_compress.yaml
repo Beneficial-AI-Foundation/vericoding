@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Compresses a vector by selecting only elements where the corresponding 
   condition is true. Returns a new vector containing only the selected elements.
   The result size is the number of true values in the condition vector.
@@ -16,11 +15,12 @@ vc-description: |-
   This function implements array compression/masking, a fundamental operation
   in array programming that allows selective extraction of elements based on
   a boolean mask. It's equivalent to boolean indexing in NumPy.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -33,7 +33,7 @@ vc-spec: |-
           (if condition[0] { 1int } else { 0int }) + count_true(condition.skip(1))
       }
   }
-
+  
   fn compress(condition: Vec<bool>, a: Vec<f32>) -> (result: Vec<f32>)
       requires condition.len() == a.len(),
       ensures
@@ -47,6 +47,7 @@ vc-spec: |-
                   result@[i] == a@[mapping[i]]) &&
               (forall|i: int, j: int| 0 <= i < j < mapping.len() ==> 
                   mapping[i] < mapping[j]),
+
 vc-code: |-
   {
       // impl-start
@@ -54,7 +55,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

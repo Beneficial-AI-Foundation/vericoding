@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.shape: Return the shape of an array.
   
   For a one-dimensional vector, returns its length as a natural number.
@@ -18,16 +17,18 @@ vc-description: |-
   
   Precondition: True (shape is defined for all vectors)
   Postcondition: The result equals the length parameter n of the vector
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   fn shape<T>(a: &Vec<T>) -> (result: usize)
       ensures result == a.len()
+
 vc-code: |-
   {
       // impl-start
@@ -35,7 +36,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

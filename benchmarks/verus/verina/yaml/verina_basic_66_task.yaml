@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task focuses on determining if a given integer is even. The problem requires checking whether the integer can be represented as twice another integer, meaning it is divisible by 2 without any remainder.
   
   -----Input-----
@@ -13,17 +12,19 @@ vc-description: |-
   
   -----Note-----
   No additional preconditions are required. The method should work correctly for any integer value.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   fn compute_is_even(x: int) -> (result: bool)
       ensures
           result == true <==> #[trigger] (x % 2) == 0,
+
 vc-code: |-
   {
       // impl-start
@@ -31,7 +32,8 @@ vc-code: |-
       false
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

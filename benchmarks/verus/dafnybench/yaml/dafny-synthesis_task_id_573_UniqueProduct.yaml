@@ -16,25 +16,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn unique_product(arr: &[i32]) -> (product: i32)
       ensures product == set_product(arr@.to_set().map(|x: i32| x as int))
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

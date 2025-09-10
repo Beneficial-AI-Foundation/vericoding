@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.concatenate: Join a sequence of arrays along an existing axis.
   
   For 1D arrays, concatenates two vectors end-to-end to produce a single 
@@ -15,11 +14,12 @@ vc-description: |-
   - First n elements of result are from vector a
   - Next m elements of result are from vector b  
   - Result has size n + m
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -28,6 +28,7 @@ vc-spec: |-
           result.len() == a.len() + b.len(),
           forall|i: int| 0 <= i < a.len() ==> result[i] == a[i],
           forall|j: int| 0 <= j < b.len() ==> result[a.len() + j] == b[j],
+
 vc-code: |-
   {
       // impl-start
@@ -35,7 +36,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

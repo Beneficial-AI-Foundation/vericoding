@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Return the cumulative product of array elements over a given axis treating Not a Numbers (NaNs) as one.
   
   Return the cumulative product of array elements treating NaNs as 1.
@@ -12,10 +11,10 @@ vc-description: |-
   3. NaN values are treated as 1 in the product calculation
   4. Leading NaNs are replaced by ones
   5. The cumulative product property holds for non-NaN values
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -36,6 +35,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

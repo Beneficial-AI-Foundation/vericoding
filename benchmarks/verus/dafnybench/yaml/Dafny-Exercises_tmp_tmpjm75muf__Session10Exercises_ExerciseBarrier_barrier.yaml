@@ -18,11 +18,8 @@ vc-preamble: |-
   //3.Verify the method
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn barrier(v: &[i32], p: usize) -> (b: bool)
   //Give the precondition
   //Give the postcondition
@@ -33,15 +30,12 @@ vc-spec: |-
       ensures 
           b == forall|k: usize, l: usize| 
               k <= p && p < l && l < v.len() ==> v[k as int] < v[l as int]
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       true
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

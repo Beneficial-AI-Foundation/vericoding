@@ -11,24 +11,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn selection_sort(a: &mut Vec<int>)
       ensures 
           ordered(a@, 0, a.len() as int),
           a.len() == old(a).len(),
           a@.to_multiset() =~= old(a)@.to_multiset(),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

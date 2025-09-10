@@ -4,7 +4,7 @@ vc-preamble: |-
   use vstd::calc;
   use vstd::prelude::*;
   use vstd::seq_lib::lemma_multiset_commutative;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -49,9 +49,9 @@ vc-helpers: |-
               let curr_val = sorted[i];
               let min_val = sorted[min_index];
               sorted.set(i, min_val);
-
+  
               sorted.set(min_index, curr_val);
-
+  
               // assert-start
               proof {
                   swap_preserves_multiset(old_sorted, sorted@, i as int, min_index as int);
@@ -64,7 +64,7 @@ vc-helpers: |-
       sorted
       // impl-end
   }
-
+  
   fn strange_sort_list_helper(s: &Vec<i32>) -> (ret: (Vec<i32>, Vec<i32>))
       // post-conditions-start
       ensures
@@ -105,7 +105,7 @@ vc-helpers: |-
       (sorted, strange)
       // impl-end
   }
-
+  
   proof fn swap_preserves_multiset_helper(s: Seq<i32>, i: int, j: int)
       // pre-conditions-start
       requires
@@ -121,7 +121,7 @@ vc-helpers: |-
       // impl-start
       let fst = s.take(i);
       let snd = s.subrange(i + 1, j);
-
+  
       assert((s.take(j + 1)).to_multiset() =~= fst.to_multiset().insert(s.index(i)).add(
           snd.to_multiset().insert(s.index(j)),
       )) by {
@@ -139,9 +139,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn swap_preserves_multiset(s1: Seq<i32>, s2: Seq<i32>, i: int, j: int)
       // pre-conditions-start
       requires
@@ -199,6 +199,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

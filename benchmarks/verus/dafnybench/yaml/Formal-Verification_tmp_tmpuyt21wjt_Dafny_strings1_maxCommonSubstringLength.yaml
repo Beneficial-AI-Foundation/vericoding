@@ -53,25 +53,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn max_common_substring_length(str1: Seq<char>, str2: Seq<char>) -> (len: usize)
       ensures 
           len <= str1.len() && len <= str2.len(),
           len >= 0,
           max_common_substring_predicate(str1, str2, len as nat),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   An HermiteE series class.
   
   The HermiteE class provides the standard Python numerical methods
@@ -27,26 +26,26 @@ vc-description: |-
   Create a HermiteE polynomial from coefficients with default domain and window [-1, 1]
   
   Specification: Creating a HermiteE polynomial preserves coefficients and establishes mathematical properties.
-      
+  
   HermiteE polynomials are the "probabilists'" version of Hermite polynomials.
   Key mathematical properties:
   1. He₀(x) = 1, He₁(x) = x
   2. Recurrence: Heₙ₊₁(x) = x * Heₙ(x) - n * Heₙ₋₁(x)
   3. Parity: He_n(-x) = (-1)^n He_n(x)
   4. Orthogonality with respect to Gaussian weight e^(-x²/2)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* Structure representing a HermiteE polynomial with coefficients and domain/window mapping.
      HermiteE polynomials are the "probabilists'" version of Hermite polynomials.
      They satisfy the recurrence relation:
      He₀(x) = 1
      He₁(x) = x  
      Heₙ₊₁(x) = x * Heₙ(x) - n * Heₙ₋₁(x)
-     
+  
      The coefficients represent the expansion: ∑ᵢ cᵢ * Heᵢ(x)
   */
   struct HermiteEPoly {
@@ -92,6 +91,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

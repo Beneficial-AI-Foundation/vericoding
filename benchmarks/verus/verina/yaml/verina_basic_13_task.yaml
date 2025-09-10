@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that transforms an array of integers by replacing every element with its cube. In other words, for each element in the input array, the output array should contain the result of multiplying that element by itself three times.
   
   Input:
@@ -12,10 +11,10 @@ vc-description: |-
   
   Note:
   There are no additional preconditions; the method should work correctly for any array of integers.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -35,6 +34,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

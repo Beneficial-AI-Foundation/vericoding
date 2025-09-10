@@ -32,11 +32,8 @@ vc-preamble: |-
   // segments of size n == 2^k-1 for some k>=0.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn search_1000(a: &[i32], x: i32) -> (k: usize)
       requires 
           a.len() >= 1000,
@@ -45,18 +42,14 @@ vc-spec: |-
           0 <= k <= 1000,
           forall|r: int| 0 <= r < k ==> a[r] < x,
           forall|r: int| k <= r < 1000 ==> a[r] >= x,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

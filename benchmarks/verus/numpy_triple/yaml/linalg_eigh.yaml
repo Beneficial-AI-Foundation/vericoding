@@ -1,15 +1,15 @@
 vc-description: |-
-  /*
   Compute eigenvalues and eigenvectors of a Hermitian or symmetric matrix.
   
   Returns the eigenvalues and eigenvectors of a complex Hermitian or symmetric matrix.
   The function takes a Hermitian or symmetric matrix and returns eigenvalues in ascending order
   and the normalized eigenvectors satisfying the eigenvalue equation.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -17,7 +17,7 @@ vc-spec: |-
       eigenvalues: Vec<f32>,
       eigenvectors: Vec<Vec<f32>>,
   }
-
+  
   fn eigh(a: Vec<Vec<f32>>) -> (result: EighResult)
       requires 
           a.len() > 0,
@@ -27,6 +27,7 @@ vc-spec: |-
           result.eigenvalues.len() == a.len(),
           result.eigenvectors.len() == a.len(),
           forall|i: int| 0 <= i < result.eigenvectors.len() ==> result.eigenvectors[i]@.len() == a.len(),
+
 vc-code: |-
   {
       // impl-start
@@ -37,7 +38,8 @@ vc-code: |-
       }
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

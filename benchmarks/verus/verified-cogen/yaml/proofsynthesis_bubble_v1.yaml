@@ -2,16 +2,15 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
-
+  
   verus! {
-
+  
   spec fn sorted_between(a: Seq<u32>, from: int, to: int) -> (result:bool) {
           forall |i: int, j:int|  from <= i < j < to ==> a[i] <= a[j]
       }
       // pure-end
   // pure-end
-
+  
   spec fn is_reorder_of<T>(r: Seq<int>, p: Seq<T>, s: Seq<T>) -> (result:bool) {
       &&& r.len() == s.len()
       &&& forall|i: int| 0 <= i < r.len() ==> 0 <= #[trigger] r[i] < r.len()
@@ -39,7 +38,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

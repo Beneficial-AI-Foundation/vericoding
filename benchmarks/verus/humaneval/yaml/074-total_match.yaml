@@ -2,15 +2,15 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn spec_sum(s: Seq<nat>) -> (ret: int) {
       s.fold_left(0, |x: int, y| x + y)
   }
   // pure-end
   // pure-end
-
+  
   spec fn total_str_len(strings: Seq<&str>) -> (ret: int) {
       spec_sum(strings.map_values(|s: &str| s@.len()))
   }
@@ -53,7 +53,7 @@ vc-helpers: |-
               assert(lens.push(x as nat).drop_last() == lens);
               lens = lens.push(x as nat);
               assert(lens =~= lst@.map_values(|s: &str| s@.len()).take(i + 1));
-
+  
               lemma_increasing_sum(lst@.map_values(|s: &str| s@.len()), i + 1, lst@.len() as int);
               assert(total_str_len(lst@) >= spec_sum(lens)) by {
                   assert(lst@.map_values(|s: &str| s@.len()) =~= lst@.map_values(
@@ -77,9 +77,9 @@ vc-helpers: |-
       return Some(sum);
       // impl-end
   }
-
+  
   // pure-end
-
+  
   proof fn lemma_increasing_sum(s: Seq<nat>, i: int, j: int)
       // pre-conditions-start
       requires
@@ -119,6 +119,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

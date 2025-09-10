@@ -19,19 +19,11 @@ vc-preamble: |-
       -1
   }
   
-  
-  
-  
-  
-  
   // Recursive binary search
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn other_b_search(v: &Vec<i32>, elem: i32) -> (res: (bool, usize))
       requires sorted(v@)
       ensures 
@@ -41,18 +33,14 @@ vc-spec: |-
           !res.0 ==> forall|u: int| 0 <= u < res.1 ==> v[u] < elem,
           !res.0 ==> forall|w: int| res.1 <= w < v.len() ==> v[w] > elem
   // Implement and verify
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       (false, 0)
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

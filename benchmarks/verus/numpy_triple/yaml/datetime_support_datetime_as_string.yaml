@@ -1,23 +1,22 @@
 vc-description: |-
-  /*
   Convert an array of datetime64 values to an array of strings.
-      
+  
   Converts each datetime64 value in the input vector to its string representation.
   The format depends on the timezone option: 'naive' produces no suffix,
   'UTC' adds 'Z' suffix, and 'local' would add timezone offset.
-      
+  
   For simplicity, we focus on the core conversion from datetime64 to ISO format strings.
   
   Specification: datetime_as_string converts each datetime64 to its string representation.
-      
+  
   Precondition: True (no special preconditions)
   Postcondition: Each datetime64 is converted to a properly formatted ISO 8601 string
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* Time unit for datetime64 */
   #[derive(PartialEq, Eq)]
   enum TimeUnit {
@@ -38,7 +37,7 @@ vc-preamble: |-
       /* Nanoseconds unit ('ns') */
       Nanoseconds,
   }
-
+  
   /* DateTime64 structure representing offset from Unix epoch */
   #[derive(PartialEq, Eq)]
   struct DateTime64 {
@@ -49,7 +48,7 @@ vc-preamble: |-
       /* Always UTC with +0000 offset */
       is_utc: bool,
   }
-
+  
   /* Timezone formatting options */
   #[derive(PartialEq, Eq)]
   enum TimezoneOption {
@@ -60,6 +59,7 @@ vc-preamble: |-
       /* Add local timezone offset */
       Local,
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -68,6 +68,7 @@ vc-spec: |-
       ensures 
           result.len() == arr.len(),
           forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i]@.len() > 0,
+
 vc-code: |-
   {
       // impl-start
@@ -75,8 +76,9 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
+
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Matrix multiplication for 2D matrices. Computes the matrix product of two 2D arrays following standard matrix multiplication rules. The result matrix C has dimensions (m x p) where A is (m x n) and B is (n x p).
   
   Specification: Matrix multiplication produces a result where each element is the dot product of the corresponding row from the first matrix and column from the second matrix.
@@ -10,10 +9,10 @@ vc-description: |-
   3. The operation preserves the fundamental matrix multiplication identity
   4. Non-commutativity: A*B ≠ B*A in general (handled by type system)
   5. Associativity: (A*B)*C = A*(B*C) when dimensions are compatible
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -40,6 +39,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

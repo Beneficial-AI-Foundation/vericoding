@@ -15,11 +15,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn max_seg_sum(a: &Vec<int>) -> (result: (usize, usize))
       ensures ({
           let (k, m) = result;
@@ -27,18 +24,14 @@ vc-spec: |-
           &&& forall |p: int, q: int| 0 <= p <= q <= a.len() ==> 
               sum(a@, p, q) <= sum(a@, k as int, m as int)
       })
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       (0, 0)
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

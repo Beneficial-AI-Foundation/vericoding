@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Return a new vector with the specified size by repeating elements from the input vector.
   If the new size is larger, elements are repeated cyclically.
   If the new size is smaller, only the first elements are taken.
@@ -12,10 +11,10 @@ vc-description: |-
   - Shrinking: new_size < n → takes first new_size elements
   - Same size: new_size = n → returns identical vector
   - Growing: new_size > n → repeats elements cyclically (when n > 0)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -43,6 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

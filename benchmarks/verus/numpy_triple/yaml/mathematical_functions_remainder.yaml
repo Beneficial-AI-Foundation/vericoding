@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.remainder: Returns the element-wise remainder of division.
   
   Computes the remainder complementary to the floor_divide function.
@@ -29,10 +28,10 @@ vc-description: |-
   
   Precondition: All elements in x2 must be non-zero
   Postcondition: For all indices i, result[i] satisfies the remainder properties
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -54,6 +53,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

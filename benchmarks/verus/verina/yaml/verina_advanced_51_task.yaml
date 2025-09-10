@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that takes two sorted (non-decreasing) integer lists and merges them into a single sorted list. The output must preserve order and include all elements from both input lists.
   
   Input:
@@ -10,19 +9,20 @@ vc-description: |-
   Output:
   The output is a list of integers:
   Returns a merged list that contains all elements from both input lists, sorted in non-decreasing order.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn is_sorted(s: Seq<i32>) -> bool {
       forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j]
   }
-
+  
   spec fn multiset_equiv(s1: Seq<i32>, s2: Seq<i32>) -> bool {
       s1.to_multiset() == s2.to_multiset()
   }
+
 vc-helpers: |-
   fn merge_sorted_aux(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
   {
@@ -31,6 +31,7 @@ vc-helpers: |-
       Vec::new()
       // impl-end
   }
+
 vc-spec: |-
   fn merge_sorted(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
       requires 
@@ -39,6 +40,7 @@ vc-spec: |-
       ensures 
           is_sorted(result@),
           multiset_equiv(result@, a@ + b@),
+
 vc-code: |-
   {
       // impl-start
@@ -46,6 +48,7 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
+
 vc-postamble: |-
   }
   fn main() {
@@ -122,3 +125,4 @@ vc-postamble: |-
       ]
       */
   }
+

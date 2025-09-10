@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn remove_element(nums: &mut Vec<i32>, val: i32) -> (i: usize)
       requires 
           old(nums).len() <= 100,
@@ -18,18 +15,14 @@ vc-spec: |-
           0 <= val <= 100,
       ensures
           forall|j: int| 0 < j < i < nums.len() ==> #[trigger] nums[j] != val,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     0
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

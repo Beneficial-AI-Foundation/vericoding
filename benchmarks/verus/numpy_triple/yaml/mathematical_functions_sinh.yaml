@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.sinh: Hyperbolic sine, element-wise.
   
   The hyperbolic sine function is defined as:
@@ -23,11 +22,12 @@ vc-description: |-
   5. Range property: sinh(x) ∈ (-∞, ∞) for all x ∈ ℝ
   6. Sign property: sinh(x) has the same sign as x
   7. Symmetry property: sinh(-x) = -sinh(x)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -35,13 +35,14 @@ vc-spec: |-
       // Simplified specification without direct floating point arithmetic in spec
       true  // Placeholder for mathematical properties
   }
-
+  
   fn sinh(x: Vec<f64>) -> (result: Vec<f64>)
       requires x.len() > 0,
       ensures 
           result.len() == x.len(),
           /* Simplified properties without floating point spec operations */
           forall|i: int| 0 <= i < x.len() ==> sinh_property(x[i], result[i])
+
 vc-code: |-
   {
       // impl-start
@@ -49,7 +50,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

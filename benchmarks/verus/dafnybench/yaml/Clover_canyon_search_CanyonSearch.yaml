@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn canyon_search(a: &[i32], b: &[i32]) -> (d: u32)
     requires 
         a.len() != 0 && b.len() != 0,
@@ -29,15 +26,12 @@ vc-spec: |-
             } else { 
                 a[i] - b[j]
             }),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

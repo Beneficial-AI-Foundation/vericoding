@@ -1,11 +1,11 @@
 vc-description: |-
-  /*
   Returns the indices that would sort a vector in ascending order. Performs an indirect sort returning an array of indices that would sort the input array in ascending order. For equal elements, maintains relative order (stable sort).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -21,6 +21,7 @@ vc-spec: |-
           forall|i: int, j: int| 0 <= i < j < result.len() && 
               a[#[trigger] result[i] as int] == a[#[trigger] result[j] as int] ==> 
               result[i] < result[j]
+
 vc-code: |-
   {
       // impl-start
@@ -28,7 +29,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -2,7 +2,7 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -13,7 +13,7 @@ vc-helpers: |-
   {
       n + 1
   }
-
+  
   #[verifier::external_body]
   fn square(n: i32) -> (result: i32)
       ensures
@@ -40,6 +40,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   fn main() {}
   }
+

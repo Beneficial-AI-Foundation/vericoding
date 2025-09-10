@@ -17,24 +17,17 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn bubble_sort(a: &mut Vec<(i32, i32)>)
       ensures sorted(a, 0, a.len() as int - 1)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

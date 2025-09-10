@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   The problem is to update a destination array by replacing a specific segment with values taken from a source array. Given two arrays, starting positions, and a length, the task is to construct a new array where the segment in the destination from the specified starting index for the given length is replaced by the corresponding segment from the source, while all other elements remain unchanged.
   
   Input:
@@ -21,10 +20,10 @@ vc-description: |-
   
   Note:
   It is assumed that the input arrays satisfy the preconditions: the source array has enough elements starting from sStart and the destination array has enough space starting from dStart to accommodate the copied segment.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -49,6 +48,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -10,15 +10,15 @@ vc-preamble: |-
       lemma_mul_unary_negation,
   };
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn sum(numbers: Seq<int>) -> (result:int) {
       numbers.fold_left(0, |acc: int, x| acc + x)
   }
   // pure-end
   // pure-end
-
+  
   spec fn mean(values: Seq<int>) -> (result:int)
       recommends
           values.len() > 0,
@@ -27,7 +27,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn abs(n: int) -> (result:int) {
       if n >= 0 {
           n
@@ -37,7 +37,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn spec_mean_absolute_deviation(numbers: Seq<int>) -> (result:int)
       recommends
           numbers.len() > 0,
@@ -47,7 +47,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn if_inner_lemma_how_to_add_then_divide(x : int, y : int, d : int) -> (result: bool) {
       if (x % d) + (y % d) >= d {
           &&& (x + y) / d == (x / d) + (y / d) + 1
@@ -59,8 +59,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
-
+  
   spec fn expr_inner_divide_i32_by_u32(qr : (i32, u32), x: i32, d: u32) -> (result:bool) {
       let (q, r) = qr;
       q == x as int / d as int && r == x as int % d as int
@@ -137,7 +136,7 @@ vc-helpers: |-
       }
       // impl-end
   }
-
+  
   fn divide_i32_by_usize(x: i32, d: usize) -> (qr: (i32, usize))
       // pre-conditions-start
       requires
@@ -174,7 +173,7 @@ vc-helpers: |-
       }
       // impl-end
   }
-
+  
   fn compute_mean_of_i32s(numbers: &[i32]) -> (result: i32)
       // pre-conditions-start
       requires
@@ -212,9 +211,9 @@ vc-helpers: |-
               lemma_how_to_add_then_divide(sum(nums.take(i as int)), n as int, numbers_len as int);
           }
           // assert-end
-
+  
           let (q, r) = divide_i32_by_usize(n, numbers_len);
-
+  
           if r >= numbers_len - remainder {
               // assert-start
               assert(q < i32::MAX) by {
@@ -232,7 +231,7 @@ vc-helpers: |-
       quotient
       // impl-end
   }
-
+  
   fn compute_absolute_difference(x: i32, y: i32) -> (z: u32)
       // post-conditions-start
       ensures
@@ -265,9 +264,9 @@ vc-helpers: |-
       }
       // impl-end
   }
-
+  
   // pure-end
-
+  
   proof fn lemma_sum_bound(numbers: Seq<int>, min: int, max: int)
       // pre-conditions-start
       requires
@@ -288,9 +287,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_sum_ratio_bound(numbers: Seq<int>, denominator: int, min: int, max: int)
       // pre-conditions-start
       requires
@@ -322,9 +321,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_how_to_update_running_sum(s: Seq<int>, i: int)
       // pre-conditions-start
       requires
@@ -343,9 +342,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_how_to_add_then_divide(x: int, y: int, d: int)
       // pre-conditions-start
       requires
@@ -369,9 +368,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_effect_of_dividing_by_two_or_more(x: int, d: int)
       // pre-conditions-start
       requires
@@ -412,6 +411,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

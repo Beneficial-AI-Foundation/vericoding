@@ -8,8 +8,6 @@ vc-preamble: |-
   // Write an *iterative* Verus method reverse with signature:
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
   //          fn reverse(a: &Vec<char>) -> Vec<char>
@@ -24,27 +22,23 @@ vc-spec: |-
   
   // For the purposes of this practice exercise, I'll include a test method.
   
-  // <vc-spec>
   fn reverse(a: &Vec<char>) -> (b: Vec<char>)
       requires a.len() > 0
       ensures 
           a.len() == b.len(),
           forall|k: int| 0 <= k < a.len() ==> b[k] == a[(a.len() - 1) - k]
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       Vec::new()
   }
-  // </vc-code>
 
 vc-postamble: |-
   // Notice it compiles and the executable generates output (just to see the vectors printed in reverse).
   
   fn main() {
-      
+  
   }
   
   }

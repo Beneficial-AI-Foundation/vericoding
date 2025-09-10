@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   An array with ones at and below the given diagonal and zeros elsewhere.
   
   Creates a matrix of shape (N, M) where T[i,j] = 1 if j ≤ i + k, and 0 otherwise.
@@ -14,10 +13,10 @@ vc-description: |-
   - Otherwise, the value is 0.0
   
   This captures the mathematical property that defines a generalized lower triangular matrix.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -39,6 +38,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

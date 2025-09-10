@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.reciprocal: Return the reciprocal of the argument, element-wise.
   
   Calculates 1/x for each element in the input array.
@@ -29,11 +28,12 @@ vc-description: |-
   - reciprocal(-1) = -1
   - For x > 0: reciprocal(x) > 0
   - For x < 0: reciprocal(x) < 0
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -43,6 +43,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < x.len() ==> x[i] != 0.0_f32,
       ensures
           result.len() == x.len(),
+
 vc-code: |-
   {
       // impl-start
@@ -50,7 +51,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn mid(p: int, q: int) -> (m: int)
       // | ... | ??? | ... |
       //        p m   q
@@ -20,10 +17,8 @@ vc-spec: |-
           p <= m <= q,
           m - p <= q - m,
           0 <= (q - m) - (m - p) <= 1,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       proof {
@@ -31,10 +26,8 @@ vc-code: |-
       }
       p // unreachable
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

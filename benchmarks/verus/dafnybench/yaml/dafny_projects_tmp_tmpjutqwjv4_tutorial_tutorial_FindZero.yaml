@@ -15,12 +15,9 @@ vc-preamble: |-
       else { fib((n - 1) as nat) + fib((n - 2) as nat) }
   }
   
-  
   spec fn sorted(a: Seq<int>) -> bool {
       forall|n: int, m: int| 0 <= n < m < a.len() ==> a[n] <= a[m]
   }
-  
-  
   
   // https://dafny.org/dafny/OnlineTutorial/ValueTypes
   
@@ -28,7 +25,6 @@ vc-preamble: |-
   {
       s.subrange(0, i).add(seq![v]).add(s.subrange(i + 1, s.len() as int))
   }
-  
   
   // https://dafny.org/dafny/OnlineTutorial/Lemmas
   
@@ -41,7 +37,6 @@ vc-preamble: |-
           (if a[0] { 1nat } else { 0nat }) + count(a.subrange(1, a.len() as int))
       }
   }
-  
   
   struct Node {
       next: Seq<int>, // Using int IDs instead of references for simplicity
@@ -68,11 +63,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn find_zero(a: &[int]) -> (index: i32)
       requires 
           forall|i: int| #![trigger a[i]] 0 <= i < a.len() ==> 0 <= a[i],
@@ -80,18 +72,14 @@ vc-spec: |-
       ensures 
           index < 0 ==> forall|i: int| #![trigger a[i]] 0 <= i < a.len() ==> a[i] != 0,
           0 <= index ==> index < a.len() && a[index as int] == 0,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       -1
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

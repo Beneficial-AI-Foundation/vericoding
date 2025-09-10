@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.ndarray.flat: A 1-D iterator over the array.
   
   This operation provides a flattened view of the array, allowing access
@@ -14,10 +13,10 @@ vc-description: |-
   Precondition: True (no special preconditions for flattening)
   Postcondition: The result contains the same elements in the same order,
                  providing a 1D view of the input array
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -37,6 +36,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,14 +1,13 @@
 vc-description: |-
-  /*
   Return elements chosen from x or y depending on condition.
   For each position i, if condition[i] is True, take x[i], otherwise take y[i].
   
   Specification: numpy_where returns an array where elements are chosen from x when condition is True,
   and from y when condition is False.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -33,6 +32,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

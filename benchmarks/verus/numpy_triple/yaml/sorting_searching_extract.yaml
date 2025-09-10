@@ -1,15 +1,14 @@
 vc-description: |-
-  /*
   Return the elements of an array that satisfy some condition.
   The result size is the number of True entries in the condition array.
   
   Specification: extract returns elements from arr where condition is True.
   The result contains exactly those elements from arr at positions where condition is True,
   preserving their original order. The result size m equals the number of True values in condition.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -40,6 +39,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

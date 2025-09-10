@@ -32,7 +32,6 @@ vc-preamble: |-
   
   // Ekki má breyta þessu falli.
   
-  
   ///////////////////////////////////////////////////////////////
   // Hér lýkur óbreytanlega hluta skrárinnar.
   // Hér fyrir aftan er sá hluti sem þið eigið að breyta til að
@@ -43,28 +42,21 @@ vc-preamble: |-
   // Klárið að forrita þetta fall.
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   exec fn sort(m: Multiset<int>) -> (s: Vec<int>)
       // Setjið viðeigandi ensures klausur hér
       ensures 
           s@.to_multiset() == m,
           forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       Vec::new()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

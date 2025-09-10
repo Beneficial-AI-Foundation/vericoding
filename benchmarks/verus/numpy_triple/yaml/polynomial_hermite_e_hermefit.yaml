@@ -1,13 +1,13 @@
 vc-description: |-
-  /*
   Least squares fit of Hermite series to data.
   Returns the coefficients of a HermiteE series of degree `deg` that is
   the least squares fit to the data values `y` given at points `x`.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   spec fn hermite_e(n: nat, x: int) -> int
       decreases n
@@ -22,7 +22,7 @@ vc-helpers: |-
           x * hermite_e(n_minus_1, x) - ((n - 1) as int) * hermite_e(n_minus_2, x)
       }
   }
-
+  
   spec fn sum_hermite_series(coeffs: Seq<int>, x: int, deg: nat) -> int
       decreases deg
   {
@@ -35,7 +35,7 @@ vc-helpers: |-
           coeffs[deg as int] * hermite_e(deg, x) + sum_hermite_series(coeffs, x, prev_deg)
       }
   }
-
+  
   spec fn sum_squared_residuals_rec(x: Seq<int>, y: Seq<int>, coeffs: Seq<int>, n: nat) -> int
       decreases n
   {
@@ -56,6 +56,7 @@ vc-helpers: |-
           }
       }
   }
+
 vc-spec: |-
   fn hermefit(x: Vec<i32>, y: Vec<i32>, deg: usize) -> (result: Vec<i32>)
       requires 
@@ -68,6 +69,7 @@ vc-spec: |-
           /* Least squares property: the result minimizes sum of squared residuals */
           /* When deg+1 == data points, polynomial passes through all points exactly */
           /* Orthogonality condition: residuals are orthogonal to basis functions */
+
 vc-code: |-
   {
       // impl-start
@@ -75,7 +77,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -1,13 +1,13 @@
 vc-description: |-
-  /*
   Return a string representation of the data in a vector
   
   Specification: array_str returns a formatted string representation of the vector data
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -16,6 +16,7 @@ vc-spec: |-
           result@.len() > 0,
           a.len() == 0 ==> result@ == "[]"@,
           a.len() > 0 ==> result@[0] == '[' && result@[(result@.len() - 1) as int] == ']',
+
 vc-code: |-
   {
       // impl-start
@@ -23,7 +24,8 @@ vc-code: |-
       "[]".to_string()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

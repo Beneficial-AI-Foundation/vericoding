@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.linalg.diagonal: Returns specified diagonals of a matrix.
   
   Extracts the diagonal elements from a matrix. The offset parameter
@@ -18,10 +17,10 @@ vc-description: |-
                  - For offset = 0: result[i] = x[i][i] (main diagonal)
                  - The result vector has the same type as the input matrix elements
                  - The extraction respects the mathematical definition of matrix diagonals
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -30,7 +29,7 @@ vc-spec: |-
   spec fn spec_min(a: int, b: int) -> int {
       if a <= b { a } else { b }
   }
-
+  
   fn numpy_diagonal(x: Vec<Vec<f32>>, offset: i32) -> (result: Vec<f32>)
       requires 
           x.len() > 0,
@@ -55,6 +54,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

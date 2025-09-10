@@ -1,7 +1,6 @@
 vc-description: |-
-  /*
   numpy.r_: Translates slice objects to concatenation along the first axis.
-      
+  
   This is a simple way to build up arrays quickly. There are two main use cases:
   1. If the index expression contains comma separated arrays, then stack them along their first axis
   2. If the index expression contains slice notation or scalars then create a 1-D array with a range
@@ -22,10 +21,10 @@ vc-description: |-
   4. No elements are duplicated or lost (bijective mapping)
   5. The concatenation preserves all original values exactly
   6. Order is preserved within each original array
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -46,6 +45,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

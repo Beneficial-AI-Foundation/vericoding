@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that counts the unique elements from a sorted array.
   
   -----Input-----
@@ -9,10 +8,10 @@ vc-description: |-
   -----Output-----
   The output is a single integer:
   Returns the number of unique elements (k).
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -29,7 +28,7 @@ vc-code: |-
       0
       // impl-end
   }
-
+  
   proof fn remove_duplicates_spec_satisfied(nums: &Vec<i32>)
       requires forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] <= nums[j],
   {
@@ -37,7 +36,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       /* 
@@ -161,3 +159,4 @@ vc-postamble: |-
       ]
       */
   }
+

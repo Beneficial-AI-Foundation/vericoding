@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus function that calculates how much water can be trapped between elevations after it rains. The input is a vector of non-negative integers representing an elevation map. Each index traps water depending on the min of max heights to its left and right.
   
   Input:
@@ -7,10 +6,10 @@ vc-description: |-
   
   Output:
   - A natural number: total units of water that can be trapped.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -29,6 +28,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

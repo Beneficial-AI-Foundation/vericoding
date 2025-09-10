@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task involves computing three times a given integer. Given an integer, the goal is to produce a value that is exactly three times its value.
   
   Input:
@@ -12,10 +11,10 @@ vc-description: |-
   
   Note:
   There are no additional preconditions.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -35,6 +34,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

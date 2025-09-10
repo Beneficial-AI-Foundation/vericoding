@@ -47,11 +47,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn DSpMSpV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], X_crd1: &[nat], X_len: nat,
              v_val: &[int], v_crd: &[nat]) -> (result: Vec<int>)
       // X requirements 
@@ -78,15 +75,12 @@ vc-spec: |-
           } else {
               0
           }})
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       Vec::new()
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

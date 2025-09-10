@@ -30,24 +30,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   proof fn queryFast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
       requires 0 <= i <= j <= a.len(),
                is_prefix_sum_for(a, c)
       ensures r == sum(a, i, j)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

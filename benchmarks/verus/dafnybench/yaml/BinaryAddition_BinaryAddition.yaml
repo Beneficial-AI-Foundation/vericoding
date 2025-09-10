@@ -93,27 +93,20 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn binary_addition(s: &[bool; 10], t: &[bool; 10]) -> (sresult: Vec<bool>) // Generated program for bit addition
       requires s.len() == 10 && t.len() == 10
       ensures sresult.len() == 10,
               bit_addition(s, t) == sresult@, // Verification of correctness
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       Vec::new()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

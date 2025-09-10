@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Test element-wise for negative infinity, return result as bool array.
   
   This function tests each element according to IEEE 754 floating-point standard:
@@ -12,17 +11,17 @@ vc-description: |-
   3. Distinction from NaN: negative infinity and NaN are mutually exclusive
   4. Result preserves shape: output vector has same length as input
   5. Finite values: All normal, subnormal, and zero values return false
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
 
 vc-spec: |-
   spec fn is_neg_infinity(x: f32) -> bool;
-
+  
   fn isneginf(x: Vec<f32>) -> (result: Vec<bool>)
       requires x.len() > 0,
       ensures
@@ -40,6 +39,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

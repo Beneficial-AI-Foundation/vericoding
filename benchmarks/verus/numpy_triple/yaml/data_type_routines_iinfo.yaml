@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Machine limits for integer types
   
   Takes an integer type specification and returns information about 
@@ -15,10 +14,10 @@ vc-description: |-
     - Correct minimum value (negative for signed types, 0 for unsigned)
     - Correct maximum value based on the bit representation
     - Consistency between bits and min/max values
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -33,7 +32,7 @@ vc-spec: |-
       /* Largest integer expressible by the type */
       max: i64,
   }
-
+  
   /* Enumeration of supported integer types */
   enum IntType {
       /* 8-bit signed integer type */
@@ -53,7 +52,7 @@ vc-spec: |-
       /* 64-bit unsigned integer type */
       UInt64,
   }
-
+  
   fn iinfo(int_type: IntType) -> (info: IntInfo)
       ensures
           match int_type {
@@ -80,6 +79,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

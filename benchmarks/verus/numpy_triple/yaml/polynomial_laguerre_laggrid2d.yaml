@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.polynomial.laguerre.laggrid2d: Evaluate a 2-D Laguerre series on the Cartesian product of x and y.
   
   This function computes the values p(a,b) = ∑_{i,j} c_{i,j} * L_i(a) * L_j(b)
@@ -23,10 +22,10 @@ vc-description: |-
   2. Each element result[i][j] is the sum over all coefficient terms c[k][l] * L_k(x[i]) * L_l(y[j])
   3. For constant coefficients (c[0][0] only), the result should be constant
   4. The function is linear in the coefficients
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -52,6 +51,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (usize, usize))
     requires 
         a.len() > 0,
@@ -32,18 +29,14 @@ vc-spec: |-
         result.0 < a.len(),
         result.1 < a@[0].len(),
         a@[result.0 as int]@[result.1 as int] == key
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     (0, 0)
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {
   }
   

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.ndarray.flatten: Return a copy of the array collapsed into one dimension.
   
   Flattens a 2D matrix into a 1D vector using row-major (C-style) order.
@@ -21,10 +20,10 @@ vc-description: |-
   - The result has size rows * cols
   - Each element at position (row * cols + col) equals the original element at (row, col)
   - Elements are ordered by row-major traversal (row 0 first, then row 1, etc.)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -50,6 +49,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

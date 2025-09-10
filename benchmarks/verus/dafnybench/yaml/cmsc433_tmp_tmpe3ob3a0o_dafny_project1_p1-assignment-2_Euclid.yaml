@@ -17,19 +17,15 @@ vc-preamble: |-
   //
   // 2023-09-22 2:50 pm   Fixed typo in Problem 3.
   
-  
   // Question 1 (5 points)
   //
   // Fill in a requires clause that enables Verus to verify
   // method PlusOne
   
-  
-  
   // Question 2 (5 points)
   //
   // Fill in requires clause(s) that enable(s) Verus to verify the array bounds
   // in method Swap (which swaps elements i and j in array a).
-  
   
   // Question 3 (5 points)
   //
@@ -38,13 +34,11 @@ vc-preamble: |-
   // the Verus division and mod operators, respectively). By definition, the
   // remainder must be non-negative.
   
-  
   // Question 4 (5 points)
   //
   // Give ensures clause(s) asserting that the return value has the same
   // length as array a and contains as its elements the sum of the
   // corresponding elements in arrays a and b.
-  
   
   // Question 5 (10 points)
   
@@ -57,23 +51,17 @@ vc-preamble: |-
   // You do *not* need to implement the method!
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn euclid(m: int, n: int) -> (gcd: int)
       requires m > 1 && n > 1 && m >= n  // TODO
       ensures gcd > 0 && gcd <= n && gcd <= m && m % gcd == 0 && n % gcd == 0 // TODO
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     n
   }
-  // </vc-code>
 
 vc-postamble: |-
   // Question 7 (20 points)
@@ -81,14 +69,12 @@ vc-postamble: |-
   // Implement, and have Verus verify, the method IsPrime below, which returns true
   // if and only if the given positive integer is prime.
   
-  
   // Question 8 (20 points)
   //
   // Implement, and have Verus verify, the method Reverse below, which returns a new array
   // aRev consisting of the elements of a, but in reverse order.  To create a new 
   // array of ints use the Verus command "Vec::with_capacity(...)", where "..." is the number
   // of elements in the array.
-  
   
   // Question 9 (20 points)
   //

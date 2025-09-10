@@ -1,10 +1,9 @@
 vc-description: |-
-  /*
   Return the character for the minimum-size type to which given types can be safely cast
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -21,17 +20,17 @@ vc-helpers: |-
           _   => 6,  // other types (lowest precedence)
       }
   }
-
+  
   /* Check if a type character is in the given typeset */
   spec fn char_in_typeset(c: char, typeset: Seq<char>) -> bool {
       typeset.contains(c)
   }
-
+  
   /* Filter characters that are in the typeset */
   spec fn filter_chars_in_typeset(typechars: Seq<char>, typeset: Seq<char>) -> Seq<char> {
       typechars.filter(|c: char| char_in_typeset(c, typeset))
   }
-
+  
   /* Find minimum precedence character in a sequence */
   spec fn min_precedence_char(chars: Seq<char>) -> char
       decreases chars.len()
@@ -82,6 +81,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -34,7 +34,6 @@ vc-preamble: |-
       numbers.filter(|i: int| i < threshold)
   }
   
-  
   /*
   */
   
@@ -47,7 +46,6 @@ vc-preamble: |-
   {
       Set::new(|x: int| exists |i: int| 0 <= i < index && i < nums.len() && nums[i] == x)
   }
-  
   
   // lemma numElemsOfSet(a: seq<int>)
   //   requires sorted(a)
@@ -77,14 +75,11 @@ vc-preamble: |-
   //     assert |s| == |a|;
   // }
   
-  
   /*
-  
   
   */
   
   // TODO play with this for keys==Contents
-  
   
   // ghost predicate SortedSeq(a: seq<int>)
   //   //sequence is sorted from left to right
@@ -208,11 +203,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   // method GetInsertIndex(a: array<int>, limit: int, x:int) returns (idx:int)
   //   // get index so that array stays sorted
   //   requires x !in a[..]
@@ -233,15 +225,12 @@ vc-spec: |-
           sorted_seq(a@.subrange(0, limit as int)),
           idx > 0 ==> a@[idx as int - 1] < x,
           idx < limit ==> x < a@[idx as int],
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       0
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

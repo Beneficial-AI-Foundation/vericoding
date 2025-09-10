@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that determines whether a given string contains all 5 English vowels: a, e, i, o, u.
   
   The check is case-insensitive, meaning that both uppercase and lowercase vowels count.
@@ -11,11 +10,12 @@ vc-description: |-
   -----Output-----
   The output is true or false:
   Returns true if the input string contains all 5 vowels (a, e, i, o, u), false otherwise.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   spec fn to_lower(c: char) -> char {
       if 'A' <= c && c <= 'Z' {
@@ -28,6 +28,7 @@ vc-helpers: |-
   spec fn normalize_str(s: &str) -> Seq<char> {
       s.view().map_values(|c| to_lower(c))
   }
+
 vc-spec: |-
   fn all_vowels(s: &str) -> (result: bool)
       ensures
@@ -38,6 +39,7 @@ vc-spec: |-
               normalize_str(s).contains('o') &&
               normalize_str(s).contains('u')
           ),
+
 vc-code: |-
   {
       // impl-start
@@ -45,7 +47,8 @@ vc-code: |-
       false
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

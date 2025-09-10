@@ -1,7 +1,6 @@
 vc-description: |-
-  /*
   numpy.atleast_3d: View a 1D vector as a 3D array with shape (1, n, 1).
-      
+  
   This is a specialization of numpy.atleast_3d for 1D input.
   The function reshapes a 1D array of shape (n,) into a 3D array 
   of shape (1, n, 1) while preserving all elements.
@@ -17,11 +16,12 @@ vc-description: |-
   2. Shape expansion: A 1D shape (n,) becomes 3D shape (1, n, 1)
   3. Order preservation: Elements maintain their relative ordering
   4. The output contains exactly n elements total
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -36,6 +36,7 @@ vc-spec: |-
               let value = middle[0];
               value == arr[i]
           }
+
 vc-code: |-
   {
       // impl-start
@@ -43,7 +44,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

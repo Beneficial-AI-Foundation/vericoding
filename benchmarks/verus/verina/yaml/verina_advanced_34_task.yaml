@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that finds the length of the longest strictly increasing subsequence from a given list of integers.
   
   -----Input-----
@@ -8,10 +7,10 @@ vc-description: |-
   -----Output-----
   The output is an integer:
   Returns a number representing the length of the longest strictly increasing subsequence found in the input list.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -31,6 +30,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

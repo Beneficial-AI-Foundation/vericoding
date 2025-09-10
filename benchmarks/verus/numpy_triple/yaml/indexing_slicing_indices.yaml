@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Generate indices for a 1D grid of given size.
   Returns a 2D array where the first dimension has size 1 and contains 
   the indices [0, 1, 2, ..., n-1]
@@ -11,10 +10,10 @@ vc-description: |-
   3. Each position i contains the value i
   4. The indices are in ascending order
   5. The result covers all valid indices for the given dimension
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -36,6 +35,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

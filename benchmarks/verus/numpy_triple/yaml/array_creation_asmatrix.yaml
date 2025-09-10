@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Interpret the input as a matrix. In our simplified model, this represents
   a 1D vector as a matrix type. Since numpy.asmatrix doesn't make a copy
   if the input is already a matrix or ndarray, this function acts as an
@@ -17,11 +16,12 @@ vc-description: |-
   2. The length is preserved  
   3. Element order is preserved
   4. All original values are maintained
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -29,6 +29,7 @@ vc-spec: |-
       ensures
           result.len() == data.len(),
           forall|i: int| 0 <= i < data.len() ==> result[i] == data[i],
+
 vc-code: |-
   {
       // impl-start
@@ -36,7 +37,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

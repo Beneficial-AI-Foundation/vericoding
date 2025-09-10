@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.std: Compute the standard deviation along the specified axis.
   
   Returns the standard deviation, a measure of the spread of a distribution,
@@ -24,10 +23,10 @@ vc-description: |-
   3. When ddof = 0, uses population standard deviation (divide by N)
   4. When ddof = 1, uses sample standard deviation (divide by N-1)
   5. Mathematical correctness: the formula exactly matches NumPy's implementation
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -47,6 +46,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

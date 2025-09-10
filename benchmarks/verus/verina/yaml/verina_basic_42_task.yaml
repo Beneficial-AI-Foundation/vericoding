@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus method that counts the number of digit characters within a given string. A digit is any character between '0' and '9'. The method should determine how many such digit characters appear in the input.
   
   Input:
@@ -12,19 +11,22 @@ vc-description: |-
   
   Note:
   There are no additional preconditions; the method works for any provided string.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   spec fn is_digit(c: char) -> bool {
       '0' <= c && c <= '9'
   }
+
 vc-spec: |-
   fn count_digits(s: &str) -> (result: usize)
       ensures
           result >= 0,
+
 vc-code: |-
   {
       // impl-start
@@ -32,8 +34,8 @@ vc-code: |-
       0
       // impl-end
   }
+
 vc-postamble: |-
-  
   }
   fn main() {
       /* 
@@ -121,3 +123,4 @@ vc-postamble: |-
       ]
       */
   }
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Returns the length of each string element in the vector.
   For Unicode strings, this counts the number of Unicode code points.
   
@@ -13,10 +12,10 @@ vc-description: |-
   - Length is always non-negative (natural number)
   - Empty strings have length 0
   - Length is measured in Unicode code points for Unicode strings
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -40,6 +39,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.full: Return a new array of given shape and type, filled with fill_value.
   
   Creates a new vector of size n where every element is set to the specified
@@ -35,11 +34,12 @@ vc-description: |-
      - If two vectors are created with full using the same fill_value and size,
        they are element-wise equal
      - full preserves the fill_value exactly (no transformation or casting)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -53,6 +53,7 @@ vc-spec: |-
           /* First and last element property (when n > 0) */
           n > 0 ==> result[0] == fill_value,
           n > 0 ==> result[(n-1) as int] == fill_value,
+
 vc-code: |-
   {
       // impl-start
@@ -60,7 +61,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

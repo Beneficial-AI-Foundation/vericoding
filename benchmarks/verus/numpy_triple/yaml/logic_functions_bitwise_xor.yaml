@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.bitwise_xor: Compute the bit-wise XOR of two arrays element-wise.
   
   Computes the bit-wise XOR of the underlying binary representation of
@@ -20,11 +19,12 @@ vc-description: |-
   - XOR is associative: (a XOR b) XOR c = a XOR (b XOR c)
   - XOR with zero is identity: x XOR 0 = x
   - XOR is self-inverse: x XOR x = 0
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -37,6 +37,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < result.len() && x1[i] == 0 ==> result[i] == x2[i],
           forall|i: int| 0 <= i < result.len() && x2[i] == 0 ==> result[i] == x1[i],
           forall|i: int| 0 <= i < result.len() && x1[i] == x2[i] ==> result[i] == 0,
+
 vc-code: |-
   {
       // impl-start
@@ -44,7 +45,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

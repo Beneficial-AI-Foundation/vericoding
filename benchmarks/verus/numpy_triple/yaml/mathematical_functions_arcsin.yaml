@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.arcsin: Inverse sine, element-wise.
   
   Computes the inverse sine (arcsine) of each element in the input array.
@@ -20,10 +19,10 @@ vc-description: |-
   - sin(result[i]) = x[i] (inverse relationship holds)
   - arcsin is monotonic: if x[i] ≤ x[j] then result[i] ≤ result[j]
   - Special values: arcsin(0) = 0, arcsin(1) = π/2, arcsin(-1) = -π/2
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -52,7 +51,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

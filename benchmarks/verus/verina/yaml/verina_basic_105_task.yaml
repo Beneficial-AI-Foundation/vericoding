@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task involves computing the element-wise product of two integer arrays. For each position in the arrays, the corresponding numbers are multiplied together. If an element is missing in one of the arrays at a given index, the missing value is treated as 0. When both arrays provide values for every index, the resulting array will contain the product of the two numbers at each corresponding index.
   
   -----Input-----
@@ -15,11 +14,12 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the arrays are of equal length for the theorem specification, although the implementation defaults missing indices to 0.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -28,6 +28,7 @@ vc-spec: |-
       ensures
           result.len() == a.len(),
           forall|i: int| 0 <= i < a.len() ==> result[i] == a[i] * b[i],
+
 vc-code: |-
   {
       // impl-start
@@ -35,8 +36,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       /*
@@ -114,3 +115,4 @@ vc-postamble: |-
       ]
       */
   }
+

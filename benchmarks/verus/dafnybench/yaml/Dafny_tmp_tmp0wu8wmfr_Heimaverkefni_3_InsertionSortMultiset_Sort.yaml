@@ -14,7 +14,6 @@ vc-preamble: |-
   
   // Insertion sort með hjálp helmingunarleitar.
   
-  
   proof fn search(s: Seq<i32>, x: i32) -> (k: usize)
       // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
       requires 
@@ -32,27 +31,20 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   proof fn sort(m: Multiset<i32>) -> (r: Seq<i32>)
       ensures 
           r.to_multiset() == m
           && forall|p: int, q: int| 0 <= p < q < r.len() ==> r[p] <= r[q],
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
     assume(false);
     seq![]
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

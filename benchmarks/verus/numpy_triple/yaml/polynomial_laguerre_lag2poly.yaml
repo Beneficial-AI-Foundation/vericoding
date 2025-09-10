@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Convert a Laguerre series to a polynomial.
   Convert an array representing the coefficients of a Laguerre series,
   ordered from lowest degree to highest, to an array of the coefficients
@@ -7,16 +6,16 @@ vc-description: |-
   
   Specification: lag2poly converts Laguerre series coefficients to standard polynomial coefficients.
   The converted polynomial evaluates to the same values as the original Laguerre series.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
   /* Helper function to evaluate a Laguerre polynomial at a given point */
   spec fn evaluate_laguerre_polynomial(c: Seq<f32>, x: f32) -> f32;
-
+  
   /* Helper function to evaluate a standard polynomial at a given point */
   spec fn evaluate_polynomial(coeffs: Seq<f32>, x: f32) -> f32;
 
@@ -41,6 +40,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

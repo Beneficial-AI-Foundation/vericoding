@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   A Legendre series class.
   
       The Legendre class provides the standard Python numerical methods
@@ -25,10 +24,10 @@ vc-description: |-
   Create a Legendre series from coefficients
   
   Specification: mkLegendre creates a valid Legendre series representation
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -45,7 +44,7 @@ vc-spec: |-
       /* Symbol name for variable representation */
       symbol: String,
   }
-
+  
   fn mk_legendre(
       coef: Vec<f64>,
       domain: [f64; 2],
@@ -75,6 +74,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

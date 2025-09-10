@@ -1,12 +1,11 @@
 vc-description: |-
-  /*
   Returns True if cast between data types can occur according to the casting rule
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* Data type enumeration for casting rules */
   #[derive(PartialEq, Eq)]
   pub enum CastingRule {
@@ -16,7 +15,7 @@ vc-preamble: |-
       SameKind,     /* safe casts or casts within a kind */
       Unrestricted, /* any data conversions may be done */
   }
-
+  
   /* Data type enumeration for supported numeric types */
   #[derive(PartialEq, Eq)]
   pub enum DType {
@@ -30,6 +29,7 @@ vc-preamble: |-
       Complex128,
       Bool,
   }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -37,10 +37,10 @@ vc-spec: |-
       ensures
           /* Basic reflexivity: any type can cast to itself with any rule */
           (from_dtype == to_dtype ==> result == true) &&
-          
+  
           /* No casting rule: only identical types allowed */
           (casting == CastingRule::No ==> (result == true <==> from_dtype == to_dtype)) &&
-          
+  
           /* Safe casting preserves values */
           (casting == CastingRule::Safe ==> 
               (result == true ==> 
@@ -59,7 +59,7 @@ vc-spec: |-
                    ((from_dtype == DType::Float32 || from_dtype == DType::Float64) && (to_dtype == DType::Complex64 || to_dtype == DType::Complex128)) ||
                    /* Same type is always safe */
                    (from_dtype == to_dtype)))) &&
-          
+  
           /* Same kind casting allows within numeric families */
           (casting == CastingRule::SameKind ==> 
               (result == true ==> 
@@ -77,12 +77,13 @@ vc-spec: |-
                     (to_dtype == DType::Float32 || to_dtype == DType::Float64 || to_dtype == DType::Complex64 || to_dtype == DType::Complex128)) ||
                    ((from_dtype == DType::Float32 || from_dtype == DType::Float64) && 
                     (to_dtype == DType::Complex64 || to_dtype == DType::Complex128))))) &&
-          
+  
           /* Unrestricted casting allows any conversion */
           (casting == CastingRule::Unrestricted ==> result == true) &&
-          
+  
           /* Equiv casting allows same types (byte-order changes only) */
           (casting == CastingRule::Equiv ==> (result == true <==> from_dtype == to_dtype))
+
 vc-code: |-
   {
       // impl-start
@@ -90,7 +91,8 @@ vc-code: |-
       false
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

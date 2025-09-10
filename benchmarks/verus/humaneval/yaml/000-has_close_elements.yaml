@@ -4,7 +4,7 @@ vc-preamble: |-
   use vstd::math::abs;
   use vstd::prelude::*;
   use vstd::slice::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -26,6 +26,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

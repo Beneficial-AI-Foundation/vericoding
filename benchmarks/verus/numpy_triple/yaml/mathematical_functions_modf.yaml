@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.modf: Return the fractional and integral parts of an array, element-wise.
   
   Returns a tuple (fractional_parts, integral_parts) where both parts
@@ -14,11 +13,12 @@ vc-description: |-
   
   Precondition: True (no special preconditions for modf)
   Postcondition: For all indices i, the fractional and integral parts satisfy mathematical properties
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -26,6 +26,7 @@ vc-spec: |-
       ensures
           result.0.len() == x.len(),
           result.1.len() == x.len(),
+
 vc-code: |-
   {
       // impl-start
@@ -33,7 +34,8 @@ vc-code: |-
       (Vec::new(), Vec::new())
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.strings.count: Returns an array with the number of non-overlapping occurrences 
   of substring sub in the range [start, end] for each element.
   
@@ -20,10 +19,10 @@ vc-description: |-
   - For each element, the count represents non-overlapping occurrences of substring
   - If substring is longer than search range, count is 0
   - The count is maximal (greedy non-overlapping matching)
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -53,6 +52,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

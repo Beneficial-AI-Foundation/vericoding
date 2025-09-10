@@ -2,15 +2,15 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn spec_prime_helper(num: int, limit: int) -> (ret:bool) {
       forall|j: int| 2 <= j < limit ==> (#[trigger] (num % j)) != 0
   }
   // pure-end
   // pure-end
-
+  
   spec fn spec_prime(num: int) -> (ret:bool) {
       spec_prime_helper(num, num)
   }
@@ -67,6 +67,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

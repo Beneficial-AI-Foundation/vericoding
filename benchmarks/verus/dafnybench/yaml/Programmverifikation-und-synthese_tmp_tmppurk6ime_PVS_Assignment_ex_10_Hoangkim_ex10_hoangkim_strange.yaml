@@ -26,7 +26,6 @@ vc-preamble: |-
   
   */
   
-  
   //Problem02
   //As you can see below, Verus claims that after executing the following method
   //strange() we will have that 1=2;
@@ -64,8 +63,6 @@ vc-preamble: |-
   
       as we know the statment {1 = 2} is always false. true => false is always false     
   
-  
-  
   */
   
   //Problem 3
@@ -89,25 +86,18 @@ vc-preamble: |-
   It assumes that the square of x is less than 100. In other words, it assumes that x is 
   within the range (0, 10) since the largest possible square less than 100 is 9 * 9 = 81.
   
-  
   */
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn strange()
       ensures 1==2
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   numpy.equal: Return (x1 == x2) element-wise.
   
   Performs element-wise comparison of two arrays and returns a boolean array
@@ -24,10 +23,10 @@ vc-description: |-
   3. Reflexivity: equal(x, x) returns all true
   4. Symmetry: equal(x, y) = equal(y, x)
   5. Result shape matches input shape
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -51,6 +50,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

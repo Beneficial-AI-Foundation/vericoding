@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Index expression builder that creates slice objects for array indexing.
   This is a simplified version of numpy.s_ that creates slice objects
   for use in array indexing operations.
@@ -12,12 +11,12 @@ vc-description: |-
   4. The resulting slice is valid for array indexing operations
   5. The slice preserves the ordering constraints (start ≤ stop when both present)
   6. The step value, if present, is positive for forward slicing
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   /* A slice object representing a range of indices for array slicing.
      Contains start, stop, and step parameters for creating slices. */
   pub struct Slice {
@@ -52,6 +51,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

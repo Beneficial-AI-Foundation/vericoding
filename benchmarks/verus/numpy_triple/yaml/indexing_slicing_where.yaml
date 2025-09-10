@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Return elements chosen from x or y depending on condition.
   Given vectors of equal length for condition, x, and y, constructs a result vector
   where each element is selected from x if the corresponding condition is true,
@@ -27,10 +26,10 @@ vc-description: |-
   The use of Vector types ensures type safety and eliminates the need for
   size compatibility checks at runtime. All vectors must have the same length
   by construction.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -54,6 +53,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

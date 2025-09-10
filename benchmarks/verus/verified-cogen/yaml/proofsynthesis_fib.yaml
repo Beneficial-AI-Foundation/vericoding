@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn fibo(n: int) -> (result:nat)
       decreases n
   {
@@ -13,7 +13,7 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn fibo_fits_i32(n: int) -> (result:bool) {
       fibo(n) < 0x8000_0000
   }
@@ -21,7 +21,7 @@ vc-preamble: |-
 
 vc-helpers: |-
   // pure-end
-
+  
   proof fn fibo_is_monotonic(i: int, j: int)
       // pre-conditions-start
       requires
@@ -66,7 +66,7 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
-
+  
   fn main() {}
+

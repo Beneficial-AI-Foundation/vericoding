@@ -1,14 +1,13 @@
 vc-description: |-
-  /*
   Return a copy of each string element where all tab characters are replaced by spaces
   
   Expand tabs in strings to spaces with configurable tab size
   
   Specification: expandtabs replaces tab characters with appropriate number of spaces
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -43,6 +42,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

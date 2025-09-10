@@ -2,9 +2,9 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
-
+  
   spec fn count<T>(s: Seq<T>, x: T) -> (result:int)
       decreases s.len(),
   {
@@ -20,13 +20,13 @@ vc-preamble: |-
   }
   // pure-end
   // pure-end
-
+  
   spec fn permutes<T>(s1: Seq<T>, s2: Seq<T>) -> (result:bool) {
       forall|x: T| count(s1, x) == count(s2, x)
   }
   // pure-end
   // pure-end
-
+  
   spec fn inner_expr_lemma_update_effect_on_count<T>(s: Seq<T>, i: int, v: T, x: T) -> (result:bool) {
       count(s.update(i, v), x) == if v == x && s[i] != x {
           count(s, x) + 1
@@ -113,9 +113,9 @@ vc-helpers: |-
       l_prime
       // impl-end
   }
-
+  
   // pure-end
-
+  
   proof fn lemma_update_effect_on_count<T>(s: Seq<T>, i: int, v: T, x: T)
       // pre-conditions-start
       requires
@@ -142,9 +142,9 @@ vc-helpers: |-
       // impl-end
   }
   // pure-end
-
+  
   // pure-end
-
+  
   proof fn lemma_swapping_produces_a_permutation<T>(s: Seq<T>, i: int, j: int)
       // pre-conditions-start
       requires
@@ -187,6 +187,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+

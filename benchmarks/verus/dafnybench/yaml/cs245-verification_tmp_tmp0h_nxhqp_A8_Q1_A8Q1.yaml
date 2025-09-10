@@ -21,28 +21,21 @@ vc-preamble: |-
   */
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn A8Q1(y0: int, x: int) -> (z: int)
       requires y0 >= 0
       ensures z == power(x, y0)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       proof {
           assume(false);
       }
       unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
   fn main() {}
   
   }

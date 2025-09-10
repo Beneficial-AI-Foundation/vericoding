@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Base 2 logarithm of e
   {
     "name": "NPY_LOG2E",
@@ -15,17 +14,19 @@ vc-description: |-
       2. It satisfies the relationship: 2^(NPY_LOG2E) = e
       3. It is the reciprocal of ln(2) (i.e., NPY_LOG2E = 1/ln(2))
       4. It is used to convert natural logarithms to base 2 logarithms via: log₂(x) = ln(x) * NPY_LOG2E
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
   fn NPY_LOG2E() -> (result: f64)
       ensures
           result == 1.442695040888963407359924681001892137,
+
 vc-code: |-
   {
       // impl-start
@@ -33,7 +34,8 @@ vc-code: |-
       1.442695040888963407359924681001892137
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

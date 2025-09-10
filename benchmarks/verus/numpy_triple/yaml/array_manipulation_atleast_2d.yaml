@@ -1,7 +1,6 @@
 vc-description: |-
-  /*
   numpy.atleast_2d: View inputs as arrays with at least two dimensions.
-      
+  
   For a 1D vector input, this function converts it to a 2D array (matrix)
   with shape (1, n), where the input becomes the single row of the matrix.
   
@@ -21,11 +20,12 @@ vc-description: |-
   - The result is a matrix with 1 row and n columns
   - The single row contains all elements from the input vector in the same order
   - The transformation preserves all numerical values exactly
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -35,6 +35,7 @@ vc-spec: |-
           exists|row: Vec<f32>| result[0] == row && 
           row.len() == arr.len() &&
           forall|i: int| 0 <= i < arr.len() ==> row[i] == arr[i]
+
 vc-code: |-
   {
       // impl-start
@@ -42,7 +43,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

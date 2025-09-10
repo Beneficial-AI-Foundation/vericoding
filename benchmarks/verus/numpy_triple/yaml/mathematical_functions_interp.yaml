@@ -1,13 +1,13 @@
 vc-description: |-
-  /*
   One-dimensional linear interpolation for monotonically increasing sample points.
   Returns the one-dimensional piecewise linear interpolant to a function with given
   discrete data points (xp, fp), evaluated at x.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -23,6 +23,7 @@ vc-spec: |-
               (x[k] <= xp[0] ==> result[k] == fp[0]) &&
               (x[k] >= xp[xp.len() - 1] ==> result[k] == fp[fp.len() - 1])
           )
+
 vc-code: |-
   {
       // impl-start
@@ -30,7 +31,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

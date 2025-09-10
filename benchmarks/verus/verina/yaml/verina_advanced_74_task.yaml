@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires writing a Verus function called `solution` that takes a vector of natural numbers `nums`. The function should calculate and return the sum of values obtained for each subarray, where the value for a subarray is the square of the count of distinct elements within that subarray.
   
   Input:
@@ -12,11 +11,12 @@ vc-description: |-
   Output:
   The output is a natural number:
   Returns the total sum of squared distinct counts for all subarrays.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -26,6 +26,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < nums.len() ==> #[trigger] nums[i] >= 1 && #[trigger] nums[i] <= 100,
       ensures
           result >= 0,
+
 vc-code: |-
   {
       // impl-start
@@ -33,7 +34,8 @@ vc-code: |-
       0
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

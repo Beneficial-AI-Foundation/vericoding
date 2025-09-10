@@ -10,11 +10,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn find_even_numbers(arr: &[int]) -> (even_numbers: Vec<int>)
       ensures
           // All even numbers from arr are in the result
@@ -28,15 +25,12 @@ vc-spec: |-
               exists|n: int, m: int| 0 <= n < m < arr.len() && 
                   #[trigger] even_numbers[k] == arr[n] && 
                   #[trigger] even_numbers[l] == arr[m]
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       Vec::new()
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {

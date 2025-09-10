@@ -10,11 +10,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn replace_with_colon(s: &str) -> (v: String)
       ensures 
           v@.len() == s@.len(),
@@ -25,15 +22,12 @@ vc-spec: |-
                   v@[i] == s@[i]
               }
           }
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
       unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
   fn main() {}

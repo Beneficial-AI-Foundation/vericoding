@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task involves updating an element within a 2-dimensional array. The goal is to modify only a specific inner array by changing one of its elements to a new value while keeping every other element and all other inner arrays unchanged.
   
   -----Input-----
@@ -17,11 +16,12 @@ vc-description: |-
   
   -----Note-----
   It is assumed that index1 is a valid index for the outer array and that index2 is a valid index within the corresponding inner array.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
   fn update_inner(a: Vec<nat>, idx: usize, val: nat) -> (result: Vec<nat>)
       requires idx < a.len(),
@@ -31,6 +31,7 @@ vc-helpers: |-
       result.set(idx, val);
       result
   }
+
 vc-spec: |-
   fn modify_array_element(arr: Vec<Vec<nat>>, index1: usize, index2: usize, val: nat) -> (result: Vec<Vec<nat>>)
       requires
@@ -41,6 +42,7 @@ vc-spec: |-
           forall|i: int| 0 <= i < arr.len() && i != index1 ==> result[i] == arr[i],
           forall|j: int| 0 <= j < arr[index1 as int].len() && j != index2 ==> result[index1 as int][j] == arr[index1 as int][j],
           result[index1 as int][index2 as int] == val,
+
 vc-code: |-
   {
       // impl-start
@@ -48,8 +50,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {
       /* 
@@ -138,3 +140,4 @@ vc-postamble: |-
       ]
       */
   }
+

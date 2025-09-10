@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   Evaluate a 3-D Laguerre series at points (x, y, z).
   The mathematical formula is: p(x,y,z) = sum_{i,j,k} c_{i,j,k} * L_i(x) * L_j(y) * L_k(z)
   where L_i(x), L_j(y) and L_k(z) are the Laguerre polynomials.
@@ -8,11 +7,12 @@ vc-description: |-
   The result has the same shape as the input x, y, and z vectors.
   The function evaluates a trivariate Laguerre polynomial series
   using the tensor product of 1-D Laguerre polynomials.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -34,6 +34,7 @@ vc-spec: |-
           /* General case: evaluates 3D Laguerre series */
           forall|i: int| 0 <= i < result.len() ==> 
               exists|val: f32| result[i] == val,
+
 vc-code: |-
   {
       // impl-start
@@ -41,7 +42,8 @@ vc-code: |-
       Vec::new()
       // impl-end
   }
-vc-postamble: |-
 
+vc-postamble: |-
   }
   fn main() {}
+

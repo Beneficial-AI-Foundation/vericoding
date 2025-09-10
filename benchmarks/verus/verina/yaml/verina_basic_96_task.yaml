@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   This task requires swapping two integer values. Given two integers as input, the objective is to produce an output where their order is reversed: the first element of the output corresponds to the second input and the second element corresponds to the first input.
   
   Input:
@@ -14,10 +13,10 @@ vc-description: |-
   
   Note:
   There are no additional preconditions for this task. The function simply returns a swapped tuple of its two input integers.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,7 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {
       // Invalid Inputs
@@ -102,3 +100,4 @@ vc-postamble: |-
       //     }
       // ]
   }
+

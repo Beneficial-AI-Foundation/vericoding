@@ -1,5 +1,4 @@
 vc-description: |-
-  /*
   The problem is about processing a sequence of integer operations to determine cumulative results and identify potential negative outcomes. Given a list of integers, the task is to generate an array where the first element is 0 and each subsequent element is the cumulative sum of the operations performed sequentially. Additionally, the solution should check whether any of these cumulative values (after the initial 0) is negative, and return a corresponding boolean flag.
   
   Input:
@@ -13,10 +12,10 @@ vc-description: |-
   
   Note:
   The function should also correctly handle an empty list of operations.
-  */
+
 vc-preamble: |-
   use vstd::prelude::*;
-
+  
   verus! {
 
 vc-helpers: |-
@@ -38,6 +37,6 @@ vc-code: |-
   }
 
 vc-postamble: |-
-
   }
   fn main() {}
+
