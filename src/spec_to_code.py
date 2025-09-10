@@ -55,15 +55,17 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"""
 Supported languages: {", ".join(available_languages.keys())}
-Supported LLM providers: claude, openai, deepseek
+Supported LLM providers: claude-sonnet, claude-opus, gpt, gpt-mini, o1, gemini, gemini-flash, grok, grok-code, deepseek, glm, mistral-medium, mistral-codestral, qwen-thinking, qwen-coder, claude-direct, openai-direct, grok-direct, claude, openai
 
 Examples:
-  python spec_to_code.py dafny ./specs
-  python spec_to_code.py lean ./NumpySpec/DafnySpecs --iterations 3
-  python spec_to_code.py verus ./benchmarks/verus_specs --debug --iterations 5
-  python spec_to_code.py dafny ./specs --workers 8 --iterations 3 --llm-provider openai
-  python spec_to_code.py verus ./specs --workers 2 --debug --llm-provider deepseek --llm-model deepseek-chat
-  python spec_to_code.py dafny ./specs --llm-provider claude --llm-model claude-3-5-sonnet-20241022
+  uv run spec_to_code.py dafny ./specs
+  uv run spec_to_code.py lean ./NumpySpec/DafnySpecs --iterations 3
+  uv run spec_to_code.py verus ./benchmarks/verus_specs --debug --iterations 5
+  uv run spec_to_code.py dafny ./specs --workers 8 --iterations 3 --llm-provider gpt
+  uv run spec_to_code.py verus ./specs --workers 2 --debug --llm-provider deepseek
+  uv run spec_to_code.py dafny ./specs --llm-provider claude-sonnet
+  uv run spec_to_code.py lean ./specs --llm-provider gemini-flash
+  uv run spec_to_code.py verus ./specs --llm-provider openai-direct --llm-model gpt-4o
         """,
     )
 
@@ -133,9 +135,14 @@ Examples:
     parser.add_argument(
         "--llm-provider",
         type=str,
-        choices=["claude", "openai", "deepseek"],
-        default="claude",
-        help="LLM provider to use (default: claude)",
+        choices=[
+            "claude-sonnet", "claude-opus", "gpt", "gpt-mini", "o1", "gemini", "gemini-flash", 
+            "grok", "grok-code", "deepseek", "glm", "mistral-medium", "mistral-codestral",
+            "qwen-thinking", "qwen-coder", "claude-direct", "openai-direct", "grok-direct",
+            "claude", "openai"
+        ],
+        default="claude-direct",
+        help="LLM provider to use. Most use OpenRouter, *-direct options use native APIs (default: claude-direct)",
     )
 
     parser.add_argument(
@@ -759,8 +766,8 @@ def main():
     # Check if the required API key is available for the selected LLM provider
     try:
         # This will raise an error if the API key is not available
-        create_llm_provider(config.llm_provider, config.llm_model)
-        print(f"✓ {config.llm_provider.upper()} API key found and provider initialized")
+        llm_provider, resolved_model = create_llm_provider(config.llm_provider)
+        # Note: The create_llm_provider function already prints the success message
     except Exception as e:
         print(f"Error: {str(e)}")
         print("")

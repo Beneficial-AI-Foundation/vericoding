@@ -10,6 +10,7 @@ from ..core.config import ProcessingConfig
 from ..core.llm_providers import create_llm_provider
 from ..core.prompts import PromptLoader
 from ..core.language_tools import verify_file
+from ..core.llm_providers import call_llm
 from ..utils.io_utils import save_iteration_code
 import wandb
 import hashlib
@@ -45,31 +46,6 @@ class ProcessingResult:
     llm_responses: list[LLMResponse] | None = None
 
 
-def call_llm_api(config: ProcessingConfig, prompt: str) -> str:
-    """Call LLM API with the given prompt using the configured provider."""
-    # Add rate limiting delay to avoid overwhelming the API
-    time.sleep(config.api_rate_limit_delay)
-
-    # Create the LLM provider
-    try:
-        llm_provider = create_llm_provider(config.llm_provider, config.llm_model)
-        
-        # Log LLM call start
-        start_time = time.time()
-        response = llm_provider.call_api(prompt)
-        latency_ms = (time.time() - start_time) * 1000
-        
-        # Log to wandb if run is active
-        if wandb.run:
-            wandb.log({
-                "llm/calls": 1,
-                "llm/latency_ms": latency_ms,
-                "llm/model": config.llm_model or config.llm_provider
-            })
-        
-        return response
-    except Exception as e:
-        raise ValueError(f"Error calling {config.llm_provider} API: {str(e)}")
 
 
 def process_spec_file(
@@ -124,7 +100,9 @@ def process_spec_file(
             logger.info(f"  ✗ Error formatting prompt: {e}")
             raise
 
-        generated_response = call_llm_api(config, generate_prompt)
+        # Create LLM provider for this request
+        llm_provider, _ = create_llm_provider(config.llm_provider)
+        generated_response = call_llm(llm_provider, config, generate_prompt, wandb)
         
         # IMMEDIATELY save raw response to debug folder before any parsing
         if config.debug_mode:
@@ -311,7 +289,9 @@ def process_spec_file(
                 all_fix_prompts.append(fix_prompt)
                 
                 try:
-                    fix_response = call_llm_api(config, fix_prompt)
+                    # Create LLM provider for fix request  
+                    llm_provider, _ = create_llm_provider(config.llm_provider)
+                    fix_response = call_llm(llm_provider, config, fix_prompt, wandb)
                     
                     # IMMEDIATELY save raw response to debug folder before any parsing
                     if config.debug_mode:
