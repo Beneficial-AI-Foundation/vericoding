@@ -393,8 +393,8 @@ def process_yaml_file(file_path: Path) -> None:
             # Validate vc-code format
             vc_code_lines = spec['vc-code'].strip().split('\n')
             
-            if len(vc_code_lines) != 4:
-                raise ValueError(f"vc-code in {file_path} must have exactly 4 lines, got {len(vc_code_lines)} \n\n {spec['vc-code']}")
+            if len(vc_code_lines) not in [3, 4]:
+                raise ValueError(f"vc-code in {file_path} must have exactly 3 or 4 lines, got {len(vc_code_lines)} \n\n {spec['vc-code']}")
             
             # Check first line: should be "{" after stripping
             if vc_code_lines[0].strip() != "{":
@@ -406,8 +406,8 @@ def process_yaml_file(file_path: Path) -> None:
                 raise ValueError(f"vc-code in {file_path} second line must be 'assume(false);' (ignoring spaces), got: '{vc_code_lines[1]}'")
             
             # Check third line: should be "}" after stripping
-            if vc_code_lines[3].strip() != "}":
-                raise ValueError(f"vc-code in {file_path} third line must be '}}', got: '{vc_code_lines[2]}'")
+            if vc_code_lines[-1].strip() != "}":
+                raise ValueError(f"vc-code in {file_path} last line must be '}}', got: '{vc_code_lines[-1]}'")
 
         # # Move comments from other fields to vc-description
         # move_comments_to_description(spec)
