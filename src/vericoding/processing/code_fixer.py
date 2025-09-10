@@ -152,7 +152,14 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 error = "JSON parsing failed: No JSON array found in LLM response"
                 logger.error(error)
                 return original_code, error
-        replacements = json.loads(json_str)
+        try:
+            replacements = json.loads(json_str)
+        except json.JSONDecodeError as e:
+            # Add debug info for JSON parsing failures
+            error = f"JSON parsing failed: Invalid JSON syntax - {str(e)}"
+            logger.error(error)
+            logger.error(f"Failed to parse JSON string: {repr(json_str[:200])}...")  # First 200 chars for debugging
+            return original_code, error
         
         if not isinstance(replacements, list):
             error = "JSON parsing failed: Expected JSON array, got something else"
