@@ -1,19 +1,7 @@
-/* Return a new vector with the specified size by repeating elements from the input vector.
-If the new size is larger, elements are repeated cyclically.
-If the new size is smaller, only the first elements are taken.
-
-Specification: resize creates a new vector of the specified size by either:
-1. Taking the first `new_size` elements if `new_size ≤ n`
-2. Repeating the original elements cyclically if `new_size > n` and `n > 0`
-
-The function handles three cases:
-- Shrinking: new_size < n → takes first new_size elements
-- Same size: new_size = n → returns identical vector
-- Growing: new_size > n → repeats elements cyclically (when n > 0) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn resize<T>(a: Vec<T>, new_size: usize) -> (result: Vec<T>)
     ensures
         result.len() == new_size,
@@ -27,10 +15,9 @@ fn resize<T>(a: Vec<T>, new_size: usize) -> (result: Vec<T>)
             }
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

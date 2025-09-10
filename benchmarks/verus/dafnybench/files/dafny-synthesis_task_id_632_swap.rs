@@ -17,10 +17,6 @@ proof fn count_bound(arr: Seq<int>, value: int)
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn swap(arr: &mut Vec<int>, i: usize, j: usize)
     requires 
         old(arr).len() > 0,
@@ -31,13 +27,10 @@ fn swap(arr: &mut Vec<int>, i: usize, j: usize)
         arr[j as int] == old(arr)[i as int],
         forall|k: int| 0 <= k < arr.len() && k != i && k != j ==> arr[k] == old(arr)[k],
         arr@.to_multiset() == old(arr)@.to_multiset(),
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

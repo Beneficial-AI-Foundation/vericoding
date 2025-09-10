@@ -1,17 +1,3 @@
-/* This task involves identifying the maximum value in a non-empty array of integers. The objective is to determine which element in the array is greater than or equal to every other element, ensuring that the selected value is one of the elements in the array.
-
------Input-----
-The input consists of:
-• a: An array of integers. It is assumed that the array is non-empty (i.e., its size is at least 1).
-
------Output-----
-The output is an integer that represents the maximum element in the array. This value is guaranteed to satisfy the following:
-• It is greater than or equal to every element in the array.
-• It is exactly equal to one of the elements in the array.
-
------Note-----
-It is assumed that the provided array is non-empty. In cases where the array is empty, the function's behavior is not defined. */
-
 use vstd::prelude::*;
 
 verus! {
@@ -19,93 +5,16 @@ verus! {
 spec fn max_array_precond(a: &Vec<i32>) -> bool {
     a.len() > 0
 }
-fn max_array_aux(a: &Vec<i32>, index: usize, current: i32) -> (result: i32)
-    requires index <= a.len(),
-    decreases a.len() - index,
-{
-    if index < a.len() {
-        let new_current = if current > a[index] { current } else { a[index] };
-        max_array_aux(a, index + 1, new_current)
-    } else {
-        current
-    }
-}
+
 fn max_array(a: &Vec<i32>) -> (result: i32)
     requires max_array_precond(a),
     ensures
         forall|k: int| 0 <= k < a.len() ==> result >= a[k],
         exists|k: int| 0 <= k < a.len() && result == a[k],
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
-fn main() {
-    /*
-    -- Invalid Inputs
-    [
-        {
-            "input": {
-                "a": "[]"
-            }
-        }
-    ]
-    -- Tests
-    [
-        {
-            "input": {
-                "a": "[1, 2, 3, 4, 5]"
-            },
-            "expected": 5,
-            "unexpected": [
-                4,
-                3
-            ]
-        },
-        {
-            "input": {
-                "a": "[5, 3, 4, 1, 2]"
-            },
-            "expected": 5,
-            "unexpected": [
-                4,
-                3,
-                2
-            ]
-        },
-        {
-            "input": {
-                "a": "[7]"
-            },
-            "expected": 7,
-            "unexpected": [
-                6,
-                8
-            ]
-        },
-        {
-            "input": {
-                "a": "[-1, -5, -3, -4]"
-            },
-            "expected": -1,
-            "unexpected": [
-                -3,
-                -4
-            ]
-        },
-        {
-            "input": {
-                "a": "[-10, -20, -30, -5, -15]"
-            },
-            "expected": -5,
-            "unexpected": [
-                -10,
-                -15,
-                -20
-            ]
-        }
-    ]
-    */
-}
+fn main() {}

@@ -1,15 +1,7 @@
-/* Machine limits for integer types - returns information about the given integer type including 
-the number of bits, minimum value, and maximum value.
-
-Specification: iinfo returns correct machine limits for integer types.
-The returned IntegerInfo structure contains:
-- bits: the number of bits used by the type
-- min: the minimum representable value (-(2^(bits-1)) for signed, 0 for unsigned)
-- max: the maximum representable value (2^(bits-1) - 1 for signed, 2^bits - 1 for unsigned) */
-
 use vstd::prelude::*;
 
 verus! {
+
 #[derive(Clone, Copy, PartialEq, Eq)]
 pub enum IntegerType {
     Int8,
@@ -48,14 +40,9 @@ fn iinfo(int_type: IntegerType) -> (result: IntegerInfo)
             result.bits == 64 && result.min == 0 && result.max == 18446744073709551615,
     }
 {
-    // impl-start
     assume(false);
-    IntegerInfo {
-        bits: 0,
-        min: 0,
-        max: 0,
-    }
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

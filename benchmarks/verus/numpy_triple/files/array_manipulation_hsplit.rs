@@ -1,21 +1,7 @@
-/* Split an array into multiple sub-arrays horizontally (column-wise).
-
-Split a 1D array into multiple sub-arrays horizontally.
-For simplicity, we focus on the 1D case where the array is split into 
-k equal parts. In numpy, hsplit on 1D arrays is equivalent to split with axis=0.
-
-Specification: hsplit divides a 1D array into k equal sub-arrays.
-Each sub-array has n/k elements. The i-th sub-array contains elements 
-from index i*(n/k) to (i+1)*(n/k)-1 of the original array.
-
-Mathematical properties:
-1. The concatenation of all sub-arrays equals the original array
-2. Each sub-array has exactly n/k elements
-3. Elements are distributed in order without overlapping */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn hsplit(arr: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
     requires 
         k > 0,
@@ -32,10 +18,9 @@ fn hsplit(arr: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
                 i == p * (arr.len() / k) + e &&
                 arr[i] == result[p][e]
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

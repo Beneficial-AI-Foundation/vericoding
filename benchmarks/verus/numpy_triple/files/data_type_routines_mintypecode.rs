@@ -1,38 +1,32 @@
-/* Return the character for the minimum-size type to which given types can be safely cast */
-
 use vstd::prelude::*;
 
 verus! {
-/* NumPy type character to precedence mapping based on the default typeset 'GDFgdf'
-   Lower values indicate higher precedence (smaller/more restrictive types) */
+
 spec fn typechar_precedence(c: char) -> nat {
     match c {
-        'g' => 0,  // longdouble (most restrictive in numerical sense)
-        'd' => 1,  // double
-        'f' => 2,  // float
-        'F' => 3,  // csingle (complex float)
-        'D' => 4,  // cdouble (complex double)
-        'G' => 5,  // clongdouble (complex long double)
-        _   => 6,  // other types (lowest precedence)
+        'g' => 0,
+        'd' => 1,
+        'f' => 2,
+        'F' => 3,
+        'D' => 4,
+        'G' => 5,
+        _   => 6,
     }
 }
 
-/* Check if a type character is in the given typeset */
 spec fn char_in_typeset(c: char, typeset: Seq<char>) -> bool {
     typeset.contains(c)
 }
 
-/* Filter characters that are in the typeset */
 spec fn filter_chars_in_typeset(typechars: Seq<char>, typeset: Seq<char>) -> Seq<char> {
     typechars.filter(|c: char| char_in_typeset(c, typeset))
 }
 
-/* Find minimum precedence character in a sequence */
 spec fn min_precedence_char(chars: Seq<char>) -> char
     decreases chars.len()
 {
     if chars.len() == 0 {
-        'G' // default fallback
+        'G'
     } else if chars.len() == 1 {
         chars[0]
     } else {
@@ -45,31 +39,31 @@ spec fn min_precedence_char(chars: Seq<char>) -> char
         }
     }
 }
+
 fn mintypecode(typechars: Vec<char>, typeset: Vec<char>, default: char) -> (result: char)
     requires typeset@ == seq!['G', 'D', 'F', 'g', 'd', 'f'],
     ensures ({
         let intersection = filter_chars_in_typeset(typechars@, typeset@);
-        // Case 1: No input types in typeset - return default
+
         (intersection.len() == 0 ==> result == default) &&
-        // Case 2 & 3: When intersection is non-empty
+
         (intersection.len() > 0 ==> {
-            // Special rule - if both 'F' and 'd' are in intersection, return 'D'
+
             if intersection.contains('F') && intersection.contains('d') {
                 result == 'D'
             } else {
-                // Normal case - return minimum precedence type from intersection
+
                 intersection.contains(result) &&
                 (forall|c: char| intersection.contains(c) ==> typechar_precedence(result) <= typechar_precedence(c))
             }
         }) &&
-        // Validity: result is either from intersection or default
+
         (intersection.contains(result) || result == default)
     })
 {
-    // impl-start
     assume(false);
-    default
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

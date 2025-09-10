@@ -1,17 +1,7 @@
-/* This task requires writing a Verus method that removes all occurrences of a given element from a list of natural numbers. The method should return a new list that contains all the elements of the original list except those equal to the target number. The order of the remaining elements must be preserved.
-
------Input-----
-The input consists of two elements:
-lst: A list of natural numbers (Vec<nat>).
-target: A natural number to be removed from the list.
-
------Output-----
-The output is a list of natural numbers:
-Returns a new list with all occurrences of the target number removed. The relative order of the remaining elements must be the same as in the input list. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn remove_element(lst: &Vec<nat>, target: nat) -> (result: Vec<nat>)
     ensures
         forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i] != target,
@@ -21,10 +11,9 @@ fn remove_element(lst: &Vec<nat>, target: nat) -> (result: Vec<nat>)
             exists|k1: int, k2: int| 0 <= k1 < k2 < result.len() && 
             result[k1] == lst[i] && result[k2] == lst[j],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

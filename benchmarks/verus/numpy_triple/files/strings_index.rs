@@ -1,8 +1,7 @@
-/* Like find, but raises ValueError when the substring is not found. For each element, return the lowest index in the string where substring is found. Unlike find, this function requires that the substring be found in each string, ensuring all results are non-negative indices. Specification: index returns the lowest index where substring is found within range. The key difference from find is that index has a stronger precondition: the substring must exist in each string within the specified range. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn index(a: Vec<Seq<char>>, sub: Vec<Seq<char>>, start: Vec<int>, end_pos: Vec<int>) -> (result: Vec<int>)
     requires 
         a.len() == sub.len() && sub.len() == start.len() && start.len() == end_pos.len(),
@@ -20,10 +19,9 @@ fn index(a: Vec<Seq<char>>, sub: Vec<Seq<char>>, start: Vec<int>, end_pos: Vec<i
             &&& result[i] + sub[i].len() as int <= a[i].len() as int
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

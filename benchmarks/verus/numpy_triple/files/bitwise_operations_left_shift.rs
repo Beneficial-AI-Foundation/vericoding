@@ -1,20 +1,8 @@
-/* Shift the bits of integers to the left element-wise.
-This operation is equivalent to multiplying each element by 2^shift_amount.
-
-Specification: left_shift performs bitwise left shift operation on each element.
-The result is equivalent to multiplying x1[i] by 2^x2[i] for non-negative shifts.
-
-Mathematical properties:
-1. Core behavior: Each element result[i] = x1[i] * 2^x2[i] for non-negative shifts
-2. Identity property: Shifting by 0 returns the original value
-3. Zero preservation: Shifting zero always yields zero
-4. Monotonicity: For positive values, left shifting increases magnitude
-5. Composition property: left_shift(x, a) then left_shift(result, b) = left_shift(x, a+b) */
-
 use vstd::prelude::*;
 use vstd::arithmetic::power::pow;
 
 verus! {
+
 fn left_shift(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
     requires
         x1.len() == x2.len(),
@@ -27,10 +15,9 @@ fn left_shift(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() && x1[i] > 0 && x2[i] > 0 ==> result[i] > x1[i],
         forall|i: int| 0 <= i < result.len() && x1[i] < 0 && x2[i] > 0 ==> result[i] < x1[i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

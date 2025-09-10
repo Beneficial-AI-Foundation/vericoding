@@ -1,30 +1,15 @@
-/* This problem focuses on reversing an array of integers. The goal is to take an input array and produce a new array with the elements arranged in the reverse order.
-
------Input-----
-The input consists of:
-• a: An array of integers, which may be empty, contain one element, or many elements.
-
------Output-----
-The output is an array of integers that:
-• Has the same length as the input array.
-• Contains the same elements as the input array, but in reverse order.
-• For every valid index i in the input array, the output at index i is equal to the element at index (a.size - 1 - i) from the input array.
-
------Note-----
-There are no specific preconditions; the method should correctly handle any array of integers. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn reverse(a: &Vec<i32>) -> (result: Vec<i32>)
     ensures
         result.len() == a.len(),
         forall|i: int| 0 <= i < a.len() ==> result[i] == a[a.len() - 1 - i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,8 +1,7 @@
-/* Fill the main diagonal of a 2D matrix with a specified value */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn fill_diagonal<T: Copy>(mat: Vec<Vec<T>>, val: T) -> (result: Vec<Vec<T>>)
     requires 
         mat.len() > 0,
@@ -10,19 +9,18 @@ fn fill_diagonal<T: Copy>(mat: Vec<Vec<T>>, val: T) -> (result: Vec<Vec<T>>)
     ensures
         result.len() == mat.len(),
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == mat[i].len(),
-        /* Diagonal elements are filled with val */
+
         forall|i: int, j: int| 
             0 <= i < result.len() && 0 <= j < result[i].len() && i == j 
             ==> result[i][j] == val,
-        /* Non-diagonal elements remain unchanged */
+
         forall|i: int, j: int| 
             0 <= i < result.len() && 0 <= j < result[i].len() && i != j 
             ==> result[i][j] == mat[i][j]
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

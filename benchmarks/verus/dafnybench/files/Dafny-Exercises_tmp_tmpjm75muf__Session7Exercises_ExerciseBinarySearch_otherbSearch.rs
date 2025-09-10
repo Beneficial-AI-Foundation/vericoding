@@ -16,17 +16,6 @@ fn binary_search(v: &Vec<i32>, elem: i32) -> (p: i32)
     -1
 }
 
-
-
-
-
-
-// Recursive binary search
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn other_b_search(v: &Vec<i32>, elem: i32) -> (res: (bool, usize))
     requires sorted(v@)
     ensures 
@@ -35,17 +24,10 @@ fn other_b_search(v: &Vec<i32>, elem: i32) -> (res: (bool, usize))
         res.0 ==> res.1 < v.len() && v[res.1 as int] == elem,
         !res.0 ==> forall|u: int| 0 <= u < res.1 ==> v[u] < elem,
         !res.0 ==> forall|w: int| res.1 <= w < v.len() ==> v[w] > elem
-// Implement and verify
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    (false, 0)
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

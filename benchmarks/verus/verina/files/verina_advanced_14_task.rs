@@ -1,24 +1,14 @@
-/* This task requires writing a Verus method that determines whether a natural number is a power of four. The method should return a boolean value that indicates whether the given natural number is a power of four. An integer n is a power of four, if there exists a natural number x such that n = 4^x.
-
------Input-----
-The input consists of one natural number:
-n: A natural number.
-
------Output-----
-The output is a boolean value:
-Return a boolean value that indicates whether the given natural number is a power of four. Return "true" if it is a power of four. Otherwise, return "false". */
-
 use vstd::prelude::*;
 use vstd::arithmetic::power::pow;
 
 verus! {
+
 fn if_power_of_four(n: nat) -> (result: bool)
     ensures result <==> (exists|m: nat| n == pow(4, m)),
 {
-    // impl-start
     assume(false);
-    false
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

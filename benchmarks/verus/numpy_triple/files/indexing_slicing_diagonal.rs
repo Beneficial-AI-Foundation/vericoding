@@ -1,13 +1,7 @@
-/* Extract diagonal elements from a 2D matrix with optional offset.
-
-Takes a 2D matrix and returns a 1D vector containing the diagonal elements.
-For offset=0, returns main diagonal elements [a[0,0], a[1,1], ...].
-For offset>0, returns elements above main diagonal [a[0,offset], a[1,offset+1], ...].
-For offset<0, returns elements below main diagonal [a[-offset,0], a[-offset+1,1], ...]. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn diagonal(a: Vec<Vec<f64>>, offset: i32) -> (result: Vec<f64>)
     requires 
         a.len() > 0,
@@ -32,11 +26,9 @@ fn diagonal(a: Vec<Vec<f64>>, offset: i32) -> (result: Vec<f64>)
             }
         },
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

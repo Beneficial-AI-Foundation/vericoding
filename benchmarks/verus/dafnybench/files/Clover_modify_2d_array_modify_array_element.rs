@@ -2,10 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn modify_array_element(arr: &mut Vec<Vec<nat>>, index1: usize, index2: usize, val: nat)
   requires
       index1 < old(arr).len(),
@@ -21,13 +17,10 @@ fn modify_array_element(arr: &mut Vec<Vec<nat>>, index1: usize, index2: usize, v
           (i != index1 || j != index2) ==> 
           arr[i][j] == old(arr)[i][j],
       arr[index1 as int][index2 as int] == val,
-// </vc-spec>
-// <vc-code>
 {
-  assume(false);
+    assume(false);
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

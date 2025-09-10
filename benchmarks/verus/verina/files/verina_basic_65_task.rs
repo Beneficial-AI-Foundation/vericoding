@@ -1,29 +1,15 @@
-/* This task involves computing the integer square root of a given natural number. The goal is to determine the largest natural number r that satisfies r * r ≤ N and N < (r + 1) * (r + 1).
-
------Input-----
-The input consists of:
-• N: A natural number.
-
------Output-----
-The output is a natural number r that meets the following conditions:
-• r * r ≤ N
-• N < (r + 1) * (r + 1)
-
------Note-----
-The implementation relies on a recursive strategy to iteratively increment r until (r + 1)*(r + 1) exceeds N. Edge cases, such as N = 0, should be handled correctly. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn square_root(n: usize) -> (result: usize)
     ensures
         result * result <= n,
         n < (result + 1) * (result + 1),
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

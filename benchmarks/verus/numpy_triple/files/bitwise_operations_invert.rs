@@ -1,23 +1,7 @@
-/* Compute bit-wise inversion (NOT) of each element in a vector of integers.
-For signed integers, this returns the two's complement.
-
-Specification: invert computes the bitwise NOT operation element-wise.
-    
-Mathematical properties:
-1. Two's complement relationship: ~x = -(x + 1)
-2. Involution property: applying invert twice returns the original value
-3. The operation preserves vector size
-4. Identity relationships:
-   - ~0 = -1
-   - ~(-1) = 0
-5. Sign flipping: ~x has opposite sign to x when x ≠ -1
-    
-The specification captures both the element-wise nature and the 
-mathematical relationship for two's complement representation. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn invert(x: Vec<i32>) -> (result: Vec<i32>)
     ensures
         result.len() == x.len(),
@@ -26,10 +10,9 @@ fn invert(x: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < x.len() && x[i] == -1 ==> result[i] == 0,
         forall|i: int| 0 <= i < x.len() && x[i] != -1 ==> (x[i] > 0 <==> result[i] < 0),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

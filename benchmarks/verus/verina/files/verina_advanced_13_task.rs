@@ -1,27 +1,7 @@
-/* This task requires writing a Verus method that determines whether there are any intersections between chords on a circle. The method should return true if at least one pair of chords intersects, and false otherwise.
-
-A chord is defined as a line segment connecting two distinct points on a circle. Two chords intersect if they cross each other inside the circle. The points are numbered from 1 to 2N in a clockwise direction, where N is the number of chords.
-
-Constraints
-
-- 2 ≤ N ≤ 2×10^5
-- 1 ≤ A_i,B_i ≤ 2N
-- A_1,…,A_N,B_1,…,B_N are all distinct
-- All input values are integers
-
-Input:
-The input consists of two parameters:
-N: A natural number representing the number of chords (2 ≤ N ≤ 2×10^5).
-chords: A list of N pairs of natural numbers, where each pair represents the endpoints of a chord. All endpoint values are distinct and range from 1 to 2N.
-
-Output:
-The output is a boolean value:
-- Returns true if there exists at least one pair of intersecting chords.
-- Returns false if no chords intersect. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
     let a1 = if chord1[0] < chord1[1] { chord1[0] } else { chord1[1] };
     let b1 = if chord1[0] > chord1[1] { chord1[0] } else { chord1[1] };
@@ -29,6 +9,7 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
     let b2 = if chord2[0] > chord2[1] { chord2[0] } else { chord2[1] };
     (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)
 }
+
 fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
     requires
         n >= 2,
@@ -38,7 +19,7 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
             chords[i][0] >= 1 && chords[i][0] <= 2 * n &&
             chords[i][1] >= 1 && chords[i][1] <= 2 * n
         ),
-        /* All endpoints are distinct */
+
         forall|i: int, j: int, k: int, l: int| 
             0 <= i < chords.len() && 0 <= j < chords.len() && 
             0 <= k < 2 && 0 <= l < 2 && 
@@ -48,10 +29,9 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
             0 <= i < chords.len() && 0 <= j < chords.len() && i != j &&
             #[trigger] chord_intersects(&chords[i], &chords[j]),
 {
-    // impl-start
     assume(false);
-    false
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,14 +1,7 @@
-/* This task requires writing a Verus method that determines whether a given number `n` is an Armstrong number (also known as a Narcissistic number). An Armstrong number is a number that is equal to the sum of its own digits raised to the power of the number of digits.
-
-Input: The input consists of one natural number:
-- `n: u32`: The number to check if it satisfies the Armstrong property.
-
-Output: The output is a boolean value:
-- `bool`: Return `true` if `n` is an Armstrong number, otherwise return `false`. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn count_digits(n: nat) -> nat
     decreases n
 {
@@ -30,23 +23,14 @@ spec fn sum_powers(n: nat, k: nat) -> nat
 {
     if n == 0 { 0 } else { pow_nat(n % 10, k) + sum_powers(n / 10, k) }
 }
+
 fn is_armstrong(n: u32) -> (result: bool)
     ensures 
         result == (n as nat == sum_powers(n as nat, count_digits(n as nat))),
 {
-    // impl-start
     assume(false);
-    false
-    // impl-end
+    unreached();
 }
+
 }
-fn main() {
-    // let n = 153;
-    // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
-    // 
-    // let n = 9474;
-    // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
-    // 
-    // let n = 9475;
-    // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
-}
+fn main() {}

@@ -1,17 +1,12 @@
-/* NPY_SQRT1_2: Square root of 1/2
-
-Square root of 1/2 as a Float constant
-Specification: NPY_SQRT1_2 equals the square root of 1/2 with mathematical properties */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn NPY_SQRT1_2() -> (result: f64)
 {
-    // impl-start
     assume(false);
-    0.0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

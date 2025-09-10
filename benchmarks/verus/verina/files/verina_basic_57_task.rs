@@ -1,20 +1,7 @@
-/* This task involves determining how many numbers within an array are less than a specified threshold. The problem is focused on identifying and counting such numbers based purely on their value in relation to the threshold.
-
------Input-----
-The input consists of:
-• numbers: An array of integers (which may be empty or non-empty).
-• threshold: An integer that serves as the comparison threshold.
-
------Output-----
-The output is a natural number (Nat) representing the count of elements in the array that are less than the given threshold.
-
------Note-----
-There are no additional preconditions; the function should work correctly for any array of integers and any integer threshold. */
-
 use vstd::prelude::*;
 
 verus! {
-/* Helper function to recursively count elements less than threshold */
+
 spec fn count_less_than_spec(numbers: Seq<i32>, threshold: i32) -> nat
     decreases numbers.len()
 {
@@ -30,14 +17,14 @@ spec fn count_less_than_spec(numbers: Seq<i32>, threshold: i32) -> nat
         }
     }
 }
+
 fn count_less_than(numbers: &Vec<i32>, threshold: i32) -> (result: usize)
     ensures
         result == count_less_than_spec(numbers@, threshold),
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,10 +1,7 @@
-/* Hermite series whose graph is a straight line.
-Returns the Hermite series coefficients representing the linear function off + scl*x.
-For non-zero scale, returns [off, scl]. For zero scale, returns [off]. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn hermeline(off: f64, scl: f64) -> (coeffs: Vec<f64>)
     ensures
         coeffs.len() == 2,
@@ -12,10 +9,9 @@ fn hermeline(off: f64, scl: f64) -> (coeffs: Vec<f64>)
         (scl == 0.0 ==> coeffs[1] == 0.0),
         (scl != 0.0 ==> coeffs[1] == scl)
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

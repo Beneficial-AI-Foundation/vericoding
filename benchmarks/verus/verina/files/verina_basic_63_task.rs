@@ -1,24 +1,11 @@
-/* The task is to determine whether there exists at least one pair of different floating-point numbers in a list such that the absolute difference between them is less than a given threshold. The focus is solely on deciding if such a pair is present in the list.
-
-Input:
-The input consists of:
-• numbers: A list of floating-point numbers.
-• threshold: A floating-point number representing the maximum allowed difference between two numbers for them to be considered "close."
-
-Output:
-The output is a boolean value:
-• true – if there exists at least one pair of distinct elements in the list such that the absolute difference between them is less than the threshold.
-• false – if for every possible pair of elements, the absolute difference is greater than or equal to the threshold.
-
-Note:
-It is assumed that the list of numbers is provided and that the threshold is non-negative. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn abs_diff(a: int, b: int) -> int {
     if a >= b { a - b } else { b - a }
 }
+
 fn has_close_elements(numbers: &Vec<i32>, threshold: i32) -> (result: bool)
     requires threshold >= 0,
     ensures
@@ -26,10 +13,9 @@ fn has_close_elements(numbers: &Vec<i32>, threshold: i32) -> (result: bool)
             0 <= i < numbers.len() && 0 <= j < numbers.len() && i != j ==> 
             abs_diff(numbers[i] as int, numbers[j] as int) >= threshold as int),
 {
-    // impl-start
     assume(false);
-    false
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

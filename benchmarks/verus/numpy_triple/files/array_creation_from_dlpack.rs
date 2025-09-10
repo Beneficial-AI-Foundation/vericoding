@@ -1,15 +1,14 @@
-/* Create a NumPy array from an object implementing the DLPack protocol. This function allows for interoperability with other libraries that support the DLPack protocol. */
-
 use vstd::prelude::*;
 
 verus! {
-/* Abstract type representing a DLPack-compatible object */
+
 pub struct DLPackObject<T> {
     pub data: Vec<T>,
     pub has_dlpack: bool,
     pub has_dlpack_device: bool,
     pub device: String,
 }
+
 fn from_dlpack<T>(x: &DLPackObject<T>, device: Option<&str>, copy: Option<bool>) -> (result: Vec<T>)
     requires 
         x.has_dlpack && x.has_dlpack_device,
@@ -20,10 +19,9 @@ fn from_dlpack<T>(x: &DLPackObject<T>, device: Option<&str>, copy: Option<bool>)
         copy == Some(true) ==> result@ != x.data@,
         copy == Some(false) ==> result@ == x.data@,
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

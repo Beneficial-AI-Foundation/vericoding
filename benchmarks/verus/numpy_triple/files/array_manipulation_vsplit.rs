@@ -1,12 +1,7 @@
-/* Split a 2D vector into multiple sub-vectors vertically (row-wise).
-This is a simplified version that handles splitting into equal parts.
-
-Specification: vsplit divides a matrix into k equal parts row-wise, 
-where each part contains consecutive rows from the original matrix */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn vsplit(mat: Vec<Vec<f32>>, k: usize) -> (result: Vec<Vec<Vec<f32>>>)
     requires 
         k > 0,
@@ -27,10 +22,9 @@ fn vsplit(mat: Vec<Vec<f32>>, k: usize) -> (result: Vec<Vec<Vec<f32>>>)
                 0 <= split_idx < k && 0 <= row_idx < mat.len() / k &&
                 orig_row == split_idx * (mat.len() / k) + row_idx,
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

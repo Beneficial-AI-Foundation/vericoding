@@ -15,24 +15,16 @@ spec fn count(hi: nat, s: Seq<int>) -> int
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn foo_count(count_index: usize, a: &Vec<int>, b: &mut Vec<int>) -> (p: usize)
     requires 
         count_index == 0 || (a.len() == old(b).len() && 1 <= count_index <= a.len()),
     ensures 
         p == count(count_index as nat, a@),
     decreases count_index
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

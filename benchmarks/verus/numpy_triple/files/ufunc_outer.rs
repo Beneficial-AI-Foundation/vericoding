@@ -1,19 +1,7 @@
-/* Universal function outer method: Apply a binary operator to all pairs (a, b) 
-with a in A and b in B.
-
-For two 1-D vectors A = [a₁, a₂, ..., aₘ] and B = [b₁, b₂, ..., bₙ], 
-the outer product produces an m×n matrix where result[i,j] = op(A[i], B[j]).
-
-This generalizes the concept of outer product beyond just multiplication:
-- When op = (*), this becomes the traditional outer product
-- When op = (+), this becomes the sum of all pairs
-- When op = (^), this becomes the power of all pairs
-
-The result has shape (m, n) where m is the length of A and n is the length of B. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn apply_binary_op(op_id: int, x: f64, y: f64) -> f64;
 
 fn outer(op_id: int, a: Vec<f64>, b: Vec<f64>) -> (result: Vec<Vec<f64>>)
@@ -25,10 +13,9 @@ fn outer(op_id: int, a: Vec<f64>, b: Vec<f64>) -> (result: Vec<Vec<f64>>)
         forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < b.len() ==>
             exists|ai: f64, bj: f64| ai == a[i] && bj == b[j] && result[i][j] == apply_binary_op(op_id, ai, bj)
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

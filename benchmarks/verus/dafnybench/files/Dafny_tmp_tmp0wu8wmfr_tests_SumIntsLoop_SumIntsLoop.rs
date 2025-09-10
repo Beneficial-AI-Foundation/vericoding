@@ -12,23 +12,14 @@ spec fn sum_ints(n: int) -> int
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn sum_ints_loop(n: u32) -> (s: u32)
     ensures 
         s == sum_ints(n as int),
         s == n * (n + 1) / 2
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

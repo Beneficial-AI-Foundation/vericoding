@@ -37,27 +37,18 @@ spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char
     forall|i1: int, j1: int| 0 <= i1 <= str1.len() as int - k as int && j1 == i1 + k as int ==> is_not_substring_pred(str1.subrange(i1, j1), str2)
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn is_substring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
     ensures
         res <==> is_substring_pred(sub, str),
         res ==> is_substring_pred(sub, str),
-        // ensures  !res ==> !is_substring_pred(sub, str)
+
         is_substring_pred(sub, str) ==> res,
         is_substring_pred(sub, str) ==> res,
-        !res <==> is_not_substring_pred(sub, str), // This postcondition follows from the above lemma.
-// </vc-spec>
-// <vc-code>
+        !res <==> is_not_substring_pred(sub, str),
 {
     assume(false);
-    true
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

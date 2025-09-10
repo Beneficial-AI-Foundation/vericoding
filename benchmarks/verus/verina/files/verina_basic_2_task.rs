@@ -1,16 +1,7 @@
-/* This task requires writing a Verus method that finds the smallest number in an array of integers.
-
------Input-----
-The input consists of:
-s: An array of integers.
-
------Output-----
-The output is an option integer:
-Returns the smallest number found in the input array or none if the array is empty. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn find_smallest(s: &Vec<nat>) -> (result: Option<nat>)
     ensures
         match result {
@@ -20,10 +11,9 @@ fn find_smallest(s: &Vec<nat>) -> (result: Option<nat>)
                       (forall|i: int| 0 <= i < s.len() ==> r <= s[i])
         },
 {
-    // impl-start
     assume(false);
-    None
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

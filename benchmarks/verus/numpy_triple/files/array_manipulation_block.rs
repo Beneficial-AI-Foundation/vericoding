@@ -1,17 +1,7 @@
-/* Assemble a 2D matrix from a 2x2 block structure.
-This is a simplified version focusing on the common case of assembling 
-a matrix from four blocks arranged in a 2x2 pattern.
-
-Specification: block assembles a matrix from four submatrices in a 2x2 pattern.
-The result has dimensions (r1 + r2) × (c1 + c2) where:
-- Top-left block occupies rows [0, r1) and columns [0, c1)
-- Top-right block occupies rows [0, r1) and columns [c1, c1 + c2)
-- Bottom-left block occupies rows [r1, r1 + r2) and columns [0, c1)
-- Bottom-right block occupies rows [r1, r1 + r2) and columns [c1, c1 + c2) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn block(
     top_left: Vec<Vec<f32>>,
     top_right: Vec<Vec<f32>>,
@@ -34,27 +24,26 @@ fn block(
     ensures
         result.len() == top_left.len() + bottom_left.len(),
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == top_left[0].len() + top_right[0].len(),
-        /* Top-left block elements */
+
         forall|i: int, j: int| 
             0 <= i < top_left.len() && 0 <= j < top_left[0].len() ==> 
             result[i][j] == top_left[i][j],
-        /* Top-right block elements */
+
         forall|i: int, j: int|
             0 <= i < top_right.len() && 0 <= j < top_right[0].len() ==>
             result[i][top_left[0].len() + j] == top_right[i][j],
-        /* Bottom-left block elements */
+
         forall|i: int, j: int|
             0 <= i < bottom_left.len() && 0 <= j < bottom_left[0].len() ==>
             result[top_left.len() + i][j] == bottom_left[i][j],
-        /* Bottom-right block elements */
+
         forall|i: int, j: int|
             0 <= i < bottom_right.len() && 0 <= j < bottom_right[0].len() ==>
             result[top_left.len() + i][top_left[0].len() + j] == bottom_right[i][j],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

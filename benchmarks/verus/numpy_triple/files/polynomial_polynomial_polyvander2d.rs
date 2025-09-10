@@ -1,15 +1,7 @@
-/* Pseudo-Vandermonde matrix of given degrees for 2D polynomials.
-Returns a matrix where V[k, (yDeg + 1)*i + j] = x[k]^i * y[k]^j
-for 0 <= i <= xDeg and 0 <= j <= yDeg.
-
-Specification: polyvander2d creates a pseudo-Vandermonde matrix where each entry
-satisfies the polynomial power relationship V[k, (yDeg + 1)*i + j] = x[k]^i * y[k]^j.
-The matrix has dimensions n × ((xDeg + 1) * (yDeg + 1)) and represents all polynomial
-terms x^i * y^j for 0 ≤ i ≤ xDeg and 0 ≤ j ≤ yDeg. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn pow_spec(base: int, exp: nat) -> int
     decreases exp
 {
@@ -19,6 +11,7 @@ spec fn pow_spec(base: int, exp: nat) -> int
         base * pow_spec(base, (exp - 1) as nat)
     }
 }
+
 fn polyvander2d(x: Vec<f64>, y: Vec<f64>, x_deg: usize, y_deg: usize) -> (result: Vec<Vec<f64>>)
     requires 
         x.len() == y.len(),
@@ -27,10 +20,9 @@ fn polyvander2d(x: Vec<f64>, y: Vec<f64>, x_deg: usize, y_deg: usize) -> (result
         result.len() == x.len(),
         forall|k: int| 0 <= k < result.len() ==> #[trigger] result[k].len() == (x_deg + 1) * (y_deg + 1),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

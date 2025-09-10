@@ -1,5 +1,3 @@
-// RUN: %verus "%s"
-
 use vstd::prelude::*;
 
 verus! {
@@ -11,10 +9,6 @@ spec fn sum(a: Seq<int>, s: int, t: int) -> int
     if s == t { 0 } else { sum(a, s, t-1) + a[t-1] }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn max_seg_sum(a: &Vec<int>) -> (result: (usize, usize))
     ensures ({
         let (k, m) = result;
@@ -22,15 +16,10 @@ fn max_seg_sum(a: &Vec<int>) -> (result: (usize, usize))
         &&& forall |p: int, q: int| 0 <= p <= q <= a.len() ==> 
             sum(a@, p, q) <= sum(a@, k as int, m as int)
     })
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

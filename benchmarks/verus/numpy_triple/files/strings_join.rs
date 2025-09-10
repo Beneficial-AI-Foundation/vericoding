@@ -1,29 +1,7 @@
-/* Return a string which is the concatenation of the strings in the sequence seq.
-
-numpy.strings.join: Return a string which is the concatenation of the strings in the sequence seq.
-
-For each pair of separator and sequence, join the elements of the sequence using the separator.
-This function operates element-wise on vectors, where each element of the result is obtained
-by joining the corresponding elements of the sequence vector using the corresponding separator.
-
-The function treats each string in the sequence as a sequence of characters, and joins them
-with the separator string. For example, join('-', 'abc') produces 'a-b-c'.
-
-From NumPy documentation:
-- Parameters: sep (array_like) - Separator string(s), seq (array_like) - Sequence(s) to join
-- Returns: out (ndarray) - Output array with joined strings
-- Examples: join('-', 'osd') → 'o-s-d', join(['-', '.'], ['ghc', 'osd']) → ['g-h-c', 'o.s.d']
-
-Mathematical Properties:
-1. Element-wise operation: result[i] = join(sep[i], seq[i])
-2. Character separation: joins individual characters of each string in seq
-3. Empty separator handling: join('', s) = s (no separation)
-4. Empty sequence handling: join(sep, '') = '' (empty result)
-5. Single character sequences: join(sep, 'a') = 'a' (no separator needed) */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn join_chars(separator: Seq<char>, chars: Seq<char>) -> Seq<char>
     decreases chars.len()
 {
@@ -49,24 +27,22 @@ fn join(sep: Vec<String>, seq: Vec<String>) -> (result: Vec<String>)
         forall|i: int| 0 <= i < result.len() ==> {
             let s = seq[i]@;
             let separator = sep[i]@;
-            /* Core correctness property */
+
             (s.len() <= 1 ==> result[i]@ == s) &&
             (s.len() > 1 ==> result[i]@ == join_chars(separator, s)) &&
-            /* Length property for non-trivial cases */
+
             (s.len() > 1 ==> result[i]@.len() == s.len() + (s.len() - 1) * separator.len()) &&
-            /* Empty string preservation */
+
             (s.len() == 0 ==> result[i]@.len() == 0) &&
-            /* Single character preservation */
+
             (s.len() == 1 ==> result[i]@ == s) &&
-            /* Non-empty result for non-empty input */
+
             (s.len() > 0 ==> result[i]@.len() > 0)
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

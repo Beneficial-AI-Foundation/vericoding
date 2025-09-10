@@ -1,9 +1,7 @@
-/* Compute the multidimensional histogram of some data.
-For simplicity, we focus on 2D histograms with fixed dimensions. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn histogramdd(sample: Vec<(i32, i32)>, bins_x: usize, bins_y: usize) -> (result: (Vec<Vec<i32>>, Vec<i32>, Vec<i32>))
     requires 
         bins_x > 0,
@@ -21,10 +19,9 @@ fn histogramdd(sample: Vec<(i32, i32)>, bins_x: usize, bins_y: usize) -> (result
             true
         })
 {
-    // impl-start
     assume(false);
-    (Vec::new(), Vec::new(), Vec::new())
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,30 +1,7 @@
-/* Solve the tensor equation a x = b for x.
-
-This function solves for x in the tensor equation a x = b, where:
-- a is a coefficient tensor that can be reshaped to a square matrix
-- b is the right-hand tensor  
-- x is the solution tensor
-
-For simplicity, we model this as solving a square linear system where the 
-coefficient matrix a is reshaped from tensor form to a 2D matrix, and the 
-solution is reshaped back to tensor form.
-
-Specification: tensorsolve solves the tensor equation a x = b for x.
-
-This specification captures the mathematical properties of tensor equation solving:
-
-1. **Correctness**: The solution x satisfies the matrix equation a x = b
-2. **Invertibility**: The coefficient matrix a must be invertible
-3. **Uniqueness**: The solution is unique when a is invertible
-
-The specification handles the basic case where:
-- a is an n×n coefficient matrix (representing a reshaped tensor)
-- b is an n-dimensional right-hand vector
-- x is the n-dimensional solution vector */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn is_square_matrix(a: Seq<Seq<f64>>) -> bool {
     a.len() > 0 && forall|i: int| 0 <= i < a.len() ==> a[i].len() == a.len()
 }
@@ -48,10 +25,9 @@ fn tensorsolve(a: Vec<Vec<f64>>, b: Vec<f64>) -> (result: Vec<f64>)
         result.len() == b.len(),
         forall|i: int| 0 <= i < a.len() ==> #[trigger] b[i] == b[i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,33 +1,15 @@
-/* Chebyshev series whose graph is a straight line.
-Returns coefficients for the Chebyshev series representing off + scl*x.
-For simplicity, we always return a 2-element vector where the second element
-might be zero when scl = 0.
-
-Specification: chebline returns correct Chebyshev coefficients for a linear function.
-The key mathematical property is that the Chebyshev series T₀(x) = 1 and T₁(x) = x,
-so the coefficients [off, scl] directly represent off*T₀(x) + scl*T₁(x) = off + scl*x.
-
-The result is always a 2-element vector [off, scl], even when scl = 0.
-This represents the Chebyshev series: off * T₀(x) + scl * T₁(x) = off + scl*x
-
-Mathematical Properties:
-1. The first coefficient equals the offset parameter
-2. The second coefficient equals the scale parameter
-3. When evaluated as a Chebyshev series, this produces the line off + scl*x
-4. This is the minimal degree Chebyshev representation of a linear function */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn chebline(off: f32, scl: f32) -> (result: [f32; 2])
     ensures 
         result[0] == off,
         result[1] == scl
 {
-    // impl-start
     assume(false);
-    [0.0, 0.0]
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

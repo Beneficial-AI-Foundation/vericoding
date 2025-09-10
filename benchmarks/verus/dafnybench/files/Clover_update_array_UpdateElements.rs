@@ -2,10 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn update_elements(a: &mut Vec<i32>)
     requires 
         old(a).len() >= 8,
@@ -14,13 +10,10 @@ fn update_elements(a: &mut Vec<i32>)
         a[7] == 516,
         forall|i: int| 0 <= i < a.len() ==> i != 7 && i != 4 ==> a[i] == old(a)[i],
         a.len() == old(a).len(),
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

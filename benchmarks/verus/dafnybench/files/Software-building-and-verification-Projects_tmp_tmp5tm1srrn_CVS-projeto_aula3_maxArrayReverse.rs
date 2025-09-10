@@ -10,8 +10,6 @@ spec fn fib(n: nat) -> nat
     else { fib((n - 1) as nat) + fib((n - 2) as nat) }
 }
 
-
-// 2.
 pub enum List<T> {
     Nil,
     Cons(T, Box<List<T>>),
@@ -26,36 +24,21 @@ spec fn add(l: List<int>) -> int
     }
 }
 
-
-// 3.
-
-// 5.
-
-// 6
 spec fn sum(n: nat) -> nat
     decreases n
 {
     if n == 0 { 0 } else { n + sum((n - 1) as nat) }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn maxArrayReverse(arr: &[i32]) -> (max: i32)
     requires arr.len() > 0
     ensures 
         forall|i: int| 0 <= i < arr.len() ==> arr[i] <= max,
         exists|x: int| 0 <= x < arr.len() && arr[x] == max
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

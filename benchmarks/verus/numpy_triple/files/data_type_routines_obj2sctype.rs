@@ -1,29 +1,7 @@
-/* numpy.obj2sctype: Return the scalar dtype or NumPy equivalent of Python type of an object.
-
-Takes any object and returns its corresponding NumPy scalar data type.
-If the object's type cannot be determined, returns the default value if provided,
-otherwise returns none.
-
-This function performs type introspection to determine the appropriate NumPy
-scalar type for any given object, including arrays, scalars, and generic objects.
-
-Specification: obj2sctype returns the appropriate NumPy scalar type for the input object.
-
-The function correctly identifies:
-1. Scalar types from their corresponding objects
-2. Array element types from array objects
-3. Generic object types
-4. Returns default for unrecognized types
-5. Returns none when no default is provided for unrecognized types
-
-Precondition: True (works with any object)
-Postcondition: The result correctly represents the scalar type of the input object */
-
 use vstd::prelude::*;
 
 verus! {
 
-/* NumPy scalar data types represented as an enum */
 #[derive(PartialEq, Eq)]
 pub enum NumpyScalarType {
     Int32,
@@ -37,7 +15,6 @@ pub enum NumpyScalarType {
     Bool,
 }
 
-/* Object representation for type introspection */
 pub enum NumpyObject {
     IntVal(i64),
     FloatVal(f64),
@@ -48,7 +25,7 @@ pub enum NumpyObject {
     StringVal(String),
     BoolVal(bool),
 }
-/* Helper predicate: Check if object matches given scalar type */
+
 pub open spec fn matches_scalar_type(obj: NumpyObject, dtype: NumpyScalarType) -> bool {
     match (obj, dtype) {
         (NumpyObject::IntVal(_), NumpyScalarType::Int64) => true,
@@ -59,7 +36,6 @@ pub open spec fn matches_scalar_type(obj: NumpyObject, dtype: NumpyScalarType) -
     }
 }
 
-/* Helper predicate: Check if object is an array with given element type */
 pub open spec fn is_array_with_element_type(obj: NumpyObject, dtype: NumpyScalarType) -> bool {
     match (obj, dtype) {
         (NumpyObject::ArrayInt(_), NumpyScalarType::Int64) => true,
@@ -69,13 +45,13 @@ pub open spec fn is_array_with_element_type(obj: NumpyObject, dtype: NumpyScalar
     }
 }
 
-/* Helper predicate: Check if object is a generic object */
 pub open spec fn is_generic_object(obj: NumpyObject) -> bool {
     match obj {
         NumpyObject::GenericObj => true,
         _ => false,
     }
 }
+
 fn obj2sctype(rep: NumpyObject, default: Option<NumpyScalarType>) -> (result: Option<NumpyScalarType>)
     ensures
         match rep {
@@ -96,10 +72,9 @@ fn obj2sctype(rep: NumpyObject, default: Option<NumpyScalarType>) -> (result: Op
             None => is_generic_object(rep) && default.is_None(),
         }
 {
-    // impl-start
     assume(false);
-    None
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

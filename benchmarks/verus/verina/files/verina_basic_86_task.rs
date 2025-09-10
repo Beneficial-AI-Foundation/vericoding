@@ -1,21 +1,7 @@
-/* This task requires writing a Verus method that rotates an array of integers to the left by a specified offset.
-
------Input-----
-The input consists of:
-• a: An array of integers (which may be empty or non-empty).
-• offset: An integer representing the number of positions to rotate the array. The offset is assumed to be non-negative.
-
------Output-----
-The output is an array of integers that:
-• Has the same length as the input array.
-• For every valid index i, the output element at index i is equal to the input element at index ((i + offset) mod n), where n is the array size.
-
------Note-----
-If the array is empty, the method should return an empty array. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn rotate(a: &Vec<i32>, offset: int) -> (result: Vec<i32>)
     requires offset >= 0,
     ensures
@@ -25,10 +11,9 @@ fn rotate(a: &Vec<i32>, offset: int) -> (result: Vec<i32>)
             #[trigger] result[i] == a[src_idx]
         },
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,24 +1,7 @@
-/* numpy.atleast_3d: View a 1D vector as a 3D array with shape (1, n, 1).
-    
-This is a specialization of numpy.atleast_3d for 1D input.
-The function reshapes a 1D array of shape (n,) into a 3D array 
-of shape (1, n, 1) while preserving all elements.
-
-Specification: atleast_3d transforms a 1D vector into a 3D array where:
-- The output has shape (1, n, 1)
-- Each element arr[i] is accessible at position [0][i][0] in the result
-- All elements are preserved without modification
-- The transformation is injective (different inputs produce different outputs)
-
-Mathematical properties:
-1. Element preservation: Every element from the input appears exactly once in the output
-2. Shape expansion: A 1D shape (n,) becomes 3D shape (1, n, 1)
-3. Order preservation: Elements maintain their relative ordering
-4. The output contains exactly n elements total */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn atleast_3d(arr: Vec<f32>) -> (result: Vec<Vec<Vec<f32>>>)
     ensures 
         result.len() == 1,
@@ -31,10 +14,9 @@ fn atleast_3d(arr: Vec<f32>) -> (result: Vec<Vec<Vec<f32>>>)
             value == arr[i]
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

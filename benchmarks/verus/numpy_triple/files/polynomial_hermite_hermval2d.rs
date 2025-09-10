@@ -1,29 +1,19 @@
-/* Evaluate a 2-D Hermite series at points (x, y).
-
-Given a 2D coefficient matrix c where c[i,j] is the coefficient for H_i(x) * H_j(y),
-evaluates the sum: ∑_{i,j} c_{i,j} * H_i(x) * H_j(y)
-where H_i and H_j are Hermite polynomials.
-
-The x and y vectors must have the same length, and the function evaluates
-the 2D polynomial at each pair of corresponding points (x[k], y[k]). */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn hermval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
     requires 
         x.len() == y.len(),
     ensures 
         result.len() == x.len(),
-        /* Empty coefficient cases evaluate to zero */
+
         c.len() == 0 ==> forall|k: int| 0 <= k < result.len() ==> result[k] == 0.0f32,
         c.len() > 0 && c[0].len() == 0 ==> forall|k: int| 0 <= k < result.len() ==> result[k] == 0.0f32,
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

@@ -2,19 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/*
-   CS:5810 Formal Methods in Software Engineering
-   Fall 2017
-   The University of Iowa
-
-   Instructor: Cesare Tinelli
-
-   Credits: Example adapted from Dafny tutorial
-*/
-
-
-//      n = 0, 1, 2, 3, 4, 5, 6,  7,  8, ...
-// fib(n) = 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
 spec fn fib(n: nat) -> nat
     decreases n
 {
@@ -23,21 +10,12 @@ spec fn fib(n: nat) -> nat
     else { fib((n - 1) as nat) + fib((n - 2) as nat) }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn ComputeFib(n: usize) -> (f: usize)
     ensures f == fib(n as nat)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

@@ -1,25 +1,7 @@
-/* numpy.linalg.diagonal: Returns specified diagonals of a matrix.
-
-Extracts the diagonal elements from a matrix. The offset parameter
-controls which diagonal to extract:
-- offset = 0: main diagonal (elements at position [i,i])
-- offset > 0: diagonals above the main diagonal (elements at [i,i+offset])
-- offset < 0: diagonals below the main diagonal (elements at [i-offset,i])
-
-For simplicity, we return a vector of size min(m,n) which is valid for offset=0.
-The actual diagonal length depends on the offset value and matrix dimensions.
-
-Specification: numpy.linalg.diagonal returns the diagonal elements of a matrix.
-
-Precondition: The matrix must be non-empty (both dimensions > 0)
-Postcondition: The result contains the diagonal elements extracted from the matrix.
-               - For offset = 0: result[i] = x[i][i] (main diagonal)
-               - The result vector has the same type as the input matrix elements
-               - The extraction respects the mathematical definition of matrix diagonals */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn spec_min(a: int, b: int) -> int {
     if a <= b { a } else { b }
 }
@@ -39,10 +21,9 @@ fn numpy_diagonal(x: Vec<Vec<f32>>, offset: i32) -> (result: Vec<f32>)
                 0 <= r < x.len() && 0 <= c < x[0].len() &&
                 result[i] == x[r][c],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,22 +1,7 @@
-/* This task involves determining the first index in an array where a given condition holds true. The goal is to identify the position of the first element that meets a specified criterion, ensuring that no preceding element does.
-
------Input-----
-The input consists of:
-• a: An array of elements (for testing purposes, you can assume it is an array of integers).
-• P: A predicate function on the elements (represented as a string for test cases, e.g., "fun x => x > 5"). It is assumed that at least one element in the array satisfies P.
-
------Output-----
-The output is a natural number (Nat) which represents the index of the first element in the array that satisfies the predicate P.
-• The index returned is less than the size of the array.
-• The element at the returned index satisfies P.
-• All elements before the returned index do not satisfy P.
-
------Note-----
-It is assumed that the array contains at least one element that satisfies P. In cases where this precondition does not hold, the behavior of the function is not guaranteed by the specification. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn linear_search3(a: &Vec<i32>, p: spec_fn(i32) -> bool) -> (result: usize)
     requires 
         exists|i: int| 0 <= i < a.len() && p(a[i]),
@@ -25,85 +10,9 @@ fn linear_search3(a: &Vec<i32>, p: spec_fn(i32) -> bool) -> (result: usize)
         p(a[result as int]),
         forall|k: int| 0 <= k < result ==> !p(a[k]),
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
-fn main() {
-    /*
-    -- Invalid Inputs
-    [
-        {
-            "input": {
-                "a": "#[1, 2, 3, 4, 5]",
-                "P": "fun x => x > 10"
-            }
-        }
-    ]
-    -- Tests
-    [
-        {
-            "input": {
-                "a": "#[4, 7, 2, 9]",
-                "P": "fun x => x > 5"
-            },
-            "expected": 1,
-            "unexpected": [
-                0,
-                2,
-                3
-            ]
-        },
-        {
-            "input": {
-                "a": "#[10, 8, 6, 4, 2]",
-                "P": "fun x => x < 5"
-            },
-            "expected": 3,
-            "unexpected": [
-                0,
-                1,
-                4
-            ]
-        },
-        {
-            "input": {
-                "a": "#[5, 3, 1, 2]",
-                "P": "fun x => x == 1"
-            },
-            "expected": 2,
-            "unexpected": [
-                0,
-                1,
-                3
-            ]
-        },
-        {
-            "input": {
-                "a": "#[0, 1, 2, 3]",
-                "P": "fun x => x == 0"
-            },
-            "expected": 0,
-            "unexpected": [
-                1,
-                2,
-                3
-            ]
-        },
-        {
-            "input": {
-                "a": "#[9, 9, 9, 9]",
-                "P": "fun x => x == 9"
-            },
-            "expected": 0,
-            "unexpected": [
-                1,
-                2,
-                3
-            ]
-        }
-    ]
-    */
-}
+fn main() {}

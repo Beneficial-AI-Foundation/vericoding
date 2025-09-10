@@ -1,22 +1,7 @@
-/* Repeat elements of a vector a specified number of times.
-Each element is repeated consecutively.
-
-Specification: repeat creates a vector where each element from the input 
-appears consecutively 'repeats' times. The resulting vector has size n * repeats.
-
-For a vector [a₀, a₁, ..., aₙ₋₁] and repeats = r, the result is:
-[a₀, a₀, ..., a₀, a₁, a₁, ..., a₁, ..., aₙ₋₁, aₙ₋₁, ..., aₙ₋₁]
- \___r times___/  \___r times___/       \______r times______/
- 
-Mathematical properties:
-1. Each element appears exactly 'repeats' times consecutively
-2. The total size is n * repeats
-3. Element at index i comes from input element at index ⌊i/repeats⌋
-4. Elements are grouped: positions [k*repeats, (k+1)*repeats) contain a[k] */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn repeat<T: Copy>(a: Vec<T>, repeats: usize) -> (result: Vec<T>)
     requires repeats > 0,
     ensures
@@ -30,10 +15,9 @@ fn repeat<T: Copy>(a: Vec<T>, repeats: usize) -> (result: Vec<T>)
             0 <= idx < result.len() && result[idx] == a[k]
         },
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

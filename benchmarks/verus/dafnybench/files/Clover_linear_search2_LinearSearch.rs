@@ -2,10 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn linear_search(a: &[i32], e: i32) -> (n: usize)
     requires exists|i: int| 0 <= i < a.len() && a[i] == e,
     ensures ({
@@ -14,13 +10,9 @@ fn linear_search(a: &[i32], e: i32) -> (n: usize)
         &&& forall|k: int| 0 <= k < n as int ==> a[k] != e
     }),
 {
-// </vc-spec>
-// <vc-code>
     assume(false);
-    0
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

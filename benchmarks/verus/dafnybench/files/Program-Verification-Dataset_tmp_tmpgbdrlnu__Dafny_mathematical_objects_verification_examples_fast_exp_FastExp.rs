@@ -35,20 +35,12 @@ spec fn from_bits(s: Seq<bool>) -> nat
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn fast_exp(b: u32, n: u32) -> (r: u32)
     ensures r == exp(b as nat, n as nat)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

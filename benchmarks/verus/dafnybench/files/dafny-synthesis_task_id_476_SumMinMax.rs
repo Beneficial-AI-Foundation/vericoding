@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// The order of the recursion in these two functions
-// must match the order of the iteration in the algorithm above
 spec fn min_seq(a: Seq<int>) -> int
     recommends a.len() > 0
     decreases a.len() when a.len() > 0
@@ -40,22 +38,13 @@ spec fn max_seq(a: Seq<int>) -> int
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn sum_min_max(a: &[i32]) -> (sum: i32)
     requires a.len() > 0
     ensures sum == max_seq(a@.map(|i: int, x: i32| x as int)) + min_seq(a@.map(|i: int, x: i32| x as int))
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

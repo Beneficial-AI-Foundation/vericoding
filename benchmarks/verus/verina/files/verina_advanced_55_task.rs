@@ -1,16 +1,11 @@
-/* This task requires writing a Verus method that returns the integer that appears most frequently in the input list. If multiple integers have the same maximum frequency, return the one that appears first in the original list. You should implement a frequency counter using a fold over the list, extract the maximum frequency, and return the first element in the list that matches it.
-
-Input: The input consists of xs: A list of integers (possibly with duplicates). The list is guaranteed to be non-empty.
-
-Output: The output is an integer that appears the most frequently in the list. If there is a tie, the element that occurs first in the original list should be returned. */
-
 use vstd::prelude::*;
 
 verus! {
-/* Helper function to count occurrences of a target value in a sequence */
+
 spec fn count_occurrences(xs: Seq<i32>, target: i32) -> nat {
     xs.filter(|x: i32| x == target).len()
 }
+
 fn most_frequent(xs: Vec<i32>) -> (result: i32)
     requires xs.len() > 0,
     ensures
@@ -22,11 +17,9 @@ fn most_frequent(xs: Vec<i32>) -> (result: i32)
             count_occurrences(xs@, result) == count_occurrences(xs@, xs[first_idx]) &&
             forall|i: int| 0 <= i < first_idx ==> count_occurrences(xs@, xs[i]) < count_occurrences(xs@, result),
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

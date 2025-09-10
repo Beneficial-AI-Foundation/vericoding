@@ -1,8 +1,7 @@
-/* Shift the bits of an integer to the right element-wise. This operation is equivalent to dividing each element by 2^shift_amount using integer division. For negative inputs, the behavior follows arithmetic right shift with sign extension. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn right_shift(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
     requires 
         x1.len() == x2.len(),
@@ -18,10 +17,9 @@ fn right_shift(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
             &&& (x1[i] == 0 ==> result[i] == 0)
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

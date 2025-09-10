@@ -2,10 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn find_median(a: &[i32], b: &[i32]) -> (median: i32)
     requires 
         a.len() == b.len(),
@@ -18,16 +14,10 @@ fn find_median(a: &[i32], b: &[i32]) -> (median: i32)
         } else { 
             a[(a.len() / 2) as int] as int
         }
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0 // unreachable due to assume(false)
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

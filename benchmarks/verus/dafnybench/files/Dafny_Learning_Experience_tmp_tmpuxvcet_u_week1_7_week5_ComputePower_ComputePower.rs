@@ -15,21 +15,12 @@ fn calc_power(n: u32) -> (p: u32)
   0
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn compute_power(n: u32) -> (p: u32)
     ensures p == power(n as nat)
-// </vc-spec>
-// <vc-code>
 {
-  assume(false);
-  0
-}
-// </vc-code>
-
-fn main() {
+    assume(false);
+    unreached();
 }
 
 }
+fn main() {}

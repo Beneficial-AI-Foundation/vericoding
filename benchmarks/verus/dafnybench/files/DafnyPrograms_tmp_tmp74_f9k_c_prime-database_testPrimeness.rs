@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// predicate for primeness
 spec fn prime(n: nat) -> bool {
     n > 1 && (forall|nr: nat| 1 < nr < n ==> #[trigger] (n % nr) != 0)
 }
@@ -14,19 +13,16 @@ enum Answer {
     Unknown,
 }
 
-// the class containing a prime database, if a number is prime it returns Yes, if it is not No and if the number
-// is not in the database it returns Unknown
 struct PrimeMap {
     database: Ghost<Map<nat, bool>>,
 }
 
 impl PrimeMap {
-    // the valid invariant of the class
+
     spec fn valid(&self) -> bool {
         forall|i: nat| self.database@.dom().contains(i) ==> (self.database@[i] == prime(i))
     }
 
-    // the constructor
     fn new() -> (result: PrimeMap)
         ensures 
             result.database@ === Map::empty(),
@@ -37,8 +33,6 @@ impl PrimeMap {
         }
     }
 
-    // lookup n in the database and reply with Yes or No if it's in the database and it is or it is not prime,
-    // or with Unknown when it's not in the databse
     fn is_prime(&self, n: nat) -> (answer: Answer)
         requires self.valid(),
         ensures 
@@ -50,25 +44,15 @@ impl PrimeMap {
         Answer::Unknown
     }
 
-    // method to test whether a number is prime, returns bool
-
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn test_primeness(n: nat) -> (result: bool) 
       requires n >= 0,
       ensures result <==> prime(n),
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    false
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

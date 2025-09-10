@@ -2,10 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn torneo(valores: &Vec<int>, i: usize, j: usize, k: usize) -> (res: (usize, usize))
     requires 
         valores.len() >= 20 && valores.len() < 50,
@@ -20,16 +16,11 @@ fn torneo(valores: &Vec<int>, i: usize, j: usize, k: usize) -> (res: (usize, usi
             valores[p as int] >= valores[q as int] && 
             valores[q as int] >= valores[r as int] &&
             res.0 == p && 
-            res.1 == q, // Q
-// </vc-spec>
-// <vc-code>
+            res.1 == q,
 {
     assume(false);
-    (0, 0)
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

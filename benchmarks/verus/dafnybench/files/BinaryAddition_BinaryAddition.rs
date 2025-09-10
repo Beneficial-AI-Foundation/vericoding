@@ -2,35 +2,12 @@ use vstd::prelude::*;
 
 verus! {
 
-/* 
-MIPS 0
-We implement the following with bitvectors in Verus.
-here s' and t' are converted to decimal scalars
-s = [1,1,1], t = [1,0,1], ys = [1, 0, 0], s' = 7, t' = 5, ys' = 4
-ys' % 2 ^ (len(s)) = (s' + t') % 2 ^ (len(s))
-4 % 8 = 12 % 8
-
-def f(s,t):
-    a = 0;b = 0;
-    ys = []
-    for i in range(10):
-        c = s[i]; d = t[i];
-        next_a = b ^ c ^ d
-        next_b = b+c+d>1
-        a = next_a;b = next_b;
-        y = a
-        ys.append(y)
-    return ys
-*/
-
-// Helper function to check if a bit is set
 spec fn is_bit_set(x: u16, bit_index: int) -> bool
     recommends 0 <= bit_index < 10
 {
     (x & (1u16 << bit_index)) != 0
 }
 
-// Convert u16 to sequence of 10 bools (LSB first)
 spec fn bv10_to_seq(x: u16) -> Seq<bool> {
     seq![
         is_bit_set(x, 0), is_bit_set(x, 1), is_bit_set(x, 2), is_bit_set(x, 3),
@@ -39,7 +16,6 @@ spec fn bv10_to_seq(x: u16) -> Seq<bool> {
     ]
 }
 
-// Convert array of bools to u16 bitvector
 spec fn array_to_bv10(arr: &[bool; 10]) -> u16
 {
     array_to_bv10_helper(arr, 9)
@@ -61,7 +37,6 @@ spec fn array_to_bv10_helper(arr: &[bool; 10], index: nat) -> u16
     }
 }
 
-// Convert array to sequence
 fn array_to_sequence(arr: &[bool; 10]) -> (res: Vec<bool>)
     ensures res.len() == 10,
             (forall|k: int| 0 <= k < 10 ==> res[k] == arr[k]),
@@ -70,17 +45,14 @@ fn array_to_sequence(arr: &[bool; 10]) -> (res: Vec<bool>)
     Vec::new()
 }
 
-// Boolean to integer conversion
 spec fn bool_to_int(a: bool) -> int {
     if a { 1 } else { 0 }
 }
 
-// XOR operation
 spec fn xor_bool(a: bool, b: bool) -> bool {
     (a || b) && !(a && b)
 }
 
-// Traditional bit addition using bitvectors
 spec fn bit_addition(s: &[bool; 10], t: &[bool; 10]) -> Seq<bool> {
     let a: u16 = array_to_bv10(s);
     let b: u16 = array_to_bv10(t);
@@ -89,24 +61,14 @@ spec fn bit_addition(s: &[bool; 10], t: &[bool; 10]) -> Seq<bool> {
     bv10_to_seq(c)
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
-fn binary_addition(s: &[bool; 10], t: &[bool; 10]) -> (sresult: Vec<bool>) // Generated program for bit addition
+fn binary_addition(s: &[bool; 10], t: &[bool; 10]) -> (sresult: Vec<bool>)
     requires s.len() == 10 && t.len() == 10
     ensures sresult.len() == 10,
-            bit_addition(s, t) == sresult@, // Verification of correctness
-// </vc-spec>
-// <vc-code>
+            bit_addition(s, t) == sresult@,
 {
     assume(false);
-    Vec::new()
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

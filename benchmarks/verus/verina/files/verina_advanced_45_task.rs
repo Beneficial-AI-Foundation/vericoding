@@ -1,19 +1,7 @@
-/* This task requires writing a Verus function that finds the maximum subarray sum from a given list of integers.
-A subarray is a contiguous sequence of elements within the list.
-The function should return the maximum sum that can be obtained from any subarray.
-
-Input:
-The input is a vector of integers:
-xs: A vector of integers (can include negative numbers).
-
-Output:
-The output is an integer:
-Returns the maximum sum among all contiguous subarrays of xs.
-If the vector is empty, the result should be 0. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn spec_sum(xs: &Vec<i32>, start: int, len: int) -> int 
     decreases len
 {
@@ -23,6 +11,7 @@ spec fn spec_sum(xs: &Vec<i32>, start: int, len: int) -> int
         xs[start] + spec_sum(xs, start + 1, len - 1)
     }
 }
+
 fn max_subarray_sum(xs: &Vec<i32>) -> (result: i32)
     ensures
         xs.len() == 0 ==> result == 0,
@@ -38,10 +27,9 @@ fn max_subarray_sum(xs: &Vec<i32>) -> (result: i32)
             ==> spec_sum(xs, start, len) <= result as int
         ),
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

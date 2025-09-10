@@ -1,17 +1,7 @@
-/* This task requires writing a Verus method that takes a list of natural numbers and partitions it into two separate lists: one containing all the even numbers and the other containing all the odd numbers. The order of elements in each sublist should match their appearance in the original list. Assume there are no duplicates in the input.
-
-Input:
-The input consists of a single list with no duplicate natural numbers:
-- nums: A list of natural numbers (nat)
-
-Output:
-The output is a tuple of two lists:
-- The first list contains all even numbers from the input list, in order.
-- The second list contains all odd numbers from the input list, in order. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn partition_evens_odds(nums: &Vec<nat>) -> (result: (Vec<nat>, Vec<nat>))
     requires true,
     ensures ({
@@ -22,10 +12,9 @@ fn partition_evens_odds(nums: &Vec<nat>) -> (result: (Vec<nat>, Vec<nat>))
         &&& forall|i: int| 0 <= i < odds.len() ==> odds[i] % 2 == 1
     }),
 {
-    // impl-start
     assume(false);
-    (Vec::new(), Vec::new())
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

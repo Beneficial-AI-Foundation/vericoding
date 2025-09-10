@@ -1,25 +1,12 @@
-/* This task requires writing a Verus method that takes a given string and returns a new string where every occurrence of a space, comma, or dot is replaced with a colon. The transformation must preserve the original string's length and leave all other characters unmodified.
-
-Input:
-The input consists of:
-s: A string.
-
-Output:
-The output is a string:
-- The returned string must have the same length as the input string.
-- Every space, comma, or dot in the input string is replaced with a colon.
-- All other characters remain unchanged.
-
-Note:
-There are no preconditions; the input string is assumed to be non-null. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn is_space_comma_dot(c: char) -> bool
 {
     c == ' ' || c == ',' || c == '.'
 }
+
 fn replace_with_colon(s: &str) -> (result: String)
     ensures
         result@.len() == s@.len(),
@@ -27,10 +14,9 @@ fn replace_with_colon(s: &str) -> (result: String)
             #[trigger] result@.index(i) == 
             if is_space_comma_dot(#[trigger] s@.index(i)) { ':' } else { s@.index(i) },
 {
-    // impl-start
     assume(false);
-    "".to_string()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

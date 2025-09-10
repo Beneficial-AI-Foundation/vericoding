@@ -1,20 +1,7 @@
-/* This task requires writing a Verus method that identifies the first repeated character in a given string. The method should return an Option containing a character. The Option value indicates whether any character in the string is repeated. If it is Some(c), the accompanying character is the first character that appears more than once. If it is None, it indicates that there are no repeated characters in the string.
-
-Input:
-The input consists of:
-s: A vector of characters.
-
-Output:
-The output is Option<char>:
-- Returns Some(c) with the first repeated character in the string if any repeated character is found.
-- Returns None if no repeated characters are present.
-
-Note:
-There are no preconditions; the method is expected to work for any vector of characters. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn count_char(chars: Seq<char>, c: char) -> nat 
     decreases chars.len()
 {
@@ -42,6 +29,7 @@ spec fn first_occurrence_index(chars: Seq<char>, c: char) -> int {
 spec fn second_occurrence_exists(chars: Seq<char>, c: char) -> bool {
     exists|i: int, j: int| 0 <= i < j < chars.len() && #[trigger] chars[i] == c && #[trigger] chars[j] == c
 }
+
 fn find_first_repeated_char(s: &Vec<char>) -> (result: Option<char>)
     ensures match result {
         Some(c) => {
@@ -59,11 +47,9 @@ fn find_first_repeated_char(s: &Vec<char>) -> (result: Option<char>)
         }
     }
 {
-    // impl-start
     assume(false);
-    None
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

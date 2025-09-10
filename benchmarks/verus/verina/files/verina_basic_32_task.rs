@@ -1,19 +1,7 @@
-/* This task requires writing a Verus method that swaps the first and last elements of an array of integers. The method should produce a new array where the first element of the output is the last element of the input, the last element of the output is the first element of the input, and all other elements remain in their original positions.
-
-Input:
-The input consists of:
-a: An array of integers (assumed to be non-empty).
-
-Output:
-The output is an array of integers:
-Returns a new array where:
-- The former last element becomes the first element.
-- The former first element becomes the last element.
-- All other elements remain unchanged. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn swap_first_and_last(a: &Vec<i32>) -> (result: Vec<i32>)
     requires a.len() > 0,
     ensures
@@ -22,68 +10,9 @@ fn swap_first_and_last(a: &Vec<i32>) -> (result: Vec<i32>)
         result[result.len() - 1] == a[0],
         forall|i: int| 1 <= i < result.len() - 1 ==> result[i] == a[i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
-fn main() {
-    /* 
-    Invalid Inputs
-    [
-        {
-            "input": {
-                "a": "[]"
-            }
-        }
-    ]
-    Tests
-    [
-        {
-            "input": {
-                "a": "[1, 2, 3, 4, 5]"
-            },
-            "expected": "[5, 2, 3, 4, 1]",
-            "unexpected": [
-                "[1, 2, 3, 4, 5]",
-                "[5, 4, 3, 2, 1]",
-                "[2, 3, 4, 5, 1]"
-            ]
-        },
-        {
-            "input": {
-                "a": "[10]"
-            },
-            "expected": "[10]",
-            "unexpected": [
-                "[0]",
-                "[5]",
-                "[11]"
-            ]
-        },
-        {
-            "input": {
-                "a": "[1, 2]"
-            },
-            "expected": "[2, 1]",
-            "unexpected": [
-                "[1, 2]",
-                "[2, 2]",
-                "[1, 1]"
-            ]
-        },
-        {
-            "input": {
-                "a": "[1, 2, 3]"
-            },
-            "expected": "[3, 2, 1]",
-            "unexpected": [
-                "[1, 2, 3]",
-                "[3, 1, 2]",
-                "[2, 1, 3]"
-            ]
-        }
-    ]
-    */
-}
+fn main() {}

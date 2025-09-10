@@ -2,12 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Noa Leron 207131871  
-// Tsuri Farhana 315016907
-
-
-// definitions borrowed from Rustan Leino's Program Proofs Chapter 7
-// (https://program-proofs.com/code.html example code in Dafny; source file 7-Unary.dfy)
 pub enum Unary {
     Zero,
     Suc(Box<Unary>),
@@ -90,18 +84,6 @@ pub open spec fn mul(x: Unary, y: Unary) -> Unary
     }
 }
 
-/*
-Goal: implement correcly and clearly, using iterative code (no recursion), documenting the proof obligations
-    as we've learned, with assertions and a lemma for each proof goal
-
-- DO NOT modify the specification or any of the definitions given in this file
-- Not all definitions above are relevant, some are simply included as examples
-- Feel free to use existing non-ghost functions/predicates in your code, and existing lemmas (for the proof) in your annotations
-- New functions/predicates may be added ONLY as ghost
-- If it helps you in any way, a recursive implementation + proof can be found in the book and the downloadable source file
-  [https://program-proofs.com/code.html example code in Dafny, source file 7-Unary.dfy]
-*/
-
 fn iterative_div_mod_prime(x: Unary, y: Unary) -> (res: (Unary, Unary))
     requires y != Unary::Zero
     ensures add(mul(res.0, y), res.1) == x && less(res.1, y)
@@ -110,21 +92,13 @@ fn iterative_div_mod_prime(x: Unary, y: Unary) -> (res: (Unary, Unary))
     (Unary::Zero, Unary::Zero)
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn iterative_div_mod(x: Unary, y: Unary) -> (res: (Unary, Unary))
     requires y != Unary::Zero
     ensures add(mul(res.0, y), res.1) == x && less(res.1, y)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    (Unary::Zero, Unary::Zero)
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

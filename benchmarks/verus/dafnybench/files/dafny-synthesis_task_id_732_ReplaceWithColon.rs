@@ -6,10 +6,6 @@ spec fn is_space_comma_dot(c: char) -> bool {
     c == ' ' || c == ',' || c == '.'
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn replace_with_colon(s: &str) -> (v: String)
     ensures 
         v@.len() == s@.len(),
@@ -20,14 +16,10 @@ fn replace_with_colon(s: &str) -> (v: String)
                 v@[i] == s@[i]
             }
         }
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    unreached()
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

@@ -28,21 +28,13 @@ spec fn exp_nat(base: nat, n: nat) -> nat
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn gcd_calc(m: u32, n: u32) -> (res: u32)
     requires m > 0 && n > 0
     ensures res == gcd(m as nat, n as nat)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

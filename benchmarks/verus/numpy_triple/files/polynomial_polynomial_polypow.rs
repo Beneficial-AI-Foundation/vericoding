@@ -1,26 +1,15 @@
-/* Raise a polynomial to a power.
-Returns the polynomial c raised to the power pow.
-For polynomial p(x) = c[0] + c[1]*x + ... + c[n-1]*x^(n-1),
-returns p(x)^pow with appropriate coefficient expansion.
-
-Specification: polypow raises a polynomial to a non-negative integer power.
-The result represents the polynomial p(x)^pow where p(x) is defined by coefficients c.
-For power 0, returns [1] (the constant polynomial 1).
-For power 1, returns the original polynomial.
-The degree grows as expected for polynomial multiplication. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn polypow(c: Vec<f32>, pow: nat) -> (result: Vec<f32>)
     ensures
         pow == 0 ==> (result.len() == 1 && result[0] == 1.0f32),
         pow == 1 ==> result.len() == c.len() && (forall|i: int| 0 <= i < c.len() ==> result[i] == c[i]),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

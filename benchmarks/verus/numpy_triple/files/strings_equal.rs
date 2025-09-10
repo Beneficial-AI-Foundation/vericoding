@@ -1,25 +1,7 @@
-/* numpy.strings.equal: Return (x1 == x2) element-wise for string arrays.
-
-Performs element-wise string comparison between two vectors of strings.
-Returns a boolean vector indicating whether corresponding strings are equal.
-
-This function compares strings lexicographically and returns True for each
-position where the strings are identical, False otherwise.
-
-Specification: numpy.strings.equal returns element-wise equality comparison.
-
-Precondition: True (no special preconditions for string equality)
-Postcondition: For all indices i, result[i] = (x1[i] == x2[i])
-
-Mathematical Properties:
-- Core property: Each element of result is the boolean comparison of corresponding strings
-- Equivalence: result[i] is true if and only if x1[i] equals x2[i]
-- Reflexivity: If input vectors are identical, all result elements are true
-- Type-safe: Result vector has same length as input vectors */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn equal(x1: Vec<String>, x2: Vec<String>) -> (result: Vec<bool>)
     requires x1.len() == x2.len(),
     ensures
@@ -28,10 +10,9 @@ fn equal(x1: Vec<String>, x2: Vec<String>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < result.len() ==> (result[i] == true <==> x1[i] == x2[i]),
         x1@ == x2@ ==> forall|i: int| 0 <= i < result.len() ==> result[i] == true,
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

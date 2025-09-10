@@ -10,21 +10,13 @@ spec fn fib(n: nat) -> nat
     else { fib((n - 1) as nat) + fib((n - 2) as nat) }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn fibonacci1(n: u64) -> (f: u64)
-    requires n < 100, // practical bound to prevent overflow
+    requires n < 100,
     ensures f == fib(n as nat)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

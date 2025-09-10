@@ -1,0 +1,36 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_vowel(c: char) -> (ret:bool) {
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I'
+        || c == 'O' || c == 'U'
+}
+
+spec fn vowels(s: Seq<char>) -> (ret:Seq<char>) {
+    s.filter(|c| is_vowel(c))
+}
+
+spec fn inner_expr_vowels_count(s: &str, ret: u32) -> (ret:bool) {
+    ret == vowels(s@).len() + if (s@.len() > 0 && (s@.last() == 'y' || s@.last() == 'Y')) {
+        1int
+
+    } else {
+        0int
+    }
+}
+
+fn vowels_count(s: &str) -> (ret: u32)
+
+    requires
+        s@.len() <= u32::MAX,
+
+    ensures
+        inner_expr_vowels_count(s, ret),
+{
+    assume(false);
+    unreached();
+}
+
+}
+fn main() {}

@@ -12,20 +12,12 @@ spec fn C(n: nat) -> nat
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn calcC(n: u64) -> (res: u64)
     ensures res == C(n as nat),
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0  // Need to return a value
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

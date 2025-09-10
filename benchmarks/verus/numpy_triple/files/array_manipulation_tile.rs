@@ -1,12 +1,7 @@
-/* Constructs a vector by repeating the input vector `reps` times.
-For 1D case: tile([a, b, c], 3) = [a, b, c, a, b, c, a, b, c]
-
-Specification: tile repeats the input vector `reps` times, where each element
-at position i in the result corresponds to element at position (i % n) in the input */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn tile(a: Vec<i32>, reps: usize) -> (result: Vec<i32>)
     requires 
         reps > 0,
@@ -15,10 +10,9 @@ fn tile(a: Vec<i32>, reps: usize) -> (result: Vec<i32>)
         result.len() == a.len() * reps,
         forall|i: int| 0 <= i < result.len() ==> result[i] == a[i % (a.len() as int)],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

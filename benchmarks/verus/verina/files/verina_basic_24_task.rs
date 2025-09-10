@@ -1,16 +1,3 @@
-/* This task requires writing a Verus method that finds the difference between the first even number and the first odd number in an array of integers. The method should process the array sequentially until it identifies the first even number and the first odd number, and then return the difference calculated as (first even number) minus (first odd number).
-
------Input-----
-The input consists of:
-a: An array of integers.
-
------Output-----
-The output is an integer:
-Returns the difference computed as the first even number minus the first odd number found in the array.
-
------Note-----
-The input array is assumed to be non-empty and to contain at least one even number and one odd number. */
-
 use vstd::prelude::*;
 
 verus! {
@@ -22,6 +9,7 @@ spec fn is_even(n: i32) -> bool {
 spec fn is_odd(n: i32) -> bool {
     n % 2 != 0
 }
+
 fn first_even_odd_difference(a: &Vec<i32>) -> (result: i32)
     requires 
         a.len() > 1,
@@ -35,79 +23,9 @@ fn first_even_odd_difference(a: &Vec<i32>) -> (result: i32)
             (forall|k: int| 0 <= k < i ==> is_odd(a[k as int])) &&
             (forall|k: int| 0 <= k < j ==> is_even(a[k as int]))
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
-fn main() {
-    /*
-    -- Invalid Inputs
-    [
-        {
-            "input": {
-                "a": "#[2]"
-            }
-        }
-    ]
-    -- Tests
-    [
-        {
-            "input": {
-                "a": "#[2, 3, 4, 5]"
-            },
-            "expected": -1,
-            "unexpected": [
-                -2,
-                1,
-                -3
-            ]
-        },
-        {
-            "input": {
-                "a": "#[1, 4, 6, 8]"
-            },
-            "expected": 3,
-            "unexpected": [
-                2,
-                4,
-                5
-            ]
-        },
-        {
-            "input": {
-                "a": "#[7, 2, 9, 4]"
-            },
-            "expected": -5,
-            "unexpected": [
-                -3,
-                -6,
-                5
-            ]
-        },
-        {
-            "input": {
-                "a": "#[2, 2, 3, 3]"
-            },
-            "expected": -1,
-            "unexpected": [
-                1,
-                0,
-                -2
-            ]
-        },
-        {
-            "input": {
-                "a": "#[1, 1, 2, 2]"
-            },
-            "expected": 1,
-            "unexpected": [
-                0,
-                2,
-                -1
-            ]
-        }
-    ]
-    */
-}
+fn main() {}

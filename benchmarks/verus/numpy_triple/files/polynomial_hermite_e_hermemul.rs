@@ -1,10 +1,7 @@
-/* Multiply one Hermite series by another. Returns the product of two Hermite polynomials 
-represented as coefficient vectors. The multiplication involves reprojection onto 
-the Hermite polynomial basis set. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn hermemul(c1: Vec<f64>, c2: Vec<f64>) -> (result: Vec<f64>)
     requires 
         c1.len() > 0,
@@ -15,10 +12,9 @@ fn hermemul(c1: Vec<f64>, c2: Vec<f64>) -> (result: Vec<f64>)
         (forall|j: int| 0 <= j < c2.len() ==> c2[j] == 0.0) 
         ==> (forall|k: int| 0 <= k < result.len() ==> result[k] == 0.0)
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

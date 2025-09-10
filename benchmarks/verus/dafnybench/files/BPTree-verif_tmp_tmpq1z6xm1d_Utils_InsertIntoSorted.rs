@@ -2,12 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
-// Function SetLessThan equivalent
 spec fn set_less_than(numbers: Set<int>, threshold: int) -> Set<int> {
     numbers.filter(|i: int| i < threshold)
 }
 
-// Function seqSet equivalent
 spec fn seq_set(nums: Seq<int>, index: nat) -> Set<int> {
     if index < nums.len() {
         Set::new(|x: int| exists|i: int| 0 <= i < index && i < nums.len() && nums[i] == x)
@@ -16,12 +14,10 @@ spec fn seq_set(nums: Seq<int>, index: nat) -> Set<int> {
     }
 }
 
-// Predicate SortedSeq equivalent
 spec fn sorted_seq(a: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] < a[j]
 }
 
-// Method GetInsertIndex equivalent
 fn get_insert_index(a: &[int], limit: usize, x: int) -> (idx: usize)
     requires 
         !a@.contains(x),
@@ -37,37 +33,30 @@ fn get_insert_index(a: &[int], limit: usize, x: int) -> (idx: usize)
     0
 }
 
-// Predicate sorted equivalent
 spec fn sorted(a: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] < a[j]
 }
 
-// Predicate distinct equivalent
 spec fn distinct(a: Seq<int>) -> bool {
     forall|i: int, j: int| (0 <= i < a.len() && 0 <= j < a.len() && i != j) ==> a[i] != a[j]
 }
 
-// Predicate sorted_eq equivalent
 spec fn sorted_eq(a: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j]
 }
 
-// Predicate lessThan equivalent
 spec fn less_than(a: Seq<int>, key: int) -> bool {
     forall|i: int| 0 <= i < a.len() ==> a[i] < key
 }
 
-// Predicate greaterThan equivalent
 spec fn greater_than(a: Seq<int>, key: int) -> bool {
     forall|i: int| 0 <= i < a.len() ==> a[i] > key
 }
 
-// Predicate greaterEqualThan equivalent
 spec fn greater_equal_than(a: Seq<int>, key: int) -> bool {
     forall|i: int| 0 <= i < a.len() ==> a[i] >= key
 }
 
-// Function count equivalent
 spec fn count(a: Seq<bool>) -> nat
     decreases a.len()
 {
@@ -78,10 +67,6 @@ spec fn count(a: Seq<bool>) -> nat
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn insert_into_sorted(a: &[int], limit: usize, key: int) -> (b: Vec<int>)
     requires 
         key > 0,
@@ -96,14 +81,10 @@ fn insert_into_sorted(a: &[int], limit: usize, key: int) -> (b: Vec<int>)
         forall|i: int| limit + 1 <= i < b.len() ==> b[i] == 0,
         forall|i: int| 0 <= i < limit ==> a@.contains(b[i]),
         forall|i: int| 0 <= i < limit + 1 ==> b[i] > 0,
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

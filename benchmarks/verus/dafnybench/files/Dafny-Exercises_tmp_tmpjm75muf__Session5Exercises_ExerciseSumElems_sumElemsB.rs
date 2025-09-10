@@ -22,7 +22,6 @@ spec fn sum_l(s: Seq<int>) -> int
     }
 }
 
-
 spec fn sum_v(v: Seq<int>, c: int, f: int) -> int
 {
     if 0 <= c <= f <= v.len() {
@@ -32,23 +31,12 @@ spec fn sum_v(v: Seq<int>, c: int, f: int) -> int
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn sum_elems_b(v: &[i32]) -> (sum: i32)
-//ensures sum as int == sum_l(v@.map(|i, x| x as int))
 ensures sum as int == sum_r(v@.map(|i, x| x as int))
-// </vc-spec>
-// <vc-code>
 {
-  assume(false);
-  0
-}
-// </vc-code>
-
-
-fn main() {
+    assume(false);
+    unreached();
 }
 
 }
+fn main() {}

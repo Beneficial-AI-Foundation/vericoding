@@ -1,18 +1,7 @@
-/* Test element-wise for NaN and return result as a boolean array.
-
-Specification: isnan returns true for NaN values and false otherwise.
-The function correctly identifies NaN values according to IEEE 754 standard.
-
-Mathematical properties:
-1. NaN detection: result[i] = true iff x[i] is NaN
-2. NaN ≠ NaN property: if x[i].isNaN then x[i] ≠ x[i]
-3. Result preserves shape: output vector has same length as input
-4. Non-NaN values: For all finite values, the result is false
-5. Complement property: isnan is the complement of (isfinite ∨ isinfinite) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn isnan(x: Vec<f64>) -> (result: Vec<bool>)
     ensures
         result.len() == x.len(),
@@ -20,10 +9,9 @@ fn isnan(x: Vec<f64>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < x.len() ==> (result[i] == true ==> x[i] != x[i]),
         forall|i: int| 0 <= i < x.len() ==> (x[i] == x[i] ==> result[i] == false),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

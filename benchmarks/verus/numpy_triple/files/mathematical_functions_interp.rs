@@ -1,10 +1,7 @@
-/* One-dimensional linear interpolation for monotonically increasing sample points.
-Returns the one-dimensional piecewise linear interpolant to a function with given
-discrete data points (xp, fp), evaluated at x. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn interp(x: Vec<i32>, xp: Vec<i32>, fp: Vec<i32>) -> (result: Vec<i32>)
     requires 
         xp.len() > 0,
@@ -18,10 +15,9 @@ fn interp(x: Vec<i32>, xp: Vec<i32>, fp: Vec<i32>) -> (result: Vec<i32>)
             (x[k] >= xp[xp.len() - 1] ==> result[k] == fp[fp.len() - 1])
         )
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

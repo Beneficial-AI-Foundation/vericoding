@@ -8,10 +8,6 @@ spec fn min_pair(s: Seq<i32>) -> i32 {
 
 spec fn min(s: Seq<i32>) -> i32;
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn second_smallest(s: &[i32]) -> (second_smallest: i32)
     requires 
         s.len() >= 2,
@@ -21,15 +17,10 @@ fn second_smallest(s: &[i32]) -> (second_smallest: i32)
         exists|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && i != j && 
             s[i] == min(s@) && s[j] == second_smallest,
         forall|k: int| 0 <= k < s.len() && s[k] != min(s@) ==> s[k] >= second_smallest
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

@@ -1,16 +1,7 @@
-/* Construct an array from an index array and a set of arrays to choose from.
-Given an index vector 'indices' and a vector of choice vectors 'choices',
-constructs a result vector where each element is selected from the corresponding
-choice vector based on the index value at that position.
-
-For each position i in the result, result[i] = choices[indices[i]][i]
-
-This is a simplified version focusing on the core functionality with 'raise' mode,
-where all indices must be valid (in range [0, num_choices-1]). */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn choose(indices: Vec<usize>, choices: Vec<Vec<f64>>) -> (result: Vec<f64>)
     requires 
         indices.len() > 0,
@@ -21,10 +12,9 @@ fn choose(indices: Vec<usize>, choices: Vec<Vec<f64>>) -> (result: Vec<f64>)
         result.len() == indices.len(),
         forall|i: int| 0 <= i < indices.len() ==> result[i] == choices[indices[i] as int][i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

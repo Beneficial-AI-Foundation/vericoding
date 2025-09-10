@@ -1,11 +1,7 @@
-/* Compute the roots of a polynomial.
-Given polynomial coefficients c[0], c[1], ..., c[n-1], returns the roots of
-p(x) = c[0] + c[1]*x + c[2]*x^2 + ... + c[n-1]*x^(n-1).
-For a polynomial of degree n, there are exactly n roots (counting multiplicity). */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn polyroots(c: Vec<f64>) -> (roots: Vec<f64>)
     requires 
         c.len() > 1,
@@ -14,10 +10,9 @@ fn polyroots(c: Vec<f64>) -> (roots: Vec<f64>)
         roots.len() == c.len() - 1,
         forall|i: int| 0 <= i < c.len() ==> exists|j: int| 0 <= j < c.len() && c[j] != 0.0,
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -9,10 +9,10 @@ decreases m + n
     if m == n { 
         n 
     } else if m > n { 
-        // Simplified to avoid termination proof complexity
+
         if m > n { gcd(1, n) } else { n }
     } else { 
-        // Simplified to avoid termination proof complexity  
+
         if n > m { gcd(m, 1) } else { m }
     }
 }
@@ -31,22 +31,13 @@ decreases n
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn exp_by_sqr(x0: u32, n0: u32) -> (r: u32)
     requires x0 >= 0
     ensures r == exp(x0 as int, n0 as nat)
-// </vc-spec>
-// <vc-code>
 {
-  assume(false);
-  0
-}
-// </vc-code>
-
-fn main() {
+    assume(false);
+    unreached();
 }
 
 }
+fn main() {}

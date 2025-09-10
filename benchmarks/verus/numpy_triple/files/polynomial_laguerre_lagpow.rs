@@ -1,14 +1,7 @@
-/* Raise a Laguerre series to a power.
-
-Returns the Laguerre series `c` raised to the power `pow`. The
-argument `c` is a sequence of coefficients ordered from low to high.
-i.e., [1,2,3] is the series  ``P_0 + 2*P_1 + 3*P_2.``
-
-Specification: lagpow raises a Laguerre series to a power with proper constraints */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn lagpow(c: Vec<f32>, pow: usize, maxpower: usize) -> (result: Vec<f32>)
     requires 
         pow > 0,
@@ -19,10 +12,9 @@ fn lagpow(c: Vec<f32>, pow: usize, maxpower: usize) -> (result: Vec<f32>)
         result.len() == c.len(),
         pow == 1 ==> (forall|i: int| 0 <= i < result.len() ==> result[i] == c[i]),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

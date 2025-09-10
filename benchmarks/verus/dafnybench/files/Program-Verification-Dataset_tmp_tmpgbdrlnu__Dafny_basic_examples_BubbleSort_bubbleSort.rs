@@ -14,25 +14,16 @@ spec fn pivot(a: Seq<i32>, to: int, pvt: int) -> bool
     forall|u: int, v: int| 0 <= u < pvt < v < to ==> a[u] <= a[v]
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn bubbleSort(a: &mut Vec<i32>)
     requires 
         old(a).len() > 0,
     ensures 
         sorted(a@, 0, a.len() as int),
         a@.to_multiset() == old(a)@.to_multiset(),
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

@@ -13,21 +13,12 @@ spec fn suma_aux(V: &[i32], n: int) -> int
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn suma_componentes(V: &[i32]) -> (suma: i32)
     ensures suma == suma_aux(V, 0)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

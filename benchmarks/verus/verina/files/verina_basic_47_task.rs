@@ -1,16 +1,3 @@
-/* This task requires writing a Verus method that calculates the sum of all the elements in an array of integers. The method should process the entire array and return the total sum of its elements.
-
------Input-----
-The input consists of:
-a: An array of integers.
-
------Output-----
-The output is an integer:
-Returns the sum of all elements in the input array.
-
------Note-----
-- The input array is assumed not to be null. */
-
 use vstd::prelude::*;
 
 verus! {
@@ -20,73 +7,15 @@ spec fn sum_to(a: &Vec<i32>, n: int) -> int
 {
     if n <= 0 { 0 } else { sum_to(a, n - 1) + a[n - 1] }
 }
+
 fn array_sum(a: &Vec<i32>) -> (result: i32)
     requires a.len() > 0,
     ensures
         result == sum_to(a, a.len() as int),
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
-fn main() {
-    /*
-    -- Invalid Inputs
-    [
-        {
-            "input": {
-                "a": "#[]"
-            }
-        }
-    ]
-    -- Tests
-    [
-        {
-            "input": {
-                "a": "#[1, 2, 3, 4, 5]"
-            },
-            "expected": 15,
-            "unexpected": [
-                14,
-                10,
-                16
-            ]
-        },
-        {
-            "input": {
-                "a": "#[13, 14, 15, 16, 17]"
-            },
-            "expected": 75,
-            "unexpected": [
-                74,
-                76,
-                70
-            ]
-        },
-        {
-            "input": {
-                "a": "#[-1, -2, -3]"
-            },
-            "expected": -6,
-            "unexpected": [
-                -5,
-                -7,
-                0
-            ]
-        },
-        {
-            "input": {
-                "a": "#[10, -10]"
-            },
-            "expected": 0,
-            "unexpected": [
-                5,
-                -5,
-                10
-            ]
-        }
-    ]
-    */
-}
+fn main() {}

@@ -1,14 +1,7 @@
-/* Return the identity matrix of size n×n.
-The identity matrix is a square matrix with ones on the main diagonal
-and zeros elsewhere.
-
-Specification: identity returns an n×n matrix where:
-- diagonal elements (i,i) are 1.0
-- off-diagonal elements (i,j) where i≠j are 0.0 */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn identity(n: usize) -> (result: Vec<Vec<f64>>)
     ensures
         result.len() == n,
@@ -16,10 +9,9 @@ fn identity(n: usize) -> (result: Vec<Vec<f64>>)
         forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==>
             result[i][j] == if i == j { 1.0 } else { 0.0 }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

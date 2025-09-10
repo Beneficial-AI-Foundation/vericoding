@@ -2,28 +2,16 @@ use vstd::prelude::*;
 
 verus! {
 
-// line contém uma string de tamanho l
-// remover p caracteres a partir da posição at
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn delete(line: &mut Vec<char>, l: usize, at: usize, p: usize)
     requires
         l <= old(line).len(),
         at + p <= l,
     ensures
         line@ == old(line)@.subrange(0, at as int) + old(line)@.subrange((at + p) as int, l as int),
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

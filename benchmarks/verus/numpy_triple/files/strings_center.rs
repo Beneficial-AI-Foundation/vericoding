@@ -1,25 +1,7 @@
-/* Return a copy of a with its elements centered in a string of length width.
-
-Centers strings in a field of given width with optional fill character.
-If the original string length is greater than or equal to the target width,
-the original string is returned unchanged. Otherwise, the string is padded
-symmetrically with the fill character to reach the target width.
-
-From NumPy documentation:
-- Parameters: a (array_like with StringDType), width (array_like with integer dtype), 
-              fillchar (optional, default ' ') - The padding character
-- Returns: out (ndarray) - Output array with centered strings
-
-Mathematical Properties:
-1. Length preservation: If original.length >= width, return original unchanged
-2. Symmetric padding: If original.length < width, pad equally on both sides
-3. Padding balance: Left and right padding differ by at most 1 character
-4. Character preservation: Original string appears as substring in result
-5. Width compliance: Result length equals max(original.length, width) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn center(a: Vec<String>, width: Vec<usize>, fillchar: char) -> (result: Vec<String>)
     requires 
         a.len() == width.len(),
@@ -33,10 +15,9 @@ fn center(a: Vec<String>, width: Vec<usize>, fillchar: char) -> (result: Vec<Str
                 &&& result[i]@.len() as int == if orig_len >= target_width { orig_len } else { target_width }
             }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

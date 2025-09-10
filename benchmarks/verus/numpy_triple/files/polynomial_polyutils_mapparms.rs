@@ -1,14 +1,7 @@
-/* Linear map parameters between domains. 
-Returns the parameters of the linear map `offset + scale*x` that maps
-`old` to `new` such that `old[i] -> new[i]`, `i = 0, 1`.
-
-Specification: mapparms computes linear mapping parameters between domains.
-The returned offset and scale define a linear map L(x) = offset + scale*x
-that maps the old domain to the new domain. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn mapparms(old: [i32; 2], new: [i32; 2]) -> (result: (i32, i32))
     requires old[0] != old[1],
     ensures ({
@@ -21,10 +14,9 @@ fn mapparms(old: [i32; 2], new: [i32; 2]) -> (result: (i32, i32))
         offset == (old[1] * new[0] - old[0] * new[1]) / oldlen
     })
 {
-    // impl-start
     assume(false);
-    (0, 0)
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

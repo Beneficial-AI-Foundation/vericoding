@@ -1,28 +1,15 @@
-/* This task requires writing a Verus method that converts all uppercase characters in a given string to their lowercase equivalents while keeping the other characters unchanged. The output string must have the same length as the input string.
-
------Input-----
-The input consists of:
-s: A string that may contain both uppercase and lowercase characters.
-
------Output-----
-The output is a string:
-Returns a new string where every uppercase letter has been converted to lowercase, and every non-uppercase character remains exactly as in the input.
-
------Note-----
-There are no preconditions; the method is expected to work for any non-null string. */
-
 use vstd::prelude::*;
 
 verus! {
-/* Helper function to check if a character is uppercase */
+
 spec fn is_uppercase(c: char) -> bool {
     'A' <= c && c <= 'Z'
 }
 
-/* Helper function to shift character by 32 positions */
 spec fn shift32(c: char) -> char {
     ((c as int) + 32) as char
 }
+
 fn to_lowercase(s: &Vec<char>) -> (result: Vec<char>)
     ensures
         result.len() == s.len(),
@@ -34,10 +21,9 @@ fn to_lowercase(s: &Vec<char>) -> (result: Vec<char>)
             }
         },
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

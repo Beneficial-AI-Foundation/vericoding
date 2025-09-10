@@ -1,28 +1,7 @@
-/* numpy.ndarray.flatten: Return a copy of the array collapsed into one dimension.
-
-Flattens a 2D matrix into a 1D vector using row-major (C-style) order.
-Each row is placed sequentially in the output vector.
-
-Parameters:
-- mat: 2D matrix represented as Vector of Vectors
-
-Returns:
-- 1D vector containing all elements in row-major order
-
-Example: [[1,2], [3,4]] becomes [1, 2, 3, 4]
-
-Specification: flatten returns a 1D vector containing all elements of the 2D matrix
-in row-major order.
-
-Precondition: True (no special preconditions)
-Postcondition: 
-- The result has size rows * cols
-- Each element at position (row * cols + col) equals the original element at (row, col)
-- Elements are ordered by row-major traversal (row 0 first, then row 1, etc.) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn flatten(mat: Vec<Vec<f32>>) -> (result: Vec<f32>)
     requires 
         mat.len() > 0,
@@ -34,10 +13,9 @@ fn flatten(mat: Vec<Vec<f32>>) -> (result: Vec<f32>)
             0 <= r < mat.len() && 0 <= c < mat[0].len() ==>
             result[r * mat[0].len() + c] == mat[r][c]
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

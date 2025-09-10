@@ -1,14 +1,7 @@
-/* Return argument as a list of 1-d arrays. Takes a 2-d array of shape (M,N)
-and returns M arrays of size N (parsed by row). Optionally trims trailing 
-zeros from each array.
-
-Specification: as_series returns a list of 1-d arrays where each row of the
-input becomes a separate 1-d array. When trim is false, arrays are unchanged.
-When trim is true, trailing zeros are removed from each array. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn as_series(arr: Vec<Vec<f64>>, trim: bool) -> (result: Vec<Vec<f64>>)
     requires 
         arr.len() > 0,
@@ -26,10 +19,9 @@ fn as_series(arr: Vec<Vec<f64>>, trim: bool) -> (result: Vec<Vec<f64>>)
             }
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

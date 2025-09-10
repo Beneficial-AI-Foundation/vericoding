@@ -1,16 +1,7 @@
-/* Stack a sequence of vectors along a new axis to create a 2D matrix.
-For simplicity, we focus on stacking 1D vectors along axis 0.
-The result has shape (m, n) where m is the number of vectors and n is their common length.
-
-Specification: stack creates a 2D matrix where each input vector becomes a row.
-Key properties:
-1. The result preserves all input vectors as rows
-2. The i-th row of the result equals the i-th input vector
-3. Shape property: stacking m vectors of length n produces an m×n matrix */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn stack(arrays: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
     requires 
         arrays.len() > 0,
@@ -20,10 +11,9 @@ fn stack(arrays: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
         forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i].len() == arrays[0].len(),
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==> #[trigger] result[i][j] == #[trigger] arrays[i][j],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

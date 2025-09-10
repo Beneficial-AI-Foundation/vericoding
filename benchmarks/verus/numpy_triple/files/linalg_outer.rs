@@ -1,24 +1,7 @@
-/* Compute the outer product of two vectors.
-Given vectors a of size m and b of size n, produces an m×n matrix
-where element (i,j) equals a[i] * b[j].
-
-Specification: The outer product produces a matrix where each element (i,j)
-is the product of the i-th element of the first vector and the j-th element
-of the second vector. This captures the fundamental mathematical property
-that outer(a,b)[i,j] = a[i] * b[j].
-
-The specification includes:
-1. Core property: Each matrix element equals the product of corresponding vector elements
-2. Row structure: Each row i is the vector b scaled by a[i]
-3. Column structure: Each column j is the vector a scaled by b[j]
-4. Bilinearity: The outer product is linear in both arguments
-
-This captures the essential mathematical behavior of the outer product operation,
-which is fundamental in linear algebra and tensor analysis. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn outer_i32(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<Vec<i32>>)
     ensures
         result.len() == a.len(),
@@ -26,10 +9,9 @@ fn outer_i32(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<Vec<i32>>)
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==> 
             result[i][j] == a[i] * b[j],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

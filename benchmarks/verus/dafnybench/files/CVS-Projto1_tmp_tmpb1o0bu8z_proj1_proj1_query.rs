@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-//Exercicio 1.a)
 spec fn sum(a: Seq<int>, i: int, j: int) -> int
     recommends 0 <= i <= j <= a.len()
     decreases j when 0 <= i <= j <= a.len()
@@ -14,18 +13,12 @@ spec fn sum(a: Seq<int>, i: int, j: int) -> int
     }
 }
 
-//Exercicio 1.b)
-
-//Exercicio 1.c)
-
-
 spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool {
     a.len() + 1 == c.len()
     && c[0] == 0
     && forall|j: int| 1 <= j <= a.len() ==> c[j] == sum(a, 0, j)
 }
 
-///Exercicio 2.
 #[derive(PartialEq, Eq)]
 enum List<T> {
     Nil,
@@ -49,21 +42,13 @@ spec fn mem<T>(x: T, l: List<T>) -> bool
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 exec fn query(a: &[i32], i: usize, j: usize) -> (s: i32)
     requires 0 <= i <= j <= a.len()
     ensures s == sum(a@.map(|k, x| x as int), i as int, j as int)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

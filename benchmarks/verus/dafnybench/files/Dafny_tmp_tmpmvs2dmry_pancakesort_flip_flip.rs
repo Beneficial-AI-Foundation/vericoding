@@ -2,28 +2,18 @@ use vstd::prelude::*;
 
 verus! {
 
-// flips (i.e., reverses) array elements in the range [0..num]
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn flip(a: &mut Vec<i32>, num: usize)
     requires 
         old(a).len() > 0,
         num < old(a).len(),
     ensures
         forall|k: int| 0 <= k <= num as int ==> #[trigger] a[k] == old(a)[num as int - k],
-        // forall k :: num < k < a.Length ==> a[k] == old(a[k])
+
         a.len() == old(a).len(),
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

@@ -1,23 +1,7 @@
-/* Compute the one-dimensional inverse discrete Fourier Transform (IFFT).
-
-The IFFT transforms frequency domain data back to the time domain,
-computing the inverse of the DFT such that ifft(fft(x)) ≈ x.
-
-For a vector of length n, the k-th coefficient is computed as:
-X[k] = (1/n) * Σ(j=0 to n-1) a[j] * exp(2πi*j*k/n)
-
-Specification: The inverse FFT correctly computes the inverse discrete Fourier transform.
-
-The IFFT satisfies the inverse DFT equation where each output element k is 
-computed as (1/n) times the sum over all input elements j, multiplied by the 
-complex exponential exp(2πi*k*j/n).
-
-This is the mathematical inverse of the FFT operation, with a positive sign 
-in the exponential and a normalization factor of 1/n. */
-
 use vstd::prelude::*;
 
 verus! {
+
 #[derive(PartialEq, Eq, Structural)]
 pub struct Complex {
     pub re: int,
@@ -42,7 +26,7 @@ impl Complex {
 }
 
 pub open spec fn cexp(theta: int) -> Complex {
-    Complex { re: 1, im: 0 } /* Simplified for spec purposes */
+    Complex { re: 1, im: 0 }
 }
 
 pub open spec fn complex_sum(n: nat, f: spec_fn(nat) -> Complex) -> Complex
@@ -71,11 +55,9 @@ fn ifft(a: Vec<Complex>) -> (result: Vec<Complex>)
             result[k] == expected
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

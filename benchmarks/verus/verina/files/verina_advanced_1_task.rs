@@ -1,21 +1,15 @@
-/* This task requires writing a Verus function that finds the single number in a non-empty list of integers, where every element appears exactly twice except for one element that appears only once. The function should return the integer that appears only once.
-
-Input: The input is a non-empty list of integers where each integer appears exactly twice except for one element that appears only once.
-
-Output: The output is a single integer - the unique integer that appears exactly once in the list. */
-
 use vstd::prelude::*;
 
 verus! {
-// Helper function to count occurrences of an element in a sequence
+
 spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat {
     nums.filter(|elem: i32| elem == x).len()
 }
 
-// Helper function to filter elements equal to x
 spec fn filter_equal(nums: Seq<i32>, x: i32) -> Seq<i32> {
     nums.filter(|elem: i32| elem == x)
 }
+
 fn find_single_number(nums: &Vec<i32>) -> (result: i32)
     requires 
         nums.len() > 0,
@@ -25,10 +19,9 @@ fn find_single_number(nums: &Vec<i32>) -> (result: i32)
         count_occurrences(nums@, result) == 1,
         forall|x: i32| nums@.contains(x) ==> (x == result || count_occurrences(nums@, x) == 2),
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

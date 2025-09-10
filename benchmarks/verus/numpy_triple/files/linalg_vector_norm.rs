@@ -1,44 +1,7 @@
-/* numpy.linalg.vector_norm: Compute the p-norm of a vector for a given order p.
-    
-This function computes vector norms of different orders (p-norms).
-For a vector x and order p, the p-norm is defined as:
-||x||_p = (sum(|x[i]|^p))^(1/p) for p ≥ 1
-
-Special cases:
-- p = 1: Manhattan norm (sum of absolute values)
-- p = 2: Euclidean norm (square root of sum of squares)
-- p = ∞: Maximum norm (largest absolute value)
-- p = -∞: Minimum norm (smallest absolute value)
-- p = 0: Zero norm (count of non-zero elements)
-
-This implementation focuses on the most common p-norm cases for 1D vectors.
-
-Specification: vector_norm computes the p-norm of a vector for various values of p.
-
-The p-norm is a generalization of the common vector norms used in numerical computing.
-This specification covers the mathematical definition and key properties of p-norms.
-
-Mathematical definition:
-- For p ≥ 1: ||x||_p = (Σᵢ |xᵢ|^p)^(1/p)
-- For p = 1: ||x||_1 = Σᵢ |xᵢ| (Manhattan norm)
-- For p = 2: ||x||_2 = √(Σᵢ xᵢ²) (Euclidean norm)
-- For p = 0: ||x||_0 = count of non-zero elements
-
-Key properties verified:
-1. Definition: For p ≥ 1, result equals (sum of |xi|^p)^(1/p)
-2. Non-negativity: norm(x, p) ≥ 0 for all x and valid p
-3. Definiteness: norm(x, p) = 0 iff x is zero vector (for p > 0)
-4. Special cases: p=1 (Manhattan), p=2 (Euclidean), p=0 (zero norm)
-5. Empty vector: norm of empty vector is 0
-
-Preconditions:
-- p must be a non-negative real number
-- For p = 0, it counts non-zero elements (special case)
-- For p ≥ 1, it computes the standard p-norm */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn vector_norm(x: Vec<i32>, p: i32) -> (result: i32)
     requires p >= 0,
     ensures 
@@ -46,10 +9,9 @@ fn vector_norm(x: Vec<i32>, p: i32) -> (result: i32)
         x@.len() == 0 ==> result == 0,
         result >= 0
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

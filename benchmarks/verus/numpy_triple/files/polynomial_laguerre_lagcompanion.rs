@@ -1,8 +1,7 @@
-/* Returns the companion matrix of Laguerre polynomial coefficients. The companion matrix is a square matrix of size (deg, deg) where deg = c.size - 1. For coefficients [c₀, c₁, ..., cₙ], the companion matrix has specific structure for Laguerre polynomials with diagonal elements 2*i + 1 and off-diagonal elements. Specification: lagcompanion returns the companion matrix of Laguerre polynomial coefficients. The companion matrix is symmetric for Laguerre polynomials and has dimension (deg, deg) where deg = c.size - 1. The matrix structure follows the Laguerre polynomial recurrence relation. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn lagcompanion(c: Vec<f64>) -> (result: Vec<Vec<f64>>)
     requires 
         c.len() >= 2,
@@ -10,10 +9,9 @@ fn lagcompanion(c: Vec<f64>) -> (result: Vec<Vec<f64>>)
         result@.len() == c@.len() - 1,
         forall|i: int| 0 <= i < result@.len() ==> result@[i].len() == c@.len() - 1,
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,29 +1,15 @@
-/* IEEE 754 floating point representation of negative infinity (deprecated in NumPy 2.0)
-
-Specification: NINF represents negative infinity with the following properties:
-1. NINF is less than any finite float value
-2. NINF + any finite value = NINF
-3. NINF * positive finite value = NINF
-4. NINF * negative finite value = inf
-5. NINF / any finite non-zero value = NINF (with appropriate sign)
-6. NINF = -inf (negative of positive infinity) */
-
 use vstd::prelude::*;
 
 verus! {
-/* IEEE 754 floating point representation of negative infinity (deprecated in NumPy 2.0) */
 
 fn NINF() -> (result: f64)
     ensures
-        // NINF represents a special f64 value (negative infinity)
-        // Due to Verus limitations with floating point specifications,
-        // we can only provide basic structural properties
-        true  /* Placeholder - actual floating point properties cannot be easily verified in Verus */
+
+        true
 {
-    // impl-start
     assume(false);
-    0.0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

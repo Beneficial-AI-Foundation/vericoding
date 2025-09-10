@@ -1,27 +1,7 @@
-/* numpy.strings.count: Returns an array with the number of non-overlapping occurrences 
-of substring sub in the range [start, end] for each element.
-
-For each string in the input array, counts how many times the substring appears
-without overlapping matches within the specified range. The search is performed
-within the range [start, end) where start and end are character indices.
-
-Specification: numpy.strings.count returns the number of non-overlapping occurrences 
-of substring within the specified range for each element.
-
-Preconditions:
-- start ≤ end for all elements (valid range)
-- start and end indices are valid (within string bounds)
-- substring is not empty for all elements (to avoid infinite loops)
-
-Postconditions:
-- Result is non-negative for all elements
-- For each element, the count represents non-overlapping occurrences of substring
-- If substring is longer than search range, count is 0
-- The count is maximal (greedy non-overlapping matching) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn count(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) -> (result: Vec<i32>)
     requires 
         a.len() == sub.len(),
@@ -37,10 +17,9 @@ fn count(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) -
         forall|i: int| 0 <= i < result.len() ==> 
             (sub[i]@.len() > (end_pos[i] - start[i]) ==> result[i] == 0)
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

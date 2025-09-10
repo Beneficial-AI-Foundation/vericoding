@@ -14,7 +14,7 @@ spec fn min(v: Seq<int>, i: int) -> int
             min(v, i-1)
         }
     } else {
-        0  // dummy value for invalid inputs
+        0
     }
 }
 
@@ -40,7 +40,7 @@ spec fn count_min(v: Seq<int>, x: int, i: int) -> int
             count_min(v, x, i-1)
         }
     } else {
-        0  // dummy value for invalid inputs
+        0
     }
 }
 
@@ -54,25 +54,15 @@ proof fn count_min_property(v: Seq<int>, x: int, i: int)
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn m_count_min(v: &Vec<i32>) -> (c: i32)
     requires v.len() > 0
     ensures c == count_min(v@.map_values(|x: i32| x as int), 
                           min(v@.map_values(|x: i32| x as int), v.len() as int), 
                           v.len() as int)
-    //Implement and verify an O(v.len()) algorithm
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

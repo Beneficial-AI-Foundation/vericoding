@@ -2,10 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn below_zero(operations: Vec<i32>) -> (result: (Vec<i32>, bool))
     ensures
         result.0.len() == operations.len() + 1,
@@ -13,15 +9,10 @@ fn below_zero(operations: Vec<i32>) -> (result: (Vec<i32>, bool))
         forall|i: int| 0 <= i < (result.0.len() - 1) as int ==> result.0[i + 1] == result.0[i] + operations[i],
         result.1 == true ==> exists|i: int| 1 <= i <= operations.len() as int && result.0[i] < 0,
         result.1 == false ==> forall|i: int| 0 <= i < result.0.len() as int ==> result.0[i] >= 0,
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    (vec![], false)
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

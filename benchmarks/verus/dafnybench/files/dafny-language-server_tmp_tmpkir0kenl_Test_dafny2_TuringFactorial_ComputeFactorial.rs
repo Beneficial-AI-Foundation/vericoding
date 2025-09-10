@@ -8,23 +8,13 @@ spec fn factorial(n: nat) -> nat
     if n == 0 { 1 } else { n * factorial((n - 1) as nat) }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn compute_factorial(n: i32) -> (u: i32)
     requires 1 <= n,
     ensures u == factorial(n as nat),
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

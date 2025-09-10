@@ -1,10 +1,7 @@
-/* Multiply a Hermite series by x using the recursion relationship for Hermite polynomials.
-The result has one more coefficient than the input, implementing the transformation
-based on the Hermite polynomial recursion: xP_i(x) = (P_{i + 1}(x) + iP_{i - 1}(x)) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn hermemulx(c: Vec<f64>) -> (result: Vec<f64>)
     requires c.len() >= 0,
     ensures
@@ -12,10 +9,9 @@ fn hermemulx(c: Vec<f64>) -> (result: Vec<f64>)
         result[0] == 0.0,
         forall|i: int| 1 <= i < c.len() ==> result[i + 1] == c[i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,36 +1,15 @@
-/* Weight function of the Hermite polynomials.
-Computes exp(-x²) for each element in the input vector.
-
-The weight function is exp(-x^2) and the interval of
-integration is [-inf, inf]. The Hermite polynomials are
-orthogonal, but not normalized, with respect to this weight function.
-
-Parameters
-----------
-x : array_like
-   Values at which the weight function will be computed.
-
-Returns
--------
-w : ndarray
-   The weight function at x. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn hermweight(x: Vec<f32>) -> (w: Vec<f32>)
     requires x.len() > 0,
     ensures
         w.len() == x.len(),
-        /* Each output element equals exp(-x²) of the corresponding input */
-        /* All output values are positive (since exp is always positive) */
-        /* The weight function achieves its maximum value of 1 at x=0 */
-        /* The function decreases as |x| increases */
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

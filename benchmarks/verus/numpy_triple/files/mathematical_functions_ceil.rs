@@ -1,39 +1,15 @@
-/* numpy.ceil: Return the ceiling of the input, element-wise.
-
-The ceiling of each element x is the smallest integer i, such that i >= x.
-This is a fundamental mathematical operation that rounds up to the
-nearest integer.
-
-Returns an array of the same shape as x, containing the ceiling of each element.
-
-Specification: numpy.ceil returns a vector where each element is the
-ceiling (smallest integer greater than or equal to) the corresponding element in x.
-
-Precondition: True (ceiling is defined for all real numbers)
-Postcondition: For all indices i, result[i] is the ceiling of x[i], meaning:
-- result[i] is an integer value (represented as Float)
-- result[i] ≥ x[i]
-- result[i] < x[i] + 1
-- There is no integer k such that x[i] ≤ k < result[i]
-- Monotonicity: if x[i] ≤ x[j] then result[i] ≤ result[j]
-- Relationship with floor: result[i] = -((-x[i]).floor) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn numpy_ceil(x: Vec<f64>) -> (result: Vec<f64>)
     requires x.len() > 0,
     ensures
         result.len() == x.len(),
-        /* Each element in result is the ceiling of corresponding element in x */
-        /* Ceiling properties: integer value, >= x[i], < x[i] + 1, minimal such integer */
-        /* Monotonicity: if x[i] <= x[j] then result[i] <= result[j] */
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

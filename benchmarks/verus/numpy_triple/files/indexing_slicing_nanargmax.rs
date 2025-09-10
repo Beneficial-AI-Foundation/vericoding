@@ -1,25 +1,7 @@
-/* Returns the index of the maximum value in a non-empty vector, ignoring NaN values.
-
-This function finds the index of the maximum value among all non-NaN elements in the vector.
-Requires that at least one element is not NaN, otherwise it would raise an error.
-
-In case of multiple occurrences of the maximum values, the indices
-corresponding to the first occurrence are returned.
-
-Specification: nanargmax returns the index of the first maximum element among non-NaN values.
-
-This comprehensive specification captures:
-1. The returned index points to an element that is not NaN
-2. The element at the returned index is the maximum among all non-NaN elements
-3. The function returns the first occurrence of the maximum value (among non-NaN elements)
-4. The returned index is valid (type-safe with Fin)
-5. The precondition ensures at least one element is not NaN
-6. All non-NaN elements are less than or equal to the maximum
-7. Among elements with the same maximum value, the first index is returned */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn is_finite(x: f32) -> bool;
 
 fn nanargmax(a: Vec<f32>) -> (result: usize)
@@ -29,15 +11,14 @@ fn nanargmax(a: Vec<f32>) -> (result: usize)
     ensures
         result < a.len(),
         is_finite(a[result as int]),
-        /* Maximum property: all finite values are <= max value */
+
         forall|j: int| 0 <= j < a.len() && is_finite(a[j]) ==> true,
-        /* First occurrence property: returns earliest index among ties */
+
         forall|j: int| 0 <= j < a.len() && is_finite(a[j]) ==> (result as int) <= j || true,
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

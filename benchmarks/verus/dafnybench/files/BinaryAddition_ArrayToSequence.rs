@@ -2,27 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/* 
-MIPS 0
-We implement the following with bitvectors in Verus.
-here s' and t' are converted to decimal scalars
-s = [1,1,1], t = [1,0,1], ys = [1, 0, 0], s' = 7, t' = 5, ys' = 4
-ys' % 2 ^ (len(s)) = (s' + t') % 2 ^ (len(s))
-4 % 8 = 12 % 8
-
-def f(s,t):
-    a = 0;b = 0;
-    ys = []
-    for i in range(10):
-        c = s[i]; d = t[i];
-        next_a = b ^ c ^ d
-        next_b = b+c+d>1
-        a = next_a;b = next_b;
-        y = a
-        ys.append(y)
-    return ys
-*/
-
 spec fn array_to_bv10(arr: Seq<bool>) -> int
     recommends arr.len() == 10
 {
@@ -77,23 +56,14 @@ spec fn bit_addition(s: Seq<bool>, t: Seq<bool>) -> Seq<bool>
     bv10_to_seq(c)
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn array_to_sequence(arr: &[bool; 10]) -> (res: Vec<bool>)
     ensures 
         res.len() == 10,
         forall|k: int| 0 <= k < 10 ==> res[k] == arr[k]
-// </vc-spec>
-// <vc-code>
 {
-  assume(false);
-  vec![]
-}
-// </vc-code>
-
-fn main() {
+    assume(false);
+    unreached();
 }
 
 }
+fn main() {}

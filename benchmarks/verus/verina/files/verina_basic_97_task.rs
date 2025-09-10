@@ -1,21 +1,7 @@
-/* This task involves updating an array of integers such that the element at a specified index is set to 60 while all other elements remain unchanged.
-
------Input-----
-The input consists of:
-• a: An array of integers.
-• j: A natural number representing the index (0-indexed) to update. It is assumed that j is a valid index (j < a.size).
-
------Output-----
-The output is an array of integers where:
-• The element at index j is set to 60.
-• All other elements remain the same as in the input array.
-
------Note-----
-It is assumed that j is a valid index (0 ≤ j < a.size). */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn test_array_elements(a: &Vec<i32>, j: usize) -> (result: Vec<i32>)
     requires j < a.len(),
     ensures
@@ -23,80 +9,9 @@ fn test_array_elements(a: &Vec<i32>, j: usize) -> (result: Vec<i32>)
         result[j as int] == 60,
         forall|k: int| 0 <= k < a.len() && k != j ==> result[k] == a[k],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
-fn main() {
-    /*
-    -- Invalid Inputs
-    [
-        {
-            "input": {
-                "a": "#[1, 2, 3, 4]",
-                "j": 5
-            }
-        }
-    ]
-    -- Tests
-    [
-        {
-            "input": {
-                "a": "#[1, 2, 3, 4, 5]",
-                "j": 2
-            },
-            "expected": "#[1, 2, 60, 4, 5]",
-            "unexpected": [
-                "#[1, 2, 3, 4, 5]",
-                "#[1, 60, 3, 4, 5]"
-            ]
-        },
-        {
-            "input": {
-                "a": "#[60, 30, 20]",
-                "j": 1
-            },
-            "expected": "#[60, 60, 20]",
-            "unexpected": [
-                "#[60, 30, 20]",
-                "#[60, 30, 60]"
-            ]
-        },
-        {
-            "input": {
-                "a": "#[10, 20, 30]",
-                "j": 0
-            },
-            "expected": "#[60, 20, 30]",
-            "unexpected": [
-                "#[10, 20, 30]",
-                "#[10, 60, 30]"
-            ]
-        },
-        {
-            "input": {
-                "a": "#[5, 10, 15]",
-                "j": 2
-            },
-            "expected": "#[5, 10, 60]",
-            "unexpected": [
-                "#[5, 10, 15]",
-                "#[5, 60, 15]"
-            ]
-        },
-        {
-            "input": {
-                "a": "#[0]",
-                "j": 0
-            },
-            "expected": "#[60]",
-            "unexpected": [
-                "#[0]",
-                "#[70]"
-            ]
-        }
-    ]
-    */
-}
+fn main() {}

@@ -1,34 +1,7 @@
-/* numpy.linalg.matrix_rank: Return matrix rank of array using SVD method.
-
-The rank of a matrix is the number of linearly independent columns
-(or rows). For numerical computation, this is determined by counting
-the number of singular values greater than a threshold.
-
-This implementation focuses on the core mathematical behavior for
-square matrices, using default tolerance.
-
-Specification: matrix_rank computes the rank of a matrix using SVD method.
-
-The rank is the number of singular values greater than a numerical threshold.
-This corresponds to the number of linearly independent columns (or rows).
-
-Mathematical definition:
-- For a matrix A, rank(A) = number of non-zero singular values
-- In numerical computation, "non-zero" means above a threshold
-
-Key properties verified:
-1. Bounds: 0 ≤ rank(A) ≤ min(m, n) for m×n matrix
-2. Zero matrix: rank(0) = 0 (all elements zero)
-3. Identity matrix: rank(I) = n for n×n identity matrix
-4. Rank deficiency: If a row/column is all zeros, rank < full rank
-5. Linear dependence: If rows/columns are linearly dependent, rank < full rank
-
-The threshold behavior ensures numerical stability but is not explicitly
-specified here for simplicity. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn min_usize(a: usize, b: usize) -> usize {
     if a <= b { a } else { b }
 }
@@ -40,17 +13,16 @@ fn matrix_rank(A: Vec<Vec<f32>>) -> (result: usize)
         forall|i: int| 0 <= i < A.len() ==> #[trigger] A[i].len() == A[0].len(),
     ensures
         result <= min_usize(A.len(), A[0].len()),
-        /* Zero matrix has rank 0 */
+
         (forall|i: int, j: int| 0 <= i < A.len() && 0 <= j < A[0].len() ==> #[trigger] A[i][j] == 0.0f32) ==> result == 0,
-        /* Identity matrix has full rank */
+
         (A.len() == A[0].len() && forall|i: int, j: int| 0 <= i < A.len() && 0 <= j < A[0].len() ==> #[trigger] A[i][j] == (if i == j { 1.0f32 } else { 0.0f32 })) ==> result == A.len(),
-        /* For 1x1 matrices */
+
         (A.len() == 1 && A[0].len() == 1) ==> ((result == 1) <==> (A[0][0] != 0.0f32)),
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

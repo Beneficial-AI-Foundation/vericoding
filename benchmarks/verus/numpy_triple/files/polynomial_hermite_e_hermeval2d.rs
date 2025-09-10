@@ -1,21 +1,7 @@
-/* Evaluate a 2-D HermiteE series at points (x, y).
-    
-This function computes the bivariate HermiteE polynomial:
-p(x,y) = ∑_{i,j} c_{i,j} * He_i(x) * He_j(y)
-    
-where He_i and He_j are the HermiteE basis polynomials.
-
-This function implements the mathematical formula:
-p(x,y) = ∑_{i,j} c_{i,j} * He_i(x) * He_j(y)
-
-Key properties:
-1. Bivariate polynomial evaluation using HermiteE basis
-2. Mathematical correctness and linearity properties
-3. Point-wise evaluation for corresponding (x,y) pairs */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn hermite_e_basis(n: nat, x: int) -> int
     decreases n
 {
@@ -27,6 +13,7 @@ spec fn hermite_e_basis(n: nat, x: int) -> int
         x * hermite_e_basis((n-1) as nat, x) - (n-1) as int * hermite_e_basis((n-2) as nat, x)
     }
 }
+
 fn hermeval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
     requires 
         x.len() == y.len(),
@@ -41,10 +28,9 @@ fn hermeval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
             (forall|i: nat, t: int| i + 1 < c.len() ==> 
                 hermite_basis(i + 2, t) == t * hermite_basis(i + 1, t) - (i as int + 1) * hermite_basis(i, t)),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

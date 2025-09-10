@@ -1,40 +1,7 @@
-/* numpy.polynomial.hermite_e.hermevander3d: Pseudo-Vandermonde matrix of given degrees.
-
-Returns the pseudo-Vandermonde matrix of degrees `deg` and sample
-points `(x, y, z)`. If `l`, `m`, `n` are the given degrees in `x`, `y`, `z`,
-then the pseudo-Vandermonde matrix is defined by
-
-.. math:: V[..., (m+1)(n+1)i + (n+1)j + k] = He_i(x)*He_j(y)*He_k(z),
-
-where `0 <= i <= l`, `0 <= j <= m`, and `0 <= k <= n`. The leading
-indices of `V` index the points `(x, y, z)` and the last index encodes
-the degrees of the HermiteE polynomials.
-
-The HermiteE polynomials (also called probabilist's Hermite polynomials) are
-defined by the recurrence relation:
-- He_0(t) = 1
-- He_1(t) = t  
-- He_n(t) = t * He_{n-1}(t) - (n-1) * He_{n-2}(t)
-
-Parameters
-----------
-x, y, z : Vector Float n
-    Arrays of point coordinates, all of the same shape.
-deg : Vector Nat 3
-    Vector of maximum degrees of the form [x_deg, y_deg, z_deg].
-
-Returns
--------
-vander3d : Vector (Vector Float order) n
-    The pseudo-Vandermonde matrix where order = (deg[0]+1)*(deg[1]+1)*(deg[2]+1).
-
-Specification: hermevander3d returns a 3D pseudo-Vandermonde matrix where each row
-corresponds to a point (x[i], y[i], z[i]), and each column corresponds to a product
-of HermiteE polynomials He_i(x)*He_j(y)*He_k(z) for various degrees. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn hermite_poly(k: int, t: f64) -> f64
     decreases k
 {
@@ -43,7 +10,7 @@ spec fn hermite_poly(k: int, t: f64) -> f64
     } else if k == 1 {
         t
     } else {
-        // Just return 1.0 as a placeholder to avoid floating point ops
+
         1.0
     }
 }
@@ -65,10 +32,9 @@ fn hermevander3d(x: Vec<f64>, y: Vec<f64>, z: Vec<f64>, deg: Vec<int>) -> (resul
             &&& (order > 0 ==> result[p][0] == 1.0)
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

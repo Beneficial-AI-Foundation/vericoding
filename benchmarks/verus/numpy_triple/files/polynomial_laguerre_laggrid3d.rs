@@ -1,30 +1,7 @@
-/* Evaluate a 3-D Laguerre series on the Cartesian product of x, y, and z.
-
-This function computes the values p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c)
-where the points (a,b,c) consist of all triples formed by taking a from x, b from y, and c from z.
-The resulting points form a grid with x in the first dimension, y in the second, and z in the third.
-
-The coefficients c represent a 3D tensor where c[i,j,k] is the coefficient for
-the term of multi-degree i,j,k in the Laguerre series expansion.
-
-Specification: laggrid3d evaluates a 3D Laguerre series on the Cartesian product of x, y, and z.
-
-The function computes p(a,b,c) = ∑_{i,j,k} c_{i,j,k} * L_i(a) * L_j(b) * L_k(c) for each point (a,b,c)
-in the Cartesian product of x, y, and z.
-
-Precondition: The coefficient tensor c must be non-empty (dim1 > 0, dim2 > 0, and dim3 > 0)
-Postcondition: The result is a 3D grid where result[i][j][k] represents the evaluation
-of the Laguerre series at point (x[i], y[j], z[k]).
-
-Mathematical properties:
-1. The result has shape (nx, ny, nz) - same as the Cartesian product of x, y, and z
-2. Each element result[i][j][k] is the sum over all coefficient terms c[l][m][n] * L_l(x[i]) * L_m(y[j]) * L_n(z[k])
-3. For constant coefficients (c[0][0][0] only), the result should be constant
-4. The function is linear in the coefficients */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn laggrid3d(
     x: Vec<f32>,
     y: Vec<f32>, 
@@ -44,10 +21,9 @@ fn laggrid3d(
             0 <= i < result.len() && 0 <= j < result[i].len() && 0 <= k < result[i][j].len()
             ==> exists|val: f32| result[i][j][k] == val,
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

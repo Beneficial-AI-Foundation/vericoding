@@ -6,21 +6,12 @@ spec fn is_even(n: int) -> bool {
     n % 2 == 0
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn is_product_even(a: &[int]) -> (result: bool)
     ensures result <==> exists|i: int| 0 <= i < a.len() && is_even(a@[i])
-// </vc-spec>
-// <vc-code>
 {
-  assume(false);
-  false
-}
-// </vc-code>
-
-fn main() {
+    assume(false);
+    unreached();
 }
 
 }
+fn main() {}

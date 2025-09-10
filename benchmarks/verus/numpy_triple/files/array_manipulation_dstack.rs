@@ -1,16 +1,7 @@
-/* numpy.dstack: Stack arrays in sequence depth wise (along third axis).
-
-For a sequence of 1D arrays (vectors), this function stacks them along a new third axis,
-creating a 3D array. Each input vector becomes a "slice" in the depth dimension.
-
-For 1D inputs of length n, the output shape is (1, n, k) where k is the number of arrays.
-This is because 1D arrays are first reshaped to (1, n) then stacked along axis 2.
-
-The result is always at least 3-dimensional. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn numpy_dstack(arrays: Vec<Vec<f32>>) -> (result: Vec<Vec<Vec<f32>>>)
     requires 
         arrays.len() > 0,
@@ -24,10 +15,9 @@ fn numpy_dstack(arrays: Vec<Vec<f32>>) -> (result: Vec<Vec<Vec<f32>>>)
             0 <= i < result[0].len() && 0 <= j < arrays.len() ==>
             result[0][i][j] == arrays[j][i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

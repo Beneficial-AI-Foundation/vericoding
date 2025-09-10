@@ -2,9 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// 1 a)
-
-// [ai, aj[
 spec fn sum(a: Seq<int>, i: int, j: int) -> int
     recommends 0 <= i <= j <= a.len()
     decreases j - i
@@ -14,35 +11,20 @@ spec fn sum(a: Seq<int>, i: int, j: int) -> int
     else { a[j-1] + sum(a, i, j-1) }
 }
 
-// 1 b)
-
-// 1 c)
-// a -> [1, 10, 3, −4, 5]
-// c -> [0, 1, 11, 14, 10, 15]
-
 spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool
 {
     a.len() + 1 == c.len() && 
     forall|i: int| #![auto] 0 <= i <= a.len() ==> c[i] == sum(a, 0, i)
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 proof fn queryFast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
     requires 0 <= i <= j <= a.len(),
              is_prefix_sum_for(a, c)
     ensures r == sum(a, i, j)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

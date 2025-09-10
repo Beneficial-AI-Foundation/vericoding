@@ -2,21 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/**
-  Ather, Mohammad Faiz (s4648481/3)
-  CSSE3100
-  Assignemnt 3
-  The University of Queensland
- */
-
-// Question 1
-
-// Author: Leino, Title: Program Proofs
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn binary_search(a: &[i32], circle: i32) -> (n: usize)
     requires 
         forall|i: int| #![trigger a[i]] 1 <= i < a.len() ==> a[i-1] < a[i],
@@ -25,15 +10,10 @@ fn binary_search(a: &[i32], circle: i32) -> (n: usize)
         n <= a.len(),
         forall|i: int| #![trigger a[i]] 0 <= i < n ==> a[i] < circle,
         forall|i: int| #![trigger a[i]] n <= i < a.len() ==> circle <= a[i],
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

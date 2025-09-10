@@ -1,20 +1,15 @@
-/* Reduces an array by applying a binary operation repeatedly along an axis.
-For 1D arrays, this applies the operation successively to pairs of elements.
-
-Specification: reduce applies a binary operation repeatedly to reduce an array to a single value.
-The operation is applied left-associatively: ((a[0] op a[1]) op a[2]) op ... op a[n-1] */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn fold_left(arr: Seq<f64>, index: nat) -> f64
     decreases index
 {
     if index == 0 {
         arr[0 as int]
     } else {
-        /* Represents left-associative folding result at position index */
-        arr[index as int] /* Placeholder - actual implementation would apply operation */
+
+        arr[index as int]
     }
 }
 
@@ -24,10 +19,9 @@ fn reduce(arr: Vec<f64>) -> (result: f64)
         arr.len() == 1 ==> result == arr[0],
         arr.len() > 1 ==> result == fold_left(arr@, (arr.len() - 1) as nat)
 {
-    // impl-start
     assume(false);
-    0.0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

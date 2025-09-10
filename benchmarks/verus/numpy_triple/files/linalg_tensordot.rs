@@ -1,29 +1,7 @@
-/* numpy.tensordot: Compute tensor dot product along specified axes.
-    
-Given two tensors a and b, and axes, sums the products of a's and b's 
-elements over the axes specified. For 1-D arrays (vectors) with axes=1,
-this computes the inner product of vectors.
-    
-This specification focuses on the 1-D case with axes=1, which is equivalent
-to the dot product operation.
-
-Specification: tensordot computes the tensor dot product along specified axes.
-    
-For 1-D vectors with axes=1, this is equivalent to the inner product:
-result = sum(a[i] * b[i] for i in 0..n-1)
-    
-Mathematical properties:
-- Commutative: tensordot(a, b, 1) = tensordot(b, a, 1)
-- Bilinear: tensordot(α*a + β*c, b, 1) = α*tensordot(a, b, 1) + β*tensordot(c, b, 1)
-- Zero vector: tensordot(zeros, b, 1) = 0
-- Self-product: tensordot(a, a, 1) = ||a||²
-    
-Precondition: axes = 1 (for 1-D vector case)
-Postcondition: result equals the sum of element-wise products */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn dot_product_recursive(a: Seq<i32>, b: Seq<i32>, i: nat) -> int
     decreases a.len() - i
 {
@@ -44,10 +22,9 @@ fn tensordot(a: Vec<i32>, b: Vec<i32>, axes: usize) -> (result: i32)
         axes == 1,
     ensures result == dot_product(a@, b@)
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

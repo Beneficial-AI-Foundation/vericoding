@@ -1,25 +1,15 @@
-/* This task requires writing a Verus method that reverses a given string. The method should return a new string which consists of the characters of the input string in reverse order.
-
------Input-----
-The input consists of:
-s: A string (which may be empty).
-
------Output-----
-The output is a string:
-Returns a string where the characters are in reverse order from the original input. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn reverse_string(s: &Vec<char>) -> (result: Vec<char>)
     ensures
         result@.len() == s@.len(),
         forall|i: int| 0 <= i < s@.len() ==> result@[i] == s@[s@.len() - 1 - i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

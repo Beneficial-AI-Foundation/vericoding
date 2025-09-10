@@ -1,15 +1,7 @@
-/* Generate N-dimensional indices for an array with given shape.
-Returns a vector of index tuples, where each tuple represents a valid
-N-dimensional index for an array with the specified dimensions.
-
-For a 2D array with shape (m, n), this generates all index pairs
-(i, j) where 0 ≤ i < m and 0 ≤ j < n, in C-order (row-major).
-
-Example: For shape (2, 3), generates [(0,0), (0,1), (0,2), (1,0), (1,1), (1,2)] */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn ndindex(shape: (usize, usize)) -> (indices: Vec<(usize, usize)>)
     requires shape.0 > 0 && shape.1 > 0,
     ensures 
@@ -26,10 +18,9 @@ fn ndindex(shape: (usize, usize)) -> (indices: Vec<(usize, usize)>)
             k == i * shape.1 + j
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

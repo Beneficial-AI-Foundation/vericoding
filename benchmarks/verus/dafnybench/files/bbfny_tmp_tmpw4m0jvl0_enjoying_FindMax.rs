@@ -2,11 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// shenanigans going through the dafny tutorial
-
-
-
-
 spec fn max(a: int, b: int) -> int
 {
   if a > b { a } else { b }
@@ -21,7 +16,6 @@ spec fn abs(x: int) -> int
   if x < 0 { -x } else { x }
 }
 
-
 spec fn fib(n: nat) -> nat
     decreases n
 {
@@ -35,26 +29,16 @@ spec fn sorted(a: &[int]) -> bool
   forall|j: int, k: int| 0 <= j < k < a.len() ==> a[j] < a[k]
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn find_max(a: &[int]) -> (i: usize)
     requires 
         a.len() >= 1
     ensures 
         0 <= i < a.len(),
         forall|k: int| 0 <= k < a.len() ==> a[k] <= a[i as int]
-// </vc-spec>
-// <vc-code>
 {
-  assume(false);
-  0
-}
-// </vc-code>
-
-
-fn main() {
+    assume(false);
+    unreached();
 }
 
 }
+fn main() {}

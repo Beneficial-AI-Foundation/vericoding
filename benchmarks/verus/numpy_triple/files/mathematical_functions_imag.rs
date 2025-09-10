@@ -1,8 +1,7 @@
-/* Return the imaginary part of the complex argument. For a vector where each element is represented as a pair (real, imaginary), extracts the imaginary component of each element. For real numbers (where imaginary part is 0), returns 0. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn imag(val: Vec<(f64, f64)>) -> (result: Vec<f64>)
     ensures
         result.len() == val.len(),
@@ -10,10 +9,9 @@ fn imag(val: Vec<(f64, f64)>) -> (result: Vec<f64>)
         forall|i: int| 0 <= i < val.len() ==> (val[i].1 == 0.0 ==> result[i] == 0.0),
         forall|i: int| 0 <= i < val.len() ==> (val[i].0 != 0.0 || val[i].1 != 0.0 ==> result[i] == val[i].1),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

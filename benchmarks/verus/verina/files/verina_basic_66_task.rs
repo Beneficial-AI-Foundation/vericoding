@@ -1,28 +1,14 @@
-/* This task focuses on determining if a given integer is even. The problem requires checking whether the integer can be represented as twice another integer, meaning it is divisible by 2 without any remainder.
-
------Input-----
-The input consists of a single integer:
-• x: An integer to be evaluated.
-
------Output-----
-The output is a boolean value:
-• true if x is even (x mod 2 equals 0).
-• false if x is odd.
-
------Note-----
-No additional preconditions are required. The method should work correctly for any integer value. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn compute_is_even(x: int) -> (result: bool)
     ensures
         result == true <==> #[trigger] (x % 2) == 0,
 {
-    // impl-start
     assume(false);
-    false
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

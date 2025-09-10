@@ -1,24 +1,7 @@
-/* Return element-wise a copy of the string with uppercase characters converted to lowercase and vice versa
-
-Return element-wise a copy of the string with uppercase characters converted to lowercase and vice versa
-
-Specification: numpy.strings.swapcase returns a vector where each string element
-has its case swapped (uppercase becomes lowercase and vice versa).
-
-Mathematical Properties:
-1. Element-wise correctness: Each element has its alphabetic characters case-swapped
-2. Length preservation: Each transformed string has the same length as the original
-3. Case transformation: Uppercase→lowercase, lowercase→uppercase, non-alpha unchanged
-4. Involutive property: swapcase(swapcase(x)) = x
-5. Empty string handling: Empty strings remain empty
-6. Character-level correctness: Each character is correctly transformed
-
-Precondition: True (no special preconditions for case swapping)
-Postcondition: For all indices i, result[i] is the case-swapped version of a[i] */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn char_swapcase(c: char) -> char;
 
 spec fn string_swapcase(s: Seq<char>) -> Seq<char>
@@ -38,10 +21,9 @@ fn swapcase(a: Vec<String>) -> (result: Vec<String>)
         forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a[i]@.len() ==> 
             #[trigger] result[i]@[j] == char_swapcase(a[i]@[j])
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

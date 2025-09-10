@@ -1,51 +1,13 @@
-/* Round to nearest integer towards zero, element-wise.
-    
-The fix (truncation) of each element x is the integer part of x,
-obtained by discarding the fractional part. This is equivalent to
-rounding towards zero.
-    
-For positive numbers: fix(x) = floor(x)
-For negative numbers: fix(x) = ceil(x)
-    
-Returns an array of the same shape as x, containing the fix of each element.
-
-Specification: numpy.fix returns a vector where each element is the
-fix (truncation towards zero) of the corresponding element in x.
-    
-Precondition: True (fix is defined for all real numbers)
-Postcondition: For all indices i, result[i] is the fix of x[i], meaning:
-- result[i] is an integer value (represented as Float)
-- |result[i]| ≤ |x[i]| (magnitude is reduced or equal)
-- result[i] has the same sign as x[i] (or zero if x[i] is zero)
-- |x[i] - result[i]| < 1 (difference is less than 1)
-- For positive x[i]: result[i] = floor(x[i])
-- For negative x[i]: result[i] = ceil(x[i])
-- For zero x[i]: result[i] = 0
-- Monotonicity: if x[i] ≤ x[j] then result[i] ≤ result[j]
-- Truncation property: result[i] truncates towards zero */
-
 use vstd::prelude::*;
 
 verus! {
-/* Round to nearest integer towards zero, element-wise.
-   
-   The fix (truncation) of each element x is the integer part of x,
-   obtained by discarding the fractional part. This is equivalent to
-   rounding towards zero.
-   
-   For positive numbers: fix(x) = floor(x)
-   For negative numbers: fix(x) = ceil(x)
-   
-   Returns an array of the same shape as x, containing the fix of each element.
-*/
 
 fn numpy_fix(x: Vec<f64>) -> (result: Vec<f64>)
     ensures result.len() == x.len()
 {
-    /* impl-start */
     assume(false);
-    Vec::new()
-    /* impl-end */
+    unreached();
 }
+
 }
 fn main() {}

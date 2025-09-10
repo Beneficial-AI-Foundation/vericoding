@@ -1,41 +1,34 @@
-/* List of supported data type signatures
-Shows input->output type mappings
-Returns the list of supported data type signatures for a universal function
-Specification: types returns formatted type signatures as strings */
-
 use vstd::prelude::*;
 
 verus! {
-/* Data type character codes used in NumPy ufunc type signatures */
+
 #[derive(PartialEq, Eq, Structural)]
 enum TypeCode {
-    Bool,         /* '?' */
-    Byte,         /* 'b' */ 
-    UByte,        /* 'B' */
-    Short,        /* 'h' */
-    UShort,       /* 'H' */
-    Int,          /* 'i' */
-    UInt,         /* 'I' */
-    Long,         /* 'l' */
-    ULong,        /* 'L' */
-    LongLong,     /* 'q' */
-    ULongLong,    /* 'Q' */
-    Float32,      /* 'f' */
-    Float64,      /* 'd' */
-    LongDouble,   /* 'g' */
-    Complex64,    /* 'F' */
-    Complex128,   /* 'D' */
-    CLongDouble,  /* 'G' */
-    Object,       /* 'O' */
+    Bool,
+    Byte,
+    UByte,
+    Short,
+    UShort,
+    Int,
+    UInt,
+    Long,
+    ULong,
+    LongLong,
+    ULongLong,
+    Float32,
+    Float64,
+    LongDouble,
+    Complex64,
+    Complex128,
+    CLongDouble,
+    Object,
 }
 
-/* Type signature representing input->output mapping for ufuncs */
 struct TypeSignature {
     input_types: Vec<TypeCode>,
     output_type: TypeCode,
 }
 
-/* Convert TypeCode to character representation */
 spec fn type_code_to_char(tc: TypeCode) -> char {
     match tc {
         TypeCode::Bool => '?',
@@ -59,11 +52,11 @@ spec fn type_code_to_char(tc: TypeCode) -> char {
     }
 }
 
-/* Format a type signature as a string (input1input2...->output) */
 spec fn format_type_signature(sig: TypeSignature) -> Seq<char> {
     let input_chars = sig.input_types@.map(|i, tc: TypeCode| type_code_to_char(tc));
     input_chars + seq!['-', '>'] + seq![type_code_to_char(sig.output_type)]
 }
+
 fn types(ufunc_signatures: Vec<TypeSignature>) -> (result: Vec<String>)
     ensures 
         result.len() == ufunc_signatures.len(),
@@ -73,10 +66,9 @@ fn types(ufunc_signatures: Vec<TypeSignature>) -> (result: Vec<String>)
             result[i]@ == format_type_signature(sig)
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

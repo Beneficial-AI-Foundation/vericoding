@@ -2,25 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Author of question: Snorri Agnarsson
-// Permalink of question: https://rise4fun.com/Dafny/0HRr
-
-// Author of solution:    Alexander Guðmundsson
-// Permalink of solution: https://rise4fun.com/Dafny/8pxWd
-
-// Use the command
-//   verus LinearSearch-skeleton.rs
-// to compile the file.
-
-// When you have solved the problem put
-// the solution on the Verus web page,
-// generate a permalink and put it in
-// this file.
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn search_recursive(a: Seq<int>, i: usize, j: usize, x: int) -> (result: isize)
     requires 
         i <= j,
@@ -31,15 +12,10 @@ fn search_recursive(a: Seq<int>, i: usize, j: usize, x: int) -> (result: isize)
         result != -1 ==> forall|r: int| result < r && r < j as int ==> a[r] != x,
         result == -1 ==> forall|r: int| i as int <= r && r < j as int ==> a[r] != x,
     decreases j - i,
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    -1
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

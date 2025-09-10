@@ -1,24 +1,15 @@
-/* Create an array from existing data. This is the primary array creation function.
-Takes a list of Float elements and creates a Vector of the same length.
-
-Specification: array creates a vector containing exactly the input data elements
-in the same order. The result has the same length as the input list and preserves
-all elements at their corresponding indices. This captures the fundamental property
-of numpy.array - converting sequence-like data into array format while preserving
-element values and order. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn array(data: Vec<f64>) -> (result: Vec<f64>)
     ensures
         result.len() == data.len(),
         forall|i: int| 0 <= i < data.len() ==> result[i] == data[i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

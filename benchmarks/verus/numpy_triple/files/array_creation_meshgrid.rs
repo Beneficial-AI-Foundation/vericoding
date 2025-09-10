@@ -1,14 +1,7 @@
-/* Return coordinate matrices from two coordinate vectors using 'xy' (Cartesian) indexing.
-For inputs of length m and n, returns two matrices of shape (n, m) where:
-- The first matrix has x values repeated along rows
-- The second matrix has y values repeated along columns
-
-Specification: meshgrid creates coordinate matrices where x values are repeated 
-along rows and y values are repeated along columns in 'xy' indexing mode */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn meshgrid(x: Vec<f32>, y: Vec<f32>) -> (result: (Vec<Vec<f32>>, Vec<Vec<f32>>))
     requires 
         x.len() > 0,
@@ -21,10 +14,9 @@ fn meshgrid(x: Vec<f32>, y: Vec<f32>) -> (result: (Vec<Vec<f32>>, Vec<Vec<f32>>)
         forall|i: int, j: int| 0 <= i < y.len() && 0 <= j < x.len() ==> result.0[i][j] == x[j],
         forall|i: int, j: int| 0 <= i < y.len() && 0 <= j < x.len() ==> result.1[i][j] == y[i],
 {
-    // impl-start
     assume(false);
-    (Vec::new(), Vec::new())
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

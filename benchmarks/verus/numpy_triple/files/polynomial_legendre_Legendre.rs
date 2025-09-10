@@ -1,41 +1,15 @@
-/* A Legendre series class.
-
-    The Legendre class provides the standard Python numerical methods
-    '+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the
-    attributes and methods listed below.
-
-    Parameters
-    ----------
-    coef : array_like
-        Legendre coefficients in order of increasing degree, i.e.,
-        ``(1, 2, 3)`` gives ``1*P_0(x) + 2*P_1(x) + 3*P_2(x)``.
-    domain : (2,) array_like, optional
-        Domain to use. The interval ``[domain[0], domain[1]]`` is mapped
-        to the interval ``[window[0], window[1]]`` by shifting and scaling.
-        The default value is [-1., 1.].
-    window : (2,) array_like, optional
-        Window, see `domain` for its use. The default value is [-1., 1.].
-    symbol : str, optional
-        Symbol used to represent the independent variable in string
-        representations of the polynomial expression, e.g. for printing.
-        The symbol must be a valid Python identifier. Default value is 'x'.
-
-Create a Legendre series from coefficients
-
-Specification: mkLegendre creates a valid Legendre series representation */
-
 use vstd::prelude::*;
 
 verus! {
-/* A Legendre series representation with coefficients, domain, and window */
+
 struct Legendre {
-    /* Legendre coefficients in order of increasing degree */
+
     coef: Vec<f64>,
-    /* Domain interval for polynomial evaluation */
+
     domain: [f64; 2],
-    /* Window interval for domain mapping */
+
     window: [f64; 2],
-    /* Symbol name for variable representation */
+
     symbol: String,
 }
 
@@ -54,15 +28,9 @@ fn mk_legendre(
         domain[0] == -1.0 && domain[1] == 1.0 ==> result.domain[0] == -1.0 && result.domain[1] == 1.0,
         window[0] == -1.0 && window[1] == 1.0 ==> result.window[0] == -1.0 && result.window[1] == 1.0,
 {
-    // impl-start
     assume(false);
-    Legendre {
-        coef: Vec::new(),
-        domain: [-1.0, 1.0],
-        window: [-1.0, 1.0],
-        symbol: "x".to_string(),
-    }
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

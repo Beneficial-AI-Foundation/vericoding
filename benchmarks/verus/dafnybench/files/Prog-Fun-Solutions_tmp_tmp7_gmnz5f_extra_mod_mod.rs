@@ -10,21 +10,13 @@ spec fn f(n: nat) -> nat
     else { 2 * f(n / 2) }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn mod_fn(n: u64) -> (a: u64)
     requires n >= 0,
     ensures a as nat == f(n as nat),
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    1
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

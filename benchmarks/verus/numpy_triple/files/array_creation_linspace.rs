@@ -1,35 +1,7 @@
-/* numpy.linspace: Return evenly spaced numbers over a specified interval.
-
-Returns num evenly spaced samples, calculated over the interval [start, stop]
-when endpoint is true (default), or [start, stop) when endpoint is false.
-
-This specification focuses on the most common use case where endpoint=true,
-returning num samples that are evenly distributed from start to stop inclusive.
-
-Specification: numpy.linspace returns a vector of evenly spaced values.
-
-When num > 0 and endpoint=true (default behavior):
-- The first element equals start
-- The last element equals stop (when num > 1)
-- Elements are evenly spaced with step = (stop - start) / (num - 1) when num > 1
-- When num = 1, the single element equals start
-
-Mathematical properties:
-- For any valid index i, the element value is: start + i * step
-- The spacing between consecutive elements is constant (except when num = 1)
-- The sequence is monotonic (increasing if start < stop, decreasing if start > stop)
-- All elements lie within [min(start, stop), max(start, stop)]
-- Linear interpolation property: each element represents a linear interpolation between start and stop
-
-Sanity checks:
-- Size of result vector equals num
-- When start = stop, all elements equal start
-- The function is symmetric: reversing start and stop reverses the sequence
-- Consecutive differences are constant for num > 2 */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn linspace(start: f32, stop: f32, num: usize) -> (result: Vec<f32>)
     requires num > 0,
     ensures
@@ -38,11 +10,9 @@ fn linspace(start: f32, stop: f32, num: usize) -> (result: Vec<f32>)
         (num == 1 ==> forall|i: int| 0 <= i < num ==> result[i] == start),
         (num > 1 ==> result[num - 1] == stop)
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

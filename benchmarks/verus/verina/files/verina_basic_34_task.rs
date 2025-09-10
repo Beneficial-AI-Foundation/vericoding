@@ -1,25 +1,11 @@
-/* This task requires writing a Verus method that extracts even numbers from an array of integers. The method should return a new array containing only the even numbers found in the input array, while preserving the order in which they appear.
-
------Input-----
-The input consists of:
-arr: An array of integers.
-
------Output-----
-The output is an array of integers:
-Returns an array containing all the even numbers from the input array. Specifically:
-- Every element in the output array is an even integer.
-- All even integers present in the input array are included in the output array.
-- The relative order of the even integers is preserved as in the input array.
-
------Note-----
-There are no preconditions for this task; the method will work with any array, including empty arrays (which are not null). */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn is_even(n: i32) -> bool {
     n % 2 == 0
 }
+
 fn find_even_numbers(arr: &Vec<i32>) -> (result: Vec<i32>)
     ensures
         forall|x: i32| result@.contains(x) ==> is_even(x) && arr@.contains(x),
@@ -30,10 +16,9 @@ fn find_even_numbers(arr: &Vec<i32>) -> (result: Vec<i32>)
                     ri <= rj && result[ri] == arr[i] && result[rj] == arr[j]
             },
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

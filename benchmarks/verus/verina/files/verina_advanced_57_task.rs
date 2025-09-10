@@ -1,23 +1,7 @@
-/* This task requires writing a Verus function that finds the next greater element for a given array of numbers. The next greater element for an element x is defined as the first element greater than x that appears to the right of x in the array.
-
-Given two distinct 0-indexed integer arrays `nums1` and `nums2`, where `nums1` is a subset of `nums2`, the function should determine the next greater element for each value in `nums1` as it appears in `nums2`.
-All integers in both arrays are unique, and the length constraints are.
-
-Input:
-The input consists of two lists of integers:
-nums1: A list of integers, which is a subset of nums2.
-nums2: A list of integers containing all elements from nums1 and possibly additional elements.
-
-Output:
-The output is a list of integers:
-- An array of the same length as nums1.
-- For each element nums1[i], the corresponding output element is:
-  - The next greater element of nums1[i] in nums2 if one exists
-  - -1 if there is no next greater element */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn next_greater_element(nums1: &Vec<i32>, nums2: &Vec<i32>) -> (result: Vec<i32>)
     requires
         forall|i: int, j: int| 0 <= i < nums1.len() && 0 <= j < nums1.len() && i != j ==> nums1[i] != nums1[j],
@@ -25,10 +9,9 @@ fn next_greater_element(nums1: &Vec<i32>, nums2: &Vec<i32>) -> (result: Vec<i32>
     ensures
         result.len() == nums1.len(),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

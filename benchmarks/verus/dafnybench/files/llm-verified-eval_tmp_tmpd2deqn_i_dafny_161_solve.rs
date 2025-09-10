@@ -36,10 +36,6 @@ fn reverse(original: Vec<char>) -> (reversed: Vec<char>)
     vec![]
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn solve(s: Vec<char>) -> (result: Vec<char>)
     ensures 
         result@.len() == s@.len(),
@@ -50,14 +46,10 @@ fn solve(s: Vec<char>) -> (result: Vec<char>)
             forall|i: int| 0 <= i < s@.len() && !is_letter(s@[i]) ==> 
                 result@[i] == s@[i],
         no_letters(s@, s@.len() as nat) ==> is_reverse(result@, s@)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    vec![]
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

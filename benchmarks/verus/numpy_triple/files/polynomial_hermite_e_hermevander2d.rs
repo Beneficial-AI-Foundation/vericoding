@@ -1,20 +1,7 @@
-/* Pseudo-Vandermonde matrix of given degrees for 2D HermiteE polynomials.
-
-Returns the pseudo-Vandermonde matrix of degrees (x_deg, y_deg) and sample
-points (x, y). The matrix is defined by:
-V[..., (y_deg + 1)*i + j] = He_i(x) * He_j(y)
-where 0 <= i <= x_deg and 0 <= j <= y_deg.
-
-This function creates a matrix where each row corresponds to a point (x[k], y[k]) and
-each column corresponds to a basis function He_i(x) * He_j(y).
-
-Mathematical properties include matrix structure, basis ordering, equivalence with
-polynomial evaluation, orthogonality properties from HermiteE basis functions,
-and polynomial fitting capability for least squares. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn hermite_basis(k: nat, t: int) -> int
     decreases k
 {
@@ -36,10 +23,9 @@ fn hermevander2d(x: Vec<i32>, y: Vec<i32>, x_deg: usize, y_deg: usize) -> (resul
         forall|point_idx: int| 0 <= point_idx < result.len() ==> 
             result[point_idx].len() == (x_deg + 1) * (y_deg + 1),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

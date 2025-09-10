@@ -1,22 +1,7 @@
-/* numpy.argmax: Returns the index of the maximum value in a vector.
-
-Returns the index of the maximum value among all elements in the array.
-Requires a non-empty array since there is no maximum of an empty set.
-
-In case of multiple occurrences of the maximum values, the indices
-corresponding to the first occurrence are returned.
-
-This function returns the position of the largest element in the array.
-
-Specification: numpy.argmax returns the index of the maximum element.
-
-Precondition: True (non-empty constraint is in the type)
-Postcondition: The element at the returned index is the maximum value,
-and it is the first occurrence of such maximum value. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn argmax(a: Vec<i32>) -> (result: usize)
     requires a.len() > 0,
     ensures 
@@ -24,10 +9,9 @@ fn argmax(a: Vec<i32>) -> (result: usize)
         forall|j: int| 0 <= j < a.len() ==> a[j] <= a[result as int],
         forall|j: int| 0 <= j < a.len() && a[j] == a[result as int] ==> result <= j as usize,
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

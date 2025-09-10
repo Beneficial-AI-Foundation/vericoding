@@ -2,25 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Author of question: Snorri Agnarsson
-// Permalink of question: https://rise4fun.com/Dafny/CGB1z
-
-// Authors of solution:   Alexander Guðmundsson
-// Permalink of solution: https://rise4fun.com/Dafny/VnB5
-
-// Use the command
-//   verus H2-skeleton.rs
-// to compile the file.
-
-// When you have solved the problem put
-// the solution on the Verus web page,
-// generate a permalink and put it in
-// this file.
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn search_recursive(a: Seq<int>, i: int, j: int, x: int) -> (k: int)
     requires 
         0 <= i <= j <= a.len(),
@@ -30,17 +11,10 @@ fn search_recursive(a: Seq<int>, i: int, j: int, x: int) -> (k: int)
         forall|r: int| i <= r < k ==> a[r] >= x,
         forall|r: int| k <= r < j ==> a[r] < x,
     decreases j - i
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    i
-}
-// </vc-code>
-
-fn main() {
-    // Ef eftirfarandi fall er ekki samþykkt þá eru
-    // föllin ekki að haga sér rétt að mati Verus.
+    unreached();
 }
 
 }
+fn main() {}

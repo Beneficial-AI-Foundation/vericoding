@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Given an array of characters, it filters all the vowels. ['d','e','l','i','g','h','t']-> ['e','i']
 spec fn vowels() -> Set<char> {
     set!['a', 'e', 'i', 'o', 'u']
 }
@@ -19,20 +18,12 @@ spec fn filter_vowels(xs: Seq<char>) -> Seq<char>
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn filter_vowels_array(xs: &[char]) -> (ys: Vec<char>)
     ensures filter_vowels(xs@) == ys@
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

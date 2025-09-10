@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// definition of Fibonacci numbers
 spec fn fibonacci(n: nat) -> nat
     decreases n
 {
@@ -15,24 +14,13 @@ spec fn fibonacci(n: nat) -> nat
     }
 }
 
-// iterative calculation of Fibonacci numbers
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn fibonacci_iterative(n: u64) -> (f: u64)
-    requires n < 100  // practical bound to prevent overflow
+    requires n < 100
     ensures f == fibonacci(n as nat)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

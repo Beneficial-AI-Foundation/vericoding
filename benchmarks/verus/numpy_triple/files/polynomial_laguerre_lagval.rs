@@ -1,17 +1,7 @@
-/* Evaluate a Laguerre series at points x using Clenshaw recursion.
-The mathematical formula for the Laguerre series is:
-p(x) = c_0 * L_0(x) + c_1 * L_1(x) + ... + c_n * L_n(x)
-where L_i(x) are the Laguerre polynomials.
-
-Specification for Laguerre series evaluation:
-The result has the same shape as the input x vector.
-For a single coefficient, the result is constant.
-For multiple coefficients, the function evaluates the Laguerre series
-using Clenshaw recursion, which is numerically stable. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn lagval(x: Vec<f64>, c: Vec<f64>) -> (result: Vec<f64>)
     requires 
         c.len() > 0,
@@ -22,10 +12,9 @@ fn lagval(x: Vec<f64>, c: Vec<f64>) -> (result: Vec<f64>)
             exists|val: f64| result[i] == val
         },
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

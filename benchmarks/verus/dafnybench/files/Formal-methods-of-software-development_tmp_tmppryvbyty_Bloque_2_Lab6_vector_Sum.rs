@@ -2,12 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/*predicate palindrome<T(==)> (s:seq<T>)
-{
-    forall i:: 0<=i<|s| ==> s[i] == s[|s|-i-1]
-}
-*/
-// SUM OF A SEQUENCE OF INTEGERS
 spec fn sum(v: Seq<int>) -> int 
     decreases v.len()
 {
@@ -20,15 +14,6 @@ spec fn sum(v: Seq<int>) -> int
     }
 }
 
-// Structural Induction on Sequences
-
-// MAXIMUM OF A SEQUENCE
-
-// TODO: Hacer
-// Derivar formalmente un calculo incremental de j*j*j
-
-
-// REVERSE OF A SEQUENCE
 spec fn reverse<T>(s: Seq<T>) -> Seq<T> 
     decreases s.len()
 {
@@ -49,10 +34,6 @@ spec fn seq2set<T>(s: Seq<T>) -> Set<T>
     }
 }
 
-
-// REVERSE IS ITS OWN INVERSE
-
-// SCALAR PRODUCT OF TWO VECTORS OF INTEGER
 spec fn scalar_product(v1: Seq<int>, v2: Seq<int>) -> int
     decreases v1.len()
 {
@@ -63,30 +44,17 @@ spec fn scalar_product(v1: Seq<int>, v2: Seq<int>) -> int
     }
 }
 
-// MULTISETS
-
 fn multiplicity_examples<T>()
 {
   assume(false);
 }
 
-// REVERSE HAS THE SAME MULTISET
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn vector_Sum(v: Seq<int>) -> (x: i32)
     ensures x == sum(v)
-// </vc-spec>
-// <vc-code>
 {
-  assume(false);
-  0
-}
-// </vc-code>
-
-fn main() {
+    assume(false);
+    unreached();
 }
 
 }
+fn main() {}

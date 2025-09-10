@@ -1,26 +1,3 @@
-/* Compute the one-dimensional discrete Fourier Transform
-
-The FFT computes the DFT defined as:
-X[k] = Σ(n=0 to N-1) x[n] * exp(-2πi*k*n/N)
-
-where:
-- x is the input vector
-- X is the output vector
-- N is the length of the vector
-- i is the imaginary unit
-
-Specification: FFT computes the discrete Fourier transform
-
-The FFT satisfies the DFT equation and has the following properties:
-1. Each output element is the sum of input elements weighted by complex exponentials
-2. The transform is linear
-3. Parseval's theorem: energy is preserved (with proper normalization)
-4. FFT(FFT^(-1)(x)) = x (inverse property when combined with IFFT)
-
-The specification captures the fundamental DFT formula where each output
-element k is computed as the sum over all input elements j, multiplied
-by the complex exponential exp(-2πi*k*j/n). */
-
 use vstd::prelude::*;
 
 verus! {
@@ -32,22 +9,22 @@ pub struct Complex {
 
 pub open spec fn cexp(theta: f64) -> Complex {
     Complex {
-        re: 1.0, /* placeholder for cos(theta) */
-        im: 0.0, /* placeholder for sin(theta) */
+        re: 1.0,
+        im: 0.0,
     }
 }
 
 pub open spec fn complex_mul(z: Complex, w: Complex) -> Complex {
     Complex {
-        re: 0.0, /* placeholder for complex multiplication real part */
-        im: 0.0, /* placeholder for complex multiplication imaginary part */
+        re: 0.0,
+        im: 0.0,
     }
 }
 
 pub open spec fn complex_add(z: Complex, w: Complex) -> Complex {
     Complex {
-        re: 0.0, /* placeholder for complex addition real part */
-        im: 0.0, /* placeholder for complex addition imaginary part */
+        re: 0.0,
+        im: 0.0,
     }
 }
 
@@ -68,6 +45,7 @@ pub open spec fn complex_sum(n: nat, f: spec_fn(nat) -> Complex) -> Complex
         complex_add(f((n - 1) as nat), complex_sum((n - 1) as nat, f))
     }
 }
+
 pub fn fft(a: Vec<Complex>) -> (result: Vec<Complex>)
     requires a.len() > 0,
     ensures 
@@ -84,11 +62,9 @@ pub fn fft(a: Vec<Complex>) -> (result: Vec<Complex>)
             if j < a.len() { a[j as int] } else { complex_zero() }
         ),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

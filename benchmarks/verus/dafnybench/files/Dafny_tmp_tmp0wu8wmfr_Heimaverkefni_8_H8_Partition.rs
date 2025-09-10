@@ -2,18 +2,7 @@ use vstd::prelude::*;
 use vstd::multiset::Multiset;
 
 verus! {
-    // Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
-    // Permalink spurningar: https://rise4fun.com/Dafny/GW7a
-    
-    // Höfundur lausnar:     Alexander Guðmundsson
-    // Permalink lausnar:    https://www.rise4fun.com/Dafny/JPGct
-    
-    // Klárið að forrita föllin tvö.
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn partition(Ghost(m): Ghost<Multiset<int>>) -> (res: (Ghost<Multiset<int>>, Ghost<int>, Ghost<Multiset<int>>))
     requires m.len() > 0
     ensures 
@@ -24,15 +13,10 @@ fn partition(Ghost(m): Ghost<Multiset<int>>) -> (res: (Ghost<Multiset<int>>, Gho
             &&& forall|z: int| pre.contains(z) ==> z <= p
             &&& forall|z: int| post.contains(z) ==> z >= p
         })
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    (Ghost(Multiset::empty()), Ghost(0), Ghost(Multiset::empty()))
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

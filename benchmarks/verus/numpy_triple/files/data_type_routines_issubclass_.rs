@@ -1,80 +1,58 @@
-/* numpy.issubclass_: Determine if a class is a subclass of a second class.
-    
-This function is equivalent to the Python built-in issubclass, except that it returns 
-False instead of raising a TypeError if one of the arguments is not a class.
-    
-In the context of NumPy, this tests relationships between NumPy data type classes
-such as whether int32 is a subclass of integer, or whether float64 is a subclass of float.
-
-Specification: issubclass_ correctly determines class hierarchy relationships.
-    
-This function tests whether arg1 is a subclass of arg2 according to NumPy's type
-hierarchy. The specification ensures that:
-1. The function respects the established type hierarchy (e.g., int32 ⊆ integer ⊆ number ⊆ scalar)
-2. It handles reflexivity correctly (every class is a subclass of itself)
-3. It returns False for unrelated classes
-4. It never raises exceptions (returns False instead of error for invalid inputs)
-    
-Precondition: True (no special preconditions, handles all inputs gracefully)
-Postcondition: Returns True if arg1 is a subclass of arg2, False otherwise */
-
 use vstd::prelude::*;
 
 verus! {
 
-/* Represents a NumPy type class for hierarchy testing */
 #[derive(PartialEq, Eq)]
 enum NumpyTypeClass {
-    /* Integer types */
+
     IntegerType,
-    /* Floating point types */
+
     FloatingType,
-    /* Complex number types */
+
     ComplexType,
-    /* Boolean type */
+
     BooleanType,
-    /* Scalar types (superclass of all numeric types) */
+
     ScalarType,
-    /* Number types (excludes boolean) */
+
     NumberType,
-    /* Inexact types (floating and complex) */
+
     InexactType,
-    /* 8-bit signed integer type */
+
     Int8Type,
-    /* 16-bit signed integer type */
+
     Int16Type,
-    /* 32-bit signed integer type */
+
     Int32Type,
-    /* 64-bit signed integer type */
+
     Int64Type,
-    /* 8-bit unsigned integer type */
+
     UInt8Type,
-    /* 16-bit unsigned integer type */
+
     UInt16Type,
-    /* 32-bit unsigned integer type */
+
     UInt32Type,
-    /* 64-bit unsigned integer type */
+
     UInt64Type,
-    /* 32-bit floating point type */
+
     Float32Type,
-    /* 64-bit floating point type */
+
     Float64Type,
-    /* 64-bit complex number type */
+
     Complex64Type,
-    /* 128-bit complex number type */
+
     Complex128Type,
-    /* Generic object type */
+
     ObjectType,
 }
 
-/* Defines the class hierarchy relationships for NumPy types */
 spec fn is_subclass_spec(t: NumpyTypeClass, t_prime: NumpyTypeClass) -> bool {
-    /* Reflexivity: every class is a subclass of itself */
+
     if t == t_prime {
         true
     } else {
         match (t, t_prime) {
-            /* Concrete integer types are subclasses of IntegerType */
+
             (NumpyTypeClass::Int8Type, NumpyTypeClass::IntegerType) => true,
             (NumpyTypeClass::Int16Type, NumpyTypeClass::IntegerType) => true,
             (NumpyTypeClass::Int32Type, NumpyTypeClass::IntegerType) => true,
@@ -83,55 +61,55 @@ spec fn is_subclass_spec(t: NumpyTypeClass, t_prime: NumpyTypeClass) -> bool {
             (NumpyTypeClass::UInt16Type, NumpyTypeClass::IntegerType) => true,
             (NumpyTypeClass::UInt32Type, NumpyTypeClass::IntegerType) => true,
             (NumpyTypeClass::UInt64Type, NumpyTypeClass::IntegerType) => true,
-            /* Concrete floating types are subclasses of FloatingType */
+
             (NumpyTypeClass::Float32Type, NumpyTypeClass::FloatingType) => true,
             (NumpyTypeClass::Float64Type, NumpyTypeClass::FloatingType) => true,
-            /* Concrete complex types are subclasses of ComplexType */
+
             (NumpyTypeClass::Complex64Type, NumpyTypeClass::ComplexType) => true,
             (NumpyTypeClass::Complex128Type, NumpyTypeClass::ComplexType) => true,
-            /* Integer types are subclasses of NumberType */
+
             (NumpyTypeClass::IntegerType, NumpyTypeClass::NumberType) => true,
-            /* Floating types are subclasses of InexactType and NumberType */
+
             (NumpyTypeClass::FloatingType, NumpyTypeClass::InexactType) => true,
             (NumpyTypeClass::FloatingType, NumpyTypeClass::NumberType) => true,
-            /* Complex types are subclasses of InexactType and NumberType */
+
             (NumpyTypeClass::ComplexType, NumpyTypeClass::InexactType) => true,
             (NumpyTypeClass::ComplexType, NumpyTypeClass::NumberType) => true,
-            /* All numeric types are subclasses of ScalarType */
+
             (NumpyTypeClass::NumberType, NumpyTypeClass::ScalarType) => true,
             (NumpyTypeClass::BooleanType, NumpyTypeClass::ScalarType) => true,
             (NumpyTypeClass::IntegerType, NumpyTypeClass::ScalarType) => true,
             (NumpyTypeClass::FloatingType, NumpyTypeClass::ScalarType) => true,
             (NumpyTypeClass::ComplexType, NumpyTypeClass::ScalarType) => true,
             (NumpyTypeClass::InexactType, NumpyTypeClass::ScalarType) => true,
-            /* Default case */
+
             _ => false,
         }
     }
 }
+
 fn issubclass_(arg1: NumpyTypeClass, arg2: NumpyTypeClass) -> (result: bool)
     ensures
-        /* Result matches the defined hierarchy */
+
         result == is_subclass_spec(arg1, arg2),
-        /* Reflexivity: every class is a subclass of itself */
+
         (arg1 == arg2) ==> (result == true),
-        /* Concrete examples from NumPy documentation */
+
         (arg1 == NumpyTypeClass::Int32Type && arg2 == NumpyTypeClass::IntegerType) ==> (result == true),
         (arg1 == NumpyTypeClass::Float64Type && arg2 == NumpyTypeClass::FloatingType) ==> (result == true),
         (arg1 == NumpyTypeClass::Int32Type && arg2 == NumpyTypeClass::FloatingType) ==> (result == false),
-        /* Transitivity: int32 → integer → number → scalar */
+
         (arg1 == NumpyTypeClass::Int32Type && arg2 == NumpyTypeClass::NumberType) ==> 
          (is_subclass_spec(NumpyTypeClass::Int32Type, NumpyTypeClass::IntegerType) &&
           is_subclass_spec(NumpyTypeClass::IntegerType, NumpyTypeClass::NumberType)),
-        /* All numeric types are subclasses of ScalarType */
+
         (arg1 == NumpyTypeClass::IntegerType && arg2 == NumpyTypeClass::ScalarType) ==> (result == true),
         (arg1 == NumpyTypeClass::FloatingType && arg2 == NumpyTypeClass::ScalarType) ==> (result == true),
         (arg1 == NumpyTypeClass::ComplexType && arg2 == NumpyTypeClass::ScalarType) ==> (result == true)
 {
-    // impl-start
     assume(false);
-    false
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

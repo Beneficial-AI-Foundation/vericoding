@@ -1,16 +1,10 @@
-/* Returns the index of the minimum value in a non-empty vector, ignoring NaN values.
-    
-This function finds the index of the minimum value among all non-NaN elements in the vector.
-Requires that at least one element is not NaN, otherwise it would raise an error.
-
-In case of multiple occurrences of the minimum values, the indices
-corresponding to the first occurrence are returned. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn f32_is_nan(x: f32) -> bool;
 spec fn f32_le(a: f32, b: f32) -> bool;
+
 fn nanargmin(a: Vec<f32>) -> (result: usize)
     requires 
         a.len() > 0,
@@ -21,10 +15,9 @@ fn nanargmin(a: Vec<f32>) -> (result: usize)
         forall|j: int| 0 <= j < a.len() && !f32_is_nan(a[j]) ==> f32_le(a[result as int], a[j]),
         forall|j: int| 0 <= j < a.len() && !f32_is_nan(a[j]) && f32_le(a[j], a[result as int]) && f32_le(a[result as int], a[j]) ==> result as int <= j,
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

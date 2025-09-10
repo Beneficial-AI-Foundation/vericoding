@@ -1,17 +1,7 @@
-/* Compute the vector dot product of two vectors
-
-Specification: vecdot computes the mathematical dot product as the sum of element-wise products.
-This captures the mathematical definition: a · b = Σ(i=0 to n-1) a_i * b_i.
-
-Key properties:
-- Commutativity: vecdot(x1, x2) = vecdot(x2, x1)
-- Linearity: vecdot(c*x1, x2) = c * vecdot(x1, x2)
-- Zero vector: vecdot(0, x) = 0
-- Self-dot gives sum of squares: vecdot(x, x) = Σ(x_i²) */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn dot_product_spec(x1: Seq<i32>, x2: Seq<i32>) -> int
     decreases x1.len()
 {
@@ -28,10 +18,9 @@ fn vecdot(x1: Vec<i32>, x2: Vec<i32>) -> (result: i32)
         result as int == dot_product_spec(x1@, x2@),
         result as int == dot_product_spec(x2@, x1@)
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

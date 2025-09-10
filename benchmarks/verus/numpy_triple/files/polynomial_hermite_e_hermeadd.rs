@@ -1,21 +1,7 @@
-/* Add one Hermite series to another. Component-wise addition of polynomial coefficients.
-
-Specification: hermeadd performs component-wise addition of Hermite polynomial coefficients.
-The result has the length of the longer input vector. Elements are added where both vectors
-have coefficients, and remaining coefficients from the longer vector are preserved.
-
-This models the mathematical property that polynomial addition is component-wise:
-(a₀ + a₁x + a₂x² + ...) + (b₀ + b₁x + b₂x² + ...) = (a₀+b₀) + (a₁+b₁)x + (a₂+b₂)x² + ...
-
-Additional mathematical properties:
-- Commutativity: hermeadd c1 c2 = hermeadd c2 c1
-- Associativity: hermeadd (hermeadd c1 c2) c3 = hermeadd c1 (hermeadd c2 c3)
-- Zero identity: hermeadd c (zero vector) = c (extended appropriately)
-- Preservation of polynomial structure: addition preserves Hermite polynomial properties */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn hermeadd(c1: Vec<i32>, c2: Vec<i32>) -> (result: Vec<i32>)
     ensures
         result.len() == if c1.len() >= c2.len() { c1.len() } else { c2.len() },
@@ -25,11 +11,9 @@ fn hermeadd(c1: Vec<i32>, c2: Vec<i32>) -> (result: Vec<i32>)
             #[trigger] result[i] == coeff1 + coeff2
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

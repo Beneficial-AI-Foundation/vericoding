@@ -1,23 +1,14 @@
-/* Replace NaN with zero and infinity with large finite numbers element-wise
-
-Specification: nan_to_num replaces non-finite floating-point values with finite alternatives:
-1. NaN replacement: All NaN values are replaced with 0.0
-2. Positive infinity replacement: All positive infinity values are replaced with a large finite value  
-3. Negative infinity replacement: All negative infinity values are replaced with a large negative finite value
-4. Finite value preservation: All finite values remain unchanged
-5. All results are finite: The output contains only finite floating-point numbers */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn nan_to_num(x: Vec<f64>) -> (result: Vec<f64>)
     ensures 
         result.len() == x.len(),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

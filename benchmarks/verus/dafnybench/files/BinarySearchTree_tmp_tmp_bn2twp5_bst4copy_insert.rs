@@ -69,23 +69,14 @@ fn insert_recursion(tree: Tree, value: int) -> (res: Tree)
     Tree::Empty
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn insert(tree: Tree, value: int) -> (res: Tree)
     requires binary_search_tree(tree),
     ensures binary_search_tree(res),
     decreases tree,
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    Tree::Empty
+    unreached();
 }
-// </vc-code>
 
-
+}
 fn main() {}
-
-}

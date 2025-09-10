@@ -1,16 +1,7 @@
-/* This task requires writing a Verus method that solves the Two Sum problem. Given a list of integers and a target integer, the method must return a pair of indices such that the sum of the numbers at those indices equals the target. You may assume that each input has exactly one solution and that you may not use the same element twice. The answer should be returned with first index is smaller than the second.
-
------Input-----
-The input consists of:
-- nums: A list of integers.
-- target: An integer representing the target sum.
-
------Output-----
-The output is a pair (tuple) of integers representing the indices of the two numbers in the input list that add up to the target. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn two_sum(nums: &Vec<i32>, target: i32) -> (result: (usize, usize))
     requires
         nums.len() > 1,
@@ -21,10 +12,9 @@ fn two_sum(nums: &Vec<i32>, target: i32) -> (result: (usize, usize))
         result.1 < nums.len(),
         nums[result.0 as int] + nums[result.1 as int] == target,
 {
-    // impl-start
     assume(false);
-    (0, 1)
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

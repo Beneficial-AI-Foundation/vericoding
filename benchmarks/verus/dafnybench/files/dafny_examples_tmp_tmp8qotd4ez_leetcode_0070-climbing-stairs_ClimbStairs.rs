@@ -8,24 +8,13 @@ spec fn stairs(n: nat) -> nat
     if n <= 1 { 1 } else { stairs((n - 2) as nat) + stairs((n - 1) as nat) }
 }
 
-// A simple specification
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn climb_stairs(n: u32) -> (r: u32)
     requires n >= 0
     ensures r == stairs(n as nat)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

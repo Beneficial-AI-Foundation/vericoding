@@ -36,26 +36,16 @@ spec fn sum_max_to_right2(v: Seq<int>, j: int, i: int, s: int) -> bool
     forall|l: int, ss: int| j <= l <= i && ss == i + 1 ==> sum2(v, l, ss) <= s
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn seg_max_sum(v: &[i32], i: usize) -> (result: (i32, usize))
     requires v.len() > 0 && i < v.len()
     ensures 
         result.1 <= i,
         result.0 == sum(v@.map_values(|x: i32| x as int), result.1 as int, (i+1) as int),
         sum_max_to_right(v@.map_values(|x: i32| x as int), i as int, result.0 as int)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    (0i32, 0)
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

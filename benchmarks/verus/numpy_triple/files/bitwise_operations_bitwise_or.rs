@@ -1,14 +1,13 @@
-/* Compute the bit-wise OR of two vectors element-wise */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn bitwise_or_int(x: i32, y: i32) -> i32 {
-    x // placeholder implementation
+    x
 }
 
 spec fn bitwise_and_int(x: i32, y: i32) -> i32 {
-    x // placeholder implementation
+    x
 }
 
 spec fn bitwise_or_vec(x: Seq<i32>, y: Seq<i32>) -> Seq<i32>
@@ -27,10 +26,9 @@ fn bitwise_or_fn(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() && (x1[i] == -1i32 || x2[i] == -1i32) ==> result[i] == -1i32,
         result@ == bitwise_or_vec(x1@, x2@)
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

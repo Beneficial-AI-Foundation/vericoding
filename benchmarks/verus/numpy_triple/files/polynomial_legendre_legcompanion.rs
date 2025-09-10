@@ -1,10 +1,7 @@
-/* Return the scaled companion matrix of Legendre series coefficients.
-The companion matrix is symmetric when c is a Legendre basis polynomial,
-providing better eigenvalue estimates. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn legcompanion(c: Vec<f64>) -> (result: Vec<Vec<f64>>)
     requires 
         c.len() >= 2,
@@ -15,10 +12,9 @@ fn legcompanion(c: Vec<f64>) -> (result: Vec<Vec<f64>>)
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() ==> 
             result[i][j] == result[j][i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

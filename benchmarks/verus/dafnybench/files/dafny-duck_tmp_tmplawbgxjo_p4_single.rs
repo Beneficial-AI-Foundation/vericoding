@@ -2,13 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-//Given two arrays of integers, it returns a single array with all integers merged. 
-// [1,5,2,3],[4,3,5]->[1,5,2,3,4,3,5]
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn single(x: &[i32], y: &[i32]) -> (b: Vec<i32>)
     requires 
         x.len() > 0,
@@ -16,16 +9,10 @@ fn single(x: &[i32], y: &[i32]) -> (b: Vec<i32>)
     ensures 
         b@.len() == x@.len() + y@.len(),
         b@ == x@ + y@,
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    Vec::new()
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

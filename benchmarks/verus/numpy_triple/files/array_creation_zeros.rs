@@ -1,18 +1,7 @@
-/* Return a new vector of given size, filled with zeros
-
-Specification: zeros returns a vector where all elements are zero
-This comprehensive specification captures:
-1. All elements equal to zero (basic property)
-2. The result is the additive identity for vector addition
-3. The sum of all elements is zero (for numeric types)
-4. Scalar multiplication by any value preserves the zero property
-5. The dot product with any vector is zero
-6. The norm/magnitude is zero (for types with norm)
-7. Element-wise operations preserve zero structure */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn zeros(n: usize) -> (result: Vec<i32>)
     ensures
         result.len() == n,
@@ -26,10 +15,9 @@ fn zeros(n: usize) -> (result: Vec<i32>)
             v.len() == n && 0 <= i < n ==> result[i] * v[i] == 0,
         n > 0 ==> result[0] == 0
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,20 +1,7 @@
-/* The problem is about processing a sequence of integer operations to determine cumulative results and identify potential negative outcomes. Given a list of integers, the task is to generate an array where the first element is 0 and each subsequent element is the cumulative sum of the operations performed sequentially. Additionally, the solution should check whether any of these cumulative values (after the initial 0) is negative, and return a corresponding boolean flag.
-
-Input:
-The input consists of:
-• operations: A list of integers representing sequential operations.
-
-Output:
-The output is a tuple consisting of:
-• An array of integers representing the partial sums. The array's size is one more than the number of operations, starting with 0 and where for each index i such that 0 ≤ i < operations.length, the element at index i+1 is equal to the element at index i added to operations[i].
-• A boolean value that is true if there exists an index i (with 1 ≤ i ≤ operations.length) such that the i-th partial sum is negative, and false otherwise.
-
-Note:
-The function should also correctly handle an empty list of operations. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn below_zero(operations: &Vec<i32>) -> (result: (Vec<i32>, bool))
     ensures
         result.0.len() == operations.len() + 1,
@@ -22,10 +9,9 @@ fn below_zero(operations: &Vec<i32>) -> (result: (Vec<i32>, bool))
         forall|i: int| 0 <= i < operations.len() ==> result.0[i + 1] == result.0[i] + operations[i],
         result.1 == (exists|i: int| 1 <= i < result.0.len() && result.0[i] < 0),
 {
-    // impl-start
     assume(false);
-    (Vec::new(), false)
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

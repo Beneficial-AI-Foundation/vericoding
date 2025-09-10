@@ -1,16 +1,7 @@
-/* This task requires writing a Verus method that finds the majority element in a list of natural numbers. The majority element is defined as the element that appears more than ⌊n / 2⌋ times in the list, where n is the total number of elements.
-
-You may assume that the input list always contains a majority element.
-
-Input: The input consists of one list:
-xs: A list of natural numbers (Vec<u64>), where a majority element is guaranteed to exist.
-
-Output: The output is a natural number:
-Returns the element that appears more than half the time in the input list. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn count_matches(xs: Seq<u64>, x: u64) -> nat
     decreases xs.len()
 {
@@ -21,6 +12,7 @@ spec fn count_matches(xs: Seq<u64>, x: u64) -> nat
         first_match + count_matches(xs.skip(1), x)
     }
 }
+
 fn majority_element(xs: &Vec<u64>) -> (result: u64)
     requires 
         xs.len() > 0,
@@ -28,11 +20,9 @@ fn majority_element(xs: &Vec<u64>) -> (result: u64)
     ensures
         count_matches(xs@, result) > xs.len() / 2,
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

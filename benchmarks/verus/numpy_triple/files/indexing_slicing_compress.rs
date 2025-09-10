@@ -1,23 +1,7 @@
-/* Compresses a vector by selecting only elements where the corresponding 
-condition is true. Returns a new vector containing only the selected elements.
-The result size is the number of true values in the condition vector.
-
-Specification: compress returns a new vector containing only the elements 
-from the input vector where the corresponding condition element is true.
-
-Mathematical properties:
-1. The result size equals the number of true values in the condition
-2. The result preserves the order of elements from the original vector
-3. Each element in the result corresponds to a true condition at the same index
-4. The result is empty if and only if all condition elements are false
-
-This function implements array compression/masking, a fundamental operation
-in array programming that allows selective extraction of elements based on
-a boolean mask. It's equivalent to boolean indexing in NumPy. */
-
 use vstd::prelude::*;
 
 verus! {
+
 spec fn count_true(condition: Seq<bool>) -> int
     decreases condition.len()
 {
@@ -42,10 +26,9 @@ fn compress(condition: Vec<bool>, a: Vec<f32>) -> (result: Vec<f32>)
             (forall|i: int, j: int| 0 <= i < j < mapping.len() ==> 
                 mapping[i] < mapping[j]),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

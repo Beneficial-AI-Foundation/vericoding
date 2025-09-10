@@ -1,12 +1,7 @@
-/* This test implements a function in Verus that finds the maximum sum of any contiguous subarray within a vector of integers. A subarray is a continuous section of the original array. If all integers in the vector are negative, the function should return 0 (representing the empty subarray).
-
-Input: numbers - A vector of integers that may contain positive, negative, or zero values.
-
-Output: An integer representing the maximum sum of any contiguous subarray. If the vector is empty or contains only negative numbers, the function returns 0. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn max_subarray_sum(numbers: &Vec<i32>) -> (result: i32)
     ensures
         result >= 0,
@@ -17,10 +12,9 @@ fn max_subarray_sum(numbers: &Vec<i32>) -> (result: i32)
             subarray_sum <= result
         },
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

@@ -1,25 +1,7 @@
-/* Generate a HermiteE series with given roots.
-    
-Returns the coefficients of the polynomial p(x) = (x - r₀) * (x - r₁) * ... * (x - rₙ₋₁)
-in HermiteE form, where rᵢ are the roots specified in the input vector.
-
-The output coefficients c satisfy: p(x) = c₀ + c₁ * He₁(x) + ... + cₙ * Heₙ(x)
-where Heₙ(x) is the n-th probabilist's Hermite polynomial (HermiteE).
-
-This function converts from the standard polynomial representation with given roots
-to the HermiteE polynomial basis representation.
-
-Specification: hermefromroots generates HermiteE coefficients such that:
-1. The output has exactly n+1 coefficients where n is the number of roots
-2. The polynomial represented by these coefficients has the given roots
-3. When evaluated at any root rᵢ using HermiteE basis, the result is zero
-4. The highest degree coefficient is non-zero (ensuring correct degree)
-5. The polynomial satisfies the fundamental property p(x) = (x - r₀) * ... * (x - rₙ₋₁) */
-
 use vstd::prelude::*;
 
 verus! {
-/* Evaluate the k-th probabilist's Hermite polynomial (HermiteE) at x */
+
 spec fn eval_hermite_e(k: nat, x: int) -> int 
     decreases k
 {
@@ -32,7 +14,6 @@ spec fn eval_hermite_e(k: nat, x: int) -> int
     }
 }
 
-/* Evaluate a polynomial in HermiteE basis at point x given coefficients */
 spec fn eval_hermite_e_poly(coeffs: Seq<int>, x: int) -> int 
     decreases coeffs.len()
 {
@@ -43,7 +24,6 @@ spec fn eval_hermite_e_poly(coeffs: Seq<int>, x: int) -> int
     }
 }
 
-/* Product form helper: (x - r₀) * (x - r₁) * ... * (x - rᵢ₋₁) */
 spec fn product_form(roots: Seq<int>, x: int, i: nat) -> int 
     decreases i
 {
@@ -53,19 +33,18 @@ spec fn product_form(roots: Seq<int>, x: int, i: nat) -> int
         product_form(roots, x, (i - 1) as nat) * (x - roots[(i - 1) as int])
     }
 }
+
 fn hermefromroots(roots: Vec<f64>) -> (coeffs: Vec<f64>)
     ensures
         coeffs.len() == roots.len() + 1,
-        /* Empty roots give the constant polynomial 1 */
+
         (roots.len() == 0 ==> coeffs.len() == 1),
-        /* The polynomial degree matches the number of roots (leading coefficient is non-zero) */
+
         (roots.len() > 0 ==> coeffs.len() == roots.len() + 1),
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
-}
+    unreached();
 }
 
+}
 fn main() {}

@@ -2,10 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn is_min_heap(a: &Vec<i32>) -> (result: bool)
     requires a.len() > 0
     ensures 
@@ -21,14 +17,10 @@ fn is_min_heap(a: &Vec<i32>) -> (result: bool)
             (#[trigger] a[i as int] > a[left_idx] && left_idx < a.len()) ||
             (a[i as int] > a[right_idx] && right_idx < a.len())
         }
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    false
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

@@ -8,22 +8,12 @@ spec fn expt(b: int, n: nat) -> int
     if n == 0 { 1 } else { b * expt(b, (n - 1) as nat) }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn expt_method(b: i32, n: u32) -> (res: i32)
     ensures res == expt(b as int, n as nat)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

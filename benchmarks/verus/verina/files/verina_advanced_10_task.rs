@@ -1,16 +1,3 @@
-/* This task requires writing a Verus method that decomposes a natural number `n` into its prime factorization components based on a user-provided list of primes. Specifically, it calculates the exponents for each prime in the factorization such that:
-\[ n = \prod p^e \]
-In other words, it determines the exponent e for each prime p.
-
------Input-----
-The input consists of a natural number n, and a list of prime numbers. The input n is obtained by multiplying together any powers of the prime numbers from the provided list.
-n: The natural number to be factorized.
-primes: A list of primes to decompose n into.
-
------Output-----
-The output is `Vec<(nat, nat)>`:
-Return a list of pair/Cartesian product of two natural numbers (p, e), where p is the prime and e is the exponent of p in the factorization. Each prime in the output must be from the input list, and every prime in the input list must appear in the output. */
-
 use vstd::prelude::*;
 use vstd::arithmetic::power::pow;
 
@@ -18,20 +5,6 @@ verus! {
 
 spec fn is_prime(n: nat) -> bool {
     arbitrary()
-}
-fn find_exponents(n: nat, primes: Vec<nat>) -> (result: Vec<(nat, nat)>)
-    requires
-        forall|i: int| 0 <= i < primes.len() ==> is_prime(primes[i]),
-    ensures
-        n as int == spec_fold(result@, 1int),
-        forall|i: int| 0 <= i < result.len() ==> (#[trigger] primes@.contains(result[i].0)),
-        forall|p: nat| (#[trigger] primes@.contains(p)) ==> 
-            exists|j: int| 0 <= j < result.len() && result[j].0 == p,
-{
-    // impl-start
-    assume(false);
-    Vec::new()
-    // impl-end
 }
 
 spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
@@ -45,10 +18,18 @@ spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
     }
 }
 
-proof fn find_exponents_satisfies_spec(n: nat, primes: Vec<nat>)
-    requires forall|i: int| 0 <= i < primes.len() ==> is_prime(primes[i])
+fn find_exponents(n: nat, primes: Vec<nat>) -> (result: Vec<(nat, nat)>)
+    requires
+        forall|i: int| 0 <= i < primes.len() ==> is_prime(primes[i]),
+    ensures
+        n as int == spec_fold(result@, 1int),
+        forall|i: int| 0 <= i < result.len() ==> (#[trigger] primes@.contains(result[i].0)),
+        forall|p: nat| (#[trigger] primes@.contains(p)) ==> 
+            exists|j: int| 0 <= j < result.len() && result[j].0 == p,
 {
-    assume(false); /* TODO: Remove this line and implement the proof */
+    assume(false);
+    unreached();
 }
+
 }
 fn main() {}

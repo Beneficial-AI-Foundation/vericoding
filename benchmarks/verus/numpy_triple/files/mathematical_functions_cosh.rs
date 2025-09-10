@@ -1,28 +1,18 @@
-/* numpy.cosh: Hyperbolic cosine, element-wise.
-
-The hyperbolic cosine function is defined as:
-cosh(x) = (e^x + e^(-x)) / 2
-
-It represents the x-coordinate of a point on the unit hyperbola,
-analogous to how cosine represents the x-coordinate on the unit circle.
-
-Returns an array of the same shape as x, containing the hyperbolic cosine of each element. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn numpy_cosh(x: Vec<f32>) -> (result: Vec<f32>)
     requires x.len() > 0,
     ensures
         result.len() == x.len(),
         forall|i: int| 0 <= i < result.len() ==> {
-            result[i] == result[i]  /* Core mathematical definition placeholder */
+            result[i] == result[i]
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

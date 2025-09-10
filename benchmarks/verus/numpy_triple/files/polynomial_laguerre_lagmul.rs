@@ -1,19 +1,7 @@
-/* Multiply one Laguerre series by another.
-
-This function multiplies two Laguerre series represented as coefficient arrays.
-Returns the product of two Laguerre series c1 * c2. The arguments are sequences 
-of coefficients, from lowest order "term" to highest, e.g., [1,2,3] represents 
-the series P_0 + 2*P_1 + 3*P_2.
-
-Parameters:
-- c1, c2: 1-D arrays of Laguerre series coefficients ordered from low to high.
-
-Returns:
-- out: Array of Laguerre series coefficients representing their product. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn lagmul(c1: Vec<f64>, c2: Vec<f64>) -> (result: Vec<f64>)
     requires c1.len() > 0 && c2.len() > 0,
     ensures 
@@ -27,10 +15,9 @@ fn lagmul(c1: Vec<f64>, c2: Vec<f64>) -> (result: Vec<f64>)
                     c1[j] != 0.0 && 
                     c2[k] != 0.0)
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

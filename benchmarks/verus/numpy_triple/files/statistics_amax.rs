@@ -1,14 +1,7 @@
-/* Returns the maximum value of all elements in a non-empty vector.
-Specification: amax returns the maximum value in the vector.
-Mathematical properties:
-1. The result is an element that exists in the vector
-2. No element in the vector is greater than the result
-3. The result is unique (first occurrence if there are duplicates)
-4. For constant vectors, amax equals the constant value */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn amax(a: Vec<i32>) -> (result: i32)
     requires a.len() > 0,
     ensures
@@ -23,10 +16,9 @@ fn amax(a: Vec<i32>) -> (result: i32)
             result == a@[0]) &&
         (exists|witness: int| 0 <= witness < a.len() && result == a@[witness])
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

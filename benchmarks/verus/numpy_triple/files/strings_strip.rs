@@ -1,29 +1,7 @@
-/* numpy.strings.strip: For each element in a vector, return a copy with the leading and trailing characters removed.
-
-Removes both leading and trailing characters from each string element in the input vector.
-This is a combination of lstrip and rstrip operations. The behavior depends on the chars parameter:
-- If chars is None, whitespace characters are removed from both ends
-- If chars is provided, any combination of those characters is removed from both ends
-
-The function preserves the shape of the input array and handles empty strings
-appropriately by returning them unchanged.
-
-From NumPy documentation:
-- Parameters: a (array_like) - Input array with string dtype
-              chars (optional) - Characters to remove from both ends
-- Returns: out (ndarray) - Output array with leading and trailing characters removed
-
-Mathematical Properties:
-1. Element-wise transformation: result[i] = strip(a[i], chars) for all i
-2. Length preservation or reduction: result[i].length ≤ a[i].length for all i
-3. Substring property: result[i] is a substring of a[i] for all i
-4. Character set removal: only characters in chars are removed from both ends
-5. Preserves vector length: result.size = a.size
-6. Combination of lstrip and rstrip: strip(s) = rstrip(lstrip(s)) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn strip(a: Vec<String>, chars: Option<String>) -> (result: Vec<String>)
     ensures
         result.len() == a.len(),
@@ -34,10 +12,9 @@ fn strip(a: Vec<String>, chars: Option<String>) -> (result: Vec<String>)
             (original@.len() == 0 ==> res@.len() == 0)
         }
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

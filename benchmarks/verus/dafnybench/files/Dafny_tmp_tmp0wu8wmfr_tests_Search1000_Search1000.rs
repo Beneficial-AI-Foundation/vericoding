@@ -2,14 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Author: Snorri Agnarsson, snorri@hi.is
-
-// Search1000 is a Verus version of a function shown
-// by Jon Bentley in his old Programming Pearls
-// column in CACM.  Surprisingly Verus needs no help
-// to verify the function.
-
-// Is2Pow(n) is true iff n==2^k for some k>=0.
 spec fn is_2_pow(n: int) -> bool
     decreases n
 {
@@ -22,16 +14,6 @@ spec fn is_2_pow(n: int) -> bool
     }
 }
 
-// This method is a binary search that only works for array
-// segments of size n == 2^k-1 for some k>=0.
-
-// This method is a binary search that only works for array
-// segments of size n == 2^k-1 for some k>=0.
-
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn search_1000(a: &[i32], x: i32) -> (k: usize)
     requires 
         a.len() >= 1000,
@@ -40,16 +22,10 @@ fn search_1000(a: &[i32], x: i32) -> (k: usize)
         0 <= k <= 1000,
         forall|r: int| 0 <= r < k ==> a[r] < x,
         forall|r: int| k <= r < 1000 ==> a[r] >= x,
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

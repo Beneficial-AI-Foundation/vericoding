@@ -1,23 +1,7 @@
-/* Dictionary mapping strings to corresponding type character codes
-
-A dictionary with string keys that represent NumPy dtype categories and string values that contain type codes for the NumPy data types in each category.
-
-Keys include:
-- 'Character': 'S1'
-- 'Integer': 'bhilqnp'
-- 'UnsignedInteger': 'BHILQNP'
-- 'Float': 'fdg'
-- 'Complex': 'FDG'
-- 'AllInteger': 'bBhHiIlLqQnNpP'
-- 'AllFloat': 'fdgFDG'
-- 'Datetime': 'Mm'
-- 'All': '?bhilqnpBHILQNPfdgFDGSUVOMm'
-
-This is useful for iterating over all dtypes of a certain kind. */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn typecodes(category: &str) -> (result: Option<&str>)
     ensures
         (category == "Character") ==> (result == Some("S1")),
@@ -33,10 +17,9 @@ fn typecodes(category: &str) -> (result: Option<&str>)
          category != "Float" && category != "Complex" && category != "AllInteger" && 
          category != "AllFloat" && category != "Datetime" && category != "All") ==> (result == None::<&str>)
 {
-    // impl-start
     assume(false);
-    None
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

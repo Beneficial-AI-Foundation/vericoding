@@ -1,19 +1,7 @@
-/* Numpy swapaxes function: Interchange two axes of an array.
-
-This function interchanges two axes of an array. For 2D arrays, swapaxes with axis1=0 and axis2=1 is equivalent to transpose. This specification focuses on 2D arrays where axis1=0 and axis2=1.
-
-Specification: swapaxes with axes 0 and 1 transposes a 2D array.
-The element at position (i,j) in the original becomes (j,i) in the result.
-
-Mathematical properties:
-1. Dimension swap: rows become columns and vice versa
-2. Element preservation: mat[i][j] = result[j][i]
-3. Idempotence: swapping twice returns to original
-4. Commutativity: swapaxes(a, i, j) = swapaxes(a, j, i) */
-
 use vstd::prelude::*;
 
 verus! {
+
 fn swapaxes(mat: Vec<Vec<f32>>, axis1: usize, axis2: usize) -> (result: Vec<Vec<f32>>)
     requires
         mat.len() > 0,
@@ -29,10 +17,9 @@ fn swapaxes(mat: Vec<Vec<f32>>, axis1: usize, axis2: usize) -> (result: Vec<Vec<
             0 <= i < mat.len() && 0 <= j < mat[0].len() 
             ==> mat[i][j] == result[j][i],
 {
-    // impl-start
     assume(false);
-    Vec::new()
-    // impl-end
+    unreached();
 }
+
 }
 fn main() {}

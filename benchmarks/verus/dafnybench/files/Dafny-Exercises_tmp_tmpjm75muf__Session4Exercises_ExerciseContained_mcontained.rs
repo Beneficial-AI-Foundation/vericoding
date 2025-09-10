@@ -6,14 +6,7 @@ spec fn strict_sorted(s: Seq<i32>) -> bool {
     forall|u: int, w: int| 0 <= u < w < s.len() ==> s[u] < s[w]
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn mcontained(v: &[i32], w: &[i32], n: usize, m: usize) -> (b: bool)
-//Specify and implement an O(m+n) algorithm that returns b
-//v and w are strictly increasing ordered arrays
-//b is true iff the first n elements of v are contained in the first m elements of w
     requires 
         n <= m,
         n >= 0,
@@ -23,14 +16,10 @@ fn mcontained(v: &[i32], w: &[i32], n: usize, m: usize) -> (b: bool)
         w@.len() >= m,
     ensures
         b == forall|k: int| 0 <= k < n ==> w@.subrange(0, m as int).contains(v@[k])
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    false
+    unreached();
 }
-// </vc-code>
 
+}
 fn main() {}
-
-}

@@ -15,22 +15,13 @@ spec fn count(hi: nat, s: Seq<int>) -> int
     }
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn compute_count(count_index: usize, a: Seq<int>, b: &mut Vec<int>) -> (p: usize)
     requires count_index == 0 || (a.len() == old(b).len() && 1 <= count_index <= a.len())
     ensures p == count(count_index as nat, a)
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0
-}
-// </vc-code>
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}

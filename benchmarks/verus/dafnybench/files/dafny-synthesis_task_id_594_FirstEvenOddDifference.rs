@@ -10,10 +10,6 @@ spec fn is_odd(n: int) -> bool {
     n % 2 != 0
 }
 
-// <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 fn first_even_odd_difference(a: &[i32]) -> (diff: i32)
     requires 
         a.len() >= 2,
@@ -28,16 +24,10 @@ fn first_even_odd_difference(a: &[i32]) -> (diff: i32)
             diff == a[i] - a[j] && 
             (forall|k: int| 0 <= k < i ==> is_odd(a[k] as int)) && 
             (forall|k: int| 0 <= k < j ==> is_even(a[k] as int))
-// </vc-spec>
-// <vc-code>
 {
     assume(false);
-    0  // dummy return value
-}
-// </vc-code>
-
-
-fn main() {
+    unreached();
 }
 
 }
+fn main() {}
