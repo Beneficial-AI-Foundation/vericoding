@@ -135,13 +135,42 @@ Examples:
         type=str,
         choices=["claude", "openai", "deepseek"],
         default="claude",
-        help="LLM provider to use (default: claude)",
+        help="LLM provider to use (default: claude). For claude this uses Claude Code SDK.",
     )
 
     parser.add_argument(
         "--llm-model",
         type=str,
-        help="Specific model to use (defaults to provider's default model)",
+        default="claude-opus-4-1",
+        help="Specific model to use (default: claude-opus-4-1 for claude)",
+    )
+
+    parser.add_argument(
+        "--reasoning-effort",
+        type=str,
+        choices=["low", "medium", "high"],
+        default=None,
+        help="Reasoning effort hint for capable models (optional)",
+    )
+
+    parser.add_argument(
+        "--lake-build-target",
+        type=str,
+        help="Optional Lake target to build at the end for overall stats (e.g., Benchmarks)",
+    )
+
+    parser.add_argument(
+        "--use-mcp",
+        action="store_true",
+        default=True,
+        help="Use Lean LSP MCP to gather hover/goals/diagnostics context (Lean only) [default: enabled]",
+    )
+
+    parser.add_argument(
+        "--tool-calling",
+        action="store_true",
+        default=True,
+        help="Enable LLM tool-calling (Claude Code/OpenAI) [default: enabled]",
     )
 
     return parser.parse_args()
@@ -227,13 +256,15 @@ def setup_configuration(args) -> ProcessingConfig:
         meaningful_part = Path(input_path.name)
 
     # Create output directory structure
-    # For Lean, put files under lean/ directory so lake can find them
+    # For Lean, place generated files under a sibling namespace so default targets don't pull them in.
+    # We use benchmarks/lean/dafnybench_gen/Run_<ts>/...
     if args.language == "lean":
-        # Use project root lean/ directory for Lean files
-        project_root = src_base.parent if src_base.name == "src" else src_base
-        output_dir = str(
-            project_root / "lean" / "Generated" / f"Run_{timestamp}" / meaningful_part
-        )
+        try:
+            from vericoding.utils import get_repo_root  # type: ignore
+        except Exception:
+            get_repo_root = lambda: Path.cwd()
+        repo_root = Path(get_repo_root())
+        output_dir = str(repo_root / "benchmarks/lean/dafnybench_gen" / f"Run_{timestamp}")
     else:
         output_dir = str(
             src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
@@ -258,6 +289,9 @@ def setup_configuration(args) -> ProcessingConfig:
         llm_provider=args.llm_provider,
         llm_model=args.llm_model,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
+        llm_reasoning_effort=args.reasoning_effort,
+        use_mcp=args.use_mcp,
+        llm_tool_calling=args.tool_calling,
     )
 
     print("\nConfiguration:")
@@ -269,11 +303,24 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"- Tool path: {get_tool_path(config)}")
     print(f"- LLM Provider: {config.llm_provider}")
     print(f"- LLM Model: {config.llm_model or 'default'}")
+    if args.reasoning_effort:
+        print(f"- Reasoning effort: {args.reasoning_effort}")
     print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
     print(
         f"- Spec preservation: {'Strict' if config.strict_spec_verification else 'Relaxed (default)'}"
     )
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
+    # Light MCP status (Lean only)
+    if config.language == 'lean' and config.use_mcp:
+        try:
+            from vericoding.lean.mcp_helpers import ensure_server_started, close_server
+            import atexit
+            mcp_ok = ensure_server_started()
+            status = "Enabled" if mcp_ok else "Not available"
+            print(f"- MCP (lean-lsp-mcp): {status}")
+            atexit.register(close_server)
+        except Exception:
+            print("- MCP (lean-lsp-mcp): Not available (import/start failed)")
     print("\nProceeding with configuration...")
 
     return config
@@ -387,17 +434,19 @@ def determine_input_type(files_dir: str) -> str:
         spec_keywords = ["requires", "ensures", "invariant", "precondition", "postcondition"]
         try:
             # Sample a few files to detect type
-            # Look for files in the directory to sample\n            files_path = Path(files_dir)\n            sample_files = []\n            if files_path.exists():\n                for ext in [\"*.dfy\", \"*.rs\", \"*.lean\"]:\n                    sample_files.extend(list(files_path.rglob(ext))[:2])
-            if spec_files:
-                sample_file = spec_files[0] if len(spec_files) == 1 else spec_files[:min(3, len(spec_files))]
-                for file_path in (sample_file if isinstance(sample_file, list) else [sample_file]):
-                    try:
-                        with open(file_path, 'r') as f:
-                            content = f.read().lower()
-                            if any(keyword in content for keyword in spec_keywords):
-                                return "spec"
-                    except Exception:
-                        continue
+            files_path = Path(files_dir)
+            sample_files: list[Path] = []
+            if files_path.exists():
+                for ext in ["*.dfy", "*.rs", "*.lean"]:
+                    sample_files.extend(list(files_path.rglob(ext))[:2])
+            for file_path in sample_files:
+                try:
+                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                        content = f.read().lower()
+                        if any(keyword in content for keyword in spec_keywords):
+                            return "spec"
+                except Exception:
+                    continue
         except Exception:
             pass
         
@@ -847,6 +896,31 @@ def main():
             print(f"\n✅ Wandb run completed: {wandb_run.url}")
         except Exception as e:
             print(f"⚠️  Error logging to wandb: {e}")
+
+    # Optionally build a Lake target for coarse-grained stats
+    if args.lake_build_target and config.language == "lean":
+        print(f"\nBuilding Lake target '{args.lake_build_target}' for summary stats...")
+        try:
+            proc = subprocess.run(
+                ["lake", "build", args.lake_build_target],
+                capture_output=True,
+                text=True,
+                timeout=900,
+            )
+            combined = proc.stdout + proc.stderr
+            sorry_count = combined.count("declaration uses 'sorry'")
+            error_count = combined.count("error:")
+            print("=== LAKE BUILD SUMMARY ===")
+            print(f"Exit code: {proc.returncode}")
+            print(f"Errors: {error_count}")
+            print(f"'sorry' warnings: {sorry_count}")
+            # Save to file alongside summary
+            lake_summary_path = Path(config.output_dir) / "lake_build_summary.txt"
+            with lake_summary_path.open("w") as f:
+                f.write(combined)
+            print(f"Full Lake output saved to: {lake_summary_path}")
+        except subprocess.TimeoutExpired:
+            print("⏱️  Lake build timed out")
 
 
 if __name__ == "__main__":
