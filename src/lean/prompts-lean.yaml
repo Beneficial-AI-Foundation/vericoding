@@ -9,6 +9,7 @@ generate_code: |
   ```
   
   CRITICAL RULES:
+  - COUNT the "sorry" keywords in the ORIGINAL file first - your JSON array must have exactly that many elements
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
@@ -33,6 +34,7 @@ fix_verification: |
   ```
   
   CRITICAL RULES:
+  - COUNT the "sorry" keywords in the ORIGINAL file first - your JSON array must have exactly that many elements
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact fixed code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
