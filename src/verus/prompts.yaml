@@ -1,18 +1,19 @@
 generate_code: |
   The task is to generate implementations for `<vc-code>` sections in a Verus file.
   
-  INPUT: a Verus file containing `<vc-code>` tags around placeholder implementations that need to be filled in.
+  INPUT: a Verus file containing {placeholder_count} `<vc-code>` tags around placeholder implementations that need to be filled in.
   
-  OUTPUT: Return a JSON array with one replacement for each `<vc-code>` section in the file, in order from top to bottom:
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} replacements (one for each `<vc-code>` section in the file), in order from top to bottom:
   ```json
   ["{{\n    let mut low = 0;\n    // implementation here\n}}", "{{\n    // second implementation\n}}"]
   ```
   
   CRITICAL RULES:
+  - The ORIGINAL file contains EXACTLY {placeholder_count} `<vc-code>` sections - your JSON array must have EXACTLY {placeholder_count} elements
   - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact code that will replace everything between the `<vc-code>` tags
   - Include opening/closing braces if they were in the original `<vc-code>` content
-  - Do not use `assume` statements or `unimplemented!()` in replacements
+  - AVOID verification bypasses: `assume` statements, `unimplemented!()`, or other verification shortcuts
   - Use valid Verus/Rust syntax for all implementations
   - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
   - Use Verus types like `nat`, `int`, `Vec<T>`, `Seq<T>`, etc.
@@ -26,14 +27,15 @@ generate_code: |
 fix_verification: |
   The task is to fix implementations in `<vc-code>` sections that failed verification.
   
-  INPUT: a Verus file with `<vc-code>` sections that contain implementations with verification errors.
+  INPUT: The ORIGINAL file contains {placeholder_count} `<vc-code>` sections that need to be fixed based on verification errors.
   
-  OUTPUT: Return a JSON array with one fixed replacement for each `<vc-code>` section in the file, in order from top to bottom:
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} fixed replacements (one for each `<vc-code>` section in the ORIGINAL file), in order from top to bottom:
   ```json
   ["{{\n    let mut low = 0;\n    // fixed implementation here\n}}", "{{\n    // second fixed implementation\n}}"]
   ```
   
   CRITICAL RULES:
+  - The ORIGINAL file contains EXACTLY {placeholder_count} `<vc-code>` sections - your JSON array must have EXACTLY {placeholder_count} elements
   - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact fixed code that will replace everything between the `<vc-code>` tags
   - Include opening/closing braces if they were in the original `<vc-code>` content
@@ -42,7 +44,7 @@ fix_verification: |
   - Use proof blocks with `proof {{ ... }}` for complex proofs
   - Use `assert()` statements within proof blocks for intermediate steps
   - Use Verus types and operators (`nat`, `int`, `Vec<T>`, `Seq<T>`, `@`, etc.)
-  - Do not use `assume` statements or `unimplemented!()`
+  - MINIMIZE verification bypasses: `assume` statements, `unimplemented!()`, or other verification shortcuts
   - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`)
   - Add comment `/* code modified by LLM (iteration {iteration}): [brief description] */` before modified code
   - Return ONLY a valid JSON array, no explanations or markdown

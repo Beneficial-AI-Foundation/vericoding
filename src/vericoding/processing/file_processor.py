@@ -92,11 +92,17 @@ def process_spec_file(
         # Step 1: Generate code from specifications
         logger.info("  Step 1: Generating code from specifications...")
         try:
-            # Count sorries in original code for JSON array sizing
-            sorry_count = original_code.count("sorry")
-            generate_prompt = prompt_loader.format_prompt(
-                "generate_code", code=original_code, sorry_count=sorry_count
-            )
+            # Count placeholders in original code for JSON array sizing
+            if config.language == "lean":
+                placeholder_count = original_code.count("sorry")
+                generate_prompt = prompt_loader.format_prompt(
+                    "generate_code", code=original_code, sorry_count=placeholder_count
+                )
+            else:  # dafny or verus
+                placeholder_count = original_code.count("<vc-code>")
+                generate_prompt = prompt_loader.format_prompt(
+                    "generate_code", code=original_code, placeholder_count=placeholder_count
+                )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
             logger.info(f"  Available prompts: {list(prompt_loader.prompts.keys())}")
@@ -230,9 +236,9 @@ def process_spec_file(
             verification = verify_file(config, str(output_path))
             last_verification = verification
             
-            # Check for cheats in final code - combine with lake build output
-            if config.language == "lean" and has_final_failure_cheats(current_code):
-                cheats = check_for_cheats(current_code)
+            # Check for cheats in final code - combine with verification output
+            if has_final_failure_cheats(current_code, config.language):
+                cheats = check_for_cheats(current_code, config.language)
                 cheat_descriptions = [desc for _, desc in cheats]
                 logger.info(f"    ⚠️ Final code contains verification bypasses: {'; '.join(cheat_descriptions)}")
                 
@@ -312,15 +318,26 @@ def process_spec_file(
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
                 logger.info("    Attempting to fix errors...")
-                # Count sorries in original code for JSON array sizing (not current code!)
-                sorry_count = original_code.count("sorry")
-                fix_prompt = prompt_loader.format_prompt(
-                    "fix_verification",
-                    code=current_code,
-                    original_code=original_code,
-                    errorDetails=error_details,
-                    iteration=iteration,
-                    sorry_count=sorry_count,
+                # Count placeholders in original code for JSON array sizing (not current code!)
+                if config.language == "lean":
+                    placeholder_count = original_code.count("sorry")
+                    fix_prompt = prompt_loader.format_prompt(
+                        "fix_verification",
+                        code=current_code,
+                        original_code=original_code,
+                        errorDetails=error_details,
+                        iteration=iteration,
+                        sorry_count=placeholder_count,
+                    )
+                else:  # dafny or verus
+                    placeholder_count = original_code.count("<vc-code>")
+                    fix_prompt = prompt_loader.format_prompt(
+                        "fix_verification",
+                        code=current_code,
+                        original_code=original_code,
+                        errorDetails=error_details,
+                        iteration=iteration,
+                        placeholder_count=placeholder_count,
                 )
 
                 # Track fix prompt for W&B logging
