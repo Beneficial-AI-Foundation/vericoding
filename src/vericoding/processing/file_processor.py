@@ -92,8 +92,10 @@ def process_spec_file(
         # Step 1: Generate code from specifications
         logger.info("  Step 1: Generating code from specifications...")
         try:
+            # Count sorries in original code for JSON array sizing
+            sorry_count = original_code.count("sorry")
             generate_prompt = prompt_loader.format_prompt(
-                "generate_code", code=original_code
+                "generate_code", code=original_code, sorry_count=sorry_count
             )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
@@ -310,12 +312,15 @@ def process_spec_file(
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
                 logger.info("    Attempting to fix errors...")
+                # Count sorries in original code for JSON array sizing (not current code!)
+                sorry_count = original_code.count("sorry")
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
                     code=current_code,
                     original_code=original_code,
                     errorDetails=error_details,
                     iteration=iteration,
+                    sorry_count=sorry_count,
                 )
 
                 # Track fix prompt for W&B logging
