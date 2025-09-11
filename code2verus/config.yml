@@ -2,9 +2,10 @@ config:
   verus_path: "verus"
   dafny_path: "/home/lacra/git_repos/dafny/Binaries/Dafny"
   lean_path: "lean"  # Add lean path for verification
-  model: "anthropic:claude-sonnet-4-20250514"
+  #model: "anthropic:claude-sonnet-4-20250514"
+  model: "openrouter:anthropic/claude-sonnet-4"
   artifacts_dir: "artifacts"
-  max_translation_iterations: 3
+  max_translation_iterations: 5
   max_retries: 16
   
   # OpenRouter models (alternative to direct provider APIs)
@@ -32,6 +33,26 @@ config:
     - "vc-signature"
     - "vc-condition"
     - "vc-proof"
+
+  # Code validation rules to enforce quality and correctness
+  code_validation_rules:
+    verus:
+      # Enforce that spec functions cannot have arbitrary() as body
+      - rule_type: "forbidden_pattern"
+        pattern: "spec fn .+\\{[\\s\\n]*arbitrary\\(\\)[\\s\\n]*\\}"
+        description: "spec fn functions cannot have arbitrary() as their body - spec functions must provide actual specifications"
+        severity: "error"
+      # Enforce that spec functions should not be empty
+      - rule_type: "forbidden_pattern"
+        pattern: "spec fn .+\\{[\\s\\n]*\\}"
+        description: "spec fn functions should not be empty - they must provide meaningful specifications"
+        severity: "warning"
+    dafny:
+      # Similar rules for Dafny functions
+      - rule_type: "forbidden_pattern"
+        pattern: "function .+\\{[\\s\\n]*\\}"
+        description: "Dafny functions should not be empty - they must provide meaningful specifications"
+        severity: "warning"
 
 # Default system prompt (defaults to Dafny-to-Verus translation)
 system: |
@@ -79,10 +100,15 @@ system_prompts:
 
     8. **Main Function**: ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
 
+    9. **Code Quality Enforcement**: CRITICAL - Follow these mandatory validation rules:
+       - **FORBIDDEN**: `spec fn` functions MUST NOT have `arbitrary()` as their body. Spec functions must provide actual, meaningful specifications.
+       - **FORBIDDEN**: `spec fn` functions MUST NOT be empty. They must contain proper logical specifications.
+       - **REQUIRED**: All `spec fn` functions must define clear, verifiable logical properties that can be used for formal verification.
+       - **PATTERN TO AVOID**: `spec fn name(...) { arbitrary() }` - This is invalid and must be replaced with proper specifications.
 
-    9. **Examples and Testing**: For code examples, provide both the original Dafny snippet and the translated Verus snippet, clearly delineated in code blocks.
+    10. **Examples and Testing**: For code examples, provide both the original Dafny snippet and the translated Verus snippet, clearly delineated in code blocks.
 
-    10. **Explanations**: When the user requests, accompany translations with brief explanations of non-trivial mappings or proof strategies.
+    11. **Explanations**: When the user requests, accompany translations with brief explanations of non-trivial mappings or proof strategies.
 
     **Example Translation**
 
@@ -115,7 +141,7 @@ system_prompts:
             ensures result <==> forall|i: int| 0 <= i < a.len() ==> (is_odd(i) ==> is_odd(a[i]))
         {
             assume(false);
-            false
+            unreached()
         }
     }
 
@@ -180,7 +206,7 @@ system_prompts:
       {
           // impl-start
           assume(false);
-          false
+          unreached()
           // impl-end
       }
     vc-postamble: |-
@@ -216,7 +242,13 @@ system_prompts:
 
     9. **Main Function**: ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
 
-    10. **Namespace and Module Structure**: Preserve Lean's namespace organization as appropriate Verus module structure.
+    10. **Code Quality Enforcement**: CRITICAL - Follow these mandatory validation rules:
+        - **FORBIDDEN**: `spec fn` functions MUST NOT have `arbitrary()` as their body. Spec functions must provide actual, meaningful specifications.
+        - **FORBIDDEN**: `spec fn` functions MUST NOT be empty. They must contain proper logical specifications.
+        - **REQUIRED**: All `spec fn` functions must define clear, verifiable logical properties that can be used for formal verification.
+        - **PATTERN TO AVOID**: `spec fn name(...) { arbitrary() }` - This is invalid and must be replaced with proper specifications.
+
+    11. **Namespace and Module Structure**: Preserve Lean's namespace organization as appropriate Verus module structure.
 
     **YAML Structure Mapping for Lean to Verus Translation**:
     
@@ -289,7 +321,7 @@ system_prompts:
       {
           // impl-start
           assume(false);
-          0
+          unreached()
           // impl-end
       }
     ```
@@ -303,7 +335,7 @@ system_prompts:
     {
         // impl-start
         assume(false);
-        [appropriate_default_return_value]
+        unreached()
         // impl-end
     }
     ```
@@ -334,11 +366,13 @@ system_prompts:
 
     5. **Ghost Code and Specifications**: Convert Verus ghost variables and spec functions to Dafny ghost declarations. Map Verus `spec fn` to Dafny `function` and `proof fn` to Dafny `lemma`.
 
-    6. **Formatting and Structure**: Remove Verus-specific imports like `use vstd::prelude::*;` and `verus! { ... }` blocks. Format identifiers consistently in Dafny conventions and include comments mapping back to the original Verus code.
+    6. **Implementation Bodies**: CRITICAL - Never translate actual implementations. Always replace method bodies with placeholder implementations using `assume {:axiom} false;` to ensure methods contain only specifications without concrete implementations. This makes the translated Dafny code suitable for verification challenges.
 
-    7. **Comment Formatting**: Use standard Dafny comment syntax (`//` for single-line, `/* ... */` for multi-line comments).
+    7. **Formatting and Structure**: Remove Verus-specific imports like `use vstd::prelude::*;` and `verus! { ... }` blocks. Format identifiers consistently in Dafny conventions and include comments mapping back to the original Verus code.
 
-    8. **Main Function**: Remove or comment out the `fn main()` function since Dafny doesn't require it.
+    8. **Comment Formatting**: Use standard Dafny comment syntax (`//` for single-line, `/* ... */` for multi-line comments).
+
+    9. **Main Function**: Remove or comment out the `fn main()` function since Dafny doesn't require it.
 
     **Example Translation**
 
@@ -356,7 +390,7 @@ system_prompts:
             ensures result <==> forall|i: int| 0 <= i < a.len() ==> (is_odd(i) ==> is_odd(a[i]))
         {
             assume(false);
-            false
+            unreached()
         }
     }
 
@@ -378,9 +412,9 @@ system_prompts:
     }
     ```
 
-    9. **Verification**: Always verify that the translated code type-checks in Dafny and preserves the logical behavior of the original Verus program.
+    10. **Verification**: Always verify that the translated code type-checks in Dafny and preserves the logical behavior of the original Verus program.
 
-    10. **Output Formatting**: If the input was a YAML file, your output should be presented in the same format, translating each individual section from Verus to Dafny.
+    11. **Output Formatting**: If the input was a YAML file, your output should be presented in the same format, translating each individual section from Verus to Dafny.
 
     If the input is not valid Verus code, respond with an error message asking the user to provide correct Verus syntax.
 
@@ -395,11 +429,17 @@ yaml_instructions:
     - ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
     - ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
 
+    **CRITICAL CODE VALIDATION RULES**:
+    - **FORBIDDEN**: `spec fn` functions MUST NOT have `arbitrary()` as their body. This is invalid Verus code.
+    - **FORBIDDEN**: `spec fn` functions MUST NOT be empty. They must contain proper logical specifications.
+    - **REQUIRED**: All `spec fn` functions must define clear, verifiable logical properties.
+    - **PATTERN TO AVOID**: `spec fn name(...) { arbitrary() }` - Replace with meaningful specifications.
+
     **CRITICAL IMPLEMENTATION RULE**: For `<vc-implementation>` sections, DO NOT implement the actual function logic. Instead, always return a placeholder implementation with the pattern:
     ```rust
     {
         assume(false);
-        [appropriate_default_return_value]
+        unreached()
     }
     ```
     For boolean return types, use `false`. For Vec/arrays, use `Vec::new()`. For integers, use `0`.
@@ -492,6 +532,12 @@ yaml_instructions:
     - ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
     - ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
 
+    **CRITICAL CODE VALIDATION RULES**:
+    - **FORBIDDEN**: `spec fn` functions MUST NOT have `arbitrary()` as their body. This is invalid Verus code.
+    - **FORBIDDEN**: `spec fn` functions MUST NOT be empty. They must contain proper logical specifications.
+    - **REQUIRED**: All `spec fn` functions must define clear, verifiable logical properties.
+    - **PATTERN TO AVOID**: `spec fn name(...) { arbitrary() }` - Replace with meaningful specifications.
+
     **YAML STRUCTURE MAPPING FOR LEAN TO VERUS**:
     When translating from Lean YAML to Verus YAML, apply these semantic equivalence rules:
     
@@ -537,7 +583,7 @@ yaml_instructions:
       {
           // impl-start
           assume(false);
-          Vec::new()
+          unreached()
           // impl-end
       }
     ```
@@ -590,7 +636,7 @@ yaml_instructions:
       {
           // impl-start
           assume(false);
-          0
+          unreached()
           // impl-end
       }
     vc-postamble: |-
@@ -604,7 +650,7 @@ yaml_instructions:
     {
         // impl-start
         assume(false);
-        [appropriate_default_return_value]
+        unreached()
         // impl-end
     }
     ```
@@ -661,14 +707,19 @@ yaml_instructions:
     2. **Function signatures**: Convert Verus `fn name(params) -> (result: Type)` to Dafny `method name(params) returns (result: Type)` or `function name(params): Type`
     3. **Contracts**: Move `requires` and `ensures` clauses from vc-spec to become part of the Dafny method/function signature in vc-spec
     4. **Types**: Convert Verus types (`i32`, `Vec<T>`, `Seq<T>`) to Dafny types (`int`, `array<T>`, `seq<T>`)
-    5. **Implementation**: Translate Verus syntax to Dafny syntax in vc-code
+    5. **Implementation**: NEVER translate actual implementations. Always replace method bodies with placeholder implementations using `assume {:axiom} false;` to ensure methods contain only specifications without concrete implementations
 
     **CRITICAL FORMATTING RULES**:
     - Use standard Dafny comment syntax (`//` for single-line, `/* ... */` for multi-line)
     - Convert Verus variable declarations from `let x = ...;` to Dafny `var x := ...;`
     - Convert Verus return statements from `return value;` to Dafny assignment `result := value;`
 
-    **CRITICAL IMPLEMENTATION RULE**: For implementation sections, translate the Verus logic to equivalent Dafny logic. If the implementation contains placeholders like `assume(false);`, replace with Dafny equivalents like `// TODO: implement`.
+    **CRITICAL IMPLEMENTATION RULE**: For implementation sections (vc-code), NEVER provide actual implementations for methods. Always replace any implementation with empty method bodies or appropriate placeholders:
+    - For methods that return values: Use `assume {:axiom} false;` followed by appropriate default return assignment
+    - For void methods: Use empty body `{ }`
+    - For functions: Leave body empty or use `assume {:axiom} false; [default_return_value]`
+    
+    This ensures that translated Dafny code contains only specifications (contracts) without implementations, making it suitable for verification challenges.
 
     **CRITICAL PROOF RULE**: For proof sections, always use:
     ```dafny
@@ -706,7 +757,7 @@ yaml_instructions:
       // <vc-code>
       {
         assume(false);
-        false
+        unreached()
       }
       // </vc-code>
 
