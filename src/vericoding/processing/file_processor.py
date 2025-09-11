@@ -386,7 +386,7 @@ def process_spec_file(
                                 "",
                                 time.time()
                             )
-                        break  # Skip to next iteration
+                        continue  # Skip to next iteration
                     
                     current_code = fixed_code
                     logger.info(f"    Generated fix for iteration {iteration}")
