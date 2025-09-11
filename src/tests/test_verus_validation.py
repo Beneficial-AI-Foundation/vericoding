@@ -88,8 +88,8 @@ def main():
         print(f"❌ Tests directory not found: {tests_dir}")
         return 1
     
-    # Find all YAML files in tests directory (recursively)
-    yaml_files = list(tests_dir.glob("**/*.yaml"))
+    # Find all YAML files in yaml directory 
+    yaml_files = list(tests_dir.glob("yaml/*.yaml"))
     if not yaml_files:
         print(f"❌ No YAML files found in {tests_dir}")
         return 1
