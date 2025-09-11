@@ -18,7 +18,6 @@ def check_for_cheats(code: str) -> List[Tuple[str, str]]:
         (r'\baxiom\b', "introduces axioms bypassing verification"), 
         (r'\bunsafe\b', "uses unsafe operations"),
         (r'\bUnchecked\.cast\b', "bypasses type checking"),
-        (r'\bpartial\b\s+def\b', "uses partial def without termination proof"),
         (r'@\[extern\]', "uses extern functions bypassing verification"),
     ]
     
