@@ -9,7 +9,7 @@ import yaml
 
 from code2verus.config import ARTIFACTS, get_config_value
 from code2verus.agent import translate_code_to_verus
-from code2verus.verification import verify_verus_code, verify_code
+from code2verus.verification import verify_code
 from code2verus.success_tracker import save_success_info, is_sample_already_successful
 from code2verus.debug_utils import save_debug_context, generate_debug_report
 from code2verus.models import TranslationDebugContext
@@ -135,7 +135,7 @@ async def process_item(
         return {"path": artifact_path, "success": True}
 
     logfire.info(f"Processing item {idx + 1}: {source_filename} ({source_language})")
-    
+
     # Log input file path if available
     if "source_path" in item:
         logfire.info(f"Input file path: {item['source_path']}")
@@ -155,9 +155,9 @@ async def process_item(
                 source_code, source_language, target_language, is_yaml
             )
 
-            verus_code = translation_result.output_content
+            translated_code = translation_result.output_content
             num_iterations = translation_result.num_iterations
-            rust_for_verification = translation_result.rust_for_verification
+            code_for_verification = translation_result.code_for_verification
             debug_context = translation_result.debug_context
 
             logfire.info(f"Translation took {num_iterations} iterations")
@@ -193,7 +193,7 @@ async def process_item(
                 verification_output,
                 verification_error,
             ) = await verify_code(
-                rust_for_verification,
+                code_for_verification,
                 target_language,
                 is_yaml,
                 output_filename,
@@ -206,31 +206,39 @@ async def process_item(
                 "compiling" if verification_success else "non_compiling"
             )
 
-            # Save the main output (YAML for YAML files, Rust for regular files) in appropriate subfolder
+            # Save the main output (YAML for YAML files, target language files for regular files) in appropriate subfolder
             status_artifact_path = artifact_path / compilation_status
             status_artifact_path.mkdir(parents=True, exist_ok=True)
-            verus_output_path = status_artifact_path / output_filename
-            with open(verus_output_path, "w") as verus_file:
-                verus_file.write(verus_code)
-            logfire.info(f"Generated {target_language} code saved to: {verus_output_path}")
+            output_file_path = status_artifact_path / output_filename
+            with open(output_file_path, "w") as output_file:
+                output_file.write(translated_code)
+            logfire.info(
+                f"Generated {target_language} code saved to: {output_file_path}"
+            )
 
-            # For YAML files, also save the Rust code in the files folder for verification
+            # Update debug context with output file path if available
+            if debug_context:
+                debug_context.set_output_file_path(str(output_file_path))
+
+            # For YAML files, also save the target language code in the files folder for verification
             if is_yaml:
                 # Create the files folder equivalent path with compilation status
                 files_path = derive_output_path(
                     benchmark_path, benchmark_name, is_yaml=False
                 )
-                rust_status_path = (
+                code_status_path = (
                     files_path / relative_path.parent / compilation_status
                 )
-                rust_output_path = (
-                    rust_status_path / Path(output_filename).with_suffix(".rs").name
+                code_output_path = (
+                    code_status_path / Path(output_filename).with_suffix(".rs").name
                 )
-                rust_output_path.parent.mkdir(parents=True, exist_ok=True)
+                code_output_path.parent.mkdir(parents=True, exist_ok=True)
 
-                with open(rust_output_path, "w") as rust_file:
-                    rust_file.write(rust_for_verification)
-                logfire.info(f"Generated Rust code saved to: {rust_output_path}")
+                with open(code_output_path, "w") as code_file:
+                    code_file.write(code_for_verification)
+                logfire.info(
+                    f"Generated code for verification saved to: {code_output_path}"
+                )
 
             # Debug logging for verification results
             logfire.info(
@@ -278,7 +286,7 @@ async def process_item(
             # Calculate delay with exponential backoff and jitter
             delay = base_delay * (2**attempt) + random.uniform(0, 1)
             logfire.info(
-                f"Rate limited on item {idx + 1}, attempt {attempt + 1}/{max_retries + 1}. Retrying in {delay:.2f}s..."
+                f"Rate limited on item {idx + 1}, file {source_filename}, attempt {attempt + 1}/{max_retries + 1}. Retrying in {delay:.2f}s..."
             )
             await asyncio.sleep(delay)
     return {"path": artifact_path, "success": False}

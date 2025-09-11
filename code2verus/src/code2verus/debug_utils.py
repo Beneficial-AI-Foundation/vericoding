@@ -27,19 +27,23 @@ def save_debug_context(
     """
     output_dir.mkdir(exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    
+
     # Create a more intuitive filename with meaningful information
     # Format: debug_session_{source_lang}_to_{target_lang}_{status}_{timestamp}_{short_id}.json
     final_status = debug_context.get_final_status()
     short_id = debug_context.session_id[:8]  # First 8 chars of UUID for uniqueness
-    
+
     # Clean language names for filename
     source_lang = debug_context.source_language.replace("-", "_").lower()
     target_lang = debug_context.target_language.replace("-", "_").lower()
-    
+
     # Add iteration info if available
-    iter_info = f"_iter{debug_context.current_iteration}" if debug_context.current_iteration > 0 else ""
-    
+    iter_info = (
+        f"_iter{debug_context.current_iteration}"
+        if debug_context.current_iteration > 0
+        else ""
+    )
+
     filename = f"debug_session_{source_lang}_to_{target_lang}_{final_status}{iter_info}_{timestamp}_{short_id}.json"
     filepath = output_dir / filename
 

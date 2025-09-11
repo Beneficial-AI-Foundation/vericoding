@@ -96,7 +96,7 @@ Debug Examples:
         help="Source language to translate from (default: dafny)",
     )
     parser.add_argument(
-        "--target-language", 
+        "--target-language",
         default="verus",
         choices=["dafny", "lean", "verus"],
         help="Target language to translate to (default: verus)",
@@ -160,18 +160,18 @@ Debug Examples:
 
     # Validate language combination
     if args.source_language == args.target_language:
-        print(f"Error: Source and target languages cannot be the same ({args.source_language})")
+        print(
+            f"Error: Source and target languages cannot be the same ({args.source_language})"
+        )
         sys.exit(1)
 
     # For now, only support certain combinations
-    supported_combinations = [
-        ("dafny", "verus"),
-        ("lean", "verus"), 
-        ("verus", "dafny")
-    ]
-    
+    supported_combinations = [("dafny", "verus"), ("lean", "verus"), ("verus", "dafny")]
+
     if (args.source_language, args.target_language) not in supported_combinations:
-        print(f"Error: Translation from {args.source_language} to {args.target_language} is not yet supported.")
+        print(
+            f"Error: Translation from {args.source_language} to {args.target_language} is not yet supported."
+        )
         print("Supported combinations:")
         for src, tgt in supported_combinations:
             print(f"  - {src} -> {tgt}")
