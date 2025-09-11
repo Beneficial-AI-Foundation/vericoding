@@ -1,26 +1,105 @@
-"""Cheat detection utilities for Lean verification."""
+"""Cheat detection utilities for verification languages."""
 
 import re
 from typing import List, Tuple
 
 
-def check_for_cheats(code: str) -> List[Tuple[str, str]]:
-    """Check for verification bypasses and cheating patterns in Lean code.
+def check_for_cheats(code: str, language: str) -> List[Tuple[str, str]]:
+    """Check for verification bypasses and cheating patterns in code.
     
     Args:
-        code: The Lean code to check
+        code: The code to check
+        language: The programming language ("lean", "dafny", "verus")
         
     Returns:
         List of (pattern, description) tuples for detected cheats
     """
-    cheat_patterns = [
-        (r'\bsorry\b', "uses 'sorry' to bypass verification"),
-        (r'\badmit\b', "uses 'admit' to bypass verification"),
-        (r'\baxiom\b', "introduces axioms bypassing verification"), 
-        (r'\bunsafe\b', "uses unsafe operations"),
-        (r'\bUnchecked\.cast\b', "bypasses type checking"),
-        (r'@\[extern\]', "uses extern functions bypassing verification"),
-    ]
+    if language.lower() == "lean":
+        cheat_patterns = [
+            (r'\bsorry\b', "uses 'sorry' to bypass verification"),
+            (r'\badmit\b', "uses 'admit' to bypass verification"),
+            (r'\baxiom\b', "introduces axioms bypassing verification"), 
+            (r'\bunsafe\b', "uses unsafe operations"),
+            (r'\bUnchecked\.cast\b', "bypasses type checking"),
+            (r'@\[extern', "uses extern functions bypassing verification"),
+        ]
+        
+        # For Lean, exclude verification bypasses inside <vc-preamble> sections
+        detected_cheats = []
+        
+        # Find all vc-preamble sections to exclude from cheat detection
+        vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
+        vc_preamble_matches = list(re.finditer(vc_preamble_pattern, code, re.DOTALL))
+        preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+        
+        for pattern, description in cheat_patterns:
+            # Find all matches of the cheat pattern
+            for match in re.finditer(pattern, code):
+                match_pos = match.start()
+                
+                # Check if this match is inside any preamble section
+                in_preamble = any(start <= match_pos < end for start, end in preamble_ranges)
+                if not in_preamble:
+                    detected_cheats.append((pattern, description))
+                    break  # Only add each pattern once
+        
+        return detected_cheats
+        
+    elif language.lower() == "dafny":
+        cheat_patterns = [
+            (r'\{:axiom\}', "uses '{:axiom}' to bypass verification"),
+        ]
+        
+        # For Dafny, exclude verification bypasses inside <vc-preamble> sections
+        detected_cheats = []
+        
+        # Find all vc-preamble sections to exclude from cheat detection
+        vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
+        vc_preamble_matches = list(re.finditer(vc_preamble_pattern, code, re.DOTALL))
+        preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+        
+        for pattern, description in cheat_patterns:
+            # Find all matches of the cheat pattern
+            for match in re.finditer(pattern, code):
+                match_pos = match.start()
+                
+                # Check if this match is inside any preamble section
+                in_preamble = any(start <= match_pos < end for start, end in preamble_ranges)
+                if not in_preamble:
+                    detected_cheats.append((pattern, description))
+                    break  # Only add each pattern once
+        
+        return detected_cheats
+    elif language.lower() == "verus":
+        cheat_patterns = [
+            (r'assume', "uses 'assume' to bypass verification"),
+            (r'\badmit\b', "uses 'admit' to bypass verification"),
+            (r'#\[verifier::external', "uses verifier external attributes to bypass verification"),
+            (r'#\[verifier::exec_allows_no_decreases_clause\]', "uses '#[verifier::exec_allows_no_decreases_clause]' to bypass verification"),
+        ]
+        
+        # For Verus, exclude verification bypasses inside <vc-preamble> sections
+        detected_cheats = []
+        
+        # Find all vc-preamble sections to exclude from cheat detection
+        vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
+        vc_preamble_matches = list(re.finditer(vc_preamble_pattern, code, re.DOTALL))
+        preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+        
+        for pattern, description in cheat_patterns:
+            # Find all matches of the cheat pattern
+            for match in re.finditer(pattern, code):
+                match_pos = match.start()
+                
+                # Check if this match is inside any preamble section
+                in_preamble = any(start <= match_pos < end for start, end in preamble_ranges)
+                if not in_preamble:
+                    detected_cheats.append((pattern, description))
+                    break  # Only add each pattern once
+        
+        return detected_cheats
+    else:
+        raise ValueError(f"Unsupported language: {language}. Supported languages are: lean, dafny, verus")
     
     detected_cheats = []
     
@@ -31,16 +110,17 @@ def check_for_cheats(code: str) -> List[Tuple[str, str]]:
     return detected_cheats
 
 
-def has_cheats(code: str) -> bool:
+def has_cheats(code: str, language: str) -> bool:
     """Quick check if code contains any verification cheats.
     
     Args:
-        code: The Lean code to check
+        code: The code to check
+        language: The programming language ("lean", "dafny", "verus")
         
     Returns:
         True if cheats are detected, False otherwise
     """
-    return len(check_for_cheats(code)) > 0
+    return len(check_for_cheats(code, language)) > 0
 
 
 def get_cheat_message(cheats: List[Tuple[str, str]], is_final: bool = False) -> str:
@@ -70,16 +150,17 @@ def get_cheat_message(cheats: List[Tuple[str, str]], is_final: bool = False) -> 
         return f"WARNING: Your response included verification bypasses: {', '.join(cheat_descriptions)}. These must be removed in subsequent iterations for final success."
 
 
-def has_final_failure_cheats(code: str) -> bool:
+def has_final_failure_cheats(code: str, language: str) -> bool:
     """Check if code has cheats that would cause final verification failure.
     
     This is used to determine if verification should be considered failed
-    even if lake build succeeds.
+    even if verification succeeds.
     
     Args:
-        code: The Lean code to check
+        code: The code to check
+        language: The programming language ("lean", "dafny", "verus")
         
     Returns:
         True if code has verification bypasses that make it invalid
     """
-    return has_cheats(code)
+    return has_cheats(code, language)

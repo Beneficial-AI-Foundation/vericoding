@@ -1,42 +1,52 @@
 generate_code: |
-  The task is to generate implementations for `<vc-code>` sections in a Dafny file.
+  The task is to generate implementations for `<vc-code>` and `<vc-helpers>` sections in a Dafny file.
   
-  INPUT: a Dafny file containing `<vc-code>` tags around placeholder implementations that need to be filled in.
+  TURN 1 of {max_iterations}: This is the initial code generation phase. You have {max_iterations} total turns to get this right, so you can iterate and improve.
   
-  OUTPUT: Return a JSON array with one replacement for each `<vc-code>` section in the file, in order from top to bottom:
+  INPUT: a Dafny file containing {placeholder_count} placeholder sections (`<vc-code>` and/or `<vc-helpers>` tags) that need to be filled in.
+  
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} replacements (one for each placeholder section in the file), in order from top to bottom:
   ```json
-  ["{{\n  prefixes := [];\n  // implementation here\n}}", "{{\n  // second implementation\n}}"]
+  ["{{\n  prefixes := [];\n  // implementation here\n}}", "{{\n  // helper code\n}}", "{{\n  // second implementation\n}}"]
   ```
   
   CRITICAL RULES:
-  - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
-  - Each replacement should be the exact code that will replace everything between the `<vc-code>` tags
-  - Include opening/closing braces if they were in the original `<vc-code>` content
-  - Do not use `assume` statements or `assume {{:axiom}} false` in replacements
+  - The ORIGINAL file contains EXACTLY {placeholder_count} placeholder sections - your JSON array must have EXACTLY {placeholder_count} elements
+  - Provide exactly one replacement for each placeholder section in the file, in the exact order they appear (top to bottom)
+  - Each replacement should be the exact code that will replace everything between the tags (`<vc-code>` or `<vc-helpers>`)
+  - For `<vc-code>` sections: Provide main implementation code
+  - For `<vc-helpers>` sections: Provide helper functions, lemmas, or utility code
+  - Include opening/closing braces if they were in the original placeholder content
+  - AVOID verification bypasses: `{{:axiom}}`, `assume` statements, or other verification shortcuts
   - Use valid Dafny syntax for all implementations
   - Satisfy all `requires` and `ensures` clauses from the method/function specifications
   - Do not add trivial or unnecessary annotations
   - Return ONLY a valid JSON array, no explanations or markdown
   
-  DAFNY FILE WITH <vc-code> SECTIONS:
+  DAFNY FILE WITH PLACEHOLDER SECTIONS:
   {code}
 
 fix_verification: |
-  The task is to fix implementations in `<vc-code>` sections that failed verification.
+  The task is to fix implementations in `<vc-code>` and `<vc-helpers>` sections that failed verification.
   
-  INPUT: a Dafny file with `<vc-code>` sections that contain implementations with verification errors.
+  TURN {iteration} of {max_iterations}: You are making progress and have multiple turns to iterate and improve your implementation.
   
-  OUTPUT: Return a JSON array with one fixed replacement for each `<vc-code>` section in the file, in order from top to bottom:
+  INPUT: The ORIGINAL file contains {placeholder_count} placeholder sections (`<vc-code>` and/or `<vc-helpers>` tags) that need to be fixed based on verification errors.
+  
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} fixed replacements (one for each placeholder section in the ORIGINAL file), in order from top to bottom:
   ```json
-  ["{{\n  prefixes := [];\n  // fixed implementation here\n}}", "{{\n  // second fixed implementation\n}}"]
+  ["{{\n  prefixes := [];\n  // fixed implementation here\n}}", "{{\n  // fixed helper code\n}}", "{{\n  // second fixed implementation\n}}"]
   ```
   
   CRITICAL RULES:
-  - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
-  - Each replacement should be the exact fixed code that will replace everything between the `<vc-code>` tags
-  - Include opening/closing braces if they were in the original `<vc-code>` content
+  - The ORIGINAL file contains EXACTLY {placeholder_count} placeholder sections - your JSON array must have EXACTLY {placeholder_count} elements
+  - Provide exactly one replacement for each placeholder section in the file, in the exact order they appear (top to bottom)
+  - Each replacement should be the exact fixed code that will replace everything between the tags (`<vc-code>` or `<vc-helpers>`)
+  - For `<vc-code>` sections: Provide main implementation code
+  - For `<vc-helpers>` sections: Provide helper functions, lemmas, or utility code
+  - Include opening/closing braces if they were in the original placeholder content
   - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues
-  - Do not use `assume` statements or `assume {{:axiom}} false` in replacements
+  - MINIMIZE verification bypasses: `{{:axiom}}`, `assume` statements, or other verification shortcuts
   - Use valid Dafny syntax for all implementations
   - Satisfy all `requires` and `ensures` clauses from the method/function specifications
   - Do not add trivial or unnecessary annotations

@@ -2,6 +2,7 @@
 
 import hashlib
 import logging
+import re
 import time
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -18,6 +19,47 @@ from ..core.llm_providers import call_llm
 from ..utils.io_utils import save_iteration_code
 from .code_fixer import extract_code, apply_json_replacements
 from .cheat_checker import has_final_failure_cheats, check_for_cheats
+
+
+def count_placeholders(original_code: str, language: str) -> int:
+    """Count placeholders in original code for JSON array sizing.
+    
+    Args:
+        original_code: The original code content
+        language: The programming language ("lean", "dafny", "verus")
+        
+    Returns:
+        Number of placeholders that need to be replaced
+        
+    Raises:
+        ValueError: If unsupported language is provided
+    """
+    if language == "lean":
+        # Count sorries, but exclude those inside vc-preamble sections
+        vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
+        vc_preamble_matches = list(re.finditer(vc_preamble_pattern, original_code, re.DOTALL))
+        preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+
+        sorry_count = 0
+        search_start = 0
+        while True:
+            pos = original_code.find("sorry", search_start)
+            if pos == -1:
+                break
+            # Only count if not in preamble
+            in_preamble = any(start <= pos < end for start, end in preamble_ranges)
+            if not in_preamble:
+                sorry_count += 1
+            search_start = pos + 1
+
+        placeholder_count = sorry_count + original_code.count("<vc-helpers>")
+    elif language in ("dafny", "verus"):
+        placeholder_count = original_code.count("<vc-code>") + original_code.count("<vc-helpers>")
+    else:
+        raise ValueError(f"Unsupported language: {language}. Supported languages are: lean, dafny, verus")
+    
+    return placeholder_count
+
 
 # Set up a basic logger
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -92,10 +134,14 @@ def process_spec_file(
         # Step 1: Generate code from specifications
         logger.info("  Step 1: Generating code from specifications...")
         try:
-            # Count sorries in original code for JSON array sizing
-            sorry_count = original_code.count("sorry")
+            # Count placeholders in original code for JSON array sizing
+            placeholder_count = count_placeholders(original_code, config.language)
+            
             generate_prompt = prompt_loader.format_prompt(
-                "generate_code", code=original_code, sorry_count=sorry_count
+                "generate_code", 
+                code=original_code, 
+                placeholder_count=placeholder_count,
+                max_iterations=config.max_iterations
             )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
@@ -230,9 +276,9 @@ def process_spec_file(
             verification = verify_file(config, str(output_path))
             last_verification = verification
             
-            # Check for cheats in final code - combine with lake build output
-            if config.language == "lean" and has_final_failure_cheats(current_code):
-                cheats = check_for_cheats(current_code)
+            # Check for cheats in final code - combine with verification output
+            if has_final_failure_cheats(current_code, config.language):
+                cheats = check_for_cheats(current_code, config.language)
                 cheat_descriptions = [desc for _, desc in cheats]
                 logger.info(f"    ⚠️ Final code contains verification bypasses: {'; '.join(cheat_descriptions)}")
                 
@@ -240,14 +286,14 @@ def process_spec_file(
                 cheat_message = f"VERIFICATION BYPASSES DETECTED: {'; '.join(cheat_descriptions)}. Code contains verification bypasses and cannot be considered successfully verified."
                 
                 if verification.success:
-                    # Lake build succeeded but cheats found
-                    combined_error = f"{cheat_message}\n\nNote: Lake build succeeded but verification bypasses prevent final success."
-                    logger.info("    ✗ Marking as failed due to verification bypasses (lake build succeeded)")
+                    # Verification succeeded but cheats found
+                    combined_error = f"{cheat_message}\n\nNote: Verification succeeded but verification bypasses prevent final success."
+                    logger.info("    ✗ Marking as failed due to verification bypasses (verification succeeded)")
                 else:
-                    # Lake build failed AND cheats found - combine both messages
-                    original_error = verification.error or "Lake build failed"
-                    combined_error = f"{cheat_message}\n\nOriginal lake build output:\n{original_error}"
-                    logger.info("    ✗ Failed due to both lake build errors AND verification bypasses")
+                    # Verification failed AND cheats found - combine both messages
+                    original_error = verification.error or "Verification failed"
+                    combined_error = f"{cheat_message}\n\nOriginal verification output:\n{original_error}"
+                    logger.info("    ✗ Failed due to both verification errors AND verification bypasses")
                 
                 verification = replace(verification,
                     success=False,
@@ -312,15 +358,17 @@ def process_spec_file(
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
                 logger.info("    Attempting to fix errors...")
-                # Count sorries in original code for JSON array sizing (not current code!)
-                sorry_count = original_code.count("sorry")
+                # Count placeholders in original code for JSON array sizing (not current code!)
+                placeholder_count = count_placeholders(original_code, config.language)
+                
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
                     code=current_code,
                     original_code=original_code,
                     errorDetails=error_details,
-                    iteration=iteration,
-                    sorry_count=sorry_count,
+                    iteration=iteration+1,
+                    placeholder_count=placeholder_count,
+                    max_iterations=config.max_iterations
                 )
 
                 # Track fix prompt for W&B logging
