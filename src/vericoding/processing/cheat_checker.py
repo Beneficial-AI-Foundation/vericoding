@@ -15,6 +15,7 @@ def check_for_cheats(code: str) -> List[Tuple[str, str]]:
     """
     cheat_patterns = [
         (r'\bsorry\b', "uses 'sorry' to bypass verification"),
+        (r'\badmit\b', "uses 'admit' to bypass verification"),
         (r'\baxiom\b', "introduces axioms bypassing verification"), 
         (r'\bunsafe\b', "uses unsafe operations"),
         (r'\bUnchecked\.cast\b', "bypasses type checking"),

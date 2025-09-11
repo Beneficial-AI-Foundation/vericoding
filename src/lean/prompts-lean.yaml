@@ -13,7 +13,7 @@ generate_code: |
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
-  - AVOID verification bypasses: "sorry", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
+  - AVOID verification bypasses: "sorry", "admit", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
   - You may use "sorry" temporarily in early iterations to get error feedback, but must remove all verification bypasses for final success
   - Use valid Lean syntax for all replacements
   - You may include helper definitions, theorems, and lemmas in replacements when needed
@@ -38,7 +38,7 @@ fix_verification: |
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact fixed code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
-  - MINIMIZE verification bypasses: "sorry", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
+  - MINIMIZE verification bypasses: "sorry", "admit", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
   - You may use "sorry" temporarily to get error feedback, but each iteration should remove more verification bypasses
   - Use valid Lean syntax for all replacements
   - You may include helper definitions, theorems, and lemmas in replacements when needed
