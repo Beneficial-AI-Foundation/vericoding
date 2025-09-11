@@ -14,6 +14,10 @@ spec fn hermite_e_basis(n: nat, x: int) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn hermeval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
     requires 
         x.len() == y.len(),
@@ -27,10 +31,13 @@ fn hermeval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
             (c.len() > 0 ==> forall|t: int| hermite_basis(1nat, t) == t) &&
             (forall|i: nat, t: int| i + 1 < c.len() ==> 
                 hermite_basis(i + 2, t) == t * hermite_basis(i + 1, t) - (i as int + 1) * hermite_basis(i, t)),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

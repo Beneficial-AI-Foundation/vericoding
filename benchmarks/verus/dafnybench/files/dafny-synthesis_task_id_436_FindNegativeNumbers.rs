@@ -6,6 +6,10 @@ spec fn is_negative(n: int) -> bool {
     n < 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_negative_numbers(arr: &[int]) -> (negative_list: Vec<int>)
     ensures
 
@@ -14,10 +18,13 @@ fn find_negative_numbers(arr: &[int]) -> (negative_list: Vec<int>)
 
         forall|i: int| 0 <= i < arr.len() && is_negative(arr[i]) ==> 
             exists|j: int| 0 <= j < negative_list.len() && negative_list[j] == arr[i],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -26,14 +26,21 @@ spec fn sorted(a: &[int]) -> bool {
     forall|j: int, k: int| 0 <= j < k < a.len() ==> a[j] < a[k]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find(a: &[int], key: int) -> (index: i32)
     ensures
         0 <= index ==> index < a.len() && a[index as int] == key,
         index < 0 ==> forall|k: int| 0 <= k < a.len() ==> a[k] != key,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

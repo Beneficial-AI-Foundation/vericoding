@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn extract(condition: Vec<bool>, arr: Vec<i32>) -> (result: Vec<i32>)
     requires condition.len() == arr.len(),
     ensures
@@ -17,10 +21,13 @@ fn extract(condition: Vec<bool>, arr: Vec<i32>) -> (result: Vec<i32>)
 
         forall|i: int| 0 <= i < condition.len() && condition[i] ==>
             exists|k: int| 0 <= k < result.len() && result[k] == arr[i]
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

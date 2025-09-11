@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn poly2cheb(pol: Vec<f64>) -> (result: Vec<f64>)
     requires pol.len() > 0,
     ensures 
@@ -15,10 +19,13 @@ fn poly2cheb(pol: Vec<f64>) -> (result: Vec<f64>)
 
         (pol.len() == 4 && pol[0] == 0.0 && pol[1] == 0.0 && pol[2] == 0.0 && pol[3] == 1.0) ==>
             (result[0] == 0.0 && result[1] == 0.75 && result[2] == 0.0 && result[3] == 0.25)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

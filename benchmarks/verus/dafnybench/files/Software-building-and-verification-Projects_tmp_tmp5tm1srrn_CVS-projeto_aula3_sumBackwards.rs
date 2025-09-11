@@ -38,12 +38,19 @@ spec fn sum(n: nat) -> nat
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn sum_backwards(n: u32) -> (r: u32)
     ensures r == sum(n as nat)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

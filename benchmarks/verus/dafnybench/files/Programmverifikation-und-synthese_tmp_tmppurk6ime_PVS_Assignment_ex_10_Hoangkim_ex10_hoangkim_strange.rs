@@ -10,12 +10,19 @@ fn q(x: u32, y: u32) -> (z: u32)
     0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn strange()
     ensures 1==2
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

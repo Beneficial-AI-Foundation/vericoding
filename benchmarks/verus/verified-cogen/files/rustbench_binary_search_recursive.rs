@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn binary_search_recursive(v: &[i32], elem: i32, c: isize, f: isize) -> (p: isize)
     requires
         v.len() <= 100_000,
@@ -14,10 +18,13 @@ fn binary_search_recursive(v: &[i32], elem: i32, c: isize, f: isize) -> (p: isiz
         forall|u: int| 0 <= u <= p ==> v[u] <= elem,
         forall|w: int| p < w < v.len() ==> v[w] > elem,
     decreases f - c + 1
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

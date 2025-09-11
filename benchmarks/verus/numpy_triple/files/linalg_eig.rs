@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn eig(a: Vec<Vec<f32>>) -> (result: (Vec<f32>, Vec<Vec<f32>>))
     requires 
         a.len() > 0,
@@ -18,10 +22,13 @@ fn eig(a: Vec<Vec<f32>>) -> (result: (Vec<f32>, Vec<Vec<f32>>))
 
         forall|col: int| #![trigger result.1[col]] 0 <= col < a.len() ==> 
             exists|row: int| 0 <= row < a.len() && result.1[row][col] != 0.0f32,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

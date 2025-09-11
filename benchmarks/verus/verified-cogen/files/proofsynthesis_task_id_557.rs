@@ -28,16 +28,23 @@ spec fn to_toggle_case_spec(s: char) -> (result:char) {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn to_toggle_case(str1: &Vec<char>) -> (toggle_case: Vec<char>)
 
     ensures
         str1@.len() == toggle_case@.len(),
         forall|i: int|
             0 <= i < str1.len() ==> toggle_case[i] == to_toggle_case_spec(#[trigger] str1[i]),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

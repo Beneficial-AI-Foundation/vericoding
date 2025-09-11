@@ -53,6 +53,10 @@ spec fn inv_sub_set(b: Seq<i32>, c: Seq<i32>, d: Seq<i32>, i: usize, j: usize) -
         c.subrange(0, i as int).to_multiset().add(d.subrange(0, j as int).to_multiset())
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn merge(b: &mut Vec<i32>, c: &Vec<i32>, d: &Vec<i32>)
     requires
         old(b).len() == c.len() + d.len(),
@@ -61,10 +65,13 @@ fn merge(b: &mut Vec<i32>, c: &Vec<i32>, d: &Vec<i32>)
     ensures
         sorted(b@),
         b@.to_multiset() == c@.to_multiset().add(d@.to_multiset()),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -39,12 +39,19 @@ spec fn inner_inv_termination(str1: Seq<char>, str2: Seq<char>, i: nat, j: int, 
     old_j - j == old_i - old_i
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_first_occurrence(str1: Seq<char>, str2: Seq<char>) -> (result: (bool, usize))
     ensures post(str1, str2, result.0, result.1 as nat)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

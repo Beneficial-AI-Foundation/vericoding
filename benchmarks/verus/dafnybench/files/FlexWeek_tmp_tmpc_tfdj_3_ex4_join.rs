@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn join(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
     ensures
         a@ + b@ == c@,
@@ -14,10 +18,13 @@ fn join(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
             a.len() <= i < c.len() && 
             0 <= j < b.len() && 
             i - j == a.len() ==> c[i] == b[j],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

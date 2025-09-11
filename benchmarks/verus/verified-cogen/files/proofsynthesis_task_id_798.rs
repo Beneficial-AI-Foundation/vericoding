@@ -12,14 +12,21 @@ spec fn sum_to(arr: Seq<i64>) -> (result: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn sum(arr: &Vec<i64>) -> (sum: i128)
 
     ensures
         sum_to(arr@) == sum,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

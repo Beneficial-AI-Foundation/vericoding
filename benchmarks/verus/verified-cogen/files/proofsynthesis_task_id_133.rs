@@ -16,14 +16,21 @@ spec fn sum_negative_to(seq: Seq<i64>) -> (res: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn sum_negatives(arr: &Vec<i64>) -> (sum_neg: i128)
 
     ensures
         sum_negative_to(arr@) == sum_neg,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

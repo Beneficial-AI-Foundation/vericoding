@@ -24,13 +24,20 @@ spec fn sum_powers(n: nat, k: nat) -> nat
     if n == 0 { 0 } else { pow_nat(n % 10, k) + sum_powers(n / 10, k) }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn is_armstrong(n: u32) -> (result: bool)
     ensures 
         result == (n as nat == sum_powers(n as nat, count_digits(n as nat))),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

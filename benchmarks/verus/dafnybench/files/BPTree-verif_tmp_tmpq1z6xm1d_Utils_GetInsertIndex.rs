@@ -69,6 +69,10 @@ fn insert_into_sorted(a: Vec<int>, limit: usize, key: int) -> (b: Vec<int>)
     Vec::new()
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn get_insert_index(a: &Vec<int>, limit: usize, x: int) -> (idx: usize)
 
     requires
@@ -80,10 +84,13 @@ fn get_insert_index(a: &Vec<int>, limit: usize, x: int) -> (idx: usize)
         sorted_seq(a@.subrange(0, limit as int)),
         idx > 0 ==> a@[idx as int - 1] < x,
         idx < limit ==> x < a@[idx as int],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

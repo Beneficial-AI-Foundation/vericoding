@@ -38,6 +38,10 @@ fn first_even_odd_indices(lst: Seq<int>) -> (r: (usize, usize))
   (0, 0)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn product_even_odd(lst: Seq<int>) -> (product: i32)
     requires 
         lst.len() >= 2,
@@ -45,10 +49,13 @@ fn product_even_odd(lst: Seq<int>) -> (product: i32)
         exists|i: int| 0 <= i < lst.len() && is_odd(lst[i])
     ensures exists|i: int, j: int| 0 <= i < lst.len() && is_even(lst[i]) && is_first_even(i, lst) && 
                                    0 <= j < lst.len() && is_odd(lst[j])  && is_first_odd(j, lst) && product as int == lst[i] * lst[j]
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

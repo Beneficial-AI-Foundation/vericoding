@@ -37,14 +37,21 @@ spec fn special_filter_spec(seq: Seq<i32>) -> (ret:int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn special_filter(numbers: &Vec<i32>) -> (count: usize)
 
     ensures
         count == special_filter_spec(numbers@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

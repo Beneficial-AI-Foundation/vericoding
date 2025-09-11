@@ -83,6 +83,10 @@ spec fn is_complex(dt: NumpyDType) -> bool {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn promote_types_spec(type1: NumpyDType, type2: NumpyDType) -> NumpyDType;
 
 fn promote_types(type1: NumpyDType, type2: NumpyDType) -> (result: NumpyDType)
@@ -104,10 +108,13 @@ fn promote_types(type1: NumpyDType, type2: NumpyDType) -> (result: NumpyDType)
         (is_float(type1) && is_float(type2)) ==> (
             is_float(result) && dtype_size(result) >= if dtype_size(type1) >= dtype_size(type2) { dtype_size(type1) } else { dtype_size(type2) }
         ),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn is_sub_array(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)
 
     requires
@@ -13,10 +17,13 @@ fn is_sub_array(main: &Vec<i32>, sub: &Vec<i32>) -> (result: bool)
                 k,
                 l,
             ))) =~= sub@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

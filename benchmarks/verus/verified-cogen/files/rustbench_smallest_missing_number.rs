@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn smallest_missing_number(s: &[i32]) -> (v: i32)
     requires
@@ -12,10 +16,13 @@ fn smallest_missing_number(s: &[i32]) -> (v: i32)
         0 <= v,
         forall|i: int| 0 <= i < s.len() ==> s[i] != v,
         forall|k: int| 0 <= k < v && s[k] != v ==> exists|j: int| 0 <= j < s.len() && s[j] == k,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

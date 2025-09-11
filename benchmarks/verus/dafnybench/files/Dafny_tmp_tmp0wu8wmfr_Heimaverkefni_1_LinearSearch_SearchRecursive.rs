@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn search_recursive(a: Seq<int>, i: usize, j: usize, x: int) -> (result: isize)
     requires 
         i <= j,
@@ -12,10 +16,13 @@ fn search_recursive(a: Seq<int>, i: usize, j: usize, x: int) -> (result: isize)
         result != -1 ==> forall|r: int| result < r && r < j as int ==> a[r] != x,
         result == -1 ==> forall|r: int| i as int <= r && r < j as int ==> a[r] != x,
     decreases j - i,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

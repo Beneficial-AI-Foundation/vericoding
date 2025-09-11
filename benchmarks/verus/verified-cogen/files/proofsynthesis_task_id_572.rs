@@ -16,14 +16,21 @@ spec fn count_frequency_rcr(seq: Seq<i32>, key: i32) -> (result: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn remove_duplicates(arr: &Vec<i32>) -> (unique_arr: Vec<i32>)
 
     ensures
         unique_arr@ == arr@.filter(|x: i32| count_frequency_rcr(arr@, x) == 1),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

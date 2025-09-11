@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn last_position(arr: &Vec<i32>, elem: i32) -> (pos: i32)
     requires 
         arr.len() > 0,
@@ -9,10 +13,13 @@ fn last_position(arr: &Vec<i32>, elem: i32) -> (pos: i32)
     ensures
         pos == -1 || (0 <= pos < arr.len() && arr[pos as int] == elem && 
             (pos >= arr.len() - 1 || arr[(pos + 1) as int] > elem)),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

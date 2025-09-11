@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn evaluate_laguerre_polynomial(coeffs: Seq<f32>, x: f32) -> f32
 {
     arbitrary()
@@ -27,10 +31,13 @@ fn lagadd(c1: Vec<f32>, c2: Vec<f32>) -> (result: Vec<f32>)
             )
         },
         (c1.len() > 0 || c2.len() > 0) ==> result.len() > 0
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

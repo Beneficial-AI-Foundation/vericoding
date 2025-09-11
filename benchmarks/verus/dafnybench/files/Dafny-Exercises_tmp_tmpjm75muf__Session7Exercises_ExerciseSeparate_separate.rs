@@ -16,16 +16,23 @@ spec fn is_permutation(s: Seq<i32>, t: Seq<i32>) -> bool {
     s.to_multiset() == t.to_multiset()
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn separate(v: &mut Vec<i32>) -> (i: usize)
     ensures
         0 <= i <= v.len(),
         positive(v@.subrange(0, i as int)),
         strict_negative(v, i, v.len()),
         is_permutation(v@, old(v)@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

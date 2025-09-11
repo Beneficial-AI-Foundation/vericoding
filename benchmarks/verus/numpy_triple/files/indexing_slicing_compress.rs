@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn count_true(condition: Seq<bool>) -> int
     decreases condition.len()
 {
@@ -25,10 +29,13 @@ fn compress(condition: Vec<bool>, a: Vec<f32>) -> (result: Vec<f32>)
                 result@[i] == a@[mapping[i]]) &&
             (forall|i: int, j: int| 0 <= i < j < mapping.len() ==> 
                 mapping[i] < mapping[j]),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

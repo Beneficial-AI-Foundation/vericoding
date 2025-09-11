@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn cube_element(nums: &Vec<i32>) -> (cubed: Vec<i32>)
 
     requires
@@ -16,10 +20,13 @@ fn cube_element(nums: &Vec<i32>) -> (cubed: Vec<i32>)
         forall|i: int|
             0 <= i < nums.len() ==> cubed[i] == #[trigger] nums[i] * #[trigger] nums[i]
                 * #[trigger] nums[i],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

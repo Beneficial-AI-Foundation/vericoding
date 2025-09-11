@@ -10,12 +10,19 @@ spec fn fib(n: nat) -> nat
     else { fib((n - 1) as nat) + fib((n - 2) as nat) }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn ComputeFib(n: usize) -> (f: usize)
     ensures f == fib(n as nat)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

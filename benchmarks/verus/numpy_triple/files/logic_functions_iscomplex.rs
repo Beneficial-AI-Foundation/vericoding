@@ -9,6 +9,10 @@ struct Complex {
     imag: f64,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn is_complex(x: &Vec<Complex>) -> (result: Vec<bool>)
     ensures
         result.len() == x.len(),
@@ -17,10 +21,13 @@ fn is_complex(x: &Vec<Complex>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < x.len() ==> (x[i].imag != 0.0 ==> result[i] == true),
         forall|i: int| 0 <= i < x.len() ==> (result[i] == true ==> x[i].imag != 0.0),
         forall|i: int| 0 <= i < x.len() ==> (result[i] == false ==> x[i].imag == 0.0)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

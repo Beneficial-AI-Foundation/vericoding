@@ -21,12 +21,19 @@ fn look_for_min(a: &Vec<i32>, i: usize) -> (m: usize)
     i
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn insertion_sort(a: &mut Vec<i32>)
     ensures sorted(a)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

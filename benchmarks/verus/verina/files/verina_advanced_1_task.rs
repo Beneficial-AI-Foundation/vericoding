@@ -10,6 +10,10 @@ spec fn filter_equal(nums: Seq<i32>, x: i32) -> Seq<i32> {
     nums.filter(|elem: i32| elem == x)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_single_number(nums: &Vec<i32>) -> (result: i32)
     requires 
         nums.len() > 0,
@@ -18,10 +22,13 @@ fn find_single_number(nums: &Vec<i32>) -> (result: i32)
     ensures
         count_occurrences(nums@, result) == 1,
         forall|x: i32| nums@.contains(x) ==> (x == result || count_occurrences(nums@, x) == 2),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

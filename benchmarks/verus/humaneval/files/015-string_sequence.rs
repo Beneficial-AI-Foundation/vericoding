@@ -46,14 +46,21 @@ spec fn string_sequence(n: nat) -> (result:Seq<char>)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn string_sequence_impl(n: u8) -> (string_seq: Vec<char>)
 
     ensures
         string_seq@ == string_sequence(n as nat),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn triangle_area(a: u64, h: u64) -> (area: u64)
 
     requires
@@ -12,10 +16,13 @@ fn triangle_area(a: u64, h: u64) -> (area: u64)
 
     ensures
         area == a * h / 2,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

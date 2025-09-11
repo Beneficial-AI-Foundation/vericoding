@@ -3,6 +3,10 @@ use vstd::string::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn str_less_than(s1: String, s2: String) -> bool;
 
 fn less(x1: Vec<String>, x2: Vec<String>) -> (result: Vec<bool>)
@@ -21,10 +25,13 @@ fn less(x1: Vec<String>, x2: Vec<String>) -> (result: Vec<bool>)
         forall|i: int| 0 <= i < result.len() && result[i] == true ==> x1[i] != x2[i],
 
         forall|i: int| 0 <= i < result.len() ==> result[i] == true || x1[i] == x2[i] || str_less_than(x2[i], x1[i])
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

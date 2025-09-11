@@ -7,6 +7,10 @@ pub struct FileData {
     pub valid: bool,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn fromfile(n: usize, file: &FileData, count: i32, offset: usize) -> (result: Vec<f64>)
     requires 
         file.valid == true,
@@ -17,10 +21,13 @@ fn fromfile(n: usize, file: &FileData, count: i32, offset: usize) -> (result: Ve
         result.len() == n,
         forall|i: int| 0 <= i < n ==> result[i] == file.content[offset + i],
         n <= file.content.len() - offset,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

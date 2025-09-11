@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn char_swapcase(c: char) -> char;
 
 spec fn string_swapcase(s: Seq<char>) -> Seq<char>
@@ -20,10 +24,13 @@ fn swapcase(a: Vec<String>) -> (result: Vec<String>)
         forall|i: int| 0 <= i < a.len() ==> result[i]@.len() == a[i]@.len(),
         forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a[i]@.len() ==> 
             #[trigger] result[i]@[j] == char_swapcase(a[i]@[j])
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

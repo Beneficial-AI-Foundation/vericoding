@@ -18,6 +18,10 @@ spec fn diff(s: Seq<(i32, i32)>) -> (ret: int) {
     )
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn smallest_change(v: Vec<i32>) -> (change: usize)
 
     requires
@@ -25,10 +29,13 @@ fn smallest_change(v: Vec<i32>) -> (change: usize)
 
     ensures
         change == diff(zip_halves(v@)),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -19,14 +19,21 @@ fn find_min(a: &Vec<i32>, from: usize, to: usize) -> (index: usize)
     0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn selection_sort(a: &mut Vec<i32>)
     ensures 
         is_sorted(a@, 0, a@.len() as int),
         a@.to_multiset() == old(a)@.to_multiset(),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

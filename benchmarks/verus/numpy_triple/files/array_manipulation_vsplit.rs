@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn vsplit(mat: Vec<Vec<f32>>, k: usize) -> (result: Vec<Vec<Vec<f32>>>)
     requires 
         k > 0,
@@ -21,10 +25,13 @@ fn vsplit(mat: Vec<Vec<f32>>, k: usize) -> (result: Vec<Vec<Vec<f32>>>)
             exists|split_idx: int, row_idx: int|
                 0 <= split_idx < k && 0 <= row_idx < mat.len() / k &&
                 orig_row == split_idx * (mat.len() / k) + row_idx,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

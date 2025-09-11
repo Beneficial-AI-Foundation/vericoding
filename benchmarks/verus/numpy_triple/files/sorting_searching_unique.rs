@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn unique(ar: Vec<i32>) -> (result: (usize, Vec<i32>))
     ensures
         result.1.len() <= ar.len(),
@@ -9,10 +13,13 @@ fn unique(ar: Vec<i32>) -> (result: (usize, Vec<i32>))
         forall|i: int, j: int| 0 <= i < j < result.1.len() ==> result.1[i as int] <= result.1[j as int],
 
         forall|i: int, j: int| 0 <= i < result.1.len() && 0 <= j < result.1.len() && i != j ==> result.1[i as int] != result.1[j as int],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

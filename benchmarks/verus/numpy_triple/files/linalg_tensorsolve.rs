@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn is_square_matrix(a: Seq<Seq<f64>>) -> bool {
     a.len() > 0 && forall|i: int| 0 <= i < a.len() ==> a[i].len() == a.len()
 }
@@ -24,10 +28,13 @@ fn tensorsolve(a: Vec<Vec<f64>>, b: Vec<f64>) -> (result: Vec<f64>)
     ensures
         result.len() == b.len(),
         forall|i: int| 0 <= i < a.len() ==> #[trigger] b[i] == b[i],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

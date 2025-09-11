@@ -12,12 +12,19 @@ spec fn count_to(a: &[bool], n: int) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn count_true(a: &[bool]) -> (result: usize)
     ensures result == count_to(a, a.len() as int)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

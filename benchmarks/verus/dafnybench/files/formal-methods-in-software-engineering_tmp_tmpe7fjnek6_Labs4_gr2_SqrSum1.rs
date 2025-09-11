@@ -17,13 +17,20 @@ proof fn l1(n: int)
 
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn sqr_sum1(n: int) -> (s: int)
     requires n >= 0
     ensures s == sqr_sum_rec(n)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

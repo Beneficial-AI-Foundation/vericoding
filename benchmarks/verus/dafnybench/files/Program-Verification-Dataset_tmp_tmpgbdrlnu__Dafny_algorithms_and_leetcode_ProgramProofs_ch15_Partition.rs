@@ -14,6 +14,10 @@ spec fn swap_frame(a_old: Seq<int>, a_new: Seq<int>, lo: int, hi: int) -> bool {
     a_new.to_multiset() == a_old.to_multiset()
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
     requires
         0 <= lo < hi <= old(a).len(),
@@ -26,10 +30,13 @@ fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
         split_point(a@, lo as int),
         split_point(a@, hi as int),
         swap_frame(old(a)@, a@, lo as int, hi as int),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

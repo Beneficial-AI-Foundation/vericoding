@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn laggrid2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
     requires 
         c.len() > 0,
@@ -12,10 +16,13 @@ fn laggrid2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<Vec<f32
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == y.len(),
         forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < y.len() ==> 
             exists|val: f32| result[i][j] == val,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

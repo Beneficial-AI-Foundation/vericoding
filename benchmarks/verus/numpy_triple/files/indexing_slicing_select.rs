@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn select(condlist: Vec<Vec<bool>>, choicelist: Vec<Vec<f32>>, default: f32) -> (result: Vec<f32>)
     requires 
         condlist.len() == choicelist.len(),
@@ -17,10 +21,13 @@ fn select(condlist: Vec<Vec<bool>>, choicelist: Vec<Vec<f32>>, default: f32) -> 
                 (forall|j_prime: int| 0 <= j_prime < j ==> condlist[j_prime][i] == false)) ||
             (forall|j: int| 0 <= j < condlist.len() ==> condlist[j][i] == false && result[i] == default)
         },
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

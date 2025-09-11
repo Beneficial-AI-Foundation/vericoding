@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_first_occurrence(arr: &Vec<i32>, target: i32) -> (index: Option<usize>)
 
     requires
@@ -15,10 +19,13 @@ fn find_first_occurrence(arr: &Vec<i32>, target: i32) -> (index: Option<usize>)
         } else {
             forall|k: int| 0 <= k < arr.len() ==> arr[k] != target
         },
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

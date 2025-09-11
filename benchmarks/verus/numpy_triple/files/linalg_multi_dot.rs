@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn multi_dot(A: Vec<Vec<f64>>, B: Vec<Vec<f64>>, C: Vec<Vec<f64>>) -> (result: Vec<Vec<f64>>)
     requires 
         A.len() > 0,
@@ -13,10 +17,13 @@ fn multi_dot(A: Vec<Vec<f64>>, B: Vec<Vec<f64>>, C: Vec<Vec<f64>>) -> (result: V
     ensures
         result.len() == A.len(),
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == C[0].len(),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

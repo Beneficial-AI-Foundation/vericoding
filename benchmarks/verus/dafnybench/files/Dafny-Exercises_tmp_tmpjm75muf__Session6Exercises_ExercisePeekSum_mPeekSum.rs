@@ -23,13 +23,20 @@ spec fn peek_sum(v: &Vec<i32>, i: int) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn m_peek_sum(v: &Vec<i32>) -> (sum: i32)
     requires v.len() > 0
     ensures sum == peek_sum(v, v.len() as int)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

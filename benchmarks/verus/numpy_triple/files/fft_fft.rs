@@ -46,6 +46,10 @@ pub open spec fn complex_sum(n: nat, f: spec_fn(nat) -> Complex) -> Complex
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 pub fn fft(a: Vec<Complex>) -> (result: Vec<Complex>)
     requires a.len() > 0,
     ensures 
@@ -61,10 +65,13 @@ pub fn fft(a: Vec<Complex>) -> (result: Vec<Complex>)
         result.len() > 0 ==> result[0] == complex_sum(a.len() as nat, |j: nat|
             if j < a.len() { a[j as int] } else { complex_zero() }
         ),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

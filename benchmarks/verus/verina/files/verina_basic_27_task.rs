@@ -30,6 +30,10 @@ spec fn second_occurrence_exists(chars: Seq<char>, c: char) -> bool {
     exists|i: int, j: int| 0 <= i < j < chars.len() && #[trigger] chars[i] == c && #[trigger] chars[j] == c
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_first_repeated_char(s: &Vec<char>) -> (result: Option<char>)
     ensures match result {
         Some(c) => {
@@ -46,10 +50,13 @@ fn find_first_repeated_char(s: &Vec<char>) -> (result: Option<char>)
             has_no_duplicates(s@)
         }
     }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

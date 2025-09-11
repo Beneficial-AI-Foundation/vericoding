@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn get_even(s: &mut Vec<nat>)
     ensures 
         s.len() == old(s).len(),
@@ -12,10 +16,13 @@ fn get_even(s: &mut Vec<nat>)
                 s[i] == old(s)[i]
             }
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

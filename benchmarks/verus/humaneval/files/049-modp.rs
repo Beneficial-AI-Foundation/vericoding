@@ -12,6 +12,10 @@ spec fn modp_rec(n: nat, p: nat) -> (result:nat)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn modp(n: u32, p: u32) -> (r: u32)
     by (nonlinear_arith)
@@ -21,10 +25,13 @@ fn modp(n: u32, p: u32) -> (r: u32)
 
     ensures
         r == modp_rec(n as nat, p as nat),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

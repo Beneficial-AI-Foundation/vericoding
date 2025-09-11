@@ -20,14 +20,21 @@ spec fn count_uppercase_sum(seq: Seq<char>) -> (ret:int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn digit_sum(text: &[char]) -> (sum: u128)
 
     ensures
         count_uppercase_sum(text@) == sum,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

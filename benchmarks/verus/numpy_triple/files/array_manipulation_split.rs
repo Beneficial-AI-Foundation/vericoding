@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn split(arr: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
     requires
         k > 0,
@@ -14,10 +18,13 @@ fn split(arr: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
                 let idx = i * (arr.len() / k) as int + j;
                 0 <= idx < arr.len() as int && #[trigger] result[i][j] == arr[idx]
             },
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

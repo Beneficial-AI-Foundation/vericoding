@@ -12,6 +12,10 @@ spec fn sum_seq(s: Seq<usize>) -> nat
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn histogram(data: Vec<i32>, n_bins: usize, min_val: i32, max_val: i32) -> (result: (Vec<usize>, Vec<i32>))
     requires
         n_bins > 0,
@@ -25,10 +29,13 @@ fn histogram(data: Vec<i32>, n_bins: usize, min_val: i32, max_val: i32) -> (resu
         result.0.len() == n_bins,
 
         sum_seq(result.0@) == data@.filter(|x: i32| min_val <= x && x <= max_val).len(),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -21,6 +21,10 @@ spec fn min_spec(seq: Seq<i32>) -> (result: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn second_smallest(numbers: &Vec<i32>) -> (indices: (usize, usize))
 
     requires
@@ -34,10 +38,13 @@ fn second_smallest(numbers: &Vec<i32>) -> (indices: (usize, usize))
         exists|k: int|
             0 <= k < numbers.len() && k != indices.0 && (#[trigger] numbers[k]
                 == numbers[indices.1 as int]),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

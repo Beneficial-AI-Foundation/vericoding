@@ -18,6 +18,10 @@ spec fn sum(a: Seq<int>) -> int {
     sum_upto(a, a.len() - 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::external_body]
 fn percentile_non_unique_answer() -> (result: (int, Vec<int>, int, int, int))
     ensures 
@@ -32,10 +36,13 @@ fn percentile_non_unique_answer() -> (result: (int, Vec<int>, int, int, int))
         sum_upto(result.1@, result.4) <= (result.0/100) * result.2,
         result.4+1 < result.1@.len() ==> sum_upto(result.1@, result.4+1) >= (result.0/100) * result.2,
         result.3 != result.4
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

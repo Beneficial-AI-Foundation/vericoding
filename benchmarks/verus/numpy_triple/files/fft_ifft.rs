@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[derive(PartialEq, Eq, Structural)]
 pub struct Complex {
     pub re: int,
@@ -54,10 +58,13 @@ fn ifft(a: Vec<Complex>) -> (result: Vec<Complex>)
             }).scalar_mul(1);
             result[k] == expected
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

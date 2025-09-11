@@ -19,14 +19,21 @@ proof fn search(s: Seq<i32>, x: i32) -> (k: usize)
   0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn sort(m: Multiset<i32>) -> (r: Seq<i32>)
     ensures 
         r.to_multiset() == m
         && forall|p: int, q: int| 0 <= p < q < r.len() ==> r[p] <= r[q],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

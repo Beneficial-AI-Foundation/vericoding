@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn block(
     top_left: Vec<Vec<f32>>,
     top_right: Vec<Vec<f32>>,
@@ -40,10 +44,13 @@ fn block(
         forall|i: int, j: int|
             0 <= i < bottom_right.len() && 0 <= j < bottom_right[0].len() ==>
             result[top_left.len() + i][top_left[0].len() + j] == bottom_right[i][j],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

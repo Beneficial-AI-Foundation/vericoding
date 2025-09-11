@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn is_nan_f32(x: f32) -> bool;
 
 spec fn valid_indices_count(a: Seq<f32>) -> nat
@@ -48,10 +52,13 @@ fn nanmean(a: Vec<f32>) -> (result: f32)
         (!is_nan_f32(result) ==> has_valid_element(a@)) &&
 
         (!contains_nan(a@) && a.len() > 0 ==> !is_nan_f32(result))
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

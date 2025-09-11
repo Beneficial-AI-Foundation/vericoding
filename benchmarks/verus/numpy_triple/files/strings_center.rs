@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn center(a: Vec<String>, width: Vec<usize>, fillchar: char) -> (result: Vec<String>)
     requires 
         a.len() == width.len(),
@@ -14,10 +18,13 @@ fn center(a: Vec<String>, width: Vec<usize>, fillchar: char) -> (result: Vec<Str
                 &&& (orig_len >= target_width ==> result[i] == a[i])
                 &&& result[i]@.len() as int == if orig_len >= target_width { orig_len } else { target_width }
             }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

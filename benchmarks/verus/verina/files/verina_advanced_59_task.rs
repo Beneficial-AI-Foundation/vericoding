@@ -14,6 +14,10 @@ spec fn to_lowercase(c: char) -> char {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn palindrome_ignore_non_alnum(s: &str) -> (result: bool)
     ensures 
         result <==> ({
@@ -23,10 +27,13 @@ fn palindrome_ignore_non_alnum(s: &str) -> (result: bool)
             let backward = cleaned.reverse();
             forward == backward
         })
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

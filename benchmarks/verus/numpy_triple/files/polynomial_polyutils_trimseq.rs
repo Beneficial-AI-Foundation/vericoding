@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn trimseq(seq: Vec<f32>) -> (result: Vec<f32>)
     ensures
         result.len() == seq.len(),
@@ -19,10 +23,13 @@ fn trimseq(seq: Vec<f32>) -> (result: Vec<f32>)
                 (forall|i: int| k < i < result.len() ==> result[i] == 0.0f32) &&
 
                 (k > 0 ==> seq[k] != 0.0f32)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

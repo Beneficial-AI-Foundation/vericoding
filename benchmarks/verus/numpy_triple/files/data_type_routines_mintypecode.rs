@@ -40,6 +40,10 @@ spec fn min_precedence_char(chars: Seq<char>) -> char
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn mintypecode(typechars: Vec<char>, typeset: Vec<char>, default: char) -> (result: char)
     requires typeset@ == seq!['G', 'D', 'F', 'g', 'd', 'f'],
     ensures ({
@@ -60,10 +64,13 @@ fn mintypecode(typechars: Vec<char>, typeset: Vec<char>, default: char) -> (resu
 
         (intersection.contains(result) || result == default)
     })
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

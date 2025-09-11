@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn is_sorted(arr: &Vec<i32>) -> (is_sorted: bool)
 
     requires
@@ -9,10 +13,13 @@ fn is_sorted(arr: &Vec<i32>) -> (is_sorted: bool)
 
     ensures
         is_sorted == (forall|i: int, j: int| 0 <= i < j < arr.len() ==> (arr[i] <= arr[j])),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

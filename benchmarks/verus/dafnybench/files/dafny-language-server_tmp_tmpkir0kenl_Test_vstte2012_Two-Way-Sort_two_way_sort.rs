@@ -25,14 +25,21 @@ fn swap<T>(a: &mut Vec<T>, i: usize, j: usize)
     assume(false);
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn two_way_sort(a: &mut Vec<bool>)
     ensures 
         forall|m: int, n: int| 0 <= m < n < a.len() ==> (!a[m] || a[n]),
         multisets(a@) == multisets(old(a)@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

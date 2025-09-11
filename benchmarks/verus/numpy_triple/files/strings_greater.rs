@@ -3,6 +3,10 @@ use vstd::string::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn string_compare_gt(s1: Seq<char>, s2: Seq<char>) -> bool;
 
 fn greater(x1: &Vec<String>, x2: &Vec<String>) -> (result: Vec<bool>)
@@ -18,10 +22,13 @@ fn greater(x1: &Vec<String>, x2: &Vec<String>) -> (result: Vec<bool>)
 
         forall|i: int| 0 <= i < result.len() ==> 
             (x1[i]@ == x2[i]@) ==> (result[i] == false),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

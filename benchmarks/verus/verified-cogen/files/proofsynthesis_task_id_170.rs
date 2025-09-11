@@ -12,6 +12,10 @@ spec fn sum_to(arr: Seq<i64>) -> (result: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn sum_range_list(arr: &Vec<i64>, start: usize, end: usize) -> (sum: i128)
 
     requires
@@ -20,10 +24,13 @@ fn sum_range_list(arr: &Vec<i64>, start: usize, end: usize) -> (sum: i128)
 
     ensures
         sum_to(arr@.subrange(start as int, end + 1 as int)) == sum,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

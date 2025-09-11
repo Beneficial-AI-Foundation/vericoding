@@ -39,15 +39,22 @@ spec fn is_permutation2(a: Seq<i32>, b: Seq<i32>) -> bool {
     a.to_multiset() == b.to_multiset()
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn selection_sort(ns: &mut Vec<i32>) 
     requires old(ns).len() >= 0
     ensures 
         is_sorted(ns@),
         is_permutation2(old(ns)@, ns@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 struct EighResult {
     eigenvalues: Vec<f32>,
     eigenvectors: Vec<Vec<f32>>,
@@ -16,10 +20,13 @@ fn eigh(a: Vec<Vec<f32>>) -> (result: EighResult)
         result.eigenvalues.len() == a.len(),
         result.eigenvectors.len() == a.len(),
         forall|i: int| 0 <= i < result.eigenvectors.len() ==> result.eigenvectors[i]@.len() == a.len(),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

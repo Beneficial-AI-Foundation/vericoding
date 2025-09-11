@@ -21,6 +21,10 @@ spec fn inner_expr_how_many_times_impl(opt_k: Option<u32>, string: Vec<char>, su
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn how_many_times_impl(string: Vec<char>, substring: Vec<char>) -> (opt_k: Option<u32>)
 
     requires
@@ -28,10 +32,13 @@ fn how_many_times_impl(string: Vec<char>, substring: Vec<char>) -> (opt_k: Optio
 
     ensures
         inner_expr_how_many_times_impl(opt_k, string, substring),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

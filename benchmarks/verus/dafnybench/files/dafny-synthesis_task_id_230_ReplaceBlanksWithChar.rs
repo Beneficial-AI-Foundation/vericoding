@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn replace_blanks_with_char(s: Seq<char>, ch: char) -> (v: Seq<char>)
     ensures 
         v.len() == s.len(),
@@ -9,10 +13,13 @@ fn replace_blanks_with_char(s: Seq<char>, ch: char) -> (v: Seq<char>)
             (s[i] == ' ' ==> v[i] == ch) &&
             (s[i] != ' ' ==> v[i] == s[i])
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

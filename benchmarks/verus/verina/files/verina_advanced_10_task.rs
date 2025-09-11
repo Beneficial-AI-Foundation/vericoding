@@ -18,6 +18,10 @@ spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_exponents(n: nat, primes: Vec<nat>) -> (result: Vec<(nat, nat)>)
     requires
         forall|i: int| 0 <= i < primes.len() ==> is_prime(primes[i]),
@@ -26,10 +30,13 @@ fn find_exponents(n: nat, primes: Vec<nat>) -> (result: Vec<(nat, nat)>)
         forall|i: int| 0 <= i < result.len() ==> (#[trigger] primes@.contains(result[i].0)),
         forall|p: nat| (#[trigger] primes@.contains(p)) ==> 
             exists|j: int| 0 <= j < result.len() && result[j].0 == p,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

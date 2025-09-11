@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn put(a: Vec<f64>, ind: Vec<usize>, v: Vec<f64>) -> (result: Vec<f64>)
     requires 
         ind.len() == v.len(),
@@ -12,10 +16,13 @@ fn put(a: Vec<f64>, ind: Vec<usize>, v: Vec<f64>) -> (result: Vec<f64>)
         forall|j: int| 0 <= j < result.len() ==> 
             (forall|i: int| 0 <= i < ind.len() ==> j != ind[i]) ==> result[j] == a[j],
         ind.len() == 0 ==> result@ == a@,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

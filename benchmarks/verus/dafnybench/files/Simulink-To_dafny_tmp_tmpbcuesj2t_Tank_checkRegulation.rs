@@ -44,15 +44,22 @@ impl Tank {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn checkRegulation(tank: &mut Tank)
     ensures 
         (tank.height > 10 && tank.pipe.v1 == Valve::OFF && tank.pipe.v3 == Valve::ON && tank.pipe.v2 == old(tank).pipe.v2) 
         || (tank.height < 8 && tank.pipe.v1 == Valve::OFF && tank.pipe.v2 == Valve::ON && tank.pipe.v3 == old(tank).pipe.v3)
         || ((tank.pipe.in_flowv3 > 5 || tank.pipe.in_flowv1 > 5) && tank.pipe.v2 == Valve::OFF && tank.pipe.v3 == old(tank).pipe.v3 && tank.pipe.v1 == old(tank).pipe.v1)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

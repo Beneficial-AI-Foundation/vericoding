@@ -56,6 +56,10 @@ spec fn expr_inner_divide_i32_by_usize(qr : (i32, usize), x: i32, d: usize) -> (
     q == x as int / d as int && r == x as int % d as int
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn mean_absolute_deviation(numbers: &[i32]) -> (result: u32)
 
     requires
@@ -63,10 +67,13 @@ fn mean_absolute_deviation(numbers: &[i32]) -> (result: u32)
 
     ensures
         result == spec_mean_absolute_deviation(numbers@.map(|_index, n: i32| n as int)),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn zeros(n: usize) -> (result: Vec<i32>)
     ensures
         result.len() == n,
@@ -14,10 +18,13 @@ fn zeros(n: usize) -> (result: Vec<i32>)
         forall|v: Vec<i32>, i: int| 
             v.len() == n && 0 <= i < n ==> result[i] * v[i] == 0,
         n > 0 ==> result[0] == 0
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

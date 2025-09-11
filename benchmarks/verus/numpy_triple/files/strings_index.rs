@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn index(a: Vec<Seq<char>>, sub: Vec<Seq<char>>, start: Vec<int>, end_pos: Vec<int>) -> (result: Vec<int>)
     requires 
         a.len() == sub.len() && sub.len() == start.len() && start.len() == end_pos.len(),
@@ -18,10 +22,13 @@ fn index(a: Vec<Seq<char>>, sub: Vec<Seq<char>>, start: Vec<int>, end_pos: Vec<i
             &&& start[i] <= result[i] <= end_pos[i]
             &&& result[i] + sub[i].len() as int <= a[i].len() as int
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -14,14 +14,21 @@ spec fn count(v: Vec<i32>, elem: i32) -> nat {
     v.to_seq().filter(|x| *x == elem).len()
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn insertion_sort(xs: Vec<i32>) -> (result: Vec<i32>)
     ensures
         sorted(result),
         multiset_equivalent(xs, result),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

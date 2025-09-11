@@ -18,16 +18,23 @@ spec fn inner_expr_to_uppercase(str1: &Vec<char>, i: int) -> (result:char) {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn to_uppercase(str1: &Vec<char>) -> (result: Vec<char>)
 
     ensures
         str1@.len() == result@.len(),
         forall|i: int|
             0 <= i < str1.len() ==> (result[i] == (inner_expr_to_uppercase(str1, i))),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

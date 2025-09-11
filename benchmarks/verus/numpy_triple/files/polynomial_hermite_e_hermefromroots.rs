@@ -34,6 +34,10 @@ spec fn product_form(roots: Seq<int>, x: int, i: nat) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn hermefromroots(roots: Vec<f64>) -> (coeffs: Vec<f64>)
     ensures
         coeffs.len() == roots.len() + 1,
@@ -41,10 +45,13 @@ fn hermefromroots(roots: Vec<f64>) -> (coeffs: Vec<f64>)
         (roots.len() == 0 ==> coeffs.len() == 1),
 
         (roots.len() > 0 ==> coeffs.len() == roots.len() + 1),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

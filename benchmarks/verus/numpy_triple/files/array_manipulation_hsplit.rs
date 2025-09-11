@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn hsplit(arr: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
     requires 
         k > 0,
@@ -17,10 +21,13 @@ fn hsplit(arr: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
                 0 <= p < k && 0 <= e < arr.len() / k &&
                 i == p * (arr.len() / k) + e &&
                 arr[i] == result[p][e]
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

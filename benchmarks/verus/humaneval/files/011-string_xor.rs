@@ -19,6 +19,10 @@ spec fn xor_char(a: char, b: char) -> (result: char)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn string_xor(a: &[char], b: &[char]) -> (result: Vec<char>)
 
     requires
@@ -30,10 +34,13 @@ fn string_xor(a: &[char], b: &[char]) -> (result: Vec<char>)
         result.len() == a@.len(),
         forall|i: int|
             0 <= i < result.len() as int ==> #[trigger] result[i] == xor_char(a[i], b[i]),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

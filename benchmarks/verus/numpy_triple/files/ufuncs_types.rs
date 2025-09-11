@@ -57,6 +57,10 @@ spec fn format_type_signature(sig: TypeSignature) -> Seq<char> {
     input_chars + seq!['-', '>'] + seq![type_code_to_char(sig.output_type)]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn types(ufunc_signatures: Vec<TypeSignature>) -> (result: Vec<String>)
     ensures 
         result.len() == ufunc_signatures.len(),
@@ -65,10 +69,13 @@ fn types(ufunc_signatures: Vec<TypeSignature>) -> (result: Vec<String>)
             sig.input_types.len() > 0 &&
             result[i]@ == format_type_signature(sig)
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -18,6 +18,10 @@ spec fn sum(a: Seq<int>) -> int {
     sum_upto(a, a.len() - 1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn percentile(p: int, a: &[int], total: int) -> (i: i32)
     requires 
         forall|idx: int| 0 <= idx < a.len() ==> a@[idx] > 0,
@@ -28,10 +32,13 @@ fn percentile(p: int, a: &[int], total: int) -> (i: i32)
         -1 <= i < a.len(),
         sum_upto(a@, i as int) <= (p * total) / 100,
         i as int + 1 < a.len() ==> sum_upto(a@, i as int + 1) > (p * total) / 100,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 struct IntInfo {
 
     bits: u32,
@@ -42,10 +46,13 @@ fn iinfo(int_type: IntType) -> (info: IntInfo)
             IntType::UInt32 => info.bits == 32 && info.min == 0 && info.max == 4294967295,
             IntType::UInt64 => info.bits == 64 && info.min == 0 && info.max == 18446744073709551615,
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

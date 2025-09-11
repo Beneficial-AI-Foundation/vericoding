@@ -14,13 +14,20 @@ spec fn seq_i32_to_int(s: Seq<i32>) -> Seq<int> {
     s.map(|i, v| v as int)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn twoSum(nums: Seq<i32>, target: i32) -> (pair: (usize, usize))
     requires exists|i: int, j: int| correct_pair((i, j), seq_i32_to_int(nums), target as int)
     ensures correct_pair((pair.0 as int, pair.1 as int), seq_i32_to_int(nums), target as int)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

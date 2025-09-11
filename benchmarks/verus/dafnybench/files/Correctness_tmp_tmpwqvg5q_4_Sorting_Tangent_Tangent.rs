@@ -15,6 +15,10 @@ fn binary_search(a: &[int], circle: int) -> (n: usize)
     0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn tangent(r: &[int], x: &[int]) -> (found: bool)
     requires
         forall|i: int| 1 <= i < x.len() ==> x[i-1] < #[trigger] x[i],
@@ -24,10 +28,13 @@ fn tangent(r: &[int], x: &[int]) -> (found: bool)
             0 <= i < r.len() && 0 <= j < x.len() ==> #[trigger] r[i] != #[trigger] x[j],
         found ==> exists|i: int, j: int|
             0 <= i < r.len() && 0 <= j < x.len() && #[trigger] r[i] == #[trigger] x[j],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -17,13 +17,20 @@ spec fn is_prefix_sum_for(a: &[int], c: &[int]) -> bool
     &&& forall|i: int| 0 <= i < a.len() ==> c[i + 1] == c[i] + a[i]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn query(a: &[int], i: usize, j: usize) -> (res: i64)
     requires 0 <= i <= j <= a.len()
     ensures res == sum(a, i as int, j as int)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

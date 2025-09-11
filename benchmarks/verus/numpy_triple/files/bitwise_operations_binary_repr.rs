@@ -25,6 +25,10 @@ spec fn is_valid_signed_binary(s: Seq<char>) -> bool {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn binary_repr(num: i32, width: Option<usize>) -> (result: Vec<char>)
     requires 
         width.is_some() ==> width.get_Some_0() >= 1,
@@ -46,10 +50,13 @@ fn binary_repr(num: i32, width: Option<usize>) -> (result: Vec<char>)
             let two_comp = (1u32 << w) as i32 + num;
             two_comp >= 0 && two_comp < (1i32 << w) && result.len() == w
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

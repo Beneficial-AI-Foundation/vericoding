@@ -20,6 +20,10 @@ spec fn inner_expr_vowels_count(s: &str, ret: u32) -> (ret:bool) {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn vowels_count(s: &str) -> (ret: u32)
 
     requires
@@ -27,10 +31,13 @@ fn vowels_count(s: &str) -> (ret: u32)
 
     ensures
         inner_expr_vowels_count(s, ret),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

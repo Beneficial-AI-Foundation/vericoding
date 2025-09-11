@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn mfirst_cero(v: &[i32]) -> (i: usize)
     ensures
         i <= v.len(),
@@ -11,6 +15,9 @@ fn mfirst_cero(v: &[i32]) -> (i: usize)
     assume(false);
     0
 }
+// </vc-spec>
+// <vc-code>
+// </vc-code>
 
 }
 fn main() {}

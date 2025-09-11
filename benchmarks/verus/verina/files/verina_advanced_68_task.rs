@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn is_digit(c: char) -> bool {
     '0' <= c && c <= '9'  
 }
@@ -16,10 +20,13 @@ proof fn run_length_encoder_property(input: String, result: String)
                 (i % 2 == 0 ==> !is_digit(result@[i])) &&
                 (i % 2 == 1 ==> is_digit(result@[i]))
         )),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

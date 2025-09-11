@@ -52,13 +52,20 @@ spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char
         is_not_substring_pred(str1.subrange(i1, j1), str2)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn have_common_k_substring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
     ensures
         found <==> have_common_k_substring_pred(k, str1, str2),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

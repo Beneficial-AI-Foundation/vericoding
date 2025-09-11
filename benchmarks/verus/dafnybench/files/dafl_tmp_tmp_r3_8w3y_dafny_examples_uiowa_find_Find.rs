@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find(a: &[i32], key: i32) -> (i: i32)
     ensures
 
@@ -16,10 +20,13 @@ fn find(a: &[i32], key: i32) -> (i: i32)
         i < 0 ==> 
 
                 forall|k: int| 0 <= k < a.len() ==> a[k] != key,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

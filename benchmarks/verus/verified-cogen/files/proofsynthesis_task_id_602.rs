@@ -27,14 +27,21 @@ spec fn check_first_repeated_char(str1: &Vec<char>, repeated_char: Option<(usize
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn first_repeated_char(str1: &Vec<char>) -> (repeated_char: Option<(usize, char)>)
 
     ensures
         check_first_repeated_char(str1, repeated_char),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

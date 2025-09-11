@@ -11,6 +11,10 @@ pub struct Slice {
     pub step: Option<usize>,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn s_(start: Option<usize>, stop: Option<usize>, step: Option<usize>) -> (slice: Slice)
     requires 
         step.is_some() ==> step.unwrap() > 0,
@@ -21,10 +25,13 @@ fn s_(start: Option<usize>, stop: Option<usize>, step: Option<usize>) -> (slice:
         slice.step == step,
         slice.step.is_some() ==> slice.step.unwrap() > 0,
         (slice.start.is_some() && slice.stop.is_some()) ==> slice.start.unwrap() <= slice.stop.unwrap(),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

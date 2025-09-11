@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn spec_min(a: int, b: int) -> int {
     if a <= b { a } else { b }
 }
@@ -20,10 +24,13 @@ fn numpy_diagonal(x: Vec<Vec<f32>>, offset: i32) -> (result: Vec<f32>)
             exists|r: int, c: int| 
                 0 <= r < x.len() && 0 <= c < x[0].len() &&
                 result[i] == x[r][c],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn intersect1d(ar1: Vec<i32>, ar2: Vec<i32>) -> (result: Vec<i32>)
     ensures
 
@@ -17,10 +21,13 @@ fn intersect1d(ar1: Vec<i32>, ar2: Vec<i32>) -> (result: Vec<i32>)
             (exists|i: int| 0 <= i < ar1.len() && ar1[i] == val) && 
             (exists|j: int| 0 <= j < ar2.len() && ar2[j] == val) ==>
             (exists|l: int| 0 <= l < result.len() && result[l] == val)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

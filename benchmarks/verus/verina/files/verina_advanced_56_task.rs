@@ -29,6 +29,10 @@ spec fn is_subsequence(xs: Seq<i32>, ys: Seq<i32>) -> bool
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn move_zeroes(xs: Vec<i32>) -> (result: Vec<i32>)
     ensures
 
@@ -40,10 +44,13 @@ fn move_zeroes(xs: Vec<i32>) -> (result: Vec<i32>)
         xs.len() == result.len(),
 
         count_val(0, xs@) == count_val(0, result@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

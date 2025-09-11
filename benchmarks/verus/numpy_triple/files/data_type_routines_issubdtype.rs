@@ -85,6 +85,10 @@ spec fn is_sub_dtype_spec(dtype1: NumpyDType, dtype2: NumpyDType) -> bool {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn issubdtype(arg1: NumpyDType, arg2: NumpyDType) -> (result: bool)
     ensures 
         result == is_sub_dtype_spec(arg1, arg2) &&
@@ -101,10 +105,13 @@ fn issubdtype(arg1: NumpyDType, arg2: NumpyDType) -> (result: bool)
         (arg1 == NumpyDType::Float32 && arg2 == NumpyDType::Float64 ==> result == false) &&
         (arg1 == NumpyDType::Float64 && arg2 == NumpyDType::Float32 ==> result == false) &&
         (arg1 == NumpyDType::Int32 && matches!(arg2, NumpyDType::Floating(_)) ==> result == false)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

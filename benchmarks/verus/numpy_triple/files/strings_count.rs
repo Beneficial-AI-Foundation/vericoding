@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn count(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) -> (result: Vec<i32>)
     requires 
         a.len() == sub.len(),
@@ -16,10 +20,13 @@ fn count(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) -
         forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
         forall|i: int| 0 <= i < result.len() ==> 
             (sub[i]@.len() > (end_pos[i] - start[i]) ==> result[i] == 0)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

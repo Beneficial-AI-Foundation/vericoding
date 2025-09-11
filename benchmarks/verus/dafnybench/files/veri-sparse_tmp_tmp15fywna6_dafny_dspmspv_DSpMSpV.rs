@@ -43,6 +43,10 @@ spec fn index(x: nat, y: Seq<nat>) -> nat {
     index_seq(x, y)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn DSpMSpV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], X_crd1: &[nat], X_len: nat,
            v_val: &[int], v_crd: &[nat]) -> (result: Vec<int>)
 
@@ -68,10 +72,13 @@ fn DSpMSpV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], X_crd1: &[nat], X_len: n
         } else {
             0
         }})
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -7,6 +7,10 @@ struct Complex {
     im: f32,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn eigvals(a: Vec<Vec<f32>>) -> (result: Vec<Complex>)
     requires 
         a.len() > 0,
@@ -18,10 +22,13 @@ fn eigvals(a: Vec<Vec<f32>>) -> (result: Vec<Complex>)
         (forall|i: int| #![auto] 0 <= i < a.len() ==> 
             exists|j: int| 0 <= j < result.len() && 
                 result[j].re == a[i][i] && result[j].im == 0.0f32),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

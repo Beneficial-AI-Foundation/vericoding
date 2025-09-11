@@ -13,6 +13,10 @@ spec fn set_of_seq<T>(s: Seq<T>) -> Set<T> {
     s.to_set()
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn get_random_data_entry<T: PartialEq + Clone>(m_work_list: &Vec<T>, avoid_set: &Vec<T>) -> (e: T)
     requires m_work_list.len() > 0
     ensures 
@@ -20,10 +24,13 @@ fn get_random_data_entry<T: PartialEq + Clone>(m_work_list: &Vec<T>, avoid_set: 
         set_of_seq(avoid_set@) != set_of_seq(m_work_list@) ==> !avoid_set@.contains(e),
         (forall |x: T| avoid_set@.contains(x) ==> m_work_list@.contains(x)) && 
         avoid_set@ != m_work_list@ ==> m_work_list@.contains(e)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

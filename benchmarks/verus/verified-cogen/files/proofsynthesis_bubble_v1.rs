@@ -13,15 +13,22 @@ spec fn is_reorder_of<T>(r: Seq<int>, p: Seq<T>, s: Seq<T>) -> (result:bool) {
     &&& p =~= r.map_values(|i: int| s[i])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn test1(nums: &mut Vec<u32>)
 
         ensures
             sorted_between(nums@, 0, nums@.len() as int),
             exists|r: Seq<int>| is_reorder_of(r, nums@, old(nums)@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -18,6 +18,10 @@ spec fn range_satisfies_comparer_negation(q: Seq<int>, key: int, lower_bound: na
     range_satisfies_comparer(q, key, lower_bound, upper_bound, |n1, n2| !comparer(n1, n2))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn binary_search(q: Seq<int>, key: int, lower_bound: usize, upper_bound: usize, comparer: spec_fn(int, int) -> bool) -> (index: usize)
     requires
         sorted(q),
@@ -32,10 +36,13 @@ fn binary_search(q: Seq<int>, key: int, lower_bound: usize, upper_bound: usize, 
         lower_bound <= index <= upper_bound,
         range_satisfies_comparer_negation(q, key, 0nat, index as nat, comparer),
         range_satisfies_comparer(q, key, index as nat, q.len() as nat, comparer),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

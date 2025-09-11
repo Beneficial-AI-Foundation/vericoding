@@ -61,14 +61,21 @@ spec fn bit_addition(s: &[bool; 10], t: &[bool; 10]) -> Seq<bool> {
     bv10_to_seq(c)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn binary_addition(s: &[bool; 10], t: &[bool; 10]) -> (sresult: Vec<bool>)
     requires s.len() == 10 && t.len() == 10
     ensures sresult.len() == 10,
             bit_addition(s, t) == sresult@,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -12,6 +12,10 @@ spec fn vec_product(shape: Seq<usize>) -> nat
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn unravel_index(indices: Vec<usize>, shape: Vec<usize>) -> (result: Vec<Vec<usize>>)
     requires 
         shape.len() > 0,
@@ -24,10 +28,13 @@ fn unravel_index(indices: Vec<usize>, shape: Vec<usize>) -> (result: Vec<Vec<usi
             #[trigger] result[i][j] < shape[j],
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> 
             (indices[i] != indices[j] ==> result[i] != result[j])
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

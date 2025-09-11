@@ -36,16 +36,23 @@ spec fn loop_inv(q: Seq<int>, x: int, i: nat, j: nat, sum: int) -> bool {
     are_addends_indices(q, sum, i, j)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_addends(q: Seq<int>, x: int) -> (result: (usize, usize))
     requires sorted(q) && has_addends(q, x)
     ensures ({
         let (i, j) = result;
         i < j < q.len() && q[i as int] + q[j as int] == x
     })
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

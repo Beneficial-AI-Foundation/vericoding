@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus!{
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn remove_all_greater(v: Vec<i32>, e: i32) -> (result: Vec<i32>)
 
     requires 
@@ -10,10 +14,13 @@ fn remove_all_greater(v: Vec<i32>, e: i32) -> (result: Vec<i32>)
     ensures
         forall |k:int| 0 <= k < result.len() ==> result[k] <= e && v@.contains(result[k]),
         forall |k:int| 0 <= k < v.len() && v[k] <= e ==> result@.contains(v[k]),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

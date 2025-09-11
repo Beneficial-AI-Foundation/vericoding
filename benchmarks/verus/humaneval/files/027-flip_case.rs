@@ -28,15 +28,22 @@ spec fn flip_case_spec(c: char) -> (result:char) {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn flip_case(str: &[char]) -> (flipped_case: Vec<char>)
 
     ensures
         str@.len() == flipped_case@.len(),
         forall|i: int| 0 <= i < str.len() ==> flipped_case[i] == flip_case_spec(#[trigger] str[i]),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

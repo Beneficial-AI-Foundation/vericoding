@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn setdiff1d(ar1: Vec<i32>, ar2: Vec<i32>) -> (result: Vec<i32>)
     ensures
 
@@ -19,10 +23,13 @@ fn setdiff1d(ar1: Vec<i32>, ar2: Vec<i32>) -> (result: Vec<i32>)
             (exists|i: int| 0 <= i < ar1.len() && ar1[i] == val &&
              forall|j: int| 0 <= j < ar2.len() ==> ar2[j] != val) ==>
             exists|i: int| 0 <= i < result.len() && result[i] == val
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

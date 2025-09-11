@@ -20,15 +20,22 @@ spec fn count_digits_recursively(seq: Seq<char>) -> (result: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn count_digits(text: &Vec<char>) -> (count: usize)
 
     ensures
         0 <= count <= text.len(),
         count_digits_recursively(text@) == count,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

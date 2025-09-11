@@ -50,6 +50,10 @@ spec fn sum_squared_residuals_rec(x: Seq<int>, y: Seq<int>, coeffs: Seq<int>, n:
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn hermefit(x: Vec<i32>, y: Vec<i32>, deg: usize) -> (result: Vec<i32>)
     requires 
         x.len() == y.len(),
@@ -57,10 +61,13 @@ fn hermefit(x: Vec<i32>, y: Vec<i32>, deg: usize) -> (result: Vec<i32>)
         x.len() > 0,
     ensures 
         result.len() == deg + 1,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

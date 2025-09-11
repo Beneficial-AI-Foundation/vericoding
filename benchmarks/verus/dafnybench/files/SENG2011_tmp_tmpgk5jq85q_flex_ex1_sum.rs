@@ -10,14 +10,21 @@ spec fn sumcheck(s: &[int], i: int) -> int
     else { s[i as nat - 1] + sumcheck(s, i - 1) }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::exec_allows_no_decreases_clause]
 fn sum(s: &[int]) -> (a: int)
     requires s.len() > 0
     ensures sumcheck(s, s.len() as int) == a
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -14,15 +14,22 @@ proof fn min_of_multiset(m: Multiset<int>) -> (min: int)
     arbitrary()
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 exec fn sort(m: Multiset<int>) -> (s: Vec<int>)
 
     ensures 
         s@.to_multiset() == m,
         forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

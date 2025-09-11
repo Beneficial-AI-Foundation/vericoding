@@ -14,13 +14,20 @@ spec fn comb(n: nat, k: nat) -> nat
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn Comb(n: u64, k: u64) -> (res: u64)
     requires 0 <= k <= n
     ensures res == comb(n as nat, k as nat)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

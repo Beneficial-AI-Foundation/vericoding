@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_smallest(s: &Vec<nat>) -> (result: Option<nat>)
     ensures
         match result {
@@ -10,10 +14,13 @@ fn find_smallest(s: &Vec<nat>) -> (result: Option<nat>)
                       (exists|i: int| 0 <= i < s.len() && s[i] == r) &&
                       (forall|i: int| 0 <= i < s.len() ==> r <= s[i])
         },
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

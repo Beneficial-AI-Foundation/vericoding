@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[derive(Clone, Copy, PartialEq, Eq)]
 pub enum IntegerType {
     Int8,
@@ -39,10 +43,13 @@ fn iinfo(int_type: IntegerType) -> (result: IntegerInfo)
         IntegerType::UInt64 => 
             result.bits == 64 && result.min == 0 && result.max == 18446744073709551615,
     }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

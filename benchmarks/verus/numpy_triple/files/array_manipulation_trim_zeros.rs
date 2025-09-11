@@ -11,6 +11,10 @@ pub enum TrimMode {
     Both,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn trim_zeros(arr: Vec<f64>, mode: TrimMode) -> (result: Vec<f64>)
     ensures
         exists|start: int, finish: int|
@@ -32,10 +36,13 @@ fn trim_zeros(arr: Vec<f64>, mode: TrimMode) -> (result: Vec<f64>)
 
             (matches!(mode, TrimMode::Back | TrimMode::Both) ==> 
                 (finish == 0 || (finish > 0 && arr[finish - 1] != 0.0)))
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -27,6 +27,10 @@ spec fn first_even_odd_indices(lst: Seq<i32>) -> Option<(int, int)> {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_product(lst: &Vec<i32>) -> (result: i32)
     requires 
         lst.len() > 1,
@@ -37,10 +41,13 @@ fn find_product(lst: &Vec<i32>) -> (result: i32)
             Some((ei, oi)) => result == lst@[ei] * lst@[oi],
             None => true,
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

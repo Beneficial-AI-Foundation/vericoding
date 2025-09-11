@@ -17,13 +17,20 @@ fn threshold(thres: int, seq: Seq<int>) -> (res: (Seq<int>, Seq<int>))
     loop {}
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn quick_sort(seq: Seq<int>) -> (res: Seq<int>)
     ensures seq.to_multiset() == res.to_multiset()
     decreases seq.len()
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

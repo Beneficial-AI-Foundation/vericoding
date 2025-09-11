@@ -7,6 +7,10 @@ spec fn spec_prime(p: int) -> (ret:bool) {
     p > 1 && forall|k: int| 1 < k < p ==> #[trigger] (p % k) != 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn is_multiply_prime(x: u32) -> (ans: bool)
 
     requires
@@ -15,10 +19,13 @@ fn is_multiply_prime(x: u32) -> (ans: bool)
     ensures
         ans <==> exists|a: int, b: int, c: int|
             spec_prime(a) && spec_prime(b) && spec_prime(c) && x == a * b * c,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

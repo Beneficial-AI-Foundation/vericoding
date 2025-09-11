@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn rotate_right(l: &Vec<i32>, n: usize) -> (result: Vec<i32>)
     ensures
         result.len() == l.len(),
@@ -10,10 +14,13 @@ fn rotate_right(l: &Vec<i32>, n: usize) -> (result: Vec<i32>)
             let rotated_index = ((i - n as int + len) % len) as int;
             #[trigger] result[i] == l[rotated_index]
         },
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

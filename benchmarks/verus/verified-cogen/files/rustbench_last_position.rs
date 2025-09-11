@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn last_position(a: &[i32], elem: i32) -> (result: usize)
     requires
@@ -11,10 +15,13 @@ fn last_position(a: &[i32], elem: i32) -> (result: usize)
         0 <= result < a.len(),
         forall|i: int| result < i < a.len() ==> a[i] != elem,
         a[result as int] == elem,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

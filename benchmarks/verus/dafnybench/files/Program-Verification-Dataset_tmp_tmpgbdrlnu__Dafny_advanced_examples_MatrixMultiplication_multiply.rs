@@ -38,6 +38,10 @@ spec fn row_column_product_from(m1: &Vec<Vec<int>>, m2: &Vec<Vec<int>>, row: int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn multiply(m1: &Vec<Vec<int>>, m2: &Vec<Vec<int>>) -> (m3: Vec<Vec<int>>)
     requires
         m1.len() > 0,
@@ -51,10 +55,13 @@ fn multiply(m1: &Vec<Vec<int>>, m2: &Vec<Vec<int>>) -> (m3: Vec<Vec<int>>)
         forall|i: int| 0 <= i < m3.len() ==> #[trigger] m3[i].len() == m2[0].len(),
         forall|i: int, j: int| 0 <= i < m3.len() && 0 <= j < m2[0].len() ==>
             #[trigger] m3[i][j] == row_column_product(m1, m2, i, j),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

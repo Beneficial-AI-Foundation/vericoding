@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn search(s: Seq<int>, x: int) -> (k: usize)
 
     requires 
@@ -13,10 +17,13 @@ fn search(s: Seq<int>, x: int) -> (k: usize)
         forall|z: int| s.subrange(0, k as int).contains(z) ==> z <= x,
         forall|z: int| s.subrange(k as int, s.len() as int).contains(z) ==> z >= x,
         s == s.subrange(0, k as int).add(s.subrange(k as int, s.len() as int)),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

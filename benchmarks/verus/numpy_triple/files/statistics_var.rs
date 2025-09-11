@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn vec_sum(a: Seq<int>) -> int 
     decreases a.len()
 {
@@ -33,10 +37,13 @@ fn var(a: Vec<i32>, ddof: usize) -> (result: i32)
         ddof < a.len(),
     ensures 
         result >= 0,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

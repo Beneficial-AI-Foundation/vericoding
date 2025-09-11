@@ -6,6 +6,10 @@ spec fn is_even(n: int) -> bool {
     n % 2 == 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_even_numbers(arr: &[int]) -> (even_numbers: Vec<int>)
     ensures
 
@@ -19,10 +23,13 @@ fn find_even_numbers(arr: &[int]) -> (even_numbers: Vec<int>)
             exists|n: int, m: int| 0 <= n < m < arr.len() && 
                 #[trigger] even_numbers[k] == arr[n] && 
                 #[trigger] even_numbers[l] == arr[m]
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

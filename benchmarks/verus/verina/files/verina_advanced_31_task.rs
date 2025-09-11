@@ -15,6 +15,10 @@ spec fn is_strictly_increasing(seq: Seq<i32>) -> bool {
     forall|i: int| 0 <= i < seq.len() - 1 ==> #[trigger] seq[i] < seq[i + 1]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn longest_increasing_subseq_length(xs: &Vec<i32>) -> (result: usize)
     ensures
 
@@ -26,10 +30,13 @@ fn longest_increasing_subseq_length(xs: &Vec<i32>) -> (result: usize)
         forall|subseq: Seq<i32>| 
             (is_subsequence_of(subseq, xs@) && is_strictly_increasing(subseq)) 
             ==> subseq.len() <= result,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

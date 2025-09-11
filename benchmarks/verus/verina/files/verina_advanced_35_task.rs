@@ -18,6 +18,10 @@ spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn majority_element(nums: Seq<i32>) -> (result: i32)
     requires 
         nums.len() > 0,
@@ -25,10 +29,13 @@ fn majority_element(nums: Seq<i32>) -> (result: i32)
     ensures 
         count_occurrences(nums, result) > nums.len() / 2,
         forall|x: i32| x != result ==> count_occurrences(nums, x) <= nums.len() / 2,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

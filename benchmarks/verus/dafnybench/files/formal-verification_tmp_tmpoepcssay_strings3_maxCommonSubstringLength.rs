@@ -49,15 +49,22 @@ fn have_common_k_substring(k: usize, str1: Seq<char>, str2: Seq<char>) -> (found
     false
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn max_common_substring_length(str1: Seq<char>, str2: Seq<char>) -> (len: usize)
     requires str1.len() <= str2.len(),
     ensures 
         forall|k: nat| #![auto] len < k <= str1.len() ==> !have_common_k_substring_pred(k, str1, str2),
         have_common_k_substring_pred(len as nat, str1, str2),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

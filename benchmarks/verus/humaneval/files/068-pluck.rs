@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn pluck_smallest_even(nodes: &Vec<u32>) -> (result: Vec<u32>)
 
     requires
@@ -20,10 +24,13 @@ fn pluck_smallest_even(nodes: &Vec<u32>) -> (result: Vec<u32>)
                 0 <= i < nodes@.len() && nodes@[i] % 2 == 0 ==> node <= nodes@[i] && forall|i: int|
                     0 <= i < result@[1] ==> nodes@[i] % 2 != 0 || nodes@[i] > node
         },
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

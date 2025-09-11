@@ -2,15 +2,22 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn cylinder_lateral_surface_area(radius: u64, height: u64) -> (area: u64)
     requires 
         radius > 0,
         height > 0,
     ensures area == 2 * radius * height * 314 / 100,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

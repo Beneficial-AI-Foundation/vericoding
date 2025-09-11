@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn fftshift(x: Vec<f32>) -> (result: Vec<f32>)
     requires x.len() > 0,
     ensures
@@ -13,10 +17,13 @@ fn fftshift(x: Vec<f32>) -> (result: Vec<f32>)
         forall|val: f32| 
             (exists|j: int| 0 <= j < x.len() && x[j] == val) <==>
             (exists|k: int| 0 <= k < result.len() && result[k] == val)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

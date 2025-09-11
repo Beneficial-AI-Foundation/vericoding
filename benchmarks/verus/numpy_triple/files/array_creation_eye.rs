@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn eye(n: usize) -> (result: Vec<Vec<f32>>)
     ensures
         result.len() == n,
@@ -16,10 +20,13 @@ fn eye(n: usize) -> (result: Vec<Vec<f32>>)
             result[i][j] == 1.0f32 && forall|k: int| 0 <= k < n && result[k][j] == 1.0f32 ==> k == i,
         forall|i: int, j: int| 0 <= i < n && 0 <= j < n && i != j ==> 
             result[i][j] == 0.0f32,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

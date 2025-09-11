@@ -23,6 +23,10 @@ spec fn is_permutation2(a: Seq<int>, b: Seq<int>) -> bool {
     a.to_multiset() == b.to_multiset()
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_min_index(a: &[int], s: usize, e: usize) -> (min_i: usize)
     requires
         a.len() > 0,
@@ -33,10 +37,13 @@ fn find_min_index(a: &[int], s: usize, e: usize) -> (min_i: usize)
         min_i >= s,
         min_i < e,
         forall|k: int| s <= k < e ==> a[min_i as int] <= a[k],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_even_numbers(arr: &[i32]) -> (even_numbers: Vec<i32>)
     ensures 
         (forall|x: i32| arr@.contains(x) && x % 2 == 0 ==> even_numbers@.contains(x)) &&
@@ -11,10 +15,13 @@ fn find_even_numbers(arr: &[i32]) -> (even_numbers: Vec<i32>)
             exists|n: int, m: int| 0 <= n < m < arr@.len() && 
             #[trigger] even_numbers@[k] == #[trigger] arr@[n] && 
             #[trigger] even_numbers@[l] == #[trigger] arr@[m])
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

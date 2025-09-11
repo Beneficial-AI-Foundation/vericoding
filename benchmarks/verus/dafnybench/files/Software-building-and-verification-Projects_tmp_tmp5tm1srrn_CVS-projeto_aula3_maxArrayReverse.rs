@@ -30,15 +30,22 @@ spec fn sum(n: nat) -> nat
     if n == 0 { 0 } else { n + sum((n - 1) as nat) }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn maxArrayReverse(arr: &[i32]) -> (max: i32)
     requires arr.len() > 0
     ensures 
         forall|i: int| 0 <= i < arr.len() ==> arr[i] <= max,
         exists|x: int| 0 <= x < arr.len() && arr[x] == max
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

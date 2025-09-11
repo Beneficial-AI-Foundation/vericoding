@@ -23,13 +23,20 @@ spec fn count_even(s: Seq<int>) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn mcount_even(v: &Vec<i32>) -> (n: i32)
     requires positive(v@.map(|i: int, x: i32| x as int))
     ensures n as int == count_even(v@.map(|i: int, x: i32| x as int))
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

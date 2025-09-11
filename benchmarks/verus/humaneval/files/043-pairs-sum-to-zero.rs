@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn pairs_sum_to_zero(nums: &[i32], target: i32) -> (found: bool)
 
@@ -13,10 +17,13 @@ fn pairs_sum_to_zero(nums: &[i32], target: i32) -> (found: bool)
 
     ensures
         found <==> exists|i: int, j: int| 0 <= i < j < nums.len() && nums[i] + nums[j] == target,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

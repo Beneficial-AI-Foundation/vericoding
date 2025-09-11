@@ -22,6 +22,10 @@ spec fn calculate_acc(gas: &Vec<i32>, cost: &Vec<i32>, start: int, steps: int) -
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn can_complete_circuit(gas: &Vec<i32>, cost: &Vec<i32>) -> (result: i32)
     requires 
         gas.len() == cost.len(),
@@ -33,10 +37,13 @@ fn can_complete_circuit(gas: &Vec<i32>, cost: &Vec<i32>) -> (result: i32)
             valid_starting_point(gas, cost, result as int) &&
             (forall|start: int| 0 <= start < result ==> !valid_starting_point(gas, cost, start))
         ),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

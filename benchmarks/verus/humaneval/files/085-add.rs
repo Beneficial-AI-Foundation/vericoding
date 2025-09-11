@@ -20,6 +20,10 @@ spec fn add_odd_evens(lst: Seq<u32>) -> (ret:int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn add(lst: Vec<u32>) -> (sum: u64)
 
     requires
@@ -27,10 +31,13 @@ fn add(lst: Vec<u32>) -> (sum: u64)
 
     ensures
         sum == add_odd_evens(lst@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

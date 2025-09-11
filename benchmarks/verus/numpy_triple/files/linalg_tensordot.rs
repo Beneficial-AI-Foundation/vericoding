@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn dot_product_recursive(a: Seq<i32>, b: Seq<i32>, i: nat) -> int
     decreases a.len() - i
 {
@@ -21,10 +25,13 @@ fn tensordot(a: Vec<i32>, b: Vec<i32>, axes: usize) -> (result: i32)
         a.len() == b.len(),
         axes == 1,
     ensures result == dot_product(a@, b@)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

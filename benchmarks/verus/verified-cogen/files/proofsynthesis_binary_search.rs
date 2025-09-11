@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus!{
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn binary_search(v: &Vec<u64>, k: u64) -> (result:usize)
 
     requires
@@ -11,10 +15,13 @@ fn binary_search(v: &Vec<u64>, k: u64) -> (result:usize)
     ensures
         result < v.len(),
         k == v[result as int],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

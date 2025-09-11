@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn find_substring_at(haystack: Seq<char>, needle: Seq<char>, pos: int) -> bool {
     pos >= 0 && pos + needle.len() <= haystack.len() &&
     haystack.subrange(pos, pos + needle.len()) == needle
@@ -38,10 +42,13 @@ fn find(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) ->
 
             (start[i] > end_pos[i] ==> result[i] == -1)
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

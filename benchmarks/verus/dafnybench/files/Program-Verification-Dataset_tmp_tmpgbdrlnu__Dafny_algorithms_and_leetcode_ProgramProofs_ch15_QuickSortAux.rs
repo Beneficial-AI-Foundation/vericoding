@@ -28,6 +28,10 @@ fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
     lo
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
     requires 
         0 <= lo <= hi <= old(a).len(),
@@ -37,10 +41,13 @@ fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
         swap_frame(old(a)@, a@, lo as int, hi as int),
         split_point(a@, lo as int) && split_point(a@, hi as int),
     decreases hi - lo
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

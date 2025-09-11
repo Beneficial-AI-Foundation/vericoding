@@ -14,6 +14,10 @@ spec fn is_2_pow(n: int) -> bool
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn search_1000(a: &[i32], x: i32) -> (k: usize)
     requires 
         a.len() >= 1000,
@@ -22,10 +26,13 @@ fn search_1000(a: &[i32], x: i32) -> (k: usize)
         0 <= k <= 1000,
         forall|r: int| 0 <= r < k ==> a[r] < x,
         forall|r: int| k <= r < 1000 ==> a[r] >= x,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

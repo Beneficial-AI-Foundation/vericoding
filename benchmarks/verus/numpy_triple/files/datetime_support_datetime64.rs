@@ -30,6 +30,10 @@ pub struct DateTime64 {
     pub is_utc: bool,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn datetime64(offset: i64, unit: TimeUnit) -> (result: DateTime64)
     ensures 
         result.offset == offset,
@@ -46,10 +50,13 @@ fn datetime64(offset: i64, unit: TimeUnit) -> (result: DateTime64)
             TimeUnit::Microseconds => true,
             TimeUnit::Nanoseconds => true,
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

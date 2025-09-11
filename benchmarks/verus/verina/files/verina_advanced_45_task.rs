@@ -12,6 +12,10 @@ spec fn spec_sum(xs: &Vec<i32>, start: int, len: int) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn max_subarray_sum(xs: &Vec<i32>) -> (result: i32)
     ensures
         xs.len() == 0 ==> result == 0,
@@ -26,10 +30,13 @@ fn max_subarray_sum(xs: &Vec<i32>) -> (result: i32)
             1 <= len <= xs.len() - start
             ==> spec_sum(xs, start, len) <= result as int
         ),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

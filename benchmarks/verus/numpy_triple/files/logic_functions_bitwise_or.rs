@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn bitwise_or(x: i32, y: i32) -> i32;
 
 proof fn bitwise_or_comm(x: i32, y: i32)
@@ -30,10 +34,13 @@ fn numpy_bitwise_or(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() ==> bitwise_or(x1[i], x2[i]) == bitwise_or(x2[i], x1[i]),
         forall|i: int| 0 <= i < result.len() ==> bitwise_or(x1[i], 0) == x1[i],
         forall|i: int| 0 <= i < result.len() ==> bitwise_or(x1[i], x1[i]) == x1[i],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn resize<T>(a: Vec<T>, new_size: usize) -> (result: Vec<T>)
     ensures
         result.len() == new_size,
@@ -14,10 +18,13 @@ fn resize<T>(a: Vec<T>, new_size: usize) -> (result: Vec<T>)
                 true
             }
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

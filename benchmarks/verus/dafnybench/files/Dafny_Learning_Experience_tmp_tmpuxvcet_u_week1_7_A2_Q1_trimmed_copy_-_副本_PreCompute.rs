@@ -24,16 +24,23 @@ fn compute_count(count_index: usize, a: &Vec<i32>, b: &mut Vec<i32>) -> (p: usiz
   0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn pre_compute(a: &Vec<i32>, b: &mut Vec<i32>) -> (p: usize)
     requires 
         a.len() == old(b).len(),
     ensures 
         (b.len() == 0 || (a.len() == b.len() && 1 <= b.len() <= a.len())) &&
         p == count(b.len() as nat, a@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

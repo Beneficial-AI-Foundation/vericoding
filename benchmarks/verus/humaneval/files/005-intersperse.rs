@@ -31,14 +31,21 @@ spec fn intersperse_quantified(numbers: Seq<u64>, delimiter: u64, interspersed: 
         0 <= i < numbers.len() - 1 ==> #[trigger] interspersed[odd(i)] == delimiter)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn intersperse(numbers: Vec<u64>, delimiter: u64) -> (result: Vec<u64>)
 
     ensures
         result@ == intersperse_spec(numbers@, delimiter),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

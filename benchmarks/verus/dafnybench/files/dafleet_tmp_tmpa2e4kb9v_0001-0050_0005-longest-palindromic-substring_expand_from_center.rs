@@ -65,6 +65,10 @@ spec fn max_interval_for_same_center(s: Seq<char>, k: int, lo: int, hi: int) -> 
     &&& forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s, i, j) && i + j == k ==> j - i <= hi - lo
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn expand_from_center(s: Seq<char>, i0: usize, j0: usize) -> (result: (usize, usize))
     requires 0 <= i0 <= j0 <= s.len(),
              palindromic(s, i0 as int, j0 as int)
@@ -77,10 +81,13 @@ fn expand_from_center(s: Seq<char>, i0: usize, j0: usize) -> (result: (usize, us
               && i + j == i0 + j0
               ==> j - i <= hi - lo
         })
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

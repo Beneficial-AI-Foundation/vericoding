@@ -42,14 +42,21 @@ spec fn mem<T: PartialEq>(x: T, l: &List<T>) -> bool
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn query_fast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
     requires 
         is_prefix_sum_for(a, c) && 0 <= i <= j <= a.len() < c.len()
     ensures r == sum(a, i, j)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

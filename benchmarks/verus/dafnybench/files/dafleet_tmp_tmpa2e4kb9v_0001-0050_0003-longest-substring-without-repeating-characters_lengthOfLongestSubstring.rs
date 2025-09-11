@@ -22,14 +22,21 @@ pub open spec fn valid_interval(s: Seq<char>, iv: Interval) -> bool {
     &&& forall|i: int, j: int| iv.start <= i < j < iv.end ==> s[i] != s[j]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn lengthOfLongestSubstring(s: Seq<char>) -> (result: (usize, Ghost<Interval>))
     ensures 
         (valid_interval(s, result.1@) && length(result.1@) == result.0 as int),
         (forall|iv: Interval| valid_interval(s, iv) ==> length(iv) <= result.0 as int),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

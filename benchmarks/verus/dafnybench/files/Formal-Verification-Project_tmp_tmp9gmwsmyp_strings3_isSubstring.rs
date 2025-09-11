@@ -37,12 +37,19 @@ spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char
     forall|i1: int, j1: int| 0 <= i1 <= str1.len() - k && j1 == i1 + k ==> is_not_substring_pred(str1.subrange(i1, j1), str2)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn is_substring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
     ensures res <==> is_substring_pred(sub, str)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -49,12 +49,19 @@ fn multiplicity_examples<T>()
   assume(false);
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn vector_Sum(v: Seq<int>) -> (x: i32)
     ensures x == sum(v)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn diagonal(a: Vec<Vec<f64>>, offset: i32) -> (result: Vec<f64>)
     requires 
         a.len() > 0,
@@ -25,10 +29,13 @@ fn diagonal(a: Vec<Vec<f64>>, offset: i32) -> (result: Vec<f64>)
                 #[trigger] result[i] == a[i + (-offset) as int][i]
             }
         },
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

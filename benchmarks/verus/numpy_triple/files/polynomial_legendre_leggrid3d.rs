@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn leggrid3d(x: Vec<f64>, y: Vec<f64>, z: Vec<f64>, c: Vec<Vec<Vec<f64>>>) -> (result: Vec<Vec<Vec<f64>>>)
     requires 
         x.len() > 0,
@@ -27,10 +31,13 @@ fn leggrid3d(x: Vec<f64>, y: Vec<f64>, z: Vec<f64>, c: Vec<Vec<Vec<f64>>>) -> (r
             ((i1 != i2 || j1 != j2 || k1 != k2) ==> 
              (result[i1][j1][k1] != result[i2][j2][k2] || 
               (x[i1] == x[i2] && y[j1] == y[j2] && z[k1] == z[k2])))
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -21,13 +21,20 @@ proof fn L1(n: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn DivMod1(a: u32, b: u32) -> (result: (u32, u32))
     requires b > 0 && a >= 0
     ensures a == b * result.0 + result.1 && 0 <= result.1 < b
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

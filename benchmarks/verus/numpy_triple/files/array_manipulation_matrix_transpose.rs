@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn matrix_transpose(mat: &Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
     requires 
         mat.len() > 0,
@@ -13,10 +17,13 @@ fn matrix_transpose(mat: &Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
 
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==> 
             result[i][j] == mat[j][i],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

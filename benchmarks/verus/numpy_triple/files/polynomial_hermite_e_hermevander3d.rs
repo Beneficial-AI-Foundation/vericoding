@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn hermite_poly(k: int, t: f64) -> f64
     decreases k
 {
@@ -31,10 +35,13 @@ fn hermevander3d(x: Vec<f64>, y: Vec<f64>, z: Vec<f64>, deg: Vec<int>) -> (resul
             &&& #[trigger] result[p].len() == order
             &&& (order > 0 ==> result[p][0] == 1.0)
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn fliplr(m: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
     requires 
         m.len() > 0,
@@ -17,10 +21,13 @@ fn fliplr(m: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
         forall|i: int, x: f32| 0 <= i < result.len() ==>
             ((exists|j: int| 0 <= j < m[i].len() && m[i][j] == x) <==> 
              (exists|j: int| 0 <= j < result[i].len() && result[i][j] == x)),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

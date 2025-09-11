@@ -37,16 +37,23 @@ spec fn inv_sub_set(b: Seq<int>, c: Seq<int>, d: Seq<int>, i: nat, j: nat) -> bo
         c.subrange(0, i as int).to_multiset().add(d.subrange(0, j as int).to_multiset())
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn merge_sort(a: Vec<int>) -> (b: Vec<int>)
     ensures
         b.len() == a.len(),
         sorted(b@),
         a@.to_multiset() == b@.to_multiset(),
     decreases a.len()
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

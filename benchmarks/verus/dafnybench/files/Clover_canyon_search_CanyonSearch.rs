@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn canyon_search(a: &[i32], b: &[i32]) -> (d: u32)
   requires 
       a.len() != 0 && b.len() != 0,
@@ -20,10 +24,13 @@ fn canyon_search(a: &[i32], b: &[i32]) -> (d: u32)
           } else { 
               a[i] - b[j]
           }),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

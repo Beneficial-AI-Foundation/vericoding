@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn amax(a: Vec<i32>) -> (result: i32)
     requires a.len() > 0,
     ensures
@@ -15,10 +19,13 @@ fn amax(a: Vec<i32>) -> (result: i32)
         ((forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a@[i] == a@[j]) ==> 
             result == a@[0]) &&
         (exists|witness: int| 0 <= witness < a.len() && result == a@[witness])
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

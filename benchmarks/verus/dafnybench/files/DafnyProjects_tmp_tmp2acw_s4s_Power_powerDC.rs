@@ -8,12 +8,19 @@ spec fn power(x: int, n: nat) -> int
     if n == 0 { 1 } else { x * power(x, (n - 1) as nat) }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn power_dc(x: i64, n: u64) -> (p: i64)
     ensures p == power(x as int, n as nat)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

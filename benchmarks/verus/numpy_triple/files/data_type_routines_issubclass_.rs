@@ -88,6 +88,10 @@ spec fn is_subclass_spec(t: NumpyTypeClass, t_prime: NumpyTypeClass) -> bool {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn issubclass_(arg1: NumpyTypeClass, arg2: NumpyTypeClass) -> (result: bool)
     ensures
 
@@ -106,10 +110,13 @@ fn issubclass_(arg1: NumpyTypeClass, arg2: NumpyTypeClass) -> (result: bool)
         (arg1 == NumpyTypeClass::IntegerType && arg2 == NumpyTypeClass::ScalarType) ==> (result == true),
         (arg1 == NumpyTypeClass::FloatingType && arg2 == NumpyTypeClass::ScalarType) ==> (result == true),
         (arg1 == NumpyTypeClass::ComplexType && arg2 == NumpyTypeClass::ScalarType) ==> (result == true)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

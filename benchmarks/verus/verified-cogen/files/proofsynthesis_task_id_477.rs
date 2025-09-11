@@ -10,6 +10,10 @@ spec fn shift32_spec(c: char) -> (result:char) {
     ((c as u8) + 32) as char
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn to_lowercase(str1: &Vec<char>) -> (result: Vec<char>)
 
     ensures
@@ -20,10 +24,13 @@ fn to_lowercase(str1: &Vec<char>) -> (result: Vec<char>)
             } else {
                 str1[i]
             }),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

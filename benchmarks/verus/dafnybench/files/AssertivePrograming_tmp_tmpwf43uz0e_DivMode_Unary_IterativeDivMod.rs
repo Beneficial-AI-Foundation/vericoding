@@ -92,13 +92,20 @@ fn iterative_div_mod_prime(x: Unary, y: Unary) -> (res: (Unary, Unary))
     (Unary::Zero, Unary::Zero)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn iterative_div_mod(x: Unary, y: Unary) -> (res: (Unary, Unary))
     requires y != Unary::Zero
     ensures add(mul(res.0, y), res.1) == x && less(res.1, y)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

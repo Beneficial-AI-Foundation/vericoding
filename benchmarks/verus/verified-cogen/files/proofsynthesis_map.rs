@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus!{
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn myfun2(x: &mut Vec<i32>) 
 
     requires 
@@ -10,10 +14,13 @@ fn myfun2(x: &mut Vec<i32>)
     ensures 
         x@.len() == old(x)@.len(),
         forall |k:int| 0 <= k < x.len() ==> #[trigger] x@[k] == old(x)@[k] + 4,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -10,6 +10,10 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
     (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
     requires
         n >= 2,
@@ -28,10 +32,13 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
         result == exists|i: int, j: int| 
             0 <= i < chords.len() && 0 <= j < chords.len() && i != j &&
             #[trigger] chord_intersects(&chords[i], &chords[j]),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -42,13 +42,20 @@ spec fn mem<T>(x: T, l: List<T>) -> bool
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 exec fn query(a: &[i32], i: usize, j: usize) -> (s: i32)
     requires 0 <= i <= j <= a.len()
     ensures s == sum(a@.map(|k, x| x as int), i as int, j as int)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

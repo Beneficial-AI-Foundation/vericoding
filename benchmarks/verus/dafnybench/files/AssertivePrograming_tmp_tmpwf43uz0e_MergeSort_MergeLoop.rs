@@ -25,6 +25,10 @@ spec fn inv_sub_set(b: Seq<int>, c: Seq<int>, d: Seq<int>, i: nat, j: nat) -> bo
     c.subrange(0, i as int).to_multiset().add(d.subrange(0, j as int).to_multiset())
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn merge_loop(b: &mut Vec<int>, c: &Vec<int>, d: &Vec<int>, i0: usize, j0: usize) -> (r: (usize, usize))
         requires
             old(b).len() == c.len() + d.len(),
@@ -43,10 +47,13 @@ fn merge_loop(b: &mut Vec<int>, c: &Vec<int>, d: &Vec<int>, i0: usize, j0: usize
             inv_sorted(b@, c@, d@, r.0 as nat, r.1 as nat),
 
             0 <= c.len() - r.0 < c.len() - i0 || (c.len() - r.0 == c.len() - i0 && 0 <= d.len() - r.1 < d.len() - j0)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

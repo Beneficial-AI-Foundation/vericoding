@@ -17,13 +17,20 @@ fn binary_search(v: &[int], elem: int) -> (p: i32)
     -1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn search(v: &[int], elem: int) -> (b: bool)
     requires sorted(v@)
     ensures b == v@.contains(elem)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

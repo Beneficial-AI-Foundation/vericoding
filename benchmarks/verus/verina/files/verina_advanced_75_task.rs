@@ -14,6 +14,10 @@ spec fn spec_subarray_sum(sequence: Seq<i32>, start: int, end: int) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn task_code(sequence: Vec<i32>) -> (result: i32)
     requires sequence.len() > 0,
     ensures 
@@ -22,10 +26,13 @@ fn task_code(sequence: Vec<i32>) -> (result: i32)
             result as int == spec_subarray_sum(sequence@, start, end) &&
             forall|s: int, e: int| (0 <= s < e <= sequence.len()) ==> 
                 spec_subarray_sum(sequence@, s, e) <= result as int,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

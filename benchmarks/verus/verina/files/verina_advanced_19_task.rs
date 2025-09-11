@@ -40,13 +40,20 @@ spec fn normalize_string(s: &str) -> Seq<char> {
     )
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn is_clean_palindrome(s: &str) -> (result: bool)
     ensures 
         result == (normalize_string(s) == normalize_string(s).reverse()),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -28,6 +28,10 @@ spec fn partitioned(a: &Vec<Vec<i32>>, i: int) -> bool
     forall|k: int, k_prime: int| 0 <= k <= i < k_prime < a.len() ==> #[trigger] a[k][1] <= #[trigger] a[k_prime][1]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn non_overlapping_intervals(intervals: &mut Vec<Vec<i32>>) -> (count: i32)
     requires
         1 <= old(intervals).len() <= 100000,
@@ -37,10 +41,13 @@ fn non_overlapping_intervals(intervals: &mut Vec<Vec<i32>>) -> (count: i32)
 
     ensures
         count >= 0,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

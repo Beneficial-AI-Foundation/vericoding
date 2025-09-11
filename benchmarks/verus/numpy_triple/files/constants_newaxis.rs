@@ -6,6 +6,10 @@ pub enum NewAxis {
     Newaxis,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn expand_to_column<T>(v: Vec<T>, axis: NewAxis) -> (result: Vec<Vec<T>>)
     ensures
         result.len() == v.len(),
@@ -13,10 +17,13 @@ fn expand_to_column<T>(v: Vec<T>, axis: NewAxis) -> (result: Vec<Vec<T>>)
             result[i].len() == 1 &&
             result[i][0] == v[i]
         ),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn incr_list(l: Vec<i32>) -> (result: Vec<i32>)
 
     requires
@@ -10,10 +14,13 @@ fn incr_list(l: Vec<i32>) -> (result: Vec<i32>)
     ensures
         result.len() == l.len(),
         forall|i: int| 0 <= i < l.len() ==> #[trigger] result[i] == l[i] + 1,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn laggrid3d(
     x: Vec<f32>,
     y: Vec<f32>, 
@@ -20,10 +24,13 @@ fn laggrid3d(
         forall|i: int, j: int, k: int| 
             0 <= i < result.len() && 0 <= j < result[i].len() && 0 <= k < result[i][j].len()
             ==> exists|val: f32| result[i][j][k] == val,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

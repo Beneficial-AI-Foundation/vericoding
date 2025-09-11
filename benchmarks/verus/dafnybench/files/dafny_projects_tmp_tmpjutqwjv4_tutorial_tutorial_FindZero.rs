@@ -53,6 +53,10 @@ spec fn path_specific(p: Seq<int>, start: int, end: int, graph: Set<int>) -> boo
     path(p, graph)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_zero(a: &[int]) -> (index: i32)
     requires 
         forall|i: int| #![trigger a[i]] 0 <= i < a.len() ==> 0 <= a[i],
@@ -60,10 +64,13 @@ fn find_zero(a: &[int]) -> (index: i32)
     ensures 
         index < 0 ==> forall|i: int| #![trigger a[i]] 0 <= i < a.len() ==> a[i] != 0,
         0 <= index ==> index < a.len() && a[index as int] == 0,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

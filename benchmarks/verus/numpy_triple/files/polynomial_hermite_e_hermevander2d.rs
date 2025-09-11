@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn hermite_basis(k: nat, t: int) -> int
     decreases k
 {
@@ -22,10 +26,13 @@ fn hermevander2d(x: Vec<i32>, y: Vec<i32>, x_deg: usize, y_deg: usize) -> (resul
         result.len() == x.len(),
         forall|point_idx: int| 0 <= point_idx < result.len() ==> 
             result[point_idx].len() == (x_deg + 1) * (y_deg + 1),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

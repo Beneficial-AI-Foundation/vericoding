@@ -24,6 +24,10 @@ spec fn min_rcur(seq: Seq<i32>) -> (result: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn difference_max_min(arr: &Vec<i32>) -> (diff: i32)
 
     requires
@@ -32,10 +36,13 @@ fn difference_max_min(arr: &Vec<i32>) -> (diff: i32)
 
     ensures
         diff == max_rcur(arr@) - min_rcur(arr@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

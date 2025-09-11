@@ -22,15 +22,22 @@ spec fn sum_up(nums: Seq<int>) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_pivot_index(nums: &Vec<i32>) -> (index: i32)
     requires nums.len() > 0
     ensures 
         index == -1 ==> forall |k: nat| #[trigger] sum(nums@.map_values(|v: i32| v as int).subrange(0, k as int)) != #[trigger] sum(nums@.map_values(|v: i32| v as int).subrange((k + 1) as int, nums@.len() as int)),
         0 <= index < nums.len() ==> sum(nums@.map_values(|v: i32| v as int).subrange(0, index as int)) == sum(nums@.map_values(|v: i32| v as int).subrange((index + 1) as int, nums@.len() as int))
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

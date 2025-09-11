@@ -12,13 +12,20 @@ spec fn check_find_first_odd(arr: &Vec<u32>, index: Option<usize>) -> (result: b
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_first_odd(arr: &Vec<u32>) -> (index: Option<usize>)
 
     ensures check_find_first_odd(arr, index),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

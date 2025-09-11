@@ -30,6 +30,10 @@ spec fn inner_expr_lemma_update_effect_on_count<T>(s: Seq<T>, i: int, v: T, x: T
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn sort_even(l: Vec<i32>) -> (result: Vec<i32>)
 
@@ -40,10 +44,13 @@ fn sort_even(l: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int, j: int|
             #![auto]
             0 <= i < j < l.len() && i % 2 == 0 && j % 2 == 0 ==> result[i] <= result[j],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

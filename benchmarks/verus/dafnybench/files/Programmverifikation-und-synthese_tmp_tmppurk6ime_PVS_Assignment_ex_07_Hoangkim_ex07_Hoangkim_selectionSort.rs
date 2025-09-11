@@ -18,11 +18,18 @@ spec fn sorted(a: Seq<i32>) -> bool {
     forall|i: int| 0 < i < a.len() ==> #[trigger] a[i-1] <= a[i]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn selection_sort(a: &mut [i32])
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -79,16 +79,23 @@ spec fn max_interval_for_same_center(s: Seq<char>, k: int, lo: int, hi: int) -> 
     && (forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s, i, j) && i + j == k ==> j - i <= hi - lo)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn longestPalindrome(s: Vec<char>) -> (ans: (Vec<char>, usize, usize))
     ensures 
         0 <= ans.1 <= ans.2 <= s.len(),
         ans.0@ == s@.subrange(ans.1 as int, ans.2 as int),
         palindromic(s@, ans.1 as int, ans.2 as int),
         forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s@, i, j) ==> j - i <= ans.2 - ans.1,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

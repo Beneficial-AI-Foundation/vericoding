@@ -40,16 +40,23 @@ pub struct TimeDelta64 {
     pub unit: TimeUnit,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn timedelta64(value: i64, unit: TimeUnit) -> (result: TimeDelta64)
     ensures 
         result.value == value,
         result.unit == unit,
         result.value >= -9223372036854775808i64,
         result.value <= 9223372036854775807i64,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

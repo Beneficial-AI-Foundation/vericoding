@@ -16,14 +16,21 @@ spec fn spec_fibfib(n: nat) -> (ret: nat)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn fibfib(x: u32) -> (ret: Option<u32>)
 
     ensures
         ret.is_some() ==> spec_fibfib(x as nat) == ret.unwrap(),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

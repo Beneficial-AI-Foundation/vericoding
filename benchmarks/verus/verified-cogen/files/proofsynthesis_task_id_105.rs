@@ -16,15 +16,22 @@ spec fn count_boolean(seq: Seq<bool>) -> (result: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn count_true(arr: &Vec<bool>) -> (count: u64)
 
     ensures
         0 <= count <= arr.len(),
         count_boolean(arr@) == count,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

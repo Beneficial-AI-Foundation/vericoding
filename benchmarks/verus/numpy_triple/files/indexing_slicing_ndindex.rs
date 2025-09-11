@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn ndindex(shape: (usize, usize)) -> (indices: Vec<(usize, usize)>)
     requires shape.0 > 0 && shape.1 > 0,
     ensures 
@@ -17,10 +21,13 @@ fn ndindex(shape: (usize, usize)) -> (indices: Vec<(usize, usize)>)
             let (i, j) = indices[k];
             k == i * shape.1 + j
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

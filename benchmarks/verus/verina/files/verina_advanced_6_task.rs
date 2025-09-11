@@ -14,6 +14,10 @@ spec fn normalize_str(s: &str) -> Seq<char> {
     s.view().map_values(|c| to_lower(c))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn all_vowels(s: &str) -> (result: bool)
     ensures
         result <==> (
@@ -23,10 +27,13 @@ fn all_vowels(s: &str) -> (result: bool)
             normalize_str(s).contains('o') &&
             normalize_str(s).contains('u')
         ),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

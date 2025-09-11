@@ -6,6 +6,10 @@ spec fn is_prime_pred(n: u32) -> bool {
     forall|k: int| 2 <= k < n ==> #[trigger] (n as int % k) != 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn largest_prime_factor(n: u32) -> (result: u32)
     requires
@@ -13,10 +17,13 @@ fn largest_prime_factor(n: u32) -> (result: u32)
     ensures
         1 <= result <= n,
         result == 1 || (result > 1 && is_prime_pred(result))
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn unique_better(a: &[i32]) -> (result: Vec<i32>)
     requires
@@ -12,10 +16,13 @@ fn unique_better(a: &[i32]) -> (result: Vec<i32>)
         forall|i: int, j: int|
             #![trigger result[i], result[j]]
             0 <= i && i < j && j < result.len() ==> result[i] < result[j],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

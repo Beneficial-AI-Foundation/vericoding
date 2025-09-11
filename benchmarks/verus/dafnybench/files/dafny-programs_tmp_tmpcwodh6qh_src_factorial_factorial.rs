@@ -8,13 +8,20 @@ spec fn fact(n: nat) -> nat
     if n == 0 { 1 } else { n * fact((n - 1) as nat) }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn factorial(n: u32) -> (res: u32)
     requires n <= 12
     ensures res == fact(n as nat)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

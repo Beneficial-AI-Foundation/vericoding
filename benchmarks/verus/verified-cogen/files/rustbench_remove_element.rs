@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn remove_element(a: &[i32], pos: usize) -> (result: Vec<i32>)
     requires
@@ -10,10 +14,13 @@ fn remove_element(a: &[i32], pos: usize) -> (result: Vec<i32>)
         result.len() == a.len() - 1,
         forall|i: int| 0 <= i < pos ==> result[i] == a[i],
         forall|i: int| pos <= i < result.len() ==> result[i] == a[i + 1],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

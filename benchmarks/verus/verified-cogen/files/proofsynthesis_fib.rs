@@ -13,6 +13,10 @@ spec fn fibo_fits_i32(n: int) -> (result:bool) {
     fibo(n) < 0x8000_0000
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn fibonacci(n: usize) -> (ret: Vec<i32>)
 
     requires
@@ -22,10 +26,13 @@ fn fibonacci(n: usize) -> (ret: Vec<i32>)
     ensures
         forall |i: int| 2 <= i < n ==> #[trigger] ret@[i] ==  fibo(i), 
         ret@.len() == n,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

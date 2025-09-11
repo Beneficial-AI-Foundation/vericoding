@@ -27,6 +27,10 @@ impl BroadcastObject {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn broadcast(x: Vec<f32>, y: Vec<f32>) -> (result: BroadcastObject)
     requires 
         x.len() > 0,
@@ -37,10 +41,13 @@ fn broadcast(x: Vec<f32>, y: Vec<f32>) -> (result: BroadcastObject)
         forall|i: int, j: int| 
             0 <= i < x.len() && 0 <= j < y.len() ==> 
             result.get_element(i, j) == (x[i], y[j])
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

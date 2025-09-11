@@ -18,13 +18,20 @@ spec fn count_less_than_spec(numbers: Seq<i32>, threshold: i32) -> nat
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn count_less_than(numbers: &Vec<i32>, threshold: i32) -> (result: usize)
     ensures
         result == count_less_than_spec(numbers@, threshold),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

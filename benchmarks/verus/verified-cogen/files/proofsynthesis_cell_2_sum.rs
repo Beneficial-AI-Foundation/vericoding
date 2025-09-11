@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus!{
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn myfun(a: &mut Vec<u32>, N: u32) -> (sum: u32)
 
     requires 
@@ -10,10 +14,13 @@ fn myfun(a: &mut Vec<u32>, N: u32) -> (sum: u32)
 
     ensures
         sum <= 2*N,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

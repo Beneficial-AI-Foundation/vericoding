@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn square_nums(nums: &Vec<i32>) -> (squared: Vec<i32>)
 
     requires
@@ -11,10 +15,13 @@ fn square_nums(nums: &Vec<i32>) -> (squared: Vec<i32>)
     ensures
         nums.len() == squared.len(),
         forall|k: int| 0 <= k < nums.len() ==> (#[trigger] squared[k] == nums[k] * nums[k]),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

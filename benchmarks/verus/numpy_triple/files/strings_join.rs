@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn join_chars(separator: Seq<char>, chars: Seq<char>) -> Seq<char>
     decreases chars.len()
 {
@@ -39,10 +43,13 @@ fn join(sep: Vec<String>, seq: Vec<String>) -> (result: Vec<String>)
 
             (s.len() > 0 ==> result[i]@.len() > 0)
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

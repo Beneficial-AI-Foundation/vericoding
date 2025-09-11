@@ -21,6 +21,10 @@ spec fn sorted(a: &Vec<i32>) -> bool {
     forall|i: int, j: int| 0 <= i < j < a.len() ==> a@[i] <= a@[j]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn mergeSimple(a1: Seq<i32>, a2: Seq<i32>, start: usize, end: usize, b: &mut Vec<i32>)
     requires
         sorted_seq(a1),
@@ -29,10 +33,13 @@ fn mergeSimple(a1: Seq<i32>, a2: Seq<i32>, start: usize, end: usize, b: &mut Vec
         a1.len() + a2.len() == end - start + 1,
     ensures
         sorted_slice(b, start as int, end as int),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -54,15 +54,22 @@ proof fn count_min_property(v: Seq<int>, x: int, i: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn m_count_min(v: &Vec<i32>) -> (c: i32)
     requires v.len() > 0
     ensures c == count_min(v@.map_values(|x: i32| x as int), 
                           min(v@.map_values(|x: i32| x as int), v.len() as int), 
                           v.len() as int)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

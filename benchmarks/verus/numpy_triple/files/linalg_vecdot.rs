@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn dot_product_spec(x1: Seq<i32>, x2: Seq<i32>) -> int
     decreases x1.len()
 {
@@ -17,10 +21,13 @@ fn vecdot(x1: Vec<i32>, x2: Vec<i32>) -> (result: i32)
     ensures 
         result as int == dot_product_spec(x1@, x2@),
         result as int == dot_product_spec(x2@, x1@)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

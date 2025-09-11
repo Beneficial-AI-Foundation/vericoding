@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn expandtabs(a: Vec<String>, tabsize: Vec<usize>) -> (result: Vec<String>)
     requires 
         a.len() == tabsize.len(),
@@ -21,10 +25,13 @@ fn expandtabs(a: Vec<String>, tabsize: Vec<usize>) -> (result: Vec<String>)
 
             (orig_str@.contains('\t') ==> result_str@.len() > orig_str@.len())
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

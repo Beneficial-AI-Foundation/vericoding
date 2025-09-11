@@ -36,6 +36,10 @@ proof fn count_bound(arr: Seq<i32>, value: i32)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn move_zeros_to_end(arr: &mut Vec<i32>)
     requires old(arr).len() >= 2,
     ensures
@@ -48,10 +52,13 @@ fn move_zeros_to_end(arr: &mut Vec<i32>)
 
         forall|n: int, m: int| 0 <= n < m < arr.len() && old(arr)[n] != 0 && old(arr)[m] != 0 ==>
             exists|k: int, l: int| 0 <= k < l < arr.len() && arr[k] == old(arr)[n] && arr[l] == old(arr)[m],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

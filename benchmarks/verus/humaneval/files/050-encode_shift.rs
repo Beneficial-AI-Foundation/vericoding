@@ -15,6 +15,10 @@ spec fn decode_char_spec(c: int) -> (result:int)
     (c - 65 + 26 - 5) % 26 + 65
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn decode_shift(s: &Vec<u8>) -> (t: Vec<u8>)
 
@@ -25,10 +29,13 @@ fn decode_shift(s: &Vec<u8>) -> (t: Vec<u8>)
         s.len() == t.len(),
         forall|i: int| #![auto] 0 <= i < t.len() ==> t[i] == decode_char_spec(s[i] as int),
         forall|i: int| #![auto] 0 <= i < t.len() ==> encode_char_spec(t[i] as int) == s[i],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

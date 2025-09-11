@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn numpy_dstack(arrays: Vec<Vec<f32>>) -> (result: Vec<Vec<Vec<f32>>>)
     requires 
         arrays.len() > 0,
@@ -14,10 +18,13 @@ fn numpy_dstack(arrays: Vec<Vec<f32>>) -> (result: Vec<Vec<Vec<f32>>>)
         forall|i: int, j: int| 
             0 <= i < result[0].len() && 0 <= j < arrays.len() ==>
             result[0][i][j] == arrays[j][i],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

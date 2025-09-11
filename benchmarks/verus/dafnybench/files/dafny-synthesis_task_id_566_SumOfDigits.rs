@@ -31,15 +31,22 @@ spec fn number_of_digits(n: nat) -> nat
     if 0 <= n <= 9 { 1 } else { 1 + number_of_digits((n/10) as nat) }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn sum_of_digits(number: u64) -> (sum: u64)
     requires number >= 0,
     ensures 
         sum >= 0,
         sum == sum_digits(number as nat),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn filter_by_substring<'a>(strings: &Vec<&'a str>, substring: &str) -> (res: Vec<&'a str>)
 
     ensures
@@ -11,10 +15,13 @@ fn filter_by_substring<'a>(strings: &Vec<&'a str>, substring: &str) -> (res: Vec
                     j,
                     #[trigger] (j + substring@.len()),
                 ) == substring@) ==> res@.contains(#[trigger] (strings[i])),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -25,14 +25,21 @@ spec fn sorted(a: Seq<int>) -> bool
     forall|i: int, j: int| 0 <= i <= j < a.len() ==> a[i] <= a[j]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn lol_sort(a: &mut Vec<int>)
     ensures 
         valid_permut(a@, old(a)@),
         sorted(a@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

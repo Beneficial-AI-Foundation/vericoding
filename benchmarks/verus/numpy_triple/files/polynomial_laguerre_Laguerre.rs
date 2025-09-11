@@ -17,6 +17,10 @@ struct Laguerre<const N: usize> {
     window: [f64; 2],
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn make_laguerre<const N: usize>(coefficients: [f64; N]) -> (result: Laguerre<N>)
     ensures
 
@@ -32,10 +36,13 @@ fn make_laguerre<const N: usize>(coefficients: [f64; N]) -> (result: Laguerre<N>
         },
 
         forall|i: int| 0 <= i < N ==> result.coef[i] == coefficients[i],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

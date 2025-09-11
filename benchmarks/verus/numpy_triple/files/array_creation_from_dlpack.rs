@@ -9,6 +9,10 @@ pub struct DLPackObject<T> {
     pub device: String,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn from_dlpack<T>(x: &DLPackObject<T>, device: Option<&str>, copy: Option<bool>) -> (result: Vec<T>)
     requires 
         x.has_dlpack && x.has_dlpack_device,
@@ -18,10 +22,13 @@ fn from_dlpack<T>(x: &DLPackObject<T>, device: Option<&str>, copy: Option<bool>)
         forall|i: int| 0 <= i < result.len() ==> result[i] == x.data[i],
         copy == Some(true) ==> result@ != x.data@,
         copy == Some(false) ==> result@ == x.data@,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

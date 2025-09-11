@@ -23,6 +23,10 @@ spec fn brazilian_factorial(n: nat) -> (ret:nat)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn brazilian_factorial_impl(n: u64) -> (ret: Option<u64>)
 
     ensures
@@ -30,10 +34,13 @@ fn brazilian_factorial_impl(n: u64) -> (ret: Option<u64>)
             None => brazilian_factorial(n as nat) > u64::MAX,
             Some(bf) => bf == brazilian_factorial(n as nat),
         },
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn minimum_right_shifts(nums: Vec<i32>) -> (result: i32)
     requires
         nums.len() <= i32::MAX,
@@ -15,10 +19,13 @@ fn minimum_right_shifts(nums: Vec<i32>) -> (result: i32)
                 (result >= 0 && result < n) || result == -1
             }
         }),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

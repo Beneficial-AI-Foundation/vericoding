@@ -23,13 +23,20 @@ spec fn gcd(m: nat, n: nat) -> nat
     else { gcd(m, (n - m) as nat) }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn gcd_iterative(m: u32, n: u32) -> (g: u32)
     requires m > 0 && n > 0,
     ensures g == gcd(m as nat, n as nat),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

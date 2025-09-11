@@ -29,16 +29,23 @@ spec fn sorted(a: &[int]) -> bool
   forall|j: int, k: int| 0 <= j < k < a.len() ==> a[j] < a[k]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_max(a: &[int]) -> (i: usize)
     requires 
         a.len() >= 1
     ensures 
         0 <= i < a.len(),
         forall|k: int| 0 <= k < a.len() ==> a[k] <= a[i as int]
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

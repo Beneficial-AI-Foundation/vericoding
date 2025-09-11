@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn mid(p: int, q: int) -> (m: int)
 
     requires 
@@ -10,10 +14,13 @@ fn mid(p: int, q: int) -> (m: int)
         p <= m <= q,
         m - p <= q - m,
         0 <= (q - m) - (m - p) <= 1,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

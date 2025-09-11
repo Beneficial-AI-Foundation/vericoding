@@ -6,6 +6,10 @@ spec fn get_size(i: int, j: int) -> int {
     j - i + 1
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn longest_zero(a: &[i32]) -> (result: (usize, usize))
     requires 
         1 <= a.len()
@@ -18,10 +22,13 @@ fn longest_zero(a: &[i32]) -> (result: (usize, usize))
             0 <= i < j < a.len() && get_size(i, j) > (result.0 as int)
             ==> exists |k: int| i <= k <= j && a[k] != 0
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

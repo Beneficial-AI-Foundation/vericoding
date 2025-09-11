@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn is_whitespace_char(c: char) -> bool {
     c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\x0c'
 }
@@ -23,10 +27,13 @@ fn isspace(a: Vec<String>) -> (result: Vec<bool>)
             result[i] == (a[i]@.len() > 0 && all_chars_whitespace(a[i]@)),
         forall|i: int| 0 <= i < a.len() ==> 
             (a[i]@.len() == 0 ==> result[i] == false),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

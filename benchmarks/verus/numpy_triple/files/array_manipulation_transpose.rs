@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn numpy_transpose(a: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
     requires 
         a.len() > 0,
@@ -13,10 +17,13 @@ fn numpy_transpose(a: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
         forall|i: int, j: int| 
             0 <= i < a.len() && 0 <= j < a[0].len() ==> 
             result[j][i] == a[i][j],
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

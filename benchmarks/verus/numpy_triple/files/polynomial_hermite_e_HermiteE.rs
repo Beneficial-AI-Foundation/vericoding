@@ -15,6 +15,10 @@ struct HermiteEPoly {
     window_max: f32,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn hermite_e(coef: Vec<f32>) -> (result: HermiteEPoly)
     ensures
 
@@ -26,10 +30,13 @@ fn hermite_e(coef: Vec<f32>) -> (result: HermiteEPoly)
 
         result.window_min == -1.0f32,
         result.window_max == 1.0f32,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -14,6 +14,10 @@ spec fn is_2_pow(n: int) -> bool
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn search_2_pow_recursive(a: &[i32], i: usize, n: usize, x: i32) -> (k: usize)
     requires
         i + n <= a.len(),
@@ -30,10 +34,13 @@ fn search_2_pow_recursive(a: &[i32], i: usize, n: usize, x: i32) -> (k: usize)
             0 <= r && k as int <= r < (i + n) as int ==> 
             a[r] >= x)}),
     decreases n
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

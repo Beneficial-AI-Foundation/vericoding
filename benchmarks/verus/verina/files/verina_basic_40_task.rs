@@ -12,13 +12,20 @@ spec fn second_smallest_postcond(s: &Vec<i32>, result: i32) -> bool {
         (forall|k: int| 0 <= k < s.len() && s[k] != s[j] ==> s[k] >= result))
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn second_smallest(s: &Vec<i32>) -> result: i32
     requires second_smallest_precond(s) 
     ensures second_smallest_postcond(s, result)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

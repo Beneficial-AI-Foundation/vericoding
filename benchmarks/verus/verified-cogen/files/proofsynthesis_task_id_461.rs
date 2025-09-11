@@ -24,15 +24,22 @@ spec fn count_uppercase_recursively(seq: Seq<char>) -> (result: int)
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn count_uppercase(text: &Vec<char>) -> (count: u64)
 
     ensures
         0 <= count <= text.len(),
         count_uppercase_recursively(text@) == count,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

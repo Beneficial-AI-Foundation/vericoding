@@ -22,6 +22,10 @@ spec fn spec_bracketing(brackets: Seq<char>) -> (ret:bool) {
     p.1 && p.0 == 0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn correct_bracketing(brackets: &str) -> (ret: bool)
 
     requires
@@ -30,10 +34,13 @@ fn correct_bracketing(brackets: &str) -> (ret: bool)
 
     ensures
         ret <==> spec_bracketing(brackets@),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

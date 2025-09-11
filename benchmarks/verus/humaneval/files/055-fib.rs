@@ -22,14 +22,21 @@ spec fn inner_expr_fib(n: u32, ret: Option<u32>) -> (result:bool) {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn fib(n: u32) -> (ret: Option<u32>)
 
     ensures
         inner_expr_fib(n, ret),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

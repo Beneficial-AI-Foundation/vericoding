@@ -14,6 +14,10 @@ spec fn shift_minus_32(c: char) -> char {
     ((c as int - 32) % 128) as char
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn to_uppercase(s: Seq<char>) -> (v: Seq<char>)
     ensures
         v.len() == s.len(),
@@ -23,10 +27,13 @@ fn to_uppercase(s: Seq<char>) -> (v: Seq<char>)
             } else {
                 v[i] == s[i]
             }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

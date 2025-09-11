@@ -8,6 +8,10 @@ spec fn strict_sorted(arr: &[i32]) -> bool {
     forall|k: int, l: int| 0 <= k < l < arr.len() ==> arr[k] < arr[l]
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn mcontained(v: &[i32], w: &[i32], n: usize, m: usize) -> (b: bool)
     requires
@@ -21,10 +25,13 @@ fn mcontained(v: &[i32], w: &[i32], n: usize, m: usize) -> (b: bool)
                 exists|j: int| #![trigger w[j]]
                 0 <= j < m && v[k] == w[j]
             ))
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

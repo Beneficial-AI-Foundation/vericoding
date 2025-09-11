@@ -11,6 +11,10 @@ spec fn is_suffix_of<T>(suffix: Seq<T>, full: Seq<T>) -> bool {
     full.subrange(full.len() - suffix.len(), full.len() as int) == suffix
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn rjust(orig: Vec<char>, width: nat, fillchar: char) -> (res: Vec<char>)
     ensures
         res.len() == max_nat(orig.len() as nat, width),
@@ -19,10 +23,13 @@ fn rjust(orig: Vec<char>, width: nat, fillchar: char) -> (res: Vec<char>)
         (orig.len() >= width ==> res.len() == orig.len()) &&
         (orig.len() < width ==> res.len() == width) &&
         (orig.len() == 0 ==> res.len() == width)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

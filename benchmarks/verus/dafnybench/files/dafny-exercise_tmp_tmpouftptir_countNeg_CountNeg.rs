@@ -12,12 +12,19 @@ spec fn verify_neg(a: &[int], idx: int) -> nat
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn count_neg(a: &[int]) -> (cnt: usize)
     ensures cnt == verify_neg(a, a.len() as int)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

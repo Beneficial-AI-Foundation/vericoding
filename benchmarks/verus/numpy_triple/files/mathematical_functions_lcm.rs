@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 spec fn gcd_spec(a: int, b: int) -> nat;
 
 spec fn lcm_spec(a: int, b: int) -> nat;
@@ -20,10 +24,13 @@ fn lcm(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
 
         forall|i: int| 0 <= i < result.len() ==> 
             (x1[i] != 0 && x2[i] != 0) ==> result[i] > 0
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

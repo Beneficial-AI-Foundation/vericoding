@@ -18,12 +18,19 @@ spec fn filter_vowels(xs: Seq<char>) -> Seq<char>
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn filter_vowels_array(xs: &[char]) -> (ys: Vec<char>)
     ensures filter_vowels(xs@) == ys@
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

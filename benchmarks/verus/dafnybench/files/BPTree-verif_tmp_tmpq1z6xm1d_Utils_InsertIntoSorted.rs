@@ -67,6 +67,10 @@ spec fn count(a: Seq<bool>) -> nat
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn insert_into_sorted(a: &[int], limit: usize, key: int) -> (b: Vec<int>)
     requires 
         key > 0,
@@ -81,10 +85,13 @@ fn insert_into_sorted(a: &[int], limit: usize, key: int) -> (b: Vec<int>)
         forall|i: int| limit + 1 <= i < b.len() ==> b[i] == 0,
         forall|i: int| 0 <= i < limit ==> a@.contains(b[i]),
         forall|i: int| 0 <= i < limit + 1 ==> b[i] > 0,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

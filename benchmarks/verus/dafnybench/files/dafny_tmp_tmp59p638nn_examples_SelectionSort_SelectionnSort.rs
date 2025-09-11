@@ -20,12 +20,19 @@ spec fn sorted(a_old: Seq<i32>, a_new: Seq<i32>) -> bool
     ordered(a_new, 0, a_new.len() as nat) && preserved(a_old, a_new, 0, a_old.len() as nat)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn selection_sort(a: &mut Vec<i32>)
     ensures sorted(old(a)@, a@)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

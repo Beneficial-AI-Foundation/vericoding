@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn max_difference(arr: &Vec<i32>) -> (diff: i32)
 
     requires
@@ -10,10 +14,13 @@ fn max_difference(arr: &Vec<i32>) -> (diff: i32)
 
     ensures
         forall|i: int, j: int| 0 <= i < arr.len() && 0 <= j < arr.len() ==> arr[i] - arr[j] <= diff,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

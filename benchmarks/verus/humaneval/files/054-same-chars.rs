@@ -4,6 +4,10 @@ use vstd::std_specs::hash::axiom_u8_obeys_hash_table_key_model;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn same_chars(s0: &Vec<u8>, s1: &Vec<u8>) -> (same: bool)
 
@@ -13,10 +17,13 @@ fn same_chars(s0: &Vec<u8>, s1: &Vec<u8>) -> (same: bool)
         |
             #![auto]
             0 <= i < s1.len() ==> s0@.contains(s1[i])),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

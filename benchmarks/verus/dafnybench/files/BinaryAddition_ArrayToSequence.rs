@@ -56,14 +56,21 @@ spec fn bit_addition(s: Seq<bool>, t: Seq<bool>) -> Seq<bool>
     bv10_to_seq(c)
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn array_to_sequence(arr: &[bool; 10]) -> (res: Vec<bool>)
     ensures 
         res.len() == 10,
         forall|k: int| 0 <= k < 10 ==> res[k] == arr[k]
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

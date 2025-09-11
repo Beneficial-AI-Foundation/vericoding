@@ -25,6 +25,10 @@ spec fn is_prime_factorization(n: nat, factorization: Seq<nat>) -> (result:bool)
             <= #[trigger] factorization[j as int])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn factorize(n: u8) -> (factorization: Vec<u8>)
 
     requires
@@ -32,10 +36,13 @@ fn factorize(n: u8) -> (factorization: Vec<u8>)
 
     ensures
         is_prime_factorization(n as nat, factorization@.map(|_idx, j: u8| j as nat)),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

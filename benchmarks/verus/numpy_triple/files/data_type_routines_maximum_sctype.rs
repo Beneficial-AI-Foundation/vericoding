@@ -71,15 +71,22 @@ spec fn precision_le(p1: Precision, p2: Precision) -> bool {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn maximum_sctype(t: NumericType) -> (result: NumericType)
     ensures 
         result.kind == t.kind &&
         result.precision == max_precision_for(t.kind) &&
         precision_le(t.precision, result.precision)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

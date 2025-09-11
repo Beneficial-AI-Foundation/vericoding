@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn cheb2poly(c: Vec<f64>) -> (p: Vec<f64>)
     ensures
 
@@ -24,10 +28,13 @@ fn cheb2poly(c: Vec<f64>) -> (p: Vec<f64>)
 
         (forall|epsilon: f64, d: Vec<f64>|
             d.len() == c.len() ==> true)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

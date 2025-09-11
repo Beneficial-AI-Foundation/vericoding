@@ -12,12 +12,19 @@ spec fn sum(xs: Seq<i32>) -> int
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn sum_array(xs: &[i32]) -> (s: i32)
     ensures s as int == sum(xs@)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

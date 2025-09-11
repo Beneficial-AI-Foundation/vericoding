@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn full<T>(n: usize, fill_value: T) -> (result: Vec<T>)
     ensures 
         result.len() == n,
@@ -12,10 +16,13 @@ fn full<T>(n: usize, fill_value: T) -> (result: Vec<T>)
 
         n > 0 ==> result[0] == fill_value,
         n > 0 ==> result[(n-1) as int] == fill_value,
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

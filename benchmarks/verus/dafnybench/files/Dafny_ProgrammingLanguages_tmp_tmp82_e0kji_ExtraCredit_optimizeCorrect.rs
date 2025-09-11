@@ -47,12 +47,19 @@ spec fn optimize(e: Exp) -> Exp
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn optimize_correct(e: Exp, s: Map<String, int>)
     ensures eval(e, s) == eval(optimize(e), s)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

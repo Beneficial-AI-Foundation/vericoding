@@ -4,6 +4,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn transpose(matrix: Vec<Vec<i32>>) -> (result: Vec<Vec<i32>>)
     requires
@@ -18,10 +22,13 @@ fn transpose(matrix: Vec<Vec<i32>>) -> (result: Vec<Vec<i32>>)
             0 <= i < result.len() ==> result[i].len() == matrix.len(),
         forall|i: int, j: int| #![trigger result[i], matrix[j]]
             0 <= i < result.len() && 0 <= j < result[i].len() ==> result[i][j] == matrix[j][i]
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

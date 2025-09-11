@@ -24,6 +24,10 @@ pub enum DType {
     Bool,
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn can_cast(from_dtype: DType, to_dtype: DType, casting: CastingRule) -> (result: bool)
     ensures
 
@@ -69,10 +73,13 @@ fn can_cast(from_dtype: DType, to_dtype: DType, casting: CastingRule) -> (result
         (casting == CastingRule::Unrestricted ==> result == true) &&
 
         (casting == CastingRule::Equiv ==> (result == true <==> from_dtype == to_dtype))
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

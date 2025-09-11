@@ -78,12 +78,19 @@ spec fn is_of_kind(dtype: NumpyDType, kind: DTypeKind) -> bool {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn numpy_isdtype(dtype: NumpyDType, kind: DTypeKind) -> (result: bool)
     ensures result == is_of_kind(dtype, kind)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

@@ -56,6 +56,10 @@ spec fn promote_types(t1: NumpyDType, t2: NumpyDType) -> NumpyDType {
     if type_rank(t1) >= type_rank(t2) { t1 } else { t2 }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn result_type(operands: Vec<NumpyOperand>) -> (result: NumpyDType)
     requires operands.len() > 0,
     ensures
@@ -68,10 +72,13 @@ fn result_type(operands: Vec<NumpyOperand>) -> (result: NumpyDType)
 
         forall|i: int, j: int| 0 <= i < operands.len() && 0 <= j < operands.len() ==>
             type_rank(result) >= type_rank(promote_types(operand_type(operands[i]), operand_type(operands[j]))),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

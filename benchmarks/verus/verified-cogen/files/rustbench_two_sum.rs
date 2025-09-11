@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::loop_isolation(false)]
 fn two_sum(nums: &[i32], target: i32) -> (result: (usize, usize))
     requires
@@ -16,10 +20,13 @@ fn two_sum(nums: &[i32], target: i32) -> (result: (usize, usize))
         ({ let (i, j) = result; 0 <= j < nums.len() }),
         ({ let (i, j) = result; i != j }),
         ({ let (i, j) = result; nums[i as int] + nums[j as int] == target })
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

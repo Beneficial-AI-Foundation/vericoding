@@ -36,6 +36,10 @@ fn binary_search(q: Seq<int>, key: int, lower_bound: usize, upper_bound: usize, 
     0
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn find_range(q: Seq<int>, key: int) -> (res: (usize, usize))
     requires sorted(q)
     ensures
@@ -43,10 +47,13 @@ fn find_range(q: Seq<int>, key: int) -> (res: (usize, usize))
         forall |i: int| 0 <= i < res.0 ==> q[i] < key,
         forall |i: int| res.0 <= i < res.1 ==> q[i] == key,
         forall |i: int| res.1 <= i < q.len() ==> q[i] > key
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

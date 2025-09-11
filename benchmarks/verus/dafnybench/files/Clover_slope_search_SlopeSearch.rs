@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (usize, usize))
   requires 
       a.len() > 0,
@@ -23,10 +27,13 @@ fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (usize, usize))
       result.0 < a.len(),
       result.1 < a@[0].len(),
       a@[result.0 as int]@[result.1 as int] == key
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

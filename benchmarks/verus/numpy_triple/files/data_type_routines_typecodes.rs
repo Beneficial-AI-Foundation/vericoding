@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn typecodes(category: &str) -> (result: Option<&str>)
     ensures
         (category == "Character") ==> (result == Some("S1")),
@@ -16,10 +20,13 @@ fn typecodes(category: &str) -> (result: Option<&str>)
         (category != "Character" && category != "Integer" && category != "UnsignedInteger" && 
          category != "Float" && category != "Complex" && category != "AllInteger" && 
          category != "AllFloat" && category != "Datetime" && category != "All") ==> (result == None::<&str>)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

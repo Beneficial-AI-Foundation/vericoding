@@ -14,6 +14,10 @@ spec fn shift_32(c: char) -> char {
     (((c as int + 32) % 128) as u8) as char
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 #[verifier::exec_allows_no_decreases_clause]
 fn to_lowercase(s: &str) -> (v: String)
     ensures
@@ -26,10 +30,13 @@ fn to_lowercase(s: &str) -> (v: String)
                 v@[i] == s@[i]
             }
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

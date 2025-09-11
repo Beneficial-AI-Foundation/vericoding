@@ -52,6 +52,10 @@ pub open spec fn is_generic_object(obj: NumpyObject) -> bool {
     }
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn obj2sctype(rep: NumpyObject, default: Option<NumpyScalarType>) -> (result: Option<NumpyScalarType>)
     ensures
         match rep {
@@ -71,10 +75,13 @@ fn obj2sctype(rep: NumpyObject, default: Option<NumpyScalarType>) -> (result: Op
                 (is_generic_object(rep) && result == default),
             None => is_generic_object(rep) && default.is_None(),
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

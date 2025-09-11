@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn swap3(a: &mut Vec<i32>, h: usize, i: usize, j: usize)
     requires 
         h < old(a).len(),
@@ -14,10 +18,13 @@ fn swap3(a: &mut Vec<i32>, h: usize, i: usize, j: usize)
         a[i as int] == old(a)[j as int],
         forall|k: int| 0 <= k < old(a).len() && k != h as int && k != i as int && k != j as int ==> a[k] == old(a)[k],
         a.len() == old(a).len(),
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

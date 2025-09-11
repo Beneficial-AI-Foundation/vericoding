@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn polyval3d(
     x: Vec<f32>, 
     y: Vec<f32>, 
@@ -20,10 +24,13 @@ fn polyval3d(
             exists|val: f32| result[p] == val &&
             (c.len() == 1 && c[0].len() == 1 && c[0][0].len() == 1 ==> 
              val == c[0][0][0])
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

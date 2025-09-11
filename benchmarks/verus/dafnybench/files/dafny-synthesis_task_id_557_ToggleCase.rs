@@ -26,6 +26,10 @@ spec fn shift_32(c: char) -> char {
     ((c as int + 32) % 128) as char
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn toggle_case(s: Vec<char>) -> (v: Vec<char>)
     ensures
         v.len() == s.len(),
@@ -40,10 +44,13 @@ fn toggle_case(s: Vec<char>) -> (v: Vec<char>)
                 v_char == s_char
             }
         }
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

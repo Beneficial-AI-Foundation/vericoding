@@ -2,6 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn poly2herm(pol: Vec<f64>) -> (result: Vec<f64>)
     ensures
         result.len() == pol.len(),
@@ -17,10 +21,13 @@ fn poly2herm(pol: Vec<f64>) -> (result: Vec<f64>)
          pol[2] == 2.0 && pol[3] == 3.0) ==>
             (result[0] == 1.0 && result[1] == 2.75 && 
              result[2] == 0.5 && result[3] == 0.375)
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}

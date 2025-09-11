@@ -35,6 +35,10 @@ spec fn bordered(s: Seq<Bases>) -> bool {
     forall|j: int, k: int| 0 <= j < k < s.len() ==> below(s[j], s[k])
 }
 
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
 fn sorter(bases: Seq<Bases>) -> (sobases: Seq<Bases>)
     requires 
         0 < bases.len()
@@ -42,10 +46,13 @@ fn sorter(bases: Seq<Bases>) -> (sobases: Seq<Bases>)
         sobases.len() == bases.len(),
         bordered(sobases),
         bases.to_multiset() == sobases.to_multiset()
+// </vc-spec>
+// <vc-code>
 {
     assume(false);
     unreached()
 }
+// </vc-code>
 
 }
 fn main() {}
