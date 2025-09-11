@@ -49,6 +49,27 @@ def check_for_cheats(code: str, language: str) -> List[Tuple[str, str]]:
         cheat_patterns = [
             (r'\{:axiom\}', "uses '{:axiom}' to bypass verification"),
         ]
+        
+        # For Dafny, exclude verification bypasses inside <vc-preamble> sections
+        detected_cheats = []
+        
+        # Find all vc-preamble sections to exclude from cheat detection
+        vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
+        vc_preamble_matches = list(re.finditer(vc_preamble_pattern, code, re.DOTALL))
+        preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+        
+        for pattern, description in cheat_patterns:
+            # Find all matches of the cheat pattern
+            for match in re.finditer(pattern, code):
+                match_pos = match.start()
+                
+                # Check if this match is inside any preamble section
+                in_preamble = any(start <= match_pos < end for start, end in preamble_ranges)
+                if not in_preamble:
+                    detected_cheats.append((pattern, description))
+                    break  # Only add each pattern once
+        
+        return detected_cheats
     elif language.lower() == "verus":
         # Verus uses --no-cheating flag, so we don't need string-based detection
         cheat_patterns = []

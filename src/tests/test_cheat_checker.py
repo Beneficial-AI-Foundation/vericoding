@@ -215,6 +215,60 @@ lemma {:axiom} BadLemma()
         assert cheats[0][0] == r'\{:axiom\}'
         assert "axiom" in cheats[0][1]
 
+    def test_ignores_axiom_inside_preamble(self):
+        """Should ignore {:axiom} when it's inside vc-preamble sections."""
+        code = """
+<vc-preamble>
+lemma {:axiom} HelperAxiom()
+  ensures true
+</vc-preamble>
+
+lemma MainLemma()
+  ensures HelperAxiom()
+{
+  // proof using helper axiom
+}
+"""
+        cheats = check_for_cheats(code, "dafny")
+        assert len(cheats) == 0
+
+    def test_detects_axiom_outside_preamble(self):
+        """Should detect {:axiom} when it's outside vc-preamble sections."""
+        code = """
+<vc-preamble>
+lemma {:axiom} HelperAxiom()
+  ensures true
+</vc-preamble>
+
+lemma {:axiom} BadLemma()  // This should be detected
+  ensures false
+"""
+        cheats = check_for_cheats(code, "dafny")
+        assert len(cheats) == 1
+        assert cheats[0][0] == r'\{:axiom\}'
+
+    def test_multiple_preamble_sections_dafny(self):
+        """Should handle multiple vc-preamble sections in Dafny."""
+        code = """
+<vc-preamble>
+lemma {:axiom} Helper1()
+  ensures true
+</vc-preamble>
+
+lemma {:axiom} BadLemma1()  // Detected
+  ensures false
+
+<vc-preamble>
+lemma {:axiom} Helper2()
+  ensures true
+</vc-preamble>
+
+lemma {:axiom} BadLemma2()  // Detected
+  ensures false
+"""
+        cheats = check_for_cheats(code, "dafny")
+        assert len(cheats) == 1  # Only one entry per pattern type
+
     def test_no_cheats_in_clean_dafny(self):
         """Should detect no cheats in clean Dafny code."""
         code = """
@@ -222,6 +276,26 @@ lemma GoodLemma()
   ensures true
 {
   // proof here
+}
+"""
+        cheats = check_for_cheats(code, "dafny")
+        assert len(cheats) == 0
+
+    def test_no_cheats_with_preamble_only(self):
+        """Should detect no cheats when axioms are only in preamble."""
+        code = """
+<vc-preamble>
+lemma {:axiom} Helper1()
+  ensures true
+
+lemma {:axiom} Helper2()
+  ensures false
+</vc-preamble>
+
+lemma MainLemma()
+  ensures Helper1()
+{
+  // valid proof
 }
 """
         cheats = check_for_cheats(code, "dafny")
