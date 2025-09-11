@@ -95,14 +95,14 @@ def process_spec_file(
             # Count placeholders in original code for JSON array sizing
             if config.language == "lean":
                 placeholder_count = original_code.count("sorry")
-                generate_prompt = prompt_loader.format_prompt(
-                    "generate_code", code=original_code, sorry_count=placeholder_count
-                )
-            else:  # dafny or verus
+            elif config.language in ("dafny", "verus"):
                 placeholder_count = original_code.count("<vc-code>")
-                generate_prompt = prompt_loader.format_prompt(
-                    "generate_code", code=original_code, placeholder_count=placeholder_count
-                )
+            else:
+                raise ValueError(f"Unsupported language: {config.language}. Supported languages are: lean, dafny, verus")
+            
+            generate_prompt = prompt_loader.format_prompt(
+                "generate_code", code=original_code, placeholder_count=placeholder_count
+            )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
             logger.info(f"  Available prompts: {list(prompt_loader.prompts.keys())}")
@@ -321,23 +321,18 @@ def process_spec_file(
                 # Count placeholders in original code for JSON array sizing (not current code!)
                 if config.language == "lean":
                     placeholder_count = original_code.count("sorry")
-                    fix_prompt = prompt_loader.format_prompt(
-                        "fix_verification",
-                        code=current_code,
-                        original_code=original_code,
-                        errorDetails=error_details,
-                        iteration=iteration,
-                        sorry_count=placeholder_count,
-                    )
-                else:  # dafny or verus
+                elif config.language in ("dafny", "verus"):
                     placeholder_count = original_code.count("<vc-code>")
-                    fix_prompt = prompt_loader.format_prompt(
-                        "fix_verification",
-                        code=current_code,
-                        original_code=original_code,
-                        errorDetails=error_details,
-                        iteration=iteration,
-                        placeholder_count=placeholder_count,
+                else:
+                    raise ValueError(f"Unsupported language: {config.language}. Supported languages are: lean, dafny, verus")
+                
+                fix_prompt = prompt_loader.format_prompt(
+                    "fix_verification",
+                    code=current_code,
+                    original_code=original_code,
+                    errorDetails=error_details,
+                    iteration=iteration,
+                    placeholder_count=placeholder_count,
                 )
 
                 # Track fix prompt for W&B logging

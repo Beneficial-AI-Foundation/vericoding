@@ -1,15 +1,15 @@
 generate_code: |
   The task is to generate implementations and proofs for "sorry" placeholders in a Lean file.
   
-  INPUT: a Lean file containing {sorry_count} "sorry" keywords in place of desired implementations and proofs.
+  INPUT: a Lean file containing {placeholder_count} "sorry" keywords in place of desired implementations and proofs.
   
-  OUTPUT: Return a JSON array with EXACTLY {sorry_count} replacements (one for each "sorry" in the file), in order from top to bottom:
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} replacements (one for each "sorry" in the file), in order from top to bottom:
   ```json
   ["first_implementation", "second_proof", "third_implementation"]
   ```
   
   CRITICAL RULES:
-  - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
+  - The ORIGINAL file contains EXACTLY {placeholder_count} "sorry" keywords - your JSON array must have EXACTLY {placeholder_count} elements
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
@@ -26,15 +26,15 @@ generate_code: |
 fix_verification: |
   The task is to fix implementations and proofs that failed verification by providing replacements for any remaining "sorry" placeholders.
   
-  INPUT: The ORIGINAL file contains {sorry_count} "sorry" keywords that need to be replaced based on verification errors.
+  INPUT: The ORIGINAL file contains {placeholder_count} "sorry" keywords that need to be replaced based on verification errors.
   
-  OUTPUT: Return a JSON array with EXACTLY {sorry_count} fixed replacements (one for each "sorry" in the ORIGINAL file), in order from top to bottom:
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} fixed replacements (one for each "sorry" in the ORIGINAL file), in order from top to bottom:
   ```json
   ["fixed_implementation", "fixed_proof", "another_fixed_implementation"]
   ```
   
   CRITICAL RULES:
-  - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
+  - The ORIGINAL file contains EXACTLY {placeholder_count} "sorry" keywords - your JSON array must have EXACTLY {placeholder_count} elements
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact fixed code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement

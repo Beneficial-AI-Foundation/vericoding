@@ -4,7 +4,7 @@ import re
 from typing import List, Tuple
 
 
-def check_for_cheats(code: str, language: str = "lean") -> List[Tuple[str, str]]:
+def check_for_cheats(code: str, language: str) -> List[Tuple[str, str]]:
     """Check for verification bypasses and cheating patterns in code.
     
     Args:
@@ -31,7 +31,7 @@ def check_for_cheats(code: str, language: str = "lean") -> List[Tuple[str, str]]
         # Verus uses --no-cheating flag, so we don't need string-based detection
         cheat_patterns = []
     else:
-        cheat_patterns = []
+        raise ValueError(f"Unsupported language: {language}. Supported languages are: lean, dafny, verus")
     
     detected_cheats = []
     
@@ -42,7 +42,7 @@ def check_for_cheats(code: str, language: str = "lean") -> List[Tuple[str, str]]
     return detected_cheats
 
 
-def has_cheats(code: str, language: str = "lean") -> bool:
+def has_cheats(code: str, language: str) -> bool:
     """Quick check if code contains any verification cheats.
     
     Args:
@@ -82,7 +82,7 @@ def get_cheat_message(cheats: List[Tuple[str, str]], is_final: bool = False) -> 
         return f"WARNING: Your response included verification bypasses: {', '.join(cheat_descriptions)}. These must be removed in subsequent iterations for final success."
 
 
-def has_final_failure_cheats(code: str, language: str = "lean") -> bool:
+def has_final_failure_cheats(code: str, language: str) -> bool:
     """Check if code has cheats that would cause final verification failure.
     
     This is used to determine if verification should be considered failed
