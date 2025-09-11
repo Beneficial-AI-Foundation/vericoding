@@ -1,16 +1,16 @@
 vc-description: |-
   /*
   This task involves identifying the maximum value in a non-empty array of integers. The objective is to determine which element in the array is greater than or equal to every other element, ensuring that the selected value is one of the elements in the array.
-  
+
   -----Input-----
   The input consists of:
   • a: An array of integers. It is assumed that the array is non-empty (i.e., its size is at least 1).
-  
+
   -----Output-----
   The output is an integer that represents the maximum element in the array. This value is guaranteed to satisfy the following:
   • It is greater than or equal to every element in the array.
   • It is exactly equal to one of the elements in the array.
-  
+
   -----Note-----
   It is assumed that the provided array is non-empty. In cases where the array is empty, the function's behavior is not defined.
   */
@@ -20,8 +20,6 @@ vc-preamble: |-
   {
       a.Length > 0
   }
-
-vc-helpers: |-
   method MaxArrayAux(a: array<int>, index: int, current: int) returns (result: int)
       requires 0 <= index <= a.Length
       decreases a.Length - index
@@ -33,6 +31,8 @@ vc-helpers: |-
           result := current;
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   method MaxArray(a: array<int>) returns (result: int)
@@ -48,4 +48,4 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |

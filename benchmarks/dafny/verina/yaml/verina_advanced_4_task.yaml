@@ -12,12 +12,12 @@ vc-description: |-
   */
 
 vc-preamble: |-
-
-vc-helpers: |-
   function IntMax(x: int, y: int): int
   {
       if x < y then y else x
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   method LongestIncreasingSubsequence(a: array<int>) returns (result: int)

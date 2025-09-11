@@ -3,8 +3,6 @@ predicate BinarySearchPrecond(a: array<int>, key: int)
 {
     forall i, j :: 0 <= i <= j < a.Length ==> a[i] <= a[j]
 }
-
-// <vc-helpers>
 method BinarySearchLoop(a: array<int>, key: int, lo: nat, hi: nat) returns (result: nat)
     requires lo <= hi
     requires hi <= a.Length
@@ -25,6 +23,8 @@ method BinarySearchLoop(a: array<int>, key: int, lo: nat, hi: nat) returns (resu
         result := lo;
     }
 }
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,8 +2,6 @@ predicate MaxArrayPrecond(a: array<int>)
 {
     a.Length > 0
 }
-
-// <vc-helpers>
 method MaxArrayAux(a: array<int>, index: int, current: int) returns (result: int)
     requires 0 <= index <= a.Length
     decreases a.Length - index
@@ -15,6 +13,8 @@ method MaxArrayAux(a: array<int>, index: int, current: int) returns (result: int
         result := current;
     }
 }
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

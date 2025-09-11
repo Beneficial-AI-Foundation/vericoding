@@ -1,8 +1,9 @@
-// <vc-helpers>
 function IntMax(x: int, y: int): int
 {
     if x < y then y else x
 }
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

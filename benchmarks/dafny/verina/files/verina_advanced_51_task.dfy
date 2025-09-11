@@ -7,13 +7,13 @@ predicate MultisetEquiv(s1: seq<int>, s2: seq<int>)
 {
     multiset(s1) == multiset(s2)
 }
-
-// <vc-helpers>
 method MergeSortedAux(a: seq<int>, b: seq<int>) returns (result: seq<int>)
 {
     assume {:axiom} false;
     result := [];
 }
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -1,6 +1,7 @@
-// <vc-helpers>
 /* Helper function to process the replacement loop */
 function ReplaceLoopSpec(oldArr: seq<int>, k: int, i: nat, acc: seq<int>): seq<int>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

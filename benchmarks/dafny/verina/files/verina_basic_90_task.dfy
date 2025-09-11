@@ -5,14 +5,14 @@ predicate SlopeSearchPrecond(a: seq<seq<int>>, key: int)
     (forall i, j :: 0 <= i < |a| && 0 <= j < |a[i]| - 1 ==> a[i][j] <= a[i][j + 1]) &&
     (forall j, i {:trigger a[i][j]} :: 0 <= j < |a[0]| && 0 <= i < |a| - 1 ==> a[i][j] <= a[i + 1][j])
 }
-
-// <vc-helpers>
 function Get2d(a: seq<seq<int>>, i: int, j: int): int
     requires 0 <= i < |a|
     requires 0 <= j < |a[i]|
 {
     a[i][j]
 }
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
