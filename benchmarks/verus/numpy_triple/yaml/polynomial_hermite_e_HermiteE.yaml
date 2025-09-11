@@ -1,0 +1,105 @@
+vc-description: |-
+  An HermiteE series class.
+  
+  The HermiteE class provides the standard Python numerical methods
+  '+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the
+  attributes and methods listed below.
+  
+  Parameters
+  ----------
+  coef : array_like
+      HermiteE coefficients in order of increasing degree, i.e,
+      ``(1, 2, 3)`` gives ``1*He_0(x) + 2*He_1(X) + 3*He_2(x)``.
+  domain : (2,) array_like, optional
+      Domain to use. The interval ``[domain[0], domain[1]]`` is mapped
+      to the interval ``[window[0], window[1]]`` by shifting and scaling.
+      The default value is [-1., 1.].
+  window : (2,) array_like, optional
+      Window, see `domain` for its use. The default value is [-1., 1.].
+  symbol : str, optional
+      Symbol used to represent the independent variable in string
+      representations of the polynomial expression, e.g. for printing.
+      The symbol must be a valid Python identifier. Default value is 'x'.
+  
+      .. versionadded:: 1.24
+  
+  Create a HermiteE polynomial from coefficients with default domain and window [-1, 1]
+  
+  Specification: Creating a HermiteE polynomial preserves coefficients and establishes mathematical properties.
+  
+  HermiteE polynomials are the "probabilists'" version of Hermite polynomials.
+  Key mathematical properties:
+  1. He₀(x) = 1, He₁(x) = x
+  2. Recurrence: Heₙ₊₁(x) = x * Heₙ(x) - n * Heₙ₋₁(x)
+  3. Parity: He_n(-x) = (-1)^n He_n(x)
+  4. Orthogonality with respect to Gaussian weight e^(-x²/2)
+  
+  /* Structure representing a HermiteE polynomial with coefficients and domain/window mapping.
+     HermiteE polynomials are the "probabilists'" version of Hermite polynomials.
+     They satisfy the recurrence relation:
+     He₀(x) = 1
+     He₁(x) = x  
+     Heₙ₊₁(x) = x * Heₙ(x) - n * Heₙ₋₁(x)
+  
+     The coefficients represent the expansion: ∑ᵢ cᵢ * Heᵢ(x)
+  */
+  
+  /* Coefficients of the HermiteE polynomial in increasing degree order */
+  
+  /* Domain interval [domain_min, domain_max] */
+  
+  /* Domain interval upper bound */
+  
+  /* Window interval [window_min, window_max] */
+  
+  /* Window interval upper bound */
+  
+  /* Coefficients are preserved exactly */
+  
+  /* Default domain is [-1, 1] */
+  
+  /* Default window is [-1, 1] */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  struct HermiteEPoly {
+  
+      coef: Vec<f32>,
+  
+      domain_min: f32,
+  
+      domain_max: f32,
+  
+      window_min: f32,
+  
+      window_max: f32,
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn hermite_e(coef: Vec<f32>) -> (result: HermiteEPoly)
+      ensures
+  
+          result.coef.len() == coef.len(),
+          forall|i: int| 0 <= i < coef.len() ==> result.coef[i] == coef[i],
+  
+          result.domain_min == -1.0f32,
+          result.domain_max == 1.0f32,
+  
+          result.window_min == -1.0f32,
+          result.window_max == 1.0f32,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

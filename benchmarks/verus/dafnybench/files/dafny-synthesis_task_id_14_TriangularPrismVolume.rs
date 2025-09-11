@@ -16,12 +16,9 @@ fn triangular_prism_volume(base: u32, height: u32, length: u32) -> (volume: u32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -2,12 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/* 
- * Formal specification and verification of a dynamic programming algorithm for calculating C(n, k).
- * FEUP, MIEIC, MFES, 2020/21.
- */
-
-// Initial recursive definition of C(n, k), based on the Pascal equality.
 spec fn comb(n: nat, k: nat) -> nat
     recommends 0 <= k <= n
     decreases n
@@ -31,10 +25,9 @@ fn Comb(n: u64, k: u64) -> (res: u64)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

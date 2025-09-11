@@ -40,11 +40,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn solve(s: Vec<char>) -> (result: Vec<char>)
       ensures 
           result@.len() == s@.len(),
@@ -55,18 +52,14 @@ vc-spec: |-
               forall|i: int| 0 <= i < s@.len() && !is_letter(s@[i]) ==> 
                   result@[i] == s@[i],
           no_letters(s@, s@.len() as nat) ==> is_reverse(result@, s@)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      vec![]
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

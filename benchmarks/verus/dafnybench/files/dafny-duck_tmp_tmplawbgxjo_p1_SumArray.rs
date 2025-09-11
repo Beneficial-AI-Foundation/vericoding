@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Given an array of integers, it returns the sum. [1,3,3,2]->9
-
 spec fn sum(xs: Seq<i32>) -> int
     decreases xs.len()
 {
@@ -24,12 +22,9 @@ fn sum_array(xs: &[i32]) -> (s: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -1,11 +1,6 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   //power -- Stephanie Renee McIntyre
+  
   //Based on the code used in the course overheads for Fall 2018
   
   //There is no definition for power, so this function will be used for validating that our imperative program is correct.
@@ -22,37 +17,37 @@ vc-preamble: |-
      When the n-i=0, n=i and thus the loop guard ends the loop as it is no longer the case that i<n.
      Thus the program terminates.
   */
+  
+  //function for a to the power of n
+  
+  //Our code from class
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
-  spec fn power(a: int, n: nat) -> int //function for a to the power of n
+  spec fn power(a: int, n: nat) -> int
       recommends 0 <= a
       decreases n
   {
       if n == 0 { 1 } else { a * power(a, (n - 1) as nat) }
   }
   
-  //Our code from class
   fn compute_power(a: u64, n: u64) -> (s: u64)
-      /*Pre-Condition*/   requires n >= 0 && a >= 0
-      /*Post-Condition*/  ensures s as int == power(a as int, n as nat)
-  // </vc-spec>
+      requires n >= 0 && a >= 0
+      ensures s as int == power(a as int, n as nat)
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      0
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {}
-  
   }
+  fn main() {}
 

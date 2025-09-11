@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Predicate to check if array slice is sorted
 spec fn sorted(a: &[int], l: int, u: int) -> bool {
     forall|i: int, j: int| 0 <= l <= i <= j <= u < a.len() ==> a[i] <= a[j]
 }
@@ -22,11 +21,9 @@ fn binary_search(a: &[int], key: int) -> (index: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

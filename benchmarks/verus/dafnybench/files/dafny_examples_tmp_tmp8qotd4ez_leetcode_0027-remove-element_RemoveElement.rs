@@ -16,11 +16,9 @@ fn remove_element(nums: &mut Vec<i32>, val: i32) -> (newLength: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

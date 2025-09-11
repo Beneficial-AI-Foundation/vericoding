@@ -2,10 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// This file shows how to specify and implement a function to compute the
-// largest element of a list. The function is fully specified by two
-// preconditions, as proved by the MaximumIsUnique lemma below.
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -24,6 +20,5 @@ fn maximum(values: Seq<int>) -> (max: int)
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

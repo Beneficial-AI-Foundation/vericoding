@@ -22,12 +22,9 @@ fn find_median(a: &[i32], b: &[i32]) -> (median: i32)
 // <vc-code>
 {
     assume(false);
-    0 // unreachable due to assume(false)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

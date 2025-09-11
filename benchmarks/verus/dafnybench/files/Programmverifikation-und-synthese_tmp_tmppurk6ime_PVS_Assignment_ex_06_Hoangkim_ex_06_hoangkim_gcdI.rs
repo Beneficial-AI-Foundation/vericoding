@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-//Problem01
-//a)
 spec fn gcd(x: int, y: int) -> int
     recommends x > 0 && y > 0
     decreases x + y when x > 0 && y > 0
@@ -13,7 +11,6 @@ spec fn gcd(x: int, y: int) -> int
     else { gcd(x, y - x) }
 }
 
-//b)
 spec fn gcd_prime(x: int, y: int) -> int
     recommends x > 0 && y > 0
     decreases if x > y { x } else { y }, x + y when x > 0 && y > 0
@@ -34,12 +31,9 @@ fn gcd_i(m: int, n: int) -> (d: int)
 // <vc-code>
 {
     assume(false);
-    m
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

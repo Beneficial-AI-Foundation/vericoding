@@ -11,16 +11,13 @@ fn extract_rear_chars(l: &Vec<Vec<char>>) -> (r: Vec<char>)
     ensures 
         r.len() == l.len()
         && forall|i: int| 0 <= i < l.len() ==> r[i] == l[i][l[i].len() - 1]
-{
 // </vc-spec>
 // <vc-code>
+{
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

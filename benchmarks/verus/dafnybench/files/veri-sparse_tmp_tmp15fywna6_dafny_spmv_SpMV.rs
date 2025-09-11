@@ -31,20 +31,9 @@ fn SpMV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], v: &[int]) -> (y: Vec<int>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-// 0 0 0 0 0 0 1 0
-// 0 0 0 0 0 0 0 0
-// 0 0 0 0 1 0 0 0
-// 0 0 0 0 0 0 0 0
-// 0 0 1 0 0 0 0 0
-// 0 0 0 0 0 0 0 0
-// 1 0 0 0 0 0 0 0
-// 0 0 0 0 0 0 0 0
-
-fn main() {
 }
-
-}
+fn main() {}

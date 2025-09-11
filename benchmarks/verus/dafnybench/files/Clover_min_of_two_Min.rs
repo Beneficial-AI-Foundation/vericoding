@@ -14,10 +14,9 @@ fn min(x: int, y: int) -> (z: int)
 // <vc-code>
 {
     assume(false);
-    x
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

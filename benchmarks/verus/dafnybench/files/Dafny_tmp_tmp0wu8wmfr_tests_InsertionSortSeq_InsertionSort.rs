@@ -2,11 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Insertion sort.
-//
-// Author: Snorri Agnarsson, snorri@hi.is
-
-
 spec fn is_sorted(s: Seq<int>) -> bool {
     forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q]
 }
@@ -23,10 +18,9 @@ fn insertion_sort(s: Seq<int>) -> (r: Seq<int>)
 // <vc-code>
 {
     assume(false);
-    s
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

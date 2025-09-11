@@ -6,7 +6,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-proof fn element_at_index_after_rotation(l: Seq<int>, n: int, index: int) -> (element: int)
+fn element_at_index_after_rotation(l: Seq<int>, n: int, index: int) -> (element: int)
     requires 
         n >= 0,
         0 <= index < l.len(),
@@ -16,11 +16,9 @@ proof fn element_at_index_after_rotation(l: Seq<int>, n: int, index: int) -> (el
 // <vc-code>
 {
     assume(false);
-    0 as int
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

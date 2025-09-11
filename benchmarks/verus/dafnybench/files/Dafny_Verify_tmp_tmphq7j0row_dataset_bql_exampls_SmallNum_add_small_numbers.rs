@@ -17,11 +17,9 @@ fn add_small_numbers(a: &[i32], n: usize, max: i32) -> (r: i32)
 // <vc-code>
 {
     assume(false);
-    0  // Need to return a value
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

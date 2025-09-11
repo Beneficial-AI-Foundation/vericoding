@@ -13,10 +13,9 @@ fn month_has_31_days(month: i32) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true // unreachable but needed for return type
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

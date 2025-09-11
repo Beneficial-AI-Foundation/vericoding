@@ -62,10 +62,9 @@ fn max_common_substring_length(str1: Seq<char>, str2: Seq<char>) -> (len: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

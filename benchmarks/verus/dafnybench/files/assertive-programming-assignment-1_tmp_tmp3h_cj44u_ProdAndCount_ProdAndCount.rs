@@ -46,11 +46,9 @@ fn prod_and_count(q: &[i32], key: i32) -> (result: (i32, u32))
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

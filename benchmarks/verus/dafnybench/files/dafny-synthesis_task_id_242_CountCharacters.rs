@@ -10,15 +10,13 @@ fn count_characters(s: Seq<char>) -> (count: usize)
     ensures 
         count >= 0,
         count == s.len(),
-{
 // </vc-spec>
 // <vc-code>
+{
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

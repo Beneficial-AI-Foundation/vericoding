@@ -25,10 +25,9 @@ fn max(a: &[i32], n: usize) -> (max: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

@@ -1,9 +1,6 @@
 use vstd::prelude::*;
 
 verus! {
-/*
-    i)  Write a verified method with signature
-*/
 
 // <vc-helpers>
 // </vc-helpers>
@@ -17,11 +14,9 @@ fn allow_42(x: i32, y: i32) -> (ret: (i32, bool))
 // <vc-code>
 {
     assume(false);
-    (0, false)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

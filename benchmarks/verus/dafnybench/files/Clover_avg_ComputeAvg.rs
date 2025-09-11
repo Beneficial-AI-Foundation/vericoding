@@ -16,7 +16,5 @@ fn compute_avg(a: int, b: int) -> (avg: int)
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

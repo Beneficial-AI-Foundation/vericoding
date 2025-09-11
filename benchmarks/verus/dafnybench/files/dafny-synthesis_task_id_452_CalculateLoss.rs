@@ -12,12 +12,10 @@ fn calculate_loss(cost_price: i32, selling_price: i32) -> (loss: i32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

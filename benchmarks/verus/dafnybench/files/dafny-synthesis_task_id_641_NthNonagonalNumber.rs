@@ -12,11 +12,10 @@ fn nth_nonagonal_number(n: int) -> (number: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  unreached()
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

@@ -27,11 +27,10 @@ fn canyon_search(a: &[i32], b: &[i32]) -> (d: u32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

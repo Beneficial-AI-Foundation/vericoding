@@ -50,11 +50,9 @@ fn max_common_substring_length(str1: &Vec<char>, str2: &Vec<char>) -> (len: usiz
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

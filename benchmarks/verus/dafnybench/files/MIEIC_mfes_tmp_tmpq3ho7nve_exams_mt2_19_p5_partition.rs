@@ -2,12 +2,7 @@ use vstd::prelude::*;
 
 verus! {
 
-type T = int; // example
-
- // Partitions a nonempty array 'a', by reordering the elements in the array,
-// so that elements smaller than a chosen pivot are placed to the left of the
-// pivot, and values greater or equal than the pivot are placed to the right of 
-// the pivot. Returns the pivot position.
+type T = int;
 
 // <vc-helpers>
 // </vc-helpers>
@@ -25,10 +20,9 @@ fn partition(a: &mut Vec<T>) -> (pivotPos: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

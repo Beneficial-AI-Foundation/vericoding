@@ -1,0 +1,70 @@
+vc-description: |-
+  numpy.logaddexp: Logarithm of the sum of exponentiations of the inputs.
+  
+  Calculates log(exp(x1) + exp(x2)) element-wise. This function is useful 
+  in statistics where the calculated probabilities of events may be so small 
+  as to exceed the range of normal floating point numbers.
+  
+  The logaddexp function provides a numerically stable way to compute
+  log(exp(x1) + exp(x2)) without intermediate overflow or underflow.
+  
+  Mathematical properties:
+  - logaddexp(x, x) = x + log(2)
+  - logaddexp(x, -∞) = x
+  - logaddexp(-∞, x) = x
+  - logaddexp is symmetric: logaddexp(x, y) = logaddexp(y, x)
+  - logaddexp is associative in the sense that it satisfies the log-sum-exp properties
+  - logaddexp(x, y) ≥ max(x, y) for all x, y
+  
+  From NumPy documentation:
+  - Parameters: x1, x2 (array_like) - Input arrays
+  - Returns: ndarray - The element-wise logaddexp of the inputs
+  
+  Specification: numpy.logaddexp returns a vector where each element is the
+  logarithm of the sum of exponentiations of the corresponding elements.
+  
+  Mathematical Properties:
+  1. Element-wise correctness: result[i] = log(exp(x1[i]) + exp(x2[i]))
+  2. Commutativity: logaddexp(x1, x2) = logaddexp(x2, x1)
+  3. Numerical stability: avoids intermediate overflow/underflow
+  4. Bounds: logaddexp(x, y) ≥ max(x, y) for all x, y
+  5. Special cases: 
+     - logaddexp(x, x) = x + log(2)
+     - logaddexp(x, -∞) = x (when x is finite)
+     - logaddexp(-∞, x) = x (when x is finite)
+  6. Monotonicity: logaddexp is monotonically increasing in both arguments
+  7. Associativity property: satisfies log-sum-exp algebraic relations
+  
+  Precondition: True (logaddexp is defined for all real numbers)
+  Postcondition: For all indices i, result[i] = log(exp(x1[i]) + exp(x2[i]))
+                 and result[i] ≥ max(x1[i], x2[i])
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  #[verifier::external_body]
+  spec fn logaddexp_value(x1: f64, x2: f64) -> f64;
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn logaddexp(x1: Vec<f64>, x2: Vec<f64>) -> (result: Vec<f64>)
+      requires x1.len() == x2.len(),
+      ensures 
+          result.len() == x1.len(),
+          forall|i: int| 0 <= i < result.len() ==> {
+              result[i] == logaddexp_value(x1[i], x2[i])
+          }
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

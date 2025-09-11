@@ -3,17 +3,8 @@ use vstd::multiset::*;
 
 verus! {
 
-// Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
-// Permalink spurningar: https://rise4fun.com/Dafny/G4sc3
-
-// Höfundur lausnar:     Alexander Guðmundsson
-// Permalink lausnar:    https://rise4fun.com/Dafny/nujsu
-
-// Insertion sort með hjálp helmingunarleitar.
-
-
 proof fn search(s: Seq<i32>, x: i32) -> (k: usize)
-    // Ekki má breyta forskilyrðum eða eftirskilyrðum fallsins
+
     requires 
         forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
     ensures 
@@ -32,19 +23,17 @@ proof fn search(s: Seq<i32>, x: i32) -> (k: usize)
 // </vc-helpers>
 
 // <vc-spec>
-proof fn sort(m: Multiset<i32>) -> (r: Seq<i32>)
+fn sort(m: Multiset<i32>) -> (r: Seq<i32>)
     ensures 
         r.to_multiset() == m
         && forall|p: int, q: int| 0 <= p < q < r.len() ==> r[p] <= r[q],
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  seq![]
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

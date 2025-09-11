@@ -1,0 +1,102 @@
+vc-description: |-
+  Machine limits for integer types
+  
+  Takes an integer type specification and returns information about 
+  the number of bits, minimum value, and maximum value for that type.
+  This provides access to the fundamental machine limits for integer
+  representation in numerical computing.
+  
+  Specification: numpy.iinfo returns correct machine limits for integer types.
+  
+  Precondition: True (no special preconditions for type information)
+  Postcondition: The returned IntInfo structure contains:
+    - Correct bit count for the specified type
+    - Correct minimum value (negative for signed types, 0 for unsigned)
+    - Correct maximum value based on the bit representation
+    - Consistency between bits and min/max values
+  
+  /* Integer type information structure containing machine limits for integer types */
+  
+  /* Number of bits occupied by the type */
+  
+  /* Smallest integer expressible by the type */
+  
+  /* Largest integer expressible by the type */
+  
+  /* Enumeration of supported integer types */
+  
+  /* 8-bit signed integer type */
+  
+  /* 16-bit signed integer type */
+  
+  /* 32-bit signed integer type */
+  
+  /* 64-bit signed integer type */
+  
+  /* 8-bit unsigned integer type */
+  
+  /* 16-bit unsigned integer type */
+  
+  /* 32-bit unsigned integer type */
+  
+  /* 64-bit unsigned integer type */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  struct IntInfo {
+  
+      bits: u32,
+  
+      min: i64,
+  
+      max: i64,
+  }
+  
+  enum IntType {
+  
+      Int8,
+  
+      Int16,
+  
+      Int32,
+  
+      Int64,
+  
+      UInt8,
+  
+      UInt16,
+  
+      UInt32,
+  
+      UInt64,
+  }
+  
+  fn iinfo(int_type: IntType) -> (info: IntInfo)
+      ensures
+          match int_type {
+              IntType::Int8 => info.bits == 8 && info.min == -128 && info.max == 127,
+              IntType::Int16 => info.bits == 16 && info.min == -32768 && info.max == 32767,
+              IntType::Int32 => info.bits == 32 && info.min == -2147483648 && info.max == 2147483647,
+              IntType::Int64 => info.bits == 64 && info.min == -9223372036854775808 && info.max == 9223372036854775807,
+              IntType::UInt8 => info.bits == 8 && info.min == 0 && info.max == 255,
+              IntType::UInt16 => info.bits == 16 && info.min == 0 && info.max == 65535,
+              IntType::UInt32 => info.bits == 32 && info.min == 0 && info.max == 4294967295,
+              IntType::UInt64 => info.bits == 64 && info.min == 0 && info.max == 18446744073709551615,
+          }
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

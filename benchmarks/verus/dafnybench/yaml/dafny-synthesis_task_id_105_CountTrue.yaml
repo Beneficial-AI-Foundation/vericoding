@@ -16,27 +16,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn count_true(a: &[bool]) -> (result: usize)
       ensures result == count_to(a, a.len() as int)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      0
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

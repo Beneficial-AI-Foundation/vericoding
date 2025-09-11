@@ -18,10 +18,9 @@ fn twoSum(nums: &[i32], target: i32) -> (result: (usize, usize))
 // <vc-code>
 {
     assume(false);
-    (0, 1) // unreachable
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

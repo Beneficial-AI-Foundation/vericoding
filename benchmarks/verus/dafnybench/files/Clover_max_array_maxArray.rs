@@ -19,8 +19,5 @@ fn maxArray(a: &[int]) -> (m: int)
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

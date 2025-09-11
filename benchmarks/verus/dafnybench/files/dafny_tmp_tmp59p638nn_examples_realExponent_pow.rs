@@ -16,12 +16,10 @@ fn pow(n: u32, alpha: i32) -> (product: i32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-} // verus!
+fn main() {}

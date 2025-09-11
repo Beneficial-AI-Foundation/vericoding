@@ -14,26 +14,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn mod_fn(n: u64) -> (a: u64)
       requires n >= 0,
       ensures a as nat == f(n as nat),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      1
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

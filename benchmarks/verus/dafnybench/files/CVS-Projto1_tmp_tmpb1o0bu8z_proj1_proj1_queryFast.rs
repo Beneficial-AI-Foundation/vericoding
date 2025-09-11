@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Exercise 1.a)
 spec fn sum(a: Seq<int>, i: int, j: int) -> int
     decreases j - i
 {
@@ -11,13 +10,9 @@ spec fn sum(a: Seq<int>, i: int, j: int) -> int
     } else if i < j && j-1 < a.len() {
         a[j-1] + sum(a, i, j-1)
     } else {
-        0  // default case
+        0
     }
 }
-
-// Exercise 1.b)
-
-// Exercise 1.c)
 
 spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool {
     a.len() + 1 == c.len()
@@ -25,7 +20,6 @@ spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool {
     && forall |j: int| #![auto] 1 <= j <= a.len() ==> c[j] == sum(a, 0, j)
 }
 
-// Exercise 2.
 pub enum List<T> {
     Nil,
     Cons { head: T, tail: Box<List<T>> }
@@ -52,7 +46,7 @@ spec fn mem<T: PartialEq>(x: T, l: &List<T>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-proof fn query_fast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
+fn query_fast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
     requires 
         is_prefix_sum_for(a, c) && 0 <= i <= j <= a.len() < c.len()
     ensures r == sum(a, i, j)
@@ -60,11 +54,9 @@ proof fn query_fast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -20,12 +20,9 @@ fn online_max(a: &[i32], x: usize) -> (result: (Ghost<i32>, usize))
 // <vc-code>
 {
     assume(false);
-    (Ghost(0), 0)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

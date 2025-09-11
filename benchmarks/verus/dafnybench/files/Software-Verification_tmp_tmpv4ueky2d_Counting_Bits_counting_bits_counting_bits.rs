@@ -15,12 +15,9 @@ fn counting_bits(n: usize) -> (result: Vec<usize>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -16,11 +16,9 @@ fn is_even_at_index_even(lst: &Vec<i32>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

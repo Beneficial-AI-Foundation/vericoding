@@ -2,17 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/**
-  Ather, Mohammad Faiz (s4648481/3)
-  CSSE3100
-  Assignemnt 3
-  The University of Queensland
- */
-
-// Question 1
-
-// Author: Leino, Title: Program Proofs
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -29,11 +18,9 @@ fn binary_search(a: &[i32], circle: i32) -> (n: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

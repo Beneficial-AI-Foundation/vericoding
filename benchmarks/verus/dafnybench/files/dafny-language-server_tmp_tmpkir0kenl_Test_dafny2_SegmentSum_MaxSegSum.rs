@@ -1,5 +1,3 @@
-// RUN: %verus "%s"
-
 use vstd::prelude::*;
 
 verus! {
@@ -26,11 +24,9 @@ fn max_seg_sum(a: &Vec<int>) -> (result: (usize, usize))
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

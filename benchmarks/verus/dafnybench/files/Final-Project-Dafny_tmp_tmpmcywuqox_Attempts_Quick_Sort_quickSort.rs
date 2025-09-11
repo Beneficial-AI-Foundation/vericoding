@@ -28,10 +28,9 @@ fn quick_sort(seq: Seq<int>) -> (res: Seq<int>)
 // <vc-code>
 {
     assume(false);
-    seq
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

@@ -12,11 +12,9 @@ fn contains_sequence(list: Seq<Seq<int>>, sub: Seq<int>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

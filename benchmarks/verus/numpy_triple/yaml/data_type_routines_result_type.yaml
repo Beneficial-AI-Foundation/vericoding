@@ -1,0 +1,130 @@
+vc-description: |-
+  Returns the data type that results from applying NumPy type promotion rules to the arguments. 
+  
+  Type promotion in NumPy works similarly to the rules in languages like C++, with some differences. When both scalars and arrays are used, the array's type takes precedence and the scalar's actual value is considered.
+  
+  The function takes operands of some operation and returns the result type according to NumPy's type promotion hierarchy.
+  
+  /* Define NumPy data types for type promotion */
+  
+  /* 8-bit signed integer */
+  
+  /* 16-bit signed integer */
+  
+  /* 32-bit signed integer */
+  
+  /* 64-bit signed integer */
+  
+  /* 32-bit floating point */
+  
+  /* 64-bit floating point */
+  
+  /* 64-bit complex number */
+  
+  /* 128-bit complex number */
+  
+  /* Boolean type */
+  
+  /* Define type promotion hierarchy (higher number = higher precedence) */
+  
+  /* Define operand types (either scalar or array) */
+  
+  /* Scalar value with data type */
+  
+  /* Array with data type and vector of values */
+  
+  /* Extract the data type from an operand */
+  
+  /* Type promotion function for two types */
+  
+  /* The result type is at least as high in the hierarchy as any input type */
+  
+  /* The result type is the minimum type that can represent all inputs */
+  
+  /* Type promotion follows the standard hierarchy */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  #[derive(PartialEq, Eq, Structural)]
+  pub enum NumpyDType {
+  
+      Int8,
+  
+      Int16,
+  
+      Int32,
+  
+      Int64,
+  
+      Float32,
+  
+      Float64,
+  
+      Complex64,
+  
+      Complex128,
+  
+      Bool,
+  }
+  
+  spec fn type_rank(dtype: NumpyDType) -> nat {
+      match dtype {
+          NumpyDType::Bool => 0,
+          NumpyDType::Int8 => 1,
+          NumpyDType::Int16 => 2,
+          NumpyDType::Int32 => 3,
+          NumpyDType::Int64 => 4,
+          NumpyDType::Float32 => 5,
+          NumpyDType::Float64 => 6,
+          NumpyDType::Complex64 => 7,
+          NumpyDType::Complex128 => 8,
+      }
+  }
+  
+  pub enum NumpyOperand {
+  
+      Scalar(NumpyDType),
+  
+      Array(NumpyDType, Vec<i32>),
+  }
+  
+  spec fn operand_type(operand: NumpyOperand) -> NumpyDType {
+      match operand {
+          NumpyOperand::Scalar(dtype) => dtype,
+          NumpyOperand::Array(dtype, _) => dtype,
+      }
+  }
+  
+  spec fn promote_types(t1: NumpyDType, t2: NumpyDType) -> NumpyDType {
+      if type_rank(t1) >= type_rank(t2) { t1 } else { t2 }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn result_type(operands: Vec<NumpyOperand>) -> (result: NumpyDType)
+      requires operands.len() > 0,
+      ensures
+  
+          forall|i: int| 0 <= i < operands.len() ==> 
+              type_rank(result) >= type_rank(operand_type(operands[i])),
+  
+          exists|i: int| 0 <= i < operands.len() && 
+              type_rank(result) == type_rank(operand_type(operands[i])),
+  
+          forall|i: int, j: int| 0 <= i < operands.len() && 0 <= j < operands.len() ==>
+              type_rank(result) >= type_rank(promote_types(operand_type(operands[i]), operand_type(operands[j]))),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

@@ -24,7 +24,5 @@ fn index_wise_addition(a: Seq<Seq<int>>, b: Seq<Seq<int>>) -> (result: Seq<Seq<i
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

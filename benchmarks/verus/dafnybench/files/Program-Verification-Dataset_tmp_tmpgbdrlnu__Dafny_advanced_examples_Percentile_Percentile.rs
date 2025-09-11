@@ -2,15 +2,13 @@ use vstd::prelude::*;
 
 verus! {
 
-// Sum of elements of A from indices 0 to end.
-// end is inclusive! (not James's normal way of thinking!!)
 spec fn sum_upto(a: Seq<int>, end: int) -> int
     decreases end + 2
 {
     if end < 0 {
         0
     } else if end >= a.len() {
-        0  // out of bounds
+        0
     } else {
         a[end] + sum_upto(a, end - 1)
     }
@@ -38,18 +36,9 @@ fn percentile(p: int, a: &[int], total: int) -> (i: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-// example showing that, with the original postcondition, the answer is non-unique!
-
-
-// proof that, with the corrected postcondition, the answer is unique
-// lemma for previous proof: when an array has strictly positive elements, the
-// sums strictly increase left to right
-
-fn main() {
 }
-
-}
+fn main() {}

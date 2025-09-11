@@ -13,16 +13,15 @@ spec fn fact(n: nat) -> nat
 
 // <vc-spec>
 fn factorial(n: u32) -> (res: u32)
-    requires n <= 12  // to prevent overflow
+    requires n <= 12
     ensures res == fact(n as nat)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0  // dummy return to satisfy type checker
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

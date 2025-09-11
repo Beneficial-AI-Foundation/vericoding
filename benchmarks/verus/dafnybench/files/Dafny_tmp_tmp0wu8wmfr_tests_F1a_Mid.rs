@@ -7,8 +7,7 @@ verus! {
 
 // <vc-spec>
 fn mid(p: int, q: int) -> (m: int)
-    // | ... | ??? | ... |
-    //        p m   q
+
     requires 
         p <= q,
     ensures 
@@ -19,15 +18,9 @@ fn mid(p: int, q: int) -> (m: int)
 // <vc-code>
 {
     assume(false);
-    proof {
-        assert(false);
-    }
-    p // unreachable
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

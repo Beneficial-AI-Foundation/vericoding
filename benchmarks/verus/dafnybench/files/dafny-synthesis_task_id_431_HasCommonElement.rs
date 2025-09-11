@@ -14,11 +14,9 @@ fn has_common_element(a: &[i32], b: &[i32]) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

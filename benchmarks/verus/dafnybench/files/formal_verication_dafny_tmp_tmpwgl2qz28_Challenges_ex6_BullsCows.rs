@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// see pdf 'ex6 & 7 documentation' for excercise question
-
 spec fn bullspec(s: Seq<nat>, u: Seq<nat>) -> nat {
     if !(0 <= u.len() == s.len() && nomultiples(u)) {
         arbitrary()
@@ -68,10 +66,9 @@ fn BullsCows(s: Vec<u32>, u: Vec<u32>) -> (ret: (u32, u32))
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

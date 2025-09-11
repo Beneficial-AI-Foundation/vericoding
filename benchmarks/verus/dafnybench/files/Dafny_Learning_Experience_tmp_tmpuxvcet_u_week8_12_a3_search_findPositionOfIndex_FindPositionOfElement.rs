@@ -17,10 +17,9 @@ fn find_position_of_element(a: &[i32], element: usize, n1: usize, s1: Seq<i32>) 
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

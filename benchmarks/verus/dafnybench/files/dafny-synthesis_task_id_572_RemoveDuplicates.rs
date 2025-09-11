@@ -14,11 +14,9 @@ fn remove_duplicates(a: &[i32]) -> (result: Vec<i32>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

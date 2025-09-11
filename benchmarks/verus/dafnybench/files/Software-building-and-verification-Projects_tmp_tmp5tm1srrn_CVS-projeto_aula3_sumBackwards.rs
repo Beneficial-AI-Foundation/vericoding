@@ -14,8 +14,6 @@ spec fn fib(n: nat) -> nat
     }
 }
 
-
-// 2.
 enum List<T> {
     Nil,
     Cons(T, Box<List<T>>)
@@ -30,12 +28,6 @@ spec fn add(l: List<int>) -> int
     }
 }
 
-
-// 3.
-
-// 5.
-
-// 6
 spec fn sum(n: nat) -> nat 
     decreases n
 {
@@ -56,11 +48,9 @@ fn sum_backwards(n: u32) -> (r: u32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn get_even(s: &mut Vec<nat>)
       ensures 
           s.len() == old(s).len(),
@@ -21,18 +18,14 @@ vc-spec: |-
                   s[i] == old(s)[i]
               }
           }
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

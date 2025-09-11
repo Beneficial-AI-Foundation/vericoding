@@ -16,11 +16,9 @@ fn square_pyramid_surface_area(base_edge: i32, height: i32) -> (area: i32)
 // <vc-code>
 {
     assume(false);
-    0 // unreachable but needed for return type
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

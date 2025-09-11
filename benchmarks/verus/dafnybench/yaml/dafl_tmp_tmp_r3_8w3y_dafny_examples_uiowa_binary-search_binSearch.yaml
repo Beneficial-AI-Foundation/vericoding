@@ -1,24 +1,13 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   ///////////////////
+  
   // Binary search
+  
   ///////////////////
-  
-  
-  spec fn is_sorted(a: &[int]) -> bool {
-      forall|i: int, j: int| 0 <= i <= j < a.len() ==> a[i] <= a[j]
-  }
-  
   
   // a[lo] <= a[lo+1] <= ... <= a[hi-2] <= a[hi-1]
   
   /* Note: the following definition of is_sorted:
-  
   
   although equivalent to the one above is not enough for Verus to be able 
   to prove the invariants for the loop in bin_search.
@@ -31,29 +20,29 @@ vc-preamble: |-
   that Verus is not currently able to do automatically. 
   */
 
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_sorted(a: &[int]) -> bool {
+      forall|i: int, j: int| 0 <= i <= j < a.len() ==> a[i] <= a[j]
+  }
+
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn bin_search(a: &[int], k: int) -> (b: bool)
       requires is_sorted(a)
       ensures b == exists|i: int| 0 <= i < a.len() && a[i] == k
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      false
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

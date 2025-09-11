@@ -14,11 +14,9 @@ fn is_decimal_with_two_precision(s: &str) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

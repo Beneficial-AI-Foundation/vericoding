@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Bubble Sort
 fn bubble_sort(a: &mut Vec<Vec<i32>>)
     requires
         old(a).len() >= 1,
@@ -15,8 +14,6 @@ fn bubble_sort(a: &mut Vec<Vec<i32>>)
     assume(false);
 }
 
-
-// Predicates for Bubble Sort
 spec fn sorted(a: &Vec<Vec<i32>>, l: int, u: int) -> bool
     recommends
         forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i].len() == 2,
@@ -41,19 +38,16 @@ fn non_overlapping_intervals(intervals: &mut Vec<Vec<i32>>) -> (count: i32)
         forall|i: int| 0 <= i < old(intervals).len() ==> #[trigger] old(intervals)[i].len() == 2,
         forall|i: int| 0 <= i < old(intervals).len() ==> -50000 <= #[trigger] old(intervals)[i][0] <= 50000,
         forall|i: int| 0 <= i < old(intervals).len() ==> -50000 <= #[trigger] old(intervals)[i][1] <= 50000,
-    // TODO: modify the ensures clause so that count is indeed equal to the minimum number of intervals we need to remove to make the rest of the intervals non-overlapping.
+
     ensures
         count >= 0,
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

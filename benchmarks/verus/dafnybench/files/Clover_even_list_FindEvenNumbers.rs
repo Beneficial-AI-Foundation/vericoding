@@ -19,12 +19,9 @@ fn find_even_numbers(arr: &[i32]) -> (even_numbers: Vec<i32>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -14,8 +14,6 @@ spec fn is_substring(sub: Seq<char>, str: Seq<char>) -> bool
     }
 }
 
-// We spent 2h each on this assignment
-
 spec fn is_prefix_pred(pre: Seq<char>, str: Seq<char>) -> bool {
     pre.len() <= str.len() && 
     pre == str.subrange(0, pre.len() as int)
@@ -34,7 +32,6 @@ spec fn is_not_substring_pred(sub: Seq<char>, str: Seq<char>) -> bool {
     forall|i: int| #![auto] 0 <= i && i <= str.len() ==> is_not_prefix_pred(sub, str.subrange(i, str.len() as int))
 }
 
-
 spec fn have_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char>) -> bool {
     exists|i1: int, j1: int| #![auto] 0 <= i1 && i1 + k <= str1.len() && j1 == i1 + k && is_substring_pred(str1.subrange(i1, j1), str2)
 }
@@ -45,7 +42,7 @@ spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char
 
 fn have_common_k_substring(k: usize, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
     ensures found <==> have_common_k_substring_pred(k as nat, str1, str2)
-    //ensures !found <==> have_not_common_k_substring_pred(k, str1, str2) // This postcondition follows from the above lemma.
+
 {
     assume(false);
     false
@@ -63,11 +60,9 @@ fn max_common_substring_length(str1: Seq<char>, str2: Seq<char>) -> (len: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

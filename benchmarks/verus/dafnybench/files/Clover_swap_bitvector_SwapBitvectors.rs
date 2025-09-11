@@ -14,11 +14,9 @@ fn swap_bitvectors(x: u8, y: u8) -> (result: (u8, u8))
 // <vc-code>
 {
     assume(false);
-    (0, 0) // This will never be reached due to assume(false)
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

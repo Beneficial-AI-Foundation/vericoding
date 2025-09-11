@@ -15,11 +15,9 @@ fn degrees_to_radians(degrees: i64) -> (radians: i64)
 // <vc-code>
 {
     assume(false);
-    0 // unreachable
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

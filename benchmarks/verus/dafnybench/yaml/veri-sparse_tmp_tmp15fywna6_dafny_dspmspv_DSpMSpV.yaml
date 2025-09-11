@@ -1,4 +1,7 @@
 vc-description: |-
+  // X requirements 
+  
+  // v requirements
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -47,14 +50,11 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn DSpMSpV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], X_crd1: &[nat], X_len: nat,
              v_val: &[int], v_crd: &[nat]) -> (result: Vec<int>)
-      // X requirements 
+  
       requires X_pos.len() >= 1,
                X_val.len() == X_crd.len(),
                (forall|i: int, j: int| 0 <= i < j < X_pos.len() ==> #[trigger] X_pos[i] <= #[trigger] X_pos[j]),
@@ -66,7 +66,6 @@ vc-spec: |-
                (X_crd1.len() < X_pos.len()),
                (forall|i: int, j: int| 0 <= i < j < X_crd1.len() ==> #[trigger] X_crd1[i] < #[trigger] X_crd1[j]),
   
-      // v requirements 
                (v_val.len() == v_crd.len()),
   
       ensures result.len() == X_len,
@@ -78,18 +77,14 @@ vc-spec: |-
           } else {
               0
           }})
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      Vec::new()
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

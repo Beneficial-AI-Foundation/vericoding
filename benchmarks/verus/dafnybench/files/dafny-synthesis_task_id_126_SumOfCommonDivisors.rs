@@ -17,10 +17,9 @@ fn sum_of_common_divisors(a: u32, b: u32) -> (sum: u32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

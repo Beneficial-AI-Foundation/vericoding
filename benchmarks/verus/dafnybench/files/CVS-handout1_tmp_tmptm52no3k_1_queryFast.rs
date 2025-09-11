@@ -2,17 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/*                                      Cumulative Sums over Arrays                                        */
-
-/*
-    Daniel Cavalheiro   57869
-    Pedro Nunes         57854
-*/
-
-
-
-//(a)
-
 spec fn sum(a: Seq<int>, i: int, j: int) -> int
     decreases j - i
 {
@@ -22,15 +11,6 @@ spec fn sum(a: Seq<int>, i: int, j: int) -> int
         a[i] + sum(a, i + 1, j) 
     }
 }
-
-
-
-//(b)
-
-
-
-
-//(c)
 
 spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool
 {
@@ -53,11 +33,9 @@ fn queryFast(a: &[i32], c: &[i32], i: i32, j: i32) -> (r: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

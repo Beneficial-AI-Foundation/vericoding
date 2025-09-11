@@ -34,12 +34,9 @@ fn mcount_even(v: &Vec<i32>) -> (n: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

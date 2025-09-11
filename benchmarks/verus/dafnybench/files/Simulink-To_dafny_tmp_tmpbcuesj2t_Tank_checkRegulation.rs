@@ -9,12 +9,12 @@ enum Valve {
 }
 
 struct Pipe {
-    v1: Valve, // outlet valve 
-    v2: Valve, // inlet Valve
-    v3: Valve, // outlet valve
-    in_flowv1: int, // flow in valve v1
-    in_flowv2: int, // flow in valve v2
-    in_flowv3: int, // flow in valve v3
+    v1: Valve,
+    v2: Valve,
+    v3: Valve,
+    in_flowv1: int,
+    in_flowv2: int,
+    in_flowv3: int,
 }
 
 impl Pipe {
@@ -57,10 +57,9 @@ fn checkRegulation(tank: &mut Tank)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

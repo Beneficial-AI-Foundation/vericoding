@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Using generic type parameter with uninterpreted body
 uninterp spec fn f<T>(a: T) -> bool;
 
 // <vc-helpers>
@@ -17,12 +16,9 @@ fn select<T>(s1: Seq<T>) -> (r: Seq<T>)
 // <vc-code>
 {
     assume(false);
-    s1
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

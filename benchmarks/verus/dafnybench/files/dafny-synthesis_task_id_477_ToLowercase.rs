@@ -34,11 +34,9 @@ fn to_lowercase(s: &str) -> (v: String)
 // <vc-code>
 {
     assume(false);
-    loop {}
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

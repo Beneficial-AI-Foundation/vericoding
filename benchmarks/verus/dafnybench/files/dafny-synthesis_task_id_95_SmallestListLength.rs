@@ -15,12 +15,10 @@ fn smallest_list_length(s: Seq<Seq<int>>) -> (v: int)
 // </vc-spec>
 // <vc-code>
 {
-    proof { assume(false); }
+    assume(false);
     unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

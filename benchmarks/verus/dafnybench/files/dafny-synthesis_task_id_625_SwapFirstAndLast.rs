@@ -18,11 +18,9 @@ fn swap_first_and_last(a: &mut Vec<i32>)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

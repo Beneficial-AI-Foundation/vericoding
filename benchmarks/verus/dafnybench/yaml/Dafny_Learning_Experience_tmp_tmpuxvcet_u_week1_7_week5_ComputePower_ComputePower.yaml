@@ -19,26 +19,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn compute_power(n: u32) -> (p: u32)
       ensures p == power(n as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume(false);
-    0
+      assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   //Problem01
   
   /*
@@ -26,9 +20,10 @@ vc-preamble: |-
   
   */
   
-  
   //Problem02
+  
   //As you can see below, Verus claims that after executing the following function
+  
   //strange() we will have that 1=2;
   
   /*(a). Do you have an explanation for this behaviour?
@@ -57,12 +52,12 @@ vc-preamble: |-
   
       as we know the statment {1 = 2} is always false. true => false is always false     
   
-  
-  
   */
   
   //Problem 3
+  
   //Use what you know about the weakest preconditions/strongest postconditions to ex-
+  
   //plain why the following code verifies:
   
   /*
@@ -82,31 +77,27 @@ vc-preamble: |-
   It assumes that the square of x is less than 100. In other words, it assumes that x is 
   within the range (0, 10) since the largest possible square less than 100 is 9 * 9 = 81.
   
-  
   */
 
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn q(x: u32, y: u32) -> (z: u32)
       requires y - x > 2
       ensures x < z*z < y
-  
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      x + 1  // Return a dummy value
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

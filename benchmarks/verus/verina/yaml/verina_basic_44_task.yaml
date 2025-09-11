@@ -1,0 +1,41 @@
+vc-description: |-
+  This task requires writing a Verus method that verifies if every odd index in an array of integers holds an odd number. In other words, for each index in the array that is odd, the number located at that index must also be odd. The method should return true if this condition is satisfied for every odd index; otherwise, it should return false.
+  
+  -----Input-----
+  The input consists of:
+  a: An array of integers.
+  
+  -----Output-----
+  The output is a Boolean value:
+  Returns true if, for every odd index in the array, the corresponding element is odd.
+  Returns false if there is at least one odd index where the corresponding element is not odd.
+  
+  -----Note-----
+  There are no preconditions; the method will work for any array of integers.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_odd(n: i32) -> bool {
+      n % 2 == 1
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_odd_at_index_odd(a: &Vec<i32>) -> (result: bool)
+      ensures
+          result <==> (forall|i: int| 0 <= i < a.len() && i % 2 == 1 ==> is_odd(a[i as int])),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

@@ -1,0 +1,40 @@
+vc-description: |-
+  numpy.flipud: Reverse the order of elements along axis 0 (up/down).
+  
+  For a 1D array, this reverses the entire array.
+  For 2D arrays, this reverses the order of rows while preserving 
+  the elements within each row.
+  
+  Returns a view of the input array with elements reversed along axis 0.
+  
+  Specification: flipud reverses the order of elements in the vector.
+  
+  Precondition: True (no special preconditions)
+  Postcondition: For all indices i, result[i] = m[n-1-i]
+  
+  This specification captures both the sanity check (result has same size)
+  and the mathematical property (elements are reversed).
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn flipud(m: Vec<f32>) -> (result: Vec<f32>)
+      ensures 
+          result.len() == m.len(),
+          forall|i: int| 0 <= i < m.len() ==> result[i] == m[m.len() - 1 - i],
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

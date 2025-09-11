@@ -18,10 +18,9 @@ fn count_uppercase(s: &str) -> (count: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

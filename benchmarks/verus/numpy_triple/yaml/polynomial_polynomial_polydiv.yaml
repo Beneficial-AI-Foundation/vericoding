@@ -1,0 +1,56 @@
+vc-description: |-
+  numpy.polynomial.polynomial.polydiv: Divide one polynomial by another.
+  
+  Returns the quotient-with-remainder of two polynomials c1 / c2.
+  The arguments are sequences of coefficients, from lowest order term
+  to highest, e.g., [1,2,3] represents 1 + 2*x + 3*x**2.
+  
+  The function performs polynomial long division, returning both
+  the quotient and remainder such that c1 = c2 * quotient + remainder.
+  
+  Specification: polydiv performs polynomial division with remainder.
+  
+  Precondition: The leading coefficient of c2 (highest degree term) is non-zero
+  Postcondition: 
+  - The division identity holds: c1 = c2 * quotient + remainder (as polynomials)
+  - The remainder has degree less than the divisor (leading coefficients are zero)
+  - When the divisor is a constant polynomial, the quotient is c1 scaled by 1/c2[0]
+  
+  // leading coefficient non-zero
+  
+  // Division identity: polynomial relationship holds
+  
+  // Remainder has lower degree than divisor
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn polydiv(c1: Vec<f32>, c2: Vec<f32>) -> (result: (Vec<f32>, Vec<f32>))
+      requires 
+          c1.len() > 0,
+          c2.len() > 0,
+          c2[c2.len() - 1] != 0.0f32,
+      ensures ({
+          let (quo, rem) = result;
+  
+          quo.len() == c1.len() &&
+          rem.len() == c1.len() &&
+  
+          (forall|j: int| j >= (c2.len() - 1) && 0 <= j < rem.len() ==> rem[j] == 0.0f32)
+      })
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

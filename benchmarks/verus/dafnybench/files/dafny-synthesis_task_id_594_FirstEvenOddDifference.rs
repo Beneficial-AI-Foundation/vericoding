@@ -32,12 +32,9 @@ fn first_even_odd_difference(a: &[i32]) -> (diff: i32)
 // <vc-code>
 {
     assume(false);
-    0  // dummy return value
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// sums from index 0 -> i - 1
 spec fn sumcheck(s: &[int], i: int) -> int
     recommends 0 <= i <= s.len()
     decreases i when 0 <= i <= s.len()
@@ -10,8 +9,6 @@ spec fn sumcheck(s: &[int], i: int) -> int
     if i == 0 { 0 }
     else { s[i as nat - 1] + sumcheck(s, i - 1) }
 }
-
-// returns sum of array
 
 // <vc-helpers>
 // </vc-helpers>
@@ -25,12 +22,9 @@ fn sum(s: &[int]) -> (a: int)
 // <vc-code>
 {
     assume(false);
-    loop {}
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

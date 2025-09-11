@@ -24,12 +24,10 @@ fn compute_power(n: u32) -> (p: u32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

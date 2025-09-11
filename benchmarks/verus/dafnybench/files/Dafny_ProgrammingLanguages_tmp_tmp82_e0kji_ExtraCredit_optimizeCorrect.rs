@@ -21,7 +21,6 @@ spec fn eval(e: Exp, store: Map<String, int>) -> int
     }
 }
 
-//fill this function in to make optimizeFeatures work
 spec fn optimize(e: Exp) -> Exp
     decreases e
 {
@@ -46,10 +45,7 @@ spec fn optimize(e: Exp) -> Exp
         },
         _ => e,
     }
-} 
-
-//as you write optimize this will become unproved
-//you must write proof code so that Verus can prove this
+}
 
 // <vc-helpers>
 // </vc-helpers>
@@ -61,9 +57,9 @@ fn optimize_correct(e: Exp, s: Map<String, int>)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

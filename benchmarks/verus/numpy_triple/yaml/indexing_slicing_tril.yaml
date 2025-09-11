@@ -1,0 +1,57 @@
+vc-description: |-
+  numpy.tril: Lower triangle of an array.
+  
+  Return a copy of an array with elements above the k-th diagonal zeroed.
+  For simplicity, this specification focuses on square matrices and k=0 (main diagonal).
+  
+  Given a flattened square matrix (stored in row-major order), returns a copy
+  where elements above the main diagonal are set to zero.
+  
+  This captures the essential mathematical property of extracting the lower
+  triangular part of a matrix.
+  
+  Specification: tril returns the lower triangle of a matrix with elements above the main diagonal zeroed.
+  
+  Mathematical Properties:
+  1. Shape Preservation: The output has the same shape as the input
+  2. Lower Triangle Preservation: Elements at or below the main diagonal are unchanged
+  3. Upper Triangle Zeroing: Elements above the main diagonal are set to zero
+  4. Diagonal Definition: For a square matrix stored in row-major order,
+     element at position (i,j) corresponds to index i*n + j in the flattened vector
+  
+  The main diagonal consists of elements where i = j.
+  Lower triangle consists of elements where i ≥ j.
+  Upper triangle consists of elements where i < j.
+  
+  This specification provides a foundation for formal verification of
+  triangular matrix operations in numerical computing.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn tril(matrix: Vec<f32>, n: usize) -> (result: Vec<f32>)
+      requires 
+          n > 0,
+          matrix.len() == n * n,
+      ensures
+          result.len() == matrix.len(),
+          forall|i: usize, j: usize| #[trigger] result[i * n + j] == matrix[i * n + j] <==
+              i < n && j < n && i >= j,
+          forall|i: usize, j: usize| #[trigger] result[i * n + j] == 0.0f32 <==
+              i < n && j < n && i < j,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

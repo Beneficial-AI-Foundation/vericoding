@@ -10,26 +10,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn is_product_even(a: &[int]) -> (result: bool)
       ensures result <==> exists|i: int| 0 <= i < a.len() && is_even(a@[i])
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume(false);
-    false
+      assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

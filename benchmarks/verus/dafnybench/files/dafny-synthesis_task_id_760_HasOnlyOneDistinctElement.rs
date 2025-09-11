@@ -14,10 +14,9 @@ fn has_only_one_distinct_element(a: &[i32]) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

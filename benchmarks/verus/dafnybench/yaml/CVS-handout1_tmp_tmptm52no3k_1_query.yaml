@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /*                                      Cumulative Sums over Arrays                                        */
   
   /*
@@ -12,9 +6,16 @@ vc-preamble: |-
       Pedro Nunes         57854
   */
   
-  
-  
   //(a)
+  
+  //(b)
+  
+  //(c)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
   
   spec fn sum(a: &[int], i: int, j: int) -> int
       recommends 0 <= i <= j <= a.len()
@@ -24,12 +25,6 @@ vc-preamble: |-
       else { a[i] + sum(a, i + 1, j) }
   }
   
-  
-  
-  //(b)
-  
-  //(c)
-  
   spec fn is_prefix_sum_for(a: &[int], c: &[int]) -> bool
   {
       &&& a.len() + 1 == c.len()
@@ -38,28 +33,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn query(a: &[int], i: usize, j: usize) -> (res: i64)
       requires 0 <= i <= j <= a.len()
       ensures res == sum(a, i as int, j as int)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume(false);
-    0i64
+      assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

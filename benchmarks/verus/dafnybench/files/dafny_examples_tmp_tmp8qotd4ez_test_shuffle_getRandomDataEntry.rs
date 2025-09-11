@@ -28,12 +28,9 @@ fn get_random_data_entry<T: PartialEq + Clone>(m_work_list: &Vec<T>, avoid_set: 
 // <vc-code>
 {
     assume(false);
-    m_work_list[0].clone()
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

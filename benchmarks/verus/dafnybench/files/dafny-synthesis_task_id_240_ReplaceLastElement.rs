@@ -17,12 +17,9 @@ fn replace_last_element(first: &Vec<i32>, second: &Vec<i32>) -> (result: Vec<i32
 // <vc-code>
 {
     assume(false);
-    let mut result = Vec::new();
-    result
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

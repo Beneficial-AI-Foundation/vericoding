@@ -19,12 +19,9 @@ fn compute_factorial(n: i32) -> (u: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

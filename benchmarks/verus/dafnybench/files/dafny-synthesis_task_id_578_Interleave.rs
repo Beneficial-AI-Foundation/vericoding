@@ -17,12 +17,9 @@ fn interleave(s1: Seq<int>, s2: Seq<int>, s3: Seq<int>) -> (r: Seq<int>)
 // <vc-code>
 {
     assume(false);
-    loop { }
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

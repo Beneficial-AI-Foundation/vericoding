@@ -15,12 +15,9 @@ fn get_first_elements(lst: Vec<Vec<i32>>) -> (result: Vec<i32>)
 // <vc-code>
 {
     assume(false);
-    vec![]
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

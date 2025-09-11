@@ -2,31 +2,11 @@ use vstd::prelude::*;
 
 verus! {
 
-// spec fn int_values(n: int) -> Seq<int>
-//     recommends n >= 0
-// {
-//     if n == 0 { seq![0] }
-//     else { seq![n] + int_values(n/10) }
-// }
-
 spec fn power10(n: nat) -> nat
     decreases n
 {
     if n == 0 { 1 } else { 10 * power10((n - 1) as nat) }
 }
-
-// spec fn number_to_seq(number: int) -> Seq<int>
-//     recommends number >= 0
-// {
-//     if number == 0 { Seq::empty() }
-//     else { seq![number % 10] + number_to_seq(number/10) }
-// }
-
-// spec fn sum_seq(digits: Seq<int>) -> int
-// {
-//     if digits.len() == 0 { 0 }
-//     else { digits[0] + sum_seq(digits.subrange(1, digits.len() as int)) }
-// }
 
 spec fn sum_digits(n: nat) -> nat {
     let ndigits = number_of_digits(n);
@@ -64,10 +44,9 @@ fn sum_of_digits(number: u64) -> (sum: u64)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

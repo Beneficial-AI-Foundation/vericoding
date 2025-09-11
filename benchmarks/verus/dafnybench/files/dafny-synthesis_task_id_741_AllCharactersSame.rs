@@ -14,11 +14,9 @@ fn all_characters_same(s: Seq<u8>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

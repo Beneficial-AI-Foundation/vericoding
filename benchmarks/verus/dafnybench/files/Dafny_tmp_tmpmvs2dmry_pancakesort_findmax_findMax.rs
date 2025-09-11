@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// returns an index of the largest element of array 'a' in the range [0..n)
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -19,10 +17,9 @@ fn findMax(a: &[i32], n: usize) -> (r: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

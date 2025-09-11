@@ -7,8 +7,6 @@ spec fn split_point(a: Seq<int>, n: int) -> bool {
     forall|i: int, j: int| 0 <= i < n <= j < a.len() ==> a[i] <= a[j]
 }
 
-
-
 spec fn swap_frame(a_old: Seq<int>, a_new: Seq<int>, lo: int, hi: int) -> bool {
     0 <= lo <= hi <= a_old.len() &&
     a_old.len() == a_new.len() &&
@@ -35,12 +33,10 @@ fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  lo
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -35,9 +35,9 @@ fn swap(arr: &mut Vec<int>, i: usize, j: usize)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

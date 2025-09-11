@@ -13,14 +13,13 @@ fn linear_search(a: &[i32], e: i32) -> (n: usize)
         &&& a[n as int] == e
         &&& forall|k: int| 0 <= k < n as int ==> a[k] != e
     }),
-{
 // </vc-spec>
 // <vc-code>
+{
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

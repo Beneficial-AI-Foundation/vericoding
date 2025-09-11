@@ -2,20 +2,11 @@ use vstd::prelude::*;
 
 verus! {
 
-/* 
-* Formal verification of an O(log n) algorithm to calculate the natural power of an integer (x^n), 
-* illustrating the usage of lemmas and automatic induction in Verus.
-* Translated from Dafny to Verus.
-*/
-
-// Recursive definition of x^n in functional style, with time and space complexity O(n).
 spec fn power(x: int, n: nat) -> int
     decreases n
 {
     if n == 0 { 1 } else { x * power(x, (n - 1) as nat) }
 }
-
-// Computation of x^n in time and space O(log n).
 
 // <vc-helpers>
 // </vc-helpers>
@@ -27,13 +18,9 @@ fn power_dc(x: i64, n: u64) -> (p: i64)
 // <vc-code>
 {
     assume(false);
-    1
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
-    // A few test cases would go here
 }
-
-}
+fn main() {}

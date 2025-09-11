@@ -3,19 +3,6 @@ use vstd::multiset::*;
 
 verus! {
 
-// Höfundur spurningar:  Snorri Agnarsson, snorri@hi.is
-// Permalink spurningar: https://rise4fun.com/Dafny/dtcnY
-
-// Höfundur lausnar:     Alexander Guðmundsson
-// Permalink lausnar:    https://rise4fun.com/Dafny/ybUCz
-
-///////////////////////////////////////////////////////////////
-// Hér byrjar óbreytanlegi hluti skrárinnar.
-// Fyrir aftan þann hluta er sá hluti sem þið eigið að breyta.
-///////////////////////////////////////////////////////////////
-
-// Hjálparfall sem finnur minnsta gildi í poka
-
 proof fn min_of_multiset(m: Multiset<int>) -> (min: int)
     requires 
         m.len() > 0,
@@ -27,24 +14,12 @@ proof fn min_of_multiset(m: Multiset<int>) -> (min: int)
     arbitrary()
 }
 
-// Ekki má breyta þessu falli.
-
-
-///////////////////////////////////////////////////////////////
-// Hér lýkur óbreytanlega hluta skrárinnar.
-// Hér fyrir aftan er sá hluti sem þið eigið að breyta til að
-// útfæra afbrigði af selection sort.
-///////////////////////////////////////////////////////////////
-
-// Selection sort sem raðar poka í runu.
-// Klárið að forrita þetta fall.
-
 // <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 exec fn sort(m: Multiset<int>) -> (s: Vec<int>)
-    // Setjið viðeigandi ensures klausur hér
+
     ensures 
         s@.to_multiset() == m,
         forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
@@ -52,12 +27,9 @@ exec fn sort(m: Multiset<int>) -> (s: Vec<int>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

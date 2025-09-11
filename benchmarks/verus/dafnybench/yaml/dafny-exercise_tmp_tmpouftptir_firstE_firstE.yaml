@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn firstE(a: &[char]) -> (x: i32)
       ensures
           if a@.contains('e') {
@@ -19,19 +16,14 @@ vc-spec: |-
           } else {
               x == -1
           }
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      -1
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

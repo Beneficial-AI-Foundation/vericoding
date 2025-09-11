@@ -2,12 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
-// program verifies
-
 spec fn sortedbad(s: Seq<char>) -> bool {
-    // no b's after non-b's
+
     (forall|i: int, j: int| 0 <= i <= j < s.len() && s[i] == 'b' && s[j] != 'b' ==> i < j) &&
-    // only non-d's before d's
+
     (forall|i: int, j: int| 0 <= i <= j < s.len() && s[i] != 'd' && s[j] == 'd' ==> i < j)
 }
 
@@ -24,10 +22,9 @@ fn bad_sort(a: Seq<char>) -> (b: Seq<char>)
 // <vc-code>
 {
     assume(false);
-    a
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

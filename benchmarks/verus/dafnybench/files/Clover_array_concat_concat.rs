@@ -15,12 +15,9 @@ fn concat(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -19,11 +19,9 @@ fn insert(line: &mut Vec<char>, l: int, nl: &Vec<char>, p: int, at: int)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

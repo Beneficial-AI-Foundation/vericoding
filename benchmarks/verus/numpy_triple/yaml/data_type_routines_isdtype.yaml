@@ -1,0 +1,172 @@
+vc-description: |-
+  numpy.isdtype: Determine if a provided dtype is of a specified data type kind.
+  
+  This function checks whether a given NumPy dtype belongs to a specified
+  category of data types. It supports checking against specific dtype kinds
+  like 'bool', 'signed integer', 'unsigned integer', 'integral', 
+  'real floating', 'complex floating', and 'numeric'.
+  
+  The function performs type introspection and classification of NumPy dtypes
+  according to their fundamental characteristics.
+  
+  Specification: numpy.isdtype correctly identifies dtype kinds.
+  
+  Precondition: True (works for any valid dtype and kind)
+  Postcondition: Returns true iff the dtype belongs to the specified kind category.
+  
+  The function implements the following classification rules:
+  - Bool: dtype is boolean
+  - SignedInteger: dtype is signed integer (int8, int16, int32, int64)
+  - UnsignedInteger: dtype is unsigned integer (uint8, uint16, uint32, uint64)
+  - Integral: dtype is any integer type (signed or unsigned)
+  - RealFloating: dtype is real floating point (float16, float32, float64)
+  - ComplexFloating: dtype is complex floating point (complex64, complex128)
+  - Numeric: dtype is any numeric type (bool, integers, floats, complex)
+  
+  /* NumPy data type representation */
+  
+  /* Boolean data type */
+  
+  /* 8-bit signed integer */
+  
+  /* 16-bit signed integer */
+  
+  /* 32-bit signed integer */
+  
+  /* 64-bit signed integer */
+  
+  /* 8-bit unsigned integer */
+  
+  /* 16-bit unsigned integer */
+  
+  /* 32-bit unsigned integer */
+  
+  /* 64-bit unsigned integer */
+  
+  /* 16-bit floating point */
+  
+  /* 32-bit floating point */
+  
+  /* 64-bit floating point */
+  
+  /* 64-bit complex number */
+  
+  /* 128-bit complex number */
+  
+  /* NumPy data type kind categories */
+  
+  /* Boolean kind */
+  
+  /* Signed integer kind */
+  
+  /* Unsigned integer kind */
+  
+  /* Any integer kind (signed or unsigned) */
+  
+  /* Real floating point kind */
+  
+  /* Complex floating point kind */
+  
+  /* Any numeric kind */
+  
+  /* Get the fundamental kind of a NumPy dtype */
+  
+  /* Check if a NumPy dtype belongs to a specific kind category */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  #[derive(PartialEq, Eq)]
+  pub enum NumpyDType {
+  
+      Bool,
+  
+      Int8,
+  
+      Int16,
+  
+      Int32,
+  
+      Int64,
+  
+      UInt8,
+  
+      UInt16,
+  
+      UInt32,
+  
+      UInt64,
+  
+      Float16,
+  
+      Float32,
+  
+      Float64,
+  
+      Complex64,
+  
+      Complex128,
+  }
+  
+  #[derive(PartialEq, Eq)]
+  pub enum DTypeKind {
+  
+      Bool,
+  
+      SignedInteger,
+  
+      UnsignedInteger,
+  
+      Integral,
+  
+      RealFloating,
+  
+      ComplexFloating,
+  
+      Numeric,
+  }
+  
+  spec fn get_dtype_kind(dtype: NumpyDType) -> DTypeKind {
+      match dtype {
+          NumpyDType::Bool => DTypeKind::Bool,
+          NumpyDType::Int8 | NumpyDType::Int16 | NumpyDType::Int32 | NumpyDType::Int64 => DTypeKind::SignedInteger,
+          NumpyDType::UInt8 | NumpyDType::UInt16 | NumpyDType::UInt32 | NumpyDType::UInt64 => DTypeKind::UnsignedInteger,
+          NumpyDType::Float16 | NumpyDType::Float32 | NumpyDType::Float64 => DTypeKind::RealFloating,
+          NumpyDType::Complex64 | NumpyDType::Complex128 => DTypeKind::ComplexFloating,
+      }
+  }
+  
+  spec fn is_of_kind(dtype: NumpyDType, kind: DTypeKind) -> bool {
+      match kind {
+          DTypeKind::Bool => get_dtype_kind(dtype) == DTypeKind::Bool,
+          DTypeKind::SignedInteger => get_dtype_kind(dtype) == DTypeKind::SignedInteger,
+          DTypeKind::UnsignedInteger => get_dtype_kind(dtype) == DTypeKind::UnsignedInteger,
+          DTypeKind::Integral => get_dtype_kind(dtype) == DTypeKind::SignedInteger || get_dtype_kind(dtype) == DTypeKind::UnsignedInteger,
+          DTypeKind::RealFloating => get_dtype_kind(dtype) == DTypeKind::RealFloating,
+          DTypeKind::ComplexFloating => get_dtype_kind(dtype) == DTypeKind::ComplexFloating,
+          DTypeKind::Numeric => get_dtype_kind(dtype) == DTypeKind::Bool || 
+                               get_dtype_kind(dtype) == DTypeKind::SignedInteger || 
+                               get_dtype_kind(dtype) == DTypeKind::UnsignedInteger || 
+                               get_dtype_kind(dtype) == DTypeKind::RealFloating || 
+                               get_dtype_kind(dtype) == DTypeKind::ComplexFloating,
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn numpy_isdtype(dtype: NumpyDType, kind: DTypeKind) -> (result: bool)
+      ensures result == is_of_kind(dtype, kind)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

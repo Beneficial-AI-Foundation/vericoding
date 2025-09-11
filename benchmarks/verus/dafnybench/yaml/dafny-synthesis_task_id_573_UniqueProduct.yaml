@@ -1,4 +1,5 @@
 vc-description: |-
+  // This represents the nondeterministic choice like |:| in Dafny
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -11,31 +12,23 @@ vc-preamble: |-
       if s.is_empty() {
           1
       } else {
-          arbitrary()  // This represents the nondeterministic choice like |:| in Dafny
+          arbitrary()
       }
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn unique_product(arr: &[i32]) -> (product: i32)
       ensures product == set_product(arr@.to_set().map(|x: i32| x as int))
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      0
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {}
-  
   }
+  fn main() {}
 

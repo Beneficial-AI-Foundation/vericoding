@@ -12,11 +12,9 @@ fn compute_is_even(x: int) -> (is_even: bool)
 // <vc-code>
 {
     assume(false);
-    true // placeholder return value
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

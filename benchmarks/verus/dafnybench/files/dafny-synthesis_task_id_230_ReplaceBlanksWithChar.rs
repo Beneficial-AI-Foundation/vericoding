@@ -17,10 +17,9 @@ fn replace_blanks_with_char(s: Seq<char>, ch: char) -> (v: Seq<char>)
 // <vc-code>
 {
     assume(false);
-    s
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

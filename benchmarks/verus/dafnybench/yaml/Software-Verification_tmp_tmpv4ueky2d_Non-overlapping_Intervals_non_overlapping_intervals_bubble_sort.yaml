@@ -1,13 +1,13 @@
 vc-description: |-
+  // Bubble Sort
+  
+  // Predicates for Bubble Sort
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // Bubble Sort
-  
-  // Predicates for Bubble Sort
   spec fn sorted(a: &Vec<(i32, i32)>, l: int, u: int) -> bool {
       forall|i: int, j: int| 0 <= l <= i <= j <= u < a.len() ==> a[i].1 <= a[j].1
   }
@@ -17,25 +17,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn bubble_sort(a: &mut Vec<(i32, i32)>)
       ensures sorted(a, 0, a.len() as int - 1)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume(false);
+      assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {}
-  
   }
+  fn main() {}
 

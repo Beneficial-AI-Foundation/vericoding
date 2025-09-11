@@ -58,15 +58,10 @@ fn multiply(m1: &Vec<Vec<int>>, m2: &Vec<Vec<int>>) -> (m3: Vec<Vec<int>>)
 // </vc-spec>
 // <vc-code>
 {
-    let mut result = Vec::new();
-    proof {
-        assume(false);
-    }
-    result
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

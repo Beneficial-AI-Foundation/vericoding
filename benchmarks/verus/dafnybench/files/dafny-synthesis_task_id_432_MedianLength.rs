@@ -12,11 +12,10 @@ fn median_length(a: int, b: int) -> (median: int)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  unreached::<int>()
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

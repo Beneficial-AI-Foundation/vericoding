@@ -17,11 +17,9 @@ fn last_position(arr: &Vec<i32>, elem: i32) -> (pos: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -2,11 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// If this invariant is added explicitly to the loop then the verfication never finishes.
-// It could be {:opaque} for a more controlled verification:
-// assert InMap([], m, target) by {
-//   reveal InMap();
-// }
 spec fn in_map(nums: Seq<int>, m: Map<int, int>, t: int) -> bool {
     forall|j: int| 0 <= j < nums.len() ==> m.contains_key(t - nums[j])
 }
@@ -25,10 +20,9 @@ fn two_sum(nums: &[i32], target: i32) -> (r: (i32, i32))
 // <vc-code>
 {
     assume(false);
-    (-1, -1)
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

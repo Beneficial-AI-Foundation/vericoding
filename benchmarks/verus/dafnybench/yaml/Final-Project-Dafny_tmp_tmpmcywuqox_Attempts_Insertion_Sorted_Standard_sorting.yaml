@@ -12,25 +12,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn sorting(array: &mut Vec<int>)
       requires old(array).len() > 1
       ensures insertion_sorted(array@, 0, array@.len() as int)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

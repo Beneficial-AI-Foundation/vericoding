@@ -28,12 +28,9 @@ fn sum_in_range(a: &[i32], start: usize, end: usize) -> (sum: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

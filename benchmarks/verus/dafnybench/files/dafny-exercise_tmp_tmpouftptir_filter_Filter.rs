@@ -12,12 +12,9 @@ fn filter(a: Seq<char>, b: Set<char>) -> (c: Set<char>)
 // <vc-code>
 {
     assume(false);
-    b  // This won't be reached due to assume(false), but satisfies the type checker
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

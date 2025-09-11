@@ -28,9 +28,9 @@ fn cumsum(a: &[i32], b: &mut [i32])
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

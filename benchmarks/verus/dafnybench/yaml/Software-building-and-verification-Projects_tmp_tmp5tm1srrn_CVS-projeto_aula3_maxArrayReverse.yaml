@@ -1,4 +1,11 @@
 vc-description: |-
+  // 2.
+  
+  // 3.
+  
+  // 5.
+  
+  // 6
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -13,8 +20,6 @@ vc-preamble: |-
       else { fib((n - 1) as nat) + fib((n - 2) as nat) }
   }
   
-  
-  // 2.
   pub enum List<T> {
       Nil,
       Cons(T, Box<List<T>>),
@@ -29,12 +34,6 @@ vc-preamble: |-
       }
   }
   
-  
-  // 3.
-  
-  // 5.
-  
-  // 6
   spec fn sum(n: nat) -> nat
       decreases n
   {
@@ -42,29 +41,21 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn maxArrayReverse(arr: &[i32]) -> (max: i32)
       requires arr.len() > 0
       ensures 
           forall|i: int| 0 <= i < arr.len() ==> arr[i] <= max,
           exists|x: int| 0 <= x < arr.len() && arr[x] == max
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      0
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

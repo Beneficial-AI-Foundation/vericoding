@@ -12,28 +12,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn compute_factorial(n: i32) -> (u: i32)
       requires 1 <= n,
       ensures u == factorial(n as nat),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      0
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

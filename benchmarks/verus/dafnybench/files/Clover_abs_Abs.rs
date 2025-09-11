@@ -6,7 +6,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-proof fn abs(x: int) -> (y: int)
+fn abs(x: int) -> (y: int)
     ensures 
         x >= 0 ==> x == y,
         x < 0 ==> x + y == 0,
@@ -14,11 +14,9 @@ proof fn abs(x: int) -> (y: int)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

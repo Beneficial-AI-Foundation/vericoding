@@ -2,20 +2,12 @@ use vstd::prelude::*;
 
 verus! {
 
-// A8Q1 — Steph Renee McIntyre
-// Following the solutions from Carmen Bruni
-
-// There is no definition for power, so this function will be used for validating that our imperative program is correct. This is just for Verus.
-spec fn power(a: int, n: int) -> int //function for a to the power of n
+spec fn power(a: int, n: int) -> int
     recommends 0 <= n
     decreases n when 0 <= n
 {
     if n <= 0 { 1 } else { a * power(a, n - 1) }
 }
-
-/* Proof of implieds can be seen on LEARN.
-    Note: If you are unconvinced, putting asserts for each condition will demonstrate the correctness of the statements. 
-*/
 
 // <vc-helpers>
 // </vc-helpers>
@@ -27,14 +19,10 @@ fn A8Q1(y0: int, x: int) -> (z: int)
 // </vc-spec>
 // <vc-code>
 {
-    proof {
-        assume(false);
-    }
+    assume(false);
     unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

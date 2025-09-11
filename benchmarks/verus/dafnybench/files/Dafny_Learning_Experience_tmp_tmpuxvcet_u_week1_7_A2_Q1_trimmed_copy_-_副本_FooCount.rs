@@ -29,10 +29,9 @@ fn foo_count(count_index: usize, a: &Vec<int>, b: &mut Vec<int>) -> (p: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

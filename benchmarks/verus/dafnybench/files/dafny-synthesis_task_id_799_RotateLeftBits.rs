@@ -12,13 +12,10 @@ fn rotate_left_bits(n: u32, d: int) -> (result: u32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  n
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

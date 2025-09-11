@@ -9,19 +9,16 @@ verus! {
 fn get_mini(a: &[i32]) -> (mini: usize)
     requires a.len() > 0,
     ensures 
-        0 <= mini < a.len(), // mini is an index of a
-        forall|x: usize| 0 <= x < a.len() ==> a[mini as int] <= a[x as int], // a[mini] is the minimum value
-        forall|x: usize| 0 <= x < mini ==> a[mini as int] < a[x as int], // a[mini] is the first min
+        0 <= mini < a.len(),
+        forall|x: usize| 0 <= x < a.len() ==> a[mini as int] <= a[x as int],
+        forall|x: usize| 0 <= x < mini ==> a[mini as int] < a[x as int],
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0 // unreachable but needed for type checking
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

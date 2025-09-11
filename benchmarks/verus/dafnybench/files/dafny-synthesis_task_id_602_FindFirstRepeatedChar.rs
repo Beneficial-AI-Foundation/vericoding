@@ -15,11 +15,9 @@ fn find_first_repeated_char(s: &str) -> (result: (bool, char))
 // <vc-code>
 {
     assume(false);
-    (false, 'a')
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

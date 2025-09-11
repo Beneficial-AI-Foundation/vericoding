@@ -20,10 +20,9 @@ fn get_even(s: &mut Vec<nat>)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

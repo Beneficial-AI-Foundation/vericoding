@@ -16,13 +16,10 @@ fn element_wise_division(a: Seq<int>, b: Seq<int>) -> (result: Seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-    proof { assume(false); }
+    assume(false);
     unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

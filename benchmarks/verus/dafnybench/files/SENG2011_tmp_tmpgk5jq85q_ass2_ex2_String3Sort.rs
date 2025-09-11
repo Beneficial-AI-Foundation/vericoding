@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// verifies
-// check that string between indexes low and high-1 are sorted
 spec fn sorted(a: Seq<char>, low: int, high: int) -> bool
     recommends 0 <= low <= high <= a.len()
 { 
@@ -25,12 +23,9 @@ fn string3_sort(a: Seq<char>) -> (b: Seq<char>)
 // <vc-code>
 {
     assume(false);
-    a
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

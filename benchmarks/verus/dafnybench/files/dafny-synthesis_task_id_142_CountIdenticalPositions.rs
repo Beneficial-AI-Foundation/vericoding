@@ -16,11 +16,9 @@ fn count_identical_positions(a: Seq<int>, b: Seq<int>, c: Seq<int>) -> (count: u
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

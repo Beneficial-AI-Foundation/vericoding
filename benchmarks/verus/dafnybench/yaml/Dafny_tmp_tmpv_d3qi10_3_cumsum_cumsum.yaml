@@ -18,28 +18,22 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn cumsum(a: &[i32], b: &mut [i32])
       requires 
           a.len() == old(b).len(),
           a.len() > 0,
       ensures 
           forall|i: int| 0 <= i < a.len() ==> b[i] as int == sum(a@, i),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

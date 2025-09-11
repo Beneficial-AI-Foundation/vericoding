@@ -20,13 +20,9 @@ fn string_swap(s: Seq<char>, i: nat, j: nat) -> (t: Seq<char>)
 // <vc-code>
 {
     assume(false);
-    s
+    unreached()
 }
 // </vc-code>
 
-// string == Seq<char>
-//give se2011 ass2 ex1.dfy
-
-fn main() {}
-
 }
+fn main() {}

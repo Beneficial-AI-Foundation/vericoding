@@ -50,12 +50,9 @@ fn seg_max_sum(v: &[i32], i: usize) -> (result: (i32, usize))
 // <vc-code>
 {
     assume(false);
-    (0i32, 0)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

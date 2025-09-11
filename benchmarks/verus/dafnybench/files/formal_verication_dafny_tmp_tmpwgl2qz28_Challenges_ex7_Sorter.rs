@@ -2,9 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// see pdf 'ex6 & 7 documentation' for excercise question
-
-
 #[derive(PartialEq, Eq, Debug, Clone, Copy)]
 enum Bases {
     A,
@@ -13,7 +10,6 @@ enum Bases {
     T,
 }
 
-//swaps two sequence indexes
 fn exchanger(s: Seq<Bases>, x: nat, y: nat) -> (t: Seq<Bases>)
     requires 
         0 < s.len() && x < s.len() && y < s.len()
@@ -27,8 +23,6 @@ fn exchanger(s: Seq<Bases>, x: nat, y: nat) -> (t: Seq<Bases>)
     s
 }
 
-//idea from Rustan Leino video "Basics of specification and verification: Lecture 3, the Dutch National Flag algorithm"
-//modified for 4 elements
 spec fn below(first: Bases, second: Bases) -> bool {
     first == second ||
     first == Bases::A || 
@@ -37,7 +31,6 @@ spec fn below(first: Bases, second: Bases) -> bool {
     second == Bases::T
 }
 
-//checks if a sequence is in base order
 spec fn bordered(s: Seq<Bases>) -> bool {
     forall|j: int, k: int| 0 <= j < k < s.len() ==> below(s[j], s[k])
 }
@@ -57,10 +50,9 @@ fn sorter(bases: Seq<Bases>) -> (sobases: Seq<Bases>)
 // <vc-code>
 {
     assume(false);
-    bases
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

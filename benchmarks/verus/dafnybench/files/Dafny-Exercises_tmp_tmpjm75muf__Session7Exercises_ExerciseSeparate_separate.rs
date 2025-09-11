@@ -16,10 +16,6 @@ spec fn is_permutation(s: Seq<i32>, t: Seq<i32>) -> bool {
     s.to_multiset() == t.to_multiset()
 }
 
-/**
-returns an index st new array is a permutation of the old array
-positive first and then strictnegative, i is the firs neg or len if not any */
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -34,11 +30,9 @@ fn separate(v: &mut Vec<i32>) -> (i: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

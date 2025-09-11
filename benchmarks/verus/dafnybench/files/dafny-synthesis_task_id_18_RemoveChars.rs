@@ -19,7 +19,5 @@ fn remove_chars(s1: Seq<char>, s2: Seq<char>) -> (v: Seq<char>)
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

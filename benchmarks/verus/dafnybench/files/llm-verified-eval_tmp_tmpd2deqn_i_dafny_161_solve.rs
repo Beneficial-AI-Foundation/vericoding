@@ -54,10 +54,9 @@ fn solve(s: Vec<char>) -> (result: Vec<char>)
 // <vc-code>
 {
     assume(false);
-    vec![]
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

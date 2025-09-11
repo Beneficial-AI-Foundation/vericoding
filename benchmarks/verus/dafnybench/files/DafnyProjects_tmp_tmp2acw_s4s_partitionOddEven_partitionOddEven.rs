@@ -2,9 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Rearranges the elements in an array 'a' of natural numbers,
-// so that all odd numbers appear before all even numbers.
-
 spec fn odd(n: nat) -> bool { n % 2 == 1 }
 spec fn even(n: nat) -> bool { n % 2 == 0 }
 
@@ -20,9 +17,9 @@ fn partitionOddEven(a: &mut Vec<nat>)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

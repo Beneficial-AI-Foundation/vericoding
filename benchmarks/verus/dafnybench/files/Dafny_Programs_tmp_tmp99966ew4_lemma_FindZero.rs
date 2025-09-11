@@ -17,10 +17,9 @@ fn find_zero(a: &[i32]) -> (index: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

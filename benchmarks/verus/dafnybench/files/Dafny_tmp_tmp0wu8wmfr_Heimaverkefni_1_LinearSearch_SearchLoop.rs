@@ -2,21 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Author of question: Snorri Agnarsson
-// Permalink of question: https://rise4fun.com/Dafny/0HRr
-
-// Author of solution:    Alexander Guðmundsson
-// Permalink of solution: https://rise4fun.com/Dafny/8pxWd
-
-// Use the command
-//   verus LinearSearch-skeleton.rs
-// to verify the file.
-
-// When you have solved the problem put
-// the solution on the Verus web page,
-// generate a permalink and put it in
-// this file.
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -32,14 +17,10 @@ fn search_loop(a: &Vec<i32>, i: usize, j: usize, x: i32) -> (k: i32)
 // </vc-spec>
 // <vc-code>
 {
-    proof {
-        assume(false);
-    }
-    -1
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

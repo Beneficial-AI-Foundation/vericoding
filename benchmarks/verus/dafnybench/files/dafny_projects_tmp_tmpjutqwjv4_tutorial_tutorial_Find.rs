@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Working through https://dafny.org/dafny/OnlineTutorial/guide
-
 spec fn fib(n: nat) -> nat
     decreases n
 {
@@ -16,18 +14,9 @@ spec fn sorted(a: &[int]) -> bool {
     forall|n: int, m: int| 0 <= n < m < a.len() ==> a[n] <= a[m]
 }
 
-
-
-// https://dafny.org/dafny/OnlineTutorial/ValueTypes
-
 spec fn update(s: Seq<int>, i: int, v: int) -> Seq<int> {
     s.subrange(0, i).add(seq![v]).add(s.subrange(i + 1, s.len() as int))
 }
-
-
-// https://dafny.org/dafny/OnlineTutorial/Lemmas
-
-
 
 spec fn count(a: Seq<bool>) -> nat
     decreases a.len()
@@ -38,14 +27,13 @@ spec fn count(a: Seq<bool>) -> nat
     }
 }
 
-
 struct Node {
     next: Vec<usize>
 }
 
 spec fn closed(graph: Set<usize>) -> bool {
     forall|i: usize| graph.contains(i) ==> 
-        forall|k: usize| k < 10 ==> // simplified constraint
+        forall|k: usize| k < 10 ==>
             graph.contains(k) && k != i
 }
 
@@ -55,14 +43,14 @@ spec fn path(p: Seq<usize>, graph: Set<usize>) -> bool
     closed(graph) && 0 < p.len() &&
     graph.contains(p[0]) &&
     (p.len() > 1 ==> 
-     path(p.subrange(1, p.len() as int), graph)) // and the rest of the sequence is a valid path
+     path(p.subrange(1, p.len() as int), graph))
 }
 
 spec fn pathSpecific(p: Seq<usize>, start: usize, end: usize, graph: Set<usize>) -> bool {
     closed(graph) &&
-    0 < p.len() && // path is nonempty
-    start == p[0] && end == p[p.len() - 1] && // it starts and ends correctly
-    path(p, graph) // and it is a valid path
+    0 < p.len() &&
+    start == p[0] && end == p[p.len() - 1] &&
+    path(p, graph)
 }
 
 // <vc-helpers>
@@ -77,10 +65,9 @@ fn Find(a: &[int], key: int) -> (index: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

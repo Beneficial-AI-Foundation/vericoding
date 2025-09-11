@@ -11,13 +11,10 @@ fn cal_div() -> (result: (i32, i32))
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  (0i32, 0i32)
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

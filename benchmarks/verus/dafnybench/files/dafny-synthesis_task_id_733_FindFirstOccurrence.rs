@@ -16,11 +16,9 @@ fn find_first_occurrence(arr: &[i32], target: i32) -> (result: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

@@ -20,7 +20,5 @@ fn split_and_append(l: Seq<int>, n: int) -> (r: Seq<int>)
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

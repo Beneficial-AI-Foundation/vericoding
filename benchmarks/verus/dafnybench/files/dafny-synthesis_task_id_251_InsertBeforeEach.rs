@@ -15,10 +15,9 @@ fn insert_before_each(s: Seq<String>, x: String) -> (v: Seq<String>)
 // <vc-code>
 {
     assume(false);
-    loop {}
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

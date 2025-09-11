@@ -13,10 +13,9 @@ fn sum_and_average(n: i32) -> (res: (i32, i32))
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

@@ -21,12 +21,9 @@ fn binary_search(v: &Vec<i32>, elem: i32) -> (p: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-//Recursive binary search
-
-fn main() {}
-
 }
+fn main() {}

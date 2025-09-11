@@ -7,7 +7,6 @@ spec fn is_not_prefix_pred(pre: Seq<char>, str: Seq<char>) -> bool {
     pre != str.subrange(0, pre.len() as int)
 }
 
-
 fn is_prefix(pre: Seq<char>, str: Seq<char>) -> (res: bool)
     ensures
         !res <==> is_not_prefix_pred(pre, str),
@@ -17,12 +16,9 @@ fn is_prefix(pre: Seq<char>, str: Seq<char>) -> (res: bool)
   false
 }
 
-
-
 spec fn is_prefix_predicate(pre: Seq<char>, str: Seq<char>) -> bool {
   str.len() >= pre.len() && pre == str.subrange(0, pre.len() as int)
 }
-
 
 spec fn is_substring_predicate(sub: Seq<char>, str: Seq<char>) -> bool {
   str.len() >= sub.len() && 
@@ -60,12 +56,10 @@ fn have_common_k_substring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: 
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  false
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

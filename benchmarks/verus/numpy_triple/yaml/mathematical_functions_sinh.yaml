@@ -1,0 +1,61 @@
+vc-description: |-
+  numpy.sinh: Hyperbolic sine, element-wise.
+  
+  The hyperbolic sine function is defined as:
+  sinh(x) = (e^x - e^(-x)) / 2
+  
+  It represents the y-coordinate of a point on the unit hyperbola,
+  analogous to how sine represents the y-coordinate on the unit circle.
+  Unlike the regular sine function, sinh is unbounded and monotonic.
+  
+  Returns an array of the same shape as x, containing the hyperbolic sine of each element.
+  
+  Specification: numpy.sinh returns a vector where each element is the hyperbolic sine
+  of the corresponding element in x.
+  
+  Precondition: True (no special preconditions for hyperbolic sine)
+  Postcondition: 
+  1. For all indices i, result[i] = (e^x[i] - e^(-x[i])) / 2
+  2. The function is odd: sinh(-x) = -sinh(x)
+  3. Monotonicity: sinh is strictly increasing on all of ℝ
+  4. Zero property: sinh(0) = 0
+  5. Range property: sinh(x) ∈ (-∞, ∞) for all x ∈ ℝ
+  6. Sign property: sinh(x) has the same sign as x
+  7. Symmetry property: sinh(-x) = -sinh(x)
+  
+  // Simplified specification without direct floating point arithmetic in spec
+  
+  // Placeholder for mathematical properties
+  
+  /* Simplified properties without floating point spec operations */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn sinh_property(x: f64, result: f64) -> bool {
+  
+      true
+  }
+  
+  fn sinh(x: Vec<f64>) -> (result: Vec<f64>)
+      requires x.len() > 0,
+      ensures 
+          result.len() == x.len(),
+  
+          forall|i: int| 0 <= i < x.len() ==> sinh_property(x[i], result[i])
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

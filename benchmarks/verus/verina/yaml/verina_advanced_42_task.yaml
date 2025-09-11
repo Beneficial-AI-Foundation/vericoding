@@ -1,0 +1,37 @@
+vc-description: |-
+  This task requires writing a Verus function that takes a sequence of stock prices and returns the maximum profit achievable by buying on one day and selling on a later day.
+  
+  If no profit is possible, the function should return 0.
+  
+  -----Input-----
+  The input consists of:
+  prices: A sequence of natural numbers representing stock prices on each day.
+  
+  -----Output-----
+  The output is a natural number:
+  Returns the maximum profit achievable with one transaction (buy once, sell once), or 0 if no profitable transaction is possible.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn max_profit(prices: Seq<usize>) -> (result: usize)
+      ensures
+          (result == 0 && prices.len() == 0) ||
+          (exists|i: int, j: int| 0 <= i < j < prices.len() && prices[j] >= prices[i] && prices[j] - prices[i] == result) ||
+          (forall|i: int, j: int| 0 <= i < j < prices.len() ==> prices[j] < prices[i]),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

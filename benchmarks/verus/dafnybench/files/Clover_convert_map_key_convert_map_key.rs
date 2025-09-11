@@ -21,7 +21,5 @@ fn convert_map_key(inputs: Map<nat, bool>, f: spec_fn(nat) -> nat) -> (r: Map<na
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

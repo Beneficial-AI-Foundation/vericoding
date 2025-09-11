@@ -16,10 +16,9 @@ fn is_smaller(a: Seq<int>, b: Seq<int>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

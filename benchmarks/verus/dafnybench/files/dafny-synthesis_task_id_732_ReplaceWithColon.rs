@@ -28,6 +28,5 @@ fn replace_with_colon(s: &str) -> (v: String)
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

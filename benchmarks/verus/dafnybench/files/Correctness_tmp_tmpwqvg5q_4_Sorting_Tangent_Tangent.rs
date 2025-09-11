@@ -2,16 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/**
-  Ather, Mohammad Faiz (s4648481/3)
-  CSSE3100
-  Assignemnt 3
-  The University of Queensland
- */
-
-// Question 1
-
-// Author: Leino, Title: Program Proofs
 fn binary_search(a: &[int], circle: int) -> (n: usize)
     requires
         forall|i: int| 1 <= i < a.len() ==> a[i-1] < #[trigger] a[i],
@@ -42,12 +32,9 @@ fn tangent(r: &[int], x: &[int]) -> (found: bool)
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

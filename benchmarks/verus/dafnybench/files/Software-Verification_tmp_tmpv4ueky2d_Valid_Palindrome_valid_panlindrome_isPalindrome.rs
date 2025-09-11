@@ -12,13 +12,10 @@ fn isPalindrome(s: &Vec<char>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  true
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

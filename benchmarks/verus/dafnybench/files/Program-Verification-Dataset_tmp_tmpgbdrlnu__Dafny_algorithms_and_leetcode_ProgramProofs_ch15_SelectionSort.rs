@@ -25,11 +25,10 @@ fn selection_sort(a: &mut Vec<int>)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

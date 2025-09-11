@@ -1,0 +1,42 @@
+vc-description: |-
+  This task involves determining whether a specified key appears exactly once in an array. The goal is to verify the uniqueness of the key's occurrence without prescribing any specific approach or implementation method.
+  
+  -----Input-----
+  The input consists of:
+  • a: An array of integers.
+  • key: An integer representing the element whose occurrence is to be checked.
+  
+  -----Output-----
+  The output is a Boolean value that:
+  • Is true if the key appears exactly once in the array.
+  • Is false otherwise.
+  
+  -----Note-----
+  The function should correctly handle arrays with no occurrences of the key, multiple occurrences, and exactly one occurrence.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn count_occurrences(a: Seq<i32>, key: i32) -> nat {
+      a.filter(|x: i32| x == key).len()
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn only_once(a: &Vec<i32>, key: i32) -> (result: bool)
+      ensures
+          result <==> count_occurrences(a@, key) == 1,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

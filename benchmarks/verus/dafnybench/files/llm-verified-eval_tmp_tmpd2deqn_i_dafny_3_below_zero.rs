@@ -22,12 +22,10 @@ fn below_zero(ops: Seq<int>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  false
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

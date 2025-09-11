@@ -12,10 +12,9 @@ fn multiply(a: int, b: int) -> (result: int)
 // <vc-code>
 {
     assume(false);
-    a * b  // This won't be reached due to assume(false)
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

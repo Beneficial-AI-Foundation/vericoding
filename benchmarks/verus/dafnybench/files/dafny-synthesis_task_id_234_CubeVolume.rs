@@ -13,11 +13,9 @@ fn cube_volume(size: i32) -> (volume: i32)
 // <vc-code>
 {
     assume(false);
-    0 // unreachable but needed for return type
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

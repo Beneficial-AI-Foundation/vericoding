@@ -19,12 +19,9 @@ fn remove_duplicates(nums: &mut Vec<i32>) -> (num_length: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

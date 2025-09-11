@@ -2,9 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Bubble Sort
-
-// Predicates for Bubble Sort
 spec fn sorted(a: &Vec<(i32, i32)>, l: int, u: int) -> bool {
     forall|i: int, j: int| 0 <= l <= i <= j <= u < a.len() ==> a[i].1 <= a[j].1
 }
@@ -22,11 +19,10 @@ fn bubble_sort(a: &mut Vec<(i32, i32)>)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -19,11 +19,9 @@ fn copy(src: &[i32], s_start: usize, dest: &[i32], d_start: usize, len: usize) -
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

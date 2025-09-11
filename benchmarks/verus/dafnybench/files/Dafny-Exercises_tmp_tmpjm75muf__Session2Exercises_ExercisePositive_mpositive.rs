@@ -16,11 +16,9 @@ fn mpositive(v: &[int]) -> (b: bool)
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

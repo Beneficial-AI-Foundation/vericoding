@@ -17,10 +17,9 @@ fn max(a: &[i32], b: &[i32], i: usize, j: usize) -> (m: i32)
 // <vc-code>
 {
     assume(false);
-    0  // unreachable, but needed for type checking
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

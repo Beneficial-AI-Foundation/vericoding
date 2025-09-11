@@ -1,0 +1,108 @@
+vc-description: |-
+  A timedelta stored as a 64-bit integer.
+  
+  See arrays.datetime for more information.
+  
+  Character code: 'm'
+  
+  Create a timedelta64 object from a numeric value and time unit
+  
+  Specification: timedelta64 creates a time duration object with given value and unit
+  
+  /* Time unit codes for timedelta64 */
+  
+  /* Year unit ('Y') */
+  
+  /* Month unit ('M') */
+  
+  /* Week unit ('W') */
+  
+  /* Day unit ('D') */
+  
+  /* Hour unit ('h') */
+  
+  /* Minute unit ('m') */
+  
+  /* Second unit ('s') */
+  
+  /* Millisecond unit ('ms') */
+  
+  /* Microsecond unit ('us') */
+  
+  /* Nanosecond unit ('ns') */
+  
+  /* Picosecond unit ('ps') */
+  
+  /* Femtosecond unit ('fs') */
+  
+  /* Attosecond unit ('as') */
+  
+  /* Represents a time duration value */
+  
+  /* The numeric value of the time duration */
+  
+  /* The time unit for the duration */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  #[derive(PartialEq, Eq, Structural)]
+  pub enum TimeUnit {
+  
+      Year,
+  
+      Month,
+  
+      Week,
+  
+      Day,
+  
+      Hour,
+  
+      Minute,
+  
+      Second,
+  
+      Millisecond,
+  
+      Microsecond,
+  
+      Nanosecond,
+  
+      Picosecond,
+  
+      Femtosecond,
+  
+      Attosecond,
+  }
+  
+  #[derive(PartialEq, Eq, Structural)]
+  pub struct TimeDelta64 {
+  
+      pub value: i64,
+  
+      pub unit: TimeUnit,
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn timedelta64(value: i64, unit: TimeUnit) -> (result: TimeDelta64)
+      ensures 
+          result.value == value,
+          result.unit == unit,
+          result.value >= -9223372036854775808i64,
+          result.value <= 9223372036854775807i64,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

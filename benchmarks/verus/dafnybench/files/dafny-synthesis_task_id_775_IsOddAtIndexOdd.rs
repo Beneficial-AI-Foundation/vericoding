@@ -15,12 +15,10 @@ fn is_odd_at_index_odd(a: &[int]) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  false
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

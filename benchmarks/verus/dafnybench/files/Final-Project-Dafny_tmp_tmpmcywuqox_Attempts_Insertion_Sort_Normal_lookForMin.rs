@@ -24,12 +24,10 @@ fn look_for_min(a: &[int], i: usize) -> (m: usize)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  i
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

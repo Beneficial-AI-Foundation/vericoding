@@ -1,11 +1,15 @@
 vc-description: |-
+  // definition of Fibonacci numbers
+  
+  // iterative calculation of Fibonacci numbers
+  
+  // practical bound to prevent overflow
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // definition of Fibonacci numbers
   spec fn fibonacci(n: nat) -> nat
       decreases n
   {
@@ -17,31 +21,21 @@ vc-preamble: |-
           fibonacci((n - 1) as nat) + fibonacci((n - 2) as nat)
       }
   }
-  
-  // iterative calculation of Fibonacci numbers
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn fibonacci_iterative(n: u64) -> (f: u64)
-      requires n < 100  // practical bound to prevent overflow
+      requires n < 100
       ensures f == fibonacci(n as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      0
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

@@ -17,12 +17,9 @@ fn element_wise_divide(a: Seq<int>, b: Seq<int>) -> (result: Seq<int>)
 // <vc-code>
 {
     assume(false);
-    a
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

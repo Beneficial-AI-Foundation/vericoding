@@ -18,10 +18,9 @@ fn swap(arr: &mut Vec<i32>, i: usize, j: usize)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

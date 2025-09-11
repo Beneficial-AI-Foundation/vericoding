@@ -2,17 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/*                                      Cumulative Sums over Arrays                                        */
-
-/*
-    Daniel Cavalheiro   57869
-    Pedro Nunes         57854
-*/
-
-
-
-//(a)
-
 spec fn sum(a: &[int], i: int, j: int) -> int
     recommends 0 <= i <= j <= a.len()
     decreases j - i when 0 <= i <= j <= a.len()
@@ -20,12 +9,6 @@ spec fn sum(a: &[int], i: int, j: int) -> int
     if i == j { 0 }
     else { a[i] + sum(a, i + 1, j) }
 }
-
-
-
-//(b)
-
-//(c)
 
 spec fn is_prefix_sum_for(a: &[int], c: &[int]) -> bool
 {
@@ -44,13 +27,10 @@ fn query(a: &[int], i: usize, j: usize) -> (res: i64)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0i64
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

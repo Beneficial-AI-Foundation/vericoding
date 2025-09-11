@@ -22,10 +22,9 @@ fn has_close_elements(numbers: Seq<int>, threshold: int) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

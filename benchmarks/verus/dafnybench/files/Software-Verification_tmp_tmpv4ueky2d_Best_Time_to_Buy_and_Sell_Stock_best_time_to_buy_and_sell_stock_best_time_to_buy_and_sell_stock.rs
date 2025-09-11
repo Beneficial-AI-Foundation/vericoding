@@ -16,10 +16,9 @@ fn best_time_to_buy_and_sell_stock(prices: &[i32]) -> (max_profit: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

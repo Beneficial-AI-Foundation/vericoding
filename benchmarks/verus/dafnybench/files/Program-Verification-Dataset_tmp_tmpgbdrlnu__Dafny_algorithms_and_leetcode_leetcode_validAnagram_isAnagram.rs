@@ -27,10 +27,9 @@ fn is_anagram(s: &str, t: &str) -> (equal: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

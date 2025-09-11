@@ -9,16 +9,14 @@ verus! {
 fn count_non_empty_substrings(s: Seq<char>) -> (count: usize)
     ensures 
         count >= 0,
-        count == (s.len() * (s.len() + 1)) / 2, // Formula for the number of non-empty substrings of a string
+        count == (s.len() * (s.len() + 1)) / 2,
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

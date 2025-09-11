@@ -14,12 +14,9 @@ fn is_greater(n: i32, a: &[i32]) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true // placeholder return
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

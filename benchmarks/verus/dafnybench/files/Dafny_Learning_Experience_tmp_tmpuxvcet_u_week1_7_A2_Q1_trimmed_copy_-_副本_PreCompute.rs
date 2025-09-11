@@ -14,9 +14,6 @@ spec fn count(hi: nat, s: Seq<i32>) -> int
     }
 }
 
-
-
-
 fn compute_count(count_index: usize, a: &Vec<i32>, b: &mut Vec<i32>) -> (p: usize)
     requires 
         count_index == 0 || (a.len() == old(b).len() && 1 <= count_index <= a.len()),
@@ -40,12 +37,10 @@ fn pre_compute(a: &Vec<i32>, b: &mut Vec<i32>) -> (p: usize)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

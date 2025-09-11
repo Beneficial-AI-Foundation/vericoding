@@ -19,11 +19,10 @@ fn find_first_odd(a: &[i32]) -> (result: (bool, usize))
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  (false, 0)
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

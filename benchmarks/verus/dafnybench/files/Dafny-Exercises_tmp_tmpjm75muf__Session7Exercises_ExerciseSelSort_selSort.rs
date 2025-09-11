@@ -25,9 +25,9 @@ fn sel_sort(a: &mut Vec<int>, c: usize, f: usize)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

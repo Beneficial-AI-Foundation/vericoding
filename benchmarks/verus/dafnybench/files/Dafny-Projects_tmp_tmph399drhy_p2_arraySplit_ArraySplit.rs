@@ -16,11 +16,9 @@ fn array_split(a: Vec<i32>) -> (ret: (Vec<i32>, Vec<i32>))
 // <vc-code>
 {
     assume(false);
-    (Vec::new(), Vec::new())
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

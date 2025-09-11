@@ -43,15 +43,13 @@ spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char
 // <vc-spec>
 fn is_substring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
     ensures res <==> is_substring_pred(sub, str)
-    //ensures !res <==> is_not_substring_pred(sub, str) // This postcondition follows from the above lemma.
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

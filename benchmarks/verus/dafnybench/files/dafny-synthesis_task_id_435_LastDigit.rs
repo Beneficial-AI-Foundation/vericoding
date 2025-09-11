@@ -16,11 +16,9 @@ fn last_digit(n: i32) -> (result: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

@@ -12,13 +12,13 @@ spec fn is_even(n: int) -> bool {
 // <vc-spec>
 fn find_even_numbers(arr: &[int]) -> (even_numbers: Vec<int>)
     ensures
-        // All even numbers from arr are in the result
+
         forall|i: int| 0 <= i < arr.len() && is_even(arr[i]) ==> 
             #[trigger] even_numbers@.contains(arr[i]),
-        // All numbers in result come from arr  
+
         forall|x: int| #[trigger] even_numbers@.contains(x) ==> 
             exists|i: int| 0 <= i < arr.len() && arr[i] == x,
-        // Order preservation property
+
         forall|k: int, l: int| 0 <= k < l < even_numbers.len() ==>
             exists|n: int, m: int| 0 <= n < m < arr.len() && 
                 #[trigger] even_numbers[k] == arr[n] && 
@@ -27,11 +27,9 @@ fn find_even_numbers(arr: &[int]) -> (even_numbers: Vec<int>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

@@ -22,10 +22,9 @@ fn calcC(n: u64) -> (res: u64)
 // <vc-code>
 {
     assume(false);
-    0  // Need to return a value
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

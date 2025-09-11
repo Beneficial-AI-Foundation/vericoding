@@ -16,10 +16,9 @@ fn is_perfect_square(n: int) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

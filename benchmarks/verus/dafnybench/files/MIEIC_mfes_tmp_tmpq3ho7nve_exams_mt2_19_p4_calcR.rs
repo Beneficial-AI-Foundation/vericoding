@@ -24,10 +24,9 @@ fn calcR(n: u64) -> (r: u64)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

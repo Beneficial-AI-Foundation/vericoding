@@ -1,0 +1,115 @@
+vc-description: |-
+  Return the character for the minimum-size type to which given types can be safely cast
+  
+  /* NumPy type character to precedence mapping based on the default typeset 'GDFgdf'
+     Lower values indicate higher precedence (smaller/more restrictive types) */
+  
+  // longdouble (most restrictive in numerical sense)
+  
+  // double
+  
+  // float
+  
+  // csingle (complex float)
+  
+  // cdouble (complex double)
+  
+  // clongdouble (complex long double)
+  
+  // other types (lowest precedence)
+  
+  /* Check if a type character is in the given typeset */
+  
+  /* Filter characters that are in the typeset */
+  
+  /* Find minimum precedence character in a sequence */
+  
+  // default fallback
+  
+  // Case 1: No input types in typeset - return default
+  
+  // Case 2 & 3: When intersection is non-empty
+  
+  // Special rule - if both 'F' and 'd' are in intersection, return 'D'
+  
+  // Normal case - return minimum precedence type from intersection
+  
+  // Validity: result is either from intersection or default
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn typechar_precedence(c: char) -> nat {
+      match c {
+          'g' => 0,
+          'd' => 1,
+          'f' => 2,
+          'F' => 3,
+          'D' => 4,
+          'G' => 5,
+          _   => 6,
+      }
+  }
+  
+  spec fn char_in_typeset(c: char, typeset: Seq<char>) -> bool {
+      typeset.contains(c)
+  }
+  
+  spec fn filter_chars_in_typeset(typechars: Seq<char>, typeset: Seq<char>) -> Seq<char> {
+      typechars.filter(|c: char| char_in_typeset(c, typeset))
+  }
+  
+  spec fn min_precedence_char(chars: Seq<char>) -> char
+      decreases chars.len()
+  {
+      if chars.len() == 0 {
+          'G'
+      } else if chars.len() == 1 {
+          chars[0]
+      } else {
+          let first = chars[0];
+          let rest_min = min_precedence_char(chars.skip(1));
+          if typechar_precedence(first) <= typechar_precedence(rest_min) {
+              first
+          } else {
+              rest_min
+          }
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn mintypecode(typechars: Vec<char>, typeset: Vec<char>, default: char) -> (result: char)
+      requires typeset@ == seq!['G', 'D', 'F', 'g', 'd', 'f'],
+      ensures ({
+          let intersection = filter_chars_in_typeset(typechars@, typeset@);
+  
+          (intersection.len() == 0 ==> result == default) &&
+  
+          (intersection.len() > 0 ==> {
+  
+              if intersection.contains('F') && intersection.contains('d') {
+                  result == 'D'
+              } else {
+  
+                  intersection.contains(result) &&
+                  (forall|c: char| intersection.contains(c) ==> typechar_precedence(result) <= typechar_precedence(c))
+              }
+          }) &&
+  
+          (intersection.contains(result) || result == default)
+      })
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

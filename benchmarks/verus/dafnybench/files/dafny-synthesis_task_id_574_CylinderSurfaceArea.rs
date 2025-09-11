@@ -13,10 +13,9 @@ fn cylinder_surface_area(radius: u64, height: u64) -> (area: u64)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

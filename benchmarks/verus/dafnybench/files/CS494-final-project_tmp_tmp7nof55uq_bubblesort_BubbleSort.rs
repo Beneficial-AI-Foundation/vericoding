@@ -2,12 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-//Bubblesort CS 494 submission
-//References: https://stackoverflow.com/questions/69364687/how-to-prove-time-complexity-of-bubble-sort-using-dafny/69365785#69365785
-
-
-// predicate checks if elements of a are in ascending order, two additional conditions are added to allow us to sort in specific range within array
-
 spec fn sorted(a: &Vec<i32>, from: usize, to: usize) -> bool
     recommends 
         from <= to,
@@ -16,16 +10,13 @@ spec fn sorted(a: &Vec<i32>, from: usize, to: usize) -> bool
     forall|x: usize, y: usize| from <= x < y < to ==> a[x as int] <= a[y as int]
 }
 
-//helps ensure swapping is valid, it is used inside the nested while loop to make sure linear order is being kept 
 spec fn pivot(a: &Vec<i32>, to: usize, pvt: usize) -> bool
     recommends
         pvt < to,
         to <= a.len(),
 {
-    forall|x: usize, y: usize| 0 <= x < pvt < y < to ==> a[x as int] <= a[y as int] // all values within the array should be in ascending order
+    forall|x: usize, y: usize| 0 <= x < pvt < y < to ==> a[x as int] <= a[y as int]
 }
-
-// Here having the algorithm for the bubblesort
 
 // <vc-helpers>
 // </vc-helpers>
@@ -33,19 +24,17 @@ spec fn pivot(a: &Vec<i32>, to: usize, pvt: usize) -> bool
 // <vc-spec>
 fn BubbleSort(a: &mut Vec<i32>)
     requires 
-        old(a).len() > 0, // makes sure a is not empty and length is greater than 0
+        old(a).len() > 0,
     ensures 
-        sorted(a, 0, a.len()), // makes sure elements of array a are sorted from 0 - a.len()
-        a@.to_multiset() == old(a)@.to_multiset(), // Since a is being modified, we compare the previous elements to current elements.
+        sorted(a, 0, a.len()),
+        a@.to_multiset() == old(a)@.to_multiset(),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

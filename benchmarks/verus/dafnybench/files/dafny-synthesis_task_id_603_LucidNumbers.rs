@@ -17,11 +17,9 @@ fn lucid_numbers(n: i32) -> (lucid: Vec<i32>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

@@ -2,14 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Author: Snorri Agnarsson, snorri@hi.is
-
-// Search1000 is a Dafny version of a function shown
-// by Jon Bentley in his old Programming Pearls
-// column in CACM.  Surprisingly Dafny needs no help
-// to verify the function.
-
-// Is2Pow(n) is true iff n==2^k for some k>=0.
 spec fn is_2_pow(n: int) -> bool
     decreases n
 {
@@ -21,12 +13,6 @@ spec fn is_2_pow(n: int) -> bool
         n % 2 == 0 && is_2_pow(n / 2)
     }
 }
-
-// This method is a binary search that only works for array
-// segments of size n == 2^k-1 for some k>=0.
-
-// This method is a binary search that only works for array
-// segments of size n == 2^k-1 for some k>=0.
 
 // <vc-helpers>
 // </vc-helpers>
@@ -51,12 +37,10 @@ fn search_2_pow_recursive(a: &[i32], i: usize, n: usize, x: i32) -> (k: usize)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -12,10 +12,9 @@ fn any_value_exists(seq1: Seq<int>, seq2: Seq<int>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

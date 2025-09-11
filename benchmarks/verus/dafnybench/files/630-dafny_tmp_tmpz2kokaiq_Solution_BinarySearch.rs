@@ -20,10 +20,9 @@ fn binary_search(a: &[int], x: int) -> (index: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

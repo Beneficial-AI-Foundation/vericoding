@@ -20,16 +20,14 @@ fn torneo(valores: &Vec<int>, i: usize, j: usize, k: usize) -> (res: (usize, usi
             valores[p as int] >= valores[q as int] && 
             valores[q as int] >= valores[r as int] &&
             res.0 == p && 
-            res.1 == q, // Q
+            res.1 == q,
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

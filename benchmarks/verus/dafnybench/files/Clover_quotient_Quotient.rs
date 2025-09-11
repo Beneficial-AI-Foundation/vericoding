@@ -6,7 +6,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-proof fn quotient(x: nat, y: nat) -> (result: (int, int))
+fn quotient(x: nat, y: nat) -> (result: (int, int))
     requires y != 0
     ensures ({
         let (r, q) = result;
@@ -16,12 +16,9 @@ proof fn quotient(x: nat, y: nat) -> (result: (int, int))
 // <vc-code>
 {
     assume(false);
-    (0, 0) // unreachable due to assume(false)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -3,10 +3,6 @@ use vstd::multiset::Multiset;
 
 verus! {
 
-// This method is a slight generalization of the
-// code provided in the problem statement since it
-// is generic in the type of the array elements.
-
 spec fn multisets<T>(s: Seq<T>) -> Multiset<T>
     decreases s.len(),
 {
@@ -29,23 +25,6 @@ fn swap<T>(a: &mut Vec<T>, i: usize, j: usize)
     assume(false);
 }
 
-// This method is a direct translation of the pseudo
-// code given in the problem statement.
-// The first postcondition expresses that the resulting
-// array is sorted, that is, all occurrences of "false"
-// come before all occurrences of "true".
-// The second postcondition expresses that the post-state
-// array is a permutation of the pre-state array. To express
-// this, we use Verus's built-in multisets. The built-in
-// function "multisets" takes a sequence and yields the
-// multiset of the sequence elements.
-// Note that Verus guesses a suitable ranking function
-// for the termination proof of the while loop.
-// We use the loop guard from the given pseudo-code.  However,
-// the program also verifies with the stronger guard "i < j"
-// (without changing any of the other specifications or
-// annotations).
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -58,9 +37,9 @@ fn two_way_sort(a: &mut Vec<bool>)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

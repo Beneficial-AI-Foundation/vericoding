@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Working through https://dafny.org/dafny/OnlineTutorial/guide
-
 spec fn fib(n: nat) -> nat 
     decreases n
 {
@@ -12,22 +10,14 @@ spec fn fib(n: nat) -> nat
     else { fib((n - 1) as nat) + fib((n - 2) as nat) }
 }
 
-
 spec fn sorted(a: Seq<int>) -> bool {
     forall|n: int, m: int| 0 <= n < m < a.len() ==> a[n] <= a[m]
 }
-
-
-
-// https://dafny.org/dafny/OnlineTutorial/ValueTypes
 
 spec fn update(s: Seq<int>, i: int, v: int) -> Seq<int>
 {
     s.subrange(0, i).add(seq![v]).add(s.subrange(i + 1, s.len() as int))
 }
-
-
-// https://dafny.org/dafny/OnlineTutorial/Lemmas
 
 spec fn count(a: Seq<bool>) -> nat
     decreases a.len()
@@ -39,13 +29,12 @@ spec fn count(a: Seq<bool>) -> nat
     }
 }
 
-
 struct Node {
-    next: Seq<int>, // Using int IDs instead of references for simplicity
+    next: Seq<int>,
 }
 
 spec fn closed(graph: Set<int>) -> bool {
-    true // Simplified for translation
+    true
 }
 
 spec fn path(p: Seq<int>, graph: Set<int>) -> bool 
@@ -59,9 +48,9 @@ spec fn path(p: Seq<int>, graph: Set<int>) -> bool
 
 spec fn path_specific(p: Seq<int>, start: int, end: int, graph: Set<int>) -> bool {
     closed(graph) &&
-    0 < p.len() && // path is nonempty
-    start == p[0] && end == p[p.len() - 1] && // it starts and ends correctly
-    path(p, graph) // and it is a valid path
+    0 < p.len() &&
+    start == p[0] && end == p[p.len() - 1] &&
+    path(p, graph)
 }
 
 // <vc-helpers>
@@ -79,12 +68,9 @@ fn find_zero(a: &[int]) -> (index: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

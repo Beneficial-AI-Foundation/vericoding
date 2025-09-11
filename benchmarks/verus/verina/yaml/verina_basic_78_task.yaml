@@ -1,0 +1,109 @@
+vc-description: |-
+  Given two integers, the task is to compute two output values: one being the sum of the integers and the other being their difference.
+  
+  -----Input-----
+  The input consists of two integers:
+  • x: An integer.
+  • y: An integer.
+  
+  -----Output-----
+  The output is a tuple of two integers:
+  • The first element is x + y.
+  • The second element is x - y.
+  
+  -----Note-----
+  It is assumed that x and y are valid integers. There are no additional constraints on the inputs.
+  
+  /*
+      // -- Invalid Inputs
+      // []
+      // -- Tests
+      // [
+      //     {
+      //         "input": {
+      //             "x": 3,
+      //             "y": 2
+      //         },
+      //         "expected": "(5, 1)",
+      //         "unexpected": [
+      //             "(6, 2)",
+      //             "(5, 2)",
+      //             "(4, 1)"
+      //         ]
+      //     },
+      //     {
+      //         "input": {
+      //             "x": -2,
+      //             "y": 3
+      //         },
+      //         "expected": "(1, -5)",
+      //         "unexpected": [
+      //             "(-1, 5)",
+      //             "(2, -3)",
+      //             "(1, 5)"
+      //         ]
+      //     },
+      //     {
+      //         "input": {
+      //             "x": 0,
+      //             "y": 0
+      //         },
+      //         "expected": "(0, 0)",
+      //         "unexpected": [
+      //             "(1, 0)",
+      //             "(0, 1)",
+      //             "(-1, 0)"
+      //         ]
+      //     },
+      //     {
+      //         "input": {
+      //             "x": 10,
+      //             "y": 5
+      //         },
+      //         "expected": "(15, 5)",
+      //         "unexpected": [
+      //             "(14, 5)",
+      //             "(15, 6)",
+      //             "(10, 5)"
+      //         ]
+      //     },
+      //     {
+      //         "input": {
+      //             "x": -5,
+      //             "y": -10
+      //         },
+      //         "expected": "(-15, 5)",
+      //         "unexpected": [
+      //             "(-15, -5)",
+      //             "(-5, 15)",
+      //             "(-10, 0)"
+      //         ]
+      //     }
+      // ]
+      // */
+  
+  //
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn multiple_returns(x: i32, y: i32) -> (result: (i32, i32))
+      ensures
+          result.0 == x + y,
+          result.1 + y == x,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

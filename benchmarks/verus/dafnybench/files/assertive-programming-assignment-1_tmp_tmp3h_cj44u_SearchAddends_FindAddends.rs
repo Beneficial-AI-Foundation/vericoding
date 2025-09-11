@@ -49,13 +49,10 @@ fn find_addends(q: Seq<int>, x: int) -> (result: (usize, usize))
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  (0, 1)
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

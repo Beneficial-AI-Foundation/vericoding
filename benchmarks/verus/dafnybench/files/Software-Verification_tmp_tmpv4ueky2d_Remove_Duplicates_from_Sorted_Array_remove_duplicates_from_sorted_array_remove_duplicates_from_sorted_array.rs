@@ -2,7 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Helper predicate
 spec fn is_sorted(nums: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] <= nums[j]
 }
@@ -31,7 +30,5 @@ fn remove_duplicates_from_sorted_array(nums: Seq<int>) -> (result: Seq<int>)
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

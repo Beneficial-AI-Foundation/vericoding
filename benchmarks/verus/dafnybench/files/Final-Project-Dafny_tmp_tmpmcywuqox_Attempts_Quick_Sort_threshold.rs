@@ -20,11 +20,9 @@ fn threshold(thres: int, seq: Seq<int>) -> (ret: (Seq<int>, Seq<int>))
 // <vc-code>
 {
     assume(false);
-    loop { }
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

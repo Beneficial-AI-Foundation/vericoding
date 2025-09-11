@@ -2,10 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-/**
-  Inverts an array of ints.
- */
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -18,10 +14,9 @@ fn invert_array(a: &mut Vec<i32>)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

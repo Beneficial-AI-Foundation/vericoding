@@ -16,12 +16,9 @@ fn is_integer(s: Seq<char>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

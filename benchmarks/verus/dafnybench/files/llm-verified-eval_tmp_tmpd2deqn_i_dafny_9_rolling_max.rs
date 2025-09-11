@@ -21,11 +21,9 @@ fn rolling_max(numbers: Vec<int>) -> (result: Vec<int>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

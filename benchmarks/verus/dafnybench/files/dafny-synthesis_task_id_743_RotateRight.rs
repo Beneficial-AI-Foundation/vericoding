@@ -15,10 +15,9 @@ fn rotate_right(l: Seq<int>, n: int) -> (r: Seq<int>)
 // <vc-code>
 {
     assume(false);
-    l  // This is unreachable but satisfies return type
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

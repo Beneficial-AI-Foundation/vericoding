@@ -15,12 +15,10 @@ fn bitwise_xor(a: Seq<u32>, b: Seq<u32>) -> (result: Seq<u32>)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  unreached()
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

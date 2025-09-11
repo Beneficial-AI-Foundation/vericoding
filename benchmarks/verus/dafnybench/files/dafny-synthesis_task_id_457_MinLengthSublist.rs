@@ -20,8 +20,5 @@ fn min_length_sublist(s: Seq<Seq<int>>) -> (min_sublist: Seq<int>)
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

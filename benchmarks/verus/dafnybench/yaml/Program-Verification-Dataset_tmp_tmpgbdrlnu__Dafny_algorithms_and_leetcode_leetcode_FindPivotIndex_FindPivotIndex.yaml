@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /*
   https://leetcode.com/problems/find-pivot-index/description/
   Given an array of integers nums, calculate the pivot index of this array.
@@ -14,8 +8,6 @@ vc-preamble: |-
   If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
   
   Return the leftmost pivot index. If no such index exists, return -1.
-  
-  
   
   Example 1:
   
@@ -56,6 +48,15 @@ vc-preamble: |-
   ```
   */
   
+  // By Divyanshu Ranjan
+  
+  // By Divyanshu Ranjan
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
   spec fn sum(nums: Seq<int>) -> int
       decreases nums.len()
   {
@@ -66,7 +67,6 @@ vc-preamble: |-
       }
   }
   
-  
   spec fn sum_up(nums: Seq<int>) -> int
       decreases nums.len()
   {
@@ -76,36 +76,23 @@ vc-preamble: |-
           nums[0] + sum_up(nums.subrange(1, nums.len() as int))
       }
   }
-  
-  // By Divyanshu Ranjan
-  
-  // By Divyanshu Ranjan
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn find_pivot_index(nums: &Vec<i32>) -> (index: i32)
       requires nums.len() > 0
       ensures 
           index == -1 ==> forall |k: nat| #[trigger] sum(nums@.map_values(|v: i32| v as int).subrange(0, k as int)) != #[trigger] sum(nums@.map_values(|v: i32| v as int).subrange((k + 1) as int, nums@.len() as int)),
           0 <= index < nums.len() ==> sum(nums@.map_values(|v: i32| v as int).subrange(0, index as int)) == sum(nums@.map_values(|v: i32| v as int).subrange((index + 1) as int, nums@.len() as int))
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      -1
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

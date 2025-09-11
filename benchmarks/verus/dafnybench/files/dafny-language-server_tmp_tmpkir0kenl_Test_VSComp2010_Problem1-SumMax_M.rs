@@ -2,15 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// VSComp 2010, problem 1, compute the sum and max of the elements of an array and prove
-// that 'sum <= N * max'.
-// Rustan Leino, 18 August 2010.
-//
-// The problem statement gave the pseudo-code for the method, but did not ask to prove
-// that 'sum' or 'max' return as the sum and max, respectively, of the array.  The
-// given assumption that the array's elements are non-negative is not needed to establish
-// the requested postcondition.
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -26,11 +17,9 @@ fn M(N: i32, a: &[i32]) -> (result: (i32, i32))
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

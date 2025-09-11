@@ -21,10 +21,9 @@ fn power_of_list_elements(l: Vec<i32>, n: u32) -> (result: Vec<i32>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

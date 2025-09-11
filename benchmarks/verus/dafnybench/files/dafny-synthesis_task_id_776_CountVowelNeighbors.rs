@@ -20,12 +20,10 @@ fn count_vowel_neighbors(s: &str) -> (count: usize)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

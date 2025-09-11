@@ -22,7 +22,6 @@ spec fn is_first_odd(odd_index: int, lst: Seq<int>) -> bool
     forall|i: int| 0 <= i < odd_index ==> is_even(lst[i])
 }
 
-
 fn first_even_odd_indices(lst: Seq<int>) -> (r: (usize, usize))
     requires lst.len() >= 2,
              (exists|i: int| 0 <= i < lst.len() && is_even(lst[i])),
@@ -53,13 +52,10 @@ fn product_even_odd(lst: Seq<int>) -> (product: i32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -1,0 +1,63 @@
+vc-description: |-
+  numpy.polynomial.chebyshev.chebder: Differentiate a Chebyshev series.
+  
+  Returns the Chebyshev series coefficients differentiated once.
+  The differentiation is based on the recurrence relations for Chebyshev
+  polynomials. The derivative is multiplied by a scaling factor.
+  
+  For a Chebyshev series c₀T₀ + c₁T₁ + c₂T₂ + ..., the derivative
+  follows specific recurrence relations that differ from standard polynomials.
+  
+  The derivative of T_n is n*U_{n-1}, where U_{n-1} can be expressed
+  in terms of Chebyshev polynomials T_k using specific recurrence relations.
+  
+  Specification: chebder differentiates a Chebyshev series once.
+  
+  The Chebyshev derivative algorithm works by:
+  1. Creating a working copy of the coefficients
+  2. Applying the recurrence relation from high to low order
+  3. Scaling the result
+  
+  The recurrence relation for Chebyshev derivatives is:
+  - For j ≥ 2: der[j] = 2*(j+1)*c[j+1], and c[j-2] += j*c[j]/(j-2)
+  - For j = 1: der[1] = 4*c[2]
+  - For j = 0: der[0] = c[1]
+  
+  All results are then multiplied by the scaling factor.
+  
+  Mathematical property: If p(x) = Σ c[i]*T_i(x), then 
+  p'(x) = Σ der[i]*T_i(x) where der = chebder(c, scl).
+  
+  Precondition: True (works for any non-empty vector)
+  Postcondition: 
+  - The result has size n
+  - The coefficients follow the Chebyshev derivative recurrence relations
+  - The result represents scl times the derivative of the input series
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn chebder(c: Vec<i32>, scl: i32) -> (result: Vec<i32>)
+      requires c.len() > 0,
+      ensures
+          result.len() == c.len() - 1,
+          c.len() > 1 ==> result[0] == scl * c[1],
+          c.len() > 2 ==> result[1] == scl * 4 * c[2],
+          forall|j: int| 2 <= j < result.len() ==>
+              result[j] == scl * (2 * ((j + 1) as i32)) * c[j + 1],
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

@@ -12,11 +12,10 @@ exec fn is_break_even(cost_price: int, selling_price: int) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  unreached()
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

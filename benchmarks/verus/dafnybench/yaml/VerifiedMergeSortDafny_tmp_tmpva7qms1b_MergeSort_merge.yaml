@@ -25,11 +25,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn merge(a1: Seq<int>, a2: Seq<int>, start: int, end: int, b: &mut Vec<int>)
       requires 
           sorted_seq(a1),
@@ -41,17 +38,14 @@ vc-spec: |-
       ensures 
           sorted_slice(b, start, end),
           merged(a1, a2, b, start, end),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

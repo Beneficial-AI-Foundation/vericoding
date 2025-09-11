@@ -18,12 +18,9 @@ fn mfirstNegative(v: &[int]) -> (result: (bool, usize))
 // <vc-code>
 {
     assume(false);
-    (false, 0)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

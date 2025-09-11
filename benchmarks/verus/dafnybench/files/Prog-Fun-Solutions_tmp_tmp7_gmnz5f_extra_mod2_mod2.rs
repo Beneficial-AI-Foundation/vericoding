@@ -19,10 +19,9 @@ fn mod2(n: u32) -> (a: u32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

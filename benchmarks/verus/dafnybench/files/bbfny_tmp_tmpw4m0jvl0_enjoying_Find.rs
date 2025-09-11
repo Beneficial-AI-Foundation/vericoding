@@ -2,11 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// shenanigans going through the dafny tutorial
-
-
-
-
 spec fn max(a: int, b: int) -> int {
     if a > b { a } else { b }
 }
@@ -18,7 +13,6 @@ fn testing() {
 spec fn abs(x: int) -> int {
     if x < 0 { -x } else { x }
 }
-
 
 spec fn fib(n: nat) -> nat
     decreases n
@@ -44,11 +38,9 @@ fn find(a: &[int], key: int) -> (index: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

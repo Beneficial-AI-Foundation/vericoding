@@ -1,16 +1,15 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /* 
   HumanEvalX 3
   You're given a list of deposit and withdrawal operations on a bank account that starts with zero balance. 
   Your task is to detect if at any point the balance of account falls below zero, and at that point function 
   should return True. Otherwise it should return False.
   */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
   
   spec fn sum(s: Seq<int>, n: nat) -> int
       recommends n <= s.len()
@@ -24,25 +23,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn below_zero(ops: Seq<int>) -> (result: bool)
       ensures result <==> exists|n: nat| n <= ops.len() && sum(ops, n) < 0
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume(false);
-    false
+      assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

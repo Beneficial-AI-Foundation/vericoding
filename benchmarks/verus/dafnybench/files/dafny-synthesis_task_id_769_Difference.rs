@@ -18,6 +18,5 @@ fn difference(a: Seq<int>, b: Seq<int>) -> (diff: Seq<int>)
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

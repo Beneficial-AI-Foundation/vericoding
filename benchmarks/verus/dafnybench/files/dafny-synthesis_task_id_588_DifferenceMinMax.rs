@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// The order of the recursion in these two functions
-// must match the order of the iteration in the algorithm above
 spec fn min(a: Seq<int>) -> int
     recommends a.len() > 0
     decreases a.len() when a.len() > 0
@@ -49,11 +47,9 @@ fn difference_min_max(a: &[i32]) -> (diff: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

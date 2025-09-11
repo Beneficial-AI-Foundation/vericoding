@@ -15,12 +15,10 @@ fn is_product_even(a: &[int]) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  false
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

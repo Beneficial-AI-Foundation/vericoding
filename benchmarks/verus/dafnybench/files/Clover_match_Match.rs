@@ -12,12 +12,10 @@ fn match_strings(s: Seq<char>, p: Seq<char>) -> (b: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  true  // placeholder return
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

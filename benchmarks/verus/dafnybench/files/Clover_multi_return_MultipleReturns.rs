@@ -14,11 +14,9 @@ fn multiple_returns(x: int, y: int) -> (result: (int, int))
 // <vc-code>
 {
     assume(false);
-    (x + y, x - y)
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

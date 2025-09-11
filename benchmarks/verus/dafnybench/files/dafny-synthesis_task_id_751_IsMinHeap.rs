@@ -25,10 +25,9 @@ fn is_min_heap(a: &Vec<i32>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

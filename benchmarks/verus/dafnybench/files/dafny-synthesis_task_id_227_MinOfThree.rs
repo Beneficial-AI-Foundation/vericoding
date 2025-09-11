@@ -13,13 +13,10 @@ fn min_of_three(a: i32, b: i32, c: i32) -> (min: i32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

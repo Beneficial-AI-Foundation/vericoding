@@ -13,14 +13,10 @@ fn max_length_list(lists: &Vec<Vec<int>>) -> (max_list: Vec<int>)
 // </vc-spec>
 // <vc-code>
 {
-    proof {
-        assume(false);
-    }
-    Vec::new()
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

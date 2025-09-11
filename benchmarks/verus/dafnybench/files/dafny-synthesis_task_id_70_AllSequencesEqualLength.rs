@@ -12,11 +12,9 @@ fn all_sequences_equal_length(sequences: Seq<Seq<int>>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

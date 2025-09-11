@@ -24,12 +24,9 @@ fn two_sum(nums: Seq<int>, target: int) -> (pair: (usize, usize))
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

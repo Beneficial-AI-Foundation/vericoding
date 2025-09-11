@@ -14,10 +14,9 @@ fn replace(v: &mut Vec<i32>, x: i32, y: i32)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

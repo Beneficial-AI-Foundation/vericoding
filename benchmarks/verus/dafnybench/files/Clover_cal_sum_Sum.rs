@@ -13,10 +13,9 @@ fn sum(n: u32) -> (s: u32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

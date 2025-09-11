@@ -2,30 +2,26 @@ use vstd::prelude::*;
 
 verus! {
 
-// recursive definition of factorial
 spec fn factorial(n: nat) -> nat
     decreases n
 {
     if n == 0 { 1 } else { n * factorial((n - 1) as nat) }
 }
 
-// iterative implementation of factorial
-
 // <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn iterative_factorial(n: u32) -> (result: u32)
-    requires n < 13, // prevent overflow
+    requires n < 13,
     ensures result == factorial(n as nat)
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

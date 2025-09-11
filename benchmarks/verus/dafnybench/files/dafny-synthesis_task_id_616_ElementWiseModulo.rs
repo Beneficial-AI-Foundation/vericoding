@@ -17,11 +17,9 @@ fn element_wise_modulo(a: &[i32], b: &[i32]) -> (result: Vec<i32>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

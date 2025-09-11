@@ -1,0 +1,51 @@
+vc-description: |-
+  numpy.isinf: Test element-wise for positive or negative infinity
+  Returns a boolean array of the same shape as x, True where x == +/-inf, otherwise False.
+  URL: https://numpy.org/doc/stable/reference/generated/numpy.isinf.html
+  Category: Array contents testing
+  
+  Test element-wise for positive or negative infinity in a vector
+  
+  Specification: isinf returns true for positive or negative infinity, false otherwise.
+  
+      This function tests each element according to IEEE 754 floating-point standard:
+      - Returns true if the element is positive infinity or negative infinity
+      - Returns false for all other values including NaN, finite numbers, and zero
+  
+      Mathematical properties:
+      1. Infinity detection: result[i] = true iff x[i] is infinite
+      2. Distinction from NaN: infinity and NaN are mutually exclusive
+      3. Result preserves shape: output vector has same length as input
+      4. Finite values: All normal, subnormal, and zero values return false
+      5. Specific infinities: Both positive and negative infinity are correctly identified
+  
+  /* Ghost specification function to represent IEEE 754 infinity test */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_infinite(x: f64) -> bool;
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn isinf(x: Vec<f64>) -> (result: Vec<bool>)
+      requires x.len() < usize::MAX,
+      ensures 
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < x.len() ==> {
+              result[i] == is_infinite(x[i])
+          }
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

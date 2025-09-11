@@ -43,24 +43,22 @@ proof fn count_bound(arr: Seq<i32>, value: i32)
 fn move_zeros_to_end(arr: &mut Vec<i32>)
     requires old(arr).len() >= 2,
     ensures
-        // Same size
+
         arr.len() == old(arr).len(),
-        // Zeros to the right of the first zero
+
         forall|i: int, j: int| 0 <= i < j < arr.len() && arr[i] == 0 ==> arr[j] == 0,
-        // The final array is a permutation of the original one
+
         arr@.to_multiset() == old(arr)@.to_multiset(),
-        // Relative order of non-zero elements is preserved
+
         forall|n: int, m: int| 0 <= n < m < arr.len() && old(arr)[n] != 0 && old(arr)[m] != 0 ==>
             exists|k: int, l: int| 0 <= k < l < arr.len() && arr[k] == old(arr)[n] && arr[l] == old(arr)[m],
-        // Number of zeros is preserved
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

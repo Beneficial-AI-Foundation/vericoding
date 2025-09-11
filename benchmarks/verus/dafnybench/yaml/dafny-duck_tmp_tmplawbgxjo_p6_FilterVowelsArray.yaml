@@ -1,11 +1,11 @@
 vc-description: |-
+  // Given an array of characters, it filters all the vowels. ['d','e','l','i','g','h','t']-> ['e','i']
 
 vc-preamble: |-
   use vstd::prelude::*;
   
   verus! {
   
-  // Given an array of characters, it filters all the vowels. ['d','e','l','i','g','h','t']-> ['e','i']
   spec fn vowels() -> Set<char> {
       set!['a', 'e', 'i', 'o', 'u']
   }
@@ -23,25 +23,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn filter_vowels_array(xs: &[char]) -> (ys: Vec<char>)
       ensures filter_vowels(xs@) == ys@
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      Vec::new()
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

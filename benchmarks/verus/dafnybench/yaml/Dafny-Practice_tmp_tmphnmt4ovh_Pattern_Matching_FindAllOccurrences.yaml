@@ -6,30 +6,21 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn find_all_occurrences(text: &str, pattern: &str) -> (offsets: Ghost<Set<nat>>)
       ensures 
           forall|i: nat| offsets@.contains(i) ==> i + pattern@.len() <= text@.len(),
           forall|i: nat| 0 <= i && i + pattern@.len() <= text@.len() 
                         ==> (text@.subrange(i as int, (i + pattern@.len()) as int) == pattern@) == offsets@.contains(i)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-      proof {
-          assume(false);
-      }
-      Ghost(Set::empty())
+      assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

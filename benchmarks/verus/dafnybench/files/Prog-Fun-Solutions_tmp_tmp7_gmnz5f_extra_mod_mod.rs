@@ -21,10 +21,9 @@ fn mod_fn(n: u64) -> (a: u64)
 // <vc-code>
 {
     assume(false);
-    1
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

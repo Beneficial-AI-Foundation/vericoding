@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// The order of the recursion in these two functions
-// must match the order of the iteration in the algorithm above
 spec fn min_seq(a: Seq<int>) -> int
     recommends a.len() > 0
     decreases a.len() when a.len() > 0
@@ -51,11 +49,9 @@ fn sum_min_max(a: &[i32]) -> (sum: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -12,7 +12,7 @@ fn join(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
         (a@ + b@).to_multiset() == c@.to_multiset(),
         a@.to_multiset().add(b@.to_multiset()) == c@.to_multiset(),
         a.len() + b.len() == c.len(),
-        // Forall
+
         forall|i: int| 0 <= i < a.len() ==> c[i] == a[i],
         forall|i: int, j: int| 
             a.len() <= i < c.len() && 
@@ -22,10 +22,9 @@ fn join(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

@@ -6,11 +6,8 @@ vc-preamble: |-
   verus! {
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn min_second_value_first(s: &Vec<Vec<i32>>) -> (first_of_min_second: i32)
       requires 
           s.len() > 0,
@@ -18,19 +15,14 @@ vc-spec: |-
       ensures 
           exists|i: int| 0 <= i < s.len() && first_of_min_second == s@[i]@[0] && 
               (forall|j: int| 0 <= j < s.len() ==> s@[i]@[1] <= s@[j]@[1]),
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      0
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

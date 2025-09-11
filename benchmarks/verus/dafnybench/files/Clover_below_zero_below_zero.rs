@@ -17,11 +17,9 @@ fn below_zero(operations: Vec<i32>) -> (result: (Vec<i32>, bool))
 // <vc-code>
 {
     assume(false);
-    (vec![], false)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

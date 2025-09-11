@@ -6,14 +6,12 @@ spec fn sorted(q: Seq<int>) -> bool {
     forall |i: int, j: int| 0 <= i <= j < q.len() ==> q[i] <= q[j]
 }
 
-// all the values in the range satisfy `comparer` (comparer(q[i], key) == true)
 spec fn range_satisfies_comparer(q: Seq<int>, key: int, lower_bound: int, upper_bound: int, comparer: spec_fn(int, int) -> bool) -> bool
     recommends 0 <= lower_bound <= upper_bound <= q.len()
 {
     forall |i: int| lower_bound <= i < upper_bound ==> comparer(q[i], key)
 }
 
-// all the values in the range satisfy `!comparer` (comparer(q[i], key) == false)
 spec fn range_satisfies_comparer_negation(q: Seq<int>, key: int, lower_bound: int, upper_bound: int, comparer: spec_fn(int, int) -> bool) -> bool
     recommends 0 <= lower_bound <= upper_bound <= q.len()
 {
@@ -26,7 +24,7 @@ fn binary_search(q: Seq<int>, key: int, lower_bound: usize, upper_bound: usize, 
         0 <= lower_bound <= upper_bound <= q.len(),
         range_satisfies_comparer_negation(q, key, 0int, lower_bound as int, comparer),
         range_satisfies_comparer(q, key, upper_bound as int, q.len() as int, comparer),
-        // comparer is '>' or '>='
+
         (forall |n1: int, n2: int| #[trigger] comparer(n1, n2) == (n1 > n2)) ||
         (forall |n1: int, n2: int| #[trigger] comparer(n1, n2) == (n1 >= n2))
     ensures
@@ -53,11 +51,9 @@ fn find_range(q: Seq<int>, key: int) -> (res: (usize, usize))
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

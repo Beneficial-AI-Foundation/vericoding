@@ -19,13 +19,10 @@ fn factorial_of_last_digit(n: u64) -> (fact: u64)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

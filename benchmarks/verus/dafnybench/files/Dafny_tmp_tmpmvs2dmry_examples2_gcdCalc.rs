@@ -39,10 +39,9 @@ fn gcd_calc(m: u32, n: u32) -> (res: u32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

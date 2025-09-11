@@ -14,11 +14,9 @@ fn swap(x: i32, y: i32) -> (result: (i32, i32))
 // <vc-code>
 {
     assume(false);
-    (y, x)
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

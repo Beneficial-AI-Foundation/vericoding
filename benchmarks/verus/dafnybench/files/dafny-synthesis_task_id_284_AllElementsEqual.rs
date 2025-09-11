@@ -13,13 +13,10 @@ fn all_elements_equal(a: &[i32], n: i32) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  true
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

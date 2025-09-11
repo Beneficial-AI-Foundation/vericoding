@@ -1,10 +1,7 @@
-// RUN: /compile:0
-
 use vstd::prelude::*;
 
 verus! {
 
-// Predicate to check if outarr is the reverse of arr
 spec fn reversed(arr: Seq<char>, outarr: Seq<char>) -> bool {
     arr.len() == outarr.len() &&
     forall|k: int| 0 <= k < arr.len() ==> outarr[k] == arr[arr.len() - 1 - k]
@@ -21,11 +18,9 @@ fn yarra(arr: &Vec<char>) -> (outarr: Vec<char>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

@@ -24,17 +24,13 @@ fn binary_search(v: &[int], elem: int) -> (p: i32)
 fn search(v: &[int], elem: int) -> (b: bool)
     requires sorted(v@)
     ensures b == v@.contains(elem)
-    //Implement by calling binary search function
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-fn main() {
-    //Recursive binary search
 }
-
-}
+fn main() {}

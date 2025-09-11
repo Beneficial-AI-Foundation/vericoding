@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /* https://leetcode.com/problems/two-sum/
   Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
   You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -16,21 +10,14 @@ vc-preamble: |-
   Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
   */
   
-  spec fn correct_pair(pair: (int, int), nums: Seq<int>, target: int) -> bool {
-      let (i, j) = pair;
-      &&& 0 <= i < nums.len()
-      &&& 0 <= j < nums.len()
-      &&& i != j  // "you may not use the same element twice"
-      &&& nums[i] + nums[j] == target
-  }
-
-  spec fn seq_i32_to_int(s: Seq<i32>) -> Seq<int> {
-      s.map(|i, v| v as int)
-  }
+  // "you may not use the same element twice"
   
   // We actually make a weaker pre-condition: there exists at least one solution.
+  
   // For verification simplicity, we pretend as if:
+  
   // - `Seq` were Python list
+  
   // - `Map` were Python dict
   
   /* Discussions
@@ -44,27 +31,37 @@ vc-preamble: |-
     (b) What do elements in the set/map satisfy (like in formula B)
   */
 
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn correct_pair(pair: (int, int), nums: Seq<int>, target: int) -> bool {
+      let (i, j) = pair;
+      &&& 0 <= i < nums.len()
+      &&& 0 <= j < nums.len()
+      &&& i != j
+      &&& nums[i] + nums[j] == target
+  }
+  
+  spec fn seq_i32_to_int(s: Seq<i32>) -> Seq<int> {
+      s.map(|i, v| v as int)
+  }
+
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn twoSum(nums: Seq<i32>, target: i32) -> (pair: (usize, usize))
       requires exists|i: int, j: int| correct_pair((i, j), seq_i32_to_int(nums), target as int)
       ensures correct_pair((pair.0 as int, pair.1 as int), seq_i32_to_int(nums), target as int)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      (0, 0)
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

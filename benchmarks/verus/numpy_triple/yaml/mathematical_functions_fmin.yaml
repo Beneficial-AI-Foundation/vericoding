@@ -1,0 +1,41 @@
+vc-description: |-
+  Element-wise minimum of array elements.
+  
+  Compare two arrays and returns a new array containing the element-wise minima. If one of the elements being compared is a NaN, then the non-nan element is returned.
+  
+  Element-wise minimum of two vectors, with special NaN handling.
+  If one element is NaN, returns the non-NaN element.
+  
+  Specification: fmin returns element-wise minimum with NaN handling.
+  For each position i:
+  - If both elements are non-NaN, returns the minimum
+  - If x[i] is NaN and y[i] is not, returns y[i]  
+  - If y[i] is NaN and x[i] is not, returns x[i]
+  - If both are NaN, returns NaN
+  - Mathematical properties: commutativity (ignoring NaN order), 
+    idempotence for non-NaN values, and boundedness
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn fmin(x: Vec<f32>, y: Vec<f32>) -> (result: Vec<f32>)
+      requires x.len() == y.len(),
+      ensures
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < x.len() ==> #[trigger] result[i] == x[i] || #[trigger] result[i] == y[i]
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

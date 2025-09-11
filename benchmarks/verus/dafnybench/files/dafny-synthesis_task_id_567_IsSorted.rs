@@ -16,12 +16,9 @@ fn is_sorted(a: &[i32]) -> (sorted: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

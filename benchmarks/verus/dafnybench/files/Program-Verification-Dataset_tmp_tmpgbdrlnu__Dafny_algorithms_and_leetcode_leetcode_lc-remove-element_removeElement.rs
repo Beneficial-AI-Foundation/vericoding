@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-//https://leetcode.com/problems/remove-element/
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -14,10 +12,9 @@ fn removeElement(nums: &mut Vec<i32>, val: i32) -> (i: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

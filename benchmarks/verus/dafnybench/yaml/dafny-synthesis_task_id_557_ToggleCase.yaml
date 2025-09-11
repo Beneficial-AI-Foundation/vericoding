@@ -30,11 +30,8 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn toggle_case(s: Vec<char>) -> (v: Vec<char>)
       ensures
           v.len() == s.len(),
@@ -49,20 +46,14 @@ vc-spec: |-
                   v_char == s_char
               }
           }
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      Vec::new()
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

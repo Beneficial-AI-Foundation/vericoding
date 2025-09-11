@@ -17,9 +17,9 @@ fn test_array_elements(a: &mut Vec<i32>, j: usize)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

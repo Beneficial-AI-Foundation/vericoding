@@ -19,8 +19,6 @@ spec fn sum_max_to_right(v: Seq<i32>, i: int, s: int) -> bool
     forall|l: int, ss: int| 0 <= l <= i && ss == i + 1 ==> sum(v, l, ss) <= s
 }
 
-
-
 spec fn sum2(v: Seq<i32>, i: int, j: int) -> int
     recommends 0 <= i <= j <= v.len()
     decreases j - i when i < j
@@ -32,8 +30,7 @@ spec fn sum2(v: Seq<i32>, i: int, j: int) -> int
     }
 }
 
-//Now do the same but with a loop from right to left
-spec fn sum_max_to_right2(v: Seq<i32>, j: int, i: int, s: int) -> bool //maximum sum stuck to the right
+spec fn sum_max_to_right2(v: Seq<i32>, j: int, i: int, s: int) -> bool
     recommends 0 <= j <= i < v.len()
 {
     forall|l: int, ss: int| j <= l <= i && ss == i + 1 ==> sum2(v, l, ss) <= s
@@ -49,16 +46,13 @@ fn seg_suma_maxima2(v: &[i32], i: usize) -> (result: (i32, usize))
         0 <= result.1 <= i && 
         result.0 as int == sum2(v@, result.1 as int, (i + 1) as int) && 
         sum_max_to_right2(v@, 0, i as int, result.0 as int)
-//Implement and verify
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -17,28 +17,20 @@ vc-preamble: |-
           gcd(m, sub(n, m))
       }
   }
-  
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn Product(m: u64, n: u64) -> (res: u64)
   ensures res == m * n
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume(false);
-    0
+      assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

@@ -13,12 +13,9 @@ fn is_sublist(sub: Seq<int>, main: Seq<int>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    false
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

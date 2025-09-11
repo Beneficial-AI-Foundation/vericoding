@@ -12,12 +12,9 @@ fn is_even(n: int) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true // placeholder return
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -10,7 +10,6 @@ vc-preamble: |-
       pre != str.subrange(0, pre.len() as int)
   }
   
-  
   fn is_prefix(pre: Seq<char>, str: Seq<char>) -> (res: bool)
       ensures
           !res <==> is_not_prefix_pred(pre, str),
@@ -20,12 +19,9 @@ vc-preamble: |-
     false
   }
   
-  
-  
   spec fn is_prefix_predicate(pre: Seq<char>, str: Seq<char>) -> bool {
     str.len() >= pre.len() && pre == str.subrange(0, pre.len() as int)
   }
-  
   
   spec fn is_substring_predicate(sub: Seq<char>, str: Seq<char>) -> bool {
     str.len() >= sub.len() && 
@@ -53,28 +49,20 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn have_common_k_substring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
       ensures 
           (str1.len() < k || str2.len() < k) ==> !found,
           have_common_k_substring_predicate(k, str1, str2) == found,
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume(false);
-    false
+      assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {}
-  
   }
+  fn main() {}
 

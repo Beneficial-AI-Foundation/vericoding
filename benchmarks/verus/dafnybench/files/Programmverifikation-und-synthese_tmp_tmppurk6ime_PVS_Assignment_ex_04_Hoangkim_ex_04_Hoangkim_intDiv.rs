@@ -2,16 +2,11 @@ use vstd::prelude::*;
 
 verus! {
 
-//Problem 01
-
-//problem02
-//a)
-
 // <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-proof fn int_div(n: int, d: int) -> (result: (int, int))
+fn int_div(n: int, d: int) -> (result: (int, int))
     requires n >= d && n >= 0 && d > 0,
     ensures ({
         let (q, r) = result;
@@ -21,11 +16,9 @@ proof fn int_div(n: int, d: int) -> (result: (int, int))
 // <vc-code>
 {
     assume(false);
-    (0, 0) // unreachable due to assume(false)
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

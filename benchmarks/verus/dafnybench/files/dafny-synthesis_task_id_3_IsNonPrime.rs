@@ -12,12 +12,10 @@ fn is_non_prime(n: int) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  true // dummy return value
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

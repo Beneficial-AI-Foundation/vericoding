@@ -14,13 +14,10 @@ fn find_all_occurrences(text: &str, pattern: &str) -> (offsets: Ghost<Set<nat>>)
 // </vc-spec>
 // <vc-code>
 {
-    proof {
-        assume(false);
-    }
-    Ghost(Set::empty())
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

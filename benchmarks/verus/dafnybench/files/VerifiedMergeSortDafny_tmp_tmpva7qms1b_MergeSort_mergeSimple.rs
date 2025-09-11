@@ -37,9 +37,9 @@ fn mergeSimple(a1: Seq<i32>, a2: Seq<i32>, start: usize, end: usize, b: &mut Vec
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

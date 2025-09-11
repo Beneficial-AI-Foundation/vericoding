@@ -49,7 +49,7 @@ spec fn index(x: nat, y: Seq<nat>) -> nat {
 // <vc-spec>
 fn DSpMSpV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], X_crd1: &[nat], X_len: nat,
            v_val: &[int], v_crd: &[nat]) -> (result: Vec<int>)
-    // X requirements 
+
     requires X_pos.len() >= 1,
              X_val.len() == X_crd.len(),
              (forall|i: int, j: int| 0 <= i < j < X_pos.len() ==> #[trigger] X_pos[i] <= #[trigger] X_pos[j]),
@@ -61,7 +61,6 @@ fn DSpMSpV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], X_crd1: &[nat], X_len: n
              (X_crd1.len() < X_pos.len()),
              (forall|i: int, j: int| 0 <= i < j < X_crd1.len() ==> #[trigger] X_crd1[i] < #[trigger] X_crd1[j]),
 
-    // v requirements 
              (v_val.len() == v_crd.len()),
 
     ensures result.len() == X_len,
@@ -77,10 +76,9 @@ fn DSpMSpV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], X_crd1: &[nat], X_len: n
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

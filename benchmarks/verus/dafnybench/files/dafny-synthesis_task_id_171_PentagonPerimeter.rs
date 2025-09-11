@@ -12,13 +12,10 @@ fn pentagon_perimeter(side: i32) -> (perimeter: i32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  5 * side
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

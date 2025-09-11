@@ -2,21 +2,10 @@ use vstd::prelude::*;
 
 verus! {
 
-/* 
- * Formal verification of the selection sort algorithm with Verus.
- * FEUP, MIEIC, MFES, 2020/21.
- */
-
-// Checks if array 'a' is sorted between positions 'from' (inclusive) and 'to' (exclusive).
 pub open spec fn is_sorted(a: &[i32], from: usize, to: usize) -> bool {
     &&& from <= to <= a.len()
     &&& forall|i: int, j: int| from <= i < j < to ==> a[i] <= a[j]
 }
-
-// Sorts array 'a' using the selection sort algorithm.
-
-// Finds the position of a minimum value in non-empty subarray 'a' between positions 
-// 'from' (inclusive) and 'to' (exclusive)
 
 // <vc-helpers>
 // </vc-helpers>
@@ -32,12 +21,9 @@ fn find_min(a: &mut [i32], from: usize, to: usize) -> (index: usize)
 // <vc-code>
 {
     assume(false);
-    from
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

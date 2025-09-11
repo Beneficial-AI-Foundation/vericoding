@@ -12,10 +12,9 @@ fn count_less_than(numbers: Set<int>, threshold: int) -> (count: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

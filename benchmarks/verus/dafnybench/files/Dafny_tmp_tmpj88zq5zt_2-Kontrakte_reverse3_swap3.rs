@@ -22,9 +22,9 @@ fn swap3(a: &mut Vec<i32>, h: usize, i: usize, j: usize)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

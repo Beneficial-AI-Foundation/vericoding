@@ -22,12 +22,9 @@ fn count_true(a: &[bool]) -> (result: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

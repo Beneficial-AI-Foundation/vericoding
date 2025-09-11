@@ -14,10 +14,9 @@ fn contains_consecutive_numbers(a: &[i32]) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

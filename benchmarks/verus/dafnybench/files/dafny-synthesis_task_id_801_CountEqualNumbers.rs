@@ -16,10 +16,9 @@ fn count_equal_numbers(a: i32, b: i32, c: i32) -> (count: i32)
 // <vc-code>
 {
     assume(false);
-    0  // unreachable
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

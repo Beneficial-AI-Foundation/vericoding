@@ -16,12 +16,9 @@ fn replace_chars(s: Seq<char>, old_char: char, new_char: char) -> (v: Seq<char>)
 // <vc-code>
 {
     assume(false);
-    s
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

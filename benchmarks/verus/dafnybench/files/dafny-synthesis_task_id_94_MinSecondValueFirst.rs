@@ -17,11 +17,9 @@ fn min_second_value_first(s: &Vec<Vec<i32>>) -> (first_of_min_second: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

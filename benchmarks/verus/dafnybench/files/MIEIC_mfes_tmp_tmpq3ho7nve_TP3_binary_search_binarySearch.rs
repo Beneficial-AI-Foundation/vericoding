@@ -2,24 +2,9 @@ use vstd::prelude::*;
 
 verus! {
 
-// Checks if array 'a' is sorted.
 spec fn is_sorted(a: &[i32]) -> bool {
     forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j]
 }
-
-// Finds a value 'x' in a sorted array 'a', and returns its index,
-// or -1 if not found.
-
-// Simple test cases to check the post-condition.
-
-/*
-a) Identify adequate pre and post-conditions for this method, 
-and encode them as "requires" and "ensures" clauses in Verus. 
-You can use the predicate below if needed.
-
-b) Identify an adequate loop variant and loop invariant, and encode them 
-as "decreases" and "invariant" clauses in Verus.
-*/
 
 // <vc-helpers>
 // </vc-helpers>
@@ -34,12 +19,9 @@ fn binary_search(a: &[i32], x: i32) -> (index: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

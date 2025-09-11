@@ -1,0 +1,88 @@
+vc-description: |-
+  Compute the arithmetic mean along the specified axis, ignoring NaNs.
+  Returns the average of the array elements, ignoring NaN values.
+  If all values are NaN, returns NaN.
+  
+  Specification: nanmean computes the arithmetic mean while ignoring NaN values.
+  
+  Mathematical properties:
+  1. If vector contains valid (non-NaN) values, result is their arithmetic mean
+  2. If all values are NaN, result is NaN
+  3. Result is never NaN when valid values exist
+  4. NaN values are completely ignored in the computation
+  5. For vectors without NaN values, behaves identically to regular mean
+  6. The result is bounded by the minimum and maximum of non-NaN elements
+  
+  /* Case 1: If there exists at least one non-NaN element, result is their arithmetic mean */
+  
+  /* Case 2: If all elements are NaN, result is NaN */
+  
+  /* Case 3: NaN values are ignored (result is mean of non-NaN elements) */
+  
+  /* Case 4: For vectors without NaN, behaves like regular mean */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_nan_f32(x: f32) -> bool;
+  
+  spec fn valid_indices_count(a: Seq<f32>) -> nat
+      decreases a.len()
+  {
+      if a.len() == 0 {
+          0
+      } else {
+          if is_nan_f32(a[0]) {
+              valid_indices_count(a.skip(1))
+          } else {
+              1 + valid_indices_count(a.skip(1))
+          }
+      }
+  }
+  
+  spec fn has_valid_element(a: Seq<f32>) -> bool 
+  {
+      valid_indices_count(a) > 0
+  }
+  
+  spec fn all_nan(a: Seq<f32>) -> bool 
+  {
+      valid_indices_count(a) == 0
+  }
+  
+  spec fn contains_nan(a: Seq<f32>) -> bool
+      decreases a.len()
+  {
+      if a.len() == 0 {
+          false
+      } else {
+          is_nan_f32(a[0]) || contains_nan(a.skip(1))
+      }
+  }
+  
+  fn nanmean(a: Vec<f32>) -> (result: f32)
+      ensures 
+  
+          (has_valid_element(a@) ==> !is_nan_f32(result)) &&
+  
+          (all_nan(a@) ==> is_nan_f32(result)) &&
+  
+          (!is_nan_f32(result) ==> has_valid_element(a@)) &&
+  
+          (!contains_nan(a@) && a.len() > 0 ==> !is_nan_f32(result))
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

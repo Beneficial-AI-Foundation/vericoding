@@ -48,12 +48,9 @@ fn toggle_case(s: Vec<char>) -> (v: Vec<char>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

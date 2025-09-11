@@ -2,11 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// MFES, Exam 8/Sept/20201, Exercise 5 
-
-// Computes the length (i) of the longest common prefix (initial subarray) 
-// of two arrays a and b.
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -20,12 +15,9 @@ fn longest_prefix(a: &[i32], b: &[i32]) -> (i: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
-    // Test method with an example.
 }
-
-}
+fn main() {}

@@ -12,12 +12,10 @@ fn area_of_largest_triangle_in_semicircle(radius: i32) -> (area: i32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  radius * radius
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

@@ -22,10 +22,9 @@ fn reverse_upto_k(s: &mut Vec<i32>, k: usize)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

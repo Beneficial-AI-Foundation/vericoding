@@ -13,12 +13,9 @@ fn is_month_with_30_days(month: i32) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true // unreachable due to assume(false)
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

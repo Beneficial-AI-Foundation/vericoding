@@ -7,8 +7,7 @@ verus! {
 
 // <vc-spec>
 fn find_max(a: &[i32]) -> (i: usize)
-    // Annotate this method with pre- and postconditions
-    // that ensure it behaves as described.
+
     requires 
         a.len() > 0,
     ensures
@@ -18,11 +17,9 @@ fn find_max(a: &[i32]) -> (i: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -19,7 +19,5 @@ fn mfirst_cero(v: &[i32]) -> (i: usize)
 // <vc-code>
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

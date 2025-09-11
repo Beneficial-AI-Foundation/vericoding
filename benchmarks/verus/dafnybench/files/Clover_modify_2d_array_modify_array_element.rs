@@ -24,10 +24,10 @@ fn modify_array_element(arr: &mut Vec<Vec<nat>>, index1: usize, index2: usize, v
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

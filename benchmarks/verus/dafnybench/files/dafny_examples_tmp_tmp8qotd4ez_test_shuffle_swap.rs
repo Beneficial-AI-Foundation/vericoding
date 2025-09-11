@@ -23,10 +23,9 @@ fn swap<T>(a: &mut Vec<T>, i: usize, j: usize)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -13,11 +13,9 @@ fn sum_of_fourth_power_of_odd_numbers(n: i32) -> (sum: i32)
 // <vc-code>
 {
     assume(false);
-    0 // unreachable but needed for return type
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

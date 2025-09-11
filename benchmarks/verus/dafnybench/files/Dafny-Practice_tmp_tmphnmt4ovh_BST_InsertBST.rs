@@ -49,10 +49,9 @@ fn insert_bst(t0: Tree, x: int) -> (t: Tree)
 // <vc-code>
 {
     assume(false);
-    Tree::Empty
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

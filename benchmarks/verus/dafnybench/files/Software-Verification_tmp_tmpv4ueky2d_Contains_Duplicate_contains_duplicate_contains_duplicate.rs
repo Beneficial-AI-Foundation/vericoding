@@ -20,11 +20,9 @@ fn contains_duplicate(nums: Seq<int>) -> (result: bool)
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

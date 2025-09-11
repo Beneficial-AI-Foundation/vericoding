@@ -45,10 +45,9 @@ fn fast_exp(b: u32, n: u32) -> (r: u32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

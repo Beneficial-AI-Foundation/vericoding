@@ -18,11 +18,9 @@ fn firstE(a: &[char]) -> (x: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

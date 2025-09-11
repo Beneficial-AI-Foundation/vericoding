@@ -6,14 +6,6 @@ spec fn sorted(s: Seq<i32>) -> bool {
     forall|u: int, w: int| 0 <= u < w < s.len() ==> s[u] <= s[w]
 }
 
-
-
-
-
-
-
-//Recursive binary search
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -21,7 +13,7 @@ spec fn sorted(s: Seq<i32>) -> bool {
 fn binary_search_rec(v: &Vec<i32>, elem: i32, c: usize, f: usize) -> (p: i32)
     requires
         sorted(v@),
-        0 <= c <= f + 1 <= v.len(),//0<=c<=v.Length && -1<=f<v.Length && c<=f+1
+        0 <= c <= f + 1 <= v.len(),
         forall|k: int| 0 <= k < c ==> v[k] <= elem,
         forall|k: int| f < k < v.len() ==> v[k] > elem,
     ensures
@@ -32,12 +24,9 @@ fn binary_search_rec(v: &Vec<i32>, elem: i32, c: usize, f: usize) -> (p: i32)
 // <vc-code>
 {
     assume(false);
-    -1
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

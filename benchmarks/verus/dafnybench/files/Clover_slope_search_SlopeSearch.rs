@@ -11,15 +11,15 @@ fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (usize, usize))
       a.len() > 0,
       forall|i: int| 0 <= i < a.len() ==> #[trigger] a@[i].len() == a@[0].len(),
       a@[0].len() > 0,
-      // Each row is sorted (non-decreasing)
+
       forall|i: int, j: int, j_prime: int| 
           0 <= i < a.len() && 0 <= j < j_prime < a@[0].len()
           ==> #[trigger] a@[i]@[j] <= #[trigger] a@[i]@[j_prime],
-      // Each column is sorted (non-decreasing)  
+
       forall|i: int, i_prime: int, j: int| 
           0 <= i < i_prime < a.len() && 0 <= j < a@[0].len()
           ==> #[trigger] a@[i]@[j] <= #[trigger] a@[i_prime]@[j],
-      // Key exists in the matrix
+
       exists|i: int, j: int| 
           0 <= i < a.len() && 0 <= j < a@[0].len()
           && #[trigger] a@[i]@[j] == key
@@ -30,13 +30,10 @@ fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (usize, usize))
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  (0, 0)
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

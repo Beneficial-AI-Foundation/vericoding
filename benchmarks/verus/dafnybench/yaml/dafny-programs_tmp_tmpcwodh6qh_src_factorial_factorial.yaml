@@ -1,4 +1,5 @@
 vc-description: |-
+  // to prevent overflow
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -12,26 +13,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn factorial(n: u32) -> (res: u32)
-      requires n <= 12  // to prevent overflow
+      requires n <= 12
       ensures res == fact(n as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
-    assume(false);
-    0  // dummy return to satisfy type checker
+      assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

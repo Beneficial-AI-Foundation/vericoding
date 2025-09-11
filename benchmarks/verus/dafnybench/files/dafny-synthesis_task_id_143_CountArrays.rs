@@ -14,11 +14,9 @@ fn count_arrays(arrays: &Vec<Vec<i32>>) -> (count: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

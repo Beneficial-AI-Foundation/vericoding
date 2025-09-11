@@ -15,10 +15,9 @@ fn append_array_to_seq(s: Seq<i32>, a: &Vec<i32>) -> (r: Seq<i32>)
 // <vc-code>
 {
     assume(false);
-    s
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

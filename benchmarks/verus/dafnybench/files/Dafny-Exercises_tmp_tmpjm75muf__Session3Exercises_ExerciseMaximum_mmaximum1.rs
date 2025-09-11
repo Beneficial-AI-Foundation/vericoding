@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-//Algorithm 1: From left to right return the first
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -17,19 +15,9 @@ fn mmaximum1(v: &[i32]) -> (i: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-//Algorithm 2: From right to left return the last
-
-
-
-
-//Algorithm : from left to right
-//Algorithm : from right to left
-
-fn main() {
 }
-
-}
+fn main() {}

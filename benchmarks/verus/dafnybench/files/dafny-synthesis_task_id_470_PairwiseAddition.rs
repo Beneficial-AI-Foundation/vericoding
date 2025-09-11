@@ -15,12 +15,10 @@ fn pairwise_addition(a: &[i32]) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  Vec::new()
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

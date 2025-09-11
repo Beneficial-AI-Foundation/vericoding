@@ -1,10 +1,4 @@
 vc-description: |-
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
   /*
      CS:5810 Formal Methods in Software Engineering
      Fall 2017
@@ -15,9 +9,15 @@ vc-preamble: |-
      Credits: Example adapted from Dafny tutorial
   */
   
-  
   //      n = 0, 1, 2, 3, 4, 5, 6,  7,  8, ...
+  
   // fib(n) = 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
   spec fn fib(n: nat) -> nat
       decreases n
   {
@@ -27,26 +27,18 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn ComputeFib(n: usize) -> (f: usize)
       ensures f == fib(n as nat)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      0
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

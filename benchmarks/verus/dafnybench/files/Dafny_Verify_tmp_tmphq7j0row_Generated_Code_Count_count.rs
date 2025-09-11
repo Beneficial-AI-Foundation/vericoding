@@ -27,11 +27,9 @@ fn count(v: i32, a: &[i32], n: usize) -> (r: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

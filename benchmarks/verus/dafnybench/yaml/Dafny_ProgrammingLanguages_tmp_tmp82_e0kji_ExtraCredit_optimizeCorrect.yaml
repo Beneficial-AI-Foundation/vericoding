@@ -1,4 +1,9 @@
 vc-description: |-
+  //fill this function in to make optimizeFeatures work
+  
+  //as you write optimize this will become unproved
+  
+  //you must write proof code so that Verus can prove this
 
 vc-preamble: |-
   use vstd::prelude::*;
@@ -24,7 +29,6 @@ vc-preamble: |-
       }
   }
   
-  //fill this function in to make optimizeFeatures work
   spec fn optimize(e: Exp) -> Exp
       decreases e
   {
@@ -49,30 +53,21 @@ vc-preamble: |-
           },
           _ => e,
       }
-  } 
-  
-  //as you write optimize this will become unproved
-  //you must write proof code so that Verus can prove this
+  }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn optimize_correct(e: Exp, s: Map<String, int>)
       ensures eval(e, s) == eval(optimize(e), s)
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  fn main() {}
-  
   }
+  fn main() {}
 

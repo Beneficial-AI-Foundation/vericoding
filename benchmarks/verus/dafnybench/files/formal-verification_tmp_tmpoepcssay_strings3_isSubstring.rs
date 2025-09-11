@@ -45,19 +45,17 @@ fn is_substring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
     ensures
         res <==> is_substring_pred(sub, str),
         res ==> is_substring_pred(sub, str),
-        // ensures  !res ==> !is_substring_pred(sub, str)
+
         is_substring_pred(sub, str) ==> res,
         is_substring_pred(sub, str) ==> res,
-        !res <==> is_not_substring_pred(sub, str), // This postcondition follows from the above lemma.
+        !res <==> is_not_substring_pred(sub, str),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    true
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

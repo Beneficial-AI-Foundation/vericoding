@@ -12,12 +12,10 @@ fn cube_surface_area(size: i32) -> (area: i32)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0  // unreachable but needed for return type
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {
 }
-
-}
+fn main() {}

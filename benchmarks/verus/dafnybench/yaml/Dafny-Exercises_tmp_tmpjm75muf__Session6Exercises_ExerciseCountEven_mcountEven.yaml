@@ -27,28 +27,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |-
-  // <vc-helpers>
-  // </vc-helpers>
 
 vc-spec: |-
-  // <vc-spec>
   fn mcount_even(v: &Vec<i32>) -> (n: i32)
       requires positive(v@.map(|i: int, x: i32| x as int))
       ensures n as int == count_even(v@.map(|i: int, x: i32| x as int))
-  // </vc-spec>
 
 vc-code: |-
-  // <vc-code>
   {
       assume(false);
-      0
+      unreached()
   }
-  // </vc-code>
 
 vc-postamble: |-
-  
-  fn main() {
   }
-  
-  }
+  fn main() {}
 

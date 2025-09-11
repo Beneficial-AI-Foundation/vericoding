@@ -19,9 +19,9 @@ fn sorting(array: &mut Vec<int>)
 // <vc-code>
 {
     assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

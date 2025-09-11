@@ -12,12 +12,9 @@ fn append(a: &Vec<i32>, b: i32) -> (c: Vec<i32>)
 // <vc-code>
 {
     assume(false);
-    Vec::new() // unreachable due to assume(false), but needed for type checking
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -2,22 +2,8 @@ use vstd::prelude::*;
 
 verus! {
 
-// Write an *iterative* Verus method reverse with signature:
-
 // <vc-helpers>
 // </vc-helpers>
-
-//          fn reverse(a: &Vec<char>) -> Vec<char>
-
-// which takes an input vector of characters 'a' and outputs vector 'b' consisting of
-// the elements of the input vector in reverse order. The following conditions apply:
-//  - the input vector cannot be empty
-//  - the input vector is not modified
-//  - you must use iteration
-//  - not permitted is an *executable* (parallel) forall statement
-//  - not permitted are any other predicates, functions or methods
-
-// For the purposes of this practice exercise, I'll include a test method.
 
 // <vc-spec>
 fn reverse(a: &Vec<char>) -> (b: Vec<char>)
@@ -29,14 +15,9 @@ fn reverse(a: &Vec<char>) -> (b: Vec<char>)
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 
-// Notice it compiles and the executable generates output (just to see the vectors printed in reverse).
-
-fn main() {
-    
 }
-
-}
+fn main() {}

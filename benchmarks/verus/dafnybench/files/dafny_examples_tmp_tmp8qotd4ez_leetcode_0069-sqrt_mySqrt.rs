@@ -2,8 +2,6 @@ use vstd::prelude::*;
 
 verus! {
 
-// Author: Shaobo He
-
 spec fn sqrt(x: int, r: int) -> bool {
     r * r <= x && (r + 1) * (r + 1) > x
 }
@@ -20,12 +18,9 @@ fn mySqrt(x: int) -> (res: int)
 // <vc-code>
 {
     assume(false);
-    loop { }
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

@@ -8,7 +8,7 @@ spec fn set_product(s: Set<int>) -> int
     if s.is_empty() {
         1
     } else {
-        arbitrary()  // This represents the nondeterministic choice like |:| in Dafny
+        arbitrary()
     }
 }
 
@@ -22,11 +22,9 @@ fn unique_product(arr: &[i32]) -> (product: i32)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

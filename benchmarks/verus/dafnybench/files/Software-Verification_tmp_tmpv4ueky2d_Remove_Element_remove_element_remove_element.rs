@@ -16,13 +16,10 @@ fn remove_element(nums: &mut Vec<i32>, val: i32) -> (i: usize)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  0
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {
 }
-
-}
+fn main() {}

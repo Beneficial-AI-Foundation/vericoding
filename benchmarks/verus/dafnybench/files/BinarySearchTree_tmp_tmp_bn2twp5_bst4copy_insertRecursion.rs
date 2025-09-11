@@ -71,11 +71,9 @@ fn insert_recursion(tree: Tree, value: int) -> (res: Tree)
 // <vc-code>
 {
     assume(false);
-    Tree::Empty
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

@@ -6,9 +6,6 @@ spec fn get_size(i: int, j: int) -> int {
     j - i + 1
 }
 
-// For a given integer array, let's find the longest subsequence of 0s.
-// sz: size, pos: position. a[pos..(pos+sz)] will be all zeros
-
 // <vc-helpers>
 // </vc-helpers>
 
@@ -28,11 +25,10 @@ fn longest_zero(a: &[i32]) -> (result: (usize, usize))
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  (0, 0)
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-fn main() {}
-
 }
+fn main() {}

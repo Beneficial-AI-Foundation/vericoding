@@ -16,11 +16,10 @@ fn remove_element(s: &Vec<i32>, k: usize) -> (v: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  Vec::new()
+    assume(false);
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
 }
+fn main() {}

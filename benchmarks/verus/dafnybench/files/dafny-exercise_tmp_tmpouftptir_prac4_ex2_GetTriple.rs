@@ -20,11 +20,9 @@ ensures
 // <vc-code>
 {
     assume(false);
-    a.len()
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}

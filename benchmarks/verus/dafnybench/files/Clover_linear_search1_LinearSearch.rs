@@ -15,11 +15,9 @@ fn linear_search(a: &[i32], e: i32) -> (n: usize)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 
-
-fn main() {}
-
 }
+fn main() {}
