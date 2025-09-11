@@ -106,10 +106,9 @@ def create_agent(source_language: str = "dafny", target_language: str = "verus")
     # Check if this is an OpenRouter model configuration
     if model_config.startswith("openrouter:"):
         import os
+        import importlib.util
 
-        try:
-            from openai import OpenAI
-        except ImportError:
+        if importlib.util.find_spec("openai") is None:
             raise ImportError(
                 "OpenAI package is required for OpenRouter models. "
                 "Install it with: pip install openai"
@@ -129,14 +128,13 @@ def create_agent(source_language: str = "dafny", target_language: str = "verus")
                 "\nGet your API key from: https://openrouter.ai/keys"
             )
 
-        # Create OpenAI client configured for OpenRouter
-        client = OpenAI(
-            api_key=api_key,
-            base_url="https://openrouter.ai/api/v1",
-        )
+        # Set OpenAI environment variables to configure PydanticAI for OpenRouter
+        os.environ["OPENAI_API_KEY"] = api_key
+        os.environ["OPENAI_BASE_URL"] = "https://openrouter.ai/api/v1"
 
-        # Use OpenAI format with custom client for PydanticAI
-        final_model_config = ("openai", openrouter_model, client)
+        # Use PydanticAI's standard OpenAI model configuration
+        # PydanticAI will use the environment variables to configure the client
+        final_model_config = f"openai:{openrouter_model}"
 
         print(f"✓ Using OpenRouter model: {openrouter_model}")
         print("   Base URL: https://openrouter.ai/api/v1")

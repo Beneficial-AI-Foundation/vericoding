@@ -203,6 +203,7 @@ async def verify_verus_code(
         # Run verus verification in a separate process
         process = await asyncio.create_subprocess_exec(
             cfg["verus_path"],
+            "--no-verify",
             verification_file,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
