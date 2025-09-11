@@ -39,6 +39,24 @@ fix_verification: |
 
   To summarize, if you see no proof at all, make a high-level sketch proof that uses sorries and trace_state. If you see a high-level sketch proof that uses sorries, insert trace_state before the first sorry. If you see a proof that has trace_state, try to add one more line right before the trace_state. Comment your code profusely with what the status is, since that context will be valuable for the next LLM.
 
+  EXAMPLES OF PROPER INCREMENTAL DEVELOPMENT:
+
+  Example 1 - Starting from no proof:
+  Input sorry: `sorry`
+  Expected output: `-- Starting high-level proof sketch\n  intro h\n  trace_state\n  sorry`
+
+  Example 2 - Adding trace_state to existing sketch:
+  Input sorry: `intro h\n  cases h with\n  | inl ha => sorry\n  | inr hb => sorry`
+  Expected output: `intro h\n  cases h with\n  | inl ha => trace_state\n    sorry\n  | inr hb => trace_state\n    sorry`
+
+  Example 3 - Adding ONE line before trace_state (CORRECT):
+  Input sorry: `intro h\n  cases h with\n  | inl ha => trace_state\n    sorry\n  | inr hb => trace_state\n    sorry`
+  Expected output: `intro h\n  cases h with\n  | inl ha => simp at ha\n    trace_state\n    sorry\n  | inr hb => trace_state\n    sorry`
+
+  Example 4 - WRONG approach (changing multiple lines):
+  Input sorry: `intro h\n  trace_state\n  sorry`
+  WRONG output: `intro h\n  cases h with\n  | inl ha => simp\n  | inr hb => contradiction`
+  CORRECT output: `intro h\n  cases h with\n  trace_state\n  sorry`
 
   CRITICAL RULES:
   - Your proof should differ only in one line from the proof you're trying to fix. The one line you can change is the one before trace_state. You will make mistakes if you try to change multiple lines.
