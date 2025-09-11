@@ -43,8 +43,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def validate_arrangement (n : Nat) (result : String) : Bool :=

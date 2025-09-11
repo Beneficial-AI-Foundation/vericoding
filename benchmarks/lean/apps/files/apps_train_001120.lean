@@ -4,8 +4,6 @@ def count_ciel_number_prices (menu_items : List String) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

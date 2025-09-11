@@ -31,8 +31,6 @@ vc-preamble: |-
   def String.count (s : String) (c : Char) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sierpinski (n : Nat) : String := sorry

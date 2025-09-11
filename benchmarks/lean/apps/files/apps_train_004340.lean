@@ -6,8 +6,6 @@ theorem identical_lists_are_similar {xs : List Int} (h : xs ≠ []) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

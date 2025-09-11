@@ -4,8 +4,6 @@ def solve_cheat_possibilities (a b : Nat) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

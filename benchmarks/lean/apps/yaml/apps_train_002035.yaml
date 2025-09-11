@@ -62,8 +62,6 @@ vc-preamble: |-
   def DisjointSet.find_set (ds : DisjointSet) (x : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def DisjointSet.union (ds : DisjointSet) (x y : Nat) : DisjointSet := sorry

@@ -5,8 +5,6 @@ def LongestCommonPrefix_precond (str1 : List Char) (str2 : List Char) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

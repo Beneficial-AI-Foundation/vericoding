@@ -40,8 +40,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calc_product (values : List Nat) (split : Nat) : Nat :=

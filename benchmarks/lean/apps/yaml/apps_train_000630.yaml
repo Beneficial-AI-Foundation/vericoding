@@ -108,8 +108,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solveParticleGrid (n m : Nat) (grid : List (List Char)) (forces : List Char) : List (List Char) :=

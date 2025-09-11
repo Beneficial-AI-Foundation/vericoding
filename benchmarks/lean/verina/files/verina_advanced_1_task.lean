@@ -6,14 +6,12 @@ def FindSingleNumber_precond (nums : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def filterlist (x : Int) (nums : List Int) : List Int :=
   let rec aux (lst : List Int) : List Int :=
     match lst with
     | []      => []
     | y :: ys => if y = x then y :: aux ys else aux ys
   aux nums
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

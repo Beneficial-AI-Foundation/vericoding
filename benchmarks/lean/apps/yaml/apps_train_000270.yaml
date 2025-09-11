@@ -41,8 +41,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def remove_duplicates (l : List Nat) : List Nat :=

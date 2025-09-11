@@ -4,8 +4,6 @@ def shoppingOffers (price : List Int) (special : List (List Int)) (needs : List 
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

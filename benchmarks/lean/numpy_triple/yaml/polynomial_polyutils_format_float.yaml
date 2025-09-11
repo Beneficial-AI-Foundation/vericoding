@@ -16,8 +16,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def format_float (x : Float) (parens : Bool := false) : Id String :=

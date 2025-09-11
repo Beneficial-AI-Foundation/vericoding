@@ -27,8 +27,6 @@ vc-preamble: |-
     if n ≥ 0 then n.toNat else (-n).toNat
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def side_len (x y : Nat) : List Nat := sorry

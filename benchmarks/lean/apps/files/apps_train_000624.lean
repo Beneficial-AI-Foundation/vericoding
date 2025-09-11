@@ -10,8 +10,6 @@ theorem single_prime_result_bounds (n: Nat) (h: n > 0) (h2: n ≤ 5):
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

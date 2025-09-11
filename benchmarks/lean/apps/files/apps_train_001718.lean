@@ -4,8 +4,6 @@ def choose_move (gameState : List Nat) : Nat × Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

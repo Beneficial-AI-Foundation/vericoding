@@ -4,8 +4,6 @@ def solve_antimatching (n m : Nat) (edges : List (Nat × Nat)) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

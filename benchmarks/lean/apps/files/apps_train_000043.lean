@@ -4,8 +4,6 @@ def solve_dishes (n : Nat) (a : List Nat) (b : List Nat) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

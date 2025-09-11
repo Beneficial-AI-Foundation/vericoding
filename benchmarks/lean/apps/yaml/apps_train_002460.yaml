@@ -46,8 +46,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def concatenate_arrays {α : Type} (n m p : Nat) (array1 array2 : Array (Array α)) : 

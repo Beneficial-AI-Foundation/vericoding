@@ -12,8 +12,6 @@ theorem repeatedSubstringPattern_rotation {s: String} (h: s.length ≥ 2) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

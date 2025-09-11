@@ -48,8 +48,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def chebinterpolate (deg : Nat) (func : Float → Float) : Id (Vector Float (deg + 1)) :=

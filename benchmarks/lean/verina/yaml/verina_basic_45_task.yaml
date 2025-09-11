@@ -23,7 +23,6 @@ vc-preamble: |-
     (∃ x ∈ lst, isOdd x)
 
 vc-helpers: |-
-  -- <vc-helpers>
   def isEven (n : Int) : Bool :=
     n % 2 = 0
   
@@ -36,7 +35,6 @@ vc-helpers: |-
     match evenIndex, oddIndex with
     | some ei, some oi => some (ei, oi)
     | _, _ => none
-  -- </vc-helpers>
 
 vc-definitions: |-
   def findProduct (lst : List Int) (h_precond : findProduct_precond (lst)) : Int :=

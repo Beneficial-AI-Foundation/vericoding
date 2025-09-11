@@ -22,8 +22,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isEven (n : Int) (h_precond : isEven_precond (n)) : Bool :=

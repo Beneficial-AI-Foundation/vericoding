@@ -183,8 +183,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def trafficJam (road: String) (sides: List String) : String := sorry 

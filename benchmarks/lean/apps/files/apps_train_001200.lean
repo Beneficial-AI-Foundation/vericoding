@@ -4,8 +4,6 @@ def check_divisible_by_five : String → Nat
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

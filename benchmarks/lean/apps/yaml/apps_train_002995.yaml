@@ -21,8 +21,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def binary_cleaner (seq : List Int) : List Int × List Nat := sorry

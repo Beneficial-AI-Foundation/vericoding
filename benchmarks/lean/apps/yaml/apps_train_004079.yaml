@@ -19,8 +19,6 @@ vc-preamble: |-
     sum_arrangements n = sum_arrangements n := by sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def digit_sum (n : Nat) : Nat := sorry

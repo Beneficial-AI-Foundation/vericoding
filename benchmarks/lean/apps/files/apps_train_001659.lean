@@ -9,8 +9,6 @@ def makeList (n : Nat) (c : Char) : List Char := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

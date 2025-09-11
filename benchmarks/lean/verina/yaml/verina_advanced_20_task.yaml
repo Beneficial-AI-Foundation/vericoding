@@ -18,8 +18,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isItEight (n : Int) (h_precond : isItEight_precond (n)) : Bool :=

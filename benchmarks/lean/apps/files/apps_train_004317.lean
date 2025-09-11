@@ -4,8 +4,6 @@ def play_if_enough (hand play : String) : Bool × String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -27,8 +27,6 @@ vc-preamble: |-
     target_nums.all (fun n => List.elem n nums)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def minOperations (nums : List Nat) (k : Nat) (h_precond : minOperations_precond (nums) (k)) : Nat :=

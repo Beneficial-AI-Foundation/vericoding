@@ -68,8 +68,6 @@ vc-preamble: |-
   def OperationList := List (Operation × List Nat)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def process_set_operations (initial : List Nat) (operations : OperationList) : Nat :=

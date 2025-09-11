@@ -63,8 +63,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def allocate_stadium_games (n m k : Nat) (games : List (Nat × Nat)) : List Nat :=

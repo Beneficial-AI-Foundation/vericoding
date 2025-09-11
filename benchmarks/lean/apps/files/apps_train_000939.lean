@@ -4,8 +4,6 @@ def calculate_path_costs (n: Nat) (parents: List Nat) (values: List Nat) : List 
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

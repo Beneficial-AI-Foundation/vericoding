@@ -30,8 +30,6 @@ vc-preamble: |-
   def product_sans_n (nums : List Int) : List Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_zeros (l : List Int) : Nat :=

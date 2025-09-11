@@ -13,8 +13,6 @@ def List.findIndex (l : List Int) (p : Int → Bool) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

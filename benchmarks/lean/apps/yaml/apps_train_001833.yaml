@@ -33,8 +33,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_cost_two_cities (costs: List (List Nat)) : Nat := sorry

@@ -26,8 +26,6 @@ def Float.toComplex (x : Float) : Complex := { re := x, im := 0 }
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

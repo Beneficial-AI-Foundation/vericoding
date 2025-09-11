@@ -32,8 +32,6 @@ vc-preamble: |-
   def factorial (n : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def factors_up_to (n : Nat) (k : Nat) : Bool := sorry

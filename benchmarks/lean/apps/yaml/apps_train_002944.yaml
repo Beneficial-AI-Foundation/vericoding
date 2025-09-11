@@ -33,8 +33,6 @@ vc-preamble: |-
     ∀ d, d < 10 → has_digit n d
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_product (nums : List Nat) (n : Nat) : Nat := sorry

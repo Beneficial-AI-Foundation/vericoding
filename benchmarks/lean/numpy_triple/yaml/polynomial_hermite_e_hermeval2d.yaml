@@ -34,8 +34,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hermeval2d {n m : Nat} (x y : Vector Float n) (c : Vector (Vector Float m) n) : 

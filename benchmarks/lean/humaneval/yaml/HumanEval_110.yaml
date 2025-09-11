@@ -23,8 +23,6 @@ vc-preamble: |-
   import Std
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (lst1: List Int) (lst2: List Int) : String :=

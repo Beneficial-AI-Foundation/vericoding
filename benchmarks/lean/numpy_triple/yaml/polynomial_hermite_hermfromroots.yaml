@@ -19,8 +19,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hermfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=

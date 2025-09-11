@@ -41,8 +41,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def laggrid2d {nx ny : Nat} {rows cols : Nat} 

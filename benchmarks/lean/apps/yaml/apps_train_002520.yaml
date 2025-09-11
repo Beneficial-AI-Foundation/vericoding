@@ -39,8 +39,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def smallest_lexicographic_string (n l : Nat) (strings : List String) : String := sorry

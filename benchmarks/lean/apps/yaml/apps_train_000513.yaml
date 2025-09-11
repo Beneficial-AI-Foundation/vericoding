@@ -59,8 +59,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def product_range (arr : List Nat) (s e : Nat) : Nat :=

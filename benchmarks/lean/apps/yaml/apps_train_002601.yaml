@@ -63,8 +63,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def replaceNth {α : Type} (xs : List α) (n : Nat) (v : α) : List α :=

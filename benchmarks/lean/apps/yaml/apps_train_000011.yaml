@@ -44,8 +44,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_width_height_from_path (s : String) : Nat × Nat :=

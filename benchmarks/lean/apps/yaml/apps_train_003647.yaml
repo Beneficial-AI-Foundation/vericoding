@@ -13,8 +13,6 @@ vc-preamble: |-
   variable (input: HashMap String (List Char))
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_words (input: HashMap String (List Char)) : List String := sorry

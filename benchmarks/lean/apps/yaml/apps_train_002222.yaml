@@ -54,8 +54,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_string_transforms (S : List Char) (T : List Char) (queries : List (Nat × Nat × Nat × Nat)) : List String := sorry

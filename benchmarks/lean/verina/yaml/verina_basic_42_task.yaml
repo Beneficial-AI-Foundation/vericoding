@@ -21,10 +21,8 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def isDigit (c : Char) : Bool :=
     '0' ≤ c ∧ c ≤ '9'
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countDigits (s : String) (h_precond : countDigits_precond (s)) : Nat :=

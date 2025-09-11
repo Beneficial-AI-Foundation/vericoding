@@ -54,8 +54,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_bed_arrangement (n : Nat) (grid : List (List Nat)) : String :=

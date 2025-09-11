@@ -67,8 +67,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_make_balanced (n k : Nat) (pattern : String) : String :=

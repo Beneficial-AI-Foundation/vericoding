@@ -21,8 +21,6 @@ vc-preamble: |-
   def split (s : String) (sep : String) : List String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reverse_sentence (s : String) : String := sorry

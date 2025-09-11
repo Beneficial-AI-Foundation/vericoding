@@ -7,8 +7,6 @@ def countOccurrences (xs : List Int) (x : Int) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

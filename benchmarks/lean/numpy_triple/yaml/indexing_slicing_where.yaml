@@ -43,8 +43,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def «where» {n : Nat} (condition : Vector Bool n) (x y : Vector Float n) : Id (Vector Float n) :=

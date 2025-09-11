@@ -13,8 +13,6 @@ vc-preamble: |-
   -- Result is non-negative (trivial in Lean since Nat is used)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_ones (n : Nat) : Nat := sorry

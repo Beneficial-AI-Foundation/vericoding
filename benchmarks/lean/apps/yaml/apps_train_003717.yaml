@@ -35,8 +35,6 @@ vc-preamble: |-
   def carry_count (a b : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def split (s : String) : List String := String.splitOn s "\n"

@@ -30,8 +30,6 @@ vc-preamble: |-
   def FamilyList := List (String × String)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def relations (family : FamilyList) (pair : String × String) : Option FamilyRelation := sorry

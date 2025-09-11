@@ -4,8 +4,6 @@ def to_1D (x y : Nat) (size : Nat × Nat) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

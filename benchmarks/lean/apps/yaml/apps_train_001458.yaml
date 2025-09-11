@@ -50,8 +50,6 @@ vc-preamble: |-
   def isConnectedTree (edges : List (Nat × Nat × Int)) : Prop := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isValidPath (edges : List (Nat × Nat × Int)) (start finish : Nat) (path : List Nat) : Prop := sorry

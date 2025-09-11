@@ -65,8 +65,6 @@ vc-preamble: |-
     | (h::t) => t.foldl max h
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_max_army_strength (n : Nat) (arr : List Nat) : Nat :=

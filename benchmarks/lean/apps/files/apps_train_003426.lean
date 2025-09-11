@@ -4,8 +4,6 @@ def looseChange (coins: List Nat) (amount: Nat) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

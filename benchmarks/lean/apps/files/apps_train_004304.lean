@@ -6,8 +6,6 @@ def List.maximum' (l : List Int) (h : l ≠ []) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

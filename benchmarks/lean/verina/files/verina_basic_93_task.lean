@@ -5,8 +5,6 @@ def SwapBitvectors_precond (X : UInt8) (Y : UInt8) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

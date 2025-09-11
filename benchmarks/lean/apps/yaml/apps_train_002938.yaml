@@ -33,8 +33,6 @@ vc-preamble: |-
   def String.count (s t : String) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.containsSubstring (s t : String) : Bool := sorry

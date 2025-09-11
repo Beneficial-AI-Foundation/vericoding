@@ -72,8 +72,6 @@ vc-preamble: |-
     Nat.sub (if y2 ≥ y1 then y2 else y1) (if y2 ≥ y1 then y1 else y2)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def tv_remote (s : String) : Nat :=

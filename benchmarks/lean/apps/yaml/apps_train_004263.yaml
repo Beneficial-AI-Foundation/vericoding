@@ -34,8 +34,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def positive_to_negative (binary : List Nat) : List Nat := sorry

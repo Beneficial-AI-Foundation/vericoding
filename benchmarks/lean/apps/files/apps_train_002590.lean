@@ -8,8 +8,6 @@ def numWordsList := ["zero", "one", "two", "three", "four", "five", "six", "seve
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

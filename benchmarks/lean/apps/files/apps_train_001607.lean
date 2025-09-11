@@ -6,8 +6,6 @@ theorem next_smaller_result_positive (n : Nat) (h: n ≥ 10) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

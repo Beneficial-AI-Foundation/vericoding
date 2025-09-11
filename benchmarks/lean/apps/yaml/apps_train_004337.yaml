@@ -21,8 +21,6 @@ vc-preamble: |-
   def String.containsSubstr (s str : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.countOccurrences (s str : String) : Nat := sorry

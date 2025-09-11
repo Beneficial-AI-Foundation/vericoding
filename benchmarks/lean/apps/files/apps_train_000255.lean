@@ -6,8 +6,6 @@ theorem wiggle_length_bounds (arr : List Int) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

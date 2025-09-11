@@ -55,8 +55,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def vector_norm {n : Nat} (x : Vector Float n) (p : Float) : Id Float :=

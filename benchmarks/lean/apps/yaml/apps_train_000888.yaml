@@ -63,8 +63,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_delivery_time (n m k : Nat) (deliveries : List (Nat × Nat × Nat × Nat)) : Nat :=

@@ -49,8 +49,6 @@ vc-preamble: |-
   def slogan_maker (words: List String) : List String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def containsString (s1 s2: String) : Bool := sorry  

@@ -48,8 +48,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_max_consecutive_ones (A : List Nat) : Nat :=

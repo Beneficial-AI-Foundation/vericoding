@@ -129,8 +129,6 @@ vc-preamble: |-
   def String.reverse (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Nat.toString (n : Nat) : String := sorry

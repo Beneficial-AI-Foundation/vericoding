@@ -5,8 +5,6 @@ def isValidPermutation (n : Nat) (result : List Int) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

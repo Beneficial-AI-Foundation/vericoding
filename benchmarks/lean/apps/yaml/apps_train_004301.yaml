@@ -21,8 +21,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sort (xs : List α) (lt : α → α → Bool) : List α := sorry

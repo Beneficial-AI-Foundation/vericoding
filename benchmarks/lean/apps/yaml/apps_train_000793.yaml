@@ -42,8 +42,6 @@ vc-preamble: |-
     | (x::xs) => List.foldl min x xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_max (l : List Int) : Int :=

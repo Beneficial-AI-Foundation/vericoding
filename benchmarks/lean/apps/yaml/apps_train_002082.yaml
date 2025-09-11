@@ -46,8 +46,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_vasily_cards (n: Nat) (arr: List Nat) : Nat :=

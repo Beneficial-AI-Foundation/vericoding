@@ -5,13 +5,11 @@ def replaceWithColon_precond (s : String) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def isSpaceCommaDot (c : Char) : Bool :=
   if c = ' ' then true
   else if c = ',' then true
   else if c = '.' then true
   else false
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

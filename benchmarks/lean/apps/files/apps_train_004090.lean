@@ -4,8 +4,6 @@ def chessBishopDream (boardSize: List Int) (initPos: List Int) (initDir: List In
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -22,8 +22,6 @@ vc-preamble: |-
   def String.toCharArray (s : String) : Array Char := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.fromCharArray (arr : Array Char) : String := sorry

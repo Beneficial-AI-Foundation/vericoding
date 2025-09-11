@@ -136,8 +136,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_lamps (n k : Nat) (initial_state : List Nat) (subsets : List (List Nat)) : List Nat :=

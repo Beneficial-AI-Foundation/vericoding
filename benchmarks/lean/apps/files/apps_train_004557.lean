@@ -4,8 +4,6 @@ def spread {α β : Type u} (f : α → β) (args : List α) : β :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

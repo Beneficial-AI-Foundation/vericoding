@@ -6,8 +6,6 @@ theorem evil_result_valid (n : Nat) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

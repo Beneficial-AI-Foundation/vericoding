@@ -20,8 +20,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def poly_multiply (p1 p2 : List Int) : List Int :=

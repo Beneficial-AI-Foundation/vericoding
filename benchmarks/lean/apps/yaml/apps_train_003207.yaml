@@ -38,8 +38,6 @@ vc-preamble: |-
     1 ≤ going n ∧ going n ≤ 2 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calc_series (n : Nat) : Float := sorry

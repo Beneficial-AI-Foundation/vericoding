@@ -25,8 +25,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def geomspace {n : Nat} (start stop : Float) (endpoint : Bool := true) : Id (Vector Float n) :=

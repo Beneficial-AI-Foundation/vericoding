@@ -36,8 +36,6 @@ vc-preamble: |-
     c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (s : String) : String :=

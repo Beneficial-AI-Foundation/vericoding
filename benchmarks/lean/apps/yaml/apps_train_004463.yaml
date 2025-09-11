@@ -126,8 +126,6 @@ vc-preamble: |-
   def lines (s : String) : List String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reverseString (s : String) : String := sorry

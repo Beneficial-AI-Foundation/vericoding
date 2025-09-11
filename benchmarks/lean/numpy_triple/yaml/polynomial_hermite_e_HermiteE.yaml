@@ -49,8 +49,6 @@ vc-preamble: |-
     window_max : Float := 1.0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hermiteE {n : Nat} (coef : Vector Float n) : Id (HermiteEPoly n) :=

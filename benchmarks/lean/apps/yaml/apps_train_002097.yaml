@@ -56,8 +56,6 @@ vc-preamble: |-
     | h::t => h + sumList t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_thomas_rank (n : Nat) (scores : List (List Nat)) : Nat :=

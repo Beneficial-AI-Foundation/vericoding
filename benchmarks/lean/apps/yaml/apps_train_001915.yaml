@@ -51,8 +51,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_codefortia (n m a b : Nat) (edges : List (Nat × Nat × Nat)) : List Nat := sorry

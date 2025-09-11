@@ -23,8 +23,6 @@ vc-preamble: |-
     k > 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maxSubarraySumDivisibleByK (arr : Array Int) (k : Int) : Int :=

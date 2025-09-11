@@ -4,8 +4,6 @@ def make_valid_bracket_sequence (n : Nat) : List Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

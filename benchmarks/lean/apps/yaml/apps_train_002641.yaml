@@ -37,8 +37,6 @@ vc-preamble: |-
   def take_prefix (s : String) (n : Nat) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_balanced (s : String) (caps : String) : Bool := sorry

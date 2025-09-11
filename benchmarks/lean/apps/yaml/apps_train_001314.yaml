@@ -56,8 +56,6 @@ vc-preamble: |-
     if n < 0 then -n else n
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_sequence (n : Nat) (arr : List Int) : List Int :=

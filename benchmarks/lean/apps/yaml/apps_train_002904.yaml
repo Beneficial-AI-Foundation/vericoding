@@ -38,8 +38,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def palindrome (start_num : Int) (size : Int) : List Int := sorry

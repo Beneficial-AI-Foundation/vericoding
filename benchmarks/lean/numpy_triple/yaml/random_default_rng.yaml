@@ -44,8 +44,6 @@ vc-preamble: |-
     initialized : Bool
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def default_rng (seed : Option Nat := none) : Id Generator :=

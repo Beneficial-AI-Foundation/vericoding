@@ -28,8 +28,6 @@ vc-preamble: |-
     xs.foldl Nat.max 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def self_descriptive (n : Nat) : Bool := sorry

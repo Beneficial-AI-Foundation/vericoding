@@ -48,8 +48,6 @@ vc-preamble: |-
   def sum (xs : List Int) : Int := xs.foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_sum (arr : List Int) : Int := sorry

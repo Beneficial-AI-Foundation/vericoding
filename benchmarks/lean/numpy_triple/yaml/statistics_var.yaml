@@ -37,8 +37,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def var {n : Nat} (a : Vector Float (n + 1)) (ddof : Nat) (h : ddof < n + 1) : Id Float :=

@@ -4,8 +4,6 @@ def share_price (invested : Float) (changes : List Float) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

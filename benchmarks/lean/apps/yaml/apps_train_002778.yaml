@@ -54,8 +54,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def nbMonths (oldCarPrice : Int) (newCarPrice : Int) (saving : Int) (loss : Float) : Int × Float :=

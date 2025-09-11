@@ -40,8 +40,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_cyclic_array (n : Nat) (b : List Nat) : String × List Nat := sorry

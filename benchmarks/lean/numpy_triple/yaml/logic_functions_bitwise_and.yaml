@@ -30,8 +30,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bitwise_and {n : Nat} (x1 x2 : Vector Nat n) : Id (Vector Nat n) :=

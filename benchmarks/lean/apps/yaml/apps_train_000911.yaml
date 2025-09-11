@@ -46,8 +46,6 @@ vc-preamble: |-
   def SegmentList := List Segment
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_non_intersecting_segments (segments : SegmentList) : Nat :=

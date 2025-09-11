@@ -21,7 +21,6 @@ vc-preamble: |-
     s.toList.all (fun c => c = '0' ∨ c = '1')
 
 vc-helpers: |-
-  -- <vc-helpers>
   def countOnes (lst : List Char) : Nat :=
     lst.foldl (fun acc c => if c = '1' then acc + 1 else acc) 0
   
@@ -34,7 +33,6 @@ vc-helpers: |-
     (List.range n).flatMap (fun i =>
       (List.range (n - i)).map (fun j =>
         s.drop i |>.take (j + 1)))
-  -- </vc-helpers>
 
 vc-definitions: |-
   def shortestBeautifulSubstring (s : String) (k : Nat) (h_precond : shortestBeautifulSubstring_precond (s) (k)) : String :=

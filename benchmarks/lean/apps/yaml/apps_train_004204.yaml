@@ -29,8 +29,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reduce (f : Nat → Nat → Nat) (xs : List Nat) : Nat :=

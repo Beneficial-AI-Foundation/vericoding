@@ -11,8 +11,6 @@ def replace (s : String) (target : String) (replacement : String) : String := so
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

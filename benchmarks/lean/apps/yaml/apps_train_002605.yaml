@@ -28,8 +28,6 @@ vc-preamble: |-
   def TOTAL_DIST : Float := SWIM_DIST + BIKE_DIST + RUN_DIST
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def i_tri (distance : Float) : String ⊕ (String × String) := sorry

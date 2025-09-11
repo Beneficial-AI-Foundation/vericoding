@@ -39,8 +39,6 @@ vc-preamble: |-
     min a.length b.length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def List.everyOther : List α → List α

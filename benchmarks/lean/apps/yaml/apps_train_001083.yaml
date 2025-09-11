@@ -63,8 +63,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calc_virus_spread_days (row col x y : Nat) : Nat :=

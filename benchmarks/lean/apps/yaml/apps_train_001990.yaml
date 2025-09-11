@@ -74,8 +74,6 @@ vc-preamble: |-
     | n+1, h :: t => h :: list_take n t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_replicate (n : Nat) (v : Nat) : List Nat :=

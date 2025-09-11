@@ -7,8 +7,6 @@ theorem find_smallest_substring_lowercase (m : Nat) (s : String) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

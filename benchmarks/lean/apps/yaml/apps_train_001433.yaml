@@ -56,8 +56,6 @@ vc-preamble: |-
     row.take (n/2)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def right_side (n : Nat) (row : String) : String :=

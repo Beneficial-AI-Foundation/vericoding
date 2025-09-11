@@ -43,8 +43,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def direct_graph (n : Nat) (m : Nat) (edges : List (Nat × Nat)) : List Int := sorry

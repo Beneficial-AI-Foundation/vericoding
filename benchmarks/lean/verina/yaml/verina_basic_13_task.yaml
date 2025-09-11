@@ -21,8 +21,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def cubeElements (a : Array Int) (h_precond : cubeElements_precond (a)) : Array Int :=

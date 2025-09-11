@@ -22,8 +22,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def extract {n m : Nat} (condition : Vector Bool n) (arr : Vector Int n) : 

@@ -27,8 +27,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_angle_mbc (ab : Float) (bc : Float) : Float := sorry

@@ -37,8 +37,6 @@ vc-preamble: |-
     | x::xs => x + sumList xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted : List String → Bool

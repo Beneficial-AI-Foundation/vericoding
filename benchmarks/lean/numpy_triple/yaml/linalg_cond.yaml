@@ -34,8 +34,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def conditionNumber {n : Nat} (x : Vector (Vector Float n) n) : Id Float :=

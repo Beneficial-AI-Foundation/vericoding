@@ -38,8 +38,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (nums : List Int) (cmp : Int → Int → Bool) : Bool :=

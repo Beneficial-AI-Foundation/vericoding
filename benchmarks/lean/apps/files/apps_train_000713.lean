@@ -7,8 +7,6 @@ def find_weird_distance (n : Nat) (alice_speeds : List Nat) (bob_speeds : List N
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

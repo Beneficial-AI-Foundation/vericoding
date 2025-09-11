@@ -24,8 +24,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def task_code (sequence : List Int) (h_precond : task_code_precond (sequence)) : Int :=

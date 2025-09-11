@@ -133,8 +133,6 @@ vc-preamble: |-
         if x = y then is_subsequence xs' ys' else is_subsequence xs ys'
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (lst: String) : Bool :=

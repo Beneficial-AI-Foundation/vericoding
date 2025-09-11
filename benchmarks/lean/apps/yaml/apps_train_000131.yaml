@@ -37,8 +37,6 @@ vc-preamble: |-
   def has_equal_quarters (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_char (s : String) (c : Char) : Nat := sorry

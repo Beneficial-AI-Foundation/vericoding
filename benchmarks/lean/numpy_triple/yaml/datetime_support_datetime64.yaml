@@ -50,8 +50,6 @@ vc-preamble: |-
     is_utc : Bool := true
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def datetime64 (offset : Int) (unit : TimeUnit) : Id DateTime64 :=

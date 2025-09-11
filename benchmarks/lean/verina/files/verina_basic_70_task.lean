@@ -5,8 +5,6 @@ def LinearSearch3_precond (a : Array Int) (P : Int -> Bool) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

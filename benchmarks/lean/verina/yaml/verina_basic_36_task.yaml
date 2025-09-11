@@ -23,13 +23,11 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def isSpaceCommaDot (c : Char) : Bool :=
     if c = ' ' then true
     else if c = ',' then true
     else if c = '.' then true
     else false
-  -- </vc-helpers>
 
 vc-definitions: |-
   def replaceWithColon (s : String) (h_precond : replaceWithColon_precond (s)) : String :=

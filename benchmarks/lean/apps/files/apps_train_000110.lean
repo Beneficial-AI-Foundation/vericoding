@@ -5,8 +5,6 @@ def isConvex (polygon : List (Nat × Nat)) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

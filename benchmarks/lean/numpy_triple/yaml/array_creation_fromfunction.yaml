@@ -22,8 +22,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def fromfunction {n : Nat} (f : Fin n → Float) : Id (Vector Float n) :=

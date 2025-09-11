@@ -22,8 +22,6 @@ def vecSub {n : Nat} (a b : Vector Float n) : Vector Float n :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

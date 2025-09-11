@@ -13,8 +13,6 @@ vc-preamble: |-
   def digits_sorted (n : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def digits_sorted_reverse (n : Nat) : Bool := sorry

@@ -13,8 +13,6 @@ def distance (p1 p2 : Nat × Nat) : Float :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

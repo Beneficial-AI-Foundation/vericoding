@@ -15,8 +15,6 @@ vc-preamble: |-
     valid_mersenne n = true ∨ valid_mersenne n = false := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def valid_mersenne_numbers : List Int :=

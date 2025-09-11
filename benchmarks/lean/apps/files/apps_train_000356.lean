@@ -11,8 +11,6 @@ theorem unique_letter_string_reverse_invariant (s : String) (h : s.length > 0) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

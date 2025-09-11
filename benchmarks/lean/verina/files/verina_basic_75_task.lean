@@ -5,14 +5,12 @@ def minArray_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def loop (a : Array Int) (i : Nat) (currentMin : Int) : Int :=
   if i < a.size then
     let newMin := if currentMin > a[i]! then a[i]! else currentMin
     loop a (i + 1) newMin
   else
     currentMin
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

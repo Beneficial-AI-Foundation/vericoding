@@ -14,8 +14,6 @@ def hermiteE : Nat → Float → Float
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

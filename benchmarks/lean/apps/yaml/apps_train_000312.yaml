@@ -45,8 +45,6 @@ vc-preamble: |-
     minOperations nums ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maxList : List Nat → Nat 

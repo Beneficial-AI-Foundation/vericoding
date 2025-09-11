@@ -49,8 +49,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_complete_circuit (gas : List Nat) (cost : List Nat) : Int := sorry

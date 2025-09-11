@@ -23,8 +23,6 @@ vc-preamble: |-
     s.all Char.isDigit
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def listToSortedString (l : List Nat) : String := 

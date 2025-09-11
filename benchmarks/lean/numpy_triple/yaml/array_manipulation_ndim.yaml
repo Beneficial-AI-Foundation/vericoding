@@ -36,8 +36,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ndim {α : Type} {n : Nat} (a : Vector α n) : Id Nat :=

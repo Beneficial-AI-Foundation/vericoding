@@ -8,8 +8,6 @@ theorem binary_conversion_preserves_number (x : Nat) (h : x < 2^64) (pos : Nat)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

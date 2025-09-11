@@ -20,7 +20,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   -- Helper function to insert an integer into a sorted list
   def insertElement (x : Int) (l : List Int) : List Int :=
     match l with
@@ -37,7 +36,6 @@ vc-helpers: |-
     | [] => []
     | x :: xs =>
         insertElement x (sortList xs)
-  -- </vc-helpers>
 
 vc-definitions: |-
   def insertionSort (l : List Int) (h_precond : insertionSort_precond (l)) : List Int :=

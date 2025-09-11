@@ -4,8 +4,6 @@ def solve_fireworks (n m d : Nat) (fireworks : List (Nat × Nat × Nat)) : Nat :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

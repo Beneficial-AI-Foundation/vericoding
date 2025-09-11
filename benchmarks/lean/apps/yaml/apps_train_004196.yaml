@@ -40,8 +40,6 @@ vc-preamble: |-
   def getNextArr (arr : List Int) : List Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countAlternatingParity (arr : List Int) : Nat := sorry

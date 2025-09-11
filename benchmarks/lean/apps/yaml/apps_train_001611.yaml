@@ -86,8 +86,6 @@ vc-preamble: |-
       containsAssign := s.data.contains '=' }
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def extractValue (s : String) : String := sorry

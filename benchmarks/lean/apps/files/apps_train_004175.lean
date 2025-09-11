@@ -4,8 +4,6 @@ def is_palindrome (α : Type) [ToString α] (x : α) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

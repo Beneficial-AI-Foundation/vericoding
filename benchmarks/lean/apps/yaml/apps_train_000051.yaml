@@ -46,8 +46,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_have_no_winner (n k d1 d2 : Nat) : Bool := 

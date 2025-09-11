@@ -31,8 +31,6 @@ vc-preamble: |-
     toList : List (α × β)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def my_languages (results : TestMap String Nat) : List String := sorry

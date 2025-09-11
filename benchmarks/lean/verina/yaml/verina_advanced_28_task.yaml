@@ -22,8 +22,6 @@ vc-preamble: |-
     List.Nodup nums
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def longestConsecutive (nums : List Int) (h_precond : longestConsecutive_precond (nums)) : Nat :=

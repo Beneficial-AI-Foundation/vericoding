@@ -24,8 +24,6 @@ vc-preamble: |-
     | x :: rest => x + list_sum rest
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def string_to_nat (s : String) : Nat := sorry

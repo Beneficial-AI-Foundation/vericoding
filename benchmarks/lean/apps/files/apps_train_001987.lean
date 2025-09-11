@@ -5,8 +5,6 @@ def is_valid_partition (n : Nat) (a b : Int) (xs : List Int) (result : Option (L
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

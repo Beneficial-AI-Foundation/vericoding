@@ -15,8 +15,6 @@ vc-preamble: |-
   def isConsistentWithTriplets (result : String) (triplets : List (List Char)) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def containsAllChars (result : String) (triplets : List (List Char)) : Bool := sorry

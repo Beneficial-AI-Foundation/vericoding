@@ -22,8 +22,6 @@ vc-preamble: |-
     as.foldl (fun acc a => if acc.contains a then acc else a::acc) []
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countUnique (s : String) : Nat := 

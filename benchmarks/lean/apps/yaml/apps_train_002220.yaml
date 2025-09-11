@@ -45,8 +45,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calc_max_happiness (N M : Nat) (distances : List Nat) (deliciousness : List (List Nat)) : Nat :=

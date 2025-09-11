@@ -28,8 +28,6 @@ vc-preamble: |-
     | s => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def contains_five_or_zero (s : String) : Bool :=

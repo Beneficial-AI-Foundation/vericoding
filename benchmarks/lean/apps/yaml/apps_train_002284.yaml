@@ -44,8 +44,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_ternary_xor (n : Nat) (s : String) : String × String := sorry

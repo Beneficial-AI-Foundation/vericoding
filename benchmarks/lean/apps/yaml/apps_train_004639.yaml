@@ -104,8 +104,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mutations (alice : List String) (bob : List String) (word : String) (first : Nat) : Nat := sorry

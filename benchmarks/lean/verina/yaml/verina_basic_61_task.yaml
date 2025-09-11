@@ -22,10 +22,8 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def isDigit (c : Char) : Bool :=
     (c ≥ '0') && (c ≤ '9')
-  -- </vc-helpers>
 
 vc-definitions: |-
   def allDigits (s : String) (h_precond : allDigits_precond (s)) : Bool :=

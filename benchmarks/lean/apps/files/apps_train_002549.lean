@@ -4,8 +4,6 @@ def est_subsets {α : Type} [BEq α] [Hashable α] (arr : List α) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

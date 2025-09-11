@@ -38,8 +38,6 @@ vc-preamble: |-
   def isNumericPalindrome (n : Int) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def contains (haystack : String) (needle : String) : Bool := sorry

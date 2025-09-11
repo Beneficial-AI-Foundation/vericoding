@@ -57,8 +57,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_subsequence (s1 : String) (s2 : String) : String :=

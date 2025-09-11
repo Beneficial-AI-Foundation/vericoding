@@ -23,10 +23,8 @@ vc-preamble: |-
     threshold ≥ 0.0
 
 vc-helpers: |-
-  -- <vc-helpers>
   def absDiff (a b : Float) : Float :=
     if a - b < 0.0 then b - a else a - b
-  -- </vc-helpers>
 
 vc-definitions: |-
   def has_close_elements (numbers : List Float) (threshold : Float) (h_precond : has_close_elements_precond (numbers) (threshold)) : Bool :=

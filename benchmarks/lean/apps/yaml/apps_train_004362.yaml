@@ -24,8 +24,6 @@ vc-preamble: |-
   def remove_dashes (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def containsSubstring (s : String) (sub : String) : Bool := sorry

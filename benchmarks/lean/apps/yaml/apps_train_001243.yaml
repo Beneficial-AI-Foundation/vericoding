@@ -38,8 +38,6 @@ vc-preamble: |-
     binaryStringToDecimal s < 10^9 + 7 ∧ binaryStringToDecimal s ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isVowel (c : Char) : Bool := sorry

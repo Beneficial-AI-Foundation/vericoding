@@ -39,8 +39,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def build_sequence (stages : List (List Nat)) (indices : List Nat) : List Nat :=

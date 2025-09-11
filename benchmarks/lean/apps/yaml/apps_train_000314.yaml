@@ -31,8 +31,6 @@ vc-preamble: |-
   -- Define sorted property
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (as : List Nat) : Prop :=

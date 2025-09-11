@@ -5,10 +5,8 @@ def findFirstOdd_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def isOdd (x : Int) : Bool :=
   x % 2 ≠ 0
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

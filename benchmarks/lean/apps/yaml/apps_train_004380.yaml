@@ -21,8 +21,6 @@ vc-preamble: |-
     0.0 ≤ gc_content s ∧ gc_content s ≤ 100.0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count (s : String) (c : String) : Nat := sorry

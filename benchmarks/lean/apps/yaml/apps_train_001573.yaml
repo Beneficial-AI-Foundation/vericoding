@@ -30,8 +30,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def snail {α : Type} (arr : List (List α)) : List α := sorry

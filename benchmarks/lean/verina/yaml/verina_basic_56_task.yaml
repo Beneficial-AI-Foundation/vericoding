@@ -31,13 +31,11 @@ vc-preamble: |-
     dest.size ≥ dStart + len
 
 vc-helpers: |-
-  -- <vc-helpers>
   def updateSegment : Array Int → Array Int → Nat → Nat → Nat → Array Int
     | r, src, sStart, dStart, 0 => r
     | r, src, sStart, dStart, n+1 =>
         let rNew := r.set! (dStart + n) (src[sStart + n]!)
         updateSegment rNew src sStart dStart n
-  -- </vc-helpers>
 
 vc-definitions: |-
   def copy (src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : Nat) (len : Nat) (h_precond : copy_precond (src) (sStart) (dest) (dStart) (len)) : Array Int :=

@@ -53,8 +53,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_difference_sum (n k : Nat) (arr : List Int) : Int :=

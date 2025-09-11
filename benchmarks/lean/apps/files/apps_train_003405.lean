@@ -4,8 +4,6 @@ def count {α} [BEq α] (a : α) (xs : List α) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

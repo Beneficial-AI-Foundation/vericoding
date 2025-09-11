@@ -29,8 +29,6 @@ vc-preamble: |-
   import Std.Data.HashMap
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (interval1: Int × Int) (interval2: Int × Int) : String :=

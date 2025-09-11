@@ -45,8 +45,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_char_frequency (height : Nat) (s : String) (queries : List (String × Char)) : List Nat :=

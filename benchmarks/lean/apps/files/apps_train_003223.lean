@@ -5,8 +5,6 @@ def flatten {α : Type} : List (List α) → List α
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -29,8 +29,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def chebpts2 (n : Nat) (h : n ≥ 2) : Id (Vector Float n) :=

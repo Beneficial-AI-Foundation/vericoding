@@ -70,8 +70,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_transform_array (n : Nat) (a : List Int) (b : List Int) : Bool := sorry

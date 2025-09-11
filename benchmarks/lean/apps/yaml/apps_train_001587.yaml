@@ -44,8 +44,6 @@ vc-preamble: |-
   def one_square (n : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def two_squares (n : Nat) : Bool := sorry

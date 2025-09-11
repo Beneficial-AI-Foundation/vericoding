@@ -8,8 +8,6 @@ def topKFrequent_precond (nums : List Int) (k : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

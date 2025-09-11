@@ -48,8 +48,6 @@ vc-preamble: |-
   def isPrime (n : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def gap (g m n : Nat) : Option (Nat × Nat) := sorry

@@ -23,8 +23,6 @@ vc-preamble: |-
   /- Helper function to get nth char of string -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getNth (s : String) (n : Nat) : Char := s.data.get! n

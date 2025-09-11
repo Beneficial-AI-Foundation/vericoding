@@ -7,8 +7,6 @@ def split_odd_and_even (n : Nat) : List Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

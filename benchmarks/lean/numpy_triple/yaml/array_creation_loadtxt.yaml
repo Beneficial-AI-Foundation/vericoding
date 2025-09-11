@@ -39,8 +39,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def loadtxt {n : Nat} (fname : String) (skiprows : Nat := 0) : Id (Vector Float n) :=

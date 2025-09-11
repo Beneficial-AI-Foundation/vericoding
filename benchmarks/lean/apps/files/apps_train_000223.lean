@@ -5,8 +5,6 @@ def isConsecutiveOnes (A : List Nat) (n : Nat) : Prop := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

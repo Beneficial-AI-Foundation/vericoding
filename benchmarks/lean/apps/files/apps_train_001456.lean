@@ -13,8 +13,6 @@ theorem max_magnet_blocked_by_x {n k : Nat} {s : String} :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

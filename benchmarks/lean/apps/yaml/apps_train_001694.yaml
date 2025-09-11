@@ -26,8 +26,6 @@ vc-preamble: |-
   def TestEmulator := Nat × Nat × Nat
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (e : TestEmulator) : Nat := sorry 

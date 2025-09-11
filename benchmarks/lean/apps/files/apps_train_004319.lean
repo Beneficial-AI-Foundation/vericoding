@@ -10,8 +10,6 @@ def select_indices : List Nat → (Nat → Bool) → List Nat
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

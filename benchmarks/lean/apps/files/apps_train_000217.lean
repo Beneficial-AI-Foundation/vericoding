@@ -13,8 +13,6 @@ theorem longest_dup_occurs_twice {s : String} (h : s.length > 0) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

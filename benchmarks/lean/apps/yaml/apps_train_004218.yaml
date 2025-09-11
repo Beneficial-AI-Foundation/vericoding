@@ -16,8 +16,6 @@ vc-preamble: |-
   -- Helper function to find minimum in list
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def listMin : List Int → Int

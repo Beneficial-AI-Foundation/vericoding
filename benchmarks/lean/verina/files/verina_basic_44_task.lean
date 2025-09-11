@@ -5,10 +5,8 @@ def isOddAtIndexOdd_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def isOdd (n : Int) : Bool :=
   n % 2 == 1
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

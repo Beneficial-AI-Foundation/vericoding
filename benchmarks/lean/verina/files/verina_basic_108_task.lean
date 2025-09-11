@@ -5,7 +5,6 @@ def below_zero_precond (operations : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def buildS (operations : List Int) : Array Int :=
   let sList := operations.foldl
     (fun (acc : List Int) (op : Int) =>
@@ -13,7 +12,6 @@ def buildS (operations : List Int) : Array Int :=
       acc.append [last + op])
     [0]
   Array.mk sList
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

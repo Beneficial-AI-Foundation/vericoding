@@ -7,8 +7,6 @@ def list_maximum (l: List Nat) (h: l.length > 0) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -38,8 +38,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mapdomain {n : Nat} (x : Vector Float n) (old new : Vector Float 2) : Id (Vector Float n) :=

@@ -46,8 +46,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def abs (n : Nat) (m : Nat) : Nat :=

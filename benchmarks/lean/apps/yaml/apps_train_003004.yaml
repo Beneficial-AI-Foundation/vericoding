@@ -22,8 +22,6 @@ vc-preamble: |-
   def add (l : List Int) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reverse (s : String) : String := sorry

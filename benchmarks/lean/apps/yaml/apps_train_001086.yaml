@@ -45,8 +45,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_delivery_problem (n m : Nat) (roads : List (Nat × Nat)) (deliveries : List (Nat × Nat)) : List String :=

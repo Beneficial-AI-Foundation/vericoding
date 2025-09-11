@@ -7,8 +7,6 @@ def countRequiredBytes (firstByte : Nat) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

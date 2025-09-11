@@ -24,8 +24,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def meshgrid {m n : Nat} (x : Vector Float m) (y : Vector Float n) : 

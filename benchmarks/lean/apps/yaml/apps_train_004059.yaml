@@ -17,8 +17,6 @@ vc-preamble: |-
   def has_seven (arr : List Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_val (n : Nat) (xs : List Nat) : Nat :=

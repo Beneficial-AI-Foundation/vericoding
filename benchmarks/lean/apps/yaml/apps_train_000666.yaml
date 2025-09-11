@@ -36,8 +36,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def assess_lights (k : Nat) (n : Nat) (points : List (Nat × Nat)) : String := sorry

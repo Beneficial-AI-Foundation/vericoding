@@ -20,8 +20,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def split {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Option Nat) : Id (Vector (List String) n) :=

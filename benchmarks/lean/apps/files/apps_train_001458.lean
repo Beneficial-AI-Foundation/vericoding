@@ -5,8 +5,6 @@ def isConnectedTree (edges : List (Nat × Nat × Int)) : Prop := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -39,8 +39,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def gcd_of_list (numbers : List Nat) : Nat :=

@@ -48,8 +48,6 @@ vc-preamble: |-
   def format_internet_address (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChar (s : String) (c : Char) : Nat :=

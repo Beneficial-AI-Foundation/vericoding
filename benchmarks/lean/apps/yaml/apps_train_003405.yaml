@@ -31,8 +31,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve {α} [BEq α] (array1 array2 : List α) : List Nat :=

@@ -35,8 +35,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_logical_xor {n : Nat} (x1 x2 : Vector Bool n) : Id (Vector Bool n) :=

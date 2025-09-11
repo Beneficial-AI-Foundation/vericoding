@@ -16,8 +16,6 @@ vc-preamble: |-
     (evil n = "It's Evil!") ∨ (evil n = "It's Odious!") := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countOnes (n : Nat) : Nat := 

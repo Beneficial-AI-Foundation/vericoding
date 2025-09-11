@@ -14,8 +14,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def array (data : List Float) : Id (Vector Float data.length) :=

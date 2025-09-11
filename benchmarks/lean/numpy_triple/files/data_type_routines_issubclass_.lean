@@ -87,8 +87,6 @@ def NumpyTypeClass.isSubclass : NumpyTypeClass → NumpyTypeClass → Bool
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

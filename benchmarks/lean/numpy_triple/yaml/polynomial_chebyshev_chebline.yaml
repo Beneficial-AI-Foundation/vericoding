@@ -33,8 +33,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def chebline (off scl : Float) : Id (Vector Float 2) :=

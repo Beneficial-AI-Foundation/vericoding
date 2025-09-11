@@ -24,8 +24,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lagpow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat) : Id (Vector Float n) :=

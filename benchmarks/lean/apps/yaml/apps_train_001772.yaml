@@ -48,8 +48,6 @@ vc-preamble: |-
     (l.find? (fun p => p.1 = k)).map (·.2)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sum (xs : List Nat) : Nat :=

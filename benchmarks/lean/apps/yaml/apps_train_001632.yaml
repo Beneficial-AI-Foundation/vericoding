@@ -54,8 +54,6 @@ vc-preamble: |-
   def SearchPlan := (Nat × List Coordinates)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def generate_police_search_plan : SearchPlan :=

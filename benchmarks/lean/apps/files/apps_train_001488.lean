@@ -8,8 +8,6 @@ def empty_case (n : Nat) : List (Nat × Nat) × List Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -78,8 +78,6 @@ vc-preamble: |-
   abbrev ComplexVector (n : Nat) := Vector Complex n
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ifftn {m n : Nat} (a : Vector (ComplexVector n) m) : Id (Vector (ComplexVector n) m) :=

@@ -32,8 +32,6 @@ vc-preamble: |-
       fib_iter (n) 0 1
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lastFibDigit (n : Nat) : Nat :=

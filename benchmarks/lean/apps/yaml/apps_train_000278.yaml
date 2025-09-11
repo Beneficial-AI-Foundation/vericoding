@@ -36,8 +36,6 @@ vc-preamble: |-
     | h::t => t.foldl min h
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def smallestRangeII (nums: List Int) (k: Int) : Int := sorry

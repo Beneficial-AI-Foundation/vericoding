@@ -74,8 +74,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rearrange_array (n : Nat) (arr : List Int) (can : List Bool) : List Int := sorry

@@ -11,8 +11,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def shorter_reverse_longer (a b : String) : String := sorry

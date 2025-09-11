@@ -6,8 +6,6 @@ theorem min_steps_nonneg (n : Nat) (weights : List Nat) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

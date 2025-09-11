@@ -15,8 +15,6 @@ vc-preamble: |-
   def isSorted (arr : List Int) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSortedDesc (arr : List Int) : Bool := sorry

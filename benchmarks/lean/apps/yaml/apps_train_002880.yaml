@@ -14,8 +14,6 @@ vc-preamble: |-
   -- Non-negativity
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def repeatChar (c : Char) (n : Nat) : String :=

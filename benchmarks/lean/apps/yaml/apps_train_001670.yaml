@@ -47,8 +47,6 @@ vc-preamble: |-
   def decodeMorse (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def stringRepeat (s : String) (n : Nat) : String :=

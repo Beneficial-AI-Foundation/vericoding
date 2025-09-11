@@ -23,8 +23,6 @@ vc-preamble: |-
   def isVowel (c : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isConsonant (c : Char) : Bool := sorry

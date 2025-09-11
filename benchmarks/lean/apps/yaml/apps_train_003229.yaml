@@ -23,8 +23,6 @@ vc-preamble: |-
     if x < 0 then -x else x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (arr : List Int) : Int := sorry

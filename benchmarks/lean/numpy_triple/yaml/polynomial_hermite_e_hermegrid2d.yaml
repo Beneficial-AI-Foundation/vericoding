@@ -28,8 +28,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hermegrid2d {nx ny : Nat} {deg_x deg_y : Nat} 

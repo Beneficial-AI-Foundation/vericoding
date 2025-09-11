@@ -5,8 +5,6 @@ def replaceChars_precond (s : String) (oldChar : Char) (newChar : Char) : Prop :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

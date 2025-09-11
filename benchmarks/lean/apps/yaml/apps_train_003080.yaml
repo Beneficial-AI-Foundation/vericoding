@@ -30,8 +30,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def buy_newspaper (s1 : String) (s2 : String) : Int := sorry

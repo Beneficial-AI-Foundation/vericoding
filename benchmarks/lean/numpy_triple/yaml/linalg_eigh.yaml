@@ -26,8 +26,6 @@ vc-preamble: |-
     eigenvectors : Vector (Vector Float n) n
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def eigh {n : Nat} (a : Vector (Vector Float n) n) : Id (EighResult n) :=

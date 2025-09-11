@@ -1,43 +1,57 @@
-# DafnyBenchmarks - Ported Specifications
+# Dafny Benchmarks - Lean Translation
 
-This directory contains Lean 4 ports of Dafny specifications from the vericoding project.
+This directory contains Lean 4 translations of Dafny specifications, organized into two categories:
 
-## Successfully Ported Specifications
+## Structure
 
-The following specifications have been successfully ported and compile:
+- **files/**: Contains the first 70 files that have been manually fixed and verified
+- **`remaining/`**: Contains the remaining files that still need attention
 
-1. **EvenList.lean** - Extracts all even numbers from an array while preserving order
-2. **HasCloseElements.lean** - Checks if any two distinct elements are closer than a threshold
-3. **IsEven.lean** - Simple predicate to check if an integer is even
-4. **IsPalindrome.lean** - Checks if a character sequence reads the same forwards and backwards
+## File Organization
 
-## Specifications with Compilation Issues
+### Manually Fixed Files (70 files)
+These files have been manually reviewed and fixed for syntax errors, type issues, and other compilation problems. They include:
 
-The following specifications have been ported but have remaining compilation issues that need to be resolved:
+- Binary search implementations
+- Array manipulation functions
+- Sorting algorithms
+- String processing functions
+- Mathematical computations
+- Tree operations
 
-5. **Find.lean** - Linear search returning index or -1
-   - Issue: Type mismatch with negative numbers in the specification
-6. **Insert.lean** - Inserts characters from one array into another
-   - Issue: Complex let-binding syntax in Id monad
-7. **IntegerSquareRoot.lean** - Computes integer square root
-   - Issue: Termination proof needed for recursive function
-8. **LinearSearch1.lean** - Linear search returning index or array size
-   - Issue: Specification proof obligations
-9. **LinearSearch2.lean** - Linear search with precondition that element exists
-   - Issue: Handling panic in specification
-10. **LinearSearch3.lean** - Generic linear search with predicate
-    - Issue: Handling panic in specification with generic types
+### Remaining Files (442 files)
+These files still need manual review and fixing. They contain similar types of Dafny-to-Lean translations but may have:
 
-## Porting Approach
+- Syntax errors
+- Type mismatches
+- Missing imports
+- Incorrect function signatures
+- Array indexing issues
 
-Each specification follows the Hoare triple style using the `Std.Do.Triple` library:
-- `⦃⌜precondition⌝⦄ program ⦃⇓result => ⌜postcondition⌝⦄`
-- All proofs are currently marked with `sorry` and need to be completed
-- The `mvcgen` tactic is used for generating verification conditions
+## Translation Notes
 
-## Next Steps
+The files were automatically translated from Dafny specifications and then manually corrected. Common issues that were fixed include:
 
-1. Fix the remaining compilation issues in files 5-10
-2. Complete the proofs (replace `sorry` with actual proofs)
-3. Add property-based tests using the Plausible library
-4. Benchmark the implementations
+1. **String operations**: Changed `.size` to `.length` for String types
+2. **Array indexing**: Fixed `⟨...⟩` syntax to proper `[i]!` indexing
+3. **Type conversions**: Added proper Int/Nat conversions where needed
+4. **Function signatures**: Corrected parameter types and return types
+5. **Import statements**: Added missing imports for required types
+
+## Usage
+
+To work with these files:
+
+1. Start with the manually fixed files in the root directory as examples
+2. Use them as reference for fixing similar issues in the remaining files
+3. Each file contains both the function definition and its specification theorem
+4. All functions use `sorry` as placeholder implementations
+
+## Contributing
+
+When fixing files in the `remaining/` directory:
+
+1. Move fixed files to the root directory
+2. Update this README with the count of fixed files
+3. Document any new patterns or issues discovered
+4. Test that the files compile with `lake build`

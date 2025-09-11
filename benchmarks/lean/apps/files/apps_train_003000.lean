@@ -10,8 +10,6 @@ def List.sort {α : Type} [Ord α] (as : List α) : List α :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

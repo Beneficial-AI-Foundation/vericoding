@@ -48,8 +48,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mutuallyExclusive (dice : List (Nat × Float)) (call1 : Nat) (call2 : Nat) : Option String := sorry

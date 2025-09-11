@@ -20,8 +20,6 @@ vc-preamble: |-
   def find_longest_palindrome (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.isSubstringOf (sub str : String) : Bool := sorry

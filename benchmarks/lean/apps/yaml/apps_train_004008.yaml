@@ -24,8 +24,6 @@ vc-preamble: |-
   def imag_part (s : String) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_sum (l : List Int) : Int := sorry

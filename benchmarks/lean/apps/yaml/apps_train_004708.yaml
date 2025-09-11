@@ -71,8 +71,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def cardNumberToString (n : Option Nat) : CalledNumber :=

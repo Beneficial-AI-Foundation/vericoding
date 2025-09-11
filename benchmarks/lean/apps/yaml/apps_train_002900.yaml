@@ -23,8 +23,6 @@ vc-preamble: |-
     s.data.filter (· = c) |>.length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def trimRight (s : String) (c : Char) : String :=

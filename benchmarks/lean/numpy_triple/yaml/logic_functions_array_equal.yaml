@@ -40,8 +40,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def arrayEqual {T : Type} [BEq T] {n : Nat} (a1 a2 : Vector T n) : Id Bool :=

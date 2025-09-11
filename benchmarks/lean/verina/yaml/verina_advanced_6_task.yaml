@@ -20,7 +20,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def toLower (c : Char) : Char :=
     if 'A' ≤ c && c ≤ 'Z' then
       Char.ofNat (Char.toNat c + 32)
@@ -29,7 +28,6 @@ vc-helpers: |-
   
   def normalize_str (s : String) : List Char :=
     s.data.map toLower
-  -- </vc-helpers>
 
 vc-definitions: |-
   def allVowels (s : String) (h_precond : allVowels_precond (s)) : Bool :=

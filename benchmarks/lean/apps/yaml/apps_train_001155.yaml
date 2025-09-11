@@ -42,8 +42,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_travel_time (n a b c d p q y : Nat) (cities : List Int) : Nat :=

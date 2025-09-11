@@ -81,8 +81,6 @@ vc-preamble: |-
   def stringContainsChar (s : String) (c : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def stringRepeat (n : Nat) (s : String) : String := sorry

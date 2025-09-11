@@ -22,8 +22,6 @@ def parse_year (photo : Photo) : Year :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

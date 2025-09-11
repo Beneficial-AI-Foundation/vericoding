@@ -47,8 +47,6 @@ vc-preamble: |-
   theorem maxDiff_single_digit (n : Nat) (h : n < 10) : maxDiff n = 8 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numDigits (n : Nat) : Nat := sorry

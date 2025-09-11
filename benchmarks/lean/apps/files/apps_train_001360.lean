@@ -4,8 +4,6 @@ def solve_race_encounters (x : Int) (r speed1 speed2 : Float) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

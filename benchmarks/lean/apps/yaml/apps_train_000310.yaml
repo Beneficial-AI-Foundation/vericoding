@@ -51,8 +51,6 @@ vc-preamble: |-
     | x::xs => Nat.max x (maxList xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sortList : List Nat → List Nat :=

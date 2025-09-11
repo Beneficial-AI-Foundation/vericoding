@@ -56,8 +56,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_pattern_occurrences (keyword pattern : String) (queries : List Nat) : List Nat :=

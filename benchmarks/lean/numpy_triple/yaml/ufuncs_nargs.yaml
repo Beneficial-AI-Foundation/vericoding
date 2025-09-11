@@ -35,8 +35,6 @@ vc-preamble: |-
     deriving Repr, DecidableEq
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_nargs (ufunc : Ufunc) : Id Nat :=

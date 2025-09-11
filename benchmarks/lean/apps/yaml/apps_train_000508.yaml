@@ -50,8 +50,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_well_bracketed_sum (n k : Nat) (values : List Int) (brackets : List Nat) : Int :=

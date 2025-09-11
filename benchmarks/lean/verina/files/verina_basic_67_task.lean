@@ -5,7 +5,6 @@ def IsPalindrome_precond (x : List Char) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def isPalindromeHelper (x : List Char) (i j : Nat) : Bool :=
   if i < j then
     match x[i]?, x[j]? with
@@ -13,7 +12,6 @@ def isPalindromeHelper (x : List Char) (i j : Nat) : Bool :=
       if ci ≠ cj then false else isPalindromeHelper x (i + 1) (j - 1)
     | _, _ => false  -- This case should not occur due to valid indices
   else true
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

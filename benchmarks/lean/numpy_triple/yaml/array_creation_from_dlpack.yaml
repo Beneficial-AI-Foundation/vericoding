@@ -32,8 +32,6 @@ vc-preamble: |-
     deriving Repr
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def from_dlpack {α : Type} {n : Nat} (x : DLPackObject α n) (device : Option String := none) 

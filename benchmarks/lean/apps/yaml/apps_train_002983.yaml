@@ -97,8 +97,6 @@ vc-preamble: |-
   def floor (x : Float) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ceil (x : Float) : Int := sorry

@@ -16,8 +16,6 @@ vc-preamble: |-
     ∀ x, x ∈ reverseInvert lst → x ∈ lst := by sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numReverse (n : Int) : Int := sorry 

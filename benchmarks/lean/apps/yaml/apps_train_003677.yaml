@@ -24,8 +24,6 @@ vc-preamble: |-
   def isCharNSorted (words : List String) (n : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sameSets (s1 : List String) (s2 : List String) : Bool := sorry

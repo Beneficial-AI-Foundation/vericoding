@@ -10,8 +10,6 @@ vc-preamble: |-
   def countDigits (n : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def natToString (n : Nat) : String := sorry

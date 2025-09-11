@@ -15,8 +15,6 @@ theorem list_squared_divisors_sum (m n : Nat) (h : 0 < m) (h2 : 0 < n) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -48,8 +48,6 @@ vc-preamble: |-
   def IsLower (c : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def swapcase (c : Char) : Char := sorry

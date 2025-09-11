@@ -69,8 +69,6 @@ vc-preamble: |-
   /- Solve strange matrix takes dimensions n,m and list of commands, returns list of sums -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_strange_matrix (n m k : Nat) (cmds : List Command) : List Int :=

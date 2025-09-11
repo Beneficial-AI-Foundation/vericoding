@@ -40,8 +40,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def decode {n : Nat} (a : Vector ByteArray n) (encoding : String := "utf-8") (errors : String := "strict") : Id (Vector String n) :=

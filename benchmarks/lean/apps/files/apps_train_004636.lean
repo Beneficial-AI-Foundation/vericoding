@@ -4,8 +4,6 @@ def toDecimal (n : Int) (d : Int) : Float := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

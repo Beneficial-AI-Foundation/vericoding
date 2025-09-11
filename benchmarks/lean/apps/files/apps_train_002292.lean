@@ -10,8 +10,6 @@ theorem known_perfect_numbers (n : Int) (h : n ∈ perfect_numbers) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

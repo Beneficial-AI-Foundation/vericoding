@@ -19,8 +19,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def legvander3d {n : Nat} (x y z : Vector Float n) (deg_x deg_y deg_z : Nat) : 

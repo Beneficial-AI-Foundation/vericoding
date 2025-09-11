@@ -11,8 +11,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isclose {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Float) (equal_nan : Bool) : Id (Vector Bool n) :=

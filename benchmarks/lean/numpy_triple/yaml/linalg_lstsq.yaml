@@ -36,8 +36,6 @@ vc-preamble: |-
     Vector.ofFn fun i => a.get i - b.get i
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lstsq {M N : Nat} (a : Vector (Vector Float N) M) (b : Vector Float M) : 

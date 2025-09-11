@@ -5,7 +5,6 @@ def only_once_precond (a : Array Int) (key : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def only_once_loop {T : Type} [DecidableEq T] (a : Array T) (key : T) (i keyCount : Nat) : Bool :=
   if i < a.size then
     match a[i]? with
@@ -15,7 +14,6 @@ def only_once_loop {T : Type} [DecidableEq T] (a : Array T) (key : T) (i keyCoun
     | none => keyCount == 1
   else
     keyCount == 1
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

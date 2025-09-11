@@ -4,8 +4,6 @@ def valid_ranks := ["2","3","4","5","6","7","8","9","10","J","Q","K","A"]
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

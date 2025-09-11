@@ -24,8 +24,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def compare_and_calc (n1 n2 : Int) : Int := sorry

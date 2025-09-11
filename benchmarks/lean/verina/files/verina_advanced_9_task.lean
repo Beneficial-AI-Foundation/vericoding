@@ -5,7 +5,6 @@ def countSumDivisibleBy_precond (n : Nat) (d : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def sumOfDigits (x : Nat) : Nat :=
   let rec go (n acc : Nat) : Nat :=
     if n = 0 then acc
@@ -14,7 +13,6 @@ def sumOfDigits (x : Nat) : Nat :=
 
 def isSumDivisibleBy (x : Nat) (d:Nat) : Bool :=
   (sumOfDigits x) % d = 0
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

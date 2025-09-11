@@ -5,13 +5,11 @@ def append_precond (a : Array Int) (b : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def copy (a : Array Int) (i : Nat) (acc : Array Int) : Array Int :=
   if i < a.size then
     copy a (i + 1) (acc.push (a[i]!))
   else
     acc
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

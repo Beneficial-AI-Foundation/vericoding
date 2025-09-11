@@ -6,8 +6,6 @@ theorem single_number {n : Int} (h : -1000 ≤ n ∧ n ≤ 1000) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

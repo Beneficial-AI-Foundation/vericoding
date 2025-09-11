@@ -6,8 +6,6 @@ theorem sort_number_length {l : List Int} (h : l ≠ []) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -68,8 +68,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_kingdom (n : Nat) (roads : List (Nat × Nat)) (plans : List (Nat × List Nat)) : List Int :=

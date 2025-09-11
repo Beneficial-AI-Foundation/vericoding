@@ -23,8 +23,6 @@ vc-preamble: |-
     if i ≥ 0 then i else -i
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def containsNearbyAlmostDuplicate (nums : List Int) (k : Int) (t : Int) : Bool :=

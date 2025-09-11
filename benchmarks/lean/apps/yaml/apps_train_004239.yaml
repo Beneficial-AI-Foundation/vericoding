@@ -48,8 +48,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def xp_to_target_lvl (current_xp : Int) (target_lvl : Int) : String ⊕ Int :=

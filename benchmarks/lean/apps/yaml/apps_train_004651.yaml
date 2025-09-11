@@ -52,8 +52,6 @@ vc-preamble: |-
       | y :: _ => x ≤ y && isSorted xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSortedBy {α : Type} (l : List α) (f : α → α → Bool) : Bool :=

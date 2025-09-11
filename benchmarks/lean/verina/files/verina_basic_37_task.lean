@@ -5,8 +5,6 @@ def findFirstOccurrence_precond (arr : Array Int) (target : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

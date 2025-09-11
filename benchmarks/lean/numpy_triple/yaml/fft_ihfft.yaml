@@ -54,8 +54,6 @@ vc-preamble: |-
   def Float.toComplex (x : Float) : Complex := { re := x, im := 0 }
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ihfft {n : Nat} (a : Vector Complex n) : Id (Vector Complex n) :=

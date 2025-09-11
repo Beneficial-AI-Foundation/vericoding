@@ -35,8 +35,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ix_ {m n : Nat} (seq1 : Vector Int m) (seq2 : Vector Int n) : Id (Vector (Vector Int 1) m × Vector (Vector Int n) 1) :=

@@ -9,8 +9,6 @@ noncomputable def check_derivative : List ℤ → List ℤ
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

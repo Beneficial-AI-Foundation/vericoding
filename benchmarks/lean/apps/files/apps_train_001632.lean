@@ -4,8 +4,6 @@ def SearchPlan := (Nat × List Coordinates)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

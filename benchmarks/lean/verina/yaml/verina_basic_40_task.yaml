@@ -23,7 +23,6 @@ vc-preamble: |-
     s.size > 1
 
 vc-helpers: |-
-  -- <vc-helpers>
   def minListHelper : List Int → Int
   | [] => panic! "minListHelper: empty list"
   | [_] => panic! "minListHelper: singleton list"
@@ -49,7 +48,6 @@ vc-helpers: |-
       else
         secondSmallestAux s (i + 1) minIdx secondIdx
   termination_by s.size - i
-  -- </vc-helpers>
 
 vc-definitions: |-
   def secondSmallest (s : Array Int) (h_precond : secondSmallest_precond (s)) : Int :=

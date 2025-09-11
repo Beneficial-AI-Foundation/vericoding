@@ -8,8 +8,6 @@ def longestGoodSubarray_precond (nums : List Nat) (k : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

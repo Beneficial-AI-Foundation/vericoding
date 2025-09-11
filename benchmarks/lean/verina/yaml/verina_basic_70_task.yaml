@@ -24,8 +24,6 @@ vc-preamble: |-
     ∃ i, i < a.size ∧ P (a[i]!)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def LinearSearch3 (a : Array Int) (P : Int -> Bool) (h_precond : LinearSearch3_precond (a) (P)) : Nat :=

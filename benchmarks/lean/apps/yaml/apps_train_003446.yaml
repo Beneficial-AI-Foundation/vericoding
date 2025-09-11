@@ -176,8 +176,6 @@ vc-preamble: |-
     | xs, swaps => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def swapAt {α : Type} (xs : List α) (i j : Nat) (h₁ : i < xs.length) (h₂ : j < xs.length) : List α :=

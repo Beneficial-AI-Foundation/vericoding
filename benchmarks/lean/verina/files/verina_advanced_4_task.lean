@@ -7,10 +7,8 @@ def LongestIncreasingSubsequence_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def intMax (x y : Int) : Int :=
   if x < y then y else x
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

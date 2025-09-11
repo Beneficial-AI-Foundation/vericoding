@@ -17,8 +17,6 @@ vc-preamble: |-
   def square_len (n : Nat) : Nat := toString (n * n) |>.length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def listSum : List Nat → Nat 

@@ -56,8 +56,6 @@ vc-preamble: |-
   def getPrefixSums (arr : List Nat) (sizes : List Nat) : List Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sumList : List Nat → Nat

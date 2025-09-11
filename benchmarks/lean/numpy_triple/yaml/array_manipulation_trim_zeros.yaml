@@ -45,8 +45,6 @@ vc-preamble: |-
     | Both
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def trim_zeros {n : Nat} (arr : Vector Float n) (mode : TrimMode := TrimMode.Both) : 

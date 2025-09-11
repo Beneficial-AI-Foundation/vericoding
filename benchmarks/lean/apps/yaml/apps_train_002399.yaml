@@ -54,8 +54,6 @@ vc-preamble: |-
       transformed = dropFirst orig_word ++ String.mk [firstChar orig_word] := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChar (s : String) (c : Char) : Nat := sorry

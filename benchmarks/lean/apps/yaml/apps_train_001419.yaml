@@ -50,8 +50,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_robots_meeting (n m k1 k2 : Nat) (grid : Array (Array Nat)) : Int :=

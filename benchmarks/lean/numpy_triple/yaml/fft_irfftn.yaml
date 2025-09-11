@@ -84,8 +84,6 @@ vc-preamble: |-
       go ⟨n, by omega⟩
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def irfftn {k : Nat} (a : Vector Complex k) (n : Nat) : Id (Vector Float n) :=

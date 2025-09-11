@@ -66,8 +66,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def pow (base : Nat) (exp : Nat) (m : Nat) : Nat :=

@@ -7,10 +7,8 @@ def dissimilarElements_precond (a : Array Int) (b : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def inArray (a : Array Int) (x : Int) : Bool :=
   a.any (fun y => y = x)
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

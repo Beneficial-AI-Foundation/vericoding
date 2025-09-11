@@ -9,8 +9,6 @@ def list_count {α} [BEq α] (p : α → Bool) (l : List α) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

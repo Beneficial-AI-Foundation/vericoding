@@ -87,8 +87,6 @@ vc-preamble: |-
     min_sum nums ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def pairwiseProduct (nums : List Nat) : Nat := 

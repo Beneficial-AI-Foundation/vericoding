@@ -62,8 +62,6 @@ vc-preamble: |-
     | x::xs => x + list_sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def nat_ceil_div (a b : Nat) : Nat :=

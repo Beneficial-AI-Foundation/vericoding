@@ -35,8 +35,6 @@ vc-preamble: |-
   def canReorderString : (s : String) → String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChar (c : Char) (s : String) : Nat := sorry

@@ -13,8 +13,6 @@ def stringContains (s₁ s₂ : String) : Prop := ∃ pre post : String, s₁ = 
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

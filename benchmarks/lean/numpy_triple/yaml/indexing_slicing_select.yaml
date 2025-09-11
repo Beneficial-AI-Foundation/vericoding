@@ -31,8 +31,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def select {n : Nat} {k : Nat} (condlist : Vector (Vector Bool n) k) (choicelist : Vector (Vector Float n) k) (default : Float) : Id (Vector Float n) :=

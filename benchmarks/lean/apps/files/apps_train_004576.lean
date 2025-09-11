@@ -4,8 +4,6 @@ def new_avg (donations : List Int) (targetAvg : Int) : Option Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

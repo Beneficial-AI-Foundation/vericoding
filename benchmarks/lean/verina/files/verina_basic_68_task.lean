@@ -7,8 +7,6 @@ def LinearSearch_precond (a : Array Int) (e : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

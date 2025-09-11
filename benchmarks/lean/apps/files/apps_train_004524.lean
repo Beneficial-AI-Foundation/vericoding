@@ -9,8 +9,6 @@ def mul : Int → Int → Int := fun a b => a * b
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

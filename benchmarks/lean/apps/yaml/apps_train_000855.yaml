@@ -28,8 +28,6 @@ vc-preamble: |-
   def Float.ofString! (s: String) : Float := (Float.ofString? s).get!
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_donut_areas (radii : List Int) : List String := sorry

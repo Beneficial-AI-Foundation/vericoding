@@ -5,8 +5,6 @@ def verify_operations (n : Nat) (arr : List Int) (ops : List (Nat × Nat × List
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

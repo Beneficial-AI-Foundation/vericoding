@@ -17,8 +17,6 @@ axiom Int.bitwise_or_idempotent (x : Int) : Int.bitwise_or x x = x
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

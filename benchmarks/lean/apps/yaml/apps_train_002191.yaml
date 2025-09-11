@@ -50,8 +50,6 @@ vc-preamble: |-
     fun _ => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reverseString : String → String :=

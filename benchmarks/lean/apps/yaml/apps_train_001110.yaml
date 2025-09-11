@@ -41,8 +41,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_order_team (team1 : List Nat) (team2 : List Nat) (team3 : List Nat) : String := sorry

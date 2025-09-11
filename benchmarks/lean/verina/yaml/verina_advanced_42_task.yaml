@@ -20,7 +20,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def updateMinAndProfit (price : Nat) (minSoFar : Nat) (maxProfit : Nat) : (Nat × Nat) :=
     let newMin := Nat.min minSoFar price
     let profit := if price > minSoFar then price - minSoFar else 0
@@ -33,7 +32,6 @@ vc-helpers: |-
     | p :: ps =>
       let (newMin, newProfit) := updateMinAndProfit p minSoFar maxProfit
       maxProfitAux ps newMin newProfit
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maxProfit (prices : List Nat) (h_precond : maxProfit_precond (prices)) : Nat :=

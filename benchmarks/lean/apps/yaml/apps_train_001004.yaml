@@ -91,8 +91,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_teleport_game (R C N Sx Sy : Nat) (tel_pairs : List (Nat × Nat)) (board : List (List Int)) : Int := sorry

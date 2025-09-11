@@ -68,8 +68,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_permutation (n : Nat) (segments : List (List Nat)) : Option (List Nat) := sorry

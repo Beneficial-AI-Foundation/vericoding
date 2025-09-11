@@ -10,8 +10,6 @@ theorem strictly_increasing_always_true {seq : List Int} :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

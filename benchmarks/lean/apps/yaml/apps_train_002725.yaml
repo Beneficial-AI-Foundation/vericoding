@@ -44,8 +44,6 @@ vc-preamble: |-
   def alan_annoying_kid (phrase : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.getWords (s : String) : List String := sorry

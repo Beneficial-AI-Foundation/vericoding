@@ -4,8 +4,6 @@ def small_enough (numbers : List Int) (limit : Int) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

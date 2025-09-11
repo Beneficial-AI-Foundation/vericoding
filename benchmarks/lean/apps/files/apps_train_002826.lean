@@ -7,8 +7,6 @@ theorem prod_int_part_output_structure (n: Nat) (h: n ≥ 2) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

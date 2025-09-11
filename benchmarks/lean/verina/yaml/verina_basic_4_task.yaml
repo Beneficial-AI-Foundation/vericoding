@@ -23,8 +23,6 @@ vc-preamble: |-
     k ≥ 1 ∧ k ≤ arr.size
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def kthElement (arr : Array Int) (k : Nat) (h_precond : kthElement_precond (arr) (k)) : Int :=

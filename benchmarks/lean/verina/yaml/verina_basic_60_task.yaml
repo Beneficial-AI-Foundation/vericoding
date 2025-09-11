@@ -22,10 +22,8 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def isEven (n : Int) : Bool :=
     n % 2 = 0
-  -- </vc-helpers>
 
 vc-definitions: |-
   def FindEvenNumbers (arr : Array Int) (h_precond : FindEvenNumbers_precond (arr)) : Array Int :=

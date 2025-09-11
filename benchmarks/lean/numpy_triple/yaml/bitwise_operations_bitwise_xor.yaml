@@ -54,8 +54,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bitwise_xor {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=

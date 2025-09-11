@@ -41,8 +41,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def k_smallest_pairs (nums1 nums2 : List Int) (k : Nat) : List (Int × Int) :=

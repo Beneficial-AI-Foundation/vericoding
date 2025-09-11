@@ -52,8 +52,6 @@ vc-preamble: |-
   def stringContains (s₁ s₂ : String) : Prop := ∃ pre post : String, s₁ = pre ++ s₂ ++ post
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def parseAsInt (s : String) : Option Int := sorry

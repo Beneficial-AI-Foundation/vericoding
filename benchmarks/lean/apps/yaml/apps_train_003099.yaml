@@ -40,8 +40,6 @@ vc-preamble: |-
   def replace (s : String) (target : String) (replacement : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sortString (s : String) : String := sorry

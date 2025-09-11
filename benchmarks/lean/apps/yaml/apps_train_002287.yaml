@@ -61,8 +61,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_permutations (n: Nat) (top bottom: List Nat) : Int × List Nat := sorry

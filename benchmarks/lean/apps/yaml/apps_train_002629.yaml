@@ -39,8 +39,6 @@ vc-preamble: |-
     | _ => 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def scoreboard (s : String) : List Nat :=

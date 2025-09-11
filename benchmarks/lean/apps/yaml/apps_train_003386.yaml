@@ -24,8 +24,6 @@ vc-preamble: |-
   def findMin (s : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sortList (l : List Nat) : List Nat := sorry

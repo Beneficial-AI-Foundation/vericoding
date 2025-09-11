@@ -20,8 +20,6 @@ vc-preamble: |-
   def countOnes (n : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isPowerOfTwo (n : Nat) : Prop := 

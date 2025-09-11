@@ -38,8 +38,6 @@ vc-preamble: |-
   def ValidResources := "bwsog"
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChar (s : List Char) (c : Char) : Nat :=

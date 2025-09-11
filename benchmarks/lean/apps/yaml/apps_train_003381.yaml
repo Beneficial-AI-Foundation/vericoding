@@ -30,8 +30,6 @@ vc-preamble: |-
   def get_char_indices (s : String) (c : Char) : List Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def List.sorted (l : List Nat) : Prop := 

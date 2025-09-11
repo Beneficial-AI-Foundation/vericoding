@@ -49,8 +49,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def makeParabolaPoints (a h k : Int) (n : Nat) : List (Int × Int) :=

@@ -39,8 +39,6 @@ vc-preamble: |-
   def str_to_hours_mins (s : String) : Nat × Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def angle_to_total_mins (angle : Float) : Float := sorry

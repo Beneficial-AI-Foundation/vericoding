@@ -37,8 +37,6 @@ vc-preamble: |-
       seriesSumSolver n = "Ravi" ∨ seriesSumSolver n = "Jhon" := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def squaredSum (n : Nat) : Nat := sorry

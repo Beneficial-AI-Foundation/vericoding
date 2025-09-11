@@ -23,8 +23,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def as_series {m n : Nat} (arr : Vector (Vector Float n) m) (trim : Bool) : 

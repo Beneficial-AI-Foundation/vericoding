@@ -50,8 +50,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_minimized_workload (n: Nat) (p: Nat) (workloads: List Nat) : Nat :=

@@ -32,8 +32,6 @@ vc-preamble: |-
     | x::xs => if xs.contains x then countUnique xs else 1 + countUnique xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def powers (n: Nat) : List Nat := sorry

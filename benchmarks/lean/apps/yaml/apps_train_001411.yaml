@@ -36,8 +36,6 @@ vc-preamble: |-
   deriving Repr
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def determine_college (s: String) : College := sorry

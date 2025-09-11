@@ -19,8 +19,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def multiply (a : Int) (b : Int) (h_precond : multiply_precond (a) (b)) : Int :=

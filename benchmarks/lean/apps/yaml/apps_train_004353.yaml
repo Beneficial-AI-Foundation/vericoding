@@ -52,8 +52,6 @@ vc-preamble: |-
     le a b := compare a b ≠ .gt
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bishop_diagonal (sq1 sq2 : Square) : List Square := sorry

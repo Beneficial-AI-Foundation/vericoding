@@ -47,8 +47,6 @@ def can_represent_value (dt : NumpyDType) (value : Float) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

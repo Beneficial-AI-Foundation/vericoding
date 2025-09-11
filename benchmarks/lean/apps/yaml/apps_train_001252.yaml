@@ -67,8 +67,6 @@ vc-preamble: |-
   -- Helper definition for valid graphs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_valid_graph (n: Nat) (roads: List (Nat × Nat)) : Prop :=

@@ -61,8 +61,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_door_peaks (n k : Nat) (arr : List Nat) : Nat × Nat :=

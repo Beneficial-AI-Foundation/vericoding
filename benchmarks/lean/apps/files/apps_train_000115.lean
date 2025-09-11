@@ -5,8 +5,6 @@ def is_valid_matrix (result : List (List Nat)) (n m : Nat) (rows cols : List (Li
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

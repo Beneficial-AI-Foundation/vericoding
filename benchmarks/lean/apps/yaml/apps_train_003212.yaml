@@ -24,8 +24,6 @@ vc-preamble: |-
   def isNonZeroDigit (c : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def look_and_say_sequence (s : String) (n : Nat) : String := sorry

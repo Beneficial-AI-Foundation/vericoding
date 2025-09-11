@@ -24,8 +24,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def iterateN (f : Nat → Nat) : Nat → Nat → Nat

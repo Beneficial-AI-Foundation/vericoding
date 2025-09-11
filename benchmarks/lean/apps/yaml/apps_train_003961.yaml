@@ -78,8 +78,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def men_from_boys (arr : List Int) : List Int := sorry

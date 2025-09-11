@@ -28,8 +28,6 @@ vc-preamble: |-
   def is_alpha (c : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isOrdered (s : List Char) : Prop :=

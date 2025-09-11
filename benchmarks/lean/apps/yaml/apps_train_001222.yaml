@@ -57,8 +57,6 @@ vc-preamble: |-
   def digitList (n : Nat) : List Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isEvenDigit (n : Nat) : Bool := sorry

@@ -7,8 +7,6 @@ theorem series_sum_solver_returns_valid_name (n : Nat)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

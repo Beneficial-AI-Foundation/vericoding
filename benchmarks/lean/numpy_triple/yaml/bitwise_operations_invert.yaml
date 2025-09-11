@@ -32,8 +32,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def invert {n : Nat} (x : Vector Int n) : Id (Vector Int n) :=

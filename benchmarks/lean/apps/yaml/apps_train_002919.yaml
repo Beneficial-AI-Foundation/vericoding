@@ -13,8 +13,6 @@ vc-preamble: |-
   def is_narc (n : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_narcissistic : List String → Bool := sorry

@@ -42,8 +42,6 @@ vc-preamble: |-
   | h::t => List.foldl Nat.max h t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_min (l : List Nat) : Nat :=

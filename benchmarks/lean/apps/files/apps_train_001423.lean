@@ -6,8 +6,6 @@ def find_anagram_positions (haystack : String) (needle : String) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

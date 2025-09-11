@@ -67,8 +67,6 @@ vc-preamble: |-
   def ins (l : Heap) (x : Int) : Heap := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def pop (l : Heap) : Int × Heap := sorry

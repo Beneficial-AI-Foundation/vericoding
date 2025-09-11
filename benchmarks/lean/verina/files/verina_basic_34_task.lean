@@ -5,10 +5,8 @@ def findEvenNumbers_precond (arr : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def isEven (n : Int) : Bool :=
   n % 2 = 0
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

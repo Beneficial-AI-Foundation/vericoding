@@ -17,8 +17,6 @@ vc-preamble: |-
   | x::xs => xs.foldl max x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def differenceInAges (ages : List Nat) : Nat × Nat × Nat := sorry

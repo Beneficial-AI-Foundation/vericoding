@@ -27,8 +27,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def histogram2d {n : Nat} {nbins : Nat} (x y : Vector Float n) (bins : Nat) 

@@ -7,8 +7,6 @@ def compute_final_position (vectors : List (Int × Int)) (path : List Int) : Int
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

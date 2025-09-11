@@ -26,8 +26,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lexsort {n k : Nat} (keys : Vector (Vector Float n) k) (h : k > 0) : Id (Vector (Fin n) n) :=

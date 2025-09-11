@@ -30,8 +30,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def resize {n : Nat} {α : Type} (a : Vector α n) (new_size : Nat) : Id (Vector α new_size) :=

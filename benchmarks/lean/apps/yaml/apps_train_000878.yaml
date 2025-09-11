@@ -31,8 +31,6 @@ vc-preamble: |-
   def IsFinite (x : Float) : Prop := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_mirror_position (x1 y1 x2 y2 : Float) : Float :=

@@ -60,8 +60,6 @@ vc-preamble: |-
     | h::t => t.foldl Nat.xor h
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_sum (l : List Nat) : Nat := 

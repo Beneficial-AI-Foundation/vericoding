@@ -23,8 +23,6 @@ vc-preamble: |-
       | some m => some (if x < m then x else m)) none
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def closest (lst : List Int) : Option Int := sorry

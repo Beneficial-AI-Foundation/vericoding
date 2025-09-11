@@ -7,10 +7,8 @@ def lengthOfLIS_precond (nums : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def maxInArray (arr : Array Nat) : Nat :=
   arr.foldl (fun a b => if a ≥ b then a else b) 0
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

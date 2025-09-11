@@ -55,8 +55,6 @@ vc-preamble: |-
     (jumbledString s n).length = s.length := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSameChars (s₁ s₂ : String) : Prop :=

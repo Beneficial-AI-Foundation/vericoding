@@ -46,8 +46,6 @@ vc-preamble: |-
     sum (xss.map sum)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_maximum_gold (grid : List (List Nat)) : Nat := sorry 

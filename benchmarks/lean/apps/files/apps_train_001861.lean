@@ -4,8 +4,6 @@ def List.isSubsetOf (l1 l2 : List α) [BEq α] : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

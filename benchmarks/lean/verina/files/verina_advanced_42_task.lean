@@ -5,7 +5,6 @@ def maxProfit_precond (prices : List Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def updateMinAndProfit (price : Nat) (minSoFar : Nat) (maxProfit : Nat) : (Nat × Nat) :=
   let newMin := Nat.min minSoFar price
   let profit := if price > minSoFar then price - minSoFar else 0
@@ -18,7 +17,6 @@ def maxProfitAux (prices : List Nat) (minSoFar : Nat) (maxProfit : Nat) : Nat :=
   | p :: ps =>
     let (newMin, newProfit) := updateMinAndProfit p minSoFar maxProfit
     maxProfitAux ps newMin newProfit
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

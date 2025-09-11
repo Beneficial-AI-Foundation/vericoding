@@ -58,8 +58,6 @@ vc-preamble: |-
     | h::t => (List.foldl max h t)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def compute_table_scores (n: Nat) (first_row: List Int) : List Int := sorry

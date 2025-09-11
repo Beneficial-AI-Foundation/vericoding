@@ -109,8 +109,6 @@ vc-preamble: |-
     | _, _ => false
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def issubclass_ (arg1 arg2 : NumpyTypeClass) : Id Bool :=

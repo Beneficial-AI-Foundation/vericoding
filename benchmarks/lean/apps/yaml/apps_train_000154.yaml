@@ -22,8 +22,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def shortestCommonSupersequence (s₁ s₂ : String) : String :=

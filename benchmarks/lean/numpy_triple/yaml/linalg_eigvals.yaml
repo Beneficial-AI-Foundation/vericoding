@@ -27,8 +27,6 @@ vc-preamble: |-
     deriving Repr
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def eigvals {n : Nat} (a : Matrix (n + 1) Float) : Id (Vector Complex (n + 1)) :=

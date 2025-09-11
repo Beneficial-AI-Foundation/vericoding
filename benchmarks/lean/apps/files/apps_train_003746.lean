@@ -9,8 +9,6 @@ def square_len (n : Nat) : Nat := toString (n * n) |>.length
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

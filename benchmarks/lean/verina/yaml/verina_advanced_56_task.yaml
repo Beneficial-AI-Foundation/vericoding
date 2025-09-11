@@ -20,9 +20,7 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   -- Count how many times a specific value appears in the list
-  -- </vc-helpers>
 
 vc-definitions: |-
   def moveZeroes (xs : List Int) (h_precond : moveZeroes_precond (xs)) : List Int :=

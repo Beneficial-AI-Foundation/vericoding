@@ -28,8 +28,6 @@ vc-preamble: |-
   def mod (a b : Int) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def exponent (a b : Int) : Int := sorry

@@ -20,8 +20,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def splitlines {n : Nat} (a : Vector String n) (keepends : Bool) : Id (Vector (List String) n) :=

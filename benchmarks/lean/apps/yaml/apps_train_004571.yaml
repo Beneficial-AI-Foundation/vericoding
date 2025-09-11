@@ -44,8 +44,6 @@ vc-preamble: |-
     n : Int
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def all_non_consecutive (arr : List Int) : List Result :=

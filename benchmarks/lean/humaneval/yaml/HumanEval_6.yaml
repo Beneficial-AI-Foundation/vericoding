@@ -109,8 +109,6 @@ vc-preamble: |-
   count_max_paren_depth_helper paren_string 0 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (paren_string: String) : List Int :=

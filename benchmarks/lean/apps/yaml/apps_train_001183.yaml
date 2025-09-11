@@ -70,8 +70,6 @@ vc-preamble: |-
   def Graph := List Edge
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_shortest_paths (n : Nat) (edges : Graph) : Nat :=

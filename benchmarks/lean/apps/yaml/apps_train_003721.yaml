@@ -42,8 +42,6 @@ vc-preamble: |-
     | x::xs => insertIntoSorted x (sortList xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def shuffled_array (arr : List Int) : List Int := sorry 

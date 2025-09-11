@@ -22,8 +22,6 @@ def green_numbers_ordered (n : Nat) (h : n > 1) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

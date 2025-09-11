@@ -38,8 +38,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_max_digit_frequency (nums : List Nat) (target : Nat) : Nat :=

@@ -5,10 +5,8 @@ def findMajorityElement_precond (lst : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def countOccurrences (n : Int) (lst : List Int) : Nat :=
   lst.foldl (fun acc x => if x = n then acc + 1 else acc) 0
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -4,8 +4,6 @@ def max_pizza_time (n : Nat) (k : Nat) (s : String) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

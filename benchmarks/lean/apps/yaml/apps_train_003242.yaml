@@ -79,8 +79,6 @@ vc-preamble: |-
   /- Helper function to check if string matches expected pattern -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def matchesPattern (s : String) : Bool := sorry

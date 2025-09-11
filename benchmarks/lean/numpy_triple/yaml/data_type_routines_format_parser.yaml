@@ -59,8 +59,6 @@ vc-preamble: |-
     deriving Repr, BEq
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_format_parser {n : Nat} 

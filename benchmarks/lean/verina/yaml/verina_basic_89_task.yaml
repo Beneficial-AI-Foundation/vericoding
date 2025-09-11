@@ -20,8 +20,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def SetToSeq (s : List Int) (h_precond : SetToSeq_precond (s)) : List Int :=

@@ -5,8 +5,6 @@ def sorted_list (l : List Char) : List Char := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

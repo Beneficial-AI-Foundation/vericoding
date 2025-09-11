@@ -30,8 +30,6 @@ vc-preamble: |-
       (a.get i).re = (a.get j).re ∧ (a.get i).im = -(a.get j).im
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def irfft {k : Nat} (a : Vector Complex k) (n : Nat) : Id (Vector Float n) :=

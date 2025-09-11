@@ -21,10 +21,8 @@ vc-preamble: |-
     a.size > 0
 
 vc-helpers: |-
-  -- <vc-helpers>
   theorem eq_of_sub_zero_and_ge (a b : Int) : a = b → a - b = 0 ∧ a ≥ b := by
     omega
-  -- </vc-helpers>
 
 vc-definitions: |-
   def arraySum (a : Array Int) (h_precond : arraySum_precond (a)) : Int :=

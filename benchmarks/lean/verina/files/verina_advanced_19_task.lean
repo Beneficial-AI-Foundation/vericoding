@@ -5,7 +5,6 @@ def isCleanPalindrome_precond (s : String) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 -- Check if a character is an uppercase alphabet letter
 def isUpperAlpha (c : Char) : Bool :=
   'A' ≤ c ∧ c ≤ 'Z'
@@ -37,7 +36,6 @@ def normalizeString (s : String) : List Char :=
 -- Reverse the list
 def reverseList (xs : List Char) : List Char :=
   xs.reverse
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

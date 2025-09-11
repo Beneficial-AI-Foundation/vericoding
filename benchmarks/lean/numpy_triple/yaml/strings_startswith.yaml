@@ -19,8 +19,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def startswith {n : Nat} (a : Vector String n) (prefixes : Vector String n) : Id (Vector Bool n) :=

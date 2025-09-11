@@ -23,7 +23,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def reverse_core (arr : Array Int) (i : Nat) : Array Int :=
     if i < arr.size / 2 then
       let j := arr.size - 1 - i
@@ -33,7 +32,6 @@ vc-helpers: |-
       reverse_core arr'' (i + 1)
     else
       arr
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reverse (a : Array Int) (h_precond : reverse_precond (a)) : Array Int :=

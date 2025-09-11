@@ -58,8 +58,6 @@ vc-preamble: |-
     | (x::xs) => xs.foldl min x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_maximum (l : List Nat) : Nat := 

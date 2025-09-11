@@ -37,8 +37,6 @@ vc-preamble: |-
   | xs, n => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def pairwise : List Int → Int → Int 

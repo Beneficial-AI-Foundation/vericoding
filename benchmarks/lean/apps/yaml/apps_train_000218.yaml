@@ -51,8 +51,6 @@ vc-preamble: |-
       checkFib 0 seq.length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lenLongestFibSubseq (A : List Nat) : Nat :=

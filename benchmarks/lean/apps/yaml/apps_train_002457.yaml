@@ -27,8 +27,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_second_lowest_students (records: List (String × Float)) : List String :=

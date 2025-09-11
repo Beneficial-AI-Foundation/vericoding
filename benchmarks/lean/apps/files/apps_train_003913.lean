@@ -5,8 +5,6 @@ def str_to_hours_mins (s : String) : Nat × Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

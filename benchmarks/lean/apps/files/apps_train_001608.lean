@@ -4,8 +4,6 @@ def isNStraightHand (hand : List Int) (w : Int) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

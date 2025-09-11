@@ -12,8 +12,6 @@ vc-preamble: |-
   def Nat2Pos (n : Nat) : String.Pos := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bracket_pairs (s : String) : Option (List (String.Pos × String.Pos)) := sorry

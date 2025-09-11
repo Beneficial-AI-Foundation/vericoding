@@ -42,8 +42,6 @@ vc-preamble: |-
     | x::xs => x + list_sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def alternating_elements : List Nat → List Nat

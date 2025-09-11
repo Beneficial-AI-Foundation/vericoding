@@ -33,8 +33,6 @@ vc-preamble: |-
   def sum_sublist (l : List Int) (i : Nat) (len : Nat) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_sum (l : List Int) : Int := sorry

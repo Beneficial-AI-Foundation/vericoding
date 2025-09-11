@@ -19,8 +19,6 @@ vc-preamble: |-
     0 ≤ aa_percentage seq ∧ aa_percentage seq ≤ 100 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sum_list : List Nat → Nat 

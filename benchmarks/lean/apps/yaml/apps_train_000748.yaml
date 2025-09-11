@@ -57,8 +57,6 @@ vc-preamble: |-
     xs.foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_min_event_time (n : Nat) (times : List (List Nat)) : Nat := sorry

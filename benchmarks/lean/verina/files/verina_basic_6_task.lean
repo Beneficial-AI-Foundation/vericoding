@@ -7,8 +7,6 @@ def minOfThree_precond (a : Int) (b : Int) (c : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

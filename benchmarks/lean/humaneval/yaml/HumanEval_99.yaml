@@ -19,8 +19,6 @@ vc-preamble: |-
   import Std
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (s: String) : Option Int :=

@@ -46,8 +46,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_time_to_send_presents (n m : Nat) (stack send_list : List Nat) : Nat :=

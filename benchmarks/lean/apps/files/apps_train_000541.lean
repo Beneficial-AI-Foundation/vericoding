@@ -4,8 +4,6 @@ def find_robot_position (t : Nat) : Int × Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -4,8 +4,6 @@ def solve_tree_zeros (n : Nat) (edges : List (Nat × Nat)) (values : List Int) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

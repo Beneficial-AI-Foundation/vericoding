@@ -64,8 +64,6 @@ vc-preamble: |-
   if a ≥ b then a else b
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_special_segment_sum (n: Nat) (a b: List Int) : Int :=

@@ -29,8 +29,6 @@ vc-preamble: |-
   def toDecimal (n : Int) (d : Int) : Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def intToFloat (i : Int) : Float := sorry

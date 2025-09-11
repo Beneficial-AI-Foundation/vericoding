@@ -7,8 +7,6 @@ def longest_possible (seconds : Int) : Option String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

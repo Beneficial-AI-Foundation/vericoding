@@ -14,8 +14,6 @@ vc-preamble: |-
   def from_twos_complement (n : Int) (bits : Nat) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def removeWhitespace (s : String) : String := sorry

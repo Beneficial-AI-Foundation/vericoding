@@ -21,7 +21,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def countLessThan (numbers : Array Int) (threshold : Int) : Nat :=
     let rec count (i : Nat) (acc : Nat) : Nat :=
       if i < numbers.size then
@@ -30,7 +29,6 @@ vc-helpers: |-
       else
         acc
     count 0 0
-  -- </vc-helpers>
 
 vc-definitions: |-
   def CountLessThan (numbers : Array Int) (threshold : Int) (h_precond : CountLessThan_precond (numbers) (threshold)) : Nat :=

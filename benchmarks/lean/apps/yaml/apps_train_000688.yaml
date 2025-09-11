@@ -52,8 +52,6 @@ vc-preamble: |-
     (s.split (· = ' ')).filterMap String.toNat?
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (l : List Nat) : Bool := 

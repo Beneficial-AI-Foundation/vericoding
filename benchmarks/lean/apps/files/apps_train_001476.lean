@@ -4,8 +4,6 @@ def solve_parrot_hunt (n : Nat) (init_parrots : List Nat) (num_shots : Nat) (sho
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

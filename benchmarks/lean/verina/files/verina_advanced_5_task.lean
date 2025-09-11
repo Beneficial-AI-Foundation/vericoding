@@ -8,11 +8,9 @@ def addTwoNumbers_precond (l1 : List Nat) (l2 : List Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def listToNat : List Nat → Nat
 | []       => 0
 | d :: ds  => d + 10 * listToNat ds
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

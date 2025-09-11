@@ -43,8 +43,6 @@ vc-preamble: |-
     String.mk (List.replicate n c)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_max_rectangle (h w : Nat) (grid : List String) : Nat := sorry

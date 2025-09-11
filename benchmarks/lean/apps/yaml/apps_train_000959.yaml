@@ -49,8 +49,6 @@ vc-preamble: |-
     | x::xs => x + sum_list xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_sequence_sum (n : Nat) (a : List Nat) : Nat :=

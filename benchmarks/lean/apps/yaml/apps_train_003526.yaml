@@ -144,8 +144,6 @@ vc-preamble: |-
   -- Helper function to check if string starts with 0 and uppercase letter
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def startsWithZeroUpper (s : String) : Bool := sorry

@@ -45,8 +45,6 @@ vc-preamble: |-
     min_steps_to_lift n weights ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_odd_frequencies (weights : List Nat) : Nat :=

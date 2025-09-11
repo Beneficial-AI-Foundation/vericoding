@@ -7,8 +7,6 @@ def hasChordIntersection_precond (N : Nat) (chords : List (List Nat)) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -10,8 +10,6 @@ def list_maximum (arr : List Nat) (h : arr ≠ []) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

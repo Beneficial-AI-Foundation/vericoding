@@ -45,8 +45,6 @@ vc-preamble: |-
   def transform_list (numbers : List Float) : Array Float × Array Float × Array Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def int_to_float (n : Int) : Float := sorry

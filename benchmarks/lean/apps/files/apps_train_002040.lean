@@ -5,8 +5,6 @@ def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

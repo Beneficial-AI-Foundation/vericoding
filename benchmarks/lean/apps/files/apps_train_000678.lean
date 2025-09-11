@@ -5,8 +5,6 @@ def sum_sublist (l : List Int) (i : Nat) (len : Nat) : Int := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

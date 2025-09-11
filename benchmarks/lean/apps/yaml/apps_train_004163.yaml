@@ -19,8 +19,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def repeat_sum (lists : List (List Nat)) : Nat := sorry

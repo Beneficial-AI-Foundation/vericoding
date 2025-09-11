@@ -51,8 +51,6 @@ vc-preamble: |-
     ∀ x ∈ find_sequence arr, x ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChanges (arr : List Nat) : Nat :=

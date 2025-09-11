@@ -72,8 +72,6 @@ vc-preamble: |-
     alphabet_war (String.mk [c, '*']) = "Let's fight again!" := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def repeated_string_same_winner (s : String) :

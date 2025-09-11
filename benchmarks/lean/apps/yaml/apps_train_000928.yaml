@@ -44,8 +44,6 @@ vc-preamble: |-
   /- Helper function to get the minimum value from a list -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_min (xs : List Float) : Float :=

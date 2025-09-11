@@ -37,8 +37,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_palindromic_positives (nums : List Int) : Bool :=

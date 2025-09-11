@@ -57,8 +57,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calc_scholarships (n r p q : Nat) (x_arr y_arr : List Nat) : Nat :=

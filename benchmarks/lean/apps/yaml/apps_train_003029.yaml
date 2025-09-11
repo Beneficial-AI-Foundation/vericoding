@@ -15,8 +15,6 @@ vc-preamble: |-
     | _ => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def listSum : List Int → Int

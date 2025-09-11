@@ -91,8 +91,6 @@ vc-preamble: |-
   /- Helper function to fully process a string with all replacements -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def processString (s: String) : String := processKh (processU s)

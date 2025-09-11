@@ -38,8 +38,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_chopstick_pairs (n : Nat) (d : Nat) (lengths : List Nat) : Nat := sorry

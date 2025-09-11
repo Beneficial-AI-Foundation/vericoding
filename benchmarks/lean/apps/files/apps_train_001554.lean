@@ -7,8 +7,6 @@ def find_spec_prod_part (n : Nat) (mode : String) : String ⊕ (List Nat × Nat)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

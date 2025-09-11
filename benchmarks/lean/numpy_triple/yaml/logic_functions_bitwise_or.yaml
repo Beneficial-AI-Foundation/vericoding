@@ -39,8 +39,6 @@ vc-preamble: |-
   axiom Int.bitwise_or_idempotent (x : Int) : Int.bitwise_or x x = x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_bitwise_or {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=

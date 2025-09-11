@@ -66,8 +66,6 @@ vc-preamble: |-
   def string_of_zeros (n : Nat) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def string_of_ones (n : Nat) : String := sorry

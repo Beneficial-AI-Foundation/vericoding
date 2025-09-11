@@ -13,8 +13,6 @@ def list_update (l : List Int) (idx : Nat) (val : Int) : List Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

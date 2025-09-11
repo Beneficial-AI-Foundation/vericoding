@@ -40,8 +40,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_vaccine_days (d1 v1 d2 v2 p : Nat) : Nat :=

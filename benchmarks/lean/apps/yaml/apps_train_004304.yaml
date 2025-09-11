@@ -64,8 +64,6 @@ vc-preamble: |-
     | x :: xs => xs.foldl max x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def array_operations (arr : List Int) (k : Nat) : List Int := sorry

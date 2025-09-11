@@ -33,8 +33,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def compare_arrays (arr1 arr2 : List (List Int)) : Bool :=

@@ -55,8 +55,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_min_start_point (cost1: Nat) (cost2: Nat) (cost3: Nat) (str: String) : Nat := sorry

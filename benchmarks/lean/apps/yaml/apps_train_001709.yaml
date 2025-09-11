@@ -17,8 +17,6 @@ vc-preamble: |-
   def balancedParens (n : Nat) : List String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def catalan (n : Nat) : Nat := sorry

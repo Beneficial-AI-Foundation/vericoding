@@ -59,8 +59,6 @@ vc-preamble: |-
     ∀ c ∈ r.data, c.isLower ∨ r = "" := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (l : List Char) : Prop :=

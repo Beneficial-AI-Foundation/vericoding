@@ -8,8 +8,6 @@ def noDups {α} [BEq α] (as : List α) : List α :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

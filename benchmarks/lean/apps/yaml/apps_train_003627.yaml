@@ -27,8 +27,6 @@ vc-preamble: |-
   def Elements := ["Wood", "Fire", "Earth", "Metal", "Water"]
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Animals := ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", 

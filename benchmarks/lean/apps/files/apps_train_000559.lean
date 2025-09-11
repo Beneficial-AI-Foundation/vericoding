@@ -7,8 +7,6 @@ theorem all_positive_returns_full_array {arr : List Int}
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

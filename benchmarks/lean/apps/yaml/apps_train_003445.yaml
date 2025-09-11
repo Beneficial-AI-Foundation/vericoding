@@ -13,8 +13,6 @@ vc-preamble: |-
   def bitLength (n: Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isPowerOfTwo (n: Nat) : Bool := sorry

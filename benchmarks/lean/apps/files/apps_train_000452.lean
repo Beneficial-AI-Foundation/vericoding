@@ -5,8 +5,6 @@ def is_valid_grid (grid : List (List Nat)) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

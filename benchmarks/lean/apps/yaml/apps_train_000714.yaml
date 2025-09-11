@@ -41,8 +41,6 @@ vc-preamble: |-
     (find_smallest_palindrome len s).length = 1 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lexMin (s: String) : String :=

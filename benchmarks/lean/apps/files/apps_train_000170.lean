@@ -5,8 +5,6 @@ def Even (n : Nat) : Prop := ∃ k, n = 2 * k
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

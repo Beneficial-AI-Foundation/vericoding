@@ -44,8 +44,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_cube_sides {α : Type} [DecidableEq α] (colors : List α) : String := sorry

@@ -60,8 +60,6 @@ vc-preamble: |-
     staff.foldl (fun acc x => acc + getScore x.2) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def boredom (staff : List (String × String)) : String :=

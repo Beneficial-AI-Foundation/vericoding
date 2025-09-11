@@ -43,8 +43,6 @@ vc-preamble: |-
     (direction : Int := 0) : List (List Int) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def BLACK : Int := 1

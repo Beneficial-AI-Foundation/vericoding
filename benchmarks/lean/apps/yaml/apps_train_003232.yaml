@@ -57,8 +57,6 @@ vc-preamble: |-
   def eq_dice (dice : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def List.prod (l : List Nat) : Nat := sorry

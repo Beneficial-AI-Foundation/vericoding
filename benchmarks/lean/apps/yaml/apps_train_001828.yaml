@@ -20,8 +20,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def largest1BorderedSquare (grid : List (List Nat)) : Nat := sorry

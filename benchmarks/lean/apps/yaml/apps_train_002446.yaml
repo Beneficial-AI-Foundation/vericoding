@@ -76,8 +76,6 @@ vc-preamble: |-
   def IsUppercase (s : String) : Prop := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def IsValidWeekdayName (s : String) : Prop := sorry

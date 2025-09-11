@@ -5,7 +5,6 @@ def onlineMax_precond (a : Array Int) (x : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def findBest (a : Array Int) (x : Nat) (i : Nat) (best : Int) : Int :=
   if i < x then
     let newBest := if a[i]! > best then a[i]! else best
@@ -16,7 +15,6 @@ def findP (a : Array Int) (x : Nat) (m : Int) (i : Nat) : Nat :=
   if i < a.size then
     if a[i]! > m then i else findP a x m (i + 1)
   else a.size - 1
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

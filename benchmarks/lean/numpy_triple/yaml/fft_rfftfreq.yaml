@@ -34,8 +34,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_rfftfreq (n : Nat) (d : Float) (h : n > 0) : Id (Vector Float (n / 2 + 1)) :=

@@ -40,8 +40,6 @@ vc-preamble: |-
     deriving Repr, DecidableEq
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def s_ (start : Option Nat) (stop : Option Nat) (step : Option Nat := none) : Id Slice :=

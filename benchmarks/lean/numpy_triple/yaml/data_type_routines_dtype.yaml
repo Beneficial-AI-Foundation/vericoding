@@ -34,8 +34,6 @@ vc-preamble: |-
     signed : Bool
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_dtype (type_spec : String) : Id DType :=

@@ -25,8 +25,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_searchsorted {n m : Nat} (a : Vector Float n) (v : Vector Float m) : Id (Vector (Fin (n + 1)) m) :=

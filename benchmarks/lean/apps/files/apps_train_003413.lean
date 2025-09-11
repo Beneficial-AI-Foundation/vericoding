@@ -6,8 +6,6 @@ theorem find_f1_eq_f2_basic_case_1 :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

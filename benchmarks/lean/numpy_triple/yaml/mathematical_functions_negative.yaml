@@ -25,8 +25,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_negative {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=

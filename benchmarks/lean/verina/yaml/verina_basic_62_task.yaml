@@ -24,8 +24,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Find (a : Array Int) (key : Int) (h_precond : Find_precond (a) (key)) : Int :=

@@ -5,8 +5,6 @@ def check_unique_1_to_9 (arr : List Nat) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

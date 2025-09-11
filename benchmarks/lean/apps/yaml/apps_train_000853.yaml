@@ -42,8 +42,6 @@ vc-preamble: |-
     if n ≥ 0 then n else 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_catch_thief (x y k n : Nat) : String := sorry

@@ -22,8 +22,6 @@ vc-preamble: |-
   def sorted_list (l : List Char) : List Char := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isAlpha (c : Char) : Bool := sorry

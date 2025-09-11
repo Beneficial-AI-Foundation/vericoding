@@ -4,8 +4,6 @@ def can_find_odd_multiple (n : Nat) (arr : List Int) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

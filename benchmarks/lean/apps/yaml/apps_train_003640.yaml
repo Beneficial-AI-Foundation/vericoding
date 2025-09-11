@@ -21,8 +21,6 @@ vc-preamble: |-
   def is_palindrome (n : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def num_length (n : Nat) : Nat := sorry

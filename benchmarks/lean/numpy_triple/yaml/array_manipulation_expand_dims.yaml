@@ -30,8 +30,6 @@ vc-preamble: |-
     | columnVector : Vector T n → ExpandedVector T n   -- axis=1: shape (n, 1)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def expand_dims {n : Nat} (a : Vector T n) (axis : Nat) : Id (ExpandedVector T n) :=

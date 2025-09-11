@@ -12,8 +12,6 @@ def dateCompare (d1 m1 y1 d2 m2 y2 : Int) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -43,8 +43,6 @@ vc-preamble: |-
     find_max_subarray arr = arr := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sum_list (l : List Int) : Int := sorry

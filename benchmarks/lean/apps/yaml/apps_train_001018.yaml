@@ -42,8 +42,6 @@ vc-preamble: |-
     ∀ x y, x ∈ l → y ∈ l → x = y
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def uniqueCount (l : List Nat) : Nat :=

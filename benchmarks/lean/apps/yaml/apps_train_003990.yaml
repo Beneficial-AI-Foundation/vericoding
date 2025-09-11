@@ -51,8 +51,6 @@ vc-preamble: |-
     | (x::xs) => min x (minimum xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def largest_rect (heights : List Nat) : Nat :=

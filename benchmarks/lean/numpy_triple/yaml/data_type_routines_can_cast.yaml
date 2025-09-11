@@ -36,8 +36,6 @@ vc-preamble: |-
     deriving Repr, DecidableEq
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_cast (from_dtype to_dtype : DType) (casting : CastingRule) : Id Bool :=

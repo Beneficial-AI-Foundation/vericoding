@@ -52,8 +52,6 @@ vc-preamble: |-
     | x::xs => x + sum_list xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_sum_of_largest (arr : List Nat) (n : Nat) : Nat :=

@@ -32,8 +32,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def format_output (triangle : Int × Int × Int) : String :=

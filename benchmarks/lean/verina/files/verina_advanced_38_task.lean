@@ -5,8 +5,6 @@ def maxCoverageAfterRemovingOne_precond (intervals : List (Prod Nat Nat)) : Prop
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -55,8 +55,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def convert_to_3x3_array (input: String) : Except String (Array (Array Int)) := sorry

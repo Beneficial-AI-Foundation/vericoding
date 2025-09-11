@@ -5,8 +5,6 @@ def list_any (l : List Nat) (f : Nat → Bool) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -28,8 +28,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def matrix_norm {rows cols : Nat} (x : Vector (Vector Float cols) rows) : Id Float :=

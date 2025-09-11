@@ -4,8 +4,6 @@ def count_subarrays_with_min (arr : List Int) (k : Int) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

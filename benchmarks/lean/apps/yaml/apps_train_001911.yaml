@@ -19,8 +19,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def eventual_safe_nodes (graph: List (List Nat)) : List Nat := sorry 

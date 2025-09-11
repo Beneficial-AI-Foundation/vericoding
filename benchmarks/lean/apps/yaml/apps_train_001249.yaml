@@ -48,8 +48,6 @@ vc-preamble: |-
   def solve (N: Nat) (Q: Nat) (B: List (List Nat)) (queries: List (Nat × List Nat)) : List (List Nat) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_A (B: List (List Int)) : List Int := sorry

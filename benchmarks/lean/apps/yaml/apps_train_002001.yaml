@@ -76,8 +76,6 @@ vc-preamble: |-
       tree.opened.get! idx + tree.closed.get! idx ≤ 1 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_brackets (s: String) (queries: List (Nat × Nat)) : List Nat := sorry

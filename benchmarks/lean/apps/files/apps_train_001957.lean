@@ -10,8 +10,6 @@ def count_lists (n : Nat) (arr : List (List Nat)) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

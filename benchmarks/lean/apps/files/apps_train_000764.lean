@@ -10,8 +10,6 @@ def valid_commands : Nat → Nat → List Command → Bool
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -19,8 +19,6 @@ def char_in_typeset {n : Nat} (c : Char) (typeset : Vector Char n) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

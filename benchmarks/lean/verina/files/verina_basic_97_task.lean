@@ -5,8 +5,6 @@ def TestArrayElements_precond (a : Array Int) (j : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

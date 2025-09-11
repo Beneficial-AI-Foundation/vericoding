@@ -7,8 +7,6 @@ def TOTAL_DIST : Float := SWIM_DIST + BIKE_DIST + RUN_DIST
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

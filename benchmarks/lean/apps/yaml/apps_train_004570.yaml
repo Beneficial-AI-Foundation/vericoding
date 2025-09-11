@@ -33,8 +33,6 @@ vc-preamble: |-
     chars.zip (chars.drop 1) |>.all (fun (a, b) => a ≤ b)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solved (s : String) : String := sorry

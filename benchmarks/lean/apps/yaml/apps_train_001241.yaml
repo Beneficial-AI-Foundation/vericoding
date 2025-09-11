@@ -46,8 +46,6 @@ vc-preamble: |-
                matrix.length = n && matrix.all (fun row => row.length = n)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def findMaxTrace (matrix : List (List Int)) : Int :=

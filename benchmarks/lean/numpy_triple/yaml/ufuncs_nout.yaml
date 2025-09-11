@@ -50,8 +50,6 @@ vc-preamble: |-
     h_nout_pos : nout_val ≥ 1
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def nout (ufunc : UFunc) : Id Nat :=

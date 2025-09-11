@@ -7,7 +7,6 @@ def isPerfectSquare_precond (n : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 theorem check_correct (n : Nat) (x fuel : Nat) :
    isPerfectSquare.check n x fuel = true → ∃ i, x ≤ i ∧ i * i = n := by
   induction fuel generalizing x with
@@ -90,7 +89,6 @@ theorem check_complete (n : Nat) (x fuel : Nat) (i : Nat)
 
         -- Apply induction hypothesis
         exact ih (x + 1) x_succ_le_i i_lt_next_fuel
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

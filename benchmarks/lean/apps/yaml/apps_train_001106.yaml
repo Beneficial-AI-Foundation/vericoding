@@ -56,8 +56,6 @@ vc-preamble: |-
   def is_alternating (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_consecutive (s : String) (k : Nat) : Bool := sorry

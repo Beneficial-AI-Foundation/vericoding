@@ -4,8 +4,6 @@ def digit_sequence_of_powers (n : Nat) : List Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

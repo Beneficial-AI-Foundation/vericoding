@@ -21,13 +21,11 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def isLowerCase (c : Char) : Bool :=
     'a' ≤ c ∧ c ≤ 'z'
   
   def shiftMinus32 (c : Char) : Char :=
     Char.ofNat ((c.toNat - 32) % 128)
-  -- </vc-helpers>
 
 vc-definitions: |-
   def toUppercase (s : String) (h_precond : toUppercase_precond (s)) : String :=

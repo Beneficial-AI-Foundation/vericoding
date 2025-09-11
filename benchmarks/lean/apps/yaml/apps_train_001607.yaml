@@ -36,8 +36,6 @@ vc-preamble: |-
     next_smaller n = -1 ∨ next_smaller n > 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def has_same_digits (n m : Nat) : Bool := sorry

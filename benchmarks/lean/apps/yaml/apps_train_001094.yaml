@@ -35,8 +35,6 @@ vc-preamble: |-
     ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def uniqueSort (l : List Nat) : List Nat :=

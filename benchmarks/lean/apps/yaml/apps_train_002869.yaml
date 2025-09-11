@@ -37,8 +37,6 @@ vc-preamble: |-
     else 1 + log10 (n / 10)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rocks (n : Nat) : Nat := sorry

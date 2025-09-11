@@ -131,8 +131,6 @@ vc-preamble: |-
     | some m => if x < m then some x else some m) none
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maximum (lst : List Int) : Option Int := lst.foldl (fun max x => match max with

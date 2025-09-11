@@ -5,8 +5,6 @@ def String.filter (s : String) (p : Char → Bool) : String := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

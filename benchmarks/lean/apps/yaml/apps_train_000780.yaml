@@ -34,8 +34,6 @@ vc-preamble: |-
   def maximum : List Int → Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def minimum : List Int → Int := sorry

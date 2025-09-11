@@ -86,8 +86,6 @@ vc-preamble: |-
   def LabelList := List Nat
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_graph_similarity (n : Nat) (g1 : Matrix Nat) (g2 : Matrix Nat) : LabelList × LabelList :=

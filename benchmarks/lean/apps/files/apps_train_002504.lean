@@ -8,8 +8,6 @@ def sum [Add α] (l : List α) : α :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

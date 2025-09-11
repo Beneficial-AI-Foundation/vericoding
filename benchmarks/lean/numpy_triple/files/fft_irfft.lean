@@ -17,8 +17,6 @@ def isHermitianSymmetric {n : Nat} (a : Vector Complex n) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

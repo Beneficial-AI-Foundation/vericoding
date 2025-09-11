@@ -53,8 +53,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_remaining_stones (n1 n2 m : Nat) : Nat :=

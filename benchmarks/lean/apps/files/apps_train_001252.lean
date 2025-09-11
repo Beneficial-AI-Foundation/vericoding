@@ -6,8 +6,6 @@ def solve_city_paths (n: Nat) (roads: List (Nat × Nat)) (start: Nat) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -37,8 +37,6 @@ vc-preamble: |-
   def binary_units := ["KiB", "MiB", "GiB", "TiB"]
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def metric_units := ["kB", "MB", "GB", "TB"]

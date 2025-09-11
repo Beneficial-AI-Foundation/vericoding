@@ -20,8 +20,6 @@ vc-preamble: |-
     c = 'a' || c = 'e' || c = 'i' || c = 'o' || c = 'u'
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_chars (s : String) : Nat := s.length

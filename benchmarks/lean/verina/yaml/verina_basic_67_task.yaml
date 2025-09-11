@@ -22,7 +22,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def isPalindromeHelper (x : List Char) (i j : Nat) : Bool :=
     if i < j then
       match x[i]?, x[j]? with
@@ -30,7 +29,6 @@ vc-helpers: |-
         if ci ≠ cj then false else isPalindromeHelper x (i + 1) (j - 1)
       | _, _ => false  -- This case should not occur due to valid indices
     else true
-  -- </vc-helpers>
 
 vc-definitions: |-
   def IsPalindrome (x : List Char) (h_precond : IsPalindrome_precond (x)) : Bool :=

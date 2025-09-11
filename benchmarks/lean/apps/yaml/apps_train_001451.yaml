@@ -40,8 +40,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def analyze_brackets (n : Nat) (brackets : List Nat) : Nat × Nat × Nat × Nat :=

@@ -83,8 +83,6 @@ vc-preamble: |-
     | DType.object => 13
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_common_type {n m : Nat} (array_types : Vector DType n) (scalar_types : Vector DType m) : Id (Option DType) :=

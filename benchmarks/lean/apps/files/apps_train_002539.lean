@@ -4,8 +4,6 @@ def validTextures := ["smooth", "bumpy"]
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

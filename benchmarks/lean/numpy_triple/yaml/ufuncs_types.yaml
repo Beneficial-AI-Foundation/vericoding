@@ -71,8 +71,6 @@ vc-preamble: |-
     s!"{input_str}->{typeCodeToChar sig.output_type}"
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def types {n : Nat} (ufunc_signatures : Vector TypeSignature n) : Id (Vector String n) :=

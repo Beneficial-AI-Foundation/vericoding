@@ -6,8 +6,6 @@ def solve_sequence_ops (ops: List Operation) : List Float :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

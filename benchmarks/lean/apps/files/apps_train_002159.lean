@@ -4,8 +4,6 @@ def bitadd (idx : Nat) (val : Int) (bit : Array Int) : Array Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

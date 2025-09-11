@@ -27,8 +27,6 @@ vc-preamble: |-
   -- 32-bit integer bounds
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def INT32_MAX : Int := 2^31 - 1

@@ -19,8 +19,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def allCharactersSame (s : String) (h_precond : allCharactersSame_precond (s)) : Bool :=

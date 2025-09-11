@@ -28,8 +28,6 @@ vc-preamble: |-
     sequence n ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def toBinaryString (n : Nat) : List Nat := sorry

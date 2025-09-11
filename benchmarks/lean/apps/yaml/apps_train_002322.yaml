@@ -31,8 +31,6 @@ vc-preamble: |-
     | xs => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_one_bit_character (bits : List Nat) : Bool :=

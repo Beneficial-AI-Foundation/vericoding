@@ -29,8 +29,6 @@ vc-preamble: |-
   def hasSubstring (s1 s2 : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def endsWithStr (s1 s2 : String) : Bool := sorry

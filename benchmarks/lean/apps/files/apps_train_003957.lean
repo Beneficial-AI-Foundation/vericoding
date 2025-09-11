@@ -4,8 +4,6 @@ def ant (grid : List (List Int)) (col : Int) (row : Int) (steps : Int)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

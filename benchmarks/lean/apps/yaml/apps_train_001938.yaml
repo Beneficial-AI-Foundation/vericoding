@@ -53,8 +53,6 @@ vc-preamble: |-
     if n ≥ m then n - m else m - n
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSortedList : List Nat → Bool

@@ -38,8 +38,6 @@ vc-preamble: |-
   /- Function that computes probability of frog being at target vertex after t steps -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def frogPosition (n : Nat) (edges : List (List Nat)) (t : Nat) (target : Nat) : Float :=

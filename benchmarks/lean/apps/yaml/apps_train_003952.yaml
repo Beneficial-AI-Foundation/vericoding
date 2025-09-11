@@ -44,8 +44,6 @@ vc-preamble: |-
     pairs.foldl (fun acc p => if p.2 - p.1 = 1 then acc + 1 else acc) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sort_list (l : List Int) : List Int :=

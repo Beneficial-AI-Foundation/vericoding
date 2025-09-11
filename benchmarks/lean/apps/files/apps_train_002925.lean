@@ -13,8 +13,6 @@ theorem array_center_is_subset {lst : List Int} (h : lst ≠ []) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

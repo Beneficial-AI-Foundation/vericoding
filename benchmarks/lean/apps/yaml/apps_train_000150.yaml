@@ -29,8 +29,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_place_balls (distance : Nat) (sorted_pos : List Nat) (m : Nat) : Bool :=

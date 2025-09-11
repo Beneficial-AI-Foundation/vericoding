@@ -55,8 +55,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_toy_train (n : Nat) (pairs : List (Nat × Nat)) : List Nat :=

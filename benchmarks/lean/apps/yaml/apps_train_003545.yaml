@@ -50,8 +50,6 @@ vc-preamble: |-
   def extractSides : String → Option Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def roll (desc : String) (verbose : Bool := false) : Bool ⊕ (List Nat × Int) := sorry

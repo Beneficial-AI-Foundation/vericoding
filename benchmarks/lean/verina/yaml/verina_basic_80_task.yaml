@@ -23,7 +23,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def only_once_loop {T : Type} [DecidableEq T] (a : Array T) (key : T) (i keyCount : Nat) : Bool :=
     if i < a.size then
       match a[i]? with
@@ -33,7 +32,6 @@ vc-helpers: |-
       | none => keyCount == 1
     else
       keyCount == 1
-  -- </vc-helpers>
 
 vc-definitions: |-
   def only_once (a : Array Int) (key : Int) (h_precond : only_once_precond (a) (key)) : Bool :=

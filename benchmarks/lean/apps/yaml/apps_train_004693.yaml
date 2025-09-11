@@ -37,8 +37,6 @@ vc-preamble: |-
     [('I', 1), ('V', 5), ('X', 10), ('L', 50), ('C', 100), ('D', 500), ('M', 1000)]
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def convertToNums (s : String) : List Nat := sorry

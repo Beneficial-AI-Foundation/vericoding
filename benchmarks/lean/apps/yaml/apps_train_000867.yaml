@@ -46,8 +46,6 @@ vc-preamble: |-
   | (x::xs) => Nat.max x (list_max xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def iterate_steps (i j steps : Nat) : Nat × Nat :=

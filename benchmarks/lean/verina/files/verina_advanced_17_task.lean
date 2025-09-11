@@ -5,7 +5,6 @@ def insertionSort_precond (l : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 -- Helper function to insert an integer into a sorted list
 def insertElement (x : Int) (l : List Int) : List Int :=
   match l with
@@ -22,7 +21,6 @@ def sortList (l : List Int) : List Int :=
   | [] => []
   | x :: xs =>
       insertElement x (sortList xs)
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

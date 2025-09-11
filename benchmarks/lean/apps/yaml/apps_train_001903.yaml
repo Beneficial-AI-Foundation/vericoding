@@ -40,8 +40,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_build_pyramid (bottom : String) (allowed : List String) : Bool := sorry

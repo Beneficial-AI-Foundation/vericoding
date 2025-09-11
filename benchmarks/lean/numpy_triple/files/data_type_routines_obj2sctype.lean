@@ -51,8 +51,6 @@ def NumpyObject.is_generic_object (obj : NumpyObject) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

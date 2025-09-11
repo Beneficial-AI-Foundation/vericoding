@@ -18,8 +18,6 @@ vc-preamble: |-
     List.Pairwise (· < ·) l
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def smallestMissing (l : List Nat) (h_precond : smallestMissing_precond (l)) : Nat :=

@@ -22,10 +22,8 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def isOdd (n : Int) : Bool :=
     n % 2 == 1
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isOddAtIndexOdd (a : Array Int) (h_precond : isOddAtIndexOdd_precond (a)) : Bool :=

@@ -42,8 +42,6 @@ vc-preamble: |-
   def magnitude : ℂ → Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def phase : ℂ → Float := sorry

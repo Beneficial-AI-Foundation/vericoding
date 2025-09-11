@@ -12,8 +12,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def divisible_by (numbers : List Int) (divisor : Int) : List Int :=

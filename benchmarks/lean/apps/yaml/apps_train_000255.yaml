@@ -32,8 +32,6 @@ vc-preamble: |-
     0 ≤ wiggleMaxLength arr ∧ wiggleMaxLength arr ≤ arr.length := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (l : List Int) : Bool := sorry

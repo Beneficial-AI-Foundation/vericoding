@@ -26,8 +26,6 @@ vc-preamble: |-
     ∀ i j, i < j → j < xs.length → xs[i]! ≤ xs[j]!
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_sorted_decreasing (xs : List Nat) : Prop :=

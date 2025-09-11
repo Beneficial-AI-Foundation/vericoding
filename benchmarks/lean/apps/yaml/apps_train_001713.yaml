@@ -56,8 +56,6 @@ vc-preamble: |-
   def Hand.isFlush (h : Hand) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Hand.isStraight (h : Hand) : Bool := sorry

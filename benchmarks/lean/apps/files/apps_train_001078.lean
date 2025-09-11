@@ -4,8 +4,6 @@ def solve_max_path_profits (n: Nat) (values: List Nat) (edges: List (Nat × Nat)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

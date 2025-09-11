@@ -4,8 +4,6 @@ def MIN_INT : Int := -2147483648
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

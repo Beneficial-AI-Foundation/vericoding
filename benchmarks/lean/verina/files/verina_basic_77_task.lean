@@ -6,10 +6,8 @@ def modify_array_element_precond (arr : Array (Array Nat)) (index1 : Nat) (index
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def updateInner (a : Array Nat) (idx val : Nat) : Array Nat :=
   a.set! idx val
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

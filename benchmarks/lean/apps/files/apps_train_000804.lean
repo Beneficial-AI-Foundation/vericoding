@@ -4,8 +4,6 @@ def find_max_components (n: Nat) (edges: List (Nat × Nat)) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -66,8 +66,6 @@ vc-preamble: |-
   def to_adj_matrix (n : Nat) (edges : List (Nat × Nat)) : List (List Nat) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_bipartite (adj : List (List Nat)) (colors : List Int) (start n : Nat) : Bool := sorry

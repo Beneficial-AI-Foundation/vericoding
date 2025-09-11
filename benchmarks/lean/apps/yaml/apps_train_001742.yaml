@@ -39,8 +39,6 @@ vc-preamble: |-
     | (x::xs) => x + sum_nat_list xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def exclusive_time (n : Nat) (logs : List String) : List Nat := sorry

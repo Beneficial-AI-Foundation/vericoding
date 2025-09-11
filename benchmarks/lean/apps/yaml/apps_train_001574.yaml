@@ -21,8 +21,6 @@ vc-preamble: |-
   def toBinary (n : Nat) : List Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countBinaryOnes (n : Nat) : Nat := sorry

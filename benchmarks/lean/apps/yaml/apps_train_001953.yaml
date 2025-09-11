@@ -45,8 +45,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_ops_to_make_nondecreasing (n : Nat) (m : Nat) (A : List Nat) : Nat :=

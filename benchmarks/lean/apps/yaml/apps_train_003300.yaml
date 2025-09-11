@@ -26,8 +26,6 @@ vc-preamble: |-
     s.any (fun x => x == c)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isDivisibleBy13AndNoUnluckyDigits (i : Nat) : Bool :=

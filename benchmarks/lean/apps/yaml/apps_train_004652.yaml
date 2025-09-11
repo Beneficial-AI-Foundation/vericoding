@@ -64,8 +64,6 @@ vc-preamble: |-
   def isValidMatrix (m : Matrix) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isAllValue (m : Matrix) (v : Nat) : Bool := sorry

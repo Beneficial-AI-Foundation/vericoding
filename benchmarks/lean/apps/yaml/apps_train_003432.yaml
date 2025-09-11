@@ -20,8 +20,6 @@ vc-preamble: |-
   def countDigit (n : Nat) (d : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def digits (n : Nat) : List Nat := sorry 

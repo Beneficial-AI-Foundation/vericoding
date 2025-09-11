@@ -18,8 +18,6 @@ vc-preamble: |-
   def hasValidHKPhoneNumber (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isValidDigitStr (s : String) : Bool := sorry

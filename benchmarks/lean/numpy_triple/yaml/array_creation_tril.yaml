@@ -51,8 +51,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def tril {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int := 0) : 

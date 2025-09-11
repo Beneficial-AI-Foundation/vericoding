@@ -20,8 +20,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def update_score (score: List Int) (trump: Int) (alone: Bool) (tricks: List Int) : List Int := sorry

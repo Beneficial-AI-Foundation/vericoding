@@ -24,8 +24,6 @@ vc-preamble: |-
   def rgb (r g b : Int) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hexStringToNat (s : String) : Nat := sorry

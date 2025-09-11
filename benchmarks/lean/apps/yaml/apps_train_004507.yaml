@@ -82,8 +82,6 @@ vc-preamble: |-
   def String.hasSuffix (s suffix: String) : Prop := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def nkotb_vs_homie (reqs: List (List String)) : List String := sorry

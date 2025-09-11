@@ -7,8 +7,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def alex_mistakes (num_kata : Nat) (total_time : Nat) : Nat :=

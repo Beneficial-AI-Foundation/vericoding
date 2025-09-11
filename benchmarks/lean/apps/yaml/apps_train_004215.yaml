@@ -40,8 +40,6 @@ vc-preamble: |-
   def sumChars (s : String) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sortString (s : String) : String := sorry

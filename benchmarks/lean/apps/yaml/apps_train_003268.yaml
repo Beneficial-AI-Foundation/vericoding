@@ -24,8 +24,6 @@ vc-preamble: |-
     code_for_same_protein seq seq = true := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def repeat_str (s : String) (n : Nat) : String :=

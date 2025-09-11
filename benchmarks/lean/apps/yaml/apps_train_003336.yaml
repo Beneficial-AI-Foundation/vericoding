@@ -18,8 +18,6 @@ vc-preamble: |-
     String.length (present "goodpresent" y) = String.length "goodpresent" := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isValidInput (x : String) : Bool :=

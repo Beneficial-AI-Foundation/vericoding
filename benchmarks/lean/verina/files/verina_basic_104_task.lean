@@ -5,8 +5,6 @@ def update_map_precond (m1 : Map Int Int) (m2 : Map Int Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

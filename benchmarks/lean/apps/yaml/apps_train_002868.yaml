@@ -38,8 +38,6 @@ vc-preamble: |-
   /- Returns the list of words in a string -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def splitString (s : String) : List String := sorry

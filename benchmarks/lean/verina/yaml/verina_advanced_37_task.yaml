@@ -18,8 +18,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def majorityElement (nums : List Int) (h_precond : majorityElement_precond (nums)) : Int :=

@@ -36,8 +36,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rstrip {n : Nat} (a : Vector String n) (chars : Option String) : Id (Vector String n) :=

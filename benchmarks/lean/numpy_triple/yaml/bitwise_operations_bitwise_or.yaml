@@ -61,8 +61,6 @@ vc-preamble: |-
     Int.bitwise_or a c ≤ Int.bitwise_or b c
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bitwise_or {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=

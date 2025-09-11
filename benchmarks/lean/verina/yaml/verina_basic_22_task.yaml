@@ -21,10 +21,8 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def inArray (a : Array Int) (x : Int) : Bool :=
     a.any (fun y => y = x)
-  -- </vc-helpers>
 
 vc-definitions: |-
   def dissimilarElements (a : Array Int) (b : Array Int) (h_precond : dissimilarElements_precond (a) (b)) : Array Int :=

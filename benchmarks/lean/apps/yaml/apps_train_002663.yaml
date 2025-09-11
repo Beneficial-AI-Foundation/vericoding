@@ -23,8 +23,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def beasts (heads tails : Int) : Option (Int × Int) := sorry

@@ -104,8 +104,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_key_occurrences (arr : List Int) (key : Int) (queries : List Nat) : 

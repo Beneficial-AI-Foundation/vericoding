@@ -31,8 +31,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sort (l : List α) (lt : α → α → Bool) : List α :=

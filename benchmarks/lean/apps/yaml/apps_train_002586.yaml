@@ -29,8 +29,6 @@ vc-preamble: |-
     deriving Repr
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def makeWeightedSum (xs : List Int) : Int := match xs with

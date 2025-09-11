@@ -5,7 +5,6 @@ def CanyonSearch_precond (a : Array Int) (b : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def canyonSearchAux (a : Array Int) (b : Array Int) (m n d : Nat) : Nat :=
   if m < a.size ∧ n < b.size then
     let diff : Nat := ((a[m]! - b[n]!).natAbs)
@@ -17,7 +16,6 @@ def canyonSearchAux (a : Array Int) (b : Array Int) (m n d : Nat) : Nat :=
   else
     d
 termination_by a.size + b.size - m - n
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

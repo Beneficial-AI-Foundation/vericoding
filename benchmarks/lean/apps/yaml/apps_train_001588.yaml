@@ -53,8 +53,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def green_numbers_unique (n m : Nat) (h1 : n > 0) (h2 : m > 0) (h3 : n ≠ m) :

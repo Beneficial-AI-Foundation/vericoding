@@ -81,8 +81,6 @@ vc-preamble: |-
   def Card := String
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Hand := List Card

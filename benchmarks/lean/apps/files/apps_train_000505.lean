@@ -6,8 +6,6 @@ theorem count_inversions_non_negative (arr : List Nat) (n : Nat) (m : Nat) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

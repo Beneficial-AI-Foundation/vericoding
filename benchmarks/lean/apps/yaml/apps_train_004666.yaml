@@ -23,8 +23,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def two_by_two (animals : List String) : Option (List (String × Nat)) :=

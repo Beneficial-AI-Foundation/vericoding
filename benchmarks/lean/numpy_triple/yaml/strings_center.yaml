@@ -50,8 +50,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def center {n : Nat} (a : Vector String n) (width : Vector Nat n) (fillchar : Char := ' ') : Id (Vector String n) :=

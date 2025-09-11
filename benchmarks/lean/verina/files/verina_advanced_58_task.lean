@@ -5,7 +5,6 @@ def nthUglyNumber_precond (n : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def nextUgly (seq : List Nat) (c2 c3 c5 : Nat) : (Nat × Nat × Nat × Nat) :=
   let i2 := seq[c2]! * 2
   let i3 := seq[c3]! * 3
@@ -15,7 +14,6 @@ def nextUgly (seq : List Nat) (c2 c3 c5 : Nat) : (Nat × Nat × Nat × Nat) :=
   let c3' := if next = i3 then c3 + 1 else c3
   let c5' := if next = i5 then c5 + 1 else c5
   (next, c2', c3', c5')
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

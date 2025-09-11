@@ -19,8 +19,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def round_to_five (numbers : List Float) : List Float := sorry

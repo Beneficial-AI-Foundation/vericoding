@@ -55,8 +55,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def paper_folding_queries (n: Nat) (queries: List (Nat × Nat × Nat)) : List Nat := sorry

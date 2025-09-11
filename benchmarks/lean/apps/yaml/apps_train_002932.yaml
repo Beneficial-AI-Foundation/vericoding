@@ -24,8 +24,6 @@ vc-preamble: |-
     fun _ => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def small_primes : List Nat := [2, 3, 5, 7, 11, 13, 17, 19]

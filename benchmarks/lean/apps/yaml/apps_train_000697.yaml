@@ -80,8 +80,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def dividing_machine (n m : Nat) (arr : List Nat) (ops : List (List Nat)) : List Nat :=

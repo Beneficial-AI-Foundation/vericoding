@@ -87,8 +87,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_interleavings (n m k : Nat) (A B : List Nat) : Nat :=

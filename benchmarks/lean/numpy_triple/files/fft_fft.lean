@@ -40,8 +40,6 @@ def complexSum {n : Nat} (f : Fin n → Complex) : Complex :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

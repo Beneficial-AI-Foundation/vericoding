@@ -5,8 +5,6 @@ def solve (N: Nat) (Q: Nat) (B: List (List Nat)) (queries: List (Nat × List Nat
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -15,8 +15,6 @@ vc-preamble: |-
   def min_int (a b : Int) : Int := if a ≤ b then a else b
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_minimum (l : List Int) : Int :=

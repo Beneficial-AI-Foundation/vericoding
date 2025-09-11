@@ -46,8 +46,6 @@ vc-preamble: |-
     countPalindromeCompletions s ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mkPos (s : String) (i : Nat) (h : i < s.length) : String.Pos := ⟨i⟩

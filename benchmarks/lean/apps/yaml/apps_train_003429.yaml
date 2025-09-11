@@ -26,8 +26,6 @@ vc-preamble: |-
   def prime_primes (n : Nat) : Nat × Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_prime (n : Nat) : Bool := sorry

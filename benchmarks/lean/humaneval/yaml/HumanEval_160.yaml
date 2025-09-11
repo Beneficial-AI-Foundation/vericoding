@@ -130,8 +130,6 @@ vc-preamble: |-
     evalArith_add ts r
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (operator: List String) (operand : List Nat) : Int :=

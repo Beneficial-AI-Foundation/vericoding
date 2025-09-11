@@ -63,8 +63,6 @@ vc-preamble: |-
     '0' ≤ c ∧ c ≤ '9'
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isLuckyChar (c : Char) : Bool :=

@@ -37,8 +37,6 @@ vc-preamble: |-
   def is_valid_a1 (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_valid_r1c1 (s : String) : Bool := sorry

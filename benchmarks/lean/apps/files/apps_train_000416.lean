@@ -5,8 +5,6 @@ def get_powers_of_2 (max_digits : Nat) : List Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

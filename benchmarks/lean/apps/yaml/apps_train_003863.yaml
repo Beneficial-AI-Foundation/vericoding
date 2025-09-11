@@ -21,8 +21,6 @@ vc-preamble: |-
     | (h::t) => some (t.foldl min h)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def between_extremes (nums : List Int) : Int :=

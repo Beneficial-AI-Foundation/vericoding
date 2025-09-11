@@ -26,8 +26,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def vander {n m : Nat} (x : Vector Float n) : Id (Vector (Vector Float m) n) :=

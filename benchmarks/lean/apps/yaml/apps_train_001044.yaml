@@ -52,8 +52,6 @@ vc-preamble: |-
   def Direction : Type := String
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reverse_directions (directions : List Direction) : List Direction := sorry

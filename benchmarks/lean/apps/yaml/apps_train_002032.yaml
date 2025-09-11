@@ -58,8 +58,6 @@ vc-preamble: |-
   abbrev min' (a b : Nat) : Nat := if a ≤ b then a else b
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_maximum (l : List Nat) : Nat :=

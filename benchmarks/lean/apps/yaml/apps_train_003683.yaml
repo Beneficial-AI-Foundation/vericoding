@@ -17,8 +17,6 @@ vc-preamble: |-
   def List.sort (l : List Float) (lt : Float → Float → Bool) : List Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def search (budget : Float) (prices : List Float) : String :=

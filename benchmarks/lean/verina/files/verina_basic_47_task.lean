@@ -5,10 +5,8 @@ def arraySum_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 theorem eq_of_sub_zero_and_ge (a b : Int) : a = b → a - b = 0 ∧ a ≥ b := by
   omega
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

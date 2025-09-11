@@ -32,8 +32,6 @@ vc-preamble: |-
   /- Function that returns the weight of the last remaining stone after smashing -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def last_stone_weight (stones : List Nat) : Nat :=

@@ -37,8 +37,6 @@ vc-preamble: |-
   def is_power_of_two (n: Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def simulation_loop (n steps: Nat) : Nat :=

@@ -8,8 +8,6 @@ def swap_precond (arr : Array Int) (i : Int) (j : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

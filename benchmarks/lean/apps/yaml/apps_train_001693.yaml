@@ -54,8 +54,6 @@ vc-preamble: |-
   def calc_area (points : List (Int × Int)) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def add_point (direction : Char) (distance : Nat) (points : List (Int × Int)) : List (Int × Int) := sorry

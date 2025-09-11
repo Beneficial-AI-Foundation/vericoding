@@ -23,8 +23,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def arithmetic_sequence_sum (a r n : Int) : Int :=

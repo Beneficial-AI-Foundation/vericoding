@@ -34,8 +34,6 @@ vc-preamble: |-
   def primeFactor (n: Int) : List Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sumForList (lst : List Int) : List (Int × Int) := sorry

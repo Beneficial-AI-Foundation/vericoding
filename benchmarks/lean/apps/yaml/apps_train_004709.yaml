@@ -93,8 +93,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def temps (v0 d_tot : Float) (slope : Float) : Int :=

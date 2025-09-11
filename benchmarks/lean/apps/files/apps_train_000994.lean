@@ -6,8 +6,6 @@ theorem find_sequence_non_negative (arr : List Nat) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -36,8 +36,6 @@ vc-preamble: |-
       else Int.ofNat (d + tail)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (nums: List Int) : List Int :=

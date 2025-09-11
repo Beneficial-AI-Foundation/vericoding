@@ -20,7 +20,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   -- Generate all subsequences
   def subsequences {α : Type} : List α → List (List α)
     | [] => [[]]
@@ -33,7 +32,6 @@ vc-helpers: |-
     | [] => true
     | [_] => true
     | x :: y :: rest => if x < y then isStrictlyIncreasing (y :: rest) else false
-  -- </vc-helpers>
 
 vc-definitions: |-
   def longestIncreasingSubseqLength (xs : List Int) (h_precond : longestIncreasingSubseqLength_precond (xs)) : Nat :=

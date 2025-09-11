@@ -7,8 +7,6 @@ def nextGreaterElement_precond (nums1 : List Int) (nums2 : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

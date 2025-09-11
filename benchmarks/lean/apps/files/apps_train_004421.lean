@@ -4,8 +4,6 @@ def convert_hash_to_array (d: List (String × (String ⊕ Int))) : List (String 
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

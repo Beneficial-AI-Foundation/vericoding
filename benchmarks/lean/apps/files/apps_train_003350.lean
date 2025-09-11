@@ -6,8 +6,6 @@ theorem valid_mersenne_returns_bool (n : Int) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

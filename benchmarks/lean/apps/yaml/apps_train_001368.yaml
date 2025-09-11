@@ -82,8 +82,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_max_gcd (s : String) (m x y : Nat) : Nat :=

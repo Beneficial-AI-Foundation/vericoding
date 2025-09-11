@@ -54,8 +54,6 @@ vc-preamble: |-
     | _ => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def verify_solution (equations : List Equation) (solution : Option Solution) : Bool :=

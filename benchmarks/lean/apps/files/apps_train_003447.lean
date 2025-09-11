@@ -8,8 +8,6 @@ theorem reverse_it_string_length {s : String} :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

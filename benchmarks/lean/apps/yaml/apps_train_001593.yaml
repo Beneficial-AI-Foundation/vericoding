@@ -35,8 +35,6 @@ vc-preamble: |-
     | range (s e : Int) (h : s < e) : ValidPart
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isValidPart (s : String) : Bool := sorry 

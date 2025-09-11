@@ -63,8 +63,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_bitland_survival (N : Nat) (soldiers : List Nat) (F : Nat) : 

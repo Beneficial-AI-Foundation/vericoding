@@ -19,8 +19,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ldexp {n : Nat} (x1 : Vector Float n) (x2 : Vector Int n) : Id (Vector Float n) :=

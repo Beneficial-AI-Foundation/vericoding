@@ -20,8 +20,6 @@ def evalChebyshevPoly {n : Nat} (coeffs : Vector Float n) (x : Float) : Float :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

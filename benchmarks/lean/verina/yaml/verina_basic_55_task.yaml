@@ -20,8 +20,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Compare (a : Int) (b : Int) (h_precond : Compare_precond (a) (b)) : Bool :=

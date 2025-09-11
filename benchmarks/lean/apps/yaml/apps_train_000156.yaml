@@ -27,8 +27,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def constrained_max_subset_sum (nums : List Int) (k : Nat) : Int := sorry

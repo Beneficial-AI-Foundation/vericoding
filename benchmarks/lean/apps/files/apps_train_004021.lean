@@ -9,8 +9,6 @@ def maximum? (l : List Float) : Option Float := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

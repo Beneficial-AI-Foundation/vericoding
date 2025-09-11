@@ -51,8 +51,6 @@ vc-preamble: |-
     | s => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def MOD : Nat := 1000000007

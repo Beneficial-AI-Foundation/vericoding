@@ -52,8 +52,6 @@ vc-preamble: |-
     | (x::xs) => max x (listMax xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def listSum : List Int → Int

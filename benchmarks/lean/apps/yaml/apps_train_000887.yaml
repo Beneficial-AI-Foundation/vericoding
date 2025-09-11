@@ -53,8 +53,6 @@ vc-preamble: |-
   -- Non-negative result
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def generateRange (n : Nat) : List Int :=

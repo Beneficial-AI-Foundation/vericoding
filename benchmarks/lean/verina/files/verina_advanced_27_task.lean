@@ -5,7 +5,6 @@ def longestCommonSubsequence_precond (s1 : String) (s2 : String) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 partial def toCharList (s : String) : List Char :=
   s.data
 
@@ -23,7 +22,6 @@ partial def lcsAux (xs : List Char) (ys : List Char) : List Char :=
       let left  := lcsAux xs' (y :: ys')
       let right := lcsAux (x :: xs') ys'
       if left.length >= right.length then left else right
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

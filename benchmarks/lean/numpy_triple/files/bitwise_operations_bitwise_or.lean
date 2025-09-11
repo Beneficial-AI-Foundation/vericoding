@@ -41,8 +41,6 @@ axiom bitwise_or_monotonic_nonneg (a b c : Int) (ha : 0 ≤ a) (hb : 0 ≤ b) (h
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -24,8 +24,6 @@ theorem to_goat_latin_vowel_rule {s : String} (i : Nat) (h : i < (splitString s)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -20,8 +20,6 @@ vc-preamble: |-
   def olympic_ring (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def POSSIBLE_OUTPUTS := ["Not even a medal!", "Bronze!", "Silver!", "Gold!"]

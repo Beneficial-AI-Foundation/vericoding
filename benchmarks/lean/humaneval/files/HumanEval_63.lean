@@ -22,8 +22,6 @@ fibonacci_non_computable_3 (n + 3) (f₁ + f₂ + f₃)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

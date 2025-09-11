@@ -18,8 +18,6 @@ vc-preamble: |-
   def String.containsStr (s₁ s₂ : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def formatDollarString (d c : Nat) : String :=

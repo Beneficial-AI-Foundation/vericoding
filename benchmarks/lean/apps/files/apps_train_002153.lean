@@ -5,8 +5,6 @@ def is_valid_door (door : Nat × Nat × Nat × Nat) (n m : Nat) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

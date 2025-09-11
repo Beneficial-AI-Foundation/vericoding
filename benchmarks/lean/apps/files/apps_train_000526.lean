@@ -4,8 +4,6 @@ def find_largest_subset_with_mex (n m : Nat) (arr : List Nat) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

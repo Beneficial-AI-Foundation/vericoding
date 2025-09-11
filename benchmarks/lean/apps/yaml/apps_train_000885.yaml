@@ -64,8 +64,6 @@ vc-preamble: |-
     | s1, s2 => String.decEq s1 s2
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_scale_plays (scale_type : Scale) (octaves : Nat) : Nat :=

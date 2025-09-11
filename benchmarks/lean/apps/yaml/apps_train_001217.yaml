@@ -89,8 +89,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_road_trips (n m k : Nat) (roads : List (Nat × Nat)) (museums : List Nat) : Int :=

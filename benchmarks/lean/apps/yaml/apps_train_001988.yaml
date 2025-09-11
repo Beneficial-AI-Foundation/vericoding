@@ -63,8 +63,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def transform_number (n : Nat) (a b : String) : List Int :=

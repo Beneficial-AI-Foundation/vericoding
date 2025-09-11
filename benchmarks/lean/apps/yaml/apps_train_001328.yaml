@@ -39,8 +39,6 @@ vc-preamble: |-
   def String.contains? (s : String) (substr : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.toFloat (s : String) : Float := sorry

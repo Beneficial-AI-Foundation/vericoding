@@ -19,8 +19,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def all_lt (x : Int) (l : List Int) : Prop := 
