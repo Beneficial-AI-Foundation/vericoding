@@ -2,7 +2,7 @@ use vstd::prelude::*;
 
 verus! {
 
-proof fn intersperse(numbers: Seq<int>, delimiter: int) -> (interspersed: Seq<int>)
+fn intersperse(numbers: Seq<int>, delimiter: int) -> (interspersed: Seq<int>)
     ensures
         interspersed.len() == if numbers.len() > 0 { 2 * numbers.len() - 1 } else { 0 },
         forall|i: int| 0 <= i < interspersed.len() && i % 2 == 0 ==> 

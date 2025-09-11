@@ -2,7 +2,7 @@ use vstd::prelude::*;
 
 verus! {
 
-proof fn quotient(x: nat, y: nat) -> (result: (int, int))
+fn quotient(x: nat, y: nat) -> (result: (int, int))
     requires y != 0
     ensures ({
         let (r, q) = result;

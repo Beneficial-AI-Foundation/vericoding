@@ -22,21 +22,9 @@ proof fn L1(n: int)
     }
 }
 
-spec fn HoareTripleReqEns(i: int, k: int) -> int
-
+spec fn HoareTripleReqEns(i: int, k: int) -> (kprime: int)
     recommends k == i*i
-{
-    k + 2 * i + 1
-}
-
-proof fn HoareTripleReqEns_correctness(i: int, k: int)
-    requires k == i*i
-    ensures HoareTripleReqEns(i, k) == (i+1)*(i+1)
-{
-
-    assert(k + 2 * i + 1 == i*i + 2*i + 1);
-    assert(i*i + 2*i + 1 == (i+1)*(i+1));
-}
+    ensures kprime == (i+1)*(i+1)
 {
     assume(false);
     unreached()

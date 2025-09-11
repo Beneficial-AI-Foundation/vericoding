@@ -2,7 +2,7 @@ use vstd::prelude::*;
 
 verus! {
 
-proof fn add_tuple_to_list(l: Seq<(int, int)>, t: (int, int)) -> (r: Seq<(int, int)>)
+fn add_tuple_to_list(l: Seq<(int, int)>, t: (int, int)) -> (r: Seq<(int, int)>)
     ensures
         r.len() == l.len() + 1,
         r[r.len() - 1] == t,

@@ -2,7 +2,7 @@ use vstd::prelude::*;
 
 verus! {
 
-fn smallest_missing_number(s: Seq<int>) -> v: int
+fn smallest_missing_number(s: Seq<int>) -> (v: int)
     requires
         forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j],
         forall|i: int| 0 <= i < s.len() ==> s[i] >= 0,

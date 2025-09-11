@@ -2,7 +2,7 @@ use vstd::prelude::*;
 
 verus! {
 
-proof fn int_div(n: int, d: int) -> (result: (int, int))
+fn int_div(n: int, d: int) -> (result: (int, int))
     requires n >= d && n >= 0 && d > 0,
     ensures ({
         let (q, r) = result;

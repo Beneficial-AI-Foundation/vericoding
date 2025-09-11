@@ -42,7 +42,7 @@ spec fn mem<T: PartialEq>(x: T, l: &List<T>) -> bool
     }
 }
 
-proof fn query_fast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
+fn query_fast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
     requires 
         is_prefix_sum_for(a, c) && 0 <= i <= j <= a.len() < c.len()
     ensures r == sum(a, i, j)
