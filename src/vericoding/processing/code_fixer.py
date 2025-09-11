@@ -117,14 +117,27 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
         # Find all placeholders in the original code that we're allowed to replace
         if config.language == "lean":
             # For Lean: find all 'sorry' occurrences and <vc-helpers> sections
+            # BUT exclude sorries that are inside <vc-preamble> sections
             placeholder_positions = []
+            
+            # First, find all vc-preamble sections to exclude sorries within them
+            vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
+            vc_preamble_matches = list(re.finditer(vc_preamble_pattern, original_code, re.DOTALL))
+            preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+            
+            # Find all sorry positions, excluding those in preamble sections
             code_copy = original_code
             search_start = 0
             while True:
                 pos = code_copy.find("sorry", search_start)
                 if pos == -1:
                     break
-                placeholder_positions.append(('sorry', pos))
+                
+                # Check if this sorry is inside any preamble section
+                in_preamble = any(start <= pos < end for start, end in preamble_ranges)
+                if not in_preamble:
+                    placeholder_positions.append(('sorry', pos))
+                
                 search_start = pos + 1
             
             # Also find vc-helpers sections
@@ -173,14 +186,24 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 placeholder_type, original_pos = placeholder_positions[i]
                 
                 if placeholder_type == 'sorry':
-                    # Find all current sorry positions in modified_code
+                    # Find all current sorry positions in modified_code, but exclude those in preamble sections
+                    # First get preamble ranges in current modified_code
+                    vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
+                    current_preamble_matches = list(re.finditer(vc_preamble_pattern, modified_code, re.DOTALL))
+                    current_preamble_ranges = [(match.start(), match.end()) for match in current_preamble_matches]
+                    
                     current_sorry_positions = []
                     pos = 0
                     while pos < len(modified_code):
                         next_pos = modified_code.find("sorry", pos)
                         if next_pos == -1:
                             break
-                        current_sorry_positions.append(next_pos)
+                        
+                        # Only include sorries that are NOT in preamble sections
+                        in_preamble = any(start <= next_pos < end for start, end in current_preamble_ranges)
+                        if not in_preamble:
+                            current_sorry_positions.append(next_pos)
+                        
                         pos = next_pos + 1
                     
                     # Count how many sorries come before position i in the original placeholder order

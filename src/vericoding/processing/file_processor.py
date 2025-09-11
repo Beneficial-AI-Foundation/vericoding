@@ -2,6 +2,7 @@
 
 import hashlib
 import logging
+import re
 import time
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -94,7 +95,24 @@ def process_spec_file(
         try:
             # Count placeholders in original code for JSON array sizing
             if config.language == "lean":
-                placeholder_count = original_code.count("sorry") + original_code.count("<vc-helpers>")
+                # Count sorries, but exclude those inside vc-preamble sections
+                vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
+                vc_preamble_matches = list(re.finditer(vc_preamble_pattern, original_code, re.DOTALL))
+                preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+                
+                sorry_count = 0
+                search_start = 0
+                while True:
+                    pos = original_code.find("sorry", search_start)
+                    if pos == -1:
+                        break
+                    # Only count if not in preamble
+                    in_preamble = any(start <= pos < end for start, end in preamble_ranges)
+                    if not in_preamble:
+                        sorry_count += 1
+                    search_start = pos + 1
+                
+                placeholder_count = sorry_count + original_code.count("<vc-helpers>")
             elif config.language in ("dafny", "verus"):
                 placeholder_count = original_code.count("<vc-code>") + original_code.count("<vc-helpers>")
             else:
@@ -320,7 +338,24 @@ def process_spec_file(
                 logger.info("    Attempting to fix errors...")
                 # Count placeholders in original code for JSON array sizing (not current code!)
                 if config.language == "lean":
-                    placeholder_count = original_code.count("sorry") + original_code.count("<vc-helpers>")
+                    # Count sorries, but exclude those inside vc-preamble sections
+                    vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
+                    vc_preamble_matches = list(re.finditer(vc_preamble_pattern, original_code, re.DOTALL))
+                    preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+                    
+                    sorry_count = 0
+                    search_start = 0
+                    while True:
+                        pos = original_code.find("sorry", search_start)
+                        if pos == -1:
+                            break
+                        # Only count if not in preamble
+                        in_preamble = any(start <= pos < end for start, end in preamble_ranges)
+                        if not in_preamble:
+                            sorry_count += 1
+                        search_start = pos + 1
+                    
+                    placeholder_count = sorry_count + original_code.count("<vc-helpers>")
                 elif config.language in ("dafny", "verus"):
                     placeholder_count = original_code.count("<vc-code>") + original_code.count("<vc-helpers>")
                 else:

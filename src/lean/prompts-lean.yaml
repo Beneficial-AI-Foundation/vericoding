@@ -14,6 +14,7 @@ generate_code: |
   - For "sorry" placeholders: Each replacement should be the exact code/proof that goes where "sorry" appears
   - For `<vc-helpers>` sections: Provide helper definitions, theorems, lemmas, or utility code
   - IMPORTANT: Your replacement text goes directly where the placeholder is - if you need helper functions for "sorry", define them inline within the replacement
+  - RESTRICTED AREAS: You CANNOT modify or replace "sorry" keywords that appear inside `<vc-preamble>` sections - these are protected and not counted in the {placeholder_count}
   - AVOID verification bypasses: "sorry", "admit", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
   - You may use "sorry" temporarily in early iterations to get error feedback, but must remove all verification bypasses for final success
   - Use valid Lean syntax for all replacements
@@ -40,6 +41,7 @@ fix_verification: |
   - For "sorry" placeholders: Each replacement should be the exact fixed code/proof that goes where "sorry" appears
   - For `<vc-helpers>` sections: Provide fixed helper definitions, theorems, lemmas, or utility code
   - IMPORTANT: Your replacement text goes directly where the placeholder is - if you need helper functions for "sorry", define them inline within the replacement
+  - RESTRICTED AREAS: You CANNOT modify or replace "sorry" keywords that appear inside `<vc-preamble>` sections - these are protected and not counted in the {placeholder_count}
   - MINIMIZE verification bypasses: "sorry", "admit", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
   - You may use "sorry" temporarily to get error feedback, but each iteration should remove more verification bypasses
   - Use valid Lean syntax for all replacements

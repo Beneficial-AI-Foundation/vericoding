@@ -605,6 +605,84 @@ def test : Nat := by
         assert error is None
         assert result == expected_result
 
+    def test_vc_preamble_sorry_exclusion(self, lean_config):
+        """Test that sorries inside vc-preamble tags are excluded from replacement."""
+        original_code = """
+def first : Nat := sorry
+
+<vc-preamble>
+-- This sorry should NOT be replaced
+axiom protected_axiom : ∀ x : Nat, x = sorry
+</vc-preamble>
+
+<vc-helpers>
+-- Helper code goes here
+</vc-helpers>
+"""
+        # Only 2 responses - one for the first sorry, one for vc-helpers
+        # The sorry inside vc-preamble should be ignored
+        llm_response = '''["42", "-- LLM HELPER\\nlemma helper : True := by trivial"]'''
+        
+        expected_result = """
+def first : Nat := 42
+
+<vc-preamble>
+-- This sorry should NOT be replaced
+axiom protected_axiom : ∀ x : Nat, x = sorry
+</vc-preamble>
+
+<vc-helpers>
+-- LLM HELPER
+lemma helper : True := by trivial
+</vc-helpers>
+"""
+        
+        result, error = apply_json_replacements(lean_config, original_code, llm_response)
+        
+        assert error is None
+        assert result == expected_result
+
+    def test_multiple_vc_preamble_sections(self, lean_config):
+        """Test handling of multiple vc-preamble sections."""
+        original_code = """
+def first : Nat := sorry
+
+<vc-preamble>
+axiom axiom1 : sorry = sorry
+</vc-preamble>
+
+def second : Nat := sorry
+
+<vc-preamble>  
+axiom axiom2 : sorry ≠ sorry
+</vc-preamble>
+
+def third : Nat := sorry
+"""
+        # Only 3 responses for the 3 sorries outside preamble sections
+        llm_response = '''["1", "2", "3"]'''
+        
+        expected_result = """
+def first : Nat := 1
+
+<vc-preamble>
+axiom axiom1 : sorry = sorry
+</vc-preamble>
+
+def second : Nat := 2
+
+<vc-preamble>  
+axiom axiom2 : sorry ≠ sorry
+</vc-preamble>
+
+def third : Nat := 3
+"""
+        
+        result, error = apply_json_replacements(lean_config, original_code, llm_response)
+        
+        assert error is None
+        assert result == expected_result
+
     def test_unicode_content(self, lean_config):
         """Test handling of unicode content in replacements."""
         original_code = "def test : Nat := sorry"
