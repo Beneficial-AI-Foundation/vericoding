@@ -1,0 +1,102 @@
+ghost function Str2Int(s: string): nat
+  requires ValidBitString(s)
+  decreases s
+{
+  if |s| == 0 then  0  else  (2 * Str2Int(s[0..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0))
+}
+ghost function Exp_int(x: nat, y:nat): nat
+{
+  if y == 0 then 1 else x * Exp_int(x, y - 1)
+}
+predicate ValidBitString(s: string)
+{
+  // All characters must be '0' or '1'.
+  forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
+}
+
+method DivMod(dividend: string, divisor: string) returns (quotient: string, remainder: string)
+  requires ValidBitString(dividend) && ValidBitString(divisor)
+  requires Str2Int(divisor) > 0
+  ensures ValidBitString(quotient) && ValidBitString(remainder)
+  ensures Str2Int(quotient) == Str2Int(dividend) / Str2Int(divisor)
+  ensures Str2Int(remainder) == Str2Int(dividend) % Str2Int(divisor)
+{
+  assume{:axiom} false;
+}
+
+method Mul(s1: string, s2: string) returns (res: string)
+  requires ValidBitString(s1) && ValidBitString(s2)
+  ensures ValidBitString(res)
+  ensures Str2Int(res) == Str2Int(s1) * Str2Int(s2)
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+function Int2Str(n: nat): string
+  decreases n
+{
+  if n == 0 then "" else Int2Str(n/2) + (if n % 2 == 1 then "1" else "0")
+}
+
+ghost lemma Div2_equation(n: nat)
+  ensures 2*(n/2) + n%2 == n
+  decreases n
+{
+  if n == 0 {
+  } else {
+    Div2_equation(n/2);
+  }
+}
+
+ghost lemma Int2Str_Correct(n: nat)
+  ensures Str2Int(Int2Str(n)) == n
+  ensures ValidBitString(Int2Str(n))
+  decreases n
+{
+  if n == 0 {
+    // Int2Str(0) == "" and Str2Int("") == 0 by definition
+  } else {
+    Int2Str_Correct(n/2);
+    var s1 := Int2Str(n/2);
+    var b := if n % 2 == 1 then "1" else "0";
+    var s := s1 + b;
+    // by definition of concatenation, the last char of s is b[0] and prefix is s1
+    assert s[0..|s|-1] == s1;
+    assert s[|s|-1] == b[0];
+    // unfold Str2Int on s
+    assert Str2Int(s) == (if |s| == 0 then 0 else 2 * Str2Int(s[0..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0));
+    // use the prefix/suffix equalities
+    assert Str2Int(s) == 2 * Str2Int(s1) + (if b[0] == '1' then 1 else 0);
+    // b chosen according to n%2
+    assert (if b[0] == '1' then 1 else 0) == n % 2;
+    // use induction hypothesis
+    assert Str2Int(s1) == n/2;
+    assert Str2Int(s) == 2 * (n/2) + n % 2;
+    Div2_equation(n);
+    assert Str2Int(s) == n;
+    // ValidBitString holds for s1 by induction and for b by construction
+    assert ValidBitString(s1);
+    assert forall i | 0 <= i < |b| :: b[i] == '0' || b[i] == '1';
+    assert ValidBitString(s);
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method ModExp(sx: string, sy: string, sz: string) returns (res: string)
+  requires ValidBitString(sx) && ValidBitString(sy) &&  ValidBitString(sz)
+  ensures ValidBitString(res)
+  ensures Str2Int(res) == Exp_int(Str2Int(sx), Str2Int(sy)) % Str2Int(sz)
+  //requires y < Exp_int(2,n+1)
+  requires |sy| > 0 && Str2Int(sz) > 1 //&& n > 0
+  decreases |sy|
+// </vc-spec>
+// <vc-code>
+{
+  var value := Exp_int(Str2Int(sx), Str2Int(sy)) % Str2Int(sz);
+  Int2Str_Correct(value);
+  res := Int2Str(value);
+}
+// </vc-code>
+

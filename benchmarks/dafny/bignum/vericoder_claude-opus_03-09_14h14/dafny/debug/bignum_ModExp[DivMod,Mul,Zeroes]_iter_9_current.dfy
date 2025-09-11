@@ -1,0 +1,204 @@
+ghost function Str2Int(s: string): nat
+  requires ValidBitString(s)
+  decreases s
+{
+  if |s| == 0 then  0  else  (2 * Str2Int(s[0..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0))
+}
+ghost function Exp_int(x: nat, y:nat): nat
+{
+  if y == 0 then 1 else x * Exp_int(x, y - 1)
+}
+predicate ValidBitString(s: string)
+{
+  // All characters must be '0' or '1'.
+  forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
+}
+predicate AllZero(s: string)
+{
+  forall i | 0 <= i < |s| :: s[i] == '0'
+}
+
+method DivMod(dividend: string, divisor: string) returns (quotient: string, remainder: string)
+  requires ValidBitString(dividend) && ValidBitString(divisor)
+  requires Str2Int(divisor) > 0
+  ensures ValidBitString(quotient) && ValidBitString(remainder)
+  ensures Str2Int(quotient) == Str2Int(dividend) / Str2Int(divisor)
+  ensures Str2Int(remainder) == Str2Int(dividend) % Str2Int(divisor)
+{
+  assume{:axiom} false;
+}
+
+method Mul(s1: string, s2: string) returns (res: string)
+  requires ValidBitString(s1) && ValidBitString(s2)
+  ensures ValidBitString(res)
+  ensures Str2Int(res) == Str2Int(s1) * Str2Int(s2)
+{
+  assume{:axiom} false;
+}
+
+method Zeros(n: nat) returns (s: string)
+  ensures |s| == n
+  ensures ValidBitString(s)
+  ensures Str2Int(s) == 0
+  ensures AllZero(s)
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma Exp_int_zero(x: nat)
+  ensures Exp_int(x, 0) == 1
+{
+}
+
+lemma Exp_int_one(x: nat)
+  ensures Exp_int(x, 1) == x
+{
+}
+
+lemma Exp_int_split(x: nat, a: nat, b: nat)
+  ensures Exp_int(x, a + b) == Exp_int(x, a) * Exp_int(x, b)
+{
+  if a == 0 {
+    calc == {
+      Exp_int(x, a + b);
+      Exp_int(x, b);
+      1 * Exp_int(x, b);
+      Exp_int(x, 0) * Exp_int(x, b);
+      Exp_int(x, a) * Exp_int(x, b);
+    }
+  } else {
+    calc == {
+      Exp_int(x, a + b);
+      x * Exp_int(x, a + b - 1);
+      { Exp_int_split(x, a - 1, b); }
+      x * Exp_int(x, a - 1) * Exp_int(x, b);
+      Exp_int(x, a) * Exp_int(x, b);
+    }
+  }
+}
+
+lemma Exp_int_even(x: nat, y: nat)
+  requires y > 0 && y % 2 == 0
+  ensures Exp_int(x, y) == Exp_int(x, y/2) * Exp_int(x, y/2)
+{
+  assert y == y/2 + y/2;
+  Exp_int_split(x, y/2, y/2);
+}
+
+lemma Exp_int_odd(x: nat, y: nat)
+  requires y > 0 && y % 2 == 1
+  ensures Exp_int(x, y) == x * Exp_int(x, y/2) * Exp_int(x, y/2)
+{
+  assert y == 1 + y/2 + y/2;
+  calc == {
+    Exp_int(x, y);
+    { Exp_int_split(x, 1, y/2 + y/2); }
+    Exp_int(x, 1) * Exp_int(x, y/2 + y/2);
+    { Exp_int_split(x, y/2, y/2); }
+    x * Exp_int(x, y/2) * Exp_int(x, y/2);
+  }
+}
+
+lemma ModMulProperty(a: nat, b: nat, m: nat)
+  requires m > 0
+  ensures (a * b) % m == ((a % m) * (b % m)) % m
+{
+}
+
+lemma ModExpCorrectness(x: nat, y: nat, z: nat)
+  requires z > 1 && y > 0
+  ensures y % 2 == 0 ==> Exp_int(x, y) % z == (Exp_int(x, y/2) % z * Exp_int(x, y/2) % z) % z
+  ensures y % 2 == 1 ==> Exp_int(x, y) % z == (x % z * ((Exp_int(x, y/2) % z * Exp_int(x, y/2) % z) % z)) % z
+{
+  if y % 2 == 0 {
+    Exp_int_even(x, y);
+    assert Exp_int(x, y) == Exp_int(x, y/2) * Exp_int(x, y/2);
+    ModMulProperty(Exp_int(x, y/2), Exp_int(x, y/2), z);
+  } else {
+    Exp_int_odd(x, y);
+    assert Exp_int(x, y) == x * Exp_int(x, y/2) * Exp_int(x, y/2);
+    var halfSquared := Exp_int(x, y/2) * Exp_int(x, y/2);
+    assert Exp_int(x, y) == x * halfSquared;
+    ModMulProperty(x, halfSquared, z);
+    ModMulProperty(Exp_int(x, y/2), Exp_int(x, y/2), z);
+  }
+}
+
+lemma AllZeroImpliesZero(s: string)
+  requires ValidBitString(s)
+  requires AllZero(s)
+  ensures Str2Int(s) == 0
+{
+  if |s| == 0 {
+  } else {
+    assert ValidBitString(s[0..|s|-1]);
+    assert AllZero(s[0..|s|-1]);
+    AllZeroImpliesZero(s[0..|s|-1]);
+    assert s[|s|-1] == '0';
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method ModExp(sx: string, sy: string, sz: string) returns (res: string)
+  requires ValidBitString(sx) && ValidBitString(sy) &&  ValidBitString(sz)
+  ensures ValidBitString(res)
+  ensures Str2Int(res) == Exp_int(Str2Int(sx), Str2Int(sy)) % Str2Int(sz)
+  //requires y < Exp_int(2,n+1)
+  requires |sy| > 0 && Str2Int(sz) > 1 //&& n > 0
+  decreases |sy|
+// </vc-spec>
+// <vc-code>
+{
+  var zeroStr := Zeros(|sy|);
+  if sy == zeroStr {
+    res := "1";
+    AllZeroImpliesZero(sy);
+    assert Str2Int(sy) == 0;
+    Exp_int_zero(Str2Int(sx));
+    return;
+  }
+  
+  assert !AllZero(sy);
+  assert Str2Int(sy) > 0;
+  
+  var two := "10";
+  var syDiv2, syMod2 := DivMod(sy, two);
+  assert Str2Int(syDiv2) == Str2Int(sy) / 2;
+  assert Str2Int(syMod2) == Str2Int(sy) % 2;
+  
+  if Str2Int(sy) == 1 {
+    var quotient, remainder := DivMod(sx, sz);
+    res := remainder;
+    Exp_int_one(Str2Int(sx));
+    return;
+  }
+  
+  assert Str2Int(sy) > 1;
+  assert Str2Int(syDiv2) >= 1;
+  
+  var halfPower := ModExp(sx, syDiv2, sz);
+  assert Str2Int(halfPower) == Exp_int(Str2Int(sx), Str2Int(sy)/2) % Str2Int(sz);
+  
+  var squared := Mul(halfPower, halfPower);
+  assert Str2Int(squared) == Str2Int(halfPower) * Str2Int(halfPower);
+  
+  var quotient, remainder := DivMod(squared, sz);
+  var squaredMod := remainder;
+  assert Str2Int(squaredMod) == Str2Int(squared) % Str2Int(sz);
+  
+  if Str2Int(syMod2) == 1 {
+    var temp := Mul(sx, squaredMod);
+    var q2, r2 := DivMod(temp, sz);
+    res := r2;
+    assert Str2Int(sy) % 2 == 1;
+    ModExpCorrectness(Str2Int(sx), Str2Int(sy), Str2Int(sz));
+  } else {
+    res := squaredMod;
+    assert Str2Int(sy) % 2 == 0;
+    ModExpCorrectness(Str2Int(sx), Str2Int(sy), Str2Int(sz));
+  }
+}
+// </vc-code>
+

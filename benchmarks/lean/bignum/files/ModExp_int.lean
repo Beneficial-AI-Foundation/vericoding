@@ -1,0 +1,24 @@
+namespace BignumLean
+
+def Exp_int (x y : Nat) : Nat :=
+  if y = 0 then 1 else x * Exp_int x (y - 1)
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-spec>
+def ModExp_int (x y n z : Nat) : Nat :=
+-- </vc-spec>
+-- <vc-code>
+  sorry
+-- </vc-code>
+
+-- <vc-theorem>
+theorem ModExp_int_spec (x y n z : Nat) (hy : y < Exp_int 2 (n + 1)) (hz : z > 1) :
+  ModExp_int x y n z = Exp_int x y % z := by
+-- </vc-theorem>
+-- <vc-proof>
+  sorry
+-- </vc-proof>
+
+end BignumLean

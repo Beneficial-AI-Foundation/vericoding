@@ -1,0 +1,41 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_vowel_spec(c: char) -> (result:bool) {
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I'
+        || c == 'O' || c == 'U'
+}
+// pure-end
+
+/*
+function_signature: "def remove_vowels(string: str) -> string"
+docstring: |
+remove_vowels is a function that takes string and returns string without vowels.
+test_cases:
+- input: ""
+expected_output: ""
+- input: "abcdef\nghijklm"
+expected_output: "bcdf\nghjklm"
+- input: "abcdef"
+expected_output: "bcdf"
+- input: "aaaaa"
+expected_output: ""
+- input: "aaBAA"
+expected_output: "B"
+*/
+
+fn remove_vowels(str: &[char]) -> (str_without_vowels: Vec<char>)
+    // post-conditions-start
+    ensures
+        str_without_vowels@ == str@.filter(|x: char| !is_vowel_spec(x)),
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    vec![]
+    // impl-end
+}
+
+} // verus!
+fn main() {}

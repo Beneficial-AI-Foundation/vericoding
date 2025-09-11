@@ -1,0 +1,29 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn in_array(a: Seq<i32>, x: i32) -> (ret: bool) {
+    exists|i: int| 0 <= i < a.len() && a[i] == x
+}
+
+/*
+function_signature: "fn remove_elements(a: &Vec<i32>, b: &Vec<i32>) -> (c: Vec<i32>)"
+docstring: Implement remove elements functionality.
+*/
+
+#[verifier::loop_isolation(false)]
+fn remove_elements(a: &Vec<i32>, b: &Vec<i32>) -> (c: Vec<i32>)
+    // post-conditions-start
+    ensures
+        forall|k: int| #![auto] 0 <= k < c.len() ==> in_array(a@, c[k]) && !in_array(b@, c[k]),
+        forall|i: int, j: int| 0 <= i < j < c.len() ==> c[i] != c[j],
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    vec![]
+    // impl-end
+}
+
+fn main() {}
+}

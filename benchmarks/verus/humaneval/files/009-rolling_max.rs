@@ -1,0 +1,42 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn seq_max(a: Seq<i32>) -> (ret: i32)
+    decreases a.len(),
+{
+    if a.len() == 0 {
+        i32::MIN
+    } else if a.last() > seq_max(a.drop_last()) {
+        a.last()
+    } else {
+        seq_max(a.drop_last())
+    }
+}
+// pure-end
+
+/*
+function_signature: "def rolling_max(numbers: List[int]) -> Tuple[int, int]"
+docstring: |
+From a given list of integers, generate a list of rolling maximum element found until given moment
+in the sequence.
+test_cases:
+- input: [1, 2, 3, 2, 3, 4, 2]
+expected_output: [1, 2, 3, 3, 3, 4, 4]
+*/
+
+fn rolling_max(numbers: Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        result.len() == numbers.len(),
+        forall|i: int| 0 <= i < numbers.len() ==> result[i] == seq_max(numbers@.take(i + 1)),
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    vec![]
+    // impl-end
+}
+
+}
+fn main() {}

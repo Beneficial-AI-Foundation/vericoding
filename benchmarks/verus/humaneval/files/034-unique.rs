@@ -1,0 +1,32 @@
+use vstd::calc;
+use vstd::prelude::*;
+use vstd::seq_lib::lemma_multiset_commutative;
+use vstd::seq_lib::lemma_seq_contains_after_push;
+
+verus! {
+
+/*
+function_signature: "def unique(l: list)"
+docstring: |
+Return sorted unique elements in a list.
+test_cases:
+- input: [5, 3, 5, 2, 3, 3, 9, 0, 123]
+output: [0, 2, 3, 5, 9, 123]
+*/
+
+fn unique(s: Vec<i32>) -> (result: Vec<i32>)
+    // post-conditions-start
+    ensures
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j],
+        forall|i: int| #![auto] 0 <= i < result.len() ==> s@.contains(result[i]),
+        forall|i: int| #![trigger s[i]] 0 <= i < s.len() ==> result@.contains(s[i]),
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    vec![]
+    // impl-end
+}
+
+}
+fn main() {}

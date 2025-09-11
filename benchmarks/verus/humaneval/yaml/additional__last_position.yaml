@@ -1,0 +1,39 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "fn last_position(a: &[i32], elem: i32) -> (result: usize)"
+  docstring: Implement last position functionality.
+
+vc-spec: |-
+  #[verifier::loop_isolation(false)]
+  fn last_position(a: &[i32], elem: i32) -> (result: usize)
+      // pre-conditions-start
+      requires
+          0 < a.len() < 100_000,
+          exists|i: int| 0 <= i < a.len() && a[i] == elem,
+      // pre-conditions-end
+      // post-conditions-start
+      ensures
+          0 <= result < a.len(),
+          forall|i: int| result < i < a.len() ==> a[i] != elem,
+          a[result as int] == elem,
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  fn main() {}
+  }

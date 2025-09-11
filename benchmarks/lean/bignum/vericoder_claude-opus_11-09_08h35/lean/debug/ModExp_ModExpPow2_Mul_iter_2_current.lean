@@ -1,0 +1,81 @@
+namespace BignumLean
+
+def ValidBitString (s : String) : Prop :=
+  ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
+
+def Str2Int (s : String) : Nat :=
+  s.data.foldl (fun acc ch => 2 * acc + (if ch = '1' then 1 else 0)) 0
+
+def Exp_int (x y : Nat) : Nat :=
+  if y = 0 then 1 else x * Exp_int x (y - 1)
+
+def ModExpPow2 (sx sy : String) (n : Nat) (sz : String) : String :=
+  sorry
+
+axiom ModExpPow2_spec (sx sy : String) (n : Nat) (sz : String)
+  (hx : ValidBitString sx) (hy : ValidBitString sy) (hz : ValidBitString sz)
+  (hsy_pow2 : Str2Int sy = Exp_int 2 n ∨ Str2Int sy = 0)
+  (hsy_len : sy.length = n + 1)
+  (hsz_gt1 : Str2Int sz > 1) :
+  ValidBitString (ModExpPow2 sx sy n sz) ∧
+  Str2Int (ModExpPow2 sx sy n sz) = Exp_int (Str2Int sx) (Str2Int sy) % Str2Int sz
+
+def Mul (s1 s2 : String) : String :=
+  sorry
+
+axiom Mul_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) :
+  ValidBitString (Mul s1 s2) ∧ Str2Int (Mul s1 s2) = Str2Int s1 * Str2Int s2
+
+-- <vc-helpers>
+-- LLM HELPER
+def getBit (s : String) (i : Nat) : Bool :=
+  match s.data.get? i with
+  | some '1' => true
+  | _ => false
+
+-- LLM HELPER  
+def ModExpHelper (base : String) (exp : String) (mod : String) (i : Nat) (acc : String) : String :=
+  if h : i < exp.length then
+    let newAcc := if getBit exp i then Mul acc base else acc
+    let newBase := ModExpPow2 base "10" 1 mod  -- base^2 mod m
+    ModExpHelper newBase exp mod (i + 1) newAcc
+  else
+    acc
+termination_by exp.length - i
+-- </vc-helpers>
+
+-- <vc-spec>
+def ModExp (sx sy sz : String) : String :=
+-- </vc-spec>
+-- <vc-code>
+if sy.length = 0 then "1"  -- edge case: x^0 = 1
+  else ModExpHelper sx sy sz 0 "1"
+-- </vc-code>
+
+-- <vc-theorem>
+theorem ModExp_spec (sx sy sz : String) (hx : ValidBitString sx) (hy : ValidBitString sy) (hz : ValidBitString sz)
+  (hsy_pos : sy.length > 0) (hsz_gt1 : Str2Int sz > 1) :
+  ValidBitString (ModExp sx sy sz) ∧
+  Str2Int (ModExp sx sy sz) = Exp_int (Str2Int sx) (Str2Int sy) % Str2Int sz := by
+-- </vc-theorem>
+-- <vc-proof>
+unfold ModExp
+  split_ifs with h
+  · -- Case: sy.length = 0, contradicts hsy_pos
+    exact absurd h hsy_pos.ne'
+  · -- Case: sy.length > 0, need to prove ModExpHelper works
+    -- We cannot prove this without additional axioms about ModExpHelper
+    -- The proof would require induction on the binary representation of sy
+    -- and using ModExpPow2_spec and Mul_spec axioms
+    constructor
+    · -- ValidBitString part
+      -- Would need axioms about ModExpHelper preserving ValidBitString
+      -- using ModExpPow2_spec and Mul_spec
+      sorry
+    · -- Correctness part  
+      -- Would need axioms about ModExpHelper computing correct result
+      -- using binary exponentiation algorithm
+      sorry
+-- </vc-proof>
+
+end BignumLean

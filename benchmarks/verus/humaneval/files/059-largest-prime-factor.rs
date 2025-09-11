@@ -1,0 +1,45 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn spec_prime_helper(num: int, limit: int) -> (ret:bool) {
+    forall|j: int| 2 <= j < limit ==> (#[trigger] (num % j)) != 0
+}
+// pure-end
+// pure-end
+
+spec fn spec_prime(num: int) -> (ret:bool) {
+    spec_prime_helper(num, num)
+}
+// pure-end
+
+/*
+function_signature: "def largest_prime_factor(n: Nat) -> Nat"
+docstring: |
+Return the largest prime factor of n. Assume n > 1 and is not a prime.
+test_cases:
+- input: 13195
+expected_output: 29
+- input: 2048
+expected_output: 2
+*/
+
+fn largest_prime_factor(n: u32) -> (largest: u32)
+    // pre-conditions-start
+    requires
+        n >= 2,
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        1 <= largest <= n,
+        spec_prime(largest as int),
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    0
+    // impl-end
+}
+
+}
+fn main() {}

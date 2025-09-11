@@ -1,0 +1,78 @@
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn count<T>(s: Seq<T>, x: T) -> (result:int)
+      decreases s.len(),
+  {
+      if s.len() == 0 {
+          0
+      } else {
+          count(s.skip(1), x) + if s[0] == x {
+              1int
+          } else {
+              0int
+          }
+      }
+  }
+  // pure-end
+  // pure-end
+
+  spec fn permutes<T>(s1: Seq<T>, s2: Seq<T>) -> (result:bool) {
+      forall|x: T| count(s1, x) == count(s2, x)
+  }
+  // pure-end
+  // pure-end
+
+  spec fn inner_expr_lemma_update_effect_on_count<T>(s: Seq<T>, i: int, v: T, x: T) -> (result:bool) {
+      count(s.update(i, v), x) == if v == x && s[i] != x {
+          count(s, x) + 1
+      } else if v != x && s[i] == x {
+          count(s, x) - 1
+      } else {
+          count(s, x)
+      }
+  }
+  // pure-end
+
+vc-helpers: |-
+
+
+vc-description: |-
+  function_signature: "def sort_even(l: list)"
+  docstring: |
+  This function takes a list l and returns a list l' such that
+  l' is identical to l in the odd indicies, while its values at the even indicies are equal
+  to the values of the even indicies of l, but sorted.
+  test_cases:
+  - input: [1, 2, 3]
+  output: [1, 2, 3]
+  - input: [5, 6, 3, 4]
+  output: [3, 6, 5, 4]
+
+vc-spec: |-
+  #[verifier::loop_isolation(false)]
+  fn sort_even(l: Vec<i32>) -> (result: Vec<i32>)
+      // post-conditions-start
+      ensures
+          l.len() == result.len(),
+          permutes(result@, l@),
+          forall|i: int| 0 <= i < l.len() && i % 2 == 1 ==> result[i] == l[i],
+          forall|i: int, j: int|
+              #![auto]
+              0 <= i < j < l.len() && i % 2 == 0 && j % 2 == 0 ==> result[i] <= result[j],
+      // post-conditions-end
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      vec![]
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  fn main() {}
+  }

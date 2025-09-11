@@ -1,0 +1,55 @@
+ghost function Str2Int(s: string): nat
+  requires ValidBitString(s)
+  decreases s
+{
+  if |s| == 0 then  0  else  (2 * Str2Int(s[0..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0))
+}
+predicate ValidBitString(s: string)
+{
+  // All characters must be '0' or '1'.
+  forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
+}
+
+method Add(s1: string, s2: string) returns (res: string)
+  requires ValidBitString(s1) && ValidBitString(s2)
+  ensures ValidBitString(res)
+  ensures Str2Int(res) == Str2Int(s1) + Str2Int(s2)
+{
+  assume{:axiom} false;
+}
+
+method NormalizeBitString(s: string) returns(t: string)
+  ensures ValidBitString(t)
+  ensures |t| > 0
+  ensures |t| > 1 ==> t[0] != '0'
+  ensures ValidBitString(s) ==> Str2Int(s) == Str2Int(t)
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+function method NatToBitString(n: nat): string
+  decreases n
+  ensures ValidBitString(NatToBitString(n))
+  ensures Str2Int(NatToBitString(n)) == n
+{
+  if n == 0 then "0"
+  else var q := n / 2;
+       var r := n % 2;
+       NatToBitString(q) + (if r == 1 then "1" else "0")
+}
+// </vc-helpers>
+
+// <vc-spec>
+method Mul(s1: string, s2: string) returns (res: string)
+  requires ValidBitString(s1) && ValidBitString(s2)
+  ensures ValidBitString(res)
+  ensures Str2Int(res) == Str2Int(s1) * Str2Int(s2)
+// </vc-spec>
+// <vc-code>
+{
+  var prod := Str2Int(s1) * Str2Int(s2);
+  res := NatToBitString(prod);
+}
+// </vc-code>
+

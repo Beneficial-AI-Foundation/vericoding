@@ -1,0 +1,73 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn extract_first_digit_spec(n: int) -> (ret:int)
+    decreases n,
+{
+    if n < 10 {
+        n
+    } else {
+        extract_first_digit_spec(n / 10)
+    }
+}
+// pure-end
+spec fn extract_last_digit_spec(n: int) -> (ret:int) {
+    n % 10
+}
+// pure-end
+spec fn is_odd(n: int) -> (ret:bool) {
+    (n % 2) != 0
+}
+// pure-end
+// pure-end
+
+
+spec fn is_valid_element_spec(n: int) -> (ret:bool) {
+    &&& (n > 10)
+    &&& is_odd(extract_first_digit_spec(n))
+    &&& is_odd(extract_last_digit_spec(n))
+}
+// pure-end
+spec fn special_filter_spec(seq: Seq<i32>) -> (ret:int)
+    decreases seq.len(),
+{
+    if seq.len() == 0 {
+        0
+    } else {
+        special_filter_spec(seq.drop_last()) + if (is_valid_element_spec(seq.last() as int)) {
+            1 as int
+        } else {
+            0 as int
+        }
+    }
+}
+// pure-end
+
+/*
+function_signature: "def specialFilter(nums: List[int]) -> int"
+docstring: |
+Write a function that takes an array of numbers as input and returns
+the number of elements in the array that are greater than 10 and both
+first and last digits of a number are odd (1, 3, 5, 7, 9).
+test_cases:
+- input: [15, -73, 14, -15]
+expected_output: 1
+- input: [33, -2, -3, 45, 21, 109]
+expected_output: 2
+*/
+
+fn special_filter(numbers: &Vec<i32>) -> (count: usize)
+    // post-conditions-start
+    ensures
+        count == special_filter_spec(numbers@),
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    0
+    // impl-end
+}
+
+} // verus!
+fn main() {}

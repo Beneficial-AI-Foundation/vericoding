@@ -1,0 +1,383 @@
+ghost function Exp_int(x: nat, y:nat): nat
+{
+  if y == 0 then 1 else x * Exp_int(x, y - 1)
+}
+predicate ValidBitString(s: string)
+{
+  // All characters must be '0' or '1'.
+  forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
+}
+ghost function Str2Int(s: string): nat
+  requires ValidBitString(s)
+  decreases s
+{
+  if |s| == 0 then  0  else  (2 * Str2Int(s[0..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0))
+}
+
+method Add(s1: string, s2: string) returns (res: string)
+  requires ValidBitString(s1) && ValidBitString(s2)
+  ensures ValidBitString(res)
+  ensures Str2Int(res) == Str2Int(s1) + Str2Int(s2)
+{
+  assume{:axiom} false;
+}
+
+method DivMod(dividend: string, divisor: string) returns (quotient: string, remainder: string)
+  requires ValidBitString(dividend) && ValidBitString(divisor)
+  requires Str2Int(divisor) > 0
+  ensures ValidBitString(quotient) && ValidBitString(remainder)
+  ensures Str2Int(quotient) == Str2Int(dividend) / Str2Int(divisor)
+  ensures Str2Int(remainder) == Str2Int(dividend) % Str2Int(divisor)
+{
+  assume{:axiom} false;
+}
+
+method Mul(s1: string, s2: string) returns (res: string)
+  requires ValidBitString(s1) && ValidBitString(s2)
+  ensures ValidBitString(res)
+  ensures Str2Int(res) == Str2Int(s1) * Str2Int(s2)
+{
+  assume{:axiom} false;
+}
+
+// <vc-helpers>
+lemma Exp_int_2_is_square(x: nat)
+  ensures Exp_int(x, 2) == x * x
+{
+  calc == {
+    Exp_int(x, 2);
+    x * Exp_int(x, 1);
+    x * (x * Exp_int(x, 0));
+    x * (x * 1);
+    x * x;
+  }
+}
+
+lemma Exp_int_pow2_square(x: nat, n: nat)
+  requires n > 0
+  ensures Exp_int(x, Exp_int(2, n)) == Exp_int(Exp_int(x, Exp_int(2, n-1)), 2)
+{
+  if n == 1 {
+    assert Exp_int(2, 1) == 2;
+    assert Exp_int(2, 0) == 1;
+    Exp_int_2_is_square(x);
+    assert Exp_int(x, 2) == x * x;
+    assert Exp_int(x, 1) == x;
+    Exp_int_2_is_square(x);
+  } else {
+    calc == {
+      Exp_int(x, Exp_int(2, n));
+      Exp_int(x, 2 * Exp_int(2, n-1));
+      { Exp_int_power_double(x, Exp_int(2, n-1)); }
+      Exp_int(Exp_int(x, Exp_int(2, n-1)), 2);
+    }
+  }
+}
+
+lemma Exp_int_power_double(x: nat, k: nat)
+  ensures Exp_int(x, 2*k) == Exp_int(Exp_int(x, k), 2)
+{
+  if k == 0 {
+    assert Exp_int(x, 0) == 1;
+    Exp_int_2_is_square(1);
+    assert Exp_int(1, 2) == 1;
+  } else {
+    calc == {
+      Exp_int(x, 2*k);
+      x * Exp_int(x, 2*k - 1);
+      x * Exp_int(x, k + (k-1));
+      { Exp_int_add(x, k, k-1); }
+      x * (Exp_int(x, k) * Exp_int(x, k-1));
+      (Exp_int(x, k) * x) * Exp_int(x, k-1);
+      Exp_int(x, k) * (x * Exp_int(x, k-1));
+      Exp_int(x, k) * Exp_int(x, k);
+      { Exp_int_2_is_square(Exp_int(x, k)); }
+      Exp_int(Exp_int(x, k), 2);
+    }
+  }
+}
+
+lemma Exp_int_add(x: nat, a: nat, b: nat)
+  ensures Exp_int(x, a + b) == Exp_int(x, a) * Exp_int(x, b)
+{
+  if b == 0 {
+    assert Exp_int(x, b) == 1;
+  } else {
+    calc == {
+      Exp_int(x, a + b);
+      x * Exp_int(x, a + b - 1);
+      x * Exp_int(x, a + (b - 1));
+      { Exp_int_add(x, a, b - 1); }
+      x * (Exp_int(x, a) * Exp_int(x, b - 1));
+      Exp_int(x, a) * (x * Exp_int(x, b - 1));
+      Exp_int(x, a) * Exp_int(x, b);
+    }
+  }
+}
+
+lemma Str2Int_leading_zero(s: string)
+  requires ValidBitString(s)
+  requires |s| > 0
+  requires s[0] == '0'
+  ensures Str2Int(s) == Str2Int(s[1..])
+  decreases |s|
+{
+  if |s| == 1 {
+    assert s == "0";
+    assert Str2Int(s) == 0;
+    assert s[1..] == "";
+    assert Str2Int("") == 0;
+  } else {
+    calc == {
+      Str2Int(s);
+      2 * Str2Int(s[0..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0);
+      { assert s[0..|s|-1] == "0" + s[1..|s|-1]; }
+      2 * Str2Int("0" + s[1..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0);
+      { 
+        assert |"0" + s[1..|s|-1]| < |s|;
+        Str2Int_leading_zero("0" + s[1..|s|-1]); 
+      }
+      2 * Str2Int(s[1..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0);
+      { assert s[1..] == s[1..|s|-1] + [s[|s|-1]]; }
+      Str2Int(s[1..]);
+    }
+  }
+}
+
+lemma Str2Int_all_zeros(s: string)
+  requires ValidBitString(s)
+  requires forall i | 0 <= i < |s| :: s[i] == '0'
+  ensures Str2Int(s) == 0
+{
+  if |s| == 0 {
+    assert Str2Int(s) == 0;
+  } else {
+    assert s[|s|-1] == '0';
+    var prefix := s[0..|s|-1];
+    assert forall i | 0 <= i < |prefix| :: prefix[i] == '0';
+    Str2Int_all_zeros(prefix);
+    calc == {
+      Str2Int(s);
+      2 * Str2Int(prefix) + 0;
+      2 * 0 + 0;
+      0;
+    }
+  }
+}
+
+lemma Str2Int_power_of_2_representation(sy: string, n: nat)
+  requires ValidBitString(sy)
+  requires |sy| == n + 1
+  requires sy[0] == '1'
+  requires forall i | 1 <= i < |sy| :: sy[i] == '0'
+  ensures Str2Int(sy) == Exp_int(2, n)
+{
+  if n == 0 {
+    assert |sy| == 1;
+    assert sy == "1";
+    assert Str2Int("1") == 1;
+    assert Exp_int(2, 0) == 1;
+  } else {
+    var prefix := sy[0..|sy|-1];
+    assert |prefix| == n;
+    assert prefix[0] == '1';
+    assert forall i | 1 <= i < |prefix| :: prefix[i] == '0';
+    Str2Int_power_of_2_representation(prefix, n-1);
+    assert Str2Int(prefix) == Exp_int(2, n-1);
+    assert sy[|sy|-1] == '0';
+    calc == {
+      Str2Int(sy);
+      2 * Str2Int(prefix) + 0;
+      2 * Exp_int(2, n-1);
+      Exp_int(2, n);
+    }
+  }
+}
+
+lemma ModExpCorrectness(x: nat, y: nat, z: nat)
+  requires z > 1
+  ensures (x % z) * (x % z) % z == (x * x) % z
+{
+  var r := x % z;
+  assert x == (x / z) * z + r;
+  assert r < z;
+  
+  calc == {
+    (x % z) * (x % z) % z;
+    (r * r) % z;
+    { ModProductProperty(x, x, z); }
+    (x * x) % z;
+  }
+}
+
+lemma ModProductProperty(a: nat, b: nat, m: nat)
+  requires m > 0
+  ensures ((a % m) * (b % m)) % m == (a * b) % m
+{
+  var ra := a % m;
+  var rb := b % m;
+  var qa := a / m;
+  var qb := b / m;
+  
+  assert a == qa * m + ra;
+  assert b == qb * m + rb;
+  
+  calc == {
+    (a * b) % m;
+    ((qa * m + ra) * (qb * m + rb)) % m;
+    (qa * m * qb * m + qa * m * rb + ra * qb * m + ra * rb) % m;
+    ((qa * qb * m + qa * rb + ra * qb) * m + ra * rb) % m;
+    (ra * rb) % m;
+    ((a % m) * (b % m)) % m;
+  }
+}
+
+function BuildPowerOf2String(n: nat): string
+  ensures ValidBitString(BuildPowerOf2String(n))
+  ensures |BuildPowerOf2String(n)| == n + 1
+  ensures BuildPowerOf2String(n)[0] == '1'
+  ensures forall i | 1 <= i < |BuildPowerOf2String(n)| :: BuildPowerOf2String(n)[i] == '0'
+  ensures Str2Int(BuildPowerOf2String(n)) == Exp_int(2, n)
+{
+  var s := "1" + seq(n, i => '0');
+  Str2Int_power_of_2_representation(s, n);
+  s
+}
+
+lemma Str2Int_lower_bound_with_one(s: string, pos: nat)
+  requires ValidBitString(s)
+  requires pos < |s|
+  requires s[pos] == '1'
+  ensures Str2Int(s) >= Exp_int(2, |s| - pos - 1)
+{
+  if |s| == 0 {
+    // impossible case
+  } else if |s| == 1 {
+    assert pos == 0;
+    assert s == "1";
+    assert Str2Int(s) == 1;
+    assert Exp_int(2, 0) == 1;
+  } else {
+    var prefix := s[0..|s|-1];
+    if pos == |s| - 1 {
+      assert s[|s|-1] == '1';
+      calc >= {
+        Str2Int(s);
+        2 * Str2Int(prefix) + 1;
+        1;
+        Exp_int(2, 0);
+      }
+    } else {
+      assert pos < |prefix|;
+      assert prefix[pos] == '1';
+      Str2Int_lower_bound_with_one(prefix, pos);
+      calc >= {
+        Str2Int(s);
+        2 * Str2Int(prefix) + (if s[|s|-1] == '1' then 1 else 0);
+        2 * Str2Int(prefix);
+        2 * Exp_int(2, |prefix| - pos - 1);
+        2 * Exp_int(2, |s| - 1 - pos - 1);
+        Exp_int(2, |s| - pos - 1);
+      }
+    }
+  }
+}
+
+lemma Str2IntLeadingOneIsPowerOf2(sy: string, n: nat)
+  requires ValidBitString(sy)
+  requires |sy| == n + 1
+  requires sy[0] == '1'
+  requires Str2Int(sy) == Exp_int(2, n)
+  ensures forall i | 1 <= i < |sy| :: sy[i] == '0'
+{
+  // If sy has a '1' bit at position i > 0, then Str2Int(sy) >= Exp_int(2, n) + Exp_int(2, |sy| - i - 1)
+  // Since Str2Int(sy) == Exp_int(2, n), all other bits must be '0'
+  if exists i | 1 <= i < |sy| :: sy[i] == '1' {
+    var i :| 1 <= i < |sy| && sy[i] == '1';
+    Str2Int_lower_bound_with_one(sy, 0);
+    Str2Int_lower_bound_with_one(sy, i);
+    // This would mean Str2Int(sy) >= Exp_int(2, n) + Exp_int(2, |sy| - i - 1) > Exp_int(2, n)
+    // Contradiction since Str2Int(sy) == Exp_int(2, n)
+    assert false;
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method ModExpPow2(sx: string, sy: string, n: nat, sz: string) returns (res: string)
+  requires ValidBitString(sx) && ValidBitString(sy) &&  ValidBitString(sz)
+  // sy is power of 2 or zero
+  requires Str2Int(sy) == Exp_int(2,n) || Str2Int(sy) == 0
+  requires |sy| == n+1
+  requires Str2Int(sz) > 1
+  ensures ValidBitString(res)
+  ensures Str2Int(res) == Exp_int(Str2Int(sx), Str2Int(sy)) % Str2Int(sz)
+  decreases n
+// </vc-spec>
+// <vc-code>
+{
+  if n == 0 {
+    assert |sy| == 1;
+    if sy == "0" {
+      assert Str2Int(sy) == 0;
+      assert Exp_int(Str2Int(sx), 0) == 1;
+      var _, rem := DivMod("1", sz);
+      return rem;
+    } else {
+      assert sy == "1";
+      assert Str2Int(sy) == 1;
+      assert Exp_int(Str2Int(sx), 1) == Str2Int(sx);
+      var _, rem := DivMod(sx, sz);
+      return rem;
+    }
+  } else {
+    if sy[0] == '0' {
+      // Since Str2Int(sy) == Exp_int(2,n) or 0, and Exp_int(2,n) >= 1 for n >= 0
+      assert Exp_int(2, n) >= 1;
+      
+      // If sy starts with '0' and Str2Int(sy) == Exp_int(2,n), we'd have a contradiction
+      if Str2Int(sy) == Exp_int(2, n) {
+        // Exp_int(2,n) has exactly one '1' bit at the most significant position
+        // But sy[0] == '0', so this is impossible
+        assert false;
+      }
+      
+      assert Str2Int(sy) == 0;
+      assert Exp_int(Str2Int(sx), 0) == 1;
+      var _, rem := DivMod("1", sz);
+      return rem;
+    } else {
+      assert sy[0] == '1';
+      // Since Str2Int(sy) == Exp_int(2,n) or 0, and sy[0] == '1'
+      assert Str2Int(sy) > 0;
+      assert Str2Int(sy) != 0;
+      assert Str2Int(sy) == Exp_int(2, n);
+      
+      // sy must be "10...0" (power of 2 representation)
+      Str2IntLeadingOneIsPowerOf2(sy, n);
+      assert forall i | 1 <= i < |sy| :: sy[i] == '0';
+      
+      var sy_half := BuildPowerOf2String(n-1);
+      assert |sy_half| == n;
+      assert Str2Int(sy_half) == Exp_int(2, n-1);
+      
+      var temp := ModExpPow2(sx, sy_half, n-1, sz);
+      var temp_squared := Mul(temp, temp);
+      
+      Exp_int_pow2_square(Str2Int(sx), n);
+      assert Exp_int(Str2Int(sx), Str2Int(sy)) == Exp_int(Exp_int(Str2Int(sx), Str2Int(sy_half)), 2);
+      assert Str2Int(temp_squared) == Str2Int(temp) * Str2Int(temp);
+      assert Str2Int(temp) == Exp_int(Str2Int(sx), Str2Int(sy_half)) % Str2Int(sz);
+      
+      Exp_int_2_is_square(Exp_int(Str2Int(sx), Str2Int(sy_half)));
+      ModExpCorrectness(Exp_int(Str2Int(sx), Str2Int(sy_half)), 
+                        Exp_int(Str2Int(sx), Str2Int(sy_half)), 
+                        Str2Int(sz));
+      
+      var _, result := DivMod(temp_squared, sz);
+      return result;
+    }
+  }
+}
+// </vc-code>
+

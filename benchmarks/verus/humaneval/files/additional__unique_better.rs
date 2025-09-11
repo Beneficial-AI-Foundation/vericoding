@@ -1,0 +1,32 @@
+use vstd::prelude::*;
+
+verus! {
+
+/*
+function_signature: "fn unique_better(a: &[i32]) -> (result: Vec<i32>)"
+docstring: Implement unique better functionality.
+*/
+
+#[verifier::loop_isolation(false)]
+fn unique_better(a: &[i32]) -> (result: Vec<i32>)
+    // pre-conditions-start
+    requires
+        forall|i: int, j: int|
+            #![trigger a[i], a[j]]
+            0 <= i && i < j && j < a.len() ==> a[i] <= a[j],
+    // pre-conditions-end
+    // post-conditions-start
+    ensures
+        forall|i: int, j: int|
+            #![trigger result[i], result[j]]
+            0 <= i && i < j && j < result.len() ==> result[i] < result[j],
+    // post-conditions-end
+{
+    // impl-start
+    assume(false);
+    vec![]
+    // impl-end
+}
+
+fn main() {}
+}
