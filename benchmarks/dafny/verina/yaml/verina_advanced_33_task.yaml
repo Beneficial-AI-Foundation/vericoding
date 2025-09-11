@@ -1,0 +1,33 @@
+vc-description: |-
+  /*
+  This task requires implementing the "Longest Increasing Subsequence" problem in Dafny.
+  Given a list of integers, the function should compute the length of the longest strictly increasing
+  subsequence. A subsequence is formed by deleting zero or more elements without changing the order.
+  If the list is empty, the function should return 0.
+  
+  -----Input-----
+  - nums: A list of integers.
+  
+  -----Output-----
+  - A natural number representing the length of the longest strictly increasing subsequence.
+  - If there is no increasing subsequence, return 0.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method LongestIncreasingSubsequence(nums: array<int>) returns (result: int)
+      ensures result >= 0
+      ensures nums.Length == 0 ==> result == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := 0;
+      // impl-end
+  }
+
+vc-postamble: |-

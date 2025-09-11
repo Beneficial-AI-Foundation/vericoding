@@ -1,0 +1,46 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that takes two sorted (non-decreasing) integer lists and merges them into a single sorted list. The output must preserve order and include all elements from both input lists.
+
+  Input:
+  The input consists of:
+  a: A list of integers sorted in non-decreasing order.
+  b: Another list of integers sorted in non-decreasing order.
+
+  Output:
+  The output is a list of integers:
+  Returns a merged list that contains all elements from both input lists, sorted in non-decreasing order.
+  */
+
+vc-preamble: |-
+  predicate IsSorted(s: seq<int>)
+  {
+      forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
+  }
+
+  predicate MultisetEquiv(s1: seq<int>, s2: seq<int>)
+  {
+      multiset(s1) == multiset(s2)
+  }
+  method MergeSortedAux(a: seq<int>, b: seq<int>) returns (result: seq<int>)
+  {
+      assume {:axiom} false;
+      result := [];
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  method MergeSorted(a: seq<int>, b: seq<int>) returns (result: seq<int>)
+      requires IsSorted(a)
+      requires IsSorted(b)
+      ensures IsSorted(result)
+      ensures MultisetEquiv(result, a + b)
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+      result := [];
+  }
+
+vc-postamble: |

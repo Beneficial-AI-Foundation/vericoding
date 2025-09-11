@@ -1,0 +1,24 @@
+predicate IsSpaceCommaDot(c: char)
+{
+    c == ' ' || c == ',' || c == '.'
+}
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+method ReplaceWithColon(s: string) returns (result: string)
+    ensures
+        |result| == |s|
+    ensures
+        forall i :: 0 <= i < |s| ==> 
+            result[i] == 
+            if IsSpaceCommaDot(s[i]) then ':' else s[i]
+// </vc-spec>
+// <vc-code>
+{
+    // TODO: implement
+    assume {:axiom} false;
+    result := "";
+}
+// </vc-code>

@@ -1,0 +1,51 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that finds the maximum subarray sum from a given array of integers.
+  A subarray is a contiguous sequence of elements within the array.
+  The method should return the maximum sum that can be obtained from any subarray.
+  
+  Input:
+  The input is an array of integers:
+  xs: An array of integers (can include negative numbers).
+  
+  Output:
+  The output is an integer:
+  Returns the maximum sum among all contiguous subarrays of xs.
+  If the array is empty, the result should be 0.
+  */
+
+vc-preamble: |-
+  function SpecSum(xs: array<int>, start: int, len: int): int
+      decreases len
+      reads xs
+  {
+      if len <= 0 then
+          0
+      else if start < 0 || start >= xs.Length then
+          0
+      else
+          xs[start] + SpecSum(xs, start + 1, len - 1)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method MaxSubarraySum(xs: array<int>) returns (result: int)
+      ensures xs.Length == 0 ==> result == 0
+      ensures xs.Length > 0 ==> 
+          (exists start: int, len: int :: 
+              0 <= start < xs.Length && 
+              1 <= len <= xs.Length - start &&
+              result == SpecSum(xs, start, len)) &&
+          (forall start: int, len: int ::
+              0 <= start < xs.Length && 
+              1 <= len <= xs.Length - start
+              ==> SpecSum(xs, start, len) <= result)
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+      result := 0;
+  }
+
+vc-postamble: |-

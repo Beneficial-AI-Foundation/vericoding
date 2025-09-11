@@ -1,0 +1,34 @@
+vc-description: |-
+  /*
+  This task involves computing three times a given integer. Given an integer, the goal is to produce a value that is exactly three times its value.
+  
+  Input:
+  The input consists of a single integer:
+  x: An integer.
+  
+  Output:
+  The output is an integer:
+  Returns the product of the input integer and 3.
+  
+  Note:
+  There are no additional preconditions.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method Triple(x: int) returns (result: int)
+      ensures result / 3 == x
+      ensures result / 3 * 3 == result
+
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := 0;
+      // impl-end
+  }
+
+vc-postamble: |-

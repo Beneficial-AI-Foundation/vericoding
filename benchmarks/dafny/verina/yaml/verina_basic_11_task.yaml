@@ -1,0 +1,43 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that extracts the last digit of a given non-negative integer. The method should return the last digit, which is obtained by computing the remainder when the number is divided by 10. The result must always be between 0 and 9.
+  
+  -----Input-----
+  The input consists of a single value:
+  n: A non-negative integer.
+  
+  -----Output-----
+  The output is an integer:
+  Returns the last digit of the input number, ensuring that the digit lies within the range 0 to 9.
+  
+  -----Note-----
+  It is assumed that the input number n is non-negative.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  function last_digit(n: nat): nat
+
+vc-code: |-
+  {
+      // impl-start
+      // TODO: implement
+      n % 10
+      // impl-end
+  }
+
+  lemma last_digit_correct(n: nat)
+      ensures
+          last_digit(n) < 10
+      ensures
+          last_digit(n) == n % 10
+  {
+      // impl-start
+      // TODO: Implement proof
+      // impl-end
+  }
+
+vc-postamble: |-

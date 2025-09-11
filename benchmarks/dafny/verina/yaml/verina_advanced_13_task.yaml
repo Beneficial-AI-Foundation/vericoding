@@ -1,0 +1,68 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that determines whether there are any intersections between chords on a circle. The method should return true if at least one pair of chords intersects, and false otherwise.
+  
+  A chord is defined as a line segment connecting two distinct points on a circle. Two chords intersect if they cross each other inside the circle. The points are numbered from 1 to 2N in a clockwise direction, where N is the number of chords.
+  
+  Constraints
+  
+  - 2 ≤ N ≤ 2×10^5
+  - 1 ≤ A_i,B_i ≤ 2N
+  - A_1,…,A_N,B_1,…,B_N are all distinct
+  - All input values are integers
+  
+  Input:
+  The input consists of two parameters:
+  N: A natural number representing the number of chords (2 ≤ N ≤ 2×10^5).
+  chords: A list of N pairs of natural numbers, where each pair represents the endpoints of a chord. All endpoint values are distinct and range from 1 to 2N.
+  
+  Output:
+  The output is a boolean value:
+  - Returns true if there exists at least one pair of intersecting chords.
+  - Returns false if no chords intersect.
+  */
+
+vc-preamble: |-
+  predicate ChordIntersects(chord1: seq<nat>, chord2: seq<nat>)
+      requires |chord1| == 2 && |chord2| == 2
+  {
+      var a1 := if chord1[0] < chord1[1] then chord1[0] else chord1[1];
+      var b1 := if chord1[0] > chord1[1] then chord1[0] else chord1[1];
+      var a2 := if chord2[0] < chord2[1] then chord2[0] else chord2[1];
+      var b2 := if chord2[0] > chord2[1] then chord2[0] else chord2[1];
+      (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method HasChordIntersection(n: nat, chords: seq<seq<nat>>) returns (result: bool)
+      requires
+          n >= 2
+      requires
+          |chords| == n
+      requires
+          forall i :: 0 <= i < |chords| ==> (
+              |chords[i]| == 2 &&
+              chords[i][0] >= 1 && chords[i][0] <= 2 * n &&
+              chords[i][1] >= 1 && chords[i][1] <= 2 * n
+          )
+      requires
+          /* All endpoints are distinct */
+          forall i, j, k, l :: 
+              (0 <= i < |chords| && 0 <= j < |chords| && 
+              0 <= k < 2 && 0 <= l < 2 && 
+              (i != j || k != l)) ==> chords[i][k] != chords[j][l]
+      ensures
+          result == exists i, j :: 
+              0 <= i < |chords| && 0 <= j < |chords| && i != j &&
+              ChordIntersects(chords[i], chords[j])
+
+vc-code: |-
+  {
+      // TODO: implement
+      assume {:axiom} false;
+      result := false;
+  }
+
+vc-postamble: |-

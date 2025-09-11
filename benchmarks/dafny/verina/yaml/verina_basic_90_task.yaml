@@ -1,0 +1,47 @@
+vc-description: |-
+  /*
+  The task is to search for a specific integer in a 2D array where the rows and columns are sorted in non-decreasing order. The goal is to locate the key and return its position as row and column indices, or return (-1, -1) if the algorithm fails to find the key.
+
+  -----Input-----
+  The input consists of:
+  • a: A non-empty 2D array of integers (seq<seq<int>>). The array is guaranteed to contain at least one element.
+  • key: An integer value (int) to search for in the array.
+
+  -----Output-----
+  The output is a pair of integers (int, int):
+  • If the key is found, the first element represents the row index and the second element represents the column index such that get2d a row col = key.
+  • If the key is not found, the function returns (-1, -1).
+
+  -----Note-----
+  It is assumed that the input 2D array is sorted by rows and columns.
+  */
+vc-preamble: |-
+  predicate SlopeSearchPrecond(a: seq<seq<int>>, key: int)
+  {
+      |a| > 0 &&
+      (forall i :: 0 <= i < |a| ==> |a[i]| == |a[0]|) &&
+      (forall i, j :: 0 <= i < |a| && 0 <= j < |a[i]| - 1 ==> a[i][j] <= a[i][j + 1]) &&
+      (forall j, i {:trigger a[i][j]} :: 0 <= j < |a[0]| && 0 <= i < |a| - 1 ==> a[i][j] <= a[i + 1][j])
+  }
+  function Get2d(a: seq<seq<int>>, i: int, j: int): int
+      requires 0 <= i < |a|
+      requires 0 <= j < |a[i]|
+  {
+      a[i][j]
+  }
+vc-helpers: |
+vc-spec: |-
+  method SlopeSearch(a: seq<seq<int>>, key: int) returns (result: (int, int))
+      requires SlopeSearchPrecond(a, key)
+      ensures
+          var (m, n) := result;
+          ((m >= 0 && m < |a| && n >= 0 && n < |a[0]| && a[m][n] == key) ||
+           (m == -1 && n == -1 && forall i, j :: 0 <= i < |a| && 0 <= j < |a[i]| ==> a[i][j] != key))
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := (-1, -1);
+      // impl-end
+  }
+vc-postamble: |

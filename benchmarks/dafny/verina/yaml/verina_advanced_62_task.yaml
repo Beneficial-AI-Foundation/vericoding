@@ -1,0 +1,34 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that calculates how much rainwater would be trapped by a terrain represented as an array of heights. Imagine rainwater falls onto a terrain with varying elevation levels. The water can only be trapped between higher elevation points.
+  
+  Given an array of non-negative integers representing the elevation map where the width of each bar is 1 unit, calculate how much water can be trapped after it rains.
+  
+  Input:
+  The input consists of one array:
+  heights: An array of non-negative integers representing elevation levels.
+  
+  Output:
+  The output is an integer:
+  Returns the total amount of rainwater that can be trapped.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method Rain(heights: array<int>) returns (result: int)
+      requires forall i :: 0 <= i < heights.Length ==> heights[i] >= 0
+      ensures result >= 0
+      ensures heights.Length < 3 ==> result == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := 0;
+      // impl-end
+  }
+
+vc-postamble: |-

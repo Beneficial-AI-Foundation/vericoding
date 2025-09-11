@@ -1,0 +1,28 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that determines whether a given integer is divisible by 11. The method should return true if the number is divisible by 11 and false otherwise.
+  
+  -----Input-----
+  The input consists of:
+  n: An integer to check for divisibility by 11.
+  
+  -----Output-----
+  The output is a Boolean value:
+  Returns true if the input number is divisible by 11.
+  Returns false if the input number is not divisible by 11.
+  */
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method IsDivisibleBy11(n: int) returns (result: bool)
+      ensures result <==> (exists k: int :: k * 11 == n)
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := false;
+      // impl-end
+  }
+vc-postamble: |-

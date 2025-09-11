@@ -1,0 +1,48 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that finds the difference between the first even number and the first odd number in an array of integers. The method should process the array sequentially until it identifies the first even number and the first odd number, and then return the difference calculated as (first even number) minus (first odd number).
+  
+  -----Input-----
+  The input consists of:
+  a: An array of integers.
+  
+  -----Output-----
+  The output is an integer:
+  Returns the difference computed as the first even number minus the first odd number found in the array.
+  
+  -----Note-----
+  The input array is assumed to be non-empty and to contain at least one even number and one odd number.
+  */
+vc-preamble: |-
+  predicate IsEven(n: int)
+  {
+      n % 2 == 0
+  }
+
+  predicate IsOdd(n: int)
+  {
+      n % 2 != 0
+  }
+vc-helpers: |-
+
+vc-spec: |-
+  method FirstEvenOddDifference(a: array<int>) returns (result: int)
+      requires 
+          a.Length > 1 &&
+          (exists x :: 0 <= x < a.Length && IsEven(a[x])) &&
+          (exists x :: 0 <= x < a.Length && IsOdd(a[x]))
+      ensures 
+          exists i, j :: 
+              0 <= i < a.Length && 0 <= j < a.Length &&
+              IsEven(a[i]) && IsOdd(a[j]) &&
+              result == a[i] - a[j] &&
+              (forall k :: 0 <= k < i ==> IsOdd(a[k])) &&
+              (forall k :: 0 <= k < j ==> IsEven(a[k]))
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := 0;
+      // impl-end
+  }
+vc-postamble: |-

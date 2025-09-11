@@ -1,0 +1,29 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that calculates how much water can be trapped between elevations after it rains. The input is an array of non-negative integers representing an elevation map. Each index traps water depending on the min of max heights to its left and right.
+  
+  Input:
+  - height: An array of natural numbers representing elevations.
+  
+  Output:
+  - A natural number: total units of water that can be trapped.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method TrapRainWater(height: array<nat>) returns (result: nat)
+      requires height.Length >= 0
+      ensures result >= 0
+
+vc-code: |-
+  {
+      // impl-start
+      // TODO: implement
+      result := 0;
+      // impl-end
+  }
+
+vc-postamble: |-
