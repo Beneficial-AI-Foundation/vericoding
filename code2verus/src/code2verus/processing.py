@@ -48,8 +48,12 @@ def derive_output_path(
                 )
 
                 # Add subfolder based on file type
-                if is_yaml:
+                # Check if input already comes from yaml subdirectory to avoid double yaml paths
+                if is_yaml and "yaml" not in benchmark_path_obj.parts[-2:]:
                     return base_path / "yaml"
+                elif is_yaml:
+                    # Input already comes from yaml subdirectory, don't add another yaml level
+                    return base_path
                 else:
                     return base_path / "files"
         except (ValueError, IndexError):
@@ -87,41 +91,43 @@ async def process_item(
 
     # Determine file suffix based on target language
     if is_yaml:
-        suffix = ".yaml"
+        yaml_suffix = ".yaml"
+        code_suffix = ".rs" if target_language == "verus" else ".dfy" if target_language == "dafny" else ".lean" if target_language == "lean" else ".txt"
+        suffix = yaml_suffix  # For main paths, use yaml suffix initially
     elif target_language == "verus":
-        suffix = ".rs"
+        code_suffix = suffix = ".rs"
     elif target_language == "dafny":
-        suffix = ".dfy"
+        code_suffix = suffix = ".dfy"
     elif target_language == "lean":
-        suffix = ".lean"
+        code_suffix = suffix = ".lean"
     else:
-        suffix = ".txt"  # fallback
+        code_suffix = suffix = ".txt"  # fallback
 
     # Handle different dataset structures
     if "ground_truth" in item:
         # DafnyBench format
         source_code = item["ground_truth"]
         source_filename = Path(item["test_file"])
-        # Preserve the directory structure but change extension to .rs
-        relative_path = source_filename.with_suffix(suffix)
+        # Preserve the directory structure but change extension to target language
+        relative_path = source_filename.with_suffix(code_suffix)
     elif "org_input" in item:
         # ReForm-DafnyComp-Benchmark format
         source_code = item["org_input"]
         # Generate filename from item ID, preserve any directory structure
         source_filename = Path(f"item_{item.get('org_input_id', idx)}.dfy")
-        relative_path = source_filename.with_suffix(suffix)
+        relative_path = source_filename.with_suffix(code_suffix)
     elif "id" in item and "lean_code" in item:
         # Verina format (sunblaze-ucb/verina)
         source_code = item["lean_code"]
         # Use the actual ID from the dataset (e.g., "verina_basic_70")
         source_filename = Path(f"{item['id']}.lean")
         # Create a directory for each item
-        relative_path = Path(item["id"]) / source_filename.with_suffix(suffix).name
+        relative_path = Path(item["id"]) / source_filename.with_suffix(code_suffix).name
     else:
         # Fallback for unknown formats
         source_code = item.get("code", item.get("source", ""))
         source_filename = Path(f"item_{idx}.dfy")
-        relative_path = source_filename.with_suffix(suffix)
+        relative_path = source_filename.with_suffix(code_suffix)
 
     # Use the new path derivation logic
     artifact_base_path = derive_output_path(
@@ -139,7 +145,14 @@ async def process_item(
         benchmark_path,
     ):
         logfire.info(f"Skipping item {idx + 1}: {source_filename} (already successful)")
-        return {"path": artifact_path, "success": True}
+        # For already successful items, construct the expected output file path in compiling folder
+        status_artifact_path = artifact_path / "compiling"
+        if is_yaml:
+            yaml_output_filename = Path(output_filename).with_suffix(".yaml").name
+            expected_output_file_path = status_artifact_path / yaml_output_filename
+        else:
+            expected_output_file_path = status_artifact_path / output_filename
+        return {"path": expected_output_file_path, "success": True}
 
     logfire.info(f"Processing item {idx + 1}: {source_filename} ({source_language})")
 
@@ -216,7 +229,14 @@ async def process_item(
             # Save the main output (YAML for YAML files, target language files for regular files) in appropriate subfolder
             status_artifact_path = artifact_path / compilation_status
             status_artifact_path.mkdir(parents=True, exist_ok=True)
-            output_file_path = status_artifact_path / output_filename
+            
+            # For YAML input files, save with .yaml extension in yaml folder, otherwise use target language extension
+            if is_yaml:
+                yaml_output_filename = Path(output_filename).with_suffix(".yaml").name
+                output_file_path = status_artifact_path / yaml_output_filename
+            else:
+                output_file_path = status_artifact_path / output_filename
+                
             with open(output_file_path, "w") as output_file:
                 output_file.write(translated_code)
             logfire.info(
@@ -240,7 +260,7 @@ async def process_item(
                     files_path / relative_path.parent / compilation_status
                 )
                 code_output_path = (
-                    code_status_path / Path(output_filename).with_suffix(suffix).name
+                    code_status_path / output_filename
                 )
                 code_output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -278,7 +298,7 @@ async def process_item(
                 benchmark_path,
             )
 
-            result = {"path": artifact_path, "success": verification_success}
+            result = {"path": output_file_path, "success": verification_success}
 
             # Include debug context in result if requested
             if include_debug_in_result and debug_context:
@@ -299,7 +319,15 @@ async def process_item(
                 f"Rate limited on item {idx + 1}, file {source_filename}, attempt {attempt + 1}/{max_retries + 1}. Retrying in {delay:.2f}s..."
             )
             await asyncio.sleep(delay)
-    return {"path": artifact_path, "success": False}
+    
+    # For failed processing, construct expected output file path in non_compiling folder
+    status_artifact_path = artifact_path / "non_compiling"
+    if is_yaml:
+        yaml_output_filename = Path(output_filename).with_suffix(".yaml").name
+        expected_output_file_path = status_artifact_path / yaml_output_filename
+    else:
+        expected_output_file_path = status_artifact_path / output_filename
+    return {"path": expected_output_file_path, "success": False}
 
 
 async def check_existing_success(
