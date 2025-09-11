@@ -32,6 +32,7 @@ from vericoding.core.language_tools import (
     check_tool_availability,
     find_spec_files,
 )
+from vericoding.core.llm_providers import get_global_token_stats
 from vericoding.processing import process_files_parallel
 from vericoding.utils import (
     generate_summary,
@@ -428,6 +429,9 @@ def log_experiment_results_to_wandb(
     successful = [r for r in results if r.success]
     failed = [r for r in results if not r.success and not r.has_bypass]
     bypassed = [r for r in results if r.has_bypass]
+
+    # Get global token statistics for summary
+    token_stats = get_global_token_stats()
     
     # Log final summary metrics with better organization
     summary_metrics = {
@@ -446,6 +450,13 @@ def log_experiment_results_to_wandb(
         # Resource usage
         "resources/parallel_workers": config.max_workers,
         "resources/api_rate_limit_delay": config.api_rate_limit_delay,
+
+        # Token usage summary
+        "llm/total_input_tokens": token_stats['input_tokens'],
+        "llm/total_output_tokens": token_stats['output_tokens'],
+        "llm/total_tokens": token_stats['input_tokens'] + token_stats['output_tokens'],
+        "llm/total_calls": token_stats['total_calls'],
+        "llm/avg_tokens_per_call": (token_stats['input_tokens'] + token_stats['output_tokens']) / token_stats['total_calls'] if token_stats['total_calls'] > 0 else 0,
     }
     
     for key, value in summary_metrics.items():
@@ -857,6 +868,11 @@ def main():
     print(
         f"⚡ Parallel processing with {config.max_workers} workers completed in {processing_time:.2f}s"
     )
+
+    # Print token usage summary
+    token_stats = get_global_token_stats()
+    print(f"📊 Token Usage: {token_stats['input_tokens']:,} input + {token_stats['output_tokens']:,} output = {token_stats['input_tokens'] + token_stats['output_tokens']:,} total tokens ({token_stats['total_calls']} calls)")
+
     
     # Log comprehensive experiment summary to wandb (if enabled)
     if wandb_run:
