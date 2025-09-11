@@ -161,8 +161,7 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
             if all_cheats:
                 cheat_descriptions = [f"replacement {i}: {desc}" for i, pattern, desc in all_cheats]
                 cheat_warning = f"WARNING: Verification bypasses detected: {'; '.join(cheat_descriptions)}. These must be removed for final verification success."
-                logger.warning(cheat_warning)
-            
+
         # Apply replacements securely in reverse order to preserve positions
         modified_code = original_code
         
