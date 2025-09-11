@@ -1,18 +1,20 @@
 generate_code: |
   The task is to generate implementations and proofs for "sorry" placeholders in a Lean file.
   
-  INPUT: a Lean file containing "sorry" keywords in place of desired implementations and proofs.
+  INPUT: a Lean file containing {sorry_count} "sorry" keywords in place of desired implementations and proofs.
   
-  OUTPUT: Return a JSON array with one replacement for each "sorry" in the file, in order from top to bottom:
+  OUTPUT: Return a JSON array with EXACTLY {sorry_count} replacements (one for each "sorry" in the file), in order from top to bottom:
   ```json
   ["first_implementation", "second_proof", "third_implementation"]
   ```
   
   CRITICAL RULES:
+  - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
-  - Do not use "sorry" in any replacement
+  - AVOID verification bypasses: "sorry", "admit", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
+  - You may use "sorry" temporarily in early iterations to get error feedback, but must remove all verification bypasses for final success
   - Use valid Lean syntax for all replacements
   - You may include helper definitions, theorems, and lemmas in replacements when needed
   - For helper definitions added within a replacement, add comment -- LLM HELPER before them
@@ -24,22 +26,26 @@ generate_code: |
 fix_verification: |
   The task is to fix implementations and proofs that failed verification by providing replacements for any remaining "sorry" placeholders.
   
-  INPUT: a Lean file that contains "sorry" keywords in place of implementations/proofs that need to be fixed based on verification errors.
+  INPUT: The ORIGINAL file contains {sorry_count} "sorry" keywords that need to be replaced based on verification errors.
   
-  OUTPUT: Return a JSON array with one fixed replacement for each "sorry" in the file, in order from top to bottom:
+  OUTPUT: Return a JSON array with EXACTLY {sorry_count} fixed replacements (one for each "sorry" in the ORIGINAL file), in order from top to bottom:
   ```json
   ["fixed_implementation", "fixed_proof", "another_fixed_implementation"]
   ```
   
   CRITICAL RULES:
+  - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact fixed code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
-  - Do not use "sorry" in any replacement
+  - MINIMIZE verification bypasses: "sorry", "admit", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
+  - You may use "sorry" temporarily to get error feedback, but each iteration should remove more verification bypasses
   - Use valid Lean syntax for all replacements
   - You may include helper definitions, theorems, and lemmas in replacements when needed
   - For helper definitions added within a replacement, add comment -- LLM HELPER before them
   - Return ONLY a valid JSON array, no explanations or markdown
+  
+  ITERATION STRATEGY: You can use "sorry" strategically in intermediate iterations to understand the proof structure and get helpful error messages from Lean. However, you must progressively remove all verification bypasses - the final iteration must have zero verification bypasses for success.
   
   ERROR DETAILS from Lean verification:
   {errorDetails}

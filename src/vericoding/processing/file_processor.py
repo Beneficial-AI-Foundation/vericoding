@@ -1,10 +1,14 @@
 """File processing logic."""
 
+import hashlib
 import logging
 import time
+import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
+
+import wandb
 
 from ..core.config import ProcessingConfig
 from ..core.llm_providers import create_llm_provider
@@ -12,9 +16,8 @@ from ..core.prompts import PromptLoader
 from ..core.language_tools import verify_file
 from ..core.llm_providers import call_llm
 from ..utils.io_utils import save_iteration_code
-import wandb
-import hashlib
 from .code_fixer import extract_code, apply_json_replacements
+from .cheat_checker import has_final_failure_cheats, check_for_cheats
 
 # Set up a basic logger
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -89,8 +92,10 @@ def process_spec_file(
         # Step 1: Generate code from specifications
         logger.info("  Step 1: Generating code from specifications...")
         try:
+            # Count sorries in original code for JSON array sizing
+            sorry_count = original_code.count("sorry")
             generate_prompt = prompt_loader.format_prompt(
-                "generate_code", code=original_code
+                "generate_code", code=original_code, sorry_count=sorry_count
             )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
@@ -124,7 +129,12 @@ def process_spec_file(
                 f.write("\n" + "-" * 80 + "\n")
         
         # Apply JSON replacements to original code (new approach)
-        generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
+        try:
+            generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
+        except Exception as e:
+            error_msg = f"Failed to apply JSON replacements: {str(e)}\n\nFull traceback:\n{traceback.format_exc()}"
+            logger.error(error_msg)
+            raise RuntimeError(error_msg) from e
         
         # Collect LLM response data
         if wandb.run:
@@ -171,8 +181,7 @@ def process_spec_file(
                 fix_prompts=[],
                 llm_responses=llm_responses if wandb.run and llm_responses else None
             )
-
-
+        
         # Save initial generated code
         save_iteration_code(config, relative_path, 1, generated_code, "generated")
 
@@ -201,7 +210,8 @@ def process_spec_file(
         current_code = generated_code
         success = False
         last_verification = None
-
+        
+        
         for iteration in range(1, config.max_iterations + 1):
             logger.info(
                 f"  Iteration {iteration}/{config.max_iterations}: Verifying..."
@@ -219,6 +229,30 @@ def process_spec_file(
             # Verify
             verification = verify_file(config, str(output_path))
             last_verification = verification
+            
+            # Check for cheats in final code - combine with lake build output
+            if config.language == "lean" and has_final_failure_cheats(current_code):
+                cheats = check_for_cheats(current_code)
+                cheat_descriptions = [desc for _, desc in cheats]
+                logger.info(f"    ⚠️ Final code contains verification bypasses: {'; '.join(cheat_descriptions)}")
+                
+                # Combine cheat message with original verification result
+                cheat_message = f"VERIFICATION BYPASSES DETECTED: {'; '.join(cheat_descriptions)}. Code contains verification bypasses and cannot be considered successfully verified."
+                
+                if verification.success:
+                    # Lake build succeeded but cheats found
+                    combined_error = f"{cheat_message}\n\nNote: Lake build succeeded but verification bypasses prevent final success."
+                    logger.info("    ✗ Marking as failed due to verification bypasses (lake build succeeded)")
+                else:
+                    # Lake build failed AND cheats found - combine both messages
+                    original_error = verification.error or "Lake build failed"
+                    combined_error = f"{cheat_message}\n\nOriginal lake build output:\n{original_error}"
+                    logger.info("    ✗ Failed due to both lake build errors AND verification bypasses")
+                
+                verification = replace(verification,
+                    success=False,
+                    error=combined_error
+                )
             
             # Log verification attempt to wandb
             if wandb.run:
@@ -273,16 +307,20 @@ def process_spec_file(
 
             # Try to fix issues (both compilation and verification errors)
             error_details = verification.error or "Unknown error"
+            
 
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
                 logger.info("    Attempting to fix errors...")
+                # Count sorries in original code for JSON array sizing (not current code!)
+                sorry_count = original_code.count("sorry")
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
                     code=current_code,
                     original_code=original_code,
                     errorDetails=error_details,
                     iteration=iteration,
+                    sorry_count=sorry_count,
                 )
 
                 # Track fix prompt for W&B logging
@@ -314,7 +352,12 @@ def process_spec_file(
                     
                     # Apply JSON replacements for fix to the ORIGINAL file (which has placeholders)
                     # This ensures we're replacing sorry/vc-code tags, not broken implementations
-                    fixed_code, fix_json_error = apply_json_replacements(config, original_code, fix_response)
+                    try:
+                        fixed_code, fix_json_error = apply_json_replacements(config, original_code, fix_response)
+                    except Exception as e:
+                        error_msg = f"Failed to apply JSON replacements: {str(e)}\n\nFull traceback:\n{traceback.format_exc()}"
+                        logger.error(error_msg)
+                        raise RuntimeError(error_msg) from e
                     
                     # Collect LLM fix response data
                     if wandb.run:
@@ -343,9 +386,8 @@ def process_spec_file(
                                 "",
                                 time.time()
                             )
-                        break  # Skip to next iteration
-
-
+                        continue  # Skip to next iteration
+                    
                     current_code = fixed_code
                     logger.info(f"    Generated fix for iteration {iteration}")
                     

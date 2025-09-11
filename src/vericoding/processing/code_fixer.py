@@ -144,7 +144,7 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
         if expected_count == 0:
             logger.info("  ✓ No placeholders found to replace")
             return original_code, None
-            
+        
         # Apply replacements securely in reverse order to preserve positions
         modified_code = original_code
         

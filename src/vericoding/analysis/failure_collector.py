@@ -34,7 +34,7 @@ class FailureCollector:
             "iteration": iteration,
             "spec_hash": hashlib.md5(spec_code.encode()).hexdigest()[:8],
             "code_hash": hashlib.md5(generated_code.encode()).hexdigest()[:8],
-            "error_msg": error_msg[:1000],  # Truncate long errors
+            "error_msg": error_msg,  # Don't truncate error messages
             "proof_state": proof_state or "",
             "timestamp": time.time(),
             "metadata": metadata or {}
