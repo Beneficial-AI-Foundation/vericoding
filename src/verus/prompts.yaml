@@ -1,18 +1,20 @@
 generate_code: |
-  The task is to generate implementations for `<vc-code>` sections in a Verus file.
+  The task is to generate implementations for `<vc-code>` and `<vc-helpers>` sections in a Verus file.
   
-  INPUT: a Verus file containing {placeholder_count} `<vc-code>` tags around placeholder implementations that need to be filled in.
+  INPUT: a Verus file containing {placeholder_count} placeholder sections (`<vc-code>` and/or `<vc-helpers>` tags) that need to be filled in.
   
-  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} replacements (one for each `<vc-code>` section in the file), in order from top to bottom:
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} replacements (one for each placeholder section in the file), in order from top to bottom:
   ```json
-  ["{{\n    let mut low = 0;\n    // implementation here\n}}", "{{\n    // second implementation\n}}"]
+  ["{{\n    let mut low = 0;\n    // implementation here\n}}", "{{\n    // helper code\n}}", "{{\n    // second implementation\n}}"]
   ```
   
   CRITICAL RULES:
-  - The ORIGINAL file contains EXACTLY {placeholder_count} `<vc-code>` sections - your JSON array must have EXACTLY {placeholder_count} elements
-  - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
-  - Each replacement should be the exact code that will replace everything between the `<vc-code>` tags
-  - Include opening/closing braces if they were in the original `<vc-code>` content
+  - The ORIGINAL file contains EXACTLY {placeholder_count} placeholder sections - your JSON array must have EXACTLY {placeholder_count} elements
+  - Provide exactly one replacement for each placeholder section in the file, in the exact order they appear (top to bottom)
+  - Each replacement should be the exact code that will replace everything between the tags (`<vc-code>` or `<vc-helpers>`)
+  - For `<vc-code>` sections: Provide main implementation code
+  - For `<vc-helpers>` sections: Provide helper functions, lemmas, or utility code
+  - Include opening/closing braces if they were in the original placeholder content
   - AVOID verification bypasses: `assume` statements, `unimplemented!()`, or other verification shortcuts
   - Use valid Verus/Rust syntax for all implementations
   - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
@@ -21,24 +23,26 @@ generate_code: |
   - Use proof blocks with `proof {{ ... }}` when necessary
   - Return ONLY a valid JSON array, no explanations or markdown
   
-  VERUS FILE WITH <vc-code> SECTIONS:
+  VERUS FILE WITH PLACEHOLDER SECTIONS:
   {code}
 
 fix_verification: |
-  The task is to fix implementations in `<vc-code>` sections that failed verification.
+  The task is to fix implementations in `<vc-code>` and `<vc-helpers>` sections that failed verification.
   
-  INPUT: The ORIGINAL file contains {placeholder_count} `<vc-code>` sections that need to be fixed based on verification errors.
+  INPUT: The ORIGINAL file contains {placeholder_count} placeholder sections (`<vc-code>` and/or `<vc-helpers>` tags) that need to be fixed based on verification errors.
   
-  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} fixed replacements (one for each `<vc-code>` section in the ORIGINAL file), in order from top to bottom:
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} fixed replacements (one for each placeholder section in the ORIGINAL file), in order from top to bottom:
   ```json
-  ["{{\n    let mut low = 0;\n    // fixed implementation here\n}}", "{{\n    // second fixed implementation\n}}"]
+  ["{{\n    let mut low = 0;\n    // fixed implementation here\n}}", "{{\n    // fixed helper code\n}}", "{{\n    // second fixed implementation\n}}"]
   ```
   
   CRITICAL RULES:
-  - The ORIGINAL file contains EXACTLY {placeholder_count} `<vc-code>` sections - your JSON array must have EXACTLY {placeholder_count} elements
-  - Provide exactly one replacement for each `<vc-code>` section in the file, in the exact order they appear (top to bottom)
-  - Each replacement should be the exact fixed code that will replace everything between the `<vc-code>` tags
-  - Include opening/closing braces if they were in the original `<vc-code>` content
+  - The ORIGINAL file contains EXACTLY {placeholder_count} placeholder sections - your JSON array must have EXACTLY {placeholder_count} elements
+  - Provide exactly one replacement for each placeholder section in the file, in the exact order they appear (top to bottom)
+  - Each replacement should be the exact fixed code that will replace everything between the tags (`<vc-code>` or `<vc-helpers>`)
+  - For `<vc-code>` sections: Provide main implementation code
+  - For `<vc-helpers>` sections: Provide helper functions, lemmas, or utility code
+  - Include opening/closing braces if they were in the original placeholder content
   - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues
   - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
   - Use proof blocks with `proof {{ ... }}` for complex proofs

@@ -94,9 +94,9 @@ def process_spec_file(
         try:
             # Count placeholders in original code for JSON array sizing
             if config.language == "lean":
-                placeholder_count = original_code.count("sorry")
+                placeholder_count = original_code.count("sorry") + original_code.count("<vc-helpers>")
             elif config.language in ("dafny", "verus"):
-                placeholder_count = original_code.count("<vc-code>")
+                placeholder_count = original_code.count("<vc-code>") + original_code.count("<vc-helpers>")
             else:
                 raise ValueError(f"Unsupported language: {config.language}. Supported languages are: lean, dafny, verus")
             
@@ -320,9 +320,9 @@ def process_spec_file(
                 logger.info("    Attempting to fix errors...")
                 # Count placeholders in original code for JSON array sizing (not current code!)
                 if config.language == "lean":
-                    placeholder_count = original_code.count("sorry")
+                    placeholder_count = original_code.count("sorry") + original_code.count("<vc-helpers>")
                 elif config.language in ("dafny", "verus"):
-                    placeholder_count = original_code.count("<vc-code>")
+                    placeholder_count = original_code.count("<vc-code>") + original_code.count("<vc-helpers>")
                 else:
                     raise ValueError(f"Unsupported language: {config.language}. Supported languages are: lean, dafny, verus")
                 

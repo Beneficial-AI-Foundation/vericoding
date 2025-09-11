@@ -116,7 +116,7 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
         
         # Find all placeholders in the original code that we're allowed to replace
         if config.language == "lean":
-            # For Lean: find all 'sorry' occurrences
+            # For Lean: find all 'sorry' occurrences and <vc-helpers> sections
             placeholder_positions = []
             code_copy = original_code
             search_start = 0
@@ -124,16 +124,26 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 pos = code_copy.find("sorry", search_start)
                 if pos == -1:
                     break
-                placeholder_positions.append(pos)
+                placeholder_positions.append(('sorry', pos))
                 search_start = pos + 1
+            
+            # Also find vc-helpers sections
+            vc_helpers_pattern = r'<vc-helpers>(.*?)</vc-helpers>'
+            vc_helpers_matches = list(re.finditer(vc_helpers_pattern, original_code, re.DOTALL))
+            for match in vc_helpers_matches:
+                placeholder_positions.append(('vc-helpers', match.start()))
                 
+            # Sort by position to maintain order
+            placeholder_positions.sort(key=lambda x: x[1])
             expected_count = len(placeholder_positions)
             
         else:
-            # For Dafny/Verus: find all <vc-code> sections
+            # For Dafny/Verus: find all <vc-code> and <vc-helpers> sections
             vc_code_pattern = r'<vc-code>(.*?)</vc-code>'
+            vc_helpers_pattern = r'<vc-helpers>(.*?)</vc-helpers>'
             vc_code_matches = list(re.finditer(vc_code_pattern, original_code, re.DOTALL))
-            expected_count = len(vc_code_matches)
+            vc_helpers_matches = list(re.finditer(vc_helpers_pattern, original_code, re.DOTALL))
+            expected_count = len(vc_code_matches) + len(vc_helpers_matches)
         
         # Validate replacement count
         if len(replacements) != expected_count:
@@ -149,54 +159,95 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
         modified_code = original_code
         
         if config.language == "lean":
-            # Replace 'sorry' in reverse order (last first) to preserve positions
+            # Replace placeholders in reverse order (last first) to preserve positions
             for i in range(len(replacements) - 1, -1, -1):
                 replacement = replacements[i]
                 if not isinstance(replacement, str):
                     error = f"JSON parsing failed: Replacement {i} must be a string, got {type(replacement)}"
                     logger.error(error)
                     return original_code, error
+                
+                placeholder_type, _ = placeholder_positions[i]
+                
+                if placeholder_type == 'sorry':
+                    # Find the i-th sorry (0-indexed) among all sorries
+                    sorry_positions = [pos for ptype, pos in placeholder_positions if ptype == 'sorry']
+                    if i >= len(sorry_positions):
+                        # This is not a sorry replacement, skip
+                        continue
                     
-                # Find the i-th sorry (0-indexed)
-                sorry_count = 0
-                pos = 0
-                target_pos = -1
-                while pos < len(modified_code):
-                    next_pos = modified_code.find("sorry", pos)
-                    if next_pos == -1:
-                        break
-                    if sorry_count == i:
-                        target_pos = next_pos
-                        break
-                    sorry_count += 1
-                    pos = next_pos + 1
+                    # Find this specific sorry position in the current modified_code
+                    current_sorry_positions = []
+                    pos = 0
+                    while pos < len(modified_code):
+                        next_pos = modified_code.find("sorry", pos)
+                        if next_pos == -1:
+                            break
+                        current_sorry_positions.append(next_pos)
+                        pos = next_pos + 1
+                    
+                    sorry_index = sum(1 for ptype, _ in placeholder_positions[:i] if ptype == 'sorry')
+                    if sorry_index >= len(current_sorry_positions):
+                        error = f"JSON replacement failed: Could not find sorry #{sorry_index} for replacement"
+                        logger.error(error)
+                        return original_code, error
+                    
+                    target_pos = current_sorry_positions[sorry_index]
+                    modified_code = modified_code[:target_pos] + replacement + modified_code[target_pos + 5:]
                 
-                if target_pos == -1:
-                    error = f"JSON replacement failed: Could not find sorry #{i} for replacement"
-                    logger.error(error)
-                    return original_code, error
-                
-                # Replace this specific 'sorry'
-                modified_code = modified_code[:target_pos] + replacement + modified_code[target_pos + 5:]
+                elif placeholder_type == 'vc-helpers':
+                    # Handle vc-helpers sections using line-based approach like Dafny/Verus
+                    lines = modified_code.split('\n')
+                    
+                    # Find vc-helpers sections 
+                    vc_helpers_sections = []
+                    for line_idx, line in enumerate(lines):
+                        if '<vc-helpers>' in line:
+                            # Find the corresponding closing tag
+                            for j in range(line_idx + 1, len(lines)):
+                                if '</vc-helpers>' in lines[j]:
+                                    vc_helpers_sections.append((line_idx, j))
+                                    break
+                    
+                    # Count how many vc-helpers placeholders come before this one
+                    helpers_index = sum(1 for ptype, _ in placeholder_positions[:i] if ptype == 'vc-helpers')
+                    if helpers_index >= len(vc_helpers_sections):
+                        error = f"JSON replacement failed: Could not find vc-helpers section #{helpers_index} for replacement"
+                        logger.error(error)
+                        return original_code, error
+                    
+                    start_line, end_line = vc_helpers_sections[helpers_index]
+                    replacement_lines = replacement.split('\n')
+                    lines[start_line+1:end_line] = replacement_lines
+                    modified_code = '\n'.join(lines)
                 
         else:
             # Use line-based replacement for Dafny/Verus to preserve comment structure
             lines = modified_code.split('\n')
             
-            # Find all vc-code sections and replace in reverse order (last first) to preserve line numbers
+            # Find all vc-code and vc-helpers sections and replace in reverse order (last first) to preserve line numbers
             vc_sections = []
             for i, line in enumerate(lines):
                 if '<vc-code>' in line:
                     # Find the corresponding closing tag
                     for j in range(i + 1, len(lines)):
                         if '</vc-code>' in lines[j]:
-                            vc_sections.append((i, j))
+                            vc_sections.append((i, j, 'vc-code'))
+                            break
+                elif '<vc-helpers>' in line:
+                    # Find the corresponding closing tag
+                    for j in range(i + 1, len(lines)):
+                        if '</vc-helpers>' in lines[j]:
+                            vc_sections.append((i, j, 'vc-helpers'))
                             break
             
             if len(vc_sections) != len(replacements):
-                error = f"JSON replacement failed: Found {len(vc_sections)} <vc-code> sections but got {len(replacements)} replacements"
+                error = f"JSON replacement failed: Found {len(vc_sections)} placeholder sections but got {len(replacements)} replacements"
                 logger.error(error)
                 return original_code, error
+            
+            # Sort sections by line number to maintain order, then apply replacements in reverse order to preserve line indices
+            vc_sections.sort(key=lambda x: x[0])  # Sort by start line number
             
             # Apply replacements in reverse order to preserve line indices
             for section_idx in range(len(vc_sections) - 1, -1, -1):
@@ -206,7 +257,7 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                     logger.error(error)
                     return original_code, error
                 
-                start_line, end_line = vc_sections[section_idx]
+                start_line, end_line, section_type = vc_sections[section_idx]
                 
                 # Split replacement into lines
                 replacement_lines = replacement.split('\n')
@@ -216,12 +267,14 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
             
             modified_code = '\n'.join(lines)
         
-        # Final verification for Dafny/Verus - ensure vc-code sections are handled
+        # Final verification for Dafny/Verus - ensure placeholder sections are handled
         if config.language != "lean":
-            # Verify that we have the expected number of <vc-code> sections after replacement
-            remaining_vc_sections = len(re.findall(r'<vc-code>.*?</vc-code>', modified_code, re.DOTALL))
-            if remaining_vc_sections != len(replacements):
-                error = f"JSON replacement failed: Expected {len(replacements)} <vc-code> sections after replacement, but found {remaining_vc_sections}"
+            # Verify that we have the expected number of placeholder sections after replacement
+            remaining_vc_code = len(re.findall(r'<vc-code>.*?</vc-code>', modified_code, re.DOTALL))
+            remaining_vc_helpers = len(re.findall(r'<vc-helpers>.*?</vc-helpers>', modified_code, re.DOTALL))
+            remaining_total = remaining_vc_code + remaining_vc_helpers
+            if remaining_total != len(replacements):
+                error = f"JSON replacement failed: Expected {len(replacements)} placeholder sections after replacement, but found {remaining_total} (<vc-code>: {remaining_vc_code}, <vc-helpers>: {remaining_vc_helpers})"
                 logger.error(error)
                 return original_code, error
                     
