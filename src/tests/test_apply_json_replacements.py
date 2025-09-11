@@ -676,7 +676,6 @@ def third : Nat := 3
         """Test that Dafny preserves order of mixed vc-code and vc-helpers."""
         original_code = """
 <vc-helpers>
-// Helper A
 </vc-helpers>
 
 method Method1() {
