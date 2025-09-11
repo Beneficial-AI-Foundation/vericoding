@@ -8,6 +8,8 @@ generate_code: |
   ["first_implementation", "second_proof", "third_implementation"]
   ```
   STRATEGY: Do a high-level plan using sorries. Then focus on eliminating the sorries one by one. To eliminate a sorry, try a proof. Likely there will be an error. Replace every line after that error (until the end of the subgoal) with trace_state and then sorry. Then slowly push the subproof forward one correct line at a time, backtracking a line when the line is wrong. Also try grind on small sorries.
+
+  To summarize, if you see no proof at all, make a high-level sketch proof that uses sorries. If you see a high-level sketch proof that uses sorries, insert trace_state before the first sorry. If you see a proof that has trace_state, try to add one more line right before the trace_state. Comment your code profusely with what the status is, since that context will be valuable for the next LLM.
   
   CRITICAL RULES:
   - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
@@ -35,7 +37,9 @@ fix_verification: |
   ```
 
   STRATEGY: Do a high-level plan using sorries. Then focus on eliminating the sorries one by one. To eliminate a sorry, try a proof. Likely there will be an error. Replace every line after that error (until the end of the subgoal) with trace_state and then sorry. Then slowly push the subproof forward one correct line at a time, backtracking a line when the line is wrong. Also try grind on small sorries.
-  
+
+  To summarize, if you see no proof at all, make a high-level sketch proof that uses sorries. If you see a high-level sketch proof that uses sorries, insert trace_state before the first sorry. If you see a proof that has trace_state, try to add one more line right before the trace_state. Comment your code profusely with what the status is, since that context will be valuable for the next LLM.
+
   CRITICAL RULES:
   - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
