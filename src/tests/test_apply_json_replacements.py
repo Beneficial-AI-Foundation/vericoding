@@ -58,11 +58,14 @@ def factorial (n : Nat) : Nat := sorry
 """
         llm_response = '''["n.factorial"]'''
         
+        expected_result = """
+def factorial (n : Nat) : Nat := n.factorial
+"""
+        
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
         
         assert error is None
-        assert "n.factorial" in result
-        assert "sorry" not in result
+        assert result == expected_result
 
     def test_multiple_sorry_replacements(self, lean_config):
         """Test replacing multiple sorry placeholders."""
@@ -75,13 +78,18 @@ def fibonacci (n : Nat) : Nat := sorry
 """
         llm_response = '''["n.factorial", "by simp [factorial]", "if n < 2 then 1 else fibonacci (n-1) + fibonacci (n-2)"]'''
         
+        expected_result = """
+def factorial (n : Nat) : Nat := n.factorial
+
+theorem factorial_pos (n : Nat) : factorial n > 0 := by simp [factorial]
+
+def fibonacci (n : Nat) : Nat := if n < 2 then 1 else fibonacci (n-1) + fibonacci (n-2)
+"""
+        
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
         
         assert error is None
-        assert "n.factorial" in result
-        assert "by simp [factorial]" in result
-        assert "fibonacci (n-1)" in result
-        assert "sorry" not in result
+        assert result == expected_result
 
     def test_single_vc_helpers_replacement(self, lean_config):
         """Test replacing a single vc-helpers section."""
@@ -94,11 +102,19 @@ def main_function : Nat := 42
 """
         llm_response = '''["-- LLM HELPER\\nlemma helper_lemma : True := by trivial"]'''
         
+        expected_result = """
+<vc-helpers>
+-- LLM HELPER
+lemma helper_lemma : True := by trivial
+</vc-helpers>
+
+def main_function : Nat := 42
+"""
+        
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
         
         assert error is None
-        assert "helper_lemma" in result
-        assert "Helper functions go here" not in result
+        assert result == expected_result
 
     def test_mixed_sorry_and_vc_helpers(self, lean_config):
         """Test replacing both sorry and vc-helpers in correct order."""
@@ -113,14 +129,21 @@ theorem factorial_pos (n : Nat) : factorial n > 0 := sorry
 """
         llm_response = '''["-- LLM HELPER\\nlemma nat_pos : ∀ n, n.factorial > 0 := by trivial", "n.factorial", "by apply nat_pos"]'''
         
+        expected_result = """
+<vc-helpers>
+-- LLM HELPER
+lemma nat_pos : ∀ n, n.factorial > 0 := by trivial
+</vc-helpers>
+
+def factorial (n : Nat) : Nat := n.factorial
+
+theorem factorial_pos (n : Nat) : factorial n > 0 := by apply nat_pos
+"""
+        
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
         
         assert error is None
-        assert "nat_pos" in result  # From vc-helpers
-        assert "n.factorial" in result  # From first sorry
-        assert "by apply nat_pos" in result  # From second sorry
-        assert "Helper code here" not in result
-        assert "sorry" not in result  # Since we don't put sorry in vc-helpers
+        assert result == expected_result
 
     def test_wrong_replacement_count_lean(self, lean_config):
         """Test error when replacement count doesn't match placeholder count."""
@@ -165,12 +188,22 @@ method FindMax(a: array<int>) returns (max: int)
 """
         llm_response = '''["max := a[0];\\n    for i := 1 to a.Length {\\n        if a[i] > max { max := a[i]; }\\n    }"]'''
         
+        expected_result = """
+method FindMax(a: array<int>) returns (max: int)
+{
+    <vc-code>
+max := a[0];
+    for i := 1 to a.Length {
+        if a[i] > max { max := a[i]; }
+    }
+    </vc-code>
+}
+"""
+        
         result, error = apply_json_replacements(dafny_config, original_code, llm_response)
         
         assert error is None
-        assert "max := a[0]" in result
-        assert "for i := 1 to a.Length" in result
-        assert "Implementation here" not in result
+        assert result == expected_result
 
     def test_multiple_vc_code_replacements(self, dafny_config):
         """Test replacing multiple vc-code sections."""
@@ -191,13 +224,28 @@ method Method2()
 """
         llm_response = '''["var x := 0;\\n    x := x + 1;", "var y := 42;\\n    return y;"]'''
         
+        expected_result = """
+method Method1()
+{
+    <vc-code>
+var x := 0;
+    x := x + 1;
+    </vc-code>
+}
+
+method Method2() 
+{
+    <vc-code>
+var y := 42;
+    return y;
+    </vc-code>
+}
+"""
+        
         result, error = apply_json_replacements(dafny_config, original_code, llm_response)
         
         assert error is None
-        assert "var x := 0" in result
-        assert "var y := 42" in result
-        assert "First implementation" not in result
-        assert "Second implementation" not in result
+        assert result == expected_result
 
     def test_single_vc_helpers_replacement(self, dafny_config):
         """Test replacing a single vc-helpers section."""
@@ -240,15 +288,33 @@ method FindMax(a: array<int>) returns (max: int)
 """
         llm_response = '''["function IsPositive(x: int): bool { x > 0 }", "max := 0;\\n    for i := 0 to a.Length {\\n        if a[i] > max { max := a[i]; }\\n    }", "lemma MaxIsMax()\\n    ensures true\\n{\\n}"]'''
         
+        expected_result = """
+<vc-helpers>
+function IsPositive(x: int): bool { x > 0 }
+</vc-helpers>
+
+method FindMax(a: array<int>) returns (max: int)
+{
+    <vc-code>
+max := 0;
+    for i := 0 to a.Length {
+        if a[i] > max { max := a[i]; }
+    }
+    </vc-code>
+}
+
+<vc-helpers>
+lemma MaxIsMax()
+    ensures true
+{
+}
+</vc-helpers>
+"""
+        
         result, error = apply_json_replacements(dafny_config, original_code, llm_response)
         
         assert error is None
-        assert "function IsPositive" in result  # First vc-helpers
-        assert "max := 0" in result  # vc-code
-        assert "lemma MaxIsMax" in result  # Second vc-helpers
-        assert "Helper code" not in result
-        assert "Implementation" not in result
-        assert "More helpers" not in result
+        assert result == expected_result
 
     def test_wrong_replacement_count_dafny(self, dafny_config):
         """Test error when replacement count doesn't match."""
@@ -285,12 +351,31 @@ fn binary_search(arr: &Vec<i32>, target: i32) -> Option<usize> {
 """
         llm_response = '''["let mut low = 0;\\n    let mut high = arr.len();\\n    while low < high {\\n        let mid = low + (high - low) / 2;\\n        if arr[mid] == target {\\n            return Some(mid);\\n        }\\n        if arr[mid] < target {\\n            low = mid + 1;\\n        } else {\\n            high = mid;\\n        }\\n    }\\n    None"]'''
         
+        expected_result = """
+fn binary_search(arr: &Vec<i32>, target: i32) -> Option<usize> {
+    <vc-code>
+let mut low = 0;
+    let mut high = arr.len();
+    while low < high {
+        let mid = low + (high - low) / 2;
+        if arr[mid] == target {
+            return Some(mid);
+        }
+        if arr[mid] < target {
+            low = mid + 1;
+        } else {
+            high = mid;
+        }
+    }
+    None
+    </vc-code>
+}
+"""
+        
         result, error = apply_json_replacements(verus_config, original_code, llm_response)
         
         assert error is None
-        assert "let mut low = 0" in result
-        assert "while low < high" in result
-        assert "Binary search implementation" not in result
+        assert result == expected_result
 
     def test_multiple_vc_code_replacements(self, verus_config):
         """Test replacing multiple vc-code sections."""
@@ -502,26 +587,35 @@ def test : Nat := sorry
 """
         llm_response = '''["-- LLM HELPER\\nlemma helper1 : True := by trivial\\nlemma helper2 : False ∨ True := by simp", "by\\n  have h : True := helper1\\n  have h2 : False ∨ True := helper2\\n  exact 42"]'''
         
+        expected_result = """
+<vc-helpers>
+-- LLM HELPER
+lemma helper1 : True := by trivial
+lemma helper2 : False ∨ True := by simp
+</vc-helpers>
+
+def test : Nat := by
+  have h : True := helper1
+  have h2 : False ∨ True := helper2
+  exact 42
+"""
+        
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
         
         assert error is None
-        assert "lemma helper1" in result
-        assert "lemma helper2" in result  
-        # The second replacement goes where "sorry" was, so check the def line has the replacement
-        assert "def test : Nat := by" in result
-        # Since the sorry is replaced, check that the replacement content exists somewhere
-        assert "exact 42" in result
+        assert result == expected_result
 
     def test_unicode_content(self, lean_config):
         """Test handling of unicode content in replacements."""
         original_code = "def test : Nat := sorry"
         llm_response = '''["∀ x : ℕ, x + 0 = x"]'''
         
+        expected_result = "def test : Nat := ∀ x : ℕ, x + 0 = x"
+        
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
         
         assert error is None
-        assert "∀ x : ℕ" in result
-        assert "sorry" not in result
+        assert result == expected_result
 
     def test_special_characters_in_replacements(self, dafny_config):
         """Test handling of special characters in replacements."""
@@ -557,19 +651,26 @@ def third : Nat := sorry
 """
         llm_response = '''["1", "-- Helper 1", "2", "-- Helper 2", "3"]'''
         
+        expected_result = """
+def first : Nat := 1
+
+<vc-helpers>
+-- Helper 1
+</vc-helpers>
+
+def second : Nat := 2
+
+<vc-helpers>
+-- Helper 2
+</vc-helpers>
+
+def third : Nat := 3
+"""
+        
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
         
         assert error is None
-        
-        # Check order by finding indices
-        lines = result.split('\n')
-        first_def_line = next(i for i, line in enumerate(lines) if 'def first' in line)
-        first_helper_line = next(i for i, line in enumerate(lines) if 'Helper 1' in line)
-        second_def_line = next(i for i, line in enumerate(lines) if 'def second' in line)
-        second_helper_line = next(i for i, line in enumerate(lines) if 'Helper 2' in line)
-        third_def_line = next(i for i, line in enumerate(lines) if 'def third' in line)
-        
-        assert first_def_line < first_helper_line < second_def_line < second_helper_line < third_def_line
+        assert result == expected_result
 
     def test_dafny_mixed_order_preservation(self, dafny_config):
         """Test that Dafny preserves order of mixed vc-code and vc-helpers."""
@@ -596,17 +697,32 @@ method Method2() {
 """
         llm_response = '''["function HelperA(): int { 1 }", "var x := 1;", "function HelperB(): int { 2 }", "var y := 2;"]'''
         
+        expected_result = """
+<vc-helpers>
+function HelperA(): int { 1 }
+</vc-helpers>
+
+method Method1() {
+    <vc-code>
+var x := 1;
+    </vc-code>
+}
+
+<vc-helpers>
+function HelperB(): int { 2 }
+</vc-helpers>
+
+method Method2() {
+    <vc-code>
+var y := 2;
+    </vc-code>
+}
+"""
+        
         result, error = apply_json_replacements(dafny_config, original_code, llm_response)
         
         assert error is None
-        
-        # Check that functions appear in correct order
-        helper_a_pos = result.find("HelperA")
-        code_1_pos = result.find("var x := 1")
-        helper_b_pos = result.find("HelperB")
-        code_2_pos = result.find("var y := 2")
-        
-        assert helper_a_pos < code_1_pos < helper_b_pos < code_2_pos
+        assert result == expected_result
 
 
 if __name__ == "__main__":
