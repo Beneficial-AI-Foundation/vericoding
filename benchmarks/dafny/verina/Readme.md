@@ -1,0 +1,1 @@
+The yaml files were obtained with `code2verus --benchmark ../benchmarks/verus/verina/yaml/ --source-language verus --target-language dafny --file-pattern "*.yaml" --max-concurrent 10`. `code2verus` is from https://github.com/Beneficial-AI-Foundation/vericoding/pull/181

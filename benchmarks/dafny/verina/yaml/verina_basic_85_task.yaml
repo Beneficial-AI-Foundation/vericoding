@@ -1,0 +1,36 @@
+vc-description: |-
+  /*
+  This problem focuses on reversing an array of integers. The goal is to take an input array and produce a new array with the elements arranged in the reverse order.
+  
+  -----Input-----
+  The input consists of:
+  • a: An array of integers, which may be empty, contain one element, or many elements.
+  
+  -----Output-----
+  The output is an array of integers that:
+  • Has the same length as the input array.
+  • Contains the same elements as the input array, but in reverse order.
+  • For every valid index i in the input array, the output at index i is equal to the element at index (a.size - 1 - i) from the input array.
+  
+  -----Note-----
+  There are no specific preconditions; the method should correctly handle any array of integers.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method Reverse(a: array<int>) returns (result: array<int>)
+      ensures result.Length == a.Length
+      ensures forall i :: 0 <= i < a.Length ==> result[i] == a[a.Length - 1 - i]
+
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := new int[0];
+      // impl-end
+  }
+
+vc-postamble: |-

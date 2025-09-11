@@ -1,0 +1,43 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that finds the majority element in a list of natural numbers. The majority element is defined as the element that appears more than ⌊n / 2⌋ times in the list, where n is the total number of elements.
+  
+  You may assume that the input list always contains a majority element.
+  
+  Input: The input consists of one list:
+  xs: A list of natural numbers (array<nat>), where a majority element is guaranteed to exist.
+  
+  Output: The output is a natural number:
+  Returns the element that appears more than half the time in the input list.
+  */
+
+vc-preamble: |-
+  function CountMatches(xs: seq<nat>, x: nat): nat
+      decreases |xs|
+  {
+      if |xs| == 0 then
+          0
+      else
+          var firstMatch: nat := if xs[0] == x then 1 else 0;
+          firstMatch + CountMatches(xs[1..], x)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method MajorityElement(xs: array<nat>) returns (result: nat)
+      requires 
+          xs.Length > 0
+      requires
+          exists x: nat :: CountMatches(xs[..], x) > xs.Length / 2
+      ensures
+          CountMatches(xs[..], result) > xs.Length / 2
+
+vc-code: |-
+  {
+      // TODO: implement
+      assume {:axiom} false;
+      result := 0;
+  }
+
+vc-postamble: |-

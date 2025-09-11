@@ -1,0 +1,36 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that determines whether an array of integers contains only one distinct element. The method should return true if the array is empty or if every element in the array is the same, and false if there are at least two different elements.
+  
+  -----Input-----
+  The input consists of:
+  a: An array of integers.
+  
+  -----Output-----
+  The output is a Boolean value:
+  Returns true if the array is empty or if all elements in the array are identical.
+  Returns false if the array contains at least two distinct elements.
+  
+  -----Note-----
+  The input array is assumed to be non-null.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method HasOnlyOneDistinctElement(a: array<int>) returns (result: bool)
+      requires a.Length > 0
+      ensures result ==> (forall i, j :: 0 <= i < a.Length && 0 <= j < a.Length ==> a[i] == a[j])
+      ensures !result ==> (exists i :: 0 <= i < a.Length && a[i] != a[0])
+
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := false;
+      // impl-end
+  }
+
+vc-postamble: |-

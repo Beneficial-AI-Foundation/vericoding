@@ -1,0 +1,34 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that takes an array of integers and returns a new array. For each index i in the input array, the output at i is equal to the product of all numbers in the array except the number at index i. The solution must run in O(n) time without using the division operation.
+  
+  The input is an array of integers. For example, [1,2,3,4].
+  
+  The output is an array of integers where each element at index i is the product of every input element except the one at that index. For example, for the input [1,2,3,4], the output should be [24,12,8,6]. Each intermediate product is guaranteed to fit in a 32-bit integer.
+  */
+
+vc-preamble: |-
+  /* Helper: Product of a sequence of integers */
+  function ListProduct(nums: seq<int>): int
+      decreases |nums|
+  {
+      if |nums| == 0 then 1 else nums[0] * ListProduct(nums[1..])
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method ProductExceptSelf(nums: array<int>) returns (result: array<int>)
+      ensures
+          result.Length == nums.Length
+      ensures
+          forall i :: 0 <= i < nums.Length ==> 
+              result[i] == ListProduct(nums[..i]) * ListProduct(nums[i+1..])
+
+vc-code: |-
+  {
+      result := new int[nums.Length];
+      assume {:axiom} false;
+  }
+
+vc-postamble: |-

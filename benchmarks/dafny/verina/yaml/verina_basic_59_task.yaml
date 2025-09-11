@@ -1,0 +1,34 @@
+vc-description: |-
+  /*
+  Given an integer x, determine a pair (a, b) where the first element is twice the value of x and the second element is four times the value of x.
+  
+  -----Input-----
+  The input consists of:
+  • x: An integer.
+  
+  -----Output-----
+  The output is a tuple (a, b) where:
+  • a = 2 * x
+  • b = 4 * x
+  
+  -----Note-----
+  There are no additional preconditions; the method is defined for all integers.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method DoubleQuadruple(x: int) returns (result: (int, int))
+      ensures result.0 == 2 * x
+      ensures result.1 == 2 * result.0
+
+vc-code: |-
+  {
+      // impl-start
+      result := (2 * x, 4 * x);
+      // impl-end
+  }
+
+vc-postamble: |-

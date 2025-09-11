@@ -1,0 +1,46 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that searches an array of integers to locate the first odd number. The method should return an Option where Some(index) indicates the smallest index of an odd number, and None indicates no odd number exists.
+  
+  -----Input-----
+  The input consists of:
+  a: An array of integers.
+  
+  -----Output-----
+  The output is an Option<nat>:
+  - If Some(idx), then idx represents the smallest index of an odd number in the array.
+  - If None, then there are no odd numbers in the array.
+  
+  -----Note-----
+  - The input array is assumed to be non-null.
+  - If multiple odd numbers are present, the index returned should correspond to the first occurrence.
+  */
+
+vc-preamble: |-
+  predicate IsOdd(x: int)
+  {
+      x % 2 != 0
+  }
+
+  datatype Option<T> = None | Some(value: T)
+
+vc-helpers: |-
+
+vc-spec: |-
+  method FindFirstOdd(a: array<int>) returns (result: Option<nat>)
+      requires a.Length > 0
+      ensures
+          match result {
+              case Some(idx) => idx < a.Length && IsOdd(a[idx]) &&
+                  forall j :: 0 <= j < idx ==> !IsOdd(a[j])
+              case None => forall i :: 0 <= i < a.Length ==> !IsOdd(a[i])
+          }
+
+vc-code: |-
+  {
+      // TODO: implement
+      assume {:axiom} false;
+      return None;
+  }
+
+vc-postamble: |-

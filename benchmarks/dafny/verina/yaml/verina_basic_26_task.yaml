@@ -1,0 +1,34 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that determines whether a given integer is even. In other words, the method should return true if the number is even and false if the number is odd.
+  
+  -----Input-----
+  The input consists of:
+  n: An integer.
+  
+  -----Output-----
+  The output is a Boolean value:
+  Returns true if the input number is even.
+  Returns false if the input number is odd.
+  
+  -----Note-----
+  There are no preconditions; the method will always work for any integer input.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method IsEven(n: int) returns (result: bool)
+      ensures result <==> (n % 2 == 0)
+
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := false;
+      // impl-end
+  }
+
+vc-postamble: |-

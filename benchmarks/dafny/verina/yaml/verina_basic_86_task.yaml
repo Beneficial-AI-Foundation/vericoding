@@ -1,0 +1,47 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that rotates an array of integers to the left by a specified offset.
+  
+  -----Input-----
+  The input consists of:
+  • a: An array of integers (which may be empty or non-empty).
+  • offset: An integer representing the number of positions to rotate the array. The offset is assumed to be non-negative.
+  
+  -----Output-----
+  The output is an array of integers that:
+  • Has the same length as the input array.
+  • For every valid index i, the output element at index i is equal to the input element at index ((i + offset) mod n), where n is the array size.
+  
+  -----Note-----
+  If the array is empty, the method should return an empty array.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method rotate(a: array<int>, offset: int) returns (result: array<int>)
+      requires offset >= 0
+      ensures result.Length == a.Length
+      ensures a.Length == 0 ==> result.Length == 0
+      ensures a.Length > 0 ==> forall i :: 0 <= i < a.Length ==> 
+          result[i] == a[(i + offset) % a.Length]
+
+vc-code: |-
+  {
+      result := new int[a.Length];
+      if a.Length > 0 {
+          var j := 0;
+          while j < a.Length
+              invariant 0 <= j <= a.Length
+              invariant forall k :: 0 <= k < j ==> result[k] == a[(k + offset) % a.Length]
+          {
+              var srcIdx := (j + offset) % a.Length;
+              result[j] := a[srcIdx];
+              j := j + 1;
+          }
+      }
+  }
+
+vc-postamble: |-

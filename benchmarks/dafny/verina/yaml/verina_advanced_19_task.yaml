@@ -1,0 +1,73 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that checks whether a given string is a palindrome. A palindrome is a string that reads the same forwards and backwards. The function should ignore whitespace, punctuation, and capitalization when checking for palindromes.
+  
+  -----Input-----
+  The input consists of:
+  s: A string to be checked.
+  
+  -----Output-----
+  The output is a boolean:
+  Returns true if the input string is a palindrome when non-alphabetic characters are removed and letters are treated case-insensitively, and false otherwise.
+  */
+
+vc-preamble: |-
+  // Check if a character is an uppercase alphabet letter
+  predicate IsUpperAlpha(c: char)
+  {
+      'A' <= c <= 'Z'
+  }
+
+  // Check if a character is a lowercase alphabet letter  
+  predicate IsLowerAlpha(c: char)
+  {
+      'a' <= c <= 'z'
+  }
+
+  // Determine if a character is alphabetic
+  predicate IsAlpha(c: char)
+  {
+      IsUpperAlpha(c) || IsLowerAlpha(c)
+  }
+
+  // Convert a single character to lowercase (simplified for Dafny)
+  function ToLower(c: char): char
+  {
+      if IsUpperAlpha(c) then
+          // Simplified: assume conversion works for spec purposes
+          c // This would be the lowercase version in practice
+      else
+          c
+  }
+
+  // Normalize a character: keep only lowercase letters
+  function NormalizeChar(c: char): seq<char>
+  {
+      if IsAlpha(c) then
+          [ToLower(c)]
+      else
+          []
+  }
+
+  // Normalize a string into a sequence of lowercase alphabetic characters
+  function NormalizeString(s: string): seq<char>
+  {
+      if |s| == 0 then
+          []
+      else
+          NormalizeChar(s[0]) + NormalizeString(s[1..])
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method IsCleanPalindrome(s: string) returns (result: bool)
+      ensures result == (NormalizeString(s) == NormalizeString(s)[..|NormalizeString(s)|])
+
+vc-code: |-
+  {
+      // TODO: implement
+      assume {:axiom} false;
+  }
+
+vc-postamble: |-

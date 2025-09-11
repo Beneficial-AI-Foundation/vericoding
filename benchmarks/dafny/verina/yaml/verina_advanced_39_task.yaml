@@ -1,0 +1,28 @@
+vc-description: |-
+  /*
+  This task requires writing a Dafny method that returns the maximum element from a non-empty array of natural numbers.
+  
+  Input: The input consists of lst: a non-empty array of natural numbers.
+  
+  Output: The output is a natural number representing the largest element in the array.
+  */
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method MaxOfList(lst: array<nat>) returns (result: nat)
+      requires lst.Length > 0
+      ensures exists i :: 0 <= i < lst.Length && lst[i] == result
+      ensures forall i :: 0 <= i < lst.Length ==> lst[i] <= result
+
+vc-code: |-
+  {
+      // impl-start
+      assume {:axiom} false;
+      result := 0;
+      // impl-end
+  }
+
+vc-postamble: |-
