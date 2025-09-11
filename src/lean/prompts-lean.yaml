@@ -7,6 +7,7 @@ generate_code: |
   ```json
   ["first_implementation", "second_proof", "third_implementation"]
   ```
+  STRATEGY: Do a high-level plan using sorries. Then focus on eliminating the sorries one by one. To eliminate a sorry, try a proof. Likely there will be an error. Replace every line after that error (until the end of the subgoal) with trace_state and then sorry. Then slowly push the subproof forward one correct line at a time, backtracking a line when the line is wrong. Also try grind on small sorries.
   
   CRITICAL RULES:
   - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
@@ -32,6 +33,8 @@ fix_verification: |
   ```json
   ["fixed_implementation", "fixed_proof", "another_fixed_implementation"]
   ```
+
+  STRATEGY: Do a high-level plan using sorries. Then focus on eliminating the sorries one by one. To eliminate a sorry, try a proof. Likely there will be an error. Replace every line after that error (until the end of the subgoal) with trace_state and then sorry. Then slowly push the subproof forward one correct line at a time, backtracking a line when the line is wrong. Also try grind on small sorries.
   
   CRITICAL RULES:
   - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
