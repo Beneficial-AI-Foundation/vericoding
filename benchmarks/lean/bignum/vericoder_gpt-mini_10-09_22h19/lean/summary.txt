@@ -1,0 +1,77 @@
+=== LEAN PROCESSING SUMMARY ===
+Total files: 62
+Successful: 16 (25.8%)
+Failed: 46
+Processing time: 29979.60s
+Average per file: 483.54s
+
+=== TOKEN USAGE ===
+Total LLM calls: 481
+Input tokens: 1,369,810
+Output tokens: 2,592,038
+
+Successful files:
+✓ Compare.yaml
+✓ CompareUnequal.yaml
+✓ Add_NormalizeBitString.yaml
+✓ Compare_NormalizeBitString.yaml
+✓ ModExpPow2_Add_DivMod.yaml
+✓ ModExpPow2_int.yaml
+✓ ModExp_Add_DivMod_ModExpPow2_Mul.yaml
+✓ ModExp_Add_ModExpPow2_Mul_Zeroes.yaml
+✓ ModExp_Add_ModExpPow2_Zeroes.yaml
+✓ ModExp_DivMod.yaml
+✓ ModExp_Add_Zeroes.yaml
+✓ ModExp_DivMod_ModExpPow2_Zeroes.yaml
+✓ ModExp_DivMod_ModExpPow2_Mul.yaml
+✓ ModExp_ModExpPow2_Mul_Zeroes.yaml
+✓ Mul_Add.yaml
+✓ Sub.yaml
+
+Failed files:
+✗ Compare_CompareUnequal.yaml
+✗ Compare_CompareUnequal_NormalizeBitString.yaml
+✗ DivMod_Compare.yaml
+✗ Add.yaml
+✗ DivMod.yaml
+✗ DivMod_Compare_Sub.yaml
+✗ DivMod_Sub.yaml
+✗ ModExp.yaml
+✗ ModExpPow2.yaml
+✗ ModExpPow2_Add.yaml
+✗ ModExpPow2_Add_DivMod_Mul.yaml
+✗ ModExpPow2_Add_Mul.yaml
+✗ ModExpPow2_DivMod.yaml
+✗ ModExpPow2_DivMod_Mul.yaml
+✗ ModExpPow2_Mul.yaml
+✗ ModExp_Add.yaml
+✗ ModExp_Add_DivMod.yaml
+✗ ModExp_Add_DivMod_ModExpPow2.yaml
+✗ ModExp_Add_DivMod_ModExpPow2_Zeroes.yaml
+✗ ModExp_Add_DivMod_Zeroes.yaml
+✗ ModExp_Add_ModExpPow2.yaml
+✗ ModExp_Add_DivMod_Mul_Zeroes.yaml
+✗ ModExp_Add_ModExpPow2_Mul.yaml
+✗ ModExp_Add_DivMod_Mul.yaml
+✗ ModExp_Add_Mul.yaml
+✗ ModExp_Add_Mul_Zeroes.yaml
+✗ ModExp_DivMod_ModExpPow2.yaml
+✗ ModExp_DivMod_ModExpPow2_Mul_Zeroes.yaml
+✗ ModExp_DivMod_Mul.yaml
+✗ ModExp_DivMod_Zeroes.yaml
+✗ ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul.yaml
+✗ ModExp_ModExpPow2.yaml
+✗ ModExp_DivMod_Mul_Zeroes.yaml
+✗ ModExp_ModExpPow2_Mul.yaml
+✗ ModExp_Mul.yaml
+✗ ModExp_ModExpPow2_Zeroes.yaml
+✗ ModExp_Mul_Zeroes.yaml
+✗ ModExp_Zeroes.yaml
+✗ Mul.yaml
+✗ ModExp_int.yaml
+✗ ModExp_int_ModExpPow2_int.yaml
+✗ Mul_NormalizeBitString.yaml
+✗ Mul_Add_NormalizeBitString.yaml
+✗ NormalizeBitString.yaml
+✗ Sub_NormalizeBitstring.yaml
+✗ Zeros.yaml
