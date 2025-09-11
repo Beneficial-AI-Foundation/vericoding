@@ -138,7 +138,7 @@ class FailureAnalyzer:
                 analysis = self._parse_llm_response(response)
                 
                 suggestions.append({
-                    "error": error_msg[:200],
+                    "error": error_msg,  # Don't truncate error messages
                     "occurrences": int(count),
                     "root_cause": analysis.get("root_cause", "Unknown"),
                     "fix_strategy": analysis.get("fix_strategy", "No suggestion"),

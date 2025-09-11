@@ -300,7 +300,7 @@ def process_spec_file(
                     logger.info(f"    💾 Saved full error log to: debug/{relative_path.parent}/{base_file_name}_iter{iteration}_error.log")
                 
                 logger.info(
-                    f"    ✗ Verification failed: {verification.error[:200] if verification.error else 'Unknown error'}..."
+                    f"    ✗ Verification failed: {verification.error if verification.error else 'Unknown error'}"
                 )
 
             # Try to fix issues (both compilation and verification errors)
@@ -420,7 +420,7 @@ def process_spec_file(
                 else "Unknown verification error"
             )
             logger.info(
-                f"  ✗ Failed to verify after {config.max_iterations} iterations: {error_msg[:200] if error_msg else 'Unknown error'}..."
+                f"  ✗ Failed to verify after {config.max_iterations} iterations: {error_msg if error_msg else 'Unknown error'}"
             )
             
             # Track failure in wandb
