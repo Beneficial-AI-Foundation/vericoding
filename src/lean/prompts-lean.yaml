@@ -19,7 +19,11 @@ generate_code: |
   - You may include helper definitions, theorems, and lemmas in replacements when needed
   - For helper definitions added within a replacement, add comment -- LLM HELPER before them
   - Return ONLY a valid JSON array, no explanations or markdown
-  
+
+  STRATEGY:
+    - First try unfolding definitions, splitting goals, and using "first | simp | grind | exact?" to dispatch any remaining goal
+    - If that fails, then try something a little more complicated
+
   LEAN FILE WITH SORRY PLACEHOLDERS:
   {code}
 
@@ -46,6 +50,10 @@ fix_verification: |
   - Return ONLY a valid JSON array, no explanations or markdown
   
   ITERATION STRATEGY: You can use "sorry" strategically in intermediate iterations to understand the proof structure and get helpful error messages from Lean. However, you must progressively remove all verification bypasses - the final iteration must have zero verification bypasses for success.
+
+  STRATEGY:
+    - First try unfolding definitions, splitting goals, and using "first | simp | grind | exact?" to dispatch any remaining goal
+    - If that fails, then try something a little more complicated
   
   ERROR DETAILS from Lean verification:
   {errorDetails}
