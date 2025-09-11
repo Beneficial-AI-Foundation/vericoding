@@ -1,10 +1,14 @@
 """File processing logic."""
 
+import hashlib
 import logging
 import time
+import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
+
+import wandb
 
 from ..core.config import ProcessingConfig
 from ..core.llm_providers import create_llm_provider
@@ -12,8 +16,6 @@ from ..core.prompts import PromptLoader
 from ..core.language_tools import verify_file
 from ..core.llm_providers import call_llm
 from ..utils.io_utils import save_iteration_code
-import wandb
-import hashlib
 from .code_fixer import extract_code, apply_json_replacements
 
 # Set up a basic logger
@@ -124,7 +126,12 @@ def process_spec_file(
                 f.write("\n" + "-" * 80 + "\n")
         
         # Apply JSON replacements to original code (new approach)
-        generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
+        try:
+            generated_code, json_error, cheat_warning = apply_json_replacements(config, original_code, generated_response)
+        except Exception as e:
+            error_msg = f"Failed to apply JSON replacements: {str(e)}\n\nFull traceback:\n{traceback.format_exc()}"
+            logger.error(error_msg)
+            raise RuntimeError(error_msg) from e
         
         # Collect LLM response data
         if wandb.run:
@@ -171,7 +178,11 @@ def process_spec_file(
                 fix_prompts=[],
                 llm_responses=llm_responses if wandb.run and llm_responses else None
             )
-
+        
+        # Log cheat warnings but continue processing
+        if cheat_warning:
+            # Don't use logger as it's noisy, but we need to track this for the LLM feedback
+            pass
 
         # Save initial generated code
         save_iteration_code(config, relative_path, 1, generated_code, "generated")
@@ -201,6 +212,11 @@ def process_spec_file(
         current_code = generated_code
         success = False
         last_verification = None
+        
+        # Track cheat warnings across iterations
+        accumulated_cheat_warnings = []
+        if cheat_warning:
+            accumulated_cheat_warnings.append(cheat_warning)
 
         for iteration in range(1, config.max_iterations + 1):
             logger.info(
@@ -273,6 +289,11 @@ def process_spec_file(
 
             # Try to fix issues (both compilation and verification errors)
             error_details = verification.error or "Unknown error"
+            
+            # Add accumulated cheat warnings to error details
+            if accumulated_cheat_warnings:
+                cheat_warnings_text = "\n".join(accumulated_cheat_warnings)
+                error_details = f"{cheat_warnings_text}\n\n{error_details}"
 
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
@@ -314,7 +335,12 @@ def process_spec_file(
                     
                     # Apply JSON replacements for fix to the ORIGINAL file (which has placeholders)
                     # This ensures we're replacing sorry/vc-code tags, not broken implementations
-                    fixed_code, fix_json_error = apply_json_replacements(config, original_code, fix_response)
+                    try:
+                        fixed_code, fix_json_error, fix_cheat_warning = apply_json_replacements(config, original_code, fix_response)
+                    except Exception as e:
+                        error_msg = f"Failed to apply JSON replacements: {str(e)}\n\nFull traceback:\n{traceback.format_exc()}"
+                        logger.error(error_msg)
+                        raise RuntimeError(error_msg) from e
                     
                     # Collect LLM fix response data
                     if wandb.run:
@@ -344,7 +370,10 @@ def process_spec_file(
                                 time.time()
                             )
                         break  # Skip to next iteration
-
+                    
+                    # Add fix cheat warning to accumulated warnings
+                    if fix_cheat_warning:
+                        accumulated_cheat_warnings.append(fix_cheat_warning)
 
                     current_code = fixed_code
                     logger.info(f"    Generated fix for iteration {iteration}")
