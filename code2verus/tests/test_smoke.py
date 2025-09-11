@@ -106,12 +106,12 @@ class TestSmokeTests:
             assert isinstance(result, TranslationResult)
             assert isinstance(result.output_content, str)  # translated code
             assert isinstance(result.num_iterations, int)  # iterations
-            assert isinstance(result.rust_for_verification, str)  # rust for verification
+            assert isinstance(result.code_for_verification, str)  # code for verification
             
             # Test that all required attributes are accessible
             assert result.output_content == "// Mock translation"
             assert result.num_iterations == 1
-            assert result.rust_for_verification == "// Mock translation"
+            assert result.code_for_verification == "// Mock translation"
 
     def test_critical_config_values(self):
         """Test that critical configuration values are present and valid"""
