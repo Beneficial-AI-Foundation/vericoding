@@ -31,7 +31,7 @@ generate_code: |
 fix_verification: |
   The task is to fix implementations in `<vc-code>` and `<vc-helpers>` sections that failed verification.
   
-  TURN {iteration + 1} of {max_iterations}: You are making progress and have multiple turns to iterate and improve your implementation.
+  TURN {iteration} of {max_iterations}: You are making progress and have multiple turns to iterate and improve your implementation.
   
   INPUT: The ORIGINAL file contains {placeholder_count} placeholder sections (`<vc-code>` and/or `<vc-helpers>` tags) that need to be fixed based on verification errors.
   

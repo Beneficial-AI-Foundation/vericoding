@@ -30,7 +30,7 @@ generate_code: |
 fix_verification: |
   The task is to fix implementations and proofs that failed verification by providing replacements for any remaining "sorry" placeholders and `<vc-helpers>` sections.
   
-  TURN {iteration + 1} of {max_iterations}: You are making progress - this gives you room to iterate and improve. Use "sorry" strategically if needed in intermediate turns.
+  TURN {iteration} of {max_iterations}: You are making progress - this gives you room to iterate and improve. Use "sorry" strategically if needed in intermediate turns.
   
   INPUT: The ORIGINAL file contains {placeholder_count} placeholder sections ("sorry" keywords and/or `<vc-helpers>` tags) that need to be replaced based on verification errors.
   
