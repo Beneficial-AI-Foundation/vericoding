@@ -263,15 +263,26 @@ def process_spec_file(
                 # Combine cheat message with original verification result
                 cheat_message = f"VERIFICATION BYPASSES DETECTED: {'; '.join(cheat_descriptions)}. Code contains verification bypasses and cannot be considered successfully verified."
                 
-                if verification.success:
-                    # Lake build succeeded but cheats found
-                    combined_error = f"{cheat_message}\n\nNote: Lake build succeeded but verification bypasses prevent final success."
-                    logger.info("    ✗ Marking as failed due to verification bypasses (lake build succeeded)")
+                # Get the verification tool name for better error messages
+                verify_cmd = config.language_config.verify_command[0] if config.language_config.verify_command else "verification"
+                if verify_cmd == "lake":
+                    tool_name = "lake build"
+                elif verify_cmd == "dafny":
+                    tool_name = "dafny verify"
+                elif verify_cmd == "verus":
+                    tool_name = "verus"
                 else:
-                    # Lake build failed AND cheats found - combine both messages
-                    original_error = verification.error or "Lake build failed"
-                    combined_error = f"{cheat_message}\n\nOriginal lake build output:\n{original_error}"
-                    logger.info("    ✗ Failed due to both lake build errors AND verification bypasses")
+                    tool_name = f"{verify_cmd} verification"
+                
+                if verification.success:
+                    # Verification succeeded but cheats found
+                    combined_error = f"{cheat_message}\n\nNote: {tool_name} succeeded but verification bypasses prevent final success."
+                    logger.info(f"    ✗ Marking as failed due to verification bypasses ({tool_name} succeeded)")
+                else:
+                    # Verification failed AND cheats found - combine both messages
+                    original_error = verification.error or f"{tool_name} failed"
+                    combined_error = f"{cheat_message}\n\nOriginal {tool_name} output:\n{original_error}"
+                    logger.info(f"    ✗ Failed due to both {tool_name} errors AND verification bypasses")
                 
                 verification = replace(verification,
                     success=False,
