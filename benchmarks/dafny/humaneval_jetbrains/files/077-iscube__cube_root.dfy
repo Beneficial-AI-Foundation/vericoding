@@ -1,4 +1,6 @@
+// <vc-preamble>
 function cube(n: int): int { n * n * n }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

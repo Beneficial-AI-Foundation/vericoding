@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Term := String
 def Equation := String
 
@@ -11,13 +12,19 @@ def equation_vars : Equation → List String
 
 def solution_vars : Solution → List String
   | _ => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def verify_solution (equations : List Equation) (solution : Option Solution) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_variables_match_equations (equations : List Equation) 
   (s : Solution)
   (h : solve_equations equations = some s) :
@@ -51,6 +58,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval solve_equations ["x = 1"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

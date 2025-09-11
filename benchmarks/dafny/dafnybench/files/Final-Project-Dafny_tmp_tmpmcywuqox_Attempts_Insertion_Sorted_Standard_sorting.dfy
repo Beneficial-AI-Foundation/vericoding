@@ -1,9 +1,11 @@
+// <vc-preamble>
 predicate InsertionSorted(Array: array<int>, left: int, right: int)  
   requires 0 <= left <= right <= Array.Length       
   reads Array       
 {           
   forall i,j :: left <= i < j < right ==> Array[i] <= Array[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

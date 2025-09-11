@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def artificial_rain (garden: List Nat) : Nat := sorry
 
 theorem artificial_rain_length_invariant {garden: List Nat} (h: garden ≠ []) :
   1 ≤ artificial_rain garden ∧ artificial_rain garden ≤ garden.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem artificial_rain_identical_values {garden: List Nat} (h: garden.length ≥ 2) 
   (h2: ∀ (i j: Nat) (hi: i < garden.length) (hj: j < garden.length), garden.get ⟨i, hi⟩ = garden.get ⟨j, hj⟩) :
   artificial_rain garden = garden.length := sorry
@@ -48,6 +56,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval artificial_rain [1, 2, 2, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

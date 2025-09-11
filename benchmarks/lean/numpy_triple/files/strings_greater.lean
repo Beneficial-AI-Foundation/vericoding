@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def greater {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem greater_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
     greater x1 x2
@@ -22,3 +29,4 @@ theorem greater_spec {n : Nat} (x1 x2 : Vector String n) :
                  -- Decidability: result is always boolean (true or false)
                  (∀ i : Fin n, result.get i = true ∨ result.get i = false)⌝⦄ := by
   sorry
+-- </vc-theorems>

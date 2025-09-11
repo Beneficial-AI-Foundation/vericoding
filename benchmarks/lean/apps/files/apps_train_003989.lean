@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ipsubnet2list (subnet : String) : Option (List String) := sorry
 
 def is_valid_ip_network (subnet : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ipsubnet2list_properties {a b c d : Nat} {mask : Nat} 
   (h1 : a ≤ 255) (h2 : b ≤ 255) (h3 : c ≤ 255) (h4 : d ≤ 255)
   (h5 : 24 ≤ mask) (h6 : mask ≤ 32) :
@@ -32,6 +40,7 @@ info: ['195.20.15.0', '195.20.15.1', '195.20.15.2', '195.20.15.3', '195.20.15.4'
 -/
 -- #guard_msgs in
 -- #eval ipsubnet2list "195.20.15.0/28"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

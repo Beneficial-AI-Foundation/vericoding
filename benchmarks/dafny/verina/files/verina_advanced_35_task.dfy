@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountOccurrences(nums: seq<int>, x: int): nat
     decreases |nums|
 {
@@ -11,6 +12,7 @@ function CountOccurrences(nums: seq<int>, x: int): nat
         else
             restCount
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

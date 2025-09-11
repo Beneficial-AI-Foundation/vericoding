@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def make_string (s : String) : List Char := sorry
 
 variable (words : List String)
 variable (spaces : String)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem make_string_words_property (h : ∀ w ∈ words, w.length > 0) :
   let sentence := String.join (List.intersperse " " words)
   let result := make_string sentence
@@ -33,6 +41,7 @@ info: 'cavn'
 -/
 -- #guard_msgs in
 -- #eval make_string "cars are very nice"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

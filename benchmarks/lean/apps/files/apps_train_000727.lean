@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def minArraySize (height : Nat) : Nat := (2 ^ height) - 1
 
 def calcMaxProduct (height : Nat) (values : List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def treeProduct (values : List Nat) (height : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calc_max_product_zero_height (values : List Nat) : 
   calcMaxProduct 0 values = 0 := by
   sorry
@@ -42,6 +49,7 @@ info: 105
 -/
 -- #guard_msgs in
 -- #eval calc_max_product 3 #[3, 1, 5, 2, 6, 4, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

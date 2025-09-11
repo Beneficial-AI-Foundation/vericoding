@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def stripComments (text : String) (markers : List String) : String := sorry
 
 theorem strip_comments_main_properties (text : String) (markers : List String) :
@@ -10,7 +16,9 @@ theorem strip_comments_main_properties (text : String) (markers : List String) :
   -- Empty input cases
   (stripComments "" markers = "") ∧
   (stripComments text [] = text) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem strip_comments_marker_free (text : String) (markers : List String) :
   let result := stripComments text markers
   -- No marker remains in result
@@ -47,6 +55,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval strip_comments "" ["#", "!"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Matrix := List String
 def Query := Nat × Char
 
@@ -5,13 +6,19 @@ def Result := String
 
 def check_matrix_exists (L R : Nat) (matrix : Matrix) (queries : List Query) : List Result :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def all_same_matrix (c : Char) (L R : Nat) : Matrix :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_matrix_exists_results_match_queries 
   (matrix : Matrix) (queries : List Query) (L R : Nat) :
   let results := check_matrix_exists L R matrix queries
@@ -37,6 +44,7 @@ theorem check_matrix_exists_all_same_char
     (q, r) ∈ List.zip queries results →
     (q.2 = c → r = "yes" ↔ q.1 ≤ min L R) ∧
     (q.2 ≠ c → r = "no") := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

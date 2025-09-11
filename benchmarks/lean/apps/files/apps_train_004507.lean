@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def List.sumLength (l: List (List α)) : Nat :=
   match l with
   | [] => 0
@@ -5,17 +6,23 @@ def List.sumLength (l: List (List α)) : Nat :=
 
 def String.hasPattern (s pattern: String) : Prop := sorry
 def String.hasSuffix (s suffix: String) : Prop := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nkotb_vs_homie (reqs: List (List String)) : List String := sorry
 
 theorem response_count (reqs: List (List String)) 
   (h1: reqs.length = 5)
   (h2: ∀ cat ∈ reqs, cat.length > 0 ∧ cat.length ≤ 5)
   : (nkotb_vs_homie reqs).length = (reqs.sumLength + 1) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem responses_end_with_homie (reqs: List (List String))
   (h1: reqs.length = 5) 
   (h2: ∀ cat ∈ reqs, cat.length > 0 ∧ cat.length ≤ 5)
@@ -46,6 +53,7 @@ info: expected1
 -/
 -- #guard_msgs in
 -- #eval nkotb_vs_homie [["We need Monitoring now!"], ["We need Automation now!"], ["We need Deployment now!"], ["We need Cloud now!"], ["We need Microservices now!"]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

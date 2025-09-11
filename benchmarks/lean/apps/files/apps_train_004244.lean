@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sumToInfinity (sequence : List Float) : Option Float := sorry
 
 theorem geometric_sequence_properties {sequence : List Float}
@@ -11,7 +17,9 @@ theorem geometric_sequence_properties {sequence : List Float}
   ∃ (result : Float),
     sumToInfinity sequence = some result ∧
     ¬ result.isNaN := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_ratio_no_solution {sequence : List Float}
   (hlen : sequence.length = 4)
   (hfirst : sequence.head! ≠ 0)
@@ -38,6 +46,7 @@ info: 26.25
 -/
 -- #guard_msgs in
 -- #eval sum_to_infinity [21, 4.2, 0.84, 0.168]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

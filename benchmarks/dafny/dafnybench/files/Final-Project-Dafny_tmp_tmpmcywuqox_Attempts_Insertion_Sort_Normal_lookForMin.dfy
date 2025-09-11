@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate sorted (a: array<int>)
 
     reads a
@@ -12,6 +13,7 @@ predicate sortedA (a: array<int>, i: int)
 {
     forall k :: 0 < k < i ==> a[k-1] <= a[k]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

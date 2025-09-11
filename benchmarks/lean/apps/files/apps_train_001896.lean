@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_latest_time (digits: List Nat) : String :=
   sorry
 
@@ -6,13 +7,19 @@ def is_valid_time_str (s: String) : Bool :=
 
 def time_to_minutes (time: String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_time (hours mins: Nat) : Prop :=
   hours < 24 ∧ mins < 60
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_latest_time_gives_valid_result {digits: List Nat}
   (h1: digits.length = 4)
   (h2: ∀ d ∈ digits, d ≤ 9) :
@@ -59,6 +66,7 @@ info: '00:00'
 -/
 -- #guard_msgs in
 -- #eval find_latest_time [0, 0, 0, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

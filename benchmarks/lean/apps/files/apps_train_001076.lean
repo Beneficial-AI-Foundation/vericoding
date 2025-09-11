@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_repeating (arr : List Int) : Int × Nat := sorry
 
 def List.sorted (l : List Int) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_repeating_val_exists {arr : List Int} (h : arr ≠ []) : 
   let (val, _) := find_max_repeating arr
   val ∈ arr := sorry
@@ -30,6 +38,7 @@ theorem find_max_repeating_sorted {arr : List Int} (h : arr ≠ []) (h2 : arr.so
   let (val, count) := find_max_repeating arr
   let head := arr.head h
   (arr.filter (· = head)).length = count → val = head := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

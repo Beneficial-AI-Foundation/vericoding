@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def apparently (s : String) : String := sorry
 
 def String.occurrences (needle haystack : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem and_but_count_preserved (s : String) :
   let result := apparently s
   (s.occurrences "and" = result.occurrences "and") ∧ 
@@ -36,6 +44,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval apparently "but and apparently apparently apparently apparently"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def blast_sequence (aliens : List (List Int)) (position : Int × Int) : Option (List Int) := sorry
 
 theorem empty_aliens {aliens : List (List Int)} {pos : Int × Int} 
@@ -14,7 +20,9 @@ theorem empty_aliens {aliens : List (List Int)} {pos : Int × Int}
   (h8 : pos.2 ≥ 0)
   (h9 : pos.2 ≤ 19) :
   blast_sequence aliens pos = some [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_properties {aliens : List (List Int)} {pos : Int × Int} {result : List Int}
   (h1 : ∀ row ∈ aliens, row.length > 0)
   (h2 : ∀ row ∈ aliens, row.length ≤ 10)
@@ -28,6 +36,7 @@ theorem result_properties {aliens : List (List Int)} {pos : Int × Int} {result 
   (h10 : blast_sequence aliens pos = some result) :
   (∀ i < result.length - 1, result[i]! < result[i+1]!) ∧ 
   (∀ x ∈ result, x ≥ 0) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

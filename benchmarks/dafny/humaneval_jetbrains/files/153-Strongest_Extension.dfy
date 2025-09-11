@@ -1,3 +1,4 @@
+// <vc-preamble>
 class Extension {
     var name: string
     var strength: int
@@ -23,6 +24,7 @@ class Extension {
         else (if 'a' <= s[0] <= 'z' then 1 else 0) + CountLowerCase(s[1..])
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

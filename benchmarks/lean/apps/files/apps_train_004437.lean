@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (s : String) : Array Nat := sorry
 
 theorem solve_returns_four_nonnegative : ∀ s : String,
   let result := solve s
   (result.size = 4) ∧ 
   (∀ i, i < result.size → 0 ≤ result[i]!) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_categorizes_correctly : ∀ s : String,
   let result := solve s;
   result.size = 4 ∧
@@ -60,6 +68,7 @@ info: [9, 9, 6, 9]
 -/
 -- #guard_msgs in
 -- #eval solve "P*K4%>mQUDaG$h=cx2?.Czt7!Zn16p@5H"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

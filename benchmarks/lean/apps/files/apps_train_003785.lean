@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def highest_rank (arr : List Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem highest_rank_in_input {arr : List Int} (h : arr ≠ []) :
   highest_rank arr ∈ arr :=
 sorry
@@ -42,6 +50,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval highest_rank [12, 10, 8, 8, 3, 3, 3, 3, 2, 4, 10, 12, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

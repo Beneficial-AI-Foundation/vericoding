@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def min_patches (nums : List Nat) (n : Nat) : Nat :=
   sorry
 
 -- Define sorted property
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (as : List Nat) : Prop :=
   ∀ i j, i < j → j < as.length → as[i]! ≤ as[j]!
 
 -- All results are natural numbers and input list remains sorted
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_patches_basic_properties {nums : List Nat} {n : Nat} 
   (h : isSorted nums) :
   let result := min_patches nums n
@@ -64,6 +71,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_patches [1, 2, 2] 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

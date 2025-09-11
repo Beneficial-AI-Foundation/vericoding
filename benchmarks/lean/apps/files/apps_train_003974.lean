@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def pairwise_pairs : List Int → Int → List (Int × Int)
 | xs, n => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pairwise : List Int → Int → Int 
 | xs, n => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pairwise_nonnegative {arr : List Int} {n : Int} : 
   pairwise arr n ≥ 0 := by sorry
 
@@ -24,6 +31,7 @@ theorem pairwise_indices_unique {arr : List Int} {n : Int} :
 
 theorem pairwise_empty_zero {n : Int} :
   pairwise [] n = 0 := by sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

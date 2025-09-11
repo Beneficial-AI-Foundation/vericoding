@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
   decreases s
@@ -9,6 +10,7 @@ predicate ValidBitString(s: string)
 
   forall i | 0 <= i < |s| :: s[i] == '0' || s[i] == '1'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

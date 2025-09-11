@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dashatize (n : Option Int) : String := sorry
 
 theorem dashatize_basic_props {n : Int} :
@@ -13,7 +19,9 @@ theorem dashatize_basic_props {n : Int} :
   -- Doesn't start/end with dash
   ∧ (result.length > 0 → result.front ≠ '-')
   ∧ (result.length > 0 → result.back ≠ '-') := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dashatize_preserves_number {n : Int} :
   let result := dashatize (some n);
   let digits := result.data.filter Char.isDigit;
@@ -39,6 +47,7 @@ info: '86-3-20'
 -/
 -- #guard_msgs in
 -- #eval dashatize 86320
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

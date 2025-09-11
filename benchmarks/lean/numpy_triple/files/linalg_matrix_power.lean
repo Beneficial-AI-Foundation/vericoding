@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def matrix_power {n : Nat} (A : Vector (Vector Float n) n) (exp : Int) : Id (Vector (Vector Float n) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem matrix_power_spec {n : Nat} (A : Vector (Vector Float n) n) (exp : Int) :
     ⦃⌜True⌝⦄
     matrix_power A exp
@@ -44,3 +51,4 @@ theorem matrix_power_spec {n : Nat} (A : Vector (Vector Float n) n) (exp : Int) 
       (∀ i : Fin n, (result.get i).size = n)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

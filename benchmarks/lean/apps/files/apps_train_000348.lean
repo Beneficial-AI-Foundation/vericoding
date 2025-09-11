@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_dist_to_closest : List Nat → Nat := sorry
 
 def List.longestConsecutiveOnes (xs : List Nat) (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_dist_non_negative (seats : List Nat) 
   (h : ∃ x ∈ seats, x = 1) :
   max_dist_to_closest seats ≥ 0 := sorry
@@ -43,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval max_dist_to_closest [0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

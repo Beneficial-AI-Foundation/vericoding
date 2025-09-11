@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def short_form (s : String) : String :=
   sorry
 
 def isConsonant (c : Char) : Bool :=
   c ∈ ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isVowel (c : Char) : Bool :=
   c.toLower ∈ ['a', 'e', 'i', 'o', 'u']
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem short_form_length {s : String} :
   String.length (short_form s) ≤ String.length s := sorry
 
@@ -44,6 +51,7 @@ info: 'InSNe'
 -/
 -- #guard_msgs in
 -- #eval short_form "InSaNe"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

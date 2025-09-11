@@ -1,3 +1,4 @@
+// <vc-preamble>
 function iterate_to_odd(n: nat): nat
   requires n % 2 == 0
   requires n > 0
@@ -10,6 +11,7 @@ function next_odd_collatz(n: nat): nat
 {
   if n % 2 == 0 then iterate_to_odd(n) else iterate_to_odd(3 * n + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

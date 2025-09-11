@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def read_out (words : List String) : String := sorry
 
 theorem read_out_length_matches_input (words : List String) 
   (h : List.length words > 0) (h2 : ∀ w ∈ words, String.length w > 0) : 
   String.length (read_out words) = List.length words := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem read_out_takes_first_chars (words : List String) 
   (h : List.length words > 0) (h2 : ∀ w ∈ words, String.length w > 0) :
   ∀ i < words.length, String.data (read_out words) = (String.get! (List.get! words i) 0) :: (String.data (read_out words)) := sorry
@@ -37,6 +45,7 @@ info: 'MEG'
 -/
 -- #guard_msgs in
 -- #eval read_out ["Marvelous", "Excellent", "Gifted"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

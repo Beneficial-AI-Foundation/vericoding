@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_colored_parentheses (n: Nat) : Nat := sorry
 
 def MOD : Nat := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_in_valid_range (n: Nat) :
   solve_colored_parentheses n ≥ 0 ∧ solve_colored_parentheses n < MOD := sorry
 
@@ -37,6 +45,7 @@ info: 90
 -/
 -- #guard_msgs in
 -- #eval solve_colored_parentheses 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_race_encounters (x : Int) (r speed1 speed2 : Float) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (x : Float) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem race_encounters_non_negative
   (x : Int) (r speed1 speed2 : Float)
   (h1 : x > 0)
@@ -64,6 +71,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_race_encounters 4 15 3 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

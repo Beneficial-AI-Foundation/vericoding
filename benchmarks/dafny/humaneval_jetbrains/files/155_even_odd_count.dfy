@@ -1,3 +1,4 @@
+// <vc-preamble>
 function odd_count(n: nat): nat {
   if n == 0 then 0
   else odd_count(n / 10) + n % 2
@@ -7,6 +8,7 @@ function even_count(n: nat): nat
   if n == 0 then 0
   else even_count(n / 10) + (1 - n % 2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

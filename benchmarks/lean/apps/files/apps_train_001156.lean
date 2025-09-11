@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_votes (n m k : Nat) (grid : List (List Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_votes_bounded {n m k : Nat} (grid : List (List Nat))
     (hn : n > 0) (hm : m > 0) (hk : k > 0)
     (hk_bound : k ≤ min n m)
@@ -45,6 +53,7 @@ info: 17
 -/
 -- #guard_msgs in
 -- #eval find_max_votes 3 3 2 [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

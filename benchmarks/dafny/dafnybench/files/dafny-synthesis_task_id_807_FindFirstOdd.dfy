@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate IsOdd(x: int)
 {
     x % 2 != 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

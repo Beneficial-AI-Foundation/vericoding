@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def odd_one (arr : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_one_returns_valid_index_or_minus_one (arr : List Int) :
   let result := odd_one arr
   (result = -1 → ∀ x ∈ arr, x % 2 = 0) ∧ 
@@ -46,6 +54,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval odd_one [2, 4, 6, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

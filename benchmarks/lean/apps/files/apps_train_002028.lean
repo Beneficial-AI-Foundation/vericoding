@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_array_destroy (n : Nat) (nums : List Nat) (destroy_order : List Nat) : List Nat := sorry
 
 def list_sum (l : List Nat) : Nat :=
   match l with 
   | [] => 0
   | x::xs => x + list_sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_array_destroy_output_valid 
   (n : Nat) (nums destroy_order : List Nat)
   (h1 : n > 0) (h2 : n ≤ 100)
@@ -47,6 +55,7 @@ theorem solve_array_destroy_max_bound
   let result := solve_array_destroy n nums destroy_order
   result.length = n ∧
   ∀ x ∈ result, x ≤ list_sum nums := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

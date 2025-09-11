@@ -1,3 +1,4 @@
+// <vc-preamble>
 function checkPairFunc(seal1: (int, int), seal2: (int, int), a: int, b: int): int
     requires a >= 1 && b >= 1
     requires seal1.0 >= 1 && seal1.1 >= 1
@@ -42,6 +43,7 @@ function max(x: int, y: int): int
 {
     if x >= y then x else y
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

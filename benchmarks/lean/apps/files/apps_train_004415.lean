@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def trafficJam (road: String) (sides: List String) : String := sorry 
 
 theorem trafficJam_endsWith_X (road: String) (sides: List String) 
   (h1: ∃ i, road.get i = 'X') :
   ∃ j, (trafficJam road sides).get j = 'X' := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trafficJam_result_length 
   (road: String) (sides: List String) 
   (h1: ∃ i, road.get i = 'X')
@@ -48,6 +56,7 @@ info: 'abcdBeBfBgBhBiBCjCkClCmCX'
 -/
 -- #guard_msgs in
 -- #eval traffic_jam "abcdefghijklmX" ["", "", "", "BBBBBB", "", "", "", "", "CCCCC"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

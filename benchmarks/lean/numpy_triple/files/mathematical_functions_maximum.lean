@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maximum {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maximum_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
     maximum x1 x2
@@ -15,3 +22,4 @@ theorem maximum_spec {n : Nat} (x1 x2 : Vector Float n) :
                  ∀ i : Fin n, result.get i ≥ x1.get i ∧ result.get i ≥ x2.get i ∧
                  (result.get i = x1.get i ∨ result.get i = x2.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

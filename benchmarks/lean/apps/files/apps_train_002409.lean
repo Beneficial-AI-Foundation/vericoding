@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def hammingDistance (x y : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bitLength (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hamming_distance_symmetry (x y : Nat) :
   hammingDistance x y = hammingDistance y x :=
 sorry
@@ -40,6 +47,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval hamming_distance 0 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def array_transforms (input : String) : Array Float × Array Float × Array Float := sorry
 
 def transform_list (numbers : List Float) : Array Float × Array Float × Array Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def int_to_float (n : Int) : Float := sorry
 
 theorem array_transforms_properties {numbers : List Float} (h : numbers.length > 0) :
@@ -24,7 +29,9 @@ theorem array_transforms_properties {numbers : List Float} (h : numbers.length >
     rint_arr[idx]'h_rint ≤ ceil_arr[idx]'h_ceil ∧
     ceil_arr[idx]'h_ceil - floor_arr[idx]'h_floor ≤ 1 ∧
     (rint_arr[idx]'h_rint - numbers[idx]).abs ≤ 0.5 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_transforms_integers (n : Int) :
   let res := array_transforms (toString n)
   let floor_arr := res.1
@@ -35,6 +42,7 @@ theorem array_transforms_integers (n : Int) :
   floor_arr = ceil_arr ∧
   floor_arr = rint_arr ∧
   floor_arr[0]'h_size = int_to_float n := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

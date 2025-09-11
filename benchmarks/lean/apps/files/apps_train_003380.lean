@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def stringy (n : Int) : String := sorry 
 
 theorem stringy_length {n : Int} (h : n > 0) (h2 : n ≤ 500) : 
   (stringy n).length = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem stringy_alternating {n : Int} (h : n > 0) (h2 : n ≤ 500) (i : Nat) (h3 : i < n - 1) :
   have h4 : i < (stringy n).length := sorry
   have h5 : i + 1 < (stringy n).length := sorry
@@ -40,6 +48,7 @@ info: '101010101010'
 -/
 -- #guard_msgs in
 -- #eval stringy 12
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

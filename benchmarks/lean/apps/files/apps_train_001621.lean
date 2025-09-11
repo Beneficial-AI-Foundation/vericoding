@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def calculate_cube_sum (n : Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_perfect_square (n : Nat) : Bool :=
 sorry 
 
 -- Cube sum matches formula
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cube_sum_matches_formula (n : Nat) : 
   calculate_cube_sum n = ((n * (n + 1)) / 2) ^ 2 :=
 sorry
@@ -26,6 +33,7 @@ sorry
 theorem perfect_square_product (n : Nat) :
   is_perfect_square n = true → is_perfect_square (n * n) = true :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

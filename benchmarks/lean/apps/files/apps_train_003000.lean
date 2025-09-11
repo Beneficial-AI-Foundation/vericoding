@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Nat.toString (n : Nat) : String :=
   sorry
 
@@ -6,13 +7,19 @@ def is_even (n : Nat) : Bool :=
 
 def List.sort {α : Type} [Ord α] (as : List α) : List α :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def even_digit_squares (start : Nat) (stop : Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_even_matches_digit_check (x : Nat) : 
   is_even x = (Nat.toString x |>.data |>.all (fun d => (Char.toNat d - 48) % 2 = 0)) :=
   sorry 
@@ -36,6 +43,7 @@ theorem single_point_range {x : Nat} (h : x ≤ 1000000) :
    is_even x = true ∧
    ∃ y:Nat, y * y = x) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

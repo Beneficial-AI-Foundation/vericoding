@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (l : Nat) (s : String) : String := sorry
 
 theorem solve_l1_maintains_length (s : String) (h : s.length > 0) : 
   (solve 1 s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_l1_is_rotation (s : String) (h : s.length > 0) :
   ∃ i, i < s.length ∧ solve 1 s = s.drop i ++ s.take i := sorry
 
@@ -45,6 +53,7 @@ info: 'cchefode'
 -/
 -- #guard_msgs in
 -- #eval solve 4 "codechef"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

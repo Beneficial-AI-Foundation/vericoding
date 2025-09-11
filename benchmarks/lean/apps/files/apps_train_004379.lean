@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def make_2d_list (head : Int) (row : Nat) (col : Nat) : List (List Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem make_2d_list_dimensions {head : Int} {row col : Nat} 
   (h1 : row > 0) (h2 : col > 0) :
   let result := make_2d_list head row col
@@ -36,6 +44,7 @@ theorem make_2d_list_square {head : Int} {size : Nat}
   let result := make_2d_list head size size
   result.length = (result.get! 0).length :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

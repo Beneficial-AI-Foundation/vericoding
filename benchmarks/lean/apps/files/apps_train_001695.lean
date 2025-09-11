@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def partitions (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem partitions_positive (n : Nat) (h : n > 0) :
   partitions n ≥ 1 :=
 sorry
@@ -40,6 +48,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval partitions 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

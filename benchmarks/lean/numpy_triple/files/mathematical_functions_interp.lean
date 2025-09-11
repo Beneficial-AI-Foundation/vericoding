@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def interp {n m : Nat} (x : Vector Float n) (xp : Vector Float (m + 1)) (fp : Vector Float (m + 1)) 
     (h_increasing : ∀ i j : Fin (m + 1), i < j → xp.get i < xp.get j) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem interp_spec {n m : Nat} (x : Vector Float n) (xp : Vector Float (m + 1)) (fp : Vector Float (m + 1)) 
     (h_increasing : ∀ i j : Fin (m + 1), i < j → xp.get i < xp.get j) :
     ⦃⌜∀ i j : Fin (m + 1), i < j → xp.get i < xp.get j⌝⦄
@@ -29,3 +36,4 @@ theorem interp_spec {n m : Nat} (x : Vector Float n) (xp : Vector Float (m + 1))
           result.get k = fp.get ⟨i.val, sorry⟩ + t * (fp.get ⟨i.val + 1, sorry⟩ - fp.get ⟨i.val, sorry⟩))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

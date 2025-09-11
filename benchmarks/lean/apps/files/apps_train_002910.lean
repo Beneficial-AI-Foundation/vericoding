@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mix_fruit (fruits : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mix_fruit_price_bounds (fruits : List String) 
   (h : fruits.length > 0)
   (h2 : ∀ f ∈ fruits, f ∈ [
@@ -57,6 +65,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval mix_fruit ["watermelon", "Orange", "grapes"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

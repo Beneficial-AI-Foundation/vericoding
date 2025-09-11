@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int)
 {
   n >= 1 && m >= 1
@@ -20,6 +21,7 @@ function TotalAdjacentPairs(n: int, m: int): int
 {
   n + m - 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

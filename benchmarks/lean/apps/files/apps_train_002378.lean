@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def defang_ip_addr (s : String) : String := sorry
 
 theorem defang_valid_ip_length {octets : List Nat} 
@@ -6,13 +7,19 @@ theorem defang_valid_ip_length {octets : List Nat}
   let ip := String.intercalate "." (octets.map toString)
   let defanged := defang_ip_addr ip
   defanged.length = ip.length + 6 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s : String) (c : Char) : Nat :=
   s.toList.filter (· = c) |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem defang_valid_ip_reversible {octets : List Nat}
   (h1 : octets.length = 4)
   (h2 : ∀ x ∈ octets, x ≤ 255) :
@@ -61,6 +68,7 @@ info: '192[.]168[.]1[.]1'
 -/
 -- #guard_msgs in
 -- #eval defang_ip_addr "192.168.1.1"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_improvement (games : List Nat) : Nat ⊕ Unit := sorry 
 
 theorem find_max_improvement_positive (games : List Nat) :
   let result := find_max_improvement games
   ∀ imp, result = .inl imp → imp > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_improvement_bounded (games : List Nat) : 
   let result := find_max_improvement games
   ∀ imp, result = .inl imp → 
@@ -48,6 +56,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_max_improvement [4, 3, 2, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

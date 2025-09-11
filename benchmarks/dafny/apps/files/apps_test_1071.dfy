@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: seq<int>, b: seq<int>, n: int)
 {
     |a| >= 0 && |b| >= 0 &&
@@ -27,6 +28,7 @@ predicate CanPlaceAll(a: seq<int>, b: seq<int>, n: int)
     var shelves_for_medals := ShelvesNeeded(total_medals, 10);
     shelves_for_cups + shelves_for_medals <= n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

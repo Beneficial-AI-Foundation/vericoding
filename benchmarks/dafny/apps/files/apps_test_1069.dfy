@@ -1,3 +1,4 @@
+// <vc-preamble>
 function StringToNat(s: string): nat
   requires |s| > 0
   requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
@@ -17,6 +18,7 @@ predicate ValidOutput(result: string)
 {
   result == "4\n" || result == "0\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

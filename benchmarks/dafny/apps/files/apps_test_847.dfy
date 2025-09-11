@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(cards: seq<int>): int
 {
     if |cards| == 0 then 0
@@ -13,6 +14,7 @@ predicate ValidInput(cards: seq<int>, x: int)
 {
     x > 0 && |cards| >= 1 && forall i :: 0 <= i < |cards| ==> -x <= cards[i] <= x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

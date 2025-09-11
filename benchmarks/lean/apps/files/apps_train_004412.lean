@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def conference_picker (visited offered : List String) : String := sorry
 
 -- if result is not "No worthwhile conferences this year!", then:
 -- 1. result must be in offered cities
 -- 2. result must not be in visited cities
 -- else all offered cities must be in visited cities
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_validity (visited offered : List String) :
   let result := conference_picker visited offered
   match result with
@@ -44,6 +52,7 @@ info: 'London'
 -/
 -- #guard_msgs in
 -- #eval conference_picker ["Milan"] ["London"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

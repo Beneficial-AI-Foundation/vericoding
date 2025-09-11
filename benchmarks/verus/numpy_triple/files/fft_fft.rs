@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -45,6 +46,7 @@ pub open spec fn complex_sum(n: nat, f: spec_fn(nat) -> Complex) -> Complex
         complex_add(f((n - 1) as nat), complex_sum((n - 1) as nat, f))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

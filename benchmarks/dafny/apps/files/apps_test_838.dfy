@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(stdin_input: string)
 {
     |stdin_input| > 0
@@ -119,6 +120,7 @@ function count_col_helper(grid: array2<int>, col: int, value: int, row: int): in
     if row == grid.Length0 then 0
     else (if grid[row, col] == value then 1 else 0) + count_col_helper(grid, col, value, row + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

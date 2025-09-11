@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate SecondSmallestPrecond(s: array<int>)
     reads s
 {
@@ -11,6 +12,7 @@ predicate SecondSmallestPostcond(s: array<int>, result: int)
     (exists j :: 0 <= j < s.Length && s[j] < result &&
         (forall k :: 0 <= k < s.Length && s[k] != s[j] ==> s[k] >= result))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

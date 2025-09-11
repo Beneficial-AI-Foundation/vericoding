@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Day := String
 def am_I_afraid (day : Day) (num : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem am_I_afraid_type_is_bool (day : Day) (num : Int) :
   ∀ result, result = am_I_afraid day num → result = true ∨ result = false :=
   sorry
@@ -93,6 +101,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval am_I_afraid "Sunday" 55
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

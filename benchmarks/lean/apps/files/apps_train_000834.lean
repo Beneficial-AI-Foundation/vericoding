@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def make_word_label (word : String) (label : String) : String := sorry
 
 def solve_spam_dataset (cases : List (List String)) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem case_counts_match_n (ns : List Nat) :
   ns.all (λ n => n > 0 ∧ n ≤ 10) →
   let cases := ns.map (λ n => (toString n) :: List.replicate n (make_word_label "word" "0")) 
@@ -54,6 +62,7 @@ info: [3]
 -/
 -- #guard_msgs in
 -- #eval solve_spam_dataset [test3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

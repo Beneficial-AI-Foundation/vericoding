@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_ball (velocity : Float) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_ball_nonnegative (v : Float) :
   v > 0 → max_ball v ≥ 0 := 
   sorry
@@ -34,6 +42,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval max_ball 37
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

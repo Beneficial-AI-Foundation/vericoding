@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def maximum (l : List Int) : Int :=
   sorry
 
 def minimum (l : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_difference_sum (n k : Nat) (arr : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_difference_sum_non_negative 
   {n k : Nat} {arr : List Int}
   (h1 : n = arr.length)
@@ -59,6 +66,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_difference_sum 6 3 [4, 3, 4, 3, 2, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def reordered_power_of_2 (n : Nat) : Bool := sorry
 
 def get_powers_of_2 (max_digits : Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def digits (n : Nat) : List Nat := sorry 
 
 def sorted_digits (n : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem power_2_permutations_property {n : Nat} (h : reordered_power_of_2 n = true) :
   ∃ p, (p = 2^(Nat.log2 p)) ∧ sorted_digits n = sorted_digits p := sorry
 
@@ -35,6 +42,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval reordered_power_of_2 16
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

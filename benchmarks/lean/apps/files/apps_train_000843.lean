@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 def count_special_permutations (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_special_permutations_non_negative (n : Nat) (h : n > 0) : 
   count_special_permutations n ≥ 0 :=
   sorry
@@ -39,6 +47,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval count_special_permutations 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

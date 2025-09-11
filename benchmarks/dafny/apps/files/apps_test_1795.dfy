@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, f: seq<int>)
 {
     n >= 2 && n <= 5000 &&
@@ -25,6 +26,7 @@ predicate HasLoveTriangle(n: int, f: seq<int>)
     var a := ZeroIndexedArray(n, f);
     HasLoveTriangleWith(n, a)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

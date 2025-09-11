@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def is_sorted_and_how (arr : List Int) : String := sorry
 
 def isSorted (arr : List Int) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSortedDesc (arr : List Int) : Bool := sorry
 
 theorem sorted_properties (arr : List Int) (h : arr.length > 0) : 
@@ -13,7 +18,9 @@ theorem sorted_properties (arr : List Int) (h : arr.length > 0) :
   | "yes, descending" => isSortedDesc arr = true  
   | _ => ¬(isSorted arr) ∧ ¬(isSortedDesc arr)
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_valid (arr : List Int) (h : arr.length > 0) :
   is_sorted_and_how arr = "yes, ascending" ∨ 
   is_sorted_and_how arr = "yes, descending" ∨
@@ -41,6 +48,7 @@ info: 'no'
 -/
 -- #guard_msgs in
 -- #eval is_sorted_and_how [4, 2, 30]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

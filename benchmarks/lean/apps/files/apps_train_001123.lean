@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def determine_winner (sequence : String) : String := sorry
 
 theorem determine_winner_output_valid (sequence : String) : 
@@ -9,7 +15,9 @@ theorem determine_winner_output_valid (sequence : String) :
    determine_winner sequence = "snakes" ∨ 
    determine_winner sequence = "tie") :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem determine_winner_empty :
   determine_winner "" = "tie" :=
 sorry
@@ -63,6 +71,7 @@ info: 'snakes'
 -/
 -- #guard_msgs in
 -- #eval determine_winner "ssmmmssss"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def spinning_rings (inner_max outer_max : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem spinning_rings_always_positive (inner_max outer_max : Nat) 
   (h1 : inner_max > 0) (h2 : outer_max > 0) :
   spinning_rings inner_max outer_max > 0 :=
@@ -35,6 +43,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval spinning_rings 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

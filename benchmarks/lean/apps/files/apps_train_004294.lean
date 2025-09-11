@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def truncateString (s : String) (n : Nat) : String := sorry
 
 theorem truncateString_length (s : String) (n : Nat) : 
   (truncateString s n).length ≤ max n 3 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem truncateString_preserves_short (s : String) (n : Nat) :
   s.length ≤ n → truncateString s n = s := sorry
 
@@ -37,6 +45,7 @@ info: 'co...'
 -/
 -- #guard_msgs in
 -- #eval truncate_string "codewars" 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

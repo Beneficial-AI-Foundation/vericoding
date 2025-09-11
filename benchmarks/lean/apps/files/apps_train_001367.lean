@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maximize_weighted_sum (n : Nat) (arr : List Nat) : Nat := sorry
 
 theorem single_element (arr : List Nat) (h : arr.length = 1) :
   maximize_weighted_sum 1 arr = arr[0] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem two_elements (arr : List Nat) (h : arr.length = 2) :
   maximize_weighted_sum 2 arr = max (arr[0] + 2 * arr[1]) (arr[1] + 2 * arr[0]) := sorry
 
@@ -29,6 +37,7 @@ info: 11
 -/
 -- #guard_msgs in
 -- #eval maximize_weighted_sum 3 [3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

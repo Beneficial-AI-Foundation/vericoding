@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_word_ladders (begin_word end_word : String) (word_list : List String) : List (List String) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_list (begin_word end_word : String) (word_list : List String) :
   ∃ result, find_word_ladders begin_word end_word word_list = result := by
   sorry
@@ -37,6 +45,7 @@ info: sorted(expected1)
 -/
 -- #guard_msgs in
 -- #eval sorted find_word_ladders(begin1, end1, wordList1)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

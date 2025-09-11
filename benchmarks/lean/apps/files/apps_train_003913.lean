@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def what_time_is_it (angle : Float) : String := sorry
 
 def str_to_hours_mins (s : String) : Nat × Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def angle_to_total_mins (angle : Float) : Float := sorry
 
 theorem time_format_valid {angle : Float} (h : 0 ≤ angle ∧ angle ≤ 360) : 
@@ -13,7 +18,9 @@ theorem time_format_valid {angle : Float} (h : 0 ≤ angle ∧ angle ≤ 360) :
   result.length = 5 ∧ 
   hours ≥ 1 ∧ hours ≤ 12 ∧
   mins ≥ 0 ∧ mins ≤ 59 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem time_calculation_consistent {angle : Float} (h : 0 ≤ angle ∧ angle ≤ 360) :
   let result := what_time_is_it angle
   let (hours, mins) := str_to_hours_mins result
@@ -49,6 +56,7 @@ info: '01:30'
 -/
 -- #guard_msgs in
 -- #eval what_time_is_it 45
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

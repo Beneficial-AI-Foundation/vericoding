@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern_triangle (k : Nat) : List String := sorry
 
 theorem pattern_triangle_symmetry (k : Nat) :
   pattern_triangle k = (pattern_triangle k).reverse := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_triangle_length (k : Nat) :
   (pattern_triangle k).length = 2 * k + 1 := sorry
 
@@ -30,6 +38,7 @@ theorem pattern_triangle_row_lengths_monotone (k : Nat) :
 
 theorem pattern_triangle_zero :
   pattern_triangle 0 = ["0"] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

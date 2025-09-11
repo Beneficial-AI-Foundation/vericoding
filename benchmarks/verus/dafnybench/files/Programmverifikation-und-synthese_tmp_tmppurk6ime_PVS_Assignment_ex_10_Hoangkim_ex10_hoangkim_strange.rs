@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ fn q(x: u32, y: u32) -> (z: u32)
     assume(false);
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

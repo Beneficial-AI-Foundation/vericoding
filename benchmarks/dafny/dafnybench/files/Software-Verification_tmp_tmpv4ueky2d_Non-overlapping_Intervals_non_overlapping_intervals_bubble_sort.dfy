@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate sorted(a: array2<int>, l: int, u: int)
     reads a
     requires a.Length1 == 2
@@ -11,6 +12,7 @@ predicate partitioned(a: array2<int>, i: int)
 {
     forall k, k' :: 0 <= k <= i < k' < a.Length0 ==> a[k, 1] <= a[k', 1]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

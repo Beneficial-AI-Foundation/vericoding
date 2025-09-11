@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def find_min_sum_permutation (n : Nat) : List Nat := sorry
 
 def abs (n : Nat) (m : Nat) : Nat :=
   if n ≥ m then n - m else m - n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSortedList : List Nat → Bool
   | [] => true
   | [_] => true
   | x :: y :: xs => x ≤ y && isSortedList (y :: xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem permutation_length {n : Nat} (h : 0 < n) (h2 : n ≤ 1000) : 
   let result := find_min_sum_permutation n
   List.length result = n ∧ 
@@ -42,6 +49,7 @@ info: [3, 2, 1]
 -/
 -- #guard_msgs in
 -- #eval find_min_sum_permutation 3
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

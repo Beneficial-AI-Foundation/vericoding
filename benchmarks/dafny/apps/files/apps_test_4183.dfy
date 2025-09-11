@@ -1,3 +1,4 @@
+// <vc-preamble>
 function gcd(a: int, b: int): int
   requires a > 0 && b >= 0
   ensures gcd(a, b) > 0
@@ -37,6 +38,7 @@ predicate CorrectResult(periods: seq<int>, result: int)
 {
   result == lcmSeq(periods)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

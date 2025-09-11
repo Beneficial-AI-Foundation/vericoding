@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_chef_paint (arr : List Int) : String := sorry
 
 theorem can_chef_paint_returns_valid_response {arr : List Int} (h : arr.length ≥ 3) :
   can_chef_paint arr = "Yes" ∨ can_chef_paint arr = "No" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_chef_paint_valid_inputs {arr : List Int} (h1 : arr.length ≥ 3)
   (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5) :
   (∃ i, i ≥ 1 ∧ i < arr.length - 1 ∧ 
@@ -35,6 +43,7 @@ info: 'No'
 -/
 -- #guard_msgs in
 -- #eval can_chef_paint [5, 5, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

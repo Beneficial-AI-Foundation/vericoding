@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def case_id (s : String) : String := sorry
 
 theorem case_id_result_is_valid (s : String) :
   case_id s = "snake" ∨ case_id s = "kebab" ∨ case_id s = "camel" ∨ case_id s = "none" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string_is_none :
   case_id "" = "none" := sorry
 
@@ -79,6 +87,7 @@ info: 'none'
 -/
 -- #guard_msgs in
 -- #eval case_id "helloworld"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

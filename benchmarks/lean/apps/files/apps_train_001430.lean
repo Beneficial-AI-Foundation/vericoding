@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_robbery_probability (n : Nat) : Nat × Nat := sorry
 
 -- Basic properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem robbery_prob_numerator (n : Nat) (h : n > 0) : 
   (calc_robbery_probability n).1 = 1 := sorry 
 
@@ -36,6 +44,7 @@ info: (1, 10)
 -/
 -- #guard_msgs in
 -- #eval calc_robbery_probability 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

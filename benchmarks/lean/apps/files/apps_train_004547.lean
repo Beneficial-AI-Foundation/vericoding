@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def search_names (logins : List (String × String)) : List (String × String) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem search_names_subset (logins : List (String × String)) :
   ∀ x, x ∈ search_names logins → x ∈ logins :=
   sorry
@@ -47,6 +55,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval search_names [["foo", "foo@foo.com"], ["bar", "bar@bar.com"]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

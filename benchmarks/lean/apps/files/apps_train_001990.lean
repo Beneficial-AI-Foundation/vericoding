@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve_discount_shopping (n_discounts : Nat) (discount_values : List Nat) (n_items : Nat) (item_values : List Nat) : Nat :=
   sorry
 
@@ -14,15 +15,21 @@ def list_take (n : Nat) (l : List Nat) : List Nat :=
   | 0, _ => []
   | _, [] => []
   | n+1, h :: t => h :: list_take n t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_replicate (n : Nat) (v : Nat) : List Nat :=
   match n with
   | 0 => []
   | n+1 => v :: list_replicate n v
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem discount_shopping_non_negative
   (n_discounts : Nat)
   (discount_values : List Nat)
@@ -100,6 +107,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_discount_shopping 1 [1] 7 [1, 1, 1, 1, 1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

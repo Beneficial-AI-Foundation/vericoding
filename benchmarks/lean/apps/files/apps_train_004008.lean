@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def complex_sum (arr : List String) : String := sorry
 
 def complex_str (real imag : Int) : String := sorry
 
 def real_part (s : String) : Int := sorry
 def imag_part (s : String) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Int) : Int := sorry
 
 -- Sum of complex numbers is equal to sum of separate numbers
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem complex_sum_equals_separate_sums {arr : List String} : 
   ∀ (real_sum imag_sum : Int), 
   complex_sum arr = complex_str real_sum imag_sum →
@@ -52,6 +59,7 @@ info: '0'
 -/
 -- #guard_msgs in
 -- #eval complex_sum []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

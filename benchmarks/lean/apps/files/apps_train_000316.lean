@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def maxDistance (grid : List (List Int)) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rotateGrid (grid : List (List Int)) : List (List Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxDistance_bounds (grid : List (List Int)) : 
   let result := maxDistance grid
   result ≥ -1 ∧ (result ≠ -1 → result ≤ 2 * grid.length) :=
@@ -49,6 +56,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval maxDistance [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

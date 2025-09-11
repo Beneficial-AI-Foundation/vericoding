@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def last_chair (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem last_chair_range {n : Nat} (h : n ≥ 3) :
   1 ≤ last_chair n ∧ last_chair n ≤ n := by
   sorry
@@ -29,6 +37,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval last_chair 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

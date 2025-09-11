@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isPrime (n : Int) : Bool := sorry
 
 def solve (a b : Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prime_properties (n : Int) : 
   isPrime n → n > 1 ∧ 
   (n > 2 ∧ n % 2 = 0 → ¬isPrime n) ∧
@@ -35,6 +43,7 @@ info: 25005
 -/
 -- #guard_msgs in
 -- #eval solve 2000 5000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

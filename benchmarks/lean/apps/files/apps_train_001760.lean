@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nums_same_consec_diff (n k : Nat) : List Nat := sorry
 
 def absDiff (a b : Nat) : Nat :=
   if a ≥ b then a - b else b - a
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digit_case (n : Nat) (h : 1 ≤ n ∧ n ≤ 9) :
   let result := nums_same_consec_diff 1 n
   List.length result = 10 ∧ 
@@ -50,6 +58,7 @@ info: [11, 22, 33, 44, 55, 66, 77, 88, 99]
 -/
 -- #guard_msgs in
 -- #eval nums_same_consec_diff 2 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

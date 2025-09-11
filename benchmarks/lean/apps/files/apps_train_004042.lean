@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def operation (a b : Nat) : Nat := sorry
 
 def isPowerOf2 (n : Nat) : Bool := sorry
 
 -- Operations are symmetric between powers of 2
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem operation_symmetry (a b : Nat) :
   a ≠ 0 → b ≠ 0 → isPowerOf2 a → isPowerOf2 b → 
   operation a b = operation b a := sorry
@@ -63,6 +71,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval operation 1 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

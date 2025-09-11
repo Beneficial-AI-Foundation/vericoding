@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -22,6 +23,7 @@ spec fn peek_sum(v: &Vec<i32>, i: int) -> int
         }
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

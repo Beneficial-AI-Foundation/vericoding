@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def judge_circle (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem judge_circle_duplicate (moves : String) :
   judge_circle (moves ++ moves) = judge_circle moves :=
 sorry
@@ -39,6 +47,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval judge_circle "URDL"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def classify_feedback (s : String) : String := sorry
 
 def containsSubstring (s : String) (sub : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem classify_feedback_returns_valid_output (s : String) (h : s.length > 0) :
   (classify_feedback s = "Good" ∨ classify_feedback s = "Bad") := sorry
 
@@ -37,6 +45,7 @@ info: 'Good'
 -/
 -- #guard_msgs in
 -- #eval classify_feedback "00010"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def less {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem less_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
     less x1 x2
@@ -36,3 +43,4 @@ theorem less_spec {n : Nat} (x1 x2 : Vector String n) :
                  -- Totality of comparison: for any two strings, exactly one of <, =, > holds
                  (∀ i : Fin n, result.get i = true ∨ x1.get i = x2.get i ∨ x2.get i < x1.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

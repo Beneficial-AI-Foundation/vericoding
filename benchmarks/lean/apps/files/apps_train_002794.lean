@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_vowel (s : String) : Bool := sorry
 
 theorem is_vowel_length_property {s : String} :
   is_vowel s → s.length = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_vowel_case_insensitive {s : String} :
   s.length = 1 → is_vowel s = is_vowel s.toLower := sorry
 
@@ -46,6 +54,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_vowel "z"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

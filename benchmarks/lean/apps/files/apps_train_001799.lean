@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pour_water (heights : List Nat) (V : Nat) (K : Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pour_water_result_length {heights : List Nat} {V K : Nat} 
   (h : K < heights.length) :
   (pour_water heights V K).length = heights.length :=
@@ -46,6 +54,7 @@ info: [4, 4, 4]
 -/
 -- #guard_msgs in
 -- #eval pour_water [3, 1, 3] 5 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

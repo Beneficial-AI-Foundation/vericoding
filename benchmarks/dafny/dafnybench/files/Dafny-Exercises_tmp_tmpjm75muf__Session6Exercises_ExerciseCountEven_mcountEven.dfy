@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate positive(s:seq<int>)
 {
   forall u::0<=u<|s| ==> s[u]>=0
@@ -17,6 +18,7 @@ requires positive(s)
   else (if (s[|s|-1]%2==0) then 1 else 0)+CountEven(s[..|s|-1])
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

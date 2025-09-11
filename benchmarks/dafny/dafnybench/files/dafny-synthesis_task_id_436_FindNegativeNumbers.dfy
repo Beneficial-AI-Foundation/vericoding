@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate IsNegative(n: int)
 {
     n < 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isEven (x : Int) : Bool :=
   sorry
 
 def isFloat (x : Float) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isEvenFloat (x : Float) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem even_plus_two (x : Int) :
   isEven x = isEven (x + 2) :=
 sorry
@@ -43,6 +50,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_even 0.5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

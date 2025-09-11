@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve : String → String := sorry
 
 theorem solve_basic_cases₁ :
   solve "3(a)" = "aaa" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_basic_cases₂ :
   solve "2(ab)" = "abab" := sorry
 
@@ -41,6 +49,7 @@ info: 'kabaccbaccbacc'
 -/
 -- #guard_msgs in
 -- #eval solve "k(a3(b(a2(c))))"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

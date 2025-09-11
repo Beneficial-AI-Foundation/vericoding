@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def decode_string (s : String) : Nat := sorry
 
 theorem decode_string_empty :
   decode_string "" = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decode_string_single_zero :
   decode_string "0" = 0 := sorry
 
@@ -43,6 +51,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval decode_string "123"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

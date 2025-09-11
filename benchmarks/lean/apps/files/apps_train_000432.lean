@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def minSwaps (grid : List (List Nat)) : Int := sorry
 
 def isValidFinalGrid (grid : List (List Nat)) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identity_matrix_no_swaps {n : Nat} (grid : List (List Nat))
   (h : grid = List.map (fun i => List.map (fun j => if i = j then 1 else 0) (List.range n)) (List.range n)) :
   minSwaps grid = 0 := sorry
@@ -44,6 +52,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval minSwaps [[1, 0, 0], [1, 1, 0], [1, 1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

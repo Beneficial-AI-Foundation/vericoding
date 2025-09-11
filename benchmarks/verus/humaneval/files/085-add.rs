@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -19,6 +20,7 @@ spec fn add_odd_evens(lst: Seq<u32>) -> (ret:int)
         odd_or_zero(lst[1]) + add_odd_evens(lst.skip(2))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

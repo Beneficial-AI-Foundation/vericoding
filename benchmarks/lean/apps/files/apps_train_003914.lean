@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_pairs_int (d : Nat) (m : Nat) : Nat := sorry
 
 theorem count_pairs_int_non_negative (d m : Nat) (h : d > 0) (h2 : m > 1) :
   (count_pairs_int d m) ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_pairs_int_zero_when_d_large (d m : Nat) (h : d > 0) (h2 : m > 1) (h3 : d ≥ m-1) :
   count_pairs_int d m = 0 := sorry
 
@@ -32,6 +40,7 @@ info: 86
 -/
 -- #guard_msgs in
 -- #eval count_pairs_int 6 350
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

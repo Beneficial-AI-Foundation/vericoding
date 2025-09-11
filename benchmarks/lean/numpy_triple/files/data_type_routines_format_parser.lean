@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -33,17 +34,23 @@ structure DType (n : Nat) where
   /-- Whether fields are aligned as C-compiler would -/
   aligned : Bool := false
   deriving Repr, BEq
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_format_parser {n : Nat} 
     (formats : Vector String n) 
     (names : Vector String n) 
     (titles : Option (Vector String n) := none)
     (aligned : Bool := false) : Id (DType n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_format_parser_spec {n : Nat} 
     (formats : Vector String n) 
     (names : Vector String n) 
@@ -72,3 +79,4 @@ theorem numpy_format_parser_spec {n : Nat}
       (dtype.aligned = aligned)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

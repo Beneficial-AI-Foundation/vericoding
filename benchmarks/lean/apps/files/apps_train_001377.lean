@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_pipernet (n a b x y z : Nat) (contributions : List Nat) : Nat ⊕ String := sorry 
 
 theorem solve_pipernet_valid_output
@@ -22,7 +28,9 @@ theorem solve_pipernet_valid_output
   | Sum.inl val => 0 ≤ val
   | _ => False
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_pipernet_zero_contributions
   (n : Nat)
   (h1 : 0 < n ∧ n ≤ 100) :
@@ -45,6 +53,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_pipernet 4 40 80 30 30 100 [100, 100, 100, 100]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

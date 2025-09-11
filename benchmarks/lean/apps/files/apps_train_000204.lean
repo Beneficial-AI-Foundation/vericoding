@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def predict_party_victory (senate : String) : String := sorry
 
 theorem predict_party_victory_valid_output (senate : String) :
   senate.length > 0 → 
   (predict_party_victory senate = "Radiant" ∨ predict_party_victory senate = "Dire") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem predict_party_victory_all_radiant (senate : String) :
   senate.length > 0 → 
   (∀ c, c ∈ senate.data → c = 'R') →
@@ -42,6 +50,7 @@ info: 'Radiant'
 -/
 -- #guard_msgs in
 -- #eval predict_party_victory "RRDDD"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

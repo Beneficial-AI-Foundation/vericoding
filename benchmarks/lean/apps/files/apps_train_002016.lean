@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_pretty_substrings (s: String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_non_negative (s: String) : 
   count_pretty_substrings s ≥ 0 :=
   sorry
@@ -36,6 +44,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_pretty_substrings "??"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

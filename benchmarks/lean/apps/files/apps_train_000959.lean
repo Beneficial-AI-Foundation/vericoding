@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def sum_list : List Nat → Nat 
   | [] => 0
   | x::xs => x + sum_list xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_sequence_sum (n : Nat) (a : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_sequence_sum_non_negative
   (n : Nat) (a : List Nat) (h : a.length = n)
   : min_sequence_sum n a ≥ 0 :=
@@ -62,6 +69,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_sequence_sum 3 [1, 1, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

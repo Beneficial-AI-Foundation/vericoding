@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def findMin (arr : List Int) : Int :=
   sorry
 
 def rotateList (xs : List Int) (n : Nat) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listMin (xs : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem findMin_singleton (n : Int) :
   findMin [n] = n :=
   sorry
@@ -44,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval findMin [1, 2, 3, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

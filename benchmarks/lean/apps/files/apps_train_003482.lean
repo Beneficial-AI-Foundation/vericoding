@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sc_perm_comb (n : Nat) : Nat := sorry
 
 theorem sc_perm_comb_non_negative (n : Nat) :
   sc_perm_comb n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sc_perm_comb_geq_input (n : Nat) :
   sc_perm_comb n ≥ n := sorry 
 
@@ -36,6 +44,7 @@ info: 369
 -/
 -- #guard_msgs in
 -- #eval sc_perm_comb 333
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

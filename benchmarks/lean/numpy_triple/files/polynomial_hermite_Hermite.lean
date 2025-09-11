@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermiteEval {n : Nat} (coef : Vector Float n) (x : Float) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermiteEval_spec {n : Nat} (coef : Vector Float n) (x : Float) :
     ⦃⌜True⌝⦄
     hermiteEval coef x
@@ -34,3 +41,4 @@ theorem hermiteEval_spec {n : Nat} (coef : Vector Float n) (x : Float) :
                         (∀ j : Nat, H_neg (j + 2) = 2 * (-x) * H_neg (j + 1) - 2 * Float.ofNat (j + 1) * H_neg j)) ∧
                        H_neg k = (if k % 2 = 0 then 1 else -1) * H k))⌝⦄ := by
   sorry
+-- </vc-theorems>

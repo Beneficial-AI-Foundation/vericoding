@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def isString : (s : String) → Bool := sorry
 def canReorderString : (s : String) → String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (c : Char) (s : String) : Nat := sorry
 
 def isValidLifetime (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem canReorderString_valid_output (s : String) :
   (canReorderString s = "YES") ∨ (canReorderString s = "NO") := sorry
 
@@ -47,6 +54,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval can_reorder_string "LTIMEM"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

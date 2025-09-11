@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsValidInput(input: string)
 {
     var lines := SplitLines(input);
@@ -27,6 +28,7 @@ function Sum(nums: seq<int>): int
     if |nums| == 0 then 0
     else nums[0] + Sum(nums[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

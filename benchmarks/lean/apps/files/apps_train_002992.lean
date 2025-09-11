@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def to_utf8_binary (s : String) : String := sorry
 def from_utf8_binary (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem utf8_roundtrip (s : String) :
   let binary := to_utf8_binary s
   (∀ c ∈ binary.data, c = '0' ∨ c = '1') ∧
@@ -41,6 +49,7 @@ info: test3_input
 -/
 -- #guard_msgs in
 -- #eval from_utf8_binary test3_result
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

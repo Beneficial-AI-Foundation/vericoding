@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def evaluatePolynomial (coeffs : List Float) (x : Float) : Float :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def directPolynomial (coeffs : List Float) (x : Float) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem polynomial_evaluation_matches_direct 
   (coeffs : List Float) (x : Float)
   (h1 : coeffs.length ≥ 1)
@@ -23,6 +30,7 @@ theorem polynomial_at_zero
   (h3 : ∀ c ∈ coeffs, -1000000 ≤ c ∧ c ≤ 1000000) :
   evaluatePolynomial coeffs 0 = coeffs.getLast h1 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

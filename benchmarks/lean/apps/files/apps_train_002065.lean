@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def find_permutation_with_prefix_products (n : Nat) : List Nat := sorry
 
 def is_prime (n : Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check_prefix_products (result : List Nat) (n : Nat) : Bool := sorry
 
 def is_valid_permutation (result : List Nat) (n : Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_properties (n : Nat) (h : n ≥ 2) :
   let result := find_permutation_with_prefix_products n
   result.length > 0 →
@@ -47,6 +54,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval len find_permutation_with_prefix_products(6)
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

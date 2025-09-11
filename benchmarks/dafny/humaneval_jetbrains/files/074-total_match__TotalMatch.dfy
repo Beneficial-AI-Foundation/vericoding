@@ -1,8 +1,10 @@
+// <vc-preamble>
 function sum_chars_rec(list: seq<string>): nat
 {
   if |list| == 0 then 0
   else |list[0]| + sum_chars_rec(list[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

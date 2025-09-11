@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_users_ids (s : String) : List String := sorry
 
 theorem get_users_ids_is_list (s : String) :
   ∃ (l : List String), get_users_ids s = l :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_users_ids_elements_are_strings (s : String) (x : String) :
   x ∈ get_users_ids s → x.length ≥ 0 :=
 sorry
@@ -48,6 +56,7 @@ info: ['12 ab', '', 'mixedchars']
 -/
 -- #guard_msgs in
 -- #eval get_users_ids "uid12 ab, uid#, uidMiXeDcHaRs"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

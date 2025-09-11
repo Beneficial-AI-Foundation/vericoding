@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 &&
@@ -19,6 +20,7 @@ function GetExpectedResult(input: string): string
         if parts[0] == "5" || parts[0] == "6" then "53\n"
         else "52\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

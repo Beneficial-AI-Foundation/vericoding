@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(angles: seq<int>)
 {
   forall i :: 0 <= i < |angles| ==> 1 <= angles[i] < 180
@@ -18,6 +19,7 @@ predicate CorrectOutput(angles: seq<int>, result: seq<int>)
   |result| == |angles| &&
   forall i :: 0 <= i < |angles| ==> result[i] == ComputeAnswer(angles[i])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

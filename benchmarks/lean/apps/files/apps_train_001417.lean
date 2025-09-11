@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def Nat.toHexString (n: Nat) : String :=
   sorry
 
 def String.trimLeftZeros (s: String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hexToDecimal (l: List String) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hex_to_decimal_length (l: List String) :
   l.length = (hexToDecimal l).length := by
   sorry
@@ -48,6 +55,7 @@ info: [10, 6691, 11306]
 -/
 -- #guard_msgs in
 -- #eval hex_to_decimal ["A", "1A23", "2C2A"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

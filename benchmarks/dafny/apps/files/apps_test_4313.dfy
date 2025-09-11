@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SumOfPositiveProfits(values: seq<int>, costs: seq<int>, n: int): int
     requires |values| >= n
     requires |costs| >= n
@@ -13,6 +14,7 @@ predicate ValidInput(n: int, values: seq<int>, costs: seq<int>)
 {
     |values| == n && |costs| == n && n >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

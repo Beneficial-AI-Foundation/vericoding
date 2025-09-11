@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_real_floor (n : Int) : Int := sorry
 
 theorem negative_and_zero_floors_unchanged
   {floor : Int}
   (h : floor ≤ 0) :
   get_real_floor floor = floor := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem floors_below_13_decreased_by_one
   {floor : Int}
   (h1 : floor > 0)
@@ -39,6 +47,7 @@ info: -3
 -/
 -- #guard_msgs in
 -- #eval get_real_floor -3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

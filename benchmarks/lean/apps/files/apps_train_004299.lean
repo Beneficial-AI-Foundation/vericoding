@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def capitals_first (s : String) : String := sorry
 
 theorem capitals_first_output_format (s : String) 
@@ -14,7 +20,9 @@ theorem capitals_first_output_format (s : String)
           ∀ w' ∈ words[j]?,
             ∀ c' ∈ w'.get? 0,
               c'.isLower := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem capitals_first_basic_patterns {s : String}
   (h₁ : ∃ w ∈ (capitals_first s).split (· = ' '), ∃ c ∈ w.get? 0, c.isUpper) 
   (h₂ : ∃ w ∈ (capitals_first s).split (· = ' '), ∃ c ∈ w.get? 0, c.isLower) :
@@ -41,6 +49,7 @@ info: 'Life Sometimes gets pretty'
 -/
 -- #guard_msgs in
 -- #eval capitals_first "Life gets Sometimes pretty !Hard"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

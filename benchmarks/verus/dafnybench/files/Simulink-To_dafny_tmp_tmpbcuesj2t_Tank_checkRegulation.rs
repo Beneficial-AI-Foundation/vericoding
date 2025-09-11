@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -43,6 +44,7 @@ impl Tank {
         }
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

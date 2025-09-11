@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def String.lines (s : String) : List String := sorry
 def pattern (n : Int) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_positive_input_line_count {n : Int} (h : n > 0) : 
   (pattern n).lines.length = n := sorry
 
@@ -53,6 +61,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval pattern -1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

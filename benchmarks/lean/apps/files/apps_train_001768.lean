@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_time_difference (times: List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem exceeding_size_gives_zero (times: List String)
   (h: times.length > 1440) :
   find_min_time_difference times = 0 :=
@@ -30,6 +38,7 @@ info: 61
 -/
 -- #guard_msgs in
 -- #eval find_min_time_difference ["01:01", "02:02", "03:03"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

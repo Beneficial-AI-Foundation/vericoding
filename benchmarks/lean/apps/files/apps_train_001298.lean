@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def encodeAscii (s : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def decodeAsciiMessage (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decode_matches_input {s : String} 
     (h1 : s ≠ "") 
     (h2 : ∀ c ∈ s.data, 32 ≤ c.toNat ∧ c.toNat ≤ 126) :
@@ -37,6 +44,7 @@ info: 'Welcome to India'
 -/
 -- #guard_msgs in
 -- #eval decode_ascii_message "871011089911110910132116111327311010010597"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

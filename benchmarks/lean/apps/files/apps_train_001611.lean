@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def calculateSequences : List Int → List String := sorry
 
 structure FormatResult where
@@ -7,13 +8,19 @@ structure FormatResult where
 def checkFormat (s : String) : FormatResult :=
   { isStartF := s.data.head? = some 'f',
     containsAssign := s.data.contains '=' }
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def extractValue (s : String) : String := sorry
 def extractNumber (s : String) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem list_format_properties {inputs : List Int} :
   let result := calculateSequences inputs
   ∀ x ∈ result,
@@ -47,6 +54,7 @@ info: expected1
 -/
 -- #guard_msgs in
 -- #eval calculate_sequences [0, 1, -2, -3, -4, -5, -6, -7, -8, -9, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

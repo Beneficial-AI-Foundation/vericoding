@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: nat, arr: seq<int>)
 {
     n > 0 && |arr| == n && forall i :: 0 <= i < |arr| ==> arr[i] >= 1
@@ -25,6 +26,7 @@ function ComputePhases(arr: seq<int>): (int, int, int)
     var decEnd := ComputeDecreasingEnd(arr, constEnd, if constEnd > incEnd then arr[incEnd] else if incEnd > 0 then arr[incEnd-1] else 0);
     (incEnd, constEnd, decEnd)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

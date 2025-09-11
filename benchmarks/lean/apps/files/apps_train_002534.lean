@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def meeting (rooms : List Char) : String ⊕ Nat := sorry
 
 theorem meeting_first_O {rooms : List Char} :
@@ -10,7 +16,9 @@ theorem meeting_first_O {rooms : List Char} :
     rooms.get! n = 'O' ∧ 
     ∀ i, i < n → rooms.get! i = 'X'
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem meeting_no_O {rooms : List Char} :
   rooms ≠ [] →
   (¬ rooms.contains 'O') → 
@@ -46,6 +54,7 @@ info: 'None available!'
 -/
 -- #guard_msgs in
 -- #eval meeting ["X"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def strToNat (s : String) : Nat := sorry
 
 def to24hourtime (hour : Nat) (minute : Nat) (period : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem to24hourtime_format {hour : Nat} {minute : Nat} {period : String}
   (h1 : 1 ≤ hour ∧ hour ≤ 12) 
   (h2 : minute ≤ 59)
@@ -55,6 +63,7 @@ info: '2030'
 -/
 -- #guard_msgs in
 -- #eval to24hourtime 8 30 "pm"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def Matrix (α : Type) := List (List α)
 def LabelList := List Nat
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_graph_similarity (n : Nat) (g1 : Matrix Nat) (g2 : Matrix Nat) : LabelList × LabelList :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_graph_similarity_output_length {n : Nat} {g1 g2 : Matrix Nat}:
   let (r1, r2) := solve_graph_similarity n g1 g2
   r1.length = n ∧ r2.length = n :=
@@ -70,6 +77,7 @@ info: list(range(1, n2 + 1))
 -/
 -- #guard_msgs in
 -- #eval sorted r4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

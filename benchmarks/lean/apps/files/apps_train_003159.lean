@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def faulty_odometer (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odometer_never_negative (n : Nat) : 
   faulty_odometer n ≥ 0 :=
 sorry
@@ -37,6 +45,7 @@ info: 1462
 -/
 -- #guard_msgs in
 -- #eval faulty_odometer 2005
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

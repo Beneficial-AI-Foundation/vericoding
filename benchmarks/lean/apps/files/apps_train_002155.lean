@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countFunnyPairs (n : Nat) (arr : List Nat) : Nat := sorry
 
 theorem count_funny_pairs_bounds (n : Nat) (arr : List Nat) 
   (h1 : arr.length = n) (h2 : n > 0) :
   let result := countFunnyPairs n arr
   0 ≤ result ∧ result ≤ n * (n-1) / 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_elements_property (n : Nat) (arr : List Nat) 
   (h : arr.length = n) (h2 : n > 0) :
   let evenArr := List.replicate n (arr.get ⟨0, sorry⟩)
@@ -39,6 +47,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_funny_pairs 3 [42, 4, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

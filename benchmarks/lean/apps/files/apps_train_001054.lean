@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def total_money : Float := 1000000000.0
 
 def solve_division (m : Nat) (p : Float) : Float × Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_division_sums_to_total (m : Nat) (p : Float)
   (h1 : m ≥ 1) (h2 : m ≤ 100)
   (h3 : p > 0.000001) (h4 : p < 0.999999) :
@@ -28,6 +36,7 @@ theorem solve_division_bounds (m : Nat) (p : Float)
   (h3 : p > 0.000001) (h4 : p < 0.999999) :
   let (chef, other) := solve_division m p
   chef ≤ total_money ∧ other ≤ total_money := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

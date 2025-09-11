@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, x: int, a: int, b: int)
 {
     2 <= n <= 100 && 0 <= x <= 100 && 1 <= a <= n && 1 <= b <= n && a != b
@@ -17,6 +18,7 @@ predicate ValidResult(n: int, x: int, a: int, b: int, result: int)
 {
     result == MaxDistance(n, x, a, b) && 0 <= result <= n - 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

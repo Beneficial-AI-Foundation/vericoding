@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bingo (numbers : List Int) : String := sorry
 
 theorem bingo_returns_valid_string (numbers : List Int) :
   numbers ≠ [] →
   (bingo numbers = "WIN" ∨ bingo numbers = "LOSE") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bingo_win_condition_with_bingo_numbers
   (numbers : List Int)
   (h : ∀ n ∈ numbers, 1 ≤ n ∧ n ≤ 30) :
@@ -40,6 +48,7 @@ info: 'WIN'
 -/
 -- #guard_msgs in
 -- #eval bingo [1, 2, 3, 7, 5, 14, 7, 15, 9, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

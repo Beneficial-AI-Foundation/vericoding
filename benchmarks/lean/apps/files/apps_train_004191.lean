@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def jumbledString (s : String) (n : Int) : String := sorry
 
 theorem jumbledString_length_preserved (s : String) (n : Int) (h : s.length > 0) :
   (jumbledString s n).length = s.length := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSameChars (s₁ s₂ : String) : Prop :=
   ∀ c : Char, (s₁.data.countP (· = c)) = (s₂.data.countP (· = c))
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem jumbledString_same_chars (s : String) (n : Int) (h : s.length > 0) :
   isSameChars s (jumbledString s n) := sorry
 
@@ -36,6 +43,7 @@ info: 'qtorieuwy'
 -/
 -- #guard_msgs in
 -- #eval jumbled_string "qwertyuio" 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

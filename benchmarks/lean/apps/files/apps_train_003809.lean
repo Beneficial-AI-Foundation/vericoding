@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def paint_letterboxes (start: Nat) (finish: Nat) : List Nat := sorry
 
 def str_count_digits (n: Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def toString (n: Nat) : String := sorry
 def sum_list (l: List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem paint_letterboxes_range {start finish : Nat} (h: start ≤ finish) :
   let result := paint_letterboxes start finish
   List.length result = 10 ∧ 
@@ -33,6 +40,7 @@ info: [2, 2, 0, 0, 0, 0, 0, 0, 0, 0]
 -/
 -- #guard_msgs in
 -- #eval paint_letterboxes 1001 1001
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

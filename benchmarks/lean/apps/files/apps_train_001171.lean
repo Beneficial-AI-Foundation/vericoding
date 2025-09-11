@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_race (x1 x2 x3 v1 v2 : Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_race_returns_valid_result (x1 x2 x3 : Int) (v1 v2 : Int) 
   (h1 : 1 ≤ v1 ∧ v1 ≤ 100) (h2 : 1 ≤ v2 ∧ v2 ≤ 100)
   (h3 : -1000 ≤ x1 ∧ x1 ≤ 1000)
@@ -48,6 +56,7 @@ info: 'Draw'
 -/
 -- #guard_msgs in
 -- #eval solve_race 1 5 3 2 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

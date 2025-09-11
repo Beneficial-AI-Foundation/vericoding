@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_heads_after_operations (n k : Nat) (coins : List Bool) : Nat :=
 sorry
 
 -- Theorem reflecting that count should be non-negative and bounded
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_heads_bounds {n k : Nat} {coins : List Bool}
   (h1 : n > 0)
   (h2 : k > 0)
@@ -50,6 +58,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval count_heads_after_operations 6 1 "T H T H T T"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

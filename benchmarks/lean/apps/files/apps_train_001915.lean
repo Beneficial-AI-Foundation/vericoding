@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_codefortia (n m a b : Nat) (edges : List (Nat × Nat × Nat)) : List Nat := sorry
 
 theorem solve_codefortia_result_length {n m a b : Nat} {edges : List (Nat × Nat × Nat)} :
   (solve_codefortia n m a b edges).length = n :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_codefortia_start_vertex {n m a b : Nat} {edges : List (Nat × Nat × Nat)} :
   n ≥ 1 → List.get! (solve_codefortia n m a b edges) 0 = 0 :=
 sorry 
@@ -41,6 +49,7 @@ info: [0, 1]
 -/
 -- #guard_msgs in
 -- #eval solve_codefortia 2 1 1 2 [(2, 1, 1)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

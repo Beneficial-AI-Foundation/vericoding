@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def word_to_bin (s : String) : List String := sorry
 
 theorem word_to_bin_length {s : String} (h : s.length > 0) : 
   (word_to_bin s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem word_to_bin_binary_format {s : String} (h : s.length > 0) :
   ∀ x ∈ word_to_bin s,
     x.length = 8 ∧ 
@@ -33,6 +41,7 @@ info: ['01000001', '01000010']
 -/
 -- #guard_msgs in
 -- #eval word_to_bin "AB"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

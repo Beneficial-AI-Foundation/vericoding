@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def isInertial (arr : List Int) : Bool := sorry
 
 def maximum? : List Int → Option Int
   | [] => none
   | x::xs => some (xs.foldl max x)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def minimum? : List Int → Option Int
   | [] => none
   | x::xs => some (xs.foldl min x)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_array
   : ∀ (arr : List Int), arr = [] → isInertial arr = false := by
   sorry
@@ -68,6 +75,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_inertial [11, 4, 20, 9, 2, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

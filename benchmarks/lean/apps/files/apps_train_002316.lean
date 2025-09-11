@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_single_number (nums: List Int) : Int := sorry
 
 theorem find_single_number_pairs_plus_single (single: Int) (pairs: List Int) :
   find_single_number (pairs ++ pairs ++ [single]) = single := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_single_number_single_element (x: Int) :
   find_single_number [x] = x := sorry
 
@@ -31,6 +39,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_single_number [1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

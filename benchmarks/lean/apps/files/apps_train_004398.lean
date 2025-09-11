@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_neighbourhood (typ : String) (arr : List (List Int)) (coords : Int × Int) : List Int :=
   sorry
 
 -- For non-empty valid arrays, moore neighborhood should have at most 8 neighbors
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem moore_neighborhood_size
   (arr : List (List Int))
   (x y : Nat)
@@ -61,6 +69,7 @@ info: sorted([1, 5])
 -/
 -- #guard_msgs in
 -- #eval sorted get_neighbourhood("von_neumann", matrix2, (0, 0))
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

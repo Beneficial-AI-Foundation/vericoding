@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tankvol (h : Float) (d : Float) (vt : Int) : Int := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tankvol_output_is_bounded 
   (h d : Float) (vt : Int) 
   (h_pos : h ≥ 0.1)
@@ -55,6 +63,7 @@ info: 2478
 -/
 -- #guard_msgs in
 -- #eval tankvol 80 120 3500
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

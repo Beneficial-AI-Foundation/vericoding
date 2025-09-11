@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_factors_and_powers (x k : Nat) : Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_positive (x k : Nat) 
     (h1 : x ≥ 2) (h2 : k ≥ 2) : 
     let (power_sum, factor_sum) := solve_factors_and_powers x k
@@ -33,6 +41,7 @@ theorem composite_sums (n k : Nat)
     let (power_sum, factor_sum) := solve_factors_and_powers n k
     power_sum > n ^ k ∧ factor_sum > n * k :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

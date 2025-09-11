@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, A: seq<int>, queries: seq<int>)
 {
     |A| == n && |queries| == m && n >= 1 && m >= 1 &&
@@ -9,6 +10,7 @@ function DistinctCount(A: seq<int>, start: int): int
 {
     |set j | start <= j < |A| :: A[j]|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

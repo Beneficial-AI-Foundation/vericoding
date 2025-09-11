@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def min_cost_to_cut_trees (n : Nat) (heights : List Nat) (costs : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_list : List Nat → Nat
   | [] => 0
   | h::t => h + sum_list t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cost_non_negative (n : Nat) (heights : List Nat) (costs : List Nat)
   (h1 : n ≥ 2)
   (h2 : heights.length = n)
@@ -48,6 +55,7 @@ info: 138
 -/
 -- #guard_msgs in
 -- #eval min_cost_to_cut_trees 6 [1, 2, 3, 10, 20, 30] [6, 5, 4, 3, 2, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

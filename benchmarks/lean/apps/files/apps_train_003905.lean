@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def identify_weapon (character : String) : String := sorry
 
 theorem identify_weapon_valid_character (character : String) 
@@ -18,7 +24,9 @@ theorem identify_weapon_valid_character (character : String)
     | "Tormak" => "Tormak-Tygafyre"
     | "LiElla" => "LiElla-Roarburn"
     | _ => "Not a character" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identify_weapon_invalid_character (character : String)
   (h : character ≠ "Laval" ∧
        character ≠ "Cragger" ∧
@@ -45,6 +53,7 @@ info: 'Not a character'
 -/
 -- #guard_msgs in
 -- #eval identify_weapon "G"loona"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

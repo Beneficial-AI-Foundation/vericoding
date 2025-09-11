@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def digitsSum (n : Nat) : Nat := sorry
 def is_valid (n : Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_next (n : Nat) : Nat := sorry
 def get_series (count start : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem harshad_property {n : Nat} (h : n > 0) (valid : is_valid n = true) :
   n % digitsSum n = 0 := sorry
 
@@ -26,6 +33,7 @@ theorem get_series_properties {count start : Nat} (h : count > 0) :
 
 theorem next_harshad_valid {n : Nat} :
   is_valid (get_next n) = true := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

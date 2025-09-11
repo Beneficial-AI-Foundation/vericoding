@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, H: int, A: seq<int>, B: seq<int>)
 {
     |A| == N && |B| == N && N > 0 && H > 0 &&
@@ -14,6 +15,7 @@ predicate MaxWieldExists(A: seq<int>, maxA: int)
 {
     maxA in A && (forall i :: 0 <= i < |A| ==> A[i] <= maxA)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

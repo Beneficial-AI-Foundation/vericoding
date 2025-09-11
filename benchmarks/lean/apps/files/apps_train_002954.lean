@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def multiTable (n : Nat) : String := sorry
 
 structure MultiTableOutput where
   lines : List String
   deriving Inhabited
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.count_spaces (s : String) : Nat := sorry
 def parseMultiTable (s : String) : MultiTableOutput := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multi_table_length (n : Nat) (h : n > 0) :
   (parseMultiTable (multiTable n)).lines.length = 10 := sorry
 
@@ -47,6 +54,7 @@ info: '1 * 3 = 3\n2 * 3 = 6\n3 * 3 = 9\n4 * 3 = 12\n5 * 3 = 15\n6 * 3 = 18\n7 * 
 -/
 -- #guard_msgs in
 -- #eval multi_table 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

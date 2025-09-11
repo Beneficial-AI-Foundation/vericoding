@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_subset_problem (N : Nat) (M : Nat) : Nat × Nat := sorry 
 
 theorem subset_problem_output_ranges {N M : Nat} 
@@ -8,7 +14,9 @@ theorem subset_problem_output_ranges {N M : Nat}
   (h3 : M ≥ 2) (h4 : M ≤ 10) :
   let (count, perm) := solve_subset_problem N M
   count ≤ N*(N+1)/2 ∧ count ≥ 0 ∧ perm < 998244353 ∧ perm ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: (4, 1)
 -/
@@ -26,6 +34,7 @@ info: (76, 49152)
 -/
 -- #guard_msgs in
 -- #eval solve_subset_problem 100 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

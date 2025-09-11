@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def closestDivisors (n : Nat) : Nat × Nat := sorry
 
 def find_divisors (n : Nat) : List (Nat × Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem closestDivisors_returns_valid_factors (n : Nat) (h : n > 0) :
   let result := closestDivisors n
   result.1 ≤ result.2 ∧ 
@@ -34,6 +42,7 @@ info: sorted([25, 40])
 -/
 -- #guard_msgs in
 -- #eval sorted closestDivisors(999)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

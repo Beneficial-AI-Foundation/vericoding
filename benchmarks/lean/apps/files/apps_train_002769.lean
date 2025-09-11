@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_tune (notes: List Int) : Bool := sorry
 
 theorem empty_list_not_tune : 
   ∀ (notes: List Int), 
   notes = [] → ¬ is_tune notes := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shifted_notes_preserve_tune :
   ∀ (notes: List Int),
   notes ≠ [] →
@@ -40,6 +48,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_tune [2, 4, 7, 9, 11, 13]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

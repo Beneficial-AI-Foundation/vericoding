@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_complete_task (x y : Nat) : String := sorry
 
 theorem can_complete_task_output_valid (x y : Nat) 
     (hx : x > 0) (hy : y > 0) :
     can_complete_task x y = "YES" ∨ can_complete_task x y = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_complete_task_coprime (x y : Nat) 
     (hx : x > 0) (hy : y > 0) :
     can_complete_task x y = "YES" ↔ Nat.gcd x y = 1 := sorry
@@ -38,6 +46,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval can_complete_task 4 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

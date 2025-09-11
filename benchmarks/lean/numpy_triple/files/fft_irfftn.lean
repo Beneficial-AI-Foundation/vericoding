@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -40,13 +41,19 @@ def complexSum {n : Nat} (f : Fin n → Complex) : Complex :=
       | ⟨0, _⟩ => f ⟨0, by omega⟩
       | ⟨i + 1, h⟩ => f ⟨i + 1, h⟩ + go ⟨i, by omega⟩
     go ⟨n, by omega⟩
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def irfftn {k : Nat} (a : Vector Complex k) (n : Nat) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem irfftn_spec {k : Nat} (a : Vector Complex k) (n : Nat) 
     (h_nonempty : k > 0) 
     (h_length : n > 0) 
@@ -82,3 +89,4 @@ theorem irfftn_spec {k : Nat} (a : Vector Complex k) (n : Nat)
         energy_time = (1.0 / n.toFloat) * energy_freq)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

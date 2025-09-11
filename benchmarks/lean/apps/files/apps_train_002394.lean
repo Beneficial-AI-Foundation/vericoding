@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_win_nim (n : Nat) : Bool := sorry
 
 theorem can_win_nim_returns_bool (n : Nat) :
   can_win_nim n = true ∨ can_win_nim n = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_win_nim_period_four (n : Nat) :
   can_win_nim n = can_win_nim (n + 4) := sorry
 
@@ -32,6 +40,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_win_nim 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

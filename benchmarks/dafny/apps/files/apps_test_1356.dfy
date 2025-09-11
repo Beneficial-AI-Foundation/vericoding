@@ -1,3 +1,4 @@
+// <vc-preamble>
 function count_a(s: string): int
     ensures count_a(s) >= 0
     ensures count_a(s) <= |s|
@@ -20,6 +21,7 @@ predicate IsGoodString(s: string)
 {
     |s| > 0 && count_a(s) > |s| / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

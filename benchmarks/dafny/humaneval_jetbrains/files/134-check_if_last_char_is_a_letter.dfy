@@ -1,6 +1,8 @@
+// <vc-preamble>
 function is_alpha(c: char) : bool {
   'a' <= c <= 'z' || 'A' <= c <= 'Z'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

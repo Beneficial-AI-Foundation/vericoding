@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def ChessPos := String
 def AmazonResult := List Int
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def amazon_check_mate (king : ChessPos) (amazon : ChessPos) : AmazonResult :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem amazon_check_mate_list_len
   (king amazon : ChessPos)
   (h : king ≠ amazon) :
@@ -53,6 +60,7 @@ info: [1, 32, 1, 23]
 -/
 -- #guard_msgs in
 -- #eval amazon_check_mate "a3" "e4"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

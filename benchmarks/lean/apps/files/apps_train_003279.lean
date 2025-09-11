@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def disarium_number (n : Nat) : String := sorry
 
 def digitSum (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem disarium_output_format (n : Nat) (h : n > 0 ∧ n ≤ 10000) :
   (disarium_number n = "Disarium !!") ∨ (disarium_number n = "Not !!") := sorry
 
@@ -44,6 +52,7 @@ info: 'Not !!'
 -/
 -- #guard_msgs in
 -- #eval disarium_number 1999
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

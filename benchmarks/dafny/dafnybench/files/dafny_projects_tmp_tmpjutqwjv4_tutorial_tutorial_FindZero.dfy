@@ -1,3 +1,4 @@
+// <vc-preamble>
 function fib(n: nat): nat
 {
   if n == 0 then 0
@@ -49,6 +50,7 @@ predicate pathSpecific(p: seq<Node>, start: Node, end: Node, graph: set<Node>)
   start == p[0] && end == p[|p|-1] &&
   path(p, graph)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

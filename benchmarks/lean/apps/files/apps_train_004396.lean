@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def zipvalidate (s : String) : Bool := sorry 
 
 theorem length_property (s : String) : 
   s.length ≠ 6 → zipvalidate s = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem digit_property (s : String) :
   s.length = 6 → (∃ c ∈ s.data, !c.isDigit) → zipvalidate s = false := sorry
 
@@ -48,6 +56,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval zipvalidate "@68345"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

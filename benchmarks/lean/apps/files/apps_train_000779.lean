@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_solved_problems (N: Nat) (confidence_matrix: List (List Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_solved_problems_non_negative {N: Nat} {confidence_matrix: List (List Nat)} :
   count_solved_problems N confidence_matrix ≥ 0 :=
 sorry
@@ -38,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_solved_problems 2 [[0, 0, 0], [1, 0, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

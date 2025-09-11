@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isUppercase (c : Char) : Bool := sorry
 def toCharList (s : String) : List Char := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def removeDashes (s : String) : String := sorry
 def licenseKeyFormatting (s : String) (k : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem license_key_uppercase (s : String) (k : Nat) : 
   ∀ c ∈ toCharList (licenseKeyFormatting s k), isUppercase c = true 
   := sorry
@@ -53,6 +60,7 @@ info: 'A-B-C'
 -/
 -- #guard_msgs in
 -- #eval license_key_formatting "a-b-c" 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

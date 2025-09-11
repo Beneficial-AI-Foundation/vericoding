@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(H: int, W: int, h: int, w: int)
 {
     1 <= H <= 20 && 1 <= W <= 20 && 1 <= h <= H && 1 <= w <= W
@@ -8,6 +9,7 @@ function WhiteCellsRemaining(H: int, W: int, h: int, w: int): int
 {
     (H - h) * (W - w)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

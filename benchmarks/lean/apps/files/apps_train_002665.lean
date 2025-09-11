@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def per (n : Nat) : List Nat := sorry
 
 def productOfDigits (n : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def digitsOfNat (n : Nat) : List Nat := sorry
 
 theorem per_empty_for_single_digit (n : Nat) : 
   n < 10 → per n = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem per_decreasing {n : Nat} {result : List Nat} :
   result = per n →
   ∀ i, ∀ h : i < result.length - 1,
@@ -35,6 +42,7 @@ info: [4996238671872, 438939648, 4478976, 338688, 27648, 2688, 768, 336, 54, 20,
 -/
 -- #guard_msgs in
 -- #eval per 277777788888899
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

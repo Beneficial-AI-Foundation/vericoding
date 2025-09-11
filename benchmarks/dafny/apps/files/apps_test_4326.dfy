@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     1 <= n <= 1000
 }
@@ -15,6 +16,7 @@ predicate ValidSolution(n: int, result: int)
     result >= 0 &&
     result <= n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

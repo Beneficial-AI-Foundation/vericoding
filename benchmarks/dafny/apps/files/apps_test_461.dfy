@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int, c: int)
 {
   1 <= n <= 100 && 1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100
@@ -21,6 +22,7 @@ function max(x: int, y: int): int
 {
   if x >= y then x else y
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

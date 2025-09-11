@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, M: int, A: seq<int>)
 {
     N >= 0 && M >= 0 && M == |A|
@@ -17,6 +18,7 @@ function sum(s: seq<int>): int
 {
     if |s| == 0 then 0 else s[0] + sum(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

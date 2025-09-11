@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn list_to_nat(l: Seq<u32>) -> nat
         l[0] as nat + 10nat * list_to_nat(l.subrange(1, l.len() as int))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -17,13 +18,19 @@ def isCloseToZero (c : Complex) (tol : Float) : Bool :=
 /-- Helper function to check if all imaginary parts in a complex vector are close to zero -/
 def allImaginaryPartsCloseToZero {n : Nat} (arr : Vector Complex n) (tol : Float) : Bool :=
   arr.toList.all (fun c => isCloseToZero c tol)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def real_if_close {n : Nat} (arr : Vector Complex n) (tol : Float := 100.0) : Id (Vector Complex n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem real_if_close_spec {n : Nat} (arr : Vector Complex n) (tol : Float := 100.0) 
     (h_tol_pos : tol > 0) :
     ⦃⌜tol > 0⌝⦄
@@ -44,3 +51,4 @@ theorem real_if_close_spec {n : Nat} (arr : Vector Complex n) (tol : Float := 10
         ∀ i : Fin n, result.get i = arr.get i)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

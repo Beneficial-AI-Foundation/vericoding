@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -24,6 +25,7 @@ spec fn is_valid_signed_binary(s: Seq<char>) -> bool {
         is_valid_binary(s)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_salmon_game (n k : Nat) : List (Nat × Nat) := sorry 
 
 theorem valid_edge_range {n k : Nat} {edges : List (Nat × Nat)}
@@ -8,7 +14,9 @@ theorem valid_edge_range {n k : Nat} {edges : List (Nat × Nat)}
   (h4 : edges = solve_salmon_game n k) :
   ∀ (e : Nat × Nat), e ∈ edges → 
     e.1 < 2^n ∧ e.2 < 2^n ∧ e.1 ≠ e.2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_edge_count {n k : Nat} {edges : List (Nat × Nat)} 
   (h1 : n ≥ 2) (h2 : k ≥ 3) (h3 : k ≤ 2^n)
   (h4 : edges = solve_salmon_game n k) :
@@ -59,6 +67,7 @@ info: k
 -/
 -- #guard_msgs in
 -- #eval len solve_salmon_game(n, k)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

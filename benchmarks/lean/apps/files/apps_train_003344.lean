@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def DNA := String
 def RNA := String
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def dna_to_rna (dna: DNA) : RNA := sorry
 
 theorem length_preserved (dna: DNA) :
   (dna_to_rna dna).length = dna.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem only_t_replaced (dna: DNA) (i: String.Pos) :
   let rna := dna_to_rna dna
   if dna.get i = 'T' then 
@@ -39,6 +46,7 @@ info: 'GACCGCCGCC'
 -/
 -- #guard_msgs in
 -- #eval dna_to_rna "GACCGCCGCC"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

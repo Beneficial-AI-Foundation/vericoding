@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def canIPlay (now start finish : Nat) : Bool := sorry
 
 theorem canIPlay_symmetry_24 (now start finish : Nat) :
   canIPlay now start finish = canIPlay (now + 24) start finish := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem canIPlay_symmetry_start_finish (now start finish : Nat) :
   canIPlay now start finish = canIPlay now (start + 24) (finish + 24) := sorry
 
@@ -37,6 +45,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_i_play 0 22 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

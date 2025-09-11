@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_honor_path (honor : Int) (target : Int) : Option (Int × Int) := sorry
 
 theorem honor_path_empty_when_target_not_greater {honor target : Int} :
   target ≤ honor → get_honor_path honor target = none := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem honor_path_reaches_target {honor target : Int} (h: target > honor) : 
   match get_honor_path honor target with
   | none => False 
@@ -35,6 +43,7 @@ info: {'1kyus': 4, '2kyus': 1}
 -/
 -- #guard_msgs in
 -- #eval get_honor_path 2 11
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def near_flatten (arr: List (List (List Int))) : List (List Int) := sorry
 
 def list_min (l: List Int) : Int :=
   match l with
   | [] => 0
   | x::xs => xs.foldl min x
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem near_flatten_keeps_list_structure (arr: List (List (List Int))) : 
   let result := near_flatten arr
   -- Result is a list of lists of integers
@@ -37,6 +45,7 @@ info: [[1, 2, 3], [4, 5], [6], [7, 8]]
 -/
 -- #guard_msgs in
 -- #eval near_flatten [[[1, 2, 3], [[4, 5], [[6], [7, 8]]]]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

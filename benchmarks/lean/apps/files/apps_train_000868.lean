@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fac (n : Nat) : List Nat := sorry
 
 def max_special_sum (n k s : Nat) (arr : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fac_product (n : Nat) (h : n ≥ 2) :
   let factors := fac n
   factors.foldl (· * ·) 1 = n := sorry
@@ -48,6 +56,7 @@ info: 45
 -/
 -- #guard_msgs in
 -- #eval max_special_sum 2 8 3 [6, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

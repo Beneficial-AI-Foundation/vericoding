@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -82,13 +83,19 @@ def isSubDType : NumpyDType → NumpyDType → Bool
       | (NumpyDType.number _, NumpyDType.generic) => true
       | (NumpyDType.inexact _, NumpyDType.generic) => true
       | _ => false
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def issubdtype (arg1 arg2 : NumpyDType) : Id Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem issubdtype_spec (arg1 arg2 : NumpyDType) :
     ⦃⌜True⌝⦄
     issubdtype arg1 arg2
@@ -107,3 +114,4 @@ theorem issubdtype_spec (arg1 arg2 : NumpyDType) :
                  (arg1 = NumpyDType.float64 ∧ arg2 = NumpyDType.float32 → result = false) ∧
                  (arg1 = NumpyDType.int32 ∧ arg2 = NumpyDType.floating NumpyDType.generic → result = false)⌝⦄ := by
   sorry
+-- </vc-theorems>

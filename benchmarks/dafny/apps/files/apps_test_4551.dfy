@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidParseable(input: string)
 {
     var parts := SplitStringPure(input);
@@ -72,6 +73,7 @@ function StringToIntHelperUnsigned(s: string, i: int, acc: int): int
     else
         acc
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

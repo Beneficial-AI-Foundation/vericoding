@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_int_inrange (a b : Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem range_order_invariant (a b : Int) 
   (h1 : 1 ≤ a) (h2 : a ≤ 1000) (h3 : 1 ≤ b) (h4 : b ≤ 1000) (h5 : a ≤ b) :
   let result := find_int_inrange a b
@@ -43,6 +51,7 @@ info: [7, 468, 834]
 -/
 -- #guard_msgs in
 -- #eval find_int_inrange 300 900
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

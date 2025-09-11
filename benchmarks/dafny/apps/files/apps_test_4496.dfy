@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(d: int) {
     22 <= d <= 25
 }
@@ -18,6 +19,7 @@ function RepeatEve(count: int): string
     if count == 0 then ""
     else " Eve" + RepeatEve(count - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

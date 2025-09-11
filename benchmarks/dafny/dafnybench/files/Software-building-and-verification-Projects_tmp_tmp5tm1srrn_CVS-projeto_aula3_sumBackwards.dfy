@@ -1,3 +1,4 @@
+// <vc-preamble>
 function fib(n : nat) : nat
 {
   if (n==0) then 1 else
@@ -16,6 +17,7 @@ function sum(n: nat) : nat
 {
   if (n == 0) then 0 else n + sum(n-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

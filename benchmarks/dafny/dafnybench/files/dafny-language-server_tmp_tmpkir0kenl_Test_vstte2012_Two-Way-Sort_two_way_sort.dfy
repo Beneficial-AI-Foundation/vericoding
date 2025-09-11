@@ -1,3 +1,4 @@
+// <vc-preamble>
 function multisets<T>(s: seq<T>): multiset<T>
 {
     if |s| == 0 then multiset{} 
@@ -14,6 +15,7 @@ method swap<T>(a: array<T>, i: int, j: int)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

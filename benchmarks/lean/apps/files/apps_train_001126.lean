@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sort_problems_by_difficulty (P S : Nat) (problem_data : List (List Nat)) : List Nat :=
   sorry
 
 -- Main Properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_problems_maintains_difficulty_order
   (P S : Nat) (problem_data : List (List Nat))
   (h1 : P > 0) (h2 : S > 0)
@@ -41,6 +49,7 @@ info: [1, 2]
 -/
 -- #guard_msgs in
 -- #eval sort_problems_by_difficulty 2 2 [[10, 20], [100, 50], [15, 25], [200, 150]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

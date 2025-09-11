@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -7,6 +8,7 @@ spec fn list_product(nums: Seq<i32>) -> int
 {
     if nums.len() == 0 { 1int } else { nums[0] as int * list_product(nums.subrange(1, nums.len() as int)) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

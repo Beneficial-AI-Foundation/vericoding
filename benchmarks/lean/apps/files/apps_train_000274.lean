@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_convert_string (s t : String) (k : Nat) : Bool := sorry
 
 theorem equal_length_strings_zero_k 
   {s t : String}
   (h_len : s.length = t.length) :
   can_convert_string s t 0 = (s = t) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem different_lengths
   {s t : String}
   {k : Nat}
@@ -36,6 +44,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_convert_string "aab" "bbb" 27
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

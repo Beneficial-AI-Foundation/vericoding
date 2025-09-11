@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_minimum_distance (n : Nat) (positions : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_n_result {n : Nat} (h : n ≥ 2) (h2 : n % 2 = 0) 
   (positions : List Nat) (h3 : positions.length = n) :
   (find_minimum_distance n positions) ≥ 0 :=
@@ -34,6 +42,7 @@ info: 500000000
 -/
 -- #guard_msgs in
 -- #eval find_minimum_distance 4 [0, 500000000, 500000001, 1000000000]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

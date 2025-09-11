@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_candy_gift (n : Nat) (candies : List Nat) : Nat :=
   sorry
 
 def count_occurrences (a : Nat) (l : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def frequency_list (l : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_candy_gift_bounded 
   (n : Nat) (candies : List Nat)
   (h1 : n = candies.length)
@@ -53,6 +60,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval solve_candy_gift 9 [2, 2, 4, 4, 4, 7, 7, 7, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

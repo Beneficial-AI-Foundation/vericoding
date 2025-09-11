@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_rock_paper_scissors (s: String) : String := sorry
 
 def beats (move1 move2 : Char) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def getMostFrequentMove (s : String) : Char := sorry
 
 theorem length_preservation (s : String) :
   s.length > 0 → (solve_rock_paper_scissors s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_moves (s : String) (i : String.Pos) :
   s.length > 0 → 
   (solve_rock_paper_scissors s).get i = 'R' ∨ 
@@ -30,6 +37,7 @@ info: len(test_input)
 -/
 -- #guard_msgs in
 -- #eval len solve_rock_paper_scissors(test_input)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

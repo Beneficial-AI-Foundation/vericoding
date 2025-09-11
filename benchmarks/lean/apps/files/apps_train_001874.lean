@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def shortest_path (grid : List (List Nat)) (k : Nat) : Int := sorry
 
 theorem shortest_path_result_valid (grid : List (List Nat)) (k : Nat) :
   shortest_path grid k ≥ -1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shortest_path_with_sufficient_k 
   (grid : List (List Nat)) (k rows cols : Nat)
   (h₁ : grid.length = rows)
@@ -51,6 +59,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval shortest_path [[0, 0], [0, 0]] 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

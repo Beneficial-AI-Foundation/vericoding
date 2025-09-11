@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0
@@ -24,6 +25,7 @@ function ExpectedResult(input: string): string
     else
         ""
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def swapcase {n : Nat} (a : Vector String n) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem swapcase_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     swapcase a
@@ -44,3 +51,4 @@ theorem swapcase_spec {n : Nat} (a : Vector String n) :
           (origChar.isUpper → result.get? ⟨j⟩ = some origChar.toLower) ∧
           (¬origChar.isAlpha → result.get? ⟨j⟩ = some origChar))⌝⦄ := by
   sorry
+-- </vc-theorems>

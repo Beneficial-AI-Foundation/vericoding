@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_string_operations (s : String) : Nat := sorry
 
 theorem result_positive (s : String) (h : s.length > 0) : 
   solve_string_operations s > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bounded (s : String) (h : s.length > 0) :
   solve_string_operations s ≤ s.length := sorry
 
@@ -37,6 +45,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_string_operations "101010"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

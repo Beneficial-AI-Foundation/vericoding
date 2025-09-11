@@ -1,4 +1,6 @@
+// <vc-preamble>
 type T = int
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

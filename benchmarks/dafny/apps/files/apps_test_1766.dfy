@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(cards: seq<int>)
 {
   |cards| >= 1 &&
@@ -32,6 +33,7 @@ predicate ValidOutput(scores: seq<int>, cards: seq<int>)
   scores[0] == sereja_optimal_score(cards, 0, |cards|-1, true) &&
   scores[1] == sum(cards) - sereja_optimal_score(cards, 0, |cards|-1, true)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

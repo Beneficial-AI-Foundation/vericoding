@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def max_consec_zeros (n: String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def toWord (n: Nat) : String :=
   sorry
 
 -- Property 1: Function should work for any valid positive integer string input
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_consec_zeros_valid_input {n: String} (h: ∃ (k: Nat), k > 0 ∧ k ≤ 10^6 ∧ n = toString k) :
   let result := max_consec_zeros n
   ∃ word, word ∈ ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
@@ -44,6 +51,7 @@ info: 'Eight'
 -/
 -- #guard_msgs in
 -- #eval max_consec_zeros "256"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

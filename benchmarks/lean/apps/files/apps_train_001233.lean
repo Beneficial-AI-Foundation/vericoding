@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def min_elements_needed (N K : Nat) (arr : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def permutation (l1 l2 : List Nat) : Prop :=
   l1.length = l2.length ∧ ∀ x, x ∈ l1 ↔ x ∈ l2
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_elements_non_negative (N K : Nat) (arr : List Nat) :
   min_elements_needed N K arr ≥ 0 :=
   sorry
@@ -54,6 +61,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_elements_needed 1 3 [2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

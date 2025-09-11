@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def COLOR_MAP : List (String × Nat) := [
   ("black", 0), ("brown", 1), ("red", 2), ("orange", 3), ("yellow", 4),
   ("green", 5), ("blue", 6), ("violet", 7), ("gray", 8), ("white", 9)
@@ -6,10 +7,14 @@ def COLOR_MAP : List (String × Nat) := [
 def decode_resistor_colors (bands : String) : String := sorry
 
 def String.toFloat (s : String) : Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.containsString (s : String) (substr : String) : Bool := sorry
 
 theorem resistor_color_format 
@@ -24,7 +29,9 @@ theorem resistor_color_format
   (result.endsWith "%") ∧
   (result.containsString "" ∨ result.containsString "k" ∨ result.containsString "M") := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem base_value_calculation
   (first_band second_band multiplier : String)
   (h1 : first_band ∈ ["black", "brown"])
@@ -56,6 +63,7 @@ info: '1M ohms, 10%'
 -/
 -- #guard_msgs in
 -- #eval decode_resistor_colors "brown black green silver"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

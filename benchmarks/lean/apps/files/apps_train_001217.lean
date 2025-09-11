@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_road_trips (n m k : Nat) (roads : List (Nat × Nat)) (museums : List Nat) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_roads_k_gt_n {n k : Nat} (h : k > n) :
   solve_road_trips n 0 k [] (List.replicate n 0) = -1 := sorry
 
@@ -28,6 +36,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_road_trips 10 10 5 [(1, 3), (3, 5), (5, 1), (1, 6), (6, 2), (5, 6), (2, 5), (7, 10), (4, 7), (10, 9)] [20, 0, 15, 20, 25, 30, 30, 150, 35, 20]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

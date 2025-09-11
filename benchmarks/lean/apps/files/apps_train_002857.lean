@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_nonconsecutive_subsets (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_nonconsecutive_subsets_nonnegative (n : Nat) :
   count_nonconsecutive_subsets n ≥ 0 :=
   sorry
@@ -33,6 +41,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval count_nonconsecutive_subsets 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

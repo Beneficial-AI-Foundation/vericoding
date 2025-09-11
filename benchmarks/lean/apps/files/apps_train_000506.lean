@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_non_periodic_strings (n : Nat) (m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_result_bounds (n m : Nat) 
   (h1 : n ≥ 2) (h2 : n ≤ 10000) (h3 : m > 0) (h4 : m ≤ 1000000000) :
   let result := solve_non_periodic_strings n m
@@ -37,6 +45,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_non_periodic_strings 2 50
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

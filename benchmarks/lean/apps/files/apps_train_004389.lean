@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def create_octahedron (size : Nat) : List (List (List Nat)) := sorry
 
 theorem even_size_returns_empty (size : Int) :
   size > 0 ∧ size % 2 = 0 → create_octahedron size.toNat = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_positive_returns_empty (size : Int) :
   size ≤ 0 → create_octahedron size.toNat = [] := sorry
 
@@ -29,6 +37,7 @@ theorem octahedron_size_properties {size : Nat} (h1 : size ≥ 3) (h2 : size ≤
   ((result.get! (size-1)).get! 0).get! (size-1) = 0 ∧
   ((result.get! (size-1)).get! (size-1)).get! 0 = 0 ∧
   ((result.get! (size-1)).get! (size-1)).get! (size-1) = 0 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

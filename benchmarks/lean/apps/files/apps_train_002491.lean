@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_polynomial_equal (x : Int) (expected : Int) (poly_str : String) : Bool := sorry
 
 theorem constant_polynomial_true (x : Int) : 
   is_polynomial_equal x 5 "5" = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem constant_polynomial_false (x : Int) :
   is_polynomial_equal x 6 "5" = false := sorry
 
@@ -38,6 +46,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_polynomial_equal 0 1 "x**3 + x**2 + x + 1"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

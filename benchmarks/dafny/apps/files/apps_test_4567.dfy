@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(scores: seq<int>) {
     |scores| > 0 && |scores| <= 100 &&
     forall i :: 0 <= i < |scores| ==> 1 <= scores[i] <= 100
@@ -29,6 +30,7 @@ predicate CorrectResult(scores: seq<int>, result: int) {
             IsSmallestNonMultiple(scores, smallestNonMultiple) &&
             result == totalSum - smallestNonMultiple
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

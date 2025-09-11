@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validate_code {α} (x : α) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem validate_code_ints (code : Int) :
   validate_code code = String.startsWith (toString code) "123" :=
 sorry
@@ -53,6 +61,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval validate_code 321
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

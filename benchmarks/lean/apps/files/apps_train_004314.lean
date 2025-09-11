@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Matrix (α : Type) := List (List α)
 
 def score_matrix (matrix : Matrix Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem score_matrix_single_element
   (x : Int) :
   score_matrix [[x]] = x := sorry
@@ -31,6 +39,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval score_matrix [[5]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

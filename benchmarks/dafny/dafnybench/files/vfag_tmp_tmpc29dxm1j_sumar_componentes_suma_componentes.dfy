@@ -1,3 +1,4 @@
+// <vc-preamble>
 function suma_aux(V : array?<int>, n : int) : int
 
   requires V != null
@@ -13,6 +14,7 @@ function suma_aux(V : array?<int>, n : int) : int
                      else V[n] + suma_aux(V, n + 1)
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

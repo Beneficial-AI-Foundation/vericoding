@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int) {
   n >= 1 && k >= 2
 }
@@ -5,6 +6,7 @@ predicate ValidInput(n: int, k: int) {
 predicate SatisfiesConstraint(x: int, n: int, k: int) {
   x > 0 && k > 0 && (x / k) * (x % k) == n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

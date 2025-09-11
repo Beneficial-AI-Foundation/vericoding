@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def multiple_split (s : String) (delims : List String) : List String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def containsString (s : String) (sub : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiple_split_nonempty_parts
   (s : String) (delims : List String)
   : ∀ (x : String), x ∈ multiple_split s delims → x.length > 0
@@ -53,6 +60,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval multiple_split "" []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

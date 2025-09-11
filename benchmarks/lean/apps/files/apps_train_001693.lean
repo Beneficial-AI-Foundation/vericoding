@@ -1,12 +1,17 @@
+-- <vc-preamble>
 def mouse_path (s : String) : Option Nat := sorry
 def check_corner (orientations : List Char) : Bool := sorry
 
 def check_intersect (rectas : List ((Int × Int) × (Int × Int))) : Bool := sorry
 def calc_area (points : List (Int × Int)) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def add_point (direction : Char) (distance : Nat) (points : List (Int × Int)) : List (Int × Int) := sorry
 
 theorem mouse_path_returns_none_or_natural (s : String) : 
@@ -14,7 +19,9 @@ theorem mouse_path_returns_none_or_natural (s : String) :
   | none => True
   | some n => n ≥ 0
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_corner_single_orientation {o : Char} (orientations : List Char) :
   (∀ x ∈ orientations, x = o) → check_corner orientations = false := sorry
 
@@ -49,6 +56,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval mouse_path "2R2R2L2L"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

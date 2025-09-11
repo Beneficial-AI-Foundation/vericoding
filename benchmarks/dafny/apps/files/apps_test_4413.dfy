@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(skills: seq<int>)
 {
     |skills| >= 0
@@ -7,6 +8,7 @@ predicate HasAdjacentSkills(skills: seq<int>)
 {
     exists i, j :: 0 <= i < j < |skills| && (skills[i] - skills[j] == 1 || skills[j] - skills[i] == 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

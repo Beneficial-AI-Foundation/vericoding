@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def GEESE : List String := ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
 
 def goose_filter (birds : List String) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_subset {birds : List String} : 
   ∀ x ∈ goose_filter birds, x ∈ birds := sorry
 
@@ -31,6 +39,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval goose_filter ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

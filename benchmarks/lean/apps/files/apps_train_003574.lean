@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def arbitrate (s : String) (n : Nat) : String := sorry
 
 theorem arbitrate_all_zeros (n : Nat) (h : 0 < n) :
   arbitrate (String.mk (List.replicate n '0')) n = String.mk (List.replicate n '0') := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arbitrate_single_one (n i : Nat) (h1 : 0 < n) (h2 : i < n) :
   arbitrate (String.mk (List.replicate i '0' ++ '1' :: List.replicate (n - i - 1) '0')) n = 
   String.mk (List.replicate i '0' ++ '1' :: List.replicate (n - i - 1) '0') := sorry
@@ -34,6 +42,7 @@ info: '0000'
 -/
 -- #guard_msgs in
 -- #eval arbitrate "0000" 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

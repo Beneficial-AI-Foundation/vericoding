@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, arr: seq<int>)
 {
     n >= 1 && |arr| == n && forall i :: 0 <= i < |arr| ==> arr[i] >= 1
@@ -31,6 +32,7 @@ function countInversions(arr: seq<int>): nat
 {
     |set i, j | 0 <= i < j < |arr| && arr[i] > arr[j] :: (i, j)|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

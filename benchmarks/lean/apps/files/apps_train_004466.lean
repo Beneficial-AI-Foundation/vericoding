@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hyperrectangularity_properties : List α → Option (List Nat) := sorry
 
 theorem hyperrectangularity_2d_rectangular {rows cols : Nat} 
@@ -9,7 +15,9 @@ theorem hyperrectangularity_2d_rectangular {rows cols : Nat}
   (arr : List (List Nat)) 
   (h5 : arr = List.map (fun j => List.map (fun i => i + j*cols) (List.range cols)) (List.range rows))
   : hyperrectangularity_properties arr = some [rows, cols] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hyperrectangularity_1d {arr : List α}
   : hyperrectangularity_properties arr = 
     if arr.isEmpty then some [0] else some [arr.length] := sorry
@@ -45,6 +53,7 @@ info: (3, 3)
 -/
 -- #guard_msgs in
 -- #eval hyperrectangularity_properties [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

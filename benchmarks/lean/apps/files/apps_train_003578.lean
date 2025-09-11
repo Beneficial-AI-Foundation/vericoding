@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def execute (cmd : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidOutput (result : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_format_valid (cmd : String) :
   isValidOutput (execute cmd) := by
   sorry
@@ -49,6 +56,7 @@ info: '    ****\r\n    *  *\r\n    *  *\r\n********\r\n    *   \r\n    *   '
 -/
 -- #guard_msgs in
 -- #eval execute "LFFFFFRFFFRFFFRFFFFFFF"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

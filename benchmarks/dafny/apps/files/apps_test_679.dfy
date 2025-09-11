@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| >= 0 && forall i :: 0 <= i < |s| ==> s[i] in {'A', 'B', 'C', '.'}
@@ -13,6 +14,7 @@ predicate PossibleToGetAllColors(s: string)
 {
     |s| >= 3 && exists i :: 0 <= i <= |s| - 3 && HasAllThreeColors(s, i)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

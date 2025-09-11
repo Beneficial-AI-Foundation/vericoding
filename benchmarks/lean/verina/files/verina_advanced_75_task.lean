@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible, simp]
 def task_code_precond (sequence : List Int) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def task_code (sequence : List Int) (h_precond : task_code_precond (sequence)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def task_code_postcond (sequence : List Int) (result: Int) (h_precond : task_code_precond (sequence)) : Prop :=
   let subArrays :=
@@ -20,6 +27,7 @@ def task_code_postcond (sequence : List Int) (result: Int) (h_precond : task_cod
 theorem task_code_spec_satisfied (sequence: List Int) (h_precond : task_code_precond (sequence)) :
     task_code_postcond (sequence) (task_code (sequence) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

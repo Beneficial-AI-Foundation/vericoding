@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def value (a b : Nat) (op : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_expression (expr : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem value_commutativity {a b : Nat} {op : String} (h : op = "&" ∨ op = "|") :
   value a b op = value b a op := by
   sorry
@@ -40,6 +47,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_expression "1&2|3"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

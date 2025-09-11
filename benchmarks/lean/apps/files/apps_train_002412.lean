@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longest_common_prefix (strs : List String) : String := sorry
 
 def min (a b : Nat) : Nat := if a ≤ b then a else b
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list_returns_empty :
   longest_common_prefix [] = "" := sorry
 
@@ -41,6 +49,7 @@ info: 'inters'
 -/
 -- #guard_msgs in
 -- #eval longest_common_prefix ["interspecies", "interstellar", "interstate"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

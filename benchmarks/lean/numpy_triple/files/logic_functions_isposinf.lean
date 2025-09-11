@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isposinf {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isposinf_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     isposinf x
@@ -27,3 +34,4 @@ theorem isposinf_spec {n : Nat} (x : Vector Float n) :
       -- Exclusivity: cannot be both positive infinity and NaN
       (result.get i = true → ¬(x.get i).isNaN)⌝⦄ := by
   sorry
+-- </vc-theorems>

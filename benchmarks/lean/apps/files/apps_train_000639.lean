@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_updown_length (n : Nat) (arr : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_updown_length_bounds {n : Nat} {arr : List Int} 
     (h_size : arr.length = n) (h_n : n ≥ 2) :
   let result := find_updown_length n arr
@@ -45,6 +53,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval find_updown_length 4 [1, 2, 1, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

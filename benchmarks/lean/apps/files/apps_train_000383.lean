@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def find_nth_ugly_number (n a b c : Nat) : Nat := sorry
 
 def gcd (a b : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_divisible (num a b c : Nat) : Nat := sorry
 
 theorem ugly_number_divisible (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3 : b > 0) (h4 : c > 0) :
   let result := find_nth_ugly_number n a b c
   result % a = 0 ∨ result % b = 0 ∨ result % c = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ugly_number_positive (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3 : b > 0) (h4 : c > 0) :
   find_nth_ugly_number n a b c > 0 := sorry
 
@@ -40,6 +47,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval find_nth_ugly_number 5 2 11 13
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

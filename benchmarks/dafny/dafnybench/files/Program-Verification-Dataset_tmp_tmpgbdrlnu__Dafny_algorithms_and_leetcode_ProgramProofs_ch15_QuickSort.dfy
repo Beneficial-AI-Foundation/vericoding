@@ -1,3 +1,4 @@
+// <vc-preamble>
 method Partition(a: array<int>, lo: int, hi: int) returns (p: int)
     requires 0 <= lo < hi <= a.Length
     modifies a
@@ -32,6 +33,7 @@ method QuickSortAux(a: array<int>, lo: int, hi: int)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

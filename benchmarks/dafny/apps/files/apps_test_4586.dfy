@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int) {
   1000 <= N <= 9999
 }
@@ -18,6 +19,7 @@ predicate IsGood(N: int)
   var (d1, d2, d3, d4) := ExtractDigits(N);
   (d1 == d2 && d2 == d3) || (d2 == d3 && d3 == d4)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def BubbleSort_precond (a : Array Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def swap (a : Array Int) (i j : Nat) : Array Int :=
   let temp := a[i]!
@@ -22,10 +25,14 @@ def bubbleOuter (i : Nat) (a : Array Int) : Array Int :=
   else
     a
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def BubbleSort (a : Array Int) (h_precond : BubbleSort_precond (a)) : Array Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def BubbleSort_postcond (a : Array Int) (result: Array Int) (h_precond : BubbleSort_precond (a)) :=
   List.Pairwise (· ≤ ·) result.toList ∧ List.isPerm result.toList a.toList
@@ -33,6 +40,7 @@ def BubbleSort_postcond (a : Array Int) (result: Array Int) (h_precond : BubbleS
 theorem BubbleSort_spec_satisfied (a: Array Int) (h_precond : BubbleSort_precond (a)) :
     BubbleSort_postcond (a) (BubbleSort (a) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

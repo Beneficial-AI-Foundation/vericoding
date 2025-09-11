@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_banana_speed (pile_count : Nat) (hours : Nat) (piles : List Nat) : Nat :=
   sorry
 
@@ -10,13 +11,19 @@ def list_sum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x::xs => x + list_sum xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nat_ceil_div (a b : Nat) : Nat :=
   (a + b - 1) / b
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem edge_cases_singleton_one :
   min_banana_speed 1 1 [1] = 1 :=
   sorry
@@ -46,6 +53,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval min_banana_speed 4 5 [4, 3, 2, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

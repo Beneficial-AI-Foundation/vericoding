@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def multiple_of_index (arr : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiple_of_index_basic_properties (arr : List Int) (h : arr ≠ []) :
   let result := multiple_of_index arr
   -- Result length is at most one less than input length
@@ -41,6 +49,7 @@ info: [-85, 72, 0, 68]
 -/
 -- #guard_msgs in
 -- #eval multiple_of_index test3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

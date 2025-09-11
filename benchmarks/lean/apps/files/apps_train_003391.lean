@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def powerset {α : Type} (l : List α) : List (List α) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem powerset_length {α : Type} (l : List α) : 
   (powerset l).length = 2 ^ l.length := by
   sorry
@@ -41,6 +49,7 @@ info: [[], [1]]
 -/
 -- #guard_msgs in
 -- #eval powerset [1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def number_format (n : Int) : String := sorry
 
 theorem number_format_preserves_digits (n : Int) :
   let result := number_format n
   let digits := result.replace "," "" |>.replace "-" ""
   digits = toString n.natAbs := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem number_format_correct_sign (n : Int) :
   let result := number_format n
   (n < 0 → result.startsWith "-") ∧ 
@@ -41,6 +49,7 @@ info: '-420,902'
 -/
 -- #guard_msgs in
 -- #eval number_format -420902
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

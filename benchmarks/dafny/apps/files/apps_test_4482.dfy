@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum_squares(p: int, a: seq<int>): int
 {
     if |a| == 0 then 0
@@ -16,6 +17,7 @@ predicate IsOptimalCost(result: int, a: seq<int>)
     exists p :: -100 <= p <= 100 && result == sum_squares(p, a) &&
     forall p :: -100 <= p <= 100 ==> result <= sum_squares(p, a)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebmulx {n : Nat} (c : Vector Float n) : Id (Vector Float (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebmulx_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
     chebmulx c
@@ -33,3 +40,4 @@ theorem chebmulx_spec {n : Nat} (c : Vector Float n) :
           result_comb.get j = α * result1.get j + β * result2.get j)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

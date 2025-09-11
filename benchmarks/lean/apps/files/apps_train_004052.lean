@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern (n : Int) : String := sorry
 
 theorem pattern_nonpos {n : Int} (h : n ≤ 0) : 
   pattern n = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_line_structure {n : Int} (h : n > 0) (i : Nat) (h2 : i < n) :
   let lines := (pattern n).splitOn "\n"
   let expected_num := 2 * i + 1
@@ -40,6 +48,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval pattern -5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

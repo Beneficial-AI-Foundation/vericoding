@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def numRescueBoats (people : List Nat) (limit : Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def listMax (l : List Nat) : Nat :=
 
 def listMin (l : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSort (l : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rescue_boats_minimum (people : List Nat) (h : people ≠ []) :
   let limit := listMax people
   numRescueBoats people limit ≥ (people.length + 1) / 2 := by
@@ -55,6 +62,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval numRescueBoats [3, 5, 3, 4] 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

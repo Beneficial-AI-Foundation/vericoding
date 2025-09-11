@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generatePattern (k : Nat) : List String := sorry
 
 theorem generate_pattern_length {k : Nat} :
   List.length (generatePattern k) = k + 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem generate_pattern_first_element {k : Nat} :
   List.head! (generatePattern k) = "0" := sorry
 
@@ -38,6 +46,7 @@ info: ['0', '*1', '**2', '***3', '****4']
 -/
 -- #guard_msgs in
 -- #eval generate_pattern 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

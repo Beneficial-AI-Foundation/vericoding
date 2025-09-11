@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -29,6 +30,7 @@ spec fn first_occurrence_index(chars: Seq<char>, c: char) -> int {
 spec fn second_occurrence_exists(chars: Seq<char>, c: char) -> bool {
     exists|i: int, j: int| 0 <= i < j < chars.len() && #[trigger] chars[i] == c && #[trigger] chars[j] == c
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

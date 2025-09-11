@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ListToNat(l: seq<nat>): nat
     decreases |l|
 {
@@ -6,6 +7,7 @@ function ListToNat(l: seq<nat>): nat
     else
         l[0] + 10 * ListToNat(l[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_pattern (k : Nat) : List String := sorry
 
 theorem pattern_basic_properties {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
@@ -10,7 +16,9 @@ theorem pattern_basic_properties {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
   (∀ row ∈ result, ∀ c ∈ row.data, '0' ≤ c ∧ c ≤ '9') ∧
   (∀ row ∈ result, ∀ c ∈ row.data, (c.toNat - '0'.toNat) < k) ∧
   List.Nodup result := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_first_row {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
   let result := generate_pattern k
   if k = 1 then
@@ -41,6 +49,7 @@ info: ['012', '101', '210']
 -/
 -- #guard_msgs in
 -- #eval generate_pattern 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

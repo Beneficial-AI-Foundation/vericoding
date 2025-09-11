@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_profit (prices : List Nat) : Nat := sorry
 
 theorem max_profit_nonnegative (prices : List Nat) :
   max_profit prices ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_profit_empty_or_singleton {prices : List Nat} :
   prices.length ≤ 1 → max_profit prices = 0 := sorry 
 
@@ -48,6 +56,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval max_profit [2, 4, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

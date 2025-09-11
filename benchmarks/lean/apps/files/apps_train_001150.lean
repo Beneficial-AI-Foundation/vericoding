@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_menus_for_price (price : Nat) : Nat := sorry
 
 def bin_ones (n : Nat) : Nat := sorry
 
 -- The result is always positive
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_menus_positive (price : Nat) 
   (h : price > 0) (h₂ : price ≤ 1000000) : 
   min_menus_for_price price > 0 := sorry
@@ -49,6 +57,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_menus_for_price 4096
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

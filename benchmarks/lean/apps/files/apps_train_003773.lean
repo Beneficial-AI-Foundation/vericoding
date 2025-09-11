@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def last {α : Type} : α → α := sorry
 def last_list {α : Type} : List α → α := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem last_list_property {α : Type} (l : List α) (h : l ≠ []) :
   ∃ x, last_list l = x := sorry
 
@@ -36,6 +44,7 @@ info: 'z'
 -/
 -- #guard_msgs in
 -- #eval last "xyz"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def josephus (xs : List α) (k : Nat) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem josephus_contains_all_elements {α} (xs : List α) (k : Nat) (h : xs ≠ []) :
   List.length (josephus xs k) = List.length xs ∧ 
   ∀ x, x ∈ xs ↔ x ∈ josephus xs k :=
@@ -38,6 +46,7 @@ info: [2, 4, 6, 8, 10, 3, 7, 1, 9, 5]
 -/
 -- #guard_msgs in
 -- #eval josephus [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

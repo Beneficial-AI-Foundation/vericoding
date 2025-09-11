@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(s: seq<int>, i: nat): int
     requires i <= |s|
 {
@@ -20,6 +21,7 @@ function from_bits(s: seq<bool>): nat {
   if s == [] then 0
   else (if s[0] then 1 else 0) + 2 * from_bits(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,8 +1,10 @@
+// <vc-preamble>
 function Power(base: int, exp: nat): int
 {
   if exp == 0 then 1
   else base * Power(base, exp - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

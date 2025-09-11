@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def add_all (lst: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem add_all_non_negative (lst: List Nat) (h: lst ≠ []) :
   add_all lst ≥ 0 :=
   sorry
@@ -39,6 +47,7 @@ info: 33
 -/
 -- #guard_msgs in
 -- #eval add_all [1, 2, 3, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

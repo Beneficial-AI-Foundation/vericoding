@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_set_bits (n : Nat) : Nat := sorry
 
 def count_binary_ones (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_set_bits_eq_binary_ones : ∀ n : Nat, 
   count_set_bits n = count_binary_ones n := sorry
 
@@ -31,6 +39,7 @@ info: 56
 -/
 -- #guard_msgs in
 -- #eval ways_to_shuffle 369 428 797
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,8 +1,10 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
 struct Automaton {}
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

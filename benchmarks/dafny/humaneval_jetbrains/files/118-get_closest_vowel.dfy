@@ -1,3 +1,4 @@
+// <vc-preamble>
 function IsVowel(c: char) : bool
 {
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
@@ -7,6 +8,7 @@ function IsConsonant(c: char) : bool
 {
   ('A' <= c <= 'Z' || 'a' <= c <= 'z') && !IsVowel(c)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

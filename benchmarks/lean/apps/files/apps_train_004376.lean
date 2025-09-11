@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def string_letter_count (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_letter_count_output_alnum (s : String) : ∀ c ∈ (string_letter_count s).data, 
   c.isAlphanum := by sorry
 
@@ -40,6 +48,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval string_letter_count ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn distinct(nums: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] != nums[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

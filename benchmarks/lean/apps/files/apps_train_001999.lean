@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Command := String
 
 def optimize_calpas (cmds : List Command) : Nat × List Command :=
   sorry
 
 /- Result has at most 3 commands -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem optimize_length_bound {cmds : List Command} :
   let (n, optimized) := optimize_calpas cmds
   n ≤ 3 ∧ optimized.length = n := by
@@ -42,6 +50,7 @@ theorem optimize_op_ordering {cmds : List Command} :
      (ops.get i' = '^' ∧ ops.get j' = '&') →
      i < j) := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

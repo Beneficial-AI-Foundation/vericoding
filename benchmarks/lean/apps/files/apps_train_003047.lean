@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def listOfNumsInBounds (start : Nat) (end_ : Nat) : List Nat := sorry
 
 theorem listOfNumsInBounds_length (start : Nat) (end_ : Nat) :
   (listOfNumsInBounds start end_).length = end_ - start + 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem listOfNumsInBounds_starts_with_start (start : Nat) (end_ : Nat) :
   start ≤ end_ →
   (listOfNumsInBounds start end_).head! = start := sorry
@@ -38,6 +46,7 @@ info: 'We have this much circle: 2040'
 -/
 -- #guard_msgs in
 -- #eval sum_circles 48 7 8 9 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

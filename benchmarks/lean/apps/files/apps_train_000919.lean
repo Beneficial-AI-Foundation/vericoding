@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def solve_bucket_probability (N K : Nat) (arr : List (List Nat)) : List Float := sorry
 
 def sum_float (xs : List Float) : Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (xs : List Nat) : Nat := 
   xs.foldl (· + ·) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bucket_probability_properties
   (N K : Nat) (arr : List (List Nat))
   (h1 : N > 0)
@@ -29,6 +36,7 @@ theorem bucket_equal_prob_1
 theorem bucket_equal_prob_2
   (result := solve_bucket_probability 2 2 [[1, 1], [1, 1]]) :
   ∀ r ∈ result, (r - 0.5).abs < 0.000001 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

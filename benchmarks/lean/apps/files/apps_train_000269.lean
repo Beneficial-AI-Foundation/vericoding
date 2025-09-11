@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_step (board: String) (hand: String) : Int := sorry
 
 theorem find_min_step_returns_valid_result 
   (board: String) (hand: String) : 
   find_min_step board hand ≥ -1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_step_empty_board
   (hand: String) :
   find_min_step "" hand = 0 := sorry 
@@ -35,6 +43,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_min_step "G" "GGGGG"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

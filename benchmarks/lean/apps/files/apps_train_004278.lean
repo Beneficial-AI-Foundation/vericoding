@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_obj (nums: List Nat) : List (String × Char) := sorry
 
 def charOfNat (n: Nat) : Char := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem num_obj_length {nums: List Nat} : 
   (nums.all (· ≤ 127)) → 
   (num_obj nums).length = nums.length := sorry
@@ -41,6 +49,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval num_obj [100, 100, 116]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(k: int, s: int) {
     k >= 0 && s >= 0 && s <= 3 * k
 }
@@ -40,6 +41,7 @@ function CountValidTriplesForZHelper(k: int, s: int, z: int, y: int): int
         var thisCount := if 0 <= x <= k then 1 else 0;
         thisCount + CountValidTriplesForZHelper(k, s, z, y + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

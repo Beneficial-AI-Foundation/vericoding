@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, C: int)
 {
   1 <= A <= 100 && 1 <= B <= 100 && 0 <= C < B
@@ -7,6 +8,7 @@ predicate IsSolvable(A: int, B: int, C: int)
 {
   exists i :: 1 <= i < B && (i * (A % B)) % B == C
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_sequence_split (N: Nat) (seq: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_split_nonneg (N: Nat) (seq: List Nat) :
   (N ≥ 2) →
   (∀ x ∈ seq, x ≤ 100) →
@@ -40,6 +48,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_sequence_split 3 [4, 1, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

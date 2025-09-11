@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def isSubstring (sub : String) (orig : String) : Bool := sorry
 def hasAllChars (sub : String) (orig : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def substr (s : String) (i j : Nat) : String := sorry
 
 def findSubString (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_sub_string_is_substring 
   (s : String) (h : s.length > 0) :
   isSubstring (findSubString s) s := sorry
@@ -22,6 +29,7 @@ theorem find_sub_string_is_minimal
   let sub := substr s i j
   let result := findSubString s
   sub.length < result.length → ¬(hasAllChars sub s) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

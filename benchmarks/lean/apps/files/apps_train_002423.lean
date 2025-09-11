@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def is_monotonic (nums: List Int) : Bool := sorry
 
 theorem empty_or_single_element_lists_monotonic (nums: List Int) : 
   nums.length ≤ 1 → is_monotonic nums := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (nums: List Int) : Bool := 
   match nums with
   | [] => true
   | [_] => true
   | x::y::rest => x ≤ y && isSorted (y::rest)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_elements_monotonic (nums: List Int) (x: Int) (h: nums.length ≥ 2) :
   (∀ i: Fin nums.length, nums.get i = x) → is_monotonic nums := sorry
 
@@ -42,6 +49,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_monotonic [1, 3, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

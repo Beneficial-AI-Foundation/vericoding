@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_max_subarray_query (n : Nat) (arr : List Int) (queries : List Nat) : List Int := sorry
 
 def list_maximum (l : List Int) : Int := 
   match l with
   | [] => 0
   | x::xs => (List.foldl max x xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_and_types {n : Nat} {arr : List Int} {queries : List Nat} 
   (h1 : arr.length > 0) 
   (h2 : arr.length ≤ 5)  
@@ -50,6 +58,7 @@ info: [3, 3, 3]
 -/
 -- #guard_msgs in
 -- #eval solve_max_subarray_query 3 [1, 2, 3] [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

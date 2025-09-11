@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lengthLex (s₁ s₂ : String) : Bool := sorry
 
 def longest_word (words : List String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem longest_word_prefixes_exist (words : List String) 
   (h : words ≠ []) : 
   let result := longest_word words
@@ -41,6 +49,7 @@ info: 'a'
 -/
 -- #guard_msgs in
 -- #eval longest_word ["a", "b", "c"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 1 && |a| == n && forall i :: 0 <= i < n ==> a[i] >= 0
@@ -22,6 +23,7 @@ function CountSurvivorsFrom(n: int, a: seq<int>, start: int, left: int): int
         var newLeft := if i - a[i] < left then i - a[i] else left;
         survives + CountSurvivorsFrom(n, a, start + 1, newLeft)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

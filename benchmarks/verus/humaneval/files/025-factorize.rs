@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::arithmetic::div_mod::*;
 use vstd::arithmetic::mul::*;
 use vstd::assert_by_contradiction;
@@ -24,6 +25,7 @@ spec fn is_prime_factorization(n: nat, factorization: Seq<nat>) -> (result:bool)
         (1 < i <= j < factorization.len()) ==> (#[trigger] factorization[i as int]
             <= #[trigger] factorization[j as int])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

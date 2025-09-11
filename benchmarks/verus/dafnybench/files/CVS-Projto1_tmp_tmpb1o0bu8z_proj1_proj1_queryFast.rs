@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -41,6 +42,7 @@ spec fn mem<T: PartialEq>(x: T, l: &List<T>) -> bool
         List::Cons { head: y, tail: r } => if x == *y { true } else { mem(x, r) }
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

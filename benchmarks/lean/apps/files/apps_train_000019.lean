@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def maximum (l : List Nat) : Nat :=
   match l with
   | [] => 0
@@ -8,13 +9,19 @@ def listToFinset (l : List Nat) : List Nat :=
 
 def windowsOfSize (l : List Nat) (size : Nat) : List (List Nat) :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_subscriptions (n k d : Nat) (shows : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_subscriptions_output_bounds
   (shows : List Nat)
   (h1 : shows ≠ [])
@@ -87,6 +94,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval min_subscriptions 4 10 4 [10, 8, 6, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

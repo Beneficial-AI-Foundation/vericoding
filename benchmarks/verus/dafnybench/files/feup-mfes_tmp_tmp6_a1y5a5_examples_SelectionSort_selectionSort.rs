@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -18,6 +19,7 @@ fn find_min(a: &Vec<i32>, from: usize, to: usize) -> (index: usize)
     assume(false);
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def diagonal (n : Nat) (p : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem diagonal_nonnegative (n p : Nat) :
   diagonal n p ≥ 0 :=
   sorry
@@ -41,6 +49,7 @@ info: 101
 -/
 -- #guard_msgs in
 -- #eval diagonal 100 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

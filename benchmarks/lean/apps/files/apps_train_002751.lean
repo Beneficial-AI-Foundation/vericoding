@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def multiples (m : Nat) (n : Int) : Array Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiples_length {m : Nat} {n : Int} (h : m ≤ 1000) :
   (multiples m n).size = m := sorry
 
@@ -29,6 +37,7 @@ info: [-1, -2, -3, -4, -5]
 -/
 -- #guard_msgs in
 -- #eval multiples 5 -1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

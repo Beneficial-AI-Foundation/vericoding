@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def is_nice (s: List Char) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_nice_strings (s: List Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_nice_strings_non_negative (s: List Char) :
   count_nice_strings s ≥ 0 :=
   sorry
@@ -68,6 +75,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_nice_strings "abbc"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

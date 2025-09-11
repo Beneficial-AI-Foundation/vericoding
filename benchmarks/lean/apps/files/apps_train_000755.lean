@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def absolute_value (x : Int) : Int := if x ≥ 0 then x else -x
 
 def can_frogs_communicate (n : Nat) (k : Int) (coords : List Int) (pairs : List (Nat × Nat)) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_frogs_communicate_output_format 
   {n : Nat} {k : Int} {coords : List Int} {pairs : List (Nat × Nat)}
   (h1 : n ≥ 2)
@@ -47,6 +55,7 @@ theorem can_frogs_communicate_symmetric
   let reverse_pairs := pairs.map (fun p => (p.2, p.1))
   can_frogs_communicate n k coords pairs = 
   can_frogs_communicate n k coords reverse_pairs := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

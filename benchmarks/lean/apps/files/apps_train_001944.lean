@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_circle_arrangement (n : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def validate_arrangement (n : Nat) (result : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_returns_string {n : Nat} :
   ∃ s : String, solve_circle_arrangement n = s
   := sorry
@@ -60,6 +67,7 @@ info: 'YES\n2 1'
 -/
 -- #guard_msgs in
 -- #eval solve_circle_arrangement 1
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

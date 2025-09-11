@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def jump (v : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem jump_single_element (n : Nat) :
   jump [n] = 0 :=
   sorry
@@ -57,6 +65,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval jump [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

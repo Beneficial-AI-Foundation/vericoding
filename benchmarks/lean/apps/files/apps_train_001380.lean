@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_sokka_journey (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_sokka_journey_non_negative (n: Nat) (h: n ≥ 2) : 
   solve_sokka_journey n ≥ 0 := sorry
 
@@ -27,6 +35,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_sokka_journey 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 /* Helper predicate to check if an array is sorted */
 predicate Sorted(v: array<int>)
     reads v
@@ -13,6 +14,7 @@ predicate MultisetEquivalent(v1: array<int>, v2: array<int>)
        the same elements with the same multiplicities */
     true /* Placeholder - actual implementation would be more complex */
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def f (n : Nat) : Nat := sorry
 def m (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem f_non_negative (n : Nat) : f n ≥ 0 := sorry
 
 theorem m_non_negative (n : Nat) : m n ≥ 0 := sorry
@@ -33,6 +41,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval f 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

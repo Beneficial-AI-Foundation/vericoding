@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sumc(s: seq<int>, p: seq<bool>) : int
     requires |s| == |p|
     {
@@ -14,6 +15,7 @@ function square_seq(lst: seq<int>) : (sq : seq<int>)
     {
         seq(|lst|, i requires 0 <= i < |lst| => lst[i] * lst[i])
     }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

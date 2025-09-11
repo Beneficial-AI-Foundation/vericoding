@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findNearestPalindrome (n : Int) : String := sorry
 
 def isPalindrome (n : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem finds_valid_palindrome (n : Int) 
   (h : 0 ≤ n ∧ n ≤ 10000) 
   (h2 : findNearestPalindrome n ≠ "Not valid") :
@@ -52,6 +60,7 @@ info: 'Not valid'
 -/
 -- #guard_msgs in
 -- #eval find_nearest_palindrome "1221"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def range_parser (s: String) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem range_parser_correct₁ :
   range_parser "1-10,14,20-25:2" = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 20, 22, 24] :=
   sorry
@@ -40,6 +48,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval range_parser "2"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

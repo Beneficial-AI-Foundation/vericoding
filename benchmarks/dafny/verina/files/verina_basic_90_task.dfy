@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate SlopeSearchPrecond(a: seq<seq<int>>, key: int)
 {
     |a| > 0 &&
@@ -11,6 +12,7 @@ function Get2d(a: seq<seq<int>>, i: int, j: int): int
 {
     a[i][j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

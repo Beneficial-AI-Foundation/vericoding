@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -93,13 +94,19 @@ problems:
 def count_paren_groups
 (paren_string: String): Nat :=
 count_paren_groups_helper paren_string 0 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (paren_string: String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: String → List String)
@@ -121,5 +128,6 @@ theorem correctness
 (paren_string: String)
 : problem_spec implementation paren_string := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "( ) (( )) (( )( ))" = ["()", "(())", "(()())"]

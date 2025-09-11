@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_cat_coloring (n : Nat) (edges : List (Nat × Nat)) (colors : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_white_node :
   solve_cat_coloring 1 [] "W" = 1 := by sorry
 
@@ -39,6 +47,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_cat_coloring 1 [] "B"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

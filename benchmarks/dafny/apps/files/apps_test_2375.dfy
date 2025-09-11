@@ -1,3 +1,4 @@
+// <vc-preamble>
 function Abs(x: int): int
 {
   if x >= 0 then x else -x
@@ -17,6 +18,7 @@ predicate ValidInput(X: int, Y: int)
 {
   X >= 0 && Y >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

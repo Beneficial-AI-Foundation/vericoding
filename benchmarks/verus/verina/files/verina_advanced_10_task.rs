@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 use vstd::arithmetic::power::pow;
 
@@ -17,6 +18,7 @@ spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
         spec_fold(pairs.subrange(1, pairs.len() as int), acc * pow(p as int, e as nat))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

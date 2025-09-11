@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def int_diff (arr : List Int) (n : Int) : Int := sorry
 
 theorem int_diff_nonnegative (arr : List Int) (n : Int) : 
   n ≥ 0 → int_diff arr n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem int_diff_max_pairs (arr : List Int) (n : Int) :
   let max_pairs := (arr.length * (arr.length - 1)) / 2
   int_diff arr n ≤ max_pairs := sorry
@@ -51,6 +59,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval int_diff [4, 8, 12, 12, 3, 6, 2] 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

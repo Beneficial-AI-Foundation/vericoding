@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -35,6 +36,7 @@ spec fn ascending(q: Seq<int>) -> bool {
 spec fn no_duplicates(q: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < q.len() ==> q[i] != q[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

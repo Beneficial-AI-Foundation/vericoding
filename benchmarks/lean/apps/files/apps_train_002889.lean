@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sumOfDigits (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rthn_between (a b : Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rthn_between_ordered_bounds {a b : Int} (h : a ≤ b) (h₁ : 0 ≤ a) (h₂ : b ≤ 10000) :
   let result := rthn_between a b
   -- Result is sorted
@@ -52,6 +59,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval rthn_between 2200 2300
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -14,13 +15,19 @@ structure DType where
   name : String
   /-- Whether the data type is signed (for numeric types) -/
   signed : Bool
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_dtype (type_spec : String) : Id DType :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_dtype_spec (type_spec : String) 
     (h_valid : type_spec ∈ ["int8", "int16", "int32", "int64", "float32", "float64", "bool"]) :
     ⦃⌜type_spec ∈ ["int8", "int16", "int32", "int64", "float32", "float64", "bool"]⌝⦄
@@ -44,3 +51,4 @@ theorem numpy_dtype_spec (type_spec : String)
        (type_spec = "bool" → dt.itemsize = 1 ∧ dt.kind = "b"))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isNStraightHand (hand : List Int) (w : Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isConsecutive (xs : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem div_by_w_necessary {hand : List Int} {w : Int} 
   (hw : 0 < w) (hw' : w ≤ 10000) (hh : List.length hand > 0) :
   isNStraightHand hand w → List.length hand % w = 0 :=
@@ -46,6 +53,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval isNStraightHand [1, 1, 2, 2, 3, 3] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

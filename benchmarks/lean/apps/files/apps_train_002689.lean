@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def switch_it_up (n : Nat) : String := sorry
 
 theorem switch_it_up_valid_format {n : Nat} (h : n < 10) :
@@ -10,7 +16,9 @@ theorem switch_it_up_valid_format {n : Nat} (h : n < 10) :
   Char.isUpper (result.front) ∧ 
   -- Rest are lowercase
   ∀ i : String.Pos, i.1 > 0 → Char.isLower (result.get i) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem switch_it_up_consistent {n : Nat} (h : n < 10) :
   switch_it_up n = switch_it_up n := sorry
 
@@ -34,6 +42,7 @@ info: 'Nine'
 -/
 -- #guard_msgs in
 -- #eval switch_it_up 9
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

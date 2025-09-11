@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SpecSum(xs: array<int>, start: int, len: int): int
     decreases len
     reads xs
@@ -9,6 +10,7 @@ function SpecSum(xs: array<int>, start: int, len: int): int
     else
         xs[start] + SpecSum(xs, start + 1, len - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

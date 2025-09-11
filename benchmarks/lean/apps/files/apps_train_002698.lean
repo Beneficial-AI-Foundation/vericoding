@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_screen_height (width : Nat) (ratio : String) : String := sorry
 
 theorem find_screen_height_format (width : Nat) (ratio : String)
   (h : width > 0)
   (h2 : ∃ a b, ratio = s!"{a}:{b}" ∧ a > 0 ∧ b > 0) :
   ∃ w h : Nat, find_screen_height width ratio = s!"{w}x{h}" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_screen_height_width_matches (width : Nat) (ratio : String)
   (h : width > 0)
   (h2 : ∃ a b, ratio = s!"{a}:{b}" ∧ a > 0 ∧ b > 0) :
@@ -48,6 +56,7 @@ info: '3840x1080'
 -/
 -- #guard_msgs in
 -- #eval find_screen_height 3840 "32:9"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_rint {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_rint_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_rint x
@@ -23,3 +30,4 @@ theorem numpy_rint_spec {n : Nat} (x : Vector Float n) :
         (k % 2 = 0 → result.get i = Float.ofInt k) ∧
         (k % 2 = 1 → result.get i = Float.ofInt (k + 1)))⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def robotTransfer : List (List String) → Nat → Nat := sorry
 
 def parseCoords (s : String) : Option (Nat × Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem robotTransfer_2x2_valid_output 
   (matrix : List (List String)) 
   (k : Nat) 
@@ -37,6 +45,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval robot_transfer [["0,1", "0,0"], ["1,1", "1,0"]] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_pattern (k : Nat) : List String := sorry 
 
 def format_multiple_patterns (cases : List Nat) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem generate_pattern_length (k : Nat) (h : 0 < k ∧ k ≤ 26) :
   (generate_pattern k).length = k := sorry
 
@@ -24,6 +32,7 @@ theorem format_multiple_patterns_matches {cases : List Nat} (h : cases ≠ [])
   (h2 : ∀ k ∈ cases, 0 < k ∧ k ≤ 26) (pos k : Nat):
   k ∈ cases →
   (format_multiple_patterns cases).take k = generate_pattern k := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

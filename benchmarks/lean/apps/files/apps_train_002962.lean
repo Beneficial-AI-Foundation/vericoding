@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def cal_n_bug (heads : Int) (legs : Int) (wings : Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_output_structure_heads_spiders
   (n : Int) :
   let result := cal_n_bug n (n*6) n
@@ -38,6 +46,7 @@ theorem impossible_combinations
   cal_n_bug n 3 n = [-1, -1, -1] ∧
   cal_n_bug n (n*8) n = [-1, -1, -1] :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def digitSum (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countComfortablePairs (l r : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem window_size (start : Nat) (window : Nat) 
   (h1 : start ≥ 1) (h2 : start ≤ 100) (h3 : window ≥ 0) (h4 : window ≤ 10) :
   let result := countComfortablePairs start (start + window)
@@ -45,6 +52,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_comfortable_pairs 13 13
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

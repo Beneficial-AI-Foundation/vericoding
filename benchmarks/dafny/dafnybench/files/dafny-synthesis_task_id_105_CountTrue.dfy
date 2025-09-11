@@ -1,3 +1,4 @@
+// <vc-preamble>
 function countTo( a:array<bool>, n:int ) : int
   requires a != null;
   requires 0 <= n && n <= a.Length;
@@ -6,6 +7,7 @@ function countTo( a:array<bool>, n:int ) : int
 {
   if (n == 0) then 0 else countTo(a, n-1) + (if a[n-1] then 1 else 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

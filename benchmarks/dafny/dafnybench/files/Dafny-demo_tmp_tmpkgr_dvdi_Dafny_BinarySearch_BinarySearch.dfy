@@ -1,9 +1,11 @@
+// <vc-preamble>
 predicate sorted(a: array?<int>, l: int, u: int)
     reads a
     requires a != null
     {
     forall i, j :: 0 <= l <= i <= j <= u < a.Length ==> a[i] <= a[j]
     }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

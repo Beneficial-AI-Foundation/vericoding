@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def chinese_zodiac (year : Int) : String := sorry
 
 def Elements := ["Wood", "Fire", "Earth", "Metal", "Water"]
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def Animals := ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", 
                "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"]
 
 def String.splitToList (s : String) : List String := 
   s.split (· = ' ')
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cycle_12_years {y : Int} (h : y ≥ 1900 ∧ y ≤ 2100) : 
   (chinese_zodiac y).splitToList[1]! = (chinese_zodiac (y + 12)).splitToList[1]! := sorry 
 
@@ -42,6 +49,7 @@ info: 'Fire Monkey'
 -/
 -- #guard_msgs in
 -- #eval chinese_zodiac 2016
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

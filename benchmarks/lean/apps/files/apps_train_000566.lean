@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solveBracketSequence (s : String) (queries : List Nat) : List Int := sorry
 
 theorem arbitrary_brackets_results_valid 
@@ -12,7 +18,9 @@ theorem arbitrary_brackets_results_valid
   (h4 : ∀ q ∈ queries, 0 < q ∧ q ≤ s.length) :
   let result := solveBracketSequence s queries
   ∀ r ∈ result, -1 ≤ r ∧ r ≤ s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arbitrary_brackets_positions_valid
   (s : String)
   (queries : List Nat)
@@ -46,6 +54,7 @@ theorem all_close_brackets_no_matches
   (h4 : ∀ q ∈ queries, 0 < q ∧ q ≤ s.length) :
   let result := solveBracketSequence s queries
   ∀ r ∈ result, r = -1 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

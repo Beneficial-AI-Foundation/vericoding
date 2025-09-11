@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def roof_fix (new old : List Char) : Bool := sorry
 
 theorem roof_fix_slashes_spaces {new old : List Char} (h : new.length = old.length) :
@@ -9,7 +15,9 @@ theorem roof_fix_slashes_spaces {new old : List Char} (h : new.length = old.leng
     (old.get ⟨i.val, h ▸ i.isLt⟩ = '\\' ∨ old.get ⟨i.val, h ▸ i.isLt⟩ = '/') →
     new.get i = ' ' :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem roof_fix_false_case {new old : List Char} (h : new.length = old.length) :
   roof_fix new old = false →
   ∃ (i : Fin new.length),
@@ -49,6 +57,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval roof_fix "   h c " "__/____"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

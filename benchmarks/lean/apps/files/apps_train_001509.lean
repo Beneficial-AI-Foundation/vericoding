@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_country_codes (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_country_codes_non_negative (s : String) :
   count_country_codes s ≥ 0 := sorry
 
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_country_codes "ABCD"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

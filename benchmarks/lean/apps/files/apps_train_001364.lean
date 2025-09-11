@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def can_make_palindrome (s : String) : Bool := sorry
 def process_test_case (s : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverse (s : String) : String := sorry
 
 theorem palindrome_stays_true {s : String} :
   s = reverse s → can_make_palindrome s = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_char_is_palindrome {s : String} :
   s.length = 1 → can_make_palindrome s = true := sorry
 
@@ -44,6 +51,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval process_test_case "abdbca"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

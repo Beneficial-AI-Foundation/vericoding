@@ -1,5 +1,7 @@
+// <vc-preamble>
 predicate allEqual(s:seq<int>)
 {forall i,j::0<=i<|s| && 0<=j<|s| ==> s[i]==s[j] }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

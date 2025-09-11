@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_score (n : Int) : Int := sorry
 
 theorem get_score_returns_integer (n : Int) :
   get_score n = get_score n := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_score_non_negative (n : Int) (h : n ≥ 0) :
   get_score n ≥ 0 := by sorry
 
@@ -32,6 +40,7 @@ info: 750
 -/
 -- #guard_msgs in
 -- #eval get_score 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

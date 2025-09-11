@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longestWPI (hours : List Nat) : Nat := sorry
 
 theorem longestWPI_non_negative (hours : List Nat) : 
   longestWPI hours ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem longestWPI_bounded (hours : List Nat) :
   longestWPI hours ≤ hours.length := sorry
 
@@ -38,6 +46,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval longestWPI [9, 9, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

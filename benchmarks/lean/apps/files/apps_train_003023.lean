@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_alive (health : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_alive_returns_bool (health : Int) :
   check_alive health = true ∨ check_alive health = false :=
   sorry
@@ -29,6 +37,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval check_alive -5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

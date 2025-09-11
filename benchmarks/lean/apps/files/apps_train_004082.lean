@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def coordinates (angle : Float) (radius : Float) : Float × Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem coordinates_periodic (angle radius : Float) : 
   angle ≥ -1000 → angle ≤ 1000 → radius > 0 →
   coordinates angle radius = coordinates (angle + 360) radius := 
@@ -39,6 +47,7 @@ info: (9848.0775301221, 1736.4817766693)
 -/
 -- #guard_msgs in
 -- #eval coordinates 1090 10000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

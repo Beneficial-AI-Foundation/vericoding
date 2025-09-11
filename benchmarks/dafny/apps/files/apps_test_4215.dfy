@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= 100 && 1 <= b <= 100
@@ -7,6 +8,7 @@ function UncoveredLength(a: int, b: int): int
 {
     max(0, a - 2 * b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

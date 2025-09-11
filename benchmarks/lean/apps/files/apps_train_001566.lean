@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def is_prime (n : Int) : Bool := sorry
 def reverse_num (n : Int) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sq_cub_rev_prime (n : Int) : Int := sorry
 
 theorem is_prime_basic_cases : 
   ¬is_prime 1 ∧ is_prime 2 ∧ ¬is_prime 4 ∧ is_prime 5 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_prime_nonpositive (n : Int) :
   n ≤ 0 → ¬is_prime n := sorry
 
@@ -36,6 +43,7 @@ info: 325
 -/
 -- #guard_msgs in
 -- #eval sq_cub_rev_prime 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

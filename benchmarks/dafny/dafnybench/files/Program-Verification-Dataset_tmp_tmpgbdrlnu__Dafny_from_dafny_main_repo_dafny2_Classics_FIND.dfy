@@ -1,7 +1,9 @@
+// <vc-preamble>
 ghost function Factorial(n: nat): nat
 {
   if n == 0 then 1 else n * Factorial(n-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

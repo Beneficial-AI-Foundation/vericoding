@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def canVisitAllRooms (rooms : List (List Nat)) : Bool := sorry
 
 theorem canVisitAllRooms_bool 
   (rooms : List (List Nat)) : 
   canVisitAllRooms rooms = true ∨ canVisitAllRooms rooms = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem canVisitAllRooms_reachable
   (rooms : List (List Nat))
   (h : canVisitAllRooms rooms = true) :
@@ -54,6 +62,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval can_visit_all_rooms [[1], [2], [3], [], [], []]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

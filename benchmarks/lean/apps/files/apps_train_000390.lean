@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def largest_rectangle_area (heights : List Nat) : Nat :=
   sorry
 
 def listMaximum (l : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listModify (l : List Nat) (i : Nat) (f : Nat → Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem largest_rectangle_area_non_negative (heights : List Nat) :
   0 ≤ largest_rectangle_area heights := sorry
 
@@ -53,6 +60,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval largest_rectangle_area []
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

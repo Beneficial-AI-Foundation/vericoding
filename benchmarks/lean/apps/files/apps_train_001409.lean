@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_mia_save_300 (days: Nat) (min_wage: Nat) (highest_tip: Nat) (shifts: List Nat) : Bool := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem earnings_increase_with_min_wage 
   (days: Nat) (min_wage: Nat) (highest_tip: Nat) (shifts: List Nat)
   (h1: days > 0) (h2: min_wage > 0) :
@@ -24,6 +32,7 @@ theorem earnings_increase_with_days
   can_mia_save_300 (days + 1) min_wage highest_tip (shifts.take (days + 1)) ≥
   can_mia_save_300 days min_wage highest_tip (shifts.take days) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

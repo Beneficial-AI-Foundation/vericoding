@@ -1,6 +1,8 @@
+// <vc-preamble>
 class Automaton {
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

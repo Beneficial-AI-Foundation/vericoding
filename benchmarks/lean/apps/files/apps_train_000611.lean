@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_magic_potions (R G B M : Nat) (r g b : List Nat) : Nat := sorry
 
 def list_max (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x::xs => List.foldl max x xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem magic_potions_result_non_negative 
   (R G B M : Nat)
   (r g b : List Nat)
@@ -72,6 +80,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval solve_magic_potions 3 2 2 2 [1, 2, 3] [2, 4] [6, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

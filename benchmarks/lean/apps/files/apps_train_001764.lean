@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def validTicTacToe (board : List String) : Bool := sorry
 
 def hasWin (board : List String) (player : Char) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (board : List String) (c : Char) : Nat := sorry
 
 theorem board_dimensions {board : List String} (h : validTicTacToe board) :
   board.length = 3 ∧ 
   (∀ row ∈ board, row.length = 3) ∧
   (∀ row ∈ board, ∀ c ∈ row.data, c = 'X' ∨ c = 'O' ∨ c = ' ') := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_invariants {board : List String} (h : validTicTacToe board) :
   let x_count := countChar board 'X'
   let o_count := countChar board 'O'
@@ -43,6 +50,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval validTicTacToe ["XOX", "O O", "XOX"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

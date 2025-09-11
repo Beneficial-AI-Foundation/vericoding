@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def bits_war (numbers : List Int) : String := sorry
 
 def bitsToCount (n : Int) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_list_nat : List Nat → Nat 
   | [] => 0
   | x :: xs => x + sum_list_nat xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bits_war_returns_valid_result (numbers : List Int) (h : numbers.length > 0) :
   (bits_war numbers = "odds win") ∨ 
   (bits_war numbers = "evens win") ∨
@@ -43,6 +50,7 @@ info: 'tie'
 -/
 -- #guard_msgs in
 -- #eval bits_war [7, -3, -2, 6]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def black_and_white (height : Nat) (width : Nat) (input : List Nat) : List (List Nat) := sorry
 
 -- Basic cases
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem basic_case1 : 
   black_and_white 2 100 [40, 120, 40, 0] = [[40, 60], [0, 60, 40, 0]] := sorry
 
@@ -32,6 +40,7 @@ theorem values_nonnegative (h w : Nat) (input : List Nat) (row : List Nat) (x : 
 
 theorem single_row :
   black_and_white 1 10 [10] = [[10, 0]] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

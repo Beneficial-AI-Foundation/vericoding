@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def add_strings (a b : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def int_to_str (n : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem add_strings_matches_int_addition 
   (a b : Nat) (h1 : a ≤ 10^6) (h2 : b ≤ 10^6) :
   add_strings (int_to_str a) (int_to_str b) = int_to_str (a + b) :=
@@ -42,6 +49,7 @@ info: '1000'
 -/
 -- #guard_msgs in
 -- #eval add_strings "999" "1"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

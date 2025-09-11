@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve_ant_grid (R C : Nat) (grid : List String) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def is_direction (c : Char) : Bool :=
 
 def make_empty_string (n : Nat) (c : Char) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_directions (grid : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_ant_grid_output_props (R C : Nat) (grid : List String)
   (h : R > 0 ∧ C > 0) :
   let result := solve_ant_grid R C grid;
@@ -70,6 +77,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval solve_ant_grid 3 3 ["-D-", "R-L", "-U-"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

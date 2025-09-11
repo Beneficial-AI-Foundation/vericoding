@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| >= 1 && |s| <= 10 && forall i :: 0 <= i < |s| ==> s[i] in {'0', '1', 'B'}
@@ -19,6 +20,7 @@ predicate ValidOutput(result: string)
 {
     forall i :: 0 <= i < |result| ==> result[i] in {'0', '1'}
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

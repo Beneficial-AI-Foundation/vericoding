@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def fliplr {rows cols : Nat} (m : Vector (Vector Float cols) rows) : Id (Vector (Vector Float cols) rows) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fliplr_spec {rows : Nat} {cols : Nat} (m : Vector (Vector Float (cols + 1)) rows) :
     ⦃⌜True⌝⦄
     fliplr m
@@ -24,3 +31,4 @@ theorem fliplr_spec {rows : Nat} {cols : Nat} (m : Vector (Vector Float (cols + 
                    2 * mid.val = cols ∧
                    (result.get i).get mid = (m.get i).get mid)⌝⦄ := by
   sorry
+-- </vc-theorems>

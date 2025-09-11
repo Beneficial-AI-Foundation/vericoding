@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def code_for_same_protein (seq1 : String) (seq2 : String) : Bool := sorry
 
 theorem identical_sequences_match
   (seq : String) :
   code_for_same_protein seq seq = true := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def repeat_str (s : String) (n : Nat) : String :=
 match n with
 | 0 => ""
 | n+1 => s ++ repeat_str s n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem different_length_no_match
   (n : Nat) :
   code_for_same_protein (repeat_str "ATG" n) (repeat_str "ATG" (n + 1)) = false := sorry
@@ -47,6 +54,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval code_for_same_protein "ATGTTTTAA" "ATGATATAA"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

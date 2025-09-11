@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def chessBishopDream (boardSize: List Int) (initPos: List Int) (initDir: List Int) (k: Nat) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def inRange (x: Int) (lower: Int) (upper: Int) : Prop :=
   lower ≤ x ∧ x < upper
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bishop_within_boundaries
   (boardSize: List Int)
   (initPos: List Int) 
@@ -73,6 +80,7 @@ info: [1, 0]
 -/
 -- #guard_msgs in
 -- #eval chess_bishop_dream [2, 2] [1, 0] [1, 1] 12
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

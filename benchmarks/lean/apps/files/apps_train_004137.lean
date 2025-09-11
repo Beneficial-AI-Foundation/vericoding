@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def odd_or_even (nums : List Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_or_even_result_valid (nums : List Int) :
   (odd_or_even nums = "odd") ∨ (odd_or_even nums = "even") :=
   sorry
@@ -41,6 +49,7 @@ info: 'even'
 -/
 -- #guard_msgs in
 -- #eval odd_or_even [1023, 1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

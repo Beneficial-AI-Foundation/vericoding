@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_trunc {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_trunc_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_trunc x
@@ -29,3 +36,4 @@ theorem numpy_trunc_spec {n : Nat} (x : Vector Float n) :
       -- Bounded property: result is between 0 and x
       ((x.get i ≥ 0 → result.get i ≤ x.get i) ∧ (x.get i ≤ 0 → result.get i ≥ x.get i))⌝⦄ := by
   sorry
+-- </vc-theorems>

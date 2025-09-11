@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn swap_frame(a_old: Seq<int>, a_new: Seq<int>, lo: int, hi: int) -> bool {
     (forall|i: int| (0 <= i < lo || hi <= i < a_old.len()) ==> a_new[i] == a_old[i]) &&
     a_new.to_multiset() == a_old.to_multiset()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

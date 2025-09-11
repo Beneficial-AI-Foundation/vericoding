@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def divisible_by_three (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def digit_sum (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divisible_by_three_matches_mod (n : Nat) :
   divisible_by_three (toString n) = (n % 3 = 0) :=
   sorry
@@ -37,6 +44,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval divisible_by_three "963210456"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn sorted(a: &Vec<(i32, i32)>, l: int, u: int) -> bool {
 spec fn partitioned(a: &Vec<(i32, i32)>, i: int) -> bool {
     forall|k: int, k_prime: int| 0 <= k <= i < k_prime < a.len() ==> a[k].1 <= a[k_prime].1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

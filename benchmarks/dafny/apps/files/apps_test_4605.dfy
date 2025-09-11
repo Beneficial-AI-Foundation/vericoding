@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, A: int, B: int)
 {
   N >= 1 && A >= 1 && A <= B && B <= 36
@@ -18,6 +19,7 @@ function sumInRange(N: int, A: int, B: int): int
   else if A <= digitSum(N) <= B then N + sumInRange(N-1, A, B)
   else sumInRange(N-1, A, B)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sum_digits (n : Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_of_digits_string (n : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_digits_nonnegative (x : Int) :
   sum_digits x ≥ 0 :=
   sorry
@@ -45,6 +52,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval sum_digits -32
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

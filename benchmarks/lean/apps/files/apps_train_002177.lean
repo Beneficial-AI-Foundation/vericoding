@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def solve_cyclic_permutation (n m q : Nat) (p : List Nat) (a : List Nat) (queries : List (Nat × Nat)) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.reverse (s : String) : String := sorry
 
 theorem result_is_valid_binary_string {n m q : Nat} {p a : List Nat} {queries : List (Nat × Nat)}
@@ -16,7 +21,9 @@ theorem result_is_valid_binary_string {n m q : Nat} {p a : List Nat} {queries : 
   let result := solve_cyclic_permutation n m q p a queries
   result.length = q ∧ ∀ c ∈ result.data, c = '0' ∨ c = '1' :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem query_ordering_invariant {n m q : Nat} {p a : List Nat} {queries : List (Nat × Nat)}
   (h₁ : n > 0) (h₂ : m > 0) (h₃ : q > 0) 
   (h₄ : p.length = n) (h₅ : a.length = m)
@@ -45,6 +52,7 @@ info: '1'
 -/
 -- #guard_msgs in
 -- #eval solve_cyclic_permutation 1 1 1 [1] [1] [[1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

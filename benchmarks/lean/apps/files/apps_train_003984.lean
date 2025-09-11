@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def caffeineBuzz (n : Int) : String := sorry
 
 theorem caffeineBuzz_returns_valid_string (n : Int) : 
@@ -8,7 +14,9 @@ theorem caffeineBuzz_returns_valid_string (n : Int) :
   caffeineBuzz n = "JavaScript" ∨ 
   caffeineBuzz n = "Java" ∨ 
   caffeineBuzz n = "mocha_missing!" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem caffeineBuzz_divisibility_rules (n : Int) :
   (n % 12 = 0 → caffeineBuzz n = "CoffeeScript") ∧
   (n % 6 = 0 ∧ n % 12 ≠ 0 → caffeineBuzz n = "JavaScript") ∧
@@ -44,6 +52,7 @@ info: 'CoffeeScript'
 -/
 -- #guard_msgs in
 -- #eval caffeineBuzz 12
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -19,19 +20,26 @@ inductive LinAlgError where
   /-- Generic error for other linear algebra failures -/
   | Other : String → LinAlgError
   deriving Repr, DecidableEq
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def checkLinAlgError (condition : Bool) (errorType : String → LinAlgError) (message : String) : Id (Option LinAlgError) :=
   if condition then
     return some (errorType message)
   else
     return none
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem checkLinAlgError_spec (condition : Bool) (errorType : String → LinAlgError) (message : String) :
     ⦃⌜True⌝⦄
     checkLinAlgError condition errorType message
     ⦃⇓result => ⌜(condition = true → result = some (errorType message)) ∧ 
                   (condition = false → result = none)⌝⦄ := by
   sorry
+-- </vc-theorems>

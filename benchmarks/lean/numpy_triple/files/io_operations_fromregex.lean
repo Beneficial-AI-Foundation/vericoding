@@ -1,3 +1,4 @@
+-- <vc-preamble>
 /-- A simple abstraction for regular expressions -/
 structure RegExp where
   /-- The regular expression pattern -/
@@ -12,13 +13,19 @@ structure StructuredDataType where
 structure StructuredElement where
   /-- List of field values as strings -/
   values : List String
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def fromregex {n : Nat} (file_content : String) (regexp : RegExp) (dtype : StructuredDataType) : Id (Vector StructuredElement n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fromregex_spec {n : Nat} (file_content : String) (regexp : RegExp) (dtype : StructuredDataType) 
     (h_valid_dtype : dtype.fields.length > 0) :
     -- Precondition: structured data type must have at least one field
@@ -42,3 +49,4 @@ theorem fromregex_spec {n : Nat} (file_content : String) (regexp : RegExp) (dtyp
       -- This represents that the regex pattern matches some substring
       True) := by
   sorry
+-- </vc-theorems>

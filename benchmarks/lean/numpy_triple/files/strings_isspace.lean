@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isspace {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isspace_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     isspace a
@@ -17,3 +24,4 @@ theorem isspace_spec {n : Nat} (a : Vector String n) :
                  -- Mathematical property: Result is boolean (trivially true but explicit)
                  (result.get i = true ∨ result.get i = false)⌝⦄ := by
   sorry
+-- </vc-theorems>

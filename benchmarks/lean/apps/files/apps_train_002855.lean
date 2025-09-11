@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def argsCount {α : Type} (args : List α) : Nat := sorry
 
 theorem argsCount_equals_list_length {α : Type} (args : List α) : 
   argsCount args = args.length := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem argsCount_with_mixed_types {α β : Type} (args : List (Sum α β)) :
   argsCount args = args.length := by sorry
 
@@ -38,6 +46,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval args_count 1 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

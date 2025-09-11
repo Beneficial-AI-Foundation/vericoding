@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(s: seq<int>, n: nat): int
     requires n <= |s|
 {
@@ -6,6 +7,7 @@ function sum(s: seq<int>, n: nat): int
     else
         s[0] + sum(s[1..], n-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

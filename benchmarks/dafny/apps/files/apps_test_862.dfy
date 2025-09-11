@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>) {
   n >= 2 && |a| == n && (forall i :: 0 <= i < n ==> a[i] >= 0)
 }
@@ -31,6 +32,7 @@ predicate IsOptimalEntrance(n: int, a: seq<int>, entrance: int)
      var ccj := ComputeCC(n, a, j);
      cci <= ccj && (cci < ccj || i <= j))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def shifted_diff (s1 s2 : String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shifted_diff_same_string (s : String) (h : s.length > 0) :
   shifted_diff s s = 0 := 
   sorry
@@ -42,6 +50,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval shifted_diff "dog" "god"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

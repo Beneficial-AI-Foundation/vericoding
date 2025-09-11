@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isLower (c : Char) : Bool :=
   sorry
 
@@ -6,13 +7,19 @@ def isUpper (c : Char) : Bool :=
 
 def isDigit (c : Char) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_password (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_password_conditions (s : String) :
   (s.length ≥ 8) →
   (∃ c, c ∈ s.data ∧ isLower c) →
@@ -73,6 +80,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_valid_password "abcd1234"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

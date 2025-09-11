@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def valid_mountain_array (arr: List Int) : Bool := sorry
 
 theorem too_short_array {arr : List Int} 
   (h : arr.length ≤ 2) : 
   valid_mountain_array arr = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem flat_array {arr : List Int} {n : Nat}
   (h1 : arr.length = n)
   (h2 : n ≥ 3) 
@@ -51,6 +59,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval valid_mountain_array [0, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

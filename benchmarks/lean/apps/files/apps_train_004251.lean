@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def HQ9 (s : String) : Option String :=
   sorry
 
 def contains (haystack needle : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count (haystack needle : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hq9_invalid_none :
   HQ9 "" = none ∧ HQ9 " " = none :=
   sorry
@@ -53,6 +60,7 @@ info: 'Q'
 -/
 -- #guard_msgs in
 -- #eval HQ9 "Q"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

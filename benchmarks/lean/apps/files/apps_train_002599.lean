@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def blocks (s : String) : String := sorry
 
 theorem blocks_empty (s : String) : 
   s = "" → blocks s = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem blocks_output_is_string (s : String) : 
   blocks s = blocks s := sorry
 
@@ -46,6 +54,7 @@ info: 'xzAB12'
 -/
 -- #guard_msgs in
 -- #eval blocks "21AxBz"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

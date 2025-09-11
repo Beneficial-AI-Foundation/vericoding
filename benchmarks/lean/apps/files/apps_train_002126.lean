@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def countValidBitSwaps (n : Nat) (a : String) (b : String) : Nat :=
   sorry
 
 def stringRepeat (s : String) (n : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def makeAlternatingString (n : Nat) (startBit : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem countValidBitSwaps_returns_natural (n : Nat) (a : String) (b : String)
   (h1 : a.length = n) (h2 : b.length = n) :
   ∃ (m : Nat), countValidBitSwaps n a b = m := by sorry
@@ -46,6 +53,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_valid_bit_swaps 2 "00" "00"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

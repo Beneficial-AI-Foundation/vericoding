@@ -1,3 +1,4 @@
+// <vc-preamble>
 function min(a: int, b: int): int
     ensures min(a, b) <= a && min(a, b) <= b
     ensures min(a, b) == a || min(a, b) == b
@@ -11,6 +12,7 @@ ghost function minFunction(a: int, b: int): int
 {
     if a < b then a else b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

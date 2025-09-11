@@ -1,8 +1,10 @@
+// <vc-preamble>
 /* Helper function to count occurrences of a target value in a sequence */
 function CountOccurrences(xs: seq<int>, target: int): nat
 {
     |set i | 0 <= i < |xs| && xs[i] == target|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

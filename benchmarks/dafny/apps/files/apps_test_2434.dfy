@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInputFormat(input: string)
 {
     var lines := SplitByNewline(input);
@@ -83,6 +84,7 @@ function Pow10(n: int): int
 {
     if n == 0 then 1 else 10 * Pow10(n - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

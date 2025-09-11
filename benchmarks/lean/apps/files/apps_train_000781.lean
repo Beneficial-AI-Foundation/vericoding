@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_sequence_swap (n : Nat) (a b : List Nat) : Int := sorry
 
 def isSorted (l : List Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_swap_valid_output 
   (n : Nat) (a b : List Nat) (result : Int) 
   (h : result = solve_sequence_swap n a b) :
@@ -48,6 +56,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_sequence_swap 2 [1, 1] [2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,6 +1,8 @@
+// <vc-preamble>
 function starts_with(s: string, p: string): bool {
   |p| == 0 || (|s| != 0 && |s| >= |p| && s[0] == p[0] && starts_with(s[1..], p[1..]))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

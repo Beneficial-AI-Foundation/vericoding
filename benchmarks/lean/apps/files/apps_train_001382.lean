@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def get_lucky_string (a b : String) : String := sorry
 
 def isDigitChar (c : Char) : Bool := 
   '0' ≤ c ∧ c ≤ '9'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isLuckyChar (c : Char) : Bool :=
   c = '4' ∨ c = '7'
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lucky_string_only_lucky_chars (a b : String) 
   (h_a : ∀ c ∈ a.data, isDigitChar c)
   (h_b : ∀ c ∈ b.data, isDigitChar c) :
@@ -68,6 +75,7 @@ info: '777744'
 -/
 -- #guard_msgs in
 -- #eval get_lucky_string "1675475" "9756417"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

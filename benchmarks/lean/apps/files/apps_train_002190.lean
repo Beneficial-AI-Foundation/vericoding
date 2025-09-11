@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def checkTreeWithDistances (N : Nat) (distances : List Nat) : List (Nat × Nat) ⊕ Unit :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidTree (N : Nat) (edges : List (Nat × Nat)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arbitrary_inputs_valid {N : Nat} {distances : List Nat} 
   (h1 : N ≥ 2) (h2 : N ≤ 20) (h3 : distances.length = N) :
   let result := checkTreeWithDistances N distances
@@ -53,6 +60,7 @@ info: N3 - 1
 -/
 -- #guard_msgs in
 -- #eval len result
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

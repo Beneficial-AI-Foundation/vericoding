@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def amax {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem amax_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     amax a
@@ -26,3 +33,4 @@ theorem amax_spec {n : Nat} (a : Vector Float (n + 1)) :
                  -- Sanity check: the maximum exists in the vector
                  (∃ witness : Fin (n + 1), result = a.get witness)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 // Check if a character is an uppercase alphabet letter
 predicate IsUpperAlpha(c: char)
 {
@@ -43,6 +44,7 @@ function NormalizeString(s: string): seq<char>
     else
         NormalizeChar(s[0]) + NormalizeString(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

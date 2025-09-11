@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidPosition(r: int, c: int)
 {
     1 <= r <= 8 && 1 <= c <= 8
@@ -39,6 +40,7 @@ predicate ValidResult(result: seq<int>, r1: int, c1: int, r2: int, c2: int)
     result[1] == BishopMoves(r1, c1, r2, c2) &&
     result[2] == KingMoves(r1, c1, r2, c2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

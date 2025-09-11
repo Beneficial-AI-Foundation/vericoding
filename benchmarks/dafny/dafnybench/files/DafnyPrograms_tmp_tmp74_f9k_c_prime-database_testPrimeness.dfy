@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate prime(n: nat)
 
 { n > 1 && (forall nr | 1 < nr < n :: n % nr != 0) }
@@ -30,6 +31,7 @@ method IsPrime?(n: nat) returns (answer: Answer)
 }
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

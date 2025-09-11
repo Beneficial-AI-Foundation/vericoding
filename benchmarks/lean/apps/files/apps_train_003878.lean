@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverseNum (n : Nat) : Nat := sorry
 
 def sum_dif_rev (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_dif_rev_positive (n : Nat) (h : n > 0) (h2 : n ≤ 20) : 
   sum_dif_rev n > 0 := sorry
 
@@ -21,6 +29,7 @@ theorem sum_dif_rev_strictly_increasing (n : Nat) (h : n > 0) (h2 : n ≤ 19) :
 
 theorem sum_dif_rev_no_trailing_zero (n : Nat) (h : n > 0) (h2 : n ≤ 20) :
   sum_dif_rev n % 10 ≠ 0 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

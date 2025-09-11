@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def canMergeForPermutation (p : List Nat) : String :=
   sorry
 
 structure Permutation (n : Nat) where
   perm : List Nat
   size : perm.length = n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem permutation_properties {n : Nat} (p : List Nat) 
   (h1 : p.length = 2*n) (h2 : n > 0) (h3 : n ≤ 5) :
   (canMergeForPermutation p = "YES" ∨ canMergeForPermutation p = "NO") ∧
@@ -42,6 +50,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval can_merge_for_permutation [3, 2, 6, 1, 5, 7, 8, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

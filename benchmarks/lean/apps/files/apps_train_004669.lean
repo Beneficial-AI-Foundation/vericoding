@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def resistor_parallel (r : List Float) : Float := sorry
 
 theorem parallel_resistance_positive {r : List Float} (h : ∀ x ∈ r, x > 0) : 
   resistor_parallel r > 0 := 
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_list : List Float → Float 
   | [] => 0
   | x::xs => x + sum_list xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_resistor_identity {r : Float} (h : r > 0) :
   resistor_parallel [r] = r :=
 sorry
@@ -22,6 +29,7 @@ sorry
 theorem inverse_sum_relationship {r : List Float} (h : ∀ x ∈ r, x > 0) :
   1 / (resistor_parallel r) = sum_list (r.map (λ x => 1/x)) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

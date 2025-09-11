@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x1: int, y1: int, x2: int, y2: int) {
     (x1, y1) != (x2, y2) &&
     -100 <= x1 <= 100 && -100 <= y1 <= 100 &&
@@ -19,6 +20,7 @@ predicate ValidOutput(x1: int, y1: int, x2: int, y2: int, result: seq<int>) {
     result[2] == ComputeFourthVertex(x1, y1, x2, y2).0 &&
     result[3] == ComputeFourthVertex(x1, y1, x2, y2).1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

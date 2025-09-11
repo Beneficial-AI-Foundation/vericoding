@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def min_rounds_needed (n : Nat) (rounds : List Nat) : Nat := sorry
 
 def list_maximum (l : List Nat) : Nat := 
   match l with
   | [] => 0
   | (x::xs) => xs.foldl Nat.max x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | (x::xs) => x + list_sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_rounds_needed_all_zeros {n : Nat}
   (h : n ≥ 2) : 
   let rounds := List.replicate n 0
@@ -41,6 +48,7 @@ info: 1005000000
 -/
 -- #guard_msgs in
 -- #eval min_rounds_needed 3 [1000000000, 1000000000, 10000000]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

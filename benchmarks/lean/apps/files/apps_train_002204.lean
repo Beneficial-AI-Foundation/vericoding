@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_manhattan_compass_pairs (n : Nat) (a b : Nat) (points : List (Int × Int)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem manhattan_compass_property 
   (n : Nat) (a b : Nat) (points : List (Int × Int))
   (h1 : n ≥ 2) 
@@ -48,6 +56,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval count_manhattan_compass_pairs *test3
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

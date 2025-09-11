@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     1 <= n <= 99
 }
@@ -21,6 +22,7 @@ function ExpectedResult(n: int): string
 predicate ValidOutput(result: string) {
     result == "YES" || result == "NO"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

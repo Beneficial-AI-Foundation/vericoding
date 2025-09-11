@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::arithmetic::mul::*;
 use vstd::prelude::*;
 
@@ -22,6 +23,7 @@ spec fn brazilian_factorial(n: nat) -> (ret:nat)
         factorial(n) * brazilian_factorial((n - 1) as nat)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

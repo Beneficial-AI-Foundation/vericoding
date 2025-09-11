@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn sum_to(arr: Seq<i64>) -> (result: int)
         sum_to(arr.drop_last()) + arr.last()
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

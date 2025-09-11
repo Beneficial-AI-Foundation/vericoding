@@ -1,6 +1,8 @@
+// <vc-preamble>
 function power(x: nat, y: nat): nat {
     if y == 0 then 1 else x * power(x, y-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

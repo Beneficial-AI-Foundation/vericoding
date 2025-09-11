@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isSelfCrossing (moves : List Int) : Bool := sorry
 
 theorem short_sequences_never_cross (moves: List Int)
   (h: moves.length < 4)
   (h_nonneg : ∀ x ∈ moves, x ≥ 0) :
   ¬(isSelfCrossing moves) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem equal_square_forms_crossing (moves: List Int)
   (h_len: moves.length = 4)
   (h_pos: ∀ x ∈ moves, x > 0)
@@ -47,6 +55,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_self_crossing [1, 1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

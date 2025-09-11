@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findPartMaxProd (n : Nat) : List (List Nat) × Nat := sorry
 
 def sumList : List Nat → Nat
   | [] => 0
   | x::xs => x + sumList xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_part_max_prod_output_structure (n : Nat) (h : n > 0) (h2 : n ≤ 1000) :
   let result := findPartMaxProd n
   if n = 1 then
@@ -28,6 +36,7 @@ theorem find_part_max_prod_parts_valid (n : Nat) (h : n > 0) (h2 : n ≤ 1000) :
   (∀ parts ∈ result.1,
     (∀ x ∈ parts, x = 2 ∨ x = 3 ∨ x = 4) ∧ 
     ((parts.filter (· = 4)).length ≤ 1)) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

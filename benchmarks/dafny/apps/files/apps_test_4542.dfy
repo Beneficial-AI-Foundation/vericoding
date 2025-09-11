@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> s[i] == 'B' || s[i] == 'W'
@@ -12,6 +13,7 @@ function CountSegments(s: string): int
     else 
         CountSegments(s[..|s|-1]) + (if s[|s|-1] != s[|s|-2] then 1 else 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

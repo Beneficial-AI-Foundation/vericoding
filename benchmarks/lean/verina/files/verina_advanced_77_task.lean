@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible, simp]
 def trapRainWater_precond (height : List Nat) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def trapRainWater (height : List Nat) (h_precond : trapRainWater_precond (height)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def trapRainWater_postcond (height : List Nat) (result: Nat) (h_precond : trapRainWater_precond (height)) : Prop :=
   let waterAt := List.range height.length |>.map (fun i =>
@@ -20,6 +27,7 @@ def trapRainWater_postcond (height : List Nat) (result: Nat) (h_precond : trapRa
 theorem trapRainWater_spec_satisfied (height: List Nat) (h_precond : trapRainWater_precond (height)) :
     trapRainWater_postcond (height) (trapRainWater (height) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

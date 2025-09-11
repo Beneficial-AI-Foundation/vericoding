@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -29,13 +30,19 @@ inductive IntType where
   | UInt32 : IntType
   /-- 64-bit unsigned integer type -/
   | UInt64 : IntType
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def iinfo (int_type : IntType) : Id IntInfo :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem iinfo_spec (int_type : IntType) :
     ⦃⌜True⌝⦄
     iinfo int_type
@@ -51,3 +58,4 @@ theorem iinfo_spec (int_type : IntType) :
       | IntType.UInt64 => info.bits = 64 ∧ info.min = 0 ∧ info.max = 18446744073709551615
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

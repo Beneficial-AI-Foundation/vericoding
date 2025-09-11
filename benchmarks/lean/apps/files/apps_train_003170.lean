@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def vaporcode (s : String) : String := sorry
 
 theorem vaporcode_uppercase (s : String) :
   (vaporcode s).toUpper = vaporcode s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem vaporcode_no_consecutive_spaces (s : String) :
   ¬ String.contains (vaporcode s) ' ' := sorry 
 
@@ -41,6 +49,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval vaporcode "Hello World"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

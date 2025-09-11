@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x: int) {
     1 <= x <= 3000
 }
@@ -6,6 +7,7 @@ predicate CorrectOutput(x: int, result: string) {
     (x < 1200 ==> result == "ABC\n") &&
     (x >= 1200 ==> result == "ARC\n")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

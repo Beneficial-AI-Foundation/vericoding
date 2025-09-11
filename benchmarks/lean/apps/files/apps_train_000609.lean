@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def scramble_message (step : Nat) (input : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem scramble_message_fixed_chef :
   scramble_message 2 "chef" = "cehf" :=
 sorry
@@ -19,6 +27,7 @@ sorry
 theorem scramble_message_fixed_abcdefgh :
   scramble_message 3 "abcdefgh" = "aecgbfdh" :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

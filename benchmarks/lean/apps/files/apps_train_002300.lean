@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def remove_duplicates (s : String) : String := sorry
 
 theorem result_is_subsequence (s : String) : 
@@ -8,7 +14,9 @@ theorem result_is_subsequence (s : String) :
   ∃ indices : List String.Pos, 
     (∀ (i j : Fin indices.length), i.val < j.val → indices[i.val]! < indices[j.val]!) ∧ 
     indices.map (String.get s) = result.data := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_same_char_gives_empty_or_single (c : Char) (s : String) :
   (∀ i : String.Pos, s.get i = c) →
   remove_duplicates s = "" ∨ remove_duplicates s = String.mk [c] := sorry
@@ -40,6 +48,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval remove_duplicates "abba"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

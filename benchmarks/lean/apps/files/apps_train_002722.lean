@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isomorph (s1 s2 : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_isomorphic_to_itself {s : String} (h : s.length > 0) :
   isomorph s s = true :=
 sorry
@@ -40,6 +48,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval isomorph "RAMBUNCTIOUSLY" "THERMODYNAMICS"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

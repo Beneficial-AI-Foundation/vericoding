@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def recoverSecret (triplets : List (List Char)) : String := sorry
 
 def isConsistentWithTriplets (result : String) (triplets : List (List Char)) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def containsAllChars (result : String) (triplets : List (List Char)) : Bool := sorry
 
 theorem recoverSecret_produces_string (triplets : List (List Char)) :
   String.length (recoverSecret triplets) > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem recoverSecret_contains_all_chars (triplets : List (List Char)) : 
   containsAllChars (recoverSecret triplets) triplets = true := sorry
 
@@ -47,6 +54,7 @@ info: 'great'
 -/
 -- #guard_msgs in
 -- #eval recoverSecret [["g", "r", "t"], ["e", "a", "t"]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

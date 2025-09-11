@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_non_friend_pairs (n m : Nat) (pairs : List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_empty_pairs {n : Nat} (h1 : n > 0) (h2 : n ≤ 20) :
   count_non_friend_pairs n 0 [] = n * (n-1) / 2 :=
   sorry
@@ -33,6 +41,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_non_friend_pairs 3 0 []
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

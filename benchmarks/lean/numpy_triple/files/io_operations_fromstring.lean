@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def fromstring {n : Nat} (input : String) (sep : String) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fromstring_spec {n : Nat} (input : String) (sep : String) 
     (h_valid : (input.splitOn sep).length = n) 
     (h_nonempty : sep ≠ "") :
@@ -16,3 +23,4 @@ theorem fromstring_spec {n : Nat} (input : String) (sep : String)
     ⦃⇓result => ⌜∀ i : Fin n, 
        (input.splitOn sep)[i.val]!.trim ≠ ""⌝⦄ := by
   sorry
+-- </vc-theorems>

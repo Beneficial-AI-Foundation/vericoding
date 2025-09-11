@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def convergents_of_e (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem convergents_always_positive (n : Nat) (h : n > 0) :
   convergents_of_e n > 0 :=
   sorry
@@ -43,6 +51,7 @@ info: 938
 -/
 -- #guard_msgs in
 -- #eval convergents_of_e 298
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,8 +1,10 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
 spec fn square_f64(x: f64) -> f64;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

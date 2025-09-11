@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_cube_sides {α : Type} [DecidableEq α] (colors : List α) : String := sorry
 
 theorem check_cube_sides_returns_valid_result {α : Type} [DecidableEq α] [Inhabited α]
   (colors : List α) (h : colors.length = 6) :
   check_cube_sides colors = "YES" ∨ check_cube_sides colors = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_cube_sides_yes_has_adjacent_set {α : Type} [DecidableEq α] [Inhabited α]
   (colors : List α) (h : colors.length = 6) :
   check_cube_sides colors = "YES" →
@@ -43,6 +51,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval check_cube_sides "red red red blue yellow orange".split()
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

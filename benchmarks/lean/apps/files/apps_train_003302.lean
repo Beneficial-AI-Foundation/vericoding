@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def part_const (t k n : Nat) : Nat := sorry
 
 theorem part_const_non_negative (t k n : Nat) :
   part_const t k n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem larger_parts_zero (t k : Nat) (h : k > t) :
   part_const t k n = 0 := sorry
 
@@ -38,6 +46,7 @@ info: 15
 -/
 -- #guard_msgs in
 -- #eval part_const 15 5 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

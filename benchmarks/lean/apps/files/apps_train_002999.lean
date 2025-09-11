@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fit_in (a b m n : Nat) : Bool := sorry
 
 theorem fit_in_symmetry {a b m n : Nat} : 
   fit_in a b m n = fit_in b a m n ∧ 
   fit_in a b m n = fit_in a b n m := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fit_in_identical_small_dimensions {a b : Nat} :
   let m := min a b - 1
   ¬fit_in a b m m := sorry
@@ -37,6 +45,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval fit_in 3 2 3 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

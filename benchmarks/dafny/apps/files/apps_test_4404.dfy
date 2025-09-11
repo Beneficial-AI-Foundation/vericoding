@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsValidDateString(s: string, y: int, m: int, d: int)
 {
     |s| >= 10 && 
@@ -32,6 +33,7 @@ predicate CorrectOutput(s: string, result: string)
     ((m < 4 || (m == 4 && d <= 30)) ==> result == "Heisei") && 
     ((m > 4 || (m == 4 && d > 30)) ==> result == "TBD")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

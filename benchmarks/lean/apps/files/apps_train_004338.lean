@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern (n : Int) : String := sorry
 
 theorem nonpositive_returns_empty {n : Int} (h : n ≤ 0) :
   pattern n = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_line_count {n : Int} (h : n > 0) : 
   ((pattern n).split fun c ↦ c = '\n').length = n := sorry
 
@@ -48,6 +56,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval pattern 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def super_size (n : Nat) : Nat := sorry
 
 theorem super_size_same_digits {n : Nat} : 
   (toString n).data = (toString (super_size n)).data := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem super_size_greater_or_equal {n : Nat} :
   super_size n ≥ n := sorry
 
@@ -32,6 +40,7 @@ info: 21
 -/
 -- #guard_msgs in
 -- #eval super_size 12
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fenwick_operations (n : Nat) (m : Nat) (c : Int) (ops : List String) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fenwick_results_length (n : Nat) (m : Nat) (c : Int) (ops : List String) :
   let results := fenwick_operations n m c ops
   let num_queries := (ops.filter (fun op => op.startsWith "Q")).length
@@ -52,6 +60,7 @@ info: [2, 3]
 -/
 -- #guard_msgs in
 -- #eval fenwick_operations 5 4 0 ["S 1 3 2", "Q 2", "S 2 4 1", "Q 3"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

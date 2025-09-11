@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(s: seq<int>): int
 {
     if |s| == 0 then 0
@@ -34,6 +35,7 @@ predicate isValidExtension(temp: seq<int>, combo: seq<int>, k: int, n: int, star
     (forall i :: 0 <= i < |temp| ==> temp[i] == combo[i]) &&
     (forall i :: |temp| <= i < |combo| ==> combo[i] >= start)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

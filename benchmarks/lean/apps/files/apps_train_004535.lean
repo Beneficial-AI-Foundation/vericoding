@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def count (s : String) (pattern : String) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def SENTENCE : String :=
 
 def SYLLABLE : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def flesch_kincaid (text : String) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem flesch_kincaid_result_is_float (text : String) (h : text.length > 0) :
   ∃ (f : Float), flesch_kincaid text = f :=
   sorry
@@ -61,6 +68,7 @@ info: 2.89
 -/
 -- #guard_msgs in
 -- #eval flesch_kincaid "Go home."
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

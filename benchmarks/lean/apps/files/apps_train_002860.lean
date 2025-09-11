@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sort_array (x : String) : String := sorry
 
 theorem sort_array_sorted_int (n : Int) : 
   String.all (sort_array (toString n)) (fun c => c.isDigit) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_array_length_preserved_int (n : Int) : 
   (sort_array (toString n)).length = (toString n).length := sorry
 
@@ -39,6 +47,7 @@ info: '11111'
 -/
 -- #guard_msgs in
 -- #eval sort_array "11111"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

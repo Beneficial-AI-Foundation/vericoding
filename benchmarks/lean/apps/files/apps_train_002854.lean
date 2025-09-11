@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_pronic (n : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pronic_exists_k {n : Int} (h : is_pronic n) : 
   ∃ k : Int, k * (k + 1) = n :=
   sorry
@@ -33,6 +41,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_pronic -3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

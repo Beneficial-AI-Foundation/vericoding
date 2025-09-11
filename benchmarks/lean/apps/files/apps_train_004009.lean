@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def palindrome (n : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_outputs_int {x : Int} (h : x ≥ 0) :
   ∃ y : Int, palindrome x = y :=
   sorry
@@ -41,6 +49,7 @@ info: 'Not valid'
 -/
 -- #guard_msgs in
 -- #eval palindrome "1551"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

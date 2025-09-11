@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_construct (ransomNote magazine : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_construct_empty_note (magazine : String) :
   can_construct "" magazine = true := sorry
 
@@ -42,6 +50,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_construct "aa" "aab"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

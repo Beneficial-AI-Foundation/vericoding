@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validate_ip_address (ip: String) : String := sorry
 
 theorem valid_ipv4_gives_ipv4_result
@@ -9,7 +15,9 @@ theorem valid_ipv4_gives_ipv4_result
     a ≤ 255 ∧ b ≤ 255 ∧ c ≤ 255 ∧ d ≤ 255 ∧
     ip = s!"{a}.{b}.{c}.{d}") :
   validate_ip_address ip = "IPv4" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem neither_when_no_dots_or_colons  
   {ip: String}
   (h_no_delim: '.' ∉ ip.data ∧ ':' ∉ ip.data) :
@@ -47,6 +55,7 @@ info: 'Neither'
 -/
 -- #guard_msgs in
 -- #eval validate_ip_address "256.256.256.256"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

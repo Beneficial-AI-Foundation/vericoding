@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -20,13 +21,19 @@ structure Laguerre (n : Nat) where
   domain : Vector Float 2
   /-- Window interval [window[0], window[1]] for mapping -/
   window : Vector Float 2
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def makeLaguerre {n : Nat} (coefficients : Vector Float n) : Id (Laguerre n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem makeLaguerre_spec {n : Nat} (coefficients : Vector Float n) :
     ⦃⌜True⌝⦄
     makeLaguerre coefficients
@@ -51,3 +58,4 @@ theorem makeLaguerre_spec {n : Nat} (coefficients : Vector Float n) :
       (∀ i : Fin n, result.coef.get i = coefficients.get i)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

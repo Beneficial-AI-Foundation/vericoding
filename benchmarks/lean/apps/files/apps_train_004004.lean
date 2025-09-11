@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def comp : (List Int) → (List Int) → Bool := sorry
 
 theorem comp_none_inputs (l : List Int) : 
   comp [] l = false ∨ comp l [] = false ∨ comp [] [] = false
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem comp_array_squared (arr : List Int) :
   let squared := arr.map (fun x => x * x)
   comp arr squared = true
@@ -46,6 +54,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval comp None [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

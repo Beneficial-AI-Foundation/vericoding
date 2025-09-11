@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_malware_spread (graph : List (List Int)) (initial : List Int) : Int := sorry 
 
 theorem result_in_initial {graph : List (List Int)} {initial : List Int} :
@@ -5,10 +6,14 @@ theorem result_in_initial {graph : List (List Int)} {initial : List Int} :
   initial.contains result = true := sorry
 
 /- Helper function to get spread after removing a node -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_spread (graph : List (List Int)) (initial : List Int) (removed : Int) : Int := sorry
 
 theorem smallest_among_equal_spreads {graph : List (List Int)} {initial : List Int} :
@@ -17,7 +22,9 @@ theorem smallest_among_equal_spreads {graph : List (List Int)} {initial : List I
     node ∈ initial →
     node < result →
     get_spread graph initial node ≥ get_spread graph initial result := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_graph_properties {graph : List (List Int)} :
   let n := graph.length
   graph.length > 0 →
@@ -42,6 +49,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_malware_spread [[1, 1, 0, 0], [1, 1, 1, 0], [0, 1, 1, 1], [0, 0, 1, 1]] [0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

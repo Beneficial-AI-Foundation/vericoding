@@ -1,11 +1,16 @@
+-- <vc-preamble>
 def reverseInvert (lst : List Int) : List Int := sorry
 
 theorem reverseInvert_returns_list_of_ints {lst : List Int} : 
   ∀ x, x ∈ reverseInvert lst → x ∈ lst := by sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numReverse (n : Int) : Int := sorry 
 
 theorem reverseInvert_bounded {lst : List Int} 
@@ -14,7 +19,9 @@ theorem reverseInvert_bounded {lst : List Int}
       let orig := lst.get i
       let revNum := numReverse (Int.natAbs orig)
       (reverseInvert lst).get ⟨i, by sorry⟩ = if orig > 0 then -revNum else revNum := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverseInvert_single_digits {lst : List Int} (h : ∀ x ∈ lst, 0 ≤ x ∧ x ≤ 9) :
   ∀ (i : Fin lst.length),
     (reverseInvert lst).get ⟨i, by sorry⟩ = -(lst.get i) := by sorry
@@ -39,6 +46,7 @@ info: [9, 81, -99]
 -/
 -- #guard_msgs in
 -- #eval reverse_invert [-9, -18, 99]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

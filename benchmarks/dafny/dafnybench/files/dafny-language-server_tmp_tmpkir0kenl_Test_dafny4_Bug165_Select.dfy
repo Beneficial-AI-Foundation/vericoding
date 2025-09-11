@@ -1,5 +1,7 @@
+// <vc-preamble>
 type T
 function f(a: T) : bool
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

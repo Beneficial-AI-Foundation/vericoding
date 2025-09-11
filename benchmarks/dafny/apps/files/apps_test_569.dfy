@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: string) {
     n == |s| && n >= 1
 }
@@ -5,6 +6,7 @@ predicate ValidInput(n: int, s: string) {
 function CountDistinctChars(s: string): int {
     |set c | c in s|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -34,6 +35,7 @@ spec fn from_bits(s: Seq<bool>) -> nat
         (if s[0] { 1nat } else { 0nat }) + 2nat * from_bits(s.subrange(1, s.len() as int))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

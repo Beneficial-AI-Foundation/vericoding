@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, aa: seq<int>)
 {
     n >= 2 &&
@@ -16,6 +17,7 @@ predicate ValidOutput(n: int, aa: seq<int>, result: seq<int>)
     forall i :: 0 <= i < n ==> result[i] >= 0 &&
     forall i :: 0 <= i < n ==> result[i] == SubordinateCount(aa, i + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

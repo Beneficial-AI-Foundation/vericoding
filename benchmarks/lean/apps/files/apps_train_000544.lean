@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solveTaxiTurns (coords : List (List Int)) : Option String := sorry
 
 theorem result_is_valid (coords : List (List Int)) :
   match solveTaxiTurns coords with
   | none => True
   | some result => result = "yes yes" ∨ result = "no yes" ∨ result = "no no" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem two_points_yes_yes (p1 p2 : List Int) :
   solveTaxiTurns [p1, p2] = some "yes yes" := sorry
 
@@ -53,6 +61,7 @@ info: 'no no'
 -/
 -- #guard_msgs in
 -- #eval solve_taxi_turns [[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

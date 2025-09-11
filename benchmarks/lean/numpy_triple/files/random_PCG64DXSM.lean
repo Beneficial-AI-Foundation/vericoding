@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def PCG64DXSM {n : Nat} (seed : UInt64) : Id (Vector UInt64 n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem PCG64DXSM_spec {n : Nat} (seed : UInt64) :
     ⦃⌜True⌝⦄
     PCG64DXSM seed
@@ -24,3 +31,4 @@ theorem PCG64DXSM_spec {n : Nat} (seed : UInt64) :
         n > 0 → ∃ (i : Fin n), result.get i ≠ other.get i)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

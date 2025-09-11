@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_beautiful_arrangements (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_beautiful_arrangements_positive (n : Nat)
     (h : n > 0 ∧ n ≤ 15) :
     count_beautiful_arrangements n > 0 := sorry
@@ -34,6 +42,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval count_beautiful_arrangements 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

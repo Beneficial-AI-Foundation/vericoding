@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
   |s| == 19 && 
@@ -20,6 +21,7 @@ predicate CorrectOutput(s: string, result: string)
     (s[i] == ',' ==> result[i] == ' ') &&
     (s[i] != ',' ==> result[i] == s[i])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

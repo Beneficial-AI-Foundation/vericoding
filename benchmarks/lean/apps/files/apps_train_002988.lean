@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def seven_ate9 (s : String) : String :=
   sorry
 
@@ -6,10 +7,14 @@ def countSubstr (s : String) (sub : String) : Nat :=
 
 def containsSubstr (s : String) (sub : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def iterativeReplace (s : String) (n : Nat) : String :=
   match n with
   | 0 => s
@@ -17,7 +22,9 @@ def iterativeReplace (s : String) (n : Nat) : String :=
     if containsSubstr s "797" 
     then iterativeReplace (s.replace "797" "77") n
     else s
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_string {s : String} :
   s.all (fun c => c.isDigit) → 
   (seven_ate9 s).all (fun c => c.isDigit) :=
@@ -55,6 +62,7 @@ info: '7777'
 -/
 -- #guard_msgs in
 -- #eval seven_ate9 "7979797"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

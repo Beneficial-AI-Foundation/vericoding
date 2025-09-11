@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_magic_jackets (n: Nat) (counts: List Nat) : Int := sorry
 
 theorem all_zeros (n: Nat) : 
   n ≥ 2 → solve_magic_jackets n (List.replicate n 0) = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_n_minus_one (n: Nat) :
   n ≥ 2 → solve_magic_jackets n (List.replicate n (n-1)) = 0 := sorry
 
@@ -41,6 +49,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_magic_jackets 3 [2, 1, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

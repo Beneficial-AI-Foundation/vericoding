@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def game (n : Nat) (health : List Nat) (laser_energy : Nat) : Nat :=
   sorry
 
 def listMin (l : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum (l : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem game_result_non_negative (n : Nat) (health : List Nat) (laser_energy : Nat) :
   game n health laser_energy ≥ 0 := sorry
 
@@ -28,6 +35,7 @@ theorem game_energy_threshold (n : Nat) (health : List Nat) (laser_energy : Nat)
 
 theorem game_sufficient_energy (n : Nat) (health : List Nat) (h : health ≠ []) :
   game n health (2 * listSum health) = n := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

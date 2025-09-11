@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_graph_direction (n m : Nat) (edges : List (Nat × Nat × Nat)) : String := sorry
 
 def split_lines (s : String) : List String := s.split (· = '\n')
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_format {n m : Nat} {edges : List (Nat × Nat × Nat)}
   (h_valid_n : n ≥ 2)
   (h_valid_m : m ≥ 1 ∧ m ≤ n * (n-1) / 2)
@@ -37,6 +45,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval solve_graph_direction 4 5 [[1, 4, 1], [1, 1, 3], [0, 1, 2], [1, 2, 4], [1, 3, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD : Nat := 1000000007
 
 def calculate_multisets (coef : Array Int) (target : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multisets_properties {coef : Array Int} {target : Nat}
   (h1 : coef.size = 4)
   (h2 : ∀ i, i < 4 → (-100 : Int) ≤ coef[i]! ∧ coef[i]! ≤ 100)  
@@ -44,6 +52,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval calculate_multisets #[0, 1, 0, 0] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

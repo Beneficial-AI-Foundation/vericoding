@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && 
@@ -57,6 +58,7 @@ function ComputeMaxValue(a: int, b: int, n: int): int
     var minVal := if b - 1 < n then b - 1 else n;
     (a * minVal) / b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

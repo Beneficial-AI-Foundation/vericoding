@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def determine_candy_game_winner (limak_max : Nat) (bob_max : Nat) : String := sorry
 
 theorem candy_game_returns_valid_winner (limak_max bob_max : Nat) 
@@ -8,7 +14,9 @@ theorem candy_game_returns_valid_winner (limak_max bob_max : Nat)
   determine_candy_game_winner limak_max bob_max = "Limak" ∨ 
   determine_candy_game_winner limak_max bob_max = "Bob" := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem limak_much_larger_valid_winner (n : Nat)
   (h1 : n > 0) (h2 : n ≤ 100) :
   determine_candy_game_winner (n * 10) n = "Limak" ∨
@@ -32,6 +40,7 @@ info: 'Bob'
 -/
 -- #guard_msgs in
 -- #eval determine_candy_game_winner 9 12
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

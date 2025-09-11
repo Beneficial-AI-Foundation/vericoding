@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebdiv {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) (h_nonzero : m > 0) : 
     Id (Vector Float n × Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebdiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) 
     (h_nonzero : m > 0) 
     (h_leading : c2.get ⟨m - 1, by omega⟩ ≠ 0) :
@@ -33,3 +40,4 @@ theorem chebdiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m)
                (∀ i : Fin n, rem.get i = 0))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

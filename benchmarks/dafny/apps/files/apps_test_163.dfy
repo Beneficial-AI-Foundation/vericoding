@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, s: string)
 {
     n >= 2 &&
@@ -31,6 +32,7 @@ predicate CanReachTarget(s: string, k: int)
             (forall pos :: start < pos < final && (pos - start) % k == 0 ==> s[pos] !in {'G', 'T', '#'})
         )
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def getAllPrimeFactors (n : Int) : List Int := sorry
 def getUniquePrimeFactorsWithCount (n : Int) : List (List Int) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def getUniquePrimeFactorsWithProducts (n : Int) : List Int := sorry
 
 theorem prime_factors_product_equals_input {n : Int} (h : 0 ≤ n) :
   let factors := getAllPrimeFactors n
   factors ≠ [] → factors.foldl (·*·) 1 = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prime_factors_are_ordered {n : Int} (h : 0 ≤ n) :
   let factors := getAllPrimeFactors n
   factors.length > 1 → 
@@ -98,6 +105,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval getUniquePrimeFactorsWithProducts 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

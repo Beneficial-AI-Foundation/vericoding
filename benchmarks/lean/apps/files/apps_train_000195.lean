@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def longest_consecutive (nums : List Int) : Nat := sorry
 
 theorem output_nonnegative (nums : List Int) : 
@@ -7,15 +8,21 @@ def removeDuplicates (nums : List Int) : List Int := sorry
 
 theorem same_as_deduplicated (nums : List Int) :
   longest_consecutive nums = longest_consecutive (removeDuplicates nums) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sortList (nums : List Int) : List Int := sorry 
 
 theorem sorted_same_as_unsorted (nums : List Int) :
   nums ≠ [] → longest_consecutive nums = longest_consecutive (sortList nums) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_leq_input_len (nums : List Int) :
   longest_consecutive nums ≤ nums.length := sorry
 
@@ -45,6 +52,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval longest_consecutive []
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def points (games : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem points_draws (n : Nat) :
   let draw_games := List.map (fun i => s!"{i}:{i}") (List.range n)
   points draw_games = n :=
@@ -31,6 +39,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval points ["0:1", "0:2", "0:3", "0:4", "1:2", "1:3", "1:4", "2:3", "2:4", "3:4"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

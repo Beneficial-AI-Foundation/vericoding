@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def gcd (a b : Nat) : Nat := sorry
 
 def simplifiedFractions (n : Nat) : List String := sorry
@@ -5,17 +6,23 @@ def simplifiedFractions (n : Nat) : List String := sorry
 structure Fraction where
   num : Nat
   denom : Nat
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringToFraction (s : String) : Fraction := sorry
 
 theorem fractions_are_valid {n : Nat} (h : n > 0) :
   ∀ frac, frac ∈ simplifiedFractions n → 
     let f := stringToFraction frac
     0 < f.num ∧ f.num < f.denom ∧ f.denom ≤ n ∧ gcd f.num f.denom = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fractions_are_unique {n : Nat} (h : n > 0) :
   ∀ x y, x ∈ simplifiedFractions n → y ∈ simplifiedFractions n → 
     x = y → stringToFraction x = stringToFraction y := sorry
@@ -44,6 +51,7 @@ info: ['1/2', '1/3', '1/4', '2/3', '3/4']
 -/
 -- #guard_msgs in
 -- #eval sorted simplifiedFractions(4)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

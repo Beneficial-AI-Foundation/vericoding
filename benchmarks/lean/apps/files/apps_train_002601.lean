@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def peaceful_yard (yard : List String) (distance : Float) : Bool :=
   sorry
 
@@ -9,13 +10,19 @@ def updateRow (s : String) (pos : Nat) (c : Char) : String :=
 
 def distance (p1 p2 : Nat × Nat) : Float :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def replaceNth {α : Type} (xs : List α) (n : Nat) (v : α) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_yard_is_peaceful {size : Nat} {distance : Float} 
   (h1 : size ≥ 1) (h2 : size ≤ 20) 
   (h3 : distance ≥ 0.1) (h4 : distance ≤ 30) :
@@ -72,6 +79,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval peaceful_yard ["-----------L", "--R---------", "------------", "------------", "------------", "--M---------"] 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

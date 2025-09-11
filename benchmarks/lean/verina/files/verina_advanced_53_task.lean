@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible, simp]
 def minimumRightShifts_precond (nums : List Int) : Prop :=
   List.Nodup nums
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def minimumRightShifts (nums : List Int) (h_precond : minimumRightShifts_precond (nums)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def minimumRightShifts_postcond (nums : List Int) (result: Int) (h_precond : minimumRightShifts_precond (nums)) : Prop :=
   let n := nums.length
@@ -37,6 +44,7 @@ def minimumRightShifts_postcond (nums : List Int) (result: Int) (h_precond : min
 theorem minimumRightShifts_spec_satisfied (nums: List Int) (h_precond : minimumRightShifts_precond (nums)) :
     minimumRightShifts_postcond (nums) (minimumRightShifts (nums) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 pub enum NewAxis {
     Newaxis,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

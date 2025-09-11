@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_permutation (N k S : Nat) (arr : List Nat) : List Nat := sorry
 
 def is_valid_permutation (n : Nat) (perm : List Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_perm_valid_permutation 
   (N k S : Nat)
   (arr : List Nat)
@@ -38,6 +46,7 @@ theorem solve_perm_edge_case
   (N : Nat)
   (h : N > 0) :
   solve_permutation N 1 1 (List.replicate N 1) = List.range' N N := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

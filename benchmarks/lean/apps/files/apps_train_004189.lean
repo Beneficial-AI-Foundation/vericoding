@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def factorize_add (n : Nat) : Nat := sorry 
 
 def mult_primefactor_sum (a b : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem factorize_add_le (n : Nat) (h : n > 0) : 
   factorize_add n ≤ n := sorry
 
@@ -43,6 +51,7 @@ info: [105, 150, 180]
 -/
 -- #guard_msgs in
 -- #eval mult_primefactor_sum 90 200
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

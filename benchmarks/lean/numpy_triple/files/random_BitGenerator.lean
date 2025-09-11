@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -10,13 +11,19 @@ structure BitGeneratorState where
   seed : Option UInt64
   /-- The internal state of the generator used for random number generation -/
   internal_state : UInt64
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_random_BitGenerator (seed : Option UInt64) : Id BitGeneratorState :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_random_BitGenerator_spec (seed : Option UInt64) :
     ⦃⌜True⌝⦄
     numpy_random_BitGenerator seed
@@ -24,3 +31,4 @@ theorem numpy_random_BitGenerator_spec (seed : Option UInt64) :
                  (seed.isSome → result.internal_state ≠ 0) ∧
                  (seed.isNone → result.internal_state = 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

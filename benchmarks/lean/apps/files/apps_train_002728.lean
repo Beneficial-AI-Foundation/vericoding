@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mobius (n : Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mobius_output_range (n : Nat) (h : n > 0) : 
   mobius n = -1 ∨ mobius n = 0 ∨ mobius n = 1 :=
   sorry
@@ -29,6 +37,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval mobius 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

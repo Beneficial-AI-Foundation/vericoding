@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| >= 3 &&
@@ -14,6 +15,7 @@ function CorrectOutput(input: string): string
     then "H\n"
     else "D\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

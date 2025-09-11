@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate SplitPoint(a: array<int>, n: int)
     reads a
     requires 0 <= n <= n
@@ -25,6 +26,7 @@ method Partition(a: array<int>, lo: int, hi: int) returns (p: int)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

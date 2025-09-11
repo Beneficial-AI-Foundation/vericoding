@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_doggo_paths (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_doggo_paths_nonneg (n: Nat) : 
   max_doggo_paths n ≥ 0 :=
 sorry
@@ -45,6 +53,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval max_doggo_paths 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

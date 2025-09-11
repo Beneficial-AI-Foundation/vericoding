@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def starting_mark (height : Float) : Float := sorry
 
 theorem starting_mark_in_range (height : Float)
   (h1 : 1.52 ≤ height) (h2 : height ≤ 1.83) :
   9.45 ≤ starting_mark height ∧ starting_mark height ≤ 10.67 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem starting_mark_linear (height : Float)
   (h1 : 1.52 ≤ height) (h2 : height ≤ 1.83) :
   let slope := (10.67 - 9.45) / (1.83 - 1.52)
@@ -39,6 +47,7 @@ info: 10.36
 -/
 -- #guard_msgs in
 -- #eval starting_mark 1.75
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(cards: seq<int>)
 {
     |cards| == 5 && forall i :: 0 <= i < |cards| ==> cards[i] > 0
@@ -10,6 +11,7 @@ function minPossibleSum(cards: seq<int>): int
 {
     minPossibleSumUpToIndex(cards, 5)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

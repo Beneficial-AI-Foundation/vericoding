@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import numpy_hoare_triple.linalg.det
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def slogdet {n : Nat} (a : Vector (Vector Float n) n) : Id (Float × Float) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem slogdet_spec {n : Nat} (a : Vector (Vector Float n) n) :
     ⦃⌜True⌝⦄
     slogdet a
@@ -42,3 +49,4 @@ theorem slogdet_spec {n : Nat} (a : Vector (Vector Float n) n) :
       (sign ≠ 0 → Float.isFinite logabsdet)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

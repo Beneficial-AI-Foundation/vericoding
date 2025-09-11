@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def powerof4 {α : Type} (x : α) : Bool := sorry
 
 theorem powerof4_positive_integers (n : Nat) :
   n ≥ 1 ∧ n ≤ 1000000 →
   powerof4 n = true ↔ (n = 1 ∨ (∃ k : Nat, n = 4 * 4^k)) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem powerof4_float_property (n : Float) :
   n > 0 ∧ n ≤ 1000000 →
   powerof4 n = true → 
@@ -38,6 +46,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval powerof4 "pippi"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

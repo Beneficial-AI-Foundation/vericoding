@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(stdin_input: string)
 {
     |stdin_input| > 0
@@ -60,6 +61,7 @@ function IntToStringHelper(n: int): string
     if n == 0 then ""
     else IntToStringHelper(n / 10) + [(n % 10 + '0' as int) as char]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

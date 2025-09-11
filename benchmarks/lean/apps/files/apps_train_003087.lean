@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_note (freq : Float) : String := sorry
 
 def NOTES : List (Float × String) := [
@@ -17,7 +23,9 @@ def NOTES : List (Float × String) := [
   (783.99, "G"),
   (830.61, "G#")
 ]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem base_frequencies (freq : Float) (note : String) :
   (freq, note) ∈ NOTES → get_note freq = note := sorry
 
@@ -61,6 +69,7 @@ info: 'C'
 -/
 -- #guard_msgs in
 -- #eval get_note 1046.5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,16 +1,23 @@
+-- <vc-preamble>
 import Std.Data.HashSet
 open Std
 
 @[reducible]
 def solution_precond (nums : List Nat) : Prop :=
   1 ≤ nums.length ∧ nums.length ≤ 100 ∧ nums.all (fun x => 1 ≤ x ∧ x ≤ 100)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solution (nums : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def solution_postcond (nums : List Nat) (result: Nat) : Prop :=
   let n := nums.length;
@@ -48,6 +55,7 @@ def solution_postcond (nums : List Nat) (result: Nat) : Prop :=
 theorem solution_spec_satisfied (nums: List Nat) :
     solution_postcond (nums) (solution (nums)) := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

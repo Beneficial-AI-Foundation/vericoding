@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_window (s t : String) : String := sorry
 
 def verify_contains (window target : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_window_empty_target {s : String} : 
   min_window s "" = "" := sorry
 
@@ -44,6 +52,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval min_window "ABCD" "XY"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

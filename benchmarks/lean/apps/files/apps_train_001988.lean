@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def transform_number (n : Nat) (a b : String) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem transform_number_valid_properties {n : Nat} {a b : String}
   (h1 : n ≥ 2) (h2 : n ≤ 10)
   (h3 : a.length = n) (h4 : b.length = n) 
@@ -29,6 +37,7 @@ theorem transform_number_bounds {n : Nat} {a : String}
   result = [(-1)] ∨ 
   (∀ x ∈ (List.map (λ c => c.toNat - '0'.toNat) a.data), 0 ≤ x ∧ x ≤ 9) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def segments (m: Nat) (segs: List (Nat × Nat)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_segments {m : Nat} (h : m ≤ 100) :
   segments m [] = List.range (m + 1) :=
 sorry
@@ -47,6 +55,7 @@ info: [0, 3, 4]
 -/
 -- #guard_msgs in
 -- #eval segments 5 [[2, 2], [1, 2], [5, 5]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

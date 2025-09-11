@@ -1,12 +1,17 @@
+-- <vc-preamble>
 def solve_game (n m : Nat) (grid : List (List Nat)) : String :=
   sorry
 
 def countEmptyRows (grid : List (List Nat)) : Nat :=
   (grid.filter (fun row => row.all (fun x => x = 0))).length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countEmptyCols (n m : Nat) (grid : List (List Nat)) : Nat :=
   let isEmptyCol (j : Nat) := (List.range n).all (fun i => 
     match grid.get? i with
@@ -15,7 +20,9 @@ def countEmptyCols (n m : Nat) (grid : List (List Nat)) : Nat :=
       | none => true
       | some x => x = 0)
   (List.range m).filter isEmptyCol |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_game_returns_valid_winner (n m : Nat) (grid : List (List Nat))
   (h1 : n > 0) (h2 : m > 0) (h3 : grid.length = n)
   (h4 : ∀ row ∈ grid, row.length = m)
@@ -60,6 +67,7 @@ info: 'Vivek'
 -/
 -- #guard_msgs in
 -- #eval solve_game 2 3 [[1, 0, 1], [1, 1, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_jams (n : Nat) (jams : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_jams_non_negative (n : Nat) (jams : List Nat) :
   n > 0 → jams.length = 2*n → solve_jams n jams ≥ 0 :=
 sorry
@@ -33,6 +41,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval solve_jams 3 [1, 1, 1, 1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_bracket_sequence (n k : Nat) (s : String) : List (List Nat) := sorry
 
 -- The minimal move for ")(" is [[1,2]]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_bracket_minimal (n k : Nat) (s : String) :
   n = 2 → k = 1 → s = ")(" → 
   solve_bracket_sequence n k s = [[1,2]] := sorry
@@ -26,6 +34,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval len solve_bracket_sequence(n, k, s)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

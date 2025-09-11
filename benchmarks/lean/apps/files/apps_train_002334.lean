@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def remove_palindrome_subseq (s : String) : Nat := sorry
 
 def is_palindrome (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverse (s : String) : String := sorry
 
 theorem result_bounds (s : String) :
   0 ≤ remove_palindrome_subseq s ∧ remove_palindrome_subseq s ≤ 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string :
   remove_palindrome_subseq "" = 0 := sorry
 
@@ -44,6 +51,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval remove_palindrome_subseq ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

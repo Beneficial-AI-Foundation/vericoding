@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_pattern (k : Nat) : List String := sorry
 
 theorem pattern_length_is_k {k : Nat} (h : k % 2 = 1) :
   let pattern := generate_pattern k
   List.length pattern = k := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_is_symmetric {k : Nat} (h : k % 2 = 1) :
   let pattern := generate_pattern k
   pattern = List.reverse pattern := sorry
@@ -44,6 +52,7 @@ info: ['*', '**', '* *', '**', '*']
 -/
 -- #guard_msgs in
 -- #eval generate_pattern 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

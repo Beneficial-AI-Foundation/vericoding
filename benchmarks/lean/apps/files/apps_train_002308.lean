@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def is_anagram (s t : String) : Bool :=
   sorry
 
 def reverse (s : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPermutation (s t : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_is_anagram_of_itself (s : String) :
   is_anagram s s = true :=
   sorry
@@ -45,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_anagram "hello" "hello"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

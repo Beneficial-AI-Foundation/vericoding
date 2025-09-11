@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_vasily_cards (n: Nat) (arr: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem vasily_cards_result_positive {n: Nat} {arr: List Nat}
   (h1: n ≥ 1)
   (h2: arr.length = n) 
@@ -58,6 +66,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval solve_vasily_cards 7 [3, 3, 3, 3, 3, 3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

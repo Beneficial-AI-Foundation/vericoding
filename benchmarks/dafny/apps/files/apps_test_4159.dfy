@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, K: int)
 {
     A >= 0 && B >= 0 && K >= 0
@@ -25,6 +26,7 @@ predicate CorrectResult(A: int, B: int, K: int, takahashi: int, aoki: int)
     aoki == ExpectedAokiCookies(A, B, K) &&
     takahashi >= 0 && aoki >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

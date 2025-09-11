@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def chromosome_check (sperm : String) : String := sorry
 
 theorem chromosome_check_XY :
@@ -8,7 +14,9 @@ theorem chromosome_check_XY :
   (chromosome_check "XY").contains 'o' ∧ 
   (chromosome_check "XY").contains 'n' :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chromosome_check_XX :
   (chromosome_check "XX").contains 'd' ∧ 
   (chromosome_check "XX").contains 'a' ∧ 
@@ -31,6 +39,7 @@ info: "Congratulations! You're going to have a daughter."
 -/
 -- #guard_msgs in
 -- #eval chromosome_check "XX"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

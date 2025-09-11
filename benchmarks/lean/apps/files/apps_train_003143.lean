@@ -1,13 +1,18 @@
+-- <vc-preamble>
 def solve (pattern: String) (target: String) : Bool := sorry
 
 theorem identical_strings_match
   (s: String)
   (h: s.data.all (fun c => c ≠ '*')) :
   solve s s = true := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringAppend (s1 s2: String) : String := String.append s1 s2
 
 theorem wildcard_match
@@ -16,7 +21,9 @@ theorem wildcard_match
   (h2: s.data.all (fun c => c ≠ '*'))
   (h3: m.data.all (fun c => c ≠ '*')) :
   solve (stringAppend (stringAppend p "*") s) (stringAppend (stringAppend p m) s) = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem different_strings_no_match
   (s1 s2: String)
   (h1: s1.data.all (fun c => c ≠ '*'))
@@ -53,6 +60,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval solve "code*warrior" "codewars"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

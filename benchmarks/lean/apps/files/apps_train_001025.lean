@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_next_magic_number (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_next_magic_number_4 :
   find_next_magic_number 4 = 7 := by
   sorry
@@ -49,6 +57,7 @@ info: 444
 -/
 -- #guard_msgs in
 -- #eval find_next_magic_number 77
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

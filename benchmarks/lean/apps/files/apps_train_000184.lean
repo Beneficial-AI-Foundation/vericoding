@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def min_operations_max_profit (customers: List Nat) (boarding_cost: Nat) (running_cost: Nat) : Int :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (xs: List Nat) : Nat :=
 xs.foldl (· + ·) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_operations_result_valid 
   (customers: List Nat) 
   (boarding_cost: Nat) 
@@ -81,6 +88,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval min_operations_max_profit [3, 4, 0, 5, 1] 1 92
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

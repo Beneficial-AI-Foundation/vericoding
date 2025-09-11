@@ -1,3 +1,4 @@
+// <vc-preamble>
 function intToDigits(x: int): seq<int>
   requires x >= 0
 {
@@ -32,6 +33,7 @@ predicate ValidResult(x: int, result: int)
   (forall y :: 1 <= y <= x ==> digitSum(intToDigits(y)) <= digitSum(intToDigits(result))) &&
   (forall y :: 1 <= y <= x && digitSum(intToDigits(y)) == digitSum(intToDigits(result)) ==> y <= result)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

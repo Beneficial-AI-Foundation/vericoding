@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_take_bath (v1 v2 v3 : Nat) (t1 t2 t3 : Nat) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_take_bath_t3_between : 
   ∀ (v1 v2 v3 t1 t2 t3 : Nat),
     v1 > 0 → v2 > 0 → v3 > 0 →
@@ -44,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_take_bath 5 10 5 20 5 20
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

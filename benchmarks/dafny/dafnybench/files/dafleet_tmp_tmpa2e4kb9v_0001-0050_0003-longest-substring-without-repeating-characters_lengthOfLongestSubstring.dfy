@@ -1,3 +1,4 @@
+// <vc-preamble>
 type interval = iv: (int, int) | iv.0 <= iv.1 witness (0, 0)
 
 ghost function length(iv: interval): int {
@@ -8,6 +9,7 @@ ghost predicate valid_interval(s: string, iv: interval) {
   && (0 <= iv.0 <= iv.1 <= |s|)
   && (forall i, j | iv.0 <= i < j < iv.1 :: s[i] != s[j])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def champernowne_digit (n: Int) : Option Int := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_positive_inputs {n: Int} (hn: n ≤ 0) :
   champernowne_digit n = none := by sorry
 
@@ -58,6 +66,7 @@ info: 'nan'
 -/
 -- #guard_msgs in
 -- #eval str champernowne_digit(-1)
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

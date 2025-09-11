@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(columns: seq<(int, int)>)
 {
     forall i :: 0 <= i < |columns| ==> columns[i].0 > 0 && columns[i].1 > 0
@@ -19,6 +20,7 @@ function sum_right(columns: seq<(int, int)>): int
     if |columns| == 0 then 0
     else columns[0].1 + sum_right(columns[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

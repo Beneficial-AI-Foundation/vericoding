@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_difficulty (difficulties: List Nat) (days: Nat) : Int :=
 sorry
 
@@ -9,15 +10,21 @@ match l with
 
 def list_sort (l: List Nat) : List Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l: List Nat) : Nat :=
 match l with
 | [] => 0
 | x::xs => x + list_sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_difficulty_invalid_days {difficulties : List Nat} {days : Nat} :
   days > difficulties.length → min_difficulty difficulties days = -1
   := sorry
@@ -64,6 +71,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_difficulty [1, 1, 1] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

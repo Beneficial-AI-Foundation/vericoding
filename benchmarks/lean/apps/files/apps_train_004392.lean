@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def power_of_two (n : Nat) : Bool := sorry
 
 theorem power_of_two_positive (n : Nat) :
   power_of_two n = true → n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem power_of_two_div_two (n : Nat) :
   power_of_two n = true →
   ∃ k, n = 2^k := sorry
@@ -38,6 +46,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval power_of_two 536870912
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

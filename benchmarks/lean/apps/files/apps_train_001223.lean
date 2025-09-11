@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Board := Nat × Nat
 
 def solve_football_masterchef (boards: List Board) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_result (boards: List Board) 
   (h: boards.length ≥ 1 ∧ boards.length ≤ 100) 
   (h2: ∀ b ∈ boards, b.1 ≥ 1 ∧ b.1 ≤ 1000 ∧ b.2 ≥ 1 ∧ b.2 ≤ 1000) :
@@ -37,6 +45,7 @@ info: 'Football'
 -/
 -- #guard_msgs in
 -- #eval solve_football_masterchef [(4, 4)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

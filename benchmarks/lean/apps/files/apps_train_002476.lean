@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def array_sum_product : List (List Int) → Int
   | _ => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_sum_product_2x2_matrix {a b c d : Int} :
   array_sum_product [[a, b], [c, d]] = (a + c) * (b + d) :=
 sorry
@@ -30,6 +38,7 @@ info: 15
 -/
 -- #guard_msgs in
 -- #eval array_sum_product [[1, 2], [2, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def words_to_object (s : String) : String := sorry
 
 theorem empty_string_to_object :
   words_to_object "" = "[]" := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_pairs_object {n : Nat} (h : 0 < n ∧ n ≤ 10) :
   let input := String.join (List.map (fun i => "color" ++ toString i ++ " " ++ toString i ++ " ") (List.range n))
   let result := words_to_object input
@@ -32,6 +40,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval words_to_object ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

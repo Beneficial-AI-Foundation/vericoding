@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_square_submatrices (n : Nat) (x : Nat) (arr : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_square_submatrices_nonnegative 
   (n : Nat) (x : Nat) (arr : List Nat) :
   count_square_submatrices n x arr ≥ 0 :=
@@ -39,6 +47,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval count_square_submatrices 4 54 [3, 3, 3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

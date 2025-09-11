@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -12,14 +13,20 @@ inductive FileMode
     WriteNew
   | /-- CopyOnWrite mode ('c') - copy-on-write access, changes don't persist to disk -/
     CopyOnWrite
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def memmap {n : Nat} (filename : String) (mode : FileMode) (offset : Nat) : 
     Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem memmap_spec {n : Nat} (filename : String) (mode : FileMode) (offset : Nat)
     (h_valid_file : filename.length > 0)
     (h_valid_offset : offset ≥ 0) :
@@ -36,3 +43,4 @@ theorem memmap_spec {n : Nat} (filename : String) (mode : FileMode) (offset : Na
       -- Boundary safety: all indices are valid
       (∀ i : Fin n, i.val < n)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def on_line (pts : List (Int × Int)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_single_point_collinear (pts : List (Int × Int)) :
   pts.length ≤ 1 → on_line pts = true :=
   sorry
@@ -52,6 +60,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval on_line [(1, 2), (-3, -14), (22, 9)]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

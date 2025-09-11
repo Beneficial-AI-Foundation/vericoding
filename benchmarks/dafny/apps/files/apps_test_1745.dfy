@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n'
@@ -71,6 +72,7 @@ function CountValidPipes(grid: seq<seq<char>>, rows: int, cols: int): int
 {
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

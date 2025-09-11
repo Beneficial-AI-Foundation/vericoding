@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def parity_bit (input : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem parity_bit_output_length {input : String} {part : String}
   (h : part ∈ (parity_bit input).split fun c => c = ' ') :
   part = "error" ∨ part.length = 7 :=
@@ -36,6 +44,7 @@ info: 'error 0110000 0101011 error 0110001'
 -/
 -- #guard_msgs in
 -- #eval parity_bit "01101110 01100000 01010110 10001111 01100011"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

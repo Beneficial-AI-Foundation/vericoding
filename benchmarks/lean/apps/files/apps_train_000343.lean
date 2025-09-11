@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longest_str_chain (words : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem longest_str_chain_non_negative 
   (words : List String) :
   longest_str_chain words ≥ 0 :=
@@ -52,6 +60,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval longest_str_chain ["a", "b", "ab", "bac"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

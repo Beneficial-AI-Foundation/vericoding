@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_count_bases_starting_with_1 (n: Int) : String := sorry
 
 theorem non_negative_count (n: Int) (h: n ≥ 2) (h': n ≤ 1000) : 
@@ -8,7 +14,9 @@ theorem non_negative_count (n: Int) (h: n ≥ 2) (h': n ≤ 1000) :
   | "INFINITY" => True 
   | count => count.all (·.isDigit) ∧ count.toNat! ≥ 0
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem special_cases_zero :
   find_count_bases_starting_with_1 0 = "0" := sorry
 
@@ -42,6 +50,7 @@ info: 'INFINITY'
 -/
 -- #guard_msgs in
 -- #eval find_count_bases_starting_with_1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

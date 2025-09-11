@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def next_num (n : Nat) : Option Nat := sorry
 
 @[simp] def isPolydivisible (n: Nat) : Bool := sorry
 
 @[simp] def splitDigitsUpToLength (n : Nat) (len : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem next_num_returns_larger_number {n : Nat} :
   match next_num n with
   | some m => m > n
@@ -43,6 +51,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval next_num 3608528850368400786036725
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

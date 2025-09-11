@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def College := String
 deriving Repr
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def determine_college (s: String) : College := sorry
 def process_test_cases (cases: List String) : List College := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem determine_college_case_insensitive (s: String) :
   determine_college s = determine_college (s.toUpper) ∧
   determine_college s = determine_college (s.toLower) := sorry
@@ -46,6 +53,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval process_test_cases ["random college"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

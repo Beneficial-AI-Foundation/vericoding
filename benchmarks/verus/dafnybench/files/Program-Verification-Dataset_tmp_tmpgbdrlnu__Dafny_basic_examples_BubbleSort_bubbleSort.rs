@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn pivot(a: Seq<i32>, to: int, pvt: int) -> bool
 {
     forall|u: int, v: int| 0 <= u < pvt < v < to ==> a[u] <= a[v]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

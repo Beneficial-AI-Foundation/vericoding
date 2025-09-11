@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -18,6 +19,7 @@ pub enum LinAlgError {
 
     Other(String),
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

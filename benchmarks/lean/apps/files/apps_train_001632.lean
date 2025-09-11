@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Coordinates := (Nat × Nat × Nat × Nat)
 def SearchPlan := (Nat × List Coordinates)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def generate_police_search_plan : SearchPlan :=
 sorry
 
 -- Output format theorem
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem search_plan_output_format (plan : SearchPlan) : 
   let (N, coords) := plan
   ∀ c ∈ coords, ∃ x1 y1 x2 y2 : Nat, c = (x1, y1, x2, y2) :=
@@ -56,6 +63,7 @@ info: N
 -/
 -- #guard_msgs in
 -- #eval len coords
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_consecutive_ones (nums: List Nat) : Nat := sorry
 
 -- Main property
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_consecutive_ones_valid (nums: List Nat) : 
   let result := find_max_consecutive_ones nums
   result ≥ 0 ∧ result ≤ nums.length ∧
@@ -46,6 +54,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_max_consecutive_ones []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

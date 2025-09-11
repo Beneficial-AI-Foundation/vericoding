@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def how_many_pizzas (n: Nat) : String := sorry
 
 theorem how_many_pizzas_format (n: Nat) (h: n ≤ 1000) :
@@ -8,7 +14,9 @@ theorem how_many_pizzas_format (n: Nat) (h: n ≤ 1000) :
   result.startsWith "pizzas: " ∧ 
   result.length > 8 ∧
   (result.drop 8 |>.startsWith ", slices: ") = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem how_many_pizzas_values_nonnegative (n: Nat) (h: n ≤ 1000) :
   let result := how_many_pizzas n
   let pizzas := (result.splitOn ", ").get! 0 |>.splitOn ": " |>.get! 1 |>.toNat!
@@ -41,6 +49,7 @@ info: 'pizzas: 0, slices: 0'
 -/
 -- #guard_msgs in
 -- #eval how_many_pizzas 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

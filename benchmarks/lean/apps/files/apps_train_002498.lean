@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def arithmetic_operations (a b : Int) : String := sorry
 
 theorem arithmetic_operations_format 
@@ -10,7 +16,9 @@ theorem arithmetic_operations_format
   lines.length = 3 ∧ 
   lines.all (fun line => (line.drop (if line.front = '-' then 1 else 0)).all Char.isDigit)
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arithmetic_operations_values
   (a b : Int) :
   let result := arithmetic_operations a b
@@ -34,6 +42,7 @@ theorem arithmetic_operations_positive
   sum_val ≥ a ∧
   prod_val ≥ min a b
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

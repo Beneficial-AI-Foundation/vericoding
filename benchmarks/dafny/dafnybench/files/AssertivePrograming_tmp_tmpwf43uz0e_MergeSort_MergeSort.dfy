@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate Sorted(q: seq<int>) {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j]
 }
@@ -27,6 +28,7 @@ ghost predicate InvSubSet(b: seq<int>, c: seq<int>, d: seq<int>, i: nat, j: nat)
     i <= |c| && j <= |d| && i + j <= |b| &&
     multiset(b[..i+j]) == multiset(c[..i]) + multiset(d[..j])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

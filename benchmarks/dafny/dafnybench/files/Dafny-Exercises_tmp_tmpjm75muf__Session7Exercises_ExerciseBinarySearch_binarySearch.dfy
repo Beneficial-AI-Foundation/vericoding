@@ -1,6 +1,8 @@
+// <vc-preamble>
 predicate sorted(s : seq<int>) {
     forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

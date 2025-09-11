@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
   n >= 1
@@ -14,6 +15,7 @@ predicate MinimalCUsage(s: string)
 {
   forall i :: 0 <= i < |s| ==> s[i] == 'a' || s[i] == 'b'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

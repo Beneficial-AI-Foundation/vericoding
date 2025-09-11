@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def periodicPalindrome (n p : Nat) : String := sorry
 
 def string_slice (s : String) (start len : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem impossible_for_small_period (n p : Nat) 
   (h1 : p ≤ 2) : periodicPalindrome n p = "impossible" := sorry
 
@@ -48,6 +56,7 @@ info: 'abaaba'
 -/
 -- #guard_msgs in
 -- #eval periodic_palindrome 6 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

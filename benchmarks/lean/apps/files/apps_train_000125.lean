@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def profitable_schemes (G : Nat) (P : Nat) (group : List Nat) (profit : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 -- Basic properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem profitable_schemes_non_negative (G P : Nat) (group profit : List Nat) :
   profitable_schemes G P group profit ≥ 0 :=
   sorry
@@ -52,6 +59,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval profitable_schemes 1 1 [1] [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

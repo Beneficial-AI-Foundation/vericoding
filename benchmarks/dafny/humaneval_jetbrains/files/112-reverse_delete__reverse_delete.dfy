@@ -1,6 +1,8 @@
+// <vc-preamble>
 function is_palindrome_pred(s : string) : bool {
   forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

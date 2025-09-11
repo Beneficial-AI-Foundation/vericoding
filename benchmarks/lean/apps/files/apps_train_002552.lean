@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def keyword_cipher (text : String) (keyword : String) : String := sorry
 
 theorem keyword_cipher_identity (text : String) :
   keyword_cipher text "abcdefghijklmnopqrstuvwxyz" = text.toLower := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem keyword_cipher_length (text : String) (keyword : String) :
   (keyword_cipher text keyword).length = text.length := sorry
 
@@ -33,6 +41,7 @@ info: 'bshhk'
 -/
 -- #guard_msgs in
 -- #eval keyword_cipher "HELLO" "wednesday"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

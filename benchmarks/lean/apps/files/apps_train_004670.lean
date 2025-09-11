@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def crusoe (n : Nat) (d ang dist_mult ang_mult : Float) : Float × Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem crusoe_results_finite (n : Nat) (d ang dist_mult ang_mult : Float)
   (h1 : 0 ≤ n ∧ n ≤ 100)
   (h2 : 0 ≤ d ∧ d ≤ 10) 
@@ -53,6 +61,7 @@ info: 0.7071068
 -/
 -- #guard_msgs in
 -- #eval round y 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

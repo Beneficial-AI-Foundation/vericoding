@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_pattern (n : Nat) : List String := sorry 
 
 def String.countChar (s : String) (c : Char) : Nat :=
   s.data.filter (· = c) |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_length (n : Nat) (h : n > 0) :
   (generate_pattern n).length = n := sorry
 
@@ -37,6 +45,7 @@ info: ['4321', '*321', '**21', '***1']
 -/
 -- #guard_msgs in
 -- #eval generate_pattern 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

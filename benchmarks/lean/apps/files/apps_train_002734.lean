@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def coin (n : Nat) : List String := sorry
 
 theorem coin_length (n : Nat) : 
   n ≤ 10 → List.length (coin n) = 2^n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem coin_elem_length (n : Nat) (s : String) :
   n ≤ 10 → s ∈ coin n → String.length s = n := sorry
 
@@ -42,6 +50,7 @@ info: ['HHH', 'HHT', 'HTH', 'HTT', 'THH', 'THT', 'TTH', 'TTT']
 -/
 -- #guard_msgs in
 -- #eval coin 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

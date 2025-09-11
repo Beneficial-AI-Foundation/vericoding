@@ -1,11 +1,16 @@
+-- <vc-preamble>
 def find_sequence (arr : List Nat) : List Nat := sorry
 
 theorem find_sequence_non_negative (arr : List Nat) : 
   ∀ x ∈ find_sequence arr, x ≥ 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChanges (arr : List Nat) : Nat :=
   let indices := List.range (arr.length - 1)
   indices.foldl (fun acc i =>
@@ -14,7 +19,9 @@ def countChanges (arr : List Nat) : Nat :=
         acc + 1
       else acc
     else acc) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_sequence_trailing_zero (arr : List Nat) : 
   arr.length > 0 → arr.getLast! = 0 → 
   (find_sequence arr).getLast! = 0 := sorry
@@ -31,6 +38,7 @@ theorem find_sequence_run_lengths (arr : List Nat) (pos : Nat) (h : pos < arr.le
 theorem find_sequence_length (arr : List Nat) :
   arr.length > 0 →
   (find_sequence arr).length = 1 + countChanges arr := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

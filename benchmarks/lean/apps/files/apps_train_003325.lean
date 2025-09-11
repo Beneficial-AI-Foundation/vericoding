@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def powerMod (b e m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem powermod_range (b e m : Nat) (h : m ≥ 2) :
   let r := powerMod b e m
   0 ≤ r ∧ r < m :=
@@ -39,6 +47,7 @@ info: 26
 -/
 -- #guard_msgs in
 -- #eval power_mod 9 193125 37
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

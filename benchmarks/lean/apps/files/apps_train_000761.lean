@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_remainder_parity (N M : Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_remainder_parity_returns_valid_string 
   (N : Int) (M : Int) (h : M ≠ 0) :
   check_remainder_parity N M = "ODD" ∨ 
@@ -38,6 +46,7 @@ info: 'ODD'
 -/
 -- #guard_msgs in
 -- #eval check_remainder_parity 10 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

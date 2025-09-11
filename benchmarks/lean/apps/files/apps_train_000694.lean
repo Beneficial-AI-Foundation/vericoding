@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def List.index {α} [BEq α] (xs : List α) (x : α) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check_subsequence (s1 : String) (s2 : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_is_subsequence_of_itself (seq : List Nat) (h : seq.length > 0) :
   ∀ x ∈ seq, x > 0 ∧ x ≤ 100 →
   check_subsequence (toString seq) (toString seq) = "Yes" :=
@@ -49,6 +56,7 @@ info: 'Yes'
 -/
 -- #guard_msgs in
 -- #eval check_subsequence "1 3 4 2" "1 2"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

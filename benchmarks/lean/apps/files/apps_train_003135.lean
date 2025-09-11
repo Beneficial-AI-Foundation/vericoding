@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def avgArray (arrays : List (List Int)) : List Float := sorry
 
 theorem avg_array_length_preserving (arrays : List (List Int)) 
   (h1 : arrays.length > 0) (h2 : ∀ arr ∈ arrays, arr.length = arrays[0]!.length) :
   (avgArray arrays).length = arrays[0]!.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem avg_array_result_within_bounds (arrays : List (List Int)) (i : Nat)
   (h1 : arrays.length > 0) 
   (h2 : ∀ arr ∈ arrays, arr.length = arrays[0]!.length)
@@ -43,6 +51,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval avg_array #[[2, 5, -4, 3, -19], [-2, -5, 6, 7, 10]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

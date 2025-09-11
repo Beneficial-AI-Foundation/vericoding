@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (a b : String) : String := sorry
 
 theorem solve_contains_non_common_chars (a b : String) (c : Char) :
@@ -8,7 +14,9 @@ theorem solve_contains_non_common_chars (a b : String) (c : Char) :
   (¬ (c ∈ a.data ∧ c ∈ b.data)) →
   c ∈ (solve a b).data
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_excludes_common_chars (a b : String) :
   ∀ c, c ∈ (solve a b).data →
   ¬ (c ∈ a.data ∧ c ∈ b.data)
@@ -52,6 +60,7 @@ info: 'abcdxyz'
 -/
 -- #guard_msgs in
 -- #eval solve "abcd" "xyz"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

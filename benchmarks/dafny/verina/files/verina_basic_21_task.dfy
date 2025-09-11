@@ -1,8 +1,10 @@
+// <vc-preamble>
 predicate IsSubseqAt(sub: seq<int>, main: seq<int>, i: int)
 {
     0 <= i && i + |sub| <= |main| && 
     (forall j :: 0 <= j < |sub| ==> sub[j] == main[i + j])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

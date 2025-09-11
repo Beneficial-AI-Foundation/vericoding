@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sim (k n : Nat) (p : Float) : Float :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def compute (k n m x : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sim_monotonic (k n : Nat) 
   (h1 : k ≥ 1) (h2 : n ≥ 2) : 
   sim k n 0 ≤ sim k n 1 :=
@@ -30,6 +37,7 @@ info: 252
 -/
 -- #guard_msgs in
 -- #eval calc 12 23 212532 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

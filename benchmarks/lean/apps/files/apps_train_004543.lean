@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def two_sum (numbers : List Int) (target : Int) : Option (Nat × Nat) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem two_sum_correct_sum 
   (numbers : List Int) 
   (target : Int)
@@ -48,6 +56,7 @@ info: (0, 1)
 -/
 -- #guard_msgs in
 -- #eval two_sum [2, 2, 3] 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

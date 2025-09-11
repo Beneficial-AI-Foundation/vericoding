@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def count_ones (n : Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def max_pn (n : Nat) : Nat :=
 
 def an_over (n : Nat) : List Float :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def an_over_average (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_ones_bounds {n : Nat} (h : n > 0) : 
   count_ones n ≤ n ∧ count_ones n ≥ 0 := by sorry
 
@@ -60,6 +67,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval an_over_average 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -69,13 +70,19 @@ def is_complex (dt : NumpyDType) : Bool :=
   match dt with
   | .Complex64 | .Complex128 => true
   | _ => false
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def promote_types (type1 type2 : NumpyDType) : Id NumpyDType :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem promote_types_spec (type1 type2 : NumpyDType) :
     ⦃⌜True⌝⦄
     promote_types type1 type2
@@ -131,3 +138,4 @@ theorem promote_types_spec (type1 type2 : NumpyDType) :
         is_float result ∧ dtype_size result ≥ max (dtype_size type1) (dtype_size type2))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

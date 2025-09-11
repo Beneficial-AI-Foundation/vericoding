@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, tasks: seq<int>)
 {
     n >= 2 && m >= 1 && |tasks| == m && 
@@ -14,6 +15,7 @@ function MinTimeToComplete(n: int, tasks: seq<int>, currentPos: int, taskIndex: 
     if target >= currentPos then target - currentPos
     else (n - currentPos) + target
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

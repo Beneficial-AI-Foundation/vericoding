@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def primeFactors (n : Nat) : List Nat :=
   sorry
 
 def find_spec_prod_part (n : Nat) (mode : String) : String ⊕ (List Nat × Nat) :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_prime (n : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prime_find_spec_prod_part (n : Nat) (h : n ≥ 2) :
   is_prime n = true →
   find_spec_prod_part n "max" = Sum.inl "It is a prime number" ∧
@@ -31,6 +38,7 @@ theorem min_max_relationship (n : Nat) (h1 : n ≥ 4) (h2 : is_prime n = false) 
   | _, _ => False
   :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

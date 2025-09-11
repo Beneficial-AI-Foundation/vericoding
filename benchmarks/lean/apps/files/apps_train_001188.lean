@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_xor_sequence (n : Nat) (seq : List Nat) : String := sorry
 
 theorem large_sequences_return_yes 
@@ -8,7 +14,9 @@ theorem large_sequences_return_yes
   (h1 : n ≥ 68) 
   (h2 : seq.length = n) : 
   check_xor_sequence n seq = "Yes" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem small_sequences_return_no
   (n : Nat) (seq : List Nat)
   (h1 : n ≤ 67)
@@ -45,6 +53,7 @@ info: 'Yes'
 -/
 -- #guard_msgs in
 -- #eval check_xor_sequence 68 [1] * 68
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

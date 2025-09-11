@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ParenthesesDepth(s: string, i: int, j: int): int
     decreases j - i 
     requires 0 <= i <= j <= |s|
@@ -19,6 +20,7 @@ function InnerDepthsNonnegative(s: string) : bool
 {
     forall i :: 0 < i < |s| ==> ParenthesesDepth(s, 0, i) >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

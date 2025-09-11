@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -23,6 +24,7 @@ spec fn sum_powers(n: nat, k: nat) -> nat
 {
     if n == 0 { 0 } else { pow_nat(n % 10, k) + sum_powers(n / 10, k) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

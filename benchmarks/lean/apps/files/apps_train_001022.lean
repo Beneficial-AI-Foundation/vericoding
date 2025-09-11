@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_transition_point (n : Nat) (arr : List Nat) : Option Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_transition_point_valid_index (n : Nat) (arr : List Nat) :
   let result := find_transition_point n arr
   ∀ i, result = some i → i < n := 
@@ -54,6 +62,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_transition_point 4 [0, 0, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

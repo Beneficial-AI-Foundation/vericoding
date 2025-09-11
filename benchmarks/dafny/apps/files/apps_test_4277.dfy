@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int)
 {
     1 <= n <= 20 && 1 <= a <= 50 && 1 <= b <= 50
@@ -29,6 +30,7 @@ predicate CorrectResult(input: string, result: string)
     else
         result == ""
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

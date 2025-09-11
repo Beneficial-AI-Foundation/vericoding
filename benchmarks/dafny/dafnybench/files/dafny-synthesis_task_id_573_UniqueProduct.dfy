@@ -1,9 +1,11 @@
+// <vc-preamble>
 ghost function SetProduct(s : set<int>) : int
 {
     if s == {} then 1
     else var x :| x in s; 
          x * SetProduct(s - {x})
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

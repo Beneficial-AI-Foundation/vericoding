@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encryptor (key : Int) (message : String) : String := sorry
 
 theorem encryptor_preserves_length (key : Int) (message : String) :
   (encryptor key message).length = message.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encryptor_inverse (key : Int) (message : String) :
   encryptor (-key) (encryptor key message) = message := sorry
 
@@ -36,6 +44,7 @@ info: 'Khoor, Zruog 123!'
 -/
 -- #guard_msgs in
 -- #eval encryptor 3 "Hello, World 123!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

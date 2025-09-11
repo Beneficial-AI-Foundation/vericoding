@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def count_beautiful_subarrays (n k : Nat) (arr : List Nat) : Nat :=
   sorry
 
 def is_valid_array (arr : List Nat) (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sorted (arr : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_bounds (n k : Nat) (arr : List Nat) :
   1 ≤ n ∧ n ≤ 100 ∧
   1 ≤ k ∧ k ≤ 100 ∧
@@ -53,6 +60,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval count_beautiful_subarrays 2 2 [2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

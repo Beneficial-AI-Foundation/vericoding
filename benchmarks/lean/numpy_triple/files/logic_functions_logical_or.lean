@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def logical_or {n : Nat} (x1 x2 : Vector Bool n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem logical_or_spec {n : Nat} (x1 x2 : Vector Bool n) :
     ⦃⌜True⌝⦄
     logical_or x1 x2
@@ -25,3 +32,4 @@ theorem logical_or_spec {n : Nat} (x1 x2 : Vector Bool n) :
                  -- Result is false only when both operands are false
                  (x1.get i = false ∧ x2.get i = false → result.get i = false)⌝⦄ := by
   sorry
+-- </vc-theorems>

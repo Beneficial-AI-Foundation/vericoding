@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findCloserTruck (coords : List Int) : String := sorry
 
 theorem find_closer_truck_output_valid (coords : List Int) 
   (h : coords.length = 4) : 
   (findCloserTruck coords = "A IS CLOSER") ∨ 
   (findCloserTruck coords = "B IS CLOSER") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem equal_distance_returns_a (x y : Int) :
   findCloserTruck [x, y, x, y] = "A IS CLOSER" := sorry
 
@@ -37,6 +45,7 @@ info: 'B IS CLOSER'
 -/
 -- #guard_msgs in
 -- #eval find_closer_truck [-7, 8, 4, -1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

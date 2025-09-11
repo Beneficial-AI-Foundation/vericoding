@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn vec_product(shape: Seq<usize>) -> nat
         (shape[0] as nat) * vec_product(shape.skip(1))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

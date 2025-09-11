@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate canFormatText(s: string, k: int, maxWidth: int)
     requires k >= 1
     requires |s| >= 1
@@ -37,6 +38,7 @@ predicate checkFormatting(s: string, k: int, maxWidth: int, pos: int, lines: int
             else
                 checkFormatting(s, k, maxWidth, pos + 1, lines, currentLine + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

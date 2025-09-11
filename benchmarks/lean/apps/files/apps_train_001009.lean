@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_rich_substrings (s : String) (queries : List (Nat × Nat)) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_queries_give_empty_result (s : String) :
   solve_rich_substrings s [] = [] :=
   sorry
@@ -40,6 +48,7 @@ info: ['NO']
 -/
 -- #guard_msgs in
 -- #eval solve_rich_substrings "abc" [[1, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

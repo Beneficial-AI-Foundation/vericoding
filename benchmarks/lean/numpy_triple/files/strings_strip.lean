@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def strip {n : Nat} (a : Vector String n) (chars : Option String) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem strip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
     ⦃⌜True⌝⦄
     strip a chars
@@ -68,3 +75,4 @@ theorem strip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
           result.get? ⟨j⟩ = original.get? ⟨origJ⟩ ∧ 
           result.get? ⟨k⟩ = original.get? ⟨origK⟩)⌝⦄ := by
   sorry
+-- </vc-theorems>

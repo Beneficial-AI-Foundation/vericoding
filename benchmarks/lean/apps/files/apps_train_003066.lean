@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_all (xs : List Int) (n : Int) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_all_valid_indices {xs : List Int} {n : Int} :
   ∀ i ∈ find_all xs n, i < xs.length := by
   sorry
@@ -53,6 +61,7 @@ info: [0, 1, 8]
 -/
 -- #guard_msgs in
 -- #eval find_all [20, 20, 10, 13, 15, 2, 7, 2, 20] 20
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

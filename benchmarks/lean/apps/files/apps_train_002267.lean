@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def minimum_operations (arr : List Int) : Nat :=
   sorry
 
 def isSorted (arr : List Int) : Prop :=
   ∀ i j, i < j → j < arr.length → arr[i]! ≤ arr[j]!
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isStrictlySorted (arr : List Int) : Prop :=
   ∀ i j, i < j → j < arr.length → arr[i]! < arr[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_bounds (arr : List Int) (h : arr ≠ []) :
   0 ≤ minimum_operations arr ∧ minimum_operations arr ≤ arr.length :=
   sorry 
@@ -36,6 +43,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval minimum_operations [1, 4, 5, 7, 12]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

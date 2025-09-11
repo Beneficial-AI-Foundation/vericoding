@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Int.toFloat : Int → Float := sorry
 
 def clean_mean (xs : List Int) (k : Float) : Float := sorry
 
 -- For identical values, clean mean should equal the value
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem clean_mean_identical_values {x : Int} {n : Nat} :
   n ≥ 2 → clean_mean (List.replicate n x) 2.0 = Int.toFloat x := sorry
 
@@ -38,6 +46,7 @@ info: 2.0
 -/
 -- #guard_msgs in
 -- #eval clean_mean [1, 2, 3] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

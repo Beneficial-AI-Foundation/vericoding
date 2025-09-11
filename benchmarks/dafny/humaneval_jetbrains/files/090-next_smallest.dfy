@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Option<T> = None | Some(T)
 function getVal(mx : Option<int>) : int
     requires mx != None
@@ -6,6 +7,7 @@ function getVal(mx : Option<int>) : int
         case Some(n) => n
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

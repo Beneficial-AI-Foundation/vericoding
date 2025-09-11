@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, powers: seq<int>)
 {
     n > 0 && k > 0 && k <= n && n % k == 0 && |powers| == n
@@ -8,6 +9,7 @@ predicate IsOptimalStartingTask(result: int, n: int, k: int, powers: seq<int>)
 {
     1 <= result <= k
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

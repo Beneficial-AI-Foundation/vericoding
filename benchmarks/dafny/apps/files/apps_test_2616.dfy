@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(testCases: seq<seq<int>>) {
     forall i :: 0 <= i < |testCases| ==> 
         |testCases[i]| >= 1 && 
@@ -30,6 +31,7 @@ predicate CorrectGameResult(piles: seq<int>, result: string)
     else
         (if leadingOnes % 2 == 1 then result == "Second" else result == "First")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

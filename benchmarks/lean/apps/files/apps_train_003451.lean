@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def gematria (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gematria_returns_nat (s : String) :
   gematria s ≥ 0 :=
   sorry
@@ -34,6 +42,7 @@ info: 738
 -/
 -- #guard_msgs in
 -- #eval gematria "Devil"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

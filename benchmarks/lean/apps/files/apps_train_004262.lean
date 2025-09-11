@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hamming_distance (a b : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hamming_distance_nonnegative (a b : String) :
   hamming_distance a b ≥ 0 := 
   sorry
@@ -41,6 +49,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval hamming_distance "100101011011010010010" "101100010110010110101"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

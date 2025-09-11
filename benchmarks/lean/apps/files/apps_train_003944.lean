@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def poly_multiply (p1 p2 : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem poly_multiply_length (p1 p2 : List Int) :
   (p1 = [] ∨ p2 = []) → poly_multiply p1 p2 = [] ∧
   (p1 ≠ [] ∧ p2 ≠ []) → List.length (poly_multiply p1 p2) = List.length p1 + List.length p2 - 1 :=
@@ -45,6 +53,7 @@ info: [8, 26, 20]
 -/
 -- #guard_msgs in
 -- #eval poly_multiply [2, 4] [4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

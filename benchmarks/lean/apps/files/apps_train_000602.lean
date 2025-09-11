@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def determine_server (p1 : Nat) (p2 : Nat) (k : Nat) : String :=
   sorry
 
 -- Only two possible results
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem determine_server_two_values (p1 p2 k : Nat) (h : k > 0) :
   determine_server p1 p2 k = "CHEF" ∨ determine_server p1 p2 k = "COOK" :=
   sorry
@@ -55,6 +63,7 @@ info: 'CHEF'
 -/
 -- #guard_msgs in
 -- #eval determine_server 34 55 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

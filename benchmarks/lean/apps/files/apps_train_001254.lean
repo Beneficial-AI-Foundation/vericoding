@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_faster_batmobiles (n : Nat) (speeds : List Nat) : Nat := sorry
 
 theorem count_faster_batmobiles_non_negative 
   (n : Nat) (speeds : List Nat) (h : speeds.length > 0) :
   count_faster_batmobiles n speeds ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_faster_batmobiles_bounded
   (n : Nat) (speeds : List Nat) (h : speeds.length > 0) :
   count_faster_batmobiles n speeds ≤ speeds.length - 1 := sorry 
@@ -41,6 +49,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_faster_batmobiles 3 [5, 5, 5, 6]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

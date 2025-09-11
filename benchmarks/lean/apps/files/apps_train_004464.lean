@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def x (n : Nat) : List (List Nat) := sorry
 
 theorem square_matrix (n : Nat) (h: n > 0) :
@@ -8,7 +14,9 @@ theorem square_matrix (n : Nat) (h: n > 0) :
   List.length result = n ∧
   ∀ row ∈ result, List.length row = n :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem diagonal_ones (n : Nat) (h: n > 0) :
   let result := x n
   (∀ i, i < n → List.get! (List.get! result i) i = 1) ∧
@@ -46,6 +54,7 @@ info: [[1, 0, 0, 0, 1], [0, 1, 0, 1, 0], [0, 0, 1, 0, 0], [0, 1, 0, 1, 0], [1, 0
 -/
 -- #guard_msgs in
 -- #eval x 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

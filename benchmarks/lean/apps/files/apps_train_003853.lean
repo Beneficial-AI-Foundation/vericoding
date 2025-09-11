@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def evenize_word (word : String) : String := sorry
 
 def evenator (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem evenize_word_properties (word : String) (h : word.length > 0) : 
   let result := evenize_word word
   (result.length % 2 = 0) ∧ 
@@ -42,6 +50,7 @@ info: 'underr thee seAA'
 -/
 -- #guard_msgs in
 -- #eval evenator test3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

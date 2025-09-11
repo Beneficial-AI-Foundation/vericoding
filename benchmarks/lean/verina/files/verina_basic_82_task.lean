@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def remove_front_precond (a : Array Int) : Prop :=
   a.size > 0
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def copyFrom (a : Array Int) (i : Nat) (acc : Array Int) : Array Int :=
   if i < a.size then
@@ -9,10 +12,14 @@ def copyFrom (a : Array Int) (i : Nat) (acc : Array Int) : Array Int :=
   else
     acc
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def remove_front (a : Array Int) (h_precond : remove_front_precond (a)) : Array Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def remove_front_postcond (a : Array Int) (result: Array Int) (h_precond : remove_front_precond (a)) :=
   a.size > 0 ∧ result.size = a.size - 1 ∧ (∀ i : Nat, i < result.size → result[i]! = a[i + 1]!)
@@ -20,6 +27,7 @@ def remove_front_postcond (a : Array Int) (result: Array Int) (h_precond : remov
 theorem remove_front_spec_satisfied (a: Array Int) (h_precond : remove_front_precond (a)) :
     remove_front_postcond (a) (remove_front (a) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

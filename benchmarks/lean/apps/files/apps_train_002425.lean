@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def projectionArea (grid : List (List Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem projection_area_nonnegative (grid : List (List Nat)) :
   projectionArea grid ≥ 0 := sorry
 
@@ -42,6 +50,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval projection_area [[1, 0], [0, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

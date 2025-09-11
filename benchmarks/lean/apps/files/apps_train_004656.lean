@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def infected (s : String) : Float := sorry
 
 theorem infected_bounds (s : String) :
   0 ≤ infected s ∧ infected s ≤ 100 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_population (s : String) :
   (∀ c, c ∈ s.data → c ≠ '0' ∧ c ≠ '1') →
   infected s = 0 := sorry
@@ -34,6 +42,7 @@ info: 0.0
 -/
 -- #guard_msgs in
 -- #eval infected "XXXXX"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

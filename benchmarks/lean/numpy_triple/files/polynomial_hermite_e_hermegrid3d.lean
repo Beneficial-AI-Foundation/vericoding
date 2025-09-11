@@ -1,16 +1,23 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermegrid3d {nx ny nz : Nat} {deg_x deg_y deg_z : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
     (c : Vector (Vector (Vector Float deg_z) deg_y) deg_x) : 
     Id (Vector (Vector (Vector Float nz) ny) nx) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermegrid3d_spec {nx ny nz : Nat} {deg_x deg_y deg_z : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
     (c : Vector (Vector (Vector Float deg_z) deg_y) deg_x) :
@@ -71,3 +78,4 @@ theorem hermegrid3d_spec {nx ny nz : Nat} {deg_x deg_y deg_z : Nat}
         ((result.get i₁).get j₁).get k₁ = ((result.get i₂).get j₂).get k₂))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

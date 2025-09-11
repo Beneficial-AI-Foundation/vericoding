@@ -1,3 +1,4 @@
+// <vc-preamble>
 function prefixProduct(s: seq<nat>, i: nat, mod: nat): nat
   requires mod > 0
   requires i <= |s|
@@ -40,6 +41,7 @@ predicate ValidSequence(sequence: seq<nat>, m: nat, forbidden: seq<nat>)
     allDistinct([1] + prefixProducts(sequence, m)) &&
     noForbiddenProducts(sequence, forbidden, m)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

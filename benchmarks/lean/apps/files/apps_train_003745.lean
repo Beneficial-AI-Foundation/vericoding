@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def interweave (s1 s2 : List Char) : List Char := sorry
 
 theorem interweave_length_property (s1 s2 : List Char) : 
   List.length (interweave s1 s2) ≤ List.length s1 + List.length s2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem interweave_empty_strings :
   interweave [] [] = [] := sorry
 
@@ -35,6 +43,7 @@ info: 'hello'
 -/
 -- #guard_msgs in
 -- #eval interweave "h3lo" "el4"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

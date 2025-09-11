@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SetLessThan(numbers: set<int>, threshold: int): set<int>
 {
   set i | i in numbers && i < threshold
@@ -60,6 +61,7 @@ method InsertIntoSorted(a: array<int>, limit:int, key:int) returns (b: array<int
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

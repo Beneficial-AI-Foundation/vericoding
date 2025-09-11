@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_longest_xor_subsequence (n : Nat) (arr : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_bounds (n : Nat) (arr : List Nat) (h : arr.length = n) (h1 : n > 0) :
   let result := find_longest_xor_subsequence n arr
   1 ≤ result ∧ result ≤ n :=
@@ -37,6 +45,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_longest_xor_subsequence 3 [5, 5, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

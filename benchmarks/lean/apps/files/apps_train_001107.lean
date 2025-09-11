@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_knight_steps (n : Nat) : String := sorry
 
 theorem even_numbers_return_zero {n : Nat} (h : n > 0) (h2 : n % 2 = 0) :
   solve_knight_steps n = "0" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_contains_valid_moves {n : Nat} (h : n > 0) :
   ∀ (i : String.Pos), i.1 < (solve_knight_steps n).length →
     let c := (solve_knight_steps n).get i
@@ -47,6 +55,7 @@ info: '3'
 -/
 -- #guard_msgs in
 -- #eval solve_knight_steps 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

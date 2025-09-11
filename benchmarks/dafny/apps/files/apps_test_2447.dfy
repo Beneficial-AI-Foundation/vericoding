@@ -1,3 +1,4 @@
+// <vc-preamble>
 function split_lines(s: string): seq<string>
 {
     [""]
@@ -72,6 +73,7 @@ function min_operations_to_make_good(s: string): int
     if |s| == 0 then 0
     else min_ops_helper(s, 0, |s|)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

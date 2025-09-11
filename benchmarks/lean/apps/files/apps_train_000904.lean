@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def generate_pattern (n : Nat) : List (List Nat) :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumRange (a b : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem triangle_numbers (n : Nat) (h : n > 0) :
   let pattern := generate_pattern n
   ∀ i, i < n → (pattern.get! i).get! 0 = sumRange 1 (i+2) :=
@@ -21,6 +28,7 @@ theorem pattern_differences (n : Nat) (h : n > 0) :
       then diff = j + i + 1 
       else diff = 2*n - (j + i + 1) - 1 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

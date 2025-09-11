@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_array_partition (n : Nat) (arr : List Nat) : Nat := sorry
 
 theorem array_partition_bound {n : Nat} {arr : List Nat} (h : arr.length = 2 * n) :
   let result := solve_array_partition n arr
   0 ≤ result ∧ result < 998244353 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_difference {n : Nat} :
   let arr := List.replicate (2 * n) 1
   solve_array_partition n arr = 0 := sorry
@@ -37,6 +45,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_array_partition 3 [2, 2, 2, 2, 2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

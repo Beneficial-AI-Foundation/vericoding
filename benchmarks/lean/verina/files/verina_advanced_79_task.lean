@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible]
 def twoSum_precond (nums : List Int) (target : Int) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def twoSum (nums : List Int) (target : Int) (h_precond : twoSum_precond (nums) (target)) : Option (Nat × Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def twoSum_postcond (nums : List Int) (target : Int) (result: Option (Nat × Nat)) (h_precond : twoSum_precond (nums) (target)) : Prop :=
     match result with
@@ -25,6 +32,7 @@ def twoSum_postcond (nums : List Int) (target : Int) (result: Option (Nat × Nat
 theorem twoSum_spec_satisfied (nums: List Int) (target: Int) (h_precond : twoSum_precond (nums) (target)) :
     twoSum_postcond (nums) (target) (twoSum (nums) (target) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

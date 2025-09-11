@@ -1,7 +1,9 @@
+// <vc-preamble>
 function CountOccurrences(nums: seq<int>, value: int): nat
 {
     |set i | 0 <= i < |nums| && nums[i] == value|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

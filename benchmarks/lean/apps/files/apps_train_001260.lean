@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def nextPermutation (arr : List Int) : List Int := sorry
 
 def solve (n k : Nat) (perms : List (List Int)) : List (List Int) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPermutation (arr1 arr2 : List Int) : Bool := sorry
 
 def isSortedDesc (arr : List Int) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem next_permutation_preserves_elements (arr : List Int) :
   isPermutation arr (nextPermutation arr) = true := sorry
 
@@ -25,6 +32,7 @@ theorem solve_returns_correct_length (n k : Nat) (perms : List (List Int)) :
 theorem solve_preserves_permutations (n k : Nat) (perms : List (List Int)) :
   ∀ i, i < perms.length → 
     isPermutation (perms.get ⟨i, sorry⟩) ((solve n k perms).get ⟨i, sorry⟩) = true := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

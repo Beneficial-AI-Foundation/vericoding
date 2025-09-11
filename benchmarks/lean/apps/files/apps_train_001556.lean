@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def who_is_winner (moves : List String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def columnHeight (moves : List String) (col : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_result_states (moves : List String) :
   let result := who_is_winner moves
   result = "Red" ∨ result = "Yellow" ∨ result = "Draw" := by
@@ -33,6 +40,7 @@ info: 'Yellow'
 -/
 -- #guard_msgs in
 -- #eval who_is_winner ["C_Yellow", "E_Red", "G_Yellow", "B_Red", "D_Yellow", "B_Red", "B_Yellow", "G_Red", "C_Yellow", "C_Red", "D_Yellow", "F_Red", "E_Yellow", "A_Red", "A_Yellow", "G_Red", "A_Yellow", "F_Red", "F_Yellow", "D_Red", "B_Yellow", "E_Red", "D_Yellow", "A_Red", "G_Yellow", "D_Red", "D_Yellow", "C_Red"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

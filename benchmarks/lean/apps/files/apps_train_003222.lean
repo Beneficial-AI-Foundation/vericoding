@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def narcissistic (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def digit_power_sum (n : Nat) : Nat :=
   sorry
 
 -- For any natural number, narcissistic returns a boolean
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem narcissistic_returns_bool (n : Nat) :
   ∃ (b : Bool), narcissistic n = b :=
   sorry 
@@ -56,6 +63,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval narcissistic 123
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def median {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem median_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     median a
@@ -40,3 +47,4 @@ theorem median_spec {n : Nat} (a : Vector Float (n + 1)) :
             (∃ i : Fin (n + 1), m = sorted.get i ∨ 
              ∃ i j : Fin (n + 1), m = (sorted.get i + sorted.get j) / 2)⌝⦄ := by
   sorry
+-- </vc-theorems>

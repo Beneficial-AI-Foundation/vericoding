@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rank (names : String) (weights : List Nat) (n : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rank_deterministic (names : String) (weights : List Nat) (n : Nat) :
   rank names weights n = rank names weights n :=
   sorry
@@ -26,6 +34,7 @@ theorem rank_two_equal_weights (n : String) (m : String) (h : n ≠ m) :
   (rank (n ++ "," ++ m) [1, 1] 1 = n) ∨ 
   (rank (n ++ "," ++ m) [1, 1] 1 = m) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

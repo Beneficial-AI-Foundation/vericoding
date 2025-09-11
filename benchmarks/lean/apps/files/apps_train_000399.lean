@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 def kConcatenationMaxSum (arr : List Int) (k : Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem kconcat_nonnegative (arr : List Int) (k : Nat) :
   k > 0 → kConcatenationMaxSum arr k ≥ 0 := sorry
 
@@ -40,6 +48,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval kConcatenationMaxSum [-1, -2] 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def gcd (a b : Nat) : Nat := sorry
 
 def count_valid_subsequences (arr : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gcd_positive (a b : Nat) (h : b > 0) : 
   gcd a b ≥ 1 := sorry
 
@@ -45,6 +53,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_valid_subsequences [6, 10, 15]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

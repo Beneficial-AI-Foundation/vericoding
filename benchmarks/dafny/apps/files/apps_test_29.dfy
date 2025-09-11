@@ -1,3 +1,4 @@
+// <vc-preamble>
 function charToInt(c: char): int
   requires '0' <= c <= '9'
 {
@@ -45,6 +46,7 @@ predicate canMakeLuckyWith2Changes(digits: seq<int>)
       var finalDigits := newDigits[..j] + [l] + newDigits[j+1..];
       isLucky(finalDigits)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

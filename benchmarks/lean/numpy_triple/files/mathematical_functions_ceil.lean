@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_ceil {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_ceil_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_ceil x
@@ -19,3 +26,4 @@ theorem numpy_ceil_spec {n : Nat} (x : Vector Float n) :
       (∀ j : Fin n, x.get i ≤ x.get j → result.get i ≤ result.get j) ∧
       result.get i = -((-x.get i).floor)⌝⦄ := by
   sorry
+-- </vc-theorems>

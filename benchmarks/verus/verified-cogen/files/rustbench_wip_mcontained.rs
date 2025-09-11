@@ -1,3 +1,4 @@
+// <vc-preamble>
 #![crate_name = "mcontained"]
 
 use vstd::prelude::*;
@@ -7,6 +8,7 @@ verus! {
 spec fn strict_sorted(arr: &[i32]) -> bool {
     forall|k: int, l: int| 0 <= k < l < arr.len() ==> arr[k] < arr[l]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def search_permMult (nMax: Nat) (k: Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_non_negative {nMax k: Nat} (h1: nMax ≥ 1000) (h2: k ≥ 1) (h3: k ≤ 100) :
   search_permMult nMax k ≥ 0 :=
 sorry
@@ -37,6 +45,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval search_permMult 10000 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

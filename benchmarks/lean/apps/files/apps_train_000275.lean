@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def maxSideLength (mat: List (List Int)) (threshold: Int) : Int :=
   sorry
 
@@ -9,13 +10,19 @@ def sumList (list: List Int) : Int :=
 
 def listSum (list: List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def floorSqrt (n: Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxSideLength_bounds {mat : List (List Int)} {threshold : Int}
   (h1 : ∀ row ∈ mat, row.length = mat[0]!.length) :
   let result := maxSideLength mat threshold
@@ -59,6 +66,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval maxSideLength [[1, 1, 1, 1], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0]] 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

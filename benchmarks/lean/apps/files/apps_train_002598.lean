@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def day_and_time (mins : Int) : String := sorry
 
 /- For any integer minutes, the output matches expected day/time format -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem day_and_time_valid_format (mins : Int) : 
   let result := day_and_time mins
   let parts := result.splitOn " "
@@ -41,6 +49,7 @@ info: 'Monday 00:07'
 -/
 -- #guard_msgs in
 -- #eval day_and_time 1447
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

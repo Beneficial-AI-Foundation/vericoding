@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(h: int) {
     h >= 1
 }
@@ -69,6 +70,7 @@ function IntToStringHelper(n: int, acc: string): string
         var digitChar := ('0' as int + digit) as char;
         IntToStringHelper(n / 10, [digitChar] + acc)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_perms_di_sequence (s : String) : Nat := sorry
 
 def MOD := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem num_perms_di_sequence_nonneg (s : String) :
   num_perms_di_sequence s ≥ 0 := sorry 
 
@@ -36,6 +44,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval num_perms_di_sequence "III"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

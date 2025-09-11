@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def timeToWords (time: String) : String := sorry
 
 def hasSubstring (s1 s2 : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def endsWithStr (s1 s2 : String) : Bool := sorry
 
 theorem time_to_words_basic_format (hours : Nat) (minutes : Nat) 
@@ -12,7 +17,9 @@ theorem time_to_words_basic_format (hours : Nat) (minutes : Nat)
   let result := timeToWords s!"#{hours}:#{minutes}"
   (hasSubstring result "o'clock" ∨ hasSubstring result "past" ∨ 
    hasSubstring result "to" ∨ result = "midnight") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem time_to_words_oclock (hours : Nat) (h_hours : hours ≤ 23) :
   let result := timeToWords s!"#{hours}:00"
   (hours = 0 → result = "midnight") ∧ 
@@ -64,6 +71,7 @@ info: 'quarter to midnight'
 -/
 -- #guard_msgs in
 -- #eval time_to_words "23:45"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

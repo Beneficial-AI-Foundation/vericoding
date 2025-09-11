@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def duty_free (price : Int) (discount : Int) (holiday_cost : Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem duty_free_result_nonnegative
   (price : Int) (discount : Int) (holiday_cost : Int)
   (h1 : price > 0) (h2 : discount > 0) (h3 : holiday_cost > 0)
@@ -59,6 +67,7 @@ info: 357
 -/
 -- #guard_msgs in
 -- #eval duty_free 24 35 3000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_subarrays_with_sum (nums : List Nat) (target : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem binary_array_properties_nonneg {nums : List Nat} (h : ∀ x ∈ nums, x ≤ 1) :
   num_subarrays_with_sum nums 0 ≥ 0 :=
   sorry
@@ -37,6 +45,7 @@ info: 15
 -/
 -- #guard_msgs in
 -- #eval num_subarrays_with_sum [0, 0, 0, 0, 0] 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

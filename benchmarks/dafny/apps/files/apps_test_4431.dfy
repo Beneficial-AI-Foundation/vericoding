@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: nat, k: nat, s: string, available: seq<char>)
 {
     n == |s| &&
@@ -54,6 +55,7 @@ function SumSegmentCounts(segments: seq<nat>): nat
     if |segments| == 0 then 0
     else segments[0] * (segments[0] + 1) / 2 + SumSegmentCounts(segments[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

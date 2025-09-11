@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_dance_positions (n w h : Nat) (dancers : List (Nat × Nat × Nat)) : List (Nat × Nat) := sorry
 
 theorem single_vertical_dancer (w h : Nat) :
@@ -8,7 +14,9 @@ theorem single_vertical_dancer (w h : Nat) :
   let dancers := [(1, 2, 0)]
   let result := solve_dance_positions n w h dancers
   result.length = 1 ∧ (result.head!).2 = h := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_horizontal_dancer (w h : Nat) :  
   let n := 1
   let dancers := [(2, 3, 0)]
@@ -30,6 +38,7 @@ theorem single_dancer_edge_cases {w h : Nat} (hw : w ≥ 2) (hh : h ≥ 2) :
   let result₂ := solve_dance_positions 1 w h dancers₂
   result₁ = [(1, h)] ∧ 
   result₂ = [(w, 1)] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

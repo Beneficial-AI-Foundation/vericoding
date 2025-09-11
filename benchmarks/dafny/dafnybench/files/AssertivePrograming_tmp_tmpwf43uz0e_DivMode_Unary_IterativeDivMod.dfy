@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Unary = Zero | Suc(pred: Unary)
 
 ghost function UnaryToNat(x: Unary): nat {
@@ -44,6 +45,7 @@ method IterativeDivMod'(x: Unary, y: Unary) returns (d: Unary, m: Unary)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

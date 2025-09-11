@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (words : List String) : List Nat := sorry
 
 theorem solve_output_matches_input_length 
   (words : List String) (h : words ≠ []) : 
   List.length (solve words) = List.length words := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_counts_in_valid_range
   (words : List String) (h : words ≠ []) :
   ∀ i, i < List.length (solve words) →
@@ -35,6 +43,7 @@ info: [1, 3, 1, 3]
 -/
 -- #guard_msgs in
 -- #eval solve ["encode", "abc", "xyzD", "ABmD"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_arctan2 {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_arctan2_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_arctan2 x1 x2
@@ -36,3 +43,4 @@ theorem numpy_arctan2_spec {n : Nat} (x1 x2 : Vector Float n) :
           (Float.abs (x1.get i - r * Float.sin (result.get i)) < 1e-7 ∧
            Float.abs (x2.get i - r * Float.cos (result.get i)) < 1e-7))⌝⦄ := by
   sorry
+-- </vc-theorems>

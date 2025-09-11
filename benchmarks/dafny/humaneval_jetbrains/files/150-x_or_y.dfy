@@ -1,8 +1,10 @@
+// <vc-preamble>
 function IsPrime(n: nat) : bool
 {
   n > 1 &&
   forall k :: 2 <= k < n ==> n % k != 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

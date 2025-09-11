@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def next_higher (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countOnes (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem next_higher_preserves_bit_count (n : Nat) (h : n > 0) (h2 : n < 2^16) :
   countOnes n = countOnes (next_higher n) :=
   sorry
@@ -36,6 +43,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval next_higher 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

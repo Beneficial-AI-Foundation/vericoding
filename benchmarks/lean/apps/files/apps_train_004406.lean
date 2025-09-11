@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_product (lst : List Int) (n : Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_product_single_equals_maximum {lst : List Int} 
   (h : lst.length > 0) :
   ∃ m ∈ lst, (max_product lst 1 = m ∧ ∀ x ∈ lst, x ≤ m) :=
@@ -43,6 +51,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval max_product [-4, -27, -15, -6, -1] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

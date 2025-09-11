@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def count_consonants (s : List Char) : Nat :=
   sorry
 
@@ -9,13 +10,19 @@ def isVowel (c : Char) : Bool :=
 
 def toLower (c : Char) : Char :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def toCharList (s : String) : List Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_consonants_bounds {s : List Char} :
   0 ≤ count_consonants s ∧ count_consonants s ≤ 21 :=
   sorry
@@ -57,6 +64,7 @@ info: 21
 -/
 -- #guard_msgs in
 -- #eval count_consonants "abcdefghijklmnopqrstuvwxyz"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

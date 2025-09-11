@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| >= 0
@@ -116,6 +117,7 @@ function ComputeTotalAreaPartial(rectangle_lines: seq<string>, n: int): int
         else 0;
         area + ComputeTotalAreaPartial(rectangle_lines[1..], n - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: seq<int>) {
   forall i :: 0 <= i < |a| ==> a[i] > 0
 }
@@ -24,6 +25,7 @@ function MaxOperations(a: seq<int>): int
 {
   SumFactors(a, 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

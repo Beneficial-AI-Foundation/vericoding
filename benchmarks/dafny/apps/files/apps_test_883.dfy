@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, friends: seq<int>)
 {
   n >= 1 && |friends| == n && forall i :: 0 <= i < |friends| ==> 1 <= friends[i] <= 5
@@ -35,6 +36,7 @@ function CountValidChoicesHelper(n: int, friends: seq<int>, finger_count: int): 
   else
     CountValidChoicesHelper(n, friends, finger_count + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

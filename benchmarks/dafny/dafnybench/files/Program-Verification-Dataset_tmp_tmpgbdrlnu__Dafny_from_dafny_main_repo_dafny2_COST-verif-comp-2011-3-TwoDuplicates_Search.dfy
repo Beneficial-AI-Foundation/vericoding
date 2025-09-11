@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate IsDuplicate(a: array<int>, p: int)
   reads a
 {
@@ -10,6 +11,7 @@ ghost predicate IsPrefixDuplicate(a: array<int>, k: int, p: int)
 {
   exists i,j :: 0 <= i < j < k && a[i] == a[j] == p
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

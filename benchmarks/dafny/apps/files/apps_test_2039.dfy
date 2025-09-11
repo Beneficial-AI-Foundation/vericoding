@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 1 && |a| == n
@@ -14,6 +15,7 @@ predicate IsLocalExtremum(a: seq<int>, i: int)
 {
     1 <= i < |a| - 1 && ((a[i] > a[i-1] && a[i] > a[i+1]) || (a[i] < a[i-1] && a[i] < a[i+1]))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

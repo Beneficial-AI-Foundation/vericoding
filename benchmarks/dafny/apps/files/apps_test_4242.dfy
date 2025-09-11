@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CommonDivisors(A: int, B: int): set<int>
   requires A > 0 && B > 0
 {
@@ -17,6 +18,7 @@ predicate IsKthLargestCommonDivisor(A: int, B: int, K: int, result: int)
   result in CommonDivisors(A, B) &&
   |set d | d in CommonDivisors(A, B) && d > result| == K - 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

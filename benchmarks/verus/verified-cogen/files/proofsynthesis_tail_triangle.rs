@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus!{
@@ -11,6 +12,7 @@ spec fn triangle(n: nat) -> (result: nat)
         n + triangle((n - 1) as nat)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def divide (weight : Int) : Bool := sorry
 
 theorem divide_is_bool (weight : Int) :
   divide weight = true ∨ divide weight = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divide_true_implies_conditions (weight : Int) :
   divide weight = true → weight > 2 ∧ weight % 2 = 0 := sorry
 
@@ -35,6 +43,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval divide 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

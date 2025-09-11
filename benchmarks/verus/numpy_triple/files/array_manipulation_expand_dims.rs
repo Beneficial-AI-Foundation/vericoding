@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -6,6 +7,7 @@ pub enum ExpandedVector<T> {
     RowVector(Vec<T>),
     ColumnVector(Vec<T>),
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

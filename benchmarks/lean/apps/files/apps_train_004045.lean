@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def souls (character : String) (build : List Nat) : String :=
   sorry
 
@@ -9,10 +10,14 @@ def isValidCharacter (c : String) : Bool :=
 
 def isValidBuild (b : List Nat) : Bool :=
   b.length = 8 && b.all (fun x => x ≥ 1 && x ≤ 99)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def baseStats (c : String) : List Nat :=
   match c with
   | "warrior" => [11, 8, 12, 13, 13, 11, 9, 9]
@@ -26,7 +31,9 @@ def baseStats (c : String) : List Nat :=
   | "cleric" => [11, 11, 9, 12, 8, 11, 8, 14]
   | "deprived" => [11, 11, 11, 11, 11, 11, 11, 11]
   | _ => []
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem souls_returns_valid_string
     {c : String} {b : List Nat}
     (hc : isValidCharacter c = true)
@@ -71,6 +78,7 @@ info: 'Starting as a pyromancer, level 12 will require 8348 souls.'
 -/
 -- #guard_msgs in
 -- #eval souls "pyromancer" [16, 12, 11, 12, 9, 12, 13, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

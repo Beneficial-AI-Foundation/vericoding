@@ -1,8 +1,10 @@
+// <vc-preamble>
 predicate InArray(a: array<int>, x: int)
     reads a
 {
     exists i :: 0 <= i < a.Length && a[i] == x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

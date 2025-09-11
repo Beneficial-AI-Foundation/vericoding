@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sum (xs : List Nat) : Nat := 
   match xs with
   | [] => 0
@@ -5,15 +6,21 @@ def sum (xs : List Nat) : Nat :=
 
 def sumOfLists (xss : List (List Nat)) : Nat :=
   sum (xss.map sum)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_maximum_gold (grid : List (List Nat)) : Nat := sorry 
 
 theorem result_less_than_total (grid : List (List Nat)) :
   get_maximum_gold grid ≤ sumOfLists grid := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_grid_is_zero {w h : Nat} (grid : List (List Nat)) 
   (h1 : grid.length = h)
   (h2 : ∀ row ∈ grid, row.length = w ∧ ∀ x ∈ row, x = 0) :
@@ -54,6 +61,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval get_maximum_gold [[1, 1], [1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

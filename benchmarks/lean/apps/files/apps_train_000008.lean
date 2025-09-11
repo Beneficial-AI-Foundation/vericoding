@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_max_score (n k : Nat) (games : String) : Nat := sorry
 
 theorem non_negative_result {n k : Nat} {games : String} :
   n > 0 → calculate_max_score n k games ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem score_monotonic_with_k {n k : Nat} {games : String} :
   n > 0 → k > 0 → calculate_max_score n k games ≥ calculate_max_score n (k-1) games := sorry
 
@@ -36,6 +44,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval calculate_max_score 7 1 "LWLWLWL"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

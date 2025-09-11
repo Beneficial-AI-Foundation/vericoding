@@ -1,3 +1,4 @@
+// <vc-preamble>
 function fib4_rec(n: nat): nat
   decreases n
 {
@@ -5,6 +6,7 @@ function fib4_rec(n: nat): nat
   else if n == 3 then 1
   else fib4_rec(n - 1) + fib4_rec(n - 2) + fib4_rec(n - 3) + fib4_rec(n - 4)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

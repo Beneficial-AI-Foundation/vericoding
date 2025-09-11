@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_sabotages_at_level_5 (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_sabotages_nonnegative (n : Nat) (h : n ≥ 1) :
   count_sabotages_at_level_5 n ≥ 0 :=
   sorry
@@ -37,6 +45,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_sabotages_at_level_5 1000
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

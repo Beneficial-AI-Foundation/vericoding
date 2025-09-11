@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tileRectangle (n m : Nat) : Nat := sorry
 
 theorem square_input {n : Nat} (h : n > 0) : 
   tileRectangle n n = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiples {n : Nat} (h : n > 0) :
   tileRectangle n (2 * n) = 2 ∧ tileRectangle (2 * n) n = 2 := sorry
 
@@ -32,6 +40,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval tile_rectangle 11 13
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

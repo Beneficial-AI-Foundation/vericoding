@@ -1,3 +1,4 @@
+// <vc-preamble>
 function string_to_digits(s: string): set<int>
 {
     set i | 0 <= i < |s| && '0' <= s[i] <= '9' :: (s[i] as int) - ('0' as int)
@@ -25,6 +26,7 @@ function split_lines(s: string): seq<string>
         else if idx < |s| then [s[..idx]] + split_lines(s[idx+1..])
         else [s]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

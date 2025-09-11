@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def db_sort : List α → List α := sorry
 
 def isSorted [LE α] [Inhabited α] (l : List α) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem db_sort_numbers_sorted [LE Int] [Inhabited Int] (arr : List Int) : 
   isSorted (db_sort arr) := sorry
 
@@ -55,6 +63,7 @@ info: [1, 1, 1, 1, 1, 1, 2, 2, 3, '1', '2', 'three']
 -/
 -- #guard_msgs in
 -- #eval db_sort [1, 1, 1, 1, 1, 2, "1", "2", "three", 1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

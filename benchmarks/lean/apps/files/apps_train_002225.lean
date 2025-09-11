@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def WeightList := List Nat
 
 def process_weight_queries (n : Nat) (weights : WeightList) (queries : List (List Nat)) : List String := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem weights_length_matches_n (n : Nat) (weights : WeightList) :
   weights.length ≤ n → True := 
   sorry
@@ -40,6 +48,7 @@ info: expected2
 -/
 -- #guard_msgs in
 -- #eval process_weight_queries 3 [2013, 2015, 2017] [[3, 1, 3, 4030], [1, 1, 111], [3, 1, 3, 4030], [3, 1, 2, 111]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

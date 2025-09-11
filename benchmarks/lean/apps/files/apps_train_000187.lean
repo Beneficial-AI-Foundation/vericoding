@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def atMostNGivenDigitSet (digits : List String) (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countValidDigits (digits : List String) (n : Nat) : Nat :=
   (digits.filter (fun d => d.toNat?.getD 0 ≤ n)).length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_nonnegative {digits : List String} {n : Nat} :
   0 ≤ atMostNGivenDigitSet digits n := 
   sorry
@@ -32,6 +39,7 @@ theorem single_digit_basic_cases_1 :
 theorem single_digit_basic_cases_2 :
   atMostNGivenDigitSet ["9"] 10 = 1 := 
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isValidTree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
   sorry
 
@@ -6,13 +7,19 @@ def findOptimalAttack (n : Nat) (edges : List (Nat × Nat)) : Nat × Nat :=
 
 def getAdjList (n : Nat) (edges : List (Nat × Nat)) : List (List Nat) :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def componentSize (adj : List (List Nat)) (start visited : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_optimal_attack_output_bounds {n : Nat} {edges : List (Nat × Nat)} 
   (h_valid : isValidTree n edges = true) :
   let (attack_node, max_subgraph) := findOptimalAttack n edges
@@ -28,6 +35,7 @@ theorem breaking_point_subgraph_sizes {n : Nat} {edges : List (Nat × Nat)}
   node ∈ neighbors →
   componentSize adj [node] [attack_node] ≤ max_subgraph :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

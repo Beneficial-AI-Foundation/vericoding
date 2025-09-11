@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rearrange_array (n : Nat) (arr : List Int) (can : List Bool) : List Int := sorry
 
 theorem rearrange_array_length
   (n : Nat) (arr : List Int) (can : List Bool) :
   arr.length = n → can.length = n →
   (rearrange_array n arr can).length = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rearrange_array_fixed_elements
   (n : Nat) (arr : List Int) (can : List Bool) (i : Nat) (h1 : arr.length = n) 
   (h2 : can.length = n) (h3 : i < n) :
@@ -51,6 +59,7 @@ info: [-8, 4, 1, -2, 4, 7, -6]
 -/
 -- #guard_msgs in
 -- #eval rearrange_array 7 [-8, 4, -2, -6, 4, 7, 1] [1, 0, 0, 0, 1, 1, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

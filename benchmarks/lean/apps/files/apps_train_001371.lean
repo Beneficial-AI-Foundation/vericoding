@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def String.replicate (s : String) (n : Nat) : String := sorry
 
 -- Function signature we're reasoning about
@@ -5,17 +6,23 @@ def String.replicate (s : String) (n : Nat) : String := sorry
 def count_safe_buildings (s : String) : Nat := sorry
 
 -- Properties from hypothesis test
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSafeBuilding (s : String) (i : Nat) : Bool := sorry 
 
 theorem count_safe_buildings_equals_safe_spots (s : String) :
   count_safe_buildings s = 
     (List.range s.length).foldl (fun acc i => 
       if isSafeBuilding s i then acc + 1 else acc) 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_safe_buildings_nonnegative (s : String) :
   count_safe_buildings s ≥ 0 := sorry
 
@@ -58,6 +65,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval count_safe_buildings "0000000"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

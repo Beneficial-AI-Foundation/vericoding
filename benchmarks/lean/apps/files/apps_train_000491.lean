@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_malware_spread (graph : List (List Nat)) (initial : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_malware_spread_result_in_initial {graph : List (List Nat)} {initial : List Nat} 
     (h_graph_valid : List.length graph > 0)
     (h_initial_valid : List.length initial > 0)
@@ -52,6 +60,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_malware_spread [[1, 1, 1], [1, 1, 1], [1, 1, 1]] [1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

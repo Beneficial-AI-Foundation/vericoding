@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_adjacent_pairs (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_adjacent_pairs_nonnegative (s : String) :
   count_adjacent_pairs s ≥ 0 :=
   sorry
@@ -38,6 +46,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_adjacent_pairs "cat cat dog dog cat cat"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

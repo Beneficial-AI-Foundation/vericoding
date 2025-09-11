@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def outed (meet : Array (String × Nat)) (boss : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem outed_result_valid (meet : Array (String × Nat)) (boss : String) :
   (outed meet boss = "Get Out Now!") ∨ (outed meet boss = "Nice Work Champ!") :=
   sorry
@@ -42,6 +50,7 @@ info: 'Get Out Now!'
 -/
 -- #guard_msgs in
 -- #eval outed {"tim": 2, "jim": 4, "randy": 0, "sandy": 5, "andy": 8, "katie": 6, "laura": 2, "saajid": 2, "alex": 3, "john": 2, "mr": 8} "john"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

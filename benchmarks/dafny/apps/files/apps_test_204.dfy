@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, x: int, y: int)
 {
   a > 0 && b > 0 && x > 0 && y > 0
@@ -28,6 +29,7 @@ function ExpectedResult(a: int, b: int, x: int, y: int): int
   var y_reduced := y / g;
   min(a / x_reduced, b / y_reduced)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

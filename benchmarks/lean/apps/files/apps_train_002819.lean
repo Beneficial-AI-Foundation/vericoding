@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def swap (s : String) : String := sorry
 
 def is_ascii_letter (c : Char) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem swap_preserves_non_letters (s : String)
   (h : ∀ c, c ∈ s.data → ¬is_ascii_letter c) :
   swap s = s := sorry
@@ -34,6 +42,7 @@ info: 'tHiS Is a L0ng SentENCE'
 -/
 -- #guard_msgs in
 -- #eval swap "ThIs iS A l0NG sENTence"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

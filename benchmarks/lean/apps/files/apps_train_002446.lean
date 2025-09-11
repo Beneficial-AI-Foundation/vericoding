@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def get_weekday_name (month : Nat) (day : Nat) (year : Nat) : String := sorry
 
 structure Date where
@@ -10,10 +11,14 @@ def weekday (d : Date) : Nat := sorry
 
 def calendar_day_name (n : Nat) : String := sorry
 def IsUppercase (s : String) : Prop := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def IsValidWeekdayName (s : String) : Prop := sorry
 
 theorem get_weekday_name_matches_calendar
@@ -23,7 +28,9 @@ theorem get_weekday_name_matches_calendar
     (h3 : 1900 ≤ y ∧ y ≤ 2100)
     (h4 : IsValidDate ⟨m, d, y⟩) : 
     get_weekday_name m d y = calendar_day_name (weekday ⟨m, d, y⟩) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_weekday_name_returns_uppercase
     (m : Nat) (d : Nat) (y : Nat)
     (h1 : 1 ≤ m ∧ m ≤ 12) 
@@ -50,6 +57,7 @@ info: 'MONDAY'
 -/
 -- #guard_msgs in
 -- #eval get_weekday_name 12 25 2023
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (arr : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem last_element_always_included {arr : List Int} (h : arr ≠ []) :
   (solve arr).getLast? = arr.getLast? :=
   sorry
@@ -29,6 +37,7 @@ info: [17, 14, 5, 2]
 -/
 -- #guard_msgs in
 -- #eval solve [16, 17, 14, 3, 14, 5, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

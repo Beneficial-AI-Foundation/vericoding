@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_chopstick_pairs (n : Nat) (d : Nat) (lengths : List Nat) : Nat := sorry
 
 theorem max_chopstick_pairs_non_negative (n : Nat) (d : Nat) (lengths : List Nat)
   (hn : n ≥ 2) (hlen : lengths.length = n) :
   max_chopstick_pairs n d lengths ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_chopstick_pairs_upper_bound (n : Nat) (d : Nat) (lengths : List Nat)
   (hn : n ≥ 2) (hlen : lengths.length = n) :
   max_chopstick_pairs n d lengths ≤ n/2 := sorry
@@ -37,6 +45,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval max_chopstick_pairs 4 0 [1, 1, 2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

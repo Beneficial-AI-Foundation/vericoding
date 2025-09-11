@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 1 && |a| == n && forall i :: 0 <= i < |a| ==> a[i] >= 1
@@ -45,6 +46,7 @@ function RoundToInt(x: real): int
     else
         ((x - 0.5).Floor) as int
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

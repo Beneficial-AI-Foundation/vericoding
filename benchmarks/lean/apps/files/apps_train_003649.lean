@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def REGION : String := "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 def encrypt (s : String) : String := sorry
 
 def decrypt (s : String) : String := sorry
 def isValidText (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def charAtPos (s : String) (pos : Nat) : Char := s.data[pos]!
 
 theorem encryption_decryption_roundtrip (s : String) (h : isValidText s = true) :
   decrypt (encrypt s) = s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encrypted_uses_valid_chars (s : String) (h : isValidText s = true) (h2 : s ≠ "") :
   isValidText (encrypt s) = true := sorry
 
@@ -63,6 +70,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval decrypt ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

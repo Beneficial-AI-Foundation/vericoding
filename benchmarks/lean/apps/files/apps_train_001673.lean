@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def sumList (l : List Int) : Int := match l with
   | [] => 0
   | h::t => h + sumList t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def combos (n : Int) (m : Int := 1) : List (List Int) := sorry
 
 def isSorted (l : List Int) : Bool :=
@@ -12,7 +17,9 @@ def isSorted (l : List Int) : Bool :=
   | [] => true
   | [_] => true
   | x::y::rest => x ≤ y && isSorted (y::rest)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_equals_input (n : Int) (h : n > 0) (h' : n ≤ 10) :
   ∀ combo ∈ combos n, sumList combo = n := sorry
 
@@ -50,6 +57,7 @@ info: sorted([[1, 1, 1], [1, 2], [3]])
 -/
 -- #guard_msgs in
 -- #eval sorted combos(3)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

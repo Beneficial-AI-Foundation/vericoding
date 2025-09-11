@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def evenLength (s : String) : Bool :=
   s.length % 2 = 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def filterEvenLengthWords (words : List String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_elements_have_even_length (words : List String) :
   ∀ w ∈ filterEvenLengthWords words, evenLength w :=
 sorry
@@ -40,6 +47,7 @@ info: ['Four']
 -/
 -- #guard_msgs in
 -- #eval filter_even_length_words ["One", "Two", "Three", "Four"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

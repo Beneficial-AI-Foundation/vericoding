@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SumOfDigits(x: int): int
   requires x >= 0
   decreases x
@@ -11,6 +12,7 @@ function Check(x: int, s: int): bool
 {
   x - SumOfDigits(x) >= s
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

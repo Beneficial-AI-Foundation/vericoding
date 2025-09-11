@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def List.transpose {α : Type} : List (List α) → List (List α)
   | _ => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_matrix_transpose {α : Type} :
   @List.transpose α [[]] = [[]] := by sorry
 
@@ -36,6 +44,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval transpose [[1, 2, 3], [4, 5, 6]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

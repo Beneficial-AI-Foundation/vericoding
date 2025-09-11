@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn sqrt(x: int, r: int) -> bool {
     r * r <= x && (r + 1) * (r + 1) > x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def edge_detection (s : String) : String := sorry
 
 def pixel_at (s : String) (x y : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_value_image_no_edges (val : Nat) (h : val > 0) (h2 : val ≤ 5) :
   edge_detection s!"1 {val} 1" = "1 0 1" := sorry
 
@@ -33,6 +41,7 @@ info: '2 9 4'
 -/
 -- #guard_msgs in
 -- #eval edge_detection "2 1 2 10 2"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def minimum (l : List Int) : Option Int := sorry
 def maximum (l : List Int) : Option Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maximum_product (arr : List Int) : Int := sorry
 
 theorem maximum_product_in_array (arr : List Int) (h : arr ≠ []) :
   ∃ x ∈ arr, maximum_product arr = x := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maximum_product_even_negatives (arr : List Int) (h : arr ≠ []) 
   (h_even : (arr.filter (λ x => x < 0)).length % 2 = 0) :
   let pos := arr.filter (λ x => x ≥ 0)
@@ -46,6 +53,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval maximum_product [-1, -2, -3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

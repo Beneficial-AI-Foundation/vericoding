@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -64,6 +65,7 @@ spec fn max_interval_for_same_center(s: Seq<char>, k: int, lo: int, hi: int) -> 
     &&& palindromic(s, lo, hi)
     &&& forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s, i, j) && i + j == k ==> j - i <= hi - lo
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

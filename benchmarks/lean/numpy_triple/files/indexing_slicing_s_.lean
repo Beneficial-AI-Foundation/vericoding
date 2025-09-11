@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -12,13 +13,19 @@ structure Slice where
   /-- The step size for the slice. If None, defaults to 1. -/
   step : Option Nat
   deriving Repr, DecidableEq
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def s_ (start : Option Nat) (stop : Option Nat) (step : Option Nat := none) : Id Slice :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem s_spec (start : Option Nat) (stop : Option Nat) (step : Option Nat := none) :
     ⦃⌜(step.isSome → step.get! > 0) ∧ 
      ((start.isSome ∧ stop.isSome) → start.get! ≤ stop.get!)⌝⦄
@@ -29,3 +36,4 @@ theorem s_spec (start : Option Nat) (stop : Option Nat) (step : Option Nat := no
                (slice.step.isSome → slice.step.get! > 0) ∧
                ((slice.start.isSome ∧ slice.stop.isSome) → slice.start.get! ≤ slice.stop.get!)⌝⦄ := by
   sorry
+-- </vc-theorems>

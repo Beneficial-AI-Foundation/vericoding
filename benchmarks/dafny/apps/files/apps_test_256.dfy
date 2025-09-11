@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);
@@ -46,6 +47,7 @@ function ComputeResult(input: string): string
             else if Team2 then "Team 2\n"
             else "Draw\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

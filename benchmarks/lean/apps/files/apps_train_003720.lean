@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def String.count (s : String) (c : Char) : Nat := sorry
 def baby_count (s : String) : Int ⊕ String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem baby_count_result_type (s : String) :
   match baby_count s with
   | Sum.inl n => True 
@@ -54,6 +62,7 @@ info: "Where's the baby?!"
 -/
 -- #guard_msgs in
 -- #eval baby_count "none here"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

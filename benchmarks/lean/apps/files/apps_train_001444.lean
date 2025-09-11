@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def valid_time_str (h : Nat) (m : Nat) (s : Nat) : String := sorry
 
 def find_thief_with_watch (times : List String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_thief_returns_valid_index 
   (times : List String) 
   (h_nonempty : times ≠ []) :
@@ -50,6 +58,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_thief_with_watch ["12:00:00"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

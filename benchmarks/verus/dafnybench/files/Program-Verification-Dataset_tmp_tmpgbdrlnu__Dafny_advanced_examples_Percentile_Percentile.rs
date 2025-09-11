@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -17,6 +18,7 @@ spec fn sum_upto(a: Seq<int>, end: int) -> int
 spec fn sum(a: Seq<int>) -> int {
     sum_upto(a, a.len() - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

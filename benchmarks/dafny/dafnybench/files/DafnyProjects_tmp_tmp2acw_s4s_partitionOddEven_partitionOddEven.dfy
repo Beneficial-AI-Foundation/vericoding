@@ -1,5 +1,7 @@
+// <vc-preamble>
 predicate  odd(n: nat) { n % 2 == 1 }
 predicate  even(n: nat) { n % 2 == 0 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

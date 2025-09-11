@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def squareUp (n: Nat) : List Nat := sorry
 
 theorem square_up_length (n: Nat) (h: n > 0) :
   (squareUp n).length = n * n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem square_up_range (n: Nat) (h: n > 0) :
   ∀ x ∈ squareUp n, x ≥ 0 ∧ x ≤ n := sorry
 
@@ -33,6 +41,7 @@ info: [0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 2, 1, 4, 3, 2, 1]
 -/
 -- #guard_msgs in
 -- #eval square_up 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

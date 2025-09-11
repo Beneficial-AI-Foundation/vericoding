@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def countDigit (n : Nat) (d : Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_digit_frequency (nums : List Nat) (target : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_digit_freq_in_list (nums : List Nat) (target : Nat) 
   (h : nums ≠ []) :
   find_max_digit_frequency nums target ∈ nums :=
@@ -42,6 +49,7 @@ info: '335'
 -/
 -- #guard_msgs in
 -- #eval find_max_digit_frequency ["335", "876", "98", "1323", "349"] "3"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

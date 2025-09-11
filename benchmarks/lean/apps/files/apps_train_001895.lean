@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_and_replace_pattern (words : List String) (pattern : String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem word_length_matches_pattern (words : List String) (pattern : String) :
   ∀ w ∈ find_and_replace_pattern words pattern, String.length w = String.length pattern := by
   sorry
@@ -47,6 +55,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval find_and_replace_pattern ["ccc"] "abb"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pagination_text (pageNumber pageSize totalProducts : Nat) : String := sorry
 
 theorem pagination_format
@@ -23,7 +29,9 @@ theorem pagination_format
     ∧
     -- result contains " of "
     ∃ before after : String, result = before ++ " of " ++ after := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pagination_numbers
     {pageNumber pageSize totalProducts : Nat}
     (h1 : pageNumber ≥ 1)
@@ -68,6 +76,7 @@ info: 'Showing 1 to 8 of 8 Products.'
 -/
 -- #guard_msgs in
 -- #eval pagination_text 1 10 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

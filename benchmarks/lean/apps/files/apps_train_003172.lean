@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def ones_counter (nums : List Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_list : List Int → Int 
   | [] => 0
   | x::xs => x + sum_list xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ones_counter_positive (nums : List Int) :
   ∀ x ∈ ones_counter nums, x > 0
 := sorry
@@ -54,6 +61,7 @@ info: [1, 2, 4, 1]
 -/
 -- #guard_msgs in
 -- #eval ones_counter [1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

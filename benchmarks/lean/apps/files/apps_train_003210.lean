@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def encrypt (text : Option String) (n : Int) : Option String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def decrypt (text : Option String) (n : Int) : Option String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encrypt_decrypt_roundtrip {text : String} {n : Int} (h1 : text.length > 0) (h2 : n > 0) (h3 : n ≤ 10) :
   decrypt (encrypt (some text) n) n = some text :=
   sorry
@@ -62,6 +69,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval decrypt None 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

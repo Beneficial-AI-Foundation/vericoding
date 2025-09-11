@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(r: int, g: int, b: int)
 {
     r >= 1 && g >= 1 && b >= 1
@@ -17,6 +18,7 @@ predicate CanArrange(r: int, g: int, b: int)
     var total := r + g + b;
     2 * maxCount <= total + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -17,6 +18,7 @@ spec fn inner_expr_to_uppercase(str1: &Vec<char>, i: int) -> (result:char) {
         str1[i]
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def List.variance (l : List Int) : Float := sorry
 
 def regressionLine (x : List Int) (y : List Int) : Float × Float := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem regression_line_outputs_float_pair 
   (x y : List Int) 
   (h1 : x.length ≥ 3) 
@@ -38,6 +46,7 @@ info: (0.514, 0.0028)
 -/
 -- #guard_msgs in
 -- #eval regressionLine [0, 10, 20, 30, 40] [0.51, 0.55, 0.57, 0.59, 0.63]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

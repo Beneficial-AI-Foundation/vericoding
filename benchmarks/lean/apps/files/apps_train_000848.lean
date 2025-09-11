@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_win (n a b k : Nat) : String := sorry
 
 theorem check_win_returns_valid_result 
   (n a b k : Nat) 
   (h1 : 0 < n) (h2 : a ≤ n) (h3 : b ≤ n) (h4 : k ≤ n) (h5 : 0 < a) (h6 : 0 < b) :
   check_win n a b k = "Win" ∨ check_win n a b k = "Lose" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_win_is_deterministic 
   (n a b k : Nat) 
   (h1 : 0 < n) (h2 : a ≤ n) (h3 : b ≤ n) (h4 : k ≤ n) (h5 : 0 < a) (h6 : 0 < b) :
@@ -50,6 +58,7 @@ info: 'Lose'
 -/
 -- #guard_msgs in
 -- #eval check_win 5 2 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

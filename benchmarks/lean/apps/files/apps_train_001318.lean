@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def min_plates_max_deliciousness (n : Nat) (arr : List Nat) : Nat :=
   sorry
 
 def countLeadingZeros (arr : List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countTrailingZeros (arr : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_plates_result_bounds {n : Nat} {arr : List Nat} 
   (h : arr.length = n) (h2 : n > 0) :
   let result := min_plates_max_deliciousness n arr
@@ -33,6 +40,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_plates_max_deliciousness 3 [0, 0, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

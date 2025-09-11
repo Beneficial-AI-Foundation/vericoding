@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def valid_card (s : String) : Bool := sorry
 
 def make_valid_number (digits : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_format_raises {s : String} 
   (h : ¬ ∀ c, c ∈ s.data → c = ' ' ∨ ('0' ≤ c ∧ c ≤ '9')) :
   valid_card s = false :=
@@ -47,6 +55,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval valid_card "2222 2222 2222 2224"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

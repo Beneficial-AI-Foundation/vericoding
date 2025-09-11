@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -70,6 +71,7 @@ spec fn precision_le(p1: Precision, p2: Precision) -> bool {
         (Precision::P256, _) => false,
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

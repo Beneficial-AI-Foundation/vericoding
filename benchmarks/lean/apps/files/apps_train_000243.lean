@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def minSumOfLengths (arr : List Int) (target : Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumOfSubarray (arr : List Int) (i j : Nat) : Int :=
   (arr.take j).drop i |>.foldl (· + ·) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem edge_cases_return_negative_one (target : Int) :
   minSumOfLengths [] target = -1 ∧ 
   minSumOfLengths [1] (2 : Int) = -1 ∧
@@ -57,6 +64,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval min_sum_of_lengths [4, 3, 2, 6, 2, 3, 4] 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

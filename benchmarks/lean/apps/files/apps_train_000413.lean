@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def longest_arithmetic_subsequence (arr: List Int) (diff: Int) : Nat :=
   sorry
 
 def countOccurrences (xs : List Int) (x : Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maxOccurrences (xs : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem las_length_bounded {arr: List Int} {diff: Int} :
   arr ≠ [] → longest_arithmetic_subsequence arr diff ≤ arr.length :=
 sorry
@@ -45,6 +52,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval longest_arithmetic_subsequence [1, 5, 7, 8, 5, 3, 4, 2, 1] -2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

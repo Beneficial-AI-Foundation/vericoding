@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mod {n : Nat} (a values : Vector String n) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mod_spec {n : Nat} (a values : Vector String n) :
     ⦃⌜True⌝⦄
     mod a values
@@ -31,3 +38,4 @@ theorem mod_spec {n : Nat} (a values : Vector String n) :
       (format_str.contains '%' → 
         (formatted.length ≥ format_str.length - 2 ∨ formatted.length = 0))⌝⦄ := by
   sorry
+-- </vc-theorems>

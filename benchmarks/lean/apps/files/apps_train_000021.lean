@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_smallest_k (n : Nat) (s : List Nat) : Int := sorry
 
 def bxor (a b : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_smallest_k_positive (n : Nat) (s : List Nat) :
   let k := find_smallest_k n s
   k ≠ -1 → k > 0 := sorry
@@ -34,6 +42,7 @@ info: 1023
 -/
 -- #guard_msgs in
 -- #eval find_smallest_k 2 [0, 1023]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

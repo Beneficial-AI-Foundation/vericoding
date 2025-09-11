@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def around {n : Nat} (a : Vector Float n) (decimals : Int := 0) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem around_spec {n : Nat} (a : Vector Float n) (decimals : Int := 0) :
     ⦃⌜True⌝⦄
     around a decimals
@@ -22,3 +29,4 @@ theorem around_spec {n : Nat} (a : Vector Float n) (decimals : Int := 0) :
       -- Symmetry: rounding negatives has expected behavior
       (a.get i ≥ 0 → result.get i ≥ 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tribonacci (n : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tribonacci_base_zero :
   tribonacci 0 = 0 :=
   sorry
@@ -33,6 +41,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval tribonacci 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

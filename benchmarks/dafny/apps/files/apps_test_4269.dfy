@@ -1,8 +1,10 @@
+// <vc-preamble>
 predicate IsHardToEnter(s: string)
     requires |s| == 4
 {
     s[0] == s[1] || s[1] == s[2] || s[2] == s[3]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

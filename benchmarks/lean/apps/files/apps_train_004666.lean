@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def two_by_two (animals : List String) : Option (List (String × Nat)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem two_by_two_empty_list :
   two_by_two [] = none := sorry
 
@@ -43,6 +51,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval two_by_two ["goat", "goat", "rabbit", "rabbit", "rabbit", "duck", "horse", "horse", "swan"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

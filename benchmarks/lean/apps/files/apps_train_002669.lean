@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Position := String
 
 def whose_turn (p : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem position_order_invariant (pos_list : List Position) (h : pos_list.length = 4) :
   ∀ i, i < pos_list.length →
   let shuffled := (pos_list.drop i) ++ (pos_list.take i)
@@ -33,6 +41,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval whose_turn "f8;h1;f3;c2"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

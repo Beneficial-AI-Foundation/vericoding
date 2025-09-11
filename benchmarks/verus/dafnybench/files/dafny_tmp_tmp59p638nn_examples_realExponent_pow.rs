@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 uninterp spec fn power(n: int, alpha: int) -> int;
 
 uninterp spec fn log(n: int, alpha: int) -> int;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

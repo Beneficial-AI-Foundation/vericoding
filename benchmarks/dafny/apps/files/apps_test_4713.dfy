@@ -1,3 +1,4 @@
+// <vc-preamble>
 function MaxValue(S: string): int
 {
     MaxValueUpToIndex(S, |S|)
@@ -19,6 +20,7 @@ function CurrentValueAtIndex(S: string, index: int): int
     if index == 0 then 0
     else CurrentValueAtIndex(S, index - 1) + (if S[index - 1] == 'I' then 1 else -1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

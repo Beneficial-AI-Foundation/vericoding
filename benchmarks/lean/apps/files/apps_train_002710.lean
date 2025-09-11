@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find (arr : List Nat) (target : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_non_negative (arr : List Nat) (target : Nat) 
   (h : ∀ x ∈ arr, 0 < x) (h2 : arr ≠ []) : 
   0 ≤ find arr target :=
@@ -44,6 +52,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find [1, 4, 5, 8] 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

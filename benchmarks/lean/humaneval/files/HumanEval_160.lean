@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -103,13 +104,19 @@ sample_problems: []
 -/
 def evalArith_precedence (ts : List String) (r : Int) : Prop :=
   evalArith_add ts r
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (operator: List String) (operand : List Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: List String → List Nat → Int)
@@ -130,5 +137,6 @@ theorem correctness
 (operator : List String) (operand : List Nat)
 : problem_spec implementation operator operand := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation ['+', '*', '-'] [2,3,4,5] = 9

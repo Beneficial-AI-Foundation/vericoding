@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def abs (n : Int) : Int := 
   if n ≥ 0 then n else -n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def diff (arr : List String) : Option String := sorry
 
 theorem diff_empty_list :
   diff [] = none := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem diff_equal_pairs (n : Nat) :
   diff [s!"{n}-{n}"] = none := sorry
 
@@ -45,6 +52,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval diff []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findCityWithSmallestReachable (n : Nat) (edges : List (Nat × Nat × Nat)) (threshold : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_index_result (n : Nat) (edges : List (Nat × Nat × Nat)) (threshold : Nat)
   (h1 : n > 0)
   (h2 : ∀ e ∈ edges, e.1 < n ∧ e.2.1 < n)
@@ -38,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_city_with_smallest_reachable 5 [[0, 1, 2], [0, 4, 8], [1, 2, 3], [1, 4, 2], [2, 3, 1], [3, 4, 1]] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

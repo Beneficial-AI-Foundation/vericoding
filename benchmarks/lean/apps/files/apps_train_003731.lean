@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def build_or_buy (hand : String) : List String := sorry
 
 def ValidResources := "bwsog"
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s : List Char) (c : Char) : Nat :=
   s.filter (· = c) |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem build_or_buy_returns_list (hand : String) :
   hand.data.all (· ∈ ValidResources.data) →
   build_or_buy hand ≠ [] ∨ build_or_buy hand = [] := by
@@ -71,6 +78,7 @@ info: ['city']
 -/
 -- #guard_msgs in
 -- #eval build_or_buy "ogogoogogo"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

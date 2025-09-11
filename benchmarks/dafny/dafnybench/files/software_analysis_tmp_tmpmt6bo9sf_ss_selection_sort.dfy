@@ -1,3 +1,4 @@
+// <vc-preamble>
 method find_min_index(a : array<int>, s: int, e: int) returns (min_i: int)
 requires a.Length > 0
 requires 0 <= s < a.Length
@@ -29,6 +30,7 @@ predicate is_permutation2(a:seq<int>, b:seq<int>)
 {
     multiset(a) == multiset(b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

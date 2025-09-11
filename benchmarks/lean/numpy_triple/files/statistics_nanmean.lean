@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nanmean {n : Nat} (a : Vector Float n) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nanmean_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     nanmean a
@@ -37,3 +44,4 @@ theorem nanmean_spec {n : Nat} (a : Vector Float n) :
                      (∀ j : Fin n, ¬(a.get j).isNaN → a.get j ≤ a.get max_idx) ∧
                      a.get min_idx ≤ result ∧ result ≤ a.get max_idx))⌝⦄ := by
   sorry
+-- </vc-theorems>

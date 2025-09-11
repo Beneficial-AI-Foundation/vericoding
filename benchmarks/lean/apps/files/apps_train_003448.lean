@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def primef (n : Nat) : List Nat := sorry
 
 def sflpf_data (val : Nat) (nmax : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem primef_product_equals_input (n : Nat) (h : n ≥ 2) : 
   (List.foldl (· * ·) 1 (primef n)) = n := sorry
 
@@ -36,6 +44,7 @@ info: [998]
 -/
 -- #guard_msgs in
 -- #eval sflpf_data 501 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

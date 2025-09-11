@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def leo (oscar : Int) : String := sorry
 
 theorem leo_is_string (oscar : Int) :
   ∃ s : String, leo oscar = s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem leo_before_wolf (oscar : Int) (h: oscar ≤ 85) :
   leo oscar = "When will you give Leo an Oscar?" := sorry
 
@@ -33,6 +41,7 @@ info: 'Not even for Wolf of wallstreet?!'
 -/
 -- #guard_msgs in
 -- #eval leo 86
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

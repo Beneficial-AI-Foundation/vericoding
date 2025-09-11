@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidBinaryString(s: string)
 {
     |s| > 0 && 
@@ -19,6 +20,7 @@ predicate IsMinimalForm(s: string, result: string)
     &&
     s != "0" ==> result == "1" + seq(count_zeros(s), _ => '0')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

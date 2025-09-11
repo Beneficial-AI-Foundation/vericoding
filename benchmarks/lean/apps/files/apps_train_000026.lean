@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_jigsaw (n m : Nat) : Bool := sorry
 
 theorem solve_jigsaw_symmetry (n m : Nat) :
   solve_jigsaw n m = solve_jigsaw m n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_jigsaw_one_row (n : Nat) : 
   solve_jigsaw 1 n = true := sorry
 
@@ -32,6 +40,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval solve_jigsaw 2 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

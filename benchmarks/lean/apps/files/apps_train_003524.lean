@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Point := Float × Float
 
 def get_slope : Point → Point → Option Float := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem slope_same_direction {p1 p2 : Point} :
   get_slope p1 p2 = get_slope p2 p1 := sorry
 
@@ -36,6 +44,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval get_slope [11, 1] [1, 11]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

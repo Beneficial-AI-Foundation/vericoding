@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def small_enough (numbers : List Int) (limit : Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_maximum (l : List Int) : Option Int :=
   l.foldl (fun acc x => match acc with
     | none => some x
     | some m => some (max m x)) none
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem small_enough_characterization (numbers : List Int) (limit : Int) 
     (h : numbers ≠ []) : 
   small_enough numbers limit = ((list_maximum numbers).getD 0 ≤ limit) :=
@@ -44,6 +51,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval small_enough [101, 45, 75, 105, 99, 107] 107
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

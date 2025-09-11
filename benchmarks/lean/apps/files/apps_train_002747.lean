@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find (s : String) : String := sorry
 
 theorem single_char_strings (s : String) 
   (h : ∀ c ∈ s.data, c = '!') :
   find s = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_exclaim_question (s : String)
   (h : ∀ c ∈ s.data, c ≠ '!' ∧ c ≠ '?') :
   find s = "" := sorry
@@ -31,6 +39,7 @@ info: '!!???'
 -/
 -- #guard_msgs in
 -- #eval find "!!???!????"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

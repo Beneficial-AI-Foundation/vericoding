@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum (a:array<int>, i:int, j:int) :int
 decreases j
 reads a
@@ -33,6 +34,7 @@ decreases l
     case Nil => false
     case Cons(y,r)=> if (x==y) then true else mem(x,r)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

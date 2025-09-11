@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountOccurrences(s: seq<int>, x: int): int
     ensures CountOccurrences(s, x) >= 0
     ensures CountOccurrences(s, x) <= |s|
@@ -33,6 +34,7 @@ predicate RequiresTwoContests(k: int, ratings: seq<int>)
 {
     k !in ratings && k * |ratings| != Sum(ratings)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

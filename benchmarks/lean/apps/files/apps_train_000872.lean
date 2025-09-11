@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_array_restoration (N M K : Nat) (A : List Int) (restrictions : List (String × Nat × Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_non_negative (N M K : Nat) (A : List Int) 
     (restrictions : List (String × Nat × Nat)) :
   solve_array_restoration N M K A restrictions ≥ 0 := sorry
@@ -48,6 +56,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_array_restoration 6 2 2 [-1, -1, -1, -1, -1, -1] [("I", 1, 4), ("D", 4, 6)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

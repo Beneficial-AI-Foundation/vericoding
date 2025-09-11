@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def String.freq (s : String) (c : Char) : Nat :=
   s.toList.filter (· = c) |>.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def longest_palindrome (s : String) : Nat := sorry
 
 theorem longest_palindrome_length_bounds 
   (s : String) (h : s.length > 0) : 
   let res := longest_palindrome s
   res ≤ s.length ∧ res ≥ 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem longest_palindrome_monotonic
   (s : String) (h : s.length > 0) :
   let res1 := longest_palindrome s
@@ -43,6 +50,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval longest_palindrome "Aa"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_pairs_with_mod (n : Nat) (p : Nat) (k : Nat) (numbers : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list_zero_pairs (p : Nat) (h: p ≥ 2) :
   count_pairs_with_mod 0 p 0 [] = 0 :=
   sorry
@@ -25,6 +33,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_pairs_with_mod 5 5 3 [3, 0, 4, 1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

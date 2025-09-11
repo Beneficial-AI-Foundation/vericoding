@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def race (v1 v2 g : Nat) : Option (Nat × Nat × Nat) := sorry
 
 theorem race_slower_returns_none {v1 v2 g : Nat} :
   v2 ≤ v1 → race v1 v2 g = none := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem race_result_non_negative {v1 v2 g : Nat} 
   (h : v2 > v1) (result : Nat × Nat × Nat) :
   race v1 v2 g = some result →
@@ -38,6 +46,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval race 820 81 550
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sumEvenNumbers (l : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum (l : List Int) : Int :=
   l.foldl (· + ·) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_even_numbers_sums_evens (l : List Int) :
   sumEvenNumbers l = listSum (l.filter (fun n => n % 2 = 0)) := by
   sorry
@@ -41,6 +48,7 @@ info: 14
 -/
 -- #guard_msgs in
 -- #eval sum_even_numbers [-16, -32, 20, 21, 41, 42]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

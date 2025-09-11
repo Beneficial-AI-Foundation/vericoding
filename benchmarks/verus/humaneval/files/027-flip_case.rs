@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -27,6 +28,7 @@ spec fn flip_case_spec(c: char) -> (result:char) {
         c
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

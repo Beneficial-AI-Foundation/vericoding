@@ -1,6 +1,8 @@
+// <vc-preamble>
 predicate InMap(nums: seq<int>, m: map<int, int>, t: int) {
   forall j :: 0 <= j < |nums| ==> t - nums[j] in m
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

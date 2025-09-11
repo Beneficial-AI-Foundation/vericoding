@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def yellow_be_gone (color : String) : String := sorry
 
 def yellow_colors : List String := ["gold", "khaki", "lemonchiffon", "lightgoldenrodyellow", 
@@ -10,7 +16,9 @@ def yellow_mapping : List (String × String) := [("gold", "ForestGreen"), ("khak
                       ("lemonchiffon", "PaleGreen"), ("lightgoldenrodyellow", "SpringGreen"),
                       ("lightyellow", "MintCream"), ("palegoldenrod", "LightGreen"),
                       ("yellow", "Lime")]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem yellow_mapping_consistent {color : String} (h : color ∈ yellow_colors) :
   ∃ mapped : String, (color, mapped) ∈ yellow_mapping ∧ yellow_be_gone color = mapped := sorry
 
@@ -57,6 +65,7 @@ info: '#C71585'
 -/
 -- #guard_msgs in
 -- #eval yellow_be_gone "#C71585"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -17,6 +18,7 @@ spec fn range_satisfies_comparer_negation(q: Seq<int>, key: int, lower_bound: na
 {
     range_satisfies_comparer(q, key, lower_bound, upper_bound, |n1, n2| !comparer(n1, n2))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

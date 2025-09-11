@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_colored_balls (n : Nat) (pairs : List (List Nat)) : Nat := sorry
 
 theorem solve_colored_balls_non_negative (n : Nat) (pairs : List (List Nat)) : 
   solve_colored_balls n pairs ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_colored_balls_max_bound (n : Nat) (pairs : List (List Nat)) :
   solve_colored_balls n pairs ≤ (10^9 - 1) * (10^9 - 1) := sorry
 
@@ -38,6 +46,7 @@ info: 999999998000000001
 -/
 -- #guard_msgs in
 -- #eval solve_colored_balls 2 [[1, 1], [1000000000, 1000000000]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

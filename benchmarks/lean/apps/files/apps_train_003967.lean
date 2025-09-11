@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def is_prime : Nat → Bool := sorry
 
 def factorial (n : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def factors_up_to (n : Nat) (k : Nat) : Bool := sorry
 
 theorem not_prime_if_less_than_2 (n : Nat) (h : n ≤ 1) : ¬(is_prime n = true) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prime_iff_no_factors (n : Nat) (h : n ≥ 2) :
   is_prime n = true ↔ ¬(factors_up_to n (n/2) = true) := sorry
 
@@ -32,6 +39,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_prime 143
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def timeCorrect (s : Option String) : Option String := sorry
 
 def isValidTimeFormat (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_input_returns_none_or_same
   (s : Option String) : 
   s.isNone ∨ (s = some "") → timeCorrect s = s := sorry
@@ -60,6 +68,7 @@ info: '00:01:01'
 -/
 -- #guard_msgs in
 -- #eval time_correct "24:01:01"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

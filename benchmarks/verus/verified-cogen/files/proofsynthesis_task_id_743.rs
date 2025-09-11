@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn rotation_split(len: usize, n: usize) -> (result: int) {
     len - (n % len)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

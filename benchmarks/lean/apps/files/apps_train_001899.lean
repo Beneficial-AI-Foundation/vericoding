@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def possible_bipartition (n : Nat) (dislikes : List (List Nat)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_dislikes_always_possible {n : Nat} {dislikes : List (List Nat)} :
   n ≥ 2 → dislikes = [] → possible_bipartition n dislikes = true := by
   sorry
@@ -37,6 +45,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval possible_bipartition 5 [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

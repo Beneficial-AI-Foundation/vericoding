@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def string_to_int_list (s : String) : List Int := sorry
 
 theorem string_to_int_list_preserves_list (nums : List Int) :
   let s := String.intercalate "," (nums.map toString)
   string_to_int_list s = nums :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_to_int_list_extra_commas (nums : List Int) (h : nums ≠ []) :
   let s := (String.intercalate "," (nums.map toString)).replace "," ",,"
   string_to_int_list s = nums :=
@@ -36,6 +44,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval string_to_int_list ",,,,,,,,"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

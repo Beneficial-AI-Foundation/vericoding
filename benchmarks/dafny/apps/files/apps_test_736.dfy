@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int)
 {
   n > 0 && n <= 10000 && m > 1 && m <= 10
@@ -32,6 +33,7 @@ predicate IsMinimalSolution(n: int, m: int, result: int)
 {
   result != -1 ==> forall k :: (MinMoves(n) <= k <= n && k < result) ==> k % m != 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def distinctSubseqCount (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_bounds {s : String} (h : s.length > 0) : 
   let result := distinctSubseqCount s
   0 ≤ result ∧ result < 10^9 + 7 :=
@@ -35,6 +43,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval distinct_subseq_count "aaa"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def valid_board (board: List (List Char)) : Bool := sorry
 
 def count_battleships (board: List (List Char)) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_battleships_empty {b: List (List Char)} (h1: b = []) : count_battleships b = 0 := sorry
 
 theorem count_battleships_empty_row {b: List (List Char)} (h1: b = [[]]) : count_battleships b = 0 := sorry
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_battleships []
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

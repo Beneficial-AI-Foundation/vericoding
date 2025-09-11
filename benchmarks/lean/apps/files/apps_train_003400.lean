@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def proc_seq : List Nat → List Nat 
   | xs => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countPermNoLeadingZero (n : Nat) (m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem proc_seq_valid_output (nums : List Nat) :
   let result := proc_seq nums
   (result.length = 2 ∨ result.length = 4) ∧
@@ -45,6 +52,7 @@ info: [4, 218, 358, 1152]
 -/
 -- #guard_msgs in
 -- #eval proc_seq 230 15 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

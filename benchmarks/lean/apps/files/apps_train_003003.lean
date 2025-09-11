@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isOddHeavy (lst : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list_not_odd_heavy :
   isOddHeavy [] = false :=
 sorry
@@ -36,6 +44,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_odd_heavy [-1, -2, 21]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

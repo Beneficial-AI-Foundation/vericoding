@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def combine_strings : List String → String
   | _ => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s : String) (c : Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem combine_strings_length (strings : List String) :
   (combine_strings strings).length = List.foldl (· + ·) 0 (strings.map String.length) :=
 sorry
@@ -42,6 +49,7 @@ info: 'a1$b2%c3^d&'
 -/
 -- #guard_msgs in
 -- #eval combine_strings "abcd" "123" "$%^&"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

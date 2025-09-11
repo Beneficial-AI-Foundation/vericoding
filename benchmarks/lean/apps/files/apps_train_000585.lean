@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def processText (text : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem process_text_starts_ends_with_i (text : List String) (h : text.length > 0) : 
   let result := processText (String.intercalate " " text)
   result.take 1 = "I" ∧ result.takeRight 1 = "I" :=
@@ -27,6 +35,7 @@ theorem process_text_preserves_words (text : String) (h : text.length > 0) :
   let outputWords := String.split result (· = ' ') |>.filter (· ≠ "I")
   inputWords = outputWords :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

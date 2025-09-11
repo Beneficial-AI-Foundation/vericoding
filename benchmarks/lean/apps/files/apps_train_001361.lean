@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def decryptPassword (rules : List (Char × Char)) (encrypted : String) : String :=
   sorry
 
 def stringToNat (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def replaceChar (s : String) (oldChar newChar : Char) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_rules_preserve_number {num : Nat} (h : num ≤ 1000000) :
   let encrypted := toString num
   let decrypted := decryptPassword [] encrypted
@@ -57,6 +64,7 @@ info: '321.33098'
 -/
 -- #guard_msgs in
 -- #eval decrypt_password [("x", "0"), ("d", "3"), ("#", ".")] "0xd21#dd098x"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

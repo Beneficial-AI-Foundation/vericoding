@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def sumDig_nthTerm (initVal : Nat) (patternL : List Nat) (nthTerm : Nat) : Nat := sorry
 
 def numDigits (n : Nat) : Nat := 
   if n < 10 then 1
   else 1 + numDigits (n / 10)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum : List Nat → Nat 
   | [] => 0
   | (h::t) => h + listSum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sumDig_nthTerm_bounds {initVal : Nat} {patternL : List Nat} {nthTerm : Nat}
   (h1 : initVal ≤ 50)
   (h2 : ∀ x ∈ patternL, x ≤ 5)
@@ -23,6 +30,7 @@ theorem sumDig_nthTerm_bounds {initVal : Nat} {patternL : List Nat} {nthTerm : N
 
 theorem sumDig_nthTerm_deterministic {initVal : Nat} {patternL : List Nat} {nthTerm : Nat} :
   sumDig_nthTerm initVal patternL nthTerm = sumDig_nthTerm initVal patternL nthTerm := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

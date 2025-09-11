@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: string)
 {
     n >= 1 && |s| == n
@@ -16,6 +17,7 @@ function count_adjacent_same_pairs_up_to(s: string, i: int): int
     if i <= 1 then 0
     else (if s[i-1] == s[i-2] then 1 else 0) + count_adjacent_same_pairs_up_to(s, i-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

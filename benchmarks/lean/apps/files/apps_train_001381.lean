@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_bandwidth (n : Nat) (matrix : List (List Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bandwidth_bounds {n : Nat} {matrix : List (List Nat)} :
   n > 0 → min_bandwidth n matrix ≥ 0 ∧ min_bandwidth n matrix < n :=
   sorry
@@ -55,6 +63,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_bandwidth 4 [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

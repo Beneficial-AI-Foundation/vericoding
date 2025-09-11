@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def avoid_flood (rains : List Nat) : List Int := sorry
 
 theorem avoid_flood_length {rains : List Nat} {result : List Int}
   (h : result = avoid_flood rains) (h_valid : result ≠ []) :
   result.length = rains.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem avoid_flood_rain_days {rains : List Nat} {result : List Int}
   (h : result = avoid_flood rains) (h_valid : result ≠ []) (h_len : result.length = rains.length) :
   ∀ i : Fin rains.length, rains[i] > 0 → result[i] = -1 := sorry
@@ -49,6 +57,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval avoid_flood [1, 2, 0, 1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

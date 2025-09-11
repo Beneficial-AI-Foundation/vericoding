@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(stdin_input: string)
 {
     |stdin_input| > 0 &&
@@ -24,6 +25,7 @@ function kth_perfect_number(k: int): int
     else if k == 10 then 109
     else 10 * (k - 9) + 99
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

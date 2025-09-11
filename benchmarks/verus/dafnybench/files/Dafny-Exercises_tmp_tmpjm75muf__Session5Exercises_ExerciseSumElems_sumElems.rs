@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -29,6 +30,7 @@ spec fn sum_v(v: Seq<int>, c: int, f: int) -> int {
         0
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

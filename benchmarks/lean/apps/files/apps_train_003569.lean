@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def productArray (nums : List Int) : List Int := sorry
 
 theorem product_array_length 
   (nums : List Int) 
   (h : nums.length ≥ 2) :
   (productArray nums).length = nums.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem product_array_element_is_product_of_others
   (nums : List Int)
   (h : nums.length ≥ 2)
@@ -46,6 +54,7 @@ info: [900, 1170, 2340, 5850, 1300]
 -/
 -- #guard_msgs in
 -- #eval product_array #[13, 10, 5, 2, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

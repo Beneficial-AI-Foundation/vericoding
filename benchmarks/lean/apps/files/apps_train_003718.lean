@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def mean_vs_median (l : List Int) : String := sorry
 
 def statistical_mean (l : List Int) : Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def statistical_median (l : List Int) : Float := sorry
 
 theorem mean_vs_median_matches_statistics (l : List Int) (h : l ≠ []) :
@@ -13,7 +18,9 @@ theorem mean_vs_median_matches_statistics (l : List Int) (h : l ≠ []) :
   mean_vs_median l = (if mean > median then "mean" 
                      else if median > mean then "median"
                      else "same") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_numbers_return_same (l : List Int) (h1 : l ≠ []) 
   (h2 : ∀ x ∈ l, x = 1) :
   mean_vs_median l = "same" := sorry
@@ -35,6 +42,7 @@ info: 'median'
 -/
 -- #guard_msgs in
 -- #eval mean_vs_median [7, 14, -70]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

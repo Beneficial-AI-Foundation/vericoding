@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_sequence (n s k m M : Nat) : Option (List Nat) := sorry
 
 def sum : List Nat → Nat 
   | [] => 0
   | h :: t => h + sum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_bounds
   {n k m M s : Nat}
   (n_min : n ≥ 3)
@@ -23,6 +31,7 @@ theorem sequence_bounds
     (List.length result = n ∧
      List.all result (fun x => m ≤ x ∧ x ≤ M) = true ∧ 
      sum result = s) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

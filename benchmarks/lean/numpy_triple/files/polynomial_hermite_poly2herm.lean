@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def poly2herm {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem poly2herm_spec {n : Nat} (pol : Vector Float n) :
     ⦃⌜True⌝⦄
     poly2herm pol
@@ -25,3 +32,4 @@ theorem poly2herm_spec {n : Nat} (pol : Vector Float n) :
                  (result.get ⟨0, sorry⟩ = 1 ∧ result.get ⟨1, sorry⟩ = 2.75 ∧ 
                   result.get ⟨2, sorry⟩ = 0.5 ∧ result.get ⟨3, sorry⟩ = 0.375)⌝⦄ := by
   sorry
+-- </vc-theorems>

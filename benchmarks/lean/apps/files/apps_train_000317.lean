@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def convert_zigzag (s : String) (numRows : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zigzag_properties {s : String} {numRows : Nat} 
   (h1 : s.length > 0) (h2 : numRows > 0) (h2a : numRows ≤ 100) :
   let result := convert_zigzag s numRows
@@ -47,6 +55,7 @@ info: 'AB'
 -/
 -- #guard_msgs in
 -- #eval convert_zigzag "AB" 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

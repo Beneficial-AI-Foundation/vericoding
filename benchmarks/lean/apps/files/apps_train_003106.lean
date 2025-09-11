@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def well (ideas : List String) : String := sorry
 
 theorem well_output_valid (ideas : List String) (h : ideas ≠ []) :
   well ideas = "Fail!" ∨ well ideas = "Publish!" ∨ well ideas = "I smell a series!" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem well_case_no_good (ideas : List String) (h1 : ideas ≠ []) 
   (h2 : ∀ x ∈ ideas, x ≠ "good") :
   well ideas = "Fail!" := sorry
@@ -40,6 +48,7 @@ info: 'I smell a series!'
 -/
 -- #guard_msgs in
 -- #eval well ["good", "bad", "bad", "bad", "bad", "good", "bad", "bad", "good"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

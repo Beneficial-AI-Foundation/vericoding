@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sortme (words : List String) : List String := sorry
 
 def multiset_eq (l1 l2 : List String) : Prop :=
   ∀ x, (List.countP (· = x) l1) = (List.countP (· = x) l2)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sortme_maintains_length (words : List String) : 
   List.length (sortme words) = List.length words ∧ 
   multiset_eq (sortme words) words := sorry
@@ -42,6 +50,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval sortme []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

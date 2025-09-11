@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidPath(path: seq<(int, int)>, m: int, n: int)
 {
     |path| >= 1 &&
@@ -23,6 +24,7 @@ predicate ValidInput(grid: array2<int>)
     grid.Length0 > 0 && grid.Length1 > 0 &&
     forall i, j :: 0 <= i < grid.Length0 && 0 <= j < grid.Length1 ==> grid[i, j] >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

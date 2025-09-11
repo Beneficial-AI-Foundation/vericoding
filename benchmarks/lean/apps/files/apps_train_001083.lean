@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_virus_spread_days (row col x y : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem virus_spread_bounds 
     (row col : Nat) (x y : Nat)
     (h_row : row > 0) (h_col : col > 0)
@@ -37,6 +45,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval calc_virus_spread_days 3 4 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

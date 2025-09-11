@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def is_isomorphic (s1 s2 : List Char) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def unique_chars (s : List Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isomorphic_same_length {s1 s2 : List Char} : 
   s1.length ≠ s2.length → ¬is_isomorphic s1 s2 := sorry
 
@@ -45,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_isomorphic "paper" "title"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encode (s : String) : String := sorry
 
 theorem encode_case_insensitive (s : String) : 
   encode s.toUpper = encode s.toLower := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_produces_only_digits (s : String) (p : String.Pos) :
   ((encode s).get p).isDigit := sorry
 
@@ -44,6 +52,7 @@ info: '208919 919 1 1215147 1920189147!! 161251195 [51431545] @30181853201225'
 -/
 -- #guard_msgs in
 -- #eval encode "this is a long string!! Please [encode] @C0RrEctly"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

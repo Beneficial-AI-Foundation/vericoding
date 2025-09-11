@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def Point := List Int
 def Points := List Point
 
 instance : BEq Point where
   beq a b := a.zip b |>.all (fun (x, y) => x == y)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countEqualDistances (points : Points) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_always_nonnegative (points : Points) :
   countEqualDistances points ≥ 0 := sorry
 
@@ -43,6 +50,7 @@ info: 33
 -/
 -- #guard_msgs in
 -- #eval count_equal_distances [[46, -55], [46, 45], [46, 45], [83, -55], [46, 45], [83, -55], [46, 45], [83, 45], [83, 45], [46, -55]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

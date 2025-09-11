@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, colors: seq<char>)
 {
     1 <= n <= 100 &&
@@ -16,6 +17,7 @@ function SolutionString(distinctCount: int): string
 {
     if distinctCount == 3 then "Three" else "Four"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def count_ones_in_binary (n : Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_bits : Int → Nat :=
   fun n => if n = 0 then 0 else (n % 2).natAbs + count_bits (n / 2)
 decreasing_by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_ones_nonnegative_basic {x : Int} (h : x ≥ 0) :
   count_ones_in_binary x ≥ 0 :=
   sorry
@@ -41,6 +48,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_ones_in_binary test_input[0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

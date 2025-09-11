@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def minRobberyCost (n : Nat) (costs : List (List Nat)) : Nat :=
   sorry
 
@@ -5,10 +6,14 @@ def listMin (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | h :: t => List.foldl min h t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def findMinValidPath (costs : List (List Nat)) : Nat :=
   let range4 := [0, 1, 2, 3]
   let maxVal := 10000  -- arbitrary large value
@@ -19,7 +24,9 @@ def findMinValidPath (costs : List (List Nat)) : Nat :=
       if w1 ≠ w2 then bank1[w1]! + bank2[w2]! else maxVal
     ) range4)
   ) range4)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_bank_result (costs : List (List Nat)) 
   (h1 : costs.length = 1)
   (h2 : ∀ lst ∈ costs, lst.length = 4)
@@ -61,6 +68,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval min_robbery_cost 1 [[10, 20, 30, 40]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

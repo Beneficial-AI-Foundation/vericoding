@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve : String → Nat := sorry
 
 theorem solve_length_bound (s : String) : 
   solve s ≤ (s.length / 2) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_nonnegative (s : String) :
   solve s ≥ 0 := sorry
 
@@ -39,6 +47,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve "abcdabc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_next_server (x y k : Nat) : String := sorry
 
 theorem get_next_server_zero_scores (k : Nat) (h : k > 0) : 
   get_next_server 0 0 k = "Chef" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_next_server_valid_output (x y k : Nat) (h : k > 0) :
   get_next_server x y k = "Chef" ∨ get_next_server x y k = "Paja" := sorry
 
@@ -32,6 +40,7 @@ info: 'Paja'
 -/
 -- #guard_msgs in
 -- #eval get_next_server 38657 76322 564
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

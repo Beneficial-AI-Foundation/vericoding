@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_balance_point (arr : List Int) : Int := sorry 
 
 def sum_list (arr : List Int) : Int := sorry
 
 -- Valid index property
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem balance_point_valid_index (arr : List Int) :
   let bp := find_balance_point arr
   bp ≠ -1 → 0 ≤ bp ∧ bp < arr.length := sorry
@@ -57,6 +65,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval find_balance_point [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

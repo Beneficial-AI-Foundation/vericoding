@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100
@@ -24,6 +25,7 @@ predicate AllDifferent(a: int, b: int, c: int)
 {
     a != b && b != c && a != c
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

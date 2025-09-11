@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 def count_substring_appearances (n: Nat) (strings: List String) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_substring_output_length {n: Nat} {strings: List String} :
   strings ≠ [] →
   List.length (count_substring_appearances n strings) = List.length strings :=
@@ -44,6 +52,7 @@ info: [443568031, 71288256, 41317270]
 -/
 -- #guard_msgs in
 -- #eval count_substring_appearances 12 ["cdmn", "qweewef", "qs"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

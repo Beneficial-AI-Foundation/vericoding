@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def memorysize_conversion (s : String) : String := sorry
 
 def binary_units := ["KiB", "MiB", "GiB", "TiB"]
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def metric_units := ["kB", "MB", "GB", "TB"]
 
 def isValidIndex (i : Nat) : Prop :=
   i < 4
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem binary_units_length : binary_units.length = 4 := sorry
 theorem metric_units_length : metric_units.length = 4 := sorry
 
@@ -44,6 +51,7 @@ info: '4.402 GB'
 -/
 -- #guard_msgs in
 -- #eval memorysize_conversion "4.1 GiB"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInputString(s: string)
 {
     |s| >= 7 &&
@@ -50,6 +51,7 @@ predicate AccidentAtLane(i: int, lanes: seq<seq<int>>)
     (lanes[i][1] == 1 && lanes[(i + 2) % 4][3] == 1) ||
     (lanes[i][2] == 1 && lanes[(i + 1) % 4][3] == 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

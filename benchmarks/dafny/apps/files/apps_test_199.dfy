@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: int, v: seq<int>)
 {
     n > 0 && |v| == n && s >= 0 && forall i :: 0 <= i < |v| ==> v[i] >= 0
@@ -22,6 +23,7 @@ function min(a: int, b: int): int
 {
     if a <= b then a else b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

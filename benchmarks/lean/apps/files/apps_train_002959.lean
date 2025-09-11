@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def distribute (m n: Int) : List Int := sorry
 
 def sum : List Int → Int
   | [] => 0
   | x::xs => x + sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nonpositive_n_returns_empty {m n : Int} (h: n ≤ 0) : 
   distribute m n = [] := sorry
 
@@ -47,6 +55,7 @@ info: [2, 2, 2, 2, 2, 1, 1, 1, 1, 1]
 -/
 -- #guard_msgs in
 -- #eval distribute 15 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

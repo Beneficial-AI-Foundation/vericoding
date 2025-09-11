@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fold_to (distance : Float) (thickness : Float := 0.0001) : Option Float := sorry
 
 theorem fold_to_positive_distance {distance : Float} 
@@ -10,7 +16,9 @@ theorem fold_to_positive_distance {distance : Float}
   match res with
   | some n => n ≥ 0 ∧ 2^n * 0.0001 ≥ distance
   | none => False := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fold_to_negative_distance {distance : Float}
   (h : distance < 0) :
   fold_to distance = none := sorry
@@ -48,6 +56,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval fold_to -1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

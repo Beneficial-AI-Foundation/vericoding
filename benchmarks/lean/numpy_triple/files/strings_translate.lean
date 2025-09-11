@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def translate {n m : Nat} (a : Vector String n) (table : Vector UInt8 256) 
     (deletechars : Vector UInt8 m) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem translate_spec {n m : Nat} (a : Vector String n) (table : Vector UInt8 256) 
     (deletechars : Vector UInt8 m) :
     ⦃⌜True⌝⦄
@@ -51,3 +58,4 @@ theorem translate_spec {n m : Nat} (a : Vector String n) (table : Vector UInt8 2
       ((a.get i).length = 0 → (result.get i).length = 0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

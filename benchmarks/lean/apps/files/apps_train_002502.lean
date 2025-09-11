@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_word_indices (n m : Nat) (group_a group_b : List String) : List String := sorry
 
 def isSortedList (l : List String) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_word_indices_output_properties {n m : Nat} {group_a group_b : List String}
   (hn : 1 ≤ n ∧ n ≤ 100) (hm : 1 ≤ m ∧ m ≤ 100)
   (ha : group_a.length = n) (hb : group_b.length = m)
@@ -31,6 +39,7 @@ theorem find_word_indices_correctness {n m : Nat} {group_a group_b : List String
          group_a[pos - 1]! = group_b[i]!)
     else
       result[i]! = "-1" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

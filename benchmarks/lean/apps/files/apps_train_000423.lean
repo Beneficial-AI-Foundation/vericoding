@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_of_subarrays (arr : List Int) (k : Nat) (threshold : Int) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_negative_result (arr : List Int) (k : Nat) (threshold : Int) :
   num_of_subarrays arr k threshold ≥ 0 :=
 sorry
@@ -37,6 +45,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval num_of_subarrays [11, 13, 17, 23, 29, 31, 7, 5, 2, 3] 3 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

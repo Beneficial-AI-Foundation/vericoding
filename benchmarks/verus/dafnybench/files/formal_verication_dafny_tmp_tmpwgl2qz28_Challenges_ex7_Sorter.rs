@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -34,6 +35,7 @@ spec fn below(first: Bases, second: Bases) -> bool {
 spec fn bordered(s: Seq<Bases>) -> bool {
     forall|j: int, k: int| 0 <= j < k < s.len() ==> below(s[j], s[k])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

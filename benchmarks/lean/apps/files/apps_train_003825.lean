@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) : Nat := sorry
 
 theorem solve_positive (n : Nat) (h : n > 0) : solve n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_small_values :
   solve 1 = 1 ∧ solve 2 = 2 ∧ solve 3 = 5 := sorry 
 
@@ -27,6 +35,7 @@ info: 132
 -/
 -- #guard_msgs in
 -- #eval solve 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_uncompleted_tasks (N K M : Nat) (A B : List Nat) (C D : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_uncompleted_tasks_returns_nonneg (N K M : Nat) (A B : List Nat) (C D : List Nat)
   (h1 : N > 0) (h2 : N ≤ 100) (h3 : K ≤ 100) (h4 : M ≤ 100)
   (h5 : A.length = N) (h6 : B.length = N)
@@ -41,6 +49,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_uncompleted_tasks 2 1 1 [5, 3] [2, 1] [2] [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

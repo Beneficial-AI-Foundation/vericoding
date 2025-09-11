@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pair_zeros (xs : List Int) : List Int := sorry
 
 theorem pair_zeros_length_valid (xs : List Int) : 
   List.length (pair_zeros xs) ≤ List.length xs := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pair_zeros_preserves_nonzero (xs : List Int) (x : Int) :
   x ∈ pair_zeros xs → x ≠ 0 → x ∈ xs := sorry
 
@@ -52,6 +60,7 @@ info: [0, 0, 0]
 -/
 -- #guard_msgs in
 -- #eval pair_zeros [0, 0, 0, 0, 0, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

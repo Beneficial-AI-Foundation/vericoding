@@ -1,19 +1,26 @@
+-- <vc-preamble>
 def SWIM_DIST : Float := 2.4
 def BIKE_DIST : Float := 112
 
 def RUN_DIST : Float := 26.2
 def TOTAL_DIST : Float := SWIM_DIST + BIKE_DIST + RUN_DIST
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def i_tri (distance : Float) : String ⊕ (String × String) := sorry
 
 theorem i_tri_result_type (distance : Float) :
   match i_tri distance with
   | Sum.inl _ => True
   | Sum.inr _ => True := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem i_tri_at_start :
   i_tri 0 = Sum.inl "Starting Line... Good Luck!" := sorry
 
@@ -54,6 +61,7 @@ info: "You're done! Stop running!"
 -/
 -- #guard_msgs in
 -- #eval i_tri 151
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

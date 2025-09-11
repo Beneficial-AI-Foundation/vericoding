@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) (wealths : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_basic_properties {n : Nat} {wealths : List Nat} 
   (h : wealths.length > 0) (h2 : wealths.length ≤ 100) :
   let ranks := solve n wealths
@@ -26,6 +34,7 @@ theorem solve_relative_ranks {n : Nat} {wealths : List Nat}
   ∀ (i : Nat), i > 0 → i < wealths.length →
     wealths[i]! > wealths[i-1]! → ranks[i]! ≤ ranks[i-1]! + 1 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

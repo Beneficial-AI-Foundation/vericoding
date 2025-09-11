@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum (xs : List Nat) : Nat := List.foldl (· + ·) 0 xs
 
 def find_max_segment_scores (n m : Nat) (arr : List Nat) : Nat × Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element {n : Nat} {arr : List Nat}
   (h1 : n > 0)
   (h2 : n ≤ 10)
@@ -28,6 +36,7 @@ info: (2, 2)
 -/
 -- #guard_msgs in
 -- #eval find_max_segment_scores 4 3 [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

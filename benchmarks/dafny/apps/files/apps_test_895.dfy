@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, times: seq<int>, T: int)
 {
     n >= 1 && |times| == n && T >= 1 && 
@@ -46,6 +47,7 @@ function countStudentsInWindowHelper(times: seq<int>, start: int, T: int, index:
         var countRest := countStudentsInWindowHelper(times, start, T, index + 1);
         if start <= times[index] <= start + T - 1 then countRest + 1 else countRest
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

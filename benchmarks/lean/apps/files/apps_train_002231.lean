@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_permutation (n : Nat) (perm : List Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identity_permutation (n : Nat) (h : n > 0):
   let perm := List.range n
   solve_permutation n perm = 
@@ -39,6 +47,7 @@ info: 'Petr'
 -/
 -- #guard_msgs in
 -- #eval solve_permutation 4 [4, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

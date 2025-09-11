@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encode (s : String) : String × Nat := sorry
 def decode (s : String) (n : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_decode_roundtrip {s : String} (h : s ≠ "") : 
   let (encoded, idx) := encode s
   decode encoded idx = s := sorry
@@ -49,6 +57,7 @@ info: s3
 -/
 -- #guard_msgs in
 -- #eval decode *encoded3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

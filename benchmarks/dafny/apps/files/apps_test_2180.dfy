@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     n >= 1
 }
@@ -24,6 +25,7 @@ predicate ValidCheckerboardPlacement(result: seq<string>, n: int)
         (result[i][j] == 'C' <==> 
             (if (i - 1) % 2 == 0 then j % 2 == 0 else j % 2 == 1))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

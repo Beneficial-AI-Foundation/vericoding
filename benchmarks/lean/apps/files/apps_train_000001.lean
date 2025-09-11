@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_max_diagonal_moves (n m k : Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n : Int) : Int :=
   if n ≥ 0 then n else -n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bound (n m k : Int) (h: -1000 <= n ∧ n <= 1000) (h2: -1000 <= m ∧ m <= 1000) (h3: 0 <= k ∧ k <= 2000) :
   let r := solve_max_diagonal_moves n m k
   r = -1 ∨ r ≤ k := sorry
@@ -45,6 +52,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_max_diagonal_moves 10 1 9
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

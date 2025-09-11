@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def VALID_DEPTS := ["accounts", "finance", "canteen", "regulation", "trading", 
                     "change", "IS", "retail", "cleaning", "pissing about"]
 
@@ -14,13 +15,19 @@ def getScore (dept : String) : Nat :=
 
 def getTotalScore (staff : List (String × String)) : Nat :=
   staff.foldl (fun acc x => acc + getScore x.2) 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def boredom (staff : List (String × String)) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem boredom_output_valid (staff : List (String × String)) :
   let result := boredom staff
   result = "kill me now" ∨ result = "i can handle this" ∨ result = "party time!!" := 
@@ -61,6 +68,7 @@ info: 'party time!!'
 -/
 -- #guard_msgs in
 -- #eval boredom {"tim": "accounts", "jim": "accounts", "randy": "pissing about", "sandy": "finance", "andy": "change", "katie": "IS", "laura": "IS", "saajid": "canteen", "alex": "pissing about", "john": "retail", "mr": "pissing about"}
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

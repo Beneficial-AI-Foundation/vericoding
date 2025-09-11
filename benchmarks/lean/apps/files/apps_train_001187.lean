@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def can_tomu_win (n : Nat) (k : Nat) (arr : List Nat) : String := sorry
 
 def getOddElements (l : List Nat) : List Nat :=
   l.zipWith (fun i x => if i % 2 = 1 then some x else none) (List.range l.length)
    |>.filterMap id
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def getEvenElements (l : List Nat) : List Nat :=
   l.zipWith (fun i x => if i % 2 = 0 then some x else none) (List.range l.length)
    |>.filterMap id
 
 -- Property: Result is always either "YES" or "NO"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_tomu_win_valid_output (n k : Nat) (arr : List Nat) :
   can_tomu_win n k arr = "YES" ∨ can_tomu_win n k arr = "NO" := sorry
 
@@ -54,6 +61,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval can_tomu_win 4 2 [1, 5, 3, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

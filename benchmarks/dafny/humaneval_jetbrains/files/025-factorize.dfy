@@ -1,6 +1,8 @@
+// <vc-preamble>
 function prod(s: seq<int>) : int {
   if |s| == 0 then 1 else prod(s[..|s| - 1]) * s[|s| - 1]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

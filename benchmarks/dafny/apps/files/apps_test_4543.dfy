@@ -1,9 +1,11 @@
+// <vc-preamble>
 predicate IsPerfectSquare(n: int)
   requires n >= 0
 {
   var sqrt_n := Sqrt(n);
   sqrt_n * sqrt_n == n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

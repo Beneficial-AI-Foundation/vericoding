@@ -1,3 +1,4 @@
+// <vc-preamble>
 function IsPrimeHexDigit(c: char): bool
 {
   c == '2' || c == '3' || c == '5' || c == '7' || c == 'B' || c == 'D'
@@ -12,6 +13,7 @@ function count_prime_hex_digits_rec(num: seq<char>) : (count : int)
   else (if IsPrimeHexDigit(num[0]) then 1 else 0) + count_prime_hex_digits_rec(num[1..])
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

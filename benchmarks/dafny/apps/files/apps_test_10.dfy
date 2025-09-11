@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
   n >= 1
@@ -31,6 +32,7 @@ predicate ValidOutput(result: seq<int>, n: int)
   result[0] == MinDaysOff(n) &&
   result[1] == MaxDaysOff(n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

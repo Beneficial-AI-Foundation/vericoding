@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(test_cases: seq<(int, int)>)
 {
     forall i :: 0 <= i < |test_cases| ==> 
@@ -18,6 +19,7 @@ predicate ValidOutput(test_cases: seq<(int, int)>, results: seq<int>)
         results[i] == MinMovesToDivisible(test_cases[i].0, test_cases[i].1) &&
         results[i] >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

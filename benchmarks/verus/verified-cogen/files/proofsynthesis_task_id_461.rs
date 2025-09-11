@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -23,6 +24,7 @@ spec fn count_uppercase_recursively(seq: Seq<char>) -> (result: int)
         }
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

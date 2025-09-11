@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bitwise_and {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bitwise_and_spec {n : Nat} (x1 x2 : Vector Int n) 
     (h_nonneg : ∀ i : Fin n, x1.get i ≥ 0 ∧ x2.get i ≥ 0) :
     ⦃⌜∀ i : Fin n, x1.get i ≥ 0 ∧ x2.get i ≥ 0⌝⦄
@@ -19,3 +26,4 @@ theorem bitwise_and_spec {n : Nat} (x1 x2 : Vector Int n)
                 (∀ i : Fin n, result.get i = 0 ↔ (x1.get i = 0 ∨ x2.get i = 0)) ∧
                 (∀ i : Fin n, x1.get i = x2.get i → result.get i = x1.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

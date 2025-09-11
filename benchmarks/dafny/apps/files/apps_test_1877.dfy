@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: string)
 {
     n >= 0 && |s| == n && forall i :: 0 <= i < |s| ==> s[i] == 'U' || s[i] == 'R'
@@ -32,6 +33,7 @@ function CountTransitionsHelper(s: string, pos: int, x: int, y: int, pred: int):
             var transition := if cur != pred && pred != -1 then 1 else 0;
             transition + CountTransitionsHelper(s, pos + 1, newX, newY, cur)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

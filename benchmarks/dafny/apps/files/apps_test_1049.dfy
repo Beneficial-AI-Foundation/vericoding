@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate InputWellFormed(input: string)
 {
     var lines := SplitLines(input);
@@ -32,6 +33,7 @@ predicate IsValidBinaryString(s: string, expectedLength: int)
 {
     |s| == expectedLength && forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

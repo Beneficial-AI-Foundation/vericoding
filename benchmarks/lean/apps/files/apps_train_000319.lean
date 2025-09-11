@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def find132pattern (nums : List Int) : Bool :=
   sorry
 
 def has_132_pattern_brute_force (nums : List Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (nums : List Int) (cmp : Int → Int → Bool) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find132pattern_matches_bruteforce {nums : List Int} :
   find132pattern nums = has_132_pattern_brute_force nums :=
   sorry
@@ -47,6 +54,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval find132pattern [-1, 3, 2, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -8,13 +9,19 @@ structure Complex where
   real : Float
   /-- The imaginary part of the complex number -/
   imag : Float
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hfft {m : Nat} (a : Vector Complex (m + 1)) : Id (Vector Float (2 * m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hfft_spec {m : Nat} (a : Vector Complex (m + 1)) (h : m > 0) :
     ⦃⌜m > 0⌝⦄
     hfft a
@@ -23,3 +30,4 @@ theorem hfft_spec {m : Nat} (a : Vector Complex (m + 1)) (h : m > 0) :
                  (∀ i : Fin (m + 1), ∃ j : Fin (2 * m), ∃ k : Fin (2 * m),
                    (a.get i).real * (a.get i).real + (a.get i).imag * (a.get i).imag ≥ 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

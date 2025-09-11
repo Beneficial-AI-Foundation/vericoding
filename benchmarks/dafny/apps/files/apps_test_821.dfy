@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: int, v1: int, v2: int, t1: int, t2: int)
 {
     1 <= s <= 1000 && 1 <= v1 <= 1000 && 1 <= v2 <= 1000 && 1 <= t1 <= 1000 && 1 <= t2 <= 1000
@@ -21,6 +22,7 @@ predicate ValidResult(result: string)
 {
     result == "First" || result == "Second" || result == "Friendship"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

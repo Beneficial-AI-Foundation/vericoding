@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n: Nat) (arr: List Int) : String := sorry
 
 theorem solve_consistency (n: Nat) (arr: List Int) (h: arr.length > 0) :
   solve n arr = "YES" ∨ solve n arr = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_depends_on_first_last (n: Nat) (arr: List Int) (h: arr.length > 0) :
   ∀ arr2: List Int,
   arr2.length = arr.length →
@@ -33,6 +41,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval solve 3 [2, 3, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

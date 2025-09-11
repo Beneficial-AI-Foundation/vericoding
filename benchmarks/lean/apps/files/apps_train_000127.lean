@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_score_sightseeing_pair (values: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_score_basic_case (values: List Nat) :
   values = [8,1,5,2,6] → max_score_sightseeing_pair values = 11 :=
   sorry
@@ -37,6 +45,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval max_score_sightseeing_pair [5, 5, 5, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

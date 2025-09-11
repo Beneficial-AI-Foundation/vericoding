@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible, simp]
 def UpdateElements_precond (a : Array Int) : Prop :=
   a.size ≥ 8
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def UpdateElements (a : Array Int) (h_precond : UpdateElements_precond (a)) : Array Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def UpdateElements_postcond (a : Array Int) (result: Array Int) (h_precond : UpdateElements_precond (a)) :=
   result[4]! = (a[4]!) + 3 ∧
@@ -17,6 +24,7 @@ def UpdateElements_postcond (a : Array Int) (result: Array Int) (h_precond : Upd
 theorem UpdateElements_spec_satisfied (a: Array Int) (h_precond : UpdateElements_precond (a)) :
     UpdateElements_postcond (a) (UpdateElements (a) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

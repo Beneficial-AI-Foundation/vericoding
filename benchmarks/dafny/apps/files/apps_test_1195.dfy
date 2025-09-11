@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(lst: seq<int>) {
   5 <= |lst| <= 10 &&
   forall i :: 0 <= i < |lst| ==> 1 <= lst[i] <= 32
@@ -22,6 +23,7 @@ function min_of_sequence(s: seq<int>): int
   else if s[0] <= min_of_sequence(s[1..]) then s[0]
   else min_of_sequence(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

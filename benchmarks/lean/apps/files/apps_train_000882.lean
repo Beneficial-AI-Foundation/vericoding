@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def check_valid_snake_procession (report : String) : String :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_segment (s₁ s₂ : Char) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_snake_formations (report : String) :
   (∀ i j : String.Pos, j.1 = i.1 + 1 →
     (report.get i = '.' ∨ (report.get i = 'H' ∧ report.get j = 'T'))) →
@@ -46,6 +53,7 @@ info: 'Valid'
 -/
 -- #guard_msgs in
 -- #eval check_valid_snake_procession "HT"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

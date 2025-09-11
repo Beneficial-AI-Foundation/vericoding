@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def compound_array {α : Type} [DecidableEq α] (a b : List α) : List α := sorry
 
 theorem compound_array_length {α : Type} [DecidableEq α] (a b : List α) :
   (compound_array a b).length = a.length + b.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem compound_array_preserves_elements {α : Type} [DecidableEq α] (a b : List α) (x : α) :
   (x ∈ a ∨ x ∈ b) ↔ x ∈ compound_array a b := sorry
 
@@ -42,6 +50,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval compound_array [] []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

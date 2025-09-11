@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_flagstones (n m a : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_positive (n m a : Nat) (h1 : n > 0) (h2 : m > 0) (h3 : a > 0) : 
   calculate_flagstones n m a > 0 :=
   sorry
@@ -42,6 +50,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval calculate_flagstones 7 7 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

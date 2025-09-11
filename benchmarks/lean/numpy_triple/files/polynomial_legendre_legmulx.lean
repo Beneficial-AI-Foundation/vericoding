@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def legmulx {n : Nat} (c : Vector Float (n + 1)) : Id (Vector Float (n + 2)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem legmulx_spec {n : Nat} (c : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     legmulx c
@@ -23,3 +30,4 @@ theorem legmulx_spec {n : Nat} (c : Vector Float (n + 1)) :
        (∀ i : Fin (n + 2), ∃ coeff : Float, result.get i = coeff)
        ⌝⦄ := by
   sorry
+-- </vc-theorems>

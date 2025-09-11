@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def trim (beard : List (List String)) : List (List String) := sorry
 
 theorem trim_dimensions {beard : List (List String)} (h1 : beard.length ≥ 2) 
@@ -8,7 +14,9 @@ theorem trim_dimensions {beard : List (List String)} (h1 : beard.length ≥ 2)
   let result := trim beard
   (result.length = beard.length) ∧ 
   (∀ row ∈ result, row.length = (beard.head!).length) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trim_interior_rows {beard : List (List String)} (h1 : beard.length ≥ 2) 
   (h2 : ∀ row ∈ beard, row.length ≥ 1) :
   let result := trim beard
@@ -40,6 +48,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval trim [["J", "|", "J", "J"], ["J", "|", "|", "J"], ["...", "|", "J", "|"]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

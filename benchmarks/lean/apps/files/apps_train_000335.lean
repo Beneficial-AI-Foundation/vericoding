@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_deletion_size (strings : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_deletion_size_single_char (s : String) :
   s.length = 1 → min_deletion_size [s] = 0 := 
   sorry
@@ -53,6 +61,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_deletion_size ["ghi", "def", "abc"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

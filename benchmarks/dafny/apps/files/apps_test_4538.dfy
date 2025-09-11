@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, D: int, points: seq<(int, int)>)
 {
     N >= 0 && D >= 0 && |points| >= N
@@ -13,6 +14,7 @@ function CountPointsWithinDistance(N: int, D: int, points: seq<(int, int)>): int
 {
     |set i | 0 <= i < N && WithinDistance(points[i], D)|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

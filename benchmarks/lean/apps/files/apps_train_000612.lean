@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solveSparrowProblem (n k : Nat) (classes : List Nat) (links : List (Nat × Nat)) : Int := sorry
 
 def isValidTree (n : Nat) (links : List (Nat × Nat)) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_int (n k : Nat) (classes : List Nat) (links : List (Nat × Nat)) :
   let result := solveSparrowProblem n k classes links
   result ≥ -1 := sorry
@@ -45,6 +53,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_sparrow_problem 5 5 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

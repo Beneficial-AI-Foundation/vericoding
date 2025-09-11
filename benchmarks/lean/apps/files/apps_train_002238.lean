@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Graph := (Nat × Nat × List (Nat × Nat))
 
 def solve_graph_matching : List Graph → List (String × List Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_vertex_empty_edges (g : Graph) (h : g = (1, 0, [])) :
   let result := solve_graph_matching [g]
   result.length = 1 ∧
@@ -42,6 +50,7 @@ theorem star_graph_has_indset (n : Nat) (edges : List (Nat × Nat)) :
   let result := (solve_graph_matching [(n, edges.length, edges)]).head!
   result.1 = "IndSet" ∧
   result.2.length = n := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def binary_zeros_count (c : Char) : Nat :=
   sorry
 
 def binary_ones_count (c : Char) : Nat := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def more_zeros (s : String) : List Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem more_zeros_results_unique (s : String) : 
   let result := more_zeros s
   (List.length result = List.length (List.eraseDups result)) ∧ 
@@ -33,6 +40,7 @@ theorem more_zeros_ascii_printable (s : String) :
   let result := more_zeros s
   ∀ c ∈ result, 32 ≤ c.toNat ∧ c.toNat ≤ 127 := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(k: int, n: int, s: int, p: int)
 {
   k >= 1 && n >= 1 && s >= 1 && p >= 1 &&
@@ -29,6 +30,7 @@ predicate CorrectResult(result: int, k: int, n: int, s: int, p: int)
   result * p >= TotalSheetsNeeded(k, n, s) &&
   (result - 1) * p < TotalSheetsNeeded(k, n, s)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

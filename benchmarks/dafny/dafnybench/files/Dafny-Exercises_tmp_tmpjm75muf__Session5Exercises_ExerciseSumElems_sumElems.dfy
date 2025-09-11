@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SumR(s:seq<int>):int
 decreases s
 {
@@ -18,6 +19,7 @@ function SumV(v:array<int>,c:int,f:int):int
   {
     SumR(v[c..f])
   }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

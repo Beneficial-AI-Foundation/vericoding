@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def scientific_to_decimal (input : String) : List String :=
   sorry
 
@@ -9,7 +15,9 @@ def scientific_to_decimal (input : String) : List String :=
     2. Each result string contains exactly one decimal point
     3. Each result string has exactly 2 decimal places
     4. Each result string represents a valid floating point number -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_scientific_notation_properties
     (input : String)
     (n : Nat)
@@ -30,6 +38,7 @@ theorem invalid_input_errors
          part.replace "." "" |>.replace "-" "" |>.all Char.isDigit) :
     False := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lcm (a b : Nat) : Nat := sorry
 def mn_lcm (m n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lcm_properties {a b : Nat} (h1 : a > 0) (h2 : b > 0) :
   let result := lcm a b
   (result % a = 0) ∧ (result % b = 0) ∧ (result ≥ max a b) ∧ (result ≥ 0) := sorry
@@ -37,6 +45,7 @@ info: 2520
 -/
 -- #guard_msgs in
 -- #eval mn_lcm 1 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

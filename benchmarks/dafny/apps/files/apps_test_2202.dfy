@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, p: int, A: seq<int>)
 {
     N >= 2 && p >= 2 && |A| == N && forall i :: 0 <= i < N ==> A[i] >= 1
@@ -10,6 +11,7 @@ function MaxSplitScore(A: seq<int>, p: int): int
     var scores := seq(|A| - 1, i requires 0 <= i < |A| - 1 => SplitScore(A, i + 1, p));
     MaxSeq(scores)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

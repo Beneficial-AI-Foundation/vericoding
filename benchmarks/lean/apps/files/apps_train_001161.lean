@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_mercury_leak (grid : List (List Nat)) (height width : Nat) (queries : List (Nat × Nat × Nat)) : List Nat := sorry
 
 theorem solve_mercury_leak_results_length 
   (grid : List (List Nat)) (h w : Nat) (queries : List (Nat × Nat × Nat)) :
   (List.length (solve_mercury_leak grid h w queries)) = List.length queries := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_mercury_leak_results_bounds
   (grid : List (List Nat)) (h w : Nat) (queries : List (Nat × Nat × Nat))
   (res := solve_mercury_leak grid h w queries) :
@@ -47,6 +55,7 @@ theorem solve_mercury_leak_power_bounds
   let queries := [(1,1,0), (2,2,10)]
   let res := solve_mercury_leak grid h w queries
   res[0]! = 0 ∧ res[1]! ≤ h * w := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

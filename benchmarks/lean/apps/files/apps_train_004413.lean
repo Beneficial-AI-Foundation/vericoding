@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def puzzle_tiles (width height : Nat) : String := sorry
 
 def String.repeat (s : String) (n : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem puzzle_tiles_result_lines_first_line {w h : Nat} :
   let result := puzzle_tiles w h
   let lines := result.splitOn "\n"
@@ -29,6 +37,7 @@ theorem puzzle_tiles_odd_pattern {w h : Nat} {i : Nat} :
   (remaining_lines[i]!).endsWith "|_" = true ∧
   (remaining_lines[i+1]!).endsWith "_)" = true ∧
   (remaining_lines[i+2]!).endsWith "_|" = true := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

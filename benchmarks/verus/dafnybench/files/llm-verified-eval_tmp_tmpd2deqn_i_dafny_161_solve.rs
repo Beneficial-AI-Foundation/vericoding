@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -35,6 +36,7 @@ fn reverse(original: Vec<char>) -> (reversed: Vec<char>)
     assume(false);
     vec![]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

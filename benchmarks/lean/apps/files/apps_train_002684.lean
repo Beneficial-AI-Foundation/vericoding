@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def name_that_number (n : Nat) : String := sorry
 
 theorem name_that_number_string_properties {n : Nat} (h : n ≤ 99) :
@@ -8,7 +14,9 @@ theorem name_that_number_string_properties {n : Nat} (h : n ≤ 99) :
   result.length > 0 ∧ 
   result.all (fun c => c.isAlpha ∨ c = ' ') ∧
   result.all Char.isLower := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem name_that_number_deterministic {n : Nat} :
   name_that_number n = name_that_number n := sorry
 
@@ -51,6 +59,7 @@ info: 'ninety nine'
 -/
 -- #guard_msgs in
 -- #eval name_that_number 99
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

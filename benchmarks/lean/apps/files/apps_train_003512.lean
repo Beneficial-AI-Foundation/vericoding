@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ranks (scores : List Int) : List Nat := sorry
 
 theorem ranks_length_preserved (scores : List Int) :
   (ranks scores).length = scores.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ranks_are_valid (scores : List Int) (h : scores ≠ []) :
   ∀ r ∈ ranks scores, 1 ≤ r ∧ r ≤ scores.length := sorry
 
@@ -37,6 +45,7 @@ info: [2, 4, 3, 1]
 -/
 -- #guard_msgs in
 -- #eval ranks [9, 3, 6, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

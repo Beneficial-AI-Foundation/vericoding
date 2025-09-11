@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_missing_letter (chars : List Char) : Option Char := sorry
 
 theorem find_missing_letter_with_gap {chars : List Char} 
@@ -11,7 +17,9 @@ theorem find_missing_letter_with_gap {chars : List Char}
     let missing := chars.get! 0
     let test_input := chars.get! 0 :: chars.tail!
     find_missing_letter test_input = some missing := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_missing_letter_consecutive {chars : List Char}
     (h₁ : chars.length > 1) 
     (h₂ : ∀ i j, i < j → j < chars.length → Char.toNat (chars.get! i) < Char.toNat (chars.get! j))
@@ -36,6 +44,7 @@ info: 'c'
 -/
 -- #guard_msgs in
 -- #eval find_missing_letter ["b", "d"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

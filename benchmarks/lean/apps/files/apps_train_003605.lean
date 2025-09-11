@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def cardsAndPero (s : String) : List Int := sorry
 
 theorem cardsAndPero_empty_string :
   cardsAndPero "" = [13,13,13,13] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cardsAndPero_three_pikes :
   cardsAndPero "P01P02P03" = [10,13,13,13] := sorry
 
@@ -35,6 +43,7 @@ info: [12, 12, 12, 12]
 -/
 -- #guard_msgs in
 -- #eval cards_and_pero "P10K10H10T01"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

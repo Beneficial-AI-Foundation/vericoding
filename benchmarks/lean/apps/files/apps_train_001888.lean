@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def maximalSquare (matrix : List (List String)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValid (matrix : List (List String)) : Prop :=
   match matrix with
   | [] => True
   | h::t => ∀ row ∈ t, row.length = h.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maximal_square_is_perfect_square (matrix : List (List String)) : 
   ∃ n : Nat, maximalSquare matrix = n * n :=
   sorry
@@ -65,6 +72,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval maximal_square [["0"]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

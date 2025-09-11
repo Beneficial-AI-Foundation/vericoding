@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sqrt (n: Nat) : Nat :=
 sorry
 
@@ -10,13 +11,19 @@ def isPerfectSquare (n: Nat) : Bool :=
 
 def numSquarefulPerms (A: List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def factorial (n: Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_bounds
   (A: List Nat)
   (h1: ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100) :
@@ -66,6 +73,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval numSquarefulPerms [1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

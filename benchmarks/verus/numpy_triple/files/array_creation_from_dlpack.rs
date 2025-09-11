@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -8,6 +9,7 @@ pub struct DLPackObject<T> {
     pub has_dlpack_device: bool,
     pub device: String,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

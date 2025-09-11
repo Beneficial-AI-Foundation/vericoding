@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def original_number (s : String) : String := sorry
 
 def generate_number_word (c : Char) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digits_theorem {n : Nat} (h : n ≤ 9) : 
   let word := generate_number_word (Char.ofNat (n + 48))
   let scrambled := String.mk (List.reverse (word.data))
@@ -46,6 +54,7 @@ info: '123'
 -/
 -- #guard_msgs in
 -- #eval original_number "TTONWOHREEE"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_remaining_stones (n1 n2 m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_remaining_stones_non_negative (n1 n2 m : Nat) :
   min_remaining_stones n1 n2 m ≥ 0 :=
   sorry
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_remaining_stones 4 5 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

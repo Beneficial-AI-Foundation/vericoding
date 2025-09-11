@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn spec_sum_to_n(n: nat) -> (ret:nat)
         n + spec_sum_to_n((n - 1) as nat)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

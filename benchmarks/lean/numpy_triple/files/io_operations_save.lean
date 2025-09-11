@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def save {n : Nat} (file : String) (arr : Vector Float n) (allow_pickle : Bool := false) : Id Unit :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem save_spec {n : Nat} (file : String) (arr : Vector Float n) (allow_pickle : Bool := false)
     (h_valid_path : True) (h_writable : True) :
     ⦃⌜True⌝⦄
@@ -28,3 +35,4 @@ theorem save_spec {n : Nat} (file : String) (arr : Vector Float n) (allow_pickle
                       (save file arr allow_pickle = pure second_save) → 
                       result = second_save))⌝⦄ := by
   sorry
+-- </vc-theorems>

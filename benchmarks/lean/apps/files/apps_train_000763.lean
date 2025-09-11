@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_ice_cream (num_flavors : Nat) (costs : List Nat) (weight num_required : Nat) : Option Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_validity {num_flavors : Nat} {costs : List Nat} {weight num_required : Nat}
   (h1 : num_flavors > 0)
   (h2 : ∀ c ∈ costs, c > 0)
@@ -33,6 +41,7 @@ theorem edge_cases {num_flavors : Nat} {costs : List Nat} {weight num_required :
   (h3 : num_required > 0) :
   solve_ice_cream num_flavors costs weight num_required = none
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

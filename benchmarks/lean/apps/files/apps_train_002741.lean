@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def seven (n : Nat) : Nat × Nat := sorry
 
 theorem seven_returns_pair (n : Nat) :
   ∃ (res num : Nat), seven n = (res, num) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem seven_step_count_non_negative (n : Nat) :
   (seven n).2 ≥ 0 := sorry
 
@@ -37,6 +45,7 @@ info: [28, 7]
 -/
 -- #guard_msgs in
 -- #eval seven 477557101
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

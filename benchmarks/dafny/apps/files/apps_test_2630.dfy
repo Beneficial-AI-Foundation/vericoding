@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidGrid(grid: seq<seq<int>>)
 {
     |grid| > 0 && |grid[0]| > 0 &&
@@ -45,6 +46,7 @@ function Binomial(n: int, k: int): int
     else if k == 1 then n
     else Binomial(n-1, k-1) + Binomial(n-1, k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

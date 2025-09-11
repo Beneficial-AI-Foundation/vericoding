@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_them (n : Nat) : Nat := sorry
 
 @[simp]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_them_non_negative (n : Nat) : 
   sum_them n ≥ 0 := sorry
 
@@ -48,6 +56,7 @@ info: 120
 -/
 -- #guard_msgs in
 -- #eval sum_them 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

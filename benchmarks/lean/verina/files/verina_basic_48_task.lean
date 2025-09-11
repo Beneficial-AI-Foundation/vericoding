@@ -1,9 +1,12 @@
+-- <vc-preamble>
 import Mathlib
 
 @[reducible, simp]
 def isPerfectSquare_precond (n : Nat) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 theorem check_correct (n : Nat) (x fuel : Nat) :
    isPerfectSquare.check n x fuel = true → ∃ i, x ≤ i ∧ i * i = n := by
@@ -88,10 +91,14 @@ theorem check_complete (n : Nat) (x fuel : Nat) (i : Nat)
         -- Apply induction hypothesis
         exact ih (x + 1) x_succ_le_i i_lt_next_fuel
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isPerfectSquare (n : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def isPerfectSquare_postcond (n : Nat) (result : Bool) : Prop :=
   result ↔ ∃ i : Nat, i * i = n
@@ -99,6 +106,7 @@ def isPerfectSquare_postcond (n : Nat) (result : Bool) : Prop :=
 theorem isPerfectSquare_spec_satisfied (n : Nat) :
     isPerfectSquare_postcond n (isPerfectSquare n) := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

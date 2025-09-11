@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -15,6 +16,7 @@ spec fn expr_inner_longest(strings: &Vec<Vec<u8>>, result: Option<&Vec<u8>>) -> 
         },
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def find_gift_pair (n : Nat) (prices : List Nat) : String := sorry
 def process_test_cases (numCases : Nat) (cases : List (Nat × List Nat)) : List String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def permutation (xs : List Nat) : List Nat := sorry
 
 theorem find_gift_pair_order_independence (n : Nat) (prices : List Nat) :
   find_gift_pair n prices = find_gift_pair n (permutation prices) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_gift_pair_result (n : Nat) (prices : List Nat) :
   find_gift_pair n prices = "Accepted" ∨ find_gift_pair n prices = "Rejected" := sorry
 
@@ -46,6 +53,7 @@ info: 'Accepted'
 -/
 -- #guard_msgs in
 -- #eval find_gift_pair 4 [1000, 1000, 50, 60]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

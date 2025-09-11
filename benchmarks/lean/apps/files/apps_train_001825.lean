@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reconstruct_queue (people : List (Nat × Nat)) : List (Nat × Nat) := sorry 
 
 theorem reconstruct_queue_maintains_length 
@@ -9,7 +15,9 @@ theorem reconstruct_queue_maintains_length
 
 /- For any two heights in the input and output list, if we count their occurrences,
     they should be equal -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reconstruct_queue_maintains_elements
   (people : List (Nat × Nat)) (h : Nat) :
   List.countP (fun p => p.1 = h) (reconstruct_queue people) = 
@@ -26,6 +34,7 @@ theorem reconstruct_queue_count_bounds
 theorem reconstruct_queue_size_bounds
   (people : List (Nat × Nat)) :
   1 ≤ List.length people ∧ List.length people ≤ 20 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

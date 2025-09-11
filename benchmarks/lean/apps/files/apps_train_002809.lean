@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def how_many_measurements (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def log3ceil (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem measurements_non_negative (n : Nat) (h : n > 0) :
   how_many_measurements n ≥ 0 :=
   sorry
@@ -56,6 +63,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval how_many_measurements 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

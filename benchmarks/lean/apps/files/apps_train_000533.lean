@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_first_player_win (pairs : List (Nat × Nat)) : String := sorry
 
 -- Theorem declarations
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_first_player_win_outputs (pairs : List (Nat × Nat))
   (h1 : ∀ p ∈ pairs, 1 ≤ p.1 ∧ p.1 ≤ 100 ∧ 1 ≤ p.2 ∧ p.2 ≤ 100)
   (h2 : 1 ≤ pairs.length ∧ pairs.length ≤ 10) :
@@ -43,6 +51,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval can_first_player_win [(2, 3), (3, 5)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

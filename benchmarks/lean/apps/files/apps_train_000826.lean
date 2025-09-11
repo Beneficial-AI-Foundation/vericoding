@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_winner (n : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_winner_returns_valid_string (n : Nat) 
   (h : 1 ≤ n ∧ n ≤ 19) : 
   get_winner n = "Arjuna" ∨ get_winner n = "Bhima" :=
@@ -32,6 +40,7 @@ theorem bhima_winning_positions :
   get_winner 5 = "Bhima" ∧
   get_winner 9 = "Bhima" :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

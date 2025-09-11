@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 use vstd::multiset::*;
 
@@ -18,6 +19,7 @@ proof fn search(s: Seq<i32>, x: i32) -> (k: usize)
   assume(false);
   0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

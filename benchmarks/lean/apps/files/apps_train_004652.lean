@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Matrix := List (List Nat)
 
 def different_squares : Matrix → Nat := sorry
@@ -5,14 +6,20 @@ def different_squares : Matrix → Nat := sorry
 def rotateMatrix (m : Matrix) : Matrix := sorry
 
 def isValidMatrix (m : Matrix) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isAllValue (m : Matrix) (v : Nat) : Bool := sorry
 
 -- Number of different squares is always positive and has an upper bound
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem different_squares_bounds (m : Matrix) :
   isValidMatrix m → 
   1 ≤ different_squares m ∧ 
@@ -51,6 +58,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval different_squares [[9, 9, 9], [9, 9, 9], [9, 9, 9]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

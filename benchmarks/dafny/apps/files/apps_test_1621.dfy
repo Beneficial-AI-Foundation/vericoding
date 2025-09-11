@@ -1,3 +1,4 @@
+// <vc-preamble>
 function stringValue(s: string, w: seq<int>): int
   requires |w| == 26
   requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
@@ -35,6 +36,7 @@ predicate ValidInput(s: string, k: int, w: seq<int>)
   (forall i :: 0 <= i < |w| ==> 0 <= w[i] <= 1000) &&
   (forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

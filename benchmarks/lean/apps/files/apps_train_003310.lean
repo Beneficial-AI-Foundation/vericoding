@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def beeramid (bonus: Int) (price: Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem beeramid_non_negative (bonus price: Int) (h: price > 0) : 
   beeramid bonus price ≥ 0 := 
   sorry
@@ -37,6 +45,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval beeramid -1 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

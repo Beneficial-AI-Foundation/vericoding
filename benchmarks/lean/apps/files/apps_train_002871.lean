@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def strCount (s : String) (letter : Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem strCount_nonnegative (s : String) (letter : Char) :
   strCount s letter ≥ 0 :=
 sorry
@@ -41,6 +49,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval str_count "hello world" "o"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

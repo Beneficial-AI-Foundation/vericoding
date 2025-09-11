@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def getParticipants (h : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def choose (n k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem handshakes_bounds (h : Nat) : 
   let n := getParticipants h
   let possibleHandshakes := if n ≥ 2 then choose n 2 else 0
@@ -36,6 +43,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval get_participants 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

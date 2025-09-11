@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def divisible_count (x : Nat) (y : Nat) (k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divisible_count_zero_width (x k : Nat) (h : k > 0) :
   divisible_count x (x-1) k = 0 :=
   sorry
@@ -33,6 +41,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval divisible_count 0 1 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

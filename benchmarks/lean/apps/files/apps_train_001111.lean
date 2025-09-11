@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isPalindrome (s : String) : Bool := sorry
 
 def countPalindromeCompletions (s : String) : Nat := sorry
@@ -6,10 +7,14 @@ def reverseString (s : String) : String := sorry
 
 theorem countPalindromeCompletions_nonnegative (s : String) : 
   countPalindromeCompletions s ≥ 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mkPos (s : String) (i : Nat) (h : i < s.length) : String.Pos := ⟨i⟩
 
 theorem countPalindromeCompletions_impossible_case (s : String) (i : Nat) 
@@ -19,7 +24,9 @@ theorem countPalindromeCompletions_impossible_case (s : String) (i : Nat)
   (h4 : s.get (mkPos s i h2) ≠ '?' ∧ s.get (mkPos s (s.length - 1 - i) h3) ≠ '?')
   (h5 : s.get (mkPos s i h2) ≠ s.get (mkPos s (s.length - 1 - i) h3)) :
   countPalindromeCompletions s = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem countPalindromeCompletions_bounded (s : String) :
   countPalindromeCompletions s ≤ 10000009 := sorry
 
@@ -52,6 +59,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_palindrome_completions "aba"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

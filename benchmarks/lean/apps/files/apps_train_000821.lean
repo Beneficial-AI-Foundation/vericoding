@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solvePattern (k: Nat) : List String := sorry
 
 theorem pattern_length_matches_input {k: Nat} (h: k ≥ 2) (h2: k ≤ 100) : 
   (solvePattern k).length = k := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem each_line_has_correct_number {k: Nat} (h: k ≥ 2) (h2: k ≤ 100) :
   ∀ i: Nat, i < k → 
     let line := (solvePattern k).get ⟨i, by sorry⟩
@@ -34,6 +42,7 @@ theorem line_endpoints {k: Nat} (h: k ≥ 2) (h2: k ≤ 100) :
   first.endsWith "1" ∧
   last.startsWith (toString k) ∧
   last.endsWith (toString k) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

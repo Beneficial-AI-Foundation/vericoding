@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find (n : Nat) (z : Nat) : Nat := sorry
 
 def bucket_digit_distributions_total_sum (n : Nat) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_result_larger_than_input (n : Nat) (z : Nat) (h1 : n > 0) (h2 : n ≤ 10000) (h3 : z ≤ 1000) :
   find n z > n := sorry
 
@@ -33,6 +41,7 @@ info: 30046
 -/
 -- #guard_msgs in
 -- #eval find 30000 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

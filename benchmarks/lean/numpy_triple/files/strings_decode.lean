@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def decode {n : Nat} (a : Vector ByteArray n) (encoding : String := "utf-8") (errors : String := "strict") : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decode_spec {n : Nat} (a : Vector ByteArray n) (encoding : String := "utf-8") (errors : String := "strict") :
     ⦃⌜∀ i : Fin n, (a.get i).size ≥ 0⌝⦄
     decode a encoding errors
@@ -39,3 +46,4 @@ theorem decode_spec {n : Nat} (a : Vector ByteArray n) (encoding : String := "ut
                     decode a enc1 errors ≠ decode a enc2 errors ∨
                     (∀ j : Fin n, (a.get j).size = 0))⌝⦄ := by
   sorry
+-- </vc-theorems>

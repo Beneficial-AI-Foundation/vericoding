@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_xor_tree (n : Nat) (edges : List (Nat × Nat)) (init : List Nat) (goal : List Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem basic_properties {n : Nat} {xor_values : List Nat} 
   (h1 : n ≥ 2) (h2 : n ≤ 20) (h3 : ∀ x ∈ xor_values, x = 0 ∨ x = 1)
   (h4 : xor_values.length = n) :
@@ -28,6 +35,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval len solve_xor_tree(n, edges, init, goal)
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

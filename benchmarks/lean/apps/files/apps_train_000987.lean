@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_hours_equal_plants (n : Nat) (plants : List Nat) : Nat := sorry
 
 def isDecreasing (l : List Nat) : Prop :=
   ∀ i, i + 1 < l.length → l[i]! > l[i+1]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_gap_strictly_decreasing
   {n : Nat} {plants : List Nat}
   (h_sorted : isDecreasing plants)
@@ -41,6 +49,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval min_hours_equal_plants 5 [20, 15, 10, 5, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def BinaryIndexedTree : Type := Unit
 def BinaryIndexedTree.mk (n : Nat) : BinaryIndexedTree := sorry 
 
@@ -6,17 +7,23 @@ def BinaryIndexedTree.sum (self : BinaryIndexedTree) (i : Nat) : Int := sorry
 
 def BinaryIndexedTree.sum_range (self : BinaryIndexedTree) (l r : Nat) : Int := sorry
 def BinaryIndexedTree.data (self : BinaryIndexedTree) : List Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) (perm : List Nat) : List Nat := sorry
 
 theorem bit_init_properties (n : Nat) (h : n > 0) :
   let bit := BinaryIndexedTree.mk n
   List.length (BinaryIndexedTree.data bit) = n + 1 ∧ 
   List.all (BinaryIndexedTree.data bit) (λ x => x = 0) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bit_add_sum_properties (n i : Nat) (x : Int) (h1 : n > 0) (h2 : i > 0) (h3 : i ≤ n) :
   let bit := BinaryIndexedTree.mk n
   let bit' := BinaryIndexedTree.add bit i x
@@ -54,6 +61,7 @@ info: [0]
 -/
 -- #guard_msgs in
 -- #eval solve 1 [1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isValidEmail (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numUniqueEmails (emails : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numUniqueEmails_bounds (emails : List String) :
   let result := numUniqueEmails emails
   0 ≤ result ∧ result ≤ emails.length :=
@@ -46,6 +53,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval num_unique_emails ["test.email+alex@leetcode.com", "test.email@leetcode.com"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

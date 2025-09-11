@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Island := List Nat
 
 def solve_recipes (islands: List Island) (num_ingredients: Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_recipes_minimal_result_type (islands: List Island) (num_ingredients: Nat):
   num_ingredients = 2 →
   (∀ i ∈ islands, ∀ x ∈ i.tail, x ≤ 2) →
@@ -35,6 +43,7 @@ info: 'all'
 -/
 -- #guard_msgs in
 -- #eval solve_recipes [[2, 1, 2], [2, 1, 3]] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

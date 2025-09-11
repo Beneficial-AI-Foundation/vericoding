@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def solve_min_wire_length (n : Nat) (has_electricity : String) (coordinates : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Nat) : Bool :=
   sorry
 
 /- Basic properties -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_wire_length_non_negative (n : Nat) (has_electricity : String) (coordinates : List Nat) 
   (h1 : coordinates.length = n) 
   (h2 : has_electricity.length = n)
@@ -57,6 +64,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval solve_min_wire_length 3 "100" [1, 5, 6]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

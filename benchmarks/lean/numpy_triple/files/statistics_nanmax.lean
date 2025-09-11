@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nanmax {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nanmax_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     nanmax a
@@ -33,3 +40,4 @@ theorem nanmax_spec {n : Nat} (a : Vector Float (n + 1)) :
                  -- Sanity check: result is either NaN or exists in the vector
                  (result.isNaN ∨ (∃ witness : Fin (n + 1), result = a.get witness))⌝⦄ := by
   sorry
+-- </vc-theorems>

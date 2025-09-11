@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_markets (n : Nat) (m : Nat) (edges : List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_markets_bounds (n : Nat) (m : Nat) (edges : List (Nat × Nat))
   (h1 : n > 0)
   (h2 : ∀ (e : Nat × Nat), e ∈ edges → e.1 < n ∧ e.2 < n)
@@ -39,6 +47,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_markets 4 3 [[0, 1], [1, 2], [2, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

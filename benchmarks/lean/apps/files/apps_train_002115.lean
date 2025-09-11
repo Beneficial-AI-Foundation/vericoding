@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_rabbit_hops (n : Nat) (x : Nat) (favorite_nums : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_hops_needed (n : Nat) (x : Nat) (favorite_nums : List Nat)
   (h1 : n > 0) (h2 : x > 0) (h3 : favorite_nums.length > 0) :
   solve_rabbit_hops n x favorite_nums ≥ 1 := by
@@ -36,6 +44,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_rabbit_hops 1 5 [5]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLinesSpec(input);
@@ -50,6 +51,7 @@ function ParseIntHelper(s: string, pos: nat): int
     else
         ParseIntHelper(s, pos + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

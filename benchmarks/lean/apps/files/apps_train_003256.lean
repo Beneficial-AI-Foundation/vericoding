@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def circle_area (radius : Float) : Option Float :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pi : Float := 3.14159
 
 theorem circle_area_invalid_inputs {x : Float} (h : x ≤ 0) :
   circle_area x = none :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem circle_area_positive_inputs {x : Float} (h : x > 0) :
   match circle_area x with
   | some result => 
@@ -38,6 +45,7 @@ info: 12.57
 -/
 -- #guard_msgs in
 -- #eval circle_area 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

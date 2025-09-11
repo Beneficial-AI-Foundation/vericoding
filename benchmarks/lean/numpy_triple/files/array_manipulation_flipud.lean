@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def flipud {n : Nat} (m : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem flipud_spec {n : Nat} (m : Vector Float n) :
     ⦃⌜True⌝⦄
     flipud m
@@ -15,3 +22,4 @@ theorem flipud_spec {n : Nat} (m : Vector Float n) :
                    have h : i.val < n := i.isLt
                    omega⟩⌝⦄ := by
   sorry
+-- </vc-theorems>

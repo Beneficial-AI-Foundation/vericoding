@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, a: int, m: int, shots: seq<int>)
 {
     n > 0 && k > 0 && a > 0 && m > 0 && |shots| == m &&
@@ -69,6 +70,7 @@ function intToStringSpec(value: int): string
 {
     "1"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

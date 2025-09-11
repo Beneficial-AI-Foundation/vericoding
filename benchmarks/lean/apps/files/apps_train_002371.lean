@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def repeatedSubstringPattern (s: String) : Bool := sorry
 
 theorem repeatedSubstringPattern_single_char {s: String} :
@@ -8,14 +9,20 @@ def rotateString (s: String) : String := sorry
 theorem repeatedSubstringPattern_rotation {s: String} (h: s.length ≥ 2) :
   repeatedSubstringPattern s → 
   repeatedSubstringPattern (rotateString s) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPrime (n: Nat) : Bool := sorry
 
 def allCharsSame (s: String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem repeatedSubstringPattern_doubled {s: String} (h: s.length > 0) :
   repeatedSubstringPattern (s ++ s) := sorry  
 
@@ -45,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval repeatedSubstringPattern "abcabcabcabc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

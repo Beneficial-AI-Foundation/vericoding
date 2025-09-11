@@ -1,7 +1,9 @@
+// <vc-preamble>
 function DecodeRle(lst: seq<(char, nat)>): seq<char>
 {
     []
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def to_integer (s: String) : Option Int := sorry 
 
 theorem decimal_string_property (n : Int) :
   to_integer (toString n) = some n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem binary_string_property (n : Int) (h : n ≥ 0):
   let binary := "0b" ++ toString n
   to_integer binary = some n := sorry
@@ -67,6 +75,7 @@ info: 83
 -/
 -- #guard_msgs in
 -- #eval to_integer "0o123"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

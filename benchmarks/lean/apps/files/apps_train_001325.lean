@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findSmallestCommonMultiple (numbers : List Nat) : Nat := sorry
 def findGreatestCommonFactor (numbers : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lcm_divisibility {numbers : List Nat} (h : numbers ≠ []) : 
   ∀ n ∈ numbers, findSmallestCommonMultiple numbers % n = 0 := sorry
 
@@ -21,6 +29,7 @@ theorem lcm_identity (n : Nat) :
 
 theorem gcf_identity (n : Nat) :
   findGreatestCommonFactor [n] = n := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

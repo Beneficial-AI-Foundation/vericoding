@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidOutput(n: int, result: seq<string>)
     requires n >= 2
 {
@@ -20,6 +21,7 @@ function IntToString(n: int): string
     else if n < 10 then [n as char + '0']
     else IntToString(n / 10) + IntToString(n % 10)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

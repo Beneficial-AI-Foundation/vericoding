@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountSubstring(s: string, pattern: string): nat
 {
     if |pattern| == 0 || |s| < |pattern| then 0
@@ -30,6 +31,7 @@ predicate ValidInput(input: string)
 {
     |input| >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

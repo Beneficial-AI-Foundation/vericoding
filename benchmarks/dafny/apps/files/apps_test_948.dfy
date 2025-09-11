@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0
@@ -35,6 +36,7 @@ function CountFaceSquaresAsString(input: string): string
     var count := CountFaceSquares(input);
     IntToStringFunc(count) + "\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

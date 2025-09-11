@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn seq_max(a: Seq<i32>) -> i32
         seq_max(a.drop_last())
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

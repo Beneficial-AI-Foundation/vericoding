@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def tile {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) : Id (Vector α (n * reps)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tile_spec {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) (h_reps : reps > 0) :
     ⦃⌜reps > 0⌝⦄
     tile A reps
@@ -23,3 +30,4 @@ theorem tile_spec {α : Type} {n : Nat} (A : Vector α n) (reps : Nat) (h_reps :
         exact Nat.mod_lt i.val (Nat.zero_lt_succ n')
     ⟩⌝⦄ := by
   sorry
+-- </vc-theorems>

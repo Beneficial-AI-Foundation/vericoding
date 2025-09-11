@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -35,6 +36,7 @@ spec fn loop_inv(q: Seq<int>, x: int, i: nat, j: nat, sum: int) -> bool {
     has_addends_in_indices_range(q, x, i, j) &&
     are_addends_indices(q, sum, i, j)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

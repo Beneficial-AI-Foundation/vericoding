@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -10,6 +11,7 @@ pub struct Slice {
 
     pub step: Option<usize>,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

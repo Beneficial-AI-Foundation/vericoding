@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebvander {n : Nat} (x : Vector Float n) (deg : Nat) : Id (Vector (Vector Float (deg + 1)) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
     ⦃⌜True⌝⦄
     chebvander x deg
@@ -29,3 +36,4 @@ theorem chebvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
               ∀ k : Fin (deg + 1), 
                 (V.get i).get k = (if k.val % 2 = 0 then 1 else -1) * (V.get j).get k)⌝⦄ := by
   sorry
+-- </vc-theorems>

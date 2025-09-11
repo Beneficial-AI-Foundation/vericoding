@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_multiset_averages (N K M : Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem common_moduli {N K : Nat} (h1 : N > 0) (h2 : K > 0) :
   let primes := [998244353, 1000000007]
   ∀ M ∈ primes,
@@ -37,6 +45,7 @@ info: [1, 1]
 -/
 -- #guard_msgs in
 -- #eval solve_multiset_averages 2 1 905589253
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

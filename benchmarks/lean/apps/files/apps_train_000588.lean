@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s : String) (c : Char) : Nat := sorry
 
 def solve_robot_safety (n m : Nat) (commands : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_robot_safety_returns_valid_output 
   (n m : Nat) (commands : String)
   (h1 : 0 < n) (h2 : 0 < m)
@@ -60,6 +68,7 @@ info: 'unsafe'
 -/
 -- #guard_msgs in
 -- #eval solve_robot_safety 3 2 "LLRU"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

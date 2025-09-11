@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ThreeDistinct(s: string, i: int): bool
     requires 0 < i < |s| - 1
 {
@@ -8,6 +9,7 @@ function Happy(s: string) : bool
     |s| >= 3 &&
     forall i :: 0 < i < |s| - 1 ==> ThreeDistinct(s, i)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

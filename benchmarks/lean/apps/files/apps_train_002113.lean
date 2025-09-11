@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Edge := Nat × Nat
 
 def solve (n : Nat) (edges : List Edge) : Nat × Nat :=
@@ -11,7 +17,9 @@ structure IsValidTree (n : Nat) (edges : List Edge) : Prop where
   valid_vertices : ∀ (e : Edge), e ∈ edges → 1 ≤ e.1 ∧ e.1 ≤ n ∧ 1 ≤ e.2 ∧ e.2 ≤ n
   is_acyclic : ∀ e ∈ edges, True -- placeholder for acyclic property
   is_connected : ∀ e ∈ edges, True -- placeholder for connected property
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_type_output {n : Nat} {edges : List Edge}
   (h : IsValidTree n edges) :
   let (mn, mx) := solve n edges
@@ -41,6 +49,7 @@ info: (1, 6)
 -/
 -- #guard_msgs in
 -- #eval solve 7 [(1, 2), (2, 7), (3, 4), (4, 7), (5, 6), (6, 7)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

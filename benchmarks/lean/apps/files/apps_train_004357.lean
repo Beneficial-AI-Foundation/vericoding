@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def owl_pic (s : String) : String := sorry
 
 def containsSubstr (s : String) (sub : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem owl_pic_result_structure (s : String) :
   let result := owl_pic s
   let parts := result.splitOn "''0v0''"
@@ -33,6 +41,7 @@ info: "XWWXO''0v0''OXWWX"
 -/
 -- #guard_msgs in
 -- #eval owl_pic "xweWXo"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, p: int, buyers: seq<string>)
 {
     1 <= n <= 40 &&
@@ -36,6 +37,7 @@ function computePaymentBackward(buyers: seq<string>, p: int, currentIndex: int, 
                           currentApples * p;
         payment + computePaymentBackward(buyers, p, currentIndex - 1, newApples)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

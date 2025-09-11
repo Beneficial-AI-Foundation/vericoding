@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def countSpaces (s : String) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def split (s : String) : List String :=
 
 def startsWith (s : String) (c : Char) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reorderSpaces (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reorderSpaces_preserves_spaces (s : String) :
   countSpaces s = countSpaces (reorderSpaces s) := by
   sorry
@@ -42,6 +49,7 @@ info: 'a'
 -/
 -- #guard_msgs in
 -- #eval reorder_spaces "a"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

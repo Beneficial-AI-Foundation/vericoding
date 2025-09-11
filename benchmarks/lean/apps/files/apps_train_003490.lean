@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def filter_homogenous {α} (arrays : List (List α)) : List (List α) := sorry
 
 theorem filter_homogenous_subset {α} (arrays : List (List α)) :
   ∀ x, x ∈ filter_homogenous arrays → x ∈ arrays := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem filter_homogenous_nonempty {α} (arrays : List (List α)) :
   ∀ x, x ∈ filter_homogenous arrays → x ≠ [] := sorry
 
@@ -40,6 +48,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval filter_homogenous [[1, 2, 3], ["1", "2", "3"], ["1", 2, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

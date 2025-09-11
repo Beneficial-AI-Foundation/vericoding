@@ -1,11 +1,16 @@
+-- <vc-preamble>
 def Grid := List (List Nat)
 
 def isPrintable (grid: Grid) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidGrid (grid: Grid) : Bool :=
   match grid with
   | [] => false
@@ -15,7 +20,9 @@ def isValidGrid (grid: Grid) : Bool :=
     | _::_ =>
       let width := row.length
       rows.all (λ r => r.length = width)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem grid_validity {grid: Grid} (h: isValidGrid grid) : 
   ∃ (row: List Nat) (rows: List (List Nat)), grid = row::rows :=
 sorry
@@ -61,6 +68,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval isPrintable [[1, 2, 1], [2, 1, 2], [1, 2, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

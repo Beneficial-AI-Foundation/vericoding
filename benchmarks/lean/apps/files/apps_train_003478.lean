@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def is_prime (n : Nat) : Bool := sorry
 
 def all_dig_prime (n : Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def not_primes (start finish : Nat) : List Nat := sorry
 
 def List.sorted (l : List Nat) : Prop := 
@@ -12,7 +17,9 @@ def List.sorted (l : List Nat) : Prop :=
   match l.get? i, l.get? j with
   | some x, some y => x ≤ y
   | _, _ => true
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem not_primes_empty_for_equal_bounds (n : Nat) :
   not_primes n n = [] := sorry
 
@@ -37,6 +44,7 @@ info: [2722, 2723, 2725, 2727, 2732, 2733, 2735, 2737]
 -/
 -- #guard_msgs in
 -- #eval not_primes 2700 2750
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

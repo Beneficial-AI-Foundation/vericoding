@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def List.unique {α} [BEq α] : List α → List α 
   | [] => []
   | h::t => if t.contains h then unique t else h :: unique t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def subarraysWithKDistinct (A : List Nat) (K : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem k_validity {A : List Nat} {K : Nat}
   (hA : A.length > 0)
   (hAelems : ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100)
@@ -51,6 +58,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval subarraysWithKDistinct [1, 2, 3] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

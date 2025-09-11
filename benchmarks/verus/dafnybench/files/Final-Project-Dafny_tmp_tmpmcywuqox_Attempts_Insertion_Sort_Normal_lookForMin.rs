@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -10,6 +11,7 @@ spec fn sorted_a(a: &[int], i: int) -> bool {
     0 <= i <= a.len() && 
     forall|k: int| #![trigger a[k]] 0 < k < i ==> a[(k-1) as int] <= a[k]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

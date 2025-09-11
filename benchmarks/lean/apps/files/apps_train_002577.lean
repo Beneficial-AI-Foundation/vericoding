@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def scrabble_score : String → Nat 
   | _ => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem scrabble_score_nonnegative (word : String) : 
   scrabble_score word ≥ 0 := sorry
 
@@ -49,6 +57,7 @@ info: 22
 -/
 -- #guard_msgs in
 -- #eval scrabble_score "quirky"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

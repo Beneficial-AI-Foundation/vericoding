@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ChestTotal(reps: seq<int>): int
 {
     sum(seq(|reps|, i requires 0 <= i < |reps| => if i % 3 == 0 then reps[i] else 0))
@@ -31,6 +32,7 @@ predicate IsWinner(muscle: string, reps: seq<int>)
         case "back" => backTotal > chestTotal && backTotal > bicepsTotal
         case _ => false
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def nth_smallest (arr : List Int) (n : Nat) : Option Int := sorry
 
 def contains (xs : List Int) (x : Int) : Bool := 
@@ -13,15 +14,21 @@ def minimum (xs : List Int) : Option Int :=
   xs.foldl (fun acc x => match acc with
     | none => some x
     | some m => some (min x m)) none
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maximum (xs : List Int) : Option Int :=
   xs.foldl (fun acc x => match acc with
     | none => some x
     | some m => some (max x m)) none
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nth_smallest_properties {arr : List Int} {n : Nat} (h : n ≥ 1) :
   match nth_smallest arr n with
   | none => n > (uniqueList arr).length
@@ -57,6 +64,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval nth_smallest [14, 12, 46, 0, 334] 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_special_integer (nums : List Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem special_int_exists (nums : List Int) (h : nums ≠ []) :
   let result := find_special_integer nums
   let count := (nums.filter (· = result)).length 
@@ -43,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_special_integer [1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

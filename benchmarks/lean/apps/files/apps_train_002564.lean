@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solution (s : String) : String := sorry
 
 theorem uppercase_preceded_by_space (s : String) (pos : String.Pos) :
@@ -12,7 +18,9 @@ theorem uppercase_preceded_by_space (s : String) (pos : String.Pos) :
     (∃ prevPos : String.Pos, 
       prevPos < resPos ∧
       res.get prevPos = ' ') := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_difference_equals_uppercase_count (s : String) :
   (solution s).length = s.length + (s.data.filter Char.isUpper).length := sorry
 
@@ -37,6 +45,7 @@ info: 'break Camel Case'
 -/
 -- #guard_msgs in
 -- #eval solution "breakCamelCase"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: seq<string>)
 {
     |input| == 8 &&
@@ -17,6 +18,7 @@ predicate AllRowsHaveAlternatingPattern(input: seq<string>)
 {
     forall i :: 0 <= i < 8 ==> HasAlternatingRow(input[i])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

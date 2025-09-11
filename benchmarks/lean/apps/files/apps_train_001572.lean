@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def survivor (nums : List Nat) : Int := sorry
 
 theorem survivor_result_constraint (nums : List Nat) :
   let result := survivor nums
   result = -1 ∨ result = 0 ∨ result > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem survivor_empty_list :
   survivor [] = -1 := sorry
 
@@ -49,6 +57,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval survivor [2, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

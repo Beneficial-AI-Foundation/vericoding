@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def isVowel (c : Char) : Bool := 
   let lc := c.toLower
   lc == 'a' ∨ lc == 'e' ∨ lc == 'i' ∨ lc == 'o' ∨ lc == 'u' ∨ lc == 'y'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def vowel_indices (s : String) : List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem vowel_indices_in_bounds (s : String) :
   ∀ i ∈ vowel_indices s, 0 < i ∧ i ≤ s.length :=
 sorry
@@ -53,6 +60,7 @@ info: [1, 2, 4, 6]
 -/
 -- #guard_msgs in
 -- #eval vowel_indices "YoMama"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

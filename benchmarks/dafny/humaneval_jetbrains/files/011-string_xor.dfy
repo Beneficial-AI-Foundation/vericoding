@@ -1,3 +1,4 @@
+// <vc-preamble>
 function represents_byte(a: char) : bool
 {
     a in "01"
@@ -11,6 +12,7 @@ function char_xor(a: char, b: char): char
     else
         '1'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

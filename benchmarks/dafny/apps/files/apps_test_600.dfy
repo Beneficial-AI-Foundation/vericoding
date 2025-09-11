@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
     a >= 1 && a <= 1000 && b >= 1 && b <= 1000 && a != b
@@ -14,6 +15,7 @@ function MinimumTotalTiredness(a: int, b: int): int
     var c := OptimalMeetingPoint(a, b);
     tirednessForSteps(abs(c - a)) + tirednessForSteps(abs(b - c))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

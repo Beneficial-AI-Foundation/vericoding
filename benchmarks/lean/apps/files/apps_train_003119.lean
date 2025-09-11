@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def unlucky_days (year: Nat) : Nat := sorry
 
 def is_friday_13th (year month: Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unlucky_days_bounds (year: Nat) (h: year ≥ 1583): 
   unlucky_days year ≤ 12 := sorry
 
@@ -31,6 +39,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval unlucky_days 1634
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

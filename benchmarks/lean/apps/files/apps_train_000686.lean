@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_paths (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_paths_nonnegative (n : Nat) :
   count_paths n ≥ 0 ∧ count_paths n % 2 = 0 :=
 sorry 
@@ -37,6 +45,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_paths 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

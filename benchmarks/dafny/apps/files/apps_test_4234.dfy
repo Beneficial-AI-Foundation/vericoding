@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: string)
 {
     n == |s| && n >= 0
@@ -7,6 +8,7 @@ predicate IsGoodString(s: string)
 {
     |s| % 2 == 0 && forall i :: 0 <= i < |s|/2 ==> s[2*i] != s[2*i+1]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

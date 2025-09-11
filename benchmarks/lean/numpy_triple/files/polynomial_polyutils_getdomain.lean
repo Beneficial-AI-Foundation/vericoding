@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def getdomain {n : Nat} (x : Vector Float (n + 1)) : Id (Vector Float 2) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem getdomain_spec {n : Nat} (x : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     getdomain x
@@ -21,3 +28,4 @@ theorem getdomain_spec {n : Nat} (x : Vector Float (n + 1)) :
       (∃ j : Fin (n + 1), x[j] = result[1])
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def has_increasing_triplet (nums : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem has_increasing_triplet_matches_bruteforce (nums : List Int) (h : nums.length ≥ 3) :
   has_increasing_triplet nums = 
     (∃ i j k, i < j ∧ j < k ∧ k < nums.length ∧
@@ -43,6 +51,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval has_increasing_triplet [2, 1, 5, 0, 4, 6]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

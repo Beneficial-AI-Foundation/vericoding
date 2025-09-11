@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isSolvable (words : List String) (result : String) : Bool := sorry
 
 theorem result_length_property 
@@ -8,7 +14,9 @@ theorem result_length_property
   (∃ w ∈ (result :: words), String.length result < String.length w) →
   ¬(isSolvable words result) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_letter_words_solvable
   (words : List String) (result : String)
   (h1 : ∀ w ∈ words, String.length w = 1)
@@ -49,6 +57,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval isSolvable ["AB", "CD"] "EF"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

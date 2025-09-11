@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def firstIndex (s: String) (c: Char) : Nat :=
   sorry
 
 def lastIndex (s: String) (c: Char) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (s: String) : Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_returns_char_from_input (s: String) (h: s.length > 0) :
   ∃ p: String.Pos, solve s = s.get p :=
   sorry
@@ -43,6 +50,7 @@ info: 'a'
 -/
 -- #guard_msgs in
 -- #eval solve "dcbadcba"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

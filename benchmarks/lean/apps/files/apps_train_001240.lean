@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_grading_thresholds (n : Nat) (scores : List Nat) : String := sorry
 
 theorem valid_score_thresholds (n : Nat) (scores : List Nat)
@@ -15,7 +21,9 @@ theorem valid_score_thresholds (n : Nat) (scores : List Nat)
     b = (scores.toArray.qsort (· ≤ ·)).toList.get! (2*n/4) ∧  
     c = (scores.toArray.qsort (· ≤ ·)).toList.get! (3*n/4)
   else True := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem duplicate_scores_invalid (n : Nat) (base_score : Nat)
   (h_n : n ∈ [4, 8, 12, 16])
   (h_base : base_score ≤ 100) :
@@ -41,6 +49,7 @@ info: '-1'
 -/
 -- #guard_msgs in
 -- #eval solve_grading_thresholds 4 #[30, 30, 40, 50]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

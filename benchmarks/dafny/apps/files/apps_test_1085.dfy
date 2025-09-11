@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: nat)
 {
   n > 0
@@ -31,6 +32,7 @@ function count_valid_k_values(n: nat): int
   else 
     count_divisors(n - 1) + count_special_divisors(n) - 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

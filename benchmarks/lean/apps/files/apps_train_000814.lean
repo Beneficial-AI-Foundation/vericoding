@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_maze_path (n m : Nat) : String := sorry
 
 theorem solve_maze_path_valid_result (n m : Nat) :
   n > 0 → m > 0 →
   solve_maze_path n m = "Yes" ∨ solve_maze_path n m = "No" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_maze_path_2x1 (m : Nat) :
   m > 0 →
   n * m = 2 →
@@ -49,6 +57,7 @@ info: 'No'
 -/
 -- #guard_msgs in
 -- #eval solve_maze_path 1 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

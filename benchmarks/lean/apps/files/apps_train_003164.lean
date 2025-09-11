@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longest_palindrome (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_bounds (s : String) :
   0 ≤ longest_palindrome s ∧ longest_palindrome s ≤ s.length :=
   sorry
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval longest_palindrome ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

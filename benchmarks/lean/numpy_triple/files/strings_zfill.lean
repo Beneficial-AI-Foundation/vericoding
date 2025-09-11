@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def zfill {n : Nat} (a : Vector String n) (width : Nat) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zfill_spec {n : Nat} (a : Vector String n) (width : Nat) :
     ⦃⌜True⌝⦄
     zfill a width
@@ -54,3 +61,4 @@ theorem zfill_spec {n : Nat} (a : Vector String n) (width : Nat) :
       (original.length < width → 
          ∀ j : Nat, j < (width - original.length) → result.get? ⟨j⟩ = some '0')⌝⦄ := by
   sorry
+-- </vc-theorems>

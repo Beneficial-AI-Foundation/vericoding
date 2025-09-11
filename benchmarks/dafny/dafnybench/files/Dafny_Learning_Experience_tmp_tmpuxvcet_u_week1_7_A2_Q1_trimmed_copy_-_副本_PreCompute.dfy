@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost function Count(hi: nat, s:seq<int>): int
     requires 0 <= hi <= |s|
     decreases hi
@@ -14,6 +15,7 @@ method ComputeCount(CountIndex:nat, a:seq<int>,b:array<int>) returns (p:nat)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

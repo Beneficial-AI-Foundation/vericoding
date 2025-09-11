@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn shift_minus_32(c: char) -> char
 {
     arbitrary()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

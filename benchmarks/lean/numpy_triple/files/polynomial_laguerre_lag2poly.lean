@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -7,13 +8,19 @@ axiom evaluateLaguerrePolynomial {k : Nat} : Vector Float k → Float → Float
 
 /-- Helper function to evaluate a standard polynomial at a given point -/
 axiom evaluatePolynomial {k : Nat} : Vector Float k → Float → Float
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lag2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lag2poly_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
     lag2poly c
@@ -31,3 +38,4 @@ theorem lag2poly_spec {n : Nat} (c : Vector Float n) :
       (evaluatePolynomial result 0 = evaluateLaguerrePolynomial c 0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

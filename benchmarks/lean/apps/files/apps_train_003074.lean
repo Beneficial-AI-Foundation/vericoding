@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def select_subarray (arr : List Int) : Nat × Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_ratio (arr : List Int) (idx : Nat) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem select_subarray_index_bounds {arr : List Int}
   (h_size : arr.length ≥ 2)
   (h_nonzero : ∀ x ∈ arr, x ≠ 0) :
@@ -43,6 +50,7 @@ info: [[3, 100], [4, 200]]
 -/
 -- #guard_msgs in
 -- #eval select_subarray [10, 20, -30, 100, 200]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

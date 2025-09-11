@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverseWords (s : String) : String := sorry
 
 theorem reverseWords_preserves_length (s : String) :
   (reverseWords s).length = s.length := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverseWords_preserves_spaces (s : String) (p : String.Pos) : 
   (s.get p = ' ') ↔ ((reverseWords s).get p = ' ') :=
 sorry 
@@ -40,6 +48,7 @@ info: 'woH won nworb woc'
 -/
 -- #guard_msgs in
 -- #eval reverse_words "How now brown cow"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

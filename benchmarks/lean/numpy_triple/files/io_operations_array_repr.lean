@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def array_repr {n : Nat} (arr : Vector Float n) (max_line_width : Nat := 75) 
     (precision : Nat := 8) (suppress_small : Bool := false) : Id String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_repr_spec {n : Nat} (arr : Vector Float n) (max_line_width : Nat := 75) 
     (precision : Nat := 8) (suppress_small : Bool := false) :
     ⦃⌜precision > 0 ∧ max_line_width > 0⌝⦄
@@ -32,3 +39,4 @@ theorem array_repr_spec {n : Nat} (arr : Vector Float n) (max_line_width : Nat :
                  (result.contains '(' ∧ result.contains ')') ∧
                  (result.contains '[' ∧ result.contains ']')⌝⦄ := by
   sorry
+-- </vc-theorems>

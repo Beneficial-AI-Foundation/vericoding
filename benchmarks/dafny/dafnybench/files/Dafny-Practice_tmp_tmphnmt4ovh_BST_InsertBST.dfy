@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Tree = Empty | Node(int,Tree,Tree)
 
 function NumbersInTree(t: Tree): set<int>
@@ -29,6 +30,7 @@ predicate Ascending(q: seq<int>)
 }
 
 predicate NoDuplicates(q: seq<int>) { forall i,j :: 0 <= i < j < |q| ==> q[i] != q[j] }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

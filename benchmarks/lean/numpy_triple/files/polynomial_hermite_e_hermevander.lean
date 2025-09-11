@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermevander {n : Nat} (x : Vector Float n) (deg : Nat) : Id (Vector (Vector Float (deg + 1)) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermevander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
     ⦃⌜True⌝⦄
     hermevander x deg
@@ -25,3 +32,4 @@ theorem hermevander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
           x.get i * (result.get i).get ⟨j.val - 1, h1⟩ - 
           (Float.ofNat (j.val - 1)) * (result.get i).get ⟨j.val - 2, h2⟩)⌝⦄ := by
   sorry
+-- </vc-theorems>

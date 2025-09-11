@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_nondecreasing_subarrays (arr : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem always_returns_positive {arr : List Int} (h : arr ≠ []) : 
   count_nondecreasing_subarrays arr > 0 :=
 sorry
@@ -33,6 +41,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval count_nondecreasing_subarrays [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -21,6 +22,7 @@ spec fn sum_up(nums: Seq<int>) -> int
         nums[0] + sum_up(nums.subrange(1, nums.len() as int))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

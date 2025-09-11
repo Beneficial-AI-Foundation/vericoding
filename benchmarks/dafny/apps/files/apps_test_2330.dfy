@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Result = Impossible | Possible(cost: int, edges: seq<(int, int)>)
 
 function seq_sum(s: seq<int>): int {
@@ -62,6 +63,7 @@ function min_index_excluding_helper(weights: seq<int>, exclude: int, current_min
     else if weights[next] < weights[current_min] then min_index_excluding_helper(weights, exclude, next, next + 1)
     else min_index_excluding_helper(weights, exclude, current_min, next + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

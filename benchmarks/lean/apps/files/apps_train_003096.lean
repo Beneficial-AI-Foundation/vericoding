@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def List.factorial : Nat → Nat
   | 0 => 1
   | n + 1 => (n + 1) * factorial n
@@ -5,15 +6,21 @@ def List.factorial : Nat → Nat
 def List.unique {α} [BEq α] (xs : List α) : List α := sorry
 
 def slogan_maker (words: List String) : List String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def containsString (s1 s2: String) : Bool := sorry  
 
 theorem slogan_maker_returns_string_list (words : List String) :
   ∀ s, s ∈ slogan_maker words → s.length ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem slogan_maker_contains_all_words (words : List String) :
   ∀ slogan, slogan ∈ slogan_maker words →
   ∀ word, word ∈ List.unique words →
@@ -47,6 +54,7 @@ info: set(['super hot guacamole', 'super guacamole hot', 'hot super guacamole', 
 -/
 -- #guard_msgs in
 -- #eval set slogan_maker(["super", "hot", "guacamole"])
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

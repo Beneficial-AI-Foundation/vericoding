@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (file_name : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: String → String)
@@ -34,6 +41,7 @@ theorem correctness
 (file_name : String)
 : problem_spec implementation file_name := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "example.txt" = "Yes"
 -- #test implementation "1example.dll" = "No"

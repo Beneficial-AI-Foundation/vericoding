@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_candies (N K x D : Nat) (given_candies : List Nat) : Int := sorry
 
 theorem solve_candies_result_valid
@@ -18,7 +24,9 @@ theorem solve_candies_result_valid
     (N - K) ≥ 0 ∧
     -- D-difference constraint
     ∀ i, ∀ j, i ∈ given_candies → j ∈ given_candies → i ≤ j → j - i ≤ D := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_candies_preserves_values
   {N K x D : Nat}
   {given_candies : List Nat}
@@ -45,6 +53,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_candies 3 2 8 2 [3, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

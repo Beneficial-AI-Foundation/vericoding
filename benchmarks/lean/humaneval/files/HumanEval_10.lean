@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -13,13 +14,19 @@ problems:
 def is_palindrome
 (s: String): Bool :=
 s = s.toList.reverse.asString
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (string: String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (implementation: String → String)
@@ -44,6 +51,7 @@ theorem correctness
 : problem_spec implementation s
 := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "" = ""
 -- #test implementation "cat" = "catac"

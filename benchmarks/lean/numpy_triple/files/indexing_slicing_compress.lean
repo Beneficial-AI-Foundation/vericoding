@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def compress {n : Nat} (condition : Vector Bool n) (a : Vector Float n) 
     (m : Nat) (h : m = (condition.toList.filter (· = true)).length) : 
     Id (Vector Float m) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem compress_spec {n : Nat} (condition : Vector Bool n) (a : Vector Float n) 
     (m : Nat) (h : m = (condition.toList.filter (· = true)).length) :
     ⦃⌜True⌝⦄
@@ -24,3 +31,4 @@ theorem compress_spec {n : Nat} (condition : Vector Bool n) (a : Vector Float n)
                  -- Full result iff all conditions are true
                  (m = n ↔ ∀ i : Fin n, condition.get i = true)⌝⦄ := by
   sorry
+-- </vc-theorems>

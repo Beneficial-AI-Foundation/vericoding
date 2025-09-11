@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_palindrome_swaps (s : String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem makeable_palindrome_valid (s : String) :
   solve_palindrome_swaps s ≥ 0 ∧ solve_palindrome_swaps s ≠ -1 :=
 sorry
@@ -43,6 +51,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_palindrome_swaps "snuke"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

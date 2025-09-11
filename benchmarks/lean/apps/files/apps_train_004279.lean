@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def int_to_negabinary (n : Int) : String := sorry
 def negabinary_to_int (s : String) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidBinaryStr (s : String) : Bool :=
   s.length > 0 && s.all (fun c => c = '0' || c = '1')
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem round_trip (n : Int) : 
   negabinary_to_int (int_to_negabinary n) = n := sorry
 
@@ -54,6 +61,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval negabinary_to_int "100"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

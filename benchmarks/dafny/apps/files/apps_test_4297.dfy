@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
     n >= 1
@@ -22,6 +23,7 @@ function LCM(a: int, b: int): int
     else if b % a == 0 then b
     else a * b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

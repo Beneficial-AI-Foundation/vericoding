@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_uniq (arr : List Float) : Float := sorry
 
 theorem find_uniq_returns_unique (numbers : List Float) (unique_num : Float) (base_num : Float)
@@ -12,7 +18,9 @@ theorem find_uniq_returns_unique (numbers : List Float) (unique_num : Float) (ba
       then arr.get i = unique_num
       else arr.get i = base_num)) :
     find_uniq arr = unique_num := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_uniq_basic (common unique : Float)
     (h : common ≠ unique) :
     find_uniq [common, common, unique, common, common] = unique := sorry
@@ -34,6 +42,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_uniq [4, 4, 4, 3, 4, 4, 4, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

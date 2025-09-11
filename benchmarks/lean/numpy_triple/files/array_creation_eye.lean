@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def eye {n : Nat} : Id (Vector (Vector Float n) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem eye_spec {n : Nat} :
     ⦃⌜True⌝⦄
     eye
@@ -28,3 +35,4 @@ theorem eye_spec {n : Nat} :
       (∀ i : Fin n, ∀ j : Fin n, i ≠ j → (result.get i).get j = 0.0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

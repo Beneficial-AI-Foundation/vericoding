@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SplitLines(s: string): seq<string>
     requires |s| >= 0
     ensures |SplitLines(s)| >= 0
@@ -45,6 +46,7 @@ predicate exists_dangerous_group(stdin_input: string)
                 exists i :: 1 <= i <= m && i < |lines| && 
                     is_dangerous_group(SplitInts(lines[i]))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

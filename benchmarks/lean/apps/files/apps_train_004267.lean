@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def inside_out_word (s : String) : String := sorry
 def inside_out (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem inside_out_word_preserves_length (s : String) (h : s.length > 0) :
   (inside_out_word s).length = s.length := 
 sorry
@@ -42,6 +50,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval inside_out "massage yes massage"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

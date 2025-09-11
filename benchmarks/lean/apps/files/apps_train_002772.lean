@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_multiples (n : Nat) (limit : Nat) : List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_multiples_empty_when_limit_less {n : Nat} {limit : Nat} 
   (h : limit < n) : find_multiples n limit = [] :=
 sorry
@@ -56,6 +64,7 @@ info: [4, 8, 12, 16, 20, 24]
 -/
 -- #guard_msgs in
 -- #eval find_multiples 4 27
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

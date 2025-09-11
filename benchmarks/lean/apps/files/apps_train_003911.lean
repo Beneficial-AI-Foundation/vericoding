@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def has_unique_chars (s : String) : Bool := sorry
 
 theorem empty_string_has_unique_chars :
   has_unique_chars "" = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_with_duplicates_not_unique (s : String) :
   has_unique_chars (s ++ String.mk [s.get! 0]) = false := sorry
 
@@ -40,6 +48,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval has_unique_chars "++-"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def logspace {num : Nat} (start stop : Float) (endpoint : Bool) (base : Float) : Id (Vector Float num) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem logspace_spec {num : Nat} (start stop : Float) (endpoint : Bool) (base : Float) 
     (h_base_pos : base > 0) (h_base_ne_one : base ≠ 1) (h_num_pos : num > 0) :
     ⦃⌜base > 0 ∧ base ≠ 1 ∧ num > 0⌝⦄
@@ -26,3 +33,4 @@ theorem logspace_spec {num : Nat} (start stop : Float) (endpoint : Bool) (base :
       (∀ i : Fin num, result.get i > 0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

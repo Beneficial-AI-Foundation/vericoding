@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_skip_points (n : Nat) (arr : List Nat) : Nat := sorry
 
 theorem min_skip_points_non_negative (n : Nat) (arr : List Nat) :
   min_skip_points n arr ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_skip_points_bounded_by_ones (n : Nat) (arr : List Nat) :
   min_skip_points n arr ≤ (arr.foldl (· + ·) 0) := sorry
 
@@ -43,6 +51,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_skip_points 1 [0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

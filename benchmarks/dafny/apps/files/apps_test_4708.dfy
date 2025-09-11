@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitString(input, '\n');
@@ -30,6 +31,7 @@ predicate ValidOutput(output: string, input: string)
     else
         output == ""
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

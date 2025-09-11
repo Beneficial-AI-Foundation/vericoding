@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_total (subtotal tax tip : Float) : Float := sorry
 
 def round (x : Float) (d : Int) : Float := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_total_zero_tax_tip (subtotal : Float) (h1 : 0.01 ≤ subtotal) (h2 : subtotal ≤ 1000000) :
   (calculate_total subtotal 0 0 - subtotal).abs < 0.01 := sorry
 
@@ -44,6 +52,7 @@ info: 24.0
 -/
 -- #guard_msgs in
 -- #eval calculate_total 20 8 12
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

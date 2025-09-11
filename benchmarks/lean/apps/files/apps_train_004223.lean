@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def flatten_me {α : Type u} (lst : List (List α ⊕ α)) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem flatten_no_nesting {α : Type u} :
   ∀ (lst : List α), flatten_me (lst.map fun x => Sum.inr x) = lst :=
   sorry
@@ -45,6 +53,7 @@ info: ['!', '?']
 -/
 -- #guard_msgs in
 -- #eval flatten_me ["!", "?"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

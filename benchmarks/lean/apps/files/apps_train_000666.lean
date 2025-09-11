@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def assess_lights (k : Nat) (n : Nat) (points : List (Nat × Nat)) : String := sorry
 
 theorem more_than_three_lights_always_yes {n k : Nat} {points : List (Nat × Nat)}
@@ -8,7 +14,9 @@ theorem more_than_three_lights_always_yes {n k : Nat} {points : List (Nat × Nat
   (h3 : 1 ≤ k) (h4 : k ≤ 4)
   (h5 : k > 3)
   : assess_lights k n points = "yes" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem corner_point_always_yes {n : Nat} {points : List (Nat × Nat)}
   (h1 : 2 ≤ n) (h2 : n ≤ 100)
   (h3 : points.length ≤ 3)
@@ -43,6 +51,7 @@ info: 'yes'
 -/
 -- #guard_msgs in
 -- #eval assess_lights 3 5 [(0, 0), (4, 2), (2, 4)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

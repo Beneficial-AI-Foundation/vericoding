@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n k : Nat) (arr : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_output_is_valid
   (n k : Nat)
   (arr : List Nat)
@@ -67,6 +75,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve 4 2 [1, 1, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

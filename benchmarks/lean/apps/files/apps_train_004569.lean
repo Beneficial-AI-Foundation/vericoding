@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def RealFunction := Float → Float
 
 def riemann_trapezoidal (f : RealFunction) (n : Nat) (a b : Float) : Float := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem riemann_trapezoidal_constant_function 
     (n : Nat) (a b : Float) (h : a ≤ b) (const : Float) :
     let f := fun x => const
@@ -34,6 +42,7 @@ info: 2.0
 -/
 -- #guard_msgs in
 -- #eval riemann_trapezoidal lambda x: x 2 0 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

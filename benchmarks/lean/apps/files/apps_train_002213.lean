@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isValidPermutation (arr : List Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solveNextPermutation (n : Nat) (arr : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_case {n : Nat} (h : n > 0) (h2 : n ≤ 100) :
   solveNextPermutation 1 [-1] = [1] := by
   sorry
@@ -40,6 +47,7 @@ info: [3, 1, 2, 4]
 -/
 -- #guard_msgs in
 -- #eval solve_next_permutation 4 [4, -1, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

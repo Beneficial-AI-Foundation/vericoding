@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def get_intersection (arr1 arr2 : List Int) : List Int := sorry
 
 def isSortedList (l : List Int) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sortList (l : List Int) : List Int := sorry
 
 theorem self_intersection {arr : List Int} :
   get_intersection arr arr = sortList arr := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem intersection_sorted {arr1 arr2 : List Int} :
   isSortedList (get_intersection arr1 arr2) := sorry
 
@@ -28,6 +35,7 @@ theorem empty_intersection_right {arr : List Int} :
 
 theorem intersection_commutative {arr1 arr2 : List Int} :
   get_intersection arr1 arr2 = get_intersection arr2 arr1 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

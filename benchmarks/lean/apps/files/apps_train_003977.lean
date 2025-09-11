@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def merge (line : List Nat) : List Nat := sorry
 
 theorem merge_preserves_length (line : List Nat) (h : line ≠ []) :
   List.length (merge line) = List.length line := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zeros_preserved (n : Nat) (h : n > 0) :
   merge (List.replicate n 0) = List.replicate n 0 := sorry
 
@@ -41,6 +49,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval merge [8, 16, 16, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

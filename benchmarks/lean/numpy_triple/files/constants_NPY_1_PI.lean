@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def NPY_1_PI : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem NPY_1_PI_spec :
     ⦃⌜True⌝⦄
     NPY_1_PI
@@ -30,3 +37,4 @@ theorem NPY_1_PI_spec :
       0.99999 < result * 3.141592653589793 ∧ result * 3.141592653589793 < 1.00001
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

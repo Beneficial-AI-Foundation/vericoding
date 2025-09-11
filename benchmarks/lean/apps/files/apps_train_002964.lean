@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def is_lucky (n : Nat) : Bool :=
   sorry
 
 def sum_of_digits (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def concat_digits (a b : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lucky_digit_sum_property (n : Nat) :
   is_lucky n = (sum_of_digits n = 0 ∨ sum_of_digits n % 9 = 0) :=
 sorry
@@ -42,6 +49,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_lucky 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

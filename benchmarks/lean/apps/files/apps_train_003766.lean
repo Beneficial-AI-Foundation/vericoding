@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tail_swap (strings : List String) : List String := sorry
 
 theorem tail_swap_length (strings : List String)
   (h1 : strings.length = 2) :
   (tail_swap strings).length = 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tail_swap_preserves_string_type (strings : List String)
   (h1 : strings.length = 2)
   (h2 : ∀ s ∈ strings, s.contains ':') :
@@ -48,6 +56,7 @@ info: ['a:xyz', '777:12345']
 -/
 -- #guard_msgs in
 -- #eval tail_swap ["a:12345", "777:xyz"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

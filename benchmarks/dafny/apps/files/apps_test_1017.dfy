@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     n >= 1
 }
@@ -7,6 +8,7 @@ function MaxDistributions(n: int): int
 {
     if n % 3 == 0 then 2 * (n / 3) else 2 * (n / 3) + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

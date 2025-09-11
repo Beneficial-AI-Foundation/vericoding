@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def unique_paths_covering_all_squares (grid : List (List Int)) : Int :=
 sorry
 
 -- Different grid dimensions produce valid output
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_dims_produce_valid_output {rows cols : Nat} 
   (h1 : rows > 0) (h2 : cols > 0) (h3 : rows ≤ 5) (h4 : cols ≤ 5) :
   let grid := List.replicate rows (List.replicate cols 0)
@@ -43,6 +51,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval unique_paths_covering_all_squares [[0, 1], [2, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

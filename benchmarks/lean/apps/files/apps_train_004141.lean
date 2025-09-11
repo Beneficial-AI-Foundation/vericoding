@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ceil (x : Int) : Int := sorry
 
 def cost (mins: Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cost_minimum_30 (mins: Nat) : 
   cost mins ≥ 30 := sorry
 
@@ -34,6 +42,7 @@ info: 40
 -/
 -- #guard_msgs in
 -- #eval cost 84
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

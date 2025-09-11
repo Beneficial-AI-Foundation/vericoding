@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidGraph(n: int, f: seq<int>, w: seq<int>)
 {
   n > 0 && |f| == n && |w| == n &&
@@ -36,6 +37,7 @@ function PathMin(start: int, k: int, f: seq<int>, w: seq<int>): int
     var nextMin := PathMin(f[start], k - 1, f, w);
     if w[start] <= nextMin then w[start] else nextMin
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

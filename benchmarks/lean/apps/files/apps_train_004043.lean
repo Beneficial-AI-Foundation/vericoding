@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tops (s : String) : String := sorry
 
 -- Empty string returns empty string
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tops_empty_string :
   tops "" = "" := by sorry
 
@@ -52,6 +60,7 @@ info: '3pgb'
 -/
 -- #guard_msgs in
 -- #eval tops "abcdefghijklmnopqrstuvwxyz12345"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

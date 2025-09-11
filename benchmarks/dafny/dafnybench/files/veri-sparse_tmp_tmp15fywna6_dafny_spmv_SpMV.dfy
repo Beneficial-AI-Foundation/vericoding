@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(X_val: array<int>, X_crd: array<nat>, v : array<int>, b : int, k : int) : (s : int)
   reads X_val, X_crd, v
   requires X_val.Length >= b >= 0
@@ -10,6 +11,7 @@ function sum(X_val: array<int>, X_crd: array<nat>, v : array<int>, b : int, k : 
       0
     else  sum(X_val, X_crd, v, b + 1, k) + X_val[b] * v[X_crd[b]]
   }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

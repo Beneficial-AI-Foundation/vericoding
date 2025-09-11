@@ -1,3 +1,4 @@
+// <vc-preamble>
 function count_occurrences(cards: seq<string>, target: string): int
     ensures count_occurrences(cards, target) >= 0
 {
@@ -36,6 +37,7 @@ function max_net_earnings_helper(unique_blue: seq<string>, blue_cards: seq<strin
         var new_max := if net > current_max then net else current_max;
         max_net_earnings_helper(unique_blue, blue_cards, red_cards, index + 1, new_max)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

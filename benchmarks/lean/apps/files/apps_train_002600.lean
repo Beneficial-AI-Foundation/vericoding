@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def last (s : String) : List String := sorry
 
 def isWordChar (c : Char) : Bool := 32 ≤ c.val ∧ c.val ≤ 126
 
 -- All words from input are present in output with same frequency
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem last_maintains_words (s : String) 
   (h : ∀ c ∈ s.data, isWordChar c) :
   ∀ w ∈ s.split (· = ' '), 
@@ -47,6 +55,7 @@ info: ['massage', 'massage', 'massage', 'yes', 'yes']
 -/
 -- #guard_msgs in
 -- #eval last "massage yes massage yes massage"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

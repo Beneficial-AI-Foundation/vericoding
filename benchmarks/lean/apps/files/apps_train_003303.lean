@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sequence_sum (a b step : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_sum_equal_bounds {a step : Int}
   (h_step_nonzero : step ≠ 0) : 
   sequence_sum a a step = a :=
@@ -34,6 +42,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval sequence_sum 1 5 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

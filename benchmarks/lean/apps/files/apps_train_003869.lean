@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def arr_check (arr : List α) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_array_of_arrays {α : Type} (arr : List (List α)) :
   arr_check arr = true :=
 sorry
@@ -35,6 +43,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval arr_check ["A", "R", "R", "A", "Y"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nth_chandos_number (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem small_known_values :
   nth_chandos_number 1 = 5 ∧
   nth_chandos_number 2 = 25 ∧
@@ -27,6 +35,7 @@ info: 630
 -/
 -- #guard_msgs in
 -- #eval nth_chandos_number 9
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

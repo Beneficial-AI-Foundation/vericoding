@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def digits (n: Nat) : List Nat := sorry
 def visible_sum (n i: Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_visible_sum (n: Nat) : Nat := sorry
 def loneliest (n: Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem loneliest_returns_bool (n: Nat) :
   loneliest n = true ∨ loneliest n = false := sorry
 
@@ -46,6 +53,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval loneliest 11111
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

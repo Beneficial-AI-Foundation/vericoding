@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: string)
 {
   1 <= n <= 200000 && |s| == n && 
@@ -40,6 +41,7 @@ function OptimalEliminationGameWinner(s: string): string
   else if CountD(s) >= CountR(s) then "D"
   else "R"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

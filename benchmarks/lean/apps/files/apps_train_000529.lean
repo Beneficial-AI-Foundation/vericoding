@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_ram_win (tr_list dr_list ts_list ds_list : List Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_ram_win_returns_valid_result (tr_list dr_list ts_list ds_list : List Int) :
   (can_ram_win tr_list dr_list ts_list ds_list = "yes") ∨
   (can_ram_win tr_list dr_list ts_list ds_list = "no") :=
@@ -45,6 +53,7 @@ info: 'yes'
 -/
 -- #guard_msgs in
 -- #eval can_ram_win [3, 2, 5] [2, 100] [2] [100]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

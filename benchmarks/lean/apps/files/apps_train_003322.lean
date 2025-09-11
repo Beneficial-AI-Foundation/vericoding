@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def numberOfRoutes (m n : Nat) : Nat := sorry
 
 theorem numberOfRoutes_positive (m n : Nat) (h1: m > 0) (h2: n > 0) : 
   numberOfRoutes m n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numberOfRoutes_symmetric (m n : Nat) :
   numberOfRoutes m n = numberOfRoutes n m := sorry
 
@@ -35,6 +43,7 @@ info: 462
 -/
 -- #guard_msgs in
 -- #eval number_of_routes 5 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

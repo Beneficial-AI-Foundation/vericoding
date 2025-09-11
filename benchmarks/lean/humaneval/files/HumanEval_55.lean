@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -17,13 +18,19 @@ inductive fibonacci_non_computable : ℕ → ℕ → Prop
 | step  : ∀ n f₁ f₂, fibonacci_non_computable n f₁ →
 fibonacci_non_computable (n + 1) f₂ →
 fibonacci_non_computable (n + 2) (f₁ + f₂)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (implementation: Nat → Nat)
@@ -41,6 +48,7 @@ theorem correctness
 : problem_spec implementation n
 := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation 10 = 55
 -- #test implementation 1 = 1

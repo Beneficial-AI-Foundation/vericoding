@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def split (s : String) (sep : Char → Bool) : List String := sorry
 def trim (s : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def to_freud (s : String) : String := sorry
 
 theorem empty_string_returns_empty :
   to_freud "" = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem only_whitespace_returns_empty (s : String) :
   trim s = "" → to_freud s = "" := sorry
 
@@ -37,6 +44,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval to_freud ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

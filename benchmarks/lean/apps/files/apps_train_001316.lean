@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Point := Int × Int
 
 def solve_checkpoints (n : Int) (c : Int) (points : List Point) : Int × Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_checkpoints_output_type {n c : Int} {points : List Point} :
   (solve_checkpoints n c points).1 ≥ 0 ∧ (solve_checkpoints n c points).2 ≥ 0 := sorry
 
@@ -37,6 +45,7 @@ info: (1, 2)
 -/
 -- #guard_msgs in
 -- #eval solve_checkpoints 2 1 [(0, 0), (2, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

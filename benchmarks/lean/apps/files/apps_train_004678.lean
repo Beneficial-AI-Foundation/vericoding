@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solution (n : Nat) : String := sorry
 
 def toDigits (n : Nat) : List Char := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_length (n : Nat) (h : n ≤ 99999) :
   (solution n).length = 14 ∧ 
   (solution n).startsWith "Value is " ∧
@@ -32,6 +40,7 @@ info: 'Value is 00089'
 -/
 -- #guard_msgs in
 -- #eval solution 89
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

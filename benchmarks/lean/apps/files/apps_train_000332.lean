@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nth_ugly_number (n : Int) : Option Int := sorry
 
 theorem nth_ugly_invalid_inputs {n : Int} (h : n ≤ 0) : 
   nth_ugly_number n = none := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nth_ugly_positive {n : Int} (h : n > 0) : 
   ∀ x, nth_ugly_number n = some x → x > 0 := sorry
 
@@ -36,6 +44,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval nth_ugly_number 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

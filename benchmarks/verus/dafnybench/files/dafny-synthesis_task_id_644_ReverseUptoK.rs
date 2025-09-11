@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn array_index(v: Seq<i32>, i: int) -> i32 {
     v[i]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

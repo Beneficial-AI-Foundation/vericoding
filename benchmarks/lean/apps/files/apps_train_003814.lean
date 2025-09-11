@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validate_hello (s : String) : Bool := sorry
 
 def isSubstrOf (substr str : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem validate_hello_case_insensitive (s : String) :
   (∃ x ∈ ["hello", "ciao", "salut", "hallo", "hola", "ahoj", "czesc"], 
     isSubstrOf x s.toLower) ↔ validate_hello s := sorry
@@ -33,6 +41,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval validate_hello "namaste"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

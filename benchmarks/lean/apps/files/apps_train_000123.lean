@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def super_pow (base : Int) (exponent_digits : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pow_mod (base exp m : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem super_pow_range (base : Int) (exp_digits : List Int)
   (h1 : base > 0)
   (h2 : exp_digits.length > 0)
@@ -52,6 +59,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval super_pow 3 [2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

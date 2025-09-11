@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_moves_to_exit (n: Nat) : Nat := sorry
 
 theorem min_moves_always_positive (n: Nat) (h: n > 0): 
   min_moves_to_exit n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_moves_even_case (n: Nat) (h1: n > 0) (h2: n % 2 = 0):
   min_moves_to_exit n = n * 4 := sorry
 
@@ -42,6 +50,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_moves_to_exit 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

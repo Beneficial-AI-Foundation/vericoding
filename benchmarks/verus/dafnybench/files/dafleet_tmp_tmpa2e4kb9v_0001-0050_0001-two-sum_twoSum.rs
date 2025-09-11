@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn correct_pair(pair: (int, int), nums: Seq<int>, target: int) -> bool {
 spec fn seq_i32_to_int(s: Seq<i32>) -> Seq<int> {
     s.map(|i, v| v as int)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

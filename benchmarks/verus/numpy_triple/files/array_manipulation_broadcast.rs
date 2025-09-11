@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -26,6 +27,7 @@ impl BroadcastObject {
         (self.x_data[i], self.y_data[j])
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

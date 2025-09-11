@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_chakra_needed (n m : Nat) (soint_powers soint_levels sofloat_powers sofloat_levels : List Nat) : Nat := sorry
 
 theorem min_chakra_cases : 
@@ -5,14 +6,20 @@ theorem min_chakra_cases :
   (min_chakra_needed 2 2 [10, 20] [1, 2] [5, 15] [1, 2] = 0) ∧ 
   (min_chakra_needed 2 3 [10, 20] [1, 2] [5, 5, 18] [2, 2, 1] = 8) ∧
   (min_chakra_needed 2 2 [10, 10] [1, 1] [20, 20] [1, 1] = 20) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum : List Nat → Nat
   | [] => 0
   | (x::xs) => x + list_sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 8
 -/
@@ -24,6 +31,7 @@ info: 89
 -/
 -- #guard_msgs in
 -- #eval min_chakra_needed 5 5 [73, 69, 36, 77, 43] [87, 13, 36, 46, 93] [49, 74, 78, 99, 59] [46, 93, 87, 13, 36]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

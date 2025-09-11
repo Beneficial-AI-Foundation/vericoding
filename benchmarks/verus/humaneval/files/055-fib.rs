@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -21,6 +22,7 @@ spec fn inner_expr_fib(n: u32, ret: Option<u32>) -> (result:bool) {
         Some(f) => f == spec_fib(n as nat),
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

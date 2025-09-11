@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn upper_bound(v: i32, a: Seq<i32>, n: int) -> bool {
 spec fn is_max(m: i32, a: Seq<i32>, n: int) -> bool {
     contains(m, a, n) && upper_bound(m, a, n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

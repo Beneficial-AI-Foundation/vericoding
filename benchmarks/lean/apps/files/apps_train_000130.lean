@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def minCostTickets (days : List Nat) (costs : List Nat) : Nat := sorry
 
 theorem min_cost_tickets_cost_bounds
@@ -15,7 +21,9 @@ theorem min_cost_tickets_cost_bounds
     result ≥ min (costs[0]!) (min (costs[1]!/7) (costs[2]!/30)) * days.length ∧
     result ≤ costs[0]! * days.length :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem weekly_window_cost
   (days : List Nat)
   (costs : List Nat)
@@ -47,6 +55,7 @@ info: 17
 -/
 -- #guard_msgs in
 -- #eval min_cost_tickets [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31] [2, 7, 15]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

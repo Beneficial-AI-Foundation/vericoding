@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_a_b (numbers : List Int) (c : Int) : Option (Int × Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_a_b_properties {numbers : List Int} {c : Int} (h : numbers.length ≥ 2) :
   match find_a_b numbers c with
   | none => True 
@@ -36,6 +44,7 @@ theorem find_a_b_order {numbers : List Int} (h : numbers.length ≥ 2) :
           numbers.get? i = some x ∧
           numbers.get? j = some y :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

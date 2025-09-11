@@ -1,9 +1,12 @@
+-- <vc-preamble>
 @[reducible]
 def twoSum_precond (nums : List Int) (target : Int) : Prop :=
   let pairwiseSum := List.range nums.length |>.flatMap (fun i =>
     nums.drop (i + 1) |>.map (fun y => nums[i]! + y))
   nums.length > 1 ∧ pairwiseSum.count target = 1
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def findComplement (nums : List Int) (target : Int) (i : Nat) (x : Int) : Option Nat :=
   let rec aux (nums : List Int) (j : Nat) : Option Nat :=
@@ -20,10 +23,14 @@ def twoSumAux (nums : List Int) (target : Int) (i : Nat) : Prod Nat Nat :=
     | some j => (i, j)
     | none   => twoSumAux xs target (i + 1)
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def twoSum (nums : List Int) (target : Int) (h_precond : twoSum_precond (nums) (target)) : Prod Nat Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def twoSum_postcond (nums : List Int) (target : Int) (result: Prod Nat Nat) (h_precond : twoSum_precond (nums) (target)) : Prop :=
   let i := result.fst;
@@ -35,6 +42,7 @@ def twoSum_postcond (nums : List Int) (target : Int) (result: Prod Nat Nat) (h_p
 theorem twoSum_spec_satisfied (nums: List Int) (target: Int) (h_precond : twoSum_precond (nums) (target)) :
     twoSum_postcond (nums) (target) (twoSum (nums) (target) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

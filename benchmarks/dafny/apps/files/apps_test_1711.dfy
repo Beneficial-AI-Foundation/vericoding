@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int) {
   n >= 2 && m >= 1 && n <= m && m <= 200000
 }
@@ -12,6 +13,7 @@ function ExpectedResult(n: int, m: int): int
 predicate ValidOutput(result: int) {
   0 <= result < 998244353
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

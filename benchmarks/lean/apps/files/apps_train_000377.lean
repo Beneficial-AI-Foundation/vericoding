@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rank_teams (votes : List String) : String := sorry
 
 theorem rank_teams_output_length {votes : List String} 
@@ -8,7 +14,9 @@ theorem rank_teams_output_length {votes : List String}
   (h2 : ∀ v ∈ votes, v.toList.Nodup) :
   (rank_teams votes).length = votes[0]!.length :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rank_teams_content {votes : List String}
   (h1 : ∀ v ∈ votes, v.length = votes[0]!.length) 
   (h2 : ∀ v ∈ votes, v.toList.Nodup) :
@@ -43,6 +51,7 @@ info: 'ZMNAGUEDSJYLBOPHRQICWFXTVK'
 -/
 -- #guard_msgs in
 -- #eval rank_teams ["ZMNAGUEDSJYLBOPHRQICWFXTVK"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

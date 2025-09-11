@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def distance (p1 p2 : List Float) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem same_point_zero_distance (point : List Float) :
   distance point point = (if point.isEmpty then -1 else 0) :=
 sorry
@@ -34,6 +42,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval distance [1] [1, 1, 1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

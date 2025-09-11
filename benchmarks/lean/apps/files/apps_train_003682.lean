@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def kangaroo (k1 r1 k2 r2 : Int) : Bool := sorry
 
 theorem kangaroo_symmetric (k1 r1 k2 r2 : Int) : 
   kangaroo k1 r1 k2 r2 = kangaroo k2 r2 k1 r1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem kangaroo_same_position_same_speed (k r : Int) :
   kangaroo k r k r = true := sorry
 
@@ -35,6 +43,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval kangaroo -1 3 0 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_lis (n : Nat) (arr : List String) : String := sorry
 
 theorem single_digit_returns_valid_str (n : Nat) (arr : List String) :
   n = 1 → arr = ["1"] → 
   let result := solve_lis n arr
   result.length = 1 ∧ result.all Char.isDigit := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem input_array_matches_length (n : Nat) (arr : List String) :
   n = arr.length →
   (∀ s ∈ arr, s.length = 1 ∧ s ∈ ["1", "2", "3", "4"]) →
@@ -41,6 +49,7 @@ info: '1531'
 -/
 -- #guard_msgs in
 -- #eval solve_lis 4 ["1", "2", "2", "1"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

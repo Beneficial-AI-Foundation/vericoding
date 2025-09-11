@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def print_number (number : Nat) (char : Char) : String := sorry
 
 theorem print_number_dimensions (n : Nat) (c : Char) :
@@ -8,7 +14,9 @@ theorem print_number_dimensions (n : Nat) (c : Char) :
   let lines := result.splitOn "\n"
   lines.length = 10 ∧ 
   lines.all (fun line => line.length = 40) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem print_number_borders (n : Nat) (c : Char) :
   let result := print_number n c
   let lines := result.splitOn "\n"
@@ -48,6 +56,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval print_number 67890 "@"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

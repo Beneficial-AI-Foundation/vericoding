@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x: int)
 {
   x >= 1
@@ -10,6 +11,7 @@ predicate IsMinimalSteps(x: int, steps: int)
   steps * 5 >= x &&
   (steps - 1) * 5 < x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

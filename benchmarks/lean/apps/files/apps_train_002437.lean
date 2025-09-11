@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_first_repeated_char (s : String) : String := sorry
 
 theorem find_first_repeated_char_output_type (s : String) :
   let result := find_first_repeated_char s
   result.length = 1 ∨ result = "-1" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_first_repeated_char_valid_output (s : String) :
   let result := find_first_repeated_char s 
   result ≠ "-1" →
@@ -48,6 +56,7 @@ info: 'a'
 -/
 -- #guard_msgs in
 -- #eval find_first_repeated_char "aabbccdd"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

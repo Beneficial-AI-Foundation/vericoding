@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -12,13 +13,19 @@ inductive ScalarType
   | /-- 128-bit complex number -/ complex128
   | /-- Byte string -/ bytes
   | /-- Generic object -/ object
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sctype2char (sctype : ScalarType) : Id String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sctype2char_spec (sctype : ScalarType) :
     ⦃⌜True⌝⦄
     sctype2char sctype
@@ -33,3 +40,4 @@ theorem sctype2char_spec (sctype : ScalarType) :
       (sctype = ScalarType.object → result = "O")
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

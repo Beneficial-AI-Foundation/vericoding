@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sqrt (n : Int) : Int := sorry
 
 def check_sqrt_accuracy (scale tolerance : Int) (numbers : List Int) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_preservation {scale tolerance : Int} {numbers : List Int}
   (h1 : 0 < tolerance) (h2 : tolerance ≤ 100) :
   List.length (check_sqrt_accuracy scale tolerance numbers) = List.length numbers := sorry
@@ -34,6 +42,7 @@ theorem zero_tolerance_perfect_squares {scale : Int} {numbers : List Int}
 theorem large_tolerance_all_yes {scale tolerance : Int} {numbers : List Int}
   (h1 : tolerance ≥ 100) (h2 : ∀ n ∈ numbers, n ≥ 0) :
   ∀ x ∈ check_sqrt_accuracy scale tolerance numbers, x = "yes" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

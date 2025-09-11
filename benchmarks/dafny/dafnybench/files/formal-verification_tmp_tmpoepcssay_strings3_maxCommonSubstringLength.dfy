@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isSubstring(sub: string, str: string)
 {
     exists i :: 0 <= i <= |str| - |sub| && str[i..i+|sub|] == sub
@@ -41,6 +42,7 @@ method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: 
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

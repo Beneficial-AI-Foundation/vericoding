@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def right_shift {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem right_shift_spec {n : Nat} (x1 x2 : Vector Int n) 
     (h_shift_nonneg : ∀ i : Fin n, x2.get i ≥ 0) :
     ⦃⌜∀ i : Fin n, x2.get i ≥ 0⌝⦄
@@ -27,3 +34,4 @@ theorem right_shift_spec {n : Nat} (x1 x2 : Vector Int n)
         -- Bounded result: |result| ≤ |input| for any non-negative shift
         (Int.natAbs (result.get i) ≤ Int.natAbs (x1.get i))⌝⦄ := by
   sorry
+-- </vc-theorems>

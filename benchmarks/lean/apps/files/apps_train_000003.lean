@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def max_water_difference (n : Nat) (k : Nat) (barrels : List Nat) : Nat :=
   sorry
 
@@ -20,17 +21,23 @@ def listMaximum : List Nat → Nat
   | x :: xs => if x > listMaximum xs then x else listMaximum xs
 
 /- Helper function to take first n elements -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def takeFront : Nat → List Nat → List Nat
   | 0, _ => []
   | _, [] => []
   | n+1, x :: xs => x :: takeFront n xs
 
 /- max_water_difference returns sum of k+1 largest values -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_water_diff_equals_k_plus_one_largest
   {n k : Nat} {barrels : List Nat}
   (h₁ : barrels.length = n)
@@ -86,6 +93,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval max_water_difference 5 2 [1, 2, 3, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

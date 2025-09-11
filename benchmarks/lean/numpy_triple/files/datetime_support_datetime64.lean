@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -29,13 +30,19 @@ structure DateTime64 where
   unit : TimeUnit       
   /-- Always UTC with +0000 offset -/
   is_utc : Bool := true
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def datetime64 (offset : Int) (unit : TimeUnit) : Id DateTime64 :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem datetime64_spec (offset : Int) (unit : TimeUnit) :
     ⦃⌜True⌝⦄
     datetime64 offset unit
@@ -54,3 +61,4 @@ theorem datetime64_spec (offset : Int) (unit : TimeUnit) :
                  | TimeUnit.nanoseconds => True)  -- Nanoseconds can use full Int range
                 ⌝⦄ := by
   sorry
+-- </vc-theorems>

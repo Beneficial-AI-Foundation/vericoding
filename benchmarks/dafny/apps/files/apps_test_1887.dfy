@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, h1: seq<int>, h2: seq<int>)
 {
     n >= 1 && |h1| >= n && |h2| >= n &&
@@ -36,6 +37,7 @@ function maxHeightEndingInRow2(n: int, h1: seq<int>, h2: seq<int>): int
         var takeFromRow1 := prevRow1 + h2[n-1];
         if takeFromRow1 > prevRow2 then takeFromRow1 else prevRow2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

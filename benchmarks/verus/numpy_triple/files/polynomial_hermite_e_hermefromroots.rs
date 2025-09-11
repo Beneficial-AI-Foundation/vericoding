@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -33,6 +34,7 @@ spec fn product_form(roots: Seq<int>, x: int, i: nat) -> int
         product_form(roots, x, (i - 1) as nat) * (x - roots[(i - 1) as int])
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

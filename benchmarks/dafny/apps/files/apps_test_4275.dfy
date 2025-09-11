@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| == 6 && forall i :: 0 <= i < 6 ==> 'a' <= s[i] <= 'z'
@@ -8,6 +9,7 @@ requires ValidInput(s)
 {
     s[2] == s[3] && s[4] == s[5]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

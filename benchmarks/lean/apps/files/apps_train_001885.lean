@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def remove_subfolders (folders: List String) : List String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_folder_list : remove_subfolders [] = [] :=
 sorry
 
@@ -51,6 +59,7 @@ info: sorted(expected3)
 -/
 -- #guard_msgs in
 -- #eval sorted remove_subfolders(folders3)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

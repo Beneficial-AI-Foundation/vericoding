@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def minTaps (n: Nat) (ranges: List Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_ranges_theorem (n: Nat) (h: n ≥ 1) (h2: n ≤ 100):
   minTaps n (List.replicate (n+1) 0) = -1 := sorry
 
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval minTaps 7 [1, 2, 1, 0, 2, 1, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

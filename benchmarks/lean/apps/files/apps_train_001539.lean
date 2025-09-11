@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_jumping_game (x y : Nat) : Nat × Nat := sorry
 
 theorem result_valid {x y : Nat} :
   let (result, _) := solve_jumping_game x y
   result = 0 ∨ result = 1 ∨ result = 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem diff_nonneg {x y : Nat} :
   let (_, diff) := solve_jumping_game x y
   diff ≥ 0 := sorry
@@ -38,6 +46,7 @@ info: (1, 1)
 -/
 -- #guard_msgs in
 -- #eval solve_jumping_game 3 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

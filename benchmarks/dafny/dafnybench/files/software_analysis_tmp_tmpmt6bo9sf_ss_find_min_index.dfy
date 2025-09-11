@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate is_sorted(ss: seq<int>)
 {
     forall i, j: int:: 0 <= i <= j < |ss| ==> ss[i] <= ss[j]
@@ -16,6 +17,7 @@ predicate is_permutation2(a:seq<int>, b:seq<int>)
 {
     multiset(a) == multiset(b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

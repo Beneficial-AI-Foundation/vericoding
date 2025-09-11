@@ -1,3 +1,4 @@
+// <vc-preamble>
 function IsLowerCase(s: string) : bool
 {
   forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
@@ -7,6 +8,7 @@ function IsUpperCase(s: string) : bool
   forall i :: 0 <= i < |s| ==> 'A' <= s[i] <= 'Z'
 }
 type DictCase = map<string, string>
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

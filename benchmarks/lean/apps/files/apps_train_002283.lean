@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_brackets (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_brackets_non_negative (s : String) :
   solve_brackets s ≥ 0 := sorry
 
@@ -42,6 +50,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_brackets ")))((((())"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

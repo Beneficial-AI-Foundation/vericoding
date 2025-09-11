@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Point := Int × Int
 def Rectangle := List Point
 
@@ -19,14 +20,20 @@ def area (points : Rectangle) : Float :=
 def perimeter (points : Rectangle) : Float :=
   let (_, _, _, p, _) := calculate_rectangle_characteristics points
   p
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def diagonal (points : Rectangle) : Float :=
   let (_, _, _, _, d) := calculate_rectangle_characteristics points
   d
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_positive (points : Rectangle) :
   length points > 0 := sorry
 
@@ -51,6 +58,7 @@ theorem measurements_match_points (points : Rectangle) (h : points.length = 4) :
     points = [(x1, y1), (x1, y2), (x2, y1), (x2, y2)] ∧
     length points = Float.ofInt (x2 - x1) ∧
     width points = Float.ofInt (y2 - y1) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

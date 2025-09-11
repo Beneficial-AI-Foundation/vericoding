@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def ant (grid : List (List Int)) (col : Int) (row : Int) (steps : Int)
   (direction : Int := 0) : List (List Int) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def BLACK : Int := 1
 def WHITE : Int := 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ant_result_rectangular {grid : List (List Int)} {col row steps dir : Int}
   (h1: 0 ≤ col) (h2: 0 ≤ row) (h3: 0 ≤ steps) (h4: 0 ≤ dir) (h5: dir ≤ 3)
   (h6: grid.length > 0) (h7 : ∀ r ∈ grid, r.length = grid.head!.length) :
@@ -36,6 +43,7 @@ theorem ant_zero_steps {grid : List (List Int)} {col row : Int}
   (h1: 0 ≤ col) (h2: 0 ≤ row) : 
   ant grid col row 0 = grid :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

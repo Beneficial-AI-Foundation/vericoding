@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_minimal_parentheses (s: String) : String := sorry
 
 def is_balanced (s: String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_balanced (s: String) : 
   let result := find_minimal_parentheses s
   is_balanced result ∧ ∀ c ∈ result.data, c = '(' ∨ c = ')' := sorry
@@ -37,6 +45,7 @@ info: '(((())))'
 -/
 -- #guard_msgs in
 -- #eval find_minimal_parentheses "(((())))"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

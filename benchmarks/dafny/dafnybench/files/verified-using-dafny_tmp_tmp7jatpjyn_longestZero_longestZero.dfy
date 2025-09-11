@@ -1,7 +1,9 @@
+// <vc-preamble>
 function getSize(i: int, j:int) : int
 {
     j - i + 1    
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

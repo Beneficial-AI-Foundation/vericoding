@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def repeatedStringMatch (a b : String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_b_returns_valid_result (a : String)
   (h : a.length > 0) :
   repeatedStringMatch a "" = 1 :=
@@ -57,6 +65,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval repeatedStringMatch "abc" "abcabc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def arrange_array (n : Nat) (arr : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arrange_array_valid {n : Nat} {arr : List Nat} (h1 : 0 < n) :
   let result := arrange_array n arr
   -- Output length is n
@@ -49,6 +57,7 @@ info: [0, 1, 2, 3, 4]
 -/
 -- #guard_msgs in
 -- #eval arrange_array 5 [1, 2, 3, 4, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def trigrams (s : String) : String := sorry 
 
 def stringToGrams (s : String) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trigrams_empty_if_short (s : String) :
   s.length < 3 → trigrams s = "" := sorry 
 
@@ -36,6 +44,7 @@ info: 'abc bc_ c_d _de def'
 -/
 -- #guard_msgs in
 -- #eval trigrams "abc def"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

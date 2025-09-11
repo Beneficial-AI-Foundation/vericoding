@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, k: int) {
     n >= 2 && m >= 2 && n % 2 == 0 && k >= 0 && k < n * m
 }
@@ -19,6 +20,7 @@ predicate CorrectPosition(result: seq<int>, n: int, m: int, k: int)
         (r % 2 == 1 ==> result[1] == m - k_remaining % (m - 1)) &&
         (r % 2 == 0 ==> result[1] == 2 + k_remaining % (m - 1))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_special_mult (numbers : List Int) : Int ⊕ String := sorry
 
 theorem valid_numbers_only (numbers : List Int) 
@@ -9,10 +10,14 @@ theorem valid_numbers_only (numbers : List Int)
 def stringToList (s : String) : List Char := s.data
 
 def stringContains (s₁ s₂ : String) : Prop := ∃ pre post : String, s₁ = pre ++ s₂ ++ post
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def parseAsInt (s : String) : Option Int := sorry
 
 theorem invalid_entries (valid_nums invalid_nums : List String)
@@ -25,7 +30,9 @@ theorem invalid_entries (valid_nums invalid_nums : List String)
     (min_special_mult valid_int_nums = Sum.inr result)
     ∧ (stringContains result (toString invalid_nums.length))
     ∧ (∀ inv ∈ invalid_nums, stringContains result inv) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lcm_properties (numbers : List Int)
   (h1 : numbers.length ≥ 2)
   (h2 : numbers.length ≤ 5)
@@ -50,6 +57,7 @@ info: 5520
 -/
 -- #guard_msgs in
 -- #eval min_special_mult [16, 15, 23, "-012"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

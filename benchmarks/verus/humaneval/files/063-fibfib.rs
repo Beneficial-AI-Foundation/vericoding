@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -15,6 +16,7 @@ spec fn spec_fibfib(n: nat) -> (ret: nat)
         spec_fibfib((n - 1) as nat) + spec_fibfib((n - 2) as nat) + spec_fibfib((n - 3) as nat)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

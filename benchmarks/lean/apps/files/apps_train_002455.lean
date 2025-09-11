@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def wrap_text (text : String) (width : Nat) : String := sorry
 
 -- Invalid width theorem
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem wrap_text_invalid_width (text : String) (width : Int) :
   width ≤ 0 → wrap_text text width.toNat = "" := sorry 
 
@@ -23,6 +31,7 @@ theorem wrap_text_basic (text : String) (width : Nat) :
   width > 0 →
   let lines := (wrap_text text width).split (· = '\n')
   ∀ line ∈ lines, line.length ≤ width := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

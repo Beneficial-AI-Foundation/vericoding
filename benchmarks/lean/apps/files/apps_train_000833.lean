@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString (s : String) : String := sorry
 
 theorem reverse_twice_is_original (s : String) :
   reverseString (reverseString s) = s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_preserves_length (s : String) :
   (reverseString s).length = s.length := sorry
 
@@ -37,6 +45,7 @@ info: 'nohtyP'
 -/
 -- #guard_msgs in
 -- #eval reverse_string "Python"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

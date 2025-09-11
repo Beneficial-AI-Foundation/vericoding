@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n)
     (h_range : ∀ i : Fin n, start.get i ≤ endPos.get i) 
     (h_bounds_start : ∀ i : Fin n, 0 ≤ start.get i ∧ start.get i ≤ (a.get i).length) 
@@ -52,3 +59,4 @@ theorem count_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (star
           other_positions.length ≤ positions.length))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

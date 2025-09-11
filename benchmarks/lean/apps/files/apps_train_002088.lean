@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (x : Nat) (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_result_bounded (x : Nat) (s : String) :
   0 ≤ solve x s ∧ solve x s < 10^9 + 7
   := sorry
@@ -35,6 +43,7 @@ info: 1101
 -/
 -- #guard_msgs in
 -- #eval solve 6 "333"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

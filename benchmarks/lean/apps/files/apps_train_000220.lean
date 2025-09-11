@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_distinct_subsequences (s t : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_distinct_subsequences_nonnegative (s t : String) :
   count_distinct_subsequences s t ≥ 0 :=
   sorry
@@ -51,6 +59,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_distinct_subsequences "abc" "abc"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

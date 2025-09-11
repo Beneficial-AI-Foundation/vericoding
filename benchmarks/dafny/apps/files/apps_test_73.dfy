@@ -1,3 +1,4 @@
+// <vc-preamble>
 function computePosition(days: int, v0: int, v1: int, a: int, l: int): int
     requires days >= 0
     requires v0 >= 0 && v1 >= v0 && a >= 0 && l >= 0
@@ -10,6 +11,7 @@ function computePosition(days: int, v0: int, v1: int, a: int, l: int): int
         var readToday := if v1 < v0 + a * (days - 1) then v1 else v0 + a * (days - 1);
         afterReread + readToday
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

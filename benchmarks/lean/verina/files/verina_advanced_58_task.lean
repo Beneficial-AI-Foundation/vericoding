@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def nthUglyNumber_precond (n : Nat) : Prop :=
   n > 0
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def nextUgly (seq : List Nat) (c2 c3 c5 : Nat) : (Nat × Nat × Nat × Nat) :=
   let i2 := seq[c2]! * 2
@@ -13,10 +16,14 @@ def nextUgly (seq : List Nat) (c2 c3 c5 : Nat) : (Nat × Nat × Nat × Nat) :=
   let c5' := if next = i5 then c5 + 1 else c5
   (next, c2', c3', c5')
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nthUglyNumber (n : Nat) (h_precond : nthUglyNumber_precond (n)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def divideOut : Nat → Nat → Nat
   | n, p =>
     if h : p > 1 ∧ n > 0 ∧ n % p = 0 then
@@ -44,6 +51,7 @@ def nthUglyNumber_postcond (n : Nat) (result: Nat) (h_precond : nthUglyNumber_pr
 theorem nthUglyNumber_spec_satisfied (n: Nat) (h_precond : nthUglyNumber_precond (n)) :
     nthUglyNumber_postcond (n) (nthUglyNumber (n) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

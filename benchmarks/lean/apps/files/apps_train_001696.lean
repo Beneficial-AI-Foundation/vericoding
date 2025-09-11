@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def b (n : Int) : String := sorry
 
 def d (s : String) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def skrzat (mode : String) (input : Int ⊕ String) : String := sorry
 
 def is_valid_binary (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bidirectional_conversion : ∀ (n : Int),  
   let bin := b n; d bin = n := sorry
 
@@ -72,6 +79,7 @@ info: 'From decimal: 8191 is 110000000000011'
 -/
 -- #guard_msgs in
 -- #eval skrzat "d" 8191
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

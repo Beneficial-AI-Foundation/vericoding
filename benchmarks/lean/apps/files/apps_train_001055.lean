@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_tree_trimming (n : Nat) (parents : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_tree (n : Nat) (parents : List Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tree_trimming_bounds {n : Nat} {parents : List Nat} 
   (h1 : n ≥ 2) (h2 : is_valid_tree n parents = true) :
   let result := solve_tree_trimming n parents
@@ -43,6 +50,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_tree_trimming 3 [1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

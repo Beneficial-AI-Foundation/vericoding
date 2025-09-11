@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(t: int, a: int, b: int)
 {
     t > 0 && a > 0 && b > 0
@@ -30,6 +31,7 @@ predicate OneSolutionCase(t: int, a: int, b: int)
 {
     a != t && (a - b) % (t - a) != 0 && t != b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

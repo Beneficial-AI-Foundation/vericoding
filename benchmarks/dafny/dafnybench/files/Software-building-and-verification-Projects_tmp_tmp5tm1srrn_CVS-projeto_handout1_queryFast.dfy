@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(a: array<int>, i: int, j: int) : int
   requires 0 <= i <= j <= a.Length
   reads a
@@ -12,6 +13,7 @@ predicate is_prefix_sum_for (a: array<int>, c: array<int>)
 {
   a.Length + 1 == c.Length && forall i: int :: 0 <= i <= a.Length ==> c[i] == sum(a, 0, i)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def List.find (p : α → Bool) : List α → Option α
   | [] => none
   | a :: as => if p a then some a else find p as
 
 structure TestMap (α β : Type) where
   toList : List (α × β)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def my_languages (results : TestMap String Nat) : List String := sorry
 
 theorem my_languages_return_type (results : TestMap String Nat) :
   my_languages results |>.all (λ x => String.isPrefixOf x x) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem my_languages_scores_above_threshold (results : TestMap String Nat) 
     (lang : String) (h : lang ∈ my_languages results) :
   ∀ pair ∈ results.toList, pair.1 = lang → pair.2 ≥ 60 := sorry
@@ -56,6 +63,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval my_languages {"C++": 50, "ASM": 10, "Haskell": 20}
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

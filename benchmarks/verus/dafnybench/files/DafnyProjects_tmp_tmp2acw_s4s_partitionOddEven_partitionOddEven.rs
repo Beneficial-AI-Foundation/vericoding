@@ -1,9 +1,11 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
 spec fn odd(n: nat) -> bool { n % 2 == 1 }
 spec fn even(n: nat) -> bool { n % 2 == 0 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def FamilyRelation := String
 
 def FamilyList := List (String × String)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def relations (family : FamilyList) (pair : String × String) : Option FamilyRelation := sorry
 
 theorem relation_returns_valid (family : FamilyList) (pair : String × String) :
@@ -15,7 +20,9 @@ theorem relation_returns_valid (family : FamilyList) (pair : String × String) :
                 rel = "Aunt" ∨ rel = "Niece"
   | none => True
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem grandmother_granddaughter_symmetry (family : FamilyList) (a b : String) :
   relations family (a, b) = some "Grandmother" → 
   relations family (b, a) = some "Granddaughter" := sorry
@@ -45,6 +52,7 @@ info: 'Aunt'
 -/
 -- #guard_msgs in
 -- #eval relations [("Mary", "Sarah"), ("Sarah", "Emily"), ("Mary", "Jane")] ("Emily", "Jane")
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

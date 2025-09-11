@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(testCases: seq<(int, int)>)
 {
     forall i :: 0 <= i < |testCases| ==> 
@@ -18,6 +19,7 @@ predicate ValidOutput(results: seq<int>)
 {
     forall i :: 0 <= i < |results| ==> 1 <= results[i] <= 1439
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

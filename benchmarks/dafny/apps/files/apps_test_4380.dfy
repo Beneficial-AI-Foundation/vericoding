@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= 3 && 1 <= b <= 3
@@ -19,6 +20,7 @@ function ShouldAnswerYes(a: int, b: int): bool
 {
     a != 2 && b != 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

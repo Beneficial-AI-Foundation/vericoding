@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> s[i] == 'x' || s[i] == 'y'
@@ -18,6 +19,7 @@ predicate ValidOutput(s: string, result: string)
     else
         |result| == countX - countY && forall i :: 0 <= i < |result| ==> result[i] == 'x'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -12,6 +13,7 @@ spec fn is_reorder_of<T>(r: Seq<int>, p: Seq<T>, s: Seq<T>) -> (result:bool) {
     &&& forall|i: int, j: int| 0 <= i < j < r.len() ==> r[i] != r[j]
     &&& p =~= r.map_values(|i: int| s[i])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

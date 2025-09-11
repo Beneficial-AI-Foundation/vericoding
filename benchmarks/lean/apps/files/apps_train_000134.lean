@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxIncreaseKeepingSkyline (grid : List (List Nat)) : Nat := sorry
 
 -- A grid with uniform values should have no possible increases
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uniform_grid_theorem (n : Nat) (v : Nat) :
   let grid := List.replicate n (List.replicate n v)
   maxIncreaseKeepingSkyline grid = 0 := sorry
@@ -39,6 +47,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval maxIncreaseKeepingSkyline [[1, 2], [2, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

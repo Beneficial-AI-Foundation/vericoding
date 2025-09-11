@@ -1,3 +1,4 @@
+// <vc-preamble>
 function contains(v: int, a: array<int>, n: int): bool
 reads a
   requires n <= a.Length
@@ -18,6 +19,7 @@ reads a
 {
   contains(m, a, n) && upper_bound(m, a, n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

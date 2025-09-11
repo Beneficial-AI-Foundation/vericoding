@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def upper {n : Nat} (a : Vector String n) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem upper_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     upper a
@@ -38,3 +45,4 @@ theorem upper_spec {n : Nat} (a : Vector String n) :
           original.get? ⟨j⟩ = some origChar ∧ 
           (origChar.isLower → result.get? ⟨j⟩ = some origChar.toUpper))⌝⦄ := by
   sorry
+-- </vc-theorems>

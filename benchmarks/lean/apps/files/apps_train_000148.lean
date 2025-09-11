@@ -1,19 +1,26 @@
+-- <vc-preamble>
 def partition_disjoint (nums : List Int) : Nat :=
   sorry
 
 axiom List.maximum' : List Int → Int
 axiom List.Sorted : List Int → Prop
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def partitioned_at (p : Nat) (nums : List Int) : Prop :=
   let left := (nums.take p)
   let right := (nums.drop p)  
   let left_max := List.maximum' left
   (∀ x ∈ left, x ≤ left_max) ∧ 
   (∀ x ∈ right, x ≥ left_max)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem partition_point_valid : ∀ nums, nums.length ≥ 2 →
   let res := partition_disjoint nums
   1 ≤ res ∧ res ≤ nums.length :=
@@ -64,6 +71,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval partition_disjoint [3, 1, 2, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

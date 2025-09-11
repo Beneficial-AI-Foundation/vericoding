@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def poly2cheb {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem poly2cheb_spec {n : Nat} (pol : Vector Float n) :
     ⦃⌜True⌝⦄
     poly2cheb pol
@@ -40,3 +47,4 @@ theorem poly2cheb_spec {n : Nat} (pol : Vector Float n) :
           result.get ⟨0, sorry⟩ = 0 ∧ result.get ⟨1, sorry⟩ = 0.75 ∧ 
           result.get ⟨2, sorry⟩ = 0 ∧ result.get ⟨3, sorry⟩ = 0.25))⌝⦄ := by
   sorry
+-- </vc-theorems>

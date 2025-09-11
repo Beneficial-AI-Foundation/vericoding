@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def moveaxis {n : Nat} (a : Vector Float n) (source dest : Nat) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem moveaxis_spec {n : Nat} (a : Vector Float n) (source dest : Nat) :
     ⦃⌜True⌝⦄
     moveaxis a source dest
@@ -22,3 +29,4 @@ theorem moveaxis_spec {n : Nat} (a : Vector Float n) (source dest : Nat) :
        -- This shows that relative ordering is preserved
        (∀ i j : Fin n, i < j → a.get i ≤ a.get j → result.get i ≤ result.get j)⌝⦄ := by
   sorry
+-- </vc-theorems>

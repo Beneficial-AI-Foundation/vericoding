@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def arrange_tiles (n : Int) : String := sorry
 
 theorem invalid_inputs {n : Int}
   (h : n ≤ 0) : arrange_tiles n = "-1" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_inputs_first_element {n : Int}
   (h : n > 0) : 
   let numbers := (arrange_tiles n).split (· = ' ')
@@ -44,6 +52,7 @@ info: '3 4 2'
 -/
 -- #guard_msgs in
 -- #eval arrange_tiles 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

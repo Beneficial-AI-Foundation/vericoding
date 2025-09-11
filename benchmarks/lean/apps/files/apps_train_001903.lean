@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_build_pyramid (bottom : String) (allowed : List String) : Bool := sorry
 
 theorem pyramid_single_char_valid 
   (bottom : String) (allowed : List String)
   (h : bottom.length = 1) : 
   can_build_pyramid bottom allowed = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_rules_property
   (bottom : String) :
   can_build_pyramid bottom [] = (bottom.length = 1) := sorry
@@ -43,6 +51,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_build_pyramid "ABC" ["ABC", "BCD", "CDE", "DEF"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

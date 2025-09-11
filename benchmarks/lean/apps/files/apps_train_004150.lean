@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_spaceship (astromap : String) : String ⊕ (Nat × Nat) := sorry
 
 theorem find_spaceship_returns_valid_coordinates_or_lost 
@@ -13,7 +19,9 @@ theorem find_spaceship_returns_valid_coordinates_or_lost
     x < lines.head!.length ∧
     y < lines.length 
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_spaceship_with_single_x_dimensions
   (width height : Nat)
   (h1 : width > 0)
@@ -49,6 +57,7 @@ info: 'Spaceship lost forever.'
 -/
 -- #guard_msgs in
 -- #eval find_spaceship "........................"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

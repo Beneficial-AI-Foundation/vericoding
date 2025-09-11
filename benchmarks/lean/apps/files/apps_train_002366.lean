@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def array_pair_sum (nums : List Int) : Int := sorry
 
 def List.sorted (xs : List Int) : List Int := xs -- placeholder for sorting
@@ -7,17 +8,23 @@ def evenIndexSum (xs : List Int) : Int :=
     | [], _, acc => acc 
     | (x::xs), i, acc => loop xs (i+1) (if i % 2 = 0 then acc + x else acc)
   loop xs 0 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def halfListSum (xs : List Int) : Int :=
   let rec loop : List Int → Nat → Int → Int
     | [], _, acc => acc
     | _, 0, acc => acc
     | (x::xs), n+1, acc => loop xs n (acc + x)
   loop xs (xs.length / 2) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_pair_sum_equals_even_indexed_sum {nums : List Int} 
   (h : nums.length % 2 = 0) :
   array_pair_sum nums = evenIndexSum (nums.sorted) := sorry
@@ -48,6 +55,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval array_pair_sum [1, 1, 2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

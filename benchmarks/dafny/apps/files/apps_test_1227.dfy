@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountNonZeroDigits(n: int): int
     requires n >= 0
     ensures CountNonZeroDigits(n) >= 0
@@ -36,6 +37,7 @@ predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 1 && k <= 3
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

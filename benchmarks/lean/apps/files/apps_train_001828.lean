@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def largest1BorderedSquare (grid : List (List Nat)) : Nat := sorry
 
 theorem all_zeros (n : Nat) (h : n ≥ 1) : 
   let grid := List.replicate n (List.replicate n 0)
   largest1BorderedSquare grid = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_ones (n : Nat) (h : n ≥ 1) :
   let grid := List.replicate n (List.replicate n 1) 
   largest1BorderedSquare grid = n * n := sorry
@@ -43,6 +51,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval largest1BorderedSquare [[0, 0], [0, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

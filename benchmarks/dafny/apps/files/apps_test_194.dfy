@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int, groups: seq<int>)
 {
     n >= 1 && a >= 1 && b >= 1 && |groups| == n &&
@@ -30,6 +31,7 @@ function countDeniedPeopleWithHalf(groups: seq<int>, a: int, b: int, halfOccupie
             else if halfOccupied > 0 then countDeniedPeopleWithHalf(rest, a, b, halfOccupied - 1)
             else 1 + countDeniedPeopleWithHalf(rest, a, b, halfOccupied)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

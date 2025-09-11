@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Bases = A | C | G | T
 
 method Exchanger(s: seq<Bases>, x:nat, y:nat) returns (t: seq<Bases>)
@@ -23,6 +24,7 @@ predicate bordered(s:seq<Bases>)
 {
     forall j, k :: 0 <= j < k < |s| ==> below(s[j], s[k])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def smallest_string_with_swaps (s : String) (pairs : List (List Nat)) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_length_matches_input (s : String) (pairs : List (List Nat)) :
   pairs.all (fun p => p.length = 2 ∧ p[0]! < s.length ∧ p[1]! < s.length) →
   (smallest_string_with_swaps s pairs).length = s.length :=
@@ -45,6 +53,7 @@ info: 'abc'
 -/
 -- #guard_msgs in
 -- #eval smallest_string_with_swaps "cba" [[0, 1], [1, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

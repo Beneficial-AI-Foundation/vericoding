@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def sub (a b : List α) : Bool := sorry
 
 def sub_string (a b : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def subword (t : List Int) (ord_ar : List Int) (n : Int) : List Int := sorry
 
 def bin_s (l r : Int) (f : Int → Bool) : Int := sorry
@@ -26,7 +31,9 @@ def bin_s (l r : Int) (f : Int → Bool) : Int := sorry
 
 @[simp] theorem sub_string_refl (a : String) :
   sub_string a a = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem subword_length (t : List Int) (ord_ar : List Int) (n : Int) :
   List.length t = List.length ord_ar → 
   List.length (subword t ord_ar n) ≤ List.length t := sorry
@@ -53,6 +60,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval solve "cacaccccccacccc" "cacc" [10, 9, 14, 5, 1, 7, 15, 3, 6, 12, 4, 8, 11, 13, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

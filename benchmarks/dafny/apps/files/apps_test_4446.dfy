@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int, k: int, H: seq<int>)
 {
     n > 0 && a > 0 && b > 0 && k >= 0 && |H| == n && 
@@ -50,6 +51,7 @@ function CountKillableHelper(sorted_health: seq<int>, a: int, remaining_k: int, 
             else
                 CountKillableHelper(sorted_health, a, remaining_k, index + 1, acc)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

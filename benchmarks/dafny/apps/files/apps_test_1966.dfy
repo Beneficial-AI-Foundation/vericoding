@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate contains_valid_input_format(input: string)
 {
     exists n: int :: 1 <= n <= 100 && n % 2 == 1 && 
@@ -104,6 +105,7 @@ function minimum_recoloring_for_pieces(pieces: seq<seq<string>>, n: int): int
 {
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

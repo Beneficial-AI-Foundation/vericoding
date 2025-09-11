@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def poly_add (p1 p2 : List Int) : List Int := sorry
 
 theorem poly_add_length (p1 p2 : List Int) :
   (poly_add p1 p2).length = max p1.length p2.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem poly_add_empty_left (p : List Int) :
   poly_add [] p = p := sorry
 
@@ -39,6 +47,7 @@ info: [5, 5, 5, 5]
 -/
 -- #guard_msgs in
 -- #eval poly_add [1, 2, 3, 4] [4, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

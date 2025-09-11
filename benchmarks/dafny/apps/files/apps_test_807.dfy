@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, c: int, prices: seq<int>) {
     n >= 2 && |prices| == n && c >= 0 &&
     (forall i :: 0 <= i < |prices| ==> prices[i] >= 0)
@@ -34,6 +35,7 @@ predicate CorrectResult(n: int, c: int, prices: seq<int>, result: int) {
      (result > 0 ==> (exists i :: 0 <= i < n - 1 && ProfitForDay(prices, i, c) == result)) &&
      (forall i :: 0 <= i < n - 1 ==> ProfitForDay(prices, i, c) <= result))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def total_inc_dec (n : Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def xCy (n m : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem total_inc_dec_non_negative (x : Int) :
   x ≥ 0 → total_inc_dec x ≥ 1 :=
   sorry
@@ -52,6 +59,7 @@ info: 4954
 -/
 -- #guard_msgs in
 -- #eval total_inc_dec 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

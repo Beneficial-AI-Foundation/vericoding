@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def reducePyramid (base : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def referencePyramidReduce (base : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem matches_reference_implementation {base : List Int} 
   (h : base.length > 0 ∧ base.length ≤ 10) :
   reducePyramid base = referencePyramidReduce base :=
@@ -43,6 +50,7 @@ info: 25
 -/
 -- #guard_msgs in
 -- #eval reduce_pyramid [3, 9, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

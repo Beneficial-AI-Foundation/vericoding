@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_nearest_numbers (n : Nat) (arr : List Int) (target : Int) : Int × Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_nearest_numbers_invariants 
   (n : Nat) (arr : List Int) (target : Int)
   (h : arr.length > 0) :
@@ -43,6 +51,7 @@ info: (13, 23)
 -/
 -- #guard_msgs in
 -- #eval find_nearest_numbers 10 arr3.copy() 15
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_order (p : Nat) (idx : Nat) : Nat := sorry
 
 -- Result is within bounds for p bits
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_order_bounds (p : Nat) (idx : Nat) (h : idx < 2^p) : 
   solve_order p idx < 2^p := sorry
 
@@ -43,6 +51,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval solve_order 4 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

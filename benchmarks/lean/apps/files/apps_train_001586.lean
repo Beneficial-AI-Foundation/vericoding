@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def b91encode (s : String) : String := sorry
 def b91decode (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem b91_encode_decode_test_case : 
   b91decode (b91encode "test") = "test" := sorry
 
@@ -36,6 +44,7 @@ info: '>OwJh>Io0Tv!8PE'
 -/
 -- #guard_msgs in
 -- #eval b91encode "Hello World!"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

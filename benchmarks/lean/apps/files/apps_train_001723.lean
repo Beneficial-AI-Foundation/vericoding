@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def is_prime (n : Nat) : Bool :=
   sorry
 
@@ -9,13 +10,19 @@ def statement2 (p : Nat) : Bool :=
 
 def statement3 (s : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_solution (a b : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem small_numbers_not_prime {n : Nat} (h : n ≤ 1) : 
   is_prime n = false := sorry
 
@@ -63,6 +70,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_solution 5 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

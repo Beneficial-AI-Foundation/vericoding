@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def roundToNext5 (n: Int) : Int := sorry
 
 theorem roundToNext5_multiple_of_5 (n: Int) :
   (roundToNext5 n) % 5 = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem roundToNext5_not_less_than_input (n: Int) :
   roundToNext5 n ≥ n := sorry
 
@@ -41,6 +49,7 @@ info: -5
 -/
 -- #guard_msgs in
 -- #eval round_to_next5 -5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_shortest_string_length (s : String) : Nat := sorry
 
 theorem shortest_length_non_negative (s : String) : 
   get_shortest_string_length s ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shortest_length_at_most_input (s : String) :
   get_shortest_string_length s ≤ String.length s := sorry
 
@@ -46,6 +54,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval get_shortest_string_length "AABBBABBBB"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

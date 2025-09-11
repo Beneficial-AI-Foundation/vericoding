@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def largest_palindrom_from (n : Nat) : Nat := sorry
 
 def numeric_palindrome (arr : List Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString (s : String) : String := sorry
 
 theorem largest_palindrom_from_is_palindrome (n : Nat) 
   (h1 : 1 ≤ n) (h2 : n ≤ 10^6) :
   let result := toString (largest_palindrom_from n)
   result = reverseString result := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem largest_palindrom_from_uses_input_digits (n : Nat)
   (h1 : 1 ≤ n) (h2 : n ≤ 10^6) :
   let result := toString (largest_palindrom_from n)
@@ -34,6 +41,7 @@ theorem numeric_palindrome_with_ones (nums : List Nat)
   (h4 : nums.getLast? = some 2) :
   let result := toString (numeric_palindrome nums)
   result = reverseString result := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

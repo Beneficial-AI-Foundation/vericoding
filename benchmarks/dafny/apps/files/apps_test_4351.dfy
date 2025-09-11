@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
   100 <= n <= 999
@@ -82,6 +83,7 @@ predicate ValidStringInput(stdin_input: string)
   var tokens := TokenizeInput(stdin_input);
   |tokens| == 1 && CanParseAsInt(tokens[0]) && ValidInput(ParseIntValue(tokens[0]))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

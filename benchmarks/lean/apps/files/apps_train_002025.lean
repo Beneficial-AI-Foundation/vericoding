@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def findSmallestSubstring (m : Nat) (s : String) : String := sorry
 
 theorem find_smallest_substring_lowercase (m : Nat) (s : String) : 
   let r := findSmallestSubstring m s
   ∀ c ∈ r.data, c.isLower ∨ r = "" := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Char) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_smallest_substring_sorted (m : Nat) (s : String) :
   let r := findSmallestSubstring m s
   isSorted r.data ∨ r = "" := sorry
@@ -44,6 +51,7 @@ info: 'aaabb'
 -/
 -- #guard_msgs in
 -- #eval find_smallest_substring 3 "bcabcbaccba"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -15,6 +16,7 @@ spec fn has_count(v: int, a: Seq<int>, n: nat) -> int
         }
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

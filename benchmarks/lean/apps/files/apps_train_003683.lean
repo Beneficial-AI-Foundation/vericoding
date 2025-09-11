@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def String.toFloat (s : String) : Option Float := sorry
 
 def List.sort (l : List Float) (lt : Float → Float → Bool) : List Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def search (budget : Float) (prices : List Float) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem search_sorted (budget : Float) (prices : List Float)
   (h1 : budget ≥ 0) (h2 : budget ≤ 1000)
   (h3 : ∀ x ∈ prices, x ≥ 0 ∧ x ≤ 1000)
@@ -59,6 +66,7 @@ info: '0,1,2.7,5.5'
 -/
 -- #guard_msgs in
 -- #eval search 24 [2.7, 0, 100.9, 1, 5.5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hasUniqueDigits (n : Nat) : Bool := sorry
 
 def nextNumb (n : Nat) : Nat ⊕ String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nextNumb_greater (n : Nat) 
   (h : ∃ (m : Nat), nextNumb n = Sum.inl m) :
   (Classical.choose h) > n := sorry
@@ -47,6 +55,7 @@ info: 1023459
 -/
 -- #guard_msgs in
 -- #eval next_numb 999999
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_net_income (income : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem net_income_leq_gross (income : Int) : 
   income ≥ 0 → 
   (if income > 250000 then calculate_net_income income ≤ income 
@@ -49,6 +57,7 @@ info: 925000
 -/
 -- #guard_msgs in
 -- #eval calculate_net_income 1000000
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

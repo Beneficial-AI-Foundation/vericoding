@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -15,6 +16,7 @@ spec fn popcount(n: nat) -> nat
         (n % 2) + popcount(n / 2)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

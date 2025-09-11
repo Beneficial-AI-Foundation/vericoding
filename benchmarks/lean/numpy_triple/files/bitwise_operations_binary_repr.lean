@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -19,13 +20,19 @@ def isValidSignedBinary (s : String) : Bool :=
     isValidBinary (s.drop 1)
   else
     isValidBinary s
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def binary_repr (num : Int) (width : Option Nat := none) : Id String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem binary_repr_spec (num : Int) (width : Option Nat := none) :
     ⦃⌜width.map (· ≥ 1) |>.getD true⌝⦄
     binary_repr num width
@@ -62,3 +69,4 @@ theorem binary_repr_spec (num : Int) (width : Option Nat := none) :
         result.length = w)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
   n >= 1
@@ -24,6 +25,7 @@ function OptimalCost(n: int, savings: int): int
 {
   n - savings + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

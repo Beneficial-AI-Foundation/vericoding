@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Char.isAscii (c : Char) : Bool := sorry
 
 def siegfried (week : Nat) (text : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem siegfried_length (week : Nat) (text : String) 
   (h1 : week ≤ 5) (h2 : text.length > 0) : 
   (siegfried week text).length ≤ text.length := sorry
@@ -43,6 +51,7 @@ info: 'Schmart und 99 ver husbund und vif'
 -/
 -- #guard_msgs in
 -- #eval siegfried 5 "Smart and 99 were husband and wife"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

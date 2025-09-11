@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -16,6 +17,7 @@ struct Laguerre<const N: usize> {
 
     window: [f64; 2],
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Point := Float × Float
 
 def convex_hull_area (points : List Point) : Float :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_internal_point (p : Point) (points : List Point) : Prop :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem convex_hull_area_non_negative (points : List Point) :
   convex_hull_area points ≥ 0 :=
 sorry
@@ -46,6 +53,7 @@ info: 6.0
 -/
 -- #guard_msgs in
 -- #eval convex_hull_area [(0, 0), (0, 3), (4, 0), (1, 1), (2, 1)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

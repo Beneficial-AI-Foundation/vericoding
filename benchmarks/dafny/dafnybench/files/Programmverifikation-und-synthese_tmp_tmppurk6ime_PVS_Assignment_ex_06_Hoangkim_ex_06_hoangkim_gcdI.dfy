@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost function gcd(x: int, y: int): int
     requires x > 0 && y > 0
 {
@@ -14,6 +15,7 @@ ghost function gcd'(x: int, y: int): int
     else if x > y then gcd'(x - y, y)
     else gcd(y, x)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

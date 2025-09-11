@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def List.permutationInverse (xs: List Nat) : List Nat := sorry
 
 def is_ambiguous_permutation (xs : List Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem permutation_property {xs : List Nat} :
   let result := is_ambiguous_permutation xs
   let inv := xs.permutationInverse
@@ -36,6 +44,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_ambiguous_permutation [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn find_max(x: int, y: int) -> int {
     if x > y { x } else { y }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

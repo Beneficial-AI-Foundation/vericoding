@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encrypt (text: String) (key: String) : String := sorry
 
 theorem single_letter_padded {key: String} 
   (h1: key.length = 4) 
   (h2: ∀ c ∈ key.data, c.isLower) : 
   ∀ text: String, text = "A" → (encrypt text key).length = 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encrypt_output_is_uppercase_alpha {key: String}
   (h1: key.length = 4)
   (h2: ∀ c ∈ key.data, c.isLower) :
@@ -59,6 +67,7 @@ info: 'AAAAAAGACAGAYA'
 -/
 -- #guard_msgs in
 -- #eval encrypt "This is a good day" "bbaa"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

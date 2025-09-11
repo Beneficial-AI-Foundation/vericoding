@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solution {α : Type} [BEq α] : List α → Bool
   | xs => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_matches_manual {α : Type} [BEq α] (xs : List α) :
   solution xs = ∃ i j : Nat, i < j ∧ j < xs.length ∧ xs[i]? = xs[j]? := by sorry
 
@@ -33,6 +41,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval solution "a" "b" "c" "c"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

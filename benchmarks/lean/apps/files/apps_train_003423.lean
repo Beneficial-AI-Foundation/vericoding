@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_onion_array : List Int → Bool :=
   fun _ => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem onion_array_valid {arr : List Int} 
   (h : ∃ xs, arr = xs ++ List.replicate (xs.length % 2) 0 ++ (xs.map (fun x => 10 - x)).reverse) : 
   is_onion_array arr = true := sorry
@@ -36,6 +44,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_onion_array [1, 2, 19, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

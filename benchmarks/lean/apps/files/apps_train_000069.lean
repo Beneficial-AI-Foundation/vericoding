@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def min_replacements (n k : Nat) (s : String) : Nat :=
   sorry
 
 def is_palindrome (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def max_char_count (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_replacements_nonneg (n k : Nat) (s : String) :
   min_replacements n k s ≥ 0 :=
   sorry
@@ -44,6 +51,7 @@ info: 23
 -/
 -- #guard_msgs in
 -- #eval min_replacements 36 9 "hippopotomonstrosesquippedaliophobia"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

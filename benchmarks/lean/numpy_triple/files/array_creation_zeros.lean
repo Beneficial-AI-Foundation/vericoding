@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def zeros (n : Nat) (α : Type) [Zero α] : Id (Vector α n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zeros_spec (n : Nat) (α : Type) [Zero α] [Add α] [Mul α] :
     ⦃⌜True⌝⦄
     zeros n α
@@ -21,3 +28,4 @@ theorem zeros_spec (n : Nat) (α : Type) [Zero α] [Add α] [Mul α] :
                    result.get i * v.get i = 0) ∧
                  (n > 0 → result.get ⟨0, sorry⟩ = 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

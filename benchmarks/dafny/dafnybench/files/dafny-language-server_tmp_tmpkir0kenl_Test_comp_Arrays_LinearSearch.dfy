@@ -1,3 +1,4 @@
+// <vc-preamble>
 method PrintArray<A>(a: array?<A>)
 {
   assume{:axiom} false;
@@ -16,6 +17,7 @@ method PrintMatrix<A>(m: array2<A>)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

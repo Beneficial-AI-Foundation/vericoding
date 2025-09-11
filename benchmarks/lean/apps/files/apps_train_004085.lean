@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def replace (s : String) : String := sorry
 
 def countGroups (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem replace_preserves_length {s : String} 
   (h : ∀ c ∈ s.data, c = '!' ∨ c = '?') :
   (replace s).length = s.length := sorry
@@ -34,6 +42,7 @@ info: '?  ?  ?  ?!!!  !!!  !!!  !!!??!!!??'
 -/
 -- #guard_msgs in
 -- #eval replace "?!!?!!?!!?!!!??!!!??!!!??!!!??!!!??"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

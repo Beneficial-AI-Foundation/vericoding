@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -24,10 +25,14 @@ structure PrintOptions where
   floatmode : String
   /-- Legacy printing mode setting -/
   legacy : Option String
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def set_printoptions 
     (precision : Option Nat := none)
     (threshold : Option Nat := none)
@@ -40,7 +45,9 @@ def set_printoptions
     (floatmode : Option String := none)
     (legacy : Option String := none) : Id Unit :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem set_printoptions_spec 
     (precision : Option Nat := none)
     (threshold : Option Nat := none)
@@ -77,3 +84,4 @@ theorem set_printoptions_spec
     set_printoptions precision threshold edgeitems linewidth suppress nanstr infstr sign floatmode legacy
     ⦃⇓_ => ⌜True⌝⦄ := by
   sorry
+-- </vc-theorems>

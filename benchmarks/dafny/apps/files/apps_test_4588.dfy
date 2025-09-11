@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     (|input| == 3 && input[1] == ' ') || 
@@ -24,6 +25,7 @@ predicate CorrectComparison(x: char, y: char, result: string)
     ((x as int > y as int) <==> (result == ">\n")) &&
     ((x as int == y as int) <==> (result == "=\n"))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

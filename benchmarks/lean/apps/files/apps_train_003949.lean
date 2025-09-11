@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def firstNonRepeatingLetter (s : String) : String := sorry 
 
 theorem empty_string_returns_empty : 
   firstNonRepeatingLetter "" = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_in_original_string {s result : String} :
   firstNonRepeatingLetter s = result → 
   result ≠ "" →
@@ -43,6 +51,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval first_non_repeating_letter "abba"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

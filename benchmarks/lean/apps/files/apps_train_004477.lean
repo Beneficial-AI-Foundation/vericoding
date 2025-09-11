@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def matchFn (usefulness : List Nat) (months : Nat) : String := sorry
 
 theorem match_result (usefulness : List Nat) (months : Nat) : 
   matchFn usefulness months = "Match!" ∨ matchFn usefulness months = "No match!" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem match_monotone_usefulness (usefulness : List Nat) (months : Nat) :
   matchFn usefulness months = "Match!" →
   matchFn (usefulness.map (fun x => if x > 0 then x - 1 else 0)) months = "Match!" := sorry
@@ -37,6 +45,7 @@ info: 'Match!'
 -/
 -- #guard_msgs in
 -- #eval match [8, 11, 4] 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def numberOfArithmeticSlices (nums : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem number_of_slices_nonnegative (nums : List Int) :
   numberOfArithmeticSlices nums ≥ 0 := by
   sorry
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval number_of_arithmetic_slices [1, 1, 2, 5, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

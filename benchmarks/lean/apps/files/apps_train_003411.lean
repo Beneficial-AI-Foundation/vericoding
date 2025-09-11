@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def say_hello (names: List String) (city state: String) : String := sorry 
 
 def String.substringExists (s1 s2: String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem say_hello_contains_all_names (names: List String) (city state: String)
   (h1: names ≠ [])
   (h2: ∀ n ∈ names, n ≠ "") 
@@ -50,6 +58,7 @@ info: 'Hello, Marlo Stanfield! Welcome to Baltimore, Maryland!'
 -/
 -- #guard_msgs in
 -- #eval say_hello ["Marlo", "Stanfield"] "Baltimore" "Maryland"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

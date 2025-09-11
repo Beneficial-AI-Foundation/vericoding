@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solution (n : Nat) : String := sorry
 
 def isSubstring (s₁ s₂ : String) : Bool := sorry
@@ -6,17 +7,23 @@ def isSubstring (s₁ s₂ : String) : Bool := sorry
 
 def romanValues : List (Char × Nat) := 
   [('I', 1), ('V', 5), ('X', 10), ('L', 50), ('C', 100), ('D', 500), ('M', 1000)]
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def convertToNums (s : String) : List Nat := sorry
 
 theorem monotonically_decreasing_values (n : Nat) (h : 1 ≤ n ∧ n ≤ 3999) :
   let numericValues := convertToNums (solution n)
   ∀ i j, i < j → j < numericValues.length → 
     (numericValues.get ⟨i, sorry⟩) ≥ (numericValues.get ⟨j, sorry⟩) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_roman_chars (n : Nat) (h : 1 ≤ n ∧ n ≤ 3999) :
   ∀ c, String.contains (solution n) c → c ∈ ['M', 'D', 'C', 'L', 'X', 'V', 'I'] := sorry
 
@@ -56,6 +63,7 @@ info: 'MMVIII'
 -/
 -- #guard_msgs in
 -- #eval solution 2008
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

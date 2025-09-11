@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def cypher (s : String) : String := sorry
 
 theorem cypher_length_preserved (s : String) : 
   (cypher s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cypher_idempotent (s : String) :
   cypher (cypher s) = cypher s := sorry
 
@@ -39,6 +47,7 @@ info: '1 d0 n07 kn0w wh47 3153 1 c4n 7357. 83 c001. 600d 1uck'
 -/
 -- #guard_msgs in
 -- #eval cypher "I do not know what else I can test. Be cool. Good luck"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_searchsorted {n m : Nat} (a : Vector Float n) (v : Vector Float m) : Id (Vector (Fin (n + 1)) m) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_searchsorted_spec {n m : Nat} (a : Vector Float n) (v : Vector Float m) 
     (h_sorted : ∀ i j : Fin n, i < j → a.get i ≤ a.get j) :
     ⦃⌜∀ i j : Fin n, i < j → a.get i ≤ a.get j⌝⦄
@@ -22,3 +29,4 @@ theorem numpy_searchsorted_spec {n m : Nat} (a : Vector Float n) (v : Vector Flo
         (∀ pos : Fin (n + 1), pos.val < idx.val → 
             ∃ i : Fin n, i.val < pos.val ∧ a.get i ≥ v.get k)⌝⦄ := by
   sorry
+-- </vc-theorems>

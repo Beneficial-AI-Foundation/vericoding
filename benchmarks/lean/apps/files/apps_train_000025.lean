@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def IsTriangle (x y z : Nat) : Prop := x > 0 ∧ y > 0 ∧ z > 0
 
 def polygon_cut (n : Nat) (triangles : List (Nat × Nat × Nat)) : (List Nat × List Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem polygon_cut_output_lengths {n : Nat} {triangles : List (Nat × Nat × Nat)} 
   (h1 : n ≥ 3) : 
   let (vertices, cuts) := polygon_cut n triangles
@@ -50,6 +58,7 @@ info: n2 - 2
 -/
 -- #guard_msgs in
 -- #eval len cuts2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

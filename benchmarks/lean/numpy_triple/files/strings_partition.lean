@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def partition {n : Nat} (a : Vector String n) (sep : String) : Id (Vector String n × Vector String n × Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem partition_spec {n : Nat} (a : Vector String n) (sep : String) :
     ⦃⌜True⌝⦄
     partition a sep
@@ -28,3 +35,4 @@ theorem partition_spec {n : Nat} (a : Vector String n) (sep : String) :
                    -- Length preservation: total length is preserved
                    original.length = before_i.length + sep_i.length + after_i.length⌝⦄ := by
   sorry
+-- </vc-theorems>

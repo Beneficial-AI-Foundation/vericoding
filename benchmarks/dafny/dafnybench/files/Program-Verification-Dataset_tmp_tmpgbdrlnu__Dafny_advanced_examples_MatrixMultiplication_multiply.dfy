@@ -1,3 +1,4 @@
+// <vc-preamble>
 function RowColumnProduct(m1: array2<int>, m2: array2<int>, row: nat, column: nat): int
     reads m1
     reads m2
@@ -19,6 +20,7 @@ function RowColumnProductFrom(m1: array2<int>, m2: array2<int>, row: nat, column
     else
         m1[row,k]*m2[k,column] + RowColumnProductFrom(m1, m2, row, column, k+1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

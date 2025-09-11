@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fibfusc (n : Nat) : Int × Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fibfusc_is_pair : ∀ n : Nat, 
   ∃ x y : Int, fibfusc n = (x, y) := by sorry
 
@@ -34,6 +42,7 @@ info: (-7, 13)
 -/
 -- #guard_msgs in
 -- #eval fibfusc 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

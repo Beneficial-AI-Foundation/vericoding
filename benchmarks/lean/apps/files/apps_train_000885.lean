@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Scale := String
 def C : Scale := "C"
 
@@ -6,13 +7,19 @@ def TS : Scale := "TS"
 instance : DecidableEq Scale := 
   fun x y => match x, y with
   | s1, s2 => String.decEq s1 s2
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_scale_plays (scale_type : Scale) (octaves : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_scale_plays_positive 
   (scale_type : Scale)
   (octaves : Nat)
@@ -50,6 +57,7 @@ info: 21
 -/
 -- #guard_msgs in
 -- #eval calculate_scale_plays "TS" 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

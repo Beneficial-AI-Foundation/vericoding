@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def candles (initialCandles : Nat) (makeNew : Nat) : Nat := sorry
 
 theorem candles_at_least_initial (initialCandles : Nat) (makeNew : Nat)
@@ -8,7 +14,9 @@ theorem candles_at_least_initial (initialCandles : Nat) (makeNew : Nat)
   candles initialCandles makeNew ≥ initialCandles := by sorry
 
 /- The candles_is_nat theorem is not needed since the return type is already Nat -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem candles_upper_bound (initialCandles : Nat) (makeNew : Nat)
   (h1 : initialCandles ≥ 1) (h2 : makeNew ≥ 2) :
   candles initialCandles makeNew ≤ initialCandles + (initialCandles - 1) / (makeNew - 1) := by sorry
@@ -41,6 +49,7 @@ info: 11
 -/
 -- #guard_msgs in
 -- #eval candles 8 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

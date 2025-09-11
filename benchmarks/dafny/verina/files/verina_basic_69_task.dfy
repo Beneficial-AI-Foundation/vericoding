@@ -1,3 +1,4 @@
+// <vc-preamble>
 method LinearSearchAux(a: array<int>, e: int, n: nat) returns (result: nat)
     requires n <= a.Length
     decreases a.Length - n
@@ -12,6 +13,7 @@ method LinearSearchAux(a: array<int>, e: int, n: nat) returns (result: nat)
         result := 0;
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

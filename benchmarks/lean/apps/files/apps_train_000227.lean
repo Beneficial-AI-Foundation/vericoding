@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_first_missing_positive (xs : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_first_missing_positive_is_positive
     {xs : List Int} :
     find_first_missing_positive xs > 0 :=
@@ -37,6 +45,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_first_missing_positive [7, 8, 9, 11, 12]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

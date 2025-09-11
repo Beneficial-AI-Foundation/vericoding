@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def hill_jumping_competition (n : Nat) (heights : List Nat) (operations : List (List Nat)) : List Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_operation (op : List Nat) : Bool :=
 match op with
 | h::t => 
@@ -11,7 +16,9 @@ match op with
   else if h = 2 then t.length = 3 && List.head! t ≥ 1 && List.get! t 1 ≥ List.head! t
   else false
 | [] => false
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hill_jumping_result_length (n : Nat) (heights : List Nat) (operations : List (List Nat)) :
   List.all operations is_valid_operation →
   (hill_jumping_competition n heights operations).length = 
@@ -41,6 +48,7 @@ info: [2, 2]
 -/
 -- #guard_msgs in
 -- #eval hill_jumping_competition 3 [1, 3, 2] [[1, 1, 1], [2, 1, 2, 1], [1, 1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def replace_precond (arr : Array Int) (k : Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def replace_loop (oldArr : Array Int) (k : Int) : Nat → Array Int → Array Int
 | i, acc =>
@@ -13,10 +16,14 @@ def replace_loop (oldArr : Array Int) (k : Int) : Nat → Array Int → Array In
   else
     acc
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def replace (arr : Array Int) (k : Int) (h_precond : replace_precond (arr) (k)) : Array Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def replace_postcond (arr : Array Int) (k : Int) (result: Array Int) (h_precond : replace_precond (arr) (k)) :=
   (∀ i : Nat, i < arr.size → (arr[i]! > k → result[i]! = -1)) ∧
@@ -25,6 +32,7 @@ def replace_postcond (arr : Array Int) (k : Int) (result: Array Int) (h_precond 
 theorem replace_spec_satisfied (arr: Array Int) (k: Int) (h_precond : replace_precond (arr) (k)) :
     replace_postcond (arr) (k) (replace (arr) (k) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

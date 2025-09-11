@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hollow_triangle (height : Nat) : List String := sorry
 
 theorem hollow_triangle_height (height : Nat) (h : height > 0) :
   (hollow_triangle height).length = height := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hollow_triangle_width (height : Nat) (h : height > 0) :
   ∀ row ∈ hollow_triangle height, row.length = 2 * height - 1 := sorry
 
@@ -42,6 +50,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval hollow_triangle 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

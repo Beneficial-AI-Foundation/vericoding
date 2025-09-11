@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def namelist (names : List (String × String)) : String :=
   sorry
 
 def containsSubstr (s₁ s₂ : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.count (s : String) (c : Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem namelist_empty_list :
   namelist [] = "" :=
 sorry
@@ -50,6 +57,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval namelist []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

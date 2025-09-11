@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -23,6 +24,7 @@ pub enum DType {
     Complex128,
     Bool,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,7 +1,9 @@
+// <vc-preamble>
 #[allow(unused_imports)]
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

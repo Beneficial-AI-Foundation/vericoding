@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermint {n : Nat} (c : Vector Float n) (m : Nat) 
     (k : Vector Float m) (lbnd : Float) (scl : Float) 
     (h_m_pos : m > 0) : Id (Vector Float (n + m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermint_spec {n : Nat} (c : Vector Float n) (m : Nat) 
     (k : Vector Float m) (lbnd : Float) (scl : Float) 
     (h_m_pos : m > 0) :
@@ -29,3 +36,4 @@ theorem hermint_spec {n : Nat} (c : Vector Float n) (m : Nat)
         (∃ adjustment : Float, result.get ⟨0, by omega⟩ = adjustment))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

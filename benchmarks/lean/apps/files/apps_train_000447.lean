@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def coin_change (coins : List Nat) (amount : Nat) : Int := sorry
 
 def list_min : List Nat → Nat 
 | [] => 0
 | [x] => x
 | (x::xs) => Nat.min x (list_min xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem coin_change_valid_output {coins : List Nat} {amount : Nat}
   (h1 : coins.length > 0)
   (h2 : ∀ x ∈ coins, x > 0 ∧ x ≤ 20) :
@@ -47,6 +55,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval coin_change [1] 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def odd (s : String) : Nat := sorry
 
 theorem odd_non_negative (s : String) : odd s ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_smaller_than_string (s : String) : odd s ≤ s.length := sorry
 
 theorem odd_deterministic (s : String) : odd s = odd s := sorry
@@ -38,6 +46,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval odd "qoddoldfoodgodnooofostorodrnvdmddddeidfoi"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

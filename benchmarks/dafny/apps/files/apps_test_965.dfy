@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, statuses: string)
 {
     n >= 2 && |statuses| == n && 
@@ -17,6 +18,7 @@ function ExpectedResult(statuses: string): int
     else if cnt_I == 1 then 1
     else 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

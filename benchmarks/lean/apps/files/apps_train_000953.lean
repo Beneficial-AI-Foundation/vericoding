@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_special_numbers (n: Nat) : Nat := sorry
 
 theorem under_100_returns_self {n: Nat} (h: n ≥ 1 ∧ n ≤ 99) : 
   count_special_numbers n = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem three_digit_bounds {n: Nat} (h: n ≥ 100 ∧ n ≤ 999) :
   99 ≤ count_special_numbers n ∧ count_special_numbers n ≤ n := sorry
 
@@ -35,6 +43,7 @@ info: 55
 -/
 -- #guard_msgs in
 -- #eval count_special_numbers 55
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

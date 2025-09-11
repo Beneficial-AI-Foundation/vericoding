@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_variable_with_777 : String := sorry
 
 theorem no_777_variable
   (h : find_variable_with_777.isEmpty = true) :
   ¬ (∃ x : String, find_variable_with_777 = x) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem wrong_value
   (name : String)
   (val : Int)
@@ -25,6 +33,7 @@ info: 'magic_number'
 -/
 -- #guard_msgs in
 -- #eval find_variable_with_777
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def String.isPalindrome (s : String) : Bool := sorry
 
 def find_longest_palindrome (s : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.isSubstringOf (sub str : String) : Bool := sorry
 
 def String.substring (str : String) (start len : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_longest_palindrome_is_substring (s : String) :
   (find_longest_palindrome s).isSubstringOf s = true := sorry
 
@@ -39,6 +46,7 @@ info: 'a'
 -/
 -- #guard_msgs in
 -- #eval find_longest_palindrome "a"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

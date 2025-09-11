@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidQuery(k: int, n: int, a: int, b: int)
 {
     k > 0 && n > 0 && a > 0 && b > 0 && b < a
@@ -18,6 +19,7 @@ predicate ValidResult(result: int, k: int, n: int, a: int, b: int)
 {
     result == -1 || (0 <= result <= n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nanstd {n : Nat} (a : Vector Float n) (ddof : Nat := 0) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nanstd_spec {n : Nat} (a : Vector Float n) (ddof : Nat) :
     ⦃⌜True⌝⦄
     nanstd a ddof
@@ -28,3 +35,4 @@ theorem nanstd_spec {n : Nat} (a : Vector Float n) (ddof : Nat) :
                  else
                    result.isNaN⌝⦄ := by
   sorry
+-- </vc-theorems>

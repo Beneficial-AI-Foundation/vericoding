@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n_A: int, n_B: int, k: int, m: int, A: seq<int>, B: seq<int>)
 {
     n_A >= 1 && n_B >= 1 &&
@@ -18,6 +19,7 @@ predicate ValidSelection(A: seq<int>, B: seq<int>, k: int, m: int)
 {
     A[k - 1] < B[|B| - m]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

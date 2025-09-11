@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def convert_to_dms (lat: String) (lon: String) : String × String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem coordinate_format_length 
   {lat: Float} {lon: Float} 
   (hlat: -90 ≤ lat ∧ lat ≤ 90) 
@@ -68,6 +76,7 @@ info: ('019*36\'53.975"N', '155*28\'55.841"W')
 -/
 -- #guard_msgs in
 -- #eval convert_to_dms "19.61499312350978" "-155.48217818140984"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

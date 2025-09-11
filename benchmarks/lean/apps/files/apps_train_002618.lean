@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def String.containsString (s₁ s₂ : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def word_search (query : String) (seq : List String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem word_search_returns_nonempty (query : String) (seq : List String) : 
   word_search query seq ≠ [] := sorry
 
@@ -49,6 +56,7 @@ info: ['None']
 -/
 -- #guard_msgs in
 -- #eval word_search "abcd" ["za", "aB", "Abc", "zAB", "zbc"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def path_finder (maze : String) : Bool := sorry
 
 def stringReplicate (n : Nat) (s : String) : String := sorry
@@ -5,14 +6,20 @@ def stringReplicate (n : Nat) (s : String) : String := sorry
 def stringJoin (l : List String) (sep : String) : String := sorry
 
 def makeList (n : Nat) (c : Char) : List Char := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listToString (l : List Char) : String := sorry
 
 def make_maze (cells : List Char) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_maze_always_solvable (n : Nat) (h : n ≥ 2) (h2 : n ≤ 10) :
   let row := stringReplicate n "."
   let rows := List.replicate n row
@@ -49,6 +56,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval path_finder maze2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CharToPosSpec(c: string): int
 {
     if c == "v" then 0
@@ -70,6 +71,7 @@ predicate ValidOutput(result: string)
 {
     result == "cw" || result == "ccw" || result == "undefined"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

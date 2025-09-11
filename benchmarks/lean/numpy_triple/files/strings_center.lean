@@ -1,10 +1,15 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def center {n : Nat} (a : Vector String n) (width : Vector Nat n) (fillchar : Char := ' ') : Id (Vector String n) :=
   return Vector.ofFn (fun i => 
     let str := a.get i
@@ -16,7 +21,9 @@ def center {n : Nat} (a : Vector String n) (width : Vector Nat n) (fillchar : Ch
       let left_pad := padding / 2
       let right_pad := padding - left_pad
       String.mk (List.replicate left_pad fillchar) ++ str ++ String.mk (List.replicate right_pad fillchar))
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem center_spec {n : Nat} (a : Vector String n) (width : Vector Nat n) (fillchar : Char := ' ') :
     ⦃⌜True⌝⦄
     center a width fillchar
@@ -37,3 +44,4 @@ theorem center_spec {n : Nat} (a : Vector String n) (width : Vector Nat n) (fill
           -- Result string structure: left_pad + original + right_pad
           r.get i = (String.mk (List.replicate left_pad fillchar)) ++ (a.get i) ++ (String.mk (List.replicate right_pad fillchar)))⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int)
 {
   1 <= N <= 100
@@ -13,6 +14,7 @@ predicate ValidOutput(result: int)
 {
   result >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

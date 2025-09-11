@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rake_garden (garden : String) : String := sorry
 
 -- Theorem 1: Result is space-separated words
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rake_garden_space_separated {garden : String} :
   let result := rake_garden garden
   let split := result.split (· = ' ')
@@ -51,6 +59,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval rake_garden "rock rock rock"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

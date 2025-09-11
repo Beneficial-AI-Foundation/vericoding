@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(X_val : array<int>, X_crd : array<nat>,
              v_val : array<int>, v_crd : array<nat>, kX : nat, kV : nat, pX_end : nat, pV_end : nat) : (s : int) 
   reads X_val, X_crd
@@ -53,6 +54,7 @@ function index(x : nat, y: array<nat>) : (i : nat)
 {
   index_seq(x, y[.. ])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

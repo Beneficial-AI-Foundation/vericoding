@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def div_num (n : Nat) : Nat := sorry
 
 theorem div_num_positive (n : Nat) (h : n > 0) : div_num n ≥ 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem div_num_perfect_squares 
   (n : Nat) 
   (h : n > 0) : 
@@ -33,6 +41,7 @@ info: 60
 -/
 -- #guard_msgs in
 -- #eval find_min_num 12
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

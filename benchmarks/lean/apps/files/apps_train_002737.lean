@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Photo := String 
 def Year := Nat
 
@@ -18,13 +19,19 @@ def parse_year (photo : Photo) : Year :=
   sorry
 
 -- Helper function to parse image number from photo string
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def parse_imgnum (photo : Photo) : ImgNum :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_photos_length (photos : List Photo) : 
   photos ≠ [] → 
   photos.length > 0 →
@@ -80,6 +87,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval sort_photos ["2016.img4", "2016.img5", "2016.img1", "2016.img3", "2016.img2"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_alternative_math (nums : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 theorem solve_range (nums : List Nat) (h : nums ≠ []) : 
   solve_alternative_math nums < MOD :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_single_elem (n : Nat) : 
   solve_alternative_math [n] = n % MOD :=
   sorry
@@ -39,6 +46,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_alternative_math [1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

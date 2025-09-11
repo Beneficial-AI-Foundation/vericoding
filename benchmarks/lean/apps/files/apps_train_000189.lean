@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sum (l : List Nat) : Nat :=
   match l with
   | [] => 0
@@ -5,13 +6,19 @@ def sum (l : List Nat) : Nat :=
 
 def min_set_size (arr : List Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listRange (n : Nat) : List Int :=
   (List.range n).map Int.ofNat
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_set_size_positive (arr : List Int) (h : arr ≠ []) :
   min_set_size arr > 0 :=
   sorry
@@ -52,6 +59,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval min_set_size [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_time_tasks (n : Nat) (difficulties : List Nat) : Nat := sorry
 
 theorem min_time_tasks_modulo_bounds {n : Nat} {difficulties : List Nat} 
   (h : difficulties.length = n) (h1 : n > 0) : 
   min_time_tasks n difficulties < 10007 ∧ min_time_tasks n difficulties ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_time_tasks_permutation_invariant {n : Nat} {d1 d2 : List Nat} 
   (h : d1.length = n) (h2 : d2.length = n) (h3 : d1 = d2) :
   min_time_tasks n d1 = min_time_tasks n d2 := sorry
@@ -35,6 +43,7 @@ info: 20
 -/
 -- #guard_msgs in
 -- #eval min_time_tasks 4 [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

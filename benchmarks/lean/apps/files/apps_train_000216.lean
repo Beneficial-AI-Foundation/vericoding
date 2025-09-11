@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sum (l : List Nat) : Nat :=
   l.foldr (· + ·) 0
 
@@ -5,13 +6,19 @@ def minimum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x::xs => xs.foldr min x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maxSatisfied (customers : List Nat) (grumpy : List Nat) (X : Nat) : Nat := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxSatisfied_properties {customers grumpy : List Nat} {X : Nat}
   (h1 : customers.length > 0)
   (h2 : grumpy.length = customers.length)
@@ -51,6 +58,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval maxSatisfied [2, 4, 1, 4, 1] [1, 1, 1, 1, 1] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

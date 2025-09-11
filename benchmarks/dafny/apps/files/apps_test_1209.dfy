@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate valid_input_format(input: string) 
 {
     |input| > 0 && contains_newline(input) && 
@@ -71,6 +72,7 @@ function get_ith_integer(output: string, i: nat): int { 0 }
 function floor_of(r: real): int { 0 }
 function ceiling_of(r: real): int { 0 }
 function int_value_of(r: real): int { 0 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

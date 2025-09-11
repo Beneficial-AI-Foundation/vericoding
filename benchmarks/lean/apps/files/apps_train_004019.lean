@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sequenceSum (a b c : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_sum_zero_when_start_greater_than_end
   {s e p : Int}
   (h1 : p > 0)
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval sequence_sum 16 15 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

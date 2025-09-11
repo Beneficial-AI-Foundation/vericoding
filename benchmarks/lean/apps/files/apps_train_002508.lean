@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_student_averages (n_students : Nat) (n_subjects : Nat) (subject_marks : List String) : List Float := sorry
 
 /- Main property theorems -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_student_averages_length
   (n_students : Nat) (n_subjects : Nat) (subject_marks : List String)
   (h1 : n_students > 0) (h2 : n_subjects > 0) :
@@ -42,6 +50,7 @@ theorem calculate_student_averages_consistency
   (subject_marks : List String) :
   ∀ i < n_students, ∃ result ∈ calculate_student_averages n_students n_subjects subject_marks, 
     Float.abs (result - marks[i % marks.length]'(Nat.mod_lt _ h3)) ≤ 1e-9 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

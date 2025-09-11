@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def phi (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_passcode (a m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem phi_positive (n : Nat) (h : n > 0) : phi n > 0 :=
   sorry
 
@@ -54,6 +61,7 @@ info: 9999999966
 -/
 -- #guard_msgs in
 -- #eval solve_passcode 42 9999999967
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

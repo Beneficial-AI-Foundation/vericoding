@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lcm (a b : Nat) : Nat := sorry
 
 def solve_caterpillars (n : Nat) (lengths : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lcm_positive 
   (a b : Nat)
   (h1 : 1 ≤ a ∧ a ≤ 1000)
@@ -32,6 +40,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval solve_caterpillars 15 [2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

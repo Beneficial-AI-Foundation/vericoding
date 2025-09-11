@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidQuery(query: (int, int, int))
 {
     query.0 > 0 && query.1 > 0 && query.2 > 0
@@ -11,6 +12,7 @@ function MinCostForQuery(n: int, a: int, b: int): int
     else
         if n * a <= (n / 2) * b + a then n * a else (n / 2) * b + a
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

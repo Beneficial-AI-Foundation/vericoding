@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def transform_word (s : String) : String := sorry
 
 def isVowel (c : Char) : Bool :=
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isLowerAscii (c : Char) : Bool := 
   97 ≤ c.toNat ∧ c.toNat ≤ 122
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem transform_word_preserves_length (s : String) :
   s.length = (transform_word s).length := sorry
 
@@ -41,6 +48,7 @@ info: 'zeeeutaaaaa'
 -/
 -- #guard_msgs in
 -- #eval transform_word "abcdtuvwxyz"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

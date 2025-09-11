@@ -1,14 +1,21 @@
+-- <vc-preamble>
 @[reducible]
 def moveZeroes_precond (xs : List Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 -- Count how many times a specific value appears in the list
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def moveZeroes (xs : List Int) (h_precond : moveZeroes_precond (xs)) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def countVal (val : Int) : List Int → Nat
   | [] => 0
   | x :: xs =>
@@ -38,6 +45,7 @@ def moveZeroes_postcond (xs : List Int) (result: List Int) (h_precond : moveZero
 theorem moveZeroes_spec_satisfied (xs: List Int) (h_precond : moveZeroes_precond (xs)) :
     moveZeroes_postcond (xs) (moveZeroes (xs) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

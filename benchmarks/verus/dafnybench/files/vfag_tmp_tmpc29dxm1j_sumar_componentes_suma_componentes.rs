@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -12,6 +13,7 @@ spec fn suma_aux(V: &[i32], n: int) -> int
         V[n as int] + suma_aux(V, n + 1)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def routes (n : Int) : Int := sorry
 
 def factorial (n : Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem routes_formula {n : Int} (h : n > 0) : 
   routes n = factorial (2*n) / (factorial n * factorial n) := sorry
 
@@ -34,6 +42,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval routes -100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxProfit (prices: List Nat) : Nat :=
   sorry
 
 -- Maximum profit should be non-negative for any non-empty price list
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxprofit_non_negative {prices: List Nat} (h: prices ≠ []) : 
   maxProfit prices ≥ 0 :=
   sorry
@@ -59,6 +67,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval maxProfit [7, 6, 4, 3, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

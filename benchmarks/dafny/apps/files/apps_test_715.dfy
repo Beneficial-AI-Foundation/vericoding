@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidResult(result: string) {
     result in ["A", "B", "C", "D"]
 }
@@ -28,6 +29,7 @@ function SortLengthsWithIndices(lengths: seq<int>): seq<(int, int)>
     var pairs := [(lengths[0], 0), (lengths[1], 1), (lengths[2], 2), (lengths[3], 3)];
     SortPairsFunc(pairs)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

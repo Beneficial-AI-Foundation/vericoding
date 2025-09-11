@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def high (s : String) : String := sorry
 
 def wordScore (word : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem high_gives_highest_score_word (text : String) : 
   text ≠ "" → (∀ c ∈ text.data, c = ' ' ∨ (97 ≤ c.val ∧ c.val ≤ 122)) →
   let words := text.split (· = ' ')
@@ -45,6 +53,7 @@ info: 'semynak'
 -/
 -- #guard_msgs in
 -- #eval high "take me to semynak"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

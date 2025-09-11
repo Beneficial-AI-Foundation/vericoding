@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
   decreases s
@@ -36,6 +37,7 @@ method ModExpPow2(sx: string, sy: string, n: nat, sz: string) returns (res: stri
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

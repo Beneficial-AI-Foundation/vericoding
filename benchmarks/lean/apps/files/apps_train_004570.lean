@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def sorted (s : String) : Bool := 
   let chars := s.data
   chars.zip (chars.drop 1) |>.all (fun (a, b) => a ≤ b)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solved (s : String) : String := sorry
 
 theorem solved_returns_sorted (s : String) :
   sorted (solved s) = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solved_maintains_even_length (s : String) :
   s.length % 2 = 0 → (solved s).length = s.length := sorry
 
@@ -43,6 +50,7 @@ info: 'abcd'
 -/
 -- #guard_msgs in
 -- #eval solved "dcba"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

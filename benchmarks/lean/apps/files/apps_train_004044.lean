@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_dot (a b : List Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_dot_le_standard_dot (a b : List Int) :
   min_dot a b ≤ (List.zip a b).foldl (fun acc (x : Int × Int) => acc + x.1 * x.2) 0 :=
 sorry
@@ -38,6 +46,7 @@ info: -17
 -/
 -- #guard_msgs in
 -- #eval min_dot [1, 2, 3, 4, 5] [0, 0, 1, 1, -4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def bubblesortOnce (xs : List Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (xs : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_same_length {xs : List Int} (h : xs ≠ []) :
   List.length (bubblesortOnce xs) = List.length xs :=
   sorry
@@ -46,6 +53,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval bubblesort_once [2, 4, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

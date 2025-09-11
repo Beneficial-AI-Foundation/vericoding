@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Digit := Nat
 def NumStr := List Digit
 
@@ -6,13 +7,19 @@ instance : OfNat Digit n where
 
 instance : LE Digit where
   le := Nat.le
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def series_slices (digits : NumStr) (n : Nat) : List (List Digit) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem slice_length_bounds 
   (digits : NumStr) (n : Nat) (h : n > 0) :
   (n > digits.length → (series_slices digits n).isEmpty) ∧ 
@@ -57,6 +64,7 @@ info: [[0, 1, 2, 3, 4]]
 -/
 -- #guard_msgs in
 -- #eval series_slices "01234" 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

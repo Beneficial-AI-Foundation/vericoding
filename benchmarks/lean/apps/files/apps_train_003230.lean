@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isLower (c : Char) : Bool :=
   97 ≤ c.toNat && c.toNat ≤ 122
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def alpha_seq (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem alpha_seq_parts_sorted {s : String} (h : s ≠ "") : 
   let parts := s.split (· = ',')
   ∀ i j, i < j → j < parts.length → 
@@ -57,6 +64,7 @@ info: 'A,Bb,Ccc'
 -/
 -- #guard_msgs in
 -- #eval alpha_seq "Abc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

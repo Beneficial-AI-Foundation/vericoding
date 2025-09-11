@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_chef_cities (N : Nat) (friendliness : List Nat) (queries : List (List Nat)) : List (Nat × Nat) := sorry
 
 theorem result_format_valid 
@@ -14,7 +20,9 @@ theorem result_format_valid
   (∀ r ∈ result, 
     (1 ≤ r.1 ∧ r.1 ≤ 9) ∧ 
     0 ≤ r.2) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_length_matches_type2_queries
   (N : Nat)
   (friendliness : List Nat) 
@@ -42,6 +50,7 @@ theorem single_query_gives_single_result
   (h3 : 0 < R ∧ R ≤ 5)
   (h4 : result = solve_chef_cities N friendliness [[2,R]]) :
   result.length = 1 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

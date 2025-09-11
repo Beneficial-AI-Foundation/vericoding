@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_wealth_disparity (n : Nat) (wealth : List Int) (managers : List Int) : Int :=
   sorry
 
 -- Theorem stating that result is bounded by max wealth difference
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_wealth_disparity_bounded (n : Nat) (wealth : List Int) (managers : List Int)
   (h1 : 2 ≤ n) (h2 : n ≤ 10)
   (h3 : ∀ w ∈ wealth, -100 ≤ w ∧ w ≤ 100)
@@ -47,6 +55,7 @@ info: 25
 -/
 -- #guard_msgs in
 -- #eval find_max_wealth_disparity 3 [-5, 10, -15] [2, -1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

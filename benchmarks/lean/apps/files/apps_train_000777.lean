@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def DAYS : List String := ["saturday", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday"]
 
 def indexOfDay (day: String) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solveCompetitionDuration (startDay endDay: String) (l r: Nat) : String ⊕ Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem competition_duration_impossible {startDay endDay: String} {l r: Nat} 
   (h1: l ≤ r)
   (h2: solveCompetitionDuration startDay endDay l r = Sum.inl "impossible") :
@@ -56,6 +63,7 @@ info: 'impossible'
 -/
 -- #guard_msgs in
 -- #eval solve_competition_duration "saturday" "sunday" 3 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

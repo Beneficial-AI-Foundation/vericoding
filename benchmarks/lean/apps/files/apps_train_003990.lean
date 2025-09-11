@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def maximum : List Nat → Nat 
   | [] => 0
   | (x::xs) => max x (maximum xs)
@@ -5,13 +6,19 @@ def maximum : List Nat → Nat
 def minimum : List Nat → Nat
   | [] => 0
   | (x::xs) => min x (minimum xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def largest_rect (heights : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem largest_rect_empty :
   largest_rect [] = 0 :=
   sorry
@@ -33,6 +40,7 @@ info: 70
 -/
 -- #guard_msgs in
 -- #eval largest_rect [33, 9, 7, 6, 6, 6, 14, 14, 14, 15, 21]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

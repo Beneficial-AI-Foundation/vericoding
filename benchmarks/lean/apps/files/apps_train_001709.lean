@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def isBalanced (s : String) : Bool := sorry
 def balancedParens (n : Nat) : List String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def catalan (n : Nat) : Nat := sorry
 
 theorem balanced_parens_output_is_balanced (n : Nat) (h : n ≤ 5) :
   ∀ s ∈ balancedParens n, isBalanced s = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem balanced_parens_length (n : Nat) (h : n ≤ 5) : 
   ∀ s ∈ balancedParens n, s.length = 2 * n := sorry
 
@@ -47,6 +54,7 @@ info: ['((()))', '(()())', '(())()', '()(())', '()()()']
 -/
 -- #guard_msgs in
 -- #eval balanced_parens 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

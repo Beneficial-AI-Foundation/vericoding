@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_round {n : Nat} (a : Vector Float n) (decimals : Int) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_round_spec {n : Nat} (a : Vector Float n) (decimals : Int) :
     ⦃⌜True⌝⦄
     numpy_round a decimals
@@ -24,3 +31,4 @@ theorem numpy_round_spec {n : Nat} (a : Vector Float n) (decimals : Int) :
       -- Basic sanity: result has the same vector shape as input
       (result.get i = result.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

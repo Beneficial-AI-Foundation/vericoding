@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountCellsDivisibleByM(n: int, m: int): int
   requires 1 <= n
   requires 1 <= m
@@ -8,6 +9,7 @@ function CountCellsDivisibleByM(n: int, m: int): int
 predicate ValidInput(n: int, m: int) {
   1 <= n && 1 <= m <= 1000
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

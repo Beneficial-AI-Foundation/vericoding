@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def towerBuilder (n : Nat) (width height : Nat) : List String := sorry
 
 theorem tower_builder_row_count
@@ -9,7 +15,9 @@ theorem tower_builder_row_count
   (h₂ : width > 0)
   (h₃ : height > 0) :
   (towerBuilder n width height).length = n * height := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tower_builder_row_width
   {n width height : Nat}
   (h₁ : n > 0)
@@ -50,6 +58,7 @@ theorem tower_builder_consistent_floor_rows
   (h₅ : row₁ ∈ List.drop (floor * height) (List.take ((floor + 1) * height) (towerBuilder n width height)))
   (h₆ : row₂ ∈ List.drop (floor * height) (List.take ((floor + 1) * height) (towerBuilder n width height))) :
   row₁ = row₂ := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

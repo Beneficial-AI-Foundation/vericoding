@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def dollar_to_speech (s : String) : String := sorry
 
 def String.containsStr (s₁ s₂ : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def formatDollarString (d c : Nat) : String :=
   s!"${d}.{c}"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dollar_to_speech_ends_with_period (d c : Nat) (h : c < 100) :
   (dollar_to_speech (formatDollarString d c)).endsWith "." := sorry
 
@@ -56,6 +63,7 @@ info: 'No negative numbers are allowed!'
 -/
 -- #guard_msgs in
 -- #eval dollar_to_speech "$-5.00"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def stringContains (s1 s2 : String) : Bool := sorry
 
 def actually_really_good (foods : List String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem actually_really_good_prefix (foods : List String) :
   String.startsWith (actually_really_good foods) "You know what's actually really good? " := sorry
 
@@ -31,6 +39,7 @@ info: "You know what's actually really good? Ice cream and ham."
 -/
 -- #guard_msgs in
 -- #eval actually_really_good ["Ice cream", "Ham"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

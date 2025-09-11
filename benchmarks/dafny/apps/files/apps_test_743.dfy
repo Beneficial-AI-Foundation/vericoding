@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, ar: seq<int>)
 {
   n >= 2 && |ar| == n && forall i :: 0 <= i < n ==> ar[i] > 0
@@ -28,6 +29,7 @@ function MinimalSum(n: int, ar: seq<int>): int
 {
   GCDOfSequence(ar) * n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

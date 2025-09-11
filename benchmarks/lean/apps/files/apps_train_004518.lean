@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fusc (n : Nat) : Nat := sorry
 
 theorem fusc_non_negative (n : Nat) : fusc n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fusc_even_reduce (n : Nat) (h : n > 0) (h2 : n % 2 = 0) : 
   fusc n = fusc (n / 2) := sorry
 
@@ -34,6 +42,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval fusc 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

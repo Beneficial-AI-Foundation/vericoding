@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_place_flowers (flowerbed : List Nat) (n : Nat) : Bool := sorry
 
 theorem flowerbed_returns_bool (flowerbed : List Nat) :
   (∀ x ∈ flowerbed, x = 0 ∨ x = 1) →
   ∃ b : Bool, can_place_flowers flowerbed 0 = b
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maximum_flowers_boundary (flowerbed : List Nat) :
   (∀ x ∈ flowerbed, x = 0 ∨ x = 1) →
   let total_ones := (flowerbed.filter (· = 1)).length
@@ -39,6 +47,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_place_flowers [0, 0, 1, 0, 0] 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

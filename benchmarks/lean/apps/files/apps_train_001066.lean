@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def nc3 (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) (c : Nat) (k : Nat) (lines : List (List Nat)) (v : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nc3_nonnegative (n : Nat) :
   nc3 n ≥ 0 :=
   sorry
@@ -48,6 +55,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval solve 6 1 20 [[1, 5, 1], [2, 11, 1], [4, 0, 1], [6, 8, 1], [0, 11, 1], [3, 3, 1]] [9]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

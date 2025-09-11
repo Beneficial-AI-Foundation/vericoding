@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_cuts_for_skyscrapers (n : Nat) (heights : List Nat) : Nat := sorry
 
 theorem cuts_non_negative (n : Nat) (heights : List Nat) :
   min_cuts_for_skyscrapers n heights ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_building_no_cuts (h : Nat) :
   min_cuts_for_skyscrapers 1 [h] = 0 := sorry
 
@@ -23,6 +31,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_cuts_for_skyscrapers 5 [5, 4, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

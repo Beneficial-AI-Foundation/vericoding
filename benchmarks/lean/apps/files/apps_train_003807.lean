@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def spoonerize (s : String) : String := sorry
 
 theorem spoonerize_preserves_string_type {s : String} :
   s.contains ' ' ∧ (s.split (· == ' ')).length = 2 →
   spoonerize s ≠ "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem spoonerize_single_space {s : String} :
   s.contains ' ' ∧ (s.split (· == ' ')).length = 2 →
   ((spoonerize s).data.filter (· == ' ')).length = 1 := sorry
@@ -60,6 +68,7 @@ info: 'belly jeans'
 -/
 -- #guard_msgs in
 -- #eval spoonerize "jelly beans"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

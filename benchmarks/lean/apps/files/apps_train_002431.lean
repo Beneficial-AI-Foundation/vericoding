@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lemonade_change (bills : List Nat) : Bool := sorry
 
 def countChange (state : Nat × Nat) (bill : Nat) : Nat × Nat :=
@@ -10,7 +16,9 @@ def countChange (state : Nat × Nat) (bill : Nat) : Nat × Nat :=
   | _ => if state.2 ≥ 1 ∧ state.1 ≥ 1 
         then (state.1 - 1, state.2 - 1)
         else (state.1 - 3, state.2)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lemonade_change_success 
   {bills : List Nat} 
   (h : lemonade_change bills = true) :
@@ -48,6 +56,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval lemonade_change [5, 5, 10, 10, 20]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

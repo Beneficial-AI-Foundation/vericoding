@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>, k: string)
 {
   n >= 1 && |a| == n && |k| == n && 
@@ -26,6 +27,7 @@ function f(a: seq<int>, x: int, n: int): int
   if n == 0 then 0
   else (if (x / pow(2, n-1)) % 2 == 1 then a[n-1] else 0) + f(a[..n-1], x % pow(2, n-1), n-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

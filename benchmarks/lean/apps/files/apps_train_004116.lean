@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (a b : Nat) : Nat × Nat :=
   sorry
 
 #check solve
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_returns_non_negative {a b : Nat} : 
   let result := solve a b
   result.1 ≥ 0 ∧ result.2 ≥ 0 := by 
@@ -44,6 +52,7 @@ info: [7, 11]
 -/
 -- #guard_msgs in
 -- #eval solve 7 11
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

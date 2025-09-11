@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: nat, m: nat, benches: seq<nat>)
 {
     n > 0 && m > 0 && |benches| == n && forall i :: 0 <= i < n ==> benches[i] > 0
@@ -16,6 +17,7 @@ function sum_seq(s: seq<nat>): nat
     if |s| == 0 then 0
     else s[0] + sum_seq(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

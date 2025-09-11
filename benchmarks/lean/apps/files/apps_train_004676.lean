@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def protein_synthesis (dna_str: String) : List String := sorry
 
 def valid_aas : List String := ["Ala", "Arg", "Asn", "Asp", "Cys", "Gln", "Glu", "Gly", "His", "Ile",
@@ -11,7 +17,9 @@ theorem output_structure {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ [
   result.length = 2 ∧ 
   (∀ c ∈ result[0]!.data, c ∈ ['A', 'U', 'C', 'G', ' ']) ∧
   (∀ aa ∈ result[1]!.splitOn " ", aa ∈ valid_aas) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dna_to_rna_conversion {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A', 'C', 'G', 'T']) :
   let result := protein_synthesis dna_str
   let rna := (result[0]!.replace " " "").data
@@ -58,6 +66,7 @@ info: ['AUG', 'Met']
 -/
 -- #guard_msgs in
 -- #eval protein_synthesis "TAC"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebpts2 (n : Nat) (h : n ≥ 2) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebpts2_spec (n : Nat) (h : n ≥ 2) :
     ⦃⌜n ≥ 2⌝⦄
     chebpts2 n h
@@ -26,3 +33,4 @@ theorem chebpts2_spec (n : Nat) (h : n ≥ 2) :
               -- For n = 3, the middle point is 0
               (n = 3 → pts.get ⟨1, sorry⟩ = 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

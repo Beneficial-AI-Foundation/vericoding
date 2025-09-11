@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rstrip {n : Nat} (a : Vector String n) (chars : Option String) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rstrip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
     ⦃⌜True⌝⦄
     rstrip a chars
@@ -30,3 +37,4 @@ theorem rstrip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
           -- Length constraint: result is never longer than original
           (stripped.length ≤ original.length))⌝⦄ := by
   sorry
+-- </vc-theorems>

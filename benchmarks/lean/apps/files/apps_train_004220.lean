@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def shortest_steps_to_num (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem steps_always_positive (n : Nat) (h : n > 0) : 
   shortest_steps_to_num n ≥ 0 :=
 sorry
@@ -39,6 +47,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval shortest_steps_to_num 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

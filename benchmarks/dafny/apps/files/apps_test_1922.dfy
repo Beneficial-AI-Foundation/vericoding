@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, M: int)
 {
     N >= 1 && M >= 1
@@ -11,6 +12,7 @@ function CountFaceDownCards(N: int, M: int): int
     else if M == 1 then N - 2
     else (N - 2) * (M - 2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

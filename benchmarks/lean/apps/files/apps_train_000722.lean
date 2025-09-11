@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def compute_super_factor_sum (n : Nat) : Nat := sorry
 
 def is_prime (n : Nat) : Bool := sorry
@@ -5,14 +6,20 @@ def is_prime (n : Nat) : Bool := sorry
 def list_product : List Nat → Nat 
   | [] => 1
   | x :: xs => x * list_product xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum : List Nat → Nat
   | [] => 0
   | x :: xs => x + list_sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem compute_super_factor_sum_positive (n : Nat) (h : n ≥ 2) :
   compute_super_factor_sum n > 0 := sorry
 
@@ -44,6 +51,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval compute_super_factor_sum 12
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

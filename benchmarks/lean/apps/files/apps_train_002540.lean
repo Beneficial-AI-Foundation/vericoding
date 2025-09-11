@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def passer_rating (att yds comp td ints : Nat) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem passer_rating_bounds (att yds comp td ints : Nat) (h : att > 0) :
   let rating := passer_rating att yds comp td ints
   0 ≤ rating ∧ rating ≤ 158.3 := sorry
@@ -32,6 +40,7 @@ info: 39.6
 -/
 -- #guard_msgs in
 -- #eval passer_rating 48 192 19 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

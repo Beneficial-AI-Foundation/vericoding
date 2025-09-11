@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def solution (n : Nat) : Array Nat := sorry
 
 def isMultipleOf3 (x : Nat) : Bool := x % 3 == 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isMultipleOf5 (x : Nat) : Bool := x % 5 == 0
 
 -- Output format properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_output_format (n : Nat) (h : n > 0) : 
   (solution n).size = 3 ∧ 
   ∀ i < 3, (solution n)[i]! ≥ 0 := sorry
@@ -38,6 +45,7 @@ theorem solution_edge_cases :
   solution 1 = #[0, 0, 0] ∧
   solution 3 = #[0, 0, 0] ∧
   solution 4 = #[1, 0, 0] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

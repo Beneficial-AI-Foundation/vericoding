@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(pizzas: seq<int>) {
     forall i :: 0 <= i < |pizzas| ==> pizzas[i] >= 0
 }
@@ -19,6 +20,7 @@ function validatePizzaSolution(pizzas: seq<int>, index: int, d: bool, p: int): b
 predicate CanFulfillRequirements(pizzas: seq<int>) {
     validatePizzaSolution(pizzas, 0, true, 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

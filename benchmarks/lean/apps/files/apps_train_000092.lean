@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_time_to_send_presents (n m : Nat) (stack send_list : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identity_permutation_min_time {n : Nat} {stack : List Nat}
   (h1 : n > 0)
   (h2 : n ≤ 100000) 
@@ -33,6 +41,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval min_time_to_send_presents 7 2 [2, 1, 7, 3, 4, 5, 6] [3, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

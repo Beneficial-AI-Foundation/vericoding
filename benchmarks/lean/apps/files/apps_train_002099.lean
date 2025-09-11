@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_permutation (n : Nat) (arr : List Nat) : Nat := sorry 
 
 theorem permutation_result_nonnegative (n : Nat) (arr : List Nat) :
   solve_permutation n arr ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem permutation_result_bounded (n : Nat) (arr : List Nat) :
   solve_permutation n arr ≤ arr.length := sorry
 
@@ -29,6 +37,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_permutation 6 [300000000, 200000000, 300000000, 200000000, 1000000000, 300000000]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

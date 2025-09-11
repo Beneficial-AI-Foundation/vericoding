@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def videoStitching (clips : List (List Nat)) (T : Nat) : Int :=
   sorry
 
 -- Property 1: If target is beyond max end point, result must be -1
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem target_beyond_max_end {clips : List (List Nat)} (h : clips ≠ []) :
   let maxEnd := List.foldl (fun acc clip => max acc (clip.get! 1)) 0 clips
   videoStitching clips (maxEnd + 1) = -1 := 
@@ -46,6 +54,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval video_stitching [[0, 4], [2, 8]] 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

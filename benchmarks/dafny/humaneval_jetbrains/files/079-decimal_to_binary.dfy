@@ -1,3 +1,4 @@
+// <vc-preamble>
 type stringBin = s: string |
   |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
   forall i | 0 <= i < |s| :: s[i] in "01"
@@ -24,6 +25,7 @@ function binary_to_decimal(s: stringBin): nat
   else
     binary_to_decimal(s[..|s|-1])*2 + binary_to_decimal(s[|s|-1..|s|])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

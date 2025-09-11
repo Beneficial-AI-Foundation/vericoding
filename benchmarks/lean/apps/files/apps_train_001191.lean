@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_max_good_group (s : String) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def is_good_group (s : String) : Bool :=
 
 def substring (s : String) (start len : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_char (s : String) (i : Nat) : Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_good_result_bounds {s : String} (h : s.length > 0) : 
   let res := find_max_good_group s
   1 ≤ res ∧ res ≤ s.length :=
@@ -54,6 +61,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_max_good_group "2323"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

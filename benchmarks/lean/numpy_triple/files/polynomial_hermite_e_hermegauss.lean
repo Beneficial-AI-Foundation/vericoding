@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermegauss (deg : Nat) (h : deg > 0) : Id (Vector Float deg × Vector Float deg) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermegauss_spec (deg : Nat) (h : deg > 0) :
     ⦃⌜deg > 0⌝⦄
     hermegauss deg h
@@ -23,3 +30,4 @@ theorem hermegauss_spec (deg : Nat) (h : deg > 0) :
       (∀ i : Fin deg, ∃ j : Fin deg, x.get i = -(x.get j) → w.get i = w.get j)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

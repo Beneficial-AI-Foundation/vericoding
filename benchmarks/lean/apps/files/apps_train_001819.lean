@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Grid := List (List Nat)
 
 def shortest_bridge (grid: Grid) : Nat :=
@@ -5,13 +6,19 @@ def shortest_bridge (grid: Grid) : Nat :=
 
 def is_valid_grid (grid: Grid) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def has_two_islands (grid: Grid) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shortest_bridge_non_negative 
   (grid: Grid) 
   (h1: is_valid_grid grid = true)
@@ -50,6 +57,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval shortest_bridge [[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

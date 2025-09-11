@@ -1,3 +1,4 @@
+// <vc-preamble>
 function count_occurrences(s: seq<nat>, value: nat): nat
 {
     if |s| == 0 then 0
@@ -25,6 +26,7 @@ predicate ValidInput(n: nat, m: nat, colors: seq<nat>, desired: seq<nat>)
     (forall i :: 0 <= i < |desired| ==> desired[i] >= 0) &&
     sum_seq(desired) <= n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

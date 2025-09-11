@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def build_palindrome (s : String) : String := sorry
 
 def is_palindrome (s : String) : Bool := sorry
 
 -- Result should be palindrome and contain input as prefix
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem build_palindrome_valid (s : String) (h : s.length > 0) :
   let result := build_palindrome s
   is_palindrome result ∧ result.startsWith s := sorry
@@ -38,6 +46,7 @@ info: 'abcba'
 -/
 -- #guard_msgs in
 -- #eval build_palindrome "abc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

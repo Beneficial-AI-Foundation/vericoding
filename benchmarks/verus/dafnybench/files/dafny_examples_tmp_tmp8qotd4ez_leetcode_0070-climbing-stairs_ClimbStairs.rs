@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -7,6 +8,7 @@ spec fn stairs(n: nat) -> nat
 {
     if n <= 1 { 1 } else { stairs((n - 2) as nat) + stairs((n - 1) as nat) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

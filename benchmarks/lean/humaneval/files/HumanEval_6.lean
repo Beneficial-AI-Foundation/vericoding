@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -94,13 +95,19 @@ problems:
 def count_max_paren_depth
 (paren_string: String): Nat :=
 count_max_paren_depth_helper paren_string 0 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (paren_string: String) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (implementation: String → List Int)
@@ -124,5 +131,6 @@ theorem correctness
 : problem_spec implementation paren_string
 := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "(()()) ((())) () ((())()())" = [2, 3, 1, 3]

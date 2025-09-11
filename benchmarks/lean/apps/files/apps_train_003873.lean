@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def alex_mistakes (num_kata : Nat) (total_time : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem alex_mistakes_nonnegative
   (num_kata : Nat) (total_time : Nat) :
   alex_mistakes num_kata total_time ≥ 0 :=
@@ -51,6 +59,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval alex_mistakes 20 120
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

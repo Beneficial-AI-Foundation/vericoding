@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0
@@ -30,6 +31,7 @@ predicate CorrectSolution(input: string, result: string)
           var expectedOutput := if CanMakeSum(n, l, r) then "Yes" else "No";
           i-1 < |outputLines| && outputLines[i-1] == expectedOutput)))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

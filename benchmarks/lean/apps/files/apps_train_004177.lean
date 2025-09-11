@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def yoga (classroom : List (List Nat)) (poses : List Nat) : Nat := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem yoga_nonnegative (classroom : List (List Nat)) (poses : List Nat) :
   yoga classroom poses ≥ 0 := sorry
 
@@ -27,6 +35,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval yoga [[0, 0], [0, 0]] []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isSorted(s: seq<int>)
 {
     forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
@@ -72,6 +73,7 @@ function calculateTotalDistance(n: int, positions: seq<int>, visits: seq<int>): 
         var totalEdgeLength := sum(seq(n-1, i requires 0 <= i < n-1 => positions[i+1] - positions[i]));
         edgeDistance + maxRounds * 2 * totalEdgeLength
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

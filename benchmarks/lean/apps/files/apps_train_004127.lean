@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encrypt (text : String) (rule : Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encrypt_preserves_length (text : String) (rule : Int) :
   (encrypt text rule).length = text.length :=
 sorry
@@ -37,6 +45,7 @@ info: 'rngcug"gpet{rv"og'
 -/
 -- #guard_msgs in
 -- #eval encrypt "please encrypt me" 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

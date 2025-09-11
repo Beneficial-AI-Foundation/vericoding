@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def countOnes (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def shared_bits (a b : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shared_bits_symmetric
   {a b : Nat} : shared_bits a b = shared_bits b a := by
   sorry
@@ -45,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval shared_bits 7 15
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

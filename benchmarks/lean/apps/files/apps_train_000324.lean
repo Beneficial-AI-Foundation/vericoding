@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_jumps (arr : List Int) : Int := sorry
 
 theorem min_jumps_single_element (x : Int) :
   min_jumps [x] = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_jumps_non_negative (arr : List Int) : 
   min_jumps arr ≥ -1 := sorry
 
@@ -44,6 +52,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_jumps [7, 6, 9, 6, 9, 6, 9, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

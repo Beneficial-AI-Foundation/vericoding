@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -32,13 +33,19 @@ def isScalarType (dt : DataType) : Bool :=
   | DataType.array_type => false
   | DataType.composite_type => false
   | DataType.unknown_type => false
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def issctype (rep : DataType) : Id Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem issctype_spec (rep : DataType) :
     ⦃⌜True⌝⦄
     issctype rep
@@ -48,3 +55,4 @@ theorem issctype_spec (rep : DataType) :
                                   rep = DataType.scalar_bool ∨ 
                                   rep = DataType.scalar_string)⌝⦄ := by
   sorry
+-- </vc-theorems>

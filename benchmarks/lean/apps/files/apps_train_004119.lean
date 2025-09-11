@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rectangles (n m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rectangles_symmetry
   (n m : Nat)
   (h1 : n ≥ 2)
@@ -61,6 +69,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval rectangles 3 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ToLower(c: char): char
 {
     if 'A' <= c <= 'Z' then
@@ -10,6 +11,7 @@ function NormalizeStr(s: string): seq<char>
 {
     seq(|s|, i requires 0 <= i < |s| => ToLower(s[i]))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

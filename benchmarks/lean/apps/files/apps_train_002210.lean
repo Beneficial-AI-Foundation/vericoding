@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_reachability (n q : Nat) (arr : List Nat) (queries : List (Nat × Nat)) : List String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reachability_output_length (n q : Nat) (arr : List Nat) (queries : List (Nat × Nat)) :
   queries.length = q → (check_reachability n q arr queries).length = q :=
 sorry
@@ -26,6 +34,7 @@ theorem single_element_no_bits_unreachable :
   let arr := [0]
   check_reachability 1 1 arr [(1,1)] = ["Fou"] :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

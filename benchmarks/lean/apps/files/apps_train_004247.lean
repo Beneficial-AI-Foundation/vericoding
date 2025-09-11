@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def not_visible_cubes (n : Int) : Int := sorry
 
 theorem not_visible_cubes_nonnegative (n : Int) (h : n ≥ 0) :
   not_visible_cubes n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem not_visible_cubes_small_cases (n : Int) (h : n ≤ 2) :
   not_visible_cubes (max 0 n) = 0 := sorry
 
@@ -29,6 +37,7 @@ info: 27
 -/
 -- #guard_msgs in
 -- #eval not_visible_cubes 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

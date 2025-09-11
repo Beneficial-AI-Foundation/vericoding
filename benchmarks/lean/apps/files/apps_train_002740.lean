@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def could_be (s1 s2 : String) : Bool := sorry
 
 theorem empty_target_is_false (s1 s2 : String) :
   s2.trim = "" → could_be s1 s2 = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem subset_name_property (first middle last : String) (h : first ≠ "") :
   could_be (s!"{first} {middle} {last}") (s!"{first} {last}") = true := sorry
 
@@ -38,6 +46,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval could_be "Carlos-Ray Norris" "Carlos Ray Norris"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

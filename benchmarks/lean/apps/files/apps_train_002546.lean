@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hamster_me (code : String) (message : String) : String := sorry
 
 theorem hamster_output_contents (code : String) (message : String) (h1 : code ≠ "") :
   let result := hamster_me code message
   ∀ c ∈ result.data, 
     (c ∈ code.data) ∨ ('0'.toNat ≤ c.toNat ∧ c.toNat ≤ '9'.toNat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hamster_output_length (code : String) (message : String) (h1 : code ≠ "") :
   let result := hamster_me code message
   (result.data.filter Char.isAlpha).length = message.length := sorry
@@ -44,6 +52,7 @@ info: 'h1t8m1s1t1e1r1'
 -/
 -- #guard_msgs in
 -- #eval hamster_me "hmster" "hamster"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

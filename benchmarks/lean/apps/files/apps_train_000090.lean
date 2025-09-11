@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def intList (n : Nat) : List Int := sorry
 
 def isValidPermutation (n : Nat) (result : List Int) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def satisfiesQConstraints (result : List Int) (q : List Int) : Bool := sorry 
 
 def solvePermutationCode (n : Nat) (q : List Int) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_property (n : Nat) :
   n > 0 → n ≤ 10 →
   let q := [Int.ofNat n]
@@ -39,6 +46,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval solve_permutation_code 1 [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

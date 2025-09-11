@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
   |input| > 0 &&
@@ -50,6 +51,7 @@ predicate CanFormPalindromeAfterOperation(r: int, g: int, b: int, w: int)
                   (if w % 2 == 1 then 1 else 0);
   oddCount <= 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

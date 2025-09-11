@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def total_bill (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s : String) (c : Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem total_bill_nonnegative (s : String) :
   total_bill s ≥ 0 :=
   sorry
@@ -41,6 +48,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval total_bill "rrrrr rrrrr"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

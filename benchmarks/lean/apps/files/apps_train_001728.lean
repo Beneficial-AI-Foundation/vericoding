@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def permutational_primes (n_max k_perms : Nat) : List Nat := sorry
 
 -- Type signature property
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem perm_primes_returns_three_nats (n_max k_perms : Nat) : 
   let result := permutational_primes n_max k_perms;
   result.length = 3
@@ -51,6 +59,7 @@ info: [34, 13, 797]
 -/
 -- #guard_msgs in
 -- #eval permutational_primes 1000 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

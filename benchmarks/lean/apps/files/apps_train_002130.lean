@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_trip_sizes (n m k : Nat) (friendships : List (Nat × Nat)) : List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_trip_sizes_basic_properties
   (n m k : Nat)
   (friendships : List (Nat × Nat))
@@ -36,6 +44,7 @@ theorem max_trip_sizes_degree_bound
           acc'.set (p.2 - 1) ((acc'.get! (p.2 - 1)) + 1)) 
         (List.replicate n 0)))) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

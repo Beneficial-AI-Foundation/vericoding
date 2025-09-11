@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x: int, y: int) {
     -100 <= x <= 100 && -100 <= y <= 100
 }
@@ -27,6 +28,7 @@ function ComputeTurns(x: int, y: int): int
     else if IsTopEdge(x, y) then 2 + 4 * (y - 1)
     else -4 * y
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

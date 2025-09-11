@@ -1,3 +1,4 @@
+// <vc-preamble>
 function min(a: int, b: int): int
 {
   if a <= b then a else b
@@ -35,6 +36,7 @@ predicate ValidSpiralMatrix(matrix: array2<int>, n: int)
   matrix.Length0 == n && matrix.Length1 == n &&
   (forall i, j :: 0 <= i < n && 0 <= j < n ==> matrix[i, j] == SpiralOrder(i, j, n) + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

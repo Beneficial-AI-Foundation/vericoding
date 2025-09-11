@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def switcher (arr : List Nat) : String := sorry
 
 def is_valid_input (arr : List Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_output (s : String) : Bool := sorry
 
 def expected_map (n : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem switcher_properties (arr : List Nat) : 
   is_valid_input arr → 
   let result := switcher arr
@@ -37,6 +44,7 @@ info: 'o?bfbtpel'
 -/
 -- #guard_msgs in
 -- #eval switcher ["12", "28", "25", "21", "25", "7", "11", "22", "15"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

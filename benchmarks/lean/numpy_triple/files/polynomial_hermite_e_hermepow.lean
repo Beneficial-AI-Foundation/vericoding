@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermepow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat) : Id (Vector Float (1 + (n - 1) * pow)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermepow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat)
     (h_pow_bound : pow ≤ maxpower) (h_maxpower_reasonable : maxpower ≤ 16) :
     ⦃⌜pow ≤ maxpower ∧ maxpower ≤ 16⌝⦄
@@ -24,3 +31,4 @@ theorem hermepow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat
                    -- Mathematical property: this preserves polynomial multiplication structure
                    True)⌝⦄ := by
   sorry
+-- </vc-theorems>

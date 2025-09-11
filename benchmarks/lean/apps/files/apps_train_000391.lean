@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def maxSumDivThree (nums: List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum (nums: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxSumDivThree_divisible_by_3 (nums: List Nat) :
   maxSumDivThree nums % 3 = 0 :=
   sorry
@@ -52,6 +59,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval maxSumDivThree [1, 2, 3, 4, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn sum_range(lo: int, hi: int) -> int
     if lo >= hi { 0 }
     else { sum_range(lo, hi - 1) + hi - 1 }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

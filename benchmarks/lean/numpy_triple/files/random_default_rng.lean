@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -15,13 +16,19 @@ structure Generator where
   bitGenerator : BitGenerator
   /-- Whether the generator has been properly initialized -/
   initialized : Bool
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def default_rng (seed : Option Nat := none) : Id Generator :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem default_rng_spec (seed : Option Nat := none) :
     ⦃⌜True⌝⦄
     default_rng seed
@@ -29,3 +36,4 @@ theorem default_rng_spec (seed : Option Nat := none) :
                  result.bitGenerator.seed = seed ∧
                  (seed.isSome → result.bitGenerator.state ≠ 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

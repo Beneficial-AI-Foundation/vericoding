@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_perfect_teams (c m x : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_perfect_teams_non_negative (c m x : Nat) :
   max_perfect_teams c m x ≥ 0 := 
   sorry
@@ -47,6 +55,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval max_perfect_teams 0 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

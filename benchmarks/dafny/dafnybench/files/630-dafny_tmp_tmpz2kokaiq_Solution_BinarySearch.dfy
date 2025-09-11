@@ -1,8 +1,10 @@
+// <vc-preamble>
 function sorted(a: array<int>) : bool
     reads a
 {
    forall i,j : int :: 0 <= i < j < a.Length ==> a[i] <= a[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

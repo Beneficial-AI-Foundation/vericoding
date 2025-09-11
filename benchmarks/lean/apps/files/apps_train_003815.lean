@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def elections_winners (votes: List Nat) (k: Nat) : Nat :=
   sorry
 
 def list_maximum (l: List Nat) (h: l.length > 0) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_minimum (l: List Nat) (h: l.length > 0) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem elections_winners_properties_result_bounds
   (votes: List Nat) (k: Nat) (h: votes.length > 0) :
   let result := elections_winners votes k
@@ -39,6 +46,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval elections_winners [3, 1, 1, 3, 1] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

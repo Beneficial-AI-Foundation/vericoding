@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_k_infinite_path (n: Nat) (perm: List Nat) (colors: List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_k_is_valid (n: Nat) (perm: List Nat) (colors: List Nat)
     (h1: n > 0) (h2: colors.length > 0) (h3: perm.length = colors.length) :
   let k := find_min_k_infinite_path n perm colors
@@ -41,6 +49,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_min_k_infinite_path 8 [7, 4, 5, 6, 1, 8, 3, 2] [5, 3, 6, 4, 7, 5, 8, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

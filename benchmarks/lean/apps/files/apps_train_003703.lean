@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def guess_my_number (guess : String) (target : String := "123-456-7890") : String := sorry
 
 /- For any numeric guess, the result should be a properly formatted phone number string -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem guess_result_format (guess : String) : 
   let result := guess_my_number guess
   (String.length result = 12) ∧ 
@@ -26,6 +34,7 @@ theorem result_dash_positions (guess : String) (target : String) :
   String.length result = 12 ∧
   data[3]! = '-' ∧ 
   data[7]! = '-' := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

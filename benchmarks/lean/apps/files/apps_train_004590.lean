@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def adjust (coin price : Int) : Int := sorry
 
 theorem adjust_multiple (coin price : Int) (h : coin > 0) : 
   (adjust coin price) % coin = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem adjust_greater_equal (coin price : Int) (h : coin > 0) :
   adjust coin price ≥ price := sorry
 
@@ -56,6 +64,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval adjust 3 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

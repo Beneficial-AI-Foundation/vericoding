@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -52,6 +53,7 @@ spec fn pathSpecific(p: Seq<usize>, start: usize, end: usize, graph: Set<usize>)
     start == p[0] && end == p[p.len() - 1] &&
     path(p, graph)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

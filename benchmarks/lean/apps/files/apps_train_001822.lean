@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isSequential (n: Nat) : Bool := sorry
 def sequentialDigits (low high: Nat) : List Nat := sorry
 
 -- Results should be between the given bounds
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_between_bounds {low high : Nat} {n : Nat} (h: n ∈ sequentialDigits low high) : 
   low ≤ n ∧ n ≤ high := sorry
 
@@ -45,6 +53,7 @@ info: [12, 23, 34, 45, 56, 67, 78, 89]
 -/
 -- #guard_msgs in
 -- #eval sequential_digits 10 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

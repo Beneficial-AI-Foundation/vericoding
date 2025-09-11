@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def divisors (n : Nat) : List Nat := sorry
 
 theorem divisors_all_divide (n : Nat) (h : n ≥ 2) :
   ∀ d ∈ divisors n, n % d = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divisors_increasing (n : Nat) (h : n ≥ 2) :
   ∀ i j, i < j → i < (divisors n).length → j < (divisors n).length → 
     (divisors n).get! i < (divisors n).get! j := sorry
@@ -44,6 +52,7 @@ info: '3-sum'
 -/
 -- #guard_msgs in
 -- #eval solve 37
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

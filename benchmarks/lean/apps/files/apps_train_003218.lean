@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_column_title (n : Int) : String := sorry
 
 theorem get_column_title_type_error_non_integer :
   ∀ x : Int, x > 0 → get_column_title x ≠ "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_column_title_index_error_zero_neg :
   ∀ n : Int, n ≤ 0 → get_column_title n = "" := sorry
 
@@ -50,6 +58,7 @@ info: 'ZZ'
 -/
 -- #guard_msgs in
 -- #eval get_column_title 702
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_unknown_number (x y z : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_unknown_number_range (x y z : Nat) (h1 : x ≤ 1000) (h2 : y ≤ 1000) (h3 : z ≤ 1000) :
   1 ≤ find_unknown_number x y z ∧ find_unknown_number x y z ≤ 105 := by
   sorry
@@ -35,6 +43,7 @@ info: 105
 -/
 -- #guard_msgs in
 -- #eval find_unknown_number 0 0 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

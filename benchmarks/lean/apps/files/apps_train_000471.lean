@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def abs (x : Int) : Int :=
   if x < 0 then -x else x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def threeSumClosest (nums : List Int) (target : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem threeSumClosest_is_sum_of_three {nums : List Int} {target : Int}
   (h : nums.length ≥ 3) :
   ∃ i j k, i < j ∧ j < k ∧ k < nums.length ∧ 
@@ -54,6 +61,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval three_sum_closest [0, 2, 1, -3] 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

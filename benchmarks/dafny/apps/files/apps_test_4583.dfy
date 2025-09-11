@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| == 5 && |input[..4]| == 4 && 
@@ -44,6 +45,7 @@ predicate ValidOutput(result: string, input: string)
     var d := CharToDigit(input[3]);
     EvaluateExpression(a, b, c, d, result[1], result[3], result[5]) == 7
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

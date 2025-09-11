@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encrypt_message (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encrypt_message_alternating_pattern (s : String) (h : ∀ c ∈ s.data, 97 ≤ c.val ∧ c.val ≤ 122) :
   let result := encrypt_message s
   ∀ i < result.length - 1, i % 2 = 0 →
@@ -56,6 +64,7 @@ info: 'a3'
 -/
 -- #guard_msgs in
 -- #eval encrypt_message "aaa"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

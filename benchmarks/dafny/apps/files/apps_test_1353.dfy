@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, a: int, b: int)
 {
     n >= 1 && n <= 1000 &&
@@ -17,6 +18,7 @@ function OptimalCost(n: int, m: int, a: int, b: int): int
         )
     )
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

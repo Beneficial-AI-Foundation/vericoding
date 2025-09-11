@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def remove_abc_pairs : String → String := sorry
 
 def containsSubstr (s : String) (substr : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_abc_in_result (s : String) : 
   ¬(containsSubstr (remove_abc_pairs s) "abc") := sorry
 
@@ -45,6 +53,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval remove_abc_pairs "abcabcabc"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

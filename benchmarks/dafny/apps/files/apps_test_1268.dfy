@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: seq<int>, b: seq<int>)
 {
   |a| == |b| && |a| >= 2 && forall i :: 0 <= i < |a| ==> 0 <= a[i] <= b[i]
@@ -50,6 +51,7 @@ function findMaxExcluding(s: seq<int>, exclude: int): int
     else if rightMax == -1 then leftMax
     else if s[leftMax] >= s[rightMax] then leftMax else rightMax
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

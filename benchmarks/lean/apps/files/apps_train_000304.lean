@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def shortestSubarray (arr : List Int) (k : Int) : Int :=
   sorry
 
 def sumList (l : List Int) : Int :=
   l.foldl (· + ·) 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def toNat (i : Int) : Nat :=
   if i ≤ 0 then 0 else i.natAbs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem impossible_cases (k : Int) : 
   shortestSubarray [] k = -1 ∧ 
   shortestSubarray [0] k = -1 ∧ 
@@ -51,6 +58,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval shortestSubarray [2, -1, 2] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

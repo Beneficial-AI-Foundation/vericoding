@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def minimum_one_bit_operations (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem minimum_one_bit_operations_valid_range (n: Nat) (h: n < 2^32) : 
   let result := minimum_one_bit_operations n
   0 ≤ result ∧ result < 2^32 :=
@@ -39,6 +47,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval minimum_one_bit_operations 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

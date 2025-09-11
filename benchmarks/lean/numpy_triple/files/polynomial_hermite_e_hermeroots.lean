@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermeroots {n : Nat} (c : Vector Float n) : Id (Vector Float (n - 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermeroots_spec {n : Nat} (c : Vector Float (n + 1)) (h_nonzero : c.get ⟨n, by simp⟩ ≠ 0) :
     ⦃⌜c.get ⟨n, by simp⟩ ≠ 0⌝⦄
     hermeroots c
@@ -30,3 +37,4 @@ theorem hermeroots_spec {n : Nat} (c : Vector Float (n + 1)) (h_nonzero : c.get 
       -- (Implementation detail captured in postcondition)
       True⌝⦄ := by
   sorry
+-- </vc-theorems>

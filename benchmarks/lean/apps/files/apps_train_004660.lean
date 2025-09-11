@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def coffee_limits (y : Int) (m : Int) (d : Int) : List Int := sorry
 def limit (h : Int) (c : Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem coffee_limits_valid_output {y m d : Int} (h1 : y ≥ 1950) (h2 : y ≤ 2024) 
     (h3 : m ≥ 1) (h4 : m ≤ 12) (h5 : d ≥ 1) (h6 : d ≤ 28) :
     let result := coffee_limits y m d
@@ -34,6 +42,7 @@ info: [0, 11]
 -/
 -- #guard_msgs in
 -- #eval coffee_limits 1964 11 28
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

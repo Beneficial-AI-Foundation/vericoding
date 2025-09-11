@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def VALID_LANGUAGES := [
     "czech", "danish", "dutch", "english", "estonian", "finnish", "flemish",
     "french", "german", "irish", "italian", "latvian", "lithuanian",
     "polish", "spanish", "swedish", "welsh"
 ]
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def greet (language : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_language_returns_correct_greeting (language : String)
   (h : language ∈ VALID_LANGUAGES) :
   let result := greet language
@@ -51,6 +58,7 @@ info: 'Welcome'
 -/
 -- #guard_msgs in
 -- #eval greet 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

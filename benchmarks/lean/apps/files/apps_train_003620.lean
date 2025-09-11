@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def getMilitaryTime (time : String) : String := sorry
 
 def makeTimeString (h m s : Nat) (period : String) : String := sorry
 
 -- Main theorem for valid military time format
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem military_time_format 
   (h : Nat) (m s : Nat) (period : String)
   (h_range : 1 ≤ h ∧ h ≤ 12)
@@ -58,6 +66,7 @@ info: '00:00:00'
 -/
 -- #guard_msgs in
 -- #eval get_military_time "12:00:00AM"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

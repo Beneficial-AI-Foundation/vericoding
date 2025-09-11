@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_subway_escape (grid : List String) (n k : Nat) : String := sorry
 
 theorem check_subway_escape_returns_valid_output 
@@ -13,7 +19,9 @@ theorem check_subway_escape_returns_valid_output
   ]
   let result := check_subway_escape grid n k
   result = "YES" ∨ result = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_path_possible
   (n: Nat)
   (h1: n ≥ 5) (h2: n ≤ 20) :
@@ -54,6 +62,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval check_subway_escape ["s.ZZ......", ".....AAABB", ".YYYYYY..."] 10 4
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

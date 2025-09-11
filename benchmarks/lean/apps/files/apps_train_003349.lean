@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def calculate_seconds (time_str : String) : Nat :=
   sorry
 
 def longest_possible (seconds : Int) : Option String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def song_durations : List String :=
   ["03:36", "06:48", "04:27", "03:50", "04:32", "04:22", "03:30", "03:25", "04:34"]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_seconds_basic_properties {minutes seconds : Nat} 
   (h1 : minutes ≤ 59) (h2 : seconds ≤ 59) : 
   (calculate_seconds s!"{minutes}:{seconds}" = minutes * 60 + seconds) ∧ 
@@ -52,6 +59,7 @@ info: 'Surfing With The Alien'
 -/
 -- #guard_msgs in
 -- #eval longest_possible 300
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

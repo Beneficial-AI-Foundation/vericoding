@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def string_clean (s : String) : String := sorry
 
 -- Main properties of string_clean
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_clean_properties (s : String) :
   let result := string_clean s
   -- No digits in result
@@ -43,6 +51,7 @@ info: 'This looks great!'
 -/
 -- #guard_msgs in
 -- #eval string_clean "This looks5 grea8t!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

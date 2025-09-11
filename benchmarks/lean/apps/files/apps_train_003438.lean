@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isArithmeticSequence (arr : List Int) : Bool :=
   sorry
 
 def sumOfRegularNumbers (arr : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum (l : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem regular_numbers_properties {arr : List Int} (h : arr.length ≥ 3) :
   let result := sumOfRegularNumbers arr
   (result ≥ 0 ∨ (result < 0 ∧ ∃ x ∈ arr, x < 0)) ∧
@@ -49,6 +56,7 @@ info: -13994
 -/
 -- #guard_msgs in
 -- #eval sum_of_regular_numbers [-1, 7000, 1, -6998, -13997]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

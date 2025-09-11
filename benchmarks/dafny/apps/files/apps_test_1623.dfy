@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, l: int, r: int)
 {
     n >= 1 && l >= 1 && r >= l && r <= n && r <= 20
@@ -16,6 +17,7 @@ function MaxSumCalculation(n: int, r: int): int
     var max_power := Power(2, r - 1);
     SumWithIncreasingPowers(n, max_power)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

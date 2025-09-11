@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve (s : String) : String := sorry
 
 def isUpper (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isLower (s : String) : Bool := sorry
 
 theorem solve_returns_either_upper_or_lower (s : String) : 
   (solve s = s.toUpper) ∨ (solve s = s.toLower) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_preserves_uppercase (s : String) : 
   isUpper s = true → solve s = s.toUpper := sorry 
 
@@ -36,6 +43,7 @@ info: 'code'
 -/
 -- #guard_msgs in
 -- #eval solve "coDE"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isfinite {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isfinite_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     isfinite x
@@ -29,3 +36,4 @@ theorem isfinite_spec {n : Nat} (x : Vector Float n) :
       -- IEEE 754 compliance: finite values exclude special values
       (result.get i = true → ¬(x.get i).isNaN ∧ ¬(x.get i).isInf)⌝⦄ := by
   sorry
+-- </vc-theorems>

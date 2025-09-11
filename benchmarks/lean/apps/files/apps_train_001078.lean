@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_max_path_profits (n: Nat) (values: List Nat) (edges: List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_tree (n: Nat) (edges: List (Nat × Nat)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_node_case (n: Nat) (values: List Nat) :
   n = 1 → solve_max_path_profits n values [] = 0 := by
   sorry
@@ -38,6 +45,7 @@ info: 15
 -/
 -- #guard_msgs in
 -- #eval solve_max_path_profits 5 [1, 2, 3, 4, 5] [(1, 2), (2, 3), (3, 4), (4, 5)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

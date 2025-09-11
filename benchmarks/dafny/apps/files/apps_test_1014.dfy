@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     n >= 2
 }
@@ -25,6 +26,7 @@ predicate ValidResult(n: int, result: string)
     else
         result == "white\n1 2\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lagsub {n : Nat} (c1 c2 : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lagsub_spec {n : Nat} (c1 c2 : Vector Float n) :
     ⦃⌜True⌝⦄
     lagsub c1 c2
@@ -21,3 +28,4 @@ theorem lagsub_spec {n : Nat} (c1 c2 : Vector Float n) :
       True -- Placeholder for more complex Laguerre polynomial properties
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def max_meals (ingredients : List (List Char)) : Nat :=
   sorry
 
 def count_char (c : Char) (s : List Char) : Nat :=
   (s.filter (fun x => x = c)).length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_list : List Nat → Nat 
   | [] => 0
   | x::xs => x + sum_list xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_meals_non_negative (ingredients : List (List Char)) :
   max_meals ingredients ≥ 0 := by sorry
 
@@ -59,6 +66,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval max_meals ["codechef", "chefcode", "fehcedoc", "cceeohfd", "codechef"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

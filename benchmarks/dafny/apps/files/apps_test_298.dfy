@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
     k >= 1 && n >= 1 && k <= n
@@ -14,6 +15,7 @@ predicate FirstPlayerWins(n: int, k: int)
 {
     TotalMoves(n, k) % 2 == 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

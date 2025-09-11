@@ -1,8 +1,10 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
 uninterp spec fn f<T>(a: T) -> bool;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

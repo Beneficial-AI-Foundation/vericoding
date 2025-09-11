@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermfit {m : Nat} (x y : Vector Float m) (deg : Nat) : Id (Vector Float (deg + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermfit_spec {m : Nat} (x y : Vector Float m) (deg : Nat) (h_m : m > 0) :
     ⦃⌜m > 0⌝⦄
     hermfit x y deg
@@ -47,3 +54,4 @@ theorem hermfit_spec {m : Nat} (x y : Vector Float m) (deg : Nat) (h_m : m > 0) 
         (∀ k : Fin (deg + 1), ¬(coef.get k).isNaN)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

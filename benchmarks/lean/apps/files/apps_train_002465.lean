@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def String.isInfixOf (sub : String) (str : String) : Bool := 
   sorry
 
 variable (parse_html_code : String → String)
 
 /- Single line comments are correctly identified and preserved --/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_line_comment_handling 
   (text : String)
   (h₁ : ¬ String.contains text '\n') :
@@ -42,6 +50,7 @@ theorem basic_data_handling :
   let input := "Hello World"
   String.isInfixOf ">>> Data" (parse_html_code input) ∧
   String.isInfixOf "Hello World" (parse_html_code input) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

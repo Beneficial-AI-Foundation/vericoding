@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isLowercase (c : Char) : Bool := 'a' ≤ c ∧ c ≤ 'z'
 def isUppercase (c : Char) : Bool := 'A' ≤ c ∧ c ≤ 'Z'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isTitle (s : String) : Bool := sorry
 def detect_capital_use (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_lowercase_valid (s : String) : 
   (∀ c ∈ s.data, isLowercase c) → detect_capital_use s = true := sorry
 
@@ -43,6 +50,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval detect_capital_use "Google"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

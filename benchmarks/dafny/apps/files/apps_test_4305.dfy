@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(H: int, A: int)
 {
     H >= 1 && A >= 1
@@ -15,6 +16,7 @@ function CeilDiv(H: int, A: int): int
 {
     (H + A - 1) / A
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

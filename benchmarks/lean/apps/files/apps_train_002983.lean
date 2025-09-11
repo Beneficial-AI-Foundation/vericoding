@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def roundIt (x : Float) : Int := sorry
 
 def floor (x : Float) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def ceil (x : Float) : Int := sorry
 
 def floatToStr (x : Float) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem round_it_decimals (x : Float) 
   (h₁ : Float.floor x ≠ x)
   (h₂ : String.length (floatToStr (Float.floor (Float.abs x))) < 
@@ -47,6 +54,7 @@ info: 35
 -/
 -- #guard_msgs in
 -- #eval round_it 34.56
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

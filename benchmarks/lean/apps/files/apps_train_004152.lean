@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_unfairness (arr : List Int) (k : Nat) : Int :=
   sorry
 
@@ -6,13 +7,19 @@ def listMax (xs : List Int) : Int :=
 
 def listMin (xs : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sortList (xs : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_unfairness_non_negative {arr : List Int} {k : Nat} 
   (h : arr.length > 0) (h2 : k > 0) (h3 : k ≤ arr.length) : 
   min_unfairness arr k ≥ 0 :=
@@ -50,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_unfairness [] 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

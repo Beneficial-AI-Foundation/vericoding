@@ -1,3 +1,4 @@
+// <vc-preamble>
 function swap_case(c: char): char
 
   requires 'a' <= c <= 'z' || 'A' <= c <= 'Z'
@@ -23,6 +24,7 @@ function is_vowel(c: char) : bool {
     (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
     || (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

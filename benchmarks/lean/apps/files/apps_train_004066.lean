@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def happy_g (s : String) : Bool := sorry
 
 theorem happy_g_empty_or_no_g (s : String) :
   ¬ s.contains 'g' → happy_g s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem happy_g_multiple_grouped (s : String) :
   (∀ i j : String.Pos, 
     s.get i = 'g' → s.get j = 'g' →
@@ -34,6 +42,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval happy_g "gggggggggg"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

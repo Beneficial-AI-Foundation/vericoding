@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fibonacci (n : Nat) : Nat := sorry
 
 def memoized (f : α → β) : α → β := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fibonacci_matches_recursive (n : Nat) : 
   n ≤ 20 → 
   fibonacci n = match n with
@@ -42,6 +50,7 @@ info: 12586269025
 -/
 -- #guard_msgs in
 -- #eval fibonacci 50
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

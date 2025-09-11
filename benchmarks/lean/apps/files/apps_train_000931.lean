@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_abs_sum_pairs (n : Nat) (arr : List Int) : Int :=
   sorry
 
 -- Length of input array is even and at least 2
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_abs_sum_pairs_input_valid (n : Nat) (arr : List Int) :
   n ≥ 2 → n % 2 = 0 → arr.length = n := by
   sorry
@@ -53,6 +61,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval max_abs_sum_pairs 6 [1, 2, 3, -1, -2, -3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

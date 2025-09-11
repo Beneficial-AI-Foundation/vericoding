@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountCharacter(s: string, c: char): int
 {
     if |s| == 0 then 0
@@ -65,6 +66,7 @@ function MaxLongestSubsequence(s: string, t: string): int
     if |s| == 0 then 0
     else MaxPreservableLength(s, t, 0, 0, 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

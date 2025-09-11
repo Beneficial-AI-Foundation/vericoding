@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype InputData = InputData(n: int, m: int, segments: set<(int, int)>)
 
 predicate valid_input_format(stdin_input: string)
@@ -28,6 +29,7 @@ predicate exists_rotational_symmetry(data: InputData)
             seg.0 >= 1 && seg.0 <= data.n && seg.1 >= 1 && seg.1 <= data.n &&
             rotate_segment(seg, k, data.n) in data.segments)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

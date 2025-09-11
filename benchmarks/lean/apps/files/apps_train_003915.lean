@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bears (n : Nat) (s : String) : String × Bool := sorry
 
 theorem bears_return_structure (n : Nat) (s : String) :
   let res := bears n s
   res.1.data.all (fun c => c = 'B' ∨ c = '8') ∧ 
   res.1.length % 2 = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bears_output_length_determines_bool (n : Nat) (s : String) : 
   let res := bears n s
   res.2 = (res.1.length / 2 ≥ n) := sorry
@@ -44,6 +52,7 @@ info: ['8BB88B', True]
 -/
 -- #guard_msgs in
 -- #eval bears 1 "j8BmB88B88gkBBlf8hg8888lbe88"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

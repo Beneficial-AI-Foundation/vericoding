@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_narcissistic : Nat → Bool := sorry
 
 def poweredDigitsSum : Nat → Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digit_narcissistic {n : Nat} (h : n < 10) : 
   is_narcissistic n = true := sorry
 
@@ -31,6 +39,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_narcissistic 407
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

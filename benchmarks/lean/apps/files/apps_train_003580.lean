@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def validateNumber (phone : String) : String := sorry
 
 def YES : String := "In with a chance"
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def NO : String := "Plenty more fish in the sea"
 
 theorem valid_number_format (phone : String) (h1 : String.length phone > 0) : 
   validateNumber phone = YES ∨ validateNumber phone = NO :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_uk_mobile (phone : String) (h1 : String.startsWith phone "+44" ∨ String.startsWith phone "0") 
     (h2 : String.length (String.replace phone "[^0-9]" "") = 11) : 
   validateNumber phone = YES :=
@@ -63,6 +70,7 @@ info: 'Plenty more fish in the sea'
 -/
 -- #guard_msgs in
 -- #eval validate_number "+337535512555"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

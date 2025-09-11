@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def MOD := 1000000007
 
 def calculate_possible_schedules (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pow (base n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_possible_schedules_mod_bounds (n : Nat) :
   0 ≤ calculate_possible_schedules n ∧ calculate_possible_schedules n < MOD :=
   sorry
@@ -37,6 +44,7 @@ info: 240
 -/
 -- #guard_msgs in
 -- #eval calculate_possible_schedules 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

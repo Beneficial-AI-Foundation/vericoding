@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pre_fizz (n : Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pre_fizz_returns_sequential_integers (n : Nat) (h : n > 0) : 
   pre_fizz n = List.range' 1 n := sorry
 
@@ -31,6 +39,7 @@ info: [1, 2, 3, 4, 5]
 -/
 -- #guard_msgs in
 -- #eval pre_fizz 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

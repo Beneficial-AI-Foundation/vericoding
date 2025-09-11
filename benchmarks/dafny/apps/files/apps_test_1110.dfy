@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     n >= 1
 }
@@ -7,6 +8,7 @@ function WorstCasePresses(n: int): int
 {
     n * (n * n + 5) / 6
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

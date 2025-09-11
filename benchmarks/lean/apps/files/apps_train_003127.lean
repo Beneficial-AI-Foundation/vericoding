@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def DnaBases : List Char := ['A', 'C', 'G', 'T']
 
 def isValidDnaChar (c : Char) : Bool :=
@@ -12,13 +13,19 @@ def isValidDnaString (s : String) : Bool :=
 
 def motif_locator (sequence motif : String) : List Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def substring (s : String) (start len : Nat) : String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem motif_positions_valid (sequence motif : String)
   (h1 : isValidDnaString sequence) 
   (h2 : isValidDnaString motif) :
@@ -61,6 +68,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval motif_locator "ACGTACGTACGT" "AAA"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

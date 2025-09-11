@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def uniqueOccurrences (arr : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uniqueOccurrences_returns_bool (arr : List Int) :
   uniqueOccurrences arr = true ∨ uniqueOccurrences arr = false := by
   sorry
@@ -41,6 +49,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval unique_occurrences [-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

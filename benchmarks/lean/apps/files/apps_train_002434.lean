@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_prime_arrangements (n: Nat) : Nat := sorry
 
 theorem num_prime_arrangements_positive (n: Nat) :
   n ≥ 1 → num_prime_arrangements n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem num_prime_arrangements_modulo_bound (n: Nat) :
   n ≥ 1 → num_prime_arrangements n < 10^9 + 7 := sorry
 
@@ -32,6 +40,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval num_prime_arrangements 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def order (sentence : String) : String :=
   sorry
 
@@ -6,13 +7,19 @@ def splitString (s : String) (sep : Char) : List String :=
 
 def findNumber (s : String) : Option Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (as : List Nat) : Prop :=
   ∀ i j, i < j → j < as.length → as[i]! ≤ as[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem order_preserves_empty_string :
   order "" = "" :=
 sorry 
@@ -58,6 +65,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval order ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

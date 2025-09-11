@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def factorial : Nat → Nat
   | 0 => 1 
   | n + 1 => (n + 1) * factorial n
@@ -8,13 +9,19 @@ def List.prod : List Nat → Nat
 
 def isAscii (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def uniq_count (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uniq_count_positive (s : String) :
   uniq_count s > 0 :=
   sorry
@@ -49,6 +56,7 @@ info: 24
 -/
 -- #guard_msgs in
 -- #eval uniq_count "AbcD"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

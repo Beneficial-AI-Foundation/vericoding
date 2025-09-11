@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def isDigit (c : Char) : Bool := sorry
 def toPostfix (expr : String) : String := sorry
 
 def isOperator (c : Char) : Bool :=
   c = '+' ∨ c = '-' ∨ c = '*' ∨ c = '/' ∨ c = '^'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def evalStackSize (s : List Char) : Int :=
   s.foldl (fun acc c => 
     if isDigit c then acc + 1
     else if isOperator c then acc - 1
     else acc) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem toPostfix_only_valid_chars {expr : String} :
   ∀ c, c ∈ (toPostfix expr).data → 
     c ∈ expr.data ∨ c.isDigit ∨ c = '+' ∨ c = '-' ∨ c = '*' ∨ c = '/' ∨ c = '^' := sorry
@@ -52,6 +59,7 @@ info: '562-9*+371-^+'
 -/
 -- #guard_msgs in
 -- #eval to_postfix "5+(6-2)*9+3^(7-1)"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

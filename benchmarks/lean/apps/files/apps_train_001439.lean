@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_make_proportion (a b c d : Int) : String := sorry 
 
 /- If a:b = c:d where c=2a and d=2b, then a proportion is possible -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem proportional_numbers_are_possible {a b : Int} (ha : a > 0) (hb : b > 0) :
   can_make_proportion a b (2*a) (2*b) = "Possible" := sorry
 
@@ -23,6 +31,7 @@ theorem same_number_possible {n : Int} (hn : n > 0) :
 
 theorem zero_division {n : Int} (hn : n > 0) :
   can_make_proportion 0 n 0 (2*n) = "Possible" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

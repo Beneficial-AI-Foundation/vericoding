@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def List.rectangular (grid : List (List α)) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def contains_cycle (grid : List (List Char)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem contains_cycle_empty_raises : ∀ (grid : List (List Char)),
   grid = [] ∨ grid.head?.map (λ row => row = []) = some true →
   contains_cycle grid = false :=
@@ -57,6 +64,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval contains_cycle [["a", "b", "b"], ["b", "z", "b"], ["b", "b", "a"]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

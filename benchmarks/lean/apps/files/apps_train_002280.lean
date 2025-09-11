@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def solve_array_sort (n : Nat) (arr : List Nat) : List Nat := sorry
 
 def List.sort (l : List Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def List.swap3 (l : List α) (pos : Nat) : List α := sorry
 
 theorem sort_already_sorted {n : Nat} {arr : List Nat} (h1 : n ≥ 3)
   (h2 : arr = List.range' 1 n) : 
   solve_array_sort n arr = [0] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_result_correctness {n : Nat} {arr : List Nat} (h1 : n ≥ 3)
   (h2 : arr.length = n)
   (result : List Nat) (h3 : result = solve_array_sort n arr) :
@@ -40,6 +47,7 @@ info: [4, 3, 3, 4, 4]
 -/
 -- #guard_msgs in
 -- #eval solve_array_sort 6 [1, 2, 3, 3, 6, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

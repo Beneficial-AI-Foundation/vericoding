@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, sticks: seq<int>)
 {
     1 <= n <= 1000 &&
@@ -43,6 +44,7 @@ predicate IsOptimalT(sticks: seq<int>, t: int)
     forall other_t :: 1 <= other_t <= 99 ==> 
         CostForT(sticks, t) <= CostForT(sticks, other_t)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

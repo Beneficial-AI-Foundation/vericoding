@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def Point := Nat × Nat -- Position representation
 def Direction := String -- Direction representation
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def process : List String → String 
   | lst => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem direction_valid (moves : List String) :
   let result := process moves
   ∃ d, d ∈ ["", "N", "S", "E", "W", "NE", "NW", "SE", "SW"] ∧ 
@@ -34,6 +41,7 @@ theorem distance_triangle_inequality (moves : List String) :
   let resultNum := String.toNat! (result.take (result.length - 2))
   resultNum ≤ total_distance := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

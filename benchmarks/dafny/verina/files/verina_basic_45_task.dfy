@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate FindProductPrecond(lst: seq<int>)
 {
     |lst| > 1 &&
@@ -25,6 +26,7 @@ function {:axiom} FirstOddIndex(lst: seq<int>): int
     ensures 0 <= FirstOddIndex(lst) < |lst|
     ensures IsOdd(lst[FirstOddIndex(lst)])
     ensures forall j :: 0 <= j < FirstOddIndex(lst) ==> !IsOdd(lst[j])
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

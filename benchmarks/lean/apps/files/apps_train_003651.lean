@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def product (nums : List Int) : Option Int := sorry
 
 theorem product_empty (nums : List Int) : 
   nums = [] → product nums = none
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem product_nonempty (nums : List Int) : 
   nums ≠ [] → product nums = some (nums.foldl (·*·) 1)
   := sorry
@@ -35,6 +43,7 @@ info: -672
 -/
 -- #guard_msgs in
 -- #eval product [-2, 6, 7, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

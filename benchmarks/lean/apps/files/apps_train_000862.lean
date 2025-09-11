@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_path (n : Nat) (a b : List Nat) : Bool := sorry
 
 def solve_test_case (n : Nat) (a b : List Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_path_structure {n : Nat} {middle_vals : List Nat} {connecting_val : Nat}
   (h1 : n ≥ 3) (h2 : n ≤ 10)
   (h3 : ∀ x ∈ middle_vals, x ≥ 1 ∧ x ≤ 20)
@@ -54,6 +62,7 @@ info: 'Yes'
 -/
 -- #guard_msgs in
 -- #eval solve_test_case 4 [0, 2, 2, 3] [3, 2, 2, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

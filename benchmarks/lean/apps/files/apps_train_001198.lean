@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def determine_winner (n x : Nat) (stones : List Nat) : String := sorry
 
 def ListPerm {α : Type} (l₁ l₂ : List α) : Prop := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem determine_winner_well_defined_output
   (n x : Nat) (stones : List Nat) (h₁ : x > 0) (h₂ : x ≤ n) : 
   determine_winner n x stones = "Jesse" ∨ determine_winner n x stones = "Walter" := sorry
@@ -44,6 +52,7 @@ info: 'Jesse'
 -/
 -- #guard_msgs in
 -- #eval determine_winner 4 2 [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

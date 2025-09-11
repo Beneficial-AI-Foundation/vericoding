@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_antimatching (n m : Nat) (edges : List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def vertex_degree (v : Nat) (edges : List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem antimatching_nonnegative (n m : Nat) (edges : List (Nat × Nat)) :
   solve_antimatching n m edges ≥ 0 := sorry
 
@@ -39,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_antimatching 5 0 []
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

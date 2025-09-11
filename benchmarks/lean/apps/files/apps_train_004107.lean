@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def langtons_ant (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n : Nat) : Nat :=
   n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem langtons_ant_non_negative (n : Nat) :
   langtons_ant n ≥ 0 :=
 sorry
@@ -57,6 +64,7 @@ info: 20
 -/
 -- #guard_msgs in
 -- #eval langtons_ant 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

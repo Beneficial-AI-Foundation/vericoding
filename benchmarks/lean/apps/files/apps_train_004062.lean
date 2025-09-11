@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_slope (points : List Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem slope_undefined_when_x_equal {x1 y1 x2 y2 : Int} 
   (h : x1 = x2) :
   find_slope [x1, y1, x2, y2] = "undefined" :=
@@ -47,6 +55,7 @@ info: 'undefined'
 -/
 -- #guard_msgs in
 -- #eval find_slope [17, -3, 17, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_right_triangle (a b c : Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_inputs (a b c : Int) :
   a = 0 ∨ b = 0 ∨ c = 0 → check_right_triangle a b c = "NO" :=
   sorry
@@ -41,6 +49,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval check_right_triangle 0 4 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(lines: seq<string>)
 {
     |lines| >= 2 && |lines[0]| > 0 && |lines[1]| > 0
@@ -23,6 +24,7 @@ function reverse(s: string): string
     if |s| == 0 then ""
     else reverse(s[1..]) + [s[0]]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

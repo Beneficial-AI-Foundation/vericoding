@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -21,6 +22,7 @@ spec fn sum_other_way(s: Seq<int>) -> (result:int)
         s[s.len() - 1] + sum_other_way(s.take(s.len() - 1))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

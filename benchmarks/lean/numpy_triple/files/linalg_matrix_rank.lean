@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def matrix_rank {m n : Nat} (A : Vector (Vector Float n) m) : Id Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem matrix_rank_spec {m n : Nat} (A : Vector (Vector Float n) m) :
     ⦃⌜True⌝⦄
     matrix_rank A
@@ -38,3 +45,4 @@ theorem matrix_rank_spec {m n : Nat} (A : Vector (Vector Float n) m) :
         (result = 1 ↔ (A.get ⟨0, h₁⟩).get ⟨0, h₂⟩ ≠ 0))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

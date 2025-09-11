@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_santa_gifts (n m a d : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem range_validity (n m a d : Nat) (h₁ : n > 0) (h₂ : m > 0) (h₃ : a > 0) (h₄ : d > 0) 
   (h₅ : n ≤ m) :
   let result := count_santa_gifts n m a d
@@ -37,6 +45,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_santa_gifts 3 7 2 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

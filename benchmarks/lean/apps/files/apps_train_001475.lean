@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def print_pattern (n: Nat) : List String := sorry
 
 theorem print_pattern_basic_2 : 
   print_pattern 2 = ["1", "32"] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem print_pattern_basic_3 :
   print_pattern 3 = ["1", "32", "654"] := sorry
 
@@ -35,6 +43,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval print_pattern 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

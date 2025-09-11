@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bird_code (names : List String) : List String := sorry
 
 theorem empty_input_is_list : 
   ∀ (input : List String), 
   (input = [] ∨ input = [""] ∨ input = [" "]) →
   bird_code input = bird_code input := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem specific_bird_codes :
   bird_code ["Black-Capped Chickadee"] = ["BCCH"] ∧
   bird_code ["Yellow-Rumped Warbler"] = ["YRWA"] ∧
@@ -37,6 +45,7 @@ info: ['GCFL', 'BOBO', 'ESOW']
 -/
 -- #guard_msgs in
 -- #eval bird_code ["Great Crested Flycatcher", "Bobolink", "Eastern Screech Owl"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

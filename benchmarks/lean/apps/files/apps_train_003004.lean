@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def multi (l : List Int) : Int := sorry
 def add (l : List Int) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverse (s : String) : String := sorry
 
 theorem multi_neutral (l : List Int) (h : l.length ≥ 1) :
   multi (l ++ [1]) = multi l := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multi_order_indep (l : List Int) (h : l.length ≥ 1) :
   multi l = multi l.reverse := sorry
 
@@ -49,6 +56,7 @@ info: 'olleh'
 -/
 -- #guard_msgs in
 -- #eval reverse "hello"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

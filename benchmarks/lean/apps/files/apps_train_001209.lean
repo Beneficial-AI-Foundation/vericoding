@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isPrime (n : Nat) : Bool := sorry
 def last_digit_prime_sum (n : Nat) : Nat := sorry
 
 -- Results are natural numbers between 0 and 9 inclusive
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem last_digit_bounds (n : Nat) (h : n ≥ 2) : 
   0 ≤ last_digit_prime_sum n ∧ last_digit_prime_sum n ≤ 9 := sorry
 
@@ -39,6 +47,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval last_digit_prime_sum 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

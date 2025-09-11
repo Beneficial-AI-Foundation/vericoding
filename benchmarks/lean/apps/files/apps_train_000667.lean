@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_chef_transport (n v1 v2 : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_chef_transport_output_type (n v1 v2 : Nat) :
   n > 0 → v1 > 0 → v2 > 0 →
   solve_chef_transport n v1 v2 = "Stairs" ∨ 
@@ -32,6 +40,7 @@ info: 'Stairs'
 -/
 -- #guard_msgs in
 -- #eval solve_chef_transport 7 14 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

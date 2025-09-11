@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_drink_by_profession (profession : String) : String := sorry
 
 def known_professions : List (String × String) := [
@@ -11,7 +17,9 @@ def known_professions : List (String × String) := [
   ("politician", "Your tax dollars"),
   ("rapper", "Cristal")
 ]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem known_profession_case_insensitive 
   (profession : String)
   (h : profession.toLower ∈ (known_professions.map Prod.fst).map String.toLower) :
@@ -49,6 +57,7 @@ info: 'Beer'
 -/
 -- #guard_msgs in
 -- #eval get_drink_by_profession "pundit"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function factorial_spec(n : int) : int
   requires n >= 0
   decreases n
@@ -10,6 +11,7 @@ function sum_spec(n : int) : int
 {
   if n == 0 then 1 else n + sum_spec(n - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

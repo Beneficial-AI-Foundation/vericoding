@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate validInput(stdin_input: string, n: int)
 {
     exists lines :: (parseInput(stdin_input) == lines &&
@@ -52,6 +53,7 @@ ghost predicate alphabetOrder(c1: char, c2: char, alphabet: string)
 ghost function parseInput(input: string): seq<string>
 
 ghost function parseInt(s: string): int
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

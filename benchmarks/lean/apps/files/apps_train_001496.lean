@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def classify_quotes (quote : String) : String := sorry
 
 def splitString (s : String) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem classify_quotes_result_valid (quote : String) :
   classify_quotes quote = "Real Fancy" ∨ classify_quotes quote = "regularly fancy" := sorry
 
@@ -34,6 +42,7 @@ info: 'Real Fancy'
 -/
 -- #guard_msgs in
 -- #eval classify_quotes "this is not fancy at all"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

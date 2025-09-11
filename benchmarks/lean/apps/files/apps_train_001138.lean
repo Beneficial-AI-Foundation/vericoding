@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def choose_team (n k : Nat) : Nat := sorry
 
 theorem non_negative (n k : Nat) : 0 ≤ choose_team n k := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem k_greater_than_n (n k : Nat) : k > n → choose_team n k = 0 := by sorry
 
 theorem k_equals_0_or_n (n k : Nat) : n > 0 ∧ (k = 0 ∨ k = n) → choose_team n k = 1 := by sorry
@@ -35,6 +43,7 @@ info: 252
 -/
 -- #guard_msgs in
 -- #eval choose_team 10 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

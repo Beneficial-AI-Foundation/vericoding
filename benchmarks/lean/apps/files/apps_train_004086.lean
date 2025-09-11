@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def String.swap : String → String
   | _ => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def Char.isVowel (c : Char) : Bool :=
   let vowels := ['a', 'e', 'i', 'o', 'u']
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem swap_preserves_length (s : String) : 
   (String.swap s).length = s.length := sorry 
 
@@ -40,6 +47,7 @@ info: 'AbrAcAdAbrA'
 -/
 -- #guard_msgs in
 -- #eval swap "abracadabra"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

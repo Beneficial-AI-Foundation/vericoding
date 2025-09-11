@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def round_to_five (numbers : List Float) : List Float := sorry
 
 theorem round_to_five_multiple_of_five (numbers : List Float) :
   let result := round_to_five numbers
   ∀ x ∈ result, ∃ n : Float, x = n * 5 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem round_to_five_close_to_original (numbers : List Float) :
   let result := round_to_five numbers
   ∀ (orig rounded : Float), 
@@ -39,6 +47,7 @@ info: [25, 545, 80]
 -/
 -- #guard_msgs in
 -- #eval round_to_five [22.5, 544.9, 77.5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

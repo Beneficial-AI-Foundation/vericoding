@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def histogram2d {n : Nat} {nbins : Nat} (x y : Vector Float n) (bins : Nat) 
     (h_bins_pos : bins > 0) (h_nbins_eq : nbins = bins) : Id (Vector (Vector Nat nbins) nbins × Vector Float (nbins + 1) × Vector Float (nbins + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem histogram2d_spec {n : Nat} {nbins : Nat} (x y : Vector Float n) (bins : Nat) 
     (h_bins_pos : bins > 0) (h_nbins_eq : nbins = bins) :
     ⦃⌜bins > 0⌝⦄
@@ -43,3 +50,4 @@ theorem histogram2d_spec {n : Nat} {nbins : Nat} (x y : Vector Float n) (bins : 
                    (i = nbins - 1 ∧ j = nbins - 1 ∧ x_val = x_right ∧ y_val = y_right) →
                    (hist.get i).get j ≥ 1)⌝⦄ := by
   sorry
+-- </vc-theorems>

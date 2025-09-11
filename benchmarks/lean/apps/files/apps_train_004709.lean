@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def temps (v0 d_tot : Float) (slope : Float) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem temps_returns_valid_output (v0 d_tot : Float) (slope : Float)
   (h1 : 3.1 ≤ v0 ∧ v0 ≤ 100)
   (h2 : -30 ≤ slope ∧ slope ≤ 30)
@@ -51,6 +59,7 @@ info: 110
 -/
 -- #guard_msgs in
 -- #eval temps 30 8 20
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

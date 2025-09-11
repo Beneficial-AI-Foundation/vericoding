@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def london_city_hacker (journey : List (Unit ⊕ Unit)) : String := sorry
 
 def is_valid_fare_string (fare : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem journey_fare_is_valid {journey : List (Unit ⊕ Unit)} :
   is_valid_fare_string (london_city_hacker journey) := sorry
 
@@ -45,6 +53,7 @@ info: '£7.20'
 -/
 -- #guard_msgs in
 -- #eval london_city_hacker ["Northern", "Central", "Circle"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

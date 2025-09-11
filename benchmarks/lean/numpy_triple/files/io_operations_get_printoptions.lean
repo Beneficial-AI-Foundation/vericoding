@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -24,13 +25,19 @@ structure PrintOptions where
   floatmode : String
   /-- Legacy printing mode setting -/
   legacy : Option String
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_printoptions : Id PrintOptions :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_printoptions_spec :
     ⦃⌜True⌝⦄
     get_printoptions
@@ -44,3 +51,4 @@ theorem get_printoptions_spec :
                  (result.floatmode = "fixed" ∨ result.floatmode = "unique" ∨ 
                   result.floatmode = "maxprec" ∨ result.floatmode = "maxprec_equal")⌝⦄ := by
   sorry
+-- </vc-theorems>

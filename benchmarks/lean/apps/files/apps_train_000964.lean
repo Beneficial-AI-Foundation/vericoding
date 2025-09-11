@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_supermarket (slots : List Nat) : List String := sorry
 def check (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_supermarket_correct_length (slots : List Nat) 
   (h : slots.length ≥ 1 ∧ slots.length ≤ 100) 
   (h2 : ∀ x ∈ slots, x ≤ 1000) : 
@@ -45,6 +53,7 @@ info: ['NO', 'NO', 'NO']
 -/
 -- #guard_msgs in
 -- #eval solve_supermarket [6, 8, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

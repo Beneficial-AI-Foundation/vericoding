@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_arena_of_greed (n: Nat) : Nat := sorry
 
 def is_pow2 (n: Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_arena_output_range (n: Nat) (h: n > 0): 
   let result := solve_arena_of_greed n
   0 ≤ result ∧ result ≤ n := sorry
@@ -35,6 +43,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval solve_arena_of_greed 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

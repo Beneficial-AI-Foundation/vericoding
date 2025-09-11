@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate sorted (a: array<int>)
 
     reads a
@@ -21,6 +22,7 @@ method lookForMin (a: array<int>, i: int) returns (m: int)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

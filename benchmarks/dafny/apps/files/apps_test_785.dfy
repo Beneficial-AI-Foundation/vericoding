@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int)
 {
   n > 0 && a > 0 && b > 0
@@ -11,6 +12,7 @@ predicate ValidOutput(result: seq<int>, n: int, a: int, b: int)
   result[0] == result[1] * result[2] &&
   ((result[1] >= a && result[2] >= b) || (result[1] >= b && result[2] >= a))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

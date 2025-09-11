@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidPokemonName(name: string)
 {
     name == "vaporeon" || name == "jolteon" || name == "flareon" || name == "espeon" ||
@@ -34,6 +35,7 @@ predicate IsFirstMatch(result: string, pattern: string, pokemonList: seq<string>
         MatchesPattern(result, pattern) &&
         forall j :: 0 <= j < i ==> (|pokemonList[j]| != |pattern| || !MatchesPattern(pokemonList[j], pattern))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solveTennisTournament (n : Nat) : List String := sorry
 
 theorem even_n_returns_no {n : Nat} (h : n > 0) (h2 : n % 2 = 0) :
   solveTennisTournament n = ["NO"] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_n_first_element {n : Nat} (h : n > 0) (h2 : n % 2 = 1) :
   (solveTennisTournament n).head? = some "YES" := sorry
 
@@ -39,6 +47,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval len result3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

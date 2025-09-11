@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sumRange(s: seq<int>, start: int, end: int): int
     requires 0 <= start <= end <= |s|
     decreases end - start
@@ -10,6 +11,7 @@ predicate ValidInput(n: int, years: seq<int>)
 {
     n > 0 && |years| == n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

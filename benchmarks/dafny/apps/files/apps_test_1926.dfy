@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>)
 {
   n >= 2 && |a| == n
@@ -18,6 +19,7 @@ predicate ValidOutput(result: seq<int>, n: int, a: seq<int>)
   (forall k :: 1 <= k <= n - 1 ==> result[k-1] >= 0) &&
   (forall k :: 1 <= k <= n - 1 ==> result[k-1] == CountViolationsForK(a, n, k))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

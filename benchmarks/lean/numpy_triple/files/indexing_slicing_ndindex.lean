@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def ndindex {m n : Nat} (shape : Nat × Nat) : Id (Vector (Fin m × Fin n) (m * n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ndindex_spec {m n : Nat} (shape : Nat × Nat) (h_shape : shape = (m, n)) :
     ⦃⌜shape = (m, n)⌝⦄
     ndindex shape
@@ -21,3 +28,4 @@ theorem ndindex_spec {m n : Nat} (shape : Nat × Nat) (h_shape : shape = (m, n))
                       let (i, j) := indices.get k
                       k.val = i.val * n + j.val)⌝⦄ := by
   sorry
+-- </vc-theorems>

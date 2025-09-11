@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -20,6 +21,7 @@ spec fn inner_expr_how_many_times_impl(opt_k: Option<u32>, string: Vec<char>, su
         None => how_many_times(string@, substring@) > u32::MAX,
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

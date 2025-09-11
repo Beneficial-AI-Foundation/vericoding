@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fish (input : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fish_minimum (nums : String) :
   fish nums ≥ 1 := by
   sorry
@@ -41,6 +49,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval fish "111122223333"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

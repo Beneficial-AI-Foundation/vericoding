@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -25,16 +26,23 @@ structure PrintOptionsContext where
   old_options : PrintOptions
   /-- The new print options active within the context -/
   new_options : PrintOptions
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_printoptions (new_opts : PrintOptions) : Id PrintOptionsContext :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_printoptions_spec (new_opts : PrintOptions) :
     ⦃⌜True⌝⦄
     numpy_printoptions new_opts
     ⦃⇓context => ⌜context.new_options = new_opts ∧ 
                    context.old_options ≠ context.new_options⌝⦄ := by
   sorry
+-- </vc-theorems>

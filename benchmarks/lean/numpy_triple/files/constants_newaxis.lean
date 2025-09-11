@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -8,13 +9,19 @@ open Std.Do
     converts a 1D vector into a 2D vector (matrix) with either shape (n, 1) or (1, n). -/
 inductive NewAxis where
   | newaxis
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def expandToColumn {T : Type} {n : Nat} (v : Vector T n) (axis : NewAxis) : Id (Vector (Vector T 1) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem expandToColumn_spec {T : Type} {n : Nat} (v : Vector T n) (axis : NewAxis) :
     ⦃⌜True⌝⦄
     expandToColumn v axis
@@ -22,3 +29,4 @@ theorem expandToColumn_spec {T : Type} {n : Nat} (v : Vector T n) (axis : NewAxi
                    (result.get i).size = 1 ∧ 
                    (result.get i).get ⟨0, by simp⟩ = v.get i⌝⦄ := by
   sorry
+-- </vc-theorems>

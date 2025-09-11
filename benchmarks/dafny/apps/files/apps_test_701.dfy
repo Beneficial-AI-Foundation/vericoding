@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ParseLines(stdin_input: string): seq<string>
     decreases |stdin_input|
 {
@@ -61,6 +62,7 @@ function FilterChars(s: string, pivot: char, takeLess: bool, takeEqual: bool): s
         then [first] + rest
         else rest
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def eq_sum_powdig (hmax : Nat) (exp : Nat) : List Nat := sorry
 
 def sum_digit_powers : Nat → Nat → Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem eq_sum_powdig_increasing_range {hmax : Nat} (h : hmax ≥ 1) :
   let small_result := eq_sum_powdig hmax 3;
   let large_result := eq_sum_powdig (hmax + 100) 3;
@@ -30,6 +38,7 @@ info: [153, 370]
 -/
 -- #guard_msgs in
 -- #eval eq_sum_powdig 370 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

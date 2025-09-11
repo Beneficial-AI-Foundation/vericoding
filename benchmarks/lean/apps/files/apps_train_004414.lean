@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def sum : List Int → Int 
   | [] => 0
   | x::xs => x + sum xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def array_plus_array (arr1 arr2 : List Int) : Int := sorry
 
 theorem array_plus_array_associative (a b c : List Int) :
   array_plus_array (a ++ b) c = array_plus_array a (b ++ c) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 21
 -/
@@ -27,6 +34,7 @@ info: 2100
 -/
 -- #guard_msgs in
 -- #eval array_plus_array [100, 200, 300] [400, 500, 600]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

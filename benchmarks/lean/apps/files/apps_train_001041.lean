@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_window_frames (n : Nat) (logs : List Int) : Nat := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_window_frames_non_negative {n : Nat} {logs : List Int} 
   (h : logs ≠ []) : 
   count_window_frames n logs ≥ 0 := 
@@ -47,6 +55,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_window_frames 6 [1, 1, 2, 2, 3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

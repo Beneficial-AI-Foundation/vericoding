@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def gordon (s : String) : String := sorry
 
 -- Theorem for the ending
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gordon_ends_with_bangs {s : String} (h : s ≠ "") :
   (gordon s).endsWith "!!!!" := sorry
 
@@ -41,6 +49,7 @@ info: '*!!!! @M!!!! @!!!! CH*F!!!!'
 -/
 -- #guard_msgs in
 -- #eval gordon "i am a chef"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

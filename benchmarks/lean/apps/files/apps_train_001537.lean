@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_base_plans (n : Nat) (grid : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem diagonal_case (n : Nat) :
   let diagonal := List.range n |>.map (fun i =>
     String.mk (List.range n |>.map (fun j => if i = j then '1' else '0')))
@@ -40,6 +48,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval solve_base_plans 3 ["100", "010", "001"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

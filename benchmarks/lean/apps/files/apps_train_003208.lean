@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def square_free_part (n : Int) : Option Int := sorry
 
 def Real.toInt (x : Float) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_integer_returns_none (x : Float) : 
   square_free_part (Real.toInt x) = none := by sorry
 
@@ -48,6 +56,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval square_free_part 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

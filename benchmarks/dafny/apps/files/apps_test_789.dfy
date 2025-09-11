@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidLuckyNumber(n: string)
 {
     |n| > 0 && forall i :: 0 <= i < |n| ==> n[i] == '4' || n[i] == '7'
@@ -35,6 +36,7 @@ predicate ValidResult(n: string, result: int)
 {
     result > 0 && result == 2 * (pow2(|n|-1) - 1) + binaryToInt(convertToBinary(n)) + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

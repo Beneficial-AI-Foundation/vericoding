@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate validInput(input: string)
 {
     |input| > 0 && 
@@ -19,6 +20,7 @@ function formatOutput(results: seq<int>): string
 {
     formatOutputHelper(results, 0, "")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

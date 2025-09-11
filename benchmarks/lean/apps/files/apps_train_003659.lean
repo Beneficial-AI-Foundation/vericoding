@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def sum_list : List Nat → Nat 
   | [] => 0
   | (x::xs) => x + sum_list xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check_dates (records : List (String × String)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_dates_output_format {records : List (String × String)} 
   (h : records ≠ []) : 
   let result := check_dates records;
@@ -47,6 +54,7 @@ info: [0, 0, 1]
 -/
 -- #guard_msgs in
 -- #eval check_dates [["2002-02-07", "2002-12-10"]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

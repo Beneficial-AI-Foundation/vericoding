@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pathFinder (maze : String) : Option Nat := sorry
 
 theorem path_finder_result_exists (maze : String) :
   ∃ (result : Option Nat), pathFinder maze = result := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem path_finder_empty_path :
   pathFinder "...\n...\n..." ≠ none := by sorry
 
@@ -37,6 +45,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval path_finder "...\n    ...\n    ...".replace("    ", "")
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

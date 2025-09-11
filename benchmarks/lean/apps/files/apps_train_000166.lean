@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def integerBreak (n : Nat) : Nat := sorry
 
 theorem integerBreak_positive (n : Nat) (h : n ≥ 2) : 
   integerBreak n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem integerBreak_geq_n (n : Nat) (h : n ≥ 4) :
   integerBreak n ≥ n := sorry
 
@@ -35,6 +43,7 @@ info: 18
 -/
 -- #guard_msgs in
 -- #eval integer_break 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

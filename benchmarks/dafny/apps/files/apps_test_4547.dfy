@@ -1,3 +1,4 @@
+// <vc-preamble>
 function clean_input(s: string): string
 {
     if |s| == 0 then s
@@ -10,6 +11,7 @@ predicate contains_digit_nine(s: string)
 {
     exists i :: 0 <= i < |s| && s[i] == '9'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

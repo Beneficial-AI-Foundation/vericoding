@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_string_alternation (n : Nat) (s : String) : Nat := sorry
 
 /- Main theorem combining several properties of solve_string_alternation:
@@ -8,7 +14,9 @@ def solve_string_alternation (n : Nat) (s : String) : Nat := sorry
   2. Output is less than string length 
   3. Output relates to number of adjacent duplicates
 -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_string_alternation_properties (s : String) (n : Nat) 
   (h1 : s.length = n) (h2 : n > 0) (h3 : ∀c ∈ s.data, c = '0' ∨ c = '1') :
   let result := solve_string_alternation n s
@@ -46,6 +54,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_string_alternation 8 "11101000"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

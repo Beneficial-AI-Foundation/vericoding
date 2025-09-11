@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def min_list : List Nat → Nat 
   | [] => 0
   | (x::xs) => min x (min_list xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_short (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_short_is_shortest (s : String) :
   find_short s = min_list ((s.split fun c => c = ' ').map String.length)
   := by sorry
@@ -45,6 +52,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_short "Lets all go on holiday somewhere very cold"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

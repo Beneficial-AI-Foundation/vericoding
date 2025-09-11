@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nth_floyd (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nth_floyd_is_positive (n : Nat) (h : n > 0) : nth_floyd n > 0 := 
   sorry
 
@@ -44,6 +52,7 @@ info: 1000
 -/
 -- #guard_msgs in
 -- #eval nth_floyd 499502
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

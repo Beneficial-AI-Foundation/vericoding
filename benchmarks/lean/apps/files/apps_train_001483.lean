@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def gcd (a b : Nat) : Nat :=
   sorry
 
 def lcm (a b : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_gcd_lcm_pairs (pairs : List (Nat × Nat)) : List (Nat × Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gcd_divides {x y : Nat} (h1 : x > 0) (h2 : y > 0) :
   let g := gcd x y
   x % g = 0 ∧ y % g = 0 :=
@@ -39,6 +46,7 @@ theorem same_number_gcd_lcm {n : Nat} (h : n > 0) :
 theorem find_gcd_lcm_pairs_preserves_length {pairs : List (Nat × Nat)} :
   pairs.length = (find_gcd_lcm_pairs pairs).length :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

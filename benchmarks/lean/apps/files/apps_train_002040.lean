@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def count_valid_permutations (n : Nat) (edges : List (Nat × Nat)) : Nat := sorry
 
 def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def factorial : Nat → Nat 
   | 0 => 1
   | n + 1 => (n + 1) * factorial n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_tree_construction (n : Nat) (edges : List (Nat × Nat)) 
   (h1 : is_valid_tree n edges) :
   let result := count_valid_permutations n edges
@@ -37,6 +44,7 @@ info: 144
 -/
 -- #guard_msgs in
 -- #eval count_valid_permutations 6 [(2, 1), (3, 2), (4, 1), (5, 4), (1, 6)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

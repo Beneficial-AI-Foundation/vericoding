@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def extract {n m : Nat} (condition : Vector Bool n) (arr : Vector Int n) : 
   Id (Vector Int m) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem extract_spec {n m : Nat} (condition : Vector Bool n) (arr : Vector Int n) :
     ⦃⌜True⌝⦄
     extract condition arr
@@ -22,3 +29,4 @@ theorem extract_spec {n m : Nat} (condition : Vector Bool n) (arr : Vector Int n
       (∀ (i : Fin n), condition.get i = true → 
         ∃ (k : Fin m), result.get k = arr.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

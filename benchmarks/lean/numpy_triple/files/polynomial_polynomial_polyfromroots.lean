@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def polyfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem polyfromroots_spec {n : Nat} (roots : Vector Float n) :
     ⦃⌜True⌝⦄
     polyfromroots roots
@@ -16,3 +23,4 @@ theorem polyfromroots_spec {n : Nat} (roots : Vector Float n) :
                    (∀ x : Float, eval_poly x = 0 ↔ x = roots.get i) ∧
                    eval_poly (roots.get i) = 0⌝⦄ := by
   sorry
+-- </vc-theorems>

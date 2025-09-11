@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def process_toffee_queries (queries : List String) : List Nat := sorry
 
 theorem process_toffee_queries_valid_output (queries : List String) :
@@ -10,7 +16,9 @@ theorem process_toffee_queries_valid_output (queries : List String) :
   -- All results are non-negative
   results.all (fun r => r ≥ 0) := by
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem process_toffee_queries_accumulative 
   (type1_queries : List String)
   (h1 : type1_queries.all (fun q => q.take 1 = "1")) :
@@ -19,6 +27,7 @@ theorem process_toffee_queries_accumulative
   -- Last result equals count of type 1 queries
   results.getLast! = type1_queries.length := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

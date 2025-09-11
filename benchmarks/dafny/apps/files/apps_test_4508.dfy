@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, edges: seq<(int, int)>)
 {
     n >= 2 && |edges| == n - 1 &&
@@ -66,6 +67,7 @@ predicate IsMinimalSolution(n: int, originalEdges: seq<(int, int)>, numEdgesToAd
 {
     numEdgesToAdd >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

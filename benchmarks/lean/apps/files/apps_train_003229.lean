@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def abs (x : Int) : Int := 
   if x < 0 then -x else x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (arr : List Int) : Int := sorry
 
 theorem solve_sequence_with_small_deviations {arr : List Int} 
@@ -15,7 +20,9 @@ theorem solve_sequence_with_small_deviations {arr : List Int}
   result ≤ (List.range (arr.length-1)).foldl 
     (fun acc i => acc + abs (arr.get ⟨i+1, sorry⟩ - arr.get ⟨i, sorry⟩)) 0 := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_arbitrary_sequences {arr : List Int}
   (h1 : arr.length ≥ 3) (h2 : arr.length ≤ 10)
   (h3 : ∀ x ∈ arr, -100 ≤ x ∧ x ≤ 100) :
@@ -55,6 +62,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

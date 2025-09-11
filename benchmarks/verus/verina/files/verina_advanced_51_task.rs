@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn is_sorted(s: Seq<i32>) -> bool {
 spec fn multiset_equiv(s1: Seq<i32>, s2: Seq<i32>) -> bool {
     s1.to_multiset() == s2.to_multiset()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

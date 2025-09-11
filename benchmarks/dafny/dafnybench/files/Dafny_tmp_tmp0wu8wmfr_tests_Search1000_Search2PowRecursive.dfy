@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate Is2Pow( n: int )
     decreases n;
 {
@@ -8,6 +9,7 @@ predicate Is2Pow( n: int )
     else
         n%2 == 0 && Is2Pow(n/2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

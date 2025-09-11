@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def shortest_path_binary_tree (i j : Nat) : Nat := sorry
 
 theorem path_to_self {i : Nat} (h : i > 0) : 
   shortest_path_binary_tree i i = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem path_is_symmetric {i j : Nat} (hi : i > 0) (hj : j > 0) :
   shortest_path_binary_tree i j = shortest_path_binary_tree j i := sorry
 
@@ -35,6 +43,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval shortest_path_binary_tree 4 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

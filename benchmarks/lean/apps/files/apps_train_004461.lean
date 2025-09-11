@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def buildPalindrome (s : String) : String := sorry
 
 def isSubstring (sub str : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_palindrome (s : String) (h : s.length > 0) :
   let result := buildPalindrome s
   result.data = result.data.reverse := sorry
@@ -41,6 +49,7 @@ info: 'bacdcab'
 -/
 -- #guard_msgs in
 -- #eval build_palindrome "cdcab"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

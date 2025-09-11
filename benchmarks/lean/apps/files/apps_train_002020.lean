@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve_hacknet (n A cf cm m : Nat) (skills : List Nat) : Nat × List Nat :=
   sorry
 
@@ -5,15 +6,21 @@ def list_count {α} [BEq α] (p : α → Bool) (l : List α) : Nat :=
   match l with
   | [] => 0
   | x::xs => (if p x then 1 else 0) + list_count p xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x::xs => x + list_sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_invariants {n A cf cm m : Nat} {skills ans : List Nat} {max_level : Nat}
   (h : solve_hacknet n A cf cm m skills = (max_level, ans)) :
   (ans.length = n) ∧ 
@@ -33,6 +40,7 @@ theorem infinite_money {n A : Nat} {skills : List Nat}
   solve_hacknet n A 1 1 (Nat.max A 0) skills = 
     (n + A, List.replicate n A) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

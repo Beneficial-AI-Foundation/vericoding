@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sumMul (n m : Int) : Int ⊕ String := sorry
 
 theorem sumMul_valid_output (n m : Int)
@@ -11,7 +17,9 @@ theorem sumMul_valid_output (n m : Int)
   | Sum.inl result => result ≥ 0
   | Sum.inr _ => False
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sumMul_all_divisible (n m : Int)
   (h1 : n > 0)
   (h2 : m > 0)
@@ -68,6 +76,7 @@ info: 'INVALID'
 -/
 -- #guard_msgs in
 -- #eval sum_mul -7 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

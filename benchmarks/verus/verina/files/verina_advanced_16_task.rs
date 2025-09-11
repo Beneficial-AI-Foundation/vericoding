@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn multiset_equivalent(v1: Vec<i32>, v2: Vec<i32>) -> bool {
 spec fn count(v: Vec<i32>, elem: i32) -> nat {
     v.to_seq().filter(|x| *x == elem).len()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

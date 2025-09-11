@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def palindrome_partition (s : String) (k : Nat) : Nat := sorry
 
 theorem palindrome_partition_non_negative 
   (s : String) (k : Nat) (h: k > 0) (h2: k ≤ s.length) :
   palindrome_partition s k ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_partition_full_length
   (s : String) (h: s.length > 0) :
   palindrome_partition s s.length = 0 := sorry
@@ -40,6 +48,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval palindrome_partition "leetcode" 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

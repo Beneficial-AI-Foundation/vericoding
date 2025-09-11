@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validate_uids (uids : List String) : List String := sorry
 
 -- Output format theorem
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem validate_uids_format (uids : List String) :
   let results := validate_uids uids
   results.length = uids.length ∧ 
@@ -34,6 +42,7 @@ info: ['Valid']
 -/
 -- #guard_msgs in
 -- #eval validate_uids ["B1CDEF2354"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

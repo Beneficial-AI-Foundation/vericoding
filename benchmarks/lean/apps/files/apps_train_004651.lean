@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_zero_sum_groups (arr : List Int) (n : Nat) : String ⊕ List Int ⊕ List (List Int) := sorry
 
 def isSorted (l : List Int) : Bool := 
@@ -6,17 +7,23 @@ def isSorted (l : List Int) : Bool :=
   | x :: xs => match xs with
     | [] => true
     | y :: _ => x ≤ y && isSorted xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSortedBy {α : Type} (l : List α) (f : α → α → Bool) : Bool :=
   match l with
   | [] => true
   | x :: xs => match xs with
     | [] => true
     | y :: _ => f x y && isSortedBy xs f
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_array_returns_no_elements {n : Nat} (h : n > 0) : 
   find_zero_sum_groups [] n = Sum.inl "No elements to combine" := sorry
 
@@ -75,6 +82,7 @@ info: 'No combinations'
 -/
 -- #guard_msgs in
 -- #eval find_zero_sum_groups [1, 1, 2, 3] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

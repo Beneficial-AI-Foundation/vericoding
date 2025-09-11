@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def shortest_time (speeds: List Int) : Int :=
   sorry
 
 def List.sorted (l: List Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPermutation (l1 l2: List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shortest_time_positive (speeds: List Int)
   (h: speeds.length = 4)
   (h2: ∀ x ∈ speeds, x ≥ 1) : 
@@ -65,6 +72,7 @@ info: 27
 -/
 -- #guard_msgs in
 -- #eval shortest_time [5, 5, 6, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

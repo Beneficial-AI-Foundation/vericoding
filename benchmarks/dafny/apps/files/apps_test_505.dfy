@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, k: int, grid: seq<string>)
 {
     n > 0 && m > 0 && k >= 0 &&
@@ -46,6 +47,7 @@ predicate ValidDirections(path: string)
 {
     forall c :: c in path ==> c == 'D' || c == 'L' || c == 'R' || c == 'U'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

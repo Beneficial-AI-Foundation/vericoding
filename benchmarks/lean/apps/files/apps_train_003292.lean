@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def scramble (s1 s2 : String) : Bool :=
   sorry
 
 -- Helper function to count char occurrences in string
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s : String) (c : Char) : Nat :=
   sorry
 
 -- If scramble returns true, first string is at least as long as second
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem scramble_length_property (s1 s2 : String) :
   s1.length > 0 → s2.length > 0 → scramble s1 s2 = true → s1.length ≥ s2.length :=
   sorry
@@ -65,6 +72,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval scramble "katas" "steak"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

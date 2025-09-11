@@ -1,9 +1,12 @@
+-- <vc-preamble>
 import Mathlib.Data.List.Basic
 
 @[reducible]
 def longestIncreasingSubseqLength_precond (xs : List Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 -- Generate all subsequences
 def subsequences {α : Type} : List α → List (List α)
@@ -18,10 +21,14 @@ def isStrictlyIncreasing : List Int → Bool
   | [_] => true
   | x :: y :: rest => if x < y then isStrictlyIncreasing (y :: rest) else false
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longestIncreasingSubseqLength (xs : List Int) (h_precond : longestIncreasingSubseqLength_precond (xs)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def longestIncreasingSubseqLength_postcond (xs : List Int) (result: Nat) (h_precond : longestIncreasingSubseqLength_precond (xs)) : Prop :=
   let allSubseq := (xs.foldl fun acc x => acc ++ acc.map (fun sub => x :: sub)) [[]] |>.map List.reverse
@@ -31,6 +38,7 @@ def longestIncreasingSubseqLength_postcond (xs : List Int) (result: Nat) (h_prec
 theorem longestIncreasingSubseqLength_spec_satisfied (xs: List Int) (h_precond : longestIncreasingSubseqLength_precond (xs)) :
     longestIncreasingSubseqLength_postcond (xs) (longestIncreasingSubseqLength (xs) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

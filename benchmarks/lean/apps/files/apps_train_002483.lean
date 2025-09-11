@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def get_top_three_chars (s : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.count (s : String) (c : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_top_three_chars_valid_format (s : String)
   (h : s.length > 0)
   (h2 : ∀ c ∈ s.data, c.isLower) :
@@ -39,6 +46,7 @@ theorem get_top_three_chars_alphabetical_tiebreak (s : String)
     let char2 := parts2.get! 0;
     count1 = count2 → char1 > char2 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

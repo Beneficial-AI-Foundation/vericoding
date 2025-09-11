@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def digits (n : Nat) : List Nat := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def tidyNumber (n : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tidy_number_returns_boolean (n : Nat) :
   tidyNumber n = true ∨ tidyNumber n = false :=
   sorry
@@ -50,6 +57,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval tidyNumber 1024
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

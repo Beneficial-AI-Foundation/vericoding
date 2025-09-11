@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isContinuationByte (x : Nat) : Bool :=
   sorry
 
 def countRequiredBytes (firstByte : Nat) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def validUtf8 (data : List Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_utf8_property (data : List Nat) (h : ∀ x ∈ data, x ≤ 255) :
   validUtf8 data = true →
   ∃ i : Nat,
@@ -57,6 +64,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval valid_utf8 [240, 162, 138, 147]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

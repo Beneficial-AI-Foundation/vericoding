@@ -1,3 +1,4 @@
+// <vc-preamble>
 function IsSubstring(s: string, sub: string) : bool
 {
   |s| >= |sub| && exists i {:trigger s[i..i+|sub|]} :: 0 <= i <= |s| - |sub| && s[i..i+|sub|] == sub
@@ -7,6 +8,7 @@ function RotateString(s: string, n: nat): string
 {
   s[n..] + s[..n]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

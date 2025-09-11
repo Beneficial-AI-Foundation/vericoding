@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def maxSum (nums1 : List Nat) (nums2 : List Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def hasCommonElements (l1 l2 : List Nat) : List Nat :=
 
 def sumUniqueElements (l1 l2 : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumCommonElements (l1 l2 : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxsum_positive (nums1 nums2 : List Nat) 
   (h1 : ∀ x ∈ nums1, 1 ≤ x ∧ x ≤ 1000)
   (h2 : ∀ x ∈ nums2, 1 ≤ x ∧ x ≤ 1000)
@@ -51,6 +58,7 @@ info: 40
 -/
 -- #guard_msgs in
 -- #eval maxSum [1, 2, 3, 4, 5] [6, 7, 8, 9, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

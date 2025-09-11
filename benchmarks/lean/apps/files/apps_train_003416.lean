@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def join (chars : List (Nat × String)) : String := sorry
 
 def run_length_encoding (s : String) : List (Nat × String) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rle_valid_pairs (s : String) :
   ∀ pair ∈ run_length_encoding s,
   ∃ (n : Nat) (c : String), pair = (n, c) := sorry
@@ -41,6 +49,7 @@ info: [[34, 'a'], [3, 'b']]
 -/
 -- #guard_msgs in
 -- #eval run_length_encoding "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

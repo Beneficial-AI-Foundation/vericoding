@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def decrypt (s : String) : String := sorry 
 
 def encrypt (num : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem test_decrypt_preserves_digits (s : String)
   (h1 : ∀ c ∈ s.data, '0' ≤ c ∧ c ≤ '9') 
   (h2 : s.length ≤ 10)
@@ -41,6 +49,7 @@ info: 'impossible'
 -/
 -- #guard_msgs in
 -- #eval decrypt "4334"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

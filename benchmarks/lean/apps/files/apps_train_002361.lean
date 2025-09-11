@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def add_digits (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem add_digits_range (n : Nat) (h : n ≤ 10^6) :
   0 ≤ add_digits n ∧ add_digits n ≤ 9 :=
   sorry
@@ -39,6 +47,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval add_digits 789
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

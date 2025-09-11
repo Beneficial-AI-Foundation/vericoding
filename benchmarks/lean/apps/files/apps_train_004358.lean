@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def moveZeros {α} [BEq α] (arr : List α) (isZero : α → Bool) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem moveZeros_bool_preserves_false (arr : List Bool) :
   let result := moveZeros arr (· = false)
   (arr.filter (· = false)).length = (result.filter (· = false)).length := by
@@ -38,6 +46,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval move_zeros ["a", 0, 0, "b", "c", "d", 0, 1, 0, 1, 0, 3, 0, 1, 9, 0, 0, 0, 0, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

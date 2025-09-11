@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(S: string)
 {
     |S| >= 3 && forall i :: 0 <= i < |S| ==> '1' <= S[i] <= '9'
@@ -28,6 +29,7 @@ predicate IsMinimumDifference(S: string, result: int)
     (exists i :: 0 <= i <= |S| - 3 && result == abs(753 - StringToInt(S[i..i+3]))) &&
     (forall i :: 0 <= i <= |S| - 3 ==> result <= abs(753 - StringToInt(S[i..i+3])))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

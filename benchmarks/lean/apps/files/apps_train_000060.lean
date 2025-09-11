@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_xor_expression (a b : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem xor_property (a b : Nat) :
   solve_xor_expression a b = a.xor b := by
   sorry
@@ -37,6 +45,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_xor_expression 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

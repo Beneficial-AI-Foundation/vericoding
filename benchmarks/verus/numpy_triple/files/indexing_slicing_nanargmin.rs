@@ -1,9 +1,11 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
 spec fn f32_is_nan(x: f32) -> bool;
 spec fn f32_le(a: f32, b: f32) -> bool;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

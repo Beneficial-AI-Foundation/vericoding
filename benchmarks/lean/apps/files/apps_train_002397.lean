@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_nth_digit (n : Nat) : Nat := sorry
 
 theorem find_nth_digit_in_range (n : Nat) (h : n > 0) :
   let result := find_nth_digit n
   0 ≤ result ∧ result ≤ 9 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem first_nine_digits_identity (n : Nat) (h1 : n > 0) (h2 : n ≤ 9) :
   find_nth_digit n = n := sorry
 
@@ -45,6 +53,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_nth_digit 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

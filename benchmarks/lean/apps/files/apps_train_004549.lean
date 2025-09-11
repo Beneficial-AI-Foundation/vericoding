@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encode (s : String) : String := sorry
 def decode (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_decode_roundtrip (s : String) :
   decode (encode s) = s := sorry 
 
@@ -39,6 +47,7 @@ info: test
 -/
 -- #guard_msgs in
 -- #eval decode encode(test)
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

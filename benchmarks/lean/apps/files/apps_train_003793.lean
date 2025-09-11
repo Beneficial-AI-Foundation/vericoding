@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pi : Float := 3.14159
 
 def cup_volume (d1 d2 h : Float) : Float := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cup_volume_positive
   (d1 d2 h : Float)
   (h1 : d1 > 1)
@@ -50,6 +58,7 @@ info: 1858.51
 -/
 -- #guard_msgs in
 -- #eval cup_volume 5 12 31
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

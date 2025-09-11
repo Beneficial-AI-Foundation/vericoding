@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def count {α : Type} [BEq α] (x : α) (xs : List α) : Nat :=
   xs.filter (· == x) |>.length
 
@@ -7,15 +8,21 @@ def IsSorted {α : Type} [LE α] : List α → Prop
   | [] => True
   | [_] => True
   | x :: y :: xs => x ≤ y ∧ IsSorted (y :: xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def modes {α : Type} [Ord α] [BEq α] [LE α] (xs : List α) : List α := sorry
 
 theorem modes_list_sorted {α : Type} [Ord α] [BEq α] [LE α] (xs : List α) (h : xs ≠ []) :
   IsSorted (modes xs) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem modes_elements_in_input {α : Type} [Ord α] [BEq α] [LE α] (xs : List α) (x : α) :
   x ∈ modes xs → x ∈ xs := sorry
 
@@ -48,6 +55,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval modes "redder"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

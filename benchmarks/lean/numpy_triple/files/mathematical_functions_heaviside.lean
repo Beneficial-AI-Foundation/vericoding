@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def heaviside {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem heaviside_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
     heaviside x1 x2
@@ -22,3 +29,4 @@ theorem heaviside_spec {n : Nat} (x1 x2 : Vector Float n) :
         -- Boundary behavior: result is either 0, 1, or x2
         (result.get i ≠ 0 → result.get i ≠ 1 → result.get i = x2.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

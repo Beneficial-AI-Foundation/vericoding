@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def highlight (s : String) : String := sorry 
 
 def colorFor (c : Char) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.count (s : String) (sub : String) : Nat := sorry
 
 theorem letter_get_correct_colors (c : Char) (h: c ∈ ['F', 'L', 'R']): 
@@ -16,7 +21,9 @@ theorem letter_get_correct_colors (c : Char) (h: c ∈ ['F', 'L', 'R']):
     | _ => ""
   colorFor c = color 
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numbers_get_orange (c : Char) (h : c.isDigit) :
   colorFor c = "orange" := sorry
 
@@ -46,6 +53,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval highlight "FF(LF6(RF3)2)3"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

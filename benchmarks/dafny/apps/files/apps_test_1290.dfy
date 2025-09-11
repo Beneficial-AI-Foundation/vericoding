@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, squares: seq<int>) {
     n >= 1 && n <= 1000 &&
     m >= 1 && m <= 1000 &&
@@ -16,6 +17,7 @@ predicate CorrectResult(n: int, squares: seq<int>, result: int) {
     (forall col :: 1 <= col <= n ==> result <= count_occurrences(squares, col)) &&
     (exists col :: 1 <= col <= n && result == count_occurrences(squares, col))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

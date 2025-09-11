@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def BowlingFrame := String
 def BowlingGame := String
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bowling_score (game : BowlingGame) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem score_zero_game :
   bowling_score "00 00 00 00 00 00 00 00 00 00" = 0 :=
   sorry
@@ -44,6 +51,7 @@ info: 171
 -/
 -- #guard_msgs in
 -- #eval bowling_score "X X 9/ 80 X X 90 8/ 7/ 44"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

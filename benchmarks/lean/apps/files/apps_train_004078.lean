@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sumList : List Int → Int 
   | [] => 0
   | (x::xs) => x + sumList xs
@@ -5,13 +6,19 @@ def sumList : List Int → Int
 def lengthList : List Int → Int
   | [] => 0
   | (_::xs) => 1 + lengthList xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def better_than_average (class_points: List Int) (your_points: Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem better_than_average_spec {class_points: List Int} {your_points: Int}
   (h: class_points ≠ []) :
   better_than_average class_points your_points = 
@@ -47,6 +54,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval better_than_average [12, 23, 34, 45, 56, 67, 78, 89, 90] 69
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

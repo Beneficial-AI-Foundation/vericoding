@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SumUpto(A: array<real>, end: int): real
   requires -1 <= end < A.Length
   reads A
@@ -13,6 +14,7 @@ function Sum(A: array<real>): real
 {
   SumUpto(A, A.Length-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

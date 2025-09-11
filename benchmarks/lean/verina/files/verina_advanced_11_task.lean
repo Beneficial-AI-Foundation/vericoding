@@ -1,15 +1,22 @@
+-- <vc-preamble>
 @[reducible, simp]
 def findMajorityElement_precond (lst : List Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def countOccurrences (n : Int) (lst : List Int) : Nat :=
   lst.foldl (fun acc x => if x = n then acc + 1 else acc) 0
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findMajorityElement (lst : List Int) (h_precond : findMajorityElement_precond (lst)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def findMajorityElement_postcond (lst : List Int) (result: Int) (h_precond : findMajorityElement_precond (lst)) : Prop :=
   let count := fun x => (lst.filter (fun y => y = x)).length
@@ -21,6 +28,7 @@ def findMajorityElement_postcond (lst : List Int) (result: Int) (h_precond : fin
 theorem findMajorityElement_spec_satisfied (lst: List Int) (h_precond : findMajorityElement_precond (lst)) :
     findMajorityElement_postcond (lst) (findMajorityElement (lst) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 def count_dog_soccer_results (n: Nat) (skills: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_within_mod_bounds {n : Nat} {skills : List Nat} :
   0 ≤ count_dog_soccer_results n skills ∧ 
   count_dog_soccer_results n skills < MOD :=
@@ -51,6 +59,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval count_dog_soccer_results 4 [1, 2, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

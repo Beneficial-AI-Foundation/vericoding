@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermgauss (deg : Nat) (h : deg > 0) : Id (Vector Float deg × Vector Float deg) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermgauss_spec (deg : Nat) (h : deg > 0) :
     ⦃⌜deg > 0⌝⦄
     hermgauss deg h
@@ -25,3 +32,4 @@ theorem hermgauss_spec (deg : Nat) (h : deg > 0) :
                  -- For Gauss-Hermite quadrature, the points are sorted
                  (∀ i j : Fin deg, i < j → points.get i < points.get j)⌝⦄ := by
   sorry
+-- </vc-theorems>

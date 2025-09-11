@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_even_sum_pairs (a b : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_even_sum_pairs_positive (a b : Nat) 
   (h1 : a > 0) (h2 : b > 0) (h3 : a ≤ 1000) (h4 : b ≤ 1000) : 
   count_even_sum_pairs a b ≥ 0 :=
@@ -47,6 +55,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval count_even_sum_pairs 4 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

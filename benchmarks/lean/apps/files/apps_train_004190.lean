@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def toString (h : String) (m : String) (s : String) : String := sorry
 
 def isDigit (s : String) : Bool := sorry
@@ -5,10 +6,14 @@ def isDigit (s : String) : Bool := sorry
 def toSeconds (s : String) : Option Nat := sorry
 
 def fromNat (n : Nat) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidTimeFormat (s : String) : Bool := sorry
 
 theorem valid_time_conversion 
@@ -18,7 +23,9 @@ theorem valid_time_conversion
   (s_bound : s ≤ 59) :
   toSeconds (toString (fromNat h) (fromNat m) (fromNat s)) = some (h * 3600 + m * 60 + s) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_format_returns_none
   (s : String)
   (h_invalid : ¬(isValidTimeFormat s)) :
@@ -66,6 +73,7 @@ info: 359999
 -/
 -- #guard_msgs in
 -- #eval to_seconds "99:59:59"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

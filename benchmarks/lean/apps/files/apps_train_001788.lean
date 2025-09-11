@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def braceExpansionII (s : String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem brace_expansion_result_is_ordered (expr : String) :
   let result := braceExpansionII expr
   ∀ (i j : Nat) (h1 : i < j) (h2 : j < result.length) (h3 : i < result.length), 
@@ -44,6 +52,7 @@ info: ['abdfg', 'abdfh', 'abefg', 'abefh', 'acdfg', 'acdfh', 'acefg', 'acefh']
 -/
 -- #guard_msgs in
 -- #eval braceExpansionII "a{b,c}{d,e}f{g,h}"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

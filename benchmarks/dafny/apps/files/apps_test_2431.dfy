@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype TestCase = TestCase(n: nat, x: nat, y: nat, z: nat, castles: seq<nat>)
 
 predicate ValidInput(input: string)
@@ -64,6 +65,7 @@ function count_winning_first_moves(tc: TestCase): nat
 {
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

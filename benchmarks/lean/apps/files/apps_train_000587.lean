@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def modifyList {α} (xs : List α) (i : Nat) (v : α) : List α := sorry
 
 def check_grid_stability (grid : List (List Nat)) (rows cols : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem corner_cells_stability {n : Nat} (h : n ≥ 2) :
   let grid₁ := List.replicate n (List.replicate n 0)
   let grid₂ := modifyList grid₁ 0 (modifyList (List.get! grid₁ 0) 0 2)
@@ -47,6 +55,7 @@ info: 'Unstable'
 -/
 -- #guard_msgs in
 -- #eval check_grid_stability [[1, 1, 1], [1, 4, 1], [1, 1, 1]] 3 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

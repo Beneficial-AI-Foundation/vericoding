@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def timed_reading (maxLength: Int) (text: String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem timed_reading_non_negative (maxLength: Int) (text: String) :
   timed_reading maxLength text ≥ 0 :=
 sorry
@@ -47,6 +55,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval timed_reading 1 "Oh!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

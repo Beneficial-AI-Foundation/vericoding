@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isnan {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isnan_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     isnan x
@@ -16,3 +23,4 @@ theorem isnan_spec {n : Nat} (x : Vector Float n) :
                  (∀ i : Fin n, ¬(x.get i).isNaN → result.get i = false) ∧
                  (∀ i : Fin n, (x.get i).isFinite → result.get i = false)⌝⦄ := by
   sorry
+-- </vc-theorems>

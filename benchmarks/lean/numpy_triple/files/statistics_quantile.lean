@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def quantile {n : Nat} (a : Vector Float (n + 1)) (q : Float) 
     (h_valid : 0 ≤ q ∧ q ≤ 1) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem quantile_spec {n : Nat} (a : Vector Float (n + 1)) (q : Float) 
     (h_valid : 0 ≤ q ∧ q ≤ 1) :
     ⦃⌜0 ≤ q ∧ q ≤ 1⌝⦄
@@ -22,3 +29,4 @@ theorem quantile_spec {n : Nat} (a : Vector Float (n + 1)) (q : Float)
       -- For 1-quantile, result should be ≥ maximum  
       (q = 1 → ∀ i : Fin (n + 1), a.get i ≤ result)⌝⦄ := by
   sorry
+-- </vc-theorems>

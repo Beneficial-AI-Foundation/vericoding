@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def p_num (n : Int) : Bool := sorry
 def g_p_num (n : Int) : Bool := sorry
 
@@ -8,13 +9,19 @@ def s_p_num (n : Int) : Bool := sorry
 def pen (n : Int) : Int := (3*n*n - n) / 2
 
 /- Helper function for generalized pentagonal numbers -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def gen_pen (n : Int) : Int :=
   if n >= 0 then (3*n*n - n) / 2 else (3*n*n + n) / 2
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem g_p_num_for_gen_pen (n : Int) : g_p_num (gen_pen n) = true := sorry
 
 theorem s_p_num_is_square_of_pentagonal_number {n : Int} (h : s_p_num n = true) : 
@@ -91,6 +98,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval s_p_num 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

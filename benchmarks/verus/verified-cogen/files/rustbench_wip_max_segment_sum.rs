@@ -1,3 +1,4 @@
+// <vc-preamble>
 #![crate_name = "max_segment_sum"]
 
 use vstd::prelude::*;
@@ -13,6 +14,7 @@ spec fn sum(a: Seq<i32>, s: int, t: int) -> int
         a[t - 1] + sum(a, s, t - 1)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

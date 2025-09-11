@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && '\n' in input
@@ -51,6 +52,7 @@ function ParseDimensions(line: string): (int, int)
     else
         (0, 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

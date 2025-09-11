@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_scrap (rates: List Float) (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem scrap_result_is_at_least_base (rates: List Float) (n: Nat) : calculate_scrap rates n ≥ n * 50 := 
   sorry
 
@@ -36,6 +44,7 @@ info: 4500
 -/
 -- #guard_msgs in
 -- #eval calculate_scrap [0, 0, 0] 90
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

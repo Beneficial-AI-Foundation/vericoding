@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isValidNamePart (s: String) : Bool :=
   sorry
 
 def formatName (input: List String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def formatNameStr (input: String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem format_name_list_properties {parts: List String} 
   (h: ∃ p ∈ parts, isValidNamePart p = true) :
   let result := formatName parts
@@ -61,6 +68,7 @@ info: 'M. K. Gandhi'
 -/
 -- #guard_msgs in
 -- #eval format_name "Mohndas KaramChand gandhi"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

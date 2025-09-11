@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def fmod {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fmod_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
     fmod x1 x2
@@ -27,3 +34,4 @@ theorem fmod_spec {n : Nat} (x1 x2 : Vector Float n) :
           -- The absolute value of remainder is less than absolute value of divisor
           Float.abs (result.get i) < Float.abs (x2.get i))⌝⦄ := by
   sorry
+-- </vc-theorems>

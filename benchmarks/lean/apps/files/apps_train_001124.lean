@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_lucky_count (n: Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_lucky_count_zero :
   find_lucky_count 0 = 0 := sorry
 
@@ -30,6 +38,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval find_lucky_count 15
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

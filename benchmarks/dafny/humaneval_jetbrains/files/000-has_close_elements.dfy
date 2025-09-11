@@ -1,3 +1,4 @@
+// <vc-preamble>
 function abs(val : real): real
 {
   if (val < 0.0) then
@@ -5,6 +6,7 @@ function abs(val : real): real
   else
     val
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

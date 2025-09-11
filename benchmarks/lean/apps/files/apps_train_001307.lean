@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n k : Nat) (edges : List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_result_bounds {n k : Nat} {edges : List (Nat × Nat)}
   (hn : n > 0) (hk : k > 0) (he : edges.length > 0) :
   let result := solve n k edges
@@ -38,6 +46,7 @@ info: 39
 -/
 -- #guard_msgs in
 -- #eval solve 4 3 [[1, 2], [2, 3], [2, 4]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

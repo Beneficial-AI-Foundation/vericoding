@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hop_across (lst : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hop_across_min_hops {lst : List Nat} (h : lst.length > 0) :
   hop_across lst ≥ 2 := sorry
 
@@ -37,6 +45,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval hop_across [1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

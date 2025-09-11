@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_nearest_cabs (n m : Nat) (cabs : List (List Int)) (trips : List (List Int)) : List Nat :=
   sorry
 
 -- Result length matches number of trips
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_nearest_cabs_length {n m : Nat} {cabs : List (List Int)} {trips : List (List Int)} :
   (∀ c ∈ cabs, List.length c = 2) →
   (∀ t ∈ trips, List.length t = 4) →
@@ -44,6 +52,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval find_nearest_cabs 2 1 [[1, 1], [1, 1]] [[2, 2, 3, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

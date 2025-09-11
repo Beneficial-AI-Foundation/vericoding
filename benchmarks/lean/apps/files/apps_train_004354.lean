@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def perms (s : String) : Nat := sorry
 
 def listPerms (l : List α) : List (List α) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listToString (l : List Char) : String := sorry
 
 def numUnique (xs : List String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem perms_matches_unique_perms_int {n : Nat} : 
   perms (toString n) = numUnique ((listPerms (toString n).data).map listToString) := sorry
 
@@ -41,6 +48,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval perms "abc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

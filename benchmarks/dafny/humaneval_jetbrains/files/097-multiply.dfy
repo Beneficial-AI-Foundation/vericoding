@@ -1,3 +1,4 @@
+// <vc-preamble>
 function last_digit(n: int): int
 
   ensures n >= 0 ==> last_digit(n) == n % 10
@@ -8,6 +9,7 @@ function last_digit(n: int): int
   if n < 0 then (-n) % 10 else n % 10
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

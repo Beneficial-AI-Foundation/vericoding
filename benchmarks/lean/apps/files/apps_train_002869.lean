@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def log10 (n : Nat) : Nat :=
   if n < 10 then 0
   else 1 + log10 (n / 10)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rocks (n : Nat) : Nat := sorry
 
 theorem rocks_monotonically_increasing 
   (n : Nat)
   (h : n > 1) :
   rocks n ≥ rocks (n-1) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rocks_minimum_bound
   (n : Nat)
   (h : n > 0) : 
@@ -40,6 +47,7 @@ info: 192
 -/
 -- #guard_msgs in
 -- #eval rocks 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

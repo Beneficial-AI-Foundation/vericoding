@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def compress_image (m n : Nat) (grid : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem compress_minimal_cases_2x2_perfect (grid : List String) :
   grid = ["11", "11"] → compress_image 2 2 grid = 0 :=
 sorry
@@ -35,6 +43,7 @@ sorry
 theorem compress_larger_3x3_checkerboard (grid : List String) :
   grid = ["101", "010", "101"] → compress_image 3 3 grid = 4 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

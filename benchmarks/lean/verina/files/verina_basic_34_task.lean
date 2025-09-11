@@ -1,15 +1,22 @@
+-- <vc-preamble>
 @[reducible, simp]
 def findEvenNumbers_precond (arr : Array Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def isEven (n : Int) : Bool :=
   n % 2 = 0
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findEvenNumbers (arr : Array Int) (h_precond : findEvenNumbers_precond (arr)) : Array Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def findEvenNumbers_postcond (arr : Array Int) (result: Array Int) (h_precond : findEvenNumbers_precond (arr)) :=
   (∀ x, x ∈ result → isEven x ∧ x ∈ arr.toList) ∧
@@ -22,6 +29,7 @@ def findEvenNumbers_postcond (arr : Array Int) (result: Array Int) (h_precond : 
 theorem findEvenNumbers_spec_satisfied (arr: Array Int) (h_precond : findEvenNumbers_precond (arr)) :
     findEvenNumbers_postcond (arr) (findEvenNumbers (arr) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lucasnum (n : Int) : Int := sorry
 
 -- Base cases
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lucas_zero : lucasnum 0 = 2 := sorry
 
 theorem lucas_one : lucasnum 1 = 1 := sorry
@@ -36,6 +44,7 @@ info: 11
 -/
 -- #guard_msgs in
 -- #eval lucasnum 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

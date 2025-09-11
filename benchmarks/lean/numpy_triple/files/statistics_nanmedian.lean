@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nanmedian {n : Nat} (a : Vector Float n) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nanmedian_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     nanmedian a
@@ -37,3 +44,4 @@ theorem nanmedian_spec {n : Nat} (a : Vector Float n) :
                        sorted_vals.get ⟨sorted_vals.length / 2, sorry⟩) / 2)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

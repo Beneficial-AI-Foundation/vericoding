@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountAs(s: string): int
     ensures 0 <= CountAs(s) <= |s|
     ensures CountAs(s) == |s| ==> (forall i :: 0 <= i < |s| ==> s[i] == 'a')
@@ -16,6 +17,7 @@ function RemoveAs(s: string): string
     else if s[0] == 'a' then RemoveAs(s[1..])
     else [s[0]] + RemoveAs(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

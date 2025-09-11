@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fly_by (lamps : String) (drone : String) : String := sorry
 
 def countChar (s : String) (c : Char) : Nat :=
   s.data.filter (· = c) |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fly_by_length_preservation {lamps drone : String} 
   (h1 : lamps.all (· = 'x')) 
   (h2 : drone.all (fun c => c = '=' ∨ c = 'T')) :
@@ -56,6 +64,7 @@ info: 'ooooooooooxxxxx'
 -/
 -- #guard_msgs in
 -- #eval fly_by "xxxxxxxxxxxxxxx" "=========T"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

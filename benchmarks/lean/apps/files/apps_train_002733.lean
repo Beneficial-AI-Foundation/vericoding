@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def startsWith (s : String) (pre : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem starts_with_matches_python (s pre : String) :
   startsWith s pre = String.startsWith s pre :=
   sorry
@@ -53,6 +61,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval starts_with "" "abc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

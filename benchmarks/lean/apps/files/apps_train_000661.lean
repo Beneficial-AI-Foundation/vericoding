@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD : Int := 998244353
 
 def process_array_queries (n m : Nat) (a b : List Int) (queries : List (List Int)) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem process_array_queries_result_length 
   (n m : Nat) (a b : List Int) (queries : List (List Int)) :
   queries.all (fun q => q.length > 0) →
@@ -39,6 +47,7 @@ theorem process_array_queries_dot_product
   (a.foldl (fun (acc : Int) (x : Int) => 
     b.foldl (fun (acc2 : Int) (y : Int) => (acc2 + ((x * y) % MOD)) % MOD) acc) 0) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (numbers: List Int) (delimeter: Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (implementation: List Int → Int → List Int)
@@ -33,6 +40,7 @@ theorem correctness
 : problem_spec implementation numbers delimeter
 := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation [1, 2, 3] 4 = [1, 4, 2, 4, 3]
 -- #test implementation [] 4 = []

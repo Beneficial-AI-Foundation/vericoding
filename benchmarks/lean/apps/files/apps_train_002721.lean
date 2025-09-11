@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def largest_sum (arr : List Int) : Int := sorry
 
 theorem largest_sum_nonnegative (arr : List Int) :
@@ -5,10 +6,14 @@ theorem largest_sum_nonnegative (arr : List Int) :
 
 def sum_positives (arr : List Int) : Int := 
   (arr.filter (fun x => x > 0)).foldl (· + ·) 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_contiguous_subsequence_sum (arr : List Int) (target : Int) : Bool := 
   let n := arr.length
   let indices := List.range n
@@ -21,7 +26,9 @@ def is_contiguous_subsequence_sum (arr : List Int) (target : Int) : Bool :=
         | some v => sum + v
       ) 0
       subseqSum = target
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 0
 -/
@@ -45,6 +52,7 @@ info: 187
 -/
 -- #guard_msgs in
 -- #eval largest_sum [31, -41, 59, 26, -53, 58, 97, -93, -23, 84]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

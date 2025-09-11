@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_nice_sequence_swaps (n : Nat) (sequence : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_nice_sequence_swaps_is_natural (n : Nat) (sequence : List Int) :
   ∃ (result : Nat), count_nice_sequence_swaps n sequence = result :=
   sorry
@@ -47,6 +55,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval count_nice_sequence_swaps 10 [3, 2, 1, 4, 1, 4, 1, 4, 1, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

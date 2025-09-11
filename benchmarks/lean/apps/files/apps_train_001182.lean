@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_digits_function (n : Nat) : Nat := sorry
 
 def solve_sequence_sum (first diff left right : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_digits_function_bounds (x : Nat) (h : x ≥ 1) :
   let result := sum_digits_function x
   1 ≤ result ∧ result ≤ 9 ∧ result = sum_digits_function result := sorry
@@ -48,6 +56,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval solve_sequence_sum 1 0 1 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

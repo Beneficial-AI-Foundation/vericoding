@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Submission := Nat × Nat
 
 def get_total_score (submissions : List Submission) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem total_score_nonnegative
   (submissions: List Submission) :
   get_total_score submissions ≥ 0 :=
@@ -50,6 +58,7 @@ info: 260
 -/
 -- #guard_msgs in
 -- #eval get_total_score [(1, 50), (2, 60), (3, 70), (8, 80)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

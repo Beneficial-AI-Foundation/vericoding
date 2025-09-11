@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_permutations (input: String) (k: Nat) : String := sorry 
 
 theorem permutation_length {s: String} {k: Nat} {h: k ≤ String.length s}:
   let perms := get_permutations s k
   ∀ perm ∈ perms.splitOn "\n", String.length perm = k := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem permutation_chars {s: String} {k: Nat} {h: k ≤ String.length s}:
   let perms := get_permutations s k
   let s_chars := s.toList
@@ -32,6 +40,7 @@ info: expected2
 -/
 -- #guard_msgs in
 -- #eval get_permutations "ABC 2" 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,8 +1,10 @@
+// <vc-preamble>
 use vstd::calc;
 use vstd::prelude::*;
 use vstd::seq_lib::lemma_multiset_commutative;
 
 verus! {
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

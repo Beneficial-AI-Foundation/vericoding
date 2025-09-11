@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def update_score (score: List Int) (trump: Int) (alone: Bool) (tricks: List Int) : List Int := sorry
 
 theorem update_score_preserves_length 
@@ -10,7 +16,9 @@ theorem update_score_preserves_length
   (h4: tricks.length = 5)
   (h5: ∀ t ∈ tricks, t ≥ 1 ∧ t ≤ 2) :
   (update_score score trump alone tricks).length = score.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem update_score_changes_one_team
   (score: List Int) (trump: Int) (alone: Bool) (tricks: List Int)
   (h1: trump ≥ 1) (h2: trump ≤ 2)
@@ -86,6 +94,7 @@ info: [9, 2]
 -/
 -- #guard_msgs in
 -- #eval update_score [7, 2] 2 False [1, 2, 2, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

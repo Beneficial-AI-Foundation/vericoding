@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def find_path_number : String → Nat 
   | s => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def MOD : Nat := 1000000007
 
 def mkString (c : String) (n : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_path_number_positive (s : String) : 
   find_path_number s > 0 := by sorry
 
@@ -53,6 +60,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_path_number "r"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

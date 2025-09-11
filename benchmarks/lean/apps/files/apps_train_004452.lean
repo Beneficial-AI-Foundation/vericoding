@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def split_exp (s : String) : List String := sorry
 
 def stringToFloat (s : String) : Float := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem split_exp_sum_equals_original (s : String) :
   let result := split_exp s
   if result.isEmpty then 
@@ -46,6 +54,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval split_exp "0"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

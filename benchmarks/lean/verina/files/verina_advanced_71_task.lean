@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible]
 def shortestBeautifulSubstring_precond (s : String) (k : Nat) : Prop :=
   s.toList.all (fun c => c = '0' ∨ c = '1')
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def countOnes (lst : List Char) : Nat :=
   lst.foldl (fun acc c => if c = '1' then acc + 1 else acc) 0
@@ -16,10 +19,14 @@ def allSubstrings (s : List Char) : List (List Char) :=
     (List.range (n - i)).map (fun j =>
       s.drop i |>.take (j + 1)))
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def shortestBeautifulSubstring (s : String) (k : Nat) (h_precond : shortestBeautifulSubstring_precond (s) (k)) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def shortestBeautifulSubstring_postcond (s : String) (k : Nat) (result: String) (h_precond : shortestBeautifulSubstring_precond (s) (k)) : Prop :=
   let chars := s.data
@@ -36,6 +43,7 @@ def shortestBeautifulSubstring_postcond (s : String) (k : Nat) (result: String) 
 theorem shortestBeautifulSubstring_spec_satisfied (s: String) (k: Nat) (h_precond : shortestBeautifulSubstring_precond (s) (k)) :
     shortestBeautifulSubstring_postcond (s) (k) (shortestBeautifulSubstring (s) (k) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

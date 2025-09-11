@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate validInputFormat(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n' &&
@@ -52,6 +53,7 @@ function stringToInt(s: string): nat
 {
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

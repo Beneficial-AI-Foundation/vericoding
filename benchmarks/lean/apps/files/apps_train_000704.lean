@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def differentiate_polynomial (terms : List (Int × Nat)) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem derivative_formatting_empty_or_constant (terms : List (Int × Nat)) :
   (terms.isEmpty ∨ terms.all (fun t => t.2 = 0)) →
   differentiate_polynomial terms = "0" :=
@@ -65,6 +73,7 @@ info: '0'
 -/
 -- #guard_msgs in
 -- #eval differentiate_polynomial [[5, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

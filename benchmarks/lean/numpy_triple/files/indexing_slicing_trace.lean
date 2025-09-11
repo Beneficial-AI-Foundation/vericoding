@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def trace {rows cols : Nat} (a : Vector (Vector Float cols) rows) (offset : Int) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trace_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows) (offset : Int) :
     ⦃⌜True⌝⦄
     trace a offset
@@ -27,3 +34,4 @@ theorem trace_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows) (offs
           result = valid_indices.foldl (fun acc ij => acc + (a.get ij.1).get ij.2) 0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

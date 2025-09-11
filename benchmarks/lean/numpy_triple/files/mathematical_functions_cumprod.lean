@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def cumprod {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cumprod_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     cumprod a
@@ -18,3 +25,4 @@ theorem cumprod_spec {n : Nat} (a : Vector Float n) :
                  -- Key mathematical property: cumulative structure (each element incorporates previous)
                  (∀ i j : Fin n, i.val + 1 = j.val → result.get j = result.get i * a.get j)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_get_zero_sum_subset (a b c d : Int) : String := sorry
 
 theorem zerosum_gives_yes_result {a b c d : Int} (h : a = 0 ∨ b = 0 ∨ c = 0 ∨ d = 0) : 
   can_get_zero_sum_subset a b c d = "Yes" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem opposite_pairs_give_yes_result {a b c d : Int} 
   (h : a = -b ∨ a = -c ∨ a = -d ∨ b = -c ∨ b = -d ∨ c = -d) :
   can_get_zero_sum_subset a b c d = "Yes" := sorry
@@ -30,6 +38,7 @@ theorem opposite_pair_gives_yes (x : Int) :
 
 theorem all_positive_sequence_gives_no (x : Int) (h : x > 0) :
   can_get_zero_sum_subset x (x+1) (x+2) (x+3) = "No" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

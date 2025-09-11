@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sharkovsky (a b : Nat) : Bool := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sharkovsky_reflexive {a : Nat} :
   ¬ sharkovsky a a := 
   sorry
@@ -55,6 +63,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval sharkovsky 17 17
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

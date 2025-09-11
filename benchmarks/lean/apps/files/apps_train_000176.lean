@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def getLengthOfOptimalCompression (s : String) (k : Nat) : Nat := sorry
 
 def naiveCompressionLength (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem compressed_length_non_negative (s : String) (k : Nat) :
   getLengthOfOptimalCompression s k ≥ 0 := sorry
 
@@ -37,6 +45,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval getLengthOfOptimalCompression "aaaaaaaaaaa" 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

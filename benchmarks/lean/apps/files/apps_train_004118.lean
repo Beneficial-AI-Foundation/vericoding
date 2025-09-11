@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_match (s : String) : List String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_match_empty (s : String) :
   s = "" → max_match s = [] :=
 sorry
@@ -37,6 +45,7 @@ info: ['the', 'cat', 'sat']
 -/
 -- #guard_msgs in
 -- #eval max_match "thecatsat"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

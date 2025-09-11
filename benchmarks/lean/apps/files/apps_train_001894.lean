@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def Grid := List (List Nat)
 
 def closed_island (grid : Grid) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum (l: List Nat) : Nat :=
   match l with
   | [] => 0
   | x::xs => x + listSum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem closed_island_non_negative (grid: Grid) : 
   closed_island grid ≥ 0 :=
   sorry
@@ -67,6 +74,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval closed_island [[1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 1, 1, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1], [1, 0, 1, 1, 1, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

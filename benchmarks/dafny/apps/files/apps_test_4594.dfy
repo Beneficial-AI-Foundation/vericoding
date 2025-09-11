@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(diameters: seq<int>)
 {
     |diameters| > 0 && forall i :: 0 <= i < |diameters| ==> diameters[i] > 0
@@ -13,6 +14,7 @@ function num_distinct(s: seq<int>): int
     else if s[0] in s[1..] then num_distinct(s[1..])
     else 1 + num_distinct(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

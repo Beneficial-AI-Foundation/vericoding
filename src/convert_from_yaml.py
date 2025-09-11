@@ -43,11 +43,17 @@ def spec_to_string(spec: dict, template: list[str]) -> str:
 def get_template(suffix: str) -> list[str]:
     """Get template for the output file."""
     if suffix == 'lean':
-        return [('vc-preamble',None,None), ('\n',None,None), ('vc-helpers',None,None), ('\n',None,None), 
-                ('vc-definitions',None,None), ('\n',None,None), ('vc-theorems',None,None), ('\n',None,None), ('vc-postamble',None,None)]
+        return [('vc-preamble','-- <vc-preamble>','-- </vc-preamble>'), ('\n',None,None), 
+                ('vc-helpers','-- <vc-helpers>','-- </vc-helpers>'), ('\n',None,None),
+                ('vc-definitions','-- <vc-definitions>','-- </vc-definitions>'), ('\n',None,None), 
+                ('vc-theorems','-- <vc-theorems>','-- </vc-theorems>'), ('\n',None,None), 
+                ('vc-postamble',None,None)]
     elif suffix == 'dfy' or suffix == 'rs':
-        return [('vc-preamble',None,None), ('\n',None,None), ('vc-helpers','// <vc-helpers>','// </vc-helpers>'), ('\n',None,None), 
-                ('vc-spec',"// <vc-spec>","// </vc-spec>"), ('vc-code',"// <vc-code>","// </vc-code>"), ('\n',None,None), ('vc-postamble',None,None)]
+        return [('vc-preamble','// <vc-preamble>','// </vc-preamble>'), ('\n',None,None), 
+                ('vc-helpers','// <vc-helpers>','// </vc-helpers>'), ('\n',None,None),
+                ('vc-spec','// <vc-spec>','// </vc-spec>'), 
+                ('vc-code','// <vc-code>','// </vc-code>'), ('\n',None,None), 
+                ('vc-postamble',None,None)]
     else:
         raise ValueError(f"Unsupported suffix: {suffix}")
 

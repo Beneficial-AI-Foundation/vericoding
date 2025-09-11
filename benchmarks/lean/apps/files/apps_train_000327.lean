@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_steps_to_anagram (s1 s2 : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem anagram_non_negative (s1 s2 : String) :
   min_steps_to_anagram s1 s2 ≥ 0 :=
   sorry
@@ -47,6 +55,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_steps_to_anagram "anagram" "mangaar"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

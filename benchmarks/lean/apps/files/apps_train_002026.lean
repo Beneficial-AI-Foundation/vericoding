@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def maximum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | h::t => List.foldl max h t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_group_strengths (n : Nat) (heights : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_matches_input 
   {n : Nat} {heights : List Nat} 
   (h1 : heights.length > 0) (h2 : heights.length = n) 
@@ -64,6 +71,7 @@ info: [585325539, 365329221, 365329221, 291882089, 291882089]
 -/
 -- #guard_msgs in
 -- #eval find_max_group_strengths 5 heights3.copy()
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

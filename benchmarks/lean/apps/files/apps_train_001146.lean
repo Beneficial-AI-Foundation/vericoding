@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_expected_sum (num_pages : Nat) (unprinted : List Nat) (num_torn : Nat) : Float := sorry
 
 theorem identity_property_one :
   calculate_expected_sum 1 [] 0 = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identity_property_two :
   calculate_expected_sum 2 [] 0 = 3 := sorry
 
@@ -26,6 +34,7 @@ theorem unprinted_reduces_sum (num_pages : Nat) (unprinted : List Nat)
   (h1 : ∀ p ∈ unprinted, p ≤ num_pages)
   (h2 : unprinted ≠ []) :
   calculate_expected_sum num_pages unprinted 0 ≤ calculate_expected_sum num_pages [] 0 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

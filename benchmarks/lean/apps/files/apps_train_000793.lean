@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_min_x (n k : Nat) (arr : List Int) : Int := sorry
 
 def compute_cost (x : Int) (k : Nat) (arr : List Int) : Int := sorry
@@ -6,15 +7,21 @@ def list_min (l : List Int) : Int :=
   match l with
   | [] => 0
   | (x::xs) => List.foldl min x xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_max (l : List Int) : Int :=
   match l with
   | [] => 0
   | (x::xs) => List.foldl max x xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_x_is_int {n k : Nat} {arr : List Int} (h : arr.length > 0)
   (h1 : k > 0) (h2 : k ≤ 5) :
   ∃ (y : Int), find_min_x n k arr = y := sorry
@@ -53,6 +60,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_min_x 3 3 [6, 1, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

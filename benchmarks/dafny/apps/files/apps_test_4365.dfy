@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(K: int) {
     2 <= K <= 100
 }
@@ -25,6 +26,7 @@ predicate CorrectResult(K: int, result: int)
 {
     result == ExpectedResult(K)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

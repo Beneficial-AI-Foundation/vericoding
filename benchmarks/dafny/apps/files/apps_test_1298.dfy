@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate is_binary_string(s: string)
 {
     forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
@@ -53,6 +54,7 @@ function string_to_int(s: string): int
     else if |s| == 1 then (s[0] as int) - ('0' as int)
     else string_to_int(s[0..|s|-1]) * 10 + ((s[|s|-1] as int) - ('0' as int))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

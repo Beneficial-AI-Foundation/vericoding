@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def binary_gcd (x y : Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def popCount (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem binary_gcd_matches_gcd (x y : Int) :
   binary_gcd x y = popCount (Int.gcd x y) :=
   sorry
@@ -41,6 +48,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval binary_gcd -8 12
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

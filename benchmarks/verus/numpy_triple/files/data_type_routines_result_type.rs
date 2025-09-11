@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -55,6 +56,7 @@ spec fn operand_type(operand: NumpyOperand) -> NumpyDType {
 spec fn promote_types(t1: NumpyDType, t2: NumpyDType) -> NumpyDType {
     if type_rank(t1) >= type_rank(t2) { t1 } else { t2 }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

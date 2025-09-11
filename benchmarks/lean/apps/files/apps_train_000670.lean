@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def canZebrasSpatAtEachOther (positions : List (Int × Int)) : Bool := sorry
 
 theorem canZebrasSpatAtEachOther_returns_bool 
@@ -8,7 +14,9 @@ theorem canZebrasSpatAtEachOther_returns_bool
   (h1 : positions ≠ []) : 
   canZebrasSpatAtEachOther positions = true ∨ 
   canZebrasSpatAtEachOther positions = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reciprocal_spitting
   {positions : List (Int × Int)}
   {pos1 pos2 dist1 dist2 : Int}
@@ -35,6 +43,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_zebras_spit_at_each_other [[0, 2], [1, 1], [2, -2]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

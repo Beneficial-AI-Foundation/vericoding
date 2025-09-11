@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_cyclic_shift_game (s : String) : Float := sorry
 
 def is_valid_result (s : String) (result : Float) : Prop :=
   0 ≤ result ∧ result ≤ 1 ∧ 
   (Float.abs (result - ((Float.floor (result * (Float.ofNat s.length))) / (Float.ofNat s.length))) < 0.000001)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_cyclic_shift_game_properties (s : String) (h : s.length > 0) :
   is_valid_result s (solve_cyclic_shift_game s) := sorry
 
@@ -22,6 +30,7 @@ theorem repeated_string_properties (s : String) (t : String)
 
 theorem single_char :
   solve_cyclic_shift_game "a" = 0 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

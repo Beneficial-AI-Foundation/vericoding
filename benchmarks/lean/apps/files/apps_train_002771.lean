@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_vowels (s : String) : Option Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_vowels_eq_vowels_count (s : String) :
   count_vowels s = some (s.data.filter (fun c => ['a', 'e', 'i', 'o', 'u'].contains c.toLower)).length := by
   sorry
@@ -33,6 +41,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval count_vowels 12
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

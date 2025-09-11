@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calcWeight (s : String) : Nat := sorry 
 
 def orderWeight (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_input_gives_empty_output : orderWeight "" = "" := sorry
 
 theorem output_has_same_elements (s : String) :
@@ -51,6 +59,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval order_weight ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

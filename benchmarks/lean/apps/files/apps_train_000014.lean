@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_make_square (a1 b1 a2 b2 : Nat) : Bool := sorry
 
 theorem can_make_square_symmetric_first_rect (a1 b1 a2 b2 : Nat) 
   (h1 : a1 > 0) (h2 : b1 > 0) (h3 : a2 > 0) (h4 : b2 > 0) :
   can_make_square a1 b1 a2 b2 = can_make_square b1 a1 a2 b2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_make_square_symmetric_second_rect (a1 b1 a2 b2 : Nat)
   (h1 : a1 > 0) (h2 : b1 > 0) (h3 : a2 > 0) (h4 : b2 > 0) :
   can_make_square a1 b1 a2 b2 = can_make_square a1 b1 b2 a2 := sorry
@@ -44,6 +52,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval can_make_square 3 3 1 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidTestCase(a: nat, b: nat, n: nat, m: nat)
 {
     n + m > 0
@@ -15,6 +16,7 @@ function min(x: nat, y: nat): nat
 {
     if x <= y then x else y
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

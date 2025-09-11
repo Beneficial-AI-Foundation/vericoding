@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Heap := List Int
 
 def ins (l : Heap) (x : Int) : Heap := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pop (l : Heap) : Int × Heap := sorry
 
 /- The heap maintains the min-heap property after insertions -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem heap_maintains_min_property {h : Heap} (xs : List Int) : 
   let h' := xs.foldl (fun acc x => ins acc x) h
   ∀ i, 2 ≤ i → i < h'.length → 
@@ -53,6 +60,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval solve_election 6 [[2, 6], [2, 3], [2, 8], [2, 7], [4, 4], [5, 5]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

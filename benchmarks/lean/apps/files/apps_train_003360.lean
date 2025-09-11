@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def increment_string (s : String) : String := sorry
 
 theorem increment_string_length (text : String) (num : Nat) (leading_zeros : Nat)
@@ -9,7 +15,9 @@ theorem increment_string_length (text : String) (num : Nat) (leading_zeros : Nat
     (if num > 0 then String.mk (List.replicate leading_zeros '0') ++ toString num else ""))) ≥ 
   String.length (text ++ 
     (if num > 0 then String.mk (List.replicate leading_zeros '0') ++ toString num else "")) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem increment_string_preserves_prefix (text : String) (num : Nat) (leading_zeros : Nat)
   (h : num ≤ 999999) (h2 : leading_zeros ≤ 5) :
   (increment_string (text ++ 
@@ -50,6 +58,7 @@ info: 'foobar100'
 -/
 -- #guard_msgs in
 -- #eval increment_string "foobar99"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

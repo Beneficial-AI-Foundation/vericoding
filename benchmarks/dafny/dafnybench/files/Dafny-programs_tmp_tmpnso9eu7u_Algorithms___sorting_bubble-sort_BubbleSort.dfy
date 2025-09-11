@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate sorted_between(A:array<int>, from:int, to:int)
     reads A
 {
@@ -9,6 +10,7 @@ predicate sorted(A:array<int>)
 {
     sorted_between(A, 0, A.Length-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

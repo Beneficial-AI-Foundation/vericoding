@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def automorphic (n : Nat) : String := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def length (s : String) : Nat := s.data.length
 def endsWith (s1 s2 : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem automorphic_returns_valid_string (n : Nat) : 
   automorphic n = "Automorphic" ∨ automorphic n = "Not!!" := 
   sorry
@@ -42,6 +49,7 @@ info: 'Not!!'
 -/
 -- #guard_msgs in
 -- #eval automorphic 53
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

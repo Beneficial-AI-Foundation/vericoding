@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def char_concat (s : String) : String := sorry
 
 theorem spaces_handling (word : String) :
   char_concat word = char_concat (word.replace " " "") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem first_pair {word : String} (h : word.length ≥ 2) :
   let result := char_concat word
   (result.data[0]! = word.data[0]!) ∧ 
@@ -29,6 +37,7 @@ info: '101292383474565'
 -/
 -- #guard_msgs in
 -- #eval char_concat "1234567890"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def squareIt (n : Nat) : String := sorry
 
 def isPerfectSquare (n : Nat) : Bool := sorry
@@ -5,13 +6,19 @@ def isPerfectSquare (n : Nat) : Bool := sorry
 def hasEqualRows (s : String) : Bool := sorry
 
 def isqrt (n : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def splitLines (s : String) : List String := 
   String.splitOn s "\n"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem square_it_properties (n : Nat) : 
   n ≤ 10^12 →
   let digits := toString n
@@ -56,6 +63,7 @@ info: 'Not a perfect square!'
 -/
 -- #guard_msgs in
 -- #eval square_it 12345
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

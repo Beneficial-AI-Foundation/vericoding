@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_teams (n : Nat) (choices : List Int) : Float := sorry
 
 -- Property tests as theorems
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_teams_basic_properties
   (n : Nat)
   (choices : List Int)
@@ -45,6 +53,7 @@ theorem solve_teams_one_lazy
   (h2 : choices.head? = some (-1))
   (h3 : ∀ x ∈ choices.tail, x = 1) :
   solve_teams n choices = 1.0 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

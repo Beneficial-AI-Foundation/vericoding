@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(trainFare: int, busFare: int)
 {
     1 <= trainFare <= 100 && 1 <= busFare <= 100 && busFare % 2 == 0
@@ -8,6 +9,7 @@ function TotalCost(trainFare: int, busFare: int): int
 {
     trainFare + busFare / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

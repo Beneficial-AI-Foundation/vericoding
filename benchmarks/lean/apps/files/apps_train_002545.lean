@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def no_order (s : String) : Option Int := sorry
 
 theorem no_order_returns_option_int (expr : String) :
@@ -8,7 +14,9 @@ theorem no_order_returns_option_int (expr : String) :
   | some n => True 
   | none => True
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_order_whitespace_is_none (spaces : String) 
   (h : ∀ c ∈ spaces.data, c = ' ') :
   no_order spaces = none := sorry
@@ -43,6 +51,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval no_order "6 9* 2+6 /  0"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

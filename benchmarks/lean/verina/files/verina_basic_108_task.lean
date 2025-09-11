@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def below_zero_precond (operations : List Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def buildS (operations : List Int) : Array Int :=
   let sList := operations.foldl
@@ -11,10 +14,14 @@ def buildS (operations : List Int) : Array Int :=
     [0]
   Array.mk sList
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def below_zero (operations : List Int) (h_precond : below_zero_precond (operations)) : (Array Int × Bool) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def below_zero_postcond (operations : List Int) (result: (Array Int × Bool)) (h_precond : below_zero_precond (operations)) :=
   let s := result.1
@@ -28,6 +35,7 @@ def below_zero_postcond (operations : List Int) (result: (Array Int × Bool)) (h
 theorem below_zero_spec_satisfied (operations: List Int) (h_precond : below_zero_precond (operations)) :
     below_zero_postcond (operations) (below_zero (operations) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

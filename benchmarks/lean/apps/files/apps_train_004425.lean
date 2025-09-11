@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def isDigit (c : Char) : Bool := sorry
 
 def allDigits (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def md5hash (s : String) : String := sorry
 
 def crack (hash : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem crack_roundtrip {num : Nat} (h : num ≤ 99999) :
   let numStr := toString num
   let paddedStr := if numStr.length < 5 then String.mk (List.replicate (5 - numStr.length) '0') ++ numStr else numStr
@@ -37,6 +44,7 @@ info: '00078'
 -/
 -- #guard_msgs in
 -- #eval crack "86aa400b65433b608a9db30070ec60cd"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

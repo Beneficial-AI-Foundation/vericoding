@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, arr: seq<int>)
 {
   n >= 1 && |arr| == n
@@ -16,6 +17,7 @@ predicate CorrectResult(n: int, arr: seq<int>, result: int)
   (sum_seq(arr) % n != 0 ==> result == n - 1) &&
   (result == n || result == n - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

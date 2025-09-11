@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_triangle (a b c : Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_valid_triangle_output_valid (a b c : Int) :
   is_valid_triangle a b c = "YES" ∨ is_valid_triangle a b c = "NO" :=
   sorry
@@ -45,6 +53,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval is_valid_triangle 180 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

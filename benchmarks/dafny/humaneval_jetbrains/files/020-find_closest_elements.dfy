@@ -1,3 +1,4 @@
+// <vc-preamble>
 function dist(a: real, b: real) : (d : real)
     ensures d >= 0.0
     ensures (d == 0.0) <==> a == b
@@ -8,6 +9,7 @@ function des(s: seq<real>, a: int, b: int) : bool {
 
     0 <= a < |s| && 0 <= b < |s| && a != b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

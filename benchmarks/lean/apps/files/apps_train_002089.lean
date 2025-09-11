@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_changes (arr : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_bounds {arr : List Nat} : 
   0 ≤ find_min_changes arr ∧ find_min_changes arr ≤ arr.length :=
 sorry
@@ -34,6 +42,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_min_changes [6, 6, 3, 3, 4, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

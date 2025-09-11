@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate AllEven(a: seq<int>)
 {
     forall i :: 0 <= i < |a| ==> a[i] % 2 == 0
@@ -7,6 +8,7 @@ predicate HasOdd(a: seq<int>)
 {
     exists i :: 0 <= i < |a| && a[i] % 2 == 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

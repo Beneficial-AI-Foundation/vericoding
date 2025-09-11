@@ -1,9 +1,11 @@
+// <vc-preamble>
 predicate IsOdd(x: int)
 {
     x % 2 != 0
 }
 
 datatype Option<T> = None | Some(value: T)
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

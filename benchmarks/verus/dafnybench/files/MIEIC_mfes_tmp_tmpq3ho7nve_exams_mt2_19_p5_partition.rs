@@ -1,8 +1,10 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
 type T = int;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

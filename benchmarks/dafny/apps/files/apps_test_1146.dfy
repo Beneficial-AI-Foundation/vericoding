@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: nat, m: nat, buttons: seq<seq<nat>>)
 {
     |buttons| == n &&
@@ -14,6 +15,7 @@ predicate CanTurnOnAllBulbs(m: nat, buttons: seq<seq<nat>>)
 {
     |unionOfAllBulbs(buttons)| == m
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

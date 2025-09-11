@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isVowel (c : Char) : Bool := 
   c = 'a' ∨ c = 'e' ∨ c = 'i' ∨ c = 'o' ∨ c = 'u'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def minCostVowelTransform (s : String) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cost_non_negative (s : String) :
   minCostVowelTransform s ≥ 0 :=
 sorry
@@ -50,6 +57,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_cost_vowel_transform "bc"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

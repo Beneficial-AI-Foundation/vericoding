@@ -1,6 +1,8 @@
+// <vc-preamble>
 method q(x:nat, y:nat) returns (z:nat)
 requires y - x > 2
 ensures x < z*z < y
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

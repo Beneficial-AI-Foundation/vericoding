@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def peak_index_in_mountain_array (arr : List Int) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem peak_index_not_at_edges {arr : List Int} (h: arr.length ≥ 3)
   (hm: ∃ i, 0 < i ∧ i < arr.length - 1 ∧ 
     (∀ j < i, arr[j]! < arr[j+1]!) ∧ 
@@ -45,6 +53,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval peak_index_in_mountain_array [24, 69, 100, 99, 79, 78, 67, 36, 26, 19]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

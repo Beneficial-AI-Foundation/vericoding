@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lagval2d {nx ny m : Nat} (x : Vector Float m) (y : Vector Float m) 
     (c : Vector (Vector Float (ny + 1)) (nx + 1)) : Id (Vector Float m) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lagval2d_spec {nx ny m : Nat} (x : Vector Float m) (y : Vector Float m) 
     (c : Vector (Vector Float (ny + 1)) (nx + 1)) :
     ⦃⌜True⌝⦄
@@ -25,3 +32,4 @@ theorem lagval2d_spec {nx ny m : Nat} (x : Vector Float m) (y : Vector Float m)
       result.size = x.size ∧ result.size = y.size
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

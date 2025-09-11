@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def gta (base : Nat) (n1 : Nat) (n2 : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gta_positive (base n₁ n₂ : Nat) :
   gta base n₁ n₂ > 0 := by sorry 
 
@@ -30,6 +38,7 @@ info: 3836040
 -/
 -- #guard_msgs in
 -- #eval gta 8 12348 47 3639
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

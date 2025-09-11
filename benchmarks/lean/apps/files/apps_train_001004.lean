@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_teleport_game (R C N Sx Sy : Nat) (tel_pairs : List (Nat × Nat)) (board : List (List Int)) : Int := sorry
 
 theorem solve_teleport_game_includes_start_value (R C N Sx Sy : Nat) (tel_pairs : List (Nat × Nat)) (board : List (List Int)) 
   (h1 : Sx < board.length) (h2 : Sy < (board[Sx].length)) :
   solve_teleport_game R C N Sx Sy tel_pairs board ≥ board[Sx][Sy] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_teleport_game_empty_teleports (R C : Nat) (h1 : R > 0) (h2 : C > 0) :
   solve_teleport_game R C 0 0 0 [] (List.replicate R (List.replicate C 1)) = 1 := sorry
 
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_teleport_game 2 2 1 1 1 list(zip(tx, ty)) [[5, 6], [8, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

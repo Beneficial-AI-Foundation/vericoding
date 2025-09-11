@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_height_visits (n : Nat) (heights : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_height_visits_bounds {n : Nat} {heights : List Nat} 
   (h1 : heights.length = n) (h2 : n > 0) :
   let result := find_max_height_visits n heights
@@ -54,6 +62,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval find_max_height_visits n3 heights3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

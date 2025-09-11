@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x: int, a: int, b: int)
 {
     1 <= x <= 1000 &&
@@ -17,6 +18,7 @@ predicate CorrectResult(x: int, a: int, b: int, result: string)
     (result == "A" <==> Distance(x, a) < Distance(x, b)) &&
     (result == "B" <==> Distance(x, b) < Distance(x, a))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

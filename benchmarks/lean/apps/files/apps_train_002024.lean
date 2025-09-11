@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_triples_within_dist (n: Nat) (d: Nat) (points: List Int) : Nat := sorry
 
 theorem count_is_non_negative (n: Nat) (d: Nat) (points: List Int) :
   count_triples_within_dist n d points ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem increasing_distance_increases_count (n: Nat) (d: Nat) (points: List Int) :
   count_triples_within_dist n (2 * d) points ≥ count_triples_within_dist n d points := sorry 
 
@@ -29,6 +37,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_triples_within_dist 5 19 [1, 10, 20, 30, 50]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

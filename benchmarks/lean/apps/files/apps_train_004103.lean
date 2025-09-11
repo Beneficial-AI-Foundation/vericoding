@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def chameleon (chameleons : List Nat) (color : Nat) : Int := sorry
 
 theorem chameleon_result_is_valid 
@@ -16,7 +22,9 @@ theorem chameleon_result_is_valid
       (b - a) % 3 = 0 ∧ 
       result = b)
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: -1
 -/
@@ -34,6 +42,7 @@ info: 35
 -/
 -- #guard_msgs in
 -- #eval chameleon [34, 32, 35] 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

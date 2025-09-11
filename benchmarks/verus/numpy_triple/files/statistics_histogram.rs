@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn sum_seq(s: Seq<usize>) -> nat
         (s[0] as nat) + sum_seq(s.drop_first())
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

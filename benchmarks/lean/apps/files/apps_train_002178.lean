@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def countEmptyParabolas (points : List (Int × Int)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def makeParabolaPoints (a h k : Int) (n : Nat) : List (Int × Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem countEmptyParabolas_nonnegative (points : List (Int × Int)) :
   countEmptyParabolas points ≥ 0 := by
   sorry
@@ -49,6 +56,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_empty_parabolas [(-751115, -925948)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

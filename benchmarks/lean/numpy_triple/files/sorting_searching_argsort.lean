@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def argsort {n : Nat} (a : Vector Float n) : Id (Vector (Fin n) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem argsort_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     argsort a
@@ -19,3 +26,4 @@ theorem argsort_spec {n : Nat} (a : Vector Float n) :
                    -- For equal elements, maintain relative order (stable sort)
                    (∀ i j : Fin n, i < j → a.get (indices.get i) = a.get (indices.get j) → indices.get i < indices.get j)⌝⦄ := by
   sorry
+-- </vc-theorems>

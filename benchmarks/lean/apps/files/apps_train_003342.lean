@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def maximum (xs : List Int) : Int := sorry
 def minimum (xs : List Int) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sorted (xs : List Int) : List Int := sorry
 def max_gap (xs : List Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_gap_positive (xs : List Int) (h : xs.length ≥ 2) : 
   max_gap xs ≥ 0 := sorry
 
@@ -44,6 +51,7 @@ info: 576
 -/
 -- #guard_msgs in
 -- #eval max_gap [-54, 37, 0, 64, -15, 640, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

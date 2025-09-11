@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string) 
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
@@ -10,6 +11,7 @@ predicate CorrectPlural(s: string, result: string)
     else
         result == s + "s"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

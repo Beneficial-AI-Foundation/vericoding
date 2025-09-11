@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate (expr : String) : String := sorry
 
 theorem basic_operations 
@@ -17,7 +23,9 @@ theorem basic_operations
   | '$' => result = toString (x / y)
   | _ => False
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_chars
   (s : String)
   (h : ∀ c ∈ s.data, c ∉ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '$', '.']) :
@@ -58,6 +66,7 @@ info: '400: Bad request'
 -/
 -- #guard_msgs in
 -- #eval calculate "10-9p"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

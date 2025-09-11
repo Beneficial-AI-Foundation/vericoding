@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def sum (xs : List Int) : Int :=
   match xs with
   | [] => 0
   | x :: rest => x + sum rest
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def split_and_add (numbers : List Int) (n : Nat) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem split_and_add_empty (n : Nat) :
   split_and_add [] n = [] := sorry
 
@@ -26,6 +33,7 @@ theorem split_and_add_idempotent (numbers : List Int) (n : Nat) :
 theorem split_and_add_length_decreases {numbers : List Int} (n : Nat) :
   numbers.length ≥ 2 →
   (split_and_add numbers 1).length ≤ numbers.length := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

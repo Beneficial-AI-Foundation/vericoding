@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def final_grade (exam : Int) (projects : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem final_grade_output_range (exam : Int) (projects : Int) :
   final_grade exam projects = 0 ∨ 
   final_grade exam projects = 75 ∨
@@ -58,6 +66,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval final_grade 55 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

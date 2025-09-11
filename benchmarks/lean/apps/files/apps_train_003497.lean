@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_orthogonal (v1 v2 : List Int) : Bool := sorry
 
 theorem nonzero_vector_not_self_orthogonal {v : List Int} 
   (h : ∃ x ∈ v, x ≠ 0) : ¬is_orthogonal v v := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem perpendicular_2d (n : Int) : 
   is_orthogonal [n, n] [-n, n] := sorry
 
@@ -34,6 +42,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_orthogonal [1, 1, 1] [2, 5, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

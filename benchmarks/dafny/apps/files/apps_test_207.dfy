@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: seq<int>)
 {
     |a| >= 1
@@ -8,6 +9,7 @@ predicate CanBeDivided(a: seq<int>)
 {
     |a| % 2 == 1 && a[0] % 2 == 1 && a[|a|-1] % 2 == 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

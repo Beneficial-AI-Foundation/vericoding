@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Direction := String
 
 def direction_in_grid (n m : Nat) : Direction :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem direction_in_grid_output_format {n m : Nat} (h1 : n > 0) (h2 : m > 0) (h3 : n ≤ 1000) (h4 : m ≤ 1000) :
   direction_in_grid n m = "U" ∨ 
   direction_in_grid n m = "D" ∨
@@ -39,6 +47,7 @@ info: 'U'
 -/
 -- #guard_msgs in
 -- #eval direction_in_grid 4 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

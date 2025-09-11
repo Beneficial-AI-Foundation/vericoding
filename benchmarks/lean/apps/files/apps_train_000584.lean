@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxStadiumEvents (events : List (Nat × Nat)) : Nat := sorry
 
 theorem maxStadiumEvents_non_negative (events : List (Nat × Nat)) :
   maxStadiumEvents events ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxStadiumEvents_bounded_by_input (events : List (Nat × Nat)) :
   maxStadiumEvents events ≤ events.length := sorry
 
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval max_stadium_events [(1, 2), (4, 2), (7, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

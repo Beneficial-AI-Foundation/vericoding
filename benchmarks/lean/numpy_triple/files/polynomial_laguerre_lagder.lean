@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lagder {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float := 1.0) : 
     Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lagder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) :
     ⦃⌜True⌝⦄
     lagder c m scl
@@ -19,3 +26,4 @@ theorem lagder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) :
                  -- For large m, result becomes zero or minimal
                  (m ≥ n ∧ n > 0 → ∀ i : Fin n, result.get i = 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

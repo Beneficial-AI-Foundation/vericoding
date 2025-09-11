@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: int, a: seq<int>)
 {
     n >= 1 && n <= 3000 &&
@@ -92,6 +93,7 @@ predicate ValidParsedInputExists(input: string)
                 var ai := StringToInt(second_line[i]);
                 ai >= 1 && ai <= 3000
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_chefirnemo (n m x y : Nat) : String := sorry
 
 @[simp] theorem solve_chefirnemo_valid_output 
@@ -11,7 +17,9 @@ def solve_chefirnemo (n m x y : Nat) : String := sorry
   (h7 : 0 < y) (h8 : y ≤ 1000) :
   solve_chefirnemo n m x y = "Chefirnemo" ∨ 
   solve_chefirnemo n m x y = "Pofik" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_chefirnemo_identical_inputs
   (n x : Nat)
   (h1 : 0 < n) (h2 : n ≤ 1000)
@@ -45,6 +53,7 @@ info: 'Pofik'
 -/
 -- #guard_msgs in
 -- #eval solve_chefirnemo 11 11 5 9
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

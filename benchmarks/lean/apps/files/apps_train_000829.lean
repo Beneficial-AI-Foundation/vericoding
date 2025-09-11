@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def gcd : Nat → Nat → Nat
 | a, b => sorry
 
@@ -7,14 +8,20 @@ def max_gcd_sum : List Nat → Nat
 def list_max : List Nat → Nat  
 | [] => 0
 | (x::xs) => max x (list_max xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_min : List Nat → Nat
 | [] => 0  
 | (x::xs) => min x (list_min xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem matches_reference (nums : List Nat) (h : ∀ x ∈ nums, x > 0) : 
   ∃ result, max_gcd_sum nums = result := by
   sorry
@@ -49,6 +56,7 @@ info: 15
 -/
 -- #guard_msgs in
 -- #eval max_gcd_sum [3, 6, 9, 12]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

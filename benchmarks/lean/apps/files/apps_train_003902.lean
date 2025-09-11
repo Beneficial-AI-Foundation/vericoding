@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_outlier (integers : List Int) : Int := sorry
 
 theorem find_outlier_even_list (integers : List Int) 
@@ -9,7 +15,9 @@ theorem find_outlier_even_list (integers : List Int)
   let result := find_outlier integers
   result % 2 ≠ 0 ∧ 
   ∀ x ∈ integers, x ≠ result → x % 2 = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_outlier_odd_list (integers : List Int)
   (h1 : integers.length ≥ 3)
   (h2 : (integers.filter (fun x => x % 2 = 0)).length = 1) :
@@ -34,6 +42,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_outlier [1, 1, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

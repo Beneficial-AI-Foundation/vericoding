@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern (n : Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_empty_for_nonpositive (n : Int) (h : n ≤ 0) :
   pattern n = "" :=
   sorry
@@ -43,6 +51,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval pattern -3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

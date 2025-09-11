@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_smallest_good_perm (n: Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem good_perm_single_element :
   find_smallest_good_perm 1 = "1" :=
   sorry
@@ -57,6 +65,7 @@ info: '2 1 4 3 6 5'
 -/
 -- #guard_msgs in
 -- #eval find_smallest_good_perm 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

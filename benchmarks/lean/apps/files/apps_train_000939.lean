@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def calculate_path_costs (n: Nat) (parents: List Nat) (values: List Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_tree (n: Nat) (parents: List Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_length_matches_input 
   (n: Nat) (values: List Nat) (parents: List Nat) :
   (n > 0) → 
@@ -28,6 +35,7 @@ theorem path_costs_increase_with_depth
     parent_nodes[i-1]! - 1 < result.length →
     result[i]! ≥ result[parent_nodes[i-1]! - 1]! :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

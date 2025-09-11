@@ -1,9 +1,11 @@
+// <vc-preamble>
 function CalcBal(s: seq<int>, i: int, j: int, acc: int) : int 
     requires 0 <= i <= j <= |s|
 {
     if i == j then acc
     else (if s[j - 1] == 0 then 1 else -1) + CalcBal(s, i, j - 1, acc)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

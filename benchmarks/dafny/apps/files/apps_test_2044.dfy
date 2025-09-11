@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, a: seq<int>)
 {
     n >= 1 && m >= 1 && |a| == n && 
@@ -44,6 +45,7 @@ function ComputeStateAt(a: seq<int>, m: int, day: int): int
     else if day > |a| then ComputeStateAt(a, m, |a|)
     else (ComputeStateAt(a, m, day - 1) + a[day - 1]) % m
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

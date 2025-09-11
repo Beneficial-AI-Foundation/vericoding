@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sort_str_special (s : String) : String :=
   sorry
 
@@ -6,13 +7,19 @@ def isDigit (c : Char) : Bool :=
 
 def isLower (c : Char) : Bool := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isUpper (c : Char) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_str_preserves_length (s : String) :
   String.length (sort_str_special s) = String.length s := by
   sorry
@@ -44,6 +51,7 @@ theorem letters_ordered_by_case_and_value (s : String) (i j : String.Pos)
     (isUpper c1 → ¬isLower c2) ∧
     ((isUpper c1 = isUpper c2) → c1 ≤ c2) := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

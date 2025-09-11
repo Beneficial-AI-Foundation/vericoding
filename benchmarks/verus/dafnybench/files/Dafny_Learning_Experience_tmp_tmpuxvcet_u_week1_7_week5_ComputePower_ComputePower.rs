@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -14,6 +15,7 @@ fn calc_power(n: u32) -> (p: u32)
   assume(false);
   0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

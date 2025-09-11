@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def array_mash {α : Type u} (xs ys : List α) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_mash_length_eq_double_min {α : Type u} (xs ys : List α) :
   let minLen := min xs.length ys.length
   List.length (array_mash xs ys) = 2 * minLen :=
@@ -24,6 +32,7 @@ sorry
 theorem array_mash_empty {α : Type u} :
   array_mash ([] : List α) ([] : List α) = [] :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

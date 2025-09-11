@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def abs (i : Int) : Int :=
   if i ≥ 0 then i else -i
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def containsNearbyAlmostDuplicate (nums : List Int) (k : Int) (t : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_inputs_property (nums : List Int) (k : Int) (t : Int) :
   k ≤ 0 → t < 0 → ¬containsNearbyAlmostDuplicate nums k t :=
   sorry
@@ -48,6 +55,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval contains_nearby_almost_duplicate [1, 5, 9, 1, 5, 9] 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

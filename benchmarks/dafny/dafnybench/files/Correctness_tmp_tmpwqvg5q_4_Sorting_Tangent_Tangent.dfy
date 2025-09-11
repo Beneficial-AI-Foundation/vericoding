@@ -1,3 +1,4 @@
+// <vc-preamble>
 method BinarySearch(a: array<int>, circle: int)
   returns (n: int)
   requires forall i ::
@@ -16,6 +17,7 @@ method BinarySearch(a: array<int>, circle: int)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

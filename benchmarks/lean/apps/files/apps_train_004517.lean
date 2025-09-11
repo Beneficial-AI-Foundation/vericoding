@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_in_array {α : Type} [Inhabited α] (arr : List α) (pred : α → Nat → Bool) : Int := sorry
 
 theorem find_specific_value {α : Type} [Inhabited α] [BEq α] (arr : List α) (target : α) :
   let result := find_in_array arr (fun x _ => x == target)
   result ≠ -1 → (result.toNat < arr.length ∧ arr[result.toNat]! = target) ∧
   result = -1 → ∀ x ∈ arr, x ≠ target := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_at_index {α : Type} [Inhabited α] (arr : List α) (index : Nat) :
   let result := find_in_array arr (fun _ i => i == index)
   result ≠ -1 → result.toNat = index ∧
@@ -43,6 +51,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_in_array [5, 4, 2, 3, 4] lambda value, index: value == index
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

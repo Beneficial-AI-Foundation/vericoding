@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def converter (mpg : Float) : Float := sorry 
 
 namespace converter
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem converter_positive {mpg : Float} (h : mpg ≥ 1) : converter mpg > 0 := sorry 
 
 theorem converter_proportional {mpg : Float} (h1 : mpg ≥ 1) (h2 : mpg ≤ 500) : 
@@ -29,6 +37,7 @@ info: 12.74
 -/
 -- #guard_msgs in
 -- #eval converter 36
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

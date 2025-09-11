@@ -1,8 +1,10 @@
+// <vc-preamble>
 predicate triple(a: array<int>) 
 reads a
 {
     exists i :: 0 <= i < a.Length - 2 && a[i] == a[i + 1] == a[i + 2]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

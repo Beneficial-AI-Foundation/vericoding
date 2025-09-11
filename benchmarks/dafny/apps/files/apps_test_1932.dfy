@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && 
@@ -127,6 +128,7 @@ function ComputeTotalUpTo(lines: seq<string>, count: int): int
     else if count >= |lines| then 0
     else GetFaces(TrimFunc(lines[count])) + ComputeTotalUpTo(lines, count - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

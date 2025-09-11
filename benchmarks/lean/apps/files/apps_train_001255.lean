@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_dish_type (n : Nat) (dishes : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem n_parameter_irrelevant (n : Nat) (dishes : List Nat) 
     (h : dishes ≠ []) : 
     find_max_dish_type n dishes = find_max_dish_type dishes.length dishes :=
@@ -32,6 +40,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_max_dish_type 8 [1, 2, 2, 2, 3, 4, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

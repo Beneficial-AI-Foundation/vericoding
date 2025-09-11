@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_road_cost (n : Nat) (populations : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_road_cost_non_negative 
   {n : Nat} {populations : List Nat}
   (h1 : n = populations.length)
@@ -46,6 +54,7 @@ info: 266
 -/
 -- #guard_msgs in
 -- #eval min_road_cost 4 [15, 10, 7, 13]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

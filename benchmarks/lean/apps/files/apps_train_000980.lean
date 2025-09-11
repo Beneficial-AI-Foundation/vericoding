@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isUpper (c : Char) : Bool := sorry
 def isLower (c : Char) : Bool := sorry
 
@@ -10,10 +11,14 @@ inductive MessageType where
   | both
   | none
   deriving Repr
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def classify_message (N : Nat) (K : Nat) (s : String) : MessageType := sorry
 
 theorem classify_message_properties {N K : Nat} {s : String} :
@@ -25,7 +30,9 @@ theorem classify_message_properties {N K : Nat} {s : String} :
   | MessageType.both => upper ≤ K ∧ lower ≤ K
   | MessageType.none => upper > K ∧ lower > K
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_upper {N : Nat} (h : N > 0) :
   classify_message N (N-1) (String.mk (List.replicate N 'A')) = MessageType.brother := sorry
 
@@ -55,6 +62,7 @@ info: 'both'
 -/
 -- #guard_msgs in
 -- #eval classify_message 4 4 "Life"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

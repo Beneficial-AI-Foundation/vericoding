@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CyclicShiftForward(s: string): string
     requires |s| > 0
 {
@@ -22,6 +23,7 @@ function AllDistinctCyclicShifts(s: string): set<string>
 {
     set i | 0 <= i < |s| :: ApplyShifts(s, i)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

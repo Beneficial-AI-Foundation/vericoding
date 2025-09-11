@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def svdvals {m n : Nat} (x : Vector (Vector Float n) m) : Id (Vector Float (min m n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem svdvals_spec {m n : Nat} (x : Vector (Vector Float n) m) :
     ⦃⌜True⌝⦄
     svdvals x
@@ -34,3 +41,4 @@ theorem svdvals_spec {m n : Nat} (x : Vector (Vector Float n) m) :
                    (List.finRange m)))
                  ⌝⦄ := by
   sorry
+-- </vc-theorems>

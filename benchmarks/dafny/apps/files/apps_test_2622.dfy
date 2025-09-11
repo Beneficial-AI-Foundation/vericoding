@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate validInputFormat(input: string)
 {
     var lines := parseLinesFunc(input);
@@ -127,6 +128,7 @@ function intToStringFunc(n: int): string
     else if n == 9 then "9"
     else "10"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

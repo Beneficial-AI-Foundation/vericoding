@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def array_split {n k : Nat} (v : Vector Float n) (hk : k > 0) : 
     Id (Vector (Σ m : Nat, Vector Float m) k) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_split_spec {n k : Nat} (v : Vector Float n) (hk : k > 0) :
     ⦃⌜k > 0⌝⦄
     array_split v hk
@@ -31,3 +38,4 @@ theorem array_split_spec {n k : Nat} (v : Vector Float n) (hk : k > 0) :
             v.get ⟨start_indices.get i + j.val, by sorry⟩))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

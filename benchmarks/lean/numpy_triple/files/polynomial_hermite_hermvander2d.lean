@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermvander2d {n : Nat} (x y : Vector Float n) (xdeg ydeg : Nat) : 
     Id (Vector (Vector Float ((xdeg + 1) * (ydeg + 1))) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermvander2d_spec {n : Nat} (x y : Vector Float n) (xdeg ydeg : Nat) :
     ⦃⌜True⌝⦄
     hermvander2d x y xdeg ydeg
@@ -42,3 +49,4 @@ theorem hermvander2d_spec {n : Nat} (x y : Vector Float n) (xdeg ydeg : Nat) :
              ∀ (h_i : i < xdeg + 1) (h_j : j < ydeg + 1),
              idx.val = (ydeg + 1) * i + j)⌝⦄ := by
   sorry
+-- </vc-theorems>

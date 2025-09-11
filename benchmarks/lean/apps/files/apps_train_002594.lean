@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def missing_alphabets (s : String) : String := sorry
 
 def counts_for_char (s : String) (c : Char) : Nat :=
   s.data.count c
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem missing_alphabets_result_lowercase (s : String) (h : s.length > 0) :
   let result := missing_alphabets s
   ∀ c, c ∈ result.data → c.isLower := sorry 
@@ -39,6 +47,7 @@ info: 'bfghijklmnpqtuvxyz'
 -/
 -- #guard_msgs in
 -- #eval missing_alphabets "codewars"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def max_balloons (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def makeBalloonsString (n : Nat) : String :=
   String.join (List.replicate n "balloon")
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_balloons_nonnegative (text : String) : 
   max_balloons text ≥ 0 := sorry
 
@@ -48,6 +55,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval max_balloons "leetcode"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def Sorted (as : List Nat) : Prop :=
   ∀ i j, i < j → j < as.length → as[i]! < as[j]!
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_time (n m : Nat) (heads tracks : List Nat) : Nat := sorry
 
 theorem find_min_time_non_negative (n m : Nat) (heads tracks : List Nat)
@@ -12,7 +17,9 @@ theorem find_min_time_non_negative (n m : Nat) (heads tracks : List Nat)
   (h3 : Sorted heads)
   (h4 : Sorted tracks) :
   find_min_time n m heads tracks ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_time_perfect_alignment (n m : Nat) (heads tracks : List Nat)
   (h1 : heads.length = n)
   (h2 : tracks.length = m)
@@ -58,6 +65,7 @@ info: 81
 -/
 -- #guard_msgs in
 -- #eval find_min_time 1 2 [165] [142, 200]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

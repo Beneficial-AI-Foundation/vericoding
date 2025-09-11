@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def List.maximum (l: List Nat) : Nat :=
 match l with
 | [] => 0
 | (x::xs) => List.foldl Nat.max x xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_max_generating_set (numbers: List Nat) : List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem one_in_gen_set (numbers: List Nat) (h: numbers ≠ []) : 
   1 ∈ min_max_generating_set numbers :=
 sorry
@@ -38,6 +45,7 @@ info: {1, 2, 3, 4, 5, 6}
 -/
 -- #guard_msgs in
 -- #eval set min_max_generating_set(input3)
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

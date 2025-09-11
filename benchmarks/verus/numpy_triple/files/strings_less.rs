@@ -1,7 +1,9 @@
+// <vc-preamble>
 use vstd::prelude::*;
 use vstd::string::*;
 
 verus! {
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def isPrime (n : Int) : Bool := sorry
 
 def primeFactor (n: Int) : List Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumForList (lst : List Int) : List (Int × Int) := sorry
 
 def listSum (lst : List Int) : Int := lst.foldl (· + ·) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem results_are_prime_factors {lst : List Int} (h : ∀ x, x ∈ lst → x ≠ 0) :
   ∀ pt, pt ∈ sumForList lst →
     isPrime pt.1 = true ∧ 
@@ -44,6 +51,7 @@ info: [[2, 54], [3, 135], [5, 90], [7, 21]]
 -/
 -- #guard_msgs in
 -- #eval sum_for_list [15, 21, 24, 30, 45]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

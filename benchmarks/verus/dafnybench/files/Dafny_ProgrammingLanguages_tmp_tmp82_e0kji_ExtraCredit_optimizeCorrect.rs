@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -46,6 +47,7 @@ spec fn optimize(e: Exp) -> Exp
         _ => e,
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

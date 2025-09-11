@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bits_battle (nums: List Nat) : String := sorry
 
 theorem bits_battle_output_valid (nums: List Nat) :
   bits_battle nums = "odds win" ∨ 
   bits_battle nums = "evens win" ∨ 
   bits_battle nums = "tie" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list_tie (nums: List Nat) :
   nums = [] → bits_battle nums = "tie" := sorry
 
@@ -41,6 +49,7 @@ info: 'tie'
 -/
 -- #guard_msgs in
 -- #eval bits_battle []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

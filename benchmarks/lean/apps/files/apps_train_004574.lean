@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def DateTime := Nat -- simplified representation
 def TimeDelta := Nat -- simplified representation
 
@@ -6,13 +7,19 @@ instance : Add DateTime where
 
 instance : HAdd DateTime TimeDelta DateTime where
   hAdd := Nat.add
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def elapsedSeconds (s e : DateTime) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem elapsedSeconds_nonnegative
   (s : DateTime)
   (e : DateTime)
@@ -51,6 +58,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 0, 0, 1)
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

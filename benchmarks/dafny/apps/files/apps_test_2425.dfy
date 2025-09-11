@@ -1,3 +1,4 @@
+// <vc-preamble>
 function power2(k: int): int
   requires k >= 0
 {
@@ -54,6 +55,7 @@ predicate ValidResults(queries: seq<int>, results: seq<int>)
      (power2(c) - 1 == queries[i] ==> 
        results[i] == (if power2(c) - 1 <= 1 then 1 else largestProperDivisor(power2(c) - 1))))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

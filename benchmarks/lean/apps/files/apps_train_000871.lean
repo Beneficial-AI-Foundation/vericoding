@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Segment := Int × Int 
 
 inductive Operation
@@ -15,10 +16,14 @@ def apply_operation (s : Segment) (op : Operation) : Segment :=
 
 def is_valid_segment (s : Segment) : Bool :=
   s.1 < s.2
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (segments : List Segment) : List Operation := sorry
 
 theorem operations_preserve_validity 
@@ -30,7 +35,9 @@ theorem operations_preserve_validity
   let curr := List.foldl apply_operation (List.head segments h₁) (ops.take i)
   is_valid_segment curr = true :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reaches_target_segments
   (segments : List Segment)
   (h₁ : segments ≠ [])
@@ -58,6 +65,7 @@ info: [1, 'R+']
 -/
 -- #guard_msgs in
 -- #eval solve [[-2, -1], [-2, -1], [-2, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

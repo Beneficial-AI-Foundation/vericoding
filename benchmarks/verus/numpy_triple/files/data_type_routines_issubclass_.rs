@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -87,6 +88,7 @@ spec fn is_subclass_spec(t: NumpyTypeClass, t_prime: NumpyTypeClass) -> bool {
         }
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

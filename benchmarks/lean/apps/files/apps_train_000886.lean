@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_golomb_squares (L R : Nat) : Nat := sorry
 
 def MOD := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem golomb_result_within_modulo_bounds {L R : Nat} (h : L ≤ R) :
   solve_golomb_squares L R < MOD := sorry
 
@@ -32,6 +40,7 @@ info: 441
 -/
 -- #guard_msgs in
 -- #eval solve_golomb_squares 100 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

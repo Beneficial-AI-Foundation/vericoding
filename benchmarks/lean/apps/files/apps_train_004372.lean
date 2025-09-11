@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def single_digit (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digit_result_bounds (n : Nat) :
   0 ≤ single_digit n ∧ single_digit n ≤ 9 :=
   sorry
@@ -33,6 +41,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval single_digit 1234444123
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn spec_subarray_sum(sequence: Seq<i32>, start: int, end: int) -> int
         sequence[start] as int + spec_subarray_sum(sequence, start + 1, end)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

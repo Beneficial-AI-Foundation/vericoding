@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def capitalize {n : Nat} (a : Vector String n) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem capitalize_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     capitalize a
@@ -27,3 +34,4 @@ theorem capitalize_spec {n : Nat} (a : Vector String n) :
       -- Mathematical property: the operation is deterministic
       (result = original.capitalize)⌝⦄ := by
   sorry
+-- </vc-theorems>

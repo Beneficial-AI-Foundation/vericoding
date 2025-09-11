@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_photo_area (n : Nat) (coords : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_coordinates (n : Nat) (h : 0 < n) (h2 : n ≤ 100) : 
   min_photo_area n (List.replicate (2*n) 0) = 0 := by
   sorry
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_photo_area 1 [1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

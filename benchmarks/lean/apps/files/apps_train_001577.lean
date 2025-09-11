@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def middle_permutation (s : String) : String := sorry 
 
 theorem middle_permutation_symmetric (s : String) :
   middle_permutation s = middle_permutation s := by sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def char_list_eq (l1 l2 : List Char) : Prop := 
   ∀ c : Char, c ∈ l1 ↔ c ∈ l2
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem middle_permutation_length (s : String) :
   (middle_permutation s).length = s.length := by sorry
 
@@ -39,6 +46,7 @@ info: 'cbxda'
 -/
 -- #guard_msgs in
 -- #eval middle_permutation "abcdx"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

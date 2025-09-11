@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def compose (f : β → γ) (g : α → β) : α → γ := sorry
 
 theorem numeric_composition (x : Int) :
   let f := (fun x => x + 1)
   let g := (fun x => x * 2)
   compose f g x = f (g x) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_composition (s : String) :
   let f := (fun x => x ++ "!")
   let g := String.toUpper
@@ -53,6 +61,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval fn 1 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

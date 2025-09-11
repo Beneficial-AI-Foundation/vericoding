@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost function Str2Int(s: string): nat
   requires ValidBitString(s)
   decreases s
@@ -18,6 +19,7 @@ method Sub(s1: string, s2: string) returns (res: string)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

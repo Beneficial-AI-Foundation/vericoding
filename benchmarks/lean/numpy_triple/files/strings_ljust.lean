@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def ljust {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ljust_spec {n : Nat} (a : Vector String n) (width : Nat) (fillchar : String)
     (h_fillchar : fillchar.length = 1) :
     ⦃⌜fillchar.length = 1⌝⦄
@@ -34,3 +41,4 @@ theorem ljust_spec {n : Nat} (a : Vector String n) (width : Nat) (fillchar : Str
         -- 6. Consistency constraint: all operations preserve the vector structure
         (orig.length = 0 → res.length = width)⌝⦄ := by
   sorry
+-- </vc-theorems>

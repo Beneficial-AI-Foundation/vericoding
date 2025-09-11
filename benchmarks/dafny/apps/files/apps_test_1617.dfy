@@ -1,3 +1,4 @@
+// <vc-preamble>
 function f(n: int, x: int): int
   requires x > 0 && n >= x && n % x == 0
 {
@@ -19,6 +20,7 @@ predicate NoDuplicates(s: seq<int>)
 {
   forall i, j :: 0 <= i < j < |s| ==> s[i] != s[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

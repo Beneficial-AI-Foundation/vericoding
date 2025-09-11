@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (grades: List Float) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (implementation: List Float → List String)
@@ -52,5 +59,6 @@ theorem correctness
 : problem_spec implementation grades
 := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation [4.0, 3, 1.7, 2, 3.5] = ['A+', 'B', 'C-', 'C', 'A-']

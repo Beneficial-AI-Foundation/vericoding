@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def track_rakesh (m n rx ry : Nat) (moves : String) : String := sorry
 
 def countChar (s : String) (c : Char) : Nat := 
   s.toList.filter (· == c) |>.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringReverse (s : String) : String :=
   String.mk (s.toList.reverse)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem track_rakesh_result_type (m n rx ry : Nat) (moves : String) :
   track_rakesh m n rx ry moves = "DANGER" ∨ 
   track_rakesh m n rx ry moves = "REACHED" ∨
@@ -58,6 +65,7 @@ info: 'SOMEWHERE'
 -/
 -- #guard_msgs in
 -- #eval track_rakesh 5 5 2 2 "RRU"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

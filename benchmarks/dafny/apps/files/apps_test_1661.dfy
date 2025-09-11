@@ -1,3 +1,4 @@
+// <vc-preamble>
 function countBuyableGames(games: seq<int>, bills: seq<int>): int
     requires forall i :: 0 <= i < |games| ==> games[i] >= 1
     requires forall i :: 0 <= i < |bills| ==> bills[i] >= 1
@@ -15,6 +16,7 @@ predicate ValidInput(n: int, m: int, games: seq<int>, bills: seq<int>)
     (forall i :: 0 <= i < |games| ==> 1 <= games[i] <= 1000) &&
     (forall i :: 0 <= i < |bills| ==> 1 <= bills[i] <= 1000)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_unique_balls (arr1 arr2 : List Int) : List Int := sorry
 
 def isSorted (l : List Int) : Bool := 
@@ -5,15 +6,21 @@ def isSorted (l : List Int) : Bool :=
   | [] => true
   | [_] => true
   | x::y::xs => x ≤ y ∧ isSorted (y::xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count (x : Int) (l : List Int) : Nat :=
   match l with
   | [] => 0
   | h::t => (if h = x then 1 else 0) + count x t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unique_balls_elements_from_inputs {arr1 arr2 : List Int} : 
   let result := find_unique_balls arr1 arr2
   ∀ x ∈ result, x ∈ arr1 ++ arr2 := sorry
@@ -38,6 +45,7 @@ info: [4]
 -/
 -- #guard_msgs in
 -- #eval find_unique_balls [1, 1, 2, 3] [2, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

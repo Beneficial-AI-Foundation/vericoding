@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_kills_needed (n : Nat) (heights : List Nat) : Nat := sorry
 
 theorem result_bounds {n : Nat} {heights : List Nat} (h1 : heights.length = n) (h2 : n > 0) :
   let result := min_kills_needed n heights
   result ≤ n ∧ result ≥ (n + 1) / 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem same_height {n : Nat} {heights : List Nat} {h : Nat}
   (h1 : heights = List.replicate n h) (h2 : n > 0) :
   min_kills_needed n heights = n := sorry
@@ -37,6 +45,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_kills_needed 4 [101, 102, 103, 104]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

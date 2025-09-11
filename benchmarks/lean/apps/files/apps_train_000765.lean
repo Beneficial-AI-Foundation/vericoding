@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_max_profit_days (A : Nat) : Nat × Nat := sorry
 
 def profit (A D : Nat) : Int := 
   Int.ofNat (A * D) + 1 - Int.ofNat (2^D)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_profit_days_non_negative (A : Nat) (h : A ≥ 2) :
   let (D1, D2) := solve_max_profit_days A
   D1 ≥ 0 ∧ D2 ≥ 0 := sorry
@@ -40,6 +48,7 @@ info: (5, 4)
 -/
 -- #guard_msgs in
 -- #eval solve_max_profit_days 9
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

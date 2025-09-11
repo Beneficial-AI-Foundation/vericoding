@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def frexp {n : Nat} (x : Vector Float n) : Id (Vector Float n × Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem frexp_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     frexp x
@@ -30,3 +37,4 @@ theorem frexp_spec {n : Nat} (x : Vector Float n) :
                    ((Float.isInf (x.get i) ∨ Float.isNaN (x.get i)) → 
                      mantissa.get i = x.get i ∧ exponent.get i = 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

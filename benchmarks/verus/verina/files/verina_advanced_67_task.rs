@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn decode_rle(lst: Vec<(char, usize)>) -> Seq<char> {
     Seq::empty()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

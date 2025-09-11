@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn second_smallest_postcond(s: &Vec<i32>, result: i32) -> bool {
     (exists|j: int| 0 <= j < s.len() && s[j] < result &&
         (forall|k: int| 0 <= k < s.len() && s[k] != s[j] ==> s[k] >= result))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

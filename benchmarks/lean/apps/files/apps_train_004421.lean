@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def convert_hash_to_array (d: List (String × (String ⊕ Int))) : List (String × (String ⊕ Int)) :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def LePair (p1 p2: String × (String ⊕ Int)) : Prop :=
   p1.1 ≤ p2.1
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem convert_hash_output_is_sorted (d: List (String × (String ⊕ Int))) :
   let result := convert_hash_to_array d
   List.Pairwise LePair result ∧ 
@@ -35,6 +42,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval convert_hash_to_array {}
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

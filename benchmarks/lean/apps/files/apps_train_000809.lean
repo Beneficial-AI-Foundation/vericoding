@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def calculate_ad_revenue (n: Nat) (team_strengths: List Nat) : Nat := sorry
 
 def getPairs (l: List Nat) : List (Nat × Nat) := 
@@ -7,15 +8,21 @@ def getPairs (l: List Nat) : List (Nat × Nat) :=
 
 def abs (n: Nat) (m: Nat) : Nat :=
   if n ≥ m then n - m else m - n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pairSum (pairs: List (Nat × Nat)) : Nat :=
   match pairs with 
   | [] => 0
   | (x, y) :: rest => abs x y + pairSum rest
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem revenue_nonnegative (n: Nat) (team_strengths: List Nat) 
   (h1: n ≥ 2) (h2: team_strengths.length = n) :
   calculate_ad_revenue n team_strengths ≥ 0 := sorry
@@ -53,6 +60,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval calculate_ad_revenue 3 [10, 10, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

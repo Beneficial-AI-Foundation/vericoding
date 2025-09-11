@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_operations_to_alternating (n : Nat) (s : String) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def is_alternating (s : String) : Bool :=
 
 def make_alternating_01 (n : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def make_alternating_10 (n : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uniform_string_flips (n : Nat) (c : Char) :
   let s := String.mk (List.replicate n c)
   let ops := min_operations_to_alternating n s  
@@ -42,6 +49,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_operations_to_alternating 6 "101010"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

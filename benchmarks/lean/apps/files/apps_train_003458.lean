@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def List.diff : List α → List α → List α 
   | xs, ys => sorry
 
 -- Elements in result must come from input lists
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem diff_elements_from_inputs {α} (a b : List α) (x : α) :
   x ∈ List.diff a b → x ∈ a ∨ x ∈ b
   := sorry
@@ -51,6 +59,7 @@ info: ['a', 'e', 'g', 'j', 'k']
 -/
 -- #guard_msgs in
 -- #eval diff ["a", "a", "t", "e", "f", "i", "j"] ["t", "g", "g", "i", "k", "f"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

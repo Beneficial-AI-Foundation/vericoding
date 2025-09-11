@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Word := String 
 def Letter := Char
 
@@ -13,13 +14,19 @@ instance : Inhabited Score := ⟨(0 : Score)⟩
 
 instance : HMul Nat Score Score where
   hMul := fun n s => Nat.mul n s
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def max_score_words (words: List Word) (letters: List Letter) (scores: List Score) : Score :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_score_words_non_negative (words: List Word) (letters: List Letter) (scores: List Score) :
   0 ≤ max_score_words words letters scores := sorry
 
@@ -62,6 +69,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval max_score_words ["leetcode"] ["l", "e", "t", "c", "o", "d"] [0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

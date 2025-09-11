@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def arccosh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arccosh_spec {n : Nat} (x : Vector Float n) 
     (h_domain : ∀ i : Fin n, x.get i ≥ 1) :
     ⦃⌜∀ i : Fin n, x.get i ≥ 1⌝⦄
@@ -21,3 +28,4 @@ theorem arccosh_spec {n : Nat} (x : Vector Float n)
                    -- The mathematical definition: arccosh(x) = log(x + sqrt(x² - 1))
                    result.get i = Float.log (x.get i + Float.sqrt (x.get i * x.get i - 1)))⌝⦄ := by
   sorry
+-- </vc-theorems>

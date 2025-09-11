@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def correctTail (body tail : String) : Bool := sorry
 
 theorem correct_tail_when_ends_with (body tail : String) 
   (h : String.endsWith body tail = true) : 
   correctTail body tail = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem correct_tail_when_not_ends_with (body tail : String)
   (h : String.endsWith body tail = false) :
   correctTail body tail = false := sorry
@@ -44,6 +52,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval correct_tail "Badger" "s"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

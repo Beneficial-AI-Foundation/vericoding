@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_palindrome (s : String) : Bool := sorry
 
 def String.reverse (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_single_char_palindrome (s : String) :
   s.length ≤ 1 → is_palindrome s := sorry 
 
@@ -32,6 +40,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_palindrome "racecar"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

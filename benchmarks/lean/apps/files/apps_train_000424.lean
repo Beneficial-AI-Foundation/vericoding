@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longest_subarray_ones_after_delete (nums: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem longest_subarray_basic_properties {nums : List Nat}
   (h: ∀ x, x ∈ nums → x ≤ 1) : 
   let result := longest_subarray_ones_after_delete nums
@@ -43,6 +51,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval longest_subarray_ones_after_delete [1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def deg2rad {n : Nat} (degrees : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem deg2rad_spec {n : Nat} (degrees : Vector Float n) :
     ⦃⌜True⌝⦄
     deg2rad degrees
@@ -25,3 +32,4 @@ theorem deg2rad_spec {n : Nat} (degrees : Vector Float n) :
                   ((degrees.get i + 360.0) * (3.14159265358979323846 / 180.0) = 
                    radians.get i + 2.0 * 3.14159265358979323846)⌝⦄ := by
   sorry
+-- </vc-theorems>

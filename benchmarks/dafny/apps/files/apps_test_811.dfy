@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
   a >= 1 && a <= 1000 && b >= 2 && b <= 1000
@@ -12,6 +13,7 @@ function TotalBurningHours(a: int, b: int): int
   else if a < b then a
   else a + TotalBurningHours(a / b, b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

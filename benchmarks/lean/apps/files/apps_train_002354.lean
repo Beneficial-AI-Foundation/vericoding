@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_if_exist (arr : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_if_exist_symmetric {arr : List Int} (n : Int) :
   arr ≠ [] →
   check_if_exist (arr ++ [2 * n]) = true :=
@@ -40,6 +48,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval check_if_exist [3, 1, 7, 11]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

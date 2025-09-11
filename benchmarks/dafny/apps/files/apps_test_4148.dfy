@@ -1,3 +1,4 @@
+// <vc-preamble>
 function split_lines(input: string): seq<string>
 requires |input| > 0
 {
@@ -61,6 +62,7 @@ predicate ValidInput(input: string)
     |lines[1]| >= 1 && |lines[1]| <= 10000 &&
     (forall j :: 0 <= j < |lines[1]| ==> 'A' <= lines[1][j] <= 'Z')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def over_the_road (address n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem over_the_road_in_range (address n : Nat) :
   address > 0 → address ≤ 2*n → 
   1 ≤ over_the_road address n ∧ over_the_road address n ≤ 2*n :=
@@ -47,6 +55,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval over_the_road 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

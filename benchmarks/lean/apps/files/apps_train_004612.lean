@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def count_perms (matrix: List (List Nat)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def factorial (n: Nat) : Nat :=
   match n with
   | 0 => 1
   | n + 1 => (n + 1) * factorial n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_perms_single_element :
   count_perms [[1]] = 1 := by sorry
 
@@ -50,6 +57,7 @@ info: 362880
 -/
 -- #guard_msgs in
 -- #eval count_perms [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

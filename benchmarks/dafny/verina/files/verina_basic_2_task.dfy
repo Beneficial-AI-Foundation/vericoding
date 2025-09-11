@@ -1,4 +1,6 @@
+// <vc-preamble>
 datatype Option<T> = None | Some(value: T)
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

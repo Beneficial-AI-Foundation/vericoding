@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def waveSort (arr : List Int) : List Int := sorry
 
 def isWaveSorted (arr : List Int) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem waveSort_preservation (arr : List Int) :
   let result := waveSort arr
   List.length result = List.length arr ∧ 
@@ -21,6 +29,7 @@ theorem waveSort_alternating (arr : List Int) :
 theorem waveSort_small_arrays (arr : List Int) :
   arr.length ≤ 1 →
   waveSort arr = arr := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

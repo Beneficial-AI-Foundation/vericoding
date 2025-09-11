@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sequence_classifier (arr : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem classifier_output_range {arr : List Int} (h : arr.length ≥ 2) :
   let result := sequence_classifier arr
   0 ≤ result ∧ result ≤ 5 :=
@@ -39,6 +47,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval sequence_classifier [8, 8, 8, 8, 8, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

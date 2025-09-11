@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString (s : String) : String := sorry
 
 def spinWords (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem spin_words_length_five_or_more {word : String} 
   (h : word.length ≥ 5) : 
   spinWords word = reverseString word := sorry
@@ -36,6 +44,7 @@ info: 'This ecnetnes is a ecnetnes'
 -/
 -- #guard_msgs in
 -- #eval spin_words "This sentence is a sentence"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

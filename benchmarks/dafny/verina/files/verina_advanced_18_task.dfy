@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountDigits(n: nat): nat
     decreases n
 {
@@ -18,6 +19,7 @@ function SumPowers(n: nat, k: nat): nat
 {
     if n == 0 then 0 else PowNat(n % 10, k) + SumPowers(n / 10, k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

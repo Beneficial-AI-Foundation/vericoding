@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isAlpha (s : String) : Bool := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nato (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nato_output_format {s : String} 
   (h : s.all (fun c => c.isAlpha)) :
   let result := nato s
@@ -49,6 +56,7 @@ info: 'Alpha Bravo Charlie'
 -/
 -- #guard_msgs in
 -- #eval nato "ABC"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

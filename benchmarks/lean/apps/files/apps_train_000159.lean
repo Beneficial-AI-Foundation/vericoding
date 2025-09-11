@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longest_common_subsequence (s1 s2 : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lcs_length_bounded (s1 s2 : String) :
   longest_common_subsequence s1 s2 ≤ s1.length ∧ 
   longest_common_subsequence s1 s2 ≤ s2.length :=
@@ -44,6 +52,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval longest_common_subsequence "abc" "def"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

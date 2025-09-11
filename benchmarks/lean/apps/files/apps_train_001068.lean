@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_kabir_game (n k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bound_lower : ∀ k, 0 ≤ solve_kabir_game 0 (k+1) :=
   sorry
 
@@ -46,6 +54,7 @@ info: 46
 -/
 -- #guard_msgs in
 -- #eval solve_kabir_game 4 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

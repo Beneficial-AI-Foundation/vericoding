@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def length_sup_u_k (n : Nat) (k : Nat) : Nat :=
   sorry
 
 def comp (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def u1 : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_sup_u_k_bounds (n k : Nat) (h : n > 0) :
   0 ≤ length_sup_u_k n k ∧ length_sup_u_k n k ≤ n :=
   sorry
@@ -57,6 +64,7 @@ info: 63
 -/
 -- #guard_msgs in
 -- #eval comp 200
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

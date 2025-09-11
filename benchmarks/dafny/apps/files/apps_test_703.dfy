@@ -1,3 +1,4 @@
+// <vc-preamble>
 function min(x: int, y: int): int
 {
     if x <= y then x else y
@@ -26,6 +27,7 @@ predicate IsMinimalSolution(result: int, k: int, a: int, b: int, v: int)
     CanStoreNuts(result, k, a, b, v) &&
     (result == 1 || !CanStoreNuts(result - 1, k, a, b, v))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern (n : Int) (x : Int := 1) (y : Int := 1) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_invalid_input {n : Int} (h : n ≤ 0) :
   pattern n = "" := sorry
 
@@ -27,6 +35,7 @@ theorem pattern_line_numbers {n : Int} (hn : 1 ≤ n ∧ n ≤ 9) :
   ∀ i : Nat, i < min n lines.length →
     let num_char := Char.ofNat ((i + 1) % 10 + '0'.toNat)
     (lines.get! i).contains num_char := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

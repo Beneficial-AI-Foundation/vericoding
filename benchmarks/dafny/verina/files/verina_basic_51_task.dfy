@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate BinarySearchPrecond(a: array<int>, key: int)
     reads a
 {
@@ -23,6 +24,7 @@ method BinarySearchLoop(a: array<int>, key: int, lo: nat, hi: nat) returns (resu
         result := lo;
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

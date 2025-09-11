@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def sumOfSquares (l : List Int) : Int :=
   sorry
 
 def sumOfCubes (l : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def array_madness (a b : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_madness_correct (a b : List Int) (h1 : a.length > 0) (h2 : b.length > 0) :
   array_madness a b = (sumOfSquares a > sumOfCubes b) :=
   sorry
@@ -41,6 +48,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval array_madness [5, 6, 7] [1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

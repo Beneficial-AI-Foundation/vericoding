@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def List.maximum (l : List Int) : Int :=
 sorry
 
@@ -6,13 +7,19 @@ sorry
 
 def List.sort (l : List Int) : List Int :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_height_diff (n : Nat) (k : Nat) (heights : List Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_height_diff_single_window {n : Nat} {heights : List Int}
   (h1 : heights.length > 0)
   (h2 : heights.length = n)
@@ -36,6 +43,7 @@ info: 15
 -/
 -- #guard_msgs in
 -- #eval find_min_height_diff 6 4 [5, 10, 15, 20, 25, 30]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

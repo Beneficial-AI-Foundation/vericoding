@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def count_bits (n : Nat) : Array Nat := sorry
 
 def countOnes (n : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPowerOfTwo (n : Nat) : Prop := 
   n > 0 ∧ ∃ k, n = 2^k
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_bits_length (n : Nat) (h : n ≤ 1000) : 
   (count_bits n).size = n + 1 := sorry
 
@@ -36,6 +43,7 @@ info: [0, 1, 1]
 -/
 -- #guard_msgs in
 -- #eval count_bits 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

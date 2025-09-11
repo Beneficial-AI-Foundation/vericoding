@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= 16 && 1 <= b <= 16 && a + b <= 16
@@ -12,6 +13,7 @@ predicate BothCanTake(a: int, b: int)
 {
     CanTakeNonAdjacent(a, 16) && CanTakeNonAdjacent(b, 16)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

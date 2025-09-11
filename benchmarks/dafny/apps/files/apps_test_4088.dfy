@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInputFormat(input: string)
 {
     |input| > 0 && 
@@ -84,6 +85,7 @@ function AbsDiff(i: int, j: int): int
 {
     if i >= j then i - j else j - i
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

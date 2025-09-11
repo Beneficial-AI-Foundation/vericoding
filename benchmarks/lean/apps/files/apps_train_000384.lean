@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_moves_to_equal (nums : List Int) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def abs (x : Int) : Nat :=
 
 def sort (nums : List Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def median (nums : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_moves_non_negative (nums : List Int) : 
   0 ≤ min_moves_to_equal nums := sorry
 
@@ -42,6 +49,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval min_moves_to_equal [1, 10, 2, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

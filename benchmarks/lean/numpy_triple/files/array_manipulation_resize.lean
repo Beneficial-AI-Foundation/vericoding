@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def resize {n : Nat} {α : Type} (a : Vector α n) (new_size : Nat) : Id (Vector α new_size) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem resize_spec {n : Nat} {α : Type} (a : Vector α n) (new_size : Nat) :
     ⦃⌜True⌝⦄
     resize a new_size
@@ -19,3 +26,4 @@ theorem resize_spec {n : Nat} {α : Type} (a : Vector α n) (new_size : Nat) :
         else
           True)⌝⦄ := by
   sorry
+-- </vc-theorems>

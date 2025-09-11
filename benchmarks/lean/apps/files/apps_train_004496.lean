@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def sumOfDivs (n : Nat) : Nat := sorry
 
 def kind (n : Nat) (sum : Nat) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def deficientlyAbundantAmicableNumbers (n1 n2 : Nat) : String := sorry
 
 /- The kind function only outputs "abundant", "deficient", or "perfect" -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem kind_outputs {n : Nat} (h : n > 0) : 
   let sum := sumOfDivs n
   let k := kind n sum
@@ -29,6 +36,7 @@ theorem symmetric_property {n1 n2 : Nat} (h1 : n1 > 0) (h2 : n2 > 0) :
   let result1 := deficientlyAbundantAmicableNumbers n1 n2
   let result2 := deficientlyAbundantAmicableNumbers n2 n1
   result1.contains 'n' = result2.contains 'n' := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def praneet_algorithm (n : Nat) (a : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem praneet_algorithm_non_negative (n : Nat) (a : Nat) :
   praneet_algorithm n a ≥ 0 := sorry
 
@@ -18,6 +26,7 @@ theorem praneet_algorithm_composable (n : Nat) :
 
 theorem praneet_algorithm_divisible_by_10 (n : Nat) :
   praneet_algorithm (n * 10) 1 = n := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def max_uncrossed_lines (a b : List Nat) : Nat :=
   sorry
 
 def List.min_length (a b : List α) : Nat :=
   min a.length b.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def List.everyOther : List α → List α
   | [] => []
   | [x] => [x]
   | x :: _ :: xs => x :: everyOther xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_uncrossed_lines_nonnegative (a b : List Nat) :
   max_uncrossed_lines a b ≥ 0 :=
   sorry
@@ -55,6 +62,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval max_uncrossed_lines [1, 3, 7, 1, 7, 5] [1, 9, 2, 5, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def linspace {num : Nat} (start stop : Float) (h : num > 0) : Id (Vector Float num) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem linspace_spec {num : Nat} (start stop : Float) (h : num > 0) :
     ⦃⌜num > 0⌝⦄
     linspace start stop h
@@ -53,3 +60,4 @@ theorem linspace_spec {num : Nat} (start stop : Float) (h : num > 0) :
         result.get i = stop - (i.val.toFloat * (stop - start) / (num - 1).toFloat))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

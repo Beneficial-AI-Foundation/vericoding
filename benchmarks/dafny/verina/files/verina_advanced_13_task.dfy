@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ChordIntersects(chord1: seq<nat>, chord2: seq<nat>)
     requires |chord1| == 2 && |chord2| == 2
 {
@@ -7,6 +8,7 @@ predicate ChordIntersects(chord1: seq<nat>, chord2: seq<nat>)
     var b2 := if chord2[0] > chord2[1] then chord2[0] else chord2[1];
     (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

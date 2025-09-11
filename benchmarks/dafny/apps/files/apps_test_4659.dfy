@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidPascalTriangle(triangle: seq<seq<int>>, numRows: int)
 {
   |triangle| == numRows &&
@@ -14,6 +15,7 @@ predicate ValidPascalTriangle(triangle: seq<seq<int>>, numRows: int)
         triangle[i][j] == triangle[i-1][j-1] + triangle[i-1][j]
   ))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

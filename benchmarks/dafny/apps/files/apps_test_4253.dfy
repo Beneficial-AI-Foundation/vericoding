@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(r: int)
 {
     1 <= r <= 100
@@ -24,6 +25,7 @@ function string_to_int(s: string): int
     if |s| == 1 then (s[0] as int) - ('0' as int)
     else string_to_int(s[..|s|-1]) * 10 + ((s[|s|-1] as int) - ('0' as int))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn summing_pair(i: nat, j: nat, nums: Seq<int>, target: int) -> bool
 {
     i != j && nums[i as int] + nums[j as int] == target
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

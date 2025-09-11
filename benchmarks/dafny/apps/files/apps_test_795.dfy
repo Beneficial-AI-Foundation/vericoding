@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
   |input| > 0
@@ -14,6 +15,7 @@ function CountPythagoreanTriplesViaPrimitives(n: int): int
   var m := IntegerSquareRoot(n);
   CountFromPrimitives(n, m, 1, 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_bill_queries (n q : Nat) (bills : List Nat) (queries : List (Nat × Nat)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_bill_queries_results_length 
   (n q : Nat) (bills : List Nat) (queries : List (Nat × Nat))
   (h1 : bills.length > 0) (h2 : queries.length > 0) :
@@ -50,6 +58,7 @@ info: [60]
 -/
 -- #guard_msgs in
 -- #eval solve_bill_queries 3 1 [10, 20, 30] [(1, 3)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

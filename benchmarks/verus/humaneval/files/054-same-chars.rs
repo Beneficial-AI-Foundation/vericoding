@@ -1,8 +1,10 @@
+// <vc-preamble>
 use vstd::hash_set::HashSetWithView;
 use vstd::prelude::*;
 use vstd::std_specs::hash::axiom_u8_obeys_hash_table_key_model;
 
 verus! {
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

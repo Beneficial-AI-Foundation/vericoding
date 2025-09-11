@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -21,6 +22,7 @@ spec fn spec_bracketing(brackets: Seq<char>) -> (result:bool) {
     let p = spec_bracketing_helper(brackets);
     p.1 && p.0 == 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_sequence (n : Nat) (a b c : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_sequence_length {n : Nat} {a b c : List Nat} 
   (h1 : n ≥ 2)
   (h2 : a.length = n)
@@ -29,6 +37,7 @@ info: n3
 -/
 -- #guard_msgs in
 -- #eval len solve_sequence(n3, a3, b3, c3)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

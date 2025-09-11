@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Data.HashSet
 import Mathlib
 open Std
@@ -5,13 +6,19 @@ open Std
 @[reducible, simp]
 def longestConsecutive_precond (nums : List Int) : Prop :=
   List.Nodup nums
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def longestConsecutive (nums : List Int) (h_precond : longestConsecutive_precond (nums)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def isConsecutive (seq : List Int) : Bool :=
   seq.length = 0 ∨ seq.zipIdx.all (fun (x, i) => x = i + seq[0]!)
 @[reducible, simp]
@@ -26,6 +33,7 @@ def longestConsecutive_postcond (nums : List Int) (result: Nat) (h_precond : lon
 theorem longestConsecutive_spec_satisfied (nums: List Int) (h_precond : longestConsecutive_precond (nums)) :
     longestConsecutive_postcond (nums) (longestConsecutive (nums) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

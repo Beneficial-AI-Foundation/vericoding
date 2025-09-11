@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mutations (alice : List String) (bob : List String) (word : String) (first : Nat) : Nat := sorry
 
 def hasOnlyUniqueLetters (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mutations_result_binary (alice : List String) (bob : List String) (word : String) (first : Nat) :
   mutations alice bob word first = 0 ∨ mutations alice bob word first = 1 := sorry
 
@@ -45,6 +53,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval mutations alice bob "maze" 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

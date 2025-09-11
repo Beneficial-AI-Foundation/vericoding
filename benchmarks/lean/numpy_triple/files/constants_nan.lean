@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nan : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nan_spec :
     ⦃⌜True⌝⦄
     nan
@@ -33,3 +40,4 @@ theorem nan_spec :
       Float.isNaN (Float.sqrt result)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

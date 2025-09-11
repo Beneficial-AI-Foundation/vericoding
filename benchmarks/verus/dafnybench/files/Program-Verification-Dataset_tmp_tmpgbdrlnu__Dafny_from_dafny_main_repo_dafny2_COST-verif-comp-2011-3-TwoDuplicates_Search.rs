@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 uninterp spec fn is_duplicate(a: Seq<int>, p: int) -> bool;
 
 uninterp spec fn is_prefix_duplicate(a: Seq<int>, k: usize, p: int) -> bool;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

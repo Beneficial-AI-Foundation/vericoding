@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def minimum (l : List Int) : Int := sorry
 def maximum (l : List Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_leq_all_elements (l : List Int) (h : l ≠ []) :
   ∀ x ∈ l, minimum l ≤ x := sorry
 
@@ -57,6 +65,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval maximum arr3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 /* Helper function to recursively count elements less than threshold */
 function CountLessThanSpec(numbers: seq<int>, threshold: int): nat
     decreases |numbers|
@@ -12,6 +13,7 @@ function CountLessThanSpec(numbers: seq<int>, threshold: int): nat
         else
             CountLessThanSpec(rest, threshold)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

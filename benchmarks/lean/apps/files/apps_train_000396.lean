@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ladder_length (begin_word end_word : String) (word_list : List String) : Nat := sorry
 
 -- Result should always be non-negative
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ladder_length_nonnegative 
   (begin_word end_word : String) (word_list : List String) :
   ladder_length begin_word end_word word_list ≥ 0 := sorry
@@ -48,6 +56,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval ladder_length "dog" "cog" ["cog"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

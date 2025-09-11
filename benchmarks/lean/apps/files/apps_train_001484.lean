@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def count_jewels (jewels stones : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_jewels_properties_non_negative (jewels stones : String) :
   count_jewels jewels stones ≥ 0 :=
   sorry
@@ -44,6 +51,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_jewels "what" "none"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

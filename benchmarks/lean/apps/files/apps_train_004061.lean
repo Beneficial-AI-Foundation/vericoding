@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def array_leaders (numbers : List Int) : List Int := sorry
 
 def sumList : List Int → Int
   | [] => 0
   | x :: xs => x + sumList xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_leaders_result_is_subset
   (numbers : List Int) :
   ∀ x ∈ array_leaders numbers, x ∈ numbers := sorry
@@ -35,6 +43,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval array_leaders [0, -1, -29, 3, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

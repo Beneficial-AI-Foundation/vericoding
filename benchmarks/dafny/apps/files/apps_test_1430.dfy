@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, K: int, S: string)
 {
     N > 0 && K >= 0 && |S| == N && 
@@ -14,6 +15,7 @@ predicate ValidResult(result: int, N: int)
 {
     0 <= result <= N
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

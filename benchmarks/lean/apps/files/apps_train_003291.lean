@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def integrate (coef : Int) (exp : Nat) : String := sorry
 
 theorem integrate_returns_string (coef : Int) (exp : Nat)
   (h : coef ≠ 0) :
   ∃ s : String, integrate coef exp = s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem integrate_result_ends_with_power 
   (coef : Int) (exp : Nat) (h : coef ≠ 0) :
   ∃ (s : String), integrate coef exp = s ∧ 
@@ -43,6 +51,7 @@ info: '30x^3'
 -/
 -- #guard_msgs in
 -- #eval integrate 90 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def levenshtein (s1 s2 : String) : Nat :=
   sorry
 
 -- Non-negativity
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def repeatChar (c : Char) (n : Nat) : String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem levenshtein_nonneg (s1 s2 : String) :
   levenshtein s1 s2 ≥ 0 :=
 sorry
@@ -60,6 +67,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval levenshtein "peter" "peter"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

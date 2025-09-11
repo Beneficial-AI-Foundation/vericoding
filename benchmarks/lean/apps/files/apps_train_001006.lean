@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def make_valid_board (pawn_positions : List Nat) (length : Nat) : String := sorry
 def can_ada_win (board : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_valid (board : String) : 
   can_ada_win board = "Yes" ∨ can_ada_win board = "No" := sorry
 
@@ -36,6 +44,7 @@ info: 'Yes'
 -/
 -- #guard_msgs in
 -- #eval can_ada_win ".P.P"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

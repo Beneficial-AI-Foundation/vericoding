@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def abs (x : Int) : Int :=
   if x ≥ 0 then x else -x
 
 def gcd (a b : Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def minPizzaCuts (n : Nat) (angles : List Nat) : Nat :=
   sorry
 
 -- GCD theorems
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gcd_positive {a b : Int} (h : a ≠ 0 ∨ b ≠ 0) : 
   gcd (abs a) (abs b) > 0 :=
   sorry
@@ -56,6 +63,7 @@ info: 358
 -/
 -- #guard_msgs in
 -- #eval min_pizza_cuts 2 [0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

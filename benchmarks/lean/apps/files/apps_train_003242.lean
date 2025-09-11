@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def amort (rate : Float) (bal : Int) (term : Int) (num_payments : Int) : String := sorry
 
 structure AmortValues where
@@ -12,10 +13,14 @@ structure AmortValues where
 def extractValuesFromString (s : String) : AmortValues := sorry
 
 /- Helper function to check if string matches expected pattern -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def matchesPattern (s : String) : Bool := sorry
 
 theorem amort_output_format (rate : Float) (bal : Int) (term : Int) (num_payments : Int)
@@ -31,6 +36,10 @@ theorem amort_output_format (rate : Float) (bal : Int) (term : Int) (num_payment
   (values.principal ≥ 0) ∧
   (values.interest ≥ 0) ∧
   (Int.natAbs (values.principal + values.interest - values.payment) ≤ 1) := sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

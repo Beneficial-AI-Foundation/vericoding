@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countSubarraysWithSum (nums : List Int) (k : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list_property (k : Int) :
   countSubarraysWithSum [] k = 0 := by
   sorry
@@ -49,6 +57,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_subarrays_with_sum [1, -1, 0] 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

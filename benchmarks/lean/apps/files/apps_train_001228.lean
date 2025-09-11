@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_binary_set (nums : List Nat) : List (Nat × Nat) := sorry
 
 theorem single_number_output (x : Nat) :
@@ -11,7 +17,9 @@ theorem single_number_output (x : Nat) :
   | some (e, o) => e + o = 1
   | none => False
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_properties {nums : List Nat} (h : nums.length > 0) :
   let result := solve_binary_set nums
   List.length result = nums.length ∧
@@ -32,6 +40,7 @@ theorem monotonic_counts {nums : List Nat} (h : nums.length > 0) :
     | some t1, some t2 => t1 ≤ t2
     | _, _ => True
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

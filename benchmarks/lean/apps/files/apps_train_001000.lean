@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_triangle (h : Int) (s : Int) : Int × Int × Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def format_output (triangle : Int × Int × Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_triangle_valid_output {h s : Int} 
   (h_pos : h > 0) (s_pos : s > 0) (h_bound : h ≤ 1000000) (s_bound : s ≤ 1000000) :
   let (a, b, c) := find_triangle h s
@@ -49,6 +56,7 @@ info: '285168.817674 546189.769984 616153.000000'
 -/
 -- #guard_msgs in
 -- #eval format_output find_triangle(616153, 77878145466)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isValidKey (k : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def encode (text key : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_preserves_non_letters (text key : String) :
   isValidKey key → ∀ i, ¬(text.get! i).isAlpha → 
   (encode text key).get! i = text.get! i :=
@@ -35,6 +42,7 @@ info: 'ihrbfj'
 -/
 -- #guard_msgs in
 -- #eval encode "cipher" "cccciiiiippphheeeeerrrrr"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

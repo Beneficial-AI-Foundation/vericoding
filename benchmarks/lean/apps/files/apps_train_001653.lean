@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def isValidMaze (maze : List String) : Bool := sorry
 def hasExit (maze : List String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isKateAt (maze : List String) (i j : Nat) : Bool := sorry
 
 theorem maze_properties (maze : List String) 
@@ -11,7 +16,9 @@ theorem maze_properties (maze : List String)
   (kateCount : Nat)
   (h2 : kateCount = 1) :
   hasExit maze = true ∨ hasExit maze = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_maze_no_kate (maze : List String)
   (h1 : isValidMaze maze = true)
   (kateCount : Nat)
@@ -38,6 +45,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval has_exit ["####", "# k#", "####"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

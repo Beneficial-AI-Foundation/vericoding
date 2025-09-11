@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tiy_fizz_buzz (s : String) : String := sorry
 
 def isSubstringOf (needle haystack : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_length_never_shorter (s : String) :
   (tiy_fizz_buzz s).length ≥ s.length := sorry
 
@@ -41,6 +49,7 @@ info: 'IronYardllYard IronIron YardIronIronIron!'
 -/
 -- #guard_msgs in
 -- #eval tiy_fizz_buzz "Hello WORLD!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

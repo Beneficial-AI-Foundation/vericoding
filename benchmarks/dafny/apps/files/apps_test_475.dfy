@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: nat, m: nat, k: nat) {
     n >= 1 && m >= 1 && k >= 0 && k <= n - 1
 }
@@ -26,6 +27,7 @@ function ExpectedResult(n: nat, m: nat, k: nat): nat
 {
     (m * power(m - 1, k) * binomial(n - 1, k)) % 998244353
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

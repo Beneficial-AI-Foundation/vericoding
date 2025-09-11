@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def VALID_OPERATORS : List String := ["Golden Telecom", "MTS", "Life:)", "Kyivstar", "Beeline", "no info"]
 
 def detect_operator (number : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem detect_operator_returns_valid : ∀ (n : String),
   n.length = 11 → 
   n.front = '8' →
@@ -51,6 +59,7 @@ info: 'no info'
 -/
 -- #guard_msgs in
 -- #eval detect_operator "80111551111"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

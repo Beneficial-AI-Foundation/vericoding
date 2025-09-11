@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reindeer (presents : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reindeer_min_two (presents : Nat) (h : presents ≤ 180) : 
   reindeer presents ≥ 2 := 
   sorry
@@ -41,6 +49,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval reindeer 180
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

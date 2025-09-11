@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_1RM (weight : Int) (reps : Int) : Int := sorry
 
 -- Non-negative result
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rm_nonnegative (weight reps : Int) 
   (hw : weight ≥ 0) (hr : reps ≥ 0) :
   calculate_1RM weight reps ≥ 0 := sorry
@@ -62,6 +70,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval calculate_1RM 400 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def ogrid {n : Nat} (start stop : Float) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ogrid_spec {n : Nat} (start stop : Float) (h : n > 0) :
     ⦃⌜n > 0⌝⦄
     ogrid start stop
@@ -20,3 +27,4 @@ theorem ogrid_spec {n : Nat} (start stop : Float) (h : n > 0) :
                 (n > 1 → result.get ⟨0, h⟩ = start ∧ 
                          result.get ⟨n - 1, Nat.sub_lt h (Nat.zero_lt_one)⟩ = stop)⌝⦄ := by
   sorry
+-- </vc-theorems>

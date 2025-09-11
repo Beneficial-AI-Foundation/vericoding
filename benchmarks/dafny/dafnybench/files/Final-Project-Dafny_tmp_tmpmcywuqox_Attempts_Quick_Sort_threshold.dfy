@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate quickSorted(Seq: seq<int>)
 {
   forall idx_1, idx_2 :: 0 <= idx_1 < idx_2 < |Seq| ==> Seq[idx_1] <= Seq[idx_2]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

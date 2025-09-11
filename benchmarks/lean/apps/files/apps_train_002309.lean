@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def majorityElement (xs : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_majority {x : Int} :
   majorityElement [x] = x :=
   sorry
@@ -29,6 +37,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval majority_element [1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def super_egg_drop (K N : Nat) : Nat := sorry
 
 theorem super_egg_drop_positive (K N : Nat) (h1 : K > 0) (h2 : N > 0) :
   super_egg_drop K N > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem super_egg_drop_upper_bound (K N : Nat) (h1 : K > 0) (h2 : N > 0) :
   super_egg_drop K N ≤ N := sorry
 
@@ -41,6 +49,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval super_egg_drop 3 14
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

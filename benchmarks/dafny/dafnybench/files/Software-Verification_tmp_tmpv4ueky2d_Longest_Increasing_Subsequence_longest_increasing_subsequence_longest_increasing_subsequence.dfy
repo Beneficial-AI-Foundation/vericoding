@@ -1,8 +1,10 @@
+// <vc-preamble>
 function find_max(x: int, y: int): int
 {
     if x > y then x
     else y
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && 'a' <= input[0] <= 'y'
@@ -17,6 +18,7 @@ predicate ValidOutput(input: string, output: string)
     output[1] == '\n' &&
     'b' <= output[0] <= 'z'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

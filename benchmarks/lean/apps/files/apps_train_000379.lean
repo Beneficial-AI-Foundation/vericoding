@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def split_array_same_average (arr : List Int) : Bool :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_list (l : List Int) : Int :=
 l.foldl (· + ·) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem split_array_verification {arr : List Int} 
   (h : split_array_same_average arr = true) 
   (h1 : arr.length ≥ 2)
@@ -44,6 +51,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval split_array_same_average [3, 1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

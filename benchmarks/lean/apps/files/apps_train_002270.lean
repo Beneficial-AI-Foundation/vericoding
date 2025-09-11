@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_frog_jumps (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.reverse (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem frog_jumps_positive_bound (s : String) :
   solve_frog_jumps s ≥ 1 :=
   sorry
@@ -36,6 +43,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_frog_jumps "LLR"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate ExistsSubstring(str1: string, str2: string) {
 
     exists offset :: 0 <= offset <= |str1| && str2 <= str1[offset..]
@@ -28,6 +29,7 @@ ghost predicate Inner_Inv_correctness(str1: string, str2: string, i : nat, j: in
 ghost predicate Inner_Inv_Termination(str1: string, str2: string, i : nat, j: int, old_i: nat, old_j: nat){
     old_j - j == old_i - i
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

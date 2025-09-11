@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def boxes_packing (l w h : List Int) : Bool := sorry
 
 theorem identical_boxes_not_packable {n : Nat} {d : Int} (h : n > 1) : 
   boxes_packing (List.replicate n d) (List.replicate n d) (List.replicate n d) = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_box_always_packable (d : Int) (h : d > 0) :
   boxes_packing [d] [d] [d] = true := sorry
 
@@ -37,6 +45,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval boxes_packing [3, 1, 2] [3, 1, 2] [3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

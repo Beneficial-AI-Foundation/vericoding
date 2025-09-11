@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate palindromic(s: string, i: int, j: int)
   requires 0 <= i <= j <= |s|
   decreases j - i
@@ -72,6 +73,7 @@ ghost predicate max_interval_for_same_center(s: string, k: int, lo: int, hi: int
   && palindromic(s, lo, hi)
   && (forall i, j | 0 <= i <= j <= |s| && palindromic(s, i, j) && i + j == k :: j - i <= hi - lo)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

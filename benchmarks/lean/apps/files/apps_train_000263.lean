@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def get_happy_string (n k : Nat) : String :=
   sorry
 
@@ -6,13 +7,19 @@ def all_chars_abc (s : String) : Bool :=
 
 def no_adjacent_same (s : String) : Bool := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def starts_with_a (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem happy_string_properties (n k : Nat) 
   (h1 : 0 < n) (h2 : n ≤ 10) (h3 : 0 < k) (h4 : k ≤ 1000) :
   let s := get_happy_string n k
@@ -59,6 +66,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval get_happy_string 1 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

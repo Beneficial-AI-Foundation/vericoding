@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def findSquares (x y : Nat) : Nat := sorry
 
 -- Result should be non-negative
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_squares (n : Nat) : Nat :=
   Nat.rec 0 (fun k res => res + k*k) n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem findSquares_nonneg (x y : Nat) : 
   findSquares x y ≥ 0 := sorry
 
@@ -43,6 +50,7 @@ info: 100
 -/
 -- #guard_msgs in
 -- #eval findSquares 11 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

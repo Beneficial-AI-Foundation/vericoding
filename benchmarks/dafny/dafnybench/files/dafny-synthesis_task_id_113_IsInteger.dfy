@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate IsDigit(c: char)
 {
     48 <= c as int <= 57
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

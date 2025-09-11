@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_paths (rows cols max_consecutive : Nat) (grid : List (List Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_grid_zero_paths (max_consecutive : Nat) :
   find_paths 0 0 max_consecutive [] = 0 ∧
   find_paths 1 1 max_consecutive [] = 0 := by
@@ -38,6 +46,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_paths 3 3 2 [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

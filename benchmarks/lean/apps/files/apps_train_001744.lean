@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def Matrix (α : Type) := List (List α)
 
 def swim_time (grid : Matrix Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def can_reach (t : Nat) (grid : Matrix Nat) (i j : Nat) (visited : List (Nat × Nat)) : Bool := sorry
 
 theorem swim_time_non_negative (grid : Matrix Nat) : 
   swim_time grid ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem swim_time_bounds {grid : Matrix Nat} (h : grid.length > 0) :
   swim_time grid ≥ (grid.head!.head!) ∧
   swim_time grid ≥ (grid.getLast!.getLast!) ∧
@@ -43,6 +50,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval swim_time [[0, 1], [2, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

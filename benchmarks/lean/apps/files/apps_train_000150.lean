@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def max_distance (positions : List Nat) (m : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def can_place_balls (distance : Nat) (sorted_pos : List Nat) (m : Nat) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_distance_bounds {positions : List Nat} {m : Nat} 
   (h1 : positions.length ≥ 2)
   (h2 : m ≥ 2)
@@ -65,6 +72,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval max_distance [1, 2, 3, 4, 5, 6] 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

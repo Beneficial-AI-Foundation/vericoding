@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def next_perfect_square (n: Int) : Int := sorry
 
 theorem next_perfect_square_non_negative (n: Int) : 
   next_perfect_square n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem next_perfect_square_negative_input (n: Int) : 
   n < 0 → next_perfect_square n = 0 := sorry
 
@@ -38,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval next_perfect_square -5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

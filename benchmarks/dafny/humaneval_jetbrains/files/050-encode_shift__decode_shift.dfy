@@ -1,3 +1,4 @@
+// <vc-preamble>
 function encode_char(c: char): char
 
   requires 'a' <= c <= 'z'
@@ -21,6 +22,7 @@ function decode_char(c: char): char
   ((c as int - 'a' as int - 5) % 26 + 'a' as int) as char
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

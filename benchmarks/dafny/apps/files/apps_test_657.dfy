@@ -1,3 +1,4 @@
+// <vc-preamble>
 function max(a: int, b: int): int
 {
     if a >= b then a else b
@@ -22,6 +23,7 @@ function MinAdditionalCrystals(a: int, b: int, x: int, y: int, z: int): int
 {
     max(0, YellowCrystalsNeeded(x, y) - a) + max(0, BlueCrystalsNeeded(y, z) - b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def replace_zero (arr : List Nat) : Int := sorry
 
 def consecutive_ones (l : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem replace_zero_valid_output (arr : List Nat)
     (h : ∀ x ∈ arr, x = 0 ∨ x = 1) : 
     -1 ≤ replace_zero arr ∧ replace_zero arr < arr.length := sorry
@@ -46,6 +54,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval replace_zero [1, 1, 1, 0, 1, 1, 0, 1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

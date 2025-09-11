@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);
@@ -45,6 +46,7 @@ function AlternateChars(s: string, t: string, n: int): string
     if n == 0 then ""
     else [s[0]] + [t[0]] + AlternateChars(s[1..], t[1..], n - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

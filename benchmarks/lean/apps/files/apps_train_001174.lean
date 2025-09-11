@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_ingredients (n : Nat) (x : Nat) (ingredients : List Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_ingredients_valid_output (n : Nat) (x : Nat) (ingredients : List Nat) (h : ingredients ≠ []) : 
   check_ingredients n x ingredients = "YES" ∨ check_ingredients n x ingredients = "NO" :=
   sorry
@@ -37,6 +45,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval check_ingredients 5 45 [12, 24, 36, 48, 60]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def solve_good_substrings : String → Nat × Nat :=
   fun _ => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString : String → String :=
   fun _ => sorry
 
 #check solve_good_substrings
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_good_substrings_result_structure 
     {s : String} 
     (h : s.length > 0) :
@@ -47,6 +54,7 @@ info: (3, 1)
 -/
 -- #guard_msgs in
 -- #eval solve_good_substrings "ddd"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

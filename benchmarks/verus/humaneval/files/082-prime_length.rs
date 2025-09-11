@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn is_prime(n: int) -> (ret:bool) {
         (forall|k: int| 2 <= k < n ==> !is_divisible(n as int, k))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

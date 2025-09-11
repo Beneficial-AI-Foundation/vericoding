@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountMatches(xs: seq<nat>, x: nat): nat
     decreases |xs|
 {
@@ -7,6 +8,7 @@ function CountMatches(xs: seq<nat>, x: nat): nat
         var firstMatch: nat := if xs[0] == x then 1 else 0;
         firstMatch + CountMatches(xs[1..], x)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

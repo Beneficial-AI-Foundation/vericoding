@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def tensorinv {n : Nat} (a : Vector (Vector Float n) n) (ind : Nat) 
     (h_square : n > 0) (h_ind : ind > 0) : Id (Vector (Vector Float n) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tensorinv_spec {n : Nat} (a : Vector (Vector Float n) n) (ind : Nat) 
     (h_square : n > 0) (h_ind : ind > 0) 
     (h_invertible : ∀ i j : Fin n, ∃ det : Float, det ≠ 0) :
@@ -26,3 +33,4 @@ theorem tensorinv_spec {n : Nat} (a : Vector (Vector Float n) n) (ind : Nat)
         Float.abs (((result.get i).get j) - identity_val) < 1e-10)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

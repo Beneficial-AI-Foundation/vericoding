@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int) {
     n >= 1 && m >= 2
 }
@@ -13,6 +14,7 @@ predicate CanWearSocksOnDay(n: int, m: int, day: int)
 {
     day >= 1 ==> SocksAfterDay(n, m, day - 1) > 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

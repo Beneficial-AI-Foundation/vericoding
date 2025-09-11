@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def correlate {m n : Nat} (a : Vector Float m) (v : Vector Float n) (h : n ≤ m) (h_pos : 0 < n) : Id (Vector Float (m + 1 - n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem correlate_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n) (h : n ≤ m) (h_pos : 0 < n) :
     ⦃⌜n ≤ m ∧ 0 < n⌝⦄
     correlate a v h h_pos
@@ -25,3 +32,4 @@ theorem correlate_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n) (h 
                  ((∀ i : Fin m, 0 ≤ a.get i) ∧ (∀ i : Fin n, 0 ≤ v.get i) →
                    ∀ k : Fin (m + 1 - n), 0 ≤ result.get k)⌝⦄ := by
   sorry
+-- </vc-theorems>

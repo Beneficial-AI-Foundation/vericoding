@@ -1,3 +1,4 @@
+// <vc-preamble>
 function comparison(a : string, b : string, i : int): bool
     requires 0 <= i <= |a| && 0 <= i <= |b|
     decreases |a| - i
@@ -17,6 +18,7 @@ function comparison(a : string, b : string, i : int): bool
         else
             false
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

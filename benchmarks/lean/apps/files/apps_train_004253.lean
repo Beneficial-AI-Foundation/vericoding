@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def lengthOf (α : Type) : α → Nat
   | _ => sorry
 
@@ -5,13 +6,19 @@ def order_type {α : Type} (arr : List α) : String := sorry
 
 def is_sorted_increasing (xs : List Nat) : Prop := 
   ∀ i j, i < j → j < xs.length → xs[i]! ≤ xs[j]!
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_sorted_decreasing (xs : List Nat) : Prop :=
   ∀ i j, i < j → j < xs.length → xs[i]! ≥ xs[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem constant_length_elements {α : Type} [Inhabited α] (arr : List α) :
   arr.length > 0 → 
   (∀ i j, i < arr.length → j < arr.length → lengthOf α (arr[i]!) = lengthOf α (arr[j]!)) →
@@ -56,6 +63,7 @@ info: 'Decreasing'
 -/
 -- #guard_msgs in
 -- #eval order_type [[1, 2, 3, 4], [5, 6, 7], [8, 9]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

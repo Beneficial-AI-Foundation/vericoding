@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidTreeInput(input: string)
 {
   var lines := SplitLines(input);
@@ -94,6 +95,7 @@ function ComputeMinPaintOps(n: int, colors: seq<int>, edges: seq<(int, int)>): i
     var componentGraph := BuildComponentGraph(components, colors, edges);
     (TreeDiameter(componentGraph) + 1) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

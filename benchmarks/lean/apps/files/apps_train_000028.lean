@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_abacaba_substring (s : String) : Nat := sorry
 
 def find_abacaba_substring (n : Nat) (s : String) : Bool × String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_abacaba_nonnegative (s : String) :
   check_abacaba_substring s ≥ 0 := sorry
 
@@ -38,6 +46,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval check_abacaba_substring result
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

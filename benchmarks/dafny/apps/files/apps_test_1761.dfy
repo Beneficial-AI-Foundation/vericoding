@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: seq<string>)
 {
     |input| >= 2 &&
@@ -28,6 +29,7 @@ function isSubsequenceHelper(pattern: seq<char>, text: string, patternIndex: nat
     else
         isSubsequenceHelper(pattern, text, patternIndex, textIndex + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

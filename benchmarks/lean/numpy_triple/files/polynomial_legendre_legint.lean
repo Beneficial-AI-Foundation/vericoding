@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def legint {n : Nat} (c : Vector Float n) (k : Float) (lbnd : Float) (scl : Float) 
     : Id (Vector Float (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem legint_spec {n : Nat} (c : Vector Float n) (k : Float) (lbnd : Float) (scl : Float) 
     (h_scl_nonzero : scl ≠ 0) :
     ⦃⌜scl ≠ 0⌝⦄
@@ -28,3 +35,4 @@ theorem legint_spec {n : Nat} (c : Vector Float n) (k : Float) (lbnd : Float) (s
         result.get ⟨0, Nat.zero_lt_succ n⟩ + k)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

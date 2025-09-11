@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
     n > 0 && k > 0
@@ -28,6 +29,7 @@ predicate IsPossible(n: int, k: int)
 {
     k * (k + 1) / 2 <= n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

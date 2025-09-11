@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def parade_time (groups : List String) (location speed : Nat) (pref : String) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem parade_time_output_structure 
   (groups : List String) (location speed : Nat) (pref : String)
   (h1 : groups ≠ []) (h2 : ∀ g ∈ groups, g ≠ "") (h3 : speed > 0) (h4 : pref ≠ "") :
@@ -41,6 +49,7 @@ info: [10, 11, 13]
 -/
 -- #guard_msgs in
 -- #eval parade_time ["a", "b", "c", "c", "e", "c"] 7 1 "c"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

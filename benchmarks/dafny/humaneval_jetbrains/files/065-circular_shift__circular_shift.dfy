@@ -1,3 +1,4 @@
+// <vc-preamble>
 type stringNat = s: string |
   |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
   forall i | 0 <= i < |s| :: s[i] in "0123456789"
@@ -8,6 +9,7 @@ function natToString(n: nat): stringNat {
     case 5 => "5" case 6 => "6" case 7 => "7" case 8 => "8" case 9 => "9"
     case _ => natToString(n / 10) + natToString(n % 10)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

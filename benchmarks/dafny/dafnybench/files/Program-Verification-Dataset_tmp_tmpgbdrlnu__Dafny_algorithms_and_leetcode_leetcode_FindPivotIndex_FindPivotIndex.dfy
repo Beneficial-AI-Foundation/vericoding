@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(nums: seq<int>): int {
 
     if |nums| == 0 then 0 else sum(nums[0..(|nums|-1)])+nums[|nums|-1]
@@ -6,6 +7,7 @@ function sum(nums: seq<int>): int {
 function sumUp(nums: seq<int>): int {
     if |nums| == 0 then 0 else nums[0]+sumUp(nums[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

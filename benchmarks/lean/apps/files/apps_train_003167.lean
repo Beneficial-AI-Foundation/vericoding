@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def autocorrect (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem basic_replacement (s : String)
   (h : s = "u" ∨ (∃ n : Nat, s = "y" ++ String.mk (List.replicate n 'o') ++ "u")) :
   autocorrect s = "your sister" := 
@@ -38,6 +46,7 @@ info: 'I want to film the bayou with your sister and put it on youtube'
 -/
 -- #guard_msgs in
 -- #eval autocorrect "I want to film the bayou with you and put it on youtube"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,11 @@
+// <vc-preamble>
 function isMax(m: int, numbers: seq<int>): bool
 {
     m in numbers &&
     forall i :: 0 <= i < |numbers| ==> numbers[i] <= m
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

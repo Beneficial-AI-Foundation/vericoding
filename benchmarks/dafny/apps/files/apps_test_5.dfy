@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, pos: int, l: int, r: int)
 {
     1 <= n <= 100 && 1 <= pos <= n && 1 <= l <= r <= n
@@ -22,6 +23,7 @@ predicate CloseBothSides(l: int, r: int, n: int)
 {
     l > 1 && r < n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

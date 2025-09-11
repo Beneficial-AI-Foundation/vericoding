@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def fmax {n : Nat} (x y : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fmax_spec {n : Nat} (x y : Vector Float n) :
     ⦃⌜True⌝⦄
     fmax x y
@@ -29,3 +36,4 @@ theorem fmax_spec {n : Nat} (x y : Vector Float n) :
       -- NaN preservation: result is NaN iff both inputs are NaN
       ((result.get i).isNaN ↔ ((x.get i).isNaN ∧ (y.get i).isNaN))⌝⦄ := by
   sorry
+-- </vc-theorems>

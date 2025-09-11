@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn sum(numbers: Seq<u32>) -> (result:int) {
 spec fn product(numbers: Seq<u32>) -> (result:int) {
     numbers.fold_left(1, |acc: int, x| acc * x)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

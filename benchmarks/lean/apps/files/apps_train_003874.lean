@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mix_words (s : String) : Option String := sorry
 
 def is_properly_scrambled (original scrambled : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_length_matches_input (s : String) :
   ∀ res, mix_words s = some res → res.length = s.length := sorry
 
@@ -40,6 +48,7 @@ info: sorted(mixed[1:-1])
 -/
 -- #guard_msgs in
 -- #eval sorted orig[1:-1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

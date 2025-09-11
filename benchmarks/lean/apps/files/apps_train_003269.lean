@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def correct (m n : Nat) (bits : String) : String := sorry
 
 theorem output_length_matches_input 
@@ -10,7 +16,9 @@ theorem output_length_matches_input
   (h2 : n > 0)
   (h3 : bits.length = m*n + m + n) :
   (correct m n bits).length = bits.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_differs_by_at_most_one_bit
   (m n : Nat) 
   (bits : String)
@@ -38,6 +46,7 @@ info: '111'
 -/
 -- #guard_msgs in
 -- #eval correct 1 1 "110"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

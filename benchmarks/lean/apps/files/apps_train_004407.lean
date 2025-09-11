@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def numberAndIPaddress (input : String) : String := sorry
 
 theorem ip_to_num_conversion 
@@ -15,7 +21,9 @@ theorem ip_to_num_conversion
     n ≤ 4294967295 ∧
     num = toString n ∧
     numberAndIPaddress num = ip := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem num_to_ip_conversion
   (num : String)
   (h1 : ∃ n : Nat, n ≤ 4294967295 ∧ num = toString n) :
@@ -46,6 +54,7 @@ info: '0'
 -/
 -- #guard_msgs in
 -- #eval numberAndIPaddress "0.0.0.0"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

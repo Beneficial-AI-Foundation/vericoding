@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def digitize (n : Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def digitsToNat (digits : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem digitize_single_digits {n : Nat} :
   ∀ d ∈ digitize n, d ≤ 9 := by
   sorry
@@ -45,6 +52,7 @@ info: [8, 3, 7, 4, 6, 7, 4, 8, 9]
 -/
 -- #guard_msgs in
 -- #eval digitize 984764738
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

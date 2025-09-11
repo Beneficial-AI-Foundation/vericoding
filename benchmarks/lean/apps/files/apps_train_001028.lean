@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_alternating_substrings (n : Nat) (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_non_negative {n : Nat} {s : String} :
   find_alternating_substrings n s ≥ 0 :=
   sorry
@@ -23,6 +31,7 @@ theorem zero_edge_case {n : Nat} :
 theorem one_edge_case {n : Nat} :
   find_alternating_substrings n "1" = 0 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

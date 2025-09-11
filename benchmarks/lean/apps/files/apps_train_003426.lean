@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def looseChange (coins: List Nat) (amount: Nat) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listMin (l: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem looseChange_result_bound (coins: List Nat) (amount: Nat) :
   coins.length > 0 → let result := looseChange coins amount
   result ≥ -1 := by sorry
@@ -50,6 +57,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval loose_change [25, 5, 10, 1, 21] 63
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def exp_sum (n : Int) : Int := sorry
 
 -- Test negative numbers always return 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem exp_sum_negative (n : Int) (h : n < 0) :
   exp_sum n = 0 := sorry
 
@@ -74,6 +82,7 @@ info: 627
 -/
 -- #guard_msgs in
 -- #eval exp_sum 20
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

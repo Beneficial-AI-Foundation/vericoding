@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fibonacci_sum (n k : Nat) : Nat := sorry
 
 def MOD := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fibonacci_sum_bounds (n k : Nat) :
   fibonacci_sum n k < MOD := sorry
 
@@ -31,6 +39,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval fibonacci_sum 1 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

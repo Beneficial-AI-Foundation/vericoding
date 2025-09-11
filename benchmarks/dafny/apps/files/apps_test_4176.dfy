@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 &&
@@ -37,6 +38,7 @@ predicate ValidOutput(output: string)
     |output| > 0 &&
     forall i :: 0 <= i < |output| ==> ('0' <= output[i] <= '9')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

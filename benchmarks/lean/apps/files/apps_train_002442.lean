@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def calculate_shoe_shop_earnings (num_shoes : Nat) (shoe_sizes : List Nat) 
     (customer_requests : List (Nat × Nat)) : Nat :=
   sorry
 
 def count_successful_sales (shoe_sizes : List Nat) (customer_requests : List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_request_prices (requests : List (Nat × Nat)) : Nat :=
   sorry
 
 -- Earnings cannot be negative (this is implied by Nat return type)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem earnings_nonnegative
     (num_shoes : Nat) (shoe_sizes : List Nat) (customer_requests : List (Nat × Nat)) :
     calculate_shoe_shop_earnings num_shoes shoe_sizes customer_requests ≥ 0 := sorry
@@ -59,6 +66,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval calculate_shoe_shop_earnings 1 [2] [(3, 50)]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

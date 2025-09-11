@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_square_plots (length width : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_square_plots_positive (length width : Nat) (h1 : length > 0) (h2 : width > 0) :
   min_square_plots length width > 0 :=
   sorry
@@ -37,6 +45,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval min_square_plots 100 150
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

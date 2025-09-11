@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int, d: int) {
     a > 0 && b > 0 && c > 0 && d > 0
 }
@@ -7,6 +8,7 @@ predicate IsValidFractionString(s: string, num: int, den: int) {
     gcd(num, den) == 1 &&
     s == intToString(num) + "/" + intToString(den)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

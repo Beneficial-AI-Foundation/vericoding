@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def largest_power (n: Nat) : Nat × Int := sorry
 
 theorem largest_power_output_format (n: Nat) (h: n ≥ 1) :
   let result := largest_power n
   Nat.zero ≤ result.1 ∧ result.1 < n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem largest_power_special_cases :
   largest_power 1 = (0, -1) ∧ 
   largest_power 2 = (1, -1) ∧
@@ -40,6 +48,7 @@ info: (0, -1)
 -/
 -- #guard_msgs in
 -- #eval largest_power 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

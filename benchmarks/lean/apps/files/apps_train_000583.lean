@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_last_fibonacci_digit (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_last_fib_digit_range (n: Nat) (h: n ≥ 1) : 
   0 ≤ find_last_fibonacci_digit n ∧ find_last_fibonacci_digit n ≤ 9 :=
 sorry
@@ -32,6 +40,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_last_fibonacci_digit 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

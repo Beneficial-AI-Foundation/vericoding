@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def micro_world (bacteria : List Nat) (k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem micro_world_bounds {bacteria : List Nat} (k : Nat) 
   (h : bacteria ≠ []) : 
   0 ≤ micro_world bacteria k ∧ micro_world bacteria k ≤ bacteria.length :=
@@ -48,6 +56,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval micro_world [5, 3, 1, 5] 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

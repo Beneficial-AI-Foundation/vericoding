@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string) {
     |input| > 0
 }
@@ -17,6 +18,7 @@ function OptimalScore(ribbon: string, turns: int): int
     else if length < maxFreq + turns then length
     else maxFreq + turns
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

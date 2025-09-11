@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ArrayToBv10(arr: array<bool>): bv10
     reads arr
     requires arr.Length == 10
@@ -71,6 +72,7 @@ function BitAddition(s: array<bool>, t: array<bool>): seq<bool>
     var c: bv10 := a + b;
     Bv10ToSeq(c)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

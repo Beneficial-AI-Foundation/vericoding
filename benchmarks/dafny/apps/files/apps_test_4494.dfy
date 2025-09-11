@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && 
@@ -17,6 +18,7 @@ function ExpectedOutput(input: string): string
     var s := NormalizeInput(input);
     if s == "ABC" then "ARC\n" else "ABC\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsComposite(x: int)
 {
     x >= 4 && exists k :: 2 <= k < x && x % k == 0
@@ -23,6 +24,7 @@ predicate ValidResult(queries: seq<int>, results: seq<int>)
     forall i :: 0 <= i < |queries| ==> results[i] == MaxCompositeSummands(queries[i]) &&
     forall i :: 0 <= i < |queries| ==> results[i] >= -1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

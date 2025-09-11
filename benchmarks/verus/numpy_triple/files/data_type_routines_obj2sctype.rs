@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -51,6 +52,7 @@ pub open spec fn is_generic_object(obj: NumpyObject) -> bool {
         _ => false,
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

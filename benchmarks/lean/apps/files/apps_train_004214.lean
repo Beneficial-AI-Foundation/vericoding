@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_haiku (text : String) : Bool := sorry
 
 def make_line (syllables : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem wrong_lines_not_haiku
   {ls : List String}
   (h : ls.length ≠ 3) :
@@ -35,6 +43,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_haiku "My code is cool, right?\nJava # Pyhton ; Ruby // Go:\nI know them all, yay! ;-)"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

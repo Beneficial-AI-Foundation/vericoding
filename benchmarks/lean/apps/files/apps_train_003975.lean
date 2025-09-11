@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def odd_dig_cubic (a b : Int) : List Int :=
   sorry
 
@@ -7,13 +8,19 @@ def hasAllOddDigits (n : Int) : Bool :=
   sorry
 
 -- Helper function to check if a number is a perfect cube
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPerfectCube (n : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_dig_cubic_sorted (a b : Int) :
   let result := odd_dig_cubic a b
   ∀ i, i + 1 < result.length → result[i]! ≤ result[i+1]! :=
@@ -65,6 +72,7 @@ info: [-3375, -1331]
 -/
 -- #guard_msgs in
 -- #eval odd_dig_cubic -5000 -2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

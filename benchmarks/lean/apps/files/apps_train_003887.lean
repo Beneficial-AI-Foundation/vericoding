@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isUpperCase (c : Char) : Bool :=
   sorry
 
 def toLetterIndex (c : Char) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def new_numeral_system (letter : Char) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem correct_format {letter : Char} : 
   ∀ s ∈ new_numeral_system letter, 
     s.length = 5 ∧ s.data.get ⟨1, sorry⟩ = ' ' ∧ 
@@ -46,6 +53,7 @@ theorem middle_pair_equal {letter : Char} :
     let middle := result[midIdx]!
     middle.data.get ⟨0, sorry⟩ = middle.data.get ⟨4, sorry⟩ := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

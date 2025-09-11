@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ValidInput(input: string): bool
 {
     var lines := SplitLines(input);
@@ -86,6 +87,7 @@ function IsInsideCornfield(grasshopper: (int, int), n: int, d: int): bool
     var (x, y) := grasshopper;
     x + y >= d && x + y <= 2 * n - d && x - y >= -d && x - y <= d
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

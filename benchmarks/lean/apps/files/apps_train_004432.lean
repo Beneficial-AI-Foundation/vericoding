@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def double_every_other : List Int → List Int
   | _ => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem double_every_other_length (lst : List Int) :
   (double_every_other lst).length = lst.length :=
 sorry
@@ -33,6 +41,7 @@ info: [-1000, 3306, 210, 0, 1]
 -/
 -- #guard_msgs in
 -- #eval double_every_other [-1000, 1653, 210, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

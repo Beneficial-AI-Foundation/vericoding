@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def true_binary (n : Nat) : List Int := sorry
 
 theorem true_binary_starts_with_one {n : Nat} (h : n % 2 = 1) :
@@ -8,7 +14,9 @@ theorem true_binary_starts_with_one {n : Nat} (h : n % 2 = 1) :
   | [] => False 
   | x::xs => x = 1
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem true_binary_elements_are_ones {n : Nat} (h : n % 2 = 1) :
   ∀ x ∈ true_binary n, x = 1 ∨ x = -1 := sorry
 
@@ -32,6 +40,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval true_binary 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

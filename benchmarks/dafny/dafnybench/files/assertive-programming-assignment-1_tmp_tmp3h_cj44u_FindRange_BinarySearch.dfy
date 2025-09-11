@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate Sorted(q: seq<int>)
 {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j] 
@@ -14,6 +15,7 @@ predicate RangeSatisfiesComparerNegation(q: seq<int>, key: int, lowerBound: nat,
 {
     RangeSatisfiesComparer(q, key, lowerBound, upperBound, (n1, n2) => !comparer(n1, n2))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

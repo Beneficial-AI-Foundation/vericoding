@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def expanded_form (n : Nat) : String := sorry
 
 def list_sum (xs : List Nat) : Nat := 
   match xs with
   | [] => 0
   | x :: rest => x + list_sum rest
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def string_to_nat (s : String) : Nat := sorry
 
 def list_sorted_desc (xs : List Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem expanded_form_sum_equals_input (n : Nat) (h : 0 < n) (h2 : n ≤ 1000000) : 
   let parts := (expanded_form n).split (· = '+')
   list_sum (parts.map string_to_nat) = n := sorry
@@ -50,6 +57,7 @@ info: '70000 + 300 + 4'
 -/
 -- #guard_msgs in
 -- #eval expanded_form 70304
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

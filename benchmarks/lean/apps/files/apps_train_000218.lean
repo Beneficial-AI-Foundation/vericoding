@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def List.isSorted (xs : List Nat) : Bool :=
   match xs with
   | [] => true
@@ -18,13 +19,19 @@ def isFibonacciSeq (seq : List Nat) : Bool :=
         | some x, some y, some z => x == y + z && checkFib (i+1) (fuel-1)
         | _, _, _ => false
     checkFib 0 seq.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lenLongestFibSubseq (A : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bounds {A : List Nat} : 
   let result := lenLongestFibSubseq A
   result = 0 ∨ (result ≥ 3 ∧ result ≤ A.length) :=
@@ -64,6 +71,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval lenLongestFibSubseq [1, 2, 4, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

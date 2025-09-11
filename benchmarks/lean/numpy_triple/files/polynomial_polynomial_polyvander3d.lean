@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def polyvander3d {n : Nat} (x y z : Vector Float n) (xDeg yDeg zDeg : Nat) : 
     Id (Vector (Vector Float ((xDeg + 1) * (yDeg + 1) * (zDeg + 1))) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem polyvander3d_spec {n : Nat} (x y z : Vector Float n) (xDeg yDeg zDeg : Nat) :
     ⦃⌜True⌝⦄
     polyvander3d x y z xDeg yDeg zDeg
@@ -18,3 +25,4 @@ theorem polyvander3d_spec {n : Nat} (x y z : Vector Float n) (xDeg yDeg zDeg : N
               ⟨colIdx, by sorry⟩
             (V.get p).get colIdxFin = (x.get p) ^ (Float.ofNat i.val) * (y.get p) ^ (Float.ofNat j.val) * (z.get p) ^ (Float.ofNat k.val)⌝⦄ := by
   sorry
+-- </vc-theorems>

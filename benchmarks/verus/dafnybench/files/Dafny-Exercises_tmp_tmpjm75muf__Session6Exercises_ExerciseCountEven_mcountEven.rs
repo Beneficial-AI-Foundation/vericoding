@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -22,6 +23,7 @@ spec fn count_even(s: Seq<int>) -> int
         (if s[s.len() - 1] % 2 == 0 { 1 as int } else { 0 as int }) + count_even(s.subrange(0, s.len() - 1))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

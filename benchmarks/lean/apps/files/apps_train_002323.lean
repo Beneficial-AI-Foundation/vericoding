@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_odd_char_string (n : Nat) : String := sorry
 
 def String.countChar (s : String) (c : Char) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_matches_input (n : Nat) (h : 0 < n) (h2 : n ≤ 1000) : 
   (generate_odd_char_string n).length = n := sorry
 
@@ -41,6 +49,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval len generate_odd_char_string(7)
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

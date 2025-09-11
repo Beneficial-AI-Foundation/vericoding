@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -43,13 +44,19 @@ def can_represent_value (dt : NumpyDType) (value : Float) : Prop :=
   | .Int32 => -2147483648 ≤ value ∧ value ≤ 2147483647 ∧ value = value.floor
   | .Int64 => -9223372036854775808 ≤ value ∧ value ≤ 9223372036854775807 ∧ value = value.floor
   | .Float16 | .Float32 | .Float64 | .Complex64 | .Complex128 => True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_scalar_type (value : Float) : Id NumpyDType :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_scalar_type_spec (value : Float) :
     ⦃⌜True⌝⦄
     min_scalar_type value
@@ -65,3 +72,4 @@ theorem min_scalar_type_spec (value : Float) :
         dtype_kind_order result ≤ dtype_kind_order dt)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

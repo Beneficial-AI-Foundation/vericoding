@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_prime : Nat → Bool := sorry
 
 def step : Nat → Nat → Nat → Option (Nat × Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_prime_properties (n : Nat) :
   (n ≤ 1 → is_prime n = false) ∧ 
   (is_prime n = true → n > 1) := sorry
@@ -38,6 +46,7 @@ theorem step_consecutive_ranges (g : Nat) (h : g ≥ 2 ∧ g ≤ 50) :
   | some (a₁, _), some (a₂, _) => a₁ ≤ a₂
   | _, _ => True
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

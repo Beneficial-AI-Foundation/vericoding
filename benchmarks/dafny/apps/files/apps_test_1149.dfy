@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(stdin_input: string)
 {
     var lines := split_lines(stdin_input);
@@ -104,6 +105,7 @@ function split_by_char(s: string, delimiter: char): seq<string>
             [s[0..delim_pos]] + split_by_char(s[delim_pos+1..], delimiter)
         else [s]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

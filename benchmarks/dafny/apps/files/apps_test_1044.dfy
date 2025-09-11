@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     var lines := SplitByNewlineSpec(s);
@@ -115,6 +116,7 @@ predicate PartialSimulation(numbers: seq<string>, output: string, processed: int
         (partialComputed[i] == 1 ==> outputLines[i] == "1") &&
         (partialComputed[i] == 2 ==> outputLines[i] == "2")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

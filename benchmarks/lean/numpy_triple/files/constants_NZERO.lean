@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def NZERO : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem NZERO_spec :
     ⦃⌜True⌝⦄
     NZERO
@@ -32,3 +39,4 @@ theorem NZERO_spec :
       Float.abs result = 0.0
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

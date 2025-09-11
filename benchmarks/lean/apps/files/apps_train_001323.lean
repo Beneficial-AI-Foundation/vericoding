@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_wolverine_mutations (n k : Nat) (characteristics : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem wolverine_mutations_empty 
   (n k : Nat) (h1 : n ≥ 1) (h2 : k ≥ 1) :
   count_wolverine_mutations n k [] = 0 :=
@@ -26,6 +34,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval count_wolverine_mutations 4 7 [7, 14, 21, 28]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

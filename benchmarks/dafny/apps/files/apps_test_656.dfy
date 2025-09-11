@@ -1,8 +1,10 @@
+// <vc-preamble>
 function count_negative_temp_days(temps: seq<int>): int
 {
     if |temps| == 0 then 0
     else (if temps[0] < 0 then 1 else 0) + count_negative_temp_days(temps[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

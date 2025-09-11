@@ -1,3 +1,4 @@
+// <vc-preamble>
 function lengthSqr(p1: (int, int), p2: (int, int)): int
 {
     (p1.0 - p2.0) * (p1.0 - p2.0) + (p1.1 - p2.1) * (p1.1 - p2.1)
@@ -67,6 +68,7 @@ function charToDigit(c: char): int
 {
     (c as int) - ('0' as int)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

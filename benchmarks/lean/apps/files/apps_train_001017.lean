@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_square_intersection (a k x1 x2 x3 : Float) : Float := sorry
 
 theorem intersection_bounds 
@@ -13,7 +19,9 @@ theorem intersection_bounds
   let result := calculate_square_intersection a k x1 x2 x3
   0 ≤ result ∧ result ≤ a * a :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem large_k_zero_intersection
   (a k x1 x2 x3 : Float)
   (ha : 0.1 ≤ a ∧ a ≤ 1000)
@@ -41,6 +49,7 @@ theorem same_points_full_intersection
   (ha : 0.1 ≤ a ∧ a ≤ 1000) :
   (calculate_square_intersection a 0 1 1 1 - a*a).abs < 0.001 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

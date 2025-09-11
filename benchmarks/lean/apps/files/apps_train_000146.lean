@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_profit_assignment (difficulty profit worker : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_profit_basic_properties
   (difficulty : List Int) 
   (profit : List Int)
@@ -55,6 +63,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval max_profit_assignment [5] [100] [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

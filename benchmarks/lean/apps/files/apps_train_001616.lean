@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def max (a b : Int) : Int :=
 if a ≥ b then a else b
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def max_special_segment_sum (n: Nat) (a b: List Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_special_segment_sum_geq_max_a {n: Nat} {a b: List Int} 
   (hn: n ≥ 2) (ha: a.length = n) (hb: b.length = n) :
   max_special_segment_sum n a b ≥ a.foldl max 0 :=
@@ -25,6 +32,7 @@ theorem zero_b_equals_max_a {n: Nat} {a: List Int}
   let b := List.replicate n (0:Int)
   max_special_segment_sum n a b ≥ a.foldl max 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

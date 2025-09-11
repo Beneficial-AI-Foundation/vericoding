@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_candy_distribution (N : Nat) (C : Nat) (A : List Nat) (B : List Nat) : Nat := sorry
 
 def MOD := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem candy_distribution_non_negative (N C : Nat) (A B : List Nat) :
   solve_candy_distribution N C A B ≥ 0 := sorry
 
@@ -35,6 +43,7 @@ info: 66
 -/
 -- #guard_msgs in
 -- #eval solve_candy_distribution 2 3 [1, 1] [2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

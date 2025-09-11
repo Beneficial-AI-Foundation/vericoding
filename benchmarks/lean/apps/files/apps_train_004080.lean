@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def unlock (s : String) : String := sorry 
 
 theorem unlock_concatenation (s1 s2 : String) : 
   unlock (s1 ++ s2) = unlock s1 ++ unlock s2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unlock_lowercase_a : unlock "a" = "2" := sorry
 theorem unlock_lowercase_b : unlock "b" = "2" := sorry
 
@@ -109,6 +117,7 @@ info: '864538'
 -/
 -- #guard_msgs in
 -- #eval unlock "toilet"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

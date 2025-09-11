@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def prime_string (s : String) : Bool := sorry
 
 theorem prime_string_empty_or_single {s : String} (h : s.length ≤ 1) :
   prime_string s = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prime_string_repeated {s : String} (h : s.length ≥ 1) :
   prime_string (s ++ s ++ s) = false := sorry
 
@@ -37,6 +45,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval prime_string "aaaa"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

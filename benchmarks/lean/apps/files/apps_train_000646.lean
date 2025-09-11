@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_chess_tournament (N M : Nat) (initial_ratings : List Nat) 
     (rating_changes : List (List Int)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_chess_tournament_bounds (N M : Nat) (initial_ratings : List Nat) 
     (rating_changes : List (List Int)) :
     let result := solve_chess_tournament N M initial_ratings rating_changes
@@ -47,6 +55,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_chess_tournament 2 3 [2125, 2098] [[-20, 10, -10], [10, 10, -20]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

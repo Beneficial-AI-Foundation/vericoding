@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def opposite (x : Int) : Int := sorry
 
 theorem double_negative_int (x : Int) :
   opposite (opposite x) = x := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def opposite_real (x : Float) : Float := sorry 
 
 theorem double_negative_real (x : Float) :
   opposite_real (opposite_real x) = x := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_is_self_opposite :
   opposite 0 = 0 := sorry
 
@@ -42,6 +49,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval opposite 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

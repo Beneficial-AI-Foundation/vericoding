@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_shots_to_find_x (n: Nat) (l: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_bullet_shots (l: Nat) (h: l > 0):
   min_shots_to_find_x 1 l = l := by
   sorry
@@ -41,6 +49,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval min_shots_to_find_x 3 16
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

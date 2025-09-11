@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def to_acronym (s: String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem to_acronym_property {words: List String} (h: ∀ w ∈ words, w.length > 0)
   (h₂: words.length > 0) :
   let phrase := String.join (" " :: words.intersperse " ") 
@@ -35,6 +43,7 @@ info: 'PIA'
 -/
 -- #guard_msgs in
 -- #eval to_acronym "Python is awesome"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_winner (s: String) : String := sorry 
 
 theorem find_winner_valid_result (s: String) : 
   find_winner s = "SHANKY" ∨ find_winner s = "ANKU" ∨ find_winner s = "PANDEY" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_duplicates_returns_pandey {s: String} (h: s.length > 0) 
   (hdup: ∀ (i j : String.Pos), s.get i = s.get j) :
   find_winner s = "PANDEY" := sorry
@@ -41,6 +49,7 @@ info: 'ANKU'
 -/
 -- #guard_msgs in
 -- #eval find_winner "aman"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

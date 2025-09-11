@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_polygon_beauty (n : Nat) : Bool := sorry
 
 theorem check_polygon_beauty_bool (n : Nat) :
   n > 0 → check_polygon_beauty n = true ∨ check_polygon_beauty n = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_polygon_beauty_iff_div4 (n : Nat) :
   n > 0 → (check_polygon_beauty n = true ↔ n % 4 = 0) := sorry
 
@@ -26,6 +34,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval check_polygon_beauty 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def visit_cells (n m : Nat) : List (Nat × Nat) := sorry
 
 def is_within_bounds (coord : Nat × Nat) (n m : Nat) : Bool :=
   let (x, y) := coord
   1 ≤ x ∧ x ≤ n ∧ 1 ≤ y ∧ y ≤ m
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem visit_cells_coordinates_valid (n m : Nat) :  
   ∀ coord ∈ visit_cells n m, is_within_bounds coord n m := sorry
 
@@ -48,6 +56,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval visit_cells 3 3
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

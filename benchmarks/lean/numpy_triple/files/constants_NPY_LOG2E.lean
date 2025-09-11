@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def NPY_LOG2E : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem NPY_LOG2E_spec :
     ⦃⌜True⌝⦄
     NPY_LOG2E
@@ -26,3 +33,4 @@ theorem NPY_LOG2E_spec :
       Float.abs (result * 0.693147180559945309417232121458176568 - 1.0) < 1e-14
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

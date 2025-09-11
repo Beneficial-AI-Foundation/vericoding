@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && exists pos :: 0 <= pos < |input| && input[pos] == '\n'
@@ -45,6 +46,7 @@ function MinimizedLength(originalLength: int, replacements: int): int
 {
     originalLength - replacements
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

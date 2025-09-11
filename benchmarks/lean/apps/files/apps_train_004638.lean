@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def html_end_tag_by_start_tag (start_tag: String) : String :=
   sorry
 
@@ -9,13 +10,19 @@ def is_valid_tag_first_char (c: Char) : Bool :=
 
 def is_valid_attr_name_char (c: Char) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_attr_value_char (c: Char) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem html_end_tag_starts_with_close : ∀ (start_tag : String),
   (html_end_tag_by_start_tag start_tag).startsWith "</" = true :=
   sorry
@@ -51,6 +58,7 @@ info: '</div>'
 -/
 -- #guard_msgs in
 -- #eval html_end_tag_by_start_tag "<div class="main" id="content" style="width:100px">"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

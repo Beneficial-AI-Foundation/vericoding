@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_max_happiness (N M : Nat) (distances : List Nat) (deliciousness : List (List Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_happiness_nonnegative (N M : Nat) (distances : List Nat) (deliciousness : List (List Nat)) :
   calc_max_happiness N M distances deliciousness ≥ 0 := sorry
 
@@ -35,6 +43,7 @@ info: 20
 -/
 -- #guard_msgs in
 -- #eval calc_max_happiness 5 3 [1, 2, 3, 4] [[10, 1, 1], [1, 1, 1], [1, 10, 1], [1, 1, 1], [1, 1, 10]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000003
 
 def calculate_particles (n: Nat) (x: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bounds (n x : Nat) : 
   calculate_particles n x < MOD := by
   sorry
@@ -47,6 +55,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval calculate_particles 3 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

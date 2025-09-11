@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: string)
 {
     n >= 1 && n <= 2000 && |s| == n && 
@@ -14,6 +15,7 @@ predicate PreservesCharacters(s: string, result: string)
 {
     multiset(s) == multiset(result)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

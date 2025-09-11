@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def crossing_sum (matrix : List (List Int)) (row col : Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uniform_matrix_crossing_sum
   (rows cols : Nat)
   (val : Int) 
@@ -52,6 +60,7 @@ info: 100
 -/
 -- #guard_msgs in
 -- #eval crossing_sum [[100]] 0 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

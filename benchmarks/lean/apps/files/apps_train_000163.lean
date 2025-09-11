@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def min_flips (a b c : Nat) : Nat := sorry
 
 def count_ones (n : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bitwise_or (a b : Nat) : Nat := sorry
 
 theorem min_flips_non_negative (a b c : Nat) :
   min_flips a b c ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_flips_identity_left (c : Nat) :
   min_flips c 0 c = 0 := sorry
 
@@ -33,6 +40,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_flips 1 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

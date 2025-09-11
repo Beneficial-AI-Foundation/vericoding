@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 use vstd::slice::*;
 
@@ -18,6 +19,7 @@ spec fn xor_char(a: char, b: char) -> (result: char)
         '1'
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

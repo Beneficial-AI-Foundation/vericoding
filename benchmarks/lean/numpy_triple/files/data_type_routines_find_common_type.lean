@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -57,13 +58,19 @@ def DType.precedence : DType → Nat
   | DType.complex64 => 11
   | DType.complex128 => 12
   | DType.object => 13
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_common_type {n m : Nat} (array_types : Vector DType n) (scalar_types : Vector DType m) : Id (Option DType) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_common_type_spec {n m : Nat} (array_types : Vector DType n) (scalar_types : Vector DType m) 
     (h_nonempty : n > 0 ∨ m > 0) :
     ⦃⌜n > 0 ∨ m > 0⌝⦄
@@ -87,3 +94,4 @@ theorem find_common_type_spec {n m : Nat} (array_types : Vector DType n) (scalar
            (max_array.kind ≠ max_scalar.kind → result = some max_scalar)))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

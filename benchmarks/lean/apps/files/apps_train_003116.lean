@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_type (a b result : Float) : String := sorry
 
 theorem calc_type_addition (a b : Float) :
@@ -8,7 +14,9 @@ theorem calc_type_addition (a b : Float) :
   a + b ≠ a * b →
   a + b ≠ a / b →
   calc_type a b (a + b) = "addition" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calc_type_subtraction (a b : Float) :
   a - b ≠ a + b →
   a - b ≠ a * b →
@@ -61,6 +69,7 @@ info: 'division'
 -/
 -- #guard_msgs in
 -- #eval calc_type 9 5 1.8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

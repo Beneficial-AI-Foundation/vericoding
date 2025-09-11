@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def repeat_sequence_len (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem repeat_sequence_len_positive (n : Nat) 
   (h : n > 0) :
   repeat_sequence_len n > 0 := by sorry 
@@ -34,6 +42,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval repeat_sequence_len 810
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

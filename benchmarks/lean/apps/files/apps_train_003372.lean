@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def diamonds_and_toads (text: String) (fairy: String) : List (String × Nat) :=
   sorry
 
 /- For good fairies, diamonds_and_toads returns list with keys "ruby" and "crystal" -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem good_fairy_keys (text: String) :
   let result := diamonds_and_toads text "good"
   List.length result = 2 ∧
@@ -45,6 +53,7 @@ theorem good_evil_different_keys (text: String) :
 
 theorem empty_string_good_fairy :
   diamonds_and_toads "" "good" = [("ruby", 0), ("crystal", 0)] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_largest_n (k : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_steps_to_zero (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_largest_n_returns_valid (k : Nat) (h : k > 0) (h2 : k ≤ 1000) :
   find_largest_n k ≥ 0 :=
   sorry
@@ -34,6 +41,7 @@ info: 170
 -/
 -- #guard_msgs in
 -- #eval find_largest_n 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

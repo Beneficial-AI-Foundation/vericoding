@@ -1,3 +1,4 @@
+// <vc-preamble>
 function GreedyPackFromEnd(a: seq<int>, boxes: int, capacity: int): int
     requires boxes >= 1
     requires capacity >= 1
@@ -23,6 +24,7 @@ function GreedyPackFromEndHelper(a: seq<int>, pos: int, boxes_left: int, capacit
     else
         0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

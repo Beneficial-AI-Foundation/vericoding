@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def modInv (a n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_factorial_spell (input : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_factorial_spell_output_length 
   (input : List Nat) 
   : List.length (solve_factorial_spell input) = List.length input :=
@@ -61,6 +68,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval solve_factorial_spell [6, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

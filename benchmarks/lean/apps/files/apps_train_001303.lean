@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def process_array_queries (N : Nat) (A : List Nat) (queries : List (List (Nat ⊕ String))) : List Nat := sorry
 
 def MOD := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem process_array_queries_basic_properties (N : Nat) (A : List Nat) (queries : List (List (Nat ⊕ String)))
   (h1 : 1 ≤ N ∧ N ≤ 10)
   (h2 : ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100)
@@ -25,6 +33,7 @@ theorem single_query_bounds (N : Nat) (A : List Nat)
   let result := process_array_queries N A [query]
   result.length = 1 ∧ 
   (∀ x ∈ result, x < MOD) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

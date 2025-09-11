@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def abs (n : Int) : Int :=
   if n ≥ 0 then n else -n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_fruit_diff (apples oranges gold : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_fruit_diff_nonnegative (apples oranges gold : Nat) :
   min_fruit_diff apples oranges gold ≥ 0 :=
   sorry
@@ -45,6 +52,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_fruit_diff 3 4 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

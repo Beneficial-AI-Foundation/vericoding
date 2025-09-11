@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def greek_l33t (s : String) : String := sorry
 
 theorem greek_l33t_length (s : String) :
   (greek_l33t s).length = s.length :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem greek_l33t_lowercase (s : String) :
   (greek_l33t s).toLower = greek_l33t s := 
 sorry
@@ -47,6 +55,7 @@ info: 'κμmιτε'
 -/
 -- #guard_msgs in
 -- #eval greek_l33t "kumite"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

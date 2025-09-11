@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_zeros (s: String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_zeros_nonnegative (s: String) :
   count_zeros s ≥ 0 := sorry
 
@@ -37,6 +45,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval count_zeros "abcdefghijklmnopqrstuvwxyz"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

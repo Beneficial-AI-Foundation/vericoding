@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def jumping (seq : List Int) (target : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem jumping_result_bounded_by_length (seq : List Int) (target : Int) :
   seq ≠ [] → jumping seq target ≤ seq.length :=
   sorry
@@ -41,6 +49,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval jumping [0, -1, -2, -3, -4] 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

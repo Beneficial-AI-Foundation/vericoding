@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_subway_fare (n : Nat) (m : Nat) (edges : List (Nat × Nat × Nat)) : Int := sorry
 
 theorem subway_fare_type_and_range {n : Nat} {m : Nat} {edges : List (Nat × Nat × Nat)}
     (h : n ≥ 2) :
     let result := solve_subway_fare n m edges
     result ≥ -1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem subway_fare_no_edges {n : Nat} {m : Nat} 
     (h : m = 0) :
     solve_subway_fare n m [] = -1 := sorry
@@ -45,6 +53,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_subway_fare 2 0 []
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

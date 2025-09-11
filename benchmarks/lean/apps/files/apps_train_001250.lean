@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def can_obtain_k (n : Nat) (k : Nat) (edges : List (Nat × Nat)) (values : List Nat) : String :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_obtain_k_returns_valid_output (n : Nat) (k : Nat) (edges : List (Nat × Nat)) 
     (values : List Nat) (h1 : is_valid_tree n edges = true) :
   (can_obtain_k n k edges values = "YES") ∨ (can_obtain_k n k edges values = "NO") :=
@@ -40,6 +47,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval can_obtain_k 4 100 [(1, 2), (2, 3), (2, 4)] [3, 4, 2, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

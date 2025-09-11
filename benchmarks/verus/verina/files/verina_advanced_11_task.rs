@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn count_occurrences(x: i32, lst: Seq<i32>) -> nat {
     lst.filter(|y: i32| y == x).len()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

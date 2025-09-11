@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn is_digit_sepc(c: char) -> (res: bool) {
     (c as u32) >= 48 && (c as u32) <= 57
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

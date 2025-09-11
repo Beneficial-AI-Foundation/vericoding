@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def pattern (n : Int) : String := sorry
 
 def lines (s : String) : List String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString (s : String) : String := sorry
 
 theorem pattern_negative_or_zero (n : Int) : 
   n ≤ 0 → pattern n = "" :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_num_lines (n : Int) :
   n > 0 → (lines (pattern n)).length = 2*n - 1 :=
 sorry
@@ -61,6 +68,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval pattern 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

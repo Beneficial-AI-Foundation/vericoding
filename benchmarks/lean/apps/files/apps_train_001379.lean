@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_candies_required (n k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_candies_at_least_n (n k : Nat) (h1: n > 0) (h2: k ≤ 1000) : 
   min_candies_required n k ≥ n :=
 sorry
@@ -45,6 +53,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval min_candies_required 4 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

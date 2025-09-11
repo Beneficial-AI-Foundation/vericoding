@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_remaining_chocolates (m n : Nat) : Nat := sorry
 
 theorem remaining_chocolates_positive (m n : Nat) 
     (h1 : m > 0) (h2 : n > 0) :
     calculate_remaining_chocolates m n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem remaining_chocolates_even (m n : Nat) 
     (h1 : m > 0) (h2 : n > 0) :
     calculate_remaining_chocolates m n % 2 = 0 := sorry
@@ -40,6 +48,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval calculate_remaining_chocolates 4 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn pow_spec(base: int, exp: nat) -> int
         base * pow_spec(base, (exp - 1) as nat)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

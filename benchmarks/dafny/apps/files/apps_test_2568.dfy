@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> s[i] == '+' || s[i] == '-'
@@ -26,6 +27,7 @@ function computeResultHelper(s: string, i: int, cur: int, pm: int, ans: int): in
         else
             computeResultHelper(s, i + 1, newCur, pm, ans)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: nat)
 {
     n > 0
@@ -37,6 +38,7 @@ function MinMovesToOne(n: nat): nat
     else if n % 5 == 0 then 3 + MinMovesToOne(n / 5)
     else 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

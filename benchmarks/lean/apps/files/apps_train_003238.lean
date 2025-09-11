@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def palindrome_chain_length (n : Nat) : Nat := sorry
 
 def is_palindrome (n : Nat) : Bool := sorry
 
 -- Property 1: Result should be non-negative (trivial for Nat)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_chain_length_nonnegative (n : Nat) : 
   palindrome_chain_length n ≥ 0 := by sorry
 
@@ -48,6 +56,7 @@ info: 24
 -/
 -- #guard_msgs in
 -- #eval palindrome_chain_length 89
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

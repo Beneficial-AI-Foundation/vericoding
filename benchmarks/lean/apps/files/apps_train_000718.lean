@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def is_prime (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check_land_split (x y : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_prime_properties (n : Nat) (h : n ≤ 1000) :
   (n < 2 → is_prime n = false) ∧
   (is_prime n = true → n ≥ 2) ∧
@@ -43,6 +50,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval check_land_split 10 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

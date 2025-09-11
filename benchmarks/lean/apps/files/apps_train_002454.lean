@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def parse_html (s : String) : String :=
   sorry
 
 def is_lowercase_letter (c : Char) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def split_lines (s : String) : List String :=
   s.splitOn "\n"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_tag_parse {tag : String} 
   (h : ∀ c, c ∈ tag.data → is_lowercase_letter c) :
   parse_html s!"<{tag}>" = tag :=
@@ -46,6 +53,7 @@ theorem self_closing_tag_parse {tag : String}
   (h : ∀ c, c ∈ tag.data → is_lowercase_letter c) :
   parse_html s!"<{tag}/>" = tag :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

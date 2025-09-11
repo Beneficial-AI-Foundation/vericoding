@@ -1,3 +1,4 @@
+// <vc-preamble>
 function valid_input_format(input: string): bool
 {
     true
@@ -59,6 +60,7 @@ function palindromic_strings_achievable(strings: seq<string>, k: nat): bool
 {
     k <= greedy_palindrome_count(strings)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

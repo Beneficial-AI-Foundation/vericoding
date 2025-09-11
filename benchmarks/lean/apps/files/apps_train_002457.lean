@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_second_lowest_students (records: List (String × Float)) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_same_grade_failures 
   (records: List (String × Float))
   (h1: records.length > 0)
@@ -55,6 +63,7 @@ info: ['B', 'C']
 -/
 -- #guard_msgs in
 -- #eval find_second_lowest_students [["A", 10.0], ["B", 20.0], ["C", 20.0]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

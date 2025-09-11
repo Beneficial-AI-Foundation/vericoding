@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def modify_string (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem modify_string_empty : 
   modify_string "" = "" := sorry 
 
@@ -37,6 +45,7 @@ info: len('j?qg??b')
 -/
 -- #guard_msgs in
 -- #eval len modify_string("j?qg??b")
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

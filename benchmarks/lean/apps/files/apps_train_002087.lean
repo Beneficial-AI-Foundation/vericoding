@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_company_name (oleg igor : String) : String := sorry
 
 theorem output_length_matches_input
   (oleg igor : String)
   (h : oleg.length = igor.length) :
   (find_company_name oleg igor).length = oleg.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_uses_input_characters
   (oleg igor : String)
   (h : oleg.length = igor.length)
@@ -46,6 +54,7 @@ info: 'ioi'
 -/
 -- #guard_msgs in
 -- #eval find_company_name "ioi" "imo"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fix_tree_sequence (n : Nat) (A : List Nat) : Nat × List Nat := sorry
 
 def is_valid_tree (A : List Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fix_tree_sequence_properties 
   (n : Nat) 
   (A : List Nat)
@@ -27,6 +35,7 @@ theorem already_valid_tree
   let (changes, result) := fix_tree_sequence A.length A
   changes = 0 ∧ result = A
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

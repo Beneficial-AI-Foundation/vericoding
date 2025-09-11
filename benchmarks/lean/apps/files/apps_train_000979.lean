@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_running_patterns (n : Nat) (k : Nat) (distances : List Nat) (recorded : List Nat) : Nat :=
   sorry
 
 /- The output is a natural number between 0 and n-k -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_running_patterns_bounds (n k : Nat) (distances recorded : List Nat) 
     (hn : n ≥ 2) (hk : k > 0) (hk2 : k < n)
     (hdist : distances.length = n)
@@ -52,6 +60,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_running_patterns 5 3 [2, 6, 8, 11, 16] [2, 3, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

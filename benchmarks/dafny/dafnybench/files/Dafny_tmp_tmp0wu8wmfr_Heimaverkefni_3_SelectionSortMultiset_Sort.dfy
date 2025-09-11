@@ -1,9 +1,11 @@
+// <vc-preamble>
 method MinOfMultiset( m: multiset<int> ) returns( min: int )
     ensures min in m;
     ensures forall z | z in m :: min <= z;
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

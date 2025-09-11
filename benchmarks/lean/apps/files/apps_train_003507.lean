@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tripleShiftian (T : List Int) (n : Nat) : Int := sorry
 
 theorem tripleShiftian_first_three_elements {T : List Int} (h : T.length = 3) (i : Nat) (h' : i < 3) : 
   tripleShiftian T i = T.get ⟨i, by sorry⟩ := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tripleShiftian_recurrence {T : List Int} (h : T.length = 3) (n : Nat) (h' : n ≥ 3) :
   tripleShiftian T n = 
     4 * tripleShiftian T (n-1) - 
@@ -40,6 +48,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval triple_shiftian #[6, 7, 2] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

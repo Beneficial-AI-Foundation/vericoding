@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def cake_slice (n : Nat) : Nat := sorry
 
 theorem cake_slice_positive (n : Nat) :
   cake_slice n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cake_slice_grows (n : Nat) :
   cake_slice n ≥ n + 1 := sorry 
 
@@ -38,6 +46,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval cake_slice 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

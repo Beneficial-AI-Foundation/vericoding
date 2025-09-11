@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -41,6 +42,7 @@ enum TimezoneOption {
 
     Local,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

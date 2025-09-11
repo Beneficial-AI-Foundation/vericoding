@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, teams: seq<(int, int)>)
 {
   n >= 2 && |teams| == n &&
@@ -17,6 +18,7 @@ predicate ValidOutput(n: int, teams: seq<(int, int)>, result: seq<(int, int)>)
     result[i].0 == (n - 1) + homeCount &&
     result[i].1 == (n - 1) - homeCount)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

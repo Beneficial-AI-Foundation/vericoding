@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Rectangle := List Int
 
 def solve_rectangles (n : Nat) (rectangles : List Rectangle) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_rectangles_nonnegative (n : Nat) (rectangles : List Rectangle) :
   solve_rectangles n rectangles ≥ 0 :=
   sorry
@@ -51,6 +59,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_rectangles 1 [[1, 400]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

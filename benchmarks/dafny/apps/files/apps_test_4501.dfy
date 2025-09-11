@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate valid_input_format(stdin_input: string)
 {
     var lines := split_lines_func(stdin_input);
@@ -62,6 +63,7 @@ function count_subsets_with_sum(differences: seq<int>, target: int): nat
         count_subsets_with_sum(differences[1..], target) +
         count_subsets_with_sum(differences[1..], target - differences[0])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

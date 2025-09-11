@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def myCompare (a b : String) : String := sorry 
 def specificity (s : String) : Nat × Nat × Nat := sorry
 
 instance : LT (Nat × Nat × Nat) where
   lt x y := x.1 < y.1 ∨ (x.1 = y.1 ∧ (x.2.1 < y.2.1 ∨ (x.2.1 = y.2.1 ∧ x.2.2 < y.2.2)))
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem compare_returns_input (a b : String) :
   let res := myCompare a b;
   (res = a ∨ res = b) := sorry
@@ -45,6 +53,7 @@ info: '#header'
 -/
 -- #guard_msgs in
 -- #eval compare "#header" ".main"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

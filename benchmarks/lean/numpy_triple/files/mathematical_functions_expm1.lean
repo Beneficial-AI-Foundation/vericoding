@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def expm1 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem expm1_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     expm1 x
@@ -27,3 +34,4 @@ theorem expm1_spec {n : Nat} (x : Vector Float n) :
       -- Upper bound for negative values: expm1(x) > -1 for all x
       result.get i > -1⌝⦄ := by
   sorry
+-- </vc-theorems>

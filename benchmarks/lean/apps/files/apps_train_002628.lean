@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def length_of_line (coords : List (List Int)) : String := sorry
 
 def string_to_float (s : String) : Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def int_to_float (i : Int) : Float := sorry
 
 theorem length_matches_pythagorean 
@@ -20,7 +25,9 @@ theorem length_matches_pythagorean
   let result := string_to_float (length_of_line coords)
   let expected := Float.sqrt (int_to_float ((x2 - x1) ^ 2 + (y2 - y1) ^ 2))
   Float.abs (result - expected) < 0.01 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_commutative
   (coords : List (List Int))
   (h1 : coords.length = 2)
@@ -69,6 +76,7 @@ info: '13.04'
 -/
 -- #guard_msgs in
 -- #eval length_of_line [[-3, 4], [10, 5]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

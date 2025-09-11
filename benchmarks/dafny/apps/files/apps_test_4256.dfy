@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 &&
@@ -67,6 +68,7 @@ function IntToStringSpec(n: int): string
     else if n < 10 then [('0' as int + n) as char]
     else IntToStringSpec(n / 10) + [('0' as int + (n % 10)) as char]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

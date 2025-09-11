@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_rational_equal (s1 s2 : String) : Bool := sorry
 
 def make_rational_str (n d : Int) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem equivalent_fractions
   {n1 d1 n2 d2 : Int}
   (h1 : d1 > 0)
@@ -45,6 +53,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_rational_equal "0.9(9)" "1."
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

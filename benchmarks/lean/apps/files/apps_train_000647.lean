@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_pattern (k : Nat) : List String := sorry
 
 theorem test_base_case :
   solve_pattern 1 = ["1"] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem test_pattern_props {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
   let result := solve_pattern k
   -- Number of rows equals k
@@ -39,6 +47,7 @@ info: ['1234', '5678', '9101112', '13141516']
 -/
 -- #guard_msgs in
 -- #eval solve_pattern 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

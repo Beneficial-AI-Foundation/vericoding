@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def five_by_2n (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem five_by_2n_positive (n : Nat) : 
   n > 0 → five_by_2n n > 0 :=
   sorry
@@ -37,6 +45,7 @@ info: 1183
 -/
 -- #guard_msgs in
 -- #eval five_by_2n 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

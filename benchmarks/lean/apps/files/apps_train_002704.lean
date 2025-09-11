@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def coordinates (p1 : List Int) (p2 : List Int) (precision : Nat := 8) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem coordinates_symmetry (p1 p2 : List Int) (precision : Nat) 
   (h1 : precision ≤ 10) (h2 : p1.length = 2) (h3 : p2.length = 2)
   (h4 : ∀ x ∈ p1, -100 ≤ x ∧ x ≤ 100) (h5 : ∀ x ∈ p2, -100 ≤ x ∧ x ≤ 100) :
@@ -47,6 +55,7 @@ info: 5.385
 -/
 -- #guard_msgs in
 -- #eval coordinates [4, 7] [6, 2] 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

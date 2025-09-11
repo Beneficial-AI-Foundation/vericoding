@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def count_peaks (window : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_door_peaks (n k : Nat) (arr : List Nat) : Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem peaks_atleast_one {n k : Nat} {arr : List Nat}
   (h1 : n ≥ 3)
   (h2 : k ≥ 3)
@@ -52,6 +59,7 @@ info: (2, 1)
 -/
 -- #guard_msgs in
 -- #eval solve_door_peaks 10 4 [4, 3, 4, 3, 2, 3, 2, 1, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_dynamic_string (s : String) : String := sorry
 
 theorem dynamic_string_returns_valid_outputs (s : String) (h : s.length > 0) :
   is_dynamic_string s = "Dynamic" ∨ is_dynamic_string s = "Not" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem few_unique_chars_is_dynamic (s : String) (h1 : s.length > 0) 
     (h2 : (List.map Char.toString s.data).eraseDups.length < 3) : 
   is_dynamic_string s = "Dynamic" := sorry
@@ -43,6 +51,7 @@ info: 'Dynamic'
 -/
 -- #guard_msgs in
 -- #eval is_dynamic_string "ppppmmnnoooopp"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

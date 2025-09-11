@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern (n : Nat) : String := sorry
 
 theorem pattern_lines_count {n : Nat} (h : n > 0) :
   ((pattern n).splitOn "\n").length == n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_first_line_is_one {n : Nat} (h : n > 0) :
   ((pattern n).splitOn "\n").get! 0 == "1" := sorry
 
@@ -33,6 +41,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval pattern 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

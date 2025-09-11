@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def finding_k (arr : List Nat) : Int := sorry
 
 def list_max : List Nat → Nat 
   | [] => 0
   | (x::xs) => max x (list_max xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem finding_k_valid_k_or_minus_one (arr : List Nat) (h : arr ≠ []) : 
   let k := finding_k arr
   if k ≠ -1 then 
@@ -38,6 +46,7 @@ info: 90
 -/
 -- #guard_msgs in
 -- #eval finding_k [10, 100]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def factorial (n : Int) : Option Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem factorial_nonnegative {n : Int} (h : n ≥ 0) (h2 : n ≤ 10) : 
   match factorial n with
   | some x => x > 0
@@ -41,6 +49,7 @@ info: 120
 -/
 -- #guard_msgs in
 -- #eval factorial 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

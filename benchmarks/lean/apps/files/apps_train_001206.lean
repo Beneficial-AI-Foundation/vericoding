@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverse_list {α : Type} (xs : List α) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_list_involution {α : Type} (xs : List α) :
   reverse_list (reverse_list xs) = xs :=
   sorry
@@ -20,6 +28,7 @@ theorem reverse_list_index {α : Type} (xs : List α) (i : Nat) (h : i < xs.leng
   (reverse_list xs).get ⟨i, by rw [reverse_list_length]; exact h⟩ = 
   xs.get ⟨xs.length - 1 - i, sorry⟩ :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

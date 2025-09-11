@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def calculate_tenth_digit (digits : List Nat) : Nat := sorry
 def calculate_last_digit (digits : List Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check_valid_tr_number (n : String) : Bool := sorry
 
 theorem invalid_length_returns_false (n : String) :
   n.length ≠ 11 → check_valid_tr_number n = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_number_is_accepted {digits : List Nat} (h1 : digits.length = 9) 
   (h2 : digits.head! ≠ 0) :
   let tenth := calculate_tenth_digit digits
@@ -43,6 +50,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval check_valid_tr_number 10167994524
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

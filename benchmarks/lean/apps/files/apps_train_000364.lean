@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def max_profit (k : Nat) (prices : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lastElem (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | [x] => x
   | x::xs => lastElem xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_price_zero_profit (k : Nat) (p : Nat) : 
   max_profit k [p] = 0 := sorry
 
@@ -36,6 +43,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval max_profit 1 [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

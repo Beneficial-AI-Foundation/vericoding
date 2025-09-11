@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Float.ofString? (s: String) : Option Float := sorry
 def Float.ofString! (s: String) : Float := (Float.ofString? s).get!
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_donut_areas (radii : List Int) : List String := sorry
 
 theorem calculate_donut_areas_length_match (radii : List Int) :
   (calculate_donut_areas radii).length = radii.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_donut_areas_decimal_format (radii : List Int) (result : String) :
   result ∈ calculate_donut_areas radii → 
   (∃ n d : String, result = n ++ "." ++ d ∧ d.length = 2) := sorry
@@ -22,6 +29,7 @@ theorem calculate_donut_areas_accuracy (radius : Int) :
 theorem calculate_donut_areas_negative_valid (radii : List Int) 
   (h : ∀ r ∈ radii, r < 0) :
   (calculate_donut_areas radii).length = radii.length := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

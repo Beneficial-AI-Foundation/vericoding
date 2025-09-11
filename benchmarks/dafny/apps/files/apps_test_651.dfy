@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);
@@ -77,6 +78,7 @@ function CountValidWays(input: string): int
     var path := lines[n + 1];
     CountPermutationsReachingGoal(lines, n, m, path, start, end)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Post := Nat × Nat × String
 
 def sort_posts (special_friends : List Nat) (posts : List Post) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_posts_length_matches_input 
   (special_friends : List Nat) (posts : List Post) :
   (sort_posts special_friends posts).length = posts.length :=
@@ -45,6 +53,7 @@ info: ['y', 'x']
 -/
 -- #guard_msgs in
 -- #eval sort_posts [1, 2] [(1, 1, "x"), (2, 2, "y")]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

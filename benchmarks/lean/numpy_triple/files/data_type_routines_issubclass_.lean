@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -83,13 +84,19 @@ def NumpyTypeClass.isSubclass : NumpyTypeClass → NumpyTypeClass → Bool
   | InexactType, ScalarType => true
   -- Default case
   | _, _ => false
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def issubclass_ (arg1 arg2 : NumpyTypeClass) : Id Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem issubclass_spec (arg1 arg2 : NumpyTypeClass) :
     ⦃⌜True⌝⦄
     issubclass_ arg1 arg2
@@ -112,3 +119,4 @@ theorem issubclass_spec (arg1 arg2 : NumpyTypeClass) :
       (arg1 = NumpyTypeClass.ComplexType ∧ arg2 = NumpyTypeClass.ScalarType → result = true)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

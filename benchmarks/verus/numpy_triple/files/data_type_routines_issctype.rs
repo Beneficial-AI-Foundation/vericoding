@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -33,6 +34,7 @@ spec fn is_scalar_type(dt: DataType) -> bool {
         DataType::UnknownType => false,
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

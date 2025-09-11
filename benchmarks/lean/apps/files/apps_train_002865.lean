@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def delete_digit (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringToNat (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem delete_digit_length (n : Nat) (h : n ≥ 10) : 
   (toString (delete_digit n)).length = (toString n).length - 1 :=
   sorry
@@ -36,6 +43,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval delete_digit 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,9 +1,11 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
 #[verifier::external_body]
 spec fn logaddexp_value(x1: f64, x2: f64) -> f64;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

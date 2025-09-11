@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string) {
     |s| == 3 && forall i :: 0 <= i < |s| ==> s[i] == 'o' || s[i] == 'x'
 }
@@ -32,6 +33,7 @@ function IntToStringHelper(n: int, acc: string) : string
     if n == 0 then acc
     else IntToStringHelper(n / 10, [((n % 10) + 48) as char] + acc)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

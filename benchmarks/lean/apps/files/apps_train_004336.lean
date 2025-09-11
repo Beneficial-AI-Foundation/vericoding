@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def gcdMatrix (a : List Nat) (b : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gcdMatrix_bounds {a b : List Nat} (ha : ∀ x ∈ a, x > 0) (hb : ∀ x ∈ b, x > 0) :
   ∃ min max : Nat,
     (∀ x ∈ a, ∀ y ∈ b, Nat.gcd x y ≥ min) ∧ 
@@ -45,6 +53,7 @@ info: 2.0
 -/
 -- #guard_msgs in
 -- #eval gcd_matrix [4, 7, 2, 10, 99, 4] [55, 32, 1, 344, 35234, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

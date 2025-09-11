@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def toString (s : List Char) : String := sorry
 def capitalize_name (s : String) : String := sorry
 
@@ -9,16 +10,22 @@ def isAlpha (c : Char) : Bool := sorry
 
 def isUpper (c : Char) : Bool := sorry
 def toLower (s : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def length (s : String) : Nat := sorry
 
 theorem capitalize_name_preserves_word_count (s : String) :
   (splitOn (capitalize_name s) (fun x => x = ' ')).length = 
   (splitOn s (fun x => x = ' ')).length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem words_start_with_uppercase (s : String) (word : String) :
   word ∈ splitOn (capitalize_name s) (fun x => x = ' ') →
   word.length > 0 →
@@ -34,6 +41,7 @@ theorem non_alpha_preserved (s : String) :
   (∀ c ∈ s.data, !isAlpha c) → 
   s.length > 0 →
   capitalize_name s = s := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

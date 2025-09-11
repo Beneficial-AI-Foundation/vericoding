@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 def solve_mindstone (n : Nat) (k : Nat) (arr : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_mindstone_length {n k : Nat} {arr : List Nat} 
   (h1 : 1 ≤ n) (h2 : n ≤ 100) (h3 : k ≤ 10) 
   (h4 : ∀ x ∈ arr, x ≤ 100000) :
@@ -40,6 +48,7 @@ theorem solve_mindstone_monotonic {n k : Nat} {arr : List Nat}
   ∀ i j, i < j → j < List.length (solve_mindstone n k arr) → 
     List.get! (solve_mindstone n k arr) i ≤ List.get! (solve_mindstone n k arr) j :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

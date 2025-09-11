@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverseMiddle {α : Type} (xs : List α) : List α := sorry
 
 theorem length_reverseMiddle {α : Type} (xs : List α) 
   (h : xs.length ≥ 4) :
   (reverseMiddle xs).length = xs.length - 2 * ((xs.length)/2 - 1) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem elements_from_middle {α : Type} (xs : List α) 
   (h : xs.length ≥ 4) :
   ∃ start : Nat,
@@ -33,6 +41,7 @@ info: [{}, 'string', False]
 -/
 -- #guard_msgs in
 -- #eval reverse_middle [1, False, "string", {}, 7.43]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

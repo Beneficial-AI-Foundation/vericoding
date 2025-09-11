@@ -1,3 +1,4 @@
+// <vc-preamble>
 function concat_seqs(seqs: seq<seq<char>>): seq<char>
 {
     if |seqs| == 0 then []
@@ -11,6 +12,7 @@ predicate ValidSplit(result: seq<seq<char>>, k: int, q: seq<char>)
     (forall i, j :: 0 <= i < j < |result| ==> result[i][0] != result[j][0]) &&
     concat_seqs(result) == q
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

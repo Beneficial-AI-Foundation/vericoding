@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermsub {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
     Id (Vector Float (max n m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermsub_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
     hermsub c1 c2
@@ -24,3 +31,4 @@ theorem hermsub_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
         result.get ⟨i, sorry⟩ = -c2.get ⟨i, sorry⟩)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

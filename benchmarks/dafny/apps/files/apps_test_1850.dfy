@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, d: int, currentPoints: seq<int>, awards: seq<int>)
 {
     n >= 1 && n <= 200000 &&
@@ -36,6 +37,7 @@ function CountOvertakenHelper(currentPoints: seq<int>, awards: seq<int>, d: int,
         else
             CountOvertakenHelper(currentPoints, awards, d, pos+1, usedAwards)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

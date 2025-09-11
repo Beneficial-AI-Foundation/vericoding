@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_score (xs : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_score_non_negative (xs : List Nat) 
   (h : ∀ x ∈ xs, x ≤ 4) : 
   0 ≤ get_score xs := sorry
@@ -42,6 +50,7 @@ info: 3300
 -/
 -- #guard_msgs in
 -- #eval get_score [2, 0, 4, 2, 2, 3, 0, 0, 3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

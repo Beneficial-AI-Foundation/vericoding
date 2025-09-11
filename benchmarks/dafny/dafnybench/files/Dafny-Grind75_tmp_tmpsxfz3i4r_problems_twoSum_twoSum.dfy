@@ -1,9 +1,11 @@
+// <vc-preamble>
 predicate summingPair(i: nat, j: nat, nums: seq<int>, target: int)
     requires i < |nums|
     requires j < |nums|
 {
     i != j &&  nums[i] + nums[j] == target
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

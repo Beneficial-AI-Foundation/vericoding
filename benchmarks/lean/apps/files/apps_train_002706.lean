@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def chessboard (n: Nat) (m: Nat) : String := sorry
 
 def String.lines (s: String) : List String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.characterAt (s: String) (i: Nat) : Char := sorry
 
 theorem chessboard_empty_for_zero_dims {n m: Nat} :
   (n = 0 ∨ m = 0) → chessboard n m = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chessboard_dimensions {n m: Nat} (h1 : n ≠ 0) (h2 : m ≠ 0) :
   let lines := (chessboard n m).lines
   lines.length = n ∧ 
@@ -40,6 +47,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval chessboard 8 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

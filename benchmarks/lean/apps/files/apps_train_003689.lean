@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def values (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem values_nonneg (n : Nat) : values n ≥ 0 :=
   sorry
 
@@ -38,6 +46,7 @@ info: 30
 -/
 -- #guard_msgs in
 -- #eval values 100000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

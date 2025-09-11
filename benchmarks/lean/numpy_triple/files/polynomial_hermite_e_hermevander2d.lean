@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermevander2d {n : Nat} (x y : Vector Float n) (x_deg y_deg : Nat) : 
     Id (Vector (Vector Float ((x_deg + 1) * (y_deg + 1))) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermevander2d_spec {n : Nat} (x y : Vector Float n) (x_deg y_deg : Nat) :
     ⦃⌜True⌝⦄
     hermevander2d x y x_deg y_deg
@@ -71,3 +78,4 @@ theorem hermevander2d_spec {n : Nat} (x y : Vector Float n) (x_deg y_deg : Nat) 
                    -- HermiteE polynomials are orthogonal with Gaussian weight
                    (i1 ≠ i2 ∨ j1 ≠ j2) → True)⌝⦄ := by
   sorry
+-- </vc-theorems>

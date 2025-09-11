@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def outer {m n : Nat} (op : Float → Float → Float) (a : Vector Float m) (b : Vector Float n) : 
     Id (Vector (Vector Float n) m) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem outer_spec {m n : Nat} (op : Float → Float → Float) (a : Vector Float m) (b : Vector Float n) :
     ⦃⌜True⌝⦄
     outer op a b
@@ -23,3 +30,4 @@ theorem outer_spec {m n : Nat} (op : Float → Float → Float) (a : Vector Floa
       (∀ i : Fin m, ∀ j : Fin n, ∃ ai bj, ai = a.get i ∧ bj = b.get j ∧ (result.get i).get j = op ai bj)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

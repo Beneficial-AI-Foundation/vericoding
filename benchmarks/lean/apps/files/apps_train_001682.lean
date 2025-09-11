@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def queueBattle (distance : Nat) (armies : List (List Nat)) : (Int × List Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem queue_battle_result_format
     {d : Nat}
     {armies : List (List Nat)}
@@ -30,6 +38,7 @@ theorem identical_armies_properties
     let winner_id := result.fst
     winner_id = -1 ∨ winner_id = 0 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

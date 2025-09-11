@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def move (position : Int) (roll : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem move_roll_proportional 
   (position roll : Int) 
   (h : 1 ≤ roll ∧ roll ≤ 6) : 
@@ -32,6 +40,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval move 2 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

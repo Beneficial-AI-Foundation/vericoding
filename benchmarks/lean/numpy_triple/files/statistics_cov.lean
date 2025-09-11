@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_cov {vars obs : Nat} (m : Vector (Vector Float obs) vars) (h : obs > 0) : Id (Vector (Vector Float vars) vars) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_cov_spec {vars obs : Nat} (m : Vector (Vector Float obs) vars) (h : obs > 0) :
     ⦃⌜obs > 0⌝⦄
     numpy_cov m h
@@ -28,3 +35,4 @@ theorem numpy_cov_spec {vars obs : Nat} (m : Vector (Vector Float obs) vars) (h 
             (var_i.get k - mean_i) * (var_j.get k - mean_j)
           ) (List.finRange obs))) / (obs.toFloat - 1))⌝⦄ := by
   sorry
+-- </vc-theorems>

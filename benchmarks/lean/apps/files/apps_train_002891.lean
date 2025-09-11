@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Matrix (α : Type) := List (List α)
 
 def trace (m : Matrix Int) : Option Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trace_square_matrix {m : List (List Int)} 
   (h : ∀ (l : List Int), List.elem l m → l.length = m.length) 
   (h' : m.length > 0) :
@@ -43,6 +51,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval trace [[1, 2], [1, 2], [1, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

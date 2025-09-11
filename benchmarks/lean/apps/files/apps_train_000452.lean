@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def countServers (grid : List (List Nat)) : Nat := sorry
 
 def is_valid_grid (grid : List (List Nat)) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_ones (grid : List (List Nat)) : Nat := sorry
 
 theorem countServers_non_negative (grid : List (List Nat)) :
   is_valid_grid grid → countServers grid ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem countServers_upper_bound (grid : List (List Nat)) :
   is_valid_grid grid → countServers grid ≤ count_ones grid := sorry
 
@@ -50,6 +57,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval countServers [[1, 1, 0, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

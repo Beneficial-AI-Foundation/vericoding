@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_feelings (input : String) (feelings : List String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_feelings_bounds
   {input : String}
   {feelings : List String}
@@ -19,6 +27,7 @@ theorem count_feelings_exact_match
   (h : feeling.length > 0)
   : count_feelings feeling [feeling] = "1 feeling." :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

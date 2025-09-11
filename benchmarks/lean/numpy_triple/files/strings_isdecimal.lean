@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isdecimal {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isdecimal_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     isdecimal a
@@ -18,3 +25,4 @@ theorem isdecimal_spec {n : Nat} (a : Vector String n) :
         -- Empty string property: empty strings always return false
         (a.get i = "" → result.get i = false)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def int_rac (n : Nat) (guess : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem int_rac_perfect_squares_consistency (x : Nat)
   (h1 : x ≥ 1) (h2 : x ≤ 20) :
   let n := x * x
@@ -29,6 +37,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval int_rac 125348981764 356243
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

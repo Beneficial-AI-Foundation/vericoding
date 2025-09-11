@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_tree_dfs (n : Nat) (parents : List Nat := []) : List Float :=
 sorry
 
 def is_valid_tree (parents : List Nat) : Bool :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (x : Float) : Float :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_node_properties (n : Nat) (h : n = 1) :
   let result := solve_tree_dfs n
   (result.length = 1) ∧ 
@@ -25,6 +32,7 @@ theorem valid_tree_properties {n : Nat} {parents : List Nat}
   (∀ x, x ∈ result → x ≥ 1.0) ∧
   (∀ x, x ∈ result → x ≤ Float.ofNat (n + 1)) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

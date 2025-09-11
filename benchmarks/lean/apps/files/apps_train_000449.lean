@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def character_replacement (s : String) (k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem character_replacement_basic_properties
   (s : String) (k : Nat) :
   let result := character_replacement s k
@@ -45,6 +53,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval character_replacement "" 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

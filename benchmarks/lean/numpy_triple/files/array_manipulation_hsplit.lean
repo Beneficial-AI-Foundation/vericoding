@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hsplit {n k : Nat} (arr : Vector Float n) 
     (h_divides : k > 0 ∧ n % k = 0) : 
     Id (Vector (Vector Float (n / k)) k) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hsplit_spec {n k : Nat} (arr : Vector Float n) 
     (h_divides : k > 0 ∧ n % k = 0) :
     ⦃⌜k > 0 ∧ n % k = 0⌝⦄
@@ -21,3 +28,4 @@ theorem hsplit_spec {n k : Nat} (arr : Vector Float n)
                   i.val = p.val * (n / k) + e.val ∧
                   arr.get i = (result.get p).get e)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def herm2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem herm2poly_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
     herm2poly c
@@ -27,3 +34,4 @@ theorem herm2poly_spec {n : Nat} (c : Vector Float n) :
         poly2herm result = c)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

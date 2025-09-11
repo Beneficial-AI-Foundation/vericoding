@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isAlpha (c : Char) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverse_letter (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_letter_only_letters (s : String) :
   ∀ (c : Char), c ∈ (reverse_letter s).data → isAlpha c := by
   sorry
@@ -29,6 +36,7 @@ theorem reverse_letter_empty_no_letters (s : String) :
   (∀ c ∈ s.data, ¬isAlpha c) →
   reverse_letter s = "" := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

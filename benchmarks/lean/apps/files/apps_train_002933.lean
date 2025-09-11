@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def unflatten (arr : List Nat) : List (Sum (List Nat) Nat) := sorry
 
 def flatten {α} (l : List (Sum (List α) α)) : List α := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unflatten_type (arr : List Nat) :
   unflatten arr ≠ [] → unflatten arr ≠ [] := sorry
 
@@ -42,6 +50,7 @@ info: [[99, 1, 1, 1]]
 -/
 -- #guard_msgs in
 -- #eval unflatten [99, 1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

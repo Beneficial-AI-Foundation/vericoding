@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def find_min_velocity (n : Nat) (shops : List Nat) : Nat := sorry
 
 def max_list (l : List Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def enumerate_add (shops : List Nat) : List Nat :=
   let range := List.range shops.length
   List.map (fun i => shops[i]! + i) range
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_velocity_greater_than_max_attractiveness (n : Nat) (shops : List Nat) 
   (h : shops.length > 0) : 
   find_min_velocity n shops ≥ max_list shops := sorry
@@ -43,6 +50,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_min_velocity 3 [4, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

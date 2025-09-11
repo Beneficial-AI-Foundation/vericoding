@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isSubsequence (s₁ s₂ : String) : Bool :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def shortestCommonSupersequence (s₁ s₂ : String) : String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem scs_contains_both_strings (s₁ s₂ : String) :
   let result := shortestCommonSupersequence s₁ s₂
   isSubsequence s₁ result = true ∧ isSubsequence s₂ result = true :=
@@ -44,6 +51,7 @@ info: 'aaaaa'
 -/
 -- #guard_msgs in
 -- #eval shortest_common_supersequence "aaaaa" "aa"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

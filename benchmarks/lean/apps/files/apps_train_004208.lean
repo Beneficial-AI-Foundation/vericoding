@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def countDivisors (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def divNum (a b : Nat) : Option Nat := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divNum_invalid_range {a b : Nat} (h : a > b) : 
   divNum a b = none := 
   sorry
@@ -41,6 +48,7 @@ info: 'Error'
 -/
 -- #guard_msgs in
 -- #eval div_num 159 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

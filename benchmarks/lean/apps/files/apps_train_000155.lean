@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isMatch (s : String) (p : String) : Bool := sorry
 
 theorem empty_pattern_empty_string (s : String) :
   isMatch s "" = (s = "") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_stars_match_everything (s p : String) (h : p ≠ "") (h2 : ∀ c ∈ p.data, c = '*') :
   isMatch s p = true := sorry
 
@@ -50,6 +58,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_match "adceb" "*a*b"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_states_won (A B : Nat) (c_votes d_votes : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_states_won_bounded {A B : Nat} {c_votes d_votes : List Nat}
   (h1 : 0 < A) (h2 : 0 < B)
   (h3 : c_votes.length = A * B) (h4 : d_votes.length = A * B) :
@@ -46,6 +54,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval max_states_won 3 3 [7, 14, 11, 4, 15, 5, 20, 1, 17] [2, 13, 16, 9, 19, 6, 12, 8, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

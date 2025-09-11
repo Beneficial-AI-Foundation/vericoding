@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def solve (sum gcd : Nat) : Option (Nat × Nat) :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def gcd (a b : Nat) : Nat :=
   sorry
 
@@ -11,7 +16,9 @@ def gcd (a b : Nat) : Nat :=
 -- If solve returns None, then sum not divisible by gcd
 -- If solve returns Some (a,b), then:
 --   a + b = sum, gcd(a,b) = gcd, a ≤ b
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_properties (x y : Nat) (h1: x > 0) (h2: y > 0) :
   let s := x + y
   let g := gcd x y
@@ -43,6 +50,7 @@ info: [4, 8]
 -/
 -- #guard_msgs in
 -- #eval solve 12 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

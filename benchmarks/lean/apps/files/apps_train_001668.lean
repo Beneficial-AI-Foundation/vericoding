@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def runoff (voters : List (List Char)) : Option Char := sorry
 
 variable (voters : List (List Char))
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem winner_must_be_candidate (voters : List (List Char)) :
   match runoff voters with
   | none => True 
@@ -39,6 +47,7 @@ info: 'A'
 -/
 -- #guard_msgs in
 -- #eval runoff [["A", "B", "C", "D"], ["A", "B", "C", "D"], ["B", "A", "C", "D"], ["C", "D", "A", "B"]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

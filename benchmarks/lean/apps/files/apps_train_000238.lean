@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_equal_freq (nums: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_equal_freq_returns_valid_length (nums: List Nat) : 
   nums ≠ [] → 0 ≤ max_equal_freq nums ∧ max_equal_freq nums ≤ nums.length :=
   sorry
@@ -42,6 +50,7 @@ info: 13
 -/
 -- #guard_msgs in
 -- #eval max_equal_freq [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

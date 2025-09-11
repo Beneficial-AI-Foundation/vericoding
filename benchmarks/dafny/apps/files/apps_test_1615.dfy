@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate ValidInputFormat(s: string) {
     var lines := SplitLines(s);
     |lines| >= 1 &&
@@ -42,6 +43,7 @@ function SegmentLength(segment: (int, int)): nat
     var minVal := MinInt(segment.0, segment.1);
     if maxVal >= minVal then (maxVal - minVal + 1) as nat else 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

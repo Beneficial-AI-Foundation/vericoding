@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def search_matrix (matrix : List (List Int)) (target : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_matrix_search : ∀ (target : Int),
   search_matrix [] target = false := by sorry
 
@@ -55,6 +63,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval search_matrix matrix1 15
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

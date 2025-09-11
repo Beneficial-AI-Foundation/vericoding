@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def are_coprime (a b : Int) : Bool := sorry
 
 theorem self_coprime (n : Int) : 
   are_coprime n n = (n.natAbs = 1) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem symmetry (n m : Int) : 
   are_coprime n m = are_coprime m n := sorry
 
@@ -35,6 +43,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval are_coprime 64 27
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

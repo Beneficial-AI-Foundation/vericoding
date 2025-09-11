@@ -1,3 +1,4 @@
+// <vc-preamble>
 function Lucas(n: int): int
     requires n >= 0
 {
@@ -9,6 +10,7 @@ function Lucas(n: int): int
 predicate ValidInput(n: int) {
     1 <= n <= 86
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

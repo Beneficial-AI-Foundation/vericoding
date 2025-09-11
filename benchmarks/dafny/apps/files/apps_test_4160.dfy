@@ -1,3 +1,4 @@
+// <vc-preamble>
 function calculateDeposit(initial: int, years: int): int
     requires initial >= 0
     requires years >= 0
@@ -7,6 +8,7 @@ function calculateDeposit(initial: int, years: int): int
         var prevDeposit := calculateDeposit(initial, years - 1);
         prevDeposit + prevDeposit / 100
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

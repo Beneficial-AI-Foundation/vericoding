@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def toCamelCase (s : Option String) : String := sorry
 
 theorem to_camel_case_no_separators (parts : List String) (h : parts ≠ []) :
@@ -9,7 +15,9 @@ theorem to_camel_case_no_separators (parts : List String) (h : parts ≠ []) :
   ¬ result.contains '_' ∧
   ¬ result.contains '-' ∧
   ¬ result.contains ' ' := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem to_camel_case_first_word_preserved 
   (first : String) (sep : Char) (rest : List String)
   (h_sep : sep = '-' ∨ sep = '_') :
@@ -37,6 +45,7 @@ info: 'TheStealthWarrior'
 -/
 -- #guard_msgs in
 -- #eval to_camel_case "The-Stealth-Warrior"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

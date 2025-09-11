@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsLowerCase(c : char)
 {
     97 <= c as int <= 122
@@ -12,6 +13,7 @@ function ShiftMinus32(c : char) :  char
 {
     ((c as int - 32) % 128) as char
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

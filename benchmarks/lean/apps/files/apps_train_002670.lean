@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def consecutive_ducks (n : Nat) : Bool := sorry
 
 def isPowerOfTwo (n : Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem powers_of_two_are_false (n : Nat) : 
   n ≥ 2 → isPowerOfTwo n = true → consecutive_ducks n = false := 
 sorry
@@ -46,6 +54,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval consecutive_ducks 1024
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

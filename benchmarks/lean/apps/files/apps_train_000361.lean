@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def largest_component_size (nums : List Nat) : Nat := sorry
 
 theorem largest_component_size_bounds {nums : List Nat} (h : nums ≠ []) : 
   let result := largest_component_size nums
   0 < result ∧ result ≤ nums.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem largest_component_size_idempotent {nums : List Nat} :
   largest_component_size nums = largest_component_size nums := sorry
 
@@ -33,6 +41,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval largest_component_size [2, 3, 6, 7, 4, 12, 21, 39]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

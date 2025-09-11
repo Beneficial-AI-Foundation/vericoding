@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isAlpha (c : Char) : Bool := sorry
 
 def letterFrequency (s : String) : List (Char × Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem letterFrequency_output_structure 
   (s : String) :
   let result := letterFrequency s
@@ -45,6 +53,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval letter_frequency ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

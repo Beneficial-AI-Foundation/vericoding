@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, A: int)
 {
     1 <= N <= 100 && 0 <= A <= N * N
@@ -14,6 +15,7 @@ predicate ValidOutput(N: int, A: int, result: int)
 {
     result == BlackSquares(N, A) && result >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

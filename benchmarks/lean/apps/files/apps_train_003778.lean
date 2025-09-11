@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def xbonacci (signature : List Int) (n : Nat) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem xbonacci_length (signature : List Int) (n : Nat) :
   (xbonacci signature n).length = n :=
   sorry
@@ -49,6 +57,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval xbonacci [1, 2, 3] 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

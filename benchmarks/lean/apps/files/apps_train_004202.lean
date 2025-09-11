@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def logical_calc (lst : List Bool) (op : String) : Bool := sorry
 
 def isOdd (n : Nat) : Bool :=
   n % 2 = 1
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem logical_calc_and {lst : List Bool} (h : lst.length > 0) :
   logical_calc lst "AND" = lst.all id := sorry
 
@@ -43,6 +51,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval logical_calc [True, True, False] "XOR"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

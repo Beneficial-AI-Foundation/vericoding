@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_stock_profit_with_cooldown (prices : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_or_single_price_zero (prices : List Nat) 
   (h : prices.length ≤ 1) : 
   max_stock_profit_with_cooldown prices = 0 :=
@@ -50,6 +58,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval max_stock_profit_with_cooldown [2, 1, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

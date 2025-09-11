@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, C: int, D: int)
 {
   1 <= A <= 100 && 1 <= B <= 100 && 1 <= C <= 100 && 1 <= D <= 100
@@ -16,6 +17,7 @@ predicate TakahashiWins(A: int, B: int, C: int, D: int)
   var aoki_turns := TurnsToDefeat(A, D);
   aoki_turns >= takahashi_turns
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

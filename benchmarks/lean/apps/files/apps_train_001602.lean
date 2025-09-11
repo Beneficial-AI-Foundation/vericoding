@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countDivisors (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_divisors_monotonic
   {n : Nat}
   (h : n > 0)
@@ -35,6 +43,7 @@ info: 66
 -/
 -- #guard_msgs in
 -- #eval count_divisors 20
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

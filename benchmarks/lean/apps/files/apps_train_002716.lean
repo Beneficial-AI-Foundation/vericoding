@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def split (s: String) (sep: String) : List String := sorry
 
 def sort_reindeer (names: List String) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_reindeer_length_preservation (names: List String) :
   (sort_reindeer names).length = names.length := sorry
 
@@ -41,6 +49,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval sort_reindeer ["Kenjiro Mori", "Susumu Mori", "Akira Mori"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

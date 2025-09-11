@@ -1,3 +1,4 @@
+// <vc-preamble>
 function max(a: int, b: int): int
 {
     if a >= b then a else b
@@ -27,6 +28,7 @@ predicate ValidResult(result: seq<int>, boxes: seq<(int, int)>, stair_heights: s
         result[i] == max(if i == 0 then stair_heights[0] else result[i-1] + boxes[i-1].1, 
                         stair_heights[boxes[i].0 - 1]))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

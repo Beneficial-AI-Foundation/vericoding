@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInputFormat(stdin_input: string)
 {
     |stdin_input| > 0 &&
@@ -97,6 +98,7 @@ predicate ValidGridIndex(grid: seq<seq<char>>, r: int, c: int)
 {
     0 <= r < |grid| && 0 <= c < |grid[r]|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

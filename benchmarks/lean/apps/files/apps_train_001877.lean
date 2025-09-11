@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def process_queries (queries : List Nat) (m : Nat) : List Nat := sorry
 
 theorem result_length_matches_input 
   (queries : List Nat) (m : Nat) (h : m > 0)
   : List.length (process_queries queries m) = List.length queries := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem results_are_valid_indices
   (queries : List Nat) (m : Nat) (h : m > 0)
   : ∀ x ∈ (process_queries queries m), x < m := sorry 
@@ -45,6 +53,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval process_queries [7, 5, 5, 8, 3] 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

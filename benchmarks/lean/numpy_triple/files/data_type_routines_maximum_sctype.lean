@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -67,13 +68,19 @@ def precisionLE (p1 p2 : Precision) : Bool :=
   | Precision.P128, Precision.P256 => true
   | Precision.P128, _ => false
   | Precision.P256, _ => false
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maximum_sctype (t : NumericType) : Id NumericType :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maximum_sctype_spec (t : NumericType) :
     ⦃⌜True⌝⦄
     maximum_sctype t
@@ -81,3 +88,4 @@ theorem maximum_sctype_spec (t : NumericType) :
                  result.precision = maxPrecisionFor t.kind ∧
                  precisionLE t.precision result.precision⌝⦄ := by
   sorry
+-- </vc-theorems>

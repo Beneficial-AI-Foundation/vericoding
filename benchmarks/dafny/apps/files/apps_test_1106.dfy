@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, lights: seq<int>)
 {
     1 <= n <= 10 &&
@@ -33,6 +34,7 @@ ghost function dfs_result(i: int, n: int, a: seq<int>): (int, int)
         else
             (x1 + x2 + m1 + a[i * 2] - m2 - a[i * 2 + 1], m1 + a[i * 2])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

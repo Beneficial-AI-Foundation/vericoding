@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sqrt (n : Nat) : Nat := sorry
 
 def divisors (n : Nat) : Option (List Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divisors_properties (n : Nat) (h : n ≥ 2) :
   match (divisors n) with
   | some lst => 
@@ -20,6 +28,7 @@ theorem divisors_properties (n : Nat) (h : n ≥ 2) :
     -- n is prime 
     ∀ i : Nat, 2 ≤ i → i ≤ sqrt n → n % i ≠ 0
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

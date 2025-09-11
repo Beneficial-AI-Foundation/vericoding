@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_cross (stones : List Nat) : Bool := sorry
 
 theorem empty_stones :
   can_cross [] = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_stone :
   can_cross [0] = true := sorry
 
@@ -45,6 +53,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_cross [0, 1, 3, 4, 5, 7, 9, 10, 12]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

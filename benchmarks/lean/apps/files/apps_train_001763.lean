@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_transform_point (sx sy tx ty : Nat) : Bool := sorry 
 
 theorem same_point_always_true {sx sy : Nat} : 
   can_transform_point sx sy sx sy = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem target_less_than_start_always_false {sx sy tx ty : Nat} :
   (tx < sx ∨ ty < sy) → can_transform_point sx sy tx ty = false := sorry
 
@@ -29,6 +37,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_transform_point 1 1 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

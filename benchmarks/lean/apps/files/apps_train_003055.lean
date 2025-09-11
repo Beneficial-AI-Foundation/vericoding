@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def change (s : String) : String := sorry 
 
 theorem change_output_format (s : String) : 
   let result := change s
   (result.length = 26) ∧ 
   (∀ c ∈ result.data, c = '0' ∨ c = '1')  := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem change_letter_detection (s : String) (i : Nat) (h : i < 26) :
   let result := change s
   let letter := Char.ofNat (i + 'a'.toNat)
@@ -41,6 +49,7 @@ info: '00000000000000000000000000'
 -/
 -- #guard_msgs in
 -- #eval change ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

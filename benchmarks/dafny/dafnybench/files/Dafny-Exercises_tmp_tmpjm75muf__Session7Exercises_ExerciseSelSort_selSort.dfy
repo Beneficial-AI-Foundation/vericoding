@@ -1,9 +1,11 @@
+// <vc-preamble>
 predicate sorted_seg(a:array<int>, i:int, j:int)
 requires 0 <= i <= j <= a.Length
 reads a
 {
     forall l, k :: i <= l <= k < j ==> a[l] <= a[k]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

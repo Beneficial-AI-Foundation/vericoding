@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def sum_ints (xs : List Int) : Int :=
   sorry
 
 def range (n : Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def arithmetic_sequence_sum (a r n : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arithmetic_sequence_properties
   (a r n : Int)
   (h : n > 0) :
@@ -44,6 +51,7 @@ info: -80
 -/
 -- #guard_msgs in
 -- #eval arithmetic_sequence_sum 1 -2 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

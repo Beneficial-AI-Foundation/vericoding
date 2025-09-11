@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def rob (nums : List Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def elementsAtEvenIndices (nums : List Nat) : List Nat :=
 
 def elementsAtOddIndices (nums : List Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (nums : List Nat) : Nat :=
   List.foldl Nat.add 0 nums
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rob_nonnegative (nums : List Nat) :
   rob nums ≥ 0 :=
   sorry
@@ -62,6 +69,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval rob [2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

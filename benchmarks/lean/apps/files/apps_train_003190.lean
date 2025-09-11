@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_dup (arr : List Nat) : Nat := sorry
 
 theorem find_dup_correct (n : Nat) (duplicate : Nat) 
@@ -12,7 +18,9 @@ theorem find_dup_correct (n : Nat) (duplicate : Nat)
   find_dup arr = duplicate ∧ 
   (arr.filter (λ x => x = duplicate)).length = 2 ∧
   ∀ x ∈ arr, x ≤ n-1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 1
 -/
@@ -30,6 +38,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_dup [5, 4, 3, 2, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

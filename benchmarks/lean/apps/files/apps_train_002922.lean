@@ -1,19 +1,26 @@
+-- <vc-preamble>
 def count_inversions (lst : List Int) : Nat :=
   sorry
 
 def isSorted (l : List Int) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def swap (l : List Int) (i j : Nat) (h1 : i < l.length) (h2 : j < l.length) : List Int :=
   let arr := l.toArray
   let tmp := arr[i]!
   let arr := arr.set! i arr[j]!
   let arr := arr.set! j tmp
   arr.toList
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list_zero_inversions :
   count_inversions [] = 0 := by
   sorry
@@ -65,6 +72,7 @@ info: 30
 -/
 -- #guard_msgs in
 -- #eval count_inversions #[6, 5, 4, 3, 3, 3, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

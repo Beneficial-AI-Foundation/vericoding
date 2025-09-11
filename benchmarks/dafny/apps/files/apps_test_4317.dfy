@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| >= 3 &&
@@ -54,6 +55,7 @@ function max3(a: int, b: int, c: int): int
     else if b >= c then b
     else c
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

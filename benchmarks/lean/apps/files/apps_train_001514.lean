@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_squares (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_squares_monotonic (n : Nat) (h : n > 0) :
   count_squares (n + 1) > count_squares n :=
   sorry
@@ -37,6 +45,7 @@ info: 14
 -/
 -- #guard_msgs in
 -- #eval count_squares 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

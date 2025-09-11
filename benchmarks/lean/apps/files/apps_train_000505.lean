@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def count_inversions (arr : List Nat) (n : Nat) (m : Nat) : Nat := sorry
 
 theorem count_inversions_non_negative (arr : List Nat) (n : Nat) (m : Nat) :
   count_inversions arr n m ≥ 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sorted (xs : List Nat) : Prop :=
   ∀ i j, i < j → i < xs.length → j < xs.length → 
     xs[i]! ≤ xs[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_inversions_sorted_zero (arr : List Nat) (n : Nat) (m : Nat) :
   sorted arr → count_inversions arr n m = 0 := sorry
 
@@ -36,6 +43,7 @@ info: 30000
 -/
 -- #guard_msgs in
 -- #eval count_inversions [99, 2, 1000, 24] 4 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn inner_expr_replace_blanks_with_chars(str1: &Vec<char>, ch: char, i: int)
         str1[i]
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

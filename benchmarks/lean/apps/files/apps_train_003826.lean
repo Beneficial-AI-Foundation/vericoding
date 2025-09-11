@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def contamination (text char : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem contamination_length_matches_input
   (text char : String)
   (h : char.length = 1) :
@@ -58,6 +66,7 @@ info: '      '
 -/
 -- #guard_msgs in
 -- #eval contamination "//case" " "
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

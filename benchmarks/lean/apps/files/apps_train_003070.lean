@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def the_biggest_search_keys : List String → String := sorry
 
 theorem returns_string {keys : List String} :
   ∃ s : String, the_biggest_search_keys keys = s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_input_returns_empty {keys : List String} :
   keys = [] → the_biggest_search_keys keys = "''" := sorry
 
@@ -16,6 +24,7 @@ theorem basic_properties {keys : List String} (h : keys ≠ []) :
   result ≠ "''" →
   (∀ k ∈ result_list, k.startsWith "'" ∧ k.endsWith "'") ∧
   result_list ≠ [] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

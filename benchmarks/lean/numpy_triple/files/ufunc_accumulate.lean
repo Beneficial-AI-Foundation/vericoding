@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def accumulate {n : Nat} (op : Float → Float → Float) (a : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem accumulate_spec {n : Nat} (op : Float → Float → Float) (a : Vector Float n) :
     ⦃⌜True⌝⦄
     accumulate op a
@@ -23,3 +30,4 @@ theorem accumulate_spec {n : Nat} (op : Float → Float → Float) (a : Vector F
       (n > 0 → ∀ i : Fin n, result.get i = (a.toList.take (i.val + 1)).tail.foldl op (a.get ⟨0, sorry⟩))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

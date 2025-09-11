@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encode (s : String) : String := sorry 
 def decode (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_length_preserving (s : String) : 
   (encode s).length = s.length := sorry
 
@@ -53,6 +61,7 @@ info: 'This is an encoding test.'
 -/
 -- #guard_msgs in
 -- #eval decode "Th3s 3s 1n 2nc4d3ng t2st."
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

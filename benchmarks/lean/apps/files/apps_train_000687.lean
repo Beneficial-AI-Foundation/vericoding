@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def min_trips (n : Nat) (k : Nat) (weights : List Nat) : Int := sorry
 
 def list_sum : List Nat → Nat 
   | [] => 0
   | x::xs => x + list_sum xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_maximum : List Nat → Nat 
   | [] => 0
   | [x] => x
   | (x::xs) => max x (list_maximum xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_trips_basic_properties 
   (weights : List Nat) (k : Nat) (n : Nat) (h1 : n = weights.length) :
   let result := min_trips n k weights
@@ -50,6 +57,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_trips 3 6 [3, 4, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

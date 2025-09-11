@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_log_validity (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_length_log_invalid {s : String} :
   s.length % 2 ≠ 0 → check_log_validity s = "no" :=
 sorry
@@ -40,6 +48,7 @@ info: 'no'
 -/
 -- #guard_msgs in
 -- #eval check_log_validity "AA"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

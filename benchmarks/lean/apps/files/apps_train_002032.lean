@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_carrot_game (n : Nat) (A : List Nat) : List Nat := sorry
 
 abbrev min' (a b : Nat) : Nat := if a ≤ b then a else b
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_maximum (l : List Nat) : Nat :=
 match l with
 | [] => 0
 | x::xs => List.foldl Nat.max x xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem carrot_game_output_length {n : Nat} {A : List Nat} 
   (h : A.length > 0) (h2 : A.length = n) :
   (solve_carrot_game n A).length = n := sorry
@@ -50,6 +57,7 @@ info: [2, 8, 8]
 -/
 -- #guard_msgs in
 -- #eval solve_carrot_game 3 [2, 8, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

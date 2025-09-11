@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def least_interval (tasks : List Char) (n : Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def countFrequencies (tasks : List Char) : List Nat :=
 
 def maxFrequency (tasks : List Char) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maxFrequencyCount (tasks : List Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem least_interval_zero_cooldown (tasks : List Char) (h : tasks ≠ []) :
   least_interval tasks 0 = tasks.length :=
 sorry
@@ -46,6 +53,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval least_interval ["A", "B", "C", "D"] 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

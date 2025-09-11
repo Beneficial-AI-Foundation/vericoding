@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_candy_distribution (n k : Nat) : Nat × Nat := sorry
 
 theorem candy_distribution_non_negative (n k : Nat) :
   let (candies_per_student, remaining) := solve_candy_distribution n k
   candies_per_student ≥ 0 ∧ remaining ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem remaining_less_than_students {n k : Nat} (h : k > 0) :
   let (candies_per_student, remaining) := solve_candy_distribution n k
   remaining < k := sorry
@@ -40,6 +48,7 @@ info: (0, 7)
 -/
 -- #guard_msgs in
 -- #eval solve_candy_distribution 7 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

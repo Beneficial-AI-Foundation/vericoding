@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_parking (n k : Nat) (grid : List (List Nat)) : List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem parking_properties (n k : Nat)
   (h1 : 1 ≤ n ∧ n ≤ 10)
   (h2 : 1 ≤ k ∧ k ≤ 20)
@@ -41,6 +49,7 @@ theorem empty_grid (n : Nat)
   let result := solve_parking n n grid;
   result.head? = some 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

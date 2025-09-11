@@ -1,3 +1,4 @@
+// <vc-preamble>
 function MinPair(s: seq<int>) : (r: int)
     requires |s| == 2
     ensures s[0] <= s[1] <==> r == s[0]
@@ -13,6 +14,7 @@ function min(s: seq<int>) : (r: int)
     if |s| == 2 then MinPair(s)
     else MinPair([s[0], min(s[1..])])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

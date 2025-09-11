@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_even (n : Int) : Bool := sorry
 
 theorem is_even_divisible_by_2 (n : Int) :
   is_even n = (n % 2 = 0) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_even_plus_2 (n : Int) :
   is_even n = is_even (n + 2) := sorry
 
@@ -29,6 +37,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_even 14
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

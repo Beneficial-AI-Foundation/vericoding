@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| > 0 && forall i :: 0 <= i < |s| ==> s[i] == 'a' || s[i] == 'b'
@@ -32,6 +33,7 @@ predicate ValidOutput(s: string, evenCount: int, oddCount: int)
     oddCount >= |s| &&
     (|s| == 1 ==> evenCount == 0 && oddCount == 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def my_crib (n : Nat) : String := sorry
 
 def splitLines (s : String) : List String :=
   s.splitOn "\n"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem crib_line_count (n : Nat) (h : 0 < n) :
   (splitLines (my_crib n)).length = 2 * n + 1 := sorry
 
@@ -82,6 +90,7 @@ info: test3
 -/
 -- #guard_msgs in
 -- #eval my_crib 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

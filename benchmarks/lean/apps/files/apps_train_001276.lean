@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_series (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_series_output_type {n : Nat} (h : n ≥ 1) :
   solve_series n ≥ 0 :=
 sorry
@@ -37,6 +45,7 @@ info: 140
 -/
 -- #guard_msgs in
 -- #eval solve_series 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

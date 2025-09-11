@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def VOWELS := ["A", "E", "I", "O", "U"]
 
 def is_clingy (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uppercase_letters (s : String) (h : s.all Char.isUpper) : 
   is_clingy s = true ∨ is_clingy s = false := sorry
 
@@ -41,6 +49,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_clingy "AEIOU"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

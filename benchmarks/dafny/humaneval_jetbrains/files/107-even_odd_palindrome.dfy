@@ -1,3 +1,4 @@
+// <vc-preamble>
 type stringNat = s: string |
 |s| > 0 && (|s| > 1 ==> s[0] != '0') &&
 forall i | 0 <= i < |s| :: s[i] in "0123456789"
@@ -23,6 +24,7 @@ function is_palindrome(n: nat) : bool {
   var s := natToString(n);
   forall i | 0 <= i < |s| :: s[i] == s[|s|-1-i]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

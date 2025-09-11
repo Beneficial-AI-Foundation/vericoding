@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def orderlyQueue (s : String) (k : Nat) : String := sorry
 
 private def stringToSortedString (s : String) : String :=
   String.mk (s.data.reverse.reverse) -- placeholder since we can't sort without importing
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem orderlyQueue_k_gt_one_sorted {s : String} {k : Nat} (h1 : s.length > 0) (h2 : k > 1) :
   orderlyQueue s k = stringToSortedString s := sorry 
 
@@ -42,6 +50,7 @@ info: 'abcd'
 -/
 -- #guard_msgs in
 -- #eval orderlyQueue "abcd" 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def less_equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem less_equal_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
     less_equal x1 x2
@@ -26,3 +33,4 @@ theorem less_equal_spec {n : Nat} (x1 x2 : Vector String n) :
                  -- Decidability: result is always boolean (true or false)
                  (∀ i : Fin n, result.get i = true ∨ result.get i = false)⌝⦄ := by
   sorry
+-- </vc-theorems>

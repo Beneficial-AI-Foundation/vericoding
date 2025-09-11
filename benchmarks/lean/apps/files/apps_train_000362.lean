@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def numBusesToDestination (routes: List (List Nat)) (source: Nat) (target: Nat) : Int :=
   sorry
 
 def findMaxInList (l: List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def findMaxInRoutes (routes: List (List Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem impossible_path_property
   (routes: List (List Nat))
   (h: routes ≠ [])
@@ -53,6 +60,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval numBusesToDestination [[1, 2], [2, 3], [3, 4]] 1 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

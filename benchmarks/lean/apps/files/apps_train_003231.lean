@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def evenNumbers (arr : List Int) (n : Nat) : List Int := sorry
 
 theorem evenNumbers_len_leq_min (arr : List Int) (n : Nat) : 
   let result := evenNumbers arr n
   let numEven := (arr.filter (fun x => x % 2 = 0)).length
   result.length ≤ min n numEven := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem evenNumbers_all_even (arr : List Int) (n : Nat) :
   let result := evenNumbers arr n
   ∀ x ∈ result, x % 2 = 0 := sorry
@@ -43,6 +51,7 @@ info: [6]
 -/
 -- #guard_msgs in
 -- #eval even_numbers [6, -25, 3, 7, 5, 5, 7, -3, 23] 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

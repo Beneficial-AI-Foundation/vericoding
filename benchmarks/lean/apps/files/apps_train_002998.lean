@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def color_2_grey (colors: List (List (List (List Nat)))) : List (List (List (List Nat))) := sorry
 
 -- Shape preservation theorems
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem color_2_grey_preserves_outer_length {colors: List (List (List (List Nat)))} :
   List.length (color_2_grey colors) = List.length colors := sorry
 
@@ -52,6 +60,7 @@ theorem color_2_grey_is_average {colors: List (List (List (List Nat)))}
   let grey_pixel := List.get! (List.get! (List.get! (color_2_grey colors) img_idx) row_idx) pixel_idx
   let total := List.get! original 0 + List.get! original 1 + List.get! original 2
   List.get! grey_pixel 0 = (total + 2) / 3 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

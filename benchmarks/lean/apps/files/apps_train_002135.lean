@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_kingdom (n : Nat) (roads : List (Nat × Nat)) (plans : List (Nat × List Nat)) : List Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_kingdom_result_length {n : Nat} {roads : List (Nat × Nat)} {plans : List (Nat × List Nat)} :
   List.length (solve_kingdom n roads plans) = List.length plans :=
 sorry
@@ -27,6 +35,7 @@ info: [2]
 -/
 -- #guard_msgs in
 -- #eval solve_kingdom 7 [(1, 2), (2, 3), (3, 4), (1, 5), (5, 6), (5, 7)] [(4, [2, 4, 6, 7])]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def membership (amount platinum gold silver bronze : Nat) : String := sorry 
 
 theorem membership_result_valid (amount platinum gold silver bronze : Nat)
@@ -10,7 +16,9 @@ theorem membership_result_valid (amount platinum gold silver bronze : Nat)
   membership amount platinum gold silver bronze = "Silver" ∨ 
   membership amount platinum gold silver bronze = "Bronze" ∨
   membership amount platinum gold silver bronze = "Not a member" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem membership_platinum (amount platinum gold silver bronze : Nat)
   (h_thresholds : platinum > gold ∧ gold > silver ∧ silver > bronze)
   (h_amount : amount ≥ platinum) :
@@ -58,6 +66,7 @@ info: 'Not a member'
 -/
 -- #guard_msgs in
 -- #eval membership 998 1000000 100000 10000 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

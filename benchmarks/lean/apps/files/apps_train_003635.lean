@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def build_square (blocks: List Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum : List Nat → Nat 
   | [] => 0
   | x::xs => x + list_sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_16_if_buildable {blocks : List Nat} :
   build_square blocks = true → 
   list_sum blocks ≥ 16 :=
@@ -40,6 +47,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval build_square [4, 2, 2, 1, 1, 1, 1, 3, 3, 3, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

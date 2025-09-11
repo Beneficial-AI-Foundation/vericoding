@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_lamps (n k : Nat) (initial_state : List Nat) (subsets : List (List Nat)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_lamps_single_lamp {n k : Nat} {initial_state : List Nat} {subsets : List (List Nat)}
   (h1 : n = 1)
   (h2 : k = 1)
@@ -63,6 +71,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval solve_lamps 5 3 [0, 0, 0, 1, 1] [[1, 2, 3], [4], [3, 4, 5]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

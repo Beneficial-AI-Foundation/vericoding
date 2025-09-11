@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, p: seq<int>)
 {
   n > 0 && |p| == n &&
@@ -46,6 +47,7 @@ function get_cycles_helper(n: int, p: seq<int>, visited: seq<bool>, cycles: seq<
     else
       cycles
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_student_record (s : String) : Bool := sorry
 
 theorem empty_string_valid : 
   check_student_record "" = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem only_valid_chars_used (s : String) :
   s.data.all (fun c => c = 'P' ∨ c = 'L' ∨ c = 'A') → 
   ∃ (b : Bool), check_student_record s = b := sorry
@@ -45,6 +53,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval check_student_record "PPALLP"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate validInput(stdin_input: string)
 {
     var lines := splitLines(stdin_input);
@@ -19,6 +20,7 @@ function computeMismatches(stdin_input: string): nat
         var currentSizes := lines[n+1..2*n+1];
         countUnmatchedSizes(prevSizes, currentSizes)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Car := Float × Float
 
 def freeway_game (km : Float) (kph : Float) (cars : List Car) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem freeway_game_properties (km : Float) (kph : Float) (cars : List Car)
   (h1 : 0.1 ≤ km ∧ km ≤ 1000)  
   (h2 : 1 ≤ kph ∧ kph ≤ 200) :
@@ -41,6 +49,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval freeway_game 50.0 120.0 [[-1.0, 115.0], [-1.5, 110.0], [1.0, 130.0], [1.5, 130.0]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

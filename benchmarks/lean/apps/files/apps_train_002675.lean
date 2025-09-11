@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def pattern (n : Int) : String := sorry
 
 def String.lines (s : String) : List String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def toString (n : Int) : Char := sorry
 
 theorem non_positive_returns_empty
   (n : Int)
   (h : n ≤ 0) :
   pattern n = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_format_empty
   (n : Int)
   (h : n = 1) :
@@ -56,6 +63,7 @@ info: '22\n4444'
 -/
 -- #guard_msgs in
 -- #eval pattern 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

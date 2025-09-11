@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(R: int, G: int) {
     0 <= R <= 4500 && 0 <= G <= 4500
 }
@@ -9,6 +10,7 @@ function RequiredPerformance(R: int, G: int): int {
 predicate CorrectResult(R: int, G: int, P: int) {
     (R + P) == 2 * G
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

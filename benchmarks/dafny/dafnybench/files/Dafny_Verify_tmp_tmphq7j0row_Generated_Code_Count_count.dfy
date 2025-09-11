@@ -1,3 +1,4 @@
+// <vc-preamble>
 function has_count(v: int, a: array<int>, n: int): int
     reads a
     requires n >= 0 && n <= a.Length
@@ -5,6 +6,7 @@ function has_count(v: int, a: array<int>, n: int): int
     if n == 0 then 0 else
     (if a[n-1] == v then has_count(v, a, n-1) + 1 else has_count(v, a, n-1))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

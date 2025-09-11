@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def find_max_consecutive_power (arr : List Int) (k : Nat) : Int := sorry 
 
 def sum_sublist (l : List Int) (i : Nat) (len : Nat) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Int) : Int := sorry
 
 theorem find_max_consecutive_power_is_k_consecutive 
   {arr : List Int} {k : Nat} (h : k ≤ arr.length) :
   ∃ i, i + k ≤ arr.length ∧ 
     find_max_consecutive_power arr k = sum_sublist arr i k := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_consecutive_power_is_maximum 
   {arr : List Int} {k : Nat} (h : k ≤ arr.length) :
   ∀ i, i + k ≤ arr.length → 
@@ -43,6 +50,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_max_consecutive_power [1, -2, 3, -4, 5] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

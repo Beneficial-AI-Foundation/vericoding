@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def remove_comments (source : List String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_has_strings {source : List String} :
   ∀ x ∈ remove_comments source, x = x := by sorry
 
@@ -36,6 +44,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval remove_comments ["void func(int k) {", "// this function does nothing /*", "   k = k*2/4;", "   k = k/2;*/", "}"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

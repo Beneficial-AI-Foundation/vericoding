@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_enclaves (grid: List (List Nat)) : Nat := sorry
 
 theorem empty_grid_enclave {rows cols : Nat} (h1: 0 < rows) (h2: 0 < cols) (h3: rows ≤ 10) (h4: cols ≤ 10) :
   let grid := List.replicate rows (List.replicate cols 0)
   num_enclaves grid = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_ones_grid_enclave {rows cols : Nat} (h1: 0 < rows) (h2: 0 < cols) (h3: rows ≤ 10) (h4: cols ≤ 10) :
   let grid := List.replicate rows (List.replicate cols 1)
   num_enclaves grid = 0 := sorry
@@ -43,6 +51,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval num_enclaves [[0, 0, 0, 1], [0, 1, 1, 0], [0, 1, 0, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

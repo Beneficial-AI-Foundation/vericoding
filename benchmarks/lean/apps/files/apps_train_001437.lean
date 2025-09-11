@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def numDigits (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maximizeStockPrice (n k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maximize_stock_price_properties (n k : Nat) (h1 : n ≤ 999999) (h2 : k ≤ 10) :
   let result := maximizeStockPrice n k;
   -- Result should be greater than or equal to input
@@ -49,6 +56,7 @@ info: 9999
 -/
 -- #guard_msgs in
 -- #eval maximize_stock_price 9999 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

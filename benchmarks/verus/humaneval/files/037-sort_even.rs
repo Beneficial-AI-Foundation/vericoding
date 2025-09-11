@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -29,6 +30,7 @@ spec fn inner_expr_lemma_update_effect_on_count<T>(s: Seq<T>, i: int, v: T, x: T
         count(s, x)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countBits (n : Nat) : Nat := sorry
 def sort_by_bit (arr : List Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_by_bit_preserves_length (arr : List Nat) :
   arr.length > 0 → (sort_by_bit arr).length = arr.length := sorry
 
@@ -40,6 +48,7 @@ info: [0, 2, 2, 4, 8, 8, 3, 5, 5, 6, 9, 7, 56]
 -/
 -- #guard_msgs in
 -- #eval sort_by_bit [9, 4, 5, 3, 5, 7, 2, 56, 8, 2, 6, 8, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

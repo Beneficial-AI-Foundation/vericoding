@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_subsequence (s t : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string_is_subsequence {t : String} :
   is_subsequence "" t = true := sorry 
 
@@ -46,6 +54,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_subsequence "" "ahbgdc"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 0 && k <= n
@@ -26,6 +27,7 @@ function MaxGoodApartments(n: int, k: int): int
     else if n - k < k * 2 then n - k
     else k * 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

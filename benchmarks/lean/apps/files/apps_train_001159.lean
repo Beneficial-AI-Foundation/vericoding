@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_coins (s n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_coins_positive (s n : Nat) (h1: s > 0) (h2: n > 0) : 
   min_coins s n > 0 :=
 sorry
@@ -52,6 +60,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval min_coins 31 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

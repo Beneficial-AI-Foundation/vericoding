@@ -1,3 +1,4 @@
+// <vc-preamble>
 function isFibonacci(num: int): bool
   requires num >= 1
 {
@@ -12,6 +13,7 @@ function isFibHelper(num: int, prev: int, curr: int): bool
   else if curr > num then false
   else isFibHelper(num, curr, prev + curr)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

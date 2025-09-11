@@ -1,3 +1,4 @@
+// <vc-preamble>
 function max_of_seq(s: seq<int>): int
     requires |s| >= 1
     ensures forall i :: 0 <= i < |s| ==> s[i] <= max_of_seq(s)
@@ -15,6 +16,7 @@ function max_excluding(s: seq<int>, exclude_idx: int): int
     var others := s[..exclude_idx] + s[exclude_idx+1..];
     max_of_seq(others)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

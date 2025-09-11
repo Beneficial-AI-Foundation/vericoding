@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def arccos {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arccos_spec {n : Nat} (x : Vector Float n) 
     (h_valid : ∀ i : Fin n, -1 ≤ x.get i ∧ x.get i ≤ 1) :
     ⦃⌜∀ i : Fin n, -1 ≤ x.get i ∧ x.get i ≤ 1⌝⦄
@@ -24,3 +31,4 @@ theorem arccos_spec {n : Nat} (x : Vector Float n)
       -- Monotonicity: arccos is decreasing on [-1, 1]
       (∀ j : Fin n, x.get i ≤ x.get j → result.get j ≤ result.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

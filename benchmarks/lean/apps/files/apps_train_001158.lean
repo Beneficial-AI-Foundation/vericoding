@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_contiguous_generators (N : Nat) (A : List Nat) (queries : List Nat) : List Nat := sorry
 
 def list_gcd (lst : List Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_divisible (k : Nat) (A : List Nat) : Nat :=
   List.foldl (fun acc x => if k % x = 0 then acc + 1 else acc) 0 A
 
 -- Result length matches queries length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_length_matches_queries 
   {N : Nat} {A : List Nat} {queries : List Nat} : 
   List.length (solve_contiguous_generators N A queries) = List.length queries := sorry
@@ -50,6 +57,7 @@ info: [0, 2, 3]
 -/
 -- #guard_msgs in
 -- #eval solve_contiguous_generators 2 [2, 4] [1, 2, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

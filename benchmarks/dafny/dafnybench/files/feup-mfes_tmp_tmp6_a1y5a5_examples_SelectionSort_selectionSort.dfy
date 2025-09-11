@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isSorted(a: array<real>, from: nat, to: nat)
   requires 0 <= from <= to <= a.Length
   reads a
@@ -12,6 +13,7 @@ method findMin(a: array<real>, from: nat, to: nat) returns(index: nat)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

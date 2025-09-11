@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_key_occurrences (arr : List Int) (key : Int) (queries : List Nat) : 
   List (Nat × Nat × Nat) := sorry
 
 -- For each element in result, all components are natural numbers
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_components_natural_numbers (arr : List Int) (key : Int) (queries : List Nat) :
   let result := find_key_occurrences arr key queries
   ∀ r ∈ result, r.1 ≥ 0 ∧ r.2.1 ≥ 0 ∧ r.2.2 ≥ 0 :=
@@ -48,6 +56,7 @@ theorem occurrence_count_correct (arr : List Int) (key : Int) (queries : List Na
   ∀ i, i < queries.length →
     (result.get! i).1 = ((arr.drop (queries.get! i)).filter (· = key)).length :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

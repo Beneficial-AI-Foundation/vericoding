@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| >= 2 && 
@@ -36,6 +37,7 @@ predicate ValidOutput(result: string, expectedCount: int)
     (forall c :: c in result ==> c == '\n' || ('0' <= c <= '9')) &&
     expectedCount >= 1 && expectedCount <= 49
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

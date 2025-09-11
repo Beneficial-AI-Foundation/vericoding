@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Solution := String
 
 def isSolvable (words : List String) (result : String) : Bool :=
@@ -5,13 +6,19 @@ def isSolvable (words : List String) (result : String) : Bool :=
 
 def isAlpha (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isUpper (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_solution_constraints {words : List String} {result : String}
   (h1 : ∀ w ∈ words, isAlpha w ∧ isUpper w)
   (h2 : isAlpha result ∧ isUpper result) 
@@ -40,6 +47,7 @@ theorem modified_valid_case_exists_solution
         words.length = orig_result.length) :
   ∃ solution : Bool, isSolvable [words] result = solution :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

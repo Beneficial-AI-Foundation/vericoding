@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def solve (n m k : Nat) (arr : List Nat) : Nat := sorry
 
 def listMin (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x::xs => List.foldl min x xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listMax (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x::xs => List.foldl max x xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_result_in_bounds {n m k : Nat} {arr : List Nat} 
   (h1 : arr.length ≥ m) (h2 : m ≤ n) (h3 : arr ≠ []) :
   let result := solve n m k arr
@@ -60,6 +67,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve 4 1 3 [1, 2, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_collatz_length : Int → List Int
   | n => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_positive_returns_empty {n : Int} (h : n ≤ 0) :
   max_collatz_length n = [] := sorry
 
@@ -46,6 +54,7 @@ info: [27, 112]
 -/
 -- #guard_msgs in
 -- #eval max_collatz_length 30
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

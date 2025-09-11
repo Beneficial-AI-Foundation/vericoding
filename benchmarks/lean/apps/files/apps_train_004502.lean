@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Matrix := List (List Bool)
 
 def solveMatrix (m n a b : Nat) : Option Matrix :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def matrixToStr (m : Matrix) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_matrix_valid_2_2_1_1 :
   ∃ (result : Matrix),
     solveMatrix 2 2 1 1 = some result ∧
@@ -49,6 +56,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval matrix_to_str result
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

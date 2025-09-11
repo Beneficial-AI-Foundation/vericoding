@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_missing_numbers (arr : List Int) : List Int := sorry
 
 theorem empty_or_single_returns_empty (arr : List Int) : 
   arr.length ≤ 1 → find_missing_numbers arr = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_originals_in_result {arr : List Int} (h : arr.Nodup) :
   ∀ x ∈ find_missing_numbers arr, x ∉ arr := sorry
 
@@ -32,6 +40,7 @@ info: [-3, -2, -1, 0, 1, 2, 3]
 -/
 -- #guard_msgs in
 -- #eval find_missing_numbers [-4, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

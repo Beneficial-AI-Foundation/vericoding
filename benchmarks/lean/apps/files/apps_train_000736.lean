@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def List.minimum (l : List Nat) : Nat := 
   sorry
 
 def List.sort (l: List Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_common_divisors (nums: List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_common_divisors_contains_prime_factors {nums: List Nat} 
   (h1: nums.length ≥ 2)
   (h2: ∀ n ∈ nums, n ≥ 1 ∧ n ≤ 100) :
@@ -54,6 +61,7 @@ info: [5]
 -/
 -- #guard_msgs in
 -- #eval find_common_divisors [10, 15, 20]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

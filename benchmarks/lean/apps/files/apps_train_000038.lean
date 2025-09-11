@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def maximum (l : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_card_game (n k1 k2 : Nat) (arr1 arr2 : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem card_game_returns_bool (n k1 k2 : Nat) (arr1 arr2 : List Int) 
   (h1 : k1 > 0) (h2 : k2 > 0) (h3 : arr1.length > 0) (h4 : arr2.length > 0) :
   solve_card_game n k1 k2 arr1 arr2 = true ∨ 
@@ -47,6 +54,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval solve_card_game 3 1 2 [3] [1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

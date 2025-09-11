@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0
@@ -97,6 +98,7 @@ function IntToStringHelper(n: int, acc: string): string
     if n / 10 == 0 then [digitChar] + acc
     else IntToStringHelper(n / 10, [digitChar] + acc)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

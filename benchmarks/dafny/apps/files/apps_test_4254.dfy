@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInputFormat(input: string)
 {
     var trimmed := TrimNewlines(input);
@@ -46,6 +47,7 @@ function StringToInt(s: string): int
     else
         StringToIntHelper(s, 0, 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

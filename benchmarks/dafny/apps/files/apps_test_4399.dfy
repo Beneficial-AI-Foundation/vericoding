@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| == 3 && forall i :: 0 <= i < |input| ==> input[i] == 'A' || input[i] == 'B'
@@ -8,6 +9,7 @@ predicate BusServiceExists(input: string)
 {
     input[0] != input[1] || input[1] != input[2]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

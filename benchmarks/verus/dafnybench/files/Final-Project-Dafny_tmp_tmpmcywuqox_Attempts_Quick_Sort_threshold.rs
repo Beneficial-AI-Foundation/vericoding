@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn quick_sorted(seq: Seq<int>) -> bool {
     forall|idx_1: int, idx_2: int| 0 <= idx_1 < idx_2 < seq.len() ==> seq[idx_1] <= seq[idx_2]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

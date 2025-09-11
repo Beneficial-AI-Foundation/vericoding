@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sum : List Nat → Nat 
 | [] => 0
 | (x::xs) => x + sum xs
@@ -18,16 +19,22 @@ theorem min_sum_non_negative (nums : List Nat)
   (h : nums.length ≥ 2) 
   (h2 : nums.length % 2 = 0) :
   min_sum nums ≥ 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pairwiseProduct (nums : List Nat) : Nat := 
   let n := nums.length
   let firstHalf := nums.take (n/2)
   let secondHalf := (nums.drop (n/2)).reverse
   sum (zipWith (fun x y => x * y) firstHalf secondHalf)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_sum_upper_bound (nums : List Nat)
   (h : nums.length ≥ 2)
   (h2 : nums.length % 2 = 0) :
@@ -49,6 +56,7 @@ theorem min_sum_minimality (nums : List Nat)
   (h : nums.length ≥ 2)
   (h2 : nums.length % 2 = 0) :
   min_sum nums ≤ pairwiseProduct nums := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

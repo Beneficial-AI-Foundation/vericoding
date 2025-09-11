@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lagint {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
     (lbnd : Float) (scl : Float) : Id (Vector Float (n + m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lagint_spec {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
     (lbnd : Float) (scl : Float) :
     ⦃⌜True⌝⦄
@@ -29,3 +36,4 @@ theorem lagint_spec {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m
         influence = k.get i)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

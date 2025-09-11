@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def String.lower : String → String :=
   fun _ => sorry
 
@@ -9,13 +10,19 @@ def Char.swapcase : Char → Char :=
 
 def String.count (s₁ s₂ : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def work_on_strings (s₁ s₂ : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem work_on_strings_length (a b : String) :
   (work_on_strings a b).length = a.length + b.length :=
 sorry
@@ -68,6 +75,7 @@ info: 'abcDEfgDEFGg'
 -/
 -- #guard_msgs in
 -- #eval work_on_strings "abcdeFg" "defgG"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

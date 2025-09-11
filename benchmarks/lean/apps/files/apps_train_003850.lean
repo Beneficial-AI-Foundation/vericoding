@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ant_bridge (ants : String) (terrain : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ant_bridge_length_preservation
     (ants : String) (terrain : String) :
     (ant_bridge ants terrain).length = ants.length :=
@@ -43,6 +51,7 @@ info: 'CBA'
 -/
 -- #guard_msgs in
 -- #eval ant_bridge "CBA" "--.--.---"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

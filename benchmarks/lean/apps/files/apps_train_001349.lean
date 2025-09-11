@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_array_sum (n l h : Nat) : Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_bounds {n l h : Nat} (hn : n > 0) (hl : l > 0) (hlh : h ≥ l) (hhn : h ≤ n) :
   let (min_sum, max_sum) := solve_array_sum n l h
   min_sum ≤ max_sum ∧ min_sum > 0 ∧ max_sum > 0
@@ -37,6 +45,7 @@ info: (3, 7)
 -/
 -- #guard_msgs in
 -- #eval solve_array_sum 3 1 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

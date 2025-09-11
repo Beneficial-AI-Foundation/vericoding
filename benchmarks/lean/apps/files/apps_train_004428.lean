@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def alphabetized (s : String) : String := sorry
 
 def sorted_list (l : List Char) : List Char := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isAlpha (c : Char) : Bool := sorry
 
 theorem alphabetized_is_sorted (s : String) :
   let result := alphabetized s
   result = String.mk (sorted_list (result.data)) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem alphabetized_only_letters (s : String) :
   let result := alphabetized s
   ∀ c ∈ result.data, isAlpha c := sorry
@@ -45,6 +52,7 @@ info: 'aaaaCcdddeLnooorstTWy'
 -/
 -- #guard_msgs in
 -- #eval alphabetized "CodeWars can"t Load Today"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

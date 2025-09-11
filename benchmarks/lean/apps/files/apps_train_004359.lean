@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mormons (starting reach target : Nat) : Nat := sorry
 
 theorem mormons_non_negative (starting reach target : Nat) :
   mormons starting reach target ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mormons_zero_if_target_leq_starting (starting reach target : Nat) :
   target ≤ starting →
   mormons starting reach target = 0 := sorry
@@ -34,6 +42,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval mormons 20 3 500
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

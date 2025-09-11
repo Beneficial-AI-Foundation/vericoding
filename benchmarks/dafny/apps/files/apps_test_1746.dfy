@@ -1,3 +1,4 @@
+// <vc-preamble>
 function hasChildren(node: int, parents: seq<int>, n: int): bool
     requires 0 <= node < n
     requires n >= 3
@@ -26,6 +27,7 @@ predicate IsSpruce(n: int, parents: seq<int>)
     forall node :: 0 <= node < n && hasChildren(node, parents, n) ==> 
         countLeafChildren(node, parents, n) >= 3
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

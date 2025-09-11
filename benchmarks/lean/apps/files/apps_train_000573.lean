@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_jumps (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_jumps_nonnegative (s : String) :
   0 ≤ solve_jumps s :=
   sorry
@@ -48,6 +56,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_jumps "##.#....#"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

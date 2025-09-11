@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def strLen (s : String) : Nat :=
   sorry
 
 def stringSuffix (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isRepeatedChar (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_suffix_positive (s : String) :
   stringSuffix s ≥ 0 :=
 sorry
@@ -51,6 +58,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval string_suffix "aaaa"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn nth_ugly_number_precond(n: nat) -> bool {
     n > 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

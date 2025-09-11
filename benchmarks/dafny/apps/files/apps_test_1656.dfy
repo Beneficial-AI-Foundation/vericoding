@@ -1,3 +1,4 @@
+// <vc-preamble>
 function wowFactor(s: string): int
     requires |s| > 0
     requires forall i :: 0 <= i < |s| ==> s[i] == 'v' || s[i] == 'o'
@@ -45,6 +46,7 @@ function wowFactorSum(s: string, pos: int): int
         else 0;
         current + wowFactorSum(s, pos + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

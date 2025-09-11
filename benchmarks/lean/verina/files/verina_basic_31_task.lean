@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def toUppercase_precond (s : String) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def isLowerCase (c : Char) : Bool :=
   'a' ≤ c ∧ c ≤ 'z'
@@ -9,10 +12,14 @@ def isLowerCase (c : Char) : Bool :=
 def shiftMinus32 (c : Char) : Char :=
   Char.ofNat ((c.toNat - 32) % 128)
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def toUppercase (s : String) (h_precond : toUppercase_precond (s)) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def toUppercase_postcond (s : String) (result: String) (h_precond : toUppercase_precond (s)) :=
   let cs := s.toList
@@ -25,6 +32,7 @@ def toUppercase_postcond (s : String) (result: String) (h_precond : toUppercase_
 theorem toUppercase_spec_satisfied (s: String) (h_precond : toUppercase_precond (s)) :
     toUppercase_postcond (s) (toUppercase (s) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, scores: seq<int>)
 {
     n == |scores| && n >= 1 && exists i :: 0 <= i < |scores| && scores[i] != 0
@@ -14,6 +15,7 @@ predicate ValidResult(scores: seq<int>, result: int)
     result == |UniqueNonZeroScores(scores)| && 
     result <= |scores|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

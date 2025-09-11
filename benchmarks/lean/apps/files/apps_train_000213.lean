@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def subarrayBitwiseORs (nums: List Nat) : Nat := sorry
 
 theorem result_is_nonnegative {nums: List Nat} (h: nums ≠ []) :
   subarrayBitwiseORs nums ≥ 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countUnique (l: List Nat) : Nat := 
   (List.foldl (fun acc x => if acc.contains x then acc else x::acc) [] l).length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_upper_bound {nums: List Nat} (h: nums ≠ []) :
   subarrayBitwiseORs nums ≤ (nums.length * (nums.length + 1)) / 2 := sorry
 
@@ -32,6 +39,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval subarrayBitwiseORs [1, 2, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

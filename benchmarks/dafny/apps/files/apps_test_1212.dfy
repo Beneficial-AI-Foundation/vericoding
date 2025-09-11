@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum_window(heights: seq<int>, start: int, k: int): int
   requires 0 <= start
   requires start + k <= |heights|
@@ -22,6 +23,7 @@ predicate ValidResult(result: int, n: int, k: int, heights: seq<int>)
   forall start :: 0 <= start < result-1 ==>
     sum_window(heights, start, k) > sum_window(heights, result-1, k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

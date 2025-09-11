@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def encode (message : String) (key : String) (shift : Int) : String :=
   sorry
 
 def decode (message : String) (key : String) (shift : Int) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def LOWER : String :=
   "abcdefghijklmnopqrstuvwxyz"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_decode_roundtrip 
   {message key : String} {shift : Int}
   (h1 : ∀ c ∈ message.data, c.toString ∈ LOWER.data.map toString)
@@ -50,6 +57,7 @@ info: msg
 -/
 -- #guard_msgs in
 -- #eval decode encode(msg, key, shift) "secret" 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

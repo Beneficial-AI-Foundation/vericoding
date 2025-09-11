@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def shoppingOffers (price : List Int) (special : List (List Int)) (needs : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidInput (price : List Int) (special : List (List Int)) (needs : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shoppingOffers_result_nonnegative
   (price : List Int) (special : List (List Int)) (needs : List Int)
   (h_price : ∀ p ∈ price, 1 ≤ p ∧ p ≤ 10)
@@ -50,6 +57,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval shoppingOffers [1, 1, 1] [[1, 1, 0, 3], [2, 2, 1, 5]] [1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

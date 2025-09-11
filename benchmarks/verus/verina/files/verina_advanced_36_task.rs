@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -12,6 +13,7 @@ spec fn count_matches(xs: Seq<u64>, x: u64) -> nat
         first_match + count_matches(xs.skip(1), x)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

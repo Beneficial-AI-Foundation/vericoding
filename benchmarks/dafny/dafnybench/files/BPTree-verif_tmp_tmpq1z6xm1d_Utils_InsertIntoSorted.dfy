@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SetLessThan(numbers: set<int>, threshold: int): set<int>
 {
   set i | i in numbers && i < threshold
@@ -57,6 +58,7 @@ function count(a: seq<bool>): nat
   if |a| == 0 then 0 else
     (if a[0] then 1 else 0) + count(a[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

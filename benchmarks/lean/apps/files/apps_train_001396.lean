@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_recipe_valid (n : Nat) (lst : List Nat) : String := sorry
 
 theorem recipe_validation_output_is_yes_or_no (n : Nat) (lst : List Nat) :
@@ -8,7 +14,9 @@ theorem recipe_validation_output_is_yes_or_no (n : Nat) (lst : List Nat) :
   result = "YES" ∨ result = "NO" := sorry
 
 -- For recipes marked valid:
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_recipe_elements_appear_contiguously (n : Nat) (lst : List Nat) :
   let result := check_recipe_valid n lst
   result = "YES" →
@@ -53,6 +61,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval check_recipe_valid 8 [1, 7, 7, 3, 3, 4, 4, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

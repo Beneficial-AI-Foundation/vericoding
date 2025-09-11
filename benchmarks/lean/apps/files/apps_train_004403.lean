@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def travel (totalTime: Int) (runTime: Int) (restTime: Int) (speed: Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem travel_distance_bounded
   (totalTime: Int) (runTime: Int) (restTime: Int) (speed: Int)
   (h1: totalTime > 0) (h2: runTime > 0) (h3: restTime ≥ 0) (h4: speed > 0) :
@@ -52,6 +60,7 @@ info: 450
 -/
 -- #guard_msgs in
 -- #eval travel 25 50 120 18
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

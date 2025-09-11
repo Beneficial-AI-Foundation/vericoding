@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def analyze_grade_periods (grades : List Nat) (queries : List (Nat × Nat)) : List Nat :=
   sorry
 
 -- Length of results matches length of queries
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem analyze_grade_periods_length_match 
   (grades : List Nat) (queries : List (Nat × Nat))
   (h : grades.length > 0) :
@@ -56,6 +64,7 @@ theorem analyze_grade_periods_correct_calc
       0
       (List.range (r-l))] :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

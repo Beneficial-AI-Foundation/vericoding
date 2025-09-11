@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
     n >= 1
@@ -23,6 +24,7 @@ predicate IsMinimalSolution(n: int, k: int)
     vasya_eats_with_strategy(n, k) * 2 >= n &&
     (k == 1 || vasya_eats_with_strategy(n, k - 1) * 2 < n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

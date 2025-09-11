@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int)
 {
   n >= m > 0
@@ -24,6 +25,7 @@ predicate OptimalDistribution(result: seq<int>, n: int, m: int)
   count(result, n / m) == m - (n % m) &&
   count(result, n / m + 1) == n % m
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

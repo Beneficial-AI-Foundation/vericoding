@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def wrap_mystery (n : Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem wrap_mystery_17 : wrap_mystery 17 = -1 := by
   sorry
 
@@ -30,6 +38,7 @@ info: 65
 -/
 -- #guard_msgs in
 -- #eval wrap_mystery 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

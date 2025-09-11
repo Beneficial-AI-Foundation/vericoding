@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def diagonalSum (matrix: List (List Int)) : Int := sorry
 
 -- Main property: sum equals primary + secondary diagonal (except where they intersect)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem diagonal_sum_equals_manual_sum {matrix: List (List Int)} (h: matrix.length > 0)
   (h2: ∀ row ∈ matrix, row.length = matrix.length) :
   diagonalSum matrix = 
@@ -45,6 +53,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval diagonal_sum [[5]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

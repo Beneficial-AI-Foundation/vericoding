@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_max_banknotes (start g1 g2 : Int) (notes : List Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_max_banknotes_basic_properties
   (start g1 g2 : Int) (notes : List Int) :
   let result := count_max_banknotes start g1 g2 notes
@@ -47,6 +55,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_max_banknotes 3 2 4 [3]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

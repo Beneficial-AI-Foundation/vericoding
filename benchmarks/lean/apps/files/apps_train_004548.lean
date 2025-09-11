@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def equalize (arr : List Int) : List String := sorry
 
 theorem equalize_format (arr : List Int) (h : arr.length > 0) :
   let result := equalize arr
   ∀ x ∈ result, ∃ s : String, (x = s) ∧ (s.get 0 = '+' ∨ s.get 0 = '-') := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem equalize_first_elem (arr : List Int) (h : arr.length > 0) :
   (equalize arr).head! = "+0" := sorry
 
@@ -41,6 +49,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval equalize [-10, 0, 10, 20]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

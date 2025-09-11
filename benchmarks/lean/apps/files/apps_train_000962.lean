@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_dishes (n k q : Nat) (array_params : Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat)
   (range_params : Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat) : Nat × Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_dishes_output_is_pair (n k q : Nat) 
   (array_params : Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat)
   (range_params : Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat) :
@@ -23,6 +31,7 @@ theorem solve_dishes_second_nonneg (n k q : Nat)
   (array_params : Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat)
   (range_params : Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat) :
   (solve_dishes n k q array_params range_params).2 ≥ 0 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

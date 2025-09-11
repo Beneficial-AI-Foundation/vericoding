@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_percentage (sent : Int) (limit : Int := 1000) : String := sorry
 
 theorem get_percentage_within_limits {sent : Int} 
@@ -9,7 +15,9 @@ theorem get_percentage_within_limits {sent : Int}
   (result.endsWith "%") ∧
   let percent := (result.dropRight 1).toInt!
   0 ≤ percent ∧ percent ≤ 100 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem limit_exceeded {sent : Int}
   (h : 1000 ≤ sent) :
   get_percentage sent = "Daily limit is reached" := sorry
@@ -56,6 +64,7 @@ info: 'Daily limit is reached'
 -/
 -- #guard_msgs in
 -- #eval get_percentage 1000 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

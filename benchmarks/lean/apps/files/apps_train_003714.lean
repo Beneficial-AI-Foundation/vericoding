@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def arr2bin (arr : List α) : String := sorry
 
 def sumList (l : List Int) : Int := sorry
@@ -9,13 +10,19 @@ theorem arr2bin_all_ints {arr : List Int} :
 
 def allBinary (s : String) : Bool := sorry
 def stringToNat (s : String) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isAllInts (arr : List α) : Bool := sorry
 def listToInts (arr : List α) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arr2bin_empty : 
   arr2bin ([] : List α) = "0" := sorry
 
@@ -45,6 +52,7 @@ info: '0'
 -/
 -- #guard_msgs in
 -- #eval arr2bin []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

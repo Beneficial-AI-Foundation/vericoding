@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def Position := String
 def Command := String
 
 def tetris (commands : List Command) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumHeights (commands : List Command) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tetris_output_natural (commands : List Command) : 
   tetris commands ≥ 0 :=
   sorry
@@ -44,6 +51,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval tetris ["4R4", "4L3", "4L2", "4L1", "4L0", "4R1", "4R2", "4R3", "3L4"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

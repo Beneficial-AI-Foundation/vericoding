@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_floor {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_floor_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_floor x
@@ -21,3 +28,4 @@ theorem numpy_floor_spec {n : Nat} (x : Vector Float n) :
       result.get i = -((-x.get i).ceil) ∧
       (∃ k : Int, x.get i = Float.ofInt k → result.get i = x.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

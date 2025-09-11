@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     n >= 1
 }
@@ -7,6 +8,7 @@ function MaxSum(n: int): int
 {
     n * (n - 1) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

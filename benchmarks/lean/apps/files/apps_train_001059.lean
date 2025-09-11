@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_segment_multiplication (arr : List Nat) (queries : List (Nat × Nat × Nat)) : List Nat :=
 sorry
 
 -- Results length matches queries length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_length_matches {arr : List Nat} {queries : List (Nat × Nat × Nat)} :
   (solve_segment_multiplication arr queries).length = queries.length :=
 sorry
@@ -42,6 +50,7 @@ theorem solve_full_array {arr : List Nat} {m : Nat} :
   let expected := arr.foldl (fun acc x => (acc * x) % m) 1
   result = expected :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

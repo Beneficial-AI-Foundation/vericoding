@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def find_k_diff_pairs (nums : List Int) (k : Int) : Int :=
   sorry
 
 def countOccurrences (nums : List Int) (x : Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def dedup (nums : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem k_diff_pairs_property :
   ∀ (nums : List Int) (k : Int),
   let result := find_k_diff_pairs nums k
@@ -47,6 +54,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_k_diff_pairs [1, 3, 1, 5, 4] 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

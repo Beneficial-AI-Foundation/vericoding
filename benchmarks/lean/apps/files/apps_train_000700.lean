@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findStartingJuiceShop (juices : List Nat) (distances : List Nat) : Int := sorry
 
 theorem empty_input_result : 
   (juices : List Nat) → (distances : List Nat) →
   juices.length = 0 ∨ distances.length = 0 →
   findStartingJuiceShop juices distances = -1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_index_result :
   (juices : List Nat) → (distances : List Nat) →
   juices.length = distances.length →
@@ -47,6 +55,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval find_starting_juice_shop [1, 2, 3] [4, 5, 6]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

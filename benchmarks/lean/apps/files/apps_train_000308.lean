@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longest_prefix (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_prefix {s : String} (h : s.length > 0) :
   (longest_prefix s).isPrefixOf s := by
   sorry
@@ -37,6 +45,7 @@ info: 'leet'
 -/
 -- #guard_msgs in
 -- #eval longest_prefix "leetcodeleet"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

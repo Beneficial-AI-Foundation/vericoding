@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def abs (x : Int) : Int :=
   if x ≥ 0 then x else -x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def max_and_min (arr1 arr2 : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_and_min_output_size {arr1 arr2 : List Int} 
   (h1 : arr1 ≠ []) (h2 : arr2 ≠ []) : 
   let result := max_and_min arr1 arr2
@@ -42,6 +49,7 @@ info: [9, 1]
 -/
 -- #guard_msgs in
 -- #eval max_and_min [1, 2, 3, 4, 5] [6, 7, 8, 9, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

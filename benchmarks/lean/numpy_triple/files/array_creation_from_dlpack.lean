@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -13,14 +14,20 @@ structure DLPackObject (α : Type) (n : Nat) where
   /-- The device on which the object resides -/
   device : String
   deriving Repr
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def from_dlpack {α : Type} {n : Nat} (x : DLPackObject α n) (device : Option String := none) 
     (copy : Option Bool := none) : Id (Vector α n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem from_dlpack_spec {α : Type} {n : Nat} (x : DLPackObject α n) 
     (device : Option String := none) (copy : Option Bool := none) :
     ⦃⌜x.has_dlpack ∧ x.has_dlpack_device ∧ 
@@ -30,3 +37,4 @@ theorem from_dlpack_spec {α : Type} {n : Nat} (x : DLPackObject α n)
                  (copy = some true → result ≠ x.data) ∧
                  (copy = some false → result = x.data)⌝⦄ := by
   sorry
+-- </vc-theorems>

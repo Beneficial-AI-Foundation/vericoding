@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_killers (n : Nat) (reports : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_report_one (n : Nat) (h : n ≥ 2) :
   let reports := (List.replicate n 1).set 0 0
   let result := find_killers n reports
@@ -33,6 +41,7 @@ info: '3 4 5'
 -/
 -- #guard_msgs in
 -- #eval find_killers 5 [0, 1, 2, 1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

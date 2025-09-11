@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def sum_subarray_mins (nums : List Nat) : Nat :=
   sorry
 
 def list_min (l : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_max (l : List Nat) : Nat := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_subarray_mins_non_negative (nums : List Nat) :
   sum_subarray_mins nums ≥ 0 := sorry
 
@@ -43,6 +50,7 @@ info: 444
 -/
 -- #guard_msgs in
 -- #eval sum_subarray_mins [11, 81, 94, 43, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_happy (n : Nat) : Bool := sorry
 
 def happy_numbers (n : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem happy_numbers_consistent {n : Nat} (h : n > 0) :
   happy_numbers n = happy_numbers n := sorry
 
@@ -34,6 +42,7 @@ info: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97,
 -/
 -- #guard_msgs in
 -- #eval happy_numbers 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

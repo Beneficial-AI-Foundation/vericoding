@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def bubble (lst : List Int) : List (List Int) := sorry
 
 def isSorted (lst : List Int) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countInversions (lst : List Int) : Nat := sorry
 
 -- Property 1: Each step should be a valid permutation of original list
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bubble_steps_are_permutations {lst : List Int} {step : List Int} :
   step ∈ bubble lst → step.length = lst.length := sorry
 
@@ -55,6 +62,7 @@ info: [[1, 3, 3, 4, 7, 2], [1, 3, 3, 4, 2, 7], [1, 3, 3, 2, 4, 7], [1, 3, 2, 3, 
 -/
 -- #guard_msgs in
 -- #eval bubble [1, 3, 3, 7, 4, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

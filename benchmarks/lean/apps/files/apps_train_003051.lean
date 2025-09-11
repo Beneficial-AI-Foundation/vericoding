@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def get_strings (s : String) : String := sorry
 
 def is_alpha (c : Char) : Bool := sorry
@@ -7,10 +8,14 @@ def to_lower (c : Char) : Char := sorry
 structure SegmentInfo where
   letter : Char
   stars : String
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def parse_segment (s : String) : Option SegmentInfo := sorry
 
 theorem get_strings_format_valid (s : String) (h : s ≠ "") :
@@ -23,7 +28,9 @@ theorem get_strings_format_valid (s : String) (h : s ≠ "") :
     is_alpha info.letter ∧ 
     ∀ c ∈ info.stars.data, c = '*'
   | none => False := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_strings_count_matches_freq (s : String) (h : s ≠ "") :
   let result := get_strings s
   let segments := result.splitOn "," |>.filter (·≠ "")
@@ -57,6 +64,7 @@ info: 'l:*,a:**,s:**,v:*,e:*,g:*'
 -/
 -- #guard_msgs in
 -- #eval get_strings "Las Vegas"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

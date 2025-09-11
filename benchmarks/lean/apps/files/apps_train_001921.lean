@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def determine_winner (n : Nat) (numbers : List Nat) : String := sorry
 
 def gcd (a b : Nat) : Nat := sorry
 
 -- Winner is either Alice or Bob
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem determine_winner_valid (n : Nat) (numbers : List Nat) 
     (h1 : n > 0) (h2 : n ≤ 100)
     (h3 : ∀ x ∈ numbers, x > 0 ∧ x ≤ 1000)
@@ -32,6 +40,7 @@ theorem determine_winner_even (n : Nat) (numbers : List Nat)
     (h4 : ∀ x ∈ numbers, x % 2 = 0)
     (h5 : ¬numbers.isEmpty) (h6 : numbers.length ≤ 100) :
     determine_winner n numbers = "Alice" ∨ determine_winner n numbers = "Bob" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def survivor (n : Nat) : Bool := sorry
 
 -- Basic properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem survivor_returns_bool (n : Nat) : 
   survivor n = true ∨ survivor n = false := by sorry
 
@@ -40,6 +48,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval survivor 13
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

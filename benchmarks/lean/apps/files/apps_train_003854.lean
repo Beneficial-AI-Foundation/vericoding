@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countBy (x : Int) (n : Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_by_len {x n : Int} (hx : x > 0) (hn : n > 0) :
   (countBy x n).length = n :=
   sorry
@@ -39,6 +47,7 @@ info: [100, 200, 300, 400, 500]
 -/
 -- #guard_msgs in
 -- #eval count_by 100 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

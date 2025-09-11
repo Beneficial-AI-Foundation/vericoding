@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -48,6 +49,7 @@ fn multiplicity_examples<T>()
 {
   assume(false);
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

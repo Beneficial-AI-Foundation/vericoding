@@ -1,3 +1,4 @@
+// <vc-preamble>
 function pos1(a: int, b: int, c: int): int
 {
     if a <= b && a <= c then a
@@ -24,6 +25,7 @@ function pos3(a: int, b: int, c: int): int
     else
         if a <= b then b else a
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

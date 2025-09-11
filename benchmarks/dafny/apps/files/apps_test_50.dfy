@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && '\n' in input &&
@@ -39,6 +40,7 @@ function ComputeMaxBourles(r: int, S: seq<int>, B: seq<int>): int
     var cnt := (r % x) + (r / x) * y;
     if r > cnt then r else cnt
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

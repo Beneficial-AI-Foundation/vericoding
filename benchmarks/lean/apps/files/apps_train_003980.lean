@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def squares (x n : Int) : List Int := sorry
 
 theorem squares_length_nonpositive {x n : Int} (h : n ≤ 0) :
   squares x n = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem squares_length_positive {x n : Int} (h : n > 0) :
   (squares x n).length = n := sorry
 
@@ -34,6 +42,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval squares 2 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

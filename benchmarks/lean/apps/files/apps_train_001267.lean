@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def List.size {α} : List α → Nat
   | [] => 0
   | _::xs => 1 + xs.size
@@ -10,13 +11,19 @@ def count_positive_prefixes (seq : List Int) : Nat :=
 
 def sumList (xs : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def Int.abs (i : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_length (n k : Nat) (h1 : n > 0) (h2 : k ≤ 100) :
   (sequence_generator n k).size = n :=
   sorry
@@ -47,6 +54,7 @@ info: [1, 2, 3]
 -/
 -- #guard_msgs in
 -- #eval sequence_generator 3 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

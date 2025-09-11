@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 1
@@ -14,6 +15,7 @@ predicate HasNonDistinctRemainder(n: int, k: int)
 {
     exists i :: 1 <= i <= k && n % i != (i - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

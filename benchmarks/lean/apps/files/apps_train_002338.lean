@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_happy (n : Nat) : Bool := sorry
 
 theorem is_happy_returns_bool (n : Nat) : 
   n > 0 → is_happy n = true ∨ is_happy n = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_happy_terminates (n : Nat) :
   n > 0 → ∃ (result : Bool), is_happy n = result := sorry
 
@@ -37,6 +45,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_happy 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

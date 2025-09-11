@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def moves_to_make_zigzag (nums: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem moves_nonnegative (nums: List Nat) :
   moves_to_make_zigzag nums ≥ 0 :=
 sorry
@@ -42,6 +50,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval moves_to_make_zigzag [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

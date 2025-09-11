@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def combine (verb: String) (noun: String) : String := sorry
 
 theorem combine_concatenation (verb noun: String) : 
   combine verb noun = verb ++ noun := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem combine_length (verb noun: String) : 
   (combine verb noun).length = verb.length + noun.length := sorry 
 
@@ -31,6 +39,7 @@ info: 'open door'
 -/
 -- #guard_msgs in
 -- #eval main "open " "door"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

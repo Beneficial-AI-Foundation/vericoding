@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rfind {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rfind_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) :
     ⦃⌜∀ i : Fin n, 0 ≤ start.get i ∧ start.get i ≤ endPos.get i⌝⦄
     rfind a sub start endPos
@@ -31,3 +38,4 @@ theorem rfind_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (star
                     start.get i ≤ j ∧ j + (sub.get i).length ≤ (a.get i).length → 
           ¬String.startsWith ((a.get i).drop (Int.natAbs j)) (sub.get i)))⌝⦄ := by
   sorry
+-- </vc-theorems>

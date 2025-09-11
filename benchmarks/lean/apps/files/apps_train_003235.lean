@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def solve (s : String) (a b : Nat) : String := sorry
 
 def length (s : String) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def substring (s : String) (start : Nat) (len : Nat) : String := sorry
 def reverse (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_length_preserved (s : String) (a b : Nat) (h : length s > 0) :
   length (solve s a b) = length s := sorry
 
@@ -32,6 +39,7 @@ theorem solve_full_reversal (s : String) (h : length s > 0) :
 theorem solve_single_char_identity (s : String) (idx : Nat) (h : length s > 0)
   (limited_idx := min idx (length s - 1)) :
   solve s limited_idx limited_idx = s := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

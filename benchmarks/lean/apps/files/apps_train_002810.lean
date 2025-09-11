@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def dropzone (fire : List Int) (dropzones : List (List Int)) : List Int := sorry
 
 def hypot (x y : Int) : Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isClosestToFire (point fire : List Int) (points : List (List Int)) : Bool := sorry
 
 def isClosestToOrigin (point fire : List Int) (points : List (List Int)) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dropzone_is_valid_point (fire : List Int) (dropzones : List (List Int)) :
   fire.length = 2 → dropzones.length > 0 → dropzone fire dropzones ∈ dropzones := sorry
 
@@ -41,6 +48,7 @@ info: [0, 1]
 -/
 -- #guard_msgs in
 -- #eval dropzone [1, 1] [[0, 1], [1, 0], [2, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

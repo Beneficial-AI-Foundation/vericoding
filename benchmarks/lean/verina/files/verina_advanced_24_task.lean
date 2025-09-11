@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible, simp]
 def lengthOfLIS_precond (nums : List Int) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lengthOfLIS (nums : List Int) (h_precond : lengthOfLIS_precond (nums)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def lengthOfLIS_postcond (nums : List Int) (result: Int) (h_precond : lengthOfLIS_precond (nums)) : Prop :=
   -- Helper function to check strictly increasing
@@ -32,6 +39,7 @@ def lengthOfLIS_postcond (nums : List Int) (result: Int) (h_precond : lengthOfLI
 theorem lengthOfLIS_spec_satisfied (nums: List Int) (h_precond : lengthOfLIS_precond (nums)) :
     lengthOfLIS_postcond (nums) (lengthOfLIS (nums) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

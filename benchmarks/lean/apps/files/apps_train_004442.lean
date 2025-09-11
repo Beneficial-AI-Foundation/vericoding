@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def same_encryption (s1 s2 : String) : Bool := sorry
 
 theorem same_encryption_reflexive 
   (s : String) 
   (h : s.length > 0) : 
   same_encryption s s = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem same_encryption_symmetric
   (s1 s2 : String)
   (h1 : s1.length > 0)
@@ -52,6 +60,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval same_encryption "fKhjuytrdfcdc" "flJc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,16 @@
+-- <vc-preamble>
 def summary_ranges (nums : List Int) : List String := sorry
 
 def stringContainsArrow (s : String) : Bool :=
   s.any (· = '-') && s.any (· = '>')
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringToRange (s : String) : Option (Int × Int) := 
   if !stringContainsArrow s then none
   else
@@ -13,7 +18,9 @@ def stringToRange (s : String) : Option (Int × Int) :=
     match parts with
     | [start, stop] => some (start.toInt!, stop.toInt!)
     | _ => none
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem summary_ranges_empty (nums : List Int) :
   nums = [] → summary_ranges nums = [] := sorry
 
@@ -55,6 +62,7 @@ info: ['-2', '0->7', '9->10', '12']
 -/
 -- #guard_msgs in
 -- #eval summary_ranges [-2, 0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 12]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

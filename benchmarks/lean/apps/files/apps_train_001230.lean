@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Grid := List String
 
 def isValidGrid (grid : Grid) : Bool :=
@@ -8,13 +9,19 @@ def solveHauntedLand (grid : Grid) : Nat :=
 
 def countStars (s : String) : Nat :=
   s.toList.filter (· = '*') |>.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum (l : List Nat) : Nat :=
   l.foldl (· + ·) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_haunted_land_output_valid (grid : Grid) 
   (h : isValidGrid grid = true) :
   solveHauntedLand grid ≥ 0 := sorry 
@@ -55,6 +62,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_haunted_land ["...", "..."]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

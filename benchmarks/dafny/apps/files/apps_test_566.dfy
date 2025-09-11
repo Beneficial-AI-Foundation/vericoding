@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(r: int, g: int, b: int) {
     r >= 0 && g >= 0 && b >= 0
 }
@@ -11,6 +12,7 @@ function MaxTables(r: int, g: int, b: int): int
 function min(a: int, b: int): int {
     if a <= b then a else b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -6,6 +7,7 @@ spec fn is_space_comma_dot(c: char) -> bool
 {
     c == ' ' || c == ',' || c == '.'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

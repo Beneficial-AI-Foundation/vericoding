@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def minRoomsNeeded (n : Nat) (schedules : List String) : Nat := sorry
 
 theorem min_rooms_bounds (n : Nat) (schedules : List String) :
   0 ≤ minRoomsNeeded n schedules ∧ minRoomsNeeded n schedules ≤ n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_rooms_concurrent (n : Nat) (schedules : List String) (day : Nat) (h : day < 7) :
   minRoomsNeeded n schedules ≥ (schedules.filter (fun sch => sch.data[day]? = some '1')).length := sorry
 
@@ -34,6 +42,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_rooms_needed 1 ["1111111"]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

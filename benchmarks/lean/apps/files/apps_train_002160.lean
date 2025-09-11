@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def allocate_stadium_games (n m k : Nat) (games : List (Nat × Nat)) : List Nat :=
   sorry
 
 /- For a valid allocation, the number of games per stadium for each team differs by at most 2 -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem stadium_balance {n k : Nat} {games : List (Nat × Nat)} {allocation : List Nat}
   (h1 : n ≥ 2)
   (h2 : k ≥ 1)
@@ -57,6 +65,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval len allocate_stadium_games(n, m, k, games)
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_median_smoothing (n : Nat) (seq : List Nat) : Nat × Option (List Nat) :=
   sorry
 
 def is_sorted_window (arr : List Nat) (i : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n : Nat) (m : Nat) : Nat :=
   if n ≥ m then n - m else m - n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem median_smoothing_properties
   (n : Nat) (seq : List Nat)
   (h1 : n ≥ 2)
@@ -48,6 +55,7 @@ theorem alternating_sequence_property
     abs (List.get! res i) (List.get! res (i+1)) ≤ 1
   :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

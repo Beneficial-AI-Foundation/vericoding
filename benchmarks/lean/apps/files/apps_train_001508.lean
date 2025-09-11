@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def StringNum := String
 def reversed_sum (s1 s2 : StringNum) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reversed_sum_is_integer (s1 s2 : StringNum) : 
   ∃ n : Int, reversed_sum s1 s2 = n := sorry
 
@@ -33,6 +41,7 @@ info: 579
 -/
 -- #guard_msgs in
 -- #eval reversed_sum "123" "456"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

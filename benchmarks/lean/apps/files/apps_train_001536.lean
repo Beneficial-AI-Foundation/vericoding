@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_notes_needed (amount : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_notes_needed_nonnegative (amount : Nat) : 
   min_notes_needed amount ≥ 0 :=
   sorry
@@ -38,6 +46,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval min_notes_needed 242
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

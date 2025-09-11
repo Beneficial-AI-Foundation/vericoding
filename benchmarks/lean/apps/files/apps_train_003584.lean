@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def digits (n : Int) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem digits_positive (n : Nat) :
   digits n > 0 :=
 sorry
@@ -33,6 +41,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval digits 9876543210
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

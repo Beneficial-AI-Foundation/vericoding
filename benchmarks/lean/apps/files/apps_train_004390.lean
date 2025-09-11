@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def convert_recipe (s : String) : String := sorry
 
 def String.containsStr (s₁ s₂ : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem conversion_maintains_original_measurement 
   (measurement : String) 
   (unit : String)
@@ -38,6 +46,7 @@ theorem no_measurements_unchanged
   (h1 : ¬text.containsStr "tbsp")
   (h2 : ¬text.containsStr "tsp") :
   convert_recipe text = text := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

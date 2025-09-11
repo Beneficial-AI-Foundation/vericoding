@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tv_remote (s : String) : Nat := sorry
 
 theorem tv_remote_non_negative (word : String) : 
   tv_remote word ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tv_remote_greater_than_length (word : String) : 
   tv_remote word ≥ word.length := sorry 
 
@@ -38,6 +46,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval tv_remote "   "
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

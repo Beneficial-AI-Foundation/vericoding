@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countZerosInBinary (n : Nat) : Nat := sorry
 def solveTestCase (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zeros_count_nonneg (n : Nat) : 
   countZerosInBinary n ≥ 0 := sorry
 
@@ -33,6 +41,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_test_case 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_reach (arr : Array Nat) (start : Nat) : Bool := sorry
 
 theorem start_within_bounds {arr : Array Nat} {start : Nat} :
   start ≥ arr.size → can_reach arr start = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_contains_zero {arr : Array Nat} {start : Nat} :
   start < arr.size → 
   (∀ x ∈ arr.toList, x ≠ 0) →
@@ -48,6 +56,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval can_reach #[3, 0, 2, 1, 2] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

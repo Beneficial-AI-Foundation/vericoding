@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def find_length_of_shortest_subarray (arr : List Int) : Nat :=
   sorry
 
 def isNonDecreasing (l : List Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def removeSubarray (arr : List Int) (start : Nat) (len : Nat) : List Int :=
   sorry
 
 -- Output is between 0 and length of array
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_bounds (arr : List Int) :
   let result := find_length_of_shortest_subarray arr
   0 ≤ result ∧ result ≤ arr.length :=
@@ -68,6 +75,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_length_of_shortest_subarray [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

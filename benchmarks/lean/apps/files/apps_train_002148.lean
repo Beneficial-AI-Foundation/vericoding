@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_division_pairs (p q : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem division_pairs_divides (p q result : Nat) 
   (h1 : result = solve_division_pairs p q) :
   p % result = 0 := by
@@ -68,6 +76,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_division_pairs 1 323
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

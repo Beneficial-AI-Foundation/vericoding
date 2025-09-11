@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def solve (text : String) (k : Nat) : String := sorry
 
 def get_char_indices (s : String) (c : Char) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def List.sorted (l : List Nat) : Prop := 
   ∀ i j, i < j → j < l.length → 
   match l.get? i, l.get? j with
   | some vi, some vj => vi ≤ vj
   | _, _ => True
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_result_length (text : String) (k : Nat) (h : text.length > 0) :
   (solve text k).length = max 0 (text.length - min k text.length) := sorry
 
@@ -46,6 +53,7 @@ info: 'cccbbabaccbc'
 -/
 -- #guard_msgs in
 -- #eval solve "cccaabababaccbc" 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

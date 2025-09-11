@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible]
 def increasingTriplet_precond (nums : List Int) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def increasingTriplet (nums : List Int) (h_precond : increasingTriplet_precond (nums)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def increasingTriplet_postcond (nums : List Int) (result: Bool) (h_precond : increasingTriplet_precond (nums)) : Prop :=
   let nums' := nums.zipIdx
@@ -31,6 +38,7 @@ def increasingTriplet_postcond (nums : List Int) (result: Bool) (h_precond : inc
 theorem increasingTriplet_spec_satisfied (nums: List Int) (h_precond : increasingTriplet_precond (nums)) :
     increasingTriplet_postcond (nums) (increasingTriplet (nums) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

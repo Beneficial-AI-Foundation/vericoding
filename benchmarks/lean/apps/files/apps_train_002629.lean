@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def ValidWords := ["nil", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
 def WordToNum : String → Nat
@@ -12,13 +13,19 @@ def WordToNum : String → Nat
   | "eight" => 8
   | "nine" => 9
   | _ => 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def scoreboard (s : String) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem scoreboard_output_valid (s : String) :
   let result := scoreboard s
   ∀ x ∈ result, 0 ≤ x ∧ x ≤ 9 :=
@@ -41,6 +48,7 @@ info: [2, 0]
 -/
 -- #guard_msgs in
 -- #eval scoreboard "Arsenal just conceded another goal, two nil"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isValidInput(input: string)
 {
     |input| > 0 &&
@@ -60,6 +61,7 @@ function minCutSize(grid: GridData): int
 {
     2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

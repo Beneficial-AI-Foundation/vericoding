@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitByNewline(input);
@@ -112,6 +113,7 @@ function IntToStringHelper(n: int): string
     if n == 0 then ""
     else IntToStringHelper(n / 10) + [((n % 10) + '0' as int) as char]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

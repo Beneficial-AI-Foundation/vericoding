@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -30,6 +31,7 @@ spec fn number_of_digits(n: nat) -> nat
 {
     if 0 <= n <= 9 { 1 } else { 1 + number_of_digits((n/10) as nat) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

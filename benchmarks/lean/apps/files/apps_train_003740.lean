@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_children (santas_list : List String) (children : List String) : List String := sorry
 
 def isSorted (xs : List String) : Prop :=
   ∀ i j, i < j → j < xs.length → xs[i]! ≤ xs[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_children_sorted (santas_list children : List String) :
   let result := find_children santas_list children
   isSorted result := sorry
@@ -52,6 +60,7 @@ info: ['JAsoN', 'jASon']
 -/
 -- #guard_msgs in
 -- #eval find_children ["jASon", "JAsoN", "JaSON", "jasON"] ["JasoN", "jASOn", "JAsoN", "jASon", "JASON"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

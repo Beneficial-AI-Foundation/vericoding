@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def reverse_vowels (s : String) : String := sorry
 
 def isVowel (c : Char) : Bool :=
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
   c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_char (s : String) (c : Char) : Nat := 
   s.toList.filter (· == c) |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_vowels_length_unchanged (s : String) :
   (reverse_vowels s).length = s.length := sorry
 
@@ -42,6 +49,7 @@ info: 'Aa'
 -/
 -- #guard_msgs in
 -- #eval reverse_vowels "aA"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

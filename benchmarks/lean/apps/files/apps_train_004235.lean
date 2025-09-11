@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def splitString (s : String) (sep : String) : List String := sorry
 def containsString (s : String) (sub : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def startsWithString (s : String) (pre : String) : Bool := sorry
 
 def simplify (n : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem simplify_zero : 
   simplify 0 = "" := sorry
 
@@ -65,6 +72,7 @@ info: '1*10000+4'
 -/
 -- #guard_msgs in
 -- #eval simplify 10004
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

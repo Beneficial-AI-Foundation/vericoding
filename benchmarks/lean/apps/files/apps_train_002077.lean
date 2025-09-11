@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def gcd (a b : Int) : Int := sorry
 
 def calc_fraction (n : Int) : Int × Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def fraction_to_str (frac : Int × Int) : String := sorry
 
 theorem calc_fraction_valid_output {n : Int} (h : n ≥ 2) : 
   let (num, den) := calc_fraction n
   den > 0 ∧ gcd num.natAbs den.natAbs = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fraction_to_str_format {n : Int} (h : n ≥ 2) :
   let frac := calc_fraction n
   let str := fraction_to_str frac
@@ -43,6 +50,7 @@ info: '5/14'
 -/
 -- #guard_msgs in
 -- #eval fraction_to_str calc_fraction(6)
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

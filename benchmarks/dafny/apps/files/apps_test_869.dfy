@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
   a >= 1 && b >= 1
@@ -17,6 +18,7 @@ function SameDays(a: int, b: int): int
 {
   RemainingAfterDifferent(a, b) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

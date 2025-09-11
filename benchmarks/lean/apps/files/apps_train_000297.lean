@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def numFriendRequests (ages: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_nonnegative 
   (ages: List Nat)
   (h: ∀ x ∈ ages, 1 ≤ x ∧ x ≤ 120) :
@@ -56,6 +64,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval numFriendRequests [20, 30, 100, 110, 120]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

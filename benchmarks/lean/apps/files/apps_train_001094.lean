@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_frequent_numbers (n : Nat) (k : Nat) (arr : List Nat) : List Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def count {α} [BEq α] (as : List α) (a : α) : Nat :=
 
 def isSorted (l : List Nat) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def uniqueSort (l : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem frequent_numbers_properties 
   (n : Nat) (k : Nat) (arr : List Nat) 
   (h1 : n = arr.length)
@@ -61,6 +68,7 @@ info: [1, 2, 3, 4]
 -/
 -- #guard_msgs in
 -- #eval find_frequent_numbers 4 0 [4, 2, 3, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

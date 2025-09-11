@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def longestArithSeqLength (arr : List Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countMaxOccurrences (arr : List Int) : Nat :=
   let counts := arr.map (λ x => arr.count x)
   counts.foldl Nat.max 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_length_at_least_two {arr : List Int} (h : arr.length ≥ 1) :
   longestArithSeqLength arr ≥ 2 :=
   sorry
@@ -43,6 +50,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval longestArithSeqLength [20, 1, 15, 3, 10, 5, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

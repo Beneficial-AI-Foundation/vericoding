@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isclose {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Float) (equal_nan : Bool) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isclose_spec {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Float) (equal_nan : Bool) 
     (h_rtol_nonneg : rtol ≥ 0) (h_atol_nonneg : atol ≥ 0) :
     ⦃⌜rtol ≥ 0 ∧ atol ≥ 0⌝⦄
@@ -30,3 +37,4 @@ theorem isclose_spec {n : Nat} (a b : Vector Float n) (rtol : Float) (atol : Flo
          (¬Float.isFinite (a.get i) ∨ ¬Float.isFinite (b.get i)) ∧ a.get i ≠ b.get i ∨
          ((a.get i).isNaN ∧ (b.get i).isNaN ∧ equal_nan = false))⌝⦄ := by
   sorry
+-- </vc-theorems>

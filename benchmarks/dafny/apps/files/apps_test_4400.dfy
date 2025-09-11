@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string) {
     |s| == 3 && forall i :: 0 <= i < |s| ==> s[i] == 'S' || s[i] == 'R'
 }
@@ -10,6 +11,7 @@ function MaxConsecutiveRainyDays(s: string): int
     else if 'R' in s then 1
     else 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve_game (n : Nat) (r : Nat) (initial : List Int) (changes : List (Nat × Int)) : List Float :=
   sorry
 
@@ -9,13 +10,19 @@ def list_average (l : List Int) : Float :=
 
 def list_update (l : List Int) (idx : Nat) (val : Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def float_close (a b : Float) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_game_result_length {n r : Nat} {initial : List Int} {changes : List (Nat × Int)} :
   initial.length = 2^n →
   (∀ change, change ∈ changes → change.1 < 2^n) →
@@ -50,6 +57,7 @@ theorem solve_game_no_changes {n : Nat} {initial : List Int}
   (solve_game n 0 initial []).length = 1 ∧ 
   float_close ((solve_game n 0 initial []).get ⟨0, h_length⟩) 1.0 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

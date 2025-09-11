@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_w_string (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_type_and_range 
   (s : String)
   (h : ∀ c ∈ s.toList, (97 ≤ c.toNat ∧ c.toNat ≤ 122) ∨ c = '#') :
@@ -47,6 +55,7 @@ info: 11
 -/
 -- #guard_msgs in
 -- #eval solve_w_string test3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

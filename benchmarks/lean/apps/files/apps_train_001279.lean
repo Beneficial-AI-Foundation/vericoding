@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_fruit_basket (a b c d : Int) : Int × Int × Int := sorry
 
 theorem fruit_basket_solution_properties {a b c d : Int}
@@ -16,10 +22,13 @@ theorem fruit_basket_solution_properties {a b c d : Int}
   mangoes + oranges == b ∧
   oranges + apples == c ∧
   apples + mangoes + oranges == d := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fruit_basket_returns_ints {a b c d : Int} :
   let (x, y, z) := solve_fruit_basket a b c d
   ∃ (r s t : Int), x = r ∧ y = s ∧ z = t := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

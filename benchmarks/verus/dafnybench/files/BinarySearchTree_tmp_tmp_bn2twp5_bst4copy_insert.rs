@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -68,6 +69,7 @@ fn insert_recursion(tree: Tree, value: int) -> (res: Tree)
     assume(false);
     Tree::Empty
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

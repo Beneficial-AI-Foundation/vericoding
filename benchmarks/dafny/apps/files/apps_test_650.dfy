@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(word: string) 
 {
     1 <= |word| <= 10 && forall i :: 0 <= i < |word| ==> 'A' <= word[i] <= 'Z'
@@ -20,6 +21,7 @@ predicate AllInSameGroup(word: string)
 {
     AllInGroup1(word) || AllInGroup2(word)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def integer_replacement (n : Nat) : Nat := sorry
 
 theorem integer_replacement_terminates (n : Nat) (h : n > 0) :
   integer_replacement n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem integer_replacement_is_nat (n : Nat) (h : n > 0) :
   integer_replacement n = integer_replacement n := sorry
 
@@ -35,6 +43,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval integer_replacement 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD : Nat := 1000000007
 
 def calculate_arrangements (n m : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_arrangements_mod_bounds
   (n m : Int) (hn : n > 0) (hm : m > 0) :
   0 ≤ calculate_arrangements n m ∧ calculate_arrangements n m < MOD :=
@@ -43,6 +51,7 @@ info: 729
 -/
 -- #guard_msgs in
 -- #eval calculate_arrangements 4 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

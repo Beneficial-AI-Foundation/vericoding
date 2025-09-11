@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_std {n : Nat} (a : Vector Float (n + 1)) (ddof : Nat := 0) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_std_spec {n : Nat} (a : Vector Float (n + 1)) (ddof : Nat) (h_ddof : ddof < n + 1) :
     ⦃⌜ddof < n + 1⌝⦄
     numpy_std a ddof
@@ -21,3 +28,4 @@ theorem numpy_std_spec {n : Nat} (a : Vector Float (n + 1)) (ddof : Nat) (h_ddof
       (∀ i : Fin (n + 1), a.get i = mean → result = 0) ∧
       (N - ddof > 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

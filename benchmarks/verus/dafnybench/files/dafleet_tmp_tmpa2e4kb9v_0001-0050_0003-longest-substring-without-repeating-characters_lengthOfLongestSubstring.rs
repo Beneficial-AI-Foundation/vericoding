@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -21,6 +22,7 @@ pub open spec fn valid_interval(s: Seq<char>, iv: Interval) -> bool {
     &&& 0 <= iv.start <= iv.end <= s.len()
     &&& forall|i: int, j: int| iv.start <= i < j < iv.end ==> s[i] != s[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

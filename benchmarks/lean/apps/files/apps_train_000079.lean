@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_broken_calc (l r : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem same_value (x : Nat) (h : 0 < x) (h' : x ≤ 10^6) :
   solve_broken_calc x x = 0 :=
 sorry
@@ -34,6 +42,7 @@ info: 3439863766
 -/
 -- #guard_msgs in
 -- #eval solve_broken_calc 1 1000000
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

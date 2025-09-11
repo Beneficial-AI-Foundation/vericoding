@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pythagoreanTriplet (n : Nat) : Option (Nat × Nat × Nat) :=
   sorry
 
 -- For inputs n ≥ 60, if a triplet exists, it satisfies required properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem triplet_properties {n : Nat} (h : n ≥ 60) 
     (res : pythagoreanTriplet n = some (a, b, c)) :
     0 < a ∧ a < b ∧ b < c ∧
@@ -42,6 +50,7 @@ info: [8, 15, 17]
 -/
 -- #guard_msgs in
 -- #eval pythagorean_triplet 2040
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_lock_ness_monster : String → Bool := sorry
 
 theorem is_lock_ness_monster_case_insensitive (s : String) :
   is_lock_ness_monster s = is_lock_ness_monster (s.toUpper) ∧
   is_lock_ness_monster s = is_lock_ness_monster (s.toLower) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_lock_ness_monster_contains_phrase (s : String) (phrase : String) 
   (h : phrase = "tree fiddy" ∨ phrase = "three fifty" ∨ phrase = "3.50") :
   is_lock_ness_monster (s ++ phrase ++ s) = true :=
@@ -47,6 +55,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_lock_ness_monster "I"m from Scottland. I moved here to be with my family sir. Please, $3.50 would go a long way"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

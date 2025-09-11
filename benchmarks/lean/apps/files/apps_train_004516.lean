@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def List.prod : List Nat → Nat 
   | [] => 1
   | x :: xs => x * List.prod xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_find_num (primes: List Nat) (limit: Nat) : Option (Nat × Nat) := sorry
 
 theorem count_find_num_basic_props {primes: List Nat} {limit: Nat} :
@@ -17,7 +22,9 @@ theorem count_find_num_basic_props {primes: List Nat} {limit: Nat} :
       count ≥ 1 ∧
       max_val ≥ List.prod primes
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_find_num_divisible {primes: List Nat} {limit: Nat} :
   match count_find_num primes limit with
   | none => True
@@ -33,6 +40,7 @@ theorem count_find_num_edge_cases_2 :
 
 theorem count_find_num_edge_cases_3 :
   count_find_num [2, 3] 5 = none := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

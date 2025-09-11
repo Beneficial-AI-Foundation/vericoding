@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInputFormat(input: string)
 {
     |input| > 0 && 
@@ -20,6 +21,7 @@ predicate CanDistributeEqually(a: int, b: int, c: int)
 {
     a + b == c || b + c == a || c + a == b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

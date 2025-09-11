@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid (s : String) : Bool := sorry
 
 theorem valid_empty_string :
   is_valid "" = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_after_abc_removal (s : String) :
   is_valid s = is_valid (s.replace "abc" "") := sorry
 
@@ -39,6 +47,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_valid "abccba"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

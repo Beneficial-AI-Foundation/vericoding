@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def histogram {n_data n_bins : Nat} (data : Vector Float n_data) (min_val max_val : Float)
     (h_bins_pos : n_bins > 0) (h_range : min_val < max_val) : 
     Id (Vector Nat n_bins × Vector Float (n_bins + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem histogram_spec {n_data n_bins : Nat} (data : Vector Float n_data) (min_val max_val : Float)
     (h_bins_pos : n_bins > 0) (h_range : min_val < max_val) :
     ⦃⌜n_bins > 0 ∧ min_val < max_val⌝⦄
@@ -30,3 +37,4 @@ theorem histogram_spec {n_data n_bins : Nat} (data : Vector Float n_data) (min_v
       (List.sum (List.map result.1.get (List.finRange n_bins)) = 
         (data.toList.filter (fun x => min_val ≤ x ∧ x ≤ max_val)).length)⌝⦄ := by
   sorry
+-- </vc-theorems>

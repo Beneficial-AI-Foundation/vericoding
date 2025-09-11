@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -37,6 +38,7 @@ fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
 {
     assume(false);
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

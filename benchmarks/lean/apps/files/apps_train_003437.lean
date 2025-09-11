@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def distribution_of_candy (candies: List Nat) : Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem distribution_result_type_ranges
   (candies: List Nat) 
   (h: candies.length > 0) :
@@ -11,6 +19,7 @@ theorem distribution_result_type_ranges
   -- Result components are natural numbers
   result.1 ≥ 0 ∧ result.2 ≥ 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

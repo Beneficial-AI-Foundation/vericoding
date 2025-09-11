@@ -1,3 +1,4 @@
+// <vc-preamble>
 /* Helper functions for generating subsequences and checking increasing property */
 ghost predicate IsSubsequenceOf(subseq: seq<int>, s: seq<int>)
 {
@@ -13,6 +14,7 @@ ghost predicate IsStrictlyIncreasing(s: seq<int>)
 {
     forall i :: 0 <= i < |s| - 1 ==> s[i] < s[i + 1]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

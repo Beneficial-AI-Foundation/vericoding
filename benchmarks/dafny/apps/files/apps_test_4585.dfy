@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x: int)
 {
   x >= 1
@@ -16,6 +17,7 @@ predicate IsMinimalTime(t: int, x: int)
   TriangularNumber(t) >= x &&
   (t == 1 || TriangularNumber(t - 1) < x)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

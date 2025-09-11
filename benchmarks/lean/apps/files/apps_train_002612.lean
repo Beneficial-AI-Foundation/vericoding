@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tower_of_hanoi (n : Nat) : Nat := sorry
 
 theorem tower_power_of_two (n : Nat) : 
   tower_of_hanoi n = 2^n - 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tower_positive (n : Nat) : 
   n > 0 → tower_of_hanoi n > 0 := sorry
 
@@ -35,6 +43,7 @@ info: 1023
 -/
 -- #guard_msgs in
 -- #eval tower_of_hanoi 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

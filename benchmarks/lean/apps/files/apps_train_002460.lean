@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def Array.shape (a : Array (Array α)) : Nat × Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def concatenate_arrays {α : Type} (n m p : Nat) (array1 array2 : Array (Array α)) : 
   Array (Array α) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem concatenate_arrays_shape (n m p : Nat) (array1 array2 : Array (Array α)) :
   (concatenate_arrays n m p array1 array2).shape = (n + m, p) :=
   sorry
@@ -27,6 +34,7 @@ theorem concatenate_arrays_singleton (n p : Nat) (value : α)
   (array2[0]!).size = p →
   (concatenate_arrays n 1 p array1 array2).shape = (n + 1, p) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

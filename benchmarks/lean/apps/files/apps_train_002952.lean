@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def combs_non_empty_boxes (n k : Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_inputs (n k : Int) :
   k < 0 ∨ k > n → combs_non_empty_boxes n k = -1 :=
 sorry
@@ -53,6 +61,7 @@ info: 'It cannot be possible!'
 -/
 -- #guard_msgs in
 -- #eval combs_non_empty_boxes 4 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

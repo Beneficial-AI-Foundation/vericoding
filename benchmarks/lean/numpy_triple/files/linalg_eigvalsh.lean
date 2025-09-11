@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def eigvalsh {n : Nat} (a : Vector (Vector Float n) n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem eigvalsh_spec {n : Nat} (a : Vector (Vector Float n) n) 
     (h_symm : ∀ i j : Fin n, (a.get i).get j = (a.get j).get i) :
     ⦃⌜∀ i j : Fin n, (a.get i).get j = (a.get j).get i⌝⦄
@@ -28,3 +35,4 @@ theorem eigvalsh_spec {n : Nat} (a : Vector (Vector Float n) n)
        (∀ i : Fin n, eigenvals.get i = 0))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

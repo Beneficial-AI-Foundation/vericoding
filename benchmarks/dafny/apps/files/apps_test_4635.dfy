@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && 
@@ -42,6 +43,7 @@ predicate CyclicPatternCorrect(n: int, k: int, output: string)
     |output| == n &&
     (forall j :: 0 <= j < n ==> output[j] == ((j % k) + 97) as char)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

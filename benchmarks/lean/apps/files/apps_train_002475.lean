@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def numerical_triangle (n: Nat) : String := sorry
 
 def String.splitLines (s : String) : List String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.allDigits (s : String) : Bool := sorry
 def String.toNat (s : String) : Option Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numerical_triangle_increasing_length (n: Nat)
     (h: 1 ≤ n ∧ n ≤ 20) :
     let lines := (numerical_triangle n).splitLines
@@ -46,6 +53,7 @@ info: '1'
 -/
 -- #guard_msgs in
 -- #eval numerical_triangle 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

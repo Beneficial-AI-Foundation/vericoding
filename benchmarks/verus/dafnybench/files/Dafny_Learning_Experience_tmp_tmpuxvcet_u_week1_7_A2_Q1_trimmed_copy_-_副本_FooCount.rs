@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -14,6 +15,7 @@ spec fn count(hi: nat, s: Seq<int>) -> int
         count((hi - 1) as nat, s)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

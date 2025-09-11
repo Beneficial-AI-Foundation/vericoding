@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn is_subrange_at(main: Seq<i32>, sub: Seq<i32>, i: int) -> (result: bool) {
     sub =~= main.subrange(i, i+sub.len())
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

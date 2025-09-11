@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, a: seq<int>)
 {
     n >= 1 && k >= 1 && |a| == n &&
@@ -22,6 +23,7 @@ predicate IsOptimalChoice(k: int, a: seq<int>, chosenBucket: int)
     ValidBucket(k, a[chosenBucket]) &&
     (forall i :: 0 <= i < |a| && ValidBucket(k, a[i]) ==> a[i] <= a[chosenBucket])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

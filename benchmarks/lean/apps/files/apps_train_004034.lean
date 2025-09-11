@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def insert_missing_letters (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_includes_input (s : String) (c : Char) :
   c ∈ s.data → c ∈ (insert_missing_letters s).data :=
   sorry
@@ -47,6 +55,7 @@ info: 'z'
 -/
 -- #guard_msgs in
 -- #eval insert_missing_letters "z"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

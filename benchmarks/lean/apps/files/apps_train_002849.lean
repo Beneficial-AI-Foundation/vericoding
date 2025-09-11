@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def isHexDigit (c : Char) : Bool := sorry
 
 def rgb (r g b : Int) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hexStringToNat (s : String) : Nat := sorry
 
 theorem rgb_output_format (r g b : Int) :
@@ -12,7 +17,9 @@ theorem rgb_output_format (r g b : Int) :
   (result.length = 6) ∧ 
   (result.data.all isHexDigit)
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rgb_valid_inputs (r g b : Int) 
   (hr : 0 ≤ r ∧ r ≤ 255)
   (hg : 0 ≤ g ∧ g ≤ 255)
@@ -57,6 +64,7 @@ info: '00FF7D'
 -/
 -- #guard_msgs in
 -- #eval rgb -20 275 125
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

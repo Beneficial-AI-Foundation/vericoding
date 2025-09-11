@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_changes_for_rgb_substring (n k : Nat) (s : String) : Nat :=
   sorry
 
 -- General properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_changes_non_negative (n k : Nat) (s : String) :
   (1 ≤ k) → (k ≤ n) → (s.length = n) → 
   min_changes_for_rgb_substring n k s ≥ 0 :=
@@ -58,6 +66,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_changes_for_rgb_substring 5 5 "BBBRR"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

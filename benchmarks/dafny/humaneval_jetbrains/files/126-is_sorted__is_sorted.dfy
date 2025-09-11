@@ -1,6 +1,8 @@
+// <vc-preamble>
 function count_set(a: seq<int>, x: int): int {
   |set i | 0 <= i < |a| && a[i] == x|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

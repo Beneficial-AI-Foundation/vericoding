@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsEvenString(s: string)
 {
     |s| >= 2 && |s| % 2 == 0 && s[..|s|/2] == s[|s|/2..]
@@ -18,6 +19,7 @@ predicate IsMaximalSolution(S: string, result: int)
     ValidSolution(S, result) && 
     forall k :: result < k < |S| && k % 2 == 0 ==> !IsEvenString(S[..k])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

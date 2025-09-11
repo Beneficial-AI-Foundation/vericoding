@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_mac_48_address (s : String) : Bool := sorry
 
 def is_valid_hex_digit (c : Char) : Bool :=
   (c.toNat ≥ 48 ∧ c.toNat ≤ 57) ∨ (c.toNat ≥ 65 ∧ c.toNat ≤ 70)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_mac_is_accepted (mac : String)
   (h : ∃ h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 : Char,
     is_valid_hex_digit h1 ∧ is_valid_hex_digit h2 ∧ is_valid_hex_digit h3 ∧ 
@@ -57,6 +65,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_mac_48_address "not a MAC-48 address"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

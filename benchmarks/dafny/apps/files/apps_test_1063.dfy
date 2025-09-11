@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isWellFormedInput(stdin_input: string)
 {
     var lines := splitLines(stdin_input);
@@ -52,6 +53,7 @@ predicate isLexicographicallySmaller(a: string, b: string)
 {
     |a| < |b| || (|a| == |b| && a < b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

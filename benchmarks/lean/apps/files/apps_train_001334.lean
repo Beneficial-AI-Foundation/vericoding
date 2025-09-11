@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def max_pizza_time (n : Nat) (k : Nat) (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_ones (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_pizza_time_bounds (n k: Nat) (s: String) :
   n > 0 → s.length = n →
   let result := max_pizza_time n k s
@@ -48,6 +55,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval max_pizza_time 5 2 "10001"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_explorer_groups (N : Nat) (explorers : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_explorer_groups_all_ones
     (n : Nat) (h : n > 0 ∧ n ≤ 5)
     (explorers : List Nat) (h' : explorers = List.replicate n 1) :
@@ -27,6 +35,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_explorer_groups 4 [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

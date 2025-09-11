@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_moving_soldiers (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string :
   solve_moving_soldiers "" = 0 :=
 sorry
@@ -48,6 +56,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_moving_soldiers "000000000111"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

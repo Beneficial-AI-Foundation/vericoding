@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def riders (stations: List Nat) (lost: Nat) : Nat := sorry
 
 theorem riders_at_least_one {stations: List Nat} {lost: Nat}
@@ -9,7 +15,9 @@ theorem riders_at_least_one {stations: List Nat} {lost: Nat}
   (h3: lost ≤ stations.length)
   (h4: ∀ x ∈ stations, x ≥ 1 ∧ x ≤ 100) :
   riders stations lost ≥ 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem riders_at_least_two {stations: List Nat} {lost: Nat}
   (h1: stations.length ≥ 2)
   (h2: 1 < lost)
@@ -48,6 +56,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval riders [50, 50] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def reverse_integer (x : Int) : Int := sorry
 
 -- 32-bit integer bounds
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def INT32_MAX : Int := 2^31 - 1
 def INT32_MIN : Int := -(2^31)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_integer_sign (x : Int) :
   let result := reverse_integer x
   (result = 0) ∨ (result > 0 ∧ x > 0) ∨ (result < 0 ∧ x < 0) := sorry
@@ -51,6 +58,7 @@ info: 21
 -/
 -- #guard_msgs in
 -- #eval reverse_integer 120
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

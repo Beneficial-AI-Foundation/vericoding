@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isLower (c : Char) : Bool :=
   sorry
 
@@ -9,13 +10,19 @@ def isDigit (c : Char) : Bool :=
 
 def hasThreeRepeated (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def strongPasswordChecker (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_non_negative (s : String) :
   strongPasswordChecker s ≥ 0 :=
   sorry
@@ -69,6 +76,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval strongPasswordChecker "1337C0d3"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

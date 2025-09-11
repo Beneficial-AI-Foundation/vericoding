@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_deletion_size (strings : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_deletion_sorted_cols_zero 
   (strings : List String)
   (h1 : strings.length > 1)
@@ -47,6 +55,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval min_deletion_size ["zyx", "wvu", "tsr"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

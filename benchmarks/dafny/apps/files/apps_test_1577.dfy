@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && exists newlinePos :: 0 <= newlinePos < |input| && input[newlinePos] == '\n'
@@ -33,6 +34,7 @@ function DetermineWinner(countA: int, countD: int): string
     else if countD > countA then "Danik"  
     else "Friendship"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

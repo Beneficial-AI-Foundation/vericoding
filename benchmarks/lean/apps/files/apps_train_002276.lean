@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_spending (initial_burles : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_spending_ge_input (initial_burles : Nat) :
   max_spending initial_burles ≥ initial_burles := by
   sorry
@@ -44,6 +52,7 @@ info: 21
 -/
 -- #guard_msgs in
 -- #eval max_spending 19
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

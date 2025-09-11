@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_max_subarray_sum (arr : List Int) : Int := sorry
 
 def list_max : List Int → Int
@@ -11,15 +12,21 @@ def list_min : List Int → Int
 def list_sum : List Int → Int
   | [] => 0
   | (x::xs) => x + list_sum xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_subarrays (arr : List Int) : List (List Int) := sorry
 
 def subarray_sums (arr : List Int) : List Int :=
   (get_subarrays arr).map list_sum
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_subarray_sum_at_least_one_element {arr : List Int} (h : arr ≠ []) :
   find_max_subarray_sum arr ≥ list_max arr := sorry
 
@@ -67,6 +74,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval find_max_subarray_sum arr5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

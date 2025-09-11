@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve (s : String) : Int :=
   sorry
 
 def isBalanced (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def repeated_parens (n : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_odd_length_returns_minus_one {s : String} :
   (s.length % 2 = 1) → solve s = -1 :=
   sorry
@@ -51,6 +58,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve "((("
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

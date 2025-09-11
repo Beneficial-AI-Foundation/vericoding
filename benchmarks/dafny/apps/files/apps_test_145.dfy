@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountDistinct(s: string): int
 {
     |set c | 0 <= c < |s| :: s[c]|
@@ -17,6 +18,7 @@ predicate CorrectOutput(username: string, output: string)
     (distinctCount % 2 == 1 ==> output == "IGNORE HIM!\n") &&
     (distinctCount % 2 == 0 ==> output == "CHAT WITH HER!\n")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

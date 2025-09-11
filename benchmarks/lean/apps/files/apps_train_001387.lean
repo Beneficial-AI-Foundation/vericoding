@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_prime_factors_pairs (arr : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_elements_count (n : Nat) (x : Nat) (h : x ≥ 2) :
   solve_prime_factors_pairs (List.replicate n x) = n * (n - 1) :=
 sorry
@@ -45,6 +53,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_prime_factors_pairs [4, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

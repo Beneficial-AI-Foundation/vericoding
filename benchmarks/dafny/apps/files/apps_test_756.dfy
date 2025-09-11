@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>) {
     n >= 1 && n <= 90 &&
     |a| == n &&
@@ -24,6 +25,7 @@ predicate ValidOutput(result: int, n: int, a: seq<int>) {
     (1 <= result <= 90 &&
      result == min(90, findCutoff(a, 0, 15)))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

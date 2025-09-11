@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isPP (n : Nat) : Option (Nat × Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isPP_properties {n : Nat} (h : n > 0) :
   match isPP n with
   | none => 
@@ -36,6 +44,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval isPP 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

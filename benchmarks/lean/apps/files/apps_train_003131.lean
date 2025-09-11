@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rule30 (initial : List Nat) (n : Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rule30_binary (initial : List Nat) (n : Nat) :
   ∀ x ∈ rule30 initial n, x = 0 ∨ x = 1 :=
   sorry
@@ -33,6 +41,7 @@ info: [1, 1, 1]
 -/
 -- #guard_msgs in
 -- #eval rule30 [1, 1, 1] 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

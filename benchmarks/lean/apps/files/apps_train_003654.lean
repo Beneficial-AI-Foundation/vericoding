@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def unique_date (a b c : Int) : String := sorry
 
 def is_valid_date (y m d : Int) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unique_date_output_format (a b c : Int) 
   (h1 : 0 ≤ a ∧ a ≤ 99)
   (h2 : 0 ≤ b ∧ b ≤ 99) 
@@ -53,6 +61,7 @@ info: 'invalid'
 -/
 -- #guard_msgs in
 -- #eval unique_date 50 40 60
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

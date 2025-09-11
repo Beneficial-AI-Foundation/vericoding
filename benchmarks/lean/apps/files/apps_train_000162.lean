@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isSubsequence (sub word : String) : Bool := sorry
 
 def find_longest_word (s : String) (dict : List String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string_result {dict : List String} : 
   find_longest_word "" dict = "" := sorry
 
@@ -44,6 +52,7 @@ info: 'aaa'
 -/
 -- #guard_msgs in
 -- #eval find_longest_word "aaa" ["aaa", "aa", "a"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

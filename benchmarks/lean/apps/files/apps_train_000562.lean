@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_read_words (known_letters : String) (word_list : List String) : List String := sorry
 
 theorem can_read_words_length
@@ -8,7 +14,9 @@ theorem can_read_words_length
   (word_list : List String)
   (h₁ : known_letters.length > 0) :
   (can_read_words known_letters word_list).length = word_list.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_read_words_valid_outputs
   (known_letters : String) 
   (word_list : List String)
@@ -69,6 +77,7 @@ info: ['Yes', 'Yes', 'Yes', 'No']
 -/
 -- #guard_msgs in
 -- #eval can_read_words "xyz" ["x", "xy", "xyz", "abc"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

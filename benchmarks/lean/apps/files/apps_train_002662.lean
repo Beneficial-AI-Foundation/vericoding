@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mobile_keyboard (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mobile_keyboard_non_negative (s : String) :
   mobile_keyboard s ≥ 0 := sorry 
 
@@ -39,6 +47,7 @@ info: 26
 -/
 -- #guard_msgs in
 -- #eval mobile_keyboard "codewars"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

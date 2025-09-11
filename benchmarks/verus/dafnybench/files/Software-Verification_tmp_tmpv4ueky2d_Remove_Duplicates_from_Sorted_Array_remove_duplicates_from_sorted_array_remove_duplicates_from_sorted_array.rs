@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn is_sorted(nums: Seq<int>) -> bool {
 spec fn is_sorted_and_distinct(nums: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] < nums[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

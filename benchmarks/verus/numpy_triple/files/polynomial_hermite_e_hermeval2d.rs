@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn hermite_e_basis(n: nat, x: int) -> int
         x * hermite_e_basis((n-1) as nat, x) - (n-1) as int * hermite_e_basis((n-2) as nat, x)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

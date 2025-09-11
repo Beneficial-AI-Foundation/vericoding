@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Nat.toBin (n : Nat) : String := sorry
 
 def grille (message : String) (code : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem grille_length_leq_input (message : String) (code : Nat) :
   (grille message code).length ≤ message.length := sorry
 
@@ -19,6 +27,7 @@ theorem grille_empty_input (code : Nat) :
 
 theorem grille_zero_code (message : String) :
   grille message 0 = "" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

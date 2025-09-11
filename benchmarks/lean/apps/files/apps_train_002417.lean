@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def valid_palindrome (s : String) : Bool := sorry
 
 def reverse (s : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPalindrome (s : String) : Bool := s == reverse s
 
 theorem palindrome_basic (s : String) :
   isPalindrome s → valid_palindrome s := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_char_palindrome (s : String) :
   s.length ≤ 1 → valid_palindrome s :=
   sorry
@@ -53,6 +60,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval valid_palindrome "abc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

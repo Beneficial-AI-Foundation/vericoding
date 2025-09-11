@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, d: int, transactions: seq<int>)
 {
   n >= 1 && d >= 1 &&
@@ -47,6 +48,7 @@ function filter_positive(deposits: seq<int>): seq<int>
   else if deposits[0] > 0 then [deposits[0]] + filter_positive(deposits[1..])
   else filter_positive(deposits[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

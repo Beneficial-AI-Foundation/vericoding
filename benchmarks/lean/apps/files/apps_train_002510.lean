@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def evaluate_expression (expr : String) (locals : Option (String → Nat) := none) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arithmetic_addition (a b : Int) :
   evaluate_expression s!"{a} + {b}" = a + b :=
 sorry
@@ -52,6 +60,7 @@ info: 20
 -/
 -- #guard_msgs in
 -- #eval evaluate_expression "x * 2" {"x": 10}
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

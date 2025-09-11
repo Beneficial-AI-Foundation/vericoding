@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_candy_position (n r c candy : Nat) : Array Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem candy_position_returns_three_elements {n r c candy : Nat} :
   let result := get_candy_position n r c candy
   result.size = 3 := by sorry
@@ -47,6 +55,7 @@ info: [-1, -1, -1]
 -/
 -- #guard_msgs in
 -- #eval get_candy_position 6 2 2 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

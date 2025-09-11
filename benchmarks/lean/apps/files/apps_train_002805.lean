@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rounding (n : Int) (m : Int) : Int := sorry
 
 theorem rounding_symmetry 
   {n : Int} {m : Int} (hm : m > 0) (hn : n ≥ -1000) (hn2 : n ≤ 1000) (hm2 : m ≤ 100) :
   rounding n m = rounding (2 * rounding n m - n) m := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rounding_zero :
   rounding 0 1 = 0 := sorry
 
@@ -31,6 +39,7 @@ info: 50
 -/
 -- #guard_msgs in
 -- #eval rounding 50 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

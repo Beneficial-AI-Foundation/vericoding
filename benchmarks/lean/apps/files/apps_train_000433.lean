@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_teams (rating : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem num_teams_non_negative (rating : List Int) : 
   num_teams rating ≥ 0 := by sorry
 
@@ -39,6 +47,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval num_teams [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

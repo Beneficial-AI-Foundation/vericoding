@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def unique {n : Nat} (ar : Vector Float n) : Id (Σ m : Nat, Vector Float m) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unique_spec {n : Nat} (ar : Vector Float n) :
     ⦃⌜True⌝⦄
     unique ar
@@ -22,3 +29,4 @@ theorem unique_spec {n : Nat} (ar : Vector Float n) :
                   -- Every distinct element from input appears in result
                   (∀ i : Fin n, ∃ j : Fin m, ar.get i = unique_arr.get j)⌝⦄ := by
   sorry
+-- </vc-theorems>

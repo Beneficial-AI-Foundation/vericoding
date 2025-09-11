@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def partition {n : Nat} (arr : Vector Float n) (kth : Fin n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem partition_spec {n : Nat} (arr : Vector Float n) (kth : Fin n) :
     ⦃⌜True⌝⦄
     partition arr kth
@@ -26,3 +33,4 @@ theorem partition_spec {n : Nat} (arr : Vector Float n) (kth : Fin n) :
       (∀ x : Float, (List.ofFn (fun i => result.get i)).count x = (List.ofFn (fun i => arr.get i)).count x)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

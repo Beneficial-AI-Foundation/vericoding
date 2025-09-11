@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def sortString (s : String) : String := sorry
 
 def isAlpha (c : Char) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isUpper (c : Char) : Bool := sorry
 def isLower (c : Char) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_string_preserves_length (s : String) :
   (sortString s).length = s.length := sorry
 
@@ -46,6 +53,7 @@ info: 'a b c'
 -/
 -- #guard_msgs in
 -- #eval sort_string "c b a"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

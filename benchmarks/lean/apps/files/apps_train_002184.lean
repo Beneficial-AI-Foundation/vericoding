@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_digit_coloring (n : Nat) (digits : String) : String := sorry
 
 theorem output_format (n : Nat) (digits : String) :
@@ -8,7 +14,9 @@ theorem output_format (n : Nat) (digits : String) :
   result = "-" ∨
   (result.length = n ∧ 
    result.data.all (fun c => c = '1' ∨ c = '2')) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_constraints (n : Nat) (digits : String) :
   let result := solve_digit_coloring n digits
   result ≠ "-" →
@@ -34,6 +42,7 @@ info: '-'
 -/
 -- #guard_msgs in
 -- #eval solve_digit_coloring 3 "987"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

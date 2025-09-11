@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def catMouse (s : String) : String := sorry
 
 def countDots (s : String) : Nat := 
   s.toList.filter (· = '.') |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem catMouse_output_valid (s : String) 
     (h : ∃ n : Nat, n ≤ 10 ∧ s = "C" ++ (String.mk (List.replicate n '.')) ++ "m") : 
     catMouse s = "Caught!" ∨ catMouse s = "Escaped!" := sorry
@@ -39,6 +47,7 @@ info: 'Caught!'
 -/
 -- #guard_msgs in
 -- #eval cat_mouse "C.m"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

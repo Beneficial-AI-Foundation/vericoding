@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_generate_permutation (n : Nat) (perm : List Nat) : Bool := sorry
 
 theorem identity_permutation_valid (n : Nat) (h : n > 0) :
   can_generate_permutation n (List.range' 1 n) = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rotated_minimum_valid {n : Nat} {perm : List Nat} 
   (h₁ : n = perm.length) 
   (h₂ : perm ≠ []) 
@@ -40,6 +48,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_generate_permutation 4 [4, 2, 3, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

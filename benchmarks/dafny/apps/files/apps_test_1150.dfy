@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n'
@@ -121,6 +122,7 @@ function NatToString(n: nat): string
     else if n == 11 then "11"
     else "12"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

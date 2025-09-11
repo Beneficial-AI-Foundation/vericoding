@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidBinaryString(s: string)
 {
     forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
@@ -48,6 +49,7 @@ predicate ValidSolution(s: string, t: string)
 {
     |s| == |t| && SameSubsequenceLengths(s, t)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

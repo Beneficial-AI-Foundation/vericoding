@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def wheat_from_chaff (xs : List Int) : List Int := sorry
 
 theorem wheat_from_chaff_length 
     (xs : List Int) :
     (wheat_from_chaff xs).length = xs.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem wheat_from_chaff_perm 
     (xs : List Int) : 
     List.Perm (wheat_from_chaff xs) xs := sorry
@@ -32,6 +40,7 @@ theorem wheat_from_chaff_all_neg
 
 theorem wheat_from_chaff_empty :
     wheat_from_chaff [] = [] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function fib(n: nat):nat
 {
     if n < 2 then n else fib(n-2)+fib(n-1)
@@ -13,6 +14,7 @@ function gcd(m: nat, n: nat): nat
     else if m > n then gcd(m - n, n)
     else gcd(m, n - m)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

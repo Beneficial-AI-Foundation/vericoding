@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -66,6 +67,7 @@ spec fn count(a: Seq<bool>) -> nat
         (if a[0] { 1nat } else { 0nat }) + count(a.drop_first())
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

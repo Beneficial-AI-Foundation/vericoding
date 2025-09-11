@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -18,13 +19,19 @@ inductive DType
   | complex64 | complex128
   | bool
   deriving Repr, DecidableEq
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def can_cast (from_dtype to_dtype : DType) (casting : CastingRule) : Id Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_cast_spec (from_dtype to_dtype : DType) (casting : CastingRule) :
     ⦃⌜True⌝⦄
     can_cast from_dtype to_dtype casting
@@ -79,3 +86,4 @@ theorem can_cast_spec (from_dtype to_dtype : DType) (casting : CastingRule) :
       (casting = CastingRule.equiv → (result = true ↔ from_dtype = to_dtype))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

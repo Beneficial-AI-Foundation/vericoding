@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern (n : Int) : String := sorry
 
 def String.replicate (n : Nat) (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_positive (n : Int) (h : 1 ≤ n ∧ n ≤ 100) : 
   let lines := (pattern n).split (· == '\n')
   (lines.length = n) ∧ 
@@ -52,6 +60,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval pattern -1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

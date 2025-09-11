@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def NPY_SQRT2 : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem NPY_SQRT2_spec :
     ⦃⌜True⌝⦄
     NPY_SQRT2
@@ -20,3 +27,4 @@ theorem NPY_SQRT2_spec :
       Float.abs (result - 1.414213562373095048801688724209698079) < 1e-15
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

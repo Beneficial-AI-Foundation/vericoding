@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn inner_expr_replace_with_colon(str1: &Vec<char>, k: int) -> (result: char
         str1[k]
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

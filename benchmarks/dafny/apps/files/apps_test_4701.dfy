@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 1
@@ -13,6 +14,7 @@ function ApplyOperations(start: int, operations: seq<bool>, k: int): int
     else if operations[0] then ApplyOperations(start * 2, operations[1..], k)
     else ApplyOperations(start + k, operations[1..], k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

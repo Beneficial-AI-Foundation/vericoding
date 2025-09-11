@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def max : List Nat → Nat 
 | [] => 0
 | [x] => x
@@ -9,13 +10,19 @@ def sum : List Nat → Nat
 
 def can_cyborg_escape (n : Nat) (target : Nat) (powers : List Nat) : Bool :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverse : List Nat → List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem target_less_than_max_always_possible 
   (powers : List Nat) (target : Nat) (h1 : powers ≠ []) :
   target ≤ max powers → can_cyborg_escape (powers.length) target powers = true := by
@@ -51,6 +58,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval can_cyborg_escape 2 7 [5, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

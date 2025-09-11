@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longest_distinct_subsequence (s : String) : Nat :=
   sorry
 
 -- Property: output is always between 0 and length of input string
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_bounds (s : String) : 
   let result := longest_distinct_subsequence s
   0 ≤ result ∧ result ≤ s.length :=
@@ -52,6 +60,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval longest_distinct_subsequence "aabbcc"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

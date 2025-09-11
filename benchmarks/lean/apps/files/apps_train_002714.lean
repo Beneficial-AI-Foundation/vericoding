@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def findLongest (s : String) : Nat :=
   sorry
 
 def isValidParens (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def substringFromTo (s : String) (i j : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem findLongest_valid (s : String) :
   let result := findLongest s
   result ≤ s.length ∧ 
@@ -61,6 +68,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_longest "())(()))"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def collatz (n : Nat) : String := sorry
 
 theorem collatz_returns_string (n : Nat) : 
   n > 0 → collatz n ≠ "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem collatz_steps_are_digits (n : Nat) (s : String) :
   n > 0 → s ∈ (collatz n).splitOn "->" → 
   ∀ c ∈ s.data, c.isDigit := sorry
@@ -42,6 +50,7 @@ info: '6->3->10->5->16->8->4->2->1'
 -/
 -- #guard_msgs in
 -- #eval collatz 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

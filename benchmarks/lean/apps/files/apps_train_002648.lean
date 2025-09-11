@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def collatzLength (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def longestCollatz (nums : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem longest_collatz_is_member {nums : List Nat} (h : nums ≠ []) :
   ∀ n, n = longestCollatz nums → n ∈ nums :=
   sorry
@@ -38,6 +45,7 @@ info: 75
 -/
 -- #guard_msgs in
 -- #eval longest_collatz [75, 226, 113, 340]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

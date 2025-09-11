@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -40,14 +41,20 @@ def DType.to_type : DType → Type
   | DType.Int32 => Int
   | DType.Int64 => Int
   | DType.UInt8 => Nat  -- Using Nat instead of UInt8 for now
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def fromfile {n : Nat} (file : FileHandle) (dtype : DType) (count : Int) 
     (sep : String) (offset : Nat) : Id (Vector (dtype.to_type) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fromfile_spec {n : Nat} (file : FileHandle) (dtype : DType) (count : Int) 
     (sep : String) (offset : Nat) 
     (h_count_valid : count = -1 ∨ count > 0)
@@ -81,3 +88,4 @@ theorem fromfile_spec {n : Nat} (file : FileHandle) (dtype : DType) (count : Int
                    -- Each element has the correct type for the specified dtype
                    True)⌝⦄ := by
   sorry
+-- </vc-theorems>

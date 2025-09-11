@@ -1,13 +1,18 @@
+-- <vc-preamble>
 def find_min_steps (i j : Nat) (nums : List Nat) : Nat := sorry
 
 def list_max : List Nat → Nat 
 | [] => 0
 | [x] => x
 | (x::xs) => Nat.max x (list_max xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def iterate_steps (i j steps : Nat) : Nat × Nat :=
   match steps with
   | 0 => (i, j)
@@ -17,7 +22,9 @@ def iterate_steps (i j steps : Nat) : Nat × Nat :=
       (cur_i + cur_j, cur_j)
     else
       (cur_i, cur_j + cur_i)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_steps_nonnegative {i j : Nat} {nums : List Nat} :
   find_min_steps i j nums ≥ 0 := sorry
 
@@ -47,6 +54,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_min_steps 2 1 [5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

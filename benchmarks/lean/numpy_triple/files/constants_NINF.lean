@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def NINF : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem NINF_spec :
     ⦃⌜True⌝⦄
     NINF
@@ -34,3 +41,4 @@ theorem NINF_spec :
       Float.abs result = -result
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

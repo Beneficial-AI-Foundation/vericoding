@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_tile_expectation (x y s u v : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_bounds {x y s u v : Nat} (x_prime : x ∈ [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]) 
     (y_prime : y ∈ [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31])
     (s_bound : 1 ≤ s ∧ s ≤ 10^9)
@@ -31,6 +39,7 @@ info: 96
 -/
 -- #guard_msgs in
 -- #eval solve_tile_expectation 5 3 192 1 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

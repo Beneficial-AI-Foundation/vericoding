@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(test_cases: seq<seq<int>>)
 {
     forall i :: 0 <= i < |test_cases| ==> |test_cases[i]| >= 1
@@ -17,6 +18,7 @@ predicate CorrectResult(test_cases: seq<seq<int>>, results: seq<int>)
     forall i :: 0 <= i < |test_cases| ==> results[i] == SumDifferences(test_cases[i], 0) &&
     forall i :: 0 <= i < |results| ==> results[i] >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

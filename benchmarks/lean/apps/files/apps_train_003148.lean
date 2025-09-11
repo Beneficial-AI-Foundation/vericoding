@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def anagram_counter (words : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem anagram_counter_properties (words : List String) :
   let result := anagram_counter words
   let n := words.length
@@ -35,6 +43,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval anagram_counter ["dell", "ledl", "abc", "cba", "bca", "bac"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

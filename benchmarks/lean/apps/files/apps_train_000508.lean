@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_well_bracketed_sum (n k : Nat) (values : List Int) (brackets : List Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_geq_max_pair_sum {n k : Nat} {values : List Int} {brackets : List Nat}
   (h1 : values.length = n)
   (h2 : brackets.length = n)
@@ -41,6 +49,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval solve_well_bracketed_sum 2 1 [5, 3] [1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

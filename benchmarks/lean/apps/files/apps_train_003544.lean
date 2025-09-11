@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def arith_seq_elements (a r n : Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_sequence :
   ∀ (a r : Int),
   arith_seq_elements a r 0 = "" :=
@@ -54,6 +62,7 @@ info: '100, 90, 80, 70, 60'
 -/
 -- #guard_msgs in
 -- #eval arithmetic_sequence_elements 100 -10 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| == 1 && 'a' <= input[0] <= 'z'
@@ -13,6 +14,7 @@ function ExpectedOutput(input: string): string
 {
     if IsVowel(input[0]) then "vowel" else "consonant"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

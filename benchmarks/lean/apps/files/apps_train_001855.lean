@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def path_in_zigzag_tree (label: Nat) : List Nat := sorry
 
 theorem path_starts_with_one {label: Nat} :
   label > 0 → (path_in_zigzag_tree label).head? = some 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem path_strictly_increasing {label: Nat} (i: Nat) :
   label > 0 → i > 0 → i < (path_in_zigzag_tree label).length →
   (path_in_zigzag_tree label)[i-1]! < (path_in_zigzag_tree label)[i]! := sorry
@@ -31,6 +39,7 @@ theorem path_for_powers_of_two (n: Nat) :
   (path_in_zigzag_tree label).length = n + 1 ∧
   (path_in_zigzag_tree label).head? = some 1 ∧
   (path_in_zigzag_tree label).getLast? = some label := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

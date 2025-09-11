@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_no_duplicates (nums : List Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_no_duplicates_empty :
   sum_no_duplicates [] = 0 :=
 sorry
@@ -50,6 +58,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval sum_no_duplicates []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

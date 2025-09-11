@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isClassyNumber (n : Nat) : Bool := sorry
 
 def countClassyIntegers (start : Nat) (finish : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_is_nonnegative (start finish : Nat) : 
   countClassyIntegers start finish ≥ 0 := sorry
 
@@ -34,6 +42,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval count_classy_integers 999999 1000001
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

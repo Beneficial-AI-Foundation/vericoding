@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def what_century (year : String) : String := sorry
 
 theorem what_century_valid_suffix {year : String} 
   (h : year.length = 4 ∧ (∀ c ∈ year.data, '0' ≤ c ∧ c ≤ '9')) : 
   let result := what_century year
   (result.endsWith "st" ∨ result.endsWith "nd" ∨ result.endsWith "rd" ∨ result.endsWith "th") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem what_century_positive {year : String}
   (h : year.length = 4 ∧ (∀ c ∈ year.data, '0' ≤ c ∧ c ≤ '9')) :
   let result := what_century year
@@ -52,6 +60,7 @@ info: '20th'
 -/
 -- #guard_msgs in
 -- #eval what_century "2000"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

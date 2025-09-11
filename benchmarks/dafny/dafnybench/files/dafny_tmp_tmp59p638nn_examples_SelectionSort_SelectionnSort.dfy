@@ -1,3 +1,4 @@
+// <vc-preamble>
 twostate predicate Preserved(a: array<int>, left: nat, right: nat)
     reads a
     requires left <= right <= a.Length
@@ -17,6 +18,7 @@ twostate predicate Sorted(a: array<int>)
 {
     Ordered(a,0,a.Length) && Preserved(a,0,a.Length)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

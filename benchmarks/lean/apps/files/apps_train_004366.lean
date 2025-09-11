@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def number_increasing (n : Nat) : Bool := sorry
 
 theorem impossible_values_2 : number_increasing 2 = false := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bitLength (n : Nat) : Nat :=
   if n = 0 then 0 else Nat.log2 n + 1
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem impossible_values_4 : number_increasing 4 = false := sorry
 theorem impossible_values_7 : number_increasing 7 = false := sorry
 
@@ -55,6 +62,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval number_increasing 32
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

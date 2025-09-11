@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(queries: seq<(char, int)>)
 {
     && |queries| > 0
@@ -42,6 +43,7 @@ function ComputeMinRemovals(queries: seq<(char, int)>, query_idx: int): int
     var min_removals := if left_removals <= right_removals then left_removals else right_removals;
     min_removals - 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

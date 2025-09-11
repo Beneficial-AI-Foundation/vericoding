@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def gcd_iterations (a b : Int) : Int × Int := sorry
 
 def find_initial_numbers (divisor iterations : Int) : Int × Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_initial_numbers_positive (divisor iterations : Int)
   (h1 : divisor > 0) (h2 : iterations ≥ 0) :
   let (a, b) := find_initial_numbers divisor iterations
@@ -25,6 +33,7 @@ theorem find_initial_numbers_positive_case (divisor iterations : Int)
   (h1 : divisor > 0) (h2 : iterations > 0) :
   let (a, b) := find_initial_numbers divisor iterations
   a ≥ divisor ∧ b ≥ divisor := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

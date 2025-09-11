@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def num_times_all_blue (lights : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def remove_duplicates (l : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_bounds (lights : List Nat) (h : lights ≠ []) :
   let valid := lights.filter (fun x => x ≤ lights.length)
   let nodupes := remove_duplicates valid  
@@ -50,6 +57,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval num_times_all_blue [4, 1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

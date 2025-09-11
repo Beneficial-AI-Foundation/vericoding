@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, C: int)
 {
     1 <= A <= 10 && 1 <= B <= 10 && 1 <= C <= 10
@@ -14,6 +15,7 @@ predicate ValidOutput(result: string)
 {
     result in {"YES", "NO"}
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

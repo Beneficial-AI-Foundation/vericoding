@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_snake_parade (n l a b : Nat) (positions : List Nat) : Nat := sorry
 
 theorem snake_parade_basic_properties
@@ -15,7 +21,9 @@ theorem snake_parade_basic_properties
   (h5 : b = starting_positions.foldl max (starting_positions.head!) + n * l) :
   let result := solve_snake_parade n l a b starting_positions
   result ≥ 0 ∧ result ≤ (b - a) * n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem snake_parade_sorted_optimal
   (n l : Nat)
   (start : Nat)
@@ -49,6 +57,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval solve_snake_parade 3 4 11 40 [10, 11, 30]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

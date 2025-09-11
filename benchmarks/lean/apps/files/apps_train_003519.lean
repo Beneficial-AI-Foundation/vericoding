@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def layers (n : Nat) : Nat := sorry
 
 theorem layers_positive (n : Nat) (h : n > 0) : 
   layers n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem layer_fits_n (n : Nat) (h : n > 0) :
   let k := layers n
   (2*k - 1)^2 ≥ n := sorry
@@ -31,6 +39,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval layers 25
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

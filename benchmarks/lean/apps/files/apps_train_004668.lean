@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sel_number (n : Nat) (d : Nat) : Nat :=
   sorry
 
@@ -5,13 +6,19 @@ def hasAscendingUniqueDigits (n : Nat) : Bool :=
   sorry
 
 /- Helper function to count numbers with ascending unique digits -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countAscendingUnique (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sel_number_non_negative (n d : Nat) :
   sel_number n d ≥ 0 :=
   sorry
@@ -53,6 +60,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval sel_number 50 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

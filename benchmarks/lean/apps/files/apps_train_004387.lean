@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def decode (s : String) : String := sorry
 
 theorem decode_twice (s : String) 
   (h : ∀ c ∈ s.data, c.toNat ≥ 48 ∧ c.toNat ≤ 57) : -- ensure only digits 0-9
   decode (decode s) = s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decode_preserves_length (s : String) 
   (h : ∀ c ∈ s.data, c.toNat ≥ 48 ∧ c.toNat ≤ 57) :
   (decode s).length = s.length := sorry
@@ -42,6 +50,7 @@ info: '6956750342'
 -/
 -- #guard_msgs in
 -- #eval decode "4104305768"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

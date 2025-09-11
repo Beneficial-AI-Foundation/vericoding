@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_balanced_contest (n : Nat) (p : Nat) (solved_counts : List Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_balanced_contest_valid_output (n : Nat) (p : Nat) (solved_counts : List Nat) 
     (h1 : p ≥ 10) (h2 : p ≤ 10000) (h3 : solved_counts.length ≥ 3) (h4 : solved_counts.length ≤ 1000) :
   let result := is_balanced_contest n p solved_counts
@@ -51,6 +59,7 @@ info: 'no'
 -/
 -- #guard_msgs in
 -- #eval is_balanced_contest 4 100 [50, 50, 50, 50]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lcm {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lcm_spec {n : Nat} (x1 x2 : Vector Int n) :
     ⦃⌜True⌝⦄
     lcm x1 x2
@@ -32,3 +39,4 @@ theorem lcm_spec {n : Nat} (x1 x2 : Vector Int n) :
                  -- Special case: when both are non-zero, LCM is positive
                  (∀ i : Fin n, x1.get i ≠ 0 → x2.get i ≠ 0 → result.get i > 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

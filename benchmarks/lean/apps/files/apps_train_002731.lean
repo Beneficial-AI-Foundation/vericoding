@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def distinct {α} [BEq α] (xs : List α) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem distinct_uniqueness {α} [BEq α] (xs : List α) :
   let result := distinct xs
   ∀ a b, a ∈ result → b ∈ result → a = b → 
@@ -39,6 +47,7 @@ info: [1, 2, 3, 4, 5]
 -/
 -- #guard_msgs in
 -- #eval distinct [1, 1, 1, 2, 3, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def String.count (s : String) (c : Char) : Nat := sorry
 
 def draw_spider (leg_size : Nat) (body_size : Nat) (mouth : Char) (eye : Char) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem spider_parentheses_count {leg_size : Nat} {body_size : Nat} {mouth : Char} {eye : Char}
   (h1 : leg_size ≤ 4) (h2 : body_size ≥ 1) (h3 : body_size ≤ 5)
   (h4 : mouth = 'W' ∨ mouth = 'w')
@@ -42,6 +50,7 @@ info: '/╲(((0000w0000)))╱\\'
 -/
 -- #guard_msgs in
 -- #eval draw_spider 3 3 "w" "0"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

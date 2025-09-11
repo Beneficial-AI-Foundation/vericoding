@@ -1,3 +1,4 @@
+// <vc-preamble>
 function abs(x: int): int
   ensures abs(x) >= 0
   ensures abs(x) == x || abs(x) == -x
@@ -11,6 +12,7 @@ function sum_abs(s: seq<int>) : int
 {
   if |s| == 0 then 0 else abs(s[0]) + sum_abs(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

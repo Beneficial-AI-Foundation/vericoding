@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_layer_sum (n : Nat) (layers : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calc_layer_sum_single_digit_pos (n : Nat) (h : n > 0) :
   calc_layer_sum n (List.replicate n 1) > 0 :=
   sorry
@@ -41,6 +49,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval calc_layer_sum 1 [5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

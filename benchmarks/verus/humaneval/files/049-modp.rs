@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn modp_rec(n: nat, p: nat) -> (result:nat)
         (modp_rec((n - 1) as nat, p) * 2) % p
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

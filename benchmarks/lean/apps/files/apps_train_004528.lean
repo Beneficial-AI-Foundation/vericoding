@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def remove (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem remove_preserves_length (s : String) :
   s.length = (remove s).length :=
 sorry
@@ -41,6 +49,7 @@ info: 'Hi Hi Hi!!!!'
 -/
 -- #guard_msgs in
 -- #eval remove "Hi! Hi!! Hi!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sqrt (n : Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def circular_permutations (n : Nat) : List Nat :=
 
 def is_prime (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def circular_prime (n : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem circular_perms_length (n : Nat) (h : n > 0) : 
   List.length (circular_permutations n) = String.length (toString n) :=
   sorry
@@ -55,6 +62,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval circular_prime 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

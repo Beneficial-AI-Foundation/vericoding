@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, t: int, routes: seq<(int, int)>)
 {
   n > 0 && |routes| == n && 
@@ -19,6 +20,7 @@ predicate IsOptimalRoute(routes: seq<(int, int)>, t: int, routeIndex: int)
     getNextArrivalTime(routes[routeIndex].0, routes[routeIndex].1, t) <= 
     getNextArrivalTime(routes[i].0, routes[i].1, t)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

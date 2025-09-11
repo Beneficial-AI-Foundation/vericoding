@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible]
 def firstDuplicate_precond (lst : List Int) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def firstDuplicate (lst : List Int) (h_precond : firstDuplicate_precond (lst)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def firstDuplicate_postcond (lst : List Int) (result: Int) (h_precond : firstDuplicate_precond (lst)) : Prop :=
   -- if result = -1, then lst does not contain any duplicates
@@ -21,6 +28,7 @@ def firstDuplicate_postcond (lst : List Int) (result: Int) (h_precond : firstDup
 theorem firstDuplicate_spec_satisfied (lst: List Int) (h_precond : firstDuplicate_precond (lst)) :
     firstDuplicate_postcond (lst) (firstDuplicate (lst) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

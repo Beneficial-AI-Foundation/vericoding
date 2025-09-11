@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -68,6 +69,7 @@ fn insert_into_sorted(a: Vec<int>, limit: usize, key: int) -> (b: Vec<int>)
     assume(false);
     Vec::new()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: seq<int>)
 {
     |a| > 0
@@ -24,6 +25,7 @@ function thanosSort(x: seq<int>): int
         var rightResult := thanosSort(secondHalf);
         if leftResult > rightResult then leftResult else rightResult
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

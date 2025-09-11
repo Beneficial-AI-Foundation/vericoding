@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def to_twos_complement (binary : String) (bits : Nat) : Int := sorry
 def from_twos_complement (n : Int) (bits : Nat) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def removeWhitespace (s : String) : String := sorry
 
 theorem twos_complement_roundtrip (n : Int) (bits : Nat) 
   (h1 : bits > 0) (h2 : bits ≤ 64)
   (h3 : n ≥ -(2^(bits-1))) (h4 : n ≤ 2^(bits-1) - 1) :
   to_twos_complement (from_twos_complement n bits) bits = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem binary_roundtrip (binary : String) (bits : Nat)
   (h1 : bits > 0) (h2 : bits ≤ 64)
   (h3 : String.length binary = bits)
@@ -63,6 +70,7 @@ info: '10101010001000101110101000101110'
 -/
 -- #guard_msgs in
 -- #eval from_twos_complement -1440552402 32
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_music_playlists (N L K : Nat) : Nat := sorry
 
 theorem playlists_bounds (N L K : Nat) 
@@ -9,7 +15,9 @@ theorem playlists_bounds (N L K : Nat)
   (h3: K < N) :
   let result := num_music_playlists N L K
   0 ≤ result ∧ result < (10^9 + 7) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem playlists_k_eq_n_minus_one (N L K : Nat)
   (h1: N > 0)
   (h2: L ≥ N)
@@ -42,6 +50,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval num_music_playlists 2 3 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

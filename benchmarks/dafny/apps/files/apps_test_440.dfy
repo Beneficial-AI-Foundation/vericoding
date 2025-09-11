@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsVowel(c: char)
 {
     c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y'
@@ -15,6 +16,7 @@ predicate ValidOutput(input: seq<char>, output: seq<char>)
     (|input| > 0 ==> |output| > 0) &&
     (|input| > 0 ==> output[0] == input[0])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

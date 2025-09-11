@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_availability (schedule : List (String × String)) (time : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_schedule_always_available
   (h : Nat) (m : Nat)
   (h_valid : h ≤ 23) (m_valid : m ≤ 59)
@@ -28,6 +36,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval check_availability [] "10:15"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

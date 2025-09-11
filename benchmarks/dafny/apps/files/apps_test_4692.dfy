@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(M: int)
 {
     1 <= M <= 23
@@ -14,6 +15,7 @@ predicate ValidOutput(M: int, result: int)
 {
     result == HoursUntilNewYear(M) && 25 <= result <= 47
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

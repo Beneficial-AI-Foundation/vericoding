@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn is_even(n: i32) -> bool {
 spec fn is_odd(n: i32) -> bool {
     n % 2 != 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

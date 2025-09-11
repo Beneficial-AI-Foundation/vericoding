@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def minimum (l : List Nat) : Nat :=
   match l with
   | [] => 0
@@ -7,16 +8,22 @@ def maximum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | (x::xs) => xs.foldl max x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Nat) : Bool :=
   match l with
   | [] => true
   | [_] => true
   | x :: y :: xs => x ≤ y && isSorted (y :: xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem estimate_population_returns_in_range 
   {surveys : List Nat} (h1 : surveys ≠ [])
   {estimate_population : List Nat → Nat}
@@ -69,6 +76,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval estimate_population [3, 4, 4, 5, 5, 5, 5, 6, 6, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn abs_diff(a: int, b: int) -> int {
     if a - b < 0 { b - a } else { a - b }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

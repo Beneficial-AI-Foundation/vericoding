@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitByNewlineSpec(input);
@@ -53,6 +54,7 @@ function ComputeOperationsFromIndex(originalA: seq<int>, x: int, index: int, cur
         var newA := currentA[index := newValue];
         ComputeOperationsFromIndex(originalA, x, index + 1, newA, currentCount + additionalOps)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

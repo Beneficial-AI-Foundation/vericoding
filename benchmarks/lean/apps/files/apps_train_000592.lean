@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_free_time (n k : Nat) (queries : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_free_time_positive
   (n k : Nat) (queries : List Nat)
   (h1 : n > 0)
@@ -64,6 +72,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_free_time 3 2 [1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

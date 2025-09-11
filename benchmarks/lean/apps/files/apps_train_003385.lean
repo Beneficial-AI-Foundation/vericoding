@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isLucky (s : String) : Bool := sorry
 
 def sumDigits (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_ticket_behavior (ticket : String) 
   (h1 : ticket.length = 6) 
   (h2 : ∀ c ∈ ticket.data, c.isDigit) :
@@ -42,6 +50,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_lucky "000000"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

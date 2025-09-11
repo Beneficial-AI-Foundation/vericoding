@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_winner (players : List (String × Int)) : String := sorry
 
 theorem identical_scores_no_winner {n : Nat} {score : Int} (h : n ≥ 2) : 
   let players := List.map (fun i => (s!"player{i}", score)) (List.range n)
   find_winner players = "Nobody wins."
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_player_wins (name : String) (score : Int) : 
   find_winner [(name, score)] = name
   := sorry
@@ -35,6 +43,7 @@ info: 'Bob'
 -/
 -- #guard_msgs in
 -- #eval find_winner [("Bob", 1), ("Alice", 2), ("Eve", 3), ("Carol", 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

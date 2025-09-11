@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def is_palindrome (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_palindrome_cuts (s : String) : Option Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_result_in_valid_range
   (s : String)
   (h : s.length > 0) :
@@ -63,6 +70,7 @@ info: 'Impossible'
 -/
 -- #guard_msgs in
 -- #eval solve_palindrome_cuts "qqqq"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

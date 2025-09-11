@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def wheres_wally (s : String) : Int := sorry
 
 theorem valid_wally_matches 
@@ -9,7 +15,9 @@ theorem valid_wally_matches
   (h2 : s = "" ∨ s = "." ∨ s = "," ∨ s = " " ∨ s = "'") : 
   ∃ pos : Int, pos ≥ 0 ∧ 
   pos = wheres_wally (String.append (String.append p "Wally") s) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_wally_no_match 
   {s : String}
   (h1 : s.all (fun c => c ≠ 'W') ∨ 
@@ -38,6 +46,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval wheres_wally "Where"s Waldo"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

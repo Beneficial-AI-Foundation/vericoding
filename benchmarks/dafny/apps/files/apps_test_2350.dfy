@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0
@@ -13,6 +14,7 @@ function CountDifferentSums(x1: int, y1: int, x2: int, y2: int): int
 {
     (x2 - x1) * (y2 - y1) + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

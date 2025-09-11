@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def evaluate_lisp (s : String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arithmetic_evaluation (op : String) (x y : Int) 
   (h : op = "add" ∨ op = "mult") :
   evaluate_lisp s!"({op} {x} {y})" = 
@@ -50,6 +58,7 @@ info: 14
 -/
 -- #guard_msgs in
 -- #eval evaluate_lisp "(let x 2 (mult x (let x 3 y 4 (add x y))))"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

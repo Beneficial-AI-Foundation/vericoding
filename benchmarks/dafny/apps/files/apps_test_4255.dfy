@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(ab: int, bc: int, ca: int)
 {
     1 <= ab <= 100 && 1 <= bc <= 100 && 1 <= ca <= 100
@@ -14,6 +15,7 @@ predicate ValidArea(ab: int, bc: int, area: int)
 {
     area == TriangleArea(ab, bc) && area >= 0 && area <= 5000
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

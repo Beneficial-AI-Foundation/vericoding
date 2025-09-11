@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hexWordSum (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hex_word_sum_output_type (s : String) :
   let result := hexWordSum s
   result ≥ 0 := by sorry
@@ -41,6 +49,7 @@ info: 49374
 -/
 -- #guard_msgs in
 -- #eval hex_word_sum "CODE"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -30,6 +31,7 @@ decreases n
         x * exp(x, sub(n, 1)) 
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

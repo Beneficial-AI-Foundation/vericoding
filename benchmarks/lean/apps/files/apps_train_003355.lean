@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def cog_RPM (cogs: List Nat) (n: Nat) : List Int := sorry
 
 /- For accessing array elements safely -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get? {α : Type} (xs : List α) (i : Nat) : Option α :=
   if h : i < xs.length then some (xs.get ⟨i, h⟩) else none
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_cog_property {cogs : List Nat} {n : Nat} (h : cogs.length = 1) :
   cog_RPM cogs 0 = [1, 1] := sorry
 
@@ -50,6 +57,7 @@ info: [-1, 1]
 -/
 -- #guard_msgs in
 -- #eval cog_RPM [100, 100, 100, 100] 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

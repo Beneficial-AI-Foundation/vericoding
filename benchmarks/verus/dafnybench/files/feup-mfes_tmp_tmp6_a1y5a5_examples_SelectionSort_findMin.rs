@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -6,6 +7,7 @@ pub open spec fn is_sorted(a: &[i32], from: usize, to: usize) -> bool {
     &&& from <= to <= a.len()
     &&& forall|i: int, j: int| from <= i < j < to ==> a[i] <= a[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

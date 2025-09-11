@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (s : String) (k : Nat) : Nat := sorry
 
 theorem solve_k_zero (num_str : String) (h : num_str.all (fun c => '0' <= c ∧ c <= '9')) :
   num_str.length > 0 → solve num_str 0 = num_str.toNat! := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_k_bounds (num_str : String) (k : Nat) 
   (h1 : num_str.all (fun c => '0' <= c ∧ c <= '9'))
   (h2 : num_str.length > 1) :
@@ -40,6 +48,7 @@ info: 202
 -/
 -- #guard_msgs in
 -- #eval solve "2020" 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

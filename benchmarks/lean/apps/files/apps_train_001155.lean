@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def abs (x : Int) : Int :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_travel_time (n a b c d p q y : Nat) (cities : List Int) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_travel_time_non_negative (n a b c d p q y : Nat) (cities : List Int)
   (h1 : n ≥ 4) (h2 : n ≤ 100)
   (h3 : p ≥ 1) (h4 : p ≤ 100) 
@@ -52,6 +59,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval min_travel_time 4 1 4 2 3 2 1 10 [0, 1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

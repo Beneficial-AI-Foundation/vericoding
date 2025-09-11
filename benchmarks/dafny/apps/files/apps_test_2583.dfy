@@ -1,3 +1,4 @@
+// <vc-preamble>
 function determineWinner(n: int): string
 requires n >= 1
 ensures determineWinner(n) == "FastestFinger" || determineWinner(n) == "Ashishgup"
@@ -36,6 +37,7 @@ ensures p > 2 && p % 2 != 0 ==> (isLimitedPrime(p) <==> isLimitedPrimeHelper(p, 
     else if p % 2 == 0 then false
     else isLimitedPrimeHelper(p, 3)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

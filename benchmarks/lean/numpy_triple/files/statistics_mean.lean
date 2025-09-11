@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mean {n : Nat} (a : Vector Float (n + 1)) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mean_spec {n : Nat} (a : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     mean a
@@ -24,3 +31,4 @@ theorem mean_spec {n : Nat} (a : Vector Float (n + 1)) :
                  ((∀ i j : Fin (n + 1), a.get i = a.get j) → 
                    result = a.get ⟨0, Nat.zero_lt_succ n⟩)⌝⦄ := by
   sorry
+-- </vc-theorems>

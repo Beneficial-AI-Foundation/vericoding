@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def answer (question : String) (info_list : List String) : Option String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem answer_none_on_empty_list (q : String) :
   answer q [] = none := by sorry
 
@@ -57,6 +65,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval answer "abc def ghi" ["xyz 123", "foo bar"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -8,6 +9,7 @@ spec fn f2(n: nat) -> nat
     if n == 0 { 0 }
     else { 5 * f2(n / 3) + n % 4 }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

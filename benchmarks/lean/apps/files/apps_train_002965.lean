@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern (n : Nat) (y : Nat := 1) : String := sorry
 
 def stringToNat (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_empty (n : Nat) :
   (n = 0 ∨ n < 0) → pattern n = "" := sorry
 
@@ -42,6 +50,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval pattern 2 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def spin_solve (s : String) : String := sorry
 
 def countChar (s : String) (c : Char) : Nat := 
   s.foldl (fun acc x => if x = c then acc + 1 else acc) 0
 
 /- The output of spin_solve is always a string -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_string (s : String) :
   ∃ (result : String), spin_solve s = result := sorry
 
@@ -49,6 +57,7 @@ info: 'IF 0 man does not keep pace with his snoinapmoc, spahrep IT IS esuaceb HE
 -/
 -- #guard_msgs in
 -- #eval spin_solve "If a man does not keep pace with his companions, perhaps it is because he hears a different drummer."
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

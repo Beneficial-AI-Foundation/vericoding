@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -8,13 +9,19 @@ structure Complex where
   real : Float
   /-- The imaginary part of the complex number -/
   imag : Float
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def iscomplex {n : Nat} (x : Vector Complex n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem iscomplex_spec {n : Nat} (x : Vector Complex n) :
     ⦃⌜True⌝⦄
     iscomplex x
@@ -24,3 +31,4 @@ theorem iscomplex_spec {n : Nat} (x : Vector Complex n) :
                  (∀ i : Fin n, result.get i = true → (x.get i).imag ≠ 0.0) ∧
                  (∀ i : Fin n, result.get i = false → (x.get i).imag = 0.0)⌝⦄ := by
   sorry
+-- </vc-theorems>

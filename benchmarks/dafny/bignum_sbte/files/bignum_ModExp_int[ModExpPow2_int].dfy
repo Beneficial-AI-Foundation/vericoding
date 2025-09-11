@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost function Exp_int(x: nat, y:nat): nat
 {
   if y == 0 then 1 else x * Exp_int(x, y - 1)
@@ -11,6 +12,7 @@ method ModExpPow2_int(x: nat, y:nat, n:nat, z: nat) returns (res:nat)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

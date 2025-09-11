@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def squeeze {α : Type} (a : Vector α 1) : Id α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem squeeze_spec {α : Type} (a : Vector α 1) :
     ⦃⌜True⌝⦄
     squeeze a
@@ -19,3 +26,4 @@ theorem squeeze_spec {α : Type} (a : Vector α 1) :
                  -- Sanity check: result is the unique element in the vector
                  (∀ i : Fin 1, a.get i = result)⌝⦄ := by
   sorry
+-- </vc-theorems>

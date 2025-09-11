@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_hollow (arr : List Int) : Bool := sorry
 
 theorem invalid_hollow_not_enough_zeros {arr : List Int} :
   (arr.filter (λ x => x = 0)).length < 3 → ¬(is_hollow arr) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_hollow_nonzeros_between_zeros {arr : List Int} :
   (∃ i j k, i < j ∧ j < k ∧ 
    arr.get! i = 0 ∧ arr.get! k = 0 ∧ arr.get! j ≠ 0) → 
@@ -33,6 +41,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_hollow [2, 4, 0, 0, 0, 1, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

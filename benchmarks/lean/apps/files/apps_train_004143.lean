@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def indices (n d : Nat) : List (List (List Nat)) := sorry
 
 def sumIndices (idx : List (List Nat)) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def starsAndBars (n k : Nat) : Nat := sorry
 
 theorem indices_valid (n d : Nat) (h1: 0 < n) (h2: n ≤ 10) (h3: d ≤ 10) :
@@ -13,7 +18,9 @@ theorem indices_valid (n d : Nat) (h1: 0 < n) (h2: n ≤ 10) (h3: d ≤ 10) :
     idx.head!.length = n ∧ 
     (∀ x, x ∈ idx.head! → x ≤ d) ∧
     sumIndices idx = d := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem indices_unique (n d : Nat) (h1: 0 < n) (h2: n ≤ 10) (h3: d ≤ 10) :
   ∀ i j, i ∈ indices n d → j ∈ indices n d → i ≠ j → i.head! ≠ j.head! := sorry
 
@@ -43,6 +50,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval sum idx[0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

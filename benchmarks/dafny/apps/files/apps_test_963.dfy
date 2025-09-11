@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, K: int, segments: seq<(int, int)>)
 {
   N >= 2 &&
@@ -51,6 +52,7 @@ function computeSegmentContributions(pos: int, K: int, segments: seq<(int, int)>
     var newAcc := (acc + contribution) % 998244353;
     computeSegmentContributions(pos, K, segments, prefixSum, segIndex + 1, newAcc)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

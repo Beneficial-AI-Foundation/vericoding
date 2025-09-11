@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, r: seq<int>, b: seq<int>)
 {
     n > 0 && |r| == n && |b| == n &&
@@ -29,6 +30,7 @@ function MinMaxPointValue(n: int, r: seq<int>, b: seq<int>): int
 {
     OpponentAdvantageCount(n, r, b) / RobotAdvantageCount(n, r, b) + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

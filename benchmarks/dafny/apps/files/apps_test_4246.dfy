@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate is_valid_input(input: string)
     requires |input| > 0
 {
@@ -41,6 +42,7 @@ function compute_result(input: string): string
     else if |lines[0]| != 3 || |lines[1]| != 3 then "0\n"
     else int_to_string(count_matches(lines[0], lines[1])) + "\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

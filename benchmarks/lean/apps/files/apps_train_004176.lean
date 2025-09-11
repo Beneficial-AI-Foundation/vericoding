@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tram (stops : Nat) (descending : List Nat) (onboarding : List Nat) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tram_stops_limit (stops : Nat) (descending : List Nat) (onboarding : List Nat)
   (h1 : stops > 0)
   (h2 : stops ≥ max descending.length onboarding.length)
@@ -31,6 +39,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval tram 1 [0, 2, 4, 4] [3, 5, 2, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

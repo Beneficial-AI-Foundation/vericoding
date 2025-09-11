@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Wave = Wave(start_time: nat, end_time: nat, monsters: nat)
 
 predicate ValidWaves(waves: seq<Wave>)
@@ -52,6 +53,7 @@ function CalculateMinimumBullets(waves: seq<Wave>, k: nat): nat
 {
     CalculateMinimumBulletsHelper(waves, k, 0, k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

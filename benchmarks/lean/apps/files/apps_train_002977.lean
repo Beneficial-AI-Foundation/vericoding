@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def uniqueDigitProducts (nums : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def List.toSet (l : List α) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uniqueDigitProducts_bounds_nat {nums : List Nat} (h : nums.length > 0) : 
   1 ≤ uniqueDigitProducts nums ∧ uniqueDigitProducts nums ≤ nums.length :=
 sorry
@@ -54,6 +61,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval unique_digit_products [100, 101, 111]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible, simp]
 def maxSubarraySum_precond (xs : List Int) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maxSubarraySum (xs : List Int) (h_precond : maxSubarraySum_precond (xs)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def maxSubarraySum_postcond (xs : List Int) (result: Int) (h_precond : maxSubarraySum_precond (xs)) : Prop :=
   -- Find all possible subarrays and their sums
@@ -29,6 +36,7 @@ def maxSubarraySum_postcond (xs : List Int) (result: Int) (h_precond : maxSubarr
 theorem maxSubarraySum_spec_satisfied (xs: List Int) (h_precond : maxSubarraySum_precond (xs)) :
     maxSubarraySum_postcond (xs) (maxSubarraySum (xs) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

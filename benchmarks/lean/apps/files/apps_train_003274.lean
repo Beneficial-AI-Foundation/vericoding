@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def categorize_study (p_value: Float) (requirements: Nat) : String := sorry
 
 theorem categorize_study_returns_valid_category 
@@ -9,7 +15,9 @@ theorem categorize_study_returns_valid_category
   (categorize_study p_value requirements = "Fine" ∨ 
    categorize_study p_value requirements = "Needs review" ∨
    categorize_study p_value requirements = "Pants on fire") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_requirements_never_fine
   (p_value: Float)
   (h1: 0 < p_value) (h2: p_value ≤ 1) :
@@ -52,6 +60,7 @@ info: 'Pants on fire'
 -/
 -- #guard_msgs in
 -- #eval categorize_study 0.012 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def parse_fen (fen: String) : String := sorry 
 
 theorem empty_board_dimensions {turn : Char} (h: turn = 'w' ∨ turn = 'b'):
@@ -8,7 +14,9 @@ theorem empty_board_dimensions {turn : Char} (h: turn = 'w' ∨ turn = 'b'):
   let lines := result.splitOn "\n"
   lines.length = 9 ∧ 
   (∀ l ∈ lines.take 8, l.length = 8) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem board_pattern_alternates:
   let result := parse_fen "8/8/8/8/8/8/8/8 w - -"
   let lines := (result.splitOn "\n").take 8
@@ -43,6 +51,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval parse_fen "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

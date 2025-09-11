@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_shortest_non_subsequence (s : String) : String :=
   sorry
 
@@ -9,13 +10,19 @@ def generate_strings (length : Nat) : List String :=
 
 def all_chars_in_range (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def all_lower (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_valid_string (s : String) :
   let result := find_shortest_non_subsequence s
   (result.length > 0) ∧ (all_lower result) := by
@@ -51,6 +58,7 @@ info: 'aca'
 -/
 -- #guard_msgs in
 -- #eval find_shortest_non_subsequence "frqnvhydscshfcgdemurlfrutcpzhopfotpifgepnqjxupnskapziurswqazdwnwbgdhyktfyhqqxpoidfhjdakoxraiedxskywuepzfniuyskxiyjpjlxuqnfgmnjcvtlpnclfkpervxmdbvrbrdn"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

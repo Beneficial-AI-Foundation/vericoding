@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -7,6 +8,7 @@ pub enum DateTime64 {
     Valid(i64),
     Nat,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

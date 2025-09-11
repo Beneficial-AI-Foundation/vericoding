@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, x: seq<int>)
 {
     n > 0 && 1 <= a <= n && |x| == n && 
@@ -34,6 +35,7 @@ function TotalCriminalsCaught(n: int, a: int, x: seq<int>): int
 {
     x[a-1] + SumCriminalsCaught(n, a-1, x, 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

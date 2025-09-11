@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int)
 {
     y1 < y2 < y_w &&
@@ -51,6 +52,7 @@ function ComputeSolution(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int)
     var new_y1 := ComputeNewY1(y_w, r, y1, y_b);
     (x_b as real) * ((new_y1 + y_b - w) as real) / (new_y1 as real)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

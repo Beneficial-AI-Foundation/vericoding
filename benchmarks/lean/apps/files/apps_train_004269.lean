@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def binomial_sum_coefficients (n : Nat) : List Nat := sorry
 
 theorem binomial_sum_coefficients_length (n : Nat) :
   (binomial_sum_coefficients n).length = n + 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem binomial_sum_coefficients_first (n : Nat) :
   (binomial_sum_coefficients n).head! = 1 := sorry
 
@@ -33,6 +41,7 @@ info: [1, 2, 4, 8, 15]
 -/
 -- #guard_msgs in
 -- #eval binomial_sum_coefficients 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate NoRepeats(words: seq<string>)
 {
     forall i, j :: 0 <= i < j < |words| ==> words[i] != words[j]
@@ -14,6 +15,7 @@ predicate ValidShiritori(words: seq<string>)
 {
     NoRepeats(words) && ConsecutiveCharsMatch(words)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

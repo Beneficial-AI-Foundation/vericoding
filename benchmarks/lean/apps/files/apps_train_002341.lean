@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def backspace_compare (s1: String) (s2: String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def normalize_backspace (s: String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem backspace_compare_matches_naive (s1 s2: String) :
   backspace_compare s1 s2 = (normalize_backspace s1 = normalize_backspace s2) :=
 by sorry
@@ -36,6 +43,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval backspace_compare "a#c" "b"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

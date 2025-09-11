@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate SplitPoint(a: array<int>, n: int)
     reads a
     requires 0 <= n <= n
@@ -12,6 +13,7 @@ twostate predicate SwapFrame(a: array<int>, lo: int, hi: int)
 {
     (forall i :: 0 <= i < lo || hi <= i < a.Length ==> a[i] == old(a[i])) && multiset(a[..]) == old(multiset(a[..]))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

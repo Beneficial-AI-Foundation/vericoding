@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def splitString (s: String) : List String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lengthOfLastWord (s: String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_of_last_word_nonnegative (s: String) :
   lengthOfLastWord s ≥ 0 := sorry
 
@@ -40,6 +47,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval length_of_last_word "Hello   World   Program"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

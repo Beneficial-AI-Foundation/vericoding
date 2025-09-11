@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_fours (nums : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_fours_length {nums : List Nat} :
   List.length (count_fours nums) = List.length nums :=
   sorry
@@ -40,6 +48,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval count_fours [0, 4, 44, 444]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

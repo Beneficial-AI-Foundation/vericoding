@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_zero_array (n : Nat) (arr : List Nat) : Bool := sorry
 
 theorem single_element_array_always_true {arr : List Nat} (h : arr.length = 1) :
   can_zero_array 1 arr = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_elements_always_possible {n : Nat} {val : Nat} :
   let arr := List.replicate n val
   can_zero_array n arr = true := sorry
@@ -35,6 +43,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval can_zero_array 5 [1, 3, 1, 3, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reg_sum_hits (dices : Nat) (sides : Nat) : List (Nat × Nat) := sorry 
 
 theorem reg_sum_hits_valid_results (dices sides : Nat) 
@@ -9,7 +15,9 @@ theorem reg_sum_hits_valid_results (dices sides : Nat)
   (∀ x, x ∈ result → 
     (x.1 ≥ dices ∧ x.1 ≤ dices * sides) ∧ 
     x.2 > 0) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reg_sum_hits_consecutive_sums (dices sides : Nat)
   (h1 : dices > 0) (h2 : sides > 1) (h3 : sides ≤ 10) :
   let result := reg_sum_hits dices sides
@@ -47,6 +55,7 @@ info: [[4, 1], [5, 4], [6, 10], [7, 20], [8, 31], [9, 40], [10, 44], [11, 40], [
 -/
 -- #guard_msgs in
 -- #eval reg_sum_hits 4 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| >= 1
@@ -28,6 +29,7 @@ predicate ValidResult(s: string, result: int)
 {
     result >= 0 && result <= |s| / 2 && result == (count_mismatches(s) / 2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

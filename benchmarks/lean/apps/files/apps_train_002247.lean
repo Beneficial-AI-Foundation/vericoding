@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_unlock_phone (password : String) (words : List String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_valid (password : String) (words : List String) : 
   can_unlock_phone password words = "YES" ∨ can_unlock_phone password words = "NO" :=
 sorry
@@ -52,6 +60,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval can_unlock_phone "ah" ["ha"]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

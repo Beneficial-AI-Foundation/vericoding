@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, digits: string)
 {
     n > 0 && |digits| == n && forall i :: 0 <= i < |digits| ==> '0' <= digits[i] <= '9'
@@ -67,6 +68,7 @@ function parseInt(s: string): int
     else if !('0' <= s[0] <= '9') then 0
     else (s[0] as int - '0' as int) + 10 * parseInt(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

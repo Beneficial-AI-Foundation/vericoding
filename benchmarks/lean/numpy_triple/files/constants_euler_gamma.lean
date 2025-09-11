@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def euler_gamma : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem euler_gamma_spec :
     ⦃⌜True⌝⦄
     euler_gamma
@@ -28,3 +35,4 @@ theorem euler_gamma_spec :
       0 < 1 - result ∧ 1 - result < 0.5
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

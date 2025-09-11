@@ -1,3 +1,4 @@
+// <vc-preamble>
 const MOD := 998244353
 
 predicate ValidInput(n: int)
@@ -22,6 +23,7 @@ predicate ValidResult(result: seq<int>, n: int)
   (n >= 1 ==> result[n-1] == 10) &&
   (forall i :: 0 <= i < n-1 ==> result[i] == BlockCountFormula(n, i+1))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

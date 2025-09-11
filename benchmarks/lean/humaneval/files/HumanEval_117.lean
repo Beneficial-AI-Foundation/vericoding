@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (s: String) (n: Nat) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (implementation: String → Nat → List String)
@@ -45,6 +52,7 @@ theorem correctness
 : problem_spec implementation s n
 := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "Mary had a little lamb" 4 = ["little"]
 -- #test implementation "Mary had a little lamb" 3 = ["Mary", "lamb"]

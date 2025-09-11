@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -108,13 +109,19 @@ def is_subsequence (xs ys : List Char) : Bool :=
   | _, [] => false
   | x::xs', y::ys' =>
       if x = y then is_subsequence xs' ys' else is_subsequence xs ys'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (lst: String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: String → Bool)
@@ -137,6 +144,7 @@ theorem correctness
 (string: String)
 : problem_spec implementation string := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "(())" = true
 -- #test implementation "()))))))((((()" = false

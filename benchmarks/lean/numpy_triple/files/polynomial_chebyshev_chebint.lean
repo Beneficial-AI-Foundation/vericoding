@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebint {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
     (lbnd : Float) (scl : Float) : Id (Vector Float (n + m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebint_spec {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) 
     (lbnd : Float) (scl : Float) (h_m_pos : m > 0) :
     ⦃⌜m > 0 ∧ scl ≠ 0⌝⦄
@@ -41,3 +48,4 @@ theorem chebint_spec {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float 
       (scl = 0 → ∀ i : Fin (n + m), i.val > 0 → result.get i = 0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

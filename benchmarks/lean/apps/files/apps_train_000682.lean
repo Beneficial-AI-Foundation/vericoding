@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_optimal_split (N k : Nat) (powers : List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def calc_product (values : List Nat) (split : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_optimal_split_properties1 {N k : Nat} {powers : List Nat} (h1: N ≥ 2) (h2: k ≥ 1) 
     (h3: powers.length = N) (h4: ∀ x ∈ powers, x ≤ 10) :
     let result := find_optimal_split N k powers
@@ -26,6 +33,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_optimal_split 5 2 [1, 1, 3, 3, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

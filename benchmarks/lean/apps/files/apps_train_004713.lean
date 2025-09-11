@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sum_divisors (n: Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def equal_sigma1 (nmax: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_divisors_positive (n: Nat) (h: n ≥ 1) : 
   let result := sum_divisors n
   result ≥ 1 ∧ result ≥ n :=
@@ -48,6 +55,7 @@ info: 4565
 -/
 -- #guard_msgs in
 -- #eval equal_sigma1 2000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

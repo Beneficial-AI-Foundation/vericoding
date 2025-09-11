@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solution (s : String) : Nat := sorry
 
 def isValidRoman (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_repeated_numerals {roman : String} (c : Char)
   (h1 : roman.data.all (· = c))
   (h2 : c ∈ ['M', 'D', 'C', 'L', 'X', 'V', 'I']) :
@@ -17,6 +25,7 @@ theorem subtractive_pairs_less :
   solution "XC" < solution "CX" ∧
   solution "CD" < solution "DC" ∧
   solution "CM" < solution "MC" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

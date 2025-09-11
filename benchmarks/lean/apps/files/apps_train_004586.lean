@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_pressure (m1 m2 M1 M2 V T : Float) : Float := sorry
 
 theorem pressure_positive (m1 m2 M1 M2 V T : Float)
@@ -11,7 +17,9 @@ theorem pressure_positive (m1 m2 M1 M2 V T : Float)
   (h9 : V > 0.1) (h10 : V < 100)
   (h11 : T > -50) (h12 : T < 200) :
   calculate_pressure m1 m2 M1 M2 V T > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pressure_mass_linear (m1 m2 M1 M2 V T : Float)
   (h1 : m1 > 0.1) (h2 : m1 < 100)
   (h3 : m2 > 0.1) (h4 : m2 < 100) 
@@ -45,6 +53,7 @@ theorem same_gas_equivalent (m M V T : Float)
   (h5 : V > 0.1) (h6 : V < 100)
   (h7 : T > -50) (h8 : T < 200) :
   calculate_pressure m m M M V T = calculate_pressure (2*m) 0 M M V T := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

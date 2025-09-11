@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def describeList (lst : List Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem list_description_properties (lst : List Int) :
   describeList lst = match lst with
   | [] => "empty"
@@ -33,6 +41,7 @@ info: 'longer'
 -/
 -- #guard_msgs in
 -- #eval describeList [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

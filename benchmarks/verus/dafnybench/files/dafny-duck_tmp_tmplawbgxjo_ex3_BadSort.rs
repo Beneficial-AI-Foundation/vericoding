@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -8,6 +9,7 @@ spec fn sortedbad(s: Seq<char>) -> bool {
 
     (forall|i: int, j: int| 0 <= i <= j < s.len() && s[i] != 'd' && s[j] == 'd' ==> i < j)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

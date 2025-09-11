@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pigLatin (s : String) : Option String := sorry
 
 theorem pigLatin_valid_ends_ay 
   (s : String)
   (h : s.data.all Char.isAlpha ∧ s ≠ "") :
   (pigLatin s).map (·.endsWith "ay") = some true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pigLatin_valid_all_lower
   (s : String)
   (h : s.data.all Char.isAlpha ∧ s ≠ "") :
@@ -54,6 +62,7 @@ info: 'ayway'
 -/
 -- #guard_msgs in
 -- #eval pig_latin "ay"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

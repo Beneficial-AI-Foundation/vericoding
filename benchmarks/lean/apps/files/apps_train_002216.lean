@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solveContestRating (n : Nat) (k : Int) (ratings : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solveContestRating_output_is_valid_indices
   (n : Nat) (k : Int) (ratings : List Nat)
   (h1 : 1 ≤ n ∧ n ≤ 100)
@@ -44,6 +52,7 @@ theorem solveContestRating_remaining_valid
   let remaining := List.range n |>.map (·+1) |>.filter (λ x => ¬result.contains x)
   remaining.length + result.length = n :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn sum(xs: Seq<i32>) -> int
         sum(xs.subrange(0, xs.len() - 1)) + xs[xs.len() - 1] as int
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

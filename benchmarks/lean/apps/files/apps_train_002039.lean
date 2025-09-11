@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_startups (n : Nat) (arr : List Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pow (base : Nat) (exp : Nat) (m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_in_valid_range (n : Nat) (arr : List Int) (h₁ : n > 0) (h₂ : arr.length = n) :
   let result := solve_startups n arr
   0 ≤ result ∧ result < 1000000007 :=
@@ -36,6 +43,7 @@ info: 755808950
 -/
 -- #guard_msgs in
 -- #eval solve_startups 40 [3, 3, -1, -1, 4, 4, -1, -1, -1, -1, -1, 10, 10, 10, 10, 10, 10, 4, 20, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 3, 3, 3, 3, 3, 3, 3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

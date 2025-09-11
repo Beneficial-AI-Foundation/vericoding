@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_apple_distribution (n k : Nat) : String := sorry
 
 theorem apple_distribution_property {n k : Nat} (hn : n > 0) (hk : k > 0) :
   solve_apple_distribution n k = "YES" ∨ solve_apple_distribution n k = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem apple_distribution_div_condition {n k : Nat} (hn : n > 0) (hk : k > 0)
   (h1 : n % k = 0) (h2 : (n / k) % k = 0) :
   solve_apple_distribution n k = "NO" := sorry
@@ -33,6 +41,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval solve_apple_distribution 10 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

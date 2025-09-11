@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Char.isVowel : Char → Bool := sorry
 
 def check_vowel : String → Int → Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_vowel_bounds {s : String} {i : Int} :
   (i < 0 ∨ i ≥ s.length) → check_vowel s i = false := sorry
 
@@ -42,6 +50,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval check_vowel "Amanda" 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def power (x y : Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def order (x : Nat) : Nat :=
 
 def is_armstrong (x : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check_numbers (numbers : List Nat) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem power_properties (x : Nat) (y : Nat) :
   (y = 0 → power x y = 1) ∧
   (y = 1 → power x y = x) ∧
@@ -53,6 +60,7 @@ info: ['FEELS BAD', 'FEELS BAD', 'FEELS BAD']
 -/
 -- #guard_msgs in
 -- #eval check_numbers [123, 555, 999]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

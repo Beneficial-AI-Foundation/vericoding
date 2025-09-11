@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: seq<string>)
 {
     |input| >= 1 &&
@@ -67,6 +68,7 @@ predicate IsValidArrangement(original: seq<string>, arranged: seq<string>)
 {
     |arranged| == |original| && multiset(arranged) == multiset(original)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

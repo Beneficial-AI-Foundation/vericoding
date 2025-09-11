@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_min_pairs (n : Nat) (k : Int) (arr : List Int) : Int × Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_pairs_with_diff (arr : List Int) (k : Int) (min_diff : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_min_pairs_nonneg_diff (n : Nat) (k : Int) (arr : List Int)
   (h1: n ≥ 2) (h2: arr.length = n) :
   let (min_diff, _) := solve_min_pairs n k arr
@@ -56,6 +63,7 @@ info: (4, 3)
 -/
 -- #guard_msgs in
 -- #eval solve_min_pairs 3 12 [4, 4, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

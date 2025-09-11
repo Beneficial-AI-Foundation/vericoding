@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def sum_list : List Nat → Nat
   | [] => 0
   | x::xs => x + sum_list xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lost_sheep (friday : List Nat) (saturday : List Nat) (total : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lost_sheep_reverse_invariant (friday : List Nat) (saturday : List Nat) (total : Nat) :
   lost_sheep friday saturday total = lost_sheep friday.reverse saturday.reverse total :=
 sorry
@@ -33,6 +40,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval lost_sheep [5, 1, 4] [5, 4] 29
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

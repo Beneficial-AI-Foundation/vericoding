@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn get_size(i: int, j: int) -> int {
     j - i + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

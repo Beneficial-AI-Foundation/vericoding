@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_uneven_digit (n: Nat) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_uneven_digit_one :
   solve_uneven_digit 1 = -1 := by
   sorry
@@ -46,6 +54,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval len str(result)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

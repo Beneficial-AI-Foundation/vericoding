@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n' &&
@@ -55,6 +56,7 @@ predicate SolutionExists(input: string)
     forall i, j :: 0 <= i < m && 0 <= j < m ==> 
         !(ExtractDoraSet(input, i, n) <= ExtractSwiperSet(input, j, n))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

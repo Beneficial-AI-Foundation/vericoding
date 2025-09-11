@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem equal_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
     equal x1 x2
@@ -18,3 +25,4 @@ theorem equal_spec {n : Nat} (x1 x2 : Vector String n) :
                  -- Reflexivity: if inputs are the same, result is all true
                  (x1 = x2 → ∀ i : Fin n, result.get i = true)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def trimseq {n : Nat} (seq : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trimseq_spec {n : Nat} (seq : Vector Float n) :
     ⦃⌜True⌝⦄
     trimseq seq
@@ -27,3 +34,4 @@ theorem trimseq_spec {n : Nat} (seq : Vector Float n) :
                     -- Element at k is non-zero unless k = 0 (all zeros case)
                     (k.val > 0 → seq.get k ≠ 0)))⌝⦄ := by
   sorry
+-- </vc-theorems>

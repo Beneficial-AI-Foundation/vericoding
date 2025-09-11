@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidCompanyInput(input: string)
 {
     var lines := SplitLinesFunc(input);
@@ -100,6 +101,7 @@ function ParseIntFunc(s: string): int
 {
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

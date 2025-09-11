@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 1 &&
@@ -34,6 +35,7 @@ function CorrectResult(n: int, a: seq<int>): int
     else
         0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

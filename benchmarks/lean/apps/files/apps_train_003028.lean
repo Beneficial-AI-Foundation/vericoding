@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def similarity (xs ys : List Int) : Float := sorry
 
 theorem similarity_self_identity (xs : List Int) :
   similarity xs xs = (if xs.isEmpty then 0.0 else 1.0) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem similarity_symmetric (xs ys : List Int) :
   similarity xs ys = similarity ys xs := sorry
 
@@ -35,6 +43,7 @@ info: 0.5
 -/
 -- #guard_msgs in
 -- #eval similarity [1, 2, 4, 6, 7] [2, 3, 4, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

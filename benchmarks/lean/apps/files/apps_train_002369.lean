@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_odds (low high : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_odds_correct (low high : Int) (h : high ≥ low) (h2 : high - low < 1000) :
   count_odds low high = ((List.range (Int.toNat (high - low + 1))).filter (fun n => (Int.ofNat n + low) % 2 ≠ 0)).length :=
   sorry
@@ -29,6 +37,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_odds 0 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

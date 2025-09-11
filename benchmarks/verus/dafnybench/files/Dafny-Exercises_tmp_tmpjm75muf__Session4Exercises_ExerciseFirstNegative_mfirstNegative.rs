@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn positive(s: Seq<int>) -> bool {
     forall|u: int| 0 <= u < s.len() ==> s[u] >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

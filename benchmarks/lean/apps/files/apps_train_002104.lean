@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def xor_of_pairwise_sums (n : Nat) (arr : List Nat) : Nat := sorry
 
 theorem xor_pairwise_sums_nonnegative (n : Nat) (arr : List Nat) :
   n ≤ arr.length → xor_of_pairwise_sums n arr ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_or_singleton_equals_zero (n : Nat) (arr : List Nat) :
   n ≤ 1 → xor_of_pairwise_sums n arr = 0 := sorry
 
@@ -38,6 +46,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval xor_of_pairwise_sums 2 [1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

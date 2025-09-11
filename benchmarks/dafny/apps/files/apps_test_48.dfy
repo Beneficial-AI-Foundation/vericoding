@@ -1,3 +1,4 @@
+// <vc-preamble>
 function countLessValue(n: int, m: int, target: int): int
   requires n >= 0 && m >= 1 && target >= 1
   ensures countLessValue(n, m, target) >= 0
@@ -25,6 +26,7 @@ predicate ValidInput(n: int, m: int, k: int)
 {
   1 <= n <= 500000 && 1 <= m <= 500000 && 1 <= k <= n * m
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

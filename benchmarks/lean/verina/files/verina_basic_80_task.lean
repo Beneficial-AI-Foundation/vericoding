@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def only_once_precond (a : Array Int) (key : Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def only_once_loop {T : Type} [DecidableEq T] (a : Array T) (key : T) (i keyCount : Nat) : Bool :=
   if i < a.size then
@@ -13,10 +16,14 @@ def only_once_loop {T : Type} [DecidableEq T] (a : Array T) (key : T) (i keyCoun
   else
     keyCount == 1
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def only_once (a : Array Int) (key : Int) (h_precond : only_once_precond (a) (key)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def count_occurrences {T : Type} [DecidableEq T] (a : Array T) (key : T) : Nat :=
   a.foldl (fun cnt x => if x = key then cnt + 1 else cnt) 0
 @[reducible, simp]
@@ -27,6 +34,7 @@ def only_once_postcond (a : Array Int) (key : Int) (result: Bool) (h_precond : o
 theorem only_once_spec_satisfied (a: Array Int) (key: Int) (h_precond : only_once_precond (a) (key)) :
     only_once_postcond (a) (key) (only_once (a) (key) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_smallest_range (lists : List (List Int)) : Int × Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem range_contains_number_from_each_list (lists : List (List Int))
     (h1 : ∀ l ∈ lists, l.length > 0) :
   let result := find_smallest_range lists
@@ -35,6 +43,7 @@ info: [10, 11]
 -/
 -- #guard_msgs in
 -- #eval find_smallest_range [[10, 10], [11, 11]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

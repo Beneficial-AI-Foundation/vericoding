@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_integers (m n : Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem generate_integers_property (m n : Int) 
   (h : m ≤ n) :
   let result := generate_integers m n
@@ -35,6 +43,7 @@ info: [10]
 -/
 -- #guard_msgs in
 -- #eval generate_integers 10 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

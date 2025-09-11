@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def List.noDuplicates (path : List Char) : Prop := 
   ∀ (x : Char), (List.count x path) ≤ 1
 
 def List.isSorted (xs : List (List Char)) : Prop :=
   ∀ i j, i < j → j < xs.length → (xs.get ⟨i, by sorry⟩) ≤ (xs.get ⟨j, by sorry⟩)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def Topology := Char → Char → Option Nat
 
 def shortestPath (G : Topology) (s e : Char) : List (List Char) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shortestPath_valid_paths {G : Topology} {s e : Char}
   (path : List Char) (h : path ∈ shortestPath G s e) :
     path.head? = some s ∧ 
@@ -57,6 +64,7 @@ info: [['a', 'c']]
 -/
 -- #guard_msgs in
 -- #eval shortestPath {"a": {"b": 10, "c": 20}, "b": {"a": 10, "c": 20}, "c": {"a": 10, "b": 20}} "a" "c"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

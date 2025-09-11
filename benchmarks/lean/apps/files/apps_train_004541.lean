@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countSubstr (s : String) (substr : String) : Nat := sorry
 
 def roast_legacy (workload : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem roast_legacy_score_and_complaints 
   (terms : List String) 
   (fillers : List String)
@@ -62,6 +70,7 @@ info: 'Burn baby burn disco inferno 550 points earned in this roasting and 1 com
 -/
 -- #guard_msgs in
 -- #eval roast_legacy "Our MonoLithic system is Down! and we use ThickClient"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

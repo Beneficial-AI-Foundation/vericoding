@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate correct_pair(pair: (int, int), nums: seq<int>, target: int) {
   var (i, j) := pair;
   && 0 <= i < |nums|
@@ -5,6 +6,7 @@ ghost predicate correct_pair(pair: (int, int), nums: seq<int>, target: int) {
   && i != j
   && nums[i] + nums[j] == target
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

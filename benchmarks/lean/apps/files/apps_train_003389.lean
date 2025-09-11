@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve (chips : List Nat) : Nat := sorry
 
 def listSum : List Nat → Nat 
@@ -8,17 +9,23 @@ def listMin : List Nat → Nat
 | [] => 0
 | [x] => x
 | x::xs => min x (listMin xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def secondMin : List Nat → Nat
 | [] => 0
 | [_] => 0
 | l => 
   let m := listMin l
   listMin (l.filter (fun x => x ≠ m))
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_two_identical_bounded (a b : Nat)
   (h₁ : a > 0)
   (h₂ : b > 0) :
@@ -41,6 +48,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval solve [8, 2, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

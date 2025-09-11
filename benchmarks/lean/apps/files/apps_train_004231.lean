@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def feast (beast dish : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem feast_properties (beast dish : String) 
   (h1 : beast.length > 0) (h2 : dish.length > 0) :
   feast beast dish = (beast.front == dish.front ∧ beast.back == dish.back) :=
@@ -36,6 +44,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval feast "cat" "yogurt"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

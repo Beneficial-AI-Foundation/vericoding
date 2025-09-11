@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int) {
     0 <= a <= b
 }
@@ -25,6 +26,7 @@ function XorRange(a: int, b: int): int
     if a == b then a
     else XorInt(a, XorRange(a + 1, b))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

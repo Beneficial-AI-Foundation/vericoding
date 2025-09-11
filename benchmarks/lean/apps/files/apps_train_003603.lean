@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def orArrays (arr1 : List Nat) (arr2 : List Nat) (default : Nat := 0) : List Nat := sorry
 
 theorem or_arrays_length (arr1 arr2 : List Nat) (default : Nat) :
   (orArrays arr1 arr2 default).length = max arr1.length arr2.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem or_arrays_elemwise (arr1 arr2 : List Nat) (default : Nat) (i : Nat) (h : i < (orArrays arr1 arr2 default).length) :
   (orArrays arr1 arr2 default)[i]'h = 
     (if h1 : i < arr1.length then arr1[i]'h1 else default) ||| 
@@ -28,6 +36,7 @@ theorem or_arrays_empty_right (arr : List Nat) :
 
 theorem or_arrays_empty_left (arr : List Nat) :
   orArrays [] arr 0 = arr := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_digit_one (n : Nat) : Nat := sorry
 
 def count_ones_brute_force (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_digit_one_matches_brute_force (n : Nat) : 
   count_digit_one n = count_ones_brute_force n := sorry
 
@@ -37,6 +45,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval count_digit_one 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

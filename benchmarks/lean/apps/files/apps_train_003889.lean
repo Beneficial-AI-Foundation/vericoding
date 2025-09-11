@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def isScientificNotation (s : String) : Bool := sorry
 
 def sumProd (s : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringToFloat (s : String) : Float := sorry 
 
 theorem sumProd_format {nums : List Float} 
   (h1 : ∀ n ∈ nums, 0.1 ≤ n ∧ n ≤ 100) 
   (h2 : 2 ≤ nums.length ∧ nums.length ≤ 4) : 
   isScientificNotation (sumProd ("+".intercalate (nums.map toString))) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sumProd_multiply (x y : Nat)
   (h1 : 1 ≤ x ∧ x ≤ 100)
   (h2 : 1 ≤ y ∧ y ≤ 100) :
@@ -39,6 +46,7 @@ info: '3.58000e+01'
 -/
 -- #guard_msgs in
 -- #eval sum_prod "5.4*4.0+6.2+8.0"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

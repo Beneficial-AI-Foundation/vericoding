@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def harry_biscuits (K A B : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem harry_biscuits_positive (K A B : Nat) : 
   A > 0 → B > 0 → harry_biscuits K A B ≥ 0 :=
   sorry
@@ -49,6 +57,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval harry_biscuits 5 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

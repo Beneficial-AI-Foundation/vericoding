@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_valid_triangles (L K : Int) : Int := sorry
 
 theorem count_valid_triangles_non_negative (L K : Int) :
   count_valid_triangles L K ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_valid_triangles_k_greater_l (L K : Int) :
   K > L → count_valid_triangles L K = 0 := sorry
 
@@ -36,6 +44,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval count_valid_triangles 5 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

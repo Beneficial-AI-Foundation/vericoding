@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def to_nato (s : String) : String := sorry
 
 def nato_words : List String := [
@@ -9,7 +15,9 @@ def nato_words : List String := [
   "OSCAR", "PAPA", "QUEBEC", "ROMEO", "SIERRA", "TANGO", "UNIFORM",
   "VICTOR", "WHISKEY", "XRAY", "YANKEE", "ZULU"
 ]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_string (s : String) : 
   toString (to_nato s) = to_nato s := sorry
 
@@ -42,6 +50,7 @@ info: 'India Foxtrot , Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alf
 -/
 -- #guard_msgs in
 -- #eval to_nato "If, you can read?"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, t: int) {
   1 <= n <= 10 && 0 <= t <= 10000
 }
@@ -16,6 +17,7 @@ predicate CorrectForEdgeCases(result: int, n: int, t: int) {
   (n == 1 && t == 0 ==> result == 0) &&
   (t >= 1 && n > 1 ==> result >= 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

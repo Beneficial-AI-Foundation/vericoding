@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def pow2 (n : Nat) : Nat :=
   1 <<< n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solveSequencePairs (N : Nat) (A : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_length (N : Nat) (h : 0 < N) (h2 : N ≤ 4) :
   let A := List.range (pow2 N)
   let result := solveSequencePairs N A
@@ -40,6 +47,7 @@ theorem single_nonzero (N : Nat) (h : 0 < N) (h2 : N ≤ 4) :
   let result := solveSequencePairs N A
   (result.get? 0).isSome → 1 ≤ result.get! 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

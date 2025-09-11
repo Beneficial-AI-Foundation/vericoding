@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var parts := SplitStringFunc(input);
@@ -79,6 +80,7 @@ function MinParkingCost(n: int, a: int, b: int): int
     var plan2Cost := b;
     if plan1Cost <= plan2Cost then plan1Cost else plan2Cost
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

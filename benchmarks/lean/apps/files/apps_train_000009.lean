@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def count_alice_score (s : String) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def countOnes (s : String) : Nat :=
 
 def sortByLengthDesc (ls : List String) : List String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def getAlternateSum (ls : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_not_exceed_input_length 
   (s : String) : 
   count_alice_score s ≤ s.length := 
@@ -52,6 +59,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_alice_score "101010101"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

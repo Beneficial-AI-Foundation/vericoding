@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_modifications (arr : List Nat) : Nat := sorry
 
 theorem min_modifications_non_negative (arr : List Nat) :
   min_modifications arr ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_modifications_upper_bound (arr : List Nat) :
   min_modifications arr ≤ arr.length * arr.length := sorry
 
@@ -23,6 +31,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_modifications [2, 3, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

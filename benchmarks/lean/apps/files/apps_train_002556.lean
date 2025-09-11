@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def find_employees_role (name : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def valid_roles : List String := 
   ["Boss", "Truck Driver", "Warehouse Manager", "Sales Assistant",
    "Admin", "Sales Manager", "Warehouse Picker", "Receptionist", "Trainee"]
@@ -12,7 +17,9 @@ theorem known_employee_roles_are_valid (name : String) (h : name.length > 0) :
   let role := find_employees_role name
   role = "Does not work here!" ∨ role ∈ valid_roles :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem returns_string (name : String) (h : name.length > 0) : 
   String.length (find_employees_role name) > 0 :=
 sorry
@@ -47,6 +54,7 @@ info: 'Does not work here!'
 -/
 -- #guard_msgs in
 -- #eval find_employees_role "Bell Jewel"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded
