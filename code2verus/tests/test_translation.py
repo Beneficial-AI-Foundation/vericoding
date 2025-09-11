@@ -95,7 +95,7 @@ class TestTranslation:
         # Check that we get a TranslationResult with the expected output
         assert result.output_content == sample_verus_output
         assert result.num_iterations == 1
-        assert result.rust_for_verification == sample_verus_output  # For non-YAML, these are the same
+        assert result.code_for_verification == sample_verus_output  # For non-YAML, these are the same
         mock_agent.run.assert_called_once()
 
     @patch('code2verus.agent.create_agent')
@@ -119,7 +119,7 @@ class TestTranslation:
         # Check that we get a TranslationResult with the expected output
         assert result.output_content == sample_verus_output
         assert result.num_iterations == 1
-        assert result.rust_for_verification == sample_verus_output  # For non-YAML, these are the same
+        assert result.code_for_verification == sample_verus_output  # For non-YAML, these are the same
         mock_agent.run.assert_called_once()
 
     @patch('code2verus.agent.create_agent')

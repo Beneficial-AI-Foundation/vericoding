@@ -63,6 +63,9 @@ class TranslationDebugContext(BaseModel):
     end_time: Optional[datetime] = None
     last_activity: datetime = Field(default_factory=datetime.now)
 
+    # Output file information
+    output_file_path: Optional[str] = None
+
     # Helper methods for easier access and manipulation
     def add_attempt(self, attempt: AttemptResult) -> None:
         """Add a new attempt result to the context"""
@@ -96,6 +99,11 @@ class TranslationDebugContext(BaseModel):
         """Mark the session as completed"""
         self.end_time = datetime.now()
         self.last_activity = self.end_time
+
+    def set_output_file_path(self, file_path: str) -> None:
+        """Set the output file path for the generated code"""
+        self.output_file_path = file_path
+        self.last_activity = datetime.now()
 
     def get_duration(self) -> float:
         """Get the duration of the session in seconds"""
@@ -132,6 +140,7 @@ class TranslationDebugContext(BaseModel):
             and self.previous_attempts[-1].verification_success,
             "final_status": self.get_final_status(),
             "source_code_length": len(self.original_source),
+            "output_file_path": self.output_file_path,
             # Enhanced timing information
             "timestamps": self.get_formatted_timestamps(),
             "session_completed": self.end_time is not None,

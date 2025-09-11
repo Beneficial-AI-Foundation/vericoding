@@ -21,11 +21,17 @@ async def verify_code(
 ) -> Tuple[bool, str, str]:
     """Generic function to verify code in different target languages"""
     if target_language.lower() == "verus":
-        return await verify_verus_code(code, is_yaml, original_filename, benchmark_name, benchmark_path)
+        return await verify_verus_code(
+            code, is_yaml, original_filename, benchmark_name, benchmark_path
+        )
     elif target_language.lower() == "dafny":
-        return await verify_dafny_code(code, is_yaml, original_filename, benchmark_name, benchmark_path)
+        return await verify_dafny_code(
+            code, is_yaml, original_filename, benchmark_name, benchmark_path
+        )
     elif target_language.lower() == "lean":
-        return await verify_lean_code(code, is_yaml, original_filename, benchmark_name, benchmark_path)
+        return await verify_lean_code(
+            code, is_yaml, original_filename, benchmark_name, benchmark_path
+        )
     else:
         # For unsupported languages, return success without verification
         logfire.warning(f"Verification not implemented for {target_language}, skipping")
@@ -43,8 +49,8 @@ async def verify_dafny_code(
     # For YAML, we'd need a yaml_to_dafny function (not implemented yet)
     src = dafny_code  # For now, assume direct Dafny code
     if is_yaml:
-        logfire.info(f"YAML to Dafny conversion not yet implemented, using raw content")
-    
+        logfire.info("YAML to Dafny conversion not yet implemented, using raw content")
+
     logfire.info(f"Verifying Dafny code ({len(src)} characters)")
     logfire.info(f"Dafny code preview:\n{src[: min(500, len(src))]}...\n")
 
@@ -111,8 +117,8 @@ async def verify_lean_code(
     # For YAML, we'd need a yaml_to_lean function (not implemented yet)
     src = lean_code  # For now, assume direct Lean code
     if is_yaml:
-        logfire.info(f"YAML to Lean conversion not yet implemented, using raw content")
-    
+        logfire.info("YAML to Lean conversion not yet implemented, using raw content")
+
     logfire.info(f"Verifying Lean code ({len(src)} characters)")
     logfire.info(f"Lean code preview:\n{src[: min(500, len(src))]}...\n")
 

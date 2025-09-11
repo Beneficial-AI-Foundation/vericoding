@@ -15,7 +15,7 @@ from pydantic_ai import Agent
 import logfire
 import yaml
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Any
 
 from code2verus.config import (
     system_prompt,
@@ -24,7 +24,7 @@ from code2verus.config import (
     get_config_value,
     get_error_template,
 )
-from code2verus.tools import verus_tool, dafny_tool, lean_tool, lean_tool
+from code2verus.tools import verus_tool, dafny_tool, lean_tool
 from code2verus.utils import extract_rust_code, concatenate_yaml_fields
 from code2verus.verification import verify_code
 from code2verus.models import (
@@ -41,15 +41,15 @@ class TranslationResult:
     """Result of a code translation operation
 
     Attributes:
-        output_content: The main translated content (YAML or Rust code)
+        output_content: The main translated content (YAML or target language code)
         num_iterations: Number of iterations taken during translation
-        rust_for_verification: Rust code used for verification (may differ from output_content for YAML)
+        code_for_verification: Code used for verification (may differ from output_content for YAML)
         debug_context: Optional debug context containing detailed information about the translation process
     """
 
-    output_content: str  # The main translated content (YAML or Rust)
+    output_content: str  # The main translated content (YAML or target language code)
     num_iterations: int  # Number of iterations taken
-    rust_for_verification: str  # Rust code used for verification
+    code_for_verification: str  # Code used for verification
     debug_context: Optional[TranslationDebugContext] = (
         None  # Optional debug information
     )
@@ -94,17 +94,19 @@ def create_agent(source_language: str = "dafny", target_language: str = "verus")
         tools.append(dafny_tool)
     if target_language.lower() == "lean" or source_language.lower() == "lean":
         tools.append(lean_tool)
-    
+
     # If no specific tools, include all for backward compatibility
     if not tools:
         tools = [verus_tool, dafny_tool, lean_tool]
 
     # Handle different model formats
     model_config = cfg["model"]
-    
+    final_model_config: Any  # Union of str or tuple for different model types
+
     # Check if this is an OpenRouter model configuration
     if model_config.startswith("openrouter:"):
         import os
+
         try:
             from openai import OpenAI
         except ImportError:
@@ -112,10 +114,10 @@ def create_agent(source_language: str = "dafny", target_language: str = "verus")
                 "OpenAI package is required for OpenRouter models. "
                 "Install it with: pip install openai"
             )
-        
+
         # Extract the actual model name (e.g., "anthropic/claude-sonnet-4" from "openrouter:anthropic/claude-sonnet-4")
-        openrouter_model = model_config[len("openrouter:"):]
-        
+        openrouter_model = model_config[len("openrouter:") :]
+
         # Get OpenRouter API key
         api_key = os.getenv("OPENROUTER_API_KEY")
         if not api_key:
@@ -126,23 +128,24 @@ def create_agent(source_language: str = "dafny", target_language: str = "verus")
                 "2. Setting environment variable: export OPENROUTER_API_KEY=your-api-key\n"
                 "\nGet your API key from: https://openrouter.ai/keys"
             )
-        
+
         # Create OpenAI client configured for OpenRouter
         client = OpenAI(
             api_key=api_key,
             base_url="https://openrouter.ai/api/v1",
         )
-        
+
         # Use OpenAI format with custom client for PydanticAI
-        model_config = ("openai", openrouter_model, client)
-        
+        final_model_config = ("openai", openrouter_model, client)
+
         print(f"✓ Using OpenRouter model: {openrouter_model}")
-        print(f"   Base URL: https://openrouter.ai/api/v1")
+        print("   Base URL: https://openrouter.ai/api/v1")
     else:
+        final_model_config = model_config
         print(f"✓ Using model: {model_config}")
 
     return Agent(
-        model_config,
+        final_model_config,
         name=f"code_{source_language}2{target_language}",
         deps_type=str,  # Currently using str, could be enhanced to dict for richer context
         output_type=str,
@@ -162,7 +165,7 @@ async def translate_code_to_verus(
     """Translate source code to target language using the agent with verification feedback
 
     Returns:
-        TranslationResult: Contains output_content, num_iterations, and rust_for_verification.
+        TranslationResult: Contains output_content, num_iterations, and code_for_verification.
     """
     # Use config value if max_iterations not provided
     if max_iterations is None:
@@ -179,7 +182,7 @@ async def translate_code_to_verus(
     # Initialize variables with default values to ensure they're always defined
     result = None
     output_content = ""  # Will contain the final translated content
-    rust_for_verification = ""  # Will contain Rust code for verification
+    code_for_verification = ""  # Will contain code for verification
     iteration = 0
 
     # Track conversation using proper message history for PydanticAI
@@ -359,11 +362,11 @@ Please translate the following {source_language} code to {target_language}:
 
             # Return YAML content as main output, Rust content as secondary
             output_content = yaml_content
-            rust_for_verification = rust_content
+            code_for_verification = rust_content
         else:
             # For regular files, extract code from markdown blocks
             output_content = extract_rust_code(result.output)
-            rust_for_verification = output_content  # Same content for both
+            code_for_verification = output_content  # Same content for both
 
         # Verify the generated code (except on the last iteration if we want to return regardless)
         if iteration < max_iterations - 1:
@@ -371,7 +374,7 @@ Please translate the following {source_language} code to {target_language}:
                 verification_success,
                 verification_output,
                 verification_error,
-            ) = await verify_code(rust_for_verification, target_language, is_yaml)
+            ) = await verify_code(code_for_verification, target_language, is_yaml)
 
             # Track attempt results using structured data
             attempt_result = AttemptResult(
@@ -437,7 +440,7 @@ Please translate the following {source_language} code to {target_language}:
         logfire.warning("No iterations performed due to max_iterations=0")
         # Provide minimal fallback content
         output_content = f"# No translation performed (max_iterations=0)\n# Original {source_language} code:\n{source_code}"
-        rust_for_verification = "// No verification possible - no iterations performed"
+        code_for_verification = "// No verification possible - no iterations performed"
         num_iterations = 0
 
     # Mark debug session as completed
@@ -483,6 +486,6 @@ Please translate the following {source_language} code to {target_language}:
     return TranslationResult(
         output_content=output_content,
         num_iterations=num_iterations,
-        rust_for_verification=rust_for_verification,
+        code_for_verification=code_for_verification,
         debug_context=debug_context,
     )
