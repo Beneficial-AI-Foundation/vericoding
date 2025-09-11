@@ -32,4 +32,4 @@ jobs:
         echo "$HOME/.local/bin/verus-x86-linux" >> $GITHUB_PATH
     
     - name: Run Verus validation tests
-      run: uv run src/tests/test_verus_validation.py benchmarks/verus/dafnybench/
+      run: uv run src/tests/test_verus_validation.py benchmarks/verus/dafnybench/yaml
