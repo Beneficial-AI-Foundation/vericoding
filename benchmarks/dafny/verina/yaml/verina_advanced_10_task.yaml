@@ -25,6 +25,16 @@ vc-preamble: |-
       true // Abstract predicate for prime numbers
   }
 
+  function SpecFold(pairs: seq<(nat, nat)>, acc: int): int
+      decreases |pairs|
+  {
+      if |pairs| == 0 then
+          acc
+      else
+          var p, e := pairs[0].0, pairs[0].1;
+          SpecFold(pairs[1..], acc * pow(p as int, e))
+  }
+
 vc-helpers: |-
 
 vc-spec: |-
@@ -43,18 +53,3 @@ vc-code: |-
   }
 
 vc-postamble: |-
-  function SpecFold(pairs: seq<(nat, nat)>, acc: int): int
-      decreases |pairs|
-  {
-      if |pairs| == 0 then
-          acc
-      else
-          var p, e := pairs[0].0, pairs[0].1;
-          SpecFold(pairs[1..], acc * pow(p as int, e))
-  }
-
-  lemma FindExponentsSatisfiesSpec(n: nat, primes: seq<nat>)
-      requires forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
-  {
-      // TODO: Implement proof
-  }

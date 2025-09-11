@@ -8,6 +8,16 @@ predicate IsPrime(n: nat)
     true // Abstract predicate for prime numbers
 }
 
+function SpecFold(pairs: seq<(nat, nat)>, acc: int): int
+    decreases |pairs|
+{
+    if |pairs| == 0 then
+        acc
+    else
+        var p, e := pairs[0].0, pairs[0].1;
+        SpecFold(pairs[1..], acc * pow(p as int, e))
+}
+
 // <vc-helpers>
 // </vc-helpers>
 
@@ -26,19 +36,3 @@ method FindExponents(n: nat, primes: seq<nat>) returns (result: seq<(nat, nat)>)
     result := [];
 }
 // </vc-code>
-
-function SpecFold(pairs: seq<(nat, nat)>, acc: int): int
-    decreases |pairs|
-{
-    if |pairs| == 0 then
-        acc
-    else
-        var p, e := pairs[0].0, pairs[0].1;
-        SpecFold(pairs[1..], acc * pow(p as int, e))
-}
-
-lemma FindExponentsSatisfiesSpec(n: nat, primes: seq<nat>)
-    requires forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
-{
-    // TODO: Implement proof
-}
