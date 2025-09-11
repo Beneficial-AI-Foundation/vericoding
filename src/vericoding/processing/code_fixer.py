@@ -5,7 +5,6 @@ import logging
 import re
 
 from ..core.config import ProcessingConfig
-from .cheat_checker import check_for_cheats, get_cheat_message
 
 logger = logging.getLogger(__name__)
 
@@ -75,16 +74,15 @@ def extract_code(config: ProcessingConfig, output: str) -> str:
 
 
 
-def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_response: str) -> tuple[str, str | None, str | None]:
+def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_response: str) -> tuple[str, str | None]:
     """Apply JSON array of replacements to original code.
     
     Securely replaces only 'sorry' (Lean) or content within <vc-code> tags (Dafny/Verus).
     LLM is untrusted - we validate everything and control where replacements go.
     
     Returns:
-        tuple[str, str | None, str | None]: (modified_code, error_message, warning_message)
+        tuple[str, str | None]: (modified_code, error_message)
         If error_message is not None, this should be treated as a verification failure.
-        If warning_message is not None, it should be included in feedback but processing continues.
     """
     try:
         # Extract JSON array from response
@@ -101,7 +99,7 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
             else:
                 error = "JSON parsing failed: No JSON array found in LLM response"
                 logger.error(error)
-                return original_code, error, None
+                return original_code, error
         try:
             replacements = json.loads(json_str)
         except json.JSONDecodeError as e:
@@ -109,12 +107,12 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
             error = f"JSON parsing failed: Invalid JSON syntax - {str(e)}"
             logger.error(error)
             logger.error(f"Failed to parse JSON string: {repr(json_str[:200])}...")  # First 200 chars for debugging
-            return original_code, error, None
+            return original_code, error
         
         if not isinstance(replacements, list):
             error = "JSON parsing failed: Expected JSON array, got something else"
             logger.error(error)
-            return original_code, error, None
+            return original_code, error
         
         # Find all placeholders in the original code that we're allowed to replace
         if config.language == "lean":
@@ -141,27 +139,12 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
         if len(replacements) != expected_count:
             error = f"JSON replacement count mismatch: Expected {expected_count} replacements for {expected_count} placeholders, got {len(replacements)}"
             logger.error(error)
-            return original_code, error, None
+            return original_code, error
         
         if expected_count == 0:
             logger.info("  ✓ No placeholders found to replace")
-            return original_code, None, None
+            return original_code, None
         
-        # Check for cheats in replacements (only for Lean) - but don't fail, just warn
-        cheat_warning = None
-        if config.language == "lean":
-            all_cheats = []
-            for i, replacement in enumerate(replacements):
-                if not isinstance(replacement, str):
-                    continue  # Type validation happens later
-                cheats = check_for_cheats(replacement)
-                if cheats:
-                    all_cheats.extend([(i, pattern, desc) for pattern, desc in cheats])
-            
-            if all_cheats:
-                cheat_descriptions = [f"replacement {i}: {desc}" for i, pattern, desc in all_cheats]
-                cheat_warning = f"WARNING: Verification bypasses detected: {'; '.join(cheat_descriptions)}. These must be removed for final verification success."
-
         # Apply replacements securely in reverse order to preserve positions
         modified_code = original_code
         
@@ -172,7 +155,7 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 if not isinstance(replacement, str):
                     error = f"JSON parsing failed: Replacement {i} must be a string, got {type(replacement)}"
                     logger.error(error)
-                    return original_code, error, None
+                    return original_code, error
                     
                 # Find the i-th sorry (0-indexed)
                 sorry_count = 0
@@ -191,7 +174,7 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 if target_pos == -1:
                     error = f"JSON replacement failed: Could not find sorry #{i} for replacement"
                     logger.error(error)
-                    return original_code, error, None
+                    return original_code, error
                 
                 # Replace this specific 'sorry'
                 modified_code = modified_code[:target_pos] + replacement + modified_code[target_pos + 5:]
@@ -213,7 +196,7 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
             if len(vc_sections) != len(replacements):
                 error = f"JSON replacement failed: Found {len(vc_sections)} <vc-code> sections but got {len(replacements)} replacements"
                 logger.error(error)
-                return original_code, error, None
+                return original_code, error
             
             # Apply replacements in reverse order to preserve line indices
             for section_idx in range(len(vc_sections) - 1, -1, -1):
@@ -221,7 +204,7 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 if not isinstance(replacement, str):
                     error = f"JSON parsing failed: Replacement {section_idx} must be a string, got {type(replacement)}"
                     logger.error(error)
-                    return original_code, error, None
+                    return original_code, error
                 
                 start_line, end_line = vc_sections[section_idx]
                 
@@ -240,16 +223,16 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
             if remaining_vc_sections != len(replacements):
                 error = f"JSON replacement failed: Expected {len(replacements)} <vc-code> sections after replacement, but found {remaining_vc_sections}"
                 logger.error(error)
-                return original_code, error, None
+                return original_code, error
                     
         logger.info(f"  ✓ Successfully applied {len(replacements)} JSON replacements")
-        return modified_code, None, cheat_warning
+        return modified_code, None
         
     except json.JSONDecodeError as e:
         error = f"JSON parsing failed: Invalid JSON syntax - {str(e)}"
         logger.error(error)
-        return original_code, error, None
+        return original_code, error
     except Exception as e:
         error = f"JSON replacement failed: Unexpected error - {str(e)}"
         logger.error(error)
-        return original_code, error, None
+        return original_code, error

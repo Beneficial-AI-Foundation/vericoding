@@ -4,9 +4,8 @@ import hashlib
 import logging
 import time
 import traceback
-from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 import wandb
@@ -18,6 +17,7 @@ from ..core.language_tools import verify_file
 from ..core.llm_providers import call_llm
 from ..utils.io_utils import save_iteration_code
 from .code_fixer import extract_code, apply_json_replacements
+from .cheat_checker import has_final_failure_cheats, check_for_cheats
 
 # Set up a basic logger
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -128,7 +128,7 @@ def process_spec_file(
         
         # Apply JSON replacements to original code (new approach)
         try:
-            generated_code, json_error, cheat_warning = apply_json_replacements(config, original_code, generated_response)
+            generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
         except Exception as e:
             error_msg = f"Failed to apply JSON replacements: {str(e)}\n\nFull traceback:\n{traceback.format_exc()}"
             logger.error(error_msg)
@@ -209,13 +209,6 @@ def process_spec_file(
         success = False
         last_verification = None
         
-        # Track cheat warnings by iteration
-        cheat_warnings = defaultdict(lambda: None)
-        cheat_warnings[0] = cheat_warning  # Initial generation is iteration 0
-        
-        # Log initial cheat warning if present
-        if cheat_warning:
-            logger.info(f"    ⚠️ LLM used verification bypasses: {cheat_warning.split(':')[1].strip() if ':' in cheat_warning else cheat_warning}")
         
         for iteration in range(1, config.max_iterations + 1):
             logger.info(
@@ -234,6 +227,30 @@ def process_spec_file(
             # Verify
             verification = verify_file(config, str(output_path))
             last_verification = verification
+            
+            # Check for cheats in final code - combine with lake build output
+            if config.language == "lean" and has_final_failure_cheats(current_code):
+                cheats = check_for_cheats(current_code)
+                cheat_descriptions = [desc for _, desc in cheats]
+                logger.info(f"    ⚠️ Final code contains verification bypasses: {'; '.join(cheat_descriptions)}")
+                
+                # Combine cheat message with original verification result
+                cheat_message = f"VERIFICATION BYPASSES DETECTED: {'; '.join(cheat_descriptions)}. Code contains verification bypasses and cannot be considered successfully verified."
+                
+                if verification.success:
+                    # Lake build succeeded but cheats found
+                    combined_error = f"{cheat_message}\n\nNote: Lake build succeeded but verification bypasses prevent final success."
+                    logger.info("    ✗ Marking as failed due to verification bypasses (lake build succeeded)")
+                else:
+                    # Lake build failed AND cheats found - combine both messages
+                    original_error = verification.error or "Lake build failed"
+                    combined_error = f"{cheat_message}\n\nOriginal lake build output:\n{original_error}"
+                    logger.info("    ✗ Failed due to both lake build errors AND verification bypasses")
+                
+                verification = replace(verification,
+                    success=False,
+                    error=combined_error
+                )
             
             # Log verification attempt to wandb
             if wandb.run:
@@ -289,10 +306,6 @@ def process_spec_file(
             # Try to fix issues (both compilation and verification errors)
             error_details = verification.error or "Unknown error"
             
-            # Add cheat warning from most recent attempt
-            current_attempt_warning = cheat_warnings[iteration - 1]
-            if current_attempt_warning:
-                error_details = f"{current_attempt_warning}\n\n{error_details}"
 
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
@@ -335,8 +348,7 @@ def process_spec_file(
                     # Apply JSON replacements for fix to the ORIGINAL file (which has placeholders)
                     # This ensures we're replacing sorry/vc-code tags, not broken implementations
                     try:
-                        fixed_code, fix_json_error, fix_cheat_warning = apply_json_replacements(config, original_code, fix_response)
-                        cheat_warnings[iteration] = fix_cheat_warning  # Store cheat warning for this iteration
+                        fixed_code, fix_json_error = apply_json_replacements(config, original_code, fix_response)
                     except Exception as e:
                         error_msg = f"Failed to apply JSON replacements: {str(e)}\n\nFull traceback:\n{traceback.format_exc()}"
                         logger.error(error_msg)
@@ -370,10 +382,6 @@ def process_spec_file(
                                 time.time()
                             )
                         break  # Skip to next iteration
-                    
-                    # Log cheat warning if present
-                    if fix_cheat_warning:
-                        logger.info(f"    ⚠️ LLM used verification bypasses in fix: {fix_cheat_warning.split(':')[1].strip() if ':' in fix_cheat_warning else fix_cheat_warning}")
                     
                     current_code = fixed_code
                     logger.info(f"    Generated fix for iteration {iteration}")
