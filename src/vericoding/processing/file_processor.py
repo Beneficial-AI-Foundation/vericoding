@@ -366,7 +366,7 @@ def process_spec_file(
                     code=current_code,
                     original_code=original_code,
                     errorDetails=error_details,
-                    iteration=iteration,
+                    iteration=iteration+1,
                     placeholder_count=placeholder_count,
                     max_iterations=config.max_iterations
                 )
