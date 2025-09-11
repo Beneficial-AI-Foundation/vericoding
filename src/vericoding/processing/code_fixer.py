@@ -5,6 +5,7 @@ import logging
 import re
 
 from ..core.config import ProcessingConfig
+from .cheat_checker import check_for_cheats, get_cheat_message
 
 logger = logging.getLogger(__name__)
 
@@ -144,6 +145,18 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
         if expected_count == 0:
             logger.info("  ✓ No placeholders found to replace")
             return original_code, None
+        
+        # Check for cheats in replacements (only for Lean)
+        if config.language == "lean":
+            for i, replacement in enumerate(replacements):
+                if not isinstance(replacement, str):
+                    continue  # Type validation happens later
+                cheats = check_for_cheats(replacement)
+                if cheats:
+                    cheat_msg = get_cheat_message(cheats)
+                    error = f"Cheat detected in replacement {i}: {cheat_msg}"
+                    logger.error(error)
+                    return original_code, error
             
         # Apply replacements securely in reverse order to preserve positions
         modified_code = original_code

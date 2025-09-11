@@ -12,7 +12,7 @@ generate_code: |
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
-  - Do not use "sorry" in any replacement
+  - NEVER use verification bypasses: "sorry", "axiom", "unsafe", "Unchecked.cast", "partial def", or "@[extern]"
   - Use valid Lean syntax for all replacements
   - You may include helper definitions, theorems, and lemmas in replacements when needed
   - For helper definitions added within a replacement, add comment -- LLM HELPER before them
@@ -35,11 +35,13 @@ fix_verification: |
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact fixed code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
-  - Do not use "sorry" in any replacement
+  - NEVER use verification bypasses: "sorry", "axiom", "unsafe", "Unchecked.cast", "partial def", or "@[extern]" 
   - Use valid Lean syntax for all replacements
   - You may include helper definitions, theorems, and lemmas in replacements when needed
   - For helper definitions added within a replacement, add comment -- LLM HELPER before them
   - Return ONLY a valid JSON array, no explanations or markdown
+  
+  NOTE: If your previous response included verification bypasses like "sorry" or "axiom", that counts as a failure even if lake build succeeded. Provide complete, verified implementations without any cheats.
   
   ERROR DETAILS from Lean verification:
   {errorDetails}
