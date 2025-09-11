@@ -9,14 +9,13 @@ generate_code: |
   ```
   STRATEGY: Do a high-level plan using sorries. Then focus on eliminating the sorries one by one. To eliminate a sorry, try a proof. Likely there will be an error. Replace every line after that error (until the end of the subgoal) with trace_state and then sorry. Then slowly push the subproof forward one correct line at a time, backtracking a line when the line is wrong. Also try grind on small sorries.
 
-  To summarize, if you see no proof at all, make a high-level sketch proof that uses sorries. If you see a high-level sketch proof that uses sorries, insert trace_state before the first sorry. If you see a proof that has trace_state, try to add one more line right before the trace_state. Comment your code profusely with what the status is, since that context will be valuable for the next LLM.
+  To summarize, if you see no proof at all, make a high-level sketch proof that uses sorries and trace_state. If you see a high-level sketch proof that uses sorries, insert trace_state before the first sorry. If you see a proof that has trace_state, try to add one more line right before the trace_state. Comment your code profusely with what the status is, since that context will be valuable for the next LLM.
   
   CRITICAL RULES:
   - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
-  - AVOID verification bypasses: "sorry", "admit", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
   - You may use "sorry" temporarily in early iterations to get error feedback, but must remove all verification bypasses for final success
   - Use valid Lean syntax for all replacements
   - You may include helper definitions, theorems, and lemmas in replacements when needed
@@ -38,14 +37,16 @@ fix_verification: |
 
   STRATEGY: Do a high-level plan using sorries. Then focus on eliminating the sorries one by one. To eliminate a sorry, try a proof. Likely there will be an error. Replace every line after that error (until the end of the subgoal) with trace_state and then sorry. Then slowly push the subproof forward one correct line at a time, backtracking a line when the line is wrong. Also try grind on small sorries.
 
-  To summarize, if you see no proof at all, make a high-level sketch proof that uses sorries. If you see a high-level sketch proof that uses sorries, insert trace_state before the first sorry. If you see a proof that has trace_state, try to add one more line right before the trace_state. Comment your code profusely with what the status is, since that context will be valuable for the next LLM.
+  To summarize, if you see no proof at all, make a high-level sketch proof that uses sorries and trace_state. If you see a high-level sketch proof that uses sorries, insert trace_state before the first sorry. If you see a proof that has trace_state, try to add one more line right before the trace_state. Comment your code profusely with what the status is, since that context will be valuable for the next LLM.
+
 
   CRITICAL RULES:
+  - Your proof should differ only in one line from the proof you're trying to fix. The one line you can change is the one before trace_state. You will make mistakes if you try to change multiple lines.
+  - Always have trace_state before a sorry so you know what the proof state is.
   - The ORIGINAL file contains EXACTLY {sorry_count} "sorry" keywords - your JSON array must have EXACTLY {sorry_count} elements
   - Provide exactly one replacement for each "sorry" in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact fixed code/proof that goes where "sorry" appears
   - IMPORTANT: Your replacement text goes directly where the "sorry" is - if you need helper functions, define them inline within the replacement
-  - MINIMIZE verification bypasses: "sorry", "admit", "axiom", "unsafe", "Unchecked.cast", or "@[extern]"
   - You may use "sorry" temporarily to get error feedback, but each iteration should remove more verification bypasses
   - Use valid Lean syntax for all replacements
   - You may include helper definitions, theorems, and lemmas in replacements when needed
