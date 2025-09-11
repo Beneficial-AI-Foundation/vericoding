@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_find_Find",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_find_Find",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_find_Find",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_find_Find",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Find method that searches for a key in an array and returns its index.
@@ -33,9 +30,7 @@ Specification for Find method ensuring:
 3. If index is -1, no elements in the array equal key
 -/
 theorem Find_spec (a : Array Int) (key : Int) :
-  -1 ≤ Find a key ∧ Find a key < a.size ∧
-  (Find a key ≠ -1 → ∃ idx : Nat, idx < a.size ∧ a[idx]! = key ∧
-    (∀ i, 0 ≤ i ∧ i < idx → a[i]! ≠ key)) ∧
-  (Find a key = -1 → (∀ i, 0 ≤ i ∧ i < a.size → a[i]! ≠ key)) := sorry
-
-end DafnyBenchmarks
+-1 ≤ Find a key ∧ Find a key < a.size ∧
+(Find a key ≠ -1 → ∃ idx : Nat, idx < a.size ∧ a[idx]! = key ∧
+(∀ i, 0 ≤ i ∧ i < idx → a[i]! ≠ key)) ∧
+(Find a key = -1 → (∀ i, 0 ≤ i ∧ i < a.size → a[i]! ≠ key)) := sorry

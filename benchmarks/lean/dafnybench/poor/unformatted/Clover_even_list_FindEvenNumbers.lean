@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_even_list_FindEvenNumbers",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_even_list_FindEvenNumbers",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_even_list_FindEvenNumbers",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_even_list_FindEvenNumbers",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Finds even numbers in an array and returns them in a new array.
@@ -30,13 +27,11 @@ def FindEvenNumbers (arr : Array Int) : Array Int := sorry
 
 /-- Main specification for FindEvenNumbers -/
 theorem FindEvenNumbers_spec (arr : Array Int) (evenNumbers : Array Int)
-  (h : evenNumbers = FindEvenNumbers arr) :
-  (∀ x, x ∈ arr.toList ∧ x % 2 = 0 → x ∈ evenNumbers.toList) ∧
-  (∀ x, x ∉ arr.toList → x ∉ evenNumbers.toList) ∧
-  (∀ k, 0 ≤ k ∧ k < evenNumbers.size → evenNumbers[k]! % 2 = 0) ∧
-  (∀ k l, 0 ≤ k ∧ k < l ∧ l < evenNumbers.size →
-    ∃ n m, 0 ≤ n ∧ n < m ∧ m < arr.size ∧
-    evenNumbers[k]! = arr[n]! ∧
-    evenNumbers[l]! = arr[m]!) := sorry
-
-end DafnyBenchmarks
+(h : evenNumbers = FindEvenNumbers arr) :
+(∀ x, x ∈ arr.toList ∧ x % 2 = 0 → x ∈ evenNumbers.toList) ∧
+(∀ x, x ∉ arr.toList → x ∉ evenNumbers.toList) ∧
+(∀ k, 0 ≤ k ∧ k < evenNumbers.size → evenNumbers[k]! % 2 = 0) ∧
+(∀ k l, 0 ≤ k ∧ k < l ∧ l < evenNumbers.size →
+∃ n m, 0 ≤ n ∧ n < m ∧ m < arr.size ∧
+evenNumbers[k]! = arr[n]! ∧
+evenNumbers[l]! = arr[m]!) := sorry

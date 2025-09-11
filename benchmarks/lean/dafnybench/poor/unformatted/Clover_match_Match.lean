@@ -1,21 +1,18 @@
-import Std
 
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_match_Match",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_match_Match",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_match_Match",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_match_Match",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Translates the Dafny Match method which checks if a string matches a pattern.
@@ -33,7 +30,7 @@ Requires:
 
 Ensures:
 - The result is true iff for each position, either the characters match or
-  the pattern has a '?' character at that position
+the pattern has a '?' character at that position
 -/
 def Match (s p : String) : Bool := sorry
 
@@ -41,8 +38,6 @@ def Match (s p : String) : Bool := sorry
 Specification for the Match function ensuring correct pattern matching behavior
 -/
 theorem Match_spec (s p : String) :
-  s.length = p.length →
-  Match s p = (∀ n, 0 ≤ n ∧ n < s.length →
-    (s.get ⟨n⟩ = p.get ⟨n⟩ ∨ p.get ⟨n⟩ = '?')) := sorry
-
-end DafnyBenchmarks
+s.length = p.length →
+Match s p = (∀ n, 0 ≤ n ∧ n < s.length →
+(s.get ⟨n⟩ = p.get ⟨n⟩ ∨ p.get ⟨n⟩ = '?')) := sorry

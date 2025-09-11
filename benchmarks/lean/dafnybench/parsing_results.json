@@ -1,0 +1,2908 @@
+{
+  "630-dafny_tmp_tmpz2kokaiq_Solution_BinarySearch.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"630-dafny_tmp_tmpz2kokaiq_Solution_BinarySearch\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: 630-dafny_tmp_tmpz2kokaiq_Solution_BinarySearch\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nChecks if an arr ay is sorted in ascending order.\nTranslated from Dafny's sorted function.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def sorted (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j , 0 \u2264 i \u2227 i < j \u2227 j < a.size \u2192 a[i]! \u2264 a[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nBinary search implementation specification.\nTranslated from Dafny's BinarySearch method.\n\n@param a The sorted array to search in\n@param x The value to search for\n@return index The index where x was found, or -1 if not found\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BinarySearch (a : Array Int) (x : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for BinarySearch method.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem BinarySearch_spec (a : Array Int) (x : Int) :\nsorted a \u2192\nlet index := BinarySearch a x\n(0 \u2264 index \u2227 index < a.size \u2192 a[index.toNat]! = x) \u2227\n(index = -1 \u2192 \u2200 i , 0 \u2264 i \u2227 i < a.size \u2192 a[i]! \u2260 x) := sorry"
+      }
+    ]
+  },
+  "AssertivePrograming_tmp_tmpwf43uz0e_DivMode_Unary_IterativeDivMod.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"AssertivePrograming_tmp_tmpwf43uz0e_DivMode_Unary_IterativeDivMod\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: AssertivePrograming_tmp_tmpwf43uz0e_DivMode_Unary_IterativeDivMod\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Unary natural numbers represented as Zero or Successor -/\n"
+      },
+      {
+        "type": "constr",
+        "string": "inductive Unary where\n| Zero : Unary\n| Suc : Unary \u2192 Unary\nderiving Repr\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "doc",
+        "string": "/-- Convert Unary to natural number -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def UnaryToNat : Unary \u2192 Nat\n| Unary.Zero => 0\n| Unary.Suc n => 1 + UnaryToNat n\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Convert natural number to Unary -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def NatToUnary : Nat \u2192 Unary\n| 0 => Unary.Zero\n| n + 1 => Unary.Suc (NatToUnary n)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Less than relation on Unary numbers -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Less : Unary \u2192 Unary \u2192 Prop\n| _, Unary.Zero => False\n| Unary.Zero, Unary.Suc _ => True\n| Unary.Suc x, Unary.Suc y => Less x y\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Alternative less than relation on Unary numbers -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def LessAlt : Unary \u2192 Unary \u2192 Prop\n| _, Unary.Zero => False\n| Unary.Zero, Unary.Suc _ => True\n| Unary.Suc x, Unary.Suc y => Less x y\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Addition of Unary numbers -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def AddPrime : Unary \u2192 Unary \u2192 Unary\n| x, Unary.Zero => x\n| x, Unary.Suc y => Unary.Suc (AddPrime x y)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Subtraction of Unary numbers -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SubPrime : Unary \u2192 Unary \u2192 Unary\n| x, Unary.Zero => x\n| Unary.Suc x, Unary.Suc y => SubPrime x y\n| Unary.Zero, Unary.Suc _ => Unary.Zero /- This case shouldn't happen given precondition -/\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Multiplication of Unary numbers -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def MulPrime : Unary \u2192 Unary \u2192 Unary\n| Unary.Zero, _ => Unary.Zero\n| Unary.Suc x, y => AddPrime (MulPrime x y) y\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Iterative division and modulus operation on Unary numbers -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def IterativeDivMod (x y : Unary) : Unary \u00d7 Unary := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for IterativeDivMod -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem IterativeDivMod_spec (x y : Unary) :\ny \u2260 Unary.Zero \u2192\nlet (d, m) := IterativeDivMod x y\nAddPrime (MulPrime d y) m = x \u2227 Less m y := sorry"
+      }
+    ]
+  },
+  "AssertivePrograming_tmp_tmpwf43uz0e_Find_Substring_FindFirstOccurrence.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"AssertivePrograming_tmp_tmpwf43uz0e_Find_Substring_FindFirstOccurrence\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: AssertivePrograming_tmp_tmpwf43uz0e_Find_Substring_FindFirstOccurrence\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if str2 exists as a substring in str1 -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ExistsSubstring (str1 str2 : String) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2203 offset : Nat, offset \u2264 str1.length \u2227\n(\u2203 sub : String, sub = str1.extract \u27e8offset\u27e9 \u27e8str1.length\u27e9 \u2227 str2.isPrefixOf sub)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Post condition for FindFirstOccurrence -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Post (str1 str2 : String) (found : Bool) (i : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "(found \u2194 ExistsSubstring str1 str2) \u2227\n(found \u2192 i + str2.length \u2264 str1.length \u2227\n(\u2203 sub : String, sub = str1.extract \u27e8i\u27e9 \u27e8str1.length\u27e9 \u2227 str2.isPrefixOf sub))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Outer invariant for correctness -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Outter_Inv_correctness (str1 str2 : String) (found : Bool) (i : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "(found \u2192 (i + str2.length \u2264 str1.length \u2227\n(\u2203 sub : String, sub = str1.extract \u27e8i\u27e9 \u27e8str1.length\u27e9 \u2227 str2.isPrefixOf sub))) \u2227\n(\u00acfound \u2227 0 < i \u2227 i \u2264 str1.length \u2227 i \u2260 str2.length - 1 \u2192\n\u00ac(ExistsSubstring (str1.extract 0 \u27e8i\u27e9) str2)) \u2227\n(\u00acfound \u2192 i \u2264 str1.length)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Inner invariant for correctness -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Inner_Inv_correctness (str1 str2 : String) (i : Nat) (j : Int) (found : Bool) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "0 \u2264 j \u2227 j \u2264 i \u2227\nj < str2.length \u2227\ni < str1.length \u2227\n((str1.get \u27e8i\u27e9 = str2.get \u27e8j.toNat\u27e9) \u2192\n(\u2203 sub : String, sub = str1.extract \u27e8i\u27e9 \u27e8str1.length\u27e9 \u2227\n(\u2203 sub2 : String, sub2 = str2.extract \u27e8j.toNat\u27e9 \u27e8str2.length\u27e9 \u2227 sub2.isPrefixOf sub))) \u2227\n(found \u2192 j = 0 \u2227 str1.get \u27e8i\u27e9 = str2.get \u27e8j.toNat\u27e9)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Inner invariant for termination -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Inner_Inv_Termination (str1 str2 : String) (i : Nat) (j : Int)\n(old_i old_j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "old_j - j = old_i - i\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Main method specification -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def FindFirstOccurrence (str1 str2 : String) : (Bool \u00d7 Nat) :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Main method specification theorem -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem FindFirstOccurrence_spec (str1 str2 : String) :\nlet (found, i) := FindFirstOccurrence str1 str2\nPost str1 str2 found i := sorry"
+      }
+    ]
+  },
+  "AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_Merge.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_Merge\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_Merge\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if an array is sorted -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Sorted (q : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i \u2264 j \u2192 j < q.size \u2192 q[i]! \u2264 q[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Invariant for merge operation -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InvPrime (a : Array Int) (a1 : Array Int) (a2 : Array Int) (i : Nat) (mid : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "i \u2264 a1.size \u2227 i \u2264 a2.size \u2227 i + mid \u2264 a.size \u2227\n(a1.extract 0 i = a.extract 0 i) \u2227\n(a2.extract 0 i = a.extract mid (i + mid))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Invariant for sorted property during merge -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InvSorted (b : Array Int) (c : Array Int) (d : Array Int) (i : Nat) (j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "i \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\n((i + j > 0 \u2227 i < c.size) \u2192  (b[j + i - 1]! \u2264 c[i]!)) \u2227\n((i + j > 0 \u2227 j < d.size) \u2192 (b[j + i - 1]! \u2264 d[j]!)) \u2227\nSorted (b.extract 0 (i + j))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Invariant for subset property during merge -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InvSubSet (b : Array Int) (c : Array Int) (d : Array Int) (i : Nat) (j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "i \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\n(b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- MergeLoop operation specification -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def MergeLoop (b c d : Array Int) (i0 j0 : Nat) : (Nat \u00d7 Nat) :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem MergeLoop_spec (b c d : Array Int) (i0 j0 : Nat) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\ni0 \u2264 c.size \u2192 j0 \u2264 d.size \u2192 i0 + j0 \u2264 b.size \u2192\nInvSubSet b c d i0 j0 \u2192\nInvSorted b c d i0 j0 \u2192\ni0 + j0 < b.size \u2192\nlet (i, j) := MergeLoop b c d i0 j0\ni \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\nInvSubSet b c d i j \u2227\nInvSorted b c d i j \u2227\n(0 \u2264 c.size - i \u2227 c.size - i < c.size - i0 \u2228\n(c.size - i = c.size - i0 \u2227 0 \u2264 d.size - j \u2227 d.size - j < d.size - j0)) := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Merge operation specification -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Merge (b c d : Array Int) : Unit :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Merge_spec (b c d : Array Int) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\nSorted b \u2227  (b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j) := sorry"
+      }
+    ]
+  },
+  "AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeLoop.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeLoop\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeLoop\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if a sequence is sorted -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Sorted (q : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i \u2264 j \u2192 j < q.size \u2192 q[i]! \u2264 q[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Invariant for merge sort algorithm -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InvPrime (a a1 a2 : Array Int) (i mid : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "i \u2264 a1.size \u2227 i \u2264 a2.size \u2227 i + mid \u2264 a.size \u2227\n(a1.extract 0 i = a.extract 0 i) \u2227\n(a2.extract 0 i = a.extract mid (i + mid))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Invariant for sorted property during merge -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InvSorted (b c d : Array Int) (i j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "i \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\n((i + j > 0 \u2227 i < c.size) \u2192  (b[j + i - 1]! \u2264 c[i]!)) \u2227\n((i + j > 0 \u2227 j < d.size) \u2192 (b[j + i - 1]! \u2264 d[j]!)) \u2227\nSorted (b.extract 0 (i + j))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Invariant for multiset equality during merge -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InvSubSet (b c d : Array Int) (i j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "i \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\n(b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- MergeLoop specification -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem mergeLoop_spec\n(b c d : Array Int) (i0 j0 : Nat) (i j : Nat) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\ni0 \u2264 c.size \u2192 j0 \u2264 d.size \u2192 i0 + j0 \u2264 b.size \u2192\nInvSubSet b c d i0 j0 \u2192\nInvSorted b c d i0 j0 \u2192\ni0 + j0 < b.size \u2192\ni \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\nInvSubSet b c d i j \u2227\nInvSorted b c d i j \u2227\n(0 \u2264 c.size - i \u2227 c.size - i < c.size - i0 \u2228\n(c.size - i = c.size - i0 \u2227 0 \u2264 d.size - j \u2227 d.size - j < d.size - j0)) := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- MergeLoop implementation -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def MergeLoop (b c d : Array Int) (i0 j0 : Nat) : (Nat \u00d7 Nat) := sorry"
+      }
+    ]
+  },
+  "AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeSort.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeSort\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeSort\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if an array is sorted -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Sorted (q : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i \u2264 j \u2192 j < q.size \u2192 q[i]! \u2264 q[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Invariant for merge sort algorithm -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InvPrime (a a1 a2 : Array Int) (i mid : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "i \u2264 a1.size \u2227 i \u2264 a2.size \u2227 i + mid \u2264 a.size \u2227\n(a1.extract 0 i = a.extract 0 i) \u2227\n(a2.extract 0 i = a.extract mid (i + mid))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Invariant for sorted portion during merge -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InvSorted (b c d : Array Int) (i j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "i \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\n((i + j > 0 \u2227 i < c.size) \u2192 b[j + i - 1]! \u2264 c[i]!) \u2227\n((i + j > 0 \u2227 j < d.size) \u2192 b[j + i - 1]! \u2264 d[j]!) \u2227\nSorted (b.extract 0 (i + j))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Invariant for multiset equality during merge -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InvSubSet (b c d : Array Int) (i j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "i \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\n(b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Merge two sorted arrays -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Merge (b c d : Array Int) : Array Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem merge_spec (b c d : Array Int) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\nSorted (Merge b c d) \u2227\n(Merge b c d) = (c.extract 0 i).append (d.extract 0 j) := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- MergeSort implementation -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def MergeSort (a : Array Int) : Array Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem mergesort_spec (a : Array Int) :\nlet b := MergeSort a\nb.size = a.size \u2227 Sorted b \u2227 b = a := sorry"
+      }
+    ]
+  },
+  "BPTree-verif_tmp_tmpq1z6xm1d_Utils_GetInsertIndex.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"BPTree-verif_tmp_tmpq1z6xm1d_Utils_GetInsertIndex\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: BPTree-verif_tmp_tmpq1z6xm1d_Utils_GetInsertIndex\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny's SetLessThan function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SetLessThan (numbers : List Int) (threshold : Int) : List Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "numbers.filter (\u03bb x => x < threshold)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny's seqSet function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def seqSet (nums : Array Int) (index : Nat) : List Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "(List.range index).map (\u03bb i => nums[i]!)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny's SortedSeq predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SortedSeq (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < a.size \u2192 a[i]! < a[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny's sorted predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def sorted (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < a.size \u2192 a[i]! < a[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny's distinct predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def distinct (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i < a.size \u2192 0 \u2264 j \u2192 j < a.size \u2192 i \u2260 j \u2192 a[i]! \u2260 a[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny's sorted_eq predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def sorted_eq (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < a.size \u2192 a[i]! \u2264 a[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny's GetInsertIndex method specification -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem GetInsertIndex_spec (a : Array Int) (limit : Int) (x : Int) (idx : Int) :\n(\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2260 x) \u2192\n0 \u2264 limit \u2192 limit \u2264 a.size \u2192\nSortedSeq (a.extract 0 limit.toNat) \u2192\n0 \u2264 idx \u2227 idx \u2264 limit \u2227\nSortedSeq (a.extract 0 limit.toNat) \u2227\n(idx > 0 \u2192 a[(idx - 1).toNat]! < x) \u2227\n(idx < limit \u2192 x < a[(idx).toNat]!) := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Implementation of GetInsertIndex -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def GetInsertIndex (a : Array Int) (limit : Int) (x : Int) : Int := sorry"
+      }
+    ]
+  },
+  "BPTree-verif_tmp_tmpq1z6xm1d_Utils_InsertIntoSorted.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"BPTree-verif_tmp_tmpq1z6xm1d_Utils_InsertIntoSorted\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: BPTree-verif_tmp_tmpq1z6xm1d_Utils_InsertIntoSorted\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny SetLessThan function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SetLessThan (numbers : List Int) (threshold : Int) : List Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "numbers.filter (\u03bb x => x < threshold)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny seqSet function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def seqSet (nums : Array Int) (index : Nat) : List Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny SortedSeq predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SortedSeq (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < a.size \u2192 a[i]! < a[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny sorted predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def sorted (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < a.size \u2192 a[i]! < a[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny distinct predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def distinct (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i < a.size \u2192 0 \u2264 j \u2192 j < a.size \u2192 i \u2260 j \u2192 a[i]! \u2260 a[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny sorted_eq predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def sorted_eq (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < a.size \u2192 a[i]! \u2264 a[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny lessThan predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def lessThan (a : Array Int) (key : Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! < key\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny greaterThan predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def greaterThan (a : Array Int) (key : Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! > key\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny greaterEqualThan predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def greaterEqualThan (a : Array Int) (key : Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2265 key\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny GetInsertIndex method -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def GetInsertIndex (a : Array Int) (limit : Int) (x : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for GetInsertIndex -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem GetInsertIndex_spec (a : Array Int) (limit : Int) (x : Int) :\n(\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2260 x) \u2192\n0 \u2264 limit \u2192 limit \u2264 a.size \u2192\nSortedSeq a \u2192\nlet idx := GetInsertIndex a limit x\n0 \u2264 idx \u2227 idx \u2264 limit \u2227\nSortedSeq a \u2227\n(idx > 0 \u2192 a[(idx - 1).toNat]! < x) \u2227\n(idx < limit \u2192 x < a[(idx).toNat]!) := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translates Dafny InsertIntoSorted method -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def InsertIntoSorted (a : Array Int) (limit : Int) (key : Int) : Array Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for InsertIntoSorted -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem InsertIntoSorted_spec (a : Array Int) (limit : Int) (key : Int) :\nkey > 0 \u2192\n(\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2260 key) \u2192\n0 \u2264 limit \u2192 limit < a.size \u2192\n(\u2200 i, 0 \u2264 i \u2192 i < limit \u2192 a[i.toNat]! > 0) \u2192\n(\u2200 i, limit \u2264 i \u2192 i < a.size \u2192 a[i.toNat]! = 0) \u2192\nsorted a \u2192\nlet b := InsertIntoSorted a limit key\nb.size = a.size \u2227\nsorted b \u2227\n(\u2200 i, limit + 1 \u2264 i \u2192 i < b.size \u2192 b[i.toNat]! = 0) \u2227\n(\u2200 i, 0 \u2264 i \u2192 i < limit \u2192 \u2203 j, 0 \u2264 j \u2192 j < b.size \u2192 b[j]! = a[i.toNat]!) \u2227\n(\u2200 i, 0 \u2264 i \u2192 i < limit + 1 \u2192 b[i.toNat]! > 0) := sorry"
+      }
+    ]
+  },
+  "BelowZero_BelowZero.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"BelowZero_BelowZero\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: BelowZero_BelowZero\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nRecursively sums the first n elements of an array.\nTranslated from Dafny's sum function.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def sum (s : Array Int) (n : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if s.size = 0 \u2228 n = 0 then\n0\nelse\ns.get! 0 + sum (s.extract 1 s.size) (n-1)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for sum function requiring n \u2264 array size\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem sum_spec (s : Array Int) (n : Nat) :\nn \u2264 s.size \u2192 sum s n = sum s n := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nBelowZero checks if at any point the running sum of operations falls below zero.\nTranslated from Dafny's BelowZero method.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BelowZero (ops : Array Int) : Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for BelowZero ensuring result is true iff there exists a point\nwhere running sum is negative\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem BelowZero_spec (ops : Array Int) :\nBelowZero ops = true \u2194 \u2203 n : Nat, n \u2264 ops.size \u2227 sum ops n < 0 := sorry"
+      }
+    ]
+  },
+  "BinaryAddition_ArrayToSequence.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"BinaryAddition_ArrayToSequence\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: BinaryAddition_ArrayToSequence\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Represents a 10-bit bitvector -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Bv10 := Nat\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Converts boolean array to bitvector -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ArrayToBv10 (arr : Array Bool) : Bv10 := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Helper function for ArrayToBv10 -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ArrayToBv10Helper (arr : Array Bool) (index : Nat) : Bv10 := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Checks if a bit is set at given index -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def isBitSet (x : Bv10) (bitIndex : Nat) : Bool := sorry\n\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem isBitSet_spec (x : Bv10) (bitIndex : Nat) :\nbitIndex < 10 \u2192\n\u2203 (valid : Bool), isBitSet x bitIndex = valid := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Converts bitvector to boolean sequence -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Bv10ToSeq (x : Bv10) : Array Bool := sorry\n\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Bv10ToSeq_spec (x : Bv10) :\n(Bv10ToSeq x).size = 10 \u2227\n\u2200 i, 0 \u2264 i \u2227 i < 10 \u2192 (Bv10ToSeq x)[i]! = isBitSet x i := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Converts boolean to integer -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BoolToInt (a : Bool) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a then 1 else 0\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- XOR operation on booleans -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def XOR (a b : Bool) : Bool :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "(a \u2228 b) \u2227 !(a \u2227 b)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Performs traditional bit addition -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BitAddition (s t : Array Bool) : Array Bool := sorry\n\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem BitAddition_spec (s t : Array Bool) :\ns.size = 10 \u2227 t.size = 10 \u2192\n\u2203 result, BitAddition s t = result := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Converts boolean array to boolean sequence -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ArrayToSequence (arr : Array Bool) : Array Bool := sorry\n\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem ArrayToSequence_spec (arr : Array Bool) :\n\u2200 result, ArrayToSequence arr = result \u2192\nresult.size = arr.size \u2227\n\u2200 k, 0 \u2264 k \u2227 k < arr.size \u2192 result[k]! = arr[k]! := sorry"
+      }
+    ]
+  },
+  "BinaryAddition_BinaryAddition.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"BinaryAddition_BinaryAddition\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: BinaryAddition_BinaryAddition\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Type alias for bitvector of length 10 -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Bv10 := Nat\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Converts boolean array to bitvector -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ArrayToBv10 (arr : Array Bool) : Bv10 := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Helper function for ArrayToBv10 -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ArrayToBv10Helper (arr : Array Bool) (index : Nat) : Bv10 := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Converts boolean array to sequence -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ArrayToSequence (arr : Array Bool) : Array Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Checks if bit is set at given index -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def isBitSet (x : Bv10) (bitIndex : Nat) : Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Converts bitvector to boolean sequence -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Bv10ToSeq (x : Bv10) : Array Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Converts boolean to integer -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BoolToInt (a : Bool) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a then 1 else 0\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- XOR operation on booleans -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def XOR (a b : Bool) : Bool :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "(a \u2228 b) \u2227 \u00ac(a \u2227 b)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Performs traditional bit addition -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BitAddition (s t : Array Bool) : Array Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Main binary addition function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BinaryAddition (s t : Array Bool) : Array Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for BinaryAddition -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem BinaryAddition_spec (s t : Array Bool) :\ns.size = 10 \u2227 t.size = 10 \u2192\nlet result := BinaryAddition s t\nresult.size = 10 \u2227 result = BitAddition s t := sorry"
+      }
+    ]
+  },
+  "BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insert.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insert\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insert\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Binary search tree datatype -/\n"
+      },
+      {
+        "type": "constr",
+        "string": "inductive Tree where\n| Empty : Tree\n| Node : Tree \u2192 Int \u2192 Tree \u2192 Tree\nderiving Repr\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate ensuring all values in tree are less than max -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def maxValue : Tree \u2192 Int \u2192 Prop\n| Tree.Empty, _ => True\n| Tree.Node left v right, max =>\nmax > v \u2227 maxValue left max \u2227 maxValue right max\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate ensuring all values in tree are greater than min -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def minValue : Tree \u2192 Int \u2192 Prop\n| Tree.Empty, _ => True\n| Tree.Node left v right, min =>\nmin < v \u2227 minValue left min \u2227 minValue right min\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Helper function to get value from a tree node -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def getValue : Tree \u2192 Int\n| Tree.Empty => 0\n| Tree.Node _ v _ => v\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate defining a valid binary search tree -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BinarySearchTree : Tree \u2192 Prop\n| Tree.Empty => True\n| Tree.Node left value right =>\n(left = Tree.Empty \u2228 value > getValue left) \u2227\n(right = Tree.Empty \u2228 value < getValue right) \u2227\nBinarySearchTree left \u2227 BinarySearchTree right \u2227\nmaxValue left value \u2227 minValue right value\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Recursive insertion into binary search tree -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def insertRecursion (tree : Tree) (value : Int) : Tree := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for recursive insertion -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem insertRecursion_spec (tree : Tree) (value : Int) :\nBinarySearchTree tree \u2192\nlet res := insertRecursion tree value\nres \u2260 Tree.Empty \u2192\nBinarySearchTree res \u2227\n(\u2200 x, minValue tree x \u2227 x < value \u2192 minValue res x) \u2227\n(\u2200 x, maxValue tree x \u2227 x > value \u2192 maxValue res x) := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Insert value into binary search tree -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def insert (tree : Tree) (value : Int) : Tree := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for insertion -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem insert_spec (tree : Tree) (value : Int) :\nBinarySearchTree tree \u2192\nBinarySearchTree (insert tree value) := sorry"
+      }
+    ]
+  },
+  "BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insertRecursion.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insertRecursion\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insertRecursion\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Binary tree datatype -/\n"
+      },
+      {
+        "type": "constr",
+        "string": "inductive Tree where\n| Empty : Tree\n| Node : Tree \u2192 Int \u2192 Tree \u2192 Tree\nderiving Repr\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate ensuring all values in tree are less than max -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def maxValue : Tree \u2192 Int \u2192 Prop\n| Tree.Empty, _ => True\n| Tree.Node left v right, max =>\nmax > v \u2227 maxValue left max \u2227 maxValue right max\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate ensuring all values in tree are greater than min -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def minValue : Tree \u2192 Int \u2192 Prop\n| Tree.Empty, _ => True\n| Tree.Node left v right, min =>\nmin < v \u2227 minValue left min \u2227 minValue right min\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Helper function to get value from a tree node -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def getValue : Tree \u2192 Int\n| Tree.Empty => 0\n| Tree.Node _ v _ => v\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate defining a valid binary search tree -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BinarySearchTree : Tree \u2192 Prop\n| Tree.Empty => True\n| Tree.Node left value right =>\n(left = Tree.Empty \u2228 value > getValue left) \u2227\n(right = Tree.Empty \u2228 value < getValue right) \u2227\nBinarySearchTree left \u2227 BinarySearchTree right \u2227\nmaxValue left value \u2227 minValue right value\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Insert a value into a binary search tree -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def insertRecursion (tree : Tree) (value : Int) : Tree := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for insertRecursion -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem insertRecursion_spec (tree : Tree) (value : Int) :\nBinarySearchTree tree \u2192\nlet res := insertRecursion tree value\nres \u2260 Tree.Empty \u2192 BinarySearchTree res \u2227\n(\u2200 x, minValue tree x \u2227 x < value \u2192 minValue res x) \u2227\n(\u2200 x, maxValue tree x \u2227 x > value \u2192 maxValue res x) := sorry"
+      }
+    ]
+  },
+  "Clover_abs_Abs.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_abs_Abs\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_abs_Abs\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nAbs function that returns absolute value\nTranslated from Dafny method Abs(x: int) returns (y: int)\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Abs (x : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for Abs function:\n- If x \u2265 0 then result equals x\n- If x < 0 then result plus x equals 0\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Abs_spec (x : Int) :\n(x \u2265 0 \u2192 Abs x = x) \u2227\n(x < 0 \u2192 x + Abs x = 0) := sorry"
+      }
+    ]
+  },
+  "Clover_all_digits_allDigits.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_all_digits_allDigits\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_all_digits_allDigits\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nChecks if all characters in a string are digits.\nTranslated from Dafny method allDigits.\n\n@param s The input string to check\n@return True if all characters are digits, false otherwise\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def allDigits (s : String) : Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for allDigits method.\nEnsures the result is true if and only if all characters in the string are digits.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem allDigits_spec (s : String) :\nallDigits s = true \u2194 (\u2200 i, 0 \u2264 i \u2227 i < s.length \u2192 (s.get \u27e8i\u27e9).isDigit) := sorry"
+      }
+    ]
+  },
+  "Clover_array_append_append.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_array_append_append\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_array_append_append\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nAppends an integer to an array.\n\n@param a The input array\n@param b The integer to append\n@return The resulting array with b appended\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def append (a : Array Int) (b : Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for append method:\nThe resulting array should be equal to the input array with b appended\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem append_spec (a : Array Int) (b : Int) :\nappend a b = a.push b := sorry"
+      }
+    ]
+  },
+  "Clover_array_concat_concat.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_array_concat_concat\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_array_concat_concat\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nConcatenates two arrays of integers.\nEnsures:\n- The resulting array has length equal to sum of input array lengths\n- First part contains elements from first array\n- Second part contains elements from second array\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def concat (a : Array Int) (b : Array Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for concat method -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem concat_spec (a b : Array Int) :\nlet c := concat a b\nc.size = b.size + a.size \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 c[k]! = a[k]!) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < b.size \u2192 c[k + a.size]! = b[k]!) := sorry"
+      }
+    ]
+  },
+  "Clover_array_product_arrayProduct.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_array_product_arrayProduct\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_array_product_arrayProduct\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nComputes element-wise product of two arrays.\nTranslated from Dafny method arrayProduct.\n\n@param a First input array\n@param b Second input array\n@return c Result array containing element-wise products\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def arrayProduct (a : Array Int) (b : Array Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for arrayProduct method.\nEnsures:\n1. Output array has same length as inputs\n2. Each element is product of corresponding input elements\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem arrayProduct_spec (a b : Array Int) :\na.size = b.size \u2192\nlet c := arrayProduct a b\nc.size = a.size \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 i < c.size \u2192 a[i]! * b[i]! = c[i]!) := sorry"
+      }
+    ]
+  },
+  "Clover_array_sum_arraySum.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_array_sum_arraySum\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_array_sum_arraySum\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nAdds corresponding elements of two arrays to produce a new array.\nRequires arrays to be of equal length.\nEnsures output array has same length and contains element-wise sums.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def arraySum (a : Array Int) (b : Array Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for arraySum method:\n- Requires input arrays to have equal length\n- Ensures output array has same length as inputs\n- Ensures each element is sum of corresponding input elements\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem arraySum_spec (a b : Array Int) :\na.size = b.size \u2192\nlet c := arraySum a b\nc.size = a.size \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 a[i]! + b[i]! = c[i]!) := sorry"
+      }
+    ]
+  },
+  "Clover_avg_ComputeAvg.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_avg_ComputeAvg\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_avg_ComputeAvg\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "imports",
+        "string": "import Mathlib"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nComputeAvg computes the average of two integers.\n\n@param a First integer input\n@param b Second integer input\n@return The average of a and b, computed as (a+b)/2\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ComputeAvg (a b : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for ComputeAvg ensuring the result is (a+b)/2\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem ComputeAvg_spec (a b : Int) :\nComputeAvg a b = (a + b) / 2 := sorry"
+      }
+    ]
+  },
+  "Clover_below_zero_below_zero.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_below_zero_below_zero\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_below_zero_below_zero\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny below_zero method which checks if a sequence of operations\nresults in a negative value at any point.\n\n@param operations The input sequence of operations\n@return A tuple containing the resulting array and a boolean indicating if a negative value was found\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def below_zero (operations : Array Int) : Array Int \u00d7 Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for the below_zero method ensuring:\n1. Output array length is input length + 1\n2. First element is 0\n3. Each element is sum of previous plus operation\n4. Result true means some element was negative\n5. Result false means all elements non-negative\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem below_zero_spec (operations : Array Int) :\nlet (s, result) := below_zero operations\ns.size = operations.size + 1 \u2227\ns[0]! = 0 \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < s.size - 1 \u2192 s[i+1]! = s[i]! + operations[i]!) \u2227\n(result = true \u2192 \u2203 i, 1 \u2264 i \u2227 i \u2264 operations.size \u2227 s[i]! < 0) \u2227\n(result = false \u2192 \u2200 i, 0 \u2264 i \u2227 i < s.size \u2192 s[i]! \u2265 0) := sorry"
+      }
+    ]
+  },
+  "Clover_binary_search_BinarySearch.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_binary_search_BinarySearch\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_binary_search_BinarySearch\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nBinary search implementation translated from Dafny.\nTakes a sorted array and key, returns index where key should be inserted.\n\nOriginal Dafny requires/ensures:\n- Array must be sorted in ascending order\n- Return value n is between 0 and array length\n- All elements before n are less than key\n- If n equals array length, all elements are less than key\n- All elements from n onwards are greater than or equal to key\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BinarySearch (a : Array Int) (key : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nMain specification theorem for BinarySearch.\nCaptures the key properties that:\n1. Array must be sorted\n2. Return value is in valid range\n3. Elements before return index are less than key\n4. If return equals length, all elements are less than key\n5. Elements from return onwards are greater or equal to key\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem BinarySearch_spec (a : Array Int) (key : Int) (n : Int) :\n(\u2200 i j, 0 \u2264 i \u2227 i < j \u2227 j < a.size \u2192 a[i]! \u2264 a[j]!) \u2192\n(0 \u2264 n \u2227 n \u2264 a.size) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < n \u2192 a[i.toNat]! < key) \u2227\n(n = a.size \u2192 \u2200 i, 0 \u2264 i \u2227 i < a.size \u2192  a[i]!  < key) \u2227\n(\u2200 i, n \u2264 i \u2227 i < a.size \u2192 a[i.toNat]!  \u2265 key) := sorry"
+      }
+    ]
+  },
+  "Clover_bubble_sort_BubbleSort.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_bubble_sort_BubbleSort\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_bubble_sort_BubbleSort\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nBubbleSort method translated from Dafny.\nTakes an array of integers and sorts it in ascending order.\n\nOriginal Dafny ensures clauses:\n- Elements are sorted in ascending order\n- Output array is a permutation of input array\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BubbleSort (a : Array Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for BubbleSort method.\nEnsures:\n1. Array is sorted in ascending order\n2. Output array is a permutation of the input array\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem BubbleSort_spec (a : Array Int) :\nlet result := BubbleSort a\n\n-- Array is sorted in ascending order\n\n(\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < result.size \u2192 result[i]! \u2264 result[j]!) \u2227\n\n-- Output is a permutation of input (simplified)\n\nresult.size = a.size := sorry"
+      }
+    ]
+  },
+  "Clover_cal_ans_CalDiv.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_cal_ans_CalDiv\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_cal_ans_CalDiv\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nCalculates division and modulo of 191 by 7.\nTranslated from Dafny method CalDiv.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def CalDiv : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for CalDiv ensuring correct division and modulo results.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem CalDiv_spec :\nlet (x, y) := CalDiv\nx = 191 / 7 \u2227 y = 191 % 7 := sorry"
+      }
+    ]
+  },
+  "Clover_cal_sum_Sum.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_cal_sum_Sum\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_cal_sum_Sum\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nComputes the Sum of first N natural numbers.\nTranslated from Dafny method Sum.\n\n@param N The upper bound for summation\n@return The Sum of numbers from 1 to N\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SumPrime (N : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for SumPrime method:\n- Requires N to be non-negative\n- Ensures result equals N * (N + 1) / 2\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Sum_spec (N : Int) :\nN \u2265 0 \u2192 SumPrime N = N * (N + 1) / 2 := sorry"
+      }
+    ]
+  },
+  "Clover_canyon_search_CanyonSearch.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_canyon_search_CanyonSearch\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_canyon_search_CanyonSearch\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nCanyonSearch takes two sorted arrays and finds the minimum absolute difference between any pair of elements.\n\n@param a First sorted array of integers\n@param b Second sorted array of integers\n@return Minimum absolute difference between any pair of elements from the arrays\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def CanyonSearch (a b : Array Int) : Nat := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for CanyonSearch method:\n- Arrays must be non-empty\n- Arrays must be sorted\n- Result is the minimum absolute difference between any pair of elements\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem CanyonSearch_spec (a b : Array Int) :\na.size \u2260 0 \u2227 b.size \u2260 0 \u2227\n(\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < a.size \u2192 (a[i]!) \u2264 (a[j]!)) \u2227\n(\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < b.size \u2192 (b[i]!) \u2264 (b[j]!)) \u2192\n(\u2203 i j, 0 \u2264 i \u2227 i < a.size \u2227 0 \u2264 j \u2227 j < b.size \u2227\nCanyonSearch a b = if (a[i]!) < (b[j]!) then ((b[j]!) - (a[i]!)) else ((a[i]!) - (b[j]!))) \u2227\n(\u2200 i j, 0 \u2264 i \u2192 i < a.size \u2192 0 \u2264 j \u2192 j < b.size \u2192\nCanyonSearch a b \u2264 if (a[i]!) < (b[j]!) then ((b[j]!) - (a[i]!)) else ((a[i]!) - (b[j]!))) := sorry"
+      }
+    ]
+  },
+  "Clover_convert_map_key_convert_map_key.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_convert_map_key_convert_map_key\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_convert_map_key_convert_map_key\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nConverts a map by applying a function to its keys while preserving values.\nThe function must be injective (one-to-one) on the domain.\n\n@param inputs The input map from naturals to booleans\n@param f The function to apply to the keys\n@return A new map with transformed keys\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def convert_map_key (inputs : Nat \u2192 Option Bool) (f : Nat \u2192 Nat) : Nat \u2192 Option Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for convert_map_key ensuring:\n1. The mapping function is injective (one-to-one)\n2. Keys are preserved under transformation\n3. Values are preserved for transformed keys\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem convert_map_key_spec\n(inputs : Nat \u2192 Option Bool)\n(f : Nat \u2192 Nat) :\n(\u2200 n1 n2 : Nat, n1 \u2260 n2 \u2192 f n1 \u2260 f n2) \u2192\n(\u2200 k : Nat, (inputs k).isSome \u2194 (convert_map_key inputs f (f k)).isSome) \u2227\n(\u2200 k : Nat, (inputs k).isSome \u2192 convert_map_key inputs f (f k) = inputs k) := sorry"
+      }
+    ]
+  },
+  "Clover_copy_part_copy.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_copy_part_copy\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_copy_part_copy\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nCopies a portion of one array to another array.\n\n@param src The source array to copy from\n@param sStart The starting index in the source array\n@param dest The destination array to copy to\n@param dStart The starting index in the destination array\n@param len The number of elements to copy\n@return The modified destination array\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def copy (src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : Nat) (len : Nat) : Array Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for the copy method.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem copy_spec\n(src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : Nat) (len : Nat) :\nsrc.size \u2265 sStart + len \u2192\ndest.size \u2265 dStart + len \u2192\nlet r := copy src sStart dest dStart len\n(r.size = dest.size) \u2227\n(\u2200 i, i < dStart \u2192 r[i]! = dest[i]!) \u2227\n(\u2200 i, i \u2265 dStart + len \u2192 r[i]!   = dest[i]!) \u2227\n(\u2200 i, dStart \u2264 i \u2227 i < dStart + len \u2192\nr[i]! = src[sStart + (i - dStart)]!) :=\nsorry"
+      }
+    ]
+  },
+  "Clover_count_lessthan_CountLessThan.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_count_lessthan_CountLessThan\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_count_lessthan_CountLessThan\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nCounts elements in a list that are less than a threshold value.\nTranslated from Dafny method CountLessThan.\n\n@param numbers The input list of integers to check\n@param threshold The threshold value to compare against\n@return The count of elements less than threshold\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def CountLessThan (numbers : List Int) (threshold : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for CountLessThan ensuring the returned count matches\nthe size of the filtered list containing elements less than threshold.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem CountLessThan_spec (numbers : List Int) (threshold : Int) :\nCountLessThan numbers threshold =\n(numbers.filter (fun i => i < threshold)).length := sorry"
+      }
+    ]
+  },
+  "Clover_double_array_elements_double_array_elements.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_double_array_elements_double_array_elements\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_double_array_elements_double_array_elements\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nDoubles each element in an array.\n\n@param s The input array to modify\n@ensures Each element is doubled compared to its original value\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def double_array_elements (s : Array Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for double_array_elements:\nEnsures that each element in the output array is double its original value\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem double_array_elements_spec (s : Array Int) :\n\u2200 i, 0 \u2264 i \u2227 i < s.size \u2192\n(double_array_elements s)[i]! = 2 * s[i]! := sorry"
+      }
+    ]
+  },
+  "Clover_double_quadruple_DoubleQuadruple.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_double_quadruple_DoubleQuadruple\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_double_quadruple_DoubleQuadruple\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny method DoubleQuadruple which returns two values:\n- a: double of input x\n- b: quadruple of input x\n\nOriginal ensures clauses:\n- a == 2 * x\n- b == 4 * x\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def DoubleQuadruple (x : Int) : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for DoubleQuadruple method ensuring:\n1. First return value is double the input\n2. Second return value is quadruple the input\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem DoubleQuadruple_spec (x : Int) :\nlet (a, b) := DoubleQuadruple x\na = 2 * x \u2227 b = 4 * x := sorry"
+      }
+    ]
+  },
+  "Clover_even_list_FindEvenNumbers.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_even_list_FindEvenNumbers\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_even_list_FindEvenNumbers\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nFinds even numbers in an array and returns them in a new array.\nTranslated from Dafny specification.\n\nProperties:\n- All even numbers from input array are in output array\n- Output array only contains numbers from input array\n- All numbers in output array are even\n- Order of numbers in output preserves relative order from input\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def FindEvenNumbers (arr : Array Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Main specification for FindEvenNumbers -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem FindEvenNumbers_spec (arr : Array Int) (evenNumbers : Array Int)\n(h : evenNumbers = FindEvenNumbers arr) :\n(\u2200 x, x \u2208 arr.toList \u2227 x % 2 = 0 \u2192 x \u2208 evenNumbers.toList) \u2227\n(\u2200 x, x \u2209 arr.toList \u2192 x \u2209 evenNumbers.toList) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < evenNumbers.size \u2192 evenNumbers[k]! % 2 = 0) \u2227\n(\u2200 k l, 0 \u2264 k \u2227 k < l \u2227 l < evenNumbers.size \u2192\n\u2203 n m, 0 \u2264 n \u2227 n < m \u2227 m < arr.size \u2227\nevenNumbers[k]! = arr[n]! \u2227\nevenNumbers[l]! = arr[m]!) := sorry"
+      }
+    ]
+  },
+  "Clover_find_Find.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_find_Find\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_find_Find\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nFind method that searches for a key in an array and returns its index.\nTranslated from Dafny specification.\n\n@param a The array to search in\n@param key The value to search for\n@return The index of the first occurrence of key, or -1 if not found\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Find (a : Array Int) (key : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for Find method ensuring:\n1. Return index is within valid bounds (-1 to array length-1)\n2. If index is not -1, the element at that index equals key and no earlier elements equal key\n3. If index is -1, no elements in the array equal key\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Find_spec (a : Array Int) (key : Int) :\n-1 \u2264 Find a key \u2227 Find a key < a.size \u2227\n(Find a key \u2260 -1 \u2192 \u2203 idx : Nat, idx < a.size \u2227 a[idx]! = key \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < idx \u2192 a[i]! \u2260 key)) \u2227\n(Find a key = -1 \u2192 (\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 a[i]! \u2260 key)) := sorry"
+      }
+    ]
+  },
+  "Clover_has_close_elements_has_close_elements.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_has_close_elements_has_close_elements\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_has_close_elements_has_close_elements\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nChecks if an array of real numbers has any pair of elements with difference less than threshold.\n\n@param numbers Array of real numbers to check\n@param threshold The threshold value for comparing differences\n@return True if close elements exist, false otherwise\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def has_close_elements (numbers : Array Float) (threshold : Float) : Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nMain specification theorem for has_close_elements.\nEnsures:\n1. If result is true, there exist two different indices with elements closer than threshold\n2. If result is false, all pairs of elements have difference >= threshold\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem has_close_elements_spec\n(numbers : Array Float) (threshold : Float) :\nthreshold \u2265 0 \u2192\nlet res := has_close_elements numbers threshold\n(res \u2192 \u2203 i j : Int,\n0 \u2264 i \u2227 i < numbers.size \u2227\n0 \u2264 j \u2227 j < numbers.size \u2227\ni \u2260 j \u2227\n(if numbers[i.toNat]! - numbers[j.toNat]! < 0\nthen numbers[j.toNat]! - numbers[i.toNat]!\nelse numbers[i.toNat]! - numbers[j.toNat]!) < threshold) \u2227\n(!res \u2192 \u2200 i j : Int,\n1 \u2264 i \u2227 i < numbers.size \u2227\n0 \u2264 j \u2227 j < i \u2192\n(if numbers[i.toNat]! - numbers[j.toNat]! < 0\nthen numbers[j.toNat]! - numbers[i.toNat]!\nelse numbers[i.toNat]! - numbers[j.toNat]!) \u2265 threshold) := sorry"
+      }
+    ]
+  },
+  "Clover_insert_insert.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_insert_insert\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_insert_insert\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nInsert characters from one array into another at a specified position.\n\n@param line The destination array to insert into\n@param l Length of valid data in line array\n@param nl Source array to insert from\n@param p Number of characters to insert\n@param at Position to insert at\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def insert (line : Array Char) (l : Int) (nl : Array Char) (p : Int) (_ : Int) : Array Char := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for insert method translated from Dafny.\n\nPreconditions:\n- 0 \u2264 l + p \u2264 line.size\n- 0 \u2264 p \u2264 nl.size\n- 0 \u2264 at \u2264 l\n\nPostconditions:\n- Characters from nl are inserted at position 'at'\n- Characters before insert position are preserved\n- Characters after insert position are shifted right\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem insert_spec (line : Array Char) (l : Int) (nl : Array Char) (p : Int) (_at : Int) :\n0 \u2264 l + p \u2227 l + p \u2264 line.size \u2227\n0 \u2264 p \u2227 p \u2264 nl.size \u2227\n0 \u2264 _at \u2227 _at \u2264 l \u2192\nlet result := insert line l nl p _at\n\n-- Simplified postconditions focusing on basic properties\n\nresult.size = line.size \u2227\n\n\u2200 i, 0 \u2264 i \u2227 i < _at \u2192 result[i.toNat]! = line[i.toNat]! \u2227\n\n\u2200 i, 0 \u2264 i \u2227 i < p \u2192 result[(_at + i).toNat]! = nl[i.toNat]! := sorry"
+      }
+    ]
+  },
+  "Clover_integer_square_root_SquareRoot.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_integer_square_root_SquareRoot\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_integer_square_root_SquareRoot\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nComputes the integer square root of a natural number N.\nReturns r such that r*r \u2264 N < (r+1)*(r+1)\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SquareRoot (N : Nat) : Nat := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for SquareRoot function:\nFor input N, returns r where r*r \u2264 N < (r+1)*(r+1)\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem SquareRoot_spec (N : Nat) :\nlet r := SquareRoot N\nr * r \u2264 N \u2227 N < (r + 1) * (r + 1) := sorry"
+      }
+    ]
+  },
+  "Clover_is_even_ComputeIsEven.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_is_even_ComputeIsEven\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_is_even_ComputeIsEven\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nComputes whether a number is even.\nTranslated from Dafny method ComputeIsEven.\n\n@param x The input integer\n@return A boolean indicating if x is even\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ComputeIsEven (x : Int) : Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for ComputeIsEven.\nStates that the return value matches whether x is divisible by 2.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem ComputeIsEven_spec (x : Int) :\nComputeIsEven x = (x % 2 = 0) := sorry"
+      }
+    ]
+  },
+  "Clover_is_palindrome_IsPalindrome.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_is_palindrome_IsPalindrome\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_is_palindrome_IsPalindrome\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "imports",
+        "string": "import Mathlib"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nChecks if a sequence of characters is a palindrome.\nTranslated from Dafny method IsPalindrome.\n\n@param x The input sequence of characters to check\n@return True if the sequence is a palindrome, false otherwise\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def IsPalindrome (x : Array Char) : Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for IsPalindrome method.\nStates that the result is true if and only if each character matches its corresponding\ncharacter from the end of the sequence.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem IsPalindrome_spec (x : Array Char) :\nIsPalindrome x = true \u2194\n(\u2200 i, 0 \u2264 i \u2227 i < x.size \u2192 x[i]! = x[x.size - i - 1]!) := sorry"
+      }
+    ]
+  },
+  "Clover_linear_search1_LinearSearch.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_linear_search1_LinearSearch\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_linear_search1_LinearSearch\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nLinearSearch method that finds the first occurrence of element e in array a.\nReturns index n where element is found or array length if not found.\n\n@param a The input array to search\n@param e The element to search for\n@return n The index where element is found or array length if not found\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def LinearSearch (a : Array Int) (e : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for LinearSearch method ensuring:\n1. Return value n is within array bounds\n2. Either n is array length or element at index n equals e\n3. All elements before index n are not equal to e\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem LinearSearch_spec (a : Array Int) (e : Int) :\nlet n := LinearSearch a e\n0 \u2264 n \u2227 n \u2264 a.size \u2227\n(n = a.size \u2228 a[n.toNat]! = e) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < n \u2192 e \u2260 a[i.toNat]!) := sorry"
+      }
+    ]
+  },
+  "Clover_linear_search2_LinearSearch.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_linear_search2_LinearSearch\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_linear_search2_LinearSearch\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nLinearSearch finds the first occurrence of element e in array a.\nRequires that e exists somewhere in the array.\nEnsures the returned index contains e and all earlier elements are not e.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def LinearSearch (a : Array Int) (e : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for LinearSearch:\n- Requires e exists somewhere in array a\n- Ensures returned index n contains e\n- Ensures all elements before n are not equal to e\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem LinearSearch_spec (a : Array Int) (e : Int) :\n(\u2203 i, 0 \u2264 i \u2227 i < a.size \u2227 a[i]! = e) \u2192\nlet n := LinearSearch a e\n(0 \u2264 n \u2227 n < a.size \u2227 a[n.toNat]! = e) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < n \u2192 a[k.toNat]! \u2260 e) := sorry"
+      }
+    ]
+  },
+  "Clover_longest_prefix_LongestCommonPrefix.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_longest_prefix_LongestCommonPrefix\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_longest_prefix_LongestCommonPrefix\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nFinds the longest common prefix of two character arrays.\nEnsures:\n- The prefix length is \u2264 both input array lengths\n- The prefix matches the start of both arrays\n- The prefix ends at first mismatch or end of either array\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def LongestCommonPrefix (str1 : Array Char) (str2 : Array Char) : Array Char := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for LongestCommonPrefix -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem LongestCommonPrefix_spec (str1 : Array Char) (str2 : Array Char) (_prefix : Array Char) :\n_prefix.size \u2264 str1.size \u2227\n_prefix.size \u2264 str2.size \u2227\n(\u2200 i, i < _prefix.size \u2192 _prefix[i]! = str1[i]!) \u2227\n(\u2200 i, i < _prefix.size \u2192 _prefix[i]! = str2[i]!) \u2227\n(_prefix.size = str1.size \u2228\n_prefix.size = str2.size \u2228\nstr1[_prefix.size]! \u2260 str2[_prefix.size]!) := sorry"
+      }
+    ]
+  },
+  "Clover_match_Match.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_match_Match\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_match_Match\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny Match method which checks if a string matches a pattern.\nThe pattern can contain '?' characters which match any single character.\n\nParameters:\n- s: The input string to match\n- p: The pattern string to match against\n\nReturns:\n- A boolean indicating whether the string matches the pattern\n\nRequires:\n- The strings must be the same length\n\nEnsures:\n- The result is true iff for each position, either the characters match or\nthe pattern has a '?' character at that position\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Match (s p : String) : Bool := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for the Match function ensuring correct pattern matching behavior\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Match_spec (s p : String) :\ns.length = p.length \u2192\nMatch s p = (\u2200 n, 0 \u2264 n \u2227 n < s.length \u2192\n(s.get \u27e8n\u27e9 = p.get \u27e8n\u27e9 \u2228 p.get \u27e8n\u27e9 = '?')) := sorry"
+      }
+    ]
+  },
+  "Clover_max_array_maxArray.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_max_array_maxArray\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_max_array_maxArray\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslation of Dafny maxArray method.\nTakes an array of integers and returns the maximum value.\n\nPreconditions:\n- Array must have length >= 1\n\nPostconditions:\n- Result is greater than or equal to all array elements\n- Result equals some element in the array\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def maxArray (a : Array Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for maxArray method.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem maxArray_spec (a : Array Int) :\na.size \u2265 1 \u2192\nlet m := maxArray a\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 m \u2265 a[k]!) \u2227\n(\u2203 k, 0 \u2264 k \u2227 k < a.size \u2227 m = a[k]!) := sorry"
+      }
+    ]
+  },
+  "Clover_min_array_minArray.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_min_array_minArray\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_min_array_minArray\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nFinds the minimum element in an array of integers.\n\n@param a The input array of integers\n@return The minimum element in the array\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def minArray (a : Array Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for minArray function:\n- Requires array to be non-empty\n- Ensures result is less than or equal to all elements\n- Ensures result exists in the array\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem minArray_spec (a : Array Int) :\na.size > 0 \u2192\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 minArray a \u2264 a[i]!) \u2227\n(\u2203 i, 0 \u2264 i \u2227 i < a.size \u2227 minArray a = a[i]!) := sorry"
+      }
+    ]
+  },
+  "Clover_min_of_two_Min.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_min_of_two_Min\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_min_of_two_Min\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny Min method which returns the minimum of two integers.\nThe specification ensures that:\n- If x \u2264 y then z = x\n- If x > y then z = y\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def MinPrime (x y : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for MinPrime method ensuring it returns the minimum of two integers\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Min_spec (x y z : Int) :\nz = MinPrime x y \u2192\n((x \u2264 y \u2192 z = x) \u2227\n(x > y \u2192 z = y)) := sorry"
+      }
+    ]
+  },
+  "Clover_modify_2d_array_modify_array_element.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_modify_2d_array_modify_array_element\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_modify_2d_array_modify_array_element\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nModifies an element in a 2D array of natural numbers.\n\n@param arr The 2D array to modify\n@param index1 First index into the array\n@param index2 Second index into the array\n@param val The new value to set\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def modify_array_element (arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) : Array (Array Nat) :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for modify_array_element:\n- Requires index1 < array length\n- Requires index2 < length of subarray at index1\n- Requires all subarrays are distinct\n- Ensures only the specified element is modified\n- Ensures the element is set to the given value\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem modify_array_element_spec\n(arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) :\nindex1 < arr.size \u2192\nindex2 < (arr[index1]!).size \u2192\n(\u2200 i j : Nat, i < arr.size \u2227 j < arr.size \u2227 i \u2260 j \u2192 arr[i]! \u2260 arr[j]!) \u2192\nlet result := modify_array_element arr index1 index2 val\n(\u2200 i : Nat, i < arr.size \u2192 result[i]! = arr[i]!) \u2227\n(\u2200 i j : Nat, i < arr.size \u2227 j < (arr[i]!).size \u2227 (i \u2260 index1 \u2228 j \u2260 index2) \u2192\n(result[i]!)[j]! = (arr[i]!)[j]!) \u2227\n(result[index1]!)[index2]! = val :=\nsorry"
+      }
+    ]
+  },
+  "Clover_multi_return_MultipleReturns.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_multi_return_MultipleReturns\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_multi_return_MultipleReturns\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny method MultipleReturns which returns two values:\nmore = x + y and less = x - y\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def MultipleReturns (x y : Int) : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for MultipleReturns ensuring:\n1. The first return value equals x + y\n2. The second return value equals x - y\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem MultipleReturns_spec (x y : Int) :\nlet (more, less) := MultipleReturns x y\nmore = x + y \u2227 less = x - y := sorry"
+      }
+    ]
+  },
+  "Clover_online_max_onlineMax.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_online_max_onlineMax\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_online_max_onlineMax\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny onlineMax method which finds the maximum value in an array\nstarting from index x. Returns the maximum value m and position p.\n\n@param a The input array\n@param x The starting index\n@return (m, p) where m is the maximum value and p is its position\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def onlineMax (a : Array Int) (x : Int) : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for onlineMax method translated from Dafny.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem onlineMax_spec (a : Array Int) (x : Int) (m p : Int) :\n(1 \u2264 x \u2227 x < a.size) \u2192\n(a.size \u2260 0) \u2192\nlet (m, p) := onlineMax a x;\n(x \u2264 p \u2227 p < a.size) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < x \u2192 a[i.toNat]! \u2264 m) \u2227\n(\u2203 i, 0 \u2264 i \u2227 i < x \u2227 a[i.toNat]! = m) \u2227\n(x \u2264 p \u2227 p < a.size - 1 \u2192 (\u2200 i, 0 \u2264 i \u2227 i < p \u2192 a[i.toNat]! < a[p.toNat]!)) \u2227\n((\u2200 i, x \u2264 i \u2227 i < a.size \u2227 a[i.toNat]! \u2264 m) \u2192 p = a.size - 1) := sorry"
+      }
+    ]
+  },
+  "Clover_quotient_Quotient.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_quotient_Quotient\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_quotient_Quotient\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nComputes quotient and remainder of natural number division.\nTranslated from Dafny method Quotient.\n\nParameters:\n- x: Dividend (natural number)\n- y: Divisor (natural number)\n\nReturns:\n- Tuple of (remainder, quotient)\n\nSpecification:\n- Requires y \u2260 0\n- Ensures q * y + r = x \u2227 0 \u2264 r < y \u2227 0 \u2264 q\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def QuotientPrime (x : Nat) (y : Nat) : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification theorem for QuotientPrime method\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Quotient_spec (x : Nat) (y : Nat) :\ny \u2260 0 \u2192\nlet (r, q) := QuotientPrime x y\nq * y + r = x \u2227 0 \u2264 r \u2227 r < y \u2227 0 \u2264 q := sorry"
+      }
+    ]
+  },
+  "Clover_remove_front_remove_front.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_remove_front_remove_front\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_remove_front_remove_front\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny method remove_front which removes the first element of an array.\nThe original requires the array to be non-empty and ensures the result contains all elements except the first.\n\n@param a The input array\n@return The array with first element removed\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def remove_front (a : Array Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for remove_front method:\n- Requires array length > 0\n- Ensures result contains all elements except first\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem remove_front_spec (a : Array Int) :\na.size > 0 \u2192\n\u2200 (c : Array Int), remove_front a = c \u2192\nc.size = a.size - 1 := sorry"
+      }
+    ]
+  },
+  "Clover_replace_replace.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_replace_replace\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_replace_replace\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny replace method which modifies an array by replacing elements greater than k with -1.\nThe specification ensures:\n1. All elements > k are replaced with -1\n2. All elements \u2264 k remain unchanged\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def replace (arr : Array Int) (k : Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nMain specification theorem for replace method capturing the two key properties:\n1. Elements greater than k are replaced with -1\n2. Elements less than or equal to k remain unchanged\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem replace_spec (arr : Array Int) (k : Int) (i : Nat) :\ni < arr.size \u2192\nlet result := replace arr k\n(arr[i]! > k \u2192 result[i]! = -1) \u2227\n(arr[i]! \u2264 k \u2192 result[i]! = arr[i]!) := sorry"
+      }
+    ]
+  },
+  "Clover_return_seven_M.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_return_seven_M\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_return_seven_M\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nMethod M that takes an integer x and returns seven.\nEnsures the return value is exactly 7.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def M (x : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for method M stating that it always returns 7\nregardless of input.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem M_spec (x : Int) : M x = 7 := sorry"
+      }
+    ]
+  },
+  "Clover_reverse_reverse.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_reverse_reverse\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_reverse_reverse\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nReverses the elements of an array in place.\n\n@param a The array to reverse\n\nEnsures that each element at index i in the result is equal to\nthe original element at index (length-1-i)\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def reverse (a : Array Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for the reverse method.\nStates that after reversing, each element at index i equals\nthe original element at index (length-1-i).\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem reverse_spec (a : Array Int) :\n\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192\n(reverse a)[i]! = a[a.size - 1 - i]! := sorry"
+      }
+    ]
+  },
+  "Clover_rotate_rotate.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_rotate_rotate\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_rotate_rotate\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nRotates an array by a given offset.\nTranslated from Dafny method rotate.\n\n@param a The input array to rotate\n@param offset The rotation offset (must be non-negative)\n@return The rotated array\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def rotate (a : Array Int) (offset : Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for the rotate method.\nEnsures:\n1. Output array has same length as input\n2. Each element is correctly rotated by the offset\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem rotate_spec (a : Array Int) (offset : Int) :\noffset \u2265 0 \u2192\nlet b := rotate a offset\n(b.size = a.size) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 b[i]! = a[((i + offset) % a.size).toNat]!) := sorry"
+      }
+    ]
+  },
+  "Clover_selectionsort_SelectionSort.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_selectionsort_SelectionSort\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_selectionsort_SelectionSort\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSelectionSort method translated from Dafny.\nTakes an array of integers and sorts it in ascending order.\n\nOriginal Dafny ensures clauses:\n- Elements are sorted in ascending order\n- Output array is a permutation of input array\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SelectionSort (a : Array Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for SelectionSort method.\nEnsures:\n1. Array is sorted in ascending order\n2. Output array contains same elements as input (is a permutation)\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem SelectionSort_spec (a : Array Int) :\nlet result := SelectionSort a\n\n-- Array is sorted in ascending order\n\n(\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < result.size \u2192 result[i]! \u2264 result[j]!) \u2227\n\n-- Output is a permutation of input\n\n(result.toList = a.toList) := sorry"
+      }
+    ]
+  },
+  "Clover_slope_search_SlopeSearch.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_slope_search_SlopeSearch\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_slope_search_SlopeSearch\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSlopeSearch finds a key in a 2D array that is sorted both by rows and columns.\nTranslated from Dafny method SlopeSearch.\n\nParameters:\n- a: 2D array of integers\n- key: integer value to search for\n\nReturns:\n- (m,n): indices where key is found in array a\n\nRequirements:\n- Array is sorted in ascending order within each row\n- Array is sorted in ascending order within each column\n- Key exists somewhere in the array\n\nEnsures:\n- Returned indices are valid array bounds\n- Element at returned indices equals key\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SlopeSearch (a : Array (Array Int)) (key : Int) : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for SlopeSearch method\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem SlopeSearch_spec (a : Array (Array Int)) (key : Int) :\n(\u2200 i j j', 0 \u2264 i \u2227 i < a.size \u2227 0 \u2264 j \u2227 j < j' \u2227 j' < a[i]!.size \u2192\na[i]![j]! \u2264 a[i]![j']!) \u2192\n(\u2200 i i' j, 0 \u2264 i \u2227 i < i' \u2227 i' < a.size \u2227 0 \u2264 j \u2227 j < a[i]!.size \u2192\na[i]![j]! \u2264 a[i']![j]!) \u2192\n(\u2203 i j, 0 \u2264 i \u2227 i < a.size \u2227 0 \u2264 j \u2227 j < a[i]!.size \u2227 a[i]![j]! = key) \u2192\nlet (m, n) := SlopeSearch a key\n0 \u2264 m \u2227 m < a.size \u2227 0 \u2264 n \u2227 n < a[m.natAbs]!.size \u2227 a[m.natAbs]![n.natAbs]! = key := sorry"
+      }
+    ]
+  },
+  "Clover_swap_Swap.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_swap_Swap\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_swap_Swap\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSwap method that swaps two integer values.\nTranslated from Dafny method Swap(X: int, Y: int) returns(x: int, y: int)\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Swap (X Y : Int) : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for Swap method ensuring the values are swapped correctly.\nTranslated from ensures clauses in Dafny.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Swap_spec (X Y : Int) :\nlet (x, y) := Swap X Y\nx = Y \u2227 y = X := sorry"
+      }
+    ]
+  },
+  "Clover_swap_arith_SwapArithmetic.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_swap_arith_SwapArithmetic\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_swap_arith_SwapArithmetic\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny SwapArithmetic method which swaps two integer values.\nThe method takes two integers X and Y and returns them in swapped order.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SwapArithmetic (X Y : Int) : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for SwapArithmetic ensuring the values are swapped correctly:\n- First return value equals input Y\n- Second return value equals input X\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem SwapArithmetic_spec (X Y : Int) :\nlet (x, y) := SwapArithmetic X Y\nx = Y \u2227 y = X := sorry"
+      }
+    ]
+  },
+  "Clover_swap_bitvector_SwapBitvectors.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_swap_bitvector_SwapBitvectors\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_swap_bitvector_SwapBitvectors\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSwaps two 8-bit bitvectors.\n\n@param X First bitvector input\n@param Y Second bitvector input\n@return Tuple of swapped bitvectors (x,y)\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SwapBitvectors (X Y : UInt8) : UInt8 \u00d7 UInt8 := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for SwapBitvectors ensuring the values are swapped correctly.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem SwapBitvectors_spec (X Y : UInt8) :\nlet (x, y) := SwapBitvectors X Y\nx = Y \u2227 y = X := sorry"
+      }
+    ]
+  },
+  "Clover_swap_in_array_swap.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_swap_in_array_swap\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_swap_in_array_swap\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSwaps two elements in an array at indices i and j.\n\n@param arr The input array\n@param i First index\n@param j Second index\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def swap (arr : Array Int) (i j : Int) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for swap method:\n- Requires indices i,j are valid array indices\n- Ensures elements at i,j are swapped\n- Ensures all other elements remain unchanged\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem swap_spec (arr : Array Int) (i j : Int) :\n0 \u2264 i \u2227 i < arr.size \u2227 0 \u2264 j \u2227 j < arr.size \u2192\nlet arr' := swap arr i j\n(arr'[i.toNat]! = arr[j.toNat]! \u2227\narr'[j.toNat]! = arr[i.toNat]! \u2227\n\u2200 k, 0 \u2264 k \u2227 k < arr.size \u2227 k \u2260 i.toNat \u2227 k \u2260 j.toNat \u2192 arr'[k]! = arr[k]!) := sorry"
+      }
+    ]
+  },
+  "Clover_swap_sim_SwapSimultaneous.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_swap_sim_SwapSimultaneous\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_swap_sim_SwapSimultaneous\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTranslates the Dafny SwapSimultaneous method which swaps two integer values.\nOriginal ensures clauses:\n- ensures x == Y\n- ensures y == X\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def SwapSimultaneous (X Y : Int) : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for SwapSimultaneous stating that the output values are swapped.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem SwapSimultaneous_spec (X Y : Int) :\nlet (x, y) := SwapSimultaneous X Y\nx = Y \u2227 y = X := sorry"
+      }
+    ]
+  },
+  "Clover_test_array_TestArrayElements.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_test_array_TestArrayElements\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_test_array_TestArrayElements\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTestArrayElements method specification:\n- Takes an array of integers and a natural number j\n- Requires j to be a valid index in the array\n- Modifies array element at index j to be 60\n- Preserves all other array elements\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def TestArrayElements (a : Array Int) (j : Nat) : Array Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification theorem for TestArrayElements:\n- Precondition: j must be a valid array index\n- Postconditions:\n1. Element at index j becomes 60\n2. All other elements remain unchanged\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem TestArrayElements_spec (a : Array Int) (j : Nat) :\n(j < a.size) \u2192\nlet result := TestArrayElements a j\n(result[j]! = 60) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2227 k \u2260 j \u2192 result[k]! = a[k]!) := sorry"
+      }
+    ]
+  },
+  "Clover_triple_Triple.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_triple_Triple\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_triple_Triple\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nTriple method that multiplies input by 3.\nTranslated from Dafny method Triple.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Triple (x : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for Triple method.\nEnsures that the result equals 3 times the input.\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Triple_spec (x : Int) : Triple x = 3 * x := sorry"
+      }
+    ]
+  },
+  "Clover_two_sum_twoSum.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"Clover_two_sum_twoSum\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Clover_two_sum_twoSum\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nFinds two indices i,j in an array such that nums + nums = target.\nTranslated from Dafny method twoSum.\n\n@param nums The input array of integers\n@param target The target sum to find\n@return A pair of indices (i,j) that sum to target\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def twoSum (nums : Array Int) (target : Int) : Int \u00d7 Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/--\nSpecification for twoSum method ensuring:\n1. Array has at least 2 elements\n2. Solution exists in array\n3. Returns valid indices i,j where nums + nums = target\n4. No solution exists before index i\n5. No solution exists between i and j\n-/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem twoSum_spec (nums : Array Int) (target : Int) :\nnums.size > 1 \u2192\n(\u2203 i j, 0 \u2264 i \u2227 i < j \u2227 j < nums.size \u2227 nums[i]! + nums[j]! = target) \u2192\nlet (i, j) := twoSum nums target\n0 \u2264 i \u2227 i < j \u2227 j < nums.size \u2227 nums[i.toNat]! + nums[j.toNat]! = target \u2227\n(\u2200 ii jj, 0 \u2264 ii \u2227 ii < i \u2227 ii < jj \u2227 jj < nums.size \u2192 nums[ii.toNat]! + nums[jj.toNat]! \u2260 target) \u2227\n(\u2200 jj, i < jj \u2227 jj < j \u2192 nums[i.toNat]! + nums[jj.toNat]! \u2260 target) := sorry"
+      }
+    ]
+  },
+  "assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_BinarySearch.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_BinarySearch\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_BinarySearch\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if an array is sorted in ascending order -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Sorted (q : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i \u2264 j \u2192 j < q.size \u2192 q[i]! \u2264 q[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if all values in range satisfy the comparer function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def RangeSatisfiesComparer (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool ) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "0 \u2264 lowerBound \u2227 lowerBound \u2264 upperBound \u2227 upperBound \u2264 q.size \u2192\n\u2200 i, lowerBound \u2264 i \u2192 i < upperBound \u2192 comparer (q[i]!) key = true\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if all values in range satisfy the negation of comparer function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def RangeSatisfiesComparerNegation (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "RangeSatisfiesComparer q key lowerBound upperBound (fun n1 n2 => \u00ac(comparer n1 n2))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Binary search implementation with specifications -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BinarySearch (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) : Nat := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for BinarySearch -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem BinarySearch_spec (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) :\nSorted q \u2192\n0 \u2264 lowerBound \u2192 lowerBound \u2264 upperBound \u2192 upperBound \u2264 q.size \u2192\nRangeSatisfiesComparerNegation q key 0 lowerBound comparer \u2192\nRangeSatisfiesComparer q key upperBound q.size comparer \u2192\n(\u2200 n1 n2, comparer n1 n2 = (n1 > n2)) \u2228\n(\u2200 n1 n2, comparer n1 n2 = (n1 \u2265 n2)) \u2192\nlet index := BinarySearch q key lowerBound upperBound comparer\nlowerBound \u2264 index \u2227 index \u2264 upperBound \u2227\nRangeSatisfiesComparerNegation q key 0 index comparer \u2227\nRangeSatisfiesComparer q key index q.size comparer := sorry"
+      }
+    ]
+  },
+  "assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_FindRange.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_FindRange\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_FindRange\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if an array is sorted in ascending order -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Sorted (q : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i \u2264 j \u2192 j < q.size \u2192 q[i]! \u2264 q[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if all elements in a range satisfy a comparison with key -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def RangeSatisfiesComparer (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "0 \u2264 lowerBound \u2227 lowerBound \u2264 upperBound \u2227 upperBound \u2264 q.size \u2192\n\u2200 i, lowerBound \u2264 i \u2192 i < upperBound \u2192 comparer (q[i]!) key\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if all elements in a range satisfy the negation of a comparison with key -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def RangeSatisfiesComparerNegation (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "RangeSatisfiesComparer q key lowerBound upperBound (fun n1 n2 => \u00ac(comparer n1 n2))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Binary search implementation with comparison function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def BinarySearch (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for BinarySearch -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem BinarySearch_spec (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) :\nSorted q \u2192\n0 \u2264 lowerBound \u2192 lowerBound \u2264 upperBound \u2192 upperBound \u2264 q.size \u2192\nRangeSatisfiesComparerNegation q key 0 lowerBound comparer \u2192\nRangeSatisfiesComparer q key upperBound q.size comparer \u2192\n((\u2200 n1 n2, comparer n1 n2 = (n1 > n2)) \u2228 (\u2200 n1 n2, comparer n1 n2 = (n1 \u2265 n2))) \u2192\nlet index := BinarySearch q key lowerBound upperBound comparer\nlowerBound \u2264 index \u2227 index \u2264 upperBound \u2227\nRangeSatisfiesComparerNegation q key 0 index comparer \u2227\nRangeSatisfiesComparer q key index q.size comparer := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Find range of elements equal to key in sorted array -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def FindRange (q : Array Int) (key : Int) : Nat \u00d7 Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for FindRange -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem FindRange_spec (q : Array Int) (key : Int) :\nSorted q \u2192\nlet (left, right) := FindRange q key\nleft \u2264 right \u2227 right \u2264 q.size \u2227\n(\u2200 i, 0 \u2264 i \u2192 i < left \u2192 q[i]! < key) \u2227\n(\u2200 i, left \u2264 i \u2192 i < right \u2192 q[i]! = key) \u2227\n(\u2200 i, right \u2264 i \u2192 i < q.size \u2192 q[i]! > key) := sorry"
+      }
+    ]
+  },
+  "assertive-programming-assignment-1_tmp_tmp3h_cj44u_ProdAndCount_ProdAndCount.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"assertive-programming-assignment-1_tmp_tmp3h_cj44u_ProdAndCount_ProdAndCount\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: assertive-programming-assignment-1_tmp_tmp3h_cj44u_ProdAndCount_ProdAndCount\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Recursively computes product of positive numbers in sequence -/\n\npartial def RecursivePositiveProduct (q : Array Int) : Int :=\n\nif q.size = 0 then 1\n\nelse if q[0]! \u2264 0 then RecursivePositiveProduct (q.extract 1 q.size)\n\nelse q[0]! * RecursivePositiveProduct (q.extract 1 q.size)\n\n\n/-- Recursively counts occurrences of key in sequence -/\n\npartial def RecursiveCount (key : Int) (q : Array Int) : Int :=\n\nif q.size = 0 then 0\n\nelse if q[q.size - 1]! = key then\n\n1 + RecursiveCount key (q.extract 0 (q.size - 1))\n\nelse RecursiveCount key (q.extract 0 (q.size - 1))\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "doc",
+        "string": "/-- Helper function to count if element equals key -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def county (elem : Int) (key : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if elem = key then 1 else 0\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Helper function for product calculation -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def prody (elem : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if elem \u2264 0 then 1 else elem\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Main method that computes product of positives and count of key -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ProdAndCount (q : Array Int) (key : Int) : Int \u00d7 Nat := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for ProdAndCount method -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem ProdAndCount_spec (q : Array Int) (key : Int) :\nlet (prod, count) := ProdAndCount q key\nprod = RecursivePositiveProduct q \u2227\ncount = RecursiveCount key q := sorry"
+      }
+    ]
+  },
+  "assertive-programming-assignment-1_tmp_tmp3h_cj44u_SearchAddends_FindAddends.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"assertive-programming-assignment-1_tmp_tmp3h_cj44u_SearchAddends_FindAddends\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: assertive-programming-assignment-1_tmp_tmp3h_cj44u_SearchAddends_FindAddends\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if an array is sorted in ascending order -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Sorted (q : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 i j, 0 \u2264 i \u2192 i \u2264 j \u2192 j < q.size \u2192 q[i]! \u2264 q[j]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if there exist two indices whose elements sum to x -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def HasAddends (q : Array Int) (x : Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2203 i j, 0 \u2264 i \u2227 i < j \u2227 j < q.size \u2227 q[i]! + q[j]! = x\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if an index is valid for an array -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def IsValidIndex {T : Type} (q : Array T) (i : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "0 \u2264 i \u2227 i < q.size\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if two indices are ordered within array bounds -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def AreOrderedIndices {T : Type} (q : Array T) (i j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "0 \u2264 i \u2227 i < j \u2227 j < q.size\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if two indices contain elements that sum to x -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def AreAddendsIndices (q : Array Int) (x : Int) (i j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "IsValidIndex q i \u2227 IsValidIndex q j \u2192 q[i]! + q[j]! = x\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Predicate indicating if a subarray contains elements that sum to x -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def HasAddendsInIndicesRange (q : Array Int) (x : Int) (i j : Nat) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "AreOrderedIndices q i j \u2192 HasAddends (q.extract i (j + 1)) x\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Loop invariant predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def LoopInv (q : Array Int) (x : Int) (i j : Nat) (sum : Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "AreOrderedIndices q i j \u2227\nHasAddendsInIndicesRange q x i j \u2227\nAreAddendsIndices q sum i j\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Main FindAddends method specification -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem FindAddends_spec (q : Array Int) (x : Int) :\nSorted q \u2192 HasAddends q x \u2192\n\u2203 i j, i < j \u2227 j < q.size \u2227 q[i]! + q[j]! = x := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- FindAddends implementation -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def FindAddends (q : Array Int) (x : Int) : Nat \u00d7 Nat := sorry"
+      }
+    ]
+  },
+  "bbfny_tmp_tmpw4m0jvl0_enjoying_Find.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"bbfny_tmp_tmpw4m0jvl0_enjoying_Find\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: bbfny_tmp_tmpw4m0jvl0_enjoying_Find\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny max function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def max (a b : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a > b then a else b\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny Testing method -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Testing : Unit := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny abs function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def abs (x : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if x < 0 then -x else x\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny fib function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def fib (n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n = 0 then 0\nelse if n = 1 then 1\nelse fib (n - 1) + fib (n - 2)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny sorted predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def sorted (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 j k, 0 \u2264 j \u2192 j < k \u2192 k < a.size \u2192 a[j]! < a[k]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny Find method -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Find (a : Array Int) (key : Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for Find method -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem Find_spec (a : Array Int) (key : Int) (index : Int) :\n(0 \u2264 index \u2192 index < a.size \u2227 a[index.toNat]! = key) \u2227\n(index < 0 \u2192 \u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 a[k]! \u2260 key) := sorry"
+      }
+    ]
+  },
+  "bbfny_tmp_tmpw4m0jvl0_enjoying_FindMax.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "desc",
+        "string": "/-!\n{\n\"name\": \"bbfny_tmp_tmpw4m0jvl0_enjoying_FindMax\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: bbfny_tmp_tmpw4m0jvl0_enjoying_FindMax\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny max function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def max (a b : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a > b then a else b\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny Testing method -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def Testing : Unit := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny abs function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def abs (x : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if x < 0 then -x else x\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny fib function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def fib (n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n = 0 then 0\nelse if n = 1 then 1\nelse fib (n - 1) + fib (n - 2)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of Dafny sorted predicate -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def sorted (a : Array Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "\u2200 j k, 0 \u2264 j \u2192 j < k \u2192 k < a.size \u2192 a[j]! < a[k]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Translation of FindMax method specification -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def FindMax (a : Array Int) : Int := sorry\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Specification for FindMax -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem FindMax_spec (a : Array Int) (i : Int) :\na.size \u2265 1 \u2192\n(0 \u2264 i \u2227 i < a.size) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 a[k]! \u2264 a[i.toNat]!) := sorry"
+      }
+    ]
+  }
+}

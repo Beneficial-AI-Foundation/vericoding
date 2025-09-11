@@ -1,21 +1,18 @@
-import Std
 
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_bubble_sort_BubbleSort",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_bubble_sort_BubbleSort",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_bubble_sort_BubbleSort",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_bubble_sort_BubbleSort",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 BubbleSort method translated from Dafny.
@@ -34,10 +31,8 @@ Ensures:
 2. Output array is a permutation of the input array
 -/
 theorem BubbleSort_spec (a : Array Int) :
-  let result := BubbleSort a
-  -- Array is sorted in ascending order
-  (∀ i j, 0 ≤ i → i < j → j < result.size → result[i]! ≤ result[j]!) ∧
-  -- Output is a permutation of input (simplified)
-  result.size = a.size := sorry
-
-end DafnyBenchmarks
+let result := BubbleSort a
+-- Array is sorted in ascending order
+(∀ i j, 0 ≤ i → i < j → j < result.size → result[i]! ≤ result[j]!) ∧
+-- Output is a permutation of input (simplified)
+result.size = a.size := sorry

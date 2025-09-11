@@ -1,21 +1,18 @@
-import Std
 
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_double_array_elements_double_array_elements",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_double_array_elements_double_array_elements",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_double_array_elements_double_array_elements",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_double_array_elements_double_array_elements",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Doubles each element in an array.
@@ -30,7 +27,5 @@ Specification for double_array_elements:
 Ensures that each element in the output array is double its original value
 -/
 theorem double_array_elements_spec (s : Array Int) :
-  ∀ i, 0 ≤ i ∧ i < s.size →
-    (double_array_elements s)[i]! = 2 * s[i]! := sorry
-
-end DafnyBenchmarks
+∀ i, 0 ≤ i ∧ i < s.size →
+(double_array_elements s)[i]! = 2 * s[i]! := sorry

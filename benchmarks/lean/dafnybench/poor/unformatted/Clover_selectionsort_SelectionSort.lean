@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_selectionsort_SelectionSort",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_selectionsort_SelectionSort",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_selectionsort_SelectionSort",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_selectionsort_SelectionSort",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 SelectionSort method translated from Dafny.
@@ -33,10 +30,8 @@ Ensures:
 2. Output array contains same elements as input (is a permutation)
 -/
 theorem SelectionSort_spec (a : Array Int) :
-  let result := SelectionSort a
-  -- Array is sorted in ascending order
-  (∀ i j, 0 ≤ i → i < j → j < result.size → result[i]! ≤ result[j]!) ∧
-  -- Output is a permutation of input
-  (result.toList = a.toList) := sorry
-
-end DafnyBenchmarks
+let result := SelectionSort a
+-- Array is sorted in ascending order
+(∀ i j, 0 ≤ i → i < j → j < result.size → result[i]! ≤ result[j]!) ∧
+-- Output is a permutation of input
+(result.toList = a.toList) := sorry

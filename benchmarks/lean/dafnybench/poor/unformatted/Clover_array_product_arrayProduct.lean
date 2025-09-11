@@ -1,21 +1,18 @@
-import Std
 
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_array_product_arrayProduct",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_array_product_arrayProduct",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_array_product_arrayProduct",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_array_product_arrayProduct",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Computes element-wise product of two arrays.
@@ -34,9 +31,7 @@ Ensures:
 2. Each element is product of corresponding input elements
 -/
 theorem arrayProduct_spec (a b : Array Int) :
-  a.size = b.size →
-  let c := arrayProduct a b
-  c.size = a.size ∧
-  (∀ i, 0 ≤ i ∧ i < a.size → i < c.size → a[i]! * b[i]! = c[i]!) := sorry
-
-end DafnyBenchmarks
+a.size = b.size →
+let c := arrayProduct a b
+c.size = a.size ∧
+(∀ i, 0 ≤ i ∧ i < a.size → i < c.size → a[i]! * b[i]! = c[i]!) := sorry
