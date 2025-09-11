@@ -305,11 +305,268 @@ lemma MainLemma()
 class TestVerusCheatDetection:
     """Test cheat detection for Verus language."""
 
-    def test_no_cheats_detected_for_verus(self):
-        """Verus uses --no-cheating flag, so no string-based detection."""
+    def test_detects_assume_outside_preamble(self):
+        """Should detect 'assume' when it's outside vc-preamble sections."""
         code = """
-fn test_function() -> bool {
+fn test_function(x: u32) -> u32 {
+    assume(x > 0);
+    x + 1
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 1
+        assert cheats[0][0] == r'assume'
+        assert "assume" in cheats[0][1]
+
+    def test_detects_assume_in_word_outside_preamble(self):
+        """Should detect 'assume' even when part of a bigger word."""
+        code = """
+fn test_function() {
+    let assumed_value = true;  // This should be detected
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 1
+        assert cheats[0][0] == r'assume'
+
+    def test_ignores_assume_inside_preamble(self):
+        """Should ignore 'assume' when it's inside vc-preamble sections."""
+        code = """
+<vc-preamble>
+fn helper_with_precondition(x: u32) -> u32 {
+    assume(x > 0);
+    x + 1
+}
+</vc-preamble>
+
+fn main_function() -> u32 {
+    helper_with_precondition(5)
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 0
+
+    def test_detects_admit_outside_preamble(self):
+        """Should detect 'admit' when it's outside vc-preamble sections."""
+        code = """
+fn test_function() -> bool
+    ensures true
+{
+    admit();  // This should be detected
     true
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 1
+        assert cheats[0][0] == r'\badmit\b'
+        assert "admit" in cheats[0][1]
+
+    def test_ignores_admit_inside_preamble(self):
+        """Should ignore 'admit' when it's inside vc-preamble sections."""
+        code = """
+<vc-preamble>
+fn helper_with_admit() -> bool {
+    admit();
+    true
+}
+</vc-preamble>
+
+fn main_function() -> bool {
+    helper_with_admit()
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 0
+
+    def test_detects_external_body_outside_preamble(self):
+        """Should detect '#[verifier::external_body]' when it's outside vc-preamble sections."""
+        code = """
+#[verifier::external_body]
+fn bad_function() -> bool {
+    true
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 1
+        assert cheats[0][0] == r'#\[verifier::external'
+        assert "verifier external" in cheats[0][1]
+
+    def test_ignores_external_body_inside_preamble(self):
+        """Should ignore '#[verifier::external_body]' when it's inside vc-preamble sections."""
+        code = """
+<vc-preamble>
+#[verifier::external_body]
+fn helper_function() -> bool {
+    true
+}
+</vc-preamble>
+
+fn main_function() -> bool {
+    helper_function()
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 0
+
+    def test_detects_external_wildcard_outside_preamble(self):
+        """Should detect '#[verifier::external*' patterns when outside vc-preamble sections."""
+        code = """
+#[verifier::external_fn_specification]
+fn bad_function() -> bool {
+    true
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 1
+        assert cheats[0][0] == r'#\[verifier::external'
+        assert "verifier external" in cheats[0][1]
+
+    def test_ignores_external_wildcard_inside_preamble(self):
+        """Should ignore '#[verifier::external*' patterns when inside vc-preamble sections."""
+        code = """
+<vc-preamble>
+#[verifier::external_fn_specification]
+fn helper_function() -> bool {
+    true
+}
+</vc-preamble>
+
+fn main_function() -> bool {
+    helper_function()
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 0
+
+    def test_detects_exec_allows_no_decreases_outside_preamble(self):
+        """Should detect '#[verifier::exec_allows_no_decreases_clause]' when outside vc-preamble sections."""
+        code = """
+#[verifier::exec_allows_no_decreases_clause]
+fn bad_recursive_function(n: u32) -> u32 {
+    if n == 0 { 0 } else { bad_recursive_function(n - 1) }
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 1
+        assert cheats[0][0] == r'#\[verifier::exec_allows_no_decreases_clause\]'
+        assert "exec_allows_no_decreases_clause" in cheats[0][1]
+
+    def test_ignores_exec_allows_no_decreases_inside_preamble(self):
+        """Should ignore '#[verifier::exec_allows_no_decreases_clause]' when inside vc-preamble sections."""
+        code = """
+<vc-preamble>
+#[verifier::exec_allows_no_decreases_clause]
+fn helper_recursive_function(n: u32) -> u32 {
+    if n == 0 { 0 } else { helper_recursive_function(n - 1) }
+}
+</vc-preamble>
+
+fn main_function() -> u32 {
+    helper_recursive_function(5)
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 0
+
+    def test_multiple_cheat_types_mixed_locations_verus(self):
+        """Should detect multiple types of cheats, respecting preamble exclusions."""
+        code = """
+<vc-preamble>
+fn helper_with_precondition(x: u32) -> u32 {
+    assume(x > 0);
+    x + 1
+}
+
+#[verifier::external_body]
+fn helper_external() -> bool {
+    true
+}
+</vc-preamble>
+
+fn main_function() -> bool {
+    assume(true);  // Should be detected
+    admit();      // Should be detected
+    true
+}
+
+#[verifier::external_body]  // Should be detected
+fn bad_function() -> bool {
+    true
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 3  # assume, admit, external
+        cheat_patterns = {cheat[0] for cheat in cheats}
+        assert r'assume' in cheat_patterns
+        assert r'\badmit\b' in cheat_patterns
+        assert r'#\[verifier::external' in cheat_patterns
+
+    def test_multiple_preamble_sections_verus(self):
+        """Should handle multiple vc-preamble sections in Verus."""
+        code = """
+<vc-preamble>
+fn helper1() {
+    assume(true);
+}
+</vc-preamble>
+
+fn bad1() {
+    assume(false);  // Detected
+}
+
+<vc-preamble>
+fn helper2() {
+    admit();
+}
+</vc-preamble>
+
+fn bad2() {
+    admit();  // Detected
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 2  # assume and admit (one entry each)
+        cheat_patterns = {cheat[0] for cheat in cheats}
+        assert r'assume' in cheat_patterns
+        assert r'\badmit\b' in cheat_patterns
+
+    def test_no_cheats_in_clean_verus(self):
+        """Should detect no cheats in clean Verus code."""
+        code = """
+fn test_function(x: u32) -> u32
+    requires x > 0
+    ensures result > x
+{
+    x + 1
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 0
+
+    def test_no_cheats_with_preamble_only_verus(self):
+        """Should detect no cheats when all bypasses are only in preamble."""
+        code = """
+<vc-preamble>
+fn helper_precondition(x: u32) -> u32 {
+    assume(x > 0);
+    x + 1
+}
+
+#[verifier::external_body]
+fn helper_external() -> bool {
+    true
+}
+
+#[verifier::exec_allows_no_decreases_clause]
+fn helper_recursive(n: u32) -> u32 {
+    if n == 0 { 0 } else { helper_recursive(n - 1) }
+}
+</vc-preamble>
+
+fn main_function() -> bool
+    ensures result == true
+{
+    helper_external() && helper_precondition(5) > 0
 }
 """
         cheats = check_for_cheats(code, "verus")
