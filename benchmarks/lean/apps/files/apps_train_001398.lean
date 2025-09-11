@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_balanced_substrings (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bounds (s : String) : 
   s.all (fun c => c = '4' || c = '7') → 
   let n := s.length
@@ -66,6 +74,7 @@ info: 23
 -/
 -- #guard_msgs in
 -- #eval count_balanced_substrings "4747477"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

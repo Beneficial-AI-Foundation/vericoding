@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def make_grid (n m : Nat) (house_coords : List (Nat × Nat)) : List String := sorry
 
 def solve_house_distances (n m : Nat) (grid : List String) : List Nat := sorry
@@ -5,16 +6,22 @@ def solve_house_distances (n m : Nat) (grid : List String) : List Nat := sorry
 def sum_list : List Nat → Nat 
   | [] => 0
   | (x::xs) => x + sum_list xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_get (xs : List Nat) (i : Nat) : Option Nat :=
   match xs, i with
   | [], _ => none 
   | (x::_), 0 => some x
   | (_::xs), n+1 => list_get xs n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem house_distances_properties
   (n m : Nat) (coords : List (Nat × Nat))
   (h_n : n > 0) (h_m : m > 0)
@@ -36,6 +43,7 @@ theorem minimal_case
   let result := solve_house_distances n m (make_grid n m corner_houses);
   list_get result (n+m-3) = some 1 ∧
   sum_list result = 1 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def converter (n : Float) (decimals : Nat := 0) (base : Float := 3.14159265359) : String := sorry
 
 def intToFloat (n : Int) : Float := Float.ofInt n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem converter_sign_property {n : Float} {decimals : Nat} {base : Float}
   (h1 : -1000 ≤ n) (h2 : n ≤ 1000)
   (h3 : 1.1 ≤ base) (h4 : base ≤ 36) :
@@ -50,6 +58,7 @@ info: '-1101'
 -/
 -- #guard_msgs in
 -- #eval converter -13 0 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

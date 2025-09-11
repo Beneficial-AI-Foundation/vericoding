@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermfromroots_spec {n : Nat} (roots : Vector Float n) :
     ⦃⌜True⌝⦄
     hermfromroots roots
@@ -26,3 +33,4 @@ theorem hermfromroots_spec {n : Nat} (roots : Vector Float n) :
       )
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

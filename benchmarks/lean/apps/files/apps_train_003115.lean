@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def missing (indices : List Nat) (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem test_single_index_behavior_no_mission (s : String) (i : Nat) :
   let noSpaces := s.replace " " ""
   i ≥ noSpaces.length →
@@ -37,6 +45,7 @@ info: 'No mission today'
 -/
 -- #guard_msgs in
 -- #eval missing [12, 4, 6] "Good Morning"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

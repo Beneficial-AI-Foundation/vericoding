@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(C: int, Hr: int, Hb: int, Wr: int, Wb: int)
 {
   C >= 0 && Hr > 0 && Hb > 0 && Wr > 0 && Wb > 0
@@ -12,6 +13,7 @@ function Joy(redCount: int, blueCount: int, Hr: int, Hb: int): int
 {
   redCount * Hr + blueCount * Hb
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_library_fees (fee_per_day : Int) (max_fee : Int) (days_late : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fee_never_negative
   (fee_per_day : Int)
   (max_fee : Int) 
@@ -77,6 +85,7 @@ info: 15
 -/
 -- #guard_msgs in
 -- #eval calculate_library_fees 3 15 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

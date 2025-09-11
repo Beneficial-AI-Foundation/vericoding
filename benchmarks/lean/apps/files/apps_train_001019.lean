@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def longestValidPrefix (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValid (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_non_negative (s : String) : 
   longestValidPrefix s ≥ 0 := sorry
 
@@ -51,6 +58,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval longest_valid_prefix "<>>>"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

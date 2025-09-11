@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a_1: seq<int>, a_2: seq<int>)
 {
     n >= 1 &&
@@ -25,6 +26,7 @@ predicate IsValidResult(n: int, a_1: seq<int>, a_2: seq<int>, result: int)
     exists i :: 0 <= i < n && result == sum_range(a_1, 0, i + 1) + sum_range(a_2, i, n) &&
     forall i :: 0 <= i < n ==> result >= sum_range(a_1, 0, i + 1) + sum_range(a_2, i, n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

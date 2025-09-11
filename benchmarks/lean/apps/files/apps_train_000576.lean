@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_string_game (s : String) (dict : List String) : String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_output (s : String) (dict : List String) :
   let result := solve_string_game s dict
   result = "Teddy" ∨ result = "Tracy" :=
@@ -44,6 +52,7 @@ info: 'Teddy'
 -/
 -- #guard_msgs in
 -- #eval solve_string_game "mississippi" ["ssissi", "mippi", "mi", "ppi"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

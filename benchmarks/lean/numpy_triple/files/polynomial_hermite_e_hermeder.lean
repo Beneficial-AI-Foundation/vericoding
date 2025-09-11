@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermeder {n : Nat} (c : Vector Float (n + 1)) (m : Nat) (scl : Float) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermeder_spec {n : Nat} (c : Vector Float (n + 1)) (m : Nat) (scl : Float) 
     (h_pos_scl : scl > 0) (h_pos_m : m > 0) :
     ⦃⌜scl > 0 ∧ m > 0⌝⦄
@@ -21,3 +28,4 @@ theorem hermeder_spec {n : Nat} (c : Vector Float (n + 1)) (m : Nat) (scl : Floa
       (∀ i : Fin (n + 1), c.get i = 0 → ∀ j : Fin n, result.get j = 0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

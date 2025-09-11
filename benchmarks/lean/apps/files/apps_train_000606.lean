@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sort_numbers (nums : List Int) : List String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_numbers_ascending (nums : List Int) :
   let result := sort_numbers nums;
   result.length = nums.length ∧
@@ -23,6 +30,7 @@ theorem sort_numbers_bounds (nums : List Int) (h : nums ≠ []) :
   vals.head! ≤ vals.getLast! ∧ 
   ∀ x ∈ vals, vals.head! ≤ x ∧ x ≤ vals.getLast! := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

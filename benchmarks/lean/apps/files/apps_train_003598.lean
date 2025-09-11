@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def moment_of_time_in_space (s : String) : List Bool :=
   sorry
 
 def sum_digits (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_non_digits (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_three_bools (s : String) :
   let result := moment_of_time_in_space s
   List.length result = 3 ∧ 
@@ -54,6 +61,7 @@ info: [False, False, True]
 -/
 -- #guard_msgs in
 -- #eval moment_of_time_in_space "12:30 pm"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, p: seq<int>)
 {
     |p| == n && n >= 3
@@ -13,6 +14,7 @@ predicate IsMedianOfThree(a: int, b: int, c: int)
 {
     (a < b < c) || (a > b > c)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

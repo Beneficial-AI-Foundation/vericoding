@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def isValidHKPhoneNumber (s : String) : Bool := sorry
 def hasValidHKPhoneNumber (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidDigitStr (s : String) : Bool := sorry
 
 theorem valid_number_is_accepted {d1 d2 : String} : 
   isValidDigitStr d1 → isValidDigitStr d2 →
   isValidHKPhoneNumber (d1 ++ " " ++ d2) ∧ 
   hasValidHKPhoneNumber (d1 ++ " " ++ d2) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_numbers_are_rejected {s : String} :
   (∃ i, String.get? s i = some ' ') →
   (∃ i n, String.get? s i = some n ∧ (n < '0' ∨ n > '9')) →
@@ -56,6 +63,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval has_valid_HK_phone_number "8365 2986 is my number"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
     Id (Vector Float (max n m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
     hermadd c1 c2
@@ -25,3 +32,4 @@ theorem hermadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
                       else
                         0⌝⦄ := by
   sorry
+-- </vc-theorems>

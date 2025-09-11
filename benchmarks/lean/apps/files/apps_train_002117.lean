@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_xorinacci (a b n : Nat) : Nat := sorry
 
 theorem xorinacci_cycle (a b n : Nat) :
   solve_xorinacci a b n = solve_xorinacci a b (n + 3) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem xorinacci_initial_zero (a b : Nat) :
   solve_xorinacci a b 0 = a := sorry
 
@@ -38,6 +46,7 @@ info: 76
 -/
 -- #guard_msgs in
 -- #eval solve_xorinacci 325 265 1231232
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

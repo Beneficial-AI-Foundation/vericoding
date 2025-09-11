@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate merged(a1: seq<int>, a2: seq<int>, b: array<int>, start: int, end: int)
   reads b
   requires end - start  == |a2| + |a1|
@@ -23,6 +24,7 @@ predicate sorted(a: array<int>)
 {
   forall i, j :: 0 <= i < j < a.Length ==> a[i] <= a[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

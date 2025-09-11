@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def msort {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem msort_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     msort a
@@ -18,3 +25,4 @@ theorem msort_spec {n : Nat} (a : Vector Float n) :
       (∀ x : Float, (a.toList.count x) = (result.toList.count x))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

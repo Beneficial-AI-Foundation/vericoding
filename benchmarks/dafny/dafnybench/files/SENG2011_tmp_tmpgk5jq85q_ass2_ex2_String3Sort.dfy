@@ -1,8 +1,10 @@
+// <vc-preamble>
 predicate Sorted(a: string, low:int, high:int)
 requires 0 <= low <= high <= |a|
 { 
     forall j, k :: low <= j < k < high ==> a[j] <= a[k] 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

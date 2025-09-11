@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def berserk_rater (synopsis : List String) : String :=
   sorry
 
 def score (s : String) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.hasSubstring (s₁ s₂ : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem berserk_rater_output_format (synopsis : List String) :
   let result := berserk_rater synopsis
   (result = "worstest episode ever" ∨ result = "bestest episode ever" ∨ String.all result Char.isDigit) := sorry
@@ -49,6 +56,7 @@ info: 'bestest episode ever'
 -/
 -- #guard_msgs in
 -- #eval berserk_rater ["Holy chain knights being dicks", "Serpico almost getting clanged by Gatsu, but without losing his composure", "lame CG", "Luka getting kicked", "Gatsu going clang against the angels", "Gatsu clanging vs Mozgus, big time!"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

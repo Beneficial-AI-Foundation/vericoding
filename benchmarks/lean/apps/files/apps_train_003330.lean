@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def meters (n : Nat) : String := sorry
 
 def Valid_Suffix : List String := ["m", "km", "Mm", "Gm", "Tm", "Pm", "Em", "Zm", "Ym"]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem meters_ends_with_m_suffix (n : Nat) :
   n ≤ 10^24 → ∃ suffix ∈ Valid_Suffix, (meters n).endsWith suffix :=
 sorry
@@ -49,6 +57,7 @@ info: '5Mm'
 -/
 -- #guard_msgs in
 -- #eval meters 5000000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

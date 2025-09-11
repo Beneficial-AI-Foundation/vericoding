@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def multiply (x y : Int) : Int := sorry
 
 theorem multiply_commutative (x y : Int) : multiply x y = multiply y x := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiply_identity_right (x : Int) : multiply x 1 = x := sorry
 
 theorem multiply_zero_right (x : Int) : multiply x 0 = 0 := sorry
@@ -35,6 +43,7 @@ info: -8
 -/
 -- #guard_msgs in
 -- #eval multiply -2 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

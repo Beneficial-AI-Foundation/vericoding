@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_pattern (k : Nat) : List String := sorry
 
 theorem pattern_length (k : Nat) (h: k > 0) :
   (generate_pattern k).length = k := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_identical_rows (k : Nat) (h: k > 0) :
   ∀ i j, i < (generate_pattern k).length → j < (generate_pattern k).length →
   ((generate_pattern k).get ⟨i, by sorry⟩) = ((generate_pattern k).get ⟨j, by sorry⟩) := sorry
@@ -39,6 +47,7 @@ info: ['101', '101', '101']
 -/
 -- #guard_msgs in
 -- #eval generate_pattern 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

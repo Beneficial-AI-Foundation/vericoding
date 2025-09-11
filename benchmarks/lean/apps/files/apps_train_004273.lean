@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def endlessString (s : String) (start length : Int) : String := sorry
 
 theorem endless_string_length
@@ -9,7 +15,9 @@ theorem endless_string_length
   (length : Int)
   (h : length ≠ 0) :
   (endlessString s start length).length = Int.natAbs length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem endless_string_chars_subset
   (s : String)
   (start : Int)
@@ -41,6 +49,7 @@ info: 'zxyz'
 -/
 -- #guard_msgs in
 -- #eval endless_string "xyz" -4 -4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

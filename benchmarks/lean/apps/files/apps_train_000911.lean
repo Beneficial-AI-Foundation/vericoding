@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def Segment := List Int
 def SegmentList := List Segment
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_non_intersecting_segments (segments : SegmentList) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_is_non_negative (segments : SegmentList) :
   count_non_intersecting_segments segments ≥ 0 :=
   sorry
@@ -42,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_non_intersecting_segments arr2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

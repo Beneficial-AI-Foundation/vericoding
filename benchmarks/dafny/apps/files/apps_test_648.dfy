@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(m: int, b: int)
 {
   1 <= m <= 1000 && 1 <= b <= 10000
@@ -20,6 +21,7 @@ function RectangleValue(k: int, m: int, b: int): int
 {
   f(k * m, b - k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

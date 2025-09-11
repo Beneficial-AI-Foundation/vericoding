@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);
@@ -25,6 +26,7 @@ requires |lines| >= k + 1
     var processedArrays := ProcessOperations(lines, n, m, k, 0, row, col);
     BuildGrid(n, m, processedArrays.0, processedArrays.1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

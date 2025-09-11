@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_correct_characters (s1 s2 : String) : Nat := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem different_length_strings_raise_error {s1 s2 : String} : 
   s1.length ≠ s2.length → count_correct_characters s1 s2 = 0 := 
   sorry
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_correct_characters "dog" "dog"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

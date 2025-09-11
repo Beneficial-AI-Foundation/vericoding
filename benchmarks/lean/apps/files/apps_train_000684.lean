@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def consecutiveSum (arr : List Int) : List String := sorry
 
 theorem length_property (arr : List Int) 
     (h : arr.length ≥ 3) :
     (consecutiveSum arr).length = arr.length - 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_strings (arr : List Int) 
     (h : arr.length ≥ 3) :
     ∀ x ∈ consecutiveSum arr, x.length ≥ 1 := sorry
@@ -30,6 +38,7 @@ theorem all_zeros (arr : List Int)
     (h : arr.length ≥ 3)
     (h2 : ∀ x ∈ arr, x = 0) :
     ∀ x ∈ consecutiveSum arr, x = "0" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def solve (expr : String) : String := sorry
 
 def isBalanced (expr : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def validateResult (result : String) : Bool := sorry
 
 theorem single_variables_theorem (vars : List Char)
@@ -15,7 +20,9 @@ theorem single_variables_theorem (vars : List Char)
   let result := solve expr
   validateResult result ∧ 
   (∀ v ∈ vars, result.data.contains v) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nested_parens_theorem (vars : List Char)
   (h1 : ∀ c ∈ vars, c = 'x' ∨ c = 'y' ∨ c = 'z')
   (h2 : vars.length ≥ 1)
@@ -51,6 +58,7 @@ info: 'u-v+w+x+y-z'
 -/
 -- #guard_msgs in
 -- #eval solve "u-(v-w-(x+y))-z"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

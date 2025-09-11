@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def Matrix (α : Type u) (n : Nat) := Array (Array α)
 
 def standardDeterminant {n : Nat} (M : Matrix Int n) : Int := sorry
 
 def identityMatrix (n : Nat) : Matrix Int n := sorry
 def zeroMatrix (n : Nat) : Matrix Int n := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def scaleMatrix {n : Nat} (c : Int) (M : Matrix Int n) : Matrix Int n := sorry
 def determinant {n : Nat} (M : Matrix Int n) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem determinant_matches_standard_implementation {n : Nat} (M : Matrix Int n) :
   determinant M = standardDeterminant M := 
   sorry
@@ -44,6 +51,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval determinant #[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

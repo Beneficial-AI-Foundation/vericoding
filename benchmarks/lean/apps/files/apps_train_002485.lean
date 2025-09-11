@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hyphenJoin (s : String) : String := sorry
 
 theorem hyphen_join_word_count {words : List String} 
@@ -11,7 +17,9 @@ theorem hyphen_join_word_count {words : List String}
   (result.splitOn "-").length = words.length ∧ 
   (result.splitOn "-") = words := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hyphen_join_whitespace_empty (s : String)
   (h : ∀ c ∈ s.data, c.isWhitespace) :
   hyphenJoin s = "" :=
@@ -23,6 +31,7 @@ theorem hyphen_join_basic_properties (s : String)
   (¬ ∃ c ∈ result.data, c = ' ') ∧ 
   (s.trim ≠ "" → ((∃ c ∈ result.data, c = '-') ∨ (s.splitOn " ").length = 1)) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

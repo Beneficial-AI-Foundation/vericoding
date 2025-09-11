@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mgrid {rows cols : Nat} (start_r stop_r start_c stop_c : Float) 
     (h_rows : rows > 0) (h_cols : cols > 0) : 
     Id (Vector (Vector Float cols) rows × Vector (Vector Float cols) rows) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mgrid_spec {rows cols : Nat} (start_r stop_r start_c stop_c : Float) 
     (h_rows : rows > 0) (h_cols : cols > 0) :
     ⦃⌜rows > 0 ∧ cols > 0⌝⦄
@@ -36,3 +43,4 @@ theorem mgrid_spec {rows cols : Nat} (start_r stop_r start_c stop_c : Float)
                   (∀ i : Fin rows, ∀ j : Fin cols, 
                     start_c ≤ (result.2.get i).get j ∧ (result.2.get i).get j < stop_c)⌝⦄ := by
   sorry
+-- </vc-theorems>

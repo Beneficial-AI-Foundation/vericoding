@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidDeck(deck: string)
 {
     forall i :: 0 <= i < |deck| ==> deck[i] == 'a' || deck[i] == 'b' || deck[i] == 'c'
@@ -12,6 +13,7 @@ predicate ValidWinner(winner: char)
 {
     winner == 'A' || winner == 'B' || winner == 'C'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

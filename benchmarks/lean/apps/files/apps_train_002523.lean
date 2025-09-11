@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def michael_pays (cost : Float) : Float := sorry
 
 theorem michael_pays_is_nonnegative (cost : Float) : 
   michael_pays cost ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem michael_pays_less_than_cost (cost : Float) : 
   michael_pays cost ≤ cost := sorry
 
@@ -35,6 +43,7 @@ info: 70.0
 -/
 -- #guard_msgs in
 -- #eval michael_pays 80
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

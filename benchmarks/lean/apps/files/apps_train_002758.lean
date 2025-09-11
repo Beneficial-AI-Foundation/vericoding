@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_array {α : Type} (arr1 : List α) (arr2 : List Nat) : List α := sorry 
 
 theorem find_array_length_bound {α : Type} (arr1 : List α) (arr2 : List Nat) :
   List.length (find_array arr1 arr2) ≤ min (List.length arr1) (List.length arr2) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_array_elements_from_arr1 {α : Type} (arr1 : List α) (arr2 : List Nat) :
   ∀ x ∈ find_array arr1 arr2, x ∈ arr1 := sorry
 
@@ -40,6 +48,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval find_array [] [2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

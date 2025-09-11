@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 use vstd::multiset::*;
 
@@ -16,6 +17,7 @@ proof fn mset_equal(s: Multiset<char>, t: Multiset<char>) -> (equal: bool)
     assume(false);
     true
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

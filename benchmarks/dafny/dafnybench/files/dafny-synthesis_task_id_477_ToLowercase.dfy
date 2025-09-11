@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsUpperCase(c : char)
 {
     65 <= c as int <= 90
@@ -12,6 +13,7 @@ function Shift32(c : char) :  char
 {
     ((c as int + 32) % 128) as char
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

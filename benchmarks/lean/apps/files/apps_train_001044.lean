@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def Road : Type := String
 def Direction : Type := String
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverse_directions (directions : List Direction) : List Direction := sorry
 
 theorem reverse_directions_length {directions : List Direction} :
   directions ≠ [] →
   (reverse_directions directions).length = directions.length
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_directions_begin {directions : List Direction} :
   directions ≠ [] →
   (reverse_directions directions).head?.map (String.startsWith · "Begin") = some true
@@ -49,6 +56,7 @@ info: expected2
 -/
 -- #guard_msgs in
 -- #eval reverse_directions ["Begin on Old Madras Road", "Left on Domlur Flyover", "Left on 100 Feet Road", "Right on Sarjapur Road", "Right on Hosur Road", "Right on Ganapathi Temple Road"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_brown_regions (n : Nat) (grid : List String) : Nat := sorry
 
 def empty_grid : List String := ["00000000", "00000000", "00000000", "00000000", 
@@ -9,7 +15,9 @@ def empty_grid : List String := ["00000000", "00000000", "00000000", "00000000",
 theorem count_brown_regions_bounds {n : Nat} {grid : List String} 
   (h1 : n ≥ 3) : 
   0 ≤ count_brown_regions n grid ∧ count_brown_regions n grid < 21945 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_grid_gives_zero : 
   count_brown_regions 3 empty_grid = 0 := sorry
 
@@ -44,6 +52,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_brown_regions 1000000000 ["11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

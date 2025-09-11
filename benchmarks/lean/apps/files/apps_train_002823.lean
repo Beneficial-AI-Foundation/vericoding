@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def bin_to_hex (b : String) : String := sorry 
 def hex_to_bin (h : String) : String := sorry
 
 def is_hex_digit (c : Char) : Bool := sorry 
 
 -- Helper for theorem statement
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_hex_string (s : String) : Bool := 
   s.all is_hex_digit
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hex_to_bin_roundtrip (h : String) :
   is_hex_string h → 
   bin_to_hex (hex_to_bin h) = 
@@ -61,6 +68,7 @@ info: '10011010010'
 -/
 -- #guard_msgs in
 -- #eval hex_to_bin "04D2"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

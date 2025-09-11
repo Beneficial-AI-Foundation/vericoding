@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def denumerate (l : List (Int × Char)) : Option String := sorry
 
 theorem denumerate_preserves_mapping (l : List (Int × Char)) :
@@ -11,7 +17,9 @@ theorem denumerate_preserves_mapping (l : List (Int × Char)) :
       ∃ (pair : Int × Char), pair ∈ l ∧ 
         pair.1 = i ∧ result.data[i]! = pair.2
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_types_return_none (l : List (Int × Char)) (h : ∀ x ∈ l, ¬(x.2.isAlpha)) :
   denumerate l = none := sorry
 
@@ -45,6 +53,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval denumerate [(0, "a"), (2, "b")]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

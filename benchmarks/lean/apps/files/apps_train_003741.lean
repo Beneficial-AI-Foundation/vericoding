@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Int) : Int := sorry
 
 def bills : List Int := [500, 200, 100, 50, 20, 10]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_spec (n : Int) (h : n > 0) (h2 : n ≤ 10^6) :
   let result := solve n
   if n % 10 ≠ 0 then
@@ -49,6 +57,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve 125
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

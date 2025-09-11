@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def threeAmigos (nums : List Int) : List Int := sorry
 
 theorem threeAmigos_valid_size {nums : List Int} :
   let result := threeAmigos nums
   List.length result = 0 ∨ List.length result = 3 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_max (l : List Int) : Int := sorry
 def list_min (l : List Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem threeAmigos_consecutive {nums : List Int} (h : 3 ≤ List.length nums) :
   let result := threeAmigos nums
   result = [] ∨ ∃ i, i + 2 < List.length nums ∧ 
@@ -43,6 +50,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval three_amigos [2, 4, 5, 3, 6, 3, 1, 56, 7, 6, 3, 12]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

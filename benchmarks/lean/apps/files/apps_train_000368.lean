@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 def nthMagicalNumber (n a b : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem same_number_property {n : Nat} (h : n > 0) (h2 : n ≤ 10000) :
   nthMagicalNumber n 2 2 = (2 * n) % MOD := by
   sorry
@@ -38,6 +46,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval nth_magical_number 5 2 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

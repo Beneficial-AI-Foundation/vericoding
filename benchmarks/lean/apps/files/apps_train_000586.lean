@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isLowercaseLetter (c : Char) : Bool := 
   let n := c.toNat
   97 ≤ n && n ≤ 122
@@ -7,13 +8,19 @@ def countDescendingPairs (s : List Char) : Nat :=
   | [] => 0
   | [_] => 0 
   | x::y::xs => (if x > y then 1 else 0) + countDescendingPairs (y::xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def findKDescendingPairs (k : Nat) : List Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_is_k (k : Nat) (k_pos : k > 0) :
   let result := findKDescendingPairs k
   countDescendingPairs result = k :=
@@ -52,6 +59,7 @@ info: 'dcba'
 -/
 -- #guard_msgs in
 -- #eval find_k_descending_pairs 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

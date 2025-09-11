@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_size (w h d : Nat) : Nat × Nat := sorry
 
 theorem get_size_volume (w h d : Nat) :
   (get_size w h d).2 = w * h * d := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_size_surface_area (w h d : Nat) :
   (get_size w h d).1 = 2 * (w*h + h*d + w*d) := sorry
 
@@ -37,6 +45,7 @@ info: [600, 1000]
 -/
 -- #guard_msgs in
 -- #eval get_size 10 10 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

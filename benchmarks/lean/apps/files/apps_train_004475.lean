@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def convert_digit_to_word (n : Nat) : String := sorry
 
 def numbers_of_letters (n : Nat) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem convert_digit_to_word_returns_valid_word 
   (n : Nat) (h : n ≤ 9) : 
   convert_digit_to_word n ∈ ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"] := sorry
@@ -46,6 +54,7 @@ info: ['nineninenine', 'onetwo', 'six', 'three', 'five', 'four']
 -/
 -- #guard_msgs in
 -- #eval numbers_of_letters 999
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

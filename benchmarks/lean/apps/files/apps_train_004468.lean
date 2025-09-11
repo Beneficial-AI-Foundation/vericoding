@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def evaluate (s : String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem evaluate_single_number {n : Int} (h : 1 ≤ n ∧ n ≤ 999) :
   evaluate (toString n) = n :=
   sorry
@@ -53,6 +61,7 @@ info: -18
 -/
 -- #guard_msgs in
 -- #eval evaluate "1-2*2/2*2-1*7+3"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

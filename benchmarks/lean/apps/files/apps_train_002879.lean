@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def factorial : Int → Option Int
   | n => sorry
 
 -- Basic factorial properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem factorial_negative {n : Int} : 
   n < 0 → factorial n = none := sorry
 
@@ -45,6 +53,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval factorial -5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_unique_bst (n : Nat) : Nat := sorry
 
 theorem num_unique_bst_base_cases : 
   num_unique_bst 0 = 1 ∧ 
   num_unique_bst 1 = 1 ∧ 
   num_unique_bst 2 = 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem num_unique_bst_positive (n : Nat) : 
   num_unique_bst n > 0 := sorry
 
@@ -44,6 +52,7 @@ info: 42
 -/
 -- #guard_msgs in
 -- #eval num_unique_bst 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

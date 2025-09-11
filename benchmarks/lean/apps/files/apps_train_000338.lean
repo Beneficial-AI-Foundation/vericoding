@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def contains_permutation (s1 s2 : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def IsPermutation (s1 s2 : String) : Prop :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem contains_permutation_empty_string {s : String} :
   contains_permutation "" s = true :=
 sorry
@@ -49,6 +56,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval contains_permutation "hello" "ooolleoabceh"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

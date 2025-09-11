@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def digitSum (n : Int) : Int := sorry
 def find_numbers (n : Int) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_numbers_valid_values {n : Int} (h : 0 ≤ n ∧ n ≤ 10000) :
   let result := find_numbers n
   ∀ x ∈ result,
@@ -40,6 +48,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval len find_numbers(39)
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

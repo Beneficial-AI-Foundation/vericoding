@@ -1,3 +1,4 @@
+// <vc-preamble>
 function DistinctStrings(strings: seq<string>): set<string>
 {
     set i | 0 <= i < |strings| :: strings[i]
@@ -7,6 +8,7 @@ predicate ValidInput(strings: seq<string>)
 {
     |strings| >= 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

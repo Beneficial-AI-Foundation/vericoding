@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_even_odd_pairs (xs : List Nat) : Nat := sorry
 
 theorem count_even_odd_pairs_empty :
   count_even_odd_pairs [] = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_even_odd_pairs_all_even :
   count_even_odd_pairs [2,4,6,1] = 3 := sorry
 
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_even_odd_pairs [2, 4, 6, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

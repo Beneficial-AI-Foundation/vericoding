@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn is_odd(x: int) -> bool {
     x % 2 != 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

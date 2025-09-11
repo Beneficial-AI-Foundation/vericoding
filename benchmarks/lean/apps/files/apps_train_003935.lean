@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ROT135 (s : String) : String := sorry
 
 theorem length_preserved (s : String) :
   (ROT135 s).length = s.length := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reversible (s : String) :
   ROT135 (ROT135 s) = s := by sorry
 
@@ -40,6 +48,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval ROT135 "1234567890"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

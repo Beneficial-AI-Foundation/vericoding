@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_good_permutations (n k : Nat) : List Nat := sorry 
 
 def factorial (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem n_zero_returns_empty_list {n k : Nat} :
   n = 0 ∧ k = 1 → solve_good_permutations n k = [] := sorry
 
@@ -19,6 +27,7 @@ theorem result_is_valid_permutation {n k : Nat} (h1 : n > 0) :
 theorem invalid_k_returns_minus_one {n k : Nat} (h1 : n > 0) :
   k > factorial (n-1) * n →
   solve_good_permutations n k = [0] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

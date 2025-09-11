@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def check_password (s : String) : String :=
   sorry
 
@@ -12,13 +13,19 @@ def has_uppercase (s : String) : Bool :=
 
 def has_digit (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def has_special (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem password_too_short {s : String} (h : s.length < 8) : 
   check_password s = "not valid" :=
 sorry
@@ -57,6 +64,7 @@ info: 'valid'
 -/
 -- #guard_msgs in
 -- #eval check_password "P@ssw0rd123"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

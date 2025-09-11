@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def prisonAfterNDays (cells : List Nat) (n : Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prison_result_format 
   (cells : List Nat) (n : Nat) 
   (h1 : cells.length = 8)
@@ -21,6 +29,7 @@ theorem prison_endpoint_cells
   result.get ⟨0, sorry⟩ = 0 ∧ 
   result.get ⟨7, sorry⟩ = 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

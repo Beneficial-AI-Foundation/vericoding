@@ -1,17 +1,24 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
 
 /-- Helper function to evaluate a Laguerre polynomial at a given point -/
 axiom evaluateLaguerrePolynomial {k : Nat} : Vector Float k → Float → Float
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lagadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 
     Id (Vector Float (max n m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lagadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
     lagadd c1 c2
@@ -25,3 +32,4 @@ theorem lagadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
       (n > 0 ∨ m > 0 → max n m > 0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

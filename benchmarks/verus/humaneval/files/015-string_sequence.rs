@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -45,6 +46,7 @@ spec fn string_sequence(n: nat) -> (result:Seq<char>)
         string_sequence((n - 1) as nat).add(seq![' '].add(number_to_char(n)))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

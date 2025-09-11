@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isPowerOfTwo (n: Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem power_of_two_positive (n : Int) : 
   n ≤ 0 → isPowerOfTwo n = false :=
   sorry
@@ -33,6 +41,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_power_of_two 218
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebpow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat := 16) 
     (h_nonzero : n > 0) (h_maxpower : pow ≤ maxpower) : 
     Id (Vector Float (if pow = 0 then 1 else 1 + (n - 1) * pow)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebpow_spec {n : Nat} (c : Vector Float n) (pow : Nat) 
     (maxpower : Nat := 16) (h_nonzero : n > 0) (h_maxpower : pow ≤ maxpower) :
     ⦃⌜n > 0 ∧ pow ≤ maxpower⌝⦄
@@ -38,3 +45,4 @@ theorem chebpow_spec {n : Nat} (c : Vector Float n) (pow : Nat)
                   ∃ k : Nat, k ≥ 2 ∧ k < result.toList.length ∧ 
                     result.get ⟨k, sorry⟩ ≠ 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def flipgame (fronts : List Nat) (backs : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem flipgame_result_in_input_lists (fronts backs : List Nat) :
   fronts.length = backs.length →
   let result := flipgame fronts backs
@@ -56,6 +64,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval flipgame [1, 2] [2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

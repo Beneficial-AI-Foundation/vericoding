@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def checkGoodMatrix (n : Nat) (entries : List (Nat × Nat × Nat)) : String := sorry 
 
 theorem check_good_matrix_result_is_yes_or_no (n : Nat) (entries : List (Nat × Nat × Nat)) : 
   let result := checkGoodMatrix n entries
   result = "yes" ∨ result = "no" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_matrix_is_good (n : Nat) :
   checkGoodMatrix n [] = "yes" := sorry
 
@@ -39,6 +47,7 @@ info: 'yes'
 -/
 -- #guard_msgs in
 -- #eval check_good_matrix 3 [[2, 2, 0], [2, 3, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

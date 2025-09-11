@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def arr : Nat → List Nat
 | n => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arr_length (n : Nat) : (arr n).length = n := sorry
 
 theorem arr_sequence (n : Nat) (i : Nat) (h : i < n) : 
@@ -28,6 +36,7 @@ info: [0, 1]
 -/
 -- #guard_msgs in
 -- #eval arr 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

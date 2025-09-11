@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def duplicateCount (text : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem duplicateCount_nonnegative (text : String) : 
   duplicateCount text ≥ 0 := by
   sorry
@@ -52,6 +60,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval duplicate_count "Indivisibilities"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

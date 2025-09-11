@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Winner := String
 
 def determine_winner (n : Nat) (k : Nat) (stack : List Nat) (moves : List Nat) : Winner := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem winner_is_valid (n : Nat) (k : Nat) (stack : List Nat) (moves : List Nat)
   (hn : n ≥ 1) (hk : k ≥ 1 ∧ k ≤ 10) 
   (hstack : stack.length ≤ n ∧ ∀ x ∈ stack, x ≥ 1)
@@ -35,6 +43,7 @@ info: 'Garry'
 -/
 -- #guard_msgs in
 -- #eval determine_winner 2 1 [1, 2] [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lagroots {n : Nat} (c : Vector Float (n + 1)) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lagroots_spec {n : Nat} (c : Vector Float (n + 1)) 
     (h_nonzero : c.get ⟨n, Nat.lt_succ_self n⟩ ≠ 0) :
     ⦃⌜c.get ⟨n, Nat.lt_succ_self n⟩ ≠ 0⌝⦄
@@ -21,3 +28,4 @@ theorem lagroots_spec {n : Nat} (c : Vector Float (n + 1))
       True -- Placeholder for more complex root verification properties
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

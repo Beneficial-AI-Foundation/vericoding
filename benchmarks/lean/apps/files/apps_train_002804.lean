@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def String.reverse (s : String) : String := sorry
 
 def split (s : String) (sep : String) : List String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverse_sentence (s : String) : String := sorry
 
 theorem word_count_preserved (words : List String) :
@@ -12,7 +17,9 @@ theorem word_count_preserved (words : List String) :
   let reversed := reverse_sentence sentence
   (split sentence " ").length = (split reversed " ").length :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string :
   reverse_sentence "" = "" :=
 sorry
@@ -41,6 +48,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval reverse_sentence ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

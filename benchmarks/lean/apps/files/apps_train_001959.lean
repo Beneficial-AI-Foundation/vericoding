@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_winning_knights (n : Nat) (m : Nat) (fights : List (Nat × Nat × Nat)) : List Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_result (n : Nat) (fights : List (Nat × Nat × Nat)) (result : List Nat) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_winning_knights_valid_output (n m : Nat) (fights : List (Nat × Nat × Nat)) 
   (h1 : 1 ≤ n) (h2 : n ≤ 100) (h3 : 1 ≤ m) (h4 : m ≤ 100)
   (h5 : ∀ (f : Nat × Nat × Nat), f ∈ fights → 
@@ -25,6 +32,7 @@ theorem single_fight_winner_pattern (n : Nat) (h : 2 ≤ n) (h2 : n ≤ 10) :
   result.head? = some 0 ∧ 
   (∀ x ∈ result.tail, x = 1) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

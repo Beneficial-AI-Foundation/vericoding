@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dad_filter (s : String) : String := sorry
 
 def containsDoubleComma (s : String) : Bool := 
@@ -13,7 +19,9 @@ def containsDoubleComma (s : String) : Bool :=
       else check (y :: rest)
   check s.data
   termination_by check chars => chars.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dad_filter_no_double_commas {s : String} {n : Nat} (h : n > 0 ∧ n ≤ 10) :
   containsDoubleComma (dad_filter (s ++ String.mk (List.replicate n ','))) = false := sorry
 
@@ -46,6 +54,7 @@ info: "Dead or alive, you're coming with me"
 -/
 -- #guard_msgs in
 -- #eval dad_filter "Dead or alive,,,, you"re coming with me,,,   "
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

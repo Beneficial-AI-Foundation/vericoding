@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def minion_game (s : String) : String := sorry 
 
 def is_vowel (c : Char) : Bool := 
   c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def score_from_result (result : String) : Nat :=
   if result == "Draw" then 0
   else String.toNat! (result.splitOn " " |>.get! 1)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem minion_game_result_format (s : String) (h : s.all (fun c => c.isUpper)) :
   let result := minion_game s
   result.startsWith "Kevin " ∨ result.startsWith "Stuart " ∨ result = "Draw" := sorry
@@ -53,6 +60,7 @@ info: 'Kevin 3'
 -/
 -- #guard_msgs in
 -- #eval minion_game "AE"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

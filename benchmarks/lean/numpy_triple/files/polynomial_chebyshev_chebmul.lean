@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebmul {m n : Nat} (c1 : Vector Float m) (c2 : Vector Float n) 
     (hm : m > 0) (hn : n > 0) : Id (Vector Float (m + n - 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebmul_spec {m n : Nat} (c1 : Vector Float m) (c2 : Vector Float n) 
     (hm : m > 0) (hn : n > 0) :
     ⦃⌜m > 0 ∧ n > 0⌝⦄
@@ -41,3 +48,4 @@ theorem chebmul_spec {m n : Nat} (c1 : Vector Float m) (c2 : Vector Float n)
                   result.get ⟨3, sorry⟩ = 4 ∧
                   result.get ⟨4, sorry⟩ = 1.5)⌝⦄ := by
   sorry
+-- </vc-theorems>

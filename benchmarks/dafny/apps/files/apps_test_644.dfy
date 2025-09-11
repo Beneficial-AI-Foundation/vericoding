@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(lines: seq<string>)
 {
     |lines| > 0
@@ -9,6 +10,7 @@ predicate IsOverflow(x: int)
 {
     x > MAX_VALUE()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_neighbors (arr : List (List Char)) (i j : Nat) : List Char := sorry
 
 def land_perimeter (arr : List (List Char)) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem land_perimeter_output_format {arr : List (List Char)}
   (h1 : ∀ row ∈ arr, ∀ c ∈ row, c = 'X' ∨ c = 'O')
   (h2 : ∀ row ∈ arr, row.length = arr[0]!.length)
@@ -47,6 +55,7 @@ info: 'Total land perimeter: 4'
 -/
 -- #guard_msgs in
 -- #eval land_perimeter ["X"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function tri(n: nat): nat
   decreases if n % 2 == 0 then 0 else n
 {
@@ -5,6 +6,7 @@ function tri(n: nat): nat
   else if n % 2 == 0 then 1 + n / 2
   else tri(n - 1) + tri(n - 2) + tri(n + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def ValidEvent : Type := String
 
 def VALID_EVENTS : List ValidEvent := 
@@ -5,13 +6,19 @@ def VALID_EVENTS : List ValidEvent :=
 
 def isValidEvent (event : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def howMuchCoffee (events : List String) : Nat ⊕ String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_events_ignored (events : List String) : 
   (∀ e ∈ events, e ∉ VALID_EVENTS) → 
   howMuchCoffee events = .inl 0 :=
@@ -69,6 +76,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval how_much_coffee ["cw", "CAT", "cw=others"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,11 @@
+// <vc-preamble>
 function sum(a: array<int>, i: int): int
     requires 0 <= i < a.Length
     reads a
 {
     a[i] + if i == 0 then 0 else sum(a, i - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

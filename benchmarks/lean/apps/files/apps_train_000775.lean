@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def assign_bowlers (n k l : Nat) : List Nat := sorry
 
 theorem assign_bowlers_properties {n k l : Nat} (h1 : n > 0) (h2 : k > 0) (h3 : l > 0) :
@@ -12,7 +18,9 @@ theorem assign_bowlers_properties {n k l : Nat} (h1 : n > 0) (h2 : k > 0) (h3 : 
     (∀ i : Fin (n-1), result[i.val]! ≠ result[i.val + 1]!) ∧
     (∀ i : Fin k, (result.count (i.val + 1)) ≤ l)
   ) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_bowler_case (k l : Nat) (h1 : k > 0) (h2 : l > 0) :
   assign_bowlers 1 k l = [1] := sorry 
 
@@ -39,6 +47,7 @@ info: [1, 2, 3]
 -/
 -- #guard_msgs in
 -- #eval assign_bowlers 3 3 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

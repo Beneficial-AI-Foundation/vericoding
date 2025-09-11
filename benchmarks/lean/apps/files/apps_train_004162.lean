@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_lowest_int (k : Nat) : Nat := sorry
 
 def digits_to_sorted_list (n : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_lowest_int_positive (k : Nat) (h : k > 0) : 
   find_lowest_int k > 0 := sorry
 
@@ -28,6 +36,7 @@ info: 2394
 -/
 -- #guard_msgs in
 -- #eval find_lowest_int 599
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

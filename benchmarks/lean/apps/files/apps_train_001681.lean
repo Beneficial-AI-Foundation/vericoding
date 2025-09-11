@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def mystery (n : Nat) : Nat :=
   sorry
 
 def mystery_inv (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def name_of_mystery : String :=
   "Gray code"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mystery_inverse : ∀ n : Nat, n < 2^32 → 
   mystery (mystery_inv n) = n ∧ mystery_inv (mystery n) = n :=
   sorry
@@ -50,6 +57,7 @@ info: 'Gray code'
 -/
 -- #guard_msgs in
 -- #eval name_of_mystery
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

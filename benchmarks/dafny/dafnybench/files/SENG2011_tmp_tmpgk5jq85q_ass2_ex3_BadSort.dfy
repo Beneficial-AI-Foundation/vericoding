@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate sortedbad(s:string) 
 {
 
@@ -9,6 +10,7 @@ predicate sortedbad(s:string)
 
     forall i,j :: 0 <= i < |s| && 0 <= j < |s| && s[i] == 'd' && (s[j] == 'a' || s[j] == 'b') ==> i > j
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

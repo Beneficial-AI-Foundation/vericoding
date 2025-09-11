@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def sum : List Int → Int
   | [] => 0
   | (h :: t) => h + sum t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_centered (arr : List Int) (n : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list_property (n : Int) :
   is_centered [] n = (n = 0) := sorry
 
@@ -37,6 +44,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_centered [2, 10, 4, 1, 6, 9] 15
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

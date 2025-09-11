@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_snake_kingdom (n: Nat) (k: Nat) (snakes: List (List Nat)) : Int := sorry
 
 -- When there are no snakes, solution is impossible
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_snakes_impossible {n k : Nat} (h1: 3 ≤ n) (h2: n ≤ 100) (h3: 1 ≤ k) 
     (h4: k ≤ 10) (h5: k ≤ n) : 
   solve_snake_kingdom n k [] = -1 := sorry
@@ -32,6 +40,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_snake_kingdom 7 3 [[1, 1, 6, 1], [1, 2, 3, 2], [5, 2, 5, 2], [2, 6, 2, 6], [6, 2, 6, 4], [5, 6, 5, 7], [7, 1, 7, 4]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function AlternatingSum(n: int): int
     requires n > 0
 {
@@ -8,6 +9,7 @@ function AlternatingSum(n: int): int
 predicate ValidInput(n: int) {
     n > 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

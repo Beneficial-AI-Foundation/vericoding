@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_unique_string (s : List Char) (k : Nat) : List Char := sorry
 
 theorem solve_unique_string_properties 
@@ -12,7 +18,9 @@ theorem solve_unique_string_properties
   List.length (List.filter (fun c => c ∈ s) result) ≤ k ∧
   (∀ c ∈ result, c.isLower) ∧
   List.length result = List.length (List.eraseDups result) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_zero_k_property
   (s : List Char) (result : List Char) 
   (h : result = solve_unique_string s 0)
@@ -36,6 +44,7 @@ info: 'a'
 -/
 -- #guard_msgs in
 -- #eval solve_unique_string "b" 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

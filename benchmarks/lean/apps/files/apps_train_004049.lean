@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def greet (name : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem greet_special_case (name : String) :
   name = "Johnny" → greet name = "Hello, my love!" :=
   sorry
@@ -37,6 +45,7 @@ info: 'Hello, my love!'
 -/
 -- #guard_msgs in
 -- #eval greet "Johnny"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

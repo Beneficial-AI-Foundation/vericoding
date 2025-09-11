@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def self_converge (n : Nat) : Int := sorry
 
 theorem self_converge_properties (n : Nat) 
@@ -14,7 +20,9 @@ theorem self_converge_properties (n : Nat)
   (self_converge n = result) ∧
   -- Leading zeros don't affect result
   (self_converge (n * 10) = result) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_same_digits_converge (n d : Nat)
   (h1 : d ≥ 0 ∧ d ≤ 9)
   (h2 : ∃ k, n = d * (10^k - 1)/(10-1) ∧ k = 4) :
@@ -41,6 +49,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval self_converge 90900
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

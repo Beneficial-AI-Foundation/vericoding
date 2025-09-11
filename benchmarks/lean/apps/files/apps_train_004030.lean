@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def isSorted (l : List Int) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
 
 def noDuplicates (l : List Int) : Prop :=
   ∀ x i j, i < j → j < l.length → l[i]! = x → l[j]! ≠ x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mergeArrays (a b : List Int) : List Int := sorry
 
 theorem merge_arrays_is_sorted (a b : List Int) (h₁ : isSorted a) (h₂ : isSorted b) : 
   isSorted (mergeArrays a b) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem merge_arrays_no_duplicates (a b : List Int) :
   noDuplicates (mergeArrays a b) := sorry
 
@@ -45,6 +52,7 @@ info: [1, 2, 3]
 -/
 -- #guard_msgs in
 -- #eval merge_arrays #[1, 2, 3] #[]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

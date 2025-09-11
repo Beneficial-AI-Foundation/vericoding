@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nbr_of_laps (x y : Nat) : Nat × Nat := sorry
 
 theorem nbr_of_laps_positive (x y : Nat)
@@ -8,7 +14,9 @@ theorem nbr_of_laps_positive (x y : Nat)
   (h2 : y > 0) :
   let (bob, charles) := nbr_of_laps x y
   bob > 0 ∧ charles > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nbr_of_laps_equal_distance (x y : Nat)
   (h1 : x > 0)
   (h2 : y > 0) :
@@ -36,6 +44,7 @@ info: (1, 1)
 -/
 -- #guard_msgs in
 -- #eval nbr_of_laps 5 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

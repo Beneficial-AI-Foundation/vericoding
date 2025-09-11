@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def word_problem (rules : List (String × String)) (from_str to_str : String) (applications : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem word_problem_returns_bool (rules : List (String × String)) (from_str to_str : String) (applications : Nat) :
   word_problem rules from_str to_str applications = true ∨ word_problem rules from_str to_str applications = false :=
   sorry
@@ -43,6 +51,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval word_problem [("a", "b"), ("b", "c")] "a" "d" 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

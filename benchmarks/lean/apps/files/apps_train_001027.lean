@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_modulo (arr : List Nat) : Nat := sorry 
 
 @[simp] def max_list (l : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_modulo_non_negative (arr : List Nat) (h : arr.length > 0) :
   find_max_modulo arr ≥ 0 := sorry
 
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_max_modulo [100]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def MOD := 1000000007
 
 def maxSumRangeQuery (nums : List Nat) (requests : List (Nat × Nat)) : Nat :=
@@ -5,13 +6,19 @@ def maxSumRangeQuery (nums : List Nat) (requests : List (Nat × Nat)) : Nat :=
 
 def listSum (l : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSortDescending (l : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxSumRangeQuery_bounded
   (nums : List Nat) 
   (requests : List (Nat × Nat))
@@ -62,6 +69,7 @@ info: 47
 -/
 -- #guard_msgs in
 -- #eval max_sum_range_query [1, 2, 3, 4, 5, 10] [[0, 2], [1, 3], [1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

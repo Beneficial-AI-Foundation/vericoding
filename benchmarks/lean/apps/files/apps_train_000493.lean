@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverse_parentheses (s : String) : String := sorry
 
 theorem reverse_parentheses_length 
   (s : String) : 
   s.length = (reverse_parentheses s).length + s.data.count '(' + s.data.count ')' := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_parentheses_no_parens
   (s : String) :
   ¬ ((reverse_parentheses s).contains '(') ∧ ¬ ((reverse_parentheses s).contains ')') :=
@@ -44,6 +52,7 @@ info: 'apmnolkjihgfedcbq'
 -/
 -- #guard_msgs in
 -- #eval reverse_parentheses "a(bcdefghijkl(mno)p)q"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

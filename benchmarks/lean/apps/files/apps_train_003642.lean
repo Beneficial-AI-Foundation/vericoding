@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def factors : Int → List Int 
   := sorry
 
 variable (result : List Int)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem factors_positive_int (x : Int) (h : x > 0) : 
   let result := factors x
   (∀ f ∈ result, x % f = 0) ∧
@@ -54,6 +62,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval factors 4.5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sort (xs : List α) (lt : α → α → Bool) : List α := sorry
 
 def reverse_fun (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_preserved (s : String) : 
   (reverse_fun s).length = s.length := sorry
 
@@ -37,6 +45,7 @@ info: 'oHlel'
 -/
 -- #guard_msgs in
 -- #eval reverse_fun "Hello"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

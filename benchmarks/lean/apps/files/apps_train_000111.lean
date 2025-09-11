@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_button_presses (a b : Int) : Int := sorry
 
 theorem min_button_presses_non_negative (a b : Int) :
   min_button_presses a b ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_button_presses_equal_inputs (a : Int) :
   min_button_presses a a = 0 := sorry
 
@@ -32,6 +40,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_button_presses 3 9
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

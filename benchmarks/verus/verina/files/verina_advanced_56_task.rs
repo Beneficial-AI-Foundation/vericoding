@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -28,6 +29,7 @@ spec fn is_subsequence(xs: Seq<i32>, ys: Seq<i32>) -> bool
         }
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

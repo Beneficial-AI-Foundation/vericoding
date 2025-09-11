@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def valid_parentheses (s : String) : Bool := sorry 
 
 theorem valid_balanced_strings 
@@ -12,7 +18,9 @@ theorem valid_balanced_strings
     -- 3. Characters between parentheses can be arbitrary
     True) :
   valid_parentheses s = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_without_parens
   (s : String)
   (h : ∀ c, c ∈ s.data → c ≠ '(' ∧ c ≠ ')') :
@@ -50,6 +58,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval valid_parentheses "hi(hi))("
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

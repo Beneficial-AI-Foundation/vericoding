@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Tree = Empty | Node(left: Tree, value: int, right: Tree)
 
 predicate BinarySearchTree(tree: Tree)
@@ -27,6 +28,7 @@ predicate minValue(tree: Tree, min: int)
   case Empty => true
   case Node(left,v,right) => (min < v) && minValue(left, min) && minValue(right, min)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

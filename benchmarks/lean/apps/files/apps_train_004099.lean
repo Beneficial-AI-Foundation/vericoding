@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def uniq {α} [BEq α] (lst : List α) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uniq_no_consecutive_duplicates {α} [BEq α] (lst : List α) :
   let result := uniq lst
   ∀ i, i < result.length - 1 → result[i]? ≠ result[i+1]? :=
@@ -53,6 +61,7 @@ info: [None, 'a']
 -/
 -- #guard_msgs in
 -- #eval uniq [None, "a", "a"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

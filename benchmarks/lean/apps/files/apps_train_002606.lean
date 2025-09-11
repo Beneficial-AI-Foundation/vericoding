@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def cube_odd (xs : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cube_odd_integers (xs : List Int) :
   cube_odd xs = (xs.filter (fun x => x % 2 ≠ 0)
                 |>.map (fun x => x * x * x)
@@ -41,6 +49,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval cube_odd ["a", 12, 9, "z", 42]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

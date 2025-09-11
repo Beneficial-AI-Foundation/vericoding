@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_friendships (friend_days : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_friendships_upper_bound (friend_days : List Int) (h : friend_days ≠ []) :
   max_friendships friend_days ≤ friend_days.length := 
   sorry
@@ -41,6 +49,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval max_friendships [4, 4, 5, 5, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

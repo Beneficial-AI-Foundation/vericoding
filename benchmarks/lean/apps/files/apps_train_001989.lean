@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_nyc_roads (events : List (Nat × Nat × Nat × Nat)) : List Nat := sorry
 
 -- The output length matches number of queries
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_length_correct {events : List (Nat × Nat × Nat × Nat)} :
   List.length (solve_nyc_roads events) = 
   List.length (List.filter (fun e => e.1 == 2) events) := sorry
@@ -42,6 +50,7 @@ info: [0]
 -/
 -- #guard_msgs in
 -- #eval solve_nyc_roads [(1, 100, 50, 1), (2, 4294967396, 1)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

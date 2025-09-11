@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_good_substrings (s : String) : Nat :=
   sorry
 
 @[simp]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_good_substrings_nonnegative (s : String) :
   count_good_substrings s ≥ 0 := sorry
 
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_test_case "aaa"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

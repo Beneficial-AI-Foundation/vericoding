@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -53,6 +54,7 @@ proof fn count_min_property(v: Seq<int>, x: int, i: int)
         count_min_property(v, x, i-1);
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

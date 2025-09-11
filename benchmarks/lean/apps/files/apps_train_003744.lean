@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def decipher_message (s : String) : String := sorry
 
 theorem decipher_preserves_length (s : String) (h : s.length > 0) :
   (decipher_message s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decipher_preserves_chars (s : String) (h : s.length > 0) :
   ∀ c, (c ∈ (decipher_message s).data ↔ c ∈ s.data) := sorry
 
@@ -38,6 +46,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval decipher_message "796820 2 "
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

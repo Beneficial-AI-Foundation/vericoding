@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     (|s| == 3 || (|s| == 4 && s[3] == '\n')) &&
@@ -18,6 +19,7 @@ predicate IsPermutationOfABC(input_chars: string)
     input_chars[1] != input_chars[2] && 
     input_chars[0] != input_chars[2]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

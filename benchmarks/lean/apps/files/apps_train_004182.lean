@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isOdd (n : Nat) : Bool :=
   sorry
 
 def split_odd_and_even (n : Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def charToNat (c : Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem split_returns_list (n : Nat) (h : n > 0) :
   ∃ (l : List Nat), split_odd_and_even n = l
   := by sorry
@@ -21,6 +28,7 @@ theorem digits_have_same_parity (n : Nat) (h : n > 0) :
       ∀ h : 0 < digits.length,
         isOdd (charToNat d) = isOdd (charToNat (digits[0]'h))
   := by sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

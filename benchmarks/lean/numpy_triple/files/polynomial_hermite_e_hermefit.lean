@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -10,14 +11,20 @@ def hermiteE : Nat → Float → Float
 | n + 2, x => 
     let coeff := Float.ofNat (n + 1)
     x * hermiteE (n + 1) x - coeff * hermiteE n x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermefit {m : Nat} (x : Vector Float m) (y : Vector Float m) (deg : Nat) 
     (h_size : deg + 1 ≤ m) (h_nonempty : m > 0) : Id (Vector Float (deg + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermefit_spec {m : Nat} (x : Vector Float m) (y : Vector Float m) (deg : Nat)
     (h_size : deg + 1 ≤ m) (h_nonempty : m > 0) :
     ⦃⌜deg + 1 ≤ m ∧ m > 0⌝⦄
@@ -69,3 +76,4 @@ theorem hermefit_spec {m : Nat} (x : Vector Float m) (y : Vector Float m) (deg :
         Float.abs ((residuals.zip basis_vals).map (fun p => p.1 * p.2)).sum < 1e-10)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

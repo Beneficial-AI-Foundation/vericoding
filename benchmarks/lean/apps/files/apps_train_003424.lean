@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fixed_xor (a b : String) : String := sorry
 
 theorem fixed_xor_identity {a b : String} (h : a.length = b.length) :
   let result := fixed_xor a b
   fixed_xor result b = a := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fixed_xor_commutative {a b : String} (h : a.length = b.length) :
   fixed_xor a b = fixed_xor b a := sorry 
 
@@ -35,6 +43,7 @@ info: '746865206b696420646f6e277420706c6179'
 -/
 -- #guard_msgs in
 -- #eval fixed_xor "1c0111001f010100061a024b53535009181c" "686974207468652062756c6c277320657965"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

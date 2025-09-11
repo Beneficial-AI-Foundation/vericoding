@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_barbecue_sticks (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bbq_sticks_positive (n: Nat) (h: n ≥ 3): 
   solve_barbecue_sticks n > 0 :=
   sorry
@@ -37,6 +45,7 @@ info: 17
 -/
 -- #guard_msgs in
 -- #eval solve_barbecue_sticks 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

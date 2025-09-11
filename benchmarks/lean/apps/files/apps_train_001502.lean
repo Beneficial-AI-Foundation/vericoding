@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def can_transform_string (s r : String) : String := sorry
 
 def count_ones (s : String) : Nat := 
@@ -8,14 +9,20 @@ def extract (s : String) (n : Nat) : String :=
 
 def create_string (c : Char) (n : Nat) : String :=
   String.mk (List.replicate n c)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_extract (s r : String) : String × String :=
   let n := min s.length r.length
   (extract s n, extract r n)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem transform_result_valid {s r : String} : 
   let (s', r') := min_extract s r
   can_transform_string s' r' = "YES" ∨ can_transform_string s' r' = "NO" := sorry
@@ -53,6 +60,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval can_transform_string "1100" "0011"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

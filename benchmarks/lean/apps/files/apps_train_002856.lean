@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def head_smash (arr : List String) : List String ⊕ String := sorry
 
 theorem head_smash_empty : 
   head_smash [] = Sum.inr "Gym is empty" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem head_smash_nonempty_properties {arr : List String} (h : arr ≠ []) :
   match head_smash arr with
   | Sum.inl result => 
@@ -40,6 +48,7 @@ info: "This isn't the gym!!"
 -/
 -- #guard_msgs in
 -- #eval head_smash 876
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

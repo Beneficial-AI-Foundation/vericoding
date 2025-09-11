@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def interest (principal : Int) (rate : Float) (periods : Int) : List Int := sorry
 
 theorem interest_basic_structure 
@@ -12,7 +18,9 @@ theorem interest_basic_structure
   (result.length = 2) ∧ 
   (∀ x ∈ result, x ≥ 0) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem simple_less_than_compound
   (principal : Int) (rate : Float) (periods : Int)
   (h1 : principal > 0) (h2 : principal ≤ 1000000)
@@ -63,6 +71,7 @@ theorem zero_rate_returns_principal
   (result.get ⟨0, by simp [h5]⟩ = principal) ∧ 
   (result.get ⟨1, by simp [h5]⟩ = principal) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

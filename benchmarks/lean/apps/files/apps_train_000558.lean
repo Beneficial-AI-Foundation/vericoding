@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_training_camp (n m : Nat) : Nat := sorry 
 
 theorem solve_training_camp_nonnegative (n m : Nat) :
   n ≥ 1 → solve_training_camp n m ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_training_camp_teacher_only (m : Nat) :
   solve_training_camp 1 m = 0 := sorry
 
@@ -44,6 +52,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_training_camp 1 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

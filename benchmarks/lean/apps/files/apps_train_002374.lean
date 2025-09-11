@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def xorOperation (n: Nat) (start: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem xorOperation_non_negative (n: Nat) (start: Nat) : 
   xorOperation n start ≥ 0 := 
   sorry
@@ -45,6 +53,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval xor_operation 1 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

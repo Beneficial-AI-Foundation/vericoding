@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def howmuch (m n : Int) : List (List String) := sorry
 
 theorem howmuch_result_format {m n : Int} (h : -1000 ≤ m ∧ m ≤ 1000) (h' : -1000 ≤ n ∧ n ≤ 1000) :
@@ -11,7 +17,9 @@ theorem howmuch_result_format {m n : Int} (h : -1000 ≤ m ∧ m ≤ 1000) (h' :
       item.get! 0 = s!"M: {m_val}" ∧
       item.get! 1 = s!"B: {b_val}" ∧
       item.get! 2 = s!"C: {c_val}") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem howmuch_values_satisfy_conditions {m n : Int} (h : -1000 ≤ m ∧ m ≤ 1000) (h' : -1000 ≤ n ∧ n ≤ 1000) :
   let result := howmuch m n
   ∀ item ∈ result,
@@ -46,6 +54,7 @@ info: [['M: 37', 'B: 5', 'C: 4'], ['M: 100', 'B: 14', 'C: 11'], ['M: 163', 'B: 2
 -/
 -- #guard_msgs in
 -- #eval howmuch 0 200
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

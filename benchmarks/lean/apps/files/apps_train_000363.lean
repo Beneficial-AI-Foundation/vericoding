@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isMatch (s : String) (p : String) : Bool := sorry 
 
 @[simp]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_pattern_matches_empty_string (s : String) : 
   isMatch s "" = !s.isEmpty = false := by sorry
 
@@ -61,6 +69,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_match "ab" ".*"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

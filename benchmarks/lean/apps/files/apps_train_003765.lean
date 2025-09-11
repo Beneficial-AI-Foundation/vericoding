@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (a b : Int) : Int := sorry
 
 theorem solve_full_range :
   solve 0 400000 = 148 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_boundary_cases :
   solve 8 9 = 1 ∧ 
   solve 8 8 = 0 ∧
@@ -29,6 +37,7 @@ info: 99
 -/
 -- #guard_msgs in
 -- #eval solve 90 139701
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

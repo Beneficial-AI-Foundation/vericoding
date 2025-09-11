@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def minCost (houses : List Nat) (cost : List (List Nat)) (m n target : Nat) : Int := sorry
 
 theorem min_cost_non_negative 
   (houses : List Nat) (cost : List (List Nat)) (m n target : Nat) :
   let result := minCost houses cost m n target
   result = -1 ∨ result ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cost_precolored
   (houses : List Nat) (cost : List (List Nat)) (m n target : Nat)
   (h : ∀ h ∈ houses, h > 0) :
@@ -47,6 +55,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval min_cost [3, 1, 2, 3] [[1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]] 4 3 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def has_subpattern (s : String) : Bool := sorry
 
 theorem single_char_no_pattern (s : String) :
   s.length = 1 → ¬(has_subpattern s) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem doubled_string_has_pattern (s : String) : 
   s.length > 0 → has_subpattern (s ++ s) := sorry
 
@@ -34,6 +42,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval has_subpattern "abababab"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

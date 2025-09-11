@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -45,6 +46,7 @@ impl PrimeMap {
     }
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

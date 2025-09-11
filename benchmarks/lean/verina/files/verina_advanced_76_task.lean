@@ -1,16 +1,23 @@
+-- <vc-preamble>
 import Std
 open Std
 
 @[reducible]
 def topKFrequent_precond (nums : List Int) (k : Nat) : Prop :=
   k ≤ nums.eraseDups.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def topKFrequent (nums : List Int) (k : Nat) (h_precond : topKFrequent_precond (nums) (k)) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def topKFrequent_postcond (nums : List Int) (k : Nat) (result: List Int) (h_precond : topKFrequent_precond (nums) (k)) : Prop :=
   -- Result contains exactly k elements
@@ -40,6 +47,7 @@ def topKFrequent_postcond (nums : List Int) (k : Nat) (result: List Int) (h_prec
 theorem topKFrequent_spec_satisfied (nums: List Int) (k: Nat) (h_precond : topKFrequent_precond (nums) (k)) :
     topKFrequent_postcond (nums) (k) (topKFrequent (nums) (k) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

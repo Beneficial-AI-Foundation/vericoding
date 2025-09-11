@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_below_average_students (input : List (List String)) : List String := sorry
 
 def sumList (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | x :: rest => x + sumList rest
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_below_average_students_returns_below_average 
   (input : List (List String)) (result : List String) 
   (h : result = find_below_average_students input)
@@ -35,6 +43,7 @@ theorem find_below_average_students_sorted_marks
     let marks2 := String.toNat! ((s2.split (· == ' ')).get! 2)
     marks1 ≤ marks2
   ) result := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

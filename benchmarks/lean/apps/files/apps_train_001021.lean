@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_min_value (n d : Nat) : Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_smaller_than_input (n d : Nat) (h1 : n > 0) (h2 : d > 0) :
   let (result_n, _) := solve_min_value n d
   result_n ≤ n :=
@@ -35,6 +43,7 @@ sorry
 theorem single_digit_not_increase (h : 9 ≥ 1) :
   (solve_min_value 9 1).1 ≤ 9 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

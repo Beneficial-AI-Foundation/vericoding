@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_factorial_zeros (n : Nat) : Nat := sorry
 
 def count_actual_zeros (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_factorial_zeros_non_negative (k : Nat) : 
   count_factorial_zeros k ≥ 0 := sorry
 
@@ -28,6 +36,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval count_factorial_zeros 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def is_possible (a b : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_ones (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ones_diff_bounds (a b : String) :
   is_possible a b →
   count_ones b ≤ ((count_ones a + 1) / 2) * 2
@@ -48,6 +55,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_possible "1" "0"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

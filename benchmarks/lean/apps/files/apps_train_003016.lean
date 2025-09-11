@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def derivative (s : String) : String := sorry
 
 theorem derivative_constant (n : Nat) (h : n > 0 ∧ n ≤ 100) : 
   derivative s!"${n}x" = s!"${n}" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem derivative_power_rule (n : Nat) (h : n > 0 ∧ n ≤ 10) :
   derivative s!"x^${n}" = 
     if n > 2 then s!"${n}x^${n-1}"
@@ -32,6 +40,7 @@ info: '2x+2'
 -/
 -- #guard_msgs in
 -- #eval derivative "x^2+2x+1"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

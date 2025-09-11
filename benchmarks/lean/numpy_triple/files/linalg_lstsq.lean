@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -18,14 +19,20 @@ def normSq {n : Nat} (v : Vector Float n) : Float :=
 /-- Vector subtraction -/
 def vecSub {n : Nat} (a b : Vector Float n) : Vector Float n :=
   Vector.ofFn fun i => a.get i - b.get i
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lstsq {M N : Nat} (a : Vector (Vector Float N) M) (b : Vector Float M) : 
     Id (Vector Float N) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lstsq_spec {M N : Nat} (a : Vector (Vector Float N) M) (b : Vector Float M) 
     (h_dims : M > 0 ∧ N > 0) :
     ⦃⌜M > 0 ∧ N > 0⌝⦄
@@ -33,3 +40,4 @@ theorem lstsq_spec {M N : Nat} (a : Vector (Vector Float N) M) (b : Vector Float
     ⦃⇓x => ⌜∀ y : Vector Float N, 
            normSq (vecSub b (matVecMul a x)) ≤ normSq (vecSub b (matVecMul a y))⌝⦄ := by
   sorry
+-- </vc-theorems>

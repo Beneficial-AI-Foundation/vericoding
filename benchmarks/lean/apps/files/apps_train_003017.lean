@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def triple_double (n1 n2 : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem triple_double_returns_zero_or_one (n1 n2 : Nat) :
   triple_double n1 n2 = 0 ∨ triple_double n1 n2 = 1 :=
   sorry
@@ -38,6 +46,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval triple_double 666789 12345667
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

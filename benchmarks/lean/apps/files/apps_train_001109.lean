@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_chars_to_palindrome (s : String) : Nat := sorry
 
 def count_char (s : String) (c : Char) : Nat := 
   s.data.filter (· = c) |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_chars_palindrome_non_negative (s : String) : 
   min_chars_to_palindrome s ≥ 0 := sorry
 
@@ -38,6 +46,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval min_chars_to_palindrome "abcdef"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

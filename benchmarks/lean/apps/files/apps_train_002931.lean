@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def combine : List (String × Int) → List (String × Int) → List (String × Int) := sorry
 
 def combineMulti : List (List (String × Int)) → List (String × Int) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem combine_key_preservation {d1 d2 : List (String × Int)} :
   ∀ k, (combine d1 d2).any (λ p => p.1 = k) ↔ 
        d1.any (λ p => p.1 = k) ∨ d2.any (λ p => p.1 = k) := sorry
@@ -41,6 +49,7 @@ info: {'x': 3, 'y': 7, 'z': 5}
 -/
 -- #guard_msgs in
 -- #eval combine {"x": 1} {"x": 2, "y": 3} {"y": 4, "z": 5}
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

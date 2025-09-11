@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, A: int, B: int, C: int, D: int, E: int)
 {
     N >= 1 && A >= 1 && B >= 1 && C >= 1 && D >= 1 && E >= 1
@@ -25,6 +26,7 @@ predicate CorrectResult(N: int, A: int, B: int, C: int, D: int, E: int, result: 
     var groups := CeilDiv(N, minCap);
     result == 4 + groups
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

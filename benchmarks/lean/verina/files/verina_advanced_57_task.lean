@@ -1,15 +1,22 @@
+-- <vc-preamble>
 @[reducible]
 def nextGreaterElement_precond (nums1 : List Int) (nums2 : List Int) : Prop :=
   List.Nodup nums1 ∧
   List.Nodup nums2 ∧
   nums1.all (fun x => x ∈ nums2)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nextGreaterElement (nums1 : List Int) (nums2 : List Int) (h_precond : nextGreaterElement_precond (nums1) (nums2)) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def nextGreaterElement_postcond (nums1 : List Int) (nums2 : List Int) (result: List Int) (h_precond : nextGreaterElement_precond (nums1) (nums2)) : Prop :=
   result.length = nums1.length ∧
@@ -38,6 +45,7 @@ def nextGreaterElement_postcond (nums1 : List Int) (nums2 : List Int) (result: L
 theorem nextGreaterElement_spec_satisfied (nums1: List Int) (nums2: List Int) (h_precond : nextGreaterElement_precond (nums1) (nums2)) :
     nextGreaterElement_postcond (nums1) (nums2) (nextGreaterElement (nums1) (nums2) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

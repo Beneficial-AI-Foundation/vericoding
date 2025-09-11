@@ -1,3 +1,4 @@
+// <vc-preamble>
 function UnnecessaryCardsCount(sorted: seq<int>, k: int): int
   requires forall i, j :: 0 <= i < j < |sorted| ==> sorted[i] >= sorted[j]
   requires forall i :: 0 <= i < |sorted| ==> sorted[i] >= 1
@@ -25,6 +26,7 @@ function UnnecessaryCardsCountHelper(sorted: seq<int>, k: int, temp: int, ans: i
     else
       UnnecessaryCardsCountHelper(sorted, k, 0, 0, i + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

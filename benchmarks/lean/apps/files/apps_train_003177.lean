@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def numberProperty (n : Int) : List Bool := sorry
 def isPrime (n : Int) : Bool := sorry
 
 /- The number_property function always returns a list of exactly 3 booleans -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numberProperty_returns_three_bools (n : Int) : 
   let result := numberProperty n
   result.length = 3 ∧ result.all (λ x => x = true ∨ x = false) := sorry
@@ -38,6 +46,7 @@ theorem negative_numbers_not_prime (n : Int) :
 theorem multiples_of_ten_are_even (n : Int) :
   (numberProperty n).get! 2 = true → 
   (numberProperty n).get! 1 = true := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

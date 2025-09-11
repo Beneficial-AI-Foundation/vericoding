@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rsplit {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Nat) : Id (Vector (List String) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rsplit_spec {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Nat) :
     ⦃⌜sep ≠ ""⌝⦄ 
     rsplit a sep maxsplit
@@ -29,3 +36,4 @@ theorem rsplit_spec {n : Nat} (a : Vector String n) (sep : String) (maxsplit : N
         parts.length > 1 → 
         String.intercalate sep parts = a.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

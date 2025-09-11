@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def somethingAcci (num_digits: Nat) : Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_length_at_least_six (n: Nat) : (somethingAcci n).1 ≥ 6 :=
   sorry
 
@@ -32,6 +40,7 @@ info: (12, 25)
 -/
 -- #guard_msgs in
 -- #eval something_acci 20
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

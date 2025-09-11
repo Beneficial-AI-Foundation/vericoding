@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def is_valid_parens (s : String) : Bool := sorry
 
 def max_nested_depth (s : String) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_balanced_parens (n : Nat) (k : Nat) : String := sorry
 
 theorem balanced_parens_properties (n k : Nat) (h1 : n > 0) (h2 : k > 0) (h3 : n ≤ 100) (h4 : k ≤ 100) :
@@ -16,7 +21,9 @@ theorem balanced_parens_properties (n k : Nat) (h1 : n > 0) (h2 : k > 0) (h3 : n
     (∀ c, c ∈ result.data → c = '(' ∨ c = ')') ∧
     is_valid_parens result :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_k_cases (n : Nat) (h1 : n > 1) (h2 : n ≤ 100) (h3 : n % 2 = 0) :
   let k := 3
   let result := solve_balanced_parens n k
@@ -35,6 +42,7 @@ info: '(())(())'
 -/
 -- #guard_msgs in
 -- #eval solve_balanced_parens 8 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,6 +1,8 @@
+// <vc-preamble>
 predicate distinct(nums: seq<int>) {
     forall i, j :: 0 <= i < j < |nums| ==> nums[i] != nums[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

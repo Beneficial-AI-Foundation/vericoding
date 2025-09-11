@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def process_divisions (l : List String) : List String := sorry
 
 theorem valid_divisions {test_cases : List String} 
@@ -18,7 +24,9 @@ theorem valid_divisions {test_cases : List String}
       results[i]! = "Error Code: integer division or modulo by zero"
     else
       results[i]! = toString ((String.toInt? a).get! / (String.toInt? b).get!) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_first_number {test_cases : List String}
   (h : ∀ tc ∈ test_cases, ∃ inv valid : String,
     tc = inv ++ " " ++ valid ∧ 
@@ -54,6 +62,7 @@ info: ['3']
 -/
 -- #guard_msgs in
 -- #eval process_divisions ["3 1"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function digitSum(n: int): int
   requires n >= 0
   decreases n
@@ -5,6 +6,7 @@ function digitSum(n: int): int
   if n == 0 then 0
   else (n % 10) + digitSum(n / 10)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

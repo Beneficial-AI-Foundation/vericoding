@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def balanced_num (n : Nat) : String := sorry
 
 theorem balanced_num_valid_output (n : Nat) : 
   balanced_num n = "Balanced" ∨ balanced_num n = "Not Balanced" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem small_nums_balanced (n : Nat) :
   n < 100 → balanced_num n = "Balanced" := sorry
 
@@ -41,6 +49,7 @@ info: 'Balanced'
 -/
 -- #guard_msgs in
 -- #eval balanced_num 959
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

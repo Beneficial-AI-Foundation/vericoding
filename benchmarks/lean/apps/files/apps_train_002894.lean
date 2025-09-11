@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Direction := String
 def elevator (left right call : Int) : Direction :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem elevator_returns_valid_result 
   (left right call : Int) :
   (elevator left right call = "left") ∨ (elevator left right call = "right") :=
@@ -40,6 +48,7 @@ info: 'left'
 -/
 -- #guard_msgs in
 -- #eval elevator 1 2 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def savez_compressed {n : Nat} (filename : String) (arrays : Vector (Vector Float n) n) : Id Unit :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem savez_compressed_spec {n : Nat} (filename : String) (arrays : Vector (Vector Float n) n) 
     (h_valid_path : filename ≠ "") :
     ⦃⌜filename ≠ ""⌝⦄
@@ -24,3 +31,4 @@ theorem savez_compressed_spec {n : Nat} (filename : String) (arrays : Vector (Ve
                    final_filename = filename ++ ".npz" ∨ 
                    (filename.endsWith ".npz" ∧ final_filename = filename))⌝⦄ := by
   sorry
+-- </vc-theorems>

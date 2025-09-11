@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -36,6 +37,7 @@ spec fn inv_sub_set(b: Seq<int>, c: Seq<int>, d: Seq<int>, i: nat, j: nat) -> bo
     b.subrange(0, (i + j) as int).to_multiset() == 
         c.subrange(0, i as int).to_multiset().add(d.subrange(0, j as int).to_multiset())
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

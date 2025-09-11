@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def removeDuplicates (s : String) (k : Nat) : String := sorry
 
 theorem result_length_le_input (s : String) (k : Nat) : 
   (removeDuplicates s k).length ≤ s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_chars_from_input (s : String) (k : Nat) (c : Char) :
   c ∈ (removeDuplicates s k).data → c ∈ s.data := sorry
 
@@ -40,6 +48,7 @@ info: 'ps'
 -/
 -- #guard_msgs in
 -- #eval remove_duplicates "pbbcggttciiippooaais" 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

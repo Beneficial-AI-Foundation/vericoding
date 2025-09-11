@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int)
 {
   A > 0 && B > 0
@@ -48,6 +49,7 @@ predicate CorrectResult(A: int, B: int, result: int)
 {
   result == countDistinctPrimeFactors(gcd(A, B)) + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

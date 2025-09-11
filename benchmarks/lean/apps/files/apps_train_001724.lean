@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nQueen (n : Nat) : List Nat := sorry
 
 def isValidSolution (n : Nat) (queens : List Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_size (n : Nat) (h : n ≥ 4) :
   (nQueen n).length = n := sorry
 
@@ -28,6 +36,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval nQueen 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

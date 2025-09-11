@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def abs (x : Int) : Int :=
   if x < 0 then -x else x
 
 def listSum : List Int → Int 
   | [] => 0
   | x::xs => x + listSum xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def splitlist (nums : List Int) : Option (List Int × List Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem splitlist_length (nums : List Int) :
   match splitlist nums with
   | none => true
@@ -63,6 +70,7 @@ info: sorted(test3)
 -/
 -- #guard_msgs in
 -- #eval sorted a + b
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

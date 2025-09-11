@@ -1,3 +1,4 @@
+// <vc-preamble>
 function Power(base: int, exp: int): int
   requires exp >= 0
 {
@@ -15,6 +16,7 @@ function PaintingWays(n: int, k: int): int
 {
   k * Power(k - 1, n - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_laddu_power (x y : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_laddu_power_nonnegative (x y : Nat) :
   solve_laddu_power x y ≥ 0 :=
   sorry
@@ -40,6 +48,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_laddu_power 3 9
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

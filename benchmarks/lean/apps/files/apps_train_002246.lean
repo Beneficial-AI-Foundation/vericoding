@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def ValidProtocol (s : String) : Prop := s = "http" ∨ s = "ftp"
 
 def IsValidDomainChar (c : Char) : Prop := c.isUpper ∨ c.isLower ∨ c.isDigit
@@ -5,13 +6,19 @@ def IsValidDomainChar (c : Char) : Prop := c.isUpper ∨ c.isLower ∨ c.isDigit
 def IsValidPathChar (c : Char) : Prop := c.isUpper ∨ c.isLower ∨ c.isDigit
 
 def format_internet_address (s : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s : String) (c : Char) : Nat :=
   s.foldl (fun acc x => if x = c then acc + 1 else acc) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem format_internet_address_starts_with_protocol (s : String) :
   (s.startsWith "http" ∨ s.startsWith "ftp") →
   (format_internet_address s).startsWith "http://" ∨ 
@@ -46,6 +53,7 @@ theorem format_internet_address_path_slashes (s : String) :
   containsSubstr s "ru" = true →
   s.length > (s.length - (s.takeRight (s.length - 2)).length) + 2 →
   countChar (format_internet_address s) '/' = 3 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

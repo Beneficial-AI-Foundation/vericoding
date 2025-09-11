@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(h: int, n: int, platforms: seq<int>)
 {
     h >= 1 && n >= 1 && |platforms| >= n && n > 0 && platforms[0] == h
@@ -47,6 +48,7 @@ function SimulatePositionUpTo(h: int, arr: seq<int>, upTo: int): int
         else if upTo + 1 < |arr| && arr[upTo + 1] == arr[upTo] - 1 then arr[upTo] - 1
         else prevPos
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

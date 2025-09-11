@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tickets (bills : List Nat) : String := sorry
 
 theorem tickets_valid_output (bills: List Nat) :
   bills.length > 0 → tickets bills = "YES" ∨ tickets bills = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem first_payment_25 (bills: List Nat) :
   bills.length > 0 → bills[0]! ≠ 25 → tickets bills = "NO" := sorry 
 
@@ -42,6 +50,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval tickets [25, 25, 50, 50, 100]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

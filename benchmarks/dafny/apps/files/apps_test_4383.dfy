@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| > 0 && exists i: int :: 0 <= i < |s| && '0' <= s[i] <= '9'
@@ -14,6 +15,7 @@ function ParseIntegerValue(s: string): int
 {
     ParseIntegerHelper(s, 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

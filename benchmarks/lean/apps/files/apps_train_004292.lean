@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def VALID_CARDS := ["2","3","4","5","6","7","8","9","T","J","Q","K","A"]
 
 def winner (deck1 deck2 : List String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem winner_valid_output (deck1 deck2 : List String) 
   (h1 : ∀ x ∈ deck1, x ∈ VALID_CARDS)
   (h2 : ∀ x ∈ deck2, x ∈ VALID_CARDS)
@@ -51,6 +59,7 @@ info: 'Steve wins 1 to 0'
 -/
 -- #guard_msgs in
 -- #eval winner ["T", "9"] ["T", "8"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

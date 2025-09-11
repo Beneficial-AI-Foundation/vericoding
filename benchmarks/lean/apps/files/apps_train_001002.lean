@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n : Int) : Int := sorry
 def min_change_to_equal_leaves (target : Int) (leaf_values : List Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_change_empty_list {target : Int} (h : target ≥ 0) :
   min_change_to_equal_leaves target [] = 0 := sorry
 
@@ -27,6 +35,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_change_to_equal_leaves 6 [4, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

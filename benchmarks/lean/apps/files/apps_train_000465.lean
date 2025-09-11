@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def range_sum (nums : List Nat) (n : Nat) (left right : Nat) : Nat :=
   sorry
 
 def partialSums (nums : List Nat) (n : Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listMin (l : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem range_sum_output_properties {nums : List Nat} {n left right : Nat}
   (h1 : nums.length = n)
   (h2 : !nums.isEmpty)
@@ -68,6 +75,7 @@ info: 50
 -/
 -- #guard_msgs in
 -- #eval range_sum [1, 2, 3, 4] 4 1 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate validInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n'
@@ -32,6 +33,7 @@ function intToString(x: int): string
 {
     "1"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

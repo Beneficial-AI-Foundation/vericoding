@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (arr : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_no_duplicates (arr : List Int) :
   let result := solve arr
   ∀ x ∈ result, (result.count x = 1) ∧ (x ∈ arr) :=
@@ -43,6 +51,7 @@ info: [4, 5, 2, 1]
 -/
 -- #guard_msgs in
 -- #eval solve [1, 1, 4, 5, 1, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

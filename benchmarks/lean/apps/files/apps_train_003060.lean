@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def findPrimesSextuplet (limit : Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPrime (n : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem primes_sextuplet_length (limit : Nat) (h : limit ≥ 1000) : 
   (findPrimesSextuplet limit).length = 6 :=
 sorry
@@ -44,6 +51,7 @@ info: [1091257, 1091261, 1091263, 1091267, 1091269, 1091273]
 -/
 -- #guard_msgs in
 -- #eval find_primes_sextuplet 2000000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

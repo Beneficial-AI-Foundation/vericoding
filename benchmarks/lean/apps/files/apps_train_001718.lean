@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def choose_move (gameState : List Nat) : Nat × Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nimSum (xs : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem choose_move_valid {gameState : List Nat} (h : gameState ≠ []) :
   let move := choose_move gameState
   let (pileIdx, straws) := move
@@ -29,6 +36,7 @@ theorem modify_nonempty_pile {gameState : List Nat} (h : gameState ≠ []) :
   let (pileIdx, straws) := move
   gameState[pileIdx]! > 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

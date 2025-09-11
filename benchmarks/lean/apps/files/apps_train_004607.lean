@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def travel (r : String) (zipcode : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem travel_empty_zipcode (addrs : String) :
   travel addrs "" = ":/" := by sorry
 
@@ -48,6 +56,7 @@ info: 'NY 5643:/'
 -/
 -- #guard_msgs in
 -- #eval travel r "NY 5643"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

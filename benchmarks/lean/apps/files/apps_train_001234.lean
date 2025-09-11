@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Recipe := (Nat × Nat × Nat)
 def calculateLoss (recipes : List Recipe) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem loss_is_nonnegative (recipes : List Recipe) :
   calculateLoss recipes ≥ 0 :=
   sorry
@@ -23,6 +31,7 @@ theorem max_loss_at_full_discount (recipes : List Recipe) :
   (∀ r ∈ recipes, r.2.2 = 100) →
   calculateLoss recipes = recipes.foldr (fun r acc => r.1 * r.2.1 + acc) 0 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

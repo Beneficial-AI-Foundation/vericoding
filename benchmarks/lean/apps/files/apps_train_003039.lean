@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_exam (arr1 arr2 : List Char) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_exam_non_negative (arr1 arr2 : List Char) : 
   check_exam arr1 arr2 ≥ 0 :=
   sorry
@@ -39,6 +47,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval check_exam ["b", "c", "b", "a"] ["", "a", "a", "c"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

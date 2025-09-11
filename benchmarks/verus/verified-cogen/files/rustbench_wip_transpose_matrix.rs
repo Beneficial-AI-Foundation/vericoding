@@ -1,8 +1,10 @@
+// <vc-preamble>
 #![crate_name = "transpose_matrix"]
 
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

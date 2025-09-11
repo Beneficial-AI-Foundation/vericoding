@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reduceat {n m : Nat} (op : Float → Float → Float) (arr : Vector Float n) 
     (indices : Vector (Fin n) m) : Id (Vector Float m) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reduceat_spec {n m : Nat} (op : Float → Float → Float) (arr : Vector Float n) 
     (indices : Vector (Fin n) m) (h_arr_nonempty : n > 0) (h_indices_nonempty : m > 0) :
     ⦃⌜n > 0 ∧ m > 0⌝⦄
@@ -60,3 +67,4 @@ theorem reduceat_spec {n m : Nat} (op : Float → Float → Float) (arr : Vector
         ∃ (reduction_result : Float), result.get i = reduction_result)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def discover_original_price (price : Float) (percentage : Float) : Float :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (x : Float) : Float :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem discover_original_price_geq_discounted (price : Float) (percentage : Float)
   (h1 : 0 < price) (h2 : 0 < percentage) (h3 : percentage < 100) :
   discover_original_price price percentage ≥ price :=
@@ -47,6 +54,7 @@ info: Decimal('421.00')
 -/
 -- #guard_msgs in
 -- #eval discover_original_price 373.85 11.2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_tip (price : Int) (rating : Int) : Int := sorry
 
 theorem tip_always_non_negative (price : Int) (rating : Int) 
   (h₁ : price ≥ 0) (h₂ : price ≤ 10000) (h₃ : rating ≥ -1) (h₄ : rating ≤ 1) : 
   calc_tip price rating ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem higher_rating_higher_tip_1 (price : Int) 
   (h₁ : price ≥ 0) (h₂ : price ≤ 10000) :
   calc_tip price 1 ≥ calc_tip price 0 := sorry
@@ -42,6 +50,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval calc_tip 144 -1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

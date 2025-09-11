@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxPizzaSlices (m: Nat) (n: Nat) (cuts: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_pizza_slices_positive (m n: Nat) (cuts: List Nat) (h1: m > 0) (h2: n > 0) (h3: cuts.length > 0) :
   maxPizzaSlices m n cuts > 0 :=
   sorry
@@ -37,6 +45,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval max_pizza_slices 3 4 [2, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

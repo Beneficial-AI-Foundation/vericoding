@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def average (l : List Int) : Int :=
   sorry
 
@@ -6,13 +7,19 @@ def list_min (l : List Int) : Int :=
 
 def list_max (l : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem average_in_range (l : List Int) (h : l ≠ []) :
   let result := average l
   let min_val := list_min l
@@ -33,6 +40,7 @@ theorem average_shift (l : List Int) (shift : Int) (h : l ≠ []) :
 theorem average_empty :
   average [] = 0 ∧ False := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

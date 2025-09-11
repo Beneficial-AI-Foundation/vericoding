@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate validInput(n: int, m: int, k: int, H: seq<int>)
 {
     n >= 1 && n == |H| && m >= 0 && k >= 0 && 
@@ -58,6 +59,7 @@ predicate outputMatchesTestCaseCount(output: string, input: string)
 {
     true
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

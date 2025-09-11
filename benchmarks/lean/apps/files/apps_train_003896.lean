@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def filter_list {α : Type} (lst : List α) : List α := sorry
 
 theorem filter_list_removes_strings (lst : List (Int ⊕ String)) :
@@ -10,7 +16,9 @@ theorem filter_list_removes_strings (lst : List (Int ⊕ String)) :
   (List.length result = List.length (List.filter (fun x => match x with
     | Sum.inl _ => true
     | Sum.inr _ => false) lst)) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem filter_list_preserves_numbers_only (lst : List Int) :
   filter_list lst = lst := sorry
 
@@ -37,6 +45,7 @@ info: [1, 2, 123]
 -/
 -- #guard_msgs in
 -- #eval filter_list [1, 2, "aasf", "1", "123", 123]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

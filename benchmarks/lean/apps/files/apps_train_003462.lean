@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def aa_percentage (seq : String) (residues : List Char := ['A', 'I', 'L', 'M', 'F', 'W', 'Y', 'V']) : Nat := sorry
 
 theorem default_residues_in_bounds (seq : String) 
   (h : ∀ c ∈ seq.data, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y']) :
   0 ≤ aa_percentage seq ∧ aa_percentage seq ≤ 100 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_list : List Nat → Nat 
   | [] => 0
   | x::xs => x + sum_list xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem custom_residues_in_bounds (seq : String) (residues : List Char)
   (h1 : ∀ c ∈ seq.data, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])
   (h2 : ∀ c ∈ residues, c ∈ ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])
@@ -49,6 +56,7 @@ info: 50
 -/
 -- #guard_msgs in
 -- #eval aa_percentage "PLPPLPLLEELELRPFFMAAGGTPLAMMGG"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

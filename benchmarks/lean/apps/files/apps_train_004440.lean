@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_fib (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_fib_nonnegative (n: Nat) (h: n > 0) : sum_fib n ≥ 0 :=
   sorry
 
@@ -30,6 +38,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval sum_fib 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def optimalNumberOfCoins (n : Nat) (coins : List Nat) : Option Nat := sorry
 
 theorem optimal_coins_properties
@@ -18,7 +24,9 @@ theorem optimal_coins_properties
         (1 ∈ coins → r ≤ n) ∧
         (∀ c ∈ coins, n % c = 0 → r ≤ n / c)
     := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem optimal_coins_zero
     (coins : List Nat)
     (h1 : coins.length ≥ 1)
@@ -29,6 +37,7 @@ theorem optimal_coins_zero
 theorem optimal_coins_edge_cases :
     optimalNumberOfCoins 1 [1] = some 1 ∧
     optimalNumberOfCoins 1 [2] = none := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

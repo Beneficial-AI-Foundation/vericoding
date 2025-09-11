@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def my_crib (n : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def splitLines (s : String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem crib_width_consistency {n : Nat} (h : 1 ≤ n ∧ n ≤ 10) :
   let width := 4 + 3 + 6 * (n - 1)
   let lines := splitLines (my_crib n)
@@ -53,6 +60,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval my_crib 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

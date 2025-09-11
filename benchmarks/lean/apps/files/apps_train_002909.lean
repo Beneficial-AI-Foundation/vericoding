@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def palindrome (x : Int) : Bool ⊕ String := sorry
 
 def isDigitPalindrome (s : String) : Bool :=
   s = s.push '0' -- dummy definition to make type checker happy
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverseInt (n : Int) : Int := 0 -- dummy definition
 
 theorem palindrome_output_type (x : Int) :
   x > 0 → Sum.casesOn (palindrome x) (fun _ => True) (fun _ => True) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_correctness (x : Int) :
   x > 0 → match palindrome x with
   | .inl true => isDigitPalindrome (toString x) = true
@@ -53,6 +60,7 @@ info: 'Not valid'
 -/
 -- #guard_msgs in
 -- #eval palindrome -450
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

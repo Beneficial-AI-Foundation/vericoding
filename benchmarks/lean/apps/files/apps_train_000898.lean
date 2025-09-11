@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_prime_array_queries (k : Nat) (queries : List String) : List Nat := sorry
 
 theorem query_results_bounds 
@@ -17,7 +23,9 @@ theorem query_results_bounds
     count ≥ 0 ∧ 
     count ≤ 10 := -- simplified bound since k ≤ 1000
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_queries_result
   (k : Nat)
   (h1 : 2 ≤ k)
@@ -39,6 +47,7 @@ theorem non_overlapping_ranges
   let q3 := "? " ++ toString (l+1) ++ " " ++ toString (r-1)
   solve_prime_array_queries k [q1, q2, q3] = [0] :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

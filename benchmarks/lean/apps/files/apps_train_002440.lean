@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_subset {α} [BEq α] (subset : List α) (fullset : List α) : Bool := sorry
 
 theorem proper_subset_property {α} [BEq α] (subset additional : List α) 
   (h1 : List.Nodup subset) (h2 : List.Nodup additional) :
   check_subset subset (subset ++ additional) = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem subset_reflexive {α} [BEq α] (set_a set_b : List α) 
   (h1 : List.Nodup set_a) (h2 : List.Nodup set_b) :
   check_subset set_a set_b = 
@@ -43,6 +51,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval check_subset ["9", "8", "2"] ["1", "2", "3", "5", "6", "8", "9"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

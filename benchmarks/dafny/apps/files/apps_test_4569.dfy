@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidWeather(weather: string)
 {
     weather == "Sunny" || weather == "Cloudy" || weather == "Rainy"
@@ -15,6 +16,7 @@ function NextWeather(weather: string): string
     else if weather == "Cloudy" then "Rainy"
     else "Sunny"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def robotSim (commands : List Int) (obstacles : List (Int × Int)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem robotSim_result_nonnegative (commands : List Int) (obstacles : List (Int × Int)) :
   robotSim commands obstacles ≥ 0 := 
   sorry
@@ -41,6 +49,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval robotSim [-2, -1] []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

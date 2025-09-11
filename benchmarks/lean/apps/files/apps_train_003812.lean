@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isDigit (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.toFloat? (s : String) : Option Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_float_strings (f : Float) : 
   isDigit (toString f) = true :=
   sorry
@@ -48,6 +55,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval isDigit "0.0"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

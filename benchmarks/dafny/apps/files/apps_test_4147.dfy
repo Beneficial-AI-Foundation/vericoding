@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate ValidInput(input: string)
 {
     exists lines :: (lines == split_lines(input) &&
@@ -99,6 +100,7 @@ ghost function string_to_int(s: string): nat
 {
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

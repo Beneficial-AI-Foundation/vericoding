@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def wiggleMaxLength (arr : List Int) : Nat := sorry
 
 theorem wiggle_length_bounds (arr : List Int) :
   0 ≤ wiggleMaxLength arr ∧ wiggleMaxLength arr ≤ arr.length := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Int) : Bool := sorry
 
 theorem monotonic_increasing_bound (arr : List Int) :
   arr.length > 1 → isSorted arr = true → wiggleMaxLength arr ≤ 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem small_array_property (arr : List Int) :
   arr.length < 2 → wiggleMaxLength arr = arr.length := sorry
 
@@ -43,6 +50,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval wiggle_max_length [1, 2, 3, 4, 5, 6, 7, 8, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

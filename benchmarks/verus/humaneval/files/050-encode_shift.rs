@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -14,6 +15,7 @@ spec fn decode_char_spec(c: int) -> (result:int)
 {
     (c - 65 + 26 - 5) % 26 + 65
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

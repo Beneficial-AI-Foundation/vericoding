@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost function IntValues(n: int) : (r: seq<int>)
   requires n >= 0
   ensures 0 in r
@@ -51,6 +52,7 @@ function NumberOfDigits(n: nat) : (r: nat)
 {
   if 0 <= n <= 9 then 1 else 1+NumberOfDigits(n/10)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

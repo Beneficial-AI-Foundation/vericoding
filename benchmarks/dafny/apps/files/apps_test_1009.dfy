@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, L: seq<int>)
 {
     n >= 1 && k >= 1 && n <= 2*k &&
@@ -25,6 +26,7 @@ function max(s: seq<int>): int
     else if s[0] >= max(s[1..]) then s[0]
     else max(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Position := Int × Int × Bool × Bool × Bool × Bool
 
 def find_robot_gather_point (robots : List Position) : List Int :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def in_bounds (x y : Int) : Bool :=
 -100000 ≤ x ∧ x ≤ 100000 ∧ -100000 ≤ y ∧ y ≤ 100000
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gather_point_valid (robots : List Position) :
   let result := find_robot_gather_point robots
   (result.length = 1 ∧ result = [0]) ∨ 
@@ -43,6 +50,7 @@ info: [0]
 -/
 -- #guard_msgs in
 -- #eval find_robot_gather_point [[1337, 1337, 0, 1, 1, 1], [1336, 1337, 1, 1, 0, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

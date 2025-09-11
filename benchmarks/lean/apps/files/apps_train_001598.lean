@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def string_func (s : String) (x : Nat) : String := sorry 
 
 theorem string_func_length_preserving (s : String) (x : Nat) 
   (h : s.length ≥ 2) : 
   (string_func s x).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_func_permutation (s : String) (x : Nat)
   (h : s.length ≥ 2) :
   ∃ (perm : List Char), perm.length = s.length ∧ 
@@ -41,6 +49,7 @@ info: 'fonroisreinrddgdneyscou'
 -/
 -- #guard_msgs in
 -- #eval string_func "codingisfornerdsyounerd" 10101010
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

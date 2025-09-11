@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_array_ops (n x m : Nat) (arr : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_array_ops_preserves_input (n x m : Nat) (arr : List Nat)
   (h1 : 1 ≤ n ∧ n ≤ 100)
   (h2 : 1 ≤ x ∧ x ≤ n)
@@ -43,6 +51,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_array_ops 2 2 2 [1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

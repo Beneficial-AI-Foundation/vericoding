@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_money_events (n : Nat) (balances : List Int) (events : List (Nat × Int)) : List Int := sorry
 
 def solve_money_events_multi (n : Nat) (balances : List Int) (events : List (Nat × Nat × Int)) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_events_preserves_balances (n : Nat) (h : n ≥ 1) (balances : List Int) : 
   solve_money_events n balances [] = balances := sorry
 
@@ -21,6 +29,7 @@ theorem single_receipt_maintains_minimum (n person : Nat) (amount : Int)
   let events := [(1, person, amount)]
   let result := solve_money_events_multi n balances events
   List.get! result (person - 1) ≥ amount := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

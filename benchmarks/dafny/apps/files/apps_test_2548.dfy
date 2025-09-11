@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(digits: seq<int>)
 {
     |digits| >= 1 && forall i :: 0 <= i < |digits| ==> 0 <= digits[i] <= 9
@@ -42,6 +43,7 @@ function CountGoodSubarraysHelper(digits: seq<int>, pos: int, freq_map: map<int,
         var new_freq_map := freq_map[diff := if diff in freq_map then freq_map[diff] + 1 else 1];
         contribution + CountGoodSubarraysHelper(digits, pos + 1, new_freq_map, new_sum, new_count)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

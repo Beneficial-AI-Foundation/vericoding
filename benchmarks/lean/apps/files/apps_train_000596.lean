@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isBubbly (word : String) : Bool := sorry
 
 def countBubblyWords (words : List String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_matches_definition (words : List String) :
   countBubblyWords words = (words.filter isBubbly).length := sorry
 
@@ -37,6 +45,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_bubbly_words ["ABAB", "ABBA"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

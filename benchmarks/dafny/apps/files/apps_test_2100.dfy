@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := Split(input, '\n');
@@ -38,6 +39,7 @@ function CalculateMinOperations(input: string): string
         var rightOps := if rightZeros < n - rightZeros then rightZeros else n - rightZeros;
         IntToString(leftOps + rightOps)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

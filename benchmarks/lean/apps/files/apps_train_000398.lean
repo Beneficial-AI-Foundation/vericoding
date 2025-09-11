@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_best_value (arr : List Nat) (target : Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def sum_capped_vals (arr : List Nat) (cap : Nat) : Nat :=
 
 def list_maximum (arr : List Nat) (h : arr ≠ []) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_best_value_bounds {arr : List Nat} {target : Nat} (h : arr ≠ []) :
   let result := find_best_value arr target
   0 ≤ result ∧ result ≤ list_maximum arr h :=
@@ -49,6 +56,7 @@ info: 11361
 -/
 -- #guard_msgs in
 -- #eval find_best_value [60864, 25176, 27249, 21296, 20204] 56803
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

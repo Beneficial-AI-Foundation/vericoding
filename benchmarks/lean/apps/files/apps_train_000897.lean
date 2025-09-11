@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_time_to_eat_bananas (n : Nat) : Nat := sorry
 
 theorem min_time_always_positive (n : Nat) (h : n > 0) : 
   min_time_to_eat_bananas n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_time_monotonic (n : Nat) (h : n > 0) :
   min_time_to_eat_bananas n ≤ min_time_to_eat_bananas (n + 1) := sorry
 
@@ -35,6 +43,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval min_time_to_eat_bananas 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

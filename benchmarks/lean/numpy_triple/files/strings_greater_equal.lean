@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def greater_equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem greater_equal_spec {n : Nat} (x1 x2 : Vector String n) :
     ⦃⌜True⌝⦄
     greater_equal x1 x2
@@ -23,3 +30,4 @@ theorem greater_equal_spec {n : Nat} (x1 x2 : Vector String n) :
                  (∀ i : Fin n, x1.get i = "" → x2.get i = "" → result.get i = true) ∧
                  (∀ i : Fin n, x1.get i ≠ "" → x2.get i = "" → result.get i = true)⌝⦄ := by
   sorry
+-- </vc-theorems>

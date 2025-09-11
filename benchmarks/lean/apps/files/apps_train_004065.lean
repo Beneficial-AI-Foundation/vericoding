@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def VALID_FIGHTERS := ["george saint pierre", "conor mcgregor"]
 
 def quote (fighter : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem quote_case_insensitive (fighter : String)
   (h : fighter.toLower ∈ VALID_FIGHTERS) :
   ∀ casing, quote casing = quote fighter →
@@ -39,6 +47,7 @@ info: 'I am not impressed by your performance.'
 -/
 -- #guard_msgs in
 -- #eval quote "george saint pierre"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

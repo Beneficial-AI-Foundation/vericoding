@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def penaltyShots (shots: Nat) (scores: List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n: Int) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem penalty_shots_score_range {shots score1 score2: Nat} 
   (h1: score1 ≤ shots) (h2: score2 ≤ shots)
   (h3: shots ≤ 20) (h4: score1 ≤ 20) (h5: score2 ≤ 20)
@@ -46,6 +53,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval penaltyShots 5 [5, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

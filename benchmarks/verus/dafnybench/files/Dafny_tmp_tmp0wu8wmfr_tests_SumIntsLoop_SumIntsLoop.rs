@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn sum_ints(n: int) -> int
         sum_ints(n - 1) + n
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

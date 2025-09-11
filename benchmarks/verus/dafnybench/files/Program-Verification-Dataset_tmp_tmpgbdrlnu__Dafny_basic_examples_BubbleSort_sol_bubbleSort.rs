@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn sorted_between(a: &Vec<i32>, from: usize, to: usize) -> bool
 spec fn sorted(a: &Vec<i32>) -> bool {
     sorted_between(a, 0, a.len())
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

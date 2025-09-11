@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>) {
     n >= 1 && |a| == n
 }
@@ -33,6 +34,7 @@ function reverseSeq(s: seq<int>): seq<int>
     if |s| == 0 then []
     else reverseSeq(s[1..]) + [s[0]]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

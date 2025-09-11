@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermeint {n : Nat} (c : Vector Float n) (m : Nat) (k : Vector Float m) (lbnd : Float) (scl : Float) : Id (Vector Float (n + m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermeint_spec {n m : Nat} (c : Vector Float n) (integConsts : Vector Float m) (lbnd : Float) (scl : Float) 
     (h_scl_nonzero : scl ≠ 0) :
     ⦃⌜scl ≠ 0⌝⦄
@@ -21,3 +28,4 @@ theorem hermeint_spec {n m : Nat} (c : Vector Float n) (integConsts : Vector Flo
       (∃ boundaryEffect : Float, True)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

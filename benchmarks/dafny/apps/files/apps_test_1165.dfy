@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, A: seq<int>, queries: seq<(int, int, int)>)
 {
     n > 0 && m >= 0 && |A| == n && |queries| == m &&
@@ -13,6 +14,7 @@ predicate ValidResult(A: seq<int>, queries: seq<(int, int, int)>, result: seq<in
         (result[i] != -1 ==> l <= result[i] <= r && 0 <= result[i]-1 < |A| && A[result[i]-1] != x)
     )
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInputFormat(input: string)
 {
     var lines := SplitLines(input);
@@ -87,6 +88,7 @@ function FindNewline(s: string, start: nat): int
     else if s[start] == '\n' then start
     else FindNewline(s, start + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

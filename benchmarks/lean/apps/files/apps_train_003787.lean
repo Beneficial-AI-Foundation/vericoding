@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (arr : List (Sum Int String)) : Int := sorry
 
 theorem solve_matches_even_odd_difference (arr : List (Sum Int String)) :
@@ -12,7 +18,9 @@ theorem solve_matches_even_odd_difference (arr : List (Sum Int String)) :
       | Sum.inl n => n % 2 = 1
       | Sum.inr _ => false) arr).length :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_all_strings (arr : List String) :
   solve (arr.map Sum.inr) = 0 :=
 sorry
@@ -39,6 +47,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve [13, 6, 8, 15, 4, 8, 13]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

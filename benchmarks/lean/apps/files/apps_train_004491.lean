@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def group_groceries (input : String) : String :=
   sorry
 
@@ -15,10 +16,14 @@ deriving Repr
 
 def isValidCategoryName (name : String) : Bool :=  
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def length4 (s : List α) : Prop := s.length = 4
 
 inductive isSorted : List String → Prop where
@@ -26,7 +31,9 @@ inductive isSorted : List String → Prop where
   | single : (x : String) → isSorted [x] 
   | cons : (x y : String) → (rest : List String) → 
           x <= y → isSorted (y::rest) → isSorted (x::y::rest)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem group_groceries_produces_four_lines (input : String) : 
   length4 ((group_groceries input).splitOn "\n") :=
   sorry
@@ -62,6 +69,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval group_groceries "fruit_orange"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

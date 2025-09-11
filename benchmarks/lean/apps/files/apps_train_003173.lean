@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mystery (n : Int) : List Int := sorry
 
 theorem mystery_returns_odd_factors (n : Int)
@@ -8,7 +14,9 @@ theorem mystery_returns_odd_factors (n : Int)
   let result := mystery n
   (∀ x ∈ result, x % 2 = 1) ∧ 
   (∀ x ∈ result, n % x = 0) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mystery_returns_ascending (n : Int) :
   let result := mystery n
   (∀ i j, i < j → 
@@ -41,6 +49,7 @@ info: [1, 3, 9]
 -/
 -- #guard_msgs in
 -- #eval mystery 9
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && exists i :: 0 <= i < |input| && input[i] == '\n'
@@ -21,6 +22,7 @@ predicate CorrectOutput(input: string, result: string)
     ValidCommandInput(input) ==> 
         result == intToString(ExtractN(input) + 1) + "\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

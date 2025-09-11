@@ -1,3 +1,4 @@
+// <vc-preamble>
 function is_tandem_repeat(s: seq<char>): bool
 {
     if |s| % 2 != 0 then false
@@ -8,6 +9,7 @@ function is_tandem_repeat(s: seq<char>): bool
         forall i :: 0 <= i < half_len ==> 
             (first_half[i] == '*' || second_half[i] == '*' || first_half[i] == second_half[i])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

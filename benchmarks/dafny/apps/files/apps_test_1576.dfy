@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate ValidInput(t: string)
 {
     |t| >= 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

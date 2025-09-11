@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_performance (n : Nat) (speeds : List Nat) (efficiencies : List Nat) (k : Nat) : Nat := sorry
 
 def MOD := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_performance_mod (n : Nat) (speeds : List Nat) (efficiencies : List Nat) (k : Nat) :
   0 ≤ max_performance n speeds efficiencies k ∧ 
   max_performance n speeds efficiencies k < MOD := sorry
@@ -44,6 +52,7 @@ info: 72
 -/
 -- #guard_msgs in
 -- #eval max_performance 6 [2, 10, 3, 1, 5, 8] [5, 4, 3, 9, 7, 2] 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

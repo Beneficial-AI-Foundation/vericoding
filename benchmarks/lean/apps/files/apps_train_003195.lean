@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def evaporator (content : Float) (evap_rate : Float) (threshold : Float) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem evaporator_positive 
   (content evap_rate threshold : Float)
   (hc : content > 0.1 ∧ content ≤ 1000)
@@ -45,6 +53,7 @@ info: 31
 -/
 -- #guard_msgs in
 -- #eval evaporator 47.5 8 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def compute_expected_sweetness (n : Nat) (candies : List Nat) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem expected_sweetness_non_negative
     (n : Nat)
     (candies : List Nat)
@@ -40,6 +48,7 @@ theorem expected_sweetness_order_invariant
     (h4 : ε = 0.000001) :
     compute_expected_sweetness n candies - compute_expected_sweetness n candies.reverse < ε ∧
     compute_expected_sweetness n candies.reverse - compute_expected_sweetness n candies < ε := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

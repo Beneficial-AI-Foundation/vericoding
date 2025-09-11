@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate valid_permut(a: seq<int>, b: seq<int>)
   requires |a| == |b|
 {
@@ -17,6 +18,7 @@ predicate sorted(a: seq<int>)
 {
   forall i, j | 0 <= i <= j < |a| :: a[i] <= a[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

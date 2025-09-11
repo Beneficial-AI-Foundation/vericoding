@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def is_perfect_square (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def square_sums_row (n : Nat) : Option (List Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem square_sums_row_length {n : Nat} {result : List Nat} :
   square_sums_row n = some result → result.length = n :=
   sorry
@@ -52,6 +59,7 @@ info: list(range(1, 16))
 -/
 -- #guard_msgs in
 -- #eval sorted result
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 /* Count how many times a specific value appears in the sequence */
 function CountVal(val: int, xs: seq<int>): nat 
     decreases |xs|
@@ -30,6 +31,7 @@ function FilterNonZero(xs: seq<int>): seq<int>
     else if xs[0] != 0 then [xs[0]] + FilterNonZero(xs[1..])
     else FilterNonZero(xs[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def find_max_team_score (n : Nat) (ratings : List Nat) : Nat := sorry
 
 def list_sum : List Nat → Nat 
   | [] => 0
   | x::xs => x + list_sum xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def take_last (n : Nat) (l : List Nat) : List Nat := 
   let rev := l.reverse
   (rev.take n).reverse
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_team_score_upper_bound 
   (ratings : List Nat) (h : ratings.length ≥ 3) :
   find_max_team_score ratings.length ratings ≤ list_sum (take_last 3 ratings) := sorry
@@ -56,6 +63,7 @@ info: 60
 -/
 -- #guard_msgs in
 -- #eval find_max_team_score 3 [10, 20, 30]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

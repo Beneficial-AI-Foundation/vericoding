@@ -1,3 +1,4 @@
+// <vc-preamble>
 function isValidInput(s: string): bool
     requires |s| > 0
 {
@@ -15,6 +16,7 @@ function calculateResultFromInput(s: string): string
     var B := parsed.3;
     intToString(calculateAnswer(n, m, W, B))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

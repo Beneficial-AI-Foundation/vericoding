@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -8,6 +9,7 @@ pub struct BitGeneratorState {
 
     pub internal_state: u64,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

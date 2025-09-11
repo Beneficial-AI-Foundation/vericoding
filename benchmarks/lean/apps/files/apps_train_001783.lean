@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def Matrix (α : Type) := List (List α)
 
 def count_squares (matrix : Matrix Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | h::t => h + listSum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_ones_matrix_squares {m n : Nat} (h1 : m > 0) (h2 : n > 0) :
   let matrix := List.replicate m (List.replicate n 1)
   count_squares matrix = m * n  -- simplified expected result for type checking
@@ -53,6 +60,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval count_squares [[1, 1], [1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

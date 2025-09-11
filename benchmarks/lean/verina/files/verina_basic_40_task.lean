@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def secondSmallest_precond (s : Array Int) : Prop :=
   s.size > 1
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def minListHelper : List Int → Int
 | [] => panic! "minListHelper: empty list"
@@ -29,10 +32,14 @@ def secondSmallestAux (s : Array Int) (i minIdx secondIdx : Nat) : Int :=
       secondSmallestAux s (i + 1) minIdx secondIdx
 termination_by s.size - i
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def secondSmallest (s : Array Int) (h_precond : secondSmallest_precond (s)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def secondSmallest_postcond (s : Array Int) (result: Int) (h_precond : secondSmallest_precond (s)) :=
   (∃ i, i < s.size ∧ s[i]! = result) ∧
@@ -42,6 +49,7 @@ def secondSmallest_postcond (s : Array Int) (result: Int) (h_precond : secondSma
 theorem secondSmallest_spec_satisfied (s: Array Int) (h_precond : secondSmallest_precond (s)) :
     secondSmallest_postcond (s) (secondSmallest (s) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

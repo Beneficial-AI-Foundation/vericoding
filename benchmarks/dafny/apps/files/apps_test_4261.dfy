@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= b <= a <= 20 && 1 <= c <= 20
@@ -10,6 +11,7 @@ function RemainingWater(a: int, b: int, c: int): int
     var remaining := c - availableSpace;
     if remaining >= 0 then remaining else 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

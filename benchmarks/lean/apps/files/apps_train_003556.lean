@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def next_pal (n: Nat) : Nat := sorry
 
 def isPalindrome (n: Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem next_pal_is_palindrome (n: Nat) (h: n ≤ 10^6) : 
   isPalindrome (next_pal n) = true := sorry
 
@@ -34,6 +42,7 @@ info: 202
 -/
 -- #guard_msgs in
 -- #eval next_pal 191
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

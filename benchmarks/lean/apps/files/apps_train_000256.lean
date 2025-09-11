@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_kth_largest (nums : List Int) (k : Nat) : Int :=
   sorry
 
@@ -6,13 +7,19 @@ def max_list (l : List Int) : Int :=
 
 def min_list (l : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sort_desc (l : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_kth_largest_element_membership
   (nums : List Int) (k : Nat) (h : k > 0) (h' : k ≤ nums.length) :
   (find_kth_largest nums k) ∈ nums :=
@@ -45,6 +52,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval find_kth_largest [2, 1, 3, 4, 5, 6] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

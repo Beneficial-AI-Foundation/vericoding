@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -55,6 +56,7 @@ spec fn bit_addition(s: Seq<bool>, t: Seq<bool>) -> Seq<bool>
     let c: int = (a + b) % pow2(10);
     bv10_to_seq(c)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function IntToString(n: int): string
     requires n >= 0
     ensures forall i :: 0 <= i < |IntToString(n)| ==> '0' <= IntToString(n)[i] <= '9'
@@ -43,6 +44,7 @@ predicate ValidInput(k: int, p: int)
 {
     k >= 1 && p >= 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_uppercase (s : String) : Bool := sorry
 
 theorem empty_or_no_letters_is_true (s : String) :
   (∀ c ∈ s.data, !c.isAlpha) → is_uppercase s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_uppercase_is_true (s : String) :
   (∀ c ∈ s.data, c.isUpper) → is_uppercase s := sorry
 
@@ -56,6 +64,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_uppercase "123 !@#"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

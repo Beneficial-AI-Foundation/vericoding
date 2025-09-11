@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: seq<(int, int)>)
 {
     forall i :: 0 <= i < |input| ==> input[i].0 >= 1 && input[i].1 >= 1
@@ -20,6 +21,7 @@ predicate ValidOutput(input: seq<(int, int)>, result: seq<int>)
     forall i :: 0 <= i < |input| ==> result[i] == MinMoves(input[i].0, input[i].1) &&
     forall i :: 0 <= i < |result| ==> result[i] >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

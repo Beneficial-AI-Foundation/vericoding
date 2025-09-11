@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| >= 4 && forall i :: 0 <= i < 4 ==> '0' <= s[i] <= '9'
@@ -41,6 +42,7 @@ predicate CorrectResult(s: string, result: string)
     (!s1_valid && s2_valid ==> result == "YYMM\n") &&
     (!s1_valid && !s2_valid ==> result == "NA\n")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

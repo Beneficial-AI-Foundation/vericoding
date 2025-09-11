@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidSolution(n: int, a: int, b: int, c: int)
 {
     a >= 0 && b >= 0 && c >= 0 && 3 * a + 5 * b + 7 * c == n
@@ -9,6 +10,7 @@ predicate ValidResult(n: int, result: seq<int>)
     (|result| == 3 && result[0] >= 0 && result[1] >= 0 && result[2] >= 0 && 
      ValidSolution(n, result[0], result[1], result[2]))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

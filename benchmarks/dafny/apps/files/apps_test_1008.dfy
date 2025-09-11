@@ -1,7 +1,9 @@
+// <vc-preamble>
 function isPalindrome(s: string): bool
 {
     forall i :: 0 <= i < |s| / 2 ==> s[i] == s[|s| - 1 - i]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

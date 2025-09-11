@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def base5 (n : Nat) : List Nat := sorry
 
 def seq (n : Nat) : Nat := sorry
@@ -5,15 +6,21 @@ def seq (n : Nat) : Nat := sorry
 def get_kth_magical_number (k : Nat) : Nat := sorry 
 
 def digitList (n : Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isEvenDigit (n : Nat) : Bool := sorry
 
 theorem base5_zero :
   base5 0 = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem base5_digits_bounded (n : Nat) :
   ∀ d ∈ base5 n, 0 ≤ d ∧ d ≤ 4 := sorry
 
@@ -38,6 +45,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval get_kth_magical_number 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

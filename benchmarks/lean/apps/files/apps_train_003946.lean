@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def gcd (x y : Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def coprime (x y : Nat) : Prop :=
 
 def rat_at (n : Nat) : Nat × Nat := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def index_of (a b : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rat_at_index_inverse (n : Nat) :
   let (a, b) := rat_at n
   index_of a b = n :=
@@ -46,6 +53,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval index_of 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

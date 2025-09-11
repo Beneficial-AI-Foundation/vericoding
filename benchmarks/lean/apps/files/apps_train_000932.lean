@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_binary_pattern (k : Nat) : List (List String) := sorry
 
 theorem pattern_length (k : Nat) (h : 0 < k) (h2 : k ≤ 10) :
   let result := generate_binary_pattern k
   (result.length = k) ∧ 
   (∀ row ∈ result, (row.length = k)) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_binary_strings (k : Nat) (h : 0 < k) (h2 : k ≤ 10) :
   let result := generate_binary_pattern k
   ∀ row ∈ result,
@@ -39,6 +47,7 @@ info: ['1 10 11', '100 101 110', '111 1000 1001']
 -/
 -- #guard_msgs in
 -- #eval generate_binary_pattern 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

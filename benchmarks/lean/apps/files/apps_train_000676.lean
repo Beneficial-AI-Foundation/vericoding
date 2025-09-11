@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_xor_pairs (x y n : Nat) : Nat := sorry 
 
 theorem count_xor_pairs_equal_nums {x n : Nat} :
   count_xor_pairs x x n = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_xor_pairs_nonneg {x y n : Nat} :
   count_xor_pairs x y n ≥ 0 := sorry
 
@@ -35,6 +43,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_xor_pairs 0 0 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

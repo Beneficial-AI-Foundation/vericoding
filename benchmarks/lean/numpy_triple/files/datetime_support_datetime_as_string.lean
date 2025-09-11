@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -38,13 +39,19 @@ inductive TimezoneOption : Type where
   | UTC : TimezoneOption    
   /-- Add local timezone offset -/
   | local : TimezoneOption
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def datetime_as_string {n : Nat} (arr : Vector DateTime64 n) (timezone : TimezoneOption := TimezoneOption.naive) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem datetime_as_string_spec {n : Nat} (arr : Vector DateTime64 n) (timezone : TimezoneOption := TimezoneOption.naive) :
     ⦃⌜True⌝⦄
     datetime_as_string arr timezone
@@ -70,3 +77,4 @@ theorem datetime_as_string_spec {n : Nat} (arr : Vector DateTime64 n) (timezone 
        | TimeUnit.nanoseconds => result[i].length ≥ 29) -- Include nanoseconds
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

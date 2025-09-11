@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_engineer_groups (N M W K R : Nat) (walls : List (List Nat)) (rooms : List (List Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_engineer_groups_basic (N M W K R : Nat) (walls rooms : List (List Nat)) :
   N = 2 ∧ M = 4 ∧ W = 5 ∧ K = 5 ∧ R = 3 ∧ 
   walls = [[1,2,1,3], [1,2,2,2], [1,3,2,3], [1,4,2,4], [2,1,2,2]] ∧
@@ -37,6 +45,7 @@ info: 48
 -/
 -- #guard_msgs in
 -- #eval solve_engineer_groups 2 4 5 5 3 [[1, 2, 1, 3], [1, 2, 2, 2], [1, 3, 2, 3], [1, 4, 2, 4], [2, 1, 2, 2]] [[1, 1, 30, 12], [1, 3, 10, 15], [2, 3, 11, 22]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

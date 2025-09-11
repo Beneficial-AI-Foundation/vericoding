@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def gcd (a b : Nat) : Nat :=
   sorry
 
 def hasDPCProperties (n : Nat) (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def dpcSequence (s : String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dpc_satisfies_properties (s : String) (h : s.length > 0 ∧ s.length ≤ 30) :
   let result := dpcSequence s
   result = -1 ∨ (∃ n : Nat, result = n ∧ hasDPCProperties n s) := 
@@ -48,6 +55,7 @@ info: 15782844
 -/
 -- #guard_msgs in
 -- #eval dpc_sequence "DDDDPDDCCCDDPDCCPCDCDDPCPCCDDCD"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

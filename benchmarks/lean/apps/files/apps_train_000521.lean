@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_queens (n m x y : Nat) : Nat := sorry 
 
 theorem queens_symmetry_rotate_180 {n m x y : Nat} (h1 : x ≤ n) (h2 : y ≤ m) :
   solve_queens n m x y = solve_queens n m (n-x+1) (m-y+1) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem queens_square_board_nonnegative {n x y : Nat} (h1 : x ≤ n) (h2 : y ≤ n) :
   0 ≤ solve_queens n n x y := sorry
 
@@ -31,6 +39,7 @@ info: 94
 -/
 -- #guard_msgs in
 -- #eval solve_queens 4 4 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

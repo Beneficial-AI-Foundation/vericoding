@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sumFirstLastDigit (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_first_last_digit_in_range (n : Nat) (h : n > 0) :
   let result := sumFirstLastDigit n
   result ≥ 0 ∧ result ≤ 18
@@ -30,6 +38,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval sum_first_last_digit 242323
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

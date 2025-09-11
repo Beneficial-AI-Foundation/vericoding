@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     && |input| >= 18
@@ -22,6 +23,7 @@ predicate ValidOutput(input: string, result: string)
     && exists spacePos :: 8 <= spacePos < |input| - 8 && input[spacePos] == ' ' && 
        result[1] == input[8]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

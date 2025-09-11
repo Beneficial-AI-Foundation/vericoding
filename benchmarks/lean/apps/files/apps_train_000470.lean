@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def numWays (steps: Nat) (arrLen: Nat) : Nat :=
   sorry
 
 -- Result in valid range
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numWays_in_range
   (steps: Nat) (arrLen: Nat) (h1: steps ≥ 1) (h2: steps ≤ 500) 
   (h3: arrLen ≥ 1) (h4: arrLen ≤ 1000) :
@@ -56,6 +64,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval numWays 4 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def substring (s : String) : String := sorry
 
 theorem substring_empty_or_single_char (s : String) :
   let result := substring s
   (s = "" → result = "") ∧ result.length ≤ s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem substring_at_most_two_unique_chars (s : String) :
   s ≠ "" →
   let result := substring s
@@ -48,6 +56,7 @@ info: 'cddcd'
 -/
 -- #guard_msgs in
 -- #eval substring "abacddcd"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

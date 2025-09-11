@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Matrix (α : Type) := List (List α)
 
 def avg_diags (matrix : Matrix Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_format {matrix : Matrix Int} :
   let result := avg_diags matrix
   List.length result = 2 ∧ 
@@ -56,6 +64,7 @@ info: [0, -1]
 -/
 -- #guard_msgs in
 -- #eval avg_diags [[0, 0], [0, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

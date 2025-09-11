@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def number_of_subarrays (nums: List Int) (k: Int) : Int := sorry
 
 theorem non_negative_output {nums: List Int} {k: Int} 
   (h1: ∀ x ∈ nums, 1 ≤ x ∧ x ≤ 100) (h2: 1 ≤ k ∧ k ≤ 100) : 
   number_of_subarrays nums k ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_when_k_too_large {nums: List Int} {k: Int}
   (h1: ∀ x ∈ nums, 1 ≤ x ∧ x ≤ 100) (h2: 1 ≤ k ∧ k ≤ 100)
   (h3: k > nums.length) :
@@ -37,6 +45,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval number_of_subarrays [2, 2, 2, 1, 2, 2, 1, 2, 2, 2] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

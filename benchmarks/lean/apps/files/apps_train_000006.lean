@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def valid_track (n : Nat) (track : Nat × Nat) : Prop :=
   let (u, v) := track
   1 ≤ u ∧ u ≤ n ∧ 1 ≤ v ∧ v ≤ n ∧ u ≠ v
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_ski_resort : List (Nat × Nat × List (Nat × Nat)) → List (Nat × List Nat) := sorry
 
 theorem ski_resort_result_valid 
@@ -24,7 +29,9 @@ theorem ski_resort_result_valid
     (∀ x ∈ closed, 1 ≤ x ∧ x ≤ n) ∧
     -- Closed points are unique
     closed.Nodup) := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ski_resort_input_bounds
   (test_cases : List (Nat × Nat × List (Nat × Nat)))
   (h_nonempty : test_cases ≠ []) :
@@ -50,6 +57,7 @@ info: [4, 5, 6, 7]
 -/
 -- #guard_msgs in
 -- #eval sorted res2[0][1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

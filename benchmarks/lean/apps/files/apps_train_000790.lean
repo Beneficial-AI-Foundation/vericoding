@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_mountain_queries (n : Nat) (mountains : List Nat) (queries : List (List Nat)) : List Nat :=
   sorry
 
 -- Results length matches number of type 1 queries
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem results_length_matches_type_1_queries (n : Nat) (mountains : List Nat) (queries : List (List Nat)) 
   (h1 : n ≥ 2) (h2 : mountains.length = n) :
   (solve_mountain_queries n mountains queries).length = 
@@ -35,6 +43,7 @@ theorem update_query_changes_height (n : Nat) (mountains : List Nat) (new_height
   solve_mountain_queries n mountains queries1 = 
     solve_mountain_queries n new_mountains queries2 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

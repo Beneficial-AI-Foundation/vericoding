@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def e : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem e_spec :
     ⦃⌜True⌝⦄
     e
@@ -34,3 +41,4 @@ theorem e_spec :
       Float.abs (Float.log result - 1.0) < 1e-15
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

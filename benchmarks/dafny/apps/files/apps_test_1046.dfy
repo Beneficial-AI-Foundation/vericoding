@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountOccurrences(s: seq<int>, x: int): int
   ensures CountOccurrences(s, x) >= 0
 {
@@ -43,6 +44,7 @@ predicate ExistsIndex(s: seq<int>, x: int)
 {
   exists i :: 0 <= i < |s| && s[i] == x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

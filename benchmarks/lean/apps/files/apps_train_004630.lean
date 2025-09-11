@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def show_me {α : Type} (obj : α) : String := sorry
 
 class SingleAttr where
@@ -12,7 +18,9 @@ class TestClass where
   b : Nat
   c : Nat
 deriving Inhabited
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_attribute {attr_name : String} (h : attr_name ≠ "") :
   let obj := SingleAttr.mk attr_name
   let result := show_me obj
@@ -39,6 +47,7 @@ info: "Hi, I'm one of those Pets! Have a look at my name."
 -/
 -- #guard_msgs in
 -- #eval show_me Pet("Rover")
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

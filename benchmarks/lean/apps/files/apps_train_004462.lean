@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def distribution_of (golds : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem distribution_sums_to_total {golds : List Nat} (h : golds ≠ []) :
   distribution_of golds = [a, b] →
   a + b = golds.foldl (init := 0) (· + ·) := by
@@ -36,6 +44,7 @@ info: [6, 3]
 -/
 -- #guard_msgs in
 -- #eval distribution_of [5, 3, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

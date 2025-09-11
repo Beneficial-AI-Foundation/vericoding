@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn is_sorted(v: Seq<nat>) -> bool {
     forall|i: int, j: int| 0 <= i < j < v.len() ==> #[trigger] v[i] <= #[trigger] v[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

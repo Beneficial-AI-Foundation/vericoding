@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 use vstd::multiset::*;
 
@@ -13,6 +14,7 @@ proof fn min_of_multiset(m: Multiset<int>) -> (min: int)
     assume(false);
     arbitrary()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

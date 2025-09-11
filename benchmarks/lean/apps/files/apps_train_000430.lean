@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mirrorReflection (p q : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mirror_reflection_range (p q : Nat) (hp : p > 0) (hq : q > 0) :
   let r := mirrorReflection p q
   r = 0 ∨ r = 1 ∨ r = 2 :=
@@ -44,6 +52,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval mirrorReflection 5 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

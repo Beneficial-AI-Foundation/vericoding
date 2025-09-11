@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def next_pow_2 (n: Nat) : Nat := sorry
 
 theorem next_pow_2_properties (n: Nat) (h: n ≥ 1) : 
@@ -25,10 +26,14 @@ theorem segtree_build_properties (s : String) (h: s.length > 0) :
     (tree.opened.get! idx = 0 ∨ tree.opened.get! idx = 1) ∧
     (tree.closed.get! idx = 0 ∨ tree.closed.get! idx = 1) ∧
     tree.opened.get! idx + tree.closed.get! idx ≤ 1 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_brackets (s: String) (queries: List (Nat × Nat)) : List Nat := sorry
 
 theorem solve_brackets_properties (s: String) (queries: List (Nat × Nat)) 
@@ -41,6 +46,10 @@ theorem solve_brackets_properties (s: String) (queries: List (Nat × Nat))
   (∀ q r, q ∈ queries → r ∈ results →
     r ≤ 2 * (q.2 - q.1 + 1) ∧
     (r > 0 → q.2 - q.1 ≥ 1)) := sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

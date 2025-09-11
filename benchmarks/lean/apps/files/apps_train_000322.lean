@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def angle_between_hands (hour : Nat) (minutes : Nat) : Float := sorry 
 
 theorem angle_between_hands_returns_valid_angle 
@@ -9,7 +15,9 @@ theorem angle_between_hands_returns_valid_angle
   (h2 : minutes ≤ 59) :
   0 ≤ angle_between_hands hour minutes ∧ 
   angle_between_hands hour minutes ≤ 180 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem angle_calculation_periodic
   (hour : Nat) (minutes : Nat)
   (h1 : 1 ≤ hour ∧ hour ≤ 12)
@@ -22,6 +30,7 @@ theorem angle_is_minimal
   (h1 : 1 ≤ hour ∧ hour ≤ 12)
   (h2 : minutes ≤ 59) :
   angle_between_hands hour minutes ≤ 180 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

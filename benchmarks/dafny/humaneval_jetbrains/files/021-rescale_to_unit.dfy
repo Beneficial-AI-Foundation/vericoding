@@ -1,3 +1,4 @@
+// <vc-preamble>
 function affine(x: real, shift: real, scale: real) : real
     requires scale > 0.0
 {
@@ -9,6 +10,7 @@ function affine_seq(s: seq<real>, r: seq<real>, shift: real, scale: real) : bool
 {
   forall i :: 0 <= i < |s| ==> r[i] == affine(s[i], shift, scale)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

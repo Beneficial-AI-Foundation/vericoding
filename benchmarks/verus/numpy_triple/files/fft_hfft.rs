@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -7,6 +8,7 @@ pub struct Complex {
     pub real: f32,
     pub imag: f32,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

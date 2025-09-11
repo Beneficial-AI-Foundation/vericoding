@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_divisible_by_6 (s: String) : List String := sorry
 
 theorem is_divisible_by_6_length_constraints {s : String} :
   s.length = 0 ∨ s.length > 10000 → is_divisible_by_6 s = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_divisible_by_6_all_divisible {s : String} (h : s.length > 0) (h' : s.length ≤ 10000) :
   ∀ x ∈ is_divisible_by_6 s, (String.toNat! x) % 6 = 0 := sorry 
 
@@ -33,6 +41,7 @@ info: ['36', '66', '96']
 -/
 -- #guard_msgs in
 -- #eval is_divisible_by_6 "*6"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

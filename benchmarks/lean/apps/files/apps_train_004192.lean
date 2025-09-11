@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ball_probability (bag : List String) (target : List String) (replace : Bool) : Float := sorry
 
 theorem probability_bounds {bag : List String} {target : List String} {replace : Bool}
@@ -8,7 +14,9 @@ theorem probability_bounds {bag : List String} {target : List String} {replace :
   (h2 : bag.length ≥ 2) :
   let prob := ball_probability bag target replace;
   0 ≤ prob ∧ prob ≤ 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem impossible_cases {bag : List String} {target : List String} {replace : Bool}
   (h1 : target.length = 2) 
   (h2 : ¬(∃ x ∈ bag, x = target[0]!)) 
@@ -38,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval ball_probability *test3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

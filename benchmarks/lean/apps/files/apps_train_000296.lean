@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def max_sum_after_partitioning (arr : List Int) (k : Nat) : Int :=
 sorry
 
@@ -6,13 +7,19 @@ sorry
 
 def max (l : List Int) : Int :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def len (l : List Int) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bounds {arr : List Int} {k : Nat}
   (h1 : arr.length > 0)
   (h2 : ∀ x ∈ arr, x > 0)
@@ -57,6 +64,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval max_sum_after_partitioning [1] 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

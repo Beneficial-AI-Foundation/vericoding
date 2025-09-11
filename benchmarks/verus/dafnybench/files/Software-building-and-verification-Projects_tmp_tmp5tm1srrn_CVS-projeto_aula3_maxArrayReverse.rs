@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -29,6 +30,7 @@ spec fn sum(n: nat) -> nat
 {
     if n == 0 { 0 } else { n + sum((n - 1) as nat) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

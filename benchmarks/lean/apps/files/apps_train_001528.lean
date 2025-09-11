@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_chef_entries (a b : Nat) : Nat × Nat := sorry
 
 theorem min_leq_max {a b : Nat} :
   let (min, max) := count_chef_entries a b
   min ≤ max := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_geq_max_input {a b : Nat} :
   let (min, max) := count_chef_entries a b 
   min ≥ (if a ≥ b then a else b) := sorry 
@@ -41,6 +49,7 @@ info: (10, 10)
 -/
 -- #guard_msgs in
 -- #eval count_chef_entries 0 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

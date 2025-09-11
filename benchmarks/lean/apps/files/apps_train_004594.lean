@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def amidakuji (ladder : List (List Char)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem amidakuji_length
   {ladder : List (List Char)}
   (h1 : ∀ row ∈ ladder, row.length = (ladder.head!).length)
@@ -50,6 +58,7 @@ info: [0, 1, 2, 3]
 -/
 -- #guard_msgs in
 -- #eval amidakuji ["000"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rec (n : Int) : Int := sorry
 
 theorem rec_non_negative (n : Int) : n ≥ 0 → rec n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rec_zero_or_negative (n : Int) : n ≤ 0 → rec n = 0 := sorry
 
 theorem rec_strictly_increasing (n : Int) : n > 1 → rec n > rec (n-1) := sorry
@@ -28,6 +36,7 @@ info: 837722
 -/
 -- #guard_msgs in
 -- #eval rec 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

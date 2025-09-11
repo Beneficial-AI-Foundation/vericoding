@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def getDigits (n : Nat) : List Nat := sorry 
 
 /- Function that returns the largest number not exceeding n whose digits are monotone increasing -/
@@ -5,10 +6,14 @@ def getDigits (n : Nat) : List Nat := sorry
 def monotoneIncreasingDigits (n : Nat) : Nat := sorry
 
 /- Helper function to compare Options -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def optionLE (a b : Option Nat) : Prop :=
   match a, b with
   | some x, some y => x ≤ y
@@ -17,7 +22,9 @@ def optionLE (a b : Option Nat) : Prop :=
 
 /- For any number n, its monotone increasing digits result will have digits in non-decreasing order
     and will not exceed the original number n -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_monotone_increasing (n : Nat) : 
   let result := monotoneIncreasingDigits n
   let digits := getDigits result
@@ -70,6 +77,7 @@ info: 299
 -/
 -- #guard_msgs in
 -- #eval monotone_increasing_digits 332
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

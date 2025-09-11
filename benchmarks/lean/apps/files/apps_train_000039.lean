@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_start_point (cost1: Nat) (cost2: Nat) (cost3: Nat) (str: String) : Nat := sorry
 
 -- Single character string theorems
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_A_start_point (c: Nat) :
   c > 0 → find_min_start_point c c c "A" = (1 : Nat) := sorry
 
@@ -39,6 +47,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_min_start_point 3 2 8 "AABBBBAABB"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

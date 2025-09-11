@@ -1,3 +1,4 @@
+// <vc-preamble>
 function power(base: int, exp: int): int
     requires exp >= 0
     ensures exp == 0 ==> power(base, exp) == 1
@@ -8,6 +9,7 @@ function power(base: int, exp: int): int
     if exp == 0 then 1
     else base * power(base, exp - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

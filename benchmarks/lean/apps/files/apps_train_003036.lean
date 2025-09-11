@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def braces_status (s : String) : Bool := sorry
 
 def count (c : Char) (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem braces_status_balanced (s : String) :
   braces_status s = true →
   count '(' s = count ')' s ∧ 
@@ -43,6 +51,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval braces_status "()[]{}()"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

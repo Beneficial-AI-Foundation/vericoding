@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def Array.getSum (arr : Array Int) (n : Nat) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def Array.getMean (arr : Array Int) (x y : Int) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_x_returns_negative_one {arr : Array Int} {x y : Int} :
   arr.size > 0 → x ≤ 0 → Array.getMean arr x y = -1 :=
   sorry
@@ -29,6 +36,7 @@ theorem mean_properties {arr : Array Int} {x y : Int} :
   let expected := (firstMean + secondMean) / 2;
   (Array.getMean arr x y - expected).abs < 1e-10 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

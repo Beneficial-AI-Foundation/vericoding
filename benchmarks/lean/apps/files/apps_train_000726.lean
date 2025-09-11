@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def min_temple_operations (n : Nat) (heights : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum : List Nat → Nat 
   | [] => 0
   | (h :: t) => h + list_sum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_temple_operations_nonnegative (n : Nat) (heights : List Nat) :
   heights.length = n →
   min_temple_operations n heights ≥ 0 :=
@@ -45,6 +52,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_temple_operations 5 [1, 2, 6, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

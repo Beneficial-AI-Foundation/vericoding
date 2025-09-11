@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -21,6 +22,7 @@ spec fn calculate_acc(gas: &Vec<i32>, cost: &Vec<i32>, start: int, steps: int) -
         prev_acc + gas[jdx as int] - cost[jdx as int]
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

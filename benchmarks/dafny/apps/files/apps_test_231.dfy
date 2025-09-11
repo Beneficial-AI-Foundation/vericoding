@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int)
 {
   n > 0 && n % 2 == 0 && 1 <= a <= n
@@ -12,6 +13,7 @@ function DistanceToHouse(n: int, a: int): int
   else
     (n - a) / 2 + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ipv4_address (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_ip_addresses (a b c d : Nat) 
   (h₁ : a ≤ 255) (h₂ : b ≤ 255) (h₃ : c ≤ 255) (h₄ : d ≤ 255) :
   ipv4_address (s!"{a}.{b}.{c}.{d}") = true :=
@@ -86,6 +94,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval ipv4_address "127..0.1"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

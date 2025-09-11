@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def OPENING : List Char := ['(', '{', '[']
 def CLOSING : List Char := [')', '}', ']']
 
 def is_valid_parentheses (s: String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_implies_even_length (s: String) : 
   is_valid_parentheses s → s.length % 2 = 0 :=
   sorry
@@ -53,6 +61,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_valid_parentheses "(]"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

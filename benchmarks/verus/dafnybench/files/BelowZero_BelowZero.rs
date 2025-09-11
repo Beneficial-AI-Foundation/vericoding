@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -12,6 +13,7 @@ spec fn sum(s: Seq<int>, n: nat) -> int
         s[0] + sum(s.subrange(1, s.len() as int), (n - 1) as nat)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

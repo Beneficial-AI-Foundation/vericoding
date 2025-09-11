@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n : Int) : Int := if n ≥ 0 then n else -n
 
 def find_digit (num : Int) (nth : Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem negative_nth_returns_negative_one
   (num nth : Int) (h : nth ≤ 0) :
   find_digit num nth = -1 := sorry 
@@ -56,6 +64,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_digit -456 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

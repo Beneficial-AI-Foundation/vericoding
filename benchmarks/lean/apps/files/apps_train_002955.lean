@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def scramble_words (s : String) : String := sorry
 
 def is_alpha (c : Char) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isOrdered (s : List Char) : Prop :=
   ∀ i j, i < j → j < s.length → s[i]! ≤ s[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem scramble_length_preserved (s : String) :
   String.length (scramble_words s) = String.length s := sorry
 
@@ -46,6 +53,7 @@ info: "you've gotta dacne"
 -/
 -- #guard_msgs in
 -- #eval scramble_words "you"ve gotta dance"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def word_break (s : String) (dict : List String) : Bool := sorry
 
 def join_words (words : List String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem word_break_valid_combination 
   (word_dict : List String) (h1 : word_dict.length > 0) :
   word_break (join_words (word_dict.take 5)) word_dict = true := sorry
@@ -44,6 +52,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval word_break "catsandog" ["cats", "dog", "sand", "and", "cat"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

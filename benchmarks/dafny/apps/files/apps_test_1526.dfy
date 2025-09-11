@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, C: int) {
     0 <= A <= 50 && 0 <= B <= 50 && 0 <= C <= 50
 }
@@ -30,6 +31,7 @@ function MinOperations(A: int, B: int, C: int): int
 predicate AllEqual(A: int, B: int, C: int) {
     A == B && B == C
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

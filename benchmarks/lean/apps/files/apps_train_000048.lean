@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_trades (x y k : Nat) : Nat := sorry
 
 theorem min_trades_nonneg {x y k : Nat} (hx : x ≥ 2) (hy : y ≥ 1) (hk : k ≥ 1) :
   min_trades x y k ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_trades_ge_k {x y k : Nat} (hx : x ≥ 2) (hy : y ≥ 1) (hk : k ≥ 1) :
   min_trades x y k ≥ k := sorry
 
@@ -41,6 +49,7 @@ info: 25
 -/
 -- #guard_msgs in
 -- #eval min_trades 12 11 12
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

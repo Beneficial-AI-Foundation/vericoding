@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def greet (name : String) : String := sorry
 
 theorem greet_starts_with_hello (name : String) (h : name.length > 0) :
   (greet name).startsWith "Hello " = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem greet_ends_with_exclamation (name : String) (h : name.length > 0) :
   (greet name).endsWith "!" = true := sorry
 
@@ -29,6 +37,7 @@ info: 'Hello Billy!'
 -/
 -- #guard_msgs in
 -- #eval greet "BILLY"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

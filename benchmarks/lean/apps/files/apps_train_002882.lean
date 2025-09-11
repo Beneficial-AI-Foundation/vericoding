@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def alphabetic (s : String) : Bool := sorry 
 
 theorem empty_string_alphabetic :
   alphabetic "" = true := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (cs : List Char) : Prop := 
   ∀ i j, i < j → j < cs.length → cs[i]! ≤ cs[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_char_alphabetic (c : Char) :
   alphabetic (String.singleton c) = true := sorry
 
@@ -41,6 +48,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval alphabetic "kata"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

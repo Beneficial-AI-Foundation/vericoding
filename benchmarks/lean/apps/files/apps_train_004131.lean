@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def colorful (n : Nat) : Bool := sorry
 
 def getSubsequenceProducts (n : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digit_colorful (n : Nat) (h : n ≤ 9) : 
   colorful n = true := sorry
 
@@ -35,6 +43,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval colorful 236
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

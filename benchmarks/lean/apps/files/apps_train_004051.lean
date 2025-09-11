@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def do_math (input : String) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def make_alpha_num (nums : List Int) (letters : List String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem do_math_returns_int {nums : List Int} {letters : List String}
   (h_nums_size : nums.length ≥ 2 ∧ nums.length ≤ 10)
   (h_letters_size : letters.length ≥ 2 ∧ letters.length ≤ 10)
@@ -38,6 +45,7 @@ info: 60
 -/
 -- #guard_msgs in
 -- #eval do_math "10a 90x 14b 78u 45a 7b 34y"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

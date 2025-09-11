@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def toDigits (n : Nat) : List Nat :=
   if n < 10 then [n]
   else (n % 10) :: toDigits (n / 10)
@@ -5,14 +6,20 @@ def toDigits (n : Nat) : List Nat :=
 def sum_list : List Nat → Nat 
   | [] => 0
   | (h :: t) => h + sum_list t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def power_sumDigTerm : Nat → Nat := sorry
 
 -- Property that the sequence is strictly increasing
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem power_sumDigTerm_increasing {n : Nat} : 
   n > 0 → power_sumDigTerm n < power_sumDigTerm (n + 1) := sorry
 
@@ -42,6 +49,7 @@ info: 2401
 -/
 -- #guard_msgs in
 -- #eval power_sumDigTerm 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

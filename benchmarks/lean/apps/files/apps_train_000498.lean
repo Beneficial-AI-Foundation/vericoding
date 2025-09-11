@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_graph_labeling (n : Nat) (edges : List (Nat × Nat × Nat)) : List Nat := sorry
 
 theorem solve_impossible_n2 :
   solve_graph_labeling 2 [(1,2,1)] = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_disconnected_graph :
   solve_graph_labeling 4 [(1,2,1)] = [] := sorry
 
@@ -21,6 +29,7 @@ theorem solve_square_valid_colors (result : List Nat) (u v c : Nat)
   solve_graph_labeling 4 [(1,2,1), (2,3,2), (3,4,1), (4,1,2)] = result →
   (u,v,c) ∈ [(1,2,1), (2,3,2), (3,4,1), (4,1,2)] →
   (result.get ⟨u-1, h1⟩ = c) ≠ (result.get ⟨v-1, h2⟩ = c) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

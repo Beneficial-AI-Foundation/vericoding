@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def get_max_beauty (n k : Nat) (arr : List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Nat) : Prop :=
 match l with
 | [] => True
 | x::xs => match xs with
   | [] => True
   | y::_ => x ≤ y ∧ isSorted xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_max_beauty_properties
   (n k : Nat) (arr : List Nat) 
   (h₁ : n > 0)
@@ -70,6 +77,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval get_max_beauty 13 11 [55, 16, 26, 40, 84, 80, 48, 52, 25, 43, 75, 21, 58]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

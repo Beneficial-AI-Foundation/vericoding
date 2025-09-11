@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def closest_pair_tonum (n : Nat) : Nat × Nat := sorry
 
 theorem valid_pair_exists (upper_limit : Nat) (h : upper_limit ≥ 30) :
@@ -10,7 +16,9 @@ theorem valid_pair_exists (upper_limit : Nat) (h : upper_limit ≥ 30) :
   y < upper_limit ∧
   ∃ a b : Nat, x + y = a * a ∧ x - y = b * b :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_pairs_for_small_input (n : Nat) (h : n ≤ 4) :
   ¬∃ x y : Nat, x < n ∧ y < n ∧ x > y ∧
   ∃ a b : Nat, x + y = a * a ∧ x - y = b * b :=
@@ -33,6 +41,7 @@ info: (45, 36)
 -/
 -- #guard_msgs in
 -- #eval closest_pair_tonum 50
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

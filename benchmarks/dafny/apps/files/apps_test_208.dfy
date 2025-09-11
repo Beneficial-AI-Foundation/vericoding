@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x1: int, y1: int, x2: int, y2: int)
 {
     -100 <= x1 <= 100 && -100 <= y1 <= 100 && -100 <= x2 <= 100 && -100 <= y2 <= 100
@@ -43,6 +44,7 @@ predicate ValidOutput(result: seq<int>)
     (|result| == 1 && result[0] == -1) ||
     (|result| == 4 && (forall i :: 0 <= i < 4 ==> -1000 <= result[i] <= 1000))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

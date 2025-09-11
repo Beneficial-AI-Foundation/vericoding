@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>)
 {
     n >= 0 && |a| == n && forall i :: 0 <= i < |a| ==> a[i] in {4, 8, 15, 16, 23, 42}
@@ -63,6 +64,7 @@ function number_of_complete_subsequences_partial(n: int, a: seq<int>, k: seq<int
     var final_s := process_array(s, partial_a, k, 0);
     final_s[6]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

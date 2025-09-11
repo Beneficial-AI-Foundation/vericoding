@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -37,6 +38,7 @@ spec fn row_column_product_from(m1: &Vec<Vec<int>>, m2: &Vec<Vec<int>>, row: int
         m1[row][k] * m2[k][column] + row_column_product_from(m1, m2, row, column, k + 1)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

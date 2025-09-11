@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, f: int, k: int) {
   a > 0 && b > 0 && f > 0 && k > 0 && f < a
 }
@@ -28,6 +29,7 @@ predicate MultiJourneyFeasibility(a: int, b: int, f: int, k: int, result: int) {
     b >= f && b >= a - f && b >= 2 * a - f    
   )
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

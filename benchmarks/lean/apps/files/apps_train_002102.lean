@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def count_distinct_names (words: List String) : Nat := sorry
 
 theorem count_distinct_names_bounded (words: List String) (h: words ≠ []) :
@@ -13,15 +14,21 @@ def processKh (s: String) : String := sorry
 def processU (s: String) : String := sorry
 
 /- Helper function to fully process a string with all replacements -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def processString (s: String) : String := processKh (processU s)
 
 def unique {α} [BEq α] (l: List α) : List α :=
   l.foldl (fun acc x => if acc.elem x then acc else x :: acc) []
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 4
 -/
@@ -39,6 +46,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_distinct_names ["alex", "alex"]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def List.sort (l : List α) : List α :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def same (a b : List (List Int)) : Bool := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem same_reflexive (arr : List (List Int)) : same arr arr = true := by 
   sorry
 
@@ -41,6 +48,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval same [[2, 3], [3, 2]] [[2, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def checkConcatenatedSum (n : Int) (r : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_positive_repeat_is_false {n r : Int} 
   (h : r ≤ 0) : checkConcatenatedSum n r = false :=
   sorry
@@ -43,6 +51,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval check_concatenated_sum 198 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rad_ladies (s : String) : String := sorry
 
 theorem rad_ladies_name_preserved {s : String} (h : s ≠ "") :
   let result := rad_ladies (s ++ "!")
   (result.startsWith s) ∧ (result.endsWith "!") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rad_ladies_idempotent (s : String) :
   rad_ladies (rad_ladies s) = rad_ladies s := sorry
 
@@ -27,6 +35,7 @@ info: 'FRAN BILAS!'
 -/
 -- #guard_msgs in
 -- #eval rad_ladies "%&$557f953//1/$@%r%935$$a@3111$@???%n???5 $%157b%///$i%55&31@l?%&$$a%@$s5757!$$%%%%53"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def word_mesh (words : List String) : String := sorry
 
 def isResult (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hasOverlap (s1 s2 : String) : Bool := sorry
 
 def isLowerAlpha (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem word_mesh_output_format 
   (words : List String)
   (h1 : words.length ≥ 2)
@@ -46,6 +53,7 @@ info: 'conumcal'
 -/
 -- #guard_msgs in
 -- #eval word_mesh ["beacon", "condominium", "umbilical", "california"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

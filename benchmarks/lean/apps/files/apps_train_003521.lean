@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hex_to_dec (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dec_to_hex_to_dec_roundtrip (n : Nat) :
   hex_to_dec (String.mk (Nat.toDigits 16 n)) = n :=
 sorry
@@ -30,6 +38,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval hex_to_dec "10"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

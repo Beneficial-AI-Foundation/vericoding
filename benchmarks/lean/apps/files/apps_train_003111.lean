@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_average [Add α] [Div α] [OfNat α 0] : List α → α 
   | [] => 0
   | xs => sorry
@@ -13,14 +14,20 @@ def list_max : List Float → Float
 def list_sum : List Float → Float
   | [] => 0
   | (x::xs) => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (x : Float) : Float := sorry
 
 def toFloat (n : Nat) : Float := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_average_empty {α} [Add α] [Div α] [OfNat α 0] (nums : List α) : 
   nums = [] → find_average nums = 0 := by sorry
 
@@ -57,6 +64,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_average []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

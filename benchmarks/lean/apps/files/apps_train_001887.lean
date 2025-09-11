@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_closest_palindrome (s : String) : String := sorry
 
 def isPalindrome (s : String) : Bool := sorry
@@ -5,14 +6,20 @@ def isPalindrome (s : String) : Bool := sorry
 def allCharsNumeric (s : String) : Bool := sorry
 
 def toNat (s : String) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def toString! (n : Nat) : String := sorry
 
 -- Basic type constraints
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_closest_palindrome_outputs_nonempty {n : String} 
   (h : isPalindrome n = false) 
   : String.length (find_closest_palindrome n) > 0 := sorry
@@ -77,6 +84,7 @@ info: '1001'
 -/
 -- #guard_msgs in
 -- #eval find_closest_palindrome "999"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

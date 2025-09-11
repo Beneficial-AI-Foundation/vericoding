@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def compareVersions (v1 : String) (v2 : String) : Bool :=
   sorry
 
 variable (v v1 v2 v3 : String)
 
 -- Self equality
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem compare_versions_self_equality :
   compareVersions v v = true := by
   sorry
@@ -41,6 +49,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval compare_versions "10.4" "10.10"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

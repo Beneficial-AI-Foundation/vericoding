@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def common_ground (s1 s2 : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def split (s : String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem common_ground_subset (s1 s2 : String) :
   let result := common_ground s1 s2
   result ≠ "death" →
@@ -46,6 +53,7 @@ info: 'death'
 -/
 -- #guard_msgs in
 -- #eval common_ground "i like turtles" "what are you talking about"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

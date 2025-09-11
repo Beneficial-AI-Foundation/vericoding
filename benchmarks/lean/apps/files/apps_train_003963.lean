@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def game (n: Nat) : List Nat := sorry
 
 theorem game_result_list_length {n: Nat} :
   let result := game n
   List.length result = 1 ∨ List.length result = 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem game_zero_case :
   game 0 = [0] := sorry
 
@@ -48,6 +56,7 @@ info: [10201, 2]
 -/
 -- #guard_msgs in
 -- #eval game 101
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

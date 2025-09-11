@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_snackdown_spread (n : Nat) (arr : List Nat) : Nat := sorry
 
 theorem spread_properties_nonnegative (n : Nat) (arr : List Nat) 
   (h1 : arr.length = n) 
   (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5)
   : solve_snackdown_spread n arr ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem spread_properties_upper_bound (n : Nat) (arr : List Nat)
   (h1 : arr.length = n)
   (h2 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 5) 
@@ -44,6 +52,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_snackdown_spread 3 [2, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

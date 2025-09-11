@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     IsValidIntegerString(s) && 
@@ -71,6 +72,7 @@ function ParseIntegerHelper(s: string): int
     else
         100 * ((s[0] as int) - ('0' as int)) + 10 * ((s[1] as int) - ('0' as int)) + ((s[2] as int) - ('0' as int))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

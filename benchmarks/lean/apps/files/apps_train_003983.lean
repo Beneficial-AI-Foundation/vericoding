@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ulamSequence (u0 u1 n : Nat) : List Nat := sorry
 
 theorem ulam_sequence_length (u0 u1 n : Nat) (h1: u0 > 0) (h2: u1 > u0) :
   List.length (ulamSequence u0 u1 n) = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ulam_sequence_first_elements (u0 u1 n : Nat) (h1: u0 > 0) (h2: u1 > u0) (h3: n ≥ 3) :
   ulamSequence u0 u1 n ≠ [] ∧
   (ulamSequence u0 u1 n).get ⟨0, by {rw [ulam_sequence_length u0 u1 n h1 h2]; sorry}⟩ = u0 ∧
@@ -37,6 +45,7 @@ theorem ulam_sequence_unique_sum (u0 u1 n : Nat) (h1: u0 > 0) (h2: u1 > u0) (h3:
      q.2 ∈ (List.take i.val seq) ∧
      q.1 + q.2 = (seq.get ⟨i.val, by {rw [h_length]; exact i.isLt}⟩) → 
      q = p)) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

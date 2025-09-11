@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fold_cube (nums : List Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fold_cube_valid_input_range 
   {nums : List Nat}
   (h1: nums.length = 6)
@@ -45,6 +53,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval fold_cube test3.copy()
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def zeros (n : Nat) : Nat := sorry
 
 theorem zeros_non_negative (n : Nat) :
   zeros n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zeros_monotonic (n : Nat) :
   n > 0 → zeros n ≥ zeros (n-1) := sorry
 
@@ -32,6 +40,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval zeros 30
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

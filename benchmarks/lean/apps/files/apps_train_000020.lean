@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def CustomerInfo := List (Nat × Int × Int)
 
 def check_restaurant_temps (initial_temp : Int) (customer_info : CustomerInfo) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_restaurant_temps_returns_valid_string (initial_temp : Int) (customer_info : CustomerInfo) :
   check_restaurant_temps initial_temp customer_info = "YES" ∨ 
   check_restaurant_temps initial_temp customer_info = "NO" :=
@@ -47,6 +55,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval check_restaurant_temps -100 [(100, 0, 0), (100, -50, 50), (200, 100, 100)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

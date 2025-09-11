@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isneginf {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isneginf_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     isneginf x
@@ -27,3 +34,4 @@ theorem isneginf_spec {n : Nat} (x : Vector Float n) :
       -- Exclusivity: cannot be both negative infinity and NaN
       (result[i] = true → ¬(x[i]).isNaN)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dieSimulator (n: Nat) (rollMax: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dieSimulator_within_bounds (n: Nat) (rollMax: List Nat)
   (h1: 1 ≤ n) (h2: n ≤ 20)
   (h3: rollMax.length = 6)
@@ -42,6 +50,7 @@ info: 181
 -/
 -- #guard_msgs in
 -- #eval dieSimulator 3 [1, 1, 1, 2, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

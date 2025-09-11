@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def solve_dominos (n : Nat) (arr : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum : List Nat → Nat  
   | [] => 0
   | (h :: t) => h + list_sum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_dominos_non_negative (n : Nat) (arr : List Nat) :
   solve_dominos n arr ≥ 0 := by
   sorry
@@ -42,6 +49,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval solve_dominos 3 [3, 3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

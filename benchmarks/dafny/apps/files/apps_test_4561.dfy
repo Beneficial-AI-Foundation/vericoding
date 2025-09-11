@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidOutcome(outcome: string)
 {
     outcome in {"delicious", "safe", "dangerous"}
@@ -15,6 +16,7 @@ function ExpectedOutcome(X: int, A: int, B: int): string
     else if daysPast <= X then "safe"  
     else "dangerous"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

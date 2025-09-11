@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def typecodes (category : String) : Id (Option String) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem typecodes_spec (category : String) :
     ⦃⌜True⌝⦄
     typecodes category
@@ -24,3 +31,4 @@ theorem typecodes_spec (category : String) :
       (category ∉ ["Character", "Integer", "UnsignedInteger", "Float", "Complex", "AllInteger", "AllFloat", "Datetime", "All"] → result = none)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def signed_eight_bit_number (s : String) : Bool := sorry
 
 theorem valid_range_numbers {x : Int}
   (h : -128 ≤ x ∧ x ≤ 127) :
   signed_eight_bit_number (toString x) = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem out_of_range_numbers {x : Int}
   (h : x < -128 ∨ x > 127) : 
   signed_eight_bit_number (toString x) = false := sorry
@@ -56,6 +64,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval signed_eight_bit_number " 1"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

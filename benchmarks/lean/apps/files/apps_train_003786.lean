@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_happy (n : Nat) : Bool := sorry
 
 def sum_of_squares_digits (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem happy_number_is_bool (n : Nat) : 
   n > 0 → is_happy n = true ∨ is_happy n = false := sorry 
 
@@ -44,6 +52,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_happy 16
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

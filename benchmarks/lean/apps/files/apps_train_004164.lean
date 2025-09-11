@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def men_still_standing (cards: List String) : (Nat × Nat) :=
   sorry
 
 -- Empty input returns initial state
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem initial_state :
   men_still_standing [] = (11, 11) :=
 sorry
@@ -52,6 +60,7 @@ info: (6, 11)
 -/
 -- #guard_msgs in
 -- #eval men_still_standing ["A4R", "A2R", "A3R", "A6R", "A8R", "A10R", "A11R"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

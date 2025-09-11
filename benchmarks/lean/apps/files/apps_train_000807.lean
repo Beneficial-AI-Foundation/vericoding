@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_subsequences (n k : Nat) (s : List Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_subsequences_nonnegative (n k : Nat) (s : List Char) :
   count_subsequences n k s ≥ 0 := sorry
 
@@ -39,6 +47,7 @@ info: 64197148392731290
 -/
 -- #guard_msgs in
 -- #eval count_subsequences 12 80123123 "abzbabzbazab"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

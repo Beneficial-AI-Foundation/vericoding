@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) (k : Nat) (arr : List Int) : List Int := sorry
 
 def fft (arr : List Int) (n : Nat) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_empty_array_length {n : Nat} (h : n > 0) (h2 : n ≤ 10) :
   let arr := List.replicate n 0
   List.length (solve n 0 arr) = n + 1 := sorry
@@ -48,6 +56,7 @@ info: [0, 6, 5, 4, 3, 2, 1]
 -/
 -- #guard_msgs in
 -- #eval solve 6 99 [-1, -1, -1, -1, -1, -1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

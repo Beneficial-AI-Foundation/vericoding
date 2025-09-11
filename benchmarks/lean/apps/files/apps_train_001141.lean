@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_pool_shots (N K x y : Nat) : Nat × Nat := sorry
 
 theorem solve_pool_shots_bounds 
   (N K x y : Nat) (h1 : x ≤ N) (h2 : y ≤ N) :
   let (rx, ry) := solve_pool_shots N K x y
   rx ≤ N ∧ ry ≤ N := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_pool_shots_boundary 
   (N K x y : Nat) (h1 : x ≤ N) (h2 : y ≤ N) (h3 : x ≠ y) :
   let (rx, ry) := solve_pool_shots N K x y
@@ -38,6 +46,7 @@ info: (6, 10)
 -/
 -- #guard_msgs in
 -- #eval solve_pool_shots 10 1 3 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

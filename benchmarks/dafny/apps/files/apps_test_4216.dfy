@@ -1,3 +1,4 @@
+// <vc-preamble>
 function numDigits(n: int): int
   requires n >= 1
   ensures numDigits(n) >= 1
@@ -22,6 +23,7 @@ function F(a: int, b: int): int
 predicate IsFactorPair(a: int, b: int, N: int) {
   a >= 1 && b >= 1 && a * b == N
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate IsEven (n: int)
 {
   n % 2 == 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

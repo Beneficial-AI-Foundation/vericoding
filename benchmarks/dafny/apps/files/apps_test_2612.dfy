@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate is_valid_beautiful_arrangement(arrangement: seq<int>, sizes: seq<int>)
     requires forall i :: 0 <= i < |arrangement| ==> 1 <= arrangement[i] <= |sizes|
 {
@@ -16,6 +17,7 @@ predicate ValidInput(n: int, sizes: seq<int>)
 {
     n >= 1 && |sizes| == n && forall i :: 0 <= i < n ==> sizes[i] >= 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

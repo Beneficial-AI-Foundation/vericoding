@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def String.sumAscii (s : String) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def highest_value (a b : String) : String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem highest_value_is_input (a b : String) :
   let result := highest_value a b
   result = a ∨ result = b := sorry
@@ -44,6 +51,7 @@ info: "{}[]@~'#:;"
 -/
 -- #guard_msgs in
 -- #eval highest_value "!"?$%^&*()" "{}[]@~"#:;"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

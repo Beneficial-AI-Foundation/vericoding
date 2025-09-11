@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_distance (n k d : Nat) (x : List Nat) (l : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_distance_basic_bounds 
   {n k d : Nat} {x l : List Nat} 
   (h1 : 0 < n) (h2 : 20 ≤ k) (h3 : 0 < d ∧ d ≤ 10)
@@ -45,6 +53,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval max_distance 2 10 2 [4, 5] [1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

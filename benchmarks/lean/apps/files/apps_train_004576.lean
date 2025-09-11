@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def new_avg (donations : List Int) (targetAvg : Int) : Option Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem new_avg_type_and_positive (donations : List Int) (targetAvg : Int) :
   donations ≠ [] →
   ∀ r : Int, new_avg donations targetAvg = some r →
@@ -40,6 +47,7 @@ info: 645
 -/
 -- #guard_msgs in
 -- #eval new_avg [14, 30, 5, 7, 9, 11, 15] 92
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

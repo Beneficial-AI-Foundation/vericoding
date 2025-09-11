@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bagOfTokensScore (tokens: List Nat) (power: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem score_bounds {tokens: List Nat} {power: Nat} :
   let score := bagOfTokensScore tokens power
   score ≤ tokens.length ∧ score ≥ 0 :=
@@ -40,6 +48,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval bag_of_tokens_score [100, 200, 300, 400] 200
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

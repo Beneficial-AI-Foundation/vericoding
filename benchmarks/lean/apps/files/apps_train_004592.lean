@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def john (n : Nat) : List Nat := sorry
 def ann (n : Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_john (n : Nat) : Nat := sorry
 def sum_ann (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequences_start_correctly {n : Nat} (h : n > 0) : 
   (john n).get ⟨0, sorry⟩ = 0 ∧ (ann n).get ⟨0, sorry⟩ = 1 := sorry
 
@@ -48,6 +55,7 @@ info: 6930
 -/
 -- #guard_msgs in
 -- #eval sum_ann 150
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

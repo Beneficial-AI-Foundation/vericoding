@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -25,6 +26,7 @@ spec fn fib(n: nat) -> nat
 spec fn sorted(a: &[int]) -> bool {
     forall|j: int, k: int| 0 <= j < k < a.len() ==> a[j] < a[k]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

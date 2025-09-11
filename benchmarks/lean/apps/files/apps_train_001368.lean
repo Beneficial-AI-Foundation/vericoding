@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def gcd (a b : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_max_gcd (s : String) (m x y : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gcd_properties (a b : Int) (h : b ≠ 0) :
   let g := gcd a.natAbs b.natAbs
   g > 0 ∧ a.natAbs % g = 0 ∧ b.natAbs % g = 0 :=
@@ -38,6 +45,7 @@ theorem solve_max_gcd_partition_bounds
   (single_partition = sorry ∨ single_partition = 0) -- equal to integer value of s or 0
   :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

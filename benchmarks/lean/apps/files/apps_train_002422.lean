@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_power_of_four (n: Int) : Bool 
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_power_of_four_if_true {n : Int} (h : is_power_of_four n = true) : 
   n > 0 := sorry
 
@@ -33,6 +41,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_power_of_four 64
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

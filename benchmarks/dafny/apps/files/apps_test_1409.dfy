@@ -1,3 +1,4 @@
+// <vc-preamble>
 function count_eligible(participations: seq<int>, k: int): int
     requires 0 <= k <= 5
     requires forall i :: 0 <= i < |participations| ==> 0 <= participations[i] <= 5
@@ -5,6 +6,7 @@ function count_eligible(participations: seq<int>, k: int): int
     if |participations| == 0 then 0
     else (if 5 - participations[0] >= k then 1 else 0) + count_eligible(participations[1..], k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

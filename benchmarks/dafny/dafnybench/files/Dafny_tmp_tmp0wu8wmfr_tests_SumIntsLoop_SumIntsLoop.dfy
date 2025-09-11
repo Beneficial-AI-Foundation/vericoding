@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sumInts( n: int ): int
     requires n >= 0;
 {
@@ -6,6 +7,7 @@ function sumInts( n: int ): int
     else
         sumInts(n-1)+n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

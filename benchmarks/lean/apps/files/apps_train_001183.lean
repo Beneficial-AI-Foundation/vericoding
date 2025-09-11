@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def Edge := Nat × Nat × Nat
 def Graph := List Edge
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_shortest_paths (n : Nat) (edges : Graph) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_paths_positive 
   (n : Nat) (edges : Graph) 
   (h1 : n ≥ 2)
@@ -37,6 +44,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval count_shortest_paths 3 [(1, 2, 3), (2, 3, 6), (1, 3, 9)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

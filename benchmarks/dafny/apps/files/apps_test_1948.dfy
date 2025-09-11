@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, x: int, edges: seq<(int, int)>)
 {
   n > 0 && 1 <= x <= n && |edges| == n - 1 &&
@@ -26,6 +27,7 @@ function OptimalMoves(wayA: seq<int>, wayB: seq<int>, leaves: seq<int>, x: int):
 {
   2 * ComputeOptimalMoves(wayA, wayB, leaves, x-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function gcd(m: nat, n: nat) : nat
 requires m>0 && n>0;
 decreases m+n
@@ -15,6 +16,7 @@ decreases n;
     else if (n  ==0 && x == 0.0) then 1.0
     else x*exp(x, n-1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

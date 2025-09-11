@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def f (k n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem f_is_positive (k n : Nat) (h : k ≥ 2) :
   f k n > 0 :=
   sorry
@@ -33,6 +41,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval f 100 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

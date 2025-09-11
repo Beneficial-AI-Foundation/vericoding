@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_cycles (n : Nat) : List (List Nat) := sorry
 
 theorem cycle_vertices_valid {n : Nat} (h : n ≥ 3) :
   ∀ cycle ∈ solve_cycles n, ∀ v ∈ cycle, 1 ≤ v ∧ v ≤ n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cycle_vertices_unique {n : Nat} (h : n ≥ 3) :
   ∀ cycle ∈ solve_cycles n, List.Nodup cycle := sorry
 
@@ -42,6 +50,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval len solve_cycles(5)
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

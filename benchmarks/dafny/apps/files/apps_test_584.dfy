@@ -1,3 +1,4 @@
+// <vc-preamble>
 function IsLetter(c: char): bool
 {
     ('a' <= c <= 'z') || ('A' <= c <= 'Z')
@@ -110,6 +111,7 @@ function ComputeCountInside(s: string, pos: int, balance: int, cur: int): int
         var countIncrement := if wordEnded && balance > 0 then 1 else 0;
         countIncrement + ComputeCountInside(s, pos + 1, newBalance, newCur)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

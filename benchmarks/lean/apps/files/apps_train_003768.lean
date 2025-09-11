@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def odd_row (n : Nat) : List Nat := sorry
 
 theorem odd_row_length (n : Nat) (h : n > 0) :
   (odd_row n).length = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_row_all_odd (n : Nat) (h : n > 0) :
   ∀ x ∈ odd_row n, x % 2 = 1 := sorry
 
@@ -33,6 +41,7 @@ info: [7, 9, 11]
 -/
 -- #guard_msgs in
 -- #eval odd_row 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

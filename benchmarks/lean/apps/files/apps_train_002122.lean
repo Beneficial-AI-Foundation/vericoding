@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n m : Nat) (dishes : List Nat) (pupils : List Nat) (queries : List (Nat × Nat × Nat)) : List Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_output_is_list_of_ints (n m : Nat) (dishes : List Nat) (pupils : List Nat) 
     (queries : List (Nat × Nat × Nat)) :
   let result := solve n m dishes pupils queries
@@ -47,6 +55,7 @@ info: [8, -1, 4]
 -/
 -- #guard_msgs in
 -- #eval solve 4 6 [1, 8, 2, 4] [3, 3, 6, 1, 5, 2] [(1, 1, 1), (2, 5, 10), (1, 1, 6)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_ops_to_make_nondecreasing (n : Nat) (m : Nat) (A : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_ops_result_range {n m : Nat} {A : List Nat} 
   (hn : n > 0) (hm : m > 0) (hA : A.length > 0) :
   let result := min_ops_to_make_nondecreasing n m A
@@ -38,6 +46,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval min_ops_to_make_nondecreasing 10 10 [5, 0, 5, 9, 4, 6, 4, 5, 0, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

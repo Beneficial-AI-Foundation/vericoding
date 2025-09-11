@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate Sorted(q: seq<int>)
 {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j] 
@@ -31,6 +32,7 @@ method BinarySearch(q: seq<int>, key: int, lowerBound: nat, upperBound: nat, com
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

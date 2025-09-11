@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate IsVowel(c: char)
 {
     c in {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

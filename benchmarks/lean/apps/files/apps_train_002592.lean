@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def gimme (arr : List Float) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def sort (xs : List Float) : List Float :=
 
 def sortInt (xs : List Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def gimmeInt (arr : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gimme_in_range {arr : List Float} (h : arr.length = 3) :
   let res := gimme arr
   0 ≤ res ∧ res ≤ 2 :=
@@ -58,6 +65,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval gimme [-0.41, -23, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

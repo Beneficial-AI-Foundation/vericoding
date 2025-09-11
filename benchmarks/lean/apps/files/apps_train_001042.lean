@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def predict_winner (n : Nat) (nums : List Nat) : String := sorry
 
 theorem predict_winner_valid_output (n : Nat) (nums : List Nat) :
   nums.length > 0 → 
   let result := predict_winner n nums
   result = "Derek" ∨ result = "Henry" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem predict_winner_small_numbers (n : Nat) (nums : List Nat) :
   nums.length > 0 →
   nums.length ≤ 10 →
@@ -32,6 +40,7 @@ info: 'Derek'
 -/
 -- #guard_msgs in
 -- #eval predict_winner 3 [1, 3, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

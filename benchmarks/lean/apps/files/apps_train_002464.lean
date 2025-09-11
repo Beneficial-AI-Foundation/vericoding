@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_string_indices (s : String) (k : String) : List (Int × Int) := sorry
 
 -- Any result is a list of integer tuples
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_string_indices_returns_valid_pairs (s k : String) 
   (h₁ : s.length > 0) (h₂ : k.length > 0) :
   ∀ p ∈ (find_string_indices s k), ∃ i j : Int, p = (i, j) := sorry
@@ -52,6 +60,7 @@ info: [(1, 3), (3, 5)]
 -/
 -- #guard_msgs in
 -- #eval find_string_indices "banana" "ana"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def remove_parentheses (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_without_parens_unchanged (s : String)
   (h : ∀ c ∈ s.data, c ≠ '(' ∧ c ≠ ')') :
   remove_parentheses s = s :=
@@ -40,6 +48,7 @@ info: '  '
 -/
 -- #guard_msgs in
 -- #eval remove_parentheses "(first group) (second group) (third group)"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

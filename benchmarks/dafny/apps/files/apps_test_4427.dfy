@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
     requires |input| > 0
 {
@@ -30,6 +31,7 @@ function generateOutputUpToIteration(r: int, D: int, x0: int, iterations: int): 
         var previousOutput := generateOutputUpToIteration(r, D, x0, iterations - 1);
         previousOutput + intToString(currentValue) + "\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

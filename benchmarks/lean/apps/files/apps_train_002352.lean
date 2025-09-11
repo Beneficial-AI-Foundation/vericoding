@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def special_array (nums: List Nat) : Int := sorry
 
 theorem special_array_basic_properties {nums : List Nat} :
   let result := special_array nums
   result ≥ -1 ∧ 
   (result ≠ -1 → result ≤ nums.length) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem special_array_count_property {nums : List Nat} :
   let result := special_array nums
   let resultNat := Int.toNat result
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval special_array [0, 4, 3, 0, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

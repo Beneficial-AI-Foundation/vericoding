@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Result := String
 deriving Repr, BEq
 
@@ -26,15 +27,21 @@ def adjacent_bomb_nullifies (c : Char) :
   c ∈ ['w', 'p', 'b', 's', 'm', 'q', 'd', 'z'] →
   alphabet_war (String.mk ['*', c]) = "Let's fight again!" ∧
   alphabet_war (String.mk [c, '*']) = "Let's fight again!" := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def repeated_string_same_winner (s : String) :
   (∀ c ∈ s.data, c ∈ ['w', 'p', 'b', 's', 'm', 'q', 'd', 'z']) →
   s.length > 0 →
   alphabet_war s = alphabet_war (s ++ s) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 'Right side wins!'
 -/
@@ -52,6 +59,7 @@ info: 'Left side wins!'
 -/
 -- #guard_msgs in
 -- #eval alphabet_war "sz**z**zs"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

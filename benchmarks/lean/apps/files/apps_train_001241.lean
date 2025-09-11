@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isValidMatrix (matrix : List (List Int)) : Bool :=
   match matrix with
   | [] => false
   | x::xs => let n := x.length
              matrix.length = n && matrix.all (fun row => row.length = n)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def findMaxTrace (matrix : List (List Int)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_trace_geq_main_diagonal (matrix : List (List Int)) 
   (h : isValidMatrix matrix = true) : 
   findMaxTrace matrix ≥ 
@@ -55,6 +62,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_max_trace [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

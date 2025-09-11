@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def alphabet_war (s : String) : String := sorry
 
 def valid_letters := ['w', 'p', 'b', 's', 'm', 'q', 'd', 'z']
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def score_map (c : Char) : Int :=
   match c with
   | 'w' => 4
@@ -16,7 +21,9 @@ def score_map (c : Char) : Int :=
   | 'd' => -2
   | 'z' => -1
   | _ => 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem alphabet_war_valid_output (s : String) :
   alphabet_war s = "Left side wins!" ∨ 
   alphabet_war s = "Right side wins!" ∨
@@ -60,6 +67,7 @@ info: "Let's fight again!"
 -/
 -- #guard_msgs in
 -- #eval alphabet_war "zdqmwpbs"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

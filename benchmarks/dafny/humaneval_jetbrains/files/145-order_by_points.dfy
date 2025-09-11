@@ -1,3 +1,4 @@
+// <vc-preamble>
 function digits_sum_pos(n: int): int
   requires n >= 0
 {
@@ -6,6 +7,7 @@ function digits_sum_pos(n: int): int
 function digits_sum(n: int): int {
   if n < 0 then digits_sum_pos(-n) else digits_sum_pos(n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

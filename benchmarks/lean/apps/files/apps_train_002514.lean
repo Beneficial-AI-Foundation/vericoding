@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def symmetric_subscribers (eng : List Int) (french : List Int) : Nat := sorry
 
 theorem symmetric_subscribers_non_negative 
   (eng : List Int) (french : List Int) : 
   symmetric_subscribers eng french ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem symmetric_subscribers_upper_bound 
   (eng : List Int) (french : List Int) :
   symmetric_subscribers eng french ≤ List.length eng + List.length french := sorry
@@ -32,6 +40,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval symmetric_subscribers [1, 2] [3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validate (message : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem validate_valid_messages (message : String) : 
   (∃ digits1 digits2 digits3 word digits4 digits5 digits6 digits7 : String,
     message = s!"MDZHB {digits1} {digits2} {word} {digits4} {digits5} {digits6} {digits7}" ∧
@@ -78,6 +86,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval validate "MDZHB 12 733 EDIN ENIE 67 79 66 32"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

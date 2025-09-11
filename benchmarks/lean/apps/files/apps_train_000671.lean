@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_speeches (n k m : Nat) (arr : List Nat) : Int := sorry
 
 -- Theorem 1: If input array contains 0, result is -1
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_speeches_zero_in_array
   (n k m : Nat)
   (arr : List Nat)
@@ -47,6 +55,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval min_speeches 4 2 3 [0, 1, 1, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_audio (s : String) : Bool := sorry
 def is_image (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_audio_files (name : String) (ext : String) 
   (h1 : ∀ c ∈ name.data, c.isAlpha)
   (h2 : ext ∈ ["mp3", "flac", "alac", "aac"]) :
@@ -82,6 +90,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_image "Photo Space.gif"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

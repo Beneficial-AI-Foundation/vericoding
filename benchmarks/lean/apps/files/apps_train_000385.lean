@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def oddEvenJumps (arr : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem oddEvenJumps_output_range (arr : List Int) (h : arr ≠ []) : 
   let result := oddEvenJumps arr
   1 ≤ result ∧ result ≤ arr.length := sorry
@@ -35,6 +43,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval oddEvenJumps [5, 1, 3, 4, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

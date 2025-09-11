@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -70,15 +71,22 @@ def isOfKind (dtype : NumpyDType) (kind : DTypeKind) : Bool :=
   | .RealFloating => getDTypeKind dtype = .RealFloating
   | .ComplexFloating => getDTypeKind dtype = .ComplexFloating
   | .Numeric => getDTypeKind dtype ∈ [.Bool, .SignedInteger, .UnsignedInteger, .RealFloating, .ComplexFloating]
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_isdtype (dtype : NumpyDType) (kind : DTypeKind) : Id Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_isdtype_spec (dtype : NumpyDType) (kind : DTypeKind) :
     ⦃⌜True⌝⦄
     numpy_isdtype dtype kind
     ⦃⇓result => ⌜result = isOfKind dtype kind⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def scf (nums : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listMin (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
@@ -16,7 +21,9 @@ partial def minFactor (n : Nat) : Nat :=
     else if n % k = 0 then k
     else find (k + 1)
   find 2
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem scf_basic_properties (nums : List Nat) :
   let result := scf nums
   (nums ≠ [] → 1 ≤ result ∧ result ≤ listMin nums) ∧
@@ -51,6 +58,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval scf []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isAlpha (c : Char) : Bool := sorry
 def reverseOnlyLetters (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_preservation (s : String) :
   (reverseOnlyLetters s).length = s.length := sorry
 
@@ -39,6 +47,7 @@ info: 'Qedo1ct-eeLg=ntse-T!'
 -/
 -- #guard_msgs in
 -- #eval reverse_only_letters "Test1ng-Leet=code-Q!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

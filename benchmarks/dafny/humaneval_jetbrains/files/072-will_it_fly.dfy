@@ -1,3 +1,4 @@
+// <vc-preamble>
 function is_palindrome_pred(s : seq<int>) : bool {
     forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
 }
@@ -5,6 +6,7 @@ function is_palindrome_pred(s : seq<int>) : bool {
 function sum(s: seq<int>) : int {
     if |s| == 0 then 0 else s[0] + sum(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

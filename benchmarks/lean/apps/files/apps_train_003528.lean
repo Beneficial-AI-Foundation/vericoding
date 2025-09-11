@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Value := String ⊕ Int
 
 def unusual_sort (arr : List Value) : List Value :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unusual_sort_preserves_length (arr : List Value) :
   (unusual_sort arr).length = arr.length :=
   sorry
@@ -32,6 +40,7 @@ info: ['a', 'b', 'c', '0', '5', '9']
 -/
 -- #guard_msgs in
 -- #eval unusual_sort ["c", "b", "a", "9", "5", "0"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

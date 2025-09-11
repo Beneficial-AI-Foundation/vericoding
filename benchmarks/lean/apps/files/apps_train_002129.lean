@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isRegular (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def findRegularSubsequence (s : String) (k : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_regular_subsequence_properties
   (input : String)
   (k : Nat)
@@ -25,6 +32,7 @@ theorem find_regular_subsequence_minimal_case :
   (findRegularSubsequence "()" 2 = "()") ∧
   (findRegularSubsequence "()" 0 = "") :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

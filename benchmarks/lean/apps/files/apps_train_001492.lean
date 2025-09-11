@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_vaccine_days (d1 v1 d2 v2 p : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_vaccine_days_min_day
   (d1 v1 d2 v2 p : Nat)
   (h1 : d1 > 0) (h2 : v1 > 0) (h3 : d2 > 0) (h4 : v2 > 0) (h5 : p > 0) :
@@ -48,6 +56,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_vaccine_days 1 1 1 1 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

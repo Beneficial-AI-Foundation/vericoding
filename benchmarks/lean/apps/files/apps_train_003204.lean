@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def string_merge (s1 s2 : String) (c : Char) : String := sorry
 
 def findIndex (s : String) (c : Char) : Option Nat := sorry
 
 structure StringMergeError where
   msg : String
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_merge_valid (s1 s2 : String) (c : Char)
   (h1 : s1.length > 0)
   (h2 : s2.length > 0) 
@@ -43,6 +51,7 @@ info: 'wondeople'
 -/
 -- #guard_msgs in
 -- #eval string_merge "wonderful" "people" "e"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

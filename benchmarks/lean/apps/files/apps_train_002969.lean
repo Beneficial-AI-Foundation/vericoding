@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_repeats (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_repeats_nonnegative (s : String) :
   count_repeats s ≥ 0 :=
   sorry
@@ -42,6 +50,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_repeats "@*$##^^^*)*"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

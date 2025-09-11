@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def last_substring (s : String) : String := sorry
 
 theorem last_substring_returns_valid_suffix {s : String} (h : s.length > 0) :
   let result := last_substring s
   result.length > 0 ∧ s.endsWith result := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem last_substring_is_lexicographically_largest {s : String} (h : s.length > 0) :
   let result := last_substring s
   ∀ (i : Nat), i < s.length → result ≥ s.drop i := sorry
@@ -35,6 +43,7 @@ info: 'zzz'
 -/
 -- #guard_msgs in
 -- #eval last_substring "zzz"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def minSwapsToIncreasing (A B : List Int) : Nat := sorry 
 
 def isIncreasing (arr : List Int) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_makes_increasing 
   (A B : List Int) 
   (h : A.length = B.length)
@@ -40,6 +48,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_swaps_to_increasing [2] [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

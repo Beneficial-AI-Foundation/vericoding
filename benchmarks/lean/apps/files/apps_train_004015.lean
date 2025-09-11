@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def make_sentences (parts : List String) : String := sorry
 
 def stringContains (s : String) (sub : String) : Bool :=
   s.data.asString.contains sub.data[0]! -- simplified for example
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem make_sentences_ends_with_period
   (parts : List String) 
   (h : parts.length > 0) :
@@ -52,6 +60,7 @@ info: 'hello world.'
 -/
 -- #guard_msgs in
 -- #eval make_sentences ["hello", "world", ".", ".", "."]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

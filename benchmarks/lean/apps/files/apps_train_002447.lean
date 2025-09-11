@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isPalindrome (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check_palindromic_positives (nums : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindromic_positives_negative_number
   {nums : List Int}
   (h : ∃ x ∈ nums, x ≤ 0) :
@@ -51,6 +58,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval check_palindromic_positives [12, 34, 56, 78]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

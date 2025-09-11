@@ -1,3 +1,4 @@
+// <vc-preamble>
 function max_prefix(s: seq<int>, i: int): int
     requires 0 <= i < |s|
 {
@@ -28,6 +29,7 @@ predicate ValidInput(n: int, a: seq<int>)
 {
     n > 0 && |a| == n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def chess_knight (pos : String) : Nat := sorry
 
 theorem corner_positions (pos : String) :
   (pos = "a1" ∨ pos = "a8" ∨ pos = "h1" ∨ pos = "h8") → chess_knight pos = 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem edge_positions (pos : String) :
   ((pos.front = 'a' ∨ pos.front = 'h' ∨ 
     pos.back = '1' ∨ pos.back = '8') ∧
@@ -32,6 +40,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval chess_knight "d4"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

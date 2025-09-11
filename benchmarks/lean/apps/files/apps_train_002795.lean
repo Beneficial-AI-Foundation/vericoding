@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sqrt (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def num_of_open_lockers (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem num_open_lockers_is_floor_sqrt (n : Nat) :
   num_of_open_lockers n = sqrt n :=
 sorry
@@ -48,6 +55,7 @@ info: 22
 -/
 -- #guard_msgs in
 -- #eval num_of_open_lockers 500
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def f (n : Int) : Int :=
   sorry
 
 def is_prime (n : Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_even_digits (n : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem f_result_is_prime (n : Int) (h : n ≥ 2) :
   is_prime (f n) = true ∨ f n = 0 :=
   sorry
@@ -51,6 +58,7 @@ info: 487
 -/
 -- #guard_msgs in
 -- #eval f 500
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

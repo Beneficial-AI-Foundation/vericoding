@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_palindrome_subsequence (n : Nat) (arr : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_subsequence_properties (arr : List Nat) (n : Nat)
   (h : n = arr.length) (h2 : arr.length > 0) (h3 : ∀ x ∈ arr, x ≤ 200) :
   let result := find_max_palindrome_subsequence n arr
@@ -46,6 +54,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_max_palindrome_subsequence 4 [1, 10, 10, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

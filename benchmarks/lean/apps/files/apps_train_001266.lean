@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def DrinkType := Char
 
 def calculate_milk_tea_cost (sequence : List DrinkType) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem milk_tea_cost_non_negative (sequence : List DrinkType) :
   calculate_milk_tea_cost sequence ≥ 0 :=
 sorry
@@ -35,6 +43,7 @@ theorem cost_by_drink_type (sequence : List DrinkType) :
   sequence.length > 0 →
   calculate_milk_tea_cost sequence ≤ (m_count * 3) + (l_count * 4) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

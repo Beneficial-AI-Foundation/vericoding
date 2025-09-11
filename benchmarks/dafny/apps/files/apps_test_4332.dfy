@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsDigit(c: char)
 {
     '0' <= c <= '9'
@@ -47,6 +48,7 @@ predicate ValidInput(input: string)
 {
     ValidPositiveIntegerString(CleanInput(input))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

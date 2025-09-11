@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_interleave (s1 s2 s3 : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem concat_is_interleave (s1 s2 : String) :
   is_interleave s1 s2 (s1 ++ s2) = true :=
 sorry
@@ -49,6 +57,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_interleave "abc" "def" "abcdef"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_moves (n: Nat) (arr: List Int) : Nat := sorry
 
 theorem find_min_moves_result_range {n: Nat} {arr: List Int} (h: n > 0) :
   find_min_moves n arr ≤ n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_moves_result_nonneg {n: Nat} {arr: List Int} :
   find_min_moves n arr ≥ 0 := sorry
 
@@ -35,6 +43,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_min_moves 2 [1, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

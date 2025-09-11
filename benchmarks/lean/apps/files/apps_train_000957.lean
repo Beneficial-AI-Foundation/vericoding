@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def find_building_arrangement (n k : Nat) : String := sorry
 
 def nums_to_nat_list (s : String) : List Nat := sorry
 
 def range_from_one (n : Nat) : List Nat :=
   List.range n |>.map (· + 1)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_to_string (l : List Nat) : String :=
   l.map toString |>.intersperse " " |>.foldl (· ++ ·) ""
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_distance_ascending (n : Nat) (h : n ≥ 2) :
   find_building_arrangement n 0 = list_to_string (range_from_one n) := sorry
 
@@ -48,6 +55,7 @@ info: 'CAPTAIN AMERICA EVADES'
 -/
 -- #guard_msgs in
 -- #eval find_building_arrangement 3 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

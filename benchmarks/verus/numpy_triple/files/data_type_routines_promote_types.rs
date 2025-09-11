@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -82,6 +83,7 @@ spec fn is_complex(dt: NumpyDType) -> bool {
         _ => false,
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

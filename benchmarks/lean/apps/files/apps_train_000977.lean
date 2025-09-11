@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_disjoint_subarrays (n : Nat) (arr : List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def triangular_num (n : Nat) : Nat :=
 n * (n + 1) / 2
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_disjoint_subarrays_output_bounds {n : Nat} {arr : List Nat}
   (hn : n > 0)
   (harr_size : arr.length = n) 
@@ -46,6 +53,7 @@ info: 18
 -/
 -- #guard_msgs in
 -- #eval solve_disjoint_subarrays 5 [1, 1, 2, 2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

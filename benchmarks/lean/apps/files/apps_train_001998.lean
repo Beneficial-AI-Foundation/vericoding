@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_seconds_to_destroy (colors : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_seconds_positive (colors : List Nat) :
   colors ≠ [] → min_seconds_to_destroy colors > 0 :=
   sorry
@@ -49,6 +57,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_seconds_to_destroy [1, 4, 4, 2, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

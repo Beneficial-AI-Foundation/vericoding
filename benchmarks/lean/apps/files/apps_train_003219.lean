@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def name_in_str (text name : String) : Bool := sorry
 
 theorem case_insensitivity (text name : String) :
   name_in_str text name = name_in_str text.toUpper name ∧
   name_in_str text name = name_in_str text name.toUpper ∧
   name_in_str text name = name_in_str text.toUpper name.toUpper := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_name_true (text : String) :
   name_in_str text "" = true := sorry
 
@@ -39,6 +47,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval name_in_str "A crew that boards the ship" "chris"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

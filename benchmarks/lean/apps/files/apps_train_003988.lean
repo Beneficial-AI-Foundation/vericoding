@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_cubes (n : Nat) : Nat := sorry
 
 theorem sum_cubes_positive (n : Nat) (h : n > 0) : 
   sum_cubes n > 0 :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_cubes_greater_eq_n (n : Nat) (h : n > 0) :
   sum_cubes n ≥ n :=
 sorry
@@ -40,6 +48,7 @@ info: 36
 -/
 -- #guard_msgs in
 -- #eval sum_cubes 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

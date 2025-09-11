@@ -1,8 +1,10 @@
+// <vc-preamble>
 function abs(x: int): int
     ensures 0 <= abs(x)
 {
   if x < 0 then -x else x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

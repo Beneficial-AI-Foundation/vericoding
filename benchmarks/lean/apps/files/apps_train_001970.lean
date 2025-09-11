@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_min_steps (s : String) : Nat := sorry
 
 theorem count_min_steps_nonnegative (s : String) : 
   count_min_steps s ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_min_steps_bounded (s : String) :
   count_min_steps s < 1000000007 := sorry 
 
@@ -32,6 +40,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval count_min_steps "abbaa"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -17,6 +18,7 @@ spec fn filter_vowels(xs: Seq<char>) -> Seq<char>
         filter_vowels(xs.subrange(0, xs.len() - 1))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

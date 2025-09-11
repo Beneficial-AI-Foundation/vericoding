@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_array (n : Nat) (ops : List (Nat × Nat × Nat × Int)) : (String × Option (List Int)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_array_valid_result (n : Nat) (ops : List (Nat × Nat × Nat × Int)) 
   (h : n > 0) :
   let (result, arr) := find_array n ops
@@ -59,6 +67,7 @@ theorem find_array_empty_ops (n : Nat)
   arr.get!.length = n ∧
   ∀ i : Fin arr.get!.length, arr.get!.get i = 10^9 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

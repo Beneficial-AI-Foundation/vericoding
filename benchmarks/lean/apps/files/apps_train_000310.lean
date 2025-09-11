@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def maxSizeSlices (slices: List Nat) : Nat :=
 sorry
 
@@ -9,13 +10,19 @@ def maxList : List Nat → Nat
   | [] => 0
   | [x] => x
   | x::xs => Nat.max x (maxList xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sortList : List Nat → List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_size_bounds {slices : List Nat} 
   (h1: slices.length ≥ 3) 
   (h2: ∀ x ∈ slices, x ≥ 1 ∧ x ≤ 100) :
@@ -55,6 +62,7 @@ info: 21
 -/
 -- #guard_msgs in
 -- #eval maxSizeSlices [4, 1, 2, 5, 8, 3, 1, 9, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

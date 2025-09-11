@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -5,13 +6,19 @@ import Std.Data.HashMap
 noncomputable def check_derivative : List ℤ → List ℤ
   | []       => []
   | (x::rest)  => (Polynomial.eval 1 (Polynomial.derivative (Polynomial.C x * Polynomial.X ^ rest.length))) :: (check_derivative rest)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (xs: List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: List Int → List Int)
@@ -30,6 +37,7 @@ theorem correctness
 (xs: List Int)
 : problem_spec implementation xs := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation [3, 1, 2, 4, 5] : List Int = [1, 4, 12, 20]
 -- #test implementation [1, 2, 3] : List Int = [2, 6]

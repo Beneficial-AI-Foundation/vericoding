@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve (arr : List Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_max (l : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_maintains_elements {arr : List Int} (h : arr ≠ []) :
   let result := solve arr
   result.length = arr.length ∧ 
@@ -46,6 +53,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval solve [1, 6, 9, 4, 3, 7, 8, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

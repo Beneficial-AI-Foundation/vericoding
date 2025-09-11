@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def natToDigits (n : Nat) : List Nat :=
   if n < 10 then
     [n]
@@ -6,10 +7,14 @@ def natToDigits (n : Nat) : List Nat :=
 
 def listMax (xs : List Nat) : Nat :=
   xs.foldl Nat.max 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def self_descriptive (n : Nat) : Bool := sorry
 
 theorem self_descriptive_correct_counts
@@ -18,7 +23,9 @@ theorem self_descriptive_correct_counts
     ∀ i : Nat,
     i < (natToDigits n).length →
     (natToDigits n).count i = (natToDigits n).get! i := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem self_descriptive_valid_indices
     {n : Nat}
     (h : self_descriptive n = true) :
@@ -54,6 +61,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval self_descriptive 21230
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

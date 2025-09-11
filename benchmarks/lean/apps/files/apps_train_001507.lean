@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def find_min_m (n : Nat) (nums : List Nat) : Int :=
 sorry
 
 def hasAllOnes (n : Nat) : Bool :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hasPowerOfTwo (n : Int) (pos : Nat) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_ones_returns_negative_one (nums : List Nat) :
   (∃ n ∈ nums, hasAllOnes n = true) →
   find_min_m 1 nums = -1 :=
@@ -44,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_min_m 1 [10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

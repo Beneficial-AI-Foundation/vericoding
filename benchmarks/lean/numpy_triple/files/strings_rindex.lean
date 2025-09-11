@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rindex {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rindex_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) :
     ⦃⌜∀ i : Fin n, 
       -- Valid range bounds
@@ -31,3 +38,4 @@ theorem rindex_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (sta
       (∀ j : Nat, Int.natAbs (result.get i) < j ∧ j + (sub.get i).length ≤ min (endPos.get i + 1).toNat (a.get i).length → 
         ¬(((a.get i).drop j).take (sub.get i).length = sub.get i))⌝⦄ := by
   sorry
+-- </vc-theorems>

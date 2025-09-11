@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebcompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebcompanion_spec {n : Nat} (c : Vector Float (n + 2)) :
     ⦃⌜True⌝⦄
     chebcompanion c
@@ -29,3 +36,4 @@ theorem chebcompanion_spec {n : Nat} (c : Vector Float (n + 2)) :
                      (if i = 0 then -Float.sqrt 0.5 else -0.5) - adjustment
                    else -adjustment))⌝⦄ := by
   sorry
+-- </vc-theorems>

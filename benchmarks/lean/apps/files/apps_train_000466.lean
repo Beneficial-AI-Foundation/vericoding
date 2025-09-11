@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def car_fleet (target: Int) (positions: List Int) (speeds: List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem car_fleet_bounded (target: Int) (positions: List Int) (speeds: List Int)
   (h1: target > 0) (h2: target ≤ 1000)
   (h3: ∀ p ∈ positions, 0 ≤ p ∧ p ≤ 100)
@@ -57,6 +65,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval car_fleet 10 [] []
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

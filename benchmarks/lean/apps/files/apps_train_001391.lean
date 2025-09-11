@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_cake_baking (time_taken : Int) : Int := sorry
 
 theorem solve_cake_baking_positive {time_taken : Int} (h : time_taken > 0) :
   solve_cake_baking time_taken > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_cake_baking_formula {time_taken : Int} :
   solve_cake_baking time_taken = time_taken/2 + 2 := sorry
 
@@ -34,6 +42,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval solve_cake_baking 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def abs (x : Int) : Int := if x < 0 then -x else x
 
 structure VampireString where
   digits : List Char
   length : Nat
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def vampireToString (x : Int) : VampireString := sorry
 
 def vampire_test (x y : Int) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem vampire_commutative (x y : Int) (h₁ : x ≠ 0) (h₂ : y ≠ 0) :
   vampire_test x y = vampire_test y x := sorry
 
@@ -42,6 +49,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval vampire_test 15 93
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def camel_case (s : String) : String := sorry
 
 theorem camel_case_no_spaces (s : String) : 
   ∀ (i : String.Pos), (camel_case s).get i ≠ ' ' := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem camel_case_preserves_length (s : String) :
   String.length (camel_case s) = String.length (s.replace " " "") := sorry
 
@@ -36,6 +44,7 @@ info: 'SayHello'
 -/
 -- #guard_msgs in
 -- #eval camel_case "say hello "
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate quickSorted(Seq: seq<int>)
 {
   forall idx_1, idx_2 :: 0 <= idx_1 < idx_2 < |Seq| ==> Seq[idx_1] <= Seq[idx_2]
@@ -10,6 +11,7 @@ method threshold(thres:int,Seq:seq<int>) returns (Seq_1:seq<int>,Seq_2:seq<int>)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

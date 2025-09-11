@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def charCheck (text : String) (max_len : Nat) (spaces : Bool) : Bool × String := sorry
 
 theorem charCheck_return_type 
   (text : String) (max_len : Nat) (spaces : Bool) :
   let result := charCheck text max_len spaces
   result.1 = true ∨ result.1 = false ∧ result.2.length ≤ max_len := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem charCheck_with_spaces 
   (text : String) (max_len : Nat) :
   let result := charCheck text max_len true 
@@ -31,6 +39,7 @@ theorem charCheck_spaces_consistency
   let result_with_spaces := charCheck text text.length true
   let result_no_spaces := charCheck text text.length false
   result_with_spaces.2.replace " " "" = result_no_spaces.2 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

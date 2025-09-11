@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def sort_ranks (ranks: List String) : List String := sorry
 
 def is_valid_version (s: String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def loose_version_le (v1 v2: String) : Bool := sorry
 
 theorem sort_ranks_maintains_elements (ranks: List String) 
@@ -12,7 +17,9 @@ theorem sort_ranks_maintains_elements (ranks: List String)
   let sorted := sort_ranks ranks
   ∀ x, (x ∈ ranks ↔ x ∈ sorted) ∧
   sorted.length = ranks.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_ranks_ordering (ranks: List String)
   (h1: ranks.length ≥ 2)
   (h2: ∀ x ∈ ranks, is_valid_version x) :
@@ -42,6 +49,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval sort_ranks ["3", "2", "1"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

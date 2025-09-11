@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def kthSymbol (n : Nat) (k : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countOnes (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem first_row_is_zero (k : Nat) (h : k > 0) :
   kthSymbol 1 k = 0 :=
   sorry
@@ -40,6 +47,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval kth_symbol 4 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isBoomerang (points: List (List Int)) : Bool := sorry
 
 def areCollinear (p1 p2 p3: List Int) : Bool :=
   (p2.get! 1 - p1.get! 1) * (p3.get! 0 - p1.get! 0) == 
   (p3.get! 1 - p1.get! 1) * (p2.get! 0 - p1.get! 0)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem boomerang_collinear_points 
   (points: List (List Int))
   (h1: points.length = 3)
@@ -51,6 +59,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval isBoomerang [[0, 0], [1, 1], [1, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

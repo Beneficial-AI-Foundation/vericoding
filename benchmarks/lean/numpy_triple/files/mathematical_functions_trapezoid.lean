@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def trapezoid {n : Nat} (y : Vector Float (n + 1)) (dx : Float) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trapezoid_spec {n : Nat} (y : Vector Float (n + 1)) (dx : Float) 
     (h_pos : dx > 0) :
     ⦃⌜dx > 0⌝⦄
@@ -24,3 +31,4 @@ theorem trapezoid_spec {n : Nat} (y : Vector Float (n + 1)) (dx : Float)
                  -- Monotonicity: if all y values are non-negative, result is non-negative
                  (∀ i : Fin (n + 1), y.get i ≥ 0 → result ≥ 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

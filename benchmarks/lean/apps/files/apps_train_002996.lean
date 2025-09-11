@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def totalAmountVisible (topNum : Nat) (numSides : Nat) : Nat := sorry
 
 theorem total_visible_non_negative (topNum : Nat) (numSides : Nat) 
     (h : 0 < topNum ∧ topNum ≤ numSides) : 
   totalAmountVisible topNum numSides ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem total_visible_less_than_sum (topNum : Nat) (numSides : Nat)
     (h : 0 < topNum ∧ topNum ≤ numSides) :
   totalAmountVisible topNum numSides ≤ (numSides * (numSides + 1)) / 2 := sorry
@@ -40,6 +48,7 @@ info: 48
 -/
 -- #guard_msgs in
 -- #eval totalAmountVisible 4 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

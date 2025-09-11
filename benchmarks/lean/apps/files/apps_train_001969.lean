@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_cost_to_match_strings (n : Nat) (s1 s2 : String) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cost_nonnegative_and_bounded
   (s1 s2 : String)
   (h1 : s1.length > 0)
@@ -50,6 +58,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_cost_to_match_strings 4 "1000" "0001"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def multiply (a b : String) : String := sorry 
 
 theorem multiply_matches_integer_multiplication {a b : Nat} : 
   multiply (toString a) (toString b) = toString (a * b) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiply_by_zero {n : String} : 
   (multiply n "0" = "0") ∧ (multiply "0" n = "0") := sorry
 
@@ -35,6 +43,7 @@ info: '0'
 -/
 -- #guard_msgs in
 -- #eval multiply "0" "0"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

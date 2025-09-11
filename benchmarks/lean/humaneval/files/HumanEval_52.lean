@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (numbers: List Int) (threshold: Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: List Int → Int → Bool)
@@ -31,6 +38,7 @@ theorem correctness
 (threshold: Int)
 : problem_spec implementation numbers threshold  := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation ([1, 2, 4, 10]: List Int) 100 = true
 -- #test implementation ([1, 20, 4, 10]: List Int) 5 = false

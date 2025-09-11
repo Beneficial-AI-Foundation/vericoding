@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def IsUpper (c : Char) : Bool := sorry
 def IsLower (c : Char) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def swapcase (c : Char) : Char := sorry
 def sc (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sc_subset (s : String) : 
   ∀ (c : Char), c ∈ (sc s).data → c ∈ s.data := sorry
 
@@ -45,6 +52,7 @@ info: 'SONson'
 -/
 -- #guard_msgs in
 -- #eval sc "SONson"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

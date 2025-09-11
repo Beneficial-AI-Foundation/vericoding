@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isNotPrefixPred(pre:string, str:string)
 {
     (|pre| > |str|) || 
@@ -43,6 +44,7 @@ predicate maxCommonSubstringPredicate(str1: string, str2: string, len:nat)
 {
    forall k :: len < k <= |str1| ==> !haveCommonKSubstringPredicate(k, str1, str2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

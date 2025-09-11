@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SumOfDigits(n: int): int
   requires n >= 0
 {
@@ -21,6 +22,7 @@ predicate ValidOutput(result: seq<int>, k: int)
   (k >= 9 ==> result[8] == 9) &&
   (k >= 10 ==> result[9] == 19)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -26,6 +27,7 @@ spec fn first_even_odd_indices(lst: Seq<i32>) -> Option<(int, int)> {
         None
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

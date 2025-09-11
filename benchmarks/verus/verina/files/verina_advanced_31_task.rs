@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -14,6 +15,7 @@ spec fn is_subsequence_of(subseq: Seq<i32>, seq: Seq<i32>) -> bool {
 spec fn is_strictly_increasing(seq: Seq<i32>) -> bool {
     forall|i: int| 0 <= i < seq.len() - 1 ==> #[trigger] seq[i] < seq[i + 1]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

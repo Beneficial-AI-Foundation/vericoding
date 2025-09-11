@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def kthFactor (n : Nat) (k : Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem first_factor_always_one (n : Nat) (h : n > 0) :
   kthFactor n 1 = 1 := sorry
 
@@ -35,6 +43,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval kth_factor 4 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def replace {n : Nat} (a : Vector String n) (old : Vector String n) (new : Vector String n) (count : Vector Int n) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem replace_spec {n : Nat} (a : Vector String n) (old : Vector String n) (new : Vector String n) (count : Vector Int n) :
     ⦃⌜∀ i : Fin n, count.get i = 0 ∨ old.get i ≠ ""⌝⦄
     replace a old new count
@@ -48,3 +55,4 @@ theorem replace_spec {n : Nat} (a : Vector String n) (old : Vector String n) (ne
                 positions[j]! + (old.get i).length ≤ positions[k]!))))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

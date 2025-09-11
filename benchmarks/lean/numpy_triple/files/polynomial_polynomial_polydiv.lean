@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def polydiv {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float (m + 1)) : 
     Id (Vector Float n × Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem polydiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float (m + 1)) :
     ⦃⌜c2.get ⟨m, Nat.lt_succ_self m⟩ ≠ 0⌝⦄
     polydiv c1 c2
@@ -26,3 +33,4 @@ theorem polydiv_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float (m + 1
         (∀ i : Fin n, rem.get i = 0))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

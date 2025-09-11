@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_spanning_tree (n : Nat) (edges : List (Nat × Nat)) : Nat := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_spanning_tree_non_negative (n : Nat) (edges : List (Nat × Nat)) :
   min_spanning_tree n edges ≥ 0 :=
   sorry
@@ -42,6 +50,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval min_spanning_tree 5 [(1, 2), (2, 3), (3, 4), (4, 5), (5, 1), (1, 3), (2, 4), (3, 5), (4, 1), (5, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

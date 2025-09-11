@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def to_roman (n : Nat) : String := sorry
 def from_roman (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem roundtrip_roman_numerals (n : Nat) 
   (h : 1 ≤ n ∧ n ≤ 3999) : 
   from_roman (to_roman n) = n := sorry
@@ -45,6 +53,7 @@ theorem from_roman_valid_output (s : String)
   (h : ∀ c, String.contains s c → 
     c = 'I' ∨ c = 'V' ∨ c = 'X' ∨ c = 'L' ∨ c = 'C' ∨ c = 'D' ∨ c = 'M') :
   1 ≤ from_roman s ∧ from_roman s ≤ 3999 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

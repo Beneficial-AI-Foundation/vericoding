@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pass_the_bill (total conservative reformist : Nat) : Int := sorry
 
 def majority (total : Nat) : Nat := total/2 + 1
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pass_the_bill_valid_output (total conservative reformist : Nat) 
   (h1 : conservative + reformist ≤ total) :
   let result := pass_the_bill total conservative reformist
@@ -51,6 +59,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval pass_the_bill 7 4 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

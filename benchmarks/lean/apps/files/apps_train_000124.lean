@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_freq (s : String) (max_letters min_size max_size : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_freq_basic_bounds 
   (s : String) (max_letters min_size max_size : Nat)
   (h1 : min_size ≤ max_size)
@@ -58,6 +66,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval max_freq "aabcabcab" 2 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

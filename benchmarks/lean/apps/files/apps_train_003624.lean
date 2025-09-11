@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_mixed_num (frac: String) : String := sorry
 
 def is_valid_mixed_num (result: String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mixed_num_is_valid {n d: Nat} (h1: 0 < n) (h2: n ≤ 10000) (h3: 0 < d) (h4: d ≤ 100) :
   is_valid_mixed_num (get_mixed_num s!"{n}/{d}") := sorry
 
@@ -40,6 +48,7 @@ info: '7 5/10'
 -/
 -- #guard_msgs in
 -- #eval get_mixed_num "75/10"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

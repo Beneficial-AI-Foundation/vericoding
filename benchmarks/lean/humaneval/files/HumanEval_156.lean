@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -135,13 +136,19 @@ sample_problems: []
 -/
 def romanToDecimal (s : String) : Nat :=
   romanToDecimalAux s.data
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (num: Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: Nat → String)
@@ -160,6 +167,7 @@ theorem correctness
 (num: Nat)
 : problem_spec implementation num := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation 19 = "xix"
 -- #test implementation 152 = "clii"

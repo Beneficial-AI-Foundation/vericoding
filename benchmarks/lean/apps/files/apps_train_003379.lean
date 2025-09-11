@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def distance (n : Nat) : Nat := sorry
 
 theorem distance_nonnegative (n : Nat) :
   n > 0 → distance n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem distance_growth_rate (n : Nat) :
   n > 0 → distance (2 * n) ≥ distance n / 2 := sorry
 
@@ -35,6 +43,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval distance 25
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

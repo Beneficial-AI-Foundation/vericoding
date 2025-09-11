@@ -1,3 +1,4 @@
+// <vc-preamble>
 #![verifier::loop_isolation(false)]
 use vstd::math::*;
 use vstd::prelude::*;
@@ -23,6 +24,7 @@ spec fn min_rcur(seq: Seq<i32>) -> (result:int)
         min(seq.last() as int, min_rcur(seq.drop_last()))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def String.count (s : String) (c : Char) : Nat :=
   sorry
 
@@ -8,15 +9,21 @@ def array (s : String) : Option String :=
   sorry
 
 /- Helper functions -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def joinWithSpaces (xs : List String) : String :=
   sorry
 
 /- Main theorems that match property tests -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_none_when_not_enough_commas (s : String) :
   s.count ',' < 2 →
   array s = none :=
@@ -56,6 +63,7 @@ info: '2 3'
 -/
 -- #guard_msgs in
 -- #eval array "1,2,3,4"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

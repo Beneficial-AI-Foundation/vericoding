@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := Split(input, '\n');
@@ -86,6 +87,7 @@ decreases |stars| - idx
         var newResult := result + IntToString(stars[idx].0) + " " + IntToString(stars[idx].1) + " " + IntToString(stars[idx].2) + "\n";
         FormatStarOutputHelper(newResult, stars, idx + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

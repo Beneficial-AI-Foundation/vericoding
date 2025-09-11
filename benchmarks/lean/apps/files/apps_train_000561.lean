@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_valid_subsequences (words: List String) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_length_matches_input (words: List String) :
   List.length (count_valid_subsequences words) = List.length words :=
   sorry
@@ -26,6 +34,7 @@ theorem result_less_than_2_pow_n (words: List String) :
   ∀ (i: Nat), i < words.length → 
     (count_valid_subsequences words).get! i < 2^(words.get! i).length :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

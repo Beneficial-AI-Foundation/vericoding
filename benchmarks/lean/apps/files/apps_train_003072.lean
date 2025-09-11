@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def length_of_sequence (arr : List Int) (n : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_of_sequence_non_negative (arr : List Int) (n : Int) :
   length_of_sequence arr n ≥ 0 :=
   sorry 
@@ -60,6 +68,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval length_of_sequence [0, -3, 7, 4, 0, 3, 7, 9] 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

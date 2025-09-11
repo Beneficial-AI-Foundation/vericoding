@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && 
@@ -95,6 +96,7 @@ function SolveCircleSeparation(input: string): string
     else if (n >= 1000) then "NO\n"
     else "YES\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

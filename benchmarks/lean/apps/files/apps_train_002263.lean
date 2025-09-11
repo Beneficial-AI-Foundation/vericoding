@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def min_moves_required (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nat_sqrt (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_moves_non_negative (n : Nat) (h : n > 0) : 
   min_moves_required n ≥ 0 := 
   sorry
@@ -40,6 +47,7 @@ info: 11
 -/
 -- #guard_msgs in
 -- #eval min_moves_required 42
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

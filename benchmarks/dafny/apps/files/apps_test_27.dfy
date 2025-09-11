@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: nat, s: string)
 {
     |s| == n
@@ -32,6 +33,7 @@ predicate CanCopyAt(s: string, n: nat, i: nat)
     var end_pos := i + 1 + prefix_len;
     end_pos <= n && s[0..prefix_len] == s[i+1..end_pos]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

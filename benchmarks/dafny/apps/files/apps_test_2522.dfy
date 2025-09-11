@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>, b: seq<int>)
 {
     |a| == n && |b| == n && n >= 1 &&
@@ -21,6 +22,7 @@ predicate IsRotation(original: seq<int>, rotated: seq<int>)
     |original| == |rotated| && 
     (exists k :: 0 <= k < |original| && rotated == original[k..] + original[..k])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_pair_sum (n : Nat) (nums : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_pair_sum_is_min_of_two_smallest {n : Nat} {nums : List Int} 
   (h : nums.length = n) (h2 : n ≥ 2) :
   ∃ i j : Nat, i < n ∧ j < n ∧ i < j :=
@@ -39,6 +47,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_min_pair_sum 3 [1000000, 1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

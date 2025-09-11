@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def only_one (bs : List Bool) : Bool := sorry
 
 def count_true : List Bool → Nat
   | [] => 0
   | true :: rest => 1 + count_true rest 
   | false :: rest => count_true rest
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem only_one_empty : 
   only_one [] = false :=
 sorry
@@ -41,6 +49,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval only_one True False False True
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

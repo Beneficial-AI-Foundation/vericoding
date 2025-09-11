@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nonzero {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nonzero_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     nonzero a
@@ -17,3 +24,4 @@ theorem nonzero_spec {n : Nat} (a : Vector Float n) :
                     (indices.idxOf i₁ < indices.idxOf i₂)) ∧
                    (indices.Nodup)⌝⦄ := by
   sorry
+-- </vc-theorems>

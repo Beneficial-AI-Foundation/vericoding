@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def top_3_words (s : String) : List String := sorry 
 
 theorem empty_string_returns_empty_list :
   top_3_words "" = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem space_returns_empty_list :
   top_3_words " " = [] := sorry
 
@@ -39,6 +47,7 @@ info: ["won't", 'wont']
 -/
 -- #guard_msgs in
 -- #eval top_3_words "  //wont won"t won"t"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

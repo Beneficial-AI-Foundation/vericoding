@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_a (lst : List Int) (n : Int) : Int := sorry
 
 def reverse (lst : List Int) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_a_first_four {lst : List Int} (n : Int)
   (h1 : lst.length = 4)
   (h2 : 0 ≤ n)
@@ -37,6 +45,7 @@ info: 20
 -/
 -- #guard_msgs in
 -- #eval find_a [1, 0, 0, 1] 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

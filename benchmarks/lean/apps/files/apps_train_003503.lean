@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve (s : String) (idx : Nat) : Int := sorry
 
 def has_matching_parens (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_idx (s : String) (idx : Nat) : Bool := sorry
 
 theorem solve_invalid_index {s : String} {idx : Nat} :
   ¬(is_valid_idx s idx) → solve s idx = -1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_unmatched_parens {s : String} {idx : Nat} :
   ¬(has_matching_parens s) → solve s idx = -1 := sorry
 
@@ -49,6 +56,7 @@ info: 28
 -/
 -- #guard_msgs in
 -- #eval solve "(g(At)IO(f)(tM(qk)YF(n)Nr(E)))" 11
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

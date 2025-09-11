@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def last_digits (n : Nat) (d : Int) : List Nat := sorry
 
 def list_to_string (l : List Nat) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nat_to_string (n : Nat) : String := sorry
 
 theorem last_digits_empty_for_nonpositive (n : Nat) (d : Int) :
   d <= 0 → last_digits n d = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem last_digits_length_bound (n : Nat) (d : Int) :
   d > 0 → List.length (last_digits n d) = min d.toNat (nat_to_string n).length := sorry
 
@@ -39,6 +46,7 @@ info: [1, 3, 4, 3]
 -/
 -- #guard_msgs in
 -- #eval last_digits 1343 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

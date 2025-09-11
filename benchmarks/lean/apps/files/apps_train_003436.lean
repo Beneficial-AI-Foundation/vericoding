@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count (c : Char) (s : String) : Nat := sorry
 def product (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem product_non_negative (s : String) : 
   product s ≥ 0 := sorry
 
@@ -33,6 +41,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval product "!!??!!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

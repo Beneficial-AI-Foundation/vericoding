@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_weighted_sum (arr : List Int) : Int := sorry
 
 def list_sum (xs : List Int) : Int :=
   match xs with
   | [] => 0
   | h :: t => h + list_sum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem weighted_sum_bounds (arr : List Int) : 
   let result := calc_weighted_sum arr
   result ≥ 0 ∧ result ≤ arr.length * 6 := sorry
@@ -38,6 +46,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval calc_weighted_sum [7, 8, 13, 14]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

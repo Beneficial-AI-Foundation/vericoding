@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def cut_log (prices : List Nat) (n : Nat) : Nat := sorry
 
 theorem cut_log_non_negative (prices : List Nat) (n : Nat) :
   cut_log prices n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cut_log_monotonic (prices : List Nat) (n : Nat) :
   n > 0 → cut_log prices n ≥ cut_log prices (n-1) := sorry
 
@@ -32,6 +40,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval cut_log [0, 3, 5, 8, 9, 10, 17, 17, 20] 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

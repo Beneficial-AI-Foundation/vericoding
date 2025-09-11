@@ -1,16 +1,23 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermegrid2d {nx ny : Nat} {deg_x deg_y : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) 
     (c : Vector (Vector Float deg_y) deg_x) : 
     Id (Vector (Vector Float ny) nx) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermegrid2d_spec {nx ny : Nat} {deg_x deg_y : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) 
     (c : Vector (Vector Float deg_y) deg_x) :
@@ -39,3 +46,4 @@ theorem hermegrid2d_spec {nx ny : Nat} {deg_x deg_y : Nat}
             ) 0))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

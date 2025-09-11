@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x: int, y: int, z: int)
 {
   x >= 0 && y >= 0 && z > 0
@@ -17,6 +18,7 @@ function MinExchange(x: int, y: int, z: int): int
   if rx + ry < z then 0
   else z - if rx > ry then rx else ry
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

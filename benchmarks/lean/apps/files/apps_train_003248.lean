@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def validMorseChar (c : Char) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def encryption (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encryption_morse_chars
   (s : String)
   (h : ∀ c, c ∈ s.data → c.isUpper)
@@ -51,6 +58,7 @@ info: '- .... .   --.- ..- .. -.-. -.-   -... .-. --- .-- -.   ..-. --- -..-'
 -/
 -- #guard_msgs in
 -- #eval encryption "THE QUICK BROWN FOX"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

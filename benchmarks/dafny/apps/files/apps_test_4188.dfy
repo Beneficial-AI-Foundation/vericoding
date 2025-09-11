@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
     1 <= n <= 16
@@ -18,6 +19,7 @@ function ExpectedOutput(n: int): int
 {
     FactTruthValues()[n - 1]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_make_balanced (n k : Nat) (pattern : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_make_balanced_returns_valid_result (n k : Nat) (pattern : String) : 
   can_make_balanced n k pattern = "YES" ∨ can_make_balanced n k pattern = "NO" :=
   sorry
@@ -43,6 +51,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval can_make_balanced 3 2 "1?0"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

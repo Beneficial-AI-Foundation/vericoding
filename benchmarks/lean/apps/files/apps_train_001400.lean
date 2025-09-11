@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def direct_graph (n : Nat) (m : Nat) (edges : List (Nat × Nat)) : List Int := sorry
 
 theorem empty_graph (n : Nat) : 
   direct_graph n 0 [] = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_edges :
   direct_graph 2 1 [(1,2)] = [-1] := sorry
 
@@ -36,6 +44,7 @@ info: [-1]
 -/
 -- #guard_msgs in
 -- #eval direct_graph 3 3 [[1, 2], [2, 3], [1, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

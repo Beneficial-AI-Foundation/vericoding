@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverseOnDiagonals (matrix : List (List Int)) : List (List Int) := sorry
 
 theorem matrix_size_preservation (n : Nat) : 
@@ -8,7 +14,9 @@ theorem matrix_size_preservation (n : Nat) :
   matrix.length = n → (∀ row ∈ matrix, row.length = n) →
   let result := reverseOnDiagonals matrix
   result.length = n ∧ (∀ row ∈ result, row.length = n) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem main_diagonal_reversal {n : Nat} (matrix : List (List Int))
   (h1 : matrix.length = n) (h2 : ∀ row ∈ matrix, row.length = n) :
   let result := reverseOnDiagonals matrix
@@ -52,6 +60,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval reverse_on_diagonals [[1, 10], [100, 1000]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

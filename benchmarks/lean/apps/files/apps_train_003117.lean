@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def string_expansion (s : String) : String := sorry
 
 -- We can remove the first theorem since String type guarantees it's a string
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_expansion_empty_string (s : String) :
   s = "" → string_expansion s = "" := sorry
 
@@ -34,6 +42,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval string_expansion ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

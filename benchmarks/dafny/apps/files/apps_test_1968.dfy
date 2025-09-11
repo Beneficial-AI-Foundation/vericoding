@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, v: int, sellers: seq<seq<int>>) {
     n >= 0 && v >= 0 && |sellers| == n && 
     forall i :: 0 <= i < |sellers| ==> |sellers[i]| > 0
@@ -16,6 +17,7 @@ predicate CorrectSolution(v: int, sellers: seq<seq<int>>, indices: seq<int>)
     (forall i :: 0 <= i < |indices| ==> v > Min(sellers[indices[i] - 1])) &&
     (forall i :: 0 <= i < |sellers| ==> (v > Min(sellers[i]) <==> (i + 1) in indices))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

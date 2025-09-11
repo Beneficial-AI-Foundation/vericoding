@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def smallest_integer (matrix : List (List Int)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem smallest_integer_result_nonnegative (matrix : List (List Int)) :
   0 ≤ smallest_integer matrix := sorry
 
@@ -31,6 +39,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval smallest_integer [[-1, -1], [-1, -1]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

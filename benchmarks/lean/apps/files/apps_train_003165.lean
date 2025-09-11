@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def make_triangle (m n : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isDigitChar (c : Char) : Bool :=
   '0' ≤ c ∧ c ≤ '9'
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem make_triangle_valid_output_type {m n : Nat} :
   ∀ r : String, r = make_triangle m n → (r = "" ∨ String.contains r '\n') :=
   sorry
@@ -35,6 +42,7 @@ theorem make_triangle_total_elements {m n : Nat} (h : m ≤ n) :
 theorem make_triangle_invalid_empty {m n : Nat} :
   (m > n ∨ n - m + 1 > 45) → make_triangle m n = "" :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

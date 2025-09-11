@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermeval2d {n m : Nat} (x y : Vector Float n) (c : Vector (Vector Float m) n) : 
     Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermeval2d_spec {n m : Nat} (x y : Vector Float n) (c : Vector (Vector Float m) n) :
     ⦃⌜True⌝⦄
     hermeval2d x y c
@@ -73,3 +80,4 @@ theorem hermeval2d_spec {n m : Nat} (x y : Vector Float n) (c : Vector (Vector F
                      hermeval2d x y const_coeff = pure const_result ∧
                      ∀ k : Fin n, const_result.get k = 1))⌝⦄ := by
   sorry
+-- </vc-theorems>

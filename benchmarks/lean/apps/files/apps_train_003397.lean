@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def String.count (needle haystack : String) : Nat := sorry
 
 def sea_sick (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sea_sick_output_valid (s : String)
     (h : ∀ c : Char, c ∈ s.data → (c = '~' ∨ c = '_'))
     (h_size : s.length > 0) :
@@ -32,6 +40,7 @@ theorem sea_sick_all_flat (s : String)
     (h : ∀ c : Char, c ∈ s.data → c = '_')
     (h_size : s.length > 0) :
   sea_sick s = "No Problem" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

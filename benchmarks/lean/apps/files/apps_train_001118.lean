@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def solve_helper_thanks (n : Int) : String := sorry
 
 theorem solve_helper_thanks_result_valid (n : Int) :
   (solve_helper_thanks n = "-1") ∨ 
   (solve_helper_thanks n = "Thanks for helping Chef!") := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_multiple_cases (nums : List Int) : List String := sorry 
 
 theorem solve_multiple_cases_length (nums : List Int) :
   (solve_multiple_cases nums).length = nums.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_helper_thanks_condition (n : Int) :
   (n < 10) = (solve_helper_thanks n = "Thanks for helping Chef!") := sorry
 
@@ -41,6 +48,7 @@ info: test3_expected
 -/
 -- #guard_msgs in
 -- #eval solve_multiple_cases [9, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

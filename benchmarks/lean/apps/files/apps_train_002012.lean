@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve_bridge_problem (n m : Nat) (islands : List (List Int)) (bridges : List Int) : String := sorry
 
 def verify_bridge_placement (bridges : List Int) (gaps : List (Int × Int)) (result : String) : Bool := sorry
@@ -9,14 +10,20 @@ structure BridgeProblemInputs where
   m : Nat 
   islands : List (List Int)
   bridges : List Int
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_indices (result : String) : List Nat :=
   if result = "No" then []
   else string_to_nat_array (result.splitOn "\n").head!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_format_valid (n m : Nat) (islands : List (List Int)) (bridges : List Int) :
   let result := solve_bridge_problem n m islands bridges
   (result = "No") ∨ 
@@ -50,6 +57,7 @@ info: 'Yes\n1'
 -/
 -- #guard_msgs in
 -- #eval solve_bridge_problem 2 1 [[1, 1], [1000000000000000000, 1000000000000000000]] [999999999999999999]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

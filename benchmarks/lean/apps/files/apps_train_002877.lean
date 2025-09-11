@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_value (digits : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_value_is_nat (digits : List Nat) :
   min_value digits > 0 :=
   sorry
@@ -49,6 +57,7 @@ info: 134679
 -/
 -- #guard_msgs in
 -- #eval min_value [1, 9, 3, 1, 7, 4, 6, 6, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

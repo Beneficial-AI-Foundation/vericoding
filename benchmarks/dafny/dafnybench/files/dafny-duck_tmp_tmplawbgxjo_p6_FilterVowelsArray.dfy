@@ -1,3 +1,4 @@
+// <vc-preamble>
 const vowels: set<char> := {'a', 'e', 'i', 'o', 'u'}
 
 function FilterVowels(xs: seq<char>): seq<char>
@@ -6,6 +7,7 @@ function FilterVowels(xs: seq<char>): seq<char>
     else if xs[|xs|-1] in vowels then FilterVowels(xs[..|xs|-1]) + [xs[|xs|-1]]
     else FilterVowels(xs[..|xs|-1])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

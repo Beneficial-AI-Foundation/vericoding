@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, k: int)
 {
     1 <= n <= 10000 && 1 <= m <= 10000 && 1 <= k <= 2 * n * m
@@ -15,6 +16,7 @@ predicate CorrectSolution(n: int, m: int, k: int, lane: int, desk: int, side: st
     desk == (k - 1) % (2 * m) / 2 + 1 &&
     (side == "L" <==> (k - 1) % (2 * m) % 2 == 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

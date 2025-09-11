@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def house_of_cards (n : Int) : Int := sorry
 
 -- Results should be positive integers and greater than 7n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem house_of_cards_positive_integers {n : Int} (h : n > 0) : 
   house_of_cards n ≥ 7 * n ∧ house_of_cards n > 0 := sorry
 
@@ -42,6 +50,7 @@ info: 26
 -/
 -- #guard_msgs in
 -- #eval house_of_cards 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

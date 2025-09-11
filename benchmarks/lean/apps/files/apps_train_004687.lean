@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def knapsack (capacity : Nat) (items : List (Nat × Nat)) : List Nat :=
   sorry
 
@@ -5,17 +6,23 @@ def sumList (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | h :: t => h + sumList t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def zipWithIndex {α : Type} (l : List α) : List (Nat × α) :=
   let rec aux (i : Nat) (xs : List α) : List (Nat × α) :=
     match xs with
     | [] => []
     | h :: t => (i, h) :: aux (i+1) t
   aux 0 l
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem knapsack_result_length_matches_input
     (capacity : Nat) (items : List (Nat × Nat)) :
     (knapsack capacity items).length = items.length :=
@@ -72,6 +79,7 @@ info: [0, 0]
 -/
 -- #guard_msgs in
 -- #eval knapsack 5 [[10, 2], [12, 4]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

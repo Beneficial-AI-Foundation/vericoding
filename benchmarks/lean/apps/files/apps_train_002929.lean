@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_prime (n : Nat) : Bool := sorry
 
 def sqrt (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_positive_numbers_not_prime {n : Nat} (h : n ≤ 1) : 
   is_prime n = false := sorry
 
@@ -73,6 +81,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_prime 25
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

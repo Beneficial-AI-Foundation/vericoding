@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -17,6 +18,7 @@ fn find_min(a: &[i32], lo: usize) -> (minIdx: usize)
 spec fn sorted(a: Seq<i32>) -> bool {
     forall|i: int| 0 < i < a.len() ==> #[trigger] a[i-1] <= a[i]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

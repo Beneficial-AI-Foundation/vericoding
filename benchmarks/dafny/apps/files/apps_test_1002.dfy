@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SumSeq(s: seq<int>): int
 {
   if |s| == 0 then 0 else s[0] + SumSeq(s[1..])
@@ -26,6 +27,7 @@ predicate ValidResult(n: int, d: int, t: seq<int>, result: int)
   else
     result == (d - songSum) / 5 && result >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def eq_solve (v0 v1 u0 u1 : Int) : Float := sorry
 
 def min_operations (p q r a b c : Int) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem eq_solve_zero_denominator (v1 u1 : Int) :
   eq_solve 0 v1 0 u1 = 1 := sorry
 
@@ -31,6 +39,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_operations 8 6 3 9 7 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

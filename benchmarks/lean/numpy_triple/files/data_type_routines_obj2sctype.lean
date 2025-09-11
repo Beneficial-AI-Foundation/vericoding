@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -47,13 +48,19 @@ def NumpyObject.is_generic_object (obj : NumpyObject) : Prop :=
   match obj with
   | NumpyObject.generic_obj _ => True
   | _ => False
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def obj2sctype (rep : NumpyObject) (default : Option NumpyScalarType) : Id (Option NumpyScalarType) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem obj2sctype_spec (rep : NumpyObject) (default : Option NumpyScalarType) :
     ⦃⌜True⌝⦄
     obj2sctype rep default
@@ -76,3 +83,4 @@ theorem obj2sctype_spec (rep : NumpyObject) (default : Option NumpyScalarType) :
        | none => rep.is_generic_object ∧ default = none)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def could_be (original : String) (another : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_names (name1 name2 : String) :
   name1.trim ≠ "" → name1 = name2 → could_be name1 name2 := by
   sorry
@@ -56,6 +64,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval could_be "Carlos Ray Norris" "carlos"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

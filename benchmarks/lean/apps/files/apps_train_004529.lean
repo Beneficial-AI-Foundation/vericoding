@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def GradeString : Type := String
 deriving Inhabited
 
 def grade_val (v : GradeString) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sort_grades (grades : List GradeString) : List GradeString :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_preserves_size (grades : List GradeString) :
   List.length (sort_grades grades) = List.length grades :=
   sorry
@@ -49,6 +56,7 @@ info: ['V0+', 'V1', 'V2']
 -/
 -- #guard_msgs in
 -- #eval sort_grades ["V0+", "V2", "V1"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def atleast_2d {n : Nat} (arr : Vector Float n) : Id (Vector (Vector Float n) 1) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem atleast_2d_spec {n : Nat} (arr : Vector Float n) :
     ⦃⌜True⌝⦄
     atleast_2d arr
@@ -22,3 +29,4 @@ theorem atleast_2d_spec {n : Nat} (arr : Vector Float n) :
                   -- where the input vector forms the single row
                   result.get ⟨0, by simp⟩ = row⌝⦄ := by
   sorry
+-- </vc-theorems>

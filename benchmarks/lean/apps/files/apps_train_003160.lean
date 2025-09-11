@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sale_hotdogs (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hotdog_prices_monotonic {n: Nat} (h: n > 1) : 
   sale_hotdogs n / n ≤ sale_hotdogs (n-1) / (n-1) :=
 sorry
@@ -37,6 +45,7 @@ info: 9000
 -/
 -- #guard_msgs in
 -- #eval sale_hotdogs 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

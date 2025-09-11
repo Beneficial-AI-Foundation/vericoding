@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -12,13 +13,19 @@ structure ChebyshevPoly (n : Nat) where
   /-- Window interval [window_min, window_max] -/
   window_min : Float := -1.0
   window_max : Float := 1.0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebyshev {n : Nat} (coef : Vector Float n) : Id (ChebyshevPoly n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebyshev_spec {n : Nat} (coef : Vector Float n) :
     ⦃⌜True⌝⦄
     chebyshev coef
@@ -35,3 +42,4 @@ theorem chebyshev_spec {n : Nat} (coef : Vector Float n) :
                  -- Window interval is valid
                  result.window_min < result.window_max⌝⦄ := by
   sorry
+-- </vc-theorems>

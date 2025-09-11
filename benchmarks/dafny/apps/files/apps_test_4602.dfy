@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string) {
     var lines := SplitByNewlines(s);
     |lines| >= 3 &&
@@ -47,6 +48,7 @@ function ComputeMinDistance(x: seq<int>, k: int): int
 {
     Sum(seq(|x|, i requires 0 <= i < |x| => 2 * Min(k - x[i], x[i])))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

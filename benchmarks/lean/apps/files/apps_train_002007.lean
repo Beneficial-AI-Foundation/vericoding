@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_tree_weight (n : Nat) (edges : List (Nat × Nat × Nat)) (use_counts : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_tree_weight_result_bounds 
   {n : Nat} {edges : List (Nat × Nat × Nat)} {use_counts : List Nat} 
   (h_n : n > 0) (h_edges : edges.length > 0)
@@ -51,6 +59,7 @@ info: 10000
 -/
 -- #guard_msgs in
 -- #eval find_max_tree_weight 2 [[1, 2, 10000]] [0, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

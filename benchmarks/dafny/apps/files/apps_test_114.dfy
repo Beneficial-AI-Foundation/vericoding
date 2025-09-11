@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInputFormat(input: string)
 {
   |input| > 0 && input[|input|-1] == '\n' &&
@@ -51,6 +52,7 @@ function ApplyGreedyAlgorithm(n: int, m: int, A: seq<seq<int>>): (seq<seq<int>>,
   var ops := [];
   GreedyStep(A, B, ops, 0, 0, n, m)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

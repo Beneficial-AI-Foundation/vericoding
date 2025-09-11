@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (a b : Nat) : Bool := sorry
 
 theorem same_number_always_true (n : Nat) (h : n > 0) :
   solve n n = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiple_always_true (n m : Nat) (h₁ : n > 0) (h₂ : m > 0) :
   solve (n * m) m = true := sorry
 
@@ -35,6 +43,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval solve 9 243
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

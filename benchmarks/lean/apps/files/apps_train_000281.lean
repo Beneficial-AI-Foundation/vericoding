@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def flipLights (n : Nat) (m : Nat) : Nat :=
   sorry
 
 -- Output should be between 1 and 4 positions
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_range (n m : Nat) : 
   n > 0 → 
   1 ≤ flipLights n m ∧ 
@@ -50,6 +58,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval flipLights 3 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

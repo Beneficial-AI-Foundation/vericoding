@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check (lst : List Int) (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_non_negative (lst : List Int) (n : Nat) :
   check lst n ≥ 0 :=
 sorry
@@ -39,6 +47,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval check [1, 2, 3, 4, 5, 6] len(test3)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_latest_bus (n : Nat) (d : Nat) (buses : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_latest_bus_single_bus
     (d : Nat) (h1 : d > 0) (h2 : d ≤ 1000) :
     solve_latest_bus 1 d [1] = d :=
@@ -33,6 +41,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_latest_bus 1 1 [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

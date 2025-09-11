@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def inf : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem inf_spec :
     ⦃⌜True⌝⦄
     inf
@@ -30,3 +37,4 @@ theorem inf_spec :
       result > 0
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

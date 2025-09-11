@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def toothpick (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem toothpick_non_negative (n : Nat) :
   toothpick n ≥ 0 :=
   sorry
@@ -37,6 +45,7 @@ info: 171
 -/
 -- #guard_msgs in
 -- #eval toothpick 16
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

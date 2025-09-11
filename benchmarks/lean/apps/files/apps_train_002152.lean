@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_palindrome_pairs (strings : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_pairs_non_negative (strings : List String) :
   count_palindrome_pairs strings ≥ 0 :=
   sorry
@@ -48,6 +56,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval count_palindrome_pairs ["iw", "ix", "udb", "bg", "oi", "uo", "jsm", "um", "s", "quy", "qo", "bxct", "ng", "rmr", "nu", "ps", "io", "kh", "w", "k"]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

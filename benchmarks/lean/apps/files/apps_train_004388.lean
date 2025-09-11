@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pac_man (size : Nat) (pacman : List Nat) (enemies : List (List Nat)) : Int :=
 sorry
 
 /- Theorem ensuring result is an integer bounded by board size -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pac_man_result_bounds 
   (size : Nat) 
   (px py : Nat) 
@@ -45,6 +53,7 @@ info: 19
 -/
 -- #guard_msgs in
 -- #eval pac_man 8 [1, 1] [[5, 4]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

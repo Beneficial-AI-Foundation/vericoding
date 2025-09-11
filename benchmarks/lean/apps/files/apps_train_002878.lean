@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isSolved (board : List (List Nat)) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSequential (board : List (List Nat)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solved_board_generated {n : Nat} (h : n > 0) (h2 : n ≤ 5) :
   let board := List.map (fun i => List.map (fun j => n * i + j) (List.range n)) (List.range n)
   isSolved board = isSequential board :=
@@ -51,6 +58,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_solved [[0, 1], [2, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

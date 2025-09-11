@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def countChar (s : String) (c : Char) : Nat := 
   (s.data.filter (· = c)).length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bumps (road : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bumps_returns_valid_output (road : String) :
   (bumps road = "Woohoo!" ∨ bumps road = "Car Dead") ∧
   (bumps road = "Woohoo!" ↔ countChar road 'n' ≤ 15) :=
@@ -51,6 +58,7 @@ info: 'Woohoo!'
 -/
 -- #guard_msgs in
 -- #eval bumps "______n___n_"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_setxor1d {n m k : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) : Id (Vector Float k) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_setxor1d_spec {n m k : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) :
     ⦃⌜True⌝⦄
     numpy_setxor1d ar1 ar2
@@ -27,3 +34,4 @@ theorem numpy_setxor1d_spec {n m k : Nat} (ar1 : Vector Float n) (ar2 : Vector F
         ∃ i : Fin k, result.get i = x)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_insert {n : Nat} (arr : Vector α n) (idx : Fin (n + 1)) (value : α) : Id (Vector α (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_insert_spec {n : Nat} (arr : Vector α n) (idx : Fin (n + 1)) (value : α) :
     ⦃⌜True⌝⦄
     numpy_insert arr idx value
@@ -24,3 +31,4 @@ theorem numpy_insert_spec {n : Nat} (arr : Vector α n) (idx : Fin (n + 1)) (val
                    (i < idx ∧ i.val = j.val ∧ result.get i = arr.get j) ∨ 
                    (idx < i ∧ i.val = j.val + 1 ∧ result.get i = arr.get j))⌝⦄ := by
   sorry
+-- </vc-theorems>

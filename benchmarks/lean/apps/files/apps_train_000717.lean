@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def minPointsForStringConversion (s : String) : Nat := sorry
 
 theorem minPoints_nonNegative (s : String) (h : s.length > 0) : 
@@ -10,17 +11,23 @@ theorem minPoints_zero_for_same_chars (s : String) (h1 : s.length > 0) (h2 : all
 
 def minCharOfString (s : String) : Char := sorry
 def maxCharOfString (s : String) : Char := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def naiveLowerBound (s : String) : Nat :=
   let minChar := minCharOfString s
   let maxChar := maxCharOfString s
   min 
     (s.data.foldl (fun acc c => acc + (c.toNat - minChar.toNat)) 0)
     (s.data.foldl (fun acc c => acc + (c.toNat - maxChar.toNat)) 0)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem minPoints_upper_bound (s : String) (h : s.length > 0) :
   minPointsForStringConversion s ≤ s.length * (('z'.toNat) - ('a'.toNat)) := sorry
 
@@ -47,6 +54,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_points_for_string_conversion "zzz"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

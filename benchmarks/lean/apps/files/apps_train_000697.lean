@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def leastPrimeDivisors (n : Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def dividing_machine (n m : Nat) (arr : List Nat) (ops : List (List Nat)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem least_prime_divisors_are_prime (n : Nat) : 
   (∀ p ∈ leastPrimeDivisors n, p > 1) ∧ 
   (∀ p ∈ leastPrimeDivisors n, ∀ i : Nat, 2 ≤ i ∧ i * i ≤ p → p % i ≠ 0) :=
@@ -35,6 +42,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval dividing_machine 2 2 [1, 3] [[0, 2, 2], [1, 1, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def interpreter (s : String) : String := sorry
 
 theorem interpreter_empty :
   interpreter "" = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem interpreter_increment_print :
   interpreter "+*" = "\x01" := sorry
 
@@ -38,6 +46,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval interpreter ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def choose (n m : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_paths (n: Nat) (start_pos: Nat × Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_paths_one_by_one {n: Nat} (h: n = 1) :
   count_paths n (0, 0) = 0 :=
   sorry
@@ -50,6 +57,7 @@ info: 70
 -/
 -- #guard_msgs in
 -- #eval count_paths 5 (4, 0)
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def to_goat_latin (s : String) : String := sorry
 
 def splitString (s : String) : List String := sorry
@@ -20,16 +21,22 @@ theorem to_goat_latin_vowel_rule {s : String} (i : Nat) (h : i < (splitString s)
     transformed = orig_word
   else
     transformed = dropFirst orig_word ++ String.mk [firstChar orig_word] := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s : String) (c : Char) : Nat := sorry
 
 theorem to_goat_latin_trailing_a_count {s : String} (i : Nat) (h : i < (splitString s).length) :
   let result := splitString (to_goat_latin s)
   countChar (getStringAt result i) 'a' ≥ i + 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem to_goat_latin_preserves_word_count {s : String} :
   (splitString s).length = (splitString (to_goat_latin s)).length := sorry
 
@@ -55,6 +62,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval to_goat_latin "Each word"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

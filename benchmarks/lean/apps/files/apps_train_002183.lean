@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def has_irreducible_anagram (s: String) (queries: List (Nat × Nat)) : List Bool := sorry
 
 theorem output_length_correct (s: String) (queries: List (Nat × Nat)) :
   let result := has_irreducible_anagram s queries
   result.length = queries.length ∧ 
   result.all (fun x => x = true ∨ x = false) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_char_query_true (s: String) (queries: List (Nat × Nat)) :
   let result := has_irreducible_anagram s queries
   ∀ (i : Nat), i < queries.length →
@@ -44,6 +52,7 @@ info: [True]
 -/
 -- #guard_msgs in
 -- #eval has_irreducible_anagram "f" [(1, 1)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

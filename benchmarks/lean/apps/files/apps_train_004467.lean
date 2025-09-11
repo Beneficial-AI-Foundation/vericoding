@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def convert_temp (temp : Float) (from_scale : String) (to_scale : String) : Int :=
   sorry
 
 def round (x : Float) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def int_to_float (n : Int) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem convert_temp_identity {temp : Float} {scale : String} 
   (h1 : -1000 ≤ temp) (h2 : temp ≤ 1000) :
   convert_temp temp scale scale = round temp := by
@@ -56,6 +63,7 @@ info: 666
 -/
 -- #guard_msgs in
 -- #eval convert_temp 666 "K" "K"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

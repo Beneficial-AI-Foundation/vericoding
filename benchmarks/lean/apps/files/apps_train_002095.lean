@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_psychos (n : Nat) (arr : List Nat) : Nat :=
   sorry
 
 def is_sorted_desc (arr : List Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_strictly_sorted_asc (arr : List Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_single_array :
   solve_psychos 0 [] = 0 ∧ 
   ∀ x : Nat, solve_psychos 1 [x] = 0 :=
@@ -39,6 +46,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_psychos 6 [6, 5, 4, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

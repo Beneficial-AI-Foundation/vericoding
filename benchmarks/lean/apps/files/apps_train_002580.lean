@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) : Nat := sorry 
 
 theorem solve_non_negative (n : Nat) :
   solve n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_linear_pattern (n : Nat) :
   n ≥ 12 → solve n = 292 + 49 * (n - 11) := sorry
 
@@ -45,6 +53,7 @@ info: 489999753
 -/
 -- #guard_msgs in
 -- #eval solve 10000000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

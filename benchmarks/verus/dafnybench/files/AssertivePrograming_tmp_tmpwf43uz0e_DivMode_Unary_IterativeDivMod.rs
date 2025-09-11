@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -91,6 +92,7 @@ fn iterative_div_mod_prime(x: Unary, y: Unary) -> (res: (Unary, Unary))
     assume(false);
     (Unary::Zero, Unary::Zero)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

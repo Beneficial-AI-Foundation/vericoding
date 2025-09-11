@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, C: int, K: int)
 {
     A >= 0 && B >= 0 && C >= 0 && K >= 1 && K <= A + B + C
@@ -79,6 +80,7 @@ function StringToIntHelper(s: string, start: int): int
     else
         StringToIntHelper(s, start + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

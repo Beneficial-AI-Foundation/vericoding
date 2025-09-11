@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_beautiful_permutation (nums : List Nat) : List Nat := sorry
 
 theorem solve_first_pos_beautiful (nums : List Nat) 
   (h : nums.length = 5) 
   (h2 : nums.Perm [1,2,3,4,5]) : 
   (solve_beautiful_permutation nums).get! 0 = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_preserves_length (nums : List Nat)  
   (h : nums.length = 5)
   (h2 : nums.Perm [1,2,3,4,5]) :
@@ -35,6 +43,7 @@ info: '1001'
 -/
 -- #guard_msgs in
 -- #eval solve_beautiful_permutation [1, 4, 3, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

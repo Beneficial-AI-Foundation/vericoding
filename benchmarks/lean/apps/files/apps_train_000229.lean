@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def regions_by_slashes (grid: List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem regions_always_positive
   (grid: List String)
   : regions_by_slashes grid > 0 :=
@@ -46,6 +54,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval regions_by_slashes ["//", "/ "]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

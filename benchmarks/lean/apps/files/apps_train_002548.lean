@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bouncing_ball (initial : Int) (proportion : Float) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bouncing_ball_positive 
   (initial : Int) (proportion : Float)
   (h1 : initial ≥ 2) (h2 : initial ≤ 1000)
@@ -53,6 +61,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval bouncing_ball 10 0.1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

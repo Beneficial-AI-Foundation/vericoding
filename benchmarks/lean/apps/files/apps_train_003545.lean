@@ -1,19 +1,26 @@
+-- <vc-preamble>
 def isInt (n : Nat) : Bool := sorry
 def isDiceList (l : List Nat) : Bool := sorry
 
 def isValidDiceDesc : String → Bool := sorry
 def extractSides : String → Option Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def roll (desc : String) (verbose : Bool := false) : Bool ⊕ (List Nat × Int) := sorry
 
 theorem valid_roll_structure {desc : String} {result : List Nat × Int}
   (h : roll desc true = Sum.inr result) :
   ∃ (dice : List Nat) (modifier : Int), result = (dice, modifier) ∧ 
   ∀ d ∈ dice, isInt d := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_roll {desc : String} (h : ¬isValidDiceDesc desc) : 
   roll desc false = Sum.inl false := sorry
 
@@ -48,6 +55,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval len result1["dice"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

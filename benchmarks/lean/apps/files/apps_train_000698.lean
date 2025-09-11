@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_roses (boys girls : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem roses_is_even (boys girls : Nat) (h1 : boys > 0) (h2 : girls > 0) :
   2 ∣ calculate_roses boys girls :=
   sorry
@@ -41,6 +49,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval calculate_roses 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

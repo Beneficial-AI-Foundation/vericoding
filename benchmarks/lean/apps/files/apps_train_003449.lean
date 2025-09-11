@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def isDigit (c : Char) : Bool := sorry
 
 def isBouncyStr (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bouncyRatio (n : Float) : Float := sorry
 
 theorem bouncy_sequence_property {n : Nat} (h : n ≥ 100) (h2 : n ≤ 100000) :
@@ -13,7 +18,9 @@ theorem bouncy_sequence_property {n : Nat} (h : n ≥ 100) (h2 : n ≤ 100000) :
   ((toString n).get i < (toString n).get j) ∧
   ∃ k l : String.Pos, k < l ∧
   ((toString n).get k > (toString n).get l) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bouncy_ratio_validation_zero :
   ¬ ∃ x : Float, x = bouncyRatio 0 := sorry
 
@@ -45,6 +52,7 @@ info: 3088
 -/
 -- #guard_msgs in
 -- #eval bouncy_ratio 0.75
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

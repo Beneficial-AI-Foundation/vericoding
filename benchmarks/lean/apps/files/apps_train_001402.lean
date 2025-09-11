@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def longest_contiguous_subsequence (N Q K : Nat) (A : List Nat) (S : String) : List Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_max_consecutive_ones (A : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_length_matches_question_marks {N Q K : Nat} {A : List Nat} {S : String} 
   (h1 : N > 0) (h2 : Q > 0) (h3 : K > 0) 
   (h4 : ∀ x ∈ A, x ≤ 1) :
@@ -56,6 +63,7 @@ info: [4, 4]
 -/
 -- #guard_msgs in
 -- #eval longest_contiguous_subsequence 4 2 4 [1, 1, 1, 1] "??"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

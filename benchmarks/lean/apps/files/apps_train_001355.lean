@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_xor_parity (n m : Nat) (arr queries : List Nat) : List String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def popCount (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_xor_parity_output_format {n m : Nat} {arr queries : List Nat}
     (h1 : arr.length > 0) (h2 : queries.length > 0)
     (h3 : arr.length = n) (h4 : queries.length = m) :
@@ -51,6 +58,7 @@ info: ['0 1']
 -/
 -- #guard_msgs in
 -- #eval solve_xor_parity 1 1 [5] [7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate sorted(a:array<int>, from:int, to:int)
   requires a != null;
   reads a;
@@ -13,6 +14,7 @@ predicate pivot(a:array<int>, to:int, pvt:int)
 {
   forall u, v :: 0 <= u < pvt < v < to ==> a[u] <= a[v]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

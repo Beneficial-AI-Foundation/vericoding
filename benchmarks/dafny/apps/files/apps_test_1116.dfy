@@ -1,3 +1,4 @@
+// <vc-preamble>
 function gcd(a: int, b: int): int
   requires a > 0 && b >= 0
   decreases b
@@ -24,6 +25,7 @@ predicate CanAvoidConsecutive(r: int, b: int, k: int)
 {
   MaxConsecutiveSameColor(r, b) < k
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

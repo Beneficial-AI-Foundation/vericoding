@@ -1,3 +1,4 @@
+// <vc-preamble>
 function maxHeightUpTo(heights: seq<int>, index: int): int
   requires |heights| > 0
   requires -1 <= index < |heights|
@@ -19,6 +20,7 @@ predicate CanMakeNonDecreasing(heights: seq<int>)
 {
   forall i :: 0 <= i < |heights| ==> heights[i] >= maxHeightUpTo(heights, i) - 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

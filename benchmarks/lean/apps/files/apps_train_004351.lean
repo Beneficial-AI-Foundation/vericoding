@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def merge_arrays (arr1 : List Int) (arr2 : List Int) : List Int := sorry
 
 theorem merge_arrays_ordered (arr1 arr2 : List Int) :
   ∀ i j, i < j → i < (merge_arrays arr1 arr2).length → j < (merge_arrays arr1 arr2).length →
   (merge_arrays arr1 arr2)[i]! ≤ (merge_arrays arr1 arr2)[j]! := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem merge_arrays_unique (arr1 arr2 : List Int) :
   ∀ i j, i < (merge_arrays arr1 arr2).length → j < (merge_arrays arr1 arr2).length →
   i ≠ j → (merge_arrays arr1 arr2)[i]! ≠ (merge_arrays arr1 arr2)[j]! := sorry
@@ -44,6 +52,7 @@ info: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 -/
 -- #guard_msgs in
 -- #eval merge_arrays [10, 8, 6, 4, 2] [9, 7, 5, 3, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

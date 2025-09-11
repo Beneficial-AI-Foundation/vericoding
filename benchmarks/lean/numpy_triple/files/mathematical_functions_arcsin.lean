@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_arcsin {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_arcsin_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜∀ i : Fin n, -1 ≤ x.get i ∧ x.get i ≤ 1⌝⦄
     numpy_arcsin x
@@ -20,3 +27,4 @@ theorem numpy_arcsin_spec {n : Nat} (x : Vector Float n) :
         (x.get i = 1 → result.get i = 1.5707963267948966) ∧
         (x.get i = -1 → result.get i = -1.5707963267948966)⌝⦄ := by
   sorry
+-- </vc-theorems>

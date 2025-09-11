@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def poly2lag {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem poly2lag_spec {n : Nat} (pol : Vector Float n) :
     ⦃⌜True⌝⦄
     poly2lag pol
@@ -22,3 +29,4 @@ theorem poly2lag_spec {n : Nat} (pol : Vector Float n) :
                   -- where L_i(x) is the i-th Laguerre polynomial
                   True)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def MOD := 1000000007
 
 def List.sort (l: List Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_minimized_workload (n: Nat) (p: Nat) (workloads: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem workload_result_bounds (n p: Nat) (workloads: List Nat)
   (h1: n > 0) (h2: n ≤ 100) (h3: p > 0) (h4: p ≤ 10)
   (h5: ∀ w ∈ workloads, w ≥ 0 ∧ w ≤ 1000)
@@ -59,6 +66,7 @@ info: 146981438
 -/
 -- #guard_msgs in
 -- #eval solve_minimized_workload 4 5 [0, 1, 1, 100]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(sides: seq<int>)
 {
     |sides| >= 3 && forall i :: 0 <= i < |sides| ==> sides[i] > 0
@@ -67,6 +68,7 @@ function sumExceptLast(s: seq<int>): int
     if |s| == 1 then 0
     else s[0] + sumExceptLast(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

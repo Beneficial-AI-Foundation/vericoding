@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def diag {n : Nat} (v : Vector Float n) : Id (Vector (Vector Float n) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem diag_spec {n : Nat} (v : Vector Float n) :
     ⦃⌜True⌝⦄
     diag v
@@ -46,3 +53,4 @@ theorem diag_spec {n : Nat} (v : Vector Float n) :
         ((result.get j).get j ≠ 0 ∧ ∀ i : Fin n, i ≠ j → (result.get i).get j = 0))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

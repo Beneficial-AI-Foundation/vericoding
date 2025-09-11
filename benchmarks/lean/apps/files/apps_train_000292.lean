@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Grid := List (List Nat)
 
 def min_cost_to_valid_path (grid: Grid) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_constraints (grid: Grid) :
   let result := min_cost_to_valid_path grid
   result = -1 ∨ result ≥ 0 :=
@@ -40,6 +48,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_cost_to_valid_path [[1, 2], [4, 3]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def invert (xs : List Int) : List Int := sorry
 
 def abs (n : Int) : Int :=
   if n ≥ 0 then n else -n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invert_length (xs : List Int) :
   (invert xs).length = xs.length := sorry
 
@@ -32,6 +40,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval invert []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

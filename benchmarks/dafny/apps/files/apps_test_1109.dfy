@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, A: seq<int>)
 {
   1 <= k <= n <= 100 &&
@@ -55,6 +56,7 @@ function SumMinChangesForAllColumns(A: seq<int>, n: int, k: int): int
 {
   SumMinChangesHelper(A, n, k, 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

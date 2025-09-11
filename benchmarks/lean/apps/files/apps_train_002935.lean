@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nba_extrap (ppg mpg : Float) : Float := sorry
 
 theorem nba_extrap_nonnegative 
   {ppg mpg : Float} (h1 : 0 ≤ ppg) (h2 : 0 < mpg) (h3 : mpg ≤ 48) :
   0 ≤ nba_extrap ppg mpg := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nba_extrap_proportional
   {ppg mpg : Float} (h1 : 0 ≤ ppg) (h2 : 0 < mpg) (h3 : mpg ≤ 48) :
   nba_extrap ppg mpg = Float.round (48.0 * ppg / mpg) :=
@@ -45,6 +53,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval nba_extrap 0 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

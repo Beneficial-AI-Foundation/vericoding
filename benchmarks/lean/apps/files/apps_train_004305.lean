@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def caesar_crypto_encode (text : String) (shift : Int) : String := sorry
 
 theorem caesar_length_preservation (text : String) (shift : Int) :
   String.length (caesar_crypto_encode text shift) ≤ String.length text := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem caesar_length_strip (text : String) (shift : Int) :
   String.length (String.trim (caesar_crypto_encode text shift)) = String.length (caesar_crypto_encode text shift) := sorry
 
@@ -52,6 +60,7 @@ info: 'Hello world!'
 -/
 -- #guard_msgs in
 -- #eval caesar_crypto_encode "Hello world!" 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

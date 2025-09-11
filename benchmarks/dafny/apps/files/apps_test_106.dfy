@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, k: int, a: int, b: int) {
   n > 0 && m > 0 && k > 0 && 1 <= a <= n * m * k && 1 <= b <= n * m * k && a != b
 }
@@ -31,6 +32,7 @@ function MinEntranceDistance(entrance_a: int, entrance_b: int, n: int): int
   var counterclockwise := (entrance_a - entrance_b + n) % n;
   if clockwise <= counterclockwise then clockwise else counterclockwise
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

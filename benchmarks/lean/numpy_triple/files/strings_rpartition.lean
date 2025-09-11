@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rpartition {n : Nat} (a : Vector String n) (sep : String) : Id (Vector String n × Vector String n × Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rpartition_spec {n : Nat} (a : Vector String n) (sep : String) :
     ⦃⌜True⌝⦄
     rpartition a sep
@@ -26,3 +33,4 @@ theorem rpartition_spec {n : Nat} (a : Vector String n) (sep : String) :
                    -- If separator is not found, first two parts are empty and after contains whole string
                    (sep_i = "" → before_i = "" ∧ after_i = original)⌝⦄ := by
   sorry
+-- </vc-theorems>

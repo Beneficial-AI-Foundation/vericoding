@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountValidMinutes(a: int, b: int): int
     requires a >= 0 && b >= 0
     decreases a + b
@@ -7,6 +8,7 @@ function CountValidMinutes(a: int, b: int): int
     else (if a > 1 || b > 1 then 1 else 0) + 
          CountValidMinutes(if a < b then a + 1 else a - 2, if a < b then b - 2 else b + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

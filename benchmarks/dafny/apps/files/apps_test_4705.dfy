@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int)
 {
     1 <= N <= 100
@@ -20,6 +21,7 @@ function NetAmount(N: int): int
 {
     TotalCost(N) - Cashback(N)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

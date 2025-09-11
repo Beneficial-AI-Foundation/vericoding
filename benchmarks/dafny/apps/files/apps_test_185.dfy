@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
   2 <= n <= 5000 && 1 <= k <= n
@@ -11,6 +12,7 @@ function OptimalMoves(n: int, k: int): int
   else
     3 * n + min(k - 1, n - k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

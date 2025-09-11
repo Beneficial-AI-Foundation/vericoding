@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def soundex (name : String) : String := sorry
 
 theorem soundex_length_first_letter_prop {name : String} (h: name.length > 0):
@@ -9,7 +15,9 @@ theorem soundex_length_first_letter_prop {name : String} (h: name.length > 0):
   codes.length = words.length ∧ 
   (∀ code ∈ codes, code.length = 4) ∧
   (∀ (w c : String), w ∈ words → c ∈ codes → w.toUpper.front = c.front) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 'S600 C560'
 -/
@@ -27,6 +35,7 @@ info: 'T522'
 -/
 -- #guard_msgs in
 -- #eval soundex "Tymczak"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

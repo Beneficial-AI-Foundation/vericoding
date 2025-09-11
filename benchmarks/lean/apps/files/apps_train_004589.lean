@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def split (s : String) (c : Char) : List String :=
 sorry
 
@@ -15,10 +16,14 @@ sorry
 
 def all_lines_reversed (orig result : List String) : Prop :=
   ∀ i, i < orig.length → result.get! i = reverse_string (orig.get! i)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def line_lengths_preserved (orig result : List String) : Prop :=
   ∀ i, i < orig.length → (orig.get! i).length = (result.get! i).length
 
@@ -40,7 +45,9 @@ axiom vert_mirror_involution (s : String) :
 
 axiom hor_mirror_involution (s : String) :
   oper hor_mirror (oper hor_mirror s) = s
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 'dcba\nhgfe\nlkji\nponm'
 -/
@@ -64,6 +71,7 @@ info: 'cd\nab'
 -/
 -- #guard_msgs in
 -- #eval oper hor_mirror s2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(p: int) {
     2 <= p < 2000
 }
@@ -8,6 +9,7 @@ function CountPrimitiveRoots(p: int): int
     if p == 2 then 1
     else |set i | 1 <= i < p-1 && (forall j :: 2 <= j <= i ==> !((p-1) % j == 0 && i % j == 0))|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

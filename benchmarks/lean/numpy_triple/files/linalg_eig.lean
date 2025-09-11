@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def eig {n : Nat} (a : Vector (Vector Float n) n) : Id (Vector Float n × Vector (Vector Float n) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem eig_spec {n : Nat} (a : Vector (Vector Float n) n) :
     ⦃⌜True⌝⦄
     eig a
@@ -39,3 +46,4 @@ theorem eig_spec {n : Nat} (a : Vector (Vector Float n) n) :
           v_k * v_k) = 1)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

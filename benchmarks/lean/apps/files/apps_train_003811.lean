@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def add (a b : Int) : Int := sorry
 def multiply (a b : Int) : Int := sorry
 
 def divide (a b : Int) : Int := sorry 
 def mod (a b : Int) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def exponent (a b : Int) : Int := sorry
 def subt (a b : Int) : Int := sorry
 
 -- Addition properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem add_commutative (a b : Int) : add a b = add b a := sorry
 
 theorem add_identity (a : Int) : add a 0 = a := sorry 
@@ -133,6 +140,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval subt 10 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

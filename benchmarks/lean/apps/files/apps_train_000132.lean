@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_numbers_with_repeated_digits (n : Nat) : Nat :=
   sorry
 
 -- Output is bounded by input
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_range {n : Nat} (h : n > 0) : 
   count_numbers_with_repeated_digits n ≤ n :=
   sorry
@@ -68,6 +76,7 @@ info: 262
 -/
 -- #guard_msgs in
 -- #eval count_numbers_with_repeated_digits 1000
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

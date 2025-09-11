@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve (n : Nat) : Nat := sorry
 
 def is_composite (n : Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isDigitIn (d : Char) (n : Nat) : Bool := sorry
 
 theorem solve_positive (n : Nat) : 
   solve n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_monotonic {n : Nat} (h : n > 0) :
   solve n > solve (n-1) := sorry
 
@@ -36,6 +43,7 @@ info: 44
 -/
 -- #guard_msgs in
 -- #eval solve 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

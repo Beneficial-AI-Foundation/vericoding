@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fixed_points_perms (n k : Nat) : Nat := sorry
 
 theorem fixed_points_perms_zero_when_k_gt_n (n k : Nat) :
   k > n → fixed_points_perms n k = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fixed_points_perms_nonnegative (n k : Nat) :
   k ≤ n → fixed_points_perms n k ≥ 0 := sorry
 
@@ -36,6 +44,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval fixed_points_perms 4 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

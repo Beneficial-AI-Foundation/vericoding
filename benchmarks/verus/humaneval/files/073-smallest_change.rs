@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -17,6 +18,7 @@ spec fn diff(s: Seq<(i32, i32)>) -> (ret: int) {
             },
     )
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

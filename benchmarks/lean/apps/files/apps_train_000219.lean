@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def h_index (citations : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem h_index_bounded_by_length {citations : List Nat} (h : citations ≠ []) :
   h_index citations ≤ citations.length :=
   sorry
@@ -29,6 +37,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval h_index [5, 5, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

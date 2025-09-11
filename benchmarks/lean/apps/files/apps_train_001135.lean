@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def M := 1000000007
 
 def count_good_triplets (nums : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_good_triplets_nonnegative (nums : List Nat) :
   count_good_triplets nums ≥ 0 :=
 sorry
@@ -37,6 +45,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_good_triplets [1, 1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

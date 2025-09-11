@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (s : String) : Nat × String := sorry
 
 theorem solve_output_structure (s : String) : 
   let result := solve s
   (result.1 = result.2.length) ∧ 
   (∀ c, c ∈ result.2.data → c = 'L' ∨ c = 'R' ∨ c = 'U' ∨ c = 'D') := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_output_balanced (s : String) :
   let result := solve s
   let path := result.2
@@ -43,6 +51,7 @@ info: (0, '')
 -/
 -- #guard_msgs in
 -- #eval solve "LLL"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

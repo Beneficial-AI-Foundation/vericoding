@@ -1,9 +1,12 @@
+-- <vc-preamble>
 @[reducible, simp]
 def findProduct_precond (lst : List Int) : Prop :=
   lst.length > 1 ∧
   (∃ x ∈ lst, isEven x) ∧
   (∃ x ∈ lst, isOdd x)
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def isEven (n : Int) : Bool :=
   n % 2 = 0
@@ -18,10 +21,14 @@ def firstEvenOddIndices (lst : List Int) : Option (Nat × Nat) :=
   | some ei, some oi => some (ei, oi)
   | _, _ => none
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findProduct (lst : List Int) (h_precond : findProduct_precond (lst)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def findProduct_postcond (lst : List Int) (result: Int) (h_precond : findProduct_precond (lst)) :=
   match firstEvenOddIndices lst with
@@ -31,6 +38,7 @@ def findProduct_postcond (lst : List Int) (result: Int) (h_precond : findProduct
 theorem findProduct_spec_satisfied (lst: List Int) (h_precond : findProduct_precond (lst)) :
     findProduct_postcond (lst) (findProduct (lst) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

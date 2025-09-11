@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def onlineMax_precond (a : Array Int) (x : Nat) : Prop :=
   a.size > 0 ∧ x < a.size
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def findBest (a : Array Int) (x : Nat) (i : Nat) (best : Int) : Int :=
   if i < x then
@@ -14,10 +17,14 @@ def findP (a : Array Int) (x : Nat) (m : Int) (i : Nat) : Nat :=
     if a[i]! > m then i else findP a x m (i + 1)
   else a.size - 1
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def onlineMax (a : Array Int) (x : Nat) (h_precond : onlineMax_precond (a) (x)) : Int × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def onlineMax_postcond (a : Array Int) (x : Nat) (result: Int × Nat) (h_precond : onlineMax_precond (a) (x)) :=
   let (m, p) := result;
@@ -30,6 +37,7 @@ def onlineMax_postcond (a : Array Int) (x : Nat) (result: Int × Nat) (h_precond
 theorem onlineMax_spec_satisfied (a: Array Int) (x: Nat) (h_precond : onlineMax_precond (a) (x)) :
     onlineMax_postcond (a) (x) (onlineMax (a) (x) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

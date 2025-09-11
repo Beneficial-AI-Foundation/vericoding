@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def factorial (n : Nat) : Nat :=
   match n with
   | 0 => 1
@@ -5,13 +6,19 @@ def factorial (n : Nat) : Nat :=
 
 def count_distinct_sequences (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def containsChar (s : String) (c : Char) : Bool :=
   s.data.contains c
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_distinct_basic_properties (s : String) : 
   let result := count_distinct_sequences s
   result ≤ factorial s.length ∧ 
@@ -59,6 +66,7 @@ info: 24
 -/
 -- #guard_msgs in
 -- #eval count_distinct_sequences "abcd"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

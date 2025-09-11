@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverse_list (xs : List α) : List α := sorry
 
 theorem reverse_list_length {α : Type} (xs : List α) : 
   List.length (reverse_list xs) = List.length xs := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_list_twice {α : Type} (xs : List α) : 
   reverse_list (reverse_list xs) = xs := sorry
 
@@ -32,6 +40,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval reverse_list [1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

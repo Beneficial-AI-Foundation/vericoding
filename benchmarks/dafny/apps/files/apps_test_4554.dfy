@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(W: int, a: int, b: int)
 {
     W >= 1 && a >= 1 && b >= 1
@@ -21,6 +22,7 @@ predicate RectanglesConnect(W: int, a: int, b: int)
 {
     AbsDiff(a, b) <= W
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

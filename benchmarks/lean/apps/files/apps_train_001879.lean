@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def shortestCompletingWord (licensePlate : String) (words : List String) : Option String := sorry
 
 -- Helper functions
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isAlpha (c : Char) : Bool := sorry
 def containsAllLetters (word : String) (plate : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shortest_completing_word_in_wordlist (plate : String) (words : List String) :
   ∀ result, shortestCompletingWord plate words = some result → 
   ∃ w ∈ words, w.toLower = result.toLower := sorry
@@ -43,6 +50,7 @@ info: 'supper'
 -/
 -- #guard_msgs in
 -- #eval shortestCompletingWord "PP" ["pair", "supper"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

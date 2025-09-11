@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_longest_uncommon_subsequence (s1 s2 : String) : Int := sorry
 
 theorem identical_strings_property (s1 s2 : String) (h1 : s1.length > 0) (h2 : s2.length > 0) :
   (s1 = s2 → find_longest_uncommon_subsequence s1 s2 = -1) ∧ 
   (s1 ≠ s2 → find_longest_uncommon_subsequence s1 s2 = max s1.length s2.length) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem symmetry_property (s1 s2 : String) (h1 : s1.length > 0) (h2 : s2.length > 0) :
   find_longest_uncommon_subsequence s1 s2 = find_longest_uncommon_subsequence s2 s1 := sorry
 
@@ -34,6 +42,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval find_longest_uncommon_subsequence "aefawf" "aefawf"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

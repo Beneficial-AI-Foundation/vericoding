@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def calc_seq (a k : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hasZeroDigit (n : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calc_seq_basic_properties {a k : Nat} (ha : a > 0) (hk : k > 0) :
   let result := calc_seq a k
   -- Result is always non-negative
@@ -34,6 +41,7 @@ info: 628
 -/
 -- #guard_msgs in
 -- #eval calc_seq 487 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

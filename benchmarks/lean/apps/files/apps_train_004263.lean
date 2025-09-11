@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def positive_to_negative (binary : List Nat) : List Nat := sorry
 
 theorem output_is_binary (binary : List Nat) 
@@ -8,7 +14,9 @@ theorem output_is_binary (binary : List Nat)
   (h' : binary.length > 0) :
   (positive_to_negative binary).all (fun x => x = 0 ∨ x = 1) ∧ 
   (positive_to_negative binary).length = binary.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_zeros_unchanged (binary : List Nat)
   (h : binary.all (fun x => x = 0))
   (h' : binary.length > 0) :
@@ -49,6 +57,7 @@ info: [1, 1, 0, 1]
 -/
 -- #guard_msgs in
 -- #eval positive_to_negative [0, 0, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

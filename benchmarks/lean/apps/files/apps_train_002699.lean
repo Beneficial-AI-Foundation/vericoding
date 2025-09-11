@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def what_is_the_time (time : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_time (time : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mirror_time_format (time : String) 
   (h : time.contains ':') 
   (len : time.length = 5) 
@@ -52,6 +59,7 @@ info: '11:58'
 -/
 -- #guard_msgs in
 -- #eval what_is_the_time "12:02"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

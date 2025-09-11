@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pi : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pi_spec :
     ⦃⌜True⌝⦄
     pi
@@ -26,3 +33,4 @@ theorem pi_spec :
       0.785 < result / 4 ∧ result / 4 < 0.786
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

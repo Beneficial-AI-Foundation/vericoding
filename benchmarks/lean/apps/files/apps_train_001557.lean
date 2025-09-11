@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longest_slide_down (pyramid : List (List Int)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element (x : Int) :
   longest_slide_down [[x]] = x
   := sorry
@@ -45,6 +53,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval longest_slide_down [[5]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

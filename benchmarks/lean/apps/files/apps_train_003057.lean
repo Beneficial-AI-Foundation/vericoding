@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def movie (card : Float) (ticket : Float) (perc : Float) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem movie_returns_positive : 
   ∀ (card ticket perc : Float),
   0 ≤ card → card ≤ 1000 →
@@ -38,6 +46,7 @@ info: 21
 -/
 -- #guard_msgs in
 -- #eval movie 250 20 0.9
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

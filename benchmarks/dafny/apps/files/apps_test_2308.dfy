@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);
@@ -50,6 +51,7 @@ predicate IsValidNumber(s: string)
 {
     |s| > 0 && (forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

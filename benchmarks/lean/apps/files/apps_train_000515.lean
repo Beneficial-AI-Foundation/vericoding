@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_gcd_prob (n : Nat) : String := sorry
 
 theorem calc_gcd_prob_fraction_format (n : Nat) 
@@ -10,7 +16,9 @@ theorem calc_gcd_prob_fraction_format (n : Nat)
     let num := String.toNat! (nums.get! 0)
     let denom := String.toNat! (nums.get! 1)
     denom > 0 ∧ Nat.gcd num denom = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calc_gcd_prob_probability_range (n : Nat)
     (h : n > 0) (h2 : n ≤ 1000) :
     let result := calc_gcd_prob n
@@ -36,6 +44,7 @@ info: '5/9'
 -/
 -- #guard_msgs in
 -- #eval calc_gcd_prob 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

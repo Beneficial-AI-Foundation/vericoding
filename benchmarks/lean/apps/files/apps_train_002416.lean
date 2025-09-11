@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxScore (s: String) : Nat := sorry
 
 theorem maxScore_non_negative (s: String) (h: s.length >= 2) : 
   maxScore s >= 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxScore_upper_bound (s: String) (h: s.length >= 2) : 
   maxScore s ≤ s.length := sorry
 
@@ -50,6 +58,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval max_score "1111"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

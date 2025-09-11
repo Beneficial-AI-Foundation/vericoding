@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern (n : Int) : String := sorry
 
 def natToString (n : Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_positive_returns_empty {n : Int} (h : n ≤ 0) : 
   pattern n = "" := sorry
 
@@ -22,6 +30,7 @@ theorem pattern_dimensions {n : Int} (h : n > 0) (h2 : n ≤ 50) :
   (rows.length = n.toNat) ∧ 
   -- Each row at least n chars
   (∀ row ∈ rows, row.length ≥ n.toNat) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

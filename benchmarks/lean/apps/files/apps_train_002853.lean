@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def validate (username password : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def validUsers : List String := ["Timmy", "Alice", "Johny", "Roger", "Simon", "Admin"]
 
 theorem invalid_username {username password : String} 
   (h : username ∉ validUsers) : 
   validate username password = "Wrong username or password!" :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem injection_attempt {username password1 password2 : String}
   (h : username ∈ validUsers) :
   validate username (password1 ++ "||" ++ password2) = "Wrong username or password!" :=
@@ -64,6 +71,7 @@ info: 'Wrong username or password!'
 -/
 -- #guard_msgs in
 -- #eval validate "Admin" "gs5bw"||1==1//"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

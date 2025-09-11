@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isSorted (l : List Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def k_smallest_pairs (nums1 nums2 : List Int) (k : Nat) : List (Int × Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem k_smallest_pairs_size (nums1 nums2 : List Int) (k : Nat)
   (h1 : isSorted nums1 = true) (h2 : isSorted nums2 = true) (h3 : nums1 ≠ []) (h4 : nums2 ≠ []) :
   let result := k_smallest_pairs nums1 nums2 k
@@ -40,6 +47,7 @@ theorem k_smallest_pairs_all_combinations (nums1 nums2 : List Int)
   List.length result = k ∧
   ∀ x ∈ nums1, ∀ y ∈ nums2, ∃ pair ∈ result, pair = (x, y) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def billboard (name : String) (price : Nat := 30) : Nat := sorry
 
 theorem billboard_properties {name : String} {price : Nat} 
@@ -9,7 +15,9 @@ theorem billboard_properties {name : String} {price : Nat}
   (result = name.length * price) ∧ 
   (result ≥ price) ∧
   (result % price = 0) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem billboard_default_price {name : String} (h : name.length > 0) : 
   let result := billboard name
   (result = name.length * 30) ∧ 
@@ -37,6 +45,7 @@ info: 270
 -/
 -- #guard_msgs in
 -- #eval billboard "Paolo Oli"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

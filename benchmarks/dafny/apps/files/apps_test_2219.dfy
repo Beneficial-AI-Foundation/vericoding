@@ -1,3 +1,4 @@
+// <vc-preamble>
 function minStepsToZero(n: nat, k: nat): nat
     requires k >= 2
     decreases n
@@ -50,6 +51,7 @@ function expectedOutput(input: string): string
     );
     joinLinesSeq(results)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

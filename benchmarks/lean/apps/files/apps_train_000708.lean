@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_wire_problem (n m : Nat) : Int := sorry
 
 theorem valid_n_range {n : Nat} (h : 1 ≤ n ∧ n ≤ 30) :
   let m := n * n;
   -1 ≤ solve_wire_problem n m := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_ranges {n m : Nat} (hn : 1 ≤ n ∧ n ≤ 30) (hm : m ≤ 1000) :
   solve_wire_problem n m = -1 ∨ 0 ≤ solve_wire_problem n m := sorry
 
@@ -41,6 +49,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval solve_wire_problem 5 25
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

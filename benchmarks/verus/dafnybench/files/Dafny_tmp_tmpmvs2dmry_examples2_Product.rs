@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -14,6 +15,7 @@ decreases m + n
         gcd(m, sub(n, m))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

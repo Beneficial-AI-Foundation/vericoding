@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(s: seq<int>): int
 {
     if |s| == 0 then 0 else s[0] + sum(s[1..])
@@ -61,6 +62,7 @@ predicate ValidInput(k: int, n: int, a: seq<int>, b: seq<int>)
     (forall i :: 0 <= i < k ==> -2000 <= a[i] <= 2000) &&
     (forall i :: 0 <= i < n ==> -4000000 <= b[i] <= 4000000)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

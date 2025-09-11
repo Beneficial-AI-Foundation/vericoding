@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -14,6 +15,7 @@ fn binary_search(a: &[int], circle: int) -> (n: usize)
     assume(false);
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

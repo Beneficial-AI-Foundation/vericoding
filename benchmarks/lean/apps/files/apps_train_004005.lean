@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dontGiveMeFive (s e : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem validRange (s e : Int) :
   s ≤ e →
   let result := dontGiveMeFive s e
@@ -28,6 +36,7 @@ theorem singleNumber (n : Int) :
   dontGiveMeFive n n = 
     if String.contains (toString (Int.natAbs n)) '5' then 0 else 1 := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def checkValidString (s : String) : Bool := sorry
 
 def isBalancedWithoutStars (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_matches_simple_validation (s : String) :
   (∀ c : Char, c ∈ s.data → (c = '(' ∨ c = ')')) →
   checkValidString s = isBalancedWithoutStars s := sorry
@@ -44,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval check_valid_string "(*))"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

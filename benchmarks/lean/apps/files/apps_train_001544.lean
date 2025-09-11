@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_chocolates (n : Nat) (x : Nat) (arr : List Nat) : String := sorry
 
 theorem solve_chocolates_binary_output (n x : Nat) (arr : List Nat)
   (h1 : n > 0) (h2 : x > 0) (h3 : arr.length > 0) :
   solve_chocolates n x arr = "Possible" ∨ solve_chocolates n x arr = "Impossible" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_chocolates_x_eq_1 (n : Nat) (arr : List Nat)
   (h1 : n > 0) (h2 : arr.length > 0) :
   solve_chocolates n 1 arr = "Possible" ↔ 
@@ -42,6 +50,7 @@ info: 'Impossible'
 -/
 -- #guard_msgs in
 -- #eval solve_chocolates 5 1 [4, 2, 3, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

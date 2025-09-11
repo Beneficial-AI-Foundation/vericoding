@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def FRUIT_NAMES : List String := sorry
 
 def cut_fruits (fruits : List String) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cut_fruits_output_length (fruits : List String) : 
   let result := cut_fruits fruits
   let num_fruits := (fruits.filter (fun f => f ∈ FRUIT_NAMES)).length
@@ -43,6 +51,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval cut_fruits []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

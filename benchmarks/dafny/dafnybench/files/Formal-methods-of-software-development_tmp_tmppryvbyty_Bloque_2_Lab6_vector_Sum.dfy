@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(v: seq<int>): int 
 decreases v
 {
@@ -28,6 +29,7 @@ method multiplicity_examples<T> ()
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

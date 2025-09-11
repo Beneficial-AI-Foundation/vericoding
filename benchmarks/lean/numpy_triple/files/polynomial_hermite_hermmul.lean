@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermmul (m n : Nat) (c1 : Vector Float m) (c2 : Vector Float n) : 
     Id (Vector Float (if m = 0 ∨ n = 0 then 1 else m + n - 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermmul_spec (m n : Nat) (c1 : Vector Float m) (c2 : Vector Float n) :
     ⦃⌜True⌝⦄
     hermmul m n c1 c2
@@ -27,3 +34,4 @@ theorem hermmul_spec (m n : Nat) (c1 : Vector Float m) (c2 : Vector Float n) :
         ∀ k : Fin result.size, result.get k = 0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

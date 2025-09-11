@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int) {
   1 <= n <= 100 && 1 <= m <= n && m <= 5
 }
@@ -14,6 +15,7 @@ function ExpectedTime(n: int, m: int): int
 {
   (1900 * m + 100 * (n - m)) * power(2, m)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

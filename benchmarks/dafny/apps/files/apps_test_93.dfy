@@ -1,3 +1,4 @@
+// <vc-preamble>
 function countNewlines(s: string): int
 {
     if |s| == 0 then 0
@@ -41,6 +42,7 @@ predicate CanReachSameConfig(input: string)
     exists rotation :: 0 <= rotation < 4 && 
         extractAndNormalizePuzzle1(input) == rotatePuzzleLeft(extractAndNormalizePuzzle2(input), rotation)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

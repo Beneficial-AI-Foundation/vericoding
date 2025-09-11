@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def find_missing (seq : List Int) : Int :=
   sorry
 
 def list_range_int (n : Nat) : List Int :=
   (List.range n).map Int.ofNat
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_arithmetic_seq (seq : List Int) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_missing_complete_sequence
   (start step : Int)
   (length : Nat)
@@ -53,6 +60,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_missing [1, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

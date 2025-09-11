@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sqrt (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def predict_age (ages : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem predict_age_non_negative (ages : List Nat) : 
   0 ≤ predict_age ages := sorry
 
@@ -21,6 +28,7 @@ theorem predict_age_zero :
 
 theorem predict_age_single (age : Nat) :
   predict_age [age] = age / 2 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

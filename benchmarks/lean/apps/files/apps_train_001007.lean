@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_crowds (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 theorem solve_crowds_nonnegative (n : Nat) :
   solve_crowds n ≥ 0 ∧ solve_crowds n < MOD :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_crowds_small_n (n : Nat) (h : n ≤ 2) :
   solve_crowds n = 0 :=
   sorry
@@ -43,6 +50,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_crowds 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

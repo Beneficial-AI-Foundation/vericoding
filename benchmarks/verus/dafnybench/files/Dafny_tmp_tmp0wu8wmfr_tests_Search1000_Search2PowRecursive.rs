@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn is_2_pow(n: int) -> bool
         n % 2 == 0 && is_2_pow(n / 2)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

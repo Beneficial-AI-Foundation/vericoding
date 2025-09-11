@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def days_until (date month year : Int) : Int :=
   sorry
 
@@ -8,13 +9,19 @@ def dateCompare (d1 m1 y1 d2 m2 y2 : Int) : Bool :=
   if y1 ≠ y2 then y1 > y2
   else if m1 ≠ m2 then m1 > m2
   else d1 > d2
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def dateDiffDays (d1 m1 y1 d2 m2 y2 : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem days_until_is_int {date month year : Int} 
   (h : isValidDate date month year = true) :
   ∃ n : Int, days_until date month year = n :=
@@ -61,6 +68,7 @@ info: 28
 -/
 -- #guard_msgs in
 -- #eval days_until 24 2 2437
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

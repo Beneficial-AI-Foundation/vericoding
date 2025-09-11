@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def k_length_apart (nums : List Nat) (k : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem k_distance_property {nums : List Nat} {k : Nat} 
   (h1 : ∀ x ∈ nums, x ≤ 1)
   (h2 : k > 0)
@@ -45,6 +53,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval k_length_apart [0, 1, 0, 1] 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

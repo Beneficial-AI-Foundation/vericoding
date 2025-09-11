@@ -1,3 +1,4 @@
+-- <vc-preamble>
 @[reducible, simp]
 def SlopeSearch_precond (a : Array (Array Int)) (key : Int) : Prop :=
   List.Pairwise (·.size = ·.size) a.toList ∧
@@ -9,16 +10,22 @@ def SlopeSearch_precond (a : Array (Array Int)) (key : Int) : Prop :=
       )
     )
   )
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 @[reducible, simp]
 def get2d (a : Array (Array Int)) (i j : Int) : Int :=
   (a[Int.toNat i]!)[Int.toNat j]!
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def SlopeSearch (a : Array (Array Int)) (key : Int) (h_precond : SlopeSearch_precond (a) (key)) : (Int × Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def SlopeSearch_postcond (a : Array (Array Int)) (key : Int) (result: (Int × Int)) (h_precond : SlopeSearch_precond (a) (key)) :=
   let (m, n) := result;
@@ -28,6 +35,7 @@ def SlopeSearch_postcond (a : Array (Array Int)) (key : Int) (result: (Int × In
 theorem SlopeSearch_spec_satisfied (a: Array (Array Int)) (key: Int) (h_precond : SlopeSearch_precond (a) (key)) :
     SlopeSearch_postcond (a) (key) (SlopeSearch (a) (key) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

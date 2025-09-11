@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_of_n (n : Int) : List Int := sorry
 
 theorem sum_of_n_length (n : Int) : (sum_of_n n).length = Int.natAbs n + 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_of_n_first_element (n : Int) : 
   (sum_of_n n).get! 0 = 0 := sorry
 
@@ -43,6 +51,7 @@ info: [0]
 -/
 -- #guard_msgs in
 -- #eval sum_of_n 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

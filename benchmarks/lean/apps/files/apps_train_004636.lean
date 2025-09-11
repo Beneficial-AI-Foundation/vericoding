@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def toString (n : Int) (d : Int) : String := sorry
 def toDecimal (n : Int) (d : Int) : Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def intToFloat (i : Int) : Float := sorry
 def stringToFloat (s : String) : Float := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sign_property (n d : Int) (h : d ≠ 0) :
   let s := toString n d
   (n * d < 0 → s.startsWith "-") ∧ 
@@ -52,6 +59,7 @@ theorem string_matches_value (n d : Int) (h : d ≠ 0) :
     else
       stringToFloat s
   toDecimal n d = (if s.startsWith "-" then -val else val) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_pins (pin : String) : List String := sorry
 
 def is_digit (c : Char) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pin_length_matches_input (pin : String) (h : ∀ c ∈ pin.data, is_digit c) :
   ∀ result ∈ get_pins pin, result.length = pin.length := sorry
 
@@ -36,6 +44,7 @@ info: set(['0', '8'])
 -/
 -- #guard_msgs in
 -- #eval set get_pins("0")
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

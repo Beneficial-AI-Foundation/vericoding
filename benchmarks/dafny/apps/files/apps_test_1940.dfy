@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, w: seq<int>)
 {
     k > 0 && n >= 0 && |w| == n && forall i :: 0 <= i < |w| ==> w[i] >= 0
@@ -11,6 +12,7 @@ function sum_trips(w: seq<int>, k: int): int
     if |w| == 0 then 0
     else (w[0] + k - 1) / k + sum_trips(w[1..], k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def String.hasSubstring (s1 s2 : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def areYouPlayingBanjo (name : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem banjo_output_format (name : String) (h : name.length > 0) :
   let result := areYouPlayingBanjo name
   result.startsWith name ∧
@@ -41,6 +48,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval areYouPlayingBanjo "rolf"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

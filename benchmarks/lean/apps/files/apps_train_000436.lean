@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_least_num_unique_ints (arr : List Int) (k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bounds (arr : List Int) (k : Nat) (h : arr ≠ []) :
   0 ≤ find_least_num_unique_ints arr k ∧ 
   find_least_num_unique_ints arr k ≤ arr.length := by
@@ -43,6 +51,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_least_num_unique_ints [2, 4, 1, 8, 3, 5, 1, 3] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

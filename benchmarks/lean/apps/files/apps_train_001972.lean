@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_processing_time (n k : Nat) (contrasts : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_processing_time_nonnegative {n k : Nat} {contrasts : List Nat} 
   (h : k ≤ n) (h2 : n = contrasts.length) :
   min_processing_time n k contrasts ≥ 0 :=
@@ -38,6 +46,7 @@ theorem min_processing_time_sort_invariant {n k : Nat} {contrasts : List Nat}
   (h5 : ∀ x, x ∈ contrasts ↔ x ∈ sorted_contrasts) :
   min_processing_time n k contrasts = min_processing_time n k sorted_contrasts :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverse_complement (s : String) : String := sorry
 
 theorem valid_dna_properties {dna : String}
@@ -18,7 +24,9 @@ theorem valid_dna_properties {dna : String}
     | 'C' => 'G' ∈ result.data
     | 'G' => 'C' ∈ result.data
     | _ => True) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_dna_result {dna : String}
   (h : ∃ c ∈ dna.data, c ≠ 'A' ∧ c ≠ 'T' ∧ c ≠ 'C' ∧ c ≠ 'G') :
   reverse_complement dna = "Invalid sequence" := sorry
@@ -57,6 +65,7 @@ info: 'Invalid sequence'
 -/
 -- #guard_msgs in
 -- #eval reverse_complement "XYZ"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

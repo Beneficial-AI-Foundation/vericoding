@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isPrefixPred(pre:string, str:string)
 {
     (|pre| <= |str|) && 
@@ -42,6 +43,7 @@ predicate haveNotCommonKSubstringPred(k:nat, str1:string, str2:string)
 {
     forall i1, j1 :: 0 <= i1 <= |str1|- k && j1 == i1 + k ==>  isNotSubstringPred(str1[i1..j1],str2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

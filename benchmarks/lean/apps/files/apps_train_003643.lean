@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverse (nums : List Int) : List Int := sorry
 
 theorem reverse_length_preservation {nums : List Int} :
   (List.length (reverse nums)) = (List.length nums) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_nonempty_preservation {nums : List Int} :
   nums ≠ [] → reverse nums ≠ [] := sorry
 
@@ -29,6 +37,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval reverse [83, 47, 28, 16, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

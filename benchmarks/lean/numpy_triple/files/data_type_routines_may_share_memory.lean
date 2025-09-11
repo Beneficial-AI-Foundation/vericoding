@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def may_share_memory {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem may_share_memory_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :
     ⦃⌜True⌝⦄
     may_share_memory a b
@@ -23,3 +30,4 @@ theorem may_share_memory_spec {n m : Nat} (a : Vector Float n) (b : Vector Float
       (n = m ∧ a.toList = b.toList → result = true ∨ result = false)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

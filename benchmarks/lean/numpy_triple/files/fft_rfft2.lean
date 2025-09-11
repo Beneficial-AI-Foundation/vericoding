@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -26,13 +27,19 @@ def cexp (θ : Float) : Complex :=
   { re := Float.cos θ, im := Float.sin θ }
 /-- Convert Float to Complex -/
 def Float.toComplex (x : Float) : Complex := { re := x, im := 0 }
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rfft2 {m n : Nat} (a : Vector (Vector Float (n + 1)) (m + 1)) : Id (Vector (Vector Complex (((n + 1) / 2) + 1)) (m + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rfft2_spec {m n : Nat} (a : Vector (Vector Float (n + 1)) (m + 1)) :
     ⦃⌜True⌝⦄
     rfft2 a
@@ -54,3 +61,4 @@ theorem rfft2_spec {m n : Nat} (a : Vector (Vector Float (n + 1)) (m + 1)) :
       -- Last axis is reduced size due to Hermitian symmetry
       (result.get ⟨0, by omega⟩).size = ((n + 1) / 2) + 1⌝⦄ := by
   sorry
+-- </vc-theorems>

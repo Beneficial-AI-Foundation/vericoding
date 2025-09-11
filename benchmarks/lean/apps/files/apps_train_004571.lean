@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def List.Sorted {α : Type} (r : α → α → Prop) (l : List α) : Prop :=
   ∀ i j, i < j → j < l.length → r (l.get ⟨i, sorry⟩) (l.get ⟨j, sorry⟩)
 
 structure Result where
   i : Nat
   n : Int
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def all_non_consecutive (arr : List Int) : List Result :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem consecutive_not_in_result (arr : List Int) (h : arr.length ≥ 2) :
   ∀ i, i < arr.length - 1 →
   arr.get ⟨i+1, sorry⟩ = arr.get ⟨i, sorry⟩ + 1 →
@@ -51,6 +58,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval all_non_consecutive [-3, -2, -1, 1, 2, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

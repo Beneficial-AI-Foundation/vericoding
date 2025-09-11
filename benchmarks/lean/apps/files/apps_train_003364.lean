@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def odd_ones_out (xs : List Int) : List Int := sorry
 
 theorem odd_ones_out_preserves_pairs {xs : List Int} (h : xs ≠ []) :
   odd_ones_out xs = xs.filter (fun x => (xs.count x) % 2 = 0) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_ones_out_elements_from_input {xs : List Int} (h : xs ≠ []) :
   ∀ x ∈ odd_ones_out xs, x ∈ xs := sorry 
 
@@ -32,6 +40,7 @@ info: [100, 100, 100, 100]
 -/
 -- #guard_msgs in
 -- #eval odd_ones_out [100, 100, 5, 5, 100, 50, 68, 50, 68, 50, 68, 5, 100]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

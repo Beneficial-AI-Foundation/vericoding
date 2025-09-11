@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_cumsum {n : Nat} (a : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_cumsum_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_cumsum a
@@ -21,3 +28,4 @@ theorem numpy_cumsum_spec {n : Nat} (a : Vector Float n) :
       (∀ i : Fin n, result.get i = List.sum ((List.range (i.val + 1)).map (fun j => a.get ⟨j, sorry⟩)))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

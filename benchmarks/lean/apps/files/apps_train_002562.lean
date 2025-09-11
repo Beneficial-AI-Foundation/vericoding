@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def LRShoe := Nat × Nat  -- (left/right, size)
 
 def pair_of_shoes (shoes : List LRShoe) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pair_of_shoes_valid (shoes : List LRShoe) :
   (∀ s ∈ shoes, s.1 ≤ 1) →
   ∀ result, result = pair_of_shoes shoes → result = true ∨ result = false
@@ -39,6 +47,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval pair_of_shoes [[0, 23], [1, 21], [1, 23], [0, 21], [1, 22], [0, 22]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
   requires |input| > 0
 {
@@ -70,6 +71,7 @@ predicate LexLessOrEqual(a: string, b: string)
 {
   LexLess(a, b) || a == b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

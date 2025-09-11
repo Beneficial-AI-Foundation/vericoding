@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def abs (x : Int) : Int := if x < 0 then -x else x
 
 def min_moves_to_cheese (n : Int) (sx sy ex ey blockx blocky : Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_moves_manhattan_lower_bound 
   (n : Int) (sx sy ex ey blockx blocky : Int)
   (h1 : n ≥ 2) (h2 : sx ≥ 1) (h3 : sy ≥ 1) (h4 : ex ≥ 1) (h5 : ey ≥ 1) 
@@ -55,6 +63,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval min_moves_to_cheese 4 1 1 4 1 2 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

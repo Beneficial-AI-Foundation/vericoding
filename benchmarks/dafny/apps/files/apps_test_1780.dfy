@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate ValidInput(input: string)
 {
     var lines := splitLines(input);
@@ -56,6 +57,7 @@ predicate endsWithNewlineIfNonEmpty(s: string)
 {
     |s| == 0 || (|s| > 0 && s[|s|-1] == '\n')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

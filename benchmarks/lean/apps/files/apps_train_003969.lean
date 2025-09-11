@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Movement := List (Int × Nat × Nat)
 
 def solomonsQuest (moves : Movement) : Int × Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solomons_quest_outputs_pair (moves : Movement) :
   ∃ x y : Int, solomonsQuest moves = (x, y) := sorry
 
@@ -29,6 +37,7 @@ info: [-600, -244]
 -/
 -- #guard_msgs in
 -- #eval solomons_quest [[1, 1, 20], [1, 2, 30], [1, 3, 8], [1, 0, 2], [1, 1, 6], [1, 2, 4], [1, 3, 6], [-7, 0, 100]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

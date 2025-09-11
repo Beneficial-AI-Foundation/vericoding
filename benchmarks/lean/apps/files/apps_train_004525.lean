@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def weather_info (temp : Float) : String := sorry
 
 def celsius_conversion (f : Float) : Float := (f - 32) * (5/9)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem weather_info_returns_string (temp : Float) :
   ∃ s, weather_info temp = s := sorry
 
@@ -45,6 +53,7 @@ info: '0.0 is freezing temperature'
 -/
 -- #guard_msgs in
 -- #eval weather_info 32
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

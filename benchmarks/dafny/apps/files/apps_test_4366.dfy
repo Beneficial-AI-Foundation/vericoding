@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     exists A, B :: 0 <= A <= 23 && 0 <= B <= 23 && 
@@ -20,6 +21,7 @@ predicate CorrectOutput(input: string, result: string)
      input == IntToString(A) + " " + IntToString(B)) &&
     result == IntToString(ContestStartTime(A, B)) + "\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

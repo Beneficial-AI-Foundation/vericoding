@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MODULO : Nat := 1000000007
 
 def solve_magical_power (s : String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_format (s : String) : 
   let result := solve_magical_power s
   result = -1 ∨ result ≥ 0 :=
@@ -48,6 +56,7 @@ info: 256
 -/
 -- #guard_msgs in
 -- #eval solve_magical_power "256"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

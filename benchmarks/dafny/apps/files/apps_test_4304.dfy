@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
   a >= 1 && b > a && b < 499500
@@ -16,6 +17,7 @@ function SnowDepthFormula(a: int, b: int): int
 {
   ((b - a) * (b - a) - (a + b)) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

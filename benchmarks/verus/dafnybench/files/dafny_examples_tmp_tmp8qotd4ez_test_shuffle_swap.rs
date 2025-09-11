@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn set_of_seq<T>(s: Seq<T>) -> Set<T> {
     Set::new(|x: T| s.contains(x))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def has_alternating_bits (n : Nat) : Bool := sorry
 
 def binary_to_list (n : Nat) : List Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem alternating_bits_adjacent_different (n : Nat) :
   has_alternating_bits n = true →
   ∀ bits, bits = binary_to_list n →
@@ -44,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval has_alternating_bits 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermevander3d {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 3) : 
     Id (Vector (Vector Float ((deg.get ⟨0, by simp⟩ + 1) * (deg.get ⟨1, by simp⟩ + 1) * (deg.get ⟨2, by simp⟩ + 1))) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermevander3d_spec {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 3) :
     ⦃⌜True⌝⦄
     hermevander3d x y z deg
@@ -72,3 +79,4 @@ theorem hermevander3d_spec {n : Nat} (x y z : Vector Float n) (deg : Vector Nat 
             hermite_poly i (x.get p) * hermite_poly j (y.get p) * hermite_poly k (z.get p)))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

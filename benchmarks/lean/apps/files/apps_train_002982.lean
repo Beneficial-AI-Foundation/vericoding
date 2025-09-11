@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def people_with_age_drink (age : Int) : String := sorry
 
 theorem kids_drink_toddy
   {age : Int}
   (h : age ≤ 13) :
   people_with_age_drink age = "drink toddy" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem teens_drink_coke
   {age : Int}
   (h1 : age ≥ 14)
@@ -54,6 +62,7 @@ info: 'drink whisky'
 -/
 -- #guard_msgs in
 -- #eval people_with_age_drink 21
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

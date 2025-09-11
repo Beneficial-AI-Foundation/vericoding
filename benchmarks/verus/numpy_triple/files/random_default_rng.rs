@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -15,6 +16,7 @@ struct Generator {
 
     initialized: bool,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bucket_of (s : String) : String := sorry
 
 theorem bucket_always_returns_valid_value (s : String) :
   bucket_of s = "water" ∨ bucket_of s = "slime" ∨ bucket_of s = "sludge" ∨ bucket_of s = "air" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem water_patterns_are_water (water_word : String) : 
   (water_word = "water" ∨ water_word = "wet" ∨ water_word = "wash") →
   bucket_of water_word = "water" ∧ bucket_of water_word.toUpper = "water" := sorry
@@ -44,6 +52,7 @@ info: 'air'
 -/
 -- #guard_msgs in
 -- #eval bucket_of "just saying something"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

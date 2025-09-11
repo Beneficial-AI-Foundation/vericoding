@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_snuffles_array (n d : Nat) (arr : List Int) : Int :=
   sorry
 
 def verify_solution (n d: Nat) (arr : List Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (xs : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem snuffles_array_properties {n d : Nat} {arr : List Int}
   (h1 : n > 0)
   (h2 : d > 0) 
@@ -47,6 +54,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_snuffles_array 4 2 [3, 4, 3, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

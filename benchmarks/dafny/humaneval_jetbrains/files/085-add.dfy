@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sumc(s: seq<int>, p: seq<bool>) : int
     requires |s| == |p|
     {
@@ -8,6 +9,7 @@ function add_conditon(lst: seq<int>) : (p : seq<bool>)
     {
         seq(|lst|, i requires 0 <= i < |lst| => i % 2 == 1 && lst[i] % 2 == 0)
     }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

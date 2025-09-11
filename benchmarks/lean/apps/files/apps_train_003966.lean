@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def greatest_distance (lst: List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem greatest_distance_nonnegative (lst: List Int) : 
   greatest_distance lst ≥ 0 :=
 sorry
@@ -40,6 +48,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval greatest_distance [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

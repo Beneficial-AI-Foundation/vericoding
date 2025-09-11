@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def sum_list : List Nat → Nat 
   | [] => 0
   | (x::xs) => x + sum_list xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_robot_energy (n : Nat) (l r ql qr : Nat) (weights : List Nat) : Nat :=
   sorry
 
 -- Result should be non-negative and within bounds
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_robot_energy_bounds (n : Nat) (l r ql qr : Nat) (weights : List Nat)
     (h1 : n > 0) (h2 : l > 0) (h3 : r > 0) (h4 : weights.length = n) :
     let result := min_robot_energy n l r ql qr weights
@@ -50,6 +57,7 @@ info: 20000
 -/
 -- #guard_msgs in
 -- #eval min_robot_energy 2 100 100 10000 10000 [100, 100]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

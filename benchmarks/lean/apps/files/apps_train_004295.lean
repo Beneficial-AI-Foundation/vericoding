@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def consonant_count (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem consonant_count_nonnegative (s : String) :
   consonant_count s ≥ 0 :=
 sorry
@@ -38,6 +46,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval consonant_count "helLo world"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

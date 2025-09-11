@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isValidTree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maxHappiness (n k : Nat) (edges : List (Nat × Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxHappiness_valid_tree (n : Nat) (k : Nat) 
   (edges : List (Nat × Nat)) :
   isValidTree n edges → True :=
@@ -41,6 +48,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval max_happiness 8 5 [(7, 5), (1, 7), (6, 1), (3, 7), (8, 3), (2, 1), (4, 5)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

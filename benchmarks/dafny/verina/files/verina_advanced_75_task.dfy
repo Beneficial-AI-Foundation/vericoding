@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SpecSubarraySum(sequence: seq<int>, start: int, end: int): int
     decreases end - start
 {
@@ -8,6 +9,7 @@ function SpecSubarraySum(sequence: seq<int>, start: int, end: int): int
     else
         sequence[start] + SpecSubarraySum(sequence, start + 1, end)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

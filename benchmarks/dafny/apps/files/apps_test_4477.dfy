@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsBoringApartment(x: int)
 {
     (x >= 1 && x <= 9) ||
@@ -41,6 +42,7 @@ function TotalDigitsPressed(x: int): int
 
     prevDigits + currentDigits
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

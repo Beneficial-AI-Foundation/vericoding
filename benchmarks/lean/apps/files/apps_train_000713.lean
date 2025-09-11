@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def List.padRight (default : α) (n : Nat) (xs : List α) : List α :=
   sorry
 
 def find_weird_distance (n : Nat) (alice_speeds : List Nat) (bob_speeds : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def running_sum_equal (alice_speeds bob_speeds : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_speeds_sum_to_length
   (n : Nat)
   (h1 : n > 0)
@@ -33,6 +40,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval find_weird_distance 2 [3, 3] [3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

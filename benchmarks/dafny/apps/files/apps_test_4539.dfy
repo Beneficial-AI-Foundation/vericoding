@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sumOfDigits(n: int): int
   requires n >= 0
   ensures n > 0 ==> sumOfDigits(n) > 0
@@ -17,6 +18,7 @@ predicate IsDivisibleByDigitSum(N: int)
 {
   N % sumOfDigits(N) == 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

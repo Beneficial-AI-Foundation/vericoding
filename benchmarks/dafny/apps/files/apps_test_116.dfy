@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(l1: int, r1: int, l2: int, r2: int, k: int) {
     l1 <= r1 && l2 <= r2
 }
@@ -29,6 +30,7 @@ function ExpectedResult(l1: int, r1: int, l2: int, r2: int, k: int): int {
     else
         intersection_size
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

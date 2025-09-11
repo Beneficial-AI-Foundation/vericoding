@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_three_block_palindrome (n : Nat) (arr : List Nat) : Nat := sorry
 
 theorem output_bounded_by_input_length 
@@ -8,7 +14,9 @@ theorem output_bounded_by_input_length
   (h4 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 10) :
   let result := find_max_three_block_palindrome n arr
   1 ≤ result ∧ result ≤ n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_length_at_least_max_count
   (n : Nat) (arr : List Nat) (h1 : 1 ≤ n) (h2 : n ≤ 100) (h3 : arr.length = n)
   (h4 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 10) :
@@ -38,6 +46,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_max_three_block_palindrome 3 [1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

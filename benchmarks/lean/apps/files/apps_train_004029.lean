@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def difference_of_squares (n : Nat) : Nat :=
   sorry
 
 def sum_up_to (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_squares_up_to (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem difference_non_negative {n : Nat} : 
   difference_of_squares n ≥ 0 := 
   sorry
@@ -39,6 +46,7 @@ info: 25164150
 -/
 -- #guard_msgs in
 -- #eval difference_of_squares 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

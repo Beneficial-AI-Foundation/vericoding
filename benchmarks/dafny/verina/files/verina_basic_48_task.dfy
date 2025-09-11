@@ -1,7 +1,9 @@
+// <vc-preamble>
 ghost predicate IsPerfectSquare(n: nat)
 {
     exists i: nat :: i * i == n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

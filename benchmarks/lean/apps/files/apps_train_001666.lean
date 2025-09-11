@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def shallowest_path (river : List (List Int)) : List (Int × Int) := sorry
 
 def abs (n : Int) : Int := 
@@ -11,7 +17,9 @@ def abs (n : Int) : Int :=
 -- 2. Path ends at last column  
 -- 3. Path is contiguous with only adjacent moves allowed
 -- 4. All coordinates are valid
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem path_properties {river : List (List Int)} (h : river.length > 0) (h2 : ∀ (row : List Int), row ∈ river → row.length = (List.head! river).length) :
   let path := shallowest_path river
   -- Path starts at first column
@@ -62,6 +70,7 @@ info: [(0, 0)]
 -/
 -- #guard_msgs in
 -- #eval shallowest_path [[1], [2], [3]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
     chebadd c1 c2
@@ -30,3 +37,4 @@ theorem chebadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
         (if h1 : i.val < n then result.get j = c1.get ⟨i.val, h1⟩ + c2.get i else result.get j = c2.get i))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

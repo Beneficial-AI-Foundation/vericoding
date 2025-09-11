@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def collatz_steps (n : Nat) (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_steps (n : Nat) (len : Nat) : String := 
   sorry
 
 /- Base case properties -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem collatz_steps_D : collatz_steps 1 "D" = 2 := sorry
 theorem collatz_steps_U : collatz_steps 1 "U" = 1 := sorry
 
@@ -26,6 +33,7 @@ theorem collatz_steps_minimal {n : Nat} {s : String} (h : n > 0) (h2 : collatz_s
 
 theorem get_steps_matches {n : Nat} {s : String} (h : n > 0) :
   (get_steps (collatz_steps n s) (String.length s)).startsWith s := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

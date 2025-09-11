@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidDay(day: string) {
     day in ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
 }
@@ -14,6 +15,7 @@ function DaysUntilSunday(day: string): int
     case "FRI" => 2
     case "SAT" => 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

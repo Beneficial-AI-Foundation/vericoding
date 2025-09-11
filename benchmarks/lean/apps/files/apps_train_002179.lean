@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def gcd (a b : Nat) : Nat := sorry
 
 theorem gcd_positive (a b : Nat) : a > 0 → b > 0 → gcd a b > 0 := sorry
@@ -6,15 +7,21 @@ def checkNumbersFriends (a b : Nat) : Bool := sorry
 
 theorem not_self_friends (a : Nat) : a > 0 → 
   checkNumbersFriends a a = false := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countLonelyNumbers (n : Nat) : Nat := sorry
 
 theorem lonely_numbers_bounds (n : Nat) : n > 0 →
   countLonelyNumbers n ≤ n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gcd_divides (a b : Nat) : a > 0 → b > 0 → 
   a % (gcd a b) = 0 ∧ b % (gcd a b) = 0 := sorry 
 
@@ -54,6 +61,7 @@ info: [3, 7]
 -/
 -- #guard_msgs in
 -- #eval solve_test_cases [10, 20]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

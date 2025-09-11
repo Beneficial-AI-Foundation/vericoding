@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def List.update_inventory (cur_stock: List (Nat × String)) (new_stock: List (Nat × String)) : List (Nat × String) := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem update_inventory_sorted (cur_stock new_stock: List (Nat × String)) :
   let result := List.update_inventory cur_stock new_stock
   ∀ i j, i < j → j < result.length → (result.get ⟨i, by sorry⟩).2 ≤ (result.get ⟨j, by sorry⟩).2 := 
@@ -47,6 +55,7 @@ info: [(25, 'HTC'), (5, 'LG'), (1000, 'Nokia'), (54, 'Samsung')]
 -/
 -- #guard_msgs in
 -- #eval update_inventory [(25, "HTC"), (1000, "Nokia"), (50, "Samsung")] [(5, "LG"), (4, "Samsung")]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

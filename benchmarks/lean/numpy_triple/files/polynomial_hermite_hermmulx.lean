@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermmulx {n : Nat} (c : Vector Float n) : Id (Vector Float (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermmulx_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
     hermmulx c
@@ -26,3 +33,4 @@ theorem hermmulx_spec {n : Nat} (c : Vector Float n) :
           (if h2 : k.val + 1 < n then c.get ⟨k.val + 1, sorry⟩ * Float.ofNat (k.val + 1) else 0)⌝
     ⦄ := by
   sorry
+-- </vc-theorems>

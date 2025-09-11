@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def factorial_lookup (nums : List String) : List String := sorry
 
 def String.toNat (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem factorial_lookup_length (nums : List String) (h : nums.length > 0) :
   (factorial_lookup nums).length = nums.length - 1 := sorry
 
@@ -43,6 +51,7 @@ info: ['120']
 -/
 -- #guard_msgs in
 -- #eval factorial_lookup ["1", "5"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

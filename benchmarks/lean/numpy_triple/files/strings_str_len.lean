@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def str_len {n : Nat} (a : Vector String n) : Id (Vector Nat n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem str_len_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     str_len a
@@ -29,3 +36,4 @@ theorem str_len_spec {n : Nat} (a : Vector String n) :
       (∀ s1 s2 : String, a.get i = s1 ++ s2 → 
         result.get i = s1.length + s2.length)⌝⦄ := by
   sorry
+-- </vc-theorems>

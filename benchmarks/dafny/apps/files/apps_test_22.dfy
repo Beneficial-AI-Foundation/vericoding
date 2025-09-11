@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate is_s_palindrome(s: string)
 {
     var pal := "AHIMOoTUVvWwXxY";
@@ -10,6 +11,7 @@ predicate is_s_palindrome(s: string)
             else (s[i] == 'p' && s[j] == 'q') || (s[i] == 'q' && s[j] == 'p') ||
                  (s[i] == 'b' && s[j] == 'd') || (s[i] == 'd' && s[j] == 'b')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

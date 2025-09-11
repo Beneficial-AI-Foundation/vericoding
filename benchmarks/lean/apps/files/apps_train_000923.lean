@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Building := Int × Int × Int × Int
 
 def av (buildings : List Building) : Int :=
@@ -5,13 +6,19 @@ def av (buildings : List Building) : Int :=
 
 def val (buildings : List Building) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def diff (l1 l2 : List Building) : List Building :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem av_nonnegative (buildings : List Building) :
   av buildings ≥ 0 := sorry
 
@@ -26,6 +33,7 @@ theorem val_sum_third (buildings : List Building) :
 
 theorem diff_properties (l1 l2 : List Building) :
   ∀ x ∈ diff l1 l2, x ∈ l1 ∧ x ∉ l2 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

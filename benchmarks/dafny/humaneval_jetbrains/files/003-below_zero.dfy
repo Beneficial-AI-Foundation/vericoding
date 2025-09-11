@@ -1,8 +1,10 @@
+// <vc-preamble>
 function psum(s: seq<int>): int
 {
     if |s| == 0 then 0
     else psum(s[..(|s|)-1]) + s[ |s| - 1 ]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

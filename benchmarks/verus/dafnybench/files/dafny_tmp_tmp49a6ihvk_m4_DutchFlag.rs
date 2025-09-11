@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -12,6 +13,7 @@ enum Color {
 spec fn below(c: Color, d: Color) -> bool {
     c == Color::Red || c == d || d == Color::Blue
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

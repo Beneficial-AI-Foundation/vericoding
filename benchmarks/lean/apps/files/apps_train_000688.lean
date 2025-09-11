@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def find_mountain_secret (n : Nat) (edges : List (Nat × Nat)) : String := sorry
 
 def parseNums (s : String) : List Nat :=
   (s.split (· = ' ')).filterMap String.toNat?
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Nat) : Bool := 
   match l with
   | [] => true
   | [_] => true
   | x :: y :: rest => x ≤ y && isSorted (y :: rest)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mountain_secret_produces_unique_nums {n : Nat} {edges : List (Nat × Nat)}
     (h1 : n ≥ 2)
     (h2 : edges.length > 0) 
@@ -61,6 +68,7 @@ info: '1 2 3'
 -/
 -- #guard_msgs in
 -- #eval find_mountain_secret 3 [(1, 2), (1, 3)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

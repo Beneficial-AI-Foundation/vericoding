@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsValidString(s: string)
 {
     |s| > 0
@@ -75,6 +76,7 @@ function min(a: int, b: int): int
 {
     if a < b then a else b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

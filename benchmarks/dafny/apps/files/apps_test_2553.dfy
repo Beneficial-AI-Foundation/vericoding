@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && input[|input|-1] == '\n' &&
@@ -103,6 +104,7 @@ function GetLine(s: string, line_index: nat): string
 {
     if line_index == 0 then "No" else ""
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

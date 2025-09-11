@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def sum (l : List Nat) : Nat := sorry
 def listMax (l : List Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def findMinMoves (machines : List Nat) : Int := sorry 
 
 theorem find_min_moves_non_negative 
   {machines : List Nat}
   (h : findMinMoves machines ≠ -1) :
   findMinMoves machines ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_moves_preserves_sum
   {machines : List Nat}
   (h : findMinMoves machines ≠ -1) :
@@ -44,6 +51,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval find_min_moves [0, 2, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def factorial (n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_factorials (nums : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list_factorial :
   calculate_factorials [] = [] :=
 sorry
@@ -18,6 +25,7 @@ sorry
 theorem factorial_one :
   calculate_factorials [1] = [1] :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

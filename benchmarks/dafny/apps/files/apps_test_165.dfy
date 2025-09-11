@@ -1,3 +1,4 @@
+// <vc-preamble>
 function Max3(a: int, b: int, c: int): int
 {
     if a >= b && a >= c then a
@@ -24,6 +25,7 @@ predicate ValidInput(input: string)
 {
     |input| > 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

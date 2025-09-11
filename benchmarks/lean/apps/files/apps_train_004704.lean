@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def square (x : Int) : Int := sorry
 
 theorem square_nonnegative (x : Int) : square x ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem square_is_multiplication (x : Int) : square x = x * x := sorry
 
 theorem square_symmetric (x : Int) : square (-x) = square x := sorry
@@ -28,6 +36,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval square -3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

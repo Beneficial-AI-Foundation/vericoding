@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ParseInputLines(input: string): seq<string>
 {
     SplitByNewlineSimple(input, 0, [])
@@ -53,6 +54,7 @@ predicate CanMakeUniformSquare(lines: seq<string>)
         (var blackCount := CountBlackInSquare(lines, i, j);
          blackCount >= 3 || blackCount <= 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

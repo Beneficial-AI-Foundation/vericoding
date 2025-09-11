@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_permutation (n k : Nat) : List Nat := sorry
 
 def count_differences (arr : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_perm_length (n k : Nat) (h1 : n ≥ 2) (h2 : k ≥ 1) (h3 : k ≤ n-1) :
   List.length (find_permutation n k) = n := sorry
 
@@ -38,6 +46,7 @@ info: [1, 3, 2, 4, 5]
 -/
 -- #guard_msgs in
 -- #eval find_permutation 5 2
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

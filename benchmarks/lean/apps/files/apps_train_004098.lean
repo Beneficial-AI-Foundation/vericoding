@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def body_count (s : String) : Bool := sorry
 
 /- Any string matching the pattern [A-Z][0-9] repeated 5 times, followed by
     .-[A-Z]%[0-9].[0-9][0-9]. should return true -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_code_returns_true {code : String} 
   (h : ∃ (a₁ a₂ a₃ a₄ a₅ : Char) (n₁ n₂ n₃ n₄ n₅ : Nat) (last_letter : Char) 
         (last_num dec₁ dec₂ : Nat),
@@ -69,6 +77,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval body_count "b4A1D1I8B4.-E%8.76."
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def smash (words : List String) : String := sorry
 
 theorem smash_is_string (words : List String) :
   smash words = smash words := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem smash_length (words : List String) :
   String.length (smash words) = 
     List.foldl (· + ·) 0 (List.map String.length words) + 
@@ -31,6 +39,7 @@ info: 'hello amazing world'
 -/
 -- #guard_msgs in
 -- #eval smash ["hello", "amazing", "world"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

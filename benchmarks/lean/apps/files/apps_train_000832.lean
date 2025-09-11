@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_sequence (n : Nat) (arr : List Int) : String := sorry
 
 theorem check_sequence_returns_valid_output (n : Nat) (arr : List Int) :
   n > 0 → arr.length > 0 →
   (check_sequence n arr = "prekrasnyy" ∨ check_sequence n arr = "ne krasivo") :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_sequence_prekrasnyy_implies_unique (n : Nat) (arr : List Int) :
   n > 0 → arr.length > 0 →
   check_sequence n arr = "prekrasnyy" →
@@ -49,6 +57,7 @@ info: 'prekrasnyy'
 -/
 -- #guard_msgs in
 -- #eval check_sequence 1 [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

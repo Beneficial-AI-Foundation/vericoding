@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def candies_to_buy (n : Nat) : Nat := sorry
 
 theorem candies_to_buy_properties (n : Nat) (h : n > 0 ∧ n ≤ 20) : 
@@ -11,7 +17,9 @@ theorem candies_to_buy_properties (n : Nat) (h : n > 0 ∧ n ≤ 20) :
   (∀ i, 1 ≤ i ∧ i ≤ n → result % i = 0) ∧
   -- Result is positive
   result > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem candies_to_buy_minimum : candies_to_buy 1 = 1 := sorry
 
 /-
@@ -31,6 +39,7 @@ info: 60
 -/
 -- #guard_msgs in
 -- #eval candies_to_buy 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

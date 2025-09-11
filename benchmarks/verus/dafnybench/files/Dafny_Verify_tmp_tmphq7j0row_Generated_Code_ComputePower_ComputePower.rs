@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -7,6 +8,7 @@ spec fn power(n: nat) -> nat
 {
     if n == 0 { 1 } else { 2 * power((n - 1) as nat) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

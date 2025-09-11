@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve (arr : List Int) : Int := sorry
 
 def getUnique (arr : List Int) : List Int :=
@@ -10,13 +11,19 @@ def sumList (l : List Int) : Int :=
 
 def filterPositive (l : List Int) : List Int :=
   l.filter (fun x => x > 0)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def filterNegative (l : List Int) : List Int :=
   l.filter (fun x => x < 0)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_invariant_under_duplication : ∀ (arr : List Int),
   arr ≠ [] → solve (arr ++ arr) = solve arr := sorry
 
@@ -43,6 +50,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve [1, -1, 2, -2, 3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

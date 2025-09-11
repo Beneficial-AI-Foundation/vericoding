@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, requests: seq<int>)
 {
     n >= 1 && k >= 1 && |requests| == n &&
@@ -8,6 +9,7 @@ predicate ValidSolution(n: int, k: int, requests: seq<int>, cost: int)
 {
     ValidInput(n, k, requests) && cost >= 0 && cost <= n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

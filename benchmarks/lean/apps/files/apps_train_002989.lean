@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def int_to_word (n : Nat) : String := sorry
 
 def sort_by_name (arr : List Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_by_name_length (arr : List Nat) :
   (sort_by_name arr).length = arr.length := sorry
 
@@ -31,6 +39,7 @@ info: [8, 8, 9, 9, 10, 10]
 -/
 -- #guard_msgs in
 -- #eval sort_by_name [8, 8, 9, 9, 10, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

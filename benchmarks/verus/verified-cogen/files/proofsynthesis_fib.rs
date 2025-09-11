@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -12,6 +13,7 @@ spec fn fibo(n: int) -> (result:nat)
 spec fn fibo_fits_i32(n: int) -> (result:bool) {
     fibo(n) < 0x8000_0000
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

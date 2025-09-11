@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int, mobs: seq<int>)
 {
     n >= 0 && a > 0 && b > 0 && |mobs| == n &&
@@ -21,6 +22,7 @@ predicate CorrectResult(result: seq<string>, n: int, a: int, b: int, mobs: seq<i
         (result[i] == "Vova" <==> determineWinner(k, a, b) == 1) &&
         (result[i] == "Both" <==> determineWinner(k, a, b) == 2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isValidPlacement(rooms: string, k: int, placement: seq<int>)
 {
     |placement| == k + 1 &&
@@ -6,6 +7,7 @@ predicate isValidPlacement(rooms: string, k: int, placement: seq<int>)
     (forall i, j :: 0 <= i < j < |placement| ==> placement[i] != placement[j]) &&
     (forall i :: 0 <= i < |placement| - 1 ==> placement[i] < placement[i+1])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

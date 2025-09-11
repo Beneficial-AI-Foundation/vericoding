@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (planet1: String) (planet2: String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: String → String → List String)
@@ -39,6 +46,7 @@ theorem correctness
 (planet2: String)
 : problem_spec implementation planet1 planet2 := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "Jupiter" "Neptune" = ["Saturn", "Uranus"]
 -- #test implementation "Earth" "Mercury" = ["Venus"]

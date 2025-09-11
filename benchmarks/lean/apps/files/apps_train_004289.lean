@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def permutation_average (n : Int) : Int := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def permutation_average_str (s : String) : Int := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem permutation_average_returns_integer (n : Int) 
   (h : 0 ≤ n ∧ n ≤ 999) : 
   ∃ i : Int, permutation_average n = i := by
@@ -44,6 +51,7 @@ info: 629
 -/
 -- #guard_msgs in
 -- #eval permutation_average 737
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_game (n k : Nat) (arr : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_game_output_bounds {n k : Nat} {arr : List Nat}
   (h1: n > 0)
   (h2: k > 0)
@@ -30,6 +38,7 @@ theorem solve_game_permutation_invariant {n k : Nat} {arr1 arr2 : List Nat}
   (h6: List.Perm arr1 arr2) :
   solve_game n k arr1 = solve_game n k arr2 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

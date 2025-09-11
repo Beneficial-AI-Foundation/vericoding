@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def splitByValue (k : Int) (elements : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem preserves_elements (k : Int) (elements : List Int) :
   let result := splitByValue k elements
   result.length = elements.length ∧
@@ -40,6 +48,7 @@ info: [3, 2, 8, 3, 2, 1]
 -/
 -- #guard_msgs in
 -- #eval split_by_value 1 [3, 2, 8, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

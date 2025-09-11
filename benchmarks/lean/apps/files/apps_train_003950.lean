@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def uni_total (s : String) : Nat := sorry
 
 theorem uni_total_empty : uni_total "" = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uni_total_single_char (c : Char) : 
   uni_total (String.mk [c]) = c.toNat := sorry
 
@@ -35,6 +43,7 @@ info: 2001
 -/
 -- #guard_msgs in
 -- #eval uni_total "Mary had a little lamb"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

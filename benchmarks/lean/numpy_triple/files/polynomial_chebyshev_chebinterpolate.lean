@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebinterpolate (deg : Nat) (func : Float → Float) : Id (Vector Float (deg + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebinterpolate_spec (deg : Nat) (func : Float → Float) :
     ⦃⌜True⌝⦄
     chebinterpolate deg func
@@ -29,3 +36,4 @@ theorem chebinterpolate_spec (deg : Nat) (func : Float → Float) :
                   ∃ interpolated_value : Float,
                     Float.abs (interpolated_value - func (cheb_points.get k)) < 1e-10⌝⦄ := by
   sorry
+-- </vc-theorems>

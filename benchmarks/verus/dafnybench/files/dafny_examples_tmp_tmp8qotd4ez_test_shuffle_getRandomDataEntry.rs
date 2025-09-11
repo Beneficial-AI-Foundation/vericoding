@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -12,6 +13,7 @@ fn random(a: int, b: int) -> (r: int)
 spec fn set_of_seq<T>(s: Seq<T>) -> Set<T> {
     s.to_set()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

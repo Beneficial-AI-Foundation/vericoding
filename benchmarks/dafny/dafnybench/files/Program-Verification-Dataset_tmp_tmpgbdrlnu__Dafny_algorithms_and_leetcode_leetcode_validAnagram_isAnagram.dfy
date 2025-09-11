@@ -1,3 +1,4 @@
+// <vc-preamble>
 method toMultiset(s: string) returns (mset: multiset<char>)
     ensures multiset(s) == mset
 {
@@ -9,6 +10,7 @@ method msetEqual(s: multiset<char>, t: multiset<char>) returns (equal: bool)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

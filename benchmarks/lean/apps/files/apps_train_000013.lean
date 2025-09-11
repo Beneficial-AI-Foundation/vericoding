@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_min_days (n g b : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_at_least_n {n g b : Nat} (hn : n > 0) (hg : g > 0) (hb : b > 0) :
   calc_min_days n g b ≥ n := 
   sorry
@@ -37,6 +45,7 @@ info: 499999500000
 -/
 -- #guard_msgs in
 -- #eval calc_min_days 1000000 1 1000000
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

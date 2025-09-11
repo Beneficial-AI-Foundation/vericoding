@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidPostalCode(A: int, B: int, S: string)
     requires A >= 1 && B >= 1 && A <= 5 && B <= 5
     requires |S| == A + B + 1
@@ -5,6 +6,7 @@ predicate ValidPostalCode(A: int, B: int, S: string)
 {
     S[A] == '-' && forall i :: 0 <= i < |S| && i != A ==> S[i] != '-'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

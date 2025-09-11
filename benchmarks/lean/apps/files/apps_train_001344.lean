@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_cheat_possibilities (a b : Nat) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countDivisors (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem same_numbers_returns_negative_one 
   {x : Nat} (h : x > 0) (h2 : x ≤ 1000) :
   solve_cheat_possibilities x x = -1 := 
@@ -44,6 +51,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_cheat_possibilities 10 14
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

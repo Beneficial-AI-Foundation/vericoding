@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int)
 {
     1 <= n <= 10000 && 0 <= a <= 1000
@@ -12,6 +13,7 @@ predicate ValidOutput(result: string)
 {
     result == "Yes" || result == "No"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

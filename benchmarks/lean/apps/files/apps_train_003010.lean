@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def twos_difference (lst : List Int) : List (Int × Int) := sorry
 
 theorem twos_difference_ordered (lst : List Int) :
   let result := twos_difference lst
   ∀ i j, i < j → i < (result.length) → j < (result.length) → 
     (result[i]!.1 < result[j]!.1 ∨ (result[i]!.1 = result[j]!.1 ∧ result[i]!.2 ≤ result[j]!.2)) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem twos_difference_pairs (lst : List Int) :
   let result := twos_difference lst
   ∀ p ∈ result, p.2 - p.1 = 2 := sorry
@@ -41,6 +49,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval twos_difference []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function NormalizeAngle(angle: int): int
 {
     var n := angle % 360;
@@ -30,6 +31,7 @@ predicate IsOptimalRotations(cameraAngle: int, result: int)
         var k_deviation := ImageDeviationAfterRotations(cameraAngle, k);
         result_deviation < k_deviation || (result_deviation == k_deviation && result <= k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

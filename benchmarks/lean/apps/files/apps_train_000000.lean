@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve (n : Nat) (words : List String) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_output_structure (n : Nat) (words : List String) :
   let result := solve n words
   (result = [-1] ∨
@@ -43,6 +50,7 @@ info: [0]
 -/
 -- #guard_msgs in
 -- #eval solve 2 ["00000", "00001"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

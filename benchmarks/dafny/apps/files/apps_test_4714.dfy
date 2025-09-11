@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isPalindromic(n: int)
   requires n >= 0
 {
@@ -35,6 +36,7 @@ predicate ValidInput(stdin_input: string)
   stringToInt(parts[1]) <= 99999 &&
   stringToInt(parts[0]) <= stringToInt(parts[1])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

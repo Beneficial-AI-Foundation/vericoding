@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -15,13 +16,19 @@ def typechar_precedence : Char → Nat
 /-- Check if a type character is in the given typeset -/
 def char_in_typeset {n : Nat} (c : Char) (typeset : Vector Char n) : Bool :=
   typeset.toList.contains c
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mintypecode {n m : Nat} (typechars : Vector Char n) (typeset : Vector Char m) (default : Char) : Id Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mintypecode_spec {n m : Nat} (typechars : Vector Char n) (typeset : Vector Char m) (default : Char) 
     (h_typeset : typeset.toList = ['G', 'D', 'F', 'g', 'd', 'f']) :
     ⦃⌜typeset.toList = ['G', 'D', 'F', 'g', 'd', 'f']⌝⦄
@@ -54,3 +61,4 @@ theorem mintypecode_spec {n m : Nat} (typechars : Vector Char n) (typeset : Vect
         (result = 'D' ∧ ('F' ∈ typechars.toList ∧ 'd' ∈ typechars.toList)))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

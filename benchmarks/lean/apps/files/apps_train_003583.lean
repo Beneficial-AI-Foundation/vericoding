@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def even_odd (n : Nat) : Nat × Nat := sorry
 def is_prime (n : Int) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem even_odd_basic :
   even_odd 1 = (0, 1) ∧ even_odd 2 = (1, 1) := sorry
 
@@ -46,6 +54,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_prime -1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

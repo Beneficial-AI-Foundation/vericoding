@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_int_array (xs : List Int) : Bool := sorry
 
 theorem int_array_property (arr : List Int) : 
   is_int_array arr = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem int_array_from_int_list_property (arr : List Int) : 
   is_int_array arr = true := sorry
 
@@ -44,6 +52,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_int_array ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

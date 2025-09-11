@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxMultiple (divisor: Nat) (bound: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_multiple_is_divisible (divisor: Nat) (bound: Nat) (h1: divisor > 0)
     : divisor ∣ maxMultiple divisor bound :=
   sorry
@@ -23,6 +31,7 @@ theorem max_multiple_when_equal (divisor: Nat) (h1: divisor > 0)
 theorem max_multiple_zero_invalid (bound: Nat)
     : maxMultiple 0 bound = 0 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

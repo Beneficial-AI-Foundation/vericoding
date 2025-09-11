@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_even_index (arr : List Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_list (arr : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_even_index_centered {n : Nat} :
   let arr := List.replicate n 1 ++ [0] ++ List.replicate n 1
   find_even_index arr = n
@@ -38,6 +45,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_even_index [20, 10, -80, 10, 10, 15, 35]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

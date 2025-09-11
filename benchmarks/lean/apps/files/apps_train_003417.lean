@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lovefunc (f1 f2 : Int) : Bool := sorry
 
 theorem lovefunc_symmetry (f1 f2 : Int) :
   lovefunc f1 f2 = lovefunc f2 f1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lovefunc_parity (f1 f2 : Int) :
   lovefunc f1 f2 = (f1 % 2 ≠ f2 % 2) := sorry
 
@@ -32,6 +40,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval lovefunc 0 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

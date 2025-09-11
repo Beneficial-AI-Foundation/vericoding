@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidGrid(grid: seq<seq<int>>) {
     |grid| > 0 && forall i :: 0 <= i < |grid| ==> |grid[i]| > 0
 }
@@ -43,6 +44,7 @@ function seq_max(s: seq<int>): int
         assert forall x :: x in s ==> seq_max(s[1..]) >= x;
         seq_max(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

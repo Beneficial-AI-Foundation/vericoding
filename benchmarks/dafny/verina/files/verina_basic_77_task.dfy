@@ -1,3 +1,4 @@
+// <vc-preamble>
 method UpdateInner(a: seq<nat>, idx: int, val: nat) returns (result: seq<nat>)
     requires 0 <= idx < |a|
     ensures |result| == |a|
@@ -6,6 +7,7 @@ method UpdateInner(a: seq<nat>, idx: int, val: nat) returns (result: seq<nat>)
 {
     result := a[idx := val];
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

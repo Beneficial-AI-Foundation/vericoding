@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Result := String
 def validate_credit_cards : List String → List Result := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem validate_returns_valid_or_invalid (cards : List String) 
   (h : cards.length > 0) : 
   let results := validate_credit_cards cards
@@ -46,6 +54,7 @@ info: ['Valid', 'Valid', 'Invalid']
 -/
 -- #guard_msgs in
 -- #eval validate_credit_cards ["4424424424442444", "5122-2368-7954-3214", "0525362587961578"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

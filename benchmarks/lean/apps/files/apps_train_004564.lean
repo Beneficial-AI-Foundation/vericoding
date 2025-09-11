@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_min_max (lst: List Int) : Option Int × Option Int := sorry
 
 theorem get_min_max_properties (lst: List Int) :
@@ -15,7 +21,9 @@ theorem get_min_max_properties (lst: List Int) :
       min_val ∈ lst ∧
       max_val ∈ lst) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_min_max_non_empty (lst: List Int) (h: lst ≠ []) :
   let result := get_min_max lst
   ∃ min_val max_val: Int,
@@ -45,6 +53,7 @@ info: (None, None)
 -/
 -- #guard_msgs in
 -- #eval get_min_max []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

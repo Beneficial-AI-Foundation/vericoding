@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn to_lowercase(c: char) -> char {
         c
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def html (tag: String) (content: List String := []) (attrs: List (String × String) := []): String := sorry
 
 theorem empty_tag_is_self_closing (tag: String) 
   (h: tag ≠ "") :
   html tag = s!"<{tag} />" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_content_wrapping (tag content: String)
   (h: tag ≠ "") :
   html tag [content] [] = s!"<{tag}>{content}</{tag}>" := sorry
@@ -46,6 +54,7 @@ info: '<p class="text" id="para">Hello</p>\n<p class="text" id="para">World</p>'
 -/
 -- #guard_msgs in
 -- #eval html "p" "Hello" "World"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

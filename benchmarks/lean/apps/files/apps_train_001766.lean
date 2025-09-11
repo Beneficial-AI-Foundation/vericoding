@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def isValidTree (n : Nat) (edges : List (List Nat)) : Bool :=
 sorry
 
 /- Function that computes probability of frog being at target vertex after t steps -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def frogPosition (n : Nat) (edges : List (List Nat)) (t : Nat) (target : Nat) : Float :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem frog_position_probability (n : Nat) (edges : List (List Nat)) 
     (t : Nat) (target : Nat) 
     (h : isValidTree n edges = true) :
@@ -30,6 +37,7 @@ theorem frog_position_impossible_start (n : Nat) (edges : List (List Nat))
     (h2 : target ≠ 1) :
   frogPosition n edges 0 target = 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

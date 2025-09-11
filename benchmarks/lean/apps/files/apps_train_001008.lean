@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_min_cleaning_rounds (x y : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cleaning_rounds_bounds (x y : Int) : 
   let result := calc_min_cleaning_rounds x y
   0 ≤ result ∧ result ≤ 3 :=
@@ -43,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval calc_min_cleaning_rounds 0 10000001
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

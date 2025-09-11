@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Matrix := List (List Nat)
 
 def count_words (matrix : Matrix) (end_char : Char) (length : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_words_non_negative (matrix : Matrix) (end_char : Char) (length : Nat) :
   count_words matrix end_char length ≥ 0 :=
 sorry
@@ -50,6 +58,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_words [[0] * 26 for _ in range(26)] "a" 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

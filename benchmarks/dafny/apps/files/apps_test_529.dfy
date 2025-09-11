@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string, n: int)
 {
   0 <= n <= 26
@@ -51,6 +52,7 @@ function TransformWithCompChar(s: string, compChar: char): string
   else if s[0] < compChar then [ToUppercase(s[0])] + TransformWithCompChar(s[1..], compChar)
   else [s[0]] + TransformWithCompChar(s[1..], compChar)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

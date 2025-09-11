@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def case_sensitive (s : String) : Bool × List String := sorry
 
 theorem case_sensitive_returns_valid_output (s : String) : 
   let res := case_sensitive s
   (res.1 = true ∨ res.1 = false) ∧
   (∀ x ∈ res.2, String.length x = 1) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem case_sensitive_lowercase_only (s : String) :
   (∀ c ∈ s.data, 'a' ≤ c ∧ c ≤ 'z') →
   case_sensitive s = (true, []) := sorry
@@ -37,6 +45,7 @@ info: [True, []]
 -/
 -- #guard_msgs in
 -- #eval case_sensitive ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

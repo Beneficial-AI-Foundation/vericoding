@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn min_function(a: int, b: int) -> int
 {
     if a < b { a } else { b }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsEven(n: int)
 {
     n % 2 == 0
@@ -34,6 +35,7 @@ method FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : i
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

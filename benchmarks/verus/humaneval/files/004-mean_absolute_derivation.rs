@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::arithmetic::div_mod::{
     lemma_div_is_ordered, lemma_div_is_ordered_by_denominator, lemma_div_multiples_vanish,
     lemma_fundamental_div_mod, lemma_fundamental_div_mod_converse,
@@ -55,6 +56,7 @@ spec fn expr_inner_divide_i32_by_usize(qr : (i32, usize), x: i32, d: usize) -> (
     let (q, r) = qr;
     q == x as int / d as int && r == x as int % d as int
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

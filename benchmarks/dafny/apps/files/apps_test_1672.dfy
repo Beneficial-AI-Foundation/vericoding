@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(magnets: seq<string>)
 {
     forall i :: 0 <= i < |magnets| ==> magnets[i] in {"01", "10"}
@@ -9,6 +10,7 @@ function CountGroups(magnets: seq<string>) : int
     if |magnets| == 0 then 0
     else 1 + |set i | 1 <= i < |magnets| && magnets[i] != magnets[i-1]|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

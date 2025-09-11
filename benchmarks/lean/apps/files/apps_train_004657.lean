@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverse {α : Type} : List α → List α := sorry
 
 theorem reverse_length_preserves {α : Type} (lst : List α) : 
   (reverse lst).length = lst.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_involutive {α : Type} (lst : List α) : 
   reverse (reverse lst) = lst := sorry
 
@@ -33,6 +41,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval reverse []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

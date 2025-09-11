@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def String.count (s : String) (c : Char) : Nat := sorry
 def String.toCharArray (s : String) : Array Char := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.fromCharArray (arr : Array Char) : String := sorry
 def has_subpattern (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_substring (s : String) (h : s.length > 0) :
   let result := has_subpattern s
   -- Result length less than input length  
@@ -29,6 +36,7 @@ theorem output_pattern_reconstruction (s : String) (h : s.length > 0) :
 
 theorem idempotent (s : String) (h : s.length > 0) :
   has_subpattern s = has_subpattern (has_subpattern s) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

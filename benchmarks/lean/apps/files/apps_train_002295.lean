@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def subtract_product_and_sum (n : Nat) : Int := sorry
 
 def digits (n : Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def product_of_list (l : List Nat) : Nat := sorry
 
 def sum_of_list (l : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digit_zero (n : Nat) (h : n > 0 ∧ n < 10) :
   subtract_product_and_sum n = 0 := sorry
 
@@ -32,6 +39,7 @@ info: -2
 -/
 -- #guard_msgs in
 -- #eval subtract_product_and_sum 111
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_transformations (n m q k : Nat) : Nat := sorry
 
 def MOD := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_bounds {n m q k : Nat} (h1 : 1 ≤ n) (h2 : n ≤ 100000)
                                     (h3 : 1 ≤ m) (h4 : m ≤ 100000)
                                     (h5 : 1 ≤ q) (h6 : q ≤ 100000)
@@ -48,6 +56,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval solve_transformations 2 3 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

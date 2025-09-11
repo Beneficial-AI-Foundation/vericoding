@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def setdiff1d {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) : Id (Vector Int k) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem setdiff1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) :
     ⦃⌜True⌝⦄
     setdiff1d ar1 ar2
@@ -22,3 +29,4 @@ theorem setdiff1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) :
                  (∀ val : Int, (∃ i : Fin n, ar1.get i = val ∧ ∀ j : Fin m, ar2.get j ≠ val) →
                   ∃ i : Fin k, result.get i = val)⌝⦄ := by
   sorry
+-- </vc-theorems>

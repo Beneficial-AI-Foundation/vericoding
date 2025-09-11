@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_longest (numbers : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_longest_in_list (numbers : List Int) 
   (h : numbers ≠ []) : 
   find_longest numbers ∈ numbers :=
@@ -39,6 +47,7 @@ info: 900
 -/
 -- #guard_msgs in
 -- #eval find_longest [8, 900, 500]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

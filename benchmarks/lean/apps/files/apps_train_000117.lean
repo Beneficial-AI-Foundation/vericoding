@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_good_subtree (n: Nat) (edges: List (Nat × Nat)) : Nat :=
   sorry
 
 -- For paths
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_good_subtree_path_positive (n: Nat) (h: n > 0) (h2: n ≤ 100)
     (edges: List (Nat × Nat)) (h3: edges = List.map (fun i => (i, i+1)) (List.range (n-1))) :
     find_max_good_subtree n edges > 0 :=
@@ -50,6 +58,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_max_good_subtree 4 [[1, 2], [1, 3], [1, 4]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

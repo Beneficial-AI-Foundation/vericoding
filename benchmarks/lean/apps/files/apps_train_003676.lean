@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def binary_simulation (s : String) (ops : List (List Nat)) : List Char := sorry
 
 def simple_simulate (s : String) (ops : List (List Nat)) : List Char := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem binary_simulation_matches_reference (s : String) (ops : List (List Nat)) :
   binary_simulation s ops = simple_simulate s ops := sorry
 
@@ -35,6 +43,7 @@ info: ['1']
 -/
 -- #guard_msgs in
 -- #eval binary_simulation "0000000000" [["I", 1, 10], ["Q", 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

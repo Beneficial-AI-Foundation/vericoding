@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def savez {n m : Nat} (file : String) (arr1 : Vector Float n) (arr2 : Vector Float m) 
     (allow_pickle : Bool := true) : Id Unit :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem savez_spec {n m : Nat} (file : String) (arr1 : Vector Float n) (arr2 : Vector Float m) 
     (allow_pickle : Bool := true) 
     (h_writable : True) (h_valid_path : True) :
@@ -22,3 +29,4 @@ theorem savez_spec {n m : Nat} (file : String) (arr1 : Vector Float n) (arr2 : V
                     (∀ i : Fin m, recoverable_arr2.get i = arr2.get i)) ∧
                   (∃ (file_size : Nat), file_size > 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

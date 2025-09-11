@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
   |input| > 0 &&
@@ -18,6 +19,7 @@ predicate CorrectOutput(a: int, s: string, result: string)
   (a >= 3200 ==> result == s + "\n") &&
   (a < 3200 ==> result == "red\n")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

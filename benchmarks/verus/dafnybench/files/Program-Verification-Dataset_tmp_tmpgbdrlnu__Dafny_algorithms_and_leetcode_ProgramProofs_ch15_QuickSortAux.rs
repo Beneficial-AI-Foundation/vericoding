@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -27,6 +28,7 @@ fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
     assume(false);
     lo
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

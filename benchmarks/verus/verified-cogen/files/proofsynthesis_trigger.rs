@@ -1,3 +1,4 @@
+// <vc-preamble>
 #[allow(unused_imports)]
 use vstd::prelude::*;
 
@@ -6,6 +7,7 @@ verus!{
 spec fn f(seq: Seq<u64>, i: int) -> (result: bool) {
     seq[i] == i + 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

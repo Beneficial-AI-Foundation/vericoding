@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -56,6 +57,7 @@ spec fn format_type_signature(sig: TypeSignature) -> Seq<char> {
     let input_chars = sig.input_types@.map(|i, tc: TypeCode| type_code_to_char(tc));
     input_chars + seq!['-', '>'] + seq![type_code_to_char(sig.output_type)]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

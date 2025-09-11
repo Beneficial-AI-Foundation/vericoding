@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, x: int)
 {
     a >= 0 && b >= a && x > 0
@@ -12,6 +13,7 @@ function CountDivisibleInRange(a: int, b: int, x: int): int
     else
         b / x - (a - 1) / x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

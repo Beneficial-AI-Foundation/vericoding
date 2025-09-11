@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def max_topics_prepared (N M S : Nat) (topic_hours : List Nat) : Nat := sorry
 
 def list_any (l : List Nat) (f : Nat → Bool) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Nat) : Nat := 
   match l with
   | [] => 0
   | h :: t => h + list_sum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_topics_non_negative (N M S : Nat) (topic_hours : List Nat) :
   N > 0 → M > 0 → S > 0 → S ≤ 16 → topic_hours.length > 0 → 
   max_topics_prepared N M S topic_hours ≥ 0 := sorry
@@ -38,6 +45,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval max_topics_prepared 5 4 16 [7, 16, 35, 10, 15]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

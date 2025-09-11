@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isVowel (c : Char) : Bool :=
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_format {s : String} (h : s.length > 0) :
   let result := solve s
   (result = "failed") ∨ 
@@ -39,6 +46,7 @@ info: 'failed'
 -/
 -- #guard_msgs in
 -- #eval solve "codewars"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

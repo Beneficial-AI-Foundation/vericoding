@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def climbStairs (n : Int) : Int := sorry
 
 theorem climbStairs_positive (n : Int) (h : n ≥ 0) :
   climbStairs n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem climbStairs_fibonacci (n : Int) (h : n ≥ 2) :
   climbStairs n = climbStairs (n-1) + climbStairs (n-2) := sorry
 
@@ -35,6 +43,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval climb_stairs 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

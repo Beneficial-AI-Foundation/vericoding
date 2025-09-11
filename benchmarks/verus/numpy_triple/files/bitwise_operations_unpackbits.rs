@@ -1,7 +1,9 @@
+// <vc-preamble>
 use vstd::prelude::*;
 use vstd::arithmetic::power::pow;
 
 verus! {
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

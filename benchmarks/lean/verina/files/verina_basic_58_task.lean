@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def double_array_elements_precond (s : Array Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def double_array_elements_aux (s_old s : Array Int) (i : Nat) : Array Int :=
   if i < s.size then
@@ -10,10 +13,14 @@ def double_array_elements_aux (s_old s : Array Int) (i : Nat) : Array Int :=
   else
     s
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def double_array_elements (s : Array Int) (h_precond : double_array_elements_precond (s)) : Array Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def double_array_elements_postcond (s : Array Int) (result: Array Int) (h_precond : double_array_elements_precond (s)) :=
   result.size = s.size ∧ ∀ i, i < s.size → result[i]! = 2 * s[i]!
@@ -21,6 +28,7 @@ def double_array_elements_postcond (s : Array Int) (result: Array Int) (h_precon
 theorem double_array_elements_spec_satisfied (s: Array Int) (h_precond : double_array_elements_precond (s)) :
     double_array_elements_postcond (s) (double_array_elements (s) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

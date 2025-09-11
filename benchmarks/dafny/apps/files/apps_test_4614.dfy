@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate containsThreeSpaceSeparatedIntegers(input: string)
 {
     exists i, j, k :: (0 <= i < j < k <= |input| &&
@@ -51,6 +52,7 @@ function findDifferentNumber(input: string): string
                     else nums.0;
     intToStringPure(different)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

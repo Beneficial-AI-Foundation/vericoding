@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def logistic_map (width height : Nat) (xs ys : List Nat) : List (List (Option Nat)) := sorry
 
 theorem logistic_map_dimensions (width height : Nat) (xs ys : List Nat) :
   let result := logistic_map width height xs ys
   result.length = height ∧ 
   ∀ row ∈ result, row.length = width := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem logistic_map_empty_input (width height : Nat) :
   let result := logistic_map width height [] []
   ∀ row ∈ result, ∀ cell ∈ row, cell = none := sorry
@@ -51,6 +59,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval logistic_map 2 2 [] []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

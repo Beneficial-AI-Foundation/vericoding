@@ -1,11 +1,16 @@
+-- <vc-preamble>
 def remove (s : String) : String := sorry
 
 def countChar (s : String) (c : Char) : Nat :=
   s.data.filter (· = c) |>.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def trimRight (s : String) (c : Char) : String :=
   let rec dropRightWhile (xs : List Char) : List Char :=
     match xs with
@@ -15,7 +20,9 @@ def trimRight (s : String) (c : Char) : String :=
       | [] => if xs.getLast! = c then [] else xs
       | ys => xs.head! :: ys
   String.mk (dropRightWhile s.data)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem remove_preserves_length_of_end_exclamations (s : String) :
   let originalEndExclamations := s.length - (trimRight s '!').length
   countChar (remove s) '!' = originalEndExclamations := sorry
@@ -44,6 +51,7 @@ info: 'Hi!'
 -/
 -- #guard_msgs in
 -- #eval remove "!Hi!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

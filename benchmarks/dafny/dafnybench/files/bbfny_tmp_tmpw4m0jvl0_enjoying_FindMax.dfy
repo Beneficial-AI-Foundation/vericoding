@@ -1,3 +1,4 @@
+// <vc-preamble>
 function max(a: int, b: int): int
 {
   if a > b then a else b
@@ -24,6 +25,7 @@ predicate sorted(a: array<int>)
 {
   forall j, k :: 0 <= j < k < a.Length ==> a[j] < a[k]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

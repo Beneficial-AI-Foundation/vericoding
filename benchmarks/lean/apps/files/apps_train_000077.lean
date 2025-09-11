@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Grid := List (List Char)
 
 def min_minutes_for_cross (grid : Grid) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_minutes_bounds {grid : Grid} :
   let n := grid.length
   let m := grid.head!.length
@@ -60,6 +68,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_minutes_for_cross ["*.**", "....", "*.**", "*.**"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

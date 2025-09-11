@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def duplicates (arr : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem duplicates_non_negative (arr : List Int) :
   duplicates arr ≥ 0 := by
   sorry
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval duplicates []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

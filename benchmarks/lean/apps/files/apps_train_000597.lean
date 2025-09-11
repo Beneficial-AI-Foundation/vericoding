@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sum (l : List Nat) : Nat :=
   match l with
   | [] => 0
@@ -12,13 +13,19 @@ def maximum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | h::t => max h (maximum t)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_min_cost (n : Nat) (arr : List Nat) (m : Nat) (offers : List (List Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_min_cost_bounded_by_sum 
   (n : Nat) (arr : List Nat) (m : Nat) (offers : List (List Nat)) :
   calculate_min_cost n arr m offers ≤ sum arr :=
@@ -75,6 +82,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval calculate_min_cost 2 [5, 10] 1 [[2, 1, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_car_logs (logs: List (List Nat)) : String := sorry
 
 theorem check_car_logs_returns_valid_result (logs: List (List Nat)) :
   check_car_logs logs = "yes" ∨ check_car_logs logs = "no" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem collision_implies_no_result (logs: List (List Nat)) :
   (∃ pos ∈ logs, pos.get! 1 = pos.get! 3 ∧ pos.get! 2 = pos.get! 4) → 
   check_car_logs logs = "no" := sorry
@@ -35,6 +43,7 @@ info: 'no'
 -/
 -- #guard_msgs in
 -- #eval check_car_logs [[1, 1, 3, 2, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def solve_xor_sum (n : Nat) (arr : List Nat) : List Nat := sorry
 
 def xor_fold (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | h::t => t.foldl Nat.xor h
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Nat) : Nat := 
   match l with
   | [] => 0
   | h::t => h + list_sum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_xor_sum_length {n : Nat} {arr : List Nat} :
   arr ≠ [] →
   let result := solve_xor_sum n arr
@@ -53,6 +60,7 @@ info: 2 * xor
 -/
 -- #guard_msgs in
 -- #eval sum [1, 1] + result
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

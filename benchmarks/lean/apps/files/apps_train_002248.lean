@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD : Nat := 998244353
 
 def solve (N : Nat) (K : Nat) (A : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_length {N K : Nat} {A : List Nat} 
   (h1 : N ≥ 2) (h2 : K ≥ 1) (h3 : A.length = N) :
   (solve N K A).length = K := sorry
@@ -30,6 +38,7 @@ theorem solve_ones_first_power {N K : Nat}
   (h1 : N ≥ 2) (h2 : K ≥ 1) :
   let num_pairs := (N * (N-1)) / 2;
   (solve N K (List.replicate N 1)).get! 0 = (num_pairs * 2) % MOD := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

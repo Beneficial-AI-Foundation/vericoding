@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_have_no_winner (n k d1 d2 : Nat) : Bool := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_winner_properties (n k d1 d2 : Nat) :
   (n % 3 ≠ 0 → ¬(can_have_no_winner n k d1 d2 = true)) ∧ 
   (k > n ∨ d1 > n ∨ d2 > n → ¬(can_have_no_winner n k d1 d2 = true)) ∧
@@ -55,6 +63,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval can_have_no_winner 3 3 3 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

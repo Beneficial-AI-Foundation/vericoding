@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def any_odd (n : Nat) : Bool := sorry
 
 def pattern := 0xAAAAAAAAAAAAAAAA
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem any_odd_manual_calc {x : Nat} : 
   any_odd x = true ↔ ∃ i, x >>> (2*i + 1) &&& 1 = 1 := sorry 
 
@@ -34,6 +42,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval any_odd 170
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

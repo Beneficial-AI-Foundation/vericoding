@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a1: int, a2: int, k1: int, k2: int, n: int) {
     a1 >= 1 && a2 >= 1 && k1 >= 1 && k2 >= 1 && n >= 1
 }
@@ -33,6 +34,7 @@ predicate ValidResult(a1: int, a2: int, k1: int, k2: int, n: int, minimum: int, 
     minimum == MinimumSentOff(a1, a2, k1, k2, n) &&
     maximum == MaximumSentOff(a1, a2, k1, k2, n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

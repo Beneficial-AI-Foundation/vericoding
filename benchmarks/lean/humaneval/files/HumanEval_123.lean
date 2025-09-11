@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -11,13 +12,19 @@ problems:
 -/
 def collatz_reachable (n m : Nat) : Prop :=
   ∃ k, Nat.iterate (fun x => if x % 2 = 0 then x / 2 else x * 3 + 1) k n = m
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (n: Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: Nat → List Nat)
@@ -37,5 +44,6 @@ theorem correctness
 (n: Nat)
 : problem_spec implementation n := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation 5 = [1, 5]

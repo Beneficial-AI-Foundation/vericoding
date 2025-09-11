@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def days_represented (trips : List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem days_represented_nonnegative (trips : List (Nat × Nat)) :
   days_represented trips ≥ 0 :=
   sorry
@@ -48,6 +56,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval days_represented [[10, 17]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible]
 def productExceptSelf_precond (nums : List Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 -- Helper: Compute prefix products.
 -- prefix[i] is the product of all elements in nums before index i.
@@ -15,10 +18,14 @@ def computeSuffix (nums : List Int) : List Int :=
   let revSuffix := nums.reverse.foldl (fun acc x => acc ++ [acc.getLast! * x]) [1]
   revSuffix.reverse
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def productExceptSelf (nums : List Int) (h_precond : productExceptSelf_precond (nums)) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 -- Specification Helper: Product of a list of Ints
 -- Defined locally if not available/imported
 def List.myprod : List Int → Int
@@ -33,6 +40,7 @@ def productExceptSelf_postcond (nums : List Int) (result: List Int) (h_precond :
 theorem productExceptSelf_spec_satisfied (nums: List Int) (h_precond : productExceptSelf_precond (nums)) :
     productExceptSelf_postcond (nums) (productExceptSelf (nums) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

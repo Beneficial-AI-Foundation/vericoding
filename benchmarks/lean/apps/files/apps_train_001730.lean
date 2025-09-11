@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def min_price (coins : List Int) : Int := sorry
 
 def min_int (a b : Int) : Int := if a ≤ b then a else b
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_minimum (l : List Int) : Int :=
   match l with
   | [] => 0
@@ -13,7 +18,9 @@ def list_minimum (l : List Int) : Int :=
     | y :: ys => min_int x (list_minimum xs)
 
 -- First coin must be minimum of input list
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_price_first_coin_min {coins : List Int} (h : coins.length ≥ 2) :
   coins ≠ [] → coins.head! = list_minimum coins := sorry
 
@@ -53,6 +60,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_price [2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def super_pad (s : String) (w : Nat) (f : String := " ") : String := sorry
 
 theorem default_padding_length 
@@ -9,7 +15,9 @@ theorem default_padding_length
   let result := super_pad s w f
   (result.length = w) ∨ 
   (s.length > w ∧ result.length = w) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem right_padding
   (s : String) (w : Nat) (f : String)
   (h : ∀ c ∈ f.data, c ≠ '<' ∧ c ≠ '>' ∧ c ≠ '^') :
@@ -52,6 +60,7 @@ info: 'motestm'
 -/
 -- #guard_msgs in
 -- #eval super_pad "test" 7 "^more complex"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

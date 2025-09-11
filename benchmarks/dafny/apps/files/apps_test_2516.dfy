@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isPrime(p: int)
     requires p >= 2
 {
@@ -25,6 +26,7 @@ predicate ValidResult(result: int, n: int)
 {
     result >= 0 && result <= n * (n + 1) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

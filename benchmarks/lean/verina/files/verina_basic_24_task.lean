@@ -1,9 +1,12 @@
+-- <vc-preamble>
 @[reducible, simp]
 def firstEvenOddDifference_precond (a : Array Int) : Prop :=
   a.size > 1 ∧
   (∃ x ∈ a, isEven x) ∧
   (∃ x ∈ a, isOdd x)
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def isEven (n : Int) : Bool :=
   n % 2 == 0
@@ -11,10 +14,14 @@ def isEven (n : Int) : Bool :=
 def isOdd (n : Int) : Bool :=
   n % 2 != 0
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def firstEvenOddDifference (a : Array Int) (h_precond : firstEvenOddDifference_precond (a)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def firstEvenOddDifference_postcond (a : Array Int) (result: Int) (h_precond : firstEvenOddDifference_precond (a)) :=
   ∃ i j, i < a.size ∧ j < a.size ∧ isEven (a[i]!) ∧ isOdd (a[j]!) ∧
@@ -24,6 +31,7 @@ def firstEvenOddDifference_postcond (a : Array Int) (result: Int) (h_precond : f
 theorem firstEvenOddDifference_spec_satisfied (a: Array Int) (h_precond : firstEvenOddDifference_precond (a)) :
     firstEvenOddDifference_postcond (a) (firstEvenOddDifference (a) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

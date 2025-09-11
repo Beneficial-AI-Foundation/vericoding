@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def clonewars (n : Int) : List Int := sorry
 
 theorem clonewars_positive (n : Int) (h : 0 ≤ n ∧ n ≤ 10) :
@@ -8,7 +14,9 @@ theorem clonewars_positive (n : Int) (h : 0 ≤ n ∧ n ≤ 10) :
   List.length result = 2 ∧
   1 ≤ List.get! result 0 ∧ 
   0 ≤ List.get! result 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem clonewars_negative (n : Int) (h : n < 0) :
   clonewars n = [1, 0] := sorry
 
@@ -39,6 +47,7 @@ info: [16, 57]
 -/
 -- #guard_msgs in
 -- #eval clonewars 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

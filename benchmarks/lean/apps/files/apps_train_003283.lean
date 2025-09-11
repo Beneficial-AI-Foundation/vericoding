@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isSubsequence (smaller larger : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) (k : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_properties {n k : Nat} (h : k < (ToString.toString n).length) :
   let result := solve n k
   (result.length = (ToString.toString n).length - k) ∧ 
@@ -43,6 +50,7 @@ info: '12056'
 -/
 -- #guard_msgs in
 -- #eval solve 123056 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

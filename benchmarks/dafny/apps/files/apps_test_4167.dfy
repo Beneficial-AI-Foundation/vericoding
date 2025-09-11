@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidTriple(a: int, b: int, c: int, N: int, K: int)
     requires K >= 1
 {
@@ -33,6 +34,7 @@ function CountWithRemainderHalfK(n: int, K: int): int
 {
     if n <= 0 then 0 else n / K + (if n % K >= K / 2 then 1 else 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

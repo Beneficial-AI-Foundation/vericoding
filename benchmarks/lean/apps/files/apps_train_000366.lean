@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def maximum_gap (nums : List Nat) : Nat :=
   sorry
 
 def Permutation (l1 l2 : List α) : Prop :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sort (l : List α) (lt : α → α → Bool) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maximum_gap_empty_or_singleton {nums : List Nat} : 
   nums.length ≤ 1 → maximum_gap nums = 0 :=
   sorry
@@ -52,6 +59,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval maximum_gap [1, 2, 2, 5, 7, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

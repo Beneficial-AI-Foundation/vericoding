@@ -1,3 +1,4 @@
+// <vc-preamble>
 function RecursivePositiveProduct(q: seq<int>): int
     decreases |q|
 {
@@ -21,6 +22,7 @@ function county(elem: int, key: int): int{
 function prody(elem: int): int{
     if elem <= 0 then 1 else elem
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

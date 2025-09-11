@@ -1,3 +1,4 @@
+// <vc-preamble>
 function LoopSpec(a: array<int>, i: int, currentMin: int): int
     requires 0 <= i <= a.Length
     decreases a.Length - i
@@ -9,6 +10,7 @@ function LoopSpec(a: array<int>, i: int, currentMin: int): int
     else
         currentMin
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

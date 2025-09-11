@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def odd_count (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_count_nonnegative (n : Nat) :
   odd_count n ≥ 0 :=
   sorry
@@ -33,6 +41,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval odd_count 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

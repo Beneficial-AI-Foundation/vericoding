@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solveXorArray (n k x : Nat) : List Nat := sorry
 
 def arrayXor (arr : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem k1_fixed_result :
   solveXorArray 5 1 4 = [4, 4, 4, 4, 4] := sorry
 
@@ -36,6 +44,7 @@ info: [11, 6, 9, 11, 6]
 -/
 -- #guard_msgs in
 -- #eval solve_xor_array 5 3 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

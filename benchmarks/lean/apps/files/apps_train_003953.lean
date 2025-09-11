@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def string_hash (s : String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_hash_returns_integer (s : String) (h : s.length > 0) :
   ∃ n : Int, string_hash s = n :=
   sorry
@@ -38,6 +46,7 @@ info: 1120
 -/
 -- #guard_msgs in
 -- #eval string_hash "global hash"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

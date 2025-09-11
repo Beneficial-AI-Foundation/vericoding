@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_the_missing_tree (numbers : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_in_input (numbers : List Int) (h : numbers.length > 0):
   let doubled_numbers := numbers ++ numbers
   let input_list := doubled_numbers.dropLast
@@ -35,6 +43,7 @@ info: 64
 -/
 -- #guard_msgs in
 -- #eval find_the_missing_tree [34, 76, 12, 99, 64, 99, 76, 12, 34]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

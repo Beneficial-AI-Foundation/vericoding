@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def is_numeric (s : String) : Bool := sorry
 
 def isInteger (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isDecimal (s : String) : Bool := sorry
 def isWhitespace (c : Char) : Bool := c = ' ' || c = '\t' || c = '\n' || c = '\r'
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem integer_pattern (s : String) 
   (h : isInteger s) :
   is_numeric s = true := sorry
@@ -33,6 +40,7 @@ theorem whitespace_handling (s : String) (ws : String)
   (h₂ : isInteger s ∨ isDecimal s) 
   (h₃ : s.trim ≠ "") :
   is_numeric (ws ++ s ++ ws) = is_numeric s := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

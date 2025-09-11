@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn sum(X_val: Seq<int>, X_crd: Seq<nat>, v: Seq<int>, b: int, k: int) -> in
         sum(X_val, X_crd, v, b + 1, k) + X_val[b] * v[X_crd[b] as int]
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isPalindrome (s : String) : Bool :=
   sorry
 
@@ -9,13 +10,19 @@ def longest_palindrome (s : String) : String :=
 
 def reverseString (s : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def substring (s : String) (i j : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_palindrome {s : String} :
   let result := longest_palindrome s
   result = "" ∨ (result = reverseString result ∧ isSubstring result s)
@@ -57,6 +64,7 @@ info: 'bb'
 -/
 -- #guard_msgs in
 -- #eval longest_palindrome "cbbd"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

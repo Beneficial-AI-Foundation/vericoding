@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import numpy_hoare_triple.linalg.LinAlgError
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def tensorsolve {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n) : 
     Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tensorsolve_spec {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n)
     (h_invertible : ∃ a_inv : Vector (Vector Float n) n,
       -- Matrix a is invertible (has an inverse)
@@ -48,3 +55,4 @@ theorem tensorsolve_spec {n : Nat} (a : Vector (Vector Float n) n) (b : Vector F
                 x.get i = List.sum (List.ofFn fun j : Fin n => 
                   (a_inv.get i).get j * b.get j)))⌝⦄ := by
   sorry
+-- </vc-theorems>

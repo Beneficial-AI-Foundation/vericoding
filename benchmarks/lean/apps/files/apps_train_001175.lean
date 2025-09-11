@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_possible_arrays (arr: List Nat) : Nat := sorry
 
 theorem count_possible_arrays_output_range (arr: List Nat) :
   0 ≤ count_possible_arrays arr ∧ count_possible_arrays arr < 1000000007 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_possible_arrays_deterministic (arr: List Nat) :
   count_possible_arrays arr = count_possible_arrays arr := sorry
 
@@ -34,6 +42,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval count_possible_arrays [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

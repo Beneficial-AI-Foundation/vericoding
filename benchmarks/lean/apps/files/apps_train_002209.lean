@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def getSpecialValue : Nat → Nat := 
   fun n => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countNumbersWithSpecialValue : List (Nat × Nat × Nat) → List Nat := 
   fun queries => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem special_value_counts_correct {l r k : Nat} (h1 : l > 0) (h2 : r > l) (h3 : k > 0) (h4 : k ≤ 9) : 
   let count := (countNumbersWithSpecialValue [(l,r,k)]).head!;
   count = ((List.range (r-l+1)).filter (fun x => getSpecialValue (x + l) = k)).length := by
@@ -31,6 +38,7 @@ info: [3, 1, 1, 5]
 -/
 -- #guard_msgs in
 -- #eval count_numbers_with_special_value [(82, 94, 6), (56, 67, 4), (28, 59, 9), (39, 74, 4)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function min(a: int, b: int): int
     ensures min(a, b) == a || min(a, b) == b
     ensures min(a, b) <= a && min(a, b) <= b
@@ -32,6 +33,7 @@ function sumOfConsecutivePairs(n: int, k: int): int
     if iterations == 0 then 0
     else sumInversionsFormula(n, iterations)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

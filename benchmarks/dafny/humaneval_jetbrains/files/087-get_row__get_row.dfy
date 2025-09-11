@@ -1,3 +1,4 @@
+// <vc-preamble>
 type SortSeqState = seq<(int, int)>
 function less(a: (int, int), b: (int, int)): bool {
   var (x, y) := a; var (u, v) := b;
@@ -7,6 +8,7 @@ function less_eq(a: (int, int), b: (int, int)): bool {
   var (x, y) := a; var (u, v) := b;
   (x == u && y == v) || less(a, b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

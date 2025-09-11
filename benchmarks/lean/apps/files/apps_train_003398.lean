@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_digit (s : String) : Bool := sorry
 
 theorem is_digit_general_string_property (s : String) :
   is_digit s = (s.length = 1 ∧ s.any Char.isDigit) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_digit_string_conversion {n : Nat} :
   is_digit (toString n) = (n ≥ 0 ∧ n ≤ 9) := sorry 
 
@@ -38,6 +46,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_digit "14"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

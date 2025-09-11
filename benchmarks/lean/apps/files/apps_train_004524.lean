@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def x : List Int → Int := sorry
 
 def add : Int → Int → Int := fun a b => a + b
@@ -5,10 +6,14 @@ def add : Int → Int → Int := fun a b => a + b
 def sub : Int → Int → Int := fun a b => a - b
 
 def mul : Int → Int → Int := fun a b => a * b
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def div : Int → Int → Int := fun a b => a / b
 
 axiom placeholder_identity (args : List Int) (h : args.length > 0) :
@@ -38,6 +43,10 @@ axiom placeholder_chaining (args : List Int) (h : args.length > 1) :
 axiom placeholder_constant_folding (a : Int) :
   add (add 2 3) (x [a]) = add 5 a ∧
   add (mul 2 3) (x [a]) = add 6 a
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

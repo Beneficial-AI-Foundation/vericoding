@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| >= 1 && forall i :: 0 <= i < |input| ==> input[i] == 'M' || input[i] == 'F'
@@ -22,6 +23,7 @@ function ComputeSwapTime(input: string): nat
                 var f_count := count_char(substring, 'F');
                 balance + f_count + first_m_after_f - first_f - 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

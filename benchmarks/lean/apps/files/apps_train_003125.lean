@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mouth_size (animal : String) : String := sorry
 
 theorem mouth_size_range (animal : String) : 
   mouth_size animal = "small" ∨ mouth_size animal = "wide" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mouth_size_alligator (animal : String) :
   mouth_size animal = (if animal.toLower = "alligator" then "small" else "wide") := sorry
 
@@ -32,6 +40,7 @@ info: 'small'
 -/
 -- #guard_msgs in
 -- #eval mouth_size "alligator"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

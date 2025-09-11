@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
     a > 0 && b > 0
@@ -14,6 +15,7 @@ function countSquares(a: int, b: int): int
     else if a > b then a / b + countSquares(a % b, b)
     else b / a + countSquares(a, b % a)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

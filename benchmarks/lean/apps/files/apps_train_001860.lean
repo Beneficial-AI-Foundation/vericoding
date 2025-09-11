@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_num_valid_words (words: List String) (puzzles: List String) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_length_matches_puzzles {words: List String} {puzzles: List String}
   (h1: words.length > 0)
   (h2: puzzles.length > 0)
@@ -46,6 +54,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval find_num_valid_words ["a"] ["abcdefg"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_beautiful_numbers (n : Nat) : Nat := sorry
 
 theorem count_beautiful_range (n : Nat) (h : n > 0) :
   1 ≤ count_beautiful_numbers n ∧ count_beautiful_numbers n ≤ 81 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_beautiful_monotonic (n : Nat) (h : n > 1) :
   count_beautiful_numbers n ≥ count_beautiful_numbers (n-1) := sorry
 
@@ -34,6 +42,7 @@ info: 45
 -/
 -- #guard_msgs in
 -- #eval count_beautiful_numbers 100500
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

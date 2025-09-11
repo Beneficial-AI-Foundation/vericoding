@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isPrime (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def goldbach (n : Nat) : List (List Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem goldbach_valid_sums {n : Nat} (h : n ≥ 4) (h2 : n % 2 = 0) :
   let result := goldbach n
   (∀ x ∈ result, x.length = 2) ∧ 
@@ -39,6 +46,7 @@ info: [[5, 53], [11, 47], [17, 41], [29, 29]]
 -/
 -- #guard_msgs in
 -- #eval goldbach 58
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def find_smallest_divisor (nums : List Nat) (threshold : Nat) : Nat :=
   sorry
 
 def ceil_div (a b : Nat) : Nat :=
   (a + b - 1) / b
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_max (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | (x::xs) => List.foldl max x xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_case {nums : List Nat} {threshold : Nat} 
   (h1 : nums.length = 1) 
   (h2 : threshold > 0)
@@ -46,6 +53,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_smallest_divisor [19] 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

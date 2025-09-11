@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findRightmostHill (n : Nat) (u : Nat) (d : Nat) (h : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bounds {n u d : Nat} {h : List Nat} (h_nonempty : h ≠ []) :
   let result := findRightmostHill n u d h
   1 ≤ result ∧ result ≤ h.length :=
@@ -43,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_rightmost_hill 5 2 7 [1, 4, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

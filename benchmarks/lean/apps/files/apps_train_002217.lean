@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 998244353
 
 def solve (n k : Nat) (a b : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_bounds {n k : Nat} {a b : List Nat}
     (h1 : n > 0)
     (h2 : k > 0)
@@ -75,6 +83,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval solve 7 4 [1, 4, 7, 3, 6, 2, 5] [3, 2, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

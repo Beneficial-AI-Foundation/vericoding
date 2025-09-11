@@ -1,3 +1,4 @@
+// <vc-preamble>
 function lower(c: char) : bool
     {
         'a' <= c <= 'z'
@@ -17,6 +18,7 @@ function flip_char(c: char) : (C: char)
         if lower(c) then c - 'a' + 'A' else
         if upper(c) then c + 'a' - 'A' else c
     }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

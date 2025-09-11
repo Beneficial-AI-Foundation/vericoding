@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_largest_subset_with_mex (n m : Nat) (arr : List Nat) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mex (arr : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_largest_subset_result_valid (n m : Nat) (arr : List Nat) :
   let result := find_largest_subset_with_mex n m arr
   result ≤ n := sorry
@@ -32,6 +39,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval find_largest_subset_with_mex 3 5 [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

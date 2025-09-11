@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
     n >= 10 || n <= -10
@@ -13,6 +14,7 @@ function MaxBalanceAfterOperation(n: int): int
         var option2 := StringToInt(s[..|s|-2] + s[|s|-1..]);
         if option1 > option2 then option1 else option2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

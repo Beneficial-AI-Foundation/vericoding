@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_odd_pentaFib (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_odd_pentaFib_nonnegative (n : Nat) :
   count_odd_pentaFib n ≥ 0 :=
   sorry
@@ -37,6 +45,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_odd_pentaFib 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

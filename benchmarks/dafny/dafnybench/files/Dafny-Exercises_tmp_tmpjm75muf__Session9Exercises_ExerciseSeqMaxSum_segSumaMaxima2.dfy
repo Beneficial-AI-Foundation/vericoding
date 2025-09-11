@@ -1,3 +1,4 @@
+// <vc-preamble>
 function Sum(v:array<int>,i:int,j:int):int
 reads v
 requires 0<=i<=j<=v.Length
@@ -27,6 +28,7 @@ predicate SumMaxToRight2(v:array<int>,j:int,i:int,s:int)
 reads v
 requires 0<=j<=i<v.Length
 {(forall l,ss {:induction l}::j<=l<=i && ss==i+1 ==> Sum2(v,l,ss)<=s)}
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

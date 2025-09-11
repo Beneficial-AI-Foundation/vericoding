@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -5,13 +6,19 @@ open Std.Do
 /-- Helper function to count the number of 1-bits in a natural number -/
 def popcount (n : Nat) : Nat :=
   if n = 0 then 0 else (n % 2) + popcount (n / 2)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bitwise_count {n : Nat} (x : Vector Int n) : Id (Vector Nat n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bitwise_count_spec {n : Nat} (x : Vector Int n) :
     ⦃⌜True⌝⦄
     bitwise_count x
@@ -25,3 +32,4 @@ theorem bitwise_count_spec {n : Nat} (x : Vector Int n) :
                  (∀ i : Fin n, ∀ m : Int, x.get i = m → result.get i = popcount (Int.natAbs m)) ∧
                  (∀ i : Fin n, ∀ j : Fin n, x.get i = -(x.get j) → result.get i = result.get j)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validate_time (s : String) : Bool := sorry
 
 theorem valid_time_combinations 
@@ -8,7 +14,9 @@ theorem valid_time_combinations
   (h_hour : hour ≤ 23)
   (h_minute : minute ≤ 59) :
   validate_time (toString hour ++ ":" ++ toString minute) = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digit_hour_valid
   (hour : Nat) (minute : Nat) 
   (h_hour : hour < 10)
@@ -85,6 +93,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval validate_time ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

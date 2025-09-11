@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rearrange_caps (nums: List Nat) : Option (List Nat) := sorry
 
 theorem rearrange_caps_length {nums : List Nat} {result : List Nat} 
   (h : rearrange_caps nums = some result) : 
   result.length = nums.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rearrange_caps_different_positions {nums : List Nat} {result : List Nat}
   (h : rearrange_caps nums = some result) :
   ∀ (i : Fin nums.length), result.get ⟨i, by rw [rearrange_caps_length h]; exact i.2⟩ ≠ nums.get i := sorry
@@ -27,6 +35,7 @@ theorem rearrange_caps_two_elems {a b : Nat} :
   rearrange_caps [a, b] = if a = b 
     then none
     else some [b, a] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

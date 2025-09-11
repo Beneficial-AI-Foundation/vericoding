@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def PZERO : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem PZERO_spec :
     ⦃⌜True⌝⦄
     PZERO
@@ -41,3 +48,4 @@ theorem PZERO_spec :
       Float.isFinite result
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

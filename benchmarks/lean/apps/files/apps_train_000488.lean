@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_number_operations (nums : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_number_operations_non_negative (nums : List Nat) (h : nums ≠ []) :
   min_number_operations nums ≥ 0 := by
   sorry
@@ -49,6 +57,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_number_operations [1, 1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_restaurant_device (k : String) (n : Int) : Int := sorry
 
 theorem output_bound 
@@ -10,7 +16,9 @@ theorem output_bound
   (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9')
   (h3 : 0 ≤ n ∧ n ≤ 100) :
   0 ≤ solve_restaurant_device k n ∧ solve_restaurant_device k n ≤ 1000 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_output_before_five
   (k : String)
   (n : Int)
@@ -51,6 +59,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_restaurant_device "123" 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

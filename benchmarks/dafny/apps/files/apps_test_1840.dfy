@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: nat, b: nat, attacking_powers: seq<nat>, bases: seq<(nat, nat)>)
 {
     |attacking_powers| == s && |bases| == b
@@ -16,6 +17,7 @@ predicate ValidOutput(s: nat, attacking_powers: seq<nat>, bases: seq<(nat, nat)>
     (forall i :: 0 <= i < s ==> result[i] >= 0) &&
     (forall i :: 0 <= i < s && i < |attacking_powers| ==> result[i] == SumGoldForSpaceship(attacking_powers[i], bases))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

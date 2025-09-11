@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_falling_path_sum (matrix: List (List Int)) : Int := sorry
 
 -- Single element matrix theorem
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_matrix_path_sum (n: Int) (h: n ≥ 1 ∧ n ≤ 10):
   min_falling_path_sum [[n]] = n := sorry
 
@@ -45,6 +53,7 @@ info: -36
 -/
 -- #guard_msgs in
 -- #eval min_falling_path_sum arr3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_lcs_strings (n m : Nat) (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bounds 
   (n m : Nat) (s : String)
   (hn : n > 0) (hm : m ≥ 2)
@@ -45,6 +53,7 @@ info: 789
 -/
 -- #guard_msgs in
 -- #eval calculate_lcs_strings 10 9 "abacadefgh"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

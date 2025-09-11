@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def encode {n : Nat} (a : Vector String n) (encoding : String := "utf-8") (errors : String := "strict") : Id (Vector ByteArray n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_spec {n : Nat} (a : Vector String n) (encoding : String := "utf-8") (errors : String := "strict") :
     ⦃⌜True⌝⦄
     encode a encoding errors
@@ -25,3 +32,4 @@ theorem encode_spec {n : Nat} (a : Vector String n) (encoding : String := "utf-8
                   -- Encoding size relationship: encoded size is at least the string length
                   (encoding = "utf-8" → (result.get i).size ≥ (a.get i).length)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def digSum (n : Nat) (p : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def digPow (n : Nat) (p : Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem digPow_valid_result {n p : Nat} (h : digPow n p ≠ -1) :
   digSum n p = (digPow n p).toNat * n ∧ digPow n p > 0 := by
   sorry
@@ -51,6 +58,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval dig_pow 695 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

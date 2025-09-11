@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sort_twisted37 (arr : List Int) : List Int := sorry
 
 def twist37 (n : Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_twisted37_invariants {arr : List Int} :
   let result := sort_twisted37 arr
   (List.length result = List.length arr) ∧ 
@@ -41,6 +49,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval sort_twisted37 [9, 2, 4, 7, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

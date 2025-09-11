@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def tril {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int := 0) : 
     Id (Vector (Vector Float cols) rows) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tril_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : Int := 0) :
     ⦃⌜True⌝⦄
     tril m k
@@ -32,3 +39,4 @@ theorem tril_spec {rows cols : Nat} (m : Vector (Vector Float cols) rows) (k : I
                     let twice_applied := tril result k
                     (twice_applied.get i).get j = (result.get i).get j)⌝⦄ := by
   sorry
+-- </vc-theorems>

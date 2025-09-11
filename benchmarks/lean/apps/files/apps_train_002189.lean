@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def toString (c : Char) : String := String.mk [c]
 
 def mkString (n : Nat) (c : Char) : String := 
   String.mk (List.replicate n c)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_max_rectangle (h w : Nat) (grid : List String) : Nat := sorry
 
 theorem solve_max_rectangle_dimensions {h w : Nat} (hge2 : h ≥ 2) (wge2 : w ≥ 2) 
     (grid : List String) (grid_all_dots : ∀ i < h, grid.get? i = some (mkString w '.')) :
   let result := solve_max_rectangle h w grid
   result ≥ max h w ∧ result ≤ h * w := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_max_rectangle_positive {h w : Nat} (hge2 : h ≥ 2) (wge2 : w ≥ 2)
     (grid : List String) (grid_valid : grid.length ≥ h ∧ ∀ row ∈ grid, row.length ≥ w) :
   let grid' := (grid.take h).map (λ row => row.take w)
@@ -45,6 +52,7 @@ info: 27
 -/
 -- #guard_msgs in
 -- #eval solve_max_rectangle 10 8 ["##...#.#", "##...#.#", "..###.#.", "#.##.#.#", ".#..#.#.", "..##.#.#", "##.#.#..", "...#.#..", "###.#.##", "###..###"]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

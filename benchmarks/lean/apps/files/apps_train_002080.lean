@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_xor_basket (nums: List Nat) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_format {nums: List Nat} (h1: nums.length > 0) 
   (h2: ∀ x ∈ nums, 1 ≤ x ∧ x ≤ 1000) :
   let result := solve_xor_basket nums
@@ -32,6 +40,7 @@ theorem xor_property {nums: List Nat} (h1: nums.length > 0)
      let xor_result := indices.foldl (fun acc idx => Nat.xor acc (nums.get! idx)) 0
      xor_result = nums[i]?) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

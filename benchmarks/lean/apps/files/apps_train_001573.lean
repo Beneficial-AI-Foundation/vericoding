@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def snail {α : Type} (arr : List (List α)) : List α := sorry
 
 def verify_snail_pattern {α : Type} (arr : List (List α)) (result : List α) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem snail_empty_array {α : Type} : snail ([] : List (List α)) = [] := sorry
 
 theorem snail_empty_nested {α : Type} : snail [[]] = ([] : List α) := sorry
@@ -39,6 +47,7 @@ info: [1, 2, 3, 6, 9, 8, 7, 4, 5]
 -/
 -- #guard_msgs in
 -- #eval snail [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

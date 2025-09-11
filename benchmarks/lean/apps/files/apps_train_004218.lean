@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def consecutive (lst : List Int) : Int := sorry
 
 -- Helper function to find maximum in list
@@ -7,18 +8,25 @@ def listMax : List Int → Int
   | (x::xs) => max x (listMax xs)
 
 -- Helper function to find minimum in list
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listMin : List Int → Int
   | [] => 0
   | (x::xs) => min x (listMin xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem consecutive_empty : consecutive [] = 0 := sorry
 
 theorem consecutive_property {lst : List Int} (h : lst ≠ []) :
   consecutive lst = listMax lst - listMin lst + 1 - lst.length := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

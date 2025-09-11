@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn in_array(a: &[i32], x: i32) -> bool {
     exists|i: int| 0 <= i < a.len() && a@.index(i) == x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= b
@@ -8,6 +9,7 @@ function GcdOfRange(a: int, b: int): int
 {
     if a == b then a else 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

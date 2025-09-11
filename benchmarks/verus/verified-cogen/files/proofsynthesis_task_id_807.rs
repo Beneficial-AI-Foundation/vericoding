@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn check_find_first_odd(arr: &Vec<u32>, index: Option<usize>) -> (result: b
         forall|k: int| 0 <= k < arr.len() ==> (arr[k] % 2 == 0)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

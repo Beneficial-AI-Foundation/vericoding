@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn is_digit(c: char) -> bool {
     48 <= c as int <= 57
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

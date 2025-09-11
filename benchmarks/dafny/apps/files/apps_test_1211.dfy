@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, A: seq<int>)
 {
     k > 0 && |A| == k && (forall i :: 0 <= i < k ==> A[i] > 0) && n >= 0
@@ -16,6 +17,7 @@ predicate OptimalSolution(n: int, A: seq<int>, box_type: int, num_boxes: int)
     num_boxes == n / A[box_type - 1] &&
     forall i :: 0 <= i < |A| ==> HamstersTransported(n, A[box_type - 1]) >= HamstersTransported(n, A[i])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

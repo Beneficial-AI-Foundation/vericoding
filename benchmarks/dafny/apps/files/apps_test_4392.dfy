@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: array<int>, allowedPos: array<bool>)
     reads a, allowedPos
 {
@@ -56,6 +57,7 @@ function BubblePassHelper(s: seq<int>, pos: nat): seq<int>
     else
         BubblePassHelper(s, pos + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

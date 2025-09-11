@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_cost (n : Nat) (cuts : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cost_nonnegative (n : Nat) (cuts : List Nat) (h : n ≥ 2) :
   min_cost n cuts ≥ 0 :=
 sorry
@@ -43,6 +51,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval min_cost 7 [1, 3, 4, 5, 0, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

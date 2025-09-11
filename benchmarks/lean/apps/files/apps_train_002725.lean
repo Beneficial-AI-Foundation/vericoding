@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def String.substringExists (s : String) (sub : String) : Bool := sorry
 
 def alan_annoying_kid (phrase : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.getWords (s : String) : List String := sorry
 
 theorem alan_preserves_verb (phrase : String) (verb : String)
   (h₁ : phrase.startsWith "Today I")
   (h₂ : verb ∈ phrase.getWords) :
   verb ∈ (alan_annoying_kid phrase).getWords := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem alan_response_structure (phrase : String) (h₁ : phrase.startsWith "Today I") : 
   let response := alan_annoying_kid phrase
   response.startsWith "I don't think you" ∧ 
@@ -47,6 +54,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval alan_annoying_kid "Today I cleaned the kitchen."
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

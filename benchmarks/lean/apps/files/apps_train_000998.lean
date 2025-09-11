@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_kitchen_cleanup (n : Nat) (m : Nat) (completed : List Nat) : String × String := sorry
 
 def isValidOutput (n : Nat) (completed : List Nat) (chef : String) (assistant : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem kitchen_cleanup_properties {n : Nat} {completed : List Nat} : 
   1 ≤ n ∧ n ≤ 100 → 
   (∀ x ∈ completed, 1 ≤ x ∧ x ≤ 100) →
@@ -23,6 +31,7 @@ theorem all_completed {n : Nat} :
   let completed := List.range n
   let (chef, assistant) := solve_kitchen_cleanup n n completed
   chef = "" ∧ assistant = "" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def stringEndsWith (s ending : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem stringEndsWith_matches_endsWith (s ending : String) :
   stringEndsWith s ending = String.endsWith s ending := by
   sorry
@@ -42,6 +50,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval string_ends_with "samurai" "ai"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

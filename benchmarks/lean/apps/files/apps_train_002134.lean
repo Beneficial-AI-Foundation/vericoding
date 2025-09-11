@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 def solve_polynomial_counts (nums : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_polynomial_counts_single
   {n : Nat}
   (h : n ≤ 1000000000) :
@@ -36,6 +44,7 @@ info: [4, 1, 9, 2, 9]
 -/
 -- #guard_msgs in
 -- #eval solve_polynomial_counts [4, 1, 8, 3, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

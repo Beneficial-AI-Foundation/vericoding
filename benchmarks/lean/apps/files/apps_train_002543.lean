@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_needed_guards (islands : List Bool) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem guard_count_nonnegative (islands : List Bool) : 
   find_needed_guards islands ≥ 0 :=
 sorry
@@ -34,6 +42,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_needed_guards [False, False, False, False, False]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

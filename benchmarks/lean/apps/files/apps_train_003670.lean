@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def looper (start : Float) (stop : Float) (number : Nat) : List Float := sorry
 
 theorem looper_length {start stop : Float} {number : Nat} (h : number > 0) : 
   (looper start stop number).length = number := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem looper_start {start stop : Float} {number : Nat} (h : number > 0) :
   (looper start stop number).head! = start := sorry
 
@@ -20,6 +28,7 @@ theorem looper_evenly_spaced {start stop : Float} {number : Nat} (h : number > 2
 
 theorem looper_single_point {start stop : Float} :
   looper start stop 1 = [start] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

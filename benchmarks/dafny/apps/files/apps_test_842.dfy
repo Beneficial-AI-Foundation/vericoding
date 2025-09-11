@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| > 0
@@ -40,6 +41,7 @@ predicate ValidOutput(result: string, input: string)
         n == ExtractFirstLine(input) &&
         result == n + ReverseString(n) + "\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def determine_location (n : Nat) (home_airport : String) (flights : List String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem determine_location_valid_output (n : Nat) (home_airport : String) (flights : List String) :
   determine_location n home_airport flights = "home" ∨ 
   determine_location n home_airport flights = "contest" :=
@@ -36,6 +44,7 @@ info: 'contest'
 -/
 -- #guard_msgs in
 -- #eval determine_location 1 "ESJ" ["ESJ->TSJ"]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

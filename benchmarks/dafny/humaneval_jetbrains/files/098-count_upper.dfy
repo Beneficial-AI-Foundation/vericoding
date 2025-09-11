@@ -1,6 +1,8 @@
+// <vc-preamble>
 function is_upper_vowel(c: char) : bool {
   c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lcm : List Nat → Nat
 | [] => 1 
 | _  => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lcm_self_identity (n : Nat) : n > 0 → lcm [n, n] = n := by
   sorry
 
@@ -43,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval lcm
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

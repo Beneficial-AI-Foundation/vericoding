@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def matrixBlockSum (matrix : List (List Int)) (k : Nat) : List (List Int) := sorry
 
 def sumList (l : List Int) : Int := match l with
   | [] => 0
   | x :: xs => x + sumList xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_dimensions 
   (matrix : List (List Int)) (k : Nat)
   (h1 : 0 < matrix.length) 
@@ -51,6 +59,7 @@ info: expected2
 -/
 -- #guard_msgs in
 -- #eval matrix_block_sum [[1, 2, 3], [4, 5, 6], [7, 8, 9]] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

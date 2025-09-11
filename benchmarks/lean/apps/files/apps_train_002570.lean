@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def square_sum (xs : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem square_sum_nonnegative (xs : List Int) :
   square_sum xs ≥ 0 :=
   sorry
@@ -27,6 +35,7 @@ theorem square_sum_perm_invariant (xs ys : List Int) :
 theorem square_sum_monotonic_nonneg (xs : List Int) (n : Int) :
   (∀ x ∈ xs, x ≥ 0) → n ≥ 0 → square_sum (n::xs) ≥ square_sum xs :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

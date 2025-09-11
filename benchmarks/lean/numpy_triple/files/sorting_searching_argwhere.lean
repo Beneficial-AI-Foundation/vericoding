@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_argwhere {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_argwhere_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_argwhere a
@@ -19,3 +26,4 @@ theorem numpy_argwhere_spec {n : Nat} (a : Vector Float n) :
         indices.idxOf i < indices.idxOf j)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, scores: seq<int>)
 {
     n >= 1 && m >= 1 && |scores| == n &&
@@ -32,6 +33,7 @@ function MaxPossibleFirstScore(n: int, m: int, scores: seq<int>): int
 {
     min(Sum(scores), m)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

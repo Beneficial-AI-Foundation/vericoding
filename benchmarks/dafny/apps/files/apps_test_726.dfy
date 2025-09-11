@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, d: int, hotels: seq<int>)
 {
     n > 0 && d > 0 && |hotels| == n &&
@@ -21,6 +22,7 @@ predicate CorrectResult(n: int, d: int, hotels: seq<int>, result: int)
 {
     result == 2 + SumContributions(hotels, d, n-1) && result >= 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

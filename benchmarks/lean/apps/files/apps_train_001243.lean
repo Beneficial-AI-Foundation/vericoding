@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def binaryStringToDecimal (s : String) : Nat := sorry
 
 theorem result_in_valid_range (s : String) (h : s.length > 0) : 
   binaryStringToDecimal s < 10^9 + 7 ∧ binaryStringToDecimal s ≥ 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isVowel (c : Char) : Bool := sorry
 
 theorem all_vowels_max_value (s : String) (h : s.length > 0) 
   (h2 : ∀ c ∈ s.data, isVowel c) :
   binaryStringToDecimal s = (2^s.length - 1) % (10^9 + 7) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_consonants_zero (s : String) (h : s.length > 0)
   (h2 : ∀ c ∈ s.data, ¬isVowel c) :
   binaryStringToDecimal s = 0 := sorry
@@ -39,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval binary_string_to_decimal "xyz"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn is_perfect_square(n: nat) -> bool {
     exists|i: nat| #[trigger] (i * i) == n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

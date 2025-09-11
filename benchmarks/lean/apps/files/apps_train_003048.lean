@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverseWords (s : String) : String := sorry
 
 theorem reverseWords_roundtrip (word_list : List String) (h : word_list.length > 0) :
   let sentence := String.intercalate " " word_list
   reverseWords (reverseWords sentence) = sentence := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverseWords_preserves_word_count (word_list : List String) 
   (h1 : word_list.length ≥ 2) (h2 : word_list.length ≤ 10) :
   let sentence := String.intercalate " " word_list
@@ -36,6 +44,7 @@ info: 'abc'
 -/
 -- #guard_msgs in
 -- #eval reverseWords "abc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def Command := Nat × Nat
 
 /- Given commands are valid if they are within matrix bounds n×m -/
@@ -6,13 +7,19 @@ def valid_commands : Nat → Nat → List Command → Bool
   | n, m, cmds => cmds.all fun c => c.1 ≤ n && c.2 ≤ m
 
 /- Solve strange matrix takes dimensions n,m and list of commands, returns list of sums -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_strange_matrix (n m k : Nat) (cmds : List Command) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_column
   (n : Nat)
   (h : n > 0) :
@@ -30,6 +37,7 @@ theorem single_row
   -- Result is m-1
   result.get! 0 = m - 1 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

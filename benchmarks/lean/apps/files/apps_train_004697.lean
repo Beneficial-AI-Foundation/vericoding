@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def DIRS := [('←', (0,-1)), ('↑', (-1,0)), ('→', (0,1)), ('↓', (1,0)),
             ('↖', (-1,-1)), ('↗', (-1,1)), ('↘', (1,1)), ('↙', (1,-1))]
 
@@ -7,13 +8,19 @@ def count_deaf_rats (town: List String) : Nat :=
 def listSum : List Nat → Nat 
   | [] => 0
   | x::xs => x + listSum xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s: String) (c: Char) : Nat :=
   s.toList.filter (· == c) |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_output_range (town: List String) 
   (h1: town.length > 0)
   (h2: listSum (town.map (fun row => countChar row 'P')) = 1)
@@ -49,6 +56,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval count_deaf_rats ["    ↗    ", "P ↓   ↖ ↑", "    ←   ↓", "  ↖ ↙   ↙", "↓ ↓ ↓    "]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

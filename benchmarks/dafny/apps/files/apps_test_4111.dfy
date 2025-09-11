@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, arr: seq<int>)
 {
   n >= 1 && |arr| == n && forall i :: 0 <= i < n ==> arr[i] >= 1
@@ -49,6 +50,7 @@ function count_helper(arr: seq<int>, i: int, count1: int, count2: int, temp1: in
     var new_temp2 := if i % 2 == 1 then temp2 + arr[i] else temp2;
     contribution + count_helper(arr, i + 1, count1, count2, new_temp1, new_temp2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

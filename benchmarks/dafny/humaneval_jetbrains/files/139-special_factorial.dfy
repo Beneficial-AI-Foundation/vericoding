@@ -1,3 +1,4 @@
+// <vc-preamble>
 function factorial(n: nat): nat
   decreases n
 {
@@ -8,6 +9,7 @@ function special_factorial_rec(n: nat): nat
 {
   if n == 0 then 1 else factorial(n) * special_factorial_rec(n - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

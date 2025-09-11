@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (N : Nat) (A : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_length_prop {N : Nat} {A : List Nat} 
   (h1 : N ≥ 2) (h2 : A.length = N) :
   (solve N A).length = N - 1 := by
@@ -37,6 +45,7 @@ info: [3, 1, 1, 0]
 -/
 -- #guard_msgs in
 -- #eval solve 5 [3, 6, 4, 5, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

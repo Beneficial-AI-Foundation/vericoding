@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int, d: int)
 {
     a >= 0 && b >= 0 && c >= 0 && d >= 0
@@ -26,6 +27,7 @@ function CalculateWakeTime(a: int, b: int, c: int, d: int): int
     var cycles := (remaining - 1) / (c - d) + 1;
     b + c * cycles
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_turbulence_size (arr : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem turbulence_size_bounds {arr : List Int} (h : arr.length ≥ 1) : 
   1 ≤ max_turbulence_size arr ∧ max_turbulence_size arr ≤ arr.length :=
   sorry
@@ -44,6 +52,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval max_turbulence_size [100]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

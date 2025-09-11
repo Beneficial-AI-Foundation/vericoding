@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def greatest (x y n : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def smallest (x y n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divisible_by_inputs {x y n : Nat} (hx : x > 0) (hy : y > 0) :
   let g := greatest x y (max x y * 2)
   let s := smallest x y (max x y * 2)
@@ -54,6 +61,7 @@ info: 18696
 -/
 -- #guard_msgs in
 -- #eval smallest 123 456 789
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

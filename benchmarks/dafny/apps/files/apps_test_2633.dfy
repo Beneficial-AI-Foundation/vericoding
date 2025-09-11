@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidDungeon(dungeon: seq<seq<int>>)
 {
     |dungeon| > 0 &&
@@ -40,6 +41,7 @@ predicate canSurvivePath(dungeon: seq<seq<int>>, path: seq<(int, int)>, initialH
     forall i :: 0 <= i < |path| ==> 
         healthAtStep(dungeon, path, i, initialHealth) > 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

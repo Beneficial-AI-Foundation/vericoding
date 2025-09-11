@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def String.reverse (s : String) : String := sorry
 
 def reverse (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_non_negative (n : Nat) : 
   reverse n ≥ 0 := sorry
 
@@ -14,6 +22,7 @@ theorem reverse_length_leq (n : Nat) :
 
 theorem reverse_single_digit (n : Nat) :
   n ≤ 9 → reverse n = n := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

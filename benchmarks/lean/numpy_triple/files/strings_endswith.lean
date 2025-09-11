@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def endswith {n : Nat} (a : Vector String n) (suffix : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem endswith_spec {n : Nat} (a : Vector String n) (suffix : Vector String n) :
     ⦃⌜True⌝⦄
     endswith a suffix
@@ -23,3 +30,4 @@ theorem endswith_spec {n : Nat} (a : Vector String n) (suffix : Vector String n)
         (suffix.get i).length > (a.get i).length ∨
         (a.get i).drop ((a.get i).length - (suffix.get i).length) ≠ (suffix.get i))⌝⦄ := by
   sorry
+-- </vc-theorems>

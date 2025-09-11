@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def quadratic (x1 x2 : Int) : Int × Int × Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem first_coeff_one (x1 x2 : Int) :
   let (a, b, c) := quadratic x1 x2
   a = 1 := sorry
@@ -29,6 +37,7 @@ info: (1, 9, 20)
 -/
 -- #guard_msgs in
 -- #eval quadratic -5 -4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

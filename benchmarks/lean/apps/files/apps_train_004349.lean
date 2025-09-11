@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def alt_or : List Bool → Option Bool
   | [] => none
   | l => some (sorry)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem alt_or_empty : alt_or [] = none := by sorry
 
 theorem alt_or_nonempty {l : List Bool} (h : l ≠ []) :
@@ -33,6 +41,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval alt_or [False, True, False]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

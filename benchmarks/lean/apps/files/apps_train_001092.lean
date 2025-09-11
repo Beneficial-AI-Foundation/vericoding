@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_love_graphs (n m : Nat) : Nat := sorry
 
 theorem count_love_graphs_mod (n m : Nat) (h1 : n ≥ 1) (h2 : m ≥ 0) :
   count_love_graphs n m < 1000000007 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_love_graphs_nonneg (n m : Nat) (h1 : n ≥ 1) (h2 : m ≥ 0) :
   count_love_graphs n m ≥ 0 := sorry
 
@@ -37,6 +45,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval count_love_graphs 4 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_transform (s1 s2 : List Char) : Bool := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_length_property {s1 s2 : List Char} :
   can_transform s1 s2 = true → s1.length = s2.length := by
   sorry
@@ -46,6 +54,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_transform "XXXXXLXXXX" "LXXXXXXXXX"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

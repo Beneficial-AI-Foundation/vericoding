@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Planet = Mercury | Venus | Earth | Mars | Jupiter | Saturn | Uranus | Neptune
 datatype Option<T> = Some(value: T) | None
 function PlanetFromString(name: string): Option<Planet>
@@ -70,6 +71,7 @@ function GetPlanetsBetweenIndices(start: int, end: int): seq<string>
     case 7 => ["Neptune"]
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

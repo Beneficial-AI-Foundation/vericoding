@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ipToInt32 (ip: String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ipToInt32_in_range (a b c d: Nat)
   (h1: a ≤ 255) (h2: b ≤ 255) (h3: c ≤ 255) (h4: d ≤ 255) :
   let ip := s!"{a}.{b}.{c}.{d}"
@@ -62,6 +70,7 @@ info: 4294967295
 -/
 -- #guard_msgs in
 -- #eval ip_to_int32 "255.255.255.255"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

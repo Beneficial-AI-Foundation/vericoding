@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def between (a b : Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem between_length_matches_inputs {a b : Int} (h : a ≤ b) :
   (between a b).length = b - a + 1 :=
   sorry
@@ -38,6 +46,7 @@ info: [-1, 0, 1]
 -/
 -- #guard_msgs in
 -- #eval between -1 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

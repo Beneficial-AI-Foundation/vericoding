@@ -1,7 +1,9 @@
+// <vc-preamble>
 ghost function Exp_int(x: nat, y:nat): nat
 {
   if y == 0 then 1 else x * Exp_int(x, y - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

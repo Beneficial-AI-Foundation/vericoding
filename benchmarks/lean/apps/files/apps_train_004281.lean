@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def multiple (n : Int) : String := sorry 
 
 theorem multiple_output_valid (x : Int) : 
   multiple x = "Bang" ∨ multiple x = "Boom" ∨ multiple x = "BangBoom" ∨ multiple x = "Miss" := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiple_divisible_by_both (x : Int) : 
   x % 3 = 0 ∧ x % 5 = 0 → multiple x = "BangBoom" :=
 sorry
@@ -48,6 +56,7 @@ info: 'Miss'
 -/
 -- #guard_msgs in
 -- #eval multiple 98
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsPowerOfTwo(n: int) 
     decreases n
 {
@@ -17,6 +18,7 @@ predicate CorrectResult(n: int, result: int) {
     else 
         exists z :: 1 <= z <= n && IsPowerOfTwo(z) && z <= n && z * 2 > n && result == (n - z) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

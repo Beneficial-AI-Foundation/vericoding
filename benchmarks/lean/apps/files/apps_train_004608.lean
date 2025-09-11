@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_coordinates (s : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_comma_invalid (s: String) : 
   ¬s.contains ',' → is_valid_coordinates s = false :=
 sorry
@@ -69,6 +77,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_valid_coordinates "0.342q0832, 1.2324"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

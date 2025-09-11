@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def make_palindrome_triangle (n: Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def split_lines (s: String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_triangle_line_count {n: Nat} (h: 0 < n) (h2: n ≤ 9):
   let lines := split_lines (make_palindrome_triangle n)
   lines.length = n :=
@@ -57,6 +64,7 @@ info: '1'
 -/
 -- #guard_msgs in
 -- #eval make_palindrome_triangle 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

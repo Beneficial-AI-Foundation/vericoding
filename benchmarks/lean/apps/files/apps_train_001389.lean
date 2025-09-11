@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_cost (n : Nat) (arr : List Int) : Int := sorry
 
 theorem find_max_cost_is_min {n : Nat} {arr : List Int}
@@ -9,7 +15,9 @@ theorem find_max_cost_is_min {n : Nat} {arr : List Int}
   (h3 : ∀ x ∈ arr, x > 0)
   (h4 : ∀ x ∈ arr, x ≤ 1000) :
   ∀ y ∈ arr, find_max_cost n arr ≤ y := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_cost_in_list {n : Nat} {arr : List Int}
   (h1 : n = arr.length)
   (h2 : n > 0)
@@ -44,6 +52,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_max_cost 4 #[3, 7, 11, 15]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

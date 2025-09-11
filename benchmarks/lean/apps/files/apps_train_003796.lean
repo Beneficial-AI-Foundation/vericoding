@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def meme_sorting (s : String) : String := sorry
 
 theorem meme_sorting_returns_valid_name (s : String) : 
   meme_sorting s = "Roma" ∨ meme_sorting s = "Maxim" ∨ meme_sorting s = "Danik" ∨ meme_sorting s = "Vlad" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bug_pattern_returns_roma {s : String} (h : ∃ i j k : String.Pos, 
   s.get i = 'b' ∧ 
   s.get j = 'u' ∧ 
@@ -56,6 +64,7 @@ info: 'Vlad'
 -/
 -- #guard_msgs in
 -- #eval meme_sorting "This is meme"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

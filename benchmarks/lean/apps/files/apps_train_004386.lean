@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def createDict : List String → List Int → List (String × (Option Int)) 
   | _, _ => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem createDict_length (keys : List String) (values : List Int) :
   List.length (createDict keys values) = List.length keys := sorry
 
@@ -42,6 +50,7 @@ info: {'a': 1, 'b': 2}
 -/
 -- #guard_msgs in
 -- #eval createDict ["a", "b"] [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

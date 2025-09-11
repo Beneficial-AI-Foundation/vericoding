@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def solve_binary_string (s : String) : Nat := sorry
 
 def is_binary_string (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def MOD : Nat := 1000000007
 
 theorem solve_binary_string_properties {s : String} (h : is_binary_string s = true) :
   let result := solve_binary_string s
   0 ≤ result ∧ result ≤ MOD := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_zeros {s : String} (h : ∀ c ∈ s.data, c = '0') :
   solve_binary_string s = s.length := sorry
 
@@ -38,6 +45,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval solve_binary_string "0001111"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

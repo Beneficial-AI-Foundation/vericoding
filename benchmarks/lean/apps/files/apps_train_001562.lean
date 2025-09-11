@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def n_linear (multipliers : List Nat) (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem n_linear_positive (multipliers : List Nat) (n : Nat)
   (h1 : multipliers.length > 0) 
   (h2 : ∀ x ∈ multipliers, x ≥ 2)
@@ -41,6 +49,7 @@ info: 46
 -/
 -- #guard_msgs in
 -- #eval n_linear [2, 3, 4, 5] 33
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def Email := String
 def validate_emails (emails : List Email) : List Email := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidEmailFormat (e : Email) : Bool := sorry
 
 /- For a list of valid email addresses, all should be returned unchanged -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem validate_valid_emails (emails : List Email) 
   (h : ∀ e ∈ emails, isValidEmailFormat e) :
   validate_emails emails = emails :=
@@ -50,6 +57,7 @@ info: ['CAROL <carol@xyz.com>']
 -/
 -- #guard_msgs in
 -- #eval validate_emails ["INVALID <inv@k.>", "CAROL <carol@xyz.com>"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

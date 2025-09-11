@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_permutations (arr : List Int) : List (Nat × Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem permutations_results_valid (arr : List Int) 
   (h : ∀ x ∈ arr, x > 0) : 
   let result := find_permutations arr
@@ -54,6 +62,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval len find_permutations(test3)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

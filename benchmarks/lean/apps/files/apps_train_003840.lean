@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def toLeetSpeak (s : String) : String := sorry
 
 theorem toLeetSpeak_preserves_length_uppercase (s : String)
   (h : ∀ c ∈ s.data, c.isUpper) :
   (toLeetSpeak s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem toLeetSpeak_result_is_string (s : String)
   (h : ∀ c ∈ s.data, c.isUpper) :
   ∃ _r : String, toLeetSpeak s = _r := sorry
@@ -46,6 +54,7 @@ info: '#3110 W0R1D'
 -/
 -- #guard_msgs in
 -- #eval to_leet_speak "HELLO WORLD"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

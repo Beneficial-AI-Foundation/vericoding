@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn set_product(s: Set<int>) -> int
         arbitrary()
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

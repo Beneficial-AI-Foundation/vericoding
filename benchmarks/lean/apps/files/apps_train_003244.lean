@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solution (nums : List Int) : List Int := sorry
 
 def isSorted (l : List Int) : Bool :=
@@ -8,7 +14,9 @@ def isSorted (l : List Int) : Bool :=
   | [] => true
   | [_] => true
   | x::y::rest => x ≤ y && isSorted (y::rest)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_maintains_elements (nums : List Int) :
   (solution nums).foldl (· + ·) 0 = nums.foldl (· + ·) 0 := sorry
 
@@ -37,6 +45,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval solution None
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

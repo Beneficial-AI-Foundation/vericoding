@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def two_highest (ls : List Int) : Option (List Int) := sorry
 
 theorem two_highest_length_at_most_2 (ls : List Int) :
@@ -8,7 +14,9 @@ theorem two_highest_length_at_most_2 (ls : List Int) :
   | none => True
   | some result => result.length ≤ 2
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem two_highest_elements_from_input (ls : List Int) :
   match two_highest ls with
   | none => True
@@ -61,6 +69,7 @@ info: [20, 17]
 -/
 -- #guard_msgs in
 -- #eval two_highest [15, 20, 20, 17]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

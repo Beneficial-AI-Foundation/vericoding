@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_virus_spread (N : Nat) (init_pop : String) (D : Nat) (isolations : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countOnes (s : String) : Nat :=
   s.data.filter (· = '1') |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_virus_spread_type (N : Nat) (init_pop : String) (D : Nat) (isolations : List Nat) :
   Nat.le 0 (solve_virus_spread N init_pop D isolations) ∧ 
   Nat.le (solve_virus_spread N init_pop D isolations) N :=
@@ -37,6 +44,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval solve_virus_spread 5 "00001" 1 [5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_diagonal (d : Nat) (l : Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem generate_diagonal_length
   (d l : Nat) :
   (generate_diagonal d l).length = l :=
@@ -50,6 +58,7 @@ info: [1, 101, 5151, 176851, 4598126, 96560646]
 -/
 -- #guard_msgs in
 -- #eval generate_diagonal 100 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

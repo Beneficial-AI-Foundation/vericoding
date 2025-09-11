@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def make_acronym (s : String) : String := sorry
 
 theorem empty_string_returns_empty :
   make_acronym "" = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_letter_strings_returns_not_letters (s : String) :
   (∃ c ∈ s.data, ¬c.isAlpha ∧ ¬c.isWhitespace) →
   make_acronym s = "Not letters" := sorry
@@ -39,6 +47,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval make_acronym ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

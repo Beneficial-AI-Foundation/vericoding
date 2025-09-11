@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int)
 {
     1 <= A <= 100 && 1 <= B <= 100
@@ -7,6 +8,7 @@ predicate DistributionPossible(A: int, B: int)
 {
     A % 3 == 0 || B % 3 == 0 || (A + B) % 3 == 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

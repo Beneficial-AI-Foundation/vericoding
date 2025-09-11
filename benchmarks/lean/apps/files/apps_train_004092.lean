@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverseByCenter (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverseByCenter_length_preserved (s : String) :
   (reverseByCenter s).length = s.length :=
 sorry
@@ -44,6 +52,7 @@ info: 'war'
 -/
 -- #guard_msgs in
 -- #eval reverse_by_center "raw"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

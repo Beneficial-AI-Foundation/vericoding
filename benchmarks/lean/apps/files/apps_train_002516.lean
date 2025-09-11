@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def get_combinations_with_replacement (s : String) (k : Nat) : String := sorry
 
 def is_sorted (s : String) : Bool := sorry
@@ -5,15 +6,21 @@ def is_sorted (s : String) : Bool := sorry
 def all_chars_from (s : String) (chars : String) : Bool := sorry
 
 def all_length (s : String) (k : Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def no_duplicates (s : String) : Bool := sorry
 
 theorem get_combinations_sorted (s : String) (k : Nat) : 
   is_sorted (get_combinations_with_replacement s k) = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_combinations_length (s : String) (k : Nat) :
   all_length (get_combinations_with_replacement s k) k = true := sorry
 
@@ -28,6 +35,7 @@ theorem get_combinations_example1 :
 
 theorem get_combinations_example2 :
   get_combinations_with_replacement "XYZ" 2 = "XX\nXY\nXZ\nYY\nYZ\nZZ" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

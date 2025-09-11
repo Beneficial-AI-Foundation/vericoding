@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def func_or (a b : Bool) : Bool := sorry
 def func_xor (a b : Bool) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem or_basic (a b : Bool) : 
   func_or a b = (a || b) := sorry
 
@@ -87,6 +95,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval func_xor [] None
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

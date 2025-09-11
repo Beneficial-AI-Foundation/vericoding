@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_inversions (n : Nat) (arr : List Nat) : Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_inversions_output_nat (n : Nat) (arr : List Nat) :
   let (inv, out) := solve_inversions n arr
   Nat.zero ≤ inv ∧ Nat.zero ≤ out :=
@@ -45,6 +53,7 @@ info: (0, 8)
 -/
 -- #guard_msgs in
 -- #eval solve_inversions 3 arr3.copy()
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

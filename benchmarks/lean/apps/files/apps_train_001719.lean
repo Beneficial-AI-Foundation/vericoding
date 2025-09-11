@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def generate_bc (url : String) (separator : String) : String :=
   sorry
 
 def containsStr (s : String) (sub : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def findStr (s : String) (sub : String) : Option Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem generate_bc_structure (paths : List String) (separator : String) 
   (h1 : paths.length ≥ 1) (h2 : paths.length ≤ 5) :
   let url := "mysite.com/" ++ String.intercalate "/" paths
@@ -66,6 +73,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval generate_bc "mysite.com/very-long-url-to-make-a-silly-yet-meaningful-example/example.htm" " > "
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

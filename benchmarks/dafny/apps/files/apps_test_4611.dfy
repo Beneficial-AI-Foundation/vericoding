@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Checkpoint = Checkpoint(t: int, x: int, y: int)
 
 predicate ValidInputFormat(input: string)
@@ -34,6 +35,7 @@ predicate CheckpointsFeasible(checkpoints: seq<Checkpoint>, currentT: int, curre
         else if (dt - dis) % 2 != 0 then false
         else CheckpointsFeasible(checkpoints[1..], cp.t, cp.x, cp.y)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 method Search( s: seq<int>, x: int ) returns ( k: int )
 
     requires forall p,q | 0 <= p < q < |s| :: s[p] <= s[q];
@@ -10,6 +11,7 @@ method Search( s: seq<int>, x: int ) returns ( k: int )
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

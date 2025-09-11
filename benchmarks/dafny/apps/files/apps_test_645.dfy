@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsVowel(c: char) {
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
 }
@@ -13,6 +14,7 @@ predicate NeedsFlipping(c: char) {
 function CountFlips(s: string): int {
   |set i | 0 <= i < |s| && NeedsFlipping(s[i])|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

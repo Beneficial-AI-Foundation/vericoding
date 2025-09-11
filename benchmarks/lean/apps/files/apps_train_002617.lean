@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def make_sequences (n : Nat) : Nat := sorry 
 
 abbrev sum_list : List Nat → Nat 
   | [] => 0
   | (x::xs) => x + sum_list xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_at_least_one (n : Nat) (h: n > 0) : 
   make_sequences n ≥ 1 := sorry
 
@@ -36,6 +44,7 @@ info: 1981471878
 -/
 -- #guard_msgs in
 -- #eval make_sequences 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

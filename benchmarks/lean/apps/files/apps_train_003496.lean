@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Char.isValidUnicode (c : Char) : Bool := sorry
 
 def letterCount (s : String) : Char → Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem letterCount_all_counts_positive {s : String} {c : Char} :
   letterCount s c > 0 → c ∈ s.data := by sorry
 
@@ -40,6 +48,7 @@ info: {'a': 1, 'c': 1, 'e': 1, 'h': 1, 'i': 2, 'm': 1, 'r': 1, 's': 1, 't': 2}
 -/
 -- #guard_msgs in
 -- #eval letter_count "arithmetics"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

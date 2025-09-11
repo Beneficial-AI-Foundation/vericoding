@@ -1,3 +1,4 @@
+// <vc-preamble>
 function binomial(n: int, k: int): int
     requires 0 <= k <= n
 {
@@ -5,6 +6,7 @@ function binomial(n: int, k: int): int
     else if k == 1 then n
     else binomial(n-1, k-1) + binomial(n-1, k)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

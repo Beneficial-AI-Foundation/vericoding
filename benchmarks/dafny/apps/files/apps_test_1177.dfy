@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, S: int, A: seq<int>)
 {
     N >= 1 && S >= 1 && |A| == N && N <= 3000 && S <= 3000 &&
@@ -19,6 +20,7 @@ function SingleElementCase(N: int, S: int, A: seq<int>): int
 {
     if S == A[0] then 1 else 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

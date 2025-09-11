@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
   1 <= n <= 2000000000
 }
@@ -35,6 +36,7 @@ function isqrt(n: int): int
     var high := guess + 1;
     isqrt_helper(n, low, high)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

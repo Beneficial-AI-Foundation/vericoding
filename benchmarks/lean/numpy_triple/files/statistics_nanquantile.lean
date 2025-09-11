@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nanquantile {n : Nat} (a : Vector Float (n + 1)) (q : Float) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nanquantile_spec {n : Nat} (a : Vector Float (n + 1)) (q : Float) 
     (h_q_valid : 0 ≤ q ∧ q ≤ 1) :
     ⦃⌜0 ≤ q ∧ q ≤ 1⌝⦄
@@ -43,3 +50,4 @@ theorem nanquantile_spec {n : Nat} (a : Vector Float (n + 1)) (q : Float)
           (∃ lower_idx upper_idx : Fin (n + 1),
             a.get lower_idx ≤ result ∧ result ≤ a.get upper_idx)))⌝⦄ := by
   sorry
+-- </vc-theorems>

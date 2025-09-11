@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost function Count(hi: nat, s:seq<int>): int
     requires 0 <= hi <= |s|
     decreases hi
@@ -5,6 +6,7 @@ ghost function Count(hi: nat, s:seq<int>): int
     if hi == 0 then 0
     else if s[hi-1]%2 == 0 then 1 + Count(hi-1, s) else Count(hi-1, s)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

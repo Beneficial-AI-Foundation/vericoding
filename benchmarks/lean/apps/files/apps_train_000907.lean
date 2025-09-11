@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_knight_move (move : String) : String := sorry
 
 theorem valid_moves_only_returns_yes_or_no (pos1_col pos1_row pos2_col pos2_row : Char) 
@@ -10,7 +16,9 @@ theorem valid_moves_only_returns_yes_or_no (pos1_col pos1_row pos2_col pos2_row 
     (h4 : '1' ≤ pos2_row ∧ pos2_row ≤ '8') :
     let move := s!"{pos1_col}{pos1_row}-{pos2_col}{pos2_row}"
     (is_valid_knight_move move = "Yes" ∨ is_valid_knight_move move = "No") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_format_returns_error (move : String) :
     (String.length move ≠ 5 ∨ 
      move.get ⟨2⟩ ≠ '-' ∨
@@ -34,6 +42,7 @@ theorem same_position_invalid (col row : Char)
     (h2 : '1' ≤ row ∧ row ≤ '8') :
     let move := s!"{col}{row}-{col}{row}"
     is_valid_knight_move move = "No" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

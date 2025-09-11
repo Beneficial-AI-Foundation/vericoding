@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn is_upper_lower_pair(C: char, c: char) -> bool {
 spec fn shift_32(c: char) -> char {
     (((c as int + 32) % 128) as u8) as char
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

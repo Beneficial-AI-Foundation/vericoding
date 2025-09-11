@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A1: int, A2: int, A3: int)
 {
     1 <= A1 <= 100 && 1 <= A2 <= 100 && 1 <= A3 <= 100
@@ -17,6 +18,7 @@ function MinimumCost(A1: int, A2: int, A3: int): int
 {
     MaxOfThree(A1, A2, A3) - MinOfThree(A1, A2, A3)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

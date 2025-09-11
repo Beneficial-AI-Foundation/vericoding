@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def lcm_cardinality (n : Nat) : Nat := sorry
 def lcm (a b : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def divisors (n : Nat) : List Nat := sorry
 
 theorem lcm_cardinality_positive (n : Nat) (h : n ≥ 1) : 
   lcm_cardinality n ≥ 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lcm_cardinality_upper_bound (n : Nat) (h : n ≥ 1) :
   let divs := List.length (divisors n)
   lcm_cardinality n ≤ 1 + (divs * (divs - 1)) / 2 := sorry
@@ -18,6 +25,7 @@ theorem lcm_cardinality_monotonic_powers_two (i : Nat) (h : i > 0) :
 
 theorem lcm_factors_bound (n : Nat) (h : n ≥ 1) :
   ∀ (a b : Nat), a ∈ divisors n → b ∈ divisors n → lcm a b ≤ n := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

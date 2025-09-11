@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def mid_endian (n : Nat) : String := sorry
 
 def natToHexString (n : Nat) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def splitInPairs (s : String) : List String := sorry
 
 theorem mid_endian_idempotent_bytes (n : Nat) :
   let result := mid_endian n
   let pairs := splitInPairs result
   String.join pairs = result := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mid_endian_valid_hex (n : Nat) : 
   ∃ h, (mid_endian n).toNat? = some h := sorry
 
@@ -45,6 +52,7 @@ info: '0B0A0C'
 -/
 -- #guard_msgs in
 -- #eval mid_endian 658188
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

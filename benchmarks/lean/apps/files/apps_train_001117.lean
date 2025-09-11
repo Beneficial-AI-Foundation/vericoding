@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_mininum_value (s1 s2 : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_minimum_value_nonnegative (s1 s2 : String) :
   get_mininum_value s1 s2 ≥ 0 :=
 sorry
@@ -32,6 +40,7 @@ sorry
 theorem get_minimum_value_identical_string (s : String) :
   get_mininum_value s s = s.length :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

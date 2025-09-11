@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def SWAP : Char → Char
   | 'a' => '@'
   | 'i' => '1'
   | 'e' => '3'
   | 'o' => '0'
   | c => c
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def make_password (phrase : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem password_length_matches_words (words : List String) :
   (make_password (String.intercalate " " words)).length = words.length :=
   sorry
@@ -51,6 +58,7 @@ info: '505'
 -/
 -- #guard_msgs in
 -- #eval make_password "Save Our Souls"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

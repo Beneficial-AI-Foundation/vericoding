@@ -1,3 +1,4 @@
+// <vc-preamble>
 function GenerateSquares(): seq<int>
     ensures forall i :: 0 <= i < |GenerateSquares()| ==> GenerateSquares()[i] > 0
 {
@@ -15,6 +16,7 @@ function IntToString(n: int): string
     if n == 0 then "0"
     else IntToStringHelper(n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

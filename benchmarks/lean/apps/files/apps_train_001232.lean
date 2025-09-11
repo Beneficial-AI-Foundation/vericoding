@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_soldier_memory (n : Nat) (m : Nat) (positions : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_length {n m : Nat} {positions : List Nat} 
   (h1 : n ≥ 2) (h2 : positions.length = m) (h3 : ∀ p ∈ positions, p < n) :
   (solve_soldier_memory n m positions).length = n :=
@@ -29,6 +37,7 @@ theorem single_soldier_linear {n pos : Nat}
     ∀ v, result[i]? = some v →
     v = if i ≥ pos then i - pos else pos - i :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, c: int, P: seq<int>, T: seq<int>)
 {
     n > 0 && c > 0 && |P| == n && |T| == n &&
@@ -43,6 +44,7 @@ function calculateRadewooshScoreHelper(remaining: int, c: int, P: seq<int>, T: s
         var score := if P[idx] - c * cumulativeTime > 0 then P[idx] - c * cumulativeTime else 0;
         score + calculateRadewooshScoreHelper(remaining-1, c, P, T, cumulativeTime)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

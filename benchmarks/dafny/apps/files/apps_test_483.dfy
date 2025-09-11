@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, directions: string, positions: seq<int>)
 {
     n >= 1 &&
@@ -28,6 +29,7 @@ predicate IsMinimalCollisionTime(result: int, directions: string, positions: seq
     (exists i :: 0 <= i < |directions|-1 && directions[i] == 'R' && directions[i+1] == 'L' && 
         CollisionTime(i, positions) == result)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

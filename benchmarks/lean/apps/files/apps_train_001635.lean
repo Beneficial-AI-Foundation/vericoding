@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dbl_linear (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dbl_linear_positive (n : Nat) : 
   dbl_linear n > 0 := sorry
 
@@ -33,6 +41,7 @@ info: 57
 -/
 -- #guard_msgs in
 -- #eval dbl_linear 20
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

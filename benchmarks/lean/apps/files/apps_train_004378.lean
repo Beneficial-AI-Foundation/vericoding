@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def double_check (s : String) : Bool := sorry
 
 theorem double_check_returns_bool (s : String) :
   double_check s = true ∨ double_check s = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem double_check_repeating_chars {s : String} 
   (h : ∃ (c : Char) (i j : String.Pos), i < j ∧ 
     s.get i = c ∧ s.get j = c) :
@@ -36,6 +44,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval double_check "a 11 c d"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_bitland_survival (N : Nat) (soldiers : List Nat) (F : Nat) : 
   (String × Option Nat × Option Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bitland_survival_valid_solution {N : Nat} {soldiers : List Nat} {F : Nat}
   (h1 : N ≥ 2)
   (h2 : soldiers.length = N - 1)
@@ -28,6 +36,7 @@ theorem single_soldier_case {F : Nat}
   (h1 : F ≥ 1 ∧ F ≤ 50) :
   let (result, pos, shield) := solve_bitland_survival 2 [F-1] F
   result = "possible" ∧ pos = some 1 ∧ shield = some F := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

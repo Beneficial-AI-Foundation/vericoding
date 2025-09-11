@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def sum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x::xs => x + sum xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def save (sizes : List Nat) (hd : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem save_valid_result_range (sizes : List Nat) (hd : Nat) (h : sizes.length > 0) :
   let result := save sizes hd
   0 ≤ result ∧ result ≤ sizes.length :=
@@ -31,6 +38,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval save [4, 8, 15, 16, 23, 42] 108
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

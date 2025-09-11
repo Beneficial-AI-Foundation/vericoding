@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def List.uniques {α : Type u} [BEq α] (xs : List α) : List α := sorry
 
 def cut_the_ropes (arr : List Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cut_ropes_first_element (arr : List Nat) 
   (h : arr.length ≥ 1) :
   let result := cut_the_ropes arr
@@ -54,6 +62,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval cut_the_ropes [9, 9, 9, 9, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

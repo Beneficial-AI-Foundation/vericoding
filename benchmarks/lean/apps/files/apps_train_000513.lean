@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def perfect_square_range_query (arr : List Nat) (queries : List (Nat × Nat × Nat)) : List String :=
 sorry
 
 def is_perfect_square (n : Nat) : Bool := 
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def product_range (arr : List Nat) (s e : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem query_response_format 
   (arr : List Nat) (queries : List (Nat × Nat × Nat)) :
   let result := perfect_square_range_query arr queries
@@ -33,6 +40,7 @@ theorem single_element_range
   let result := perfect_square_range_query arr queries
   result[i]? = some (if is_perfect_square (arr[i]'h) then "YES" else "NO") :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

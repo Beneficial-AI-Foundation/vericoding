@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_folder_names (names : List String) : List String := sorry
 
 theorem get_folder_names_output_length 
     (names : List String) :
     List.length (get_folder_names names) = List.length names := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_folder_names_unique
     (names : List String) :
     List.Nodup (get_folder_names names) := sorry
@@ -41,6 +49,7 @@ info: ['kaido', 'kaido(1)', 'kaido(2)', 'kaido(1)(1)']
 -/
 -- #guard_msgs in
 -- #eval get_folder_names ["kaido", "kaido(1)", "kaido", "kaido(1)"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

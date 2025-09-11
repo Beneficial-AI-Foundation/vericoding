@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def squares : Nat → List Nat
 | n => sorry
 
@@ -6,13 +7,19 @@ def num_range : Nat → Int → Int → List Int
 
 def rand_range : Nat → Int → Int → List Int
 | n, mn, mx => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def primes : Nat → List Nat
 | n => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem squares_length (n : Nat) : (squares n).length = n := by
   sorry
 
@@ -79,6 +86,7 @@ info: [2, 3, 5, 7, 11]
 -/
 -- #guard_msgs in
 -- #eval primes 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

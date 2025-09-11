@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_min_divisor (nums: List Nat) : Int :=
   sorry
 
@@ -6,13 +7,19 @@ def is_divides_all (d: Nat) (nums: List Nat) : Bool :=
 
 def gcd (a b: Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_gcd (nums: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_divides_all_numbers (nums: List Nat) :
   let result := find_min_divisor nums 
   result ≠ -1 → is_divides_all result.toNat nums = true := by
@@ -52,6 +59,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_min_divisor [12, 18, 24]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

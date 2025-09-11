@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def List.maximum : List Int → Option Int 
   | [] => none
   | (h::t) => some (t.foldl max h)
@@ -5,13 +6,19 @@ def List.maximum : List Int → Option Int
 def List.minimum : List Int → Option Int
   | [] => none
   | (h::t) => some (t.foldl min h)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def between_extremes (nums : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem between_extremes_nonnegative (nums : List Int) (h : nums ≠ []) :
   between_extremes nums ≥ 0 := 
   sorry
@@ -37,6 +44,7 @@ info: 42
 -/
 -- #guard_msgs in
 -- #eval between_extremes [21, 34, 54, 43, 26, 12]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

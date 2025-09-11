@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate IsSpaceCommaDot(c: char)
 {
     c == ' ' || c == ',' || c == '.'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

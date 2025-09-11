@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def expandtabs {n : Nat} (a : Vector String n) (tabsize : Vector Nat n) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem expandtabs_spec {n : Nat} (a : Vector String n) (tabsize : Vector Nat n) 
     (h_positive : ∀ i : Fin n, tabsize.get i > 0) :
     ⦃⌜∀ i : Fin n, tabsize.get i > 0⌝⦄
@@ -34,3 +41,4 @@ theorem expandtabs_spec {n : Nat} (a : Vector String n) (tabsize : Vector Nat n)
           orig_str.toList[j]! ≠ '\t' → orig_str.toList[k]! ≠ '\t' → 
           mapping j < mapping k))⌝⦄ := by
   sorry
+-- </vc-theorems>

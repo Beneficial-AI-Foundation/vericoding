@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_three_and_two (list : List α) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem list_length_is_five {α : Type} (list : List α) :
   check_three_and_two list = true → list.length = 5 :=
   sorry
@@ -43,6 +51,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval check_three_and_two ["a", "a", "a", "a", "a"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def Float.toDegrees (x : Float) : Float :=
   sorry
 
 def Int.toFloat (x : Int) : Float :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def missing_angle (h a o : Float) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem missing_angle_output_range (h a o : Float) :
   h > 0 ∨ a > 0 ∨ o > 0 →
   let angle := missing_angle h a o
@@ -62,6 +69,7 @@ info: 39
 -/
 -- #guard_msgs in
 -- #eval missing_angle 8 0 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

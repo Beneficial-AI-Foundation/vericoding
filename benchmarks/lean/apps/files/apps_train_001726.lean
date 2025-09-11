@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hamming (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hamming_positive (n : Nat) (h : n > 0) :
   hamming n > 0 :=
 sorry
@@ -55,6 +63,7 @@ info: 36
 -/
 -- #guard_msgs in
 -- #eval hamming 20
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

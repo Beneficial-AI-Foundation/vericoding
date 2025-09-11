@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_expected_hearts (n m k: Nat) (hearts: List Nat) : Float :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem expected_hearts_bounded 
   (n m k: Nat) (hearts: List Nat)
   (h1: n > 0) (h2: m > 0) (h3: k > 0) (h4: hearts.length = k)
@@ -36,6 +44,7 @@ theorem corner_hearts_symmetry
   let result2 := calculate_expected_hearts n m 1 [m]
   Float.abs (result1 - result2) < 1e-10 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

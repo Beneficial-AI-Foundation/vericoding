@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_key_length (text : String) (max_length : Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_char_key_min_one {text : String} (h : text.length ≥ 1) :
   get_key_length (text ++ text ++ text) 5 ≥ 1 :=
 sorry
@@ -44,6 +52,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval get_key_length "XYXYXYXY" 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

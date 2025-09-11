@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost function Exp_int(x: nat, y:nat): nat
 {
   if y == 0 then 1 else x * Exp_int(x, y - 1)
@@ -13,6 +14,7 @@ ghost function Str2Int(s: string): nat
 {
   if |s| == 0 then  0  else  (2 * Str2Int(s[0..|s|-1]) + (if s[|s|-1] == '1' then 1 else 0))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

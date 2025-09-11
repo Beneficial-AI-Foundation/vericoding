@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def oddity (n : Nat) : String := sorry
 
 theorem oddity_returns_valid_value (n : Nat) (h : n > 0) :
   oddity n = "odd" ∨ oddity n = "even" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem oddity_perfect_square_iff_odd (n : Nat) (h : n > 0) :
   (∃ k, n = k * k) ↔ oddity n = "odd" := sorry
 
@@ -35,6 +43,7 @@ info: 'even'
 -/
 -- #guard_msgs in
 -- #eval oddity 27
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,8 +1,10 @@
+// <vc-preamble>
 function HasNoEvenDigit(n: int) : bool
   decreases n
 {
   n >= 0 && ((n < 10 && n % 2 == 1) || (n % 2 == 1 && HasNoEvenDigit(n / 10)))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

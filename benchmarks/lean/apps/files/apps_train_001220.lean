@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_sum_of_powers (N : Nat) (K : Nat) : Nat :=
   sorry
 
 -- Basic properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_sum_of_powers_non_negative (N K : Nat) : 
   count_sum_of_powers N K ≥ 0 :=
   sorry
@@ -50,6 +58,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_sum_of_powers 38 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

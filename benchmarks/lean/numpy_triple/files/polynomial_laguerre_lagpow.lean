@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lagpow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lagpow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat) 
     (h_pow_pos : pow > 0) (h_max_bound : pow ≤ maxpower) (h_max_reasonable : maxpower ≤ 16) :
     ⦃⌜pow > 0 ∧ pow ≤ maxpower ∧ maxpower ≤ 16⌝⦄
@@ -21,3 +28,4 @@ theorem lagpow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat)
       True -- Placeholder for more complex Laguerre polynomial properties
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

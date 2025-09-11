@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def vowel_2_index (s : String) : String := sorry
 
 def isVowel (c : Char) : Bool :=
   c = 'a' ∨ c = 'e' ∨ c = 'i' ∨ c = 'o' ∨ c = 'u' ∨ 
   c = 'A' ∨ c = 'E' ∨ c = 'I' ∨ c = 'O' ∨ c = 'U'
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem vowels_replaced_with_position {s : String} :
   ∀ (i : Nat) (h : i < s.length), 
   isVowel (s.data[i]'h) →
@@ -41,6 +49,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval vowel_2_index ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

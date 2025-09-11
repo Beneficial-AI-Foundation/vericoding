@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_pow_dig_seq (num exp k : Nat) : Nat × List Nat × Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_pow_dig_seq_result_structure 
   (num exp k : Nat)
   (h1 : num > 0)
@@ -43,6 +51,7 @@ theorem sum_pow_dig_seq_power_one
   result.2.1 ≠ [] →
     ∀ x, List.elem x result.2.1 → x < 10 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

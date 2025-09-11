@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int) {
     1 <= a <= 40
 }
@@ -12,6 +13,7 @@ function Presidents(): seq<string> {
         "Eisenhower", "Kennedy", "Johnson", "Nixon", "Ford", "Carter", "Reagan"
     ]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

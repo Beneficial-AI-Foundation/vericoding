@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MODULO := 1000000007
 
 def solve_tree_splitting (n : Nat) (parents : List Nat) (colors : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_node_bounds (n : Nat) (h : 0 < n ∧ n ≤ 10) :
   let parents := List.replicate (n-1) 0
   let colors := List.replicate n 0
@@ -47,6 +55,7 @@ info: 27
 -/
 -- #guard_msgs in
 -- #eval solve_tree_splitting 10 [0, 1, 2, 1, 4, 4, 4, 0, 8] [0, 0, 0, 1, 0, 1, 1, 0, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nPY_LOG10E : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nPY_LOG10E_spec :
     ⦃⌜True⌝⦄
     nPY_LOG10E
@@ -24,3 +31,4 @@ theorem nPY_LOG10E_spec :
       result < 1.0
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

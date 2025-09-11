@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Graph := List (List Nat)
 
 def find_all_paths (g: Graph) : List (List Nat) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_dag (g: Graph) : Bool := sorry
 
 def verify_paths (g: Graph) (paths: List (List Nat)) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem paths_start_end_valid (g: Graph) (paths: List (List Nat)) 
   (h: paths = find_all_paths g) (h2: is_valid_dag g = true) :
   ∀ p ∈ paths, p.head? = some 0 ∧ 
@@ -44,6 +51,7 @@ info: sorted(expected3)
 -/
 -- #guard_msgs in
 -- #eval sorted find_all_paths(graph3)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

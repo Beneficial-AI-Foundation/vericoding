@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def textin (s : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def containsSubstr (s : String) (sub : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_string (s : String) :
   textin s = textin s
   := by sorry
@@ -24,6 +31,7 @@ theorem no_target_words (s : String) :
 theorem idempotent (s : String) :
   textin (textin s) = textin s 
   := by sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

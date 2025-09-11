@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_textliterals (code : String) : List (Nat × Nat) := sorry
 
 /- Valid result format ensures result is list of natural number pairs -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_result_format (code : String) :
   ∀ result : List (Nat × Nat), result = get_textliterals code → 
   ∀ p ∈ result, ∃ (s e : Nat), p = (s, e) := sorry
@@ -44,6 +52,7 @@ theorem no_comments (code : String) :
     ((code.data[i]! = '/' ∧ code.data[i+1]! = '*') ∨
      (code.data[i]! = '*' ∧ code.data[i+1]! = '/') ∨
      (code.data[i]! = '-' ∧ code.data[i+1]! = '-'))) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

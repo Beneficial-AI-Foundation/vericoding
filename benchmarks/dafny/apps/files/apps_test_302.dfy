@@ -1,3 +1,4 @@
+// <vc-preamble>
 function pow(base: nat, exp: nat): nat
 {
     if exp == 0 then 1 else base * pow(base, exp - 1)
@@ -27,6 +28,7 @@ predicate ValidOutput(n: nat, result: nat)
     (n == 0 ==> result == 0) &&
     (n > 0 ==> result > 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD : Nat := 1000000007
 
 def count_weighted_integers (n: Nat) (w: Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_weighted_integers_non_negative 
   (n: Nat) (w: Int)
   (h1: n ≥ 2) (h2: n ≤ 1000) 
@@ -46,6 +54,7 @@ info: 80
 -/
 -- #guard_msgs in
 -- #eval count_weighted_integers 3 -2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

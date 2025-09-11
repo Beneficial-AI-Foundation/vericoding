@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Map (α : Type) (β : Type) := α → Option β
 
 def merge {α β : Type} (dicts : List (Map α β)) : Map α (List β) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem merge_keys_preserved
   {α β : Type} [BEq α] [BEq β]
   (dicts : List (Map α β))
@@ -52,6 +60,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval merge {"A": 1} {}
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

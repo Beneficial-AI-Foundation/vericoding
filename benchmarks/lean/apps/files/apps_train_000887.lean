@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_max_min_distance (n k : Nat) (x : List Int) : Nat :=
   sorry
 
@@ -19,15 +20,21 @@ def listToSorted (xs : List Int) : List Int :=
   | (h::t) => h :: t -- simplified for theorem statement
 
 -- Non-negative result
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def generateRange (n : Nat) : List Int :=
   List.map Int.ofNat (List.range n)
 
 -- Evenly spaced points
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_min_distance_nonneg
     {n k : Nat} {x : List Int}
     (h1 : n ≥ 2)
@@ -101,6 +108,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_max_min_distance 4 2 [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

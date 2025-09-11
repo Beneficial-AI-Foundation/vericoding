@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Bases = A | C | G | T
 
 predicate below(first: Bases, second: Bases)
@@ -13,6 +14,7 @@ predicate bordered(s:seq<Bases>)
 {
     forall j, k :: 0 <= j < k < |s| ==> below(s[j], s[k])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

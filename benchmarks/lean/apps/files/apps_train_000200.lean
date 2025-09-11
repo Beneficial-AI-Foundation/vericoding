@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def search (arr : List Int) (target : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem search_returns_valid_index (nums : List Int) (target : Int) 
     (h1 : nums.length > 0)
     (h2 : ∀ (i j : Fin nums.length), i.val < j.val → nums.get i < nums.get j)
@@ -67,6 +75,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval search [1] 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

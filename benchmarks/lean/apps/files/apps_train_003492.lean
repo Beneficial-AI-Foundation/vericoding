@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def calculate_string (s : String) : String := sorry
 
 def String.filter (s : String) (p : Char → Bool) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidDigit (c : Char) : Bool := 
   match c with
   | '0' => true | '1' => true | '2' => true | '3' => true | '4' => true
   | '5' => true | '6' => true | '7' => true | '8' => true | '9' => true
   | '.' => true | '+' => true | '-' => true | '*' => true | '/' => true
   | _ => false
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_string_evaluates_expressions 
   (n₁ n₂ : Float) (op : Char) 
   (h_op : op ∈ ['+', '-', '*', '/']) 
@@ -49,6 +56,7 @@ info: '234676'
 -/
 -- #guard_msgs in
 -- #eval calculate_string "fsdfsd234.4554s4234df+sf234442"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

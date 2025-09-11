@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_window_size (a b x y : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_window_size_corners (a b : Nat) (ha : a ≥ 2) (hb : b ≥ 2)
     (ha2 : a ≤ 1000) (hb2 : b ≤ 1000) :
     let corner_result := max ((a-1)*b) ((b-1)*a);
@@ -35,6 +43,7 @@ info: 442
 -/
 -- #guard_msgs in
 -- #eval max_window_size 17 31 10 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate IsSorted(v: seq<nat>)
 {
     forall i, j :: 0 <= i < j < |v| ==> v[i] <= v[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

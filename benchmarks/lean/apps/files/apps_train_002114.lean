@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_hamming_distance (N : Nat) (b : List Nat) (Q : Nat) (ops : List (Nat × Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_hamming_distance_bounds 
   (N : Nat) (b : List Nat) (Q : Nat) (ops : List (Nat × Nat))
   (h1 : b.length = N)
@@ -53,6 +61,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_hamming_distance 5 [0, 1, 0, 1, 0] 1 [(1, 5)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

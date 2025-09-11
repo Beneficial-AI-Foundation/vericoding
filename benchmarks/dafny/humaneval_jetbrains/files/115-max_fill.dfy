@@ -1,3 +1,4 @@
+// <vc-preamble>
 function gen_seq(grid: seq<seq<nat>>, capacity: nat, len: nat): seq<int>
   requires capacity > 0
   requires len <= |grid|
@@ -8,6 +9,7 @@ function gen_seq(grid: seq<seq<nat>>, capacity: nat, len: nat): seq<int>
 function sum(s: seq<int>) : int {
     if |s| == 0 then 0 else s[0] + sum(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

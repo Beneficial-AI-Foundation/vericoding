@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_targets (n : Nat) (lst : List Int) : Nat := sorry
 
 theorem count_targets_non_negative (n : Nat) (lst : List Int) : 
   count_targets n lst ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_targets_upper_bound (n : Nat) (lst : List Int) :
   count_targets n lst ≤ max 0 (lst.length - n) := sorry
 
@@ -40,6 +48,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_targets 1 []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

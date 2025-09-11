@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_wheel_of_fortune (n : Nat) (wheel : List Nat) (queries : List Nat) : List Nat := sorry
 
 theorem results_length_matches_queries_length
   (n : Nat) (wheel : List Nat) (queries : List Nat) :
   List.length (solve_wheel_of_fortune n wheel queries) = List.length queries := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem results_are_bounded 
   (n : Nat) (wheel : List Nat) (queries : List Nat) :
   ∀ x ∈ solve_wheel_of_fortune n wheel queries, 
@@ -38,6 +46,7 @@ theorem identical_wheel_gives_ones
   (n : Nat) :
   solve_wheel_of_fortune n (List.replicate n 1) [1] = [1] :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

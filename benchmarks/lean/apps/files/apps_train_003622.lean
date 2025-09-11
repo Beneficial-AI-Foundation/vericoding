@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def move_ten (s : String) : String := sorry
 
 def isLower (c : Char) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem move_ten_preserves_length (s : String) : 
   (move_ten s).length = s.length := sorry
 
@@ -37,6 +45,7 @@ info: 'goxoonkxyppsmonyq'
 -/
 -- #guard_msgs in
 -- #eval move_ten "weneedanofficedog"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

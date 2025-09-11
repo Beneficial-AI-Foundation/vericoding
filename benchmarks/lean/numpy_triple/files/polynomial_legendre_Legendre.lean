@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -12,16 +13,22 @@ structure Legendre {n : Nat} where
   window : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩
   /-- Symbol name for variable representation -/
   symbol : String := "x"
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mkLegendre {n : Nat} (coef : Vector Float n) 
     (domain : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
     (window : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
     (symbol : String := "x") : Id (Legendre (n := n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mkLegendre_spec {n : Nat} (coef : Vector Float n) 
     (domain : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
     (window : Vector Float 2 := ⟨#[-1.0, 1.0], rfl⟩)
@@ -48,3 +55,4 @@ theorem mkLegendre_spec {n : Nat} (coef : Vector Float n)
       (∀ x : Float, ∃ polyval : Float, True)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

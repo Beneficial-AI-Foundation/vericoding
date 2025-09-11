@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ones_complement (s: String) : String := sorry
 
 theorem ones_complement_double_complement (s: String) :
   ones_complement (ones_complement s) = s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ones_complement_length_preservation (s: String) :
   (ones_complement s).length = s.length := sorry
 
@@ -35,6 +43,7 @@ info: '0010'
 -/
 -- #guard_msgs in
 -- #eval ones_complement "1101"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

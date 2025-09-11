@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def toLoverCase (s : String) : String := sorry
 def isAlpha (c : Char) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_preserved (s : String) :
   String.length (toLoverCase s) = String.length s := sorry
 
@@ -39,6 +47,7 @@ info: 'OOOO,'
 -/
 -- #guard_msgs in
 -- #eval to_lover_case "jrvz,"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

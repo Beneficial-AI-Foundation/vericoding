@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def numSpecialEquivGroups (strings : List String) : Nat :=
   sorry
 
 def isSpecialEquivalent (s1 s2 : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def belongsToGroup (s : String) (g : Nat) : Bool :=
   sorry
 
 -- Theorem: Number of groups is bounded by list size
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem num_groups_bounded (strings : List String) : 
   1 ≤ numSpecialEquivGroups strings ∧ numSpecialEquivGroups strings ≤ strings.length :=
   sorry
@@ -52,6 +59,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval numSpecialEquivGroups ["aa", "bb", "ab", "ba"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidThreeIntegers(input: string, a: int, b: int, c: int)
 {
     var parts := SplitBySpacesFunc(input);
@@ -55,6 +56,7 @@ function ParseUnsignedInt(s: string): int
     if |s| == 0 then 0
     else ParseUnsignedInt(s[..|s|-1]) * 10 + (s[|s|-1] as int - '0' as int)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

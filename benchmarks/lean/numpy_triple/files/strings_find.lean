@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start : Vector Int n) (endPos : Vector Int n) :
     ⦃⌜∀ i : Fin n, 0 ≤ start.get i ∧ start.get i ≤ endPos.get i ∧ endPos.get i < (a.get i).length⌝⦄
     find a sub start endPos
@@ -34,3 +41,4 @@ theorem find_spec {n : Nat} (a : Vector String n) (sub : Vector String n) (start
       -- Sanity check 3: if start > end, no substring can be found
       (start.get i > endPos.get i → result.get i = -1)⌝⦄ := by
   sorry
+-- </vc-theorems>

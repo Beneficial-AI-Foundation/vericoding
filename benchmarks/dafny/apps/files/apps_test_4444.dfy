@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 2 &&
@@ -32,6 +33,7 @@ predicate CorrectConcatenation(input: string, output: string)
     var (s, t) := ExtractStrings(input);
     output == t + s + "\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

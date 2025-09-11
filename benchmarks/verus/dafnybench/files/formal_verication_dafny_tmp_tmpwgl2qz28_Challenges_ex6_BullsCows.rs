@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -49,6 +50,7 @@ spec fn recccow(s: Seq<nat>, u: Seq<nat>, i: int) -> nat
 spec fn nomultiples(u: Seq<nat>) -> bool {
     forall|j: int, k: int| 0 <= j < k < u.len() ==> u[j] != u[k]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

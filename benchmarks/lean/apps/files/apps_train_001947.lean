@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_minimize_tree (n : Nat) (edges : List (Nat × Nat)) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_odd_or_minus_one (n : Nat) (edges : List (Nat × Nat)) :
   let result := can_minimize_tree n edges
   result = -1 ∨ (result > 0 ∧ result % 2 = 1) := by
@@ -43,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval can_minimize_tree 2 [(1, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

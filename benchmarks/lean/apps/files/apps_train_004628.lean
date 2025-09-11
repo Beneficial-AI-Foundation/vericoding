@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def digit_all (x : String) : String := sorry
 
 theorem digit_all_only_digits (s : String) :
   let result := digit_all s
   (∀ c ∈ result.data, c.isDigit) ∨ result = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem digit_all_preserves_digits (s : String) :
   let result := digit_all s
   String.mk (s.data.filter Char.isDigit) = result := sorry  
@@ -35,6 +43,7 @@ info: 'Invalid input !'
 -/
 -- #guard_msgs in
 -- #eval digit_all 123
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

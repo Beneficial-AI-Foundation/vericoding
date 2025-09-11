@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible]
 def isItEight_precond (n : Int) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isItEight (n : Int) (h_precond : isItEight_precond (n)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def isItEight_postcond (n : Int) (result: Bool) (h_precond : isItEight_precond (n)) : Prop :=
   let absN := Int.natAbs n;
@@ -16,6 +23,7 @@ def isItEight_postcond (n : Int) (result: Bool) (h_precond : isItEight_precond (
 theorem isItEight_spec_satisfied (n: Int) (h_precond : isItEight_precond (n)) :
     isItEight_postcond (n) (isItEight (n) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

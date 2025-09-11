@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -16,6 +17,7 @@ proof fn l1(n: int)
 {
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

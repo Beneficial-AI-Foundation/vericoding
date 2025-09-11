@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def generate_sierpinski_sequence (n : Nat) : List Nat :=
   sorry
 
 def find_closest_value (m : Nat) : Nat := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_is_strictly_increasing {n : Nat} (h : 0 < n) (h2 : n ≤ 10000) :
   let seq := generate_sierpinski_sequence n
   ∀ i, i + 1 < seq.length → seq.get! i < seq.get! (i + 1) :=
@@ -51,6 +58,7 @@ info: 18720
 -/
 -- #guard_msgs in
 -- #eval find_closest_value 18332
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

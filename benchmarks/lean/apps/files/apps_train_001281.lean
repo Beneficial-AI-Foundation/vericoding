@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_city_paths (N : Nat) (Q : Nat) (values : List Nat) (queries : List (List Nat)) : List (List Nat) := sorry
 
 theorem identical_values_path_length
@@ -15,6 +21,10 @@ theorem identical_values_path_length
     results.length > 0 ∧ 
     results[0]!.length > 1 ∧ 
     results[0]![1]! = N := sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

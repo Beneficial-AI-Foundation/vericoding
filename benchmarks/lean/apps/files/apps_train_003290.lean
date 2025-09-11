@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def date_checker (s : String) : Bool := sorry
 
 def format_date (d m y h min : Nat) : String := 
   toString d ++ "-" ++ toString m ++ "-" ++ toString y ++ " " ++ toString h ++ ":" ++ toString min
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_date_format (d m y h min : Nat)  
   (hd : d ≥ 1 ∧ d ≤ 31) 
   (hm : m ≥ 1 ∧ m ≤ 12)
@@ -41,6 +49,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval date_checker "14-10-1066 12:00"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

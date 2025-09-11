@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def find_min_questions (n : Nat) : List Nat :=
   sorry
 
 def isPrime (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPrimePower (n : Nat) : Bool := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_questions_output_type (n : Nat) :
   ∀ x ∈ find_min_questions n, x ≤ n := by
   sorry
@@ -52,6 +59,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval len find_min_questions(1)
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

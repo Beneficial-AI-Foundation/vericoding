@@ -1,3 +1,4 @@
+// <vc-preamble>
 function first_digit(n: int): int
   requires n >= 0
   ensures 0 <= first_digit(n) < 10
@@ -11,6 +12,7 @@ function last_digit(n: int): int
 {
   n % 10
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

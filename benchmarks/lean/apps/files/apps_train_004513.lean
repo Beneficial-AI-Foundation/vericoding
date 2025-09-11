@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def area (d l : Float) : Sum Float String := sorry 
 
 theorem area_properties (d l : Float) (h1 : d ≥ 0) (h2 : l ≥ 0) (h3 : d ≤ 1000) (h4 : l ≤ 1000) :
@@ -14,7 +20,9 @@ theorem area_properties (d l : Float) (h1 : d ≥ 0) (h2 : l ≥ 0) (h3 : d ≤ 
     (∃ r : Float, result = Sum.inl r → 
       let h := Float.sqrt (d*d - l*l)
       (r - l * h).abs < 0.1) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem square_diagonal (d : Float) (h1 : d ≥ 0) (h2 : d ≤ 1000) :
   let l := d / Float.sqrt 2
   let result := area d l
@@ -46,6 +54,7 @@ info: 48.0
 -/
 -- #guard_msgs in
 -- #eval area 10 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

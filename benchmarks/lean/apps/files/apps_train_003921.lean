@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def cooking_time (needed_power : String) (minutes : Nat) (seconds : Nat) (power : String) : String := sorry
 
 theorem cooking_time_format (needed_power : String) (minutes : Nat) 
@@ -8,7 +14,9 @@ theorem cooking_time_format (needed_power : String) (minutes : Nat)
   ∃ result_mins result_secs : Nat,
     cooking_time needed_power minutes seconds power = 
       s!"{result_mins} minutes {result_secs} seconds" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cooking_time_time_bounds (needed_power : String) (minutes : Nat)
   (seconds : Nat) (power : String) (h1 : minutes ≤ 60) (h2 : seconds < 60) :
   let result := cooking_time needed_power minutes seconds power
@@ -48,6 +56,7 @@ info: '17 minutes 30 seconds'
 -/
 -- #guard_msgs in
 -- #eval cooking_time "100W" 8 45 "50W"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

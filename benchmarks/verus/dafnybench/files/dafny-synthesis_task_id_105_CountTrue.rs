@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn count_to(a: &[bool], n: int) -> int
         count_to(a, n - 1) + if a[n - 1] { 1int } else { 0int } 
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

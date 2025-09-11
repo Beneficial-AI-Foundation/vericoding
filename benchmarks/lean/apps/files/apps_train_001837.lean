@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Ticket := String × String
 
 def findItinerary (tickets: List Ticket) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem findItinerary_starts_jfk (tickets: List Ticket) :
   (findItinerary tickets).head? = some "JFK" := sorry
 
@@ -33,6 +41,7 @@ info: expected2
 -/
 -- #guard_msgs in
 -- #eval findItinerary [["JFK", "SFO"], ["JFK", "ATL"], ["SFO", "ATL"], ["ATL", "JFK"], ["ATL", "SFO"]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

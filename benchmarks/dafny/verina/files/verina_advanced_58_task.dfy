@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate NthUglyNumberPrecond(n: nat)
 {
     n > 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

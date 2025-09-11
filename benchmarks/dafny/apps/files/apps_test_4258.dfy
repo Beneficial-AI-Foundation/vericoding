@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, T: int)
 {
     1 <= A <= 20 && 1 <= B <= 20 && 1 <= T <= 20
@@ -14,6 +15,7 @@ function TotalBiscuits(A: int, B: int, T: int): int
 {
     B * ProductionCount(A, T)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

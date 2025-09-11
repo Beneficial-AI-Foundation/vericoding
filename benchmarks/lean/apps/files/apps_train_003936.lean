@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def ALAN_TERMS : List String := ["Partridge", "PearTree", "Chat", "Dan", "Toblerone", "Lynn", "AlphaPapa", "Nomad"]
 
 def isAlanTerm (s : String) : Bool :=
@@ -5,13 +6,19 @@ def isAlanTerm (s : String) : Bool :=
 
 def countChar (s : String) (c : Char) : Nat :=
   s.toList.filter (· = c) |>.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def part (arr : List String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_or_irrelevant_returns_spike_message {arr : List String} :
   (∀ x ∈ arr, ¬isAlanTerm x) →
   part arr = "Lynn, I've pierced my foot on a spike!!" :=
@@ -48,6 +55,7 @@ info: "Mine's a Pint!!!!!"
 -/
 -- #guard_msgs in
 -- #eval part ["Partridge", "PearTree", "Chat", "Dan", "Toblerone"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

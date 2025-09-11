@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def String.words (s : String) : List String := sorry
 def encode (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_preserves_spaces {s : String} : 
   (s.words).length = (encode s).words.length := sorry
 
@@ -17,6 +25,7 @@ theorem encode_preserves_last_chars {s : String} {w : String} :
 theorem encode_idempotent {s : String} :
   encode (encode s) = encode s ↔ 
   ∀ w ∈ s.words, w.length ≤ 2 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

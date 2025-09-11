@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_rubiks_cuboid (m n o : Nat) : Nat := sorry
 
 theorem solve_non_negative (m n o : Nat) : 
   solve_rubiks_cuboid m n o ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_commutative (m n o : Nat) :
   solve_rubiks_cuboid m n o = solve_rubiks_cuboid m o n ∧
   solve_rubiks_cuboid m n o = solve_rubiks_cuboid n m o ∧ 
@@ -38,6 +46,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval solve_rubiks_cuboid 4 3 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function splitLines(s: string): seq<string>
     requires |s| > 0
     ensures |splitLines(s)| >= 1
@@ -41,6 +42,7 @@ predicate ValidOutput(output: string, stdin_input: string)
                 k == 6 &&
                 parseInteger(output[0..|output|-1]) == k
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

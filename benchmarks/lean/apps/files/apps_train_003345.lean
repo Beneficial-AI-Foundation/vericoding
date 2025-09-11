@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def flipping_game (nums: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem flipping_game_result_bounded (nums: List Nat) :
   nums.all (fun x => x = 0 ∨ x = 1) →
   flipping_game nums ≤ nums.length := by
@@ -42,6 +50,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval flipping_game [1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

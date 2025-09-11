@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def minOperations (nums : List Nat) : Nat := sorry
 
 theorem minOperations_nonnegative (nums : List Nat) : 
   minOperations nums ≥ 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maxList : List Nat → Nat 
   | [] => 0
   | (x::xs) => max x (maxList xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem minOperations_at_least_nonzero_count (nums : List Nat) :
   minOperations nums ≥ (nums.filter (λ x => x > 0)).length := sorry
 
@@ -46,6 +53,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval minOperations [4, 2, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

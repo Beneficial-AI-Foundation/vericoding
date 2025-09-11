@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def racecar (target : Nat) : Nat := sorry
 
 theorem racecar_output_positive (target : Nat) : 
   target > 0 → racecar target > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem racecar_growth (target : Nat) :
   target > 0 → racecar target ≤ 4 * target.log2 := sorry
 
@@ -35,6 +43,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval racecar 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

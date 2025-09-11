@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
     let b2 = if chord2[0] > chord2[1] { chord2[0] } else { chord2[1] };
     (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

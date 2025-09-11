@@ -1,7 +1,9 @@
+// <vc-preamble>
 use vstd::prelude::*;
 use vstd::seq_lib::*;
 
 verus! {
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

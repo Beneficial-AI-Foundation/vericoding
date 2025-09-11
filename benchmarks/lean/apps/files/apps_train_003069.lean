@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def am_i_wilson (n : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem am_i_wilson_output_is_bool (n : Int) :
   am_i_wilson n = true ∨ am_i_wilson n = false := by sorry
 
@@ -35,6 +43,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval am_i_wilson 13
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

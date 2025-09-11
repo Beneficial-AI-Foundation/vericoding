@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_calendar_week (date_str : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calendar_week_bounds
     (date_str : String)
     (h : ∃ year month day : Nat,
@@ -28,6 +36,7 @@ theorem invalid_date_format_invalid_string
          date_str = toString year ++ "/" ++ toString month ++ "/" ++ toString day)
     : ∀ n, get_calendar_week date_str ≠ n :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def get_power (x : Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def getKth (lo hi k : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_power_always_terminates (x : Int) 
   (h : x ≥ 1) :
   get_power x ≥ 0 :=
@@ -58,6 +65,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval getKth 1 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

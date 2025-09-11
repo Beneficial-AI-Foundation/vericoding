@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -16,13 +17,19 @@ structure FloatInfo where
   nexp : Nat               -- Number of bits in exponent
   nmant : Nat              -- Number of bits in mantissa
   precision : Nat          -- Approximate decimal precision
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_finfo : Id FloatInfo :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_finfo_spec :
     ⦃⌜True⌝⦄
     numpy_finfo
@@ -60,3 +67,4 @@ theorem numpy_finfo_spec :
       info.precision ≤ info.nmant
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

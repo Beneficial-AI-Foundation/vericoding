@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def histogram_bin_edges {n : Nat} (data : Vector Float (n + 1)) (num_bins : Nat) 
     (h_bins : num_bins > 0) : Id (Vector Float (num_bins + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem histogram_bin_edges_spec {n : Nat} (data : Vector Float (n + 1)) (num_bins : Nat)
     (h_bins : num_bins > 0) :
     ⦃⌜num_bins > 0⌝⦄
@@ -41,3 +48,4 @@ theorem histogram_bin_edges_spec {n : Nat} (data : Vector Float (n + 1)) (num_bi
                  ∀ i : Fin (n + 1), 
                    first_edge ≤ data.get i ∧ data.get i ≤ last_edge)⌝⦄ := by
   sorry
+-- </vc-theorems>

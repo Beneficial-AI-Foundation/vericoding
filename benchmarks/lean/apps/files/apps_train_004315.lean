@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def rankings (arr : List Int) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rankings_length {arr : List Int} (h : arr ≠ []) :
   (rankings arr).length = arr.length :=
 sorry
@@ -31,6 +39,7 @@ info: [5, 4, 6, 7, 1, 9, 10, 2, 8, 3]
 -/
 -- #guard_msgs in
 -- #eval rankings [22, 33, 18, 9, 110, 4, 1, 88, 6, 50]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

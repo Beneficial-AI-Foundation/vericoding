@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isUniform (s : String) : String :=
   sorry
 
@@ -6,13 +7,19 @@ def countTransitions (s : String) : Nat :=
 
 def reverseString (s : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def swapBits (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uniform_string_result_valid {s : String} (h : s.length > 0) :
   isUniform s = "uniform" ∨ isUniform s = "non-uniform" :=
   sorry
@@ -57,6 +64,7 @@ info: 'uniform'
 -/
 -- #guard_msgs in
 -- #eval check_uniform "10000001"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

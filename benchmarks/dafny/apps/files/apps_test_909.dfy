@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= a <= 10 && 1 <= b <= 10 && 1 <= c <= 10
@@ -26,6 +27,7 @@ predicate IsMaxOfAllExpressions(result: int, a: int, b: int, c: int)
     var exprs := AllExpressions(a, b, c);
     result in exprs && forall i :: 0 <= i < |exprs| ==> result >= exprs[i]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

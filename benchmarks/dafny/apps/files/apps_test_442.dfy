@@ -1,3 +1,4 @@
+// <vc-preamble>
 function H(x: int, y: int): int
 {
     x * x + 2 * x * y + x + 1
@@ -20,6 +21,7 @@ predicate HasSolution(r: int)
 {
     r > 4 && r % 2 == 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

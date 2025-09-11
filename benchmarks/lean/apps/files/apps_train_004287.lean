@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def abs (n : Int) : Nat :=
   if n ≥ 0 then n.toNat else (-n).toNat
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def side_len (x y : Nat) : List Nat := sorry
 
 def isSorted (l : List Nat) : Prop :=
@@ -11,7 +16,9 @@ def isSorted (l : List Nat) : Prop :=
     match l.get? i, l.get? j with
     | some vi, some vj => vi ≤ vj
     | _, _ => True
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem triangle_inequality {x y : Nat} (h1 : x > 0) (h2 : y > 0) (z : Nat) 
   (h3 : z ∈ side_len x y) :
   z < x + y ∧ 
@@ -44,6 +51,7 @@ info: [3, 4, 5, 6, 7, 8, 9]
 -/
 -- #guard_msgs in
 -- #eval side_len 4 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

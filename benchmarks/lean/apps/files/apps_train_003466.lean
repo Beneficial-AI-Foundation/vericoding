@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def tops (s : String) : String := sorry 
 
 theorem tops_empty_or_short_strings (s : String) :
   (s = "") → (tops s = "") ∧ 
   (s.length ≤ 2) → (tops s = "") ∧
   (tops s).length ≤ s.length := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tops_result_pattern (s : String) :
   s.length ≥ 10 →
   (∀ c, c ∈ (tops s).data.take 2 → c ∈ s.data) ∧ 
@@ -31,6 +39,7 @@ info: 'TUABCDElmnoabc34'
 -/
 -- #guard_msgs in
 -- #eval tops "123456789abcdefghijklmnopqrstuwyxvzABCDEFGHIJKLMNOPQRSTU"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

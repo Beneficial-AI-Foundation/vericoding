@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def countInversion (s : List Int) : Nat := sorry
 
 def isSorted (s : List Int) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isAntiSorted (s : List Int) : Bool := sorry
 
 theorem countInversion_nonnegative (s : List Int) :
   countInversion s ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem countInversion_sorted_zero (s : List Int) :
   isSorted s = true → countInversion s = 0 := sorry
 
@@ -37,6 +44,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval count_inversion (3, 2, 1, 0)
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

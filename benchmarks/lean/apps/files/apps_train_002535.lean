@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def spacey (words : List String) : List String := sorry
 
 theorem length_matches_input (words : List String) 
   (h : words ≠ []) :
   (spacey words).length = words.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem contains_all_previous_words (words : List String) 
   (h : words ≠ []) 
   (i : Nat)
@@ -48,6 +56,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval spacey ["i", "have", "no", "space"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

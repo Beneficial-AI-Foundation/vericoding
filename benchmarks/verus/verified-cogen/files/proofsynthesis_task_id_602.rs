@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -26,6 +27,7 @@ spec fn check_first_repeated_char(str1: &Vec<char>, repeated_char: Option<(usize
             0 <= k < str1.len() ==> count_frequency_rcr(str1@, #[trigger] str1[k]) <= 1
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

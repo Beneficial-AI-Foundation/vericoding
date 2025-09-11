@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def tril {n : Nat} (matrix : Vector Float (n * n)) : Id (Vector Float (n * n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tril_spec {n : Nat} (matrix : Vector Float (n * n)) :
     ⦃⌜True⌝⦄
     tril matrix
@@ -23,3 +30,4 @@ theorem tril_spec {n : Nat} (matrix : Vector Float (n * n)) :
         ∃ (hi : i.val * n + j.val < n * n),
           result.get ⟨i.val * n + j.val, hi⟩ = 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

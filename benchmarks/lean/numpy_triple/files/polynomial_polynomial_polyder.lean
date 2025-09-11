@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def polyder {n : Nat} (c : Vector Float n) (m : Nat := 1) (scl : Float := 1) 
     (h : m ≤ n) : Id (Vector Float (n - m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem polyder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) 
     (h : m ≤ n) :
     ⦃⌜m ≤ n⌝⦄
@@ -31,3 +38,4 @@ theorem polyder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float)
       )
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -19,6 +20,7 @@ spec fn inner_expr_vowels_count(s: &str, ret: u32) -> (ret:bool) {
         0int
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

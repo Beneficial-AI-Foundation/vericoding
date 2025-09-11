@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_minimum_sum_pair (n: Nat) : Nat := sorry
 
 def isPrime (n: Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_positive (n: Nat) (h: n ≥ 1) :
   find_minimum_sum_pair n > 0 := sorry
 
@@ -34,6 +42,7 @@ info: 18
 -/
 -- #guard_msgs in
 -- #eval find_minimum_sum_pair 17
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

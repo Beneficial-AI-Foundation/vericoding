@@ -1,10 +1,13 @@
+-- <vc-preamble>
 import Std.Data.HashMap
 open Std
 
 @[reducible]
 def mostFrequent_precond (xs : List Int) : Prop :=
   xs ≠ []
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 -- Build a frequency map from the list
 def countMap (xs : List Int) : HashMap Int Nat :=
@@ -33,10 +36,14 @@ def getFirstWithFreq (xs : List Int) (candidates : List Int) : Int :=
   | some x => x
   | none => 0
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mostFrequent (xs : List Int) (h_precond : mostFrequent_precond (xs)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def mostFrequent_postcond (xs : List Int) (result: Int) (h_precond : mostFrequent_precond (xs)) : Prop :=
   let count := fun x => xs.countP (fun y => y = x)
@@ -47,6 +54,7 @@ def mostFrequent_postcond (xs : List Int) (result: Int) (h_precond : mostFrequen
 theorem mostFrequent_spec_satisfied (xs: List Int) (h_precond : mostFrequent_precond (xs)) :
     mostFrequent_postcond (xs) (mostFrequent (xs) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

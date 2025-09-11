@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findDuplicate (nums : List Nat) : Option Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem emptyListReturnNone :
   findDuplicate [] = none := by sorry
 
@@ -42,6 +50,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_duplicate [2, 2, 2, 2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

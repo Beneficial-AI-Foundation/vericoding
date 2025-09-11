@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);
@@ -28,6 +29,7 @@ predicate CorrectAssignment(input: string, result: seq<char>)
         (i in arthurSet ==> result[2*(i-1)] == '1') &&
         (i !in arthurSet ==> result[2*(i-1)] == '2')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

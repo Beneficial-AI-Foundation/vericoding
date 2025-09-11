@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x1: int, x2: int, x3: int) {
     1 <= x1 <= 100 && 1 <= x2 <= 100 && 1 <= x3 <= 100 &&
     x1 != x2 && x1 != x3 && x2 != x3
@@ -14,6 +15,7 @@ function MinTotalDistance(x1: int, x2: int, x3: int): int
                   else x3;
     max_pos - min_pos
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

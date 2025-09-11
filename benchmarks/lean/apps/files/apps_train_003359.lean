@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def owned_cat_and_dog (cat_years : Nat) (dog_years : Nat) : List Nat
 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem owned_cat_and_dog_output_types (cat_years dog_years : Nat) :
   let result := owned_cat_and_dog cat_years dog_years
   result.length = 2 ∧ ∀ x ∈ result, x ≥ 0
@@ -42,6 +50,7 @@ info: [10, 10]
 -/
 -- #guard_msgs in
 -- #eval owned_cat_and_dog 56 64
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

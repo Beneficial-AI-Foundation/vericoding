@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate valid_input_format(s: string)
 {
     |s| >= 7 && 
@@ -43,6 +44,7 @@ predicate behavioral_correctness(stdin_input: string, result: string)
         (array_sum == target_m <==> response == "YES\n") &&
         (array_sum != target_m <==> response == "NO\n"))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

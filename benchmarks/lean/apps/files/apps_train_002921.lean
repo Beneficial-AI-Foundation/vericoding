@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def growing_plant (up_speed : Int) (down_speed : Int) (desired_height : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem growing_plant_result_positive
   (up_speed : Int) (down_diff : Int) (desired_height : Int)
   (h1 : up_speed > 0) (h2 : up_speed ≤ 1000)
@@ -40,6 +48,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval growing_plant 5 2 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

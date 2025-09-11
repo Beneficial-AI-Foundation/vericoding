@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Base := String 
 def convert_num (n : Int) (b : Base) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_conversion_hex (n : Int) :
   convert_num n "hex" = s!"0x{n}" := sorry
 
@@ -40,6 +48,7 @@ info: 'Invalid base input'
 -/
 -- #guard_msgs in
 -- #eval convert_num 123 "lol"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_max_points (boardSize : Nat) (board : String) (letterPoints : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem board_size_properties
   (boardSize : Nat)
   (letterPoints : List Nat)
@@ -57,6 +65,7 @@ info: 35629632
 -/
 -- #guard_msgs in
 -- #eval calculate_max_points 22 "dtDtTD..ddT.TtTdDT..TD" [12297, 5077, 28888, 17998, 12125, 27400, 31219, 21536]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

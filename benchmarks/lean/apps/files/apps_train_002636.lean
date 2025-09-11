@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def decipher (s : String) : String := sorry 
 
 theorem decipher_produces_lowercase (codes : List String) 
   (h : ∀ c ∈ codes, ∃ n : Nat, n ≥ 97 ∧ n ≤ 122 ∧ c = toString n) :
   ∀ c ∈ (decipher (String.join codes)).data, c ≥ 'a' ∧ c ≤ 'z' := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decipher_preserves_length (codes : List String)
   (h : ∀ c ∈ codes, ∃ n : Nat, n ≥ 97 ∧ n ≤ 122 ∧ c = toString n) :
   (decipher (String.join codes)).length = codes.length := sorry 
@@ -43,6 +51,7 @@ info: 'z'
 -/
 -- #guard_msgs in
 -- #eval decipher "122"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

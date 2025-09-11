@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -22,6 +23,7 @@ spec fn gcd(m: nat, n: nat) -> nat
     else if m > n { gcd((m - n) as nat, n) }
     else { gcd(m, (n - m) as nat) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

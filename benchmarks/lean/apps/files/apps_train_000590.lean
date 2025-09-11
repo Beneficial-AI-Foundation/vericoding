@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def gcd_of_list (nums : List Nat) : Nat := sorry
 
 def max_gcd_subarrays (n : Nat) (arr : List Nat) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_ones_returns_list_length (n : Nat) (arr : List Nat) 
   (h₁ : arr = List.replicate n 1) :
   max_gcd_subarrays n arr = n := sorry
@@ -40,6 +48,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval max_gcd_subarrays 2 [4, 6]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

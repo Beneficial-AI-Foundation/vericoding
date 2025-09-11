@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def firstNonConsecutive (arr : List Int) : Option Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (x : Int) : Int :=
   if x < 0 then -x else x
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_or_single_returns_none (arr : List Int) :
   arr.length ≤ 1 → firstNonConsecutive arr = none :=
 sorry
@@ -53,6 +60,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval first_non_consecutive [-3, -2, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

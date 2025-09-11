@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| >= 2 &&
@@ -43,6 +44,7 @@ predicate is_lexicographically_optimal(result_str: string, input_str: string, n:
       forall other_k :: 1 <= other_k <= n ==> 
         result_str <= transform_string(input_str, n, other_k))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

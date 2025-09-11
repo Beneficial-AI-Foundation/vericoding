@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sel_reverse (arr : List α) (length : Nat) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_preservation {α : Type} (arr : List α) (length : Nat) :
   List.length (sel_reverse arr length) = List.length arr := sorry 
 
@@ -44,6 +52,7 @@ info: [1, 2, 3, 4, 5, 6]
 -/
 -- #guard_msgs in
 -- #eval sel_reverse [1, 2, 3, 4, 5, 6] 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

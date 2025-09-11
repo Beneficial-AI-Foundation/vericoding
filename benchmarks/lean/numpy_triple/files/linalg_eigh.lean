@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -8,13 +9,19 @@ structure EighResult (n : Nat) where
   eigenvalues : Vector Float n
   /-- The eigenvectors as column vectors -/
   eigenvectors : Vector (Vector Float n) n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def eigh {n : Nat} (a : Vector (Vector Float n) n) : Id (EighResult n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem eigh_spec {n : Nat} (a : Vector (Vector Float n) n) 
     (h_symmetric : ∀ i j : Fin n, (a.get i).get j = (a.get j).get i) :
     ⦃⌜∀ i j : Fin n, (a.get i).get j = (a.get j).get i⌝⦄
@@ -39,3 +46,4 @@ theorem eigh_spec {n : Nat} (a : Vector (Vector Float n) n)
           av_j = lambda_i * (v_i.get j))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

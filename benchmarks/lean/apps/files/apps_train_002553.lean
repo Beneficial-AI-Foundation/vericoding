@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def String.isAlpha : Char → Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def changer : String → String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem changer_length (s : String) :
   s.length = (changer s).length :=
   sorry
@@ -40,6 +47,7 @@ info: 'A'
 -/
 -- #guard_msgs in
 -- #eval changer "z"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

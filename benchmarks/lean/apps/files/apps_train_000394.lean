@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def array_stats (numbers: List Int) : Float × Float × Float × Float :=
   sorry
 
@@ -15,13 +16,19 @@ def listSum (xs : List Int) : Int :=
   match xs with
   | [] => 0
   | (h::t) => h + listSum t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sorted (xs : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_stats_empty :
   array_stats [] = (0, 0, 0, 0) := sorry
 
@@ -50,6 +57,7 @@ theorem array_stats_median_odd (numbers: List Int) (h: numbers ≠ [])
   let (_, median, _, _) := array_stats numbers
   let s := sorted numbers
   (median - Float.ofInt (List.get! s (numbers.length/2))).abs < 1e-10 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

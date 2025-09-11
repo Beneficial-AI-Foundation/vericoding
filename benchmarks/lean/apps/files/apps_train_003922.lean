@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def solve (s : String) : Bool := sorry
 
 def countOccurrences (c : Char) (s : String) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def allCountsEqual (s : String) : Bool := sorry 
 
 theorem solve_exists_char_removal 
@@ -13,7 +18,9 @@ theorem solve_exists_char_removal
   (h2 : s.length ≥ 2) :
   ∃ c : Char, c ∈ s.data ∧ 
   allCountsEqual (s.replace (String.mk [c]) "") = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_equal_counts_after_removal 
   {s : String}
   (h1 : solve s = true)
@@ -40,6 +47,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval solve "abbba"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

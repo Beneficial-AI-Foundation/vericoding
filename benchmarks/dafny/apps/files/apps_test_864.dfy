@@ -1,3 +1,4 @@
+// <vc-preamble>
 function possible(n: int, foodTypes: seq<int>, days: int): bool
     requires n >= 0
     requires days >= 0
@@ -32,6 +33,7 @@ function countPackages(foodTypes: seq<int>, targetType: int): int
     else if foodTypes[0] == targetType then 1 + countPackages(foodTypes[1..], targetType)
     else countPackages(foodTypes[1..], targetType)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

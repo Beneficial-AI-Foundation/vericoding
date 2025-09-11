@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def count_yalalovichik_substrings (s: String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def longest_run (s: String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_always_nonnegative (s: String) (h: s.length > 0):
   count_yalalovichik_substrings s ≥ 0 :=
   sorry
@@ -42,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_yalalovichik_substrings "aaa"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_average (numbers : List Float) : Float := sorry
 
 def sum (l : List Float) : Float := sorry
@@ -5,10 +6,14 @@ def sum (l : List Float) : Float := sorry
 def minimum? (l : List Float) : Option Float := sorry
 
 def maximum? (l : List Float) : Option Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumInt (l : List Int) : Int := sorry
 
 theorem integer_list_average (numbers : List Int) :
@@ -16,7 +21,9 @@ theorem integer_list_average (numbers : List Int) :
     match numbers with
     | [] => 0
     | _  => Float.ofInt (sumInt numbers) / Float.ofInt numbers.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list_average :
   find_average [] = 0 := sorry
 
@@ -47,6 +54,7 @@ info: 2.5
 -/
 -- #guard_msgs in
 -- #eval find_average [1.5, 2.5, 3.5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

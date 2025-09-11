@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validFormat (s : String) : Bool := sorry
 
 def meetingTime (ta tb r : Float) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_period_format (ta : Float) (h : ta ≠ 0) :
   validFormat (meetingTime ta 0 5) := sorry
 
@@ -47,6 +55,7 @@ info: '7.78'
 -/
 -- #guard_msgs in
 -- #eval meeting_time -14 -5 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

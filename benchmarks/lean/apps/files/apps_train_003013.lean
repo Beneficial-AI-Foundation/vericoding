@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longer (s : String) : String := sorry
 
 instance : LE (Nat × String) where
   le := fun a b => a.1 < b.1 ∨ (a.1 = b.1 ∧ a.2 ≤ b.2)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem longer_sorted_property {s : String} {result : String} (h : result = longer s) 
   (h_nonempty : s ≠ "") :
   let words := result.split (· = ' ')
@@ -37,6 +45,7 @@ info: 'Hello hello'
 -/
 -- #guard_msgs in
 -- #eval longer "hello Hello"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

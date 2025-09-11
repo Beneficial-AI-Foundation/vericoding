@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x: int, y: int)
 {
     x != 0 && y != 0
@@ -12,6 +13,7 @@ predicate ValidOutput(result: seq<int>, x: int, y: int)
     (x * y <= 0 && x < 0 ==> result == [x - y, 0, 0, y - x]) &&
     (x * y <= 0 && x >= 0 ==> result == [0, y - x, x - y, 0])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

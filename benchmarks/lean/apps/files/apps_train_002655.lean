@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dup (strings : List String) : List String := sorry
 
 theorem dup_same_length (strings : List String) (h : strings ≠ []) : 
   List.length (dup strings) = List.length strings := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dup_no_consecutive_duplicates (strings : List String) (h : strings ≠ []) :
   ∀ s ∈ dup strings, ∀ i, i + 1 < s.length → 
   s.data[i]? = some c₁ → s.data[i+1]? = some c₂ → c₁ ≠ c₂ :=
@@ -46,6 +54,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval dup ["ccooddddddewwwaaaaarrrrsssss"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

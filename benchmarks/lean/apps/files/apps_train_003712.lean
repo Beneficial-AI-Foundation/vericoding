@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def operator_insertor (n : Int) : Option Int := sorry
 
 theorem operator_insertor_output_range (n : Int) : 
@@ -9,10 +10,14 @@ theorem operator_insertor_output_range (n : Int) :
 def expr_evaluates_to : Int → String → Prop := sorry
 
 /- Helper function to check if expression uses given operators -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def expr_uses_ops : List String → String → Prop := sorry
 
 theorem operator_insertor_result_exists (n : Int) (result : Int) :
@@ -22,7 +27,9 @@ theorem operator_insertor_result_exists (n : Int) (result : Int) :
     (∀ op ∈ ops, op = "+" ∨ op = "-" ∨ op = "") ∧
     (∃ expr : String, expr_evaluates_to n expr ∧ expr_uses_ops ops expr)
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem operator_insertor_impossible_large (n : Int) :
   n ≥ 10^10 → operator_insertor n = none := sorry
 
@@ -48,6 +55,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval operator_insertor 160
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

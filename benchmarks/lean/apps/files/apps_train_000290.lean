@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def numTilePossibilities (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tile_possibilities_bounds {s : String} (h : s.length ≥ 1) (h2 : s.length ≤ 7) :
   let result := numTilePossibilities s
   result ≥ 0 ∧ 
@@ -36,6 +44,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval numTilePossibilities "V"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def longestOnes (A : List Nat) (K : Nat) : Nat := sorry
 
 def isConsecutiveOnes (A : List Nat) (n : Nat) : Prop := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maxConsecutiveOnes (A : List Nat) : Nat := sorry
 
 theorem longestOnes_upper_bound (A : List Nat) (K : Nat) : 
   longestOnes A K ≤ A.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem longestOnes_min_bound (A : List Nat) (K : Nat) (n : Nat) :
   isConsecutiveOnes A n → n ≤ longestOnes A K := sorry
 
@@ -42,6 +49,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval longestOnes [1, 1, 1, 1] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

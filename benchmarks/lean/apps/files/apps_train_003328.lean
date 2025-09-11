@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def delete_nth (lst: List Int) (max_e: Nat) : List Int := sorry
 
 theorem delete_nth_length {lst: List Int} {max_e: Nat} :
   List.length (delete_nth lst max_e) ≤ List.length lst := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem delete_nth_max_occurrences {lst: List Int} {max_e: Nat} {x: Int} :
   x ∈ delete_nth lst max_e → List.count x (delete_nth lst max_e) ≤ max_e := sorry
 
@@ -38,6 +46,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval delete_nth [] 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_path_queries (N : Nat) (node_values : List Nat) (edges : List (Nat × Nat)) 
   (queries : List (Char × Nat × Nat)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_path_queries_results_length {N : Nat} {node_values : List Nat} 
   {edges : List (Nat × Nat)} {queries : List (Char × Nat × Nat)} :
   List.length (solve_path_queries N node_values edges queries) = List.length queries :=
@@ -28,6 +36,7 @@ theorem solve_path_queries_valid_queries {N : Nat} {queries : List (Char × Nat 
     q.2.1 ≠ q.2.2) :
   True :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

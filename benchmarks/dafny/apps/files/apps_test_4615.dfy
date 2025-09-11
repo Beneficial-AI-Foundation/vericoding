@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int, d: int, e: int, f: int)
 {
     1 <= a < b <= 30 &&
@@ -18,6 +19,7 @@ function Density(total_mass: int, sugar_mass: int): int
 {
     if total_mass > 0 then (100 * sugar_mass) / total_mass else 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

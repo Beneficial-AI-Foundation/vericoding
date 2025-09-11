@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def PizzaGrid := List String
 
 def valid_grid (n : Nat) (grid : PizzaGrid) : Bool := sorry
@@ -9,13 +10,19 @@ def count_ones (s : String) : Nat :=
 
 def left_side (n : Nat) (row : String) : String :=
   row.take (n/2)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def right_side (n : Nat) (row : String) : String :=
   row.drop (n/2)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_output {n : Nat} {grid : PizzaGrid} 
   (h : valid_grid n grid = true) : 
   ∃ result : Nat, solve_pizza_balance n grid = result := sorry
@@ -55,6 +62,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_pizza_balance 2 ["10", "01"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

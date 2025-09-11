@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def subcuboids (x y z : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cube_symmetry (n : Nat) (h : n > 0) : 
   subcuboids n n n = subcuboids n n n :=
 by sorry
@@ -37,6 +45,7 @@ info: 108
 -/
 -- #guard_msgs in
 -- #eval subcuboids 2 3 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

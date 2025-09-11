@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def List.sort (l : List α) (f : α → α → Bool) : List α :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def custom_sort_string (s t : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_preserved {s t : String} (h : s.length > 0) :
   (custom_sort_string s t).length = t.length :=
 sorry
@@ -35,6 +42,7 @@ info: 'zyxw'
 -/
 -- #guard_msgs in
 -- #eval custom_sort_string "abc" "zyxw"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

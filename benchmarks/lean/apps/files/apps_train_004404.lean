@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def center_of (s : List Char) : List Char := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_and_nonempty (s : List Char) : 
   center_of s = [] ∨ (∀ c, c ∈ center_of s → c ∈ s) :=
 sorry 
@@ -42,6 +50,7 @@ info: 'aecea'
 -/
 -- #guard_msgs in
 -- #eval center_of "abcde"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

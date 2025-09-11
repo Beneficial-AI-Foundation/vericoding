@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_eq (eq: List (List Int)) : List Int := sorry
 
 def matrixMultiply (A: List (List Int)) (x: List Int) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_eq_dimensions {eq: List (List Int)} (h1: eq.length = 3) 
   (h2: ∀ row ∈ eq, row.length = 4) :
   let solution := solve_eq eq
@@ -34,6 +42,7 @@ info: [3, -1, 2]
 -/
 -- #guard_msgs in
 -- #eval solve_eq [[3, 2, 0, 7], [-4, 0, 3, -6], [0, -2, -6, -10]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

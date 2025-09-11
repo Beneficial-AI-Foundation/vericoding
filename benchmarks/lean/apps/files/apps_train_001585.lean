@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def almost_everywhere_zero (n : Nat) (k : Nat) : Nat :=
   sorry
 
 def comb (n : Nat) (k : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def num_digits (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem aez_valid_inputs (n : Nat) (k : Nat) :
   let result := almost_everywhere_zero n k
   result ≥ 0 :=
@@ -51,6 +58,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval almost_everywhere_zero 20 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

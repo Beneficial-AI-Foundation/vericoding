@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def kClosest (points : List (List Int)) (k : Nat) : List (List Int) := sorry
 
 def euclDistance (point : List Int) : Int :=
@@ -9,7 +15,9 @@ def euclDistance (point : List Int) : Int :=
   | _ => 0
 
 /- For valid inputs, kClosest returns k points -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem kClosest_correct_length {points : List (List Int)} {k : Nat}
   (h1 : k > 0)
   (h2 : k ≤ points.length)
@@ -67,6 +75,7 @@ info: [[1, 1], [2, 2]]
 -/
 -- #guard_msgs in
 -- #eval kClosest [[1, 1], [2, 2], [3, 3]] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

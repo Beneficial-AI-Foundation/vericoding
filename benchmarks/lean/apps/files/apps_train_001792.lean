@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def beautiful_array (n : Nat) : List Nat :=
   sorry
 
 def is_permutation (arr : List Nat) (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check_beautiful_property (arr : List Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem beautiful_array_correct (n : Nat) : 
   let arr := beautiful_array n
   n > 0 → (
@@ -47,6 +54,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval beautiful_array 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

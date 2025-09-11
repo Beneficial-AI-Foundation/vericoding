@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def count_rectangle_pairs (n : Nat) (rectangles : List (Nat × Nat × Nat)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sqrt (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_negative_result (n : Nat) (rectangles : List (Nat × Nat × Nat)) :
   count_rectangle_pairs n rectangles ≥ 0 :=
   sorry
@@ -43,6 +50,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_rectangle_pairs 2 [(1, 2, 5), (2, 3, 5)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

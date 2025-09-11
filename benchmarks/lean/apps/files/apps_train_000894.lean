@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_awkwardness (s : String) : Nat := sorry
 
 -- Result should be non-negative
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_awkwardness_nonneg (s : String) : 
   min_awkwardness s ≥ 0 := sorry
 
@@ -54,6 +62,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval min_awkwardness "bbgg"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

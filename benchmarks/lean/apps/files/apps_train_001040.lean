@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD : Nat := 1000000007
 
 def calc_valid_sequences (n m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_sequences_in_mod_range (n m : Nat) 
     (h1 : n > 0) (h2 : m > 0) (h3 : n ≤ 100) (h4 : m ≤ 100) : 
   let result := calc_valid_sequences n m
@@ -43,6 +51,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval calc_valid_sequences 1 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

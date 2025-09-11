@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_divisible (n x y : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_divisible_implies_individual_divisibility 
   {n x y : Int} (h : x ≠ 0) (h' : y ≠ 0) :
   is_divisible n x y → n % x = 0 ∧ n % y = 0 :=
@@ -36,6 +44,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_divisible 17 1 17
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

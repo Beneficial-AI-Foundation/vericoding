@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_cooking_time (n: Nat) (times: List Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def list_maximum (l: List Nat) : Nat :=
 
 def list_sorted_take (l: List Nat) (n: Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cooking_time_lower_bound_half_sum {n: Nat} {times: List Nat} 
   (h1: 1 ≤ n) (h2: n ≤ 100) (h3: times.length ≥ 1) :
   let usedTimes := list_sorted_take times (min n times.length)
@@ -56,6 +63,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval min_cooking_time 4 [2, 3, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

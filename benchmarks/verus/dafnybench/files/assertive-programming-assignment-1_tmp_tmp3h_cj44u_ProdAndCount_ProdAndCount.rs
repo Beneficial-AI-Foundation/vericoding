@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -33,6 +34,7 @@ spec fn county(elem: int, key: int) -> int {
 spec fn prody(elem: int) -> int {
     if elem <= 0 { 1 } else { elem }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

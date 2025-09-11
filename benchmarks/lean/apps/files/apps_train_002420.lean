@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_largest_group (n : Nat) : Nat := sorry
 
 theorem count_largest_group_positive (n : Nat) (h : n > 0) :
   count_largest_group n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_largest_group_bounded (n : Nat) (h : n > 0) :
   count_largest_group n ≤ n := sorry
 
@@ -33,6 +41,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval count_largest_group 15
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

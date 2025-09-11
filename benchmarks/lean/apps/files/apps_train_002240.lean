@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve_haystack (n : Nat) (d : Nat) (haybales : List Nat) : Nat :=
   sorry
 
@@ -5,10 +6,14 @@ def list_sum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | h :: t => h + list_sum t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_movable_sum (n d : Nat) (haybales : List Nat) : Nat :=
   let rec aux : Nat → Nat → Nat
     | 0, acc => acc
@@ -19,7 +24,9 @@ def calculate_movable_sum (n d : Nat) (haybales : List Nat) : Nat :=
         | some x => min moves x
       aux i (acc + val)
   aux (n-1) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_haystack_within_first_pile_sum {n d : Nat} {haybales : List Nat}
   (hn : n > 0) (h_len : haybales.length = n) :
   solve_haystack n d haybales ≥ (haybales.get ⟨0, sorry⟩) := by
@@ -62,6 +69,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_haystack 1 8 [0]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (x y : Nat) : Nat := sorry
 
 def isSpecialPrime (n : Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_range_properties (x y : Nat) (hx : x ≤ 1000000) (hy : y ≤ 1000000) :
   solve x y ≥ 0 := sorry
 
@@ -32,6 +40,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval solve 100 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

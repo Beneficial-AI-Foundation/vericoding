@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_circular_roads (n : Nat) (road_lengths : List Int) : (String × Option (List Nat)) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_solution_odd_n (n : Nat) (road_lengths : List Int) (h : n % 2 = 1) :
   solve_circular_roads n road_lengths = ("NO", none) :=
 sorry
@@ -28,6 +36,7 @@ theorem all_negative_one_has_solution (n : Nat) (h : n % 2 = 0) :
   (∀ roads : List Nat, result.2 = some roads →
     ∀ x ∈ roads, x = 1) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

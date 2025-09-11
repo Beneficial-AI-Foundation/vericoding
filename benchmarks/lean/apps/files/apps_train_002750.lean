@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_ways (n k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_ways_positive {n k : Nat} (h1 : n ≥ 1) (h2 : k ≥ 1) : 
   count_ways n k ≥ 1 :=
   sorry
@@ -33,6 +41,7 @@ info: 492
 -/
 -- #guard_msgs in
 -- #eval count_ways 10 6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

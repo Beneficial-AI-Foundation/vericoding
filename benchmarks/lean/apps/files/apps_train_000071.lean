@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_beautiful_array (n k : Nat) (a : List Nat) : List Nat := sorry
 
 def countDistinct (l : List Nat) : Nat :=
   (l.foldl (fun acc x => if x ∈ acc then acc else x::acc) []).length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem beautiful_array_properties 
   (n k : Nat) (a : List Nat)
   (hn : n > 0) (hk : k > 0) (hnk : n ≤ 10) (hk10 : k ≤ 10)
@@ -58,6 +66,7 @@ info: n3 * k3
 -/
 -- #guard_msgs in
 -- #eval len result3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

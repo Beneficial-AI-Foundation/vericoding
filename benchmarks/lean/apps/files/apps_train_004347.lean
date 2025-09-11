@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def controller (s : String) : String := sorry
 
 theorem controller_output_length (s : String) :
   (controller s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem controller_output_digits (s : String) :
   ∀ c ∈ (controller s).data, c = '0' ∨ c = '1' ∨ c = '2' ∨ c = '3' ∨ c = '4' ∨ c = '5' := sorry
 
@@ -41,6 +49,7 @@ info: '001234321000'
 -/
 -- #guard_msgs in
 -- #eval controller "..P...O....."
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

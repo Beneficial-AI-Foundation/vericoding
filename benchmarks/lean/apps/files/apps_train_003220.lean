@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def binary_to_string (s : String) : String := sorry
 
 def is_binary_string (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem binary_to_string_length 
   (binary : String)
   (h : is_binary_string binary)
@@ -38,6 +46,7 @@ info: '1011'
 -/
 -- #guard_msgs in
 -- #eval binary_to_string "00110001001100000011000100110001"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

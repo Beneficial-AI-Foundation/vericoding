@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsSorted(s: seq<int>)
 {
     forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
@@ -12,6 +13,7 @@ method MergeSortedAux(a: seq<int>, b: seq<int>) returns (result: seq<int>)
     assume {:axiom} false;
     result := [];
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

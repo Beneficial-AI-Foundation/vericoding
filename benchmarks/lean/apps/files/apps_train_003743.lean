@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sumTriangularNumbers (n : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_triangular_negative_returns_zero {n : Int}
   (h : n ≤ 0) : sumTriangularNumbers n = 0 := sorry
 
@@ -32,6 +40,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval sum_triangular_numbers -3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

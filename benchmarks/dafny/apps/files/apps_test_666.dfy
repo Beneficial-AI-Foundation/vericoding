@@ -1,3 +1,4 @@
+// <vc-preamble>
 function TriangularNumber(m: int): int
     requires m >= 0
 {
@@ -14,6 +15,7 @@ predicate ValidResult(n: int, result: int)
 {
     result >= 1 && result <= n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

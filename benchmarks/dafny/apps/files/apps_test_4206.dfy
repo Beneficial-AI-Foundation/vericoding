@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 &&
@@ -15,6 +16,7 @@ function MaxDivisibleBy3Segments(s: string): int
 {
     MaxDivisibleBy3SegmentsHelper(s, 0, "", 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

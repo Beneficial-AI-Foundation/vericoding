@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def prev_perm_opt1 (arr : List Int) : List Int := sorry
 
 theorem prev_perm_length_preserved {arr : List Int} (h : arr ≠ []) :
   (prev_perm_opt1 arr).length = arr.length := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sortFn : List Int → List Int := sorry
 
 theorem prev_perm_same_elements {arr : List Int} (h : arr ≠ []) :
   list_sortFn (prev_perm_opt1 arr) = list_sortFn arr := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prev_perm_sorted_unchanged {arr : List Int} (h : arr ≠ []) :
   arr = list_sortFn arr → prev_perm_opt1 arr = arr := sorry
 
@@ -40,6 +47,7 @@ info: [1, 3, 1, 3]
 -/
 -- #guard_msgs in
 -- #eval prev_perm_opt1 [3, 1, 1, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

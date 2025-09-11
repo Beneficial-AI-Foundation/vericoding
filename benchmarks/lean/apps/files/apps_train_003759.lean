@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sayHello (name : String) : String := sorry
 
 theorem say_hello_returns_string {name : String} (h : name.length > 0) :
   let greeting := sayHello name
   String.length greeting > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem say_hello_starts_with_hello {name : String} (h : name.length > 0) :
   let greeting := sayHello name
   String.startsWith greeting "Hello, " = true := sorry
@@ -36,6 +44,7 @@ info: 'Hello, Dr. McCoy'
 -/
 -- #guard_msgs in
 -- #eval say_hello "Dr. McCoy"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

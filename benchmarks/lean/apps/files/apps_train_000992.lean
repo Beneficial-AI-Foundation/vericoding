@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern_generator (n : Nat) : List String := sorry
 
 def containsSubstr (s : String) (sub : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_generator_result_nonempty (k : Nat) (h : k > 0) : 
   pattern_generator k ≠ [] := sorry
 
@@ -49,6 +57,7 @@ info: ['1', '23', '456']
 -/
 -- #guard_msgs in
 -- #eval pattern_generator 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

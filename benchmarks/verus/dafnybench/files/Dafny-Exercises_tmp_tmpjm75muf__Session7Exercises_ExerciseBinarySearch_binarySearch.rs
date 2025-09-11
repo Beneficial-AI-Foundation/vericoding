@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn sorted(s: Seq<int>) -> bool {
     forall|u: int, w: int| 0 <= u < w < s.len() ==> s[u] <= s[w]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

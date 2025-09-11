@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_irfft2 {rows cols : Nat} (a : Vector (Vector Float cols) rows) : Id (Vector (Vector Float cols) rows) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_irfft2_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows) :
     ⦃⌜True⌝⦄
     numpy_irfft2 a
@@ -23,3 +30,4 @@ theorem numpy_irfft2_spec {rows cols : Nat} (a : Vector (Vector Float cols) rows
         (a.get i).get j ≠ 0 → 
         ∃ (k : Fin rows) (l : Fin cols), (result.get k).get l ≠ 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

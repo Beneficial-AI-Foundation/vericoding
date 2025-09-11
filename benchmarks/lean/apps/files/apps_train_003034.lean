@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def stairs (n : Int) : String := sorry 
 def step (n : Int) : String := sorry
 
@@ -6,14 +7,20 @@ def rightJustify (s : String) (width : Int) : String := sorry
 
 def isDigit (c : Char) : Bool := sorry
 def listToString (l : List Nat) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringContains (s : String) (c : Char) : Prop := sorry
 
 -- Properties for stairs function
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem stairs_empty_for_invalid_input (n : Int) : 
   n < 1 → stairs n = " " := sorry
 
@@ -40,6 +47,7 @@ theorem step_sequence (n : Int) (i : Nat) :
   let nums := splitLines (step n);
   let expected := toString ((i + 1) % 10);
   nums.get? i = some expected := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

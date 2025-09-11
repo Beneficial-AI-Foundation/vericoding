@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def create_array (n : Nat) : Array Nat := sorry
 
 theorem create_array_length (n : Nat) :
   (create_array n).size = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem create_array_sequential (n : Nat) (i : Nat) (h : i < n) : 
   have h' : i < (create_array n).size := by rw [create_array_length]; exact h
   (create_array n)[i]'h' = i + 1 := sorry
@@ -33,6 +41,7 @@ info: [1, 2, 3, 4, 5]
 -/
 -- #guard_msgs in
 -- #eval create_array 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

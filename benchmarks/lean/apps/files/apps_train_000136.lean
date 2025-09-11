@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def getMaxLen (nums : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem getMaxLen_nonnegative (nums : List Int) : 
   getMaxLen nums ≥ 0 := sorry
 
@@ -33,6 +41,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval getMaxLen [-1, -2, -3, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

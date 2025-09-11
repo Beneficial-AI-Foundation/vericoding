@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def heavy_metal_umlauts (s : String) : String := sorry
 
 theorem length_preserved (s : String) :
   (heavy_metal_umlauts s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_vowels_unchanged (s : String) (i : Nat) (h : i < s.length) :
   let c := s.data[i]
   let h' : i < (heavy_metal_umlauts s).length := by rw [length_preserved s]; exact h
@@ -36,6 +44,7 @@ info: 'Mëtäl'
 -/
 -- #guard_msgs in
 -- #eval heavy_metal_umlauts "Metal"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

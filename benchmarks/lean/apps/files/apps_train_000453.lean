@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def abs (n : Int) : Int := 
   if n ≥ 0 then n else -n
 
 def maxValueAfterReverse (nums : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def diffSum (nums : List Int) : Int :=
   match nums with
   | [] => 0
   | [_] => 0
   | x :: xs => List.foldl (fun acc (pair : Int × Int) => acc + abs (pair.1 - pair.2)) 0 (List.zip (x::xs) xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxValueAfterReverse_nonnegative (nums : List Int) :
   maxValueAfterReverse nums ≥ 0 :=
   sorry
@@ -51,6 +58,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval maxValueAfterReverse [1, 2, 3, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

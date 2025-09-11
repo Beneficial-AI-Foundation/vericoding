@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nth_even (n : Nat) : Nat := sorry
 
 theorem nth_even_increases_monotonically {n : Nat} (h : n > 0) : 
   nth_even (n + 1) > nth_even n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nth_even_is_even {n : Nat} (h : n > 0) :
   nth_even n % 2 = 0 := sorry
 
@@ -32,6 +40,7 @@ info: 198
 -/
 -- #guard_msgs in
 -- #eval nth_even 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

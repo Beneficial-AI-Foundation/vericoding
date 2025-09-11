@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_toy_train (n : Nat) (pairs : List (Nat × Nat)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_toy_train_length {n : Nat} {pairs : List (Nat × Nat)} 
   (h : n ≥ 2) :
   (solve_toy_train n pairs).length = n :=
@@ -53,6 +61,7 @@ info: [8, 7, 6, 8, 7]
 -/
 -- #guard_msgs in
 -- #eval solve_toy_train 5 [(2, 4), (5, 4), (3, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

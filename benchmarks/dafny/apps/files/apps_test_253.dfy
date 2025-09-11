@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(nums: seq<int>)
 {
     |nums| == 3 &&
@@ -28,6 +29,7 @@ function computeResult(x: int, y: int, z: int): string
             if c == 4 then "YES" else "NO"
         else "NO"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

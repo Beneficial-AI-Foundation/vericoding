@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def argsToString (args : List (String ⊕ (List String))) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem args_to_string_non_empty {args : List (String ⊕ (List String))} 
   (h : args ≠ []) : 
   argsToString args ≠ "" :=
@@ -46,6 +54,7 @@ info: 'foo bar --baz qux -a plugh'
 -/
 -- #guard_msgs in
 -- #eval args_to_string [["foo"], "bar", ["baz", "qux"], ["a", "plugh"]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

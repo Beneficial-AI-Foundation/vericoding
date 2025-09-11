@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def clip {n : Nat} (arr : Vector Float n) (min_val max_val : Float) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem clip_spec {n : Nat} (arr : Vector Float n) (min_val max_val : Float) :
     ⦃⌜True⌝⦄
     clip arr min_val max_val
@@ -19,3 +26,4 @@ theorem clip_spec {n : Nat} (arr : Vector Float n) (min_val max_val : Float) :
       else 
         result.get i = max_val)⌝⦄ := by
   sorry
+-- </vc-theorems>

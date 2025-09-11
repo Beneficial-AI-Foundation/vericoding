@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int) {
     n >= 0 && k >= 1
 }
@@ -17,6 +18,7 @@ predicate IsCorrectResult(n: int, k: int, result: int)
     result >= 0 &&
     result < k
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

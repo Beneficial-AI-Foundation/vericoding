@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn sumcheck(s: &[int], i: int) -> int
     if i == 0 { 0 }
     else { s[i as nat - 1] + sumcheck(s, i - 1) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

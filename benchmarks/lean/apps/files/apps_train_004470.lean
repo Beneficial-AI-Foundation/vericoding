@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def drop_cap (s : String) : String := sorry
 
 theorem empty_and_whitespace (s : String) :
   (s.isEmpty → (drop_cap s).isEmpty) ∧ 
   (¬s.isEmpty → (drop_cap s).length ≥ s.trim.length) := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem spacing_preserved (s : String) (h : ¬s.isEmpty) :
   let orig_spaces := s.split (λ c => c.isWhitespace)
   let result_spaces := (drop_cap s).split (λ c => c.isWhitespace)
@@ -38,6 +46,7 @@ info: '   Space Walk   '
 -/
 -- #guard_msgs in
 -- #eval drop_cap "   space WALK   "
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

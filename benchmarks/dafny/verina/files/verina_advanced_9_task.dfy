@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SumOfDigits(x: nat): nat
     decreases x
 {
@@ -9,6 +10,7 @@ predicate IsSumDivisibleBy(x: nat, d: nat)
 {
     (SumOfDigits(x) % d) == 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

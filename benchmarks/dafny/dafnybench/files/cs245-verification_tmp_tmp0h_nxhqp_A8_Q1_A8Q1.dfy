@@ -1,9 +1,11 @@
+// <vc-preamble>
 function power(a: int, n: int): int
   requires 0 <= n;
   decreases n;
   {
     if (n == 0) then 1 else a * power(a, n - 1)
   }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

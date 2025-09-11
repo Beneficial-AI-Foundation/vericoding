@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def height (n m : Nat) : Nat := sorry
 
 def TestEmulator := Nat × Nat × Nat
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (e : TestEmulator) : Nat := sorry 
 
 theorem height_nonnegative (n m : Nat) :
   height n m ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem height_when_n_geq_m (n m : Nat) :
   n ≥ m → height n m = 2^m - 1 := sorry
 
@@ -51,6 +58,7 @@ info: 55
 -/
 -- #guard_msgs in
 -- #eval solve TestEmulator(3, 14, 55)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

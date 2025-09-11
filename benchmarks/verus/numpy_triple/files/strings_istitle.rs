@@ -1,8 +1,10 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
 spec fn is_titlecased(s: Seq<char>) -> bool;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

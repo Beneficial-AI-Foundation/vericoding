@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def count_subarrays_with_min (arr : List Int) (k : Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_min (arr : List Int) : Int :=
   sorry
 
 -- Result should never be negative
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_subarrays_nonneg {arr : List Int} {k : Int} 
   (h1 : arr ≠ []) :
   count_subarrays_with_min arr k ≥ 0 :=
@@ -64,6 +71,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_subarrays_with_min [3] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

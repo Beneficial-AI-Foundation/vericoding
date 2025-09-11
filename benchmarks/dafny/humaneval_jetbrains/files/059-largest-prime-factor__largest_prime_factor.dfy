@@ -1,7 +1,9 @@
+// <vc-preamble>
 function is_prime_pred(k: int) : bool
 {
   forall i :: 2 <= i < k ==> k % i != 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

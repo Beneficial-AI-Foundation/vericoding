@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def combat (health damage : Int) : Int := sorry
 
 theorem combat_positive_inputs (health damage : Int) 
@@ -8,7 +14,9 @@ theorem combat_positive_inputs (health damage : Int)
   combat health damage = max 0 (health - damage) ∧ 
   combat health damage ≥ 0 := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 95
 -/
@@ -26,6 +34,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval combat 20 30
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

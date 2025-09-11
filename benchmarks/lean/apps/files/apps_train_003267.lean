@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def get_average (marks: List Nat) : Nat := sorry
 
 def list_maximum (l: List Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_minimum (l: List Nat) : Nat := sorry
 def list_sum (l: List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem average_in_bounds {marks: List Nat} (h: marks ≠ []) : 
   let avg := get_average marks
   avg ≤ list_maximum marks ∧ avg ≥ list_minimum marks := sorry
@@ -35,6 +42,7 @@ info: 11
 -/
 -- #guard_msgs in
 -- #eval get_average [2, 5, 13, 20, 16, 16, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

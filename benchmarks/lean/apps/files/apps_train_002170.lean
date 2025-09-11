@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_haiku_sequences (n k1 k2 k3 : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem small_n_property (n : Nat) (h : 1 ≤ n ∧ n ≤ 3) :
   count_haiku_sequences n 2 2 2 < 10^n := sorry
 
@@ -36,6 +44,7 @@ info: 863912418
 -/
 -- #guard_msgs in
 -- #eval count_haiku_sequences 37 4 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

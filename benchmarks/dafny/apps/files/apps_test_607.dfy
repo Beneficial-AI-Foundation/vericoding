@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && 
@@ -22,6 +23,7 @@ function ComputeHappinessSum(n: int, m: int): int
 {
     SumUpToSize(n, m, n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

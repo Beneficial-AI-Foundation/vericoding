@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -8,6 +9,7 @@ spec fn power(a: int, n: int) -> int
 {
     if n <= 0 { 1 } else { a * power(a, n - 1) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

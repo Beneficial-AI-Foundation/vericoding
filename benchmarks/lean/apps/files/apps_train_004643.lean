@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def grid_index (grid : List (List Char)) (indexes : List Nat) : List Char := sorry
 
 theorem grid_index_length 
@@ -13,7 +19,9 @@ theorem grid_index_length
   (h3 : ∀ row ∈ grid, row.length = size)
   (h4 : indexes.all (λ i => i > 0 ∧ i ≤ size * size)) :
   (grid_index grid indexes).length = indexes.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem grid_index_matches_position
   (grid : List (List Char))
   (size : Nat)
@@ -54,6 +62,7 @@ info: 'ad'
 -/
 -- #guard_msgs in
 -- #eval grid_index [["a", "b"], ["c", "d"]] [1, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

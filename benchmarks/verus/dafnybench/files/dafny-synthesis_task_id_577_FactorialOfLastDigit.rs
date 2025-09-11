@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -8,6 +9,7 @@ spec fn factorial(n: int) -> int
 {
     if n == 0 { 1 } else { n * factorial((n - 1) as int) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

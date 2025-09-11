@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isPowerOfTwo (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def arrayConversion (arr : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_conversion_power_of_two_length
   {n : Nat} {arr : List Nat}
   (h1 : n ≥ 1) (h2 : n ≤ 5)
@@ -46,6 +53,7 @@ info: 60
 -/
 -- #guard_msgs in
 -- #eval array_conversion [3, 3, 5, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

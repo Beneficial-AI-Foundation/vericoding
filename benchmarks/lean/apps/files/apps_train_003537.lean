@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sort_array (arr : List Int) : List Int := sorry
 
 def isSorted (l : List Int) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_array_preserves_evens (arr : List Int) : 
   let result := sort_array arr
   List.length arr = List.length result ∧
@@ -39,6 +47,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval sort_array [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

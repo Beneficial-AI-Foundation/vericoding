@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -7,6 +8,7 @@ enum BitOrder {
     Big,
     Little
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

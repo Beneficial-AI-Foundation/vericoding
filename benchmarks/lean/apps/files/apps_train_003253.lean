@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def word_square (s : String) : Bool := sorry
 
 theorem non_square_length_strings_are_false {s : String} 
@@ -6,15 +7,21 @@ theorem non_square_length_strings_are_false {s : String}
 
 def countChar (c : Char) (s : List Char) : Nat :=
   (s.filter (fun x => x = c)).length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_odd_occurrences (s : String) : Nat :=
   let chars := s.toList
   let counts := chars.map (fun c => countChar c chars)
   (counts.filter (fun n => n % 2 = 1)).length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_same_letter_square_strings_are_valid (n : Nat) :
   word_square (String.mk (List.replicate (n*n) 'A')) = true := sorry
 
@@ -46,6 +53,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval word_square "CARDAREAREARDART"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

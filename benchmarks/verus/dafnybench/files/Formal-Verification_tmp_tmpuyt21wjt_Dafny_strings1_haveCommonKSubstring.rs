@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -44,6 +45,7 @@ spec fn have_common_k_substring_predicate(k: nat, str1: Seq<char>, str2: Seq<cha
 spec fn max_common_substring_predicate(str1: Seq<char>, str2: Seq<char>, len: nat) -> bool {
    forall|k: int| len < k <= str1.len() ==> !#[trigger] have_common_k_substring_predicate(k as nat, str1, str2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

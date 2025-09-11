@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def penalty (nums : List Nat) : String := sorry
 
 def stringIsAllDigits (s : String) : Bool := 
   s.all Char.isDigit
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listToSortedString (l : List Nat) : String := 
   let strList := l.map toString
   String.join strList
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem penalty_output_is_numeric (nums : List Nat) (h : nums ≠ []) : 
   let result := penalty nums
   stringIsAllDigits result = true := sorry
@@ -45,6 +52,7 @@ info: '323'
 -/
 -- #guard_msgs in
 -- #eval penalty ["32", "3"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def sum_dig (n: Nat) : Nat := sorry
 def is_happy (n: Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def performant_numbers (n: Nat) : List Nat := sorry
 
 theorem sum_dig_nonnegative (n: Nat) : 
   sum_dig n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_dig_upper_bound (n: Nat) (k: Nat) :
   sum_dig n ≤ k * 81 := sorry
 
@@ -52,6 +59,7 @@ info: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97,
 -/
 -- #guard_msgs in
 -- #eval performant_numbers 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

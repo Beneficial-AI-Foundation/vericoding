@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_anagram (s1 s2: String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_anagram_symmetry (s1 s2 : String) :
   is_anagram s1 s2 = is_anagram s2 s1 := by
   sorry
@@ -33,6 +41,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_anagram "dumble" "bumble"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

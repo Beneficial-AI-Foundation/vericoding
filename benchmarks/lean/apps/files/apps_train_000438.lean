@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_subarray_sum (nums : List Int) (k : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem short_arrays {nums : List Int} {k : Int} (h1 : k ≠ 0) (h2 : nums.length ≤ 1) :
   check_subarray_sum nums k = false :=
   sorry
@@ -49,6 +57,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval check_subarray_sum [1, 2] 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

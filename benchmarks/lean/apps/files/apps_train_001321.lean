@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_victory_number (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem victory_number_nonnegative (n : Nat) :
   n ≥ 1 → find_victory_number n ≥ 0 :=
   sorry
@@ -41,6 +49,7 @@ info: 17
 -/
 -- #guard_msgs in
 -- #eval find_victory_number 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

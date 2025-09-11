@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_prime : Int → Bool := sorry
 def next_prime : Int → Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem next_prime_larger (n : Int) :
   next_prime n > n := sorry
 
@@ -33,6 +41,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval next_prime 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -37,13 +38,19 @@ axiom bitwise_or_absorption (x y : Int) : Int.bitwise_or x (Int.bitwise_and x y)
 /-- Bitwise OR is monotonic: if a ≤ b then a | c ≤ b | c (for non-negative values) -/
 axiom bitwise_or_monotonic_nonneg (a b c : Int) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a ≤ b) : 
   Int.bitwise_or a c ≤ Int.bitwise_or b c
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bitwise_or {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
     ⦃⌜True⌝⦄
     bitwise_or x1 x2
@@ -67,3 +74,4 @@ theorem bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
       (x1 = x2 → result = x1)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def palindrome_rearranging (s : String) : Bool :=
   sorry
 
@@ -6,13 +7,19 @@ def String.reverse (s : String) : String :=
 
 def String.repeating (c : Char) (n : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def odd_char_count (s : String) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_rearranging_symmetry (s : String) :
   palindrome_rearranging s = palindrome_rearranging (String.reverse s) :=
 sorry
@@ -52,6 +59,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval palindrome_rearranging "aaabbb"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

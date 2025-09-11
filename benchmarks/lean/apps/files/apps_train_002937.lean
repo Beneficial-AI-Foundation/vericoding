@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_2nd_largest {α : Type u} (arr : List α) : Option α := sorry
 
 theorem find_2nd_largest_mixed_property 
@@ -13,7 +19,9 @@ theorem find_2nd_largest_mixed_property
              | Sum.inl i => ∃ j, j = i ∧ (ints.eraseDups.filter (fun y => y > j)).length = 1
              | _ => False
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_2nd_largest_ints_property
   (arr : List Int) (h1 : arr.length ≥ 2) (h2 : arr.eraseDups = arr) :
   match find_2nd_largest arr with
@@ -50,6 +58,7 @@ info: 3333333333333333333334
 -/
 -- #guard_msgs in
 -- #eval find_2nd_largest [1, "a", "2", 3, 3, 3333333333333333333334, 544444444444444444444444444444, "b"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

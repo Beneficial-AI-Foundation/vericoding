@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_min_index (lst : List Int) : Int := sorry
 def find_max_index (lst : List Int) : Int := sorry
 
@@ -6,14 +7,20 @@ def find_second_max (lst : List Int) : Option Int := sorry
 def minimum (lst : List Int) : Option Int := lst.foldl (fun min x => match min with 
   | none => some x
   | some m => if x < m then some x else some m) none
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maximum (lst : List Int) : Option Int := lst.foldl (fun max x => match max with
   | none => some x  
   | some m => if x > m then some x else some m) none
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_index_empty (lst : List Int) : 
   lst = [] → find_min_index lst = -1 := sorry
 
@@ -86,6 +93,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_second_max [1, 2, 3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

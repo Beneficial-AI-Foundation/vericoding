@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def abs (x : Float) : Float := if x < 0 then -x else x
 
 def close_compare (a b : Float) (margin : Float := 0) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem close_compare_valid_output (a b margin : Float) :
   let result := close_compare a b margin
   result = -1 ∨ result = 0 ∨ result = 1 := sorry
@@ -62,6 +70,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval close_compare 1.99 5 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

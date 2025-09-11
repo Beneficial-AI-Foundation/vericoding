@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string) {
     |s| == 4 && forall i :: 0 <= i < |s| ==> s[i] == '+' || s[i] == '-'
 }
@@ -13,6 +14,7 @@ function CalculateSum(s: string): int
 {
     CountChar(s, '+') - CountChar(s, '-')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

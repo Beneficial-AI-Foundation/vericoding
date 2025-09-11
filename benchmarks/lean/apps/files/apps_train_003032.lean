@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def decode (code : List Nat) (key : Nat) : String := sorry
 
 theorem decode_type_and_bounds {code : List Nat} {key : Nat} 
@@ -10,7 +16,9 @@ theorem decode_type_and_bounds {code : List Nat} {key : Nat}
   ∃ result : String,
     (result.length = code.length) ∧ 
     (∀ c ∈ result.data, 'a'.val ≤ c.val ∧ c.val ≤ 'z'.val) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decode_wrapping (key : Nat) 
   (h : 1 ≤ key ∧ key ≤ 9999) :
   ∀ n : Nat,
@@ -32,6 +40,7 @@ info: 'masterpiece'
 -/
 -- #guard_msgs in
 -- #eval decode [14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8] 1939
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bowling_score (rolls : List Nat) : Nat := sorry
 
 theorem score_bounds (rolls : List Nat) (validRolls : True) :
   let score := bowling_score rolls
   0 ≤ score ∧ score ≤ 300 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem frame_scores (rolls : List Nat) (validRolls : True) :
   ∀ (i : Nat) (h : i < rolls.length), 
     (rolls.get ⟨i, h⟩ = 10 → rolls.get ⟨i, h⟩ ≤ 10) ∧ 
@@ -41,6 +49,7 @@ info: 300
 -/
 -- #guard_msgs in
 -- #eval bowling_score [10] * 12
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

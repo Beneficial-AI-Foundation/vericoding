@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def circle_slash (n : Nat) : Nat :=
   sorry
 
 /-
   Main property theorems
 -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem circle_slash_range (n : Nat) (h : n > 0) :
   1 ≤ circle_slash n ∧ circle_slash n ≤ n :=
   sorry
@@ -51,6 +59,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval circle_slash 16
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

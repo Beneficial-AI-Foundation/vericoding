@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def is_prime (n : Nat) : Bool := sorry
 
 def get_factors (n : Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def prime_factors (n : Nat) : String := sorry
 
 theorem prime_factors_valid_format (n : Nat) (h : n ≥ 2) :
@@ -19,7 +24,9 @@ theorem prime_factors_valid_format (n : Nat) (h : n ≥ 2) :
    (¬String.contains part '*' →
     part.toNat?.isSome ∧
     is_prime part.toNat!)) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prime_factors_preserves_value (n : Nat) (h : n ≥ 2) :
   let result := prime_factors n
   let parts := (String.split result (· == ')')).filter (λ x => x ≠ "")
@@ -40,6 +47,7 @@ theorem prime_number_input (p : Nat) (h₁ : p ≥ 2) (h₂ : is_prime p) :
 
 theorem powers_of_two (n : Nat) (h : n ≥ 1) :
   prime_factors (2^n) = s!"(2**{n})" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

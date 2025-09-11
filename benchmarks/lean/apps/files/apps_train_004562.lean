@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def VALID_COLORS := ["Red", "Blue", "Green", "Orange", "Purple", "Yellow"]
 
 structure Game where
@@ -8,17 +9,23 @@ structure Game where
 def Game.check (g : Game) (guess : List String) : List String := sorry
 
 def matches_result (code guess result : List String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mastermind (g : Game) : Unit := sorry
 
 theorem mastermind_always_solves {solution : List String} 
   (h1 : solution.length = 4)
   (h2 : ∀ x ∈ solution, x ∈ VALID_COLORS) :
   ∀ g : Game, g.solution = solution → g.tries ≤ 60 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem matches_result_symmetric {code guess : List String} 
   (h1 : code.length = 4) 
   (h2 : guess.length = 4)
@@ -46,6 +53,7 @@ theorem check_result_length {solution guess : List String}
   (h5 : g.solution = solution) :
   let result := g.check guess
   (result.length ≤ 4 ∧ ∀ x ∈ result, x = "Black" ∨ x = "White") := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

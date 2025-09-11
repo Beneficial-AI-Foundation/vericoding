@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_cost_clear_mines (a b : Nat) (mine_map : String) : Nat := sorry 
 
 theorem min_cost_non_negative (a b : Nat) (mine_map : String) :
   min_cost_clear_mines a b mine_map ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mines_exist_min_cost (a b : Nat) (mine_map : String) :
   (∃ c, c ∈ mine_map.data ∧ c = '1') →
   min_cost_clear_mines a b mine_map ≥ a := sorry
@@ -39,6 +47,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval min_cost_clear_mines 3 2 "1011"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

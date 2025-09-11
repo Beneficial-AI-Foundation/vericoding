@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def polybius : String → String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem polybius_output_format (text : String) : 
   (text.data.all (fun c => c.isUpper ∨ c = ' ')) →
   (text.length = (polybius text).length) ∧
@@ -43,6 +51,7 @@ info: '3534315412244543 434145114215 132435231542'
 -/
 -- #guard_msgs in
 -- #eval polybius "POLYBIUS SQUARE CIPHER"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

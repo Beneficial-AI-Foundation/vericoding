@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_possibility (nums : List Int) : Bool := sorry
 
 theorem single_element_valid {n : List Int} :
   n.length = 1 → check_possibility n = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem two_elements_fixable {n : List Int} :
   n.length = 2 → check_possibility n = true := sorry
 
@@ -33,6 +41,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval check_possibility [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

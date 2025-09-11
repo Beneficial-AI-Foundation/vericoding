@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def remove_vowels (s : String) : String := sorry
 
 def isVowel (c : Char) : Bool :=
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem remove_vowels_no_vowels (s : String) :
   ∀ c, c ∈ (remove_vowels s).data → ¬isVowel c := sorry
 
@@ -35,6 +43,7 @@ info: 'hgh fvs!'
 -/
 -- #guard_msgs in
 -- #eval remove_vowels "high fives!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

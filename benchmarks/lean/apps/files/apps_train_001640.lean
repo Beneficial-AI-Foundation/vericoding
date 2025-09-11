@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def brainfuck_to_c (s : String) : String := sorry
 
 def is_balanced (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem comments_removed (s : String) :
   let s' := s.replace "[" ""
   let s'' := s'.replace "]" ""
@@ -51,6 +59,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval brainfuck_to_c "+-><[]"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

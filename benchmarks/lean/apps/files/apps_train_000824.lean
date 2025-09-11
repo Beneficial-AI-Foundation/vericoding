@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def number_of_squares (l w : Nat) : Nat := sorry
 
 theorem square_input (n : Nat) (h : n > 0) :
   number_of_squares n n = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem commutative (l w : Nat) (h₁ : l > 0) (h₂ : w > 0) :
   number_of_squares l w = number_of_squares w l := sorry
 
@@ -32,6 +40,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval number_of_squares 4 6
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

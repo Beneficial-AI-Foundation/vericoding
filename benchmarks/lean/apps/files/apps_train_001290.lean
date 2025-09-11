@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def countDigits (a b : Nat) : String := sorry
 
 def sumList : List Nat → Nat 
   | [] => 0
   | x::xs => x + sumList xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted : List String → Bool
   | [] => true
   | [_] => true
   | x::y::rest => x ≤ y && isSorted (y::rest)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem countDigits_format_valid {a b : Nat} (h : a ≤ b) (n : Nat) (h1 : n < 10^4) :
   let result := countDigits a b
   let pairs := (result.split (· = ' '))
@@ -54,6 +61,7 @@ info: '0:20 1:20 2:20 3:20 4:20 5:20 6:20 7:20 8:20 9:120'
 -/
 -- #guard_msgs in
 -- #eval count_digits 900 999
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

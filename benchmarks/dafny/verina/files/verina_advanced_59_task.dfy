@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsAlphanumeric(c: char)
 {
     ('a' <= c <= 'z') || ('A' <= c <= 'Z') || ('0' <= c <= '9')
@@ -17,6 +18,7 @@ function FilterAlphanumeric(s: seq<char>): seq<char>
     else if IsAlphanumeric(s[0]) then [ToLowercase(s[0])] + FilterAlphanumeric(s[1..])
     else FilterAlphanumeric(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

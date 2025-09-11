@@ -1,9 +1,11 @@
+// <vc-preamble>
 predicate isSorted(a: array<real>, from: nat, to: nat)
   requires 0 <= from <= to <= a.Length
   reads a
 {
     forall i, j :: from <= i < j < to ==> a[i] <= a[j] 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::assert_seqs_equal;
 use vstd::prelude::*;
 
@@ -30,6 +31,7 @@ spec fn intersperse_quantified(numbers: Seq<u64>, delimiter: u64, interspersed: 
         && (forall|i: int|
         0 <= i < numbers.len() - 1 ==> #[trigger] interspersed[odd(i)] == delimiter)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

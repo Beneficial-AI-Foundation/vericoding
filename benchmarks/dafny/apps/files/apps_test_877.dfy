@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, pairs: seq<(int, int)>)
 {
     n >= 2 && 
@@ -40,6 +41,7 @@ predicate ValidResult(n: int, pairs: seq<(int, int)>, result: int)
     result <= n - 1 &&
     result == max(computeFinalR(n, pairs) - computeFinalL(pairs), 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

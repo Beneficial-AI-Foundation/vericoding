@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_substring (string substr : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem substring_count_properties
   {string substr : String}
   (h : substr.length > 0) :
@@ -51,6 +59,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_substring "WoWoWo" "Wo"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

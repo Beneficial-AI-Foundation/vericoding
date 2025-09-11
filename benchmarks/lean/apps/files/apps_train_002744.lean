@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def to_pretty (seconds : Nat) : String := sorry
 
 theorem to_pretty_format (seconds : Nat) (h : seconds ≤ 1000000) : 
   (to_pretty seconds).endsWith " ago" ∨ to_pretty seconds = "just now" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem to_pretty_words (seconds : Nat) (h : seconds ≤ 1000000) :
   let words := (to_pretty seconds).split fun c => c = ' '
   words.head! = "just" ∨ 
@@ -87,6 +95,7 @@ info: '16 weeks ago'
 -/
 -- #guard_msgs in
 -- #eval to_pretty 10000000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def shortest_sum_subsequence (n : Nat) (target : Int) (arr : List Int) : Int := sorry
 
 def sum_list : List Int → Int 
   | [] => 0
   | x::xs => x + sum_list xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem singleton_array (n : Int) :
   shortest_sum_subsequence 1 n [n] = 1 := sorry 
 
@@ -33,6 +41,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval shortest_sum_subsequence 3 10 [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

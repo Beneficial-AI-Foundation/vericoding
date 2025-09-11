@@ -1,3 +1,4 @@
+// <vc-preamble>
 function maxHeightUpTo(heights: seq<int>, up_to_index: int): int
   requires 0 <= up_to_index < |heights|
   decreases up_to_index
@@ -12,6 +13,7 @@ predicate hasOceanVisibility(heights: seq<int>, mountain_index: int)
 {
   mountain_index == 0 || heights[mountain_index] >= maxHeightUpTo(heights, mountain_index - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

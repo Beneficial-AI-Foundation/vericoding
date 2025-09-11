@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def convert_to_base7 (n : Int) : String := sorry
 
 def base7_to_decimal (s : String) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem convert_to_base7_negative_sign (x : Int) :
   x < 0 → (convert_to_base7 x).startsWith "-" :=
 sorry
@@ -43,6 +51,7 @@ info: '16'
 -/
 -- #guard_msgs in
 -- #eval convert_to_base7 13
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

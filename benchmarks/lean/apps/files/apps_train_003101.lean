@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def group_cities (cities : List String) : List (List String) := sorry 
 
 theorem group_cities_is_list_of_lists (cities : List String) :
   let result := group_cities cities
   ∀ group, group ∈ result → group = ([] : List String) ∨ group ≠ [] := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem group_cities_groups_sorted_by_size (cities : List String) :
   let result := group_cities cities
   ∀ i j, i < j → j < result.length → 
@@ -40,6 +48,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval group_cities []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

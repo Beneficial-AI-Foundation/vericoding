@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_game (n : Nat) (arr : List Nat) (queries : List (Char × Nat × Char)) : List Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_game_result_length
   (n : Nat)
   (arr : List Nat)
@@ -63,6 +71,7 @@ info: 'DD'
 -/
 -- #guard_msgs in
 -- #eval solve_game 2 [1, 2] [("=", 1, "D"), ("=", 2, "C")]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

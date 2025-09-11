@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def correct_polish_letters (s : String) : String := sorry
 
 theorem length_preserved (s : String) :
   (correct_polish_letters s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_polish_chars_unchanged (s : String) (i : Nat) (h : i < s.length) :
   s.data[i] ∉ ['ą', 'ć', 'ę', 'ł', 'ń', 'ó', 'ś', 'ź', 'ż'] →
   have h' : i < (correct_polish_letters s).length := by rw [length_preserved]; exact h
@@ -43,6 +51,7 @@ info: 'Zazolc gesla jazn'
 -/
 -- #guard_msgs in
 -- #eval correct_polish_letters "Zażółć gęślą jaźń"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

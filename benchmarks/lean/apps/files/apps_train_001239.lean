@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_sum_two_semiprimes (n : Nat) : Bool := sorry
 
 -- Result must be a boolean
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_sum_two_semiprimes_returns_bool (n : Nat) : 
   n ≥ 4 → n ≤ 200 → can_sum_two_semiprimes n = true ∨ can_sum_two_semiprimes n = false := sorry
 
@@ -40,6 +48,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval can_sum_two_semiprimes 62
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

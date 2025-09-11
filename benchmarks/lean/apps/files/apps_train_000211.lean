@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def isGoodArray (nums : List Nat) : Bool := sorry
 
 def gcd (a b : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listGcd (nums : List Nat) : Nat := sorry
 
 theorem good_array_gcd {nums : List Nat} (h : nums ≠ []) :
   isGoodArray nums = true ↔ listGcd nums = 1
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiples_not_good {n : Nat} (h : n ≥ 2) : 
   isGoodArray [n, 2*n, 3*n, 4*n] = false 
   := sorry
@@ -36,6 +43,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval isGoodArray #[3, 6]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

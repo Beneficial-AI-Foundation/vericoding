@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def how_much_water (water : Float) (clothes load : Nat) : Float ⊕ String := sorry
 
 def isGreaterThan (a b : Float ⊕ String) : Prop :=
   match a, b with
   | Sum.inl x, Sum.inl y => x > y
   | _, _ => False
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem water_calculation_properties
   (water : Float) (clothes load : Nat)
   (h1 : water > 0)
@@ -53,6 +61,7 @@ info: 189.87
 -/
 -- #guard_msgs in
 -- #eval how_much_water 50 15 29
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

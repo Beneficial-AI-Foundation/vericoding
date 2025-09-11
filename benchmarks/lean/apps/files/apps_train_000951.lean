@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_jem_laziness (n b m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem jem_laziness_positive (n b m : Nat) 
     (h1 : n > 0) (h2 : b > 0) (h3 : m > 0) :
   solve_jem_laziness n b m > 0 :=
@@ -54,6 +62,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval solve_jem_laziness 4 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

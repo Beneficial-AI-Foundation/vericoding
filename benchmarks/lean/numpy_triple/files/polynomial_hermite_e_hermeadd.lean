@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermeadd {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : Id (Vector Float (max n m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermeadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
     ⦃⌜True⌝⦄
     hermeadd c1 c2
@@ -31,3 +38,4 @@ theorem hermeadd_spec {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) :
                     let coeff2 := if h2 : i.val < m then c2.get ⟨i.val, h2⟩ else 0
                     result.get i = coeff1 + coeff2 ∧ coeff1 + coeff2 = coeff2 + coeff1)⌝⦄ := by
   sorry
+-- </vc-theorems>

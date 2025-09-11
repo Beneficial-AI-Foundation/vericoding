@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encode_message (s : String) : String := sorry
 
 theorem encode_preserves_length (s : String) : 
   (encode_message s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_double_is_identity (s : String) : 
   encode_message (encode_message s) = s := sorry
 
@@ -23,6 +31,7 @@ theorem encode_reflection_property (s : String) (i : Nat)
 
 theorem encode_output_lowercase (s : String) (i : Nat) (h : i < (encode_message s).length) :
   ((encode_message s).data[i]'h).isLower = true := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

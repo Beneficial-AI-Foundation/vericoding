@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def abs (n : Int) : Int := 
   if n < 0 then -n else n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_sequence (n : Nat) (arr : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_sequence_output_sign_flips {n : Nat} {arr : List Int} :
   let result := solve_sequence n arr
   ∀ i, i < result.length → abs (result.get ⟨i, sorry⟩) = abs (arr.get ⟨i, sorry⟩) :=
@@ -49,6 +56,7 @@ info: [1, 2, -1, 2]
 -/
 -- #guard_msgs in
 -- #eval solve_sequence 4 [1, 2, 1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

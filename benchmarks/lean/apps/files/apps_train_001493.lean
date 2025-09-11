@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_sold_values (arr : Array Nat) : Array Nat := sorry
 
 theorem output_length_matches_input (arr : Array Nat) :
   (find_min_sold_values arr).size = arr.size := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_never_increases_by_more_than_one (arr : Array Nat) (i : Nat) :
   i > 0 → i < (find_min_sold_values arr).size →
   match (find_min_sold_values arr).get? (i-1), (find_min_sold_values arr).get? i with
@@ -34,6 +42,7 @@ theorem minimum_element_preserved (arr : Array Nat) (min : Nat) :
     | some x => x = min
     | none => False)
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

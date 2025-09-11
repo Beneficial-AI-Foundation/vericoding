@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, packets: seq<int>)
 {
     n >= 1 && |packets| == n && forall i :: 0 <= i < |packets| ==> packets[i] >= 1
@@ -26,6 +27,7 @@ predicate ValidSolution(n: int, packets: seq<int>, result: seq<int>)
         (forall j :: 0 <= j < |packets| ==> packets[minIndex] <= packets[j]) &&
         (forall k :: 0 <= k < minIndex ==> packets[k] > packets[minIndex])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

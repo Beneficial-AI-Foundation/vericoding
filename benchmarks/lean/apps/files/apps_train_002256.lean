@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_permutation (n : Nat) (segments : List (List Nat)) : Option (List Nat) := sorry
 
 def is_valid_permutation (result : List Nat) (n : Nat) (segments : List (List Nat)) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem minimal_valid_segments (n : Nat) :
   n ≥ 2 → 
   let segments := List.map (fun i => [i, i+1]) (List.range (n-1))
@@ -20,6 +28,7 @@ theorem known_cases :
   solve_permutation 5 [[2,3], [1,2], [1,4], [4,5]] = some [3,2,1,4,5] ∧
   solve_permutation 2 [[1,2]] = some [1,2]
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

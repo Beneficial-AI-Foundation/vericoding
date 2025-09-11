@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def polynomialize (roots: List Int) : String := sorry 
 
 def isValidPolynomial (s: String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem polynomial_format 
   (roots: List Int)
   (h1: roots ≠ [])
@@ -35,6 +43,7 @@ info: 'x^3 + 5x^2 + 6x = 0'
 -/
 -- #guard_msgs in
 -- #eval polynomialize [0, -2, -3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

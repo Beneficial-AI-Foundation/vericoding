@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def circularly_sorted (xs : List Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (xs : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sorted_is_circular {xs : List Int} (h : xs.length > 0) : 
   isSorted xs → circularly_sorted xs = true :=
 sorry
@@ -45,6 +52,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval circularly_sorted [4, 1, 2, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

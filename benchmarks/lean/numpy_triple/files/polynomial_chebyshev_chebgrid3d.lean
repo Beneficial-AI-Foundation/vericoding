@@ -1,17 +1,24 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebgrid3d {nx ny nz : Nat} {ni nj nk : Nat}
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
     (c : Vector (Vector (Vector Float nk) nj) ni) :
     Id (Vector (Vector (Vector Float nz) ny) nx) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebgrid3d_spec {nx ny nz : Nat} {ni nj nk : Nat}
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
     (c : Vector (Vector (Vector Float nk) nj) ni)
@@ -32,3 +39,4 @@ theorem chebgrid3d_spec {nx ny nz : Nat} {ni nj nk : Nat}
             chebyshev_T j.val (y.get iy) *
             chebyshev_T k.val (z.get iz)))⌝⦄ := by
   sorry
+-- </vc-theorems>

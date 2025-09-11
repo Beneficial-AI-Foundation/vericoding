@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def permute_a_palindrome (s : String) : Bool := sorry
 
 def String.reverse (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string_palindrome_permutable :
   permute_a_palindrome "" = true := sorry 
 
@@ -17,6 +25,7 @@ theorem even_length_even_occurrences_palindrome (s : String) :
 
 theorem single_char_palindrome_permutable (c : Char) :
   permute_a_palindrome (String.singleton c) = true := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

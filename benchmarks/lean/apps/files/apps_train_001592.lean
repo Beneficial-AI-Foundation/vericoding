@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def sumDigits (n : Nat) : Nat := sorry
 
 def isAscending (n : Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numDigits (n : Nat) : Nat := sorry
 
 def find_all (sumDig digs : Nat) : Option (Nat × Nat × Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_for_impossible_sums (sumDig digs : Nat) :
   (sumDig > 9 * digs ∨ sumDig < digs) → find_all sumDig digs = none := sorry
 
@@ -49,6 +56,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval find_all 84 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def convert_my_dollars (dollars : Float) (currency : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem convert_my_dollars_valid_format 
   (dollars : Float) 
   (currency : String) 
@@ -32,6 +40,7 @@ theorem convert_my_dollars_scaling
     result2 = s!"You now have {amount2} of Armenian Dram." ∧
     amount2 = 2 * amount1 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

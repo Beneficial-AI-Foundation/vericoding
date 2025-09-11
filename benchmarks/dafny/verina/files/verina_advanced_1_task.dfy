@@ -1,3 +1,4 @@
+// <vc-preamble>
 // Helper function to count occurrences of an element in a sequence
 function CountOccurrences(nums: seq<int>, x: int): nat
 {
@@ -11,6 +12,7 @@ function FilterEqual(nums: seq<int>, x: int): seq<int>
     else if nums[0] == x then [nums[0]] + FilterEqual(nums[1..], x)
     else FilterEqual(nums[1..], x)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

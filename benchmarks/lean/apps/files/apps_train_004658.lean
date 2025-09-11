@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def martingale (bank : Float) (outcomes : List Int) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem martingale_monotonic_bank {bank : Float} {outcomes : List Int} :
   ∀ inc : Float, inc ≥ 0 → martingale (bank + inc) outcomes ≥ martingale bank outcomes := by
   sorry
@@ -43,6 +51,7 @@ info: -600
 -/
 -- #guard_msgs in
 -- #eval martingale 100 [0, 0, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_leaf_removal (n k : Nat) (edges : List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem leaf_removal_basic_properties {n k : Nat} {edges : List (Nat × Nat)} 
     (h1 : n ≥ 2)
     (h2 : k ≥ 1) 
@@ -38,6 +45,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval solve_leaf_removal 5 1 [(1, 2), (2, 3), (4, 3), (5, 3)]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

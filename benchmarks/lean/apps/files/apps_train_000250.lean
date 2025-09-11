@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countNumbersWithUniqueDigits (n : Nat) : Nat := sorry
 
 theorem countNumbersWithUniqueDigits_positive (n : Nat) :
   countNumbersWithUniqueDigits n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem countNumbersWithUniqueDigits_monotonic (n : Nat) :
   n > 0 → countNumbersWithUniqueDigits n ≥ countNumbersWithUniqueDigits (n-1) := sorry
 
@@ -35,6 +43,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval count_numbers_with_unique_digits 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

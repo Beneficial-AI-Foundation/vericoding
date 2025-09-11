@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def is_valid_tree (n : Nat) (parents : List Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_tree_values (n : Nat) (parents : List Nat) (sums : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_node_tree (n : Int) (h : n > 0) :
   solve_tree_values 1 [] [n] = n :=
   sorry
@@ -52,6 +59,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve_tree_values 3 [1, 2] [2, -1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

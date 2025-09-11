@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidLeverInput(s: string)
 {
     |s| >= 3 &&
@@ -55,6 +56,7 @@ function CalculateTorquePartial(s: string, pivotPos: int, upTo: int): int
 {
     CalculateTorqueHelper(s, pivotPos, 0) - CalculateTorqueHelper(s, pivotPos, upTo)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def determine_winner (n : Nat) (alice : List Nat) (bob : List Nat) : String := sorry
 
 theorem determine_winner_returns_valid_result (n : Nat) (alice bob : List Nat) :
@@ -8,7 +14,9 @@ theorem determine_winner_returns_valid_result (n : Nat) (alice bob : List Nat) :
   determine_winner n alice bob = "Alice" ∨ 
   determine_winner n alice bob = "Bob" ∨
   determine_winner n alice bob = "Draw" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem determine_winner_symmetry (n : Nat) (alice bob : List Nat) :
   n ≥ 2 → List.length alice = n → List.length bob = n →
   (determine_winner n alice bob = "Alice" → determine_winner n bob alice = "Bob") ∧
@@ -45,6 +53,7 @@ info: 'Draw'
 -/
 -- #guard_msgs in
 -- #eval determine_winner 3 [4, 1, 3] [2, 2, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

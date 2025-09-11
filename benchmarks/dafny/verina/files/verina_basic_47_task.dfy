@@ -1,9 +1,11 @@
+// <vc-preamble>
 function SumTo(a: seq<int>, n: int): int
     requires 0 <= n <= |a|
     decreases n
 {
     if n <= 0 then 0 else SumTo(a, n - 1) + a[n - 1]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

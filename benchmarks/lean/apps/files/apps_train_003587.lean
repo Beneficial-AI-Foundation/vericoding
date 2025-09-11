@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_smallest_int (arr : List Int) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_smallest_int_membership 
   (arr : List Int)
   (h : arr ≠ []) :
@@ -33,6 +41,7 @@ info: -33
 -/
 -- #guard_msgs in
 -- #eval find_smallest_int [78, 56, -2, 12, 8, -33]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

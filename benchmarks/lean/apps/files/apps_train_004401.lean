@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def score (n : Nat) : Nat := sorry
 
 theorem score_non_negative (n : Nat) : score n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem score_monotonic (n : Nat) : 
   n > 0 → score n ≥ score (n-1) := sorry
 
@@ -36,6 +44,7 @@ info: 1048575
 -/
 -- #guard_msgs in
 -- #eval score 1000000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

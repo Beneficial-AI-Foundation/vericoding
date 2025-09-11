@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_f_max (a : List Nat) (queries : List (Nat × Nat)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_f_max_length {a : List Nat} {queries : List (Nat × Nat)}
     (h_valid : ∀ q ∈ queries, q.1 ≤ q.2 ∧ q.2 ≤ a.length) :
     (solve_f_max a queries).length = queries.length :=
@@ -39,6 +47,7 @@ info: [60, 30, 12, 3]
 -/
 -- #guard_msgs in
 -- #eval solve_f_max [1, 2, 4, 8, 16, 32] [(1, 6), (2, 5), (3, 4), (1, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

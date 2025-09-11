@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isTriangular (n : Nat) : Bool := sorry
 
 theorem isTriangular_output_bool (n : Nat) : 
   isTriangular n = true ∨ isTriangular n = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isTriangular_formula (n : Nat) :
   isTriangular n = true → ∃ x : Nat, n = x * (x + 1) / 2 := sorry
 
@@ -38,6 +46,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_triangular 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

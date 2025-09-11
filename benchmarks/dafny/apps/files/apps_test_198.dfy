@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidRectangleParts(a: int, b: int, n: int)
 {
     a > 0 && b > 0 && a != b && 2 * a + 2 * b == n
@@ -15,6 +16,7 @@ predicate ValidInput(n: int)
 {
     n > 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

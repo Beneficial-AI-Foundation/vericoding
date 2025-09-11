@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def join {n : Nat} (sep seq : Vector String n) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem join_spec {n : Nat} (sep seq : Vector String n) :
     ⦃⌜True⌝⦄
     join sep seq
@@ -27,3 +34,4 @@ theorem join_spec {n : Nat} (sep seq : Vector String n) :
       -- Non-empty result for non-empty input
       (s.length > 0 → (result.get i).length > 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_minimum_donation (x : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_geq_input (x : Nat) (h : x > 0) :
   find_minimum_donation x ≥ x :=
 sorry
@@ -37,6 +45,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval find_minimum_donation 15
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

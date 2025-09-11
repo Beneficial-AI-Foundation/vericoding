@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_jump (nums : List Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_always_true (nums : List Nat) :
   nums.length = 1 → can_jump nums = true :=
   sorry
@@ -44,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_jump [0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

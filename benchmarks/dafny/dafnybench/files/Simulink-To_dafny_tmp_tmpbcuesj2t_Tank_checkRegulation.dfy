@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Valve = ON | OFF
 
 class Pipe{
@@ -24,6 +25,7 @@ class Tank
         pipe := new Pipe();
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

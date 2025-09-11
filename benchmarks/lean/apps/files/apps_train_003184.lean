@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def evil_code_medal (user_time gold silver bronze : String) : String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem evil_code_medal_valid_output (user_time gold silver bronze : String) :
   let result := evil_code_medal user_time gold silver bronze
   result = "Gold" ∨ result = "Silver" ∨ result = "Bronze" ∨ result = "None" :=
@@ -50,6 +58,7 @@ info: 'Gold'
 -/
 -- #guard_msgs in
 -- #eval evil_code_medal "00:00:01" "00:00:10" "00:01:40" "01:00:00"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

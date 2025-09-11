@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SqrSumRec(n: int) : int
     requires n >= 0
 {
@@ -10,6 +11,7 @@ least lemma L1(n: int)
 {
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

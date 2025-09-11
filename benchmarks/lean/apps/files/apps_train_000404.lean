@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def get_winner (arr : List Int) (k : Int) : Int :=
   sorry
 
@@ -9,13 +10,19 @@ def List.maximum' (l : List Int) (h : l ≠ []) : Int :=
 
 def List.findIndex (l : List Int) (p : Int → Bool) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def List.sorted (l : List Int) (r : Int → Int → Bool) : Prop :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem winner_exists_in_array (arr : List Int) (h : arr ≠ []) :
   ∀ k, k > 0 → get_winner arr k ∈ arr :=
   sorry
@@ -37,6 +44,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval get_winner [1, 9, 8, 2, 3, 7, 6, 4, 5] 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

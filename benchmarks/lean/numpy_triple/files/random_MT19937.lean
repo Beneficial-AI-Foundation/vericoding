@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mt19937 (seed : UInt32) : Id (Vector UInt32 624) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mt19937_spec (seed : UInt32) :
     ⦃⌜True⌝⦄
     mt19937 seed
@@ -34,3 +41,4 @@ theorem mt19937_spec (seed : UInt32) :
           (∀ j : Fin 624, state.get j = state'.get j))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

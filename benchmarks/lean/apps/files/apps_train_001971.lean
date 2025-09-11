@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def minInversions (n: Nat) (seq: List Int) : Nat := sorry
 
 def countInversions (seq: List Int) : Nat := sorry
 
 def absInt (i: Int) : Int := 
   if i < 0 then -i else i
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rangeToInt (n: Nat) : List Int :=
   (List.range n).map Int.ofNat
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem minInversions_nonnegative (n: Nat) (seq: List Int) : 
   minInversions n seq ≥ 0 := sorry
 
@@ -44,6 +51,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval min_inversions 9 [0, 0, 1, 1, 0, 0, 1, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

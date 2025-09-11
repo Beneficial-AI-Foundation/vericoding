@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def inverse_slice {α : Type} (list : List α) (s : Nat) (e : Nat) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_property {α : Type} (lst : List α) (a b : Nat) 
   (h1 : a ≤ b) (h2 : b ≤ lst.length) :
   (inverse_slice lst a b).length = lst.length - (b - a) :=
@@ -30,6 +38,7 @@ theorem remove_all {α : Type} (lst : List α) :
 theorem keep_all {α : Type} (lst : List α) :
   inverse_slice lst lst.length lst.length = lst :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

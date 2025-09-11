@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def base_finder (nums : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem base_detection {base : Nat} (h1 : 2 ≤ base) (h2 : base ≤ 10) :
   let numbers := List.map toString (List.range base)
   base_finder numbers = base :=
@@ -40,6 +48,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval base_finder ["301", "302", "303", "304", "305", "310", "311", "312", "313", "314"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

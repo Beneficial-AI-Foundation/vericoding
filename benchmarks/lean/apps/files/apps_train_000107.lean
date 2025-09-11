@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isPowerOfTwo (n : Nat) : Bool :=
   sorry
 
 def sum (xs : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_divisions (n : Nat) (boxes : List Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_divisions_properties (n : Nat) (boxes : List Nat)
   (h1 : n ≥ 1) (h2 : ∀ x ∈ boxes, isPowerOfTwo x = true) :
   let result := min_divisions n boxes;
@@ -44,6 +51,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_divisions *test3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

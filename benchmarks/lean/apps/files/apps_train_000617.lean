@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def count_quadruples (n : Nat) (target : Int) (nums : List Int) : Nat :=
   sorry
 
 def listMax : List Int → Int 
   | [] => 0
   | (x::xs) => max x (listMax xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum : List Int → Int
   | [] => 0
   | (x::xs) => x + listSum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_quadruples_returns_natural 
   (nums : List Int) (target : Int) (h : nums.length ≥ 4) :
   count_quadruples nums.length target nums ≥ 0 :=
@@ -39,6 +46,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_quadruples 6 13 [1, 2, 3, 4, 5, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

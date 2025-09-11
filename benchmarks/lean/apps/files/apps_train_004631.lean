@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nthterm (first n c : Int) : Int := sorry
 
 theorem nthterm_first_term 
   (first c : Int) : nthterm first 0 c = first := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nthterm_consecutive_diff 
   (first n c : Int) (h : n ≥ 0) : 
   nthterm first (n + 1) c - nthterm first n c = c := sorry
@@ -35,6 +43,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval nthterm 0 4 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def clean_string (s : String) : String := sorry
 
 theorem clean_string_idempotent (s : String) :
   clean_string (clean_string s) = clean_string s := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_hashtags (s : String) : Nat :=
   s.foldl (fun acc c => if c = '#' then acc + 1 else acc) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem clean_string_no_hashtags (s : String) :
   ¬(String.contains (clean_string s) '#') := sorry 
 
@@ -40,6 +47,7 @@ info: 'jf'
 -/
 -- #guard_msgs in
 -- #eval clean_string "abjd####jfk#"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

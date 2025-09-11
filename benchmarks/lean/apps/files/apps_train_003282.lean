@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def multiplication_table (rows cols : Nat) : List (List Nat) := sorry
 
 theorem multiplication_table_dimensions 
@@ -8,7 +14,9 @@ theorem multiplication_table_dimensions
   let table := multiplication_table rows cols
   (table.length = rows) ∧ 
   (∀ row ∈ table, row.length = cols) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiplication_table_values
   (rows cols : Nat) (h1 : rows > 0) (h2 : cols > 0) :
   let table := multiplication_table rows cols
@@ -39,6 +47,7 @@ info: [[1, 2, 3, 4, 5], [2, 4, 6, 8, 10]]
 -/
 -- #guard_msgs in
 -- #eval multiplication_table 2 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

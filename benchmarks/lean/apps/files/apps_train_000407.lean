@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def findMedianSortedArrays (nums1 : List Int) (nums2 : List Int) : Float :=
   sorry
 
 def getMedian (l : List Int) : Float :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def mergeSorted (l1 l2 : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem findMedianSortedArrays_correct (nums1 nums2 : List Int)
   (h : ¬(nums1.length = 0 ∧ nums2.length = 0)) :
   findMedianSortedArrays nums1 nums2 = getMedian (mergeSorted nums1 nums2) := by
@@ -45,6 +52,7 @@ info: 3.0
 -/
 -- #guard_msgs in
 -- #eval find_median_sorted_arrays #[1] #[2, 3, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

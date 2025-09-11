@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def legder {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) : Id (Vector Float (max 1 (n - m))) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem legder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) (h : n ≥ 1) :
     ⦃⌜n ≥ 1⌝⦄
     legder c m scl
@@ -20,3 +27,4 @@ theorem legder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) (h : 
       (m ≥ n → result.size = 1)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

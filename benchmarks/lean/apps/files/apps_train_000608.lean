@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_subarrays (n : Nat) (arr : List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_valid_subarrays (n : Nat) (arr : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_subarrays_singleton (x : Nat) :
   solve_subarrays 1 [x] = 0 :=
 sorry
@@ -33,6 +40,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_subarrays 2 [100000000, 100000000]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def chars := ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 def digits := ['1', '2', '3', '4', '5', '6', '7', '8']
 
@@ -15,10 +16,14 @@ instance : Ord Square where
 
 instance : LE Square where
   le a b := compare a b ≠ .gt
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bishop_diagonal (sq1 sq2 : Square) : List Square := sorry
 
 theorem bishop_diagonal_output_format {sq1 sq2 : Square} :
@@ -26,7 +31,9 @@ theorem bishop_diagonal_output_format {sq1 sq2 : Square} :
   List.length result = 2 ∧ 
   (∀ sq ∈ result, sq.file ∈ chars ∧ sq.rank ∈ digits) ∧
   List.Pairwise (. ≤ .) result := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bishop_diagonal_same_square {sq : Square} :
   bishop_diagonal sq sq = [sq, sq] := sorry 
 
@@ -58,6 +65,7 @@ info: ['a1', 'h8']
 -/
 -- #guard_msgs in
 -- #eval bishop_diagonal "a1" "h8"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

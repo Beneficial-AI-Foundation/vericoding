@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_killer_pairs (initial : String × String) (murders : List (String × String)) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_killer_pairs_result_type 
   (initial : String × String) 
   (murders : List (String × String)) :
@@ -59,6 +67,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval solve_killer_pairs ["a", "b"] [["a", "c"], ["b", "d"], ["d", "e"]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

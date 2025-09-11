@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def decode (s : String) : String := sorry
 
 theorem decode_involution {s : String} (h : ∀ c ∈ s.data, c.isLower) : 
   decode (decode s) = s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decode_length_preservation {s : String} (h : ∀ c ∈ s.data, c.isLower) :
   (decode s).length = s.length := sorry
 
@@ -36,6 +44,7 @@ info: 'i hope nobody decodes this message'
 -/
 -- #guard_msgs in
 -- #eval decode "r slkv mlylwb wvxlwvh gsrh nvhhztv"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

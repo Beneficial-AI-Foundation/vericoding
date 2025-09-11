@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Stone := Char 
 
 def isRGBChar (c : Char) : Prop :=
   c = 'R' ∨ c = 'G' ∨ c = 'B'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solution (stones : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_non_negative (stones : String) 
   (h : ∀ c ∈ stones.data, isRGBChar c) :
   solution stones ≥ 0 := sorry
@@ -41,6 +48,7 @@ theorem solution_alternating (stones : String)
   (h3 : ∀ i, i > 0 → i < stones.length →
     stones.data[i]! ≠ stones.data[i-1]!) :
   solution stones = 0 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

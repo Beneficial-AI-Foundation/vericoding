@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def calculate_min_bytecoins (n : Nat) (m : Nat) (votes : List (Nat × Nat)) : Nat :=
   sorry
 
@@ -9,13 +10,19 @@ def count_votes_for_party (votes : List (Nat × Nat)) (party : Nat) : Nat :=
 
 def max_list (l : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def increase_first_vote_cost (votes : List (Nat × Nat)) : List (Nat × Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_min_bytecoins_non_negative (n m : Nat) (votes : List (Nat × Nat))
   (hn : n > 0) (hm : m ≥ 2)
   (hvotes : ∀ v ∈ votes, v.1 ≥ 1 ∧ v.1 ≤ m ∧ v.2 ≤ 1000) :
@@ -61,6 +68,7 @@ info: 600
 -/
 -- #guard_msgs in
 -- #eval calculate_min_bytecoins 5 5 [[2, 100], [3, 200], [4, 300], [5, 800], [5, 900]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

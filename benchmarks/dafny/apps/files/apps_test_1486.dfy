@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(cities: seq<int>)
 {
   |cities| >= 2 &&
@@ -43,6 +44,7 @@ predicate ValidOutput(cities: seq<int>, min_distances: seq<int>, max_distances: 
     min_distances[i] > 0 &&
     max_distances[i] > 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

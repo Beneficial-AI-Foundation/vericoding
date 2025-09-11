@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def contains_duplicate (nums : List Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def eraseDups (nums : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem contains_duplicate_matches_set_size {nums : List Int} :
   contains_duplicate nums = (nums.length ≠ (eraseDups nums).length) :=
   sorry
@@ -41,6 +48,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval contains_duplicate [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

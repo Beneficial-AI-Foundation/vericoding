@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -7,6 +8,7 @@ spec fn insertion_sorted(array: Seq<int>, left: int, right: int) -> bool
 {
     forall|i: int, j: int| left <= i < j < right ==> array[i] <= array[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

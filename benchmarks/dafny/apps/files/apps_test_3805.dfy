@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ExtractFirstLine(input: string): string
 {
     if |input| == 0 then ""
@@ -23,6 +24,7 @@ predicate StackAlgorithmResultsInEmptyStack(input: string)
     var stack := ProcessString(input, []);
     |stack| == 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

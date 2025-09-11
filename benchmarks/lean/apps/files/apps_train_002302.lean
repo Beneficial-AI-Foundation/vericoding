@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isValidTriplet (arr : List Int) (i j k a b c : Nat) : Bool :=
   sorry
 
 def countTripletsBruteforce (arr : List Int) (a b c : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countGoodTriplets (arr : List Int) (a b c : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem countGoodTriplets_matches_bruteforce 
     (arr : List Int) (a b c : Nat) 
     (h : arr.length ≥ 3)
@@ -43,6 +50,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_good_triplets [1, 2, 3, 4, 5] 1 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

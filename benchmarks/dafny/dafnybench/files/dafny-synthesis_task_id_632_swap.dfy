@@ -1,8 +1,10 @@
+// <vc-preamble>
 function count(arr: seq<int>, value: int) : (c: nat)
     ensures c <= |arr|
 {
     if |arr| == 0 then 0 else (if arr[0] == value then 1 else 0) + count(arr[1..], value)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

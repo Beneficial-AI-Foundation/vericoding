@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def compute_lipschitz_sums (arr : List Nat) (queries : List (Nat × Nat)) : List Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sort (l : List Nat) : List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_properties {arr : List Nat} (h: arr.length ≥ 2)
   (hb: ∀ x, x ∈ arr → x ≤ 10^8) :
   let result := compute_lipschitz_sums arr [(1, arr.length)]
@@ -54,6 +61,7 @@ info: [100000000, 100000000]
 -/
 -- #guard_msgs in
 -- #eval compute_lipschitz_sums [100000000, 0] [(1, 2), (1, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

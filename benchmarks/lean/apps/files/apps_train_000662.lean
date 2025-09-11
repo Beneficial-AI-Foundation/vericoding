@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_different_arrays (N: Nat) (M: Nat) (K: Nat) (A: List Nat) : Nat :=
   sorry
 
@@ -12,7 +18,9 @@ def count_different_arrays (N: Nat) (M: Nat) (K: Nat) (A: List Nat) : Nat :=
   1 ≤ count_different_arrays N M K A ∧ 
   count_different_arrays N M K A ≤ 10^9 + 7 :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_different_arrays_single_element
   (M K: Nat) (A: List Nat)
   (h1: M ≥ 1) (h2: K ≥ 1)
@@ -38,6 +46,7 @@ theorem count_different_arrays_monotone_K
   count_different_arrays N M K A ≤ 
   count_different_arrays N M (K-1) A :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

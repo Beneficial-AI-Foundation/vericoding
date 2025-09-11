@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_substrings_ones (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_substrings_ones_valid_output (s : String) : 
   count_substrings_ones s ≥ 0 ∧ count_substrings_ones s < 1000000007 :=
 sorry
@@ -46,6 +54,7 @@ info: 21
 -/
 -- #guard_msgs in
 -- #eval count_substrings_ones "111111"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

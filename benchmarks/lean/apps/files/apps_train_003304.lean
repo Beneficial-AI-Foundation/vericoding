@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_char_count (s : String) : List (Nat × List Char) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_char_count_empty :
   get_char_count "" = [] := 
   sorry
@@ -24,6 +32,7 @@ theorem get_char_count_distinct :
 theorem get_char_count_mixed :
   get_char_count "mississippi" = [(4, ['i', 's']), (2, ['p']), (1, ['m'])] :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

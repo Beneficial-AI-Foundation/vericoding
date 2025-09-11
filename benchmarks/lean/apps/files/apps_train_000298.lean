@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def distinctEchoSubstrings (text: String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_type_and_range (text: String)
   (h: text.length > 0) :
   distinctEchoSubstrings text ≥ 0 ∧ 
@@ -38,6 +46,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval distinct_echo_substrings "aaa"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

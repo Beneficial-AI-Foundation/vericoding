@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def put {n m : Nat} (a : Vector Float n) (ind : Vector Nat m) (v : Vector Float m) 
     (h_valid : ∀ i : Fin m, ind.get i < n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem put_spec {n m : Nat} (a : Vector Float n) (ind : Vector Nat m) (v : Vector Float m) 
     (h_valid : ∀ i : Fin m, ind.get i < n) :
     let result := put a ind v h_valid
@@ -24,3 +32,4 @@ theorem put_spec {n m : Nat} (a : Vector Float n) (ind : Vector Nat m) (v : Vect
      (∀ k : Fin n, ∃ i : Fin m, ind.get i = k) → 
      (∀ k : Fin n, ∃ i : Fin m, ind.get i = k ∧ result.get k = v.get i)) := by
   sorry
+-- </vc-theorems>

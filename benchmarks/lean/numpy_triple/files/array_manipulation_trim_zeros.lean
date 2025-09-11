@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -10,14 +11,20 @@ inductive TrimMode where
   | Back
   /-- Trim zeros from both front and back of the array (corresponds to 'fb', default) -/
   | Both
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def trim_zeros {n : Nat} (arr : Vector Float n) (mode : TrimMode := TrimMode.Both) : 
     Id (Σ m : Nat, Vector Float m) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trim_zeros_spec {n : Nat} (arr : Vector Float n) (mode : TrimMode) :
     ⦃⌜True⌝⦄
     trim_zeros arr mode
@@ -42,3 +49,4 @@ theorem trim_zeros_spec {n : Nat} (arr : Vector Float n) (mode : TrimMode) :
           (finish = 0 ∨ arr.get ⟨finish - 1, sorry⟩ ≠ 0))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

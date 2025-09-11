@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidDNABase(c: char)
 {
     c in {'A', 'T', 'C', 'G'}
@@ -20,6 +21,7 @@ predicate ValidInput(input: string)
                       else input;
     |input_line| == 1 && ValidDNABase(input_line[0])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

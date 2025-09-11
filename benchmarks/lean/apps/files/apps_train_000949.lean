@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def arrange_particles (n : Nat) : Nat := sorry
 
 theorem arrange_particles_base_cases :
   arrange_particles 0 = 1 ∧ arrange_particles 1 = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arrange_particles_known_values :
   arrange_particles 0 = 1 ∧ 
   arrange_particles 1 = 1 ∧
@@ -42,6 +50,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval arrange_particles 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def series_sum (n : Int) : String := sorry
 
 theorem series_sum_has_decimal (n : Int) :
   ∃ s₁ s₂, series_sum n = s₁ ++ "." ++ s₂ := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem series_sum_has_two_decimals (n : Int) :
   ∃ s₁ s₂, series_sum n = s₁ ++ "." ++ s₂ ∧ s₂.length = 2 := sorry
 
@@ -43,6 +51,7 @@ info: '0.00'
 -/
 -- #guard_msgs in
 -- #eval series_sum 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

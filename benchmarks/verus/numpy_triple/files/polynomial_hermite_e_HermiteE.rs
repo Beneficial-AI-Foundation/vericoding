@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -14,6 +15,7 @@ struct HermiteEPoly {
 
     window_max: f32,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

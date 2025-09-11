@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def replace_words (dict : List String) (sentence : String) : String := sorry
 
 def splitIntoWords (s : String) : List String := s.split (· == ' ')
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def wordCount (s : String) : Nat := (splitIntoWords s).length
 
 theorem replace_words_output_length_matches_input
   (dict : List String) (words : List String) (h_words : words.length > 0) 
   (sentence := String.intercalate " " words) : 
   wordCount (replace_words dict sentence) = words.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem replace_words_output_words_valid
   (dict : List String) (words : List String) (h_words : words.length > 0)
   (sentence := String.intercalate " " words) :
@@ -49,6 +56,7 @@ info: 'a a a'
 -/
 -- #guard_msgs in
 -- #eval replace_words ["a", "aa", "aaa"] "aa aaa aaaa"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

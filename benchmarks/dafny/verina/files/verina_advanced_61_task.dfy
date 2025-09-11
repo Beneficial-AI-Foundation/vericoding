@@ -1,9 +1,11 @@
+// <vc-preamble>
 /* Helper: Product of a sequence of integers */
 function ListProduct(nums: seq<int>): int
     decreases |nums|
 {
     if |nums| == 0 then 1 else nums[0] * ListProduct(nums[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

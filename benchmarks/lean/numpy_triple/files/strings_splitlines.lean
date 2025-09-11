@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def splitlines {n : Nat} (a : Vector String n) (keepends : Bool) : Id (Vector (List String) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem splitlines_spec {n : Nat} (a : Vector String n) (keepends : Bool) :
     ⦃⌜True⌝⦄
     splitlines a keepends
@@ -38,3 +45,4 @@ theorem splitlines_spec {n : Nat} (a : Vector String n) (keepends : Bool) :
         -- Single newline property
         (original = "\n" → (if keepends then lines = ["\n"] else lines = ["", ""]))⌝⦄ := by
   sorry
+-- </vc-theorems>

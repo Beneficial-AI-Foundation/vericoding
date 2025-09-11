@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_str (haystack : String) (needle : String) : Int :=
   sorry
 
@@ -6,13 +7,19 @@ def containsString (haystack needle : String) : Bool :=
 
 def stringSlice (s : String) (start : Int) (last : Int) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringRepeat (s : String) (n : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_needle_returns_zero {haystack : String} :
   find_str haystack "" = 0 := by sorry
 
@@ -59,6 +66,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_str "" ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

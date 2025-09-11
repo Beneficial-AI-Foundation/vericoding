@@ -1,3 +1,4 @@
+// <vc-preamble>
 function factorial(n: nat): nat
 {
     if n == 0 then 1 else n * factorial(n - 1)
@@ -12,6 +13,7 @@ predicate AllDistinct<T(==)>(s: seq<T>)
 {
     forall i, j :: 0 <= i < j < |s| ==> s[i] != s[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

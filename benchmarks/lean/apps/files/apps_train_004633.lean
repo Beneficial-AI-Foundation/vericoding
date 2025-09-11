@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def answer (d : List (String × String)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem answer_always_returns_42 (d : List (String × String)) : 
   answer d = 42 :=
   sorry
@@ -13,6 +21,7 @@ info: 42
 -/
 -- #guard_msgs in
 -- #eval answer {}
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

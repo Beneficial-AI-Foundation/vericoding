@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidResult(n: int, result: int)
   requires n >= 0
 {
@@ -10,6 +11,7 @@ predicate ValidResult(n: int, result: int)
   (remainder == 5 ==> (quotient % 2 == 0 ==> result == quotient * 10) && 
                       (quotient % 2 == 1 ==> result == (quotient + 1) * 10))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function LastOccurrencePosition(cafes: seq<int>, cafe: int): int
     requires cafe in cafes
     ensures 0 <= LastOccurrencePosition(cafes, cafe) < |cafes|
@@ -6,6 +7,7 @@ function LastOccurrencePosition(cafes: seq<int>, cafe: int): int
 {
     LastOccurrenceHelper(cafes, cafe, |cafes| - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

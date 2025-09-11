@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hex_hash (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hex_hash_returns_nat (s : String) :
   hex_hash s ≥ 0 :=
 sorry
@@ -33,6 +41,7 @@ info: 113
 -/
 -- #guard_msgs in
 -- #eval hex_hash "Forty4Three"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def solve_sequence (a b n : Nat) : Nat := sorry
 
 def bitXor (a b : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def bitNot (a : Nat) : Nat := sorry
 
 def bitLength (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_sequence_nonnegative (a b n : Nat) :
   n > 0 → n ≤ 3 → solve_sequence a b n ≥ 0 := sorry
 
@@ -38,6 +45,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval solve_sequence 10 12 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 &&
@@ -31,6 +32,7 @@ requires ValidInput(input)
     var m := ExtractM(input);
     (n == m ==> result == "Yes") && (n != m ==> result == "No")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

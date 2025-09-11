@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def calculate_special_sum (n: Int) (k: Int) : Int :=
   sorry
 
 def solve_case (n: Int) (k: Int) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pow (x: Int) (n: Nat) : Int :=
   match n with
   | 0 => 1
   | n + 1 => x * pow x n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_special_sum_nonnegative 
   (n: Int) (k: Int)
   (hn: n ≥ 0) (hk: k ≥ 2) (hk2: k ≤ 100) :
@@ -36,6 +43,7 @@ theorem solve_case_format
   (hn: n ≥ 0) (hk: k ≥ 2) (hk2: k ≤ 100) :
   solve_case n k = "Case #1: " ++ toString (calculate_special_sum n k) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible]
 def isCleanPalindrome_precond (s : String) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 -- Check if a character is an uppercase alphabet letter
 def isUpperAlpha (c : Char) : Bool :=
@@ -35,10 +38,14 @@ def normalizeString (s : String) : List Char :=
 def reverseList (xs : List Char) : List Char :=
   xs.reverse
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isCleanPalindrome (s : String) (h_precond : isCleanPalindrome_precond (s)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def isCleanPalindrome_postcond (s : String) (result: Bool) (h_precond : isCleanPalindrome_precond (s)) : Prop :=
   let norm := normalizeString s
@@ -48,6 +55,7 @@ def isCleanPalindrome_postcond (s : String) (result: Bool) (h_precond : isCleanP
 theorem isCleanPalindrome_spec_satisfied (s: String) (h_precond : isCleanPalindrome_precond (s)) :
     isCleanPalindrome_postcond (s) (isCleanPalindrome (s) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

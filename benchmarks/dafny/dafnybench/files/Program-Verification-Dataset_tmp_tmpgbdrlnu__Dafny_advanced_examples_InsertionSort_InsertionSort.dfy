@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate sorted (a:array<int>, start:int, end:int)
  requires a!=null       
  requires 0<=start<=end<=a.Length       
@@ -5,6 +6,7 @@ predicate sorted (a:array<int>, start:int, end:int)
  {           
    forall j,k:: start<=j<k<end ==> a[j]<=a[k]
  }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

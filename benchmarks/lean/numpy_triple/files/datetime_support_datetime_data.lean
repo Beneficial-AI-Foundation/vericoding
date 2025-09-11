@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -38,13 +39,19 @@ inductive DatetimeDtype
   | datetime64 : DatetimeTypeInfo → DatetimeDtype
   /-- A timedelta64 type with specified unit and count -/
   | timedelta64 : DatetimeTypeInfo → DatetimeDtype
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def datetime_data (dtype : DatetimeDtype) : Id (DatetimeUnit × Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem datetime_data_spec (dtype : DatetimeDtype) :
     ⦃⌜True⌝⦄
     datetime_data dtype
@@ -52,3 +59,4 @@ theorem datetime_data_spec (dtype : DatetimeDtype) :
        | DatetimeDtype.datetime64 info => result = (info.unit, info.count) ∧ result.2 > 0
        | DatetimeDtype.timedelta64 info => result = (info.unit, info.count) ∧ result.2 > 0⌝⦄ := by
   sorry
+-- </vc-theorems>

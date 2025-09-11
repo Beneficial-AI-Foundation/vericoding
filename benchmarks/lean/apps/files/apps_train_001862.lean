@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_equation (eq : String) : String := sorry
 
 theorem simple_integer_solutions (n : Int) : 
   solve_equation s!"x={n}" = s!"x={n}" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem linear_equation_solution (a b : Int) (h : a ≠ 0) :
   solve_equation s!"{a}x={b}" = if b % a = 0 then s!"x={b/a}" else "No solution" := sorry
 
@@ -41,6 +49,7 @@ info: 'x=0'
 -/
 -- #guard_msgs in
 -- #eval solve_equation "2x=x"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def choose (n : Nat) (k : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def counting_triangles (sticks : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem triangle_count_properties {sticks : List Nat} 
   (h1 : sticks.length ≥ 3)
   (h2 : ∀ x ∈ sticks, x > 0 ∧ x ≤ 1000) :
@@ -49,6 +56,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval counting_triangles [2, 2, 2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

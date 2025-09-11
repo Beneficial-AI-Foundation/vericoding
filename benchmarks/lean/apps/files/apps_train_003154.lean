@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def number_of_carries (a b : Nat) : Nat := sorry
 
 theorem carries_non_negative (a b : Nat) : 
   number_of_carries a b ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem carries_max_digits (a b : Nat) :
   number_of_carries a b ≤ String.length (toString (max a b)) := sorry
 
@@ -36,6 +44,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval number_of_carries 9999 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

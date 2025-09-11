@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def derive (coefficient : Int) (exponent : Int) : String := sorry 
 
 theorem derive_coefficient_correct {c e : Int} 
@@ -8,7 +14,9 @@ theorem derive_coefficient_correct {c e : Int}
   let result := derive c e
   let coef := result.splitOn "x^" |>.get! 0
   String.toInt! coef = c * e := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem derive_exponent_correct {c e : Int}
   (h : e > 0) :
   let result := derive c e
@@ -40,6 +48,7 @@ info: '20x^1'
 -/
 -- #guard_msgs in
 -- #eval derive 10 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

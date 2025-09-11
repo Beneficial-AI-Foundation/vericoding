@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ValidInput(N: int): bool
 {
   N >= 0
@@ -37,6 +38,7 @@ predicate ValidResult(N: int, result: int)
   result >= 0 &&
   result == (if FactorsInDoubleFactorial(N, 2) < FactorsInDoubleFactorial(N, 5) then FactorsInDoubleFactorial(N, 2) else FactorsInDoubleFactorial(N, 5))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

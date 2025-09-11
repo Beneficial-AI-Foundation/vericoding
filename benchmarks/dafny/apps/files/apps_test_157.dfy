@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= a <= 1000 && 1 <= b <= 1000 && 1 <= c <= 1000
@@ -12,6 +13,7 @@ function TotalFruitsUsed(units: int): int
 {
     units * 7
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

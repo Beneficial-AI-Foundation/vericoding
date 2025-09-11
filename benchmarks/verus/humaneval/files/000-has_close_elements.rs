@@ -1,8 +1,10 @@
+// <vc-preamble>
 use vstd::math::abs;
 use vstd::prelude::*;
 use vstd::slice::*;
 
 verus! {
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

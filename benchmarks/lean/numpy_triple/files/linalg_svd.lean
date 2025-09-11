@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_svd {m n : Nat} (a : Vector (Vector Float n) m) : 
     Id (Vector (Vector Float (min m n)) m × Vector Float (min m n) × Vector (Vector Float n) (min m n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_svd_spec {m n : Nat} (a : Vector (Vector Float n) m) :
     ⦃⌜True⌝⦄
     numpy_svd a
@@ -38,3 +45,4 @@ theorem numpy_svd_spec {m n : Nat} (a : Vector (Vector Float n) m) :
                    s.get i ≥ s.get ⟨i.val + 1, h⟩)
                  ⌝⦄ := by
   sorry
+-- </vc-theorems>

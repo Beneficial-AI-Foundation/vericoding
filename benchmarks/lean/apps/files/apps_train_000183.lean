@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def largest_number (costs : List Nat) (target : Int) : String := sorry
 
 theorem largest_number_output_properties
@@ -25,7 +31,9 @@ theorem largest_number_output_properties
   (result = "0" ∨ 
     (∀ d ∈ result.data.map (fun c => c.toNat - '0'.toNat), 1 ≤ d ∧ d ≤ 9)) := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_target_gives_zero 
   (costs : List Nat)
   (h1 : costs.length = 9)
@@ -61,6 +69,7 @@ info: '0'
 -/
 -- #guard_msgs in
 -- #eval largest_number [2, 4, 6, 2, 4, 6, 4, 4, 4] 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidBinaryString(s: string)
 {
     forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
@@ -52,6 +53,7 @@ predicate BasicValidSolution(s: string, t: string)
     && (forall i :: 0 <= i < |s| ==> s[i] == '0' ==> t[i] == '0')
     && (forall i :: 0 <= i < |s| ==> t[i] == '1' ==> s[i] == '1')
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

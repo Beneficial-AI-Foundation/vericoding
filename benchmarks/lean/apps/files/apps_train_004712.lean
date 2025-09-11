@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def fib : Nat → Nat 
 | 0 => 0
 | 1 => 1
 | n + 2 => fib (n + 1) + fib n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def fibs_fizz_buzz (n : Nat) : List (String ⊕ Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fibs_fizz_buzz_length (n : Nat) :
   List.length (fibs_fizz_buzz n) = n :=
 sorry
@@ -60,6 +67,7 @@ info: [1, 1, 2, 'Fizz', 'Buzz', 8, 13, 'Fizz', 34, 'Buzz', 89, 'Fizz', 233, 377,
 -/
 -- #guard_msgs in
 -- #eval fibs_fizz_buzz 20
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

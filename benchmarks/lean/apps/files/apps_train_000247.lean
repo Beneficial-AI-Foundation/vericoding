@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def abs (n : Int) : Int := 
   if n < 0 then -n else n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def clumsy (n : Nat) : Int := sorry
 
 theorem clumsy_one :
   clumsy 1 = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem clumsy_two :
   clumsy 2 = 2 := sorry
 
@@ -35,6 +42,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval clumsy 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

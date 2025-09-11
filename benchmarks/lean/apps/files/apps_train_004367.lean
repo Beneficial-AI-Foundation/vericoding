@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def animals (heads legs : Int) : Option (Int × Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_combinations
   (chickens cows : Int)
   (h_chickens : chickens ≥ 0)
@@ -50,6 +58,7 @@ info: 'No solutions'
 -/
 -- #guard_msgs in
 -- #eval animals 25 555
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

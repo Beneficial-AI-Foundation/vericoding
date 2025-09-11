@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def queue (queuers : List Nat) (pos : Nat) : Option Nat := sorry
 
 theorem queue_basic_properties 
@@ -16,7 +22,9 @@ theorem queue_basic_properties
       then sum + min (queuers[i]'h) (queuers[pos]'h2)
       else sum) 0)
   ∧ (0 < result) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem queue_first_position_capped
   (queuers : List Nat)
   (h1 : 0 < queuers.length)
@@ -50,6 +58,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval queue [2, 5, 3, 6, 4] 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

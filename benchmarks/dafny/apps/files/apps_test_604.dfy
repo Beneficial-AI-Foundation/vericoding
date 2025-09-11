@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(arr: seq<int>) {
     true
 }
@@ -5,6 +6,7 @@ predicate ValidInput(arr: seq<int>) {
 function DistinctNonZeroCount(arr: seq<int>): int {
     |set x | x in arr && x != 0|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

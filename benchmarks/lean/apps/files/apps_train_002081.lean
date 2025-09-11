@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def Action : Type := (String × Nat)
 def Actions : Type := List Action
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_order_book (actions: Actions) : Nat := sorry
 
 theorem solve_multiple_possibilities :
   let test_actions := [("ADD", 5), ("ADD", 5), ("ACCEPT", 5)]
   solve_order_book test_actions = 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 8
 -/
@@ -27,6 +34,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_order_book [("ADD", 1), ("ADD", 2), ("ADD", 3), ("ADD", 4), ("ADD", 5), ("ACCEPT", 3), ("ACCEPT", 5)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

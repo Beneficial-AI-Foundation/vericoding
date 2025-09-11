@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn is_upper_case(c: char) -> (result:bool) {
 spec fn shift32_spec(c: char) -> (result:char) {
     ((c as u8) + 32) as char
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

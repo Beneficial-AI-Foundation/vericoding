@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>, p: string)
 {
     n >= 2 &&
@@ -23,6 +24,7 @@ predicate CanSort(n: int, a: seq<int>, p: string)
     forall i :: 0 <= i < n - 1 ==> 
         (p[i] == '0' ==> max_up_to(a, i) <= i + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

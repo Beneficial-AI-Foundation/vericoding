@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def abs (x : Int) : Int := 
   if x < 0 then -x else x
 
@@ -5,10 +6,14 @@ def minimum (lst : List Int) : Option Int :=
   lst.foldl (fun min x => match min with
     | none => some x
     | some m => some (if x < m then x else m)) none
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def closest (lst : List Int) : Option Int := sorry
 
 theorem closest_returns_none_or_element (lst : List Int) (h : lst ≠ []) :
@@ -16,7 +21,9 @@ theorem closest_returns_none_or_element (lst : List Int) (h : lst ≠ []) :
   | none => True
   | some x => x ∈ lst
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem closest_zero (lst : List Int) (h : lst ≠ []) :
   0 ∈ lst → closest lst = some 0 := sorry
 
@@ -53,6 +60,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval closest [13, 0, -6]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

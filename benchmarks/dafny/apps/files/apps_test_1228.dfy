@@ -1,3 +1,4 @@
+// <vc-preamble>
 function GetCategory(hp: int): char
 {
     var remainder := hp % 4;
@@ -25,6 +26,7 @@ predicate OptimalChoice(n: int, a: int, b: char)
     ((n % 4 == 3) ==> (a == 2 && b == 'A')) &&
     ((n % 4 == 0) ==> (a == 1 && b == 'A'))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

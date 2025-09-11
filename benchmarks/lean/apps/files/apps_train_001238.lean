@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_sum (l r : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_sum_range_bounds (l r : Nat)
   (h1 : 1 ≤ l) (h2 : l ≤ r) (h3 : r ≤ 1000) : 
   0 ≤ calculate_sum l r ∧ calculate_sum l r ≤ 1000000007 :=
@@ -41,6 +49,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval calculate_sum 2 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

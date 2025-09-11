@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def to_1D (x y : Nat) (size : Nat × Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def to_2D (idx : Nat) (size : Nat × Nat) : Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem to_1D_to_2D_roundtrip (x y width height : Nat) (h1 : width > 0) (h2 : height > 0) :
   let size := (width, height)
   let x' := x % width
@@ -65,6 +72,7 @@ info: (2, 3)
 -/
 -- #guard_msgs in
 -- #eval to_2D 14 (4, 6)
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

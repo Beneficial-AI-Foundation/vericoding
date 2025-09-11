@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def shortest_arrang (n : Nat) : List Nat := sorry
 
 def is_valid_arrangement (arr : List Nat) (n : Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shortest_arrang_properties (n : Nat) (h : n ≥ 3) :
   let result := shortest_arrang n
   (result = List.nil ∨ is_valid_arrangement result n) ∧
@@ -40,6 +48,7 @@ info: [33, 32]
 -/
 -- #guard_msgs in
 -- #eval shortest_arrang 65
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

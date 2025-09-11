@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_roasting_club (n : Nat) (qlen : Nat) (queries : List Nat) : List Nat := sorry
 
 def list_minimum (l : List Nat) : Nat := 
   match l with
   | [] => 0  
   | x::xs => xs.foldl min x
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem roasting_club_properties 
   (n : Nat)
   (queries : List Nat)
@@ -51,6 +59,7 @@ info: [7, 7]
 -/
 -- #guard_msgs in
 -- #eval solve_roasting_club 3 2 [4, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

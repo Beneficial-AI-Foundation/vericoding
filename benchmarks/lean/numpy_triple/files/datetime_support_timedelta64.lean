@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -37,13 +38,19 @@ structure TimeDelta64 where
   value : Int64
   /-- The time unit for the duration -/
   unit : TimeUnit
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def timedelta64 (value : Int64) (unit : TimeUnit) : Id TimeDelta64 :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem timedelta64_spec (value : Int64) (unit : TimeUnit) :
     ⦃⌜True⌝⦄
     timedelta64 value unit
@@ -51,3 +58,4 @@ theorem timedelta64_spec (value : Int64) (unit : TimeUnit) :
                 result.value ≥ -9223372036854775808 ∧ 
                 result.value ≤ 9223372036854775807⌝⦄ := by
   sorry
+-- </vc-theorems>

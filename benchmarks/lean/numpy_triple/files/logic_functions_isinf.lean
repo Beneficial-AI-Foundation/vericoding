@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isinf {n : Nat} (x : Vector Float n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isinf_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     isinf x
@@ -19,3 +26,4 @@ theorem isinf_spec {n : Nat} (x : Vector Float n) :
       (result.get i = true → ¬(x.get i).isFinite) ∧
       (result.get i = true → ¬(x.get i).isNaN)⌝⦄ := by
   sorry
+-- </vc-theorems>

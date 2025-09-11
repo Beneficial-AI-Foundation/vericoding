@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (num: String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (implementation: String → Int)
@@ -40,6 +47,7 @@ theorem correctness
 : problem_spec implementation num
 := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "AB" = 1
 -- #test implementation "1077E" = 2

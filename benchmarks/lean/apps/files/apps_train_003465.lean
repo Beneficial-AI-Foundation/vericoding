@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def seqR : String → Bool 
   | _ => sorry
 
 def seqB : String → Bool
   | _ => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def button_sequences (r : String) (b : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem button_sequences_valid_chars (r b : String) (h : r.length > 0 ∧ b.length > 0) :
   ∀ c, c ∈ (button_sequences r b).toList → c = 'R' ∨ c = 'B' :=
 sorry
@@ -45,6 +52,7 @@ info: 'RBRBRBRB'
 -/
 -- #guard_msgs in
 -- #eval button_sequences "10101010" "01010101"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

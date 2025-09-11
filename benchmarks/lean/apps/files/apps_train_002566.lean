@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def countChar (s : String) (c : Char) : Nat := 
   s.data.filter (·= c) |>.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSubstring (pattern : String) (s : String) : Bool := sorry
 
 def number2words (n : Nat) : String := sorry
 
 -- All outputs are strings containing only letters, spaces, and hyphens
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem number2words_valid_chars (n : Nat) (h : n ≤ 999999) :
   ∃ s, number2words n = s ∧ 
   (∀ c ∈ s.data, c.isAlpha ∨ c = ' ' ∨ c = '-') := sorry
@@ -43,6 +50,7 @@ theorem thousands (n : Nat) (h1 : 1000 ≤ n) (h2 : n ≤ 999999) :
 -- Zero is written as "zero"
 
 theorem zero : number2words 0 = "zero" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

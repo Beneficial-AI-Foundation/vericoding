@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lstrip {n : Nat} (a : Vector String n) (chars : Option String) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lstrip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
     ⦃⌜True⌝⦄
     lstrip a chars
@@ -40,3 +47,4 @@ theorem lstrip_spec {n : Nat} (a : Vector String n) (chars : Option String) :
       (chars.isSome → 
         ∀ c : Char, result.get? ⟨0⟩ = some c → c ∉ chars.get!.toList)⌝⦄ := by
   sorry
+-- </vc-theorems>

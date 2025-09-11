@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def SumEvenFibonacci (n : Int) : Int :=
   sorry
 
 -- Properties for any non-negative input
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_even_fibonacci_non_negative (n : Int) : 
   n ≥ 0 → SumEvenFibonacci n ≥ 0 :=
   sorry
@@ -47,6 +55,7 @@ info: 82790070
 -/
 -- #guard_msgs in
 -- #eval SumEvenFibonacci 144100000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

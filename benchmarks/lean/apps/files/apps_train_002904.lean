@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def palindrome (start_num : Int) (size : Int) : List Int := sorry
 
 def isPalindrome (n : Int) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_empty_size :
   ∀ start_num : Int, palindrome start_num 0 = [] := sorry
 
@@ -88,6 +96,7 @@ info: 'Not valid'
 -/
 -- #guard_msgs in
 -- #eval palindrome -4505 15
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

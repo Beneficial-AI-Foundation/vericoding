@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def to_cents (s: String) : Option Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem test_whole_dollar_amounts (amount: String) (h: ∃ n: Nat, amount = s!"${n}.00") : 
   let n := Classical.choose h 
   to_cents amount = some (n * 100) := 
@@ -35,6 +43,7 @@ info: 1234567890
 -/
 -- #guard_msgs in
 -- #eval to_cents "$12345678.90"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

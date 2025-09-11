@@ -1,7 +1,9 @@
+// <vc-preamble>
 function AbsDiff(a: int, b: int): int
 {
     if a >= b then a - b else b - a
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

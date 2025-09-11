@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def List.product : List (List α) → List (List α)
   | [] => [[]]
   | (h :: t) => sorry
 
 def sum [Add α] (l : List α) : α :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_modular_sum (m : Nat) (lists : List (List Int)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_modular_sum_bounds (m : Nat) (lists : List (List Int)) 
     (h1 : m > 0) (h2 : lists ≠ []) 
     (h3 : ∀ l ∈ lists, l ≠ []) : 
@@ -51,6 +58,7 @@ info: 20
 -/
 -- #guard_msgs in
 -- #eval find_max_modular_sum 100 [[1, 2], [3, 4]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def List.maximum (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | (h::t) => t.foldl max h
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_army_strength (n : Nat) (arr : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_at_least_max_element {arr : List Nat} (h : arr ≠ []) : 
   find_max_army_strength arr.length arr ≥ List.maximum arr := by
   sorry
@@ -47,6 +54,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval find_max_army_strength 7 [1, 2, 5, 4, 3, 6, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

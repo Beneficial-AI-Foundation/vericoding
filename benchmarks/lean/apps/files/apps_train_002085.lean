@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_door_opens (n m a d : Nat) (client_times : List Nat) : Nat :=
 sorry
 
 -- Result should be positive
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_door_opens_positive
   (n m a d : Nat) (client_times : List Nat) 
   (h1 : n > 0) (h2 : m > 0) (h3 : a > 0) (h4 : d > 0)
@@ -56,6 +64,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval count_door_opens 10 10 51 69 [154, 170, 170, 183, 251, 337, 412, 426, 445, 452]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

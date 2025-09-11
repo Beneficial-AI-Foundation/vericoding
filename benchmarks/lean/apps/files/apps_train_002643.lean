@@ -1,11 +1,16 @@
+-- <vc-preamble>
 def commas (n : Float) : String := sorry
 
 def String.toFloat! (s : String) : Float := sorry
 instance : ToString Int where toString := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def Int.abs (n : Int) : Int := if n < 0 then -n else n
 
 theorem integers_format_correctly (n : Int) 
@@ -14,7 +19,9 @@ theorem integers_format_correctly (n : Int)
   (Int.abs n ≥ 1000 → result.contains ',' ) ∧ 
   (¬result.contains '.') ∧
   ((result.replace "," "").toInt? = some n) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem floats_format_correctly (n : Float)
   (h1 : ¬n.isNaN)
   (h2 : ¬n.isInf) 
@@ -43,6 +50,7 @@ info: '-1,000,000.123'
 -/
 -- #guard_msgs in
 -- #eval commas -1000000.123
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

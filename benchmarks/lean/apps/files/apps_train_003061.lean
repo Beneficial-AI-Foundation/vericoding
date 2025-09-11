@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (a b : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_number_returns_zero (n : Nat) : 
   n > 0 → solve n (n + 1) = 0 :=
   sorry
@@ -45,6 +53,7 @@ info: 1104
 -/
 -- #guard_msgs in
 -- #eval solve 200 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_orbs (k : Nat) (queries : List Nat) : List Nat := sorry
 
 theorem solve_orbs_length 
   (k : Nat) (queries : List Nat) (h : k > 0) :
   (solve_orbs k queries).length = queries.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_orbs_positive 
   (k : Nat) (queries : List Nat) (h : k > 0) :
   ∀ x ∈ solve_orbs k queries, x > 0 := sorry
@@ -45,6 +53,7 @@ info: [3, 3, 3, 3, 3]
 -/
 -- #guard_msgs in
 -- #eval solve_orbs 3 [1, 4, 20, 50, 300]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

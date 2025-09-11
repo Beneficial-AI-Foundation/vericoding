@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermpow {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat := 16) : 
     Id (Vector Float (min (n + (n - 1) * pow) (maxpower + 1))) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermpow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat := 16) :
     ⦃⌜n > 0 ∧ maxpower ≥ 0⌝⦄
     hermpow c pow maxpower
@@ -43,3 +50,4 @@ theorem hermpow_spec {n : Nat} (c : Vector Float n) (pow : Nat) (maxpower : Nat 
         True) -- Placeholder for hermmul consistency
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

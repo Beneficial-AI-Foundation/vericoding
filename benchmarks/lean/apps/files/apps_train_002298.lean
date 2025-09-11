@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_long_pressed_name (name typed : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem always_accepts_repeated_chars 
   (name typed : String) 
   (h : ∀ (i : Nat), i < name.length → typed.length ≥ name.length) :
@@ -54,6 +62,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_long_pressed_name "leelee" "lleeelee"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

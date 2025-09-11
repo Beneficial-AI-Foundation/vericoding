@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, C: int, D: int)
 {
     1 <= A <= 10000 && 1 <= B <= 10000 && 1 <= C <= 10000 && 1 <= D <= 10000
@@ -7,6 +8,7 @@ function MaxArea(A: int, B: int, C: int, D: int): int
 {
     if A * B >= C * D then A * B else C * D
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

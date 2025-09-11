@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermval2d {n rows cols : Nat} (x y : Vector Float n) (c : Vector (Vector Float cols) rows) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermval2d_spec {n rows cols : Nat} (x y : Vector Float n) (c : Vector (Vector Float cols) rows) :
     ⦃⌜True⌝⦄
     hermval2d x y c
@@ -72,3 +79,4 @@ theorem hermval2d_spec {n rows cols : Nat} (x y : Vector Float n) (c : Vector (V
                          (fun i : Fin rows => (c.get i).get ⟨0, sorry⟩ * H_x i.val) 
                          (List.finRange rows)))⌝⦄ := by
   sorry
+-- </vc-theorems>

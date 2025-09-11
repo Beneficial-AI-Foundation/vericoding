@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum_seq(s: seq<int>): int
 {
     if |s| == 0 then 0 else s[0] + sum_seq(s[1..])
@@ -10,6 +11,7 @@ function min_seq(s: seq<int>): int
         var rest_min := min_seq(s[1..]);
         if s[0] <= rest_min then s[0] else rest_min
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

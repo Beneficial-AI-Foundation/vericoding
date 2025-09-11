@@ -1,7 +1,9 @@
+// <vc-preamble>
 function abs(x: int): int
 {
     if x >= 0 then x else -x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

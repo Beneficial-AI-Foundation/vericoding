@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_unattractiveness (n : Nat) (markers : List Nat) (edges : List (List Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_unattractiveness_same_marker (marker : Nat) : 
   min_unattractiveness 2 [marker, marker] [[1,2]] = 0 := by
   sorry
@@ -45,6 +53,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_unattractiveness 4 [2, 2, 2, 2] [[1, 2], [1, 3], [3, 4]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

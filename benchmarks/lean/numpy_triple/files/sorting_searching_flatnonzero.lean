@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def flatnonzero {n : Nat} (a : Vector Float n) : Id (List (Fin n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem flatnonzero_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     flatnonzero a
@@ -23,3 +30,4 @@ theorem flatnonzero_spec {n : Nat} (a : Vector Float n) :
         result.idxOf i < result.idxOf j)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

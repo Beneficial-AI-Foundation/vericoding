@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sha256_cracker (h: String) (chars: String) : Option String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sha256 (s: String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem found_string_matches_hash
   {s h chars result: String} :
   (h = sha256 s) →
@@ -41,6 +48,7 @@ info: 'code'
 -/
 -- #guard_msgs in
 -- #eval sha256_cracker "5694d08a2e53ffcae0c3103e5ad6f6076abd960eb1f8a56577040bc1028f702b" "cdeo"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

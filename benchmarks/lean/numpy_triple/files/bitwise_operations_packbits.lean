@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -6,14 +7,20 @@ open Std.Do
 inductive BitOrder
   | big    -- MSB first (default): bit 7 is first element
   | little -- LSB first: bit 0 is first element
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def packbits {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitOrder.big) : 
     Id (Vector UInt8 ((n + 7) / 8)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem packbits_spec {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitOrder.big) :
     ⦃⌜True⌝⦄
     packbits a bitorder
@@ -41,3 +48,4 @@ theorem packbits_spec {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitO
                          else acc
                        ) 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

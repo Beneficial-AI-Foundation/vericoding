@@ -1,3 +1,4 @@
+// <vc-preamble>
 function count_sf_flights(s: string): int
 {
     if |s| <= 1 then 0
@@ -9,6 +10,7 @@ function count_fs_flights(s: string): int
     if |s| <= 1 then 0
     else (if s[|s|-1] == 'S' && s[|s|-2] != 'S' then 1 else 0) + count_fs_flights(s[..|s|-1])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def Grid := List String
 
 def GridList := List (List Char)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def how_many_bees (grid : Grid) : Nat := sorry
 def how_many_bees_list (grid : GridList) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem how_many_bees_nonnegative (grid : Grid) :
   how_many_bees grid ≥ 0 := sorry
 
@@ -41,6 +48,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval how_many_bees []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

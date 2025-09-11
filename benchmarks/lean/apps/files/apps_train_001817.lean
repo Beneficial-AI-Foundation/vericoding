@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def xorQueries (arr : List Nat) (queries : List (Nat × Nat)) : List Nat := sorry
 
 def manualRangeXor (arr : List Nat) (i j : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem xorQueries_length_matches_queries {arr : List Nat} {queries : List (Nat × Nat)} 
   (h : arr.length > 0) :
   (xorQueries arr queries).length = queries.length := sorry
@@ -45,6 +53,7 @@ info: [1, 3, 1]
 -/
 -- #guard_msgs in
 -- #eval xor_queries [1, 2, 3] [[0, 0], [0, 1], [1, 2]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

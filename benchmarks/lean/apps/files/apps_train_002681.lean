@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def duplicate_encode (s : String) : String := sorry
 
 theorem length_preservation (s : String) : 
   String.length (duplicate_encode s) = String.length s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_output_chars (s : String) (i : String.Pos) :
   (duplicate_encode s).get i = '(' ∨ 
   (duplicate_encode s).get i = ')' := sorry
@@ -45,6 +53,7 @@ info: ')())())'
 -/
 -- #guard_msgs in
 -- #eval duplicate_encode "Success"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

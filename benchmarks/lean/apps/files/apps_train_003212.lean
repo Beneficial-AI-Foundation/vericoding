@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def isDigit (c : Char) : Bool := sorry
 
 def isNonZeroDigit (c : Char) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def look_and_say_sequence (s : String) (n : Nat) : String := sorry
 
 theorem sequence_preserves_digits (s : String) (n : Nat) 
   (h : ∀ c ∈ s.data, isNonZeroDigit c) :
   ∀ c ∈ (look_and_say_sequence s n).data, isDigit c := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_length_monotonic (s : String) (n : Nat)
   (h : ∀ c ∈ s.data, isNonZeroDigit c) :
   (look_and_say_sequence s n).length ≤ (look_and_say_sequence s (n+1)).length := sorry  
@@ -59,6 +66,7 @@ info: '1114'
 -/
 -- #guard_msgs in
 -- #eval look_and_say_sequence "14" 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

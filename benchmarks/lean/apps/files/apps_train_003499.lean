@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate (s : String) : Option Float := sorry
 
 theorem invalid_input_returns_none {s : String} 
   (h : s.isEmpty ∨ ¬∀ c ∈ s.data, c ∈ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', ' ']) :
   calculate s = none := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_expr_returns_some {expr : String} 
   (h : ∃ n : Float, calculate expr = some n) :
   ∃ n : Float, calculate expr = some n := sorry
@@ -50,6 +58,7 @@ info: 5.2
 -/
 -- #guard_msgs in
 -- #eval calculate "5 + 1 / 5"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

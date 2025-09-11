@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_arctanh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_arctanh_spec {n : Nat} (x : Vector Float n) 
     (h_domain : ∀ i : Fin n, -1 < x.get i ∧ x.get i < 1) :
     ⦃⌜∀ i : Fin n, -1 < x.get i ∧ x.get i < 1⌝⦄
@@ -22,3 +29,4 @@ theorem numpy_arctanh_spec {n : Nat} (x : Vector Float n)
                  -- Range property: result is a finite real number
                  (¬(result.get i).isNaN ∧ ¬(result.get i).isInf)⌝⦄ := by
   sorry
+-- </vc-theorems>

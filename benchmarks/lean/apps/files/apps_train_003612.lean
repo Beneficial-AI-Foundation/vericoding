@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def histogram (lst : List Nat) (width : Nat) : List Nat := sorry
 
 def sum (lst : List Nat) : Nat :=
   match lst with
   | [] => 0
   | h :: t => h + sum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem histogram_empty (width : Nat) :
   histogram [] width = [] := sorry
 
@@ -44,6 +52,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval histogram [] 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

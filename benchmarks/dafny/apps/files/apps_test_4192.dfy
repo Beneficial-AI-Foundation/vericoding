@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(D: int, T: int, S: int)
 {
     1 <= D <= 10000 && 1 <= T <= 10000 && 1 <= S <= 10000
@@ -7,6 +8,7 @@ predicate CanTravel(D: int, T: int, S: int)
 {
     D <= T * S
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

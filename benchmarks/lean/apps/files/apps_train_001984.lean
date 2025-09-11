@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def find_max_lucky_number (nums : List Nat) : Nat := sorry
 
 theorem result_non_negative
   (nums : List Nat)
   (h : nums.length > 0) :
   find_max_lucky_number nums ≥ 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Nat) : Prop :=
   ∀ i j, i < l.length → j < l.length → i < j → l[i]'sorry ≤ l[j]'sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_bounded_by_max_xor
   (nums : List Nat)
   (h : nums.length > 0) :
@@ -55,6 +62,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_max_lucky_number [11, 10, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

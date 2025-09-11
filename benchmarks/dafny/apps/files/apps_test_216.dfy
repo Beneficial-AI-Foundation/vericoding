@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum_abs(arr: seq<int>, i: int): int
     requires 0 <= i <= |arr|
     decreases |arr| - i
@@ -10,6 +11,7 @@ predicate ValidInput(n: int, arr: seq<int>)
 {
     0 <= n == |arr|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

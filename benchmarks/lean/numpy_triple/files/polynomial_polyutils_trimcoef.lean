@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def trimcoef {n : Nat} (c : Vector Float n) (tol : Float) : Id (Vector Float (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trimcoef_spec {n : Nat} (c : Vector Float n) (tol : Float) 
     (h_tol_nonneg : tol ≥ 0) :
     ⦃⌜tol ≥ 0⌝⦄
@@ -35,3 +42,4 @@ theorem trimcoef_spec {n : Nat} (c : Vector Float n) (tol : Float)
         (∀ k : Fin (n + 1), k ≥ i → Float.abs (result.get k) ≤ tol))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

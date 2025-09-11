@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mango (quantity price : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mango_cost_less_than_full : ∀ (quantity price : Nat),
   mango quantity price ≤ quantity * price :=
 sorry
@@ -41,6 +49,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval mango 6 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

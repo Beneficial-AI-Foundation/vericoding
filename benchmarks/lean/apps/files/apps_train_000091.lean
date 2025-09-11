@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def are_strings_transformable (s t : String) : Bool := sorry
 
 theorem are_strings_transformable_reflexive (s t : String) 
   (h : s.length > 0 ∧ t.length > 0) :
   are_strings_transformable s t = are_strings_transformable t s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem are_strings_transformable_self (s : String) 
   (h : s.length > 0) : 
   are_strings_transformable s s = true := sorry
@@ -38,6 +46,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval are_strings_transformable "a" "z"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

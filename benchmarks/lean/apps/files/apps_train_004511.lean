@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def n_closestPairs_tonum (upperLim : Nat) (k : Nat) : List (Nat × Nat) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem n_closest_pairs_length (upperLim : Nat) (k : Nat) 
   (h1 : upperLim ≥ 3) (h2 : k ≥ 1) :
   let result := n_closestPairs_tonum upperLim k 
@@ -17,6 +25,7 @@ theorem n_closest_pairs_bounds (upperLim : Nat) (k : Nat)
     (let (m, n) := pair
      m ≤ upperLim ∧ n > 0 ∧ m > n) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def PowerPair := List Nat 
 
 def compare_powers (p1 p2 : PowerPair) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem compare_powers_valid_result (n1 n2 : PowerPair) : 
   let r := compare_powers n1 n2
   r = -1 ∨ r = 0 ∨ r = 1 :=
@@ -44,6 +52,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval compare_powers [2, 10] [2, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

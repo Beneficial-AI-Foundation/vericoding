@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generateGraphWithTriangleCycles (k : Nat) : Nat × List String := sorry
 
 def countTriangles (size : Nat) (matrix : List String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem triangle_count_matches_input (k : Nat) (h : k > 0) :
   let (size, matrix) := generateGraphWithTriangleCycles k
   countTriangles size matrix = k := sorry
@@ -34,6 +42,7 @@ theorem diagonal_is_zero (k : Nat) (h : k > 0) :
 theorem contains_only_zeros_and_ones (k : Nat) (h : k > 0) :
   let (size, matrix) := generateGraphWithTriangleCycles k
   ∀ row ∈ matrix, ∀ c ∈ row.data, c = '0' ∨ c = '1' := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

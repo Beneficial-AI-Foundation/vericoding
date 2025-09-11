@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def name_file (fmt: String) (nbr: Int) (start: Int) : List String :=
   sorry
 
 def containsIndexNo (s: String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def containsNumber (s: String) (n: Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem name_file_length 
   (fmt: String) (nbr: Int) (start: Int)
   (h1: nbr > 0) (h2: nbr ≤ 1000) (h3: start ≥ -1000) (h4: start ≤ 1000) :
@@ -32,6 +39,7 @@ theorem name_file_invalid_number
   (fmt: String) (nbr: Int) (start: Int)
   (h1: nbr ≤ 0) :
   name_file fmt nbr start = [] := by sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

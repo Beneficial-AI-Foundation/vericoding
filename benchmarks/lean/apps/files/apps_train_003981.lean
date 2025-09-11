@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def vowel_shift (s : Option String) (n : Int) : Option String := sorry
 
 theorem empty_cases (n : Int) : 
   vowel_shift none n = none ∧ 
   vowel_shift (some "") n = some "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_shift (s : String) :
   vowel_shift (some s) 0 = some s := sorry
 
@@ -42,6 +50,7 @@ info: 'This as e tist!'
 -/
 -- #guard_msgs in
 -- #eval vowel_shift "This is a test!" -1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

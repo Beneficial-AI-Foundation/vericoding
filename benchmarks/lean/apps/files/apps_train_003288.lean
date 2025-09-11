@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_leap_year (year : Nat) : Bool := sorry
 
 theorem leap_year_div_400 (year : Nat) (h : year > 0) (h2 : year % 400 = 0) :
   is_leap_year year = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_leap_year_div_100_not_400 (year : Nat) (h : year > 0) 
     (h2 : year % 100 = 0) (h3 : year % 400 ≠ 0) :
   is_leap_year year = false := sorry
@@ -39,6 +47,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_leap_year 1234
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

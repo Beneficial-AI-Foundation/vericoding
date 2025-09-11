@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def smallest_lexicographic_string (n l : Nat) (strings : List String) : String := sorry
 
 def strRepeat (s : String) (n : Nat) : String := 
   match n with
   | 0 => ""
   | n + 1 => s ++ strRepeat s n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem smallest_lexicographic_string_properties 
   {n l : Nat} {strings : List String}
   (hn : 1 ≤ n ∧ n ≤ 5)
@@ -50,6 +58,7 @@ info: 'abcd'
 -/
 -- #guard_msgs in
 -- #eval smallest_lexicographic_string 4 1 ["d", "b", "c", "a"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

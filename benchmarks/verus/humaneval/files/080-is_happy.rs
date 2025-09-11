@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn three_distinct_spec(s: Seq<char>, i: int) -> (ret:bool)
 spec fn happy_spec(s: Seq<char>) -> (ret:bool) {
     s.len() >= 3 && (forall|i: int| 0 < i && i + 1 < s.len() ==> three_distinct_spec(s, i))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

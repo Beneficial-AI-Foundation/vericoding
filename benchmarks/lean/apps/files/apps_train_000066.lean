@@ -1,19 +1,26 @@
+-- <vc-preamble>
 def solve_string_swaps (n: Nat) (s t: String) : String × List (Nat × Nat) :=
   sorry
 
 def apply_swaps (s t: String) (swaps: List (Nat × Nat)) : String × String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_chars (s: String) : Char → Nat :=
   sorry
 
 inductive Even : Nat → Prop where
   | zero : Even 0
   | plus_two : (n : Nat) → Even n → Even (n + 2)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_strings_always_possible 
   (n: Nat) (s: String) (h1: n > 0) (h2: n ≤ 100) :
   let res := solve_string_swaps n s s
@@ -38,6 +45,7 @@ theorem character_count_invariant
   let char_counts := count_chars (s ++ t)
   res.1 = "Yes" ↔ ∀ c, Even (char_counts c) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

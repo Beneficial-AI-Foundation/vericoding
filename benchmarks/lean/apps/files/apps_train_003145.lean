@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def encode_resistor_colors (ohm_str : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.toNat (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem resistor_colors_format {ohm_str : String} 
   (h : 10 ≤ ohm_str.toNat ∧ ohm_str.toNat ≤ 99000000) :
   let result := encode_resistor_colors ohm_str
@@ -27,6 +34,7 @@ theorem resistor_colors_value {ohm_str : String}
   let result := encode_resistor_colors ohm_str
   ohm_str.toNat = result.toNat :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

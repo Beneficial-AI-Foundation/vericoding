@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def pattern (n : Int) : String := sorry
 
 def String.reverse (s : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def Nat.toString (n : Nat) : String := sorry
 
 theorem pattern_invalid_n (n : Int) (h : n ≤ 0) :
   pattern n = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_valid_num_lines {n : Int} (h : n > 0) :
   let lines := String.splitOn (pattern n) "\n"
   lines.length = 2 * n - 1 := sorry
@@ -47,6 +54,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval pattern -5 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

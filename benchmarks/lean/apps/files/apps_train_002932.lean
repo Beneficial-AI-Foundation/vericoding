@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def aks_test : Nat → Bool :=
   fun _ => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def small_primes : List Nat := [2, 3, 5, 7, 11, 13, 17, 19]
 
 theorem known_small_primes_correct (n : Nat) (h : 2 ≤ n ∧ n < 20) :
   aks_test n = true ↔ n ∈ small_primes := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numbers_less_than_2_not_prime {n : Nat} (h : n ≤ 1) : 
   aks_test n = false := by sorry
 
@@ -41,6 +48,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval aks_test 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

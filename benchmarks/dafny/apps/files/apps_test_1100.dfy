@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
     n >= 3
@@ -8,6 +9,7 @@ function MinJumps(n: int): int
 {
     (n - 2) * (n - 2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

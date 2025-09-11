@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_guest_assignment (n: Nat) (moves: List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_guest_assignment_cyclic_shifts {n: Nat} {moves: List Int}
   (h: moves.length = n) (h_pos: 0 < n) :
   check_guest_assignment n moves = check_guest_assignment n (moves.rotateLeft 1) :=
@@ -39,6 +47,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval check_guest_assignment 3 [3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) (seq : List Nat) : Nat × Nat := sorry
 
 def isValidAfterReverse (seq : List Nat) (l r : Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_sorted_sequence {n : Nat} (h : n > 0) :
   let seq := List.range' 1 n
   solve n seq = (0, 0) := sorry
@@ -30,6 +38,7 @@ info: (1, 3)
 -/
 -- #guard_msgs in
 -- #eval solve 3 [3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

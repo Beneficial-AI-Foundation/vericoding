@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int) {
     n >= 1 && k >= 2
 }
@@ -21,6 +22,7 @@ predicate ValidSolution(n: int, k: int, result: int)
             (x == 0 || (x + 1) * (x + 1) - (x + 1) + (2 * (n - 1) - k * (k - 1)) > 0) &&
             result == k - x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

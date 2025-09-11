@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -18,6 +19,7 @@ fn diag_matrix<A: Copy>(rows: usize, cols: usize, zero: A, one: A) -> (a: Vec<Ve
 fn print_matrix<A>(m: &Vec<Vec<A>>) {
     assume(false);
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

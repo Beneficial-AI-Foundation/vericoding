@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_special_factorial_number (n : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem special_factorial_returns_binary (n : Int) :
   let result := is_special_factorial_number n
   result = 0 ∨ result = 1 := by
@@ -39,6 +47,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval is_special_factorial_number 123
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

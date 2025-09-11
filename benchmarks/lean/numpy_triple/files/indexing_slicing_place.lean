@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def place {n k v : Nat} (arr : Vector Float n) (mask : Vector Bool n) (vals : Vector Float (v + 1))
     (h : k = (mask.toArray.toList.count true)) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem place_spec {n k v : Nat} (arr : Vector Float n) (mask : Vector Bool n) (vals : Vector Float (v + 1))
     (h : k = (mask.toArray.toList.count true)) :
     ⦃⌜k = (mask.toArray.toList.count true)⌝⦄
@@ -24,3 +31,4 @@ theorem place_spec {n k v : Nat} (arr : Vector Float n) (mask : Vector Bool n) (
            result.get i = vals.get val_idx)⌝
     ⦄ := by
   sorry
+-- </vc-theorems>

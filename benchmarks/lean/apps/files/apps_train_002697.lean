@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (start offset : Nat) : String := sorry 
 
 theorem solve_single_char_len :
   ∀ (start offset : Nat), offset = 1 → String.length (solve start offset) = 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_start_slice :
   solve 0 3 = "235" := sorry
 
@@ -37,6 +45,7 @@ info: '192'
 -/
 -- #guard_msgs in
 -- #eval solve 10 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

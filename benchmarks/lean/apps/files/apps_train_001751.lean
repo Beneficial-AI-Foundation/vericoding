@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_number_of_lis (nums : List Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Int) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! < l[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem number_of_lis_properties (nums : List Int) : 
   let result := find_number_of_lis nums
   result ≥ 0 ∧ 
@@ -39,6 +46,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_number_of_lis [1, 2, 4, 3, 5, 4, 7, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

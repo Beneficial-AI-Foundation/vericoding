@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def display_table (orders : List (String × String × String)) : List (List String) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem display_table_empty (orders : List (String × String × String)) :
   orders = [] → display_table orders = [] :=
   sorry
@@ -70,6 +78,7 @@ info: expected2
 -/
 -- #guard_msgs in
 -- #eval display_table [["Laura", "2", "Bean Burrito"], ["Jhon", "2", "Beef Burrito"], ["Melissa", "2", "Soda"]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

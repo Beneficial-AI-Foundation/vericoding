@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def scramble (text : String) (indices : List Int) : String := sorry
 
 theorem scramble_length_preserved 
@@ -8,7 +14,9 @@ theorem scramble_length_preserved
   (indices : List Int) 
   (h1 : text.length > 0) :
   (scramble text indices).length = text.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem scramble_chars_same_sorted
   (text : String)
   (indices : List Int)
@@ -32,6 +40,7 @@ info: '5sblk'
 -/
 -- #guard_msgs in
 -- #eval scramble "bskl5" [2, 1, 4, 3, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

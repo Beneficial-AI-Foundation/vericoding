@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve_min_skill_diff (n: Nat) (arr: List Nat) : Nat :=
 sorry
 
@@ -12,13 +13,19 @@ if x ≥ y then x - y else y - x
 
 def list_sort (xs: List Nat) : List Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_differences (xs: List Nat) : List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_skill_diff_properties {n: Nat} {arr: List Nat} (h1: n < arr.length) (h2: 1 ≤ n) (h3: arr.length ≥ 2)
 (h4: ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 1000) :
   let result := solve_min_skill_diff n arr
@@ -57,6 +64,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval solve_min_skill_diff 5 [13, 4, 20, 13, 2, 5, 8, 3, 17, 16]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

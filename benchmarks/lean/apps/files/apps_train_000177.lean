@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def min_refuel_stops (target : Nat) (start_fuel : Nat) (stations : List (Nat × Nat)) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x :: xs => x + list_sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_refuel_stops_result_valid (target : Nat) (start_fuel : Nat) 
     (stations : List (Nat × Nat)) :
   let result := min_refuel_stops target start_fuel stations
@@ -65,6 +72,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_refuel_stops 100 10 [[10, 60], [20, 30], [30, 30], [60, 40]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

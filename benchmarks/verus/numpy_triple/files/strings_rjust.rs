@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -10,6 +11,7 @@ spec fn is_suffix_of<T>(suffix: Seq<T>, full: Seq<T>) -> bool {
     suffix.len() <= full.len() && 
     full.subrange(full.len() - suffix.len(), full.len() as int) == suffix
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

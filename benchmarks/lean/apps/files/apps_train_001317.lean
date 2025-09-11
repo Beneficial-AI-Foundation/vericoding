@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_unique_strings (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_single_chars :
   count_unique_strings "c" = 0 ∧ 
   count_unique_strings "k" = 0 :=
@@ -50,6 +58,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_unique_strings "cat"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

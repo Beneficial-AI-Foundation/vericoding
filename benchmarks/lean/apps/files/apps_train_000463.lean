@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_triplets (arr: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_triplets_non_negative (arr: List Nat) :
   count_triplets arr ≥ 0 :=
 sorry
@@ -33,6 +41,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_triplets [1, 3, 5, 7, 9]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

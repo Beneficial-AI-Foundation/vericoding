@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (arr : List Nat) : Option (List Nat) := sorry
 
 theorem solve_preserves_length {arr : List Nat} {result : List Nat} :
   solve arr = some result → result.length = arr.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_preserves_elements {arr : List Nat} {result : List Nat} :
   solve arr = some result → 
   ∀ x, x ∈ arr ↔ x ∈ result := sorry
@@ -41,6 +49,7 @@ info: [279, 558, 1116, 2232, 744, 1488]
 -/
 -- #guard_msgs in
 -- #eval solve test3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

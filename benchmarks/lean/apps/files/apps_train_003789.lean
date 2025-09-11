@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dating_range (age : Int) : String := sorry
 
 theorem dating_range_child (age : Int) (h : 1 ≤ age ∧ age ≤ 14) : 
@@ -10,7 +16,9 @@ theorem dating_range_child (age : Int) (h : 1 ≤ age ∧ age ≤ 14) :
   min_age = (age * 9/10) ∧ 
   max_age = (age * 11/10) ∧
   min_age ≤ age ∧ age ≤ max_age := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dating_range_adult (age : Int) (h : 15 ≤ age ∧ age ≤ 100) :
   let result := dating_range age
   let min_age := (result.splitOn "-").head!.toInt!
@@ -45,6 +53,7 @@ info: '24-56'
 -/
 -- #guard_msgs in
 -- #eval dating_range 35
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

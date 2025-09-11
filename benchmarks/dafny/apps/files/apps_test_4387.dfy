@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidRating(R: int) {
     0 <= R <= 4208
 }
@@ -7,6 +8,7 @@ function ContestForRating(R: int): string {
     else if R < 2800 then "ARC\n" 
     else "AGC\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

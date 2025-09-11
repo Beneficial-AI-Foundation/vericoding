@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def MOD := 10^9 + 7
 
 def process_queries (s : String) (queries : List (Char × String)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringToNat (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem process_queries_mod (s : String) (queries : List (Char × String)) :
   0 ≤ process_queries s queries ∧ process_queries s queries < MOD :=
   sorry
@@ -40,6 +47,7 @@ info: 777
 -/
 -- #guard_msgs in
 -- #eval process_queries "222" [["2", "0"], ["0", "7"]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

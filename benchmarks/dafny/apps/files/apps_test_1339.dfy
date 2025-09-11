@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, segments: seq<(int, int)>)
 {
     n >= 1 && |segments| == n && 
@@ -33,6 +34,7 @@ function MaxRight(segments: seq<(int, int)>): int
     else if segments[0].1 >= MaxRight(segments[1..]) then segments[0].1
     else MaxRight(segments[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

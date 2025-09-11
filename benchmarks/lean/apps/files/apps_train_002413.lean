@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def num_pairs_divisible_by_60 (times: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem num_pairs_non_negative (times: List Nat) : 
   num_pairs_divisible_by_60 times ≥ 0 :=
 sorry
@@ -44,6 +52,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval num_pairs_divisible_by_60 [20, 40]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

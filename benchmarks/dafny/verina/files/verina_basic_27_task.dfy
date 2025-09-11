@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Option<T> = None | Some(value: T)
 
 function CountChar(chars: seq<char>, c: char): nat
@@ -35,6 +36,7 @@ predicate SecondOccurrenceExists(chars: seq<char>, c: char)
 {
     exists i, j :: 0 <= i < j < |chars| && chars[i] == c && chars[j] == c
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

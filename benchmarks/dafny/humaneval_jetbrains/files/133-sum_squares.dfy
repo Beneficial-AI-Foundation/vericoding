@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(s: seq<int>) : int
     {
         if |s| == 0 then 0 else s[0] + sum(s[1..])
@@ -11,6 +12,7 @@ function square_seq(lst: seq<real>) : (sq : seq<int>)
     {
         seq(|lst|, i requires 0 <= i < |lst| => ceil(lst[i]) * ceil(lst[i]))
     }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

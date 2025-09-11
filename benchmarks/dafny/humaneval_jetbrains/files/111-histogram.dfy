@@ -1,4 +1,6 @@
+// <vc-preamble>
 type BiggestMap = map<int, int>
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

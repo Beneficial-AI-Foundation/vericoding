@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 use vstd::multiset::Multiset;
 
@@ -24,6 +25,7 @@ fn swap<T>(a: &mut Vec<T>, i: usize, j: usize)
 {
     assume(false);
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

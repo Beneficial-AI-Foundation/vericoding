@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def last_digit (n1 : Nat) (n2 : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem last_digit_range (n1 n2 : Nat) : 
   last_digit n1 n2 ≤ 9 
   ∧ last_digit n1 n2 ≥ 0 :=
@@ -38,6 +46,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval last_digit 9 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

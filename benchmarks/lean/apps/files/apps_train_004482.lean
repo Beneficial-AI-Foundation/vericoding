@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def how_many_bees : List (List Char) → Nat :=
   sorry
 
 -- Empty hive contains no bees
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_hive_zero :
   how_many_bees [] = 0 ∧ 
   how_many_bees [[]] = 0 :=
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval how_many_bees None
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

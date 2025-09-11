@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
   |input| > 0 &&
@@ -60,6 +61,7 @@ function ModPow(base: int, exp: int, mod: int): int
   else
     (base * ModPow(base, exp - 1, mod)) % mod
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

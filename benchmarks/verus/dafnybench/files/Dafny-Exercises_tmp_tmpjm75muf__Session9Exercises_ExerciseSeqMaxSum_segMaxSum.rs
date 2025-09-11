@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -35,6 +36,7 @@ spec fn sum_max_to_right2(v: Seq<int>, j: int, i: int, s: int) -> bool
 {
     forall|l: int, ss: int| j <= l <= i && ss == i + 1 ==> sum2(v, l, ss) <= s
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def compute_expected_score (n : Nat) (probs : List Float) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem score_is_nonnegative {n : Nat} {probs : List Float} 
   (h1 : ∀ p ∈ probs, 0 ≤ p ∧ p ≤ 1)
   (h2 : probs.length = n) :
@@ -28,6 +36,7 @@ theorem length_matches_probability_list {n : Nat} {probs : List Float}
   (h3 : n > 0) :
   ∃ score : Float, compute_expected_score n probs = score :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

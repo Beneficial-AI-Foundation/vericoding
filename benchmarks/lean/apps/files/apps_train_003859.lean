@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def containsThree (n : Int) : Bool := 
   sorry
 
 def magicSum (nums : List Int) : Int := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumList (nums : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem magic_sum_filtering_contributing (nums : List Int) :
   let contributing := nums.filter (fun x => x % 2 = 1 ∧ containsThree x)
   contributing ≠ [] → magicSum nums = magicSum contributing := by
@@ -58,6 +65,7 @@ info: 16
 -/
 -- #guard_msgs in
 -- #eval magic_sum [3, 12, 5, 8, 30, 13]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

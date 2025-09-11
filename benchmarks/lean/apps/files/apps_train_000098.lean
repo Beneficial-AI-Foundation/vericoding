@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def clean_binary_string (n : Nat) (s : String) : String := sorry
 
 def string_of_zeros (n : Nat) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def string_of_ones (n : Nat) : String := sorry
 
 theorem clean_preserves_all_zeros (n : Nat) : 
   clean_binary_string n (string_of_zeros n) = string_of_zeros n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem clean_preserves_all_ones (n : Nat) :
   clean_binary_string n (string_of_ones n) = string_of_ones n := sorry
 
@@ -42,6 +49,7 @@ info: '01'
 -/
 -- #guard_msgs in
 -- #eval clean_binary_string 8 "11001101"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

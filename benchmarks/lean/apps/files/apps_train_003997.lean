@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def every (lst: List α) (n: Nat := 1) (start: Nat := 0) : List α := sorry
 
 theorem every_is_subset {α : Type} (lst : List α) (n: Nat) (start: Nat) 
   (h: start < lst.length) :
   ∀ x ∈ every lst n start, x ∈ lst := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem every_indices_pattern {α : Type} (lst : List α) (n: Nat) (start: Nat)
   (h: start < lst.length) (x : α) (i : Nat) (hi: i < lst.length) :
   x ∈ every lst n start → 
@@ -37,6 +45,7 @@ info: [1, 2, 3]
 -/
 -- #guard_msgs in
 -- #eval every [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

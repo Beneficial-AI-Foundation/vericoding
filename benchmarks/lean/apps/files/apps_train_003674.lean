@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def shape_area (n : Int) : Int := sorry
 
 theorem shape_area_positive {n : Int} (h : n > 0) : shape_area n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shape_area_formula {n : Int} : shape_area n = n^2 + (n-1)^2 := sorry
 
 theorem shape_area_strictly_increasing {n : Int} (h : n > 1) : 
@@ -32,6 +40,7 @@ info: 13
 -/
 -- #guard_msgs in
 -- #eval shape_area 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

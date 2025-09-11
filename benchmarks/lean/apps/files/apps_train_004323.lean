@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_options (c : Char) : List Char := sorry
 
 def solve (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_options_a : 
   get_options 'a' = ['b'] := sorry
 
@@ -55,6 +63,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval solve "abzy"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_str (a b : String) : String := sorry
 
 def isValidInt (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_str_matches_actual_sum (a b : Int) : 
   sum_str (toString a) (toString b) = toString (a + b) := sorry
 
@@ -34,6 +42,7 @@ info: '9'
 -/
 -- #guard_msgs in
 -- #eval sum_str "9" ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function seq_min(s: seq<int>): int
     requires |s| > 0
     ensures seq_min(s) in s
@@ -13,6 +14,7 @@ predicate ValidInput(arr: seq<int>)
     |arr| >= 2 && 
     exists i, j :: 0 <= i < j < |arr| && arr[i] == arr[j] == seq_min(arr)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

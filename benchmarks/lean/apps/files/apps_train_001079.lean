@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def findSubarraySum (arr : List Int) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_array_has_subarray (arr : List Int) :
   arr = [0] → findSubarraySum arr ≥ 1 :=
   sorry
@@ -35,6 +43,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval findSubarraySum [1, -1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

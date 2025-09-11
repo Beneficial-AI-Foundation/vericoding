@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CountOnesInBinary(n: int): int
     requires n >= 1
     ensures CountOnesInBinary(n) >= 1
@@ -15,6 +16,7 @@ predicate ValidInput(x: int) {
 predicate ValidOutput(x: int, result: int) {
     ValidInput(x) && result == CountOnesInBinary(x)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mirror (s : String) (alphabet : String := "abcdefghijklmnopqrstuvwxyz") : String := sorry
 
 theorem double_mirror_returns_original (s : String) :
   mirror (mirror s) = s.toLower := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mirror_identity_with_empty_chars (s : String) :
   mirror s "" = s.toLower := sorry
 
@@ -35,6 +43,7 @@ info: 'this is a secret'
 -/
 -- #guard_msgs in
 -- #eval mirror "gsrh rh z hvxivg"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

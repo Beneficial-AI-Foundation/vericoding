@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def generate_perfect_array (n : Nat) : List Nat := sorry
 
 def is_perfect_array (arr : List Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem generate_perfect_array_length (n : Nat) (h : n > 0) :
   List.length (generate_perfect_array n) = n := sorry
 
@@ -29,6 +37,7 @@ info: [4, 4, 4, 4]
 -/
 -- #guard_msgs in
 -- #eval generate_perfect_array 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -13,6 +14,7 @@ spec fn R(n: nat) -> nat
         (R((n-1) as nat) + n) as nat
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

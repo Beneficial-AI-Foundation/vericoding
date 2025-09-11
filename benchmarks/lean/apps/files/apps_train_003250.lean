@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def diamond (n : Int) : Option String := sorry
 
 def String.replicate (n : Int) (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_inputs_return_none
   (n : Int)
   (h : n ≤ 0 ∨ n % 2 = 0) :
@@ -47,6 +55,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval diamond -1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

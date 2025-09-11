@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_reorder_doubled (lst : List Int) : Bool := sorry
 
 def count_occurrences (n : Int) (lst : List Int) : Nat :=
   lst.foldl (fun acc x => if x = n then acc + 1 else acc) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reorder_doubled_count_property (lst : List Int) :
   can_reorder_doubled lst = true → lst ≠ [] →
     ∀ n ∈ lst, n ≠ 0 →
@@ -37,6 +45,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval can_reorder_doubled [1, 2, 4, 16, 8, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

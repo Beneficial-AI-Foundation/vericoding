@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def vowel_back (s : String) : String := sorry
 
 theorem vowel_back_same_length (s : String) 
   (h : s.all (fun c => 'a' ≤ c ∧ c ≤ 'z')) 
   (h2 : s.length > 0) : 
   (vowel_back s).length = s.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem vowel_back_lowercase_letters (s : String)
   (h : s.all (fun c => 'a' ≤ c ∧ c ≤ 'z'))
   (h2 : s.length > 0) :
@@ -42,6 +50,7 @@ info: 'agvvyuatabtqaaa'
 -/
 -- #guard_msgs in
 -- #eval vowel_back "exampletesthere"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

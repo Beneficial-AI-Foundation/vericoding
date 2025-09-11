@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isPeek(v:array<int>,i:int)
  reads v
  requires 0<=i<v.Length
@@ -12,6 +13,7 @@ predicate isPeek(v:array<int>,i:int)
   else if isPeek(v,i-1) then v[i-1]+peekSum(v,i-1)
   else peekSum(v,i-1)
  }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

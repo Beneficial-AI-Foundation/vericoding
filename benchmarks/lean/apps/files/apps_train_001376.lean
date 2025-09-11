@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def abs (n : Int) : Int :=
   if n ≥ 0 then n else -n
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_puppy_path (N M : Nat) (coords : List (Nat × Nat)) (path : List Char) : List Int := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_length_matches_path_length {N M : Nat} {coords : List (Nat × Nat)} {path : List Char} :
   List.length (solve_puppy_path N M coords path) = List.length path := by
   sorry
@@ -32,6 +39,7 @@ info: [1, 2]
 -/
 -- #guard_msgs in
 -- #eval solve_puppy_path 1 2 [(1, 1)] "RD"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

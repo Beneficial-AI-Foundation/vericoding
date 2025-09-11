@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def justifyText (words : List String) (maxWidth : Nat) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem justify_text_width_correct
   (words : List String)
   (maxWidth : Nat)
@@ -31,6 +39,7 @@ theorem justify_text_empty_input
   (h2 : maxWidth ≤ 100)
   : justifyText [] maxWidth = [] :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

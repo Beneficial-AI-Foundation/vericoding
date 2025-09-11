@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sort_by_height (a : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_by_height_length {a : List Int} :
   List.length (sort_by_height a) = List.length a :=
   sorry
@@ -50,6 +58,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval sort_by_height [4, 2, 9, 11, 2, 16]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

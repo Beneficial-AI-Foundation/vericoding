@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sort_array (xs : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_array_maintains_length (xs : List Int) :
   (sort_array xs).length = xs.length :=
 sorry
@@ -37,6 +45,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval sort_array [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

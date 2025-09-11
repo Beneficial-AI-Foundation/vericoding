@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def vampire_number (n: Nat): Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem vampire_number_gives_positive {n: Nat} (h: 1 ≤ n ∧ n ≤ 155): 
   vampire_number n > 0 := 
   sorry
@@ -50,6 +58,7 @@ info: 939658
 -/
 -- #guard_msgs in
 -- #eval vampire_number 155
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

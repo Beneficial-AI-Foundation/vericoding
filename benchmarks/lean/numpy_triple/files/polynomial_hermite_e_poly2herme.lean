@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def poly2herme {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem poly2herme_spec {n : Nat} (pol : Vector Float n) :
     ⦃⌜True⌝⦄
     poly2herme pol
@@ -42,3 +49,4 @@ theorem poly2herme_spec {n : Nat} (pol : Vector Float n) :
                     intermediate_results.length = n →
                     ∃ construction_valid : Bool, construction_valid = true)⌝⦄ := by
   sorry
+-- </vc-theorems>

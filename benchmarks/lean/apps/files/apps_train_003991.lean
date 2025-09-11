@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def process_data : List (List Int) → Int := sorry
 
 theorem process_data_permutation_invariant (data : List (List Int)) 
   (h : ∀ l ∈ data, l.length = 2 ∧ l[0]! ≠ l[1]!) :
   process_data data = process_data (data.reverse) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem process_data_positive_output 
   (data : List (List Int))
   (h1 : ∀ l ∈ data, l.length = 2)
@@ -33,6 +41,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval process_data [[5, 4], [6, 4]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fire_and_fury (tweet : String) : String := sorry
 
 def containsSubstring (s : String) (sub : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string_fake_tweet :
   fire_and_fury "" = "Fake tweet." := sorry
 
@@ -52,6 +60,7 @@ info: 'Fake tweet.'
 -/
 -- #guard_msgs in
 -- #eval fire_and_fury "FYRYFIRUFIRUFURE"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def gcd (a b : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_evil_sorcerer (n : Nat) (p : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_evil_sorcerer_properties {n : Nat} {p : List Nat}
   (n_pos : n > 0) (p_pos : ∀ x ∈ p, x > 0) :
   let result := solve_evil_sorcerer n p
@@ -43,6 +50,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_evil_sorcerer 1 [20201220]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

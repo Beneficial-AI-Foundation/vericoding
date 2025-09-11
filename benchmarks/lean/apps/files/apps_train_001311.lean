@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_remove_for_kgood (s : String) (k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_remove_nonnegative (s : String) (k : Nat) :
   min_remove_for_kgood s k ≥ 0 :=
 sorry
@@ -26,6 +34,7 @@ sorry
 theorem min_remove_empty_string :
   ∀ k, min_remove_for_kgood "" k = 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, k: int, emotes: seq<int>)
 {
     n >= 2 && k >= 1 && m >= 1 && |emotes| == n &&
@@ -45,6 +46,7 @@ function FilterOut(s: seq<int>, val: int, count: int): seq<int>
     else if s[0] == val then FilterOut(s[1..], val, count - 1)
     else [s[0]] + FilterOut(s[1..], val, count)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

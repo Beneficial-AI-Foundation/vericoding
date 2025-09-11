@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Suit := Char
 def Card := String
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def Hand := List Card
 
 def who_wins_beggar_thy_neighbour (hands : List Hand) (special_cards : String := "JQKA") : Option Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem game_always_terminates
   (hands : List Hand) 
   (h1 : hands.length ≥ 2)
@@ -54,6 +61,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval who_wins_beggar_thy_neighbour ["KC", "2H"] ["AC", "3H"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

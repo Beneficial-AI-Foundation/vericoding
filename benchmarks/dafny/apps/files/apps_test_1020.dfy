@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(w: int, h: int, k: int)
 {
     w >= 3 && h >= 3 && w <= 100 && h <= 100 && 
@@ -20,6 +21,7 @@ function computeSum(w: int, h: int, k: int): int
     else 
         perimeter(w, h) + computeSum(w - 4, h - 4, k - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

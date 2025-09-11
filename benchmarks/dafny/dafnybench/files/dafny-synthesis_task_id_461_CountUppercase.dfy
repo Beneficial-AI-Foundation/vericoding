@@ -1,7 +1,9 @@
+// <vc-preamble>
 predicate IsUpperCase(c: char)
 {
     65 <= c as int <= 90
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

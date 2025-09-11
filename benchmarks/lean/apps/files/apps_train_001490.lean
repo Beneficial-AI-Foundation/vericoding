@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_QC_parity (n : Nat) (k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_QC_parity_binary (n k : Nat) (h : k ≤ n) :
   solve_QC_parity n k = 0 ∨ solve_QC_parity n k = 1 :=
   sorry
@@ -33,6 +41,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_QC_parity 6 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

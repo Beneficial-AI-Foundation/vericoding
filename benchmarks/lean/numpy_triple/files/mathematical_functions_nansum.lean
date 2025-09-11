@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nansum {n : Nat} (a : Vector Float n) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nansum_spec {n : Nat} (a : Vector Float n) :
     ⦃⌜True⌝⦄
     nansum a
@@ -40,3 +47,4 @@ theorem nansum_spec {n : Nat} (a : Vector Float n) :
       (n = 0 → result = 0)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

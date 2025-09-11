@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(s: seq<int>): int
 {
     if |s| == 0 then 0 else s[0] + sum(s[1..])
@@ -16,6 +17,7 @@ predicate ValidOutput(a: seq<int>, finalSchedule: seq<int>, additionalWalks: int
     forall i :: 0 <= i < |a| - 1 ==> finalSchedule[i] + finalSchedule[i + 1] >= k &&
     additionalWalks == sum(finalSchedule) - sum(a)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

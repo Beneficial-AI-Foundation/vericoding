@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isPrime (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_potatoes (x y : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_potatoes_returns_prime_sum
   (x y : Nat) (h1 : x > 0) (h2 : y > 0) (h3 : x ≤ 1000) (h4 : y ≤ 1000) :
   let result := find_min_potatoes x y
@@ -41,6 +48,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_min_potatoes 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

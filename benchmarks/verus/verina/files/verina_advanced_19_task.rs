@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -39,6 +40,7 @@ spec fn normalize_string(s: &str) -> Seq<char> {
         }
     )
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

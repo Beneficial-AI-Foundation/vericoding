@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_candies (r g b : Nat) : Nat := sorry
 
 theorem solve_candies_non_negative (r g b : Nat) : 
   solve_candies r g b ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_candies_bounded_by_pairs (r g b : Nat) :
   solve_candies r g b ≤ r + g ∧ 
   solve_candies r g b ≤ r + b ∧
@@ -40,6 +48,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval solve_candies 7 4 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def String.count (s : String) (c : Char) : Nat := sorry
 
 def remove (text : String) (what : Char → Nat) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem remove_length_le_input (text : String) (what : Char → Nat) :
   (remove text what).length ≤ text.length := sorry
 
@@ -38,6 +46,7 @@ info: 'pples d bnns'
 -/
 -- #guard_msgs in
 -- #eval remove "apples and bananas" {"a": 50, "n": 1}
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

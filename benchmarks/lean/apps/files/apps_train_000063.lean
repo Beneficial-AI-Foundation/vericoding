@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_cars_meeting (n l : Nat) (flags : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem meeting_time_positive (n l : Nat) (flags : List Nat) 
   (h1 : n > 0) (h2 : l > n) (h3 : flags.length = n) :
   solve_cars_meeting n l flags > 0 :=
@@ -35,6 +43,7 @@ theorem numerical_stability (n l : Nat) (flags flags_perturbed : List Nat)
   (h5 : ∀ (i : Fin n), flags[i.val] - flags_perturbed[i.val] ≤ 1) :
   solve_cars_meeting n l flags - solve_cars_meeting n l flags_perturbed ≤ 1 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

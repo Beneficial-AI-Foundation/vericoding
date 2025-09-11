@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_dishes (n : Nat) (a : List Nat) (b : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_maximum (l : List Nat) : Nat :=
   l.foldl Nat.max 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_dishes_leq_max_cook_time (n : Nat) (a : List Nat) (b : List Nat) 
     (h1 : n ≥ 1) (h2 : a.length = n) (h3 : b.length = n) (h4 : ∀ x ∈ a, x ≥ 1) (h5 : ∀ x ∈ b, x ≥ 1) :
     solve_dishes n a b ≤ list_maximum a :=
@@ -47,6 +54,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_dishes 2 [1, 2] [10, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

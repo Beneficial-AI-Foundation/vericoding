@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def recaman (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem recaman_nonnegative (n : Nat) :
   recaman n ≥ 0 :=
   sorry
@@ -39,6 +47,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval recaman 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

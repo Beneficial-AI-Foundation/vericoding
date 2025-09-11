@@ -1,3 +1,4 @@
+// <vc-preamble>
 function median_string(s: string, t: string, k: int): string
     requires k >= 1
     requires |s| == k && |t| == k
@@ -31,6 +32,7 @@ function pow26(n: nat): nat
 {
     if n == 0 then 1 else 26 * pow26(n - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function IsPrime(n: nat) : bool
 {
   n > 1 &&
@@ -11,6 +12,7 @@ function max(a: int, b: int): int
 {
   if a >= b then a else b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

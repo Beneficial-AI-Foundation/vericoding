@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def bin2gray (bits : List Nat) : List Nat := sorry
 def gray2bin (bits : List Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isBinary (n : Nat) : Bool :=
   n == 0 || n == 1
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gray_code_roundtrip (bits : List Nat) (h : ∀ x ∈ bits, isBinary x = true) : 
   gray2bin (bin2gray bits) = bits := sorry
 
@@ -36,6 +43,7 @@ info: test3_input
 -/
 -- #guard_msgs in
 -- #eval gray2bin bin2gray(test3_input)
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

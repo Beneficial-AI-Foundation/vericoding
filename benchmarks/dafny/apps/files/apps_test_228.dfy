@@ -1,3 +1,4 @@
+// <vc-preamble>
 function minimum(s: seq<int>): int
     requires |s| > 0
     ensures forall i :: 0 <= i < |s| ==> minimum(s) <= s[i]
@@ -20,6 +21,7 @@ predicate ValidInput(n: int, piles: seq<int>)
 {
     n >= 2 && n % 2 == 0 && |piles| == n && forall i :: 0 <= i < |piles| ==> piles[i] >= 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

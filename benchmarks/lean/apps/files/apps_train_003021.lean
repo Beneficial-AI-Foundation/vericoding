@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def min_and_max (l d x : Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_of_digits (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_and_max_properties {l d x : Nat}
   (h1: l ≤ d) 
   (h2: l > 0)
@@ -47,6 +54,7 @@ info: [104, 500]
 -/
 -- #guard_msgs in
 -- #eval min_and_max 99 501 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

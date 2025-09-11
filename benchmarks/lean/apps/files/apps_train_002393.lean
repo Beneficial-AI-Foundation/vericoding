@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def min_moves (nums : List Int) : Int := sorry
 
 def list_minimum (nums : List Int) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_maximum (nums : List Int) : Int := sorry
 def list_sum (nums : List Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_moves_non_negative (nums : List Int) (h : nums ≠ []) :
   min_moves nums ≥ 0 := sorry
 
@@ -39,6 +46,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval min_moves [1, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

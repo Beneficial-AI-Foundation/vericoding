@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_subsequence_removal (n : Nat) (arr : List Nat) : Nat := sorry
 
 def is_increasing (lst : List Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_bounds (n : Nat) (arr : List Nat) : 
   arr.length = n →
   let result := solve_subsequence_removal n arr
@@ -38,6 +46,7 @@ info: 14
 -/
 -- #guard_msgs in
 -- #eval solve_subsequence_removal 5 [1, 2, 3, 4, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

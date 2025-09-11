@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
   4 <= n <= 1000 && 1 <= k <= 4 && k < n
@@ -36,6 +37,7 @@ function sum_binomial_derangement(n: int, k: int, i: int): int
   if i >= n - k then 0
   else binomial(n, i) * derangement(n - i) + sum_binomial_derangement(n, k, i + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

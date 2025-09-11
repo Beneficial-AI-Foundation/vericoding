@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_tweet_clicks (n : Nat) (clicks : List String) : List Nat := sorry
 
 def is_valid_click_command (n : Nat) (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_tweet_count (prev : Nat) (cmd : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_length_matches_input {n : Nat} {clicks : List String} 
   (h1 : n > 0) (h2 : n ≤ 100) (h3 : clicks.length > 0) :
   (solve_tweet_clicks n clicks).length = clicks.length := sorry
@@ -38,6 +45,7 @@ info: [1, 0, 1]
 -/
 -- #guard_msgs in
 -- #eval solve_tweet_clicks 4 ["CLICK 1", "CLICK 1", "CLICK 2"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

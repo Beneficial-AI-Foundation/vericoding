@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isOdd (n : Int) : Bool :=
   n % 2 = 1
 
@@ -5,16 +6,22 @@ def isOdd (n : Int) : Bool :=
 
 def isEven (n : Int) : Bool :=
   n % 2 = 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def threeConsecutiveOdds (arr : List Int) : Bool := sorry
 
 theorem threeConsecutiveOdds_returns_bool (arr : List Int) :
   threeConsecutiveOdds arr = true ∨ threeConsecutiveOdds arr = false :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem threeConsecutiveOdds_true_implies_consecutive (arr : List Int) :
   threeConsecutiveOdds arr = true →
   ∃ i, i + 2 < arr.length ∧
@@ -54,6 +61,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval three_consecutive_odds [1, 3, 5, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

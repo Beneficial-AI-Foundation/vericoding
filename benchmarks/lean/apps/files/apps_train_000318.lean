@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lengthOfLongestSubstring (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_bounds (s : String) :
   0 ≤ lengthOfLongestSubstring s ∧ lengthOfLongestSubstring s ≤ s.length := by
   sorry
@@ -44,6 +52,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval lengthOfLongestSubstring "pwwkew"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_best_gift_string (n m : Nat) (strings : List String) : String := sorry
 
 /- Theorems -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem path_length_property {n m : Nat} {strings : List String} 
   (h : find_best_gift_string n m strings ≠ "") : 
   String.length (find_best_gift_string n m strings) = n + m - 1 := sorry 
@@ -31,6 +39,7 @@ info: 'pvcbihjz'
 -/
 -- #guard_msgs in
 -- #eval find_best_gift_string 5 4 ["pyqs", "vcot", "qbiu", "lihj", "uvmz"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

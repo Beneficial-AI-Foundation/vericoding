@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_valid_subsequences (n m : Nat) (a b : List Nat) : Nat := sorry
 
 theorem count_valid_subsequences_nonnegative 
   (n m : Nat) (a b : List Nat) : 
   count_valid_subsequences n m a b ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_valid_subsequences_modulo_bound
   (n m : Nat) (a b : List Nat) :
   count_valid_subsequences n m a b < (10^9 + 7) := sorry
@@ -26,6 +34,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval count_valid_subsequences 4 2 [7, 7, 7, 7] [3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

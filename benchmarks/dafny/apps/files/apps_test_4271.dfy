@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, A: seq<int>, B: seq<int>, C: seq<int>)
 {
     N >= 1 &&
@@ -31,6 +32,7 @@ function SumSatisfactionUpTo(A: seq<int>, B: seq<int>, C: seq<int>, k: int): int
         var bonusContrib := if k > 1 && A[k-1] == A[k-2] + 1 then C[A[k-1] - 2] else 0;
         prevSum + baseContrib + bonusContrib
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

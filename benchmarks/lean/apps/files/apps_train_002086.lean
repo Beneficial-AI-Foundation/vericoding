@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_requests_to_add (n : Nat) (arr : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_no_changes (n : Nat) (h : n > 0) :
   min_requests_to_add 1 [n] = 0 :=
 sorry
@@ -48,6 +56,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_requests_to_add 7 [10, 20, 40, 50, 70, 90, 30]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

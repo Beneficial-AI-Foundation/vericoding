@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -39,6 +40,7 @@ pub struct TimeDelta64 {
 
     pub unit: TimeUnit,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

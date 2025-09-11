@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def strong_num (n : Nat) : String := sorry
 
 def factorial (n : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumDigitFactorials (n : Nat) : Nat := sorry
 
 def digitsOfNat (n : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem strong_num_outputs_valid_string (n : Nat) :
   (strong_num n = "STRONG!!!!" ∨ strong_num n = "Not Strong !!") := sorry
 
@@ -41,6 +48,7 @@ info: 'STRONG!!!!'
 -/
 -- #guard_msgs in
 -- #eval strong_num 40585
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

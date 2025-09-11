@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_social_distancing (n : Nat) (arr : List Nat) : String := sorry
 
 theorem check_social_distancing_returns_valid_result (n : Nat) (arr : List Nat)
@@ -8,7 +14,9 @@ theorem check_social_distancing_returns_valid_result (n : Nat) (arr : List Nat)
   (h3 : ∀ x ∈ arr, x = 0 ∨ x = 1) :
   check_social_distancing n arr = "YES" ∨ 
   check_social_distancing n arr = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_social_distancing_minimum_distance (n : Nat) (arr : List Nat)
   (h1 : arr.length = n)
   (h2 : ∀ x ∈ arr, x = 0 ∨ x = 1) :
@@ -45,6 +53,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval check_social_distancing 11 [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

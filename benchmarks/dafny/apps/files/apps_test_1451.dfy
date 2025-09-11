@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, numbers: seq<int>)
 {
     n >= 1 && k >= 0 && |numbers| == n && forall i :: 0 <= i < |numbers| ==> numbers[i] > 0
@@ -28,6 +29,7 @@ function countValidNumbers(numbers: seq<int>, k: int, upTo: int): int
         var prevCount := countValidNumbers(numbers, k, upTo - 1);
         if countLuckyDigits(numbers[upTo - 1]) <= k then prevCount + 1 else prevCount
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,7 +1,9 @@
+// <vc-preamble>
 ghost predicate sorted(a:seq<int>)
 {
     forall i | 0 < i < |a| :: a[i-1] <= a[i]     
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

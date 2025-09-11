@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_bed_arrangement (n : Nat) (grid : List (List Nat)) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_grid_safe {n : Nat} (h : 2 ≤ n) (h2 : n ≤ 10) :
   let grid := List.replicate n (List.replicate n 0)
   check_bed_arrangement n grid = "SAFE" :=
@@ -52,6 +60,7 @@ info: 'SAFE'
 -/
 -- #guard_msgs in
 -- #eval check_bed_arrangement 2 [[1, 0], [0, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

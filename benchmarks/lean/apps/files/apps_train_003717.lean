@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def countCarries (input : String) : String := sorry
 
 def carry_count (a b : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def split (s : String) : List String := String.splitOn s "\n"
 
 theorem single_line_carries_correct 
@@ -17,7 +22,9 @@ theorem single_line_carries_correct
     if carry = 0 then "No carry operation"
     else s!"{carry} carry operations"
   result = expected := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem multiple_lines_carries_length
   {n : Nat}
   (pairs : List (Nat × Nat))
@@ -52,6 +59,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval count_carries "1 9\n123456789 111111101"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

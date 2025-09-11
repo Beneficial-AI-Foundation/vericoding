@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mask_pii (s : String) : String := sorry 
 
 theorem phone_masking_10_digits
@@ -9,7 +15,9 @@ theorem phone_masking_10_digits
   (h₁ : ∀ c ∈ phone.data, c.isDigit) :
   let last4 := phone.drop (phone.length - 4)
   mask_pii phone = s!"***-***-{last4}" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem phone_masking_longer
   (phone : String) 
   (h : phone.length > 10)
@@ -46,6 +54,7 @@ info: '+**-***-***-5678'
 -/
 -- #guard_msgs in
 -- #eval mask_pii "86-(10)12345678"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

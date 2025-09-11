@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_cows (n: Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_cows_positive_integers {n: Int} (h: 1 ≤ n ∧ n ≤ 20) : 
   count_cows n > 0 :=
   sorry
@@ -33,6 +41,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval count_cows 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

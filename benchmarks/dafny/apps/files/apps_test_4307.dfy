@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsOdd(n: int) {
     n % 2 == 1
 }
@@ -21,6 +22,7 @@ function CountOddWithEightDivisors(N: nat): nat {
 predicate ValidInput(N: int) {
     1 <= N <= 200
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

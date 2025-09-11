@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100
@@ -15,6 +16,7 @@ function MinOperationsNeeded(a: int, b: int, c: int): int
     var sum_of_other_two := a + b + c - max_val;
     max(0, max_val - sum_of_other_two + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def xp_to_target_lvl (current_xp : Int) (target_lvl : Int) : String ⊕ Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem xp_to_target_lvl_invalid_input
   (current_xp : Int)
   (target_lvl : Int)
@@ -51,6 +59,7 @@ info: 'You have already reached level 4.'
 -/
 -- #guard_msgs in
 -- #eval xp_to_target_lvl 2017 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

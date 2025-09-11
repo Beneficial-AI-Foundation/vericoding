@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -18,13 +19,19 @@ def digit_sum (n : Int) : Int :=
     let tail := ds'.foldl (· + ·) 0
     if n < 0 then Int.ofNat tail - Int.ofNat d
     else Int.ofNat (d + tail)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (nums: List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: List Int → List Int)
@@ -51,6 +58,7 @@ theorem correctness
 (nums: List Int)
 : problem_spec implementation nums := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation [1, 11, -1, -11, -12] = [-1, -11, 1, -12, 11]
 -- #test implementation [] = []

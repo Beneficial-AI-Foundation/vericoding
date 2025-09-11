@@ -1,3 +1,4 @@
+// <vc-preamble>
 function min(a: seq<int>): int
     requires |a| > 0
     ensures min(a) in a
@@ -7,6 +8,7 @@ function min(a: seq<int>): int
     else if a[0] <= min(a[1..]) then a[0]
     else min(a[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

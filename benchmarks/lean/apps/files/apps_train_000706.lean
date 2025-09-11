@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_min_operations (n k m : Nat) (arr : List Nat) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_operations_identical_elements 
   (n k m : Nat)
   (arr : List Nat)
@@ -45,6 +53,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_min_operations 5 3 3 [7, 7, 7, 8, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

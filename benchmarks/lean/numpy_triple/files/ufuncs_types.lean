@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -54,13 +55,19 @@ def formatTypeSignature (sig : TypeSignature) : String :=
   let input_chars := sig.input_types.map typeCodeToChar
   let input_str := String.mk input_chars
   s!"{input_str}->{typeCodeToChar sig.output_type}"
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def types {n : Nat} (ufunc_signatures : Vector TypeSignature n) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem types_spec {n : Nat} (ufunc_signatures : Vector TypeSignature n) :
     ⦃⌜True⌝⦄
     types ufunc_signatures
@@ -68,3 +75,4 @@ theorem types_spec {n : Nat} (ufunc_signatures : Vector TypeSignature n) :
       result.get i = formatTypeSignature (ufunc_signatures.get i) ∧
       (ufunc_signatures.get i).input_types.length > 0⌝⦄ := by
   sorry
+-- </vc-theorems>

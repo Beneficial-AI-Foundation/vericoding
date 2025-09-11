@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sumAverage (lists : List (List Int)) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sumAverage_is_floor_of_means (lists : List (List Int)) 
   (h : ∀ l ∈ lists, l.length > 0) :
   ∃ mean, sumAverage lists = mean := -- simplified since we can't easily represent floor of means
@@ -41,6 +49,7 @@ info: -6
 -/
 -- #guard_msgs in
 -- #eval sum_average [[-4, 3, -8, -2], [2, 9, 1, -5], [-7, -2, -6, -4]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

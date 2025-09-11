@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_nth_number (n : Nat) : Nat :=
   sorry
 
 /- The function always returns positive integers -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_nth_number_positive (n : Nat) (h : n > 0) : 
   find_nth_number n > 0 :=
 sorry
@@ -43,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_nth_number 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

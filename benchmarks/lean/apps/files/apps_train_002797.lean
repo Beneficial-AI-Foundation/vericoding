@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def has_two_cube_sums (n : Nat) : Bool :=
 sorry
 
 -- Every positive number returns a boolean result
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem has_two_cube_sums_returns_bool (n : Nat) :
   n > 0 → has_two_cube_sums n = true ∨ has_two_cube_sums n = false :=
 sorry
@@ -39,6 +47,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval has_two_cube_sums 4104
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

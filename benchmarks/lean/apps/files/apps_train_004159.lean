@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def change_case (s : String) (target : String) : Option String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mixed_formats_returns_none (s : String) :
   (s.contains '_' && s.contains '-') ∨ 
   (s.contains '_' && s ≠ s.toLower) ∨
@@ -53,6 +61,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval change_case "" "camel"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

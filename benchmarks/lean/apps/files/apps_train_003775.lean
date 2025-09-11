@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def match_arrays (arr1 : List α) (arr2 : List α) [DecidableEq α] : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem match_arrays_range {α : Type} [DecidableEq α] (arr1 arr2 : List α) :
   0 ≤ match_arrays arr1 arr2 ∧ match_arrays arr1 arr2 ≤ arr1.length :=
 sorry
@@ -45,6 +53,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval match_arrays [True, 3, 9, 11, 15] [True, 3, 11]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_expected_inversions (n : Nat) (k : Nat) (perm : List Nat) (moves : List (List Nat)) : Float := sorry
 
 def count_inversions (perm : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem expected_inversions_properties
   (n : Nat) (h_n : n ≥ 2) (h_n2 : n ≤ 10)
   (moves_raw : List Nat) (h_moves : moves_raw.length ≤ 5)  
@@ -29,6 +37,7 @@ theorem identity_properties
   (h_moves_valid : ∀ m ∈ moves, m.length = 2 ∧ ∀ x ∈ m, x ≥ 1 ∧ x ≤ n) :
   let result := calculate_expected_inversions n moves_raw.length perm moves
   moves = [] → result.abs < 0.000001 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

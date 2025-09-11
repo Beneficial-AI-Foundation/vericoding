@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def share_price (invested : Float) (changes : List Float) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def parseFloat? (s : String) : Option Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem share_price_valid_format {invested : Float} {changes : List Float}
   (h1 : invested > 0)
   (h2 : ∀ c ∈ changes, c ≥ -99.99 ∧ c ≤ 1000) :
@@ -37,6 +44,7 @@ info: '1113.64'
 -/
 -- #guard_msgs in
 -- #eval share_price 1000 [0, 2, 3, 6]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

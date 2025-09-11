@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidPermutation(p: seq<int>, n: int)
 {
   |p| == n && n >= 1 &&
@@ -21,6 +22,7 @@ function countRecordsAfterRemoval(p: seq<int>, toRemove: int): int
     if indexOf(p, toRemove) <= i then p[i + 1] else p[i]);
   countRecords(filtered)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

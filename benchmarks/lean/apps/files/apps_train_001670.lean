@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def decodeBits (s : String) : String := sorry
 def decodeMorse (s : String) : String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringRepeat (s : String) (n : Nat) : String :=
   match n with
   | 0 => ""
   | n+1 => s ++ stringRepeat s n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dot_timing {unit_time : Nat} (h : 0 < unit_time) (h2 : unit_time ≤ 10) :
   let dot := stringRepeat "1" unit_time
   decodeMorse (decodeBits dot) = "E" := sorry 
@@ -46,6 +53,7 @@ info: 'E'
 -/
 -- #guard_msgs in
 -- #eval decodeMorse decodeBits("111111")
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

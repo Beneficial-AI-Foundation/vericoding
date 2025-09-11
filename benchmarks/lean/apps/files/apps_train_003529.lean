@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def coveredPawns (pawns : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem covered_pawns_bounds {pawns : List String} :
   0 ≤ coveredPawns pawns ∧ coveredPawns pawns ≤ pawns.length :=
 sorry
@@ -51,6 +59,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval covered_pawns ["a2", "b1", "c2"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

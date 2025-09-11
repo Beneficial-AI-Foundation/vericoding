@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ArrayToBv10(arr: array<bool>): bv10
     reads arr
     requires arr.Length == 10
@@ -32,6 +33,7 @@ function BoolToInt(a: bool): int {
 function XOR(a: bool, b: bool): bool {
     (a || b) && !(a && b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_moves_to_equalize (n : Nat) (candies : List Nat) (oranges : List Nat) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def list_max (l : List Nat) : Nat :=
 
 def list_min (l : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_moves_non_negative (n : Nat) (candies : List Nat) (oranges : List Nat) :
   min_moves_to_equalize n candies oranges ≥ 0 :=
 sorry
@@ -55,6 +62,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval min_moves_to_equalize 3 [10, 12, 8] [7, 5, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

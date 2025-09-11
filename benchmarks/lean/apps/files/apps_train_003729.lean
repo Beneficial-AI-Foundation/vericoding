@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverse (s : String) : String := sorry
 
 def split (s : String) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_preserves_wordcount {s : String} 
   (h : s ≠ "") 
   (h2 : ∀ w ∈ split s, w ≠ "" ∧ w.all (fun c => !c.isWhitespace)) :
@@ -41,6 +49,7 @@ info: 'cares one no'
 -/
 -- #guard_msgs in
 -- #eval reverse "no one cares"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

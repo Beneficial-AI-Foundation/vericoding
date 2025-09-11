@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def absolute {n : Nat} (x : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem absolute_spec {n : Nat} (x : Vector Int n) :
     ⦃⌜True⌝⦄
     absolute x
@@ -18,3 +25,4 @@ theorem absolute_spec {n : Nat} (x : Vector Int n) :
                     (if (x.get i * y) ≥ 0 then (x.get i * y) else -(x.get i * y)) = 
                     result.get i * (if y ≥ 0 then y else -y))⌝⦄ := by
   sorry
+-- </vc-theorems>

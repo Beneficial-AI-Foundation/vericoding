@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_anagram_pairs (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_anagram_pairs_nonneg (s : String) :
   find_anagram_pairs s ≥ 0 := 
   sorry
@@ -14,6 +21,7 @@ theorem find_anagram_pairs_nonneg (s : String) :
 theorem find_anagram_pairs_empty_or_single (s : String) : 
   s.length ≤ 1 → find_anagram_pairs s = 0 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

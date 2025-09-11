@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def geomspace {n : Nat} (start stop : Float) (endpoint : Bool := true) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem geomspace_spec {n : Nat} (start stop : Float) (endpoint : Bool)
     (h_start_nonzero : start ≠ 0) (h_stop_nonzero : stop ≠ 0) (h_n_pos : n > 0) :
     ⦃⌜start ≠ 0 ∧ stop ≠ 0 ∧ n > 0⌝⦄
@@ -28,3 +35,4 @@ theorem geomspace_spec {n : Nat} (start stop : Float) (endpoint : Bool)
           result.get i = start * (ratio ^ i.val.toFloat))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

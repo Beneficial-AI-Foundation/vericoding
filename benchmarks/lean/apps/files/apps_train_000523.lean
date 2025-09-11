@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def total_variation_count (n : Nat) (k : Nat) (sequence : List Int) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem total_variation_nonNegative {n k : Nat} {sequence : List Int} :
   total_variation_count n k sequence ≥ 0 :=
 sorry
@@ -31,6 +39,7 @@ theorem total_variation_symmetry {n k : Nat} {sequence : List Int} :
   sequence.length = n →
   total_variation_count n k sequence = total_variation_count n k sequence.reverse :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

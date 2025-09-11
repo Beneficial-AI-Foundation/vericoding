@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -37,6 +38,7 @@ fn first_even_odd_indices(lst: Seq<int>) -> (r: (usize, usize))
   assume(false);
   (0, 0)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

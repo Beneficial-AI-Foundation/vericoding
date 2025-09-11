@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidMatrix(matrix: seq<seq<string>>)
 {
     (forall i :: 0 <= i < |matrix| ==> |matrix[i]| == (if |matrix| == 0 then 0 else |matrix[0]|)) &&
@@ -13,6 +14,7 @@ predicate EmptyMatrix(matrix: seq<seq<string>>)
 {
     |matrix| == 0 || |matrix[0]| == 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

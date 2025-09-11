@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def decode_at_index (s: String) (k: Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decode_at_index_is_letter {s: String} {k: Nat}
   (h1: k > 0) -- k is positive
   (h2: ∃ c, c ∈ s.data ∧ c.isAlpha) -- s contains at least one letter
@@ -42,6 +50,7 @@ info: 'a'
 -/
 -- #guard_msgs in
 -- #eval decode_at_index "a2345678999999999999999" 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

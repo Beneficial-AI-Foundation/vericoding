@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_substring (main_str : String) (sub_str : String) : String := sorry
 
 theorem is_substring_returns_y_or_n (main_str sub_str : String) :
   (is_substring main_str sub_str = "Y") ∨ (is_substring main_str sub_str = "N") := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string_is_substring (main_str : String) :
   is_substring main_str "" = "Y" := sorry
 
@@ -38,6 +46,7 @@ info: 'Y'
 -/
 -- #guard_msgs in
 -- #eval is_substring "python3" "thon"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

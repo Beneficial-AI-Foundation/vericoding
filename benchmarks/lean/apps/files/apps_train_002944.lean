@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def compute_depth (n : Nat) : Nat := sorry
 
 theorem compute_depth_positive (n : Nat) (h : n > 0) : 
@@ -7,17 +8,23 @@ def has_digit (n : Nat) (d : Nat) : Prop := sorry
 
 def has_all_digits (n : Nat) : Prop :=
   ∀ d, d < 10 → has_digit n d
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_product (nums : List Nat) (n : Nat) : Nat := sorry
 
 theorem compute_depth_contains_all_digits (n : Nat) (h : n > 0) :
   ∃ nums : List Nat, 
     nums.length = compute_depth n ∧ 
     has_all_digits (list_product nums n) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem compute_depth_is_minimal (n : Nat) (h : n > 0) :
   ∀ k < compute_depth n, 
     ¬∃ nums : List Nat,
@@ -47,6 +54,7 @@ info: 36
 -/
 -- #guard_msgs in
 -- #eval compute_depth 25
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

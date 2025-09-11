@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(positions: seq<(int, int)>)
 {
     |positions| >= 1 && |positions| <= 200000 &&
@@ -19,6 +20,7 @@ predicate ValidOutput(positions: seq<(int, int)>, result: int)
 {
     result == CountAttackingPairs(positions) && result >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

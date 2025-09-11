@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def hidden (n : Nat) : String := sorry
 
 theorem hidden_length_matches_input {n : Nat} :
   (toString n).length = (hidden n).length := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hidden_withInt (n : Int) : String := sorry
 
 theorem hidden_rejects_negative (n : Int) :
   n < 0 → hidden_withInt n = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hidden_valid_chars {n : Nat} {c : Char} :
   c ∈ (hidden n).data → c ∈ ['o', 'b', 'l', 'i', 'e', 'a', 't', 'd', 'n', 'm'] := sorry
 
@@ -36,6 +43,7 @@ info: 'email'
 -/
 -- #guard_msgs in
 -- #eval hidden 49632
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

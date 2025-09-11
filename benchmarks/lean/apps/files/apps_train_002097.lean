@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def sumList (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | h::t => h + sumList t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_thomas_rank (n : Nat) (scores : List (List Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem thomas_rank_in_range {n : Nat} {scores : List (List Nat)} 
   (h1 : n > 0) 
   (h2 : scores.length = n)
@@ -61,6 +68,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_thomas_rank 1 [[0, 0, 0, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

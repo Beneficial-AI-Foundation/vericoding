@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lockerRun (n : Nat) : List Nat := sorry
 
 theorem locker_run_returns_positive (n : Nat) :
   ∀ x ∈ lockerRun n, x > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem locker_run_returns_perfect_squares (n : Nat) :
   ∀ x ∈ lockerRun n, ∃ k : Nat, k * k = x := sorry
 
@@ -42,6 +50,7 @@ info: [1, 4, 9]
 -/
 -- #guard_msgs in
 -- #eval locker_run 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

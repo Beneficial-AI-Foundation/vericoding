@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_minion_queries (n : Nat) (arr : List Nat) (queries : List (Nat × Nat)) : List String := sorry
 
 theorem solve_minion_queries_full_range (arr : List Nat) : 
@@ -10,7 +16,9 @@ theorem solve_minion_queries_full_range (arr : List Nat) :
     result = "EVEN"
   else
     result = "ODD" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_minion_queries_single_element_odd : 
   solve_minion_queries 1 [1] [(1,1)] = ["ODD"] := sorry
 
@@ -43,6 +51,7 @@ info: ['EVEN', 'EVEN']
 -/
 -- #guard_msgs in
 -- #eval solve_minion_queries 4 [2, 4, 6, 8] [(1, 2), (2, 4)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

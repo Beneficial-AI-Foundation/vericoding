@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_photo_problem (n a b t : Nat) (orientations : String) : Nat := sorry
 
 theorem photo_problem_result_bounds 
@@ -10,7 +16,9 @@ theorem photo_problem_result_bounds
   (h6: orientations.length = n) :
   let result := solve_photo_problem n a b t orientations
   0 ≤ result ∧ result ≤ n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem photo_problem_n_equals_one
   (a b t : Nat) (orientations : String)
   (h1: orientations.length = 1) :
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_photo_problem 3 1 100 10 "whw"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

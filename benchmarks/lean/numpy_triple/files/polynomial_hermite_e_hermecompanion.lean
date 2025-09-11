@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermecompanion {n : Nat} (c : Vector Float (n + 2)) : Id (Vector (Vector Float (n + 1)) (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermecompanion_spec {n : Nat} (c : Vector Float (n + 2)) 
     (h_last_nonzero : c.get ⟨n + 1, by omega⟩ ≠ 0) :
     ⦃⌜c.get ⟨n + 1, by omega⟩ ≠ 0⌝⦄
@@ -27,3 +34,4 @@ theorem hermecompanion_spec {n : Nat} (c : Vector Float (n + 2))
         (mat.get i).get j = (0 : Float))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

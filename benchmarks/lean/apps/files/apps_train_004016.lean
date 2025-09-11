@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def LetterGrade := Char
 
 def calculate_grade (scores : List Nat) : LetterGrade :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem grade_is_valid_letter (scores : List Nat) (h : scores ≠ []) : 
   let grade := calculate_grade scores
   grade = 'F' ∨ grade = 'D' ∨ grade = 'C' ∨ grade = 'B' ∨ grade = 'A' :=
@@ -38,6 +46,7 @@ info: 'F'
 -/
 -- #guard_msgs in
 -- #eval calculate_grade [50, 55]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

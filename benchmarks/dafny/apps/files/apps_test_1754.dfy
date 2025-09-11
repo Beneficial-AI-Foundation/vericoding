@@ -1,8 +1,10 @@
+// <vc-preamble>
 predicate IsStrongestInSchool(student_idx: int, powers: seq<int>, schools: seq<int>)
   requires 0 <= student_idx < |powers| && |powers| == |schools|
 {
   forall j :: 0 <= j < |powers| && schools[j] == schools[student_idx] ==> powers[j] <= powers[student_idx]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

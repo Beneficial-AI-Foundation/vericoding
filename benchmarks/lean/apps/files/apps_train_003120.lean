@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def how_many_times (annual_price individual_price : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem how_many_times_positive
   (annual_price individual_price : Nat)
   (h1 : annual_price > 0)
@@ -48,6 +56,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval how_many_times 80 15
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

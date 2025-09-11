@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int) {
     1 <= N <= 999
 }
@@ -22,6 +23,7 @@ function CorrectPronunciation(N: int): string
     else if IsPonDigit(ones_digit) then "pon\n"
     else "bon\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

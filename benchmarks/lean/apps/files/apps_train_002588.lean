@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pyramid (n : Nat) : String := sorry
 
 def String.stripRight (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pyramid_empty_newline : pyramid 0 = "\n" := sorry
 
 theorem pyramid_single_level : pyramid 1 = "/\\\n" := sorry
@@ -24,6 +32,7 @@ theorem pyramid_last_line_underscores {n : Nat} (h : n > 1) :
   let lines := (pyramid n).splitOn "\n"
   let lastLine := lines.get! (n-1)
   lastLine.contains '_' := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function is_palindrome(s : string) : bool {
     forall k :: 0 <= k < |s| ==> s[k] == s[|s| - 1 - k]
 }
@@ -5,6 +6,7 @@ function is_palindrome(s : string) : bool {
 function starts_with(result : string, s : string) : bool {
     |result| >= |s| && forall k :: 0 <= k < |s| ==> result[k] == s[k]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

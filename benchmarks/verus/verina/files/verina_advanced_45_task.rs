@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn spec_sum(xs: &Vec<i32>, start: int, len: int) -> int
         xs[start] + spec_sum(xs, start + 1, len - 1)
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_pattern_occurrences (keyword pattern : String) (queries : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_pattern_result_properties (keyword pattern : String) (queries : List Nat)
   (h1 : keyword.length > 0) (h2 : pattern.length > 0) :
   let result := count_pattern_occurrences keyword pattern queries
@@ -29,6 +37,7 @@ theorem pattern_equals_keyword_bound (keyword : String) (queries : List Nat)
   ∀ (r q : Nat), r ∈ result → q ∈ queries → 
   r ≤ q / keyword.length + 1 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

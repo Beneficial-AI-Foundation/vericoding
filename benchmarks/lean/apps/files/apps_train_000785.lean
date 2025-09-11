@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_street_food (stores : List (Nat × Nat × Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_street_food_non_negative (stores : List (Nat × Nat × Nat)) :
   solve_street_food stores ≥ 0 := by sorry
 
@@ -44,6 +52,7 @@ info: 25
 -/
 -- #guard_msgs in
 -- #eval solve_street_food [(1, 10, 5), (2, 15, 4)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

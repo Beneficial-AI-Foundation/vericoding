@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def align_right (text : String) (width : Nat) : String := sorry
 
 theorem width_equal_to_content (text : String) (line : String) : 
   line ≠ "" →
   line ∈ (text.split (· = '\n')) →
   align_right line (line.length) = line := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem basic_properties_nonempty (text : String) (width : Nat) :
   text.trim ≠ "" →
   width ≥ 10 →
@@ -42,6 +50,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval align_right "Two lines, I am" 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

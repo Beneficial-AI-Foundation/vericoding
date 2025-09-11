@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_array_sharpenable (n : Nat) (arr : List Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_len_matches_param {n : Nat} {arr : List Int} 
   (h1 : arr.length > 0) :
   is_array_sharpenable n arr = is_array_sharpenable arr.length arr :=
@@ -45,6 +53,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_array_sharpenable 4 [0, 1, 1, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

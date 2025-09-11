@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def max_power (s : List Char) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def max_run (s : List Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_power_lower_bound (s : List Char) (h : s.length > 0) : 
   max_power s ≥ 1 :=
 sorry
@@ -49,6 +56,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval max_power "tourist"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible]
 def maxSubarraySumDivisibleByK_precond (arr : Array Int) (k : Int) : Prop :=
   k > 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def maxSubarraySumDivisibleByK (arr : Array Int) (k : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def maxSubarraySumDivisibleByK_postcond (arr : Array Int) (k : Int) (result: Int) : Prop :=
   let subarrays := List.range (arr.size) |>.flatMap (fun start =>
@@ -20,6 +27,7 @@ def maxSubarraySumDivisibleByK_postcond (arr : Array Int) (k : Int) (result: Int
 theorem maxSubarraySumDivisibleByK_spec_satisfied (arr: Array Int) (k: Int) :
     maxSubarraySumDivisibleByK_postcond (arr) (k) (maxSubarraySumDivisibleByK (arr) (k)) := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

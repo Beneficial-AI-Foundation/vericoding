@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_nth_element (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_positive (n : Nat) (h : n > 0) : 
   find_nth_element n > 0 := sorry
 
@@ -24,6 +32,7 @@ theorem first_few_values :
   find_nth_element 2 = 2 ∧ 
   find_nth_element 3 = 3 ∧
   find_nth_element 4 = 4 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

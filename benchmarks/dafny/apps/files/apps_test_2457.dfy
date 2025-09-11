@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string) {
     |input| >= 0
 }
@@ -21,6 +22,7 @@ function CanAchieveWeight(n: int, a: int, b: int, c: int, d: int): bool {
 predicate ValidOutput(output: string) {
     forall i :: 0 <= i < |output| ==> output[i] in "YesNo\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

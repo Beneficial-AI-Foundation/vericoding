@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def student_union (n1 : Nat) (eng : String) (n2 : Nat) (fre : String) : Nat := sorry
 
 def stringToList (s : String) : List Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def removeDuplicates (l : List Int) : List Int := sorry
 
 theorem student_union_leq_sum_lengths {n1 n2 : Nat} {eng fre : String} : 
   student_union n1 eng n2 fre ≤ n1 + n2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem student_union_equals_union_length {n1 n2 : Nat} {eng fre : String} :
   ∃ l1 l2 : List Int, 
     l1 = stringToList eng ∧ 
@@ -36,6 +43,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval student_union 3 "1 2 3" 3 "1 2 3"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

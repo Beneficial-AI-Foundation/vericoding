@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def is_prime (n : Nat) : Bool := sorry
 
 def find_max_prime_factor (nums : List Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_prime_factors_count (nums : List Nat) : List (Nat × Nat) := sorry
 
 theorem result_is_prime_factor 
@@ -14,7 +19,9 @@ theorem result_is_prime_factor
   let result := find_max_prime_factor nums
   let factors := get_prime_factors_count nums
   ∃ freq, (result, freq) ∈ factors := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_same_prime
   (nums : List Nat)
   (h : ∀ x ∈ nums, x = 2)
@@ -38,6 +45,7 @@ info: 11
 -/
 -- #guard_msgs in
 -- #eval find_max_prime_factor [3, 5, 7, 11]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

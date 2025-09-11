@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def countChars (s : String) (c : Char) : Nat := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def remove_exclamation_marks (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_exclamation_in_result (s : String) :
   ¬(remove_exclamation_marks s).contains '!' := by sorry
 
@@ -40,6 +47,7 @@ info: 'Oh, no'
 -/
 -- #guard_msgs in
 -- #eval remove_exclamation_marks "Oh, no!!!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

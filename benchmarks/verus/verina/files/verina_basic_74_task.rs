@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn max_array_precond(a: &Vec<i32>) -> bool {
     a.len() > 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

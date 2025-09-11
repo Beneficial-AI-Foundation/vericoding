@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int, c: int, t: int, arrivals: seq<int>) 
 {
     1 <= n <= 1000 &&
@@ -21,6 +22,7 @@ function MaxMoney(n: int, a: int, b: int, c: int, t: int, arrivals: seq<int>): i
     if b > c then n * a
     else n * a + (c - b) * (n * t - sum_seq(arrivals))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

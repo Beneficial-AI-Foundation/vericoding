@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_subsequences (s₁ s₂ : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_subsequences_non_negative (s₁ s₂ : String) :
   count_subsequences s₁ s₂ < 10^8 :=
   sorry
@@ -44,6 +52,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_subsequences "happy birthday" "happy holidays"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

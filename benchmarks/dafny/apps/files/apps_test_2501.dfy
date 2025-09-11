@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: array<int>)
   reads A
 {
@@ -22,6 +23,7 @@ function CountValidPairs(A: array<int>): int
 {
   |set i, j | 0 <= i < A.Length && 0 <= j < A.Length && ValidPair(A, i, j) :: (i, j)|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

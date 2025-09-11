@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLines(input);
@@ -32,6 +33,7 @@ predicate ValidOutput(input: string, output: seq<int>)
         n >= 1 && m >= 1 &&
         output[i] == MinLanterns(n, m)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

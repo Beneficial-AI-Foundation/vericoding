@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def largest_island (grid : List (List Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem largest_island_properties (grid : List (List Nat)) :
   let result := largest_island grid
   -- Result within bounds
@@ -37,6 +45,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval largest_island [[1, 1], [1, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

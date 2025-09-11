@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_digits (n : Int) : String := sorry
 
 theorem single_digit_count 
   (n : Int) (h : 0 ≤ n ∧ n ≤ 9) : 
   count_digits n = "1" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem double_digit_count 
   (n : Int) (h : 10 ≤ n ∧ n ≤ 99) :
   count_digits n = "2" := sorry
@@ -43,6 +51,7 @@ info: 'More than 3 digits'
 -/
 -- #guard_msgs in
 -- #eval count_digits 12345
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def startswith {n : Nat} (a : Vector String n) (prefixes : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem startswith_spec {n : Nat} (a : Vector String n) (prefixes : Vector String n) :
     ⦃⌜True⌝⦄
     startswith a prefixes
@@ -23,3 +30,4 @@ theorem startswith_spec {n : Nat} (a : Vector String n) (prefixes : Vector Strin
         (prefixes.get i).length > (a.get i).length ∨
         (a.get i).take (prefixes.get i).length ≠ (prefixes.get i))⌝⦄ := by
   sorry
+-- </vc-theorems>

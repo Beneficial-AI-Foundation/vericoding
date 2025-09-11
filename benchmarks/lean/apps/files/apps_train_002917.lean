@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def unique_sum (lst: List Int) : Option Int := sorry
 
 def listToSet (lst: List Int) : List Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum (lst: List Int) : Int :=
   lst.foldl (· + ·) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unique_sum_properties (lst : List Int) :
   match lst with
   | [] => unique_sum lst = none  
@@ -38,6 +45,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval unique_sum [1, 3, 8, 1, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

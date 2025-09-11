@@ -1,11 +1,16 @@
+-- <vc-preamble>
 def string_color (s : String) : Option String := sorry
 
 theorem string_color_short_strings {s : String} (h : s.length ≤ 1) : 
   string_color s = none := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hexToNat (s : String) : Nat := sorry
 
 theorem string_color_valid_ranges {s : String} (h : s.length ≥ 2) :
@@ -16,7 +21,9 @@ theorem string_color_valid_ranges {s : String} (h : s.length ≥ 2) :
     let g := hexToNat result
     let b := hexToNat result
     r ≤ 255 ∧ g ≤ 255 ∧ b ≤ 255 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_color_longer_strings {s : String} (h : s.length ≥ 2) :
   match string_color s with
   | none => False
@@ -44,6 +51,7 @@ info: '79CAE5'
 -/
 -- #guard_msgs in
 -- #eval string_color "Jack"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

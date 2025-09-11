@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -7,6 +8,7 @@ spec fn min_pair(s: Seq<i32>) -> i32 {
 }
 
 spec fn min(s: Seq<i32>) -> i32;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

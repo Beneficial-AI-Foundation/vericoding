@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def megaMind (hp dps shots regen : Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem megaMind_positive {hp dps shots regen : Nat} (h1 : hp > 0) (h2 : dps > 0) 
   (h3 : shots > 0) : 
   megaMind hp dps shots regen = -1 ∨ megaMind hp dps shots regen > 0 := 
@@ -45,6 +53,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval mega_mind 12 4 3 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

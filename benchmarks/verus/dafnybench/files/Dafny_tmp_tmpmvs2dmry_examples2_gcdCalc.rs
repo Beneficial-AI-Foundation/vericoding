@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -27,6 +28,7 @@ spec fn exp_nat(base: nat, n: nat) -> nat
         base * exp_nat(base, sub(n, 1))
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

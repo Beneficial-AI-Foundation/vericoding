@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def prime (n : Nat) : Bool := sorry
 
 def prime_bef_aft (n : Nat) : Nat × Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prime_bef_aft_bound {n : Nat} (h : n ≥ 4) (h2 : n ≤ 1000) :
   let (p1, p2) := prime_bef_aft n
   p1 < n ∧ n < p2 := sorry
@@ -40,6 +48,7 @@ info: [97, 103]
 -/
 -- #guard_msgs in
 -- #eval prime_bef_aft 101
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

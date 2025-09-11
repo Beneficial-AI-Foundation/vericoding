@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def justify (text: String) (width : Nat) : String := sorry
 
 -- Property 2: Input words are preserved in order
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem justify_preserves_words (text: String) (width: Nat) (h: width ≥ 10):
   text ≠ "" →
   let input_words := (text.split (· = ' ')).filter (· ≠ "")
@@ -41,6 +49,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval justify "123 456" 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

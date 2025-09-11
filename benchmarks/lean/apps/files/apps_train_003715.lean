@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solution (toCurrency : String) (values : List Float) : List String := sorry
 
 def stringToFloat (s : String) : Float := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_maintains_length (toCurrency : String) (values : List Float) :
   (values.length > 0) → 
   (solution toCurrency values).length = values.length := sorry
@@ -58,6 +66,7 @@ info: ['$0.00', '$0.00', '$0.00']
 -/
 -- #guard_msgs in
 -- #eval solution "USD" [0, 0, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

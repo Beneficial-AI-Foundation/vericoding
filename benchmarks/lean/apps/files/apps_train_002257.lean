@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_bad_prices (prices : List Int) : Nat := sorry
 
 theorem count_bad_prices_non_negative (prices : List Int) :
   count_bad_prices prices ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_bad_prices_upper_bound (prices : List Int) : 
   count_bad_prices prices ≤ prices.length := sorry
 
@@ -35,6 +43,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval count_bad_prices [31, 41, 59, 26, 53, 58, 97, 93, 23, 84]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sum (list : List Nat) : Nat :=
   match list with
   | [] => 0
@@ -8,13 +9,19 @@ def maximum (list : List Nat) : Nat :=
   | [] => 0
   | [x] => x
   | x::xs => Nat.max x (maximum xs)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_max_railway_bids (n : Nat) (traffic : List Nat) (connections : List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_properties
   {n : Nat} {traffic : List Nat} {connections : List (Nat × Nat)}
   (hvalid : n > 0)
@@ -64,6 +71,7 @@ info: 30
 -/
 -- #guard_msgs in
 -- #eval solve_max_railway_bids 4 [5, 10, 15, 20] [(1, 2), (2, 3), (3, 4)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

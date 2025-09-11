@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
   n >= 1 && k >= 1
@@ -12,6 +13,7 @@ function TotalSheetsNeeded(n: int): int
 {
   2 * n + 5 * n + 8 * n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

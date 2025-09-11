@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def largest_number (l : List Nat) : String := sorry
 
 theorem empty_list_returns_zero :
   largest_number [] = "0" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem singleton_zero_returns_zero :
   largest_number [0] = "0" := sorry
 
@@ -35,6 +43,7 @@ info: '0'
 -/
 -- #guard_msgs in
 -- #eval largest_number [0, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

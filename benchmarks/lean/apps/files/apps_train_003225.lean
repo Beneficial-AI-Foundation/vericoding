@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def list_squared (m n : Nat) : List (Nat × Nat) := sorry
 
 theorem list_squared_result_valid (m n : Nat) (h : 0 < m) (h2 : 0 < n) :
@@ -11,13 +12,19 @@ def sumOfSquaredDivisors (n : Nat) : Nat := sorry
 theorem list_squared_divisors_sum (m n : Nat) (h : 0 < m) (h2 : 0 < n) :
   let result := list_squared m n
   ∀ pair ∈ result, pair.2 = sumOfSquaredDivisors pair.1 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isPerfectSquare (n : Nat) : Prop := 
   ∃ k : Nat, k * k = n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem list_squared_is_sorted (m n : Nat) (h : 0 < m) (h2 : 0 < n) :
   let result := list_squared m n
   ∀ i, i + 1 < result.length → 
@@ -51,6 +58,7 @@ info: [[287, 84100]]
 -/
 -- #guard_msgs in
 -- #eval list_squared 250 500
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

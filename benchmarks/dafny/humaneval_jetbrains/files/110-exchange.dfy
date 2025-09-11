@@ -1,3 +1,4 @@
+// <vc-preamble>
 function IsEven(n: int) : bool
 {
   n % 2 == 0
@@ -9,6 +10,7 @@ function CountEvens(lst: seq<int>): nat
   else (if IsEven(lst[0]) then 1 else 0) + CountEvens(lst[1..])
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

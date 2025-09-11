@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def get_free_urinals (s : String) : Int := sorry
 
 def hasConsecutiveOnes (chars : List Char) : Bool :=
@@ -5,13 +6,19 @@ def hasConsecutiveOnes (chars : List Char) : Bool :=
   | '1' :: '1' :: _ => true
   | _ :: rest => hasConsecutiveOnes rest
   | [] => false
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def containsAdjacentOnes (s : String) : Bool :=
   hasConsecutiveOnes s.data
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_adjacent_urinals :
   ∀ s: String, containsAdjacentOnes s → get_free_urinals s = -1 := sorry
 
@@ -45,6 +52,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval get_free_urinals "110"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

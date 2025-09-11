@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum_contributions(a: seq<int>, b: seq<int>): int
     requires |a| == |b|
 {
@@ -9,6 +10,7 @@ function sum_contributions(a: seq<int>, b: seq<int>): int
             x * y
          else -1) + sum_contributions(a[1..], b[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

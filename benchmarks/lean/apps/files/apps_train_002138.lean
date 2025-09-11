@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def get_max_popcount (l r : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def popcount (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_in_range (l r : Nat) :
   let ordered_l := min l r
   let ordered_r := max l r
@@ -39,6 +46,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval get_max_popcount 1 10
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

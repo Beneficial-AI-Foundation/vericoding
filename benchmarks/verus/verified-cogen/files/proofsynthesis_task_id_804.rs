@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn is_even(n: u32) -> (result: bool) {
     (n % 2) == 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

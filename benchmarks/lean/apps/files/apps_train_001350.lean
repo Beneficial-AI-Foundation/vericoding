@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_chocolates (n : Nat) (budget : Nat) (prices : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_chocolates_within_bounds (n : Nat) (budget : Nat) (prices : List Nat)
   (h1 : prices.length = n)
   (h2 : ∀ x ∈ prices, 1 ≤ x ∧ x ≤ 1000)
@@ -57,6 +65,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval max_chocolates 3 10 [5, 5, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

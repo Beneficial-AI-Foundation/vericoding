@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     1 <= n <= 1998
 }
@@ -7,6 +8,7 @@ function ExpectedResult(n: int): string
 {
     if n < 1000 then "ABC" else "ABD"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

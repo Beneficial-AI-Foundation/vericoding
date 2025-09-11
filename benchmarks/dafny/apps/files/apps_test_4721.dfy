@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int)
 {
     2 <= n <= 100 && 2 <= m <= 100
@@ -13,6 +14,7 @@ predicate CorrectOutput(n: int, m: int, blocks: int)
 {
     ValidInput(n, m) && blocks == CountBlocks(n, m)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

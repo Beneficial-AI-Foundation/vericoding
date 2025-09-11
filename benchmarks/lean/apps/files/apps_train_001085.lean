@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def seriesSumSolver (n : Nat) : String := sorry
 
 theorem series_sum_solver_returns_valid_name (n : Nat) 
     (h : 1 ≤ n ∧ n ≤ 1000000) : 
     seriesSumSolver n = "Ravi" ∨ seriesSumSolver n = "Jhon" := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def squaredSum (n : Nat) : Nat := sorry
 
 theorem series_sum_solver_alternates (n : Nat)
     (h : 1 ≤ n ∧ n ≤ 10000) :
     (seriesSumSolver n = "Ravi" ↔ squaredSum n % 2 = 0) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem series_sum_solver_consistent (n : Nat)
     (h : 1 ≤ n ∧ n ≤ 1000000) :
     seriesSumSolver n = seriesSumSolver n := sorry
@@ -43,6 +50,7 @@ info: 'Ravi'
 -/
 -- #guard_msgs in
 -- #eval series_sum_solver 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

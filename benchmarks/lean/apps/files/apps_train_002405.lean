@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isAlpha (c : Char) : Bool := sorry
 def isDigit (c : Char) : Bool := sorry
 
@@ -11,13 +12,19 @@ theorem reformat_empty_string (s : String) :
 
 def countLetters (s : String) : Nat :=
   s.data.filter isAlpha |>.length
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countDigits (s : String) : Nat :=
   s.data.filter isDigit |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reformat_preserves_length (s : String) :
   reformat s ≠ "" → 
   (reformat s).length = s.length := sorry 
@@ -44,6 +51,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval reformat "leetcode"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,16 @@
+-- <vc-preamble>
 def solve_cake_festival (families : List (Nat × Nat × Nat × Nat)) : List String := sorry
 
 def isVerdict (s : String) : Bool :=
   s = "POSSIBLE" || s = "IMPOSSIBLE"
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isVerdictWithNumber (s : String) : Bool :=
   let parts := s.splitOn " "
   match parts with
@@ -13,7 +18,9 @@ def isVerdictWithNumber (s : String) : Bool :=
   | _ => false
 
 -- Output format theorem
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cake_festival_output_format (families : List (Nat × Nat × Nat × Nat)) :
   let results := solve_cake_festival families;
   -- Results is non-empty
@@ -63,6 +70,7 @@ theorem single_member_family
       results[0]! = s!"POSSIBLE {slices - smallest}"
     else  
       results[0]! = s!"IMPOSSIBLE {smallest - slices}" := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

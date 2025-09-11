@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def createArrays (dimStr : String) : Array (Array Int) × Array (Array Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem create_arrays_shapes {dims : List Nat} 
   (h : ∀ d ∈ dims, 1 ≤ d ∧ d ≤ 10) :
   let dimStr := String.join (List.map toString dims)
@@ -25,6 +33,7 @@ theorem create_arrays_distinctness {dims : List Nat}
   let (zeros, ones) := createArrays dimStr
   zeros ≠ ones :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

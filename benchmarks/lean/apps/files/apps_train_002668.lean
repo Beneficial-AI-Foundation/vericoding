@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def productFib (n : Nat) : (Nat × Nat × Bool) := sorry
 
 def fib : Nat → Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem product_fib_valid_structure 
   (n : Nat) 
   (h : n ≤ 10^8) :
@@ -42,6 +50,7 @@ info: [0, 1, True]
 -/
 -- #guard_msgs in
 -- #eval productFib 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

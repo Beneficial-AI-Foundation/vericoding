@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_permutation (n : Nat) (matrix : List (List Nat)) : List Nat := sorry
 
 def List.sort : List Nat → List Nat := sorry
 
 -- Result is a valid permutation
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_permutation_valid_perm (n : Nat) (matrix : List (List Nat)) 
   (h1 : n ≥ 2)
   (h2 : matrix.length = n)
@@ -44,6 +52,7 @@ info: list(range(1, n3 + 1))
 -/
 -- #guard_msgs in
 -- #eval sorted solve_permutation(n3, a3)
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

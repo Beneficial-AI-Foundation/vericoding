@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def hammingDistance (s1 s2 : String) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def verifyResult (result : String) (strings : List String) : Bool :=
 
 def findSimilarString (strings : List String) (n m : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isLower (c : Char) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_similar_string_properties {strings : List String} {n m : Nat}
   (h1 : n = strings.length)
   (h2 : m > 0)
@@ -50,6 +57,7 @@ info: 'aaa'
 -/
 -- #guard_msgs in
 -- #eval find_similar_string ["baa", "aaa", "aab"] 3 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

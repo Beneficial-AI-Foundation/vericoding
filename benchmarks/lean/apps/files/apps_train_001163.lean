@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 def solve_subset_positions (N : Nat) (queries : List (Nat × Nat)) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_subset_sizes {N : Nat} {queries : List (Nat × Nat)}
   (h1 : N > 0) (h2 : N ≤ 20) :
   let results := solve_subset_positions N queries
@@ -18,6 +26,7 @@ theorem valid_subset_sizes {N : Nat} {queries : List (Nat × Nat)}
       else
         results.get ⟨i, h'⟩ ≥ 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

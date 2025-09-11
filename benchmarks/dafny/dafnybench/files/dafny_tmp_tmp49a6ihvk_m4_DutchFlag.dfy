@@ -1,9 +1,11 @@
+// <vc-preamble>
 datatype Color = Red | White | Blue
 
 predicate Below(c: Color, d: Color)
 {
     c == Red || c == d || d == Blue
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn in_map(nums: Seq<int>, m: Map<int, int>, t: int) -> bool {
     forall|j: int| 0 <= j < nums.len() ==> m.contains_key(t - nums[j])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

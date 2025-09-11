@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def abs (x : Int) : Int := sorry 
 
 def pairs (nums : List Int) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pairs_consecutive_property {nums : List Int} (h : nums.length ≥ 2) :
   pairs nums = (List.filter (fun i => 
     (abs (nums.get! (2*i) - nums.get! (2*i + 1))) = 1) (List.range ((nums.length - 1)/2))).length := sorry
@@ -36,6 +44,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval pairs [-55, -56, -7, -6, 56, 55, 63, 62]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

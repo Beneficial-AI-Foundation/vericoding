@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def make_symmetric_zero_diag (B : List (List Nat)) : List (List Nat) := sorry
 
 def solve (N: Nat) (Q: Nat) (B: List (List Nat)) (queries: List (Nat × List Nat)) : List (List Nat) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def get_A (B: List (List Int)) : List Int := sorry
 
 def update_B (B: List (List Nat)) (p: Nat) (R: List Nat) : List (List Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_shape_correct {N Q: Nat} {B: List (List Nat)} {queries: List (Nat × List Nat)}
   (h1: N = 3)
   (h2: List.length B = N)
@@ -37,6 +44,7 @@ theorem update_B_symmetric {N p: Nat} {R: List Nat}
     ∀ (i j : Fin N),
     (updated.get ⟨i.val, by sorry⟩).get ⟨j.val, by sorry⟩ = 
     (updated.get ⟨j.val, by sorry⟩).get ⟨i.val, by sorry⟩ := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

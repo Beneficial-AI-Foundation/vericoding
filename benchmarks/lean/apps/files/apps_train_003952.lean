@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def count_range_collapses (arr : List Int) : Nat := sorry
 
 def is_power_of_two (n : Nat) : Bool := 
@@ -6,13 +7,19 @@ def is_power_of_two (n : Nat) : Bool :=
 def count_consecutive_pairs (l : List Int) : Nat :=
   let pairs := l.zip (l.drop 1)
   pairs.foldl (fun acc p => if p.2 - p.1 = 1 then acc + 1 else acc) 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sort_list (l : List Int) : List Int :=
   l.mergeSort (fun a b => a ≤ b)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem non_consecutive_array_returns_one 
   {arr : List Int} (h : arr.length > 0) :
   (∀ i, i + 1 < arr.length → arr[i]! + 1 < arr[i+1]!) → 
@@ -45,6 +52,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_range_collapses [11, 43, 66, 123]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

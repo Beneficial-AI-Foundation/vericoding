@@ -1,3 +1,4 @@
+// <vc-preamble>
 function split_lines(s: string): seq<string>
 {
     []
@@ -96,6 +97,7 @@ function count_differences(level1: seq<string>, level2: seq<string>, n: nat, m: 
 {
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def Point := Float × Float 
 
 structure Datamining where
   points : List Point
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def predict (m : Datamining) (x : Float) : Float := sorry
 
 def abs (x : Float) : Float := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem predict_exact_points 
   {points : List Point}
   {x0 y0 : Float}
@@ -22,6 +29,7 @@ theorem predict_exact_points
   (h_point : (x0, y0) = points.get ⟨2, by sorry⟩) :
   let m : Datamining := {points := points}
   abs (predict m x0 - y0) < 0.000001 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

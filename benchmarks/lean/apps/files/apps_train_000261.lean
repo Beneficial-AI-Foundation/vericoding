@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def base_neg2 (n : Int) : String := sorry
 
 def binaryStringToNegBase2 (s : String) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem base_neg2_valid_binary (n : Int) :
   let s := base_neg2 n
   ∀ c ∈ s.data, c = '0' ∨ c = '1' := sorry
@@ -41,6 +49,7 @@ info: '100'
 -/
 -- #guard_msgs in
 -- #eval base_neg2 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

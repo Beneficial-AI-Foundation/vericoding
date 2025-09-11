@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int)
 {
     1 <= n <= 100 && 1 <= m <= 100
@@ -15,6 +16,7 @@ function Winner(n: int, m: int): string
     var moves := GameMoves(n, m);
     if moves % 2 == 1 then "Akshat" else "Malvika"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

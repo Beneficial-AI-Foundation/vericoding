@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_slice_cake (r c m k j : Nat) : String := sorry
 
 theorem can_slice_cake_valid_output (r c m k j : Nat) (h1 : r > 0) (h2 : c > 0) 
     (h3 : m > 0) (h4 : k > 0) (h5 : j > 0) :
   can_slice_cake r c m k j = "Yes" ∨ can_slice_cake r c m k j = "No" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_slice_cake_area_mismatch (r c m k j : Nat) (h1 : r > 0) (h2 : c > 0)
     (h3 : m > 0) (h4 : k > 0) (h5 : j > 0) (h6 : r * c ≠ m + k + j) :
   can_slice_cake r c m k j = "No" := sorry
@@ -36,6 +44,7 @@ info: 'No'
 -/
 -- #guard_msgs in
 -- #eval can_slice_cake 2 2 2 2 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

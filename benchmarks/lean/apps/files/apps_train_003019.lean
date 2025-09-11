@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def palindrome (n : Int) : String := sorry 
 
 def isNumericPalindrome (n : Int) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def contains (haystack : String) (needle : String) : Bool := sorry
 
 def stringToInt (s : String) : Option Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_input_negative (n : Int) : 
   n < 0 → palindrome n = "Not valid"
   := sorry
@@ -64,6 +71,7 @@ info: 'Not valid'
 -/
 -- #guard_msgs in
 -- #eval palindrome -123
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

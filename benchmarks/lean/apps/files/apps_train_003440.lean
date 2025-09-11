@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sortArrays (arr1 arr2 : List Int) : List Int × List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sort_arrays_length_preservation
   (arr1 arr2 : List Int)
   (h : arr1.length = arr2.length)
@@ -57,6 +65,7 @@ info: [[5, 5, 2, 6, 9, 6], [4, 3, 1, 6, 8, 7]]
 -/
 -- #guard_msgs in
 -- #eval sort_arrays #[5, 6, 9, 2, 6, 5] #[3, 6, 7, 4, 8, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def sqrt (n : Nat) : Nat := sorry
 
 def isPrime (n : Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def gap (g m n : Nat) : Option (Nat × Nat) := sorry
 
 theorem prime_divisibility {n : Nat} (h : n ≥ 2) :
   isPrime n = true →
   ∀ i : Nat, 2 ≤ i → i ≤ sqrt n → n % i ≠ 0 :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem composite_divisibility {n : Nat} (h : n ≥ 2) :
   isPrime n = false →
   (∃ i : Nat, 2 ≤ i ∧ i ≤ sqrt n ∧ n % i = 0) ∨ n < 2 :=
@@ -44,6 +51,7 @@ info: [163, 167]
 -/
 -- #guard_msgs in
 -- #eval gap 4 130 200
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

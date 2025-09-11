@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_unique_or_pairs (arr : List Nat) : String := sorry
 
 theorem check_unique_or_pairs_returns_valid_response {arr : List Nat} :
   check_unique_or_pairs arr = "YES" ∨ check_unique_or_pairs arr = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem long_arrays_return_no {arr : List Nat} :
   arr.length > 62 → check_unique_or_pairs arr = "NO" := sorry
 
@@ -41,6 +49,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval check_unique_or_pairs [6, 5, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

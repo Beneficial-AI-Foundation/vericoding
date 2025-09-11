@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_prime (n : Nat) : Nat := sorry
 
 def check_sum_of_primes (n k : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_prime_properties (n : Nat) (h : n ≤ 1000) :
   (is_prime n = 0 ∨ is_prime n = 1) ∧
   (n ≤ 1 → is_prime n = 0) ∧ 
@@ -43,6 +51,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval check_sum_of_primes 15 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

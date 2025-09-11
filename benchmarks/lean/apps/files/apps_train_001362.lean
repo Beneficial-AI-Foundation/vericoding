@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Grid := List (List Int)
 
 def solve_bar_grid (n m x y : Nat) (grid : Grid) : Grid :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem grid_dimensions (n m x y : Nat) (grid : Grid) 
   (h1 : 1 ≤ n ∧ n ≤ 10)
   (h2 : 1 ≤ m ∧ m ≤ 10) 
@@ -36,6 +44,7 @@ theorem cost_increases :
     let val := List.get! (List.get! result i) j
     (val ≠ -1 ∧ (i,j) ≠ (0,0)) → val > 0 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -23,15 +24,22 @@ def isTitlecased (s : String) : Bool :=
           else
             checkTitleCase rest true
       checkTitleCase chars true
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def istitle {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem istitle_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     istitle a
     ⦃⇓result => ⌜∀ i : Fin n, result.get i = isTitlecased (a.get i)⌝⦄ := by
   sorry
+-- </vc-theorems>

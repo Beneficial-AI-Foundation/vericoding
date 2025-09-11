@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
     requires |input| > 0
 {
@@ -23,6 +24,7 @@ predicate CorrectOutput(input: string, result: string)
     else
         result == ""
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

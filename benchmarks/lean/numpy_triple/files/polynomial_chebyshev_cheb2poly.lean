@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def cheb2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cheb2poly_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
     cheb2poly c
@@ -52,3 +59,4 @@ theorem cheb2poly_spec {n : Nat} (c : Vector Float n) :
             -- If ||c - d|| < ε then ||p - cheb2poly(d)|| < κ*ε for some condition number κ
             True)⌝⦄ := by
   sorry
+-- </vc-theorems>

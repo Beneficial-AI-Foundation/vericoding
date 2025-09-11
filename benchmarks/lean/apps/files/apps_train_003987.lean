@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def three_details (n : Nat) : Nat := sorry
 
 -- Non-negativity theorem
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem three_details_nonnegative (n : Nat) (h : n > 0) :
   three_details n ≥ 0 := sorry
 
@@ -43,6 +51,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval three_details 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

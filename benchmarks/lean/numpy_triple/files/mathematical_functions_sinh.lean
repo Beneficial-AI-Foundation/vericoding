@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sinh {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sinh_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     sinh x
@@ -24,3 +31,4 @@ theorem sinh_spec {n : Nat} (x : Vector Float n) :
         -- Monotonicity property: for any two indices, if x[i] < x[j], then sinh(x[i]) < sinh(x[j])
         (∀ j : Fin n, x.get i < x.get j → result.get i < result.get j)⌝⦄ := by
   sorry
+-- </vc-theorems>

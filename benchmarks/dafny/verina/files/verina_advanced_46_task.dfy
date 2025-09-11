@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SubarraySum(numbers: array<int>, start: int, end: int): int
     requires 0 <= start <= end <= numbers.Length
     reads numbers
@@ -6,6 +7,7 @@ function SubarraySum(numbers: array<int>, start: int, end: int): int
     if start == end then 0
     else numbers[start] + SubarraySum(numbers, start + 1, end)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

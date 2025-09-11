@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def reverse_precond (a : Array Int) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def reverse_core (arr : Array Int) (i : Nat) : Array Int :=
   if i < arr.size / 2 then
@@ -13,10 +16,14 @@ def reverse_core (arr : Array Int) (i : Nat) : Array Int :=
   else
     arr
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverse (a : Array Int) (h_precond : reverse_precond (a)) : Array Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def reverse_postcond (a : Array Int) (result: Array Int) (h_precond : reverse_precond (a)) :=
   (result.size = a.size) ∧ (∀ i : Nat, i < a.size → result[i]! = a[a.size - 1 - i]!)
@@ -24,6 +31,7 @@ def reverse_postcond (a : Array Int) (result: Array Int) (h_precond : reverse_pr
 theorem reverse_spec_satisfied (a: Array Int) (h_precond : reverse_precond (a)) :
     reverse_postcond (a) (reverse (a) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

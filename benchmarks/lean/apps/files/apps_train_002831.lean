@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def songDecoder (s : String) : String :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSubstring (sub str : String) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_wub_in_output (s : String) :
   ¬isSubstring "WUB" (songDecoder s) :=
 sorry
@@ -48,6 +55,7 @@ info: 'O IPVCQAFWY Q XHDKCPYKCTWWY V FZ'
 -/
 -- #guard_msgs in
 -- #eval song_decoder "WUBWUBOWUBWUBWUBIPVCQAFWYWUBWUBWUBQWUBWUBWUBXHDKCPYKCTWWYWUBWUBWUBVWUBWUBWUBFZWUBWUB"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

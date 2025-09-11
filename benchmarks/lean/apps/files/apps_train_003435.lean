@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validate_usr (username : String) : Bool := sorry
 
 theorem valid_username_accepted 
@@ -9,7 +15,9 @@ theorem valid_username_accepted
   (h2 : username.length ≤ 16) 
   (h3 : ∀ c ∈ username.data, c.isLower ∨ c.isDigit ∨ c = '_') :
   validate_usr username = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_chars_rejected
   (username : String)
   (h1 : username.length ≥ 4)
@@ -44,6 +52,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval validate_usr "Hass"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

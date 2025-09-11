@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_camera_angles (n : Nat) (cameras : List Int) (bird_x bird_y : Int) : Float :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_camera_angles_nonnegative {n : Nat} {cameras : List Int} {bird_x bird_y : Int}
   (h1 : n ≥ 2) (h2 : n % 2 = 0) :
   solve_camera_angles n cameras bird_x bird_y ≥ 0 := sorry
@@ -28,6 +36,7 @@ theorem solve_camera_angles_symmetry {n : Nat}
   let cameras := List.range n |>.map Int.ofNat
   solve_camera_angles n cameras 0 1 =
   solve_camera_angles n (cameras.map (·* -1)) 0 1 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

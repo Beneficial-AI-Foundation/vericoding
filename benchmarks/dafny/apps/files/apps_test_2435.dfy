@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(testCases: seq<(int, int, seq<(int, int)>)>)
 {
     |testCases| >= 0 &&
@@ -29,6 +30,7 @@ predicate ValidResults(testCases: seq<(int, int, seq<(int, int)>)>, results: seq
         results[i] >= 1 &&
         1 <= finalBounds.0 <= finalBounds.1 <= n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

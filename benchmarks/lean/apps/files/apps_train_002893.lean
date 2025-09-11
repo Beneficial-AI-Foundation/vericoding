@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (s : String) : Bool := sorry
 
 def reverse (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_returns_bool (s : String) : 
   solve s = true ∨ solve s = false := sorry
 
@@ -42,6 +50,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval solve "aaab"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

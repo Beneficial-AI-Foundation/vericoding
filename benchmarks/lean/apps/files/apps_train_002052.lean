@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_boxes (k : Nat) (n : List Nat) (boxes : List (List Nat)) : (Bool × Option (List Nat) × Option (List Nat)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_boxes_single_box :
   solve_boxes 1 [1] [[42]] = (true, some [42], some [0])
   := sorry 
@@ -20,6 +28,7 @@ theorem solve_boxes_impossible_diff_values :
 theorem solve_boxes_impossible_same_values :
   solve_boxes 2 [1,1] [[1],[1]] = (false, none, none)
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

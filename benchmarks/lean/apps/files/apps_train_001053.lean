@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_tree (n : Nat) (edges : List (Nat × Nat)) : String := sorry
 
 def is_valid_tree_properties (n : Nat) (edges : List (Nat × Nat)) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_node_valid (n : Nat) (h : n = 1) :
   is_tree n [] = "YES" := sorry 
 
@@ -43,6 +51,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval is_tree 4 [(1, 2), (3, 4)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

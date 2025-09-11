@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def sumin (n : Nat) : Nat := sorry
 def sumax (n : Nat) : Nat := sorry
 
@@ -10,16 +11,22 @@ def sumOfMaxs (n : Nat) : Nat := sorry
 theorem sumax_positive (n : Nat) (h : n > 0) :
   sumax n > 0 :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumOfSums (n : Nat) : Nat := sorry
 
 theorem sumsum_equals_sumin_plus_sumax (n : Nat) :
   sumsum n = sumin n + sumax n :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sumin_positive (n : Nat) (h : n > 0) : 
   sumin n > 0 :=
 sorry
@@ -89,6 +96,7 @@ info: 1010000
 -/
 -- #guard_msgs in
 -- #eval sumsum 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

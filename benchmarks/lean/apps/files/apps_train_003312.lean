@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def array_manip (arr : List Int) : List Int := sorry
 
 theorem array_manip_length (arr : List Int) : 
   (array_manip arr).length = arr.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_manip_basic_properties (arr : List Int) (h : arr ≠ []) :
   let result := array_manip arr
   -- Result same length as input
@@ -51,6 +59,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval array_manip [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

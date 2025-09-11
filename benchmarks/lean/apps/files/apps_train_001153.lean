@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD := 1000000007
 
 def solve_robot_capacity (n : Nat) (y : Nat) (schedules : List (Nat × Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_robot_capacity_output_bounds
   (n : Nat) (y : Nat) (schedules : List (Nat × Nat))
   (h1 : 1 ≤ n ∧ n ≤ 1000)
@@ -29,6 +37,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval solve_robot_capacity 5 4 [[0, 3], [1, 2], [4, 4], [0, 4]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

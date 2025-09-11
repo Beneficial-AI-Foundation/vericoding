@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_fatigue (n a b : Nat) (x : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_fatigue_non_negative 
   {n a b : Nat} 
   {x : List Nat}
@@ -63,6 +71,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval min_fatigue 7 1 2 [24, 35, 40, 68, 72, 99, 103]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_sequence (n : Nat) (comp_str : String) : (List Nat × List Nat) :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def verifySequenceMatchesComparisons (seq : List Nat) (comps : List Char) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sequence_length_matches_comparisons 
   {n : Nat} {comp_str : String} :
   let (min_seq, max_seq) := solve_sequence n comp_str
@@ -47,6 +54,7 @@ info: set(range(1, 6))
 -/
 -- #guard_msgs in
 -- #eval set max3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

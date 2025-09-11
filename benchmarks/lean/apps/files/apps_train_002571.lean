@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def almostIncreasingSequence (seq : List Int) : Bool := sorry
 
 def countDescendingPairs (seq : List Int) : Nat := sorry
@@ -6,15 +7,21 @@ def isStrictlyIncreasing (seq : List Int) : Bool := sorry
 
 theorem strictly_increasing_always_true {seq : List Int} :
   isStrictlyIncreasing seq → almostIncreasingSequence seq := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countDuplicates (seq : List Int) : Nat := sorry 
 
 theorem duplicate_elements_property {seq : List Int} :
   countDuplicates seq > 1 → ¬almostIncreasingSequence seq := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem too_many_drops_always_false {seq : List Int} :
   countDescendingPairs seq > 1 → ¬almostIncreasingSequence seq := sorry
 
@@ -42,6 +49,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval almost_increasing_sequence [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

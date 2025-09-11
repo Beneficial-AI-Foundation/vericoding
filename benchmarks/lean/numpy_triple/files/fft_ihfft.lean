@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -22,13 +23,19 @@ def Complex.conj (z : Complex) : Complex :=
   { re := z.re, im := -z.im }
 /-- Convert Float to Complex -/
 def Float.toComplex (x : Float) : Complex := { re := x, im := 0 }
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def ihfft {n : Nat} (a : Vector Complex n) : Id (Vector Complex n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ihfft_spec {n : Nat} (a : Vector Complex n) :
     ⦃⌜True⌝⦄
     ihfft a
@@ -51,3 +58,4 @@ theorem ihfft_spec {n : Nat} (a : Vector Complex n) :
                   ∃ rfft_result : Vector Complex n,
                   result = Vector.map Complex.conj rfft_result)⌝⦄ := by
   sorry
+-- </vc-theorems>

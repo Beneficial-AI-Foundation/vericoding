@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def Operation := String × Int
 def DequeOp := List Operation
 
 def splitString (s : String) : List String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def process_deque_operations (ops : List String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem append_only_operations_preserves_length 
   (ops : List String)
   (h1 : ∀ op ∈ ops, (splitString op).get! 0 = "append" ∨ (splitString op).get! 0 = "appendleft") :
@@ -48,6 +55,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval process_deque_operations ["append 1", "appendleft 2", "popleft", "pop"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

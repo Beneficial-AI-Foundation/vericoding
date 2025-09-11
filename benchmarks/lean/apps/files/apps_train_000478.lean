@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def max_width_ramp (nums : List Int) : Nat :=
   sorry
 
@@ -12,15 +13,21 @@ def isStrictlyDecreasing (l : List Int) : Bool :=
   | [] => true
   | [_] => true
   | x::y::rest => x > y && isStrictlyDecreasing (y::rest)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hasNoDups (l : List Int) : Bool :=
   match l with
   | [] => true
   | x::xs => !(xs.contains x) && hasNoDups xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_width_ramp_non_negative (nums : List Int) :
   max_width_ramp nums ≥ 0 := 
   sorry
@@ -69,6 +76,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval max_width_ramp [1, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

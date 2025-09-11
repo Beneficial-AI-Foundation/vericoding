@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_power_sum (a b c d : Nat) : Nat := sorry
 
 theorem power_sum_nonneg (a b c d : Nat) : 
   calculate_power_sum a b c d ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem power_sum_is_powers (a b c d : Nat) :
   calculate_power_sum a b c d = a^b + c^d := sorry
 
@@ -35,6 +43,7 @@ info: 50
 -/
 -- #guard_msgs in
 -- #eval calculate_power_sum 5 2 5 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, heights: seq<int>)
 {
     n > 0 && |heights| == n
@@ -21,6 +22,7 @@ predicate ValidResult(n: int, heights: seq<int>, result: int)
     forall i :: 0 <= i < |heights| ==> heights[i] <= result &&
     exists i :: 0 <= i < |heights| && heights[i] == result
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

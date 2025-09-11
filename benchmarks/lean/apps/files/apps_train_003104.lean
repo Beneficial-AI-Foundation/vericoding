@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mult_triangle (n : Nat) : Array Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mult_triangle_symmetry (n : Nat) (h : n ≥ 1) :
   let result := mult_triangle n
   result[0]! = (n * (n + 1) / 2) ^ 2
@@ -31,6 +39,7 @@ info: [3025, 2400, 625]
 -/
 -- #guard_msgs in
 -- #eval mult_triangle 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

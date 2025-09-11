@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def split_carrots_min_time (n k : Nat) (nums : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem splits_res_nonneg 
   (n k : Nat) (nums : List Nat) 
   (h1 : ∀ x ∈ nums, x > 0) 
@@ -51,6 +59,7 @@ info: 333333333334
 -/
 -- #guard_msgs in
 -- #eval split_carrots_min_time 1 3 [1000000]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

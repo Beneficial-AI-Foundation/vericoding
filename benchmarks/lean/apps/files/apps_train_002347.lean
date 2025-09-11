@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def title_to_number (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def number_to_title (n : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem title_to_number_positive (title : String) :
   title_to_number title > 0 := by
   sorry
@@ -38,6 +45,7 @@ info: 701
 -/
 -- #guard_msgs in
 -- #eval title_to_number "ZY"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

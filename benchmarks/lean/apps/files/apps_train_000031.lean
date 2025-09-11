@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_ski_time (path: String) : Nat :=
   sorry
 
 variable (path path1 path2 : String)
 
 -- Time should always be positive
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ski_time_positive : 
   calculate_ski_time path > 0 := 
   sorry
@@ -57,6 +65,7 @@ info: 25
 -/
 -- #guard_msgs in
 -- #eval calculate_ski_time "NWNWS"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

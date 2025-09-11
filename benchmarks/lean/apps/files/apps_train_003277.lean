@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def snail (column : Int) (day : Int) (night : Int) : Int :=
   sorry
 
 -- Helper function to simulate ceiling division
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def ceilDiv (a b : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem snail_result_positive {column day night : Int}
   (h1 : column > 0)
   (h2 : day > night)
@@ -41,6 +48,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval snail 5 10 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

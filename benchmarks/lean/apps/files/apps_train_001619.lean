@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_mex_matrix (n m : Nat) : Array (Array Nat) := sorry
 
 theorem matrix_dimensions {n m : Nat} (h1 : n > 0) (h2 : m > 0) :
   let result := solve_mex_matrix n m
   result.size = n ∧ 
   (∀ row ∈ result, row.size = m) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem square_matrix {n : Nat} (h : n > 0) :
   let result := solve_mex_matrix n n
   result.size = n ∧
@@ -31,6 +39,7 @@ info: len(expected2)
 -/
 -- #guard_msgs in
 -- #eval len solve_mex_matrix(4, 2)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

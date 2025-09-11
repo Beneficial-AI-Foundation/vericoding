@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def count {α} [BEq α] (a : α) (xs : List α) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve {α} [BEq α] (array1 array2 : List α) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_properties {α} [BEq α] (array1 array2 : List α) 
   (h1 : array1 ≠ []) (h2 : array2 ≠ []) :
   let result := solve array1 array2;
@@ -53,6 +60,7 @@ info: [2, 0, 1]
 -/
 -- #guard_msgs in
 -- #eval solve ["quick", "brown", "fox", "is", "quick"] ["quick", "abc", "fox"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

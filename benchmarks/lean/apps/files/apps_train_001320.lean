@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_height_eligibility (height min_height : Int) : String := sorry
 
 def process_test_cases (cases : List (Int × Int)) : List String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_height_eligibility_valid (height min_height : Int) :
   let result := check_height_eligibility height min_height
   result = "Yes" ∨ result = "No" ∧ 
@@ -38,6 +46,7 @@ info: ['Yes', 'No', 'Yes']
 -/
 -- #guard_msgs in
 -- #eval process_test_cases [(150, 120), (80, 90), (200, 200)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

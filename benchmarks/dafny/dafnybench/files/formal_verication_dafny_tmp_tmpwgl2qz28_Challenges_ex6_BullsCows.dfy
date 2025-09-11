@@ -1,3 +1,4 @@
+// <vc-preamble>
 function bullspec(s:seq<nat>, u:seq<nat>): nat
 requires 0 <= |u| == |s| && nomultiples(u)
 {reccbull(s, u, 0)}
@@ -26,6 +27,7 @@ decreases |s| - i
 
 predicate nomultiples(u:seq<nat>) 
 {forall j, k :: 0<=j<k<|u| ==> u[j] != u[k]}
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

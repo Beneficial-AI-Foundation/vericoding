@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sqrt (n : Nat) : Nat := sorry 
 
 def divisors (n : Nat) : Nat := sorry
 
 -- Every positive number has at least 1 divisor and no more than itself
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divisors_bounds (n : Nat) (h : n > 0) : 
   1 ≤ divisors n ∧ divisors n ≤ n := sorry
 
@@ -42,6 +50,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval divisors 30
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

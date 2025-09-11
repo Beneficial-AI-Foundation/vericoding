@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, queries: seq<(int, int)>)
 {
     n > 0 && 
@@ -23,6 +24,7 @@ predicate ValidResult(n: int, queries: seq<(int, int)>, results: seq<int>)
         0 <= x < n && 0 <= y < n &&
         results[i] == ChessboardValue(n, x, y)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

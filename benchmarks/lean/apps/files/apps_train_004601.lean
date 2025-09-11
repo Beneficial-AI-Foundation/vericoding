@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_output (cmd : String) : String := sorry
 
 theorem pwd_returns_valid_path :
   let result := get_output "pwd"
   result.length > 0 ∧ result.contains '/' := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ls_returns_content :
   let result := get_output "ls"
   result.length > 0 := sorry
@@ -24,6 +32,7 @@ info: 'hello world\n'
 -/
 -- #guard_msgs in
 -- #eval get_output "echo "hello world""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

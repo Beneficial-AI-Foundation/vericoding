@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_chance (n : Nat) (x : Nat) (a : Nat) : Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem probability_bounds (n : Nat) (x : Nat) (a : Nat) 
   (h1 : n > 0) (h2 : x ≤ n) (h3 : a ≤ n) :
   0 ≤ get_chance n x a ∧ get_chance n x a ≤ 1 :=
@@ -40,6 +48,7 @@ info: 0.33
 -/
 -- #guard_msgs in
 -- #eval get_chance 100 10 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function IsLetter(c: char): bool 
 {
   (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') 
@@ -31,6 +32,7 @@ method Reverse(original: seq<char>) returns (reversed: seq<char>)
 {
   assume{:axiom} false;
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

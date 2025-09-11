@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def goto (level : Int) (button : String) : Int := sorry
 
 theorem goto_valid_inputs (level : Int) (button : String) 
   (h1 : 0 ≤ level ∧ level ≤ 3) 
   (h2 : button = "0" ∨ button = "1" ∨ button = "2" ∨ button = "3") : 
   ∃ result : Int, goto level button = result ∧ result = button.toInt! - level := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem goto_invalid_level (level : Int) (button : String)
   (h1 : level < 0 ∨ level > 3)
   (h2 : button = "0" ∨ button = "1" ∨ button = "2" ∨ button = "3") :
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval goto [] "2"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

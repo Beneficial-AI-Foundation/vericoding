@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidCosts(c: array<int>)
   reads c
 {
@@ -58,6 +59,7 @@ function CorrectResult(c: array<int>, a: array<int>, b: array<int>, result: int)
                  c[2] + c[2],
                  c[3])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

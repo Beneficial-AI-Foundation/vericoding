@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def sumGroups (arr : List Int) : Int := sorry
 
 def getNextArr (arr : List Int) : List Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countAlternatingParity (arr : List Int) : Nat := sorry
 
 theorem sum_groups_returns_positive : 
   ∀ (arr : List Int), arr ≠ [] → 0 < sumGroups arr := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_groups_alternating_parity_bound :
   ∀ (arr : List Int), arr ≠ [] → 
   sumGroups arr ≤ countAlternatingParity arr := sorry
@@ -37,6 +44,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval sum_groups [1, 1, 2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

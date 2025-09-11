@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lower {n : Nat} (a : Vector String n) : Id (Vector String n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lower_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     lower a
@@ -38,3 +45,4 @@ theorem lower_spec {n : Nat} (a : Vector String n) :
           original.get? ⟨j⟩ = some origChar ∧ 
           (origChar.isUpper → result.get? ⟨j⟩ = some origChar.toLower))⌝⦄ := by
   sorry
+-- </vc-theorems>

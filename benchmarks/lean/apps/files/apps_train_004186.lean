@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def is_prime (n : Nat) : Bool :=
   sorry
 
 def end_one (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (a b : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_prime_not_small (n : Nat) :
   n ≤ 1 → is_prime n = false :=
   sorry
@@ -65,6 +72,7 @@ info: 47
 -/
 -- #guard_msgs in
 -- #eval solve 100 2000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -36,6 +37,7 @@ spec fn special_filter_spec(seq: Seq<i32>) -> (ret:int)
         }
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

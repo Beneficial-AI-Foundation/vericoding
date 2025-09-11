@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def archers_ready (archers : List Int) : Bool := sorry
 
 theorem empty_list_false : 
   ∀ (archers : List Int), archers = [] → archers_ready archers = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_above_five_true :
   ∀ (archers : List Int), 
     archers ≠ [] → 
@@ -40,6 +48,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval archers_ready [1, 2, 3, 4, 5, 6, 7, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

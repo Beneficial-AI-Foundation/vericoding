@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def f : List (List Int) → List (List Int) := sorry
 def g : List (List Int) → List (List Int) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def perform : String → String := sorry 
 
 theorem f_g_inverse {matrix : List (List Int)} (h1 : matrix.length > 0) 
   (h2 : ∀ row ∈ matrix, row.length > 0)
   (h3 : ∀ row ∈ matrix, row.length = matrix.head!.length) :
   f (g matrix) = matrix := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem perform_maintains_valid_colors (sequence : String) :
   ∀ c, c.toString ∈ (perform sequence).data.map toString → 
   c = 'y' ∨ c = 'g' ∨ c = 'b' ∨ c = 'o' ∨ c = 'r' ∨ c = 'w' := sorry
@@ -41,6 +48,7 @@ info: 'yyyyyooobbwbbwbbwrrrrrrrrrwggwggwggooooooooobbbrwwwww'
 -/
 -- #guard_msgs in
 -- #eval perform "F""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

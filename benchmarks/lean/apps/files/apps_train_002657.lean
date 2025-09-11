@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def unusual_lex_order (words: List String) : List String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverse (s: String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_length_matches_input (words: List String) (h: words.length > 0) :
   (unusual_lex_order words).length = words.length :=
   sorry
@@ -25,6 +32,7 @@ theorem reverse_sorted_by_reversed_strings (words: List String) (h: words.length
 theorem idempotent (words: List String) (h: words.length > 0) :
   unusual_lex_order (unusual_lex_order words) = unusual_lex_order words :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_partition (n : Nat) (a b : Int) (xs : List Int) : Option (List Nat) := sorry
 
 def is_valid_partition (n : Nat) (a b : Int) (xs : List Int) (result : Option (List Nat)) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (xs : List Int) : Int := 
   match xs with
   | [] => 0
   | x::rest => x + list_sum rest
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_partition_correct (n : Nat) (a b : Int) (xs : List Int) :
   let result := solve_partition n a b xs
   match result with
@@ -37,6 +44,7 @@ theorem solve_partition_same_sum (n : Nat) (a : Int) (xs : List Int)
   | none => True
   | some partition => ∀ g ∈ partition, g = 0 :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

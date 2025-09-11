@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def lexsort {n k : Nat} (keys : Vector (Vector Float n) k) (h : k > 0) : Id (Vector (Fin n) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lexsort_spec {n k : Nat} (keys : Vector (Vector Float n) k) (h : k > 0) :
     ⦃⌜k > 0⌝⦄
     lexsort keys h
@@ -29,3 +36,4 @@ theorem lexsort_spec {n k : Nat} (keys : Vector (Vector Float n) k) (h : k > 0) 
         ∃ p q : Fin n, indices.get p = i ∧ indices.get q = j ∧ p < q)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

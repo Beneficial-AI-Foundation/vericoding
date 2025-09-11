@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def histogramdd {n : Nat} (sample : Vector (Float × Float) n) (bins_x bins_y : Nat) : 
     Id (Vector (Vector Float bins_x) bins_y × Vector Float (bins_x + 1) × Vector Float (bins_y + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem histogramdd_spec {n : Nat} (sample : Vector (Float × Float) n) (bins_x bins_y : Nat) 
     (h_bins_x_pos : bins_x > 0) (h_bins_y_pos : bins_y > 0) :
     ⦃⌜bins_x > 0 ∧ bins_y > 0⌝⦄
@@ -32,3 +39,4 @@ theorem histogramdd_spec {n : Nat} (sample : Vector (Float × Float) n) (bins_x 
           edges_y.get ⟨i.val, by omega⟩ ≤ p.snd ∧ p.snd < edges_y.get ⟨i.val + 1, by omega⟩ ∧
           edges_x.get ⟨j.val, by omega⟩ ≤ p.fst ∧ p.fst < edges_x.get ⟨j.val + 1, by omega⟩)⌝⦄ := by
   sorry
+-- </vc-theorems>

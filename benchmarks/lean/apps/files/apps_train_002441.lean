@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def product (fracs: List (Int × Nat)): Int × Nat := sorry
 
 theorem product_matches_fraction_multiplication 
   (fracs: List (Int × Nat)) (h: fracs.length > 0):
   ∃ (x: Int × Nat), product fracs = x := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem product_result_is_simplified 
   (fracs : List (Int × Nat)) (h: fracs.length > 0):
   let res := product fracs
@@ -37,6 +45,7 @@ info: (1, 1)
 -/
 -- #guard_msgs in
 -- #eval product [(2, 3), (3, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

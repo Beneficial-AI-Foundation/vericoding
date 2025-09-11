@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_rainbow_array (arr : List Int) : String := sorry
 
 def is_palindrome (arr : List α) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rainbow_array_palindrome_property (arr : List Int) :
   is_rainbow_array arr = "yes" →
   is_palindrome arr = true ∧ 
@@ -43,6 +51,7 @@ info: 'no'
 -/
 -- #guard_msgs in
 -- #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 8, 6, 5, 4, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

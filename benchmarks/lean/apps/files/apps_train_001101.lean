@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_steps_to_arrange (n : Nat) (positions : List Nat) : Nat :=
   sorry
 
 -- Any array of all zeros returns 0 steps
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_zeros {n : Nat} (h : n > 0) :
   min_steps_to_arrange n (List.replicate n 0) = 0 :=
 sorry
@@ -41,6 +49,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_steps_to_arrange 5 [0, 1, 2, 1, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

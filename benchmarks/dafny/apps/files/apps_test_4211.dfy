@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, b: seq<int>)
 {
   n >= 2 && |b| == n - 1 && forall i :: 0 <= i < |b| ==> b[i] >= 0
@@ -11,6 +12,7 @@ predicate CorrectResult(n: int, b: seq<int>, result: int)
   else
     result == b[0] + b[n-2] + sum_mins(b, n-2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

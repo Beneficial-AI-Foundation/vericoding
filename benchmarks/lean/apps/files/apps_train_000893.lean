@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_operations (n : Nat) (arr : List Nat) : Nat := sorry
 
 -- Basic properties theorem
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_operations_basic_properties {n : Nat} {arr : List Nat} 
   (h1 : n > 0) 
   (h2 : arr.length > 0)
@@ -37,6 +45,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_operations 11 [2, 2, 2, 10, 2, 10, 1, 1, 5, 3, 5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_multisets (n k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_multisets_result_bounds (n k : Nat) 
   (h1 : n > 0) (h2 : k ≤ n) : 
   count_multisets n k < 998244353 ∧ count_multisets n k ≥ 0 :=
@@ -43,6 +51,7 @@ info: 815951975
 -/
 -- #guard_msgs in
 -- #eval count_multisets 3000 1
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

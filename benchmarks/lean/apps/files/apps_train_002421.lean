@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def largest_triangle_perimeter (xs: List Nat) : Nat := sorry 
 
 def list_sum : List Nat → Nat
 | [] => 0
 | x::xs => x + list_sum xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_get (l: List Nat) (i: Nat) : Nat :=
 match l with
 | [] => 0
 | x::xs => if i = 0 then x else list_get xs (i-1)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem perimeter_bounds {nums : List Nat} (h : nums.length ≥ 3) :
   let result := largest_triangle_perimeter nums
   (result = 0 ∨ (result > 0 ∧ result ≤ list_sum nums)) := sorry
@@ -56,6 +63,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval largest_triangle_perimeter [3, 2, 3, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

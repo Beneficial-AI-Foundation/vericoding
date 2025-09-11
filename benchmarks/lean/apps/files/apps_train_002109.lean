@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def GameOfLife (grid : List String) (queries : List (Nat × Nat × Nat)) : List Nat := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_length_matches_queries (grid : List String) (queries : List (Nat × Nat × Nat)) :
   (GameOfLife grid queries).length = queries.length :=
 sorry
@@ -40,6 +48,7 @@ info: [1, 0, 1]
 -/
 -- #guard_msgs in
 -- #eval game_of_life ["01011", "10110", "01101", "11010", "10101"] [(1, 1, 4), (1, 2, 3), (5, 5, 3)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def summation (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem summation_formula (n : Nat) (h : n > 0) : 
   summation n = n * (n + 1) / 2 := 
   sorry
@@ -29,6 +37,7 @@ info: 253
 -/
 -- #guard_msgs in
 -- #eval summation 22
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

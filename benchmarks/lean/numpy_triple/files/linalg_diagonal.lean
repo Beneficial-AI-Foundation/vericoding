@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_diagonal {m n : Nat} (x : Vector (Vector Float n) m) (offset : Int) : Id (Vector Float (min m n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_diagonal_spec {m n : Nat} (x : Vector (Vector Float n) m) (offset : Int) 
     (h_m : m > 0) (h_n : n > 0) :
     ⦃⌜m > 0 ∧ n > 0⌝⦄
@@ -23,3 +30,4 @@ theorem numpy_diagonal_spec {m n : Nat} (x : Vector (Vector Float n) m) (offset 
         result.get i = (x.get ⟨r, sorry⟩).get ⟨c, sorry⟩)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

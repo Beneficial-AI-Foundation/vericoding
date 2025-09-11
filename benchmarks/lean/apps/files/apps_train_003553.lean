@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def chess_board (rows: Nat) (cols: Nat) : List (List Char) := sorry
 
 theorem chess_board_dimensions (rows cols: Nat) 
@@ -8,7 +14,9 @@ theorem chess_board_dimensions (rows cols: Nat)
   let board := chess_board rows cols
   (board.length = rows) ∧ 
   (∀ row ∈ board, row.length = cols) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chess_board_alternating (rows cols: Nat)
     (h1: 0 < rows) (h2: 0 < cols) :
   let board := chess_board rows cols
@@ -42,6 +50,7 @@ info: expected
 -/
 -- #guard_msgs in
 -- #eval chess_board 3 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

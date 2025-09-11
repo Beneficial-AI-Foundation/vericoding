@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def smaller (arr : List Int) : List Int := sorry
 
 theorem smaller_length_matches_input (arr : List Int) (h : arr ≠ []) :
   List.length (smaller arr) = List.length arr := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem smaller_returns_non_negative (arr : List Int) (h : arr ≠ []) :
   ∀ x ∈ smaller arr, x ≥ 0 := sorry
 
@@ -38,6 +46,7 @@ info: [0, 0, 0]
 -/
 -- #guard_msgs in
 -- #eval smaller [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

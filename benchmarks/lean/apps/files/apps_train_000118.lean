@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_substring_value (n m : Nat) : Nat := sorry
 
 -- If m=0, result should be 0 for any n>0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_ones {n : Nat} (h : n > 0) : 
   max_substring_value n 0 = 0 := sorry
 
@@ -46,6 +54,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval max_substring_value 5 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

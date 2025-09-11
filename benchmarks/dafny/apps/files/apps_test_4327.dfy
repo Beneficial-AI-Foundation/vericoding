@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, P: int)
 {
     0 <= A <= 100 && 0 <= P <= 100
@@ -14,6 +15,7 @@ function MaxPies(A: int, P: int): int
 {
     TotalPieces(A, P) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

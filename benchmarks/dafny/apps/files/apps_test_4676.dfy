@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := split(input, '\n');
@@ -48,6 +49,7 @@ function InterleaveUnequal(O: string, E: string): string
     if |E| == 0 then O
     else [O[0], E[0]] + InterleaveUnequal(O[1..], E[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

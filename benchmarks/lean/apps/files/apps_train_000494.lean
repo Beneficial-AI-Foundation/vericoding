@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def validParens (s : String) : Bool := sorry
 
 def isSubsequence (s1 s2 : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def minRemoveToMakeValid (s : String) : String := sorry
 
 inductive CharIn (s : String) where
   | mk (c : Char) (h : s.data.contains c) : CharIn s
 
 -- All chars in result are valid
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_contains_valid_chars (s : String) :
   ∀ c, (minRemoveToMakeValid s).data.contains c →
     c = '(' ∨ c = ')' ∨ c = 'a' ∨ c = 'b' ∨ c = 'c' := sorry
@@ -64,6 +71,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval minRemoveToMakeValid "))(("
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

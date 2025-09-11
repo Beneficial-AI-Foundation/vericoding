@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def array_diff (a b : List Int) : List Int := sorry
 
 theorem array_diff_elements_from_a (a b : List Int) :
   ∀ x ∈ array_diff a b, x ∈ a := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_diff_no_elements_from_b (a b : List Int) :
   ∀ x ∈ array_diff a b, x ∉ b := sorry
 
@@ -35,6 +43,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval array_diff [1, 2, 2] [2]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

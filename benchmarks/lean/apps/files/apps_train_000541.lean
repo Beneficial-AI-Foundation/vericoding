@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_robot_position (t : Nat) : Int × Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def manhattan_distance (x y : Int) : Nat :=
   Int.natAbs x + Int.natAbs y
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem coordinates_are_integers (t : Nat) (h : t > 0) :
   let (x, y) := find_robot_position t
   True :=
@@ -37,6 +44,7 @@ info: (2, 4)
 -/
 -- #guard_msgs in
 -- #eval find_robot_position 50
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

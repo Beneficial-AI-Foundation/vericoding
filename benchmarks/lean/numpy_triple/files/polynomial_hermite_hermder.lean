@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermder {n : Nat} (c : Vector Float n) (m : Nat := 1) (scl : Float := 1.0) : 
     Id (Vector Float (n - min m n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) :
     ⦃⌜True⌝⦄
     hermder c m scl
@@ -37,3 +44,4 @@ theorem hermder_spec {n : Nat} (c : Vector Float n) (m : Nat) (scl : Float) :
             c.get ⟨i.val + 2, sorry⟩)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

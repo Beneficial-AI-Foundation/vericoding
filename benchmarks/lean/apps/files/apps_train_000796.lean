@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_borrowed_books (n : Nat) (books : List Nat) (k : Nat) (positions : List Nat) : List Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_borrowed_books_middle_and_end 
   (books : List Nat := [26, 1, 42, 15, 3])
   (n : Nat := 5)
@@ -38,6 +46,7 @@ theorem find_borrowed_books_length
   (h3 : n = books.length) :
   (find_borrowed_books n books k positions).length = k :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

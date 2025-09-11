@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def string_to_number (s : String) : Int := sorry
 
 theorem string_to_number_roundtrip (n : Int) : 
   string_to_number (toString n) = n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem string_to_number_invalid_empty :
   ∀ s : String, s = "" → string_to_number s = 0 := sorry
 
@@ -30,6 +38,7 @@ info: 605
 -/
 -- #guard_msgs in
 -- #eval string_to_number "605"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

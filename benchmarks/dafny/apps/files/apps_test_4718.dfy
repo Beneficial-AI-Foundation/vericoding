@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(dateStr: string) 
 {
     |dateStr| == 10 && dateStr[0..4] == "2017"
@@ -11,6 +12,7 @@ predicate ValidOutput(input: string, output: string)
     output[0..4] == "2018" &&
     output[4..] == input[4..]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

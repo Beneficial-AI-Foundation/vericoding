@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encode_uri : List String → List String := sorry
 
 def encodings : List (String × String) := [
@@ -12,7 +18,9 @@ def encodings : List (String × String) := [
   (")", "%29"),
   ("*", "%2a")
 ]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_uri_properties (strings : List String) (h : strings ≠ []) :
   let result := encode_uri (strings ++ ["#"]);
   (∀ s ∈ result, s.data ≠ []) ∧ 
@@ -27,6 +35,7 @@ theorem encode_uri_terminates (strings : List String)
   encode_uri (strings ++ ["#"] ++ strings) = 
   encode_uri (strings ++ ["#"]) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

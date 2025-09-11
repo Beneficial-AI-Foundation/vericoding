@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_arrays (d : Nat) (m : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_arrays_range (d m : Nat) (hd : d > 0) (hm : m > 0) :
   count_arrays d m < m := sorry
 
@@ -40,6 +48,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_arrays 10 1
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

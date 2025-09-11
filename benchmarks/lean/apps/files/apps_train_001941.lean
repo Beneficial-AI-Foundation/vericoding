@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_time_game (n : Nat) (d : Nat) (a : List Nat) (coords : List (Int × Int)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_time_game_basic {n d : Nat} {a : List Nat} {coords : List (Int × Int)}
   (h1 : n ≥ 2)
   (h2 : d > 0) 
@@ -31,6 +39,7 @@ info: 169099
 -/
 -- #guard_msgs in
 -- #eval solve_time_game 5 1421 [0, 896, 448, 727, 0] [(-19, -40), (-87, 40), (69, 51), (-55, 61), (-7, 67)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

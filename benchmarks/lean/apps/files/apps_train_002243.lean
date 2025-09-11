@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_loaves (k : Float) : (Nat × List (Nat × Float)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_loaves_result_is_four (k : Float) 
   (hk : 1 ≤ k ∧ k ≤ 10) :
   (max_loaves k).1 = 4 :=
@@ -49,6 +57,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval len instr
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

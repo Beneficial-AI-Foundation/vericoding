@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_nth_occurrence (substring : String) (string : String) (occurrence : Nat) : Int := sorry
 
 theorem find_nth_occurrence_result_valid {string substring : String} {occurrence : Nat}
     (h : substring.length > 0) :
   let result := find_nth_occurrence substring string occurrence
   result = -1 ∨ (0 ≤ result ∧ result < string.length) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_nth_occurrence_substring_exists {string substring : String} {occurrence : Nat}
     (h : substring.length > 0)
     (h2 : find_nth_occurrence substring string occurrence ≠ -1) :
@@ -77,6 +85,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval find_nth_occurrence "TestTest" test_str2 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

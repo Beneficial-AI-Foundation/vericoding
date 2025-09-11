@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_array_transform (n : Nat) (arr : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_transform_length {n : Nat} {arr : List Nat} 
   (h : n > 0) (h2 : arr.length > 0) :
   (solve_array_transform n arr).length = n :=
@@ -44,6 +52,7 @@ info: expected2
 -/
 -- #guard_msgs in
 -- #eval solve_array_transform 4 [5, 4, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

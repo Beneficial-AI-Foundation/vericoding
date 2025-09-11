@@ -1,16 +1,23 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def leggrid3d {nx ny nz : Nat} {deg_x deg_y deg_z : Nat} 
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
     (c : Vector (Vector (Vector Float deg_z) deg_y) deg_x) : 
     Id (Vector (Vector (Vector Float nz) ny) nx) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem leggrid3d_spec {nx ny nz : Nat} {deg_x deg_y deg_z : Nat}
     (x : Vector Float nx) (y : Vector Float ny) (z : Vector Float nz)
     (c : Vector (Vector (Vector Float deg_z) deg_y) deg_x) :
@@ -42,3 +49,4 @@ theorem leggrid3d_spec {nx ny nz : Nat} {deg_x deg_y deg_z : Nat}
          (x.get i₁ = x.get i₂ ∧ y.get j₁ = y.get j₂ ∧ z.get k₁ = z.get k₂)))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -19,6 +20,7 @@ spec fn gcd_prime(x: int, y: int) -> int
     else if x > y { gcd_prime(x - y, y) }
     else { gcd(y, x) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

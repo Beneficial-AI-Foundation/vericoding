@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_cyclic_array (n : Nat) (b : List Nat) : String × List Nat := sorry
 
 theorem solve_cyclic_array_properties {n : Nat} {b : List Nat} 
@@ -11,7 +17,9 @@ theorem solve_cyclic_array_properties {n : Nat} {b : List Nat}
      (∀ i < n, arr[i]! % arr[(i+1)%n]! = b[i]!) ∧
      (∀ x ∈ arr, x > 0))
   else true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_cyclic_array_zeros (n : Nat) (h1: n ≥ 2) (h2: n ≤ 10) :
   let b := List.replicate n 0
   let (status, arr) := solve_cyclic_array n b
@@ -28,6 +36,7 @@ info: n
 -/
 -- #guard_msgs in
 -- #eval len arr
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

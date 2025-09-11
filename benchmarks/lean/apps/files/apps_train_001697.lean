@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solution (s : String) : String := sorry 
 
 theorem solution_empty_result : 
   solution "1335556789999" = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_multiple_valid_tiles_1 : 
   solution "1113335557779" = "89" := sorry
 
@@ -42,6 +50,7 @@ info: '258'
 -/
 -- #guard_msgs in
 -- #eval solution "1223334455678"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

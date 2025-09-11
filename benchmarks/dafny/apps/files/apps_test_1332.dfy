@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(coins: seq<int>)
 {
   |coins| == 5 && forall i :: 0 <= i < |coins| ==> 0 <= coins[i] <= 100
@@ -22,6 +23,7 @@ function ComputeResult(coins: seq<int>): int
   var total := TotalCoins(coins);
   if total > 0 && total % 5 == 0 then total / 5 else -1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

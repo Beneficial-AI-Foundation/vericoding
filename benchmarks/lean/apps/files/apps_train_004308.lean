@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def distance (x y : Float) : Float := 
   sorry
 
@@ -6,13 +7,19 @@ def angle (x y : Float) : Float :=
 
 def get_score (x y : Float) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def ValidScores : List String := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_score_returns_valid : ∀ x y : Float, x ≥ -200 ∧ x ≤ 200 ∧ y ≥ -200 ∧ y ≤ 200 → 
   get_score x y ∈ ValidScores :=
 sorry
@@ -52,6 +59,7 @@ info: 'T2'
 -/
 -- #guard_msgs in
 -- #eval get_score 55.53 -87.95
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def validPlanets : Int → Option String
 | 1 => some "Mercury"
 | 2 => some "Venus"
@@ -8,15 +9,21 @@ def validPlanets : Int → Option String
 | 7 => some "Uranus"
 | 8 => some "Neptune"
 | _ => none
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def getPlanetName (id: Int) : Option String := sorry
 
 theorem get_planet_name_matches_valid : ∀ (id : Int),
   getPlanetName id = validPlanets id := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_ids_return_none : ∀ (id : Int),
   (id < 1 ∨ id > 8) → getPlanetName id = none := by sorry
 
@@ -43,6 +50,7 @@ info: 'Earth'
 -/
 -- #guard_msgs in
 -- #eval get_planet_name 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

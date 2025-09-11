@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def camelize (s : String) : String := sorry
 
 theorem camelize_not_empty (s : String) (h : s.any fun c => c.isAlpha) :
   (camelize s).length > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem camelize_first_upper (s : String) (h : s.any fun c => c.isAlpha) 
   (h2 : (camelize s).length > 0) :
   Char.isUpper ((camelize s).data.get! 0) := sorry
@@ -43,6 +51,7 @@ info: 'TestingAbc'
 -/
 -- #guard_msgs in
 -- #eval camelize "testing ABC"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def next_smaller (n : Nat) : Int := sorry
 
 theorem next_smaller_result_positive (n : Nat) (h: n ≥ 10) :
   next_smaller n = -1 ∨ next_smaller n > 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def has_same_digits (n m : Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digit_returns_negative_one (n : Nat) (h: n < 10) :
   next_smaller n = -1 := sorry 
 
@@ -36,6 +43,7 @@ info: 123456789
 -/
 -- #guard_msgs in
 -- #eval next_smaller 123456798
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

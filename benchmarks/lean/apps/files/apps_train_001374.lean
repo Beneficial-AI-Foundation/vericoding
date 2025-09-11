@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_fenwick_accesses (l1 l2 l3: String) (n: Nat) : Nat := sorry
 
 def is_valid_binary (s: String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_fenwick_result_nonnegative (l1 l2 l3: String) (n: Nat) :
   count_fenwick_accesses l1 l2 l3 n ≥ 0 := sorry
 
@@ -37,6 +45,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval count_fenwick_accesses "1010" "001" "101" 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

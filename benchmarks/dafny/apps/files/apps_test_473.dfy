@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidTimeFormat(time_str: string)
 {
     |time_str| == 5 &&
@@ -65,6 +66,7 @@ predicate CorrectBedtime(stdin_input: string, result: string)
     var result_min := (result[3] as int - '0' as int) * 10 + (result[4] as int - '0' as int);
     result_hour == bed_hour && result_min == bed_min
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

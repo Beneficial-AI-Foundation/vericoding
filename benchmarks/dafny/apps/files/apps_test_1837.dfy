@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, A: seq<int>)
 {
     n >= 1 &&
@@ -24,6 +25,7 @@ function MaxPossibleFixedPoints(A: seq<int>): int
     else
         current + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

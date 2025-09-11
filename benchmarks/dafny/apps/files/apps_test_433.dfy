@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int) {
     n >= 1 && 1 <= a <= n && -100 <= b <= 100
 }
@@ -11,6 +12,7 @@ function FinalEntrance(n: int, a: int, b: int): int
 predicate ValidOutput(result: int, n: int) {
     1 <= result <= n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

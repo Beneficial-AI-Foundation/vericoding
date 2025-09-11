@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def yearDays (year : Int) : String := sorry
 
 def isLeapYear (year : Int) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem yearDays_format {year : Int} : 
   yearDays year = s!"{year} has {if isLeapYear year then 366 else 365} days" := sorry
 
@@ -34,6 +42,7 @@ info: '-64 has 366 days'
 -/
 -- #guard_msgs in
 -- #eval year_days -64
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

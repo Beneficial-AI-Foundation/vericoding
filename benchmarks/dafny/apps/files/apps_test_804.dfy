@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string, k: int)
 {
     1 <= k <= 26 && 1 <= |s| <= 1000 && 
@@ -22,6 +23,7 @@ predicate IsImpossible(s: string, k: int)
 {
     |s| < k
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

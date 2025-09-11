@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def argpartition {n : Nat} (a : Vector Float n) (kth : Fin n) : Id (Vector (Fin n) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem argpartition_spec {n : Nat} (a : Vector Float n) (kth : Fin n) :
     ⦃⌜True⌝⦄
     argpartition a kth
@@ -21,3 +28,4 @@ theorem argpartition_spec {n : Nat} (a : Vector Float n) (kth : Fin n) :
       (∀ i : Fin n, kth < i → a.get (indices.get kth) ≤ a.get (indices.get i))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

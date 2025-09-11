@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def reverse_strings (arr : List String) : List String :=
   sorry
 
 def String.reverse (s : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | x :: xs => x + listSum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_strings_length_preserved (arr : List String) 
   (h : ∀ s ∈ arr, s.length > 0) :
   let result := reverse_strings arr
@@ -47,6 +54,7 @@ info: expected2
 -/
 -- #guard_msgs in
 -- #eval reverse_strings ["?kn", "ipnr", "utotst", "ra", "tsn", "iksr", "uo", "yer", "ofebta", "eote", "vahu", "oyodpm", "ir", "hsyn", "amwoH"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

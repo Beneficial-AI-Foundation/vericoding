@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_ugly (n : Int) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem negative_and_zero_not_ugly {x : Int} (h : x ≤ 0) : 
   is_ugly x = false := 
   sorry
@@ -38,6 +46,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_ugly 14
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

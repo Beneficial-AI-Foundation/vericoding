@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn spec_prime_helper(num: int, limit: int) -> (ret:bool) {
 spec fn spec_prime(num: int) -> (ret:bool) {
     spec_prime_helper(num, num)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

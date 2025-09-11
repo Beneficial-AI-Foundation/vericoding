@@ -1,14 +1,21 @@
+-- <vc-preamble>
 @[reducible, simp]
 def minOperations_precond (nums : List Nat) (k : Nat) : Prop :=
   let target_nums := (List.range k).map (· + 1)
   target_nums.all (fun n => List.elem n nums)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def minOperations (nums : List Nat) (k : Nat) (h_precond : minOperations_precond (nums) (k)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def minOperations_postcond (nums : List Nat) (k : Nat) (result: Nat) (h_precond : minOperations_precond (nums) (k)) : Prop :=
   -- define the list of elements processed after `result` operations
@@ -38,6 +45,7 @@ def minOperations_postcond (nums : List Nat) (k : Nat) (result: Nat) (h_precond 
 theorem minOperations_spec_satisfied (nums: List Nat) (k: Nat) (h_precond : minOperations_precond (nums) (k)) :
     minOperations_postcond (nums) (k) (minOperations (nums) (k) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

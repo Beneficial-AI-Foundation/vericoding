@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def duplicates {α : Type u} [BEq α] (arr : List α) : List α := sorry
 
 theorem duplicates_contains_only_duplicated_elements {α : Type u} [BEq α] (arr : List α) :
   ∀ x ∈ duplicates arr, (arr.count x) ≥ 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem duplicates_contains_all_duplicated_elements {α : Type u} [BEq α] (arr : List α) :
   ∀ x, (arr.count x) ≥ 2 → x ∈ duplicates arr := sorry
 
@@ -32,6 +40,7 @@ info: [1, 4]
 -/
 -- #guard_msgs in
 -- #eval duplicates [1, 1, 2, 3, 4, 5, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

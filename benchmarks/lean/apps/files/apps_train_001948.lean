@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_isomorphic_trees (h : Nat) (a : List Nat) : String := sorry
 
 theorem output_format {h : Nat} {a : List Nat} :
@@ -14,7 +20,9 @@ theorem output_format {h : Nat} {a : List Nat} :
    let q := lines[2]!.splitOn " "
    w.length = q.length ∧ 
    w.length = total_nodes) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_child_nodes_perfect {h : Nat} {a : List Nat} :
   (∀ x ∈ a, x = 1) →
   solve_isomorphic_trees h a = "perfect" := sorry
@@ -44,6 +52,7 @@ info: case3
 -/
 -- #guard_msgs in
 -- #eval solve_isomorphic_trees 2 [1, 3, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

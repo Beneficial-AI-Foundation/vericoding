@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def switch_endian (n : Nat) (bits : Nat) : Option Nat := sorry
 
 theorem switch_twice_identity 
@@ -10,7 +16,9 @@ theorem switch_twice_identity
   ∀ first_switch, switch_endian n bits = some first_switch → 
   switch_endian first_switch bits = some n := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_inputs_return_none 
   (n : Nat) (bits : Nat) :
   bits < 8 → switch_endian n bits = none := 
@@ -52,6 +60,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval switch_endian 256 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

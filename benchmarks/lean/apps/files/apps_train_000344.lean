@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def numSubseq (nums : List Nat) (target : Nat) : Nat := sorry
 
 def minimum (l : List Nat) : Option Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numSubseq_non_negative (nums : List Nat) (target : Nat) :
   target ≥ 2 →
   nums.length ≥ 1 →
@@ -39,6 +47,7 @@ info: 61
 -/
 -- #guard_msgs in
 -- #eval numSubseq [2, 3, 3, 4, 6, 7] 12
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

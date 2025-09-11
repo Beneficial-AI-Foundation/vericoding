@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def knight_rescue (N : List Nat) (x y : Nat) : Bool := sorry
 
 theorem knight_rescue_same_parity (N : List Nat) (x y : Nat) (h : (x - y) % 2 = 0) :
   knight_rescue N x y = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem knight_rescue_has_even (N : List Nat) (x y : Nat) 
   (h : ∃ n ∈ N, n % 2 = 0) :
   knight_rescue N x y = true := sorry
@@ -36,6 +44,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval knight_rescue [1] 1 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn is_upper_case(c: char) -> bool {
     65 <= c as int <= 90
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

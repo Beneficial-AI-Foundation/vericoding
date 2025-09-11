@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reduce {n : Nat} (op : Float → Float → Float) (arr : Vector Float (n + 1)) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reduce_spec {n : Nat} (op : Float → Float → Float) (arr : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     reduce op arr
@@ -19,3 +26,4 @@ theorem reduce_spec {n : Nat} (op : Float → Float → Float) (arr : Vector Flo
                                (arr.get ⟨i.val + 1, Nat.succ_lt_succ i.isLt⟩)) ∧
                           result = fold_fn ⟨n, Nat.lt_succ_self _⟩)⌝⦄ := by
   sorry
+-- </vc-theorems>

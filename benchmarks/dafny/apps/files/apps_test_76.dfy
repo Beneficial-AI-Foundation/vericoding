@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, a: int, b: int)
 {
     n >= 1 && m >= 1 && a >= 1 && b >= 1
@@ -9,6 +10,7 @@ function MinCostToDivisible(n: int, m: int, a: int, b: int): int
     var k := n % m;
     if k * b < (m - k) * a then k * b else (m - k) * a
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

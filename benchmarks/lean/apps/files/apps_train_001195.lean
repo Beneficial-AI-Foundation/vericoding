@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def find_possible_ascii_chars (s: String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hasDuplicates (s: List α) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_uppercase_ascii (input: String)
     (h: input.all (fun c => '0' ≤ c ∧ c ≤ '9')) 
     (h_size: input.length > 0) :
@@ -53,6 +60,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval find_possible_ascii_chars "11"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

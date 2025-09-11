@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def GolfString := String
 
 def golf_score_calculator (par: GolfString) (score: GolfString) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem golf_score_symmetric (par score: GolfString) : 
   golf_score_calculator par score = -(golf_score_calculator score par) :=
 sorry
@@ -37,6 +45,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval golf_score_calculator "444444444444444444" "444444444444444445"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

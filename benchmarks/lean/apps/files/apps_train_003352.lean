@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def de_nico (key : String) (msg : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem de_nico_length_bounded (key : String) (msg : String) :
   (de_nico key msg).length ≤ msg.length := by
   sorry
@@ -41,6 +49,7 @@ info: 'key'
 -/
 -- #guard_msgs in
 -- #eval de_nico "key" "eky"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

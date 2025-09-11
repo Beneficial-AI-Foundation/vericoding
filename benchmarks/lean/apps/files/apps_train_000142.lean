@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_steps (n : Nat) : Nat := sorry
 
 def isPrime (n : Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_steps_nonnegative (n : Nat) (h : n ≥ 1) : 
   min_steps n ≥ 0 := sorry
 
@@ -33,6 +41,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval min_steps 9
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

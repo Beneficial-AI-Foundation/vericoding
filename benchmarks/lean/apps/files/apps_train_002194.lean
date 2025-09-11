@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) (pairs : List (Nat × Nat)) : Nat := sorry 
 
 theorem solve_non_negative (n : Nat) (pairs : List (Nat × Nat)) :
   solve n pairs ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_upper_bound (n : Nat) (pairs : List (Nat × Nat)) :
   solve n pairs ≤ pairs.foldl (fun acc p => acc + p.1) 0 := sorry
 
@@ -38,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve 1 [(1, 1)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

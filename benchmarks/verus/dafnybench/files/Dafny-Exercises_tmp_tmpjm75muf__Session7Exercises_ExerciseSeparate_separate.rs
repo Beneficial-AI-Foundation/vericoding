@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -15,6 +16,7 @@ spec fn positive(s: Seq<i32>) -> bool {
 spec fn is_permutation(s: Seq<i32>, t: Seq<i32>) -> bool {
     s.to_multiset() == t.to_multiset()
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

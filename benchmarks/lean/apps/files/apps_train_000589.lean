@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_impact_points (N : Nat) (K : Nat) (M : Nat) (X0 : Nat) : String := sorry
 
 theorem solve_impact_points_returns_valid_output 
@@ -11,7 +17,9 @@ theorem solve_impact_points_returns_valid_output
   (hX0 : 0 ≤ X0 ∧ X0 ≤ 1000) :
   solve_impact_points N K M X0 = "yes" ∨ 
   solve_impact_points N K M X0 = "no" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem k_equals_one_property
   (N : Nat) (M : Nat) (X0 : Nat)
   (hN : 1 ≤ N ∧ N ≤ 1000)
@@ -62,6 +70,7 @@ info: 'yes'
 -/
 -- #guard_msgs in
 -- #eval solve_impact_points 1 3 3 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

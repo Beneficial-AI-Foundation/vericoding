@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isVowel (c : Char) : Bool := sorry
 def nicknameGenerator (name : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nickname_length (name : String) 
   (h1 : name.length ≥ 4) 
   (h2 : ∀ c ∈ name.data, c.isAlpha) :
@@ -42,6 +50,7 @@ info: 'Error: Name too short'
 -/
 -- #guard_msgs in
 -- #eval nickname_generator "Sam"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

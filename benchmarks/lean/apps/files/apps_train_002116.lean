@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_array_element (n : Nat) (x : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_array_element_in_bounds {n x : Nat} (hn : n > 0) (hx : x > 0) (hxn : x ≤ n) : 
   1 ≤ find_array_element n x ∧ find_array_element n x ≤ n :=
 sorry
@@ -33,6 +41,7 @@ info: expected[i]
 -/
 -- #guard_msgs in
 -- #eval find_array_element 3 queries[i]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

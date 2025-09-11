@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate isLadder(arr: seq<int>, l: int, r: int)
   requires 0 <= l <= r < |arr|
 {
@@ -19,6 +20,7 @@ predicate isNonIncreasing(arr: seq<int>, start: int, end: int)
 {
   forall i :: start <= i < end ==> arr[i] >= arr[i+1]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

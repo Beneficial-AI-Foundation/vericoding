@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidGrid(grid: seq<seq<int>>, n: int, m: int)
 {
     |grid| == n && n > 0 && m > 0 &&
@@ -45,6 +46,7 @@ function ComputeScore(grid: seq<seq<int>>): int
     var rowScores := seq(|grid|, i requires 0 <= i < |grid| => cons(grid[i]));
     MaxInSeq(rowScores)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

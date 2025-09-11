@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_form_army (g t w : Nat) : String := sorry
 
 def sorted_list (a b c : Nat) : List Nat :=
@@ -12,7 +18,9 @@ def sorted_list (a b c : Nat) : List Nat :=
   else if a ≤ c then [b, a, c]
   else if b ≤ c then [b, c, a]
   else [c, b, a]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_form_army_valid_output (g t w : Nat) :
   can_form_army g t w = "Yes" ∨ can_form_army g t w = "No" := sorry
 
@@ -56,6 +64,7 @@ info: 'Yes'
 -/
 -- #guard_msgs in
 -- #eval can_form_army 2 2 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

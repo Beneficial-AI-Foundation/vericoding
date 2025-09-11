@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def sum (l : List Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def peak (arr : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem peak_equal_sums (arr : List Int) (h_size : arr.length > 0) :
   let p := peak arr;
   p ≠ -1 →
@@ -43,6 +50,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval peak [10, 20, 30, 40]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

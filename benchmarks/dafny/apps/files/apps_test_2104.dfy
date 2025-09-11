@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(l: int, r: int)
 {
     l < r && (r - l) % 2 == 1
@@ -25,6 +26,7 @@ predicate ValidSolution(result: seq<string>, l: int, r: int)
     |result| == 1 + (r - l + 1) / 2 &&
     (forall i :: 1 <= i < |result| ==> PairHasGcdOne(result[i], l, r))
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

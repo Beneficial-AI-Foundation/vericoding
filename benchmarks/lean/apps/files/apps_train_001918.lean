@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_stars (n : Nat) (a b c d : Int) (stars : List (Int × Int)) : Nat := sorry
 
 theorem output_bounds {n : Nat} {a b c d : Int} {stars : List (Int × Int)}
@@ -11,7 +17,9 @@ theorem output_bounds {n : Nat} {a b c d : Int} {stars : List (Int × Int)}
   (h5 : stars ≠ []) :
   let result := find_max_stars n a b c d stars
   result ≥ 0 ∧ result ≤ stars.length := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_points {n : Nat} {a b c d : Int} {stars : List (Int × Int)}
   (h1 : n > 0)
   (h2 : ¬(a = 0 ∧ b = 0))
@@ -44,6 +52,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval find_max_stars 5 0 17 74 0 [(69711, 29703), (91677, 56040), (26051, 78244), (20816, 40897), (70770, 35908)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

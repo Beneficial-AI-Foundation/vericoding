@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def format_float (x : Float) (parens : Bool := false) : Id String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem format_float_spec (x : Float) (parens : Bool := false) :
     ⦃⌜True⌝⦄
     format_float x parens
@@ -35,3 +42,4 @@ theorem format_float_spec (x : Float) (parens : Bool := false) :
                             c = '(' ∨ c = ')' ∨ c = 'n' ∨ c = 'a' ∨ c = 'i' ∨ c = 'f' ∨ c = 'I' ∨ c = 'N'))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

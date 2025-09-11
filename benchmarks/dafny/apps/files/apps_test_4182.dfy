@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, x: int, y: int, xx: seq<int>, yy: seq<int>)
 {
     |xx| == n && |yy| == m && n >= 1 && m >= 1 && x < y
@@ -14,6 +15,7 @@ predicate AgreementPossible(n: int, m: int, x: int, y: int, xx: seq<int>, yy: se
                      (forall v :: v in combined_y ==> v >= min_val) &&
                      max_val < min_val)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

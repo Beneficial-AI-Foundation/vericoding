@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_fences (n : Nat) (row1 row2 : String) : Nat := sorry
 
 theorem empty_rows_zero_fences (n : Nat) (h : n > 0) :
   let row := String.mk (List.replicate n '.')
   min_fences n row row = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_row_stars (n stars : Nat) (h1 : n > 0) (h2 : stars ≤ n) :
   let stars_str := String.mk (List.replicate stars '*')
   let dots_str := String.mk (List.replicate (n - stars) '.')
@@ -37,6 +45,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_fences 3 "*.." ".*."
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

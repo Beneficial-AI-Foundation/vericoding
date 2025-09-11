@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_infection_severity (passengers : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem severity_matches_manual_calc
     (coords : List (Int × Int)) :
     let passengers := coords.map (fun (x : Int × Int) => s!"{x.1} {x.2}")
@@ -34,6 +42,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval calculate_infection_severity ["1 1", "2 2"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

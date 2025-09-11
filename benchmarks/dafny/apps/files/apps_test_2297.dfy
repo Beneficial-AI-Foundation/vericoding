@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidQuery(query: (int, int))
 {
     query.0 >= 1 && query.0 <= query.1
@@ -32,6 +33,7 @@ predicate CorrectResult(queries: seq<(int, int)>, results: seq<int>)
     |results| == |queries| &&
     forall i :: 0 <= i < |queries| ==> results[i] == PrefixSum(queries[i].1) - PrefixSum(queries[i].0 - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string) {
     forall i :: 0 <= i < |s| ==> s[i] == 'L' || s[i] == 'R' || s[i] == 'U' || s[i] == 'D'
 }
@@ -46,6 +47,7 @@ predicate CorrectResult(s: string, result: int) {
     (|s| % 2 == 0 ==> result <= |s| / 2) &&
     (|s| % 2 == 0 ==> result == (abs(countChar(s, 'L') - countChar(s, 'R')) + abs(countChar(s, 'U') - countChar(s, 'D'))) / 2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

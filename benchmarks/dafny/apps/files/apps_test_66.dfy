@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(t: int, w: int, b: int)
 {
   t > 0 && w > 0 && b > 0
@@ -13,6 +14,7 @@ predicate IsIrreducibleFraction(numerator: int, denominator: int)
 {
   gcd(numerator, denominator) == 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

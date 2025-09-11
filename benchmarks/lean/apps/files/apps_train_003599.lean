@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def slogans (pattern : String) (text : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem slogans_basic_static_cases :
   (slogans "abc" "abc" ≥ 1) ∧
   (slogans "abc" "" = 0) ∧
@@ -43,6 +51,7 @@ info: 13
 -/
 -- #guard_msgs in
 -- #eval slogans "dhgusdlifons" "lifonsssdlifonsgusdlifonssnsdlifonsslifonsifonsdlifonsfonsifons"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def gap (n : Nat) : Nat := sorry
 
 theorem gap_bounded (n : Nat) (h : n > 0):
   gap n ≤ n.log2 :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_gaps_all_ones (n : Nat):
   gap ((1 <<< n) - 1) = 0 :=
 sorry
@@ -36,6 +44,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval gap 15
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

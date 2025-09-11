@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def convertToExcelTitle (n : Nat) : String := sorry
 
 def colNumFromStr (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem convert_to_excel_title_properties (n : Nat) 
   (h1 : n > 0) (h2 : n ≤ 1000000) :
   let result := convertToExcelTitle n
@@ -43,6 +51,7 @@ info: 'ZY'
 -/
 -- #guard_msgs in
 -- #eval convert_to_excel_title 701
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

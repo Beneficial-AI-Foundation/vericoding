@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fusc (n : Nat) : Nat := sorry
 
 @[simp]
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fusc_zero : fusc 0 = 0 := sorry
 
 @[simp] 
@@ -40,6 +48,7 @@ info: 21
 -/
 -- #guard_msgs in
 -- #eval fusc 85
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

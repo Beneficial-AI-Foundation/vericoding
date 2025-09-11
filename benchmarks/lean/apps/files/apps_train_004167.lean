@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def List.get_thue_morse_seq (n : Nat) : List Nat := sorry
 def is_thue_morse (seq : List Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_sequence_length (n : Nat) (h : n > 0) :
   is_thue_morse (List.get_thue_morse_seq n) := sorry
 
@@ -30,6 +38,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_thue_morse [1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

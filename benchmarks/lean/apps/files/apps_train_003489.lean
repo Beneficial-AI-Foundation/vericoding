@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def toBase (num base : Nat) : String :=
   sorry
 
 def sumItUp (nums : List (String × Nat)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumList (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x :: xs => x + sumList xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_it_up_equals_decimal_sum {nums : List (Nat × Nat)} :
   ∀ pairs : List (String × Nat),
   (∀ p : String × Nat, p ∈ pairs → 
@@ -55,6 +62,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval sum_it_up []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

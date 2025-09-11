@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxJumps (arr : List Int) (d : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxJumps_result_bounded {arr : List Int} {d : Nat}
   (h1 : ∀ x ∈ arr, 1 ≤ x ∧ x ≤ 100000)
   (h2 : List.length arr ≤ 100)
@@ -48,6 +56,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval maxJumps [7, 6, 5, 4, 3, 2, 1] 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

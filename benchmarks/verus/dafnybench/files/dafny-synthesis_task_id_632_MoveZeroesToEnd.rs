@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -35,6 +36,7 @@ proof fn count_bound(arr: Seq<i32>, value: i32)
         count_bound(arr.skip(1), value);
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

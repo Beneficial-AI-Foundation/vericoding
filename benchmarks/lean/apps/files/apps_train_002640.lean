@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_years (principal interest tax desired : Float) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_years_non_negative (principal interest tax desired : Float)
   (h1 : principal - desired > 1 ∨ desired - principal > 1)
   (h2 : interest ≥ 0.01) (h3 : interest ≤ 0.2) 
@@ -57,6 +65,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval calculate_years 1000 0.05 0.18 1000
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

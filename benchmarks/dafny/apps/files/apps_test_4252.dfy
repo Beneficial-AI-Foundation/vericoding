@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string) 
 {
     |s| >= 3
@@ -27,6 +28,7 @@ function ConsecutiveXCount(s: string, pos: int): int
     else if s[pos - 1] == 'x' then 1 + ConsecutiveXCount(s, pos - 1)
     else 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

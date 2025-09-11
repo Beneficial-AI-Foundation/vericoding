@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate CanPartitionIntoEqualSumSegments(input: string)
     requires |input| > 0
 {
@@ -95,6 +96,7 @@ function TrimRight(s: string): string
     else if s[|s| - 1] == ' ' || s[|s| - 1] == '\t' || s[|s| - 1] == '\n' || s[|s| - 1] == '\r' then TrimRight(s[..|s| - 1])
     else s
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

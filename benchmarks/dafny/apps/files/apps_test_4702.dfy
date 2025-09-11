@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| > 0 && 
@@ -16,6 +17,7 @@ predicate CorrectOutput(input: string, output: string)
 {
     output == LogicalNot(input[0])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

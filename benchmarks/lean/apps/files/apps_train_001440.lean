@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def find_min_bad_luck (strings : List String) : Nat := sorry
 
 theorem find_min_bad_luck_non_negative (strings : List String) :
   find_min_bad_luck strings ≥ 0 := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (c : Char) (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_min_bad_luck_leq_min_len (strings : List String) : 
   strings ≠ [] → find_min_bad_luck strings ≤ List.foldr (fun s acc => min s.length acc) (strings[0]!.length) strings.tail := sorry
 
@@ -28,6 +35,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_min_bad_luck ["aabb", "abab", "baab"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_fence (heights costs : List Nat) : Nat := sorry
 
 def sum : List Nat → Nat
   | [] => 0
   | (x::xs) => x + sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_fence_non_negative (heights costs : List Nat) :
   solve_fence heights costs ≥ 0 := sorry
 
@@ -40,6 +48,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_fence [1, 3, 2, 1000000000] [7, 3, 6, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

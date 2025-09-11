@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def factorsRange (n m : Nat) : List (Nat × List Nat) := sorry
 
 -- All returned keys are within range
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem factorsRange_keys_in_range
   {n m : Nat} (h : n ≤ m)
   : ∀ k, k ∈ (factorsRange n m).map Prod.fst → n ≤ k ∧ k ≤ m := sorry
@@ -49,6 +57,7 @@ theorem factorsRange_single_number
 theorem factorsRange_reversed_inputs
   {n m : Nat} (h : n > m)
   : factorsRange n m = [] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

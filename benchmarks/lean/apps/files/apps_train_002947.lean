@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def palindrome (s : String) : Bool :=
 sorry
 
 def isPalindromePair (s1 s2 : String) : Bool :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def palindromePairs (words : List String) : List (Nat × Nat) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_pairs_valid_indices 
   (words : List String) (result : List (Nat × Nat)) 
   (h : result = palindromePairs words) :
@@ -57,6 +64,7 @@ info: [[0, 4], [1, 2], [2, 1]]
 -/
 -- #guard_msgs in
 -- #eval palindrome_pairs [5777, "dog", "god", True, 75]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def disjunction (operands: List Bool) (exclusive: Bool) : Bool := sorry
 
 theorem disjunction_inclusive_or
   {operands: List Bool}
   (h: operands ≠ [])
   : disjunction operands false = List.any operands id := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem disjunction_exclusive_or
   {operands: List Bool}
   (h: operands ≠ [])
@@ -33,6 +41,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval disjunction [True, True, True, True] True
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

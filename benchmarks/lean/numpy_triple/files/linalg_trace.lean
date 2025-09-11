@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def trace {n : Nat} (x : Vector (Vector Float n) n) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trace_spec {n : Nat} (x : Vector (Vector Float n) n) :
     ⦃⌜True⌝⦄
     trace x
@@ -18,3 +25,4 @@ theorem trace_spec {n : Nat} (x : Vector (Vector Float n) n) :
     ) 0 ∧ 
     (∀ i : Fin n, (x.get i).get i ≠ 0 → result ≠ 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

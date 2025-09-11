@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, numbers: seq<int>)
 {
     n >= 3 && n % 3 == 0 &&
@@ -30,6 +31,7 @@ predicate NoPartitionExists(result: seq<seq<int>>)
 {
     |result| == 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

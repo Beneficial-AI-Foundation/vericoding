@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern (n : Int) : String := sorry
 
 theorem pattern_non_positive (n : Int) (h : n ≤ 0) : pattern n = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_lines_count (n : Int) (h : 1 ≤ n ∧ n ≤ 9) :
   let lines := (pattern n).splitOn "\n"
   lines.length = n.toNat := sorry
@@ -39,6 +47,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval pattern 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsLowercaseLetter(c: char)
 {
     'a' <= c <= 'z'
@@ -12,6 +13,7 @@ predicate ValidOutput(result: string)
 {
     result == "A" || result == "a"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

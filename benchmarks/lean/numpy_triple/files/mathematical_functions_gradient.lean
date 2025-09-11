@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_gradient {n : Nat} (f : Vector Float (n + 1)) : Id (Vector Float (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_gradient_spec {n : Nat} (f : Vector Float (n + 1)) :
     ⦃⌜True⌝⦄
     numpy_gradient f
@@ -30,3 +37,4 @@ theorem numpy_gradient_spec {n : Nat} (f : Vector Float (n + 1)) :
               (∀ c : Float, (∀ i : Fin (n + 1), f.get i = c) → 
                 (∀ i : Fin (n + 1), grad.get i = 0))⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,8 +1,10 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
 spec fn is_infinite(x: f64) -> bool;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

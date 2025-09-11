@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def cat_mouse (s : String) (jump_dist : Nat) : String := sorry
 
 def findPos (s : String) (c : Char) : Nat :=
   String.length (s.takeWhile (· ≠ c))
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_always_valid (s : String) (jump_dist : Nat) : 
   cat_mouse s jump_dist = "Caught!" ∨ 
   cat_mouse s jump_dist = "Escaped!" ∨ 
@@ -65,6 +73,7 @@ info: 'Protected!'
 -/
 -- #guard_msgs in
 -- #eval cat_mouse ".CD......m." 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

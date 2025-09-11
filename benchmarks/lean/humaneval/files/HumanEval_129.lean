@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (text: String) : Option (List String) × Option Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 -- return a tuple of Option (List String) and Option Nat
@@ -41,6 +48,7 @@ theorem correctness
 (text: String)
 : problem_spec implementation text := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "Hello world!" = (some ["Hello", "world!"], none)
 -- #test implementation "Hello,world!" = (some ["Hello", "world!"], none)

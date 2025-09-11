@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def prod2sum (a b c d: Int) : List (List Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prod2sum_output_length (a b c d : Int) :
   let result := prod2sum a b c d
   1 ≤ result.length ∧ result.length ≤ 2 := sorry
@@ -44,6 +52,7 @@ info: [[2, 8]]
 -/
 -- #guard_msgs in
 -- #eval prod2sum 1 1 3 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

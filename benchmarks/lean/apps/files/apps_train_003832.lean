@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def transform (num : Nat) (base : Nat) : List (Nat ⊕ String) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem transform_valid_digits {n : Nat} {b : Nat} (h1 : n ≥ 1) (h2 : 2 ≤ b) (h3 : b ≤ 12) :
   let result := transform n b
   ∀ x ∈ result, 
@@ -19,6 +27,7 @@ theorem transform_digit_range {n : Nat} {b : Nat} (h1 : n ≥ 1) (h2 : 2 ≤ b) 
     | Sum.inr s => s = "x"
   :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

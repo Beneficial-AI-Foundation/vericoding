@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     n >= 1
 }
@@ -19,6 +20,7 @@ predicate ValidPyramidHeight(n: int, h: int) {
     TotalCubesForHeight(h) <= n &&
     TotalCubesForHeight(h + 1) > n
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

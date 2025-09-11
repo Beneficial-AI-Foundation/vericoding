@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_spec {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n) 
     (h_invertible : ∃ a_inv : Vector (Vector Float n) n, 
       -- Matrix multiplication: a * a_inv = I (identity matrix)
@@ -50,3 +57,4 @@ theorem solve_spec {n : Nat} (a : Vector (Vector Float n) n) (b : Vector Float n
                 x.get i = List.sum (List.ofFn fun j : Fin n => 
                   (a_inv.get i).get j * b.get j)))⌝⦄ := by
   sorry
+-- </vc-theorems>

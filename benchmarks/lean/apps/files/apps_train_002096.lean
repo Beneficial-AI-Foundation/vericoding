@@ -1,18 +1,25 @@
+-- <vc-preamble>
 def find_max_remainder (nums : List Nat) : Nat := sorry
 
 def list_maximum (nums : List Nat) : Nat := 
   match nums with
   | [] => 0
   | (x::xs) => List.foldl Nat.max x xs
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sort (nums : List Nat) : List Nat := sorry
 
 theorem find_max_remainder_nonnegative (nums : List Nat) (h : nums ≠ []) :
   find_max_remainder nums ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_remainder_less_than_max (nums : List Nat) (h : nums ≠ []) :
   find_max_remainder nums < list_maximum nums := sorry
 
@@ -43,6 +50,7 @@ info: 30
 -/
 -- #guard_msgs in
 -- #eval find_max_remainder [4, 4, 10, 13, 28, 30, 41, 43, 58, 61, 70, 88]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

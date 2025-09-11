@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def count_substring_ways (s t : String) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_substring (s t : String) : Bool :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_substring_ways_nonnegative (s t : String) : 
   0 ≤ count_substring_ways s t ∧ count_substring_ways s t < 1000000007 :=
 sorry
@@ -34,6 +41,7 @@ info: 12
 -/
 -- #guard_msgs in
 -- #eval count_substring_ways "ddd" "d"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

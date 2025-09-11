@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate Sorted(q: seq<int>)
 {
     forall i,j :: 0 <= i <= j < |q| ==> q[i] <= q[j] 
@@ -36,6 +37,7 @@ predicate LoopInv(q: seq<int>, x: int, i: nat, j: nat, sum: int)
     HasAddendsInIndicesRange(q, x, i, j) &&
     AreAddendsIndices(q, sum, i, j)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

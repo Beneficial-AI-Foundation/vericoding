@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 1 && n <= 100 && k <= 100
@@ -8,6 +9,7 @@ function MinCrackerDifference(n: int, k: int): int
 {
     if n % k == 0 then 0 else 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

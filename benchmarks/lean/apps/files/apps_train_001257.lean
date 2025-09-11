@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sorted (s : String) : String := sorry
 
 def largest_digit_rearrangement (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem not_less_than_input (n : Nat) :
   largest_digit_rearrangement n ≥ n := sorry
 
@@ -31,6 +39,7 @@ info: 4321
 -/
 -- #guard_msgs in
 -- #eval largest_digit_rearrangement 4321
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

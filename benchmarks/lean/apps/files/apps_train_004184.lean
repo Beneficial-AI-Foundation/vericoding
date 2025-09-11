@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def proc_arr (arr : List String) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem proc_arr_length (arr : List String) : 
   List.length (proc_arr arr) = 3 :=
   sorry
@@ -49,6 +57,7 @@ info: [60, 111223, 322111]
 -/
 -- #guard_msgs in
 -- #eval proc_arr ["1", "1", "1", "2", "2", "3"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def possible_positions (pos : String) : List String := sorry
 
 theorem knight_move_distance
@@ -15,7 +21,9 @@ theorem knight_move_distance
     let dx := Nat.max (src_x) (dst_x) - Nat.min (src_x) (dst_x)
     let dy := Nat.max (src_y) (dst_y) - Nat.min (src_y) (dst_y)
     (dx = 1 ∧ dy = 2) ∨ (dx = 2 ∧ dy = 1) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem positions_within_board
   (pos : String)
   (h_valid : pos.length = 2 ∧ pos.get ⟨0⟩ ∈ ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] ∧ 
@@ -29,6 +37,7 @@ theorem max_moves
   (h_valid : pos.length = 2 ∧ pos.get ⟨0⟩ ∈ ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] ∧ 
             pos.get ⟨1⟩ ∈ ['1', '2', '3', '4', '5', '6', '7', '8']) :
   (possible_positions pos).length ≤ 8 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

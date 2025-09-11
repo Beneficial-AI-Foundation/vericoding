@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_radians {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_radians_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_radians x
@@ -18,3 +25,4 @@ theorem numpy_radians_spec {n : Nat} (x : Vector Float n) :
                  (x.get i = 360 → result.get i > 6.28 ∧ result.get i < 6.29)    -- 360 degrees ≈ 2π radians
                 ⌝⦄ := by
   sorry
+-- </vc-theorems>

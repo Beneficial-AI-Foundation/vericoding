@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -38,6 +39,7 @@ spec fn inner_inv_correctness(str1: Seq<char>, str2: Seq<char>, i: nat, j: int, 
 spec fn inner_inv_termination(str1: Seq<char>, str2: Seq<char>, i: nat, j: int, old_i: nat, old_j: nat) -> bool {
     old_j - j == old_i - old_i
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

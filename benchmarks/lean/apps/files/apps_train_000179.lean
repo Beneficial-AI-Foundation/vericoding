@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def trap (heights : List Nat) : Nat := sorry
 
 theorem trap_empty : 
   trap [] = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem trap_singleton (h : Nat) :
   trap [h] = 0 := sorry
 
@@ -29,6 +37,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval trap []
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

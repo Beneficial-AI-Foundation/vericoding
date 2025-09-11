@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible]
 def isArmstrong_precond (n : Nat) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def countDigits (n : Nat) : Nat :=
   let rec go (n acc : Nat) : Nat :=
@@ -17,10 +20,14 @@ def sumPowers (n : Nat) (k : Nat) : Nat :=
       go (n / 10) (acc + digit ^ k)
   go n 0
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isArmstrong (n : Nat) (h_precond : isArmstrong_precond (n)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def isArmstrong_postcond (n : Nat) (result: Bool) (h_precond : isArmstrong_precond (n)) : Prop :=
   let n' := List.foldl (fun acc d => acc + d ^ countDigits n) 0 (List.map (fun c => c.toNat - '0'.toNat) (toString n).toList)
@@ -30,6 +37,7 @@ def isArmstrong_postcond (n : Nat) (result: Bool) (h_precond : isArmstrong_preco
 theorem isArmstrong_spec_satisfied (n: Nat) (h_precond : isArmstrong_precond (n)) :
     isArmstrong_postcond (n) (isArmstrong (n) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

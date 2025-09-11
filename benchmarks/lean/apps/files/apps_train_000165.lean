@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_construct_palindromes (s : String) (k : Int) : Bool := sorry
 
 theorem k_greater_than_length_is_false {s : String} {k : Int} :
   k > s.length → ¬can_construct_palindromes s k := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem palindrome_negative_k {s : String} {k : Int} :
   k < 0 → ¬can_construct_palindromes s k := sorry
 
@@ -39,6 +47,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_construct_palindromes "yzyzyzyzyzyzyzy" 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

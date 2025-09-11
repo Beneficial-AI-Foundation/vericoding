@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Batteries.Lean.Float
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nextafter {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nextafter_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
     nextafter x1 x2
@@ -25,3 +32,4 @@ theorem nextafter_spec {n : Nat} (x1 x2 : Vector Float n) :
       (Float.isFinite (x1.get i) ∧ Float.isFinite (x2.get i) ∧ x1.get i ≠ x2.get i → 
        Float.isFinite (result.get i) ∨ result.get i = Float.inf ∨ result.get i = -Float.inf)⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isPerfectSquare (n : Nat) : Bool :=
   sorry
 
 def generateValidBoard (size : Nat) : List (List Nat) :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def validateSudoku (board : List (List Nat)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_size_board {n : Nat} :
   n > 0 → ¬(isPerfectSquare n) → 
   validateSudoku (List.replicate n (List.replicate n 1)) = false :=
@@ -67,6 +74,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval validate_sudoku valid_small
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

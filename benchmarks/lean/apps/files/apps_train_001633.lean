@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def identify_distribution (samples : List Int) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidDistribution (s : String) : Bool :=
   s = "uniform" || s = "poisson"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identify_distribution_valid (samples : List Int) 
   (h : samples.length ≥ 2) :
   isValidDistribution (identify_distribution samples) := sorry
@@ -47,6 +54,7 @@ info: 'poisson'
 -/
 -- #guard_msgs in
 -- #eval identify_distribution [-5, -4, -3, -4, -5]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

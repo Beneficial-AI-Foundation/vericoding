@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def convert_bits (a b : Int) : Int := sorry
 
 theorem convert_from_zero_cases :
@@ -9,7 +15,9 @@ theorem convert_from_zero_cases :
   (convert_bits 0 2 = 1) ∧ 
   (convert_bits 0 3 = 2) ∧
   (convert_bits 0 4 = 1) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: 2
 -/
@@ -27,6 +35,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval convert_bits 0 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validate_sequence (seq: List Int) : Bool := sorry
 
 theorem too_short_sequences_invalid (seq: List Int) :
   seq.length ≤ 2 → validate_sequence seq = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arithmetic_sequences_valid
     (start diff: Int) (length: Nat) (h: 0 < length) (h': length ≤ 100) :
   let seq := (List.range (length + 3)).map (fun i => start + (Int.ofNat i) * diff)
@@ -43,6 +51,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval validate_sequence [1, 3, 5, 7, 9, 11, 13, 15]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

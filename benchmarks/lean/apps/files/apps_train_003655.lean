@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def spacify (s : String) : String := sorry
 
 theorem spacify_length (s : String) :
@@ -10,7 +16,9 @@ theorem spacify_length (s : String) :
   else
     result.length = s.length * 2 - 1
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem spacify_chars_preserved (s : String) :
   String.join ((spacify s).splitOn " ") = s := sorry
 
@@ -35,6 +43,7 @@ info: 'P i p p i'
 -/
 -- #guard_msgs in
 -- #eval spacify "Pippi"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

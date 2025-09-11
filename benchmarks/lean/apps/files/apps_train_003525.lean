@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_deleted_number (arr : List Int) (mixed : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_arrays : 
   find_deleted_number [] [] = 0 :=
 sorry
@@ -25,6 +33,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_deleted_number [1] []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

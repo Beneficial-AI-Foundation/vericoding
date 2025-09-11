@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def unwrap {n : Nat} (p : Vector Float n) (discont : Float := 3.141592653589793) (period : Float := 2 * 3.141592653589793) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unwrap_spec {n : Nat} (p : Vector Float n) (discont : Float := 3.141592653589793) (period : Float := 2 * 3.141592653589793) 
     (h_pos_discont : discont > 0) (h_pos_period : period > 0) :
     ⦃⌜discont > 0 ∧ period > 0⌝⦄
@@ -23,3 +30,4 @@ theorem unwrap_spec {n : Nat} (p : Vector Float n) (discont : Float := 3.1415926
       (∀ i : Fin n, ∃ k : Float, result.get i = p.get i + k * period)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

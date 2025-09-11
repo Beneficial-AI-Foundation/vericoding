@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def phone_number_format (a p l: String) : String :=
   s!"({a}) {p}-{l}"
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def area_code (s: String) : String :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem area_code_extracts_area_from_standard_format {a p l : String}
   (h1: a.length = 3) (h2: p.length = 3) (h3: l.length = 4) :
   area_code (phone_number_format a p l) = a := by
@@ -42,6 +49,7 @@ info: '124'
 -/
 -- #guard_msgs in
 -- #eval area_code "The 102nd district court"s fax line is (124) 816-3264"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

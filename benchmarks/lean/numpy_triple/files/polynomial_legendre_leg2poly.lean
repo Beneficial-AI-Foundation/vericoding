@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def leg2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem leg2poly_spec {n : Nat} (c : Vector Float n) :
     ⦃⌜True⌝⦄
     leg2poly c
@@ -22,3 +29,4 @@ theorem leg2poly_spec {n : Nat} (c : Vector Float n) :
       (n > 0 → ∃ lead : Float, result.get ⟨n-1, sorry⟩ = lead)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

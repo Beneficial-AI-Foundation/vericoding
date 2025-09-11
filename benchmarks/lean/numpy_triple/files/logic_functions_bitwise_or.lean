@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -13,13 +14,19 @@ axiom Int.bitwise_or_zero (x : Int) : Int.bitwise_or x 0 = x
 
 /-- Bitwise OR is idempotent -/
 axiom Int.bitwise_or_idempotent (x : Int) : Int.bitwise_or x x = x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_bitwise_or {n : Nat} (x1 x2 : Vector Int n) : Id (Vector Int n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
     ⦃⌜True⌝⦄
     numpy_bitwise_or x1 x2
@@ -31,3 +38,4 @@ theorem numpy_bitwise_or_spec {n : Nat} (x1 x2 : Vector Int n) :
                  -- Idempotent property
                  Int.bitwise_or (x1.get i) (x1.get i) = x1.get i⌝⦄ := by
   sorry
+-- </vc-theorems>

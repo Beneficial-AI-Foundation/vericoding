@@ -1,9 +1,11 @@
+// <vc-preamble>
 function sum(s: seq<int>) : int {
     if |s| == 0 then 0 else s[0] + sum(s[1..])
 }
 function prod(s: seq<int>) : int {
     if |s| == 0 then 1 else s[0] * prod(s[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

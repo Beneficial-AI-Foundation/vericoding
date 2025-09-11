@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def isVowel (c : Char) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def find_vowel_substrings (s : String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_vowel_substrings_valid_input {s : String} 
   (h : ∃ pre mid post : String, 
     (∀ c, c ∈ pre.data → !isVowel c) ∧ 
@@ -34,6 +41,7 @@ theorem find_vowel_substrings_general {s : String} :
     substr.length ≥ 2 ∧
     ∀ c, c ∈ substr.data → isVowel c) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -77,6 +78,7 @@ spec fn is_of_kind(dtype: NumpyDType, kind: DTypeKind) -> bool {
                              get_dtype_kind(dtype) == DTypeKind::ComplexFloating,
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

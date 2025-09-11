@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def BinaryString := String
 
 def solve_binary_string_concat (strings : List BinaryString) (operations : List (Nat × Nat)) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_binary_string_concat_basic_properties 
   (strings : List BinaryString) 
   (operations : List (Nat × Nat))
@@ -52,6 +60,7 @@ info: [1]
 -/
 -- #guard_msgs in
 -- #eval solve_binary_string_concat ["0", "1"] [(1, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

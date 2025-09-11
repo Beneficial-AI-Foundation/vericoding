@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def corrcoef {n : Nat} (x y : Vector Float (n + 1)) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem corrcoef_spec {n : Nat} (x y : Vector Float (n + 1)) 
     (hx_var : ∃ i j : Fin (n + 1), x.get i ≠ x.get j) 
     (hy_var : ∃ i j : Fin (n + 1), y.get i ≠ y.get j) :
@@ -25,3 +32,4 @@ theorem corrcoef_spec {n : Nat} (x y : Vector Float (n + 1))
                    var_x > 0 ∧ var_y > 0 ∧
                    result = cov_xy / Float.sqrt (var_x * var_y))⌝⦄ := by
   sorry
+-- </vc-theorems>

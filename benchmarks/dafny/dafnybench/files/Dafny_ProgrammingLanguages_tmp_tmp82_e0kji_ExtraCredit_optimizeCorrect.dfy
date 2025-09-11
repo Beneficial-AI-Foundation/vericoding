@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Exp = Const(int) | Var(string) | Plus(Exp, Exp) |  Mult(Exp, Exp)
 
 function eval(e:Exp, store:map<string, int>):int
@@ -23,6 +24,7 @@ function optimize(e:Exp):Exp
     case e => e
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn evaluate_laguerre_polynomial(c: Seq<f32>, x: f32) -> f32;
 
 spec fn evaluate_polynomial(coeffs: Seq<f32>, x: f32) -> f32;
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

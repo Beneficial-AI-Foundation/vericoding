@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def time_convert (minutes : Int) : String := sorry
 
 theorem time_convert_output_format {minutes : Int}
@@ -10,7 +16,9 @@ theorem time_convert_output_format {minutes : Int}
     (∀ c ∈ pre.data, c.isDigit) ∧
     (∀ c ∈ post.data, c.isDigit) ∧
     post.length = 2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem time_convert_zero_or_negative {minutes : Int}
   (h1 : -1000 ≤ minutes) (h2 : minutes ≤ 0) :
   time_convert minutes = "00:00" := sorry
@@ -39,6 +47,7 @@ info: '16:10'
 -/
 -- #guard_msgs in
 -- #eval time_convert 970
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

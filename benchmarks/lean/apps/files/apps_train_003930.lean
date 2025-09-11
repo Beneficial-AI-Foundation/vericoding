@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def points (dice: String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem points_valid_score (dice: String) (h: dice.length = 5) 
   (h': ∀ c ∈ dice.data, '1' ≤ c ∧ c ≤ '6') :
   points dice = 0 ∨ points dice = 20 ∨ points dice = 30 ∨ points dice = 40 ∨ points dice = 50 := 
@@ -102,6 +110,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval points "61623"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

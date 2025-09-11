@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_tree_weights (n : Nat) (edges : List (Nat × Nat)) (conditions : List (Nat × Nat × Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_tree_weights_base_cases {n : Nat} :
   solve_tree_weights 1 [] [] = 1 ∧ 
   solve_tree_weights 2 [(1,2)] [] = 2 :=
@@ -40,6 +48,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_tree_weights 3 [(1, 2), (2, 3)] [(1, 2, 1)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

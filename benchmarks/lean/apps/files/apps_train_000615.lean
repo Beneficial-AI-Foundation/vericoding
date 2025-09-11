@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def process_string (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_digits_returns_length 
   (s : String)
   (h : ∀ c ∈ s.data, c.isUpper) :
@@ -36,6 +44,7 @@ theorem mixed_string
 
 theorem special_case :
   process_string "C0D3C43F" = 3943 := by sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

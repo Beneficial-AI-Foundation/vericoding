@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Nat.sqrt (n : Nat) : Nat := sorry
 
 def lucas_lehmer (n : Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lucas_lehmer_returns_bool (n : Nat) : 
   lucas_lehmer n = true ∨ lucas_lehmer n = false := sorry
 
@@ -44,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval lucas_lehmer 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

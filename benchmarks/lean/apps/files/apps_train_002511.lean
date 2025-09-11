@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_stack_cubes (nums : List Nat) : String := sorry
 
 private def isSorted (l : List Nat) : Bool := 
@@ -8,7 +14,9 @@ private def isSorted (l : List Nat) : Bool :=
   | [] => true
   | [_] => true
   | x::y::rest => x ≥ y && isSorted (y::rest)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sorted_list_always_stackable (nums : List Nat) : 
   nums ≠ [] → isSorted nums → can_stack_cubes nums = "Yes" := sorry
 
@@ -41,6 +49,7 @@ info: 'Yes'
 -/
 -- #guard_msgs in
 -- #eval can_stack_cubes [5, 4, 3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

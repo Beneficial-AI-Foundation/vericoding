@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_prime_pairs (n : Int) : Nat :=
   sorry
 
 -- Basic properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_prime_pairs_zero :
   count_prime_pairs 0 = 0 := by
   sorry
@@ -41,6 +49,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval count_prime_pairs 11
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

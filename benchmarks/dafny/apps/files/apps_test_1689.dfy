@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, rows: seq<string>)
 {
     n >= 0 && |rows| == n && forall i :: 0 <= i < |rows| ==> |rows[i]| == 5
@@ -21,6 +22,7 @@ predicate ValidSolution(result: string, rows: seq<string>)
 {
     result != "NO" ==> |result| >= 4
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

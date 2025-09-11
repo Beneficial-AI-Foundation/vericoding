@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def validCodon (c : String) : Bool := sorry
 
 def protein (rna : String) : String := sorry
@@ -7,10 +8,14 @@ def isStopCodon (codon : String) : Bool :=
 
 def charsToCodon (chars : List Char) : String :=
   String.mk chars
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def groupsOf3 (xs : List α) : List (List α) :=
   match xs with
   | [] => []
@@ -19,7 +24,9 @@ def groupsOf3 (xs : List α) : List (List α) :=
     | x₂::xs₂ => match xs₂ with
       | [] => [[x₁, x₂]]
       | x₃::xs₃ => [x₁, x₂, x₃]::(groupsOf3 xs₃)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem protein_length_le_input_div_3 {rna : String} (h : protein rna ≠ "") :
   (protein rna).length ≤ rna.length / 3 := sorry
 
@@ -54,6 +61,7 @@ info: 'MLQVHWKRRGKTS'
 -/
 -- #guard_msgs in
 -- #eval protein "AUGCUUCAAGUGCACUGGAAAAGGAGAGGGAAAACCAGUUGA"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

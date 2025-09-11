@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def groupThePeople (groupSizes : List Nat) : List (List Nat) := sorry
 
 theorem group_sizes_match_values (groupSizes : List Nat) 
@@ -9,7 +15,9 @@ theorem group_sizes_match_values (groupSizes : List Nat)
   ∀ group ∈ result,
     let size := group.length 
     ∀ i ∈ group, groupSizes.get! i = size := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_overlapping_groups (groupSizes : List Nat)
   (h : ∀ x ∈ groupSizes, 1 ≤ x ∧ x ≤ 10) :
   let result := groupThePeople groupSizes
@@ -35,6 +43,7 @@ info: sorted([sorted(g) for g in expected3])
 -/
 -- #guard_msgs in
 -- #eval sorted [sorted(g) for g in result3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

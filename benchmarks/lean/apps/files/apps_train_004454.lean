@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def human_years_cat_years_dog_years (human_years : Int) : List Int := sorry
 
 theorem conversion_properties (human_years : Int) (h : human_years ≥ 1) :
@@ -20,7 +26,9 @@ theorem conversion_properties (human_years : Int) (h : human_years ≥ 1) :
     result[1]! - 24 = (human_years - 2) * 4 ∧
     result[2]! - 24 = (human_years - 2) * 5) :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: [1, 15, 15]
 -/
@@ -38,6 +46,7 @@ info: [10, 56, 64]
 -/
 -- #guard_msgs in
 -- #eval human_years_cat_years_dog_years 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

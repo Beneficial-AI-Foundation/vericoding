@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hello (name: Option String := none) : String := sorry
 
 def isSubstringOf (s₁ s₂ : String) : Prop := 
   ∃ a b, s₂ = a ++ s₁ ++ b
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hello_with_name_contains_capitalized {name: String} (h: name.length > 0):
   isSubstringOf (name.capitalize) (hello (some name)) := sorry
 
@@ -38,6 +46,7 @@ info: 'Hello, John!'
 -/
 -- #guard_msgs in
 -- #eval hello "jOHN"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

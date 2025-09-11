@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def encrypter (s : String) : String := sorry
 
 theorem encrypter_reversible {s : String} 
   (h : ∀ c ∈ s.data, 97 ≤ c.val ∧ c.val ≤ 122) :
   encrypter (encrypter s) = s.toLower := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encrypter_preserves_spaces {s : String}
   (h : ∀ c ∈ s.data, (97 ≤ c.val ∧ c.val ≤ 122) ∨ c = ' ') :
   (∀ i : String.Pos, s.get i = ' ' → (encrypter s).get i = ' ') ∧
@@ -37,6 +45,7 @@ info: 'qibkyai ty tfi yvgmzenmteyz'
 -/
 -- #guard_msgs in
 -- #eval encrypter "welcome to the organization"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def broken_calc (start target : Nat) : Nat := sorry
 
 theorem broken_calc_non_negative (start target : Nat) :
   broken_calc start target ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem broken_calc_equal_case (x : Nat) :
   broken_calc x x = 0 := sorry
 
@@ -32,6 +40,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval broken_calc 3 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

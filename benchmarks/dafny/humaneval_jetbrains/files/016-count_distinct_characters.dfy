@@ -1,3 +1,4 @@
+// <vc-preamble>
 function contains_char(s: string, c: char): bool
   decreases |s|
   requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z' || 'A' <= s[i] <= 'Z'
@@ -9,6 +10,7 @@ function upper_char(c: char) : (C: char)
   requires 'a' <= c <= 'z'
   ensures 'A' <= C <= 'Z'
 { c - 'a' + 'A' }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

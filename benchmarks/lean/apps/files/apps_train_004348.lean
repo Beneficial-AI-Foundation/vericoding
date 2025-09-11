@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solution {α : Type} [Inhabited α] (items : List α) (index : Int) (default : α) : α := sorry
 
 theorem solution_in_bounds {α : Type} [Inhabited α] (items : List α) (index : Int) (default : α) :
   (0 ≤ index ∧ index < items.length) → 
   solution items index default = items.get! index.toNat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_negative_in_bounds {α : Type} [Inhabited α] (items : List α) (index : Int) (default : α) :
   (-items.length ≤ index ∧ index < 0) → 
   solution items index default = items.get! (items.length + index.toNat) := sorry
@@ -48,6 +56,7 @@ info: 'd'
 -/
 -- #guard_msgs in
 -- #eval solution ["a", "b", "c"] -5 "d"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def isPrime (n : Nat) : Bool := sorry
 
 def primeMaxLengthChain (n : Nat) : List Nat := sorry
@@ -7,13 +8,19 @@ def isSorted (l : List Nat) : Bool :=
   | [] => true
   | [_] => true
   | x :: y :: rest => x ≤ y && isSorted (y :: rest)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def listSum (l : List Nat) : Nat :=
   List.foldl (·+·) 0 l
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_list (n : Nat) (h : n ≥ 1) (h2 : n ≤ 1000) : 
   let result := primeMaxLengthChain n
   isSorted result := sorry
@@ -50,6 +57,7 @@ info: [499]
 -/
 -- #guard_msgs in
 -- #eval prime_maxlength_chain 500
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

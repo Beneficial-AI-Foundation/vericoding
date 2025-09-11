@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isPowerOfTwo (n : Nat) : Bool := sorry
 
 def solve_beautiful_permutation (n : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_case {n : Nat} (h : n = 1) :
   solve_beautiful_permutation n = [1] := sorry
 
@@ -35,6 +43,7 @@ info: [2, 3, 1, 5, 4]
 -/
 -- #guard_msgs in
 -- #eval solve_beautiful_permutation 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def solve (s : String) : String := sorry
 
 def isPalindrome (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def canBePalindromeWithOneRemoval (s : String) : Bool := sorry
 
 def reverse (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_result_valid (s : String) :
   solve s = "OK" ∨ solve s = "remove one" ∨ solve s = "not possible" := sorry
 
@@ -48,6 +55,7 @@ info: 'not possible'
 -/
 -- #guard_msgs in
 -- #eval solve "abbaab"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

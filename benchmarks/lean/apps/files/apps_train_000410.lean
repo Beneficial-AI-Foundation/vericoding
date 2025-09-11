@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def countVowels (s : String) : List Char → Bool :=
   sorry
 
 def verifySubstringVowels (s : String) (start length : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def findLongestEvenVowelSubstring (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_valid_length (s : String) :
   let result := findLongestEvenVowelSubstring s
   0 ≤ result ∧ result ≤ s.length :=
@@ -53,6 +60,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval find_longest_even_vowel_substring "bcbcbc"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def translateTableNum (s : String) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def t9_predict (words : List String) (seq : String) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem t9_predict_never_empty (words : List String) (seq : String) :
   seq ≠ "" → ∃ result, t9_predict words seq = result ∧ result.length > 0 :=
   sorry
@@ -44,6 +51,7 @@ info: ['gdjjm']
 -/
 -- #guard_msgs in
 -- #eval t9_predict [] "43556"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

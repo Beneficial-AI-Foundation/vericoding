@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -42,6 +43,7 @@ spec fn index_seq(x: nat, y: Seq<nat>) -> nat
 spec fn index(x: nat, y: Seq<nat>) -> nat {
     index_seq(x, y)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

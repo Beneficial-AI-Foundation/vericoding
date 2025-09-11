@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ContainsLowercase(s: string)
 {
     exists i :: 0 <= i < |s| && 'a' <= s[i] <= 'z'
@@ -33,6 +34,7 @@ function StripWhitespace(s: string): string
         StripWhitespace(s[..|s|-1])
     else s
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

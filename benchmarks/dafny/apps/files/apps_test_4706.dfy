@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(lines: seq<string>)
 {
     |lines| == 3 && forall i :: 0 <= i < 3 ==> |lines[i]| == 3
@@ -8,6 +9,7 @@ function ExtractDiagonal(lines: seq<string>): string
 {
     [lines[0][0], lines[1][1], lines[2][2]]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

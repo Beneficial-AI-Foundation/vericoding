@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermeline (off scl : Float) : Id (Vector Float 2) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermeline_spec (off scl : Float) :
     ⦃⌜True⌝⦄
     hermeline off scl
@@ -29,3 +36,4 @@ theorem hermeline_spec (off scl : Float) :
                   (scl ≠ 0 → ∀ x : Float, 
                     coeffs.get ⟨0, by simp⟩ + coeffs.get ⟨1, by simp⟩ * x = off + scl * x)⌝⦄ := by
   sorry
+-- </vc-theorems>

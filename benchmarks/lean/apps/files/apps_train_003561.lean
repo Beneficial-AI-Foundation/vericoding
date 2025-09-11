@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bool_to_word (b : Bool) : String := sorry
 
 theorem bool_to_word_returns_string (b : Bool) :
   toString (bool_to_word b) = bool_to_word b := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bool_to_word_returns_yes_or_no (b : Bool) :
   bool_to_word b = "Yes" ∨ bool_to_word b = "No" := sorry
 
@@ -23,6 +31,7 @@ info: 'No'
 -/
 -- #guard_msgs in
 -- #eval bool_to_word False
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_ray_grid (n m w b : Nat) (w_cells b_cells : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_grid_sum {n m : Nat} (hn : 0 < n) (hm : 0 < m) : 
   solve_ray_grid n m 0 0 [] [] = n * m * (m + 1) / 2 :=
 sorry
@@ -33,6 +41,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval solve_ray_grid 2 3 0 1 [] [1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

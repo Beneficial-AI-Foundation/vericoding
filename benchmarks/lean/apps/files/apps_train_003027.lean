@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def Matrix (α : Type) [BEq α] := List (List α)
 
 def is_valid_matrix {α : Type} [BEq α] (m : Matrix α) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rotate_against_clockwise {α : Type} [BEq α] (m : Matrix α) (times : Nat) : Matrix α := sorry
 
 def get_matrix_dimensions {α : Type} [BEq α] (m : Matrix α) : Nat × Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dimensions_preserved {α : Type} [BEq α] (m : Matrix α) :
   is_valid_matrix m → 
   let dims := get_matrix_dimensions m
@@ -46,6 +53,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval rotate_against_clockwise matrix2 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -18,13 +19,19 @@ def Complex.mul (z w : Complex) : Complex :=
 /-- Magnitude squared of a complex number -/
 def Complex.normSq (z : Complex) : Float :=
   z.real * z.real + z.imag * z.imag
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def conj {n : Nat} (x : Vector Complex n) : Id (Vector Complex n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem conj_spec {n : Nat} (x : Vector Complex n) :
     ⦃⌜True⌝⦄
     conj x
@@ -47,3 +54,4 @@ theorem conj_spec {n : Nat} (x : Vector Complex n) :
                     let conjY := Complex.mk y.real (-y.imag)
                     conjProd = Complex.mul conjX conjY)⌝⦄ := by
   sorry
+-- </vc-theorems>

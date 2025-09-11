@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def getPrimeFactors (n : Nat) : List Nat := sorry
 def solveCipher (n : Nat) : List Nat × Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_factors_product_match {n : Nat} (h : n ≥ 4) (h₂ : n ≤ 10^4) 
   (h₃ : (getPrimeFactors n).length ≥ 3) :
   let result := (solveCipher n).fst
@@ -63,6 +71,7 @@ info: {2, 3, 5, 6, 10, 15, 30}
 -/
 -- #guard_msgs in
 -- #eval set ans[0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

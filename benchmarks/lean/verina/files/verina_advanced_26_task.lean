@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible]
 def letterCombinations_precond (digits : String) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def digitToLetters (c : Char) : List Char :=
   match c with
@@ -15,10 +18,14 @@ def digitToLetters (c : Char) : List Char :=
   | '9' => ['w', 'x', 'y', 'z']
   | _ => []
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def letterCombinations (digits : String) (h_precond : letterCombinations_precond (digits)) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def letterCombinations_postcond (digits : String) (result: List String) (h_precond : letterCombinations_precond (digits)) : Prop :=
   if digits.isEmpty then
@@ -32,6 +39,7 @@ def letterCombinations_postcond (digits : String) (result: List String) (h_preco
 theorem letterCombinations_spec_satisfied (digits: String) (h_precond : letterCombinations_precond (digits)) :
     letterCombinations_postcond (digits) (letterCombinations (digits) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

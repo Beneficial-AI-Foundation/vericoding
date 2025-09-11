@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def two_by_n (n : Nat) (k : Nat) : Nat := sorry
 
 theorem two_by_n_bounds (n k : Nat) (hn : n ≥ 1) (hk : k ≥ 1) :
   two_by_n n k < 12345787 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem two_by_n_single_color (n : Nat) (hn : n ≥ 1) :
   two_by_n n 1 = if n = 1 then 1 else 0 := sorry
 
@@ -41,6 +49,7 @@ info: 168
 -/
 -- #guard_msgs in
 -- #eval two_by_n 5 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

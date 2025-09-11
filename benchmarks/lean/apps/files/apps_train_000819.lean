@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pattern_generator (k : Nat) : List String := sorry
 
 theorem pattern_length {k : Nat} (h : k > 0) :
   (pattern_generator k).length = k := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_star_count {k : Nat} (h : k > 0) :
   ∀ line ∈ pattern_generator k, (line.data.filter (· = '*')).length = 1 := sorry
 
@@ -38,6 +46,7 @@ info: ['*', ' *', '  *', ' *', '*']
 -/
 -- #guard_msgs in
 -- #eval pattern_generator 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

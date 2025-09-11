@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (s1 s2 : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nonmatching_returns_zero {s1 s2 : String} (h1 : s1.length > 0) (h2 : s2.length > 0) 
   (h3 : ∃ c ∈ s2.data, c ∉ s1.data) : solve s1 s2 = 0 :=
   sorry 
@@ -37,6 +45,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval solve "aabcdefg" "fbd"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

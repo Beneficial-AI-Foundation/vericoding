@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(queries: seq<int>) {
     forall i :: 0 <= i < |queries| ==> queries[i] >= 2
 }
@@ -14,6 +15,7 @@ predicate ValidResult(queries: seq<int>, results: seq<int>)
     |results| == |queries| &&
     forall i :: 0 <= i < |queries| ==> results[i] == MinAdditionalMatches(queries[i])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

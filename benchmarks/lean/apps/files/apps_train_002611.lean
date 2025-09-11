@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def poohbear (s : String) : String := sorry
 
 theorem empty_string :
   poohbear "" = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_increment :
   poohbear "+N" = "1" := sorry
 
@@ -44,6 +52,7 @@ info: '10'
 -/
 -- #guard_msgs in
 -- #eval poohbear "++W-NE"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_operations_cost (n : Nat) (numbers : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_operations_cost_lower_bound {n : Nat} {numbers : List Nat} 
   (h1: n ≥ 2) (h2: numbers.length = n) : 
   ∃ min_num : Nat, min_num ∈ numbers ∧ min_operations_cost n numbers ≥ min_num * (numbers.length - 1) :=
@@ -44,6 +52,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_operations_cost 4 [1, 5, 2, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

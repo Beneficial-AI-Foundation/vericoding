@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def create_anagram (s t : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem anagram_non_negative (s t : String) :
   create_anagram s t ≥ 0 :=
   sorry
@@ -47,6 +55,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval create_anagram "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB" "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAC"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

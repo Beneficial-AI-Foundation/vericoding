@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_tree_zeros (n : Nat) (edges : List (Nat × Nat)) (values : List Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_max (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | [x] => x
   | x::xs => Nat.max x (list_max xs)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_tree_zeros_nonnegative (n : Nat) (edges : List (Nat × Nat)) (values : List Int) :
   solve_tree_zeros n edges values ≥ 0 := 
   sorry
@@ -39,6 +46,7 @@ info: 18
 -/
 -- #guard_msgs in
 -- #eval solve_tree_zeros 10 [(5, 6), (8, 2), (9, 3), (4, 1), (6, 10), (9, 8), (7, 10), (7, 4), (5, 2)] [0, -6, -9, -1, -5, -4, -2, -7, -8, -3]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

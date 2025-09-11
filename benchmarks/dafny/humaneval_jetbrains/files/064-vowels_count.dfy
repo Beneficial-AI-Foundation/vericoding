@@ -1,8 +1,10 @@
+// <vc-preamble>
 function is_vowel(c: char): bool
   ensures is_vowel(c) <==> c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
 {
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

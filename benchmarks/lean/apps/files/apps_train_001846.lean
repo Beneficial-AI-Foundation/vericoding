@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def asteroidCollision (asteroids : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_is_valid_asteroid_list
   (asteroids : List Int) :
   let result := asteroidCollision asteroids
@@ -56,6 +64,7 @@ info: [-2, -1, 1, 2]
 -/
 -- #guard_msgs in
 -- #eval asteroidCollision [-2, -1, 1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

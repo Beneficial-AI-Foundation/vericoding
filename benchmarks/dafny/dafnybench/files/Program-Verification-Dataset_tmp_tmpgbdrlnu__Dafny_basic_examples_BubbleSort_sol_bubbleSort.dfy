@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate sorted_between (a:array<int>, from:nat, to:nat)
   reads a;
   requires a != null;
@@ -13,6 +14,7 @@ predicate sorted (a:array<int>)
 {
   sorted_between (a, 0, a.Length)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

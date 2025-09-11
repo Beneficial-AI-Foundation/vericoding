@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_measure_water (x y z : Nat) : Bool := sorry
 
 def gcd (a b : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem measurement_bounds {x y z : Nat} :
   can_measure_water x y z → z ≤ x + y ∧ z ≥ 0 := sorry
 
@@ -38,6 +46,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_measure_water 4 6 8
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

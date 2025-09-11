@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def grader (score : Float) : String := sorry
 
 theorem grader_A {score : Float} (h : score ≥ 0.9 ∧ score ≤ 1.0) : 
   grader score = "A" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem grader_B {score : Float} (h : score ≥ 0.8 ∧ score < 0.9) : 
   grader score = "B" := sorry
 
@@ -86,6 +94,7 @@ info: 'D'
 -/
 -- #guard_msgs in
 -- #eval grader 0.6
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

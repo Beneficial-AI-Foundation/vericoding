@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def BinarySearch_precond (a : Array Int) (key : Int) : Prop :=
   List.Pairwise (· ≤ ·) a.toList
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def binarySearchLoop (a : Array Int) (key : Int) (lo hi : Nat) : Nat :=
   if lo < hi then
@@ -11,10 +14,14 @@ def binarySearchLoop (a : Array Int) (key : Int) (lo hi : Nat) : Nat :=
   else
     lo
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def BinarySearch (a : Array Int) (key : Int) (h_precond : BinarySearch_precond (a) (key)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def BinarySearch_postcond (a : Array Int) (key : Int) (result: Nat) (h_precond : BinarySearch_precond (a) (key)) :=
   result ≤ a.size ∧
@@ -24,6 +31,7 @@ def BinarySearch_postcond (a : Array Int) (key : Int) (result: Nat) (h_precond :
 theorem BinarySearch_spec_satisfied (a: Array Int) (key: Int) (h_precond : BinarySearch_precond (a) (key)) :
     BinarySearch_postcond (a) (key) (BinarySearch (a) (key) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

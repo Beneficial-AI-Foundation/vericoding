@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def bulbSwitch (n : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem bulb_switch_nonnegative (n : Int) (h : n ≥ 0) : 
   let result := bulbSwitch n
   result ≥ 0 ∧ result ≤ n :=
@@ -34,6 +42,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval bulb_switch 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

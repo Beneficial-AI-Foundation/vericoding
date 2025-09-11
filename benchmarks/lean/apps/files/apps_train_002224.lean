@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_train_souvenirs (n m : Nat) (lr_pairs : List (Nat × Nat)) : List Nat := sorry
 
 /- For any input with n segments and m positions, the result length matches m -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_length_matches_m (n m : Nat) (lr_pairs : List (Nat × Nat)) :
   List.length (solve_train_souvenirs n m lr_pairs) = m := sorry
 
@@ -22,6 +30,7 @@ theorem first_value_at_most_n (n m : Nat) (lr_pairs : List (Nat × Nat)) :
 
 theorem empty_input_produces_zeros (m : Nat) :
   solve_train_souvenirs 0 m [] = List.replicate m 0 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

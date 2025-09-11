@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_string_chars (s : String) (n : Nat) (chars : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_chars_check {test_str chars_str : String} {n : Nat}
   (h1 : test_str.length > 0)
   (h2 : chars_str.length > 0) 
@@ -38,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval check_string_chars "acd" 3 "a b d"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

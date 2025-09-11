@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def check_reachable (t: String) (queries: List (Nat × Nat × Nat)) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_reachable_results_match_queries_length 
   {t: String} {queries: List (Nat × Nat × Nat)} :
   List.length (check_reachable t queries) = List.length queries :=
@@ -47,6 +55,7 @@ info: ['Yes', 'Yes', 'No']
 -/
 -- #guard_msgs in
 -- #eval check_reachable "010" [(1, 3, 1), (1, 3, 1), (3, 2, 1)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

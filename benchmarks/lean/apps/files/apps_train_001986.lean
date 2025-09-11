@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_fish_weights (n m k : Nat) (alice_fish bob_fish : List Nat) : String := sorry
 
 theorem solve_fish_weights_result_is_yes_or_no 
@@ -13,7 +19,9 @@ theorem solve_fish_weights_result_is_yes_or_no
   (h5 : ∀ x ∈ bob_fish, 1 ≤ x ∧ x ≤ 1000000000) :
   solve_fish_weights n m k alice_fish bob_fish = "YES" ∨ 
   solve_fish_weights n m k alice_fish bob_fish = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_fish_weights_longer_alice_wins
   (n m k : Nat)
   (alice_fish bob_fish : List Nat)
@@ -55,6 +63,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval solve_fish_weights 1 1 1000000000 [502700350] [502700349]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

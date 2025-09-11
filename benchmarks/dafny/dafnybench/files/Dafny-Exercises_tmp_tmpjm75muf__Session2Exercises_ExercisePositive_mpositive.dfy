@@ -1,5 +1,7 @@
+// <vc-preamble>
 predicate positive(s:seq<int>)
 {forall u::0<=u<|s| ==> s[u]>=0}
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

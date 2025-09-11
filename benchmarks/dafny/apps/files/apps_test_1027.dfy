@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate canParseToBoard(input: string)
     reads {}
 {
@@ -38,6 +39,7 @@ ghost function maxScoreFromRange(board: array<int>, upTo: int): int
          var currentScore := if board[upTo - 1] == 0 then -1 else 0;
          if currentScore > prevMax then currentScore else prevMax
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

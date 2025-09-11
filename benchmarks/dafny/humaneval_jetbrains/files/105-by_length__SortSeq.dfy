@@ -1,3 +1,4 @@
+// <vc-preamble>
 function NumberToName(n: int): string
   requires 1 <= n <= 9
 {
@@ -12,6 +13,7 @@ function NumberToName(n: int): string
   case 8 => "Eight"
   case 9 => "Nine"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

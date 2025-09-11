@@ -1,3 +1,4 @@
+// <vc-preamble>
 /* Helper function to check if a character is uppercase */
 predicate IsUppercase(c: char)
 {
@@ -10,6 +11,7 @@ function Shift32(c: char): char
 {
     ((c as int) + 32) as char
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

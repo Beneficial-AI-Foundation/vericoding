@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -16,13 +17,19 @@ def evalHermiteEPoly {n : Nat} (coeffs : Vector Float n) (x : Float) : Float :=
     else
       acc
   sumTerms 0 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermefromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermefromroots_spec {n : Nat} (roots : Vector Float n) :
     ⦃⌜True⌝⦄
     hermefromroots roots
@@ -51,3 +58,4 @@ theorem hermefromroots_spec {n : Nat} (roots : Vector Float n) :
       (∀ x : Float, x = x → evalHermiteEPoly coeffs x = evalHermiteEPoly coeffs x)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

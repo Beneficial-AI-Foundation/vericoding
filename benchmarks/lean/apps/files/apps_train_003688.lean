@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def String.findSubstr? (pattern : String) (s : String) : Option String.Pos := 
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def gym_slang (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gym_slang_length (s : String) :
   String.length (gym_slang s) ≤ String.length s :=
   sorry
@@ -35,6 +42,7 @@ theorem gym_slang_identity (s : String) :
   (Option.isNone (String.findSubstr? "combination" s.toLower)) →
   gym_slang s = s :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

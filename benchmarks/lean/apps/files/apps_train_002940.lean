@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def insert_dash (n : Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem insert_dash_outputs_string : ∀ n : Nat,
   ∃ s : String, insert_dash n = s :=
 sorry
@@ -46,6 +54,7 @@ info: '1-3-5-7-9'
 -/
 -- #guard_msgs in
 -- #eval insert_dash 13579
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

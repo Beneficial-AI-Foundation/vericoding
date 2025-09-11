@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_transform_array (n : Nat) (a : List Int) (b : List Int) : Bool := sorry
 
 theorem identical_arrays_transform (n : Nat) (a b : List Int) :
   a = b → can_transform_array n a b = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_array_no_transform (n : Nat) (a b : List Int) :
   a ≠ b → (∀ x ∈ a, x = 0) → can_transform_array n a b = false := sorry
 
@@ -49,6 +57,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval can_transform_array 5 [0, 1, -1, 1, -1] [1, 1, -1, 1, -1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

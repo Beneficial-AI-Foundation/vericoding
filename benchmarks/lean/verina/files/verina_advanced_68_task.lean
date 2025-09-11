@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible]
 def runLengthEncoder_precond (input : String) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def runLengthEncoder (input : String) (h_precond : runLengthEncoder_precond (input)) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible]
 def runLengthEncoder_postcond (input : String) (result: String) (h_precond : runLengthEncoder_precond (input)) : Prop :=
   -- Helper functions
@@ -82,6 +89,7 @@ def runLengthEncoder_postcond (input : String) (result: String) (h_precond : run
 theorem runLengthEncoder_spec_satisfied (input: String) (h_precond : runLengthEncoder_precond (input)) :
     runLengthEncoder_postcond (input) (runLengthEncoder (input) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

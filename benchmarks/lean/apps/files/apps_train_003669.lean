@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def int32_to_ip (n : Nat) : String := sorry
 
 def toOctets (n : Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (s : String) (c : Char) : Nat :=
   s.data.filter (· = c) |>.length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem int32_to_ip_has_three_dots (n : Nat)
     (h : n < 2^32) :
     let result := int32_to_ip n
@@ -54,6 +61,7 @@ info: '128.32.10.1'
 -/
 -- #guard_msgs in
 -- #eval int32_to_ip 2149583361
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

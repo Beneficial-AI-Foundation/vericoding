@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def count_ciel_number_prices (menu_items : List String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_char (s : String) (c : Char) : Nat :=
   s.foldl (fun acc x => if x = c then acc + 1 else acc) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_result_bounded (menu_items : List String) :
   0 ≤ count_ciel_number_prices menu_items ∧ 
   count_ciel_number_prices menu_items ≤ menu_items.length :=
@@ -46,6 +53,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_ciel_number_prices ["item 44", "item2 77"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

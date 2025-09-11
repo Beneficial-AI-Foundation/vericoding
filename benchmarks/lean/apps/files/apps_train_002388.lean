@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sumOddLengthSubarrays (arr : List Int) : Int := sorry
 
 def manualSum (arr : List Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_arr_eq_result (x : Int) : 
   sumOddLengthSubarrays [x] = x := sorry
 
@@ -31,6 +39,7 @@ info: 66
 -/
 -- #guard_msgs in
 -- #eval sum_odd_length_subarrays [10, 11, 12]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

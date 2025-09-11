@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def genfromtxt {rows cols : Nat} (input : Vector String rows) 
     (delimiter : String) (fill_value : Float) (skip_header : Nat) :
     Id (Vector (Vector Float cols) (rows - skip_header)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem genfromtxt_spec {rows cols : Nat} (input : Vector String rows) 
     (delimiter : String) (fill_value : Float) (skip_header : Nat)
     (h_skip : skip_header < rows)
@@ -35,3 +42,4 @@ theorem genfromtxt_spec {rows cols : Nat} (input : Vector String rows)
                                  else 
                                    field_str.toNat!.toFloat)⌝⦄ := by
   sorry
+-- </vc-theorems>

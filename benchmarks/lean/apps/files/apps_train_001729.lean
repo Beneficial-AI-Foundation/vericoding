@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def interpreter (code: String) (iterations width height: Nat) : String := sorry
 
 def countChar (s: String) (c: Char) : Nat := 
@@ -5,13 +6,19 @@ def countChar (s: String) (c: Char) : Nat :=
 
 def makeZeroLine (width: Nat) : String :=
   String.mk (List.replicate width '0')
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def makeZeroGrid (width height: Nat) : String :=
   String.intercalate "\r\n" (List.replicate height (makeZeroLine width))
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_dimensions (code: String) (iterations width height: Nat) : 
   let result := interpreter code iterations width height
   let lines := result.splitOn "\r\n"
@@ -57,6 +64,7 @@ info: '00\r\n00'
 -/
 -- #guard_msgs in
 -- #eval interpreter "" 0 2 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

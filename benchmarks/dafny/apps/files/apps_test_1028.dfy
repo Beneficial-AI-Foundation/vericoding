@@ -1,3 +1,4 @@
+// <vc-preamble>
 function comb2(n: int): int
   requires n >= 0
 {
@@ -22,6 +23,7 @@ function MaxFriendshipPairs(n: int, m: int): int
 {
   comb2(n - m + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

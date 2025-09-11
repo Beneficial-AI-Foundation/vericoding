@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(arr: seq<bv32>)
 {
     |arr| > 0
@@ -10,6 +11,7 @@ predicate IsMaxXorSubarray(arr: seq<bv32>, result: bv32)
     forall i1, j1 :: 0 <= i1 <= j1 < |arr| ==> 
         (XorRange(arr, i1, j1) as int) <= (result as int)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

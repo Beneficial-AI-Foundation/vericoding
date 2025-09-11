@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reverse_text (lines : List String) : List String := sorry
 
 theorem reverse_text_lines_length_eq_input {lines : List String} : 
   List.length (reverse_text lines) = List.length lines := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_text_all_alpha_or_space {lines : List String} :
   ∀ line ∈ reverse_text lines, ∀ c ∈ line.data, c.isAlpha ∨ c = ' ' := sorry
 
@@ -47,6 +55,7 @@ info: test3_expected
 -/
 -- #guard_msgs in
 -- #eval reverse_text ["The quick brown", "fox jumps over", "the lazy dog."]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

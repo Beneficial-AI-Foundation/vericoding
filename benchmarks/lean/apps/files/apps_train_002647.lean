@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def time (distance : Nat) (boat_speed : Nat) (stream : String) : Float := sorry
 
 def stream_speed : String → Nat 
   | s => match s.splitOn " " with
     | [_, speed] => (String.toNat! speed)
     | _ => 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem time_is_positive (distance : Nat) (boat_speed : Nat) (stream : String)  
   (h1 : distance > 0)
   (h2 : boat_speed > 0) 
@@ -50,6 +58,7 @@ info: 1.74
 -/
 -- #guard_msgs in
 -- #eval time 54 28 "Downstream 3"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

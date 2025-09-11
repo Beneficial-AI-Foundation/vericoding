@@ -1,7 +1,10 @@
+-- <vc-preamble>
 @[reducible, simp]
 def maxProfit_precond (prices : List Nat) : Prop :=
   True
+-- </vc-preamble>
 
+-- <vc-helpers>
 -- <vc-helpers>
 def updateMinAndProfit (price : Nat) (minSoFar : Nat) (maxProfit : Nat) : (Nat × Nat) :=
   let newMin := Nat.min minSoFar price
@@ -16,10 +19,14 @@ def maxProfitAux (prices : List Nat) (minSoFar : Nat) (maxProfit : Nat) : Nat :=
     let (newMin, newProfit) := updateMinAndProfit p minSoFar maxProfit
     maxProfitAux ps newMin newProfit
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxProfit (prices : List Nat) (h_precond : maxProfit_precond (prices)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 @[reducible, simp]
 def maxProfit_postcond (prices : List Nat) (result: Nat) (h_precond : maxProfit_precond (prices)) : Prop :=
   (result = 0 ∧ prices = []) ∨
@@ -36,6 +43,7 @@ def maxProfit_postcond (prices : List Nat) (result: Nat) (h_precond : maxProfit_
 theorem maxProfit_spec_satisfied (prices: List Nat) (h_precond : maxProfit_precond (prices)) :
     maxProfit_postcond (prices) (maxProfit (prices) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

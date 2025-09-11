@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -8,13 +9,19 @@ inductive DateTime64 where
   | valid : Float → DateTime64
   /-- NaT (Not a Time) - the datetime equivalent of NaN -/
   | nat : DateTime64
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isnat {n : Nat} (x : Vector DateTime64 n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isnat_spec {n : Nat} (x : Vector DateTime64 n) :
     ⦃⌜True⌝⦄
     isnat x
@@ -24,3 +31,4 @@ theorem isnat_spec {n : Nat} (x : Vector DateTime64 n) :
                  (∀ i : Fin n, result.get i = true ↔ x.get i = DateTime64.nat) ∧
                  (∀ i : Fin n, result.get i = false ↔ ∃ t : Float, x.get i = DateTime64.valid t)⌝⦄ := by
   sorry
+-- </vc-theorems>

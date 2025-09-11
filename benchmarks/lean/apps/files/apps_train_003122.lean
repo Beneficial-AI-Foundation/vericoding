@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def two_decimal_places (x : Float) : Float := sorry
 
 def abs (x : Float) : Float := 
   if x ≥ 0 then x else -x
 
 -- Theorem for correct truncation at two decimal places
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem two_decimal_places_truncates (x : Float) : 
   ¬ x.isNaN → ¬ x.isInf → -1000000 ≤ x → x ≤ 1000000 →
   two_decimal_places x = Float.floor (x * 100) / 100 := sorry 
@@ -36,6 +44,7 @@ info: 4.65
 -/
 -- #guard_msgs in
 -- #eval two_decimal_places 4.653725356
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

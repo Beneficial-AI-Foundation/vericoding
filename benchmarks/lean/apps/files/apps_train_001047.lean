@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isAlternatingCode (s : String) : Bool := sorry
 
 abbrev charAt (s : String) (i : Nat) : Char := 
   s.data[i]'sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem alternating_code_first_two_different {s : String} :
   isAlternatingCode s → String.length s ≥ 2 → charAt s 0 ≠ charAt s 1 := sorry 
 
@@ -38,6 +46,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_alternating_code "AA"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

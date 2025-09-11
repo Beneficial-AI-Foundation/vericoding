@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def set_alarm (employed : Bool) (vacation : Bool) : Bool := sorry
 
 theorem set_alarm_spec (employed vacation : Bool) :
   set_alarm employed vacation = (employed && !vacation) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem set_alarm_output_bool (employed vacation : Bool) : 
   set_alarm employed vacation = true ∨ set_alarm employed vacation = false := sorry
 
@@ -32,6 +40,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval set_alarm True False
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

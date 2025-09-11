@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -8,6 +9,7 @@ spec fn sum_to(a: &[i32], n: int) -> int
 {
     if n <= 0 { 0 } else { sum_to(a, n - 1) + a[n - 1] }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

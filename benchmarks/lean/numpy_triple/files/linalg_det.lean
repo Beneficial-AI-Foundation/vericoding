@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def det {n : Nat} (a : Vector (Vector Float n) n) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem det_spec {n : Nat} (a : Vector (Vector Float n) n) :
     ⦃⌜True⌝⦄
     det a
@@ -35,3 +42,4 @@ theorem det_spec {n : Nat} (a : Vector (Vector Float n) n) :
       (True) -- Placeholder for more advanced multilinear properties
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

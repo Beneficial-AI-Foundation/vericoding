@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def divisible_by (numbers : List Int) (divisor : Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divisible_by_contains_only_input_elements (numbers : List Int) (divisor : Int) 
     (h : divisor ≠ 0) :
   ∀ x, x ∈ divisible_by numbers divisor → x ∈ numbers := by
@@ -45,6 +53,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval divisible_by [1, 3, 5] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

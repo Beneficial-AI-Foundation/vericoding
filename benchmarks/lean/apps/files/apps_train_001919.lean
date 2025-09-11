@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_max_binary_after_delete (binary : String) : String := sorry
 
 def stringToBinaryNat (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_valid_binary (binary : String) 
   (h : binary.length > 0)
   (h2 : ∀ c ∈ binary.data, c = '0' ∨ c = '1') :
@@ -45,6 +53,7 @@ info: '1000'
 -/
 -- #guard_msgs in
 -- #eval find_max_binary_after_delete "10000"
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

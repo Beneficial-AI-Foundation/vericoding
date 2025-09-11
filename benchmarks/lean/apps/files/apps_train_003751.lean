@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def longest_word (input : String) : Option (List String) := sorry
 
 theorem longest_word_valid_format 
@@ -11,7 +17,9 @@ theorem longest_word_valid_format
     w₁.length = w₂.length ∧ 
     result.length > 0 :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem longest_word_letter_constraints
   (letters : String)
   (h : (longest_word letters).isSome) :
@@ -51,6 +59,7 @@ info: ['PALMED', 'VALVED', 'VAMPED']
 -/
 -- #guard_msgs in
 -- #eval longest_word "DVAVPALEM"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

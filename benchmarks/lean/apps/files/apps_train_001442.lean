@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_boxes_remaining (boxes : List Nat) (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_boxes_result_bounds (boxes : List Nat) (n : Nat) (h : boxes.length = n) :
   min_boxes_remaining boxes n ≥ boxes.length / 2 ∧ 
   min_boxes_remaining boxes n ≤ boxes.length := by
@@ -41,6 +49,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval min_boxes_remaining 4 boxes3.copy()
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

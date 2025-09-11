@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def max_race_wins (n : Nat) (my_times : List Nat) (opp_times: List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isDescending (l : List Nat) : Prop :=
   ∀ i j, i < l.length → j < l.length → i < j → 
     match l.get? i, l.get? j with
     | some x, some y => x ≥ y
     | _, _ => True
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_race_wins_result_bounds {n : Nat} {my_times opp_times : List Nat} 
   (h1 : n > 0) (h2 : n ≤ 100)
   (h3 : ∀ x ∈ my_times, 1 ≤ x ∧ x ≤ 1000)
@@ -48,6 +55,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval max_race_wins 4 [5, 4, 3, 2] [6, 5, 4, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

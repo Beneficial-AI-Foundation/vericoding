@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def unite_linked_lists (n : Nat) (arr : List (List Nat)) : List (List Nat) :=
   sorry
 
@@ -6,13 +7,19 @@ def is_valid_linked_list (n : Nat) (arr : List (List Nat)) : Bool :=
 
 def count_lists (n : Nat) (arr : List (List Nat)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_connected (n : Nat) (arr : List (List Nat)) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem unite_linked_lists_preserves_size {n : Nat} {arr : List (List Nat)} 
     (h1 : is_valid_linked_list n arr)
     (h2 : count_lists n arr ≥ 2) :
@@ -36,6 +43,7 @@ theorem unite_linked_lists_reduces_count {n : Nat} {arr : List (List Nat)}
     (h2 : count_lists n arr ≥ 2) :
     count_lists n (unite_linked_lists n arr) = 1 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded

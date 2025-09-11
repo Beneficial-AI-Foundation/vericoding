@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_make_equal (s t : String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_make_equal_reflexive (s : String) (h : s.length > 0) :
   can_make_equal s s = true :=
 sorry
@@ -40,6 +48,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_make_equal "abcd" "badc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

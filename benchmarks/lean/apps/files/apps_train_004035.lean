@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_probability (n : Int) : Float := sorry
 
 theorem probability_bounds (n : Int) : 
   0 ≤ calculate_probability n ∧ calculate_probability n ≤ 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem monotonic_increase {n1 n2 : Int} (h : n1 > n2) (h1 : n1 ≤ 365) (h1b : 1 ≤ n1) (h2 : n2 ≤ 365) (h2b : 0 ≤ n2) :
   calculate_probability n1 ≥ calculate_probability n2 := sorry
 
@@ -35,6 +43,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval calculate_probability 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

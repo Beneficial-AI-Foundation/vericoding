@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_numbers_with_even_digits (nums: List Nat) : Nat := sorry
 
 def count_digits (n: Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_numbers_bounds {nums: List Nat} : 
   find_numbers_with_even_digits nums ≤ nums.length := sorry
 
@@ -32,6 +40,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_numbers_with_even_digits [1, 22, 333, 4444]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

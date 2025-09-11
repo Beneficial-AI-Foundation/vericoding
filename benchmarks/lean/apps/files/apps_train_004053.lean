@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def solution (x : Float) : Float := sorry
 
 def floor (x : Float) : Float := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def ceil (x : Float) : Float := sorry
 
 theorem solution_output_options (x : Float) :
   let floorX := floor x
   solution x = floorX ∨ solution x = floorX + 0.5 ∨ solution x = ceil x
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solution_within_half (x : Float) :
   (solution x - x) ≤ 0.5 ∧ (x - solution x) ≤ 0.5
   := sorry
@@ -40,6 +47,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval solution 4.75
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

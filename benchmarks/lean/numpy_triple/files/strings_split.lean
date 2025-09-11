@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def split {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Option Nat) : Id (Vector (List String) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem split_spec {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Option Nat) 
     (h_sep_nonempty : sep ≠ "") :
     ⦃⌜sep ≠ ""⌝⦄
@@ -39,3 +46,4 @@ theorem split_spec {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Op
              parts.length = limit + 1 ∧ 
              String.intercalate sep (parts.take limit) ++ sep ++ (parts.get ⟨limit, by sorry⟩) = original)⌝⦄ := by
   sorry
+-- </vc-theorems>

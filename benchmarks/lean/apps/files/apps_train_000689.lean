@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_matrix_product (n : Nat) (a : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_matrix_product_bounds (n : Nat) (a : Nat) :
   n ≥ 1 → 0 ≤ solve_matrix_product n a ∧ solve_matrix_product n a < 10^9+7 :=
 sorry
@@ -33,6 +41,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_matrix_product 5 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

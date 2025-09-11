@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_array_xor (n : Nat) (arr : List Nat) : Nat := sorry
 
 theorem xor_self_cancel (x : Nat) : 
   solve_array_xor 2 [x, x] = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem xor_commutative (n : Nat) (arr : List Nat) : 
   solve_array_xor n arr = solve_array_xor n arr.reverse := sorry
 
@@ -38,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_array_xor 2 [10, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

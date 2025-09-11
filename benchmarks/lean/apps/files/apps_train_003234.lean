@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def reorder (n : Nat) (m : Nat) : (List Nat × List Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reorder_output_size {n m : Nat} (h : 2 ∣ n) (h2 : n ≥ 2) :
   let result := reorder n m
   List.length result.1 = n/2 ∧ List.length result.2 = n/2 :=
@@ -42,6 +50,7 @@ info: [[3, 4, 0, 1, 2], [8, 9, 5, 6, 7]]
 -/
 -- #guard_msgs in
 -- #eval reorder 10 97
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

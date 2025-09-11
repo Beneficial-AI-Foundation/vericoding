@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(holds: seq<int>) {
     |holds| >= 3 && forall i :: 0 <= i < |holds| - 1 ==> holds[i] < holds[i + 1]
 }
@@ -24,6 +25,7 @@ function maxDiffHelper(s: seq<int>, index: int, currentMax: int): int
         var newMax := if diff > currentMax then diff else currentMax;
         maxDiffHelper(s, index + 1, newMax)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

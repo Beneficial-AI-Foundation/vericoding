@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_convolve {m n : Nat} (a : Vector Float m) (v : Vector Float n) : Id (Vector Float (m + n - 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_convolve_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n) 
     (h_m : m > 0) (h_n : n > 0) :
     ⦃⌜m > 0 ∧ n > 0⌝⦄
@@ -27,3 +34,4 @@ theorem numpy_convolve_spec {m n : Nat} (a : Vector Float m) (v : Vector Float n
       (∀ k : Fin (m + n - 1), result.get k = result.get k)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function Factorial(n: int): int
     requires n >= 0
     ensures 0 <= Factorial(n)
@@ -5,6 +6,7 @@ function Factorial(n: int): int
         if n == 0 then 1
         else n * Factorial(n-1)
     }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

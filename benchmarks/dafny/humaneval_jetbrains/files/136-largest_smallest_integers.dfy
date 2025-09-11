@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype Option<T> = None | Some(value: T)
 function get_value(o: Option<int>): int
   requires o.Some?
@@ -5,6 +6,7 @@ function get_value(o: Option<int>): int
 {
   o.value
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def largestMultipleOfThree (digits : List Nat) : Option String := sorry
 
 def stringToNat (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_multiple_of_three (digits : List Nat) :
   ∀ result : String,
   largestMultipleOfThree digits = some result →
@@ -38,6 +46,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval largest_multiple_of_three [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

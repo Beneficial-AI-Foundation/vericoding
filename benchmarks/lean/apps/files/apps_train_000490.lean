@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def shortest_palindrome (s : String) : String := sorry
 
 def isPalindrome (s : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringReverse (s : String) : String := sorry
 
 theorem shortest_palindrome_contains_original (s : String) :
   (shortest_palindrome s).endsWith s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem shortest_palindrome_is_palindrome (s : String) :
   isPalindrome (shortest_palindrome s) = true := sorry
 
@@ -46,6 +53,7 @@ info: 'a'
 -/
 -- #guard_msgs in
 -- #eval shortest_palindrome "a"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

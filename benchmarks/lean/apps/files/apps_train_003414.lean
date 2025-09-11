@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def move_vowels (s : String) : String := sorry
 
 def is_vowel (c : Char) : Bool :=
   c = 'a' || c = 'e' || c = 'i' || c = 'o' || c = 'u'
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_chars (s : String) : Nat := s.length
 
 theorem move_vowels_length_preserved (s : String) :
   count_chars (move_vowels s) = count_chars s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem move_vowels_preserves_characters (s : String) :
   (s.data : List Char) = ((move_vowels s).data : List Char) := sorry
 
@@ -40,6 +47,7 @@ info: 'pceae'
 -/
 -- #guard_msgs in
 -- #eval move_vowels "peace"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

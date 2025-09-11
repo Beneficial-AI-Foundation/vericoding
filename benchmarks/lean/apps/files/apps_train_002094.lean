@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def sum (l: List Nat) : Nat := 
   match l with
   | [] => 0
   | h::t => h + sum t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_stone_game (n : Nat) (stones : List Nat) : String := sorry
 
 -- Properties for solve_stone_game
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_stone_game_valid_output (n : Nat) (stones : List Nat) :
   let result := solve_stone_game n stones
   result = "T" ∨ result = "HL" := sorry
@@ -63,6 +70,7 @@ info: 'HL'
 -/
 -- #guard_msgs in
 -- #eval solve_stone_game 3 [2, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

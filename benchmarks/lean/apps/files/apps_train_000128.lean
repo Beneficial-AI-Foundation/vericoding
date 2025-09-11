@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def String.repeat (s : String) (n : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def number_of_arrays (s : String) (k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digit_valid {d : Char} {k : Nat} 
   (h1 : d ∈ ['1', '2', '3', '4', '5', '6', '7', '8', '9'])
   (h2 : k > 0)
@@ -34,6 +41,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval number_of_arrays "1317" 2000
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

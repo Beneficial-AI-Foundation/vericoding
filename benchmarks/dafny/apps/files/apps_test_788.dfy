@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string) 
 {
     |s| == 7 && s[0] == 'A' && forall i :: 1 <= i < 7 ==> '0' <= s[i] <= '9'
@@ -19,6 +20,7 @@ function ZeroCount(s: string, start: int, end: int): int
     if start >= end then 0
     else (if s[start] == '0' then 1 else 0) + ZeroCount(s, start + 1, end)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

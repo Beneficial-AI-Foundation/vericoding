@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def subsets_parity (n k : Nat) : String := sorry
 
 def choose (n k : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem subset_parity_full_set (n : Nat) (h : n > 0) : 
   subsets_parity n n = "ODD" := sorry
 
@@ -35,6 +43,7 @@ info: 'EVEN'
 -/
 -- #guard_msgs in
 -- #eval subsets_parity 20 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

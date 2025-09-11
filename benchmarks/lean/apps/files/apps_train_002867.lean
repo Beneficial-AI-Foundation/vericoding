@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def get_issuer (number : Nat) : String := sorry
 
 inductive CardIssuer where
@@ -7,17 +8,23 @@ inductive CardIssuer where
   | VISA : CardIssuer
   | Unknown : CardIssuer
 deriving BEq
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def CardIssuer.toString : CardIssuer → String
   | AMEX => "AMEX"
   | Discover => "Discover"
   | Mastercard => "Mastercard"
   | VISA => "VISA"
   | Unknown => "Unknown"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem issuer_is_valid (n : Nat) :
   let result := get_issuer n
   result = "AMEX" ∨ result = "Discover" ∨ result = "Mastercard" ∨ result = "VISA" ∨ result = "Unknown" := sorry
@@ -80,6 +87,7 @@ info: 'Unknown'
 -/
 -- #guard_msgs in
 -- #eval get_issuer 9111111111111111
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

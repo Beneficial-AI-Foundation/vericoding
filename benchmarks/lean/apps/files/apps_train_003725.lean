@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def abs (x : Int) : Int := 
   if x ≥ 0 then x else -x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_john_lying (x y steps : Int) : Bool := sorry
 
 theorem symmetry_properties {x y steps : Int} (h : steps ≥ 0) :
   is_john_lying x y steps = is_john_lying (-x) y steps ∧
   is_john_lying x y steps = is_john_lying x (-y) steps ∧
   is_john_lying x y steps = is_john_lying y x steps := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_steps_required {x y : Int} :
   ¬(is_john_lying x y (abs x + abs y - 1)) := sorry
 
@@ -39,6 +46,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_john_lying -5 -5 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

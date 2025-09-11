@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum_playlist_duration(songs: seq<(int, int)>, n: int): int
   requires n >= 0
   requires |songs| >= n
@@ -15,6 +16,7 @@ function cumulative_duration_at_song(songs: seq<(int, int)>, song_idx: int): int
   if song_idx == -1 then 0
   else songs[song_idx].0 * songs[song_idx].1 + cumulative_duration_at_song(songs, song_idx - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

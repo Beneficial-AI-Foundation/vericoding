@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def validCharSet : String → Bool := 
 sorry
 
@@ -15,13 +16,19 @@ structure PlayingCards where
   chars : List Char
   encode : String → Option (List String)
   decode : List String → Option String
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def defaultPlayingCards : PlayingCards :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_decode_roundtrip 
   {pc : PlayingCards} {msg : String} (h : isValidMessage msg) :
   match (pc.encode msg) with
@@ -57,6 +64,7 @@ theorem empty_message_valid
   pc.encode "" ≠ none ∧
   pc.decode (Option.get! (pc.encode "")) = some ""
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

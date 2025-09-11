@@ -1,15 +1,22 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebder {n : Nat} (c : Vector Float (n + 1)) (scl : Float := 1) :
     Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebder_spec {n : Nat} (c : Vector Float (n + 1)) (scl : Float := 1) :
     ⦃⌜True⌝⦄
     chebder c scl
@@ -26,3 +33,4 @@ theorem chebder_spec {n : Nat} (c : Vector Float (n + 1)) (scl : Float := 1) :
               -- This is captured by the recurrence relations above
               True⌝⦄ := by
   sorry
+-- </vc-theorems>

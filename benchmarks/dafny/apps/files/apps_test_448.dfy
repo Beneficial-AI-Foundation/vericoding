@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, a: seq<int>) {
     n > 0 && m > 0 && |a| == n && forall i :: 0 <= i < |a| ==> a[i] > 0
 }
@@ -15,6 +16,7 @@ function SumCandiesStillNeeded(queue: seq<seq<int>>): nat
         var stillNeeded := if child[1] <= child[0] then 0 else child[1] - child[0];
         stillNeeded + SumCandiesStillNeeded(queue[1..])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

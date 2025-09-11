@@ -1,3 +1,4 @@
+// <vc-preamble>
 function count_char(s: string, c: char): int
 {
     if |s| == 0 then 0
@@ -13,6 +14,7 @@ predicate ValidCommands(commands: string)
 {
     forall i :: 0 <= i < |commands| ==> commands[i] in {'L', 'R', 'U', 'D'}
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

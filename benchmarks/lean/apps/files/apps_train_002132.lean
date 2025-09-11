@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_tshirts (n : Nat) (p : List Nat) (f : List Nat) (b : List Nat) (m : Nat) (bc : List Nat) : List Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_matching_shirts_result
   (n : Nat)
   (p : List Nat)
@@ -42,6 +50,7 @@ info: [529469903]
 -/
 -- #guard_msgs in
 -- #eval solve_tshirts 1 [529469903] [1] [3] 1 [3]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

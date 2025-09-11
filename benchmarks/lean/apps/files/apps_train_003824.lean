@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def interpreter (code: String) (tape: String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_code_unchanged (tape: String) (h: ∀ c, c ∈ tape.data → c = '0' ∨ c = '1') : 
   interpreter "" tape = tape :=
   sorry
@@ -47,6 +55,7 @@ info: '10101'
 -/
 -- #guard_msgs in
 -- #eval interpreter "[>[*>*>*>]>]" "10110"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

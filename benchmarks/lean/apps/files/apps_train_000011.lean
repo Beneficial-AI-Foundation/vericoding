@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def min_grid_area (s : String) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_width_height_from_path (s : String) : Nat × Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_grid_area_positive (s : String) :
   min_grid_area s > 0 := by
   sorry
@@ -45,6 +52,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval min_grid_area "WA"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

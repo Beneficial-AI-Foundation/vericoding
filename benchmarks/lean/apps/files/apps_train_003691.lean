@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def pattern (n : Nat) : String := sorry 
 
 def isSingleDigit (c: Char) : Bool :=
@@ -5,15 +6,21 @@ def isSingleDigit (c: Char) : Bool :=
 
 def stringContainsSubstr (s : String) (substr : String) : Bool := sorry
 def stringContainsChar (s : String) (c : Char) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def stringRepeat (n : Nat) (s : String) : String := sorry
 
 theorem non_positive_input_returns_empty_string {n : Int} (h : n ≤ 0) :
   pattern n.toNat = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_digit_correct {n : Nat} (h1 : n ≥ 1) (h2 : n ≤ 9) :
   let lines := (pattern n).splitOn "\n"
   let middle := lines.get! (n-1)
@@ -42,6 +49,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval pattern -3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

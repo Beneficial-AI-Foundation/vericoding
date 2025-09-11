@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sc (width length gaps : Nat) : Nat := sorry
 
 theorem sc_non_negative
@@ -9,7 +15,9 @@ theorem sc_non_negative
   (h2 : length > 0)
   (h3 : gaps > 0) :
   sc width length gaps ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sc_zero_when_gaps_exceed_perimeter
   (width length gaps : Nat)
   (h1 : width > 0)
@@ -54,6 +62,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval sc 3 3 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

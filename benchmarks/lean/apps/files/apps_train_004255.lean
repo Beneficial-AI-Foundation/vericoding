@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_consecutives (xs : List Int) : List Int := sorry
 
 theorem sum_consecutives_length 
@@ -8,7 +14,9 @@ theorem sum_consecutives_length
   (h : xs ≠ []) : 
   List.length (sum_consecutives xs) ≤ List.length xs :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_consecutives_preserves_elements
   (xs : List Int)
   (h : xs ≠ []) :
@@ -38,6 +46,7 @@ theorem alternating_elements_preserve_length
         xs.get! i ≠ xs.get! (i + 1)) :
   (sum_consecutives xs).length = xs.length :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

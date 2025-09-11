@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxAbsValExpr (arr1 arr2 : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem maxAbsValExpr_non_negative {arr1 arr2 : List Int} 
   (h : arr1.length = arr2.length) :
   maxAbsValExpr arr1 arr2 ≥ 0 :=
@@ -31,6 +39,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval maxAbsValExpr [1, 1] [1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def can_arrange (arr : List Int) (k : Nat) : Bool := sorry
 
 def Even (n : Nat) : Prop := ∃ k, n = 2 * k
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countOdds (xs : List Int) : Nat :=
   xs.foldl (fun acc x => if x % 2 = 1 then acc + 1 else acc) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem can_arrange_result_type (arr : List Int) (k : Nat) :
   can_arrange arr k = true ∨ can_arrange arr k = false := sorry
 
@@ -44,6 +51,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_arrange [-1, 1, -2, 2, -3, 3, -4, 4] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

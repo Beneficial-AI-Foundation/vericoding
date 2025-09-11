@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solveDogStrings (a b : String) : Nat := sorry
 
 def mod_const := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_range {a b : String} : 
   let result := solveDogStrings a b
   0 ≤ result ∧ result < mod_const
@@ -41,6 +49,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_dog_strings "1" "2"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def doubles (s : String) : String := sorry
 
 theorem doubles_idempotent (s : String) :
   doubles (doubles s) = doubles s := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem doubles_pairwise (s : String) :
   let result := doubles s
   ∀ i : Nat, i + 1 < result.length → 
@@ -39,6 +47,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval doubles "abba"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def get_exponent (n p : Int) : Option Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def pow (x y : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_exponent_divides {n p : Int} (h1 : n ≥ 2) (h2 : p ≥ 2) :
   match get_exponent n p with
   | none => False 
@@ -44,6 +51,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval get_exponent 10 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

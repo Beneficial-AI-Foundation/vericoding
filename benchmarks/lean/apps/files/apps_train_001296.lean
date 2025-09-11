@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_covac (n x : Nat) (populations : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_covac_result_exceeds_country_count 
   {n x : Nat} {populations : List Nat}
   (h1 : 0 < n) (h2 : 0 < x)
@@ -50,6 +58,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval solve_covac 3 10 [20, 1, 110]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_peak_element (nums : List Int) : Int := sorry 
 
 theorem find_peak_element_valid_index {nums : List Int} (h : nums ≠ []) : 
   let idx := find_peak_element nums
   0 ≤ idx ∧ idx < nums.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_element_peak {nums : List Int} (h : nums.length = 1) :
   find_peak_element nums = 0 := sorry
 
@@ -41,6 +49,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval find_peak_element [1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

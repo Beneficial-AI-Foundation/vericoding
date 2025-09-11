@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def lcm (a b : Nat) : Nat := sorry
 def gcd (a b : Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve_lovers_lcm (n : Nat) : String := sorry
 
 -- Properties relating to lcm and gcd with same inputs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lcm_self (n : Nat) : lcm n n = n := sorry
 
 theorem gcd_self (n : Nat) (h : n > 0) : gcd n n = n := sorry
@@ -52,6 +59,7 @@ info: 'YESS(sunglass emo)'
 -/
 -- #guard_msgs in
 -- #eval solve_lovers_lcm 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

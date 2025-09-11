@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(m: int, d: int)
 {
     1 <= m <= 12 && 1 <= d <= 7
@@ -14,6 +15,7 @@ function ColumnsNeeded(m: int, d: int): int
 {
     1 + (d - 1 + DaysInMonth(m) - 1) / 7
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

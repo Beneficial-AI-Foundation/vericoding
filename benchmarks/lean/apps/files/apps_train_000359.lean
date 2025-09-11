@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_satisfaction (satisfaction : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_satisfaction_nonnegative
   (satisfaction : List Int) :
   max_satisfaction satisfaction ≥ 0 :=
@@ -42,6 +50,7 @@ info: 35
 -/
 -- #guard_msgs in
 -- #eval max_satisfaction [-2, 5, -1, 0, 3, -3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

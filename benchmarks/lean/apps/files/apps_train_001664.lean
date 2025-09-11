@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def abs (n : Nat) : Nat :=
   sorry
 
 def isValidPos (pos : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def knight (s e : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem knight_valid_range {s e : String} 
   (h1 : isValidPos s) (h2 : isValidPos e) : 
   let m := knight s e
@@ -50,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval knight "d5" "d5"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_ops_to_sort (arr : List Nat) : Nat := sorry
 
 theorem min_ops_non_negative (arr : List Nat) :
   min_ops_to_sort arr ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_ops_upper_bound {arr : List Nat} :
   min_ops_to_sort arr ≤ List.length (List.eraseDups arr) := sorry 
 
@@ -32,6 +40,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_ops_to_sort [4, 2, 5, 2, 6, 2, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

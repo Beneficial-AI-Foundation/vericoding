@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -9,6 +10,7 @@ spec fn inner_epxr_replace_chars(str1: &Vec<char>, old_char: char, new_char: cha
         str1[i]
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

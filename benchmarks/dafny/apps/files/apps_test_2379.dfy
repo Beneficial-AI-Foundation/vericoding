@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsValidWorkSelection(N: int, K: int, C: int, S: string, selection: set<int>)
     requires |S| == N
 {
@@ -6,6 +7,7 @@ predicate IsValidWorkSelection(N: int, K: int, C: int, S: string, selection: set
     (forall day1, day2 :: day1 in selection && day2 in selection && day1 != day2 ==> 
         day1 < day2 - C || day2 < day1 - C)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

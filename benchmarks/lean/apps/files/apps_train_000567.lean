@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def can_make_sequence_good (n : Nat) (sequence : List Int) : String := sorry
 
 def sum_nonnegative (l : List Int) : Int := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum_negative (l : List Int) : Int := sorry
 
 theorem sequence_result_is_yes_or_no (n : Nat) (sequence : List Int) :
   let result := can_make_sequence_good n sequence
   result = "YES" ∨ result = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem yes_case_sums_property (n : Nat) (sequence : List Int) :
   can_make_sequence_good n sequence = "YES" →
   sum_nonnegative sequence ≥ Int.natAbs (sum_negative sequence) := sorry
@@ -44,6 +51,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval can_make_sequence_good 3 [1, -2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

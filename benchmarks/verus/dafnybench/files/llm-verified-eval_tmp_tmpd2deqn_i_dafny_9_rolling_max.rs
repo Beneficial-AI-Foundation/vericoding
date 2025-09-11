@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -6,6 +7,7 @@ spec fn isMax(m: int, numbers: Seq<int>) -> bool {
     numbers.contains(m) &&
     forall|i: int| 0 <= i < numbers.len() ==> numbers[i] <= m
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

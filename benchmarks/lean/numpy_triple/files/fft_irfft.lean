@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -13,13 +14,19 @@ structure Complex where
 def isHermitianSymmetric {n : Nat} (a : Vector Complex n) : Prop :=
   ∀ i : Fin n, ∀ j : Fin n, (i.val + j.val = n - 1) → 
     (a.get i).re = (a.get j).re ∧ (a.get i).im = -(a.get j).im
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def irfft {k : Nat} (a : Vector Complex k) (n : Nat) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem irfft_spec {k : Nat} (a : Vector Complex k) (n : Nat) 
     (h_length : n = 2 * (k - 1)) 
     (h_hermitian : isHermitianSymmetric a) 
@@ -41,3 +48,4 @@ theorem irfft_spec {k : Nat} (a : Vector Complex k) (n : Nat)
       (n = 2 * (k - 1))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

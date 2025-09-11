@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_delivery_problem (n m : Nat) (roads : List (Nat × Nat)) (deliveries : List (Nat × Nat)) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem delivery_reflexive {n m : Nat} {roads : List (Nat × Nat)} {i : Nat} (h : i < n) :
   (solve_delivery_problem n m roads [(i,i)]).head! = "YO" :=
   sorry
@@ -34,6 +42,7 @@ info: ['YO']
 -/
 -- #guard_msgs in
 -- #eval solve_delivery_problem 3 2 [(0, 1), (1, 2)] [(0, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

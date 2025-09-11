@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -11,13 +12,19 @@ structure UfuncSignature where
   /-- All unique dimension names used in the signature -/
   dimension_names : List String
 deriving Repr
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def parseSignature {n : Nat} (sig : Vector String n) : Id UfuncSignature :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem parseSignature_spec {n : Nat} (sig : Vector String n) 
     (h_valid : n > 0) :
     ⦃⌜n > 0⌝⦄
@@ -39,3 +46,4 @@ theorem parseSignature_spec {n : Nat} (sig : Vector String n)
       -- Result is well-formed (has inputs or outputs)
       (result.inputs.length + result.outputs.length > 0)⌝⦄ := by
   sorry
+-- </vc-theorems>

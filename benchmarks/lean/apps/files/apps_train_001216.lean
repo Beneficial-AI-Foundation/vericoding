@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isLastDigitPretty (n : Nat) : Bool := sorry
 
 def count_pretty_numbers (l r : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_pretty_numbers_non_negative (l r : Nat) : 
   count_pretty_numbers l r ≥ 0 := sorry
 
@@ -28,6 +36,7 @@ info: 30
 -/
 -- #guard_msgs in
 -- #eval count_pretty_numbers 1 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

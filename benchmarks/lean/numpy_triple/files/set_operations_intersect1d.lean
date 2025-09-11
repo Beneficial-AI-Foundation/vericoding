@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def intersect1d {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) : Id (Vector Int k) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem intersect1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m) :
     ⦃⌜True⌝⦄
     intersect1d ar1 ar2
@@ -24,3 +31,4 @@ theorem intersect1d_spec {n m k : Nat} (ar1 : Vector Int n) (ar2 : Vector Int m)
         ∃ l : Fin k, result.get l = val)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

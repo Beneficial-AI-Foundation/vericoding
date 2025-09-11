@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_cable_cost (n : Nat) (costs : List (List Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cable_cost_le_total_cost (n : Nat) (costs : List (List Nat)) 
   (h_costs_len : costs.length = n)
   (h_costs_inner : ∀ i : Fin n, (costs[i.val]).length = n) :
@@ -29,6 +37,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval min_cable_cost 3 [[0, 1, 2], [1, 0, 3], [2, 3, 0]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

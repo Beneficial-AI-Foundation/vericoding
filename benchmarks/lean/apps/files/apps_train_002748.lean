@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def adFly_encoder (url : String) : String := sorry
 def adFly_decoder (encoded : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encode_decode_roundtrip 
   (url : String) 
   (h : ∃ (s₁ s₂ : String), url = "http://" ++ s₁ ++ "." ++ s₂) :
@@ -41,6 +49,7 @@ info: 'Invalid'
 -/
 -- #guard_msgs in
 -- #eval adFly_decoder "lololol"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

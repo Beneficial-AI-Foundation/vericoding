@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def likes (names : List String) : String := sorry
 
 theorem likes_output_is_string (names : List String) : 
   ∃ s : String, likes names = s := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem likes_output_ends_correctly (names : List String) :
   (likes names).endsWith " likes this" ∨ (likes names).endsWith " like this" := by sorry
 
@@ -56,6 +64,7 @@ info: 'Alex, Jacob and 2 others like this'
 -/
 -- #guard_msgs in
 -- #eval likes ["Alex", "Jacob", "Mark", "Max"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

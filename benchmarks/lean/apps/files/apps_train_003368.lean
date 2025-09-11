@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def array_previous_less (arr : List Int) : List Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_previous_less_length (arr : List Int) (h : arr ≠ []) :
   (array_previous_less arr).length = arr.length :=
   sorry
@@ -46,6 +54,7 @@ info: [-1, -1, -1]
 -/
 -- #guard_msgs in
 -- #eval array_previous_less [3, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

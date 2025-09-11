@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 import Init.Data.Vector.Basic
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def numpy_greater {n : Nat} (x1 x2 : Vector Float n) : Id (Vector Bool n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem numpy_greater_spec {n : Nat} (x1 x2 : Vector Float n) :
     ⦃⌜True⌝⦄
     numpy_greater x1 x2
@@ -20,3 +27,4 @@ theorem numpy_greater_spec {n : Nat} (x1 x2 : Vector Float n) :
                              -- Boolean result: each element is either true or false
                              (result.get i = true ∨ result.get i = false)⌝⦄ := by
   sorry
+-- </vc-theorems>

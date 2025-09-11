@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def abs (x : Int) : Int :=
   if x < 0 then -x else x
 
@@ -6,13 +7,19 @@ sorry
 
 def minimum (l : List Int) : Int :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def smallest_distance_pair : List Int → Nat → Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem smallest_distance_pair_properties {nums : List Int} {k : Nat}
     (h1 : nums.length ≥ 2)
     (h2 : k ≥ 1)
@@ -48,6 +55,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval smallest_distance_pair [1, 6, 1] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

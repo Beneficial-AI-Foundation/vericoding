@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ipv4__parser (ipAddr : String) (mask : String) : String × String := sorry
 
 structure OctetList where
   octets : List Nat
   size_eq : octets.length = 4
   range : ∀ x ∈ octets, 0 ≤ x ∧ x ≤ 255
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ipv4_parser_format (ipAddr : String) (mask : String) :
   let (network, host) := ipv4__parser ipAddr mask
   (network.splitOn ".").length = 4 ∧ 
@@ -32,6 +40,7 @@ theorem ipv4_parser_reconstruction
     ((netOctets.get! i) ||| (hostOctets.get! i)) = ipOctets.octets.get! i ∧
     netOctets.get! i = (ipOctets.octets.get! i &&& maskOctets.octets.get! i) ∧
     hostOctets.get! i = (ipOctets.octets.get! i &&& ((255 : Nat) - (maskOctets.octets.get! i))) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

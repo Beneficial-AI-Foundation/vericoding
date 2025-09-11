@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def get_num (arr : List Nat) : List Nat := sorry
 def is_prime (n : Nat) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def minimum (l : List Nat) (h : l.length > 0) : Nat := sorry
 def product (l : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_num_basic_properties {arr : List Nat} (h1 : arr.length > 0) 
   (h2 : ∀ x ∈ arr, 2 ≤ x ∧ x ≤ 20) :
   let result := get_num arr
@@ -41,6 +48,7 @@ info: [23400, 71, 2, 11700]
 -/
 -- #guard_msgs in
 -- #eval get_num [2, 13, 2, 5, 2, 5, 3, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (interval1: Int × Int) (interval2: Int × Int) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: Int × Int → Int × Int → String)
@@ -36,6 +43,7 @@ theorem correctness
 (interval2: Int × Int)
 : problem_spec implementation interval1 interval2 := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation (1, 2) (2, 3) = "NO"
 -- #test implementation (-1, 1) (0, 4) = "NO"

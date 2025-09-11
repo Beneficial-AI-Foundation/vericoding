@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
     n >= 3 && n <= 101 && n % 2 == 1
@@ -26,6 +27,7 @@ predicate CorrectDiamondPattern(result: seq<string>, n: int)
         result[i] == RepeatChar('*', stars) + RepeatChar('D', diamonds) + RepeatChar('*', stars))
     )
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

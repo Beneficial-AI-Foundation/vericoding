@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_valid_serialization (s : String) : Bool := sorry
 
 theorem slot_balance_for_valid_serializations {preorder : String} :
@@ -11,7 +17,9 @@ theorem slot_balance_for_valid_serializations {preorder : String} :
   ) 1
   final_slot = 0 := 
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_nulls_valid_only_simple {preorder : String} :
   (∀ n ∈ preorder.splitOn ",", n = "#") →
   is_valid_serialization preorder →
@@ -51,6 +59,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_valid_serialization "9,#,#,1"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

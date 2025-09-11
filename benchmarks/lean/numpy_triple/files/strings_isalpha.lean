@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isalpha {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=
   a.map (fun s => s ≠ "" ∧ s.toList.all Char.isAlpha)
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isalpha_spec {n : Nat} (a : Vector String n) :
     ⦃⌜True⌝⦄
     isalpha a
@@ -25,3 +32,4 @@ theorem isalpha_spec {n : Nat} (a : Vector String n) :
       -- Mathematical property: if string has non-alphabetic char, result is false
       (∃ c ∈ (a.get i).toList, ¬Char.isAlpha c → result.get i = false)⌝⦄ := by
   sorry
+-- </vc-theorems>

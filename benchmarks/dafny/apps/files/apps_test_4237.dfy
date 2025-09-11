@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, C: int, D: int) {
   A >= 1 && B >= A && C >= 1 && D >= 1
 }
@@ -13,6 +14,7 @@ function CountNotDivisible(A: int, B: int, C: int, D: int): int
 {
   |set x | A <= x <= B && NotDivisibleByEither(x, C, D)|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

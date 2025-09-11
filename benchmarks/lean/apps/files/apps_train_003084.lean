@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def checkchoose (m n : Int) : Int := sorry
 
 def choose (n k : Int) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem checkchoose_valid_range (n : Int) (h : n ≥ 1) (h2 : n ≤ 20) : 
   let res := checkchoose (choose n 2) n;
   res ≠ -1 → choose n res = choose n 2 := sorry
@@ -33,6 +41,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval checkchoose 4 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

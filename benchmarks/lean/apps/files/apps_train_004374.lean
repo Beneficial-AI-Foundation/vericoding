@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def positive_sum (xs : List Int) : Int := sorry
 
 theorem positive_sum_non_negative (xs : List Int) :
   positive_sum xs ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem positive_sum_equals_positive_filter_sum (xs : List Int) :
   positive_sum xs = (xs.filter (fun x => x > 0)).foldr (· + ·) 0 := sorry
 
@@ -29,6 +37,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval positive_sum []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

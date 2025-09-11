@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(values: seq<int>)
 {
   |values| >= 1 && forall i :: 0 <= i < |values| ==> values[i] > 0
@@ -39,6 +40,7 @@ function gcdOfAll(values: seq<int>): int
 {
   gcdSeq(values, 1, values[0])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, p: int, f: seq<int>, g: seq<int>) {
     n >= 1 && m >= 1 &&
     p >= 2 &&
@@ -19,6 +20,7 @@ predicate ValidResult(result: int, n: int, m: int, p: int, f: seq<int>, g: seq<i
             result == i + j &&
             0 <= result < |f| + |g|
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

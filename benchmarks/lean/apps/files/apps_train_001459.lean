@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_minimum_cost (a₀ b₀ c₀ x y z : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_minimum_cost_output_range 
   (a₀ b₀ c₀ x y z : Nat) 
   (h1 : a₀ ≤ 1000) (h2 : b₀ ≤ 1000) (h3 : c₀ ≤ 1000)
@@ -51,6 +59,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_minimum_cost 0 0 0 2 2 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

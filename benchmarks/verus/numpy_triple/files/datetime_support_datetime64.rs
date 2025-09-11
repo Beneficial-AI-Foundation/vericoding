@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -29,6 +30,7 @@ pub struct DateTime64 {
 
     pub is_utc: bool,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def solve_bulb_fluctuations (n: Nat) : Nat :=
   sorry
 
 def sqrt (n: Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countSquaresNotDiv3 (n: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_non_negative (n: Nat) :
   solve_bulb_fluctuations n ≥ 0 :=
   sorry
@@ -55,6 +62,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval solve_bulb_fluctuations 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

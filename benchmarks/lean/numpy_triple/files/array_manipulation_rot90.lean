@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rot90 {n : Nat} (m : Vector (Vector Float n) n) (k : Int := 1) : 
     Id (Vector (Vector Float n) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rot90_spec {n : Nat} (m : Vector (Vector Float n) n) (k : Int) 
     (h_n : n > 0) :
     ⦃⌜n > 0⌝⦄
@@ -39,3 +46,4 @@ theorem rot90_spec {n : Nat} (m : Vector (Vector Float n) n) (k : Int)
                     let center := n / 2
                     (result.get ⟨center, sorry⟩).get ⟨center, sorry⟩ = (m.get ⟨center, sorry⟩).get ⟨center, sorry⟩)⌝⦄ := by
   sorry
+-- </vc-theorems>

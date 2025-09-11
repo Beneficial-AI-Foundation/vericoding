@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def decipher_word (s : String) : String := sorry
 
 def decipher_this (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem decipher_this_preserves_word_count {words : List String} :
   let encoded := String.intercalate " " words
   let result := decipher_this encoded 
@@ -41,6 +49,7 @@ info: 'Thank you Piotr'
 -/
 -- #guard_msgs in
 -- #eval decipher_this "84kanh 121uo 80roti"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

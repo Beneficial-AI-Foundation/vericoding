@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_gcd_pair (a b : Nat) : Nat := sorry
 
 theorem gcd_positive (a b : Nat) (h1 : a > 0) (h2 : b > 0) : 
   let gcd := find_gcd_pair a b
   gcd > 0 ∧ a % gcd = 0 ∧ b % gcd = 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gcd_is_maximal (a b : Nat) (h1 : a > 0) (h2 : b > 0) :
   let gcd := find_gcd_pair a b
   ∀ d, d > gcd → d ≤ min a b → ¬(a % d = 0 ∧ b % d = 0) := sorry
@@ -31,6 +39,7 @@ info: 25
 -/
 -- #guard_msgs in
 -- #eval find_gcd_pair 100 25
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

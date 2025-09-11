@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def find_max_diff (N : Nat) (K : Nat) (arr : List Int) : Int :=
 sorry
 
@@ -6,13 +7,19 @@ sorry
 
 def list_min (arr : List Int) : Int :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sort (arr : List Int) : List Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_diff_non_negative (N : Nat) (K : Nat) (arr : List Int) 
     (h : arr.length > 0) : 
   find_max_diff N K arr ≥ 0 :=
@@ -45,6 +52,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval find_max_diff 2 2 [1, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

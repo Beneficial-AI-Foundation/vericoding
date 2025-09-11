@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mul_power (n k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem mul_power_perfect_power (n k : Nat) (h1: n > 0) (h2: k > 0) : 
   ∃ m : Nat, ∃ r : Nat, n * (mul_power n k) = r^k 
   := by sorry
@@ -41,6 +49,7 @@ info: 18
 -/
 -- #guard_msgs in
 -- #eval mul_power 72 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

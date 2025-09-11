@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_cinema_seating (n m z l r b : Nat) : Nat :=
   sorry
 
 -- Main properties theorem
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cinema_seating_basic_properties 
   (n m z l r b : Nat) :
   let result := solve_cinema_seating n m z l r b;
@@ -47,6 +55,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve_cinema_seating 1 2 1 1 1 0
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

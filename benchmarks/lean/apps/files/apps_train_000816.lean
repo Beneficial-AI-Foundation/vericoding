@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sum_multiples_of_ten (n : Nat) : Nat := sorry
 
 theorem sum_multiples_non_negative (n : Nat) :
   sum_multiples_of_ten n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_multiples_divisible_by_ten (n : Nat) :
   sum_multiples_of_ten n % 10 = 0 := sorry 
 
@@ -38,6 +46,7 @@ info: 550
 -/
 -- #guard_msgs in
 -- #eval sum_multiples_of_ten 100
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

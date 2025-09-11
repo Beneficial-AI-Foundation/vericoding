@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def String.isDigit : String → Bool :=
   sorry
 
 def missing : String → Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSequence : String → Bool :=
   sorry
 
 /- For a sequence with one number removed, missing finds the removed number -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem missing_finds_gap {start : Nat} (h : start ≥ 1 ∧ start ≤ 99) :
   ∀ seq target, 
   (∃ curr, curr = start ∧ 
@@ -48,6 +55,7 @@ info: 100
 -/
 -- #guard_msgs in
 -- #eval missing "9899101102"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

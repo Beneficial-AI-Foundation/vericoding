@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_nice (arr : List Int) : Bool := 
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nice_list_nonempty {arr : List Int} : 
   is_nice arr → arr ≠ [] :=
   sorry
@@ -50,6 +58,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_nice [0, -1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

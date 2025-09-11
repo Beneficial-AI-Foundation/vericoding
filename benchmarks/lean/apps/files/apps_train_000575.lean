@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sumDigits (n : Nat) : Nat := sorry
 
 def find_jojo_aadhar (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem digit_sum_div_ten (n : Nat) : 
   (sumDigits (find_jojo_aadhar n)) % 10 = 0 := sorry
 
@@ -31,6 +39,7 @@ info: 424
 -/
 -- #guard_msgs in
 -- #eval find_jojo_aadhar 42
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

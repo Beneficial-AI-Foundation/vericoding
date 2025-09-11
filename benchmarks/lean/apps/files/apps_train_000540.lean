@@ -1,9 +1,14 @@
+-- <vc-preamble>
 def find_max_sequence_length (n : Nat) (arr : List Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_fibonacci_sequence (arr : List Int) : Nat :=
   let rec helper (i : Nat) (curr_max curr_fib : Nat) : Nat :=
     if i ≥ arr.length then curr_max 
@@ -16,7 +21,9 @@ def count_fibonacci_sequence (arr : List Int) : Nat :=
     | _, _, _ => curr_max
   termination_by arr.length - i
   helper 2 2 2
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_max_sequence_length_empty :
   find_max_sequence_length 0 [] = 0 :=
 sorry
@@ -38,6 +45,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval find_max_sequence_length 2 [1, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

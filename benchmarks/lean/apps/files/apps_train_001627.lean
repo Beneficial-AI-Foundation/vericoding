@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Family := List (List Nat)
 
 def find_extended_family (n k : Nat) (families : Family) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem always_includes_first_family {n k : Nat} {families : Family} :
   1 ≤ find_extended_family n k families := by
   sorry
@@ -39,6 +47,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_extended_family 2 2 ["3 1 2 3", "3 4 5 6"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

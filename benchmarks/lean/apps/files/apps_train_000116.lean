@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def max_teams (n: Nat) (x: Nat) (skills: List Nat) : Nat :=
   sorry
 
 def list_sort (l: List Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sum (l: List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_teams_bounds
   (n: Nat) (x: Nat) (skills: List Nat)
   (h1: skills.length = n)
@@ -61,6 +68,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval max_teams 4 11 [1, 3, 3, 7]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

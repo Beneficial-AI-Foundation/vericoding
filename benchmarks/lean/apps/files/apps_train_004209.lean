@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def validatePin (pin : String) : Bool := sorry
 
 theorem validate_pin_length (pin : String) :
   let len := pin.length
   (len ≠ 4 ∧ len ≠ 6) → validatePin pin = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem validate_pin_digits (pin : String) :
   let len := pin.length
   (len = 4 ∨ len = 6) → 
@@ -54,6 +62,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval validate_pin "-1234"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_graphs (n : Nat) (m : Nat) (distances : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_modulo (n : Nat) (distances : List Nat)
     (h1 : n ≥ 3) (h2 : distances.length ≥ 1) 
     (h3 : ∀ d ∈ distances, d ≥ 1 ∧ d ≤ 99) :
@@ -38,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_graphs 3 2 [2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_max_sequence_sum (n : Nat) (grid : List (List Int)) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_validity {n : Nat} {grid : List (List Int)} 
   (h1 : n > 0) (h2 : grid.length = n) 
   (h3 : ∀ row ∈ grid, row.length = n)
@@ -29,6 +37,7 @@ theorem grid_immutability {n : Nat} {grid : List (List Int)}
   let _ := solve_max_sequence_sum n grid
   grid = original :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

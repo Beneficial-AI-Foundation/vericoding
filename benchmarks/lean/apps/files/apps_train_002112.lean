@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_sad_guests (n k : Nat) (fav_pairs : List (Nat × Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_sad_guests_single_person {k : Nat} (h : k ≥ 1) :
   min_sad_guests 1 k [] = k :=
 sorry
@@ -41,6 +49,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_sad_guests 2 1 [(1, 2)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

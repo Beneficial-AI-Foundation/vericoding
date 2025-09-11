@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def show_me (s : String) : Bool := sorry
 
 theorem show_me_empty :
   show_me "" = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem show_me_single_letter (c : Char) :
   show_me (String.singleton c) = false := sorry
 
@@ -35,6 +43,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval show_me "Le Mec"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

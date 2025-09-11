@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidBuildingParams(n: int, h: int, a: int, b: int)
 {
     n >= 1 && h >= 1 && 1 <= a <= b <= h
@@ -33,6 +34,7 @@ predicate CorrectResults(queries: seq<(int, int, int, int)>, results: seq<int>, 
         var t1, f1, t2, f2 := queries[i].0, queries[i].1, queries[i].2, queries[i].3;
         results[i] == MinTravelTime(t1, f1, t2, f2, a, b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

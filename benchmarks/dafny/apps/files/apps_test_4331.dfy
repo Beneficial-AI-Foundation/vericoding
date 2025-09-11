@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int) {
     100 <= N <= 999
 }
@@ -11,6 +12,7 @@ predicate ContainsSeven(N: int)
 predicate ValidOutput(result: string) {
     result == "Yes\n" || result == "No\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

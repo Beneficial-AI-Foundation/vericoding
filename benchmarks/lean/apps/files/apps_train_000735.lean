@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def digits (n : Nat) : List Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check_divisible_permutations (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_divisible_permutations_valid_output (n : Nat) :
   n > 0 → check_divisible_permutations n = 0 ∨ check_divisible_permutations n = 1 := 
   sorry
@@ -32,6 +39,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval check_divisible_permutations 246
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

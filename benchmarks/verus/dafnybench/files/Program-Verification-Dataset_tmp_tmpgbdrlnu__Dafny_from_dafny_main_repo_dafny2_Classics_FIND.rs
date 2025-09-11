@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -7,6 +8,7 @@ spec fn factorial(n: nat) -> nat
 {
     if n == 0 { 1 } else { n * factorial(sub(n, 1)) }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

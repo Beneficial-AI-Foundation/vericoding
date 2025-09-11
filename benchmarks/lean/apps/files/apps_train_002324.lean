@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def is_palindrome (s : String) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string_is_palindrome :
   is_palindrome "" = true :=
 sorry
@@ -45,6 +52,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval is_palindrome ""
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

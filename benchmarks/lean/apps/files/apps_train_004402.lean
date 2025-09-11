@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nextLetter (s : String) : String := sorry
 
 -- Length preservation
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nextLetter_length_preserved (s : String) :
   (nextLetter s).length = s.length := sorry
 
@@ -56,6 +64,7 @@ info: 'aPp'
 -/
 -- #guard_msgs in
 -- #eval next_letter "zOo"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

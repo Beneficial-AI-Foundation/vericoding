@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def solve_spaceship_cooldown (n d : Nat) (arrivals : List Nat) : Float :=
   sorry
 
@@ -5,17 +6,23 @@ def list_maximum (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | x::xs => xs.foldl Nat.max x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_minimum (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | x::xs => xs.foldl Nat.min x
 
 -- Result should be non-negative
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem spaceship_cooldown_nonnegative
   (n d : Nat)
   (arrivals : List Nat)
@@ -46,6 +53,7 @@ theorem spaceship_cooldown_known_value1 :
 
 theorem spaceship_cooldown_known_value2 :
   solve_spaceship_cooldown 2 1 [5, 6] = 2.0 := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

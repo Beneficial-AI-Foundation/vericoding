@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def substring_test (s1 s2 : String) : Bool := sorry
 
 theorem substring_test_case_insensitive (s1 s2 : String) :
   substring_test s1.toUpper s2.toLower = substring_test s1 s2 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem substring_test_contains_exact (s1 s2 : String) :
   s1.length ≥ 2 →
   substring_test s1 (s2 ++ s1.take 2) = true := sorry
@@ -36,6 +44,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval substring_test "BANANA" "banana"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

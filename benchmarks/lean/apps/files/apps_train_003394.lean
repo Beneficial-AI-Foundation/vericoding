@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def paperwork (n m : Int) : Int := sorry
 
 theorem paperwork_nonnegative (n m : Int) : 
   paperwork n m ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem paperwork_zero_when_nonpositive (n m : Int) : 
   (n ≤ 0 ∨ m ≤ 0) → paperwork n m = 0 := sorry
 
@@ -35,6 +43,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval paperwork 5 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

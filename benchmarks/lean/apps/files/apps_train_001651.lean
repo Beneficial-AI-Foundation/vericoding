@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def equal_to_24 (a b c d : Int) : String := sorry
 
 def isValidResult (result : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem equal_to_24_valid_output 
   (a b c d : Int) 
   (h1 : 1 ≤ a ∧ a ≤ 13) 
@@ -41,6 +49,7 @@ info: 24
 -/
 -- #guard_msgs in
 -- #eval eval equal_to_24(4, 1, 8, 7)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

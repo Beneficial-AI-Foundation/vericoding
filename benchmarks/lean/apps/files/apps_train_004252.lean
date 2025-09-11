@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def repeat_it (s : String) (n : Nat) : String := sorry
 
 theorem repeat_it_length (s : String) (n : Nat) : 
   (repeat_it s n).length = s.length * n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem repeat_it_equals_repeat (s : String) (n : Nat) :
   repeat_it s n = String.join (List.replicate n s) := sorry
 
@@ -38,6 +46,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval repeat_it "Hello" 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

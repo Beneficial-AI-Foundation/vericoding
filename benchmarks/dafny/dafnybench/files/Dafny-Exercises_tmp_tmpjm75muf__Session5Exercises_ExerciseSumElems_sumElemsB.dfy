@@ -1,3 +1,4 @@
+// <vc-preamble>
 function SumR(s:seq<int>):int
 decreases s
 {
@@ -16,6 +17,7 @@ function SumV(v:array<int>,c:int,f:int):int
   requires 0<=c<=f<=v.Length
   reads v
   {SumR(v[c..f])}
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

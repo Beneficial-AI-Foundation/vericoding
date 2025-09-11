@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def sursurungal (s : String) : String := sorry
 def containsDigit (s : String) (d : Nat) : Prop := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def containsWordAfterNumber (s : String) (n : Nat) (w : String) : Prop := sorry
 
 -- Numbers remain unchanged in output
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sursurungal_preserves_numbers {s : String} :
   ∀ n : Nat, containsDigit s n → containsDigit (sursurungal s) n :=
 sorry
@@ -66,6 +73,7 @@ info: '\n3 pigzo\nmet 1 wolf\n2 buday ago'
 -/
 -- #guard_msgs in
 -- #eval sursurungal "\n3 pigs\nmet 1 wolf\n2 days ago"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

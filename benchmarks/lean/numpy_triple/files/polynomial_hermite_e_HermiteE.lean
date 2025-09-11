@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -22,13 +23,19 @@ structure HermiteEPoly (n : Nat) where
   window_min : Float := -1.0
   /-- Window interval upper bound -/
   window_max : Float := 1.0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def hermiteE {n : Nat} (coef : Vector Float n) : Id (HermiteEPoly n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hermiteE_spec {n : Nat} (coef : Vector Float n) :
     ⦃⌜True⌝⦄
     hermiteE coef
@@ -55,3 +62,4 @@ theorem hermiteE_spec {n : Nat} (coef : Vector Float n) :
                    (∀ k : Nat, k < n → ∀ x : Float,
                      hermite_basis k (-x) = (if k % 2 = 0 then 1 else -1) * hermite_basis k x))⌝⦄ := by
   sorry
+-- </vc-theorems>

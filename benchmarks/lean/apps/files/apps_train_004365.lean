@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def egged (year : Nat) (span : Nat) : String ⊕ Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem egged_year_zero (span : Nat) :
   span > 0 → egged 0 span = Sum.inl "No chickens yet!" :=
 sorry
@@ -41,6 +49,7 @@ info: 900
 -/
 -- #guard_msgs in
 -- #eval egged 1 15
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

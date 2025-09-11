@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def score_test (tests : List Nat) (r w o : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem score_test_properties (tests : List Nat) (r w o : Int)
   (h : ∀ x ∈ tests, x ≤ 2) (h2 : tests.length > 0) :
   score_test tests r w o = 
@@ -47,6 +55,7 @@ info: 70
 -/
 -- #guard_msgs in
 -- #eval score_test [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] 5 -1 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

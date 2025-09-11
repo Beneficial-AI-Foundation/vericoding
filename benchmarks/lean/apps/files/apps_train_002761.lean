@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def psion_power_points (level intelligence : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem psion_power_points_non_negative (level intelligence : Nat) :
   psion_power_points level intelligence ≥ 0 :=
   sorry
@@ -55,6 +63,7 @@ info: 448
 -/
 -- #guard_msgs in
 -- #eval psion_power_points 21 30
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

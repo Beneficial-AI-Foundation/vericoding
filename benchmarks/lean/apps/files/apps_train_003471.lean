@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isAlpha (c : Char) : Bool :=
   sorry
 
 def swap (s : String) (n : Nat) : String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def swapcase (c : Char) : Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem swap_length_preserved (s : String) (n : Nat) :
   (swap s n).length = s.length :=
 sorry
@@ -54,6 +61,7 @@ info: 'the lord of the rings'
 -/
 -- #guard_msgs in
 -- #eval swap "the lord of the rings" 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

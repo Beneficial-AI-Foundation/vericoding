@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calc_max_sweetness (n k : Nat) : Nat := sorry
 
 theorem calc_max_sweetness_positive (n k : Nat) (h1 : n > 0) (h2 : k > 0) : 
   calc_max_sweetness n k > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calc_max_sweetness_upper_bound (n k : Nat) :
   calc_max_sweetness n k ≤ n * k := sorry
 
@@ -44,6 +52,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval calc_max_sweetness 3 5
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

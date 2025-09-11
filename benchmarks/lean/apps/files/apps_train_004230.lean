@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def alphabetPosition (s : String) : String := sorry
 
 theorem output_matches_input_letters (s : String) :
@@ -15,7 +21,9 @@ theorem output_matches_input_letters (s : String) :
       match num.toNat? with
       | some n => n = letter.toLower.toNat - 96
       | none => false) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem only_letters_full_conversion {s : String} (h₁ : s.length > 0) 
   (h₂ : s.data.all Char.isAlpha) : 
   ((alphabetPosition s).split (· = ' ')).length = s.length := sorry
@@ -37,6 +45,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval alphabet_position "aBc"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

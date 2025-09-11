@@ -1,16 +1,23 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def polyint {n : Nat} (c : Vector Float n) (m : Nat := 1) 
     (k : Vector Float m := Vector.replicate m 0) 
     (lbnd : Float := 0) (scl : Float := 1) : 
     Id (Vector Float (n + m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem polyint_spec {n : Nat} (c : Vector Float n) (m : Nat) 
     (k : Vector Float m) (lbnd : Float) (scl : Float) :
     ⦃⌜m > 0 → scl ≠ 0⌝⦄
@@ -47,3 +54,4 @@ theorem polyint_spec {n : Nat} (c : Vector Float n) (m : Nat)
       ⌜scl = 0 → ∀ i : Fin (n + m), i.val ≥ m → result.get i = 0⌝
     ⦄ := by
   sorry
+-- </vc-theorems>

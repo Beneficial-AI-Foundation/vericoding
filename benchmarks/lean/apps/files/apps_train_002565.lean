@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sumArrays (arr1 arr2 : List Int) : List Int := sorry
 
 -- Empty arrays sum to empty array
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sum_empty : sumArrays [] [] = [] := sorry
 
 -- Empty array is neutral element
@@ -38,6 +46,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval sum_arrays #[] #[]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

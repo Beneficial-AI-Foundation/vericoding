@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def is_prime : Nat → Bool := sorry
 
 def reverse : Nat → Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def backwards_prime : Nat → Nat → List Nat := sorry
 
 theorem backwards_prime_empty_range : 
   backwards_prime 1 0 = [] ∧ 
   backwards_prime 0 1 = [] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: [13, 17, 31, 37, 71, 73, 79, 97]
 -/
@@ -28,6 +35,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval backwards_prime 501 599
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

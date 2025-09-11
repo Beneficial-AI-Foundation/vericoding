@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_smallest_xor_m (n : Nat) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_smallest_xor_m_no_solution (n : Nat) :
   find_smallest_xor_m n = -1 →
   ∀ m : Nat, m ≤ n + 2 → m ^^^ (m + 1) ≠ n :=
@@ -30,6 +38,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval find_smallest_xor_m 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

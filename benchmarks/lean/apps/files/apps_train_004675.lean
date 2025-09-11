@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def ride (s1 s2 : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem ride_reflexive {s1 : String} :
   ride s1 s1 = "GO" := by
   sorry
@@ -37,6 +45,7 @@ info: 'GO'
 -/
 -- #guard_msgs in
 -- #eval ride "USACO" "USACO"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

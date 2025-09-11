@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsEven(n: int)
 {
     n % 2 == 0
@@ -21,6 +22,7 @@ predicate IsFirstOdd(oddIndex: int, lst: seq<int>)
 {
     forall i :: 0 <= i < oddIndex ==> IsEven(lst[i])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

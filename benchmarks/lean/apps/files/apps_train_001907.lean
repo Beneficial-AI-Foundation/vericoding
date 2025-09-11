@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_routes (locations : List Int) (start finish : Nat) (fuel : Nat) : Nat := sorry
 
 def MOD := 1000000007
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_routes_bounds 
   (locations : List Int)
   (start finish fuel : Nat)
@@ -68,6 +76,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval count_routes [5, 2, 1] 0 2 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def how_many_light_sabers_do_you_own : Option String → Nat
 | none => sorry
 | some s => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem light_sabers_default_zero (name : String) :
   name ≠ "Zach" → how_many_light_sabers_do_you_own (some name) = 0 := by sorry
 
@@ -31,6 +39,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval how_many_light_sabers_do_you_own "Adam"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

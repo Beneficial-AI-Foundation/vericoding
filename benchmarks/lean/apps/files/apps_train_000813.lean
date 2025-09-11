@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_stars_in_region (grid : List (List Nat)) (x1 y1 x2 y2 : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem grid_generation_full_sum (n m : Nat) (h1 : 1 ≤ n ∧ n ≤ 10) (h2 : 1 ≤ m ∧ m ≤ 10) :
   let grid := List.replicate n (List.replicate m 0)
   count_stars_in_region grid 1 1 n m = 0 :=
@@ -52,6 +60,7 @@ info: 30
 -/
 -- #guard_msgs in
 -- #eval count_stars_in_region grid 3 1 3 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def can_complete_team (N : Nat) (S : Nat) (prices : List Nat) (positions : List Nat) : String := sorry
 
 theorem empty_lists :
   can_complete_team 0 0 [] [] = "no" := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_list (l : List Nat) : Nat :=
 match l with
 | [] => 0 
 | h::t => List.foldl min h t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem all_defenders_or_forwards_only (p₁ p₂ p₃ : Nat) :
   can_complete_team 3 50 [p₁, p₂, p₃] [0, 0, 0] = "no" ∧
   can_complete_team 3 50 [p₁, p₂, p₃] [1, 1, 1] = "no" := sorry
@@ -60,6 +67,7 @@ info: 'no'
 -/
 -- #guard_msgs in
 -- #eval can_complete_team 4 90 [5, 7, 6, 5] [0, 1, 1, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def legvander {n : Nat} (x : Vector Float n) (deg : Nat) : Id (Vector (Vector Float (deg + 1)) n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem legvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
     ⦃⌜True⌝⦄
     legvander x deg
@@ -20,3 +27,4 @@ theorem legvander_spec {n : Nat} (x : Vector Float n) (deg : Nat) :
       (∀ i : Fin n, ∀ j : Fin (deg + 1), ∃ val : Float, (result.get i).get j = val)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

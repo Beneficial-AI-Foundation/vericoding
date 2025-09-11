@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dig_pow (n : Nat) : Nat := sorry
 
 def sum_dig_pow (a b : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dig_pow_nonnegative (n : Nat) : 
   0 ≤ dig_pow n := sorry
 
@@ -23,6 +31,7 @@ theorem sum_dig_pow_sorted (a b : Nat) (h : a ≤ b) :
 
 theorem sum_dig_pow_single (n : Nat) :
   sum_dig_pow n n = if dig_pow n = n then [n] else [] := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

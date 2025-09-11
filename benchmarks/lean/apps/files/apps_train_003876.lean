@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_char (n : Int) : Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_char_ascii {i : Int} (h : 0 ≤ i ∧ i ≤ 127) : 
   Char.toNat (get_char i) = i := 
   sorry
@@ -33,6 +41,7 @@ info: '%'
 -/
 -- #guard_msgs in
 -- #eval get_char 37
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def toUnderScore (s : String) : String := sorry
 
 -- Property 1: All characters in result (except underscores) match original string
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chars_preserved (s : String) : 
   (toUnderScore s).replace "_" "" = s.replace "_" "" := sorry
 
@@ -35,6 +43,7 @@ info: '_Underscore_Marked_Test_Name_'
 -/
 -- #guard_msgs in
 -- #eval toUnderScore "_UnderscoreMarked_Test_Name_"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

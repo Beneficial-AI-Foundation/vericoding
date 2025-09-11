@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def lastStoneWeightII (stones : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum : List Nat → Nat
   | [] => 0
   | x::xs => x + sum xs
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lastStoneWeight_nonNegative (stones : List Nat) :
   lastStoneWeightII stones ≥ 0 :=
 sorry
@@ -45,6 +52,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval lastStoneWeightII [2, 2]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

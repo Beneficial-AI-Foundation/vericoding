@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def String.count (s : String) (c : Char) : Nat := sorry
 
 def countCharacters : List String → String → Nat
   | words, chars => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def canForm (w : String) (chars : String) : Bool :=
   let check (c : Char) := w.count c ≤ chars.count c
   w.data.all check
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_characters_nonnegative (words : List String) (chars : String) :
   countCharacters words chars ≥ 0 := by sorry
 
@@ -44,6 +51,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval countCharacters ["good", "best", "word"] "bestword"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

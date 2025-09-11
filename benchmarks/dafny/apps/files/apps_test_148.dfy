@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate validInput(input: string)
 reads *
 requires |input| > 0
@@ -39,6 +40,7 @@ decreases 2 * n
 {
     simulateTrainsHelper(n, a, x, b, y, 2 * n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

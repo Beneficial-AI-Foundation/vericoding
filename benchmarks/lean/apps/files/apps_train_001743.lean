@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def Time := String
 deriving Inhabited
 
 def alertNames (names : List String) (times : List Time) : List String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def parseTime (t : Time) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem alertNames_output_ordered (names : List String) (times : List Time) :
   let result := alertNames names times
   ∀ i j, i < j → j < result.length → result[i]! ≤ result[j]! := by sorry
@@ -55,6 +62,7 @@ info: ['clare', 'leslie']
 -/
 -- #guard_msgs in
 -- #eval alert_names ["leslie", "leslie", "leslie", "clare", "clare", "clare", "clare"] ["13:00", "13:20", "14:00", "18:00", "18:51", "19:30", "19:49"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def typename (char : String) : Id String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem typename_spec (char : String) :
     ⦃⌜True⌝⦄
     typename char
@@ -41,3 +48,4 @@ theorem typename_spec (char : String) :
        result = "unknown type" ∨ result = char)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

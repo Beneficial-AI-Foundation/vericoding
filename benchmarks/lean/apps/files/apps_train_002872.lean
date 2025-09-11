@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def kontti (s : String) : String := sorry
 
 theorem kontti_preserves_word_count (s : String) 
   (h : ∃ w : List String, w.all (λ x => ∃ v, v ∈ ['a', 'e', 'i', 'o', 'u'] ∧ v ∈ x.data) ∧ s = String.intercalate " " w) :
   (String.split (kontti s) (· = ' ')).length = (String.split s (· = ' ')).length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem kontti_basic_format (s : String)
   (h : ∃ w : List String, w.all (λ x => ∃ v, v ∈ ['a', 'e', 'i', 'o', 'u'] ∧ v ∈ x.data) ∧ s = String.intercalate " " w) :
   let result := kontti s
@@ -41,6 +49,7 @@ info: 'koz-xyntti komppu-lantti'
 -/
 -- #guard_msgs in
 -- #eval kontti "xyz lamppu"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

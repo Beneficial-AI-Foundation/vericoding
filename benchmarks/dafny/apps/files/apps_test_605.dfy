@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int, d: int)
 {
     250 <= a <= 3500 && a % 250 == 0 &&
@@ -23,6 +24,7 @@ predicate CorrectResult(a: int, b: int, c: int, d: int, result: string)
     (result == "Vasya" <==> vasya_score > misha_score) &&
     (result == "Tie" <==> misha_score == vasya_score)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

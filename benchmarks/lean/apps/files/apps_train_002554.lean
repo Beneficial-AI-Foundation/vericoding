@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def format_words (words : List String) : String := sorry
 
 def String.countSubstr (s1 s2 : String) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def substringExists (s1 s2 : String) : Bool := sorry
 
 theorem format_words_empty_filtered :
   ∀ (words : List String),
   (words.filter (fun w => w ≠ "")).isEmpty →  
   format_words words = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem format_words_contains_filtered :
   ∀ (words : List String) (word : String),
   word ≠ "" →
@@ -62,6 +69,7 @@ info: ''
 -/
 -- #guard_msgs in
 -- #eval format_words []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

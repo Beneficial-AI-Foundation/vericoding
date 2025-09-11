@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def arrayNesting (nums : List Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem array_nesting_bounds {nums : List Nat} (h : nums.length > 0) :
   let normalized := nums.map (fun x => x % nums.length)
   1 ≤ arrayNesting normalized ∧ arrayNesting normalized ≤ nums.length :=
@@ -37,6 +45,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval arrayNesting [1, 2, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

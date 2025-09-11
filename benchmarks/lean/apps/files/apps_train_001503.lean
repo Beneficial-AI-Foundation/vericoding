@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def solve (n m : Nat) : List Nat := sorry
 
 def cell_advance_hero1 (row col n m k : Nat) : (Nat × Nat) := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def cell_advance_hero2 (row col n m k : Nat) : (Nat × Nat) := sorry
 
 def find_destroyed_cells (advance : Nat → Nat → Nat → Nat → Nat → (Nat × Nat)) (n m k : Nat) : List (Nat × Nat) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_output_range {n m : Nat} (h1 : n > 0) (h2 : m > 0) :
   let result := solve n m;
   List.length result = n * m ∧ 
@@ -43,6 +50,7 @@ theorem destroyed_cells_start {n m k : Nat} (h1 : n > 0) (h2 : m > 0) :
   let cells2 := find_destroyed_cells cell_advance_hero2 n m k;
   (1, 1) ∈ cells1 ∧ (1, 1) ∈ cells2 := by
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

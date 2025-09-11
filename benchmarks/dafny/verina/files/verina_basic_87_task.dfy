@@ -1,3 +1,4 @@
+// <vc-preamble>
 method FindMinIndexInRange(arr: array<int>, start: int, finish: int) returns (result: int)
     requires 
         start <= finish &&
@@ -28,6 +29,7 @@ method Swap(a: array<int>, i: int, j: int)
     assume {:axiom} false;
     // impl-end
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

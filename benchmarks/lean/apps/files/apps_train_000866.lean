@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_sums_occurrences (n : Nat) (queries : List Int) : List Nat :=
   sorry
 
 -- Result should be same length as queries and contain naturals
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_validity {n : Nat} {queries : List Int} :
   let result := count_sums_occurrences n queries 
   (result.length = queries.length) ∧ 
@@ -43,6 +51,7 @@ theorem symmetry {n : Nat} {queries : List Int} :
   ∀ (i j : Nat), i < queries.length → j < queries.length →
     queries[i]! + queries[j]! = 2*mid → result[i]! = result[j]! :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

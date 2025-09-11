@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def number_of_pairs (gloves : List String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pairs_non_negative (gloves : List String) :
   number_of_pairs gloves ≥ 0 :=
 sorry
@@ -37,6 +45,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval number_of_pairs ["gray", "black", "purple", "purple", "gray", "black"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

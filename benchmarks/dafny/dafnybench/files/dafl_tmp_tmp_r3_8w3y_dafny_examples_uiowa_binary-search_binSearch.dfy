@@ -1,8 +1,10 @@
+// <vc-preamble>
 predicate isSorted(a:array<int>)
   reads a
 {
   forall i:nat, j:nat :: i <= j < a.Length ==> a[i] <= a[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int)
 {
     n >= 0 && m >= 0
@@ -11,6 +12,7 @@ function MaxSccGroups(n: int, m: int): int
     var additionalGroups := remainingCPieces / 4;
     directGroups + additionalGroups
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

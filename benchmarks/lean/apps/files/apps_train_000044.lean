@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_seats (n : Nat) : List Nat := sorry
 
 def will_indulge (a b : Nat) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_seats_length (n : Nat) (h : n > 0) (h2 : n ≤ 100) : 
   (solve_seats n).length = n := sorry
 
@@ -39,6 +47,7 @@ info: [10, 12, 14, 16]
 -/
 -- #guard_msgs in
 -- #eval sorted solve_seats(4)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

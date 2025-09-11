@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def uniq_c {α : Type u} (xs : List α) : List (α × Nat) :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sum (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | h :: t => h + sum t
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem uniq_c_length_invariants {α : Type u} (xs : List α) :
   let result := uniq_c xs
   (∀ p ∈ result, (Prod.snd p) > 0) ∧ 
@@ -47,6 +54,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval uniq_c [None, "a", "a"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

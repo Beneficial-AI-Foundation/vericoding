@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_palindrome_cuts (s : String) : Nat := sorry
 
 def is_palindrome (s : String) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cuts_nonnegative (s : String) :
   min_palindrome_cuts s ≥ 0 := sorry
 
@@ -38,6 +46,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_palindrome_cuts "abba"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

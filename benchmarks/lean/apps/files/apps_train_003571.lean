@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def strange_coach (players : List String) : String := sorry
 
 theorem strange_coach_sorted
@@ -11,7 +17,9 @@ theorem strange_coach_sorted
   (hj : j < (strange_coach players).length)
   (hij : i < j) :
   (strange_coach players).data[i] ≤ (strange_coach players).data[j] := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem strange_coach_unique_chars
   (players : List String)
   (h : strange_coach players ≠ "forfeit")
@@ -67,6 +75,7 @@ info: 'b'
 -/
 -- #guard_msgs in
 -- #eval strange_coach ["jgztazpytubijfsmjz", "bokvgratzzdibku", "qineboilzoqdqivc", "bfctyltibtkbxq", "vioxcuhqhikxeqwekqkjo", "nrvsdhttr", "eiaoajuwxpwmyliqikzcchid", "bxrwawgor", "gbsqaxotzmblxttj", "kwchrcaconuwaivhvnyf", "neiemapiica", "bppao", "bxujiwivsjfbqrzygpdgkyz", "jnzrhhmcgcpffflpzwmqib", "jhozlevckrrwimdmyzc", "bomojotkqqditelsk", "ywmbheywzfyqjjs", "snwrclyjkbspysjftcmyak", "eelrsgkuhu", "dnyzsvqjjuqoc"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

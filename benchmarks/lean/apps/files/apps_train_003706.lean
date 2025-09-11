@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_divisible_by_6 (s: String): List String := sorry
 
 def verify_divisible_by_6 (s: String): Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_number_without_wildcards (n: Nat) :
   let s := toString n
   n % 6 = 0 → is_divisible_by_6 s = [s] ∧
@@ -40,6 +48,7 @@ info: ['024', '120', '126', '222', '228', '324', '420', '426', '522', '528', '62
 -/
 -- #guard_msgs in
 -- #eval is_divisible_by_6 "*2*"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def List.sorted : List Nat → Bool
 | [] => true
 | [_] => true
@@ -5,14 +6,20 @@ def List.sorted : List Nat → Bool
 
 def pancakeSort : List Nat → List Nat
 | xs => sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def applyFlips : List Nat → List Nat → List Nat
 | xs, [] => xs
 | xs, k::ks => applyFlips ((xs.take k).reverse ++ xs.drop k) ks
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pancakeSort_produces_valid_flips (arr : List Nat) :
   ∀ k ∈ pancakeSort arr, 1 ≤ k ∧ k ≤ arr.length :=
 sorry
@@ -35,6 +42,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval len pancake_sort(arr2)
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

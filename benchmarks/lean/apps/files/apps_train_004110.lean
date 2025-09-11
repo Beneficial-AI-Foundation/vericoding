@@ -1,10 +1,15 @@
+-- <vc-preamble>
 def anagrams (word : String) (words : List String) : List String := sorry
 
 def sameLetters (word1 word2 : String) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString (s : String) : String := sorry
 
 theorem anagram_properties (word : String) (words : List String) :
@@ -17,7 +22,9 @@ theorem anagram_properties (word : String) (words : List String) :
   (∀ w ∈ result, sameLetters w word) ∧
   -- Contains all valid anagrams
   (∀ w ∈ words, sameLetters w word → w ∈ result) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_list (word : String) :
   anagrams word [] = [] := sorry
 
@@ -45,6 +52,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval anagrams "laser" ["lazing", "lazy", "lacer"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_tree_coloring (n : Nat) (edges : List (Nat × Nat)) : String := sorry
 
 def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem tree_coloring_result_valid (n : Nat) (edges : List (Nat × Nat)) :
   is_valid_tree n edges → 
   solve_tree_coloring n edges = "Fennec" ∨ solve_tree_coloring n edges = "Snuke" := sorry
@@ -34,6 +42,7 @@ info: 'Snuke'
 -/
 -- #guard_msgs in
 -- #eval solve_tree_coloring 4 [(1, 4), (4, 2), (2, 3)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

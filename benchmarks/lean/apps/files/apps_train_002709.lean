@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def greet_jedi (first last : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem greet_jedi_starts_with_prefix (first last : String) :
   (greet_jedi first last).startsWith "Greetings, master " = true :=
   sorry
@@ -39,6 +47,7 @@ info: 'Greetings, master AngCh'
 -/
 -- #guard_msgs in
 -- #eval greet_jedi "Chris" "Angelico"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def add (s1 s2 : String) : Nat := sorry
 
 theorem add_commutative (s1 s2 : String) :
   add s1 s2 = add s2 s1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem add_identity (s : String) :
   add s "" = add "" s := sorry
 
@@ -20,6 +28,7 @@ info: 195
 -/
 -- #guard_msgs in
 -- #eval add "a" "b"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

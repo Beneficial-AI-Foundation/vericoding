@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def round1 (x : Float) : Float := sorry
 
 def predict (candidates : List String) (polls : List (List Float × Float)) : List (String × Float) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem round1_multiple_of_point_one (x : Float) : 
   let r := round1 x
   Float.abs (r * 10 - Float.round (r * 10)) < 1e-10 := sorry
@@ -43,6 +51,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval predict candidates [[[45, 35, 20], 1.0]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

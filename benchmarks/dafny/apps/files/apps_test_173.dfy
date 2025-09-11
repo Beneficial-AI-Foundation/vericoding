@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, horizontal: seq<char>, vertical: seq<char>)
 {
     n >= 2 && n <= 20 && m >= 2 && m <= 20 &&
@@ -20,6 +21,7 @@ function {:extern} is_integer(s: seq<char>): bool
 
 function {:extern} parse_int(s: seq<char>): int
     requires is_integer(s)
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

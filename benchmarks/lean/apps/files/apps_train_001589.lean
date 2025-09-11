@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def digits (n : Nat) : List Nat := sorry
 def digits_sorted (n : Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def digits_sorted_desc (n : Nat) : List Nat := sorry
 
 def next_bigger (n : Nat) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem next_bigger_larger (n : Nat) : 
   let result := next_bigger n
   result ≠ -1 → result > n := sorry
@@ -54,6 +61,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval next_bigger 9876543210
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

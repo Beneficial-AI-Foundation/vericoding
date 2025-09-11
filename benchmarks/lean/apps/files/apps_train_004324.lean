@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isCard (c : String) : Bool := sorry
 
 def snap (flashPile : List String) (turtlePile : List String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem snap_output_basic {flashPile turtlePile : List String} 
   (h1 : flashPile.length > 0)
   (h2 : turtlePile.length > 0)
@@ -34,6 +42,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval snap flash_pile[:] turtle_pile[:]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

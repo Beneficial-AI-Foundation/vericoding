@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def elements_sum (arr : List (List Int)) (default : Int := 0) : Int := sorry
 
 theorem elements_sum_with_default 
@@ -15,7 +21,9 @@ theorem elements_sum_with_default
                    | none => default
       | none => default) 0
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem elements_sum_type (arr : List (List Int)) :
   ∃ (n : Int), elements_sum arr = n := sorry
 
@@ -50,6 +58,7 @@ info: 7
 -/
 -- #guard_msgs in
 -- #eval elements_sum [[3, 2, 1, 0], [4, 6, 5, 3, 2], []]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

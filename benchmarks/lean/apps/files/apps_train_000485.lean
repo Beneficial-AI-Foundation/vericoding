@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_increment_for_unique (nums : List Int) : Nat :=
   sorry
 
@@ -6,13 +7,19 @@ def sorted (l : List Int) : List Int :=
 
 def makeUnique (nums : List Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sumList (l : List Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_increment_nonneg (nums : List Int) :
   min_increment_for_unique nums ≥ 0 :=
   sorry
@@ -52,6 +59,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_increment_for_unique []
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

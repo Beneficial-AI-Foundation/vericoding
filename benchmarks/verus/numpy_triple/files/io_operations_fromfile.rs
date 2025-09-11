@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -33,6 +34,7 @@ spec fn dtype_size_bytes(dtype: DType) -> nat {
         DType::UInt8 => 1,
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

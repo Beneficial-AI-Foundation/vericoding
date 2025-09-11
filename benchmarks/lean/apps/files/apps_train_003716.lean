@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dominator (arr : List Int) : Int := sorry
 
 theorem dominator_empty_list :
   dominator [] = -1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dominator_singleton (x : Int) :
   dominator [x] = x := sorry
 
@@ -30,6 +38,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval dominator []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

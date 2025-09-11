@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def digits_of (n : Nat) : List Nat := sorry
 def digit_sequence_of_powers (n : Nat) : List Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def last_digit_to_appear (n : Nat) : Option Nat := sorry
 
 -- Theorem stating result is a single digit if not None
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_single_digit {n d : Nat} (h : n ≥ 2)
   (res : last_digit_to_appear n = some d) :
   0 ≤ d ∧ d ≤ 9 := sorry
@@ -47,6 +54,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval last_digit_to_appear 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

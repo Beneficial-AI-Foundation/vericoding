@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def next_day_of_week (current_day : Nat) (available_days : Nat) : Nat := sorry
 
 def get_available_days (bit_pattern : Nat) : List Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem next_day_valid (current_day : Nat) (available_days : Nat)
   (h1 : 1 ≤ current_day) (h2 : current_day ≤ 7) (h3 : available_days ≤ 127) :
   let result := next_day_of_week current_day available_days
@@ -31,6 +39,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval next_day_of_week 7 42
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

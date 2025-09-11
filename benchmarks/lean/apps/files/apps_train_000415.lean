@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def MAX_INT : Int := 2147483647
 def MIN_INT : Int := -2147483648
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def divide (dividend : Int) (divisor : Int) : Int := sorry
 
 theorem divide_bounds (dividend divisor : Int) (h : divisor ≠ 0) :
   MIN_INT ≤ divide dividend divisor ∧ divide dividend divisor ≤ MAX_INT := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem divide_accuracy (dividend divisor : Int) (h1 : divisor ≠ 0) 
   (h2 : divide dividend divisor ≠ MAX_INT) :
   (divide dividend divisor * divisor - dividend).natAbs < divisor.natAbs := sorry
@@ -43,6 +50,7 @@ info: 2147483647
 -/
 -- #guard_msgs in
 -- #eval divide -2147483648 -1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

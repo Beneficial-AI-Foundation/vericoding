@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def present (x : String) (y : Int) : String := sorry
 
 theorem present_goodpresent_length (y : Int) : 
   String.length (present "goodpresent" y) = String.length "goodpresent" := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isValidInput (x : String) : Bool :=
   x = "goodpresent" ∨ x = "crap" ∨ x = "empty" ∨ x = "bang" ∨ x = "badpresent" ∨ x = "dog"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem present_crap_fixed (y : Int) :
   present "crap" y = "acpr" := sorry
 
@@ -41,6 +48,7 @@ info: 'pass out from excitement 23 times'
 -/
 -- #guard_msgs in
 -- #eval present "dog" 23
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

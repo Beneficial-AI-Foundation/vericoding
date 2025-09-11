@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maximum (l : List Int) : Int := sorry
 
 def slidemax (nums : List Int) (k : Nat) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem slidemax_matches_window_max
   (nums : List Int) (k : Nat)
   (h1 : 0 < k) 
@@ -30,6 +38,7 @@ info: [7, 8]
 -/
 -- #guard_msgs in
 -- #eval solve 2 2 [[2, 7, 8], [1, -8]]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

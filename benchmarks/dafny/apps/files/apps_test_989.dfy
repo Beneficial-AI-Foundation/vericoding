@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| >= 5 && hasValidFormat(input)
@@ -51,6 +52,7 @@ function intToString(n: int): string
     else if n > 0 then intToStringHelper(n)
     else "-" + intToStringHelper(-n)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function digits_sum(x: nat): nat {
   if x == 0 then 0 else x % 10 + digits_sum(x / 10)
 }
@@ -39,6 +40,7 @@ function max(a: int, b: int): int
 function is_prime(k: int) : bool {
   k != 1 && forall i :: 2 <= i < k ==> k % i != 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

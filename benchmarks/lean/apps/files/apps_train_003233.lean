@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate (a : Float) (op : String) (b : Float) : Option Float := sorry
 
 inductive IsValidOp : String → Prop where
@@ -8,7 +14,9 @@ inductive IsValidOp : String → Prop where
   | minus : IsValidOp "-"
   | times : IsValidOp "*"
   | divide : IsValidOp "/"
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem calculate_valid_ops {a b : Float} {op : String} (h : IsValidOp op) :
   match op with
   | "+" => calculate a op b = some (a + b)
@@ -40,6 +48,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval calculate 8 "m" 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

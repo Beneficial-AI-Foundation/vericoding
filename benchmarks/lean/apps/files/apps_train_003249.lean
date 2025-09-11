@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def mysterious_pattern (m n : Nat) : String := sorry
 
 -- Format properties
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_line_lengths {m n : Nat} (h₁ : 0 < m) (h₂ : 0 < n) :
   let lines := (mysterious_pattern m n).split (λ c => c = '\n')
   ∀ line ∈ lines, line.length ≤ m := sorry
@@ -53,6 +61,7 @@ info: 'o'
 -/
 -- #guard_msgs in
 -- #eval mysterious_pattern 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

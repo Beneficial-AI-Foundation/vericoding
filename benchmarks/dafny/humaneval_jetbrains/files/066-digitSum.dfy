@@ -1,3 +1,4 @@
+// <vc-preamble>
 function upper_sum_rec(s: string): int
 
   ensures upper_sum_rec(s) >= 0
@@ -17,6 +18,7 @@ function to_int(c: char): int
 {
     if 'A' <= c <= 'Z' then c as int else 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

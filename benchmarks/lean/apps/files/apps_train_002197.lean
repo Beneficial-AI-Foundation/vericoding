@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def List.maximum' (l : List Nat) : Nat := 
   match l with
   | [] => 0
@@ -5,10 +6,14 @@ def List.maximum' (l : List Nat) : Nat :=
 
 def List.isStrictlyIncreasing (l : List Nat) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! < l[j]!
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (N : Nat) (T : Nat) (A : List Nat) : Nat := sorry
 
 theorem output_is_valid_count {N T : Nat} {A : List Nat} 
@@ -17,7 +22,9 @@ theorem output_is_valid_count {N T : Nat} {A : List Nat}
   (h3 : ∀ x ∈ A, 1 ≤ x ∧ x ≤ 1000)
   (h4 : 2 ≤ N ∧ N ≤ 100) :
   0 ≤ solve N T A := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem strictly_increasing_has_one_max_gain {N T : Nat} {A : List Nat}
   (h1 : N = A.length)
   (h2 : T = A.maximum')
@@ -50,6 +57,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval solve 10 100 [7, 10, 4, 5, 9, 3, 6, 8, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

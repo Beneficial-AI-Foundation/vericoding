@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def past (h: Nat) (m: Nat) (s: Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem past_valid_time {h m s: Nat} 
   (hh: h ≤ 23) (hm: m ≤ 59) (hs: s ≤ 59) : 
   past h m s = (h * 3600 + m * 60 + s) * 1000 
@@ -36,6 +44,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval past 0 0 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

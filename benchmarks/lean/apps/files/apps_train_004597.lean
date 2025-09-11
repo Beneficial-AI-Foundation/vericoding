@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def removeEqualExclamations (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem word_count_preserved (words : List String) (h : words ≠ []) :
   let text := String.intercalate " " words
   let result := removeEqualExclamations text
@@ -30,6 +38,7 @@ info: '!Hi! !Hi!'
 -/
 -- #guard_msgs in
 -- #eval remove_equal_exclamations "!!Hi! !Hi!!"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

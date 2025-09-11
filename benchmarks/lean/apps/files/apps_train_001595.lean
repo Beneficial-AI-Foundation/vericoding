@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_runes (s : String) : Int := sorry
 
 theorem solve_runes_addition {a b : Nat}
@@ -8,7 +14,9 @@ theorem solve_runes_addition {a b : Nat}
   let expr := s!"?+?={a + b}"
   let result := solve_runes expr
   result ≠ -1 → result = a ∧ result = b := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_runes_subtraction {a b : Nat}
   (h1 : a ≤ 100) (h2 : b ≤ 100) :
   let expr := s!"?-?={a - b}"
@@ -45,6 +53,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval solve_runes "-?56373--9216=-?47157"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

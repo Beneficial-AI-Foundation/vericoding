@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -11,6 +12,7 @@ spec fn verify_neg(a: &[int], idx: int) -> nat
         verify_neg(a, idx - 1) + (if a[idx - 1] < 0 { 1nat } else { 0nat })
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

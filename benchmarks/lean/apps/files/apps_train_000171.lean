@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lengthLongestPath (input : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem root_level_file_or_dir
   (name : String)
   (h_nonempty : name.length > 0) :
@@ -30,6 +38,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval lengthLongestPath ""
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

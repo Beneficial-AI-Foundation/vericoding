@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -16,6 +17,7 @@ spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool
     a.len() + 1 == c.len() && 
     forall|i: int| #![auto] 0 <= i <= a.len() ==> c[i] == sum(a, 0, i)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

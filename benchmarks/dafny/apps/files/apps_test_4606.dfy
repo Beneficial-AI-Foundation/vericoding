@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     100 <= n <= 999
 }
@@ -20,6 +21,7 @@ function IntToString(n: int): string
     else if n < 10 then [('0' as int + n) as char]
     else IntToString(n / 10) + [('0' as int + (n % 10)) as char]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

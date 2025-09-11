@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def how_many_dalmatians (n: Int) : String := sorry
 
 theorem dalmatians_output_is_valid_string (n: Int) :
@@ -8,7 +14,9 @@ theorem dalmatians_output_is_valid_string (n: Int) :
   how_many_dalmatians n = "More than a handful!" ∨
   how_many_dalmatians n = "Woah that's a lot of dogs!" ∨
   how_many_dalmatians n = "101 DALMATIONS!!!" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem small_numbers_get_hardly_any (n: Int) :
   n ≤ 10 → how_many_dalmatians n = "Hardly any" := sorry
 
@@ -39,6 +47,7 @@ info: '101 DALMATIONS!!!'
 -/
 -- #guard_msgs in
 -- #eval how_many_dalmatians 101
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

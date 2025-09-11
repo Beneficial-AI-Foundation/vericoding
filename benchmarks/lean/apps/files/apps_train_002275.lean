@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) (seq : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_elements_in_original {n : Nat} {seq : List Nat} (h : seq.length > 0) :
   let result := solve n seq
   ∀ x, x ∈ result → x ∈ seq :=
@@ -37,6 +45,7 @@ info: [1, 2, 3]
 -/
 -- #guard_msgs in
 -- #eval solve 3 [1, 2, 3, 1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     n >= 2 && n % 2 == 0 && n <= 20
 }
@@ -13,6 +14,7 @@ function ExpectedResult(n: int): int
     var arrangements := factHalfMinus1 * factHalfMinus1;
     (binomial * arrangements) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

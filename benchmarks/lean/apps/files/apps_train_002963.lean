@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def vowel (c : Char) : Bool :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (s : String) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_all_vowels (s : String) 
   (h₁ : s.length > 0)
   (h₂ : ∀ c ∈ s.data, vowel c = true) :
@@ -24,6 +31,7 @@ theorem solve_interspersed
   let s := String.join (combined.map (fun p => p.1 ++ p.2))
   solve s ≥ (List.foldl (fun acc x => max acc x.length) 0 vowels) :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

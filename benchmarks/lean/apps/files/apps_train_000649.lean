@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def maximum (xs : List Int) : Int := xs.foldl max 0
 
 def sum (xs : List Int) : Int := xs.foldl (· + ·) 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def max_sum (arr : List Int) : Int := sorry
 
 def solve (arr : List Int) (k : Nat) : Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_vs_max_sum (arr : List Int) (k : Nat) (h : arr ≠ []) (hk : k > 0) :
   solve arr k ≥ max_sum arr := sorry
 
@@ -38,6 +45,7 @@ info: -1
 -/
 -- #guard_msgs in
 -- #eval solve [-1, -2, -3] 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

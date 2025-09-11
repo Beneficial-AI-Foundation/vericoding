@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def minInteger (num : String) (k : Nat) : String :=
   sorry
 
@@ -12,13 +13,19 @@ def charListOrdered (l₁ l₂ : List Char) : Bool :=
                     else if x.val = y.val then charListOrdered xs ys
                     else false
   | _, _ => false
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countChar (c : Char) (s : String) : Nat :=
   s.data.foldl (fun acc x => if x = c then acc + 1 else acc) 0
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem minInteger_length (num : String) (k : Nat) :
   (minInteger num k).length = num.length := sorry
 
@@ -51,6 +58,7 @@ info: '36789'
 -/
 -- #guard_msgs in
 -- #eval minInteger "36789" 1000
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

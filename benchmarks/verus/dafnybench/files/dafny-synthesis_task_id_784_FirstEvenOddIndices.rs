@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -21,6 +22,7 @@ spec fn is_first_odd(odd_index: int, lst: Seq<i32>) -> bool
 {
     forall|i: int| 0 <= i < odd_index ==> is_even(lst[i] as int)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

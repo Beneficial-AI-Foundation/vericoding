@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_graph_paths (n : Nat) (matrix : List (List Nat)) (vertex_order : List Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_graph_paths_output_format 
   (n : Nat) (matrix : List (List Nat)) (vertex_order : List Nat)
   (h1 : 0 < n) (h2 : n ≤ 10)
@@ -52,6 +60,7 @@ info: '17 23 404 0'
 -/
 -- #guard_msgs in
 -- #eval solve_graph_paths 4 [[0, 3, 1, 1], [6, 0, 400, 1], [2, 4, 0, 1], [1, 1, 1, 0]] [4, 1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

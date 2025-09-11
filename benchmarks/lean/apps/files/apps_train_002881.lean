@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def nb_dig (n : Nat) (d : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nb_dig_properties (n : Nat) (d : Nat) (h1 : n ≤ 10000) (h2 : d ≤ 9) :
   nb_dig n d ≥ 0 ∧ 
   nb_dig n d ≤ (n + 1) * (String.length (toString (n * n))) :=
@@ -45,6 +53,7 @@ info: 4700
 -/
 -- #guard_msgs in
 -- #eval nb_dig 5750 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

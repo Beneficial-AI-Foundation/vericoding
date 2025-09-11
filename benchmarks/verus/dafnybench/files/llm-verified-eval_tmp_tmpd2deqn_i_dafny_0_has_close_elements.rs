@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -5,6 +6,7 @@ verus! {
 spec fn abs(x: int) -> int {
     if x < 0 { -x } else { x }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

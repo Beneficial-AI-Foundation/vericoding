@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def can_transform_triangle (n : Nat) : String := sorry
 
 def satisfies_triangle_inequality (n : Nat) (even_side : Nat) : Bool := 
   even_side < 2*n ∧ n + n > even_side
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def has_integer_height (n : Nat) (even_side : Nat) : Bool := sorry
 
 theorem output_format (n : Nat) (h : n > 0) : 
   can_transform_triangle n = "YES" ∨ can_transform_triangle n = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem yes_case_valid (n : Nat) (h : n > 0) (h2 : can_transform_triangle n = "YES") :
   ∃ even_side : Nat, 
     even_side % 2 = 0 ∧ 
@@ -43,6 +50,7 @@ info: 'YES'
 -/
 -- #guard_msgs in
 -- #eval can_transform_triangle 10
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

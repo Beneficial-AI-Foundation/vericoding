@@ -1,13 +1,20 @@
+-- <vc-preamble>
 @[reducible, simp]
 def runLengthEncode_precond (s : String) : Prop :=
   True
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def runLengthEncode (s : String) (h_precond : runLengthEncode_precond (s)) : List (Char × Nat) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def decodeRLE (lst : List (Char × Nat)) : String :=
   match lst with
   | [] => ""
@@ -23,6 +30,7 @@ def runLengthEncode_postcond (s : String) (result: List (Char × Nat)) (h_precon
 theorem runLengthEncode_spec_satisfied (s: String) (h_precond : runLengthEncode_precond (s)) :
     runLengthEncode_postcond (s) (runLengthEncode (s) h_precond) h_precond := by
   sorry
+-- </vc-theorems>
 
 /-
 -- Invalid Inputs

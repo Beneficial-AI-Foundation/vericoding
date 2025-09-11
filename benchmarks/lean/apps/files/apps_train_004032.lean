@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (s : String) : String := sorry
 
 theorem solve_empty (s : String) :
   solve "" = "" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_add_commutes (a b : String) :
   solve "a+b" = "b+a" := sorry
 
@@ -47,6 +55,7 @@ info: '50+c/b*a'
 -/
 -- #guard_msgs in
 -- #eval solve "a*b/c+50"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

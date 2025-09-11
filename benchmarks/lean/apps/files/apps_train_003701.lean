@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (count ball : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_in_range (count : Nat) (ball : Nat) (h : count > 0) : 
   solve count ball % count < count := by
   sorry
@@ -43,6 +51,7 @@ info: 17
 -/
 -- #guard_msgs in
 -- #eval solve 20 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

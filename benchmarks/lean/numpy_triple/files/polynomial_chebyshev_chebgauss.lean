@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebgauss (n : Nat) (h : n > 0) : Id (Vector Float n × Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebgauss_spec (n : Nat) (h : n > 0) :
     ⦃⌜n > 0⌝⦄
     chebgauss n h
@@ -30,3 +37,4 @@ theorem chebgauss_spec (n : Nat) (h : n > 0) :
       (∀ i j : Fin n, i ≠ j → nodes.get i ≠ nodes.get j)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

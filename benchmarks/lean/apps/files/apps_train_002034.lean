@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_gcd_lcm (n : Nat) (arr : List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_gcd_lcm_positive (n : Nat) (arr : List Nat) 
   (h1: n ≥ 2) (h2: n ≤ 5) (h3: ∀ x ∈ arr, x ≥ 1) (h4: ∀ x ∈ arr, x ≤ 100)
   (h5: arr.length ≥ n) :
@@ -35,6 +43,7 @@ info: 54
 -/
 -- #guard_msgs in
 -- #eval solve_gcd_lcm 10 [540, 648, 810, 648, 720, 540, 594, 864, 972, 648]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

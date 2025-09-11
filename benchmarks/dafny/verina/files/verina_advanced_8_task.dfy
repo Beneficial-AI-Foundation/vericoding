@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CalculateAcc(gas: array<int>, cost: array<int>, start: int, steps: int): int
     requires gas.Length == cost.Length
     requires gas.Length > 0
@@ -21,6 +22,7 @@ predicate ValidStartingPoint(gas: array<int>, cost: array<int>, start: int)
     0 <= start < gas.Length && 
     forall i {:trigger CalculateAcc(gas, cost, start, i + 1)} :: 0 <= i < gas.Length ==> CalculateAcc(gas, cost, start, i + 1) >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

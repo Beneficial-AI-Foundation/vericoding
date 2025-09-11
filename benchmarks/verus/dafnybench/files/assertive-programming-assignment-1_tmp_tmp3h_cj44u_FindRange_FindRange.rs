@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -35,6 +36,7 @@ fn binary_search(q: Seq<int>, key: int, lower_bound: usize, upper_bound: usize, 
     assume(false);
     0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

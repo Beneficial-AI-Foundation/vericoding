@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def S2N (m n : Nat) : Nat := sorry
 
 theorem s2n_nonnegative (m n : Nat) : 
   m ≤ 20 → n ≤ 10 → S2N m n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem s2n_increasing_n (m n : Nat) :
   m ≤ 10 → n ≤ 5 → n > 0 → S2N m n ≥ S2N m (n-1) := sorry
 
@@ -32,6 +40,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval S2N 1 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

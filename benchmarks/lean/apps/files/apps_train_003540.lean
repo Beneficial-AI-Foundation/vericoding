@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_zeros_n_double_fact (n : Int) : Nat := sorry
 
 theorem count_zeros_non_negative (n : Int) : 
   count_zeros_n_double_fact n ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem odd_numbers_return_zero (n : Int) :
   n % 2 ≠ 0 → count_zeros_n_double_fact n = 0 := sorry
 
@@ -33,6 +41,7 @@ info: 62
 -/
 -- #guard_msgs in
 -- #eval count_zeros_n_double_fact 500
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

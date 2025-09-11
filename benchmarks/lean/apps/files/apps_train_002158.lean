@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_cuboids (a b c : Nat) : Nat := sorry
 
 theorem count_cuboids_cube_positive (n : Nat) (h : n > 0) : 
   count_cuboids n n n ≥ 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_cuboids_deterministic_cube (n : Nat) :
   count_cuboids n n n = count_cuboids n n n := sorry
 
@@ -49,6 +57,7 @@ info: 41
 -/
 -- #guard_msgs in
 -- #eval count_cuboids 9 6 8
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidBrotherNumbers(a: int, b: int)
 {
   1 <= a <= 3 && 1 <= b <= 3 && a != b
@@ -14,6 +15,7 @@ predicate IsValidResult(a: int, b: int, result: int)
   ValidBrotherNumbers(a, b) ==> 
     (1 <= result <= 3 && result != a && result != b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

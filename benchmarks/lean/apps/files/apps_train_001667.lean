@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def is_interesting (number : Nat) (awesome_phrases : Array Nat) : Nat :=
   sorry
 
 def isPalindrome (n : Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isRoundNumber (n : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_interesting_result_valid (n : Nat) (phrases : Array Nat) :
   let result := is_interesting n phrases
   result = 0 ∨ result = 1 ∨ result = 2 :=
@@ -67,6 +74,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval is_interesting 1000 #[1337, 256]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

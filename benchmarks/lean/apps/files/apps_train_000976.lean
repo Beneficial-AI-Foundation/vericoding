@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def gcd (a b : Nat) : Nat :=
   sorry
 
@@ -6,15 +7,21 @@ def find_largest_gcd_1_subarray (arr : List Nat) : Int :=
 
 def reduce_gcd (l : List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def List.firstElem (l : List Nat) (h : l.length > 0) : Nat :=
   match l with
   | [] => by contradiction
   | x::_ => x
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gcd_one_returns_full_length {arr : List Nat} (h1 : arr.length ≥ 2) (h2 : ∀ x ∈ arr, x ≥ 1) 
     (h3 : reduce_gcd arr = 1) :
   find_largest_gcd_1_subarray arr = arr.length := 
@@ -52,6 +59,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_largest_gcd_1_subarray [6, 10, 15, 25]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

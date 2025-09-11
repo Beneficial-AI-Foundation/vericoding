@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def MOD : Nat := 998244353
 
 def solve_ipl_rooms (p q r : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_in_valid_range (p q r : Nat) (h1 : p > 0) (h2 : q > 0) (h3 : r > 0) :
   let result := solve_ipl_rooms p q r
   0 ≤ result ∧ result < MOD :=
@@ -36,6 +44,7 @@ info: 10
 -/
 -- #guard_msgs in
 -- #eval solve_ipl_rooms 2 5 4
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

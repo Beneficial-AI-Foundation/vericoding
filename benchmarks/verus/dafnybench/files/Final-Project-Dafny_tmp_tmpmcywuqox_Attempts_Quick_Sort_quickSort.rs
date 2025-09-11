@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -16,6 +17,7 @@ fn threshold(thres: int, seq: Seq<int>) -> (res: (Seq<int>, Seq<int>))
     assume(false);
     loop {}
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_audience_meetings (days x y z : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_periods
   (days period : Nat)
   (h1 : 1 ≤ days) (h2 : days ≤ 100)
@@ -17,6 +25,7 @@ theorem one_very_large_period
   (h3 : 1 ≤ x) (h4 : x ≤ 100) :
   calculate_audience_meetings days x x 1000000000 = 0 :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

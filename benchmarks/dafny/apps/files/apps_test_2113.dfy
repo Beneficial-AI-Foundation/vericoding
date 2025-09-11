@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsConnectedTree(n: int, edges: seq<(int, int)>)
 {
     n >= 1 && |edges| == n - 1 &&
@@ -37,6 +38,7 @@ predicate ValidTreeInput(n: int, edges: seq<(int, int)>)
         (exists i :: 0 <= i < |edges| && (edges[i].0 == node || edges[i].1 == node)))) &&
     IsConnectedTree(n, edges)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

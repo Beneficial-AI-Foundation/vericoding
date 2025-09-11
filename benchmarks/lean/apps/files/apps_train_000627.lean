@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def min_string_length (s : String) : Nat :=
   sorry
 
 -- Result is non-negative
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def reverseString (s : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_string_length_non_negative (s : String) (h : s.length > 0) : 
   min_string_length s ≥ 0 := 
   sorry
@@ -49,6 +56,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval min_string_length "aaaa"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

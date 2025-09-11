@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -23,6 +24,7 @@ fn compute_count(count_index: usize, a: &Vec<i32>, b: &mut Vec<i32>) -> (p: usiz
   assume(false);
   0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,17 +1,24 @@
+-- <vc-preamble>
 def four_piles (n : Nat) (y : Nat) : Option (List Nat) := sorry
 
 def sum_list : List Nat → Nat 
   | [] => 0
   | (h :: t) => h + sum_list t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nth : List Nat → Nat → Option Nat 
   | [], _ => none
   | (h :: t), 0 => some h
   | (h :: t), n+1 => nth t n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem four_piles_properties_solution (n y : Nat) (h1 : n > 0) (h2 : y > 0) (h3 : y ≤ 100) : 
   match four_piles n y with
   | some result => 
@@ -63,6 +70,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval four_piles 25 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

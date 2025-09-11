@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def fortune (f0 : Int) (p : Float) (c0 : Int) (n : Int) (i : Float) : Bool := sorry
 
 theorem fortune_returns_bool (f0 : Int) (p : Float) (c0 : Int) (n : Int) (i : Float)
@@ -10,7 +16,9 @@ theorem fortune_returns_bool (f0 : Int) (p : Float) (c0 : Int) (n : Int) (i : Fl
   (h4 : n > 0 ∧ n ≤ 50)
   (h5 : 0 ≤ i ∧ i ≤ 100) :
   fortune f0 p c0 n i = true ∨ fortune f0 p c0 n i = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem higher_initial_improves_success (f0 : Int) (p : Float) (c0 : Int) (n : Int) (i : Float)
   (h1 : f0 > 0)
   (h2 : 0 ≤ p ∧ p ≤ 100)
@@ -53,6 +61,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval fortune 100000 1 10000 10 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def zeroFuel (distance mpg fuel : Nat) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_fuel_main_property {distance mpg fuel : Nat} (h : mpg > 0) :
   zeroFuel distance mpg fuel = (fuel * mpg ≥ distance) :=
   sorry
@@ -33,6 +41,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval zero_fuel 70 25 1
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

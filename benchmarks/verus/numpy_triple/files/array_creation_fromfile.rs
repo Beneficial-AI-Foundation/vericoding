@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -6,6 +7,7 @@ pub struct FileData {
     pub content: Seq<f64>,
     pub valid: bool,
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function canFormNonAscendingSequence(rectangles: seq<(int, int)>): bool
 {
     if |rectangles| <= 1 then true
@@ -41,6 +42,7 @@ function max(a: int, b: int): int
 {
     if a >= b then a else b
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

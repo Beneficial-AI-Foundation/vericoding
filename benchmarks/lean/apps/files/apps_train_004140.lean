@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def area_or_perimeter (l w : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem square_is_area {l : Nat} (h : l > 0) (h2 : l ≤ 1000) :
   area_or_perimeter l l = l * l :=
 sorry
@@ -40,6 +48,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval area_or_perimeter 3 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

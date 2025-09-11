@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def searchInsert (nums : List Int) (target : Int) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def isSorted (l : List Int) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem searchInsert_valid_index
     {nums : List Int} {target : Int}
     (h1 : List.length nums > 0)
@@ -65,6 +72,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval search_insert [1, 3, 5, 6] 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

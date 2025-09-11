@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def Point := (Int × Int)
 def Triangle := (Point × Point × Point)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def area (t : Triangle) : Float := sorry
 def find_biggTriang (pts : List Point) : (Nat × Nat × Nat × List Triangle × Float) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_biggTriang_result_length 
   (pts : List Point) : 
   let result := find_biggTriang pts
@@ -57,6 +64,7 @@ info: [3, 1, 1, [[0, 0], [3, 0], [0, 4]], 6.0]
 -/
 -- #guard_msgs in
 -- #eval find_biggTriang [(0, 0), (3, 0), (0, 4)]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

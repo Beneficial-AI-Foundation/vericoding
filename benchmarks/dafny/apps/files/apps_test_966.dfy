@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(y: int)
 {
     1000 <= y <= 9000
@@ -28,6 +29,7 @@ predicate AllDistinct(digits: seq<int>)
 {
     forall i, j :: 0 <= i < j < |digits| ==> digits[i] != digits[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

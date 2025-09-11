@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_number_of_families (n: Nat) (reserved: List (Nat × Nat)) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_reservations {n: Nat} (h: n > 0) :
   max_number_of_families n [] = 2 * n := 
   sorry
@@ -33,6 +41,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval max_number_of_families 4 [[4, 3], [1, 4], [4, 6], [1, 7]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

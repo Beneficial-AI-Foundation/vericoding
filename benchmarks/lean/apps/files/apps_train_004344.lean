@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_nth_digit (a b n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_nth_digit_result_is_digit (a b n : Nat) 
     (h1 : a ≤ 9) (h2 : b ≤ 9) : 
     find_nth_digit a b n ≤ 9 :=
@@ -45,6 +53,7 @@ info: 8
 -/
 -- #guard_msgs in
 -- #eval find_nth_digit 1 2 4
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

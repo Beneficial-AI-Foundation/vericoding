@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def zombieShootout (zombies ammo : Int) (distance : Float) : String := sorry 
 
 def containsStr (s₁ s₂ : String) : Bool := 
   let s₁chars := s₁.data
   let s₂chars := s₂.data
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zombieShootout_output_contains_zombies (zombies ammo : Int) (distance : Float)
   (h1 : zombies ≥ 0) (h2 : distance ≥ 0) (h3 : ammo ≥ 0) : 
   containsStr (zombieShootout zombies ammo distance).toLower "zombies" = true := sorry
@@ -35,6 +43,7 @@ theorem zombieShootout_ran_out_ammo (zombies ammo : Int) (distance : Float)
   (h4 : zombies > ammo) (h5 : distance > Float.ofInt ammo / 2) :
   (zombieShootout zombies ammo distance).endsWith "ran out of ammo." ∧
   containsStr (zombieShootout zombies ammo distance) (toString ammo) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

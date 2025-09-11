@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -36,13 +37,19 @@ def complexSum {n : Nat} (f : Fin n → Complex) : Complex :=
       | ⟨0, _⟩ => f ⟨0, by omega⟩
       | ⟨i + 1, h⟩ => f ⟨i + 1, h⟩ + go ⟨i, by omega⟩
     go ⟨n, by omega⟩
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def fft {n : Nat} (a : Vector Complex n) : Id (Vector Complex n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fft_spec {n : Nat} (a : Vector Complex n) (h : n > 0) :
     ⦃⌜n > 0⌝⦄
     fft a
@@ -58,3 +65,4 @@ theorem fft_spec {n : Nat} (a : Vector Complex n) (h : n > 0) :
             sum = complexSum (fun j => a.get j * cexp (-2 * (3.14159265358979323846 : Float) * (k.val.toFloat * j.val.toFloat) / n.toFloat)) ∧
             result.get k = sum)⌝⦄ := by
   sorry
+-- </vc-theorems>

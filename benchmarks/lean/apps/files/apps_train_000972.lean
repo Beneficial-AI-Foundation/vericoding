@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_visit_cities (n : Nat) (d : Nat) (cities : List Nat) : String := sorry
 
 theorem can_visit_cities_returns_yes_or_no 
@@ -10,7 +16,9 @@ theorem can_visit_cities_returns_yes_or_no
   (h1 : n ≥ 2)
   (h2 : n ≤ 100) : 
   can_visit_cities n d cities = "YES" ∨ can_visit_cities n d cities = "NO" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem adjacent_diff_exceeds_d_implies_no
   (n : Nat)
   (d : Nat)
@@ -48,6 +56,7 @@ info: 'NO'
 -/
 -- #guard_msgs in
 -- #eval can_visit_cities *test3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

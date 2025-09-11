@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def increment_or_decrement (n : Int) : Int := sorry
 
 theorem increment_or_decrement_divisible_by_4 (n : Int) : 
   n % 4 = 0 → increment_or_decrement n = n + 1 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem increment_or_decrement_not_divisible_by_4 (n : Int) :
   n % 4 ≠ 0 → increment_or_decrement n = n - 1 := sorry
 
@@ -32,6 +40,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval increment_or_decrement 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

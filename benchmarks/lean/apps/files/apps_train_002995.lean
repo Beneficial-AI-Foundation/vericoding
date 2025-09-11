@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def binary_cleaner (seq : List Int) : List Int × List Nat := sorry
 
 theorem binary_cleaner_properties (seq : List Int) :
@@ -9,7 +15,9 @@ theorem binary_cleaner_properties (seq : List Int) :
   (∀ i ∈ result.2, i < seq.length) ∧
   (List.all result.2 fun i => seq.get! i ≥ 2) ∧
   result.1.length + result.2.length = seq.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 /-
 info: ([0, 1, 1, 0, 1, 1], [2, 5])
 -/
@@ -27,6 +35,7 @@ info: ([1], [])
 -/
 -- #guard_msgs in
 -- #eval binary_cleaner [1]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

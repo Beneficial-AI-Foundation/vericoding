@@ -1,3 +1,4 @@
+// <vc-preamble>
 function fib(n: nat): nat
   decreases n
 {
@@ -5,6 +6,7 @@ function fib(n: nat): nat
   else if n == 1 then 1
   else fib(n - 1) + fib(n - 2)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

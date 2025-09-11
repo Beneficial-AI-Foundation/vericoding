@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
   a > 1 && b >= 0
@@ -31,6 +32,7 @@ predicate CorrectResult(a: int, b: int, result: int)
   SocketsAfterStrips(result, a) >= b &&
   (result == 0 || SocketsAfterStrips(result - 1, a) < b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

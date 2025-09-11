@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def find_longest_dividing_subsequence (nums: List Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def powers_of_two : List Nat :=
   let rec mk_powers : Nat → List Nat
     | 0 => []
     | n+1 => if (2^n ≤ 1000) then (2^n)::(mk_powers n) else mk_powers n
   mk_powers 10
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem length_bounds {nums: List Nat} 
   (h1: ∀ x ∈ nums, 1 ≤ x ∧ x ≤ 1000)
   (h2: nums.length > 0) :
@@ -52,6 +59,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval find_longest_dividing_subsequence [1, 2, 4, 8]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

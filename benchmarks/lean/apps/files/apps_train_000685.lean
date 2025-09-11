@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solveEugeneHomework (a n m : Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def repeatedNum (a n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_eugene_homework_range (a n m : Nat) 
   (ha : 1 ≤ a ∧ a ≤ 10^9)
   (hn : 1 ≤ n ∧ n ≤ 100) 
@@ -51,6 +58,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval solve_eugene_homework 1000 3 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

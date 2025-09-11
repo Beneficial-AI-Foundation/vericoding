@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def min_horse_skill_diff (n : Nat) (skills : List Nat) : Nat :=
 sorry
 
@@ -6,15 +7,21 @@ sorry
 
 def list_min (l : List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def list_sort (l : List Nat) : List Nat :=
 sorry
 
 -- Result is non-negative
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_horse_skill_diff_nonneg {n : Nat} {skills : List Nat} 
   (h : skills.length = n) (h2 : skills.length ≥ 2) :
   min_horse_skill_diff n skills ≥ 0 :=
@@ -67,6 +74,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval min_horse_skill_diff 4 [1, 10, 100, 1000]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

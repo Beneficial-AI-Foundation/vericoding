@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_treasure_distances (n m : Nat) (treasures blocked : List (Nat × Nat)) : List String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dimensions_correct (n m : Nat) (h1 : n ≥ 2) (h2 : m ≥ 2) :
   let treasures := [(1,1)]
   let blocked := []
@@ -43,6 +51,7 @@ theorem blocked_cells_marked (n m : Nat) (h1 : n ≥ 2) (h2 : m ≥ 2) :
   List.get! (String.split (List.head! result) (· = ' ')) 1 = "X" ∧ 
   List.head! (String.split (List.get! result 1) (· = ' ')) = "X" :=
 sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

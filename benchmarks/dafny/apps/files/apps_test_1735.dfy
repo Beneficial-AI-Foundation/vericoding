@@ -1,3 +1,4 @@
+// <vc-preamble>
 function countMaxMoves(s: string): nat
 {
     if |s| == 0 then 0
@@ -17,6 +18,7 @@ function countMaxMovesHelper(s: string, i: nat, stack: seq<char>, moves: nat): n
     else
         countMaxMovesHelper(s, i + 1, stack + [s[i]], moves)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

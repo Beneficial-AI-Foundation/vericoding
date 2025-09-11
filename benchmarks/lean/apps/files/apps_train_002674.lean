@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def send (s : String) : String := sorry
 def receive (s : String) : String := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem encoding_decoding_roundtrip {s : String}
   (h : s.length > 0 ∧ s.length ≤ 100) :
   receive (send s) = s := sorry
@@ -35,6 +43,7 @@ info: '0 0 00 0000 0 000 00 0000 0 00'
 -/
 -- #guard_msgs in
 -- #eval send "CC"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

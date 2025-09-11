@@ -1,13 +1,20 @@
+-- <vc-preamble>
 def digitsList (n : Nat) : List Nat := sorry
 def sumList (xs : List Nat) : Nat := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def check (n : Nat) (maxSum : Nat) : Bool := sorry
 
 def max_sumDig (nmax : Nat) (maxSum : Nat) : Nat × Nat × Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem check_type (n : Nat) (maxSum : Nat) : check n maxSum = true ∨ check n maxSum = false := sorry
 
 theorem check_max_sum (n : Nat) (maxSum : Nat) 
@@ -42,6 +49,7 @@ info: [85, 1200, 99986]
 -/
 -- #guard_msgs in
 -- #eval max_sumDig 2000 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def padovan (n : Nat) : Nat := sorry
 
 theorem padovan_positive (n : Nat) : 
   padovan n > 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem padovan_first_three : 
   (padovan 0 = 1) ∧ (padovan 1 = 1) ∧ (padovan 2 = 1) := sorry
 
@@ -56,6 +64,7 @@ info: 1177482265857
 -/
 -- #guard_msgs in
 -- #eval padovan 100
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

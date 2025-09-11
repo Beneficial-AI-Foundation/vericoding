@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidTemperature(temp: int)
 {
     -40 <= temp <= 40
@@ -12,6 +13,7 @@ predicate CorrectOutput(temp: int, output: string)
 {
     output == ExpectedOutput(temp)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

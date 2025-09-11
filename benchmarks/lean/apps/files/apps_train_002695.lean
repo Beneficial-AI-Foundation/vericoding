@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def List.isSorted {α : Type} [Ord α] : List α → Prop := sorry
 
 def sect_sort (xs : List α) (start : Nat) (length : Option Nat := none) : List α :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sect_sort_length {α : Type} [Ord α] (xs : List α) (start : Nat) (length : Option Nat) :
   List.length (sect_sort xs start length) = List.length xs := sorry
 
@@ -45,6 +53,7 @@ info: []
 -/
 -- #guard_msgs in
 -- #eval sect_sort [] 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

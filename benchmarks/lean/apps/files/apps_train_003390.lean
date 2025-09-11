@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def dragon_curve (n : α) : String := sorry
 
 theorem dragon_curve_integer_bounds {n : Int} :
@@ -8,7 +14,9 @@ theorem dragon_curve_integer_bounds {n : Int} :
   result.all (fun c => c = 'F' ∨ c = 'R' ∨ c = 'L') ∧
   (n < 0 → result = "") :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dragon_curve_float_to_empty :
   ∀ (n : Float), dragon_curve n = "" :=
 sorry
@@ -64,6 +72,7 @@ info: 'FRFRRLFLFR'
 -/
 -- #guard_msgs in
 -- #eval dragon_curve 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

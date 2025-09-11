@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def kooka_counter (s: String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem kooka_counter_nonnegative (s: String) : 
   kooka_counter s ≥ 0 := 
 sorry
@@ -40,6 +48,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval kooka_counter "hahahahahaHaHaHa"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

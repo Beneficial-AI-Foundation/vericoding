@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int) {
     n >= 0 && k >= 0 && k + 1 > 0
 }
@@ -15,6 +16,7 @@ function OptimalDiplomas(n: int, k: int): int
 {
     (n / 2) / (k + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

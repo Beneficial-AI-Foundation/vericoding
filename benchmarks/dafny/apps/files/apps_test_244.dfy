@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidPosition(pos: int) {
     0 <= pos <= 2
 }
@@ -31,6 +32,7 @@ function ReverseMove(pos: int, moveNum: int): int
         else if pos == 2 then 1
         else 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

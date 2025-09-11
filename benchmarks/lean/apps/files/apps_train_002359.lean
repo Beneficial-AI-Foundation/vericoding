@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sqrt (n: Nat) : Nat := sorry
 
 theorem sqrt_nonnegative (x : Nat) : sqrt x ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sqrt_squared_under (x : Nat) : sqrt x * sqrt x ≤ x := sorry
 
 theorem sqrt_plus_one_squared_over (x : Nat) :
@@ -30,6 +38,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval sqrt 0
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: seq<int>, s: int, f: int)
 {
   n >= 2 && |a| == n && s >= 1 && f > s && f <= n &&
@@ -25,6 +26,7 @@ function participantCountHelper(a: seq<int>, s: int, f: int, n: int, start: int,
     var contribution := if s <= localHour < f then a[i] else 0;
     contribution + participantCountHelper(a, s, f, n, start, i + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

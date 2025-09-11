@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLinesFunc(input);
@@ -64,6 +65,7 @@ function GetGridCell(input: string, i: int, j: int): string
     var parts := SplitWhitespaceFunc(line);
     parts[j]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

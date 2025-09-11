@@ -1,11 +1,16 @@
+-- <vc-preamble>
 def sumList (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | h :: t => h + sumList t
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def calc_forest_volume (rows cols : Nat) (grid : List (List Nat)) (rectangles : List (List Nat)) : List Nat := sorry
 
 theorem grid_volumes_sum (rows cols : Nat) (grid : List (List Nat)) (h : rows > 0 ∧ cols > 0) :
@@ -19,7 +24,9 @@ theorem grid_volumes_sum (rows cols : Nat) (grid : List (List Nat)) (h : rows > 
 
   result.length > 0 ∧ 
   result[0]! = (normalized_grid.map sumList |> sumList) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rectangle_volumes (rows cols : Nat) (grid : List (List Nat)) (rectangles : List (List Nat)) 
     (h : rows > 0 ∧ cols > 0) :
   let normalized_grid := 
@@ -57,6 +64,7 @@ theorem single_cell_volumes (rows cols : Nat) (grid : List (List Nat)) (h : rows
     let result := calc_forest_volume rows cols normalized_grid rect
     result.length > 0 ∧
     result[0]! = normalized_grid[i]![j]! := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

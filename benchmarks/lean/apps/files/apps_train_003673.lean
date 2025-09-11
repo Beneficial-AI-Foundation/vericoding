@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def abs (x : Int) : Int :=
   if x ≥ 0 then x else -x
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def closest_sum (nums : List Int) (target : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem closest_sum_is_sum_of_three (nums : List Int) (target : Int)
     (h : nums.length ≥ 3) :
   ∃ a b c, a ∈ nums ∧ b ∈ nums ∧ c ∈ nums ∧ 
@@ -45,6 +52,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval closest_sum [-2, 2, -3, 1] 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

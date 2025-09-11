@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_phone_keypad (digits: String) : Nat := sorry
 
 theorem solve_phone_keypad_bounds (digits: String) :
   solve_phone_keypad digits < 1000000007 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_phone_keypad_single_seven_or_nine (d: Char) :
   d = '7' ∨ d = '9' →
   solve_phone_keypad (String.mk [d]) = 4 := sorry
@@ -48,6 +56,7 @@ info: 27
 -/
 -- #guard_msgs in
 -- #eval solve_phone_keypad "234"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

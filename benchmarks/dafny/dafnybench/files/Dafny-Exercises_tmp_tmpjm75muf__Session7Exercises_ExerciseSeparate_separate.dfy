@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate strictNegative(v:array<int>,i:int,j:int)
 reads v
 requires 0<=i<=j<=v.Length
@@ -8,6 +9,7 @@ predicate positive(s:seq<int>)
 
 predicate isPermutation(s:seq<int>, t:seq<int>)
 {multiset(s)==multiset(t)}
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve_fireworks (n m d : Nat) (fireworks : List (Nat × Nat × Nat)) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (n : Nat) (m : Nat) : Nat :=
   if n ≥ m then n - m else m - n
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fireworks_total_balls_bound {n m d : Nat} {fireworks : List (Nat × Nat × Nat)} 
   (h1 : m > 0) (h2 : n > 0) (h3 : d > 0) :
   solve_fireworks n m d fireworks ≤ (fireworks.foldl (fun acc p => acc + p.2.1) 0) + n :=
@@ -46,6 +53,7 @@ info: 418
 -/
 -- #guard_msgs in
 -- #eval solve_fireworks 30 8 2 [(15, 97, 3), (18, 64, 10), (20, 14, 20), (16, 18, 36), (10, 23, 45), (12, 60, 53), (17, 93, 71), (11, 49, 85)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

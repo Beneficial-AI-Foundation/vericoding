@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def union1d {n m : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) : Id (Vector Float (n + m)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem union1d_spec {n m : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) :
     ⦃⌜True⌝⦄
     union1d ar1 ar2
@@ -25,3 +32,4 @@ theorem union1d_spec {n m : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) :
       (∀ i j : Fin (n + m), i ≠ j → result.get i ≠ result.get j)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

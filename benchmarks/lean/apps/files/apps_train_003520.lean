@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def sorter (texts : List String) : List String := sorry 
 
 theorem sorter_maintains_length (texts : List String) : 
   List.length (sorter texts) = List.length texts := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem sorter_same_elements (texts : List String) :
   ∀ x, x ∈ sorter texts ↔ x ∈ texts := sorry
 
@@ -32,6 +40,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval sorter ["Alg#bra", "$istory", "Geom^try", "**english"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

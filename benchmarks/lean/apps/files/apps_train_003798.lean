@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def firstDup (s : String) : Option Char := sorry
 
 theorem first_dup_result_in_string {s : String} :
@@ -8,7 +14,9 @@ theorem first_dup_result_in_string {s : String} :
   | none => True 
   | some c => s.data.contains c
   := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem first_dup_has_multiple_occurrences {s : String} :
   match firstDup s with
   | none => True
@@ -46,6 +54,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval first_dup "bar"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

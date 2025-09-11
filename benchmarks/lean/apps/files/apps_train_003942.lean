@@ -1,16 +1,23 @@
+-- <vc-preamble>
 def group_check (s : String) : Bool := sorry
 
 def isOpening (c : Char) : Bool := sorry
 
 def isClosing (c : Char) : Bool := sorry
 def matching (o c : Char) : Bool := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countOpening (s : String) : Nat := sorry
 def countClosing (s : String) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_string_valid :
   group_check "" = true := sorry
 
@@ -59,6 +66,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval group_check "{(})"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

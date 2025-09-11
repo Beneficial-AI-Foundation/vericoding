@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def word_pattern (pattern : String) (str: String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pattern_length_match
   (pattern : String)
   (words : List String)
@@ -50,6 +58,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval word_pattern "aaaa" "dog cat cat dog"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

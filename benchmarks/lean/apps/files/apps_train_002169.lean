@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_city_division (n m : Nat) (edges : List (Nat × Nat)) : Int :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_city_division_original_cases :
   (solve_city_division 5 5 [(1,2), (1,3), (3,4), (3,5), (4,5)] = 4) ∧
   (solve_city_division 5 1 [(1,2)] = -1) ∧
@@ -39,6 +47,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_city_division 4 3 [(1, 2), (1, 3), (2, 3)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

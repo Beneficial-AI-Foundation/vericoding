@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(stdin_input: string)
 {
     |stdin_input| > 0 &&
@@ -82,6 +83,7 @@ function string_to_int_helper(s: string, pos: nat, acc: int): int
     else
         if acc == 0 then 1 else acc
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

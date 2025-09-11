@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_age : String → Except String Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_age_single_digit_extracts_first {n : Nat} (h : n < 10) :
   get_age s!"${n} years old" = .ok n :=
   sorry
@@ -29,6 +37,7 @@ info: 9
 -/
 -- #guard_msgs in
 -- #eval get_age "9 years old"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def solve (arr : List Int) : List Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def List.isPermutationOf (l1 l2 : List Int) : Prop :=
   ∀ x, (l1.filter (· = x)).length = (l2.filter (· = x)).length
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_output_length {arr : List Int} (h : arr ≠ []) :
   (solve arr).length = arr.length :=
 sorry
@@ -45,6 +52,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval solve [5, 9, 6, 9, 6, 5, 9, 9, 4, 4]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

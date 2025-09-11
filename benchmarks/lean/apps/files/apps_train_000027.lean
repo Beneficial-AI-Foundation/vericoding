@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def min_moves_to_odd (arrays : List (List Nat)) : List Nat := sorry
 
 def countTrailingZeros (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_same_length_as_input (arrays : List (List Nat)) :
   List.length (min_moves_to_odd arrays) = List.length arrays :=
   sorry
@@ -36,6 +44,7 @@ info: [0]
 -/
 -- #guard_msgs in
 -- #eval min_moves_to_odd [[3, 1, 7]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

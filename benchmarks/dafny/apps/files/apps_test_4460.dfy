@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate validInput(s: string)
 {
     |s| > 0 && (forall i :: 0 <= i < |s| ==> s[i] == ' ' || s[i] == '\n' || ('0' <= s[i] <= '9') || s[i] == '-')
@@ -34,6 +35,7 @@ function generateOutput(numbers: seq<int>): string
 {
     generateOutputHelper(numbers, 0, "")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

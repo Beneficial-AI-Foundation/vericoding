@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, M: int, D: int) {
     2 <= n && 2 <= k <= n && 1 <= M <= n && 1 <= D <= n && M * D * k >= n
 }
@@ -13,6 +14,7 @@ predicate ValidDistribution(x: int, d: int, n: int, k: int, M: int, D: int) {
 function Person1Candies(x: int, d: int): int {
     x * d
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

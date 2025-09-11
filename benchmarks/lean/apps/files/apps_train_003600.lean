@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def triangle_type (a b c : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem triangle_type_symmetric (a b c : Int) : 
   a > 0 → b > 0 → c > 0 →
   triangle_type a b c = triangle_type a c b ∧
@@ -60,6 +68,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval triangle_type 7 12 8
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

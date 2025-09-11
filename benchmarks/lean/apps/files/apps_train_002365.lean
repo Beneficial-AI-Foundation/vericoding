@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def min_cost_to_move_chips (positions: List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_even (positions: List Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_cost_upper_bound (positions: List Nat) (h: positions ≠ []) :
   min_cost_to_move_chips positions ≤ positions.length :=
 sorry
@@ -32,6 +39,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_cost_to_move_chips [1, 1000000000]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

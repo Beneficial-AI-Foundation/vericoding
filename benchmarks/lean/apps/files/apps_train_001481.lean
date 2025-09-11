@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_arithmetic_sequence (n : Nat) (init : List Int) : List Int := sorry
 
 theorem arithmetic_sequence_properties
@@ -12,7 +18,9 @@ theorem arithmetic_sequence_properties
   (result.length = n) ∧ 
   (∀ i j : Nat, i + 1 < result.length → j + 1 < result.length → 
     result.get! (i+1) - result.get! i = result.get! (j+1) - result.get! j) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem constant_sequence_property 
   (n : Nat) (const : Int) (h1 : n ≥ 4) (h2 : n ≤ 100) :
   let init := [const, const, const, const]
@@ -24,6 +32,7 @@ theorem basic_cases :
   (find_arithmetic_sequence 4 [1, 3, 10, 7] = [1, 3, 5, 7]) ∧
   (find_arithmetic_sequence 5 [-10, -5, 0, 5, 10] = [-10, -5, 0, 5, 10]) ∧
   (find_arithmetic_sequence 4 [2, 2, 2, 10] = [2, 2, 2, 2]) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

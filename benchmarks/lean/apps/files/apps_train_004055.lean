@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def diagonal (matrix : List (List Int)) : String := sorry
 
 theorem diagonal_2x2_property (m00 m01 m10 m11 : Int) : 
@@ -10,7 +16,9 @@ theorem diagonal_2x2_property (m00 m01 m10 m11 : Int) :
   diagonal matrix = "Principal Diagonal win!" → principal > secondary ∧
   diagonal matrix = "Secondary Diagonal win!" → secondary > principal ∧
   diagonal matrix = "Draw!" → principal = secondary := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem diagonal_identity_matrix_property (n : Nat) :
   n > 1 →
   let matrix := List.map (fun i => List.map (fun j => if i = j then 1 else 0) (List.range n)) (List.range n)
@@ -37,6 +45,7 @@ info: 'Principal Diagonal win!'
 -/
 -- #guard_msgs in
 -- #eval diagonal [[7, 2, 2], [4, 2, 6], [1, 8, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

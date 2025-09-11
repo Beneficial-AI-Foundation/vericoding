@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def calculate_ratio (width height : Nat) : String := sorry
 
 theorem ratio_preservation 
@@ -8,7 +14,9 @@ theorem ratio_preservation
   let result := calculate_ratio width height
   let parts := result.split (· = ':')
   (String.toNat! parts[0]!) / (String.toNat! parts[1]!) = width / height := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_width_error (height : Nat) (h : height > 0) :
   calculate_ratio 0 height = "" := sorry
 
@@ -35,6 +43,7 @@ info: '4:3'
 -/
 -- #guard_msgs in
 -- #eval calculate_ratio 800 600
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

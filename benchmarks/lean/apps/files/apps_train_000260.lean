@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def eval_rpn : List String → Int
   | _ => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem eval_rpn_empty :
   eval_rpn [] = 0 := by sorry
 
@@ -60,6 +68,7 @@ info: 22
 -/
 -- #guard_msgs in
 -- #eval eval_rpn ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

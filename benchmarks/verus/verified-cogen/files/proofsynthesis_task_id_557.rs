@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -27,6 +28,7 @@ spec fn to_toggle_case_spec(s: char) -> (result:char) {
         s
     }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

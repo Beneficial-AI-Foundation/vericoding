@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def eventual_safe_nodes (graph: List (List Nat)) : List Nat := sorry 
 
 theorem eventual_safe_nodes_increasing {graph : List (List Nat)} : 
@@ -9,7 +15,9 @@ theorem eventual_safe_nodes_increasing {graph : List (List Nat)} :
   ∀ hi : i < result.length,
   ∀ hj : j < result.length,
   result[i]'hi ≤ result[j]'hj := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem eventual_safe_nodes_valid_indices {graph : List (List Nat)} :
   ∀ x, x ∈ eventual_safe_nodes graph → x < graph.length := sorry
 
@@ -50,6 +58,7 @@ info: [4]
 -/
 -- #guard_msgs in
 -- #eval eventual_safe_nodes [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

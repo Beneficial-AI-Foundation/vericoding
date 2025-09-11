@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def lottery (s : String) : String := sorry
 
 def dedup (list : List α) [BEq α] : List α := list.foldl (fun acc x => if acc.contains x then acc else acc ++ [x]) []
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem lottery_result_format (s : String) : 
     let result := lottery s
     (result = "One more run!" ∨ result.all Char.isDigit) := by sorry
@@ -43,6 +51,7 @@ info: '5'
 -/
 -- #guard_msgs in
 -- #eval lottery "555"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

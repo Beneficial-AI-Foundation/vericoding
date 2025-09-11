@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def cake (candles: Nat) (s: String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem cake_empty_string :
   cake 10 "" = "That was close!" :=
 sorry
@@ -37,6 +45,7 @@ info: 'That was close!'
 -/
 -- #guard_msgs in
 -- #eval cake 0 "jpipe"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_tree_tag (n a b da db : Nat) (edges : List (Nat × Nat)) : String := sorry
 
 -- Type safety - result must be one of two valid strings
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_tree_tag_valid_output
   (n a b da db : Nat) (edges : List (Nat × Nat)) :
   solve_tree_tag n a b da db edges = "Alice" ∨ 
@@ -34,6 +42,7 @@ info: 'Alice'
 -/
 -- #guard_msgs in
 -- #eval solve_tree_tag 5 5 4 3 4 [(1, 2), (4, 1), (5, 1), (5, 3)]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

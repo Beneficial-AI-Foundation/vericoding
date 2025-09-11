@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def productExceptSelf (nums : List Int) : List Int := sorry
 
 theorem productExceptSelf_length (nums : List Int) (h : nums ≠ []) : 
   (productExceptSelf nums).length = nums.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem productExceptSelf_property {nums : List Int} {i : Fin nums.length}
   (h1 : nums.length ≥ 2) (h2 : ∀ x ∈ nums, -10 ≤ x ∧ x ≤ 10) :
   let result := productExceptSelf nums
@@ -49,6 +57,7 @@ info: [1, 1, 1, 1]
 -/
 -- #guard_msgs in
 -- #eval product_except_self #[1, 1, 1, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

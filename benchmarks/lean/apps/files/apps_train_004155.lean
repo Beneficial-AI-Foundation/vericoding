@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def gcd (a b : Nat) : Nat := sorry
 
 def fraction (a b : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem fraction_output_lower_bound {a b : Nat} (ha : a > 0) (hb : b > 0) :
   fraction a b ≥ 2 := sorry
 
@@ -28,6 +36,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval fraction 5 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

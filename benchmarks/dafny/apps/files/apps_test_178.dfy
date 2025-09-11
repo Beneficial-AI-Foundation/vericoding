@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: string)
 {
     n >= 13 && n % 2 == 1 && |s| == n
@@ -20,6 +21,7 @@ predicate VasyaWins(n: int, s: string)
     var eights_in_prefix := count_eights_in_prefix(s, prefix_len);
     petya_moves < eights_in_prefix
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

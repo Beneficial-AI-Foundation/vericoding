@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nancumprod {n : Nat} (arr : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nancumprod_spec {n : Nat} (arr : Vector Float n) :
     ⦃⌜True⌝⦄
     nancumprod arr
@@ -22,3 +29,4 @@ theorem nancumprod_spec {n : Nat} (arr : Vector Float n) :
         let val := arr.get ⟨idx, by sorry⟩
         if Float.isNaN val then acc else acc * val) 1.0⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_codwars (url : String) : Bool := sorry
 
 theorem valid_codwars_urls
@@ -16,7 +22,9 @@ theorem valid_codwars_urls
   find_codwars (protocol ++ (String.intercalate "." subdomains) ++ 
                 (if subdomains.length > 0 then "." else "") ++ 
                 "codwars.com" ++ path) = true := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_domains 
   (domain : String)
   (h1 : domain.length > 0)
@@ -50,6 +58,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval find_codwars "codwars.comp"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

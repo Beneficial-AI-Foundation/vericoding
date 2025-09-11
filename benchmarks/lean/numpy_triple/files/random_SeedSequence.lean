@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def seedSequence {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vector UInt32 0) 
     (pool_size : Nat := 4) : Id (Vector UInt32 pool_size) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem seedSequence_spec {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vector UInt32 0)
     (pool_size : Nat := 4) :
     ⦃⌜True⌝⦄
@@ -29,3 +36,4 @@ theorem seedSequence_spec {n : Nat} (entropy : Vector UInt32 n) (spawn_key : Vec
       (result.size = pool_size)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

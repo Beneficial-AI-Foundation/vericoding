@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def nanpercentile {n : Nat} (a : Vector Float n) (q : Float) (h : 0 ≤ q ∧ q ≤ 100) : Id Float :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem nanpercentile_spec {n : Nat} (a : Vector Float n) (q : Float) (h : 0 ≤ q ∧ q ≤ 100) :
     ⦃⌜0 ≤ q ∧ q ≤ 100⌝⦄
     nanpercentile a q h
@@ -51,3 +58,4 @@ theorem nanpercentile_spec {n : Nat} (a : Vector Float n) (q : Float) (h : 0 ≤
               result ≤ sorted_vals.get ⟨sorted_vals.length - 1, sorry⟩)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

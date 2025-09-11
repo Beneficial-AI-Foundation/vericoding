@@ -1,6 +1,8 @@
+// <vc-preamble>
 function Sum(xs: seq<int>): int {
     if |xs| == 0 then 0 else Sum(xs[..|xs|-1]) + xs[|xs|-1]
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def dsplit {n k : Nat} (arr : Vector Float (k * n)) (sections : Nat) 
   (h : sections = k ∧ k > 0) : Id (List (Vector Float n)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem dsplit_spec {n k : Nat} (arr : Vector Float (k * n))
   (h : k > 0) :
   ⦃⌜k > 0⌝⦄
@@ -24,3 +31,4 @@ theorem dsplit_spec {n k : Nat} (arr : Vector Float (k * n))
                     _ ≤ k * n := Nat.mul_le_mul_right _ (Nat.succ_le_of_lt h1)
                 ⟩⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_divisible_numbers (start final divisor : Int) : Int × Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_divisible_numbers_properties
   (start length divisor : Int)
   (h1 : start ≥ -1000) (h2 : start ≤ 1000)
@@ -29,6 +37,7 @@ theorem empty_range_properties
   (h3 : divisor > 0) (h4 : divisor ≤ 10) :
   find_divisible_numbers start (start - 1) divisor = (0, 0) :=
   sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

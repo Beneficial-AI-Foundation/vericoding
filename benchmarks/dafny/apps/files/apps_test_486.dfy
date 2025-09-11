@@ -1,3 +1,4 @@
+// <vc-preamble>
 function ProductOfDigits(x: int): int
   requires x >= 0
 {
@@ -15,6 +16,7 @@ function MaxProductOfDigitsInRange(n: int): int
     var rest := MaxProductOfDigitsInRange(n - 1);
     if current > rest then current else rest
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

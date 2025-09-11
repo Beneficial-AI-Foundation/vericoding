@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_late_submissions (submissions : List (Nat × Nat)) : Nat := sorry
 
 theorem count_late_submissions_non_negative (submissions : List (Nat × Nat)) :
   count_late_submissions submissions ≥ 0 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_late_submissions_upper_bound (submissions : List (Nat × Nat)) :
   count_late_submissions submissions ≤ submissions.length := sorry
 
@@ -30,6 +38,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_late_submissions [(1, 7), (2, 8), (3, 9)]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

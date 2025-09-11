@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def hofstadter_Q : Nat → Nat 
 | 0 => 0
 | n => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem hofstadter_positive (n : Nat) (h : n > 0) : 
   hofstadter_Q n > 0 := sorry
 
@@ -36,6 +44,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval hofstadter_Q 7
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

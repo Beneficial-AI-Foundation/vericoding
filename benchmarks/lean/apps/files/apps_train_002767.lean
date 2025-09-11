@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def combs_non_empty_boxesII (n : Nat) : List Nat := sorry
 
 -- Output has length 3 and contains only natural numbers
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem output_structure (n : Nat) (h : n > 0) (h2 : n ≤ 20) : 
   let result := combs_non_empty_boxesII n
   result.length = 3 ∧ (∀ x ∈ result, x ≥ 0) := sorry
@@ -52,6 +60,7 @@ info: [2, 1, 2]
 -/
 -- #guard_msgs in
 -- #eval combs_non_empty_boxesII 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

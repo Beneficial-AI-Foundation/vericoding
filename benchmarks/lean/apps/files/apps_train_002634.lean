@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def is_matched : List String → String ⊕ Bool
   | _ => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem is_matched_output_type (cigar seq : String) :
   match is_matched [cigar, seq] with
   | Sum.inl _ => True 
@@ -43,6 +51,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_matched ["12S", "TGTTTCTCCAAG"]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

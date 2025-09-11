@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pigLatin (s : String) : String := sorry 
 
 theorem pigLatin_word_transform {word : String} 
   (h : ∀ c ∈ word.data, c.isAlpha) : 
   word.length > 0 → 
   pigLatin word = (word.drop 1) ++ (word.take 1) ++ "ay" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pigLatin_word_count {text : String} :
   text.trim.length > 0 →
   ((pigLatin text).splitOn " ").length = (text.splitOn " ").length := sorry
@@ -40,6 +48,7 @@ info: 'elloHay orldway !'
 -/
 -- #guard_msgs in
 -- #eval pig_it "Hello world !"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

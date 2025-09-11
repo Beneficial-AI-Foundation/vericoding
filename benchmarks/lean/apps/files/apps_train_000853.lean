@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def abs (n : Nat) : Nat := 
   if n ≥ 0 then n else 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def can_catch_thief (x y k n : Nat) : String := sorry
 
 theorem catch_thief_output_validity (x y k n : Nat) (h : k > 0) (h' : n > 0) :
   can_catch_thief x y k n = "Yes" ∨ can_catch_thief x y k n = "No" := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem catch_thief_distance_divisible (x y k n : Nat) (h : k > 0) (h' : n > 0) :
   let distance := if x ≥ y then x - y else y - x
   can_catch_thief x y k n = "Yes" ↔ distance % (2 * k) = 0 := sorry
@@ -39,6 +46,7 @@ info: 'Yes'
 -/
 -- #guard_msgs in
 -- #eval can_catch_thief 4 2 1 7
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

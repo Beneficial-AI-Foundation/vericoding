@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def Point := Nat × Nat
 
 def is_escape_possible (blocked : List Point) (source target : Point) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_blocked_always_possible (source target : Point) :
   is_escape_possible [] source target = true := sorry
 
@@ -43,6 +51,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_escape_possible [[10, 9], [9, 10], [10, 11], [11, 10]] [0, 0] [10, 10]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

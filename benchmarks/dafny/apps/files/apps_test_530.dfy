@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: string, b: string)
 {
     n > 0 && |a| == 2 * n && |b| == 2 * n &&
@@ -24,6 +25,7 @@ predicate CorrectOutcome(result: string, d: int)
     (d < 0 ==> result == "Second") &&
     (d == 0 ==> result == "Draw")
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

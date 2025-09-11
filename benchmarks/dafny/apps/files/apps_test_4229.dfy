@@ -1,3 +1,4 @@
+// <vc-preamble>
 function int_to_string(i: int): string
     requires i >= 0
     ensures |int_to_string(i)| > 0
@@ -30,6 +31,7 @@ function sum_of_non_fizzbuzz_numbers(n: int): int
         else
             sum_of_non_fizzbuzz_numbers(n - 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

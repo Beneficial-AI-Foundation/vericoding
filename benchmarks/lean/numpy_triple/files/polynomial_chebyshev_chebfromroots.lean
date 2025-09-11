@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -16,13 +17,19 @@ def evalChebyshevPoly {n : Nat} (coeffs : Vector Float n) (x : Float) : Float :=
     else
       acc
   sumTerms 0 0
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def chebfromroots {n : Nat} (roots : Vector Float n) : Id (Vector Float (n + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem chebfromroots_spec {n : Nat} (roots : Vector Float n) :
     ⦃⌜True⌝⦄
     chebfromroots roots
@@ -41,3 +48,4 @@ theorem chebfromroots_spec {n : Nat} (roots : Vector Float n) :
         coeffs.get ⟨n, by omega⟩ = Float.pow 2 (Float.ofNat (1 - n)))
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

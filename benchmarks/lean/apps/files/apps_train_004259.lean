@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_last_digit (n : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem last_digit_in_range (n : Nat) :
   0 ≤ get_last_digit n ∧ get_last_digit n ≤ 9 :=
   sorry
@@ -35,6 +43,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval get_last_digit 300
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

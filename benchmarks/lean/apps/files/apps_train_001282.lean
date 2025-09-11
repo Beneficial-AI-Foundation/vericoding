@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def calcMinOpsLuckyNum (n : String) : Nat :=
   sorry
 
 /- Basic properties about operation counting -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countNonLuckyDigits (s : String) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_is_nonnegative (n : String) : 
   calcMinOpsLuckyNum n ≥ 0 :=
 sorry
@@ -40,6 +47,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval calc_min_ops_lucky_num "99"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

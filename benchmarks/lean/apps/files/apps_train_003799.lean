@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def reverse_bits (n : Nat) : Nat := sorry
 
 -- Result is non-negative (trivial in Lean since Nat is used)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_ones (n : Nat) : Nat := sorry
 
 -- Number of 1 bits is preserved
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem reverse_bits_nonneg (n : Nat) :
   reverse_bits n ≥ 0 := sorry
 
@@ -48,6 +55,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval reverse_bits 1024
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

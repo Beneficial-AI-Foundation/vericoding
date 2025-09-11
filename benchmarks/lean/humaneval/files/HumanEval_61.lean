@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Mathlib
 import Mathlib.Algebra.Polynomial.Basic
 import Std.Data.HashMap
@@ -19,13 +20,19 @@ def balanced_paren_non_computable
 let chars := paren_string.toList;
 (∀ (i : ℕ), i ≤ chars.length → ((chars.take i).count bracket_type_right) ≤ ((chars.take i).count bracket_type_left)) ∧
 (chars.count bracket_type_left = chars.count bracket_type_right)
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def implementation (paren_string: String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 def problem_spec
 -- function signature
 (impl: String → Bool)
@@ -44,6 +51,7 @@ theorem correctness
 (brackets: String)
 : problem_spec implementation brackets := by
   sorry
+-- </vc-theorems>
 
 -- #test implementation "(" = false
 -- #test implementation "()" = true

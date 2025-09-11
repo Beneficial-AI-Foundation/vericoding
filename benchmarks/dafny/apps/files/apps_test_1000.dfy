@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, v: int) {
     2 <= n <= 100 && 1 <= v <= 100
 }
@@ -12,6 +13,7 @@ function MinCost(n: int, v: int): int
         var remaining := req - v;
         v + remaining * (remaining + 3) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function Fibonacci(n: nat): nat {
   match n {
     case 0 => 0
@@ -5,6 +6,7 @@ function Fibonacci(n: nat): nat {
     case _ => Fibonacci(n - 1) + Fibonacci(n - 2)
   }
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

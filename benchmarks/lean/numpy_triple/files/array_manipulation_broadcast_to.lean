@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def broadcast_to {n m : Nat} (v : Vector Float n) : Id (Vector (Vector Float n) m) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem broadcast_to_spec {n m : Nat} (v : Vector Float n) :
     ⦃⌜True⌝⦄
     broadcast_to v
@@ -24,3 +31,4 @@ theorem broadcast_to_spec {n m : Nat} (v : Vector Float n) :
       (∀ i₁ i₂ : Fin m, result.get i₁ = result.get i₂)
     ⌝⦄ := by
   sorry
+-- </vc-theorems>

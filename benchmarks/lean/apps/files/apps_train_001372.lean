@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def find_uncle_johny_position (n : Nat) (nums : List Nat) (k : Nat) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem find_uncle_johny_position_smaller_count
   {n : Nat} {nums : List Nat} {k : Nat}
   (h_k : k ≤ nums.length)
@@ -33,6 +41,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval find_uncle_johny_position 5 [1, 2, 3, 9, 4] 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded_and_plausible

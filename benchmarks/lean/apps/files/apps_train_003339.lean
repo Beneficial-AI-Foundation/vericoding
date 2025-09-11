@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def duplicate_elements (xs ys : List Int) : Bool := sorry
 
 -- Symmetry property
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem duplicate_elements_symmetric (xs ys : List Int) :
   duplicate_elements xs ys = duplicate_elements ys xs := sorry
 
@@ -48,6 +56,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval duplicate_elements [] []
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

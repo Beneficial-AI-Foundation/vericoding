@@ -1,3 +1,4 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
@@ -35,13 +36,19 @@ def complexSum {n : Nat} (f : Fin n → Complex) : Complex :=
       | ⟨0, _⟩ => f ⟨0, by omega⟩
       | ⟨i + 1, h⟩ => f ⟨i + 1, h⟩ + go ⟨i, by omega⟩
     go ⟨n, by omega⟩
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def rfft {n : Nat} (a : Vector Float n) : Id (Vector Complex ((n / 2) + 1)) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem rfft_spec {n : Nat} (a : Vector Float n) (h : n > 0) :
     ⦃⌜n > 0⌝⦄
     rfft a
@@ -53,3 +60,4 @@ theorem rfft_spec {n : Nat} (a : Vector Float n) (h : n > 0) :
       -- For even n, Nyquist frequency is real
       (n % 2 = 0 → (if hn : n / 2 < (n / 2) + 1 then (result.get ⟨n / 2, hn⟩).im = 0 else True))⌝⦄ := by
   sorry
+-- </vc-theorems>

@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve (nums : List Int) (div : Int) : List Int := sorry
 
 theorem solve_output_length {nums : List Int} {div : Int} (h : div > 0) :
   (solve nums div).length = nums.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_elements_geq_input {nums : List Int} {div : Int} (h : div > 0) :
   ∀ (i : Nat), i < nums.length → 
     ((solve nums div).get ⟨i, by sorry⟩) ≥ (nums.get ⟨i, by sorry⟩) := sorry
@@ -37,6 +45,7 @@ info: expected3
 -/
 -- #guard_msgs in
 -- #eval solve [1000, 999, 998, 997] 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

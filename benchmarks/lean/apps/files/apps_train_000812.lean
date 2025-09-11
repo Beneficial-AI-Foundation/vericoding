@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def count_interesting_subsequences (n k : Nat) (a : List Nat) : Nat :=
   sorry
 
 def isSorted (l : List Nat) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def sortList (l : List Nat) : List Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_interesting_subsequences_properties (n k : Nat) (a : List Nat)
     (h1 : n > 0) (h2 : k > 0) (h3 : List.length a > 0) :
     k ≤ List.length a →
@@ -49,6 +56,7 @@ info: 2
 -/
 -- #guard_msgs in
 -- #eval count_interesting_subsequences 5 3 [1, 1, 2, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

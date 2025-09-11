@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, d: int, matrix: seq<seq<int>>)
 {
     n > 0 && m > 0 && d > 0 &&
@@ -40,6 +41,7 @@ function minimumOperationsToMakeEqual(simplified: seq<int>): int
     var maxVal := seqMax(simplified);
     minOpsInRange(simplified, minVal, maxVal)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

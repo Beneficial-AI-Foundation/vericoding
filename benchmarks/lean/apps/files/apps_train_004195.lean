@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isMultiple (a b n : Nat) : Bool := sorry
 
 theorem isMultiple_deterministic {a b n : Nat} (h1 : 0 < a) (h2 : a ≤ 1000) 
     (h3 : 0 < b) (h4 : b ≤ 1000) (h5 : 0 < n) (h6 : n ≤ 9) :
   isMultiple a b n = isMultiple a b n := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem isMultiple_exact_division {a b n : Nat} (h1 : 0 < a) (h2 : a ≤ 1000)
     (h3 : 0 < b) (h4 : b ≤ 1000) (h5 : 0 < n) (h6 : n ≤ 9)
     (h7 : a % b = 0) :
@@ -42,6 +50,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval isMultiple 5 4 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

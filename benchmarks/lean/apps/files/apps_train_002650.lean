@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_grade (s1 s2 s3 : Int) : Char :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_grade_valid_output (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100) 
     (h2 : 0 ≤ s2 ∧ s2 ≤ 100) (h3 : 0 ≤ s3 ∧ s3 ≤ 100) :
   let grade := get_grade s1 s2 s3
@@ -57,6 +65,7 @@ info: 'F'
 -/
 -- #guard_msgs in
 -- #eval get_grade 44 55 52
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

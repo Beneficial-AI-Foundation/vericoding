@@ -1,15 +1,22 @@
+-- <vc-preamble>
 def isLeapYear (year : Int) : Bool :=
   sorry
 
 def isValidDate (year month day : Int) : Bool :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def countCorrectPills (dateStr : String) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem valid_date_count (year month day : Int) :
   1 ≤ year ∧ year ≤ 9999 →
   1 ≤ month ∧ month ≤ 12 →
@@ -61,6 +68,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval count_correct_pills "2000:12:31"
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

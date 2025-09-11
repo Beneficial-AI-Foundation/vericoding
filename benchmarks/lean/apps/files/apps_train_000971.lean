@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def solve_panipuri_speed (n : Nat) (eating_times : List Nat) : Nat := sorry
 
 theorem solve_panipuri_speed_returns_positive (n : Nat) (eating_times : List Nat)
@@ -8,7 +14,9 @@ theorem solve_panipuri_speed_returns_positive (n : Nat) (eating_times : List Nat
     (h2 : eating_times.length > 0)
     (h3 : ∀ x ∈ eating_times, x > 0) :
     solve_panipuri_speed n eating_times > 0 := by sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_panipuri_speed_returns_natural (n : Nat) (eating_times : List Nat)
     (h1 : n > 0)
     (h2 : eating_times.length > 0)
@@ -52,6 +60,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval solve_panipuri_speed 3 [1, 2, 1]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,14 +1,21 @@
+-- <vc-preamble>
 def watch_pyramid_from_the_side (chars : Option String) : Option String := sorry
 def watch_pyramid_from_above (chars : Option String) : Option String := sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_visible_characters_of_the_pyramid (chars : Option String) : Int := sorry
 def count_all_characters_of_the_pyramid (chars : Option String) : Int := sorry
 
 -- Empty inputs theorem
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_inputs {chars : Option String} : 
   chars = none ∨ chars = some "" →
   watch_pyramid_from_the_side chars = chars ∧ 
@@ -63,6 +70,7 @@ info: 35
 -/
 -- #guard_msgs in
 -- #eval count_all_characters_of_the_pyramid test_str
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

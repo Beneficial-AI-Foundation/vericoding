@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def pos_search (arr : List Int) (num : Int) : Nat := sorry 
 def solve_walls (n : Nat) (walls : List Int) (queries : List (Int × Int)) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem pos_search_empty_array {num : Int} : 
   pos_search [] num = 0 := sorry
 
@@ -28,6 +36,7 @@ theorem solve_walls_matches_pos_search {n : Nat} {walls : List Int} {queries : L
   {i : Fin queries.length} :
   (solve_walls n walls queries).get ⟨i.val, by simp [solve_walls_length]⟩ = 
     pos_search walls ((queries.get i).1 + (queries.get i).2) := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

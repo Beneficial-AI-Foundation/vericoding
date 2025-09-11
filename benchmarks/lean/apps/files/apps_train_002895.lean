@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def thue_morse (n : Nat) : String := sorry
 
 /- The length of thue_morse(n) equals n and contains only 0's and 1's -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem thue_morse_length (n : Nat) : 
   (thue_morse n).length = n ∧ 
   ∀ p : String.Pos, 
@@ -43,6 +51,7 @@ info: '0110100110'
 -/
 -- #guard_msgs in
 -- #eval thue_morse 10
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

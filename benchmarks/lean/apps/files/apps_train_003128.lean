@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_ages (sum_ages diff_ages : Int) : Option (Int × Int) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem get_ages_positive_inputs
   (sum_ages diff_ages : Int)
   (h1 : 0 ≤ sum_ages)
@@ -48,6 +56,7 @@ info: None
 -/
 -- #guard_msgs in
 -- #eval get_ages 63 -14
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

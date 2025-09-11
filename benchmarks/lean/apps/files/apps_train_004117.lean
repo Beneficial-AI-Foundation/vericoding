@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def noSpace (s : String) : String := sorry
 
 theorem no_space_no_spaces_in_result (s : String) :
   ¬(noSpace s).contains ' ' := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem no_space_preserves_non_spaces (s : String) :
   noSpace s = s.replace (String.mk [' ']) "" := sorry
 
@@ -32,6 +40,7 @@ info: '8jaam'
 -/
 -- #guard_msgs in
 -- #eval no_space "8j aam"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

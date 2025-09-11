@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(s: seq<real>) : real {
   if |s| == 0 then 0.0 else s[0] + sum(s[1..])
 }
@@ -11,6 +12,7 @@ function mean(s: seq<real>) : real
 {
   sum(s) / |s| as real
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

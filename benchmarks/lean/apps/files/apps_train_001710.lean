@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def prod_partitions (n : Nat) : String := sorry
 def factorial (n : Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem prod_partitions_output_format (n : Nat) : 
   n ≥ 1 → 
   let result := prod_partitions n 
@@ -25,6 +33,7 @@ theorem prod_partitions_properties (n : Nat) :
     range_val ≥ 0
   | none => False
   := sorry
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

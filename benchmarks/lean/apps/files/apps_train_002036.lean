@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def min_lost_milk (n: Nat) (cows: List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def count_facing (cows: List Nat) (dir: Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_lost_milk_non_negative (n: Nat) (cows: List Nat) :
   min_lost_milk n cows ≥ 0 :=
 sorry
@@ -32,6 +39,7 @@ info: 1
 -/
 -- #guard_msgs in
 -- #eval min_lost_milk 2 [1, 0]
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible

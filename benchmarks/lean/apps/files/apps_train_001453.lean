@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_shortest_paths (n m x1 y1 x2 y2 : Nat) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_shortest_paths_non_negative
   (n m x1 y1 x2 y2 : Nat)
   (hn : n > 0)
@@ -35,6 +43,7 @@ info: 5
 -/
 -- #guard_msgs in
 -- #eval count_shortest_paths 3 3 1 1 1 2
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

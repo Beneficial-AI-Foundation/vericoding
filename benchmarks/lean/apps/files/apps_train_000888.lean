@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def abs (n : Nat) : Nat :=
 sorry
 
@@ -6,13 +7,19 @@ def fst_minus (a b : Nat) : Nat :=
 
 def list_sum (l : List Nat) : Nat :=
 sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def min_delivery_time (n m k : Nat) (deliveries : List (Nat × Nat × Nat × Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem min_delivery_time_non_negative (n m k : Nat) (deliveries : List (Nat × Nat × Nat × Nat)) :
   min_delivery_time n m k deliveries ≥ 0 := 
 sorry
@@ -41,6 +48,7 @@ info: 23
 -/
 -- #guard_msgs in
 -- #eval min_delivery_time 10 2 3 [[1, 2, 10, 2], [2, 1, 9, 1], [4, 1, 7, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: guarded

@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def List.toList (xs : List α) : List α := xs
 
 def table_game (table: List (List Int)) : List Int := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem single_value_property (x : Int) :
   let table := [[x, x + x, x], [x + x, x + x + x + x, x + x], [x, x + x, x]]
   table_game table = [x, x, x, x] := sorry
@@ -30,6 +38,7 @@ info: [-1]
 -/
 -- #guard_msgs in
 -- #eval table_game [[1, 2, 1], [1, 2, 1], [1, 2, 1]]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

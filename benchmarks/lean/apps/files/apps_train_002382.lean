@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def isAlienSorted (words : List String) (order : String) : Bool := sorry
 
 theorem single_word_always_sorted (w : String) (order : String) 
   (h : ∀ c, c ∈ w.data → c ∈ order.data) :
   isAlienSorted [w] order := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem identical_words_sorted (w : String) (order : String) 
   (h : ∀ c, c ∈ w.data → c ∈ order.data) :
   isAlienSorted [w, w] order := sorry
@@ -35,6 +43,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval is_alien_sorted ["apple", "app"] "abcdefghijklmnopqrstuvwxyz"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

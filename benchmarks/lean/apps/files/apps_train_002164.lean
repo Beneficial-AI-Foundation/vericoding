@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_no_meet_paths (N M S T : Nat) (edges : List (Nat × Nat × Nat)) : Nat :=
 sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_no_meet_paths_nonnegative (N M S T : Nat) (edges : List (Nat × Nat × Nat)) :
   count_no_meet_paths N M S T edges ≥ 0 :=
 sorry
@@ -38,6 +46,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval count_no_meet_paths
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

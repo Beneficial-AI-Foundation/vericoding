@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def maxProductPath (grid : List (List Int)) : Int := sorry
 
 def is_valid_result (grid : List (List Int)) (result : Int) : Bool := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem empty_grid_theorem (n : Nat) : 
   maxProductPath [] = -1 ∧ maxProductPath (List.replicate n []) = -1 := sorry
 
@@ -49,6 +57,7 @@ info: 0
 -/
 -- #guard_msgs in
 -- #eval maxProductPath [[1, 3], [0, -4]]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

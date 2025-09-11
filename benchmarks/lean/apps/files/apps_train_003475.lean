@@ -1,6 +1,15 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
 theorem xor_commutative (a b : Bool) : 
   Bool.xor a b = Bool.xor b a := sorry
 
@@ -36,6 +45,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval xor True True
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

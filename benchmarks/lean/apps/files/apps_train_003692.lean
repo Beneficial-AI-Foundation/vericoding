@@ -1,6 +1,12 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def clock_degree (time: String): String := sorry
 
 theorem valid_time_degree_bounds 
@@ -14,7 +20,9 @@ theorem valid_time_degree_bounds
   (h_split: result.splitOn ":" = [hours, minutes]): 
   0 ≤ hours.toNat! ∧ hours.toNat! ≤ 360 ∧ 
   0 ≤ minutes.toNat! ∧ minutes.toNat! ≤ 360 := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem invalid_format_check
   (s: String)
   (h_invalid: ¬s.contains ':' ∨ ¬(s.splitOn ":").all (·.all Char.isDigit)):
@@ -62,6 +70,7 @@ info: 'Check your time !'
 -/
 -- #guard_msgs in
 -- #eval clock_degree "24:00"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

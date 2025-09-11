@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def countAndSay (n: Nat) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem countAndSay_one : countAndSay 1 = "1" :=
   sorry
 
@@ -48,6 +56,7 @@ info: '111221'
 -/
 -- #guard_msgs in
 -- #eval count_and_say 5
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

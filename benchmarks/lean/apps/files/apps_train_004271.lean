@@ -1,13 +1,21 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_matrix (n : Nat) : List (List Nat) := sorry
 
 theorem matrix_size_matches_input (n : Nat) (h : n ≤ 100) :
   let matrix := get_matrix n
   (matrix.length = n) ∧ 
   (n > 0 → ∀ row ∈ matrix, row.length = n) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem matrix_has_ones_on_diagonal (n : Nat) (h : n ≤ 100) :
   let matrix := get_matrix n
   n > 0 → ∀ i < n, (matrix.get! i).get! i = 1 := sorry
@@ -43,6 +51,7 @@ info: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 -/
 -- #guard_msgs in
 -- #eval get_matrix 3
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

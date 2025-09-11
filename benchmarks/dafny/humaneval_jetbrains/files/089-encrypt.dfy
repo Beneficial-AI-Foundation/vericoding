@@ -1,3 +1,4 @@
+// <vc-preamble>
 function rot_sym(c: char): char
 
   requires 'a' <= c <= 'z'
@@ -10,6 +11,7 @@ function rot_sym(c: char): char
   ((alph + 2 * 2) % 26 + 'a' as int) as char
 
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

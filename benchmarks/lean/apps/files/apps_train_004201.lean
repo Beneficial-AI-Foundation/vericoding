@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def can_jump (arr : List Nat) : Bool := sorry
 
 theorem single_element_array_no_jump {arr : List Nat} (h : arr.length = 1) : 
   ¬(can_jump arr) := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem zero_first_element_no_jump {arr : List Nat} (h : arr.length ≥ 2) (h2 : arr.get? 0 = some 0) :
   ¬(can_jump arr) := sorry
 
@@ -30,6 +38,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval can_jump [3, 0, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,13 +1,20 @@
+-- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
 open Std.Do
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def arctan {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem arctan_spec {n : Nat} (x : Vector Float n) :
     ⦃⌜True⌝⦄
     arctan x
@@ -33,3 +40,4 @@ theorem arctan_spec {n : Nat} (x : Vector Float n) :
                   (Float.abs (x.get i - (-1.0)) < 1e-10 → Float.abs (result.get i - (-0.7854)) < 1e-6)
                   ⌝⦄ := by
   sorry
+-- </vc-theorems>

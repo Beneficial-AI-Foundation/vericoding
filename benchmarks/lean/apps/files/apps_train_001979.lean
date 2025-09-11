@@ -1,3 +1,4 @@
+-- <vc-preamble>
 def make_tree_edges (n : Nat) (edge_weights : List Nat) : List (Nat × Nat × Nat) :=
 sorry
 
@@ -9,15 +10,21 @@ match xs with
 | (x::xs) => List.foldl Nat.max x xs
 
 /- Main solve function signature -/
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def solve (n : Nat) (weights : List Nat) (roads : List (Nat × Nat × Nat)) : Nat :=
 sorry
 
 /- Result of solve is always a natural number -/
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_produces_nat (n : Nat) (weights : List Nat) (roads : List (Nat × Nat × Nat)) :
   solve n weights roads ≥ 0 := sorry
 
@@ -56,6 +63,7 @@ info: 42
 -/
 -- #guard_msgs in
 -- #eval solve 1 [42] []
+-- </vc-theorems>
 
 -- Apps difficulty: competition
 -- Assurance level: unguarded

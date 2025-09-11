@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def max_money_stolen (n : Nat) (money : List Int) (k : Nat) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem max_money_stolen_nonnegative 
   {n : Nat} {money : List Int} {k : Nat}
   (h1 : k > 0)
@@ -53,6 +61,7 @@ info: 6
 -/
 -- #guard_msgs in
 -- #eval max_money_stolen 3 [1, 2, 3] 3
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

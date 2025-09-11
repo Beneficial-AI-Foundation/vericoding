@@ -1,11 +1,19 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def containsNearbyDuplicate (nums : List Int) (k : Nat) : Bool := sorry
 
 theorem single_element_list_no_duplicates {nums : List Int} {k : Nat} (h : nums.length = 1) :
   containsNearbyDuplicate nums k = false := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem adjacent_identical_elements {nums : List Int} {k : Nat} 
   (h1 : nums.length ≥ 2)
   (h2 : nums[1]! = nums[0]!)
@@ -41,6 +49,7 @@ info: False
 -/
 -- #guard_msgs in
 -- #eval contains_nearby_duplicate [1, 2, 3, 1, 2, 3] 2
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def mygcd (x y : Int) : Int :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def abs (x : Int) : Int :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem gcd_positive_integers {x y : Int} (hx : x > 0) (hy : y > 0) :
   let g := mygcd x y
   g > 0 ∧ x % g = 0 ∧ y % g = 0 :=
@@ -37,6 +44,7 @@ info: 334
 -/
 -- #guard_msgs in
 -- #eval mygcd 2672 5678
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible

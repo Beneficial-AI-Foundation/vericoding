@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def get_middle : String → String 
 | s => sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem middle_length_property (s : String) (h : s.length > 0) : 
   let result := get_middle s
   result.length = if s.length % 2 = 0 then 2 else 1 := 
@@ -36,6 +44,7 @@ info: 'A'
 -/
 -- #guard_msgs in
 -- #eval get_middle "A"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

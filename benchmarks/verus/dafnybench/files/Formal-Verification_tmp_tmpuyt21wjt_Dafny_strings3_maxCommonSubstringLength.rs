@@ -1,3 +1,4 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
@@ -47,6 +48,7 @@ fn have_common_k_substring(k: usize, str1: Seq<char>, str2: Seq<char>) -> (found
     assume(false);
     false
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

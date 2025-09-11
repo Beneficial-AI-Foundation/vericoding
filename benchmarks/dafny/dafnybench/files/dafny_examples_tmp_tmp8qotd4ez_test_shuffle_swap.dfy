@@ -1,7 +1,9 @@
+// <vc-preamble>
 function set_of_seq<T>(s: seq<T>): set<T>
 {
   set x: T | x in s :: x
 }
+// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>

@@ -1,12 +1,20 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def caeser (message : String) (key : Int) : String := sorry
 
 theorem caeser_preserves_length 
   (message : String) (key : Int) :
   (caeser message key).length = message.length := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem caeser_preserves_non_alpha
   (message : String) (key : Int)
   (c1 c2 : Char)
@@ -45,6 +53,7 @@ info: 'ORWJU XWN'
 -/
 -- #guard_msgs in
 -- #eval caeser "final one" 9
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

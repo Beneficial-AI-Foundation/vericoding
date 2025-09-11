@@ -1,9 +1,17 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def count_char (s : String) (c : Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem count_char_case_insensitive_char (s : String) (c : Char) :
   count_char s c = count_char s c.toUpper ∧ 
   count_char s c = count_char s c.toLower :=
@@ -35,6 +43,7 @@ info: 3
 -/
 -- #guard_msgs in
 -- #eval count_char "Hello World" "l"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: guarded

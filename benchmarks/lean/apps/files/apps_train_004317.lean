@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def play_if_enough (hand play : String) : Bool × String :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def String.count (s : String) (c : Char) : Nat :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem play_if_enough_success_length {hand play : String} :
   let res := play_if_enough hand play
   res.1 → res.2.length = hand.length - play.length :=
@@ -54,6 +61,7 @@ info: (False, 'oogssbbb')
 -/
 -- #guard_msgs in
 -- #eval play_if_enough "oogssbbb" "bwsg"
+-- </vc-theorems>
 
 -- Apps difficulty: introductory
 -- Assurance level: unguarded

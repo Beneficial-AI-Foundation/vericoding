@@ -1,10 +1,18 @@
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- <vc-helpers>
 -- </vc-helpers>
+-- </vc-helpers>
 
+-- <vc-definitions>
 def xorGame (nums : List Nat) : Bool := sorry
 
 def xorSum (nums : List Nat) : Nat := sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem xorGame_even_length_true {nums : List Nat} (h : nums.length % 2 = 0) : 
   xorGame nums = true := sorry
 
@@ -35,6 +43,7 @@ info: True
 -/
 -- #guard_msgs in
 -- #eval xor_game [1, 2, 3]
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded

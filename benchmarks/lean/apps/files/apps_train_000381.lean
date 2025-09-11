@@ -1,12 +1,19 @@
+-- <vc-preamble>
 def getMaxRepetitions (s1: String) (n1: Nat) (s2: String) (n2: Nat) : Nat :=
   sorry
+-- </vc-preamble>
 
 -- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
 def is_subsequence (s1 s2: String) : Bool :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem result_non_negative (s1: String) (n1: Nat) (s2: String) (n2: Nat) :
   getMaxRepetitions s1 n1 s2 n2 ≥ 0 :=
   sorry
@@ -50,6 +57,7 @@ info: 4
 -/
 -- #guard_msgs in
 -- #eval getMaxRepetitions "baba" 2 "ba" 1
+-- </vc-theorems>
 
 -- Apps difficulty: interview
 -- Assurance level: unguarded
