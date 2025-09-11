@@ -5,8 +5,6 @@ def twoSum_precond (nums : List Int) (target : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -10,8 +10,6 @@ def contains_substring (s main : String) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

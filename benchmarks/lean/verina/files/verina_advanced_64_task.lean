@@ -5,8 +5,6 @@ def removeElement_precond (lst : List Nat) (target : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

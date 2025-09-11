@@ -7,8 +7,6 @@ def is_valid_permutation (perm : List Nat) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

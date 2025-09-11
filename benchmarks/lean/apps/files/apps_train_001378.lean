@@ -7,8 +7,6 @@ def maxList (l : List Nat) : Float :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

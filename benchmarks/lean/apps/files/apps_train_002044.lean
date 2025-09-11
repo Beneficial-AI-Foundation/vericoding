@@ -4,8 +4,6 @@ def solve_dominos (n : Nat) (arr : List Nat) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

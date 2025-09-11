@@ -4,8 +4,6 @@ def find_the_ball (start : Nat) (swaps : List (Nat × Nat)) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

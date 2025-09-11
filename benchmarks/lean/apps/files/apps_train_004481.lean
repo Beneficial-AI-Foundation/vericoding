@@ -12,8 +12,6 @@ def min_of_list (arr : List Int) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

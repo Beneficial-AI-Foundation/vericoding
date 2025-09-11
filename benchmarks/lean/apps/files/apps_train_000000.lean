@@ -4,8 +4,6 @@ def solve (n : Nat) (words : List String) : List Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

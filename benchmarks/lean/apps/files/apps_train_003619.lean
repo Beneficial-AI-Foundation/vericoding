@@ -6,8 +6,6 @@ def does_fred_need_houseboat (x y : Int) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

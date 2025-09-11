@@ -5,7 +5,6 @@ def BubbleSort_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def swap (a : Array Int) (i j : Nat) : Array Int :=
   let temp := a[i]!
   let a₁ := a.set! i (a[j]!)
@@ -24,7 +23,6 @@ def bubbleOuter (i : Nat) (a : Array Int) : Array Int :=
     bubbleOuter (i - 1) a'
   else
     a
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

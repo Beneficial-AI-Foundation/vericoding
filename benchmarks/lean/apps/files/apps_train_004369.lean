@@ -5,8 +5,6 @@ def binary_to_int (s : String) : Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

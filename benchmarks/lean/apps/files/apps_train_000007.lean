@@ -5,8 +5,6 @@ def ins (l : Heap) (x : Int) : Heap := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

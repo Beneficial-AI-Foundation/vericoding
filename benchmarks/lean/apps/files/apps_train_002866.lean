@@ -4,8 +4,6 @@ def reverse_transposition (s : String) : String := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

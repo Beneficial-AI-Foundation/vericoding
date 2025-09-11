@@ -7,8 +7,6 @@ def list_is_sorted {α: Type} (l: List α) (less_eq : α → α → Prop) : Prop
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

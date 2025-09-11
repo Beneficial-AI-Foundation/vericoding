@@ -4,8 +4,6 @@ def solve_biscuit_game (n : Nat) (biscuits : List Nat) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

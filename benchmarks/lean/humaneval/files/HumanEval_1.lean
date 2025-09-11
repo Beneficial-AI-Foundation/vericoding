@@ -97,8 +97,6 @@ count_paren_groups_helper paren_string 0 0
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

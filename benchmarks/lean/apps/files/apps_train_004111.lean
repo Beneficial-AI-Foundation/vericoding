@@ -6,8 +6,6 @@ theorem mem_alloc_positive (banks : List Nat) (h : banks.length = 16) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

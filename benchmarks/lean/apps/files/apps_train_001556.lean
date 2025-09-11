@@ -4,8 +4,6 @@ def who_is_winner (moves : List String) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

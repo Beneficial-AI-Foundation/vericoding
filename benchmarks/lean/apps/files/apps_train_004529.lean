@@ -7,8 +7,6 @@ def grade_val (v : GradeString) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

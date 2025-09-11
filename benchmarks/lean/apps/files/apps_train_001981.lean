@@ -4,8 +4,6 @@ def solve_alternative_math (nums : List Nat) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

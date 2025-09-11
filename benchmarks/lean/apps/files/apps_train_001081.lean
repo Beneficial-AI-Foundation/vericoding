@@ -10,8 +10,6 @@ def make_alternating_01 (n : Nat) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

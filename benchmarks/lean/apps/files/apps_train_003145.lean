@@ -4,8 +4,6 @@ def encode_resistor_colors (ohm_str : String) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

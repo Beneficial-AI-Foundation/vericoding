@@ -5,8 +5,6 @@ def beats (move1 move2 : Char) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

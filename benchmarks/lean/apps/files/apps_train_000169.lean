@@ -5,8 +5,6 @@ theorem maxDiff_single_digit (n : Nat) (h : n < 10) : maxDiff n = 8 := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

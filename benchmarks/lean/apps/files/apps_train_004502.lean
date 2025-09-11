@@ -6,8 +6,6 @@ def solveMatrix (m n a b : Nat) : Option Matrix :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

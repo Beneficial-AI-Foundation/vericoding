@@ -4,8 +4,6 @@ def uniq_c {α : Type u} (xs : List α) : List (α × Nat) :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

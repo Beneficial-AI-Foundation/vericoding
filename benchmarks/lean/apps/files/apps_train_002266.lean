@@ -4,8 +4,6 @@ def solve_leaf_removal (n k : Nat) (edges : List (Nat × Nat)) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

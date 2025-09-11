@@ -5,8 +5,6 @@ def Find_precond (a : Array Int) (key : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

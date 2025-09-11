@@ -5,8 +5,6 @@ def semiOrderedPermutation_precond (nums : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

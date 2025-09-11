@@ -21,8 +21,6 @@ def allImaginaryPartsCloseToZero {n : Nat} (arr : Vector Complex n) (tol : Float
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -4,8 +4,6 @@ def min_ops_to_sort {α : Type u} [Ord α] (arr : List α) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

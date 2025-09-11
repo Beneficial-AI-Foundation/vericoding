@@ -4,8 +4,6 @@ def Array.getSum (arr : Array Int) (n : Nat) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

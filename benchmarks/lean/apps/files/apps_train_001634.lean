@@ -10,8 +10,6 @@ def minimum (lst : List Int) : Option Int := lst.foldl (fun min x => match min w
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

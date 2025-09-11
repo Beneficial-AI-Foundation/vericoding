@@ -4,8 +4,6 @@ def Nat2Pos (n : Nat) : String.Pos := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

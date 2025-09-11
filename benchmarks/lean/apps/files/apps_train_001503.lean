@@ -5,8 +5,6 @@ def cell_advance_hero1 (row col n m k : Nat) : (Nat × Nat) := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

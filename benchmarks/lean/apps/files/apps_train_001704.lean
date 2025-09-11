@@ -6,8 +6,6 @@ theorem result_is_single_digit (n : Nat) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

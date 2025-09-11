@@ -5,8 +5,6 @@ def String.containsSubstr (s str : String) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

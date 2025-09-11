@@ -4,8 +4,6 @@ def profitable_schemes (G : Nat) (P : Nat) (group : List Nat) (profit : List Nat
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

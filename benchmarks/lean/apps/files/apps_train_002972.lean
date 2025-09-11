@@ -10,8 +10,6 @@ def String.repeating (c : Char) (n : Nat) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

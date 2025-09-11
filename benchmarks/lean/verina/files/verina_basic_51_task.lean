@@ -5,7 +5,6 @@ def BinarySearch_precond (a : Array Int) (key : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def binarySearchLoop (a : Array Int) (key : Int) (lo hi : Nat) : Nat :=
   if lo < hi then
     let mid := (lo + hi) / 2
@@ -13,7 +12,6 @@ def binarySearchLoop (a : Array Int) (key : Int) (lo hi : Nat) : Nat :=
     else binarySearchLoop a key lo mid
   else
     lo
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

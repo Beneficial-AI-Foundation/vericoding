@@ -7,8 +7,6 @@ theorem solve_helper_thanks_result_valid (n : Int) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

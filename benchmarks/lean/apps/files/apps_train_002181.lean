@@ -4,8 +4,6 @@ def count_rectangle_pairs (n : Nat) (rectangles : List (Nat × Nat × Nat)) : Na
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

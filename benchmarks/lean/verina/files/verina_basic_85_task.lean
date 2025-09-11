@@ -5,7 +5,6 @@ def reverse_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def reverse_core (arr : Array Int) (i : Nat) : Array Int :=
   if i < arr.size / 2 then
     let j := arr.size - 1 - i
@@ -15,7 +14,6 @@ def reverse_core (arr : Array Int) (i : Nat) : Array Int :=
     reverse_core arr'' (i + 1)
   else
     arr
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

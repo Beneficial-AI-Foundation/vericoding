@@ -6,8 +6,6 @@ def satisfies_triangle_inequality (n : Nat) (even_side : Nat) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

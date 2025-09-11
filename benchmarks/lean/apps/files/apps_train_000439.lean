@@ -7,8 +7,6 @@ def rotateList (xs : List Int) (n : Nat) : List Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

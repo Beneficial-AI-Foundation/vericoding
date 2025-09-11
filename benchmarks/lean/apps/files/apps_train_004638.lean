@@ -13,8 +13,6 @@ def is_valid_attr_name_char (c: Char) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

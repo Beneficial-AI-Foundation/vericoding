@@ -6,8 +6,6 @@ theorem prev_perm_length_preserved {arr : List Int} (h : arr ≠ []) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

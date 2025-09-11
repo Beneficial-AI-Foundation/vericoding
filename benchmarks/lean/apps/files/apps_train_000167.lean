@@ -7,8 +7,6 @@ def isNonDecreasing (l : List Int) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

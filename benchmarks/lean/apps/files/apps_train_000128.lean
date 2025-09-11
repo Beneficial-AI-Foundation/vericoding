@@ -4,8 +4,6 @@ def String.repeat (s : String) (n : Nat) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

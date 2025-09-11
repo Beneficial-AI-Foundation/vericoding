@@ -5,8 +5,6 @@ def searchInsert_precond (xs : List Int) (target : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

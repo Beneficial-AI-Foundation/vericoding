@@ -9,8 +9,6 @@ def isValidMatrix (m : Matrix) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

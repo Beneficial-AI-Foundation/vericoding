@@ -5,7 +5,6 @@ def letterCombinations_precond (digits : String) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def digitToLetters (c : Char) : List Char :=
   match c with
   | '2' => ['a', 'b', 'c']
@@ -17,7 +16,6 @@ def digitToLetters (c : Char) : List Char :=
   | '8' => ['t', 'u', 'v']
   | '9' => ['w', 'x', 'y', 'z']
   | _ => []
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

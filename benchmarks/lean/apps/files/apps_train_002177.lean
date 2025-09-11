@@ -4,8 +4,6 @@ def solve_cyclic_permutation (n m q : Nat) (p : List Nat) (a : List Nat) (querie
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

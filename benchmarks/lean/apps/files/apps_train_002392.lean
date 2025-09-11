@@ -5,8 +5,6 @@ def countMismatches (xs ys : List Nat) : Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -5,10 +5,8 @@ def has_close_elements_precond (numbers : List Float) (threshold : Float) : Prop
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def absDiff (a b : Float) : Float :=
   if a - b < 0.0 then b - a else a - b
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -5,10 +5,8 @@ def allDigits_precond (s : String) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def isDigit (c : Char) : Bool :=
   (c ≥ '0') && (c ≤ '9')
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -6,8 +6,6 @@ theorem string_color_short_strings {s : String} (h : s.length ≤ 1) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

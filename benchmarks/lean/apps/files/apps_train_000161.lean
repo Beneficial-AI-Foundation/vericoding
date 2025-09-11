@@ -16,8 +16,6 @@ def charListOrdered (l₁ l₂ : List Char) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

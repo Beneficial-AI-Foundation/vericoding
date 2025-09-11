@@ -4,8 +4,6 @@ def myPow (x : Float) (n : Int) : Float :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

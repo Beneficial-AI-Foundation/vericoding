@@ -5,8 +5,6 @@ def List.sort (l : List Float) (lt : Float → Float → Bool) : List Float := s
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

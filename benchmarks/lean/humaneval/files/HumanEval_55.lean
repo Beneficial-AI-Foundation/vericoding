@@ -21,8 +21,6 @@ fibonacci_non_computable (n + 2) (f₁ + f₂)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

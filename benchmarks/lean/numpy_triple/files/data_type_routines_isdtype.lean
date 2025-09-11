@@ -74,8 +74,6 @@ def isOfKind (dtype : NumpyDType) (kind : DTypeKind) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

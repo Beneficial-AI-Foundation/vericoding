@@ -5,8 +5,6 @@ def is_valid_matrix {α : Type} [BEq α] (m : Matrix α) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

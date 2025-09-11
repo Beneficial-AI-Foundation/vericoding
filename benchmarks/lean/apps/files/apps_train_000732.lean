@@ -4,8 +4,6 @@ def solve_min_wire_length (n : Nat) (has_electricity : String) (coordinates : Li
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -5,7 +5,6 @@ def mergeSorted_precond (a : List Int) (b : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def mergeSortedAux : List Int → List Int → List Int
 | [], ys => ys
 | xs, [] => xs
@@ -16,7 +15,6 @@ def mergeSortedAux : List Int → List Int → List Int
   else
     let merged := mergeSortedAux (x :: xs') ys'
     y :: merged
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

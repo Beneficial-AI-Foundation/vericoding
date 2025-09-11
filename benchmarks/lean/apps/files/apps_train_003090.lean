@@ -5,8 +5,6 @@ def get_factors (n : Nat) : List Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

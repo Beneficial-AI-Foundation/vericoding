@@ -6,8 +6,6 @@ theorem hidden_length_matches_input {n : Nat} :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

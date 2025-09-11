@@ -9,8 +9,6 @@ theorem result_in_initial {graph : List (List Int)} {initial : List Int} :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

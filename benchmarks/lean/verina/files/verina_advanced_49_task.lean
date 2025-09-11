@@ -5,8 +5,6 @@ def mergeSortedLists_precond (arr1 : List Int) (arr2 : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -5,8 +5,6 @@ def max_nested_depth (s : String) : Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

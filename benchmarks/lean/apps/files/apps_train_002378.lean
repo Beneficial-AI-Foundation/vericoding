@@ -10,8 +10,6 @@ theorem defang_valid_ip_length {octets : List Nat}
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

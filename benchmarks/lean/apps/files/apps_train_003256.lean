@@ -4,8 +4,6 @@ def circle_area (radius : Float) : Option Float :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

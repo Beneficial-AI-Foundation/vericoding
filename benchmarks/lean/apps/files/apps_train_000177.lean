@@ -4,8 +4,6 @@ def min_refuel_stops (target : Nat) (start_fuel : Nat) (stations : List (Nat × 
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

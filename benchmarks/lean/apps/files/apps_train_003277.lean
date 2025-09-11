@@ -6,8 +6,6 @@ def snail (column : Int) (day : Int) (night : Int) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

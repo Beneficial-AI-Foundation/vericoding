@@ -5,7 +5,6 @@ def productExceptSelf_precond (nums : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 -- Helper: Compute prefix products.
 -- prefix[i] is the product of all elements in nums before index i.
 def computepref (nums : List Int) : List Int :=
@@ -17,7 +16,6 @@ def computepref (nums : List Int) : List Int :=
 def computeSuffix (nums : List Int) : List Int :=
   let revSuffix := nums.reverse.foldl (fun acc x => acc ++ [acc.getLast! * x]) [1]
   revSuffix.reverse
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

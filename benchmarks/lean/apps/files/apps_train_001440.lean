@@ -6,8 +6,6 @@ theorem find_min_bad_luck_non_negative (strings : List String) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

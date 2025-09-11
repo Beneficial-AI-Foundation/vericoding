@@ -5,8 +5,6 @@ def removeElement_precond (s : Array Int) (k : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

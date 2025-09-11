@@ -11,8 +11,6 @@ def IsSorted {α : Type} [LE α] : List α → Prop
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

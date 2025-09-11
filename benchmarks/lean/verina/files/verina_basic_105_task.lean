@@ -5,7 +5,6 @@ def arrayProduct_precond (a : Array Int) (b : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def loop (a b : Array Int) (len : Nat) : Nat → Array Int → Array Int
   | i, c =>
     if i < len then
@@ -14,7 +13,6 @@ def loop (a b : Array Int) (len : Nat) : Nat → Array Int → Array Int
       let new_c := Array.set! c i (a_val * b_val)
       loop a b len (i+1) new_c
     else c
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

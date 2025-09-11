@@ -9,8 +9,6 @@ def minimum (xs: List Int) : Int := match xs with
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -5,8 +5,6 @@ def to_adj_matrix (n : Nat) (edges : List (Nat × Nat)) : List (List Nat) := sor
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

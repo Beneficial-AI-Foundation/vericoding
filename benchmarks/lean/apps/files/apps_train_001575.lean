@@ -5,8 +5,6 @@ def DIGS : List String := ["零", "一", "二", "三", "四", "五", "六", "七
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

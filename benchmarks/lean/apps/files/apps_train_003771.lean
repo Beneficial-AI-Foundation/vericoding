@@ -6,8 +6,6 @@ theorem two_count_non_negative (n : Nat) (h : n > 0) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

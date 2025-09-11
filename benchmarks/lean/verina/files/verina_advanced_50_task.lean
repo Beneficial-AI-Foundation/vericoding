@@ -5,8 +5,6 @@ def mergeSorted_precond (a1 : Array Nat) (a2 : Array Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

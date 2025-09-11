@@ -6,8 +6,6 @@ theorem jumbledString_length_preserved (s : String) (n : Int) (h : s.length > 0)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

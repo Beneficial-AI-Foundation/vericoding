@@ -5,7 +5,6 @@ def CountLessThan_precond (numbers : Array Int) (threshold : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def countLessThan (numbers : Array Int) (threshold : Int) : Nat :=
   let rec count (i : Nat) (acc : Nat) : Nat :=
     if i < numbers.size then
@@ -14,7 +13,6 @@ def countLessThan (numbers : Array Int) (threshold : Int) : Nat :=
     else
       acc
   count 0 0
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

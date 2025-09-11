@@ -4,8 +4,6 @@ def solve_max_diagonal_moves (n m k : Int) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

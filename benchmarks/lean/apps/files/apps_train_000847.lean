@@ -10,8 +10,6 @@ def make_empty_string (n : Nat) (c : Char) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

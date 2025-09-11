@@ -5,8 +5,6 @@ theorem impossible_values_2 : number_increasing 2 = false := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

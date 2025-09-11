@@ -7,8 +7,6 @@ def amicable_numbers (n1 n2 : Nat) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

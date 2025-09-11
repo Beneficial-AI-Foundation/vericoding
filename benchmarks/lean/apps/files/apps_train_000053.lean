@@ -4,8 +4,6 @@ def solve_sequence (n : Nat) (comp_str : String) : (List Nat × List Nat) :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

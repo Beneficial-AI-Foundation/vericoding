@@ -4,8 +4,6 @@ def is_isomorphic (s1 s2 : List Char) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

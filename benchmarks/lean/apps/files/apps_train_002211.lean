@@ -4,8 +4,6 @@ def min_cost_to_cut_trees (n : Nat) (heights : List Nat) (costs : List Nat) : Na
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

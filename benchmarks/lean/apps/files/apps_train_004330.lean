@@ -6,8 +6,6 @@ theorem clean_string_idempotent (s : String) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

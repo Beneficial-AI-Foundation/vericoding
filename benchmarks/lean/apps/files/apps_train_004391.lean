@@ -4,8 +4,6 @@ def fizz_buzz_cuckoo_clock (time : String) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

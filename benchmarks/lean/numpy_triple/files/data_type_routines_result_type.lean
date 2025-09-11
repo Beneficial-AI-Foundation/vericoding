@@ -53,8 +53,6 @@ def promoteTypes (t1 t2 : NumpyDType) : NumpyDType :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

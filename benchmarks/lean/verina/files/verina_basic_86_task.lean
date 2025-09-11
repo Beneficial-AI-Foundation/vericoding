@@ -5,7 +5,6 @@ def rotate_precond (a : Array Int) (offset : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def rotateAux (a : Array Int) (offset : Int) (i : Nat) (len : Nat) (b : Array Int) : Array Int :=
   if i < len then
     let idx_int : Int := (Int.ofNat i + offset) % (Int.ofNat len)
@@ -14,7 +13,6 @@ def rotateAux (a : Array Int) (offset : Int) (i : Nat) (len : Nat) (b : Array In
     let new_b := b.set! i (a[idx_nat]!)
     rotateAux a offset (i + 1) len new_b
   else b
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

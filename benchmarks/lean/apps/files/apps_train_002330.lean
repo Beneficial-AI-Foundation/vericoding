@@ -4,8 +4,6 @@ def isUppercase (c : Char) : Bool := 'A' ≤ c ∧ c ≤ 'Z'
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

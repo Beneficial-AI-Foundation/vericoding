@@ -5,7 +5,6 @@ def shortestBeautifulSubstring_precond (s : String) (k : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def countOnes (lst : List Char) : Nat :=
   lst.foldl (fun acc c => if c = '1' then acc + 1 else acc) 0
 
@@ -18,7 +17,6 @@ def allSubstrings (s : List Char) : List (List Char) :=
   (List.range n).flatMap (fun i =>
     (List.range (n - i)).map (fun j =>
       s.drop i |>.take (j + 1)))
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

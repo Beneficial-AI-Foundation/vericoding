@@ -4,8 +4,6 @@ def shuffleIt {α : Type} : List α → List (Nat × Nat) → List α
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

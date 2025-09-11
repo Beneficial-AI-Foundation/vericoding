@@ -7,8 +7,6 @@ def hasDPCProperties (n : Nat) (s : String) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

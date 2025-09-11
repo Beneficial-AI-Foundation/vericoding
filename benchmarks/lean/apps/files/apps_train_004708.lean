@@ -7,8 +7,6 @@ def bingo (card : Card) (numbers : List CalledNumber) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -5,13 +5,11 @@ def toUppercase_precond (s : String) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def isLowerCase (c : Char) : Bool :=
   'a' ≤ c ∧ c ≤ 'z'
 
 def shiftMinus32 (c : Char) : Char :=
   Char.ofNat ((c.toNat - 32) % 128)
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

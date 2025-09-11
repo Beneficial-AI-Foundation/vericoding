@@ -5,8 +5,6 @@ def shortestCompletingWord (licensePlate : String) (words : List String) : Optio
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

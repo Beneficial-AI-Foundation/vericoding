@@ -5,8 +5,6 @@ def sumOfFourthPowerOfOddNumbers_precond (n : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

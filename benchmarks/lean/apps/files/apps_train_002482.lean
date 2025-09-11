@@ -4,8 +4,6 @@ def evaluatePolynomial (coeffs : List Float) (x : Float) : Float :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

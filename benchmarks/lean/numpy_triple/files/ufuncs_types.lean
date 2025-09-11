@@ -58,8 +58,6 @@ def formatTypeSignature (sig : TypeSignature) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -7,8 +7,6 @@ def hasOppositeSign_precond (a : Int) (b : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

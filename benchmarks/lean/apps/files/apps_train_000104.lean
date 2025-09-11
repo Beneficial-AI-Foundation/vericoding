@@ -4,8 +4,6 @@ def solve_magic_candies (n : Nat) (k : Nat) (candies : List Nat) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

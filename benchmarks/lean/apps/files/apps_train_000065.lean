@@ -7,8 +7,6 @@ def solve_gift_distribution (n : Nat) (a b : List Int) : List Int × List Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

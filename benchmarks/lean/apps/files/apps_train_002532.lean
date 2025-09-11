@@ -4,8 +4,6 @@ def addsup (a1 a2 a3 : List Int) : List (Int × Int × Int) :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

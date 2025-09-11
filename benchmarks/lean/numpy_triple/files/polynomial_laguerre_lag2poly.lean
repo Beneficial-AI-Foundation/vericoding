@@ -11,8 +11,6 @@ axiom evaluatePolynomial {k : Nat} : Vector Float k → Float → Float
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

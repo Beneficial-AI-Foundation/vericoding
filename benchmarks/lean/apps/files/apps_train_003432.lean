@@ -5,8 +5,6 @@ def countDigit (n : Nat) (d : Nat) : Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -5,14 +5,12 @@ def double_array_elements_precond (s : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def double_array_elements_aux (s_old s : Array Int) (i : Nat) : Array Int :=
   if i < s.size then
     let new_s := s.set! i (2 * (s_old[i]!))
     double_array_elements_aux s_old new_s (i + 1)
   else
     s
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

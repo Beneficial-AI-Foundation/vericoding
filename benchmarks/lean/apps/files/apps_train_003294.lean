@@ -4,8 +4,6 @@ def from_twos_complement (n : Int) (bits : Nat) : String := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

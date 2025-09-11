@@ -10,8 +10,6 @@ theorem not_self_friends (a : Nat) : a > 0 →
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

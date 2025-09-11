@@ -5,8 +5,6 @@ def transform_list (numbers : List Float) : Array Float × Array Float × Array 
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

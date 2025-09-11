@@ -7,8 +7,6 @@ theorem threeAmigos_valid_size {nums : List Int} :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

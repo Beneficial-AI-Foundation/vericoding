@@ -8,8 +8,6 @@ def zeroMatrix (n : Nat) : Matrix Int n := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

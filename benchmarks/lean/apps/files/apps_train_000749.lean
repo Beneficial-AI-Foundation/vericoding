@@ -4,8 +4,6 @@ def solve_tree_mex (n : Nat) (parents : List Nat) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

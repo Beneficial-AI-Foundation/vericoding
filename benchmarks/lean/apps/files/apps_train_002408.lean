@@ -13,8 +13,6 @@ def is_strictly_increasing (nums : List Int) (i : Nat) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -4,8 +4,6 @@ def List.index {α} [BEq α] (xs : List α) (x : α) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

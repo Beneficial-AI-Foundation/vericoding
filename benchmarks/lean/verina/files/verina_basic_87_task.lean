@@ -5,7 +5,6 @@ def SelectionSort_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def findMinIndexInRange (arr : Array Int) (start finish : Nat) : Nat :=
   let indices := List.range (finish - start)
   indices.foldl (fun minIdx i =>
@@ -19,7 +18,6 @@ def swap (a : Array Int) (i j : Nat) : Array Int :=
     let a' := a.set! i a[j]!
     a'.set! j temp
   else a
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

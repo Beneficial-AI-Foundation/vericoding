@@ -7,8 +7,6 @@ def apply_swaps (s t: String) (swaps: List (Nat × Nat)) : String × String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -4,8 +4,6 @@ def sha256_cracker (h: String) (chars: String) : Option String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

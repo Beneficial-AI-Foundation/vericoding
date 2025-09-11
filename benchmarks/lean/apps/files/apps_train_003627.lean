@@ -5,8 +5,6 @@ def Elements := ["Wood", "Fire", "Earth", "Metal", "Water"]
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -4,8 +4,6 @@ def solve_virus_spread (N : Nat) (init_pop : String) (D : Nat) (isolations : Lis
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

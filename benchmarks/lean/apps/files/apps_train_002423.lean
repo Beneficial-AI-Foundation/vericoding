@@ -6,8 +6,6 @@ theorem empty_or_single_element_lists_monotonic (nums: List Int) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

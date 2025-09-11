@@ -4,8 +4,6 @@ def solve_min_pairs (n : Nat) (k : Int) (arr : List Int) : Int × Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

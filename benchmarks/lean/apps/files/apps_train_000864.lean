@@ -4,8 +4,6 @@ def solve_proxy_attendance (D : Nat) (S : String) : Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

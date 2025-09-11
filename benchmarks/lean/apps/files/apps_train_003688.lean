@@ -4,8 +4,6 @@ def String.findSubstr? (pattern : String) (s : String) : Option String.Pos :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

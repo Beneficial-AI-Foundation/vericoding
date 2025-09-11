@@ -4,8 +4,6 @@ def solve_xor_parity (n m : Nat) (arr queries : List Nat) : List String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

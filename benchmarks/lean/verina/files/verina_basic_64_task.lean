@@ -7,8 +7,6 @@ def insert_precond (oline : Array Char) (l : Nat) (nl : Array Char) (p : Nat) (a
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

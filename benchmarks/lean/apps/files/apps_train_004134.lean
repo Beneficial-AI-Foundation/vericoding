@@ -17,8 +17,6 @@ theorem cubeTimes_avg_is_middle_three (times : List Float)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

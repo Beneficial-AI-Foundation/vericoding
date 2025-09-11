@@ -4,8 +4,6 @@ def encrypt (text : Option String) (n : Int) : Option String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -10,8 +10,6 @@ def rand_range : Nat → Int → Int → List Int
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

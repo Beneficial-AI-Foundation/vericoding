@@ -5,8 +5,6 @@ def cog_RPM (cogs: List Nat) (n: Nat) : List Int := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

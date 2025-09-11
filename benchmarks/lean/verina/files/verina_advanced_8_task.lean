@@ -5,8 +5,6 @@ def canCompleteCircuit_precond (gas : List Int) (cost : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

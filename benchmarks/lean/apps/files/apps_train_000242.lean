@@ -5,8 +5,6 @@ def splitIntoWords (s : String) : List String := s.split (· == ' ')
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

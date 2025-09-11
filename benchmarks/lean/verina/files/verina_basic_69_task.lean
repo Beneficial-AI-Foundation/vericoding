@@ -5,13 +5,11 @@ def LinearSearch_precond (a : Array Int) (e : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def linearSearchAux (a : Array Int) (e : Int) (n : Nat) : Nat :=
   if n < a.size then
     if a[n]! = e then n else linearSearchAux a e (n + 1)
   else
     0
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -10,8 +10,6 @@ theorem countPalindromeCompletions_nonnegative (s : String) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -4,8 +4,6 @@ def multiple_split (s : String) (delims : List String) : List String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

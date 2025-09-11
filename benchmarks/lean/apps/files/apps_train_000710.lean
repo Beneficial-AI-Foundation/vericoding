@@ -10,8 +10,6 @@ def replicate_zeros (n : Nat) (m : Nat) : List String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

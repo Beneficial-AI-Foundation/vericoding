@@ -7,8 +7,6 @@ def BIT.mk (n : Nat) : BIT n := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

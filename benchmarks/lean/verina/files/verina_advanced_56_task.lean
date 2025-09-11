@@ -5,9 +5,7 @@ def moveZeroes_precond (xs : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 -- Count how many times a specific value appears in the list
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

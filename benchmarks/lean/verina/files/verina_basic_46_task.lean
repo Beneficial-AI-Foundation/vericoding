@@ -5,8 +5,6 @@ def lastPosition_precond (arr : Array Int) (elem : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -5,8 +5,6 @@ def getPrefixSums (arr : List Nat) (sizes : List Nat) : List Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

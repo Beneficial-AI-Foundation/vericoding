@@ -12,8 +12,6 @@ def pen (n : Int) : Int := (3*n*n - n) / 2
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

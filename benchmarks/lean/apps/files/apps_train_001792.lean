@@ -7,8 +7,6 @@ def is_permutation (arr : List Nat) (n : Nat) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

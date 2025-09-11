@@ -7,8 +7,6 @@ def partialSums (nums : List Nat) (n : Nat) : List Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

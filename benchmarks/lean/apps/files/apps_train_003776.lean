@@ -9,8 +9,6 @@ def IsRepeatStart (s : String) (i : String.Pos) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -7,8 +7,6 @@ theorem default_residues_in_bounds (seq : String)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

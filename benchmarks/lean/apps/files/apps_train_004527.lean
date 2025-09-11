@@ -7,8 +7,6 @@ def scaleList (k : Int) (xs : List Int) : List Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

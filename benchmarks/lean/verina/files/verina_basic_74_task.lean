@@ -5,14 +5,12 @@ def maxArray_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def maxArray_aux (a : Array Int) (index : Nat) (current : Int) : Int :=
   if index < a.size then
     let new_current := if current > a[index]! then current else a[index]!
     maxArray_aux a (index + 1) new_current
   else
     current
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

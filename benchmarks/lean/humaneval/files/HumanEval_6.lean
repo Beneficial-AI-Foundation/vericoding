@@ -98,8 +98,6 @@ count_max_paren_depth_helper paren_string 0 0
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

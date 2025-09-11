@@ -5,8 +5,6 @@ def valid_letters := ['w', 'p', 'b', 's', 'm', 'q', 'd', 'z']
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

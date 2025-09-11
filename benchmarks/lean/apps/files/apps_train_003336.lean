@@ -6,8 +6,6 @@ theorem present_goodpresent_length (y : Int) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

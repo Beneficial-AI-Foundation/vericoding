@@ -6,8 +6,6 @@ theorem total_fruit_bounds {tree : List Nat} (h : tree ≠ []) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

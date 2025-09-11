@@ -5,8 +5,6 @@ def hasCommonElement_precond (a : Array Int) (b : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

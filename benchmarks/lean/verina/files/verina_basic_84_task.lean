@@ -5,7 +5,6 @@ def replace_precond (arr : Array Int) (k : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def replace_loop (oldArr : Array Int) (k : Int) : Nat → Array Int → Array Int
 | i, acc =>
   if i < oldArr.size then
@@ -15,7 +14,6 @@ def replace_loop (oldArr : Array Int) (k : Int) : Nat → Array Int → Array In
       replace_loop oldArr k (i+1) acc
   else
     acc
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

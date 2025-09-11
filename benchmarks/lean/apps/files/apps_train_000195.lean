@@ -11,8 +11,6 @@ theorem same_as_deduplicated (nums : List Int) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

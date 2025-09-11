@@ -15,8 +15,6 @@ def list_all (l : List Nat) (p : Nat → Bool) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

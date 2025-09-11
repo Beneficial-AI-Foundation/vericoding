@@ -5,8 +5,6 @@ def sum (xs : List Int) : Int := xs.foldl (· + ·) 0
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

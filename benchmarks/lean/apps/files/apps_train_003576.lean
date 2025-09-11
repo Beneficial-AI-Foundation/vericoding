@@ -4,8 +4,6 @@ def getUniquePrimeFactorsWithCount (n : Int) : List (List Int) := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

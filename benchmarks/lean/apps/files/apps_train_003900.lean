@@ -5,8 +5,6 @@ def isMultipleOf3 (x : Nat) : Bool := x % 3 == 0
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

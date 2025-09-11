@@ -9,8 +9,6 @@ def check_matrix_exists (L R : Nat) (matrix : Matrix) (queries : List Query) : L
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

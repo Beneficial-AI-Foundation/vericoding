@@ -4,8 +4,6 @@ def solve_xor_tree (n : Nat) (edges : List (Nat × Nat)) (init : List Nat) (goal
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

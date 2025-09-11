@@ -7,7 +7,6 @@ def longestIncreasingSubseqLength_precond (xs : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 -- Generate all subsequences
 def subsequences {α : Type} : List α → List (List α)
   | [] => [[]]
@@ -20,7 +19,6 @@ def isStrictlyIncreasing : List Int → Bool
   | [] => true
   | [_] => true
   | x :: y :: rest => if x < y then isStrictlyIncreasing (y :: rest) else false
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

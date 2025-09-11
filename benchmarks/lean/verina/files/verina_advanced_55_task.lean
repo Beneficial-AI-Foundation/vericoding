@@ -8,7 +8,6 @@ def mostFrequent_precond (xs : List Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 -- Build a frequency map from the list
 def countMap (xs : List Int) : HashMap Int Nat :=
   let step := fun m x =>
@@ -35,7 +34,6 @@ def getFirstWithFreq (xs : List Int) (candidates : List Int) : Int :=
   match xs.find? (fun x => candidates.contains x) with
   | some x => x
   | none => 0
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

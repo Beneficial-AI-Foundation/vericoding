@@ -6,8 +6,6 @@ theorem result_is_nonnegative {nums: List Nat} (h: nums ≠ []) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

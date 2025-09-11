@@ -6,8 +6,6 @@ theorem minOperations_nonnegative (nums : List Nat) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -7,12 +7,10 @@ def DivisionFunction_precond (x : Nat) (y : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def divMod (x y : Nat) : Int × Int :=
   let q : Int := Int.ofNat (x / y)
   let r : Int := Int.ofNat (x % y)
   (r, q)
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

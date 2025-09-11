@@ -7,8 +7,6 @@ theorem find_smallest_palindrome_result_length
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

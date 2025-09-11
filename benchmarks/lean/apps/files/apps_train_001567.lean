@@ -11,8 +11,6 @@ theorem empty_moves_initial_position (moves : List String) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

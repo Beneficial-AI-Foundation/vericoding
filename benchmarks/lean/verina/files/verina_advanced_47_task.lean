@@ -5,8 +5,6 @@ def mergeIntervals_precond (intervals : List (Prod Int Int)) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

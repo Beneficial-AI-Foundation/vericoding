@@ -7,7 +7,6 @@ def twoSum_precond (nums : List Int) (target : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def findComplement (nums : List Int) (target : Int) (i : Nat) (x : Int) : Option Nat :=
   let rec aux (nums : List Int) (j : Nat) : Option Nat :=
     match nums with
@@ -22,7 +21,6 @@ def twoSumAux (nums : List Int) (target : Int) (i : Nat) : Prod Nat Nat :=
     match findComplement xs target i x with
     | some j => (i, j)
     | none   => twoSumAux xs target (i + 1)
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

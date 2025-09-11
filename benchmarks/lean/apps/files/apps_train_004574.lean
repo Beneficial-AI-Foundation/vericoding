@@ -10,8 +10,6 @@ instance : HAdd DateTime TimeDelta DateTime where
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -7,8 +7,6 @@ def alertNames (names : List String) (times : List Time) : List String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

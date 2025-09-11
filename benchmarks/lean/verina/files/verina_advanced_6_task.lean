@@ -5,7 +5,6 @@ def allVowels_precond (s : String) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def toLower (c : Char) : Char :=
   if 'A' ≤ c && c ≤ 'Z' then
     Char.ofNat (Char.toNat c + 32)
@@ -14,7 +13,6 @@ def toLower (c : Char) : Char :=
 
 def normalize_str (s : String) : List Char :=
   s.data.map toLower
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

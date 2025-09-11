@@ -5,8 +5,6 @@ def get_char_indices (s : String) (c : Char) : List Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

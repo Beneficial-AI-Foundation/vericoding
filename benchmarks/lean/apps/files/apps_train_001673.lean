@@ -5,8 +5,6 @@ def sumList (l : List Int) : Int := match l with
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

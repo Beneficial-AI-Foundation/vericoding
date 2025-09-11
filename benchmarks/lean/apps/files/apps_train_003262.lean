@@ -30,8 +30,6 @@ def adjacent_bomb_nullifies (c : Char) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

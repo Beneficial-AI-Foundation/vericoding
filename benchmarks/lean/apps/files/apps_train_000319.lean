@@ -7,8 +7,6 @@ def has_132_pattern_brute_force (nums : List Int) : Bool :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

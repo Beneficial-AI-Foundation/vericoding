@@ -4,8 +4,6 @@ def select_subarray (arr : List Int) : Nat × Int :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

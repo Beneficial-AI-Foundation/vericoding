@@ -4,8 +4,6 @@ def getMaxRepetitions (s1: String) (n1: Nat) (s2: String) (n2: Nat) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

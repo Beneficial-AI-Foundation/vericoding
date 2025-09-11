@@ -6,8 +6,6 @@ theorem solution_nonnegative (n : Int) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -4,8 +4,6 @@ def Triangle := (Point × Point × Point)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

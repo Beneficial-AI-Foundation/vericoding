@@ -5,8 +5,6 @@ def find_all_paths (g: Graph) : List (List Nat) := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

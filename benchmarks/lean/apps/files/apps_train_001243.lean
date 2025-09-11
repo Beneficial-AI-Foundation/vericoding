@@ -6,8 +6,6 @@ theorem result_in_valid_range (s : String) (h : s.length > 0) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

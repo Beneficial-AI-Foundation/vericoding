@@ -4,8 +4,6 @@ def watch_pyramid_from_above (chars : Option String) : Option String := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

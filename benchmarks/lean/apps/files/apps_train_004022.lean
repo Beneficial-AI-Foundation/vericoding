@@ -5,8 +5,6 @@ theorem negative_numbers {n : Int} (h : n < 0) : palindrome n = Sum.inl "Not val
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

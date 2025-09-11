@@ -5,8 +5,6 @@ def sumOfDistancesInTree (n : Nat) (edges : List (Nat × Nat)) : List Nat := sor
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

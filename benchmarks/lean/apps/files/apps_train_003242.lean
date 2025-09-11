@@ -16,8 +16,6 @@ def extractValuesFromString (s : String) : AmortValues := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -6,8 +6,6 @@ theorem reverseInvert_returns_list_of_ints {lst : List Int} :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

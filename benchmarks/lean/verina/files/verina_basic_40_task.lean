@@ -5,7 +5,6 @@ def secondSmallest_precond (s : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def minListHelper : List Int → Int
 | [] => panic! "minListHelper: empty list"
 | [_] => panic! "minListHelper: singleton list"
@@ -31,7 +30,6 @@ def secondSmallestAux (s : Array Int) (i minIdx secondIdx : Nat) : Int :=
     else
       secondSmallestAux s (i + 1) minIdx secondIdx
 termination_by s.size - i
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

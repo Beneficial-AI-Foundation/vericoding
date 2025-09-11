@@ -5,7 +5,6 @@ def isArmstrong_precond (n : Nat) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def countDigits (n : Nat) : Nat :=
   let rec go (n acc : Nat) : Nat :=
     if n = 0 then acc
@@ -19,7 +18,6 @@ def sumPowers (n : Nat) (k : Nat) : Nat :=
       let digit := n % 10
       go (n / 10) (acc + digit ^ k)
   go n 0
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

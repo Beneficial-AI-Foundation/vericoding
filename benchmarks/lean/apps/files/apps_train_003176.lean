@@ -5,8 +5,6 @@ def binary_units := ["KiB", "MiB", "GiB", "TiB"]
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -8,8 +8,6 @@ def count_successful_sales (shoe_sizes : List Nat) (customer_requests : List (Na
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

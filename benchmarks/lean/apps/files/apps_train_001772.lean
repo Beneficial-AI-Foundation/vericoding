@@ -16,8 +16,6 @@ def find? (l : List (Int × List Nat)) (k : Int) : Option (List Nat) :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

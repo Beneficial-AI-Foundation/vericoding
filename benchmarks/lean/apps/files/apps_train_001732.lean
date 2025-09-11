@@ -5,8 +5,6 @@ def isConsistentWithTriplets (result : String) (triplets : List (List Char)) : B
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

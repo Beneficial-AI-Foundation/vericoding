@@ -4,8 +4,6 @@ def validate_emails (emails : List Email) : List Email := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -10,8 +10,6 @@ def stringSlice (s : String) (start : Int) (last : Int) : String :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

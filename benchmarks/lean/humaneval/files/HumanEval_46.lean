@@ -24,8 +24,6 @@ fibonacci_non_computable_4 (n + 4) (f₁ + f₂ + f₃ + f₄)
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -13,11 +13,9 @@ def SlopeSearch_precond (a : Array (Array Int)) (key : Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 @[reducible, simp]
 def get2d (a : Array (Array Int)) (i j : Int) : Int :=
   (a[Int.toNat i]!)[Int.toNat j]!
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

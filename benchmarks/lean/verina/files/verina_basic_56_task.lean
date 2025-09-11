@@ -6,13 +6,11 @@ def copy_precond (src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : N
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
 def updateSegment : Array Int → Array Int → Nat → Nat → Nat → Array Int
   | r, src, sStart, dStart, 0 => r
   | r, src, sStart, dStart, n+1 =>
       let rNew := r.set! (dStart + n) (src[sStart + n]!)
       updateSegment rNew src sStart dStart n
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

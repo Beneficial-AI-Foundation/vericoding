@@ -4,8 +4,6 @@ def process_test_cases (numCases : Nat) (cases : List (Nat × List Nat)) : List 
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -4,8 +4,6 @@ def Float.ofString! (s: String) : Float := (Float.ofString? s).get!
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

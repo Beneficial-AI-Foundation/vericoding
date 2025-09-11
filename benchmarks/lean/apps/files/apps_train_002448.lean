@@ -6,8 +6,6 @@ theorem count_distinct_stamps_bounded (stamps : List String) :
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>

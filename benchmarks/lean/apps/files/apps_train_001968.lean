@@ -6,8 +6,6 @@ def process_queries (s : String) (queries : List (Char × String)) : Nat :=
 -- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
