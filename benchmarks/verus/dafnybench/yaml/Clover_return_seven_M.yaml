@@ -8,7 +8,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  proof fn M(x: int) -> (seven: int)
+  fn M(x: int) -> (seven: int)
     ensures seven == 7
 
 vc-code: |-

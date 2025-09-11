@@ -34,7 +34,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  proof fn queryFast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
+  fn queryFast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
       requires 0 <= i <= j <= a.len(),
                is_prefix_sum_for(a, c)
       ensures r == sum(a, i, j)
