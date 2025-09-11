@@ -41,10 +41,8 @@ lean_lib Generated where
 lean_lib Benchmarks where
   globs := #[
     .submodules `apps.files,
-    .submodules `bignum_jk,
-    .submodules `bignum_ob,
+    .submodules `bignum,
     .submodules `dafnybench,
-    .submodules `dafnybench_ab,
     .submodules `humaneval.files,
     .submodules `verina.files,
     .submodules `numpy_simple,
