@@ -1,6 +1,8 @@
 generate_code: |
   The task is to generate implementations and proofs for "sorry" placeholders and `<vc-helpers>` sections in a Lean file.
   
+  TURN 1 of {max_iterations}: This is the initial code generation phase. You have {max_iterations} total turns to get this right, so you can be strategic about using "sorry" temporarily in early iterations.
+  
   INPUT: a Lean file containing {placeholder_count} placeholder sections ("sorry" keywords and/or `<vc-helpers>` tags) in place of desired implementations, proofs, and helper code.
   
   OUTPUT: Return a JSON array with EXACTLY {placeholder_count} replacements (one for each placeholder in the file), in order from top to bottom:
@@ -27,6 +29,8 @@ generate_code: |
 
 fix_verification: |
   The task is to fix implementations and proofs that failed verification by providing replacements for any remaining "sorry" placeholders and `<vc-helpers>` sections.
+  
+  TURN {iteration} of {max_iterations}: You are making progress - this gives you room to iterate and improve. Use "sorry" strategically if needed in intermediate turns.
   
   INPUT: The ORIGINAL file contains {placeholder_count} placeholder sections ("sorry" keywords and/or `<vc-helpers>` tags) that need to be replaced based on verification errors.
   

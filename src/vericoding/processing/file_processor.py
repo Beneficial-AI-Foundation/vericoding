@@ -138,7 +138,10 @@ def process_spec_file(
             placeholder_count = count_placeholders(original_code, config.language)
             
             generate_prompt = prompt_loader.format_prompt(
-                "generate_code", code=original_code, placeholder_count=placeholder_count
+                "generate_code", 
+                code=original_code, 
+                placeholder_count=placeholder_count,
+                max_iterations=config.max_iterations
             )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
@@ -365,6 +368,7 @@ def process_spec_file(
                     errorDetails=error_details,
                     iteration=iteration,
                     placeholder_count=placeholder_count,
+                    max_iterations=config.max_iterations
                 )
 
                 # Track fix prompt for W&B logging
