@@ -16,30 +16,35 @@ from code2verus.models import TranslationDebugContext
 
 
 def derive_output_path(
-    benchmark_path: str, benchmark_name: str, is_yaml: bool = False
+    benchmark_path: str,
+    benchmark_name: str,
+    is_yaml: bool = False,
+    target_language: str = "verus",
 ) -> Path:
     """Derive the output path based on the benchmark input path.
 
-    For benchmarks under 'benchmarks/lean/<name>/', output goes to 'benchmarks/verus/<name>/'
+    For benchmarks under 'benchmarks/<source_lang>/<name>/', output goes to 'benchmarks/<target_lang>/<name>/'
     For other paths, falls back to the current ARTIFACTS behavior.
     """
     benchmark_path_obj = Path(benchmark_path).resolve()
 
-    # Check if this is a path under benchmarks/lean/
-    if "benchmarks" in benchmark_path_obj.parts and "lean" in benchmark_path_obj.parts:
-        # Find the benchmarks and lean parts in the path
+    # Check if this is a path under benchmarks/<source_lang>/<name>/
+    if "benchmarks" in benchmark_path_obj.parts:
         parts = list(benchmark_path_obj.parts)
         try:
             benchmarks_idx = parts.index("benchmarks")
-            lean_idx = parts.index("lean", benchmarks_idx)
 
-            # The benchmark name should be the next part after 'lean'
-            if lean_idx + 1 < len(parts):
-                lean_benchmark_name = parts[lean_idx + 1]
+            # Look for a source language directory after benchmarks
+            if benchmarks_idx + 2 < len(parts):
+                benchmark_name_idx = benchmarks_idx + 2
 
-                # Build new path: benchmarks/verus/<lean_benchmark_name>
+                detected_benchmark_name = parts[benchmark_name_idx]
+
+                # Build new path: benchmarks/<target_language>/<benchmark_name>
                 base_path = (
-                    Path(*parts[: benchmarks_idx + 1]) / "verus" / lean_benchmark_name
+                    Path(*parts[: benchmarks_idx + 1])
+                    / target_language
+                    / detected_benchmark_name
                 )
 
                 # Add subfolder based on file type
@@ -50,7 +55,7 @@ def derive_output_path(
         except (ValueError, IndexError):
             pass
 
-    # Fallback to current behavior for non-lean benchmarks
+    # Fallback to current behavior for non-benchmarks paths
     return ARTIFACTS / benchmark_name
 
 
@@ -119,7 +124,9 @@ async def process_item(
         relative_path = source_filename.with_suffix(suffix)
 
     # Use the new path derivation logic
-    artifact_base_path = derive_output_path(benchmark_path, benchmark_name, is_yaml)
+    artifact_base_path = derive_output_path(
+        benchmark_path, benchmark_name, is_yaml, target_language
+    )
     artifact_path = artifact_base_path / relative_path.parent
     output_filename = relative_path.name
 
@@ -224,13 +231,16 @@ async def process_item(
             if is_yaml:
                 # Create the files folder equivalent path with compilation status
                 files_path = derive_output_path(
-                    benchmark_path, benchmark_name, is_yaml=False
+                    benchmark_path,
+                    benchmark_name,
+                    is_yaml=False,
+                    target_language=target_language,
                 )
                 code_status_path = (
                     files_path / relative_path.parent / compilation_status
                 )
                 code_output_path = (
-                    code_status_path / Path(output_filename).with_suffix(".rs").name
+                    code_status_path / Path(output_filename).with_suffix(suffix).name
                 )
                 code_output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -383,8 +393,25 @@ async def main_async(
     # Extract benchmark name for artifact path
     # Handle both Hugging Face format (user/dataset) and local paths
     if Path(benchmark).exists() and Path(benchmark).is_dir():
-        # For local paths, use the folder name
-        benchmark_name = Path(benchmark).name.lower().replace("-", "_")
+        # For local paths, extract meaningful benchmark name
+        benchmark_path_obj = Path(benchmark).resolve()
+        parts = list(benchmark_path_obj.parts)
+
+        # If it's a benchmarks path like benchmarks/<source_lang>/<name>/..., extract <name>
+        if "benchmarks" in parts:
+            try:
+                benchmarks_idx = parts.index("benchmarks")
+                if benchmarks_idx + 2 < len(parts):
+                    # Use the benchmark name (third part after benchmarks)
+                    benchmark_name = parts[benchmarks_idx + 2].lower().replace("-", "_")
+                else:
+                    # Fallback to folder name
+                    benchmark_name = benchmark_path_obj.name.lower().replace("-", "_")
+            except (ValueError, IndexError):
+                benchmark_name = benchmark_path_obj.name.lower().replace("-", "_")
+        else:
+            # For non-benchmarks paths, use the folder name
+            benchmark_name = benchmark_path_obj.name.lower().replace("-", "_")
     else:
         # For Hugging Face datasets
         benchmark_name = benchmark.split("/")[-1].lower().replace("-", "")
@@ -436,7 +463,9 @@ async def main_async(
     results = await asyncio.gather(*item_processes)
 
     # Use the new path derivation for results file as well
-    results_base_path = derive_output_path(benchmark, benchmark_name, False)
+    results_base_path = derive_output_path(
+        benchmark, benchmark_name, False, target_language
+    )
     results_file_path = results_base_path / f"{benchmark_name}_results.yml"
     results_file_path.parent.mkdir(parents=True, exist_ok=True)
 
