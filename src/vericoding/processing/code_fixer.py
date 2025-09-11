@@ -159,7 +159,10 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
         modified_code = original_code
         
         if config.language == "lean":
-            # Replace placeholders in reverse order (last first) to preserve positions
+            # For Lean, we need to handle both sorry and vc-helpers in order
+            # Use a unified approach that treats all placeholders by their position order
+            
+            # Apply replacements in reverse order (last first) to preserve positions
             for i in range(len(replacements) - 1, -1, -1):
                 replacement = replacements[i]
                 if not isinstance(replacement, str):
@@ -167,16 +170,10 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                     logger.error(error)
                     return original_code, error
                 
-                placeholder_type, _ = placeholder_positions[i]
+                placeholder_type, original_pos = placeholder_positions[i]
                 
                 if placeholder_type == 'sorry':
-                    # Find the i-th sorry (0-indexed) among all sorries
-                    sorry_positions = [pos for ptype, pos in placeholder_positions if ptype == 'sorry']
-                    if i >= len(sorry_positions):
-                        # This is not a sorry replacement, skip
-                        continue
-                    
-                    # Find this specific sorry position in the current modified_code
+                    # Find all current sorry positions in modified_code
                     current_sorry_positions = []
                     pos = 0
                     while pos < len(modified_code):
@@ -186,20 +183,22 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                         current_sorry_positions.append(next_pos)
                         pos = next_pos + 1
                     
-                    sorry_index = sum(1 for ptype, _ in placeholder_positions[:i] if ptype == 'sorry')
-                    if sorry_index >= len(current_sorry_positions):
-                        error = f"JSON replacement failed: Could not find sorry #{sorry_index} for replacement"
+                    # Count how many sorries come before position i in the original placeholder order
+                    sorry_count_before_i = sum(1 for j in range(i) if placeholder_positions[j][0] == 'sorry')
+                    
+                    if sorry_count_before_i >= len(current_sorry_positions):
+                        error = f"JSON replacement failed: Could not find sorry at position {sorry_count_before_i} for replacement {i}"
                         logger.error(error)
                         return original_code, error
                     
-                    target_pos = current_sorry_positions[sorry_index]
+                    target_pos = current_sorry_positions[sorry_count_before_i]
                     modified_code = modified_code[:target_pos] + replacement + modified_code[target_pos + 5:]
                 
                 elif placeholder_type == 'vc-helpers':
-                    # Handle vc-helpers sections using line-based approach like Dafny/Verus
+                    # Handle vc-helpers sections using line-based approach
                     lines = modified_code.split('\n')
                     
-                    # Find vc-helpers sections 
+                    # Find all current vc-helpers sections 
                     vc_helpers_sections = []
                     for line_idx, line in enumerate(lines):
                         if '<vc-helpers>' in line:
@@ -209,14 +208,15 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                                     vc_helpers_sections.append((line_idx, j))
                                     break
                     
-                    # Count how many vc-helpers placeholders come before this one
-                    helpers_index = sum(1 for ptype, _ in placeholder_positions[:i] if ptype == 'vc-helpers')
-                    if helpers_index >= len(vc_helpers_sections):
-                        error = f"JSON replacement failed: Could not find vc-helpers section #{helpers_index} for replacement"
+                    # Count how many vc-helpers come before position i in the original placeholder order
+                    helpers_count_before_i = sum(1 for j in range(i) if placeholder_positions[j][0] == 'vc-helpers')
+                    
+                    if helpers_count_before_i >= len(vc_helpers_sections):
+                        error = f"JSON replacement failed: Could not find vc-helpers section at position {helpers_count_before_i} for replacement {i}"
                         logger.error(error)
                         return original_code, error
                     
-                    start_line, end_line = vc_helpers_sections[helpers_index]
+                    start_line, end_line = vc_helpers_sections[helpers_count_before_i]
                     replacement_lines = replacement.split('\n')
                     lines[start_line+1:end_line] = replacement_lines
                     modified_code = '\n'.join(lines)
