@@ -58,8 +58,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_latest_bus (n : Nat) (d : Nat) (buses : List Nat) : Nat :=

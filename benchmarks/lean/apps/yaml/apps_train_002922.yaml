@@ -26,8 +26,6 @@ vc-preamble: |-
     ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def swap (l : List Int) (i j : Nat) (h1 : i < l.length) (h2 : j < l.length) : List Int :=

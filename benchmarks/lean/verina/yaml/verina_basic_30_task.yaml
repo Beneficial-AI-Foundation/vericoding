@@ -30,8 +30,6 @@ vc-preamble: |-
     (∀ i, i < b.size → b[i]! ≠ 0)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def elementWiseModulo (a : Array Int) (b : Array Int) (h_precond : elementWiseModulo_precond (a) (b)) : Array Int :=

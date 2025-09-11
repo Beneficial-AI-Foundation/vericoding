@@ -49,8 +49,6 @@ vc-preamble: |-
   def isAllNegative (nums : List Int) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rotate (nums : List Int) (i : Nat) : List Int := sorry

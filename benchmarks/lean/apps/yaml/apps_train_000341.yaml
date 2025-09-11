@@ -27,8 +27,6 @@ vc-preamble: |-
     | h::t => if t.contains h then unique t else h :: unique t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def subarraysWithKDistinct (A : List Nat) (K : Nat) : Nat :=

@@ -43,8 +43,6 @@ vc-preamble: |-
   /- Helper function to check if expression uses given operators -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def expr_uses_ops : List String → String → Prop := sorry

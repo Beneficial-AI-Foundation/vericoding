@@ -38,8 +38,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def nanstd {n : Nat} (a : Vector Float n) (ddof : Nat := 0) : Id Float :=

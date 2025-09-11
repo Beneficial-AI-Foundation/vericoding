@@ -40,8 +40,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_alternate_odd_sum (d l r : Nat) : Nat :=

@@ -14,8 +14,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_positives_sum_negatives (arr : List Int) : List Int := sorry

@@ -49,8 +49,6 @@ vc-preamble: |-
     | x::xs => Nat.max x (maximum xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_max_railway_bids (n : Nat) (traffic : List Nat) (connections : List (Nat × Nat)) : Nat :=

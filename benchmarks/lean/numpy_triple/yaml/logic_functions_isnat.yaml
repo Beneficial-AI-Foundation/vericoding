@@ -33,8 +33,6 @@ vc-preamble: |-
     | nat : DateTime64
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isnat {n : Nat} (x : Vector DateTime64 n) : Id (Vector Bool n) :=

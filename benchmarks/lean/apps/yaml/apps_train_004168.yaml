@@ -26,8 +26,6 @@ vc-preamble: |-
     l.foldl (·+·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def elevator_distance (floors : List Int) : Nat := sorry

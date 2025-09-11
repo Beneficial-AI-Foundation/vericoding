@@ -47,8 +47,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.hasSubstring (s₁ s₂ : String) : Bool :=

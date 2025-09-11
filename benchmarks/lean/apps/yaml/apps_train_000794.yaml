@@ -57,8 +57,6 @@ vc-preamble: |-
     cells.all (fun x => x = 0 ∨ x = 1)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_max_consecutive_zeros (cells : List Nat) : Nat := sorry

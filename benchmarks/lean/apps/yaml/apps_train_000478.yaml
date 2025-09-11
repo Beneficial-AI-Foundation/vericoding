@@ -38,8 +38,6 @@ vc-preamble: |-
     | x::y::rest => x > y && isStrictlyDecreasing (y::rest)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hasNoDups (l : List Int) : Bool :=

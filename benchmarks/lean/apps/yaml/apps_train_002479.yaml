@@ -75,8 +75,6 @@ vc-preamble: |-
   def std (A : Matrix) : Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def compute_stats (A : Matrix) : Array Float × Array Float × Float := sorry

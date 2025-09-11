@@ -62,8 +62,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_magic_potions (R G B M : Nat) (r g b : List Nat) : Nat := sorry

@@ -34,8 +34,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_haiku_sequences (n k1 k2 k3 : Nat) : Nat :=

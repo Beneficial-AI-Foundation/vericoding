@@ -41,8 +41,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def createArrays (dimStr : String) : Array (Array Int) × Array (Array Int) :=

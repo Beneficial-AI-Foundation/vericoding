@@ -26,8 +26,6 @@ vc-preamble: |-
   def list_to_string (l : List Nat) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def nat_to_string (n : Nat) : String := sorry

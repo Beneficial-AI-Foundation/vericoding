@@ -67,8 +67,6 @@ vc-preamble: |-
     if typeRank t1 ≥ typeRank t2 then t1 else t2
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def result_type (operands : List NumpyOperand) : Id NumpyDType :=

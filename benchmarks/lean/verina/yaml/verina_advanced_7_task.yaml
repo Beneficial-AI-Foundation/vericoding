@@ -19,8 +19,6 @@ vc-preamble: |-
     digits.all (fun d => d = 0 ∨ d = 1)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def binaryToDecimal (digits : List Nat) (h_precond : binaryToDecimal_precond (digits)) : Nat :=

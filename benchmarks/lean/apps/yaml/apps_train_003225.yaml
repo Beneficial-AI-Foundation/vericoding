@@ -41,8 +41,6 @@ vc-preamble: |-
     ∀ pair ∈ result, pair.2 = sumOfSquaredDivisors pair.1 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isPerfectSquare (n : Nat) : Prop := 

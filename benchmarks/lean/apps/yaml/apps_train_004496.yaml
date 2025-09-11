@@ -39,8 +39,6 @@ vc-preamble: |-
   def kind (n : Nat) (sum : Nat) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def deficientlyAbundantAmicableNumbers (n1 n2 : Nat) : String := sorry

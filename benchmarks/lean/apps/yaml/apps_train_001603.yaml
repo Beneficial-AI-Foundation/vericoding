@@ -62,8 +62,6 @@ vc-preamble: |-
   def AmazonResult := List Int
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def amazon_check_mate (king : ChessPos) (amazon : ChessPos) : AmazonResult :=

@@ -30,8 +30,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_exp {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=

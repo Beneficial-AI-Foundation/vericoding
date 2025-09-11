@@ -53,8 +53,6 @@ vc-preamble: |-
     beq a b := a.zip b |>.all (fun (x, y) => x == y)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countEqualDistances (points : Points) : Nat :=

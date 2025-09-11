@@ -22,8 +22,6 @@ vc-preamble: |-
   def isMultipleOf3 (x : Nat) : Bool := x % 3 == 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isMultipleOf5 (x : Nat) : Bool := x % 5 == 0

@@ -38,8 +38,6 @@ vc-preamble: |-
   def isSubsequence (s1 s2 : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def minRemoveToMakeValid (s : String) : String := sorry

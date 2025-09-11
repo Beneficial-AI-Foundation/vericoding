@@ -17,8 +17,6 @@ vc-preamble: |-
     solution n ≥ 0 ∧ (n ≤ 0 → solution n = 0) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sumMultiples (n : Nat) : Int :=

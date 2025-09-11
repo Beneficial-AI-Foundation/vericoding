@@ -23,7 +23,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   partial def toCharList (s : String) : List Char :=
     s.data
   
@@ -41,7 +40,6 @@ vc-helpers: |-
         let left  := lcsAux xs' (y :: ys')
         let right := lcsAux (x :: xs') ys'
         if left.length >= right.length then left else right
-  -- </vc-helpers>
 
 vc-definitions: |-
   def longestCommonSubsequence (s1 : String) (s2 : String) (h_precond : longestCommonSubsequence_precond (s1) (s2)) : String :=

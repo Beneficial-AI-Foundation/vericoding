@@ -14,8 +14,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_palindrome_cuts (s : String) : Nat := sorry

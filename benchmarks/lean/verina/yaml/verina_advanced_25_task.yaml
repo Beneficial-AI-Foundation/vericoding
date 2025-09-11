@@ -20,10 +20,8 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def maxInArray (arr : Array Nat) : Nat :=
     arr.foldl (fun a b => if a ≥ b then a else b) 0
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lengthOfLIS (nums : List Int) (h_precond : lengthOfLIS_precond (nums)) : Nat :=

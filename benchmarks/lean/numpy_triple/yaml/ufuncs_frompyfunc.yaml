@@ -30,8 +30,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_frompyfunc {α β : Type} {n : Nat} (func : α → β) (input : Vector α n) : Id (Vector β n) :=

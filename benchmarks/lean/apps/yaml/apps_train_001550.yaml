@@ -43,8 +43,6 @@ vc-preamble: |-
   def zeroMatrix (n : Nat) : Matrix Int n := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def scaleMatrix {n : Nat} (c : Int) (M : Matrix Int n) : Matrix Int n := sorry

@@ -35,8 +35,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def concatenate {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Id (Vector Float (n + m)) :=

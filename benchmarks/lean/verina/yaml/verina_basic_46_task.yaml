@@ -23,8 +23,6 @@ vc-preamble: |-
     List.Pairwise (· ≤ ·) arr.toList
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lastPosition (arr : Array Int) (elem : Int) (h_precond : lastPosition_precond (arr) (elem)) : Int :=

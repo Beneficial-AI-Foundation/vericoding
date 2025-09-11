@@ -84,8 +84,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_product (lst : List Int) (n : Nat) : Int :=

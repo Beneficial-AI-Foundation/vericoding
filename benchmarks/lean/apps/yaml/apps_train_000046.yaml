@@ -51,8 +51,6 @@ vc-preamble: |-
   def beats (move1 move2 : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getMostFrequentMove (s : String) : Char := sorry

@@ -31,8 +31,6 @@ vc-preamble: |-
     symbol : String := "x"
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mkLegendre {n : Nat} (coef : Vector Float n) 

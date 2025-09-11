@@ -34,8 +34,6 @@ vc-preamble: |-
     (sort_number l).length = l.length := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (l : List Int) : Prop :=

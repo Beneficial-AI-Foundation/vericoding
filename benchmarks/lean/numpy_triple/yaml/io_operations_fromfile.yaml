@@ -73,8 +73,6 @@ vc-preamble: |-
     | DType.UInt8 => Nat  -- Using Nat instead of UInt8 for now
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def fromfile {n : Nat} (file : FileHandle) (dtype : DType) (count : Int) 

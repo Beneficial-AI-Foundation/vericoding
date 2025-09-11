@@ -65,8 +65,6 @@ vc-preamble: |-
   def max_removable_steps (n : Nat) (s : String) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def absDiff (x y : Nat) : Nat := 

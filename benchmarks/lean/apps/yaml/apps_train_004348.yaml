@@ -28,8 +28,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solution {α : Type} [Inhabited α] (items : List α) (index : Int) (default : α) : α := sorry

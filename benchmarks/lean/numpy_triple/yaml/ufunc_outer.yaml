@@ -59,8 +59,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def outer {m n : Nat} (op : Float → Float → Float) (a : Vector Float m) (b : Vector Float n) : 

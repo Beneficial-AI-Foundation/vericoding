@@ -39,8 +39,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def belongsToGroup (s : String) (g : Nat) : Bool :=

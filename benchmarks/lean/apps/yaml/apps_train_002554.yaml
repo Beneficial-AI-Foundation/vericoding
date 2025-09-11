@@ -20,8 +20,6 @@ vc-preamble: |-
   def String.countSubstr (s1 s2 : String) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def substringExists (s1 s2 : String) : Bool := sorry

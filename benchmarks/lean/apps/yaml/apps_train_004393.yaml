@@ -14,8 +14,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def int_diff (arr : List Int) (n : Int) : Int := sorry

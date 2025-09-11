@@ -13,8 +13,6 @@ vc-preamble: |-
   def countSubstring (haystack : String) (needle : String) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def minimum (xs : List String) : String := sorry 

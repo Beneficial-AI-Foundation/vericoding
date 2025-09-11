@@ -43,8 +43,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isValidInput (price : List Int) (special : List (List Int)) (needs : List Int) : Bool :=

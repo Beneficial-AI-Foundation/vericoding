@@ -33,8 +33,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def outer {m n : Nat} [Mul α] (a : Vector α m) (b : Vector α n) : Id (Vector (Vector α n) m) :=

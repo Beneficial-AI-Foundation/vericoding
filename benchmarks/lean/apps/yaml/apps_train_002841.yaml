@@ -36,8 +36,6 @@ vc-preamble: |-
   -- Result length should match total chars across merged words
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChar (c : Char) (s : String) : Nat :=

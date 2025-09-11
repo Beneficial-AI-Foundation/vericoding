@@ -36,8 +36,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def average {n : Nat} (a : Vector Float (n + 1)) (weights : Option (Vector Float (n + 1))) : Id Float :=

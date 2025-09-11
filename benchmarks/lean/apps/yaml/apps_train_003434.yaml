@@ -43,8 +43,6 @@ vc-preamble: |-
     | x :: y :: rest => x ≤ y && isSorted (y :: rest)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def listSum (l : List Nat) : Nat :=

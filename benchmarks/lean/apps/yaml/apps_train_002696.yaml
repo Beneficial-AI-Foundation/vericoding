@@ -13,8 +13,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def symmetric_point (p q : List Int) : List Int := sorry

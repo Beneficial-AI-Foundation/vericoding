@@ -23,8 +23,6 @@ vc-preamble: |-
   def negInf : Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def nanFloat : Float := sorry

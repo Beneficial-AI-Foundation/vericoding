@@ -61,8 +61,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solveSparrowProblem (n k : Nat) (classes : List Nat) (links : List (Nat × Nat)) : Int := sorry

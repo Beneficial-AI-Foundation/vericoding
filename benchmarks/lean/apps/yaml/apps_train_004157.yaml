@@ -28,8 +28,6 @@ vc-preamble: |-
     s.length ≤ 3 → is_in_middle s = false := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def containsSubstring (s₁ s₂ : String) : Bool := sorry

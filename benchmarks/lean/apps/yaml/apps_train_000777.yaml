@@ -41,8 +41,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solveCompetitionDuration (startDay endDay: String) (l r: Nat) : String ⊕ Nat :=

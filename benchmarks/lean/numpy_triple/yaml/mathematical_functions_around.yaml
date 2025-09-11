@@ -26,8 +26,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def around {n : Nat} (a : Vector Float n) (decimals : Int := 0) : Id (Vector Float n) :=

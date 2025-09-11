@@ -75,8 +75,6 @@ vc-preamble: |-
   def d (s : String) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def skrzat (mode : String) (input : Int ⊕ String) : String := sorry

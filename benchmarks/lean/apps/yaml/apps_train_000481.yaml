@@ -33,8 +33,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_valid_string (s : String) (a_count b_count : Nat) : Prop :=

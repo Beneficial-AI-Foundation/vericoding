@@ -69,8 +69,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def has_irreducible_anagram (s: String) (queries: List (Nat × Nat)) : List Bool := sorry

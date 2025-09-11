@@ -41,8 +41,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sumOfSubarray (arr : List Int) (i j : Nat) : Int :=

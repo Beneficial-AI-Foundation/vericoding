@@ -30,8 +30,6 @@ vc-preamble: |-
   def has_matching_parens (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_valid_idx (s : String) (idx : Nat) : Bool := sorry

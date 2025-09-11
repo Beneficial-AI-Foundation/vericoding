@@ -45,8 +45,6 @@ vc-preamble: |-
   def removeKa (s: String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getConsonants (s: String) : String := sorry

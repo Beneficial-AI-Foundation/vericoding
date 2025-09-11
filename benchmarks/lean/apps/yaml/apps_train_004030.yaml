@@ -11,8 +11,6 @@ vc-preamble: |-
     ∀ x i j, i < j → j < l.length → l[i]! = x → l[j]! ≠ x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mergeArrays (a b : List Int) : List Int := sorry

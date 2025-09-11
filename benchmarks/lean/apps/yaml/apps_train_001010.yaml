@@ -37,8 +37,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_max_stone_value (N : Nat) (stones : List Int) : Int × Nat × Nat := sorry

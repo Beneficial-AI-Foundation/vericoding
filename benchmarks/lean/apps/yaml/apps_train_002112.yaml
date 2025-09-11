@@ -48,8 +48,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_sad_guests (n k : Nat) (fav_pairs : List (Nat × Nat)) : Nat :=

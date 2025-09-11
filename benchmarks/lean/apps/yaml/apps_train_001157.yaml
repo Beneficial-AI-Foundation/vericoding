@@ -52,8 +52,6 @@ vc-preamble: |-
     ∀ i j, i < j → j < l.length → less_eq (l.get ⟨i, sorry⟩) (l.get ⟨j, sorry⟩)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_sum : List Nat → Nat 

@@ -22,8 +22,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sumAndAverage (n : Nat) (h_precond : sumAndAverage_precond (n)) : Int × Float :=

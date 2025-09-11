@@ -50,8 +50,6 @@ vc-preamble: |-
     ∀ i j, i < j → j < l.length → l[i]! < l[j]!
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (N : Nat) (T : Nat) (A : List Nat) : Nat := sorry

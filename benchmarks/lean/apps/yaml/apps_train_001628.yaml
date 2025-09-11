@@ -73,8 +73,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_matrix_guessing (n m K : Nat) (queryFunc : Nat → Nat → Nat → Nat → Nat → Nat → Nat → Nat) : List (List Nat) := sorry

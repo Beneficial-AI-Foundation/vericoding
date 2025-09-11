@@ -49,8 +49,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_minimal_goodness (n h : Nat) (a : List Nat) : Nat × List Nat := sorry

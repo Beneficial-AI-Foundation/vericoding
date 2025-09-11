@@ -42,8 +42,6 @@ vc-preamble: |-
   def reverse_num (n : Int) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sq_cub_rev_prime (n : Int) : Int := sorry

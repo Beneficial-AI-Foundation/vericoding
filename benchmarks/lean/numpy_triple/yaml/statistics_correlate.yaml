@@ -27,8 +27,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def correlate {m n : Nat} (a : Vector Float m) (v : Vector Float n) (h : n ≤ m) (h_pos : 0 < n) : Id (Vector Float (m + 1 - n)) :=

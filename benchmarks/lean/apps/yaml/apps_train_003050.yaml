@@ -50,8 +50,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_unknown_number (x y z : Nat) : Nat :=

@@ -54,8 +54,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def in_bounds (x y : Int) : Bool :=

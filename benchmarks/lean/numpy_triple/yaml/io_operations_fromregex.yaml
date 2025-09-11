@@ -30,8 +30,6 @@ vc-preamble: |-
     values : List String
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def fromregex {n : Nat} (file_content : String) (regexp : RegExp) (dtype : StructuredDataType) : Id (Vector StructuredElement n) :=

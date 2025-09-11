@@ -24,8 +24,6 @@ vc-preamble: |-
     | c => c
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def make_password (phrase : String) : String :=

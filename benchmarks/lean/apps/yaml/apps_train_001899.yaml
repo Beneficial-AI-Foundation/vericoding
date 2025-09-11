@@ -31,8 +31,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def possible_bipartition (n : Nat) (dislikes : List (List Nat)) : Bool :=

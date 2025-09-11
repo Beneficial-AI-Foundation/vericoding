@@ -51,8 +51,6 @@ vc-preamble: |-
     result > 0 ∧ result < (10^9 + 7) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_prime (n: Nat) : Bool := sorry

@@ -29,8 +29,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_percentage (sent : Int) (limit : Int := 1000) : String := sorry

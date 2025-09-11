@@ -45,8 +45,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def all_same_matrix (c : Char) (L R : Nat) : Matrix :=

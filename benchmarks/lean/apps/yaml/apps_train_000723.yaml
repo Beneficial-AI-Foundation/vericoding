@@ -55,8 +55,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_rocket_stability (coeff : List Int) : Nat := sorry

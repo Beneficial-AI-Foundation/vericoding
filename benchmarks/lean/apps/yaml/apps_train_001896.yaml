@@ -39,8 +39,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_valid_time (hours mins: Nat) : Prop :=

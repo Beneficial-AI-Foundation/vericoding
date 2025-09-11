@@ -15,8 +15,6 @@ vc-preamble: |-
     s!"({a}) {p}-{l}"
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def area_code (s: String) : String :=

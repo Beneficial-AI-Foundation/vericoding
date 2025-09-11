@@ -32,8 +32,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_sum_two_no_overlap (A : List Int) (L M : Nat) : Int := sorry

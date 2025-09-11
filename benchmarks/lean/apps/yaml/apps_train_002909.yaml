@@ -32,8 +32,6 @@ vc-preamble: |-
     s = s.push '0' -- dummy definition to make type checker happy
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reverseInt (n : Int) : Int := 0 -- dummy definition

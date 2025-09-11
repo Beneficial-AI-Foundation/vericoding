@@ -46,8 +46,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_fenwick_accesses (l1 l2 l3: String) (n: Nat) : Nat := sorry

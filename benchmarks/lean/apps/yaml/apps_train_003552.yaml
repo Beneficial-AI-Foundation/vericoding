@@ -34,8 +34,6 @@ vc-preamble: |-
     | x :: y :: xs => x ≤ y ∧ IsSorted (y :: xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def modes {α : Type} [Ord α] [BEq α] [LE α] (xs : List α) : List α := sorry

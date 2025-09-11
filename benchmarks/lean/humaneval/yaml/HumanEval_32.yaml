@@ -21,8 +21,6 @@ vc-preamble: |-
   import Std.Data.HashMap
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (xs: List Rat) : Rat :=

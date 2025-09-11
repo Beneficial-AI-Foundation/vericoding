@@ -20,8 +20,6 @@ vc-preamble: |-
   def countOccurrences (c : Char) (s : String) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def allCountsEqual (s : String) : Bool := sorry 

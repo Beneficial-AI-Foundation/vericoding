@@ -48,8 +48,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_matrix_path (n m : Nat) (matrix : List (List Nat)) (s : String) (p q : Nat) : Nat := sorry

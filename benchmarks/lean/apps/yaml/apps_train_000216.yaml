@@ -28,8 +28,6 @@ vc-preamble: |-
     | x::xs => xs.foldr min x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maxSatisfied (customers : List Nat) (grumpy : List Nat) (X : Nat) : Nat := 

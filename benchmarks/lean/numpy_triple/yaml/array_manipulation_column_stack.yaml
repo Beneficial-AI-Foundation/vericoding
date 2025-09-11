@@ -34,8 +34,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def column_stack {rows cols : Nat} (arrays : Vector (Vector Float rows) cols) : 

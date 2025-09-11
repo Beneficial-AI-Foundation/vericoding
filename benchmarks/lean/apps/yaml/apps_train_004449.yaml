@@ -27,8 +27,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bar_triang (a b c : Prod Float Float) : Prod Float Float :=

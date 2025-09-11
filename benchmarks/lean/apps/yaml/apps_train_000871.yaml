@@ -76,8 +76,6 @@ vc-preamble: |-
     s.1 < s.2
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (segments : List Segment) : List Operation := sorry

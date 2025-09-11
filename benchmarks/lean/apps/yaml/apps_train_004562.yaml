@@ -90,8 +90,6 @@ vc-preamble: |-
   def matches_result (code guess result : List String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mastermind (g : Game) : Unit := sorry

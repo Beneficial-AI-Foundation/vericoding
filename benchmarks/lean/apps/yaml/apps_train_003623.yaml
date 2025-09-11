@@ -39,8 +39,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def split_without_loss (text : String) (split_chars : String) : List String := sorry

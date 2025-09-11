@@ -112,8 +112,6 @@ vc-preamble: |-
   count_paren_groups_helper paren_string 0 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (paren_string: String) : List String :=

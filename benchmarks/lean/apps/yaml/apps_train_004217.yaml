@@ -20,8 +20,6 @@ vc-preamble: |-
     c = 'R' ∨ c = 'G' ∨ c = 'B'
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solution (stones : String) : Nat :=

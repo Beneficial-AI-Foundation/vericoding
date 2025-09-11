@@ -34,8 +34,6 @@ vc-preamble: |-
     b.length = 8 && b.all (fun x => x ≥ 1 && x ≤ 99)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def baseStats (c : String) : List Nat :=

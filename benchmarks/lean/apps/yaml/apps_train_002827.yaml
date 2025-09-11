@@ -64,8 +64,6 @@ vc-preamble: |-
   def watch_pyramid_from_above (chars : Option String) : Option String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_visible_characters_of_the_pyramid (chars : Option String) : Int := sorry

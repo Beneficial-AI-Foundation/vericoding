@@ -14,8 +14,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def num_of_open_lockers (n : Nat) : Nat :=

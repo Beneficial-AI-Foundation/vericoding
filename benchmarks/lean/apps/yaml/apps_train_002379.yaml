@@ -54,8 +54,6 @@ vc-preamble: |-
   /- Helper function to get nth element -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getNth (xs : List Int) (n : Nat) : Int :=

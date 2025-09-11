@@ -33,8 +33,6 @@ vc-preamble: |-
   /- Helper function to compare Options -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def optionLE (a b : Option Nat) : Prop :=

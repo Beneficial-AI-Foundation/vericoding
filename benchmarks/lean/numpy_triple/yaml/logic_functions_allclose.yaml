@@ -26,8 +26,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def allclose {n : Nat} (a b : Vector Float n) (rtol atol : Float) : Id Bool :=

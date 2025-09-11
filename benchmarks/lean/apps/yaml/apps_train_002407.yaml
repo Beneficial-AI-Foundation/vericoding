@@ -28,8 +28,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_shortest_subarray (l : List Int) : Nat :=

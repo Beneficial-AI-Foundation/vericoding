@@ -56,8 +56,6 @@ vc-preamble: |-
   | n + 2 => fib (n + 1) + fib n
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def fibs_fizz_buzz (n : Nat) : List (String ⊕ Nat) :=

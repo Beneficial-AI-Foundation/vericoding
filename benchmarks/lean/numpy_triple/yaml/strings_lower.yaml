@@ -51,8 +51,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lower {n : Nat} (a : Vector String n) : Id (Vector String n) :=

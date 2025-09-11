@@ -33,8 +33,6 @@ vc-preamble: |-
   /- For accessing array elements safely -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get? {α : Type} (xs : List α) (i : Nat) : Option α :=

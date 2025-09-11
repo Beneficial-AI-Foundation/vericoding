@@ -47,8 +47,6 @@ vc-preamble: |-
     new_options : PrintOptions
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_printoptions (new_opts : PrintOptions) : Id PrintOptionsContext :=

@@ -45,8 +45,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def vectorize {n : Nat} {α β : Type} (f : α → β) (arr : Vector α n) : Id (Vector β n) :=

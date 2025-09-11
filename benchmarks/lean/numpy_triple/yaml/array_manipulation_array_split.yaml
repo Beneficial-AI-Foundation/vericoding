@@ -35,8 +35,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def array_split {n k : Nat} (v : Vector Float n) (hk : k > 0) : 

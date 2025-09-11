@@ -42,8 +42,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_pairs_with_diff (arr : List Int) (k : Int) (min_diff : Int) : Nat :=

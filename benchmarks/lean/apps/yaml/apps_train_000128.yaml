@@ -41,8 +41,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def number_of_arrays (s : String) (k : Nat) : Nat :=

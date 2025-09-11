@@ -49,8 +49,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (ax ay bx b_y cx c_y : Int) : Nat := sorry

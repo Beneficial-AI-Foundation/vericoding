@@ -35,8 +35,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_gcd_lcm_pairs (pairs : List (Nat × Nat)) : List (Nat × Nat) :=

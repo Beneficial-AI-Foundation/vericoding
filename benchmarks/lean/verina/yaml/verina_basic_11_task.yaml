@@ -21,8 +21,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lastDigit (n : Nat) (h_precond : lastDigit_precond (n)) : Nat :=

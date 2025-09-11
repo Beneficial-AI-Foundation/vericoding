@@ -62,8 +62,6 @@ vc-preamble: |-
   def sum_part (n : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def qualified : Nat → List Nat := sorry

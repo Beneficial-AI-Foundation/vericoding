@@ -35,8 +35,6 @@ vc-preamble: |-
   def isBouncyStr (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bouncyRatio (n : Float) : Float := sorry

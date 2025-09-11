@@ -46,8 +46,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_divisions (n : Nat) (boxes : List Nat) : Int :=

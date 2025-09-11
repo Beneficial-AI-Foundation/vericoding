@@ -34,8 +34,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ntypes {n : Nat} (ufunc_type_combinations : Vector String n) : Id Nat :=

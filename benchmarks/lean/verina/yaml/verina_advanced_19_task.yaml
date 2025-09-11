@@ -18,7 +18,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   -- Check if a character is an uppercase alphabet letter
   def isUpperAlpha (c : Char) : Bool :=
     'A' ≤ c ∧ c ≤ 'Z'
@@ -50,7 +49,6 @@ vc-helpers: |-
   -- Reverse the list
   def reverseList (xs : List Char) : List Char :=
     xs.reverse
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isCleanPalindrome (s : String) (h_precond : isCleanPalindrome_precond (s)) : Bool :=

@@ -27,8 +27,6 @@ vc-preamble: |-
   def isUpper (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isLower (s : String) : Bool := sorry

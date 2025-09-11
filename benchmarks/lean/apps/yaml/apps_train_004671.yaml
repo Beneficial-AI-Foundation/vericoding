@@ -39,8 +39,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def gcd_iterations (a b : Int) : Int × Int := sorry

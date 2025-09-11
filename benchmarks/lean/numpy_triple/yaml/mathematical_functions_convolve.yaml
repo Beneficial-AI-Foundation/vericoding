@@ -30,8 +30,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_convolve {m n : Nat} (a : Vector Float m) (v : Vector Float n) : Id (Vector Float (m + n - 1)) :=

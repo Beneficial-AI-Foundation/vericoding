@@ -49,8 +49,6 @@ vc-preamble: |-
     s.data.filter isAlpha |>.length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countDigits (s : String) : Nat :=

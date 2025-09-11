@@ -20,10 +20,8 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def intMax (x y : Int) : Int :=
     if x < y then y else x
-  -- </vc-helpers>
 
 vc-definitions: |-
   def LongestIncreasingSubsequence (a : Array Int) (h_precond : LongestIncreasingSubsequence_precond (a)) : Int :=

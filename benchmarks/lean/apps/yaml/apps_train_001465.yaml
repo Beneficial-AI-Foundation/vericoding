@@ -27,8 +27,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_longest_xor_subsequence (n : Nat) (arr : List Nat) : Nat :=

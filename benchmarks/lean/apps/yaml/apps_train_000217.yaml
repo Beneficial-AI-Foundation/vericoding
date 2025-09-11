@@ -31,8 +31,6 @@ vc-preamble: |-
     else True := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hasLongerDuplicate (s : String) (len : Nat) : Bool := sorry

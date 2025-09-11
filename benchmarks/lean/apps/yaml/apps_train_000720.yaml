@@ -30,8 +30,6 @@ vc-preamble: |-
   def Direction := String -- Direction representation
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def process : List String → String 

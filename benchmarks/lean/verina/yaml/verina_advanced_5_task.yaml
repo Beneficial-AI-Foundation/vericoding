@@ -25,11 +25,9 @@ vc-preamble: |-
     (l2.getLast! ≠ 0 ∨ l2 = [0])
 
 vc-helpers: |-
-  -- <vc-helpers>
   def listToNat : List Nat → Nat
   | []       => 0
   | d :: ds  => d + 10 * listToNat ds
-  -- </vc-helpers>
 
 vc-definitions: |-
   def addTwoNumbers (l1 : List Nat) (l2 : List Nat) (h_precond : addTwoNumbers_precond (l1) (l2)) : List Nat :=

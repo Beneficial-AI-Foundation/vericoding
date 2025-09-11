@@ -26,8 +26,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_diagonal {m n : Nat} (x : Vector (Vector Float n) m) (offset : Int) : Id (Vector Float (min m n)) :=

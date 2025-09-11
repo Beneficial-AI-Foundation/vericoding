@@ -21,8 +21,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getdomain {n : Nat} (x : Vector Float (n + 1)) : Id (Vector Float 2) :=

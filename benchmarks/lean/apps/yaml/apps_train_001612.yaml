@@ -22,8 +22,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_falling_path_sum (matrix: List (List Int)) : Int := sorry

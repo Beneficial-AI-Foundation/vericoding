@@ -14,8 +14,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def num_obj (nums: List Nat) : List (String × Char) := sorry

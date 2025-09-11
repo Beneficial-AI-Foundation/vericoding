@@ -34,8 +34,6 @@ vc-preamble: |-
   def get_powers_of_2 (max_digits : Nat) : List Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def digits (n : Nat) : List Nat := sorry 

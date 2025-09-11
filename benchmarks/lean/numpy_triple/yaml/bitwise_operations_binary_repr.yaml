@@ -40,8 +40,6 @@ vc-preamble: |-
       isValidBinary s
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def binary_repr (num : Int) (width : Option Nat := none) : Id String :=

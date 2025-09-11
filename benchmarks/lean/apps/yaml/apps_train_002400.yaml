@@ -21,8 +21,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def containsNearbyDuplicate (nums : List Int) (k : Nat) : Bool := sorry

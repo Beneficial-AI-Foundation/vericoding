@@ -17,8 +17,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sort_grades (grades : List GradeString) : List GradeString :=

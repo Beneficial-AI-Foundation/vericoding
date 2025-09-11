@@ -20,8 +20,6 @@ vc-preamble: |-
   import Std.Data.HashMap
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (strings: List String) (substring: String): List String :=

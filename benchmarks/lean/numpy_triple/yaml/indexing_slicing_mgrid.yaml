@@ -53,8 +53,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mgrid {rows cols : Nat} (start_r stop_r start_c stop_c : Float) 

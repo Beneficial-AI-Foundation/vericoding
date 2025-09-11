@@ -34,8 +34,6 @@ vc-preamble: |-
   def countMismatches (xs ys : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def height_checker (heights : List Nat) : Nat := sorry

@@ -98,8 +98,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def growing_plant (up_speed : Int) (down_speed : Int) (desired_height : Int) : Int :=

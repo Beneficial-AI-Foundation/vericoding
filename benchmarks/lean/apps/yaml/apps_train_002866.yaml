@@ -30,8 +30,6 @@ vc-preamble: |-
   def reverse_transposition (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def stringTakeEveryNth (s : String) (start : Nat) : String := sorry

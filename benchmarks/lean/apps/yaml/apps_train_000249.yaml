@@ -47,8 +47,6 @@ vc-preamble: |-
   def listMax (l : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def findMinMoves (machines : List Nat) : Int := sorry 

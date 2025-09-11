@@ -18,8 +18,6 @@ vc-preamble: |-
     nums.all (fun x => x ≤ nums.length) ∧ List.Nodup nums
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def missingNumber (nums : List Nat) (h_precond : missingNumber_precond (nums)) : Nat :=

@@ -27,8 +27,6 @@ vc-preamble: |-
   def YES : String := "In with a chance"
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def NO : String := "Plenty more fish in the sea"

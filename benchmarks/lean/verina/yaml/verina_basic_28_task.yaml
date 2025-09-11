@@ -22,8 +22,6 @@ vc-preamble: |-
     n ≥ 2
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isPrime (n : Nat) (h_precond : isPrime_precond (n)) : Bool :=

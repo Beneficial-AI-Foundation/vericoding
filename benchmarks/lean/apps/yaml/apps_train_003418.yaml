@@ -34,8 +34,6 @@ vc-preamble: |-
   def is_happy (n: Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def performant_numbers (n: Nat) : List Nat := sorry

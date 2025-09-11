@@ -41,8 +41,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_connected_components (n : Nat) (numbers : List Nat) : Nat := sorry

@@ -20,8 +20,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def filter_homogenous {α} (arrays : List (List α)) : List (List α) := sorry

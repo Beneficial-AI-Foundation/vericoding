@@ -22,8 +22,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def iter_copy (s : Array Int) (h_precond : iter_copy_precond (s)) : Array Int :=

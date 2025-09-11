@@ -77,8 +77,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_parking (n k : Nat) (grid : List (List Nat)) : List Nat :=

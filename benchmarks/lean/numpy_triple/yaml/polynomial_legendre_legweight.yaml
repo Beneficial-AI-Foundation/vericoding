@@ -21,8 +21,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def legweight {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=

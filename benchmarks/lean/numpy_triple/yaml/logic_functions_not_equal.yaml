@@ -35,8 +35,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_not_equal {T : Type} [BEq T] {n : Nat} (x1 x2 : Vector T n) : Id (Vector Bool n) :=

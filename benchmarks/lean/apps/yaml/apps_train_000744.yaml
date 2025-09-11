@@ -55,8 +55,6 @@ vc-preamble: |-
   def count_ones (s : String) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def has_adjacent_ones (s : String) : Bool := sorry

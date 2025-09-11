@@ -15,8 +15,6 @@ vc-preamble: |-
     s.data.any (fun c => c.ascii? && c.alpha?)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def one_down (s : String) : String := sorry

@@ -46,8 +46,6 @@ vc-preamble: |-
   def valid_letters := ['w', 'p', 'b', 's', 'm', 'q', 'd', 'z']
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def score_map (c : Char) : Int :=

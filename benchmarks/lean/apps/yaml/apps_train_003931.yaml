@@ -29,8 +29,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def abundant (n : Int) : Option (List (List Int)) :=

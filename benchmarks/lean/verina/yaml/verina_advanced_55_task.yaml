@@ -21,7 +21,6 @@ vc-preamble: |-
     xs ≠ []
 
 vc-helpers: |-
-  -- <vc-helpers>
   -- Build a frequency map from the list
   def countMap (xs : List Int) : HashMap Int Nat :=
     let step := fun m x =>
@@ -48,7 +47,6 @@ vc-helpers: |-
     match xs.find? (fun x => candidates.contains x) with
     | some x => x
     | none => 0
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mostFrequent (xs : List Int) (h_precond : mostFrequent_precond (xs)) : Int :=

@@ -35,8 +35,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def pinv {m n : Nat} (a : Vector (Vector Float n) m) : Id (Vector (Vector Float m) n) :=

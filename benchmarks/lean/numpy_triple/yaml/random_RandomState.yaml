@@ -35,8 +35,6 @@ vc-preamble: |-
     seed : Nat
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def random (state : RandomState) : Id Float :=

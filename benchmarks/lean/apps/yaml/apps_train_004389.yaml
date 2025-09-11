@@ -84,8 +84,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def create_octahedron (size : Nat) : List (List (List Nat)) := sorry

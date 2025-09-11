@@ -35,8 +35,6 @@ vc-preamble: |-
     (prev_perm_opt1 arr).length = arr.length := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_sortFn : List Int → List Int := sorry

@@ -48,8 +48,6 @@ vc-preamble: |-
     (s.filter (fun x => x = c)).length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_odd_occurrences (s : String) : Nat :=

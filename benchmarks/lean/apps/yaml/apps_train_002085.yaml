@@ -41,8 +41,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_door_opens (n m a d : Nat) (client_times : List Nat) : Nat :=

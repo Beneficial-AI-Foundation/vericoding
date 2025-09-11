@@ -35,8 +35,6 @@ vc-preamble: |-
     (cubeTimes times).1 = Float.floor ((middle_avg * 100) + 0.5) / 100 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Float.decimalPlaces (x : Float) : Nat := sorry

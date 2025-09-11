@@ -23,10 +23,8 @@ vc-preamble: |-
     a.size > 0
 
 vc-helpers: |-
-  -- <vc-helpers>
   def isOdd (x : Int) : Bool :=
     x % 2 ≠ 0
-  -- </vc-helpers>
 
 vc-definitions: |-
   def findFirstOdd (a : Array Int) (h_precond : findFirstOdd_precond (a)) : Option Nat :=

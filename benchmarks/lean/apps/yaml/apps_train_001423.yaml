@@ -35,8 +35,6 @@ vc-preamble: |-
   /- Helper function that converts a string to a sorted char array for anagram comparison -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def stringToSortedArray (s : String) : Array Char :=

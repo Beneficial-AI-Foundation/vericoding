@@ -26,8 +26,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def denumerate (l : List (Int × Char)) : Option String := sorry

@@ -62,8 +62,6 @@ vc-preamble: |-
     (grid.filter (fun row => row.all (fun x => x = 0))).length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countEmptyCols (n m : Nat) (grid : List (List Nat)) : Nat :=

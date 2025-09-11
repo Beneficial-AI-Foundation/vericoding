@@ -128,8 +128,6 @@ vc-preamble: |-
   def is_square_grid (grid : Grid) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def valid_start_pos (pos : Nat × Nat) (n : Nat) : Bool := sorry

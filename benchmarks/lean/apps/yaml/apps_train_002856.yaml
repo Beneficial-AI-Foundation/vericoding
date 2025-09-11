@@ -16,8 +16,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def head_smash (arr : List String) : List String ⊕ String := sorry

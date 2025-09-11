@@ -61,8 +61,6 @@ vc-preamble: |-
     | UInt64 : IntType
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def iinfo (int_type : IntType) : Id IntInfo :=

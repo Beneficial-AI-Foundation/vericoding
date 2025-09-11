@@ -44,8 +44,6 @@ vc-preamble: |-
     | (h :: t) => h + sum_list t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def nth : List Nat → Nat → Option Nat 

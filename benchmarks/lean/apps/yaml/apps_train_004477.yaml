@@ -18,8 +18,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def matchFn (usefulness : List Nat) (months : Nat) : String := sorry

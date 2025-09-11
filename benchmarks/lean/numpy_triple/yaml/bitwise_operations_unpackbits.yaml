@@ -33,8 +33,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_unpackbits {n : Nat} (a : Vector Nat n) : Id (Vector Nat (n * 8)) :=

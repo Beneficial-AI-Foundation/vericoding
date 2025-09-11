@@ -45,8 +45,6 @@ vc-preamble: |-
   def toNat (s : String) : Option Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def scratch (tickets : List String) : Nat := sorry

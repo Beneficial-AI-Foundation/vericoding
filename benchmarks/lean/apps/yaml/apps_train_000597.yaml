@@ -53,8 +53,6 @@ vc-preamble: |-
     | h::t => max h (maximum t)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_min_cost (n : Nat) (arr : List Nat) (m : Nat) (offers : List (List Nat)) : Nat :=

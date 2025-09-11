@@ -66,8 +66,6 @@ vc-preamble: |-
   def splitLines (s: String) : List String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def stringLength (s: String) : Nat := sorry

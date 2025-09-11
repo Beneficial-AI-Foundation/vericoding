@@ -13,8 +13,6 @@ vc-preamble: |-
   def maximum? (l : List Float) : Option Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sumInt (l : List Int) : Int := sorry

@@ -39,8 +39,6 @@ vc-preamble: |-
     if i < 0 then -i else i
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rangeToInt (n: Nat) : List Int :=

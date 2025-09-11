@@ -40,8 +40,6 @@ vc-preamble: |-
   def hasExit (maze : List String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isKateAt (maze : List String) (i j : Nat) : Bool := sorry

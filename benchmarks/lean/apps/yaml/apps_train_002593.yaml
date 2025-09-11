@@ -26,8 +26,6 @@ vc-preamble: |-
   def isqrt (n : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def splitLines (s : String) : List String := 

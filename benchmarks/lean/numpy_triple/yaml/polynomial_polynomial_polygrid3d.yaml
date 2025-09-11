@@ -21,8 +21,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def polygrid3d {nx ny nz : Nat} {degree_x degree_y degree_z : Nat} 

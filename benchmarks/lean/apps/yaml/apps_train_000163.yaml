@@ -29,8 +29,6 @@ vc-preamble: |-
   def count_ones (n : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bitwise_or (a b : Nat) : Nat := sorry

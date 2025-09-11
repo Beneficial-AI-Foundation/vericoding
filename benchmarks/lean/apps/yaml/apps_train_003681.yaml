@@ -47,8 +47,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def t9_predict (words : List String) (seq : String) : List String :=

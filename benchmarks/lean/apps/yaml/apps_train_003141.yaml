@@ -24,8 +24,6 @@ vc-preamble: |-
     | x::xs => some (xs.foldl max x)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def minimum? : List Int → Option Int

@@ -44,8 +44,6 @@ vc-preamble: |-
   | xs => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def applyFlips : List Nat → List Nat → List Nat

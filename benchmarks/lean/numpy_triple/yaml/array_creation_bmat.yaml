@@ -36,8 +36,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bmat {n : Nat} (topLeft topRight bottomLeft bottomRight : Vector Float n) : Id (Vector Float (4 * n)) :=

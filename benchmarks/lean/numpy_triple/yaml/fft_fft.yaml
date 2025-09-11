@@ -74,8 +74,6 @@ vc-preamble: |-
       go ⟨n, by omega⟩
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def fft {n : Nat} (a : Vector Complex n) : Id (Vector Complex n) :=

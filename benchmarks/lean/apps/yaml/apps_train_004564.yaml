@@ -6,8 +6,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_min_max (lst: List Int) : Option Int × Option Int := sorry

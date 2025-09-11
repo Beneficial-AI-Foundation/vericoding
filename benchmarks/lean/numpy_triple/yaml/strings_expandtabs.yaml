@@ -19,8 +19,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def expandtabs {n : Nat} (a : Vector String n) (tabsize : Vector Nat n) : Id (Vector String n) :=

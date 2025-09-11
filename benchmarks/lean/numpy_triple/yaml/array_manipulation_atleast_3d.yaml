@@ -37,8 +37,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def atleast_3d {n : Nat} (arr : Vector Float n) : Id (Vector (Vector (Vector Float 1) n) 1) :=

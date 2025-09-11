@@ -54,8 +54,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_sandglass_wrapped (X K : Nat) (r : List Nat) (Q : Nat) (queries : List (Nat × Nat)) : List Nat := sorry

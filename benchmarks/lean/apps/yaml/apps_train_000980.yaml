@@ -61,8 +61,6 @@ vc-preamble: |-
     deriving Repr
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def classify_message (N : Nat) (K : Nat) (s : String) : MessageType := sorry

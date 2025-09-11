@@ -38,8 +38,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_cov {vars obs : Nat} (m : Vector (Vector Float obs) vars) (h : obs > 0) : Id (Vector (Vector Float vars) vars) :=

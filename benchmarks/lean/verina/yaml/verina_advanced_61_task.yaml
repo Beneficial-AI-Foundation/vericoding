@@ -16,7 +16,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   -- Helper: Compute prefix products.
   -- prefix[i] is the product of all elements in nums before index i.
   def computepref (nums : List Int) : List Int :=
@@ -28,7 +27,6 @@ vc-helpers: |-
   def computeSuffix (nums : List Int) : List Int :=
     let revSuffix := nums.reverse.foldl (fun acc x => acc ++ [acc.getLast! * x]) [1]
     revSuffix.reverse
-  -- </vc-helpers>
 
 vc-definitions: |-
   def productExceptSelf (nums : List Int) (h_precond : productExceptSelf_precond (nums)) : List Int :=

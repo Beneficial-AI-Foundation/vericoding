@@ -21,8 +21,6 @@ vc-preamble: |-
   def sumProd (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def stringToFloat (s : String) : Float := sorry 

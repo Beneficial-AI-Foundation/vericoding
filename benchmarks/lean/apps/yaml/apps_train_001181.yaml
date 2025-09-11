@@ -42,8 +42,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_snake_parade (n l a b : Nat) (positions : List Nat) : Nat := sorry

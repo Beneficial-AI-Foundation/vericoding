@@ -37,8 +37,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_ingredients (n : Nat) (x : Nat) (ingredients : List Nat) : String :=

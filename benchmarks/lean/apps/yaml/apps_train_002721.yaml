@@ -30,8 +30,6 @@ vc-preamble: |-
     (arr.filter (fun x => x > 0)).foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_contiguous_subsequence_sum (arr : List Int) (target : Int) : Bool := 

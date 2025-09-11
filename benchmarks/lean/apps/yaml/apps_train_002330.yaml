@@ -29,8 +29,6 @@ vc-preamble: |-
   def isUppercase (c : Char) : Bool := 'A' ≤ c ∧ c ≤ 'Z'
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isTitle (s : String) : Bool := sorry

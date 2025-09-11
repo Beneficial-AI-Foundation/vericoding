@@ -52,8 +52,6 @@ vc-preamble: |-
      |>.filterMap id
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getEvenElements (l : List Nat) : List Nat :=

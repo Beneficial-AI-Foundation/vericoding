@@ -34,8 +34,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_hours_equal_plants (n : Nat) (plants : List Nat) : Nat := sorry

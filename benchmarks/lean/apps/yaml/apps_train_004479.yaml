@@ -18,8 +18,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rot_energies (B : Float) (Jmin Jmax : Nat) : List Float := sorry

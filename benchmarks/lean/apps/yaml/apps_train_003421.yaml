@@ -26,8 +26,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def eq_sum_powdig (hmax : Nat) (exp : Nat) : List Nat := sorry

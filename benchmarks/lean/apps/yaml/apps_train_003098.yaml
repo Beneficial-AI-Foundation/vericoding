@@ -78,8 +78,6 @@ vc-preamble: |-
   def isUpper (c : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def tv_remote (s : String) : Nat := sorry

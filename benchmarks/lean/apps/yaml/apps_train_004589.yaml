@@ -75,8 +75,6 @@ vc-preamble: |-
     ∀ i, i < orig.length → result.get! i = reverse_string (orig.get! i)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def line_lengths_preserved (orig result : List String) : Prop :=

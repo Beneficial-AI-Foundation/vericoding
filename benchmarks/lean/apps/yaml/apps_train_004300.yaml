@@ -28,8 +28,6 @@ vc-preamble: |-
   def gray2bin (bits : List Nat) : List Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isBinary (n : Nat) : Bool :=

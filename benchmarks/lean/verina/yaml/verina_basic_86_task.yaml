@@ -23,7 +23,6 @@ vc-preamble: |-
     offset ≥ 0
 
 vc-helpers: |-
-  -- <vc-helpers>
   def rotateAux (a : Array Int) (offset : Int) (i : Nat) (len : Nat) (b : Array Int) : Array Int :=
     if i < len then
       let idx_int : Int := (Int.ofNat i + offset) % (Int.ofNat len)
@@ -32,7 +31,6 @@ vc-helpers: |-
       let new_b := b.set! i (a[idx_nat]!)
       rotateAux a offset (i + 1) len new_b
     else b
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rotate (a : Array Int) (offset : Int) (h_precond : rotate_precond (a) (offset)) : Array Int :=

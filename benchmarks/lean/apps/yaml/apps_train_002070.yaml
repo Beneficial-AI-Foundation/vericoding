@@ -56,8 +56,6 @@ vc-preamble: |-
   def is_binary_string (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def MOD : Nat := 1000000007

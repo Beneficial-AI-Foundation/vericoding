@@ -46,8 +46,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_reciprocal {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=

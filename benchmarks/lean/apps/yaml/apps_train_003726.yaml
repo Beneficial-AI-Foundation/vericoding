@@ -19,8 +19,6 @@ vc-preamble: |-
     b = a + 1 ∧ c = b + 1 ∧ d = c + 1
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChar (s : String) (c : Char) : Nat := sorry

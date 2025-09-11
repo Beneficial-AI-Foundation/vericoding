@@ -55,8 +55,6 @@ vc-preamble: |-
   def is_valid_door (door : Nat × Nat × Nat × Nat) (n m : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def are_doors_unique (doors : List (Nat × Nat × Nat × Nat)) : Bool := sorry

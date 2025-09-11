@@ -40,8 +40,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ladder_length (begin_word end_word : String) (word_list : List String) : Nat := sorry

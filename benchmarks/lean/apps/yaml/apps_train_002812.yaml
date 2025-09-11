@@ -38,8 +38,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calc_min_riders (stations: List Nat) : Nat :=

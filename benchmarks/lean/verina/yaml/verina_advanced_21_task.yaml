@@ -19,8 +19,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isPalindrome (s : String) (h_precond : isPalindrome_precond (s)) : Bool :=

@@ -39,8 +39,6 @@ vc-preamble: |-
     are_similar xs xs := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def insertSort (xs : List Int) : List Int := sorry 

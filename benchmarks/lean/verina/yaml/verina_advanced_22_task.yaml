@@ -28,8 +28,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isPeakValley (lst : List Int) (h_precond : isPeakValley_precond (lst)) : Bool :=

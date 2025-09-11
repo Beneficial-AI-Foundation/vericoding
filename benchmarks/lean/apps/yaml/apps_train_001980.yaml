@@ -42,8 +42,6 @@ vc-preamble: |-
   def verify_operations (n : Nat) (arr : List Int) (ops : List (Nat × Nat × List Int)) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def valid_operation (n : Nat) (op : Nat × Nat × List Int) : Bool := sorry

@@ -23,8 +23,6 @@ vc-preamble: |-
     s.toList.foldl (fun count c => if c = ' ' then count + 1 else count) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def swapcase (s : String) : String := sorry

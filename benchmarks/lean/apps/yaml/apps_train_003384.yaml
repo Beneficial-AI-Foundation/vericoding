@@ -10,8 +10,6 @@ vc-preamble: |-
     (s.data.filter (· = c)).length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bumps (road : String) : String :=

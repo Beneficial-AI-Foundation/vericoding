@@ -33,8 +33,6 @@ vc-preamble: |-
   def gcd (a b : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_lovers_lcm (n : Nat) : String := sorry

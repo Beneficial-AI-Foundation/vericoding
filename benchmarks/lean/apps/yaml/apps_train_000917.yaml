@@ -47,8 +47,6 @@ vc-preamble: |-
     | (x::xs) => x + list_sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_subarrays (arr : List Int) : List (List Int) := sorry

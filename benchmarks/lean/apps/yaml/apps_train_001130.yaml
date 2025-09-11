@@ -45,8 +45,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ValidResult := ["FRIENDS", "LOVE", "ADORE", "MARRIAGE", "ENEMIES", "SISTER"]

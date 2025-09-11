@@ -56,8 +56,6 @@ vc-preamble: |-
     s.toList.filter (· = '*') |>.length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def listSum (l : List Nat) : Nat :=

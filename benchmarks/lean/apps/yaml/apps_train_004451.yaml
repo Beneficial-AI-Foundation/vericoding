@@ -42,8 +42,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_a_b (numbers : List Int) (c : Int) : Option (Int × Int) :=

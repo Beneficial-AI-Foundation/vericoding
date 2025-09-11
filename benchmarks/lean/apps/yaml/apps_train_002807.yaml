@@ -63,8 +63,6 @@ vc-preamble: |-
     | x :: rest => x + sum rest
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def split_and_add (numbers : List Int) (n : Nat) : List Int :=

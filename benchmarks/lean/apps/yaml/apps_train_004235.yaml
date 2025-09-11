@@ -24,8 +24,6 @@ vc-preamble: |-
   def containsString (s : String) (sub : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def startsWithString (s : String) (pre : String) : Bool := sorry

@@ -22,8 +22,6 @@ vc-preamble: |-
   def sumIndices (idx : List (List Nat)) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def starsAndBars (n k : Nat) : Nat := sorry

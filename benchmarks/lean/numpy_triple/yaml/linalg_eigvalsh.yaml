@@ -31,8 +31,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def eigvalsh {n : Nat} (a : Vector (Vector Float n) n) : Id (Vector Float n) :=

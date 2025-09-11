@@ -30,8 +30,6 @@ vc-preamble: |-
     | (x::xs) => x + sum_list xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_dates (records : List (String × String)) : List Nat :=

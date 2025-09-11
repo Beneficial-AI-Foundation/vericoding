@@ -31,8 +31,6 @@ vc-preamble: |-
   def solve (n k : Nat) (perms : List (List Int)) : List (List Int) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isPermutation (arr1 arr2 : List Int) : Bool := sorry

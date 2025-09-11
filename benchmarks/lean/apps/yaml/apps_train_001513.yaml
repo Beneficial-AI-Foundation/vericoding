@@ -63,8 +63,6 @@ vc-preamble: |-
   def hasAllChars (sub : String) (orig : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def substr (s : String) (i j : Nat) : String := sorry

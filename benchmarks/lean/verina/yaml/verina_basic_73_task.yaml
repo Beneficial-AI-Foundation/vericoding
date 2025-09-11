@@ -23,8 +23,6 @@ vc-preamble: |-
     s.toList.length = p.toList.length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Match (s : String) (p : String) (h_precond : Match_precond (s) (p)) : Bool :=

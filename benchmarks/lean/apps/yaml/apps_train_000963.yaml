@@ -51,8 +51,6 @@ vc-preamble: |-
   /- Signature for the main function -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculateMinCost (vertices: List (Int × Int)) (stripes: List (Float × Int)) : Nat := sorry

@@ -33,8 +33,6 @@ vc-preamble: |-
   def reverse : Nat → Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def backwards_prime : Nat → Nat → List Nat := sorry

@@ -41,8 +41,6 @@ vc-preamble: |-
     | x :: xs => x + sum_list xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_chef_money (rows: List (List Nat)) : Nat := sorry

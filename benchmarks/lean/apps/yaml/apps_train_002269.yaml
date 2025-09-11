@@ -57,8 +57,6 @@ vc-preamble: |-
   def all_ones (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def all_zeros (s : String) : Bool := sorry

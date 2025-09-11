@@ -48,8 +48,6 @@ vc-preamble: |-
   def cell_advance_hero1 (row col n m k : Nat) : (Nat × Nat) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def cell_advance_hero2 (row col n m k : Nat) : (Nat × Nat) := sorry

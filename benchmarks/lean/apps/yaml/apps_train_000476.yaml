@@ -21,8 +21,6 @@ vc-preamble: |-
   def query_string (s : String) (n : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def containsSubstring (s : String) (sub : String) : Bool := sorry

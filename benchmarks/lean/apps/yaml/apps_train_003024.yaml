@@ -23,8 +23,6 @@ vc-preamble: |-
   def digit_sequence_of_powers (n : Nat) : List Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def last_digit_to_appear (n : Nat) : Option Nat := sorry

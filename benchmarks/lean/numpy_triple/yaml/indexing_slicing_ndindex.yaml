@@ -37,8 +37,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ndindex {m n : Nat} (shape : Nat × Nat) : Id (Vector (Fin m × Fin n) (m * n)) :=

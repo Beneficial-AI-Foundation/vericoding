@@ -72,8 +72,6 @@ vc-preamble: |-
   def Float.toComplex (x : Float) : Complex := { re := x, im := 0 }
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rfft2 {m n : Nat} (a : Vector (Vector Float (n + 1)) (m + 1)) : Id (Vector (Vector Complex (((n + 1) / 2) + 1)) (m + 1)) :=

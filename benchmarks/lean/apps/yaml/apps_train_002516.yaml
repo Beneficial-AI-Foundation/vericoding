@@ -44,8 +44,6 @@ vc-preamble: |-
   def all_length (s : String) (k : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def no_duplicates (s : String) : Bool := sorry

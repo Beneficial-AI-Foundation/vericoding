@@ -51,8 +51,6 @@ vc-preamble: |-
     ∀ x, x ∈ array_center lst → x ∈ lst := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_index_of (lst : List Int) (x : Int) : Nat := sorry

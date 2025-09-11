@@ -51,8 +51,6 @@ vc-preamble: |-
     | (h::t) => h + sumList t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countList (x : Int) : List Int → Nat

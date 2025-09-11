@@ -42,8 +42,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_camera_angles (n : Nat) (cameras : List Int) (bird_x bird_y : Int) : Float :=

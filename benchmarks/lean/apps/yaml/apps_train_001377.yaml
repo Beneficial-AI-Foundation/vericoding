@@ -43,8 +43,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_pipernet (n a b x y z : Nat) (contributions : List Nat) : Nat ⊕ String := sorry 

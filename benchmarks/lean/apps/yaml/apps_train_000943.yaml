@@ -72,8 +72,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_min_height_diff (n : Nat) (k : Nat) (heights : List Int) : Int :=

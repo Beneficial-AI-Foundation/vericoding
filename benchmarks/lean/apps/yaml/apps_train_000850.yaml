@@ -49,8 +49,6 @@ vc-preamble: |-
   def list_any (l : List Nat) (f : Nat → Bool) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_sum (l : List Nat) : Nat := 

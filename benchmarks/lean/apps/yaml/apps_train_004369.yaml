@@ -21,8 +21,6 @@ vc-preamble: |-
   def binary_to_int (s : String) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_valid_binary (s : String) : Bool := sorry

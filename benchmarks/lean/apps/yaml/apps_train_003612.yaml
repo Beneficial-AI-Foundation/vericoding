@@ -16,8 +16,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def histogram (lst : List Nat) (width : Nat) : List Nat := sorry

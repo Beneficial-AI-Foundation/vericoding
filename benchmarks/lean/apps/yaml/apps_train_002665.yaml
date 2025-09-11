@@ -29,8 +29,6 @@ vc-preamble: |-
   def productOfDigits (n : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def digitsOfNat (n : Nat) : List Nat := sorry

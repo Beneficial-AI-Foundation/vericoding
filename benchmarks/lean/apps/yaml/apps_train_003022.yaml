@@ -25,8 +25,6 @@ vc-preamble: |-
   -- Define the special case
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isInsomnia (n: Int) : Bool := sorry

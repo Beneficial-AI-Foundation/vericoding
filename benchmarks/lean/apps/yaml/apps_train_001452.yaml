@@ -61,8 +61,6 @@ vc-preamble: |-
     List.replicate n (String.mk (List.replicate m '0'))
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def make_one_matrix (n m : Nat) : List String :=

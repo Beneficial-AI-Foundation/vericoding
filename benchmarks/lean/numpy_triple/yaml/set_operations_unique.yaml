@@ -19,8 +19,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def unique {n : Nat} (arr : Vector Int n) : Id (List Int) :=

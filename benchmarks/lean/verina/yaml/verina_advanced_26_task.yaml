@@ -29,7 +29,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def digitToLetters (c : Char) : List Char :=
     match c with
     | '2' => ['a', 'b', 'c']
@@ -41,7 +40,6 @@ vc-helpers: |-
     | '8' => ['t', 'u', 'v']
     | '9' => ['w', 'x', 'y', 'z']
     | _ => []
-  -- </vc-helpers>
 
 vc-definitions: |-
   def letterCombinations (digits : String) (h_precond : letterCombinations_precond (digits)) : List String :=

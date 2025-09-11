@@ -13,8 +13,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def tiy_fizz_buzz (s : String) : String := sorry

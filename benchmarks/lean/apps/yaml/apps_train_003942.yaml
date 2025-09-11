@@ -33,8 +33,6 @@ vc-preamble: |-
   def matching (o c : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countOpening (s : String) : Nat := sorry

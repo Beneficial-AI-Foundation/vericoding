@@ -59,8 +59,6 @@ vc-preamble: |-
     | x::xs => x + listSum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChar (s: String) (c: Char) : Nat :=

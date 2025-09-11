@@ -19,8 +19,6 @@ vc-preamble: |-
   def string_to_float (s : String) : Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def int_to_float (i : Int) : Float := sorry

@@ -37,8 +37,6 @@ vc-preamble: |-
       | some m => some (min x m)) none
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maximum (xs : List Int) : Option Int :=

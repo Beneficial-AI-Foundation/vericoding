@@ -47,8 +47,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def symmetric_subscribers (eng : List Int) (french : List Int) : Nat := sorry

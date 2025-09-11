@@ -35,8 +35,6 @@ vc-preamble: |-
     stars : String
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def parse_segment (s : String) : Option SegmentInfo := sorry

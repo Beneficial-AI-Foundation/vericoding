@@ -32,8 +32,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def place {n k v : Nat} (arr : Vector Float n) (mask : Vector Bool n) (vals : Vector Float (v + 1))

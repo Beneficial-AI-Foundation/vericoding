@@ -32,8 +32,6 @@ vc-preamble: |-
       x * hermiteE (n + 1) x - coeff * hermiteE n x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hermefit {m : Nat} (x : Vector Float m) (y : Vector Float m) (deg : Nat) 

@@ -58,8 +58,6 @@ vc-preamble: |-
   def BIT.mk (n : Nat) : BIT n := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_tree_queries (n : Nat) (costs : List Nat) (edges : List (List Nat)) (queries : List (List Nat)) : List Nat := sorry

@@ -53,8 +53,6 @@ vc-preamble: |-
     fun n => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countNumbersWithSpecialValue : List (Nat × Nat × Nat) → List Nat := 

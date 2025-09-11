@@ -54,8 +54,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def fortune (f0 : Int) (p : Float) (c0 : Int) (n : Int) (i : Float) : Bool := sorry

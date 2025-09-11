@@ -38,8 +38,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def shape {α : Type} {n : Nat} (a : Vector α n) : Id Nat :=

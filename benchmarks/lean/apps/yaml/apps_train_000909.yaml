@@ -32,8 +32,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_turns_to_divisible_by_10 (n : Int) : Int :=

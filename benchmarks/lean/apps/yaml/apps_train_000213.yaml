@@ -37,8 +37,6 @@ vc-preamble: |-
     subarrayBitwiseORs nums ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countUnique (l: List Nat) : Nat := 

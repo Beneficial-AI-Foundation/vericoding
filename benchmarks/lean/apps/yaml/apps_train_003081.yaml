@@ -35,8 +35,6 @@ vc-preamble: |-
   def maximum (l : List Int) : Option Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maximum_product (arr : List Int) : Int := sorry

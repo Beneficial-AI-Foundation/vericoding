@@ -38,8 +38,6 @@ vc-preamble: |-
     imag : Float
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hfft {m : Nat} (a : Vector Complex (m + 1)) : Id (Vector Float (2 * m)) :=

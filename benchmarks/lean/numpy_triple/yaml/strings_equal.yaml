@@ -36,8 +36,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def equal {n : Nat} (x1 x2 : Vector String n) : Id (Vector Bool n) :=

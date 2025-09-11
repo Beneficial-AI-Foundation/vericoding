@@ -50,8 +50,6 @@ vc-preamble: |-
     | h :: t => h + list_sum t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_movable_sum (n d : Nat) (haybales : List Nat) : Nat :=

@@ -40,8 +40,6 @@ vc-preamble: |-
     doors n ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sqrt (n : Nat) : Nat := sorry

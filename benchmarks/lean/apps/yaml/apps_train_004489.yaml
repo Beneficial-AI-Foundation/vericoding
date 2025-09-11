@@ -46,8 +46,6 @@ vc-preamble: |-
   def maximum? (l : List Int) : Option Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def filterWithIndex (l : List Int) (f : Nat → Int → Bool) : List Int := sorry

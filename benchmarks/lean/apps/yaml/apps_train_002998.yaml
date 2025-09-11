@@ -43,8 +43,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def color_2_grey (colors: List (List (List (List Nat)))) : List (List (List (List Nat))) := sorry

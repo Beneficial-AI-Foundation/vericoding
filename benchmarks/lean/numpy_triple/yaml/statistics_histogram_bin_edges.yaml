@@ -30,8 +30,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def histogram_bin_edges {n : Nat} (data : Vector Float (n + 1)) (num_bins : Nat) 

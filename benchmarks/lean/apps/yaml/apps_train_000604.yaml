@@ -31,8 +31,6 @@ vc-preamble: |-
   def substr (s : String) (i len : Nat) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_stem (words : List String) : String := sorry

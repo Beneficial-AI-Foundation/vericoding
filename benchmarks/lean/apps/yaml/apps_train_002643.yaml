@@ -23,8 +23,6 @@ vc-preamble: |-
   instance : ToString Int where toString := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Int.abs (n : Int) : Int := if n < 0 then -n else n

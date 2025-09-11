@@ -37,8 +37,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_transpose {rows cols : Nat} (a : Vector (Vector Float cols) rows) : 

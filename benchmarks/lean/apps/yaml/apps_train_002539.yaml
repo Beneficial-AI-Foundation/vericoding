@@ -27,8 +27,6 @@ vc-preamble: |-
   def validTextures := ["smooth", "bumpy"]
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def colorProbability (color: String) (texture: String) : Float :=

@@ -22,8 +22,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def area_of_polygon_inside_circle (r : Float) (n : Nat) : Float := sorry 

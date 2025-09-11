@@ -83,8 +83,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_ram_win (tr_list dr_list ts_list ds_list : List Int) : String :=

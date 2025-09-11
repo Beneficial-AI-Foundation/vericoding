@@ -31,8 +31,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def polyder {n : Nat} (c : Vector Float n) (m : Nat := 1) (scl : Float := 1) 

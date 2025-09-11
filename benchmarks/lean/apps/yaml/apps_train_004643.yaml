@@ -36,8 +36,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def grid_index (grid : List (List Char)) (indexes : List Nat) : List Char := sorry

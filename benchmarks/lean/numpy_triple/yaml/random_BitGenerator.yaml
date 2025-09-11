@@ -43,8 +43,6 @@ vc-preamble: |-
     internal_state : UInt64
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_random_BitGenerator (seed : Option UInt64) : Id BitGeneratorState :=

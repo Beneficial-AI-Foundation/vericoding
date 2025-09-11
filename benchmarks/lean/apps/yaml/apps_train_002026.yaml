@@ -34,8 +34,6 @@ vc-preamble: |-
     | h::t => List.foldl max h t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_max_group_strengths (n : Nat) (heights : List Nat) : List Nat :=

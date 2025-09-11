@@ -43,8 +43,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def histogram {n_data n_bins : Nat} (data : Vector Float n_data) (min_val max_val : Float)

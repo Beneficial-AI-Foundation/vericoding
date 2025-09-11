@@ -37,8 +37,6 @@ vc-preamble: |-
   /- Helper function to get spread after removing a node -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_spread (graph : List (List Int)) (initial : List Int) (removed : Int) : Int := sorry

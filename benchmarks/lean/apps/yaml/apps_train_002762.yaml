@@ -21,8 +21,6 @@ vc-preamble: |-
     opposite (opposite x) = x := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def opposite_real (x : Float) : Float := sorry 

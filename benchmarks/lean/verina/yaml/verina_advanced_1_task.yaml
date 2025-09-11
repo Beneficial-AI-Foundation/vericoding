@@ -20,14 +20,12 @@ vc-preamble: |-
     numsCount.all (fun count => count = 1 ∨ count = 2) ∧ numsCount.count 1 = 1
 
 vc-helpers: |-
-  -- <vc-helpers>
   def filterlist (x : Int) (nums : List Int) : List Int :=
     let rec aux (lst : List Int) : List Int :=
       match lst with
       | []      => []
       | y :: ys => if y = x then y :: aux ys else aux ys
     aux nums
-  -- </vc-helpers>
 
 vc-definitions: |-
   def FindSingleNumber (nums : List Int) (h_precond : FindSingleNumber_precond (nums)) : Int :=

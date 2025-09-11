@@ -24,8 +24,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_matrix_transpose {rows cols : Nat} (x : Vector (Vector Float cols) rows) : Id (Vector (Vector Float rows) cols) :=

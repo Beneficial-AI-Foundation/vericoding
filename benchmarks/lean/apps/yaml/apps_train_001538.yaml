@@ -75,8 +75,6 @@ vc-preamble: |-
   def valid_photo_pattern : String → Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def process_chefgram_filters : String → List String → Nat := sorry

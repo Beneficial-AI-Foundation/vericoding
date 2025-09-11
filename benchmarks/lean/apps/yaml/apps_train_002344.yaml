@@ -32,8 +32,6 @@ vc-preamble: |-
   /- Helper function to convert hex string to number (just for theorem statements) -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hexToNat (s : String) : Nat := sorry

@@ -24,8 +24,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_setxor1d {n m k : Nat} (ar1 : Vector Float n) (ar2 : Vector Float m) : Id (Vector Float k) :=

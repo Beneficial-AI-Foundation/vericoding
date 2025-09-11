@@ -22,8 +22,6 @@ vc-preamble: |-
   def stringReverse (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getMismatches (s : String) : Nat := sorry

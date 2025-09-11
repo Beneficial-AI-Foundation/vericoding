@@ -14,8 +14,6 @@ vc-preamble: |-
     alphabetic "" = true := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (cs : List Char) : Prop := 

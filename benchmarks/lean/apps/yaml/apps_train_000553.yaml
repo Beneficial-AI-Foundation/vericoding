@@ -49,8 +49,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_triple_tree_decomposition (n: Nat) (edges: List (Nat × Nat)) : List String := sorry

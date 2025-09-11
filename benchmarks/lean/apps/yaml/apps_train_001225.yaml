@@ -37,8 +37,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_library_fees (fee_per_day : Int) (max_fee : Int) (days_late : Int) : Int :=

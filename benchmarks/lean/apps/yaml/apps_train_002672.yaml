@@ -16,8 +16,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def digitsToNat (digits : List Nat) : Nat :=

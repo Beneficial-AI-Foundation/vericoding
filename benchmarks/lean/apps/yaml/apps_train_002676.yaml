@@ -11,8 +11,6 @@ vc-preamble: |-
   def is_valid_input (arr : List Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_valid_output (s : String) : Bool := sorry

@@ -46,8 +46,6 @@ vc-preamble: |-
     1 ≤ total_fruit tree ∧ total_fruit tree ≤ tree.length := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maxSubseqLengthWithTwoTypes (tree : List Nat) : Nat := sorry

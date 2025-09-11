@@ -22,8 +22,6 @@ vc-preamble: |-
     lc == 'a' ∨ lc == 'e' ∨ lc == 'i' ∨ lc == 'o' ∨ lc == 'u' ∨ lc == 'y'
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def vowel_indices (s : String) : List Nat :=

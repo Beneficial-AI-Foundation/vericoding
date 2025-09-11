@@ -58,8 +58,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def determine_candy_game_winner (limak_max : Nat) (bob_max : Nat) : String := sorry

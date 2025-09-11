@@ -24,8 +24,6 @@ vc-preamble: |-
     nums.size > 1 ∧ ¬ List.Pairwise (fun a b => a + b ≠ target) nums.toList
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def twoSum (nums : Array Int) (target : Int) (h_precond : twoSum_precond (nums) (target)) : (Nat × Nat) :=

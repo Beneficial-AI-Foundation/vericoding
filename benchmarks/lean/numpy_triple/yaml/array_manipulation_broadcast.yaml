@@ -54,8 +54,6 @@ vc-preamble: |-
     getElement : Fin shape.1 → Fin shape.2 → T × T
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def broadcast {m n : Nat} (x : Vector Float m) (y : Vector Float n) 

@@ -27,8 +27,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def svdvals {m n : Nat} (x : Vector (Vector Float n) m) : Id (Vector Float (min m n)) :=

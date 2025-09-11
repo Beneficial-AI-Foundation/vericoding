@@ -43,8 +43,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_shots_to_find_x (n: Nat) (l: Nat) : Nat :=

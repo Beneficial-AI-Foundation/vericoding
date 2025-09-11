@@ -50,8 +50,6 @@ vc-preamble: |-
     ∀ i j, i < j → j < xs.length → (xs.get ⟨i, by sorry⟩) ≤ (xs.get ⟨j, by sorry⟩)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Topology := Char → Char → Option Nat

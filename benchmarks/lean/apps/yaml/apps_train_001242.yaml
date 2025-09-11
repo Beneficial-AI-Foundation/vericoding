@@ -47,8 +47,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_cthulhu_code (i k s a_i b_i : Int) : Float := sorry

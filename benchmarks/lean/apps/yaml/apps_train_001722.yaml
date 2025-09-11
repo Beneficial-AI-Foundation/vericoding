@@ -161,8 +161,6 @@ vc-preamble: |-
     decode : List String → Option String
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def defaultPlayingCards : PlayingCards :=

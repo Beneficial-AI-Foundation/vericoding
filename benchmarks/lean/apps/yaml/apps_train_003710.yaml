@@ -14,8 +14,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def List.isPermutationOf (l1 l2 : List Int) : Prop :=

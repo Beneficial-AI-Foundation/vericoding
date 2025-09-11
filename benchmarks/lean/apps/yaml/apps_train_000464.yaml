@@ -53,8 +53,6 @@ vc-preamble: |-
     hMul := fun n s => Nat.mul n s
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_score_words (words: List Word) (letters: List Letter) (scores: List Score) : Score :=

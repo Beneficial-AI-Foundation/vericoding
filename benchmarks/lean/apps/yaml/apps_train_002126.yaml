@@ -54,8 +54,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def makeAlternatingString (n : Nat) (startBit : String) : String :=

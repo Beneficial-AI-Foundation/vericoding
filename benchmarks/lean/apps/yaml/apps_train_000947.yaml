@@ -36,8 +36,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_brackets (n : Nat) (brackets : List Nat) : Nat × Nat × Nat := sorry

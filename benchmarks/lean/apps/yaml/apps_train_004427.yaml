@@ -15,8 +15,6 @@ vc-preamble: |-
   def trim (s : String) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def to_freud (s : String) : String := sorry

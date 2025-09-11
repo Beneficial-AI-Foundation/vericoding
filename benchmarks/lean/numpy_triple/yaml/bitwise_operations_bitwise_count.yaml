@@ -32,8 +32,6 @@ vc-preamble: |-
     if n = 0 then 0 else (n % 2) + popcount (n / 2)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bitwise_count {n : Nat} (x : Vector Int n) : Id (Vector Nat n) :=

@@ -38,8 +38,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_heads_after_operations (n k : Nat) (coins : List Bool) : Nat :=

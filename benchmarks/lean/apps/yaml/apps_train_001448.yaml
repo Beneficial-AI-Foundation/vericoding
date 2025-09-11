@@ -39,8 +39,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_string_chars (s : String) (n : Nat) (chars : String) : Nat :=

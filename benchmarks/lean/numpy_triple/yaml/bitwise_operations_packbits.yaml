@@ -28,8 +28,6 @@ vc-preamble: |-
     | little -- LSB first: bit 0 is first element
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def packbits {n : Nat} (a : Vector Bool n) (bitorder : BitOrder := BitOrder.big) : 

@@ -19,8 +19,6 @@ vc-preamble: |-
     nums.length > 0 ∧ nums.any (fun x => nums.count x > nums.length / 2)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def majorityElement (nums : List Int) (h_precond : majorityElement_precond (nums)) : Int :=

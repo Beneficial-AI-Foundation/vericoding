@@ -53,8 +53,6 @@ vc-preamble: |-
     ∀ i j, i < j → j < as.length → as[i]! < as[j]!
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_min_time (n m : Nat) (heads tracks : List Nat) : Nat := sorry

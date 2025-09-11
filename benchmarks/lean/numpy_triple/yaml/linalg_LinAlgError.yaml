@@ -37,8 +37,6 @@ vc-preamble: |-
     deriving Repr, DecidableEq
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def checkLinAlgError (condition : Bool) (errorType : String → LinAlgError) (message : String) : Id (Option LinAlgError) :=

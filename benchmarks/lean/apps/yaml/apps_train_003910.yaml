@@ -9,8 +9,6 @@ vc-preamble: |-
   def lcm (a b : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def divisors (n : Nat) : List Nat := sorry

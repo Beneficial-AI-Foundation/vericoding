@@ -29,8 +29,6 @@ vc-preamble: |-
     else 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bonus_points (radiuses : List Float) : Nat :=

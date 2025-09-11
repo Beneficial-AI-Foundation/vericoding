@@ -20,8 +20,6 @@ vc-preamble: |-
     heights.all (fun h => h >= 0)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rain (heights : List (Int)) (h_precond : rain_precond (heights)) : Int :=

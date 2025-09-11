@@ -32,8 +32,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (n : Nat) (parents : List Nat) : List Nat := sorry

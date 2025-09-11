@@ -57,8 +57,6 @@ vc-preamble: |-
     find_f1_eq_f2 542 5 = 547 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def appears_in (d : Nat) (n : Nat) : Prop := sorry 

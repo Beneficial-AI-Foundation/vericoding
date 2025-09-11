@@ -56,8 +56,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (n k : Nat) (nums : List Nat) (friends : List Nat) : Nat := sorry 

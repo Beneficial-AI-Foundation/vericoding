@@ -43,8 +43,6 @@ vc-preamble: |-
   def hasWin (board : List String) (player : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChar (board : List String) (c : Char) : Nat := sorry

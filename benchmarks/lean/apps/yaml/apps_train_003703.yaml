@@ -20,8 +20,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def guess_my_number (guess : String) (target : String := "123-456-7890") : String := sorry

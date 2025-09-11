@@ -35,8 +35,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def cup_and_balls (b : Nat) (swaps : List (List Nat)) : Nat := sorry

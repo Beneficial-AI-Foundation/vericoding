@@ -37,8 +37,6 @@ vc-preamble: |-
   def find_max_prime_factor (nums : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_prime_factors_count (nums : List Nat) : List (Nat × Nat) := sorry

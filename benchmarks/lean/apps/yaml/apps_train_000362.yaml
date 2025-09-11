@@ -26,8 +26,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def findMaxInRoutes (routes: List (List Nat)) : Nat :=

@@ -34,8 +34,6 @@ vc-preamble: |-
     l.filter (fun x => x > 0)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def filterNegative (l : List Int) : List Int :=

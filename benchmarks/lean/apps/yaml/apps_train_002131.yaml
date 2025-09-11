@@ -51,8 +51,6 @@ vc-preamble: |-
   def sub_string (a b : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def subword (t : List Int) (ord_ar : List Int) (n : Int) : List Int := sorry

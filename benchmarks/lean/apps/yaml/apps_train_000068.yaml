@@ -46,8 +46,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_cost_clear_mines (a b : Nat) (mine_map : String) : Nat := sorry 

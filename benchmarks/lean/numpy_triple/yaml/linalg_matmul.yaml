@@ -29,8 +29,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def matmul {m n p : Nat} (A : Vector (Vector Float n) m) (B : Vector (Vector Float p) n) : 

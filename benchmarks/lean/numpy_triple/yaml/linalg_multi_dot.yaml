@@ -37,8 +37,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def multi_dot {n₁ n₂ n₃ n₄ : Nat} 

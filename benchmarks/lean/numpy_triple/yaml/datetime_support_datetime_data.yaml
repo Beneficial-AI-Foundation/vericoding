@@ -72,8 +72,6 @@ vc-preamble: |-
     | timedelta64 : DatetimeTypeInfo → DatetimeDtype
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def datetime_data (dtype : DatetimeDtype) : Id (DatetimeUnit × Nat) :=

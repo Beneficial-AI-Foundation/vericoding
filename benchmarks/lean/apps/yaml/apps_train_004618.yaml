@@ -41,8 +41,6 @@ vc-preamble: |-
     else d1 > d2
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def dateDiffDays (d1 m1 y1 d2 m2 y2 : Int) : Int :=

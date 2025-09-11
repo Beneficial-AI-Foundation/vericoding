@@ -79,8 +79,6 @@ vc-preamble: |-
     String.mk (List.replicate width '0')
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def makeZeroGrid (width height: Nat) : String :=

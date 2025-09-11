@@ -63,8 +63,6 @@ vc-preamble: |-
   def isAllZeros (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def stringInList (s : String) (l : List String) : Bool := sorry

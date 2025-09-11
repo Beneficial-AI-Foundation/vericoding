@@ -37,8 +37,6 @@ vc-preamble: |-
   def is_valid_triangle (sides : List Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_sum (l : List Nat) : Nat := 

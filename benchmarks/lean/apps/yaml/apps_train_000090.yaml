@@ -53,8 +53,6 @@ vc-preamble: |-
   def isValidPermutation (n : Nat) (result : List Int) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def satisfiesQConstraints (result : List Int) (q : List Int) : Bool := sorry 

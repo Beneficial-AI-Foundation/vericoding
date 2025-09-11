@@ -34,8 +34,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_min_max_product (arr : List Int) (k : Nat) : Option (Int × Int) := sorry

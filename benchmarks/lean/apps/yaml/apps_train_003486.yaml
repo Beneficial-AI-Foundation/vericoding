@@ -46,8 +46,6 @@ vc-preamble: |-
   def isInt (n : Int) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countCoprimes (n : Int) : Int := sorry

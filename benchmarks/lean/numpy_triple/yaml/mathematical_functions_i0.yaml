@@ -40,8 +40,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def i0 {n : Nat} (x : Vector Float n) : Id (Vector Float n) :=

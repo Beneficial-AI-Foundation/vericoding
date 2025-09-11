@@ -22,8 +22,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rsplit {n : Nat} (a : Vector String n) (sep : String) (maxsplit : Nat) : Id (Vector (List String) n) :=

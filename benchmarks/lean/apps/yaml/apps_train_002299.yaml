@@ -34,8 +34,6 @@ vc-preamble: |-
   def max (nums : List Int) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def uniqueSorted (nums : List Int) : List Int := sorry

@@ -34,8 +34,6 @@ vc-preamble: |-
   def divisors_sum (n : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ds_multof_pfs (nMin nMax : Nat) : List Nat := sorry

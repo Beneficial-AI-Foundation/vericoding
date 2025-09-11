@@ -49,8 +49,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def verifySequenceMatchesComparisons (seq : List Nat) (comps : List Char) : Bool :=

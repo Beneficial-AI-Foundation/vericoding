@@ -42,8 +42,6 @@ vc-preamble: |-
   def Even (n : Nat) : Prop := ∃ k, n = 2 * k
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countOdds (xs : List Int) : Nat :=

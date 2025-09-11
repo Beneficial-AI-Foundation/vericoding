@@ -30,8 +30,6 @@ vc-preamble: |-
       (List.range i).filter (fun j => nums[i]! + nums[j]! = target))).length = 1
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def twoSum (nums : Array Int) (target : Int) (h_precond : twoSum_precond (nums) (target)) : Array Nat :=

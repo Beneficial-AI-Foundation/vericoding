@@ -71,8 +71,6 @@ vc-preamble: |-
   def Triangle := (Point × Point × Point)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def area (t : Triangle) : Float := sorry

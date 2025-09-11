@@ -52,8 +52,6 @@ vc-preamble: |-
   | x::xs => min x (listMin xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def secondMin : List Nat → Nat

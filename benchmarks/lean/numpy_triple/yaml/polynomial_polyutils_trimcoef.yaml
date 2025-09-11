@@ -23,8 +23,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def trimcoef {n : Nat} (c : Vector Float n) (tol : Float) : Id (Vector Float (n + 1)) :=

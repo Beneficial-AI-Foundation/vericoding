@@ -35,8 +35,6 @@ vc-preamble: |-
   def String.lines (s: String) : List String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.characterAt (s: String) (i: Nat) : Char := sorry

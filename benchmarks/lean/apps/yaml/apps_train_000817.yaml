@@ -48,8 +48,6 @@ vc-preamble: |-
   def max_list (l : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def enumerate_add (shops : List Nat) : List Nat :=

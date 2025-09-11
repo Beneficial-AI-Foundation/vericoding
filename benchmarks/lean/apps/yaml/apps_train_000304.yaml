@@ -30,8 +30,6 @@ vc-preamble: |-
     l.foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def toNat (i : Int) : Nat :=

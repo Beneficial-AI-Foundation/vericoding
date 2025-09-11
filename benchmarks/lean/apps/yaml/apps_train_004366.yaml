@@ -58,8 +58,6 @@ vc-preamble: |-
   theorem impossible_values_2 : number_increasing 2 = false := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def bitLength (n : Nat) : Nat :=

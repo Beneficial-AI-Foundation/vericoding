@@ -13,8 +13,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def most_frequent_item_count (lst : List Int) : Nat := sorry

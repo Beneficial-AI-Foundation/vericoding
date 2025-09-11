@@ -68,8 +68,6 @@ vc-preamble: |-
     | .Float16 | .Float32 | .Float64 | .Complex64 | .Complex128 => True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_scalar_type (value : Float) : Id NumpyDType :=

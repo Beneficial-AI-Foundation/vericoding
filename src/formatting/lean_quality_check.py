@@ -328,7 +328,7 @@ def process_yaml_file(file_path: Path) -> None:
     """Process a single YAML file to remove 'import Imports.AllImports' lines and normalize sections."""
 
     required_keys = ['vc-description', 'vc-preamble', 'vc-helpers', 
-                     'vc-spec', 'vc-code', 'vc-postamble']
+                     'vc-definitions', 'vc-theorems', 'vc-postamble']
                      
     try:
         # Import ruamel.yaml here to avoid circular imports
@@ -353,22 +353,22 @@ def process_yaml_file(file_path: Path) -> None:
         # remove tags from all sections
         for key, value in spec.items():
             if isinstance(value, str):
-                value = check_for_tag(value, key, 'vc-spec', '<vc-spec>', '// <vc-spec>')
-                value = check_for_tag(value, key, 'vc-spec', '</vc-spec>', '// </vc-spec>')
-                value = check_for_tag(value, key, 'vc-code', '<vc-code>', '// <vc-code>')
-                value = check_for_tag(value, key, 'vc-code', '</vc-code>', '// </vc-code>')
-                value = check_for_tag(value, key, 'vc-definitions', '<vc-definitions>', '// <vc-definitions>')
-                value = check_for_tag(value, key, 'vc-definitions', '</vc-definitions>', '// </vc-definitions>')
-                value = check_for_tag(value, key, 'vc-theorems', '<vc-theorems>', '// <vc-theorems>')
-                value = check_for_tag(value, key, 'vc-theorems', '</vc-theorems>', '// </vc-theorems>')
-                value = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '// <vc-helpers>')
-                value = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '// </vc-helpers>')
-                value = check_for_tag(value, key, 'vc-preamble', '<vc-preamble>', '// <vc-preamble>')
-                value = check_for_tag(value, key, 'vc-preamble', '</vc-preamble>', '// </vc-preamble>')
-                value = check_for_tag(value, key, 'vc-postamble', '<vc-postamble>', '// <vc-postamble>')
-                value = check_for_tag(value, key, 'vc-postamble', '</vc-postamble>', '// </vc-postamble>')
-                value = check_for_tag(value, key, 'vc-description', '<vc-description>', '// <vc-description>')
-                value = check_for_tag(value, key, 'vc-description', '</vc-description>', '// </vc-description>')
+                value = check_for_tag(value, key, None, '<vc-spec>', '-- <vc-spec>')
+                value = check_for_tag(value, key, None, '</vc-spec>', '-- </vc-spec>')
+                value = check_for_tag(value, key, None, '<vc-code>', '-- <vc-code>')
+                value = check_for_tag(value, key, None, '<vc-code>', '-- </vc-code>')
+                value = check_for_tag(value, key, 'vc-definitions', '<vc-definitions>', '-- <vc-definitions>')
+                value = check_for_tag(value, key, 'vc-definitions', '</vc-definitions>', '-- </vc-definitions>')
+                value = check_for_tag(value, key, 'vc-theorems', '<vc-theorems>', '-- <vc-theorems>')
+                value = check_for_tag(value, key, 'vc-theorems', '</vc-theorems>', '-- </vc-theorems>')
+                value = check_for_tag(value, key, 'vc-helpers', '<vc-helpers>', '-- <vc-helpers>')
+                value = check_for_tag(value, key, 'vc-helpers', '</vc-helpers>', '-- </vc-helpers>')
+                value = check_for_tag(value, key, 'vc-preamble', '<vc-preamble>', '-- <vc-preamble>')
+                value = check_for_tag(value, key, 'vc-preamble', '</vc-preamble>', '-- </vc-preamble>')
+                value = check_for_tag(value, key, 'vc-postamble', '<vc-postamble>', '-- <vc-postamble>')
+                value = check_for_tag(value, key, 'vc-postamble', '</vc-postamble>', '-- </vc-postamble>')
+                value = check_for_tag(value, key, 'vc-description', '<vc-description>', '-- <vc-description>')
+                value = check_for_tag(value, key, 'vc-description', '</vc-description>', '-- </vc-description>')
                 spec[key] = value
 
         # # remove HumanEval tags

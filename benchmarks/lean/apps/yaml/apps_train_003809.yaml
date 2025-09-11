@@ -44,8 +44,6 @@ vc-preamble: |-
   def str_count_digits (n: Nat) : List Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def toString (n: Nat) : String := sorry

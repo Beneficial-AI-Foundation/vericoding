@@ -27,8 +27,6 @@ vc-preamble: |-
   def sameLetters (word1 word2 : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reverseString (s : String) : String := sorry

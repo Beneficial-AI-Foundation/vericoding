@@ -45,8 +45,6 @@ vc-preamble: |-
   def colorFor (c : Char) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.count (s : String) (sub : String) : Nat := sorry

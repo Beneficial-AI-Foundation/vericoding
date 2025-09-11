@@ -20,8 +20,6 @@ vc-preamble: |-
     | h::t => h + sumList t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def combos (n : Int) (m : Int := 1) : List (List Int) := sorry

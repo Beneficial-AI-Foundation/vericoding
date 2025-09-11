@@ -98,8 +98,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_polydivisible (s : String) (base : Nat) : Bool :=

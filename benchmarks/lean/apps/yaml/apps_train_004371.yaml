@@ -33,8 +33,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def logistic_map (width height : Nat) (xs ys : List Nat) : List (List (Option Nat)) := sorry

@@ -29,8 +29,6 @@ vc-preamble: |-
   axiom evaluatePolynomial {k : Nat} : Vector Float k → Float → Float
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lag2poly {n : Nat} (c : Vector Float n) : Id (Vector Float n) :=

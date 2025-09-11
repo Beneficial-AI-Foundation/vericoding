@@ -29,8 +29,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def factors (n : Nat) : List Nat × List Nat := sorry

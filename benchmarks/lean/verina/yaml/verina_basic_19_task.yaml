@@ -22,8 +22,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (a : Array Int) (h_precond : isSorted_precond (a)) : Bool :=

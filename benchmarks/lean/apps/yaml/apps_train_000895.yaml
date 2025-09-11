@@ -43,8 +43,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def add_numbers_between_strings (n1 n2 : Int) (use_floor_division : Bool) : Int :=

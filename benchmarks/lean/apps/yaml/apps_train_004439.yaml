@@ -35,8 +35,6 @@ vc-preamble: |-
   def calculate_last_digit (digits : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_valid_tr_number (n : String) : Bool := sorry

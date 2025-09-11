@@ -26,8 +26,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mergeSort (list : List Int) (h_precond : mergeSort_precond (list)) : List Int :=

@@ -24,8 +24,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_rollaxis {n : Nat} (a : Vector Float n) (axis : Int) (start : Int := 0) : Id (Vector Float n) :=

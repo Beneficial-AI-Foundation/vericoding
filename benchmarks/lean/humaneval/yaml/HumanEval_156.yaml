@@ -154,8 +154,6 @@ vc-preamble: |-
     romanToDecimalAux s.data
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (num: Nat) : String :=

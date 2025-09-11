@@ -31,8 +31,6 @@ vc-preamble: |-
     if x ≥ 0 then x else -x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_and_min (arr1 arr2 : List Int) : List Int :=

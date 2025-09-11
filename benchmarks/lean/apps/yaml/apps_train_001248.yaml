@@ -57,8 +57,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_ray_grid (n m w b : Nat) (w_cells b_cells : List Nat) : Nat :=

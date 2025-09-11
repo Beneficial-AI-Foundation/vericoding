@@ -45,8 +45,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_count_bases_starting_with_1 (n: Int) : String := sorry

@@ -19,7 +19,6 @@ vc-preamble: |-
     d > 0
 
 vc-helpers: |-
-  -- <vc-helpers>
   def sumOfDigits (x : Nat) : Nat :=
     let rec go (n acc : Nat) : Nat :=
       if n = 0 then acc
@@ -28,7 +27,6 @@ vc-helpers: |-
   
   def isSumDivisibleBy (x : Nat) (d:Nat) : Bool :=
     (sumOfDigits x) % d = 0
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countSumDivisibleBy (n : Nat) (d : Nat) (h_precond : countSumDivisibleBy_precond (n) (d)) : Nat :=

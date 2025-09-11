@@ -65,8 +65,6 @@ vc-preamble: |-
         checkTitleCase chars true
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def istitle {n : Nat} (a : Vector String n) : Id (Vector Bool n) :=

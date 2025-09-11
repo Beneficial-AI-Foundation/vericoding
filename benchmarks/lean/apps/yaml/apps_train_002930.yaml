@@ -49,8 +49,6 @@ vc-preamble: |-
   def digits (n : Nat) : List Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def take_prefix (n : Nat) (len : Nat) : Nat := sorry

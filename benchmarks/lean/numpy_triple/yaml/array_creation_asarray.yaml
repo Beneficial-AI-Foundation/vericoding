@@ -26,8 +26,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def asarray {n : Nat} (a : List Float) (h : a.length = n) : Id (Vector Float n) :=

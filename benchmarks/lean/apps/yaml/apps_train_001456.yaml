@@ -60,8 +60,6 @@ vc-preamble: |-
     max_magnet_attract n k s = 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countAdjacentPairs (n : Nat) (s : String) : Nat := sorry

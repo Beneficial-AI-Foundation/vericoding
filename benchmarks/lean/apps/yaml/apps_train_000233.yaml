@@ -22,8 +22,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def num_subarrays_with_sum (nums : List Nat) (target : Nat) : Nat :=

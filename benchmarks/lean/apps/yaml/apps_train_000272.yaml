@@ -36,8 +36,6 @@ vc-preamble: |-
     | n + 1 => (n + 1) * factorial n
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_permutation (n : Nat) (k : Nat) : String := sorry

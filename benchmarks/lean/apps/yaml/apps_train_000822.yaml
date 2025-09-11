@@ -42,8 +42,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_max_sequence_sum (n : Nat) (grid : List (List Int)) : Int :=

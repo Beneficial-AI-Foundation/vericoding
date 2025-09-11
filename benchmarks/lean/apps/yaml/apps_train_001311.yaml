@@ -41,8 +41,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_remove_for_kgood (s : String) (k : Nat) : Nat :=

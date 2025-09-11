@@ -19,8 +19,6 @@ vc-preamble: |-
     List.Pairwise (· ≤ ·) arr1 ∧ List.Pairwise (· ≤ ·) arr2
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mergeSortedLists (arr1 : List Int) (arr2 : List Int) (h_precond : mergeSortedLists_precond (arr1) (arr2)) : List Int :=

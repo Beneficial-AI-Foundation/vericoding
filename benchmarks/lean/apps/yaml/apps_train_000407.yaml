@@ -27,8 +27,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mergeSorted (l1 l2 : List Int) : List Int :=

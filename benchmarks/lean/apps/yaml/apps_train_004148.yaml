@@ -20,8 +20,6 @@ vc-preamble: |-
   | _ => none
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getPlanetName (id: Int) : Option String := sorry

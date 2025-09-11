@@ -65,8 +65,6 @@ vc-preamble: |-
                     else select_indices xs (fun n => f (n+1))
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def row_weights (numbers : List Nat) : Nat × Nat := sorry

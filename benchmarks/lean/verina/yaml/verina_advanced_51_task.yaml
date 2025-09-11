@@ -19,7 +19,6 @@ vc-preamble: |-
     List.Pairwise (· ≤ ·) a ∧ List.Pairwise (· ≤ ·) b
 
 vc-helpers: |-
-  -- <vc-helpers>
   def mergeSortedAux : List Int → List Int → List Int
   | [], ys => ys
   | xs, [] => xs
@@ -30,7 +29,6 @@ vc-helpers: |-
     else
       let merged := mergeSortedAux (x :: xs') ys'
       y :: merged
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mergeSorted (a : List Int) (b : List Int) (h_precond : mergeSorted_precond (a) (b)) : List Int :=

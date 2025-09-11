@@ -82,8 +82,6 @@ vc-preamble: |-
     | h :: t => h + sumList t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calc_forest_volume (rows cols : Nat) (grid : List (List Nat)) (rectangles : List (List Nat)) : List Nat := sorry

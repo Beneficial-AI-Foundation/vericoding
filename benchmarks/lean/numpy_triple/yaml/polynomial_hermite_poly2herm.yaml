@@ -34,8 +34,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def poly2herm {n : Nat} (pol : Vector Float n) : Id (Vector Float n) :=

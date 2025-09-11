@@ -41,8 +41,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def delete {n : Nat} (arr : Vector Float (n + 1)) (index : Fin (n + 1)) : 

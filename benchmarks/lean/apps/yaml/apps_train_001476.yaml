@@ -63,8 +63,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_valid_shot (n : Nat) (shot : Nat × Nat) : Bool :=

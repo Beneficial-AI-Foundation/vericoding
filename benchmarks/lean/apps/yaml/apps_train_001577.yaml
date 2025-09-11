@@ -31,8 +31,6 @@ vc-preamble: |-
     middle_permutation s = middle_permutation s := by sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def char_list_eq (l1 l2 : List Char) : Prop := 

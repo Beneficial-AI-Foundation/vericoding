@@ -33,8 +33,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def xorQueries (arr : List Nat) (queries : List (Nat × Nat)) : List Nat := sorry

@@ -42,8 +42,6 @@ vc-preamble: |-
   def sum_nonnegative (l : List Int) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sum_negative (l : List Int) : Int := sorry

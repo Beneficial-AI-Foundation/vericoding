@@ -55,8 +55,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_money_events (n : Nat) (balances : List Int) (events : List (Nat × Int)) : List Int := sorry

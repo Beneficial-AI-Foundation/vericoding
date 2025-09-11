@@ -41,8 +41,6 @@ vc-preamble: |-
   fibonacci_non_computable_3 (n + 3) (f₁ + f₂ + f₃)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (n: Nat) : Nat :=

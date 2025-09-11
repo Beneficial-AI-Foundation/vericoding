@@ -45,8 +45,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_max_banknotes (start g1 g2 : Int) (notes : List Int) : Int :=

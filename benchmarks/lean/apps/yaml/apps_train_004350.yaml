@@ -32,8 +32,6 @@ vc-preamble: |-
   def GridList := List (List Char)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def how_many_bees (grid : Grid) : Nat := sorry

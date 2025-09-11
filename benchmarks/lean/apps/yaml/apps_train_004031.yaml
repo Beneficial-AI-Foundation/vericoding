@@ -17,8 +17,6 @@ vc-preamble: |-
   def isStrictlyIncreasing (lst : List Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def checkSum (n : Nat) (lst : List Nat) : Bool := sorry

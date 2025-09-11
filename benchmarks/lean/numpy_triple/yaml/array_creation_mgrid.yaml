@@ -21,8 +21,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def mgrid {n : Nat} (start stop step : Float) (h_valid : n = ((stop - start) / step).toUInt64.toNat) : Id (Vector Float n) :=

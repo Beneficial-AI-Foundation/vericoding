@@ -26,8 +26,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sum_squares_up_to (n : Nat) : Nat :=

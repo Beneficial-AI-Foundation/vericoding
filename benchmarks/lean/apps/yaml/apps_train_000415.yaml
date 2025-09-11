@@ -28,8 +28,6 @@ vc-preamble: |-
   def MIN_INT : Int := -2147483648
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def divide (dividend : Int) (divisor : Int) : Int := sorry

@@ -41,8 +41,6 @@ vc-preamble: |-
     z.real * z.real + z.imag * z.imag
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def conj {n : Nat} (x : Vector Complex n) : Id (Vector Complex n) :=

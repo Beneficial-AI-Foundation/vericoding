@@ -52,8 +52,6 @@ vc-preamble: |-
     s.splitOn "\n"
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def makeHString (n : Nat) : String :=

@@ -52,8 +52,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_states_won (A B : Nat) (c_votes d_votes : List Nat) : Nat :=

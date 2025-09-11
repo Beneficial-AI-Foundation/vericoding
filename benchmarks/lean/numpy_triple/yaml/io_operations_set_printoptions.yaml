@@ -55,8 +55,6 @@ vc-preamble: |-
     legacy : Option String
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def set_printoptions 

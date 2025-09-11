@@ -32,8 +32,6 @@ vc-preamble: |-
     | (_::xs) => 1 + lengthList xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def better_than_average (class_points: List Int) (your_points: Int) : Bool :=

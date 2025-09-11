@@ -27,8 +27,6 @@ vc-preamble: |-
     | (x::xs) => xs.foldl max x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (l : List Nat) : Bool :=

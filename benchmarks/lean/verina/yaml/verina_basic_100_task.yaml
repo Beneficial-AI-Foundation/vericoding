@@ -24,8 +24,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Triple (x : Int) (h_precond : Triple_precond (x)) : Int :=

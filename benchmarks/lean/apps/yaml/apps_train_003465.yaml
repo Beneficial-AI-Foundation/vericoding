@@ -44,8 +44,6 @@ vc-preamble: |-
     | _ => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def button_sequences (r : String) (b : String) : String :=

@@ -20,8 +20,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def trapezoid {n : Nat} (y : Vector Float (n + 1)) (dx : Float) : Id Float :=

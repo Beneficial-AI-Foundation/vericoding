@@ -35,8 +35,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_make_square (a1 b1 a2 b2 : Nat) : Bool := sorry

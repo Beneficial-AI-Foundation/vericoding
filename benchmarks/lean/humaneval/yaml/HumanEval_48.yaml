@@ -32,8 +32,6 @@ vc-preamble: |-
   s = s.toList.reverse.asString
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def implementation (string: String) : Bool :=

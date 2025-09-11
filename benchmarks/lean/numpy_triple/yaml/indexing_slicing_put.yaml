@@ -38,8 +38,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def put {n m : Nat} (a : Vector Float n) (ind : Vector Nat m) (v : Vector Float m) 

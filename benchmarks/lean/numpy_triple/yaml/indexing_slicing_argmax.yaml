@@ -27,8 +27,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def argmax {n : Nat} (arr : Vector Float (n + 1)) : Id (Fin (n + 1)) :=

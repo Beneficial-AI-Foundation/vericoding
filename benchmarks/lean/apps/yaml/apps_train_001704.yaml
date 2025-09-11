@@ -183,8 +183,6 @@ vc-preamble: |-
     solve_single_digit_addition n ≤ 9 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def compute_running_sum : Nat → Nat 

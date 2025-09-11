@@ -23,8 +23,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def in1d {α : Type} {m n : Nat} [DecidableEq α] (ar1 : Vector α m) (ar2 : Vector α n) : Id (Vector Bool m) :=

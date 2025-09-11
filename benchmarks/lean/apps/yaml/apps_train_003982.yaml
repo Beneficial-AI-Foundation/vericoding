@@ -22,8 +22,6 @@ vc-preamble: |-
     (List.range n).map Int.ofNat
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_arithmetic_seq (seq : List Int) : Bool :=

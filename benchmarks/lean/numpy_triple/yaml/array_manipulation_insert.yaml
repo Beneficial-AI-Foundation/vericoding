@@ -42,8 +42,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def numpy_insert {n : Nat} (arr : Vector α n) (idx : Fin (n + 1)) (value : α) : Id (Vector α (n + 1)) :=

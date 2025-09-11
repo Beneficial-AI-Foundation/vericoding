@@ -38,8 +38,6 @@ vc-preamble: |-
     ∀ i j, i < j → j < l.length → l[i]! ≠ l[j]!
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_moves_to_sort (n : Nat) (arr : List Int) : Nat :=

@@ -30,8 +30,6 @@ vc-preamble: |-
   | n, mn, mx => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def primes : Nat → List Nat

@@ -60,8 +60,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def convert_strings (a b : String) : List (List Nat) := sorry

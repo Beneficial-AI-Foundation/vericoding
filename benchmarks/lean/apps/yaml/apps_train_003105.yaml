@@ -29,8 +29,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def my_first_kata (a b : Int) : Int ⊕ Bool := sorry

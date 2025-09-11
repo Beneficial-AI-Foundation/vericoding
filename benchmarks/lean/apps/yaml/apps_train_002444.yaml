@@ -41,8 +41,6 @@ vc-preamble: |-
   def validate_emails (emails : List Email) : List Email := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isValidEmailFormat (e : Email) : Bool := sorry

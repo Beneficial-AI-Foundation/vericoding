@@ -24,8 +24,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def hermsub {n m : Nat} (c1 : Vector Float n) (c2 : Vector Float m) : 

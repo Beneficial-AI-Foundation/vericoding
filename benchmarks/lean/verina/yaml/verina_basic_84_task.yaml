@@ -23,7 +23,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def replace_loop (oldArr : Array Int) (k : Int) : Nat → Array Int → Array Int
   | i, acc =>
     if i < oldArr.size then
@@ -33,7 +32,6 @@ vc-helpers: |-
         replace_loop oldArr k (i+1) acc
     else
       acc
-  -- </vc-helpers>
 
 vc-definitions: |-
   def replace (arr : Array Int) (k : Int) (h_precond : replace_precond (arr) (k)) : Array Int :=

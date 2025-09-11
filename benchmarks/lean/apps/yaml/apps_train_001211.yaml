@@ -57,8 +57,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_balanced_contest (n : Nat) (p : Nat) (solved_counts : List Nat) : String :=

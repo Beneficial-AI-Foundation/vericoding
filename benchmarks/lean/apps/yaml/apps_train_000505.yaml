@@ -40,8 +40,6 @@ vc-preamble: |-
     count_inversions arr n m ≥ 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sorted (xs : List Nat) : Prop :=

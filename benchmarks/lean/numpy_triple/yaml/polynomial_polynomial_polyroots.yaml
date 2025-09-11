@@ -25,8 +25,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def polyroots {n : Nat} (c : Vector Float (n + 1)) : Id (Vector Float n) :=

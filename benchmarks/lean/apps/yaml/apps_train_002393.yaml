@@ -22,8 +22,6 @@ vc-preamble: |-
   def list_minimum (nums : List Int) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_maximum (nums : List Int) : Int := sorry

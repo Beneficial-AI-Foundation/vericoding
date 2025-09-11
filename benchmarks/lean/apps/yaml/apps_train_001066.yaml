@@ -73,8 +73,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (n : Nat) (c : Nat) (k : Nat) (lines : List (List Nat)) (v : List Nat) : Nat :=

@@ -14,8 +14,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def argpartition {n : Nat} (a : Vector Float n) (kth : Fin n) : Id (Vector (Fin n) n) :=

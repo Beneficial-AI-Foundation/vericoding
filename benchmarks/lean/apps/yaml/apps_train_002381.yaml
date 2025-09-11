@@ -28,8 +28,6 @@ vc-preamble: |-
     n % 2 = 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def threeConsecutiveOdds (arr : List Int) : Bool := sorry

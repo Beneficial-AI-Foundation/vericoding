@@ -46,8 +46,6 @@ vc-preamble: |-
   def numeric_palindrome (arr : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reverseString (s : String) : String := sorry

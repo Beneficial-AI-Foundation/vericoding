@@ -116,8 +116,6 @@ vc-preamble: |-
      (∀ i, i < 8 → (board.get! 6).get! i = 'P')) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countChar (c : Char) (l : List Char) : Nat :=

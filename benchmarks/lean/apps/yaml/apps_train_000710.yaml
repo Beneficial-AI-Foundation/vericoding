@@ -44,8 +44,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def create_matrix_with_one (n m : Nat) : StrMatrix :=

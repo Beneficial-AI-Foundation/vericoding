@@ -30,8 +30,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def str_len {n : Nat} (a : Vector String n) : Id (Vector Nat n) :=

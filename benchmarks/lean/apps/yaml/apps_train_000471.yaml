@@ -14,8 +14,6 @@ vc-preamble: |-
     if x < 0 then -x else x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def threeSumClosest (nums : List Int) (target : Int) : Int :=

@@ -36,8 +36,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def linspace {num : Nat} (start stop : Float) (h : num > 0) : Id (Vector Float num) :=

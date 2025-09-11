@@ -50,8 +50,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sum_pow_dig_seq (num exp k : Nat) : Nat × List Nat × Nat × Nat :=

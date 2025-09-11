@@ -19,8 +19,6 @@ vc-preamble: |-
   open Std.Do
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def fill_diagonal {T : Type} {rows cols : Nat} (mat : Vector (Vector T cols) rows) (val : T) : 

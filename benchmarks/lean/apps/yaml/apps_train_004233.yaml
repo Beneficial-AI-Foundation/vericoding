@@ -62,8 +62,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def print_number (number : Nat) (char : Char) : String := sorry

@@ -34,8 +34,6 @@ vc-preamble: |-
     imag : Float
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def iscomplex {n : Nat} (x : Vector Complex n) : Id (Vector Bool n) :=

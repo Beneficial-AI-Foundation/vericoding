@@ -62,8 +62,6 @@ vc-preamble: |-
     if x ≥ 0 then x else -x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_john_lying (x y steps : Int) : Bool := sorry

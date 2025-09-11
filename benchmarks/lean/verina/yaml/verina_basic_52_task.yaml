@@ -23,7 +23,6 @@ vc-preamble: |-
     True
 
 vc-helpers: |-
-  -- <vc-helpers>
   def swap (a : Array Int) (i j : Nat) : Array Int :=
     let temp := a[i]!
     let a₁ := a.set! i (a[j]!)
@@ -42,7 +41,6 @@ vc-helpers: |-
       bubbleOuter (i - 1) a'
     else
       a
-  -- </vc-helpers>
 
 vc-definitions: |-
   def BubbleSort (a : Array Int) (h_precond : BubbleSort_precond (a)) : Array Int :=

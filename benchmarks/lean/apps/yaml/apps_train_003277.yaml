@@ -17,8 +17,6 @@ vc-preamble: |-
   -- Helper function to simulate ceiling division
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ceilDiv (a b : Int) : Int :=

@@ -53,8 +53,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_chess_subboard (n m : Nat) (board : List String) (queries : List Nat) : List Nat := sorry 

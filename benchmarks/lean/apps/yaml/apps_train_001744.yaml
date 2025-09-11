@@ -43,8 +43,6 @@ vc-preamble: |-
   def swim_time (grid : Matrix Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_reach (t : Nat) (grid : Matrix Nat) (i j : Nat) (visited : List (Nat × Nat)) : Bool := sorry

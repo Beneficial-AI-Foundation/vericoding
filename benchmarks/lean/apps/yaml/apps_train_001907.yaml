@@ -50,8 +50,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_routes (locations : List Int) (start finish : Nat) (fuel : Nat) : Nat := sorry

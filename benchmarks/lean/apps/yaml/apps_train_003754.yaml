@@ -44,8 +44,6 @@ vc-preamble: |-
   def isAlpha (c : Char) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isUpper (c : Char) : Bool := sorry

@@ -50,8 +50,6 @@ vc-preamble: |-
     | DataType.unknown_type => false
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def issctype (rep : DataType) : Id Bool :=

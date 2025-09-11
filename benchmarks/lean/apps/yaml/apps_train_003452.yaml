@@ -24,8 +24,6 @@ vc-preamble: |-
     ["Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway"]
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSubset (l1 l2 : List String) : Bool := sorry

@@ -34,8 +34,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_impact_points (N : Nat) (K : Nat) (M : Nat) (X0 : Nat) : String := sorry

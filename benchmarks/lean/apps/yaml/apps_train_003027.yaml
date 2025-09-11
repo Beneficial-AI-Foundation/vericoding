@@ -36,8 +36,6 @@ vc-preamble: |-
   def is_valid_matrix {α : Type} [BEq α] (m : Matrix α) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def rotate_against_clockwise {α : Type} [BEq α] (m : Matrix α) (times : Nat) : Matrix α := sorry

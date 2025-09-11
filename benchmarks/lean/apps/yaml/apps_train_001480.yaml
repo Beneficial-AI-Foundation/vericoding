@@ -49,8 +49,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def componentSize (adj : List (List Nat)) (start visited : List Nat) : Nat :=

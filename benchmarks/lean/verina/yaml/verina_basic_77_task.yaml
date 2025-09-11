@@ -27,10 +27,8 @@ vc-preamble: |-
     index2 < (arr[index1]!).size
 
 vc-helpers: |-
-  -- <vc-helpers>
   def updateInner (a : Array Nat) (idx val : Nat) : Array Nat :=
     a.set! idx val
-  -- </vc-helpers>
 
 vc-definitions: |-
   def modify_array_element (arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) (h_precond : modify_array_element_precond (arr) (index1) (index2) (val)) : Array (Array Nat) :=

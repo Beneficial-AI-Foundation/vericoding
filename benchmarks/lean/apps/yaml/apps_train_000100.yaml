@@ -55,8 +55,6 @@ vc-preamble: |-
     if x ≥ y then x else y
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def time_without_coverage (a b c r : Int) : Int :=

@@ -47,8 +47,6 @@ vc-preamble: |-
     | x::xs => xs.foldl Nat.max x
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def list_minimum (xs : List Nat) : Nat :=

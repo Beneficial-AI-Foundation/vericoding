@@ -17,8 +17,6 @@ vc-preamble: |-
   def statistical_mean (l : List Int) : Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def statistical_median (l : List Int) : Float := sorry

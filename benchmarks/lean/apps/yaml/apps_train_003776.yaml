@@ -25,8 +25,6 @@ vc-preamble: |-
     i = ⟨0⟩ ∨ s.get (String.Pos.mk (i.1 - 1)) = s.get i
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def IsRepeatEnd (s : String) (i : String.Pos) : Prop :=

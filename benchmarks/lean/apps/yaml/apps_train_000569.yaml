@@ -59,8 +59,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_evil_sorcerer (n : Nat) (p : List Nat) : Nat :=

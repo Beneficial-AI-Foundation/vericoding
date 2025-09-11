@@ -22,8 +22,6 @@ vc-preamble: |-
   def listToSet (lst: List Int) : List Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def listSum (lst: List Int) : Int :=

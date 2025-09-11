@@ -85,8 +85,6 @@ vc-preamble: |-
     | Precision.P256, _ => false
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maximum_sctype (t : NumericType) : Id NumericType :=
