@@ -58,14 +58,14 @@ Supported languages: {", ".join(available_languages.keys())}
 Supported LLM providers: claude-sonnet, claude-opus, gpt, gpt-mini, o1, gemini, gemini-flash, grok, grok-code, deepseek, glm, mistral-medium, mistral-codestral, qwen-thinking, qwen-coder, claude-direct, openai-direct, grok-direct, claude, openai
 
 Examples:
-  uv run spec_to_code.py dafny ./specs
-  uv run spec_to_code.py lean ./NumpySpec/DafnySpecs --iterations 3
-  uv run spec_to_code.py verus ./benchmarks/verus_specs --debug --iterations 5
-  uv run spec_to_code.py dafny ./specs --workers 8 --iterations 3 --llm-provider gpt
-  uv run spec_to_code.py verus ./specs --workers 2 --debug --llm-provider deepseek
-  uv run spec_to_code.py dafny ./specs --llm-provider claude-sonnet
-  uv run spec_to_code.py lean ./specs --llm-provider gemini-flash
-  uv run spec_to_code.py verus ./specs --llm-provider openai-direct --llm-model gpt-4o
+  uv run vericoder.py dafny ./specs
+  uv run vericoder.py lean ./NumpySpec/DafnySpecs --iterations 3
+  uv run vericoder.py verus ./benchmarks/verus_specs --debug --iterations 5
+  uv run vericoder.py dafny ./specs --workers 8 --iterations 3 --llm-provider gpt
+  uv run vericoder.py verus ./specs --workers 2 --debug --llm-provider deepseek
+  uv run vericoder.py dafny ./specs --llm-provider claude-sonnet
+  uv run vericoder.py lean ./specs --llm-provider gemini-flash
+  uv run vericoder.py verus ./specs --llm-provider openai-direct --llm-model gpt-4o
         """,
     )
 

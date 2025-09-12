@@ -268,10 +268,10 @@ fix_verification: "Fix errors"
     def test_cli_startup_performance(self):
         """Test that CLI startup time is reasonable."""
         project_root = Path(__file__).parent.parent
-        script_path = project_root / "spec_to_code.py"
+        script_path = project_root / "vericoder.py"
 
         if not script_path.exists():
-            pytest.skip("spec_to_code.py not found")
+            pytest.skip("vericoder.py not found")
 
         import subprocess
 

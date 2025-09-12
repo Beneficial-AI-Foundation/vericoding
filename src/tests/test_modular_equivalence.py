@@ -1,5 +1,5 @@
 """
-Test to ensure spec_to_code.py provides equivalent functionality to the old monolithic version.
+Test to ensure vericoder.py provides equivalent functionality to the old monolithic version.
 This test validates that the modular refactoring maintains all expected behaviors.
 """
 
@@ -61,10 +61,10 @@ def add (x y : ℕ) : ℕ := sorry
 
     def test_cli_arguments_parsing(self, project_root):
         """Test that CLI argument parsing works correctly."""
-        script_path = project_root / "spec_to_code.py"
+        script_path = project_root / "vericoder.py"
 
         if not script_path.exists():
-            pytest.skip("spec_to_code.py not found")
+            pytest.skip("vericoder.py not found")
 
         # Test help command works
         result = subprocess.run(
@@ -127,7 +127,7 @@ def add (x y : ℕ) : ℕ := sorry
             try:
                 # This imports from the modular script directly
                 sys.path.insert(0, str(Path(__file__).parent.parent))
-                from spec_to_code import setup_configuration
+                from vericoder import setup_configuration
 
                 args = MockArgs()
                 config = setup_configuration(args)
@@ -330,9 +330,9 @@ class TestFunctionalEquivalence:
 
     def test_same_cli_interface(self, project_root):
         """Test that the CLI interface signature hasn't changed."""
-        script_path = project_root / "spec_to_code.py"
+        script_path = project_root / "vericoder.py"
         if not script_path.exists():
-            pytest.skip("spec_to_code.py not found")
+            pytest.skip("vericoder.py not found")
 
         # Get help output
         result = subprocess.run(
