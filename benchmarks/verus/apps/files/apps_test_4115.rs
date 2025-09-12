@@ -1,0 +1,57 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(s: Seq<char>) -> bool {
+    s.len() >= 1
+}
+
+spec fn count_mismatches_up_to(s: Seq<char>, limit: int) -> int
+    requires s.len() >= 1
+    requires 0 <= limit && limit <= s.len()
+    ensures count_mismatches_up_to(s, limit) >= 0
+    ensures count_mismatches_up_to(s, limit) <= limit
+    decreases limit
+{
+    if limit == 0 {
+        0
+    } else {
+        let n = s.len() as int - 1;
+        let mismatch = if s[limit - 1] != s[n - (limit - 1)] { 1 } else { 0 };
+        count_mismatches_up_to(s, limit - 1) + mismatch
+    }
+}
+
+spec fn count_mismatches(s: Seq<char>) -> int
+    requires s.len() >= 1
+    ensures count_mismatches(s) >= 0
+{
+    count_mismatches_up_to(s, s.len() as int)
+}
+
+spec fn valid_result(s: Seq<char>, result: int) -> bool
+    requires valid_input(s)
+{
+    result >= 0 && result <= s.len() / 2 && result == (count_mismatches(s) / 2)
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(s: &str) -> (result: int)
+    requires valid_input(s@)
+    ensures valid_result(s@, result)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    0
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

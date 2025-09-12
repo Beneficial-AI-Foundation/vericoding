@@ -1,0 +1,43 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input(n: int, p: Seq<int>) -> bool {
+    p.len() == n && n >= 3
+}
+
+spec fn count_median_elements(p: Seq<int>, n: int) -> int
+    recommends valid_input(n, p)
+{
+    Set::new(|i: int| 0 <= i < n - 2 && is_median_of_three(p[i], p[i + 1], p[i + 2])).len() as int
+}
+
+spec fn is_median_of_three(a: int, b: int, c: int) -> bool {
+    (a < b && b < c) || (a > b && b > c)
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int, p: Seq<int>) -> (result: int)
+    requires 
+        valid_input(n, p)
+    ensures 
+        result >= 0,
+        result <= n - 2,
+        result == count_median_elements(p, n)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    0int
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

@@ -1,0 +1,135 @@
+vc-description: |-
+  Given a string of 'M' (boys) and 'F' (girls), determine how many seconds
+  it takes for all girls to move to the front of the line. Each second,
+  all boys immediately in front of girls simultaneously swap positions.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(input: Seq<char>) -> bool {
+      input.len() >= 1 && forall|i: int| 0 <= i < input.len() ==> input[i] == 'M' || input[i] == 'F'
+  }
+
+  spec fn compute_swap_time(input: Seq<char>) -> nat
+      recommends valid_input(input)
+  {
+      let rev_input = input.reverse();
+      let first_f = find_char(rev_input, 'F', 0);
+
+      if first_f == -1 {
+          0nat
+      } else {
+          let first_m_after_f = find_char(rev_input, 'M', first_f + 1);
+          if first_m_after_f == -1 {
+              0nat
+          } else {
+              let last_m = rfind_char(rev_input, 'M');
+              if last_m < first_m_after_f {
+                  0nat
+              } else {
+                  let substring = rev_input.subrange(first_m_after_f, last_m + 1);
+                  let balance = calculate_balance(substring);
+                  let f_count = count_char(substring, 'F');
+                  (balance + f_count + first_m_after_f - first_f - 1) as nat
+              }
+          }
+      }
+  }
+
+  spec fn find_char(s: Seq<char>, c: char, start: int) -> int {
+      if start >= s.len() {
+          -1
+      } else if s[start] == c {
+          start
+      } else {
+          find_char(s, c, start + 1)
+      }
+  }
+
+  spec fn rfind_char(s: Seq<char>, c: char) -> int {
+      rfind_char_from(s, c, s.len() - 1)
+  }
+
+  spec fn rfind_char_from(s: Seq<char>, c: char, pos: int) -> int {
+      if pos < 0 {
+          -1
+      } else if s[pos] == c {
+          pos
+      } else {
+          rfind_char_from(s, c, pos - 1)
+      }
+  }
+
+  spec fn calculate_balance(s: Seq<char>) -> nat {
+      calculate_balance_rec(s, 0, 0)
+  }
+
+  spec fn calculate_balance_rec(s: Seq<char>, index: nat, balance: nat) -> nat {
+      if index >= s.len() {
+          balance
+      } else if s[index as int] == 'M' {
+          calculate_balance_rec(s, index + 1, balance + 1)
+      } else {
+          calculate_balance_rec(s, index + 1, if balance > 0 { (balance - 1) as nat } else { 0nat })
+      }
+  }
+
+  spec fn count_char(s: Seq<char>, c: char) -> nat {
+      count_char_rec(s, c, 0, 0)
+  }
+
+  spec fn count_char_rec(s: Seq<char>, c: char, index: nat, count: nat) -> nat {
+      if index >= s.len() {
+          count
+      } else if s[index as int] == c {
+          count_char_rec(s, c, index + 1, count + 1)
+      } else {
+          count_char_rec(s, c, index + 1, count)
+      }
+  }
+
+  spec fn nat_to_string(n: nat) -> Seq<char> {
+      if n == 0 {
+          seq!['0']
+      } else {
+          nat_to_string_rec(n, seq![])
+      }
+  }
+
+  spec fn nat_to_string_rec(n: nat, acc: Seq<char>) -> Seq<char> {
+      if n == 0 {
+          acc
+      } else {
+          let digit = (n % 10) as u8;
+          let digit_char = ('0' as u8 + digit) as char;
+          nat_to_string_rec(n / 10, seq![digit_char] + acc)
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(input: Seq<char>) -> (result: Seq<char>)
+      requires 
+          valid_input(input)
+      ensures 
+          result.len() >= 1,
+          result[result.len() - 1] == '\n',
+          exists|val: nat| result == nat_to_string(val) + seq!['\n'],
+          result == nat_to_string(compute_swap_time(input)) + seq!['\n']
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      seq!['\n']
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

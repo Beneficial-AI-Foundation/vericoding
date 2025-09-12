@@ -1,0 +1,47 @@
+vc-description: |-
+  Given a right triangle with a 90° angle at vertex B, and the lengths of all three sides AB, BC, and CA,
+  calculate the area of the triangle. The area is computed as (AB * BC) / 2 where AB and BC are the two
+  legs of the right triangle. Input consists of three integers representing the side lengths, and output
+  is the integer area.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::string::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(ab: int, bc: int, ca: int) -> bool {
+      1 <= ab <= 100 && 1 <= bc <= 100 && 1 <= ca <= 100
+  }
+  
+  spec fn triangle_area(ab: int, bc: int) -> int
+      recommends ab >= 1 && bc >= 1
+  {
+      (ab * bc) / 2
+  }
+  
+  spec fn valid_area(ab: int, bc: int, area: int) -> bool
+      recommends ab >= 1 && bc >= 1
+  {
+      area == triangle_area(ab, bc) && area >= 0 && area <= 5000
+  }
+
+vc-spec: |-
+  fn solve(ab: int, bc: int, ca: int) -> (result: String)
+      requires valid_input(ab, bc, ca)
+      ensures exists|area: int| valid_area(ab, bc, area)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

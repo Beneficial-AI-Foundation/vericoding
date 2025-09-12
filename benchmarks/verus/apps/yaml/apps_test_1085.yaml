@@ -1,0 +1,67 @@
+vc-description: |-
+  Given a positive integer N, find how many values of K (where 2 ≤ K ≤ N) will cause N to become 1
+  through repeated operations: if K divides N, replace N with N/K; otherwise replace N with N-K;
+  continue until N < K. Count the number of valid K values.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(n: nat) -> bool {
+      n > 0
+  }
+  
+  spec fn reduce_by_divisor(n: nat, d: nat) -> nat
+      recommends n > 0 && d > 1
+      decreases n
+  {
+      if n % d == 0 && n >= d {
+          reduce_by_divisor(n / d, d)
+      } else {
+          n
+      }
+  }
+  
+  spec fn count_divisors(n: nat) -> nat
+      recommends n > 0
+  {
+      Set::new(|d: nat| 1 <= d <= n && n % d == 0).len()
+  }
+  
+  spec fn count_special_divisors(n: nat) -> nat
+      recommends n > 0
+  {
+      Set::new(|d: nat| 2 <= d <= n && n % d == 0 && (reduce_by_divisor(n, d) - 1) % d == 0).len()
+  }
+  
+  spec fn count_valid_k_values(n: nat) -> int
+      recommends n > 0
+  {
+      if n == 1 {
+          -1
+      } else {
+          count_divisors(n - 1) + count_special_divisors(n) - 1
+      }
+  }
+
+vc-spec: |-
+  fn solve(n: nat) -> (result: int)
+      requires valid_input(n)
+      ensures result == count_valid_k_values(n)
+      ensures n == 1 ==> result == -1
+      ensures n > 1 ==> result == count_divisors(n - 1) + count_special_divisors(n) - 1
+      ensures result >= -1
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

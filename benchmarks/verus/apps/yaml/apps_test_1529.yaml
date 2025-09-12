@@ -1,0 +1,105 @@
+vc-description: |-
+  Given n sentences from a chat record, determine the speaker of each sentence based on these patterns:
+  - Freda always ends her sentences with "lala."
+  - Rainbow always begins his sentences with "miao."
+  For each sentence, classify it as spoken by Freda, Rainbow, or unknown if it's ambiguous or matches neither pattern.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(input: Seq<char>) -> bool {
+      input.len() >= 0
+  }
+  
+  spec fn split_lines_func(input: Seq<char>) -> Seq<Seq<char>> {
+      if input.len() == 0 {
+          seq![]
+      } else {
+          split_lines_helper(input, 0, seq![], seq![])
+      }
+  }
+  
+  spec fn split_lines_helper(input: Seq<char>, i: int, current: Seq<char>, acc: Seq<Seq<char>>) -> Seq<Seq<char>>
+      decreases input.len() - i when 0 <= i <= input.len()
+  {
+      if i == input.len() {
+          if current.len() > 0 { acc.push(current) } else { acc }
+      } else if input[i] == '\n' {
+          split_lines_helper(input, i + 1, seq![], acc.push(current))
+      } else {
+          split_lines_helper(input, i + 1, current.push(input[i]), acc)
+      }
+  }
+  
+  spec fn parse_int_func(s: Seq<char>) -> int {
+      if s.len() == 0 {
+          0
+      } else {
+          parse_int_helper(s, 0, 0)
+      }
+  }
+  
+  spec fn parse_int_helper(s: Seq<char>, i: int, acc: int) -> int
+      decreases s.len() - i when 0 <= i <= s.len()
+  {
+      if i == s.len() || !('0' <= s[i] <= '9') {
+          acc
+      } else {
+          parse_int_helper(s, i + 1, acc * 10 + (s[i] as int - '0' as int))
+      }
+  }
+  
+  spec fn build_output_func(lines: Seq<Seq<char>>, n: int) -> Seq<char> {
+      if n == 0 {
+          seq![]
+      } else if n == 1 {
+          classify_sentence_func(lines[1])
+      } else {
+          build_output_func(lines, n - 1) + seq!['\n'] + classify_sentence_func(lines[n])
+      }
+  }
+  
+  spec fn classify_sentence_func(sentence: Seq<char>) -> Seq<char> {
+      if ends_with_func(sentence, seq!['l', 'a', 'l', 'a', '.']) && !starts_with_func(sentence, seq!['m', 'i', 'a', 'o', '.']) {
+          seq!['F', 'r', 'e', 'd', 'a', '\'', 's']
+      } else if starts_with_func(sentence, seq!['m', 'i', 'a', 'o', '.']) && !ends_with_func(sentence, seq!['l', 'a', 'l', 'a', '.']) {
+          seq!['R', 'a', 'i', 'n', 'b', 'o', 'w', '\'', 's']
+      } else {
+          seq!['O', 'M', 'G', '>', '.', '<', ' ', 'I', ' ', 'd', 'o', 'n', '\'', 't', ' ', 'k', 'n', 'o', 'w', '!']
+      }
+  }
+  
+  spec fn starts_with_func(s: Seq<char>, prefix: Seq<char>) -> bool {
+      prefix.len() <= s.len() && (forall|i: int| 0 <= i < prefix.len() ==> s[i] == prefix[i])
+  }
+  
+  spec fn ends_with_func(s: Seq<char>, suffix: Seq<char>) -> bool {
+      suffix.len() <= s.len() && (forall|i: int| 0 <= i < suffix.len() ==> s[s.len() - suffix.len() + i] == suffix[i])
+  }
+  
+  spec fn min_spec(a: int, b: int) -> int {
+      if a <= b { a } else { b }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(input: &str) -> (result: String)
+      requires valid_input(input@)
+      ensures result@.len() >= 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      String::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

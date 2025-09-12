@@ -1,0 +1,61 @@
+vc-description: |-
+  Given a string of at least 3 lowercase English letters, create an abbreviation by replacing
+  the middle characters with their count. Format: first_character + count_of_middle_characters + last_character.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(s: Seq<char>) -> bool {
+      s.len() >= 3 && s.len() <= 100 && forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z'
+  }
+  
+  spec fn valid_abbreviation(s: Seq<char>, result: Seq<char>) -> bool {
+      result.len() >= 3 &&
+      s.len() >= 3 &&
+      result[0] == s[0] &&
+      result[result.len() - 1] == s[s.len() - 1] &&
+      result.len() >= 3
+  }
+  
+  spec fn int_to_string(n: int) -> Seq<char> 
+      decreases n
+  {
+      if n == 0 { 
+          seq!['0']
+      } else if n < 0 { 
+          seq!['-'].add(int_to_string_helper(-n))
+      } else { 
+          int_to_string_helper(n)
+      }
+  }
+  
+  spec fn int_to_string_helper(n: int) -> Seq<char>
+      recommends n >= 0
+      decreases n
+  {
+      if n <= 0 { 
+          seq![]
+      } else { 
+          int_to_string_helper(n / 10).add(seq![(('0' as u8 + (n % 10) as u8) as char)])
+      }
+  }
+
+vc-spec: |-
+  fn solve(s: Seq<char>) -> (result: Seq<char>)
+      requires valid_input(s)
+      ensures valid_abbreviation(s, result)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

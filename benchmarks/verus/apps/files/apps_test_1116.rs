@@ -1,0 +1,51 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn gcd(a: int, b: int) -> int
+  recommends a > 0 && b >= 0
+  decreases b
+{
+  if b == 0 { a } else { gcd(b, a % b) }
+}
+
+spec fn valid_input(r: int, b: int, k: int) -> bool
+{
+  r > 0 && b > 0 && k > 0
+}
+
+spec fn max_consecutive_same_color(r: int, b: int) -> int
+  recommends r > 0 && b > 0
+{
+  let a = if r <= b { r } else { b };
+  let b_val = if r <= b { b } else { r };
+  let n = gcd(a, b_val);
+  -((n - b_val) / a)
+}
+
+spec fn can_avoid_consecutive(r: int, b: int, k: int) -> bool
+  recommends valid_input(r, b, k)
+{
+  max_consecutive_same_color(r, b) < k
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(r: int, b: int, k: int) -> (result: &'static str)
+  requires valid_input(r, b, k)
+  ensures result == (if can_avoid_consecutive(r, b, k) { "OBEY" } else { "REBEL" })
+// </vc-spec>
+// <vc-code>
+{
+  assume(false);
+  unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

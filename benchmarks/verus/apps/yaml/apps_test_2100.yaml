@@ -1,0 +1,93 @@
+vc-description: |-
+  Given n cupboards with left and right doors that can be open (1) or closed (0),
+  find the minimum number of operations to make all left doors have the same state
+  and all right doors have the same state. Each operation changes one door's state.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(input: Seq<char>) -> bool {
+      let lines = split(input, '\n');
+      lines.len() >= 1 &&
+      is_valid_number(lines[0]) &&
+      {
+          let n = string_to_int(lines[0]);
+          n >= 0 && n + 1 <= lines.len() &&
+          forall|i: int| 1 <= i <= n && i < lines.len() ==>
+              {
+                  let parts = split(lines[i], ' ');
+                  parts.len() >= 2 && is_valid_door_state(parts[0]) && is_valid_door_state(parts[1])
+              }
+      }
+  }
+  
+  spec fn valid_output(output: Seq<char>) -> bool {
+      is_valid_number(output)
+  }
+  
+  spec fn is_valid_number(s: Seq<char>) -> bool {
+      s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] && s[i] <= '9'
+  }
+  
+  spec fn is_valid_door_state(s: Seq<char>) -> bool {
+      s == seq!['0'] || s == seq!['1']
+  }
+  
+  spec fn calculate_min_operations(input: Seq<char>) -> Seq<char> {
+      let lines = split(input, '\n');
+      let n = string_to_int(lines[0]);
+      if n == 0 {
+          seq!['0']
+      } else {
+          let left_zeros = count_left_zeros(lines, 1, n);
+          let right_zeros = count_right_zeros(lines, 1, n);
+          let left_ops = if left_zeros < n - left_zeros { left_zeros } else { n - left_zeros };
+          let right_ops = if right_zeros < n - right_zeros { right_zeros } else { n - right_zeros };
+          int_to_string(left_ops + right_ops)
+      }
+  }
+
+  spec fn split(s: Seq<char>, delimiter: char) -> Seq<Seq<char>> {
+      seq![seq!['0']]
+  }
+
+  spec fn string_to_int(s: Seq<char>) -> int {
+      0
+  }
+
+  spec fn count_left_zeros(lines: Seq<Seq<char>>, start: int, n: int) -> int {
+      0
+  }
+
+  spec fn count_right_zeros(lines: Seq<Seq<char>>, start: int, n: int) -> int {
+      0
+  }
+
+  spec fn int_to_string(n: int) -> Seq<char> {
+      seq!['0']
+  }
+
+vc-spec: |-
+  fn solve(input: Seq<char>) -> (result: Seq<char>)
+      requires 
+          input.len() > 0,
+          valid_input(input),
+      ensures 
+          result.len() > 0,
+          valid_output(result),
+          result == calculate_min_operations(input),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

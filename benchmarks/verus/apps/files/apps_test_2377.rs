@@ -1,0 +1,41 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(n: int, h: int, a: Seq<int>, b: Seq<int>) -> bool {
+    a.len() == n && b.len() == n && n > 0 && h > 0 &&
+    (forall|i: int| 0 <= i < n ==> a[i] > 0 && b[i] > 0) &&
+    (forall|i: int| 0 <= i < n ==> a[i] <= b[i])
+}
+
+spec fn sum_seq(s: Seq<int>) -> int
+    decreases s.len()
+{
+    if s.len() == 0 { 0 } else { s[0] + sum_seq(s.subrange(1, s.len() as int)) }
+}
+
+spec fn max_wield_exists(a: Seq<int>, max_a: int) -> bool {
+    (exists|i: int| 0 <= i < a.len() && a[i] == max_a) &&
+    (forall|i: int| 0 <= i < a.len() ==> a[i] <= max_a)
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int, h: int, a: Seq<int>, b: Seq<int>) -> (result: int)
+    requires valid_input(n, h, a, b)
+    ensures result > 0
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

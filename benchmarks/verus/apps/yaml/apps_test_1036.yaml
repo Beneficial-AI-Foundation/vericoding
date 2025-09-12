@@ -1,0 +1,49 @@
+vc-description: |-
+  Given integers n and k, simulate a Rock-Paper-Scissors tournament among 2^k players.
+  Each player i has favorite hand from string s at position ((i mod n) + 1).
+  Tournament uses recursive bracket structure where Rock beats Scissors, 
+  Paper beats Rock, Scissors beats Paper, and ties go to the first player.
+  Return the favorite hand of the tournament winner.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn winner(a: char, b: char) -> char {
+      if (a, b) == ('R', 'P') || (a, b) == ('P', 'S') || (a, b) == ('S', 'R') {
+          b
+      } else {
+          a
+      }
+  }
+  
+  spec fn valid_rps_char(c: char) -> bool {
+      c == 'R' || c == 'P' || c == 'S'
+  }
+  
+  spec fn valid_rps_string(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> valid_rps_char(s[i])
+  }
+  
+  spec fn valid_input(n: int, k: int, s: Seq<char>) -> bool {
+      n > 0 && k >= 0 && s.len() == n && valid_rps_string(s)
+  }
+
+vc-spec: |-
+  fn solve(n: int, k: int, s: Seq<char>) -> (result: char)
+      requires valid_input(n, k, s)
+      ensures valid_rps_char(result)
+
+vc-code: |-
+  {
+      assume(false);
+      'R'
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

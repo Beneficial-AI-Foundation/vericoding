@@ -1,0 +1,121 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input(n: int) -> bool {
+    100 <= n <= 999
+}
+
+spec fn is_palindromic(n: int) -> bool
+    recommends valid_input(n)
+{
+    let hundreds = n / 100;
+    let units = n % 10;
+    hundreds == units
+}
+
+spec fn is_whitespace(c: char) -> bool {
+    c == ' ' || c == '\n' || c == '\t' || c == '\r'
+}
+
+spec fn is_digit(c: char) -> bool {
+    '0' <= c <= '9'
+}
+
+spec fn can_parse_as_int(s: Seq<char>) -> bool {
+    s.len() > 0 && (
+        (s.len() == 1 && is_digit(s[0])) ||
+        (s.len() > 1 && s[0] == '-' && forall|i: int| 1 <= i < s.len() ==> is_digit(s[i])) ||
+        (s.len() > 1 && is_digit(s[0]) && forall|i: int| 1 <= i < s.len() ==> is_digit(s[i]))
+    )
+}
+
+spec fn parse_int_value(s: Seq<char>) -> int
+    recommends can_parse_as_int(s)
+{
+    if s.len() == 1 { 
+        s[0] as int - '0' as int
+    } else if s[0] == '-' { 
+        -parse_positive_int(s.subrange(1, s.len() as int))
+    } else { 
+        parse_positive_int(s)
+    }
+}
+
+spec fn parse_positive_int(s: Seq<char>) -> int
+    recommends s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> is_digit(s[i])
+    decreases s.len()
+{
+    if s.len() == 1 { 
+        s[0] as int - '0' as int
+    } else { 
+        parse_positive_int(s.subrange(0, (s.len() - 1) as int)) * 10 + (s[s.len() - 1] as int - '0' as int)
+    }
+}
+
+spec fn tokenize_input(input: Seq<char>) -> Seq<Seq<char>> {
+    if input.len() == 0 { 
+        seq![]
+    } else { 
+        tokenize_from_index(input, 0, seq![], seq![])
+    }
+}
+
+spec fn tokenize_from_index(input: Seq<char>, index: int, current_token: Seq<char>, acc: Seq<Seq<char>>) -> Seq<Seq<char>>
+    recommends 0 <= index <= input.len()
+    decreases input.len() - index, if index < input.len() && is_whitespace(input[index]) { 1int } else { 0int }
+{
+    if index == input.len() {
+        if current_token.len() > 0 { acc.push(current_token) } else { acc }
+    } else if is_whitespace(input[index]) {
+        if current_token.len() > 0 {
+            tokenize_from_index(input, skip_whitespace(input, index), seq![], acc.push(current_token))
+        } else {
+            tokenize_from_index(input, skip_whitespace(input, index), seq![], acc)
+        }
+    } else {
+        tokenize_from_index(input, index + 1, current_token.push(input[index]), acc)
+    }
+}
+
+spec fn skip_whitespace(input: Seq<char>, index: int) -> int
+    recommends 0 <= index <= input.len()
+    decreases input.len() - index
+{
+    if index == input.len() || !is_whitespace(input[index]) { 
+        index
+    } else { 
+        skip_whitespace(input, index + 1)
+    }
+}
+
+spec fn valid_string_input(stdin_input: Seq<char>) -> bool {
+    let tokens = tokenize_input(stdin_input);
+    tokens.len() == 1 && can_parse_as_int(tokens[0]) && valid_input(parse_int_value(tokens[0]))
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(stdin_input: &str) -> (result: String)
+    requires stdin_input.len() > 0
+    ensures 
+        result == "Yes\n" || result == "No\n" || result == "",
+        valid_string_input(stdin_input@) ==> 
+            (result == "Yes\n" <==> is_palindromic(parse_int_value(tokenize_input(stdin_input@)[0]))),
+        !valid_string_input(stdin_input@) ==> result == "",
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    String::new()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

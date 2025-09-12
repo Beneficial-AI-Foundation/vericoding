@@ -1,0 +1,41 @@
+vc-description: |-
+  Given an array of integers, find the minimum number of seconds needed to make all elements zero.
+  In each second, you can add an arbitrary integer to all non-zero elements in the array.
+  The key insight is that the answer equals the number of distinct non-zero values in the array.
+  
+  /* No specific constraints on input beyond being a sequence of integers */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(arr: Seq<int>) -> bool {
+      true
+  }
+  
+  spec fn distinct_non_zero_count(arr: Seq<int>) -> int {
+      Set::<int>::new(|x: int| arr.contains(x) && x != 0).len() as int
+  }
+
+vc-spec: |-
+  fn solve(arr: Seq<int>) -> (result: int)
+      requires 
+          valid_input(arr)
+      ensures 
+          result >= 0,
+          result <= arr.len(),
+          result == distinct_non_zero_count(arr)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

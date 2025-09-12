@@ -1,0 +1,53 @@
+vc-description: |-
+  Given n people where n is even, find the number of ways to divide them into exactly two 
+  indistinguishable round dances, each containing exactly n/2 people. A round dance is a 
+  circular arrangement where rotations are considered identical, and both the rotations 
+  within each dance and the two dances themselves are indistinguishable.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int) -> bool {
+      n >= 2 && n % 2 == 0 && n <= 20
+  }
+  
+  spec fn factorial(n: int) -> int
+      decreases n
+  {
+      if n <= 0 { 1 } else { n * factorial(n - 1) }
+  }
+  
+  spec fn expected_result(n: int) -> int
+      requires valid_input(n)
+  {
+      let half = n / 2;
+      let fact_n = factorial(n);
+      let fact_half = factorial(half);
+      let fact_half_minus_1 = factorial(half - 1);
+      let binomial = fact_n / (fact_half * fact_half);
+      let arrangements = fact_half_minus_1 * fact_half_minus_1;
+      (binomial * arrangements) / 2
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int) -> (result: int)
+      requires valid_input(n)
+      ensures 
+          result == expected_result(n) &&
+          result > 0
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

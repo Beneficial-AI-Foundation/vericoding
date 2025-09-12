@@ -1,0 +1,47 @@
+vc-description: |-
+  Two players Alice and Brown play a turn-based stone game starting with Alice.
+  There are two piles with X and Y stones. On each turn, a player chooses positive
+  integer i, takes 2i stones from one pile (requiring at least 2i stones),
+  discards i stones, and places remaining i stones in the other pile.
+  The player who cannot make a valid move loses. Determine winner with optimal play.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn abs(x: int) -> int {
+      if x >= 0 { x } else { -x }
+  }
+  
+  spec fn alice_wins(x: int, y: int) -> bool {
+      abs(x - y) > 1
+  }
+  
+  spec fn brown_wins(x: int, y: int) -> bool {
+      abs(x - y) <= 1
+  }
+  
+  spec fn valid_input(x: int, y: int) -> bool {
+      x >= 0 && y >= 0
+  }
+
+vc-spec: |-
+  fn determine_winner(x: int, y: int) -> (winner: String)
+      requires valid_input(x, y)
+      ensures winner == "Alice" || winner == "Brown"
+      ensures (winner == "Alice") <==> alice_wins(x, y)
+      ensures (winner == "Brown") <==> brown_wins(x, y)
+
+vc-code: |-
+  {
+      assume(false);
+      String::new()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

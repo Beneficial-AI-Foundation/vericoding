@@ -1,0 +1,94 @@
+vc-description: |-
+  Navigate down a cliff from height h to ground using platforms and magic crystals.
+  Character starts at platform height h, can pull levers to hide current platform and toggle platform at height x-1,
+  can fall safely at most 2 heights, and magic crystals can toggle any platform state (except height h).
+  Find minimum number of crystals needed to reach ground safely.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(h: int, n: int, platforms: Seq<int>) -> bool {
+      h >= 1 && n >= 1 && platforms.len() >= n && n > 0 && platforms[0] == h
+  }
+  
+  spec fn valid_crystal_count(crystals: int, n: int) -> bool {
+      crystals >= 0 && crystals <= n - 1
+  }
+  
+  spec fn count_crystals_needed(h: int, platforms: Seq<int>) -> int
+    recommends
+        platforms.len() >= 1,
+        platforms[0] == h,
+        h >= 1,
+  {
+      if platforms.len() == 1 {
+          0
+      } else {
+          count_crystals_needed_up_to(h, platforms.push(0), platforms.len() - 1)
+      }
+  }
+  
+  spec fn count_crystals_needed_up_to(h: int, arr: Seq<int>, up_to: int) -> int
+    recommends
+        arr.len() >= 1,
+        0 <= up_to < arr.len(),
+        arr[0] == h,
+        h >= 1,
+    decreases up_to
+  {
+      if up_to == 0 {
+          0
+      } else {
+          let cur_pos = simulate_position_up_to(h, arr, up_to - 1);
+          let prev_crystals = count_crystals_needed_up_to(h, arr, up_to - 1);
+          if cur_pos == arr[up_to] {
+              prev_crystals
+          } else if up_to + 1 < arr.len() && arr[up_to + 1] == arr[up_to] - 1 {
+              prev_crystals
+          } else {
+              prev_crystals + 1
+          }
+      }
+  }
+  
+  spec fn simulate_position_up_to(h: int, arr: Seq<int>, up_to: int) -> int
+    recommends
+        arr.len() >= 1,
+        0 <= up_to < arr.len(),
+        arr[0] == h,
+        h >= 1,
+    decreases up_to
+  {
+      if up_to == 0 {
+          h
+      } else {
+          let prev_pos = simulate_position_up_to(h, arr, up_to - 1);
+          if prev_pos == arr[up_to] {
+              prev_pos
+          } else if up_to + 1 < arr.len() && arr[up_to + 1] == arr[up_to] - 1 {
+              arr[up_to] - 1
+          } else {
+              prev_pos
+          }
+      }
+  }
+
+vc-spec: |-
+  fn solve(input: &str) -> (result: String)
+    requires input@.len() > 0
+    ensures result@.len() >= 0
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

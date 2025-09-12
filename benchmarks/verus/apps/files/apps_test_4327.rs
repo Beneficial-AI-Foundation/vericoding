@@ -1,0 +1,45 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input(a: int, p: int) -> bool {
+    0 <= a <= 100 && 0 <= p <= 100
+}
+
+spec fn total_pieces(a: int, p: int) -> int
+    recommends valid_input(a, p)
+{
+    a * 3 + p
+}
+
+spec fn max_pies(a: int, p: int) -> int
+    recommends valid_input(a, p)
+{
+    total_pieces(a, p) / 2
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn calculate_max_pies(a: int, p: int) -> (pies: int)
+    requires 
+        valid_input(a, p)
+    ensures 
+        pies == max_pies(a, p) &&
+        pies >= 0 &&
+        pies == (a * 3 + p) / 2
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

@@ -1,0 +1,52 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(n: int, a: Seq<char>, b: Seq<char>) -> bool {
+    n > 0 && a.len() == 2 * n && b.len() == 2 * n &&
+    (forall|i: int| 0 <= i < a.len() ==> a[i] == '0' || a[i] == '1') &&
+    (forall|i: int| 0 <= i < b.len() ==> b[i] == '0' || b[i] == '1')
+}
+
+spec fn count_positions(a: Seq<char>, b: Seq<char>, ac: char, bc: char, len: int) -> int {
+    /* Count of positions where a[i] == ac and b[i] == bc for i in range [0, len) */
+    if len <= 0 || len > a.len() || len > b.len() { 
+        0int 
+    } else if len == 1 {
+        if a[0] == ac && b[0] == bc { 1int } else { 0int }
+    } else {
+        count_positions(a, b, ac, bc, len - 1) + 
+        (if a[len - 1] == ac && b[len - 1] == bc { 1int } else { 0int })
+    }
+}
+
+spec fn compute_game_outcome(t00: int, t01: int, t10: int, t11: int) -> int {
+    t11 % 2 + (t10 - t01 + 1 - t11 % 2) / 2
+}
+
+spec fn correct_outcome(result: String, d: int) -> bool {
+    (d > 0 ==> result@ == "First"@) &&
+    (d < 0 ==> result@ == "Second"@) &&
+    (d == 0 ==> result@ == "Draw"@)
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: usize, a: &str, b: &str) -> (result: String)
+    requires valid_input(n as int, a@, b@)
+    ensures result@ == "First"@ || result@ == "Second"@ || result@ == "Draw"@
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    String::new()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

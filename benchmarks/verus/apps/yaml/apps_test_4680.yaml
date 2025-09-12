@@ -1,0 +1,44 @@
+vc-description: |-
+  Given three integers A, B, and C representing syllable counts of three phrases,
+  determine if these phrases can be arranged to form a Haiku. A Haiku requires
+  exactly two phrases with 5 syllables and one phrase with 7 syllables.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(a: int, b: int, c: int) -> bool {
+      1 <= a <= 10 && 1 <= b <= 10 && 1 <= c <= 10
+  }
+  
+  spec fn can_form_haiku(a: int, b: int, c: int) -> bool {
+      (a == 5 && b == 5 && c == 7) ||
+      (a == 5 && b == 7 && c == 5) ||
+      (a == 7 && b == 5 && c == 5)
+  }
+  
+  spec fn valid_output(result: &str) -> bool {
+      result == "YES" || result == "NO"
+  }
+
+vc-spec: |-
+  fn solve(a: int, b: int, c: int) -> (result: &'static str)
+      requires 
+          valid_input(a, b, c),
+      ensures 
+          valid_output(result),
+          (result == "YES") <==> can_form_haiku(a, b, c),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

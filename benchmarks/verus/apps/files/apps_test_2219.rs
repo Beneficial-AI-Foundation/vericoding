@@ -1,0 +1,110 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn min_steps_to_zero(n: nat, k: nat) -> nat
+    decreases n
+{
+    if k < 2 {
+        0  /* placeholder for invalid k */
+    } else if n == 0 {
+        0
+    } else if n % k == 0 {
+        1 + min_steps_to_zero(n / k, k)
+    } else {
+        (n % k) + min_steps_to_zero((n - (n % k)) as nat, k)
+    }
+}
+
+spec fn valid_input(input: &str) -> bool {
+    input.len() > 0 &&
+    {
+        let lines = split_lines_func(input);
+        lines.len() >= 1 &&
+        is_valid_number(&lines[0int]) &&
+        {
+            let t = string_to_int_func(&lines[0int]);
+            t >= 1 && t <= 100 &&
+            lines.len() >= t + 1 &&
+            forall|i: int| 1 <= i <= t ==> valid_test_case(&lines[i])
+        }
+    }
+}
+
+spec fn valid_test_case(line: &str) -> bool {
+    let parts = split_spaces_func(line);
+    parts.len() == 2 &&
+    is_valid_number(&parts[0int]) &&
+    is_valid_number(&parts[1int]) &&
+    {
+        let n = string_to_int_func(&parts[0int]);
+        let k = string_to_int_func(&parts[1int]);
+        n >= 1 && k >= 2
+    }
+}
+
+spec fn is_valid_number(s: &str) -> bool {
+    s.len() >= 1 &&
+    (s == "0" || (s.as_bytes()[0int] != b'0' && forall|i: int| 0 <= i < s.len() ==> b'0' <= s.as_bytes()[i] <= b'9')) &&
+    forall|i: int| 0 <= i < s.len() ==> b'0' <= s.as_bytes()[i] <= b'9'
+}
+
+spec fn expected_output(input: &str) -> String {
+    let lines = split_lines_func(input);
+    let t = string_to_int_func(&lines[0int]);
+    join_lines_seq(&Seq::<String>::new(t, |i: int| {
+        let parts = split_spaces_func(&lines[i+1]);
+        let n = string_to_int_func(&parts[0int]);
+        let k = string_to_int_func(&parts[1int]);
+        int_to_string_func(min_steps_to_zero(n, k))
+    }))
+}
+
+spec fn split_lines_func(input: &str) -> Seq<String> {
+    Seq::<String>::empty()  /* placeholder implementation */
+}
+
+spec fn split_spaces_func(line: &str) -> Seq<String> {
+    Seq::<String>::empty()  /* placeholder implementation */
+}
+
+spec fn string_to_int_func(s: &str) -> nat {
+    0  /* placeholder implementation */
+}
+
+spec fn int_to_string_func(n: nat) -> String {
+    String::new()  /* placeholder implementation */
+}
+
+spec fn join_lines_seq(results: &Seq<String>) -> String {
+    String::new()  /* placeholder implementation */
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(input: &str) -> (result: String)
+    requires 
+        input.len() > 0,
+        valid_input(input),
+    ensures 
+        result.len() >= 0,
+        forall|i: int| 0 <= i < result.len() ==> result.as_bytes()[i] != 0u8,
+        result == expected_output(input),
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    String::new()
+    // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

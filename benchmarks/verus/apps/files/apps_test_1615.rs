@@ -1,0 +1,82 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input_format(s: Seq<char>) -> bool {
+    let lines = split_lines(s);
+    lines.len() >= 1 &&
+    exists|n: nat, k: nat| 
+        parses_as_integers_pair(lines[0], n as int, k as int) && n > 0 && k > 0 && lines.len() >= n + 1 &&
+        (forall|i: int| 1 <= i <= n && i < lines.len() ==> 
+            exists|a: int, b: int| parses_as_integers_pair(lines[i], a, b))
+}
+
+spec fn parsed_correctly(input: Seq<char>, n: nat, k: nat, segments: Seq<(int, int)>) -> bool {
+    let lines = split_lines(input);
+    lines.len() >= n + 1 && segments.len() == n &&
+    parses_as_integers_pair(lines[0], n as int, k as int) &&
+    (forall|i: int| 0 <= i < n && i + 1 < lines.len() ==> 
+        parses_as_integers_pair(lines[i + 1], segments[i].0, segments[i].1))
+}
+
+spec fn is_valid_output(s: Seq<char>) -> bool {
+    s.len() > 0 && s[s.len() - 1] == '\n' && 
+    (forall|i: int| 0 <= i < s.len() - 1 ==> s[i] != '\n') &&
+    is_numeric_output(s.subrange(0, s.len() - 1))
+}
+
+spec fn min_moves_to_divisible(segments: Seq<(int, int)>, k: nat) -> nat
+    recommends k > 0
+{
+    let total_coverage = total_coverage(segments);
+    let remainder = total_coverage % (k as int);
+    if remainder == 0 { 0 } else { (k as int - remainder) as nat }
+}
+
+spec fn total_coverage(segments: Seq<(int, int)>) -> nat 
+    decreases segments.len()
+{
+    if segments.len() == 0 { 
+        0 
+    } else { 
+        segment_length(segments[0]) + total_coverage(segments.subrange(1, segments.len() as int))
+    }
+}
+
+spec fn segment_length(segment: (int, int)) -> nat {
+    let max_val = if segment.0 >= segment.1 { segment.0 } else { segment.1 };
+    let min_val = if segment.0 <= segment.1 { segment.0 } else { segment.1 };
+    if max_val >= min_val { (max_val - min_val + 1) as nat } else { 1 }
+}
+
+/* Helper functions that would need to be implemented */
+spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>>;
+spec fn parses_as_integers_pair(line: Seq<char>, a: int, b: int) -> bool;
+spec fn is_numeric_output(s: Seq<char>) -> bool;
+spec fn contains_newline(s: Seq<char>) -> bool;
+spec fn int_to_string(n: nat) -> Seq<char>;
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(stdin_input: &str) -> (result: String)
+    requires stdin_input.len() > 0
+    requires stdin_input.view().last() == '\n' || !contains_newline(stdin_input.view().as_seq())
+    ensures result.len() == 0 || result.view().last() == '\n'
+    ensures valid_input_format(stdin_input.view().as_seq()) ==> exists|n: nat, k: nat, segments: Seq<(int, int)>| n > 0 && k > 0 && segments.len() == n && parsed_correctly(stdin_input.view().as_seq(), n, k, segments) && result.view().as_seq() == int_to_string(min_moves_to_divisible(segments, k)).add(seq!['\n'])
+    ensures valid_input_format(stdin_input.view().as_seq()) ==> is_valid_output(result.view().as_seq())
+    ensures !valid_input_format(stdin_input.view().as_seq()) ==> (result.len() == 0 || (result.len() > 0 && result.view().last() == '\n'))
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    String::new()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

@@ -1,0 +1,40 @@
+vc-description: |-
+  Given a room temperature in degrees Celsius, determine whether to turn on an air conditioner.
+  The air conditioner should be turned on if and only if the temperature is 30°C or higher.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_temperature(temp: int) -> bool {
+      -40 <= temp <= 40
+  }
+  
+  spec fn expected_output(temp: int) -> Seq<char> {
+      if temp >= 30 { seq!['Y', 'e', 's', '\n'] } else { seq!['N', 'o', '\n'] }
+  }
+  
+  spec fn correct_output(temp: int, output: Seq<char>) -> bool {
+      output == expected_output(temp)
+  }
+
+vc-spec: |-
+  fn solve(x: i32) -> (result: Vec<u8>)
+      requires valid_temperature(x as int)
+      ensures correct_output(x as int, result@.map(|i: int, b: u8| b as char))
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

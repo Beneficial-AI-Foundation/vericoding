@@ -1,0 +1,72 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_pokemon_name(name: &str) -> bool {
+    name == "vaporeon" || name == "jolteon" || name == "flareon" || name == "espeon" ||
+    name == "umbreon" || name == "leafeon" || name == "glaceon" || name == "sylveon"
+}
+
+spec fn matches_pattern(pokemon_name: &str, pattern: &str) -> bool
+    recommends pokemon_name.len() == pattern.len()
+{
+    forall|i: int| 0 <= i < pattern.len() ==> 
+        (pattern.index(i) == '.' || pattern.index(i) == pokemon_name.index(i))
+}
+
+spec fn get_pokemon_list() -> Seq<&'static str> {
+    seq!["vaporeon", "jolteon", "flareon", "espeon", "umbreon", "leafeon", "glaceon", "sylveon"]
+}
+
+spec fn valid_input(input: &str) -> bool {
+    input.len() > 0 && 
+    ({
+        let lines = split_lines(input);
+        lines.len() >= 2 &&
+        (lines.index(0).len() > 0 && 
+         forall|i: int| 0 <= i < lines.index(0).len() ==> 
+             '0' <= lines.index(0).index(i) <= '9') &&
+        6 <= lines.index(1).len() <= 8 &&
+        forall|i: int| 0 <= i < lines.index(1).len() ==> 
+            ('a' <= lines.index(1).index(i) <= 'z' || lines.index(1).index(i) == '.') &&
+        exists|j: int| 0 <= j < get_pokemon_list().len() && 
+            get_pokemon_list().index(j).len() == lines.index(1).len() && 
+            matches_pattern(get_pokemon_list().index(j), lines.index(1))
+    })
+}
+
+spec fn is_first_match(result: &str, pattern: &str, pokemon_list: Seq<&str>) -> bool {
+    exists|i: int| 0 <= i < pokemon_list.len() && 
+        pokemon_list.index(i) == result &&
+        result.len() == pattern.len() &&
+        matches_pattern(result, pattern) &&
+        forall|j: int| 0 <= j < i ==> 
+            (pokemon_list.index(j).len() != pattern.len() || 
+             !matches_pattern(pokemon_list.index(j), pattern))
+}
+
+spec fn split_lines(input: &str) -> Seq<&str>;
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(input: &str) -> (result: String)
+    requires valid_input(input)
+    ensures valid_pokemon_name(&result)
+    ensures (let lines = split_lines(input); is_first_match(&result, lines.index(1), get_pokemon_list()))
+    ensures (let lines = split_lines(input); exists|i: int| 0 <= i < get_pokemon_list().len() && get_pokemon_list().index(i) == result && result.len() == lines.index(1).len() && matches_pattern(&result, lines.index(1)))
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    String::new()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

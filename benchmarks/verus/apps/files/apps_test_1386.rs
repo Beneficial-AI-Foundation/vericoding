@@ -1,0 +1,68 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input(input: Seq<char>) -> bool {
+  input.len() > 0 &&
+  exists|i: int| 0 < i < input.len() - 1 && input[i] == ' ' &&
+  (forall|j: int| 0 <= j < i ==> '0' <= input[j] <= '9') &&
+  (forall|j: int| i < j < input.len() ==> '0' <= input[j] <= '9')
+}
+
+spec fn valid_dimensions(w: int, h: int) -> bool {
+  w >= 1 && h >= 1 && w <= 1000 && h <= 1000
+}
+
+spec fn parse_two_ints(input: Seq<char>) -> (int, int) {
+  let space_index = find_space(input, 0);
+  let w = string_to_int(input.subrange(0, space_index));
+  let h = string_to_int(input.subrange(space_index + 1, input.len() as int));
+  (w, h)
+}
+
+spec fn find_space(s: Seq<char>, start: int) -> int
+  decreases s.len() - start
+{
+  if s[start] == ' ' { start } else { find_space(s, start + 1) }
+}
+
+spec fn string_to_int(s: Seq<char>) -> int {
+  if s.len() == 1 { s[0] as int - '0' as int }
+  else { string_to_int(s.subrange(0, s.len() - 1)) * 10 + (s[s.len() - 1] as int - '0' as int) }
+}
+
+spec fn int_to_string(n: int) -> Seq<char> {
+  if n == 0 { seq!['0'] }
+  else if n < 10 { seq![('0' as int + n) as char] }
+  else { int_to_string(n / 10).add(int_to_string(n % 10)) }
+}
+
+spec fn mod_pow(base: int, exp: int, modulus: int) -> int {
+  if exp == 0 { 1 % modulus }
+  else if exp % 2 == 0 {
+    let half = mod_pow(base, exp / 2, modulus);
+    (half * half) % modulus
+  } else {
+    (base * mod_pow(base, exp - 1, modulus)) % modulus
+  }
+}
+
+fn solve() -> (result: int) {
+  assume(false);
+  unreached()
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// </vc-spec>
+// <vc-code>
+// </vc-code>
+
+
+}
+
+fn main() {}

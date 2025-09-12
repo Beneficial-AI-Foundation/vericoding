@@ -1,0 +1,74 @@
+vc-description: |-
+  Given a lucky number n (containing only digits 4 and 7), find its 1-based index
+  when all lucky numbers are sorted in increasing order. Lucky numbers are positive
+  integers containing only the digits 4 and 7.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_lucky_number(n: Seq<char>) -> bool {
+      n.len() > 0 && forall|i: int| 0 <= i < n.len() ==> n[i] == '4' || n[i] == '7'
+  }
+  
+  spec fn convert_to_binary(n: Seq<char>) -> Seq<char>
+      recommends forall|i: int| 0 <= i < n.len() ==> n[i] == '4' || n[i] == '7'
+      decreases n.len()
+  {
+      if n.len() == 0 {
+          seq![]
+      } else if n[0] == '4' {
+          seq!['0'].add(convert_to_binary(n.subrange(1, n.len() as int)))
+      } else {
+          seq!['1'].add(convert_to_binary(n.subrange(1, n.len() as int)))
+      }
+  }
+  
+  spec fn pow2(n: int) -> int
+      recommends n >= 0
+      decreases n
+  {
+      if n == 0 {
+          1
+      } else {
+          2 * pow2(n - 1)
+      }
+  }
+  
+  spec fn binary_to_int(s: Seq<char>) -> int
+      recommends forall|i: int| 0 <= i < s.len() ==> s[i] == '0' || s[i] == '1'
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0
+      } else if s[0] == '1' {
+          pow2(s.len() - 1) + binary_to_int(s.subrange(1, s.len() as int))
+      } else {
+          binary_to_int(s.subrange(1, s.len() as int))
+      }
+  }
+  
+  spec fn valid_result(n: Seq<char>, result: int) -> bool
+      recommends valid_lucky_number(n)
+  {
+      result > 0 && result == 2 * (pow2(n.len() - 1) - 1) + binary_to_int(convert_to_binary(n)) + 1
+  }
+
+vc-spec: |-
+  fn solve(n: Seq<char>) -> (result: int)
+      requires valid_lucky_number(n)
+      ensures valid_result(n, result)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

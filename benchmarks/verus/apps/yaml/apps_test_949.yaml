@@ -1,0 +1,41 @@
+vc-description: |-
+  Find the greatest common divisor of all integers in the range [a, b] inclusive,
+  where 1 ≤ a ≤ b. If a = b, the GCD is a. If a < b, the GCD is 1 since
+  consecutive integers are coprime.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(a: int, b: int) -> bool {
+      1 <= a <= b
+  }
+  
+  spec fn gcd_of_range(a: int, b: int) -> int
+      recommends valid_input(a, b)
+  {
+      if a == b { a } else { 1 }
+  }
+
+vc-spec: |-
+  fn solve(a: int, b: int) -> (result: int)
+      requires 
+          valid_input(a, b)
+      ensures 
+          result == gcd_of_range(a, b),
+          a == b ==> result == a,
+          a < b ==> result == 1
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

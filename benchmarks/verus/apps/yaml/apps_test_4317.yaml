@@ -1,0 +1,111 @@
+vc-description: |-
+  Given two integers A and B, find the maximum value among A + B, A - B, and A × B.
+  Input constraints: -100 ≤ A, B ≤ 100
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(input: Seq<char>) -> bool {
+      input.len() >= 3 &&
+      exists|space_pos: int| 0 < space_pos < input.len() - 1 && input[space_pos] == ' ' &&
+      (forall|i: int| 0 <= i < space_pos ==> input[i] != ' ') &&
+      (forall|i: int| space_pos + 1 <= i < input.len() ==> input[i] != ' ' || input[i] == '\n') &&
+      is_valid_integer(get_a_string(input)) && is_valid_integer(get_b_string(input)) &&
+      -100 <= get_a(input) <= 100 && -100 <= get_b(input) <= 100
+  }
+  
+  spec fn get_a(input: Seq<char>) -> int
+      recommends 
+          input.len() >= 3,
+          exists|space_pos: int| 0 < space_pos < input.len() - 1 && input[space_pos] == ' ',
+          is_valid_integer(get_a_string(input))
+  {
+      let trimmed = if input.len() > 0 && input[input.len() as int - 1] == '\n' { 
+          input.subrange(0, input.len() - 1) 
+      } else { 
+          input 
+      };
+      let space_index = find_space(trimmed);
+      parse_int(trimmed.subrange(0, space_index))
+  }
+  
+  spec fn get_b(input: Seq<char>) -> int
+      recommends
+          input.len() >= 3,
+          exists|space_pos: int| 0 < space_pos < input.len() - 1 && input[space_pos] == ' ',
+          is_valid_integer(get_b_string(input))
+  {
+      let trimmed = if input.len() > 0 && input[input.len() as int - 1] == '\n' {
+          input.subrange(0, input.len() - 1)
+      } else {
+          input
+      };
+      let space_index = find_space(trimmed);
+      parse_int(trimmed.subrange(space_index + 1, trimmed.len() as int))
+  }
+  
+  spec fn get_a_string(input: Seq<char>) -> Seq<char>
+      recommends
+          input.len() >= 3,
+          exists|space_pos: int| 0 < space_pos < input.len() - 1 && input[space_pos] == ' '
+  {
+      let trimmed = if input.len() > 0 && input[input.len() as int - 1] == '\n' {
+          input.subrange(0, input.len() - 1)
+      } else {
+          input
+      };
+      let space_index = find_space(trimmed);
+      trimmed.subrange(0, space_index)
+  }
+  
+  spec fn get_b_string(input: Seq<char>) -> Seq<char>
+      recommends
+          input.len() >= 3,
+          exists|space_pos: int| 0 < space_pos < input.len() - 1 && input[space_pos] == ' '
+  {
+      let trimmed = if input.len() > 0 && input[input.len() as int - 1] == '\n' {
+          input.subrange(0, input.len() - 1)
+      } else {
+          input
+      };
+      let space_index = find_space(trimmed);
+      trimmed.subrange(space_index + 1, trimmed.len() as int)
+  }
+  
+  spec fn max3(a: int, b: int, c: int) -> int {
+      if a >= b && a >= c {
+          a
+      } else if b >= c {
+          b
+      } else {
+          c
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(input: Seq<char>) -> (result: Seq<char>)
+      requires valid_input(input)
+      ensures ({
+          let max_val = max3(get_a(input) + get_b(input), get_a(input) - get_b(input), get_a(input) * get_b(input));
+          result == int_to_string(max_val).push('\n')
+      })
+      ensures ({
+          let max_val = max3(get_a(input) + get_b(input), get_a(input) - get_b(input), get_a(input) * get_b(input));
+          -10000 <= max_val <= 10000
+      })
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

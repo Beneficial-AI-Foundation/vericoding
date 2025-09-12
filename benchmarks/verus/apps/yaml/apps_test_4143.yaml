@@ -1,0 +1,58 @@
+vc-description: |-
+  Given N people starting at City 1, find the minimum time for all people to reach City 6
+  through a sequential 5-segment transportation system with different capacities per segment.
+  Each transport departs at integer times with specified capacity. Transfer time is negligible.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int, a: int, b: int, c: int, d: int, e: int) -> bool {
+      n >= 1 && a >= 1 && b >= 1 && c >= 1 && d >= 1 && e >= 1
+  }
+  
+  spec fn min_capacity(a: int, b: int, c: int, d: int, e: int) -> int
+      recommends a >= 1 && b >= 1 && c >= 1 && d >= 1 && e >= 1
+  {
+      let temp1 = if a <= b { a } else { b };
+      let temp2 = if temp1 <= c { temp1 } else { c };
+      let temp3 = if temp2 <= d { temp2 } else { d };
+      if temp3 <= e { temp3 } else { e }
+  }
+  
+  spec fn ceil_div(a: int, b: int) -> int
+      recommends a >= 0 && b >= 1
+  {
+      (a + b - 1) / b
+  }
+  
+  spec fn correct_result(n: int, a: int, b: int, c: int, d: int, e: int, result: int) -> bool
+      recommends valid_input(n, a, b, c, d, e)
+  {
+      let min_cap = min_capacity(a, b, c, d, e);
+      let groups = ceil_div(n, min_cap);
+      result == 4 + groups
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, a: int, b: int, c: int, d: int, e: int) -> (result: int)
+      requires 
+          valid_input(n, a, b, c, d, e)
+      ensures 
+          correct_result(n, a, b, c, d, e, result) &&
+          result >= 5
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

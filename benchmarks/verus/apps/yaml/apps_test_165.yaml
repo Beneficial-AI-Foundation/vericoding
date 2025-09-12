@@ -1,0 +1,47 @@
+vc-description: |-
+  Calculate the minimum number of meals Vasiliy could have missed during his sanatorium stay.
+  Given counts of breakfasts (b), dinners (d), and suppers (s) he had, determine how many meals
+  he definitively missed based on arrival/departure timing constraints.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn max3(a: int, b: int, c: int) -> int {
+      if a >= b && a >= c { a }
+      else if b >= c { b }
+      else { c }
+  }
+  
+  spec fn calculate_missed_meals(input: Seq<char>) -> int {
+      /* Implementation placeholder for spec function */
+      0
+  }
+  
+  spec fn valid_input(input: Seq<char>) -> bool {
+      input.len() > 0
+  }
+  
+  spec fn int_to_string_spec(n: int) -> Seq<char> {
+      /* Specification for integer to string conversion */
+      seq![]
+  }
+
+vc-spec: |-
+  fn solve(input: &str) -> (result: String)
+  requires valid_input(input@)
+  ensures result@ == int_to_string_spec(calculate_missed_meals(input@))
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

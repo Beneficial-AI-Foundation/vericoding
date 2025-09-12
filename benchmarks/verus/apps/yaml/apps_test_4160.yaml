@@ -1,0 +1,46 @@
+vc-description: |-
+  Find the minimum number of years needed for a bank balance to reach a target amount.
+  Starting with 100 yen, the balance grows each year by adding 1% interest (rounded down).
+  Given a target amount X, determine how many years it takes for the balance to reach X yen or above.
+  The yearly calculation is: new_balance = current_balance + floor(current_balance / 100)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn calculate_deposit(initial: int, years: int) -> int
+      recommends initial >= 0, years >= 0
+      decreases years
+  {
+      if years == 0 {
+          initial
+      } else {
+          let prev_deposit = calculate_deposit(initial, years - 1);
+          prev_deposit + prev_deposit / 100
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(x: int) -> (years: int)
+      requires x >= 101
+      ensures 
+          years >= 0 &&
+          calculate_deposit(100, years) >= x &&
+          (years == 0 || calculate_deposit(100, years - 1) < x)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

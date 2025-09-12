@@ -1,0 +1,38 @@
+vc-description: |-
+  Count how many people can ride a roller coaster given their heights and a minimum height requirement.
+  Input: N (number of people), K (minimum height requirement), and N heights.
+  Output: Number of people who can ride (height >= K).
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int, k: int, heights: Seq<int>) -> bool {
+      n >= 1 && k >= 1 && heights.len() == n && 
+      forall|i: int| 0 <= i < heights.len() ==> heights[i] >= 1
+  }
+  
+  spec fn count_eligible(heights: Seq<int>, k: int) -> int {
+      heights.filter(|h: int| h >= k).len() as int
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, k: int, heights: Seq<int>) -> (count: int)
+
+vc-code: |-
+  requires valid_input(n, k, heights)
+  ensures 0 <= count <= heights.len()
+  ensures count == count_eligible(heights, k)
+  {
+      assume(false);
+      0
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

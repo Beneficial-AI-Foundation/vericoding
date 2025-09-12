@@ -1,0 +1,53 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(n: int, a: Seq<int>) -> bool {
+    n >= 1 && n <= 90 &&
+    a.len() == n &&
+    (forall|i: int| 0 <= i < n ==> 1 <= a[i] <= 90) &&
+    (forall|i: int| 0 <= i < n - 1 ==> a[i] < a[i + 1])
+}
+
+spec fn find_cutoff(a: Seq<int>, index: int, cutoff: int) -> int
+    decreases a.len() - index
+{
+    if index >= a.len() {
+        cutoff
+    } else if a[index] > cutoff {
+        cutoff
+    } else {
+        find_cutoff(a, index + 1, a[index] + 15)
+    }
+}
+
+spec fn min(x: int, y: int) -> int {
+    if x <= y { x } else { y }
+}
+
+spec fn valid_output(result: int, n: int, a: Seq<int>) -> bool {
+    valid_input(n, a) ==>
+    (1 <= result <= 90 &&
+     result == min(90, find_cutoff(a, 0, 15)))
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int, a: Seq<int>) -> (result: int)
+    requires valid_input(n, a)
+    ensures valid_output(result, n, a)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}
