@@ -21,7 +21,6 @@ vc-description: |-
          the same elements with the same multiplicities */
   
   /* Placeholder - actual implementation would be more complex */
-
 vc-preamble: |-
   use vstd::prelude::*;
   
@@ -38,22 +37,17 @@ vc-preamble: |-
   spec fn count(v: Vec<i32>, elem: i32) -> nat {
       v.to_seq().filter(|x| *x == elem).len()
   }
-
 vc-helpers: |-
-
 vc-spec: |-
   fn insertion_sort(xs: Vec<i32>) -> (result: Vec<i32>)
       ensures
           sorted(result),
           multiset_equivalent(xs, result),
-
 vc-code: |-
   {
       assume(false);
       unreached()
   }
-
 vc-postamble: |-
   }
   fn main() {}
-

@@ -26,7 +26,6 @@ proof fn run_length_encoder_property(input: String, result: String)
 // <vc-code>
 {
     assume(false);
-    unreached()
 }
 // </vc-code>
 

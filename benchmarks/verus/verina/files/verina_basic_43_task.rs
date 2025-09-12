@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_of_fourth_power_of_odd_numbers(n: nat) -> result: nat
+fn sum_of_fourth_power_of_odd_numbers(n: nat) -> (result: nat)
     ensures
-        15 * result == n * (2 * n + 1) * (7 + 24 * (n * n * n) - 12 * (n * n) - 14 * n),
+        15 * result == n * (2 * n + 1) * (7 + 24 * (n * n * n) - 12 * (n * n) - 14 * n)
 // </vc-spec>
 // <vc-code>
 {
