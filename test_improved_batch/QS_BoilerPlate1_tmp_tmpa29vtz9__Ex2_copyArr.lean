@@ -1,0 +1,21 @@
+/-
+  Port of QS_BoilerPlate1_tmp_tmpa29vtz9__Ex2_copyArr.dfy
+  
+  This specification was automatically translated from Dafny to Lean 4.
+-/
+
+namespace DafnyBenchmarks
+
+def sorted (s : seq<int>) : Bool :=
+  sorry  -- TODO: implement function body
+
+def copyArr (a : Array Int) (l : Int) (r : Int) : Array Int :=
+  sorry  -- TODO: implement function body
+
+theorem copyArr_spec (a : Array Int) (l : Int) (r : Int) (ret : Array Int) :=
+  (h_0 : 0 ≤ l < r ≤ a.size)
+  : ret[..] == a[l..r]
+  := by
+  sorry  -- TODO: implement proof
+
+end DafnyBenchmarks

@@ -1,0 +1,161 @@
+name: Large Context Window Tests
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "vericoding/core/context_window_config.py"
+      - "vericoding/core/enhanced_llm_provider.py"
+      - "tests/test_context_window_config.py"
+      - "examples/large_context_demo.py"
+  pull_request:
+    branches: [main]
+    paths:
+      - "vericoding/core/context_window_config.py"
+      - "vericoding/core/enhanced_llm_provider.py"
+      - "tests/test_context_window_config.py"
+      - "examples/large_context_demo.py"
+
+jobs:
+  test-context-window:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('**/pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-${{ matrix.python-version }}-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install pytest pytest-cov
+
+      - name: Run context window tests
+        run: |
+          pytest tests/test_context_window_config.py -v --cov=vericoding.core.context_window_config --cov=vericoding.core.enhanced_llm_provider
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage.xml
+          flags: context-window
+          name: context-window-coverage
+
+  test-integration:
+    runs-on: ubuntu-latest
+    needs: test-context-window
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install pytest
+
+      - name: Test integration with existing code
+        run: |
+          pytest tests/test_llm_providers.py -v
+          pytest tests/test_config.py -v
+
+      - name: Test demo script (without API calls)
+        run: |
+          python examples/large_context_demo.py
+
+  test-backward-compatibility:
+    runs-on: ubuntu-latest
+    needs: test-context-window
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install pytest
+
+      - name: Test backward compatibility
+        run: |
+          python -c "
+          from vericoding.core import create_llm_provider, get_model_context_config
+          from vericoding.core.llm_providers import AnthropicProvider
+
+          # Test that old model still works
+          config = get_model_context_config('claude-sonnet-4-20250514')
+          assert config is not None
+          assert config.input_tokens == 200000
+
+          # Test that new model is available
+          config = get_model_context_config('claude-3-5-sonnet-20241022')
+          assert config is not None
+          assert config.input_tokens == 1000000
+
+          print('Backward compatibility tests passed!')
+          "
+
+  lint-and-format:
+    runs-on: ubuntu-latest
+    needs: test-context-window
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install linting tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install black flake8 mypy
+
+      - name: Check code formatting
+        run: |
+          black --check vericoding/core/context_window_config.py
+          black --check vericoding/core/enhanced_llm_provider.py
+          black --check tests/test_context_window_config.py
+          black --check examples/large_context_demo.py
+
+      - name: Lint with flake8
+        run: |
+          flake8 vericoding/core/context_window_config.py
+          flake8 vericoding/core/enhanced_llm_provider.py
+          flake8 tests/test_context_window_config.py
+          flake8 examples/large_context_demo.py
+
+      - name: Type check with mypy
+        run: |
+          mypy vericoding/core/context_window_config.py
+          mypy vericoding/core/enhanced_llm_provider.py
+
+
+
+

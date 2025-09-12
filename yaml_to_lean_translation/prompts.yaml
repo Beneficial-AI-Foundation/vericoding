@@ -1,0 +1,98 @@
+# Claude Prompt Template for YAML to Lean Translation
+
+translation_prompt: |
+  You are an expert in translating Dafny specifications to Lean 4. Please translate the following Dafny specification to Lean 4.
+
+  Filename: {filename}
+
+  Dafny Specification:
+  ```dafny
+  {preamble}
+
+  {helpers}
+
+  {spec}
+
+  {code}
+
+  {postamble}
+  ```
+
+  Please translate this to Lean 4 following these EXACT guidelines:
+
+  1. **IMPORTS**: Always start with these imports:
+  import Std.Do.Triple
+  import Std.Tactic.Do
+  import Mathlib.Data.Int.Basic
+  import Mathlib.Data.Array.Basic
+
+  open Std.Do
+
+  2. **METADATA**: Include this exact metadata format:
+  /-!
+  {{
+    "name": "{filename_clean}",
+    "category": "Dafny Translation",
+    "description": "Automatically translated from Dafny specification: {filename_clean}",
+    "source": "Dafny",
+    "translation_date": "2024",
+    "functions": [],
+    "methods": []
+  }}
+  -/
+
+  3. **NAMESPACE**: Use `namespace DafnyBenchmarks`
+
+  4. **TYPE CONVERSIONS**:
+     - `int` → `Int`
+     - `bool` → `Bool`
+     - `string` → `String`
+     - `char` → `Char`
+     - `seq<T>` → `Array T` (for sequences)
+     - `array<T>` → `Array T`
+     - `set<T>` → `List T`
+
+  5. **SYNTAX CONVERSIONS**:
+     - `forall` → `∀`
+     - `exists` → `∃`
+     - `==>` → `→`
+     - `&&` → `∧`
+     - `||` → `∨`
+     - `!=` → `≠`
+     - `<=` → `≤`
+     - `>=` → `≥`
+     - `a[i]` → `a[i]!` (for array access)
+     - `a.Length` → `a.size`
+     - `|a|` → `a.size`
+
+  6. **METHOD TRANSLATION**: Convert Dafny methods to Lean definitions:
+     - `method M(...) returns (...)` → `def M (...) : ... :=`
+     - Use `sorry` for ALL implementations - do not try to prove anything
+
+  7. **SPECIFICATION TRANSLATION**: Convert to Lean theorems:
+     - Use proper Hoare triple syntax: `⦃⌜precondition⌝⦄ method ⦃⇓result => ⌜postcondition⌝⦄`
+     - Convert `requires` to precondition
+     - Convert `ensures` to postcondition
+     - Use `∀` for universal quantifiers
+     - Use `→` for implications
+     - Use `sorry` for ALL theorem proofs - do not attempt complex proofs
+
+  8. **DOCUMENTATION**: Include comprehensive doc comments explaining the translation
+
+  9. **PROOF SIMPLIFICATION**: 
+     - Use `sorry` for ALL proofs, theorems, and implementations
+     - Do NOT use complex tactics like `by_cases`, `constructor`, `exact`, etc.
+     - Keep proofs simple: just write the theorem statement and end with `:= sorry`
+     - Focus on clear specifications, not proof complexity
+
+  10. **ERROR HANDLING**: If you encounter any issues, provide a basic structure with `sorry` rather than failing
+
+  Please provide ONLY the complete Lean 4 code, no explanations outside the code.
+
+# Configuration for the translation process
+config:
+  model: "claude-3-5-sonnet-20241022"
+  max_tokens: 4000
+  temperature: 0.1
+  max_retries: 3
+  rate_limit_delay: 1 # seconds between requests

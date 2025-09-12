@@ -1,0 +1,133 @@
+=== LEAN SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Lean
+LLM Provider: claude
+LLM Model: default
+Test directory: lean_sample_100
+Output directory: /Users/adembizid/work/tasks/task_benchmarks/vericoding/src/code_from_spec_on_08-08_00h49/lean/lean_sample_100
+Max iterations: 5
+Parallel workers: 4
+Test date: 2025-08-08T01:20:27.114668
+
+Total original files: 100
+
+=== OVERALL STATISTICS ===
+Total successful: 1
+Total failed: 99
+Success rate: 1.0%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpWhere.lean -> NpWhere_impl.lean
+
+=== FAILED FILES (VERIFICATION) ===
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpRavel.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpFloorDivide.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpGreater.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpLcm.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpBitwiseOr.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpTril.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpIsalpha.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpArange.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpLess.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpSign.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpColumnStack.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpSubtract.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpRemainder.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpUniqueall.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpNotEqual.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpPiecewise.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpSelect.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpProd.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpCountnonzero.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpCenter.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpAdd.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpSum.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpGreaterEqual.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpReshape.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpGcd.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpLeftShift.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpPolyder.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpBitwiseXor.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpSort.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpPoly.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpZeros.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpBroadcast.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpMax.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpDiagonal.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpLessEqual.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpHistogram.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpCopy.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpConvolve.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpClip.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpSquare.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpIntersect.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpInvert.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpBitwiseAnd.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpArgmax.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpAbs.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpMin.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpMod.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpPower.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpMultiply.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpIsclose.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpTranspose.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpShape.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpArgsort.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpFlatten.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpEqual.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpRightShift.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpCumSum.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpBitwiseOr-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/sep_thm/NpCumProd.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpSelect-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpPiecewise-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpTril-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpMod-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpCopy-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpIsalpha-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpPoly-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpRavel-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpCumSum-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpRemainder-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpConvolve-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpHistogram-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpLess-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpCenter-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpFloorDivide-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpIsclose-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpMax-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpArgsort-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpWhere-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpSum-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpIntersect-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpArange-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpDiagonal-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpClip-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpTranspose-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpRightShift-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpSubtract-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpMultiply-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpPolyder-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpAbs-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpGreater-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpShape-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpFlatten-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpEqual-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpReshape-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpLcm-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpMin-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpSquare-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpUniqueall-spec.lean
+✗ vericoding/lean/Benchmarks/numpy_specs/one_thm/NpColumnStack-spec.lean
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 4
+API rate limiting: 1s between calls
+Debug mode: Disabled
+- Saves only final implementation as *_impl.lean
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-08-08T01:20:27.114745

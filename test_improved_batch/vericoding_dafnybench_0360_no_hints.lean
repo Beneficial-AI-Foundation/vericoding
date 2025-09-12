@@ -1,0 +1,25 @@
+/-
+  Port of vericoding_dafnybench_0360_no_hints.dfy
+  
+  This specification was automatically translated from Dafny to Lean 4.
+-/
+
+namespace DafnyBenchmarks
+
+def sumcheck (s : Array Int) (i : Int) : Int :=
+  sorry  -- TODO: implement complex function body
+
+def sum (s : Array Int) : Int :=
+  sorry  -- TODO: implement function body
+
+theorem sum_spec (s : Array Int) (a : Int) :=
+  (h_0 : s.size > 0)
+  : sumcheck(s, s.size) == a
+  := by
+  sorry  -- TODO: implement proof
+
+
+  := by
+  sorry  -- TODO: implement proof
+
+end DafnyBenchmarks

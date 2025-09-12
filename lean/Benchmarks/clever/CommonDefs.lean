@@ -1,4 +1,4 @@
-import Mathlib
+import Std
 
 /-!
 # Common definitions for Clever benchmark specifications
@@ -7,7 +7,7 @@ These are helper predicates and functions used across multiple problem specs.
 -/
 
 /-- Check if parentheses are balanced -/
-def balanced_paren_non_computable (s : String) (open : Char) (close : Char) : Prop := sorry
+def balanced_paren_non_computable (s : String) (openChar : Char) (closeChar : Char) : Prop := sorry
 
 /-- Count maximum depth of nested parentheses -/
 def count_max_paren_depth (s : String) : Nat := sorry

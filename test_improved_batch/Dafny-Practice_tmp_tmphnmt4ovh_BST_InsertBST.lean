@@ -1,0 +1,27 @@
+/-
+  Port of Dafny-Practice_tmp_tmphnmt4ovh_BST_InsertBST.dfy
+  
+  This specification was automatically translated from Dafny to Lean 4.
+-/
+
+namespace DafnyBenchmarks
+
+def NumbersInTree (t : Tree) : set :=
+  NumbersInSequence(Inorder(t))
+
+def NumbersInSequence (q : seq<int>) : set :=
+  set x | x in q
+
+def Inorder (t : Tree) : seq :=
+  match t { case Empty => [] case Node(n',nt1,nt2) => Inorder(nt1)+[n']+Inorder(nt2) }
+
+def InsertBST (t0 : Tree) (x : Int) : Tree :=
+  sorry  -- TODO: implement function body
+
+theorem InsertBST_spec (t0 : Tree) (x : Int) (t : Tree) :=
+  (h_0 : BST(t0) ∧ x !in NumbersInTree(t0))
+  : BST(t) ∧ NumbersInTree(t) == NumbersInTree(t0)+{x}
+  := by
+  sorry  -- TODO: implement proof
+
+end DafnyBenchmarks

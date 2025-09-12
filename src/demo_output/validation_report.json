@@ -1,0 +1,17 @@
+[
+  {
+    "filename": "TwoSum.lean",
+    "syntax_valid": true,
+    "imports_valid": true,
+    "hoare_triple_present": true,
+    "sorry_present": true,
+    "has_comments": true,
+    "type_annotations": true,
+    "overall_score": 1.0,
+    "issues": [],
+    "suggestions": [
+      "Consider using Fin for bounded indices",
+      "Add more detailed translation comments"
+    ]
+  }
+]

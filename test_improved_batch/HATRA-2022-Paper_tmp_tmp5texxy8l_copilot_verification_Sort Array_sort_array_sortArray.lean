@@ -1,0 +1,16 @@
+/-
+  Port of HATRA-2022-Paper_tmp_tmp5texxy8l_copilot_verification_Sort Array_sort_array_sortArray.dfy
+  
+  This specification was automatically translated from Dafny to Lean 4.
+-/
+
+namespace DafnyBenchmarks
+
+def sortArray (arr : Array Int) : Array Int :=
+  sorry  -- TODO: implement function body
+
+theorem sortArray_spec (arr : Array Int) (arr_sorted : Array Int) :=
+  := by
+  sorry  -- TODO: implement proof
+
+end DafnyBenchmarks

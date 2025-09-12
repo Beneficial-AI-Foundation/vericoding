@@ -1,0 +1,20 @@
+/-
+  Port of FormalMethods_tmp_tmpvda2r3_o_dafny_Invariants_ex2_Pot.dfy
+  
+  This specification was automatically translated from Dafny to Lean 4.
+-/
+
+namespace DafnyBenchmarks
+
+def Potencia (x : Nat) (y : Nat) : Nat :=
+  sorry  -- TODO: implement complex function body
+
+def Pot (x : Nat) (y : Nat) : Nat :=
+  sorry  -- TODO: implement function body
+
+theorem Pot_spec (x : Nat) (y : Nat) (r : Nat) :=
+  : r == Potencia(x,y)
+  := by
+  sorry  -- TODO: implement proof
+
+end DafnyBenchmarks

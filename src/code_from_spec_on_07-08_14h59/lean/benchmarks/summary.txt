@@ -1,0 +1,185 @@
+=== LEAN SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Lean
+LLM Provider: claude
+LLM Model: default
+Test directory: benchmarks
+Output directory: /Users/adembizid/work/tasks/task_benchmarks/vericoding/src/code_from_spec_on_07-08_14h59/lean/benchmarks
+Max iterations: 5
+Parallel workers: 4
+Test date: 2025-08-07T15:48:25.649460
+
+Total original files: 152
+
+=== OVERALL STATISTICS ===
+Total successful: 4
+Total failed: 148
+Success rate: 2.6%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ verina/verina_advanced_6/task.lean -> task_impl.lean
+✓ verina/verina_advanced_19/task.lean -> task_impl.lean
+✓ verina/verina_advanced_47/task.lean -> task_impl.lean
+✓ verina/verina_advanced_15/task.lean -> task_impl.lean
+
+=== FAILED FILES (VERIFICATION) ===
+✗ verina/verina_basic_59/task.lean
+✗ verina/verina_basic_61/task.lean
+✗ verina/verina_basic_57/task.lean
+✗ verina/verina_advanced_34/task.lean
+✗ verina/verina_advanced_33/task.lean
+✗ verina/verina_advanced_60/task.lean
+✗ verina/verina_advanced_58/task.lean
+✗ verina/verina_advanced_67/task.lean
+✗ verina/verina_advanced_51/task.lean
+✗ verina/verina_basic_35/task.lean
+✗ verina/verina_basic_69/task.lean
+✗ verina/verina_advanced_56/task.lean
+✗ verina/verina_advanced_69/task.lean
+✗ verina/verina_advanced_35/task.lean
+✗ verina/verina_basic_56/task.lean
+✗ verina/verina_basic_51/task.lean
+✗ verina/verina_basic_93/task.lean
+✗ verina/verina_advanced_32/task.lean
+✗ verina/verina_basic_58/task.lean
+✗ verina/verina_basic_60/task.lean
+✗ verina/verina_basic_94/task.lean
+✗ verina/verina_basic_67/task.lean
+✗ verina/verina_advanced_50/task.lean
+✗ verina/verina_basic_34/task.lean
+✗ verina/verina_advanced_57/task.lean
+✗ verina/verina_advanced_68/task.lean
+✗ verina/verina_advanced_66/task.lean
+✗ verina/verina_advanced_59/task.lean
+✗ verina/verina_advanced_61/task.lean
+✗ verina/verina_basic_33/task.lean
+✗ verina/verina_basic_106/task.lean
+✗ verina/verina_basic_1/spec.lean
+✗ verina/verina_basic_108/task.lean
+✗ verina/verina_basic_6/spec.lean
+✗ verina/verina_basic_107/task.lean
+✗ verina/verina_advanced_7/task.lean
+✗ verina/verina_basic_7/spec.lean
+✗ verina/verina_basic_7/task.lean
+✗ verina/verina_advanced_9/task.lean
+✗ verina/verina_basic_20/task.lean
+✗ verina/verina_advanced_8/task.lean
+✗ verina/verina_advanced_43/task.lean
+✗ verina/verina_basic_18/task.lean
+✗ verina/verina_advanced_1/task.lean
+✗ verina/verina_advanced_44/task.lean
+✗ verina/verina_basic_27/task.lean
+✗ verina/verina_advanced_75/task.lean
+✗ verina/verina_advanced_81/task.lean
+✗ verina/verina_advanced_72/task.lean
+✗ verina/verina_advanced_21/task.lean
+✗ verina/verina_basic_89/task.lean
+✗ verina/verina_advanced_26/task.lean
+✗ verina/verina_advanced_10/task.lean
+✗ verina/verina_basic_87/task.lean
+✗ verina/verina_basic_74/task.lean
+✗ verina/verina_basic_73/task.lean
+✗ verina/verina_basic_80/task.lean
+✗ verina/verina_advanced_17/task.lean
+✗ verina/verina_advanced_28/task.lean
+✗ verina/verina_basic_28/task.lean
+✗ verina/verina_advanced_74/task.lean
+✗ verina/verina_advanced_80/task.lean
+✗ verina/verina_advanced_45/task.lean
+✗ verina/verina_advanced_42/task.lean
+✗ verina/verina_advanced_73/task.lean
+✗ verina/verina_advanced_16/task.lean
+✗ verina/verina_basic_21/task.lean
+✗ verina/verina_basic_75/task.lean
+✗ verina/verina_advanced_29/task.lean
+✗ verina/verina_basic_72/task.lean
+✗ verina/verina_advanced_11/task.lean
+✗ verina/verina_basic_86/task.lean
+✗ verina/verina_advanced_18/task.lean
+✗ verina/verina_advanced_20/task.lean
+✗ verina/verina_advanced_27/task.lean
+✗ verina/verina_basic_88/task.lean
+✗ verina/verina_basic_43/task.lean
+✗ verina/verina_basic_38/task.lean
+✗ verina/verina_advanced_64/task.lean
+✗ verina/verina_advanced_63/task.lean
+✗ verina/verina_advanced_39/task.lean
+✗ verina/verina_basic_65/task.lean
+✗ verina/verina_advanced_55/task.lean
+✗ verina/verina_advanced_52/task.lean
+✗ verina/verina_advanced_30/task.lean
+✗ verina/verina_basic_62/task.lean
+✗ verina/verina_advanced_37/task.lean
+✗ verina/verina_basic_54/task.lean
+✗ verina/verina_advanced_53/task.lean
+✗ verina/verina_basic_37/task.lean
+✗ verina/verina_advanced_62/task.lean
+✗ verina/verina_advanced_54/task.lean
+✗ verina/verina_advanced_65/task.lean
+✗ verina/verina_basic_39/task.lean
+✗ verina/verina_basic_55/task-bak.lean
+✗ verina/verina_basic_52/task.lean
+✗ verina/verina_advanced_36/task.lean
+✗ verina/verina_basic_63/task.lean
+✗ verina/verina_advanced_31/task.lean
+✗ verina/verina_basic_64/task.lean
+✗ verina/verina_advanced_38/task.lean
+✗ verina/verina_basic_5/spec.lean
+✗ verina/verina_basic_90/task.lean
+✗ verina/verina_basic_2/spec.lean
+✗ verina/verina_basic_4/spec.lean
+✗ verina/verina_basic_3/spec.lean
+✗ verina/verina_basic_105/task.lean
+✗ verina/verina_basic_102/task.lean
+✗ verina/verina_basic_103/task.lean
+✗ verina/verina_basic_104/task.lean
+✗ verina/verina_advanced_4/task.lean
+✗ verina/verina_advanced_4/spec.lean
+✗ verina/verina_advanced_3/task.lean
+✗ verina/verina_advanced_2/task.lean
+✗ verina/verina_basic_46/task.lean
+✗ verina/verina_advanced_25/task.lean
+✗ verina/verina_advanced_5/task.lean
+✗ verina/verina_advanced_22/task.lean
+✗ verina/verina_basic_79/task.lean
+✗ verina/verina_basic_41/task.lean
+✗ verina/verina_basic_77/task.lean
+✗ verina/verina_advanced_14/task.lean
+✗ verina/verina_basic_83/task.lean
+✗ verina/verina_advanced_13/task.lean
+✗ verina/verina_basic_84/task.lean
+✗ verina/verina_basic_70/task.lean
+✗ verina/verina_basic_23/task.lean
+✗ verina/verina_basic_24/task.lean
+✗ verina/verina_advanced_40/task.lean
+✗ verina/verina_advanced_76/task.lean
+✗ verina/verina_advanced_49/task.lean
+✗ verina/verina_advanced_78/task.lean
+✗ verina/verina_advanced_71/task.lean
+✗ verina/verina_advanced_12/task.lean
+✗ verina/verina_basic_85/task.lean
+✗ verina/verina_basic_71/task.lean
+✗ verina/verina_basic_82/task.lean
+✗ verina/verina_advanced_70/task.lean
+✗ verina/verina_advanced_24/task.lean
+✗ verina/verina_advanced_23/task.lean
+✗ verina/verina_basic_40/task.lean
+✗ verina/verina_advanced_77/task.lean
+✗ verina/verina_advanced_48/task.lean
+✗ verina/verina_advanced_41/task.lean
+✗ verina/verina_basic_25/task.lean
+✗ verina/verina_advanced_79/task.lean
+✗ verina/verina_advanced_46/task.lean
+✗ verina/verina_basic_22/task.lean
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 4
+API rate limiting: 1s between calls
+Debug mode: Disabled
+- Saves only final implementation as *_impl.lean
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-08-07T15:48:25.649570

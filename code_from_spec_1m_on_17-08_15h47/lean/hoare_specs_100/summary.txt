@@ -1,0 +1,133 @@
+=== LEAN SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Lean
+LLM Provider: claude
+LLM Model: claude-3-5-sonnet-20241022
+Test directory: hoare_specs_100
+Output directory: /Users/adembizid/work/tasks/task_benchmarks/vericoding/code_from_spec_1m_on_17-08_15h47/lean/hoare_specs_100
+Max iterations: 5
+Parallel workers: 4
+Test date: 2025-08-17T16:43:10.318363
+
+Total original files: 100
+
+=== OVERALL STATISTICS ===
+Total successful: 0
+Total failed: 100
+Success rate: 0.0%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+
+=== FAILED FILES (VERIFICATION) ===
+✗ array_creation_copy.lean
+✗ Numpy_Argmax.lean
+✗ typing_ArrayLike.lean
+✗ hermite_Hermite.lean
+✗ Numpy_Minimum.lean
+✗ fft_fft.lean
+✗ bitwise_operations_bitwise_and.lean
+✗ Numpy_Split.lean
+✗ constants_False_.lean
+✗ array_creation_asmatrix.lean
+✗ Numpy_Log.lean
+✗ array_creation_asanyarray.lean
+✗ Numpy_Min.lean
+✗ legendre_leg2poly.lean
+✗ array_creation_ascontiguousarray.lean
+✗ Numpy_Sign.lean
+✗ Numpy_Dot.lean
+✗ Numpy_Sqrt.lean
+✗ random_BitGenerator.lean
+✗ Numpy_Max.lean
+✗ hermite_e_hermeadd.lean
+✗ io_operations_array_repr.lean
+✗ data_type_routines_as_strided.lean
+✗ Numpy_Matmul.lean
+✗ set_operations_in1d.lean
+✗ Numpy_Argsort.lean
+✗ logic_functions_all.lean
+✗ Numpy_Argmin.lean
+✗ hermite_e_HermiteE.lean
+✗ Numpy_Divide.lean
+✗ set_operations_intersect1d.lean
+✗ typing_DTypeLike.lean
+✗ Numpy_Sin.lean
+✗ data_type_routines_can_cast.lean
+✗ array_creation_array.lean
+✗ Numpy_Prod.lean
+✗ array_creation_arange.lean
+✗ linalg_LinAlgError.lean
+✗ mathematical_functions_arccosh.lean
+✗ Numpy_Mean.lean
+✗ array_creation_diag.lean
+✗ chebyshev_Chebyshev.lean
+✗ Numpy_Sort.lean
+✗ strings_center.lean
+✗ Numpy_Maximum.lean
+✗ Numpy_Absolute.lean
+✗ Numpy_Concatenate.lean
+✗ mathematical_functions_arccos.lean
+✗ ufuncs_identity.lean
+✗ constants_NINF.lean
+✗ Numpy_Cos.lean
+✗ datetime_support_busday_offset.lean
+✗ polyutils_format_float.lean
+✗ indexing_slicing_argwhere.lean
+✗ fft_fft2.lean
+✗ logic_functions_allclose.lean
+✗ sorting_searching_argmax.lean
+✗ indexing_slicing_argmin.lean
+✗ io_operations_array2string.lean
+✗ datetime_support_busday_count.lean
+✗ polynomial_polyadd.lean
+✗ mathematical_functions_add.lean
+✗ indexing_slicing_argmax.lean
+✗ Numpy_Any.lean
+✗ sorting_searching_argmin.lean
+✗ Numpy_Reshape.lean
+✗ chebyshev_chebadd.lean
+✗ chebyshev_cheb2poly.lean
+✗ Numpy_Multiply.lean
+✗ Numpy_Clip.lean
+✗ ufuncs_frompyfunc.lean
+✗ mathematical_functions_arcsin.lean
+✗ laguerre_lag2poly.lean
+✗ ndarray_flat.lean
+✗ polynomial_Polynomial.lean
+✗ Numpy_All.lean
+✗ ndarray_flatten.lean
+✗ statistics_amax.lean
+✗ testing_assert_allclose.lean
+✗ legendre_Legendre.lean
+✗ linalg_cholesky.lean
+✗ polyutils_as_series.lean
+✗ Numpy_Exp.lean
+✗ laguerre_Laguerre.lean
+✗ hermite_e_herme2poly.lean
+✗ bitwise_operations_binary_repr.lean
+✗ ufunc___call__.lean
+✗ mathematical_functions_arcsinh.lean
+✗ strings_add.lean
+✗ ufunc_accumulate.lean
+✗ testing_assert_almost_equal.lean
+✗ array_creation_asarray.lean
+✗ linalg_cond.lean
+✗ mathematical_functions_absolute.lean
+✗ Numpy_Power.lean
+✗ strings_capitalize.lean
+✗ Numpy_Add.lean
+✗ statistics_amin.lean
+✗ random_MT19937.lean
+✗ array_creation_bmat.lean
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 4
+API rate limiting: 1s between calls
+Debug mode: Disabled
+- Saves only final implementation as *_impl.lean
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-08-17T16:43:10.318470

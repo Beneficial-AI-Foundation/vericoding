@@ -1,0 +1,46 @@
+{
+  "workflow_summary": {
+    "total_files": 1,
+    "translation_success": 1,
+    "validation_success": 1,
+    "syntax_valid": 1,
+    "imports_valid": 1,
+    "hoare_triple_present": 1,
+    "average_score": 1.0,
+    "translation_success_rate": 100.0,
+    "validation_success_rate": 100.0
+  },
+  "quality_distribution": {
+    "excellent": 1,
+    "good": 0,
+    "fair": 0,
+    "poor": 0
+  },
+  "files": [
+    {
+      "filename": "TwoSum.lean",
+      "translation_success": true,
+      "validation_success": true,
+      "overall_score": 1.0,
+      "syntax_valid": true,
+      "imports_valid": true,
+      "hoare_triple_present": true,
+      "issues": [],
+      "suggestions": [
+        "Consider using Fin for bounded indices",
+        "Add more detailed translation comments"
+      ]
+    }
+  ],
+  "recommendations": {
+    "immediate_actions": [],
+    "quality_improvements": [
+      "Consider using Lean 4 idioms like Fin and Option",
+      "Add more detailed translation comments"
+    ],
+    "process_improvements": [
+      "Review translation prompts for specific patterns",
+      "Add more validation checks"
+    ]
+  }
+}

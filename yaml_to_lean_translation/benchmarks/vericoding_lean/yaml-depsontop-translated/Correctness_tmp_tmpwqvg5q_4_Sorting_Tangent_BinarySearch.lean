@@ -1,0 +1,44 @@
+```lean
+import Std
+import Mathlib
+
+open Std.Do
+
+/-!
+{
+  "name": "Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_BinarySearch",
+  "category": "Dafny Translation", 
+  "description": "Automatically translated from Dafny specification: Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_BinarySearch",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": [],
+  "methods": ["BinarySearch"]
+}
+-/
+
+namespace DafnyBenchmarks
+
+/--
+Binary search implementation translated from Dafny.
+Input array must be sorted in ascending order.
+Returns index where circle value should be inserted.
+-/
+def BinarySearch (a : Array Int) (circle : Int) : Int := sorry
+
+/--
+Main specification for BinarySearch:
+- Array must be sorted (each element greater than previous)
+- Result is a valid index between 0 and array length
+- All elements before result are less than circle
+- All elements from result onward are greater than or equal to circle
+-/
+theorem BinarySearch_spec (a : Array Int) (circle : Int) :
+  (∀ i, 1 ≤ i ∧ i < a.size → a.get (i-1) < a.get i) →
+  (∀ i j, 0 ≤ i ∧ i < j ∧ j < a.size → a.get i < a.get j) →
+  let n := BinarySearch a circle
+  (0 ≤ n ∧ n ≤ a.size) ∧
+  (∀ i, 0 ≤ i ∧ i < n → a.get i < circle) ∧
+  (∀ i, n ≤ i ∧ i < a.size → circle ≤ a.get i) := sorry
+
+end DafnyBenchmarks
+```

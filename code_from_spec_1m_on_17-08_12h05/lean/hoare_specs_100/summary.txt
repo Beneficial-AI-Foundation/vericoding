@@ -1,0 +1,36 @@
+=== LEAN SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Lean
+LLM Provider: claude
+LLM Model: claude-3-5-sonnet-20241022
+Test directory: hoare_specs_100
+Output directory: /Users/adembizid/work/tasks/task_benchmarks/vericoding/code_from_spec_1m_on_17-08_12h05/lean/hoare_specs_100
+Max iterations: 5
+Parallel workers: 4
+Test date: 2025-08-17T12:05:55.777548
+
+Total original files: 0
+
+=== OVERALL STATISTICS ===
+Total successful: 0
+Total failed: 0
+Success rate: 0.0%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+
+=== FAILED FILES (VERIFICATION) ===
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 4
+API rate limiting: 1s between calls
+Debug mode: Enabled
+- Saves original specification as *_iter_0_original.lean
+- Saves initial generated code as *_iter_1_generated.lean
+- Saves current working version for each iteration as *_iter_N_current.lean
+- Saves final implementation as *_impl.lean
+- Full debugging: all intermediate files are saved
+
+- Debug mode control: Enabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-08-17T12:05:55.777570

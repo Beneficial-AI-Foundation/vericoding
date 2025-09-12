@@ -1,0 +1,133 @@
+=== LEAN SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Lean
+LLM Provider: claude
+LLM Model: claude-sonnet-4-20250514
+Test directory: selected_100_no_polynomials
+Output directory: /Users/adembizid/work/tasks/task_benchmarks/vericoding/src/code_from_spec_on_18-08_12h55/lean/selected_100_no_polynomials
+Max iterations: 5
+Parallel workers: 4
+Test date: 2025-08-18T13:31:50.932080
+
+Total original files: 100
+
+=== OVERALL STATISTICS ===
+Total successful: 3
+Total failed: 97
+Success rate: 3.0%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ linalg_tensorsolve.lean -> linalg_tensorsolve_impl.lean
+✓ io_operations_array_repr.lean -> io_operations_array_repr_impl.lean
+✓ set_operations_intersect1d.lean -> set_operations_intersect1d_impl.lean
+
+=== FAILED FILES (VERIFICATION) ===
+✗ random_SeedSequence.lean
+✗ indexing_slicing_ix_.lean
+✗ typing_ArrayLike.lean
+✗ data_type_routines_obj2sctype.lean
+✗ array_manipulation_append.lean
+✗ array_creation_copy.lean
+✗ indexing_slicing_place.lean
+✗ Numpy_Argmax.lean
+✗ array_manipulation_split.lean
+✗ strings_replace.lean
+✗ strings_upper.lean
+✗ array_manipulation_moveaxis.lean
+✗ bitwise_operations_bitwise_and.lean
+✗ Numpy_Transpose.lean
+✗ strings_swapcase.lean
+✗ Numpy_Split.lean
+✗ Numpy_Square.lean
+✗ ufuncs_nout.lean
+✗ bitwise_operations_bitwise_or.lean
+✗ sorting_searching_sort.lean
+✗ strings_multiply.lean
+✗ array_creation_empty.lean
+✗ typing_NBitBase.lean
+✗ Numpy_Minimum.lean
+✗ indexing_slicing_ndindex.lean
+✗ statistics_histogram2d.lean
+✗ array_creation_asmatrix.lean
+✗ polynomial_polyval3d.lean
+✗ array_manipulation_repeat.lean
+✗ indexing_slicing_diag.lean
+✗ bitwise_operations_left_shift.lean
+✗ Numpy_Log.lean
+✗ sorting_searching_argsort.lean
+✗ io_operations_save.lean
+✗ indexing_slicing_flatiter.lean
+✗ array_manipulation_matrix_transpose.lean
+✗ statistics_average.lean
+✗ indexing_slicing_where.lean
+✗ Numpy_Min.lean
+✗ array_creation_asanyarray.lean
+✗ indexing_slicing_ravel_multi_index.lean
+✗ data_type_routines_promote_types.lean
+✗ array_manipulation_vsplit.lean
+✗ array_creation_ascontiguousarray.lean
+✗ linalg_qr.lean
+✗ indexing_slicing_unravel_index.lean
+✗ Numpy_Sign.lean
+✗ indexing_slicing_extract.lean
+✗ linalg_lstsq.lean
+✗ Numpy_Dot.lean
+✗ array_manipulation_broadcast.lean
+✗ Numpy_Sqrt.lean
+✗ strings_isupper.lean
+✗ Numpy_Max.lean
+✗ strings_isdecimal.lean
+✗ ufunc_at.lean
+✗ random_BitGenerator.lean
+✗ Numpy_Std.lean
+✗ data_type_routines_find_common_type.lean
+✗ statistics_nanpercentile.lean
+✗ array_manipulation_atleast_3d.lean
+✗ indexing_slicing_c_.lean
+✗ array_manipulation_hsplit.lean
+✗ strings_str_len.lean
+✗ array_manipulation_ravel.lean
+✗ data_type_routines_as_strided.lean
+✗ io_operations_fromstring.lean
+✗ data_type_routines_finfo.lean
+✗ array_manipulation_squeeze.lean
+✗ set_operations_in1d.lean
+✗ strings_translate.lean
+✗ linalg_eigvals.lean
+✗ Numpy_Subtract.lean
+✗ Numpy_Matmul.lean
+✗ linalg_matmul.lean
+✗ linalg_diagonal.lean
+✗ array_manipulation_rollaxis.lean
+✗ array_creation_fromstring.lean
+✗ set_operations_setxor1d.lean
+✗ datetime_support_datetime_as_string.lean
+✗ Numpy_Argsort.lean
+✗ array_manipulation_atleast_1d.lean
+✗ strings_endswith.lean
+✗ polyutils_trimseq.lean
+✗ bitwise_operations_bitwise_xor.lean
+✗ Numpy_Argmin.lean
+✗ data_type_routines_can_cast.lean
+✗ strings_isdigit.lean
+✗ array_manipulation_swapaxes.lean
+✗ array_creation_ones_like.lean
+✗ set_operations_setdiff1d.lean
+✗ typing_DTypeLike.lean
+✗ statistics_std.lean
+✗ array_manipulation_insert.lean
+✗ data_type_routines_isdtype.lean
+✗ statistics_cov.lean
+✗ polynomial_polyval2d.lean
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 4
+API rate limiting: 1s between calls
+Debug mode: Disabled
+- Saves only final implementation as *_impl.lean
+- No intermediate files saved (debug mode disabled)
+
+- Debug mode control: Disabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-08-18T13:31:50.932314

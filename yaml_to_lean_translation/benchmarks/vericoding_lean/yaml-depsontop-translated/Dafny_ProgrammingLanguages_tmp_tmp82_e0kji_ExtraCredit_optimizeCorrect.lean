@@ -1,0 +1,55 @@
+```lean
+import Std
+import Mathlib
+
+open Std.Do
+
+/-!
+{
+  "name": "Dafny_ProgrammingLanguages_tmp_tmp82_e0kji_ExtraCredit_optimizeCorrect",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Dafny_ProgrammingLanguages_tmp_tmp82_e0kji_ExtraCredit_optimizeCorrect",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ["eval", "optimize"],
+  "methods": ["optimizeCorrect"]
+}
+-/
+
+namespace DafnyBenchmarks
+
+/-- Expression datatype representing arithmetic expressions -/
+inductive Exp where
+  | Const : Int → Exp 
+  | Var : String → Exp
+  | Plus : Exp → Exp → Exp
+  | Mult : Exp → Exp → Exp
+  deriving Repr
+
+/-- Evaluates an expression given a store mapping variables to values -/
+def eval (e : Exp) (store : String → Int) : Int :=
+  match e with
+  | Exp.Const n => n
+  | Exp.Var s => store s
+  | Exp.Plus e1 e2 => eval e1 store + eval e2 store
+  | Exp.Mult e1 e2 => eval e1 store * eval e2 store
+
+/-- Optimizes an arithmetic expression by applying simplification rules -/
+def optimize (e : Exp) : Exp :=
+  match e with
+  | Exp.Mult (Exp.Const 0) _ => Exp.Const 0
+  | Exp.Mult _ (Exp.Const 0) => Exp.Const 0
+  | Exp.Mult (Exp.Const 1) e => e
+  | Exp.Mult e (Exp.Const 1) => e
+  | Exp.Mult (Exp.Const n1) (Exp.Const n2) => Exp.Const (n1 * n2)
+  | Exp.Plus (Exp.Const 0) e => e
+  | Exp.Plus e (Exp.Const 0) => e
+  | Exp.Plus (Exp.Const n1) (Exp.Const n2) => Exp.Const (n1 + n2)
+  | e => e
+
+/-- Theorem stating that optimize preserves expression evaluation -/
+theorem optimizeCorrect (e : Exp) (s : String → Int) :
+  eval e s = eval (optimize e) s := sorry
+
+end DafnyBenchmarks
+```

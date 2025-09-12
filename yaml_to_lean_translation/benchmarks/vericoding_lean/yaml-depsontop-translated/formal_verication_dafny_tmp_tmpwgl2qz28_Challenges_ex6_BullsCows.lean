@@ -1,0 +1,61 @@
+```lean
+import Std
+import Mathlib
+
+open Std.Do
+
+/-!
+{
+  "name": "formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex6_BullsCows",
+  "category": "Dafny Translation", 
+  "description": "Automatically translated from Dafny specification: formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex6_BullsCows",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ["bullspec", "cowspec", "reccbull", "recccow"],
+  "methods": ["BullsCows"]
+}
+-/
+
+namespace DafnyBenchmarks
+
+/-- Predicate indicating no duplicate elements in array -/
+def nomultiples (u : Array Nat) : Prop :=
+  ∀ j k, 0 ≤ j → j < k → k < u.size → u.get j ≠ u.get k
+
+/-- Recursive function counting matching elements at same positions -/
+def reccbull (s : Array Nat) (u : Array Nat) (i : Int) : Nat :=
+  if i == s.size then 0
+  else if s.get i == u.get i then reccbull s u (i + 1) + 1
+  else reccbull s u (i + 1)
+
+/-- Specification for bulls count -/
+def bullspec (s : Array Nat) (u : Array Nat) : Nat :=
+  reccbull s u 0
+
+/-- Recursive function counting matching elements at different positions -/
+def recccow (s : Array Nat) (u : Array Nat) (i : Int) : Nat :=
+  if i == s.size then 0
+  else if s.get i ≠ u.get i ∧ u.get i ∈ s.toList then recccow s u (i + 1) + 1
+  else recccow s u (i + 1)
+
+/-- Specification for cows count -/
+def cowspec (s : Array Nat) (u : Array Nat) : Nat :=
+  recccow s u 0
+
+/-- Main BullsCows function specification -/
+def BullsCows (s : Array Nat) (u : Array Nat) : (Nat × Nat) := sorry
+
+/-- Specification theorem for BullsCows -/
+theorem BullsCows_spec (s u : Array Nat) :
+  0 < u.size → 
+  u.size == s.size →
+  s.size ≤ 10 →
+  nomultiples u →
+  nomultiples s →
+  let (b, c) := BullsCows s u
+  b ≥ 0 ∧ c ≥ 0 ∧
+  b == bullspec s u ∧
+  c == cowspec s u := sorry
+
+end DafnyBenchmarks
+```

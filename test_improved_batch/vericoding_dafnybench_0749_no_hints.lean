@@ -1,0 +1,12 @@
+/-
+  Port of vericoding_dafnybench_0749_no_hints.dfy
+  
+  This specification was automatically translated from Dafny to Lean 4.
+-/
+
+namespace DafnyBenchmarks
+
+def Abstraction (v : Variables) : OneSpec :=
+  sorry  -- TODO: implement function body
+
+end DafnyBenchmarks

@@ -1,0 +1,18 @@
+/-
+  Port of vericoding_dafnybench_0391_no_hints.dfy
+  
+  This specification was automatically translated from Dafny to Lean 4.
+-/
+
+namespace DafnyBenchmarks
+
+def arrayUpToN (n : Int) : Array Int :=
+  sorry  -- TODO: implement function body
+
+theorem arrayUpToN_spec (n : Int) (a : Array Int) :=
+  (h_0 : n ≥ 0)
+  : a.size == n ∧ ∀ j :: 0 < j < n → a[j]! ≥ 0 ∧ ∀ j, k : Int :: 0 ≤ j ≤ k < n → a[j]! ≤ a[k]!
+  := by
+  sorry  -- TODO: implement proof
+
+end DafnyBenchmarks
