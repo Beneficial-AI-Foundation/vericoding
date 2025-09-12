@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import shutil
 from pathlib import Path
 from ruamel.yaml import YAML
 
@@ -182,8 +183,10 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, 
     else:
         output_dir = output_path
     
-    # Create the output directory if it doesn't exist
-    output_dir.mkdir(exist_ok=True)
+    # Delete the output directory recursively if it exists, then create a new one
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
+    output_dir.mkdir(parents=True)
     
     if suffix in ['lean', 'dfy', 'rs']:
         for yaml_file in yaml_files:
@@ -220,8 +223,10 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
     else:
         output_dir = output_path
     
-    # Create the output directory if it doesn't exist
-    output_dir.mkdir(exist_ok=True)
+    # Delete the output directory recursively if it exists, then create a new one
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
+    output_dir.mkdir(parents=True)
     
     # Read JSONL file and process each line
     processed_count = 0
