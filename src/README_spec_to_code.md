@@ -1,13 +1,13 @@
 # Unified Specification-to-Code Processing
 
-This document describes the unified `spec_to_code.py` script that replaces the three language-specific scripts for Dafny, Lean, and Verus.
+This document describes the unified `vericoder.py` script that replaces the three language-specific scripts for Dafny, Lean, and Verus.
 
 ## Overview
 
 The unified script consolidates the functionality of:
-- `dafny/spec_to_code.py`
+- `dafny/vericoder.py`
 - `lean/spec_to_code_lean.py`
-- `verus/spec_to_code.py`
+- `verus/vericoder.py`
 
 Into a single script that accepts the language as a command-line parameter.
 
@@ -29,14 +29,14 @@ The new interface requires specifying the language as the first argument:
 
 ```bash
 # Old way (language-specific scripts)
-python dafny/spec_to_code.py ./specs
+python dafny/vericoder.py ./specs
 python lean/spec_to_code_lean.py ./NumpySpec/DafnySpecs
-python verus/spec_to_code.py ./benchmarks/verus_specs
+python verus/vericoder.py ./benchmarks/verus_specs
 
 # New way (unified script)
-python spec_to_code.py dafny ./specs
-python spec_to_code.py lean ./NumpySpec/DafnySpecs
-python spec_to_code.py verus ./benchmarks/verus_specs
+python vericoder.py dafny ./specs
+python vericoder.py lean ./NumpySpec/DafnySpecs
+python vericoder.py verus ./benchmarks/verus_specs
 ```
 
 ### 3. Language-Specific Handling
@@ -64,14 +64,14 @@ The script looks for prompts files based on the language configuration:
 
 ```bash
 # Basic usage
-python spec_to_code.py dafny ./specs
+python vericoder.py dafny ./specs
 
 # With options
-python spec_to_code.py lean ./specs --iterations 3 --debug
-python spec_to_code.py verus ./specs --workers 8 --strict-specs
+python vericoder.py lean ./specs --iterations 3 --debug
+python vericoder.py verus ./specs --workers 8 --strict-specs
 
 # All available options
-python spec_to_code.py <language> <folder> \
+python vericoder.py <language> <folder> \
     --iterations 5 \      # Max verification attempts (default: 5)
     --debug \            # Save intermediate files
     --strict-specs \     # Enable strict specification preservation

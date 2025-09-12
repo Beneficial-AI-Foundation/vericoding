@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main, develop ]
     paths:
-      - "spec_to_code.py"
+      - "vericoder.py"
       - "vericoding/**/*.py"
       - "config/**/*.yaml"
       - "tests/**/*.py"
@@ -14,7 +14,7 @@ on:
   pull_request:
     branches: [ main, develop ]
     paths:
-      - "spec_to_code.py"
+      - "vericoder.py"
       - "vericoding/**/*.py"
       - "config/**/*.yaml"
       - "tests/**/*.py"

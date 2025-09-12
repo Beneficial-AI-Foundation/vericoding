@@ -1,6 +1,6 @@
 """Lean LSP MCP integration (lean-lsp-mcp) for collecting context.
 
-This module is copied from your ~/vericoding repo so `spec_to_code.py`
+This module is copied from your ~/vericoding repo so `vericoder.py`
 can optionally start a persistent MCP session and query tools when
 processing Lean files. It degrades gracefully if MCP or deps are missing.
 """
