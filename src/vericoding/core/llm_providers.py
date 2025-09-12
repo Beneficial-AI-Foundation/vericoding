@@ -433,8 +433,6 @@ def call_llm(provider: LLMProvider, config: ProcessingConfig, prompt: str, wandb
             "llm/calls": 1,
             "llm/latency_ms": latency_ms,
             "llm/model": model_name,
-            "llm/input_tokens": llm_response.input_tokens,
-            "llm/output_tokens": llm_response.output_tokens,
         })
     
     return llm_response.text
