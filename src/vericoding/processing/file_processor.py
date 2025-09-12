@@ -35,10 +35,12 @@ def count_placeholders(original_code: str, language: str) -> int:
         ValueError: If unsupported language is provided
     """
     if language == "lean":
-        # Count sorries, but exclude those inside vc-preamble sections
-        vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
-        vc_preamble_matches = list(re.finditer(vc_preamble_pattern, original_code, re.DOTALL))
-        preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+        # Count sorries only inside editable sections (vc-definitions, vc-theorems, vc-helpers)
+        editable_sections = []
+        for section_name in ['vc-definitions', 'vc-theorems', 'vc-helpers']:
+            pattern = rf'<{section_name}>(.*?)</{section_name}>'
+            matches = list(re.finditer(pattern, original_code, re.DOTALL))
+            editable_sections.extend([(match.start(), match.end()) for match in matches])
 
         sorry_count = 0
         search_start = 0
@@ -46,12 +48,13 @@ def count_placeholders(original_code: str, language: str) -> int:
             pos = original_code.find("sorry", search_start)
             if pos == -1:
                 break
-            # Only count if not in preamble
-            in_preamble = any(start <= pos < end for start, end in preamble_ranges)
-            if not in_preamble:
+            # Only count if inside an editable section
+            in_editable_section = any(start <= pos < end for start, end in editable_sections)
+            if in_editable_section:
                 sorry_count += 1
             search_start = pos + 1
 
+        # Also count vc-helpers sections themselves (they can be replaced with helper content)
         placeholder_count = sorry_count + original_code.count("<vc-helpers>")
     elif language in ("dafny", "verus"):
         placeholder_count = original_code.count("<vc-code>") + original_code.count("<vc-helpers>")
