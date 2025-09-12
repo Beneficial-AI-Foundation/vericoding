@@ -41,11 +41,10 @@ lean_lib Generated where
 lean_lib Benchmarks where
   globs := #[
     .submodules `apps.files,
-    .submodules `bignum,
-    .submodules `dafnybench,
+    .submodules `dafnybench.poor.unformatted,
     .submodules `humaneval.files,
+    .submodules `numpy_simple.poor.unformatted,
+    .submodules `numpy_triple.files,
     .submodules `verina.files,
-    .submodules `numpy_simple,
-    .submodules `numpy_triple.files
   ]
   srcDir := "benchmarks/lean"

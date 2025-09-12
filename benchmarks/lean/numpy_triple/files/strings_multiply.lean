@@ -8,6 +8,13 @@ open Std.Do
 -- </vc-helpers>
 
 -- <vc-definitions>
+def repeat_string (s : String) (n : Int) : String :=
+  if n ≤ 0 then "" else
+  let rec aux (count : Nat) (acc : String) : String :=
+    if count = 0 then acc
+    else aux (count - 1) (s ++ acc)
+  aux n.natAbs ""
+  
 def multiply {n : Nat} (a : Vector String n) (i : Vector Int n) : Id (Vector String n) :=
   sorry
 -- </vc-definitions>

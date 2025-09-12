@@ -1,12 +1,4 @@
 -- <vc-preamble>
-@[reducible, simp]
-def findProduct_precond (lst : List Int) : Prop :=
-  lst.length > 1 ∧
-  (∃ x ∈ lst, isEven x) ∧
-  (∃ x ∈ lst, isOdd x)
--- </vc-preamble>
-
--- <vc-helpers>
 def isEven (n : Int) : Bool :=
   n % 2 = 0
 
@@ -19,6 +11,14 @@ def firstEvenOddIndices (lst : List Int) : Option (Nat × Nat) :=
   match evenIndex, oddIndex with
   | some ei, some oi => some (ei, oi)
   | _, _ => none
+@[reducible, simp]
+def findProduct_precond (lst : List Int) : Prop :=
+  lst.length > 1 ∧
+  (∃ x ∈ lst, isEven x) ∧
+  (∃ x ∈ lst, isOdd x)
+-- </vc-preamble>
+
+-- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
