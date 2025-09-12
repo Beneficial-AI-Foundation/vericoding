@@ -25,7 +25,7 @@ proof fn run_length_encoder_property(input: String, result: String)
 // </vc-spec>
 // <vc-code>
 {
-    assume(false);
+    assume(false);      
 }
 // </vc-code>
 
