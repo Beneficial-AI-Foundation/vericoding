@@ -1,0 +1,2 @@
+yaml files generated with `code2verus --benchmark ../benchmarks/verus/verified-cogen/yaml/ --source-language verus --target-language dafny --file-pattern "*.yaml" --max-concurrent 10 --save-debug --debug-report --debug-summary > out_dafny_verified_cogen_12_09_5.txt
+` where `code2verus` is from https://github.com/Beneficial-AI-Foundation/vericoding/pull/181. The dafny files were generated with `uv run src/convert_from_yaml.py --bench benchmarks/dafny/verified-cogen --suffix dfy`.

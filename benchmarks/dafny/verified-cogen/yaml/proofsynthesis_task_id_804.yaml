@@ -1,0 +1,20 @@
+vc-description: |-
+
+vc-preamble: |-
+  predicate IsEven(n: int)
+  {
+      (n % 2) == 0
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method IsProductEven(arr: array<int>) returns (result: bool)
+      ensures result <==> (exists k :: 0 <= k < arr.Length && IsEven(arr[k]))
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+  }
+
+vc-postamble: |-

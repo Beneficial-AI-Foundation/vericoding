@@ -1,0 +1,15 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-spec: |-
+  method ChooseOdd()
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+  }
+
+vc-postamble: |-
