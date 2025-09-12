@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_sorted(arr: &Vec<i32>) -> (is_sorted: bool)
+fn is_sorted(arr: &Vec<i32>) -> (result: bool)
 
     requires
         arr.len() > 0,
 
     ensures
-        is_sorted == (forall|i: int, j: int| 0 <= i < j < arr.len() ==> (arr[i] <= arr[j])),
+        result == (forall|i: int, j: int| 0 <= i < j < arr.len() ==> (arr[i] <= arr[j])),
 // </vc-spec>
 // <vc-code>
 {

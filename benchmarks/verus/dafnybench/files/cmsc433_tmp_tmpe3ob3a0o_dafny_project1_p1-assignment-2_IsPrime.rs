@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_prime(m: i32) -> (is_prime: bool)
-    requires m > 0,
-    ensures is_prime <==> (m > 1 && forall|j: int| 2 <= j < m ==> #[trigger] (m % j as i32) != 0),
+fn is_prime(m: i32) -> (result: bool)
+    requires m > 0
+    ensures result <==> (m > 1 && forall|j: int| 2 <= j < m ==> #[trigger] (m % j as i32) != 0)
 // </vc-spec>
 // <vc-code>
 {

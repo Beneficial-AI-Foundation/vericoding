@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn no_dups(a: &Vec<i32>) -> (no_dups: bool)
-    requires forall|j: int| 1 <= j < a.len() ==> a[j-1] <= a[j],
-    ensures no_dups <==> forall|j: int| 1 <= j < a.len() ==> a[j-1] != a[j],
+fn no_dups(a: &Vec<i32>) -> (result: bool)
+    requires forall|j: int| 1 <= j < a.len() ==> a[j-1] <= a[j]
+    ensures result <==> forall|j: int| 1 <= j < a.len() ==> a[j-1] != a[j]
 // </vc-spec>
 // <vc-code>
 {

@@ -18,10 +18,10 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn sum(arr: &Vec<i64>) -> (sum: i128)
+  fn sum(arr: &Vec<i64>) -> (result: i128)
   
       ensures
-          sum_to(arr@) == sum,
+          sum_to(arr@) == result
 
 vc-code: |-
   {
