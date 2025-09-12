@@ -18,7 +18,7 @@ spec fn second_smallest_postcond(s: &Vec<i32>, result: i32) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn second_smallest(s: &Vec<i32>) -> result: i32
+fn second_smallest(s: &Vec<i32>) -> (result: i32)
     requires second_smallest_precond(s) 
     ensures second_smallest_postcond(s, result)
 // </vc-spec>
