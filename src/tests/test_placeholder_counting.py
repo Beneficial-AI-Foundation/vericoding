@@ -10,8 +10,10 @@ class TestLeanPlaceholderCounting:
     def test_count_single_sorry(self):
         """Should count a single sorry placeholder."""
         code = """
+<vc-theorems>
 theorem test : True := by
   sorry
+</vc-theorems>
 """
         count = count_placeholders(code, "lean")
         assert count == 1
@@ -19,13 +21,17 @@ theorem test : True := by
     def test_count_multiple_sorries(self):
         """Should count multiple sorry placeholders."""
         code = """
+<vc-theorems>
 theorem test1 : True := by
   sorry
 
 theorem test2 : False := by
   sorry
+</vc-theorems>
 
+<vc-definitions>
 lemma helper : True := sorry
+</vc-definitions>
 """
         count = count_placeholders(code, "lean")
         assert count == 3
@@ -33,106 +39,112 @@ lemma helper : True := sorry
     def test_count_sorry_with_vc_helpers(self):
         """Should count sorries and vc-helpers sections."""
         code = """
+<vc-theorems>
 theorem test : True := by
   sorry
+</vc-theorems>
 
 <vc-helpers>
 -- Helper functions go here
 </vc-helpers>
 
+<vc-definitions>
 lemma helper : True := sorry
+</vc-definitions>
 """
         count = count_placeholders(code, "lean")
         assert count == 3  # 2 sorries + 1 vc-helpers
 
-    def test_ignore_sorry_in_preamble(self):
-        """Should ignore sorries inside vc-preamble sections."""
+    def test_ignore_sorry_outside_editable_sections(self):
+        """Should ignore sorries outside editable sections."""
         code = """
-<vc-preamble>
 axiom test_axiom : True
-lemma helper : True := sorry  -- This should be ignored
-</vc-preamble>
+lemma helper : True := sorry  -- This should be ignored (not in editable section)
 
+<vc-theorems>
 theorem main : True := by
   sorry  -- This should be counted
+</vc-theorems>
 """
         count = count_placeholders(code, "lean")
         assert count == 1
 
-    def test_ignore_sorry_in_multiple_preambles(self):
-        """Should ignore sorries in multiple vc-preamble sections."""
+    def test_count_sorry_in_multiple_editable_sections(self):
+        """Should count sorries in multiple editable sections."""
         code = """
-<vc-preamble>
-lemma helper1 : True := sorry  -- Ignored
-</vc-preamble>
+<vc-definitions>
+def helper1 : Nat := sorry  -- Counted
+</vc-definitions>
 
 theorem test1 : True := by
-  sorry  -- Counted
+  sorry  -- Ignored (not in editable section)
 
-<vc-preamble>
-lemma helper2 : True := sorry  -- Ignored
-</vc-preamble>
+<vc-theorems>
+theorem helper2 : True := sorry  -- Counted
+</vc-theorems>
 
 theorem test2 : True := by
-  sorry  -- Counted
+  sorry  -- Ignored (not in editable section)
 """
         count = count_placeholders(code, "lean")
         assert count == 2
 
-    def test_sorry_in_preamble_with_helpers(self):
-        """Should count vc-helpers but ignore preamble sorries."""
+    def test_sorry_outside_editable_with_helpers(self):
+        """Should count vc-helpers and sorries in editable sections only."""
         code = """
-<vc-preamble>
-lemma helper : True := sorry  -- Ignored
-</vc-preamble>
+lemma helper : True := sorry  -- Ignored (not in editable section)
 
 <vc-helpers>
 -- Helper code
 </vc-helpers>
 
+<vc-theorems>
 theorem main : True := by
-  sorry  -- Counted
+  sorry  -- Counted (in editable section)
+</vc-theorems>
 """
         count = count_placeholders(code, "lean")
         assert count == 2  # 1 sorry + 1 vc-helpers
 
-    def test_nested_preamble_sections(self):
-        """It does not handle nested vc-preamble sections correctly."""
-        # Note: We assume there are never nested preambles in practice
+    def test_nested_editable_sections(self):
+        """Should handle nested editable sections correctly."""
+        # Note: We assume there are never nested editable sections in practice  
         code = """
-<vc-preamble>
+<vc-definitions>
 axiom outer : True
-lemma outer_helper : True := sorry  -- Ignored (inside preamble)
-</vc-preamble>
+lemma outer_helper : True := sorry  -- Counted (inside editable section)
+</vc-definitions>
 
 theorem test : True := by
-  sorry  -- Counted
+  sorry  -- Ignored (not in editable section)
 """
         count = count_placeholders(code, "lean")
         assert count == 1
 
-    def test_incomplete_preamble_tags(self):
-        """It does not handle incomplete preamble tags gracefully."""
+    def test_incomplete_editable_tags(self):
+        """Should handle incomplete editable tags gracefully."""
         code = """
-<vc-preamble>
+<vc-definitions>
 lemma incomplete : True := sorry
 -- Missing closing tag
 
 theorem test : True := by
   sorry
 """
-        # Without matching closing tag, the regex won't match, so all sorries should be counted
+        # Without matching closing tag, the regex won't match, so no sorries should be counted
         count = count_placeholders(code, "lean")
-        assert count == 2
+        assert count == 0
 
-    def test_empty_preamble_section(self):
-        """Should handle empty preamble sections correctly."""
+    def test_empty_editable_section(self):
+        """Should handle empty editable sections correctly."""
         code = """
-<vc-preamble>
-</vc-preamble>
+<vc-definitions>
+</vc-definitions>
 
+<vc-theorems>
 theorem test : True := by
   sorry
+</vc-theorems>
 """
         count = count_placeholders(code, "lean")
         assert count == 1
@@ -166,39 +178,45 @@ theorem test : True := by
         assert count == 2
 
     def test_sorry_as_substring(self):
-        """Should count 'sorry' even when part of larger words.
-        This is a small bug"""
+        """Should count 'sorry' only when in editable sections.
+        Substrings are still counted if in editable sections"""
         code = """
+<vc-theorems>
 theorem test : True := by
   -- This comment mentions sorry but shouldn't affect counting
   sorry
+</vc-theorems>
 
-def sorryNotSorry : Nat := 42  -- Contains 'sorry' as substring
+def sorryNotSorry : Nat := 42  -- Contains 'sorry' as substring but ignored (not in editable section)
+
+<vc-definitions>
 lemma anotherSorry : True := sorry  -- This should be counted
+</vc-definitions>
 """
+        # TODO This is a bug, but leaving for now
         count = count_placeholders(code, "lean")
-        assert count == 5  # All five occurrences of "sorry" should be counted (comment, standalone, sorryNotSorry, anotherSorry, second sorry)
+        assert count == 3  # Three occurrences in editable sections: sorry in comment + sorry standalone in vc-theorems, and sorry in vc-definitions
 
-    def test_multiline_preamble_content(self):
-        """Should handle multiline preamble content correctly."""
+    def test_multiline_editable_content(self):
+        """Should handle multiline editable section content correctly."""
         code = """
-<vc-preamble>
-axiom test_axiom : True
+axiom test_axiom : True  -- Ignored (not in editable section)
 
+<vc-definitions>
 lemma helper_lemma : True := by
-  sorry
+  sorry  -- Counted (in editable section)
   
 def helper_function : Nat := 42
 
 lemma another_helper : False := by
-  sorry
-</vc-preamble>
+  sorry  -- Counted (in editable section)
+</vc-definitions>
 
 theorem main : True := by
-  sorry  -- This should be counted
+  sorry  -- Ignored (not in editable section)
 """
         count = count_placeholders(code, "lean")
-        assert count == 1
+        assert count == 2
 
 
 class TestDafnyPlaceholderCounting:
@@ -440,30 +458,30 @@ class TestPlaceholderCountingEdgeCases:
 
     def test_mixed_placeholder_types_complex(self):
         """Should handle complex mixed placeholder scenarios."""
-        # Lean with mixed types and preamble exclusions
+        # Lean with mixed types and editable section inclusions
         lean_code = """
-<vc-preamble>
-lemma preamble_sorry : True := sorry  -- Ignored
-</vc-preamble>
+lemma preamble_sorry : True := sorry  -- Ignored (not in editable section)
 
 <vc-helpers>
 -- Helper 1
 </vc-helpers>
 
-theorem test1 : True := sorry  -- Counted
+theorem test1 : True := sorry  -- Ignored (not in editable section)
 
 <vc-helpers>
 -- Helper 2  
 </vc-helpers>
 
-theorem test2 : False := sorry  -- Counted
+<vc-definitions>
+def test2 : Nat := sorry  -- Counted (in editable section)
+</vc-definitions>
 
-<vc-preamble>
-axiom another_sorry : sorry  -- Ignored (contains sorry)
-</vc-preamble>
+<vc-theorems>
+theorem another_one : True := sorry  -- Counted (in editable section)
+</vc-theorems>
 """
         count = count_placeholders(lean_code, "lean")
-        assert count == 4  # 2 sorries + 2 vc-helpers
+        assert count == 4  # 2 sorries (in editable sections) + 2 vc-helpers
 
     def test_overlapping_patterns(self):
         """Should handle patterns without substring confusion."""
@@ -504,10 +522,12 @@ function Helper(): int { 2 }
         large_code_parts = []
         expected_count = 0
         
-        # Add many placeholders for Lean
-        for i in range(100):
+        # Add many placeholders for Lean inside editable sections
+        large_code_parts.append("<vc-theorems>")
+        for i in range(50):
             large_code_parts.append(f"theorem test{i} : True := sorry")
             expected_count += 1
+        large_code_parts.append("</vc-theorems>")
         
         for i in range(50):
             large_code_parts.append(f"<vc-helpers>\n-- Helper {i}\n</vc-helpers>")
@@ -524,7 +544,9 @@ class TestPlaceholderCountingConsistency:
     def test_idempotent_counting(self):
         """Should return same count when called multiple times."""
         code = """
+<vc-theorems>
 theorem test : True := sorry
+</vc-theorems>
 <vc-helpers>
 -- Helper
 </vc-helpers>
@@ -538,7 +560,9 @@ theorem test : True := sorry
     def test_ordering_independence(self):
         """Should count same regardless of placeholder order."""
         code1 = """
+<vc-theorems>
 theorem test : True := sorry
+</vc-theorems>
 <vc-helpers>
 -- Helper
 </vc-helpers>
@@ -548,7 +572,9 @@ theorem test : True := sorry
 <vc-helpers>
 -- Helper
 </vc-helpers>
+<vc-theorems>
 theorem test : True := sorry
+</vc-theorems>
 """
         
         count1 = count_placeholders(code1, "lean")
@@ -557,11 +583,13 @@ theorem test : True := sorry
 
     def test_whitespace_tolerance(self):
         """Should be tolerant of different whitespace patterns."""
-        code1 = """theorem test:True:=sorry"""
-        code2 = """theorem test : True := sorry"""
+        code1 = """<vc-theorems>theorem test:True:=sorry</vc-theorems>"""
+        code2 = """<vc-theorems>theorem test : True := sorry</vc-theorems>"""
         code3 = """
+<vc-theorems>
 theorem test : True := 
     sorry
+</vc-theorems>
 """
         
         # All should count the single sorry

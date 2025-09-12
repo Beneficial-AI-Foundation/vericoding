@@ -12,121 +12,145 @@ from vericoding.processing.cheat_checker import (
 class TestLeanCheatDetection:
     """Test cheat detection for Lean language."""
 
-    def test_detects_sorry_outside_preamble(self):
-        """Should detect sorry when it's outside vc-preamble sections."""
+    def test_ignores_sorry_outside_editable_sections(self):
+        """Should ignore sorry when it's outside editable sections."""
         code = """
 theorem test : True := by
-  sorry
+  sorry  -- This should be ignored (not in editable section)
+"""
+        cheats = check_for_cheats(code, "lean")
+        assert len(cheats) == 0
+
+    def test_detects_sorry_inside_vc_definitions(self):
+        """Should detect sorry when it's inside vc-definitions sections."""
+        code = """
+<vc-definitions>
+def factorial (n : Nat) : Nat := sorry
+</vc-definitions>
+
+theorem main : True := by
+  exact True.intro
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
         assert cheats[0][0] == r'\bsorry\b'
         assert "sorry" in cheats[0][1]
 
-    def test_ignores_sorry_inside_preamble(self):
-        """Should ignore sorry when it's inside vc-preamble sections."""
+    def test_detects_sorry_inside_vc_theorems(self):
+        """Should detect sorry when it's inside vc-theorems sections."""
         code = """
-<vc-preamble>
-axiom test_axiom : True
-lemma helper : True := sorry
-</vc-preamble>
-
-theorem main : True := by
-  exact test_axiom
-"""
-        cheats = check_for_cheats(code, "lean")
-        assert len(cheats) == 0
-
-    def test_mixed_sorry_locations(self):
-        """Should detect sorry outside preamble but ignore sorry inside preamble."""
-        code = """
-<vc-preamble>
-axiom test_axiom : True
-lemma helper : True := sorry  -- This should be ignored
-</vc-preamble>
-
-theorem main : True := by
+<vc-theorems>
+theorem test : True := by
   sorry  -- This should be detected
+</vc-theorems>
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
         assert cheats[0][0] == r'\bsorry\b'
 
-    def test_multiple_preamble_sections(self):
-        """Should handle multiple vc-preamble sections correctly."""
+    def test_mixed_sorry_locations(self):
+        """Should detect sorry inside editable sections but ignore sorry outside."""
         code = """
-<vc-preamble>
-lemma helper1 : True := sorry  -- Ignored
-</vc-preamble>
+axiom test_axiom : True
+lemma helper : True := sorry  -- This should be ignored (not in editable section)
+
+<vc-theorems>
+theorem main : True := by
+  sorry  -- This should be detected
+</vc-theorems>
+"""
+        cheats = check_for_cheats(code, "lean")
+        assert len(cheats) == 1
+        assert cheats[0][0] == r'\bsorry\b'
+
+    def test_multiple_editable_sections(self):
+        """Should handle multiple editable sections correctly."""
+        code = """
+<vc-definitions>
+def helper1 : Nat := sorry  -- Detected
+</vc-definitions>
 
 theorem test1 : True := by
-  sorry  -- Detected
+  sorry  -- Ignored (not in editable section)
 
-<vc-preamble>
-lemma helper2 : True := sorry  -- Ignored
-</vc-preamble>
+<vc-theorems>
+theorem helper2 : True := by sorry  -- Detected
+</vc-theorems>
 
 theorem test2 : True := by
-  sorry  -- Detected
+  sorry  -- Ignored (not in editable section)
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1  # Only one entry per pattern type
         assert cheats[0][0] == r'\bsorry\b'
 
-    def test_detects_admit_outside_preamble(self):
-        """Should detect admit when it's outside vc-preamble sections."""
+    def test_ignores_admit_outside_editable_sections(self):
+        """Should ignore admit when it's outside editable sections."""
         code = """
 theorem test : True := by
-  admit
+  admit  -- Ignored (not in editable section)
+"""
+        cheats = check_for_cheats(code, "lean")
+        assert len(cheats) == 0
+
+    def test_detects_admit_inside_editable_sections(self):
+        """Should detect admit when it's inside editable sections."""
+        code = """
+<vc-helpers>
+lemma helper : True := admit  -- Detected
+</vc-helpers>
+
+theorem main : True := by
+  exact True.intro
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
         assert cheats[0][0] == r'\badmit\b'
         assert "admit" in cheats[0][1]
 
-    def test_ignores_admit_inside_preamble(self):
-        """Should ignore admit when it's inside vc-preamble sections."""
+    def test_ignores_axiom_outside_editable_sections(self):
+        """Should ignore axiom when it's outside editable sections."""
         code = """
-<vc-preamble>
-lemma helper : True := admit
-</vc-preamble>
+axiom bad_axiom : False  -- Ignored (not in editable section)
 
-theorem main : True := by
+theorem test : True := by
   exact True.intro
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 0
 
-    def test_detects_axiom_outside_preamble(self):
-        """Should detect axiom when it's outside vc-preamble sections."""
+    def test_detects_axiom_inside_editable_sections(self):
+        """Should detect axiom when it's inside editable sections."""
         code = """
-axiom bad_axiom : False
+<vc-definitions>
+axiom test_axiom : True  -- Detected
+</vc-definitions>
 
-theorem test : True := by
-  exact True.intro
+theorem main : True := by
+  exact test_axiom
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
         assert cheats[0][0] == r'\baxiom\b'
         assert "axiom" in cheats[0][1]
 
-    def test_ignores_axiom_inside_preamble(self):
-        """Should ignore axiom when it's inside vc-preamble sections."""
+    def test_ignores_unsafe_outside_editable_sections(self):
+        """Should ignore unsafe when it's outside editable sections."""
         code = """
-<vc-preamble>
-axiom test_axiom : True
-</vc-preamble>
+unsafe def bad_function : Nat := 42  -- Ignored (not in editable section)
 
-theorem main : True := by
-  exact test_axiom
+theorem test : True := by
+  exact True.intro
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 0
 
-    def test_detects_unsafe_outside_preamble(self):
-        """Should detect unsafe when it's outside vc-preamble sections."""
+    def test_detects_unsafe_inside_editable_sections(self):
+        """Should detect unsafe when it's inside editable sections."""
         code = """
-unsafe def bad_function : Nat := 42
+<vc-definitions>
+unsafe def bad_function : Nat := 42  -- Detected
+</vc-definitions>
 
 theorem test : True := by
   exact True.intro
@@ -136,10 +160,23 @@ theorem test : True := by
         assert cheats[0][0] == r'\bunsafe\b'
         assert "unsafe" in cheats[0][1]
 
-    def test_detects_unchecked_cast_outside_preamble(self):
-        """Should detect Unchecked.cast when it's outside vc-preamble sections."""
+    def test_ignores_unchecked_cast_outside_editable_sections(self):
+        """Should ignore Unchecked.cast when it's outside editable sections."""
         code = """
-def bad_cast : Nat := Unchecked.cast 42
+def bad_cast : Nat := Unchecked.cast 42  -- Ignored (not in editable section)
+
+theorem test : True := by
+  exact True.intro
+"""
+        cheats = check_for_cheats(code, "lean")
+        assert len(cheats) == 0
+
+    def test_detects_unchecked_cast_inside_editable_sections(self):
+        """Should detect Unchecked.cast when it's inside editable sections."""
+        code = """
+<vc-helpers>
+def bad_cast : Nat := Unchecked.cast 42  -- Detected
+</vc-helpers>
 
 theorem test : True := by
   exact True.intro
@@ -149,11 +186,25 @@ theorem test : True := by
         assert cheats[0][0] == r'\bUnchecked\.cast\b'
         assert "type checking" in cheats[0][1]
 
-    def test_detects_extern_outside_preamble(self):
-        """Should detect @[extern] when it's outside vc-preamble sections."""
+    def test_ignores_extern_outside_editable_sections(self):
+        """Should ignore @[extern] when it's outside editable sections."""
         code = """
-@[extern "bad_function"]
+@[extern "bad_function"]  -- Ignored (not in editable section)
 def bad_function : Nat := 42
+
+theorem test : True := by
+  exact True.intro
+"""
+        cheats = check_for_cheats(code, "lean")
+        assert len(cheats) == 0
+
+    def test_detects_extern_inside_editable_sections(self):
+        """Should detect @[extern] when it's inside editable sections."""
+        code = """
+<vc-theorems>
+@[extern "bad_function"]  -- Detected
+def bad_function : Nat := 42
+</vc-theorems>
 
 theorem test : True := by
   exact True.intro
@@ -164,20 +215,24 @@ theorem test : True := by
         assert "extern" in cheats[0][1]
 
     def test_multiple_cheat_types_mixed_locations(self):
-        """Should detect multiple types of cheats, respecting preamble exclusions."""
+        """Should detect multiple types of cheats, respecting editable section rules."""
         code = """
-<vc-preamble>
-axiom helper_axiom : True
-lemma helper : True := sorry
-unsafe def helper_unsafe : Nat := 42
-</vc-preamble>
+axiom helper_axiom : True  -- Ignored (not in editable section)
+lemma helper : True := sorry  -- Ignored (not in editable section)
+unsafe def helper_unsafe : Nat := 42  -- Ignored (not in editable section)
 
+<vc-theorems>
 theorem main : True := by
   sorry  -- Should be detected
+</vc-theorems>
 
+<vc-definitions>
 axiom bad_axiom : False  -- Should be detected
+</vc-definitions>
 
+<vc-helpers>
 def test : Nat := Unchecked.cast 42  -- Should be detected
+</vc-helpers>
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 3  # sorry, axiom, Unchecked.cast
@@ -189,10 +244,12 @@ def test : Nat := Unchecked.cast 42  -- Should be detected
     def test_no_cheats_detected(self):
         """Should detect no cheats in clean code."""
         code = """
-<vc-preamble>
-axiom helper : True
-lemma test_helper : True := sorry
-</vc-preamble>
+axiom helper : True  -- Ignored (not in editable section)
+lemma test_helper : True := sorry  -- Ignored (not in editable section)
+
+<vc-helpers>
+lemma clean_helper : True := by trivial  -- No cheats here
+</vc-helpers>
 
 theorem main : True := by
   exact helper
@@ -204,24 +261,37 @@ theorem main : True := by
 class TestDafnyCheatDetection:
     """Test cheat detection for Dafny language."""
 
-    def test_detects_axiom_attribute(self):
-        """Should detect {:axiom} attribute in Dafny."""
+    def test_ignores_axiom_attribute_outside_editable_sections(self):
+        """Should ignore {:axiom} attribute when outside editable sections."""
         code = """
-lemma {:axiom} BadLemma()
+lemma {:axiom} BadLemma()  // Ignored (not in editable section)
   ensures false
+"""
+        cheats = check_for_cheats(code, "dafny")
+        assert len(cheats) == 0
+
+    def test_detects_axiom_inside_vc_code(self):
+        """Should detect {:axiom} when it's inside vc-code sections."""
+        code = """
+method Test() {
+    <vc-code>
+    lemma {:axiom} BadLemma()  // Detected
+      ensures false
+    </vc-code>
+}
 """
         cheats = check_for_cheats(code, "dafny")
         assert len(cheats) == 1
         assert cheats[0][0] == r'\{:axiom\}'
         assert "axiom" in cheats[0][1]
 
-    def test_ignores_axiom_inside_preamble(self):
-        """Should ignore {:axiom} when it's inside vc-preamble sections."""
+    def test_detects_axiom_inside_vc_helpers(self):
+        """Should detect {:axiom} when it's inside vc-helpers sections."""
         code = """
-<vc-preamble>
-lemma {:axiom} HelperAxiom()
+<vc-helpers>
+lemma {:axiom} HelperAxiom()  // Detected
   ensures true
-</vc-preamble>
+</vc-helpers>
 
 lemma MainLemma()
   ensures HelperAxiom()
@@ -230,40 +300,26 @@ lemma MainLemma()
 }
 """
         cheats = check_for_cheats(code, "dafny")
-        assert len(cheats) == 0
-
-    def test_detects_axiom_outside_preamble(self):
-        """Should detect {:axiom} when it's outside vc-preamble sections."""
-        code = """
-<vc-preamble>
-lemma {:axiom} HelperAxiom()
-  ensures true
-</vc-preamble>
-
-lemma {:axiom} BadLemma()  // This should be detected
-  ensures false
-"""
-        cheats = check_for_cheats(code, "dafny")
         assert len(cheats) == 1
         assert cheats[0][0] == r'\{:axiom\}'
 
-    def test_multiple_preamble_sections_dafny(self):
-        """Should handle multiple vc-preamble sections in Dafny."""
+    def test_multiple_editable_sections_dafny(self):
+        """Should handle multiple editable sections in Dafny."""
         code = """
-<vc-preamble>
-lemma {:axiom} Helper1()
+<vc-helpers>
+lemma {:axiom} Helper1()  // Detected
   ensures true
-</vc-preamble>
+</vc-helpers>
 
-lemma {:axiom} BadLemma1()  // Detected
+lemma {:axiom} BadLemma1()  // Ignored (not in editable section)
   ensures false
 
-<vc-preamble>
-lemma {:axiom} Helper2()
+<vc-code>
+lemma {:axiom} Helper2()  // Detected
   ensures true
-</vc-preamble>
+</vc-code>
 
-lemma {:axiom} BadLemma2()  // Detected
+lemma {:axiom} BadLemma2()  // Ignored (not in editable section)
   ensures false
 """
         cheats = check_for_cheats(code, "dafny")
@@ -281,16 +337,14 @@ lemma GoodLemma()
         cheats = check_for_cheats(code, "dafny")
         assert len(cheats) == 0
 
-    def test_no_cheats_with_preamble_only(self):
-        """Should detect no cheats when axioms are only in preamble."""
+    def test_no_cheats_when_outside_editable_sections(self):
+        """Should detect no cheats when axioms are only outside editable sections."""
         code = """
-<vc-preamble>
-lemma {:axiom} Helper1()
+lemma {:axiom} Helper1()  // Ignored (not in editable section)
   ensures true
 
-lemma {:axiom} Helper2()
+lemma {:axiom} Helper2()  // Ignored (not in editable section)
   ensures false
-</vc-preamble>
 
 lemma MainLemma()
   ensures Helper1()
@@ -305,12 +359,39 @@ lemma MainLemma()
 class TestVerusCheatDetection:
     """Test cheat detection for Verus language."""
 
-    def test_detects_assume_outside_preamble(self):
-        """Should detect 'assume' when it's outside vc-preamble sections."""
+    def test_ignores_assume_outside_editable_sections(self):
+        """Should ignore 'assume' when it's outside editable sections."""
         code = """
 fn test_function(x: u32) -> u32 {
-    assume(x > 0);
+    assume(x > 0);  // Ignored (not in editable section)
     x + 1
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 0
+
+    def test_ignores_assume_in_word_outside_editable_sections(self):
+        """Should ignore 'assume' even when part of a bigger word when outside editable sections."""
+        code = """
+fn test_function() {
+    let assumed_value = true;  // Ignored (not in editable section)
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 0
+
+    def test_detects_assume_inside_editable_sections(self):
+        """Should detect 'assume' when it's inside editable sections."""
+        code = """
+<vc-code>
+fn helper_with_precondition(x: u32) -> u32 {
+    assume(x > 0);  // Detected
+    x + 1
+}
+</vc-code>
+
+fn main_function() -> u32 {
+    helper_with_precondition(5)
 }
 """
         cheats = check_for_cheats(code, "verus")
@@ -318,42 +399,31 @@ fn test_function(x: u32) -> u32 {
         assert cheats[0][0] == r'assume'
         assert "assume" in cheats[0][1]
 
-    def test_detects_assume_in_word_outside_preamble(self):
-        """Should detect 'assume' even when part of a bigger word."""
+    def test_ignores_admit_outside_editable_sections(self):
+        """Should ignore 'admit' when it's outside editable sections."""
         code = """
-fn test_function() {
-    let assumed_value = true;  // This should be detected
-}
-"""
-        cheats = check_for_cheats(code, "verus")
-        assert len(cheats) == 1
-        assert cheats[0][0] == r'assume'
-
-    def test_ignores_assume_inside_preamble(self):
-        """Should ignore 'assume' when it's inside vc-preamble sections."""
-        code = """
-<vc-preamble>
-fn helper_with_precondition(x: u32) -> u32 {
-    assume(x > 0);
-    x + 1
-}
-</vc-preamble>
-
-fn main_function() -> u32 {
-    helper_with_precondition(5)
+fn test_function() -> bool
+    ensures true
+{
+    admit();  // Ignored (not in editable section)
+    true
 }
 """
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 0
 
-    def test_detects_admit_outside_preamble(self):
-        """Should detect 'admit' when it's outside vc-preamble sections."""
+    def test_detects_admit_inside_editable_sections(self):
+        """Should detect 'admit' when it's inside editable sections."""
         code = """
-fn test_function() -> bool
-    ensures true
-{
-    admit();  // This should be detected
+<vc-helpers>
+fn helper_with_admit() -> bool {
+    admit();  // Detected
     true
+}
+</vc-helpers>
+
+fn main_function() -> bool {
+    helper_with_admit()
 }
 """
         cheats = check_for_cheats(code, "verus")
@@ -361,29 +431,29 @@ fn test_function() -> bool
         assert cheats[0][0] == r'\badmit\b'
         assert "admit" in cheats[0][1]
 
-    def test_ignores_admit_inside_preamble(self):
-        """Should ignore 'admit' when it's inside vc-preamble sections."""
+    def test_ignores_external_body_outside_editable_sections(self):
+        """Should ignore '#[verifier::external_body]' when it's outside editable sections."""
         code = """
-<vc-preamble>
-fn helper_with_admit() -> bool {
-    admit();
+#[verifier::external_body]  // Ignored (not in editable section)
+fn bad_function() -> bool {
     true
-}
-</vc-preamble>
-
-fn main_function() -> bool {
-    helper_with_admit()
 }
 """
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 0
 
-    def test_detects_external_body_outside_preamble(self):
-        """Should detect '#[verifier::external_body]' when it's outside vc-preamble sections."""
+    def test_detects_external_body_inside_editable_sections(self):
+        """Should detect '#[verifier::external_body]' when it's inside editable sections."""
         code = """
-#[verifier::external_body]
-fn bad_function() -> bool {
+<vc-code>
+#[verifier::external_body]  // Detected
+fn helper_function() -> bool {
     true
+}
+</vc-code>
+
+fn main_function() -> bool {
+    helper_function()
 }
 """
         cheats = check_for_cheats(code, "verus")
@@ -391,29 +461,29 @@ fn bad_function() -> bool {
         assert cheats[0][0] == r'#\[verifier::external'
         assert "verifier external" in cheats[0][1]
 
-    def test_ignores_external_body_inside_preamble(self):
-        """Should ignore '#[verifier::external_body]' when it's inside vc-preamble sections."""
+    def test_ignores_external_wildcard_outside_editable_sections(self):
+        """Should ignore '#[verifier::external*' patterns when outside editable sections."""
         code = """
-<vc-preamble>
-#[verifier::external_body]
-fn helper_function() -> bool {
+#[verifier::external_fn_specification]  // Ignored (not in editable section)
+fn bad_function() -> bool {
     true
-}
-</vc-preamble>
-
-fn main_function() -> bool {
-    helper_function()
 }
 """
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 0
 
-    def test_detects_external_wildcard_outside_preamble(self):
-        """Should detect '#[verifier::external*' patterns when outside vc-preamble sections."""
+    def test_detects_external_wildcard_inside_editable_sections(self):
+        """Should detect '#[verifier::external*' patterns when inside editable sections."""
         code = """
-#[verifier::external_fn_specification]
-fn bad_function() -> bool {
+<vc-helpers>
+#[verifier::external_fn_specification]  // Detected
+fn helper_function() -> bool {
     true
+}
+</vc-helpers>
+
+fn main_function() -> bool {
+    helper_function()
 }
 """
         cheats = check_for_cheats(code, "verus")
@@ -421,29 +491,29 @@ fn bad_function() -> bool {
         assert cheats[0][0] == r'#\[verifier::external'
         assert "verifier external" in cheats[0][1]
 
-    def test_ignores_external_wildcard_inside_preamble(self):
-        """Should ignore '#[verifier::external*' patterns when inside vc-preamble sections."""
+    def test_ignores_exec_allows_no_decreases_outside_editable_sections(self):
+        """Should ignore '#[verifier::exec_allows_no_decreases_clause]' when outside editable sections."""
         code = """
-<vc-preamble>
-#[verifier::external_fn_specification]
-fn helper_function() -> bool {
-    true
-}
-</vc-preamble>
-
-fn main_function() -> bool {
-    helper_function()
-}
-"""
-        cheats = check_for_cheats(code, "verus")
-        assert len(cheats) == 0
-
-    def test_detects_exec_allows_no_decreases_outside_preamble(self):
-        """Should detect '#[verifier::exec_allows_no_decreases_clause]' when outside vc-preamble sections."""
-        code = """
-#[verifier::exec_allows_no_decreases_clause]
+#[verifier::exec_allows_no_decreases_clause]  // Ignored (not in editable section)
 fn bad_recursive_function(n: u32) -> u32 {
     if n == 0 { 0 } else { bad_recursive_function(n - 1) }
+}
+"""
+        cheats = check_for_cheats(code, "verus")
+        assert len(cheats) == 0
+
+    def test_detects_exec_allows_no_decreases_inside_editable_sections(self):
+        """Should detect '#[verifier::exec_allows_no_decreases_clause]' when inside editable sections."""
+        code = """
+<vc-code>
+#[verifier::exec_allows_no_decreases_clause]  // Detected
+fn helper_recursive_function(n: u32) -> u32 {
+    if n == 0 { 0 } else { helper_recursive_function(n - 1) }
+}
+</vc-code>
+
+fn main_function() -> u32 {
+    helper_recursive_function(5)
 }
 """
         cheats = check_for_cheats(code, "verus")
@@ -451,48 +521,39 @@ fn bad_recursive_function(n: u32) -> u32 {
         assert cheats[0][0] == r'#\[verifier::exec_allows_no_decreases_clause\]'
         assert "exec_allows_no_decreases_clause" in cheats[0][1]
 
-    def test_ignores_exec_allows_no_decreases_inside_preamble(self):
-        """Should ignore '#[verifier::exec_allows_no_decreases_clause]' when inside vc-preamble sections."""
-        code = """
-<vc-preamble>
-#[verifier::exec_allows_no_decreases_clause]
-fn helper_recursive_function(n: u32) -> u32 {
-    if n == 0 { 0 } else { helper_recursive_function(n - 1) }
-}
-</vc-preamble>
-
-fn main_function() -> u32 {
-    helper_recursive_function(5)
-}
-"""
-        cheats = check_for_cheats(code, "verus")
-        assert len(cheats) == 0
-
     def test_multiple_cheat_types_mixed_locations_verus(self):
-        """Should detect multiple types of cheats, respecting preamble exclusions."""
+        """Should detect multiple types of cheats, respecting editable section rules."""
         code = """
-<vc-preamble>
-fn helper_with_precondition(x: u32) -> u32 {
+fn helper_with_precondition(x: u32) -> u32 {  // Ignored (not in editable section)
     assume(x > 0);
     x + 1
 }
 
-#[verifier::external_body]
+#[verifier::external_body]  // Ignored (not in editable section)
 fn helper_external() -> bool {
     true
 }
-</vc-preamble>
 
-fn main_function() -> bool {
+fn main_function() -> bool {  // Ignored (not in editable section)
+    assume(true);
+    admit();
+    true
+}
+
+<vc-code>
+fn bad1() -> bool {
     assume(true);  // Should be detected
     admit();      // Should be detected
     true
 }
+</vc-code>
 
+<vc-helpers>
 #[verifier::external_body]  // Should be detected
 fn bad_function() -> bool {
     true
 }
+</vc-helpers>
 """
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 3  # assume, admit, external
@@ -501,27 +562,27 @@ fn bad_function() -> bool {
         assert r'\badmit\b' in cheat_patterns
         assert r'#\[verifier::external' in cheat_patterns
 
-    def test_multiple_preamble_sections_verus(self):
-        """Should handle multiple vc-preamble sections in Verus."""
+    def test_multiple_editable_sections_verus(self):
+        """Should handle multiple editable sections in Verus."""
         code = """
-<vc-preamble>
+<vc-code>
 fn helper1() {
-    assume(true);
+    assume(true);  // Detected
 }
-</vc-preamble>
+</vc-code>
 
-fn bad1() {
-    assume(false);  // Detected
+fn bad1() {  // Ignored (not in editable section)
+    assume(false);
 }
 
-<vc-preamble>
+<vc-helpers>
 fn helper2() {
-    admit();
-}
-</vc-preamble>
-
-fn bad2() {
     admit();  // Detected
+}
+</vc-helpers>
+
+fn bad2() {  // Ignored (not in editable section)
+    admit();
 }
 """
         cheats = check_for_cheats(code, "verus")
@@ -543,25 +604,23 @@ fn test_function(x: u32) -> u32
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 0
 
-    def test_no_cheats_with_preamble_only_verus(self):
-        """Should detect no cheats when all bypasses are only in preamble."""
+    def test_no_cheats_when_outside_editable_sections_verus(self):
+        """Should detect no cheats when all bypasses are only outside editable sections."""
         code = """
-<vc-preamble>
-fn helper_precondition(x: u32) -> u32 {
+fn helper_precondition(x: u32) -> u32 {  // Ignored (not in editable section)
     assume(x > 0);
     x + 1
 }
 
-#[verifier::external_body]
+#[verifier::external_body]  // Ignored (not in editable section)
 fn helper_external() -> bool {
     true
 }
 
-#[verifier::exec_allows_no_decreases_clause]
+#[verifier::exec_allows_no_decreases_clause]  // Ignored (not in editable section)
 fn helper_recursive(n: u32) -> u32 {
     if n == 0 { 0 } else { helper_recursive(n - 1) }
 }
-</vc-preamble>
 
 fn main_function() -> bool
     ensures result == true
@@ -578,15 +637,17 @@ class TestCheatCheckerHelpers:
 
     def test_has_cheats_true(self):
         """Should return True when cheats are detected."""
-        code = "theorem test : True := sorry"
+        code = "<vc-theorems>\ntheorem test : True := sorry\n</vc-theorems>"
         assert has_cheats(code, "lean") is True
 
     def test_has_cheats_false(self):
         """Should return False when no cheats are detected."""
         code = """
-<vc-preamble>
-lemma helper : True := sorry
-</vc-preamble>
+lemma helper : True := sorry  -- Ignored (not in editable section)
+
+<vc-helpers>
+lemma clean_helper : True := by trivial  -- No cheats here
+</vc-helpers>
 
 theorem test : True := by exact helper
 """
@@ -594,7 +655,7 @@ theorem test : True := by exact helper
 
     def test_has_final_failure_cheats(self):
         """Should return True when code has cheats that cause final failure."""
-        code = "theorem test : True := sorry"
+        code = "<vc-definitions>\ndef test : Nat := sorry\n</vc-definitions>"
         assert has_final_failure_cheats(code, "lean") is True
 
     def test_get_cheat_message_single_warning(self):
@@ -646,65 +707,65 @@ theorem test : True := by exact helper
             check_for_cheats("code", "unsupported")
 
 
-class TestPreambleEdgeCases:
-    """Test edge cases for vc-preamble handling."""
+class TestEditableSectionEdgeCases:
+    """Test edge cases for editable section handling."""
 
-    def test_nested_preamble_tags(self):
-        """Should handle nested preamble tags correctly."""
+    def test_nested_editable_tags(self):
+        """Should handle nested editable tags correctly."""
         code = """
-<vc-preamble>
+<vc-definitions>
 axiom outer : True
-<vc-preamble>
-lemma inner : True := sorry
-</vc-preamble>
-</vc-preamble>
+<vc-definitions>
+lemma inner : True := sorry  -- Detected (in editable section)
+</vc-definitions>
+</vc-definitions>
 
 theorem test : True := by
-  sorry
+  sorry  -- Ignored (not in editable section)
 """
         cheats = check_for_cheats(code, "lean")
-        assert len(cheats) == 1  # Only the sorry outside preamble
+        assert len(cheats) == 2  # sorry and axiom both inside editable section
 
-    def test_incomplete_preamble_tags(self):
-        """Should handle incomplete preamble tags gracefully."""
+    def test_incomplete_editable_tags(self):
+        """Should handle incomplete editable tags gracefully."""
         code = """
-<vc-preamble>
+<vc-definitions>
 lemma incomplete : True := sorry
 -- Missing closing tag
 
 theorem test : True := by
   sorry
 """
-        # The regex should not match incomplete tags, so both sorries should be detected
+        # The regex should not match incomplete tags, so no sorries should be detected
         cheats = check_for_cheats(code, "lean")
-        assert len(cheats) == 1  # Only detects pattern once
+        assert len(cheats) == 0  # No complete editable sections
 
-    def test_empty_preamble_section(self):
-        """Should handle empty preamble sections correctly."""
+    def test_empty_editable_section(self):
+        """Should handle empty editable sections correctly."""
         code = """
-<vc-preamble>
-</vc-preamble>
+<vc-helpers>
+</vc-helpers>
 
 theorem test : True := by
-  sorry
+  sorry  -- Ignored (not in editable section)
 """
         cheats = check_for_cheats(code, "lean")
-        assert len(cheats) == 1
+        assert len(cheats) == 0
 
-    def test_preamble_with_multiline_content(self):
-        """Should handle multiline preamble content correctly."""
+    def test_editable_section_with_multiline_content(self):
+        """Should handle multiline editable section content correctly."""
         code = """
-<vc-preamble>
+<vc-definitions>
 axiom test_axiom : True
 
 lemma helper_lemma : True := by
-  sorry
+  sorry  -- Detected (in editable section)
   
 def helper_function : Nat := 42
-</vc-preamble>
+</vc-definitions>
 
 theorem main : True := by
-  sorry  -- This should be detected
+  sorry  -- Ignored (not in editable section)
 """
         cheats = check_for_cheats(code, "lean")
-        assert len(cheats) == 1
+        assert len(cheats) == 2  # sorry and axiom both inside editable section

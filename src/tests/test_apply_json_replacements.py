@@ -54,12 +54,16 @@ class TestLeanReplacements:
     def test_single_sorry_replacement(self, lean_config):
         """Test replacing a single sorry."""
         original_code = """
+<vc-definitions>
 def factorial (n : Nat) : Nat := sorry
+</vc-definitions>
 """
         llm_response = '''["n.factorial"]'''
         
         expected_result = """
+<vc-definitions>
 def factorial (n : Nat) : Nat := n.factorial
+</vc-definitions>
 """
         
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
@@ -70,20 +74,28 @@ def factorial (n : Nat) : Nat := n.factorial
     def test_multiple_sorry_replacements(self, lean_config):
         """Test replacing multiple sorry placeholders."""
         original_code = """
+<vc-definitions>
 def factorial (n : Nat) : Nat := sorry
 
-theorem factorial_pos (n : Nat) : factorial n > 0 := sorry
-
 def fibonacci (n : Nat) : Nat := sorry
+</vc-definitions>
+
+<vc-theorems>
+theorem factorial_pos (n : Nat) : factorial n > 0 := sorry
+</vc-theorems>
 """
-        llm_response = '''["n.factorial", "by simp [factorial]", "if n < 2 then 1 else fibonacci (n-1) + fibonacci (n-2)"]'''
+        llm_response = '''["n.factorial", "if n < 2 then 1 else fibonacci (n-1) + fibonacci (n-2)", "by simp [factorial]"]'''
         
         expected_result = """
+<vc-definitions>
 def factorial (n : Nat) : Nat := n.factorial
 
-theorem factorial_pos (n : Nat) : factorial n > 0 := by simp [factorial]
-
 def fibonacci (n : Nat) : Nat := if n < 2 then 1 else fibonacci (n-1) + fibonacci (n-2)
+</vc-definitions>
+
+<vc-theorems>
+theorem factorial_pos (n : Nat) : factorial n > 0 := by simp [factorial]
+</vc-theorems>
 """
         
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
@@ -123,9 +135,13 @@ def main_function : Nat := 42
 -- Helper code here
 </vc-helpers>
 
+<vc-definitions>
 def factorial (n : Nat) : Nat := sorry
+</vc-definitions>
 
+<vc-theorems>
 theorem factorial_pos (n : Nat) : factorial n > 0 := sorry
+</vc-theorems>
 """
         llm_response = '''["-- LLM HELPER\\nlemma nat_pos : ∀ n, n.factorial > 0 := by trivial", "n.factorial", "by apply nat_pos"]'''
         
@@ -135,9 +151,13 @@ theorem factorial_pos (n : Nat) : factorial n > 0 := sorry
 lemma nat_pos : ∀ n, n.factorial > 0 := by trivial
 </vc-helpers>
 
+<vc-definitions>
 def factorial (n : Nat) : Nat := n.factorial
+</vc-definitions>
 
+<vc-theorems>
 theorem factorial_pos (n : Nat) : factorial n > 0 := by apply nat_pos
+</vc-theorems>
 """
         
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
@@ -148,8 +168,10 @@ theorem factorial_pos (n : Nat) : factorial n > 0 := by apply nat_pos
     def test_wrong_replacement_count_lean(self, lean_config):
         """Test error when replacement count doesn't match placeholder count."""
         original_code = """
+<vc-definitions>
 def factorial (n : Nat) : Nat := sorry
 def fibonacci (n : Nat) : Nat := sorry
+</vc-definitions>
 """
         llm_response = '''["n.factorial"]'''  # Only 1 replacement for 2 sorries
         
@@ -506,7 +528,7 @@ class TestErrorHandling:
 
     def test_json_in_code_block(self, lean_config):
         """Test extracting JSON from markdown code block."""
-        original_code = "def test : Nat := sorry"
+        original_code = "<vc-definitions>\\ndef test : Nat := sorry\\n</vc-definitions>"
         llm_response = '''
 Here's the solution:
 
@@ -583,7 +605,9 @@ class TestEdgeCases:
 // Helper
 </vc-helpers>
 
+<vc-definitions>
 def test : Nat := sorry
+</vc-definitions>
 """
         llm_response = '''["-- LLM HELPER\\nlemma helper1 : True := by trivial\\nlemma helper2 : False ∨ True := by simp", "by\\n  have h : True := helper1\\n  have h2 : False ∨ True := helper2\\n  exact 42"]'''
         
@@ -594,10 +618,12 @@ lemma helper1 : True := by trivial
 lemma helper2 : False ∨ True := by simp
 </vc-helpers>
 
+<vc-definitions>
 def test : Nat := by
   have h : True := helper1
   have h2 : False ∨ True := helper2
   exact 42
+</vc-definitions>
 """
         
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
@@ -605,31 +631,33 @@ def test : Nat := by
         assert error is None
         assert result == expected_result
 
-    def test_vc_preamble_sorry_exclusion(self, lean_config):
-        """Test that sorries inside vc-preamble tags are excluded from replacement."""
+    def test_editable_section_sorry_inclusion(self, lean_config):
+        """Test that sorries outside editable sections are excluded from replacement."""
         original_code = """
-def first : Nat := sorry
+def first : Nat := sorry  -- Not in editable section, should be ignored
 
-<vc-preamble>
--- This sorry should NOT be replaced
-axiom protected_axiom : ∀ x : Nat, x = sorry
-</vc-preamble>
+axiom protected_axiom : ∀ x : Nat, x = sorry  -- Not in editable section, should be ignored
+
+<vc-definitions>
+def second : Nat := sorry  -- In editable section, should be replaced
+</vc-definitions>
 
 <vc-helpers>
 -- Helper code goes here
 </vc-helpers>
 """
-        # Only 2 responses - one for the first sorry, one for vc-helpers
-        # The sorry inside vc-preamble should be ignored
-        llm_response = '''["42", "-- LLM HELPER\\nlemma helper : True := by trivial"]'''
+        # Only 2 responses - one for the sorry in vc-definitions, one for vc-helpers
+        # The sorries outside editable sections should be ignored
+        llm_response = '''["84", "-- LLM HELPER\\nlemma helper : True := by trivial"]'''
         
         expected_result = """
-def first : Nat := 42
+def first : Nat := sorry  -- Not in editable section, should be ignored
 
-<vc-preamble>
--- This sorry should NOT be replaced
-axiom protected_axiom : ∀ x : Nat, x = sorry
-</vc-preamble>
+axiom protected_axiom : ∀ x : Nat, x = sorry  -- Not in editable section, should be ignored
+
+<vc-definitions>
+def second : Nat := 84  -- In editable section, should be replaced
+</vc-definitions>
 
 <vc-helpers>
 -- LLM HELPER
@@ -642,40 +670,40 @@ lemma helper : True := by trivial
         assert error is None
         assert result == expected_result
 
-    def test_multiple_vc_preamble_sections(self, lean_config):
-        """Test handling of multiple vc-preamble sections."""
+    def test_multiple_editable_sections(self, lean_config):
+        """Test handling of multiple editable sections."""
         original_code = """
-def first : Nat := sorry
+def first : Nat := sorry  -- Ignored (not in editable section)
 
-<vc-preamble>
-axiom axiom1 : sorry = sorry
-</vc-preamble>
+<vc-definitions>
+def second : Nat := sorry  -- Should be replaced
+</vc-definitions>
 
-def second : Nat := sorry
+def third : Nat := sorry  -- Ignored (not in editable section)
 
-<vc-preamble>  
-axiom axiom2 : sorry ≠ sorry
-</vc-preamble>
+<vc-theorems>  
+theorem fourth : True := sorry  -- Should be replaced
+</vc-theorems>
 
-def third : Nat := sorry
+def fifth : Nat := sorry  -- Ignored (not in editable section)
 """
-        # Only 3 responses for the 3 sorries outside preamble sections
-        llm_response = '''["1", "2", "3"]'''
+        # Only 2 responses for the 2 sorries inside editable sections
+        llm_response = '''["42", "by trivial"]'''
         
         expected_result = """
-def first : Nat := 1
+def first : Nat := sorry  -- Ignored (not in editable section)
 
-<vc-preamble>
-axiom axiom1 : sorry = sorry
-</vc-preamble>
+<vc-definitions>
+def second : Nat := 42  -- Should be replaced
+</vc-definitions>
 
-def second : Nat := 2
+def third : Nat := sorry  -- Ignored (not in editable section)
 
-<vc-preamble>  
-axiom axiom2 : sorry ≠ sorry
-</vc-preamble>
+<vc-theorems>  
+theorem fourth : True := by trivial  -- Should be replaced
+</vc-theorems>
 
-def third : Nat := 3
+def fifth : Nat := sorry  -- Ignored (not in editable section)
 """
         
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
@@ -685,10 +713,10 @@ def third : Nat := 3
 
     def test_unicode_content(self, lean_config):
         """Test handling of unicode content in replacements."""
-        original_code = "def test : Nat := sorry"
+        original_code = "<vc-definitions>\\ndef test : Nat := sorry\\n</vc-definitions>"
         llm_response = '''["∀ x : ℕ, x + 0 = x"]'''
         
-        expected_result = "def test : Nat := ∀ x : ℕ, x + 0 = x"
+        expected_result = "<vc-definitions>\\ndef test : Nat := ∀ x : ℕ, x + 0 = x\\n</vc-definitions>"
         
         result, error = apply_json_replacements(lean_config, original_code, llm_response)
         
@@ -713,36 +741,40 @@ class TestOrderPreservation:
     def test_lean_mixed_order_preservation(self, lean_config):
         """Test that Lean preserves order of mixed sorry and vc-helpers."""
         original_code = """
-def first : Nat := sorry
-
 <vc-helpers>
 -- First helper
 </vc-helpers>
 
-def second : Nat := sorry
+<vc-definitions>
+def first : Nat := sorry
+</vc-definitions>
 
 <vc-helpers>
 -- Second helper
 </vc-helpers>
 
-def third : Nat := sorry
+<vc-theorems>
+theorem second : True := sorry
+</vc-theorems>
 """
-        llm_response = '''["1", "-- Helper 1", "2", "-- Helper 2", "3"]'''
+        llm_response = '''["-- Helper 1", "1", "-- Helper 2", "by trivial"]'''
         
         expected_result = """
-def first : Nat := 1
-
 <vc-helpers>
 -- Helper 1
 </vc-helpers>
 
-def second : Nat := 2
+<vc-definitions>
+def first : Nat := 1
+</vc-definitions>
 
 <vc-helpers>
 -- Helper 2
 </vc-helpers>
 
-def third : Nat := 3
+<vc-theorems>
+theorem second : True := by trivial
+</vc-theorems>
 """
         
         result, error = apply_json_replacements(lean_config, original_code, llm_response)

@@ -116,16 +116,17 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
         
         # Find all placeholders in the original code that we're allowed to replace
         if config.language == "lean":
-            # For Lean: find all 'sorry' occurrences and <vc-helpers> sections
-            # BUT exclude sorries that are inside <vc-preamble> sections
+            # For Lean: find all 'sorry' occurrences inside editable sections (vc-definitions, vc-theorems, vc-helpers)
             placeholder_positions = []
             
-            # First, find all vc-preamble sections to exclude sorries within them
-            vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
-            vc_preamble_matches = list(re.finditer(vc_preamble_pattern, original_code, re.DOTALL))
-            preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+            # First, find all editable sections where sorries can be replaced
+            editable_sections = []
+            for section_name in ['vc-definitions', 'vc-theorems', 'vc-helpers']:
+                pattern = rf'<{section_name}>(.*?)</{section_name}>'
+                matches = list(re.finditer(pattern, original_code, re.DOTALL))
+                editable_sections.extend([(match.start(), match.end()) for match in matches])
             
-            # Find all sorry positions, excluding those in preamble sections
+            # Find all sorry positions, only including those in editable sections
             code_copy = original_code
             search_start = 0
             while True:
@@ -133,14 +134,14 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 if pos == -1:
                     break
                 
-                # Check if this sorry is inside any preamble section
-                in_preamble = any(start <= pos < end for start, end in preamble_ranges)
-                if not in_preamble:
+                # Check if this sorry is inside any editable section
+                in_editable_section = any(start <= pos < end for start, end in editable_sections)
+                if in_editable_section:
                     placeholder_positions.append(('sorry', pos))
                 
                 search_start = pos + 1
             
-            # Also find vc-helpers sections
+            # Also find vc-helpers sections (they can be replaced with helper content)
             vc_helpers_pattern = r'<vc-helpers>(.*?)</vc-helpers>'
             vc_helpers_matches = list(re.finditer(vc_helpers_pattern, original_code, re.DOTALL))
             for match in vc_helpers_matches:
@@ -186,11 +187,13 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                 placeholder_type, original_pos = placeholder_positions[i]
                 
                 if placeholder_type == 'sorry':
-                    # Find all current sorry positions in modified_code, but exclude those in preamble sections
-                    # First get preamble ranges in current modified_code
-                    vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
-                    current_preamble_matches = list(re.finditer(vc_preamble_pattern, modified_code, re.DOTALL))
-                    current_preamble_ranges = [(match.start(), match.end()) for match in current_preamble_matches]
+                    # Find all current sorry positions in modified_code, but only include those in editable sections
+                    # First get editable ranges in current modified_code
+                    current_editable_sections = []
+                    for section_name in ['vc-definitions', 'vc-theorems', 'vc-helpers']:
+                        pattern = rf'<{section_name}>(.*?)</{section_name}>'
+                        matches = list(re.finditer(pattern, modified_code, re.DOTALL))
+                        current_editable_sections.extend([(match.start(), match.end()) for match in matches])
                     
                     current_sorry_positions = []
                     pos = 0
@@ -199,9 +202,9 @@ def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_re
                         if next_pos == -1:
                             break
                         
-                        # Only include sorries that are NOT in preamble sections
-                        in_preamble = any(start <= next_pos < end for start, end in current_preamble_ranges)
-                        if not in_preamble:
+                        # Only include sorries that are in editable sections
+                        in_editable_section = any(start <= next_pos < end for start, end in current_editable_sections)
+                        if in_editable_section:
                             current_sorry_positions.append(next_pos)
                         
                         pos = next_pos + 1

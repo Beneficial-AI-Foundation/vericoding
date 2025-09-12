@@ -24,22 +24,25 @@ def check_for_cheats(code: str, language: str) -> List[Tuple[str, str]]:
             (r'@\[extern', "uses extern functions bypassing verification"),
         ]
         
-        # For Lean, exclude verification bypasses inside <vc-preamble> sections
+        # For Lean, only check for cheats inside editable sections (vc-definitions, vc-theorems, vc-helpers)
+        # Cheats are OK everywhere else
         detected_cheats = []
         
-        # Find all vc-preamble sections to exclude from cheat detection
-        vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
-        vc_preamble_matches = list(re.finditer(vc_preamble_pattern, code, re.DOTALL))
-        preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+        # Find all editable sections where cheats are NOT allowed
+        editable_sections = []
+        for section_name in ['vc-definitions', 'vc-theorems', 'vc-helpers']:
+            pattern = rf'<{section_name}>(.*?)</{section_name}>'
+            matches = list(re.finditer(pattern, code, re.DOTALL))
+            editable_sections.extend([(match.start(), match.end()) for match in matches])
         
         for pattern, description in cheat_patterns:
             # Find all matches of the cheat pattern
             for match in re.finditer(pattern, code):
                 match_pos = match.start()
                 
-                # Check if this match is inside any preamble section
-                in_preamble = any(start <= match_pos < end for start, end in preamble_ranges)
-                if not in_preamble:
+                # Check if this match is inside any editable section
+                in_editable_section = any(start <= match_pos < end for start, end in editable_sections)
+                if in_editable_section:
                     detected_cheats.append((pattern, description))
                     break  # Only add each pattern once
         
@@ -50,22 +53,25 @@ def check_for_cheats(code: str, language: str) -> List[Tuple[str, str]]:
             (r'\{:axiom\}', "uses '{:axiom}' to bypass verification"),
         ]
         
-        # For Dafny, exclude verification bypasses inside <vc-preamble> sections
+        # For Dafny, only check for cheats inside editable sections (vc-code, vc-helpers)
+        # Cheats are OK everywhere else
         detected_cheats = []
         
-        # Find all vc-preamble sections to exclude from cheat detection
-        vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
-        vc_preamble_matches = list(re.finditer(vc_preamble_pattern, code, re.DOTALL))
-        preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+        # Find all editable sections where cheats are NOT allowed
+        editable_sections = []
+        for section_name in ['vc-code', 'vc-helpers']:
+            pattern = rf'<{section_name}>(.*?)</{section_name}>'
+            matches = list(re.finditer(pattern, code, re.DOTALL))
+            editable_sections.extend([(match.start(), match.end()) for match in matches])
         
         for pattern, description in cheat_patterns:
             # Find all matches of the cheat pattern
             for match in re.finditer(pattern, code):
                 match_pos = match.start()
                 
-                # Check if this match is inside any preamble section
-                in_preamble = any(start <= match_pos < end for start, end in preamble_ranges)
-                if not in_preamble:
+                # Check if this match is inside any editable section
+                in_editable_section = any(start <= match_pos < end for start, end in editable_sections)
+                if in_editable_section:
                     detected_cheats.append((pattern, description))
                     break  # Only add each pattern once
         
@@ -78,22 +84,25 @@ def check_for_cheats(code: str, language: str) -> List[Tuple[str, str]]:
             (r'#\[verifier::exec_allows_no_decreases_clause\]', "uses '#[verifier::exec_allows_no_decreases_clause]' to bypass verification"),
         ]
         
-        # For Verus, exclude verification bypasses inside <vc-preamble> sections
+        # For Verus, only check for cheats inside editable sections (vc-code, vc-helpers)
+        # Cheats are OK everywhere else
         detected_cheats = []
         
-        # Find all vc-preamble sections to exclude from cheat detection
-        vc_preamble_pattern = r'<vc-preamble>(.*?)</vc-preamble>'
-        vc_preamble_matches = list(re.finditer(vc_preamble_pattern, code, re.DOTALL))
-        preamble_ranges = [(match.start(), match.end()) for match in vc_preamble_matches]
+        # Find all editable sections where cheats are NOT allowed
+        editable_sections = []
+        for section_name in ['vc-code', 'vc-helpers']:
+            pattern = rf'<{section_name}>(.*?)</{section_name}>'
+            matches = list(re.finditer(pattern, code, re.DOTALL))
+            editable_sections.extend([(match.start(), match.end()) for match in matches])
         
         for pattern, description in cheat_patterns:
             # Find all matches of the cheat pattern
             for match in re.finditer(pattern, code):
                 match_pos = match.start()
                 
-                # Check if this match is inside any preamble section
-                in_preamble = any(start <= match_pos < end for start, end in preamble_ranges)
-                if not in_preamble:
+                # Check if this match is inside any editable section
+                in_editable_section = any(start <= match_pos < end for start, end in editable_sections)
+                if in_editable_section:
                     detected_cheats.append((pattern, description))
                     break  # Only add each pattern once
         
