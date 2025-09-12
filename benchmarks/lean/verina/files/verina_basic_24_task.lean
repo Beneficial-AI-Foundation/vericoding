@@ -1,4 +1,10 @@
 -- <vc-preamble>
+def isEven (n : Int) : Bool :=
+n % 2 == 0
+
+def isOdd (n : Int) : Bool :=
+n % 2 != 0
+
 @[reducible, simp]
 def firstEvenOddDifference_precond (a : Array Int) : Prop :=
   a.size > 1 ∧
@@ -7,11 +13,6 @@ def firstEvenOddDifference_precond (a : Array Int) : Prop :=
 -- </vc-preamble>
 
 -- <vc-helpers>
-def isEven (n : Int) : Bool :=
-  n % 2 == 0
-
-def isOdd (n : Int) : Bool :=
-  n % 2 != 0
 -- </vc-helpers>
 
 -- <vc-definitions>

@@ -1,4 +1,17 @@
 -- <vc-preamble>
+structure Map (K V : Type) [BEq K] [BEq V] where
+  entries : List (K × V)
+deriving Inhabited
+
+instance  (K V : Type) [BEq K] [BEq V] : BEq (Map K V) where
+  beq m1 m2 := List.length m1.entries = List.length m2.entries ∧ List.beq m1.entries m2.entries
+
+def empty {K V : Type} [BEq K] [BEq V] : Map K V := ⟨[]⟩
+
+def insert {K V : Type} [BEq K] [BEq V] (m : Map K V) (k : K) (v : V) : Map K V :=
+  let entries := m.entries.filter (fun p => ¬(p.1 == k)) ++ [(k, v)]
+  ⟨entries⟩
+
 @[reducible, simp]
 def update_map_precond (m1 : Map Int Int) (m2 : Map Int Int) : Prop :=
   True

@@ -22,7 +22,6 @@ vc-description: |-
 vc-preamble: |-
   import Std.Do.Triple
   import Std.Tactic.Do
-  import numpy_hoare_triple.linalg.det
   open Std.Do
 
 vc-helpers: |-

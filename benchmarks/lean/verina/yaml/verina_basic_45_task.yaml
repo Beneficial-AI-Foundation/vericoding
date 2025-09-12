@@ -16,13 +16,6 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  @[reducible, simp]
-  def findProduct_precond (lst : List Int) : Prop :=
-    lst.length > 1 ∧
-    (∃ x ∈ lst, isEven x) ∧
-    (∃ x ∈ lst, isOdd x)
-
-vc-helpers: |-
   def isEven (n : Int) : Bool :=
     n % 2 = 0
   
@@ -35,6 +28,14 @@ vc-helpers: |-
     match evenIndex, oddIndex with
     | some ei, some oi => some (ei, oi)
     | _, _ => none
+  @[reducible, simp]
+  def findProduct_precond (lst : List Int) : Prop :=
+    lst.length > 1 ∧
+    (∃ x ∈ lst, isEven x) ∧
+    (∃ x ∈ lst, isOdd x)
+
+vc-helpers: |-
+
 
 vc-definitions: |-
   def findProduct (lst : List Int) (h_precond : findProduct_precond (lst)) : Int :=

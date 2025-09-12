@@ -1,7 +1,6 @@
 -- <vc-preamble>
 import Std.Do.Triple
 import Std.Tactic.Do
-import numpy_hoare_triple.linalg.LinAlgError
 open Std.Do
 -- </vc-preamble>
 

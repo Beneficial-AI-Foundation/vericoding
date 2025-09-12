@@ -24,7 +24,11 @@
       },
       {
         "type": "sig",
-        "string": "def BinarySearch (a : Array Int) (x : Int) : Int := sorry\n\n"
+        "string": "def BinarySearch (a : Array Int) (x : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -32,7 +36,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem BinarySearch_spec (a : Array Int) (x : Int) :\nsorted a \u2192\nlet index := BinarySearch a x\n(0 \u2264 index \u2227 index < a.size \u2192 a[index.toNat]! = x) \u2227\n(index = -1 \u2192 \u2200 i , 0 \u2264 i \u2227 i < a.size \u2192 a[i]! \u2260 x) := sorry"
+        "string": "theorem BinarySearch_spec (a : Array Int) (x : Int) :\nsorted a \u2192\nlet index := BinarySearch a x\n(0 \u2264 index \u2227 index < a.size \u2192 a[index.toNat]! = x) \u2227\n(index = -1 \u2192 \u2200 i , 0 \u2264 i \u2227 i < a.size \u2192 a[i]! \u2260 x) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -117,7 +125,11 @@
       },
       {
         "type": "sig",
-        "string": "def IterativeDivMod (x y : Unary) : Unary \u00d7 Unary := sorry\n\n"
+        "string": "def IterativeDivMod (x y : Unary) : Unary \u00d7 Unary :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -125,7 +137,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem IterativeDivMod_spec (x y : Unary) :\ny \u2260 Unary.Zero \u2192\nlet (d, m) := IterativeDivMod x y\nAddPrime (MulPrime d y) m = x \u2227 Less m y := sorry"
+        "string": "theorem IterativeDivMod_spec (x y : Unary) :\ny \u2260 Unary.Zero \u2192\nlet (d, m) := IterativeDivMod x y\nAddPrime (MulPrime d y) m = x \u2227 Less m y :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -214,7 +230,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem FindFirstOccurrence_spec (str1 str2 : String) :\nlet (found, i) := FindFirstOccurrence str1 str2\nPost str1 str2 found i := sorry"
+        "string": "theorem FindFirstOccurrence_spec (str1 str2 : String) :\nlet (found, i) := FindFirstOccurrence str1 str2\nPost str1 str2 found i :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -287,7 +307,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem MergeLoop_spec (b c d : Array Int) (i0 j0 : Nat) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\ni0 \u2264 c.size \u2192 j0 \u2264 d.size \u2192 i0 + j0 \u2264 b.size \u2192\nInvSubSet b c d i0 j0 \u2192\nInvSorted b c d i0 j0 \u2192\ni0 + j0 < b.size \u2192\nlet (i, j) := MergeLoop b c d i0 j0\ni \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\nInvSubSet b c d i j \u2227\nInvSorted b c d i j \u2227\n(0 \u2264 c.size - i \u2227 c.size - i < c.size - i0 \u2228\n(c.size - i = c.size - i0 \u2227 0 \u2264 d.size - j \u2227 d.size - j < d.size - j0)) := sorry\n\n"
+        "string": "theorem MergeLoop_spec (b c d : Array Int) (i0 j0 : Nat) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\ni0 \u2264 c.size \u2192 j0 \u2264 d.size \u2192 i0 + j0 \u2264 b.size \u2192\nInvSubSet b c d i0 j0 \u2192\nInvSorted b c d i0 j0 \u2192\ni0 + j0 < b.size \u2192\nlet (i, j) := MergeLoop b c d i0 j0\ni \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\nInvSubSet b c d i j \u2227\nInvSorted b c d i j \u2227\n(0 \u2264 c.size - i \u2227 c.size - i < c.size - i0 \u2228\n(c.size - i = c.size - i0 \u2227 0 \u2264 d.size - j \u2227 d.size - j < d.size - j0)) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -303,7 +327,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Merge_spec (b c d : Array Int) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\nSorted b \u2227  (b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j) := sorry"
+        "string": "theorem Merge_spec (b c d : Array Int) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\nSorted b \u2227  (b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -368,7 +396,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem mergeLoop_spec\n(b c d : Array Int) (i0 j0 : Nat) (i j : Nat) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\ni0 \u2264 c.size \u2192 j0 \u2264 d.size \u2192 i0 + j0 \u2264 b.size \u2192\nInvSubSet b c d i0 j0 \u2192\nInvSorted b c d i0 j0 \u2192\ni0 + j0 < b.size \u2192\ni \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\nInvSubSet b c d i j \u2227\nInvSorted b c d i j \u2227\n(0 \u2264 c.size - i \u2227 c.size - i < c.size - i0 \u2228\n(c.size - i = c.size - i0 \u2227 0 \u2264 d.size - j \u2227 d.size - j < d.size - j0)) := sorry\n\n"
+        "string": "theorem mergeLoop_spec\n(b c d : Array Int) (i0 j0 : Nat) (i j : Nat) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\ni0 \u2264 c.size \u2192 j0 \u2264 d.size \u2192 i0 + j0 \u2264 b.size \u2192\nInvSubSet b c d i0 j0 \u2192\nInvSorted b c d i0 j0 \u2192\ni0 + j0 < b.size \u2192\ni \u2264 c.size \u2227 j \u2264 d.size \u2227 i + j \u2264 b.size \u2227\nInvSubSet b c d i j \u2227\nInvSorted b c d i j \u2227\n(0 \u2264 c.size - i \u2227 c.size - i < c.size - i0 \u2228\n(c.size - i = c.size - i0 \u2227 0 \u2264 d.size - j \u2227 d.size - j < d.size - j0)) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -376,7 +408,11 @@
       },
       {
         "type": "sig",
-        "string": "def MergeLoop (b c d : Array Int) (i0 j0 : Nat) : (Nat \u00d7 Nat) := sorry"
+        "string": "def MergeLoop (b c d : Array Int) (i0 j0 : Nat) : (Nat \u00d7 Nat) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       }
     ]
   },
@@ -449,7 +485,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem merge_spec (b c d : Array Int) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\nSorted (Merge b c d) \u2227\n(Merge b c d) = (c.extract 0 i).append (d.extract 0 j) := sorry\n\n"
+        "string": "theorem merge_spec (b c d : Array Int) :\nb \u2260 c \u2192 b \u2260 d \u2192 b.size = c.size + d.size \u2192\nSorted c \u2192 Sorted d \u2192\nSorted (Merge b c d) \u2227\n(Merge b c d) = (c.extract 0 i).append (d.extract 0 j) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -465,7 +505,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem mergesort_spec (a : Array Int) :\nlet b := MergeSort a\nb.size = a.size \u2227 Sorted b \u2227 b = a := sorry"
+        "string": "theorem mergesort_spec (a : Array Int) :\nlet b := MergeSort a\nb.size = a.size \u2227 Sorted b \u2227 b = a :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -554,7 +598,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem GetInsertIndex_spec (a : Array Int) (limit : Int) (x : Int) (idx : Int) :\n(\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2260 x) \u2192\n0 \u2264 limit \u2192 limit \u2264 a.size \u2192\nSortedSeq (a.extract 0 limit.toNat) \u2192\n0 \u2264 idx \u2227 idx \u2264 limit \u2227\nSortedSeq (a.extract 0 limit.toNat) \u2227\n(idx > 0 \u2192 a[(idx - 1).toNat]! < x) \u2227\n(idx < limit \u2192 x < a[(idx).toNat]!) := sorry\n\n"
+        "string": "theorem GetInsertIndex_spec (a : Array Int) (limit : Int) (x : Int) (idx : Int) :\n(\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2260 x) \u2192\n0 \u2264 limit \u2192 limit \u2264 a.size \u2192\nSortedSeq (a.extract 0 limit.toNat) \u2192\n0 \u2264 idx \u2227 idx \u2264 limit \u2227\nSortedSeq (a.extract 0 limit.toNat) \u2227\n(idx > 0 \u2192 a[(idx - 1).toNat]! < x) \u2227\n(idx < limit \u2192 x < a[(idx).toNat]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -562,7 +610,11 @@
       },
       {
         "type": "sig",
-        "string": "def GetInsertIndex (a : Array Int) (limit : Int) (x : Int) : Int := sorry"
+        "string": "def GetInsertIndex (a : Array Int) (limit : Int) (x : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       }
     ]
   },
@@ -699,7 +751,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem GetInsertIndex_spec (a : Array Int) (limit : Int) (x : Int) :\n(\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2260 x) \u2192\n0 \u2264 limit \u2192 limit \u2264 a.size \u2192\nSortedSeq a \u2192\nlet idx := GetInsertIndex a limit x\n0 \u2264 idx \u2227 idx \u2264 limit \u2227\nSortedSeq a \u2227\n(idx > 0 \u2192 a[(idx - 1).toNat]! < x) \u2227\n(idx < limit \u2192 x < a[(idx).toNat]!) := sorry\n\n"
+        "string": "theorem GetInsertIndex_spec (a : Array Int) (limit : Int) (x : Int) :\n(\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2260 x) \u2192\n0 \u2264 limit \u2192 limit \u2264 a.size \u2192\nSortedSeq a \u2192\nlet idx := GetInsertIndex a limit x\n0 \u2264 idx \u2227 idx \u2264 limit \u2227\nSortedSeq a \u2227\n(idx > 0 \u2192 a[(idx - 1).toNat]! < x) \u2227\n(idx < limit \u2192 x < a[(idx).toNat]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -719,7 +775,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem InsertIntoSorted_spec (a : Array Int) (limit : Int) (key : Int) :\nkey > 0 \u2192\n(\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2260 key) \u2192\n0 \u2264 limit \u2192 limit < a.size \u2192\n(\u2200 i, 0 \u2264 i \u2192 i < limit \u2192 a[i.toNat]! > 0) \u2192\n(\u2200 i, limit \u2264 i \u2192 i < a.size \u2192 a[i.toNat]! = 0) \u2192\nsorted a \u2192\nlet b := InsertIntoSorted a limit key\nb.size = a.size \u2227\nsorted b \u2227\n(\u2200 i, limit + 1 \u2264 i \u2192 i < b.size \u2192 b[i.toNat]! = 0) \u2227\n(\u2200 i, 0 \u2264 i \u2192 i < limit \u2192 \u2203 j, 0 \u2264 j \u2192 j < b.size \u2192 b[j]! = a[i.toNat]!) \u2227\n(\u2200 i, 0 \u2264 i \u2192 i < limit + 1 \u2192 b[i.toNat]! > 0) := sorry"
+        "string": "theorem InsertIntoSorted_spec (a : Array Int) (limit : Int) (key : Int) :\nkey > 0 \u2192\n(\u2200 i, 0 \u2264 i \u2192 i < a.size \u2192 a[i]! \u2260 key) \u2192\n0 \u2264 limit \u2192 limit < a.size \u2192\n(\u2200 i, 0 \u2264 i \u2192 i < limit \u2192 a[i.toNat]! > 0) \u2192\n(\u2200 i, limit \u2264 i \u2192 i < a.size \u2192 a[i.toNat]! = 0) \u2192\nsorted a \u2192\nlet b := InsertIntoSorted a limit key\nb.size = a.size \u2227\nsorted b \u2227\n(\u2200 i, limit + 1 \u2264 i \u2192 i < b.size \u2192 b[i.toNat]! = 0) \u2227\n(\u2200 i, 0 \u2264 i \u2192 i < limit \u2192 \u2203 j, 0 \u2264 j \u2192 j < b.size \u2192 b[j]! = a[i.toNat]!) \u2227\n(\u2200 i, 0 \u2264 i \u2192 i < limit + 1 \u2192 b[i.toNat]! > 0) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -748,7 +808,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem sum_spec (s : Array Int) (n : Nat) :\nn \u2264 s.size \u2192 sum s n = sum s n := sorry\n\n"
+        "string": "theorem sum_spec (s : Array Int) (n : Nat) :\nn \u2264 s.size \u2192 sum s n = sum s n :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -756,7 +820,11 @@
       },
       {
         "type": "sig",
-        "string": "def BelowZero (ops : Array Int) : Bool := sorry\n\n"
+        "string": "def BelowZero (ops : Array Int) : Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -764,7 +832,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem BelowZero_spec (ops : Array Int) :\nBelowZero ops = true \u2194 \u2203 n : Nat, n \u2264 ops.size \u2227 sum ops n < 0 := sorry"
+        "string": "theorem BelowZero_spec (ops : Array Int) :\nBelowZero ops = true \u2194 \u2203 n : Nat, n \u2264 ops.size \u2227 sum ops n < 0 :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -789,7 +861,11 @@
       },
       {
         "type": "sig",
-        "string": "def ArrayToBv10 (arr : Array Bool) : Bv10 := sorry\n\n"
+        "string": "def ArrayToBv10 (arr : Array Bool) : Bv10 :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -797,7 +873,11 @@
       },
       {
         "type": "sig",
-        "string": "def ArrayToBv10Helper (arr : Array Bool) (index : Nat) : Bv10 := sorry\n\n"
+        "string": "def ArrayToBv10Helper (arr : Array Bool) (index : Nat) : Bv10 :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -805,11 +885,19 @@
       },
       {
         "type": "sig",
-        "string": "def isBitSet (x : Bv10) (bitIndex : Nat) : Bool := sorry\n\n"
+        "string": "def isBitSet (x : Bv10) (bitIndex : Nat) : Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "cond",
-        "string": "theorem isBitSet_spec (x : Bv10) (bitIndex : Nat) :\nbitIndex < 10 \u2192\n\u2203 (valid : Bool), isBitSet x bitIndex = valid := sorry\n\n"
+        "string": "theorem isBitSet_spec (x : Bv10) (bitIndex : Nat) :\nbitIndex < 10 \u2192\n\u2203 (valid : Bool), isBitSet x bitIndex = valid :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -817,11 +905,19 @@
       },
       {
         "type": "sig",
-        "string": "def Bv10ToSeq (x : Bv10) : Array Bool := sorry\n\n"
+        "string": "def Bv10ToSeq (x : Bv10) : Array Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "cond",
-        "string": "theorem Bv10ToSeq_spec (x : Bv10) :\n(Bv10ToSeq x).size = 10 \u2227\n\u2200 i, 0 \u2264 i \u2227 i < 10 \u2192 (Bv10ToSeq x)[i]! = isBitSet x i := sorry\n\n"
+        "string": "theorem Bv10ToSeq_spec (x : Bv10) :\n(Bv10ToSeq x).size = 10 \u2227\n\u2200 i, 0 \u2264 i \u2227 i < 10 \u2192 (Bv10ToSeq x)[i]! = isBitSet x i :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -853,11 +949,19 @@
       },
       {
         "type": "sig",
-        "string": "def BitAddition (s t : Array Bool) : Array Bool := sorry\n\n"
+        "string": "def BitAddition (s t : Array Bool) : Array Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "cond",
-        "string": "theorem BitAddition_spec (s t : Array Bool) :\ns.size = 10 \u2227 t.size = 10 \u2192\n\u2203 result, BitAddition s t = result := sorry\n\n"
+        "string": "theorem BitAddition_spec (s t : Array Bool) :\ns.size = 10 \u2227 t.size = 10 \u2192\n\u2203 result, BitAddition s t = result :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -865,11 +969,19 @@
       },
       {
         "type": "sig",
-        "string": "def ArrayToSequence (arr : Array Bool) : Array Bool := sorry\n\n"
+        "string": "def ArrayToSequence (arr : Array Bool) : Array Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "cond",
-        "string": "theorem ArrayToSequence_spec (arr : Array Bool) :\n\u2200 result, ArrayToSequence arr = result \u2192\nresult.size = arr.size \u2227\n\u2200 k, 0 \u2264 k \u2227 k < arr.size \u2192 result[k]! = arr[k]! := sorry"
+        "string": "theorem ArrayToSequence_spec (arr : Array Bool) :\n\u2200 result, ArrayToSequence arr = result \u2192\nresult.size = arr.size \u2227\n\u2200 k, 0 \u2264 k \u2227 k < arr.size \u2192 result[k]! = arr[k]! :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -894,7 +1006,11 @@
       },
       {
         "type": "sig",
-        "string": "def ArrayToBv10 (arr : Array Bool) : Bv10 := sorry\n\n"
+        "string": "def ArrayToBv10 (arr : Array Bool) : Bv10 :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -902,7 +1018,11 @@
       },
       {
         "type": "sig",
-        "string": "def ArrayToBv10Helper (arr : Array Bool) (index : Nat) : Bv10 := sorry\n\n"
+        "string": "def ArrayToBv10Helper (arr : Array Bool) (index : Nat) : Bv10 :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -910,7 +1030,11 @@
       },
       {
         "type": "sig",
-        "string": "def ArrayToSequence (arr : Array Bool) : Array Bool := sorry\n\n"
+        "string": "def ArrayToSequence (arr : Array Bool) : Array Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -918,7 +1042,11 @@
       },
       {
         "type": "sig",
-        "string": "def isBitSet (x : Bv10) (bitIndex : Nat) : Bool := sorry\n\n"
+        "string": "def isBitSet (x : Bv10) (bitIndex : Nat) : Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -926,7 +1054,11 @@
       },
       {
         "type": "sig",
-        "string": "def Bv10ToSeq (x : Bv10) : Array Bool := sorry\n\n"
+        "string": "def Bv10ToSeq (x : Bv10) : Array Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -958,7 +1090,11 @@
       },
       {
         "type": "sig",
-        "string": "def BitAddition (s t : Array Bool) : Array Bool := sorry\n\n"
+        "string": "def BitAddition (s t : Array Bool) : Array Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -966,7 +1102,11 @@
       },
       {
         "type": "sig",
-        "string": "def BinaryAddition (s t : Array Bool) : Array Bool := sorry\n\n"
+        "string": "def BinaryAddition (s t : Array Bool) : Array Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -974,7 +1114,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem BinaryAddition_spec (s t : Array Bool) :\ns.size = 10 \u2227 t.size = 10 \u2192\nlet result := BinaryAddition s t\nresult.size = 10 \u2227 result = BitAddition s t := sorry"
+        "string": "theorem BinaryAddition_spec (s t : Array Bool) :\ns.size = 10 \u2227 t.size = 10 \u2192\nlet result := BinaryAddition s t\nresult.size = 10 \u2227 result = BitAddition s t :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1043,7 +1187,11 @@
       },
       {
         "type": "sig",
-        "string": "def insertRecursion (tree : Tree) (value : Int) : Tree := sorry\n\n"
+        "string": "def insertRecursion (tree : Tree) (value : Int) : Tree :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1051,7 +1199,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem insertRecursion_spec (tree : Tree) (value : Int) :\nBinarySearchTree tree \u2192\nlet res := insertRecursion tree value\nres \u2260 Tree.Empty \u2192\nBinarySearchTree res \u2227\n(\u2200 x, minValue tree x \u2227 x < value \u2192 minValue res x) \u2227\n(\u2200 x, maxValue tree x \u2227 x > value \u2192 maxValue res x) := sorry\n\n"
+        "string": "theorem insertRecursion_spec (tree : Tree) (value : Int) :\nBinarySearchTree tree \u2192\nlet res := insertRecursion tree value\nres \u2260 Tree.Empty \u2192\nBinarySearchTree res \u2227\n(\u2200 x, minValue tree x \u2227 x < value \u2192 minValue res x) \u2227\n(\u2200 x, maxValue tree x \u2227 x > value \u2192 maxValue res x) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1059,7 +1211,11 @@
       },
       {
         "type": "sig",
-        "string": "def insert (tree : Tree) (value : Int) : Tree := sorry\n\n"
+        "string": "def insert (tree : Tree) (value : Int) : Tree :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1067,7 +1223,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem insert_spec (tree : Tree) (value : Int) :\nBinarySearchTree tree \u2192\nBinarySearchTree (insert tree value) := sorry"
+        "string": "theorem insert_spec (tree : Tree) (value : Int) :\nBinarySearchTree tree \u2192\nBinarySearchTree (insert tree value) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1128,7 +1288,11 @@
       },
       {
         "type": "sig",
-        "string": "def insertRecursion (tree : Tree) (value : Int) : Tree := sorry\n\n"
+        "string": "def insertRecursion (tree : Tree) (value : Int) : Tree :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1136,7 +1300,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem insertRecursion_spec (tree : Tree) (value : Int) :\nBinarySearchTree tree \u2192\nlet res := insertRecursion tree value\nres \u2260 Tree.Empty \u2192 BinarySearchTree res \u2227\n(\u2200 x, minValue tree x \u2227 x < value \u2192 minValue res x) \u2227\n(\u2200 x, maxValue tree x \u2227 x > value \u2192 maxValue res x) := sorry"
+        "string": "theorem insertRecursion_spec (tree : Tree) (value : Int) :\nBinarySearchTree tree \u2192\nlet res := insertRecursion tree value\nres \u2260 Tree.Empty \u2192 BinarySearchTree res \u2227\n(\u2200 x, minValue tree x \u2227 x < value \u2192 minValue res x) \u2227\n(\u2200 x, maxValue tree x \u2227 x > value \u2192 maxValue res x) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1153,7 +1321,11 @@
       },
       {
         "type": "sig",
-        "string": "def Abs (x : Int) : Int := sorry\n\n"
+        "string": "def Abs (x : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1161,7 +1333,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Abs_spec (x : Int) :\n(x \u2265 0 \u2192 Abs x = x) \u2227\n(x < 0 \u2192 x + Abs x = 0) := sorry"
+        "string": "theorem Abs_spec (x : Int) :\n(x \u2265 0 \u2192 Abs x = x) \u2227\n(x < 0 \u2192 x + Abs x = 0) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1178,7 +1354,11 @@
       },
       {
         "type": "sig",
-        "string": "def allDigits (s : String) : Bool := sorry\n\n"
+        "string": "def allDigits (s : String) : Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1186,7 +1366,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem allDigits_spec (s : String) :\nallDigits s = true \u2194 (\u2200 i, 0 \u2264 i \u2227 i < s.length \u2192 (s.get \u27e8i\u27e9).isDigit) := sorry"
+        "string": "theorem allDigits_spec (s : String) :\nallDigits s = true \u2194 (\u2200 i, 0 \u2264 i \u2227 i < s.length \u2192 (s.get \u27e8i\u27e9).isDigit) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1203,7 +1387,11 @@
       },
       {
         "type": "sig",
-        "string": "def append (a : Array Int) (b : Int) : Array Int := sorry\n\n"
+        "string": "def append (a : Array Int) (b : Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1211,7 +1399,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem append_spec (a : Array Int) (b : Int) :\nappend a b = a.push b := sorry"
+        "string": "theorem append_spec (a : Array Int) (b : Int) :\nappend a b = a.push b :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1228,7 +1420,11 @@
       },
       {
         "type": "sig",
-        "string": "def concat (a : Array Int) (b : Array Int) : Array Int := sorry\n\n"
+        "string": "def concat (a : Array Int) (b : Array Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1236,7 +1432,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem concat_spec (a b : Array Int) :\nlet c := concat a b\nc.size = b.size + a.size \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 c[k]! = a[k]!) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < b.size \u2192 c[k + a.size]! = b[k]!) := sorry"
+        "string": "theorem concat_spec (a b : Array Int) :\nlet c := concat a b\nc.size = b.size + a.size \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 c[k]! = a[k]!) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < b.size \u2192 c[k + a.size]! = b[k]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1253,7 +1453,11 @@
       },
       {
         "type": "sig",
-        "string": "def arrayProduct (a : Array Int) (b : Array Int) : Array Int := sorry\n\n"
+        "string": "def arrayProduct (a : Array Int) (b : Array Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1261,7 +1465,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem arrayProduct_spec (a b : Array Int) :\na.size = b.size \u2192\nlet c := arrayProduct a b\nc.size = a.size \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 i < c.size \u2192 a[i]! * b[i]! = c[i]!) := sorry"
+        "string": "theorem arrayProduct_spec (a b : Array Int) :\na.size = b.size \u2192\nlet c := arrayProduct a b\nc.size = a.size \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 i < c.size \u2192 a[i]! * b[i]! = c[i]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1278,7 +1486,11 @@
       },
       {
         "type": "sig",
-        "string": "def arraySum (a : Array Int) (b : Array Int) : Array Int := sorry\n\n"
+        "string": "def arraySum (a : Array Int) (b : Array Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1286,7 +1498,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem arraySum_spec (a b : Array Int) :\na.size = b.size \u2192\nlet c := arraySum a b\nc.size = a.size \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 a[i]! + b[i]! = c[i]!) := sorry"
+        "string": "theorem arraySum_spec (a b : Array Int) :\na.size = b.size \u2192\nlet c := arraySum a b\nc.size = a.size \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 a[i]! + b[i]! = c[i]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1307,7 +1523,11 @@
       },
       {
         "type": "sig",
-        "string": "def ComputeAvg (a b : Int) : Int := sorry\n\n"
+        "string": "def ComputeAvg (a b : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1315,7 +1535,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem ComputeAvg_spec (a b : Int) :\nComputeAvg a b = (a + b) / 2 := sorry"
+        "string": "theorem ComputeAvg_spec (a b : Int) :\nComputeAvg a b = (a + b) / 2 :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1332,7 +1556,11 @@
       },
       {
         "type": "sig",
-        "string": "def below_zero (operations : Array Int) : Array Int \u00d7 Bool := sorry\n\n"
+        "string": "def below_zero (operations : Array Int) : Array Int \u00d7 Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1340,7 +1568,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem below_zero_spec (operations : Array Int) :\nlet (s, result) := below_zero operations\ns.size = operations.size + 1 \u2227\ns[0]! = 0 \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < s.size - 1 \u2192 s[i+1]! = s[i]! + operations[i]!) \u2227\n(result = true \u2192 \u2203 i, 1 \u2264 i \u2227 i \u2264 operations.size \u2227 s[i]! < 0) \u2227\n(result = false \u2192 \u2200 i, 0 \u2264 i \u2227 i < s.size \u2192 s[i]! \u2265 0) := sorry"
+        "string": "theorem below_zero_spec (operations : Array Int) :\nlet (s, result) := below_zero operations\ns.size = operations.size + 1 \u2227\ns[0]! = 0 \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < s.size - 1 \u2192 s[i+1]! = s[i]! + operations[i]!) \u2227\n(result = true \u2192 \u2203 i, 1 \u2264 i \u2227 i \u2264 operations.size \u2227 s[i]! < 0) \u2227\n(result = false \u2192 \u2200 i, 0 \u2264 i \u2227 i < s.size \u2192 s[i]! \u2265 0) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1357,7 +1589,11 @@
       },
       {
         "type": "sig",
-        "string": "def BinarySearch (a : Array Int) (key : Int) : Int := sorry\n\n"
+        "string": "def BinarySearch (a : Array Int) (key : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1365,7 +1601,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem BinarySearch_spec (a : Array Int) (key : Int) (n : Int) :\n(\u2200 i j, 0 \u2264 i \u2227 i < j \u2227 j < a.size \u2192 a[i]! \u2264 a[j]!) \u2192\n(0 \u2264 n \u2227 n \u2264 a.size) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < n \u2192 a[i.toNat]! < key) \u2227\n(n = a.size \u2192 \u2200 i, 0 \u2264 i \u2227 i < a.size \u2192  a[i]!  < key) \u2227\n(\u2200 i, n \u2264 i \u2227 i < a.size \u2192 a[i.toNat]!  \u2265 key) := sorry"
+        "string": "theorem BinarySearch_spec (a : Array Int) (key : Int) (n : Int) :\n(\u2200 i j, 0 \u2264 i \u2227 i < j \u2227 j < a.size \u2192 a[i]! \u2264 a[j]!) \u2192\n(0 \u2264 n \u2227 n \u2264 a.size) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < n \u2192 a[i.toNat]! < key) \u2227\n(n = a.size \u2192 \u2200 i, 0 \u2264 i \u2227 i < a.size \u2192  a[i]!  < key) \u2227\n(\u2200 i, n \u2264 i \u2227 i < a.size \u2192 a[i.toNat]!  \u2265 key) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1382,7 +1622,11 @@
       },
       {
         "type": "sig",
-        "string": "def BubbleSort (a : Array Int) : Array Int := sorry\n\n"
+        "string": "def BubbleSort (a : Array Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1407,7 +1651,11 @@
       },
       {
         "type": "sig",
-        "string": "def CalDiv : Int \u00d7 Int := sorry\n\n"
+        "string": "def CalDiv : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1415,7 +1663,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem CalDiv_spec :\nlet (x, y) := CalDiv\nx = 191 / 7 \u2227 y = 191 % 7 := sorry"
+        "string": "theorem CalDiv_spec :\nlet (x, y) := CalDiv\nx = 191 / 7 \u2227 y = 191 % 7 :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1432,7 +1684,11 @@
       },
       {
         "type": "sig",
-        "string": "def SumPrime (N : Int) : Int := sorry\n\n"
+        "string": "def SumPrime (N : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1440,7 +1696,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Sum_spec (N : Int) :\nN \u2265 0 \u2192 SumPrime N = N * (N + 1) / 2 := sorry"
+        "string": "theorem Sum_spec (N : Int) :\nN \u2265 0 \u2192 SumPrime N = N * (N + 1) / 2 :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1457,7 +1717,11 @@
       },
       {
         "type": "sig",
-        "string": "def CanyonSearch (a b : Array Int) : Nat := sorry\n\n"
+        "string": "def CanyonSearch (a b : Array Int) : Nat :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1465,7 +1729,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem CanyonSearch_spec (a b : Array Int) :\na.size \u2260 0 \u2227 b.size \u2260 0 \u2227\n(\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < a.size \u2192 (a[i]!) \u2264 (a[j]!)) \u2227\n(\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < b.size \u2192 (b[i]!) \u2264 (b[j]!)) \u2192\n(\u2203 i j, 0 \u2264 i \u2227 i < a.size \u2227 0 \u2264 j \u2227 j < b.size \u2227\nCanyonSearch a b = if (a[i]!) < (b[j]!) then ((b[j]!) - (a[i]!)) else ((a[i]!) - (b[j]!))) \u2227\n(\u2200 i j, 0 \u2264 i \u2192 i < a.size \u2192 0 \u2264 j \u2192 j < b.size \u2192\nCanyonSearch a b \u2264 if (a[i]!) < (b[j]!) then ((b[j]!) - (a[i]!)) else ((a[i]!) - (b[j]!))) := sorry"
+        "string": "theorem CanyonSearch_spec (a b : Array Int) :\na.size \u2260 0 \u2227 b.size \u2260 0 \u2227\n(\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < a.size \u2192 (a[i]!) \u2264 (a[j]!)) \u2227\n(\u2200 i j, 0 \u2264 i \u2192 i < j \u2192 j < b.size \u2192 (b[i]!) \u2264 (b[j]!)) \u2192\n(\u2203 i j, 0 \u2264 i \u2227 i < a.size \u2227 0 \u2264 j \u2227 j < b.size \u2227\nCanyonSearch a b = if (a[i]!) < (b[j]!) then ((b[j]!) - (a[i]!)) else ((a[i]!) - (b[j]!))) \u2227\n(\u2200 i j, 0 \u2264 i \u2192 i < a.size \u2192 0 \u2264 j \u2192 j < b.size \u2192\nCanyonSearch a b \u2264 if (a[i]!) < (b[j]!) then ((b[j]!) - (a[i]!)) else ((a[i]!) - (b[j]!))) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1482,7 +1750,11 @@
       },
       {
         "type": "sig",
-        "string": "def convert_map_key (inputs : Nat \u2192 Option Bool) (f : Nat \u2192 Nat) : Nat \u2192 Option Bool := sorry\n\n"
+        "string": "def convert_map_key (inputs : Nat \u2192 Option Bool) (f : Nat \u2192 Nat) : Nat \u2192 Option Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1490,7 +1762,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem convert_map_key_spec\n(inputs : Nat \u2192 Option Bool)\n(f : Nat \u2192 Nat) :\n(\u2200 n1 n2 : Nat, n1 \u2260 n2 \u2192 f n1 \u2260 f n2) \u2192\n(\u2200 k : Nat, (inputs k).isSome \u2194 (convert_map_key inputs f (f k)).isSome) \u2227\n(\u2200 k : Nat, (inputs k).isSome \u2192 convert_map_key inputs f (f k) = inputs k) := sorry"
+        "string": "theorem convert_map_key_spec\n(inputs : Nat \u2192 Option Bool)\n(f : Nat \u2192 Nat) :\n(\u2200 n1 n2 : Nat, n1 \u2260 n2 \u2192 f n1 \u2260 f n2) \u2192\n(\u2200 k : Nat, (inputs k).isSome \u2194 (convert_map_key inputs f (f k)).isSome) \u2227\n(\u2200 k : Nat, (inputs k).isSome \u2192 convert_map_key inputs f (f k) = inputs k) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1519,7 +1795,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem copy_spec\n(src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : Nat) (len : Nat) :\nsrc.size \u2265 sStart + len \u2192\ndest.size \u2265 dStart + len \u2192\nlet r := copy src sStart dest dStart len\n(r.size = dest.size) \u2227\n(\u2200 i, i < dStart \u2192 r[i]! = dest[i]!) \u2227\n(\u2200 i, i \u2265 dStart + len \u2192 r[i]!   = dest[i]!) \u2227\n(\u2200 i, dStart \u2264 i \u2227 i < dStart + len \u2192\nr[i]! = src[sStart + (i - dStart)]!) :=\nsorry"
+        "string": "theorem copy_spec\n(src : Array Int) (sStart : Nat) (dest : Array Int) (dStart : Nat) (len : Nat) :\nsrc.size \u2265 sStart + len \u2192\ndest.size \u2265 dStart + len \u2192\nlet r := copy src sStart dest dStart len\n(r.size = dest.size) \u2227\n(\u2200 i, i < dStart \u2192 r[i]! = dest[i]!) \u2227\n(\u2200 i, i \u2265 dStart + len \u2192 r[i]!   = dest[i]!) \u2227\n(\u2200 i, dStart \u2264 i \u2227 i < dStart + len \u2192\nr[i]! = src[sStart + (i - dStart)]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1536,7 +1816,11 @@
       },
       {
         "type": "sig",
-        "string": "def CountLessThan (numbers : List Int) (threshold : Int) : Int := sorry\n\n"
+        "string": "def CountLessThan (numbers : List Int) (threshold : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1544,7 +1828,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem CountLessThan_spec (numbers : List Int) (threshold : Int) :\nCountLessThan numbers threshold =\n(numbers.filter (fun i => i < threshold)).length := sorry"
+        "string": "theorem CountLessThan_spec (numbers : List Int) (threshold : Int) :\nCountLessThan numbers threshold =\n(numbers.filter (fun i => i < threshold)).length :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1561,7 +1849,11 @@
       },
       {
         "type": "sig",
-        "string": "def double_array_elements (s : Array Int) : Array Int := sorry\n\n"
+        "string": "def double_array_elements (s : Array Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1569,7 +1861,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem double_array_elements_spec (s : Array Int) :\n\u2200 i, 0 \u2264 i \u2227 i < s.size \u2192\n(double_array_elements s)[i]! = 2 * s[i]! := sorry"
+        "string": "theorem double_array_elements_spec (s : Array Int) :\n\u2200 i, 0 \u2264 i \u2227 i < s.size \u2192\n(double_array_elements s)[i]! = 2 * s[i]! :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1586,7 +1882,11 @@
       },
       {
         "type": "sig",
-        "string": "def DoubleQuadruple (x : Int) : Int \u00d7 Int := sorry\n\n"
+        "string": "def DoubleQuadruple (x : Int) : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1594,7 +1894,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem DoubleQuadruple_spec (x : Int) :\nlet (a, b) := DoubleQuadruple x\na = 2 * x \u2227 b = 4 * x := sorry"
+        "string": "theorem DoubleQuadruple_spec (x : Int) :\nlet (a, b) := DoubleQuadruple x\na = 2 * x \u2227 b = 4 * x :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1611,7 +1915,11 @@
       },
       {
         "type": "sig",
-        "string": "def FindEvenNumbers (arr : Array Int) : Array Int := sorry\n\n"
+        "string": "def FindEvenNumbers (arr : Array Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1619,7 +1927,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem FindEvenNumbers_spec (arr : Array Int) (evenNumbers : Array Int)\n(h : evenNumbers = FindEvenNumbers arr) :\n(\u2200 x, x \u2208 arr.toList \u2227 x % 2 = 0 \u2192 x \u2208 evenNumbers.toList) \u2227\n(\u2200 x, x \u2209 arr.toList \u2192 x \u2209 evenNumbers.toList) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < evenNumbers.size \u2192 evenNumbers[k]! % 2 = 0) \u2227\n(\u2200 k l, 0 \u2264 k \u2227 k < l \u2227 l < evenNumbers.size \u2192\n\u2203 n m, 0 \u2264 n \u2227 n < m \u2227 m < arr.size \u2227\nevenNumbers[k]! = arr[n]! \u2227\nevenNumbers[l]! = arr[m]!) := sorry"
+        "string": "theorem FindEvenNumbers_spec (arr : Array Int) (evenNumbers : Array Int)\n(h : evenNumbers = FindEvenNumbers arr) :\n(\u2200 x, x \u2208 arr.toList \u2227 x % 2 = 0 \u2192 x \u2208 evenNumbers.toList) \u2227\n(\u2200 x, x \u2209 arr.toList \u2192 x \u2209 evenNumbers.toList) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < evenNumbers.size \u2192 evenNumbers[k]! % 2 = 0) \u2227\n(\u2200 k l, 0 \u2264 k \u2227 k < l \u2227 l < evenNumbers.size \u2192\n\u2203 n m, 0 \u2264 n \u2227 n < m \u2227 m < arr.size \u2227\nevenNumbers[k]! = arr[n]! \u2227\nevenNumbers[l]! = arr[m]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1636,7 +1948,11 @@
       },
       {
         "type": "sig",
-        "string": "def Find (a : Array Int) (key : Int) : Int := sorry\n\n"
+        "string": "def Find (a : Array Int) (key : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1644,7 +1960,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Find_spec (a : Array Int) (key : Int) :\n-1 \u2264 Find a key \u2227 Find a key < a.size \u2227\n(Find a key \u2260 -1 \u2192 \u2203 idx : Nat, idx < a.size \u2227 a[idx]! = key \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < idx \u2192 a[i]! \u2260 key)) \u2227\n(Find a key = -1 \u2192 (\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 a[i]! \u2260 key)) := sorry"
+        "string": "theorem Find_spec (a : Array Int) (key : Int) :\n-1 \u2264 Find a key \u2227 Find a key < a.size \u2227\n(Find a key \u2260 -1 \u2192 \u2203 idx : Nat, idx < a.size \u2227 a[idx]! = key \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < idx \u2192 a[i]! \u2260 key)) \u2227\n(Find a key = -1 \u2192 (\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 a[i]! \u2260 key)) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1661,7 +1981,11 @@
       },
       {
         "type": "sig",
-        "string": "def has_close_elements (numbers : Array Float) (threshold : Float) : Bool := sorry\n\n"
+        "string": "def has_close_elements (numbers : Array Float) (threshold : Float) : Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1669,7 +1993,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem has_close_elements_spec\n(numbers : Array Float) (threshold : Float) :\nthreshold \u2265 0 \u2192\nlet res := has_close_elements numbers threshold\n(res \u2192 \u2203 i j : Int,\n0 \u2264 i \u2227 i < numbers.size \u2227\n0 \u2264 j \u2227 j < numbers.size \u2227\ni \u2260 j \u2227\n(if numbers[i.toNat]! - numbers[j.toNat]! < 0\nthen numbers[j.toNat]! - numbers[i.toNat]!\nelse numbers[i.toNat]! - numbers[j.toNat]!) < threshold) \u2227\n(!res \u2192 \u2200 i j : Int,\n1 \u2264 i \u2227 i < numbers.size \u2227\n0 \u2264 j \u2227 j < i \u2192\n(if numbers[i.toNat]! - numbers[j.toNat]! < 0\nthen numbers[j.toNat]! - numbers[i.toNat]!\nelse numbers[i.toNat]! - numbers[j.toNat]!) \u2265 threshold) := sorry"
+        "string": "theorem has_close_elements_spec\n(numbers : Array Float) (threshold : Float) :\nthreshold \u2265 0 \u2192\nlet res := has_close_elements numbers threshold\n(res \u2192 \u2203 i j : Int,\n0 \u2264 i \u2227 i < numbers.size \u2227\n0 \u2264 j \u2227 j < numbers.size \u2227\ni \u2260 j \u2227\n(if numbers[i.toNat]! - numbers[j.toNat]! < 0\nthen numbers[j.toNat]! - numbers[i.toNat]!\nelse numbers[i.toNat]! - numbers[j.toNat]!) < threshold) \u2227\n(!res \u2192 \u2200 i j : Int,\n1 \u2264 i \u2227 i < numbers.size \u2227\n0 \u2264 j \u2227 j < i \u2192\n(if numbers[i.toNat]! - numbers[j.toNat]! < 0\nthen numbers[j.toNat]! - numbers[i.toNat]!\nelse numbers[i.toNat]! - numbers[j.toNat]!) \u2265 threshold) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1686,7 +2014,11 @@
       },
       {
         "type": "sig",
-        "string": "def insert (line : Array Char) (l : Int) (nl : Array Char) (p : Int) (_ : Int) : Array Char := sorry\n\n"
+        "string": "def insert (line : Array Char) (l : Int) (nl : Array Char) (p : Int) (_ : Int) : Array Char :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1711,7 +2043,11 @@
       },
       {
         "type": "sig",
-        "string": "def SquareRoot (N : Nat) : Nat := sorry\n\n"
+        "string": "def SquareRoot (N : Nat) : Nat :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1719,7 +2055,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem SquareRoot_spec (N : Nat) :\nlet r := SquareRoot N\nr * r \u2264 N \u2227 N < (r + 1) * (r + 1) := sorry"
+        "string": "theorem SquareRoot_spec (N : Nat) :\nlet r := SquareRoot N\nr * r \u2264 N \u2227 N < (r + 1) * (r + 1) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1736,7 +2076,11 @@
       },
       {
         "type": "sig",
-        "string": "def ComputeIsEven (x : Int) : Bool := sorry\n\n"
+        "string": "def ComputeIsEven (x : Int) : Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1744,7 +2088,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem ComputeIsEven_spec (x : Int) :\nComputeIsEven x = (x % 2 = 0) := sorry"
+        "string": "theorem ComputeIsEven_spec (x : Int) :\nComputeIsEven x = (x % 2 = 0) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1765,7 +2113,11 @@
       },
       {
         "type": "sig",
-        "string": "def IsPalindrome (x : Array Char) : Bool := sorry\n\n"
+        "string": "def IsPalindrome (x : Array Char) : Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1773,7 +2125,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem IsPalindrome_spec (x : Array Char) :\nIsPalindrome x = true \u2194\n(\u2200 i, 0 \u2264 i \u2227 i < x.size \u2192 x[i]! = x[x.size - i - 1]!) := sorry"
+        "string": "theorem IsPalindrome_spec (x : Array Char) :\nIsPalindrome x = true \u2194\n(\u2200 i, 0 \u2264 i \u2227 i < x.size \u2192 x[i]! = x[x.size - i - 1]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1790,7 +2146,11 @@
       },
       {
         "type": "sig",
-        "string": "def LinearSearch (a : Array Int) (e : Int) : Int := sorry\n\n"
+        "string": "def LinearSearch (a : Array Int) (e : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1798,7 +2158,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem LinearSearch_spec (a : Array Int) (e : Int) :\nlet n := LinearSearch a e\n0 \u2264 n \u2227 n \u2264 a.size \u2227\n(n = a.size \u2228 a[n.toNat]! = e) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < n \u2192 e \u2260 a[i.toNat]!) := sorry"
+        "string": "theorem LinearSearch_spec (a : Array Int) (e : Int) :\nlet n := LinearSearch a e\n0 \u2264 n \u2227 n \u2264 a.size \u2227\n(n = a.size \u2228 a[n.toNat]! = e) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < n \u2192 e \u2260 a[i.toNat]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1815,7 +2179,11 @@
       },
       {
         "type": "sig",
-        "string": "def LinearSearch (a : Array Int) (e : Int) : Int := sorry\n\n"
+        "string": "def LinearSearch (a : Array Int) (e : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1823,7 +2191,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem LinearSearch_spec (a : Array Int) (e : Int) :\n(\u2203 i, 0 \u2264 i \u2227 i < a.size \u2227 a[i]! = e) \u2192\nlet n := LinearSearch a e\n(0 \u2264 n \u2227 n < a.size \u2227 a[n.toNat]! = e) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < n \u2192 a[k.toNat]! \u2260 e) := sorry"
+        "string": "theorem LinearSearch_spec (a : Array Int) (e : Int) :\n(\u2203 i, 0 \u2264 i \u2227 i < a.size \u2227 a[i]! = e) \u2192\nlet n := LinearSearch a e\n(0 \u2264 n \u2227 n < a.size \u2227 a[n.toNat]! = e) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < n \u2192 a[k.toNat]! \u2260 e) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1840,7 +2212,11 @@
       },
       {
         "type": "sig",
-        "string": "def LongestCommonPrefix (str1 : Array Char) (str2 : Array Char) : Array Char := sorry\n\n"
+        "string": "def LongestCommonPrefix (str1 : Array Char) (str2 : Array Char) : Array Char :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1848,7 +2224,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem LongestCommonPrefix_spec (str1 : Array Char) (str2 : Array Char) (_prefix : Array Char) :\n_prefix.size \u2264 str1.size \u2227\n_prefix.size \u2264 str2.size \u2227\n(\u2200 i, i < _prefix.size \u2192 _prefix[i]! = str1[i]!) \u2227\n(\u2200 i, i < _prefix.size \u2192 _prefix[i]! = str2[i]!) \u2227\n(_prefix.size = str1.size \u2228\n_prefix.size = str2.size \u2228\nstr1[_prefix.size]! \u2260 str2[_prefix.size]!) := sorry"
+        "string": "theorem LongestCommonPrefix_spec (str1 : Array Char) (str2 : Array Char) (_prefix : Array Char) :\n_prefix.size \u2264 str1.size \u2227\n_prefix.size \u2264 str2.size \u2227\n(\u2200 i, i < _prefix.size \u2192 _prefix[i]! = str1[i]!) \u2227\n(\u2200 i, i < _prefix.size \u2192 _prefix[i]! = str2[i]!) \u2227\n(_prefix.size = str1.size \u2228\n_prefix.size = str2.size \u2228\nstr1[_prefix.size]! \u2260 str2[_prefix.size]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1865,7 +2245,11 @@
       },
       {
         "type": "sig",
-        "string": "def Match (s p : String) : Bool := sorry\n\n"
+        "string": "def Match (s p : String) : Bool :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1873,7 +2257,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Match_spec (s p : String) :\ns.length = p.length \u2192\nMatch s p = (\u2200 n, 0 \u2264 n \u2227 n < s.length \u2192\n(s.get \u27e8n\u27e9 = p.get \u27e8n\u27e9 \u2228 p.get \u27e8n\u27e9 = '?')) := sorry"
+        "string": "theorem Match_spec (s p : String) :\ns.length = p.length \u2192\nMatch s p = (\u2200 n, 0 \u2264 n \u2227 n < s.length \u2192\n(s.get \u27e8n\u27e9 = p.get \u27e8n\u27e9 \u2228 p.get \u27e8n\u27e9 = '?')) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1890,7 +2278,11 @@
       },
       {
         "type": "sig",
-        "string": "def maxArray (a : Array Int) : Int := sorry\n\n"
+        "string": "def maxArray (a : Array Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1898,7 +2290,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem maxArray_spec (a : Array Int) :\na.size \u2265 1 \u2192\nlet m := maxArray a\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 m \u2265 a[k]!) \u2227\n(\u2203 k, 0 \u2264 k \u2227 k < a.size \u2227 m = a[k]!) := sorry"
+        "string": "theorem maxArray_spec (a : Array Int) :\na.size \u2265 1 \u2192\nlet m := maxArray a\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 m \u2265 a[k]!) \u2227\n(\u2203 k, 0 \u2264 k \u2227 k < a.size \u2227 m = a[k]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1915,7 +2311,11 @@
       },
       {
         "type": "sig",
-        "string": "def minArray (a : Array Int) : Int := sorry\n\n"
+        "string": "def minArray (a : Array Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1923,7 +2323,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem minArray_spec (a : Array Int) :\na.size > 0 \u2192\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 minArray a \u2264 a[i]!) \u2227\n(\u2203 i, 0 \u2264 i \u2227 i < a.size \u2227 minArray a = a[i]!) := sorry"
+        "string": "theorem minArray_spec (a : Array Int) :\na.size > 0 \u2192\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 minArray a \u2264 a[i]!) \u2227\n(\u2203 i, 0 \u2264 i \u2227 i < a.size \u2227 minArray a = a[i]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1940,7 +2344,11 @@
       },
       {
         "type": "sig",
-        "string": "def MinPrime (x y : Int) : Int := sorry\n\n"
+        "string": "def MinPrime (x y : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -1948,7 +2356,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Min_spec (x y z : Int) :\nz = MinPrime x y \u2192\n((x \u2264 y \u2192 z = x) \u2227\n(x > y \u2192 z = y)) := sorry"
+        "string": "theorem Min_spec (x y z : Int) :\nz = MinPrime x y \u2192\n((x \u2264 y \u2192 z = x) \u2227\n(x > y \u2192 z = y)) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1977,7 +2389,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem modify_array_element_spec\n(arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) :\nindex1 < arr.size \u2192\nindex2 < (arr[index1]!).size \u2192\n(\u2200 i j : Nat, i < arr.size \u2227 j < arr.size \u2227 i \u2260 j \u2192 arr[i]! \u2260 arr[j]!) \u2192\nlet result := modify_array_element arr index1 index2 val\n(\u2200 i : Nat, i < arr.size \u2192 result[i]! = arr[i]!) \u2227\n(\u2200 i j : Nat, i < arr.size \u2227 j < (arr[i]!).size \u2227 (i \u2260 index1 \u2228 j \u2260 index2) \u2192\n(result[i]!)[j]! = (arr[i]!)[j]!) \u2227\n(result[index1]!)[index2]! = val :=\nsorry"
+        "string": "theorem modify_array_element_spec\n(arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) :\nindex1 < arr.size \u2192\nindex2 < (arr[index1]!).size \u2192\n(\u2200 i j : Nat, i < arr.size \u2227 j < arr.size \u2227 i \u2260 j \u2192 arr[i]! \u2260 arr[j]!) \u2192\nlet result := modify_array_element arr index1 index2 val\n(\u2200 i : Nat, i < arr.size \u2192 result[i]! = arr[i]!) \u2227\n(\u2200 i j : Nat, i < arr.size \u2227 j < (arr[i]!).size \u2227 (i \u2260 index1 \u2228 j \u2260 index2) \u2192\n(result[i]!)[j]! = (arr[i]!)[j]!) \u2227\n(result[index1]!)[index2]! = val :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1994,7 +2410,11 @@
       },
       {
         "type": "sig",
-        "string": "def MultipleReturns (x y : Int) : Int \u00d7 Int := sorry\n\n"
+        "string": "def MultipleReturns (x y : Int) : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2002,7 +2422,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem MultipleReturns_spec (x y : Int) :\nlet (more, less) := MultipleReturns x y\nmore = x + y \u2227 less = x - y := sorry"
+        "string": "theorem MultipleReturns_spec (x y : Int) :\nlet (more, less) := MultipleReturns x y\nmore = x + y \u2227 less = x - y :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2019,7 +2443,11 @@
       },
       {
         "type": "sig",
-        "string": "def onlineMax (a : Array Int) (x : Int) : Int \u00d7 Int := sorry\n\n"
+        "string": "def onlineMax (a : Array Int) (x : Int) : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2027,7 +2455,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem onlineMax_spec (a : Array Int) (x : Int) (m p : Int) :\n(1 \u2264 x \u2227 x < a.size) \u2192\n(a.size \u2260 0) \u2192\nlet (m, p) := onlineMax a x;\n(x \u2264 p \u2227 p < a.size) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < x \u2192 a[i.toNat]! \u2264 m) \u2227\n(\u2203 i, 0 \u2264 i \u2227 i < x \u2227 a[i.toNat]! = m) \u2227\n(x \u2264 p \u2227 p < a.size - 1 \u2192 (\u2200 i, 0 \u2264 i \u2227 i < p \u2192 a[i.toNat]! < a[p.toNat]!)) \u2227\n((\u2200 i, x \u2264 i \u2227 i < a.size \u2227 a[i.toNat]! \u2264 m) \u2192 p = a.size - 1) := sorry"
+        "string": "theorem onlineMax_spec (a : Array Int) (x : Int) (m p : Int) :\n(1 \u2264 x \u2227 x < a.size) \u2192\n(a.size \u2260 0) \u2192\nlet (m, p) := onlineMax a x;\n(x \u2264 p \u2227 p < a.size) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < x \u2192 a[i.toNat]! \u2264 m) \u2227\n(\u2203 i, 0 \u2264 i \u2227 i < x \u2227 a[i.toNat]! = m) \u2227\n(x \u2264 p \u2227 p < a.size - 1 \u2192 (\u2200 i, 0 \u2264 i \u2227 i < p \u2192 a[i.toNat]! < a[p.toNat]!)) \u2227\n((\u2200 i, x \u2264 i \u2227 i < a.size \u2227 a[i.toNat]! \u2264 m) \u2192 p = a.size - 1) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2044,7 +2476,11 @@
       },
       {
         "type": "sig",
-        "string": "def QuotientPrime (x : Nat) (y : Nat) : Int \u00d7 Int := sorry\n\n"
+        "string": "def QuotientPrime (x : Nat) (y : Nat) : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2052,7 +2488,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Quotient_spec (x : Nat) (y : Nat) :\ny \u2260 0 \u2192\nlet (r, q) := QuotientPrime x y\nq * y + r = x \u2227 0 \u2264 r \u2227 r < y \u2227 0 \u2264 q := sorry"
+        "string": "theorem Quotient_spec (x : Nat) (y : Nat) :\ny \u2260 0 \u2192\nlet (r, q) := QuotientPrime x y\nq * y + r = x \u2227 0 \u2264 r \u2227 r < y \u2227 0 \u2264 q :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2069,7 +2509,11 @@
       },
       {
         "type": "sig",
-        "string": "def remove_front (a : Array Int) : Array Int := sorry\n\n"
+        "string": "def remove_front (a : Array Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2077,7 +2521,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem remove_front_spec (a : Array Int) :\na.size > 0 \u2192\n\u2200 (c : Array Int), remove_front a = c \u2192\nc.size = a.size - 1 := sorry"
+        "string": "theorem remove_front_spec (a : Array Int) :\na.size > 0 \u2192\n\u2200 (c : Array Int), remove_front a = c \u2192\nc.size = a.size - 1 :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2094,7 +2542,11 @@
       },
       {
         "type": "sig",
-        "string": "def replace (arr : Array Int) (k : Int) : Array Int := sorry\n\n"
+        "string": "def replace (arr : Array Int) (k : Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2102,7 +2554,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem replace_spec (arr : Array Int) (k : Int) (i : Nat) :\ni < arr.size \u2192\nlet result := replace arr k\n(arr[i]! > k \u2192 result[i]! = -1) \u2227\n(arr[i]! \u2264 k \u2192 result[i]! = arr[i]!) := sorry"
+        "string": "theorem replace_spec (arr : Array Int) (k : Int) (i : Nat) :\ni < arr.size \u2192\nlet result := replace arr k\n(arr[i]! > k \u2192 result[i]! = -1) \u2227\n(arr[i]! \u2264 k \u2192 result[i]! = arr[i]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2119,7 +2575,11 @@
       },
       {
         "type": "sig",
-        "string": "def M (x : Int) : Int := sorry\n\n"
+        "string": "def M (x : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2127,7 +2587,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem M_spec (x : Int) : M x = 7 := sorry"
+        "string": "theorem M_spec (x : Int) : M x = 7 :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2144,7 +2608,11 @@
       },
       {
         "type": "sig",
-        "string": "def reverse (a : Array Int) : Array Int := sorry\n\n"
+        "string": "def reverse (a : Array Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2152,7 +2620,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem reverse_spec (a : Array Int) :\n\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192\n(reverse a)[i]! = a[a.size - 1 - i]! := sorry"
+        "string": "theorem reverse_spec (a : Array Int) :\n\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192\n(reverse a)[i]! = a[a.size - 1 - i]! :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2169,7 +2641,11 @@
       },
       {
         "type": "sig",
-        "string": "def rotate (a : Array Int) (offset : Int) : Array Int := sorry\n\n"
+        "string": "def rotate (a : Array Int) (offset : Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2177,7 +2653,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem rotate_spec (a : Array Int) (offset : Int) :\noffset \u2265 0 \u2192\nlet b := rotate a offset\n(b.size = a.size) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 b[i]! = a[((i + offset) % a.size).toNat]!) := sorry"
+        "string": "theorem rotate_spec (a : Array Int) (offset : Int) :\noffset \u2265 0 \u2192\nlet b := rotate a offset\n(b.size = a.size) \u2227\n(\u2200 i, 0 \u2264 i \u2227 i < a.size \u2192 b[i]! = a[((i + offset) % a.size).toNat]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2194,7 +2674,11 @@
       },
       {
         "type": "sig",
-        "string": "def SelectionSort (a : Array Int) : Array Int := sorry\n\n"
+        "string": "def SelectionSort (a : Array Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2219,7 +2703,11 @@
       },
       {
         "type": "sig",
-        "string": "def SlopeSearch (a : Array (Array Int)) (key : Int) : Int \u00d7 Int := sorry\n\n"
+        "string": "def SlopeSearch (a : Array (Array Int)) (key : Int) : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2227,7 +2715,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem SlopeSearch_spec (a : Array (Array Int)) (key : Int) :\n(\u2200 i j j', 0 \u2264 i \u2227 i < a.size \u2227 0 \u2264 j \u2227 j < j' \u2227 j' < a[i]!.size \u2192\na[i]![j]! \u2264 a[i]![j']!) \u2192\n(\u2200 i i' j, 0 \u2264 i \u2227 i < i' \u2227 i' < a.size \u2227 0 \u2264 j \u2227 j < a[i]!.size \u2192\na[i]![j]! \u2264 a[i']![j]!) \u2192\n(\u2203 i j, 0 \u2264 i \u2227 i < a.size \u2227 0 \u2264 j \u2227 j < a[i]!.size \u2227 a[i]![j]! = key) \u2192\nlet (m, n) := SlopeSearch a key\n0 \u2264 m \u2227 m < a.size \u2227 0 \u2264 n \u2227 n < a[m.natAbs]!.size \u2227 a[m.natAbs]![n.natAbs]! = key := sorry"
+        "string": "theorem SlopeSearch_spec (a : Array (Array Int)) (key : Int) :\n(\u2200 i j j', 0 \u2264 i \u2227 i < a.size \u2227 0 \u2264 j \u2227 j < j' \u2227 j' < a[i]!.size \u2192\na[i]![j]! \u2264 a[i]![j']!) \u2192\n(\u2200 i i' j, 0 \u2264 i \u2227 i < i' \u2227 i' < a.size \u2227 0 \u2264 j \u2227 j < a[i]!.size \u2192\na[i]![j]! \u2264 a[i']![j]!) \u2192\n(\u2203 i j, 0 \u2264 i \u2227 i < a.size \u2227 0 \u2264 j \u2227 j < a[i]!.size \u2227 a[i]![j]! = key) \u2192\nlet (m, n) := SlopeSearch a key\n0 \u2264 m \u2227 m < a.size \u2227 0 \u2264 n \u2227 n < a[m.natAbs]!.size \u2227 a[m.natAbs]![n.natAbs]! = key :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2244,7 +2736,11 @@
       },
       {
         "type": "sig",
-        "string": "def Swap (X Y : Int) : Int \u00d7 Int := sorry\n\n"
+        "string": "def Swap (X Y : Int) : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2252,7 +2748,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Swap_spec (X Y : Int) :\nlet (x, y) := Swap X Y\nx = Y \u2227 y = X := sorry"
+        "string": "theorem Swap_spec (X Y : Int) :\nlet (x, y) := Swap X Y\nx = Y \u2227 y = X :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2269,7 +2769,11 @@
       },
       {
         "type": "sig",
-        "string": "def SwapArithmetic (X Y : Int) : Int \u00d7 Int := sorry\n\n"
+        "string": "def SwapArithmetic (X Y : Int) : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2277,7 +2781,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem SwapArithmetic_spec (X Y : Int) :\nlet (x, y) := SwapArithmetic X Y\nx = Y \u2227 y = X := sorry"
+        "string": "theorem SwapArithmetic_spec (X Y : Int) :\nlet (x, y) := SwapArithmetic X Y\nx = Y \u2227 y = X :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2294,7 +2802,11 @@
       },
       {
         "type": "sig",
-        "string": "def SwapBitvectors (X Y : UInt8) : UInt8 \u00d7 UInt8 := sorry\n\n"
+        "string": "def SwapBitvectors (X Y : UInt8) : UInt8 \u00d7 UInt8 :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2302,7 +2814,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem SwapBitvectors_spec (X Y : UInt8) :\nlet (x, y) := SwapBitvectors X Y\nx = Y \u2227 y = X := sorry"
+        "string": "theorem SwapBitvectors_spec (X Y : UInt8) :\nlet (x, y) := SwapBitvectors X Y\nx = Y \u2227 y = X :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2319,7 +2835,11 @@
       },
       {
         "type": "sig",
-        "string": "def swap (arr : Array Int) (i j : Int) : Array Int := sorry\n\n"
+        "string": "def swap (arr : Array Int) (i j : Int) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2327,7 +2847,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem swap_spec (arr : Array Int) (i j : Int) :\n0 \u2264 i \u2227 i < arr.size \u2227 0 \u2264 j \u2227 j < arr.size \u2192\nlet arr' := swap arr i j\n(arr'[i.toNat]! = arr[j.toNat]! \u2227\narr'[j.toNat]! = arr[i.toNat]! \u2227\n\u2200 k, 0 \u2264 k \u2227 k < arr.size \u2227 k \u2260 i.toNat \u2227 k \u2260 j.toNat \u2192 arr'[k]! = arr[k]!) := sorry"
+        "string": "theorem swap_spec (arr : Array Int) (i j : Int) :\n0 \u2264 i \u2227 i < arr.size \u2227 0 \u2264 j \u2227 j < arr.size \u2192\nlet arr' := swap arr i j\n(arr'[i.toNat]! = arr[j.toNat]! \u2227\narr'[j.toNat]! = arr[i.toNat]! \u2227\n\u2200 k, 0 \u2264 k \u2227 k < arr.size \u2227 k \u2260 i.toNat \u2227 k \u2260 j.toNat \u2192 arr'[k]! = arr[k]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2344,7 +2868,11 @@
       },
       {
         "type": "sig",
-        "string": "def SwapSimultaneous (X Y : Int) : Int \u00d7 Int := sorry\n\n"
+        "string": "def SwapSimultaneous (X Y : Int) : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2352,7 +2880,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem SwapSimultaneous_spec (X Y : Int) :\nlet (x, y) := SwapSimultaneous X Y\nx = Y \u2227 y = X := sorry"
+        "string": "theorem SwapSimultaneous_spec (X Y : Int) :\nlet (x, y) := SwapSimultaneous X Y\nx = Y \u2227 y = X :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2369,7 +2901,11 @@
       },
       {
         "type": "sig",
-        "string": "def TestArrayElements (a : Array Int) (j : Nat) : Array Int := sorry\n\n"
+        "string": "def TestArrayElements (a : Array Int) (j : Nat) : Array Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2377,7 +2913,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem TestArrayElements_spec (a : Array Int) (j : Nat) :\n(j < a.size) \u2192\nlet result := TestArrayElements a j\n(result[j]! = 60) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2227 k \u2260 j \u2192 result[k]! = a[k]!) := sorry"
+        "string": "theorem TestArrayElements_spec (a : Array Int) (j : Nat) :\n(j < a.size) \u2192\nlet result := TestArrayElements a j\n(result[j]! = 60) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2227 k \u2260 j \u2192 result[k]! = a[k]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2394,7 +2934,11 @@
       },
       {
         "type": "sig",
-        "string": "def Triple (x : Int) : Int := sorry\n\n"
+        "string": "def Triple (x : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2402,7 +2946,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Triple_spec (x : Int) : Triple x = 3 * x := sorry"
+        "string": "theorem Triple_spec (x : Int) : Triple x = 3 * x :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2419,7 +2967,11 @@
       },
       {
         "type": "sig",
-        "string": "def twoSum (nums : Array Int) (target : Int) : Int \u00d7 Int := sorry\n\n"
+        "string": "def twoSum (nums : Array Int) (target : Int) : Int \u00d7 Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2427,7 +2979,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem twoSum_spec (nums : Array Int) (target : Int) :\nnums.size > 1 \u2192\n(\u2203 i j, 0 \u2264 i \u2227 i < j \u2227 j < nums.size \u2227 nums[i]! + nums[j]! = target) \u2192\nlet (i, j) := twoSum nums target\n0 \u2264 i \u2227 i < j \u2227 j < nums.size \u2227 nums[i.toNat]! + nums[j.toNat]! = target \u2227\n(\u2200 ii jj, 0 \u2264 ii \u2227 ii < i \u2227 ii < jj \u2227 jj < nums.size \u2192 nums[ii.toNat]! + nums[jj.toNat]! \u2260 target) \u2227\n(\u2200 jj, i < jj \u2227 jj < j \u2192 nums[i.toNat]! + nums[jj.toNat]! \u2260 target) := sorry"
+        "string": "theorem twoSum_spec (nums : Array Int) (target : Int) :\nnums.size > 1 \u2192\n(\u2203 i j, 0 \u2264 i \u2227 i < j \u2227 j < nums.size \u2227 nums[i]! + nums[j]! = target) \u2192\nlet (i, j) := twoSum nums target\n0 \u2264 i \u2227 i < j \u2227 j < nums.size \u2227 nums[i.toNat]! + nums[j.toNat]! = target \u2227\n(\u2200 ii jj, 0 \u2264 ii \u2227 ii < i \u2227 ii < jj \u2227 jj < nums.size \u2192 nums[ii.toNat]! + nums[jj.toNat]! \u2260 target) \u2227\n(\u2200 jj, i < jj \u2227 jj < j \u2192 nums[i.toNat]! + nums[jj.toNat]! \u2260 target) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2480,7 +3036,11 @@
       },
       {
         "type": "sig",
-        "string": "def BinarySearch (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) : Nat := sorry\n\n"
+        "string": "def BinarySearch (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) : Nat :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2488,7 +3048,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem BinarySearch_spec (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) :\nSorted q \u2192\n0 \u2264 lowerBound \u2192 lowerBound \u2264 upperBound \u2192 upperBound \u2264 q.size \u2192\nRangeSatisfiesComparerNegation q key 0 lowerBound comparer \u2192\nRangeSatisfiesComparer q key upperBound q.size comparer \u2192\n(\u2200 n1 n2, comparer n1 n2 = (n1 > n2)) \u2228\n(\u2200 n1 n2, comparer n1 n2 = (n1 \u2265 n2)) \u2192\nlet index := BinarySearch q key lowerBound upperBound comparer\nlowerBound \u2264 index \u2227 index \u2264 upperBound \u2227\nRangeSatisfiesComparerNegation q key 0 index comparer \u2227\nRangeSatisfiesComparer q key index q.size comparer := sorry"
+        "string": "theorem BinarySearch_spec (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) :\nSorted q \u2192\n0 \u2264 lowerBound \u2192 lowerBound \u2264 upperBound \u2192 upperBound \u2264 q.size \u2192\nRangeSatisfiesComparerNegation q key 0 lowerBound comparer \u2192\nRangeSatisfiesComparer q key upperBound q.size comparer \u2192\n(\u2200 n1 n2, comparer n1 n2 = (n1 > n2)) \u2228\n(\u2200 n1 n2, comparer n1 n2 = (n1 \u2265 n2)) \u2192\nlet index := BinarySearch q key lowerBound upperBound comparer\nlowerBound \u2264 index \u2227 index \u2264 upperBound \u2227\nRangeSatisfiesComparerNegation q key 0 index comparer \u2227\nRangeSatisfiesComparer q key index q.size comparer :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2553,7 +3117,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem BinarySearch_spec (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) :\nSorted q \u2192\n0 \u2264 lowerBound \u2192 lowerBound \u2264 upperBound \u2192 upperBound \u2264 q.size \u2192\nRangeSatisfiesComparerNegation q key 0 lowerBound comparer \u2192\nRangeSatisfiesComparer q key upperBound q.size comparer \u2192\n((\u2200 n1 n2, comparer n1 n2 = (n1 > n2)) \u2228 (\u2200 n1 n2, comparer n1 n2 = (n1 \u2265 n2))) \u2192\nlet index := BinarySearch q key lowerBound upperBound comparer\nlowerBound \u2264 index \u2227 index \u2264 upperBound \u2227\nRangeSatisfiesComparerNegation q key 0 index comparer \u2227\nRangeSatisfiesComparer q key index q.size comparer := sorry\n\n"
+        "string": "theorem BinarySearch_spec (q : Array Int) (key : Int) (lowerBound upperBound : Nat)\n(comparer : Int \u2192 Int \u2192 Bool) :\nSorted q \u2192\n0 \u2264 lowerBound \u2192 lowerBound \u2264 upperBound \u2192 upperBound \u2264 q.size \u2192\nRangeSatisfiesComparerNegation q key 0 lowerBound comparer \u2192\nRangeSatisfiesComparer q key upperBound q.size comparer \u2192\n((\u2200 n1 n2, comparer n1 n2 = (n1 > n2)) \u2228 (\u2200 n1 n2, comparer n1 n2 = (n1 \u2265 n2))) \u2192\nlet index := BinarySearch q key lowerBound upperBound comparer\nlowerBound \u2264 index \u2227 index \u2264 upperBound \u2227\nRangeSatisfiesComparerNegation q key 0 index comparer \u2227\nRangeSatisfiesComparer q key index q.size comparer :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2573,7 +3141,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem FindRange_spec (q : Array Int) (key : Int) :\nSorted q \u2192\nlet (left, right) := FindRange q key\nleft \u2264 right \u2227 right \u2264 q.size \u2227\n(\u2200 i, 0 \u2264 i \u2192 i < left \u2192 q[i]! < key) \u2227\n(\u2200 i, left \u2264 i \u2192 i < right \u2192 q[i]! = key) \u2227\n(\u2200 i, right \u2264 i \u2192 i < q.size \u2192 q[i]! > key) := sorry"
+        "string": "theorem FindRange_spec (q : Array Int) (key : Int) :\nSorted q \u2192\nlet (left, right) := FindRange q key\nleft \u2264 right \u2227 right \u2264 q.size \u2227\n(\u2200 i, 0 \u2264 i \u2192 i < left \u2192 q[i]! < key) \u2227\n(\u2200 i, left \u2264 i \u2192 i < right \u2192 q[i]! = key) \u2227\n(\u2200 i, right \u2264 i \u2192 i < q.size \u2192 q[i]! > key) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2622,7 +3194,11 @@
       },
       {
         "type": "sig",
-        "string": "def ProdAndCount (q : Array Int) (key : Int) : Int \u00d7 Nat := sorry\n\n"
+        "string": "def ProdAndCount (q : Array Int) (key : Int) : Int \u00d7 Nat :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2630,7 +3206,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem ProdAndCount_spec (q : Array Int) (key : Int) :\nlet (prod, count) := ProdAndCount q key\nprod = RecursivePositiveProduct q \u2227\ncount = RecursiveCount key q := sorry"
+        "string": "theorem ProdAndCount_spec (q : Array Int) (key : Int) :\nlet (prod, count) := ProdAndCount q key\nprod = RecursivePositiveProduct q \u2227\ncount = RecursiveCount key q :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2727,19 +3307,27 @@
       },
       {
         "type": "doc",
-        "string": "/-- Main FindAddends method specification -/\n"
-      },
-      {
-        "type": "cond",
-        "string": "theorem FindAddends_spec (q : Array Int) (x : Int) :\nSorted q \u2192 HasAddends q x \u2192\n\u2203 i j, i < j \u2227 j < q.size \u2227 q[i]! + q[j]! = x := sorry\n\n"
-      },
-      {
-        "type": "doc",
         "string": "/-- FindAddends implementation -/\n"
       },
       {
         "type": "sig",
-        "string": "def FindAddends (q : Array Int) (x : Int) : Nat \u00d7 Nat := sorry"
+        "string": "def FindAddends (q : Array Int) (x : Int) : Nat \u00d7 Nat :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Main FindAddends method specification -/\n"
+      },
+      {
+        "type": "cond",
+        "string": "theorem FindAddends_spec (q : Array Int) (x : Int) :\nSorted q \u2192 HasAddends q x \u2192\n\u2203 i j, FindAddends q x = (i, j) \u2227 i < j \u2227 j < q.size \u2227 q[i]! + q[j]! = x :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2768,7 +3356,11 @@
       },
       {
         "type": "sig",
-        "string": "def Testing : Unit := sorry\n\n"
+        "string": "def Testing : Unit :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2812,7 +3404,11 @@
       },
       {
         "type": "sig",
-        "string": "def Find (a : Array Int) (key : Int) : Int := sorry\n\n"
+        "string": "def Find (a : Array Int) (key : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2820,7 +3416,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem Find_spec (a : Array Int) (key : Int) (index : Int) :\n(0 \u2264 index \u2192 index < a.size \u2227 a[index.toNat]! = key) \u2227\n(index < 0 \u2192 \u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 a[k]! \u2260 key) := sorry"
+        "string": "theorem Find_spec (a : Array Int) (key : Int) (index : Int) :\n(0 \u2264 index \u2192 index < a.size \u2227 a[index.toNat]! = key) \u2227\n(index < 0 \u2192 \u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 a[k]! \u2260 key) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -2849,7 +3449,11 @@
       },
       {
         "type": "sig",
-        "string": "def Testing : Unit := sorry\n\n"
+        "string": "def Testing : Unit :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2893,7 +3497,11 @@
       },
       {
         "type": "sig",
-        "string": "def FindMax (a : Array Int) : Int := sorry\n\n"
+        "string": "def FindMax (a : Array Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
       },
       {
         "type": "doc",
@@ -2901,7 +3509,11 @@
       },
       {
         "type": "cond",
-        "string": "theorem FindMax_spec (a : Array Int) (i : Int) :\na.size \u2265 1 \u2192\n(0 \u2264 i \u2227 i < a.size) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 a[k]! \u2264 a[i.toNat]!) := sorry"
+        "string": "theorem FindMax_spec (a : Array Int) (i : Int) :\na.size \u2265 1 \u2192\n(0 \u2264 i \u2227 i < a.size) \u2227\n(\u2200 k, 0 \u2264 k \u2227 k < a.size \u2192 a[k]! \u2264 a[i.toNat]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   }
