@@ -24,6 +24,7 @@ dependencies = [
     "openai>=1.104.2",
     "datasets>=4.0.0",
     "pytest>=8.4.1",
+    "matplotlib>=3.10.6",
 ]
 
 [project.optional-dependencies]
