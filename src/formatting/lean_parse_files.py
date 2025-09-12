@@ -119,7 +119,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     "string": description_text
                 })
                 
-            elif startswith(line, section_starters):
+            elif startswith(line, section_starters) or line.startswith("namespace"):
                 # Exit preamble state
                 if imports.rstrip():  # Only add if there are imports
                     results.append({
@@ -336,12 +336,27 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                             "string": cond_text
                         })
 
+            elif line.startswith("namespace"):
+                partial_results.append({
+                    "type": "namespace",
+                    "string": lines[i]
+                })                
+                i += 1
+
+            elif line.startswith("end"):
+                partial_results.append({
+                    "type": "namespace",
+                    "string": lines[i]
+                })                
+                i += 1
+
             elif line == "":
                 partial_results.append({
                     "type": "empty",
                     "string": ""
                 })                
                 i += 1
+
             else:
                 partial_results.append({
                     "type": "other",
@@ -387,7 +402,7 @@ def main():
     
     # Set default parsing results file path if not provided
     if args.parsing_results_file is None:
-        parsing_results_file = folder_path.parent / "parsing_results.json"
+        parsing_results_file = folder_path.parent / f"parsing_results_{folder_path.name}.json"
     else:
         parsing_results_file = Path(args.parsing_results_file)
     

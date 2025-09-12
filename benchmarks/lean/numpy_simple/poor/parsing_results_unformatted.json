@@ -1,0 +1,1352 @@
+{
+  "NpAbs-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpAbs\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def absInt (x : Int) : Int := if x < 0 then -x else x\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def abs {n : Nat} (a : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem abs_spec {n : Nat} (a : Vector Int n) :\n  (abs a).toList.length = n \u2227\n  (\u2200 i : Fin n, (abs a)[i] = Int.natAbs (a[i])) \u2227\n  (\u2200 i : Fin n, (abs a)[i] \u2265 0) :=\nsorry\n\nend NpAbs\n"
+      }
+    ]
+  },
+  "NpAdd-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpAdd\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def add {n : Nat} (a b : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem add_spec {n : Nat} (a b : Vector Int n) :\n  (add a b).toList.length = n \u2227\n  \u2200 i : Fin n, (add a b)[i] = a[i] + b[i] := sorry\n\nend NpAdd\n"
+      }
+    ]
+  },
+  "NpArange-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpArange\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def arangeLength (start stop step : Float) : Nat :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def arange (start stop step : Float)\n    (h_step_nonzero : step \u2260 0)\n    (h_valid_range : if step < 0 then start > stop else start < stop) :\n    Vector Float (arangeLength start stop step) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem arange_spec\n  (start stop step : Float)\n  (h_step_nonzero : step \u2260 0)\n  (h_valid_range : if step < 0 then start > stop else start < stop) :\n  let n := arangeLength start stop step\n  let arr := arange start stop step h_step_nonzero h_valid_range\n  n = ((stop - start) / step).floor.toUInt64.toNat\n  \u2227\n  n > 0\n  \u2227\n  arr[0]'(by sorry) = start\n  \u2227\n  \u2200 i : Fin n, i.val + 1 < n \u2192 arr[i.val + 1]'(by sorry) - arr[i.val] = step := sorry\nend NpArange\n"
+      }
+    ]
+  },
+  "NpArgmax-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpArgmax\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def argmax {n : Nat} (h : 0 < n) (arr : Vector Float n) : Fin n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem argmax_spec {n : Nat} (h : 0 < n) (arr : Vector Float n) :\n  \u2200 i : Fin n, i < argmax h arr \u2192 arr[argmax h arr] > arr[i]\n  \u2227\n  \u2200 i : Fin n, argmax h arr < i \u2192 arr[argmax h arr] \u2265 arr[i]\n  := sorry\n\nend NpArgmax\n"
+      }
+    ]
+  },
+  "NpArgsort-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpArgsort\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def argsort {n : Nat} (a : Vector Float n) : Vector (Fin n) n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem argsort_spec {n : Nat} (a : Vector Float n) :\n  (argsort a).toList.length = n \u2227\n  (\u2200 i j : Fin n, i < j \u2192 a[(argsort a)[i]] \u2264 a[(argsort a)[j]]) \u2227\n  (\u2200 i : Fin n, \u2203 j : Fin n, (argsort a)[j] = i) :=\nsorry\n\nend NpArgsort"
+      }
+    ]
+  },
+  "NpBitwiseAnd-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpBitwiseAnd\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def bitwiseAnd {n : Nat} (a b : Vector Nat n) : Vector Nat n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem bitwiseAnd_spec {n : Nat} (a b : Vector Nat n) :\n  (bitwiseAnd a b).toList.length = n \u2227\n  \u2200 i : Fin n, (bitwiseAnd a b)[i] = a[i] &&& b[i] := sorry\n\nend NpBitwiseAnd "
+      }
+    ]
+  },
+  "NpBitwiseOr-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpBitwiseOr\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def bitwiseOr {n : Nat} (a b : Vector Nat n) : Vector Nat n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem bitwiseOr_spec {n : Nat} (a b : Vector Nat n) :\n  (bitwiseOr a b).toList.length = n \u2227\n  \u2200 i : Fin n, (bitwiseOr a b)[i] = a[i] ||| b[i] := sorry\n\nend NpBitwiseOr "
+      }
+    ]
+  },
+  "NpBitwiseXor-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpBitwiseXor\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def bitwiseXor {n : Nat} (a b : Vector Nat n) : Vector Nat n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem bitwiseXor_spec {n : Nat} (a b : Vector Nat n) :\n  (bitwiseXor a b).toList.length = n \u2227\n  \u2200 i : Fin n, (bitwiseXor a b)[i] = a[i] ^^^ b[i] := sorry\n\nend NpBitwiseXor "
+      }
+    ]
+  },
+  "NpCenter-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpCenter\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def center {n : Nat} (input : Vector String n) (width : Nat) : Vector String n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem center_spec {n : Nat} (input : Vector String n) (width : Nat)\n  (h : \u2200 i : Fin n, input[i].length \u2265 1) :\n  let res := center input width\n  (res.toList.length = n) \u2227\n  (\u2200 i : Fin n, if input[i].length > width then res[i].length = input[i].length else res[i].length = width) \u2227\n  (\u2200 i : Fin n, if input[i].length < width then\n    let startPos := (width - input[i].length + 1) / 2\n    let endPos := startPos + input[i].length - 1\n    res[i].toList.drop startPos |>.take input[i].length = input[i].toList else True) := sorry\n\nend NpCenter\n"
+      }
+    ]
+  },
+  "NpClip-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpClip\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def clip {n : Nat} (a : Vector Float n) (min max : Float) : Vector Float n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem clip_spec {n : Nat} (a : Vector Float n) (min max : Float)\n  (h : min < max) :\n  let ret := clip a min max\n  (ret.toList.length = n) \u2227\n  (\u2200 i : Fin n, if a[i] < min then ret[i] = min\n               else if a[i] > max then ret[i] = max\n               else ret[i] = a[i]) := sorry\n\nend NpClip\n"
+      }
+    ]
+  },
+  "NpConvolve-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpConvolve\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def convolutionSum (arr1 arr2 : List Float) (n : Nat) : Float :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def convolve (arr1 arr2 : List Float) : List Float :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem convolve_spec (arr1 arr2 : List Float)\n  (h1 : arr1.length > 0)\n  (h2 : arr2.length > 0) :\n  let result := convolve arr1 arr2\n  result.length = arr1.length + arr2.length - 1 := sorry\n\nend NpConvolve\n"
+      }
+    ]
+  },
+  "NpCopy-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpCopy\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def copy {n : Nat} (arr : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem copy_spec {n : Nat} (arr : Vector Int n) :\n  (copy arr).toList.length = n \u2227\n  \u2200 i : Fin n, (copy arr)[i] = arr[i] := sorry\n\nend NpCopy "
+      }
+    ]
+  },
+  "NpCountnonzero-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpCountnonzero\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def nonzero {n : Nat} (arr : Vector Float n) : Nat :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem nonzero_spec {n : Nat} (arr : Vector Float n) :\n  let num := nonzero arr\n  (num \u2265 0) \u2227\n  (n > 0 \u2192 arr[0]! = 0.0 \u2192 nonzero (arr.tail) = num - 1) := sorry\n\nend NpCountnonzero\n"
+      }
+    ]
+  },
+  "NpCumProd-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpCumProd\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def cumProd {n : Nat} (a : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem cumProd_spec {n : Nat} (h : n > 0) (a : Vector Int n) :\n  (cumProd a)[0] = a[0] \u2227\n  \u2200 i : Fin n, i.val > 0 \u2192 \n    let j : Fin n := \u27e8i.val - 1, by sorry\u27e9\n    (cumProd a)[i] = (cumProd a)[j] * a[i] := sorry\n\nend NpCumProd "
+      }
+    ]
+  },
+  "NpCumSum-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpCumSum\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def cumSum {n : Nat} (a : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem cumSum_spec {n : Nat} (h : n > 0) (a : Vector Int n) :\n  (cumSum a)[0] = a[0] \u2227\n  \u2200 i : Fin n, i.val > 0 \u2192 \n    let j : Fin n := \u27e8i.val - 1, by sorry\u27e9\n    (cumSum a)[i] = (cumSum a)[j] + a[i] := sorry\n\nend NpCumSum "
+      }
+    ]
+  },
+  "NpEqual-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpEqual\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def equal {n : Nat} (a b : Vector Int n) : Vector Bool n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem equal_spec {n : Nat} (a b : Vector Int n) :\n  (equal a b).toList.length = n \u2227\n  \u2200 i : Fin n, (equal a b)[i] = (a[i] = b[i]) := sorry\n\nend NpEqual "
+      }
+    ]
+  },
+  "NpFloorDivide-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpFloorDivide\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def NonZeroVector (n : Nat) := { v : Vector Int n // \u2200 i : Fin n, v[i] \u2260 0 }\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def floorDivide {n : Nat} (a : Vector Int n) (b : NonZeroVector n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem floorDivide_spec {n : Nat} (a : Vector Int n) (b : NonZeroVector n) :\n  (floorDivide a b).toList.length = n \u2227\n  \u2200 i : Fin n, (floorDivide a b)[i] = a[i] / (b.val[i]) := sorry\n\nend NpFloorDivide "
+      }
+    ]
+  },
+  "NpGcd-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpGcd\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def gcdInt (a b : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem gcdInt_spec (a b : Int) :\n  gcdInt a b \u2265 0 \u2227\n  a % gcdInt a b = 0 \u2227\n  b % gcdInt a b = 0 \u2227\n  \u2200 d : Int, d > 0 \u2192 a % d = 0 \u2192 b % d = 0 \u2192 d \u2264 gcdInt a b := sorry\n\nend NpGcd "
+      }
+    ]
+  },
+  "NpGreater-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpGreater\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def greater {n : Nat} (a b : Vector Int n) : Vector Bool n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem greater_spec {n : Nat} (a b : Vector Int n) :\n  (greater a b).toList.length = n \u2227\n  \u2200 i : Fin n, (greater a b)[i] = (a[i] > b[i]) := sorry\n\nend NpGreater "
+      }
+    ]
+  },
+  "NpGreaterEqual-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpGreaterEqual\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def greaterEqual {n : Nat} (a b : Vector Int n) : Vector Bool n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem greaterEqual_spec {n : Nat} (a b : Vector Int n) :\n  (greaterEqual a b).toList.length = n \u2227\n  \u2200 i : Fin n, (greaterEqual a b)[i] = (a[i] \u2265 b[i]) := sorry\n\nend NpGreaterEqual "
+      }
+    ]
+  },
+  "NpHistogram-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpHistogram\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def histogram {n m : Nat} (data : Vector Float n) (bins : Vector Float m) : Vector Int (m - 1) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def histogram_helper {n m : Nat} (data : Vector Float n) (bins : Vector Float m) (hist : Vector Int (m - 1)) (index : Int) : Vector Int (m - 1) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem histogram_spec {n m : Nat} (data : Vector Float n) (bins : Vector Float m)\n  (h1 : m \u2265 2)\n  (h2 : \u2200 i : Fin (m - 1), bins[i.succ] > bins[i]) :\n  let hist := histogram data bins\n  (hist.toList.length = m - 1) \u2227\n  (n \u2265 0) := sorry\n\nend NpHistogram\n"
+      }
+    ]
+  },
+  "NpIntersect-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpIntersect\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def intersect {n m : Nat} (a : Vector Float n) (b : Vector Float m) : Vector Float (min n m) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem intersect_spec {n m : Nat} (a : Vector Float n) (b : Vector Float m) :\n  let ret := intersect a b\n  (ret.toList.length < n \u2227 ret.toList.length < m) \u2227\n  (\u2200 i j : Nat, i < n \u2192 j < m \u2192\n    (a[i]! = b[j]! \u2192 \u2203 k : Nat, k < ret.toList.length \u2227 ret[k]! = a[i]!) \u2227\n    (a[i]! \u2260 b[j]! \u2192 \u00ac \u2203 k : Nat, k < ret.toList.length \u2227 ret[k]! = a[i]!)) := sorry\n\nend NpIntersect\n"
+      }
+    ]
+  },
+  "NpInvert-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpInvert\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def invert {n : Nat} (bitWidth : Nat) (a : Vector Nat n) : Vector Nat n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem invert_spec {n : Nat} (bitWidth : Nat) (a : Vector Nat n) :\n  (invert bitWidth a).toList.length = n \u2227\n  \u2200 i : Fin n, (invert bitWidth a)[i] = (2^bitWidth - 1) - a[i] := sorry\n\nend NpInvert "
+      }
+    ]
+  },
+  "NpIsalpha-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpIsalpha\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def isAlpha {n : Nat} (input : Vector String n) : Vector Bool n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem isAlpha_spec {n : Nat} (input : Vector String n) :\n  let ret := isAlpha input\n  (ret.toList.length = n) \u2227\n  (\u2200 i : Fin n, ret[i] = (input[i].length > 0 \u2227\n    input[i].all fun c => ('A' \u2264 c \u2227 c \u2264 'Z') \u2228 ('a' \u2264 c \u2227 c \u2264 'z'))) := sorry\n\nend NpIsalpha\n"
+      }
+    ]
+  },
+  "NpIsclose-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpIsclose\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def np_isclose {n : Nat} (a b : Vector Int n) (tol : Int) : Vector Bool n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem np_isclose_spec {n : Nat} (a b : Vector Int n) (tol : Int)\n  (h1 : n > 0)\n  (h2 : tol > 0) :\n  let ret := np_isclose a b tol\n  (ret.toList.length = n) \u2227\n  (\u2200 i : Fin n, if -tol < a[i] - b[i] \u2227 a[i] - b[i] < tol then ret[i] = true else ret[i] = false) := sorry\n\nend NpIsclose\n"
+      }
+    ]
+  },
+  "NpLcm-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpLcm\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def lcmInt (a b : Int) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem lcmInt_spec (a b : Int) :\n  lcmInt a b \u2265 0 \u2227\n  lcmInt a b % a = 0 \u2227\n  lcmInt a b % b = 0 \u2227\n  \u2200 m : Int, m > 0 \u2192 m % a = 0 \u2192 m % b = 0 \u2192 lcmInt a b \u2264 m := sorry\n\nend NpLcm "
+      }
+    ]
+  },
+  "NpLeftShift-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpLeftShift\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def shiftLeftInt (x : Int) (shift : Nat) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def leftShift {n : Nat} (a : Vector Int n) (b : Vector Nat n)\n    (h : \u2200 i : Fin n, b[i] < 64) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem leftShift_spec {n : Nat} (a : Vector Int n) (b : Vector Nat n)\n    (h : \u2200 i : Fin n, b[i] < 64) :\n  (leftShift a b h).toList.length = n \u2227\n  \u2200 i : Fin n, (leftShift a b h)[i] = shiftLeftInt (a[i]) (b[i]) := sorry\n\nend NpLeftShift "
+      }
+    ]
+  },
+  "NpLess-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpLess\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def less {n : Nat} (a b : Vector Int n) : Vector Bool n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem less_spec {n : Nat} (a b : Vector Int n) :\n  (less a b).toList.length = n \u2227\n  \u2200 i : Fin n, (less a b)[i] = (a[i] < b[i]) := sorry\n\nend NpLess "
+      }
+    ]
+  },
+  "NpLessEqual-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpLessEqual\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def lessEqual {n : Nat} (a b : Vector Int n) : Vector Bool n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem lessEqual_spec {n : Nat} (a b : Vector Int n) :\n  (lessEqual a b).toList.length = n \u2227\n  \u2200 i : Fin n, (lessEqual a b)[i] = (a[i] \u2264 b[i]) := sorry\n\nend NpLessEqual "
+      }
+    ]
+  },
+  "NpMax-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpMax\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def max {n : Nat} (h : n > 0) (a : Vector Int n) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem max_spec {n : Nat} (h : n > 0) (a : Vector Int n) :\n  \u2203 i : Fin n, max h a = a[i] \u2227\n  \u2200 i : Fin n, a[i] \u2264 max h a := sorry\n\nend NpMax "
+      }
+    ]
+  },
+  "NpMin-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpMin\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def min {n : Nat} (h : n > 0) (a : Vector Int n) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem min_spec {n : Nat} (h : n > 0) (a : Vector Int n) :\n  \u2203 i : Fin n, min h a = a[i] \u2227\n  \u2200 i : Fin n, min h a \u2264 a[i] := sorry\n\nend NpMin "
+      }
+    ]
+  },
+  "NpMod-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpMod\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def NonZeroVector (n : Nat) := { v : Vector Int n // \u2200 i : Fin n, v[i] \u2260 0 }\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def mod {n : Nat} (a : Vector Int n) (b : NonZeroVector n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem mod_spec {n : Nat} (a : Vector Int n) (b : NonZeroVector n) :\n  (mod a b).toList.length = n \u2227\n  \u2200 i : Fin n, (mod a b)[i] = a[i] % (b.val[i]) := sorry\n\nend NpMod "
+      }
+    ]
+  },
+  "NpMultiply-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpMultiply\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def multiply {n : Nat} (a b : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem multiply_spec {n : Nat} (a b : Vector Int n) :\n  (multiply a b).toList.length = n \u2227\n  \u2200 i : Fin n, (multiply a b)[i] = a[i] * b[i] := sorry\n\nend NpMultiply "
+      }
+    ]
+  },
+  "NpNotEqual-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpNotEqual\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def notEqual {n : Nat} (a b : Vector Int n) : Vector Bool n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem notEqual_spec {n : Nat} (a b : Vector Int n) :\n  (notEqual a b).toList.length = n \u2227\n  \u2200 i : Fin n, (notEqual a b)[i] = (a[i] \u2260 b[i]) := sorry\n\nend NpNotEqual "
+      }
+    ]
+  },
+  "NpPiecewise-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpPiecewise\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def piecewise {n m : Nat} (x : Vector Float n) (condlist : Vector (Float \u2192 Bool) m) (funclist : Vector (Float \u2192 Float) m) : Vector Float n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem piecewise_spec {n m : Nat} (x : Vector Float n) (condlist : Vector (Float \u2192 Bool) m) (funclist : Vector (Float \u2192 Float) m)\n  (h : m = m) :\n  let ret := piecewise x condlist funclist\n  (ret.toList.length = n) \u2227\n  (\u2200 i j : Nat, i < n \u2192 j < m \u2192\n    condlist[j]! (x[i]!) \u2192 ret[i]! = funclist[j]! (x[i]!)) := sorry\n\nend NpPiecewise\n"
+      }
+    ]
+  },
+  "NpPoly-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpPoly\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def poly_helper {n : Nat} (roots : Vector Float n) (val : Nat) : Vector Float n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def poly {n : Nat} (roots : Vector Float n) : Vector Float n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem poly_spec {n : Nat} (roots : Vector Float n)\n  (h : n > 0) :\n  let coeff := poly roots\n  (coeff.toList.length = n) \u2227\n  (\u2200 i : Fin n, coeff[i] = (poly_helper roots (n - 1))[i]) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem poly_helper_spec {n : Nat} (roots : Vector Float n) (val : Nat)\n  (h1 : n > 0)\n  (h2 : val > 0) :\n  let coeff := poly_helper roots val\n  (coeff.toList.length = n) \u2227\n  (coeff[0]! = 1.0) := sorry\n\nend NpPoly\n"
+      }
+    ]
+  },
+  "NpPolyder-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpPolyder\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def polyder {n : Nat} (poly : Vector Float n) (m : Int) : Vector Float (n - m.natAbs) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem polyder_spec {n : Nat} (poly : Vector Float n) (m : Int)\n  (h : m > 0) :\n  let ret := polyder poly m\n  ret.toList.length = n - m.natAbs := sorry\n\nend NpPolyder\n"
+      }
+    ]
+  },
+  "NpPower-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpPower\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def power {n : Nat} (a : Vector Int n) (b : Vector Nat n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem power_spec {n : Nat} (a : Vector Int n) (b : Vector Nat n) :\n  (power a b).toList.length = n \u2227\n  \u2200 i : Fin n, (power a b)[i] = (a[i]) ^ (b[i]) := sorry\n\nend NpPower "
+      }
+    ]
+  },
+  "NpProd-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpProd\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def prod {n : Nat} (a : Vector Int n) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def prodArray {n : Nat} (a : Vector Int n) (start finish : Nat) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem prod_spec {n : Nat} (a : Vector Int n) :\n  prod a = prodArray a 0 n \u2227\n  (\u2200 i : Fin n, a[i] = 0 \u2192 prod a = 0) := sorry\n\nend NpProd "
+      }
+    ]
+  },
+  "NpRemainder-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpRemainder\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def remainder {n : Nat} (a b : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem remainder_spec {n : Nat} (a b : Vector Int n)\n  (h : \u2200 i : Fin n, b[i] \u2260 0) :\n  let ret := remainder a b\n  (ret.toList.length = n) \u2227\n  (\u2200 i : Fin n, ret[i] = a[i] % b[i]) := sorry\n\nend NpRemainder\n"
+      }
+    ]
+  },
+  "NpRightShift-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpRightShift\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def shiftRightInt (x : Int) (n : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "  if x \u2265 0 then\n    Int.ofNat (x.natAbs >>> n)\n  else\n    -(Int.ofNat (((-x).natAbs - 1) >>> n + 1))\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def rightShift {n : Nat} (a : Vector Int n) (b : Vector Nat n) \n  (h : \u2200 i : Fin n, b[i] < 64) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem rightShift_spec {n : Nat} (a : Vector Int n) (b : Vector Nat n) \n  (h : \u2200 i : Fin n, b[i] < 64) :\n  (rightShift a b h).toList.length = n \u2227\n  \u2200 i : Fin n, (rightShift a b h)[i] = shiftRightInt (a[i]) (b[i]) := sorry\n\nend NpRightShift "
+      }
+    ]
+  },
+  "NpSelect-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpSelect\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def select {m n : Nat} (condlist : Vector (Vector Bool n) m) (choicelist : Vector (Vector Float n) m) : Vector Float n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem select_spec {m n : Nat} (condlist : Vector (Vector Bool n) m) (choicelist : Vector (Vector Float n) m)\n  (h1 : m > 0 \u2227 n > 0)\n  (h2 : \u2200 i : Fin m, condlist[i].toList.length = n \u2227 choicelist[i].toList.length = n) :\n  let ret := select condlist choicelist\n  (ret.toList.length = n) \u2227\n  (\u2200 i : Fin m, \u2200 j : Fin n, condlist[i][j] \u2192 ret[j] = choicelist[i][j]) := sorry\n\nend NpSelect\n"
+      }
+    ]
+  },
+  "NpSign-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpSign\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def sign {n : Nat} (a : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem sign_spec {n : Nat} (a : Vector Int n) :\n  (sign a).toList.length = n \u2227\n  \u2200 i : Fin n,\n    (a[i] > 0 \u2192 (sign a)[i] = 1) \u2227\n    (a[i] = 0 \u2192 (sign a)[i] = 0) \u2227\n    (a[i] < 0 \u2192 (sign a)[i] = -1) := sorry\n\nend NpSign "
+      }
+    ]
+  },
+  "NpSort-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpSort\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def sort {n : Nat} (a : Vector Float n) : Vector Float n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem sort_spec {n : Nat} (a : Vector Float n) :\n  (sort a).toList.length = n \u2227\n  (\u2200 i j : Fin n, i < j \u2192 (sort a)[i] \u2264 (sort a)[j]) \u2227\n  (\u2200 x : Float, (sort a).toList.count x = a.toList.count x) :=\nsorry\n\nend NpSort"
+      }
+    ]
+  },
+  "NpSquare-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpSquare\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def square {n : Nat} (arr : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem square_spec {n : Nat} (arr : Vector Int n) :\n  (square arr).toList.length = n \u2227\n  \u2200 i : Fin n, (square arr)[i] = (arr[i]) * (arr[i]) := sorry\n\nend NpSquare "
+      }
+    ]
+  },
+  "NpSubtract-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpSubtract\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def subtract {n : Nat} (a b : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem subtract_spec {n : Nat} (a b : Vector Int n) :\n  (subtract a b).toList.length = n \u2227\n  \u2200 i : Fin n, (subtract a b)[i] = a[i] - b[i] := sorry\n\nend NpSubtract "
+      }
+    ]
+  },
+  "NpSum-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpSum\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def sum {n : Nat} (a : Vector Int n) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def sumArray {n : Nat} (a : Vector Int n) (start finish : Nat) : Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem sum_spec {n : Nat} (a : Vector Int n) :\n  sum a = sumArray a 0 n \u2227\n  \u2200 start finish : Nat, start \u2264 finish \u2192 finish \u2264 n \u2192 \n    sumArray a start finish = (List.range (finish - start)).foldl (fun acc i => acc + a[start + i]'sorry) 0 \u2227\n  \u2200 m n : Nat, \u2200 a : Vector Int m, \u2200 b : Vector Int n, sum (a ++ b) = sum a + sum b := sorry\n\nend NpSum "
+      }
+    ]
+  },
+  "NpUniqueall-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpUniqueall\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def unique_all {n : Nat} (arr : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem unique_all_spec {n : Nat} (arr : Vector Int n) :\n  let ret := unique_all arr\n  (ret.toList.length \u2264 n) \u2227\n  (\u2200 i : Fin n, \u2203 j : Nat, j < ret.toList.length \u2227 ret[j]! = arr[i]) \u2227\n  (\u2200 i j : Nat, i < ret.toList.length \u2192 j < i \u2192 ret[i]! \u2260 ret[j]!) := sorry\n\nend NpUniqueall\n"
+      }
+    ]
+  },
+  "NpWhere-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpWhere\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def \u00abwhere\u00bb {n : Nat} (condition : Vector Bool n) (x : Vector Int n) (y : Vector Int n) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def whereWithTransform {n : Nat} (arr : Vector Int n) (condition : Int \u2192 Bool) (change : Int \u2192 Int) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem where_spec {n : Nat} (condition : Vector Bool n) (x : Vector Int n) (y : Vector Int n) :\n  (\u00abwhere\u00bb condition x y).toList.length = n \u2227\n  \u2200 i : Fin n, (\u00abwhere\u00bb condition x y)[i] = (if condition[i] then x[i] else y[i]) \u2227\n  \u2200 arr : Vector Int n, \u2200 condition : Int \u2192 Bool, \u2200 change : Int \u2192 Int,\n    (whereWithTransform arr condition change).toList.length = n \u2227\n    \u2200 i : Fin n, (whereWithTransform arr condition change)[i] =\n      if condition (arr[i]) then change (arr[i]) else arr[i] := sorry\n\nend NpWhere\n"
+      }
+    ]
+  },
+  "NpZeros-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "namespace",
+        "string": "namespace NpZeros\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def zeros (n : Nat) : Vector Int n :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def zeros2d (rows cols : Nat) : Vector (Vector Int cols) rows :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem zeros_spec (n : Nat) :\n  \u2200 i : Fin n, (zeros n)[i.val] = 0 \u2227\n  \u2200 rows cols : Nat, \u2200 (i : Fin rows) (j : Fin cols), (zeros2d rows cols)[i.val][j.val] = 0 := sorry\n\nend NpZeros "
+      }
+    ]
+  }
+}
