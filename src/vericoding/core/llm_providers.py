@@ -437,5 +437,5 @@ def call_llm(provider: LLMProvider, config: ProcessingConfig, prompt: str, wandb
             })
         except Exception as e:
             print(f"There was a W&B error {e} in llm_providers.py")
-    
+
     return llm_response.text
