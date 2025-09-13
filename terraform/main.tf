@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-north-1"  # Based on your elastic IP region
+  region = "eu-west-2"  # London - same region as haggis
 }
 
 # Data source to get the latest Ubuntu 24.04 LTS AMI
