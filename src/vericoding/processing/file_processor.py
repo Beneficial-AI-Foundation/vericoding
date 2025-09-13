@@ -20,6 +20,9 @@ from ..utils.io_utils import save_iteration_code
 from .code_fixer import extract_code, apply_json_replacements
 from .cheat_checker import has_final_failure_cheats, check_for_cheats
 
+# Import for Lean preprocessing
+from ..preprocessing import preprocess_lean_file
+
 
 def count_placeholders(original_code: str, language: str) -> int:
     """Count placeholders in original code for JSON array sizing.
@@ -119,7 +122,6 @@ def process_spec_file(
         
         # Apply Lean preprocessing if assume-unformatted-lean is enabled
         if (config.language == "lean" and config.assume_unformatted_lean):
-            from ...vericoder import preprocess_lean_file
             original_code = preprocess_lean_file(original_code)
 
         # Calculate relative path from input directory to preserve hierarchy
