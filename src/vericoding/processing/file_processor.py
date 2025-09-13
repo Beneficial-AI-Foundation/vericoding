@@ -21,7 +21,7 @@ from .code_fixer import extract_code, apply_json_replacements
 from .cheat_checker import has_final_failure_cheats, check_for_cheats
 
 # Import for Lean preprocessing
-from ..preprocessing import preprocess_lean_file
+from ..preprocessing import preprocess_lean_file, ensure_mathlib_import
 
 
 def count_placeholders(original_code: str, language: str) -> int:
@@ -120,7 +120,11 @@ def process_spec_file(
         with Path(file_path).open() as f:
             original_code = f.read()
         
-        # Apply Lean preprocessing if assume-unformatted-lean is enabled
+        # Apply mandatory Lean preprocessing (Mathlib import)
+        if config.language == "lean":
+            original_code = ensure_mathlib_import(original_code)
+        
+        # Apply optional Lean preprocessing (sorry wrapping) if assume-unformatted-lean is enabled
         if (config.language == "lean" and config.assume_unformatted_lean):
             original_code = preprocess_lean_file(original_code)
 

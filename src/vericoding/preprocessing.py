@@ -1,6 +1,21 @@
 """Preprocessing utilities for different languages."""
 
 
+def ensure_mathlib_import(content: str) -> str:
+    """
+    Ensure Lean file has Mathlib import as the first line.
+    
+    Args:
+        content: The original Lean file content
+        
+    Returns:
+        The content with "import Mathlib" as the first line if it wasn't already present
+    """
+    if "import Mathlib" not in content:
+        return "import Mathlib\n" + content
+    return content
+
+
 def preprocess_lean_file(content: str) -> str:
     """
     Preprocess Lean file content by wrapping each 'sorry' with vc-theorems tags.
