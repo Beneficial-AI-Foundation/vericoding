@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -36,11 +36,11 @@ def RemoveElement (s : Array Int) (k : Int) : Array Int := sorry
 /--
 Specification for RemoveElement method
 -/
-theorem RemoveElement_spec (s : Array Int) (k : Int) :
+theorem RemoveElement_spec (s : Array Int) (k : Nat) :
   0 ≤ k ∧ k < s.size →
   let v := RemoveElement s k
   v.size = s.size - 1 ∧
-  (∀ i, 0 ≤ i ∧ i < k → v.get ⟨i⟩ = s.get ⟨i⟩) ∧
-  (∀ i, k ≤ i ∧ i < v.size → v.get ⟨i⟩ = s.get (i + 1)) := sorry
+  (∀ i, 0 ≤ i ∧ i < k → v[i]! = s[i]!) ∧
+  (∀ i, k ≤ i ∧ i < v.size → v[i]! = s[i + 1]!) := sorry
 
 end DafnyBenchmarks

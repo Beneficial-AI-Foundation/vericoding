@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_606_DegreesToRadians",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_606_DegreesToRadians",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -23,13 +23,13 @@ Input:
 Output:
   - radians: Real number representing angle in radians
 -/
-def DegreesToRadians (degrees : Real) : Real := sorry
+def DegreesToRadians (degrees : Float ) : Float := sorry
 
 /--
 Specification for DegreesToRadians:
 Ensures the output radians equals the input degrees multiplied by π/180
 -/
-theorem DegreesToRadians_spec (degrees : Real) :
-  DegreesToRadians degrees = degrees * Real.pi / 180 := sorry
+theorem DegreesToRadians_spec (degrees : Float) :
+  DegreesToRadians degrees = degrees * 3.141592653589793 / 180 := sorry
 
 end DafnyBenchmarks

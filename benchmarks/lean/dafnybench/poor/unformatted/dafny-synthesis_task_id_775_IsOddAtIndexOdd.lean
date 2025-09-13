@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -34,6 +34,6 @@ Specification for IsOddAtIndexOdd method ensuring that the result is true if and
 all odd-indexed elements in the array are odd numbers
 -/
 theorem IsOddAtIndexOdd_spec (a : Array Int) :
-  IsOddAtIndexOdd a = (∀ i, 0 ≤ i ∧ i < a.size → (IsOdd i → IsOdd (a.get ⟨i⟩))) := sorry
+  IsOddAtIndexOdd a = (∀ i, 0 ≤ i ∧ i < a.size → (IsOdd i → IsOdd (a[i]!))) := sorry
 
 end DafnyBenchmarks

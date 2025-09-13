@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_424_ExtractRearChars",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_424_ExtractRearChars",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -31,10 +31,10 @@ Specification for ExtractRearChars:
 - Ensures each character in output is the last character of corresponding input string
 -/
 theorem ExtractRearChars_spec (l : Array String) :
-  (∀ i, 0 ≤ i ∧ i < l.size → l.get ⟨i⟩ |>.length > 0) →
+  (∀ i:Nat , 0 ≤ i ∧ i < l.size → (l[i]! |>.length) > 0) →
   let r := ExtractRearChars l
   (r.size = l.size) ∧
-  (∀ i, 0 ≤ i ∧ i < l.size → 
-    r.get ⟨i⟩ = l.get ⟨i⟩ |>.get (l.get ⟨i⟩ |>.length - 1)) := sorry
+  (∀ i:Nat , 0 ≤ i ∧ i < l.size →
+    r[i]! = (l[i]! |>.get ⟨((l[i]! |>.length) - 1)⟩)) := sorry
 
 end DafnyBenchmarks

@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_629_FindEvenNumbers",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_629_FindEvenNumbers",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -39,7 +39,7 @@ Specification for FindEvenNumbers:
 -/
 theorem FindEvenNumbers_spec (arr : Array Int) :
   let result := FindEvenNumbers arr
-  (∀ i, 0 ≤ i ∧ i < result.size → IsEven (result.get ⟨i⟩) ∧ (result.get ⟨i⟩) ∈ arr.toList) ∧
-  (∀ i, 0 ≤ i ∧ i < arr.size ∧ IsEven (arr.get ⟨i⟩) → (arr.get ⟨i⟩) ∈ result.toList) := sorry
+  (∀ i, 0 ≤ i ∧ i < result.size → IsEven (result[i]!) ∧ (result[i]!) ∈ arr.toList) ∧
+  (∀ i, 0 ≤ i ∧ i < arr.size ∧ IsEven (arr[i]!) → (arr[i]!) ∈ result.toList) := sorry
 
 end DafnyBenchmarks

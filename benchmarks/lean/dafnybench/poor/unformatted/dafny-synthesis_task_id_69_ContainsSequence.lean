@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_69_ContainsSequence",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_69_ContainsSequence",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -31,6 +31,6 @@ The result is true if and only if there exists an index i in the valid range
 where sub equals the sequence at index i in list
 -/
 theorem ContainsSequence_spec (list : Array (Array Int)) (sub : Array Int) :
-  ContainsSequence list sub = (∃ i, 0 ≤ i ∧ i < list.size ∧ sub = list.get ⟨i⟩) := sorry
+  ContainsSequence list sub = (∃ i, 0 ≤ i ∧ i < list.size ∧ sub = list[i]!) := sorry
 
 end DafnyBenchmarks

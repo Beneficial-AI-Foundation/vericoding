@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_728_AddLists",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_728_AddLists",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -36,6 +36,6 @@ theorem AddLists_spec (a b : Array Int) :
   a.size = b.size →
   let result := AddLists a b
   result.size = a.size ∧
-  ∀ i, 0 ≤ i ∧ i < result.size → result.get ⟨i⟩ = a.get ⟨i⟩ + b.get ⟨i⟩ := sorry
+  ∀ i, 0 ≤ i ∧ i < result.size → result[i]! = a[i]! + b[i]! := sorry
 
 end DafnyBenchmarks

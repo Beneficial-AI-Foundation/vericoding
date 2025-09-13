@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_743_RotateRight",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_743_RotateRight",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -39,7 +39,7 @@ theorem RotateRight_spec (l : Array Int) (n : Int) :
   n ≥ 0 →
   let r := RotateRight l n
   (r.size = l.size) ∧
-  (∀ i, 0 ≤ i ∧ i < l.size → 
-    r.get ⟨i⟩ = l.get ((i - n + l.size) % l.size)) := sorry
+  (∀ i, 0 ≤ i ∧ i < l.size →
+    r[i]! = l[((i - n + l.size) % l.size).toNat]!) := sorry
 
 end DafnyBenchmarks

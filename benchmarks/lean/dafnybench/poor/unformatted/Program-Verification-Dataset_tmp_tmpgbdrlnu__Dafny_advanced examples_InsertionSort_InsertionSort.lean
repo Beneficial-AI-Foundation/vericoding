@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_InsertionSort_InsertionSort",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_InsertionSort_InsertionSort",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -20,10 +20,10 @@ namespace DafnyBenchmarks
 Predicate indicating if an array is sorted between start and end indices.
 Translated from Dafny's sorted predicate.
 -/
-def sorted (a : Array Int) (start : Int) (end : Int) : Prop :=
-  a.size > 0 ∧ 
-  0 ≤ start ∧ start ≤ end ∧ end ≤ a.size ∧
-  ∀ j k, start ≤ j ∧ j < k ∧ k < end → a.get ⟨j⟩ ≤ a.get ⟨k⟩
+def sorted (a : Array Int) (start : Nat) (end_ : Nat) : Prop :=
+  a.size > 0 ∧
+  0 ≤ start ∧ start ≤ end_ ∧ end_ ≤ a.size ∧
+  ∀ j k, start ≤ j ∧ j < k ∧ k < end_ → a[j]! ≤ a[k]!
 
 /--
 InsertionSort method specification translated from Dafny.

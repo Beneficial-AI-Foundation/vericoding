@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_769_Difference",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_769_Difference",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -28,6 +28,6 @@ def Difference (a : Array Int) (b : Array Int) : Array Int := sorry
 theorem difference_spec (a b diff : Array Int) :
   diff = Difference a b →
   (∀ x, diff.contains x ↔ (a.contains x ∧ ¬b.contains x)) ∧
-  (∀ i j, 0 ≤ i → i < j → j < diff.size → diff.get ⟨i⟩ ≠ diff.get ⟨j⟩) := sorry
+  (∀ i j, 0 ≤ i → i < j → j < diff.size → diff[i]! ≠ diff[j]!) := sorry
 
 end DafnyBenchmarks

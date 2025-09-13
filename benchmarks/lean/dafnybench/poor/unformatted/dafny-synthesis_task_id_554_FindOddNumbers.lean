@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_554_FindOddNumbers",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_554_FindOddNumbers",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -39,8 +39,8 @@ Specification for FindOddNumbers:
 -/
 theorem FindOddNumbers_spec (arr : Array Int) :
   let result := FindOddNumbers arr
-  (∀ i, 0 ≤ i ∧ i < result.size → IsOdd (result.get ⟨i⟩) ∧ (∃ j, 0 ≤ j ∧ j < arr.size ∧ result.get ⟨i⟩ = arr.get ⟨j⟩)) ∧
-  (∀ i, 0 ≤ i ∧ i < arr.size ∧ IsOdd (arr.get ⟨i⟩) → (∃ j, 0 ≤ j ∧ j < result.size ∧ arr.get ⟨i⟩ = result.get ⟨j⟩)) :=
+  (∀ i, 0 ≤ i ∧ i < result.size → IsOdd (result[i]!) ∧ (∃ j, 0 ≤ j ∧ j < arr.size ∧ result[i]! = arr[j]!)) ∧
+  (∀ i, 0 ≤ i ∧ i < arr.size ∧ IsOdd (arr[i]!) → (∃ j, 0 ≤ j ∧ j < result.size ∧ arr[i]! = result[j]!)) :=
   sorry
 
 end DafnyBenchmarks

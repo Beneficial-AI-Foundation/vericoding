@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_412_RemoveOddNumbers",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_412_RemoveOddNumbers",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -19,7 +19,7 @@ namespace DafnyBenchmarks
 /--
 Predicate indicating if a number is even
 -/
-def IsEven (n : Int) : Bool :=
+def IsEven (n : Int) : Prop :=
   n % 2 = 0
 
 /--
@@ -39,8 +39,8 @@ Specification for RemoveOddNumbers:
 -/
 theorem RemoveOddNumbers_spec (arr : Array Int) :
   let result := RemoveOddNumbers arr
-  (∀ i, 0 ≤ i ∧ i < result.size → IsEven (result.get ⟨i⟩) ∧ (∃ j, 0 ≤ j ∧ j < arr.size ∧ result.get ⟨i⟩ = arr.get ⟨j⟩)) ∧
-  (∀ i, 0 ≤ i ∧ i < arr.size ∧ IsEven (arr.get ⟨i⟩) → (∃ j, 0 ≤ j ∧ j < result.size ∧ arr.get ⟨i⟩ = result.get ⟨j⟩)) :=
+  (∀ i, 0 ≤ i ∧ i < result.size → IsEven (result[i]!) ∧ (∃ j, 0 ≤ j ∧ j < arr.size ∧ result[i]! = arr[j]!)) ∧
+  (∀ i, 0 ≤ i ∧ i < arr.size ∧ IsEven (arr[i]!) → (∃ j, 0 ≤ j ∧ j < result.size ∧ arr[i]! = result[j]!)) :=
   sorry
 
 end DafnyBenchmarks

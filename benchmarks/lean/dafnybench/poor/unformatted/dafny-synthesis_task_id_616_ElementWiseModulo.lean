@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_616_ElementWiseModulo",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_616_ElementWiseModulo",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -21,7 +21,7 @@ ElementWiseModulo takes two arrays of integers and returns a new array containin
 the element-wise modulo operation between corresponding elements.
 
 @param a First input array
-@param b Second input array 
+@param b Second input array
 @return result Array containing element-wise modulo results
 -/
 def ElementWiseModulo (a b : Array Int) : Array Int := sorry
@@ -36,9 +36,9 @@ Specification for ElementWiseModulo:
 -/
 theorem ElementWiseModulo_spec (a b : Array Int) :
   (a.size = b.size) ∧
-  (∀ i, 0 ≤ i ∧ i < b.size → b.get ⟨i⟩ ≠ 0) →
+  (∀ i, 0 ≤ i ∧ i < b.size → b[i]! ≠ 0) →
   let result := ElementWiseModulo a b
   (result.size = a.size) ∧
-  (∀ i, 0 ≤ i ∧ i < result.size → result.get ⟨i⟩ = a.get ⟨i⟩ % b.get ⟨i⟩) := sorry
+  (∀ i, 0 ≤ i ∧ i < result.size → result[i]! = a[i]! % b[i]!) := sorry
 
 end DafnyBenchmarks

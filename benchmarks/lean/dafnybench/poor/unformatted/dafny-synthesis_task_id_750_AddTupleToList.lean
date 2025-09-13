@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_750_AddTupleToList",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_750_AddTupleToList",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -33,8 +33,8 @@ Specification for AddTupleToList ensuring:
 -/
 theorem AddTupleToList_spec (l : Array (Int × Int)) (t : Int × Int) :
   let r := AddTupleToList l t
-  r.size = l.size + 1 ∧ 
-  r.get (r.size - 1) = t ∧
-  ∀ i, 0 ≤ i ∧ i < l.size → r.get ⟨i⟩ = l.get ⟨i⟩ := sorry
+  r.size = l.size + 1 ∧
+  r[r.size - 1]! = t ∧
+  ∀ i, 0 ≤ i ∧ i < l.size → r[i]! = l[i]! := sorry
 
 end DafnyBenchmarks

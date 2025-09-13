@@ -5,21 +5,21 @@ open Std.Do
 /-!
 {
   "name": "Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_06_Hoangkim_ex_06_hoangkim_gcdI",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_06_Hoangkim_ex_06_hoangkim_gcdI",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
 namespace DafnyBenchmarks
 
 /-- Translation of Dafny ghost function gcd -/
-def gcd (x y : Int) : Int :=
+partial def gcd (x y : Int) : Int :=
   if x = y then x
-  else if x > y then gcd (x - y) y 
+  else if x > y then gcd (x - y) y
   else gcd x (y - x)
 
 /-- Specification for gcd function -/
@@ -27,7 +27,7 @@ theorem gcd_spec (x y : Int) :
   x > 0 ∧ y > 0 → gcd x y > 0 := sorry
 
 /-- Translation of Dafny ghost function gcd' -/
-def gcd' (x y : Int) : Int :=
+partial def gcd' (x y : Int) : Int :=
   if x = y then x
   else if x > y then gcd' (x - y) y
   else gcd y x

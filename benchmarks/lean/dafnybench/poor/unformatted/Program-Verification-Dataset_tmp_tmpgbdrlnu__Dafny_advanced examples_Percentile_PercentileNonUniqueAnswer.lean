@@ -10,27 +10,27 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
 namespace DafnyBenchmarks
 
 /-- Sum of elements of array A from indices 0 to end (inclusive) -/
-def SumUpto (A : Array Float) (end : Int) : Float :=
-  if end == -1 then
+partial def SumUpto (A : Array Float) (end_ : Int) : Float :=
+  if end_ == -1 then
     0.0
   else
-    A.get ⟨end⟩ + SumUpto A (end - 1)
+    A[end_.toNat]! + SumUpto A (end_ - 1)
 
 /-- Sum of all elements in array A -/
 def Sum (A : Array Float) : Float :=
   SumUpto A (A.size - 1)
 
 /-- Specification for PercentileNonUniqueAnswer method -/
-theorem percentile_non_unique_answer_spec 
+theorem percentile_non_unique_answer_spec
   (p : Float) (A : Array Float) (total : Float) (i1 i2 : Int) :
-  (∀ i, 0 ≤ i ∧ i < A.size → A.get ⟨i⟩ > 0.0) ∧
+  (∀ i, 0 ≤ i ∧ i < A.size → A[i]! > 0.0) ∧
   0.0 ≤ p ∧ p ≤ 100.0 ∧
   total == Sum A ∧
   total > 0.0 ∧

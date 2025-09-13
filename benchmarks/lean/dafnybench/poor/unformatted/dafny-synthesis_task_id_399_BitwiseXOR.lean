@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_399_BitwiseXOR",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_399_BitwiseXOR",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -36,7 +36,7 @@ theorem BitwiseXOR_spec (a b : Array UInt32) :
   a.size = b.size →
   let result := BitwiseXOR a b
   result.size = a.size ∧
-  ∀ i, 0 ≤ i ∧ i < result.size → 
-    result.get ⟨i⟩ = (a.get ⟨i⟩).xor (b.get ⟨i⟩) := sorry
+  ∀ i, 0 ≤ i ∧ i < result.size →
+    result[i]! = (a[i]!).xor (b[i]!) := sorry
 
 end DafnyBenchmarks

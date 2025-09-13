@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_799_RotateLeftBits",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_799_RotateLeftBits",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,6 +32,6 @@ Specification for RotateLeftBits:
 -/
 theorem RotateLeftBits_spec (n : UInt32) (d : Int) :
   0 ≤ d ∧ d < 32 →
-  RotateLeftBits n d = ((n <<< d) ||| (n >>> (32 - d))) := sorry
+  RotateLeftBits n d = ((UInt32.shiftLeft n (UInt32.ofNat d.toNat)) ||| (UInt32.shiftRight n (UInt32.ofNat (32 - d).toNat))) := sorry
 
 end DafnyBenchmarks

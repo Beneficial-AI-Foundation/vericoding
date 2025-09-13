@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_145_MaxDifference",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_145_MaxDifference",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -30,7 +30,7 @@ Specification for MaxDifference:
 -/
 theorem MaxDifference_spec (a : Array Int) (diff : Int) :
   a.size > 1 →
-  (∀ i j, 0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < a.size → 
-    (a.get ⟨i⟩) - (a.get ⟨j⟩) ≤ diff) := sorry
+  (∀ i j, 0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < a.size →
+    (a[i]!) - (a[j]!) ≤ diff) := sorry
 
 end DafnyBenchmarks

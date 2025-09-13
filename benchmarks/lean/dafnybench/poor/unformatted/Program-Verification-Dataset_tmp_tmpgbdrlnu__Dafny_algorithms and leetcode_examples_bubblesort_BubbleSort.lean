@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -22,12 +22,7 @@ Computes n choose 2 (n * (n-1) / 2)
 def NChoose2 (n : Int) : Int :=
   n * (n - 1) / 2
 
-/--
-Computes sum of all integers in range [lo, hi)
--/
-def SumRange (lo hi : Int) : Int :=
-  if lo ≥ hi then 0
-  else SumRange lo (hi - 1) + (hi - 1)
+
 
 /--
 BubbleSort implementation with complexity specification

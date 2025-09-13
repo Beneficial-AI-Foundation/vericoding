@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_790_IsEvenAtIndexEven",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_790_IsEvenAtIndexEven",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -35,6 +35,6 @@ Specification for IsEvenAtIndexEven ensuring that the result is true if and only
 all elements at even indices in the list are even.
 -/
 theorem IsEvenAtIndexEven_spec (lst : Array Int) :
-  IsEvenAtIndexEven lst = (∀ i, 0 ≤ i ∧ i < lst.size → (IsEven i → IsEven (lst.get ⟨i⟩))) := sorry
+  IsEvenAtIndexEven lst = (∀ i, 0 ≤ i ∧ i < lst.size → (IsEven i → IsEven (lst[i]!))) := sorry
 
 end DafnyBenchmarks

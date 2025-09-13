@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -22,7 +22,7 @@ If the list is empty, returns 1.
 -/
 def SetProduct (s : List Int) : Int :=
   match s with
-  |  => 1
+  | [] => 1
   | x::xs => x * SetProduct xs
 
 /--

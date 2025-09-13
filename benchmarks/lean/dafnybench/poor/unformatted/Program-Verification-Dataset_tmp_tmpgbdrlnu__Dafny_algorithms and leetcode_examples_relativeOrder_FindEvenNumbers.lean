@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -33,7 +33,7 @@ theorem FindEvenNumbers_spec (arr : Array Int) (evenNumbers : Array Int) :
   (∀ x, (arr.contains x ∧ IsEven x) → evenNumbers.contains x) ∧
   (∀ x, ¬arr.contains x → ¬evenNumbers.contains x) ∧
   (∀ k l, 0 ≤ k ∧ k < l ∧ l < evenNumbers.size →
-    ∃ n m, 0 ≤ n ∧ n < m ∧ m < arr.size ∧ 
-    evenNumbers.get ⟨k⟩ = arr.get ⟨n⟩ ∧ evenNumbers.get ⟨l⟩ = arr.get ⟨m⟩) := sorry
+    ∃ n m, 0 ≤ n ∧ n < m ∧ m < arr.size ∧
+    evenNumbers[k]! = arr[n]! ∧ evenNumbers[l]! = arr[m]!) := sorry
 
 end DafnyBenchmarks

@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -36,6 +36,6 @@ theorem SplitAndAppend_spec (l : Array Int) (n : Int) :
   n ≥ 0 ∧ n < l.size →
   let r := SplitAndAppend l n
   r.size = l.size ∧
-  ∀ i, 0 ≤ i ∧ i < l.size → r.get ⟨i⟩ = l.get ((i + n) % l.size) := sorry
+  ∀ i, 0 ≤ i ∧ i < l.size → r[i]! = l[(((i + n) % l.size).toNat)]! := sorry
 
 end DafnyBenchmarks

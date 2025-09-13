@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_776_CountVowelNeighbors",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_776_CountVowelNeighbors",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -20,7 +20,7 @@ namespace DafnyBenchmarks
 Predicate that checks if a character is a vowel.
 -/
 def IsVowel (c : Char) : Bool :=
-  c ∈ 
+  c ∈ ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
 
 /--
 Counts the number of characters in a string that have vowels as neighbors.
@@ -37,10 +37,10 @@ Specification for CountVowelNeighbors:
 theorem CountVowelNeighbors_spec (s : String) :
   let count := CountVowelNeighbors s
   count ≥ 0 ∧
-  count = (s.toList.zipWithIndex.filter (fun (c, i) => 
-    i ≥ 1 ∧ i < s.length - 1 ∧ 
-    IsVowel (s.get (i-1)) ∧ 
-    IsVowel (s.get (i+1)))).length
+  count = ((List.range s.length).filter (fun i =>
+    i ≥ 1 ∧ i < s.length - 1 ∧
+    IsVowel (s.toList[i-1]!) ∧
+    IsVowel (s.toList[i+1]!))).length
   := sorry
 
 end DafnyBenchmarks

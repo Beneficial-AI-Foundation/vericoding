@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_599_SumAndAverage",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_599_SumAndAverage",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -37,6 +37,6 @@ theorem SumAndAverage_spec (n : Int) :
   n > 0 →
   let (sum, average) := SumAndAverage n
   sum = n * (n + 1) / 2 ∧
-  average = (sum : Float) / (n : Float) := sorry
+  average = Float.ofInt sum / Float.ofInt n  := sorry
 
 end DafnyBenchmarks

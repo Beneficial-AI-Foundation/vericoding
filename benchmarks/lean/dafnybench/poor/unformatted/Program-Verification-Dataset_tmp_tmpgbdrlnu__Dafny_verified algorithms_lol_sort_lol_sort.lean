@@ -10,14 +10,14 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
 namespace DafnyBenchmarks
 
 /-- Predicate defining if two arrays are valid permutations of each other -/
-def valid_permut (a b : Array Int) : Bool :=
+def valid_permut (a b : Array Int) : Prop :=
   a.size = b.size ∧ sorry -- Multiset equality not directly translatable
 
 /-- Swaps two elements in an array -/
@@ -31,8 +31,8 @@ theorem swap_spec (a : Array Int) (i j : Int) :
   result.size = a.size ∧ valid_permut result a := sorry
 
 /-- Predicate defining if an array is sorted in increasing order -/
-def sorted (a : Array Int) : Bool :=
-  ∀ i j, 0 ≤ i ∧ i ≤ j ∧ j < a.size → a.get ⟨i⟩ ≤ a.get ⟨j⟩
+def sorted (a : Array Int) : Prop :=
+  ∀ i j, 0 ≤ i ∧ i ≤ j ∧ j < a.size → a[i]! ≤ a[j]!
 
 /-- The lol sort algorithm implementation -/
 def lol_sort (a : Array Int) : Array Int :=

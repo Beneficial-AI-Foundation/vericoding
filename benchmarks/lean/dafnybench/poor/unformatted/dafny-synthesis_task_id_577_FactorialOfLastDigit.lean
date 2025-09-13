@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_577_FactorialOfLastDigit",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_577_FactorialOfLastDigit",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -20,7 +20,7 @@ namespace DafnyBenchmarks
 Computes the factorial of a non-negative integer.
 Translated from Dafny's Factorial function.
 -/
-def Factorial (n : Int) : Int :=
+partial def Factorial (n : Int) : Int :=
   if n == 0 then 1
   else n * Factorial (n-1)
 

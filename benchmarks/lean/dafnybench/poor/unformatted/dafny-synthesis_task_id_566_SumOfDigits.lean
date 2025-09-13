@@ -5,21 +5,21 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_566_SumOfDigits",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_566_SumOfDigits",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
 namespace DafnyBenchmarks
 
 /-- Recursive function that returns sequence of intermediate values when dividing by 10 -/
-def IntValues (n : Int) : Array Int :=
-  if n = 0 then #
-  else # ++ IntValues (n/10)
+partial def IntValues (n : Int) : Array Int :=
+  if n = 0 then #[]
+  else #[n] ++ IntValues (n/10)
 
 theorem IntValues_spec (n : Int) :
   n ≥ 0 →
@@ -36,14 +36,14 @@ theorem Power10_spec (n : Nat) :
   (n > 0 → Power10 n % 10 = 0) := sorry
 
 /-- Converts a number to sequence of its digits -/
-def NumberToSeq (number : Int) : Array Int :=
-  if number = 0 then #
-  else # ++ NumberToSeq (number/10)
+partial def NumberToSeq (number : Int) : Array Int :=
+  if number = 0 then #[]
+  else #[number % 10] ++ NumberToSeq (number/10)
 
 /-- Sums elements in a sequence -/
-def Sum (digits : Array Int) : Int :=
+partial def Sum (digits : Array Int) : Int :=
   if digits.size = 0 then 0
-  else digits.get ⟨0⟩ + Sum (digits.extract 1 digits.size)
+  else digits[0]! + Sum (digits.extract 1 digits.size)
 
 /-- Counts number of digits in a natural number -/
 def NumberOfDigits (n : Nat) : Nat :=

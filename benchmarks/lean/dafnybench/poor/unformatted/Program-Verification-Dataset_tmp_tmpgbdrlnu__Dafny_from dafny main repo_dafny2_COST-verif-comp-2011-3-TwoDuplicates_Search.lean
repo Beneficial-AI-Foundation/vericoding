@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -19,13 +19,13 @@ namespace DafnyBenchmarks
 /--
 Checks if a value appears twice in an array up to index k
 -/
-def IsPrefixDuplicate (a : Array Int) (k : Int) (p : Int) : Bool :=
-  ∃ i j, 0 ≤ i ∧ i < j ∧ j < k ∧ a.get ⟨i⟩ = p ∧ a.get ⟨j⟩ = p
+def IsPrefixDuplicate (a : Array Int) (k : Int) (p : Int) : Prop :=
+  ∃ i j, 0 ≤ i ∧ i < j ∧ j < k ∧ a[i.toNat]! = p ∧ a[j.toNat]! = p
 
 /--
 Checks if a value appears twice in the full array
 -/
-def IsDuplicate (a : Array Int) (p : Int) : Bool :=
+def IsDuplicate (a : Array Int) (p : Int) : Prop :=
   IsPrefixDuplicate a a.size p
 
 /--
@@ -45,7 +45,7 @@ Specification for Search method
 theorem Search_spec (a : Array Int) :
   (4 ≤ a.size) →
   (∃ p q, p ≠ q ∧ IsDuplicate a p ∧ IsDuplicate a q) →
-  (∀ i, 0 ≤ i ∧ i < a.size → 0 ≤ a.get ⟨i⟩ ∧ a.get ⟨i⟩ < a.size - 2) →
+  (∀ i, 0 ≤ i ∧ i < a.size → 0 ≤ a[i]! ∧ a[i]! < a.size - 2) →
   let (p, q) := Search a
   p ≠ q ∧ IsDuplicate a p ∧ IsDuplicate a q := sorry
 

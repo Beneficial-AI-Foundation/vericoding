@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_587_ArrayToSeq",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_587_ArrayToSeq",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,7 +32,7 @@ Specification for ArrayToSeq:
 -/
 theorem ArrayToSeq_spec (a : Array Int) :
   let s := ArrayToSeq a
-  s.size = a.size ∧ 
-  ∀ i, 0 ≤ i ∧ i < a.size → s.get ⟨i⟩ = a.get ⟨i⟩ := sorry
+  s.size = a.size ∧
+  ∀ i, 0 ≤ i ∧ i < a.size → s[i]! = a[i]! := sorry
 
 end DafnyBenchmarks

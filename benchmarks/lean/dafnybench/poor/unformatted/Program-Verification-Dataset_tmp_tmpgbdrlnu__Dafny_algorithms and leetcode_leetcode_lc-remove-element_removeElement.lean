@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -30,8 +30,8 @@ def removeElement (nums : Array Int) (val : Int) : Int := sorry
 Specification for removeElement function.
 Ensures that no element equal to val exists in the array up to index i.
 -/
-theorem removeElement_spec (nums : Array Int) (val : Int) (i : Int) :
+theorem removeElement_spec (nums : Array Int) (val : Int) (i : Nat) :
   i < nums.size →
-  (∀ k, 0 < k ∧ k < i → nums.get ⟨k⟩ ≠ val) := sorry
+  (∀ k, 0 < k ∧ k < i → nums[k]! ≠ val) := sorry
 
 end DafnyBenchmarks

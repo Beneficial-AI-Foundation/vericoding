@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic examples_BubbleSort_bubbleSort",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic examples_BubbleSort_bubbleSort",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -19,14 +19,14 @@ namespace DafnyBenchmarks
 /--
 Predicate indicating if an array is sorted between given indices.
 -/
-def sorted (a : Array Int) (from : Int) (to : Int) : Bool :=
-  ∀ u v, from ≤ u ∧ u < v ∧ v < to → a.get ⟨u⟩ ≤ a.get ⟨v⟩
+def sorted (a : Array Int) (from_ : Nat) (to : Nat) : Prop :=
+  ∀ u v, from_ ≤ u ∧ u < v ∧ v < to → a[u]! ≤ a[v]!
 
 /--
 Predicate indicating if elements before pivot are less than elements after.
 -/
-def pivot (a : Array Int) (to : Int) (pvt : Int) : Bool :=
-  ∀ u v, 0 ≤ u ∧ u < pvt ∧ pvt < v ∧ v < to → a.get ⟨u⟩ ≤ a.get ⟨v⟩
+def pivot (a : Array Int) (to : Nat) (pvt : Nat) : Prop :=
+  ∀ u v, 0 ≤ u ∧ u < pvt ∧ pvt < v ∧ v < to → a[u]! ≤ a[v]!
 
 /--
 Bubble sort implementation with specification.

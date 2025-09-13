@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_594_FirstEvenOddDifference",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_594_FirstEvenOddDifference",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -39,13 +39,13 @@ def FirstEvenOddDifference (a : Array Int) : Int :=
 /-- Specification for FirstEvenOddDifference -/
 theorem FirstEvenOddDifference_spec (a : Array Int) :
   a.size ≥ 2 →
-  (∃ i, 0 ≤ i ∧ i < a.size ∧ IsEven (a.get ⟨i⟩)) →
-  (∃ i, 0 ≤ i ∧ i < a.size ∧ IsOdd (a.get ⟨i⟩)) →
+  (∃ i, 0 ≤ i ∧ i < a.size ∧ IsEven (a[i]!)) →
+  (∃ i, 0 ≤ i ∧ i < a.size ∧ IsOdd (a[i]!)) →
   ∃ i j, 0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < a.size ∧
-    IsEven (a.get ⟨i⟩) ∧ IsOdd (a.get ⟨j⟩) ∧
-    FirstEvenOddDifference a = a.get ⟨i⟩ - a.get ⟨j⟩ ∧
-    (∀ k, 0 ≤ k ∧ k < i → IsOdd (a.get ⟨k⟩)) ∧
-    (∀ k, 0 ≤ k ∧ k < j → IsEven (a.get ⟨k⟩)) :=
+    IsEven (a[i]!) ∧ IsOdd (a[j]!) ∧
+    FirstEvenOddDifference a = a[i]! - a[j]! ∧
+    (∀ k, 0 ≤ k ∧ k < i → IsOdd (a[k]!)) ∧
+    (∀ k, 0 ≤ k ∧ k < j → IsEven (a[k]!)) :=
   sorry
 
 end DafnyBenchmarks

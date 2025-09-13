@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_95_SmallestListLength",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_95_SmallestListLength",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -33,8 +33,8 @@ Specification for SmallestListLength:
 -/
 theorem SmallestListLength_spec (s : Array (Array Int)) :
   s.size > 0 →
-  (∀ i, 0 ≤ i ∧ i < s.size → SmallestListLength s ≤ (s.get ⟨i⟩).size) ∧
-  (∃ i, 0 ≤ i ∧ i < s.size ∧ SmallestListLength s = (s.get ⟨i⟩).size) :=
+  (∀ i, 0 ≤ i ∧ i < s.size → SmallestListLength s ≤ (s[i]!).size) ∧
+  (∃ i, 0 ≤ i ∧ i < s.size ∧ SmallestListLength s = (s[i]!).size) :=
   sorry
 
 end DafnyBenchmarks

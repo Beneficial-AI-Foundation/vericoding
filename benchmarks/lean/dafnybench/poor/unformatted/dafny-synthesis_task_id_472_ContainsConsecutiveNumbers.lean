@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_472_ContainsConsecutiveNumbers",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_472_ContainsConsecutiveNumbers",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,7 +32,7 @@ there exist consecutive elements that differ by 1.
 -/
 theorem ContainsConsecutiveNumbers_spec (a : Array Int) :
   a.size > 0 →
-  ContainsConsecutiveNumbers a = true ↔ 
-    (∃ i, 0 ≤ i ∧ i < a.size - 1 ∧ a.get ⟨i⟩ + 1 = a.get (i + 1)) := sorry
+  ContainsConsecutiveNumbers a = true ↔
+    (∃ i, 0 ≤ i ∧ i < a.size - 1 ∧ a[i]! + 1 = a[i + 1]!) := sorry
 
 end DafnyBenchmarks

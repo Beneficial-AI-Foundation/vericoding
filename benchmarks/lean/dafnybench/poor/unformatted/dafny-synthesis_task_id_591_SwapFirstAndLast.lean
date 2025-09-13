@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_591_SwapFirstAndLast",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_591_SwapFirstAndLast",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -33,8 +33,8 @@ theorem SwapFirstAndLast_spec (a : Array Int) :
   a.size > 0 →
   let result := SwapFirstAndLast a
   result.size = a.size ∧
-  result.get ⟨0⟩ = a.get (a.size - 1) ∧ 
-  result.get (result.size - 1) = a.get ⟨0⟩ ∧
-  (∀ k, 1 ≤ k ∧ k < a.size - 1 → result.get ⟨k⟩ = a.get ⟨k⟩) := sorry
+  result[0]! = a[a.size - 1]! ∧
+  result[result.size - 1]! = a[0]! ∧
+  (∀ k, 1 ≤ k ∧ k < a.size - 1 → result[k]! = a[k]!) := sorry
 
 end DafnyBenchmarks

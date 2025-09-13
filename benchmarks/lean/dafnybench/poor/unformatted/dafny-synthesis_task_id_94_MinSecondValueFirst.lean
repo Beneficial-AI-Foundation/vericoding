@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_94_MinSecondValueFirst",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_94_MinSecondValueFirst",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,9 +32,9 @@ Specification for MinSecondValueFirst:
 -/
 theorem MinSecondValueFirst_spec (s : Array (Array Int)) :
   s.size > 0 ∧
-  (∀ i, 0 ≤ i ∧ i < s.size → s.get ⟨i⟩ |>.size ≥ 2) →
-  ∃ i, 0 ≤ i ∧ i < s.size ∧ 
-    MinSecondValueFirst s = (s.get ⟨i⟩).get 0 ∧
-    (∀ j, 0 ≤ j ∧ j < s.size → (s.get ⟨i⟩).get 1 ≤ (s.get ⟨j⟩).get 1) := sorry
+    (∀ i, 0 ≤ i ∧ i < s.size → s[i]!.size ≥ 2) →
+  ∃ i, 0 ≤ i ∧ i < s.size ∧
+    MinSecondValueFirst s = (s[i]!)[0]! ∧
+    (∀ j, 0 ≤ j ∧ j < s.size → (s[i]!)[1]! ≤ (s[j]!)[1]!) := sorry
 
 end DafnyBenchmarks

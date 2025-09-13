@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -45,6 +45,6 @@ theorem PowerOfListElements_spec (l : Array Int) (n : Int) :
   n ≥ 0 →
   let result := PowerOfListElements l n
   result.size = l.size ∧
-  ∀ i, 0 ≤ i ∧ i < l.size → result! = Power l! n := sorry
+  ∀ i, 0 ≤ i ∧ i < l.size → result[i]! = Power l[i]! n := sorry
 
 end DafnyBenchmarks

@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_567_IsSorted",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_567_IsSorted",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -34,7 +34,7 @@ def IsSorted (a : Array Int) : Bool := sorry
 /-- Specification for IsSorted -/
 theorem IsSorted_spec (a : Array Int) :
   a.size > 0 →
-  (IsSorted a ↔ (∀ i j, 0 ≤ i ∧ i < j ∧ j < a.size → a.get ⟨i⟩ ≤ a.get ⟨j⟩)) ∧
-  (¬IsSorted a → ∃ i j, 0 ≤ i ∧ i < j ∧ j < a.size ∧ a.get ⟨i⟩ > a.get ⟨j⟩) := sorry
+  (IsSorted a ↔ (∀ i j, 0 ≤ i ∧ i < j ∧ j < a.size → a[i]! ≤ a[j]!)) ∧
+  (¬IsSorted a → ∃ i j, 0 ≤ i ∧ i < j ∧ j < a.size ∧ a[i]! > a[j]!) := sorry
 
 end DafnyBenchmarks

@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -19,14 +19,14 @@ namespace DafnyBenchmarks
 /--
 Predicate indicating if an array is sorted between two indices.
 -/
-def sorted_between (a : Array Int) (from to : Nat) : Bool :=
-  ∀ i j, from ≤ i ∧ i < j ∧ j < to ∧ 0 ≤ i ∧ i < j ∧ j < a.size → 
-    a.get ⟨i⟩ ≤ a.get ⟨j⟩
+def sorted_between (a : Array Int) (from_ : Nat) (to : Nat) : Prop :=
+  ∀ i j, from_ ≤ i ∧ i < j ∧ j < to ∧ 0 ≤ i ∧ i < j ∧ j < a.size →
+    a[i]! ≤ a[j]!
 
 /--
 Predicate indicating if an array is fully sorted.
 -/
-def sorted (a : Array Int) : Bool :=
+def sorted (a : Array Int) : Prop :=
   sorted_between a 0 a.size
 
 /--
@@ -41,7 +41,7 @@ Main specification theorem for bubbleSort.
 theorem bubbleSort_spec (a : Array Int) :
   a.size > 0 →
   let result := bubbleSort a
-  sorted result ∧ 
+  sorted result ∧
   -- Note: Multiset equality check simplified since complex array operations are avoided
   result.size = a.size := sorry
 

@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_430_ParabolaDirectrix",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_430_ParabolaDirectrix",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -25,7 +25,7 @@ Input:
 Output:
   - directrix: Real number representing the directrix value
 -/
-def ParabolaDirectrix (a : Real) (h : Real) (k : Real) : Real :=
+def ParabolaDirectrix (a : Float) (h : Float) (k : Float) : Float :=
   sorry
 
 /--
@@ -33,7 +33,7 @@ Specification for ParabolaDirectrix:
 - Requires a ≠ 0
 - Ensures directrix = k - 1/(4*a)
 -/
-theorem ParabolaDirectrix_spec (a h k : Real) :
+theorem ParabolaDirectrix_spec (a h k : Float) :
   a ≠ 0 →
   ParabolaDirectrix a h k = k - 1/(4*a) := sorry
 

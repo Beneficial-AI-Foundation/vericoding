@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_414_AnyValueExists",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_414_AnyValueExists",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,6 +32,6 @@ Ensures the result is true if and only if there exists an index i in seq1
 such that seq1 is present in seq2.
 -/
 theorem AnyValueExists_spec (seq1 seq2 : Array Int) :
-  AnyValueExists seq1 seq2 ↔ (∃ i, 0 ≤ i ∧ i < seq1.size ∧ seq2.contains (seq1.get ⟨i⟩)) := sorry
+  AnyValueExists seq1 seq2 ↔ (∃ i, 0 ≤ i ∧ i < seq1.size ∧ seq2.contains (seq1[i]!)) := sorry
 
 end DafnyBenchmarks

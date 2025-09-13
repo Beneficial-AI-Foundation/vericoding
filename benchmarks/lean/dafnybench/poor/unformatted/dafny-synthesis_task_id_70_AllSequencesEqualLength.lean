@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_70_AllSequencesEqualLength",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_70_AllSequencesEqualLength",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -29,8 +29,8 @@ Specification for AllSequencesEqualLength:
 All sequences in the input array must have equal length
 -/
 theorem AllSequencesEqualLength_spec (sequences : Array (Array Int)) :
-  AllSequencesEqualLength sequences ↔ 
-  (∀ i j, 0 ≤ i ∧ i < sequences.size ∧ 0 ≤ j ∧ j < sequences.size → 
-    (sequences.get ⟨i⟩).size = (sequences.get ⟨j⟩).size) := sorry
+  AllSequencesEqualLength sequences ↔
+  (∀ i j, 0 ≤ i ∧ i < sequences.size ∧ 0 ≤ j ∧ j < sequences.size →
+    (sequences[i]!).size = (sequences[j]!).size) := sorry
 
 end DafnyBenchmarks

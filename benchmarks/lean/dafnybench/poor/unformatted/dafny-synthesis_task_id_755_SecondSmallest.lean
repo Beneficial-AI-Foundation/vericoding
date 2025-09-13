@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_755_SecondSmallest",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_755_SecondSmallest",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -27,8 +27,8 @@ Specification for MinPair function
 -/
 theorem MinPair_spec (s : Array Int) :
   s.size = 2 →
-  ((s.get ⟨0⟩ ≤ s.get ⟨1⟩) → MinPair s = s.get ⟨0⟩) ∧
-  ((s.get ⟨0⟩ > s.get ⟨1⟩) → MinPair s = s.get ⟨1⟩) := sorry
+    ((s[0]! ≤ s[1]!) → MinPair s = s[0]!) ∧
+  ((s[0]! > s[1]!) → MinPair s = s[1]!) := sorry
 
 /--
 min function that returns the minimum element in a sequence
@@ -41,7 +41,7 @@ Specification for min function
 -/
 theorem min_spec (s : Array Int) :
   s.size ≥ 2 →
-  ∀ i, 0 ≤ i ∧ i < s.size → min s ≤ s.get ⟨i⟩ := sorry
+  ∀ i, 0 ≤ i ∧ i < s.size → min s ≤ s[i]! := sorry
 
 /--
 SecondSmallest method that returns the second smallest element in an array
@@ -54,8 +54,8 @@ Specification for SecondSmallest method
 -/
 theorem SecondSmallest_spec (s : Array Int) (result : Int) :
   s.size ≥ 2 →
-  (∃ i j, 0 ≤ i ∧ i < s.size ∧ 0 ≤ j ∧ j < s.size ∧ i ≠ j ∧ s.get ⟨i⟩ = min s ∧ s.get ⟨j⟩ ≠ s.get ⟨i⟩) →
-  (∃ i j, 0 ≤ i ∧ i < s.size ∧ 0 ≤ j ∧ j < s.size ∧ i ≠ j ∧ s.get ⟨i⟩ = min s ∧ s.get ⟨j⟩ = result) ∧
-  (∀ k, 0 ≤ k ∧ k < s.size ∧ s.get ⟨k⟩ ≠ min s → s.get ⟨k⟩ ≥ result) := sorry
+  (∃ i j, 0 ≤ i ∧ i < s.size ∧ 0 ≤ j ∧ j < s.size ∧ i ≠ j ∧ s[i]! = min s ∧ s[j]! ≠ s[i]!) →
+  (∃ i j, 0 ≤ i ∧ i < s.size ∧ 0 ≤ j ∧ j < s.size ∧ i ≠ j ∧ s[i]! = min s ∧ s[j]! = result) ∧
+  (∀ k, 0 ≤ k ∧ k < s.size ∧ s[k]! ≠ min s → s[k]! ≥ result) := sorry
 
 end DafnyBenchmarks

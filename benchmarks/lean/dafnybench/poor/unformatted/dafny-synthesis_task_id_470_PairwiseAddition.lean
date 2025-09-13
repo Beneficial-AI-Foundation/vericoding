@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_470_PairwiseAddition",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_470_PairwiseAddition",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -36,6 +36,6 @@ theorem PairwiseAddition_spec (a : Array Int) :
   let result := PairwiseAddition a
   result.size = a.size / 2 ∧
   ∀ i, 0 ≤ i ∧ i < result.size →
-    result.get ⟨i⟩ = a.get (2*i) + a.get (2*i + 1) := sorry
+    result[i]! = a[2*i]! + a[2*i + 1]! := sorry
 
 end DafnyBenchmarks

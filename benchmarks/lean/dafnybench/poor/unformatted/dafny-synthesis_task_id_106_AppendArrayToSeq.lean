@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_106_AppendArrayToSeq",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_106_AppendArrayToSeq",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -35,7 +35,7 @@ Specification for AppendArrayToSeq:
 theorem AppendArrayToSeq_spec (s : Array Int) (a : Array Int) :
   let r := AppendArrayToSeq s a
   r.size = s.size + a.size ∧
-  (∀ i, 0 ≤ i ∧ i < s.size → r.get ⟨i⟩ = s.get ⟨i⟩) ∧
-  (∀ i, 0 ≤ i ∧ i < a.size → r.get (s.size + i) = a.get ⟨i⟩) := sorry
+  (∀ i, 0 ≤ i ∧ i < s.size → r[i]! = s[i]!) ∧
+  (∀ i, 0 ≤ i ∧ i < a.size → r[s.size + i]! = a[i]!) := sorry
 
 end DafnyBenchmarks

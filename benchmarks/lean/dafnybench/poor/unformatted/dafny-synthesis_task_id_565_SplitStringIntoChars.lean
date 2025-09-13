@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_565_SplitStringIntoChars",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_565_SplitStringIntoChars",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,6 +32,6 @@ Specification for SplitStringIntoChars:
 theorem SplitStringIntoChars_spec (s : String) :
   let v := SplitStringIntoChars s
   v.size = s.length ∧
-  ∀ i, 0 ≤ i ∧ i < s.length → v.get ⟨i⟩ = s := sorry
+  ∀ i, 0 ≤ i ∧ i < s.length → v[i]! = s.get ⟨i⟩ := sorry
 
 end DafnyBenchmarks

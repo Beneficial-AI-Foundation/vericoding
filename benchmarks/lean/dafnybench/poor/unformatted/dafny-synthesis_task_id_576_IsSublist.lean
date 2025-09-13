@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_576_IsSublist",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_576_IsSublist",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,8 +32,8 @@ Ensures that the result is true if and only if there exists a valid index i
 where sub matches a slice of main starting at index i.
 -/
 theorem IsSublist_spec (sub main : Array Int) :
-  ∃ i, 0 ≤ i ∧ i ≤ main.size - sub.size ∧ 
-  (∀ j, 0 ≤ j ∧ j < sub.size → sub.get ⟨j⟩ = main.get (i + j)) →
+  ∃ i, 0 ≤ i ∧ i ≤ main.size - sub.size ∧
+  (∀ j, 0 ≤ j ∧ j < sub.size → sub[j]! = main[i + j]!) →
   IsSublist sub main = true := sorry
 
 end DafnyBenchmarks

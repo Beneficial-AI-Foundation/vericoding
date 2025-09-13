@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_304_ElementAtIndexAfterRotation",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_304_ElementAtIndexAfterRotation",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -24,7 +24,7 @@ Finds the element at a given index after rotating an array by n positions.
 @param index The index to find the element at
 @return The element at the rotated position
 -/
-def ElementAtIndexAfterRotation (l : Array Int) (n : Int) (index : Int) : Int :=
+def ElementAtIndexAfterRotation (l : Array Int) (n : Nat) (index : Nat) : Int :=
   sorry
 
 /--
@@ -33,11 +33,11 @@ Specification for ElementAtIndexAfterRotation:
 - Requires index is within bounds of array
 - Ensures returned element is at correct rotated position
 -/
-theorem ElementAtIndexAfterRotation_spec 
-  (l : Array Int) (n : Int) (index : Int) :
+theorem ElementAtIndexAfterRotation_spec
+  (l : Array Int) (n : Nat) (index : Nat) :
   n ≥ 0 →
   0 ≤ index →
   index < l.size →
-  ElementAtIndexAfterRotation l n index = l.get ((index - n + l.size) % l.size) := sorry
+  ElementAtIndexAfterRotation l n index = l[((index - n + l.size) % l.size)]! := sorry
 
 end DafnyBenchmarks

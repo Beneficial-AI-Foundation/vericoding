@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_ReverseString_yarra",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_ReverseString_yarra",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -21,9 +21,9 @@ Predicate specifying that one array is the reverse of another array.
 Both arrays must be non-null and of equal length.
 -/
 def reversed (arr : Array Char) (outarr : Array Char) : Prop :=
-  arr.size = outarr.size ∧ 
-  ∀ k, 0 ≤ k ∧ k ≤ arr.size - 1 → 
-    outarr.get ⟨k⟩ = arr.get (arr.size - 1 - k)
+  arr.size = outarr.size ∧
+  ∀ k, 0 ≤ k ∧ k ≤ arr.size - 1 →
+    outarr[k]! = arr[arr.size - 1 - k]!
 
 /--
 Method that returns a reversed copy of the input character array.

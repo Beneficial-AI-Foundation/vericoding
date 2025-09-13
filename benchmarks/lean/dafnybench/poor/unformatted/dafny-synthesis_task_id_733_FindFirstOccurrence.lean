@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_733_FindFirstOccurrence",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_733_FindFirstOccurrence",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -35,11 +35,11 @@ Ensures:
 def FindFirstOccurrence (arr : Array Int) (target : Int) : Int := sorry
 
 /-- Specification for FindFirstOccurrence -/
-theorem FindFirstOccurrence_spec 
+theorem FindFirstOccurrence_spec
   (arr : Array Int) (target : Int) :
-  (∀ i j, 0 ≤ i ∧ i < j ∧ j < arr.size → arr.get ⟨i⟩ ≤ arr.get ⟨j⟩) →
+  (∀ i j, 0 ≤ i ∧ i < j ∧ j < arr.size → arr[i]! ≤ arr[j]!) →
   let result := FindFirstOccurrence arr target
-  (0 ≤ result ∧ result < arr.size → arr.get ⟨result⟩ = target) ∧
-  (result = -1 → ∀ i, 0 ≤ i ∧ i < arr.size → arr.get ⟨i⟩ ≠ target) := sorry
+  (0 ≤ result ∧ result < arr.size → arr[result.toNat]! = target) ∧
+  (result = -1 → ∀ i, 0 ≤ i ∧ i < arr.size → arr[i]! ≠ target) := sorry
 
 end DafnyBenchmarks

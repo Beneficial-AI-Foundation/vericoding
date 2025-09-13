@@ -10,18 +10,12 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
 namespace DafnyBenchmarks
 
-/--
-Recursive factorial function translated from Dafny.
-Takes a natural number n and returns n!
--/
-def Factorial (n : Nat) : Nat :=
-  if n == 0 then 1 else n * Factorial (n-1)
 
 /--
 FIND algorithm from Hoare's paper, translated from Dafny.
@@ -43,6 +37,6 @@ theorem FIND_spec (A : Array Int) (N : Int) (f : Int) :
   0 ≤ f →
   f < N →
   ∀ p q : Int, 0 ≤ p → p ≤ f → f ≤ q → q < N →
-    (FIND A N f).get p ≤ (FIND A N f).get q := sorry
+    (FIND A N f)[p.toNat]! ≤ (FIND A N f)[q.toNat]! := sorry
 
 end DafnyBenchmarks

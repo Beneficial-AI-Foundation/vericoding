@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_804_IsProductEven",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_804_IsProductEven",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -25,6 +25,6 @@ def IsProductEven (a : Array Int) : Bool := sorry
 
 /-- Specification for IsProductEven -/
 theorem IsProductEven_spec (a : Array Int) :
-  IsProductEven a ↔ ∃ i, 0 ≤ i ∧ i < a.size ∧ IsEven (a.get ⟨i⟩) := sorry
+  IsProductEven a ↔ ∃ i, 0 ≤ i ∧ i < a.size ∧ IsEven (a[i]!) := sorry
 
 end DafnyBenchmarks

@@ -10,32 +10,32 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
 namespace DafnyBenchmarks
 
 /--
-Converts a string to a multiset of characters.
+Converts a string to a array of characters.
 -/
-def toMultiset (s : String) : Multiset Char := sorry
+def toMultiset (s : String) : Array Char := sorry
 
 /--
-Checks if two multisets of characters are equal.
+Checks if two arrays of characters are equal.
 -/
-def msetEqual (s t : Multiset Char) : Bool := sorry
+def msetEqual (s t : Array Char) : Bool := sorry
 
 /--
 Specification for toMultiset function.
 -/
 theorem toMultiset_spec (s : String) :
-  toMultiset s = Multiset.ofList s.data := sorry
+  toMultiset s = s.data.toArray := sorry
 
 /--
 Specification for msetEqual function.
 -/
-theorem msetEqual_spec (s t : Multiset Char) :
+theorem msetEqual_spec (s t : Array Char) :
   msetEqual s t = (s = t) := sorry
 
 /--
@@ -47,6 +47,6 @@ def isAnagram (s t : String) : Bool := sorry
 Specification for isAnagram function ensuring it correctly identifies anagrams.
 -/
 theorem isAnagram_spec (s t : String) :
-  isAnagram s t = (Multiset.ofList s.data = Multiset.ofList t.data) := sorry
+  isAnagram s t = (s.data.toArray = t.data.toArray) := sorry
 
 end DafnyBenchmarks

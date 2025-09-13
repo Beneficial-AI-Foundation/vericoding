@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_251_InsertBeforeEach",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_251_InsertBeforeEach",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -37,8 +37,8 @@ Specification for InsertBeforeEach:
 theorem InsertBeforeEach_spec (s : Array String) (x : String) :
   let v := InsertBeforeEach s x
   v.size = 2 * s.size ∧
-  ∀ i, 0 ≤ i ∧ i < s.size → 
-    (v.get (2*i) = x ∧ v.get (2*i + 1) = s.get ⟨i⟩) :=
+  ∀ i, 0 ≤ i ∧ i < s.size →
+    (v[2*i]! = x ∧ v[2*i + 1]! = s[i]!) :=
   sorry
 
 end DafnyBenchmarks

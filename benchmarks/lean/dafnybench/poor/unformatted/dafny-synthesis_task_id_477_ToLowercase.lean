@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_477_ToLowercase",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_477_ToLowercase",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -37,7 +37,7 @@ theorem ToLowercase_spec (s : String) :
   let v := ToLowercase s
   v.length = s.length ∧
   ∀ i, 0 ≤ i ∧ i < s.length →
-    (if IsUpperCase (s.get ⟨i⟩) 
+    (if IsUpperCase (s.get ⟨i⟩)
      then IsUpperLowerPair (s.get ⟨i⟩) (v.get ⟨i⟩)
      else v.get ⟨i⟩ = s.get ⟨i⟩) := sorry
 

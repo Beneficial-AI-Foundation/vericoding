@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_603_LucidNumbers",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_603_LucidNumbers",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -33,8 +33,8 @@ Main specification theorem for LucidNumbers capturing the three key properties:
 theorem LucidNumbers_spec (n : Int) :
   n ≥ 0 →
   let result := LucidNumbers n
-  (∀ i, 0 ≤ i ∧ i < result.size → (result.get ⟨i⟩) % 3 = 0) ∧
-  (∀ i, 0 ≤ i ∧ i < result.size → result.get ⟨i⟩ ≤ n) ∧
-  (∀ i j, 0 ≤ i ∧ i < j ∧ j < result.size → result.get ⟨i⟩ < result.get ⟨j⟩) := sorry
+  (∀ i, 0 ≤ i ∧ i < result.size → (result[i]!) % 3 = 0) ∧
+  (∀ i, 0 ≤ i ∧ i < result.size → result[i]! ≤ n) ∧
+  (∀ i j, 0 ≤ i ∧ i < j ∧ j < result.size → result[i]! < result[j]!) := sorry
 
 end DafnyBenchmarks

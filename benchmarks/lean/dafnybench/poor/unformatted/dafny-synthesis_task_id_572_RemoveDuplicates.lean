@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_572_RemoveDuplicates",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_572_RemoveDuplicates",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -31,7 +31,7 @@ Specification for RemoveDuplicates:
 -/
 theorem RemoveDuplicates_spec (a : Array Int) :
   let result := RemoveDuplicates a
-  (∀ x, (result.contains x ↔ ∃ i, 0 ≤ i ∧ i < a.size ∧ a.get ⟨i⟩ = x)) ∧
-  (∀ i j, 0 ≤ i ∧ i < j ∧ j < result.size → result.get ⟨i⟩ ≠ result.get ⟨j⟩) := sorry
+  (∀ x, (result.contains x ↔ ∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! = x)) ∧
+  (∀ i j, 0 ≤ i ∧ i < j ∧ j < result.size → result[i]! ≠ result[j]!) := sorry
 
 end DafnyBenchmarks

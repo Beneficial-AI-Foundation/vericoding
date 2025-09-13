@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_460_GetFirstElements",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_460_GetFirstElements",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -40,10 +40,10 @@ Specification for GetFirstElements:
 - Ensures each output element is the first element of corresponding inner sequence
 -/
 theorem GetFirstElements_spec (lst : Array (Array Int)) :
-  (∀ i, 0 ≤ i ∧ i < lst.size → (lst.get ⟨i⟩).size > 0) →
+  (∀ i, 0 ≤ i ∧ i < lst.size → (lst[i]!).size > 0) →
   let result := GetFirstElements lst
   result.size = lst.size ∧
-  (∀ i, 0 ≤ i ∧ i < result.size → result.get ⟨i⟩ = (lst.get ⟨i⟩).get 0) :=
+  (∀ i, 0 ≤ i ∧ i < result.size → result[i]! = (lst[i]!)[0]!) :=
   sorry
 
 end DafnyBenchmarks

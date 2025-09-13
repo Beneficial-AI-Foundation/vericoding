@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_644_ReverseUptoK",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_644_ReverseUptoK",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -27,12 +27,12 @@ Ensures:
   - First k elements are reversed
   - Elements after k remain unchanged
 -/
-def ReverseUptoK (s : Array Int) (k : Int) : Array Int := sorry
+def ReverseUptoK (s : Array Int) (k : Nat) : Array Int := sorry
 
 /-- Specification for ReverseUptoK -/
-theorem ReverseUptoK_spec (s : Array Int) (k : Int) (old_s : Array Int) :
+theorem ReverseUptoK_spec (s : Array Int) (k : Nat) (old_s : Array Int) :
   2 ≤ k ∧ k ≤ s.size →
-  (∀ i, 0 ≤ i ∧ i < k → (ReverseUptoK s k).get i = old_s.get (k - 1 - i)) ∧
-  (∀ i, k ≤ i ∧ i < s.size → (ReverseUptoK s k).get i = old_s.get ⟨i⟩) := sorry
+  (∀ i, 0 ≤ i ∧ i < k → (ReverseUptoK s k)[i]! = old_s[k - 1 - i]!) ∧
+  (∀ i, k ≤ i ∧ i < s.size → (ReverseUptoK s k)[i]! = old_s[i]!) := sorry
 
 end DafnyBenchmarks

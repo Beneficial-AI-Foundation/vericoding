@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-synthesis_task_id_807_FindFirstOdd",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_807_FindFirstOdd",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -35,9 +35,9 @@ def FindFirstOdd (a : Array Int) : Bool × Int := sorry
 -/
 theorem FindFirstOdd_spec (a : Array Int) (result : Bool × Int) :
   let (found, index) := result
-  (¬found → ∀ i, 0 ≤ i ∧ i < a.size → ¬IsOdd (a.get ⟨i⟩)) ∧
-  (found → 0 ≤ index ∧ index < a.size ∧ 
-           IsOdd (a.get ⟨index⟩) ∧
-           ∀ i, 0 ≤ i ∧ i < index → ¬IsOdd (a.get ⟨i⟩)) := sorry
+  (¬found → ∀ i, 0 ≤ i ∧ i < a.size → ¬IsOdd (a[i]!)) ∧
+  (found → 0 ≤ index ∧ index < a.size ∧
+           IsOdd (a[index.toNat]!) ∧
+           ∀ i:Nat, 0 ≤ i ∧ i < index → ¬IsOdd (a[i]!)) := sorry
 
 end DafnyBenchmarks

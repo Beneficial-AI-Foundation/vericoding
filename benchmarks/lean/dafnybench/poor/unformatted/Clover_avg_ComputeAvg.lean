@@ -1,5 +1,5 @@
 import Std
-import Mathlib
+
 
 open Std.Do
 
@@ -11,7 +11,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -19,7 +19,7 @@ namespace DafnyBenchmarks
 
 /--
   ComputeAvg computes the average of two integers.
-  
+
   @param a First integer input
   @param b Second integer input
   @return The average of a and b, computed as (a+b)/2
