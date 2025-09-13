@@ -157,6 +157,12 @@ def generate_experiment_plan(file_limit: int = None):
             time_hours = estimate_time(actual_files, time_per_file)
             
             command = f"uv run src/vericoder.py lean {dataset.path} --llm-provider {model.provider}"
+            
+            # Add assume-unformatted-lean for "poor" datasets (unformatted Lean files)
+            if "poor" in dataset.path:
+                command += " --assume-unformatted-lean"
+            
+            # Add limit if specified
             if file_limit and file_limit < dataset.file_count:
                 command += f" --limit {file_limit}"
             
