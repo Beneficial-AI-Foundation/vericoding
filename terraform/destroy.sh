@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Terraform destroy script for vericoding servers (using Docker)
 
