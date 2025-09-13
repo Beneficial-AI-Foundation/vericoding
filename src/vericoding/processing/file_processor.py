@@ -155,7 +155,7 @@ def process_spec_file(
             raise
 
         # Create LLM provider for this request
-        llm_provider, _ = create_llm_provider(config.llm_provider)
+        llm_provider, _ = create_llm_provider(config.llm)
         generated_response = call_llm(llm_provider, config, generate_prompt, wandb)
         
         # IMMEDIATELY save raw response to debug folder before any parsing
@@ -184,6 +184,23 @@ def process_spec_file(
             error_msg = f"Failed to apply JSON replacements: {str(e)}\n\nFull traceback:\n{traceback.format_exc()}"
             logger.error(error_msg)
             raise RuntimeError(error_msg) from e
+        
+        # If JSON parsing failed, try once more with a fresh LLM call
+        if json_error and "JSON parsing failed" in json_error:
+            logger.info(f"  ⚠️  JSON parsing failed, attempting retry...")
+            try:
+                retry_response = call_llm(llm_provider, config, generate_prompt, wandb)
+                generated_code, json_error = apply_json_replacements(config, original_code, retry_response)
+                
+                if not json_error:
+                    logger.info(f"  ✓ Retry successful - JSON parsed correctly")
+                    # Update the response for logging
+                    generated_response = retry_response
+                else:
+                    logger.info(f"  ✗ Retry also failed: {json_error}")
+            except Exception as e:
+                logger.error(f"  ✗ Retry attempt failed with error: {str(e)}")
+                # Keep original error
         
         # Collect LLM response data
         if wandb.run:
@@ -379,7 +396,7 @@ def process_spec_file(
                 
                 try:
                     # Create LLM provider for fix request  
-                    llm_provider, _ = create_llm_provider(config.llm_provider)
+                    llm_provider, _ = create_llm_provider(config.llm)
                     fix_response = call_llm(llm_provider, config, fix_prompt, wandb)
                     
                     # IMMEDIATELY save raw response to debug folder before any parsing
