@@ -6,6 +6,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a multi-language to Verus translation project that uses PydanticAI to convert formal verification code from various languages (currently Dafny and Lean 4) to [Verus](https://verus-lang.github.io/verus/guide/overview.html) code. The project is a Python package that serves as a specialized translator for formal verification languages.
 
+**NEW**: The project now supports multiple LLM providers including OpenRouter, which provides access to 50+ models through a single API key.
+
+## LLM Provider Support
+
+### Direct Providers (Default)
+- **Anthropic Claude**: Direct API integration (requires `ANTHROPIC_API_KEY`)
+- **OpenAI GPT**: Direct API integration (requires `OPENAI_API_KEY`)
+- **xAI Grok**: Direct API integration (requires `XAI_API_KEY`)
+
+### OpenRouter Integration (NEW!)
+
+To use OpenRouter:
+1. Get API key from [openrouter.ai/keys](https://openrouter.ai/keys)
+2. Set `OPENROUTER_API_KEY` environment variable
+3. Update `config.yml` with an OpenRouter model (e.g., `openrouter:anthropic/claude-sonnet-4`)
+
 ## Language-Specific Documentation
 
 - **CLAUDE_DAFNY.md**: Specific guidance for Dafny to Verus translation
@@ -28,6 +44,7 @@ The project uses Nix for reproducible development environments:
 - **Run the tool**: 
   - Dafny: `uv run code2verus --language dafny`
   - Lean: `uv run code2verus --language lean`
+- **Test OpenRouter**: `python example_openrouter.py`
 - **Install dependencies**: `uv sync`
 - **Format code**: `nix fmt` (uses treefmt-nix configuration)
 - **Verify Verus code**: `verus <file.rs>`
