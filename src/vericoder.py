@@ -147,6 +147,12 @@ Examples:
         help="For Lean files, wrap each 'sorry' with vc-theorems tags (only valid for Lean language)",
     )
 
+    parser.add_argument(
+        "--tag",
+        type=str,
+        help="Tag to add to W&B run for experiment tracking",
+    )
+
     return parser.parse_args()
 
 
@@ -623,11 +629,16 @@ def main():
             # Get comprehensive metadata
             experiment_metadata = get_experiment_metadata(config, args)
             
+            # Build tags list
+            tags = [config.language, config.llm, "spec-to-code"]
+            if args.tag:
+                tags.append(args.tag)
+            
             wandb_run = wandb.init(
                 project=os.getenv("WANDB_PROJECT", "vericoding"),
                 entity=os.getenv("WANDB_ENTITY"),
                 name=run_name,
-                tags=[config.language, config.llm, "spec-to-code"],
+                tags=tags,
                 mode=os.getenv("WANDB_MODE", "online")
             )
             # Update config with comprehensive metadata

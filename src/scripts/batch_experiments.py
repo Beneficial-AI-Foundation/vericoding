@@ -194,7 +194,7 @@ def generate_experiment_plan(file_limit: int = None):
     print(f"Average time per experiment: {total_time_hours/total_experiments:.1f} hours")
 
 
-def run_specific_experiments(file_limit: int = None, experiment_numbers: list = None):
+def run_specific_experiments(file_limit: int = None, experiment_numbers: list = None, tag: str = None):
     """Run only the specified experiments."""
     time_per_file, input_tokens_per_file, output_tokens_per_file = calculate_baseline_metrics()
     
@@ -234,6 +234,10 @@ def run_specific_experiments(file_limit: int = None, experiment_numbers: list = 
         if file_limit and file_limit < dataset.file_count:
             command += f" --limit {file_limit}"
         
+        # Add tag if specified
+        if tag:
+            command += f" --tag {tag}"
+        
         cost = estimate_cost(model, actual_files, input_tokens_per_file, output_tokens_per_file)
         time_hours = estimate_time(actual_files, time_per_file)
         
@@ -260,6 +264,7 @@ def main():
     
     parser = argparse.ArgumentParser(description="Batch experiment runner for vericoding")
     parser.add_argument("--cost-limit", type=float, help="Maximum total cost in USD (calculates file limit per experiment)")
+    parser.add_argument("--tag", help="Tag to pass through to vericoder for W&B tagging")
     parser.add_argument("--run", help="Comma-separated list of experiment numbers to run (0-based index, e.g., '0,5,10')")
     
     args = parser.parse_args()
@@ -285,7 +290,7 @@ def main():
             return
     
     if run_experiments_list:
-        run_specific_experiments(file_limit, run_experiments_list)
+        run_specific_experiments(file_limit, run_experiments_list, args.tag)
     else:
         generate_experiment_plan(file_limit)
 
