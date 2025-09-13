@@ -1,15 +1,10 @@
 # Dafny Benchmarks - Lean Translation
 
-This directory contains Lean 4 translations of Dafny specifications, organized into two categories:
-
-## Structure
-
-- **files/**: Contains the first 70 files that have been manually fixed and verified
-- **`remaining/`**: Contains the remaining files that still need attention
+This directory contains Lean 4 translations of Dafny specifications.
 
 ## File Organization
 
-### Manually Fixed Files (70 files)
+### Manually Fixed Files 
 These files have been manually reviewed and fixed for syntax errors, type issues, and other compilation problems. They include:
 
 - Binary search implementations
@@ -19,8 +14,7 @@ These files have been manually reviewed and fixed for syntax errors, type issues
 - Mathematical computations
 - Tree operations
 
-### Remaining Files (442 files)
-These files still need manual review and fixing. They contain similar types of Dafny-to-Lean translations but may have:
+Common problems faced during Dafny-to-Lean translations:
 
 - Syntax errors
 - Type mismatches
