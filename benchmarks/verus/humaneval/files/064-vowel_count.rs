@@ -12,7 +12,7 @@ spec fn vowels(s: Seq<char>) -> (ret:Seq<char>) {
     s.filter(|c| is_vowel(c))
 }
 
-spec fn inner_expr_vowels_count(s: &str, ret: u32) -> (ret:bool) {
+spec fn inner_expr_vowels_count(s: &str, ret: u32) -> (result:bool) {
     ret == vowels(s@).len() + if (s@.len() > 0 && (s@.last() == 'y' || s@.last() == 'Y')) {
         1int
 

@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn max(a: &[i32]) -> (max: i32)
-    requires a.len() > 0,
-    ensures forall|j: int| 0 <= j < a.len() ==> max >= a[j],
+fn max(a: &[i32]) -> (result: i32)
+    requires a.len() > 0
+    ensures forall|j: int| 0 <= j < a.len() ==> result >= a[j]
 // </vc-spec>
 // <vc-code>
 {

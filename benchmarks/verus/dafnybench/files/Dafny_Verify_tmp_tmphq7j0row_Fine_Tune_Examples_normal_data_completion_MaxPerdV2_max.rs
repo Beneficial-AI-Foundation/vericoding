@@ -20,9 +20,9 @@ spec fn is_max(m: i32, a: Seq<i32>, n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn max(a: &[i32], n: usize) -> (max: i32)
+fn max(a: &[i32], n: usize) -> (result: i32)
     requires 0 < n <= a.len(),
-    ensures is_max(max, a@, n as int),
+    ensures is_max(result, a@, n as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -3,8 +3,8 @@ use vstd::prelude::*;
 
 verus! {
 
-spec fn expr_inner_longest(strings: &Vec<Vec<u8>>, result: Option<&Vec<u8>>) -> (result: bool) {
-    match result {
+spec fn expr_inner_longest(strings: &Vec<Vec<u8>>, res: Option<&Vec<u8>>) -> (result: bool) {
+    match res {
         None => strings.len() == 0,
         Some(s) => {
             (forall|i: int| #![auto] 0 <= i < strings.len() ==> s.len() >= strings[i].len())
