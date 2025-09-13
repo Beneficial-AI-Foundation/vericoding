@@ -41,7 +41,7 @@ resource "aws_instance" "vericoding_servers" {
   vpc_security_group_ids = ["sg-0f7a3df675cb3fd68"]
   subnet_id             = "subnet-0b7f1623a2aa277b2"
   
-  # No user_data - we'll run setup manually after instances are created
+  user_data = base64encode(file("${path.module}/initial_setup.sh"))
 
   # Add more storage if needed
   root_block_device {
