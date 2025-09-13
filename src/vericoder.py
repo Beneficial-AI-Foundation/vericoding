@@ -37,7 +37,6 @@ from vericoding.processing import process_files_parallel
 from vericoding.utils import (
     generate_summary,
     generate_csv_results,
-    generate_subfolder_analysis_csv,
     get_git_remote_url,
     get_current_branch,
 )
@@ -93,11 +92,6 @@ Examples:
         help="Disable debug mode (debug mode is enabled by default)",
     )
 
-    parser.add_argument(
-        "--strict-specs",
-        action="store_true",
-        help="Enable strict specification preservation (default: relaxed verification)",
-    )
     
     parser.add_argument(
         "--no-wandb",
@@ -134,22 +128,10 @@ Examples:
     )
 
     parser.add_argument(
-        "--llm-provider",
+        "--llm",
         type=str,
-        choices=[
-            "claude-sonnet", "claude-opus", "gpt", "gpt-mini", "o1", "gemini", "gemini-flash", 
-            "grok", "grok-code", "deepseek", "glm", "mistral-medium", "mistral-codestral",
-            "qwen-thinking", "qwen-coder", "claude-direct", "openai-direct", "grok-direct",
-            "claude", "openai"
-        ],
-        default="claude-direct",
-        help="LLM provider to use. Most use OpenRouter, *-direct options use native APIs (default: claude-direct)",
-    )
-
-    parser.add_argument(
-        "--llm-model",
-        type=str,
-        help="Specific model to use (defaults to provider's default model)",
+        required=True,
+        help="LLM to use (provider/model alias, e.g., gemini-flash, claude-sonnet, openai-direct)",
     )
     parser.add_argument(
         "--limit",
@@ -178,6 +160,15 @@ def setup_configuration(args) -> ProcessingConfig:
 
     # Create timestamped output directory outside the input directory
     timestamp = datetime.now().strftime("%d-%m_%Hh%M")
+    
+    # Determine LLM name for output directory (from --llm)
+    llm_name = (args.llm or "llm").lower()
+    # Sanitize for filesystem paths
+    llm_name = (
+        llm_name.replace("/", "_")
+        .replace(":", "_")
+        .replace(" ", "_")
+    )
 
     # Extract the relevant part of the input path for the output hierarchy
     input_path = Path(files_dir).resolve()
@@ -207,51 +198,11 @@ def setup_configuration(args) -> ProcessingConfig:
                 working_dir / "src" if (working_dir / "src").exists() else working_dir
             )
 
-    # Calculate the relative path from src_base to the input directory
-    try:
-        relative_from_src = input_path.relative_to(src_base)
-        path_parts = relative_from_src.parts
 
-        # Try to find a meaningful subset
-        meaningful_part = None
-        for _i, part in enumerate(path_parts):
-            if part in [
-                "autoverus",
-                "clover",
-                "synthesis_task",
-                "first_8",
-                "atomizer_supported",
-                "atomizer_supported_tasks_dep_only",
-                "numpy_specs",
-                "DafnySpecs",
-                "benchmarks",
-            ]:
-                meaningful_part = Path(part)
-                break
-
-        if meaningful_part is None:
-            # If no recognized pattern, use the last 1-2 directory levels
-            if len(path_parts) >= 2:
-                meaningful_part = Path(path_parts[-2]) / Path(path_parts[-1])
-            else:
-                meaningful_part = Path(path_parts[-1]) if path_parts else Path("specs")
-
-    except ValueError:
-        # input_path is not relative to src_base, use the basename
-        meaningful_part = Path(input_path.name)
-
-    # Create output directory structure
-    # For Lean, put files under lean/ directory so lake can find them
-    if args.language == "lean":
-        # Use project root lean/ directory for Lean files
-        project_root = src_base.parent if src_base.name == "src" else src_base
-        output_dir = str(
-            project_root / "lean" / "Generated" / f"Run_{timestamp}" / meaningful_part
-        )
-    else:
-        output_dir = str(
-            src_base / f"code_from_spec_on_{timestamp}" / args.language / meaningful_part
-        )
+    # Create output directory alongside the input directory, named: vericoder_<llm>_<date>
+    output_dir = str(
+        input_path.parent / f"vericoder_{llm_name}_{timestamp}"
+    )
     summary_file = str(Path(output_dir) / "summary.txt")
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
@@ -266,11 +217,9 @@ def setup_configuration(args) -> ProcessingConfig:
         output_dir=output_dir,
         summary_file=summary_file,
         debug_mode=not args.no_debug,
-        strict_spec_verification=args.strict_specs,
         max_workers=args.workers,
         api_rate_limit_delay=args.api_rate_limit_delay,
-        llm_provider=args.llm_provider,
-        llm_model=args.llm_model,
+        llm=args.llm,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
     )
 
@@ -281,12 +230,8 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"- Max iterations: {config.max_iterations}")
     print(f"- Parallel workers: {config.max_workers}")
     print(f"- Tool path: {get_tool_path(config)}")
-    print(f"- LLM Provider: {config.llm_provider}")
-    print(f"- LLM Model: {config.llm_model or 'default'}")
+    print(f"- LLM: {config.llm}")
     print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
-    print(
-        f"- Spec preservation: {'Strict' if config.strict_spec_verification else 'Relaxed (default)'}"
-    )
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
     print("\nProceeding with configuration...")
 
@@ -350,9 +295,7 @@ def get_experiment_metadata(config: ProcessingConfig, args, prompt_loader: Promp
         # Basic experiment info
         "language": config.language,
         "max_iterations": config.max_iterations,
-        "llm_provider": config.llm_provider,
-        "llm_model": config.llm_model or f"{config.llm_provider}-default",
-        "strict_spec_verification": config.strict_spec_verification,
+        "llm": config.llm,
         "max_workers": config.max_workers,
         
         # File and benchmark info  
@@ -401,10 +344,14 @@ def determine_input_type(files_dir: str) -> str:
         spec_keywords = ["requires", "ensures", "invariant", "precondition", "postcondition"]
         try:
             # Sample a few files to detect type
-            # Look for files in the directory to sample\n            files_path = Path(files_dir)\n            sample_files = []\n            if files_path.exists():\n                for ext in [\"*.dfy\", \"*.rs\", \"*.lean\"]:\n                    sample_files.extend(list(files_path.rglob(ext))[:2])
-            if spec_files:
-                sample_file = spec_files[0] if len(spec_files) == 1 else spec_files[:min(3, len(spec_files))]
-                for file_path in (sample_file if isinstance(sample_file, list) else [sample_file]):
+            # Look for files in the directory to sample
+            files_path = Path(files_dir)
+            sample_files = []
+            if files_path.exists():
+                for ext in ["*.dfy", "*.rs", "*.lean"]:
+                    sample_files.extend(list(files_path.rglob(ext))[:2])
+            if sample_files:
+                for file_path in sample_files[:3]:
                     try:
                         with open(file_path, 'r') as f:
                             content = f.read().lower()
@@ -551,7 +498,7 @@ def log_experiment_results_to_wandb(
             "language": config.language,
             "success_rate": success_percentage,
             "total_files": len(results),
-            "llm_model": config.llm_model or f"{config.llm_provider}-default",
+            "llm_model": config.llm,
             "timestamp": timestamp,
         }
     )
@@ -665,7 +612,7 @@ def main():
                 project=os.getenv("WANDB_PROJECT", "vericoding"),
                 entity=os.getenv("WANDB_ENTITY"),
                 name=run_name,
-                tags=[config.language, config.llm_provider, "spec-to-code"],
+                tags=[config.language, config.llm, "spec-to-code"],
                 mode=os.getenv("WANDB_MODE", "online")
             )
             # Update config with comprehensive metadata
@@ -676,6 +623,11 @@ def main():
         except Exception as e:
             print(f"⚠️  Failed to initialize wandb: {e}")
             wandb_run = None
+            # Ensure wandb.run is cleared when initialization fails
+            try:
+                wandb.finish()
+            except:
+                pass
     else:
         if args.no_wandb:
             print("⚠️  Weights & Biases tracking disabled (--no-wandb flag)")
@@ -762,9 +714,6 @@ def main():
     print(f"Max iterations: {config.max_iterations}")
     print(f"Parallel workers: {config.max_workers}")
     print(f"Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
-    print(
-        f"- Spec preservation: {'Strict' if config.strict_spec_verification else 'Relaxed (default)'}"
-    )
     print("Processing each file by generating code from specifications.")
     if config.debug_mode:
         print(
@@ -777,7 +726,7 @@ def main():
     # Check if the required API key is available for the selected LLM provider
     try:
         # This will raise an error if the API key is not available
-        llm_provider, resolved_model = create_llm_provider(config.llm_provider)
+        llm_provider, resolved_model = create_llm_provider(config.llm)
         # Note: The create_llm_provider function already prints the success message
     except Exception as e:
         print(f"Error: {str(e)}")
@@ -853,8 +802,7 @@ def main():
     # Generate CSV results
     generate_csv_results(config, results)
 
-    # Generate subfolder analysis CSV
-    generate_subfolder_analysis_csv(config, results)
+    # Subfolder analysis removed
 
     # Print final statistics
     successful = [r for r in results if r.success]

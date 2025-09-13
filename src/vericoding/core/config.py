@@ -59,11 +59,9 @@ class ProcessingConfig:
     output_dir: str
     summary_file: str
     debug_mode: bool
-    strict_spec_verification: bool
     max_workers: int
     api_rate_limit_delay: int
-    llm_provider: str
-    llm_model: str | None
+    llm: str
     max_directory_traversal_depth: int = 50
 
     # Static configuration loaded once

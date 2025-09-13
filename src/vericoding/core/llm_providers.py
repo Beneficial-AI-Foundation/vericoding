@@ -24,7 +24,7 @@ class LLMProvider(ABC):
     """Abstract interface for LLM providers."""
 
     def __init__(
-        self, api_key: str, model: str, max_tokens: int = 8192, timeout: float = 60.0
+        self, api_key: str, model: str, max_tokens: int = 16384, timeout: float = 60.0
     ):
         self.api_key = api_key
         self.model = model
@@ -388,7 +388,7 @@ def create_llm_provider(llm_name: str) -> tuple[LLMProvider, str]:
 
     selected_model = config["default_model"]
     provider = config["class"](api_key, selected_model)
-    print(f"✓ {llm_name.upper()} API key found and provider initialized")
+    print(f"✓ Initialized provider for '{llm_name}' using {env_var} (model: {selected_model})")
     return provider, selected_model
 
 
@@ -426,13 +426,17 @@ def call_llm(provider: LLMProvider, config: ProcessingConfig, prompt: str, wandb
         _global_token_stats["output_tokens"] += llm_response.output_tokens
         _global_token_stats["total_calls"] += 1
     
-    if wandb and hasattr(wandb, "log"):
+    if wandb and hasattr(wandb, "log") and hasattr(wandb, "run") and wandb.run:
         # Use multiple fallbacks to ensure we always have a model name
         model_name = getattr(provider, 'model', None) or config.llm
-        wandb.log({
-            "llm/calls": 1,
-            "llm/latency_ms": latency_ms,
-            "llm/model": model_name,
-        })
+        try:
+            wandb.log({
+                "llm/calls": 1,
+                "llm/latency_ms": latency_ms,
+                "llm/model": model_name,
+            })
+        except Exception:
+            # Silently ignore W&B logging errors to prevent processing failures
+            pass
     
     return llm_response.text

@@ -33,11 +33,12 @@ particularly Dafny benchmarks and NumPy specifications.
 -- lean_lib DafnyBenchSpecs where
 --   globs := #[.andSubmodules `DafnyBenchSpecs]
 
--- spec_to_code.py puts files here
+-- vericoder.py puts files here
 lean_lib Generated where
   globs := #[.andSubmodules `Generated]
   srcDir := "lean"
 
+-- Original benchmark files + all vericoder generated files
 lean_lib Benchmarks where
   globs := #[
     .submodules `apps.files,
@@ -46,5 +47,14 @@ lean_lib Benchmarks where
     .submodules `numpy_simple.poor.unformatted,
     .submodules `numpy_triple.files,
     .submodules `verina.files,
+    -- Include all subdirectories (including vericoder_* dirs)
+    .andSubmodules `apps,
+    .andSubmodules `bignum,
+    .andSubmodules `dafnybench,
+    .andSubmodules `humaneval,
+    .andSubmodules `humaneval_clever,
+    .andSubmodules `numpy_simple,
+    .andSubmodules `numpy_triple,
+    .andSubmodules `verina,
   ]
   srcDir := "benchmarks/lean"
