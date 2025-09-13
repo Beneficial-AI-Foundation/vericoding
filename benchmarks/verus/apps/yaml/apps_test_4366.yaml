@@ -1,0 +1,41 @@
+vc-description: |-
+  Given current time A (0-23) and hours B until contest begins (0-23), 
+  determine the contest start time in 24-hour format using modular arithmetic.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(input: Seq<char>) -> bool {
+      exists|A: int, B: int| 0 <= A <= 23 && 0 <= B <= 23 && 
+      input.len() > 0
+  }
+  
+  spec fn contest_start_time(A: int, B: int) -> int
+      requires 0 <= A <= 23 && 0 <= B <= 23
+      ensures 0 <= contest_start_time(A, B) <= 23
+  {
+      (A + B) % 24
+  }
+  
+  spec fn correct_output(input: Seq<char>, result: Seq<char>) -> bool {
+      exists|A: int, B: int| 0 <= A <= 23 && 0 <= B <= 23 && 
+      result.len() > 0
+  }
+
+vc-spec: |-
+  fn solve(input: &str) -> (result: String)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

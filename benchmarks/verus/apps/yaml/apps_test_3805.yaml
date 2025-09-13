@@ -1,0 +1,62 @@
+vc-description: |-
+  Two wires run from left to right between a wall and device. Given a string of '+' and '-' 
+  representing wire crossings, determine if wires can be untangled by free movement without
+  unplugging. Uses stack algorithm where same adjacent characters cancel out.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn extract_first_line(input: Seq<char>) -> Seq<char>
+      decreases input.len()
+  {
+      if input.len() == 0 {
+          seq![]
+      } else if input[0] == '\n' {
+          seq![]
+      } else {
+          seq![input[0]] + extract_first_line(input.drop_first())
+      }
+  }
+  
+  spec fn process_string(input: Seq<char>, stack: Seq<char>) -> Seq<char>
+      decreases input.len()
+  {
+      if input.len() == 0 {
+          stack
+      } else {
+          let c = input[0];
+          let new_stack = if stack.len() > 0 && stack[stack.len() - 1] == c {
+              stack.drop_last()
+          } else {
+              stack.push(c)
+          };
+          process_string(input.drop_first(), new_stack)
+      }
+  }
+  
+  spec fn stack_algorithm_results_in_empty_stack(input: Seq<char>) -> bool {
+      let stack = process_string(input, seq![]);
+      stack.len() == 0
+  }
+
+vc-spec: |-
+  fn solve(input: &str) -> (result: String)
+      ensures result@ == "Yes\n"@ || result@ == "No\n"@
+      ensures result@ == "Yes\n"@ <==> stack_algorithm_results_in_empty_stack(extract_first_line(input@))
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      String::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

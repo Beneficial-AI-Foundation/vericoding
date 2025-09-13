@@ -1,0 +1,41 @@
+vc-description: |-
+  Given n commentary boxes and m delegations, make the number of boxes divisible by m at minimum cost.
+  You can build a box for cost a or demolish a box for cost b.
+  Find the minimum cost to make n divisible by m.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(n: int, m: int, a: int, b: int) -> bool {
+      n >= 1 && m >= 1 && a >= 1 && b >= 1
+  }
+  
+  spec fn min_cost_to_divisible(n: int, m: int, a: int, b: int) -> int
+      requires valid_input(n, m, a, b)
+  {
+      let k = n % m;
+      if k * b < (m - k) * a { k * b } else { (m - k) * a }
+  }
+
+vc-spec: |-
+  fn solve(n: int, m: int, a: int, b: int) -> (result: int)
+      requires 
+          valid_input(n, m, a, b)
+      ensures 
+          result == min_cost_to_divisible(n, m, a, b),
+          result >= 0,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,64 @@
+vc-description: |-
+  Given n cows initially arranged in positions 1, 2, ..., n, find the maximum number of inversions
+  achievable using at most k swaps. An inversion is a pair (i,j) where i < j but the cow in 
+  position i has a larger label than the cow in position j.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn min(a: int, b: int) -> int {
+      if a <= b { a } else { b }
+  }
+  
+  spec fn compute_inversions(n: int, k: int, iterations: int) -> int
+      decreases iterations
+  {
+      if iterations == 0 { 
+          0 
+      } else { 
+          compute_inversions(n, k, iterations - 1) + (n - 2*(iterations-1) - 1) + (n - 2*(iterations-1) - 2)
+      }
+  }
+  
+  spec fn sum_inversions_formula(n: int, iterations: int) -> int
+      decreases iterations
+  {
+      if iterations == 0 { 
+          0 
+      } else { 
+          sum_inversions_formula(n, iterations - 1) + (n - 2*(iterations-1) - 1) + (n - 2*(iterations-1) - 2)
+      }
+  }
+  
+  spec fn sum_of_consecutive_pairs(n: int, k: int) -> int {
+      let iterations = k;
+      if iterations == 0 { 
+          0 
+      } else { 
+          sum_inversions_formula(n, iterations)
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, k: int) -> (result: int)
+      requires n >= 1 && k >= 0
+      ensures result >= 0
+      ensures result == compute_inversions(n, k, min(k, n / 2))
+      ensures result == sum_inversions_formula(n, min(k, n / 2))
+      ensures k >= n / 2 ==> result == n * (n - 1) / 2
+      ensures k < n / 2 ==> result == sum_of_consecutive_pairs(n, k)
+
+vc-code: |-
+  {
+      assume(false);
+      0
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

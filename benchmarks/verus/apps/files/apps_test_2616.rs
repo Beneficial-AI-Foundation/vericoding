@@ -1,0 +1,62 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(test_cases: Seq<Seq<int>>) -> bool {
+    forall|i: int| 0 <= i < test_cases.len() ==> 
+        test_cases[i].len() >= 1 && 
+        forall|j: int| 0 <= j < test_cases[i].len() ==> test_cases[i][j] >= 1
+}
+
+spec fn valid_results(results: Seq<Seq<char>>) -> bool {
+    forall|i: int| 0 <= i < results.len() ==> 
+        results[i] == seq!['F','i','r','s','t'] || results[i] == seq!['S','e','c','o','n','d']
+}
+
+spec fn count_leading_ones(piles: Seq<int>) -> nat
+    decreases piles.len()
+{
+    if piles.len() == 0 {
+        0
+    } else if piles[0] != 1 {
+        0
+    } else {
+        1 + count_leading_ones(piles.subrange(1, piles.len() as int))
+    }
+}
+
+spec fn correct_game_result(piles: Seq<int>, result: Seq<char>) -> bool {
+    let ones_count = piles.filter(|x: int| x == 1).len();
+    let all_ones = (ones_count == piles.len());
+    let leading_ones = count_leading_ones(piles);
+    if all_ones {
+        if ones_count % 2 == 1 { result == seq!['F','i','r','s','t'] } else { result == seq!['S','e','c','o','n','d'] }
+    } else {
+        if leading_ones % 2 == 1 { result == seq!['S','e','c','o','n','d'] } else { result == seq!['F','i','r','s','t'] }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(test_cases: Seq<Seq<int>>) -> (results: Seq<Seq<char>>)
+    requires 
+        valid_input(test_cases)
+    ensures 
+        results.len() == test_cases.len() &&
+        valid_results(results) &&
+        forall|i: int| 0 <= i < test_cases.len() ==> correct_game_result(test_cases[i], results[i])
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    Seq::empty()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

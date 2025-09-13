@@ -1,0 +1,70 @@
+vc-description: |-
+  Given n monsters with health points, player and opponent take turns attacking until each monster dies.
+  Player attacks first with damage a, opponent with damage b. Player gets 1 point for killing a monster.
+  Player can skip opponent's turn at most k times total. Find maximum points achievable.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(n: int, a: int, b: int, k: int, h: Seq<int>) -> bool {
+      n > 0 && a > 0 && b > 0 && k >= 0 && h.len() == n && 
+      forall|i: int| 0 <= i < h.len() ==> h[i] > 0
+  }
+  
+  spec fn process_health_values(h: Seq<int>, a: int, b: int) -> Seq<int>
+      decreases h.len()
+  {
+      if h.len() == 0 {
+          seq![]
+      } else {
+          let h_mod = h[0] % (a + b);
+          let h_final = if h_mod == 0 { a + b } else { h_mod };
+          seq![h_final] + process_health_values(h.drop_first(), a, b)
+      }
+  }
+  
+  spec fn count_killable_monsters(sorted_health: Seq<int>, a: int, k: int) -> int {
+      count_killable_helper(sorted_health, a, k, 0, 0)
+  }
+  
+  spec fn count_killable_helper(sorted_health: Seq<int>, a: int, remaining_k: int, index: int, acc: int) -> int
+      decreases sorted_health.len() - index
+  {
+      if index >= sorted_health.len() {
+          acc
+      } else {
+          let x = sorted_health[index];
+          if x <= a {
+              count_killable_helper(sorted_health, a, remaining_k, index + 1, acc + 1)
+          } else {
+              let needed_skips = (x + a - 1) / a - 1;
+              if remaining_k >= needed_skips {
+                  count_killable_helper(sorted_health, a, remaining_k - needed_skips, index + 1, acc + 1)
+              } else {
+                  count_killable_helper(sorted_health, a, remaining_k, index + 1, acc)
+              }
+          }
+      }
+  }
+
+vc-spec: |-
+  fn solve_core(n: int, a: int, b: int, k: int, h: Seq<int>) -> (result: int)
+      requires valid_input(n, a, b, k, h)
+      ensures 0 <= result <= n
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,43 @@
+vc-description: |-
+  Given r red balloons, g green balloons, and b blue balloons, determine the maximum number of tables that can be decorated.
+  Each table requires exactly 3 balloons, and no table can have all 3 balloons of the same color.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(r: int, g: int, b: int) -> bool {
+      r >= 0 && g >= 0 && b >= 0
+  }
+  
+  spec fn max_tables(r: int, g: int, b: int) -> int
+      recommends valid_input(r, g, b)
+  {
+      min(min(min((r + g + b) / 3, r + g), r + b), g + b)
+  }
+  
+  spec fn min(a: int, b: int) -> int {
+      if a <= b { a } else { b }
+  }
+
+vc-spec: |-
+  fn solve(r: int, g: int, b: int) -> (result: int)
+      requires 
+          valid_input(r, g, b)
+      ensures 
+          result == max_tables(r, g, b),
+          result >= 0
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

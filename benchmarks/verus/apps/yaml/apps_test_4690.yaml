@@ -1,0 +1,39 @@
+vc-description: |-
+  Given dimensions of two rectangles (A×B and C×D), return the area of the rectangle with the larger area.
+  If both rectangles have equal areas, return that common area.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(a: int, b: int, c: int, d: int) -> bool {
+      1 <= a <= 10000 && 1 <= b <= 10000 && 1 <= c <= 10000 && 1 <= d <= 10000
+  }
+  
+  spec fn max_area(a: int, b: int, c: int, d: int) -> int {
+      if a * b >= c * d { a * b } else { c * d }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(a: int, b: int, c: int, d: int) -> (result: int)
+      requires 
+          valid_input(a, b, c, d)
+      ensures 
+          result == max_area(a, b, c, d),
+          result >= a * b && result >= c * d,
+          result == a * b || result == c * d
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

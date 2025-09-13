@@ -1,0 +1,32 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(a: int, b: int, x: int) -> bool {
+    1 <= a <= 100 && 1 <= b <= 100 && 1 <= x <= 200
+}
+
+spec fn can_have_exactly_cats(a: int, b: int, x: int) -> bool {
+    a <= x <= a + b
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(a: int, b: int, x: int) -> (result: String)
+    requires valid_input(a, b, x)
+    ensures result@ =~= seq!['Y', 'E', 'S'] <==> can_have_exactly_cats(a, b, x)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

@@ -1,0 +1,45 @@
+vc-description: |-
+  Given a seat of width X centimeters, determine the maximum number of people that can sit on it.
+  Each person occupies Y centimeters, and there must be at least Z centimeters of gap between 
+  any two people and between each end of the seat and the nearest person.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(x: int, y: int, z: int) -> bool {
+      x >= 1 && y >= 1 && z >= 1 && y + 2 * z <= x
+  }
+  
+  spec fn max_people(x: int, y: int, z: int) -> int
+      recommends valid_input(x, y, z)
+  {
+      (x - z) / (y + z)
+  }
+  
+  spec fn valid_solution(x: int, y: int, z: int, result: int) -> bool
+      recommends valid_input(x, y, z)
+  {
+      result == max_people(x, y, z) &&
+      result >= 0 &&
+      result * (y + z) <= x - z < (result + 1) * (y + z)
+  }
+
+vc-spec: |-
+  fn solve(x: int, y: int, z: int) -> (result: int)
+      requires valid_input(x, y, z)
+      ensures valid_solution(x, y, z, result)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

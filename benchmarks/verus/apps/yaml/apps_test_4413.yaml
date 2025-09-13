@@ -1,0 +1,38 @@
+vc-description: |-
+  Given n students with distinct programming skills, divide them into the minimum number of teams 
+  such that no two students with skills differing by exactly 1 are on the same team.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(skills: Seq<int>) -> bool {
+      skills.len() >= 0
+  }
+  
+  spec fn has_adjacent_skills(skills: Seq<int>) -> bool {
+      exists|i: int, j: int| 0 <= i < j < skills.len() && (skills[i] - skills[j] == 1 || skills[j] - skills[i] == 1)
+  }
+
+vc-spec: |-
+  fn solve(skills: Seq<int>) -> (teams: int)
+      requires 
+          valid_input(skills)
+      ensures 
+          teams == 1 || teams == 2,
+          teams == 2 <==> has_adjacent_skills(skills),
+          teams == 1 <==> !has_adjacent_skills(skills)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

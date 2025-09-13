@@ -1,0 +1,52 @@
+vc-description: |-
+  Given a sequence A of N integers and a positive integer p, split A into exactly 2 contiguous,
+  non-overlapping parts (each containing at least 1 element) to maximize the sum of their scores.
+  The score of a part is the sum of its elements modulo p. Find the maximum possible sum of scores.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int, p: int, a: Seq<int>) -> bool {
+      n >= 2 && p >= 2 && a.len() == n && forall|i: int| 0 <= i < n ==> a[i] >= 1
+  }
+
+  spec fn split_score(a: Seq<int>, split_pos: int, p: int) -> int {
+      0  /* placeholder for split score calculation */
+  }
+
+  spec fn max_seq(scores: Seq<int>) -> int {
+      0  /* placeholder for maximum value in sequence */
+  }
+
+  spec fn max_split_score(a: Seq<int>, p: int) -> int {
+      if a.len() >= 2 && p >= 2 {
+          let scores = Seq::new(a.len() - 1, |i: int| split_score(a, i + 1, p));
+          max_seq(scores)
+      } else {
+          0
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, p: int, a: Seq<int>) -> (result: int)
+      requires valid_input(n, p, a)
+      ensures result >= 0
+      ensures result < 2 * p
+      ensures result == max_split_score(a, p)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

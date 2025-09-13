@@ -1,0 +1,38 @@
+vc-description: |-
+  Given N apple trees numbered 1 to N in a row, find the minimum number of inspectors
+  needed to inspect all trees. Each inspector at position i covers trees from (i-D) to (i+D).
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(n: int, d: int) -> bool {
+      n >= 1 && n <= 20 && d >= 1 && d <= 20
+  }
+  
+  spec fn coverage_range(position: int, d: int) -> (int, int) {
+      (position - d, position + d)
+  }
+  
+  spec fn trees_covered(n: int, d: int, inspectors: int) -> bool {
+      inspectors >= 1 && inspectors <= n && inspectors == ((n - 1) / (2 * d + 1)) + 1
+  }
+
+vc-spec: |-
+  fn min_inspectors(n: int, d: int) -> (result: int)
+      requires valid_input(n, d)
+      ensures trees_covered(n, d, result)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

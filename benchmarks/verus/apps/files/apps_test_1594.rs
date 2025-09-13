@@ -1,0 +1,60 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn sum_playlist_duration(songs: Seq<(int, int)>, n: int) -> int
+  requires n >= 0
+  requires songs.len() >= n
+  requires forall|i: int| 0 <= i < n ==> songs[i].0 > 0 && songs[i].1 > 0
+  decreases n
+{
+  if n == 0 {
+    0
+  } else {
+    songs[n-1].0 * songs[n-1].1 + sum_playlist_duration(songs, n-1)
+  }
+}
+
+spec fn cumulative_duration_at_song(songs: Seq<(int, int)>, song_idx: int) -> int
+  requires song_idx >= -1
+  requires songs.len() > song_idx
+  requires forall|i: int| 0 <= i <= song_idx ==> songs[i].0 > 0 && songs[i].1 > 0
+  decreases song_idx + 1
+{
+  if song_idx == -1 {
+    0
+  } else {
+    songs[song_idx].0 * songs[song_idx].1 + cumulative_duration_at_song(songs, song_idx - 1)
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int, m: int, songs: Seq<(int, int)>, queries: Seq<int>) -> (result: Seq<int>)
+  requires n >= 0
+  requires m >= 0
+  requires songs.len() == n
+  requires queries.len() == m
+  requires forall|i: int| 0 <= i < n ==> songs[i].0 > 0 && songs[i].1 > 0
+  requires forall|i: int| 0 <= i < m - 1 ==> queries[i] < queries[i + 1]
+  requires forall|i: int| 0 <= i < m ==> queries[i] >= 1
+  requires m == 0 || queries[m-1] <= sum_playlist_duration(songs, n)
+  ensures result.len() == m
+  ensures forall|i: int| 0 <= i < m ==> 1 <= result[i] <= n
+  ensures forall|i: int| 0 <= i < m ==> queries[i] <= cumulative_duration_at_song(songs, result[i] - 1)
+  ensures forall|i: int| 0 <= i < m ==> result[i] == 1 || queries[i] > cumulative_duration_at_song(songs, result[i] - 2)
+// </vc-spec>
+// <vc-code>
+{
+  assume(false);
+  Seq::empty()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

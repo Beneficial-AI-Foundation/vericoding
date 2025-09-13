@@ -1,0 +1,55 @@
+vc-description: |-
+  Given two rectangles with width W, where Rectangle 1 spans horizontally [a, a+W] 
+  and Rectangle 2 spans horizontally [b, b+W], find the minimum horizontal distance 
+  Rectangle 2 must be moved so that the two rectangles connect (overlap or touch).
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(w: int, a: int, b: int) -> bool {
+      w >= 1 && a >= 1 && b >= 1
+  }
+  
+  spec fn abs_diff(x: int, y: int) -> int {
+      if x >= y { x - y } else { y - x }
+  }
+  
+  spec fn min_move_distance(w: int, a: int, b: int) -> int
+      recommends valid_input(w, a, b)
+  {
+      let distance = abs_diff(a, b);
+      if distance <= w { 0 }
+      else { distance - w }
+  }
+  
+  spec fn rectangles_connect(w: int, a: int, b: int) -> bool
+      recommends valid_input(w, a, b)
+  {
+      abs_diff(a, b) <= w
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(w: int, a: int, b: int) -> (result: int)
+      requires valid_input(w, a, b)
+      ensures 
+          result == min_move_distance(w, a, b) &&
+          result >= 0 &&
+          (rectangles_connect(w, a, b) <==> result == 0)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

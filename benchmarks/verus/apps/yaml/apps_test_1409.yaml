@@ -1,0 +1,44 @@
+vc-description: |-
+  Given n students where each student has participated in ACM ICPC championship y_i times (0 ≤ y_i ≤ 5),
+  form the maximum number of teams such that: each team has exactly 3 students, no student can be on 
+  multiple teams, and each team can participate together at least k more times (since each student can 
+  participate at most 5 times total). Find the maximum number of teams that can be formed.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn count_eligible(participations: Seq<int>, k: int) -> int
+      requires 0 <= k <= 5
+      requires forall|i: int| 0 <= i < participations.len() ==> 0 <= participations[i] <= 5
+      decreases participations.len()
+  {
+      if participations.len() == 0 {
+          0
+      } else {
+          (if 5 - participations[0] >= k { 1 } else { 0 }) + count_eligible(participations.subrange(1, participations.len() as int), k)
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, k: int, participations: Seq<int>) -> (result: int)
+      requires 0 <= k <= 5
+      requires n == participations.len()
+      requires forall|i: int| 0 <= i < participations.len() ==> 0 <= participations[i] <= 5
+      ensures result == (count_eligible(participations, k) / 3)
+      ensures result >= 0
+
+vc-code: |-
+  {
+      assume(false);
+      0
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

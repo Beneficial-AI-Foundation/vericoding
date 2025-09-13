@@ -1,0 +1,37 @@
+vc-description: |-
+  Execute a sequence of commands (for n, end, add) that manipulate an integer variable x starting at 0.
+  Commands form valid nested loops. Check if x exceeds 2^32 - 1 at any point during execution.
+  Return "OVERFLOW!!!" if overflow occurs, otherwise return the final value of x.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(lines: Seq<String>) -> bool {
+      lines.len() > 0
+  }
+  
+  spec fn max_value() -> int { 4294967295 }
+  
+  spec fn is_overflow(x: int) -> bool {
+      x > max_value()
+  }
+
+vc-spec: |-
+  fn solve(input: String) -> (result: String)
+      requires valid_input(seq![input])
+      ensures result@ =~= "OVERFLOW!!!"@ || !(result@ =~= "OVERFLOW!!!"@)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

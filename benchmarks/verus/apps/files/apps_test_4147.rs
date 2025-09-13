@@ -1,0 +1,127 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input(input: &str) -> bool {
+    exists|lines: Seq<&str>| lines == split_lines(input) &&
+    lines.len() >= 2 &&
+    exists|n: nat, a: nat, b: nat, c: nat| 
+        parse_first_line_bamboo(lines[0]) == (n, a, b, c) &&
+        3 <= n <= 8 &&
+        1 <= c && c < b && b < a && a <= 1000 &&
+        lines.len() >= n + 1 &&
+        forall|i: int| 1 <= i <= n ==> 
+            exists|li: nat| parse_bamboo_length(lines[i as int]) == li && 1 <= li && li <= 1000
+}
+
+spec fn valid_assignment(input: &str, assignment: Seq<nat>) -> bool {
+    exists|lines: Seq<&str>, n: nat, a: nat, b: nat, c: nat| 
+        lines == split_lines(input) &&
+        parse_first_line_bamboo(lines[0]) == (n, a, b, c) &&
+        assignment.len() == n &&
+        (forall|i: int| 0 <= i && i < n ==> assignment[i] < 4) &&
+        has_all_three_groups(assignment)
+}
+
+spec fn has_all_three_groups(assignment: Seq<nat>) -> bool {
+    (exists|i: int| 0 <= i && i < assignment.len() && assignment[i] == 1) &&
+    (exists|i: int| 0 <= i && i < assignment.len() && assignment[i] == 2) &&
+    (exists|i: int| 0 <= i && i < assignment.len() && assignment[i] == 3)
+}
+
+spec fn calculate_assignment_cost(input: &str, assignment: Seq<nat>) -> nat {
+    composition_cost(assignment) + adjustment_cost(input, assignment)
+}
+
+spec fn composition_cost(assignment: Seq<nat>) -> nat {
+    let group_a_size = count_group_members(assignment, 1);
+    let group_b_size = count_group_members(assignment, 2);
+    let group_c_size = count_group_members(assignment, 3);
+    (if group_a_size > 0 { (group_a_size - 1) * 10 } else { 0 }) +
+    (if group_b_size > 0 { (group_b_size - 1) * 10 } else { 0 }) +
+    (if group_c_size > 0 { (group_c_size - 1) * 10 } else { 0 })
+}
+
+spec fn adjustment_cost(input: &str, assignment: Seq<nat>) -> nat {
+    let lines = split_lines(input);
+    let (n, a, b, c) = parse_first_line_bamboo(lines[0]);
+    let sum_a = calculate_group_sum(input, assignment, 1);
+    let sum_b = calculate_group_sum(input, assignment, 2);
+    let sum_c = calculate_group_sum(input, assignment, 3);
+    abs_diff(sum_a, a) + abs_diff(sum_b, b) + abs_diff(sum_c, c)
+}
+
+spec fn count_group_members(assignment: Seq<nat>, group: nat) -> nat
+    decreases assignment.len()
+{
+    if assignment.len() == 0 {
+        0
+    } else {
+        (if assignment[0] == group { 1 } else { 0 }) + count_group_members(assignment.subrange(1, assignment.len() as int), group)
+    }
+}
+
+spec fn calculate_group_sum(input: &str, assignment: Seq<nat>, group: nat) -> nat {
+    0
+}
+
+spec fn abs_diff(a: nat, b: nat) -> nat {
+    if a >= b { a - b } else { b - a }
+}
+
+spec fn split_lines(s: &str) -> Seq<&str> {
+    seq![]
+}
+
+spec fn parse_first_line_bamboo(line: &str) -> (nat, nat, nat, nat) {
+    (0, 0, 0, 0)
+}
+
+spec fn parse_bamboo_length(line: &str) -> nat {
+    0
+}
+
+fn int_to_string(n: nat) -> String {
+    format!("{}", n)
+}
+
+spec fn string_to_int(s: &str) -> nat {
+    0
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(stdin_input: &str) -> (result: String)
+    requires 
+        stdin_input.len() > 0,
+        stdin_input.as_bytes()[stdin_input.len()-1] == b'\n' || 
+            exists|i: int| 0 <= i && i < stdin_input.len() && stdin_input.as_bytes()[i] == b'\n',
+        valid_input(&(stdin_input.to_string() + (if stdin_input.as_bytes()[stdin_input.len()-1] == b'\n' { "" } else { "\n" }))),
+    ensures 
+        result.len() > 0,
+        result.as_bytes()[result.len()-1] == b'\n',
+        exists|val: nat| val >= 0 && result == (int_to_string(val) + "\n"),
+        forall|assignment: Seq<nat>| valid_assignment(&(stdin_input.to_string() + (if stdin_input.as_bytes()[stdin_input.len()-1] == b'\n' { "" } else { "\n" })), assignment) ==> {
+            let input_with_newline = stdin_input.to_string() + (if stdin_input.as_bytes()[stdin_input.len()-1] == b'\n' { "" } else { "\n" });
+            let result_without_newline = result.substring(0, result.len() - 1);
+            string_to_int(&result_without_newline) <= calculate_assignment_cost(&input_with_newline, assignment)
+        },
+    decreases *
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

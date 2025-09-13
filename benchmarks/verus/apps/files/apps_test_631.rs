@@ -1,0 +1,81 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input_format(s: Seq<char>) -> bool {
+    s.len() >= 7 && 
+    exists|pos: int| 0 < pos < s.len() && s[pos] == '\n'
+}
+
+spec fn get_test_count(stdin_input: Seq<char>) -> int {
+    if valid_input_format(stdin_input) { 1 } else { 0 }
+}
+
+spec fn get_array_sum(stdin_input: Seq<char>, test_idx: int) -> int {
+    if valid_input_format(stdin_input) && 0 <= test_idx < get_test_count(stdin_input) { 0 } else { 0 }
+}
+
+spec fn get_target_m(stdin_input: Seq<char>, test_idx: int) -> int {
+    if valid_input_format(stdin_input) && 0 <= test_idx < get_test_count(stdin_input) { 0 } else { 0 }
+}
+
+spec fn expected_output_for_input(stdin_input: Seq<char>) -> Seq<char> {
+    if valid_input_format(stdin_input) {
+        compute_expected_output(stdin_input, 0, get_test_count(stdin_input))
+    } else {
+        seq![]
+    }
+}
+
+spec fn behavioral_correctness(stdin_input: Seq<char>, result: Seq<char>) -> bool {
+    if valid_input_format(stdin_input) {
+        let T = get_test_count(stdin_input);
+        count_responses(result) == T &&
+        (forall|i: int| 0 <= i < T ==> {
+            let array_sum = get_array_sum(stdin_input, i);
+            let target_m = get_target_m(stdin_input, i);
+            let response = get_response_at_index(result, i);
+            (array_sum == target_m <==> response == seq!['Y', 'E', 'S', '\n']) &&
+            (array_sum != target_m <==> response == seq!['N', 'O', '\n'])
+        })
+    } else {
+        false
+    }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn compute_expected_output(stdin_input: Seq<char>, start: int, count: int) -> Seq<char> {
+    seq![]
+}
+
+spec fn count_responses(result: Seq<char>) -> int {
+    0
+}
+
+spec fn get_response_at_index(result: Seq<char>, idx: int) -> Seq<char> {
+    seq![]
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(stdin_input: &str) -> (result: String)
+    requires 
+        valid_input_format(stdin_input@),
+        stdin_input@.len() > 0,
+        stdin_input@ != seq![],
+        exists|pos: int| 0 <= pos < stdin_input@.len() && stdin_input@[pos] == '\n'
+    ensures behavioral_correctness(stdin_input@, result@)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    String::new()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

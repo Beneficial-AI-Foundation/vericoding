@@ -1,0 +1,46 @@
+vc-description: |-
+  Given an integer N (1 ≤ N ≤ 100), count how many divisors of N! have exactly 75 divisors.
+  A number has exactly 75 divisors if and only if its prime factorization has one of these forms:
+  - p^74 (where p is prime)
+  - p^24 × q^2 (where p, q are distinct primes)  
+  - p^14 × q^4 (where p, q are distinct primes)
+  - p^4 × q^4 × r^2 (where p, q, r are distinct primes)
+  
+  /* Abstract specification - represents the count of divisors of N! that have exactly 75 divisors */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(n: int) -> bool {
+    1 <= n <= 100
+  }
+  
+  spec fn count_divisors_with_75_factors(n: int) -> int 
+    recommends valid_input(n)
+  {
+    0
+  }
+  
+  spec fn valid_output(result: int) -> bool {
+    result >= 0
+  }
+
+vc-spec: |-
+  fn solve(n: int) -> (result: int)
+    requires valid_input(n)
+    ensures valid_output(result)
+
+vc-code: |-
+  {
+    assume(false);
+    unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

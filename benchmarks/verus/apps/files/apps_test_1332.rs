@@ -1,0 +1,54 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(coins: Seq<int>) -> bool {
+    coins.len() == 5 && forall|i: int| 0 <= i < coins.len() ==> 0 <= coins[i] <= 100
+}
+
+spec fn total_coins(coins: Seq<int>) -> int
+    recommends coins.len() == 5
+{
+    coins[0] + coins[1] + coins[2] + coins[3] + coins[4]
+}
+
+spec fn has_valid_solution(coins: Seq<int>) -> bool
+    recommends valid_input(coins)
+{
+    let total = total_coins(coins);
+    total > 0 && total % 5 == 0
+}
+
+spec fn compute_result(coins: Seq<int>) -> int
+    recommends valid_input(coins)
+{
+    let total = total_coins(coins);
+    if total > 0 && total % 5 == 0 { total / 5 } else { -1 }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(coins: Seq<int>) -> (result: int)
+  requires
+      valid_input(coins),
+  ensures
+      result == compute_result(coins),
+      has_valid_solution(coins) ==> result == total_coins(coins) / 5,
+      !has_valid_solution(coins) ==> result == -1,
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

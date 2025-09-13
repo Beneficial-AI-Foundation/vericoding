@@ -1,0 +1,45 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input(a: int, b: int, c: int) -> bool {
+    1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100
+}
+
+spec fn is_triangle(a: int, b: int, c: int) -> bool {
+    a + b > c && a + c > b && b + c > a
+}
+
+spec fn min_operations_needed(a: int, b: int, c: int) -> int
+    recommends valid_input(a, b, c)
+{
+    let max_val = if a >= b && a >= c { a } else if b >= c { b } else { c };
+    let sum_of_other_two = a + b + c - max_val;
+    if max_val - sum_of_other_two + 1 > 0 { max_val - sum_of_other_two + 1 } else { 0 }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(a: int, b: int, c: int) -> (result: int)
+    requires 
+        valid_input(a, b, c)
+    ensures 
+        result >= 0,
+        result == min_operations_needed(a, b, c),
+        (result == 0) <==> is_triangle(a, b, c)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    0
+}
+// </vc-code>
+
+
+}
+
+fn main() {}
