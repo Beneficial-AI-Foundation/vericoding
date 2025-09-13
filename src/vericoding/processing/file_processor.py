@@ -118,9 +118,7 @@ def process_spec_file(
             original_code = f.read()
         
         # Apply Lean preprocessing if assume-unformatted-lean is enabled
-        if (config.language == "lean" and 
-            hasattr(config, 'assume_unformatted_lean') and 
-            config.assume_unformatted_lean):
+        if (config.language == "lean" and config.assume_unformatted_lean):
             from ...vericoder import preprocess_lean_file
             original_code = preprocess_lean_file(original_code)
 

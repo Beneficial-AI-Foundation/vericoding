@@ -189,7 +189,7 @@ def setup_configuration(args) -> ProcessingConfig:
     language_config = available_languages[args.language]
 
     # Validate assume-unformatted-lean argument
-    if getattr(args, 'assume_unformatted_lean', False) and args.language != 'lean':
+    if args.assume_unformatted_lean and args.language != 'lean':
         print(f"Error: --assume-unformatted-lean can only be used with Lean language, not '{args.language}'")
         sys.exit(1)
 
@@ -266,7 +266,7 @@ def setup_configuration(args) -> ProcessingConfig:
         api_rate_limit_delay=args.api_rate_limit_delay,
         llm=args.llm,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
-        assume_unformatted_lean=getattr(args, 'assume_unformatted_lean', False),
+        assume_unformatted_lean=args.assume_unformatted_lean,
     )
 
     print("\nConfiguration:")
