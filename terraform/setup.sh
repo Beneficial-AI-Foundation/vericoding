@@ -31,12 +31,7 @@ echo 'export PATH="$HOME/.local/bin:$HOME/.elan/bin:$PATH"' >> ~/.bashrc
 # Source the new PATH
 export PATH="$HOME/.local/bin:$HOME/.elan/bin:$PATH"
 
-# Clone the vericoding repository
-echo "Cloning vericoding repository..."
-cd ~
-git clone https://github.com/Beneficial-AI-Foundation/vericoding
-
-# Get lake cache
+# Get lake cache (assumes repo is already cloned)
 echo "Getting lake cache (this may take a few minutes)..."
 cd ~/vericoding
 lake exe cache get
@@ -52,7 +47,7 @@ echo "=== Setup Complete! ==="
 echo "✅ uv installed: $(which uv)"
 echo "✅ elan installed: $(which elan)"
 echo "✅ lake installed: $(which lake)"
-echo "✅ vericoding repo cloned"
+echo "✅ vericoding repo ready"
 echo "✅ lake cache downloaded"
 echo ""
 echo "Next steps:"
