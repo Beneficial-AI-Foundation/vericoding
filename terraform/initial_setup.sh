@@ -12,9 +12,10 @@ echo "Cloning vericoding repository..."
 sudo apt-get update
 sudo apt-get install -y git
 
-# Clone the vericoding repository (theo-experiments branch)
-cd ~
-git clone -b theo-experiments https://github.com/Beneficial-AI-Foundation/vericoding
+# Clone the vericoding repository (theo-experiments branch) to ubuntu user's home
+cd /home/ubuntu
+sudo -u ubuntu git clone -b theo-experiments https://github.com/Beneficial-AI-Foundation/vericoding
+chown -R ubuntu:ubuntu /home/ubuntu/vericoding
 
 echo ""
 echo "✅ Repository cloned to ~/vericoding (theo-experiments branch)"
