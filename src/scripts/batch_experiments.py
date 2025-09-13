@@ -194,6 +194,65 @@ def generate_experiment_plan(file_limit: int = None):
     print(f"Average time per experiment: {total_time_hours/total_experiments:.1f} hours")
 
 
+def run_specific_experiments(file_limit: int = None, experiment_numbers: list = None):
+    """Run only the specified experiments."""
+    time_per_file, input_tokens_per_file, output_tokens_per_file = calculate_baseline_metrics()
+    
+    # Create experiment matrix
+    experiments = []
+    experiment_id = 0
+    for dataset in DATASETS:
+        for model in MODELS:
+            experiments.append((experiment_id, dataset, model))
+            experiment_id += 1
+    
+    # Filter experiments based on provided numbers
+    selected_experiments = []
+    for exp_num in experiment_numbers:
+        if 0 <= exp_num < len(experiments):
+            selected_experiments.append(experiments[exp_num])
+        else:
+            print(f"Warning: Experiment {exp_num} doesn't exist (max: {len(experiments)-1})")
+    
+    if not selected_experiments:
+        print("No valid experiments to run")
+        return
+    
+    print(f"=== RUNNING {len(selected_experiments)} SELECTED EXPERIMENTS ===")
+    
+    for exp_id, dataset, model in selected_experiments:
+        # Apply file limit if specified
+        actual_files = min(dataset.file_count, file_limit) if file_limit else dataset.file_count
+        
+        command = f"uv run src/vericoder.py lean {dataset.path} --llm-provider {model.provider}"
+        
+        # Add assume-unformatted-lean for "poor" datasets (unformatted Lean files)
+        if "poor" in dataset.path:
+            command += " --assume-unformatted-lean"
+        
+        # Add limit if specified
+        if file_limit and file_limit < dataset.file_count:
+            command += f" --limit {file_limit}"
+        
+        cost = estimate_cost(model, actual_files, input_tokens_per_file, output_tokens_per_file)
+        time_hours = estimate_time(actual_files, time_per_file)
+        
+        print(f"Experiment {exp_id}: {dataset.name} + {model.name}")
+        print(f"  Files: {actual_files}, Est. cost: ${cost:.2f}, Est. time: {time_hours:.1f}h")
+        print(f"  Command: {command}")
+        print(f"  Executing...")
+        
+        try:
+            result = subprocess.run(command.split(), check=True, cwd=Path(__file__).parent.parent.parent)
+            print(f"  ✓ Completed successfully")
+        except subprocess.CalledProcessError as e:
+            print(f"  ✗ Failed with exit code {e.returncode}")
+        except KeyboardInterrupt:
+            print(f"  ⚠ Interrupted by user")
+            return
+        
+        print()
+
 
 def main():
     """Main entry point."""
@@ -201,6 +260,7 @@ def main():
     
     parser = argparse.ArgumentParser(description="Batch experiment runner for vericoding")
     parser.add_argument("--cost-limit", type=float, help="Maximum total cost in USD (calculates file limit per experiment)")
+    parser.add_argument("--run", help="Comma-separated list of experiment numbers to run (0-based index, e.g., '0,5,10')")
     
     args = parser.parse_args()
     
@@ -213,7 +273,21 @@ def main():
         print(f"Budget: ${args.cost_limit} -> File limit: {file_limit} files per experiment")
         print()
     
-    generate_experiment_plan(file_limit)
+    # Parse run parameter if provided
+    run_experiments_list = None
+    if args.run:
+        try:
+            run_experiments_list = [int(x.strip()) for x in args.run.split(',')]
+            print(f"Running specific experiments: {run_experiments_list}")
+            print()
+        except ValueError:
+            print("Error: --run parameter must be comma-separated integers (e.g., '0,5,10')")
+            return
+    
+    if run_experiments_list:
+        run_specific_experiments(file_limit, run_experiments_list)
+    else:
+        generate_experiment_plan(file_limit)
 
 
 if __name__ == "__main__":
