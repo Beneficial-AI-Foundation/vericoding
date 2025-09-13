@@ -45,6 +45,40 @@ from vericoding.utils import (
 load_environment()
 
 
+def preprocess_lean_file(content: str) -> str:
+    """
+    Preprocess Lean file content by wrapping each 'sorry' with vc-theorems tags.
+    
+    Args:
+        content: The original Lean file content
+        
+    Returns:
+        The preprocessed content with sorry statements wrapped in vc-theorems tags
+        
+    Raises:
+        ValueError: If the content already contains <vc-theorems> tags
+    """
+    # Check if content already contains vc-theorems tags
+    if "<vc-theorems>" in content:
+        raise ValueError("File already contains <vc-theorems> tags - cannot preprocess")
+    
+    lines = content.split('\n')
+    processed_lines = []
+    
+    for line in lines:
+        # Check if this line contains 'sorry'
+        if 'sorry' in line:
+            # Add the opening tag before the line
+            processed_lines.append('-- <vc-theorems>')
+            processed_lines.append(line)
+            # Add the closing tag after the line
+            processed_lines.append('-- </vc-theorems>')
+        else:
+            processed_lines.append(line)
+    
+    return '\n'.join(processed_lines)
+
+
 def parse_arguments():
     """Parse command-line arguments."""
     # Get available languages for argument choices
@@ -140,6 +174,12 @@ Examples:
         help="Process only the first N files from the dataset (default: process all files)",
     )
 
+    parser.add_argument(
+        "--assume-unformatted-lean",
+        action="store_true",
+        help="For Lean files, wrap each 'sorry' with vc-theorems tags (only valid for Lean language)",
+    )
+
     return parser.parse_args()
 
 
@@ -147,6 +187,11 @@ def setup_configuration(args) -> ProcessingConfig:
     """Set up processing configuration from command line arguments."""
     available_languages = ProcessingConfig.get_available_languages()
     language_config = available_languages[args.language]
+
+    # Validate assume-unformatted-lean argument
+    if getattr(args, 'assume_unformatted_lean', False) and args.language != 'lean':
+        print(f"Error: --assume-unformatted-lean can only be used with Lean language, not '{args.language}'")
+        sys.exit(1)
 
     print(
         f"=== {language_config.name} Specification-to-Code Processing Configuration ===\n"
@@ -221,6 +266,7 @@ def setup_configuration(args) -> ProcessingConfig:
         api_rate_limit_delay=args.api_rate_limit_delay,
         llm=args.llm,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
+        assume_unformatted_lean=getattr(args, 'assume_unformatted_lean', False),
     )
 
     print("\nConfiguration:")
@@ -376,6 +422,7 @@ def log_experiment_results_to_wandb(
     successful = [r for r in results if r.success]
     failed = [r for r in results if not r.success and not r.has_bypass]
     bypassed = [r for r in results if r.has_bypass]
+    original_compilation_failed = [r for r in results if getattr(r, 'original_compilation_failed', False)]
 
     # Get global token statistics for summary
     token_stats = get_global_token_stats()
@@ -387,6 +434,7 @@ def log_experiment_results_to_wandb(
         "results/successful_files": len(successful), 
         "results/failed_files": len(failed),
         "results/bypassed_files": len(bypassed),
+        "results/original_compilation_failed_files": len(original_compilation_failed),
         "results/success_rate_percent": success_percentage,
         
         # Timing information
