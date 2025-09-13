@@ -41,7 +41,7 @@ resource "aws_instance" "vericoding_servers" {
   vpc_security_group_ids = ["sg-0f7a3df675cb3fd68"]
   subnet_id             = "subnet-0b7f1623a2aa277b2"
   
-  user_data = base64encode(file("${path.module}/setup.sh"))
+  # No user_data - we'll run setup manually after instances are created
 
   # Add more storage if needed
   root_block_device {
@@ -54,18 +54,6 @@ resource "aws_instance" "vericoding_servers" {
     Name = "durian${count.index + 1}"
     Purpose = "vericoding-experiments"
     Server-ID = count.index + 1
-  }
-
-  # Wait for instance to be ready
-  provisioner "remote-exec" {
-    inline = ["echo 'Instance is ready'"]
-    
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("~/Downloads/aws-ec2-20250224.pem")
-      host        = self.public_ip
-    }
   }
 }
 
