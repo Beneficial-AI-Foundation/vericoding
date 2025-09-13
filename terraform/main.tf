@@ -69,23 +69,15 @@ resource "aws_instance" "vericoding_servers" {
   }
 }
 
-# Allocate and associate elastic IPs for each NEW instance
-resource "aws_eip" "server_ips" {
-  count    = 10
-  domain   = "vpc"
-  instance = aws_instance.vericoding_servers[count.index].id
-
-  tags = {
-    Name = "durian${count.index + 1}-ip"
-  }
-}
+# Note: Using dynamic public IPs instead of Elastic IPs to avoid AWS limits
+# Each instance will get a public IP automatically
 
 # Output the IP addresses and instance IDs
 output "instance_details" {
   value = {
     for i in range(10) : i + 1 => {
       instance_id = aws_instance.vericoding_servers[i].id
-      public_ip   = aws_eip.server_ips[i].public_ip
+      public_ip   = aws_instance.vericoding_servers[i].public_ip
       name        = aws_instance.vericoding_servers[i].tags.Name
     }
   }
@@ -94,7 +86,7 @@ output "instance_details" {
 output "ssh_config" {
   value = join("\n\n", [
     for i in range(10) : 
-    "Host ${aws_instance.vericoding_servers[i].tags.Name}\n    User ubuntu\n    HostName ${aws_eip.server_ips[i].public_ip}\n    IdentityFile ~/Downloads/aws-ec2-20250224.pem"
+    "Host ${aws_instance.vericoding_servers[i].tags.Name}\n    User ubuntu\n    HostName ${aws_instance.vericoding_servers[i].public_ip}\n    IdentityFile ~/Downloads/aws-ec2-20250224.pem"
   ])
   description = "SSH config entries for durian1-durian10"
 }
