@@ -1,0 +1,43 @@
+import Std
+
+open Std.Do
+
+/-!
+{
+  "name": "dafny-synthesis_task_id_461_CountUppercase",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_461_CountUppercase",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods": 
+}
+-/
+
+namespace DafnyBenchmarks
+
+/--
+Predicate that checks if a character is uppercase (ASCII value between 65 and 90)
+-/
+def IsUpperCase (c : Char) : Bool :=
+  65 ≤ c.toNat ∧ c.toNat ≤ 90
+
+/--
+Counts the number of uppercase characters in a string.
+Returns a non-negative count equal to the size of the set of uppercase characters.
+-/
+def CountUppercase (s : String) : Int :=
+  sorry
+
+/--
+Specification for CountUppercase:
+- The returned count is non-negative
+- The count equals the number of uppercase characters in the string
+-/
+theorem CountUppercase_spec (s : String) :
+  let count := CountUppercase s
+  count ≥ 0 ∧
+  count = (s.toList.filterMap (fun c => if IsUpperCase c then some c else none)).length
+  := sorry
+
+end DafnyBenchmarks
