@@ -146,74 +146,11 @@ def generate_experiment_plan():
     print(f"Average time per experiment: {total_time_hours/total_experiments:.1f} hours")
 
 
-def run_experiments(dry_run: bool = True, dataset_filter: str = None, model_filter: str = None):
-    """Run the experiments."""
-    time_per_file, input_tokens_per_file, output_tokens_per_file = calculate_baseline_metrics()
-    
-    print("=== RUNNING EXPERIMENTS ===")
-    if dry_run:
-        print("DRY RUN MODE - Commands will be printed but not executed")
-    print()
-    
-    experiments_run = 0
-    
-    for dataset in DATASETS:
-        if dataset_filter and dataset_filter not in dataset.name:
-            continue
-            
-        for model in MODELS:
-            if model_filter and model_filter not in model.name:
-                continue
-                
-            cost = estimate_cost(model, dataset.file_count, input_tokens_per_file, output_tokens_per_file)
-            time_hours = estimate_time(dataset.file_count, time_per_file)
-            
-            command = [
-                "uv", "run", "src/vericoder.py", "lean", dataset.path,
-                "--llm-provider", model.provider
-            ]
-            
-            print(f"Experiment {experiments_run + 1}: {dataset.name} + {model.name}")
-            print(f"  Files: {dataset.file_count}, Est. cost: ${cost:.2f}, Est. time: {time_hours:.1f}h")
-            print(f"  Command: {' '.join(command)}")
-            
-            if not dry_run:
-                try:
-                    result = subprocess.run(command, check=True, cwd=Path(__file__).parent.parent.parent)
-                    print(f"  ✓ Completed successfully")
-                except subprocess.CalledProcessError as e:
-                    print(f"  ✗ Failed with exit code {e.returncode}")
-                except KeyboardInterrupt:
-                    print(f"  ⚠ Interrupted by user")
-                    return experiments_run
-            else:
-                print(f"  (dry run - not executed)")
-            
-            print()
-            experiments_run += 1
-    
-    print(f"Completed {experiments_run} experiments")
-    return experiments_run
-
 
 def main():
     """Main entry point."""
-    import argparse
-    
-    parser = argparse.ArgumentParser(description="Batch experiment runner for vericoding")
-    parser.add_argument("--run", action="store_true", help="Actually run experiments (default is dry run)")
-    parser.add_argument("--dataset", help="Filter by dataset name (substring match)")
-    parser.add_argument("--model", help="Filter by model name (substring match)")
-    parser.add_argument("--plan-only", action="store_true", help="Only show the experiment plan, don't run")
-    
-    args = parser.parse_args()
-    
-    if args.plan_only:
-        generate_experiment_plan()
-    else:
-        generate_experiment_plan()
-        print()
-        run_experiments(dry_run=not args.run, dataset_filter=args.dataset, model_filter=args.model)
+
+    generate_experiment_plan()
 
 
 if __name__ == "__main__":
