@@ -1,0 +1,46 @@
+vc-description: |-
+  Given two integers a and b representing counts of even and odd steps,
+  determine if there exists a contiguous interval [l,r] of positive integers
+  containing exactly a even-numbered steps and b odd-numbered steps.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(a: int, b: int) -> bool {
+      0 <= a <= 100 && 0 <= b <= 100
+  }
+  
+  spec fn valid_output(result: &str) -> bool {
+      result == "YES" || result == "NO"
+  }
+  
+  spec fn interval_exists(a: int, b: int) -> bool {
+      abs_spec(a - b) <= 1 && a + b > 0
+  }
+  
+  spec fn abs_spec(x: int) -> int {
+      if x >= 0 { x } else { -x }
+  }
+
+vc-spec: |-
+  fn solve(a: int, b: int) -> (result: String)
+      requires 
+          valid_input(a, b)
+      ensures 
+          valid_output(&result),
+          (result == "YES") <==> interval_exists(a, b)
+
+vc-code: |-
+  {
+      assume(false);
+      String::new()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

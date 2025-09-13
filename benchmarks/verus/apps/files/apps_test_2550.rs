@@ -1,0 +1,59 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(n: int, m: int, scores: Seq<int>) -> bool {
+    n >= 1 && m >= 1 && scores.len() == n &&
+    forall|i: int| 0 <= i < scores.len() ==> 0 <= scores[i] <= m
+}
+
+spec fn sum(nums: Seq<int>) -> int
+    decreases nums.len()
+{
+    if nums.len() == 0 {
+        0int
+    } else {
+        nums[0] + sum(nums.subrange(1, nums.len() as int))
+    }
+}
+
+spec fn min(a: int, b: int) -> int {
+    if a <= b { a } else { b }
+}
+
+spec fn valid_redistribution(original: Seq<int>, redistributed: Seq<int>, m: int) -> bool {
+    redistributed.len() == original.len() &&
+    sum(redistributed) == sum(original) &&
+    forall|i: int| 0 <= i < redistributed.len() ==> 0 <= redistributed[i] <= m
+}
+
+spec fn max_possible_first_score(n: int, m: int, scores: Seq<int>) -> int
+    requires valid_input(n, m, scores)
+{
+    min(sum(scores), m)
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int, m: int, scores: Seq<int>) -> (result: int)
+    requires valid_input(n, m, scores)
+    ensures 
+        result == max_possible_first_score(n, m, scores) &&
+        result == min(sum(scores), m) &&
+        exists|redistributed: Seq<int>| (valid_redistribution(scores, redistributed, m) && 
+            redistributed[0] == result)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    0int
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

@@ -1,0 +1,71 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(s: Seq<char>, n: int) -> bool {
+  0 <= n <= 26
+}
+
+spec fn get_comparison_char(n: int) -> char {
+  let alphabet: Seq<char> = Seq::new(27, |i: int| if i < 26 { ('a' as u8 + i as u8) as char } else { '|' });
+  if 0 <= n < alphabet.len() { alphabet[n] } else { '|' }
+}
+
+spec fn is_lowercase(c: char) -> bool {
+  'a' <= c && c <= 'z'
+}
+
+spec fn is_uppercase(c: char) -> bool {
+  'A' <= c && c <= 'Z'
+}
+
+spec fn to_lowercase(c: char) -> char {
+  if is_uppercase(c) { ((c as u8) - ('A' as u8) + ('a' as u8)) as char }
+  else { c }
+}
+
+spec fn to_uppercase(c: char) -> char {
+  if is_lowercase(c) { ((c as u8) - ('a' as u8) + ('A' as u8)) as char }
+  else { c }
+}
+
+spec fn transform_string(s: Seq<char>, n: int) -> Seq<char> {
+  let comp_char = get_comparison_char(n);
+  transform_with_comp_char(to_lowercase_string(s), comp_char)
+}
+
+spec fn to_lowercase_string(s: Seq<char>) -> Seq<char>
+  decreases s.len()
+{
+  if s.len() == 0 { Seq::new(0, |_i: int| 'a') }
+  else { Seq::new(1, |_i: int| to_lowercase(s[0])) + to_lowercase_string(s.subrange(1, s.len() as int)) }
+}
+
+spec fn transform_with_comp_char(s: Seq<char>, comp_char: char) -> Seq<char>
+  decreases s.len()
+{
+  if s.len() == 0 { Seq::new(0, |_i: int| 'a') }
+  else if s[0] < comp_char { Seq::new(1, |_i: int| to_uppercase(s[0])) + transform_with_comp_char(s.subrange(1, s.len() as int), comp_char) }
+  else { Seq::new(1, |_i: int| s[0]) + transform_with_comp_char(s.subrange(1, s.len() as int), comp_char) }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(s: Seq<char>, n: int) -> (result: Seq<char>)
+  requires valid_input(s, n)
+  ensures result == transform_string(s, n)
+// </vc-spec>
+// <vc-code>
+{
+  assume(false);
+  Seq::new(0, |_i: int| 'a')
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

@@ -1,0 +1,36 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_deck(deck: Seq<char>) -> bool {
+    forall|i: int| 0 <= i < deck.len() ==> (deck[i] == 'a' || deck[i] == 'b' || deck[i] == 'c')
+}
+
+spec fn valid_input(a: Seq<char>, b: Seq<char>, c: Seq<char>) -> bool {
+    valid_deck(a) && valid_deck(b) && valid_deck(c)
+}
+
+spec fn valid_winner(winner: char) -> bool {
+    winner == 'A' || winner == 'B' || winner == 'C'
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(a: Seq<char>, b: Seq<char>, c: Seq<char>) -> (result: char)
+    requires valid_input(a, b, c)
+    ensures valid_winner(result)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    'A'
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

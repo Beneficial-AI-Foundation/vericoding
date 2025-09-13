@@ -1,0 +1,50 @@
+vc-description: |-
+  Given a string of digits representing a positive integer, find the maximum number of valid numbers 
+  divisible by 3 that can be obtained by making vertical cuts between adjacent digits.
+  Numbers cannot have leading zeros (except single digit "0"), and a number is divisible by 3 
+  if the sum of its digits is divisible by 3.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(input: Seq<char>) -> bool {
+      input.len() > 0 &&
+      input[input.len() - 1] == '\n' &&
+      input.len() >= 2 &&
+      (forall|i: int| 0 <= i < input.len() - 1 ==> '0' <= input[i] <= '9') &&
+      (input[0] != '0' || input.len() == 2)
+  }
+  
+  spec fn max_divisible_by_3_segments(s: Seq<char>) -> int {
+      if s.len() == 0 {
+          0
+      } else {
+          /* This would recursively calculate the maximum number of valid segments */
+          /* For now, return a bounded value based on string length */
+          s.len() as int
+      }
+  }
+
+vc-spec: |-
+  fn solve(input: Seq<char>) -> (result: Seq<char>)
+      requires valid_input(input)
+      ensures 
+          result.len() > 0 &&
+          result[result.len() - 1] == '\n' &&
+          (exists|count: int| 0 <= count <= input.len() - 1) &&
+          (exists|count: int| count == max_divisible_by_3_segments(input.subrange(0, input.len() - 1)))
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

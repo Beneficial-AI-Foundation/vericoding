@@ -1,0 +1,60 @@
+vc-description: |-
+  Given an array of n integers and m queries, determine for each query whether a specified subsegment forms a "ladder".
+  A ladder is a sequence that first non-decreases, then non-increases. Formally, there exists a position x such that 
+  elements are non-decreasing up to position x, then non-increasing from position x onward.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn is_ladder(arr: Seq<int>, l: int, r: int) -> bool
+    recommends 0 <= l <= r < arr.len()
+  {
+    if l == r {
+      true
+    } else {
+      exists|k: int| l <= k <= r && 
+        is_non_decreasing(arr, l, k) && 
+        is_non_increasing(arr, k, r)
+    }
+  }
+  
+  spec fn is_non_decreasing(arr: Seq<int>, start: int, end: int) -> bool
+    recommends 0 <= start <= end < arr.len()
+  {
+    forall|i: int| start <= i < end ==> arr[i] <= arr[i+1]
+  }
+  
+  spec fn is_non_increasing(arr: Seq<int>, start: int, end: int) -> bool
+    recommends 0 <= start <= end < arr.len()
+  {
+    forall|i: int| start <= i < end ==> arr[i] >= arr[i+1]
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, m: int, arr: Seq<int>, queries: Seq<(int, int)>) -> (results: Seq<Seq<char>>)
+    requires 
+      n >= 1 && m >= 1,
+      arr.len() == n,
+      queries.len() == m,
+      forall|i: int| 0 <= i < m ==> 1 <= queries[i].0 <= queries[i].1 <= n
+    ensures 
+      results.len() == m,
+      forall|i: int| 0 <= i < m ==> results[i] == "Yes"@ || results[i] == "No"@,
+      forall|i: int| 0 <= i < m ==> 
+        (results[i] == "Yes"@ <==> is_ladder(arr, queries[i].0 - 1, queries[i].1 - 1))
+
+vc-code: |-
+  {
+    assume(false);
+    unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

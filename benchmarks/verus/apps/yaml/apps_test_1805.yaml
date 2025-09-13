@@ -1,0 +1,44 @@
+vc-description: |-
+  Given n matches, find the minimum number of additional matches needed to form a valid equation a + b = c 
+  where a, b, c are positive integers. Each integer k uses k matches, '+' uses 1 match, '=' uses 1 match.
+  Total matches needed: a + b + c + 2 = 2(a + b) + 2 since c = a + b.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(queries: Seq<int>) -> bool {
+      forall|i: int| 0 <= i < queries.len() ==> queries[i] >= 2
+  }
+  
+  spec fn min_additional_matches(n: int) -> int
+      recommends n >= 2
+  {
+      if n >= 4 { n % 2 } else { 4 - n }
+  }
+  
+  spec fn valid_result(queries: Seq<int>, results: Seq<int>) -> bool
+      recommends valid_input(queries)
+  {
+      results.len() == queries.len() &&
+      forall|i: int| 0 <= i < queries.len() ==> results[i] == min_additional_matches(queries[i])
+  }
+
+vc-spec: |-
+  fn solve(queries: Seq<int>) -> (results: Seq<int>)
+      requires valid_input(queries)
+      ensures valid_result(queries, results)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

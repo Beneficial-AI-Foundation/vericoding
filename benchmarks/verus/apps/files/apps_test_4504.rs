@@ -1,0 +1,48 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn is_even_string(s: Seq<char>) -> bool {
+    s.len() >= 2 && s.len() % 2 == 0 && 
+    s.subrange(0, s.len() as int / 2) == s.subrange(s.len() as int / 2, s.len() as int)
+}
+
+spec fn valid_input(s: Seq<char>) -> bool {
+    s.len() >= 2 && is_even_string(s)
+}
+
+spec fn valid_solution(s: Seq<char>, result: int) -> bool {
+    2 <= result < s.len() && result % 2 == 0 && 
+    is_even_string(s.subrange(0, result))
+}
+
+spec fn is_maximal_solution(s: Seq<char>, result: int) -> bool {
+    valid_solution(s, result) && 
+    forall|k: int| result < k < s.len() && k % 2 == 0 ==> 
+        !is_even_string(s.subrange(0, k))
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(s: Seq<char>) -> (result: int)
+    requires 
+        valid_input(s) &&
+        (exists|k: int| valid_solution(s, k)),
+    ensures 
+        valid_solution(s, result) &&
+        is_maximal_solution(s, result),
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    0
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

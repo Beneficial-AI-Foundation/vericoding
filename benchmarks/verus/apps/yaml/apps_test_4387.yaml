@@ -1,0 +1,46 @@
+vc-description: |-
+  Given a contestant's rating R, determine which contest they are eligible for:
+  ABC for ratings less than 1200, ARC for ratings from 1200 to less than 2800,
+  and AGC for ratings 2800 and above.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_rating(r: int) -> bool {
+      0 <= r <= 4208
+  }
+  
+  spec fn contest_for_rating(r: int) -> Seq<char> {
+      if r < 1200 {
+          seq!['A', 'B', 'C', '\n']
+      } else if r < 2800 {
+          seq!['A', 'R', 'C', '\n']
+      } else {
+          seq!['A', 'G', 'C', '\n']
+      }
+  }
+
+vc-spec: |-
+  fn solve(r: int) -> (result: Seq<char>)
+      requires 
+          valid_rating(r)
+      ensures 
+          result == contest_for_rating(r),
+          r < 1200 ==> result == seq!['A', 'B', 'C', '\n'],
+          1200 <= r < 2800 ==> result == seq!['A', 'R', 'C', '\n'],
+          r >= 2800 ==> result == seq!['A', 'G', 'C', '\n']
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

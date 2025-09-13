@@ -1,0 +1,48 @@
+vc-description: |-
+  Given an array of integers, find the minimum number of operations to make it non-decreasing.
+  In each operation, select a contiguous non-decreasing subsegment and add 1 to all elements.
+  The solution sums violations where arr[i] > arr[i+1], as each violation requires (arr[i] - arr[i+1]) operations.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(test_cases: Seq<Seq<int>>) -> bool {
+      forall|i: int| 0 <= i < test_cases.len() ==> test_cases[i].len() >= 1
+  }
+  
+  spec fn sum_differences(arr: Seq<int>, start: int) -> int
+      recommends 0 <= start <= arr.len()
+      decreases arr.len() - start
+  {
+      if start >= arr.len() - 1 {
+          0
+      } else {
+          (if arr[start] > arr[start + 1] { arr[start] - arr[start + 1] } else { 0 }) + sum_differences(arr, start + 1)
+      }
+  }
+  
+  spec fn correct_result(test_cases: Seq<Seq<int>>, results: Seq<int>) -> bool {
+      results.len() == test_cases.len() &&
+      forall|i: int| 0 <= i < test_cases.len() ==> results[i] == sum_differences(test_cases[i], 0) &&
+      forall|i: int| 0 <= i < results.len() ==> results[i] >= 0
+  }
+
+vc-spec: |-
+  fn solve(test_cases: Seq<Seq<int>>) -> (results: Seq<int>)
+      requires valid_input(test_cases)
+      ensures correct_result(test_cases, results)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

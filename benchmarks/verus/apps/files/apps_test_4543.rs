@@ -1,0 +1,53 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn sqrt(n: int) -> int
+  uninterp;
+
+spec fn int_to_string(n: int) -> Seq<char>
+  uninterp;
+
+spec fn string_to_int(s: Seq<char>) -> int
+  uninterp;
+
+spec fn is_perfect_square(n: int) -> bool
+  recommends n >= 0
+{
+  let sqrt_n = sqrt(n);
+  sqrt_n * sqrt_n == n
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(a: int, b: int) -> (result: String)
+  requires 
+    a >= 1 && a <= 100,
+    b >= 1 && b <= 100,
+  ensures 
+    result == "Yes" || result == "No",
+    ({
+      let a_str = int_to_string(a);
+      let b_str = int_to_string(b);
+      let concat_str = a_str + b_str;
+      let concat_num = string_to_int(concat_str);
+      result@ == "Yes" <==> is_perfect_square(concat_num)
+    })
+// </vc-spec>
+// <vc-code>
+{
+  // impl-start
+  assume(false);
+  String::new()
+  // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

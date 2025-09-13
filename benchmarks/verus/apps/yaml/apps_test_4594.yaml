@@ -1,0 +1,47 @@
+vc-description: |-
+  Given N mochi with diameters, find the maximum number of layers in a kagami mochi.
+  A kagami mochi is a stack where each layer has a strictly smaller diameter than the layer below it.
+  This is equivalent to counting the number of distinct diameters in the input.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(diameters: Seq<int>) -> bool {
+      diameters.len() > 0 && forall|i: int| 0 <= i < diameters.len() ==> diameters[i] > 0
+  }
+  
+  spec fn num_distinct(s: Seq<int>) -> int
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0
+      } else if s.subrange(1, s.len() as int).contains(s[0]) {
+          num_distinct(s.subrange(1, s.len() as int))
+      } else {
+          1 + num_distinct(s.subrange(1, s.len() as int))
+      }
+  }
+
+vc-spec: |-
+  fn solve(diameters: Seq<int>) -> (result: int)
+      requires
+          valid_input(diameters),
+      ensures
+          result == num_distinct(diameters),
+          result >= 1,
+          result <= diameters.len(),
+
+vc-code: |-
+  {
+      assume(false);
+      0
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

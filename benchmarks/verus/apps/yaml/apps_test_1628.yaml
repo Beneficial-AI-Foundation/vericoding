@@ -1,0 +1,51 @@
+vc-description: |-
+  Given a string containing only 'x' and 'y' characters, apply operations:
+  1. Swap leftmost "yx" to "xy" 
+  2. Remove leftmost "xy"
+  Apply operation 1 if possible, otherwise operation 2, repeat until no operations possible.
+  Return the final non-empty string.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn valid_input(s: Seq<char>) -> bool {
+      s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> s[i] == 'x' || s[i] == 'y'
+  }
+  
+  spec fn count_char(s: Seq<char>, c: char) -> nat {
+      s.filter(|x: char| x == c).len()
+  }
+  
+  spec fn valid_output(s: Seq<char>, result: Seq<char>) -> bool 
+      recommends valid_input(s)
+  {
+      let count_x = count_char(s, 'x');
+      let count_y = count_char(s, 'y');
+      if count_y > count_x {
+          result.len() == count_y - count_x && forall|i: int| 0 <= i < result.len() ==> result[i] == 'y'
+      } else {
+          result.len() == count_x - count_y && forall|i: int| 0 <= i < result.len() ==> result[i] == 'x'
+      }
+  }
+
+vc-spec: |-
+  fn solve(s: Seq<char>) -> (result: Seq<char>)
+      requires valid_input(s)
+      ensures valid_output(s, result)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,45 @@
+vc-description: |-
+  Given N S-shaped pieces and M c-shaped pieces, find the maximum number of "Scc groups"
+  that can be formed. Each Scc group requires exactly 1 S-shaped piece and 2 c-shaped pieces.
+  Additionally, 2 c-shaped pieces can be combined to create 1 S-shaped piece.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int, m: int) -> bool {
+      n >= 0 && m >= 0
+  }
+  
+  spec fn max_scc_groups(n: int, m: int) -> int {
+      if valid_input(n, m) {
+          let direct_groups = if n < m / 2 { n } else { m / 2 };
+          let remaining_c_pieces = m - direct_groups * 2;
+          let additional_groups = remaining_c_pieces / 4;
+          direct_groups + additional_groups
+      } else {
+          0
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, m: int) -> (result: int)
+    requires valid_input(n, m)
+    ensures 
+        result >= 0,
+        result == max_scc_groups(n, m),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

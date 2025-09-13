@@ -1,0 +1,61 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(n: int, k: int, l: Seq<int>) -> bool {
+    n >= 1 && k >= 1 && n <= 2*k &&
+    l.len() == n &&
+    (forall|i: int| 0 <= i < l.len()-1 ==> #[trigger] l[i] <= #[trigger] l[i+1]) &&
+    (forall|i: int| 0 <= i < l.len() ==> #[trigger] l[i] >= 0)
+}
+
+spec fn valid_box_configuration(boxes: Seq<int>, box_size: int) -> bool {
+    boxes.len() >= 1 &&
+    (forall|i: int| 0 <= i < boxes.len() ==> #[trigger] boxes[i] <= box_size) &&
+    (forall|i: int| 0 <= i < boxes.len() ==> #[trigger] boxes[i] >= 0)
+}
+
+spec fn sum(s: Seq<int>) -> int
+    decreases s.len()
+{
+    if s.len() == 0 { 
+        0 
+    } else { 
+        s[0] + sum(s.subrange(1, s.len() as int)) 
+    }
+}
+
+spec fn max(s: Seq<int>) -> int
+    decreases s.len()
+{
+    if s.len() == 0 {
+        0
+    } else if s.len() == 1 { 
+        s[0]
+    } else if s[0] >= max(s.subrange(1, s.len() as int)) { 
+        s[0]
+    } else { 
+        max(s.subrange(1, s.len() as int))
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int, k: int, l: Seq<int>) -> (result: int)
+    requires valid_input(n, k, l)
+    ensures result >= 0
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

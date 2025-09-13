@@ -1,0 +1,39 @@
+vc-description: |-
+  Count positive integers x ≤ n where x - (sum of digits of x) ≥ s.
+  Given two integers n and s (1 ≤ n, s ≤ 10^18), return the count of numbers x ≤ n satisfying the condition.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn sum_of_digits(x: int) -> int
+    requires x >= 0
+    decreases x
+  {
+    if x == 0 { 0 } else { (x % 10) + sum_of_digits(x / 10) }
+  }
+  
+  spec fn check(x: int, s: int) -> bool
+    requires x >= 0
+  {
+    x - sum_of_digits(x) >= s
+  }
+
+vc-spec: |-
+  fn solve(n: int, s: int) -> (result: int)
+    requires n >= 1 && s >= 1
+    ensures result >= 0 && result <= n
+
+vc-code: |-
+  {
+    assume(false);
+    0
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

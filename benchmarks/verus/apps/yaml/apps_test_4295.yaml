@@ -1,0 +1,47 @@
+vc-description: |-
+  Given integers N and K, repeatedly perform the operation N := |N - K| to find
+  the minimum possible value N can achieve after zero or more operations.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int, k: int) -> bool {
+      n >= 0 && k >= 1
+  }
+  
+  spec fn min_value(n: int, k: int) -> int
+      recommends valid_input(n, k)
+  {
+      let remainder = n % k;
+      let complement = k - remainder;
+      if remainder <= complement { remainder } else { complement }
+  }
+  
+  spec fn is_correct_result(n: int, k: int, result: int) -> bool
+      recommends valid_input(n, k)
+  {
+      result == min_value(n, k) &&
+      result >= 0 &&
+      result < k
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, k: int) -> (result: int)
+      requires valid_input(n, k)
+      ensures is_correct_result(n, k, result)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

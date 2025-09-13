@@ -1,0 +1,55 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(l: int, r: int) -> bool {
+    l < r && (r - l) % 2 == 1
+}
+
+spec fn gcd(a: int, b: int) -> int
+    recommends a != 0 || b != 0
+    decreases (if a >= 0 { a } else { -a })
+{
+    if a == 0 {
+        if b >= 0 { b } else { -b }
+    } else {
+        gcd(b % a, a)
+    }
+}
+
+spec fn pair_has_gcd_one(pair: Seq<char>, l: int, r: int) -> bool {
+    exists|i: int, j: int| l <= i <= r && l <= j <= r && i != j &&
+        (i != 0 || j != 0) && gcd(i, j) == 1
+}
+
+spec fn valid_solution(result: Seq<Seq<char>>, l: int, r: int) -> bool {
+    result.len() >= 1 &&
+    result[0] == seq!['Y', 'E', 'S'] &&
+    result.len() == 1 + (r - l + 1) / 2 &&
+    (forall|i: int| 1 <= i < result.len() ==> pair_has_gcd_one(result[i], l, r))
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(l: int, r: int) -> (result: Vec<String>)
+    requires valid_input(l, r)
+    ensures 
+        result.len() >= 1 &&
+        result.len() == 1 + (r - l + 1) / 2 &&
+        (forall|i: int| 1 <= i < result.len() ==> 
+            (exists|j: int| l <= j <= r - 1 && j % 2 == l % 2))
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

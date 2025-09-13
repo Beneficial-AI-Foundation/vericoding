@@ -1,0 +1,70 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn valid_input(x: int, y: int) -> bool {
+    -100 <= x <= 100 && -100 <= y <= 100
+}
+
+spec fn is_origin_or_first_point(x: int, y: int) -> bool {
+    (x == 0 && y == 0) || (x == 1 && y == 0)
+}
+
+spec fn is_right_edge(x: int, y: int) -> bool {
+    x >= 1 && -x + 1 < y <= x
+}
+
+spec fn is_left_edge(x: int, y: int) -> bool {
+    x < 0 && x <= y < -x
+}
+
+spec fn is_top_edge(x: int, y: int) -> bool {
+    y > 0 && -y <= x < y
+}
+
+spec fn compute_turns(x: int, y: int) -> int
+    recommends valid_input(x, y)
+{
+    if is_origin_or_first_point(x, y) { 
+        0
+    } else if is_right_edge(x, y) { 
+        1 + 4 * (x - 1)
+    } else if is_left_edge(x, y) { 
+        3 + 4 * (-x - 1)
+    } else if is_top_edge(x, y) { 
+        2 + 4 * (y - 1)
+    } else { 
+        -4 * y
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(x: int, y: int) -> (result: int)
+    requires 
+        valid_input(x, y)
+    ensures 
+        result >= 0,
+        result == compute_turns(x, y),
+        is_origin_or_first_point(x, y) ==> result == 0,
+        is_right_edge(x, y) ==> result == 1 + 4 * (x - 1),
+        is_left_edge(x, y) ==> result == 3 + 4 * (-x - 1),
+        is_top_edge(x, y) ==> result == 2 + 4 * (y - 1),
+        !(is_origin_or_first_point(x, y) || is_right_edge(x, y) || is_left_edge(x, y) || is_top_edge(x, y)) ==> result == -4 * y,
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

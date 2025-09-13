@@ -1,0 +1,48 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn count_ones_in_binary(n: int) -> int
+    recommends n >= 1
+    decreases n
+{
+    if n == 1 {
+        1
+    } else if n % 2 == 1 {
+        1 + count_ones_in_binary(n / 2)
+    } else {
+        count_ones_in_binary(n / 2)
+    }
+}
+
+spec fn valid_input(x: int) -> bool {
+    x >= 1
+}
+
+spec fn valid_output(x: int, result: int) -> bool {
+    valid_input(x) && result == count_ones_in_binary(x)
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn min_bacteria(x: int) -> (result: int)
+    requires valid_input(x)
+    ensures valid_output(x, result)
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {}
