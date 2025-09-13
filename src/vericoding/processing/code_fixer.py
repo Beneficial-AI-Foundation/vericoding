@@ -72,8 +72,6 @@ def extract_code(config: ProcessingConfig, output: str) -> str:
 
 
 
-
-
 def apply_json_replacements(config: ProcessingConfig, original_code: str, llm_response: str) -> tuple[str, str | None]:
     """Apply JSON array of replacements to original code.
     

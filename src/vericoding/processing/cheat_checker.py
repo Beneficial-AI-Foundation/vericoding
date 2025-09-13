@@ -51,6 +51,8 @@ def check_for_cheats(code: str, language: str) -> List[Tuple[str, str]]:
     elif language.lower() == "dafny":
         cheat_patterns = [
             (r'\{:axiom\}', "uses '{:axiom}' to bypass verification"),
+            (r'\bassume\b', "uses 'assume' to bypass verification"),
+            (r'assume\s*\{:axiom\}', "uses 'assume {:axiom}' to bypass verification"),
         ]
         
         # For Dafny, only check for cheats inside editable sections (vc-code, vc-helpers)
