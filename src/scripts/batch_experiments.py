@@ -102,7 +102,31 @@ def estimate_time(files: int, time_per_file: float) -> float:
     return (files * time_per_file) / 3600  # Convert seconds to hours
 
 
-def generate_experiment_plan():
+def calculate_file_limit_for_budget(cost_limit: float) -> int:
+    """Calculate the maximum files per experiment to stay within budget."""
+    time_per_file, input_tokens_per_file, output_tokens_per_file = calculate_baseline_metrics()
+    
+    # Calculate total cost if we run 1 file per experiment
+    total_experiments = len(DATASETS) * len(MODELS)
+    cost_per_file_per_experiment = []
+    
+    for dataset in DATASETS:
+        for model in MODELS:
+            cost_1_file = estimate_cost(model, 1, input_tokens_per_file, output_tokens_per_file)
+            cost_per_file_per_experiment.append(cost_1_file)
+    
+    # Sum cost for 1 file across all experiments
+    total_cost_1_file = sum(cost_per_file_per_experiment)
+    
+    # Calculate max files per experiment to stay under budget
+    if total_cost_1_file > cost_limit:
+        return 0  # Budget too low even for 1 file per experiment
+    
+    max_files = int(cost_limit / total_cost_1_file)
+    return max_files
+
+
+def generate_experiment_plan(file_limit: int = None):
     """Generate and display the experiment plan with cost and time estimates."""
     time_per_file, input_tokens_per_file, output_tokens_per_file = calculate_baseline_metrics()
     
@@ -111,6 +135,10 @@ def generate_experiment_plan():
     print(f"Input tokens per file: {input_tokens_per_file:.0f}")
     print(f"Output tokens per file: {output_tokens_per_file:.0f}")
     print()
+    
+    if file_limit:
+        print(f"=== FILE LIMIT: {file_limit} files per experiment ===")
+        print()
     
     print("=== EXPERIMENT PLAN ===")
     print(f"{'Dataset':<15} {'Files':<6} {'Model':<15} {'Est. Cost ($)':<12} {'Est. Time (h)':<13} {'Command'}")
@@ -122,24 +150,38 @@ def generate_experiment_plan():
     
     for dataset in DATASETS:
         for model in MODELS:
-            cost = estimate_cost(model, dataset.file_count, input_tokens_per_file, output_tokens_per_file)
-            time_hours = estimate_time(dataset.file_count, time_per_file)
+            # Apply file limit if specified
+            actual_files = min(dataset.file_count, file_limit) if file_limit else dataset.file_count
+            
+            cost = estimate_cost(model, actual_files, input_tokens_per_file, output_tokens_per_file)
+            time_hours = estimate_time(actual_files, time_per_file)
             
             command = f"uv run src/vericoder.py lean {dataset.path} --llm-provider {model.provider}"
+            if file_limit and file_limit < dataset.file_count:
+                command += f" --limit {file_limit}"
             
-            print(f"{dataset.name:<15} {dataset.file_count:<6} {model.name:<15} ${cost:<11.2f} {time_hours:<13.1f} {command}")
+            print(f"{dataset.name:<15} {actual_files:<6} {model.name:<15} ${cost:<11.2f} {time_hours:<13.1f} {command}")
             
             total_cost += cost
             total_time_hours += time_hours
             total_experiments += 1
     
     print("-" * 120)
-    print(f"{'TOTAL':<15} {sum(d.file_count for d in DATASETS):<6} {total_experiments} experiments ${total_cost:<11.2f} {total_time_hours:<13.1f}")
+    
+    # Calculate actual total files processed with limit
+    total_files_actual = 0
+    for dataset in DATASETS:
+        actual_files = min(dataset.file_count, file_limit) if file_limit else dataset.file_count
+        total_files_actual += actual_files
+    
+    print(f"{'TOTAL':<15} {total_files_actual:<6} {total_experiments} experiments ${total_cost:<11.2f} {total_time_hours:<13.1f}")
     print()
     
     print("=== SUMMARY ===")
     print(f"Total experiments: {total_experiments}")
-    print(f"Total files to process: {sum(d.file_count for d in DATASETS):,}")
+    print(f"Total files to process: {total_files_actual:,}")
+    if file_limit:
+        print(f"Original total files: {sum(d.file_count for d in DATASETS):,} (limited by budget)")
     print(f"Estimated total cost: ${total_cost:.2f}")
     print(f"Estimated total time: {total_time_hours:.1f} hours ({total_time_hours/24:.1f} days)")
     print(f"Average cost per experiment: ${total_cost/total_experiments:.2f}")
@@ -149,8 +191,23 @@ def generate_experiment_plan():
 
 def main():
     """Main entry point."""
-
-    generate_experiment_plan()
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Batch experiment runner for vericoding")
+    parser.add_argument("--cost-limit", type=float, help="Maximum total cost in USD (calculates file limit per experiment)")
+    
+    args = parser.parse_args()
+    
+    file_limit = None
+    if args.cost_limit:
+        file_limit = calculate_file_limit_for_budget(args.cost_limit)
+        if file_limit == 0:
+            print(f"Error: Budget of ${args.cost_limit} is too low for even 1 file per experiment")
+            return
+        print(f"Budget: ${args.cost_limit} -> File limit: {file_limit} files per experiment")
+        print()
+    
+    generate_experiment_plan(file_limit)
 
 
 if __name__ == "__main__":
