@@ -65,6 +65,7 @@ class ProcessingConfig:
     llm_provider: str
     llm_model: str | None
     max_directory_traversal_depth: int = 50
+    assume_unformatted_lean: bool = False
 
     # Static configuration loaded once
     _static_config: LanguageConfigResult | None = None
