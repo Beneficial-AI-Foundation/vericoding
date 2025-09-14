@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-exercise_tmp_tmpouftptir_filter_Filter",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-exercise_tmp_tmpouftptir_filter_Filter",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,6 +32,6 @@ if and only if it appears in both input collections.
 -/
 theorem Filter_spec (a : Array Char) (b : List Char) (c : List Char) :
   c = Filter a b →
-  (∀ x, (x ∈ a.data ∧ x ∈ b) ↔ x ∈ c) := sorry
+  (∀ x, (x ∈ a.toList ∧ x ∈ b) ↔ x ∈ c) := sorry
 
 end DafnyBenchmarks
