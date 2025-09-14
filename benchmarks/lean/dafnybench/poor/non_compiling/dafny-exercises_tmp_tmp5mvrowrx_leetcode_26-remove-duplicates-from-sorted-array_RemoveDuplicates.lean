@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -36,9 +36,9 @@ def RemoveDuplicates (nums : Array Int) : Int := sorry
 
 /-- Specification for RemoveDuplicates -/
 theorem RemoveDuplicates_spec (nums : Array Int) (num_length : Int) :
-  (∀ i j, 0 ≤ i ∧ i < j ∧ j < nums.size → nums.get ⟨i⟩ ≤ nums.get ⟨j⟩) →
+  (∀ i j, 0 ≤ i ∧ i < j ∧ j < nums.size → nums[i]! ≤ nums[j]!) →
   (num_length = RemoveDuplicates nums) →
   (0 ≤ num_length ∧ num_length ≤ nums.size) ∧
-  (∀ i j, 0 ≤ i ∧ i < j ∧ j < num_length → nums.get ⟨i⟩ ≠ nums.get ⟨j⟩) := sorry
+  (∀ i j:Nat, 0 ≤ i ∧ i < j ∧ j < num_length → nums[i]! ≠ nums[j]!) := sorry
 
 end DafnyBenchmarks
