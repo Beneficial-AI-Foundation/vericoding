@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -41,6 +41,6 @@ theorem reverse_spec (a : Array Char) (b : Array Char) :
   a.size > 0 →
   b = Reverse a →
   (b.size = a.size ∧
-   ∀ i, 0 ≤ i ∧ i < a.size → b.get ⟨i⟩ = a.get (a.size - i - 1)) := sorry
+   ∀ i, 0 ≤ i ∧ i < a.size → b[i]! = a[a.size - i - 1]!) := sorry
 
 end DafnyBenchmarks
