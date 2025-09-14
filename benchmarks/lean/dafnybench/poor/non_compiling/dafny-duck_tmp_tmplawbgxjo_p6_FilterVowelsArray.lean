@@ -10,24 +10,24 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
 namespace DafnyBenchmarks
 
 /-- The set of vowels used for filtering -/
-def vowels : List Char := 
+def vowels : List Char := ['a', 'e', 'i', 'o', 'u']
 
-/-- 
+/--
 Filters vowels from a sequence of characters.
 Returns a new sequence containing only the vowels from the input.
 -/
-def FilterVowels (xs : Array Char) : Array Char :=
+partial def FilterVowels (xs : Array Char) : Array Char :=
   if xs.size = 0 then
-    #
-  else if vowels.contains (xs.get (xs.size - 1)) then 
-    FilterVowels (xs.extract 0 (xs.size - 1)) |>.push (xs.get (xs.size - 1))
+    #[]
+  else if vowels.contains (xs[xs.size - 1]!) then
+    FilterVowels (xs.extract 0 (xs.size - 1)) |>.push (xs[xs.size - 1]!)
   else
     FilterVowels (xs.extract 0 (xs.size - 1))
 
