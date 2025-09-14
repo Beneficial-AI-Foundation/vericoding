@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-exercise_tmp_tmpouftptir_prac4_ex2_GetTriple",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-exercise_tmp_tmpouftptir_prac4_ex2_GetTriple",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -19,8 +19,8 @@ namespace DafnyBenchmarks
 /--
 Predicate that checks if an array contains three consecutive equal elements
 -/
-def triple (a : Array Int) : Bool :=
-  ∃ i, 0 ≤ i ∧ i < a.size - 2 ∧ a.get ⟨i⟩ = a.get (i + 1) ∧ a.get (i + 1) = a.get (i + 2)
+def triple (a : Array Int) : Prop :=
+  ∃ i, 0 ≤ i ∧ i < a.size - 2 ∧ a[i]! = a[(i + 1)]! ∧ a[(i + 1)]! = a[(i + 2)]!
 
 /--
 GetTriple method that finds three consecutive equal elements in an array
@@ -37,6 +37,6 @@ theorem GetTriple_spec (a : Array Int) :
   (index = a.size ↔ ¬(triple a)) ∧
   (0 ≤ index ∧ index < a.size - 2 ↔ triple a) ∧
   (0 ≤ index ∧ index < a.size - 2 →
-    a.get ⟨index⟩ = a.get (index + 1) ∧ a.get (index + 1) = a.get (index + 2)) := sorry
+    a[index.toNat]! = a[(index + 1).toNat]! ∧ a[(index + 1).toNat]! = a[(index + 2).toNat]!) := sorry
 
 end DafnyBenchmarks
