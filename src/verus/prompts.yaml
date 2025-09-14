@@ -38,6 +38,33 @@ generate_code: |
   - Implement actual proofs and logic instead of bypassing verification
   - Use valid Verus/Rust syntax for all implementations
   - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
+  - IMPORTANT: Use each of `requires`, `ensures`, and `invariant` AT MOST ONCE per item
+    - List multiple conditions as comma-separated entries on separate lines
+    - Do NOT repeat `requires`/`ensures`/`invariant` keywords for additional lines
+    - Prefer commas at line ends in spec blocks; avoid semicolons
+  - While-loop header style (single invariant block):
+    
+    while CONDITION
+        invariant
+            INV1,
+            INV2,
+        decreases MEASURE
+    {{
+        // body
+    }}
+    
+  - Function spec header style (single requires/ensures blocks):
+    
+    fn f(..) -> T
+        requires
+            PRE1,
+            PRE2,
+        ensures
+            POST1,
+            POST2,
+    {{
+        // body
+    }}
   - Use Verus types like `nat`, `int`, `Vec<T>`, `Seq<T>`, etc.
   - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`)
   - Use proof blocks with `proof {{ ... }}` when necessary
@@ -94,6 +121,33 @@ fix_verification: |
   - Each replacement should be the exact fixed code that will replace everything between the tags
   - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues
   - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
+  - IMPORTANT: Use each of `requires`, `ensures`, and `invariant` AT MOST ONCE per item
+    - List multiple conditions as comma-separated entries on separate lines
+    - Do NOT repeat `requires`/`ensures`/`invariant` keywords for additional lines
+    - Prefer commas at line ends in spec blocks; avoid semicolons
+  - While-loop header style (single invariant block):
+    
+    while CONDITION
+        invariant
+            INV1,
+            INV2,
+        decreases MEASURE
+    {{
+        // body
+    }}
+    
+  - Function spec header style (single requires/ensures blocks):
+    
+    fn f(..) -> T
+        requires
+            PRE1,
+            PRE2,
+        ensures
+            POST1,
+            POST2,
+    {{
+        // body
+    }}
   - Use proof blocks with `proof {{ ... }}` for complex proofs
   - Use `assert()` statements within proof blocks for intermediate steps
   - Use Verus types and operators (`nat`, `int`, `Vec<T>`, `Seq<T>`, `@`, etc.)
