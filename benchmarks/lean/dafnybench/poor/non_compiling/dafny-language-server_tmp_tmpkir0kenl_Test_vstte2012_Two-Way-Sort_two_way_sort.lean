@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -19,22 +19,22 @@ namespace DafnyBenchmarks
 /--
 Converts a sequence to a multiset.
 -/
-def multisets (s : Array α) : List α := sorry
+def multisets {α : Type} [Inhabited α] (s : Array α) : List α := sorry
 
 /--
 Swaps two elements in an array.
 -/
-def swap (a : Array α) (i j : Int) : Array α := sorry
+def swap {α : Type} [Inhabited α] (a : Array α) (i j : Nat) : Array α := sorry
 
 /--
 Specification for swap operation.
 -/
-theorem swap_spec {α : Type} (a : Array α) (i j : Int) :
+theorem swap_spec {α : Type} [Inhabited α] (a : Array α) (i j : Nat) :
   0 ≤ i ∧ i < j ∧ j < a.size →
   let a' := swap a i j
-  (a'.get i = a.get ⟨j⟩) ∧
-  (a'.get j = a.get ⟨i⟩) ∧
-  (∀ m, 0 ≤ m ∧ m < a.size ∧ m ≠ i ∧ m ≠ j → a'.get m = a.get ⟨m⟩) ∧
+  (a'[i]! = a[j]!) ∧
+  (a'[j]! = a[i]!) ∧
+  (∀ m, 0 ≤ m ∧ m < a.size ∧ m ≠ i ∧ m ≠ j → a'[m]! = a[m]!) ∧
   (multisets a' = multisets a) := sorry
 
 /--
@@ -47,7 +47,7 @@ Specification for two-way sort operation.
 -/
 theorem two_way_sort_spec (a : Array Bool) :
   let a' := two_way_sort a
-  (∀ m n, 0 ≤ m ∧ m < n ∧ n < a'.size → ¬(a'.get m) ∨ a'.get n) ∧
+  (∀ m n, 0 ≤ m ∧ m < n ∧ n < a'.size → ¬(a'[m]!) ∨ a'[n]!) ∧
   (multisets a' = multisets a) := sorry
 
 end DafnyBenchmarks
