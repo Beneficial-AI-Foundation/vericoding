@@ -10,40 +10,30 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
 namespace DafnyBenchmarks
 
 /--
-Type parameter T representing an arbitrary type
--/
-variable (T : Type)
-
-/--
-Function f that takes a value of type T and returns a boolean
--/
-variable (f : T → Bool)
-
-/--
 Select method that filters elements from a sequence based on predicate f
 Returns a new sequence containing only elements that satisfy f
 -/
-def Select (s1 : Array T) : Array T := sorry
+def Select {T : Type} [BEq T] (f : T → Bool) (s1 : Array T) : Array T := sorry
 
 /--
 Specification for Select method:
 - For elements satisfying f, their count in output equals count in input
 - For elements not satisfying f, their count in output is 0
 -/
-theorem Select_spec (s1 : Array T) (r : Array T) :
+theorem Select_spec {T : Type} [BEq T] (f : T → Bool) (s1 : Array T) (r : Array T) :
   (∀ e : T, f e → (s1.count e = r.count e)) ∧
   (∀ e : T, ¬f e → (r.count e = 0)) := sorry
 
 /--
 Main method taking a sequence parameter
 -/
-def Main (s1 : Array T) : Unit := sorry
+def Main {T : Type} [BEq T] (f : T → Bool) (s1 : Array T) : Unit := sorry
 
 end DafnyBenchmarks
