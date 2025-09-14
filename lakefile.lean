@@ -42,6 +42,7 @@ lean_lib Benchmarks where
   globs := #[
     .submodules `apps.files,
     .submodules `dafnybench.poor.unformatted,
+    .submodules `dafnybench.poor.non_compiling,
     .submodules `humaneval.files,
     .submodules `numpy_simple.poor.unformatted,
     .submodules `numpy_triple.files,
