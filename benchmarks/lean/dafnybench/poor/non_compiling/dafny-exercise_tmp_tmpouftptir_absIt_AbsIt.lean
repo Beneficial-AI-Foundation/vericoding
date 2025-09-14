@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -31,8 +31,8 @@ Specification for AbsIt method ensuring:
 -/
 theorem AbsIt_spec (s : Array Int) :
   let s' := AbsIt s
-  (∀ i, 0 ≤ i ∧ i < s.size → 
-    (if s.get ⟨i⟩ < 0 then s'.get i = -(s.get ⟨i⟩) else s'.get i = s.get ⟨i⟩)) ∧
+  (∀ i, 0 ≤ i ∧ i < s.size →
+    (if s[i]! < 0 then s'[i]! = -(s[i]!) else s'[i]! = s[i]!)) ∧
   s'.size = s.size := sorry
 
 end DafnyBenchmarks
