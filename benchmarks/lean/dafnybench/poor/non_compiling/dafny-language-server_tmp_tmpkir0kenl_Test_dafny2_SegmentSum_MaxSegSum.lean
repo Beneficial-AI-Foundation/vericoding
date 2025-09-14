@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -20,8 +20,8 @@ namespace DafnyBenchmarks
 Computes the sum of elements in array `a` from index `s` to `t-1`.
 Requires that 0 ≤ s ≤ t ≤ a.size
 -/
-def Sum (a : Array Int) (s t : Int) : Int :=
-  if s = t then 0 else Sum a s (t-1) + a.get (t-1)
+partial def Sum (a : Array Int) (s t : Int) : Int :=
+  if s = t then 0 else Sum a s (t-1) + a[(t-1).toNat]!
 
 /--
 Specification for Sum function requiring valid indices
