@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,10 +32,10 @@ If 'e' does not exist, returns -1.
 -/
 theorem firstE_spec (a : Array Char) :
   let x := firstE a
-  (∃ i, 0 ≤ i ∧ i < a.size ∧ a.get ⟨i⟩ = 'e') →
-    (0 ≤ x ∧ x < a.size ∧ a.get ⟨x⟩ = 'e' ∧
-     ∀ i, 0 ≤ i ∧ i < x → a.get ⟨i⟩ ≠ 'e') ∧
-  (¬∃ i, 0 ≤ i ∧ i < a.size ∧ a.get ⟨i⟩ = 'e') →
+  (∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! = 'e') →
+    (0 ≤ x ∧ x < a.size ∧ a[x.toNat]! = 'e' ∧
+     ∀ i, 0 ≤ i ∧ i < x → a[i.toNat]! ≠ 'e') ∧
+  (¬∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! = 'e') →
     x = -1 := sorry
 
 end DafnyBenchmarks
