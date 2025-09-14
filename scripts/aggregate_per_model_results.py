@@ -191,9 +191,9 @@ def main() -> int:
     out_csv = root / "vericoding_per_model_aggregate.csv"
     with out_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["model", "total_files", "successes", "failures", "success_rate_pct", "run_paths"])
+        w.writerow(["model", "total_files", "successes", "failures", "success_rate_pct"])
         for r in rows:
-            w.writerow(r)
+            w.writerow([r[0], r[1], r[2], r[3], r[4]])
         # TOTAL row across all models (union coverage): sum over benchmarks of unique files
         grand_total = sum(len(s) for s in bench_to_union_all.values())
         grand_succ = sum(len(s) for s in bench_to_union_success.values())
@@ -205,15 +205,19 @@ def main() -> int:
     per_bench_csv = root / "vericoding_per_model_per_benchmark.csv"
     with per_bench_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["model", "benchmark", "total_files", "successes", "failures", "success_rate_pct", "run_path"])
+        w.writerow(["model", "benchmark", "total_files", "successes", "failures", "success_rate_pct"])
         for r in sorted(per_benchmark_rows, key=lambda x: (x[0], x[1])):
-            w.writerow(r)
+            w.writerow([r[0], r[1], r[2], r[3], r[4], r[5]])
 
     # Human-readable summary
     summary_path = root / "per-model-union-summary.txt"
+    # Display root path starting from "vericoding/" if present
+    root_str = str(root)
+    idx = root_str.rfind("vericoding/")
+    display_root = root_str[idx:] if idx != -1 else root.name
     with summary_path.open("w", encoding="utf-8") as sf:
         sf.write("=== DAFNY PER-MODEL PROCESSING SUMMARY (AGGREGATED ACROSS BENCHMARKS) ===\n")
-        sf.write(f"Root: {root}\n")
+        sf.write(f"Root: {display_root}\n")
         sf.write(f"Models found: {len(rows)}\n\n")
         for llm, total, succ, fail, rate, paths in sorted(rows, key=lambda x: x[0]):
             sf.write(f"Model: {llm}\n")
@@ -222,7 +226,7 @@ def main() -> int:
             for m, bench, t, s, f, rb, path in sorted(per_benchmark_rows, key=lambda x: (x[0], x[1])):
                 if m != llm:
                     continue
-                sf.write(f"    - {bench:<14} total={t:<4} success={s:<4} fail={f:<4} rate={rb:>5.1f}%  path={path}\n")
+                sf.write(f"    - {bench:<14} total={t:<4} success={s:<4} fail={f:<4} rate={rb:>5.1f}%\n")
             sf.write("\n")
         # TOTAL block (union coverage across models per benchmark)
         grand_total = sum(len(s) for s in bench_to_union_all.values())
