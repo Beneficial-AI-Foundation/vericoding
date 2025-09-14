@@ -1,0 +1,62 @@
+predicate sorted(s : seq<int>) {
+    forall u, w :: 0 <= u < w < |s| ==> s[u] <= s[w]
+}
+
+method binarySearch(v:array<int>, elem:int) returns (p:int)
+ requires sorted(v[0..v.Length])
+ ensures -1<=p<v.Length
+ ensures (forall u::0<=u<=p ==> v[u]<=elem) && (forall w::p<w<v.Length ==> v[w]>elem)
+{
+  assume{:axiom} false;
+}
+
+
+
+
+
+
+//Recursive binary search
+
+// <vc-helpers>
+method binarySearchRec(v:array<int>, elem:int, lo:int, hi:int) returns (b:bool, p:int)
+ requires sorted(v[0..v.Length])
+ requires 0 <= lo <= hi <= v.Length
+ ensures lo <= p <= hi
+ ensures b == (elem in v[lo..hi])
+ ensures b ==> p < v.Length && v[p] == elem
+ ensures !b ==> ((forall u :: lo <= u < p ==> v[u] < elem) && 
+                (forall w :: p <= w < hi ==> v[w] > elem))
+ decreases hi - lo
+{
+  if lo == hi {
+    return false, lo;
+  }
+  
+  var mid := lo + (hi - lo) / 2;
+  
+  if v[mid] == elem {
+    return true, mid;
+  } else if v[mid] < elem {
+    b, p := binarySearchRec(v, elem, mid + 1, hi);
+  } else {
+    b, p := binarySearchRec(v, elem, lo, mid);
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method otherbSearch(v:array<int>, elem:int) returns (b:bool,p:int)
+ requires sorted(v[0..v.Length])
+ ensures 0<=p<=v.Length
+ ensures b == (elem in v[0..v.Length])
+ ensures b ==> p<v.Length && v[p]==elem
+ ensures !b ==> (forall u::0<=u<p ==> v[u]<elem) && 
+               (forall w::p<=w<v.Length ==> v[w]>elem)
+ //Implement and verify
+// </vc-spec>
+// <vc-code>
+{
+  b, p := binarySearchRec(v, elem, 0, v.Length);
+}
+// </vc-code>
+

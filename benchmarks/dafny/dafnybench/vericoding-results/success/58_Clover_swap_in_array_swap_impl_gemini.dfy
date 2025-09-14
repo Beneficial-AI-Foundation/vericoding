@@ -1,0 +1,19 @@
+// <vc-preamble>
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method swap(arr: array<int>, i: int, j: int)
+  requires 0 <= i < arr.Length && 0 <= j < arr.Length
+  modifies arr
+  ensures arr[i] == old(arr[j]) && arr[j] == old(arr[i])
+  ensures forall k :: 0 <= k < arr.Length && k != i && k != j ==> arr[k] == old(arr[k])
+// </vc-spec>
+// <vc-code>
+{
+  arr[i], arr[j] := arr[j], arr[i];
+}
+// </vc-code>

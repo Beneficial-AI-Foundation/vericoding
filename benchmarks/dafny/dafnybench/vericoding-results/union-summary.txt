@@ -1,0 +1,495 @@
+=== DAFNY PROCESSING SUMMARY (AGGREGATED) ===
+Total files: 487
+Successful: 350 (71.9%)
+Failed: 137
+
+Successful files:
+✓ 630-dafny_tmp_tmpz2kokaiq_Solution_BinarySearch.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code
+✓ AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_Merge.yaml — by: claude-opus, gpt
+✓ AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeLoop.yaml — by: claude-opus
+✓ BPTree-verif_tmp_tmpq1z6xm1d_Utils_GetInsertIndex.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ BPTree-verif_tmp_tmpq1z6xm1d_Utils_InsertIntoSorted.yaml — by: claude-opus, claude-sonnet
+✓ BelowZero_BelowZero.yaml — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
+✓ BinaryAddition_ArrayToSequence.yaml — by: claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ BinaryAddition_BinaryAddition.yaml — by: gemini, gpt, gpt-mini
+✓ CVS-Projto1_tmp_tmpb1o0bu8z_proj1_proj1_query.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ CVS-Projto1_tmp_tmpb1o0bu8z_proj1_proj1_queryFast.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ CVS-handout1_tmp_tmptm52no3k_1_query.yaml — by: claude-opus, gpt, gpt-mini, grok-code
+✓ CVS-handout1_tmp_tmptm52no3k_1_queryFast.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ Clover_abs_Abs.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_all_digits_allDigits.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_array_append_append.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ Clover_array_concat_concat.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_array_product_arrayProduct.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_array_sum_arraySum.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_avg_ComputeAvg.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_below_zero_below_zero.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ Clover_binary_search_BinarySearch.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_bubble_sort_BubbleSort.yaml — by: gpt-mini, grok-code
+✓ Clover_cal_ans_CalDiv.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_cal_sum_Sum.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ Clover_canyon_search_CanyonSearch.yaml — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini
+✓ Clover_convert_map_key_convert_map_key.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
+✓ Clover_copy_part_copy.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ Clover_count_lessthan_CountLessThan.yaml — by: claude-opus, glm, gpt, grok-code
+✓ Clover_double_array_elements_double_array_elements.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_double_quadruple_DoubleQuadruple.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_find_Find.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_has_close_elements_has_close_elements.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ Clover_insert_insert.yaml — by: claude-opus, gemini, glm, gpt, gpt-mini
+✓ Clover_integer_square_root_SquareRoot.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_is_even_ComputeIsEven.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_is_palindrome_IsPalindrome.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ Clover_linear_search1_LinearSearch.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_linear_search2_LinearSearch.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_longest_prefix_LongestCommonPrefix.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ Clover_match_Match.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_max_array_maxArray.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_min_array_minArray.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_min_of_two_Min.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_modify_2d_array_modify_array_element.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ Clover_multi_return_MultipleReturns.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_online_max_onlineMax.yaml — by: claude-opus, gemini, glm, gpt, gpt-mini
+✓ Clover_quotient_Quotient.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ Clover_remove_front_remove_front.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_replace_replace.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_return_seven_M.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_reverse_reverse.yaml — by: claude-opus, gemini, glm, gpt, gpt-mini
+✓ Clover_rotate_rotate.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ Clover_selectionsort_SelectionSort.yaml — by: claude-opus, claude-sonnet, grok-code
+✓ Clover_slope_search_SlopeSearch.yaml — by: claude-opus, gemini, gpt, gpt-mini, grok-code
+✓ Clover_swap_Swap.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_swap_arith_SwapArithmetic.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_swap_bitvector_SwapBitvectors.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_swap_in_array_swap.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_swap_sim_SwapSimultaneous.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_test_array_TestArrayElements.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_triple2_Triple.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_triple3_Triple.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_triple4_Triple.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_triple_Triple.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Clover_two_sum_twoSum.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ Clover_update_array_UpdateElements.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_BinarySearch.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok-code
+✓ Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_Tangent.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session10Exercises_ExerciseBarrier_barrier.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseFibonacci_fibonacci1.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExercisePositive_mpositive.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root_mroot1.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mfirstMaximum.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mlastMaximum.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mmaximum1.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExerciseAllEqual_mallEqual1.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExerciseContained_mcontained.yaml — by: glm, gpt
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExerciseFirstNegative_mfirstNegative.yaml — by: claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExercisefirstZero_mfirstCero.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session5Exercises_ExerciseSumElems_sumElems.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session5Exercises_ExerciseSumElems_sumElemsB.yaml — by: claude-opus, claude-sonnet, gpt-mini
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExerciseCountEven_mcountEven.yaml — by: claude-opus, claude-sonnet, gpt-mini
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExerciseCountMin_mCountMin.yaml — by: claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExercisePeekSum_mPeekSum.yaml — by: claude-sonnet, gpt-mini
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_binarySearch.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_binarySearchRec.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_search.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBubbleSort_bubbleSort.yaml — by: claude-opus
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBubbleSort_bubbleSorta.yaml — by: gpt-mini
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseSelSort_selSort.yaml — by: claude-opus, claude-sonnet, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseSeparate_separate.yaml — by: claude-sonnet, glm, grok-code
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session9Exercises_ExerciseSeqMaxSum_segMaxSum.yaml — by: claude-sonnet
+✓ Dafny-Exercises_tmp_tmpjm75muf__Session9Exercises_ExerciseSeqMaxSum_segSumaMaxima2.yaml — by: claude-sonnet, gpt, gpt-mini, grok-code
+✓ Dafny-Grind75_tmp_tmpsxfz3i4r_problems_twoSum_twoSum.yaml — by: claude-opus, gemini, gemini-flash, gpt
+✓ Dafny-Practice_tmp_tmphnmt4ovh_BST_InsertBST.yaml — by: claude-sonnet
+✓ Dafny-Practice_tmp_tmphnmt4ovh_Pattern Matching_FindAllOccurrences.yaml — by: claude-opus, gpt-mini
+✓ Dafny-Practice_tmp_tmphnmt4ovh_Pattern_Matching_FindAllOccurrences.yaml — by: gemini
+✓ Dafny-Projects_tmp_tmph399drhy_p2_arraySplit_ArraySplit.yaml — by: gemini, grok-code
+✓ Dafny-experiences_tmp_tmp150sm9qy_dafny_started_tutorial_dafny_tutorial_array_FindMax.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ Dafny-programs_tmp_tmpnso9eu7u_Algorithms + sorting_bubble-sort_BubbleSort.yaml — by: claude-opus, gpt-mini
+✓ DafnyPrograms_tmp_tmp74_f9k_c_invertarray_InvertArray.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ DafnyProjects_tmp_tmp2acw_s4s_CombNK_Comb.yaml — by: claude-opus, deepseek, glm, gpt, gpt-mini
+✓ DafnyProjects_tmp_tmp2acw_s4s_Power_powerDC.yaml — by: claude-opus, gemini, gemini-flash, glm, gpt, grok-code
+✓ DafnyProjects_tmp_tmp2acw_s4s_longestPrefix_longestPrefix.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ DafnyProjects_tmp_tmp2acw_s4s_partitionOddEven_partitionOddEven.yaml — by: claude-sonnet, gemini, gemini-flash, glm, grok-code
+✓ Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed copy - 副本_ComputeCount.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed copy - 副本_FooCount.yaml — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code
+✓ Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed_copy_-_副本_ComputeCount.yaml — by: gemini
+✓ Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed_copy_-_副本_FooCount.yaml — by: gemini
+✓ Dafny_Learning_Experience_tmp_tmpuxvcet_u_week8_12_a3_search_findPositionOfIndex_FindPositionOfElement.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny_ProgrammingLanguages_tmp_tmp82_e0kji_ExtraCredit_optimizeCorrect.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt
+✓ Dafny_Verify_tmp_tmphq7j0row_Generated_Code_ComputePower_ComputePower.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny_Verify_tmp_tmphq7j0row_dataset_detailed_examples_SelectionSort_SelectionSort.yaml — by: claude-opus, claude-sonnet, gpt-mini
+✓ Dafny_tmp_tmpj88zq5zt_2-Kontrakte_max_max.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Dafny_tmp_tmpv_d3qi10_3_cumsum_cumsum.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Exercise3_Increment_Array_incrementArray.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sort_Normal_insertionSort.yaml — by: gpt
+✓ Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sort_Normal_lookForMin.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sorted_Standard_sorting.yaml — by: gpt, gpt-mini
+✓ Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Quick_Sort_quickSort.yaml — by: claude-opus, gemini, gpt
+✓ Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Quick_Sort_threshold.yaml — by: claude-opus, claude-sonnet, gpt
+✓ Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Selection_Sort_Standard_selectionSorted.yaml — by: claude-opus, gemini, glm, gpt, gpt-mini, grok-code
+✓ Formal-Verification-Project_tmp_tmp9gmwsmyp_strings3_haveCommonKSubstring.yaml — by: claude-opus, claude-sonnet, gpt
+✓ Formal-Verification-Project_tmp_tmp9gmwsmyp_strings3_isSubstring.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings1_haveCommonKSubstring.yaml — by: claude-opus, claude-sonnet, gpt
+✓ Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings1_maxCommonSubstringLength.yaml — by: claude-sonnet, gpt, grok-code
+✓ Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings3_haveCommonKSubstring.yaml — by: claude-opus, gpt
+✓ Formal-methods-of-software-development_tmp_tmppryvbyty_Bloque 2_Lab6_vector_Sum.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ MFES_2021_tmp_tmpuljn8zd9_Exams_Special_Exam_03_2020_4_CatalanNumbers_calcC.yaml — by: gemini-flash, gpt, gpt-mini, grok-code
+✓ MFES_2021_tmp_tmpuljn8zd9_TheoreticalClasses_Power_powerIter.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ MFS_tmp_tmpmmnu354t_Praticas_TP9_Power_powerIter.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ MIEIC_mfes_tmp_tmpq3ho7nve_TP3_binary_search_binarySearch.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ MIEIC_mfes_tmp_tmpq3ho7nve_exams_mt2_19_p4_calcR.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ MIEIC_mfes_tmp_tmpq3ho7nve_exams_mt2_19_p5_partition.yaml — by: claude-opus, gemini
+✓ Prog-Fun-Solutions_tmp_tmp7_gmnz5f_extra_mod2_mod2.yaml — by: claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ Prog-Fun-Solutions_tmp_tmp7_gmnz5f_extra_mod_mod.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_Percentile_Percentile.yaml — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_Percentile_PercentileNonUniqueAnswer.yaml — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_demo_Partition.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_Percentile_Percentile.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_Percentile_PercentileNonUniqueAnswer.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_demo_Partition.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_ProgramProofs_ch15_Partition.yaml — by: claude-opus
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_ProgramProofs_ch15_QuickSort.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_ProgramProofs_ch15_QuickSortAux.yaml — by: claude-opus, gemini-flash
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_ProgramProofs_ch15_SelectionSort.yaml — by: claude-opus, grok-code
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_examples_bubblesort_BubbleSort.yaml — by: gpt, gpt-mini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_leetcode_FindPivotIndex_FindPivotIndex.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_leetcode_lc-remove-element_removeElement.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_leetcode_validAnagram_isAnagram.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_Partition.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_QuickSort.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_QuickSortAux.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_examples_bubblesort_BubbleSort.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_leetcode_lc-remove-element_removeElement.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_leetcode_validAnagram_isAnagram.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_mathematical objects verification_examples_fast_exp_FastExp.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_mathematical_objects_verification_examples_fast_exp_FastExp.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified algorithms_lol_sort_lol_sort.yaml — by: claude-opus
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified algorithms_lol_sort_swap.yaml — by: claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, grok-code
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified_algorithms_lol_sort_lol_sort.yaml — by: gemini
+✓ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified_algorithms_lol_sort_swap.yaml — by: gemini
+✓ SENG2011_tmp_tmpgk5jq85q_exam_ex2_Getmini.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ SENG2011_tmp_tmpgk5jq85q_exam_ex3_Symmetric.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, grok-code
+✓ SENG2011_tmp_tmpgk5jq85q_flex_ex1_sum.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ Software-Verification_tmp_tmpv4ueky2d_Best Time to Buy and Sell Stock_best_time_to_buy_and_sell_stock_best_time_to_buy_and_sell_stock.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ Software-Verification_tmp_tmpv4ueky2d_Best_Time_to_Buy_and_Sell_Stock_best_time_to_buy_and_sell_stock_best_time_to_buy_and_sell_stock.yaml — by: gemini
+✓ Software-Verification_tmp_tmpv4ueky2d_Contains Duplicate_contains_duplicate_contains_duplicate.yaml — by: claude-opus, deepseek, gpt, gpt-mini, grok-code
+✓ Software-Verification_tmp_tmpv4ueky2d_Contains_Duplicate_contains_duplicate_contains_duplicate.yaml — by: gemini
+✓ Software-Verification_tmp_tmpv4ueky2d_Counting Bits_counting_bits_counting_bits.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ Software-Verification_tmp_tmpv4ueky2d_Counting_Bits_counting_bits_counting_bits.yaml — by: gemini
+✓ Software-Verification_tmp_tmpv4ueky2d_Longest Increasing Subsequence_longest_increasing_subsequence_longest_increasing_subsequence.yaml — by: claude-sonnet, gpt, gpt-mini
+✓ Software-Verification_tmp_tmpv4ueky2d_Non-overlapping Intervals_non_overlapping_intervals_bubble_sort.yaml — by: claude-sonnet, gpt, gpt-mini
+✓ Software-Verification_tmp_tmpv4ueky2d_Non-overlapping Intervals_non_overlapping_intervals_non_overlapping_intervals.yaml — by: gpt, gpt-mini
+✓ Software-Verification_tmp_tmpv4ueky2d_Remove Duplicates from Sorted Array_remove_duplicates_from_sorted_array_remove_duplicates_from_sorted_array.yaml — by: claude-opus, claude-sonnet, gpt
+✓ Software-Verification_tmp_tmpv4ueky2d_Remove Element_remove_element_remove_element.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ Software-Verification_tmp_tmpv4ueky2d_Remove_Element_remove_element_remove_element.yaml — by: gemini
+✓ Software-Verification_tmp_tmpv4ueky2d_Valid Palindrome_valid_panlindrome_isPalindrome.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ Software-Verification_tmp_tmpv4ueky2d_Valid_Palindrome_valid_panlindrome_isPalindrome.yaml — by: gemini
+✓ Software-building-and-verification-Projects_tmp_tmp5tm1srrn_CVS-projeto_aula3_maxArrayReverse.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ Software-building-and-verification-Projects_tmp_tmp5tm1srrn_CVS-projeto_aula3_sumBackwards.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ Software-building-and-verification-Projects_tmp_tmp5tm1srrn_CVS-projeto_handout1_queryFast.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ VerifiedMergeSortDafny_tmp_tmpva7qms1b_MergeSort_merge.yaml — by: claude-opus, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ VerifiedMergeSortDafny_tmp_tmpva7qms1b_MergeSort_mergeSimple.yaml — by: claude-opus, gpt, gpt-mini
+✓ assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_BinarySearch.yaml — by: claude-opus, claude-sonnet, deepseek, gpt
+✓ assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_FindRange.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
+✓ assertive-programming-assignment-1_tmp_tmp3h_cj44u_ProdAndCount_ProdAndCount.yaml — by: claude-opus, gpt, gpt-mini
+✓ assertive-programming-assignment-1_tmp_tmp3h_cj44u_SearchAddends_FindAddends.yaml — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini
+✓ bbfny_tmp_tmpw4m0jvl0_enjoying_Find.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ bbfny_tmp_tmpw4m0jvl0_enjoying_FindMax.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_ArraySum.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Euclid.yaml — by: deepseek, gpt, gpt-mini
+✓ cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_IntDiv.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_IsPrime.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_NoDups.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Reverse.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_binary-search_binSearch.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ dafleet_tmp_tmpa2e4kb9v_0001-0050_0001-two-sum_twoSum.yaml — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ dafleet_tmp_tmpa2e4kb9v_0001-0050_0005-longest-palindromic-substring_expand_from_center.yaml — by: claude-opus, gpt-mini
+✓ dafleet_tmp_tmpa2e4kb9v_0001-0050_0005-longest-palindromic-substring_longestPalindrome.yaml — by: gpt-mini
+✓ dafny-duck_tmp_tmplawbgxjo_p1_SumArray.yaml — by: claude-opus, claude-sonnet, gpt
+✓ dafny-duck_tmp_tmplawbgxjo_p4_single.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-duck_tmp_tmplawbgxjo_p6_FilterVowelsArray.yaml — by: claude-opus, gpt, gpt-mini
+✓ dafny-exercise_tmp_tmpouftptir_appendArray_appendArray.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-exercise_tmp_tmpouftptir_countNeg_CountNeg.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-exercise_tmp_tmpouftptir_filter_Filter.yaml — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-exercise_tmp_tmpouftptir_firstE_firstE.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-exercise_tmp_tmpouftptir_prac3_ex2_GetEven.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-exercise_tmp_tmpouftptir_prac4_ex2_GetTriple.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-language-server_tmp_tmpkir0kenl_Test_comp_Arrays_LinearSearch.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-language-server_tmp_tmpkir0kenl_Test_dafny2_SegmentSum_MaxSegSum.yaml — by: gemini-flash, gpt, gpt-mini
+✓ dafny-language-server_tmp_tmpkir0kenl_Test_tutorial_maximum_Maximum.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-language-server_tmp_tmpkir0kenl_Test_vstte2012_Two-Way-Sort_two_way_sort.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code
+✓ dafny-programs_tmp_tmpcwodh6qh_src_expt_expt.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-programs_tmp_tmpcwodh6qh_src_factorial_factorial.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_113_IsInteger.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_126_SumOfCommonDivisors.yaml — by: claude-opus, gemini, gpt, gpt-mini
+✓ dafny-synthesis_task_id_127_Multiply.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_142_CountIdenticalPositions.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_143_CountArrays.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_145_MaxDifference.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_14_TriangularPrismVolume.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_161_RemoveElements.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_171_PentagonPerimeter.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_18_RemoveChars.yaml — by: claude-opus, claude-sonnet, deepseek, gemini
+✓ dafny-synthesis_task_id_227_MinOfThree.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_230_ReplaceBlanksWithChar.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, grok-code
+✓ dafny-synthesis_task_id_233_CylinderLateralSurfaceArea.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_234_CubeVolume.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_238_CountNonEmptySubstrings.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_240_ReplaceLastElement.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_242_CountCharacters.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_249_Intersection.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_251_InsertBeforeEach.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_261_ElementWiseDivision.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_262_SplitArray.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_273_SubtractSequences.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_290_MaxLengthList.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_2_SharedElements.yaml — by: claude-opus, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_304_ElementAtIndexAfterRotation.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_399_BitwiseXOR.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_3_IsNonPrime.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_401_IndexWiseAddition.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt-mini
+✓ dafny-synthesis_task_id_412_RemoveOddNumbers.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_414_AnyValueExists.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_424_ExtractRearChars.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_426_FilterOddNumbers.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_430_ParabolaDirectrix.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_432_MedianLength.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_435_LastDigit.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_436_FindNegativeNumbers.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ dafny-synthesis_task_id_441_CubeSurfaceArea.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_452_CalculateLoss.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_455_MonthHas31Days.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_457_MinLengthSublist.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_460_GetFirstElements.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_461_CountUppercase.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ dafny-synthesis_task_id_472_ContainsConsecutiveNumbers.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_474_ReplaceChars.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_476_SumMinMax.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_477_ToLowercase.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_554_FindOddNumbers.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_555_DifferenceSumCubesAndSumNumbers.yaml — by: claude-opus, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_557_ToggleCase.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_565_SplitStringIntoChars.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_566_SumOfDigits.yaml — by: gpt, gpt-mini
+✓ dafny-synthesis_task_id_567_IsSorted.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
+✓ dafny-synthesis_task_id_573_UniqueProduct.yaml — by: claude-opus
+✓ dafny-synthesis_task_id_574_CylinderSurfaceArea.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_577_FactorialOfLastDigit.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_578_Interleave.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_579_DissimilarElements.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_581_SquarePyramidSurfaceArea.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_586_SplitAndAppend.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_588_DifferenceMinMax.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ dafny-synthesis_task_id_598_IsArmstrong.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_599_SumAndAverage.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_600_IsEven.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_602_FindFirstRepeatedChar.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_603_LucidNumbers.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_605_IsPrime.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_606_DegreesToRadians.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_610_RemoveElement.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ dafny-synthesis_task_id_618_ElementWiseDivide.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_623_PowerOfListElements.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt
+✓ dafny-synthesis_task_id_624_ToUppercase.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_625_SwapFirstAndLast.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_626_AreaOfLargestTriangleInSemicircle.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_627_SmallestMissingNumber.yaml — by: claude-sonnet, grok-code
+✓ dafny-synthesis_task_id_629_FindEvenNumbers.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_632_swap.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_637_IsBreakEven.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_641_NthNonagonalNumber.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_644_ReverseUptoK.yaml — by: claude-opus, gemini, gpt, gpt-mini
+✓ dafny-synthesis_task_id_69_ContainsSequence.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_70_AllSequencesEqualLength.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_728_AddLists.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_732_ReplaceWithColon.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_741_AllCharactersSame.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_743_RotateRight.yaml — by: claude-opus, gemini, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_750_AddTupleToList.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_755_SecondSmallest.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ dafny-synthesis_task_id_759_IsDecimalWithTwoPrecision.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_762_IsMonthWith30Days.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_769_Difference.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ dafny-synthesis_task_id_770_SumOfFourthPowerOfOddNumbers.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_775_IsOddAtIndexOdd.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_784_FirstEvenOddIndices.yaml — by: claude-opus, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_784_ProductEvenOdd.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ dafny-synthesis_task_id_790_IsEvenAtIndexEven.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_792_CountLists.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_793_LastPosition.yaml — by: claude-opus, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_799_RotateLeftBits.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_801_CountEqualNumbers.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_803_IsPerfectSquare.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_804_IsProductEven.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, grok-code
+✓ dafny-synthesis_task_id_809_IsSmaller.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ dafny-synthesis_task_id_95_SmallestListLength.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini
+✓ dafny_examples_tmp_tmp8qotd4ez_leetcode_0001-two-sum_TwoSum.yaml — by: claude-opus, gemini, gpt, gpt-mini
+✓ dafny_examples_tmp_tmp8qotd4ez_leetcode_0027-remove-element_RemoveElement.yaml — by: claude-opus
+✓ dafny_examples_tmp_tmp8qotd4ez_leetcode_0070-climbing-stairs_ClimbStairs.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny_examples_tmp_tmp8qotd4ez_test_shuffle_swap.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ dafny_misc_tmp_tmpg4vzlnm1_rosetta_code_factorial_IterativeFactorial.yaml — by: claude-opus, gemini, gpt, gpt-mini, grok-code
+✓ dafny_misc_tmp_tmpg4vzlnm1_rosetta_code_fibonacci_sequence_FibonacciIterative.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ dafny_tmp_tmp49a6ihvk_m4_DutchFlag.yaml — by: claude-opus, claude-sonnet, gemini, grok-code
+✓ dafny_tmp_tmp59p638nn_examples_SelectionSort_SelectionSort.yaml — by: claude-opus, gpt
+✓ dafny_tmp_tmp59p638nn_examples_SelectionSort_SelectionnSort.yaml — by: gpt, gpt-mini, grok-code
+✓ feup-mfes_tmp_tmp6_a1y5a5_examples_SelectionSort_findMin.yaml — by: claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini, grok-code
+✓ feup-mfes_tmp_tmp6_a1y5a5_examples_SelectionSort_selectionSort.yaml — by: claude-opus, gpt-mini, grok-code
+✓ formal-methods-in-software-engineering_tmp_tmpe7fjnek6_Labs4_gr2_DivMod1.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ formal-methods-in-software-engineering_tmp_tmpe7fjnek6_Labs4_gr2_HoareTripleReqEns.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ formal-methods-in-software-engineering_tmp_tmpe7fjnek6_Labs4_gr2_SqrSum1.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ formal-verification_tmp_tmpoepcssay_strings3_haveCommonKSubstring.yaml — by: gpt-mini
+✓ formal-verification_tmp_tmpoepcssay_strings3_isPrefix.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ formal-verification_tmp_tmpoepcssay_strings3_isSubstring.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex1_PalVerify.yaml — by: claude-sonnet, deepseek, gemini, gpt
+✓ formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex2_Allow42.yaml — by: claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini, grok-code
+✓ formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Exchanger.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ llm-verified-eval_tmp_tmpd2deqn_i_dafny_0_has_close_elements.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ llm-verified-eval_tmp_tmpd2deqn_i_dafny_161_solve.yaml — by: claude-sonnet, gpt, gpt-mini, grok-code
+✓ llm-verified-eval_tmp_tmpd2deqn_i_dafny_3_below_zero.yaml — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ llm-verified-eval_tmp_tmpd2deqn_i_dafny_5_intersperse.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok-code
+✓ llm-verified-eval_tmp_tmpd2deqn_i_dafny_9_rolling_max.yaml — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ se2011_tmp_tmp71eb82zt_ass2_ex2_SecondLargest.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ software_analysis_tmp_tmpmt6bo9sf_ss_find_min_index.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ software_analysis_tmp_tmpmt6bo9sf_ss_selection_sort.yaml — by: claude-opus, gemini-flash, gpt-mini
+✓ t1_MF_tmp_tmpi_sqie4j_exemplos_colecoes_sequences_ex3_Delete.yaml — by: claude-opus, claude-sonnet, gemini, gpt
+✓ verified-using-dafny_tmp_tmp7jatpjyn_longestZero_longestZero.yaml — by: gpt-mini
+✓ vfag_tmp_tmpc29dxm1j_Verificacion_torneo_torneo.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ vfag_tmp_tmpc29dxm1j_sumar_componentes_suma_componentes.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+
+Failed files:
+✗ AssertivePrograming_tmp_tmpwf43uz0e_DivMode_Unary_IterativeDivMod.yaml
+✗ AssertivePrograming_tmp_tmpwf43uz0e_Find_Substring_FindFirstOccurrence.yaml
+✗ AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeSort.yaml
+✗ BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insert.yaml
+✗ BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insertRecursion.yaml
+✗ CS494-final-project_tmp_tmp7nof55uq_bubblesort_BubbleSort.yaml
+✗ Clover_even_list_FindEvenNumbers.yaml
+✗ Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_otherbSearch.yaml
+✗ Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseReplace_replace.yaml
+✗ Dafny-Exercises_tmp_tmpjm75muf__Session8Exercises_ExerciseInsertionSort_InsertionSort.yaml
+✗ Dafny-demo_tmp_tmpkgr_dvdi_Dafny_BinarySearch_BinarySearch.yaml
+✗ Dafny-programs_tmp_tmpnso9eu7u_Algorithms___sorting_bubble-sort_BubbleSort.yaml
+✗ DafnyPrograms_tmp_tmp74_f9k_c_automaton_ExecuteAutomaton.yaml
+✗ DafnyPrograms_tmp_tmp74_f9k_c_prime-database_testPrimeness.yaml
+✗ Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed copy - 副本_PreCompute.yaml
+✗ Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed_copy_-_副本_PreCompute.yaml
+✗ Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_week5_ComputePower_ComputePower.yaml
+✗ Dafny_Programs_tmp_tmp99966ew4_binary_search_BinarySearch.yaml
+✗ Dafny_Programs_tmp_tmp99966ew4_lemma_FindZero.yaml
+✗ Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_normal_data_completion_MaxPerdV2_max.yaml
+✗ Dafny_Verify_tmp_tmphq7j0row_Generated_Code_Count_count.yaml
+✗ Dafny_Verify_tmp_tmphq7j0row_dataset_bql_exampls_SmallNum_add_small_numbers.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 1_LinearSearch_SearchLoop.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 1_LinearSearch_SearchRecursive.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 2_BinarySearchDec_SearchRecursive.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Search.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Sort.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_SelectionSortMultiset_Sort.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 8_H8_Partition.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_1_LinearSearch_SearchLoop.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_1_LinearSearch_SearchRecursive.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_2_BinarySearchDec_SearchRecursive.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_3_InsertionSortMultiset_Search.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_3_InsertionSortMultiset_Sort.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_3_SelectionSortMultiset_Sort.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_8_H8_Partition.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_tests_F1a_Mid.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_tests_InsertionSortSeq_InsertionSort.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_tests_Search1000_Search1000.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_tests_Search1000_Search2PowLoop.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_tests_Search1000_Search2PowRecursive.yaml
+✗ Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop_SumIntsLoop.yaml
+✗ Dafny_tmp_tmpj88zq5zt_2-Kontrakte_reverse3_swap3.yaml
+✗ Dafny_tmp_tmpmvs2dmry_examples2_Product.yaml
+✗ Dafny_tmp_tmpmvs2dmry_examples2_exp_by_sqr.yaml
+✗ Dafny_tmp_tmpmvs2dmry_examples2_gcdCalc.yaml
+✗ Dafny_tmp_tmpmvs2dmry_pancakesort_findmax_findMax.yaml
+✗ Dafny_tmp_tmpmvs2dmry_pancakesort_flip_flip.yaml
+✗ Dafny_tmp_tmpv_d3qi10_2_min_minArray.yaml
+✗ FlexWeek_tmp_tmpc_tfdj_3_ex4_join.yaml
+✗ FlexWeek_tmp_tmpc_tfdj_3_reverse_Reverse.yaml
+✗ Formal-Verification-Project_tmp_tmp9gmwsmyp_strings3_maxCommonSubstringLength.yaml
+✗ Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings3_maxCommonSubstringLength.yaml
+✗ Formal-methods-of-software-development_tmp_tmppryvbyty_Bloque_2_Lab6_vector_Sum.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_InsertionSort_InsertionSort.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_MatrixMultiplication_multiply.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_ReverseString_yarra.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_InsertionSort_InsertionSort.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_MatrixMultiplication_multiply.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_ReverseString_yarra.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_examples_relativeOrder_FindEvenNumbers.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_SelectionSort.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_examples_relativeOrder_FindEvenNumbers.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_leetcode_FindPivotIndex_FindPivotIndex.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic examples_BubbleSort_bubbleSort.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic examples_BubbleSort_sol_bubbleSort.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic_examples_BubbleSort_bubbleSort.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic_examples_BubbleSort_sol_bubbleSort.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from dafny main repo_dafny2_COST-verif-comp-2011-3-TwoDuplicates_Search.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from dafny main repo_dafny2_Classics_FIND.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from_dafny_main_repo_dafny2_COST-verif-comp-2011-3-TwoDuplicates_Search.yaml
+✗ Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from_dafny_main_repo_dafny2_Classics_FIND.yaml
+✗ Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_04_Hoangkim_ex_04_Hoangkim_intDiv.yaml
+✗ Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_05_Hoangkim_ex_05_Hoangkim_gcdI.yaml
+✗ Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_06_Hoangkim_ex_06_hoangkim_gcdI.yaml
+✗ Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_07_Hoangkim_ex07_Hoangkim_FindMin.yaml
+✗ Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_07_Hoangkim_ex07_Hoangkim_selectionSort.yaml
+✗ Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_10_Hoangkim_ex10_hoangkim_q.yaml
+✗ Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_10_Hoangkim_ex10_hoangkim_strange.yaml
+✗ SENG2011_tmp_tmpgk5jq85q_ass2_ex1_StringSwap.yaml
+✗ SENG2011_tmp_tmpgk5jq85q_ass2_ex2_String3Sort.yaml
+✗ SENG2011_tmp_tmpgk5jq85q_ass2_ex3_BadSort.yaml
+✗ Simulink-To_dafny_tmp_tmpbcuesj2t_Tank_checkRegulation.yaml
+✗ Software-Verification_tmp_tmpv4ueky2d_Longest_Increasing_Subsequence_longest_increasing_subsequence_longest_increasing_subsequence.yaml
+✗ Software-Verification_tmp_tmpv4ueky2d_Non-overlapping_Intervals_non_overlapping_intervals_bubble_sort.yaml
+✗ Software-Verification_tmp_tmpv4ueky2d_Non-overlapping_Intervals_non_overlapping_intervals_non_overlapping_intervals.yaml
+✗ Software-Verification_tmp_tmpv4ueky2d_Remove_Duplicates_from_Sorted_Array_remove_duplicates_from_sorted_array_remove_duplicates_from_sorted_array.yaml
+✗ Workshop_tmp_tmp0cu11bdq_Lecture_Answers_max_array_max.yaml
+✗ cs245-verification_tmp_tmp0h_nxhqp_A8_Q1_A8Q1.yaml
+✗ cs245-verification_tmp_tmp0h_nxhqp_SortingIssues_FirstAttempt_sort.yaml
+✗ cs245-verification_tmp_tmp0h_nxhqp_power_compute_power.yaml
+✗ cs245-verification_tmp_tmp0h_nxhqp_quicksort-partition_QuicksortPartition.yaml
+✗ dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_fibonacci_ComputeFib.yaml
+✗ dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_find_Find.yaml
+✗ dafleet_tmp_tmpa2e4kb9v_0001-0050_0003-longest-substring-without-repeating-characters_lengthOfLongestSubstring.yaml
+✗ dafny-duck_tmp_tmplawbgxjo_ex3_BadSort.yaml
+✗ dafny-exercise_tmp_tmpouftptir_absIt_AbsIt.yaml
+✗ dafny-exercise_tmp_tmpouftptir_reverse_Reverse.yaml
+✗ dafny-exercise_tmp_tmpouftptir_zapNegatives_ZapNegatives.yaml
+✗ dafny-exercises_tmp_tmp5mvrowrx_leetcode_26-remove-duplicates-from-sorted-array_RemoveDuplicates.yaml
+✗ dafny-language-server_tmp_tmpkir0kenl_Test_VSComp2010_Problem1-SumMax_M.yaml
+✗ dafny-language-server_tmp_tmpkir0kenl_Test_dafny2_TuringFactorial_ComputeFactorial.yaml
+✗ dafny-language-server_tmp_tmpkir0kenl_Test_dafny4_Bug165_Select.yaml
+✗ dafny-synthesis_task_id_105_CountTrue.yaml
+✗ dafny-synthesis_task_id_106_AppendArrayToSeq.yaml
+✗ dafny-synthesis_task_id_133_SumOfNegatives.yaml
+✗ dafny-synthesis_task_id_170_SumInRange.yaml
+✗ dafny-synthesis_task_id_284_AllElementsEqual.yaml
+✗ dafny-synthesis_task_id_431_HasCommonElement.yaml
+✗ dafny-synthesis_task_id_433_IsGreater.yaml
+✗ dafny-synthesis_task_id_470_PairwiseAddition.yaml
+✗ dafny-synthesis_task_id_572_RemoveDuplicates.yaml
+✗ dafny-synthesis_task_id_576_IsSublist.yaml
+✗ dafny-synthesis_task_id_587_ArrayToSeq.yaml
+✗ dafny-synthesis_task_id_591_SwapFirstAndLast.yaml
+✗ dafny-synthesis_task_id_594_FirstEvenOddDifference.yaml
+✗ dafny-synthesis_task_id_616_ElementWiseModulo.yaml
+✗ dafny-synthesis_task_id_622_FindMedian.yaml
+✗ dafny-synthesis_task_id_632_MoveZeroesToEnd.yaml
+✗ dafny-synthesis_task_id_644_Reverse.yaml
+✗ dafny-synthesis_task_id_733_FindFirstOccurrence.yaml
+✗ dafny-synthesis_task_id_751_IsMinHeap.yaml
+✗ dafny-synthesis_task_id_760_HasOnlyOneDistinctElement.yaml
+✗ dafny-synthesis_task_id_776_CountVowelNeighbors.yaml
+✗ dafny-synthesis_task_id_798_ArraySum.yaml
+✗ dafny-synthesis_task_id_807_FindFirstOdd.yaml
+✗ dafny-synthesis_task_id_94_MinSecondValueFirst.yaml
+✗ dafny_examples_tmp_tmp8qotd4ez_leetcode_0069-sqrt_mySqrt.yaml
+✗ dafny_examples_tmp_tmp8qotd4ez_test_shuffle_getRandomDataEntry.yaml
+✗ dafny_projects_tmp_tmpjutqwjv4_tutorial_tutorial_Find.yaml
+✗ dafny_projects_tmp_tmpjutqwjv4_tutorial_tutorial_FindZero.yaml
+✗ dafny_tmp_tmp59p638nn_examples_realExponent_pow.yaml
+✗ formal-verification_tmp_tmpoepcssay_strings3_maxCommonSubstringLength.yaml
+✗ formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex6_BullsCows.yaml
+✗ formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Sorter.yaml
+✗ veri-sparse_tmp_tmp15fywna6_dafny_dspmspv_DSpMSpV.yaml
+✗ veri-sparse_tmp_tmp15fywna6_dafny_spmv_SpMV.yaml

@@ -1,0 +1,31 @@
+// <vc-preamble>
+predicate valid_permut(a: seq<int>, b: seq<int>)
+  requires |a| == |b|
+{
+  multiset(a) == multiset(b)
+}
+
+predicate sorted(a: seq<int>)
+{
+  forall i, j | 0 <= i <= j < |a| :: a[i] <= a[j]
+}
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method swap(a: array<int>, i: int, j: int)
+  requires 0 <= i < a.Length && 0 <= j < a.Length
+  modifies a
+  ensures a[..] == old(a[..]) [i := old(a[j])] [j := old(a[i])]
+  ensures valid_permut(a[..], old(a[..]))
+// </vc-spec>
+// <vc-code>
+{
+  var tmp := a[i];
+  a[i] := a[j];
+  a[j] := tmp;
+}
+// </vc-code>

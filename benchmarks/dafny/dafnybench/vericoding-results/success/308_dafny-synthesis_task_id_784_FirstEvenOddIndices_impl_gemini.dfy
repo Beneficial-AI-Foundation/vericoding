@@ -1,0 +1,55 @@
+// <vc-preamble>
+predicate IsEven(n: int)
+{
+    n % 2 == 0
+}
+
+predicate IsOdd(n: int)
+{
+    n % 2 != 0
+}
+
+predicate IsFirstEven(evenIndex: int, lst: seq<int>)
+    requires 0 <= evenIndex < |lst|
+    requires IsEven(lst[evenIndex])
+{
+    forall i :: 0 <= i < evenIndex ==> IsOdd(lst[i])
+}
+
+predicate IsFirstOdd(oddIndex: int, lst: seq<int>)
+    requires 0 <= oddIndex < |lst|
+    requires IsOdd(lst[oddIndex])
+{
+    forall i :: 0 <= i < oddIndex ==> IsEven(lst[i])
+}
+// </vc-preamble>
+
+// <vc-helpers>
+function IndexOf(lst: seq<int>, P: int -> bool): (r: int)
+  requires exists i :: 0 <= i < |lst| && P(lst[i])
+  ensures 0 <= r < |lst|
+  ensures P(lst[r])
+  ensures forall k :: 0 <= k < r ==> !P(lst[k])
+{
+  if P(lst[0]) then 0
+  else 1 + IndexOf(lst[1..], P)
+}
+// </vc-helpers>
+
+// <vc-spec>
+method FirstEvenOddIndices(lst : seq<int>) returns (evenIndex: int, oddIndex : int)
+    requires |lst| >= 2
+    requires exists i :: 0 <= i < |lst| && IsEven(lst[i])
+    requires exists i :: 0 <= i < |lst| && IsOdd(lst[i])
+    ensures 0 <= evenIndex < |lst|
+    ensures 0 <= oddIndex < |lst|
+
+    ensures IsEven(lst[evenIndex]) && IsFirstEven(evenIndex, lst)
+    ensures IsOdd(lst[oddIndex]) && IsFirstOdd(oddIndex, lst)
+// </vc-spec>
+// <vc-code>
+{
+  evenIndex := IndexOf(lst, IsEven);
+  oddIndex := IndexOf(lst, IsOdd);
+}
+// </vc-code>

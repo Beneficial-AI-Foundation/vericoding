@@ -1,0 +1,19 @@
+predicate positive(s:seq<int>)
+{forall u::0<=u<|s| ==> s[u]>=0}
+
+// <vc-helpers>
+predicate all_positive(s:seq<int>)
+{forall u::0<=u<|s| ==> s[u]>=0}
+// </vc-helpers>
+
+// <vc-spec>
+method mpositive(v:array<int>) returns (b:bool)
+ensures b==positive(v[0..v.Length])
+// </vc-spec>
+// <vc-code>
+{
+  var s := v[0..v.Length];
+  b := all_positive(s);
+}
+// </vc-code>
+

@@ -1,0 +1,62 @@
+// shenanigans going through the dafny tutorial
+
+
+
+
+function max(a: int, b: int): int
+{
+  if a > b then a else b
+}
+method Testing'()
+{
+  assume{:axiom} false;
+}
+
+function abs(x: int): int
+{
+  if x < 0 then -x else x
+}
+
+
+function fib(n: nat): nat
+{
+  if n == 0 then 0
+  else if n == 1 then 1
+  else fib(n - 1) + fib(n - 2)
+}
+
+predicate sorted(a: array<int>)
+  reads a
+{
+  forall j, k :: 0 <= j < k < a.Length ==> a[j] < a[k]
+}
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method FindMax(a: array<int>) returns (i: int)
+  requires a.Length >= 1 
+  ensures 0 <= i < a.Length
+  ensures forall k :: 0 <= k < a.Length ==> a[k] <= a[i]
+// </vc-spec>
+// <vc-code>
+{
+  var m := 0;
+  var j := 1;
+  while j < a.Length
+    invariant 0 <= m < a.Length
+    invariant 1 <= j <= a.Length
+    invariant forall k :: 0 <= k < j ==> a[k] <= a[m]
+    decreases a.Length - j
+  {
+    if a[j] > a[m] {
+      m := j;
+    }
+    j := j + 1;
+  }
+  return m;
+}
+// </vc-code>
+

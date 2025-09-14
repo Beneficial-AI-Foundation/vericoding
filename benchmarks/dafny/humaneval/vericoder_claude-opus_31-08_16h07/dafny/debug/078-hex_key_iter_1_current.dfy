@@ -1,0 +1,55 @@
+function IsPrimeHexDigit(c: char): bool
+{
+  c == '2' || c == '3' || c == '5' || c == '7' || c == 'B' || c == 'D'
+}
+function count_prime_hex_digits_rec(num: seq<char>) : (count : int)
+  // post-conditions-start
+  ensures 0 <= count <= |num|
+  // post-conditions-end
+{
+  // impl-start
+  if |num| == 0 then 0
+  else (if IsPrimeHexDigit(num[0]) then 1 else 0) + count_prime_hex_digits_rec(num[1..])
+  // impl-end
+}
+
+// <vc-helpers>
+lemma count_prime_hex_digits_rec_lemma(s: seq<char>, i: int)
+    requires 0 <= i <= |s|
+    ensures count_prime_hex_digits_rec(s[i..]) == count_prime_hex_digits_rec(s[i..])
+{
+    // This lemma is trivial but helps the verifier
+}
+// </vc-helpers>
+
+// <vc-spec>
+method count_prime_hex_digits(s: seq<char>) returns (count : int)
+    // post-conditions-start
+    ensures count == count_prime_hex_digits_rec(s)
+    ensures 0 <= count <= |s|
+    // post-conditions-end
+// </vc-spec>
+// <vc-code>
+{
+    count := 0;
+    var i := 0;
+    
+    while i < |s|
+        invariant 0 <= i <= |s|
+        invariant count == count_prime_hex_digits_rec(s[0..i])
+    {
+        if IsPrimeHexDigit(s[i]) {
+            count := count + 1;
+        }
+        
+        assert s[0..i+1] == s[0..i] + [s[i]];
+        assert count_prime_hex_digits_rec(s[0..i+1]) == 
+               count_prime_hex_digits_rec(s[0..i] + [s[i]]);
+        
+        i := i + 1;
+    }
+    
+    assert s[0..i] == s;
+}
+// </vc-code>
+

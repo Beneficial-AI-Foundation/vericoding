@@ -1,0 +1,49 @@
+/*
+   CS:5810 Formal Methods in Software Engineering
+   Fall 2017
+   The University of Iowa
+
+   Instructor: Cesare Tinelli
+
+   Credits: Example adapted from Dafny tutorial
+*/
+
+
+//      n = 0, 1, 2, 3, 4, 5, 6,  7,  8, ...
+// fib(n) = 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+function fib(n: nat): nat
+  decreases n;
+{
+  if n == 0 then 0 
+  else if n == 1 then 1 
+  else fib(n - 1) + fib(n - 2)
+}
+
+// <vc-helpers>
+// (No helper functions needed; the fib function is declared in the preamble.)
+// </vc-helpers>
+
+// <vc-spec>
+method ComputeFib(n: nat) returns (f: nat)
+  ensures f == fib(n);
+// </vc-spec>
+// <vc-code>
+{
+  var i: nat := 0;
+  var a: nat := 0;
+  var b: nat := 1;
+  while i < n
+    invariant 0 <= i <= n
+    invariant a == fib(i)
+    invariant b == fib(i + 1)
+    decreases n - i
+  {
+    var tmp := b;
+    b := a + b;
+    a := tmp;
+    i := i + 1;
+  }
+  f := a;
+}
+// </vc-code>
+

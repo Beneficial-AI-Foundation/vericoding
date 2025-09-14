@@ -1,0 +1,31 @@
+
+
+// <vc-helpers>
+// set-options: --allow-warnings true
+// </vc-helpers>
+
+// <vc-spec>
+method FindMedian(a: array<int>, b: array<int>) returns (median: int)
+    requires a != null && b != null
+    requires a.Length == b.Length
+    requires a.Length > 0
+    requires forall i :: 0 <= i < a.Length - 1 ==> a[i] <= a[i + 1]
+    requires forall i :: 0 <= i < b.Length - 1 ==> b[i] <= b[i + 1]
+    ensures median == if (a.Length % 2 == 0) then (a[a.Length / 2 - 1] + b[0]) / 2 else a[a.Length / 2]
+// </vc-spec>
+// <vc-code>
+{
+  var L := a.Length;
+  if L % 2 == 0 {
+    assert L - L / 2 >= 1;
+    var i := L - L / 2 - 1;
+    assert 0 <= i < L;
+    assert L - L / 2 == L / 2;
+    median := (a[i] + b[0]) / 2;
+  } else {
+    assert 0 <= L / 2 < L;
+    median := a[L / 2];
+  }
+}
+// </vc-code>
+

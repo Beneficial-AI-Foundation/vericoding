@@ -1,0 +1,24 @@
+
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method mroot1(n:int) returns (r:int) //Cost O(root n)
+requires n>=0
+ensures r>=0 && r*r <= n <(r+1)*(r+1)
+// </vc-spec>
+// <vc-code>
+{
+  r := 0;
+  while (r+1)*(r+1) <= n
+    invariant 0 <= r <= n && r*r <= n
+    decreases n - r
+  {
+    r := r + 1;
+  }
+  return r;
+}
+// </vc-code>
+
