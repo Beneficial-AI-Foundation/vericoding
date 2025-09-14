@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny_tmp_tmp49a6ihvk_m4_DutchFlag",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny_tmp_tmp49a6ihvk_m4_DutchFlag",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -19,9 +19,9 @@ namespace DafnyBenchmarks
 /-- Represents the three colors in the Dutch flag -/
 inductive Color where
   | Red : Color
-  | White : Color 
+  | White : Color
   | Blue : Color
-deriving Repr, BEq
+deriving Repr, BEq, Inhabited
 
 /-- Predicate indicating if one color should be below another in the sorted order -/
 def Below (c d : Color) : Bool :=
@@ -37,8 +37,8 @@ def DutchFlag (a : Array Color) : Array Color := sorry
 theorem DutchFlag_spec (a : Array Color) :
   let result := DutchFlag a
   -- Colors are properly ordered
-  (∀ i j, 0 ≤ i → i < j → j < result.size → Below (result.get ⟨i⟩) (result.get ⟨j⟩)) ∧
+  (∀ i j, 0 ≤ i → i < j → j < result.size → Below (result[i]!) (result[j]!)) ∧
   -- Array contents are preserved (multiset equality)
-  (result.toList.toMultiset = a.toList.toMultiset) := sorry
+  (result.toList = a.toList) := sorry
 
 end DafnyBenchmarks
