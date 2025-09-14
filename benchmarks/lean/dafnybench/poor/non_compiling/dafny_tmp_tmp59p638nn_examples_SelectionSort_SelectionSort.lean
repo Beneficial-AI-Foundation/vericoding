@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -20,21 +20,21 @@ namespace DafnyBenchmarks
 Predicate indicating that array elements in range [left,right) are preserved
 between old and new states
 -/
-def Preserved (a : Array Int) (old_a : Array Int) (left : Nat) (right : Nat) : Bool :=
+def Preserved (a : Array Int) (old_a : Array Int) (left : Nat) (right : Nat) : Prop :=
   left ≤ right ∧ right ≤ a.size ∧
-  (∀ i, left ≤ i ∧ i < right → a.get ⟨i⟩ = old_a.get ⟨i⟩)
+  (∀ i, left ≤ i ∧ i < right → a[i]! = old_a[i]!)
 
 /--
 Predicate indicating array elements in range [left,right) are ordered
 -/
-def Ordered (a : Array Int) (left : Nat) (right : Nat) : Bool :=
+def Ordered (a : Array Int) (left : Nat) (right : Nat) : Prop :=
   left ≤ right ∧ right ≤ a.size ∧
-  (∀ i, 0 < left ∧ left ≤ i ∧ i < right → a.get (i-1) ≤ a.get ⟨i⟩)
+  (∀ i, 0 < left ∧ left ≤ i ∧ i < right → a[i-1]! ≤ a[i]!)
 
 /--
 Predicate indicating array is sorted and preserves elements
 -/
-def Sorted (a : Array Int) (old_a : Array Int) : Bool :=
+def Sorted (a : Array Int) (old_a : Array Int) : Prop :=
   Ordered a 0 a.size ∧ Preserved a old_a 0 a.size
 
 /--
