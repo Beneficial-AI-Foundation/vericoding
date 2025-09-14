@@ -31,7 +31,7 @@ theorem single_spec (x y : Array Int) :
   x.size > 0 ∧ y.size > 0 →
   ∀ (result : Array Int), single x y = result →
     result.size = x.size + y.size ∧
-    (∀ i, i < x.size → result.get ⟨i⟩ = x.get ⟨i⟩) ∧
-    (∀ i, i < y.size → result.get (x.size + i) = y.get ⟨i⟩) := sorry
+    (∀ i:Fin x.size, i < x.size → result[i]! = x[i]!) ∧
+    (∀ i:Fin y.size, i < y.size → result[x.size + i]! = y[i]!) := sorry
 
 end DafnyBenchmarks
