@@ -20,7 +20,7 @@ namespace DafnyBenchmarks
 Ghost function that computes b raised to the power n recursively.
 Requires n to be non-negative.
 -/
-def Expt (b : Int) (n : Nat) : Int :=
+partial def Expt (b : Int) (n : Nat) : Int :=
   if n == 0 then 1 else b * Expt b (n - 1)
 
 /--
