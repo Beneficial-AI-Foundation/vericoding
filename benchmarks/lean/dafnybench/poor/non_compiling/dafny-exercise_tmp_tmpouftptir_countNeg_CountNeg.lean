@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -20,9 +20,9 @@ namespace DafnyBenchmarks
 Recursively counts negative numbers in array up to given index.
 Translated from Dafny function verifyNeg.
 -/
-def verifyNeg (a : Array Int) (idx : Int) : Nat :=
+partial def verifyNeg (a : Array Int) (idx : Int) : Nat :=
   if idx == 0 then 0
-  else verifyNeg a (idx - 1) + (if a.get (idx - 1) < 0 then 1 else 0)
+  else verifyNeg a (idx - 1) + (if a[(idx - 1).toNat]! < 0 then 1 else 0)
 
 /--
 Main method that counts negative numbers in array.
