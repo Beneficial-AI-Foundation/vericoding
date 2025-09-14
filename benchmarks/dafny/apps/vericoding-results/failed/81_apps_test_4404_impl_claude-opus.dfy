@@ -1,0 +1,93 @@
+predicate IsValidDateString(s: string, y: int, m: int, d: int)
+{
+    |s| >= 10 && 
+    s[4] == '/' && s[7] == '/' &&
+    StringToInt(s[0..4]) == y &&
+    StringToInt(s[5..7]) == m &&
+    StringToInt(s[8..10]) == d
+}
+
+function StringToInt(s: string): int
+{
+    if |s| == 0 then 0
+    else if |s| == 1 then CharToDigit(s[0])
+    else if |s| == 2 then CharToDigit(s[0]) * 10 + CharToDigit(s[1])
+    else if |s| == 4 then CharToDigit(s[0]) * 1000 + CharToDigit(s[1]) * 100 + CharToDigit(s[2]) * 10 + CharToDigit(s[3])
+    else 0
+}
+
+function CharToDigit(c: char): int
+{
+    if '0' <= c <= '9' then (c as int) - ('0' as int) else 0
+}
+
+predicate ValidInput(s: string)
+{
+    exists y, m, d :: IsValidDateString(s, y, m, d) && y == 2019 && 1 <= m <= 12 && 1 <= d <= 31
+}
+
+predicate CorrectOutput(s: string, result: string)
+{
+    exists y, m, d :: IsValidDateString(s, y, m, d) && y == 2019 && 1 <= m <= 12 && 1 <= d <= 31 && 
+    ((m < 4 || (m == 4 && d <= 30)) ==> result == "Heisei") && 
+    ((m > 4 || (m == 4 && d > 30)) ==> result == "TBD")
+}
+
+// <vc-helpers>
+lemma ParseDateLemma(s: string)
+    requires ValidInput(s)
+    ensures |s| >= 10
+    ensures s[4] == '/' && s[7] == '/'
+    ensures exists y, m, d :: IsValidDateString(s, y, m, d) && y == 2019 && 1 <= m <= 12 && 1 <= d <= 31
+{
+    // This follows directly from ValidInput and IsValidDateString definitions
+}
+
+lemma VerifyCorrectOutput(s: string, y: int, m: int, d: int, result: string)
+    requires IsValidDateString(s, y, m, d)
+    requires y == 2019 && 1 <= m <= 12 && 1 <= d <= 31
+    requires (m < 4 || (m == 4 && d <= 30)) ==> result == "Heisei"
+    requires (m > 4 || (m == 4 && d > 30)) ==> result == "TBD"
+    ensures CorrectOutput(s, result)
+{
+    // This lemma helps establish CorrectOutput by witnessing the exists clause
+    assert exists y', m', d' :: (
+        IsValidDateString(s, y', m', d') && 
+        y' == 2019 && 
+        1 <= m' <= 12 && 
+        1 <= d' <= 31 && 
+        ((m' < 4 || (m' == 4 && d' <= 30)) ==> result == "Heisei") && 
+        ((m' > 4 || (m' == 4 && d' > 30)) ==> result == "TBD")
+    );
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(stdin_input: string) returns (result: string)
+requires |stdin_input| > 0
+requires ValidInput(stdin_input)
+ensures CorrectOutput(stdin_input, result)
+// </vc-spec>
+// <vc-code>
+{
+    ParseDateLemma(stdin_input);
+    
+    var month := StringToInt(stdin_input[5..7]);
+    var day := StringToInt(stdin_input[8..10]);
+    
+    if month < 4 || (month == 4 && day <= 30) {
+        result := "Heisei";
+    } else {
+        result := "TBD";
+    }
+    
+    // Establish the postcondition
+    var year := StringToInt(stdin_input[0..4]);
+    assert IsValidDateString(stdin_input, year, month, day);
+    assert year == 2019 && 1 <= month <= 12 && 1 <= day <= 31;
+    
+    // Use the helper lemma to verify the output is correct
+    VerifyCorrectOutput(stdin_input, year, month, day, result);
+}
+// </vc-code>
+

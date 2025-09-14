@@ -1,0 +1,180 @@
+=== DAFNY PROCESSING SUMMARY (AGGREGATED) ===
+Total files: 172
+Successful: 165 (95.9%)
+Failed: 7
+
+Successful files:
+✓ proofsynthesis_arg_free.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_binary_search.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
+✓ proofsynthesis_brs1.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_brs2.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_brs3.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_brs4.yaml — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini
+✓ proofsynthesis_brs5.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_cell_2_sum.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_choose_odd.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_conda.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_condg.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_condm.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_condn.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_fib.yaml — by: claude-opus, deepseek, gemini, gpt, gpt-mini
+✓ proofsynthesis_filter.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_filter_v2.yaml — by: claude-opus, claude-sonnet, deepseek, glm, gpt, grok-code
+✓ proofsynthesis_filter_weak.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_findmax.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_linearsearch.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_map.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_max_index.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms1.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms2.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms3.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms4.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms5.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_res1.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_res1o.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_res2o.yaml — by: claude-opus, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s12if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s1if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s1lif.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s22if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s2if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s2lif.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s32if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s3if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s3lif.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s42if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s4if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s4lif.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s52if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s5if.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s5lif.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_simple_nested.yaml — by: claude-opus, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_sina1.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ proofsynthesis_sina2.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, grok-code
+✓ proofsynthesis_sina3.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_sina4.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_sina5.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_tail_triangle.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_105.yaml — by: claude-opus
+✓ proofsynthesis_task_id_113.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_133.yaml — by: claude-opus, claude-sonnet, glm
+✓ proofsynthesis_task_id_142.yaml — by: claude-opus, claude-sonnet, grok-code
+✓ proofsynthesis_task_id_145.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_161.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_170.yaml — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_18.yaml — by: gpt-mini
+✓ proofsynthesis_task_id_2.yaml — by: claude-opus, gpt, gpt-mini
+✓ proofsynthesis_task_id_230.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
+✓ proofsynthesis_task_id_240.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_249.yaml — by: claude-opus, gpt, gpt-mini
+✓ proofsynthesis_task_id_251.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_261.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_262.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_273.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_282.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_284.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ proofsynthesis_task_id_3.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_307.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_399.yaml — by: deepseek, gemini, gpt, gpt-mini
+✓ proofsynthesis_task_id_412.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_414.yaml — by: claude-opus, deepseek, glm, gpt, grok-code
+✓ proofsynthesis_task_id_424.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_426.yaml — by: claude-opus, claude-sonnet
+✓ proofsynthesis_task_id_431.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_433.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_436.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_445.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_447.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_454.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_460.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_461.yaml — by: claude-opus, gpt, gpt-mini
+✓ proofsynthesis_task_id_472.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_474.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini
+✓ proofsynthesis_task_id_476.yaml — by: claude-opus, claude-sonnet, glm, gpt, grok-code
+✓ proofsynthesis_task_id_477.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_554.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_557.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_567.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_572.yaml — by: gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_576.yaml — by: claude-opus, gpt
+✓ proofsynthesis_task_id_576_v2.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ proofsynthesis_task_id_578.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_579.yaml — by: claude-sonnet, gpt, grok-code
+✓ proofsynthesis_task_id_586.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_588.yaml — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_602.yaml — by: claude-opus, gemini, gpt, gpt-mini
+✓ proofsynthesis_task_id_605.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_610.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_616.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_618.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_62.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_624.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, grok-code
+✓ proofsynthesis_task_id_629.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_644.yaml — by: gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_69.yaml — by: claude-sonnet, gpt
+✓ proofsynthesis_task_id_70.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_728.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_732.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_733.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_741.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_743.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_755.yaml — by: claude-opus
+✓ proofsynthesis_task_id_760.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_764.yaml — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_769.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code
+✓ proofsynthesis_task_id_775.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_790.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_798.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_8.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_804.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_807.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_808.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_809.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_94.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_95.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_trigger.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, grok-code
+✓ rustbench_abs.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_arithmetic_weird.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_array_append.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ rustbench_array_concat.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_array_copy.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_array_product.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_barrier.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ rustbench_binary_search.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ rustbench_binary_search_recursive.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code
+✓ rustbench_cubes.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_has_close_elements.yaml — by: claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini
+✓ rustbench_has_only_one_distinct_element.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ rustbench_integer_square_root.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ rustbench_intersperse.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_is_non_prime.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_is_sorted.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code
+✓ rustbench_largest_prime_factor.yaml — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini
+✓ rustbench_last_position.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_max_array.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ rustbench_max_dafny_lsp.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ rustbench_remove_duplicates.yaml — by: claude-opus, gemini, gpt, grok-code
+✓ rustbench_remove_element.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_remove_elements.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ rustbench_replace.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_replace_chars.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_reverse.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_rolling_max.yaml — by: gpt, gpt-mini
+✓ rustbench_smallest_list_length.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_string_xor.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_two_sum.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ rustbench_two_way_sort.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, grok-code
+✓ rustbench_unique.yaml — by: gemini, gpt
+✓ rustbench_unique_better.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_wip_max_segment_sum.yaml — by: gpt, gpt-mini
+✓ rustbench_wip_mcontained.yaml — by: claude-opus, gemini
+✓ rustbench_wip_transpose_matrix.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
+
+Failed files:
+✗ proofsynthesis_bubble_v1.yaml
+✗ proofsynthesis_bubble_v2.yaml
+✗ proofsynthesis_conditional_average.yaml
+✗ proofsynthesis_remove_all_greater.yaml
+✗ proofsynthesis_remove_all_greater_v2.yaml
+✗ rustbench_index_wise_addition.yaml
+✗ rustbench_smallest_missing_number.yaml

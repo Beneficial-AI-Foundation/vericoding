@@ -1,0 +1,68 @@
+function countLessValue(n: int, m: int, target: int): int
+  requires n >= 0 && m >= 1 && target >= 1
+  ensures countLessValue(n, m, target) >= 0
+  ensures countLessValue(n, m, target) <= n * m
+{
+  if n == 0 then 0
+  else 
+    var maxJ := (target - 1) / n;
+    var actualMaxJ := if maxJ > m then m else maxJ;
+    var contribution := if actualMaxJ >= 1 then actualMaxJ else 0;
+    contribution + countLessValue(n - 1, m, target)
+}
+
+function countLessOrEqualValue(n: int, m: int, target: int): int
+  requires n >= 1 && m >= 1 && target >= 0
+  ensures countLessOrEqualValue(n, m, target) >= 0
+  ensures countLessOrEqualValue(n, m, target) <= n * m
+{
+  if target <= 0 then 0
+  else if target >= n * m then n * m
+  else countLessValue(n, m, target + 1)
+}
+
+predicate ValidInput(n: int, m: int, k: int)
+{
+  1 <= n <= 500000 && 1 <= m <= 500000 && 1 <= k <= n * m
+}
+
+// <vc-helpers>
+lemma CE_Zero(n:int, m:int)
+  requires n >= 1 && m >= 1
+  ensures countLessOrEqualValue(n, m, 0) == 0
+{}
+
+lemma CE_Max(n:int, m:int, t:int)
+  requires n >= 1 && m >= 1 && t >= n * m
+  ensures countLessOrEqualValue(n, m, t) == n * m
+{}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(n: int, m: int, k: int) returns (result: int)
+  requires ValidInput(n, m, k)
+  ensures 1 <= result <= n * m
+  ensures countLessOrEqualValue(n, m, result) >= k
+  ensures result == 1 || countLessOrEqualValue(n, m, result - 1) < k
+// </vc-spec>
+// <vc-code>
+{
+  var r := 1;
+  CE_Zero(n, m);
+  while countLessOrEqualValue(n, m, r) < k
+    invariant 1 <= r <= n * m
+    invariant countLessOrEqualValue(n, m, r - 1) < k
+    decreases n * m + 1 - r
+  {
+    if r < n * m {
+      r := r + 1;
+    } else {
+      CE_Max(n, m, r);
+      assert countLessOrEqualValue(n, m, r) >= k;
+      assert false;
+    }
+  }
+  result := r;
+}
+// </vc-code>
+

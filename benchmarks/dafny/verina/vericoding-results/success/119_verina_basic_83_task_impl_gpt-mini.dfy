@@ -1,0 +1,24 @@
+// <vc-preamble>
+// </vc-preamble>
+
+// <vc-helpers>
+function SeqConcat(a: seq<int>, b: seq<int>): seq<int> { a + b }
+
+lemma ConcatProps(a: seq<int>, b: seq<int>)
+  ensures |a + b| == |a| + |b|
+  ensures forall k :: 0 <= k < |a| ==> (a + b)[k] == a[k]
+  ensures forall k :: 0 <= k < |b| ==> (a + b)[k + |a|] == b[k]
+{ }
+// </vc-helpers>
+
+// <vc-spec>
+method Concat(a: seq<int>, b: seq<int>) returns (result: seq<int>)
+    ensures |result| == |a| + |b|
+    ensures forall k :: 0 <= k < |a| ==> result[k] == a[k]
+    ensures forall k :: 0 <= k < |b| ==> result[k + |a|] == b[k]
+// </vc-spec>
+// <vc-code>
+{
+  result := a + b;
+}
+// </vc-code>

@@ -1,0 +1,30 @@
+// <vc-preamble>
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method ElementWiseModulo(a: seq<int>, b: seq<int>) returns (result: seq<int>)
+    requires |a| == |b|
+    requires |a| > 0
+    requires forall i :: 0 <= i < |b| ==> b[i] != 0
+    ensures |result| == |a|
+    ensures forall i :: 0 <= i < |result| ==> result[i] == a[i] % b[i]
+// </vc-spec>
+// <vc-code>
+/* code modified by LLM (iteration 4): Fix unresolved identifier `List` by replacing `List.Sequence` with `seq(length, element)`. Also, change `result` sequence update to use `result := result[i := a[i] % b[i]]` to handle intermediate `result` values correctly. */
+{
+    var i := 0;
+    result := seq(|a|, _ => 0);
+    while i < |a|
+        invariant 0 <= i <= |a|
+        invariant |result| == |a|
+        invariant forall j :: 0 <= j < i ==> result[j] == a[j] % b[j]
+    {
+        result := result[i := a[i] % b[i]];
+        i := i + 1;
+    }
+}
+// </vc-code>

@@ -1,0 +1,46 @@
+function calculateDeposit(initial: int, years: int): int
+    requires initial >= 0
+    requires years >= 0
+{
+    if years == 0 then initial
+    else 
+        var prevDeposit := calculateDeposit(initial, years - 1);
+        prevDeposit + prevDeposit / 100
+}
+
+// <vc-helpers>
+lemma Lemma_CalculateDeposit_Grows(years: int)
+    requires years >= 0
+    ensures calculateDeposit(100, years) >= 100
+    ensures years > 0 ==> calculateDeposit(100, years) > calculateDeposit(100, years-1)
+{
+    if years > 0 {
+        Lemma_CalculateDeposit_Grows(years-1);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(X: int) returns (years: int)
+    requires X >= 101
+    ensures years >= 0
+    ensures var finalDeposit := calculateDeposit(100, years); finalDeposit >= X
+    ensures years == 0 || calculateDeposit(100, years - 1) < X
+// </vc-spec>
+// <vc-code>
+{
+    years := 0;
+    var deposit := 100;
+    while deposit < X
+        invariant years >= 0
+        invariant deposit == calculateDeposit(100, years)
+        invariant years == 0 || calculateDeposit(100, years - 1) < X
+        decreases X - deposit
+    {
+        Lemma_CalculateDeposit_Grows(years);
+        deposit := deposit + deposit / 100;
+        years := years + 1;
+    }
+}
+// </vc-code>
+

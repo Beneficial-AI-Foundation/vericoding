@@ -1,0 +1,138 @@
+predicate ValidInput(l: int, r: int)
+{
+    l < r && (r - l) % 2 == 1
+}
+
+function gcd(a: int, b: int): int
+    requires a != 0 || b != 0
+    decreases if a >= 0 then a else -a
+{
+    if a == 0 then if b >= 0 then b else -b
+    else gcd(b % a, a)
+}
+
+predicate PairHasGcdOne(pair: string, l: int, r: int)
+{
+    exists i, j :: l <= i <= r && l <= j <= r && i != j &&
+        pair == int_to_string(i) + " " + int_to_string(j) &&
+        (i != 0 || j != 0) && gcd(i, j) == 1
+}
+
+predicate ValidSolution(result: seq<string>, l: int, r: int)
+{
+    |result| >= 1 &&
+    result[0] == "YES" &&
+    |result| == 1 + (r - l + 1) / 2 &&
+    (forall i :: 1 <= i < |result| ==> PairHasGcdOne(result[i], l, r))
+}
+
+// <vc-helpers>
+function method int_to_string(i: int): string
+  decreases if i >= 0 then i else -i
+{
+  if i < 0 then "-" + int_to_string(-i)
+  else if i < 10 then
+    if i == 0 then "0"
+    else if i == 1 then "1"
+    else if i == 2 then "2"
+    else if i == 3 then "3"
+    else if i == 4 then "4"
+    else if i == 5 then "5"
+    else if i == 6 then "6"
+    else if i == 7 then "7"
+    else if i == 8 then "8"
+    else "9"
+  else
+    int_to_string(i / 10) +
+      (if i % 10 == 0 then "0"
+       else if i % 10 == 1 then "1"
+       else if i % 10 == 2 then "2"
+       else if i % 10 == 3 then "3"
+       else if i % 10 == 4 then "4"
+       else if i % 10 == 5 then "5"
+       else if i % 10 == 6 then "6"
+       else if i % 10 == 7 then "7"
+       else if i % 10 == 8 then "8"
+       else "9")
+}
+
+lemma PosModFacts(k: int)
+  ensures k > 0 ==> (k + 1) % k == 1
+  ensures true ==> k % 1 == 0
+{
+  if k > 0 {
+    assert (k + 1) % k == 1;
+  }
+  assert k % 1 == 0;
+}
+
+lemma GcdConsecutive(k: int)
+  ensures gcd(k, k + 1) == 1
+{
+  if k == 0 {
+    assert gcd(0, 1) == 1;
+  } else if k > 0 {
+    PosModFacts(k);
+    assert gcd(k, k + 1) == gcd((k + 1) % k, k);
+    assert (k + 1) % k == 1;
+    assert gcd((k + 1) % k, k) == gcd(1, k);
+    assert gcd(1, k) == gcd(k % 1, 1);
+    assert k % 1 == 0;
+    assert gcd(0, 1) == 1;
+  } else {
+    var t := -k - 1;
+    assert t >= 0;
+    assert k == -t - 1;
+    assert k + 1 == -t;
+    assert gcd(k, k + 1) == gcd(-t - 1, -t);
+    if t == 0 {
+      assert gcd(-1, 0) == 1;
+    } else {
+      assert gcd(-t - 1, -t) == gcd((-t) % (-t - 1), -t - 1);
+      assert (-t) % (-t - 1) == 1;
+      assert gcd((-t) % (-t - 1), -t - 1) == gcd(1, -t - 1);
+      assert gcd(1, -t - 1) == gcd((-t - 1) % 1, 1);
+      assert (-t - 1) % 1 == 0;
+      assert gcd(0, 1) == 1;
+    }
+  }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(l: int, r: int) returns (result: seq<string>)
+    requires ValidInput(l, r)
+    ensures ValidSolution(result, l, r)
+    ensures |result| >= 1
+    ensures result[0] == "YES"
+    ensures |result| == 1 + (r - l + 1) / 2
+    ensures forall i :: 1 <= i < |result| ==> 
+        (exists j :: l <= j <= r - 1 && j % 2 == l % 2 && 
+         result[i] == int_to_string(j) + " " + int_to_string(j + 1))
+// </vc-spec>
+// <vc-code>
+{
+  result := [];
+  result := result + ["YES"];
+  var j := l;
+  var cnt := 0;
+  while j <= r - 1
+    invariant j == l + 2*cnt
+    invariant 0 <= cnt <= (r - l + 1) / 2
+    invariant |result| == 1 + cnt
+    invariant forall k :: 0 <= k < cnt ==>
+        result[1 + k] == int_to_string(l + 2*k) + " " + int_to_string(l + 2*k + 1)
+    invariant forall k :: 0 <= k < cnt ==> gcd(l + 2*k, l + 2*k + 1) == 1
+  {
+    var pair := int_to_string(j) + " " + int_to_string(j + 1);
+    GcdConsecutive(j);
+    result := result + [pair];
+    cnt := cnt + 1;
+    j := j + 2;
+  }
+  assert cnt == (r - l + 1) / 2;
+  assert |result| == 1 + (r - l + 1) / 2;
+  return;
+}
+// </vc-code>
+

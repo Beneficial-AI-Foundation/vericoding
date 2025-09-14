@@ -1,0 +1,165 @@
+=== DAFNY PROCESSING SUMMARY (AGGREGATED) ===
+Total files: 157
+Successful: 135 (86.0%)
+Failed: 22
+
+Successful files:
+✓ verina_advanced_13_task.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ verina_advanced_14_task.yaml — by: claude-opus
+✓ verina_advanced_15_task.yaml — by: gpt-mini
+✓ verina_advanced_16_task.yaml — by: gpt
+✓ verina_advanced_18_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_advanced_19_task.yaml — by: claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_30_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_advanced_32_task.yaml — by: claude-sonnet, deepseek, gpt
+✓ verina_advanced_33_task.yaml — by: claude-opus, claude-sonnet, deepseek, gpt
+✓ verina_advanced_34_task.yaml — by: gpt, gpt-mini
+✓ verina_advanced_35_task.yaml — by: gpt-mini
+✓ verina_advanced_36_task.yaml — by: gpt, gpt-mini
+✓ verina_advanced_38_task.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ verina_advanced_39_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_40_task.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, grok
+✓ verina_advanced_41_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt
+✓ verina_advanced_42_task.yaml — by: claude-opus
+✓ verina_advanced_43_task.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ verina_advanced_44_task.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ verina_advanced_45_task.yaml — by: claude-sonnet
+✓ verina_advanced_46_task.yaml — by: gpt-mini
+✓ verina_advanced_49_task.yaml — by: gpt-mini
+✓ verina_advanced_4_task.yaml — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
+✓ verina_advanced_51_task.yaml — by: claude-opus, claude-sonnet, gpt-mini
+✓ verina_advanced_53_task.yaml — by: claude-opus, claude-sonnet, gpt-mini, grok-code
+✓ verina_advanced_55_task.yaml — by: claude-opus, gemini, gemini-flash, gpt-mini
+✓ verina_advanced_57_task.yaml — by: claude-opus, claude-sonnet, gpt, grok-code
+✓ verina_advanced_58_task.yaml — by: claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_advanced_59_task.yaml — by: claude-opus, claude-sonnet, gpt, grok, grok-code
+✓ verina_advanced_60_task.yaml — by: claude-opus, gpt
+✓ verina_advanced_61_task.yaml — by: claude-opus
+✓ verina_advanced_62_task.yaml — by: claude-opus, claude-sonnet, gpt-mini
+✓ verina_advanced_63_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt
+✓ verina_advanced_65_task.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_advanced_66_task.yaml — by: claude-opus, claude-sonnet, gemini, gpt, grok
+✓ verina_advanced_68_task.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_advanced_69_task.yaml — by: claude-opus, claude-sonnet, gemini-flash, grok, grok-code
+✓ verina_advanced_6_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, grok, grok-code
+✓ verina_advanced_70_task.yaml — by: claude-opus, claude-sonnet, deepseek, gpt
+✓ verina_advanced_74_task.yaml — by: claude-opus, claude-sonnet, gpt, grok-code
+✓ verina_advanced_76_task.yaml — by: claude-opus, claude-sonnet
+✓ verina_advanced_77_task.yaml — by: claude-opus, claude-sonnet, deepseek, gpt-mini, grok-code
+✓ verina_advanced_78_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ verina_advanced_79_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok
+✓ verina_advanced_80_task.yaml — by: claude-opus, claude-sonnet, glm, gpt-mini
+✓ verina_advanced_9_task.yaml — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ verina_basic_100_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_101_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_102_task.yaml — by: claude-opus, claude-sonnet, gemini
+✓ verina_basic_103_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_105_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, grok
+✓ verina_basic_106_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_108_task.yaml — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
+✓ verina_basic_10_task.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_11_task.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_13_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok
+✓ verina_basic_14_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_15_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ verina_basic_17_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, grok
+✓ verina_basic_18_task.yaml — by: gpt
+✓ verina_basic_19_task.yaml — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_20_task.yaml — by: claude-sonnet, glm, gpt-mini, grok-code
+✓ verina_basic_21_task.yaml — by: claude-opus
+✓ verina_basic_24_task.yaml — by: claude-opus, claude-sonnet, deepseek, gpt-mini, grok-code
+✓ verina_basic_25_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ verina_basic_26_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok, grok-code
+✓ verina_basic_28_task.yaml — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini
+✓ verina_basic_2_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok, grok-code
+✓ verina_basic_30_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok
+✓ verina_basic_31_task.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok
+✓ verina_basic_32_task.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_36_task.yaml — by: claude-opus, claude-sonnet, deepseek, gpt-mini, grok, grok-code
+✓ verina_basic_37_task.yaml — by: claude-sonnet, gemini, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_38_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok-code
+✓ verina_basic_39_task.yaml — by: claude-sonnet, gemini, glm, gpt-mini
+✓ verina_basic_3_task.yaml — by: claude-opus, glm, grok-code
+✓ verina_basic_40_task.yaml — by: claude-opus
+✓ verina_basic_41_task.yaml — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ verina_basic_42_task.yaml — by: claude-opus, claude-sonnet, grok, grok-code
+✓ verina_basic_43_task.yaml — by: deepseek
+✓ verina_basic_44_task.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt-mini, grok-code
+✓ verina_basic_45_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini
+✓ verina_basic_46_task.yaml — by: gemini, gpt-mini
+✓ verina_basic_47_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_48_task.yaml — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ verina_basic_49_task.yaml — by: claude-opus, claude-sonnet, gemini-flash, gpt-mini, grok, grok-code
+✓ verina_basic_4_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, grok, grok-code
+✓ verina_basic_50_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_51_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_52_task.yaml — by: claude-sonnet
+✓ verina_basic_55_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_56_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, grok
+✓ verina_basic_57_task.yaml — by: claude-opus, deepseek, gpt
+✓ verina_basic_58_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, grok
+✓ verina_basic_59_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_5_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok
+✓ verina_basic_60_task.yaml — by: gpt
+✓ verina_basic_62_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_63_task.yaml — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ verina_basic_64_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_65_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt
+✓ verina_basic_66_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_67_task.yaml — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_68_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_69_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, grok, grok-code
+✓ verina_basic_6_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_70_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok, grok-code
+✓ verina_basic_71_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_72_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, grok, grok-code
+✓ verina_basic_73_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok, grok-code
+✓ verina_basic_74_task.yaml — by: claude-opus, gpt, gpt-mini
+✓ verina_basic_75_task.yaml — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini
+✓ verina_basic_76_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_77_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok, grok-code
+✓ verina_basic_78_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ verina_basic_7_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ verina_basic_80_task.yaml — by: claude-opus, gpt
+✓ verina_basic_82_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_83_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_84_task.yaml — by: claude-opus, gemini
+✓ verina_basic_85_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok-code
+✓ verina_basic_86_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_88_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_8_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_90_task.yaml — by: gpt
+✓ verina_basic_91_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_92_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok, grok-code
+✓ verina_basic_93_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_94_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok, grok-code
+✓ verina_basic_95_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_96_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ verina_basic_97_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code
+✓ verina_basic_98_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, grok
+✓ verina_basic_99_task.yaml — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok
+✓ verina_basic_9_task.yaml — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok, grok-code
+
+Failed files:
+✗ verina_advanced_10_task.yaml
+✗ verina_advanced_11_task.yaml
+✗ verina_advanced_12_task.yaml
+✗ verina_advanced_17_task.yaml
+✗ verina_advanced_1_task.yaml
+✗ verina_advanced_31_task.yaml
+✗ verina_advanced_37_task.yaml
+✗ verina_advanced_48_task.yaml
+✗ verina_advanced_50_task.yaml
+✗ verina_advanced_56_task.yaml
+✗ verina_advanced_5_task.yaml
+✗ verina_advanced_64_task.yaml
+✗ verina_advanced_67_task.yaml
+✗ verina_advanced_73_task.yaml
+✗ verina_advanced_75_task.yaml
+✗ verina_advanced_81_task.yaml
+✗ verina_advanced_8_task.yaml
+✗ verina_basic_27_task.yaml
+✗ verina_basic_34_task.yaml
+✗ verina_basic_79_task.yaml
+✗ verina_basic_87_task.yaml
+✗ verina_basic_89_task.yaml
