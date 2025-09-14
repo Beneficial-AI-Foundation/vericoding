@@ -20,7 +20,7 @@ namespace DafnyBenchmarks
 Recursive factorial function translated from Dafny.
 Ensures the result is always >= 1.
 -/
-def fact (n : Nat) : Nat :=
+partial def fact (n : Nat) : Nat :=
   if n == 0 then 1 else n * fact (n - 1)
 
 /--
