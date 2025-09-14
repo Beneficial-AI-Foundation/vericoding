@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -37,7 +37,7 @@ Specification theorem for Maximum function stating its key properties:
 -/
 theorem Maximum_spec (values : Array Int) (max : Int) :
   values.size > 0 →
-  (∃ i, values.get ⟨i⟩ = max) ∧
-  (∀ i, 0 ≤ i ∧ i < values.size → values.get ⟨i⟩ ≤ max) := sorry
+  (∃ i:Fin values.size, values[i]! = max) ∧
+  (∀ i, 0 ≤ i ∧ i < values.size → values[i]! ≤ max) := sorry
 
 end DafnyBenchmarks
