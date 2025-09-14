@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_lowercase_letter(c: char) -> bool {
     'a' <= c && c <= 'z'
 }
@@ -16,6 +13,9 @@ spec fn all_lowercase(s: Seq<char>) -> bool {
 spec fn valid_output(result: Seq<char>) -> bool {
     result =~= seq!['A'] || result =~= seq!['a']
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

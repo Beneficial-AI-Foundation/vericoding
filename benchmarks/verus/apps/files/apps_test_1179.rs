@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, k: int, l: Seq<int>) -> bool {
     n >= 1 && k >= 1 && l.len() == n && k <= n * (n + 1) / 2
 }
@@ -20,6 +17,9 @@ spec fn correct_result(n: int, k: int, l: Seq<int>, result: int) -> bool {
           result == l[k - total_identifiers_after_robot(i - 1) - 1]
     )
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

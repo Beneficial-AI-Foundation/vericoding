@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, k: int) -> bool {
     n >= 1 && k >= 1 && n <= 100 && k <= 100
 }
@@ -14,6 +11,9 @@ spec fn min_cracker_difference(n: int, k: int) -> int
 {
     if n % k == 0 { 0 } else { 1 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

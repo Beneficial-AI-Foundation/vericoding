@@ -4,16 +4,14 @@ use vstd::prelude::*;
 verus! {
 
 spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>> {
-    seq![seq!['a']]
+    seq![seq![]]
 }
 
 spec fn is_valid_number(s: Seq<char>) -> bool {
     true
 }
 
-spec fn parse_int(s: Seq<char>) -> int
-    recommends is_valid_number(s)
-{
+spec fn parse_int(s: Seq<char>) -> int {
     0
 }
 
@@ -50,10 +48,8 @@ spec fn valid_output(result: Seq<char>) -> bool {
         (forall|i: int| 0 <= i < output_lines.len() - 1 ==> parse_int(output_lines[i]) >= 0)
 }
 
-spec fn correct_result(input: Seq<char>, result: Seq<char>) -> bool
-    recommends valid_input(input)
-{
-    exists|input_lines: Seq<Seq<char>>, t: int| 
+spec fn correct_result(input: Seq<char>, result: Seq<char>) -> bool {
+    valid_input(input) ==> exists|input_lines: Seq<Seq<char>>, t: int| 
         input_lines == split_lines(input) &&
         t == parse_int(input_lines[0]) && {
             let output_lines = split_lines(result);
@@ -70,9 +66,7 @@ spec fn min_ops_helper(s: Seq<char>, start: int, end: int) -> int {
     0
 }
 
-spec fn min_operations_to_make_good(s: Seq<char>) -> int
-    recommends is_binary_string(s)
-{
+spec fn min_operations_to_make_good(s: Seq<char>) -> int {
     if s.len() == 0 { 0 } else { min_ops_helper(s, 0, s.len() as int) }
 }
 // </vc-preamble>
@@ -81,17 +75,17 @@ spec fn min_operations_to_make_good(s: Seq<char>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: &str) -> (result: String)
-    requires
+fn solve(input: Vec<char>) -> (result: Vec<char>)
+    requires 
         valid_input(input@),
-    ensures
+    ensures 
         valid_output(result@),
         correct_result(input@, result@),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    String::new()
+    Vec::new()
 }
 // </vc-code>
 

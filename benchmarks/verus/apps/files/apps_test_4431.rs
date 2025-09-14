@@ -21,7 +21,6 @@ spec fn count_valid_substrings(s: Seq<char>, available_set: Set<char>) -> nat
 }
 
 spec fn get_maximal_valid_segments(s: Seq<char>, available_set: Set<char>, start_idx: nat) -> Seq<nat>
-    requires start_idx <= s.len()
     decreases s.len() - start_idx
 {
     if start_idx >= s.len() {
@@ -43,8 +42,6 @@ spec fn get_maximal_valid_segments(s: Seq<char>, available_set: Set<char>, start
 }
 
 spec fn get_next_segment_length(s: Seq<char>, available_set: Set<char>, start_idx: nat) -> nat
-    requires start_idx <= s.len()
-    ensures get_next_segment_length(s, available_set, start_idx) <= s.len() - start_idx
     decreases s.len() - start_idx
 {
     if start_idx >= s.len() || !available_set.contains(s[start_idx as int]) {
@@ -55,8 +52,6 @@ spec fn get_next_segment_length(s: Seq<char>, available_set: Set<char>, start_id
 }
 
 spec fn skip_invalid_chars(s: Seq<char>, available_set: Set<char>, start_idx: nat) -> nat
-    requires start_idx <= s.len()
-    ensures skip_invalid_chars(s, available_set, start_idx) <= s.len() - start_idx
     decreases s.len() - start_idx
 {
     if start_idx >= s.len() || available_set.contains(s[start_idx as int]) {
@@ -66,13 +61,11 @@ spec fn skip_invalid_chars(s: Seq<char>, available_set: Set<char>, start_idx: na
     }
 }
 
-spec fn sum_segment_counts(segments: Seq<nat>) -> nat
-    decreases segments.len()
-{
+spec fn sum_segment_counts(segments: Seq<nat>) -> nat {
     if segments.len() == 0 {
         0
     } else {
-        segments[0] * (segments[0] + 1) / 2 + sum_segment_counts(segments.subrange(1, segments.len() as int))
+        segments[0] * (segments[0] + 1) / 2 + sum_segment_counts(segments.drop_first())
     }
 }
 // </vc-preamble>
@@ -82,17 +75,16 @@ spec fn sum_segment_counts(segments: Seq<nat>) -> nat
 
 // <vc-spec>
 fn solve(n: nat, k: nat, s: Seq<char>, available: Seq<char>) -> (result: nat)
-    requires valid_input(n, k, s, available),
-    ensures result <= n * (n + 1) / 2,
-    ensures {
-        let available_set = Set::new(|c: char| exists|i: int| 0 <= i < available.len() && available[i] == c);
-        result == count_valid_substrings(s, available_set)
-    },
+    requires 
+        valid_input(n, k, s, available),
+    ensures 
+        result <= n * (n + 1) / 2,
+        result == count_valid_substrings(s, available.to_set()),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

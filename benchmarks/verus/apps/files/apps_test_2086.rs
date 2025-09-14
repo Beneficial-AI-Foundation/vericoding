@@ -33,14 +33,12 @@ fn solve(n: int, a: Seq<int>, s: int, f: int) -> (result: int)
   requires 
     valid_input(n, a, s, f),
   ensures 
-    1 <= result <= n,
-  ensures 
-    forall|start: int| 1 <= start <= n ==> 
-      participant_count(a, s, f, n, result) >= participant_count(a, s, f, n, start),
-  ensures 
-    forall|start: int| 1 <= start <= n && 
+    1 <= result <= n &&
+    (forall|start: int| 1 <= start <= n ==> 
+      participant_count(a, s, f, n, result) >= participant_count(a, s, f, n, start)) &&
+    (forall|start: int| 1 <= start <= n && 
       participant_count(a, s, f, n, start) == participant_count(a, s, f, n, result) 
-      ==> result <= start,
+      ==> result <= start)
 // </vc-spec>
 // <vc-code>
 {

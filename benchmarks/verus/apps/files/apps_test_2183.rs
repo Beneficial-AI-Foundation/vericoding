@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_brother_numbers(a: int, b: int) -> bool {
     1 <= a <= 3 && 1 <= b <= 3 && a != b
 }
@@ -19,6 +16,9 @@ spec fn is_valid_result(a: int, b: int, result: int) -> bool {
     valid_brother_numbers(a, b) ==> 
         (1 <= result <= 3 && result != a && result != b)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

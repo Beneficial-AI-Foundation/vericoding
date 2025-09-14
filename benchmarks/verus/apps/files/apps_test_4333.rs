@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(x1: int, y1: int, x2: int, y2: int) -> bool {
     (x1, y1) != (x2, y2) &&
     -100 <= x1 <= 100 && -100 <= y1 <= 100 &&
@@ -26,6 +23,9 @@ spec fn valid_output(x1: int, y1: int, x2: int, y2: int, result: Seq<int>) -> bo
     result[2] == compute_fourth_vertex(x1, y1, x2, y2).0 &&
     result[3] == compute_fourth_vertex(x1, y1, x2, y2).1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

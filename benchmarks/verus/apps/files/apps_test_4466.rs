@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(x: int, y: int, z: int) -> bool {
     x >= 1 && y >= 1 && z >= 1 && y + 2 * z <= x
 }
@@ -22,6 +19,9 @@ spec fn valid_solution(x: int, y: int, z: int, result: int) -> bool
     result >= 0 &&
     result * (y + z) <= x - z < (result + 1) * (y + z)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

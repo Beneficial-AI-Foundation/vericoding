@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, c: int, d: int) -> bool {
     a >= 0 && b >= 0 && c >= 0 && d >= 0
 }
@@ -26,6 +23,9 @@ spec fn calculate_wake_time(a: int, b: int, c: int, d: int) -> int {
     let cycles = (remaining - 1) / (c - d) + 1;
     b + c * cycles
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

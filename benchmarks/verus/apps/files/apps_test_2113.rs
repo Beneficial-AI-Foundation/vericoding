@@ -18,9 +18,11 @@ spec fn is_connected_graph(n: int, edges: Seq<(int, int)>) -> bool {
 spec fn can_reach_node_one(target: int, edges: Seq<(int, int)>, max_depth: int) -> bool
     decreases max_depth
 {
-    if max_depth <= 0 { false }
-    else if target == 1 { true }
-    else { 
+    if max_depth <= 0 { 
+        false
+    } else if target == 1 { 
+        true
+    } else {
         exists|i: int| 0 <= i < edges.len() && 
             ((edges[i].0 == target && can_reach_node_one(edges[i].1, edges, max_depth - 1)) ||
              (edges[i].1 == target && can_reach_node_one(edges[i].0, edges, max_depth - 1)))
@@ -36,7 +38,7 @@ spec fn valid_tree_input(n: int, edges: Seq<(int, int)>) -> bool {
         !(edges[i].0 == edges[j].0 && edges[i].1 == edges[j].1) && 
         !(edges[i].0 == edges[j].1 && edges[i].1 == edges[j].0)) &&
     (n == 1 ==> edges.len() == 0) &&
-    (n > 1 ==> (forall|node: int| 1 <= node <= n ==> 
+    (n > 1 ==> (forall|node: int| #![trigger node] 1 <= node <= n ==> 
         (exists|i: int| 0 <= i < edges.len() && (edges[i].0 == node || edges[i].1 == node)))) &&
     is_connected_tree(n, edges)
 }
@@ -48,25 +50,20 @@ spec fn valid_tree_input(n: int, edges: Seq<(int, int)>) -> bool {
 // <vc-spec>
 fn solve(n: int, edges: Seq<(int, int)>) -> (result: int)
     requires valid_tree_input(n, edges)
-    ensures result >= 0
-    ensures ({
-        exists|blue: int, red: int| 
-            blue >= 0 && red >= 0 && blue + red == n && result == blue * red - (n - 1)
-    })
-    ensures n == 1 ==> result == 0
-    ensures n == 2 ==> result == 0
-    ensures n > 2 ==> ({
-        exists|blue: int, red: int| 
-            blue > 0 && red > 0 && blue + red == n && result == blue * red - (n - 1)
-    })
-    ensures result <= (n * n) / 4 - (n - 1) + (if n % 2 == 0 { 0 } else { 1 })
+    ensures 
+        result >= 0 &&
+        (exists|blue: int, red: int| 
+            blue >= 0 && red >= 0 && blue + red == n && result == blue * red - (n - 1)) &&
+        (n == 1 ==> result == 0int) &&
+        (n == 2 ==> result == 0int) &&
+        (n > 2 ==> exists|blue: int, red: int| 
+            blue > 0 && red > 0 && blue + red == n && result == blue * red - (n - 1)) &&
+        result <= (n * n) / 4 - (n - 1) + (if n % 2 == 0 { 0int } else { 1int })
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
     unreached()
-    // impl-end
 }
 // </vc-code>
 

@@ -7,12 +7,15 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
-  spec fn string_to_nat(s: Seq<char>) -> nat {
-    if s.len() == 1 {
+  spec fn string_to_nat(s: Seq<char>) -> nat
+    recommends
+      s.len() > 0,
+      forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] <= '9'
+    decreases s.len()
+  {
+    if s.len() == 1 { 
       (s[0] as int - '0' as int) as nat
-    } else {
+    } else { 
       string_to_nat(s.subrange(0, s.len() - 1)) * 10 + (s[s.len() - 1] as int - '0' as int) as nat
     }
   }
@@ -27,22 +30,24 @@ vc-helpers: |-
     result == seq!['4', '\n'] || result == seq!['0', '\n']
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(n),
-    requires n.len() > 0,
-    requires forall|i: int| 0 <= i < n.len() ==> '0' <= n[i] <= '9',
-    ensures valid_output(result),
-    ensures (string_to_nat(n) % 4 == 0) <==> (result == seq!['4', '\n']),
-    ensures (string_to_nat(n) % 4 != 0) <==> (result == seq!['0', '\n']),
+    requires
+      valid_input(n)
+    ensures
+      valid_output(result),
+      (string_to_nat(n) % 4 == 0) <==> (result == seq!['4', '\n']),
+      (string_to_nat(n) % 4 != 0) <==> (result == seq!['0', '\n'])
 
 vc-code: |-
   {
     assume(false);
-    seq!['0', '\n']
+    unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

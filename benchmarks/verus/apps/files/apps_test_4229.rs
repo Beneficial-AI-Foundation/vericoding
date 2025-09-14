@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn int_to_string(i: int) -> Seq<char> {
     seq!['1']
 }
@@ -31,6 +28,9 @@ spec fn sum_of_non_fizzbuzz_numbers(n: int) -> int
         }
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

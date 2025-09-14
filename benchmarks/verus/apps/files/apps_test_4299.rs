@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
     1 <= n <= 999
 }
@@ -31,6 +28,9 @@ spec fn correct_pronunciation(n: int) -> Seq<char> {
         seq!['b', 'o', 'n', '\n']
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

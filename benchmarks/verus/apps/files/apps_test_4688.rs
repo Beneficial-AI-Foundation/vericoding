@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn power(base: int, exp: int) -> int
   decreases exp
 {
@@ -20,6 +17,9 @@ spec fn painting_ways(n: int, k: int) -> int
 {
   k * power(k - 1, n - 1)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

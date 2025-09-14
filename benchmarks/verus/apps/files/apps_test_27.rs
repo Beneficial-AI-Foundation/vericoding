@@ -7,23 +7,15 @@ spec fn valid_input(n: nat, s: Seq<char>) -> bool {
     s.len() == n
 }
 
-spec fn max_copy_savings(s: Seq<char>, n: nat) -> nat
-    requires s.len() == n
-    ensures max_copy_savings(s, n) <= n / 2
-{
+spec fn max_copy_savings(s: Seq<char>, n: nat) -> nat {
     max_copy_savings_up_to(s, n, n / 2)
 }
 
 spec fn max_copy_savings_up_to(s: Seq<char>, n: nat, limit: nat) -> nat
-    requires 
-        s.len() == n,
-        limit <= n / 2,
-    ensures max_copy_savings_up_to(s, n, limit) <= limit
     decreases limit
 {
-    if limit == 0 {
-        0
-    } else {
+    if limit == 0 { 0 }
+    else {
         let i = (limit - 1) as nat;
         let current = if can_copy_at(s, n, i) { i } else { 0 };
         let prev = max_copy_savings_up_to(s, n, i);
@@ -31,14 +23,10 @@ spec fn max_copy_savings_up_to(s: Seq<char>, n: nat, limit: nat) -> nat
     }
 }
 
-spec fn can_copy_at(s: Seq<char>, n: nat, i: nat) -> bool
-    requires 
-        s.len() == n,
-        i < n / 2,
-{
+spec fn can_copy_at(s: Seq<char>, n: nat, i: nat) -> bool {
     let prefix_len = i + 1;
     let end_pos = i + 1 + prefix_len;
-    end_pos <= n && s.subrange(0, prefix_len as int) == s.subrange((i + 1) as int, end_pos as int)
+    end_pos <= n && s.subrange(0, prefix_len as int) == s.subrange((i+1) as int, end_pos as int)
 }
 // </vc-preamble>
 
@@ -47,12 +35,13 @@ spec fn can_copy_at(s: Seq<char>, n: nat, i: nat) -> bool
 
 // <vc-spec>
 fn solve(n: nat, s: Seq<char>) -> (result: nat)
-    requires valid_input(n, s)
+    requires 
+        valid_input(n, s)
     ensures 
         result <= n,
         n == 0 ==> result == 0,
         n > 0 ==> result >= 1,
-        result == n - max_copy_savings(s, n),
+        result == n - max_copy_savings(s, n)
 // </vc-spec>
 // <vc-code>
 {

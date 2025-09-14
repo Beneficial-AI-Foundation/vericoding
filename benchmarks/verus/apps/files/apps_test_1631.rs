@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(stdin_input: Seq<char>, n: int) -> bool {
     exists|lines: Seq<Seq<char>>| (parse_input(stdin_input) == lines &&
     lines.len() >= 1 &&
@@ -65,6 +62,9 @@ spec fn parse_int(s: Seq<char>) -> int
 {
     0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

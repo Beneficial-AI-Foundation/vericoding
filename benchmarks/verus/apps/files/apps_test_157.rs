@@ -2,20 +2,27 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, c: int) -> bool {
     1 <= a <= 1000 && 1 <= b <= 1000 && 1 <= c <= 1000
 }
 
 spec fn max_recipe_units(a: int, b: int, c: int) -> int {
-    vstd::math::min(a, vstd::math::min(b / 2, c / 4))
+    if a <= b / 2 && a <= c / 4 {
+        a
+    } else if b / 2 <= a && b / 2 <= c / 4 {
+        b / 2
+    } else {
+        c / 4
+    }
 }
 
 spec fn total_fruits_used(units: int) -> int {
     units * 7
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -29,7 +36,7 @@ fn solve(a: int, b: int, c: int) -> (result: int)
 // <vc-code>
 {
     assume(false);
-    0int
+    unreached()
 }
 // </vc-code>
 

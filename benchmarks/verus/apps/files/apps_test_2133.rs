@@ -3,7 +3,15 @@ use vstd::prelude::*;
 
 verus! {
 
-spec fn valid_tree_input(input: &str) -> bool {
+spec fn split_lines(input: Seq<char>) -> Seq<Seq<char>> { Seq::empty() }
+spec fn parse_int(s: Seq<char>) -> int { 0 }
+spec fn parse_int_seq(s: Seq<char>) -> Seq<int> { Seq::empty() }
+spec fn trim_whitespace(s: Seq<char>) -> Seq<char> { s }
+spec fn build_same_color_components(colors: Seq<int>, edges: Seq<(int, int)>) -> Seq<Seq<int>> { Seq::empty() }
+spec fn build_component_graph(components: Seq<Seq<int>>, colors: Seq<int>, edges: Seq<(int, int)>) -> Seq<(int, int)> { Seq::empty() }
+spec fn tree_diameter(edges: Seq<(int, int)>) -> int { 0 }
+
+spec fn valid_tree_input(input: Seq<char>) -> bool {
     let lines = split_lines(input);
     lines.len() >= 2 &&
     {
@@ -22,13 +30,13 @@ spec fn valid_tree_input(input: &str) -> bool {
     }
 }
 
-spec fn valid_color_line(line: &str, n: int) -> bool {
+spec fn valid_color_line(line: Seq<char>, n: int) -> bool {
     let colors = parse_int_seq(line);
     colors.len() == n &&
-    forall|i: int| 0 <= i < colors.len() ==> (colors[i] == 0 || colors[i] == 1)
+    forall|i: int| 0 <= i < colors.len() ==> colors[i] == 0 || colors[i] == 1
 }
 
-spec fn valid_edge_lines(lines: Seq<&str>, n: int) -> bool {
+spec fn valid_edge_lines(lines: Seq<Seq<char>>, n: int) -> bool {
     lines.len() == n - 1 &&
     forall|i: int| 0 <= i < lines.len() ==> {
         let edge = parse_int_seq(lines[i]);
@@ -57,17 +65,17 @@ spec fn no_duplicate_edges(edges: Seq<(int, int)>) -> bool {
         (edges[i].0, edges[i].1) != (edges[j].1, edges[j].0)
 }
 
-spec fn valid_integer_output(output: &str) -> bool {
+spec fn valid_integer_output(output: Seq<char>) -> bool {
     let trimmed = trim_whitespace(output);
     trimmed.len() > 0 &&
-    forall|c: char| trimmed.contains(c) ==> ('0' <= c <= '9')
+    forall|i: int| 0 <= i < trimmed.len() ==> '0' <= trimmed[i] <= '9'
 }
 
 spec fn all_same_color(colors: Seq<int>) -> bool {
     colors.len() > 0 ==> forall|i: int| 0 <= i < colors.len() ==> colors[i] == colors[0]
 }
 
-spec fn parse_input(input: &str) -> (int, Seq<int>, Seq<(int, int)>) {
+spec fn parse_input(input: Seq<char>) -> (int, Seq<int>, Seq<(int, int)>) {
     let lines = split_lines(input);
     let n = parse_int(lines[0]);
     let colors = parse_int_seq(lines[1]);
@@ -78,7 +86,7 @@ spec fn parse_input(input: &str) -> (int, Seq<int>, Seq<(int, int)>) {
     (n, colors, edges)
 }
 
-spec fn parse_output(output: &str) -> int {
+spec fn parse_output(output: Seq<char>) -> int {
     parse_int(trim_whitespace(output))
 }
 
@@ -91,41 +99,6 @@ spec fn compute_min_paint_ops(n: int, colors: Seq<int>, edges: Seq<(int, int)>) 
         (tree_diameter(component_graph) + 1) / 2
     }
 }
-
-#[verifier::external_body]
-spec fn split_lines(input: &str) -> Seq<&str> {
-    unimplemented!()
-}
-
-#[verifier::external_body]
-spec fn parse_int(s: &str) -> int {
-    unimplemented!()
-}
-
-#[verifier::external_body]
-spec fn parse_int_seq(s: &str) -> Seq<int> {
-    unimplemented!()
-}
-
-#[verifier::external_body]
-spec fn trim_whitespace(s: &str) -> &str {
-    unimplemented!()
-}
-
-#[verifier::external_body]
-spec fn build_same_color_components(colors: Seq<int>, edges: Seq<(int, int)>) -> Seq<Seq<int>> {
-    unimplemented!()
-}
-
-#[verifier::external_body]
-spec fn build_component_graph(components: Seq<Seq<int>>, colors: Seq<int>, edges: Seq<(int, int)>) -> Seq<(int, int)> {
-    unimplemented!()
-}
-
-#[verifier::external_body]
-spec fn tree_diameter(edges: Seq<(int, int)>) -> int {
-    unimplemented!()
-}
 // </vc-preamble>
 
 // <vc-helpers>
@@ -133,6 +106,40 @@ spec fn tree_diameter(edges: Seq<(int, int)>) -> int {
 
 // <vc-spec>
 fn solve(stdin_input: &str) -> (output: String)
+    requires
+        stdin_input@.len() > 0,
+        valid_tree_input(stdin_input@),
+    ensures
+        output@.len() > 0,
+        valid_integer_output(output@),
+        ({
+            let result = parse_output(output@);
+            result >= 0
+        }),
+        ({
+            let (n, colors, edges) = parse_input(stdin_input@);
+            n >= 1 ==> {
+                let result = parse_output(output@);
+                result <= n
+            }
+        }),
+        ({
+            let (n, colors, edges) = parse_input(stdin_input@);
+            all_same_color(colors) ==> parse_output(output@) == 0
+        }),
+        ({
+            let (n, colors, edges) = parse_input(stdin_input@);
+            n == 1 ==> parse_output(output@) == 0
+        }),
+        ({
+            let (n, colors, edges) = parse_input(stdin_input@);
+            is_valid_tree(n, edges) && n >= 1
+        }),
+        ({
+            let (n, colors, edges) = parse_input(stdin_input@);
+            let result = parse_output(output@);
+            result == compute_min_paint_ops(n, colors, edges)
+        }),
 // </vc-spec>
 // <vc-code>
 {

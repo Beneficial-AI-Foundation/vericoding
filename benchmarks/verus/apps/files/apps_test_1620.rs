@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
   n >= 1
 }
@@ -18,6 +15,9 @@ spec fn valid_output(s: Seq<char>, n: int) -> bool {
 spec fn minimal_c_usage(s: Seq<char>) -> bool {
   forall|i: int| 0 <= i < s.len() ==> s[i] == 'a' || s[i] == 'b'
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

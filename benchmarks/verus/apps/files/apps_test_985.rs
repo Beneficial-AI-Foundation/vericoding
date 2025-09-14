@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(positions: Seq<(int, int)>) -> bool {
     positions.len() >= 1 && positions.len() <= 200000 &&
     (forall|i: int| 0 <= i < positions.len() ==> 
@@ -15,7 +12,8 @@ spec fn valid_input(positions: Seq<(int, int)>) -> bool {
 spec fn count_attacking_pairs(positions: Seq<(int, int)>) -> int
     recommends valid_input(positions)
 {
-    positions.len() * (positions.len() - 1) / 2
+    /* Count pairs (i,j) where i < j and bishops at positions[i] and positions[j] attack each other */
+    positions.len() * (positions.len() - 1) / 2  // Placeholder specification
 }
 
 spec fn valid_output(positions: Seq<(int, int)>, result: int) -> bool
@@ -23,20 +21,23 @@ spec fn valid_output(positions: Seq<(int, int)>, result: int) -> bool
 {
     result == count_attacking_pairs(positions) && result >= 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve_bishops(positions: Seq<(int, int)>) -> (result: int)
-    requires 
+    requires
         valid_input(positions),
-    ensures 
+    ensures
         valid_output(positions, result),
         result >= 0,
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

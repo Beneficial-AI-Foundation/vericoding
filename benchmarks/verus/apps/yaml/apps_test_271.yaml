@@ -7,8 +7,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_result(n: int, result: int) -> bool
     recommends n >= 0
   {
@@ -22,6 +20,8 @@ vc-helpers: |-
                         (quotient % 2 == 1 ==> result == (quotient + 1) * 10))
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: int) -> (result: int)
     requires n >= 0
@@ -33,7 +33,7 @@ vc-code: |-
     unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

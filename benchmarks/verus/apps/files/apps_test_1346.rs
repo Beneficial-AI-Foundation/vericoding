@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, p: int, f: Seq<int>, g: Seq<int>) -> bool {
     n >= 1 && m >= 1 &&
     p >= 2 &&
@@ -26,6 +23,9 @@ spec fn valid_result(result: int, n: int, m: int, p: int, f: Seq<int>, g: Seq<in
             result == i + j &&
             0 <= result < f.len() + g.len()
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -38,7 +38,7 @@ fn solve(n: int, m: int, p: int, f: Seq<int>, g: Seq<int>) -> (result: int)
 // <vc-code>
 {
     assume(false);
-    0int
+    unreached()
 }
 // </vc-code>
 

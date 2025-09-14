@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_dungeon(dungeon: Seq<Seq<int>>) -> bool {
     dungeon.len() > 0 &&
     (forall|i: int| 0 <= i < dungeon.len() ==> dungeon[i].len() > 0) &&
@@ -46,6 +43,9 @@ spec fn can_survive_path(dungeon: Seq<Seq<int>>, path: Seq<(int, int)>, initial_
     forall|i: int| 0 <= i < path.len() ==> 
         health_at_step(dungeon, path, i, initial_health) > 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

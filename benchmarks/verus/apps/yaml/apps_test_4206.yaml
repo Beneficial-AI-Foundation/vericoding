@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(input: Seq<char>) -> bool {
       input.len() > 0 &&
       input[input.len() - 1] == '\n' &&
@@ -17,7 +15,7 @@ vc-helpers: |-
       (forall|i: int| 0 <= i < input.len() - 1 ==> '0' <= input[i] <= '9') &&
       (input[0] != '0' || input.len() == 2)
   }
-  
+
   spec fn max_divisible_by_3_segments(s: Seq<char>) -> int {
       if s.len() == 0 {
           0
@@ -27,6 +25,8 @@ vc-helpers: |-
           s.len() as int
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(input: Seq<char>) -> (result: Seq<char>)
@@ -43,7 +43,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

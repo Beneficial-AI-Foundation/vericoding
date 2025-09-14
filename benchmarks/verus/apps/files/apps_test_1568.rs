@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: int, b: int, c: int, t: int, arrivals: Seq<int>) -> bool {
     1 <= n <= 1000 &&
     1 <= a <= 1000 &&
@@ -32,6 +29,9 @@ spec fn max_money(n: int, a: int, b: int, c: int, t: int, arrivals: Seq<int>) ->
         n * a + (c - b) * (n * t - sum_seq(arrivals))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

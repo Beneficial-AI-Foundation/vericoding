@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int) -> bool {
   a > 0 && b > 0
 }
@@ -24,7 +21,7 @@ spec fn count_distinct_prime_factors(n: int) -> int
 
 spec fn count_distinct_prime_factors_helper(n: int, i: int) -> int
   recommends n > 0 && i >= 2
-  decreases 2*n - i
+  decreases 2*n - i when 2*n - i >= 0
 {
   if i * i > n {
     if n > 1 { 1 } else { 0 }
@@ -37,7 +34,7 @@ spec fn count_distinct_prime_factors_helper(n: int, i: int) -> int
 
 spec fn divide_out_factor(n: int, factor: int) -> int
   recommends n > 0 && factor > 1 && n % factor == 0
-  decreases n
+  decreases n when n > 0
 {
   let next = n / factor;
   if next % factor == 0 { divide_out_factor(next, factor) } else { next }
@@ -48,21 +45,24 @@ spec fn correct_result(a: int, b: int, result: int) -> bool
 {
   result == count_distinct_prime_factors(gcd(a, b)) + 1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(a: int, b: int) -> (result: int)
   requires 
-      valid_input(a, b)
+    valid_input(a, b)
   ensures 
-      result > 0,
-      correct_result(a, b, result)
+    result > 0,
+    correct_result(a, b, result)
 // </vc-spec>
 // <vc-code>
 {
   // impl-start
   assume(false);
-  1int
+  unreached()
   // impl-end
 }
 // </vc-code>

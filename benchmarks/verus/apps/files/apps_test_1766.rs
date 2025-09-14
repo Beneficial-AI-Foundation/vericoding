@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(cards: Seq<int>) -> bool {
     cards.len() >= 1 &&
     (forall|i: int| 0 <= i < cards.len() ==> cards[i] > 0) &&
@@ -42,6 +39,9 @@ spec fn valid_output(scores: Seq<int>, cards: Seq<int>) -> bool {
     scores[0] == sereja_optimal_score(cards, 0, cards.len()-1, true) &&
     scores[1] == sum(cards) - sereja_optimal_score(cards, 0, cards.len()-1, true)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

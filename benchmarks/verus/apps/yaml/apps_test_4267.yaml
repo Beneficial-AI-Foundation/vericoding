@@ -6,19 +6,19 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_temperature(temp: int) -> bool {
       -40 <= temp <= 40
   }
-  
+
   spec fn expected_output(temp: int) -> Seq<char> {
       if temp >= 30 { seq!['Y', 'e', 's', '\n'] } else { seq!['N', 'o', '\n'] }
   }
-  
+
   spec fn correct_output(temp: int, output: Seq<char>) -> bool {
       output == expected_output(temp)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(x: i32) -> (result: Vec<u8>)
@@ -33,7 +33,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

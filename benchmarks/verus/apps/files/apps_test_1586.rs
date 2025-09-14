@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
   n >= 0
 }
@@ -39,6 +36,9 @@ spec fn valid_result(n: int, result: int) -> bool
     factors_in_double_factorial(n, 5)
   }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

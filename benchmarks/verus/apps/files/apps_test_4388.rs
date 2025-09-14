@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() >= 3 &&
     forall|i: int| 0 <= i < 3 ==> (input[i] == '1' || input[i] == '9')
@@ -25,6 +22,9 @@ spec fn valid_output(input: Seq<char>, result: Seq<char>) -> bool {
         (input[i] == '1' ==> result[i] == '9') && 
         (input[i] == '9' ==> result[i] == '1')
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

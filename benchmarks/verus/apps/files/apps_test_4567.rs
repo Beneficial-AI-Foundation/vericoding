@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(scores: Seq<int>) -> bool {
     scores.len() > 0 && scores.len() <= 100 &&
     forall|i: int| 0 <= i < scores.len() ==> 1 <= scores[i] <= 100
@@ -42,6 +39,9 @@ spec fn correct_result(scores: Seq<int>, result: int) -> bool {
             result == total_sum - smallest_non_multiple
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

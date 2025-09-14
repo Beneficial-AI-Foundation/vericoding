@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, a: Seq<int>, queries: Seq<(int, int, int)>) -> bool {
     n > 0 && m >= 0 && a.len() == n && queries.len() == m &&
     forall|q: (int, int, int)| queries.contains(q) ==> 1 <= q.0 <= q.1 <= n
@@ -18,6 +15,9 @@ spec fn valid_result(a: Seq<int>, queries: Seq<(int, int, int)>, result: Seq<int
         (result[i] != -1 ==> l <= result[i] <= r && 0 <= result[i]-1 < a.len() && a[result[i]-1] != x)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

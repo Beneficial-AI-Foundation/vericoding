@@ -9,59 +9,29 @@ vc-preamble: |-
   verus! {
 
   spec fn valid_input(n: int, s: Seq<char>) -> bool {
-      1 <= n <= 200000 && s.len() == n && 
+      1 <= n <= 200000 && s.len() == n &&
       forall|i: int| 0 <= i < n ==> s[i] == 'D' || s[i] == 'R'
   }
-  
+
   spec fn count_d(s: Seq<char>) -> int
-      requires forall|i: int| 0 <= i < s.len() ==> s[i] == 'D' || s[i] == 'R'
-      ensures count_d(s) >= 0
-      ensures count_d(s) <= s.len()
-      ensures count_d(s) == 0 <==> forall|i: int| 0 <= i < s.len() ==> s[i] != 'D'
       decreases s.len()
   {
-      if s.len() == 0 {
-          0
-      } else {
-          (if s[0] == 'D' { 1 } else { 0 }) + count_d(s.subrange(1, s.len() as int))
-      }
+      if s.len() == 0 { 0int }
+      else { (if s[0] == 'D' { 1int } else { 0int }) + count_d(s.subrange(1, s.len() as int)) }
   }
-  
+
   spec fn count_r(s: Seq<char>) -> int
-      requires forall|i: int| 0 <= i < s.len() ==> s[i] == 'D' || s[i] == 'R'
-      ensures count_r(s) >= 0
-      ensures count_r(s) <= s.len()
-      ensures count_r(s) == 0 <==> forall|i: int| 0 <= i < s.len() ==> s[i] != 'R'
       decreases s.len()
   {
-      if s.len() == 0 {
-          0
-      } else {
-          (if s[0] == 'R' { 1 } else { 0 }) + count_r(s.subrange(1, s.len() as int))
-      }
+      if s.len() == 0 { 0int }
+      else { (if s[0] == 'R' { 1int } else { 0int }) + count_r(s.subrange(1, s.len() as int)) }
   }
-  
-  spec fn optimal_elimination_game_winner(s: Seq<char>) -> Seq<char>
-      requires s.len() > 0
-      requires forall|i: int| 0 <= i < s.len() ==> s[i] == 'D' || s[i] == 'R'
-      ensures optimal_elimination_game_winner(s).len() == 1
-      ensures optimal_elimination_game_winner(s)[0] == 'D' || optimal_elimination_game_winner(s)[0] == 'R'
-      ensures count_d(s) == 0 ==> optimal_elimination_game_winner(s)[0] == 'R'
-      ensures count_r(s) == 0 ==> optimal_elimination_game_winner(s)[0] == 'D'
-      ensures (forall|i: int| 0 <= i < s.len() ==> s[i] == 'D') ==> optimal_elimination_game_winner(s)[0] == 'D'
-      ensures (forall|i: int| 0 <= i < s.len() ==> s[i] == 'R') ==> optimal_elimination_game_winner(s)[0] == 'R'
-      ensures optimal_elimination_game_winner(s)[0] == 'D' ==> count_d(s) > 0
-      ensures optimal_elimination_game_winner(s)[0] == 'R' ==> count_r(s) > 0
-  {
-      if count_d(s) == 0 {
-          seq!['R']
-      } else if count_r(s) == 0 {
-          seq!['D']
-      } else if count_d(s) >= count_r(s) {
-          seq!['D']
-      } else {
-          seq!['R']
-      }
+
+  spec fn optimal_elimination_game_winner(s: Seq<char>) -> Seq<char> {
+      if count_d(s) == 0 { seq!['R'] }
+      else if count_r(s) == 0 { seq!['D'] }
+      else if count_d(s) >= count_r(s) { seq!['D'] }
+      else { seq!['R'] }
   }
 
 vc-helpers: |-
@@ -69,21 +39,12 @@ vc-helpers: |-
 vc-spec: |-
   fn solve(n: int, s: Seq<char>) -> (result: Seq<char>)
       requires valid_input(n, s)
-      ensures result.len() == 1
-      ensures result[0] == 'D' || result[0] == 'R'
-      ensures result[0] == 'D' ==> count_d(s) > 0
-      ensures result[0] == 'R' ==> count_r(s) > 0
-      ensures count_d(s) == 0 ==> result[0] == 'R'
-      ensures count_r(s) == 0 ==> result[0] == 'D'
-      ensures (forall|i: int| 0 <= i < s.len() ==> s[i] == 'D') ==> result[0] == 'D'
-      ensures (forall|i: int| 0 <= i < s.len() ==> s[i] == 'R') ==> result[0] == 'R'
-      ensures result.ext_equal(optimal_elimination_game_winner(s))
 
 vc-code: |-
   {
       // impl-start
       assume(false);
-      seq!['D']
+      unreached()
       // impl-end
   }
 

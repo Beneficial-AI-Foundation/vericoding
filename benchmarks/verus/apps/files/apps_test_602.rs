@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int) -> bool {
     1 <= a <= 40
 }
@@ -19,6 +16,9 @@ spec fn presidents() -> Seq<&'static str> {
         "Eisenhower", "Kennedy", "Johnson", "Nixon", "Ford", "Carter", "Reagan"
     ]
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

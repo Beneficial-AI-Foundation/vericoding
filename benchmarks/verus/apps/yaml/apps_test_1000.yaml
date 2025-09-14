@@ -7,12 +7,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, v: int) -> bool {
       2 <= n <= 100 && 1 <= v <= 100
   }
-  
+
   spec fn min_cost(n: int, v: int) -> int {
       let req = n - 1;
       if req <= v {
@@ -22,6 +20,8 @@ vc-helpers: |-
           v + remaining * (remaining + 3) / 2
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, v: int) -> (result: int)
@@ -34,7 +34,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

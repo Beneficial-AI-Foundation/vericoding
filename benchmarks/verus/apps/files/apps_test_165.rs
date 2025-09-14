@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn max3(a: int, b: int, c: int) -> int {
     if a >= b && a >= c { a }
     else if b >= c { b }
@@ -24,6 +21,9 @@ spec fn int_to_string_spec(n: int) -> Seq<char> {
     /* Specification for integer to string conversion */
     seq![]
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

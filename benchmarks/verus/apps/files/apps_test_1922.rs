@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int) -> bool {
     n >= 1 && m >= 1
 }
@@ -22,6 +19,9 @@ spec fn count_face_down_cards(n: int, m: int) -> int
         (n - 2) * (m - 2)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

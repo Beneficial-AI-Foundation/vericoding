@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: nat, m: nat, k: nat) -> bool {
     n >= 1 && m >= 1 && k >= 0 && k <= n - 1
 }
@@ -38,6 +35,9 @@ spec fn expected_result(n: nat, m: nat, k: nat) -> nat {
         0
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

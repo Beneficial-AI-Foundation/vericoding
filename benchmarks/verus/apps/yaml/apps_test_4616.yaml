@@ -6,12 +6,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(s: Seq<char>) -> bool {
       s.len() >= 3 && s.len() <= 100 && forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z'
   }
-  
+
   spec fn valid_abbreviation(s: Seq<char>, result: Seq<char>) -> bool {
       result.len() >= 3 &&
       s.len() >= 3 &&
@@ -19,7 +17,7 @@ vc-helpers: |-
       result[result.len() - 1] == s[s.len() - 1] &&
       result.len() >= 3
   }
-  
+
   spec fn int_to_string(n: int) -> Seq<char> 
       decreases n
   {
@@ -31,7 +29,7 @@ vc-helpers: |-
           int_to_string_helper(n)
       }
   }
-  
+
   spec fn int_to_string_helper(n: int) -> Seq<char>
       recommends n >= 0
       decreases n
@@ -42,6 +40,8 @@ vc-helpers: |-
           int_to_string_helper(n / 10).add(seq![(('0' as u8 + (n % 10) as u8) as char)])
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(s: Seq<char>) -> (result: Seq<char>)
@@ -54,7 +54,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

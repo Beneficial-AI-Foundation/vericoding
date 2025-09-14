@@ -6,12 +6,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(date_str: Seq<char>) -> bool {
       date_str.len() == 10 && date_str.subrange(0, 4) == seq!['2', '0', '1', '7']
   }
-  
+
   spec fn valid_output(input: Seq<char>, output: Seq<char>) -> bool 
       recommends input.len() >= 4
   {
@@ -20,6 +18,8 @@ vc-helpers: |-
       output.subrange(0, 4) == seq!['2', '0', '1', '8'] &&
       output.subrange(4, output.len() as int) == input.subrange(4, input.len() as int)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(date_str: Seq<char>) -> (result: Seq<char>)
@@ -32,7 +32,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -7,10 +7,10 @@ spec fn count_ones_in_octal(a: int) -> int
     recommends a >= 0
     decreases a
 {
-    if a == 0 {
-        0
-    } else {
-        (if a % 8 == 1 { 1 } else { 0 }) + count_ones_in_octal(a / 8)
+    if a == 0 { 
+        0nat as int
+    } else { 
+        (if a % 8 == 1 { 1nat as int } else { 0nat as int }) + count_ones_in_octal(a / 8) 
     }
 }
 // </vc-preamble>
@@ -20,9 +20,11 @@ spec fn count_ones_in_octal(a: int) -> int
 
 // <vc-spec>
 fn solve(a: int) -> (count: int)
-    requires a >= 0,
-    ensures count >= 0,
-    ensures count == count_ones_in_octal(a),
+    requires 
+        a >= 0
+    ensures 
+        count >= 0,
+        count == count_ones_in_octal(a)
 // </vc-spec>
 // <vc-code>
 {

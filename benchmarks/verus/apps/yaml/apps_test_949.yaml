@@ -7,17 +7,17 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(a: int, b: int) -> bool {
       1 <= a <= b
   }
-  
+
   spec fn gcd_of_range(a: int, b: int) -> int
       recommends valid_input(a, b)
   {
       if a == b { a } else { 1 }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(a: int, b: int) -> (result: int)
@@ -34,7 +34,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

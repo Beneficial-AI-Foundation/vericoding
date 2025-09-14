@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: Seq<int>) -> bool {
     n >= 1 && a.len() == n && forall|i: int| 0 <= i < a.len() ==> a[i] >= 1
 }
@@ -19,7 +16,7 @@ spec fn sum_abs_diffs(a: Seq<int>, target: int) -> int
     if a.len() == 0 {
         0
     } else {
-        abs_spec(a[0] - target) + sum_abs_diffs(a.subrange(1, a.len() as int), target)
+        abs_int(a[0] - target) + sum_abs_diffs(a.subrange(1, a.len() as int), target)
     }
 }
 
@@ -40,23 +37,26 @@ spec fn sorted_seq(a: Seq<int>) -> Seq<int> {
     a
 }
 
-spec fn abs_spec(x: int) -> int {
+spec fn abs_int(x: int) -> int {
     if x >= 0 { x } else { -x }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(n: int, a: Seq<int>) -> (result: int)
     requires 
-        valid_input(n, a)
+        valid_input(n, a),
     ensures 
         result >= 0,
-        result == sum_abs_diffs(transform(a), median_of(transform(a)))
+        result == sum_abs_diffs(transform(a), median_of(transform(a))),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0int
+    unreached()
 }
 // </vc-code>
 

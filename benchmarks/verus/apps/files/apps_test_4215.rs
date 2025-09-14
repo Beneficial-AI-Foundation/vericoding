@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int) -> bool {
     1 <= a <= 100 && 1 <= b <= 100
 }
@@ -12,6 +9,9 @@ spec fn valid_input(a: int, b: int) -> bool {
 spec fn uncovered_length(a: int, b: int) -> int {
     if a - 2 * b > 0 { a - 2 * b } else { 0 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

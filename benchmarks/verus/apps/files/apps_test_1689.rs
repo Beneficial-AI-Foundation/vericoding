@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, rows: Seq<Seq<char>>) -> bool {
     n >= 0 && rows.len() == n && forall|i: int| 0 <= i < rows.len() ==> rows[i].len() == 5
 }
@@ -22,27 +19,27 @@ spec fn no_adjacent_empty_seats(rows: Seq<Seq<char>>) -> bool {
 }
 
 spec fn valid_solution(result: Seq<char>, rows: Seq<Seq<char>>) -> bool {
-    result != seq!['N', 'O'] ==> result.len() >= 4
+    result.len() != 2 || result[0] != 'N' || result[1] != 'O' ==> result.len() >= 4
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(n: int, rows: Seq<Seq<char>>) -> (result: Seq<char>)
     requires 
-        valid_input(n, rows),
+        valid_input(n, rows)
     ensures 
-        result == seq!['N', 'O'] || result.len() >= 4,
-    ensures 
-        (result == seq!['N', 'O']) ==> no_adjacent_empty_seats(rows),
-    ensures 
-        (result != seq!['N', 'O']) ==> has_adjacent_empty_seats(rows),
-    ensures 
-        valid_solution(result, rows),
+        (result.len() == 2 && result[0] == 'N' && result[1] == 'O') || result.len() >= 4,
+        (result.len() == 2 && result[0] == 'N' && result[1] == 'O') ==> no_adjacent_empty_seats(rows),
+        !(result.len() == 2 && result[0] == 'N' && result[1] == 'O') ==> has_adjacent_empty_seats(rows),
+        valid_solution(result, rows)
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    seq!['N', 'O']
+    unreached()
 }
 // </vc-code>
 

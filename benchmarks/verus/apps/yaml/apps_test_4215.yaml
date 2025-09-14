@@ -7,15 +7,15 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(a: int, b: int) -> bool {
       1 <= a <= 100 && 1 <= b <= 100
   }
-  
+
   spec fn uncovered_length(a: int, b: int) -> int {
       if a - 2 * b > 0 { a - 2 * b } else { 0 }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(a: int, b: int) -> (result: int)
@@ -32,7 +32,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

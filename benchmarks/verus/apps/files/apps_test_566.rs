@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(r: int, g: int, b: int) -> bool {
     r >= 0 && g >= 0 && b >= 0
 }
@@ -18,6 +15,9 @@ spec fn max_tables(r: int, g: int, b: int) -> int
 spec fn min(a: int, b: int) -> int {
     if a <= b { a } else { b }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

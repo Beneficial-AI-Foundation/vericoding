@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, s: int, v: Seq<int>) -> bool {
     n > 0 && v.len() == n && s >= 0 && forall|i: int| 0 <= i < v.len() ==> v[i] >= 0
 }
@@ -34,6 +31,9 @@ spec fn min_seq(v: Seq<int>) -> int
 spec fn min(a: int, b: int) -> int {
     if a <= b { a } else { b }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

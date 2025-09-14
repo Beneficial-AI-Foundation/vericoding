@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, k: int, emotes: Seq<int>) -> bool {
     n >= 2 && k >= 1 && m >= 1 && emotes.len() == n &&
     forall|i: int| 0 <= i < emotes.len() ==> emotes[i] >= 1
@@ -53,6 +50,9 @@ spec fn filter_out(s: Seq<int>, val: int, count: int) -> Seq<int>
         seq![s[0]].add(filter_out(s.drop_first(), val, count)) 
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

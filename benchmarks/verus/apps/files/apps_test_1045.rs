@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
     n >= 1
 }
@@ -26,6 +23,9 @@ spec fn valid_pyramid_height(n: int, h: int) -> bool {
     total_cubes_for_height(h) <= n &&
     total_cubes_for_height(h + 1) > n
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

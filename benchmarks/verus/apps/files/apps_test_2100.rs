@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     let lines = split(input, '\n');
     lines.len() >= 1 &&
@@ -65,6 +62,9 @@ spec fn count_right_zeros(lines: Seq<Seq<char>>, start: int, n: int) -> int {
 spec fn int_to_string(n: int) -> Seq<char> {
     seq!['0']
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

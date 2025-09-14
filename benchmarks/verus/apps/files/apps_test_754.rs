@@ -16,8 +16,8 @@ spec fn count_adjacent_same_pairs(s: Seq<char>, n: int) -> int
 spec fn count_adjacent_same_pairs_up_to(s: Seq<char>, i: int) -> int
     decreases i
 {
-    if i <= 1 { 0 }
-    else { (if s[i-1] == s[i-2] { 1 } else { 0 }) + count_adjacent_same_pairs_up_to(s, i-1) }
+    if i <= 1 { 0int }
+    else { (if s[i-1] == s[i-2] { 1int } else { 0int }) + count_adjacent_same_pairs_up_to(s, i-1) }
 }
 // </vc-preamble>
 
@@ -27,16 +27,16 @@ spec fn count_adjacent_same_pairs_up_to(s: Seq<char>, i: int) -> int
 // <vc-spec>
 fn solve(n: int, s: Seq<char>) -> (result: int)
     requires 
-        valid_input(n, s)
+        valid_input(n, s),
     ensures 
-        result >= 0 &&
-        result <= n - 1 &&
-        result == count_adjacent_same_pairs(s, n)
+        result >= 0,
+        result <= n - 1,
+        result == count_adjacent_same_pairs(s, n),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

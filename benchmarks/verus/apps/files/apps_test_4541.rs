@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() == 1 && 'a' <= input[0] && input[0] <= 'z'
 }
@@ -18,6 +15,9 @@ spec fn expected_output(input: Seq<char>) -> Seq<char>
 {
     if is_vowel(input[0]) { seq!['v', 'o', 'w', 'e', 'l'] } else { seq!['c', 'o', 'n', 's', 'o', 'n', 'a', 'n', 't'] }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

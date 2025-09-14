@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn is_valid_work_selection(n: int, k: int, c: int, s: Seq<char>, selection: Set<int>) -> bool
       recommends s.len() == n
   {
@@ -18,6 +16,8 @@ vc-helpers: |-
       (forall|day1: int, day2: int| selection.contains(day1) && selection.contains(day2) && day1 != day2 ==> 
           day1 < day2 - c || day2 < day1 - c)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, k: int, c: int, s: Seq<char>) -> (result: Vec<int>)
@@ -42,7 +42,7 @@ vc-code: |-
       Vec::new()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

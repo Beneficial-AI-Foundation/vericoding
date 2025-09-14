@@ -2,7 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-
 spec fn valid_input(a1: int, a2: int, k1: int, k2: int, n: int) -> bool {
     a1 >= 1 && a2 >= 1 && k1 >= 1 && k2 >= 1 && n >= 1
 }
@@ -45,9 +44,9 @@ spec fn valid_result(a1: int, a2: int, k1: int, k2: int, n: int, minimum: int, m
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a1: int, a2: int, k1: int, k2: int, n: int) -> (minimum: int, maximum: int)
+fn solve(a1: int, a2: int, k1: int, k2: int, n: int) -> (ret: (int, int))
     requires valid_input(a1, a2, k1, k2, n)
-    ensures |result: (int, int)| valid_result(a1, a2, k1, k2, n, result.minimum, result.maximum)
+    ensures valid_result(a1, a2, k1, k2, n, ret.0, ret.1)
 // </vc-spec>
 // <vc-code>
 {

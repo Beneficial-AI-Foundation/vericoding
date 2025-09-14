@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a_1: Seq<int>, a_2: Seq<int>) -> bool {
     n >= 1 &&
     a_1.len() == n && a_2.len() == n &&
@@ -30,6 +27,9 @@ spec fn is_valid_result(n: int, a_1: Seq<int>, a_2: Seq<int>, result: int) -> bo
     exists|i: int| 0 <= i < n && result == sum_range(a_1, 0, i + 1) + sum_range(a_2, i, n) &&
     forall|i: int| 0 <= i < n ==> result >= sum_range(a_1, 0, i + 1) + sum_range(a_2, i, n))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

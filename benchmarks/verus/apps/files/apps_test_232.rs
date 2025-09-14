@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn count_occurrences(s: Seq<nat>, value: nat) -> nat
     decreases s.len()
 {
@@ -29,32 +26,35 @@ spec fn sum_seq(s: Seq<nat>) -> nat
 
 spec fn subarray_matches_desired(subarray: Seq<nat>, desired: Seq<nat>, m: nat) -> bool
 {
-    desired.len() == m ==> 
-    forall|color: nat| 1 <= color <= m ==> count_occurrences(subarray, color) == desired[color as int - 1]
+    &&& desired.len() == m
+    &&& forall|color: nat| 1 <= color <= m ==> count_occurrences(subarray, color) == desired[color - 1]
 }
 
 spec fn valid_input(n: nat, m: nat, colors: Seq<nat>, desired: Seq<nat>) -> bool
 {
-    colors.len() == n &&
-    desired.len() == m &&
-    (forall|i: int| 0 <= i < colors.len() ==> 1 <= colors[i] <= m) &&
-    (forall|i: int| 0 <= i < desired.len() ==> desired[i] >= 0) &&
-    sum_seq(desired) <= n
+    &&& colors.len() == n
+    &&& desired.len() == m
+    &&& forall|i: int| 0 <= i < colors.len() ==> 1 <= colors[i] <= m
+    &&& forall|i: int| 0 <= i < desired.len() ==> desired[i] >= 0
+    &&& sum_seq(desired) <= n
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(n: nat, m: nat, colors: Seq<nat>, desired: Seq<nat>) -> (result: String)
-    requires
-        valid_input(n, m, colors, desired),
-    ensures
+    requires 
+        valid_input(n, m, colors, desired)
+    ensures 
         result@ == seq!['Y', 'E', 'S'] <==> exists|i: int, j: int| 0 <= i <= j < n && subarray_matches_desired(colors.subrange(i, j + 1), desired, m),
-        result@ == seq!['Y', 'E', 'S'] || result@ == seq!['N', 'O'],
+        result@ == seq!['Y', 'E', 'S'] || result@ == seq!['N', 'O']
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    String::new()
+    "NO".to_string()
 }
 // </vc-code>
 

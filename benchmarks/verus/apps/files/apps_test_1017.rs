@@ -2,6 +2,7 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn valid_input(n: int) -> bool {
     n >= 1
 }
@@ -18,14 +19,16 @@ spec fn max_distributions(n: int) -> int
 
 // <vc-spec>
 fn solve(n: int) -> (result: int)
-    requires valid_input(n)
-    ensures result >= 1
-    ensures result == max_distributions(n)
+    requires 
+        valid_input(n)
+    ensures 
+        result >= 1,
+        result == max_distributions(n)
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

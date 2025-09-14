@@ -9,8 +9,6 @@ vc-preamble: |-
   use vstd::string::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(input: Seq<char>) -> bool {
       input.len() > 0 &&
       (exists|i: int| 0 <= i < input.len() && input[i] == '\n') &&
@@ -67,6 +65,8 @@ vc-helpers: |-
       seq![]
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(stdin_input: Vec<u8>) -> (result: String)
       requires 
@@ -86,7 +86,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     &&& input.len() >= 18
     &&& input[input.len() - 1] == '\n'
@@ -30,6 +27,9 @@ spec fn valid_output(input: Seq<char>, result: Seq<char>) -> bool {
         input[space_pos] == ' ' && 
         result[1] == input[8]
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

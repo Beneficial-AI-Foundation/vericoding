@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(test_cases: Seq<(int, int)>) -> bool {
     forall|i: int| 0 <= i < test_cases.len() ==> 
         test_cases[i].0 > 0 && test_cases[i].1 > 0
@@ -24,6 +21,9 @@ spec fn valid_output(test_cases: Seq<(int, int)>, results: Seq<int>) -> bool
         results[i] == min_moves_to_divisible(test_cases[i].0, test_cases[i].1) &&
         results[i] >= 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

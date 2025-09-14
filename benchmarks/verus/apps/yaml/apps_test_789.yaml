@@ -7,12 +7,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_lucky_number(n: Seq<char>) -> bool {
       n.len() > 0 && forall|i: int| 0 <= i < n.len() ==> n[i] == '4' || n[i] == '7'
   }
-  
+
   spec fn convert_to_binary(n: Seq<char>) -> Seq<char>
       recommends forall|i: int| 0 <= i < n.len() ==> n[i] == '4' || n[i] == '7'
       decreases n.len()
@@ -25,7 +23,7 @@ vc-helpers: |-
           seq!['1'].add(convert_to_binary(n.subrange(1, n.len() as int)))
       }
   }
-  
+
   spec fn pow2(n: int) -> int
       recommends n >= 0
       decreases n
@@ -36,7 +34,7 @@ vc-helpers: |-
           2 * pow2(n - 1)
       }
   }
-  
+
   spec fn binary_to_int(s: Seq<char>) -> int
       recommends forall|i: int| 0 <= i < s.len() ==> s[i] == '0' || s[i] == '1'
       decreases s.len()
@@ -49,12 +47,14 @@ vc-helpers: |-
           binary_to_int(s.subrange(1, s.len() as int))
       }
   }
-  
+
   spec fn valid_result(n: Seq<char>, result: int) -> bool
       recommends valid_lucky_number(n)
   {
       result > 0 && result == 2 * (pow2(n.len() - 1) - 1) + binary_to_int(convert_to_binary(n)) + 1
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: Seq<char>) -> (result: int)
@@ -67,7 +67,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

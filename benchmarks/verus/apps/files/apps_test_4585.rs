@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(x: int) -> bool {
     x >= 1
 }
@@ -22,6 +19,9 @@ spec fn is_minimal_time(t: int, x: int) -> bool
     triangular_number(t) >= x &&
     (t == 1 || triangular_number(t - 1) < x)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

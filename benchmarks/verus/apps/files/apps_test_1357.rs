@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, tasks: Seq<int>) -> bool {
     n >= 2 && m >= 1 && tasks.len() == m && 
     forall|i: int| 0 <= i < tasks.len() ==> 1 <= tasks[i] <= n
@@ -21,6 +18,9 @@ spec fn min_time_to_complete(n: int, tasks: Seq<int>, current_pos: int, task_ind
     if target >= current_pos { target - current_pos }
     else { (n - current_pos) + target }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, a: Seq<int>) -> bool {
     n > 0 && m > 0 && a.len() == n && forall|i: int| 0 <= i < a.len() ==> a[i] > 0
 }
@@ -24,6 +21,9 @@ spec fn sum_candies_still_needed(queue: Seq<Seq<int>>) -> nat
         still_needed + sum_candies_still_needed(queue.subrange(1, queue.len() as int))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,11 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn max_of_seq(s: Seq<int>) -> int
     recommends s.len() >= 1
+    decreases s.len()
 {
     if s.len() == 1 {
         s[0]
@@ -23,13 +21,17 @@ spec fn max_excluding(s: Seq<int>, exclude_idx: int) -> int
     let others = s.subrange(0, exclude_idx).add(s.subrange(exclude_idx + 1, s.len() as int));
     max_of_seq(others)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(input: Seq<int>) -> (result: Seq<int>)
     requires input.len() >= 2
-    ensures result.len() == input.len()
-    ensures forall|i: int| 0 <= i < input.len() ==> result[i] == max_excluding(input, i)
+    ensures 
+        result.len() == input.len(),
+        forall|i: int| 0 <= i < input.len() ==> result[i] == max_excluding(input, i),
 // </vc-spec>
 // <vc-code>
 {

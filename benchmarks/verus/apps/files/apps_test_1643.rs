@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_binary_string(s: Seq<char>) -> bool {
     forall|i: int| 0 <= i < s.len() ==> s[i] == '0' || s[i] == '1'
 }
@@ -65,6 +62,9 @@ spec fn basic_valid_solution(s: Seq<char>, t: Seq<char>) -> bool {
     &&& (forall|i: int| 0 <= i < s.len() ==> s[i] == '0' ==> t[i] == '0')
     &&& (forall|i: int| 0 <= i < s.len() ==> t[i] == '1' ==> s[i] == '1')
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

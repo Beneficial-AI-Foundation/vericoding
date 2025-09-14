@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_valid_work_selection(n: int, k: int, c: int, s: Seq<char>, selection: Set<int>) -> bool
     recommends s.len() == n
 {
@@ -13,6 +10,9 @@ spec fn is_valid_work_selection(n: int, k: int, c: int, s: Seq<char>, selection:
     (forall|day1: int, day2: int| selection.contains(day1) && selection.contains(day2) && day1 != day2 ==> 
         day1 < day2 - c || day2 < day1 - c)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

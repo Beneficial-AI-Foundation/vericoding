@@ -6,15 +6,15 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(skills: Seq<int>) -> bool {
       skills.len() >= 0
   }
-  
+
   spec fn has_adjacent_skills(skills: Seq<int>) -> bool {
       exists|i: int, j: int| 0 <= i < j < skills.len() && (skills[i] - skills[j] == 1 || skills[j] - skills[i] == 1)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(skills: Seq<int>) -> (teams: int)
@@ -31,7 +31,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

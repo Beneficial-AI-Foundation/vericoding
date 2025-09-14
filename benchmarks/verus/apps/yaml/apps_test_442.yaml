@@ -8,16 +8,14 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn h(x: int, y: int) -> int {
       x * x + 2 * x * y + x + 1
   }
-  
+
   spec fn valid_input(r: int) -> bool {
       r > 0
   }
-  
+
   spec fn valid_solution(result: Seq<int>, r: int) -> bool {
       if result.len() == 0 {
           true
@@ -25,10 +23,12 @@ vc-helpers: |-
           result.len() == 2 && result[0] > 0 && result[1] > 0 && h(result[0], result[1]) == r
       }
   }
-  
+
   spec fn has_solution(r: int) -> bool {
       r > 4 && r % 2 == 1
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(r: int) -> (result: Vec<int>)
@@ -49,7 +49,7 @@ vc-code: |-
       Vec::new()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

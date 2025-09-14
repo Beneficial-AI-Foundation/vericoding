@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: Seq<int>) -> bool {
     n > 0 && m.len() == n && 
     forall|i: int| 0 <= i < n ==> 0 <= m[i] < i + 1
@@ -25,6 +22,9 @@ spec fn sum_below(m: Seq<int>, dm: Seq<int>) -> int
         (dm[0] - 1 - m[0]) + sum_below(m.subrange(1, m.len() as int), dm.subrange(1, dm.len() as int))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

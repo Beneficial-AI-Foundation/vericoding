@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: Seq<int>) -> bool {
     a.len() >= 1
 }
@@ -14,6 +11,9 @@ spec fn can_be_divided(a: Seq<int>) -> bool
 {
     a.len() % 2 == 1 && a[0] % 2 == 1 && a[a.len() - 1] % 2 == 1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

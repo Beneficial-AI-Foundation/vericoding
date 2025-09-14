@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, d: int, current_points: Seq<int>, awards: Seq<int>) -> bool {
       n >= 1 && n <= 200000 &&
       d >= 1 && d <= n &&
@@ -19,7 +17,7 @@ vc-helpers: |-
       (forall|i: int| 0 <= i < current_points.len()-1 ==> current_points[i] >= current_points[i+1]) &&
       (forall|i: int| 0 <= i < awards.len()-1 ==> awards[i] >= awards[i+1])
   }
-  
+
   spec fn count_overtaken(current_points: Seq<int>, awards: Seq<int>, d: int) -> int
       recommends
           current_points.len() == awards.len(),
@@ -29,7 +27,7 @@ vc-helpers: |-
   {
       count_overtaken_helper(current_points, awards, d, 0, 0)
   }
-  
+
   spec fn count_overtaken_helper(current_points: Seq<int>, awards: Seq<int>, d: int, pos: int, used_awards: int) -> int
       recommends
           current_points.len() == awards.len(),
@@ -53,6 +51,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: int, d: int, current_points: Seq<int>, awards: Seq<int>) -> (result: int)
       requires valid_input(n, d, current_points, awards)
@@ -66,7 +66,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

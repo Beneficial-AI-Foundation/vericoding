@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn count_occurrences(s: Seq<int>, x: int) -> int
     decreases s.len()
 {
@@ -43,6 +40,9 @@ spec fn can_infect_in_one_contest(k: int, ratings: Seq<int>) -> bool {
 spec fn requires_two_contests(k: int, ratings: Seq<int>) -> bool {
     !ratings.contains(k) && k * ratings.len() != sum(ratings)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

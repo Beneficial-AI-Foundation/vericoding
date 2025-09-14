@@ -9,12 +9,10 @@ vc-preamble: |-
   use vstd::set_lib::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, a: Seq<int>) -> bool {
     n >= 2 && a.len() == n
   }
-  
+
   spec fn count_violations_for_k(a: Seq<int>, n: int, k: int) -> int {
     if n >= 2 && a.len() == n && 1 <= k <= n - 1 {
       set_int_range(2, n + 1).filter(|i: int| {
@@ -25,7 +23,7 @@ vc-helpers: |-
       0
     }
   }
-  
+
   spec fn valid_output(result: Seq<int>, n: int, a: Seq<int>) -> bool {
     if n >= 2 && a.len() == n {
       result.len() == n - 1 &&
@@ -35,6 +33,8 @@ vc-helpers: |-
       false
     }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, a: Seq<int>) -> (result: Seq<int>)
@@ -47,7 +47,7 @@ vc-code: |-
     unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

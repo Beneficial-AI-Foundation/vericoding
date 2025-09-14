@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_tandem_repeat(s: Seq<char>) -> bool {
     if s.len() % 2 != 0 {
         false
@@ -16,6 +13,9 @@ spec fn is_tandem_repeat(s: Seq<char>) -> bool {
             (first_half[i] == '*' || second_half[i] == '*' || first_half[i] == second_half[i])
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

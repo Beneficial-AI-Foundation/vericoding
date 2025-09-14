@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn sum_contributions(a: Seq<int>, b: Seq<int>) -> int
       recommends a.len() == b.len()
       decreases a.len()
@@ -27,6 +25,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(a: Seq<int>, b: Seq<int>) -> (result: int)
       requires a.len() == b.len()
@@ -38,7 +38,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

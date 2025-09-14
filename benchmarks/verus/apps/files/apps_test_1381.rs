@@ -2,9 +2,7 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn valid_input(k: int, n: int, s: int, p: int) -> bool
-{
+spec fn valid_input(k: int, n: int, s: int, p: int) -> bool {
   k >= 1 && n >= 1 && s >= 1 && p >= 1 &&
   k <= 10000 && n <= 10000 && s <= 10000 && p <= 10000
 }
@@ -42,15 +40,15 @@ spec fn correct_result(result: int, k: int, n: int, s: int, p: int) -> bool
 // <vc-spec>
 fn solve(k: int, n: int, s: int, p: int) -> (result: int)
   requires
-    valid_input(k, n, s, p)
+    valid_input(k, n, s, p),
   ensures
     result >= 1,
-    correct_result(result, k, n, s, p)
+    correct_result(result, k, n, s, p),
 // </vc-spec>
 // <vc-code>
 {
   assume(false);
-  1int
+  unreached()
 }
 // </vc-code>
 

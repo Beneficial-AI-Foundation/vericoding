@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, arr: Seq<int>) -> bool {
     n >= 1 && arr.len() == n
 }
@@ -24,6 +21,9 @@ spec fn correct_result(n: int, arr: Seq<int>, result: int) -> bool {
     &&& (sum_seq(arr) % n != 0 ==> result == n - 1)
     &&& (result == n || result == n - 1)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

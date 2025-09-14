@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn sum_seq(s: Seq<int>) -> int
       decreases s.len()
   {
@@ -40,6 +38,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: int, d: int, t: Seq<int>) -> (result: int)
       requires valid_input(n, d, t)
@@ -51,7 +51,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

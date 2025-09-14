@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int) -> bool {
     a >= 1 && a <= 1000 && b >= 1 && b <= 1000 && a != b
 }
@@ -26,6 +23,9 @@ spec fn minimum_total_tiredness(a: int, b: int) -> int
     tiredness_for_steps(if c >= a { c - a } else { a - c }) + 
     tiredness_for_steps(if b >= c { b - c } else { c - b })
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

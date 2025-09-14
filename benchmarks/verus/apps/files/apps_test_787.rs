@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn concat_seqs(seqs: Seq<Seq<char>>) -> Seq<char>
     decreases seqs.len()
 {
@@ -21,6 +18,9 @@ spec fn valid_split(result: Seq<Seq<char>>, k: int, q: Seq<char>) -> bool {
     (forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i][0] != result[j][0]) &&
     concat_seqs(result) == q
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

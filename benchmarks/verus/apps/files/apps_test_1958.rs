@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, p: int, buyers: Seq<&str>) -> bool {
     1 <= n <= 40 &&
     2 <= p <= 1000 &&
@@ -45,6 +42,9 @@ spec fn compute_payment_backward(buyers: Seq<&str>, p: int, current_index: int, 
         payment + compute_payment_backward(buyers, p, current_index - 1, new_apples)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

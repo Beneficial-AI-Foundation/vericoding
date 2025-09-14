@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, numbers: Seq<int>) -> bool {
     n >= 3 && n % 3 == 0 &&
     numbers.len() == n &&
@@ -37,6 +34,9 @@ spec fn valid_partition(result: Seq<Seq<int>>, numbers: Seq<int>) -> bool {
 spec fn no_partition_exists(result: Seq<Seq<int>>) -> bool {
     result.len() == 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -8,28 +8,26 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(x: int, y: int) -> bool {
       -100 <= x <= 100 && -100 <= y <= 100
   }
-  
+
   spec fn is_origin_or_first_point(x: int, y: int) -> bool {
       (x == 0 && y == 0) || (x == 1 && y == 0)
   }
-  
+
   spec fn is_right_edge(x: int, y: int) -> bool {
       x >= 1 && -x + 1 < y <= x
   }
-  
+
   spec fn is_left_edge(x: int, y: int) -> bool {
       x < 0 && x <= y < -x
   }
-  
+
   spec fn is_top_edge(x: int, y: int) -> bool {
       y > 0 && -y <= x < y
   }
-  
+
   spec fn compute_turns(x: int, y: int) -> int
       recommends valid_input(x, y)
   {
@@ -45,6 +43,8 @@ vc-helpers: |-
           -4 * y
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(x: int, y: int) -> (result: int)
@@ -67,7 +67,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

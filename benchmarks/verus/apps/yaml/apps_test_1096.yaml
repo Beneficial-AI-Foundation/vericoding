@@ -8,21 +8,19 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(position: Seq<char>) -> bool {
     position.len() == 2 && 
     'a' <= position[0] && position[0] <= 'h' && 
     '1' <= position[1] && position[1] <= '8'
   }
-  
+
   spec fn is_corner(position: Seq<char>) -> bool
     recommends valid_input(position)
   {
     (position[0] == 'a' || position[0] == 'h') && 
     (position[1] == '1' || position[1] == '8')
   }
-  
+
   spec fn is_edge(position: Seq<char>) -> bool
     recommends valid_input(position)
   {
@@ -30,13 +28,13 @@ vc-helpers: |-
      position[1] == '1' || position[1] == '8') && 
     !is_corner(position)
   }
-  
+
   spec fn is_interior(position: Seq<char>) -> bool
     recommends valid_input(position)
   {
     !is_corner(position) && !is_edge(position)
   }
-  
+
   spec fn valid_moves(position: Seq<char>) -> int
     recommends valid_input(position)
   {
@@ -44,6 +42,8 @@ vc-helpers: |-
     else if is_edge(position) { 5 }
     else { 8 }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(position: Seq<char>) -> (moves: i32)
@@ -62,7 +62,7 @@ vc-code: |-
     unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

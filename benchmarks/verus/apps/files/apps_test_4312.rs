@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, c: int, d: int) -> bool {
     1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100 && 1 <= d <= 100
 }
@@ -22,6 +19,9 @@ spec fn takahashi_wins(a: int, b: int, c: int, d: int) -> bool
     let aoki_turns = turns_to_defeat(a, d);
     aoki_turns >= takahashi_turns
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

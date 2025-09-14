@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum_abs(arr: Seq<int>, i: int) -> int
     recommends 0 <= i <= arr.len()
     decreases arr.len() - i
@@ -17,6 +14,9 @@ spec fn valid_input(n: int, arr: Seq<int>) -> bool
 {
     0 <= n == arr.len()
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

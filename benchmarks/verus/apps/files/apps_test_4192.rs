@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(d: int, t: int, s: int) -> bool {
     1 <= d <= 10000 && 1 <= t <= 10000 && 1 <= s <= 10000
 }
@@ -12,6 +9,9 @@ spec fn valid_input(d: int, t: int, s: int) -> bool {
 spec fn can_travel(d: int, t: int, s: int) -> bool {
     d <= t * s
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

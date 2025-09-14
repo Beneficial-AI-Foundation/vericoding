@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn count_occurrences(s: Seq<int>, x: int) -> int
       decreases s.len()
   {
@@ -49,6 +47,8 @@ vc-helpers: |-
       !ratings.contains(k) && k * ratings.len() != sum(ratings)
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve_case(n: int, k: int, ratings: Seq<int>) -> (answer: int)
       requires 
@@ -65,7 +65,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

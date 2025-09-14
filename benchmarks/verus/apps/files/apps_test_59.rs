@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: Seq<int>, p: Seq<char>) -> bool {
     n >= 2 &&
     a.len() == n &&
@@ -18,12 +15,12 @@ spec fn max_up_to(a: Seq<int>, i: int) -> int
     recommends 0 <= i < a.len()
     decreases i
 {
-    if i == 0 {
-        a[0]
-    } else if a[i] > max_up_to(a, i-1) {
-        a[i]
-    } else {
-        max_up_to(a, i-1)
+    if i == 0 { 
+        a[0] 
+    } else if a[i] > max_up_to(a, i-1) { 
+        a[i] 
+    } else { 
+        max_up_to(a, i-1) 
     }
 }
 
@@ -33,22 +30,23 @@ spec fn can_sort(n: int, a: Seq<int>, p: Seq<char>) -> bool
     forall|i: int| 0 <= i < n - 1 ==> 
         (p[i] == '0' ==> max_up_to(a, i) <= i + 1)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>, p: Seq<char>) -> (result: String)
+fn solve(n: int, a: Seq<int>, p: Seq<char>) -> (result: Seq<char>)
     requires 
-        valid_input(n, a, p)
+        valid_input(n, a, p),
     ensures 
-        result == "YES" || result == "NO",
-        (result == "YES") <==> can_sort(n, a, p)
+        result == seq!['Y', 'E', 'S'] || result == seq!['N', 'O'],
+        (result == seq!['Y', 'E', 'S']) <==> can_sort(n, a, p),
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
-    "NO".to_string()
-    // impl-end
+    unreached()
 }
 // </vc-code>
 

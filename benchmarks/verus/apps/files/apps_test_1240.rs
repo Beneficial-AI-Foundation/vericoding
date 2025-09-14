@@ -2,14 +2,11 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(columns: Seq<(int, int)>) -> bool {
     forall|i: int| 0 <= i < columns.len() ==> columns[i].0 > 0 && columns[i].1 > 0
 }
 
-spec fn abs_int(x: int) -> int {
+spec fn abs(x: int) -> int {
     if x >= 0 { x } else { -x }
 }
 
@@ -19,7 +16,7 @@ spec fn sum_left(columns: Seq<(int, int)>) -> int
     if columns.len() == 0 {
         0
     } else {
-        columns[0].0 + sum_left(columns.subrange(1, columns.len() as int))
+        columns[0].0 + sum_left(columns.drop_first())
     }
 }
 
@@ -29,9 +26,12 @@ spec fn sum_right(columns: Seq<(int, int)>) -> int
     if columns.len() == 0 {
         0
     } else {
-        columns[0].1 + sum_right(columns.subrange(1, columns.len() as int))
+        columns[0].1 + sum_right(columns.drop_first())
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -41,10 +41,8 @@ fn solve(columns: Seq<(int, int)>) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached()
 }
 // </vc-code>
 

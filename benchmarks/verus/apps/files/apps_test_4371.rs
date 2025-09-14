@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     s.len() >= 3 && forall|i: int| 0 <= i < s.len() ==> '1' <= s[i] <= '9'
 }
@@ -30,6 +27,9 @@ spec fn is_minimum_difference(s: Seq<char>, result: int) -> bool {
         (forall|i: int| 0 <= i <= s.len() - 3 ==> result <= abs_diff(753 - string_to_int(s.subrange(i, i+3))))
     )
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

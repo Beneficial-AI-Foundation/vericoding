@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, c: int, prices: Seq<int>) -> bool {
     n >= 2 && prices.len() == n && c >= 0 &&
     (forall|i: int| 0 <= i < prices.len() ==> prices[i] >= 0)
@@ -51,6 +48,9 @@ spec fn correct_result(n: int, c: int, prices: Seq<int>, result: int) -> bool {
      (result > 0 ==> (exists|i: int| 0 <= i < n - 1 && profit_for_day(prices, i, c) == result)) &&
      (forall|i: int| 0 <= i < n - 1 ==> profit_for_day(prices, i, c) <= result))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

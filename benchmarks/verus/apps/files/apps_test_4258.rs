@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, t: int) -> bool {
     1 <= a <= 20 && 1 <= b <= 20 && 1 <= t <= 20
 }
@@ -16,6 +13,9 @@ spec fn production_count(a: int, t: int) -> int {
 spec fn total_biscuits(a: int, b: int, t: int) -> int {
     if a > 0 { b * production_count(a, t) } else { 0 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

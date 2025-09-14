@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
   s.len() == 19 && 
   s.len() >= 2 && s[5] == ',' && s[13] == ',' &&
@@ -26,6 +23,9 @@ spec fn correct_output(s: Seq<char>, result: Seq<char>) -> bool
     (s[i] == ',' ==> result[i] == ' ') &&
     (s[i] != ',' ==> result[i] == s[i])
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

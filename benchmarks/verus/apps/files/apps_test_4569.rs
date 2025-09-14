@@ -2,11 +2,8 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_weather(weather: Seq<char>) -> bool {
-    weather == seq!['S','u','n','n','y'] || weather == seq!['C','l','o','u','d','y'] || weather == seq!['R','a','i','n','y']
+    weather == "Sunny"@ || weather == "Cloudy"@ || weather == "Rainy"@
 }
 
 spec fn trim_newline(input: Seq<char>) -> Seq<char> {
@@ -20,10 +17,13 @@ spec fn trim_newline(input: Seq<char>) -> Seq<char> {
 spec fn next_weather(weather: Seq<char>) -> Seq<char>
     recommends valid_weather(weather)
 {
-    if weather == seq!['S','u','n','n','y'] { seq!['C','l','o','u','d','y'] }
-    else if weather == seq!['C','l','o','u','d','y'] { seq!['R','a','i','n','y'] }
-    else { seq!['S','u','n','n','y'] }
+    if weather == "Sunny"@ { "Cloudy"@ }
+    else if weather == "Cloudy"@ { "Rainy"@ }
+    else { "Sunny"@ }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -40,7 +40,7 @@ fn solve(input: String) -> (result: String)
 // <vc-code>
 {
     assume(false);
-    String::new()
+    unreached()
 }
 // </vc-code>
 

@@ -7,8 +7,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(stdin_input: Seq<char>, n: int) -> bool {
       exists|lines: Seq<Seq<char>>| (parse_input(stdin_input) == lines &&
       lines.len() >= 1 &&
@@ -19,7 +17,7 @@ vc-helpers: |-
           1 <= lines[i].len() <= 100 && 
           forall|j: int| 0 <= j < lines[i].len() ==> 'a' <= lines[i][j] <= 'z'))
   }
-  
+
   spec fn valid_alphabet_ordering(stdin_input: Seq<char>, alphabet: Seq<char>) -> bool
       recommends alphabet.len() == 26,
                 forall|i: int| 0 <= i < alphabet.len() ==> 'a' <= alphabet[i] <= 'z',
@@ -31,7 +29,7 @@ vc-helpers: |-
       parse_int(lines[0]) == n &&
       (forall|i: int| 1 <= i < n ==> lexicographically_less_or_equal(lines[i], lines[i+1], alphabet)))
   }
-  
+
   spec fn lexicographically_less_or_equal(s1: Seq<char>, s2: Seq<char>, alphabet: Seq<char>) -> bool
       recommends alphabet.len() == 26,
                 forall|i: int| 0 <= i < alphabet.len() ==> 'a' <= alphabet[i] <= 'z',
@@ -50,7 +48,7 @@ vc-helpers: |-
           alphabet_order(s1[i], s2[i], alphabet))
       }
   }
-  
+
   spec fn alphabet_order(c1: char, c2: char, alphabet: Seq<char>) -> bool
       recommends alphabet.len() == 26,
                 forall|i: int| 0 <= i < alphabet.len() ==> 'a' <= alphabet[i] <= 'z',
@@ -59,16 +57,18 @@ vc-helpers: |-
   {
       exists|i: int, j: int| 0 <= i < j < alphabet.len() && alphabet[i] == c1 && alphabet[j] == c2
   }
-  
+
   spec fn parse_input(input: Seq<char>) -> Seq<Seq<char>>
   {
       Seq::<Seq<char>>::empty()
   }
-  
+
   spec fn parse_int(s: Seq<char>) -> int
   {
       0
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(stdin_input: Vec<char>) -> (result: String)
@@ -88,7 +88,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

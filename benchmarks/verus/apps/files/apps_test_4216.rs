@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn num_digits(n: int) -> int
   recommends n >= 1
   decreases n
@@ -27,6 +24,9 @@ spec fn f(a: int, b: int) -> int
 spec fn is_factor_pair(a: int, b: int, n: int) -> bool {
   a >= 1 && b >= 1 && a * b == n
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

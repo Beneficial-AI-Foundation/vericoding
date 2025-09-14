@@ -2,17 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0 &&
-    exists|i: int, j: int| 0 <= i < j < input.len() && input[i] == ' ' && input[j] == ' ' &&
-    {
+    exists|i: int, j: int| 0 <= i < j < input.len() && input[i] == ' ' && input[j] == ' ' && {
         let parts = split_string_spec(input);
         parts.len() >= 3 && 
-        is_valid_integer(parts[0]) && is_valid_integer(parts[1]) && is_valid_integer(parts[2]) &&
-        {
+        is_valid_integer(parts[0]) && is_valid_integer(parts[1]) && is_valid_integer(parts[2]) && {
             let a = string_to_int_spec(parts[0]);
             let b = string_to_int_spec(parts[1]);
             let c = string_to_int_spec(parts[2]);
@@ -31,17 +26,15 @@ spec fn is_valid_integer(s: Seq<char>) -> bool {
 
 spec fn string_to_int_spec(s: Seq<char>) -> int {
     if s.len() == 1 { 
-        s[0] as int - '0' as int
+        s[0] as int - '0' as int 
     } else { 
-        string_to_int_spec(s.subrange(0, s.len() - 1)) * 10 + (s[s.len() - 1] as int - '0' as int)
+        string_to_int_spec(s.subrange(0, s.len() - 1)) * 10 + (s[s.len() - 1] as int - '0' as int) 
     }
 }
 
-spec fn split_string_spec(s: Seq<char>) -> Seq<Seq<char>>
-    decreases s.len()
-{
+spec fn split_string_spec(s: Seq<char>) -> Seq<Seq<char>> {
     if s.len() == 0 { 
-        seq![]
+        seq![] 
     } else {
         let parts = split_helper(s, 0, seq![]);
         parts
@@ -55,7 +48,7 @@ spec fn split_helper(s: Seq<char>, index: int, current: Seq<char>) -> Seq<Seq<ch
         if current.len() > 0 { seq![current] } else { seq![] }
     } else if s[index] == ' ' || s[index] == '\n' || s[index] == '\t' {
         if current.len() > 0 { 
-            seq![current].add(split_helper(s, index + 1, seq![]))
+            seq![current] + split_helper(s, index + 1, seq![])
         } else { 
             split_helper(s, index + 1, seq![])
         }
@@ -70,27 +63,16 @@ spec fn int_to_string_spec(n: int) -> Seq<char> {
     } else if n < 10 { 
         seq![('0' as int + n) as char]
     } else { 
-        int_to_string_spec(n / 10).add(seq![('0' as int + (n % 10)) as char])
+        int_to_string_spec(n / 10) + seq![('0' as int + (n % 10)) as char]
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires 
-        valid_input(input),
-    ensures 
-        result.len() > 0,
-    ensures 
-        result[result.len() - 1] == '\n',
-    ensures {
-        let parts = split_string_spec(input);
-        let a = string_to_int_spec(parts[0]);
-        let b = string_to_int_spec(parts[1]);
-        let c = string_to_int_spec(parts[2]);
-        let drinks = compute_drinks(a, b, c);
-        result == int_to_string_spec(drinks).push('\n')
-    }
+fn solve(input: &str) -> (result: String)
 // </vc-spec>
 // <vc-code>
 {

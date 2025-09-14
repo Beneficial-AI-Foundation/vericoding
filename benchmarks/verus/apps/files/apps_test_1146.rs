@@ -2,7 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-
 spec fn valid_input(n: nat, m: nat, buttons: Seq<Seq<nat>>) -> bool {
     buttons.len() == n &&
     n >= 1 && m >= 1 &&
@@ -10,7 +9,7 @@ spec fn valid_input(n: nat, m: nat, buttons: Seq<Seq<nat>>) -> bool {
 }
 
 spec fn union_of_all_bulbs(buttons: Seq<Seq<nat>>) -> Set<nat> {
-    Set::new(|bulb: nat| exists|i: int, j: int| 0 <= i < buttons.len() && 0 <= j < buttons[i].len() && buttons[i][j] == bulb)
+    Set::new(|x: nat| exists|i: int, j: int| 0 <= i < buttons.len() && 0 <= j < buttons[i].len() && buttons[i][j] == x)
 }
 
 spec fn can_turn_on_all_bulbs(m: nat, buttons: Seq<Seq<nat>>) -> bool {
@@ -22,19 +21,17 @@ spec fn can_turn_on_all_bulbs(m: nat, buttons: Seq<Seq<nat>>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: nat, m: nat, buttons: Seq<Seq<nat>>) -> (result: String)
-    requires 
-        valid_input(n, m, buttons)
-    ensures 
-        result == "YES" || result == "NO",
-        result == "YES" <==> can_turn_on_all_bulbs(m, buttons)
+fn solve(n: nat, m: nat, buttons: Seq<Seq<nat>>) -> (result: Seq<char>)
+    requires
+        valid_input(n, m, buttons),
+    ensures
+        result == seq!['Y', 'E', 'S'] || result == seq!['N', 'O'],
+        (result == seq!['Y', 'E', 'S']) <==> can_turn_on_all_bulbs(m, buttons)
 // </vc-spec>
 // <vc-code>
 {
-    /* impl-start */
     assume(false);
-    "NO".to_string()
-    /* impl-end */
+    unreached()
 }
 // </vc-code>
 

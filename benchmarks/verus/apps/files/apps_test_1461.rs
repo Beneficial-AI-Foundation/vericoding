@@ -15,12 +15,6 @@ spec fn valid_result(n: int, sums: Seq<int>, mins: Seq<int>) -> bool {
 }
 
 spec fn path_sum(start: int, k: int, f: Seq<int>, w: Seq<int>) -> int
-  requires 
-    f.len() == w.len() && f.len() > 0,
-    0 <= start < f.len(),
-    k >= 0,
-    forall|i: int| 0 <= i < f.len() ==> 0 <= f[i] < f.len(),
-    forall|i: int| 0 <= i < w.len() ==> w[i] >= 0,
   decreases k
 {
   if k == 0 {
@@ -31,12 +25,6 @@ spec fn path_sum(start: int, k: int, f: Seq<int>, w: Seq<int>) -> int
 }
 
 spec fn path_min(start: int, k: int, f: Seq<int>, w: Seq<int>) -> int
-  requires 
-    f.len() == w.len() && f.len() > 0,
-    0 <= start < f.len(),
-    k > 0,
-    forall|i: int| 0 <= i < f.len() ==> 0 <= f[i] < f.len(),
-    forall|i: int| 0 <= i < w.len() ==> w[i] >= 0,
   decreases k
 {
   if k == 1 {
@@ -56,7 +44,8 @@ fn solve_graph(n: int, k: int, f: Seq<int>, w: Seq<int>) -> (result: (Seq<int>, 
   requires 
     valid_graph(n, f, w),
     k > 0,
-  ensures valid_result(n, result.0, result.1)
+  ensures 
+    valid_result(n, result.0, result.1),
 // </vc-spec>
 // <vc-code>
 {

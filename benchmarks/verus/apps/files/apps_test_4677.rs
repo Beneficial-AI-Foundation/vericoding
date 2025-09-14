@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     s.len() >= 1 && s.len() <= 10 && 
     forall|i: int| 0 <= i < s.len() ==> s[i] == '0' || s[i] == '1' || s[i] == 'B'
@@ -33,6 +30,9 @@ spec fn simulate_keystrokes(keystrokes: Seq<char>) -> Seq<char>
 spec fn valid_output(result: Seq<char>) -> bool {
     forall|i: int| 0 <= i < result.len() ==> result[i] == '0' || result[i] == '1'
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

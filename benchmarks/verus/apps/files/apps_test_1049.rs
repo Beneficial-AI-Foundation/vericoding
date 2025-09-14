@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn input_well_formed(input: Seq<char>) -> bool {
     let lines = split_lines(input);
     lines.len() >= 1 && {
@@ -58,6 +55,9 @@ spec fn max_consecutive_wins_up_to(lines: Seq<Seq<char>>, n: int, d: int) -> int
 spec fn int_to_string(n: int) -> Seq<char> {
     seq![]
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

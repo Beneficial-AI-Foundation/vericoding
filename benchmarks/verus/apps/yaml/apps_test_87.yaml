@@ -8,12 +8,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(m: int, d: int) -> bool {
       1 <= m <= 12 && 1 <= d <= 7
   }
-  
+
   spec fn days_in_month(m: int) -> int {
       if 1 <= m <= 12 {
           seq![31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m-1]
@@ -21,7 +19,7 @@ vc-helpers: |-
           0
       }
   }
-  
+
   spec fn columns_needed(m: int, d: int) -> int {
       if valid_input(m, d) {
           1 + (d - 1 + days_in_month(m) - 1) / 7
@@ -29,6 +27,8 @@ vc-helpers: |-
           0
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(m: int, d: int) -> (result: int)
@@ -41,7 +41,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

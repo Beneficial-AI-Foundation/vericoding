@@ -17,17 +17,17 @@ recommends valid_input(s)
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
+fn solve(s: Seq<char>) -> (result: bool)
     requires valid_input(s)
-    ensures result == seq!['Y', 'e', 's'] || result == seq!['N', 'o']
-    ensures is_coffee_like(s) <==> result == seq!['Y', 'e', 's']
+    ensures is_coffee_like(s) <==> result
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    seq!['N', 'o']
+    false
 }
 // </vc-code>
+
 
 }
 

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, k: int) -> bool {
     n >= 0 && k >= 0 && k + 1 > 0
 }
@@ -22,6 +19,9 @@ spec fn optimal_diplomas(n: int, k: int) -> int
 {
     (n / 2) / (k + 1)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

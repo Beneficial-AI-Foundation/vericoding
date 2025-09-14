@@ -8,18 +8,16 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, k: int) -> bool {
       n >= 1 && k >= 2
   }
-  
+
   spec fn impossibility_condition(n: int, k: int) -> bool
       recommends valid_input(n, k)
   {
       2 * (n - 1) - k * (k - 1) > 0
   }
-  
+
   spec fn valid_solution(n: int, k: int, result: int) -> bool
       recommends valid_input(n, k)
   {
@@ -34,6 +32,8 @@ vc-helpers: |-
               result == k - x
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, k: int) -> (result: int)
@@ -50,7 +50,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum_range(s: Seq<int>, start: int, end: int) -> int
     recommends 0 <= start <= end <= s.len()
     decreases end - start
@@ -20,6 +17,9 @@ spec fn valid_input(n: int, years: Seq<int>) -> bool
 {
     n > 0 && years.len() == n
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

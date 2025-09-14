@@ -6,24 +6,22 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: nat) -> bool {
       n > 0
   }
-  
+
   spec fn can_reach_one(n: nat) -> bool 
       recommends n > 0
   {
       only_factors_235(n)
   }
-  
+
   spec fn only_factors_235(n: nat) -> bool
       recommends n > 0
   {
       reduce_by_factors_235(n) == 1
   }
-  
+
   spec fn reduce_by_factors_235(n: nat) -> nat
       recommends n > 0
       decreases n
@@ -34,7 +32,7 @@ vc-helpers: |-
       else if n % 5 == 0 { reduce_by_factors_235(n / 5) }
       else { n }
   }
-  
+
   spec fn min_moves_to_one(n: nat) -> nat
       recommends n > 0 && can_reach_one(n)
       decreases n
@@ -45,6 +43,8 @@ vc-helpers: |-
       else if n % 5 == 0 { 3 + min_moves_to_one(n / 5) }
       else { 0 }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: nat) -> (result: int)
@@ -61,7 +61,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

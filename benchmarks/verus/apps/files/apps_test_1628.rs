@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> s[i] == 'x' || s[i] == 'y'
 }
@@ -24,6 +21,9 @@ spec fn valid_output(s: Seq<char>, result: Seq<char>) -> bool
         result.len() == count_x - count_y && forall|i: int| 0 <= i < result.len() ==> result[i] == 'x'
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

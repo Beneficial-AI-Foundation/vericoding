@@ -4,26 +4,24 @@ vc-description: |-
   The diamond pattern forms a symmetric diamond shape where the top half starts with 1 'D' and increases by 2 'D's per row
   until the middle row has n 'D's, then the bottom half decreases symmetrically.
   All 'D's in each row are centered with '*' characters filling remaining positions.
-  
+
   /* First half (including middle): rows 0 to magic */
-  
+
   /* Second half: rows magic+1 to n-1 */
 
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int) -> bool {
       n >= 3 && n <= 101 && n % 2 == 1
   }
-  
+
   spec fn valid_result(result: Seq<Seq<char>>, n: int) -> bool {
       result.len() == n &&
       forall|i: int| 0 <= i < result.len() ==> result[i].len() == n
   }
-  
+
   spec fn repeat_char(c: char, count: int) -> Seq<char> {
       if count <= 0 {
           seq![]
@@ -31,7 +29,7 @@ vc-helpers: |-
           seq![c].add(repeat_char(c, count - 1))
       }
   }
-  
+
   spec fn correct_diamond_pattern(result: Seq<Seq<char>>, n: int) -> bool {
       result.len() == n ==> {
           let magic = (n - 1) / 2;
@@ -51,6 +49,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: usize) -> (result: Vec<String>)
       requires 
@@ -65,7 +65,7 @@ vc-code: |-
       Vec::new()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

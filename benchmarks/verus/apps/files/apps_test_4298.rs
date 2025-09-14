@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, d: int) -> bool {
     n >= 1 && n <= 20 && d >= 1 && d <= 20
 }
@@ -16,6 +13,9 @@ spec fn coverage_range(position: int, d: int) -> (int, int) {
 spec fn trees_covered(n: int, d: int, inspectors: int) -> bool {
     inspectors >= 1 && inspectors <= n && inspectors == ((n - 1) / (2 * d + 1)) + 1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

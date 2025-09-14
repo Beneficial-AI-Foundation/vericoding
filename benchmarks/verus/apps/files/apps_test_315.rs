@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum(s: Seq<int>) -> int
     decreases s.len()
 {
@@ -20,10 +17,13 @@ spec fn valid_output(a: Seq<int>, final_schedule: Seq<int>, additional_walks: in
 {
     final_schedule.len() == a.len() &&
     additional_walks >= 0 &&
-    forall|i: int| 0 <= i < a.len() ==> final_schedule[i] >= a[i] &&
-    forall|i: int| 0 <= i < a.len() - 1 ==> final_schedule[i] + final_schedule[i + 1] >= k &&
+    (forall|i: int| 0 <= i < a.len() ==> final_schedule[i] >= a[i]) &&
+    (forall|i: int| 0 <= i < a.len() - 1 ==> final_schedule[i] + final_schedule[i + 1] >= k) &&
     additional_walks == sum(final_schedule) - sum(a)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -34,7 +34,7 @@ fn solve(n: int, k: int, a: Seq<int>) -> (result: (int, Seq<int>))
 // <vc-code>
 {
     assume(false);
-    (0 as int, Seq::<int>::empty())
+    unreached()
 }
 // </vc-code>
 

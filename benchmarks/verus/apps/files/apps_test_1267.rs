@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, scores: Seq<int>) -> bool {
     n == scores.len() && n >= 1 && exists|i: int| 0 <= i < scores.len() && scores[i] != 0
 }
@@ -18,6 +15,9 @@ spec fn valid_result(scores: Seq<int>, result: int) -> bool {
     result == unique_non_zero_scores(scores).len() && 
     result <= scores.len()
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

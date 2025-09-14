@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(test_cases: Seq<(int, int, Seq<(int, int)>)>) -> bool {
     test_cases.len() >= 0 &&
     forall|i: int| 0 <= i < test_cases.len() ==> {
@@ -52,6 +49,9 @@ spec fn valid_results(test_cases: Seq<(int, int, Seq<(int, int)>)>, results: Seq
         1 <= final_bounds.0 <= final_bounds.1 <= n
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

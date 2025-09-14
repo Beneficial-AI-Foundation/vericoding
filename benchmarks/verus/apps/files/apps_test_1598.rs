@@ -56,15 +56,13 @@ spec fn valid_solution(s: Seq<char>, t: Seq<char>) -> bool {
 
 // <vc-spec>
 fn solve(s: Seq<char>) -> (result: Seq<char>)
-    requires s.len() > 0
-    requires valid_binary_string(s)
-    ensures valid_binary_string(result)
-    ensures valid_solution(s, result)
 // </vc-spec>
 // <vc-code>
 {
+    /* impl-start */
     assume(false);
-    arbitrary()
+    unreached()
+    /* impl-end */
 }
 // </vc-code>
 

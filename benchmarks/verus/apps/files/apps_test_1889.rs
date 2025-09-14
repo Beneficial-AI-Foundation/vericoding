@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_grid(grid: Seq<Seq<int>>, n: int, m: int) -> bool {
     grid.len() == n && n > 0 && m > 0 &&
     (forall|i: int| 0 <= i < n ==> grid[i].len() == m) &&
@@ -49,6 +46,9 @@ spec fn compute_score(grid: Seq<Seq<int>>) -> int {
     let row_scores = Seq::new(grid.len(), |i: int| cons(grid[i]));
     max_in_seq(row_scores)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

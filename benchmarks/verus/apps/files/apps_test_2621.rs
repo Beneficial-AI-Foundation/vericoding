@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, k: int, h: Seq<int>) -> bool {
     n >= 1 && n == h.len() && m >= 0 && k >= 0 && 
     (forall|i: int| 0 <= i < h.len() ==> h[i] >= 0)
@@ -63,6 +60,9 @@ spec fn correct_game_results(output: Seq<char>, input: Seq<char>) -> bool {
 spec fn output_matches_test_case_count(output: Seq<char>, input: Seq<char>) -> bool {
     true
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, aa: Seq<int>) -> bool {
     n >= 2 &&
     aa.len() == n - 1 &&
@@ -20,6 +17,9 @@ spec fn valid_output(n: int, aa: Seq<int>, result: Seq<int>) -> bool {
     forall|i: int| 0 <= i < n ==> result[i] >= 0 &&
     forall|i: int| 0 <= i < n ==> result[i] == subordinate_count(aa, i + 1)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

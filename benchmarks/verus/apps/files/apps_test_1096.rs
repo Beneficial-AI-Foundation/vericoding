@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(position: Seq<char>) -> bool {
   position.len() == 2 && 
   'a' <= position[0] && position[0] <= 'h' && 
@@ -39,6 +36,9 @@ spec fn valid_moves(position: Seq<char>) -> int
   else if is_edge(position) { 5 }
   else { 8 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
