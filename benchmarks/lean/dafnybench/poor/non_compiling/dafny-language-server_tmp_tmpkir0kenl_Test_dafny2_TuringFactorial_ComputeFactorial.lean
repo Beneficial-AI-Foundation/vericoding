@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -20,7 +20,7 @@ namespace DafnyBenchmarks
 Recursive factorial function translated from Dafny.
 Takes a natural number n and returns n!
 -/
-def Factorial (n : Nat) : Nat :=
+partial def Factorial (n : Nat) : Nat :=
   if n == 0 then 1 else n * Factorial (n-1)
 
 /--
