@@ -21,11 +21,11 @@ Recursively computes the sum of elements in an array.
 Given an array of integers, returns their sum.
 Example:  -> 9
 -/
-def Sum (xs : Array Int) : Int :=
-  if xs.size = 0 then 
-    0 
+partial def Sum (xs : Array Int) : Int :=
+  if xs.size = 0 then
+    0
   else
-    Sum (xs.extract 0 (xs.size - 1)) + xs.get! (xs.size - 1)
+    Sum (xs.extract 0 (xs.size - 1)) + xs[xs.size - 1]!
 
 /--
 Takes an array of integers and returns their sum.
