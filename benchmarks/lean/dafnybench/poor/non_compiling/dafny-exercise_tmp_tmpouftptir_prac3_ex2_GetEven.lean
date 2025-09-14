@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -32,8 +32,8 @@ For each element in the array:
 theorem GetEven_spec (s : Array Nat) :
   ∀ i, 0 ≤ i ∧ i < s.size →
     let s' := GetEven s
-    if s.get ⟨i⟩ % 2 = 1 
-    then s'.get i = s.get ⟨i⟩ + 1
-    else s'.get i = s.get ⟨i⟩ := sorry
+    if s[i]! % 2 = 1
+    then s'[i]! = s[i]! + 1
+    else s'[i]! = s[i]! := sorry
 
 end DafnyBenchmarks
