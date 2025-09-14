@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-exercise_tmp_tmpouftptir_zapNegatives_ZapNegatives",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-exercise_tmp_tmpouftptir_zapNegatives_ZapNegatives",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -33,9 +33,9 @@ Specification for ZapNegatives:
 -/
 theorem ZapNegatives_spec (a : Array Int) :
   let result := ZapNegatives a
-  (∀ i, 0 ≤ i ∧ i < a.size → 
-    (if (a.get ⟨i⟩ < 0) then result.get ⟨i⟩ = 0 
-     else result.get ⟨i⟩ = a.get ⟨i⟩)) ∧
+  (∀ i, 0 ≤ i ∧ i < a.size →
+    (if (a[i]! < 0) then result[i]! = 0
+     else result[i]! = a[i]!)) ∧
   result.size = a.size := sorry
 
 end DafnyBenchmarks
