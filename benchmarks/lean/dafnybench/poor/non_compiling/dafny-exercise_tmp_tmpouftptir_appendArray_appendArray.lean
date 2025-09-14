@@ -10,7 +10,7 @@ open Std.Do
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -35,7 +35,7 @@ Specification for appendArray method ensuring:
 theorem appendArray_spec (a b c : Array Int) :
   c = appendArray a b →
   (c.size = a.size + b.size) ∧
-  (∀ i, 0 ≤ i ∧ i < a.size → a.get ⟨i⟩ = c.get ⟨i⟩) ∧
-  (∀ i, 0 ≤ i ∧ i < b.size → b.get ⟨i⟩ = c.get (a.size + i)) := sorry
+  (∀ i, 0 ≤ i ∧ i < a.size → a[i]! = c[i]!) ∧
+  (∀ i, 0 ≤ i ∧ i < b.size → b[i]! = c[a.size + i]!) := sorry
 
 end DafnyBenchmarks
