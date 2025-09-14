@@ -211,9 +211,13 @@ def main() -> int:
 
     # Human-readable summary
     summary_path = root / "per-model-union-summary.txt"
+    # Display root path starting from "vericoding/" if present
+    root_str = str(root)
+    idx = root_str.rfind("vericoding/")
+    display_root = root_str[idx:] if idx != -1 else root.name
     with summary_path.open("w", encoding="utf-8") as sf:
         sf.write("=== DAFNY PER-MODEL PROCESSING SUMMARY (AGGREGATED ACROSS BENCHMARKS) ===\n")
-        sf.write(f"Root: {root}\n")
+        sf.write(f"Root: {display_root}\n")
         sf.write(f"Models found: {len(rows)}\n\n")
         for llm, total, succ, fail, rate, paths in sorted(rows, key=lambda x: x[0]):
             sf.write(f"Model: {llm}\n")
