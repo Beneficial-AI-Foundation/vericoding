@@ -191,6 +191,11 @@ def main() -> int:
         print(f"ERROR: root not found: {bench_root}")
         return 1
 
+    # Detect language based on path (dafny vs verus)
+    is_verus = "verus" in bench_root.parts
+    spec_ext = ".rs" if is_verus else ".yaml"
+    impl_ext = ".rs" if is_verus else ".dfy"
+
     latest_runs = find_latest_llm_runs(bench_root)
     if not latest_runs:
         print("No vericoder runs found.")
@@ -251,7 +256,7 @@ def main() -> int:
     successful_files = [f for f, llms in file_to_llms.items() if llms]
     failed_files = [f for f, llms in file_to_llms.items() if not llms]
     with summary_path.open("w", encoding="utf-8") as sf:
-        sf.write("=== DAFNY PROCESSING SUMMARY (AGGREGATED) ===\n")
+        sf.write(f"=== {'VERUS' if is_verus else 'DAFNY'} PROCESSING SUMMARY (AGGREGATED) ===\n")
         sf.write(f"Total files: {total_files}\n")
         sf.write(f"Successful: {len(successful_files)} ({(100.0*len(successful_files)/total_files if total_files else 0):.1f}%)\n")
         sf.write(f"Failed: {len(failed_files)}\n")
@@ -259,11 +264,11 @@ def main() -> int:
         sf.write("Successful files:\n")
         for f in sorted(successful_files):
             llms = ", ".join(file_to_llms[f])
-            sf.write(f"✓ {f}.yaml — by: {llms}\n")
+            sf.write(f"✓ {f}{spec_ext} — by: {llms}\n")
         sf.write("\n")
         sf.write("Failed files:\n")
         for f in sorted(failed_files):
-            sf.write(f"✗ {f}.yaml\n")
+            sf.write(f"✗ {f}{spec_ext}\n")
 
     # Copy all successful implementations into success folder with per-file index prefix and LLM suffix
     success_dir = results_root / "success"
@@ -280,12 +285,12 @@ def main() -> int:
             if run_dir is None:
                 continue
             # Try both directory structures and file naming patterns
-            src_file = (run_dir / "dafny" / f"{filename}_impl.dfy")
+            src_file = (run_dir / "dafny" / f"{filename}_impl{impl_ext}")
             if not src_file.exists():
-                src_file = run_dir / f"{filename}_impl.dfy"
+                src_file = run_dir / f"{filename}_impl{impl_ext}"
             if not src_file.exists():
                 continue
-            dest_file = success_dir / f"{idx}_{filename}_impl_{llm}.dfy"
+            dest_file = success_dir / f"{idx}_{filename}_impl_{llm}{impl_ext}"
             try:
                 content = src_file.read_bytes()
                 if not dest_file.exists() or dest_file.read_bytes() != content:
@@ -307,12 +312,12 @@ def main() -> int:
             run_dir = latest_runs.get(llm)
             if run_dir is None:
                 continue
-            src_file = (run_dir / "dafny" / f"{filename}_impl.dfy")
+            src_file = (run_dir / "dafny" / f"{filename}_impl{impl_ext}")
             if not src_file.exists():
-                src_file = run_dir / f"{filename}_impl.dfy"
+                src_file = run_dir / f"{filename}_impl{impl_ext}"
             if not src_file.exists():
                 continue
-            dest_file = failed_dir / f"{idx}_{filename}_impl_{llm}.dfy"
+            dest_file = failed_dir / f"{idx}_{filename}_impl_{llm}{impl_ext}"
             try:
                 content = src_file.read_bytes()
                 if not dest_file.exists() or dest_file.read_bytes() != content:
