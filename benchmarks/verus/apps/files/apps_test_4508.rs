@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, edges: Seq<(int, int)>) -> bool {
     n >= 2 && edges.len() == n - 1 &&
     forall|e: (int, int)| edges.contains(e) ==> 1 <= e.0 <= n && 1 <= e.1 <= n && e.0 != e.1
@@ -87,6 +84,9 @@ spec fn distance_is_2(adj: Seq<Seq<int>>, start: int, end: int) -> bool {
 spec fn is_minimal_solution(n: int, original_edges: Seq<(int, int)>, num_edges_to_add: int) -> bool {
     valid_input(n, original_edges) ==> num_edges_to_add >= 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -13,15 +13,16 @@ spec fn valid_parentheses(input: Seq<char>) -> bool {
         true
     } else {
         let s = if newline_pos + 1 < input.len() { 
-            input.subrange(newline_pos + 1, input.len() as int)
+            input.subrange(newline_pos + 1, input.len() as int) 
         } else { 
-            Seq::empty()
+            seq![] 
         };
         is_valid_parentheses_sequence(s, 0, 0)
     }
 }
 
 spec fn is_valid_parentheses_sequence(s: Seq<char>, pos: int, balance: int) -> bool
+    recommends 0 <= pos <= s.len(), balance >= 0
     decreases s.len() - pos
 {
     if pos >= s.len() {
@@ -45,9 +46,9 @@ spec fn longest_word_outside(input: Seq<char>) -> int {
         0
     } else {
         let s = if newline_pos + 1 < input.len() { 
-            input.subrange(newline_pos + 1, input.len() as int)
+            input.subrange(newline_pos + 1, input.len() as int) 
         } else { 
-            Seq::empty()
+            seq![] 
         };
         compute_longest_outside(s, 0, 0, 0, 0)
     }
@@ -59,9 +60,9 @@ spec fn count_words_inside(input: Seq<char>) -> int {
         0
     } else {
         let s = if newline_pos + 1 < input.len() { 
-            input.subrange(newline_pos + 1, input.len() as int)
+            input.subrange(newline_pos + 1, input.len() as int) 
         } else { 
-            Seq::empty()
+            seq![] 
         };
         compute_count_inside(s, 0, 0, 0)
     }
@@ -78,6 +79,7 @@ spec fn find_newline(input: Seq<char>) -> int {
 }
 
 spec fn find_newline_helper(input: Seq<char>, pos: int) -> int
+    recommends 0 <= pos <= input.len()
     decreases input.len() - pos
 {
     if pos >= input.len() {
@@ -90,6 +92,7 @@ spec fn find_newline_helper(input: Seq<char>, pos: int) -> int
 }
 
 spec fn compute_longest_outside(s: Seq<char>, pos: int, balance: int, cur: int, best: int) -> int
+    recommends 0 <= pos <= s.len(), balance >= 0, cur >= 0, best >= 0
     decreases s.len() - pos
 {
     if pos >= s.len() {
@@ -120,6 +123,7 @@ spec fn compute_longest_outside(s: Seq<char>, pos: int, balance: int, cur: int, 
 }
 
 spec fn compute_count_inside(s: Seq<char>, pos: int, balance: int, cur: int) -> int
+    recommends 0 <= pos <= s.len(), balance >= 0, cur >= 0
     decreases s.len() - pos
 {
     if pos >= s.len() {
@@ -151,22 +155,24 @@ spec fn compute_count_inside(s: Seq<char>, pos: int, balance: int, cur: int) -> 
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: (int, int))
-    requires 
+fn solve(input: Seq<char>) -> (result: (usize, usize))
+    requires
         input.len() > 0,
         exists|i: int| 0 <= i < input.len() && input[i] == '\n',
         forall|i: int| 0 <= i < input.len() ==> (is_letter(input[i]) || input[i] == '_' || input[i] == '(' || input[i] == ')' || input[i] == '\n' || input[i] == '\r' || ('0' <= input[i] <= '9')),
-        valid_parentheses(input),
-    ensures 
+        valid_parentheses(input)
+    ensures
         result.0 >= 0 && result.1 >= 0,
         result.0 == longest_word_outside(input),
         result.1 == count_words_inside(input),
-        valid_output(input, result.0, result.1),
+        valid_output(input, result.0 as int, result.1 as int)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     (0, 0)
+    // impl-end
 }
 // </vc-code>
 

@@ -2,57 +2,55 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn is_digit(c: char) -> bool {
-    '0' <= c && c <= '9'
+    '0' <= c <= '9'
 }
 
-spec fn digit_value(c: char) -> int
+spec fn digit_value(c: char) -> int 
     recommends is_digit(c)
 {
     c as int - '0' as int
 }
 
-spec fn sum_of_digits(s: Seq<char>) -> int
+spec fn sum_of_digits(s: Seq<char>) -> int 
     decreases s.len()
 {
     if s.len() == 0 {
         0
     } else if is_digit(s[0]) {
-        digit_value(s[0]) + sum_of_digits(s.subrange(1, s.len() as int))
+        digit_value(s[0]) + sum_of_digits(s.skip(1))
     } else {
-        sum_of_digits(s.subrange(1, s.len() as int))
+        sum_of_digits(s.skip(1))
     }
 }
 
-spec fn string_to_int(s: Seq<char>) -> int
+spec fn string_to_int(s: Seq<char>) -> int 
     decreases s.len()
 {
     if s.len() == 0 {
         0
     } else if is_digit(s[0]) {
-        string_to_int(s.subrange(1, s.len() as int)) + digit_value(s[0]) * power10((s.len() - 1) as int)
+        string_to_int(s.skip(1)) + digit_value(s[0]) * power10(s.len() - 1)
     } else {
-        string_to_int(s.subrange(1, s.len() as int))
+        string_to_int(s.skip(1))
     }
 }
 
-spec fn power10(n: int) -> int
+spec fn power10(n: int) -> int 
     recommends n >= 0
     decreases n
 {
     if n == 0 { 1 } else { 10 * power10(n - 1) }
 }
 
-spec fn clean_input(input: Seq<char>) -> Seq<char>
+spec fn clean_input(input: Seq<char>) -> Seq<char> 
     decreases input.len()
 {
     if input.len() == 0 {
-        seq![]
+        input
     } else if input[input.len() - 1] == '\n' || input[input.len() - 1] == ' ' {
-        clean_input(input.subrange(0, input.len() - 1))
+        clean_input(input.take(input.len() - 1))
     } else {
         input
     }
@@ -68,17 +66,22 @@ spec fn valid_positive_integer_string(s: Seq<char>) -> bool {
 spec fn valid_input(input: Seq<char>) -> bool {
     valid_positive_integer_string(clean_input(input))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(input: &str) -> (result: String)
-    requires valid_input(input.chars().collect())
-    ensures result == "Yes" || result == "No"
+    requires valid_input(input@)
+    ensures result@ == "Yes"@ || result@ == "No"@
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     "No".to_string()
+    // impl-end
 }
 // </vc-code>
 

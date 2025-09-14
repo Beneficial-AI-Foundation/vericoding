@@ -15,7 +15,7 @@ spec fn valid_distances(way_a: Seq<int>, way_b: Seq<int>, n: int, x: int) -> boo
 }
 
 spec fn valid_leaves(leaves: Seq<int>, edges: Seq<(int, int)>, n: int) -> bool {
-  valid_input(n, 1, edges) &&
+  valid_input(n, 1, edges) ==>
   (forall|i: int| 0 <= i < leaves.len() ==> 0 <= leaves[i] < n) &&
   (forall|i: int| 0 <= i < leaves.len() ==> is_leaf_node(leaves[i], edges, n)) &&
   (forall|i: int| 0 <= i < n ==> is_leaf_node(i, edges, n) ==> leaves.contains(i)) &&
@@ -23,22 +23,27 @@ spec fn valid_leaves(leaves: Seq<int>, edges: Seq<(int, int)>, n: int) -> bool {
 }
 
 spec fn optimal_moves(way_a: Seq<int>, way_b: Seq<int>, leaves: Seq<int>, x: int) -> int {
-  2 * compute_optimal_moves(way_a, way_b, leaves, x-1)
+  if valid_distances(way_a, way_b, way_a.len() as int, x) &&
+     (forall|i: int| 0 <= i < leaves.len() ==> 0 <= leaves[i] < way_a.len() && 0 <= leaves[i] < way_b.len()) {
+    2 * compute_optimal_moves(way_a, way_b, leaves, x-1)
+  } else {
+    0
+  }
+}
+spec fn is_leaf_node(node: int, edges: Seq<(int, int)>, n: int) -> bool {
+  true /* placeholder - represents whether node is a leaf in the tree */
+}
+
+spec fn no_duplicates(seq: Seq<int>) -> bool {
+  forall|i: int, j: int| 0 <= i < seq.len() && 0 <= j < seq.len() && i != j ==> seq[i] != seq[j]
+}
+
+spec fn compute_optimal_moves(way_a: Seq<int>, way_b: Seq<int>, leaves: Seq<int>, x_adjusted: int) -> int {
+  0 /* placeholder - represents the core game theory computation */
 }
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn is_leaf_node(node: int, edges: Seq<(int, int)>, n: int) -> bool {
-  node >= 0 && node < n
-}
-
-spec fn no_duplicates(leaves: Seq<int>) -> bool {
-  forall|i: int, j: int| 0 <= i < leaves.len() && 0 <= j < leaves.len() && i != j ==> leaves[i] != leaves[j]
-}
-
-spec fn compute_optimal_moves(way_a: Seq<int>, way_b: Seq<int>, leaves: Seq<int>, x_idx: int) -> int {
-  if leaves.len() == 0 { 0 } else { if x_idx >= 0 && x_idx < way_a.len() { way_a[x_idx] } else { 0 } }
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -57,7 +62,7 @@ fn solve(n: int, x: int, edges: Seq<(int, int)>, leaves: Seq<int>, way_a: Seq<in
 // <vc-code>
 {
   assume(false);
-  0int
+  unreached()
 }
 // </vc-code>
 

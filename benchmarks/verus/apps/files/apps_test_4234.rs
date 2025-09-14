@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, s: Seq<char>) -> bool {
     n == s.len() && n >= 0
 }
@@ -12,6 +9,9 @@ spec fn valid_input(n: int, s: Seq<char>) -> bool {
 spec fn is_good_string(s: Seq<char>) -> bool {
     s.len() % 2 == 0 && forall|i: int| 0 <= i < s.len()/2 ==> s[2*i] != s[2*i+1]
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

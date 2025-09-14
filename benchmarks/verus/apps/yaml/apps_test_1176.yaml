@@ -6,14 +6,12 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn sum_seq(s: Seq<int>) -> int
       decreases s.len()
   {
       if s.len() == 0 { 0 } else { s[0] + sum_seq(s.subrange(1, s.len() as int)) }
   }
-  
+
   spec fn min_seq(s: Seq<int>) -> int
       decreases s.len()
   {
@@ -26,6 +24,8 @@ vc-helpers: |-
           if s[0] <= rest_min { s[0] } else { rest_min }
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(a: Seq<int>) -> (result: int)
@@ -45,7 +45,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

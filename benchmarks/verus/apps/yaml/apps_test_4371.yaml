@@ -5,12 +5,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(s: Seq<char>) -> bool {
       s.len() >= 3 && forall|i: int| 0 <= i < s.len() ==> '1' <= s[i] <= '9'
   }
-  
+
   spec fn string_to_int(s: Seq<char>) -> int {
       if s.len() == 3 && forall|i: int| 0 <= i < s.len() ==> '1' <= s[i] <= '9' {
           100 * ((s[0] as int) - ('0' as int)) + 
@@ -20,11 +18,11 @@ vc-helpers: |-
           0
       }
   }
-  
+
   spec fn abs_diff(x: int) -> int {
       if x >= 0 { x } else { -x }
   }
-  
+
   spec fn is_minimum_difference(s: Seq<char>, result: int) -> bool {
       valid_input(s) ==> (
           result >= 0 &&
@@ -32,6 +30,8 @@ vc-helpers: |-
           (forall|i: int| 0 <= i <= s.len() - 3 ==> result <= abs_diff(753 - string_to_int(s.subrange(i, i+3))))
       )
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(s: Seq<char>) -> (result: int)
@@ -44,7 +44,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

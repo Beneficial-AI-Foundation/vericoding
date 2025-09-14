@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, k: int) -> bool {
     n >= 2 && m >= 2 && n % 2 == 0 && k >= 0 && k < n * m
 }
@@ -26,6 +23,9 @@ spec fn correct_position(result: &Vec<int>, n: int, m: int, k: int) -> bool
         (r % 2 == 0 ==> result[1] == 2 + k_remaining % (m - 1))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

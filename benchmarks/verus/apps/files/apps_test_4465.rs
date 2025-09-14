@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_farm_dimensions(a: int, b: int) -> bool {
     a >= 2 && b >= 2 && a <= 100 && b <= 100
 }
@@ -14,6 +11,9 @@ spec fn remaining_farm_area(a: int, b: int) -> int
 {
     a * b - a - b + 1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

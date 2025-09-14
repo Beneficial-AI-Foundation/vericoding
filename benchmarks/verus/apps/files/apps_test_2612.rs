@@ -30,22 +30,20 @@ fn solve(n: int, sizes: Seq<int>) -> (result: int)
     requires 
         valid_input(n, sizes)
     ensures 
-        1 <= result <= n
-    ensures 
+        1 <= result <= n,
         forall|arrangement: Seq<int>| 
-            ((forall|i: int| 0 <= i < arrangement.len() ==> 1 <= arrangement[i] <= sizes.len()) 
-            && is_valid_beautiful_arrangement(arrangement, sizes)) 
-            ==> arrangement.len() <= result
-    ensures 
-        exists|arrangement: Seq<int>|
-            (forall|i: int| 0 <= i < arrangement.len() ==> 1 <= arrangement[i] <= sizes.len()) 
-            && is_valid_beautiful_arrangement(arrangement, sizes) 
-            && arrangement.len() == result
+            (forall|i: int| 0 <= i < arrangement.len() ==> 1 <= arrangement[i] <= sizes.len()) && 
+            is_valid_beautiful_arrangement(arrangement, sizes) ==> 
+            arrangement.len() <= result,
+        exists|arrangement: Seq<int>| 
+            (forall|i: int| 0 <= i < arrangement.len() ==> 1 <= arrangement[i] <= sizes.len()) && 
+            is_valid_beautiful_arrangement(arrangement, sizes) && 
+            arrangement.len() == result
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    unreached()
+    n
 }
 // </vc-code>
 

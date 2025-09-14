@@ -6,8 +6,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn seq_min(s: Seq<int>) -> int 
       decreases s.len()
   {
@@ -24,11 +22,13 @@ vc-helpers: |-
           }
       }
   }
-  
+
   spec fn valid_input(arr: Seq<int>) -> bool {
       arr.len() >= 2 && 
       exists|i: int, j: int| 0 <= i < j < arr.len() && #[trigger] arr[i] == #[trigger] arr[j] && arr[i] == seq_min(arr)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(arr: Seq<int>) -> (result: int)
@@ -46,7 +46,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

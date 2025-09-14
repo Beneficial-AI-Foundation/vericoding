@@ -32,13 +32,19 @@ spec fn max_diff_helper(s: Seq<int>, index: int, current_max: int) -> int
 
 // <vc-spec>
 fn solve(holds: Seq<int>) -> (result: int)
-    requires valid_input(holds)
-    ensures result >= 0
+    requires 
+        valid_input(holds)
+    ensures 
+        result >= 0 &&
+        (exists|k: int| 1 <= k < holds.len() - 1 && result == max_diff(holds.subrange(0, k).add(holds.subrange(k + 1, holds.len() as int)))) &&
+        (forall|k: int| 1 <= k < holds.len() - 1 ==> result <= max_diff(holds.subrange(0, k).add(holds.subrange(k + 1, holds.len() as int))))
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    0
+    unreached()
+    // impl-end
 }
 // </vc-code>
 

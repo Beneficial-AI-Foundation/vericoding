@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn gcd(a: int, b: int) -> int
   recommends a > 0 && b >= 0
   decreases b
@@ -36,6 +33,9 @@ spec fn correct_result(periods: Seq<int>, result: int) -> bool
 {
   result == lcm_seq(periods)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

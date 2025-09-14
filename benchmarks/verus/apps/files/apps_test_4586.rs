@@ -2,16 +2,11 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
     1000 <= n <= 9999
 }
 
-spec fn extract_digits(n: int) -> (int, int, int, int)
-    recommends valid_input(n)
-{
+spec fn extract_digits(n: int) -> (int, int, int, int) {
     let d1 = n / 1000;
     let d2 = (n / 100) % 10;
     let d3 = (n / 10) % 10;
@@ -19,24 +14,26 @@ spec fn extract_digits(n: int) -> (int, int, int, int)
     (d1, d2, d3, d4)
 }
 
-spec fn is_good(n: int) -> bool
-    recommends valid_input(n)
-{
+spec fn is_good(n: int) -> bool {
     let (d1, d2, d3, d4) = extract_digits(n);
     (d1 == d2 && d2 == d3) || (d2 == d3 && d3 == d4)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: String)
-    requires valid_input(n)
-    ensures result == "Yes" || result == "No"
-    ensures (result == "Yes") <==> is_good(n)
+fn solve(n: int) -> (result: bool)
+    requires 
+        valid_input(n),
+    ensures 
+        result <==> is_good(n),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    String::new()
+    false
 }
 // </vc-code>
 

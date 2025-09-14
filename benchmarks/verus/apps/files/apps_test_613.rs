@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(t: int, a: int, b: int) -> bool {
     t > 0 && a > 0 && b > 0
 }
@@ -31,6 +28,9 @@ spec fn zero_solutions_case(t: int, a: int, b: int) -> bool {
 spec fn one_solution_case(t: int, a: int, b: int) -> bool {
     a != t && (a - b) % (t - a) != 0 && t != b
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

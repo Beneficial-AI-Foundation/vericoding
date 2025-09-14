@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(arr: Seq<int>) -> bool {
     true
 }
@@ -12,6 +9,9 @@ spec fn valid_input(arr: Seq<int>) -> bool {
 spec fn distinct_non_zero_count(arr: Seq<int>) -> int {
     Set::<int>::new(|x: int| arr.contains(x) && x != 0).len() as int
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

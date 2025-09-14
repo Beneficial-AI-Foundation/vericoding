@@ -5,15 +5,15 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(x: int, a: int) -> bool {
       0 <= x <= 9 && 0 <= a <= 9
   }
-  
+
   spec fn correct_output(x: int, a: int, result: int) -> bool {
       result == (if x < a { 0nat as int } else { 10nat as int })
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(x: int, a: int) -> (result: int)
@@ -26,7 +26,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

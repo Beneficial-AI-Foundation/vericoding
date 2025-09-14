@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_building_params(n: int, h: int, a: int, b: int) -> bool {
     n >= 1 && h >= 1 && 1 <= a && a <= b && b <= h
 }
@@ -41,6 +38,9 @@ spec fn correct_results(queries: Seq<(int, int, int, int)>, results: Seq<int>, a
         results[i] == min_travel_time(t1, f1, t2, f2, a, b)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

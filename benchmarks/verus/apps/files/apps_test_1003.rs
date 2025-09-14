@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int) -> bool {
     n >= 1 && m >= 2
 }
@@ -24,6 +21,9 @@ spec fn can_wear_socks_on_day(n: int, m: int, day: int) -> bool {
         false
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

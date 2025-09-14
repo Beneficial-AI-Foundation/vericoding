@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0 && exists|pos: int| 0 <= pos < input.len() && input[pos] == '\n'
 }
@@ -13,44 +10,49 @@ spec fn valid_move_sequence(s: Seq<char>) -> bool {
     forall|i: int| 0 <= i < s.len() ==> s[i] == 'U' || s[i] == 'R'
 }
 
-spec fn count_replacements(s: Seq<char>, start: int, length: int) -> int
-    recommends 0 <= start <= s.len() && length >= 0 && start + length <= s.len()
-{
-    if length <= 1 { 0 }
-    else { count_replacements_helper(s, start, length, 1, 0) }
+spec fn count_replacements(s: Seq<char>, start: int, length: int) -> int {
+    if length <= 1 {
+        0
+    } else {
+        count_replacements_helper(s, start, length, 1, 0)
+    }
 }
 
 spec fn count_replacements_helper(s: Seq<char>, start: int, length: int, i: int, count: int) -> int
-    recommends 0 <= start <= s.len() && length >= 0 && start + length <= s.len() && 1 <= i <= length && count >= 0 && count <= (i - 1) / 2
     decreases length - i
 {
-    if i >= length { count }
-    else if start + i < s.len() && s[start + i - 1] != s[start + i] {
-        if i + 2 <= length { count_replacements_helper(s, start, length, i + 2, count + 1) }
-        else { count + 1 }
-    }
-    else {
+    if i >= length {
+        count
+    } else if start + i < s.len() && s[start + i - 1] != s[start + i] {
+        if i + 2 <= length {
+            count_replacements_helper(s, start, length, i + 2, count + 1)
+        } else {
+            count + 1
+        }
+    } else {
         count_replacements_helper(s, start, length, i + 1, count)
     }
 }
 
-spec fn minimized_length(original_length: int, replacements: int) -> int
-    recommends original_length >= 0 && replacements >= 0 && replacements <= original_length / 2
-{
+spec fn minimized_length(original_length: int, replacements: int) -> int {
     original_length - replacements
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(input)
-    ensures result.len() > 0
-    ensures result[result.len() as int - 1] == '\n'
+fn solve(input: String) -> (result: String)
+    requires valid_input(input@)
+    ensures result@.len() > 0
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
 

@@ -2,20 +2,20 @@
 use vstd::prelude::*;
 
 verus! {
+spec fn distinct_strings(strings: Seq<String>) -> Set<String> {
+    Set::new(|s: String| exists|i: int| 0 <= i < strings.len() && strings[i] == s)
+}
+
+spec fn valid_input(strings: Seq<String>) -> bool {
+    strings.len() >= 1
+}
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn distinct_strings(strings: Seq<&str>) -> Set<&str> {
-    Set::new(|s: &str| exists|i: int| 0 <= i < strings.len() && strings[i] == s)
-}
-
-spec fn valid_input(strings: Seq<&str>) -> bool {
-    strings.len() >= 1
-}
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(strings: Seq<&str>) -> (count: int)
+fn solve(strings: Seq<String>) -> (count: int)
     requires 
         valid_input(strings)
     ensures 
@@ -26,7 +26,7 @@ fn solve(strings: Seq<&str>) -> (count: int)
 // <vc-code>
 {
     assume(false);
-    0int
+    unreached()
 }
 // </vc-code>
 

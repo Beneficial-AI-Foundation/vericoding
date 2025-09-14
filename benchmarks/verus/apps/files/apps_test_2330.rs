@@ -15,23 +15,16 @@ spec fn seq_sum(s: Seq<int>) -> int
 }
 
 spec fn seq_sum_first(s: Seq<int>, n: int) -> int
-    requires 0 <= n <= s.len()
     decreases n
 {
     if n == 0 { 0 } else { s[n-1] + seq_sum_first(s, n-1) }
 }
 
-spec fn min_index(weights: Seq<int>) -> int
-    requires weights.len() > 0
-{
+spec fn min_index(weights: Seq<int>) -> int {
     min_index_helper(weights, 0, 1)
 }
 
 spec fn min_index_helper(weights: Seq<int>, current_min: int, next: int) -> int
-    requires 
-        weights.len() > 0,
-        0 <= current_min < weights.len(),
-        0 <= next <= weights.len(),
     decreases weights.len() - next
 {
     if next >= weights.len() { current_min }
@@ -39,22 +32,12 @@ spec fn min_index_helper(weights: Seq<int>, current_min: int, next: int) -> int
     else { min_index_helper(weights, current_min, next + 1) }
 }
 
-spec fn min_index_excluding(weights: Seq<int>, exclude: int) -> int
-    requires 
-        weights.len() > 1,
-        0 <= exclude < weights.len(),
-{
+spec fn min_index_excluding(weights: Seq<int>, exclude: int) -> int {
     let first_valid = if exclude == 0 { 1 } else { 0 };
     min_index_excluding_helper(weights, exclude, first_valid, 0)
 }
 
 spec fn min_index_excluding_helper(weights: Seq<int>, exclude: int, current_min: int, next: int) -> int
-    requires 
-        weights.len() > 1,
-        0 <= exclude < weights.len(),
-        0 <= current_min < weights.len(),
-        current_min != exclude,
-        0 <= next <= weights.len(),
     decreases weights.len() - next
 {
     if next >= weights.len() { current_min }
@@ -74,12 +57,71 @@ fn solve(t: int, cases: Seq<(int, int, Seq<int>)>) -> (results: Seq<Result>)
         cases.len() == t,
         forall|i: int| 0 <= i < t ==> 
             cases[i].0 >= 0 && cases[i].1 >= 0 && cases[i].2.len() == cases[i].0,
+    ensures 
+        results.len() == t,
+        forall|i: int| 0 <= i < t ==> 
+            {
+                let n = cases[i].0;
+                let m = cases[i].1;
+                (n <= 2 || m < n) ==> matches!(results.index(i), Result::Impossible)
+            },
+        forall|i: int| 0 <= i < t ==> 
+            {
+                let n = cases[i].0;
+                let m = cases[i].1;
+                let weights = cases[i].2;
+                (n > 2 && m >= n && matches!(results.index(i), Result::Possible { .. })) ==> 
+                    match results.index(i) {
+                        Result::Possible { edges, .. } => {
+                            edges.len() == m &&
+                            (forall|j: int| 0 <= j < edges.len() ==> 
+                                1 <= edges[j].0 <= n && 1 <= edges[j].1 <= n &&
+                                edges[j].0 != edges[j].1)
+                        },
+                        _ => true
+                    }
+            },
+        forall|i: int| 0 <= i < t ==> 
+            {
+                let n = cases[i].0;
+                let m = cases[i].1;
+                let weights = cases[i].2;
+                (n > 2 && m >= n && matches!(results.index(i), Result::Possible { .. })) ==> 
+                    {
+                        let min1_idx = min_index(weights);
+                        let min2_idx = min_index_excluding(weights, min1_idx);
+                        match results.index(i) {
+                            Result::Possible { cost, .. } => 
+                                cost == 2 * seq_sum(weights) + (m - n) * (weights[min1_idx] + weights[min2_idx]),
+                            _ => true
+                        }
+                    }
+            },
+        forall|i: int| 0 <= i < t ==> 
+            {
+                let n = cases[i].0;
+                let m = cases[i].1;
+                (n > 2 && m >= n && matches!(results.index(i), Result::Possible { .. })) ==> 
+                    match results.index(i) {
+                        Result::Possible { edges, .. } => {
+                            (forall|j: int| 0 <= j < n ==> 
+                                edges[j] == (j + 1, if j == n - 1 { 1 } else { j + 2 })) &&
+                            (forall|j: int| n <= j < m ==> 
+                                {
+                                    let min1_idx = min_index(cases[i].2);
+                                    let min2_idx = min_index_excluding(cases[i].2, min1_idx);
+                                    edges[j] == (min1_idx + 1, min2_idx + 1)
+                                })
+                        },
+                        _ => true
+                    }
+            },
 // </vc-spec>
 // <vc-code>
 {
     // impl-start
     assume(false);
-    seq![]
+    unreached()
     // impl-end
 }
 // </vc-code>

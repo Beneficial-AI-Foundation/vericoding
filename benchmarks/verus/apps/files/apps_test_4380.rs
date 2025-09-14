@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int) -> bool {
     1 <= a <= 3 && 1 <= b <= 3
 }
@@ -20,6 +17,9 @@ spec fn exists_odd_product(a: int, b: int) -> bool {
 spec fn should_answer_yes(a: int, b: int) -> bool {
     valid_input(a, b) ==> (a != 2 && b != 2)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

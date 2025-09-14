@@ -8,14 +8,12 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(cards: Seq<int>) -> bool {
       cards.len() >= 1 &&
       (forall|i: int| 0 <= i < cards.len() ==> cards[i] > 0) &&
       (forall|i: int, j: int| 0 <= i < j < cards.len() ==> cards[i] != cards[j])
   }
-  
+
   spec fn sum(cards: Seq<int>) -> int 
       decreases cards.len()
   {
@@ -25,7 +23,7 @@ vc-helpers: |-
           cards[0] + sum(cards.subrange(1, cards.len() as int))
       }
   }
-  
+
   spec fn sereja_optimal_score(cards: Seq<int>, left: int, right: int, sereja_turn: bool) -> int
       decreases right - left + 1
       when 0 <= left <= right < cards.len()
@@ -38,7 +36,7 @@ vc-helpers: |-
           (if sereja_turn { cards[right] } else { 0 }) + sereja_optimal_score(cards, left, right-1, !sereja_turn)
       }
   }
-  
+
   spec fn valid_output(scores: Seq<int>, cards: Seq<int>) -> bool {
       valid_input(cards) ==>
       scores.len() == 2 &&
@@ -47,6 +45,8 @@ vc-helpers: |-
       scores[0] == sereja_optimal_score(cards, 0, cards.len()-1, true) &&
       scores[1] == sum(cards) - sereja_optimal_score(cards, 0, cards.len()-1, true)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(cards: Seq<int>) -> (scores: Seq<int>)
@@ -61,7 +61,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

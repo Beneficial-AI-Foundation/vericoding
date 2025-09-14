@@ -6,32 +6,35 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-      spec fn valid_input(n: int, k: int) -> bool {
-          n >= 1 && k >= 2
-      }
-      
-      spec fn satisfies_constraint(x: int, n: int, k: int) -> bool {
-          x > 0 && k > 0 && (x / k) * (x % k) == n
-      }
+  spec fn valid_input(n: int, k: int) -> bool {
+      n >= 1 && k >= 2
+  }
 
-vc-helpers: |-
+  spec fn satisfies_constraint(x: int, n: int, k: int) -> bool {
+      x > 0 && k > 0 && (x / k) * (x % k) == n
+  }
+
+vc-helpers: |
 
 vc-spec: |-
-      fn solve(n: int, k: int) -> (result: int)
-          requires
-              valid_input(n, k),
-          ensures
-              result > 0,
-              satisfies_constraint(result, n, k),
-              forall|x: int| x > 0 && (x / k) * (x % k) == n ==> result <= x,
+  fn solve(n: int, k: int) -> (result: int)
+      requires 
+          valid_input(n, k)
+      ensures 
+          result > 0,
+          satisfies_constraint(result, n, k),
+          forall|x: int| x > 0 && (x / k) * (x % k) == n ==> result <= x
 
 vc-code: |-
-      {
-          assume(false);
-          0
-      }
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
 
-vc-postamble: |-
+vc-postamble: |2-
+
   }
 
   fn main() {}

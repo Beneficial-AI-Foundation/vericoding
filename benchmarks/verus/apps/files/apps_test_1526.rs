@@ -8,13 +8,9 @@ spec fn valid_input(a: int, b: int, c: int) -> bool {
 }
 
 spec fn max_of_3(a: int, b: int, c: int) -> int {
-    if a >= b && a >= c {
-        a
-    } else if b >= c {
-        b
-    } else {
-        c
-    }
+    if a >= b && a >= c { a }
+    else if b >= c { b }
+    else { c }
 }
 
 spec fn sort_descending(a: int, b: int, c: int) -> (int, int, int) {
@@ -58,7 +54,7 @@ fn solve(a: int, b: int, c: int) -> (result: int)
 {
     // impl-start
     assume(false);
-    0
+    unreached()
     // impl-end
 }
 // </vc-code>

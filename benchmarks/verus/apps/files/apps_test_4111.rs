@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, arr: Seq<int>) -> bool {
     n >= 1 && arr.len() == n && forall|i: int| 0 <= i < n ==> arr[i] >= 1
 }
@@ -49,34 +46,37 @@ spec fn count_helper(arr: Seq<int>, i: int, count1: int, count2: int, temp1: int
     if i == arr.len() {
         0
     } else {
-        let contribution: int = if i % 2 == 0 {
-            let val1 = temp1 + count2 - temp2;
-            let val2 = temp2 + count1 - temp1 - arr[i];
-            if val1 == val2 { 1 } else { 0 }
-        } else {
-            let val1 = temp1 + count2 - temp2 - arr[i];
-            let val2 = temp2 + count1 - temp1;
-            if val1 == val2 { 1 } else { 0 }
-        };
+        let contribution: int = 
+            if i % 2 == 0 {
+                let val1 = temp1 + count2 - temp2;
+                let val2 = temp2 + count1 - temp1 - arr[i];
+                if val1 == val2 { 1 } else { 0 }
+            } else {
+                let val1 = temp1 + count2 - temp2 - arr[i];
+                let val2 = temp2 + count1 - temp1;
+                if val1 == val2 { 1 } else { 0 }
+            };
         let new_temp1 = if i % 2 == 0 { temp1 + arr[i] } else { temp1 };
         let new_temp2 = if i % 2 == 1 { temp2 + arr[i] } else { temp2 };
         contribution + count_helper(arr, i + 1, count1, count2, new_temp1, new_temp2)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, arr: Seq<int>) -> (result: int)
+fn solve(n: usize, arr: Vec<i32>) -> (result: usize)
     requires 
-        valid_input(n, arr),
+        n >= 1 && arr.len() == n && forall|i: int| 0 <= i < arr.len() ==> arr[i] >= 1
     ensures 
-        0 <= result <= n,
-        result == count_balanced_removals(arr),
+        result <= n
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

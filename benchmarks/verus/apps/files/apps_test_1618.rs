@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn max(a: int, b: int) -> int {
     if a >= b { a } else { b }
 }
@@ -32,6 +29,9 @@ spec fn valid_result(result: Seq<int>, boxes: Seq<(int, int)>, stair_heights: Se
         result[i] == max(if i == 0 { stair_heights[0] } else { result[i-1] + boxes[i-1].1 }, 
                         stair_heights[boxes[i].0 - 1]))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

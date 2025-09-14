@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn is_s_palindrome(s: Seq<char>) -> bool {
       let pal = seq!['A', 'H', 'I', 'M', 'O', 'o', 'T', 'U', 'V', 'v', 'W', 'w', 'X', 'x', 'Y'];
       
@@ -28,6 +26,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(s: Seq<char>) -> (result: Seq<char>)
       requires 
@@ -42,7 +42,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

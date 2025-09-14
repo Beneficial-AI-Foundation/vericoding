@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, queries: Seq<(int, int)>) -> bool {
     n > 0 && 
     forall|i: int| 0 <= i < queries.len() ==> 1 <= queries[i].0 <= n && 1 <= queries[i].1 <= n
@@ -31,6 +28,9 @@ spec fn valid_result(n: int, queries: Seq<(int, int)>, results: Seq<int>) -> boo
         results[i] == chessboard_value(n, x, y)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -16,8 +16,11 @@ spec fn cost_for_t(sticks: Seq<int>, t: int) -> int {
 spec fn sum_costs(sticks: Seq<int>, t: int, index: int) -> int
     decreases sticks.len() - index
 {
-    if index == sticks.len() { 0 }
-    else { max(0, abs(t - sticks[index]) - 1) + sum_costs(sticks, t, index + 1) }
+    if index == sticks.len() {
+        0
+    } else {
+        max(0, abs(t - sticks[index]) - 1) + sum_costs(sticks, t, index + 1)
+    }
 }
 
 spec fn abs(x: int) -> int {
@@ -39,19 +42,18 @@ spec fn is_optimal_t(sticks: Seq<int>, t: int) -> bool {
 
 // <vc-spec>
 fn find_optimal_t(n: int, sticks: Seq<int>) -> (result: (int, int))
-    requires valid_input(n, sticks)
-    ensures ({
-        let (t, min_cost) = result;
-        1 <= t <= 99 &&
-        min_cost >= 0 &&
-        min_cost == cost_for_t(sticks, t) &&
-        is_optimal_t(sticks, t)
-    })
+    requires
+        valid_input(n, sticks),
+    ensures
+        1 <= result.0 <= 99,
+        result.1 >= 0,
+        result.1 == cost_for_t(sticks, result.0),
+        is_optimal_t(sticks, result.0),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    (0int, 0int)
+    unreached()
 }
 // </vc-code>
 

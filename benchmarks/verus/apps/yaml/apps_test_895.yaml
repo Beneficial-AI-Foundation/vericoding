@@ -24,6 +24,7 @@ vc-preamble: |-
       recommends T >= 1,
                  forall|i: int| 0 <= i < times.len() ==> 1 <= times[i] <= 1000,
                  max_start >= 0
+      decreases max_start
   {
       if max_start < 1 {
           0
@@ -53,7 +54,11 @@ vc-preamble: |-
           0
       } else {
           let count_rest = count_students_in_window_helper(times, start, T, index + 1);
-          if start <= times[index] <= start + T - 1 { count_rest + 1 } else { count_rest }
+          if start <= times[index] <= start + T - 1 {
+              count_rest + 1
+          } else {
+              count_rest
+          }
       }
   }
 
@@ -61,17 +66,16 @@ vc-helpers: |-
 
 vc-spec: |-
   fn solve(n: int, times: Seq<int>, T: int) -> (result: int)
-      requires 
-          valid_input(n, times, T),
-      ensures 
-          result >= 0,
-          result <= n,
-          result == max_students_in_window(times, T),
+      requires valid_input(n, times, T)
+      ensures
+          result >= 0 &&
+          result <= n &&
+          result == max_students_in_window(times, T)
 
 vc-code: |-
   {
       assume(false);
-      0
+      unreached()
   }
 
 vc-postamble: |-

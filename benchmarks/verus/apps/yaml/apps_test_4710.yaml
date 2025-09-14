@@ -6,16 +6,16 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(x: int) -> bool {
       1 <= x <= 3000
   }
-  
+
   spec fn correct_output(x: int, result: Seq<char>) -> bool {
       (x < 1200 ==> result == seq!['A', 'B', 'C', '\n']) &&
       (x >= 1200 ==> result == seq!['A', 'R', 'C', '\n'])
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(x: i32) -> (result: Seq<char>)
@@ -28,7 +28,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

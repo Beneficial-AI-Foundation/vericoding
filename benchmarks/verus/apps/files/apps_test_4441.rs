@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(stdin_input: Seq<char>) -> bool {
     stdin_input.len() > 0
 }
@@ -14,32 +11,21 @@ spec fn expected_output(stdin_input: Seq<char>) -> Seq<char> {
     if lines.len() >= 1 {
         let n = string_to_int(lines[0]);
         if n == 1 {
-            Seq::new(12, |i: int| if i == 0 { 'H' } 
-                else if i == 1 { 'e' } 
-                else if i == 2 { 'l' } 
-                else if i == 3 { 'l' } 
-                else if i == 4 { 'o' } 
-                else if i == 5 { ' ' } 
-                else if i == 6 { 'W' } 
-                else if i == 7 { 'o' } 
-                else if i == 8 { 'r' } 
-                else if i == 9 { 'l' } 
-                else if i == 10 { 'd' } 
-                else { '\n' })
+            seq!['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '\n']
         } else if n != 1 && lines.len() >= 3 {
             let a = string_to_int(lines[1]);
             let b = string_to_int(lines[2]);
-            int_to_string(a + b).add(Seq::new(1, |_: int| '\n'))
+            int_to_string(a + b).add(seq!['\n'])
         } else {
-            Seq::empty()
+            seq![]
         }
     } else {
-        Seq::empty()
+        seq![]
     }
 }
 
 spec fn split_lines_func(s: Seq<char>) -> Seq<Seq<char>> {
-    split_lines_func_helper(s, 0, Seq::empty(), Seq::empty())
+    split_lines_func_helper(s, 0, seq![], seq![])
 }
 
 spec fn split_lines_func_helper(s: Seq<char>, i: int, current: Seq<char>, acc: Seq<Seq<char>>) -> Seq<Seq<char>>
@@ -53,7 +39,7 @@ spec fn split_lines_func_helper(s: Seq<char>, i: int, current: Seq<char>, acc: S
             acc.push(current)
         }
     } else if s[i] == '\n' {
-        split_lines_func_helper(s, i + 1, Seq::empty(), acc.push(current))
+        split_lines_func_helper(s, i + 1, seq![], acc.push(current))
     } else {
         split_lines_func_helper(s, i + 1, current.push(s[i]), acc)
     }
@@ -73,15 +59,15 @@ spec fn string_to_int_helper(s: Seq<char>) -> int {
     if s.len() == 0 {
         0
     } else {
-        string_to_int_helper(s.subrange(0, s.len() - 1)) * 10 + ((s[s.len() - 1] as int) - ('0' as int))
+        string_to_int_helper(s.subrange(0, s.len() - 1)) * 10 + (s[s.len() - 1] as int - '0' as int)
     }
 }
 
 spec fn int_to_string(n: int) -> Seq<char> {
     if n == 0 {
-        Seq::new(1, |_: int| '0')
+        seq!['0']
     } else if n < 0 {
-        Seq::new(1, |_: int| '-').add(int_to_string_helper(-n))
+        seq!['-'].add(int_to_string_helper(-n))
     } else {
         int_to_string_helper(n)
     }
@@ -91,11 +77,14 @@ spec fn int_to_string_helper(n: int) -> Seq<char>
     recommends n >= 0
 {
     if n == 0 {
-        Seq::empty()
+        seq![]
     } else {
-        int_to_string_helper(n / 10).push((n % 10 + ('0' as int)) as char)
+        int_to_string_helper(n / 10).push((n % 10 + '0' as int) as char)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -106,7 +95,7 @@ fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
 // <vc-code>
 {
     assume(false);
-    Seq::empty()
+    unreached()
 }
 // </vc-code>
 

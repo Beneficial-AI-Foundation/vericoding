@@ -2,9 +2,7 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     let parts = split_string_func(input);
     parts.len() >= 3 && 
@@ -19,13 +17,11 @@ spec fn valid_input(input: Seq<char>) -> bool {
 
 spec fn is_valid_integer(s: Seq<char>) -> bool {
     s.len() > 0 && 
-    (s[0] == '-' || ('0' <= s[0] <= '9')) &&
-    forall|i: int| 1 <= i < s.len() ==> '0' <= #[trigger] s[i] <= '9'
+    (s[0] == '-' || ('0' <= s[0] && s[0] <= '9')) &&
+    forall|i: int| 1 <= i < s.len() ==> ('0' <= s[i] && s[i] <= '9')
 }
 
-spec fn split_string_func(s: Seq<char>) -> Seq<Seq<char>>
-    decreases s.len()
-{
+spec fn split_string_func(s: Seq<char>) -> Seq<Seq<char>> {
     split_string_helper(s, 0, 0, seq![])
 }
 
@@ -55,7 +51,7 @@ spec fn string_to_int_helper(s: Seq<char>, i: int, acc: int) -> int
 {
     if i == s.len() {
         acc
-    } else if '0' <= s[i] <= '9' {
+    } else if '0' <= s[i] && s[i] <= '9' {
         string_to_int_helper(s, i + 1, acc * 10 + (s[i] as int - '0' as int))
     } else {
         string_to_int_helper(s, i + 1, acc)
@@ -66,7 +62,7 @@ spec fn int_to_string_func(n: int) -> Seq<char> {
     if n == 0 {
         seq!['0']
     } else if n < 0 {
-        seq!['-'].add(int_to_string_helper(-n, seq![]))
+        seq!['-'] + int_to_string_helper(-n, seq![])
     } else {
         int_to_string_helper(n, seq![])
     }
@@ -79,7 +75,8 @@ spec fn int_to_string_helper(n: int, acc: Seq<char>) -> Seq<char>
         acc
     } else {
         let digit = n % 10;
-        int_to_string_helper(n / 10, seq![('0' as int + digit) as char].add(acc))
+        let digit_char = ('0' as u8 + digit as u8) as char;
+        int_to_string_helper(n / 10, seq![digit_char] + acc)
     }
 }
 
@@ -88,24 +85,28 @@ spec fn min_parking_cost(n: int, a: int, b: int) -> int {
     let plan2_cost = b;
     if plan1_cost <= plan2_cost { plan1_cost } else { plan2_cost }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires input.len() > 0
-    requires valid_input(input)
+    requires 
+        input.len() > 0,
+        valid_input(input),
     ensures exists|n: int, a: int, b: int| {
         let parts = split_string_func(input);
         n == string_to_int_func(parts[0]) &&
         a == string_to_int_func(parts[1]) && 
         b == string_to_int_func(parts[2]) &&
-        result == int_to_string_func(min_parking_cost(n, a, b)).push('\n')
+        result == int_to_string_func(min_parking_cost(n, a, b)) + seq!['\n']
     }
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    seq![]
+    unreached()
 }
 // </vc-code>
 

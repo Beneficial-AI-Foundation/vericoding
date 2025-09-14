@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_position(pos: int) -> bool {
     0 <= pos <= 2
 }
@@ -32,6 +29,9 @@ spec fn reverse_move(pos: int, move_num: int) -> int {
         else { 0 }
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     s.len() >= 3 && s.len() <= 100 && forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z'
 }
@@ -39,6 +36,9 @@ spec fn int_to_string_helper(n: int) -> Seq<char>
         int_to_string_helper(n / 10).add(seq![(('0' as u8 + (n % 10) as u8) as char)])
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

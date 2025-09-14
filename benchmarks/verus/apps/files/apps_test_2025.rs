@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_composite(x: int) -> bool {
     x >= 4 && exists|k: int| 2 <= k < x && x % k == 0
 }
@@ -32,6 +29,9 @@ spec fn valid_result(queries: Seq<int>, results: Seq<int>) -> bool {
     forall|i: int| 0 <= i < queries.len() ==> results[i] == max_composite_summands(queries[i]) &&
     forall|i: int| 0 <= i < queries.len() ==> results[i] >= -1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: int, x: Seq<int>) -> bool {
     n > 0 && 1 <= a <= n && x.len() == n && 
     forall|i: int| 0 <= i < n ==> (x[i] == 0 || x[i] == 1)
@@ -42,6 +39,9 @@ spec fn sum_criminals_caught(n: int, a_idx: int, x: Seq<int>, distance: int) -> 
 spec fn total_criminals_caught(n: int, a: int, x: Seq<int>) -> int {
     x[a-1] + sum_criminals_caught(n, a-1, x, 1)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

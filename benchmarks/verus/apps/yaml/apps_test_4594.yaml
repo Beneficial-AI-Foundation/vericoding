@@ -7,12 +7,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(diameters: Seq<int>) -> bool {
       diameters.len() > 0 && forall|i: int| 0 <= i < diameters.len() ==> diameters[i] > 0
   }
-  
+
   spec fn num_distinct(s: Seq<int>) -> int
       decreases s.len()
   {
@@ -25,11 +23,13 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(diameters: Seq<int>) -> (result: int)
-      requires
+      requires 
           valid_input(diameters),
-      ensures
+      ensures 
           result == num_distinct(diameters),
           result >= 1,
           result <= diameters.len(),
@@ -37,10 +37,10 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      0
+      unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

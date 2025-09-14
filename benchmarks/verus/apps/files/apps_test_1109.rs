@@ -2,64 +2,40 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn valid_input(n: int, k: int, a: Seq<int>) -> bool {
-  1 <= k <= n <= 100 &&
-  n % k == 0 &&
-  a.len() == n &&
-  forall|i: int| 0 <= i < a.len() ==> a[i] == 1 || a[i] == 2
+    1 <= k <= n <= 100 &&
+    n % k == 0 &&
+    a.len() == n &&
+    forall|i: int| 0 <= i < a.len() ==> a[i] == 1 || a[i] == 2
 }
 
-spec fn count_ones_in_column(a: Seq<int>, n: int, k: int, col: int) -> int
-  recommends 0 <= col < k <= n,
-           n % k == 0,
-           a.len() == n,
-           forall|i: int| 0 <= i < a.len() ==> a[i] == 1 || a[i] == 2
-{
-  Set::new(|j: int| 0 <= j < n && j % k == col && a[j] == 1).len() as int
+spec fn count_ones_in_column(a: Seq<int>, n: int, k: int, col: int) -> int {
+    Set::new(|j: int| 0 <= j < n && j % k == col && a[j] == 1).len() as int
 }
 
-spec fn count_twos_in_column(a: Seq<int>, n: int, k: int, col: int) -> int
-  recommends 0 <= col < k <= n,
-           n % k == 0,
-           a.len() == n,
-           forall|i: int| 0 <= i < a.len() ==> a[i] == 1 || a[i] == 2
-{
-  Set::new(|j: int| 0 <= j < n && j % k == col && a[j] == 2).len() as int
+spec fn count_twos_in_column(a: Seq<int>, n: int, k: int, col: int) -> int {
+    Set::new(|j: int| 0 <= j < n && j % k == col && a[j] == 2).len() as int
 }
 
-spec fn min_changes_for_column(a: Seq<int>, n: int, k: int, col: int) -> int
-  recommends 0 <= col < k <= n,
-           n % k == 0,
-           a.len() == n,
-           forall|i: int| 0 <= i < a.len() ==> a[i] == 1 || a[i] == 2
-{
-  let count1 = count_ones_in_column(a, n, k, col);
-  let count2 = count_twos_in_column(a, n, k, col);
-  if count1 < count2 { count1 } else { count2 }
+spec fn min_changes_for_column(a: Seq<int>, n: int, k: int, col: int) -> int {
+    let count1 = count_ones_in_column(a, n, k, col);
+    let count2 = count_twos_in_column(a, n, k, col);
+    if count1 < count2 { count1 } else { count2 }
 }
 
 spec fn sum_min_changes_helper(a: Seq<int>, n: int, k: int, col: int) -> int
-  recommends 1 <= k <= n,
-           n % k == 0,
-           a.len() == n,
-           forall|i: int| 0 <= i < a.len() ==> a[i] == 1 || a[i] == 2,
-           0 <= col <= k
-  decreases (k - col) when col < k
+    decreases k - col
 {
-  if col == k {
-    0
-  } else {
-    min_changes_for_column(a, n, k, col) + sum_min_changes_helper(a, n, k, col + 1)
-  }
+    if col == k {
+        0
+    } else {
+        min_changes_for_column(a, n, k, col) + sum_min_changes_helper(a, n, k, col + 1)
+    }
 }
 
-spec fn sum_min_changes_for_all_columns(a: Seq<int>, n: int, k: int) -> int
-  recommends 1 <= k <= n,
-           n % k == 0,
-           a.len() == n,
-           forall|i: int| 0 <= i < a.len() ==> a[i] == 1 || a[i] == 2
-{
-  sum_min_changes_helper(a, n, k, 0)
+spec fn sum_min_changes_for_all_columns(a: Seq<int>, n: int, k: int) -> int {
+    sum_min_changes_helper(a, n, k, 0)
 }
 // </vc-preamble>
 
@@ -68,14 +44,16 @@ spec fn sum_min_changes_for_all_columns(a: Seq<int>, n: int, k: int) -> int
 
 // <vc-spec>
 fn solve(n: int, k: int, a: Seq<int>) -> (result: int)
-  requires valid_input(n, k, a),
-  ensures 0 <= result <= n,
-  ensures result == sum_min_changes_for_all_columns(a, n, k),
+    requires
+        valid_input(n, k, a),
+    ensures
+        0 <= result <= n,
+        result == sum_min_changes_for_all_columns(a, n, k),
 // </vc-spec>
 // <vc-code>
 {
-  assume(false);
-  unreached()
+    assume(false);
+    unreached()
 }
 // </vc-code>
 

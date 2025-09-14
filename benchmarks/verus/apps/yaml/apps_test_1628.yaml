@@ -9,16 +9,14 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(s: Seq<char>) -> bool {
       s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> s[i] == 'x' || s[i] == 'y'
   }
-  
+
   spec fn count_char(s: Seq<char>, c: char) -> nat {
       s.filter(|x: char| x == c).len()
   }
-  
+
   spec fn valid_output(s: Seq<char>, result: Seq<char>) -> bool 
       recommends valid_input(s)
   {
@@ -30,6 +28,8 @@ vc-helpers: |-
           result.len() == count_x - count_y && forall|i: int| 0 <= i < result.len() ==> result[i] == 'x'
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(s: Seq<char>) -> (result: Seq<char>)
@@ -44,7 +44,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

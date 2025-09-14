@@ -5,18 +5,16 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int) -> bool {
       100 <= n <= 999
   }
-  
+
   spec fn valid_output(n: int, result: Seq<char>) -> bool
       recommends valid_input(n)
   {
       result.len() == 6 && result.subrange(0, 3) == seq!['A', 'B', 'C'] && result.subrange(3, result.len() as int) == int_to_string(n)
   }
-  
+
   spec fn int_to_string(n: int) -> Seq<char>
       recommends n >= 0
       decreases n
@@ -30,6 +28,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: int) -> (result: Seq<char>)
       requires valid_input(n)
@@ -41,7 +41,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

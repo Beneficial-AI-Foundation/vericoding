@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(x: int, y: int) -> bool {
     -100 <= x <= 100 && -100 <= y <= 100
 }
@@ -40,6 +37,9 @@ spec fn compute_turns(x: int, y: int) -> int
         -4 * y
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

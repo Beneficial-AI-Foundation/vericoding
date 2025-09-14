@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(queries: Seq<int>) -> bool {
     forall|i: int| 0 <= i < queries.len() ==> queries[i] >= 2
 }
@@ -21,6 +18,9 @@ spec fn valid_result(queries: Seq<int>, results: Seq<int>) -> bool
     results.len() == queries.len() &&
     forall|i: int| 0 <= i < queries.len() ==> results[i] == min_additional_matches(queries[i])
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

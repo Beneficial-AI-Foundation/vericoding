@@ -2,28 +2,26 @@ vc-description: |-
   Given n columns with initial heights, determine if a character can move from column 1 to column n.
   Character starts at column 1 with m blocks in bag. At each column, character can remove/add blocks
   and move to next column if height difference is at most k.
-  
+
   /* Simplified for compilation */
-  
+
   /* Simplified for compilation */
 
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, m: int, k: int, h: Seq<int>) -> bool {
       n >= 1 && n == h.len() && m >= 0 && k >= 0 && 
       (forall|i: int| 0 <= i < h.len() ==> h[i] >= 0)
   }
-  
+
   spec fn can_reach_end(n: int, m: int, k: int, h: Seq<int>) -> bool
   {
       &&& valid_input(n, m, k, h)
       &&& simulate_game(0, m, n, k, h)
   }
-  
+
   spec fn simulate_game(pos: int, blocks: int, n: int, k: int, h: Seq<int>) -> bool
       decreases n - pos
   {
@@ -53,24 +51,26 @@ vc-helpers: |-
           }
       }
   }
-  
+
   spec fn valid_complete_input_format(input: Seq<char>) -> bool {
       input.len() > 0 && input[input.len() - 1] == '\n'
   }
-  
+
   spec fn valid_output_format(output: Seq<char>, input: Seq<char>) -> bool {
       output.len() >= 0 && 
       (output.len() == 0 || output[output.len() - 1] == '\n') &&
       (forall|i: int| 0 <= i < output.len() ==> output[i] == 'Y' || output[i] == 'E' || output[i] == 'S' || output[i] == 'N' || output[i] == 'O' || output[i] == '\n')
   }
-  
+
   spec fn correct_game_results(output: Seq<char>, input: Seq<char>) -> bool {
       true
   }
-  
+
   spec fn output_matches_test_case_count(output: Seq<char>, input: Seq<char>) -> bool {
       true
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
@@ -94,7 +94,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

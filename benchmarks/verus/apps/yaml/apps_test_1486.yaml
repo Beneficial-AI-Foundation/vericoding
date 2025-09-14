@@ -7,13 +7,11 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(cities: Seq<int>) -> bool {
     cities.len() >= 2 &&
     forall|i: int, j: int| 0 <= i < j < cities.len() ==> cities[i] < cities[j]
   }
-  
+
   spec fn min_distance(cities: Seq<int>, i: int) -> int 
     recommends
       valid_input(cities),
@@ -29,7 +27,7 @@ vc-helpers: |-
       if left_dist <= right_dist { left_dist } else { right_dist }
     }
   }
-  
+
   spec fn max_distance(cities: Seq<int>, i: int) -> int 
     recommends
       valid_input(cities),
@@ -45,7 +43,7 @@ vc-helpers: |-
       if dist_to_first >= dist_to_last { dist_to_first } else { dist_to_last }
     }
   }
-  
+
   spec fn valid_output(cities: Seq<int>, min_distances: Seq<int>, max_distances: Seq<int>) -> bool {
     valid_input(cities) &&
     min_distances.len() == cities.len() &&
@@ -56,6 +54,8 @@ vc-helpers: |-
       min_distances[i] > 0 &&
       max_distances[i] > 0
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn calculate_distances(cities: Seq<int>) -> (result: (Seq<int>, Seq<int>))
@@ -70,7 +70,7 @@ vc-code: |-
     // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

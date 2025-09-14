@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
     1 <= n <= 1998
 }
@@ -12,6 +9,9 @@ spec fn valid_input(n: int) -> bool {
 spec fn expected_result(n: int) -> Seq<char> {
     if n < 1000 { seq!['A', 'B', 'C'] } else { seq!['A', 'B', 'D'] }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

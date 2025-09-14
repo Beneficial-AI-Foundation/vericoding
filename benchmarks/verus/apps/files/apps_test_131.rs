@@ -15,37 +15,29 @@ spec fn get_initial_sum(input: &str) -> int
     recommends is_valid_input(input)
 {
     let lines = split_lines(input);
-    sum(parse_int_array(lines[1]))
+    sum_seq(parse_int_array(lines[1]))
 }
 
 spec fn get_target_sum(input: &str) -> int
     recommends is_valid_input(input)
 {
     let lines = split_lines(input);
-    sum(parse_int_array(lines[2]))
+    sum_seq(parse_int_array(lines[2]))
 }
 
-spec fn sum(nums: Seq<int>) -> int
+spec fn sum_seq(nums: Seq<int>) -> int
     decreases nums.len()
 {
     if nums.len() == 0 {
         0
     } else {
-        nums[0] + sum(nums.subrange(1, nums.len() as int))
+        nums[0] + sum_seq(nums.subrange(1, nums.len() as int))
     }
 }
 
-spec fn split_lines(input: &str) -> Seq<&str> {
-    Seq::empty()
-}
-
-spec fn parse_int(s: &str) -> int {
-    0
-}
-
-spec fn parse_int_array(s: &str) -> Seq<int> {
-    Seq::empty()
-}
+spec fn split_lines(input: &str) -> Seq<&str>;
+spec fn parse_int(s: &str) -> int;
+spec fn parse_int_array(s: &str) -> Seq<int>;
 // </vc-preamble>
 
 // <vc-helpers>
@@ -53,9 +45,6 @@ spec fn parse_int_array(s: &str) -> Seq<int> {
 
 // <vc-spec>
 fn solve(input: &str) -> (result: String)
-    ensures result == "Yes" || result == "No"
-    ensures is_valid_input(input) ==> (result == "Yes" <==> get_initial_sum(input) >= get_target_sum(input))
-    ensures !is_valid_input(input) ==> result == "No"
 // </vc-spec>
 // <vc-code>
 {

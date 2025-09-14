@@ -24,7 +24,7 @@ spec fn sum_seq(s: Seq<int>) -> int
 
 spec fn count_good_subarrays(digits: Seq<int>) -> int {
     if valid_input(digits) {
-        count_good_subarrays_helper(digits, 0, map![0int => 1int], 0, 0)
+        count_good_subarrays_helper(digits, 0, map![0 => 1], 0, 0)
     } else {
         0
     }
@@ -34,24 +34,14 @@ spec fn count_good_subarrays_helper(digits: Seq<int>, pos: int, freq_map: Map<in
                                   current_sum: int, current_count: int) -> int
     decreases digits.len() - pos
 {
-    if 0 <= pos <= digits.len()
-    && valid_input(digits)
-    && current_count == pos
-    && current_sum >= 0
-    && (forall|k: int| freq_map.dom().contains(k) ==> freq_map[k] >= 0)
-    && (freq_map.dom().contains(0) ==> freq_map[0] >= 1) {
-        if pos >= digits.len() {
-            0
-        } else {
-            let new_sum = current_sum + digits[pos];
-            let new_count = current_count + 1;
-            let diff = new_count - new_sum;
-            let contribution = if freq_map.dom().contains(diff) { freq_map[diff] } else { 0 };
-            let new_freq_map = freq_map.insert(diff, if freq_map.dom().contains(diff) { freq_map[diff] + 1 } else { 1 });
-            contribution + count_good_subarrays_helper(digits, pos + 1, new_freq_map, new_sum, new_count)
-        }
-    } else {
-        0
+    if pos >= digits.len() { 0 }
+    else {
+        let new_sum = current_sum + digits[pos];
+        let new_count = current_count + 1;
+        let diff = new_count - new_sum;
+        let contribution = if freq_map.dom().contains(diff) { freq_map[diff] } else { 0 };
+        let new_freq_map = freq_map.insert(diff, if freq_map.dom().contains(diff) { freq_map[diff] + 1 } else { 1 });
+        contribution + count_good_subarrays_helper(digits, pos + 1, new_freq_map, new_sum, new_count)
     }
 }
 // </vc-preamble>
@@ -61,15 +51,16 @@ spec fn count_good_subarrays_helper(digits: Seq<int>, pos: int, freq_map: Map<in
 
 // <vc-spec>
 fn count_good_subarrays_in_array(digits: Seq<int>) -> (count: int)
-    requires valid_input(digits)
-    ensures count >= 0
+    requires 
+        valid_input(digits)
+    ensures 
+        count >= 0,
+        count == count_good_subarrays(digits)
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
-    0int
-    // impl-end
+    unreached()
 }
 // </vc-code>
 

@@ -30,12 +30,12 @@ fn solve(a: int, b: int, c: int) -> (result: int)
     ensures 
         result >= 0,
         result == min_operations_needed(a, b, c),
-        (result == 0) <==> is_triangle(a, b, c)
+        result == 0 <==> is_triangle(a, b, c)
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

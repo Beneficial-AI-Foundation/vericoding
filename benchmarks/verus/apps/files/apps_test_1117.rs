@@ -12,6 +12,7 @@ spec fn can_form_non_ascending_sequence(rectangles: Seq<(int, int)>) -> bool {
 }
 
 spec fn can_form_non_ascending_sequence_helper(rectangles: Seq<(int, int)>, index: int, prev_height: int) -> bool
+    recommends 0 <= index <= rectangles.len()
     decreases rectangles.len() - index
 {
     if index >= rectangles.len() {
@@ -24,7 +25,7 @@ spec fn can_form_non_ascending_sequence_helper(rectangles: Seq<(int, int)>, inde
 
         if min_dim > prev_height {
             false
-        } else if min_dim <= prev_height && prev_height < max_dim {
+        } else if min_dim <= prev_height < max_dim {
             can_form_non_ascending_sequence_helper(rectangles, index + 1, min_dim)
         } else {
             can_form_non_ascending_sequence_helper(rectangles, index + 1, max_dim)
@@ -33,7 +34,7 @@ spec fn can_form_non_ascending_sequence_helper(rectangles: Seq<(int, int)>, inde
 }
 
 spec fn parse_rectangles(input: Seq<char>) -> Seq<(int, int)> {
-    /* This would parse the input string and return rectangles */
+    /* Placeholder for parsing logic */
     seq![]
 }
 
@@ -51,13 +52,14 @@ spec fn max_spec(a: int, b: int) -> int {
 
 // <vc-spec>
 fn solve(input: &str) -> (result: String)
-    requires input.len() > 0
-    ensures result == "YES" || result == "NO"
+    requires input@.len() > 0
+    ensures result@ == "YES"@ || result@ == "NO"@
+    /* ensures result@ == "YES"@ <==> can_form_non_ascending_sequence(parse_rectangles(input@)) */
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    "NO".to_string()
+    unreached()
 }
 // </vc-code>
 

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, x: int) -> bool {
     1 <= a <= 100 && 1 <= b <= 100 && 1 <= x <= 200
 }
@@ -12,6 +9,9 @@ spec fn valid_input(a: int, b: int, x: int) -> bool {
 spec fn can_have_exactly_cats(a: int, b: int, x: int) -> bool {
     a <= x <= a + b
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

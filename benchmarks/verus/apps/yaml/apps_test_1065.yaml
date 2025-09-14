@@ -8,23 +8,23 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, k: int, m: int, d: int) -> bool {
       2 <= n && 2 <= k <= n && 1 <= m <= n && 1 <= d <= n && m * d * k >= n
   }
-  
+
   spec fn candies_used(x: int, d: int, k: int) -> int {
       x * ((d - 1) * k + 1)
   }
-  
+
   spec fn valid_distribution(x: int, d: int, n: int, k: int, m: int, d_max: int) -> bool {
       1 <= x <= m && 1 <= d <= d_max && candies_used(x, d, k) <= n
   }
-  
+
   spec fn person1_candies(x: int, d: int) -> int {
       x * d
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, k: int, m: int, d: int) -> (result: int)
@@ -41,7 +41,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

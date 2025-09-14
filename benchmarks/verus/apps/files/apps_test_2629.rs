@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn min(a: int, b: int) -> int {
     if a <= b { a } else { b }
 }
@@ -17,12 +14,16 @@ spec fn spiral_order(row: int, col: int, n: int) -> int
     let layer_start = 4 * layer * (n - layer - 1) + layer;
 
     if row == layer {
+        /* Top row of current layer */
         layer_start + (col - layer)
     } else if col == n - 1 - layer {
+        /* Right column of current layer */
         layer_start + (n - 2 * layer - 1) + (row - layer)
     } else if row == n - 1 - layer {
+        /* Bottom row of current layer */
         layer_start + 2 * (n - 2 * layer - 1) + (n - 1 - layer - col)
     } else {
+        /* Left column of current layer */
         layer_start + 3 * (n - 2 * layer - 1) + (n - 1 - layer - row)
     }
 }
@@ -31,21 +32,24 @@ spec fn valid_input(n: int) -> bool {
     n >= 1
 }
 
-spec fn valid_spiral_matrix(matrix: &Seq<Seq<int>>, n: int) -> bool {
-    matrix.len() == n &&
+spec fn valid_spiral_matrix(matrix: Seq<Seq<int>>, n: int) -> bool {
+    matrix.len() == n && 
     (forall|i: int| 0 <= i < n ==> matrix[i].len() == n) &&
     (forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> matrix[i][j] == spiral_order(i, j, n) + 1)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn generate_matrix(n: int) -> (matrix: Vec<Vec<int>>)
     requires valid_input(n)
-    ensures valid_spiral_matrix(&matrix@, n)
-    ensures matrix.len() == n
-    ensures (forall|i: int| 0 <= i < n ==> matrix[i].len() == n)
-    ensures (forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> 1 <= matrix[i][j] <= n * n)
-    ensures (forall|v: int| 1 <= v <= n * n ==> exists|i: int, j: int| 0 <= i < n && 0 <= j < n && matrix[i][j] == v)
+    ensures 
+        matrix.len() == n &&
+        (forall|i: int| 0 <= i < n ==> #[trigger] matrix[i].len() == n) &&
+        (forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> 1 <= matrix[i][j] <= n * n) &&
+        (forall|v: int| 1 <= v <= n * n ==> exists|i: int, j: int| 0 <= i < n && 0 <= j < n && matrix[i][j] == v)
 // </vc-spec>
 // <vc-code>
 {

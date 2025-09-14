@@ -6,25 +6,23 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(input: Seq<char>) -> bool {
       input.len() == 5 &&
       (forall|i: int| 0 <= i < 4 ==> ('0' as int) <= (input[i] as int) <= ('9' as int)) &&
       input[4] == '\n'
   }
-  
+
   spec fn char_to_digit(c: char) -> int {
       (c as int) - ('0' as int)
   }
-  
+
   spec fn evaluate_expression(a: int, b: int, c: int, d: int, op1: char, op2: char, op3: char) -> int {
       let b_val = if op1 == '+' { b } else { -b };
       let c_val = if op2 == '+' { c } else { -c };
       let d_val = if op3 == '+' { d } else { -d };
       a + b_val + c_val + d_val
   }
-  
+
   spec fn solution_exists(input: Seq<char>) -> bool {
       &&& valid_input(input)
       &&& {
@@ -39,7 +37,7 @@ vc-helpers: |-
               evaluate_expression(a, b, c, d, op1, op2, op3) == 7
       }
   }
-  
+
   spec fn valid_output(result: Seq<char>, input: Seq<char>) -> bool {
       &&& valid_input(input)
       &&& result.len() == 10 
@@ -62,6 +60,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(input: Seq<char>) -> (result: Seq<char>)
       requires 
@@ -76,7 +76,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

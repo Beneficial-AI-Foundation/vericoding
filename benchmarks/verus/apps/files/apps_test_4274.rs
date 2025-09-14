@@ -1,41 +1,51 @@
 // <vc-preamble>
 use vstd::prelude::*;
+use vstd::string::*;
 
 verus! {
+spec fn valid_input(input: Seq<char>) -> bool {
+    input.len() > 0 &&
+    exists|lines: Seq<Seq<char>>| lines.len() > 0 &&
+    exists|parts: Seq<Seq<char>>| parts.len() == 2 &&
+    exists|n: int, m: int| 1 <= n <= 100 && 0 <= m <= n
+}
+
+spec fn extract_n(input: Seq<char>) -> int
+    recommends valid_input(input)
+{
+    42 /* placeholder for extracted n */
+}
+
+spec fn extract_m(input: Seq<char>) -> int
+    recommends valid_input(input)
+{
+    42 /* placeholder for extracted m */
+}
+
+spec fn correct_output(input: Seq<char>, result: Seq<char>) -> bool
+    recommends valid_input(input)
+{
+    let n = extract_n(input);
+    let m = extract_m(input);
+    (n == m ==> result == seq!['Y', 'e', 's']) && (n != m ==> result == seq!['N', 'o'])
+}
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn valid_input(input: Seq<char>) -> bool {
-    input.len() > 0
-}
-
-spec fn extract_n(input: Seq<char>) -> int {
-    0
-}
-
-spec fn extract_m(input: Seq<char>) -> int {
-    0
-}
-
-spec fn correct_output(input: Seq<char>, result: String) -> bool {
-    let n = extract_n(input);
-    let m = extract_m(input);
-    (n == m ==> result@ == "Yes"@) && (n != m ==> result@ == "No"@)
-}
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: String)
-requires
-    valid_input(input),
-ensures
-    correct_output(input, result),
-    result@ == "Yes"@ || result@ == "No"@,
+fn solve(input: Seq<char>) -> (result: Seq<char>)
+    requires 
+        valid_input(input),
+    ensures 
+        correct_output(input, result),
+        result == seq!['Y', 'e', 's'] || result == seq!['N', 'o'],
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    String::new()
+    unreached()
 }
 // </vc-code>
 

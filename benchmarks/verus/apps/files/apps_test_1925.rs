@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0 && 
     parse_three_ints_func(input).1 > 0
@@ -58,6 +55,9 @@ spec fn compute_max_value(a: int, b: int, n: int) -> int {
     let min_val = if b - 1 < n { b - 1 } else { n };
     (a * min_val) / b
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

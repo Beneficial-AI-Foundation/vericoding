@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::string::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(s: Seq<char>) -> bool {
       s.len() >= 2 &&
       (s[s.len()-1] == '\n' || (s.len() >= 2 && s.subrange(s.len()-2, s.len() as int) == seq!['\n'])) &&
@@ -27,12 +25,12 @@ vc-helpers: |-
           (forall|j: int| 0 <= j < lines[1 + 2*i + 1].len() ==> 
            lines[1 + 2*i + 1][j] >= 'a' && lines[1 + 2*i + 1][j] <= 'z'))
   }
-  
+
   spec fn valid_output(result: Seq<char>) -> bool {
       result.len() >= 0 &&
       (result.len() == 0 || result[result.len()-1] == '\n')
   }
-  
+
   spec fn transform_string(input_str: Seq<char>, n: int, k: int) -> Seq<char>
   {
       if 1 <= k <= n && input_str.len() == n {
@@ -46,7 +44,7 @@ vc-helpers: |-
           seq![]
       }
   }
-  
+
   spec fn is_lexicographically_optimal(result_str: Seq<char>, input_str: Seq<char>, n: int, k: int) -> bool {
       input_str.len() == n &&
       1 <= k <= n &&
@@ -82,6 +80,8 @@ vc-helpers: |-
       s  /* Placeholder implementation */
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(s: &str) -> (result: String)
     requires valid_input(s@)
@@ -93,7 +93,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

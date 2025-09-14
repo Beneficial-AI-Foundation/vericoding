@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     s.len() >= 1 && s.len() <= 20 && forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z'
 }
@@ -45,6 +42,9 @@ spec fn char_of_digit(d: int) -> char
     else if d == 9 { '9' }
     else { '0' }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -10,19 +10,17 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(a: int, b: int, k: int) -> bool {
       a >= 0 && b >= 0 && k >= 0
   }
-  
+
   spec fn expected_takahashi_cookies(a: int, b: int, k: int) -> int
       recommends valid_input(a, b, k)
   {
       if a >= k { a - k }
       else { 0 }
   }
-  
+
   spec fn expected_aoki_cookies(a: int, b: int, k: int) -> int
       recommends valid_input(a, b, k)
   {
@@ -30,7 +28,7 @@ vc-helpers: |-
       else if k - a < b { b - (k - a) }
       else { 0 }
   }
-  
+
   spec fn correct_result(a: int, b: int, k: int, takahashi: int, aoki: int) -> bool
       recommends valid_input(a, b, k)
   {
@@ -38,6 +36,8 @@ vc-helpers: |-
       aoki == expected_aoki_cookies(a, b, k) &&
       takahashi >= 0 && aoki >= 0
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(a: int, b: int, k: int) -> (result: (int, int))
@@ -50,7 +50,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

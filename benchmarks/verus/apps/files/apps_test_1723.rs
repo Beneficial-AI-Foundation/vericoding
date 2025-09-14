@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_output(n: int, result: Seq<Seq<char>>) -> bool
     recommends n >= 2
 {
@@ -35,6 +32,9 @@ spec fn int_to_string(n: int) -> Seq<char>
         int_to_string(n / 10) + int_to_string(n % 10)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

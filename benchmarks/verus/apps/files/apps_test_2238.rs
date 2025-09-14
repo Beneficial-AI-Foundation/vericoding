@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
     n >= 3 && n <= 101 && n % 2 == 1
 }
@@ -40,6 +37,9 @@ spec fn correct_diamond_pattern(result: Seq<Seq<char>>, n: int) -> bool {
         })
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

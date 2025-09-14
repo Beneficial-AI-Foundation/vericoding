@@ -7,22 +7,20 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(a: int, b: int) -> bool {
       a >= 1 && a <= 1000 && b >= 1 && b <= 1000 && a != b
   }
-  
+
   spec fn optimal_meeting_point(a: int, b: int) -> int {
       (a + b) / 2
   }
-  
+
   spec fn tiredness_for_steps(steps: int) -> int
       decreases steps
   {
       if steps <= 0 { 0 } else { steps + tiredness_for_steps(steps - 1) }
   }
-  
+
   spec fn minimum_total_tiredness(a: int, b: int) -> int
       recommends valid_input(a, b)
   {
@@ -30,6 +28,8 @@ vc-helpers: |-
       tiredness_for_steps(if c >= a { c - a } else { a - c }) + 
       tiredness_for_steps(if b >= c { b - c } else { c - b })
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(a: i32, b: i32) -> (result: i32)
@@ -45,7 +45,7 @@ vc-code: |-
       0
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

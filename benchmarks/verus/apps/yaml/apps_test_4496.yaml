@@ -6,12 +6,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(d: int) -> bool {
       22 <= d <= 25
   }
-  
+
   spec fn expected_output(d: int) -> Seq<char>
       recommends valid_input(d)
   {
@@ -23,7 +21,7 @@ vc-helpers: |-
           base_string + repeat_eve(eve_count)
       }
   }
-  
+
   spec fn repeat_eve(count: int) -> Seq<char>
       recommends count >= 0
       decreases count
@@ -34,6 +32,8 @@ vc-helpers: |-
           seq![' ', 'E', 'v', 'e'] + repeat_eve(count - 1)
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(d: int) -> (result: String)
@@ -48,7 +48,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

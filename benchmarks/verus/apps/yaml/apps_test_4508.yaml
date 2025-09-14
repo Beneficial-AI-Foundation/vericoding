@@ -7,17 +7,15 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, edges: Seq<(int, int)>) -> bool {
       n >= 2 && edges.len() == n - 1 &&
       forall|e: (int, int)| edges.contains(e) ==> 1 <= e.0 <= n && 1 <= e.1 <= n && e.0 != e.1
   }
-  
+
   spec fn all_vertices_within_distance2(n: int, edges: Seq<(int, int)>) -> bool {
       n >= 2 ==> forall|v: int| 2 <= v <= n ==> shortest_path_distance(n, edges, 1, v) <= 2
   }
-  
+
   spec fn shortest_path_distance(n: int, edges: Seq<(int, int)>, start: int, end: int) -> int {
       if n >= 1 && 1 <= start <= n && 1 <= end <= n {
           if start == end { 0 } else { compute_shortest_path(n, edges, start, end) }
@@ -25,7 +23,7 @@ vc-helpers: |-
           -1
       }
   }
-  
+
   spec fn compute_shortest_path(n: int, edges: Seq<(int, int)>, start: int, end: int) -> int {
       if n >= 1 && 1 <= start <= n && 1 <= end <= n {
           let adj = build_adjacency_list(n, edges);
@@ -34,7 +32,7 @@ vc-helpers: |-
           -1
       }
   }
-  
+
   spec fn build_adjacency_list(n: int, edges: Seq<(int, int)>) -> Seq<Seq<int>> {
       if n >= 1 {
           let adj = Seq::new((n + 1) as nat, |i: int| Seq::<int>::empty());
@@ -43,7 +41,7 @@ vc-helpers: |-
           Seq::<Seq<int>>::empty()
       }
   }
-  
+
   spec fn add_edges_to_adj_list(adj: Seq<Seq<int>>, edges: Seq<(int, int)>) -> Seq<Seq<int>>
       decreases edges.len()
   {
@@ -63,7 +61,7 @@ vc-helpers: |-
           adj
       }
   }
-  
+
   spec fn bfs(adj: Seq<Seq<int>>, n: int, start: int, end: int) -> int {
       if n >= 1 && adj.len() == n + 1 && 1 <= start <= n && 1 <= end <= n {
           if start == end { 
@@ -79,7 +77,7 @@ vc-helpers: |-
           -1
       }
   }
-  
+
   spec fn distance_is_2(adj: Seq<Seq<int>>, start: int, end: int) -> bool {
       if adj.len() > 0 && 0 <= start < adj.len() {
           exists|neighbor: int| adj[start].contains(neighbor) && 0 <= neighbor < adj.len() && adj[neighbor].contains(end)
@@ -87,10 +85,12 @@ vc-helpers: |-
           false
       }
   }
-  
+
   spec fn is_minimal_solution(n: int, original_edges: Seq<(int, int)>, num_edges_to_add: int) -> bool {
       valid_input(n, original_edges) ==> num_edges_to_add >= 0
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(input: &str) -> (output: &str)
@@ -101,7 +101,7 @@ vc-code: |-
       ""
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     s.len() == 7 && s[0] == 'A' && forall|i: int| 1 <= i < 7 ==> '0' <= s[i] <= '9'
 }
@@ -25,9 +22,12 @@ spec fn zero_count(s: Seq<char>, start: int, end: int) -> int
     if start >= end {
         0
     } else {
-        (if s[start] == '0' { 1 } else { 0 }) + zero_count(s, start + 1, end)
+        (if s[start] == '0' { 1int } else { 0int }) + zero_count(s, start + 1, end)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

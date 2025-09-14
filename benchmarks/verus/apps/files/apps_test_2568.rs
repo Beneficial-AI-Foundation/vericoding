@@ -2,15 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> s[i] == '+' || s[i] == '-'
 }
 
 spec fn compute_result(s: Seq<char>) -> int {
-    compute_result_helper(s, 0, 0, 0, s.len())
+    compute_result_helper(s, 0, 0, 0, s.len() as int)
 }
 
 spec fn compute_result_helper(s: Seq<char>, i: int, cur: int, pm: int, ans: int) -> int
@@ -29,13 +26,18 @@ spec fn compute_result_helper(s: Seq<char>, i: int, cur: int, pm: int, ans: int)
         }
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(s: Seq<char>) -> (result: int)
-    requires valid_input(s),
-    ensures result >= s.len(),
-    ensures result == compute_result(s),
+    requires 
+        valid_input(s)
+    ensures 
+        result >= s.len(),
+        result == compute_result(s)
 // </vc-spec>
 // <vc-code>
 {

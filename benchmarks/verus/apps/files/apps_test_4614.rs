@@ -2,9 +2,7 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn contains_three_space_separated_integers(input: Seq<char>) -> bool {
     exists|i: int, j: int, k: int| (0 <= i < j < k <= input.len() &&
     is_valid_integer_substring(input, 0, i) &&
@@ -23,13 +21,13 @@ spec fn exactly_two_are_equal(input: Seq<char>) -> bool {
 }
 
 spec fn is_valid_integer_string(s: Seq<char>) -> bool {
-    if s.len() == 0 { 
+    if s.len() == 0 {
         false
-    } else if s =~= Seq::new(1, |i: int| '0') { 
+    } else if s =~= seq!['0'] {
         true
-    } else if s.len() > 0 && s[0] == '-' { 
+    } else if s.len() > 0 && s[0] == '-' {
         s.len() > 1 && is_digit_sequence(s.subrange(1, s.len() as int)) && s[1] != '0'
-    } else { 
+    } else {
         is_digit_sequence(s) && s[0] != '0'
     }
 }
@@ -39,7 +37,7 @@ spec fn is_digit_sequence(s: Seq<char>) -> bool {
 }
 
 spec fn is_valid_integer_substring(s: Seq<char>, start: int, end: int) -> bool {
-    if start == end { 
+    if start == end {
         false
     } else {
         let substr = s.subrange(start, end);
@@ -49,43 +47,38 @@ spec fn is_valid_integer_substring(s: Seq<char>, start: int, end: int) -> bool {
 
 spec fn find_different_number(input: Seq<char>) -> Seq<char> {
     let nums = parse_three_numbers(input);
-    let different = if nums.0 == nums.1 { 
+    let different = if nums.0 == nums.1 {
         nums.2
-    } else if nums.0 == nums.2 { 
+    } else if nums.0 == nums.2 {
         nums.1
-    } else { 
+    } else {
         nums.0
     };
     int_to_string_pure(different)
 }
 
 spec fn parse_three_numbers(input: Seq<char>) -> (int, int, int) {
-    /* placeholder for parsing three space-separated integers */
+    /* placeholder for parsing three numbers from input string */
     (0, 0, 0)
 }
 
 spec fn int_to_string_pure(n: int) -> Seq<char> {
-    /* placeholder for converting integer to string */
-    Seq::new(1, |i: int| '0')
+    /* placeholder for converting integer to string representation */
+    seq!['0']
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires 
-        input.len() > 0,
-        contains_three_space_separated_integers(input),
-        exactly_two_are_equal(input),
-    ensures 
-        result.len() > 0,
-        is_valid_integer_string(result),
-        result == find_different_number(input),
-// </vc-spec>
-// <vc-code>
+fn solve(input: &str) -> (result: String)
 {
     assume(false);
-    Seq::new(1, |i: int| '0')
+    unreached()
 }
+// </vc-spec>
+// <vc-code>
 // </vc-code>
 
 

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_result(result: &str) -> bool {
     result == "A" || result == "B" || result == "C" || result == "D"
 }
@@ -27,6 +24,9 @@ spec fn sort_lengths_with_indices(lengths: Seq<int>) -> Seq<(int, int)>
 {
     Seq::empty()
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

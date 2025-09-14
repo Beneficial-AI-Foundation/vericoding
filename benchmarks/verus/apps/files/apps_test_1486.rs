@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(cities: Seq<int>) -> bool {
   cities.len() >= 2 &&
   forall|i: int, j: int| 0 <= i < j < cities.len() ==> cities[i] < cities[j]
@@ -52,6 +49,9 @@ spec fn valid_output(cities: Seq<int>, min_distances: Seq<int>, max_distances: S
     min_distances[i] > 0 &&
     max_distances[i] > 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

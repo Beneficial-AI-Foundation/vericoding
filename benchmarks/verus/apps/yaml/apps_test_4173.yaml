@@ -7,12 +7,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_query(query: (int, int, int)) -> bool {
       query.0 > 0 && query.1 > 0 && query.2 > 0
   }
-  
+
   spec fn min_cost_for_query(n: int, a: int, b: int) -> int
       recommends n > 0 && a > 0 && b > 0
   {
@@ -23,13 +21,14 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(queries: Seq<(int, int, int)>) -> (results: Seq<int>)
       requires 
-          forall|i: int| 0 <= i < queries.len() ==> valid_query(queries[i]),
+          forall|i: int| 0 <= i < queries.len() ==> valid_query(queries[i])
       ensures 
           results.len() == queries.len(),
-      ensures 
           forall|i: int| 0 <= i < queries.len() ==> {
               let n = queries[i].0;
               let a = queries[i].1;
@@ -39,15 +38,17 @@ vc-spec: |-
               } else {
                   if n * a <= (n / 2) * b + a { n * a } else { (n / 2) * b + a }
               })
-          },
+          }
 
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      Seq::empty()
+      unreached()
+      // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum_squares(p: int, a: Seq<int>) -> int
     decreases a.len()
 {
@@ -25,6 +22,9 @@ spec fn is_optimal_cost(result: int, a: Seq<int>) -> bool {
     exists|p: int| -100 <= p <= 100 && result == sum_squares(p, a) &&
     forall|p: int| -100 <= p <= 100 ==> result <= sum_squares(p, a)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

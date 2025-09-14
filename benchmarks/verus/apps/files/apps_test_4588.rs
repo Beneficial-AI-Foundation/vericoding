@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     (input.len() == 3 && input[1] == ' ') || 
     (input.len() == 4 && input[1] == ' ' && input[3] == '\n')
@@ -27,6 +24,9 @@ spec fn correct_comparison(x: char, y: char, result: Seq<char>) -> bool {
     (((x as int) > (y as int)) <==> (result == seq!['>', '\n'])) &&
     (((x as int) == (y as int)) <==> (result == seq!['=', '\n']))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

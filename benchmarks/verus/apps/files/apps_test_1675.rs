@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, teams: Seq<(int, int)>) -> bool {
   n >= 2 && teams.len() == n &&
   (forall|i: int| 0 <= i < n ==> teams[i].0 != teams[i].1) &&
@@ -24,6 +21,9 @@ spec fn valid_output(n: int, teams: Seq<(int, int)>, result: Seq<(int, int)>) ->
     result[i].1 == (n - 1) - home_count
   })
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

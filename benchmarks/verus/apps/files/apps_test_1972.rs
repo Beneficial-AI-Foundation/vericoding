@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0 && input[input.len() - 1] == '\n'
 }
@@ -36,6 +33,9 @@ spec fn count_type2_queries(queries: Seq<Seq<char>>) -> nat {
 spec fn int_to_string(x: int) -> Seq<char> {
     seq!['1']
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

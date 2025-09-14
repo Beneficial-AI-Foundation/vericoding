@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_temperature(temp: int) -> bool {
     -40 <= temp <= 40
 }
@@ -16,6 +13,9 @@ spec fn expected_output(temp: int) -> Seq<char> {
 spec fn correct_output(temp: int, output: Seq<char>) -> bool {
     output == expected_output(temp)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

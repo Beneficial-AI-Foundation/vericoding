@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_rectangle_parts(a: int, b: int, n: int) -> bool {
     a > 0 && b > 0 && a != b && 2 * a + 2 * b == n
 }
@@ -20,6 +17,9 @@ spec fn count_valid_rectangles(n: int) -> int
 spec fn valid_input(n: int) -> bool {
     n > 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

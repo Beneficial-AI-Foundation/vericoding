@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
     1 <= n <= 10000
 }
@@ -18,6 +15,9 @@ spec fn correct_change(n: int) -> int
 {
     (1000 - n % 1000) % 1000
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -3,9 +3,6 @@ use vstd::prelude::*;
 use vstd::string::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(ab: int, bc: int, ca: int) -> bool {
     1 <= ab <= 100 && 1 <= bc <= 100 && 1 <= ca <= 100
 }
@@ -21,6 +18,9 @@ spec fn valid_area(ab: int, bc: int, area: int) -> bool
 {
     area == triangle_area(ab, bc) && area >= 0 && area <= 5000
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

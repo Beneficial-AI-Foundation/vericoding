@@ -7,28 +7,26 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>> {
       Seq::empty()
   }
-  
+
   spec fn parse_first_line(s: Seq<char>) -> (nat, nat, nat, nat) {
       (1, 1, 1, 1)
   }
-  
+
   spec fn parse_levels(lines: Seq<Seq<char>>, n: nat, m: nat, k: nat) -> Seq<Seq<Seq<char>>> {
       Seq::empty()
   }
-  
+
   spec fn int_to_string(n: nat) -> Seq<char> {
       Seq::empty()
   }
-  
+
   spec fn parse_dependency_line(s: Seq<char>) -> (nat, nat) {
       (1, 0)
   }
-  
+
   spec fn valid_input(stdin_input: Seq<char>) -> bool {
       stdin_input.len() > 0 &&
       stdin_input[stdin_input.len() as int - 1] == '\n' &&
@@ -46,7 +44,7 @@ vc-helpers: |-
           }
       }
   }
-  
+
   spec fn valid_output(result: Seq<char>, stdin_input: Seq<char>) -> bool {
       result.len() > 0 &&
       result[result.len() as int - 1] == '\n' &&
@@ -89,18 +87,20 @@ vc-helpers: |-
           }
       }
   }
-  
+
   spec fn calculate_mst_cost(n: nat, m: nat, k: nat, w: nat, levels: Seq<Seq<Seq<char>>>) -> nat {
       0
   }
-  
+
   spec fn is_valid_spanning_tree(result_lines: Seq<Seq<char>>, k: nat) -> bool {
       true
   }
-  
+
   spec fn count_differences(level1: Seq<Seq<char>>, level2: Seq<Seq<char>>, n: nat, m: nat) -> nat {
       0
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(stdin_input: &str) -> (result: String)
@@ -113,7 +113,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

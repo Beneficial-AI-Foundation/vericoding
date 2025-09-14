@@ -7,24 +7,22 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int) -> bool {
       1 <= n <= 999
   }
-  
+
   spec fn is_hon_digit(digit: int) -> bool {
       digit == 2 || digit == 4 || digit == 5 || digit == 7 || digit == 9
   }
-  
+
   spec fn is_pon_digit(digit: int) -> bool {
       digit == 0 || digit == 1 || digit == 6 || digit == 8
   }
-  
+
   spec fn is_bon_digit(digit: int) -> bool {
       digit == 3
   }
-  
+
   spec fn correct_pronunciation(n: int) -> Seq<char> {
       let ones_digit = n % 10;
       if is_hon_digit(ones_digit) {
@@ -35,6 +33,8 @@ vc-helpers: |-
           seq!['b', 'o', 'n', '\n']
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int) -> (result: Seq<char>)
@@ -47,7 +47,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

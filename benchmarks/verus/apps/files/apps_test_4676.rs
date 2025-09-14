@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     let lines = split_lines(input);
     lines.len() >= 2 &&
@@ -70,6 +67,9 @@ spec fn interleave_unequal(o: Seq<char>, e: Seq<char>) -> Seq<char>
         seq![o[0], e[0]] + interleave_unequal(o.subrange(1, o.len() as int), e.subrange(1, e.len() as int))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

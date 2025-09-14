@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn contains_lowercase(s: Seq<char>) -> bool {
     exists|i: int| 0 <= i < s.len() && 'a' <= s[i] <= 'z'
 }
@@ -42,6 +39,9 @@ spec fn strip_whitespace(s: Seq<char>) -> Seq<char>
         s 
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

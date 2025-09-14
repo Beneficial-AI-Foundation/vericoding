@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int) -> bool {
     n > 0 && n <= 10000 && m > 1 && m <= 10
 }
@@ -28,6 +25,9 @@ spec fn no_smaller_solution(n: int, m: int, result: int) -> bool {
 spec fn is_minimal_solution(n: int, m: int, result: int) -> bool {
     valid_input(n, m) && (result != -1 ==> forall|k: int| (min_moves(n) <= k <= n && k < result) ==> k % m != 0)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

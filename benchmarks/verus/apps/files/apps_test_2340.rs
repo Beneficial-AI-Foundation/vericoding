@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(h: int, n: int, platforms: Seq<int>) -> bool {
     h >= 1 && n >= 1 && platforms.len() >= n && n > 0 && platforms[0] == h
 }
@@ -70,6 +67,9 @@ spec fn simulate_position_up_to(h: int, arr: Seq<int>, up_to: int) -> int
         }
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

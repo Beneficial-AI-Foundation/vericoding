@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, k: int) -> bool {
     1 <= n <= 10000 && 1 <= m <= 10000 && 1 <= k <= 2 * n * m
 }
@@ -20,19 +17,24 @@ spec fn correct_solution(n: int, m: int, k: int, lane: int, desk: int, side: cha
     desk == (k - 1) % (2 * m) / 2 + 1 &&
     (side == 'L' <==> (k - 1) % (2 * m) % 2 == 0)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, k: int) -> (result: (int, int, char))
-    requires valid_input(n, m, k)
-    ensures 
-        valid_output(n, m, result.0, result.1, result.2) &&
-        correct_solution(n, m, k, result.0, result.1, result.2)
+fn solve(n: i32, m: i32, k: i32) -> (result: (i32, i32, char))
+    requires valid_input(n as int, m as int, k as int)
+    ensures ({
+        let (lane, desk, side) = result;
+        valid_output(n as int, m as int, lane as int, desk as int, side) &&
+        correct_solution(n as int, m as int, k as int, lane as int, desk as int, side)
+    })
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    (0int, 0int, 'L')
+    (0, 0, 'L')
 }
 // </vc-code>
 

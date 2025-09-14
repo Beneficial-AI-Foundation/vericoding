@@ -8,7 +8,6 @@ spec fn valid_input(a: int, b: int) -> bool {
 }
 
 spec fn total_burning_hours(a: int, b: int) -> int
-  recommends a >= 0 && b >= 2
   decreases a
 {
   if a == 0 { 0 }
@@ -22,16 +21,16 @@ spec fn total_burning_hours(a: int, b: int) -> int
 
 // <vc-spec>
 fn solve(a: int, b: int) -> (result: int)
-  requires
-    valid_input(a, b),
-  ensures
-    result >= a,
-    result == total_burning_hours(a, b),
+  requires 
+      valid_input(a, b),
+  ensures 
+      result >= a,
+      result == total_burning_hours(a, b),
 // </vc-spec>
 // <vc-code>
 {
   assume(false);
-  0
+  unreached()
 }
 // </vc-code>
 

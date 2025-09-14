@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<Seq<char>>) -> bool {
     input.len() == 8 &&
     (forall|i: int| 0 <= i < 8 ==> input[i].len() == 8) &&
@@ -23,6 +20,9 @@ spec fn all_rows_have_alternating_pattern(input: Seq<Seq<char>>) -> bool
 {
     forall|i: int| 0 <= i < 8 ==> has_alternating_row(input[i])
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

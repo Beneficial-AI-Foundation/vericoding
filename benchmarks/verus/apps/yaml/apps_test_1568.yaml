@@ -7,8 +7,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, a: int, b: int, c: int, t: int, arrivals: Seq<int>) -> bool {
       1 <= n <= 1000 &&
       1 <= a <= 1000 &&
@@ -18,7 +16,7 @@ vc-helpers: |-
       arrivals.len() == n &&
       forall|i: int| 0 <= i < arrivals.len() ==> 1 <= arrivals[i] <= t
   }
-  
+
   spec fn sum_seq(s: Seq<int>) -> int
       decreases s.len()
   {
@@ -28,7 +26,7 @@ vc-helpers: |-
           s[0] + sum_seq(s.subrange(1, s.len() as int))
       }
   }
-  
+
   spec fn max_money(n: int, a: int, b: int, c: int, t: int, arrivals: Seq<int>) -> int {
       if b > c {
           n * a
@@ -36,6 +34,8 @@ vc-helpers: |-
           n * a + (c - b) * (n * t - sum_seq(arrivals))
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, a: int, b: int, c: int, t: int, arrivals: Seq<int>) -> (result: int)
@@ -48,7 +48,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

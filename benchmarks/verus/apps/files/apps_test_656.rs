@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn count_negative_temp_days(temps: Seq<int>) -> int
     decreases temps.len()
 {
@@ -14,6 +11,9 @@ spec fn count_negative_temp_days(temps: Seq<int>) -> int
         (if temps[0] < 0 { 1int } else { 0int }) + count_negative_temp_days(temps.subrange(1, temps.len() as int))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

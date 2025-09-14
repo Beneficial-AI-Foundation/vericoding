@@ -3,9 +3,6 @@ use vstd::prelude::*;
 use vstd::string::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0 &&
     (exists|i: int| 0 <= i < input.len() && input[i] == '\n') &&
@@ -61,6 +58,9 @@ spec fn parse_input(input: Seq<char>) -> Seq<int> {
     /* Placeholder parsing logic - returns empty sequence for now */
     seq![]
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

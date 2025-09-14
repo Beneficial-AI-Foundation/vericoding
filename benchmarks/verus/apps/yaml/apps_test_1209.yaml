@@ -36,12 +36,11 @@ vc-preamble: |-
   spec fn each_output_is_floor_or_ceiling(input: Seq<char>, output: Seq<char>) -> bool
   {
       has_valid_structure(input) && has_valid_structure(output) ==>
-      forall|i: nat| 0 <= i < get_n_from_input(input) ==>
-          {
-              let input_val = get_ith_real(input, i);
-              let output_val = get_ith_integer(output, i);
-              output_val == floor_of(input_val) || output_val == ceiling_of(input_val)
-          }
+      forall|i: int| 0 <= i < get_n_from_input(input) ==> {
+          let input_val = get_ith_real(input, i as nat);
+          let output_val = get_ith_integer(output, i as nat);
+          output_val == floor_of(input_val) || output_val == ceiling_of(input_val)
+      }
   }
   
   spec fn output_sum_is_zero(input: Seq<char>, output: Seq<char>) -> bool
@@ -53,11 +52,10 @@ vc-preamble: |-
   spec fn output_preserves_integers(input: Seq<char>, output: Seq<char>) -> bool
   {
       has_valid_structure(input) && has_valid_structure(output) ==>
-      forall|i: nat| 0 <= i < get_n_from_input(input) ==>
-          {
-              let input_val = get_ith_real(input, i);
-              is_integer(input_val) ==> get_ith_integer(output, i) == int_value_of(input_val)
-          }
+      forall|i: int| 0 <= i < get_n_from_input(input) ==> {
+          let input_val = get_ith_real(input, i as nat);
+          is_integer(input_val) ==> get_ith_integer(output, i as nat) == int_value_of(input_val)
+      }
   }
   
   spec fn contains_newline(s: Seq<char>) -> bool
@@ -78,8 +76,8 @@ vc-preamble: |-
   
   spec fn sum_of_input_reals(input: Seq<char>) -> f64 { 0.0 }
   spec fn sum_of_output_integers(output: Seq<char>) -> int { 0 }
-  spec fn get_n_from_input(input: Seq<char>) -> nat { 1 }
-  spec fn count_lines(s: Seq<char>) -> nat { 
+  spec fn get_n_from_input(input: Seq<char>) -> int { 1 }
+  spec fn count_lines(s: Seq<char>) -> int { 
       if s == seq!['0', '\n'] { 1 } else { 0 }
   }
   spec fn get_ith_real(input: Seq<char>, i: nat) -> f64 { 0.0 }
@@ -95,19 +93,19 @@ vc-spec: |-
       requires 
           stdin_input.len() > 0,
           valid_input_format(stdin_input),
-          input_sum_is_zero(stdin_input)
+          input_sum_is_zero(stdin_input),
       ensures 
           valid_output_format(output),
           output_has_correct_length(stdin_input, output),
           each_output_is_floor_or_ceiling(stdin_input, output),
           output_sum_is_zero(stdin_input, output),
-          output_preserves_integers(stdin_input, output)
+          output_preserves_integers(stdin_input, output),
 
 vc-code: |-
   {
       // impl-start
       assume(false);
-      seq![]
+      unreached()
       // impl-end
   }
 

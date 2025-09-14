@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(r: int, g: int) -> bool {
     0 <= r <= 4500 && 0 <= g <= 4500
 }
@@ -16,6 +13,9 @@ spec fn required_performance(r: int, g: int) -> int {
 spec fn correct_result(r: int, g: int, p: int) -> bool {
     (r + p) == 2 * g
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

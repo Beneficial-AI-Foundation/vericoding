@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, p: int, buyers: Seq<&str>) -> bool {
       1 <= n <= 40 &&
       2 <= p <= 1000 &&
@@ -17,7 +15,7 @@ vc-helpers: |-
       buyers.len() == n &&
       forall|i: int| 0 <= i < buyers.len() ==> buyers[i] == "half" || buyers[i] == "halfplus"
   }
-  
+
   spec fn compute_total_payment(buyers: Seq<&str>, p: int) -> int
       recommends p >= 0,
                   p % 2 == 0,
@@ -25,7 +23,7 @@ vc-helpers: |-
   {
       compute_payment_backward(buyers, p, buyers.len() - 1, 0)
   }
-  
+
   spec fn compute_payment_backward(buyers: Seq<&str>, p: int, current_index: int, current_apples: int) -> int
       recommends p >= 0,
                   p % 2 == 0,
@@ -51,6 +49,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: int, p: int, buyers: Seq<&str>) -> (result: int)
       requires valid_input(n, p, buyers)
@@ -65,7 +65,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

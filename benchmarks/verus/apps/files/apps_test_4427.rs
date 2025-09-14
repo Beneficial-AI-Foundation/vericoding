@@ -2,23 +2,23 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn parse_input_pure(input: &str) -> Seq<int> {
-    Seq::<int>::empty()
+spec fn parse_input_pure(input: Seq<char>) -> Seq<int>
+{
+    seq![1, 2, 3] // placeholder implementation
 }
 
-spec fn int_to_string(val: int) -> Seq<char> {
-    Seq::<char>::empty()
+spec fn int_to_string(n: int) -> Seq<char>
+{
+    seq!['0'] // placeholder implementation
 }
 
-spec fn valid_input(input: &str) -> bool
-    recommends input.len() > 0
+spec fn valid_input(input: Seq<char>) -> bool
 {
     let tokens = parse_input_pure(input);
     tokens.len() == 3 && 
     2 <= tokens[0] <= 5 &&
     1 <= tokens[1] <= 100 &&
-    tokens[1] < tokens[2] <= 200
+    tokens[1] < tokens[2] && tokens[2] <= 200
 }
 
 spec fn calculate_recurrence(r: int, d: int, x0: int, n: int) -> int
@@ -29,14 +29,15 @@ spec fn calculate_recurrence(r: int, d: int, x0: int, n: int) -> int
     else { r * calculate_recurrence(r, d, x0, n - 1) - d }
 }
 
-spec fn generate_expected_output(r: int, d: int, x0: int) -> Seq<char> {
+spec fn generate_expected_output(r: int, d: int, x0: int) -> Seq<char>
+{
     generate_output_up_to_iteration(r, d, x0, 10)
 }
 
 spec fn generate_output_up_to_iteration(r: int, d: int, x0: int, iterations: int) -> Seq<char>
     recommends iterations >= 0
 {
-    if iterations == 0 { Seq::<char>::empty() }
+    if iterations == 0 { seq![] }
     else { 
         let current_value = calculate_recurrence(r, d, x0, iterations);
         let previous_output = generate_output_up_to_iteration(r, d, x0, iterations - 1);
@@ -49,12 +50,12 @@ spec fn generate_output_up_to_iteration(r: int, d: int, x0: int, iterations: int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: &str) -> (result: String)
+fn solve(input: String) -> (result: String)
     requires 
-        input.len() > 0,
-        valid_input(input)
+        input@.len() > 0,
+        valid_input(input@),
     ensures ({
-        let tokens = parse_input_pure(input);
+        let tokens = parse_input_pure(input@);
         result@ == generate_expected_output(tokens[0], tokens[1], tokens[2])
     })
 // </vc-spec>

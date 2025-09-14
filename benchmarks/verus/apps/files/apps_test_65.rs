@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn seq_min(s: Seq<int>) -> int 
     decreases s.len()
 {
@@ -26,6 +23,9 @@ spec fn valid_input(arr: Seq<int>) -> bool {
     arr.len() >= 2 && 
     exists|i: int, j: int| 0 <= i < j < arr.len() && #[trigger] arr[i] == #[trigger] arr[j] && arr[i] == seq_min(arr)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

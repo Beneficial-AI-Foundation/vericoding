@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(lines: Seq<String>) -> bool {
     lines.len() > 0
 }
@@ -14,6 +11,9 @@ spec fn max_value() -> int { 4294967295 }
 spec fn is_overflow(x: int) -> bool {
     x > max_value()
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

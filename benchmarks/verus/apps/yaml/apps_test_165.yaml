@@ -7,27 +7,27 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn max3(a: int, b: int, c: int) -> int {
       if a >= b && a >= c { a }
       else if b >= c { b }
       else { c }
   }
-  
+
   spec fn calculate_missed_meals(input: Seq<char>) -> int {
       /* Implementation placeholder for spec function */
       0
   }
-  
+
   spec fn valid_input(input: Seq<char>) -> bool {
       input.len() > 0
   }
-  
+
   spec fn int_to_string_spec(n: int) -> Seq<char> {
       /* Specification for integer to string conversion */
       seq![]
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(input: &str) -> (result: String)
@@ -40,7 +40,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum(cards: Seq<int>) -> int
     decreases cards.len()
 {
@@ -22,6 +19,9 @@ spec fn abs(x: int) -> int {
 spec fn valid_input(cards: Seq<int>, x: int) -> bool {
     x > 0 && cards.len() >= 1 && forall|i: int| 0 <= i < cards.len() ==> -x <= cards[i] <= x
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

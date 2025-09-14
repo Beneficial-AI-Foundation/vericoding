@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_pascal_triangle(triangle: Seq<Seq<int>>, num_rows: int) -> bool {
   triangle.len() == num_rows &&
   (num_rows == 0 ==> triangle =~= Seq::<Seq<int>>::empty()) &&
@@ -20,6 +17,9 @@ spec fn valid_pascal_triangle(triangle: Seq<Seq<int>>, num_rows: int) -> bool {
         triangle[i][j] == triangle[i-1][j-1] + triangle[i-1][j]
   ))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

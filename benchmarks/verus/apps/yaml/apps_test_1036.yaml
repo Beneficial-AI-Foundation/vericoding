@@ -9,8 +9,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn winner(a: char, b: char) -> char {
       if (a, b) == ('R', 'P') || (a, b) == ('P', 'S') || (a, b) == ('S', 'R') {
           b
@@ -18,18 +16,20 @@ vc-helpers: |-
           a
       }
   }
-  
+
   spec fn valid_rps_char(c: char) -> bool {
       c == 'R' || c == 'P' || c == 'S'
   }
-  
+
   spec fn valid_rps_string(s: Seq<char>) -> bool {
       forall|i: int| 0 <= i < s.len() ==> valid_rps_char(s[i])
   }
-  
+
   spec fn valid_input(n: int, k: int, s: Seq<char>) -> bool {
       n > 0 && k >= 0 && s.len() == n && valid_rps_string(s)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, k: int, s: Seq<char>) -> (result: char)
@@ -42,7 +42,7 @@ vc-code: |-
       'R'
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

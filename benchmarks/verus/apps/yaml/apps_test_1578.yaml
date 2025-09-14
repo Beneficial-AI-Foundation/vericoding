@@ -6,17 +6,17 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int) -> bool {
       n >= 1
   }
-  
+
   spec fn max_sum(n: int) -> int
       recommends n >= 1
   {
       n * (n - 1) / 2
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int) -> (result: int)
@@ -29,7 +29,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(coins: Seq<int>) -> bool {
     coins.len() == 5 && forall|i: int| 0 <= i < coins.len() ==> 0 <= coins[i] <= 100
 }
@@ -28,6 +25,9 @@ spec fn compute_result(coins: Seq<int>) -> int
     let total = total_coins(coins);
     if total > 0 && total % 5 == 0 { total / 5 } else { -1 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

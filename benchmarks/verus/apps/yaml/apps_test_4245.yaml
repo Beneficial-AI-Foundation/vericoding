@@ -5,18 +5,16 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(a: int, b: int) -> bool {
       a > 1 && b >= 0
   }
-  
+
   spec fn sockets_after_strips(strips: int, a: int) -> int
       recommends a > 1 && strips >= 0
   {
       1 + strips * (a - 1)
   }
-  
+
   spec fn ceiling_division(x: int, y: int) -> int
       recommends y > 0
   {
@@ -28,7 +26,7 @@ vc-helpers: |-
           x / y
       }
   }
-  
+
   spec fn min_strips_needed(a: int, b: int) -> int
       recommends valid_input(a, b)
   {
@@ -38,7 +36,7 @@ vc-helpers: |-
           ceiling_division(b - 1, a - 1)
       }
   }
-  
+
   spec fn correct_result(a: int, b: int, result: int) -> bool
       recommends valid_input(a, b)
   {
@@ -46,6 +44,8 @@ vc-helpers: |-
       sockets_after_strips(result, a) >= b &&
       (result == 0 || sockets_after_strips(result - 1, a) < b)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(a: int, b: int) -> (result: int)
@@ -60,7 +60,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

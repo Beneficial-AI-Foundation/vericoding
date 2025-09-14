@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, k: int) -> bool {
     n >= 1 && k >= 2
 }
@@ -29,6 +26,9 @@ spec fn valid_solution(n: int, k: int, result: int) -> bool
             result == k - x
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

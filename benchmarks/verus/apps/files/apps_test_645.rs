@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_vowel(c: char) -> bool {
   c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
 }
@@ -20,6 +17,9 @@ spec fn needs_flipping(c: char) -> bool {
 spec fn count_flips(s: Seq<char>) -> int {
   s.filter(|c: char| needs_flipping(c)).len() as int
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

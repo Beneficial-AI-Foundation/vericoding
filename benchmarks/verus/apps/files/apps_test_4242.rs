@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn common_divisors(a: int, b: int) -> Set<int>
 {
   Set::new(|d: int| 1 <= d <= a && a % d == 0 && b % d == 0)
@@ -24,6 +21,9 @@ spec fn is_kth_largest_common_divisor(a: int, b: int, k: int, result: int) -> bo
     Set::new(|d: int| common_divisors(a, b).contains(d) && d > result).len() == (k - 1)
   )
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

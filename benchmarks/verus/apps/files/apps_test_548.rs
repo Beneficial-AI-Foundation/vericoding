@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn all_even(a: Seq<int>) -> bool {
     forall|i: int| 0 <= i < a.len() ==> a[i] % 2 == 0
 }
@@ -12,6 +9,9 @@ spec fn all_even(a: Seq<int>) -> bool {
 spec fn has_odd(a: Seq<int>) -> bool {
     exists|i: int| 0 <= i < a.len() && a[i] % 2 == 1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

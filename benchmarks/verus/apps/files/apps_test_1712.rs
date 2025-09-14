@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: int, b: int, mobs: Seq<int>) -> bool {
     n >= 0 && a > 0 && b > 0 && mobs.len() == n &&
     forall|i: int| 0 <= i < n ==> mobs[i] >= 0
@@ -35,6 +32,9 @@ spec fn correct_result(result: Seq<Seq<char>>, n: int, a: int, b: int, mobs: Seq
         (result[i] == seq!['B', 'o', 't', 'h'] <==> determine_winner(k, a, b) == 2)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

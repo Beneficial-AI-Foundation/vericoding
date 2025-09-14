@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn max(a: int, b: int) -> int {
     if a >= b { a } else { b }
 }
@@ -24,6 +21,9 @@ spec fn blue_crystals_needed(y: int, z: int) -> int {
 spec fn min_additional_crystals(a: int, b: int, x: int, y: int, z: int) -> int {
     max(0, yellow_crystals_needed(x, y) - a) + max(0, blue_crystals_needed(y, z) - b)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

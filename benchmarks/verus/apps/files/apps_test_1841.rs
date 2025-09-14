@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, a: Seq<int>, queries: Seq<int>) -> bool {
     a.len() == n && queries.len() == m && n >= 1 && m >= 1 &&
     forall|i: int| 0 <= i < m ==> (#[trigger] queries[i], 1 <= queries[i] <= n).1
@@ -17,6 +14,9 @@ spec fn distinct_count(a: Seq<int>, start: int) -> int
     let suffix_values = suffix_indices.map(|j: int| a[j]);
     suffix_values.len() as int
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

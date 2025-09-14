@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn count_char(s: Seq<char>, c: char) -> int
       decreases s.len()
   {
@@ -19,14 +17,16 @@ vc-helpers: |-
           (if s[0] == c { 1int } else { 0int }) + count_char(s.subrange(1, s.len() as int), c)
       }
   }
-  
+
   spec fn min(a: int, b: int) -> int {
       if a <= b { a } else { b }
   }
-  
+
   spec fn valid_commands(commands: Seq<char>) -> bool {
       forall|i: int| 0 <= i < commands.len() ==> commands[i] == 'L' || commands[i] == 'R' || commands[i] == 'U' || commands[i] == 'D'
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: usize, commands: Seq<char>) -> (result: usize)
@@ -47,7 +47,7 @@ vc-code: |-
       0
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -2,52 +2,42 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
-spec fn valid_input(input: &str) -> bool {
+spec fn valid_input(input: Seq<char>) -> bool {
     let lines = split(input, '\n');
     lines.len() >= 2 &&
-    parse_int(&lines[0]) >= 1 && {
-        let n = parse_int(&lines[0]);
-        let second_line_parts = split(&lines[1], ' ');
+    parse_int(lines[0]) >= 1 &&
+    {
+        let n = parse_int(lines[0]);
+        let second_line_parts = split(lines[1], ' ');
         second_line_parts.len() >= 2 &&
-        parse_int(&second_line_parts[0]) >= 1 &&
-        parse_int(&second_line_parts[1]) >= 0 &&
+        parse_int(second_line_parts[0]) >= 1 &&
+        parse_int(second_line_parts[1]) >= 0 &&
         lines.len() >= 2 + n &&
-        forall|i: int| 0 <= i < n ==> parse_int(&lines[2 + i]) >= 1
+        forall|i: int| 0 <= i < n ==> parse_int(lines[2 + i]) >= 1
     }
 }
 
-spec fn compute_expected_result(input: &str) -> String
-    requires valid_input(input)
-{
+spec fn compute_expected_result(input: Seq<char>) -> Seq<char> {
     let lines = split(input, '\n');
-    let n = parse_int(&lines[0]);
-    let second_line_parts = split(&lines[1], ' ');
-    let d = parse_int(&second_line_parts[0]);
-    let x = parse_int(&second_line_parts[1]);
-    let total_eaten = sum_eaten_for_participants(&lines, d, n);
+    let n = parse_int(lines[0]);
+    let second_line_parts = split(lines[1], ' ');
+    let d = parse_int(second_line_parts[0]);
+    let x = parse_int(second_line_parts[1]);
+    let total_eaten = sum_eaten_for_participants(lines, d, n);
     int_to_string(x + total_eaten)
 }
 
-spec fn sum_eaten_for_participants(lines: &Seq<String>, d: int, count: int) -> int
-    requires 
-        lines.len() >= 2 + count &&
-        d >= 1 &&
-        count >= 0
-    decreases count
-{
+spec fn sum_eaten_for_participants(lines: Seq<Seq<char>>, d: int, count: int) -> int {
     if count == 0 {
         0
     } else {
-        let a = parse_int(&lines[2 + count - 1]);
+        let a = parse_int(lines[2 + count - 1]);
         let eaten = if a > 0 { (d + a - 1) / a } else { 0 };
         eaten + sum_eaten_for_participants(lines, d, count - 1)
     }
 }
 
-spec fn split(s: &str, delimiter: char) -> Seq<String> {
+spec fn split(s: Seq<char>, delimiter: char) -> Seq<Seq<char>> {
     if s.len() == 0 {
         seq![]
     } else {
@@ -55,24 +45,21 @@ spec fn split(s: &str, delimiter: char) -> Seq<String> {
     }
 }
 
-spec fn split_helper(s: &str, delimiter: char, start: int, current: int, acc: Seq<String>) -> Seq<String>
-    requires 0 <= start <= current <= s.len()
-    decreases s.len() - current
-{
+spec fn split_helper(s: Seq<char>, delimiter: char, start: int, current: int, acc: Seq<Seq<char>>) -> Seq<Seq<char>> {
     if current == s.len() {
         if start == current {
             acc
         } else {
-            acc.push(s.view().subrange(start, current).to_string())
+            acc.push(s.subrange(start, current))
         }
-    } else if s.get_char(current as usize) == delimiter {
-        split_helper(s, delimiter, current + 1, current + 1, acc.push(s.view().subrange(start, current).to_string()))
+    } else if s[current] == delimiter {
+        split_helper(s, delimiter, current + 1, current + 1, acc.push(s.subrange(start, current)))
     } else {
         split_helper(s, delimiter, start, current + 1, acc)
     }
 }
 
-spec fn parse_int(s: &str) -> int {
+spec fn parse_int(s: Seq<char>) -> int {
     if s.len() == 0 {
         0
     } else {
@@ -80,56 +67,51 @@ spec fn parse_int(s: &str) -> int {
     }
 }
 
-spec fn parse_int_helper(s: &str, index: int, acc: int) -> int
-    requires 0 <= index <= s.len()
-    decreases s.len() - index
-{
+spec fn parse_int_helper(s: Seq<char>, index: int, acc: int) -> int {
     if index == s.len() {
         acc
-    } else if '0' <= s.get_char(index as usize) && s.get_char(index as usize) <= '9' {
-        parse_int_helper(s, index + 1, acc * 10 + (s.get_char(index as usize) as int - '0' as int))
+    } else if '0' <= s[index] <= '9' {
+        parse_int_helper(s, index + 1, acc * 10 + (s[index] as int - '0' as int))
     } else {
         acc
     }
 }
 
-spec fn int_to_string(n: int) -> String {
+spec fn int_to_string(n: int) -> Seq<char> {
     if n == 0 {
-        "0".to_string()
+        seq!['0']
     } else if n < 0 {
-        "-".to_string() + int_to_string_helper(-n)
+        seq!['-'].add(int_to_string_helper(-n))
     } else {
         int_to_string_helper(n)
     }
 }
 
-spec fn int_to_string_helper(n: int) -> String
-    requires n > 0
-    decreases n
-{
+spec fn int_to_string_helper(n: int) -> Seq<char> {
     if n < 10 {
-        String::from_char((n + '0' as int) as char)
+        seq![(n + '0' as int) as char]
     } else {
-        int_to_string_helper(n / 10) + String::from_char((n % 10 + '0' as int) as char)
+        int_to_string_helper(n / 10).add(seq![(n % 10 + '0' as int) as char])
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(input: &str) -> (result: String)
-    requires 
-        input.len() > 0 &&
-        valid_input(input)
-    ensures 
-        result.len() > 0 &&
-        result == compute_expected_result(input)
+    requires
+        input@.len() > 0,
+        valid_input(input@),
+    ensures
+        result@.len() > 0,
+        result@ == compute_expected_result(input@),
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
-    "".to_string()
-    // impl-end
+    unreached()
 }
 // </vc-code>
 

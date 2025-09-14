@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, k: int, l: Seq<int>) -> bool {
     n >= 1 && k >= 1 && n <= 2*k &&
     l.len() == n &&
@@ -41,6 +38,9 @@ spec fn max(s: Seq<int>) -> int
         max(s.subrange(1, s.len() as int))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

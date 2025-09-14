@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, c: int) -> bool {
     1 <= a <= 10 && 1 <= b <= 10 && 1 <= c <= 10
 }
@@ -18,6 +15,9 @@ spec fn can_form_haiku(a: int, b: int, c: int) -> bool {
 spec fn valid_output(result: &str) -> bool {
     result == "YES" || result == "NO"
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

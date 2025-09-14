@@ -6,15 +6,15 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(d: int, t: int, s: int) -> bool {
       1 <= d <= 10000 && 1 <= t <= 10000 && 1 <= s <= 10000
   }
-  
+
   spec fn can_travel(d: int, t: int, s: int) -> bool {
       d <= t * s
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(d: int, t: int, s: int) -> (result: &'static str)
@@ -30,7 +30,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

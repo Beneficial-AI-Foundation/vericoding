@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int) -> bool {
     1 <= a <= 12 && 1 <= b <= 31
 }
@@ -14,6 +11,9 @@ spec fn takahashi_count(a: int, b: int) -> int
 {
     if a > b { a - 1 } else { a }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

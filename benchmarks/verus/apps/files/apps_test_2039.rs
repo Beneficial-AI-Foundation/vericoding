@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: Seq<int>) -> bool {
     n >= 1 && a.len() == n
 }
@@ -12,7 +9,7 @@ spec fn valid_input(n: int, a: Seq<int>) -> bool {
 spec fn count_local_extrema(n: int, a: Seq<int>) -> int
     recommends valid_input(n, a)
 {
-    (Set::new(|i: int| 1 <= i < n - 1 && ((a[i] > a[i-1] && a[i] > a[i+1]) || (a[i] < a[i-1] && a[i] < a[i+1])))).len() as int
+    Set::<int>::new(|i: int| 1 <= i < n - 1 && ((a[i] > a[i-1] && a[i] > a[i+1]) || (a[i] < a[i-1] && a[i] < a[i+1]))).len() as int
 }
 
 spec fn is_local_extremum(a: Seq<int>, i: int) -> bool
@@ -20,6 +17,9 @@ spec fn is_local_extremum(a: Seq<int>, i: int) -> bool
 {
     1 <= i < a.len() - 1 && ((a[i] > a[i-1] && a[i] > a[i+1]) || (a[i] < a[i-1] && a[i] < a[i+1]))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -35,7 +35,7 @@ fn solve(n: int, a: Seq<int>) -> (result: int)
 // <vc-code>
 {
     assume(false);
-    0 as int
+    unreached()
 }
 // </vc-code>
 

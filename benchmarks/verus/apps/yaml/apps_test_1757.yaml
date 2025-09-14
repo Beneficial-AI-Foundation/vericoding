@@ -18,21 +18,26 @@ vc-preamble: |-
     recommends num >= 1 && prev >= 1 && curr >= 1
     decreases if curr >= num { 0 } else { num - curr }
   {
-    if curr == num { true }
-    else if curr > num { false }
-    else { is_fib_helper(num, curr, prev + curr) }
+    if curr == num { 
+      true 
+    } else if curr > num { 
+      false 
+    } else { 
+      is_fib_helper(num, curr, prev + curr) 
+    }
   }
 
 vc-helpers: |-
 
 vc-spec: |-
   fn solve(n: int) -> (result: Vec<char>)
-    requires n >= 1 && n <= 1000
+    requires 
+      n >= 1 && n <= 1000
     ensures 
-      result.len() == n &&
-      (forall|i: int| 0 <= i < result.len() ==> (result.index(i) == 'O' || result.index(i) == 'o')) &&
-      (forall|i: int| 1 <= i <= n ==> (is_fibonacci(i) <==> result.index(i-1) == 'O')) &&
-      (forall|i: int| 1 <= i <= n ==> (!is_fibonacci(i) <==> result.index(i-1) == 'o'))
+      result.len() == n,
+      forall|i: int| 0 <= i < result.len() ==> (result[i as int] == 'O' || result[i as int] == 'o'),
+      forall|i: int| 1 <= i <= n ==> (is_fibonacci(i) <==> result[(i-1) as int] == 'O'),
+      forall|i: int| 1 <= i <= n ==> (!is_fibonacci(i) <==> result[(i-1) as int] == 'o')
 
 vc-code: |-
   {

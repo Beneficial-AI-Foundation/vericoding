@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     s.len() == 4 && forall|i: int| 0 <= i < s.len() ==> s[i] == '+' || s[i] == '-'
 }
@@ -22,6 +19,9 @@ spec fn count_char(s: Seq<char>, c: char) -> int
 spec fn calculate_sum(s: Seq<char>) -> int {
     count_char(s, '+') - count_char(s, '-')
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

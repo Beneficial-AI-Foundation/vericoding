@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, c: int, d: int) -> bool {
     1 <= a <= 1000 && 1 <= b <= 1000 && 1 <= c <= 1000 && 1 <= d <= 1000
 }
@@ -12,6 +9,9 @@ spec fn valid_input(a: int, b: int, c: int, d: int) -> bool {
 spec fn min_total_fare(a: int, b: int, c: int, d: int) -> int {
     (if a < b { a } else { b }) + (if c < d { c } else { d })
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

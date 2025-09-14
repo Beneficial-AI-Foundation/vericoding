@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, x: int) -> bool {
     a >= 0 && b >= a && x > 0
 }
@@ -18,20 +15,23 @@ spec fn count_divisible_in_range(a: int, b: int, x: int) -> int
         b / x - (a - 1) / x
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn count_divisible(a: int, b: int, x: int) -> (count: int)
-    requires valid_input(a, b, x)
-    ensures count == count_divisible_in_range(a, b, x)
-    ensures count >= 0
+    requires 
+        valid_input(a, b, x),
+    ensures 
+        count == count_divisible_in_range(a, b, x),
+        count >= 0,
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached()
 }
 // </vc-code>
 

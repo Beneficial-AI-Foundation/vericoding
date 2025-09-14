@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, k: int) -> bool {
     2 <= n <= 5000 && 1 <= k <= n
 }
@@ -20,6 +17,9 @@ spec fn optimal_moves(n: int, k: int) -> int {
 spec fn spec_min(a: int, b: int) -> int {
     if a <= b { a } else { b }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

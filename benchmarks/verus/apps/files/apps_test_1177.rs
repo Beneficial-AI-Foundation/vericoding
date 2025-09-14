@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, s: int, a: Seq<int>) -> bool {
     n >= 1 && s >= 1 && a.len() == n && n <= 3000 && s <= 3000 &&
     forall|i: int| 0 <= i < n ==> a[i] >= 1 && a[i] <= 3000
@@ -27,6 +24,9 @@ spec fn single_element_case(n: int, s: int, a: Seq<int>) -> int
         0
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

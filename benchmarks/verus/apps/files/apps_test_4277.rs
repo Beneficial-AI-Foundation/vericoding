@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: int, b: int) -> bool {
     1 <= n <= 20 && 1 <= a <= 50 && 1 <= b <= 50
 }
@@ -22,6 +19,9 @@ spec fn correct_result(input: Seq<char>, result: Seq<char>) -> bool {
     /* Implementation would require string parsing functions that are not available in this context */
     true
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

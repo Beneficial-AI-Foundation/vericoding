@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_valid_date_string(s: Seq<char>, y: int, m: int, d: int) -> bool {
     s.len() >= 10 && 
     s[4] == '/' && s[7] == '/' &&
@@ -34,6 +31,9 @@ spec fn correct_output(s: Seq<char>, result: Seq<char>) -> bool {
     ((m < 4 || (m == 4 && d <= 30)) ==> result == seq!['H', 'e', 'i', 's', 'e', 'i']) && 
     ((m > 4 || (m == 4 && d > 30)) ==> result == seq!['T', 'B', 'D'])
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, d: int, hotels: Seq<int>) -> bool {
     n > 0 && d > 0 && hotels.len() == n &&
     (forall|i: int| 0 <= i < n - 1 ==> hotels[i] < hotels[i + 1])
@@ -30,6 +27,9 @@ spec fn correct_result(n: int, d: int, hotels: Seq<int>, result: int) -> bool {
     valid_input(n, d, hotels) ==> 
     (result == 2 + sum_contributions(hotels, d, n-1) && result >= 2)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

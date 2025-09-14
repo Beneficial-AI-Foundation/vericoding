@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int) -> bool {
     1 <= a <= b
 }
@@ -14,6 +11,9 @@ spec fn gcd_of_range(a: int, b: int) -> int
 {
     if a == b { a } else { 1 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

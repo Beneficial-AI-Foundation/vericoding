@@ -6,8 +6,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn sum_window(heights: Seq<int>, start: int, k: int) -> int
     recommends 
       0 <= start,
@@ -21,12 +19,12 @@ vc-helpers: |-
       heights[start] + sum_window(heights, start + 1, k - 1) 
     }
   }
-  
+
   spec fn valid_input(n: int, k: int, heights: Seq<int>) -> bool
   {
     1 <= k <= n && heights.len() == n && forall|i: int| 0 <= i < n ==> 1 <= heights[i] <= 100
   }
-  
+
   spec fn valid_result(result: int, n: int, k: int, heights: Seq<int>) -> bool
     recommends valid_input(n, k, heights)
   {
@@ -36,6 +34,8 @@ vc-helpers: |-
     forall|start: int| 0 <= start < result-1 ==>
       sum_window(heights, start, k) > sum_window(heights, result-1, k)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, k: int, heights: Seq<int>) -> (result: int)
@@ -48,7 +48,7 @@ vc-code: |-
     unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

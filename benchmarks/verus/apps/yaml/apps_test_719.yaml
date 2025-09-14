@@ -7,12 +7,14 @@ vc-preamble: |-
 
   verus! {
 
-  spec fn digit_sum(n: int) -> int;
-  spec fn int_to_string(n: int) -> Seq<char>;
+  #[verifier::external_body]
+  spec fn int_to_string(n: int) -> Seq<char> {
+      unimplemented!()
+  }
 
   spec fn valid_input(stdin_input: Seq<char>) -> bool {
       stdin_input.len() > 0 &&
-      exists|k: int| k >= 1 && k <= 10000 && stdin_input == int_to_string(k).add(seq!['\n'])
+      exists|k: int| k >= 1 && k <= 10000 && stdin_input == int_to_string(k).push('\n')
   }
   
   spec fn kth_perfect_number(k: int) -> int
@@ -34,17 +36,17 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-      requires valid_input(stdin_input)
-      ensures exists|k: int| k >= 1 && k <= 10000 && 
-          stdin_input == int_to_string(k).add(seq!['\n']) &&
-          result == int_to_string(kth_perfect_number(k)).add(seq!['\n'])
-      ensures result.len() > 0
+  fn solve(stdin_input: String) -> (result: String)
+      requires valid_input(stdin_input@)
+      ensures (exists|k: int| k >= 1 && k <= 10000 && 
+          stdin_input@ == int_to_string(k).push('\n') &&
+          result@ == int_to_string(kth_perfect_number(k)).push('\n')) &&
+          result@.len() > 0
 
 vc-code: |-
   {
       assume(false);
-      arbitrary()
+      unreached()
   }
 
 vc-postamble: |-

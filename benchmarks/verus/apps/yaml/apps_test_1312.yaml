@@ -7,12 +7,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, m: int) -> bool {
     n >= m > 0
   }
-  
+
   spec fn sum(s: Seq<int>) -> int
     decreases s.len()
   {
@@ -22,7 +20,7 @@ vc-helpers: |-
       s[0] + sum(s.subrange(1, s.len() as int)) 
     }
   }
-  
+
   spec fn count(s: Seq<int>, val: int) -> int
     decreases s.len()
   {
@@ -32,7 +30,7 @@ vc-helpers: |-
       (if s[0] == val { 1int } else { 0int }) + count(s.subrange(1, s.len() as int), val) 
     }
   }
-  
+
   spec fn optimal_distribution(result: Seq<int>, n: int, m: int) -> bool {
     &&& m > 0
     &&& result.len() == m
@@ -42,6 +40,8 @@ vc-helpers: |-
     &&& count(result, n / m) == m - (n % m)
     &&& count(result, n / m + 1) == n % m
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, m: int) -> (result: Seq<int>)
@@ -54,7 +54,7 @@ vc-code: |-
     unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

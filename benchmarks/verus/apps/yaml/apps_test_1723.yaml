@@ -9,8 +9,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_output(n: int, result: Seq<Seq<char>>) -> bool
       recommends n >= 2
   {
@@ -29,7 +27,7 @@ vc-helpers: |-
           (forall|i: int| 5 + (n - 6) <= i < result.len() ==> result[i] == seq!['1', ' '] + int_to_string(i - (5 + (n - 6)) + 2))
       }
   }
-  
+
   spec fn int_to_string(n: int) -> Seq<char>
       decreases if n >= 0 { n } else { -n }
   {
@@ -42,6 +40,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: int) -> (result: Vec<String>)
       requires n >= 2
@@ -53,7 +53,7 @@ vc-code: |-
       Vec::new()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

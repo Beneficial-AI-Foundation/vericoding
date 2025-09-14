@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum_seq(s: Seq<int>) -> int
     decreases s.len()
 {
@@ -34,6 +31,9 @@ spec fn valid_result(n: int, d: int, t: Seq<int>, result: int) -> bool {
         result == (d - song_sum) / 5 && result >= 0
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

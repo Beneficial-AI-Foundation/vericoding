@@ -8,20 +8,18 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, m: int, a: Seq<int>) -> bool {
       n >= 0 && m >= 0 && m == a.len()
   }
-  
+
   spec fn can_complete_all_assignments(n: int, a: Seq<int>) -> bool {
       sum_seq(a) <= n
   }
-  
+
   spec fn total_assignment_days(a: Seq<int>) -> int {
       sum_seq(a)
   }
-  
+
   spec fn sum_seq(s: Seq<int>) -> int 
       decreases s.len()
   {
@@ -31,6 +29,8 @@ vc-helpers: |-
           s[0] + sum_seq(s.subrange(1, s.len() as int))
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, m: int, a: Seq<int>) -> (result: int)
@@ -50,7 +50,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

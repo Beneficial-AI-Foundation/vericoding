@@ -6,8 +6,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_pascal_triangle(triangle: Seq<Seq<int>>, num_rows: int) -> bool {
     triangle.len() == num_rows &&
     (num_rows == 0 ==> triangle =~= Seq::<Seq<int>>::empty()) &&
@@ -24,6 +22,8 @@ vc-helpers: |-
     ))
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn generate(num_rows: int) -> (result: Seq<Seq<int>>)
     requires num_rows >= 0
@@ -35,7 +35,7 @@ vc-code: |-
     unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

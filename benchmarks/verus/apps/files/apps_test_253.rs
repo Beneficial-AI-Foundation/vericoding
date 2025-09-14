@@ -9,9 +9,7 @@ spec fn valid_input(nums: Seq<int>) -> bool {
     forall|i: int| 0 <= i < nums.len() ==> nums[i] <= 1500
 }
 
-spec fn sort_three(x: int, y: int, z: int) -> (int, int, int)
-    requires x > 0 && y > 0 && z > 0
-{
+spec fn sort_three(x: int, y: int, z: int) -> (int, int, int) {
     if x <= y && x <= z {
         if y <= z { (x, y, z) } else { (x, z, y) }
     } else if y <= x && y <= z {
@@ -21,9 +19,7 @@ spec fn sort_three(x: int, y: int, z: int) -> (int, int, int)
     }
 }
 
-spec fn compute_result(x: int, y: int, z: int) -> Seq<char>
-    requires x > 0 && y > 0 && z > 0 && x <= 1500 && y <= 1500 && z <= 1500
-{
+spec fn compute_result(x: int, y: int, z: int) -> Seq<char> {
     let sorted = sort_three(x, y, z);
     let a = sorted.0;
     let b = sorted.1;
@@ -60,9 +56,11 @@ spec fn compute_result(x: int, y: int, z: int) -> Seq<char>
 
 // <vc-spec>
 fn solve(nums: Seq<int>) -> (result: Seq<char>)
-    requires valid_input(nums)
-    ensures result == seq!['Y', 'E', 'S'] || result == seq!['N', 'O']
-    ensures result == compute_result(nums[0], nums[1], nums[2])
+    requires
+        valid_input(nums),
+    ensures
+        result == seq!['Y', 'E', 'S'] || result == seq!['N', 'O'],
+        result == compute_result(nums[0], nums[1], nums[2]),
 // </vc-spec>
 // <vc-code>
 {

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, h: int, a: Seq<int>, b: Seq<int>) -> bool {
     a.len() == n && b.len() == n && n > 0 && h > 0 &&
     (forall|i: int| 0 <= i < n ==> a[i] > 0 && b[i] > 0) &&
@@ -21,6 +18,9 @@ spec fn max_wield_exists(a: Seq<int>, max_a: int) -> bool {
     (exists|i: int| 0 <= i < a.len() && a[i] == max_a) &&
     (forall|i: int| 0 <= i < a.len() ==> a[i] <= max_a)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum_contributions(a: Seq<int>, b: Seq<int>) -> int
     recommends a.len() == b.len()
     decreases a.len()
@@ -21,6 +18,9 @@ spec fn sum_contributions(a: Seq<int>, b: Seq<int>) -> int
          }) + sum_contributions(a.subrange(1, a.len() as int), b.subrange(1, b.len() as int))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

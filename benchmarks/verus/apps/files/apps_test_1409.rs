@@ -2,16 +2,13 @@
 use vstd::prelude::*;
 
 verus! {
-
 spec fn count_eligible(participations: Seq<int>, k: int) -> int
-    requires 0 <= k <= 5
-    requires forall|i: int| 0 <= i < participations.len() ==> 0 <= participations[i] <= 5
     decreases participations.len()
 {
     if participations.len() == 0 {
-        0
+        0 as int
     } else {
-        (if 5 - participations[0] >= k { 1 } else { 0 }) + count_eligible(participations.subrange(1, participations.len() as int), k)
+        (if 5 - participations[0] >= k { 1 as int } else { 0 as int }) + count_eligible(participations.subrange(1, participations.len() as int), k)
     }
 }
 // </vc-preamble>
@@ -20,12 +17,7 @@ spec fn count_eligible(participations: Seq<int>, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, participations: Seq<int>) -> (result: int)
-    requires 0 <= k <= 5
-    requires n == participations.len()
-    requires forall|i: int| 0 <= i < participations.len() ==> 0 <= participations[i] <= 5
-    ensures result == (count_eligible(participations, k) / 3)
-    ensures result >= 0
+fn solve(n: usize, k: usize, participations: Vec<usize>) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {

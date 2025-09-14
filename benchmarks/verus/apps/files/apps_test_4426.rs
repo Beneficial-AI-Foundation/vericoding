@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_day(day: &str) -> bool {
     day == "SUN" || day == "MON" || day == "TUE" || day == "WED" || day == "THU" || day == "FRI" || day == "SAT"
 }
@@ -18,6 +15,9 @@ spec fn days_until_sunday(day: &str) -> int {
     else if day == "FRI" { 2 }
     else { 1 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

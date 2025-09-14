@@ -2,11 +2,8 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, k: int, a: Seq<int>) -> bool {
-    k > 0 && a.len() == k && (forall|i: int| 0 <= i < k ==> a.index(i) > 0) && n >= 0
+    k > 0 && a.len() == k && (forall|i: int| 0 <= i < k ==> a[i] > 0) && n >= 0
 }
 
 spec fn hamsters_transported(n: int, capacity: int) -> int {
@@ -20,9 +17,12 @@ spec fn hamsters_transported(n: int, capacity: int) -> int {
 spec fn optimal_solution(n: int, a: Seq<int>, box_type: int, num_boxes: int) -> bool {
     valid_input(n, a.len() as int, a) &&
     1 <= box_type <= a.len() &&
-    num_boxes == n / a.index(box_type - 1) &&
-    forall|i: int| 0 <= i < a.len() ==> hamsters_transported(n, a.index(box_type - 1)) >= hamsters_transported(n, a.index(i))
+    num_boxes == n / a[box_type - 1] &&
+    forall|i: int| 0 <= i < a.len() ==> hamsters_transported(n, a[box_type - 1]) >= hamsters_transported(n, a[i])
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -38,7 +38,7 @@ fn solve(n: int, k: int, a: Seq<int>) -> (result: (int, int))
 // <vc-code>
 {
     assume(false);
-    (1 as int, 0 as int)
+    unreached()
 }
 // </vc-code>
 

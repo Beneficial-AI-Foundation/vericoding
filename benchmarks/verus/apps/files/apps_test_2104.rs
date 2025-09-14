@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(l: int, r: int) -> bool {
     l < r && (r - l) % 2 == 1
 }
@@ -31,6 +28,9 @@ spec fn valid_solution(result: Seq<Seq<char>>, l: int, r: int) -> bool {
     result.len() == 1 + (r - l + 1) / 2 &&
     (forall|i: int| 1 <= i < result.len() ==> pair_has_gcd_one(result[i], l, r))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

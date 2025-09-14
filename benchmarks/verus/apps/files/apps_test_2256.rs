@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, x: int, a: int, b: int) -> bool {
     2 <= n <= 100 && 0 <= x <= 100 && 1 <= a <= n && 1 <= b <= n && a != b
 }
@@ -23,6 +20,9 @@ spec fn valid_result(n: int, x: int, a: int, b: int, result: int) -> bool
 {
     result == max_distance(n, x, a, b) && 0 <= result <= n - 1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
