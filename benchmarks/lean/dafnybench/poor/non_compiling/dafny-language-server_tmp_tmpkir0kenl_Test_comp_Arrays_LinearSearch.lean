@@ -5,12 +5,12 @@ open Std.Do
 /-!
 {
   "name": "dafny-language-server_tmp_tmpkir0kenl_Test_comp_Arrays_LinearSearch",
-  "category": "Dafny Translation", 
+  "category": "Dafny Translation",
   "description": "Automatically translated from Dafny specification: dafny-language-server_tmp_tmpkir0kenl_Test_comp_Arrays_LinearSearch",
   "source": "Dafny",
   "translation_date": "2024",
   "functions": ,
-  "methods": 
+  "methods":
 }
 -/
 
@@ -49,6 +49,6 @@ Specification for LinearSearch:
 -/
 theorem LinearSearch_spec (a : Array Int) (key : Int) :
   let n := LinearSearch a key
-  n ≤ a.size ∧ (n = a.size ∨ (a.get ⟨n⟩) = key) := sorry
+  n ≤ a.size ∧ (n = a.size ∨ (a[n]!) = key) := sorry
 
 end DafnyBenchmarks
