@@ -21,7 +21,7 @@ Predicate indicating if a string is sorted according to specific rules:
 - No 'b' characters should appear after non-'b' characters
 - Only non-'d' characters should appear before 'd' characters
 -/
-def sortedbad (s : String) : Bool :=
+def sortedbad (s : String) : Prop :=
   (∀ i j, 0 ≤ i ∧ i ≤ j ∧ j < s.length ∧ s.get ⟨i⟩ = 'b' ∧ s.get ⟨j⟩ ≠ 'b' → i < j) ∧
   (∀ i j, 0 ≤ i ∧ i ≤ j ∧ j < s.length ∧ s.get ⟨i⟩ ≠ 'd' ∧ s.get ⟨j⟩ = 'd' → i < j)
 
