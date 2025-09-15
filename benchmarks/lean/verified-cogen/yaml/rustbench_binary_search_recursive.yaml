@@ -11,15 +11,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def binarySearchRecursive (v : Array Int) (elem : Int) (c : Nat) (f : Nat) (h_precond : binarySearchRecursive_precond v elem c f) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def binarySearchRecursive_postcond (v : Array Int) (elem : Int) (c : Nat) (f : Nat) (p : Int) (_ : binarySearchRecursive_precond v elem c f) :=
     -1 ≤ p ∧ p < v.size ∧
@@ -28,11 +24,8 @@ vc-condition: |-
   
   theorem binarySearchRecursive_spec_satisfied (v : Array Int) (elem : Int) (c : Nat) (f : Nat) (h_precond : binarySearchRecursive_precond v elem c f) :
       binarySearchRecursive_postcond v elem c f (binarySearchRecursive v elem c f h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := pure ()
+

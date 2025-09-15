@@ -7,28 +7,21 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def allCharactersSame (charArr : Array Char) (h_precond : allCharactersSame_precond (charArr)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def allCharactersSame_postcond (charArr : Array Char) (result: Bool) (h_precond : allCharactersSame_precond (charArr)) : Prop :=
     (∀ i, 1 ≤ i ∧ i < charArr.size → charArr[0]! = charArr[i]!) ↔ result
   
   theorem allCharactersSame_spec_satisfied (charArr: Array Char) (h_precond : allCharactersSame_precond (charArr)) :
       allCharactersSame_postcond (charArr) (allCharactersSame (charArr) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /-
   fn main() {}
   -/
+

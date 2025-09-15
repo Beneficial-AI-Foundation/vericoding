@@ -8,26 +8,19 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def myfun (a : Array Int) (sum : Array Int) (N : Int) (h_precond : myfun_precond a sum N) : Unit :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def myfun_postcond (a : Array Int) (sum : Array Int) (N : Int) (h_precond : myfun_precond a sum N) : Prop :=
     sum[0]! ≤ 4 * N
-
+  
   theorem myfun_spec_satisfied (a : Array Int) (sum : Array Int) (N : Int) (h_precond : myfun_precond a sum N) :
       myfun_postcond a sum N h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := pure ()
+

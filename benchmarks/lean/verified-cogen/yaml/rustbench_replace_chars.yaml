@@ -6,15 +6,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def replaceChars (s : Array Char) (old : Char) (new : Char) (h_precond : replaceChars_precond s old new) : Array Char :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def replaceChars_postcond (s : Array Char) (old : Char) (new : Char) (result: Array Char) (h_precond : replaceChars_precond s old new) : Prop :=
     result.size = s.size ∧ 
@@ -22,11 +18,8 @@ vc-condition: |-
   
   theorem replaceChars_spec_satisfied (s: Array Char) (old: Char) (new: Char) (h_precond : replaceChars_precond s old new) :
       replaceChars_postcond s old new (replaceChars s old new h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+

@@ -11,26 +11,19 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def isProductEven (arr : Array Nat) (h_precond : isProductEven_precond (arr)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def isProductEven_postcond (arr : Array Nat) (result: Bool) (h_precond : isProductEven_precond (arr)) :=
     result ↔ (∃ k, k < arr.size ∧ isEven (arr[k]!))
   
   theorem isProductEven_spec_satisfied (arr: Array Nat) (h_precond : isProductEven_precond (arr)) :
       isProductEven_postcond (arr) (isProductEven (arr) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+

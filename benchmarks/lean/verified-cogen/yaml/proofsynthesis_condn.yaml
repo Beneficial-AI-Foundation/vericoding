@@ -8,29 +8,22 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def myfun (a : Array Int) (N : Int) (m : Int) (h_precond : myfun_precond a N m) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def myfun_postcond (a : Array Int) (N : Int) (m : Int) (result: Array Int) (h_precond : myfun_precond a N m) :=
     ∀ k : Int, 0 ≤ k ∧ k < N → result[k.toNat]! ≤ N
-
+  
   theorem myfun_spec_satisfied (a: Array Int) (N: Int) (m: Int) (h_precond : myfun_precond a N m) :
       myfun_postcond a N m (myfun a N m h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /- Example usage:
   def main : IO Unit := do
     pure ()
   -/
+

@@ -10,15 +10,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def replaceBlanksWithChars (str1 : Array Char) (ch : Char) (h_precond : replaceBlanksWithChars_precond str1 ch) : Array Char :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def replaceBlanksWithChars_postcond (str1 : Array Char) (ch : Char) (result : Array Char) (h_precond : replaceBlanksWithChars_precond str1 ch) : Prop :=
     str1.size = result.size ∧ 
@@ -26,11 +22,8 @@ vc-condition: |-
   
   theorem replaceBlanksWithChars_spec_satisfied (str1 : Array Char) (ch : Char) (h_precond : replaceBlanksWithChars_precond str1 ch) :
       replaceBlanksWithChars_postcond str1 ch (replaceBlanksWithChars str1 ch h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+

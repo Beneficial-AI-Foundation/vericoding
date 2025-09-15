@@ -9,15 +9,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def smallestMissingNumber (s : Array Int) (h_precond : smallestMissingNumber_precond s) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def smallestMissingNumber_postcond (s : Array Int) (v : Int) (h_precond : smallestMissingNumber_precond s) :=
     0 ≤ v ∧ 
@@ -26,11 +22,8 @@ vc-condition: |-
   
   theorem smallestMissingNumber_spec_satisfied (s : Array Int) (h_precond : smallestMissingNumber_precond s) :
       smallestMissingNumber_postcond s (smallestMissingNumber s h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+

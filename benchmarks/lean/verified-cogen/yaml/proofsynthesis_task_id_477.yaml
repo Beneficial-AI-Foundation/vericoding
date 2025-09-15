@@ -14,15 +14,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def toLowercase (str1 : Array Char) (h_precond : toLowercase_precond (str1)) : Array Char :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def toLowercase_postcond (str1 : Array Char) (result: Array Char) (h_precond : toLowercase_precond (str1)) :=
     str1.size = result.size ∧ 
@@ -30,12 +26,9 @@ vc-condition: |-
   
   theorem toLowercase_spec_satisfied (str1: Array Char) (h_precond : toLowercase_precond (str1)) :
       toLowercase_postcond (str1) (toLowercase (str1) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   #check toLowercase
   #check toLowercase_spec_satisfied
+

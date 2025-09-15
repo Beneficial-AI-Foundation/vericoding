@@ -7,15 +7,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def smallestListLength (lists : Array (Array Int)) (h_precond : smallestListLength_precond (lists)) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def smallestListLength_postcond (lists : Array (Array Int)) (result: Nat) (h_precond : smallestListLength_precond (lists)) :=
     (∃ i, i < lists.size ∧ result = lists[i]!.size) ∧ 
@@ -23,12 +19,9 @@ vc-condition: |-
   
   theorem smallestListLength_spec_satisfied (lists: Array (Array Int)) (h_precond : smallestListLength_precond (lists)) :
       smallestListLength_postcond (lists) (smallestListLength (lists) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := do
     return ()
+

@@ -7,27 +7,20 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def findEvenNumbers (arr : Array Nat) (h_precond : findEvenNumbers_precond (arr)) : Array Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def findEvenNumbers_postcond (arr : Array Nat) (even_numbers: Array Nat) (h_precond : findEvenNumbers_precond (arr)) :=
     even_numbers.toList = arr.toList.filter (fun x => x % 2 = 0)
   
   theorem findEvenNumbers_spec_satisfied (arr: Array Nat) (h_precond : findEvenNumbers_precond (arr)) :
       findEvenNumbers_postcond (arr) (findEvenNumbers (arr) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := do
     pure ()
+
