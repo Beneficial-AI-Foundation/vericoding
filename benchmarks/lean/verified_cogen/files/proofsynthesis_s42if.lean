@@ -7,5 +7,20 @@ def myfun_precond (a : Array Int) (sum : Array Int) (N : Nat) :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def myfun (a : Array Int) (sum : Array Int) (N : Nat) (h_precond : myfun_precond (a) (sum) (N)) : Array Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def myfun_postcond (a : Array Int) (sum : Array Int) (N : Nat) (result: Array Int) (h_precond : myfun_precond (a) (sum) (N)) :=
+  result[0]! = 5 * N
+
+theorem myfun_spec_satisfied (a: Array Int) (sum: Array Int) (N: Nat) (h_precond : myfun_precond (a) (sum) (N)) :
+    myfun_postcond (a) (sum) (N) (myfun (a) (sum) (N) h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := do
   pure ()

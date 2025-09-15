@@ -6,3 +6,19 @@ def interleave_precond (s1 : Array Int) (s2 : Array Int) (s3 : Array Int) : Prop
 
 -- <vc-helpers>
 -- </vc-helpers>
+
+-- <vc-definitions>
+def interleave (s1 : Array Int) (s2 : Array Int) (s3 : Array Int) (h_precond : interleave_precond s1 s2 s3) : Array Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def interleave_postcond (s1 : Array Int) (s2 : Array Int) (s3 : Array Int) (result : Array Int) (h_precond : interleave_precond s1 s2 s3) : Prop :=
+  result.size = s1.size * 3 ∧ 
+  (∀ i : Nat, i < s1.size → result[3 * i]! = s1[i]! ∧ result[3 * i + 1]! = s2[i]! ∧ result[3 * i + 2]! = s3[i]!)
+
+theorem interleave_spec_satisfied (s1 : Array Int) (s2 : Array Int) (s3 : Array Int) (h_precond : interleave_precond s1 s2 s3) :
+    interleave_postcond s1 s2 s3 (interleave s1 s2 s3 h_precond) h_precond := by
+  sorry
+-- </vc-theorems>

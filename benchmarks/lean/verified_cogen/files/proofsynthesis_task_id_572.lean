@@ -14,4 +14,19 @@ def removeDuplicates_precond (arr : Array Int) := True
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def removeDuplicates (arr : Array Int) (h_precond : removeDuplicates_precond (arr)) : Array Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def removeDuplicates_postcond (arr : Array Int) (unique_arr : Array Int) (h_precond : removeDuplicates_precond (arr)) :=
+  unique_arr.toList = arr.toList.filter (fun x => countFrequencyRcr arr.toList x = 1)
+
+theorem removeDuplicates_spec_satisfied (arr : Array Int) (h_precond : removeDuplicates_precond (arr)) :
+    removeDuplicates_postcond (arr) (removeDuplicates (arr) h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 #check removeDuplicates

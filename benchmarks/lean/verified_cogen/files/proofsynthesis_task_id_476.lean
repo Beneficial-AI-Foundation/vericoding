@@ -19,3 +19,18 @@ def sumMinMax_precond (arr : Array Int) : Prop :=
 
 -- <vc-helpers>
 -- </vc-helpers>
+
+-- <vc-definitions>
+def sumMinMax (arr : Array Int) (h_precond : sumMinMax_precond arr) : Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def sumMinMax_postcond (arr : Array Int) (sum : Int) (h_precond : sumMinMax_precond arr) : Prop :=
+  sum = maxRcur arr.toList + minRcur arr.toList
+
+theorem sumMinMax_spec_satisfied (arr : Array Int) (h_precond : sumMinMax_precond arr) :
+    sumMinMax_postcond arr (sumMinMax arr h_precond) h_precond := by
+  sorry
+-- </vc-theorems>

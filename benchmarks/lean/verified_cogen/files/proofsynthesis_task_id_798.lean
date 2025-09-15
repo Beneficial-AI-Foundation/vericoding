@@ -21,4 +21,19 @@ def sum_precond (arr : Array Int) : Prop := True
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def sum (arr : Array Int) (h_precond : sum_precond arr) : Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def sum_postcond (arr : Array Int) (result : Int) (h_precond : sum_precond arr) : Prop :=
+  sumTo (arr.toList) = result
+
+theorem sum_spec_satisfied (arr : Array Int) (h_precond : sum_precond arr) :
+    sum_postcond arr (sum arr h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 /- Test cases and examples can be added here -/

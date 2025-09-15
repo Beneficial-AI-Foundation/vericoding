@@ -14,4 +14,19 @@ def sumRangeList_precond (arr : Array Int) (start : Nat) (endVal : Nat) : Prop :
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def sumRangeList (arr : Array Int) (start : Nat) (endVal : Nat) (h_precond : sumRangeList_precond arr start endVal) : Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def sumRangeList_postcond (arr : Array Int) (start : Nat) (endVal : Nat) (sum : Int) (h_precond : sumRangeList_precond arr start endVal) : Prop :=
+  sumTo (arr.toList.drop start |>.take (endVal + 1 - start)) = sum
+
+theorem sumRangeList_spec_satisfied (arr : Array Int) (start : Nat) (endVal : Nat) (h_precond : sumRangeList_precond arr start endVal) :
+    sumRangeList_postcond arr start endVal (sumRangeList arr start endVal h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := pure ()
