@@ -144,20 +144,11 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
         # Store W&B URL for this run
         run_urls[model_name][dataset] = run.url
         
-        # Get detailed results table
-        detailed_results_artifact = None
-        for artifact in run.logged_artifacts():
-            if artifact.name.startswith('detailed_results'):
-                detailed_results_artifact = artifact
-                break
+        # Get detailed results from summary
+        if 'detailed_results' not in summary:
+            raise ValueError(f"Could not find detailed_results in W&B summary for run {run.name} ({model_name} + {dataset}). Available keys: {list(summary.keys())}")
         
-        if not detailed_results_artifact:
-            raise ValueError(f"Could not find detailed_results artifact in W&B run {run.name} ({model_name} + {dataset})")
-        
-        # Download and read the detailed results
-        detailed_table = detailed_results_artifact.get("detailed_results.table.json")
-        if not detailed_table:
-            raise ValueError(f"Could not load detailed_results.table.json from artifact in run {run.name} ({model_name} + {dataset})")
+        detailed_table = summary['detailed_results']
         
         # Store detailed results for this model+dataset
         detailed_results[dataset][model_name] = detailed_table
