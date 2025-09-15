@@ -172,6 +172,12 @@ def generate_latex_table(results, dataset_file_counts, run_urls, tag):
     # Generate rows for each model
     for model in MODEL_MAPPING.values():
         if model in results:
+            # Generate URL comments for this model
+            for col in COLUMN_ORDER:
+                if col in results[model]:
+                    url = run_urls[model][col]
+                    latex_lines.append(f"% {model} + {col}: {url}")
+            
             # Build the stats row
             row_data = [f"\\textbf{{{model}}}, spec"]
             
@@ -183,10 +189,9 @@ def generate_latex_table(results, dataset_file_counts, run_urls, tag):
                 if col in results[model]:
                     data = results[model][col]
                     success_rate = data['success_rate']
-                    url = run_urls[model][col]
                     
-                    # Add success rate with W&B URL comment
-                    row_data.append(f"{success_rate:.1f} % {url}")
+                    # Add just the success rate
+                    row_data.append(f"{success_rate:.1f}")
                     
                     # Add to totals
                     total_successful += data['successful_files']
