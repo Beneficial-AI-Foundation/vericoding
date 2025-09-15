@@ -55,6 +55,7 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
     results = defaultdict(lambda: defaultdict(dict))
     dataset_file_counts = {}  # Track file counts per dataset
     run_urls = defaultdict(lambda: defaultdict(str))  # Track W&B URLs for each model+dataset
+    detailed_results = defaultdict(lambda: defaultdict(dict))  # Track detailed results per dataset+model
     
     for i, run in enumerate(runs):
         # Get model and dataset info
@@ -143,11 +144,74 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
         # Store W&B URL for this run
         run_urls[model_name][dataset] = run.url
         
+        # Get detailed results table
+        detailed_results_artifact = None
+        for artifact in run.logged_artifacts():
+            if artifact.name.startswith('detailed_results'):
+                detailed_results_artifact = artifact
+                break
+        
+        if not detailed_results_artifact:
+            raise ValueError(f"Could not find detailed_results artifact in W&B run {run.name} ({model_name} + {dataset})")
+        
+        # Download and read the detailed results
+        detailed_table = detailed_results_artifact.get("detailed_results.table.json")
+        if not detailed_table:
+            raise ValueError(f"Could not load detailed_results.table.json from artifact in run {run.name} ({model_name} + {dataset})")
+        
+        # Store detailed results for this model+dataset
+        detailed_results[dataset][model_name] = detailed_table
+        print(f"  Loaded detailed results for {model_name} + {dataset}", file=sys.stderr)
+        
         print(f"Found: {model_name} + {dataset} = {success_rate_percent:.1f}% ({successful_files}/{total_files} files)", file=sys.stderr)
     
-    return results, dataset_file_counts, run_urls
+    return results, dataset_file_counts, run_urls, detailed_results
 
-def generate_latex_table(results, dataset_file_counts, run_urls, tag):
+def calculate_model_union(detailed_results, dataset_file_counts):
+    """Calculate model union results - file succeeds if ANY model succeeds on it."""
+    union_results = {}
+    
+    for dataset in COLUMN_ORDER:
+        if dataset in detailed_results and dataset in dataset_file_counts:
+            # Collect all files across all models for this dataset
+            all_files = set()
+            file_success = {}  # filename -> bool (True if any model succeeded)
+            
+            for model_name, table_data in detailed_results[dataset].items():
+                if table_data and hasattr(table_data, 'data'):
+                    # Parse the table data to get individual file results
+                    for row in table_data.data:
+                        if len(row) >= 2:  # Assuming columns: [filename, success, ...]
+                            filename = row[0]
+                            success = row[1] if len(row) > 1 else False
+                            
+                            all_files.add(filename)
+                            if filename not in file_success:
+                                file_success[filename] = False
+                            
+                            # File succeeds if ANY model succeeded on it
+                            if success:
+                                file_success[filename] = True
+            
+            # Calculate union success rate
+            if all_files:
+                successful_files = sum(1 for success in file_success.values() if success)
+                total_files = len(all_files)
+                union_results[dataset] = {
+                    'success_rate': (successful_files / total_files) * 100,
+                    'successful_files': successful_files,
+                    'total_files': total_files
+                }
+            else:
+                union_results[dataset] = {
+                    'success_rate': 0.0,
+                    'successful_files': 0,
+                    'total_files': dataset_file_counts[dataset]
+                }
+    
+    return union_results
+
+def generate_latex_table(results, dataset_file_counts, run_urls, detailed_results, tag):
     """Generate LaTeX table rows for the Lean section."""
     
     latex_lines = []
@@ -213,10 +277,35 @@ def generate_latex_table(results, dataset_file_counts, run_urls, tag):
             # Skip the "spec,vibe" row as requested
             latex_lines.append("\\hline")
     
-    # Add model union placeholder (empty as requested)
+    # Add model union row
     latex_lines.append("\\hline")
-    latex_lines.append("\\statsgray{\\textbf{MODEL UNION}, spec}")
-    latex_lines.append("{\\numpyResLean}{\\dbResLean}{\\heResLean}{\\verinaResLean}{\\bignumResLean}{\\verifResLean}{\\appsResLean}{\\totalResLean}{} \\\\")
+    
+    # Calculate model union results
+    union_results = calculate_model_union(detailed_results, dataset_file_counts)
+    
+    # Build union row
+    union_row_data = ["\\textbf{MODEL UNION}, spec"]
+    union_total_successful = 0
+    union_total_files = 0
+    
+    for col in COLUMN_ORDER:
+        if col in union_results:
+            success_rate = union_results[col]['success_rate']
+            union_row_data.append(f"{success_rate:.1f}")
+            union_total_successful += union_results[col]['successful_files']
+            union_total_files += union_results[col]['total_files']
+        else:
+            union_row_data.append("")
+    
+    # Calculate overall union total
+    if union_total_files > 0:
+        union_total_rate = (union_total_successful / union_total_files) * 100
+        union_row_data.append(f"{union_total_rate:.1f}")
+    else:
+        union_row_data.append("")
+    
+    union_stats_line = "\\statsgray{" + "}{".join(union_row_data) + "} \\\\"
+    latex_lines.append(union_stats_line)
     latex_lines.append("\\hline")
     latex_lines.append("}")
     
@@ -237,7 +326,7 @@ def main():
         return
     
     print(f"Fetching results for tag: {args.tag}", file=sys.stderr)
-    results, dataset_file_counts, run_urls = get_wandb_results(args.tag, args.project, args.entity, args.debug)
+    results, dataset_file_counts, run_urls, detailed_results = get_wandb_results(args.tag, args.project, args.entity, args.debug)
     
     if not results:
         print("No results found for the specified tag", file=sys.stderr)
@@ -246,7 +335,7 @@ def main():
     print(f"\nFound results for {len(results)} models", file=sys.stderr)
     print(f"Dataset file counts: {dataset_file_counts}", file=sys.stderr)
     
-    latex_table = generate_latex_table(results, dataset_file_counts, run_urls, args.tag)
+    latex_table = generate_latex_table(results, dataset_file_counts, run_urls, detailed_results, args.tag)
     
     # Output only the LaTeX table to stdout
     print(latex_table)
