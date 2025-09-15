@@ -52,6 +52,7 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
     runs = api.runs(project_path, filters={"tags": {"$in": [tag]}})
     
     results = defaultdict(lambda: defaultdict(dict))
+    dataset_file_counts = {}  # Track file counts per dataset
     
     for i, run in enumerate(runs):
         # Get model and dataset info
@@ -106,22 +107,49 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
         
         success_rate_percent = summary['results/success_rate_percent']
         
+        # Get total files for this dataset
+        if 'results/total_files' not in summary:
+            raise ValueError(f"Could not find total files in W&B summary for run {run.name}. Available keys: {list(summary.keys())}")
+        
+        total_files = summary['results/total_files']
+        
+        # Store file count for this dataset - validate consistency
+        if dataset in dataset_file_counts:
+            if dataset_file_counts[dataset] != total_files:
+                raise ValueError(f"File count mismatch for dataset '{dataset}': "
+                               f"previously found {dataset_file_counts[dataset]} files, "
+                               f"but run {run.name} reports {total_files} files")
+        else:
+            dataset_file_counts[dataset] = total_files
+        
         # Map model name
         model_name = MODEL_MAPPING.get(llm_provider, llm_provider)
         
         results[model_name][dataset] = success_rate_percent  # Already in percentage
         
-        print(f"Found: {model_name} + {dataset} = {success_rate_percent:.1f}%")
+        print(f"Found: {model_name} + {dataset} = {success_rate_percent:.1f}% ({total_files} files)")
     
-    return results
+    return results, dataset_file_counts
 
-def generate_latex_table(results):
+def generate_latex_table(results, dataset_file_counts):
     """Generate LaTeX table rows for the Lean section."""
     
     latex_lines = []
     latex_lines.append("\\newcommand{\\statsLean}{")
     latex_lines.append("% exp no.  & numpy & dbench & heval & verina & bignum & proofsynth & APPS & totals")
-    latex_lines.append("\\langHeader{\\large Lean}{603 tasks}{70 tasks}{161 tasks}{189 tasks}{6 tasks}{}{4006 tasks}{\\textbf{5088 tasks}} \\\\")
+    
+    # Build header with actual file counts
+    header_counts = []
+    total_files = 0
+    for col in COLUMN_ORDER:
+        if col in dataset_file_counts:
+            count = dataset_file_counts[col]
+            header_counts.append(f"{count} tasks")
+            total_files += count
+        else:
+            header_counts.append("")
+    
+    latex_lines.append(f"\\langHeader{{\\large Lean}}{{{header_counts[0]}}}{{{header_counts[1]}}}{{{header_counts[2]}}}{{{header_counts[3]}}}{{{header_counts[4]}}}{{{header_counts[5]}}}{{{header_counts[6]}}}{{\\textbf{{{total_files} tasks}}}} \\\\")
     latex_lines.append("\\hline")
     
     # Generate rows for each model
@@ -171,15 +199,16 @@ def main():
         return
     
     print(f"Fetching results for tag: {args.tag}")
-    results = get_wandb_results(args.tag, args.project, args.entity, args.debug)
+    results, dataset_file_counts = get_wandb_results(args.tag, args.project, args.entity, args.debug)
     
     if not results:
         print("No results found for the specified tag")
         return
     
     print(f"\nFound results for {len(results)} models")
+    print(f"Dataset file counts: {dataset_file_counts}")
     
-    latex_table = generate_latex_table(results)
+    latex_table = generate_latex_table(results, dataset_file_counts)
     
     print("\n" + "="*60)
     print("LaTeX table (paste into A5-experiments.tex):")
