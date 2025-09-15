@@ -53,6 +53,7 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
     
     results = defaultdict(lambda: defaultdict(dict))
     dataset_file_counts = {}  # Track file counts per dataset
+    run_urls = defaultdict(lambda: defaultdict(str))  # Track W&B URLs for each model+dataset
     
     for i, run in enumerate(runs):
         # Get model and dataset info
@@ -122,19 +123,34 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
         else:
             dataset_file_counts[dataset] = total_files
         
+        # Get successful files for total calculation
+        if 'results/successful_files' not in summary:
+            raise ValueError(f"Could not find successful files in W&B summary for run {run.name}. Available keys: {list(summary.keys())}")
+        
+        successful_files = summary['results/successful_files']
+        
         # Map model name
         model_name = MODEL_MAPPING.get(llm_provider, llm_provider)
         
-        results[model_name][dataset] = success_rate_percent  # Already in percentage
+        # Store results with additional metadata
+        results[model_name][dataset] = {
+            'success_rate': success_rate_percent,
+            'successful_files': successful_files,
+            'total_files': total_files
+        }
         
-        print(f"Found: {model_name} + {dataset} = {success_rate_percent:.1f}% ({total_files} files)")
+        # Store W&B URL for this run
+        run_urls[model_name][dataset] = run.url
+        
+        print(f"Found: {model_name} + {dataset} = {success_rate_percent:.1f}% ({successful_files}/{total_files} files)")
     
-    return results, dataset_file_counts
+    return results, dataset_file_counts, run_urls
 
-def generate_latex_table(results, dataset_file_counts):
+def generate_latex_table(results, dataset_file_counts, run_urls, tag):
     """Generate LaTeX table rows for the Lean section."""
     
     latex_lines = []
+    latex_lines.append(f"% Generated from uv run src/scripts/wandb_to_latex.py --tag {tag}")
     latex_lines.append("\\newcommand{\\statsLean}{")
     latex_lines.append("% exp no.  & numpy & dbench & heval & verina & bignum & proofsynth & APPS & totals")
     
@@ -158,15 +174,31 @@ def generate_latex_table(results, dataset_file_counts):
             # Build the stats row
             row_data = [f"\\textbf{{{model}}}, spec"]
             
+            # Calculate totals for this model
+            total_successful = 0
+            total_files = 0
+            
             for col in COLUMN_ORDER:
                 if col in results[model]:
-                    value = results[model][col]
-                    row_data.append(f"{value:.1f}")  # Include 0.0% results
+                    data = results[model][col]
+                    success_rate = data['success_rate']
+                    url = run_urls[model][col]
+                    
+                    # Add success rate with W&B URL comment
+                    row_data.append(f"{success_rate:.1f} % {url}")
+                    
+                    # Add to totals
+                    total_successful += data['successful_files']
+                    total_files += data['total_files']
                 else:
                     row_data.append("")  # Only empty if no data exists
             
-            # Add empty total column for now
-            row_data.append("")
+            # Calculate and add total success rate
+            if total_files > 0:
+                total_rate = (total_successful / total_files) * 100
+                row_data.append(f"{total_rate:.1f}")
+            else:
+                row_data.append("")
             
             # Create the stats line
             stats_line = "\\stats{" + "}{".join(row_data) + "} \\\\"
@@ -199,7 +231,7 @@ def main():
         return
     
     print(f"Fetching results for tag: {args.tag}")
-    results, dataset_file_counts = get_wandb_results(args.tag, args.project, args.entity, args.debug)
+    results, dataset_file_counts, run_urls = get_wandb_results(args.tag, args.project, args.entity, args.debug)
     
     if not results:
         print("No results found for the specified tag")
@@ -208,7 +240,7 @@ def main():
     print(f"\nFound results for {len(results)} models")
     print(f"Dataset file counts: {dataset_file_counts}")
     
-    latex_table = generate_latex_table(results, dataset_file_counts)
+    latex_table = generate_latex_table(results, dataset_file_counts, run_urls, args.tag)
     
     print("\n" + "="*60)
     print("LaTeX table (paste into A5-experiments.tex):")
