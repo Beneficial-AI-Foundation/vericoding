@@ -179,8 +179,7 @@ def print_runtime_summary(runtime_data, total_runtime, total_cost, total_input_t
     for model_name in sorted(model_totals.keys()):
         totals = model_totals[model_name]
         runtime_hours = totals['runtime'] / 3600
-        total_tokens = totals['input_tokens'] + totals['output_tokens']
-        print(f"{model_name}: {runtime_hours:.1f}h | ${totals['cost']:.2f} | {total_tokens:,} tokens")
+        print(f"{model_name}: {runtime_hours:.1f}h | ${totals['cost']:.2f} | {totals['input_tokens']:,}+{totals['output_tokens']:,} tokens")
     
     # Sum by dataset
     print(f"\n=== BY DATASET ===")
@@ -195,8 +194,7 @@ def print_runtime_summary(runtime_data, total_runtime, total_cost, total_input_t
     for dataset in sorted(dataset_totals.keys()):
         totals = dataset_totals[dataset]
         runtime_hours = totals['runtime'] / 3600
-        total_tokens = totals['input_tokens'] + totals['output_tokens']
-        print(f"{dataset}: {runtime_hours:.1f}h | ${totals['cost']:.2f} | {total_tokens:,} tokens")
+        print(f"{dataset}: {runtime_hours:.1f}h | ${totals['cost']:.2f} | {totals['input_tokens']:,}+{totals['output_tokens']:,} tokens")
     
     # Detailed breakdown
     print(f"\n=== DETAILED BREAKDOWN ===")
@@ -204,8 +202,7 @@ def print_runtime_summary(runtime_data, total_runtime, total_cost, total_input_t
         print(f"\n{model_name}:")
         for dataset in sorted(runtime_data[model_name].keys()):
             data = runtime_data[model_name][dataset]
-            tokens = data['input_tokens'] + data['output_tokens']
-            print(f"  {dataset}: {data['runtime_minutes']:.1f}m | ${data['cost_usd']:.2f} | {tokens:,} tokens")
+            print(f"  {dataset}: {data['runtime_minutes']:.1f}m | ${data['cost_usd']:.2f} | {data['input_tokens']:,}+{data['output_tokens']:,} tokens")
 
 def main():
     parser = argparse.ArgumentParser(description="Sum runtime from W&B results")
