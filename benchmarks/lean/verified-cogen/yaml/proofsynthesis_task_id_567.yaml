@@ -1,0 +1,32 @@
+vc-description: |-
+
+vc-preamble: |-
+  @[reducible, simp]
+  def isSorted_precond (arr : Array Int) :=
+    arr.size > 0
+
+vc-helpers: |-
+
+vc-signature: |-
+  def isSorted (arr : Array Int) (h_precond : isSorted_precond (arr)) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def isSorted_postcond (arr : Array Int) (is_sorted: Bool) (h_precond : isSorted_precond (arr)) :=
+    (∀ i j, 0 ≤ i ∧ i < j ∧ j < arr.size → arr[i]! ≤ arr[j]!) ↔ is_sorted
+  
+  theorem isSorted_spec_satisfied (arr: Array Int) (h_precond : isSorted_precond (arr)) :
+      isSorted_postcond (arr) (isSorted (arr) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := return ()

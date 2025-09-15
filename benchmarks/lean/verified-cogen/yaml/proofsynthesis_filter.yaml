@@ -1,0 +1,33 @@
+vc-description: |-
+  /- Function that filters elements from an array x into array y, keeping only elements divisible by 3 -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def myfun4_precond (x : Array UInt64) (y : Array UInt64) :=
+    y.size = 0
+
+vc-helpers: |-
+
+vc-signature: |-
+  def myfun4 (x : Array UInt64) (y : Array UInt64) (h_precond : myfun4_precond (x) (y)) : Array UInt64 :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def myfun4_postcond (x : Array UInt64) (y : Array UInt64) (result: Array UInt64) (h_precond : myfun4_precond (x) (y)) :=
+    result.toList = x.toList.filter (fun k => k % 3 = 0)
+
+  theorem myfun4_spec_satisfied (x: Array UInt64) (y: Array UInt64) (h_precond : myfun4_precond (x) (y)) :
+      myfun4_postcond (x) (y) (myfun4 (x) (y) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := return ()

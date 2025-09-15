@@ -1,0 +1,33 @@
+vc-description: |-
+
+vc-preamble: |-
+  @[reducible, simp]
+  def findEvenNumbers_precond (arr : Array Nat) : Prop :=
+    True
+
+vc-helpers: |-
+
+vc-signature: |-
+  def findEvenNumbers (arr : Array Nat) (h_precond : findEvenNumbers_precond (arr)) : Array Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def findEvenNumbers_postcond (arr : Array Nat) (even_numbers: Array Nat) (h_precond : findEvenNumbers_precond (arr)) :=
+    even_numbers.toList = arr.toList.filter (fun x => x % 2 = 0)
+  
+  theorem findEvenNumbers_spec_satisfied (arr: Array Nat) (h_precond : findEvenNumbers_precond (arr)) :
+      findEvenNumbers_postcond (arr) (findEvenNumbers (arr) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := do
+    pure ()

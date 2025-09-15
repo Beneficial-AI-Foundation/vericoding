@@ -1,0 +1,38 @@
+vc-description: |-
+
+vc-preamble: |-
+  -- Precondition definitions
+  @[reducible, simp]
+  def indexWiseAddition_precond (a : Array (Array Int)) (b : Array (Array Int)) : Prop :=
+    a.size = b.size ∧
+    (∀ i, i < a.size → a[i]!.size = b[i]!.size) ∧
+    (∀ i, i < a.size → ∀ j, j < a[i]!.size → a[i]![j]! + b[i]![j]! ≤ 2147483647) ∧
+    (∀ i, i < a.size → ∀ j, j < a[i]!.size → a[i]![j]! + b[i]![j]! ≥ -2147483648)
+
+vc-helpers: |-
+
+vc-signature: |-
+  def indexWiseAddition (a : Array (Array Int)) (b : Array (Array Int)) (h_precond : indexWiseAddition_precond a b) : Array (Array Int) :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def indexWiseAddition_postcond (a : Array (Array Int)) (b : Array (Array Int)) (c : Array (Array Int)) (h_precond : indexWiseAddition_precond a b) : Prop :=
+    c.size = a.size ∧
+    (∀ i, i < c.size → c[i]!.size = a[i]!.size) ∧
+    (∀ i, i < c.size → ∀ j, j < c[i]!.size → c[i]![j]! = a[i]![j]! + b[i]![j]!)
+  
+  theorem indexWiseAddition_spec_satisfied (a : Array (Array Int)) (b : Array (Array Int)) (h_precond : indexWiseAddition_precond a b) :
+      indexWiseAddition_postcond a b (indexWiseAddition a b h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  /- Test cases and examples can be added here -/

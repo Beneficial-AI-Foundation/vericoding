@@ -1,0 +1,33 @@
+vc-description: |-
+
+vc-preamble: |-
+  @[reducible, simp]
+  def unique_precond (a : Array Int) : Prop :=
+    ∀ i j, 0 ≤ i ∧ i < j ∧ j < a.size → a[i]! ≤ a[j]!
+
+vc-helpers: |-
+
+vc-signature: |-
+  def unique (a : Array Int) (h_precond : unique_precond a) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def unique_postcond (a : Array Int) (result: Array Int) (h_precond : unique_precond a) : Prop :=
+    ∀ i j, 0 ≤ i ∧ i < j ∧ j < result.size → result[i]! < result[j]!
+  
+  theorem unique_spec_satisfied (a : Array Int) (h_precond : unique_precond a) :
+      unique_postcond a (unique a h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := do
+    return ()
