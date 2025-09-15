@@ -1,0 +1,26 @@
+# Terraform state files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Terraform plan files
+*.tfplan
+tfplan
+
+# Terraform lock file (keep this one in git)
+# .terraform.lock.hcl
+
+# Terraform directory
+.terraform/
+
+# Variable files with secrets
+*.tfvars
+terraform.tfvars
+secrets.tfvars
+
+# Crash log files
+crash.log
+
+# OS files
+.DS_Store
+Thumbs.db
