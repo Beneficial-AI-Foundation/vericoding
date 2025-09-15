@@ -50,34 +50,40 @@ def examine_detailed_results(tag, project="vericoding", entity=None):
                 print(f"Keys: {keys}", file=sys.stderr)
                 print(f"Table dimensions: {detailed_results.get('nrows')} rows x {detailed_results.get('ncols')} cols", file=sys.stderr)
                 
-                # Try to fetch the actual table data
+                # Try to fetch the actual table data using the run's files
                 try:
-                    # Get the table from W&B
-                    table_ref = api.artifact(detailed_results['artifact_path'])
-                    table_data = table_ref.get("detailed_results")
-                    
-                    print(f"Fetched table type: {type(table_data)}", file=sys.stderr)
-                    
-                    if hasattr(table_data, 'columns'):
-                        print(f"Columns: {table_data.columns}", file=sys.stderr)
-                    
-                    if hasattr(table_data, 'data'):
-                        print(f"Data rows: {len(table_data.data)}", file=sys.stderr)
-                        if table_data.data:
-                            print(f"First 3 data rows:", file=sys.stderr)
-                            for idx, row in enumerate(table_data.data[:3]):
-                                print(f"  Row {idx}: {row}", file=sys.stderr)
+                    # Get the table file directly from the run
+                    table_path = detailed_results.get('path')
+                    if table_path:
+                        print(f"Trying to download file: {table_path}", file=sys.stderr)
+                        
+                        # Download the file from the run
+                        table_file = run.file(table_path)
+                        table_data = table_file.download(replace=True)
+                        
+                        # Read the downloaded JSON file
+                        import json
+                        with open(table_data.name, 'r') as f:
+                            table_json = json.load(f)
+                        
+                        print(f"Table JSON keys: {list(table_json.keys())}", file=sys.stderr)
+                        
+                        if 'columns' in table_json:
+                            print(f"Columns: {table_json['columns']}", file=sys.stderr)
+                        
+                        if 'data' in table_json:
+                            print(f"Data rows: {len(table_json['data'])}", file=sys.stderr)
+                            if table_json['data']:
+                                print(f"First 3 data rows:", file=sys.stderr)
+                                for idx, row in enumerate(table_json['data'][:3]):
+                                    print(f"  Row {idx}: {row}", file=sys.stderr)
+                        
+                        # Clean up downloaded file
+                        import os
+                        os.remove(table_data.name)
                     
                 except Exception as table_e:
                     print(f"Error fetching table data: {table_e}", file=sys.stderr)
-                    
-                    # Try alternative approach using artifact path
-                    try:
-                        artifact_path = detailed_results.get('path')
-                        if artifact_path:
-                            print(f"Trying artifact path: {artifact_path}", file=sys.stderr)
-                    except Exception as alt_e:
-                        print(f"Alternative approach failed: {alt_e}", file=sys.stderr)
                     
             except Exception as e:
                 print(f"Error examining keys: {e}", file=sys.stderr)
