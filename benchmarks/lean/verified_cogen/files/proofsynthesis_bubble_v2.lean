@@ -15,4 +15,20 @@ def test1_precond (nums : Array Nat) : Prop := True
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def test1 (nums : Array Nat) (h_precond : test1_precond nums) : Array Nat :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def test1_postcond (nums : Array Nat) (old_nums : Array Nat) (h_precond : test1_precond nums) : Prop :=
+  sortedBetween nums 0 nums.size ∧ 
+  ∃ r : Array Int, isReorderOf r nums old_nums
+
+theorem test1_spec_satisfied (nums : Array Nat) (old_nums : Array Nat) (h_precond : test1_precond nums) :
+    test1_postcond (test1 nums h_precond) old_nums h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := return ()

@@ -14,5 +14,20 @@ def checkFindFirstOdd (arr : Array UInt32) (index : Option Nat) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def findFirstOdd (arr : Array UInt32) (h_precond : findFirstOdd_precond arr) : Option Nat :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def findFirstOdd_postcond (arr : Array UInt32) (index : Option Nat) (h_precond : findFirstOdd_precond arr) : Prop :=
+  checkFindFirstOdd arr index
+
+theorem findFirstOdd_spec_satisfied (arr : Array UInt32) (h_precond : findFirstOdd_precond arr) :
+    findFirstOdd_postcond arr (findFirstOdd arr h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := do
   return ()

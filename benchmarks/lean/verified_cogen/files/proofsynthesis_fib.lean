@@ -18,4 +18,19 @@ def fibonacci_precond (n : Nat) :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def fibonacci (n : Nat) (h_precond : fibonacci_precond n) : Array Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def fibonacci_postcond (n : Nat) (result: Array Int) (h_precond : fibonacci_precond n) :=
+  (∀ i : Nat, 2 ≤ i ∧ i < n → result[i]! = (fibo i : Int)) ∧ result.size = n
+
+theorem fibonacci_spec_satisfied (n: Nat) (h_precond : fibonacci_precond n) :
+    fibonacci_postcond n (fibonacci n h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := pure ()

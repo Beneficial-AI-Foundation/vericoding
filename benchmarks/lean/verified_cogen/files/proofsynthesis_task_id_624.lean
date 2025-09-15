@@ -24,5 +24,21 @@ def toUppercase_precond (str1 : Array Char) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def toUppercase (str1 : Array Char) (h_precond : toUppercase_precond str1) : Array Char :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def toUppercase_postcond (str1 : Array Char) (result : Array Char) (h_precond : toUppercase_precond str1) : Prop :=
+  str1.size = result.size ∧ 
+  (∀ i : Nat, i < str1.size → result[i]! = innerExprToUppercase str1 i)
+
+theorem toUppercase_spec_satisfied (str1 : Array Char) (h_precond : toUppercase_precond str1) :
+    toUppercase_postcond str1 (toUppercase str1 h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := do
   return ()

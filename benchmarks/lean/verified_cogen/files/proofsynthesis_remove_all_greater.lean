@@ -7,5 +7,21 @@ def removeAllGreater_precond (v : Array Int) (e : Int) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def removeAllGreater (v : Array Int) (e : Int) (h_precond : removeAllGreater_precond v e) : Array Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def removeAllGreater_postcond (v : Array Int) (e : Int) (result : Array Int) (h_precond : removeAllGreater_precond v e) : Prop :=
+  (∀ k, 0 ≤ k → k < result.size → result[k]! ≤ e ∧ v.toList.contains result[k]!) ∧
+  (∀ k, 0 ≤ k → k < v.size → v[k]! ≤ e → result.toList.contains v[k]!)
+
+theorem removeAllGreater_spec_satisfied (v : Array Int) (e : Int) (h_precond : removeAllGreater_precond v e) :
+    removeAllGreater_postcond v e (removeAllGreater v e h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := do
   pure ()

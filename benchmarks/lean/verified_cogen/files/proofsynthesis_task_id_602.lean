@@ -22,5 +22,20 @@ def checkFirstRepeatedChar (str1 : Array Char) (repeatedChar : Option (Nat × Ch
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def firstRepeatedChar (str1 : Array Char) (h_precond : firstRepeatedChar_precond str1) : Option (Nat × Char) :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def firstRepeatedChar_postcond (str1 : Array Char) (repeatedChar : Option (Nat × Char)) (h_precond : firstRepeatedChar_precond str1) : Prop :=
+  checkFirstRepeatedChar str1 repeatedChar
+
+theorem firstRepeatedChar_spec_satisfied (str1 : Array Char) (h_precond : firstRepeatedChar_precond str1) :
+    firstRepeatedChar_postcond str1 (firstRepeatedChar str1 h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 -- Test cases and examples
 def main : IO Unit := pure ()

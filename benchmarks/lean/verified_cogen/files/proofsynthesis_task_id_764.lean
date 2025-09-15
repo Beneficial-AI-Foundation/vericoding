@@ -17,4 +17,19 @@ def countDigits_precond (text : Array Char) : Prop := True
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def countDigits (text : Array Char) (h_precond : countDigits_precond text) : Nat :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def countDigits_postcond (text : Array Char) (count : Nat) (h_precond : countDigits_precond text) : Prop :=
+  count ≤ text.size ∧ countDigitsRecursively text.toList = count
+
+theorem countDigits_spec_satisfied (text : Array Char) (h_precond : countDigits_precond text) :
+    countDigits_postcond text (countDigits text h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := return ()

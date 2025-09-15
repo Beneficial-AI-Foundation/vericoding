@@ -18,4 +18,19 @@ def countUppercase_precond (text : Array Char) : Prop := True
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def countUppercase (text : Array Char) (h_precond : countUppercase_precond text) : Nat :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def countUppercase_postcond (text : Array Char) (count : Nat) (h_precond : countUppercase_precond text) : Prop :=
+  count ≤ text.size ∧ countUppercaseRecursively text.toList = count
+
+theorem countUppercase_spec_satisfied (text : Array Char) (h_precond : countUppercase_precond text) :
+    countUppercase_postcond text (countUppercase text h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := pure ()

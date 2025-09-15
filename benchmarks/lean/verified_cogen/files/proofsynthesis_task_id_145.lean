@@ -12,4 +12,19 @@ def maxDifference_precond (arr : Array Int) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def maxDifference (arr : Array Int) (h_precond : maxDifference_precond arr) : Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def maxDifference_postcond (arr : Array Int) (diff: Int) (h_precond : maxDifference_precond arr) : Prop :=
+  ∀ i j, i < arr.size → j < arr.size → arr[i]! - arr[j]! ≤ diff
+
+theorem maxDifference_spec_satisfied (arr: Array Int) (h_precond : maxDifference_precond arr) :
+    maxDifference_postcond arr (maxDifference arr h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := return ()

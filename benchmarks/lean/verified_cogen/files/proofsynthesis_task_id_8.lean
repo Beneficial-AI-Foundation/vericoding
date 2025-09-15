@@ -7,4 +7,19 @@ def squareNums_precond (nums : Array Int) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def squareNums (nums : Array Int) (h_precond : squareNums_precond (nums)) : Array Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def squareNums_postcond (nums : Array Int) (squared: Array Int) (h_precond : squareNums_precond (nums)) : Prop :=
+  nums.size = squared.size ∧ (∀ k, 0 ≤ k ∧ k < nums.size → squared[k]! = nums[k]! * nums[k]!)
+
+theorem squareNums_spec_satisfied (nums: Array Int) (h_precond : squareNums_precond (nums)) :
+    squareNums_postcond (nums) (squareNums (nums) h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := pure ()

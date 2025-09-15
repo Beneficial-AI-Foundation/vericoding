@@ -13,5 +13,20 @@ def countBoolean (seq : List Bool) : Int :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def countTrue (arr : Array Bool) (h_precond : countTrue_precond arr) : Nat :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def countTrue_postcond (arr : Array Bool) (count : Nat) (h_precond : countTrue_precond arr) : Prop :=
+  0 ≤ count ∧ count ≤ arr.size ∧ countBoolean arr.toList = count
+
+theorem countTrue_spec_satisfied (arr : Array Bool) (h_precond : countTrue_precond arr) :
+    countTrue_postcond arr (countTrue arr h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 /- Main function -/
 def main : IO Unit := return ()

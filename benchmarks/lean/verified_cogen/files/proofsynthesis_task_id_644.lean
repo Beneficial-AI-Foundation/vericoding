@@ -7,5 +7,20 @@ def reverseToK_precond (list : Array Int) (n : Nat) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def reverseToK (list : Array Int) (n : Nat) (h_precond : reverseToK_precond list n) : Array Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def reverseToK_postcond (list : Array Int) (n : Nat) (result : Array Int) (h_precond : reverseToK_precond list n) : Prop :=
+  result.toList = (list.toList.take n).reverse ++ (list.toList.drop n)
+
+theorem reverseToK_spec_satisfied (list : Array Int) (n : Nat) (h_precond : reverseToK_precond list n) :
+    reverseToK_postcond list n (reverseToK list n h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := 
   return ()

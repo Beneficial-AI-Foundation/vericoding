@@ -28,4 +28,19 @@ def differenceMaxMin_precond (arr : Array Int) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def differenceMaxMin (arr : Array Int) (h_precond : differenceMaxMin_precond arr) : Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def differenceMaxMin_postcond (arr : Array Int) (diff : Int) (h_precond : differenceMaxMin_precond arr) : Prop :=
+  diff = maxRcur arr.toList - minRcur arr.toList
+
+theorem differenceMaxMin_spec_satisfied (arr : Array Int) (h_precond : differenceMaxMin_precond arr) :
+    differenceMaxMin_postcond arr (differenceMaxMin arr h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := pure ()

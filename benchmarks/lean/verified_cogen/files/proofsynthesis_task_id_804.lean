@@ -11,4 +11,19 @@ def isProductEven_precond (arr : Array Nat) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def isProductEven (arr : Array Nat) (h_precond : isProductEven_precond (arr)) : Bool :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def isProductEven_postcond (arr : Array Nat) (result: Bool) (h_precond : isProductEven_precond (arr)) :=
+  result ↔ (∃ k, k < arr.size ∧ isEven (arr[k]!))
+
+theorem isProductEven_spec_satisfied (arr: Array Nat) (h_precond : isProductEven_precond (arr)) :
+    isProductEven_postcond (arr) (isProductEven (arr) h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := return ()

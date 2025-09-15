@@ -15,6 +15,23 @@ def maxSegmentSum_precond (a : Array Int) (s : Nat) (t : Nat) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def maxSegmentSum (a : Array Int) (s : Nat) (t : Nat) (h_precond : maxSegmentSum_precond a s t) : Nat × Nat :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def maxSegmentSum_postcond (a : Array Int) (s : Nat) (t : Nat) (result : Nat × Nat) (h_precond : maxSegmentSum_precond a s t) : Prop :=
+  let (i, j) := result
+  (0 ≤ i ∧ i ≤ j ∧ j ≤ a.size) ∧ 
+  (∀ k l : Int, 0 ≤ k ∧ k ≤ l ∧ l ≤ a.size → sum a k l ≤ sum a i j)
+
+theorem maxSegmentSum_spec_satisfied (a : Array Int) (s : Nat) (t : Nat) (h_precond : maxSegmentSum_precond a s t) :
+    maxSegmentSum_postcond a s t (maxSegmentSum a s t h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 /- Main function for testing -/
 def main : IO Unit :=
   IO.println "Max segment sum implementation"

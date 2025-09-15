@@ -13,4 +13,19 @@ def sumNegatives_precond (arr : Array Int) : Prop :=
 -- <vc-helpers>
 -- </vc-helpers>
 
+-- <vc-definitions>
+def sumNegatives (arr : Array Int) (h_precond : sumNegatives_precond (arr)) : Int :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def sumNegatives_postcond (arr : Array Int) (sum_neg: Int) (h_precond : sumNegatives_precond (arr)) :=
+  sum_negative_to (arr.toList) = sum_neg
+
+theorem sumNegatives_spec_satisfied (arr: Array Int) (h_precond : sumNegatives_precond (arr)) :
+    sumNegatives_postcond (arr) (sumNegatives (arr) h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+
 def main : IO Unit := return ()
