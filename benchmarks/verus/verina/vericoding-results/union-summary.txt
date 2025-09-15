@@ -1,0 +1,164 @@
+=== VERUS PROCESSING SUMMARY (AGGREGATED) ===
+Total files: 156
+Successful: 58 (37.2%)
+Failed: 98
+
+Successful files:
+✓ verina_advanced_30_task.rs — by: claude-opus, gemini, grok-code
+✓ verina_advanced_32_task.rs — by: gpt
+✓ verina_advanced_33_task.rs — by: gpt
+✓ verina_advanced_38_task.rs — by: gpt, gpt-mini
+✓ verina_advanced_39_task.rs — by: claude-opus, gemini, gemini-flash
+✓ verina_advanced_40_task.rs — by: claude-opus
+✓ verina_advanced_41_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code
+✓ verina_advanced_44_task.rs — by: gpt, gpt-mini
+✓ verina_advanced_4_task.rs — by: gpt
+✓ verina_advanced_53_task.rs — by: gpt, gpt-mini
+✓ verina_advanced_57_task.rs — by: gpt
+✓ verina_advanced_58_task.rs — by: gpt
+✓ verina_advanced_62_task.rs — by: gpt, gpt-mini
+✓ verina_advanced_63_task.rs — by: gpt, gpt-mini, grok-code
+✓ verina_advanced_65_task.rs — by: claude-sonnet, gemini, gpt
+✓ verina_advanced_68_task.rs — by: claude-sonnet, gpt, gpt-mini
+✓ verina_advanced_70_task.rs — by: gemini, gpt
+✓ verina_advanced_74_task.rs — by: gpt, gpt-mini
+✓ verina_advanced_80_task.rs — by: claude-opus
+✓ verina_advanced_9_task.rs — by: gpt, gpt-mini, grok-code
+✓ verina_basic_102_task.rs — by: claude-sonnet
+✓ verina_basic_10_task.rs — by: claude-opus, claude-sonnet, gemini, grok-code
+✓ verina_basic_17_task.rs — by: claude-sonnet
+✓ verina_basic_18_task.rs — by: gpt
+✓ verina_basic_19_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini-flash
+✓ verina_basic_20_task.rs — by: gpt
+✓ verina_basic_2_task.rs — by: claude-sonnet, gemini
+✓ verina_basic_32_task.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt
+✓ verina_basic_3_task.rs — by: claude-sonnet, grok-code
+✓ verina_basic_41_task.rs — by: claude-opus, grok-code
+✓ verina_basic_42_task.rs — by: claude-opus, gpt
+✓ verina_basic_44_task.rs — by: gemini
+✓ verina_basic_49_task.rs — by: claude-opus, gemini, glm, grok-code
+✓ verina_basic_4_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code
+✓ verina_basic_51_task.rs — by: deepseek, gemini, gemini-flash
+✓ verina_basic_55_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_56_task.rs — by: gemini
+✓ verina_basic_64_task.rs — by: claude-opus, claude-sonnet
+✓ verina_basic_68_task.rs — by: gemini, grok-code
+✓ verina_basic_6_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ verina_basic_71_task.rs — by: gemini
+✓ verina_basic_72_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_74_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash
+✓ verina_basic_75_task.rs — by: claude-opus, gemini, gemini-flash
+✓ verina_basic_76_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_82_task.rs — by: claude-opus, claude-sonnet, gemini, grok-code
+✓ verina_basic_83_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt
+✓ verina_basic_84_task.rs — by: gemini-flash
+✓ verina_basic_85_task.rs — by: claude-opus, gemini-flash, grok-code
+✓ verina_basic_8_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, grok-code
+✓ verina_basic_91_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_92_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_93_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_94_task.rs — by: claude-opus, deepseek, gemini, glm
+✓ verina_basic_95_task.rs — by: gemini, gemini-flash, gpt, grok-code
+✓ verina_basic_96_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_97_task.rs — by: claude-sonnet, deepseek, gemini, glm, gpt, grok-code
+✓ verina_basic_9_task.rs — by: claude-opus
+
+Failed files:
+✗ verina_advanced_10_task.rs
+✗ verina_advanced_11_task.rs
+✗ verina_advanced_12_task.rs
+✗ verina_advanced_13_task.rs
+✗ verina_advanced_14_task.rs
+✗ verina_advanced_15_task.rs
+✗ verina_advanced_17_task.rs
+✗ verina_advanced_18_task.rs
+✗ verina_advanced_19_task.rs
+✗ verina_advanced_1_task.rs
+✗ verina_advanced_31_task.rs
+✗ verina_advanced_34_task.rs
+✗ verina_advanced_35_task.rs
+✗ verina_advanced_36_task.rs
+✗ verina_advanced_37_task.rs
+✗ verina_advanced_42_task.rs
+✗ verina_advanced_43_task.rs
+✗ verina_advanced_45_task.rs
+✗ verina_advanced_46_task.rs
+✗ verina_advanced_48_task.rs
+✗ verina_advanced_49_task.rs
+✗ verina_advanced_50_task.rs
+✗ verina_advanced_51_task.rs
+✗ verina_advanced_55_task.rs
+✗ verina_advanced_56_task.rs
+✗ verina_advanced_59_task.rs
+✗ verina_advanced_5_task.rs
+✗ verina_advanced_60_task.rs
+✗ verina_advanced_61_task.rs
+✗ verina_advanced_64_task.rs
+✗ verina_advanced_66_task.rs
+✗ verina_advanced_67_task.rs
+✗ verina_advanced_69_task.rs
+✗ verina_advanced_6_task.rs
+✗ verina_advanced_73_task.rs
+✗ verina_advanced_75_task.rs
+✗ verina_advanced_76_task.rs
+✗ verina_advanced_77_task.rs
+✗ verina_advanced_78_task.rs
+✗ verina_advanced_79_task.rs
+✗ verina_advanced_81_task.rs
+✗ verina_advanced_8_task.rs
+✗ verina_basic_100_task.rs
+✗ verina_basic_101_task.rs
+✗ verina_basic_103_task.rs
+✗ verina_basic_105_task.rs
+✗ verina_basic_106_task.rs
+✗ verina_basic_108_task.rs
+✗ verina_basic_11_task.rs
+✗ verina_basic_13_task.rs
+✗ verina_basic_14_task.rs
+✗ verina_basic_15_task.rs
+✗ verina_basic_21_task.rs
+✗ verina_basic_24_task.rs
+✗ verina_basic_25_task.rs
+✗ verina_basic_26_task.rs
+✗ verina_basic_27_task.rs
+✗ verina_basic_28_task.rs
+✗ verina_basic_30_task.rs
+✗ verina_basic_31_task.rs
+✗ verina_basic_34_task.rs
+✗ verina_basic_36_task.rs
+✗ verina_basic_37_task.rs
+✗ verina_basic_38_task.rs
+✗ verina_basic_39_task.rs
+✗ verina_basic_40_task.rs
+✗ verina_basic_43_task.rs
+✗ verina_basic_45_task.rs
+✗ verina_basic_46_task.rs
+✗ verina_basic_47_task.rs
+✗ verina_basic_48_task.rs
+✗ verina_basic_50_task.rs
+✗ verina_basic_52_task.rs
+✗ verina_basic_57_task.rs
+✗ verina_basic_58_task.rs
+✗ verina_basic_59_task.rs
+✗ verina_basic_5_task.rs
+✗ verina_basic_60_task.rs
+✗ verina_basic_62_task.rs
+✗ verina_basic_63_task.rs
+✗ verina_basic_65_task.rs
+✗ verina_basic_66_task.rs
+✗ verina_basic_67_task.rs
+✗ verina_basic_69_task.rs
+✗ verina_basic_70_task.rs
+✗ verina_basic_73_task.rs
+✗ verina_basic_77_task.rs
+✗ verina_basic_78_task.rs
+✗ verina_basic_79_task.rs
+✗ verina_basic_7_task.rs
+✗ verina_basic_80_task.rs
+✗ verina_basic_86_task.rs
+✗ verina_basic_87_task.rs
+✗ verina_basic_88_task.rs
+✗ verina_basic_89_task.rs
+✗ verina_basic_90_task.rs
+✗ verina_basic_98_task.rs
+✗ verina_basic_99_task.rs
