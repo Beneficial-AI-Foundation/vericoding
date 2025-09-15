@@ -1,167 +1,167 @@
 filename,success_status,total_llms,successful_llms
-000-has_close_elements,SUCCESS,1,gemini
-001-separate-paren-groups,FAILED,0,
-002-truncate,SUCCESS,1,gemini
-003-below_zero,FAILED,0,
-004-mean_absolute_derivation,FAILED,0,
-005-intersperse,SUCCESS,1,gemini
-006-parse_nested_parens__parse_nested_parens,SUCCESS,1,gemini
-006-parse_nested_parens__parse_paren_group,SUCCESS,1,gemini
-006-parse_nested_parens__split,SUCCESS,1,gemini
-007-filter_by_substring__checkSubstring,SUCCESS,1,gemini
-007-filter_by_substring__filter_by_substring,FAILED,0,
-008-sum_product,FAILED,0,
-009-rolling_max,SUCCESS,1,gemini
-010-is_palindrome__make_palindrome,FAILED,0,
-010-is_palindrome__reverse,SUCCESS,1,gemini
-011-string_xor,SUCCESS,1,gemini
-012-longest,FAILED,0,
-013-greatest_common_divisor,SUCCESS,1,gemini
-014-all_prefixes,SUCCESS,1,gemini
-016-count_distinct_characters,FAILED,0,
-018-how_many_times,FAILED,0,
-020-find_closest_elements,FAILED,0,
-021-rescale_to_unit,FAILED,0,
-023-strlen,SUCCESS,1,gemini
-024-largest-divisor,SUCCESS,1,gemini
-025-factorize,SUCCESS,1,gemini
-026-remove_duplicates__count,FAILED,0,
-026-remove_duplicates__remove_duplicates,FAILED,0,
-027-flip_case,SUCCESS,1,gemini
-029-filter_by_prefix,SUCCESS,1,gemini
+000-has_close_elements,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini"
+001-separate-paren-groups,SUCCESS,1,gpt
+002-truncate,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+003-below_zero,SUCCESS,4,"claude-opus, claude-sonnet, gpt, gpt-mini"
+004-mean_absolute_derivation,SUCCESS,7,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code"
+005-intersperse,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+006-parse_nested_parens__parse_nested_parens,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+006-parse_nested_parens__parse_paren_group,SUCCESS,7,"claude-opus, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+006-parse_nested_parens__split,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+007-filter_by_substring__checkSubstring,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+007-filter_by_substring__filter_by_substring,SUCCESS,6,"claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code"
+008-sum_product,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code"
+009-rolling_max,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+010-is_palindrome__make_palindrome,SUCCESS,3,"glm, gpt-mini, grok-code"
+010-is_palindrome__reverse,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+011-string_xor,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+012-longest,SUCCESS,6,"claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code"
+013-greatest_common_divisor,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini"
+014-all_prefixes,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+016-count_distinct_characters,SUCCESS,1,claude-opus
+018-how_many_times,SUCCESS,3,"glm, gpt, grok-code"
+020-find_closest_elements,SUCCESS,3,"claude-sonnet, gemini-flash, gpt-mini"
+021-rescale_to_unit,SUCCESS,2,"claude-opus, gpt-mini"
+023-strlen,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+024-largest-divisor,SUCCESS,6,"gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+025-factorize,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+026-remove_duplicates__count,SUCCESS,2,"claude-opus, gpt"
+026-remove_duplicates__remove_duplicates,SUCCESS,2,"claude-opus, gpt-mini"
+027-flip_case,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code"
+029-filter_by_prefix,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
 030-get-positive,FAILED,0,
-031-is-prime,SUCCESS,1,gemini
+031-is-prime,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
 033-sort_third__SortSeqPred,FAILED,0,
-033-sort_third__sort_third,FAILED,0,
-034-unique__SortSeq,FAILED,0,
-034-unique__unique,FAILED,0,
-034-unique__uniqueSorted,FAILED,0,
-035-max-element,SUCCESS,1,gemini
-036-fizz_buzz__count7,SUCCESS,1,gemini
-036-fizz_buzz__fizz_buzz,FAILED,0,
+033-sort_third__sort_third,SUCCESS,1,claude-opus
+034-unique__SortSeq,SUCCESS,1,claude-opus
+034-unique__unique,SUCCESS,1,claude-opus
+034-unique__uniqueSorted,SUCCESS,3,"deepseek, gpt, gpt-mini"
+035-max-element,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+036-fizz_buzz__count7,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+036-fizz_buzz__fizz_buzz,SUCCESS,4,"claude-opus, claude-sonnet, glm, gpt-mini"
 037-sort_even__SortSeqPred,FAILED,0,
-037-sort_even__sorted_even,FAILED,0,
-038-encode_cyclic__decode_cyclic,FAILED,0,
-038-encode_cyclic__encode_cyclic,SUCCESS,1,gemini
-040-triples-sum-to-zero,FAILED,0,
-041-car_race_collision,SUCCESS,1,gemini
-042-incr-list,SUCCESS,1,gemini
-043-pairs-sum-to-zero,SUCCESS,1,gemini
-045-triangle_area,SUCCESS,1,gemini
-046-fib4,SUCCESS,1,gemini
-048-is-palindrome,SUCCESS,1,gemini
-049-modp,SUCCESS,1,gemini
-050-encode_shift__decode_shift,SUCCESS,1,gemini
-050-encode_shift__encode_shift,SUCCESS,1,gemini
-051-remove-vowels,SUCCESS,1,gemini
-052-below-threshold,SUCCESS,1,gemini
-053-add,SUCCESS,1,gemini
-054-same-chars,SUCCESS,1,gemini
-055-fib,SUCCESS,1,gemini
-056-correct_bracketing,SUCCESS,1,gemini
-057-monotonic,FAILED,0,
-058-common,FAILED,0,
-059-largest-prime-factor__is_prime,SUCCESS,1,gemini
-059-largest-prime-factor__largest_prime_factor,SUCCESS,1,gemini
-060-sum_to_n,SUCCESS,1,gemini
-062-derivative,SUCCESS,1,gemini
-063-fibfib,SUCCESS,1,gemini
-064-vowels_count,FAILED,0,
-065-circular_shift__circular_shift,SUCCESS,1,gemini
-065-circular_shift__reverse,SUCCESS,1,gemini
-066-digitSum,SUCCESS,1,gemini
-068-pluck,SUCCESS,1,gemini
-069-search,SUCCESS,1,gemini
-070-strange_sort_list__SortSeq,FAILED,0,
-070-strange_sort_list__strange_sort_list,SUCCESS,1,gemini
-070-strange_sort_list__strange_sort_list_helper,FAILED,0,
-072-will_it_fly,FAILED,0,
+037-sort_even__sorted_even,SUCCESS,1,claude-opus
+038-encode_cyclic__decode_cyclic,SUCCESS,5,"claude-opus, gemini-flash, glm, gpt-mini, grok-code"
+038-encode_cyclic__encode_cyclic,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt-mini"
+040-triples-sum-to-zero,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini"
+041-car_race_collision,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+042-incr-list,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+043-pairs-sum-to-zero,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini"
+045-triangle_area,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+046-fib4,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+048-is-palindrome,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+049-modp,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+050-encode_shift__decode_shift,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini"
+050-encode_shift__encode_shift,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+051-remove-vowels,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt"
+052-below-threshold,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+053-add,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+054-same-chars,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+055-fib,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+056-correct_bracketing,SUCCESS,6,"claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+057-monotonic,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code"
+058-common,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code"
+059-largest-prime-factor__is_prime,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+059-largest-prime-factor__largest_prime_factor,SUCCESS,3,"claude-sonnet, gemini, gpt"
+060-sum_to_n,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+062-derivative,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code"
+063-fibfib,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+064-vowels_count,SUCCESS,4,"claude-opus, claude-sonnet, gpt, gpt-mini"
+065-circular_shift__circular_shift,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+065-circular_shift__reverse,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+066-digitSum,SUCCESS,7,"claude-opus, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+068-pluck,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini"
+069-search,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt"
+070-strange_sort_list__SortSeq,SUCCESS,1,gpt-mini
+070-strange_sort_list__strange_sort_list,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt"
+070-strange_sort_list__strange_sort_list_helper,SUCCESS,1,claude-opus
+072-will_it_fly,SUCCESS,6,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini"
 073-smallest_change,FAILED,0,
-074-total_match__SumChars,FAILED,0,
-074-total_match__TotalMatch,SUCCESS,1,gemini
+074-total_match__SumChars,SUCCESS,6,"claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code"
+074-total_match__TotalMatch,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
 075-is_multiply_prime,FAILED,0,
 076-is_simple_power,FAILED,0,
-077-iscube__cube_root,SUCCESS,1,gemini
-077-iscube__is_cube,SUCCESS,1,gemini
-078-hex_key,FAILED,0,
-079-decimal_to_binary,SUCCESS,1,gemini
-080-is_happy,SUCCESS,1,gemini
-081-numerical_letter_grade,SUCCESS,1,gemini
-082-prime_length,SUCCESS,1,gemini
-083-starts_one_ends,SUCCESS,1,gemini
-084-solve,SUCCESS,1,gemini
-085-add,FAILED,0,
-087-get_row__SortSeq,FAILED,0,
-087-get_row__get_row,FAILED,0,
-088-sort_array__SortSeq,FAILED,0,
-088-sort_array__reverse,SUCCESS,1,gemini
-088-sort_array__sort_array,SUCCESS,1,gemini
-089-encrypt,SUCCESS,1,gemini
-090-next_smallest,SUCCESS,1,gemini
-092-any_int,SUCCESS,1,gemini
-093-encode,SUCCESS,1,gemini
-094-skjkasdkd,SUCCESS,1,gemini
-095-check_dict_case,FAILED,0,
-096-count_up_to,SUCCESS,1,gemini
-097-multiply,SUCCESS,1,gemini
-098-count_upper,SUCCESS,1,gemini
-100-make_a_pile,SUCCESS,1,gemini
-102-choose_num,SUCCESS,1,gemini
+077-iscube__cube_root,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt-mini, grok-code"
+077-iscube__is_cube,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+078-hex_key,SUCCESS,5,"claude-opus, glm, gpt, gpt-mini, grok-code"
+079-decimal_to_binary,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+080-is_happy,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+081-numerical_letter_grade,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+082-prime_length,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+083-starts_one_ends,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+084-solve,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+085-add,SUCCESS,6,"claude-opus, deepseek, gemini-flash, gpt, gpt-mini, grok-code"
+087-get_row__SortSeq,SUCCESS,3,"claude-opus, claude-sonnet, gpt-mini"
+087-get_row__get_row,SUCCESS,1,gpt-mini
+088-sort_array__SortSeq,SUCCESS,1,claude-opus
+088-sort_array__reverse,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+088-sort_array__sort_array,SUCCESS,5,"claude-opus, gemini, glm, gpt, gpt-mini"
+089-encrypt,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+090-next_smallest,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini"
+092-any_int,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+093-encode,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+094-skjkasdkd,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+095-check_dict_case,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code"
+096-count_up_to,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code"
+097-multiply,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+098-count_upper,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt-mini, grok-code"
+100-make_a_pile,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+102-choose_num,SUCCESS,5,"claude-opus, gemini, glm, gpt-mini, grok-code"
 104-unique_digits,FAILED,0,
-105-by_length__SortReverseAndName,FAILED,0,
-105-by_length__SortSeq,FAILED,0,
-105-by_length__reverse,SUCCESS,1,gemini
-106-f,SUCCESS,1,gemini
-107-even_odd_palindrome,FAILED,0,
-108-count_nums,FAILED,0,
-109-move_one_ball,SUCCESS,1,gemini
-110-exchange,SUCCESS,1,gemini
-111-histogram,FAILED,0,
-112-reverse_delete__check_palindrome,SUCCESS,1,gemini
-112-reverse_delete__reverse_delete,FAILED,0,
-114-minSubArraySum,FAILED,0,
-115-max_fill,FAILED,0,
-116-sort_array,FAILED,0,
-118-get_closest_vowel,FAILED,0,
-119-match_parens,FAILED,0,
+105-by_length__SortReverseAndName,SUCCESS,3,"claude-opus, gpt, gpt-mini"
+105-by_length__SortSeq,SUCCESS,1,claude-opus
+105-by_length__reverse,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini"
+106-f,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+107-even_odd_palindrome,SUCCESS,4,"claude-opus, claude-sonnet, gpt, gpt-mini"
+108-count_nums,SUCCESS,1,claude-opus
+109-move_one_ball,SUCCESS,7,"claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+110-exchange,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+111-histogram,SUCCESS,2,"claude-sonnet, gpt"
+112-reverse_delete__check_palindrome,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+112-reverse_delete__reverse_delete,SUCCESS,3,"claude-opus, claude-sonnet, deepseek"
+114-minSubArraySum,SUCCESS,2,"gpt, gpt-mini"
+115-max_fill,SUCCESS,2,"claude-opus, gpt-mini"
+116-sort_array,SUCCESS,3,"claude-opus, claude-sonnet, gpt-mini"
+118-get_closest_vowel,SUCCESS,2,"claude-opus, gpt-mini"
+119-match_parens,SUCCESS,5,"claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini"
 120-maximum__SortSeq,FAILED,0,
-120-maximum__maximum,FAILED,0,
-121-solution,FAILED,0,
-122-add_elements__SumElementsWithAtMostTwoDigits,FAILED,0,
-122-add_elements__select_at_most_two_digits,FAILED,0,
-123-get_odd_collatz__get_odd_collatz,FAILED,0,
-123-get_odd_collatz__get_odd_collatz_unsorted,SUCCESS,1,gemini
-123-get_odd_collatz__next_odd_collatz_iter,SUCCESS,1,gemini
+120-maximum__maximum,SUCCESS,3,"claude-opus, gpt, gpt-mini"
+121-solution,SUCCESS,5,"claude-opus, deepseek, glm, gpt, grok-code"
+122-add_elements__SumElementsWithAtMostTwoDigits,SUCCESS,6,"claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code"
+122-add_elements__select_at_most_two_digits,SUCCESS,4,"claude-opus, glm, gpt, gpt-mini"
+123-get_odd_collatz__get_odd_collatz,SUCCESS,3,"claude-opus, gpt, gpt-mini"
+123-get_odd_collatz__get_odd_collatz_unsorted,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini"
+123-get_odd_collatz__next_odd_collatz_iter,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
 126-is_sorted__count_sorted,FAILED,0,
-126-is_sorted__is_sorted,SUCCESS,1,gemini
-127-intersection,SUCCESS,1,gemini
-128-prod_signs,FAILED,0,
-130-tri,SUCCESS,1,gemini
-132-is_nested,SUCCESS,1,gemini
-133-sum_squares,FAILED,0,
-134-check_if_last_char_is_a_letter,SUCCESS,1,gemini
-135_can_arrange,SUCCESS,1,gemini
-136-largest_smallest_integers,SUCCESS,1,gemini
-138_is_equal_to_sum_even,SUCCESS,1,gemini
-139-special_factorial,SUCCESS,1,gemini
-142-sum_squares,FAILED,0,
-145-order_by_points,FAILED,0,
-146_specialFilter,SUCCESS,1,gemini
-148-bf,SUCCESS,1,gemini
-149-sorted_list_sum__sort_lengths,FAILED,0,
-149-sorted_list_sum__sort_strings,FAILED,0,
-149-sorted_list_sum__sorted_list_sum,FAILED,0,
-150-x_or_y,SUCCESS,1,gemini
-151-double_the_difference,FAILED,0,
-152-compare,SUCCESS,1,gemini
-153-Strongest_Extension,FAILED,0,
-154-cycpattern_check,SUCCESS,1,gemini
-155_even_odd_count,SUCCESS,1,gemini
-157-right_angle_triangle,SUCCESS,1,gemini
-158-find_max,SUCCESS,1,gemini
-159-eat,SUCCESS,1,gemini
-161-solve__reverse,SUCCESS,1,gemini
-161-solve__solve,FAILED,0,
-163-generate_integers__generate_integers,SUCCESS,1,gemini
-163-generate_integers__max,SUCCESS,1,gemini
-163-generate_integers__min,SUCCESS,1,gemini
+126-is_sorted__is_sorted,SUCCESS,5,"claude-opus, gemini, glm, gpt, gpt-mini"
+127-intersection,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+128-prod_signs,SUCCESS,3,"claude-opus, glm, gpt-mini"
+130-tri,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code"
+132-is_nested,SUCCESS,6,"claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+133-sum_squares,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code"
+134-check_if_last_char_is_a_letter,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+135_can_arrange,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini"
+136-largest_smallest_integers,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+138_is_equal_to_sum_even,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+139-special_factorial,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+142-sum_squares,SUCCESS,6,"claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code"
+145-order_by_points,SUCCESS,3,"claude-opus, claude-sonnet, gpt-mini"
+146_specialFilter,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+148-bf,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+149-sorted_list_sum__sort_lengths,SUCCESS,1,claude-opus
+149-sorted_list_sum__sort_strings,SUCCESS,4,"claude-sonnet, gpt, gpt-mini, grok-code"
+149-sorted_list_sum__sorted_list_sum,SUCCESS,2,"gpt, gpt-mini"
+150-x_or_y,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+151-double_the_difference,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code"
+152-compare,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+153-Strongest_Extension,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code"
+154-cycpattern_check,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini"
+155_even_odd_count,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+157-right_angle_triangle,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+158-find_max,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+159-eat,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+161-solve__reverse,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+161-solve__solve,SUCCESS,4,"claude-opus, claude-sonnet, gpt, gpt-mini"
+163-generate_integers__generate_integers,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+163-generate_integers__max,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+163-generate_integers__min,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"

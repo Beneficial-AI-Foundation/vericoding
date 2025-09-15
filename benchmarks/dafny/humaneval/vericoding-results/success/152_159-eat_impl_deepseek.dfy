@@ -1,0 +1,25 @@
+// <vc-preamble>
+// </vc-preamble>
+
+// <vc-helpers>
+function min(a: int, b: int): int { if a < b then a else b }
+// </vc-helpers>
+
+// <vc-spec>
+method eat(number : int, need : int, remaining : int) returns (result: seq<int>)
+
+  requires number >= 0 && need >= 0 && remaining >= 0
+
+  ensures |result| == 2
+  ensures remaining >= need ==> result[0] == number + need && result[1] == remaining - need
+  ensures remaining < need ==> result[0] == number + remaining && result[1] == 0
+// </vc-spec>
+// <vc-code>
+{
+  if remaining >= need {
+    result := [number + need, remaining - need];
+  } else {
+    result := [number + remaining, 0];
+  }
+}
+// </vc-code>
